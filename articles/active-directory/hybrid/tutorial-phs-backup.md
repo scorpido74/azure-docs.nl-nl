@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie:  Wachtwoord-hashsynchronisatie instellen als back-up voor AD FS in Azure AD Connect | Microsoft Docs'
+title: 'Zelfstudie: PHS instellen als back-up voor AD FS in Azure AD Connect | Microsoft Documenten'
 description: Laat u zien hoe u wachtwoord-hashsynchronisatie als een back-up en voor AD FS inschakelt.
 services: active-directory
 documentationcenter: ''
@@ -13,27 +13,27 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "64918995"
 ---
-# <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Zelfstudie:  WHS instellen als back-up voor AD FS in Azure AD Connect
+# <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Zelfstudie: PHS instellen als back-up voor AD FS in Azure AD Connect
 
 De volgende zelfstudie begeleidt u bij het instellen van wachtwoord-hashsynchronisatie als een back-up en failover voor AD FS.  In dit document wordt ook gedemonstreerd hoe u wachtwoord-hashsynchronisatie als primaire verificatiemethode inschakelt, als AD FS is mislukt of niet beschikbaar is.
 
 >[!NOTE] 
->Hoewel deze stappen worden doorgaans uitgevoerd tijdens de EMS- of onderbreking situaties, is het raadzaam dat u deze stappen testen en uw procedures controleren voordat er een storing optreedt.
+>Hoewel deze stappen meestal worden uitgevoerd tijdens noodsituaties of uitvalsituaties, wordt aanbevolen deze stappen te testen en uw procedures te verifiëren voordat er een storing optreedt.
 
 >[!NOTE]
->In het geval dat u geen toegang tot Azure AD Connect-server hebt of de server heeft geen toegang tot het internet, kunt u contact met [Microsoft Support](https://support.microsoft.com/en-us/contactus/) om te helpen met de wijzigingen aan de kant van de Azure AD.
+>Als u geen toegang hebt tot de Azure AD Connect-server of de server geen toegang heeft tot internet, u contact opnemen met [Microsoft Support](https://support.microsoft.com/en-us/contactus/) om u te helpen bij de wijzigingen aan de Azure AD-kant.
 
 ## <a name="prerequisites"></a>Vereisten
-Deze zelfstudie is gebaseerd op de [Zelfstudie: Een enkele AD-forestomgeving federeren in de cloud](tutorial-federation.md) en deze moet u hebben gevolgd voordat u aan deze zelfstudie begint.  Als u deze zelfstudie niet hebt voltooid, moet u dit doen voordat u de stappen in dit document gaat uitvoeren.
+Deze zelfstudie bouwt voort op de [zelfstudie: Federatie van een enkele AD-forestomgeving naar de cloud](tutorial-federation.md) en is een vereiste voordat u deze zelfstudie probeert.  Als u deze zelfstudie niet hebt voltooid, moet u dit doen voordat u de stappen in dit document gaat uitvoeren.
 
 >[!IMPORTANT]
->Voordat u overschakelt naar WHS moet u een back-up van uw AD FS-omgeving maken.  Dit kan worden gedaan met behulp van de [AD FS Rapid Restore-hulpprogramma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool).
+>Voordat u overstapt op PHS, moet u een back-up maken van uw AD FS-omgeving.  Dit kan worden gedaan met behulp van de [AD FS Rapid Restore Tool](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool).
 
 ## <a name="enable-phs-in-azure-ad-connect"></a>WHS inschakelen in Azure AD Connect
 Nu we een Azure AD Connect-omgeving die gebruikmaakt van federatie hebben, bestaat de eerste stap uit het inschakelen van wachtwoord-hashsynchronisatie en Azure AD Connect in staat tellen om de hashes te synchroniseren.
@@ -41,14 +41,14 @@ Nu we een Azure AD Connect-omgeving die gebruikmaakt van federatie hebben, besta
 Ga als volgt te werk:
 
 1.  Dubbelklik op het pictogram voor Azure AD Connect dat op het bureaublad is gemaakt
-2.  Klik op **Configureren**
+2.  Klik **op Configureren**.
 3.  Selecteer op de pagina Extra taken de optie **Synchronisatieopties aanpassen** en klik op **Volgende**.
 4.  Voer de gebruikersnaam en het wachtwoord voor uw globale beheerder in.  Dit account is [hier](tutorial-federation.md#create-a-global-administrator-in-azure-ad) gemaakt in de vorige zelfstudie.
 5.  Klik in het scherm **Verbinding maken met uw directory’s** op **Volgende**.
-6.  Klik in het scherm **Domein- en OE-filters** op **Volgende**.
+6.  Klik op **het filterscherm Domain en OU** op **Volgende**.
 7.  Schakel in het scherm **Optionele functies** het selectievakje **Wachtwoord-hashsynchronisatie** in en klik op **Volgende**.
 ![Selecteren](media/tutorial-phs-backup/backup1.png)</br>
-8.  Klik in het scherm **Gereed om te configureren** op **Configureren**.
+8.  Klik op het scherm **Klaar om te configureren** op **Configureren**.
 9.  Klik zodra de configuratie is voltooid op **Afsluiten**.
 10. Dat is alles.  U bent klaar.  Wachtwoord-hashsynchronisatie wordt nu uitgevoerd en kan worden gebruikt als een back-up als AD FS niet beschikbaar is.
 
@@ -56,10 +56,10 @@ Ga als volgt te werk:
 We laten u nu zien hoe u overschakelt naar wachtwoord-hashsynchronisatie. Voordat u begint, moet u overwegen onder welke omstandigheden u gaat overschakelen. Schakel niet over voor tijdelijke redenen, zoals netwerkstoringen, een klein probleem met AD FS of een probleem dat betrekking heeft op een subset van uw gebruikers. Als u besluit te maken over te schakelen omdat het oplossen van het probleem te lang duurt, doet u het volgende:
 
 > [!IMPORTANT]
-> Let erop dat het duurt even voordat het wachtwoord-hashes met synchroniseren met Azure AD.  Dit betekent dat het duurt 3 uur voor de synchronisatie is voltooid en voordat u kunt beginnen verifiëren met behulp van de wachtwoord-hashes.
+> Houd er rekening mee dat het enige tijd zal duren voordat het wachtwoord wordt gesynchroniseerd met Azure AD.  Dit betekent dat het 3 uur kan duren voordat de synchronisaties zijn voltooid en voordat u beginnen met het verifiëren met behulp van de wachtwoordhashes.
 
 1. Dubbelklik op het pictogram voor Azure AD Connect dat op het bureaublad is gemaakt
-2.  Klik op **Configureren**
+2.  Klik **op Configureren**.
 3.  Selecteer **Gebruikersaanmelding wijzigen** en klik op **Volgende**.
 ![Wijzigen](media/tutorial-phs-backup/backup2.png)</br>
 4.  Voer de gebruikersnaam en het wachtwoord voor uw globale beheerder in.  Dit account is [hier](tutorial-federation.md#create-a-global-administrator-in-azure-ad) gemaakt in de vorige zelfstudie.
@@ -72,43 +72,43 @@ We laten u nu zien hoe u overschakelt naar wachtwoord-hashsynchronisatie. Voorda
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Aanmelden testen met een van onze gebruikers
 
-1. Blader naar [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Blader naar[https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Meld u aan met een gebruikersaccount dat is gemaakt in onze nieuwe tenant.  U moet zich aanmelden met de volgende indeling: (user@domain.onmicrosoft.com). Gebruik hetzelfde wachtwoord dat de gebruiker gebruikt om zich on-premises aan te melden.</br>
    ![Verifiëren](media/tutorial-password-hash-sync/verify1.png)</br>
 
-## <a name="switch-back-to-federation"></a>Ga terug naar federation
-Nu we wordt laten zien hoe u wilt terugkeren naar federation.  U doet dit door het volgende doen:
+## <a name="switch-back-to-federation"></a>Terug schakelen naar federatie
+Nu zullen we je laten zien hoe je terug schakelen naar de federatie.  Ga als volgt te werk om dit te doen:
 
 1.  Dubbelklik op het pictogram voor Azure AD Connect dat op het bureaublad is gemaakt
-2.  Klik op **Configureren**
+2.  Klik **op Configureren**.
 3.  Selecteer **Gebruikersaanmelding wijzigen** en klik op **Volgende**.
-4.  Voer de gebruikersnaam en het wachtwoord voor uw globale beheerder in.  Dit is het account dat is gemaakt [hier](tutorial-federation.md#create-a-global-administrator-in-azure-ad) in de vorige zelfstudie.
-5.  Op de **aanmelden van gebruikers** scherm, selecteer **Federatie met AD FS** en klikt u op **volgende**.  
+4.  Voer de gebruikersnaam en het wachtwoord voor uw globale beheerder in.  Dit is het account dat [hier](tutorial-federation.md#create-a-global-administrator-in-azure-ad) is gemaakt in de vorige tutorial.
+5.  Selecteer **Federatie met AD FS** in het **aanmeldingsscherm Gebruiker** en klik op **Volgende**.  
 6. Voer op de pagina Referenties van domeinadministrator de gebruikersnaam en het wachtwoord voor contoso\Administrator in en klik op **Volgende.**
-7. Klik op het scherm voor AD FS-farm **volgende**.
-8. Op de **Azure AD-domein** scherm, selecteert u het domein in de vervolgkeuzelijst en klik op **volgende**.
+7. Klik op het scherm van de AD FS-farm op **Volgende**.
+8. Selecteer in het **azure AD-domeinscherm** het domein in de vervolgkeuzelijst en klik op **Volgende**.
 9. Klik in het scherm **Gereed om te configureren** op **Configureren**.
-10. Nadat de configuratie is voltooid, klikt u op **volgende**.
+10. Zodra de configuratie is voltooid, klikt u op **Volgende**.
 ![Configureren](media/tutorial-phs-backup/backup4.png)</br>
-11. Op de **federatieve connectiviteit verifiëren** scherm, klikt u op **controleren**.  U wilt configureren van DNS-records (A- en AAAA-records toevoegen) om dit te voltooien.
+11. Klik in het scherm **Federatieconnectiviteit verifiëren** op **Verifiëren .**  Mogelijk moet u DNS-records (A- en AAAA-records) configureren om hiermee te kunnen worden voltooid.
 ![Verifiëren](media/tutorial-phs-backup/backup5.png)</br>
-12. Klik op **afsluiten**.
+12. Klik **op Afsluiten**.
 
-## <a name="reset-the-ad-fs-and-azure-trust"></a>AD FS en Azure-vertrouwensrelatie opnieuw instellen
-We moeten nu opnieuw instellen van de vertrouwensrelatie tussen AD FS en Azure.
+## <a name="reset-the-ad-fs-and-azure-trust"></a>De ad fs- en Azure-vertrouwensrelatie opnieuw instellen
+Nu moeten we het vertrouwen tussen AD FS en Azure resetten.
 
 1.  Dubbelklik op het pictogram voor Azure AD Connect dat op het bureaublad is gemaakt
-2.  Klik op **Configureren**
-3.  Selecteer **beheren Federation** en klikt u op **volgende**.
-4.  Selecteer **opnieuw instellen van Azure AD-vertrouwensrelatie** en klikt u op **volgende**.
-![Reset](media/tutorial-phs-backup/backup6.png)</br>
-5.  Op de **verbinding maken met Azure AD** scherm de gebruikersnaam en wachtwoord invoeren voor de globale beheerder.
-6.  Op de **verbinding maken met AD FS** scherm contoso\Administrator gebruikersnaam en wachtwoord invoeren en op **volgende.**
-7.  Op de **certificaten** scherm, klikt u op **volgende**.
+2.  Klik **op Configureren**.
+3.  Selecteer **Federatie beheren** en klik op **Volgende**.
+4.  Selecteer **Azure AD-vertrouwensrelatie opnieuw instellen** en klik op **Volgende**.
+![Opnieuw instellen](media/tutorial-phs-backup/backup6.png)</br>
+5.  Voer **op** het scherm Verbinding maken met Azure AD de gebruikersnaam en het wachtwoord in voor uw globale beheerder.
+6.  Voer in het scherm **Verbinding maken met AD FS** de gebruikersnaam en het wachtwoord van contoso\Administrator in en klik op **Volgende.**
+7.  Klik **in** het scherm Certificaten op **Volgende**.
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Aanmelden testen met een van onze gebruikers
 
-1.  Ga naar [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1.  Blader naar[https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Meld u aan met een gebruikersaccount dat is gemaakt in onze nieuwe tenant.  U moet zich aanmelden met de volgende indeling: (user@domain.onmicrosoft.com). Gebruik het wachtwoord waarmee de gebruiker zich on-premises aanmeldt.
 ![Verifiëren](media/tutorial-password-hash-sync/verify1.png)
 

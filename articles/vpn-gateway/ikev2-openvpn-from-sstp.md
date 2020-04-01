@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: 60c3a7f4f12993f475b3d03fd0915971d7673a5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80143103"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398367"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Overgang naar OpenVPN-protocol of IKEv2 van SSTP
 
@@ -33,7 +33,7 @@ Point-to-site VPN kan een van de volgende protocollen gebruiken:
 >IKEv2 en OpenVPN voor P2S zijn alleen beschikbaar voor het Resource Manager-implementatiemodel. Ze zijn niet beschikbaar voor het klassieke implementatiemodel. Basic gateway SKU ondersteunt geen IKEv2- of OpenVPN-protocollen. Als u de basisSKU gebruikt, moet u een sku-virtuele netwerkgateway voor productie verwijderen en opnieuw maken.
 >
 
-## <a name="migrating-from-sspt-to-ikev2-or-openvpn"></a>Migreren van SSPT naar IKEv2 of OpenVPN
+## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>Migreren van SSTP naar IKEv2 of OpenVPN
 
 Er kunnen gevallen zijn waarin u meer dan 128 gelijktijdige P2S-verbinding met een VPN-gateway wilt ondersteunen, maar SSTP gebruikt. In een dergelijk geval moet u overstappen naar IKEv2- of OpenVPN-protocol.
 
@@ -135,7 +135,7 @@ Het zip-bestand bevat ook de waarden van enkele belangrijke instellingen aan de 
 ### <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>Welk TLS-beleid is geconfigureerd op VPN-gateways voor P2S?
 **TLS**
 
-|**Beleid** |
+|**Beleidsregels** |
 |---| 
 |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 |
 |TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 |

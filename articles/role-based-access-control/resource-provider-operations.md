@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2fce8a7a6f6d345b83c639bd69ecd70271621e9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b344886e89a10a027cba169e92056a6dda443d8d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283154"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421949"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager-resourceproviderbewerkingen
 
@@ -65,7 +65,7 @@ Inzichten in Microsoft Monitoring
 > | Actie | microsoft.aadiam/diagnosticsettingscategories/read | Een diagnostische instellingscategorieën lezen |
 > |  | **metrische Definities** |  |
 > | Actie | microsoft.aadiam/metricDefinities/gelezen | Metrische definities op tenantniveau lezen |
-> |  | **metrics** |  |
+> |  | **Statistieken** |  |
 > | Actie | microsoft.aadiam/metrics/read | Statistieken op tenantniveau lezen |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
@@ -133,7 +133,7 @@ Azure-service: [Azure Active Directory](../active-directory/index.yml)
 > |  | **Configuratie** |  |
 > | Actie | Microsoft.ADHybridHealthService/configuratie/schrijven | Hiermee maakt u een tenantconfiguratie. |
 > | Actie | Microsoft.ADHybridHealthService/configuratie/lezen | Hiermee leest u de tenantconfiguratie. |
-> |  | **logboeken** |  |
+> |  | **Logs** |  |
 > | Actie | Microsoft.ADHybridHealthService/logboeken/lezen | Krijgt agent installatie en registratie logs voor de huurder. |
 > |  | **logboeken/inhoud** |  |
 > | Actie | Microsoft.ADHybridHealthService/logboeken/inhoud/lezen | Krijgt de inhoud van agent installatie en registratie logs opgeslagen in blob. |
@@ -4682,7 +4682,7 @@ Azure-service: [Azure Monitor](../azure-monitor/index.yml)
 > | Actie | Microsoft.Insights/LogProfiles/Write | Een logboekprofiel van een activiteitenlogboek maken of bijwerken |
 > | Actie | Microsoft.Insights/LogProfiles/Delete | Een logboekprofiel van een activiteitenlogboek verwijderen |
 > | Actie | Microsoft.Insights/LogProfiles/Lezen | Een profiel van het activiteitenlogboek lezen |
-> |  | **Logs** |  |
+> |  | **Logboeken** |  |
 > | Actie | Microsoft.Insights/Logboeken/Lezen | Gegevens uit al uw logboeken lezen |
 > |  | **Logboeken/ADAssessmentAanbeveling** |  |
 > | Actie | Microsoft.Insights/Logs/ADAssessmentRecommendation/Read | Gegevens lezen uit de tabel ADAssessmentRecommendation |
@@ -4992,7 +4992,7 @@ Azure-service: [Azure Monitor](../azure-monitor/index.yml)
 > | Actie | Microsoft.Insights/MetricDefinitions/providers/Microsoft.Insights/Read | Metrische definities lezen |
 > |  | **Metrische naamruimten** |  |
 > | Actie | Microsoft.Insights/Metricnamespaces/Read | Metrische naamruimten lezen |
-> |  | **Statistieken** |  |
+> |  | **Metrische gegevens** |  |
 > | Actie | Microsoft.Insights/Metrics/Read | Statistieken lezen |
 > |  | **Statistieken/Microsoft.Insights** |  |
 > | Actie | Microsoft.Insights/Metrics/Microsoft.Insights/Read | Statistieken lezen |
@@ -5046,7 +5046,7 @@ Azure-service: [Azure Monitor](../azure-monitor/index.yml)
 > | Actie | Microsoft.Insights/Werkmappen/Lezen | Een werkmap lezen |
 > |  | **Regels voor gegevensverzameling/gegevens** |  |
 > | Gegevensactie | Microsoft.Insights/DataCollectionRules/Data/Write | Gegevens verzenden naar een regel voor het verzamelen van gegevens |
-> |  | **Statistieken** |  |
+> |  | **Metrische gegevens** |  |
 > | Gegevensactie | Microsoft.Insights/Metrics/Write | Statistieken schrijven |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
@@ -8333,7 +8333,7 @@ Azure-service: [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
-Azure-service: [Scheduler](../scheduler/index.md)
+Azure-service: [Scheduler](../scheduler/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Actietype | Bewerking | Beschrijving |

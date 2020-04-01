@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 64c900e01496dad0d5f6a96d8d790ae0c2a8c95a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 408fb2c40e645d9a8b10f1e04d282e134c5489a1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78927381"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80501957"
 ---
 U query's in Gegevensverkenner gebruiken om uw gegevens op te halen en te filteren.
 
-1. Controleer boven aan het tabblad **Items** in Gegevensverkenner de standaardquery `SELECT * FROM c`. Met deze query worden alle documenten in de verzameling opgehaald en weergegeven in id-volgorde. 
+1. Controleer boven aan het tabblad **Items** in Gegevensverkenner de standaardquery `SELECT * FROM c`. Met deze query worden alle documenten opgehaald en weergegeven uit de container die door id is besteld. 
    
    ![De standaardquery in Data Explorer is 'SELECT * FROM c'](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
    

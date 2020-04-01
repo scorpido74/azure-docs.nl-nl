@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-voor beeld-een Azure-VM met Azure Monitor maken
-description: 'Azure CLI-voor beeld: een Azure-VM met Windows Server 2016 VM en Azure Monitor maken.'
+title: Azure CLI-voorbeeld - Een Azure VM maken met Azure-monitor
+description: 'Azure CLI-voorbeeld : maak een Azure VM met Windows Server 2016 VM en Azure Monitor.'
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -17,13 +17,13 @@ ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
 ms.openlocfilehash: 77c5996a11b5223778bf0efbe33250f0db9f74f3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74039912"
 ---
-# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Een virtuele machine bewaken met Azure Monitor-logboeken
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Een VM bewaken met Azure Monitor-logboeken
 
 Met dit script maakt u een virtuele machine in Azure, installeert u de Log Analytics-agent en registreert u het systeem bij een Log Analytics-werkruimte. Nadat het script is uitgevoerd, is de virtuele machine zichtbaar in Azure-bewaking.
 
@@ -45,7 +45,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtuele machine en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

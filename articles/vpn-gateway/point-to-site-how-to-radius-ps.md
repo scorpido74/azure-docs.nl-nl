@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 25bc25d9ec12804cc20baa558dce67fb3f8269a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb9a02532c3651aca544ed946f40bdcff9e9be83
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77149142"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411777"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Een Point-to-Site-verbinding met een VNet configureren met RADIUS-verificatie: PowerShell
 
@@ -31,9 +31,9 @@ Met dit artikel u een P2S-configuratie configureren met verificatie met behulp v
 
 Punt-naar-site-verbindingen hebben geen VPN-apparaat of openbaar IP-adres nodig. P2S maakt de VPN-verbinding via SSTP (Secure Socket Tunneling Protocol), OpenVPN of IKEv2.
 
-* SSTP is een op SSL gebaseerde VPN-tunnel die alleen wordt ondersteund op Windows-clientplatforms. Omdat met SSTP firewalls kunnen worden gepasseerd, is dit een ideale optie om vanaf elke locatie verbinding te maken met Azure. Wij ondersteunen SSTP versies 1.0, 1.1 en 1.2 aan de serverzijde. De client besluit welke versie moet worden gebruikt. Voor Windows 8.1 en hoger, gebruikt SSTP standaard 1.2.
+* SSTP is een TLS-gebaseerde VPN-tunnel die alleen wordt ondersteund op Windows-clientplatforms. Omdat met SSTP firewalls kunnen worden gepasseerd, is dit een ideale optie om vanaf elke locatie verbinding te maken met Azure. Wij ondersteunen SSTP versies 1.0, 1.1 en 1.2 aan de serverzijde. De client besluit welke versie moet worden gebruikt. Voor Windows 8.1 en hoger, gebruikt SSTP standaard 1.2.
 
-* OpenVPN® Protocol, een SSL/TLS gebaseerd VPN-protocol. Een SSL VPN-oplossing kan firewalls binnendringen, omdat de meeste firewalls TCP-poort 443 uitgaand openen, die SSL gebruikt. OpenVPN kan worden gebruikt om verbinding te maken vanaf Android, iOS (versies 11.0 en hoger), Windows, Linux en Mac-apparaten (OSX-versies 10.13 en hoger).
+* OpenVPN® Protocol, een SSL/TLS gebaseerd VPN-protocol. Een TLS VPN-oplossing kan firewalls binnendringen, omdat de meeste firewalls TCP-poort 443 uitgaand openen, die TLS gebruikt. OpenVPN kan worden gebruikt om verbinding te maken vanaf Android, iOS (versies 11.0 en hoger), Windows, Linux en Mac-apparaten (OSX-versies 10.13 en hoger).
 
 * IKEv2 VPN, een op standaarden gebaseerde IPsec VPN-oplossing. IKEv2 VPN kan worden gebruikt om verbinding te maken vanaf Mac-apparaten (OSX-versie 10.11 en hoger).
 

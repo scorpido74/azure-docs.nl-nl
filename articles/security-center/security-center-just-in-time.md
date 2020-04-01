@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 4b2b388fb736997010a6cbbdf93b23b77c7ef3a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51985c5fa4b2296e43c0a062d0af84a1bb51e89c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603983"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397758"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Beveilig uw beheerpoorten met just-in-time toegang
 
@@ -202,53 +202,37 @@ Als u de just-in-time VM-toegangsoplossing via PowerShell wilt gebruiken, gebrui
 
 In het volgende voorbeeld wordt een just-in-time VM-toegangsbeleid ingesteld op een specifieke virtuele machine en wordt het volgende ingesteld:
 
-1.  Sluit poorten 22 en 3389.
+1.    Sluit poorten 22 en 3389.
 
-2.  Stel een maximumtijdvenster van 3 uur in voor elk, zodat ze per goedgekeurde aanvraag kunnen worden geopend.
-3.  Hiermee kan de gebruiker die toegang vraagt om de bron-IP-adressen te beheren en kan de gebruiker een succesvolle sessie instellen op een goedgekeurd just-in-time toegangsverzoek.
+2.    Stel een maximumtijdvenster van 3 uur in voor elk, zodat ze per goedgekeurde aanvraag kunnen worden geopend.
+3.    Hiermee kan de gebruiker die toegang vraagt om de bron-IP-adressen te beheren en kan de gebruiker een succesvolle sessie instellen op een goedgekeurd just-in-time toegangsverzoek.
 
 Voer het volgende uit in PowerShell om dit te bereiken:
 
-1.  Wijs een variabele toe die het just-in-time VM-toegangsbeleid voor een vm bevat:
+1.    Wijs een variabele toe die het just-in-time VM-toegangsbeleid voor een vm bevat:
 
-        $JitPolicy = (@{
-         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
-        ports=(@{
-             number=22;
-             protocol="*";
-             allowedSourceAddressPrefix=@("*");
-             maxRequestAccessDuration="PT3H"},
-             @{
-             number=3389;
-             protocol="*";
-             allowedSourceAddressPrefix=@("*");
-             maxRequestAccessDuration="PT3H"})})
+        $JitPolicy = (@{ id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" ports=(@{ number=22;        protocol="*";        toegestaanSourceAddressPrefix=@("*");        maxRequestAccessDuration="PT3H"}, @{ number=3389;        protocol="*";        toegestaanSourceAddressPrefix=@("*");        maxRequestAccessDuration="PT3H"})})
 
-2.  Voeg het vm-just-in-time VM-toegangsbeleid in een array in:
+2.    Voeg het vm-just-in-time VM-toegangsbeleid in een array in:
     
         $JitPolicyArr=@($JitPolicy)
 
-3.  Configureer het just-in-time VM-toegangsbeleid op de geselecteerde VM:
+3.    Configureer het just-in-time VM-toegangsbeleid op de geselecteerde VM:
     
-        Set-AzJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
+        Set-AzJitNetworkAccessPolicy -Soort "Basic" -Locatie "LOCATIE" -Naam "standaard" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
 ### <a name="request-access-to-a-vm-via-powershell"></a>Toegang tot een VM aanvragen via PowerShell
 
 In het volgende voorbeeld ziet u een just-in-time VM-toegangsverzoek naar een specifieke vm waarin poort 22 wordt gevraagd om te worden geopend voor een specifiek IP-adres en voor een bepaalde hoeveelheid tijd:
 
 Voer het volgende uit in PowerShell:
-1.  De eigenschappen voor toegang tot vm-aanvragen configureren
+1.    De eigenschappen voor toegang tot vm-aanvragen configureren
 
-        $JitPolicyVm1 = (@{
-          id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
-        ports=(@{
-           number=22;
-           endTimeUtc="2018-09-17T17:00:00.3658798Z";
-           allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
-2.  De parameters voor vm-toegangsaanvragen in een array invoegen:
+        $JitPolicyVm1 = (@{ id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" ports=(@{ number=22;      endTimeUtc="2018-09-17T17:00:00.3658798Z";      allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
+2.    De parameters voor vm-toegangsaanvragen in een array invoegen:
 
         $JitPolicyArr=@($JitPolicyVm1)
-3.  De aanvraagtoegang verzenden (gebruik de bron-id die u hebt in stap 1)
+3.    De aanvraagtoegang verzenden (gebruik de bron-id die u hebt in stap 1)
 
         Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
 
@@ -271,6 +255,7 @@ In dit artikel leert u hoe just-in-time VM-toegang in beveiligingscentrum u help
 
 Zie de volgende onderwerpen voor meer informatie over Security Center:
 
+- De Microsoft [Learn-module Bescherm uw servers en VM's tegen brute-force- en malware-aanvallen met Azure Security Center](https://docs.microsoft.com/learn/modules/secure-vms-with-azure-security-center/)
 - [Beveiligingsbeleid instellen](tutorial-security-policy.md) : meer informatie over het configureren van beveiligingsbeleid voor uw Azure-abonnementen en resourcegroepen.
 - [Beveiligingsaanbevelingen beheren](security-center-recommendations.md) : lees hoe aanbevelingen u helpen uw Azure-bronnen te beschermen.
 - [Bewaking van de beveiligingsstatus](security-center-monitoring.md) : meer informatie over het bewaken van de status van uw Azure-bronnen.

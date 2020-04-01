@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fda49ae31d7598497a3128a846a3f4e12e84ffe1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245406"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435913"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Functies van Security Center met pensioen (juli 2019)
 
@@ -43,7 +43,7 @@ In dit artikel vindt u gedetailleerde informatie over elke gepensioneerde functi
 
 ## <a name="events-dashboard"></a>Dashboard Gebeurtenissen<a name="menu_events"></a>
 
-Security Center gebruikt Microsoft Monitoring Agent om verschillende beveiligingsgerelateerde configuraties en gebeurtenissen van uw machines te verzamelen. Het slaat deze gebeurtenissen op in uw werkruimten. Met [het evenementendashboard](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) u deze gegevens bekijken en u een toegangspunt geven voor Log Analytics.
+Security Center gebruikt log analytics-agent om verschillende beveiligingsgerelateerde configuraties en gebeurtenissen van uw machines te verzamelen. Het slaat deze gebeurtenissen op in uw werkruimten. Met [het evenementendashboard](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) u deze gegevens bekijken en u een toegangspunt geven voor Log Analytics.
 
 We hebben het evenementendashboard dat is weergegeven toen u een werkruimte hebt geselecteerd, buiten gebruik gesteld:
 

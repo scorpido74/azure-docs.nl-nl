@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 71056fd04069b861b37a595b1a4f2a8bba4a01ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75689976"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478605"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Aanbevolen procedures voor Azure Cache voor Redis 
 Door deze aanbevolen procedures te volgen, u helpen bij het maximaliseren van de prestaties en het kosteneffectieve gebruik van uw Azure-cache voor bijvoorbeeld Redis.
@@ -52,7 +52,7 @@ Er zijn verschillende dingen met betrekking tot geheugengebruik binnen uw Redis-
  * [Sla (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
  * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
- * [Php](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
+ * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
  * [Asp.Net Sessie-statusprovider](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
 
 
@@ -67,7 +67,7 @@ Helaas is er geen eenvoudig antwoord.  Elke toepassing moet beslissen welke bewe
 Als u wilt testen hoe uw code werkt onder foutvoorwaarden, u overwegen de [functie Opnieuw opstarten](cache-administration.md#reboot)te gebruiken. Met rebooten u zien welke invloed is op de verbindingsblips op uw toepassing.
 
 ## <a name="performance-testing"></a>Prestaties testen
- * **Begin met `redis-benchmark.exe` het gebruik van** een gevoel voor mogelijke doorvoer / latentie voor het schrijven van uw eigen perf tests.  Redis-benchmark documentatie is hier te [vinden.](https://redis.io/topics/benchmarks)  Houd er rekening mee dat redis-benchmark geen SSL ondersteunt, dus u moet [de niet-SSL-poort via de Portal inschakelen](cache-configure.md#access-ports) voordat u de test uitvoert.  [Een windows compatibele versie van redis-benchmark.exe is hier te vinden](https://github.com/MSOpenTech/redis/releases)
+ * **Begin met `redis-benchmark.exe` het gebruik van** een gevoel voor mogelijke doorvoer / latentie voor het schrijven van uw eigen perf tests.  Redis-benchmark documentatie is hier te [vinden.](https://redis.io/topics/benchmarks)  Houd er rekening mee dat redis-benchmark tls niet ondersteunt, dus je moet [de Niet-TLS-poort via de Portal inschakelen](cache-configure.md#access-ports) voordat je de test uitvoert.  [Een windows compatibele versie van redis-benchmark.exe is hier te vinden](https://github.com/MSOpenTech/redis/releases)
  * De client-VM die wordt gebruikt voor het testen moet **zich in dezelfde regio bevinden** als de instantie van de Redis-cache.
  * **We raden u aan dv2 VM-serie** voor uw klant te gebruiken, omdat ze betere hardware hebben en de beste resultaten zullen geven.
  * Zorg ervoor dat de client-VM die u gebruikt **minstens evenveel rekenkracht en bandbreedte* heeft als de cache die wordt getest. 

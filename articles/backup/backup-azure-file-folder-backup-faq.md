@@ -3,12 +3,12 @@ title: Back-ups maken van bestanden en mappen - veelgestelde vragen
 description: Hiermee worden veelvoorkomende vragen over het maken van back-ups van bestanden en mappen met Azure Backup beantwoord.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55819ce7ec5196812d935a21c096c132144d78af
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273421"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421310"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Veelgestelde vragen over het maken van back-ups van bestanden en mappen
 
@@ -57,6 +57,10 @@ Back-upgegevens worden verzonden naar het datacenter van de kluis waarin de serv
 ### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>Ondersteunt de MARS-agent de ontdubbeling van Windows Server 2012?
 
 Ja. De MARS-agent converteert de gededupliceerde gegevens naar normale gegevens wanneer de back-upbewerking wordt voorbereid. Vervolgens optimaliseert het de gegevens voor back-up, versleutelt de gegevens en stuurt de versleutelde gegevens naar de kluis.
+
+### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>Heb ik beheerdersmachtigingen nodig om de MARS-agent te installeren en te configureren?
+
+Ja, de installatie van de MARS-agent en de configuratie van back-ups met behulp van de MARS-console hebben de gebruiker nodig om een lokale beheerder op de beveiligde server te zijn.
 
 ## <a name="manage-backups"></a>Back-ups beheren
 

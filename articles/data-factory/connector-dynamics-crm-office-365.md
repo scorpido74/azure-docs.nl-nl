@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: d065439839ba5db479305ae81c61892cb5cf5e70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bbd2e3376f1da3fdf5b10d654a331ce258be5cf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929459"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422090"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Gegevens van en naar Dynamics 365 (Common Data Service) of Dynamics CRM kopiëren met Azure Data Factory
 
@@ -324,7 +324,7 @@ Als u gegevens wilt kopiëren naar Dynamica, worden de volgende eigenschappen on
 | negerenNullValues | Hiermee geeft u aan of null-waarden uit invoergegevens (behalve sleutelvelden) moeten worden genegeerd tijdens een schrijfbewerking.<br/>Toegestane waarden zijn **waar** en **onwaar.**<br>- **True:** Laat de gegevens in het doelobject ongewijzigd wanneer u een upsert/update-bewerking uitvoert. Voeg een gedefinieerde standaardwaarde in wanneer u een invoegbewerking doet.<br/>- **False:** Werk de gegevens in het doelobject bij aan NULL wanneer u een upsert/update-bewerking uitvoert. Voeg een NULL-waarde in wanneer u een invoegbewerking doet. | Nee (standaard is onwaar) |
 
 >[!NOTE]
->De standaardwaarde van de gootsteen "**writeBatchSize**" en de kopieeractiviteit "**[parallelCopies](copy-activity-performance.md#parallel-copy)**" voor de Dynamics sink zijn beide 10. Daarom worden 100 records gelijktijdig bij Dynamics ingediend.
+>De standaardwaarde van de gootsteen "**writeBatchSize**" en de kopieeractiviteit "**[parallelCopies](copy-activity-performance-features.md#parallel-copy)**" voor de Dynamics sink zijn beide 10. Daarom worden 100 records gelijktijdig bij Dynamics ingediend.
 
 Voor Dynamics 365 online is er een limiet van [2 gelijktijdige batchcalls per organisatie.](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations) Als die limiet wordt overschreden, wordt een fout 'Server bezet' gegenereerd voordat de eerste aanvraag ooit wordt uitgevoerd. Het houden van "writeBatchSize" minder of gelijk aan 10 zou voorkomen dat een dergelijke beperking van gelijktijdige oproepen.
 

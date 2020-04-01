@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d1cd4691586b27282d221a19c5fb7a1af034ed6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5c74ac760b5746d37468d692c2a46d5aedbee72
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125164"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436181"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center"></a>Azure Kubernetes Services-integratie met Security Center
 
@@ -35,7 +35,7 @@ Samen vormen deze twee tools het beste cloud-native Kubernetes-beveiligingsaanbo
 
 Het gebruik van de twee diensten samen biedt:
 
-* **Beveiligingsaanbevelingen** - Security Center identificeert uw AKS-resources en categoriseert ze: van clusters tot afzonderlijke virtuele machines. Vervolgens u beveiligingsaanbevelingen per resource bekijken. Zie voor meer informatie de aanbevelingen voor containers in de [referentielijst met aanbevelingen](recommendations-reference.md#recs-computeapp). 
+* **Beveiligingsaanbevelingen** - Security Center identificeert uw AKS-resources en categoriseert ze: van clusters tot afzonderlijke virtuele machines. Vervolgens u beveiligingsaanbevelingen per resource bekijken. Zie voor meer informatie de aanbevelingen voor containers in de [referentielijst met aanbevelingen](recommendations-reference.md#recs-containers). 
 
 * **Verharding van de omgeving** - Security Center bewaakt voortdurend de configuratie van uw Kubernetes-clusters en Docker-configuraties. Het genereert vervolgens beveiligingsaanbevelingen die de industrienormen weerspiegelen.
 

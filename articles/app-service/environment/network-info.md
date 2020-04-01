@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259823"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477687"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Netwerkoverwegingen voor een App Service-omgeving #
 
@@ -138,7 +138,7 @@ Al deze IP-adressen zijn zichtbaar in de Azure-portal vanuit de ASE-gebruikersin
 
 ### <a name="app-assigned-ip-addresses"></a>Aan app toegewezen IP-adressen ###
 
-Met een externe ASE u IP-adressen toewijzen aan afzonderlijke apps. Dat kan niet met een ILB ASE. Zie [Een aangepaste DNS-naam beveiligen met een SSL-binding in Azure App Service](../configure-ssl-bindings.md)voor meer informatie over het configureren van uw app op een eigen IP-adres.
+Met een externe ASE u IP-adressen toewijzen aan afzonderlijke apps. Dat kan niet met een ILB ASE. Zie [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](../configure-ssl-bindings.md)voor meer informatie over het configureren van uw app op een eigen IP-adres.
 
 Wanneer een app een eigen IP-adres heeft, reserveert de ASE twee poorten om aan dat IP-adres te toewijzen. De ene poort is voor HTTP-verkeer en de andere poort is voor HTTPS. Deze poorten worden vermeld in de ASE-gebruikersinterface in de sectie IP-adressen. Verkeer moet in staat zijn om deze poorten te bereiken vanuit de VIP of de apps zijn ontoegankelijk. Deze vereiste is belangrijk om te onthouden wanneer u Network Security Groups (NSG's) configureert.
 

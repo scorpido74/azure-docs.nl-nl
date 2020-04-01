@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een privé-AKS-cluster (Azure Ku
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: cdefcfe460a97f647afa05947e92fae0c4d07001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87f52c5a749b531e5b0656e0b30ff0fe9c1a57bf
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499302"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398051"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Een privé-Azure Kubernetes Service-cluster maken
 
@@ -80,6 +80,18 @@ Zoals gezegd is VNet-peering een manier om toegang te krijgen tot uw privéclust
 7. Selecteer **Peerings**in het linkerdeelvenster .  
 8. Selecteer **Toevoegen,** voeg het virtuele netwerk van de vm toe en maak vervolgens de peering.  
 9. Ga naar het virtuele netwerk waar u de VM hebt, selecteer **Peerings,** selecteer het virtuele AKS-netwerk en maak vervolgens peering. Als het adres bereik op het virtuele AKS-netwerk en het virtuele netwerk van de VM botsen, mislukt peering. Zie [Virtueel netwerkpeeren][virtual-network-peering]voor meer informatie.
+
+## <a name="hub-and-spoke-with-custom-dns"></a>Hub en sprak met aangepaste DNS
+
+[Hub- en spoke-architecturen](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) worden vaak gebruikt om netwerken in Azure te implementeren. In veel van deze implementaties zijn DNS-instellingen in de spaakvNets geconfigureerd om te verwijzen naar een centrale DNS-expediteer om on-premises en op Azure gebaseerde DNS-resolutie mogelijk te maken. Bij het implementeren van een AKS-cluster in een dergelijke netwerkomgeving, zijn er een aantal speciale overwegingen waarmee rekening moet worden gehouden.
+
+![Private cluster hub en spaak](media/private-clusters/aks-private-hub-spoke.png)
+
+1. Wanneer een privécluster is ingericht, worden standaard een privéeindpunt (1) en een privé-DNS-zone (2) gemaakt in de door het cluster beheerde brongroep. Het cluster gebruikt een A-record in de privézone om het IP-adres van het privéeindpunt op te lossen voor communicatie naar de API-server.
+
+2. De private DNS-zone is alleen gekoppeld aan de VNet waaraan de clusterknooppunten zijn gekoppeld (3). Dit betekent dat het privéeindpunt alleen kan worden opgelost door hosts in die gekoppelde VNet. In scenario's waarin geen aangepaste DNS is geconfigureerd op de VNet (standaard), werkt dit zonder probleem, omdat hosts op 168.63.129.16 voor DNS wijzen die records in de privé-DNS-zone kan oplossen vanwege de koppeling.
+
+3. In scenario's waarin de VNet met uw cluster aangepaste DNS-instellingen (4) bevat, mislukt de clusterimplementatie, tenzij de privé-DNS-zone is gekoppeld aan het VNet dat de aangepaste DNS-resolvers bevat (5). Deze koppeling kan handmatig worden gemaakt nadat de privézone is gemaakt tijdens het inrichten van het cluster of via automatisering bij detectie van het maken van de zone met azure-beleid of andere op gebeurtenissen gebaseerde implementatiemechanismen (bijvoorbeeld Azure Event Grid en Azure-functies).
 
 ## <a name="dependencies"></a>Afhankelijkheden  
 

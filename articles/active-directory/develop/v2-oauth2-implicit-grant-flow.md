@@ -17,12 +17,12 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e3f021fd888bbb408fa66964c54d22f0d68e84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53d498f4aed8ec86cc57c35824a9fb8aa471dc1d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297699"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419671"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft-identiteitsplatform en impliciete subsidiestroom
 
@@ -32,7 +32,7 @@ Met het eindpunt van het Microsoft-identiteitsplatform u gebruikers aanmelden bi
 * Veel autorisatieservers en identiteitsproviders ondersteunen geen CORS-verzoeken.
 * Volledige pagina browser omleidingen uit de buurt van de app worden bijzonder invasief voor de gebruikerservaring.
 
-Voor deze toepassingen (AngularJS, Ember.js, React.js, enzovoort) ondersteunt microsoft identity platform de OAuth 2.0 Implicit Grant flow. De impliciete stroom wordt beschreven in de [OAuth 2.0-specificatie](https://tools.ietf.org/html/rfc6749#section-4.2). Het belangrijkste voordeel is dat de app hiermee tokens van het Microsoft-identiteitsplatform kan krijgen zonder een backend-server-referentie-uitwisseling uit te voeren. Hierdoor kan de app zich aanmelden bij de gebruiker, de sessie onderhouden en tokens naar andere web-API's krijgen, allemaal binnen de JavaScript-code van de client. Er zijn een paar belangrijke veiligheidsoverwegingen om rekening mee te houden bij het gebruik van de impliciete stroom specifiek rond [client](https://tools.ietf.org/html/rfc6749#section-10.3) en [gebruiker imitatie](https://tools.ietf.org/html/rfc6749#section-10.3).
+Voor deze toepassingen (Angular, Ember.js, React.js, enzovoort) ondersteunt microsoft identity platform de OAuth 2.0 Implicit Grant flow. De impliciete stroom wordt beschreven in de [OAuth 2.0-specificatie](https://tools.ietf.org/html/rfc6749#section-4.2). Het belangrijkste voordeel is dat de app hiermee tokens van het Microsoft-identiteitsplatform kan krijgen zonder een backend-server-referentie-uitwisseling uit te voeren. Hierdoor kan de app zich aanmelden bij de gebruiker, de sessie onderhouden en tokens naar andere web-API's krijgen, allemaal binnen de JavaScript-code van de client. Er zijn een paar belangrijke veiligheidsoverwegingen om rekening mee te houden bij het gebruik van de impliciete stroom specifiek rond [client](https://tools.ietf.org/html/rfc6749#section-10.3) en [gebruiker imitatie](https://tools.ietf.org/html/rfc6749#section-10.3).
 
 In dit artikel wordt beschreven hoe u rechtstreeks programmeren tegen het protocol in uw toepassing.  Waar mogelijk raden we u aan de ondersteunde Microsoft Authentication Libraries (MSAL) te gebruiken om tokens te [verkrijgen en beveiligde web-API's te bellen.](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)  Kijk ook eens naar de [voorbeeld-apps die MSAL gebruiken.](sample-v2-code.md)
 
@@ -58,7 +58,7 @@ Momenteel is de voorkeursmethode voor het beschermen van aanroepen naar een Web-
 
 De impliciete subsidiestroom geeft geen vernieuwingstokens uit, meestal om veiligheidsredenen. Een refresh token is niet zo eng scoped als access tokens, waardoor veel meer macht wordt toegekend, waardoor het veel meer schade toebrengt in het geval het wordt uitgelekt. In de impliciete stroom worden tokens geleverd in de URL, vandaar dat het risico op onderschepping hoger is dan in de autorisatiecodeverlening.
 
-Een JavaScript-toepassing heeft echter een ander mechanisme tot zijn beschikking voor het vernieuwen van toegangstokens zonder herhaaldelijk de gebruiker om referenties te vragen. De toepassing kan een verborgen iframe gebruiken om nieuwe tokenaanvragen uit te voeren tegen het autorisatieeindpunt van Azure AD: zolang de browser nog steeds een actieve sessie heeft (lees: heeft een sessiecookie) tegen het Azure AD-domein, kan de verificatieaanvraag met succes optreden zonder enige noodzaak voor interactie met de gebruiker.
+Een JavaScript-toepassing heeft echter een ander mechanisme tot zijn beschikking voor het vernieuwen van toegangstokens zonder herhaaldelijk de gebruiker om referenties te vragen. De toepassing kan een verborgen iframe gebruiken om nieuwe tokenaanvragen uit te voeren tegen het autorisatieeindpunt van Azure AD: zolang de browser nog steeds een actieve sessie heeft (lees: heeft een sessiecookie) tegen het Azure AD-domein, kan de verificatieaanvraag succesvol plaatsvinden zonder dat gebruikersinteractie nodig is.
 
 Dit model geeft de JavaScript-toepassing de mogelijkheid om toegangstokens onafhankelijk te vernieuwen en zelfs nieuwe te verkrijgen voor een nieuwe API (op voorwaarde dat de gebruiker er eerder toestemming voor gaf). Dit voorkomt de extra belasting van het verwerven, onderhouden en beschermen van een artefact met een hoge waarde, zoals een vernieuwingstoken. Het artefact dat de stille verlenging mogelijk maakt, de Azure AD-sessiecookie, wordt buiten de toepassing beheerd. Een ander voordeel van deze aanpak is dat een gebruiker zich kan afmelden bij Azure AD, met behulp van een van de toepassingen die zijn aangemeld bij Azure AD, uitgevoerd in een van de browsertabbladen. Dit resulteert in het verwijderen van de Azure AD-sessiecookie en de JavaScript-toepassing verliest automatisch de mogelijkheid om tokens te verlengen voor de afgemelde gebruiker.
 
@@ -161,7 +161,7 @@ error=access_denied
 
 Nu u de gebruiker hebt aangemeld bij uw app met één pagina, u in stilte toegangstokens krijgen voor het bellen van web-API's die zijn beveiligd door het Microsoft-identiteitsplatform, zoals het [Microsoft Graph.](https://developer.microsoft.com/graph) Zelfs als u al een `token` token hebt ontvangen met behulp van de response_type, u deze methode gebruiken om tokens naar aanvullende bronnen te verkrijgen zonder dat u de gebruiker opnieuw hoeft om te leiden om zich opnieuw aan te melden.
 
-In de normale OpenID Connect/OAuth-stroom zou u dit doen `/token` door een verzoek in te dienen bij het eindpunt van het Microsoft-identiteitsplatform. Het eindpunt van het Microsoft-identiteitsplatform ondersteunt echter geen CORS-verzoeken, dus het is uitgesloten om ajax-oproepen te doen om tokens te ontvangen en te vernieuwen. In plaats daarvan u de impliciete stroom in een verborgen iframe gebruiken om nieuwe tokens voor andere web-API's te krijgen: 
+In de normale OpenID Connect/OAuth-stroom zou u dit doen `/token` door een verzoek in te dienen bij het eindpunt van het Microsoft-identiteitsplatform. Het eindpunt van het Microsoft-identiteitsplatform ondersteunt echter geen CORS-verzoeken, dus het is uitgesloten om ajax-oproepen te doen om tokens te ontvangen en te vernieuwen. In plaats daarvan u de impliciete stroom in een verborgen iframe gebruiken om nieuwe tokens voor andere web-API's te krijgen:
 
 ```
 // Line breaks for legibility only
@@ -170,7 +170,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=token
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read 
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &response_mode=fragment
 &state=12345
 &nonce=678910

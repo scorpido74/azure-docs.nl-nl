@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5467794bf246fab4ff7ded9c445dbeee0c4093b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbbdf724b9d7fe4948553e7526410b994f491b49
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79139620"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435262"
 ---
 # <a name="integrate-azure-security-center-with-windows-admin-center"></a>Azure Security Center integreren met Windows-beheercentrum
 
@@ -48,7 +48,7 @@ Door deze twee hulpprogramma's te combineren, wordt Security Center uw enige rui
     * De server heeft een werkruimte om aan te rapporteren en een bijbehorend abonnement.
     * De standaardloganalyseoplossing van het beveiligingscentrum is ingeschakeld op de werkruimte. Deze oplossing biedt de standaardlaagfuncties van Security Center voor *alle* servers en virtuele machines die naar deze werkruimte worden verzonden.
     * De standaardtariefprijzen voor Virtual Machine van Het Beveiligingscentrum zijn ingeschakeld voor het abonnement.
-    * De Microsoft Monitoring Agent (MMA) is geïnstalleerd op de server en geconfigureerd om te rapporteren aan de geselecteerde werkruimte. Als de server al rapporteert aan een andere werkruimte, is deze geconfigureerd om ook te rapporteren aan de nieuw geselecteerde werkruimte.
+    * De log-analyse-agent is geïnstalleerd op de server en geconfigureerd om te rapporteren aan de geselecteerde werkruimte. Als de server al rapporteert aan een andere werkruimte, is deze geconfigureerd om ook te rapporteren aan de nieuw geselecteerde werkruimte.
 
     > [!NOTE]
     > Het kan enige tijd duren na het instappen voor aanbevelingen te verschijnen. Afhankelijk van uw serveractiviteit ontvangt u mogelijk *geen* waarschuwingen. Als u testwaarschuwingen wilt genereren om te testen dat uw waarschuwingen correct werken, volgt u de instructies in [de waarschuwingsvalidatieprocedure](security-center-alert-validation.md).

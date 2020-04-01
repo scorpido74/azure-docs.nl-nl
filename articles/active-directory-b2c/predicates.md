@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187233"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396891"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicaten en PredicaatValidaties
 
@@ -45,7 +45,7 @@ Het **element Predicaat** bevat de volgende kenmerken:
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Id | Ja | Een id die wordt gebruikt voor het predicaat. Andere elementen kunnen deze id gebruiken in het beleid. |
-| Methode | Ja | Het methodetype dat moet worden gebruikt voor validatie. Mogelijke waarden: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**, of **IsDateRange**. De **waarde IsLengthRange** controleert of de lengte van een tekenreeksclaimwaarde binnen het bereik van de opgegeven minimum- en maximumparameters ligt. De waarde **MatchesRegex** controleert of een tekenreeksclaimwaarde overeenkomt met een reguliere expressie. De waarde **IncludesCharacters** controleert of een tekenreeksclaimwaarde een tekenset bevat. De **waarde IsDateRange** controleert of een datumclaimwaarde zich bevindt tussen een bereik van minimale en maximale opgegeven parameters. |
+| Methode | Ja | Het methodetype dat moet worden gebruikt voor validatie. Mogelijke waarden: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters), of [IsDateRange](#isdaterange).  |
 | HelpTekst | Nee | Een foutbericht voor gebruikers als de controle mislukt. Deze tekenreeks kan worden gelokaliseerd met behulp van het [aanpassen van](localization.md) de taal |
 
 Het **element Predicaat** bevat de volgende elementen:
@@ -67,7 +67,19 @@ Het element **Parameter** bevat de volgende kenmerken:
 | ------- | ----------- | ----------- |
 | Id | 1:1 | De id van de parameter. |
 
-In het volgende `IsLengthRange` voorbeeld wordt `Minimum` `Maximum` een methode met de parameters weergegeven en die het lengtebereik van de tekenreeks opgeeft:
+### <a name="predicate-methods"></a>Predicaatmethoden
+
+#### <a name="islengthrange"></a>IsLengthRange (IsLengthRange)
+
+De methode IsLengthRange controleert of de lengte van een tekenreeksclaimwaarde binnen het bereik van de opgegeven minimum- en maximumparameters ligt. Het predicaatelement ondersteunt de volgende parameters:
+
+| Parameter | Vereist | Beschrijving |
+| ------- | ----------- | ----------- |
+| Maximum | Ja | Het maximum aantal tekens dat kan worden ingevoerd. |
+| Minimum | Ja | Het minimum aantal tekens dat moet worden ingevoerd. |
+
+
+In het volgende voorbeeld wordt een `Minimum` IsLengthRange-methode met de parameters weergegeven en `Maximum` die het lengtebereik van de tekenreeks opgeeft:
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -77,6 +89,14 @@ In het volgende `IsLengthRange` voorbeeld wordt `Minimum` `Maximum` een methode 
   </Parameters>
 </Predicate>
 ```
+
+#### <a name="matchesregex"></a>WedstrijdenRegex
+
+De methode MatchesRegex controleert of een tekenreeksclaimwaarde overeenkomt met een reguliere expressie. Het predicaatelement ondersteunt de volgende parameters:
+
+| Parameter | Vereist | Beschrijving |
+| ------- | ----------- | ----------- |
+| Reguliere expressie | Ja | Het reguliere expressiepatroon dat overeenkomt. |
 
 In het volgende `MatchesRegex` voorbeeld wordt `RegularExpression` een methode met de parameter weergegeven die een reguliere expressie opgeeft:
 
@@ -88,6 +108,14 @@ In het volgende `MatchesRegex` voorbeeld wordt `RegularExpression` een methode m
 </Predicate>
 ```
 
+#### <a name="includescharacters"></a>InclusiefTekens
+
+De methode IncludesCharacters controleert of een tekenreeksclaimwaarde een tekenset bevat. Het predicaatelement ondersteunt de volgende parameters:
+
+| Parameter | Vereist | Beschrijving |
+| ------- | ----------- | ----------- |
+| Tekenset | Ja | De set tekens die kunnen worden ingevoerd. Kleine `a-z`letters, `A-Z`hoofdletters, cijfers `0-9`of een lijst met symbolen, `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!`zoals . |
+
 In het volgende `IncludesCharacters` voorbeeld wordt `CharacterSet` een methode met de parameter weergegeven die de set tekens opgeeft:
 
 ```XML
@@ -98,7 +126,16 @@ In het volgende `IncludesCharacters` voorbeeld wordt `CharacterSet` een methode 
 </Predicate>
 ```
 
-In het volgende `IsDateRange` voorbeeld wordt `Minimum` `Maximum` een methode met de parameters `yyyy-MM-dd` `Today`weergegeven en die het datumbereik opgeeft met een notatie van en .
+#### <a name="isdaterange"></a>IsDateRange IsDateRange
+
+De methode IsDateRange controleert of een datumclaimwaarde zich bevindt tussen een bereik van minimale en maximale opgegeven parameters. Het predicaatelement ondersteunt de volgende parameters:
+
+| Parameter | Vereist | Beschrijving |
+| ------- | ----------- | ----------- |
+| Maximum | Ja | De grootst mogelijke datum die kan worden ingevoerd. De indeling van `yyyy-mm-dd` de datum `Today`volgt conventie, of . |
+| Minimum | Ja | De kleinst mogelijke datum die kan worden ingevoerd. De indeling van `yyyy-mm-dd` de datum `Today`volgt conventie, of .|
+
+In het volgende `IsDateRange` voorbeeld wordt `Minimum` `Maximum` een methode met de parameters `yyyy-mm-dd` `Today`weergegeven en die het datumbereik opgeeft met een notatie van en .
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -388,3 +425,7 @@ Voeg in uw claimtype het element **PredicaatValidatieReferentie** toe en geef de
   <PredicateValidationReference Id="CustomDateRange" />
 </ClaimType>
  ```
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Meer informatie over het [configureren van wachtwoordcomplexiteit met behulp van aangepast beleid in Azure Active Directory B2C](custom-policy-password-complexity.md) met behulp van predicaatvalidaties.

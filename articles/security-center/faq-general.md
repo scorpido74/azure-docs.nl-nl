@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54263a8be900ed381d8450b460e5cf9e6117ac54
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661836"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436121"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Veelgestelde vragen - Algemene vragen over Azure Security Center
 
 ## <a name="what-is-azure-security-center"></a>Wat is Azure Security Center?
 Azure Security Center helpt u bedreigingen te voorkomen, detecteren en erop te reageren met meer inzicht in en controle over de beveiliging van uw resources. Het biedt geïntegreerde beveiligingsbewaking en beleidsbeheer voor uw abonnementen, helpt bedreigingen te detecteren die anders onopgemerkt zouden blijven, en werkt met een uitgebreid ecosysteem van beveiligingsoplossingen.
 
-Security Center gebruikt de Microsoft Monitoring Agent om gegevens te verzamelen en op te slaan. Zie [Gegevensverzameling in Azure Security Center](security-center-enable-data-collection.md)voor uitgebreide details.
+Security Center gebruikt de Log Analytics-agent om gegevens te verzamelen en op te slaan. Zie [Gegevensverzameling in Azure Security Center](security-center-enable-data-collection.md)voor uitgebreide details.
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>Hoe krijg ik Azure Security Center?

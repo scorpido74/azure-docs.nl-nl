@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 13852acb39a420e2f0da84e18bef4df823c1fa78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5136a00421aebaa72998b1dfcdf75feb935851c6
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206262"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435443"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Geavanceerde bedreigingsbeveiliging van Microsoft Defender met Azure Security Center
 
@@ -62,7 +62,7 @@ Als u servers wilt instappen in beveiligingscentrum, klikt u op **Ga naar Azure 
 1. Selecteer of maak in het **gebied Onboarding** een werkruimte waarin u de gegevens wilt opslaan. <br>
 2. Als u niet al uw werkruimten zien, kan dit te wijten zijn aan een gebrek aan machtigingen, controleer of uw werkruimte is ingesteld op de laag Azure Security Standard. Zie Upgraden naar de standaardlaag van [het beveiligingscentrum voor verbeterde beveiliging voor](security-center-pricing.md)meer informatie.
     
-3. Selecteer **Servers toevoegen** om instructies weer te geven over het installeren van de Microsoft Monitoring Agent. 
+3. Selecteer **Servers toevoegen** om instructies weer te geven over het installeren van de Log Analytics-agent. 
 
 4. Na het instappen u de machines controleren onder **Compute en apps.**
 

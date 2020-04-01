@@ -314,7 +314,7 @@ ms.locfileid: "80337168"
 
 
 Microsoft Azure stelt bedrijven in staat om reken- en opslagbronnen in minimale tijd te verwerven zonder lange inkoopcycli. Azure Virtual Machine-service stelt bedrijven in staat om klassieke toepassingen te implementeren, zoals op SAP NetWeaver gebaseerde toepassingen in Azure en hun betrouwbaarheid en beschikbaarheid uit te breiden zonder dat er meer on-premises resources beschikbaar zijn. Azure Virtual Machine Services ondersteunt ook cross-premises connectiviteit, waarmee bedrijven Azure Virtual Machines actief kunnen integreren in hun on-premises domeinen, hun Private Clouds en hun SAP-systeemlandschap.
-Deze whitepaper beschrijft de fundamenten van Microsoft Azure Virtual Machine en biedt een doorloop van plannings- en implementatieoverwegingen voor SAP NetWeaver-installaties in Azure en moet als zodanig het document zijn dat moet worden gelezen voordat de werkelijke implementaties van SAP NetWeaver op Azure.
+Deze whitepaper beschrijft de grondbeginselen van Microsoft Azure Virtual Machine en biedt een doorloop van plannings- en implementatieoverwegingen voor SAP NetWeaver-installaties in Azure en moet als zodanig het document zijn dat moet worden gelezen voordat de daadwerkelijke implementaties van SAP NetWeaver op Azure worden gestart.
 Het document vormt een aanvulling op de SAP-installatiedocumentatie en SAP Notes, die de belangrijkste bronnen vertegenwoordigen voor installaties en implementaties van SAP-software op bepaalde platforms.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
@@ -353,7 +353,7 @@ In het hele document gebruiken we de volgende termen:
 
 
 
-### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Middelen
+### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Resources
 Het ingangspunt voor SAP-workload op Azure-documentatie vindt u [hier.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) Beginnend met dit ingangspunt vindt u vele artikelen die de onderwerpen van behandelen:
 
 - SAP NetWeaver en Business One op Azure
@@ -364,7 +364,7 @@ Het ingangspunt voor SAP-workload op Azure-documentatie vindt u [hier.](https://
 
 
 > [!IMPORTANT]
-> Waar mogelijk wordt een link naar de verwijzende SAP-installatiegidsen of andere SAP-documentatie gebruikt (Referentie InstGuide-01, zie <http://service.sap.com/instguides>). Als het gaat om de vereisten, het installatieproces of de details van specifieke SAP-functionaliteit, moeten de SAP-documentatie en -gidsen altijd zorgvuldig worden gelezen, aangezien de Microsoft-documenten alleen betrekking hebben op specifieke taken voor SAP-software die in een Microsoft Azure Virtual Machine.
+> Waar mogelijk wordt een link naar de verwijzende SAP-installatiegidsen of andere SAP-documentatie gebruikt (Referentie InstGuide-01, zie <http://service.sap.com/instguides>). Als het gaat om de vereisten, het installatieproces of de details van specifieke SAP-functionaliteit, moeten de SAP-documentatie en -handleidingen altijd zorgvuldig worden gelezen, omdat de Microsoft-documenten alleen betrekking hebben op specifieke taken voor SAP-software die is geïnstalleerd en uitgevoerd in een Virtuele Microsoft Azure-machine.
 >
 >
 
@@ -403,7 +403,7 @@ Over het algemeen is het meest voorkomende implementatiepatroon een cross-premis
 
 Reden voor veel klanten om een cross-premises implementatiepatroon toe te passen, is het feit dat het voor alle toepassingen het meest transparant is om on-premises uit te breiden naar Azure met Azure ExpressRoute en Azure als virtueel datacenter te behandelen. Naarmate meer en meer assets naar Azure worden verplaatst, zal de azure geïmplementeerde infrastructuur en netwerkinfrastructuur groeien en de on-premises assets dienovereenkomstig verminderen. Alles transparant voor gebruikers en applicaties.
 
-Om SAP-systemen succesvol te implementeren in Azure IaaS of IaaS in het algemeen, is het belangrijk om de aanzienlijke verschillen tussen het aanbod van traditionele outsourcers of hosters en IaaS-aanbiedingen te begrijpen. Terwijl de traditionele hoster of outsourcer de infrastructuur (netwerk, opslag en servertype) aanpast aan de werkbelasting die een klant wil hosten, is het in plaats daarvan de verantwoordelijkheid van de klant of partner om de werkbelasting te karakteriseren en de juiste Azure te kiezen onderdelen van VM's, opslag en netwerk voor IaaS-implementaties.
+Om SAP-systemen succesvol te implementeren in Azure IaaS of IaaS in het algemeen, is het belangrijk om de aanzienlijke verschillen tussen het aanbod van traditionele outsourcers of hosters en IaaS-aanbiedingen te begrijpen. Terwijl de traditionele hoster of outsourcer de infrastructuur (netwerk, opslag en servertype) aanpast aan de werkbelasting die een klant wil hosten, is het in plaats daarvan de verantwoordelijkheid van de klant of partner om de werkbelasting te karakteriseren en de juiste Azure-componenten van VM's, opslag en netwerk voor IaaS-implementaties te kiezen.
 
 Om gegevens te verzamelen voor de planning van uw implementatie in Azure, is het belangrijk om:
 
@@ -430,7 +430,7 @@ Het principe van beschikbaarheidszones is niet van toepassing op de HANA-specifi
 ### <a name="fault-domains"></a><a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Foutdomeinen
 Foutdomeinen vertegenwoordigen een fysieke storingseenheid, nauw verwant aan de fysieke infrastructuur in datacenters, en hoewel een fysiek blad of rek kan worden beschouwd als een foutdomein, is er geen directe één-op-één toewijzing tussen de twee.
 
-Wanneer u meerdere virtuele machines implementeert als onderdeel van één SAP-systeem in Microsoft Azure Virtual Machine Services, u de Azure Fabric Controller beïnvloeden om uw toepassing in verschillende foutdomeinen te implementeren, waardoor aan hogere vereisten van beschikbaarheid sa's. De distributie van foutdomeinen over een Azure Scale Unit (verzameling van honderden Compute-knooppunten of opslagknooppunten en netwerken) of de toewijzing van VM's aan een specifiek foutdomein is echter iets waarover u geen directe controle hebt. Als u de Azure-fabriccontroller wilt sturen om een set VM's over verschillende foutdomeinen te implementeren, moet u een Azure-beschikbaarheidsset toewijzen aan de VM's tijdens de implementatietijd. Zie hoofdstuk [Azure-beschikbaarheidssets][planning-guide-3.2.3] in dit document voor meer informatie over azure-beschikbaarheidssets.
+Wanneer u meerdere virtuele machines implementeert als onderdeel van één SAP-systeem in Microsoft Azure Virtual Machine Services, u de Azure Fabric Controller beïnvloeden om uw toepassing in verschillende foutdomeinen te implementeren, waardoor wordt voldaan aan hogere beschikbaarheids-SLA's. De distributie van foutdomeinen over een Azure Scale Unit (verzameling van honderden Compute-knooppunten of opslagknooppunten en netwerken) of de toewijzing van VM's aan een specifiek foutdomein is echter iets waarover u geen directe controle hebt. Als u de Azure-fabriccontroller wilt sturen om een set VM's over verschillende foutdomeinen te implementeren, moet u een Azure-beschikbaarheidsset toewijzen aan de VM's tijdens de implementatietijd. Zie hoofdstuk [Azure-beschikbaarheidssets][planning-guide-3.2.3] in dit document voor meer informatie over azure-beschikbaarheidssets.
 
 
 ### <a name="upgrade-domains"></a><a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Domeinen bijwerken
@@ -944,7 +944,7 @@ Een dergelijke VM hoeft NIET te worden gegeneraliseerd en kan worden geüpload i
 ##### <a name="uploading-a-vhd-and-making-it-an-azure-disk"></a>Een VHD uploaden en er een Azure-schijf van maken
 In dit geval willen we een VHD uploaden, met of zonder een OS erin, en deze op een VM monteren als gegevensschijf of gebruiken als OS-schijf. Dit is een proces in meerdere stappen
 
-**Powershell**
+**PowerShell**
 
 * Meld u aan bij uw abonnement met *Connect-AzAccount*
 * Het abonnement van uw context instellen met *Set-AzContext* en parameter SubscriptionId of SubscriptionName - zie<https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
@@ -1001,7 +1001,7 @@ Als u een bestaande VM of VHD wilt uploaden vanuit het on-premises netwerk, moet
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>VHD's of beheerde schijven downloaden naar on-premises
 Azure Infrastructure as a Service is geen eenrichtingsverkeer om alleen VHD's en SAP-systemen te kunnen uploaden. U SAP-systemen van Azure ook terugzetten naar de on-premises wereld.
 
-Tijdens het downloaden kunnen de VHD's of Managed Disks niet actief zijn. Zelfs bij het downloaden van schijven, die zijn gemonteerd op VM's, de VM moet worden afgesloten en deallocated. Als u alleen de database-inhoud wilt downloaden, die vervolgens moet worden gebruikt om on-premises een nieuw systeem in te stellen en als het aanvaardbaar is dat tijdens de tijd van de download en de installatie van het nieuwe systeem het systeem in Azure nog steeds operationeel kan zijn , u een lange downtime voorkomen door een gecomprimeerde databaseback-up in een schijf uit te voeren en die schijf gewoon te downloaden in plaats van ook de VM van de osbasis te downloaden.
+Tijdens het downloaden kunnen de VHD's of Managed Disks niet actief zijn. Zelfs bij het downloaden van schijven, die zijn gemonteerd op VM's, de VM moet worden afgesloten en deallocated. Als u alleen de database-inhoud wilt downloaden, die vervolgens moet worden gebruikt om een nieuw systeem on-premises in te stellen en als het aanvaardbaar is dat tijdens de tijd van de download en de installatie van het nieuwe systeem dat het systeem in Azure nog steeds operationeel kan zijn, u een lange downtime voorkomen door een gecomprimeerde databaseback-up in een schijf uit te voeren en gewoon die schijf te downloaden in plaats van ook de VM van de OS-basis te downloaden.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -1031,7 +1031,7 @@ Tijdens het downloaden kunnen de VHD's of Managed Disks niet actief zijn. Zelfs 
 
   Voor meer informatie over de Save-AzVhd <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd>cmdlet, kijk hier .
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 * Een beheerde schijf downloaden  
   U moet eerst toegang krijgen tot de onderliggende blob van de beheerde schijf. Vervolgens u de onderliggende blob kopiëren naar een nieuw opslagaccount en de blob downloaden van dit opslagaccount.
 
@@ -1042,7 +1042,7 @@ Tijdens het downloaden kunnen de VHD's of Managed Disks niet actief zijn. Zelfs 
   ```
 
 * Een VHD downloaden   
-  Zodra het SAP-systeem is gestopt en de VM is uitgeschakeld, u de Azure CLI-opdracht _azure storage blob downloaden_ op het on-premises doel gebruiken om de VHD-schijven terug te downloaden naar de on-premises wereld. Om dat te doen, moet u de naam en de container van de VHD, die u vinden in de 'Storage Section' van de Azure-portal (moet u navigeren naar het opslagaccount en de opslagcontainer waar de VHD is gemaakt) en u moet weten waar de VHD moet worden gekopieerd Aan.
+  Zodra het SAP-systeem is gestopt en de VM is uitgeschakeld, u de Azure CLI-opdracht _azure storage blob downloaden_ op het on-premises doel gebruiken om de VHD-schijven terug te downloaden naar de on-premises wereld. Om dat te doen, moet u de naam en de container van de VHD, die u vinden in de 'Storage Section' van de Azure-portal (moeten navigeren naar het opslagaccount en de opslagcontainer waar de VHD is gemaakt) en u moet weten waar de VHD moet worden gekopieerd.
 
   Vervolgens u de opdracht gebruiken door de parameters blob en container van de VHD te definiëren om te downloaden en de bestemming als de fysieke doellocatie van de VHD (inclusief de naam). De opdracht kan er uitzien als:
 
@@ -1073,7 +1073,7 @@ $config = New-AzDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscr
 New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk $config
 ```
 
-##### <a name="azure-cli"></a>Azure-CLI
+##### <a name="azure-cli"></a>Azure CLI
 
 U Azure CLI gebruiken om een VHD te kopiëren. Als u een nieuwe beheerde schijf wilt maken, gebruikt u *de az-schijf maken* zoals in het volgende voorbeeld wordt weergegeven.
 
@@ -1118,7 +1118,7 @@ $vm = Add-AzVMDataDisk -VM $vm -Caching <caching option> -Lun <lun, for example 
 $vm | Update-AzVM
 ```
 
-##### <a name="azure-cli"></a>Azure-CLI
+##### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 
@@ -1162,7 +1162,7 @@ Get-AzStorageBlobCopyState -Blob <target blob name> -Container <target container
 
 Zie bijvoorbeeld [dit artikel][storage-powershell-guide-full-copy-vhd].
 
-##### <a name="azure-cli"></a>Azure-CLI
+##### <a name="azure-cli"></a>Azure CLI
 * De kopie starten met
 
 ```azurecli
@@ -1752,7 +1752,7 @@ Procedure:
 * Bevestig de verbinding in het on-premises TMS-systeem.
 * Configureer transportroutes, groepen en lagen zoals gewoonlijk.
 
-In met site-to-site verbonden cross-premises scenario's kan de latentie tussen on-premises en Azure nog steeds aanzienlijk zijn. Als we de volgorde volgen van het transporteren van objecten door middel van ontwikkelings- en testsystemen naar productie of nadenken over het toepassen van transporten of ondersteuningspakketten op de verschillende systemen, realiseer je je dat, afhankelijk van de locatie van de centrale transportgids, sommige van de systemen zullen te maken krijgen met gegevens over het lezen of schrijven van hoge latentie in de centrale transportmap. De situatie is vergelijkbaar met SAP-landschapsconfiguraties waarbij de verschillende systemen worden verspreid door verschillende datacenters met een aanzienlijke afstand tussen de datacenters.
+In met site-to-site verbonden cross-premises scenario's kan de latentie tussen on-premises en Azure nog steeds aanzienlijk zijn. Als we de volgorde volgen van het transporteren van objecten door middel van ontwikkelings- en testsystemen naar productie of nadenken over het toepassen van transport- of ondersteuningspakketten op de verschillende systemen, realiseer je je dat, afhankelijk van de locatie van de centrale transportdirectory, sommige systemen hoge latentielees- of schrijfgegevens in de centrale transportmap zullen tegenkomen. De situatie is vergelijkbaar met SAP-landschapsconfiguraties waarbij de verschillende systemen worden verspreid door verschillende datacenters met een aanzienlijke afstand tussen de datacenters.
 
 Om zo'n latentie te omzeilen en de systemen snel te laten bij het lezen of schrijven van of naar de transportmap, u twee STMS-transportdomeinen instellen (één voor on-premises en één met de systemen in Azure en de transportdomeinen koppelen. Bekijk deze documentatie, waarin de principes achter dit concept <https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm>worden uitgelegd in de SAP TMS: .
 
@@ -1777,7 +1777,7 @@ SAP-exemplaren in Azure moeten toegang krijgen tot bestandsshares, die zich binn
 
 ### <a name="azure-extension-for-sap"></a><a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>Azure-extensie voor SAP
 
-Om een deel van de Azure-infrastructuurinformatie van bedrijfskritieke SAP-systemen te kunnen verwerken aan de SAP Host Agent-exemplaren, geïnstalleerd in VM's, moet een Azure-extensie (VM) voor SAP worden geïnstalleerd voor de geïmplementeerde VM's. Aangezien de eisen van SAP specifiek waren voor SAP-toepassingen, besloot Microsoft de vereiste functionaliteit niet generiek te implementeren in Azure, maar het aan klanten over te laten om de benodigde VM-extensie en -configuraties te implementeren op hun virtuele machines met draaien in Azure. Implementatie- en levenscyclusbeheer van de Azure VM-extensie voor SAP worden echter meestal geautomatiseerd door Azure.
+Om een deel van de Azure-infrastructuurinformatie van bedrijfskritieke SAP-systemen te kunnen verwerken aan de SAP Host Agent-exemplaren, geïnstalleerd in VM's, moet een Azure-extensie (VM) voor SAP worden geïnstalleerd voor de geïmplementeerde VM's. Aangezien de eisen van SAP specifiek waren voor SAP-toepassingen, besloot Microsoft de vereiste functionaliteit niet generiek te implementeren in Azure, maar het aan klanten over te laten om de benodigde VM-extensie en -configuraties te implementeren op hun virtuele machines die in Azure worden uitgevoerd. Implementatie- en levenscyclusbeheer van de Azure VM-extensie voor SAP worden echter meestal geautomatiseerd door Azure.
 
 #### <a name="solution-design"></a>Ontwerp van de oplossing
 
@@ -1884,7 +1884,7 @@ Meer details zijn te vinden in dit artikel:<https://azure.microsoft.com/document
 
 #### <a name="utilizing-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-sap-applications"></a>Azure Infrastructure VM Opnieuw opstarten gebruiken om een hogere beschikbaarheid van SAP-toepassingen te bereiken
 
-Als u besluit geen functionaliteiten zoals Windows Server Failover Clustering (WSFC) of Pacemaker op Linux te gebruiken (momenteel alleen ondersteund voor SLES 12 en hoger), wordt Azure VM Restart gebruikt om een SAP-systeem te beschermen tegen geplande en ongeplande downtime van de Azure fysieke serverinfrastructuur en het algemene onderliggende Azure-platform.
+Als u besluit functionaliteiten zoals Windows Server Failover Clustering (WSFC) of Pacemaker op Linux (momenteel alleen ondersteund voor SLES 12 en hoger) niet te gebruiken, wordt Azure VM Restart gebruikt om een SAP-systeem te beschermen tegen geplande en ongeplande downtime van de fysieke serverinfrastructuur van Azure en het algehele onderliggende Azure-platform.
 
 > [!NOTE]
 > Het is belangrijk om te vermelden dat Azure VM Restart voornamelijk VM's en NIET-toepassingen beschermt. VM Restart biedt geen hoge beschikbaarheid voor SAP-toepassingen, maar biedt wel een bepaald niveau van beschikbaarheid van de infrastructuur en dus indirect een hogere beschikbaarheid van SAP-systemen. Er is ook geen SLA voor de tijd die nodig is om een VM opnieuw op te starten na een geplande of ongeplande hoststoring. Daarom is deze methode van hoge beschikbaarheid niet geschikt voor kritieke componenten van een SAP-systeem zoals (A)SCS of DBMS.

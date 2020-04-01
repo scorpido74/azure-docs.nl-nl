@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 860b1a579d9c8cee6c6e80ae4c4e7fdd7949d5c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e17a004ff866f3915000fb72b6770757062cf83
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71300587"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422915"
 ---
 # <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>Gegevens kopiëren naar Azure Data Explorer met Azure Data Factory 
 
@@ -29,7 +29,7 @@ Wanneer u gegevens laadt in Azure Data Explorer, biedt Data Factory de volgende 
 * **Hoge prestaties**: de snelheid voor het laden van gegevens is maximaal 1 gigabyte per seconde (GBps) in Azure Data Explorer. Zie [Activiteitsprestaties kopiëren](/azure/data-factory/copy-activity-performance)voor meer informatie .
 
 In dit artikel gebruikt u het hulpprogramma Gegevenscelkopiegegevens gegevens in de fabriek om gegevens van Amazon Simple Storage Service (S3) in Azure Data Explorer te laden. U een soortgelijk proces volgen om gegevens uit andere gegevensarchieven te kopiëren, zoals:
-* [Azure Blob-opslag](/azure/data-factory/connector-azure-blob-storage)
+* [Azure Blob Storage](/azure/data-factory/connector-azure-blob-storage)
 * [Azure SQL Database](/azure/data-factory/connector-azure-sql-database)
 * [Azure SQL-gegevensmagazijn](/azure/data-factory/connector-azure-sql-data-warehouse)
 * [Google BigQuery](/azure/data-factory/connector-google-bigquery)
@@ -59,7 +59,7 @@ In dit artikel gebruikt u het hulpprogramma Gegevenscelkopiegegevens gegevens in
    | **Naam** | Voer in het vak een wereldwijd unieke naam in voor uw gegevensfabriek. Als u een fout ontvangt, *is de naam \"LoadADXDemo\" van de gegevensfabriek niet beschikbaar,* voert u een andere naam in voor de gegevensfabriek. Zie [Gegevensfabriek naamgevingsregels voor](/azure/data-factory/naming-rules)regels voor het benoemen van Gegevensfabriek .|
    | **Abonnement** | Selecteer in de vervolgkeuzelijst het Azure-abonnement waarin u de gegevensfabriek wilt maken. |
    | **Resourcegroep** | Selecteer **Nieuw maken**en voer de naam van een nieuwe resourcegroep in. Als u al een resourcegroep hebt, selecteert u **Bestaande gebruiken**. |
-   | **Versie** | Selecteer **V2**in de vervolgkeuzelijst . |  
+   | **Versie** | Selecteer **V2**in de vervolgkeuzelijst . |    
    | **Locatie** | Selecteer in de vervolgkeuzelijst de locatie voor de gegevensfabriek. Alleen ondersteunde locaties worden weergegeven in de lijst. De gegevensopslag die door de gegevensfabriek worden gebruikt, kunnen in andere locaties of regio's bestaan. |
 
 1. Selecteer **Maken**.
@@ -78,7 +78,7 @@ U gegevens uit vele soorten [gegevensarchieven](/azure/data-factory/copy-activit
 
 U uw gegevens op een van de volgende manieren laden:
 
-* Selecteer in de gebruikersinterface van Azure Data Factory in het linkerdeelvenster het pictogram **Auteur,** zoals weergegeven in de sectie Een gegevensfabriek maken van [Een gegevensfabriek maken met de gebruikersinterface](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)van Azure Data Factory.
+* Selecteer in de gebruikersinterface van Azure Data Factory in het linkerdeelvenster het pictogram **Auteur.** Dit wordt weergegeven in de sectie 'Een gegevensfabriek maken' van [Een gegevensfabriek maken met behulp van de Azure Data Factory UI](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory).
 * In het hulpprogramma Gegevens kopiëren van Azure Data Factory, zoals weergegeven in [Het gereedschap Gegevens kopiëren gebruiken om gegevens te kopiëren.](/azure/data-factory/quickstart-create-data-factory-copy-data-tool)
 
 ### <a name="copy-data-from-amazon-s3-source"></a>Gegevens van Amazon S3 kopiëren (bron)
@@ -124,7 +124,7 @@ U uw gegevens op een van de volgende manieren laden:
 
    ![Verbinding met brongegevensarchief gemaakt](media/data-factory-load-data/source-data-store-created-connection.png)
 
-1. Ga als volgt te werk in **het invoerbestand of mapvenster kiezen:**
+1. Voer **in het invoerbestand of mapvenster Kiezen** de volgende stappen uit:
 
     a. Blader naar het bestand of de map die u wilt kopiëren en selecteer het vervolgens.
 
@@ -142,9 +142,12 @@ U uw gegevens op een van de volgende manieren laden:
 
 De nieuwe gekoppelde Azure Data Explorer-service is gemaakt om de gegevens te kopiëren naar de azure data explorer-doeltabel (sink) die in deze sectie is opgegeven.
 
+> [!NOTE]
+> Gebruik de [opdrachtactiviteit Azure Data Factory om de besturingselementopdrachten](data-factory-command-activity.md) van Azure Data Explorer `.set-or-replace`uit te voeren en een van de [inname van queryopdrachten](/azure/kusto/management/data-ingestion/ingest-from-query)te gebruiken, zoals .
+
 #### <a name="create-the-azure-data-explorer-linked-service"></a>De gekoppelde Azure Data Explorer-service maken
 
-Ga als volgt te werk om de gekoppelde Azure Data Explorer-service te maken.
+Ga als volgt te werk om de gekoppelde azure data explorer-service te maken:
 
 1. Als u een bestaande verbinding met het gegevensarchief wilt gebruiken of een nieuw gegevensarchief wilt opgeven, selecteert u in het deelvenster **Doelgegevensarchief** de optie **Nieuwe verbinding maken**.
 
@@ -154,13 +157,13 @@ Ga als volgt te werk om de gekoppelde Azure Data Explorer-service te maken.
 
     ![Het nieuwe gekoppelde servicevenster](media/data-factory-load-data/adx-select-new-linked-service.png)
 
-1. Ga in het deelvenster **Nieuwe Gekoppelde Service (Azure Data Explorer)** als volgt te werk:
+1. Ga in het deelvenster **Nieuwe Gekoppelde Service (Azure Data Explorer)** de volgende stappen uit:
 
     ![Het nieuwe deelvenster Gekoppelde service van Azure Data Explorer](media/data-factory-load-data/adx-new-linked-service.png)
 
    a. Voer in het vak **Naam** een naam in voor de gekoppelde Azure Data Explorer-service.
 
-   b. Ga **onder accountselectiemethode**een van de volgende handelingen uit: 
+   b. Kies **onder Accountselectiemethode**een van de volgende opties: 
 
     * Selecteer **Uit Azure-abonnement** en selecteer vervolgens in de vervolgkeuzelijsten uw **Azure-abonnement** en uw **cluster**. 
 
@@ -186,7 +189,7 @@ Ga als volgt te werk om de gekoppelde Azure Data Explorer-service te maken.
 
 #### <a name="configure-the-azure-data-explorer-data-connection"></a>De gegevensverbinding van Azure Data Explorer configureren
 
-Nadat u de gekoppelde serviceverbinding hebt gemaakt, wordt het deelvenster **Doelgegevensarchief** geopend en is de verbinding die u hebt gemaakt beschikbaar voor gebruik. Ga als volgt te werk om de verbinding te configureren.
+Nadat u de gekoppelde serviceverbinding hebt gemaakt, wordt het deelvenster **Doelgegevensarchief** geopend en is de verbinding die u hebt gemaakt beschikbaar voor gebruik. Ga als volgt te werk om de verbinding te configureren:
 
 1. Selecteer **Volgende**.
 
@@ -214,7 +217,7 @@ Nadat u de gekoppelde serviceverbinding hebt gemaakt, wordt het deelvenster **Do
 
     ![Het deelvenster Doelgegevensset 'Kolomtoewijzing'](media/data-factory-load-data/destination-dataset-column-mapping.png)
 
-1. Ga als volgt te werk in het deelvenster **Instellingen:**
+1. Ga in het deelvenster **Instellingen** de volgende stappen uit:
 
     a. Voer **onder Fouttolerantieinstellingen**de relevante instellingen in.
 

@@ -7,16 +7,16 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 01/22/2020
-ms.openlocfilehash: aaf61ccbb3577036c614aa6196d2af57124550fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8eeff5187d27cb75b9e55eba8311dede8970bc4a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76908551"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435219"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Een statische website integreren met Azure CDN
 
-U [CDN (Azure Content Delivery Network)](../../cdn/cdn-overview.md) inschakelen om inhoud in de cache op te slaan van een [statische website](storage-blob-static-website.md) die wordt gehost in een Azure-opslagaccount. U Azure CDN gebruiken om het aangepaste domeineindpunt voor uw statische website te configureren, aangepaste SSL-certificaten in te richten en aangepaste herschrijfregels te configureren. Het configureren van Azure CDN resulteert in extra kosten, maar biedt consistente lage latenties naar uw website vanaf elke locatie ter wereld. Azure CDN biedt ook SSL-versleuteling met uw eigen certificaat. 
+U [CDN (Azure Content Delivery Network)](../../cdn/cdn-overview.md) inschakelen om inhoud in de cache op te slaan van een [statische website](storage-blob-static-website.md) die wordt gehost in een Azure-opslagaccount. U Azure CDN gebruiken om het aangepaste domeineindpunt voor uw statische website te configureren, aangepaste TLS/SSL-certificaten in te richten en aangepaste herschrijfregels te configureren. Het configureren van Azure CDN resulteert in extra kosten, maar biedt consistente lage latenties naar uw website vanaf elke locatie ter wereld. Azure CDN biedt ook TLS-versleuteling met uw eigen certificaat. 
 
 Zie [Azure CDN-prijzen](https://azure.microsoft.com/pricing/details/cdn/) voor meer informatie over prijzen voor Azure CDN.
 

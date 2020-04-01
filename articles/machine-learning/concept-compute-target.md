@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270418"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398182"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn rekendoelen in Azure Machine Learning? 
 
@@ -48,12 +48,14 @@ Meer informatie over [waar en hoe u uw model implementeren in een rekendoel.](ho
 
 Een beheerde compute resource wordt gemaakt en beheerd door Azure Machine Learning. Deze compute is geoptimaliseerd voor machine learning workloads. Azure Machine Learning compute clusters en [compute instances](concept-compute-instance.md) zijn de enige beheerde computes. In de toekomst kunnen extra beheerde rekenresources worden toegevoegd.
 
-U Azure Machine Learning compute instances (preview) of compute clusters maken in:
+U Azure Machine Learning compute instances (preview) of compute clusters maken van:
+* Azure Machine Learning Studio
+* Azure Portal
+* Python SDK [ComputeInstance-](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) en [AmlCompute-klassen](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* Resource Manager-sjabloon
 
-| | Azure Machine Learning Studio | Azure Portal | SDK | Resource Manager-sjabloon | CLI |
-|---| ----- | ----- | ----- | ----- | ----- |
-| Rekenproces | ja | ja | ja | ja |  |
-| Compute-cluster | ja | ja | ja | ja | ja |
+U ook compute clusters maken met behulp van de [machine learning-extensie voor de Azure CLI.](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)
 
 Wanneer deze compute resources worden gemaakt, maken ze automatisch deel uit van uw werkruimte in tegenstelling tot andere soorten rekendoelen.
 

@@ -1,6 +1,6 @@
 ---
 title: Problemen met Azure VM RDP-verbindingsproblemen oplossen door gebeurtenis-id | Microsoft Documenten
-description: ''
+description: Gebruik gebeurtenis--instellingen om verschillende problemen op te lossen die voorkomen dat een RDP-verbinding (Remote Desktop Protocol) verbinding met een Azure Virtual Machine (VM) is.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 166648402eec7f8033c090a3f7862a902bae4be6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71154196"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437068"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Problemen met Azure VM RDP-verbinding oplossen op basis van gebeurtenis-id 
 
@@ -63,7 +63,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Trefwoorden:**      Klassieke <br />
 **Gebruiker:**          N/a <br />
 **Computer:**      *computer* <br />
-**Beschrijving:** De Extern bureaublad-sessiehostserver kan het verlopen zelfondertekende certificaat dat wordt gebruikt voor verificatie van extern bureaublad-sessiehostserver op SSL-verbindingen niet vervangen. De relevante statuscode is Access wordt geweigerd.
+**Beschrijving:** De Extern bureaublad-sessiehostserver kan het verlopen zelfondertekende certificaat dat wordt gebruikt voor verificatie van extern bureaublad-sessiehostserver op TLS-verbindingen niet vervangen. De relevante statuscode is Access wordt geweigerd.
 
 **Logboeknaam:**      Systeem <br />
 **Bron:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
@@ -74,7 +74,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Trefwoorden:**      Klassieke <br />
 **Gebruiker:**          N/a <br />
 **Computer:**      *computer* <br />
-**Beschrijving:** Extern bureaublad-sessiehostserver heeft geen nieuw zelfondertekend certificaat gemaakt dat moet worden gebruikt voor verificatie van extern bureaublad-sessiehostserver op SSL-verbindingen, de relevante statuscode was al bestaat.
+**Beschrijving:** Extern bureaublad-sessiehostserver heeft geen nieuw zelfondertekend certificaat gemaakt dat moet worden gebruikt voor verificatie van de Extern bureaublad-sessiehostserver op TLS-verbindingen, de relevante statuscode was al bestaat.
 
 **Logboeknaam:**      Systeem <br />
 **Bron:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
@@ -85,7 +85,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Trefwoorden:**      Klassieke <br />
 **Gebruiker:**          N/a <br />
 **Computer:**      *computer* <br />
-**Beschrijving:** De Extern bureaublad-sessiehostserver kan geen nieuw zelfondertekend certificaat maken dat kan worden gebruikt voor verificatie van Extern bureaublad-sessiehostserver op SSL-verbindingen. De relevante statuscode is Keyset bestaat niet
+**Beschrijving:** De Extern bureaublad-sessiehostserver kan geen nieuw zelfondertekend certificaat maken dat kan worden gebruikt voor verificatie van Extern bureaublad-sessiehostserver op TLS-verbindingen. De relevante statuscode is Keyset bestaat niet
 
 U ook controleren op Foutgebeurtenissen 36872 en 36870 van SCHANNEL door de volgende opdrachten uit te voeren:
 
@@ -103,7 +103,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Zoekwoorden:**       <br />
 **Gebruiker:**          Systeem <br />
 **Computer:**      *computer* <br />
-**Beschrijving:** Er is een fatale fout opgetreden bij een poging om toegang te krijgen tot de privésleutel van de SSL-serverreferenties. De foutcode die is geretourneerd van de cryptografische module is 0x8009030D.  <br />
+**Beschrijving:** Er is een fatale fout opgetreden bij een poging om toegang te krijgen tot de privésleutel van de TLS-serverreferenties. De foutcode die is geretourneerd van de cryptografische module is 0x8009030D.  <br />
 De interne foutstatus is 10001.
 
 ### <a name="cause"></a>Oorzaak
@@ -186,9 +186,9 @@ Als u het certificaat niet verlengen, voert u de volgende stappen uit om te prob
 
 Probeer de VM te openen door opnieuw RDP te gebruiken.
 
-#### <a name="update-secure-sockets-layer-ssl-certificate"></a>SSL-certificaat (Secure Sockets Layer) bijwerken
+#### <a name="update-tlsssl-certificate"></a>TLS/SSL-certificaat bijwerken
 
-Als u de VM instelt om een SSL-certificaat te gebruiken, voert u de volgende opdracht uit om de duimafdruk op te halen. Controleer vervolgens of het hetzelfde is als de duimafdruk van het certificaat:
+Als u de VM instelt om een TLS/SSL-certificaat te gebruiken, voert u de volgende opdracht uit om de duimafdruk op te halen. Controleer vervolgens of het hetzelfde is als de duimafdruk van het certificaat:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 60beccc2f2679a18903b74b84f48afebfb3b69da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45276884d59ac8d1d876e2225ac02bb51c3f74fc
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257748"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437733"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -133,7 +133,7 @@ Gedwongen tunneling wordt ondersteund. Zie [Azure Firewall forced tunneling (pre
 
 Azure Firewall moet een directe internetverbinding hebben. Als uw AzureFirewallSubnet via BGP een standaardroute naar uw on-premises netwerk leert, moet u dit overschrijven met een 0.0.0.0/0 UDR met de **NextHopType-waarde** ingesteld als **internet** om directe internetverbinding te behouden.
 
-Als uw configuratie gedwongen tunneling naar een on-premises netwerk vereist en u de doel-IP-voorvoegsels voor uw internetbestemmingen bepalen, u deze bereiken configureren met het on-premises netwerk als de volgende hop via een door de gebruiker gedefinieerde route op de AzureFirewallSubnet. U ook BGP gebruiken om deze routes te definiëren.
+Als uw configuratie gedwongen tunneling naar een on-premises netwerk vereist en u de doel-IP-voorvoegsels voor uw internetbestemmingen bepalen, u deze bereiken configureren met het on-premises netwerk als de volgende hop via een door de gebruiker gedefinieerde route op het AzureFirewallSubnet. U ook BGP gebruiken om deze routes te definiëren.
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Zijn er beperkingen voor firewallbronnengroep?
 
@@ -209,3 +209,7 @@ $fw.ThreatIntelWhitelist.IpAddress = @("ip1", "ip2", …)
 
 Set-AzFirewall -AzureFirewall $fw
 ```
+
+## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Waarom kunnen een TCP-ping en vergelijkbare hulpprogramma's met succes verbinding maken met een doel-FQDN, zelfs als er geen regel op Azure Firewall dat verkeer toestaat?
+
+Een TCP-ping maakt niet echt verbinding met de doel-FQDN. Dit gebeurt omdat de transparante proxy van Azure Firewall luistert op poort 80/443 voor uitgaand verkeer. De TCP-ping maakt een verbinding met de firewall, die vervolgens het pakket laat vallen en de verbinding registreert. Dit gedrag heeft geen impact op de beveiliging. Echter, om verwarring te voorkomen onderzoeken we mogelijke wijzigingen in dit gedrag. 

@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3f0d624605f617a8e5ab914c49c4c94a40ebdcc6
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664290"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435789"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Snelstartgids: uw Azure-abonnement onboarden voor Security Center Standard
 Azure Security Center biedt geïntegreerd beveiligingsbeheer en bedreigingsbeveiliging voor uw verschillende hybride cloudworkloads. De Gratis laag biedt beperkte beveiliging voor alleen uw Azure-resources, maar de prijscategorie Standard biedt deze mogelijkheden ook voor on-premises en andere clouds. Standard van Security Center helpt u beveiligingsproblemen te vinden en op te lossen, toegangs- en toepassingsbesturingselementen toe te passen om schadelijke activiteiten te blokkeren, bedreigingen te detecteren met behulp van analyses en gegevens en snel te reageren bij aanvallen. U kunt Security Center Standard kosteloos proberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
 
-In dit artikel gaat u upgraden naar de prijscategorie Standard voor extra beveiliging en MMA installeren op uw virtuele machines om te controleren op beveiligingsproblemen en bedreigingen.
+In dit artikel upgradet u naar de standaardlaag voor extra beveiliging en installeert u de Log Analytics-agent op uw virtuele machines om te controleren op beveiligingsproblemen en bedreigingen.
 
 ## <a name="prerequisites"></a>Vereisten
 U moet over een abonnement op Microsoft Azure beschikken om met Security Center aan de slag te gaan. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
@@ -47,7 +47,7 @@ Binnen enkele minuten nadat u Security Center voor het eerst hebt gestart, ziet 
 - **Aanbevelingen** voor manieren om de beveiliging van uw Azure-abonnementen te verbeteren. Als u op de tegel **Aanbevelingen** klikt, wordt er een gerangschikte lijst geopend.
 - Een overzicht van de resources **Compute en apps**, **Netwerken**, **Gegevensbeveiliging** en **Identiteit en toegang** die nu worden beoordeeld in Security Center, samen met de beveiligingsstatus van elke resource.
 
-Voltooi de stappen hieronder om naar de prijscategorie Standard te upgraden en de MMA te installeren om zo volledig van Security Center te profiteren.
+Als u optimaal wilt profiteren van het Beveiligingscentrum, moet u de onderstaande stappen uitvoeren om te upgraden naar de standaardlaag en de loganalyse-agent te installeren.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Upgraden naar de prijscategorie Standard
 Voor de snelstartgidsen en zelfstudies van Security Center moet u upgraden naar de prijscategorie Standard. Er is een gratis proefversie van Security Center Standard. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie. 
@@ -66,11 +66,11 @@ Voor de snelstartgidsen en zelfstudies van Security Center moet u upgraden naar 
   ![Beveiligingswaarschuwingen][9]
 
 ## <a name="automate-data-collection"></a>Gegevensverzameling automatiseren
-Security Center verzamelt gegevens van uw Azure-VM's en niet-Azure-computers om te controleren op beveiligingsproblemen en bedreigingen. De gegevens worden verzameld met behulp van de MMA, die verschillende configuraties en gebeurtenislogboeken met betrekking tot beveiliging van de machine leest en de gegevens kopieert naar uw werkruimte voor analyse. Security Center maakt standaard een nieuwe werkruimte voor u.
+Security Center verzamelt gegevens van uw Azure-VM's en niet-Azure-computers om te controleren op beveiligingsproblemen en bedreigingen. Gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende beveiligingsconfiguraties en gebeurtenislogboeken van de machine leest en de gegevens kopieert naar uw werkruimte voor analyse. Security Center maakt standaard een nieuwe werkruimte voor u.
 
-Als automatisch inrichten is ingeschakeld, installeert Security Center de MMA op alle ondersteunde Azure-VM's en op nieuwe VM's. Automatische inrichting wordt sterk aanbevolen.
+Wanneer automatische inrichting is ingeschakeld, installeert Security Center de Log Analytics-agent op alle ondersteunde Azure VM's en alle nieuwe die zijn gemaakt. Automatische inrichting wordt sterk aanbevolen.
 
-Automatische inrichting van de MMA inschakelen:
+Ga als eerste over een automatische inrichting van de loganalytics-agent:
 
 1. Selecteer onder het hoofdmenu Van het Beveiligingscentrum de optie **Prijzen & instellingen**.
 2. Klik in de rij van het abonnement op het abonnement waarop u de instellingen wilt wijzigen.
@@ -99,11 +99,11 @@ Als u automatisch inrichten wilt uitschakelen:
 4. Selecteer **Opslaan**.
 
 >[!NOTE]
-> Wanneer u automatische inrichting uitschakelt, wordt MMA niet verwijderd van Azure-VM's waarop de agent is ingericht. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.
+> Als u de automatische inrichting uitschakelt, wordt de log-analyse-agent niet verwijderd uit Azure VM's waar de agent is ingericht. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze snelstartgids hebt u een upgrade naar de prijscategorie Standard uitgevoerd en de MMA ingericht voor geïntegreerd beveiligingsbeheer en bescherming tegen bedreigingen voor uw hybride cloudworkloads. Ga naar de snelstartgids voor het onboarden van Windows-computers die zich on-premises en in andere clouds bevinden voor meer informatie over hoe u Security Center kunt gebruiken.
+In deze quickstart hebt u een upgrade uitgevoerd naar de standaardlaag en hebt u de Log Analytics-agent ingericht voor unified security management en bedreigingsbeveiliging voor uw hybride cloudworkloads. Ga naar de snelstartgids voor het onboarden van Windows-computers die zich on-premises en in andere clouds bevinden voor meer informatie over hoe u Security Center kunt gebruiken.
 
 > [!div class="nextstepaction"]
 > [Snelstart: Windows-computers onboarden naar Azure Security Center](quick-onboard-windows-computer.md)

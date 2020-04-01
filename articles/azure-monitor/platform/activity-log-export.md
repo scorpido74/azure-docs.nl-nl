@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12c750f96b8852cdd6a6039ebfa750c2ee792a6b
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096285"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396721"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-activiteitslogboek exporteren naar opslag of Azure-gebeurtenishubs
 
 > [!IMPORTANT]
-> De methode voor het verzenden van het Azure Activity-logboek naar Azure Storage en Azure Event Hubs is gewijzigd in [diagnostische instellingen.](diagnostic-settings.md) Dit artikel beschrijft de legacy-methode die in het proces van wordt afgeschaft. Zie Bijwerken naar [azure activity log collection en exporteren](diagnostic-settings-legacy.md) voor een vergelijking.
+> De methode voor het verzenden van het Azure Activity-logboek naar Azure Storage en Azure Event Hubs is gewijzigd in [diagnostische instellingen.](diagnostic-settings.md) Dit artikel beschrijft de legacy-methode die in het proces van wordt afgeschaft. Zie Azure [Activity-logboek bijwerken en analyseren in Azure Monitor](activity-log-collect.md) voor een vergelijking.
 
 
 Het [Azure-activiteitenlogboek](platform-logs-overview.md) biedt inzicht in gebeurtenissen op abonnementsniveau die zich in uw Azure-abonnement hebben voorgedaan. Naast het bekijken van het activiteitslogboek in de Azure-portal of het kopiëren naar een Log Analytics-werkruimte waar deze kan worden geanalyseerd met andere gegevens die door Azure Monitor zijn verzameld, u een logboekprofiel maken om het activiteitslogboek te archiveren naar een Azure-opslagaccount of te streamen naar een Gebeurtenishub.

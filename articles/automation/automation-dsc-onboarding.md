@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 0bf70b73098427847c73b4dd962d56d44fe6ee2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 554a4c64700bb189b4b9f085bd7c259312a36b4b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283205"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410940"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding-machines voor beheer door Azure Automation State Configuration
 
@@ -107,7 +107,7 @@ U Linux-servers die on-premises of in andere cloudomgevingen worden uitgevoerd, 
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
-   - Zie de [Onboarding veilig via de registratiesectie](#onboarding-securely-using-registration) als dit artikel de registratiesleutel en registratie-URL voor uw Automatiseringsaccount wilt vinden.
+   - Zie de onboarding veilig met behulp van [het registratiegedeelte](#onboarding-securely-using-registration) van dit artikel om de registratiesleutel en registratie-URL voor uw Automatiseringsaccount te vinden.
 
 3. Als de standaardinstellingen van PowerShell DSC Local Configuration Manager (LcM) niet overeenkomen met uw use case of als u machines aan boord wilt die alleen rapporteren aan Azure Automation State Configuration, voert u stappen 4-7 uit. Ga anders rechtstreeks naar stap 7.
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 1f8f8d314a8bb37a08b3696f597b395a8a4beb8e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67176259"
 ---
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -35,7 +35,7 @@ $resourceGroup = "myResourceGroup"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 Maak met behulp van [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) een standaardopslagaccount voor algemeen gebruik met LRS-replicatie. Haal vervolgens de opslagaccountcontext op waarin het te gebruiken opslagaccount wordt gedefinieerd. Verwijs bij het werken met een opslagaccount naar de context in plaats van herhaaldelijk de referenties door te geven. Gebruik het volgende voorbeeld om een opslagaccount met de naam *mystorageaccount* met lokaal redundante opslag (LRS) en blob-codering (standaard ingeschakeld) te maken.
 

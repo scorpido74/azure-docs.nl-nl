@@ -1,6 +1,6 @@
 ---
-title: Een Premium Azure-cache maken voor redis met clustering-Azure CLI
-description: Dit Azure CLI-code voorbeeld laat zien hoe u een Azure-cache van 6 GB maakt voor redis met clustering ingeschakeld en twee Shards.
+title: Een Premium Azure-cache voor Redis maken met clustering - Azure CLI
+description: In dit voorbeeld van Azure CLI-code ziet u hoe u een Azure-cache voor 6 GB Premium-laag voor Redis maakt met ingeschakeldvoor clustering en twee shards.
 author: yegu-ms
 ms.author: yegu
 tags: azure-service-management
@@ -9,15 +9,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.openlocfilehash: 68203fe2e054f32ce5764fe4f1b07013b0806104
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75411152"
 ---
-# <a name="create-a-premium-azure-cache-for-redis-with-clustering"></a>Maken van een Premium Azure Cache voor Redis met clustering
+# <a name="create-a-premium-azure-cache-for-redis-with-clustering"></a>Een Premium Azure-cache voor Redis maken met clustering
 
-In dit scenario leert u hoe u een Premium-laag van 6 GB Azure-Cache maken voor Redis Clustering is ingeschakeld en twee shards.
+In dit scenario leert u hoe u een Azure-cache voor 6 GB Premium-laag voor Redis maakt met ingeschakelde clustering en twee shards.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -29,16 +29,16 @@ In dit scenario leert u hoe u een Premium-laag van 6 GB Azure-Cache maken voor R
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script worden de volgende opdrachten gebruikt om een resourcegroep te maken en een Premium-laag Azure Redis Cache met clustering inschakelen. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten om een resourcegroep en een Premium-laag Azure Cache voor Redis te maken met ingeschakeld clustering. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
-| [AZ redis maken](https://docs.microsoft.com/cli/azure/redis) | Azure Cache voor Redis-exemplaar maken. |
+| [az redis maken](https://docs.microsoft.com/cli/azure/redis) | Azure-cache maken voor bijvoorbeeld Redis. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
-Aanvullende Azure-Cache voor Redis CLI-voorbeeldscripts vindt u de [Azure Cache voor Redis-documentatie](../cli-samples.md).
+Aanvullende Azure-cache voor Redis CLI-scriptvoorbeelden is te vinden in de [Azure Cache for Redis-documentatie.](../cli-samples.md)

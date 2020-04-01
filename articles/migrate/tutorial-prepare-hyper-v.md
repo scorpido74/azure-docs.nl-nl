@@ -2,14 +2,14 @@
 title: Hyper-V VM's voorbereiden op beoordeling/migratie met Azure Migrate
 description: Meer informatie over hoe u zich voorbereiden op beoordeling/migratie van Hyper V VM's met Azure Migrate.
 ms.topic: tutorial
-ms.date: 03/23/2020
+ms.date: 03/31/2020
 ms.custom: mvc
-ms.openlocfilehash: 5760cf667a02384b8f68cc85540264a1b5702747
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336711"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436233"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Voorbereiden op beoordeling en migratie van Hyper-V VM's naar Azure
 
@@ -95,8 +95,9 @@ U Hyper-V handmatig voorbereiden op VM-beoordeling of een configuratiescript geb
 - PowerShell-remoting instellen op elke host, zodat het Azure Migrate-toestel PowerShell-opdrachten op de host kan uitvoeren via een WinRM-verbinding.
 - Delegerreferenties als VM-schijven zich bevinden op externe SMB-shares.
 - Stel een account in dat het toestel zal gebruiken om VM's te ontdekken op Hyper-V-hosts.
-- Stel Hyper-V Integration Services in op elke VM die u wilt ontdekken en beoordelen.
+- Stel Hyper-V Integration Services in op elke VM die u wilt ontdekken en beoordelen. De standaardinstellingen wanneer u Integration Services inschakelt, zijn voldoende voor Azure Migrate.
 
+    ![Integratieservices inschakelen](./media/tutorial-prepare-hyper-v/integrated-services.png)
 
 
 ## <a name="prepare-with-a-script"></a>Voorbereiden met een script
@@ -112,7 +113,7 @@ Het script doet het volgende:
 - Hiermee controleert u of de host een ondersteunde versie van Hyper-V en de Hyper-V-rol uitvoert.
 - Hiermee wordt de WinRM-service ingeschakeld en worden poorten 5985 (HTTP) en 5986 (HTTPS) geopend op de host (die nodig zijn voor het verzamelen van metagegevens).
 - Hiermee U PowerShell-remoting op de host inschakelen.
-- Hiermee controleert u of de Hyper-V-integratieservice is ingeschakeld op alle VM's die door de host worden beheerd.
+- Hiermee controleert u of de Hyper-V Integration Services is ingeschakeld op alle VM's die door de host worden beheerd.
 - Hiermee schakelt u CredSSP op de host in indien nodig in.
 
 Voer het script als volgt uit:

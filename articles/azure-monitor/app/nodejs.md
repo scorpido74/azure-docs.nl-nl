@@ -3,12 +3,12 @@ title: Node.js-services bewaken met Azure Application Insights | Microsoft Docs
 description: Prestaties bewaken en problemen detecteren in Node.js-services met Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 38336e3faf3764233dd94bffbfb24421e054496a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670012"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411585"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Node.js-services en -apps bewaken met Application Insights
 
@@ -16,7 +16,7 @@ ms.locfileid: "77670012"
 
 Neem de SDK op in de code en stel vervolgens een bijbehorende Application Insights-resource in Azure in om uw bewakingsgegevens te ontvangen, op te slaan en te onderzoeken. Met de SDK worden gegevens naar deze resource verzonden voor verdere analyse en onderzoek.
 
-De Node.js SDK kan binnenkomende en uitgaande HTTP-aanvragen, uitzonderingen en verschillende systeemmeetgegevens automatisch bewaken. Vanaf versie 0.20 kunnen met de SDK ook sommige algemene pakketten van derden worden bewaakt, zoals MongoDB, MySQL, bewaken en Redis. Alle gebeurtenissen met betrekking tot een binnenkomende HTTP-aanvraag worden gecorreleerd voor snellere probleemoplossing.
+De Node.js SDK kan binnenkomende en uitgaande HTTP-aanvragen, uitzonderingen en verschillende systeemmeetgegevens automatisch bewaken. Vanaf versie 0.20 kan de SDK ook enkele veelvoorkomende [pakketten van derden](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)controleren, zoals MongoDB, MySQL en Redis. Alle gebeurtenissen met betrekking tot een binnenkomende HTTP-aanvraag worden gecorreleerd voor snellere probleemoplossing.
 
 U kunt de TelemetryClient-API gebruiken om handmatig aanvullende aspecten van de app en het systeem te instrumenteren en te bewaken. De TelemetryClient-API wordt verderop in dit artikel meer gedetailleerd beschreven.
 

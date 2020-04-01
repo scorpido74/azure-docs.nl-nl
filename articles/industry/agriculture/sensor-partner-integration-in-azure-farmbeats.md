@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 48a2ed5e4774ac07b4b8fa72a5ee0be86811cfb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3431576acbb01a0cc3a5f372460b28be05bf7ce7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298730"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437469"
 ---
 # <a name="sensor-partner-integration"></a>Partnerintegratie voor sensoren
 
@@ -42,7 +42,7 @@ De telemetriegegevens worden toegewezen aan een canoniek bericht dat is gepublic
 
 **API-ontwikkeling**
 
-De API's bevatten technische documentatie van Swagger. Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over de API's en de bijbehorende verzoeken of antwoorden.
+De API's bevatten technische documentatie van Swagger. Zie [Swagger](https://aka.ms/FarmBeatsSwagger)voor meer informatie over de API's en de bijbehorende verzoeken of antwoorden.
 
 **Verificatie**
 
@@ -150,8 +150,8 @@ FarmBeats Datahub heeft de volgende API's waarmee apparaatpartners apparaat- of 
   Productcode  | Productcode of modelnaam of -nummer. Bijvoorbeeld RS-CO2-N01.  |
   SensorMaatregelen > naam  | Naam van de sensormeting. Alleen kleine letters worden ondersteund. Voor metingen uit verschillende dieptes moet u de diepte opgeven. Bijvoorbeeld soil_moisture_15cm. Deze naam moet consistent zijn met de telemetriegegevens. |
   Sensormaatregelen > DataType  | Telemetriegegevenstype. Momenteel wordt dubbel ondersteund. |
-  Sensormaatregelen > type  | Meettype van de telemetriegegevens van de sensor. Hieronder volgen de systeemgedefinieerde typen: AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Nitraat, O2, PH, Fosfaat, PointInTime, Kalium, Druk, Regenmeter, Relatieve Vochtigheid, Zoutgehalte, SoilMoisture, Bodemtemperatuur, zonnestraling, toestand, timeduration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Als u meer wilt toevoegen, raadpleegt u de /ExtendedType API.
-  SensorMaatregelen >-eenheid | Eenheid van sensor telemetriegegevens. Hieronder volgen de systeemgedefinieerde eenheden: NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, MilliMeter, CentiMeter, Meter, Inch, Feet, Mile, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSeconde, MeterPerHour, MetersPerSeconde, Graad, WattPerSquareMeter, KiloWatPerSquareMeter, MilliWatPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MillisiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, MilliLiter, Seconds, UnixTimestamp, MicroMolPerMeterSquaredPerSeconde en InchesPerHour. Als u meer wilt toevoegen, raadpleegt u de /ExtendedType API.
+  Sensormaatregelen > type  | Meettype van de telemetriegegevens van de sensor. Hieronder volgen de systeemgedefinieerde typen: AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Nitraat, O2, PH, Fosfaat, PointInTime, Kalium, Druk, Regenmeter, RelatieveVochtigheid, Zoutgehalte, Bodemvocht, Bodemtemperatuur, Zonnestraling, Staat, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Als u meer wilt toevoegen, raadpleegt u de /ExtendedType API.
+  SensorMaatregelen >-eenheid | Eenheid van sensor telemetriegegevens. Hieronder volgen de systeemgedefinieerde eenheden: NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, MilliMeter, CentiMeter, Meter, Inch, Feet, Mile, KiloMeter, MilesPerHour, MilesPerHour, KMPerHour, KMPerSeconde, MetersPerHour, MetersPerSeconde, Mate, WattsPerSquareMeter, KiloWatperSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MillisiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, Milliliter, Seconden, UnixTimestamp, MicroMolPerMeterSquaredPerSeconde, en InchesPerUur. Als u meer wilt toevoegen, raadpleegt u de /ExtendedType API.
   Sensormaatregelen > AggregationType  | Ofwel geen, gemiddelde, maximum, minimum, of StandardDeviation.
   SensorMaatregelen > diepte  | De diepte van de sensor in centimeters. Bijvoorbeeld het meten van vocht 10 cm onder de grond.
   Sensormaatregelen > beschrijving  | Geef een zinvolle beschrijving van de meting.
@@ -188,7 +188,7 @@ De vertaler moet de mogelijkheid hebben om nieuwe apparaten of sensoren toe te v
 
 ### <a name="add-new-types-and-units"></a>Nieuwe typen en eenheden toevoegen
 
-FarmBeats ondersteunt het toevoegen van nieuwe sensormetingstypen en -eenheden. Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over de /ExtendedType API.
+FarmBeats ondersteunt het toevoegen van nieuwe sensormetingstypen en -eenheden. Zie [Swagger](https://aka.ms/FarmBeatsSwagger)voor meer informatie over de /ExtendedType API.
 
 ## <a name="telemetry-specifications"></a>Telemetriespecificaties
 
@@ -230,11 +230,11 @@ De canonieke berichtindeling ziet er als volgt uit:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }

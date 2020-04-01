@@ -3,14 +3,14 @@ title: Logboeken voor Azure-updatebeheer
 description: In dit artikel wordt beschreven hoe u de logboeken voor Updatebeheer in uw logboekanalysewerkruimte opvragen.
 services: automation
 ms.subservice: update-management
-ms.date: 03/11/2020
+ms.date: 03/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 863016bbeda9b4aec3bf2b4e12830bd30098150f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79216847"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437847"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Query-updaterecords voor Updatebeheer in Azure-monitorlogboeken
 
@@ -144,7 +144,7 @@ Er `UpdateSummary` wordt een record gemaakt met een type bestand dat updatesamen
 | CriticalUpdatesMissing | Aantal kritieke updates dat van toepassing is. | 
 | ManagementGroupName | Naam van de beheergroep Operations Manager of de werkruimte Log Analytics. |
 | NETRuntimeVersion | Versie van .NET Framework geïnstalleerd op de Windows-computer. |
-| OldestMissingSecurityUpdateBucket | Waarden zijn:<br> *Recent*<br> *30 dagen geleden*<br> *60 dagen geleden*<br> *Ouder* | 
+| OldestMissingSecurityUpdateBucket | Waarden zijn:<br> *Recent* als de waarde minder dan 30 dagen bedraagt<br> *30 dagen geleden*<br> *60 dagen geleden*<br> *90 dagen geleden*<br> *120 dagen geleden*<br> *150 dagen geleden*<br> *180 dagen geleden*<br> *Ouder* wanneer de waarde groter is dan 180 dagen | 
 | OldestMissingSecurityUpdateInDays | Totaal aantal dagen voor de oudste update die is gedetecteerd als van toepassing die niet is geïnstalleerd. |
 | OsVersion | De versie van het besturingssysteem. |
 | OtherUpdatesMissing | Aantal gedetecteerde updates ontbreekt. |

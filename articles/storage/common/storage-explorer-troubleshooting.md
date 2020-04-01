@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db36033ea524603416f16db27f40d5eefb8bf613
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77561677"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437107"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Handleiding voor probleemoplossing azure Storage Explorer
 
@@ -76,7 +76,7 @@ Er zijn verschillende ingebouwde RBAC-rollen die de machtigingen kunnen bieden d
 Certificaatfouten treden meestal op in een van de volgende situaties:
 
 - De app is verbonden via een _transparante proxy,_ wat betekent dat een server (zoals uw bedrijfsserver) HTTPS-verkeer onderschept, decodeert en deze vervolgens versleutelt met behulp van een zelfondertekend certificaat.
-- U voert een toepassing uit die een zelfondertekend SSL-certificaat injecteert in de HTTPS-berichten die u ontvangt. Voorbeelden van toepassingen die certificaten injecteren zijn antivirus- en netwerkverkeersinspectiesoftware.
+- U voert een toepassing uit die een zelfondertekend TLS/SSL-certificaat injecteert in de HTTPS-berichten die u ontvangt. Voorbeelden van toepassingen die certificaten injecteren zijn antivirus- en netwerkverkeersinspectiesoftware.
 
 Wanneer Storage Explorer een zelfondertekend of niet-vertrouwd certificaat ziet, weet het niet meer of het ontvangen HTTPS-bericht is gewijzigd. Als u een kopie van het zelfondertekende certificaat hebt, u Storage Explorer opdracht geven om het te vertrouwen door de volgende stappen te volgen:
 

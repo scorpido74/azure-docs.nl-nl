@@ -3,12 +3,12 @@ title: Begrijpen hoe effecten werken
 description: Azure Policy-definities hebben verschillende effecten die bepalen hoe compliance wordt beheerd en gerapporteerd.
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 631c941173a500a4159a37c7c31107b9a6eab872
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0330cb5c732921efda3627dec92e486657097d82
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239969"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422459"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure-beleidseffecten begrijpen
 
@@ -432,15 +432,15 @@ Voorbeeld: evalueert SQL Server-databases om te bepalen of transparentDataEncryp
 
 ## <a name="enforceopaconstraint"></a>OpA-beperking afdwingen
 
-Dit effect wordt gebruikt met `Microsoft.Kubernetes.Data`een beleidsdefinitiemodus van . *mode* Het wordt gebruikt om Gatekeeper v3-toegangsbeheerregels die zijn gedefinieerd met [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) om Beleidsagent (OPA) te [openen,](https://www.openpolicyagent.org/) door te geven aan Kubernetes-clusters op Azure.
+Dit effect wordt gebruikt met `Microsoft.Kubernetes.Data`een beleidsdefinitiemodus van . *mode* Het wordt gebruikt om Gatekeeper v3-toegangsbeheerregels te passeren die zijn gedefinieerd met [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) om [Beleidsagent](https://www.openpolicyagent.org/) (OPA) te openen naar zelfbeheerde Kubernetes-clusters op Azure.
 
 > [!NOTE]
-> [Azure Policy for Kubernetes](aks-engine.md) bevindt zich in Preview en ondersteunt alleen ingebouwde beleidsdefinities.
+> [Azure Policy for AKS Engine](aks-engine.md) bevindt zich in Public Preview en ondersteunt alleen ingebouwde beleidsdefinities.
 
 ### <a name="enforceopaconstraint-evaluation"></a>Evaluatie van opaconstraint afdwingen
 
 De toegangsverantwoordelijke voor open beleidsagent evalueert elke nieuwe aanvraag op het cluster in realtime.
-Elke 15 minuten wordt een volledige scan van het cluster voltooid en worden de resultaten gerapporteerd aan Azure Policy.
+Elke 5 minuten wordt een volledige scan van het cluster voltooid en worden de resultaten gerapporteerd aan Azure Policy.
 
 ### <a name="enforceopaconstraint-properties"></a>Eigenschappen van OpAConstraint afdwingen
 
@@ -455,7 +455,7 @@ De **eigenschap Details** van het effect EnforceOPAConstraint heeft de subeigens
 
 ### <a name="enforceopaconstraint-example"></a>Voorbeeld van Afdwingen opaconstraint
 
-Voorbeeld: Gatekeeper v3-toegangsbesturingselementregel om container-CPU- en geheugenbronlimieten in Te stellen in Kubernetes.
+Voorbeeld: Gatekeeper v3-toelatingsbesturingselementregel om cpu- en geheugenbronlimieten voor containers in te stellen in AKS Engine.
 
 ```json
 "if": {
@@ -490,8 +490,8 @@ Voorbeeld: Gatekeeper v3-toegangsbesturingselementregel om container-CPU- en geh
 
 Dit effect wordt gebruikt met `Microsoft.ContainerService.Data`een beleidsdefinitiemodus van . *mode* Het wordt gebruikt om Gatekeeper v2-toegangsbeheerregels te passeren die zijn gedefinieerd met [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) naar [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) op Azure [Kubernetes-service.](../../../aks/intro-kubernetes.md)
 
-> [!IMPORTANT]
-> [Azure Policy for Kubernetes](rego-for-aks.md) bevindt zich in Preview en ondersteunt alleen ingebouwde beleidsdefinities. Ingebouwd beleid bevalt in de categorie **Kubernetes.** Het **effect EnforceRegoPolicy** en het bijbehorende **Kubernetes Service-categoriebeleid** worden _afgeschaft._ Gebruik in plaats daarvan het bijgewerkte effect [EnforceOPAConstraint.](#enforceopaconstraint)
+> [!NOTE]
+> [Azure Policy voor AKS](rego-for-aks.md) bevindt zich in Limited Preview en ondersteunt alleen ingebouwde beleidsdefinities
 
 ### <a name="enforceregopolicy-evaluation"></a>Evaluatie RegoPolicy afdwingen
 

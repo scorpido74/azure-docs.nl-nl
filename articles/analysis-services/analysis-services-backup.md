@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe u modelmetagegevens en gegevens
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3f63ecf560a14248fed6dea53c30a27acdf9a938
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83da2024ab74b705b45a5891f6b40251020dad31
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73573448"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408659"
 ---
 # <a name="backup-and-restore"></a>Back-ups en herstellen
 
@@ -49,7 +49,7 @@ Voordat u een back-up maakt, moet u opslaginstellingen voor uw server configurer
 
     ![Back-upinstellingen opslaan](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Back-up
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>Een back-up maken met SSMS
 

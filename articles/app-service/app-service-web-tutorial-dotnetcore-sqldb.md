@@ -129,7 +129,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server <se
 > U kunt uw firewallregel nog beperkender maken door [alleen de uitgaande IP-adressen te gebruiken die in uw app worden gebruikt](overview-inbound-outbound-ips.md#find-outbound-ips).
 >
 
-### <a name="create-a-database"></a>Database maken
+### <a name="create-a-database"></a>Een database maken
 
 Maak een database met een [prestatieniveau van S0](../sql-database/sql-database-service-tiers-dtu.md) op de server met de opdracht [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create).
 

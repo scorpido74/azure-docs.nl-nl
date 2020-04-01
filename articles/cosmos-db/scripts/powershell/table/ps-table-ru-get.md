@@ -1,20 +1,20 @@
 ---
-title: Power shell-script voor het ophalen van door Voer (RU/s) voor Azure Cosmos DB Table-API
-description: Azure PowerShell script-Azure Cosmos DB door Voer (RU/s) voor Table-API ophalen
+title: PowerShell-script om doorvoer (RU/s) voor Azure Cosmos DB Table API te krijgen
+description: Azure PowerShell-script - Azure Cosmos DB Get Throughput (RU/s) voor tabel-API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 76645dee5927b321b0a974911ce6514d4277c6c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0129b03e578d00689f085281d0499830e6ba37c2
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441289"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365566"
 ---
-# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>De door Voer (RU/s) voor een tabel voor Azure Cosmos DB-Table-API ophalen
+# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Doorvoer (RU/s) opvragen voor een tabel voor Azure Cosmos DB - Tabel-API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,9 +38,9 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure-resources**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resource groepen**| |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | Hier wordt de doorvoerwaarde van de opgegeven tabel-API-tabel gegenereerd. |
+|**Azure-brongroepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

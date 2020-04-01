@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/27/2020
-ms.openlocfilehash: a8b382663b56d7481da876979e33194fb0ac533d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: e69f3d7350d0da9f364983eae0935532b576bd76
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77925798"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411462"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Onboard Update Management-oplossing met Azure Resource Manager-sjabloon
 
@@ -25,7 +25,7 @@ U [Azure Resource Manager-sjablonen](../azure-resource-manager/templates/templat
 
 De sjabloon automatiseert de onboarding van een of meer Azure- of niet-Azure VM's niet.
 
-Als u al een Log Analytics-werkruimte en automatiseringsaccount hebt geïmplementeerd in een ondersteund gebied in uw abonnement, zijn deze niet gekoppeld en is de werkruimte nog niet de oplossing Voor updatebeheer geïmplementeerd, met deze sjabloon wordt met succes de koppeling en implementeert de updatebeheeroplossing. 
+Als u al een Log Analytics-werkruimte en automatiseringsaccount hebt geïmplementeerd in een ondersteund gebied in uw abonnement, zijn deze niet gekoppeld en is de oplossing Voor updatebeheer nog niet geïmplementeerd, met deze sjabloon wordt de koppeling gemaakt en wordt de oplossing Updatebeheer geïmplementeerd. 
 
 ## <a name="api-versions"></a>API-versies
 
@@ -56,6 +56,7 @@ De volgende parameters in de sjabloon zijn ingesteld met een standaardwaarde voo
 
 * sku - standaard de nieuwe prijscategorie per GB die is uitgebracht in het prijsmodel van april 2018
 * gegevensbewaring - standaardwaarden tot dertig dagen
+* capaciteitsreservering - standaard 100 GB
 
 >[!WARNING]
 >Als u een Log Analytics-werkruimte maakt of configureert in een abonnement dat is gekozen voor het nieuwe prijsmodel van april 2018, is de enige geldige prijscategorie Log Analytics **PerGB2018**.
@@ -79,7 +80,7 @@ De volgende parameters in de sjabloon zijn ingesteld met een standaardwaarde voo
                 "description": "Workspace name"
             }
         },
-        "pricingTier": {
+        "sku": {
             "type": "string",
             "allowedValues": [
                 "pergb2018",
@@ -168,7 +169,8 @@ De volgende parameters in de sjabloon zijn ingesteld met een standaardwaarde voo
             "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": { 
+                "sku": {
+                    "Name": "[parameters('sku')]",
                     "name": "CapacityReservation",
                     "capacityReservationLevel": 100
                 },
@@ -231,13 +233,13 @@ De volgende parameters in de sjabloon zijn ingesteld met een standaardwaarde voo
     }
     ```
 
-2. Bewerk de sjabloon om aan uw vereisten te voldoen.
+2. Bewerk de sjabloon om aan uw vereisten te voldoen. Overweeg een [resourcebeheerbestand te](../azure-resource-manager/templates/parameter-files.md) maken in plaats van parameters door te geven als inlinewaarden.
 
 3. Sla dit bestand op als deployUMSolutiontemplate.json in een lokale map.
 
 4. U kunt deze sjabloon nu implementeren. U PowerShell of Azure CLI gebruiken. Wanneer u wordt gevraagd om een werkruimte en de naam van een Automatiseringsaccount, geeft u een naam op die wereldwijd uniek is voor alle Azure-abonnementen.
 
-    **Powershell**
+    **PowerShell**
 
     ```powershell
     New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deployUMSolutiontemplate.json

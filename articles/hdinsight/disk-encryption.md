@@ -7,16 +7,16 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: fd5308574e84ab6d2e30b9352254683b2d1d6fdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0521f384a333c3054397fb0ec7c2ab907e54f67
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78403569"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411753"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Schijfversleuteling met behulp van door klant beheerde sleutel
 
-Azure HDInsight ondersteunt door de klant beheerde sleutelversleuteling voor gegevens op beheerde schijven en resourceschijven die zijn gekoppeld aan virtuele machines van hdInsight-cluster. Met deze functie u Azure Key Vault gebruiken om de versleutelingssleutels te beheren die gegevens in rust op uw HDInsight-clusters beveiligen. 
+Azure HDInsight ondersteunt door de klant beheerde sleutelversleuteling voor gegevens op beheerde schijven en resourceschijven die zijn gekoppeld aan virtuele machines van hdInsight-cluster. Met deze functie u Azure Key Vault gebruiken om de versleutelingssleutels te beheren die gegevens in rust op uw HDInsight-clusters beveiligen.
 
 Alle beheerde schijven in HDInsight zijn beveiligd met Azure Storage Service Encryption (SSE). Standaard worden de gegevens op die schijven versleuteld met door Microsoft beheerde sleutels. Als u door de klant beheerde sleutels voor HDInsight inschakelt, verstrekt u de coderingssleutels voor HDInsight om deze sleutels te gebruiken en te beheren met Azure Key Vault.
 
@@ -146,6 +146,42 @@ az hdinsight rotate-disk-encryption-key \
 --name MyCluster \
 --resource-group MyResourceGroup
 ```
+
+## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
+
+Als u door klanten beheerde sleutels wilt gebruiken met behulp van een resourcemanagersjabloon, werkt u uw sjabloon bij met de volgende wijzigingen:
+
+1. Voeg in het bestand **azuredeploy.json** de volgende eigenschap toe aan het object resources:
+
+    ```json
+       "diskEncryptionProperties":
+         {
+                 "vaultUri": "[parameters('diskEncryptionVaultUri')]",
+                  "keyName": "[parameters('diskEncryptionKeyName')]",
+                  "keyVersion": "[parameters('diskEncryptionKeyVersion')]",
+                   "msiResourceId": "[parameters('diskEncryptionMsiResourceId')]"
+         }
+
+1. In the **azuredeploy.parameters.json** file, add the following parameters. You can get the values of these parameters from the Key Vault URI and the managed Identity. For example, if you have the following URI and identity values,
+    * Sample key vault URI: https://<KeyVault_Name>.vault.azure.net/keys/clusterkey/<Cluster_Key_Value>
+    * Sample user-assigned managed identity: "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>
+
+    The parameters in the **azuredeploy.parameters.json** file are:
+
+    ```json
+   "diskEncryptionVaultUri": {
+            "value": "https://<KeyVault_Name>.vault.azure.net"
+        },
+        "diskEncryptionKeyName": {
+            "value": "clusterkey"
+        },
+        "diskEncryptionKeyVersion": {
+            "value": "<Cluster_Key_Value>"
+        },
+        "diskEncryptionMsiResourceId": {
+            "value": "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>"
+        }
+    ```
 
 ## <a name="faq-for-customer-managed-key-encryption"></a>Veelgestelde vragen over door de klant beheerde sleutelversleuteling
 

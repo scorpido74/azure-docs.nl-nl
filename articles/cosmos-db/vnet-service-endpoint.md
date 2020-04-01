@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: af1032de9aabac45ad7a86cfe1f36ed2c04c0f71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1c5bdd1d210a1933699cad52dbf123b50048e01
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444625"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421320"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Toegang tot Azure Cosmos DB vanuit virtuele netwerken (VNet)
 
@@ -50,7 +50,7 @@ De autorisatie valideert de machtiging voor VNet-bronactie, zelfs als de gebruik
 Alleen virtuele netwerken en hun subnetten die zijn toegevoegd aan het Azure Cosmos-account hebben toegang. Hun peered VNets hebben geen toegang tot het account totdat de subnetten binnen peered virtuele netwerken zijn toegevoegd aan het account.
 
 ### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>Wat is het maximum aantal subnetten dat toegang heeft tot één Cosmos-account? 
-Momenteel u maximaal 64 subnetten hebben die zijn toegestaan voor een Azure Cosmos-account.
+Momenteel u maximaal 256 subnetten hebben die zijn toegestaan voor een Azure Cosmos-account.
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Kan ik toegang inschakelen via VPN en Express Route? 
 Voor toegang tot Azure Cosmos-account via Express-route van on-premises, moet u Microsoft-peering inschakelen. Zodra u IP-firewall- of virtuele netwerktoegangsregels hebt geplaatst, u de openbare IP-adressen die worden gebruikt voor Microsoft-peering toevoegen op uw IP-firewall voor Azure Cosmos-account om on-premises services toegang te geven tot Azure Cosmos-account. 

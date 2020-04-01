@@ -3,15 +3,15 @@ title: Micro Focus-dev/testomgevingen op Azure | Microsoft Documenten
 description: Host uw IBM z/OS mainframeworkloads opnieuw met Micro Focus-oplossingen voor virtuele Azure-machines (VM's).
 author: njray
 ms.author: sread
-ms.date: 04/02/2019
+ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d83b4c89d0f37e2217974d6d1ed32ac73d8fa4df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62d3f7cc75a887605cdd3c19ac2e45990e541d5e
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60498896"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410992"
 ---
 # <a name="micro-focus-devtest-environments-on-azure"></a>Micro Focus-dev/testomgevingen op Azure
 
@@ -20,6 +20,9 @@ Aan de slag met Azure met een ontwikkel- en testomgeving is een geweldige manier
 Micro Focus werkt samen met Microsoft om aantrekkelijke mainframemigratie- en rehostingtools aan te bieden. U mainframetoepassingen uitvoeren in ontwikkel-, test- en productiescenario's op Azure en het Microsoft Windows-platform.
 
 Micro Focus biedt rehosting- en testrehostingoplossingen voor ontwikkeling die bestaande COBOL- en PL/I-bedrijfstoepassingen uitbreiden naar Azure.
+
+> [!NOTE]
+> Binnenkort beschikbaar: instructies voor het instellen van [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) op Azure VM's.
 
 **Volgende stappen**
 

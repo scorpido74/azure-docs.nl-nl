@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: b2b34a6fdf96613c5bc372e585598fabbe43d53d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8767a6ee6218223280ea6219e22540c53d1e89be
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066612"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409124"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Algemene voorwaarden voor het implementeren van OpenShift Container Platform 3.11 in Azure
 
@@ -143,15 +143,15 @@ Zie [Een Azure-serviceprincipal maken met Azure CLI](https://docs.microsoft.com/
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Vereisten die alleen van toepassing zijn op de sjabloon ResourceManager
 
-Geheimen moeten worden gemaakt voor de SSH private key **(sshPrivateKey),** Azure AD client secret **(aadClientSecret),** OpenShift admin password **(openshiftPassword)** en Red Hat Subscription Manager password of activation key **(rhsmPasswordOrActivationKey).**  Bovendien, als aangepaste SSL-certificaten worden gebruikt, moeten zes extra geheimen worden gemaakt - **routingcafile,** **routingcertfile,** **routingkeyfile,** **mastercafile,** **mastercertfile**en **masterkeyfile**.  Deze parameters zullen nader worden toegelicht.
+Geheimen moeten worden gemaakt voor de SSH private key **(sshPrivateKey),** Azure AD client secret **(aadClientSecret),** OpenShift admin password **(openshiftPassword)** en Red Hat Subscription Manager password of activation key **(rhsmPasswordOrActivationKey).**  Bovendien, als aangepaste TLS / SSL-certificaten worden gebruikt, moeten zes extra geheimen worden gemaakt - **routingcafile**, **routingcertfile**, **routingkeyfile,** **mastercafile,** **mastercertfile**en **masterkeyfile**.  Deze parameters zullen nader worden toegelicht.
 
 De sjabloon verwijst naar specifieke geheime namen, dus u **moet** de hierboven vermelde vetgedrukte namen gebruiken (hoofdlettergevoelig).
 
 ### <a name="custom-certificates"></a>Aangepaste certificaten
 
-Standaard implementeert de sjabloon een OpenShift-cluster met zelfondertekende certificaten voor de OpenShift-webconsole en het routeringsdomein. Als u aangepaste SSL-certificaten wilt gebruiken, stelt u 'routingCertType' in op 'custom' en 'masterCertType' op 'custom'.  U hebt de bestanden CA, Cert en Key in .pem-formaat nodig voor de certificaten.  Het is mogelijk om aangepaste certificaten te gebruiken voor de ene, maar niet voor de andere.
+Standaard implementeert de sjabloon een OpenShift-cluster met zelfondertekende certificaten voor de OpenShift-webconsole en het routeringsdomein. Als u aangepaste TLS/SSL-certificaten wilt gebruiken, stelt u 'routingCertType' in op 'custom' en 'masterCertType' op 'custom'.  U hebt de bestanden CA, Cert en Key in .pem-formaat nodig voor de certificaten.  Het is mogelijk om aangepaste certificaten te gebruiken voor de ene, maar niet voor de andere.
 
-Je moet deze bestanden opslaan in Key Vault-geheimen.  Gebruik dezelfde Key Vault als die welke wordt gebruikt voor de privésleutel.  In plaats van 6 extra ingangen voor de geheime namen te vereisen, is de sjabloon hardgecodeerd om specifieke geheime namen te gebruiken voor elk van de SSL-certificaatbestanden.  Sla de certificaatgegevens op met behulp van de gegevens uit de volgende tabel.
+Je moet deze bestanden opslaan in Key Vault-geheimen.  Gebruik dezelfde Key Vault als die welke wordt gebruikt voor de privésleutel.  In plaats van 6 extra ingangen voor de geheime namen te vereisen, is de sjabloon hardgecodeerd om specifieke geheime namen te gebruiken voor elk van de TLS/SSL-certificaatbestanden.  Sla de certificaatgegevens op met behulp van de gegevens uit de volgende tabel.
 
 | Geheime naam      | Certificaatbestand   |
 |------------------|--------------------|

@@ -3,21 +3,24 @@ title: Micro Focus CICS BankDemo instellen voor Micro Focus Enterprise Developer
 description: Voer de Micro Focus BankDemo-toepassing uit op Azure Virtual Machines (VM's) om te leren microfocus-enterpriseserver en enterprise ontwikkelaar te gebruiken.
 author: sread
 ms.author: sread
-ms.date: 04/02/2019
+ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67621337"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411072"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Micro Focus CICS BankDemo instellen voor Micro Focus Enterprise Developer 4.0 op Azure
 
 Wanneer u Micro Focus Enterprise Server 4.0 en Enterprise Developer 4.0 inStelt op Azure, u implementaties van IBM z/OS-workloads testen. In dit artikel ziet u hoe u CICS BankDemo instellen, een voorbeeldtoepassing die wordt geleverd met Enterprise Developer.
 
 CICs staat voor Customer Information Control System, het transactieplatform dat wordt gebruikt door veel van de online mainframetoepassingen. De BankDemo-applicatie is ideaal om te leren hoe Enterprise Server en Enterprise Developer werken en hoe u een daadwerkelijke toepassing beheren en implementeren, compleet met green screen terminals.
+
+> [!NOTE]
+> Binnenkort beschikbaar: instructies voor het instellen van [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) op Azure VM's.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -272,5 +275,5 @@ Gefeliciteerd! U voert nu een CICS-toepassing uit in Azure met behulp van Micro 
 - [Enterprise Server uitvoeren in Docker-containers op Azure](run-enterprise-server-container.md)
 - [Mainframemigratie - Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [Virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [Probleemoplossing](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Problemen oplossen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [Demystifying mainframe to Azure migration Demyststifying mainframe to Azure migration Demyststifying mainframe to Azure migration](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

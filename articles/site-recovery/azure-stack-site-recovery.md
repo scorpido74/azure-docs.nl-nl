@@ -1,23 +1,18 @@
 ---
 title: Azure Stack VM's repliceren naar Azure met Azure Site Recovery | Microsoft Documenten
 description: Meer informatie over het instellen van noodherstel voor Azure voor Azure Stack VM's met de Azure Site Recovery-service.
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
 ms.topic: conceptual
-ms.service: site-recovery
 ms.date: 08/05/2019
-ms.author: raynew
-ms.openlocfilehash: 15cd729063545914f791de39a075af9084f72bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab35463ca8c3b29e6b4ae8abc781a7081091b214
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426572"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478510"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Virtuele Azure-machines repliceren naar Azure
 
-In dit artikel ziet u hoe u Azure Stack VM's voor noodherstel instelt op Azure, met behulp van de [Azure Site Recovery-service](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview).
+In dit artikel ziet u hoe u Azure Stack VM's voor noodherstel instelt op Azure, met behulp van de [Azure Site Recovery-service](site-recovery-overview.md).
 
 Site Recovery draagt bij aan uw business continuity en disaster recovery (BCDR) strategie. De service zorgt ervoor dat uw VM-workloads beschikbaar blijven wanneer er onverwachte storingen optreden.
 
@@ -45,9 +40,9 @@ Als deze stappen zijn voltooid, u vervolgens een volledige failover naar Azure u
 
 **Locatie** | **Component** |**Details**
 --- | --- | ---
-**Configuratieserver** | Wordt uitgevoerd op één Azure Stack VM. | In elk abonnement stelt u een vm van de configuratieserver in. Met deze VM worden de volgende siteherstelcomponenten uitgevoerd:<br/><br/> - Configuratieserver: coördineert de communicatie tussen on-premises en Azure en beheert gegevensreplicatie. - Processerver: fungeert als replicatiegateway. Het ontvangt replicatiegegevens, optimaliseert met caching, compressie en versleuteling; en stuurt het naar Azure-opslag.<br/><br/> Als VM's die u wilt repliceren de onderstaande limieten overschrijden, u een aparte zelfstandige processerver instellen. [Meer informatie](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale).
-**Mobiliteitsdienst** | Geïnstalleerd op elke vm die u wilt repliceren. | In de stappen in dit artikel stellen we een account op zodat de Mobiliteitsservice automatisch op een vm wordt geïnstalleerd wanneer replicatie is ingeschakeld. Als u de service niet automatisch wilt installeren, zijn er een aantal andere methoden die u gebruiken. [Meer informatie](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service).
-**Azure** | In Azure hebt u een Vault recovery services, een opslagaccount en een virtueel netwerk nodig. |  Gerepliceerde gegevens worden opgeslagen in het opslagaccount. Azure VM's worden toegevoegd aan het Azure-netwerk wanneer er een fail-over plaatsvindt. 
+**Configuratieserver** | Wordt uitgevoerd op één Azure Stack VM. | In elk abonnement stelt u een vm van de configuratieserver in. Met deze VM worden de volgende siteherstelcomponenten uitgevoerd:<br/><br/> - Configuratieserver: coördineert de communicatie tussen on-premises en Azure en beheert gegevensreplicatie. - Processerver: fungeert als replicatiegateway. Het ontvangt replicatiegegevens, optimaliseert met caching, compressie en versleuteling; en stuurt het naar Azure-opslag.<br/><br/> Als VM's die u wilt repliceren de onderstaande limieten overschrijden, u een aparte zelfstandige processerver instellen. [Meer informatie](vmware-azure-set-up-process-server-scale.md).
+**Mobiliteitsdienst** | Geïnstalleerd op elke vm die u wilt repliceren. | In de stappen in dit artikel stellen we een account op zodat de Mobiliteitsservice automatisch op een vm wordt geïnstalleerd wanneer replicatie is ingeschakeld. Als u de service niet automatisch wilt installeren, zijn er een aantal andere methoden die u gebruiken. [Meer informatie](vmware-azure-install-mobility-service.md).
+**Azure** | In Azure hebt u een Vault recovery services, een opslagaccount en een virtueel netwerk nodig. |  Gerepliceerde gegevens worden opgeslagen in het opslagaccount. Azure VM's worden toegevoegd aan het Azure-netwerk wanneer er een fail-over plaatsvindt.
 
 
 Replicatie werkt als volgt:
@@ -68,8 +63,8 @@ Dit is wat u nodig hebt om dit scenario in te stellen.
 **Vereiste** | **Details**
 --- | ---
 **Azure-abonnementsaccount** | Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/pricing/free-trial/)aan.
-**Azure-accountmachtigingen** | Het Azure-account dat u gebruikt, heeft machtigingen nodig om:<br/><br/> - Een kluis van de herstelservice maken<br/><br/> - Een virtuele machine maken in de resourcegroep en het virtuele netwerk dat u voor het scenario gebruikt<br/><br/> - Schrijf naar het opslagaccount dat u opgeeft<br/><br/> Opmerking:<br/><br/> -Als u een account maakt, bent u de beheerder van uw abonnement en u alle acties uitvoeren.<br/><br/> - Als u een bestaand abonnement gebruikt en u bent niet de beheerder, moet u samenwerken met de beheerder om u machtigingen voor eigenaar of inzender toe te wijzen.<br/><br/> - Als je meer gedetailleerde machtigingen nodig hebt, bekijk [dan dit artikel](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control). 
-**Azure Stack VM** | U hebt een Azure Stack VM nodig in het tenantabonnement, dat wordt geïmplementeerd als de configuratieserver siteherstel. 
+**Azure-accountmachtigingen** | Het Azure-account dat u gebruikt, heeft machtigingen nodig om:<br/><br/> - Een kluis van de herstelservice maken<br/><br/> - Een virtuele machine maken in de resourcegroep en het virtuele netwerk dat u voor het scenario gebruikt<br/><br/> - Schrijf naar het opslagaccount dat u opgeeft<br/><br/> Opmerking:<br/><br/> -Als u een account maakt, bent u de beheerder van uw abonnement en u alle acties uitvoeren.<br/><br/> - Als u een bestaand abonnement gebruikt en u bent niet de beheerder, moet u samenwerken met de beheerder om u machtigingen voor eigenaar of inzender toe te wijzen.<br/><br/> - Als je meer gedetailleerde machtigingen nodig hebt, bekijk [dan dit artikel](site-recovery-role-based-linked-access-control.md).
+**Azure Stack VM** | U hebt een Azure Stack VM nodig in het tenantabonnement, dat wordt geïmplementeerd als de configuratieserver siteherstel.
 
 
 ### <a name="prerequisites-for-the-configuration-server"></a>Vereisten voor de configuratieserver
@@ -77,7 +72,7 @@ Dit is wat u nodig hebt om dit scenario in te stellen.
 [!INCLUDE [site-recovery-config-server-reqs-physical](../../includes/site-recovery-config-server-reqs-physical.md)]
 
 
- 
+
 ## <a name="step-1-prepare-azure-stack-vms"></a>Stap 1: Azure Stack VM's voorbereiden
 
 ### <a name="verify-the-operating-system"></a>Het besturingssysteem verifiëren
@@ -89,7 +84,7 @@ Zorg ervoor dat de VM's een van de besturingssystemen uitvoeren die in de tabel 
 --- | ---
 **64-bits Windows** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 (vanaf SP1)
 **Centos** | 5.2 tot 5.11, 6.1 tot 6.9, 7.0 tot 7.3
-**Ubuntu** | 14.04 LTS server, 16.04 LTS server. [Ondersteunde kernels bekijken](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#ubuntu-kernel-versions)
+**Ubuntu** | 14.04 LTS server, 16.04 LTS server. [Ondersteunde kernels bekijken](vmware-physical-azure-support-matrix.md#ubuntu-kernel-versions)
 
 ### <a name="prepare-for-mobility-service-installation"></a>Voorbereiden op mobility-service-installatie
 
@@ -109,10 +104,10 @@ Elke vm die u wilt repliceren, moet de Mobiliteitsservice hebben geïnstalleerd.
     - Voer hiervoor **wf.msc** uit om de Windows Firewall-console te openen. Klik met de rechtermuisknop op**Nieuwe regel** **inkomende regels** > . Selecteer **Vooraf gedefinieerd**en kies Delen van bestanden en **printers** in de lijst. Voltooi de wizard en selecteer de verbinding > **Voltooien**.
     - Voor domeincomputers u hiervoor een GPO gebruiken.
 
-    
+
 #### <a name="linux-machines"></a>Linux machines
 
-- Zorg dat er een netwerkverbinding is tussen de Linux-computer en de processerver.
+- Zorg ervoor dat er netwerkconnectiviteit is tussen de Linux-computer en de processerver.
 - Op de machine waarvoor u replicatie inschakelt, hebt u een account nodig dat een hoofdgebruiker is op de bron-Linux-server:
     - U geeft dit account op wanneer u Siteherstel instelt. Vervolgens gebruikt de processerver dit account om de Mobiliteitsservice te installeren wanneer replicatie is ingeschakeld.
     - Dit account wordt alleen gebruikt door Site Recovery voor de push-installatie en om de Mobiliteitsservice bij te werken.
@@ -143,7 +138,7 @@ Zoek voor elke machine die u wilt repliceren het IP-adres:
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>Stap 2: Een kluis maken en een replicatiedoel selecteren
 
 1. Selecteer in de Azure-portal de optie**Back-up- en siteherstel**van > **hulpprogramma's** >  **voor resources**maken .
-2. Voer in **Naam** een beschrijvende naam in om de kluis aan te duiden. 
+2. Voer in **Naam** een beschrijvende naam in om de kluis aan te duiden.
 3. Maak of selecteer in **de groep Resource**een resourcegroep. We gebruiken **contosoRG.**
 4. Voer **in Locatie**het Azure-gebied in. gebruiken we **Europa - west**.
 5. Als u snel toegang wilt krijgen tot de kluis vanuit het dashboard, selecteert u **Vastmaken aan dashboard** > **Maken**.
@@ -182,7 +177,7 @@ Stel de configuratieservermachine in, registreer deze in de kluis en ontdek mach
 
 Als u de configuratieserver wilt installeren en registreren, voert u een RDP-verbinding uit met de VM die u wilt gebruiken voor de configuratieserver en voert u Unified Setup uit.
 
-Controleer voordat u begint of de klok is [gesynchroniseerd met een tijdserver](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) op de VM voordat u begint. De installatie mislukt als de tijd meer dan vijf minuten lokale tijd is.
+Controleer voordat u begint of de klok is [gesynchroniseerd met een tijdserver](/windows-server/networking/windows-time-service/windows-time-service-top) op de VM voordat u begint. De installatie mislukt als de tijd meer dan vijf minuten lokale tijd is.
 
 Installeer nu de configuratieserver:
 
@@ -190,7 +185,7 @@ Installeer nu de configuratieserver:
 
 > [!NOTE]
 > De configuratieserver kan ook vanaf de opdrachtregel worden geïnstalleerd. [Meer informatie](physical-manage-configuration-server.md#install-from-the-command-line).
-> 
+>
 > Het duurt 15 minuten of langer voordat de accountnaam wordt weergegeven in de portal. Als u deze onmiddellijk wilt bijwerken, selecteert u De***servernaam*** > **Vernieuwserver van** **configuratieservers** > .
 
 ## <a name="step-4-set-up-the-target-environment"></a>Stap 4: De doelomgeving instellen
@@ -249,9 +244,9 @@ Zorg ervoor dat u alle taken in stap 1 hebt [voltooid: Machine voorbereiden](#st
 
 > [!NOTE]
 > Site Recovery installeert Mobility Service wanneer replicatie wordt ingeschakeld voor een VM.
-> 
+>
 > Het kan 15 minuten of langer duren voordat wijzigingen zijn doorgevoerd en in de portal worden weergegeven.
-> 
+>
 > Als u VM's wilt controleren die u toevoegt, controleert u de laatst ontdekte tijd voor VM's in **Configuration Servers** > **Last Contact At**. Als u VM's wilt toevoegen zonder te wachten op de geplande detectie, markeert u de configuratieserver (zonder deze te selecteren), en selecteert u **Vernieuwen**.
 
 
@@ -261,16 +256,16 @@ U voert een testfailover uit naar Azure om ervoor te zorgen dat alles werkt zoal
 
 ### <a name="verify-machine-properties"></a>Machine-eigenschappen controleren
 
-Voordat u een testfailover uitvoert, controleert u de eigenschappen van de machine en controleert u of deze voldoen aan [de Azure-vereisten.](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements) U eigenschappen als volgt bekijken en wijzigen:
+Voordat u een testfailover uitvoert, controleert u de eigenschappen van de machine en controleert u of deze voldoen aan [de Azure-vereisten.](vmware-physical-azure-support-matrix.md#azure-vm-requirements) U eigenschappen als volgt bekijken en wijzigen:
 
 1. Klik in **Beveiligde items** op **Gerepliceerde items** > VM.
 2. In het deelvenster **Gerepliceerd item** bevindt zich een overzicht van VM-informatie, status, en de laatste beschikbare herstelpunten. Klik op **Eigenschappen** om meer details te bekijken.
 3. Wijzig **in Compute en Netwerk**de instellingen indien nodig.
 
-    - U de Azure VM-naam, resourcegroep, doelgrootte, [beschikbaarheidsset](../virtual-machines/windows/tutorial-availability-sets.md)en beheerde schijfinstellingen wijzigen.
+    - U de Azure VM-naam, resourcegroep, doelgrootte, [beschikbaarheidsset](/azure/virtual-machines/windows/tutorial-availability-sets)en beheerde schijfinstellingen wijzigen.
     - U ook netwerkinstellingen bekijken en wijzigen. Deze omvatten het netwerk/subnet waaraan de Azure VM is verbonden na een failover en het IP-adres dat aan de VM wordt toegewezen.
 1. Bekijk **in schijven**informatie over het besturingssysteem en gegevensschijven op de VM.
-   
+
 
 ### <a name="run-a-test-failover"></a>Een testfailover uitvoeren
 
@@ -288,19 +283,19 @@ Wanneer u een testfailover uitvoert, gebeurt het volgende:
 Voer als volgt een testfailover voor een VM uit:
 
 1. Klik in**Gerepliceerde items** **instellingen** > op de VM-> **+Testfailover**.
-2. Voor deze walkthrough selecteren we het **laatste verwerkte** herstelpunt. 
+2. Voor deze walkthrough selecteren we het **laatste verwerkte** herstelpunt.
 3. Selecteer **in Test Failover**het doelAzure-netwerk.
 4. Klik op **OK** om te beginnen met de failover.
 5. Houd de voortgang bij door op de VM te klikken om de eigenschappen ervan te openen. U ook op de taak **Failover testen** in taak van *de taak* > Vacature**Instellingen** > **voor taak voor vacatures** >**voor**vacatures.
 6. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in Azure Portal > **Virtuele machines**. Controleer of de VM de juiste grootte heeft, is verbonden met het juiste netwerk en wordt uitgevoerd.
-7. Nu moet u verbinding maken met de gerepliceerde virtuele machine in Azure. [Meer informatie](https://docs.microsoft.com/azure/site-recovery/site-recovery-test-failover-to-azure#prepare-to-connect-to-azure-vms-after-failover).
+7. Nu moet u verbinding maken met de gerepliceerde virtuele machine in Azure. [Meer informatie](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 8. Als u VM's van Azure wilt verwijderen die tijdens de failovertest zijn gemaakt, klikt u in de VM op **Failovertest opschonen**. Sla in **Notities**alle waarnemingen op die verband houden met de testfailover.
 
 ## <a name="fail-over-and-fail-back"></a>Failover en failback
 
 Nadat u replicatie hebt ingesteld en een drill hebt uitgevoerd om te zien of alles werkt, u machines naar Azure naar behoefte laten mislukken.
 
-Voordat u een failover uitvoert, wilt u na de failover verbinding maken met de machine in Azure, [bereid u zich voor om verbinding te maken](https://docs.microsoft.com/azure/site-recovery/site-recovery-test-failover-to-azure#prepare-to-connect-to-azure-vms-after-failover) voordat u begint.
+Voordat u een failover uitvoert, wilt u na de failover verbinding maken met de machine in Azure, [bereid u zich voor om verbinding te maken](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) voordat u begint.
 
 Voer vervolgens een failover als volgt uit:
 
@@ -308,7 +303,7 @@ Voer vervolgens een failover als volgt uit:
 1. Klik in **Gerepliceerde** > **instellingen**op de machine > **failover**.
 2. Selecteer het herstelpunt dat u wilt gebruiken.
 3. Selecteer **in Test Failover**het doelAzure-netwerk.
-4. Selecteer **Sluit de computer af voordat de failover wordt gestart**. Met deze instelling probeert Site Recovery de bronmachine uit te schakelen voordat de failover wordt gestart. Nochtans failover gaat zelfs als de sluiting uitvalt. 
+4. Selecteer **Sluit de computer af voordat de failover wordt gestart**. Met deze instelling probeert Site Recovery de bronmachine uit te schakelen voordat de failover wordt gestart. Nochtans failover gaat zelfs als de sluiting uitvalt.
 5. Klik op **OK** om te beginnen met de failover. U de failovervoortgang volgen op de pagina **Vacatures.**
 6. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in Azure Portal > **Virtuele machines**. Als u bereid bent verbinding te maken na een failover, controleert u of de VM de juiste grootte heeft, is verbonden met het juiste netwerk en wordt uitgevoerd.
 7. Nadat u de VM hebt geverifieerd, klikt u op **Vastleggen** om de failover te voltooien. Hiermee worden alle beschikbare herstelpunten verwijderd.
@@ -321,18 +316,18 @@ Voer vervolgens een failover als volgt uit:
 
 Wanneer uw primaire site weer actief is, u weer van Azure naar Azure Stack gaan. Hiervoor moet u de Azure VM VHD downloaden en uploaden naar Azure Stack.
 
-1. Sluit de Azure VM af, zodat de VHD kan worden gedownload. 
+1. Sluit de Azure VM af, zodat de VHD kan worden gedownload.
 2. Als u wilt beginnen met het downloaden van de VHD, installeert u [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 3. Navigeer naar de VM in de Azure Portal (met de VM-naam).
 4. Klik **in schijven**op de schijfnaam en verzamel instellingen.
 
-    - Als voorbeeld, de VHD URI gebruikt https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd in onze test: kan worden opgesplitst om de volgende input parameters die worden gebruikt om de VHD downloaden te krijgen.
+    - Als voorbeeld, de VHD URI gebruikt `https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` in onze test: kan worden opgesplitst om de volgende input parameters die worden gebruikt om de VHD downloaden te krijgen.
         - Opslagrekening: 502055westcentralus
         - Container: wahv9b8d2ceb284fb59287
         - VHD-naam: gekopieerd-3676553984.vhd
 
 5. Gebruik nu Azure Storage Explorer om de VHD te downloaden.
-6. Upload de VHD naar Azure Stack met [deze stappen](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm).
+6. Upload de VHD naar Azure Stack met [deze stappen](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm).
 7. Voeg in de bestaande VM of nieuwe VM de geüploade VHD's toe.
 8. Controleer of de OS-schijf correct is en start de VM.
 

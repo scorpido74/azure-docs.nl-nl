@@ -1,6 +1,6 @@
 ---
-title: Zelf studie voor toegang tot & besturings elementen-Azure Security Center
-description: Deze zelf studie laat zien hoe u een just-in-time-VM-toegangs beleid en een toepassings beheer beleid configureert.
+title: Zelfstudie & toepassingsbesturingselementen - Azure Security Center
+description: In deze zelfstudie ziet u hoe u een just-in-time VM-toegangsbeleid en een toepassingsbeheerbeleid configureert.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4b40b7c6f755eb2107a09b1b881ea33fa2187f29
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b28de7af16053093cd0108224188cdd615fce55
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686328"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435509"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Zelfstudie: uw resources beveiligen met Azure Security Center
-Security Center beperkt de blootstelling aan bedreigingen met behulp van toegangs- en toepassingsbesturingselementen om schadelijke activiteiten te blokkeren. Met Just-in-time (JIT) virtuele machine (VM) wordt de bloot stelling aan aanvallen beperkt doordat u permanente toegang tot virtuele machines kunt weigeren. U biedt in plaats daarvan beheerde en gecontroleerde toegang tot VM's, alleen wanneer dat nodig is. Besturingselementen voor adaptieve toepassingen helpen u om VM's beter te beschermen tegen malware door te beheren welke toepassingen op uw VM's kunnen worden uitgevoerd. Security Center maakt gebruik van machine learning om de processen te analyseren die op de virtuele machine worden uitgevoerd. Ook helpt het u op basis van deze informatie regels voor opname in de whitelist toe te passen.
+Security Center beperkt de blootstelling aan bedreigingen met behulp van toegangs- en toepassingsbesturingselementen om schadelijke activiteiten te blokkeren. Just-in-time (JIT) virtual machine (VM) toegang vermindert uw blootstelling aan aanvallen door dat u permanente toegang tot VM's weigeren. U biedt in plaats daarvan beheerde en gecontroleerde toegang tot VM's, alleen wanneer dat nodig is. Besturingselementen voor adaptieve toepassingen helpen u om VM's beter te beschermen tegen malware door te beheren welke toepassingen op uw VM's kunnen worden uitgevoerd. Security Center maakt gebruik van machine learning om de processen te analyseren die op de virtuele machine worden uitgevoerd. Ook helpt het u op basis van deze informatie regels voor opname in de whitelist toe te passen.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een just-in-time-VM-toegangs beleid configureren
+> * Een just-in-time VM-toegangsbeleid configureren
 > * Een toepassingsbeheerbeleid configureren
 
 ## <a name="prerequisites"></a>Vereisten
@@ -36,25 +36,25 @@ Om de functies in deze zelfstudie te doorlopen, moet u zich in de Standard-prijs
 ## <a name="manage-vm-access"></a>VM-toegang beheren
 JIT-VM-toegang kan worden gebruikt om binnenkomend verkeer naar uw Azure-VM's te blokkeren, zodat u minder kwetsbaar bent voor aanvallen maar tegelijkertijd eenvoudig toegang wordt geboden om verbinding met VM's te kunnen maken wanneer dat nodig is.
 
-Beheerpoorten hoeven niet te allen tijde geopend te zijn. Ze hoeven alleen geopend te zijn wanneer u bent verbonden met de VM, bijvoorbeeld om beheer- of onderhoudstaken uit te voeren. Wanneer just-in-time is ingeschakeld, gebruikt Security Center NSG-regels (netwerk beveiligings groep) waarmee de toegang tot beheer poorten wordt beperkt zodat deze niet kunnen worden benaderd door aanvallers.
+Beheerpoorten hoeven niet te allen tijde geopend te zijn. Ze hoeven alleen geopend te zijn wanneer u bent verbonden met de VM, bijvoorbeeld om beheer- of onderhoudstaken uit te voeren. Wanneer just-in-time is ingeschakeld, maakt Security Center gebruik van NSG-regels (Network Security Group), die de toegang tot beheerpoorten beperken, zodat ze niet door aanvallers kunnen worden getarget.
 
-1. Selecteer in het hoofd menu van Security Center **just-in-time-VM-toegang** onder **geavanceerde Cloud beveiliging**.
+1. Selecteer in het hoofdmenu van het Beveiligingscentrum **de just-in-time VM-toegang** onder **ADVANCED CLOUD DEFENSE**.
 
    ![Just-in-time-toegang voor virtuele machines][1]
 
-   **Just-in-time-VM-toegang** biedt informatie over de status van uw vm's:
+   **Just-in-time VM-toegang** biedt informatie over de status van uw VM's:
 
-   - **Geconfigureerd** : vm's die zijn geconfigureerd voor ondersteuning van just-in-time-VM-toegang.
-   - **Aanbevolen** : vm's die just-in-time-VM-toegang kunnen ondersteunen, maar die niet zijn geconfigureerd voor.
+   - **Geconfigureerd** - VM's die zijn geconfigureerd om just-in-time VM-toegang te ondersteunen.
+   - **Aanbevolen** - VM's die just-in-time VM-toegang kunnen ondersteunen, maar niet zijn geconfigureerd.
    - **Geen aanbeveling**: redenen waarom een VM mogelijk niet wordt aanbevolen zijn:
 
-     - Ontbrekende NSG: voor de just-in-time-oplossing moet een NSG aanwezig zijn.
-     - Klassieke VM-Security Center just-in-time-VM-toegang ondersteunt momenteel alleen Vm's die via Azure Resource Manager zijn geïmplementeerd.
-     - Andere-een VM bevindt zich in deze categorie als de just-in-time-oplossing is uitgeschakeld in het beveiligings beleid van het abonnement of de resource groep, of als er geen openbaar IP-adres voor de VM is en er geen NSG aanwezig is.
+     - Ontbrekende NSG - Voor de just-in-time-oplossing moet een NSG aanwezig zijn.
+     - De just-in-time VM-toegang voor het klassieke VM - Beveiligingscentrum ondersteunt momenteel alleen VM's die zijn geïmplementeerd via Azure Resource Manager.
+     - Andere - Een VM bevindt zich in deze categorie als de just-in-time-oplossing is uitgeschakeld in het beveiligingsbeleid van het abonnement of de resourcegroep, of als de VM een openbaar IP-adres mist en geen NSG heeft.
 
-2. Selecteer een aanbevolen VM en klik op **JIT inschakelen op 1 VM** om een just-in-time-beleid voor die VM te configureren:
+2. Selecteer een aanbevolen vm en klik op **JIT op 1 VM inschakelen** om een just-in-time-beleid voor die vm te configureren:
 
-   U kunt de standaard poorten opslaan die worden Security Center aanbevolen of u kunt een nieuwe poort toevoegen en configureren waarop u de just-in-time-oplossing wilt inschakelen. In deze zelfstudie gaan we een poort toevoegen door **Toevoegen** te selecteren.
+   U de standaardpoorten opslaan die beveiligingscentrum aanbeveelt of u een nieuwe poort toevoegen en configureren waarop u de just-in-time-oplossing wilt inschakelen. In deze zelfstudie gaan we een poort toevoegen door **Toevoegen** te selecteren.
 
    ![Poortconfiguratie toevoegen][2]
 
@@ -84,17 +84,17 @@ Met Besturingselementen voor adaptieve toepassingen kunt u een set toepassingen 
 
    ![Aanbevelingen voor toepassingsbeheer][4]
 
-3. Selecteer een resourcegroep om de optie **Regels voor toepassingsbeheer maken** te openen. Bekijk in **VM's selecteren** de lijst met aanbevolen VM's en schakel alle VM’s waarop u geen toepassingsbeheer wilt toepassen uit. Bekijk in **Processen selecteren voor de regels voor opname in de whitelist** de lijst met aanbevolen toepassingen en schakel alle toepassingen uit waarop u geen toepassingsbeheer wilt toepassen. De lijst bevat:
+3. Selecteer een resourcegroep om de optie **Regels voor toepassingsbeheer maken** te openen. Bekijk in **VM's selecteren** de lijst met aanbevolen virtuele machines en schakel alle virtuele machines uit waarop u geen toepassingsbeheer wilt toepassen. Bekijk in **Processen selecteren voor de regels voor opname in de whitelist** de lijst met aanbevolen toepassingen en schakel alle toepassingen uit waarop u geen toepassingsbeheer wilt toepassen. De lijst bevat:
 
    - **NAAM**: het volledige toepassingspad
    - **PROCESSEN**: hoeveel toepassingen zich binnen elk pad bevinden
-   - **ALGEMEEN**: 'ja' geeft aan dat deze processen zijn uitgevoerd op de meeste virtuele machines in deze resourcegroep
+   - **GEMEENSCHAPPELIJK:**"Ja" geeft aan dat deze processen zijn uitgevoerd op de meeste VM's in deze resourcegroep
    - **EXPLOITEERBAAR**: er wordt een waarschuwingspictogram weergegeven als de toepassingen door een aanvaller kunnen worden gebruikt om opname in de whitelist met toepassingen te omzeilen. U wordt aanbevolen om deze toepassingen te controleren voordat ze worden goedgekeurd.
 
 4. Selecteer **Maken** nadat u uw selecties hebt gemaakt.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze snelstartgids. Als u van plan bent om verder te gaan met de volgende Quick starts en zelf studies, kunt u door gaan met het uitvoeren van de Standard-laag en automatische inrichting ingeschakeld houden. Als u niet wilt doorgaan of wilt terugkeren naar de laag gratis:
+Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze snelstartgids. Als u van plan bent om te blijven werken met volgende quickstarts en zelfstudies, blijft u de standaardlaag uitvoeren en blijft u automatische inrichting ingeschakeld. Als u niet wilt doorgaan of wilt terugkeren naar de laag gratis:
 
 1. Ga terug naar het hoofdmenu van Security Center en selecteer **Beveiligingsbeleid**.
 2. Selecteer het abonnement of het beleid dat u wilt terugzetten op Gratis. **Beveiligingsbeleid** wordt geopend.
@@ -104,20 +104,20 @@ Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze
 
 Als u automatisch inrichten wilt uitschakelen:
 
-1. Ga terug naar het hoofdmenu van Security Center en selecteer **Beveiligingsbeleid**.
+1. Ga terug naar het hoofdmenu van het Beveiligingscentrum en selecteer **Beveiligingsbeleid**.
 2. Selecteer het abonnement waarvoor u automatisch inrichten wilt uitschakelen.
 3. Ga naar **Beveiligingsbeleid – Gegevensverzameling** en selecteer onder **Onboarding** de optie **Uit** om automatisch inrichten uit te schakelen.
 4. Selecteer **Opslaan**.
 
 >[!NOTE]
-> Wanneer u automatische inrichting uitschakelt, wordt MMA niet verwijderd van Azure-VM's waarop de agent is ingericht. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.
+> Als u de automatische inrichting uitschakelt, wordt de log-analyse-agent niet verwijderd uit Azure VM's waar de agent is ingericht. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.
 >
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelfstudie hebt u geleerd hoe u blootstelling aan bedreigingen kunt beperken met de volgende handelingen:
 
 > [!div class="checklist"]
-> * Een just-in-time-VM-toegangs beleid configureren om alleen beheerde en gecontroleerde toegang tot Vm's te bieden als dat nodig is
+> * Een just-in-time VM-toegangsbeleid configureren om gecontroleerde en gecontroleerde toegang tot VM's alleen te bieden wanneer dat nodig is
 > * Een beleid voor besturingselementen voor adaptieve toepassingen configureren om te bepalen welke toepassingen op uw VM's kunnen worden uitgevoerd
 
 Ga naar de volgende zelfstudie voor meer informatie over het reageren op beveiligingsincidenten.

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
-ms.openlocfilehash: ad7d171cb115729e174090c1c80915abbde5999f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b905c75e920577e46017caeb456f8237421086b2
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238733"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421211"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Gegevens uit SAP Business Warehouse kopiëren via Open Hub met Azure Data Factory
 
@@ -187,9 +187,9 @@ Als u gegevens uit SAP BW Open Hub wilt kopiëren, worden de volgende eigenschap
 | baseRequestId | De ID van het verzoek voor delta laden. Zodra deze is ingesteld, worden alleen gegevens met requestId opgehaald die groter zijn **dan** de waarde van deze eigenschap.  | Nee |
 
 >[!TIP]
->Als uw open hub-tabel alleen de gegevens bevat die worden gegenereerd door single request ID, bijvoorbeeld, u altijd de volledige belasting uitvoert en de bestaande gegevens in de tabel overschrijft, of als u de DTP slechts één keer uitvoert voor de test, vergeet dan niet de optie 'excludeLastRequest' uit te vinken om de gegevens uit.
+>Als uw open hub-tabel alleen de gegevens bevat die worden gegenereerd door single request ID, bijvoorbeeld, u altijd de volledige belasting uitvoert en de bestaande gegevens in de tabel overschrijft, of als u de DTP slechts één keer uitvoert voor de test, vergeet dan niet de optie 'excludeLastRequest' uit te vinken om de gegevens uit te kopiëren.
 
-Als u het laden van [`parallelCopies`](copy-activity-performance.md#parallel-copy) gegevens wilt versnellen, u de kopieeractiviteit instellen om gegevens van SAP BW Open Hub parallel te laden. Als u bijvoorbeeld `parallelCopies` op vier instelt, voert Data Factory tegelijkertijd vier RFC-aanroepen uit en haalt elke RFC-oproep een deel van de gegevens op uit uw SAP BW Open Hub-tabel die is verdeeld door de DTP-aanvraag-id en pakket-ID. Dit geldt wanneer het aantal unieke DTP-aanvraag-ID + `parallelCopies`pakket-ID groter is dan de waarde van . Bij het kopiëren van gegevens naar het gegevensarchief in bestanden, wordt het ook aanbevolen om naar een map te schrijven als meerdere bestanden (geef alleen de naam van de map op), in welk geval de prestaties beter zijn dan het schrijven naar één bestand.
+Als u het laden van [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) gegevens wilt versnellen, u de kopieeractiviteit instellen om gegevens van SAP BW Open Hub parallel te laden. Als u bijvoorbeeld `parallelCopies` op vier instelt, voert Data Factory tegelijkertijd vier RFC-aanroepen uit en haalt elke RFC-oproep een deel van de gegevens op uit uw SAP BW Open Hub-tabel die is verdeeld door de DTP-aanvraag-id en pakket-ID. Dit geldt wanneer het aantal unieke DTP-aanvraag-ID + `parallelCopies`pakket-ID groter is dan de waarde van . Bij het kopiëren van gegevens naar het gegevensarchief in bestanden, wordt het ook aanbevolen om naar een map te schrijven als meerdere bestanden (geef alleen de naam van de map op), in welk geval de prestaties beter zijn dan het schrijven naar één bestand.
 
 **Voorbeeld:**
 

@@ -4,12 +4,12 @@ description: Informatie over het maken van een back-up van een Exchange-server n
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 9e623b1bdce93c340ccd0e61f9f5145e7154beff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78295841"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421337"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Een back-up maken van een Exchange-server naar Azure met Azure Backup Server
 
@@ -34,7 +34,7 @@ Voer de volgende stappen uit om de MABS-beveiligingsagent op de Exchange-server 
 4. Selecteer de Exchange-serverdatabase die u wilt beveiligen en klik op **Volgende**.
 
    > [!NOTE]
-   > Als u Exchange 2013 beschermt, controleert u de [vereisten voor Exchange 2013.](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))
+   > Als u Exchange 2013 beschermt, controleert u de [vereisten voor Exchange 2013.](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)
    >
    >
 
@@ -53,7 +53,7 @@ Voer de volgende stappen uit om de MABS-beveiligingsagent op de Exchange-server 
     Nadat u deze optie hebt geselecteerd, wordt de controle van de back-upconsistentie uitgevoerd op MABS om het I/O-verkeer te vermijden dat wordt gegenereerd door de **opdracht eseutil** uit te voeren op de Exchange-server.
 
    > [!NOTE]
-   > Als u deze optie wilt gebruiken, moet u de bestanden Ese.dll en Eseutil.exe kopiëren naar de c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin directory op de MAB-server. Anders wordt de volgende fout geactiveerd:  
+   > Als u deze optie wilt gebruiken, moet u de bestanden Ese.dll en Eseutil.exe kopiëren naar de C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin directory op de MABS-server. Anders wordt de volgende fout geactiveerd:  
    > ![eseutil fout](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
@@ -66,7 +66,7 @@ Voer de volgende stappen uit om de MABS-beveiligingsagent op de Exchange-server 
    >
 10. Configureer de doelen voor **back-up op korte termijn**en klik op **Volgende**.
 11. Controleer de beschikbare schijfruimte en klik op **Volgende**.
-12. Selecteer het tijdstip waarop de MAB-server de eerste replicatie maakt en klik op **Volgende**.
+12. Selecteer het tijdstip waarop de MABS-server de eerste replicatie maakt en klik op **Volgende**.
 13. Selecteer de opties voor consistentiecontrole en klik op **Volgende**.
 14. Kies de database waarvan u een back-up wilt maken naar Azure en klik op **Volgende**. Bijvoorbeeld:
 

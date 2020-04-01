@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258926"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478755"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric-beveiliging 
 
@@ -208,7 +208,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [We raden u aan een branchestandaardconfiguratie te implementeren die algemeen bekend en goed is getest, zoals microsoft-beveiligingsbasislijnen, in plaats van zelf een basislijn te maken;](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines) een optie voor het inrichten van deze op uw Virtuele Machine Schaal sets is het gebruik van Azure Desired State Configuration (DSC) extensie handler, om de VM's te configureren als ze online komen, zodat ze de productiesoftware draaien.
 
 ## <a name="azure-firewall"></a>Azure Firewall
-[Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-bronnen beschermt. Het is een volledig stateful firewall als een service met ingebouwde hoge beschikbaarheid en onbeperkte schaalbaarheid van de cloud.](https://docs.microsoft.com/azure/firewall/overview); Dit maakt de mogelijkheid om uitgaand HTTP/S-verkeer te beperken tot een opgegeven lijst met volledig gekwalificeerde domeinnamen (FQDN) inclusief wild cards. Deze functie vereist geen SSL-beëindiging. Het wordt aanbevolen om [Azure Firewall FQDN-tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) voor Windows-updates te gebruiken en om netwerkverkeer naar Microsoft Windows Update-eindpunten in te schakelen, door uw firewall te stromen. [Azure Firewall implementeren met behulp van een sjabloon](https://docs.microsoft.com/azure/firewall/deploy-template) biedt een voorbeeld voor microsoft.Network/azureFirewalls resource template definition. Firewallregels die gemeenschappelijk zijn voor Service Fabric-toepassingen, is om het volgende toe te staan voor uw virtuele clustersnetwerk:
+[Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-bronnen beschermt. Het is een volledig stateful firewall als een service met ingebouwde hoge beschikbaarheid en onbeperkte schaalbaarheid van de cloud.](https://docs.microsoft.com/azure/firewall/overview); Dit maakt de mogelijkheid om uitgaand HTTP/S-verkeer te beperken tot een opgegeven lijst met volledig gekwalificeerde domeinnamen (FQDN) inclusief wild cards. Deze functie vereist geen TLS/SSL-beëindiging. Het wordt aanbevolen om [Azure Firewall FQDN-tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) voor Windows-updates te gebruiken en om netwerkverkeer naar Microsoft Windows Update-eindpunten in te schakelen, door uw firewall te stromen. [Azure Firewall implementeren met behulp van een sjabloon](https://docs.microsoft.com/azure/firewall/deploy-template) biedt een voorbeeld voor microsoft.Network/azureFirewalls resource template definition. Firewallregels die gemeenschappelijk zijn voor Service Fabric-toepassingen, is om het volgende toe te staan voor uw virtuele clustersnetwerk:
 
 - *download.microsoft.com
 - *servicefabric.azure.com
@@ -221,7 +221,7 @@ Deze firewallregels vormen een aanvulling op uw toegestane uitgaande netwerkbeve
 
 ## <a name="windows-defender"></a>Windows Defender 
 
-Standaard is Windows Defender-antivirus geïnstalleerd op Windows Server 2016. Zie Windows [Defender Antivirus op Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)voor meer informatie. De gebruikersinterface wordt standaard geïnstalleerd op een aantal SKU's, maar is niet vereist. Als u processen en paden voor opensourcesoftware wilt uitsluiten als u de impact op prestaties en het verbruik van resources door Windows Defender wilt verminderen en als u met uw beveiligingsbeleid processen en paden voor opensourcesoftware uitsluiten, geeft u de volgende extensiebron voor de bestandsgrootte van virtuele machines aan Beheer sjablooneigenschappen om uw cluster van Servicefabric uit te sluiten van scans:
+Standaard is Windows Defender-antivirus geïnstalleerd op Windows Server 2016. Zie Windows [Defender Antivirus op Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)voor meer informatie. De gebruikersinterface wordt standaard geïnstalleerd op een aantal SKU's, maar is niet vereist. Als u de impact op prestaties en het verbruik van resources door Windows Defender wilt verminderen en als u met uw beveiligingsbeleid processen en paden voor opensourcesoftware uitsluiten, geeft u de volgende eigenschappen van de sjabloon van de sjabloon van de sjabloon voor de set extensie voor virtuele machinesetset om uw cluster van Servicefabric uit te sluiten van scans:
 
 
 ```json

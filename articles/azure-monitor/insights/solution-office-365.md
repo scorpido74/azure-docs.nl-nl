@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/08/2019
-ms.openlocfilehash: 0018ae55ab74e691577a34a397c15355587e0fac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663248"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437050"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-beheeroplossing in Azure (voorbeeld)
 
@@ -20,7 +20,7 @@ ms.locfileid: "77663248"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Oplossingsupdate
-> Deze oplossing is vervangen door de [office 365-oplossing](../../sentinel/connect-office-365.md) voor algemene beschikbaarheid in [Azure Sentinel](../../sentinel/overview.md) en de [Azure AD-rapportage- en bewakingsoplossing.](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) Samen bieden ze een bijgewerkte versie van de vorige Azure Monitor Office 365-oplossing met een verbeterde configuratie-ervaring. U de bestaande oplossing tot 30 april 2020 blijven gebruiken.
+> Deze oplossing is vervangen door de [office 365-oplossing](../../sentinel/connect-office-365.md) voor algemene beschikbaarheid in [Azure Sentinel](../../sentinel/overview.md) en de [Azure AD-rapportage- en bewakingsoplossing.](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) Samen bieden ze een bijgewerkte versie van de vorige Azure Monitor Office 365-oplossing met een verbeterde configuratie-ervaring. U de bestaande oplossing tot 30 juli 2020 blijven gebruiken.
 > 
 > Azure Sentinel is een cloud native Security Information and Event Management-oplossing die logboeken inneemt en extra SIEM-functionaliteit biedt, waaronder detecties, onderzoeken, jacht- en machine learning-gestuurde inzichten. Als u Azure Sentinel gebruikt, u nu office 365-activiteits- en Exchange-beheerlogboeken opnemen.
 > 
@@ -53,7 +53,7 @@ ms.locfileid: "77663248"
 > | where TimeGenerated >= ago(1d) 
 > | where OfficeWorkload == "AzureActiveDirectory"                      
 > | where Operation == 'UserLoginFailed'
-> | summarize count() by UserId 
+> | summarize count() by UserId    
 > ```
 > 
 > ```Kusto
@@ -82,10 +82,10 @@ ms.locfileid: "77663248"
 > ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>V: Heb ik Azure Sentinel nodig om de Azure AD-logboeken te verbinden?
 > U [Azure AD-logboekenintegratie](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)configureren met Azure Monitor, die niet gerelateerd is aan de Azure Sentinel-oplossing. Azure Sentinel biedt een native connector en out-of-the-box-inhoud voor Azure AD-logboeken. Zie voor meer informatie onderstaande vraag over kant-en-klare beveiligingsgerichte inhoud.
 >
-> ###   <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>V: Wat zijn de verschillen bij het verbinden van Azure AD-logboeken vanuit Azure Sentinel en Azure Monitor?
+> ###    <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>V: Wat zijn de verschillen bij het verbinden van Azure AD-logboeken vanuit Azure Sentinel en Azure Monitor?
 > Azure Sentinel en Azure Monitor maken verbinding met Azure AD-logboeken op basis van dezelfde [Azure AD-rapportage- en bewakingsoplossing.](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) Azure Sentinel biedt een native connector met één klik die dezelfde gegevens verbindt en bewakingsinformatie biedt.
 >
-> ###   <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>V: Wat moet ik wijzigen wanneer ik overstap naar de nieuwe Azure AD-rapportage- en bewakingstabellen?
+> ###    <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>V: Wat moet ik wijzigen wanneer ik overstap naar de nieuwe Azure AD-rapportage- en bewakingstabellen?
 > Alle query's met Azure AD-gegevens, inclusief query's in waarschuwingen, dashboards en alle inhoud die u hebt gemaakt met Office 365 Azure AD-gegevens, moeten opnieuw worden gemaakt met behulp van de nieuwe tabellen.
 >
 > Azure Sentinel en Azure AD bieden ingebouwde inhoud die u gebruiken bij de overstap naar de Azure AD-rapportage- en bewakingsoplossing. Zie de volgende vraag over kant-en-klare beveiligingsinhoud en Het gebruik van [Azure Monitor-werkmappen voor Azure Active Directory-rapporten voor](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md)meer informatie. 
@@ -103,7 +103,7 @@ ms.locfileid: "77663248"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>V: Biedt Azure Sentinel extra connectors als onderdeel van de oplossing?
 > Ja, zie [Azure Sentinel connect databronnen](../../sentinel/connect-data-sources.md).
 > 
-> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>V: Wat gebeurt er op 30 april? Moet ik van tevoren offboarden?
+> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>V: Wat gebeurt er op 30 april? Moet ik van tevoren offboarden?
 > 
 > - U geen gegevens ontvangen van de **Office365-oplossing.** De oplossing zal niet langer beschikbaar zijn in de Marketplace
 > - Voor Azure Sentinel-klanten wordt de Log Analytics-werkruimteoplossing **Office365** opgenomen in de Azure Sentinel **SecurityInsights-oplossing.**
@@ -315,7 +315,7 @@ Deze records worden gemaakt wanneer wijzigingen of toevoegingen worden aangebrac
 | ActorContextId (ActorContextId) | GuiD van de organisatie dat de acteur tot behoort. |
 | ActorIpAddress ActorIpAddress | Het IP-adres van de actor in de IPV4- of IPV6-adresindeling. |
 | InterSystemsId (InterSystemsId) | De GUID die de acties tussen onderdelen binnen de Office 365-service bijhoudt. |
-| IntraSystemId (IntraSystemId) |   De GUID die wordt gegenereerd door Azure Active Directory om de actie bij te houden. |
+| IntraSystemId (IntraSystemId) |     De GUID die wordt gegenereerd door Azure Active Directory om de actie bij te houden. |
 | SupportTicketId | De customer support ticket ID voor de actie in "act-on-behalf-of" situaties. |
 | TargetContextId | De GUID van de organisatie waartoe de beoogde gebruiker behoort. |
 
@@ -330,7 +330,7 @@ Deze records zijn gemaakt op uit controlegegevens van Data Center Security.
 | ElevationApprovedTime | De tijdstempel voor wanneer de verhoging werd goedgekeurd. |
 | ElevationApprover | De naam van een Microsoft-manager. |
 | Hoogteduur | De duur waarvoor de verhoging actief was. |
-| ElevationRequestId |  Een unieke id voor de hoogteaanvraag. |
+| ElevationRequestId |     Een unieke id voor de hoogteaanvraag. |
 | Hoogterol | De rol waarvoor de verhoging werd gevraagd. |
 | Hoogtetijd | De begintijd van de verhoging. |
 | Start_Time | De begintijd van de cmdlet uitvoering. |
@@ -344,8 +344,8 @@ Deze records worden gemaakt wanneer wijzigingen worden aangebracht in de Exchang
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin (ExchangeAdmin) |
-| Externetoegang |  Hiermee geeft u op of de cmdlet is uitgevoerd door een gebruiker in uw organisatie, door microsoft-datacenterpersoneel of een datacenterserviceaccount of door een gedelegeerde beheerder. De waarde False geeft aan dat de cmdlet is uitgevoerd door iemand in uw organisatie. De waarde True geeft aan dat de cmdlet is uitgevoerd door datacenterpersoneel, een datacenterserviceaccount of een gedelegeerde beheerder. |
-| ModifiedObjectResolvedName |  Dit is de gebruiksvriendelijke naam van het object dat is gewijzigd door de cmdlet. Dit wordt alleen geregistreerd als de cmdlet het object wijzigt. |
+| Externetoegang |     Hiermee geeft u op of de cmdlet is uitgevoerd door een gebruiker in uw organisatie, door microsoft-datacenterpersoneel of een datacenterserviceaccount of door een gedelegeerde beheerder. De waarde False geeft aan dat de cmdlet is uitgevoerd door iemand in uw organisatie. De waarde True geeft aan dat de cmdlet is uitgevoerd door datacenterpersoneel, een datacenterserviceaccount of een gedelegeerde beheerder. |
+| ModifiedObjectResolvedName |     Dit is de gebruiksvriendelijke naam van het object dat is gewijzigd door de cmdlet. Dit wordt alleen geregistreerd als de cmdlet het object wijzigt. |
 | OrganizationName | De naam van de huurder. |
 | Oorspronkelijke Server | De naam van de server van waaruit de cmdlet is uitgevoerd. |
 | Parameters | De naam en waarde voor alle parameters die zijn gebruikt met de cmdlet die is geïdentificeerd in de eigenschap Operations. |
@@ -366,7 +366,7 @@ Deze records worden gemaakt wanneer wijzigingen of toevoegingen worden aangebrac
 | ClientVersie | De versie van de e-mailclient . |
 | InternalLogonType | Gereserveerd voor intern gebruik. |
 | Logon_Type | Geeft het type gebruiker aan dat toegang heeft tot het postvak en de bewerking heeft uitgevoerd die is geregistreerd. |
-| LogonUserDisplayName |    De gebruiksvriendelijke naam van de gebruiker die de bewerking heeft uitgevoerd. |
+| LogonUserDisplayName |     De gebruiksvriendelijke naam van de gebruiker die de bewerking heeft uitgevoerd. |
 | LogonUserSid | De SID van de gebruiker die de bewerking heeft uitgevoerd. |
 | MailboxGuid | De Exchange GUID van de postvak die is geopend. |
 | BrievenbusEigenaarMasterAccountSid | De masteraccount SID van de postvakeigenaar-account. |
@@ -419,7 +419,7 @@ Deze eigenschappen zijn gemeenschappelijk voor alle SharePoint-records.
 | EventSource | Hiermee wordt aangegeven dat er een gebeurtenis heeft plaatsgevonden in SharePoint. Mogelijke waarden zijn SharePoint of ObjectModel. |
 | ItemType | Het type object dat is geopend of gewijzigd. Zie de tabel ItemType voor meer informatie over de typen objecten. |
 | MachineDomainInfo | Informatie over het synchroniseren van apparaten. Deze informatie wordt alleen gerapporteerd als deze aanwezig is in het verzoek. |
-| MachineId (MachineId) |   Informatie over het synchroniseren van apparaten. Deze informatie wordt alleen gerapporteerd als deze aanwezig is in het verzoek. |
+| MachineId (MachineId) |     Informatie over het synchroniseren van apparaten. Deze informatie wordt alleen gerapporteerd als deze aanwezig is in het verzoek. |
 | Site_ | De GUID van de site waar het bestand of de map is gevestigd die door de gebruiker is geopend. |
 | Source_Name | De entiteit die de gecontroleerde bewerking heeft geactiveerd. Mogelijke waarden zijn SharePoint of ObjectModel. |
 | Useragent | Informatie over de client of browser van de gebruiker. Deze informatie wordt verstrekt door de client of browser. |
@@ -434,7 +434,7 @@ Deze records worden gemaakt wanneer configuratiewijzigingen worden aangebracht i
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
 | Aangepastegebeurtenis | Optionele tekenreeks voor aangepaste gebeurtenissen. |
-| Event_Data |  Optionele payload voor aangepaste gebeurtenissen. |
+| Event_Data |     Optionele payload voor aangepaste gebeurtenissen. |
 | Gewijzigde eigenschappen | De eigenschap is opgenomen voor beheerdersgebeurtenissen, zoals het toevoegen van een gebruiker als lid van een site of een beheerdersgroep voor siteverzamelingen. De eigenschap bevat de naam van de eigenschap die is gewijzigd (bijvoorbeeld de groep Sitebeheerder), de nieuwe waarde van de gewijzigde eigenschap (zoals de gebruiker die is toegevoegd als sitebeheerder) en de vorige waarde van het gewijzigde object. |
 
 
@@ -452,9 +452,9 @@ Deze records worden gemaakt als reactie op bestandsbewerkingen in SharePoint.
 | SharingType | Het type machtigingen voor delen dat is toegewezen aan de gebruiker waarmee de resource is gedeeld. Deze gebruiker wordt geïdentificeerd door de parameter UserSharedWith. |
 | Site_Url | De URL van de site waar het bestand of de map is gevestigd die door de gebruiker is geopend. |
 | SourceFileExtension BronFileExtension | De bestandsextensie van het bestand dat door de gebruiker is geopend. Deze eigenschap is leeg als het object dat is geopend een map is. |
-| SourceFileName |  De naam van het bestand of de map die door de gebruiker wordt geopend. |
+| SourceFileName |     De naam van het bestand of de map die door de gebruiker wordt geopend. |
 | BronRelativeUrl | De URL van de map die het bestand bevat dat door de gebruiker is geopend. De combinatie van de waarden voor de parameters SiteURL, SourceRelativeURL en SourceFileName is dezelfde als de waarde voor de eigenschap ObjectID, de volledige padnaam voor het bestand dat door de gebruiker wordt geopend. |
-| UserSharedWith |  De gebruiker waarmee een resource is gedeeld. |
+| UserSharedWith |     De gebruiker waarmee een resource is gedeeld. |
 
 
 

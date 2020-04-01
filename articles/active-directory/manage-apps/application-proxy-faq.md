@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 8bb77a217546f1abe2c28925e32464b8d61702b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 31587777ba22dd8b4cebf81f0ff98979bb30fade
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481276"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410722"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Veelgestelde vragen over Active Directory (Azure AD) Application Proxy
 
@@ -113,7 +113,7 @@ Nee, dit scenario wordt niet ondersteund omdat Application Proxy TLS-verkeer be√
 
 Raadpleeg [Extern bureaublad publiceren met Azure AD-toepassingsproxy](application-proxy-integrate-with-remote-desktop-services.md).
 
-### <a name="can-i-use-kerberos-constrained-delegation-in-the-remote-desktop-gateway-publishing-scenario"></a>Kan ik Kerberos Constrained Delegation gebruiken in het publicatiescenario voor Extern bureaublad-gateway?
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Kan ik Kerberos Constrained Delegation (Single Sign-On - Windows Integrated Authentication) gebruiken in het publicatiescenario voor extern bureaublad-gateway?
 
 Nee, dit scenario wordt niet ondersteund.  
 
@@ -121,7 +121,7 @@ Nee, dit scenario wordt niet ondersteund.
 
 Ja, het wordt verwacht. Het pre-authenticatiescenario vereist een ActiveX-besturingselement, dat niet wordt ondersteund in browsers van derden.
 
-### <a name="is-the-remote-desktop-web-client-supported"></a>Wordt de Extern bureaublad-webclient ondersteund?
+### <a name="is-the-remote-desktop-web-client-html5-supported"></a>Wordt de HTML5 (Remote Desktop Web Client) ondersteund?
 
 Nee, dit scenario wordt momenteel niet ondersteund. Volg ons [UserVoice-feedbackforum](https://aka.ms/aadapuservoice) voor updates over deze functie.
 
@@ -135,6 +135,10 @@ Ja, het wordt verwacht. Als de computer van de gebruiker Azure AD is aangesloten
 
 Raadpleeg [Afstandsbediening voor SharePoint inschakelen met Azure AD-toepassingsproxy](application-proxy-integrate-with-sharepoint-server.md).
 
+### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>Kan ik de mobiele SharePoint-app (iOS/ Android) gebruiken om toegang te krijgen tot een gepubliceerde SharePoint-server?
+
+De [mobiele SharePoint-app](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) biedt momenteel geen ondersteuning voor azure Active Directory-pre-verificatie.
+
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>Ad FS -publicatie (Active Directory Federation Services) 
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>Kan ik Azure AD Application Proxy gebruiken als AD FS proxy (zoals Web Application Proxy)?
@@ -147,7 +151,7 @@ Nee. Azure AD Application Proxy is ontworpen om te werken met Azure AD en voldoe
 
 Momenteel is websocket-protocolondersteuning nog steeds in openbare preview en werkt het mogelijk niet voor andere toepassingen. Sommige klanten hebben gemengd succes gehad met behulp van WebSocket-protocol met andere toepassingen. Als u dergelijke scenario's test, horen we graag uw resultaten. Stuur ons uw aadapfeedback@microsoft.comfeedback op .
 
-Functies (Eventlogs, PowerShell en Extern bureaublad-services) in Windows Admin Center (WAC) of Extern bureaublad-webclient werken momenteel niet via Azure AD-toepassingsproxy.
+Functies (Eventlogs, PowerShell en Extern bureaublad-services) in Windows Admin Center (WAC) of Remote Desktop Web Client (HTML5) werken momenteel niet via Azure AD Application Proxy.
 
 ## <a name="link-translation"></a>Koppelingsvertaling
 

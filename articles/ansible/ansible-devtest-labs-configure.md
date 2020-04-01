@@ -1,36 +1,36 @@
 ---
-title: 'Zelf studie: Labs configureren in Azure DevTest Labs met behulp van Ansible'
-description: Meer informatie over het configureren van een lab in Azure DevTest Labs met behulp van Ansible
-keywords: ansible, azure, devops, bash, Playbook, devtest Labs
+title: Zelfstudie - Labs configureren in Azure DevTest Labs met Ansible
+description: Meer informatie over het configureren van een lab in Azure DevTest Labs met Ansible
+keywords: ansible, azure, devops, bash, playbook, devtest labs
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: b6981ee94c4d82997c574db037befb9782465d08
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156277"
 ---
-# <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>Zelf studie: Labs configureren in Azure DevTest Labs met behulp van Ansible
+# <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>Zelfstudie: Labs configureren in Azure DevTest Labs met Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-Met [Azure DevTest Labs](/azure/lab-services/devtest-lab-overview) kunnen ontwikkel aars het maken van VM-omgevingen voor hun apps automatiseren. Deze omgevingen kunnen worden geconfigureerd voor het ontwikkelen, testen en trainen van apps. 
+[Azure DevTest Labs](/azure/lab-services/devtest-lab-overview) stelt ontwikkelaars in staat om het maken van VM-omgevingen voor hun apps te automatiseren. Deze omgevingen kunnen worden geconfigureerd voor het ontwikkelen, testen en trainen van apps. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Een lab maken
-> * Het lab-beleid instellen
-> * Schema's voor Lab instellen
-> * Het virtuele lab-netwerk maken
-> * Een artefact bron voor het lab definiëren
-> * Een virtuele machine maken in het lab
-> * De artefact bronnen en artefacten van het lab weer geven
-> * Azure Resource Manager informatie ophalen voor de artefact bronnen
-> * De test omgeving maken
-> * De Lab-installatie kopie maken
+> * Het labbeleid instellen
+> * De labschema's instellen
+> * Het virtuele labnetwerk maken
+> * Een artefactbron voor het lab definiëren
+> * Een VM maken in het lab
+> * Vermeld de artefactbronnen en artefacten van het lab
+> * Azure Resource Manager-informatie voor de artefactbronnen
+> * De labomgeving maken
+> * De labafbeelding maken
 > * Het lab verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
@@ -41,7 +41,7 @@ Met [Azure DevTest Labs](/azure/lab-services/devtest-lab-overview) kunnen ontwik
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken
 
-Het Playbook-voorbeeld fragment maakt een Azure-resource groep. Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
+In het voorbeeldvan playbook-fragment wordt een Azure-brongroep gemaakt. Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
 ```yml
   - name: Create a resource group
@@ -50,9 +50,9 @@ Het Playbook-voorbeeld fragment maakt een Azure-resource groep. Een resourcegroe
       location: "{{ location }}"
 ```
 
-## <a name="create-the-lab"></a>Het lab maken
+## <a name="create-the-lab"></a>Maak het lab
 
-Met de volgende taak wordt het voor beeld-Lab gemaakt.
+Met de volgende taak wordt het voorbeeldlab gemaakt.
 
 ```yml
 - name: Create the lab
@@ -65,18 +65,18 @@ Met de volgende taak wordt het voor beeld-Lab gemaakt.
   register: output_lab
 ```
 
-## <a name="set-the-lab-policies"></a>Het lab-beleid instellen
+## <a name="set-the-lab-policies"></a>Het labbeleid instellen
 
-U kunt beleids instellingen voor het lab instellen. De volgende waarden kunnen worden ingesteld:
+U labbeleidsinstellingen instellen. De volgende waarden kunnen worden ingesteld:
 
-- `user_owned_lab_vm_count` is het aantal Vm's waarvan een gebruiker eigenaar kan zijn
-- `user_owned_lab_premium_vm_count` is het aantal Premium-Vm's waarvan een gebruiker eigenaar kan zijn
-- `lab_vm_count` is het maximum aantal Lab-Vm's
-- `lab_premium_vm_count` is het maximum aantal Lab Premium-Vm's
-- `lab_vm_size` is de toegestane VM-grootte (s) voor Lab
-- `gallery_image` is de toegestane galerie afbeelding (en)
-- `user_owned_lab_vm_count_in_subnet` is het maximum aantal virtuele machines van de gebruiker in een subnet
-- `lab_target_cost` zijn de doel kosten van het lab
+- `user_owned_lab_vm_count`is het aantal VM's dat een gebruiker kan bezitten
+- `user_owned_lab_premium_vm_count`is het aantal premium VM's dat een gebruiker kan bezitten
+- `lab_vm_count`is het maximum aantal lab VM's
+- `lab_premium_vm_count`is het maximum aantal lab premium VM's
+- `lab_vm_size`is de toegestane lab VM's grootte(en)
+- `gallery_image`is de toegestane galerijafbeelding(en)
+- `user_owned_lab_vm_count_in_subnet`is het maximum aantal VM's van de gebruiker in een subnet
+- `lab_target_cost`is de doelkosten van het lab
 
 ```yml
 - name: Set the lab policies
@@ -89,11 +89,11 @@ U kunt beleids instellingen voor het lab instellen. De volgende waarden kunnen w
     threshold: 5
 ```
 
-## <a name="set-the-lab-schedules"></a>Schema's voor Lab instellen
+## <a name="set-the-lab-schedules"></a>De labschema's instellen
 
-Met de voorbeeld taak in deze sectie wordt het lab-schema geconfigureerd. 
+De voorbeeldtaak in deze sectie configureert het labschema. 
 
-In het volgende code fragment wordt de waarde `lab_vms_startup` gebruikt om de opstart tijd van de VM op te geven. Op dezelfde manier bepaalt het instellen van de `lab_vms_shutdown` waarde de test tijd voor het lab van de VM.
+In het volgende codefragment wordt de `lab_vms_startup` waarde gebruikt om de opstarttijd van de VM op te geven. Als u de `lab_vms_shutdown` waarde instelt, wordt de vm-afsluitingstijd van het lab ingesteld.
 
 ```yml
 - name: Set the lab schedule
@@ -106,9 +106,9 @@ In het volgende code fragment wordt de waarde `lab_vms_startup` gebruikt om de o
   register: output
 ```
 
-## <a name="create-the-lab-virtual-network"></a>Het virtuele lab-netwerk maken
+## <a name="create-the-lab-virtual-network"></a>Het virtuele labnetwerk maken
 
-Met deze volgende taak maakt u het standaard virtuele lab-netwerk.
+Met deze volgende taak wordt het standaardvirtuele netwerk van het lab gemaakt.
 
 ```yml
 - name: Create the lab virtual network
@@ -121,9 +121,9 @@ Met deze volgende taak maakt u het standaard virtuele lab-netwerk.
   register: output
 ```
 
-## <a name="define-an-artifact-source-for-the-lab"></a>Een artefact bron voor het lab definiëren
+## <a name="define-an-artifact-source-for-the-lab"></a>Een artefactbron voor het lab definiëren
 
-Een artefact bron is een goed gestructureerde GitHub-opslag plaats die artefact definities en Azure Resource Manager sjablonen bevat. Elk lab wordt geleverd met vooraf gedefinieerde open bare artefacten. In de volgende taken ziet u hoe u een artefact bron maakt voor een lab.
+Een artefactenbron is een goed gestructureerde GitHub-opslagplaats met artefact-definitie en Azure Resource Manager-sjablonen. Elk lab wordt geleverd met vooraf gedefinieerde openbare artefacten. De volgende taken laten zien hoe u een artefactbron voor een lab maakt.
 
 ```yml
 - name: Define the lab artifacts source
@@ -137,9 +137,9 @@ Een artefact bron is een goed gestructureerde GitHub-opslag plaats die artefact 
     security_token: "{{ github_token }}"
 ```
 
-## <a name="create-a-vm-within-the-lab"></a>Een virtuele machine maken in het lab
+## <a name="create-a-vm-within-the-lab"></a>Een VM maken in het lab
 
-Maak een virtuele machine in het lab.
+Maak een VM in het lab.
 
 ```yml
 - name: Create a VM within the lab
@@ -169,9 +169,9 @@ Maak een virtuele machine in het lab.
     expiration_date: "2029-02-22T01:49:12.117974Z"
 ```
 
-## <a name="list-the-labs-artifact-sources-and-artifacts"></a>De artefact bronnen en artefacten van het lab weer geven
+## <a name="list-the-labs-artifact-sources-and-artifacts"></a>Vermeld de artefactbronnen en artefacten van het lab
 
-Als u alle standaard-en aangepaste artefacten bronnen in de test omgeving wilt weer geven, gebruikt u de volgende taak:
+Als u alle standaard- en aangepaste artefactenbronnen in het lab wilt weergeven, gebruikt u de volgende taak:
 
 ```yml
 - name: List the artifact sources
@@ -183,7 +183,7 @@ Als u alle standaard-en aangepaste artefacten bronnen in de test omgeving wilt w
     var: output
 ```
 
-De volgende taak bevat een lijst met alle artefacten:
+In de volgende taak worden alle artefacten weergegeven:
 
 ```yml
 - name: List the artifact facts
@@ -196,9 +196,9 @@ De volgende taak bevat een lijst met alle artefacten:
     var: output
 ```
 
-## <a name="get-azure-resource-manager-information-for-the-artifact-sources"></a>Azure Resource Manager informatie ophalen voor de artefact bronnen
+## <a name="get-azure-resource-manager-information-for-the-artifact-sources"></a>Azure Resource Manager-informatie voor de artefactbronnen
 
-Als u alle Azure Resource Manager sjablonen in `public environment repository`wilt weer geven, moet u de vooraf gedefinieerde opslag plaats met sjablonen:
+Ga als eerste met een `public environment repository`lijst van alle Azure Resource Manager-sjablonen in de vooraf gedefinieerde opslagplaats met sjablonen:
 
 ```yml
 - name: List the Azure Resource Manager template facts
@@ -210,7 +210,7 @@ Als u alle Azure Resource Manager sjablonen in `public environment repository`wi
     var: output
 ```
 
-En de volgende taak haalt Details op van een specifieke Azure Resource Manager sjabloon uit de opslag plaats:
+En met de volgende taak worden details van een specifieke Azure Resource Manager-sjabloon uit de opslagplaats opgehaald:
 
 ```yml
 - name: Get Azure Resource Manager template facts
@@ -224,9 +224,9 @@ En de volgende taak haalt Details op van een specifieke Azure Resource Manager s
     var: output
 ```
 
-## <a name="create-the-lab-environment"></a>De test omgeving maken
+## <a name="create-the-lab-environment"></a>De labomgeving maken
 
-Met de volgende taak wordt de test omgeving gemaakt op basis van een van de sjablonen uit de opslag plaats voor open bare omgeving.
+Met de volgende taak wordt de labomgeving gemaakt op basis van een van de sjablonen uit de openbare omgeving.
 
 ```yml
 - name: Create the lab environment
@@ -240,9 +240,9 @@ Met de volgende taak wordt de test omgeving gemaakt op basis van een van de sjab
       register: output
 ```
 
-## <a name="create-the-lab-image"></a>De Lab-installatie kopie maken
+## <a name="create-the-lab-image"></a>De labafbeelding maken
 
-Met de volgende taak maakt u een installatie kopie van een virtuele machine. Met de installatie kopie kunt u identieke Vm's maken.
+Met de volgende taak wordt een afbeelding gemaakt van een vm. Met de afbeelding u identieke VM's maken.
 
 ```yml
 - name: Create the lab image
@@ -256,7 +256,7 @@ Met de volgende taak maakt u een installatie kopie van een virtuele machine. Met
 
 ## <a name="delete-the-lab"></a>Het lab verwijderen
 
-Gebruik de volgende taak om het lab te verwijderen:
+Als u het lab wilt verwijderen, gebruikt u de volgende taak:
 
 ```yml
 - name: Delete the lab
@@ -271,11 +271,11 @@ Gebruik de volgende taak om het lab te verwijderen:
       - output.changed
 ```
 
-## <a name="get-the-sample-playbook"></a>De voor beeld-Playbook ophalen
+## <a name="get-the-sample-playbook"></a>Download het voorbeeld van het draaiboek
 
-Er zijn twee manieren om de volledige voorbeeld Playbook te verkrijgen:
-- [Down load de Playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/devtestlab-create.yml) en sla deze op `devtestlab-create.yml`.
-- Maak een nieuw bestand met de naam `devtestlab-create.yml` en kopieer het naar de volgende inhoud:
+Er zijn twee manieren om het volledige voorbeeld playbook te krijgen:
+- [Download het playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/devtestlab-create.yml) en `devtestlab-create.yml`sla het op in .
+- Maak een nieuw `devtestlab-create.yml` bestand met de naam en kopieer de volgende inhoud:
 
 ```yml
 ---
@@ -440,15 +440,15 @@ Er zijn twee manieren om de volledige voorbeeld Playbook te verkrijgen:
         state: absent
 ```
 
-## <a name="run-the-playbook"></a>De Playbook uitvoeren
+## <a name="run-the-playbook"></a>Voer het draaiboek uit
 
-In deze sectie voert u de Playbook uit om verschillende functies te testen die in dit artikel worden weer gegeven.
+Voer in deze sectie het draaiboek uit om verschillende functies in dit artikel te testen.
 
-Voordat u de Playbook uitvoert, moet u de volgende wijzigingen aanbrengen:
-- Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
-- Sla het GitHub-token op als een omgevings variabele met de naam `GITHUB_ACCESS_TOKEN`.
+Breng de volgende wijzigingen aan voordat u het draaiboek uitvoert:
+- Vervang `vars` in de `{{ resource_group_name }}` sectie de tijdelijke aanduiding door de naam van uw resourcegroep.
+- Sla het GitHub-token op `GITHUB_ACCESS_TOKEN`als een omgevingsvariabele met de naam .
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook devtestlab-create.yml
@@ -456,9 +456,9 @@ ansible-playbook devtestlab-create.yml
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt. 
+Wanneer u niet meer nodig bent, verwijdert u de bronnen die in dit artikel zijn gemaakt. 
 
-Sla de volgende code op als `cleanup.yml`:
+Sla de volgende `cleanup.yml`code op als :
 
 ```yml
 - hosts: localhost
@@ -472,7 +472,7 @@ Sla de volgende code op als `cleanup.yml`:
         state: absent
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook cleanup.yml

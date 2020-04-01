@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: dfb133f9aa3dd9b76f8b4ea4c6188cfaf9a67b75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 371c2186d44469a22b138255fb513761a9be4437
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444108"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478213"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Een lab opzetten om data science te onderwijzen met Python- en Jupyter-laptops
 
@@ -34,10 +34,10 @@ Schakel de instellingen in die in de onderstaande tabel worden beschreven voor h
 
 | Lab-accountinstelling | Instructies |
 | ------------------- | ------------ |
-| Afbeelding van Marktplaats | Schakel de [Data Science Virtual Machine - Windows 2016-afbeelding](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) in voor gebruik binnen uw labaccount. |
+| Afbeelding van Marktplaats | Schakel de [Data Science Virtual Machine - Windows 2019-afbeelding](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) in voor gebruik binnen uw labaccount. |
 
 >[!TIP]
->In dit artikel wordt zich gericht op het configureren van een sjabloonmachine die het Windows Server-besturingssysteem gebruikt.  Het is ook mogelijk om een data science-les in te stellen met Python- en Jupyter-laptops met Behulp van [Data Science Virtual Machine voor Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) of Data Science Virtual Machine for Linux [(Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) afbeeldingen van de Azure Marketplace.
+>In dit artikel wordt zich gericht op het configureren van een sjabloonmachine die het Windows Server-besturingssysteem gebruikt.  Het is ook mogelijk om een data science-les in te stellen met Python- en Jupyter-laptops met Behulp van [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) afbeeldingen van de Azure Marketplace.
 
 ### <a name="lab-settings"></a>Lab-instellingen
 
@@ -50,7 +50,7 @@ Gebruik de instellingen in de onderstaande tabel bij het instellen van een klasl
 
 ## <a name="template-machine"></a>Sjabloonmachine
 
-De [Data Science Virtual Machine - Windows 2016-afbeelding](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) biedt de nodige deep learning-frameworks en tools die nodig zijn voor dit type klasse.  De afbeelding bevat Jupyter-notitieblokken en Visual Studio-code.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) is een webapplicatie waarmee gegevenswetenschappers ruwe gegevens kunnen maken, berekeningen kunnen uitvoeren en de resultaten allemaal in dezelfde omgeving kunnen bekijken.  Voor onze sjabloonmachine wordt de webapplicatie lokaal uitgevoerd.  [Visual Studio Code](https://code.visualstudio.com/) is een IDE die een rijke interactieve ervaring biedt bij het schrijven en testen van een notitieblok.  Zie [Werken met Jupyter-notitieblokken in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)voor meer informatie.
+De [Data Science Virtual Machine - Windows 2019-afbeelding](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) biedt de nodige deep learning-frameworks en tools die nodig zijn voor dit type klasse.  De afbeelding bevat Jupyter-notitieblokken en Visual Studio-code.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) is een webapplicatie waarmee gegevenswetenschappers ruwe gegevens kunnen maken, berekeningen kunnen uitvoeren en de resultaten allemaal in dezelfde omgeving kunnen bekijken.  Voor onze sjabloonmachine wordt de webapplicatie lokaal uitgevoerd.  [Visual Studio Code](https://code.visualstudio.com/) is een IDE die een rijke interactieve ervaring biedt bij het schrijven en testen van een notitieblok.  Zie [Werken met Jupyter-notitieblokken in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)voor meer informatie.
 
 De resterende taak om de klasse in te stellen, is het verstrekken van lokale notitieblokken.  Zie hoe u [een omgeving configureert met Jupyter-notitieblokken](../../machine-learning/how-to-configure-environment.md#jupyter)voor instructies over het gebruik van de voorbeelden van Azure Machine Learning.  U ook uw eigen notitieblokken op de sjabloonmachine verstrekken.  De notitieblokken worden gekopieerd naar alle studentenmachines wanneer de sjabloon wordt gepubliceerd.
 

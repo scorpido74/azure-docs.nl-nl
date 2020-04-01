@@ -1,22 +1,26 @@
 ---
-title: Azure Active Directory-verificatie instellen
-description: Meer informatie over het configureren van Azure Active Directory-verificatie als identiteitsprovider voor uw App Service-app.
+title: Azure AD-verificatie configureren
+description: Meer informatie over het configureren van Azure Active Directory-verificatie als identiteitsprovider voor uw App Service- of Azure-functie-app.
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: fdad1f820d006c39fa135a29a5ec7377c47591f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b42f0966288e4ee72b689ddce6313a41e91f13e
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80046451"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80438036"
 ---
-# <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Uw App-service-app configureren om Azure AD-aanmelding te gebruiken
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Uw App-service- of Azure-functie-app configureren om Azure AD-aanmelding te gebruiken
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-In dit artikel ziet u hoe u Azure App Service configureert om Azure Active Directory (Azure AD) als verificatieprovider te gebruiken.
+In dit artikel ziet u hoe u Azure App Service of Azure-functies configureert om Azure Active Directory (Azure AD) als verificatieprovider te gebruiken.
+
+> [!NOTE]
+> Op dit moment wordt [Azure Active Directory v2.0](../active-directory/develop/v2-overview.md) (inclusief [MSAL)](../active-directory/develop/msal-overview.md)niet ondersteund voor Azure App Service en Azure Functions. Kijk terug voor updates.
+>
 
 Volg deze aanbevolen procedures bij het instellen van uw app en verificatie:
 
@@ -72,7 +76,8 @@ Voer de volgende stappen uit:
 1. Selecteer **web** en type `<app-url>/.auth/login/aad/callback`in Redirect **URI**. Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
 1. Selecteer **Maken**.
 1. Nadat de app-registratie is gemaakt, kopieert u de **id van toepassing (client)** en de **id directory (tenant)** voor later.
-1. Selecteer **Branding**. Voer in **de URL**van de startpagina de URL van uw App Service-app in en selecteer **Opslaan**.
+1. Selecteer **Verificatie**. Schakel **onder Impliciete toekenning** **ID-tokens** in om Aanmeldingen van OpenID Connect-gebruikers van App Service toe te staan.
+1. (Optioneel) Selecteer **Branding**. Voer in **de URL**van de startpagina de URL van uw App Service-app in en selecteer **Opslaan**.
 1. Selecteer **Een API-set** > **blootleggen**. Plak de URL van uw App Service-app en selecteer **Opslaan**.
 
    > [!NOTE]
@@ -96,7 +101,7 @@ Voer de volgende stappen uit:
     |Veld|Beschrijving|
     |-|-|
     |Client-id| Gebruik de **toepassings-id (client)** van de app-registratie. |
-    |Uitgever-id| * \<Tenant-id-id* `https://login.microsoftonline.com/<tenant-id>`>gebruiken en vervangen door de **directory -id (tenant)** van de app-registratie. |
+    |Url van uitgever| * \<Tenant-id-id* `https://login.microsoftonline.com/<tenant-id>`>gebruiken en vervangen door de **directory -id (tenant)** van de app-registratie. Deze waarde wordt gebruikt om gebruikers om te leiden naar de juiste Azure AD-tenant en om de juiste metagegevens te downloaden om bijvoorbeeld de juiste tokenondertekeningssleutels en claimwaarde voor tokenuitgevende instellingen te bepalen. |
     |Clientgeheim (optioneel)| Gebruik het clientgeheim dat u hebt gegenereerd in de app-registratie.|
     |Toegestane tokendoelgroepen| Als dit een cloud- of server-app is en u verificatietokens van een web-app wilt toestaan, voegt u hier de **Toepassings-ID URI** van de web-app toe. De geconfigureerde **client-id** wordt *altijd* impliciet beschouwd als een toegestane doelgroep. |
 
@@ -106,21 +111,21 @@ U Azure Active Directory nu gebruiken voor verificatie in uw App Service-app.
 
 ## <a name="configure-a-native-client-application"></a>Een native clienttoepassing configureren
 
-U native clients registreren om verificatie toe te staan met een clientbibliotheek, zoals de **Active Directory Authentication Library.**
+U native clients registreren om verificatie toe te staan voor web-API's die in uw app worden gehost met behulp van een clientbibliotheek, zoals de **Active Directory Authentication Library.**
 
 1. Selecteer active > **directory-app-registraties** > in de [Azure-portal]**nieuwe registratie**. **Active Directory**
 1. Voer **op de** pagina Een aanvraag registreren een **naam** in voor uw app-registratie.
 1. Selecteer **in Redirect URI**de optie Openbare client `<app-url>/.auth/login/aad/callback` **(mobiel & desktop)** en typ de URL . Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
     > [!NOTE]
-    > Voor een Windows-toepassing gebruikt u het [pakket SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) als uri- in plaats daarvan.
+    > Voor een Microsoft Store-toepassing gebruikt u het [pakket SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) als uri- in plaats daarvan.
 1. Selecteer **Maken**.
 1. Nadat de app-registratie is gemaakt, kopieert u de waarde van de id van **toepassing (client**).
 1. **API-machtigingen** > **toevoegen Voeg een machtiging** > **Mijn API's toe**.
 1. Selecteer de app-registratie die u eerder hebt gemaakt voor uw App Service-app. Als u de app-registratie niet ziet, controleert u of u het **user_impersonation-bereik** hebt toegevoegd in [Een app-registratie maken in Azure AD voor uw App Service-app](#register).
 1. Selecteer **user_impersonation**en selecteer **Machtigingen toevoegen**.
 
-U hebt nu een native clienttoepassing geconfigureerd die toegang heeft tot uw App Service-app.
+U hebt nu een native clienttoepassing geconfigureerd die namens een gebruiker toegang heeft tot uw App Service-app.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Volgende stappen
 
@@ -128,4 +133,4 @@ U hebt nu een native clienttoepassing geconfigureerd die toegang heeft tot uw Ap
 
 <!-- URLs. -->
 
-[Azure-portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

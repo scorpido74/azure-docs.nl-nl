@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b1d0c070a9196eaa9a2706a607baa9a2926e2db4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 615a6afb0f7a3e133603db10e7c79add3322070c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67051746"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476707"
 ---
 # <a name="publish-media-services-content-using-net"></a>Inhoud van Media Services publiceren met .NET  
 > [!div class="op_single_selector"]
-> * [Rest](media-services-rest-deliver-streaming-content.md)
+> * [REST](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [Portal](media-services-portal-publish.md)
 > 
@@ -108,7 +108,7 @@ De uitgangen:
 
 
 > [!NOTE]
-> U uw inhoud ook streamen via een SSL-verbinding. Als u deze aanpak wilt doen, moet u ervoor zorgen dat uw streaming-URL's beginnen met HTTPS. Op dit moment ondersteunt AMS geen SSL met aangepaste domeinen.
+> U uw inhoud ook streamen via een TLS-verbinding. Als u deze aanpak wilt doen, moet u ervoor zorgen dat uw streaming-URL's beginnen met HTTPS. Op dit moment ondersteunt AMS TLS niet met aangepaste domeinen.
 > 
 > 
 

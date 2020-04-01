@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8129239f152f6b359b930e56466052da12ef4d42
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616652"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437031"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Query uitvoeren op Apache Hive via het JDBC-stuurprogramma in HDInsight
 
@@ -31,7 +31,7 @@ Zie [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDB
 
 ## <a name="jdbc-connection-string"></a>JDBC-verbindingsreeks
 
-JDBC-verbindingen met een HDInsight-cluster op Azure worden gemaakt via poort 443 en het verkeer wordt beveiligd met SSL. De openbare gateway waar de clusters achter zitten, leidt het verkeer om naar de poort waar HiveServer2 daadwerkelijk op luistert. In de volgende verbindingstekenreeks wordt de indeling weergegeven die moet worden gebruikt voor HDInsight:
+JDBC-verbindingen met een HDInsight-cluster op Azure worden gemaakt via poort 443 en het verkeer wordt beveiligd met TLS/SSL. De openbare gateway waar de clusters achter zitten, leidt het verkeer om naar de poort waar HiveServer2 daadwerkelijk op luistert. In de volgende verbindingstekenreeks wordt de indeling weergegeven die moet worden gebruikt voor HDInsight:
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
@@ -49,7 +49,7 @@ Hostnaam 'CLUSTERNAME.azurehdinsight.net' in de verbindingstekenreeks is hetzelf
 
 U **poort 443** alleen gebruiken om vanaf sommige plaatsen buiten het virtuele Azure-netwerk verbinding te maken met het cluster. HDInsight is een managed service, wat betekent dat alle verbindingen met het cluster worden beheerd via een beveiligde Gateway. U geen verbinding maken met HiveServer 2 rechtstreeks op poorten 10001 of 10000 omdat deze poorten niet aan de buitenkant zijn blootgesteld. 
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Bij het tot stand brengen van de verbinding moet u de naam en het wachtwoord van de HDInsight-clusterbeheerder gebruiken om te verifiëren naar de clustergateway. Wanneer u verbinding maakt met JDBC-clients zoals SQuirreL SQL, moet u de naam en het wachtwoord van de beheerder invoeren in clientinstellingen.
 

@@ -3,12 +3,12 @@ title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate-toestel dat wordt gebruikt bij serverbeoordeling en -migratie.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 1bb3372467919f1471fa9577cd60e9cecaf1750d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336944"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437594"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -79,14 +79,14 @@ In de volgende tabel worden de vereisten voor Azure Migrate-toestel voor VMware 
 Het Azure Migrate-toestel heeft connectiviteit met internet nodig.
 
 - Wanneer u het toestel implementeert, controleert Azure Migrate de verbinding met de URL's die in de onderstaande tabel zijn samengevat.
-- Als u een proxy op basis van URL's gebruikt om verbinding te maken met internet, u toegang tot deze URL's toestaan en ervoor zorgen dat de proxy alle CNAME-records oplost die zijn ontvangen terwijl u de URL's opzoekt.
+- Als u een op URL gebaseerde proxy gebruikt om verbinding te maken met internet, moet u toegang tot deze URL's toestaan, zodat de proxy alle CNAME-records oplost die zijn ontvangen terwijl u de URL's opzoekt.
 
 **Url** | **Details**  
 --- | --- |
 *.portal.azure.com  | Ga naar Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Meld u aan bij uw Azure-abonnement.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Maak Active Directory-apps voor het toestel om te communiceren met Azure Migrate.
-management.azure.com | Maak Active Directory-apps voor het toestel om te communiceren met de Azure Migrate-service.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Maak AD-apps (Azure Active Directory) om te communiceren met Azure Migrate.
+management.azure.com | Azure AD-apps maken om te communiceren met de Azure Migrate-service.
 dc.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor interne controle.
 *.vault.azure.net | Geheimen beheren in de Azure Key Vault.
 aka.ms/* | Geef toegang tot aka-links. Wordt gebruikt voor updates van Azure Migrate appliance.

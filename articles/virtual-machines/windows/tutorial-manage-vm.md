@@ -1,5 +1,5 @@
 ---
-title: "Zelf studie: Windows-Vm's maken en beheren met Azure PowerShell"
+title: Zelfstudie - Windows VM's maken en beheren met Azure PowerShell
 description: In deze zelfstudie leert u hoe u Azure PowerShell gebruikt voor het maken en beheren van virtuele Windows-machines in Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: c48d5e514d854568043d001a22411b6a67f79e6a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74067816"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Zelfstudie: Windows-VM's maken en beheren met Azure PowerShell
@@ -30,20 +30,20 @@ Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele comp
 > * Een virtuele machine maken en verbinding maken met een virtuele machine
 > * VM-installatiekopieën selecteren en gebruiken
 > * Specifieke VM-grootten weergeven en gebruiken
-> * De grootte van een VM wijzigen
+> * De grootte van een virtuele machine wijzigen
 > * De status van een virtuele machine weergeven en begrijpen
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/powershell) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U Cloud Shell ook starten op [https://shell.azure.com/powershell](https://shell.azure.com/powershell)een apart browsertabblad door naar. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken
 
 Maak een resourcegroep met de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup).
 
-Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Voordat een virtuele machine wordt gemaakt, moet een resourcegroep worden gemaakt. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroupVM* gemaakt in de regio *VS - Oost*:
+Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Voordat een virtuele machine wordt gemaakt, moet een resourcegroep worden gemaakt. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroupVM* gemaakt in de *regio EastUS:*
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -94,7 +94,7 @@ Gebruik de volgende opdracht op uw lokale machine om een sessie met een extern b
 mstsc /v:<publicIpAddress>
 ```
 
-Selecteer in het venster **Windows-beveiliging** **Meer opties** en vervolgens **Een ander account gebruiken**. Typ de gebruikersnaam en het wachtwoord die u hebt gemaakt voor de VM en klik vervolgens op **OK**.
+Selecteer in het venster **Windows-beveiliging****Meer opties** en vervolgens **Een ander account gebruiken**. Typ de gebruikersnaam en het wachtwoord die u hebt gemaakt voor de VM en klik vervolgens op **OK**.
 
 ## <a name="understand-marketplace-images"></a>Inzicht krijgen in Marketplace-installatiekopieën
 
@@ -197,7 +197,7 @@ Als u een lijst wilt weergeven met de VM-grootten die beschikbaar zijn in een be
 Get-AzVMSize -Location "EastUS"
 ```
 
-## <a name="resize-a-vm"></a>De grootte van een VM wijzigen
+## <a name="resize-a-vm"></a>De grootte van een virtuele machine wijzigen
 
 Nadat een virtuele machine is geïmplementeerd, kan de grootte ervan worden gewijzigd om meer of minder resources toe te wijzen.
 
@@ -311,7 +311,7 @@ In deze zelfstudie hebt u geleerd over basistaken voor het maken en beheren van 
 > * Een virtuele machine maken en verbinding maken met een virtuele machine
 > * VM-installatiekopieën selecteren en gebruiken
 > * Specifieke VM-grootten weergeven en gebruiken
-> * De grootte van een VM wijzigen
+> * De grootte van een virtuele machine wijzigen
 > * De status van een virtuele machine weergeven en begrijpen
 
 In de volgende zelfstudie leert u meer over VM-schijven.  

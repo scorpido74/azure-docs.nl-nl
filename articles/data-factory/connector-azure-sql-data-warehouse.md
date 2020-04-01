@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 950bbc17af920f104f31af4d324f5546ff29217e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 822a981b84919670aa476567625cdf914206eaa8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257951"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422188"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens kopiëren en transformeren in Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) met Azure Data Factory 
 
@@ -485,7 +485,7 @@ Als niet aan de vereisten wordt voldaan, controleert Azure Data Factory de inste
 
 ### <a name="staged-copy-by-using-polybase"></a>Gefaseerde kopie met PolyBase
 
-Wanneer uw brongegevens niet native compatibel zijn met PolyBase, schakelt u gegevens kopiëren via een tussentijdse fasering Azure Blob-opslaginstantie in (het kan geen Azure Premium Storage zijn). In dit geval converteert Azure Data Factory de gegevens automatisch om te voldoen aan de vereisten voor gegevensindeling van PolyBase. Vervolgens wordt PolyBase aanroepen om gegevens in SQL Data Warehouse te laden. Ten slotte worden uw tijdelijke gegevens van de blob-opslag opgeschoond. Zie [Gefaseerde kopie](copy-activity-performance.md#staged-copy) voor meer informatie over het kopiëren van gegevens via een azure blob-opslagexemplaar met tijdelijke bestanden.
+Wanneer uw brongegevens niet native compatibel zijn met PolyBase, schakelt u gegevens kopiëren via een tussentijdse fasering Azure Blob-opslaginstantie in (het kan geen Azure Premium Storage zijn). In dit geval converteert Azure Data Factory de gegevens automatisch om te voldoen aan de vereisten voor gegevensindeling van PolyBase. Vervolgens wordt PolyBase aanroepen om gegevens in SQL Data Warehouse te laden. Ten slotte worden uw tijdelijke gegevens van de blob-opslag opgeschoond. Zie [Gefaseerde kopie](copy-activity-performance-features.md#staged-copy) voor meer informatie over het kopiëren van gegevens via een azure blob-opslagexemplaar met tijdelijke bestanden.
 
 Als u deze functie wilt gebruiken, maakt u een [gekoppelde Azure Blob Storage-service](connector-azure-blob-storage.md#linked-service-properties) die verwijst naar het Azure-opslagaccount met de tussentijdse blobopslag. Geef vervolgens `enableStaging` `stagingSettings` de eigenschappen en eigenschappen op voor de kopieeractiviteit zoals weergegeven in de volgende code.
 
@@ -613,7 +613,7 @@ Het gebruik van de instructie COPY ondersteunt de volgende configuratie:
 2. De opmaakinstellingen zijn met de volgende:
 
    1. Voor **Parket:** `compression` kan **geen compressie,** **Snappy**, of **GZip**.
-   2. Voor **ORC**: `compression` kan **geen compressie,** **zlib**, of **Snappy**.
+   2. Voor **ORC**: `compression` kan geen **compressie**, of **```zlib```** **Snappy**.
    3. Voor **afgebakende tekst**:
       1. `rowDelimiter`is expliciet ingesteld als **één teken** of "**\r\n**", de standaardwaarde wordt niet ondersteund.
       2. `nullValue`wordt standaard achtergelaten of ingesteld op **lege tekenreeks** ("").
@@ -705,7 +705,7 @@ Instellingen die specifiek zijn voor Azure Synapse Analytics zijn beschikbaar op
 
 * SQL-voorbeeld:```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Batchgrootte:** voer een batchgrootte in om grote gegevens in reads te splitsen.
+**Batchgrootte:** voer een batchgrootte in om grote gegevens in reads te splitsen. In gegevensstromen gebruikt ADF deze instelling om caches van spark-kolommen in te stellen. Dit is een optieveld dat Spark-standaardinstellingen gebruikt als deze leeg blijft.
 
 **Isolatieniveau:** de standaardwaarde voor SQL-bronnen in de toewijzingsgegevensstroom wordt niet-vastgelegd gelezen. U het isolatieniveau hier wijzigen in een van deze waarden:
 * Waarvoor u zich inzet

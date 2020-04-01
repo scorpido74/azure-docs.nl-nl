@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka SSL-versleuteling & verificatie - Azure HDInsight
-description: Ssl-versleuteling instellen voor communicatie tussen Kafka-klanten en Kafka-makelaars en tussen Kafka-makelaars. SSL-verificatie van clients instellen.
+title: Apache Kafka TLS-versleuteling &-verificatie - Azure HDInsight
+description: Stel TLS-encryptie in voor communicatie tussen Kafka-klanten en Kafka-makelaars en tussen Kafka-makelaars. SSL-verificatie van clients instellen.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,25 +8,25 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4a363caf61046cf39c31ae2d5f35622b7b9109f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 027a66f4b83225f3c776e1bff1d706f6f4dba976
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130011"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437000"
 ---
-# <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Ssl-versleuteling en -verificatie (Secure Sockets Layer) instellen voor Apache Kafka in Azure HDInsight
+# <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>TLS-versleuteling en -verificatie instellen voor Apache Kafka in Azure HDInsight
 
-In dit artikel ziet u hoe u SSL-versleuteling instellen tussen Apache Kafka-clients en Apache Kafka-makelaars. Het toont u ook hoe u verificatie van clients instelt (soms aangeduid als tweerichtingsSSL).
+In dit artikel ziet u hoe u TLS-versleuteling (Transport Layer Security), voorheen bekend als Secure Sockets Layer (SSL)-versleuteling, instelt tussen Apache Kafka-clients en Apache Kafka-makelaars. Het toont u ook hoe u authenticatie van clients (soms aangeduid als twee-weg TLS) in te stellen.
 
 > [!Important]
-> Er zijn twee clients die u gebruiken voor Kafka-toepassingen: een Java-client en een consoleclient. Alleen de `ProducerConsumer.java` Java-client kan SSL gebruiken voor zowel produceren als consumeren. De client `console-producer.sh` van de consoleproducent werkt niet met SSL.
+> Er zijn twee clients die u gebruiken voor Kafka-toepassingen: een Java-client en een consoleclient. Alleen de `ProducerConsumer.java` Java-client kan TLS gebruiken voor zowel produceren als consumeren. De consoleproducerclient `console-producer.sh` werkt niet met TLS.
 
 > [!Note] 
 > HDInsight Kafka console producent met versie 1.1 ondersteunt geen SSL.
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka makelaar setup
 
-De instelling voor Kafka SSL-broker gebruikt vier HDInsight-clustervm's op de volgende manier:
+De instelling voor Kafka TLS-broker gebruikt vier HDInsight-clusterVM's op de volgende manier:
 
 * headnode 0 - Certificaatautoriteit (CA)
 * worker node 0, 1 en 2 - brokers
@@ -119,7 +119,7 @@ Gebruik de volgende gedetailleerde instructies om de installatie van de makelaar
 
     ```
 
-## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>Kafka-configuratie bijwerken om SSL te gebruiken en brokers opnieuw op te starten
+## <a name="update-kafka-configuration-to-use-tls-and-restart-brokers"></a>Kafka-configuratie bijwerken om TLS te gebruiken en brokers opnieuw op te starten
 
 U hebt nu elke Kafka-broker ingesteld met een keystore en truststore en de juiste certificaten geïmporteerd. Wijzig vervolgens gerelateerde Kafka-configuratie-eigenschappen met Ambari en start vervolgens de Kafka-brokers opnieuw.
 
@@ -166,7 +166,7 @@ Ga als volgt te werk om de configuratiewijziging te voltooien:
 
 ## <a name="client-setup-without-authentication"></a>Clientinstelling (zonder verificatie)
 
-Als u geen verificatie nodig hebt, is de samenvatting van de stappen om alleen SSL-versleuteling in te stellen:
+Als u geen verificatie nodig hebt, is de samenvatting van de stappen om alleen TLS-versleuteling in te stellen:
 
 1. Meld u aan bij de CA (actief hoofdknooppunt).
 1. Kopieer het CA-cert naar de clientmachine vanuit de CA-machine (wn0).
@@ -219,7 +219,7 @@ Deze stappen worden beschreven in de volgende codefragmenten.
 ## <a name="client-setup-with-authentication"></a>Clientinstelling (met verificatie)
 
 > [!Note]
-> De volgende stappen zijn alleen vereist als **and** u zowel SSL-versleuteling als verificatie instelt. Als u alleen versleuteling instelt, raadpleegt u [Clientsetup zonder verificatie.](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)
+> De volgende stappen zijn alleen vereist als **and** u zowel TLS-versleuteling als verificatie instelt. Als u alleen versleuteling instelt, raadpleegt u [Clientsetup zonder verificatie.](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)
 
 In de volgende vier stappen worden de taken samengevat die nodig zijn om de clientinstelling te voltooien:
 
@@ -302,7 +302,7 @@ De details van elke stap worden hieronder gegeven.
 ## <a name="verification"></a>Verificatie
 
 > [!Note]
-> Als HDInsight 4.0 en Kafka 2.1 zijn geïnstalleerd, u de consoleproducent/consumenten gebruiken om uw installatie te verifiëren. Zo niet, voer dan de Kafka-producent uit op poort 9092 en stuur berichten naar het onderwerp en gebruik vervolgens de Kafka-consument op poort 9093 die SSL gebruikt.
+> Als HDInsight 4.0 en Kafka 2.1 zijn geïnstalleerd, u de consoleproducent/consumenten gebruiken om uw installatie te verifiëren. Zo niet, voer dan de Kafka-producent uit op poort 9092 en stuur berichten naar het onderwerp en gebruik vervolgens de Kafka-consument op poort 9093 die TLS gebruikt.
 
 ### <a name="kafka-21-or-above"></a>Kafka 2.1 of hoger
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cba97b84f77bd4e2d4cfd97601fa4f8637105eb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051412"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396072"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informatie over claimresolvers in het aangepaste Azure Directory B2C-beleid
 
@@ -76,7 +76,7 @@ In de volgende secties worden beschikbare claimresolvers vermeld.
 | {OIDC:Prompt} | De `prompt` parameter querytekenreeks. | aanmelding |
 | {OIDC:RedirectUri} |De `redirect_uri` parameter querytekenreeks. | https://jwt.ms |
 | {OIDC:Resource} |De `resource` parameter querytekenreeks. | N.v.t. |
-| {OIDC:scope} |De `scope` parameter querytekenreeks. | Openid |
+| {OIDC:Scope} |De `scope` parameter querytekenreeks. | Openid |
 | {OIDC:Gebruikersnaam}| De wachtwoordreferenties van de [broneigenaar stromen door](ropc-custom.md) de gebruikersnaam van de gebruiker.| emily@contoso.com| 
 
 ### <a name="context"></a>Context
@@ -162,7 +162,7 @@ In het volgende voorbeeld wordt een RESTful technisch profiel met dit scenario w
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:Scope}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
@@ -175,7 +175,7 @@ Met behulp van claimresolvers u de aanmeldingsnaam of directe aanmelding vooraf 
 
 ### <a name="dynamic-ui-customization"></a>Dynamische aanpassing van de gebruikersinterface
 
-Met Azure AD B2C u querytekenreeksparameters doorgeven aan uw eindpunten voor html-inhoudsdefinitie om de pagina-inhoud dynamisch weer te geven. Hiermee u bijvoorbeeld de achtergrondafbeelding op de aanmeldings- of aanmeldingspagina van Azure AD B2C wijzigen op basis van een aangepaste parameter die u vanaf uw web- of mobiele toepassing passeert. Zie [De gebruikersinterface dynamisch configureren met behulp van aangepaste beleidsregels in Azure Active Directory B2C](custom-policy-ui-customization.md)voor meer informatie. U uw HTML-pagina ook lokaliseren op basis van een taalparameter of u de inhoud wijzigen op basis van de client-id.
+Met Azure AD B2C u querytekenreeksparameters doorgeven aan uw eindpunten voor html-inhoudsdefinitie om de pagina-inhoud dynamisch weer te geven. Met deze functie u bijvoorbeeld de achtergrondafbeelding op de aanmeldings- of aanmeldingspagina van Azure AD B2C wijzigen op basis van een aangepaste parameter die u vanaf uw web- of mobiele toepassing passeert. Zie [De gebruikersinterface dynamisch configureren met behulp van aangepaste beleidsregels in Azure Active Directory B2C](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)voor meer informatie. U uw HTML-pagina ook lokaliseren op basis van een taalparameter of u de inhoud wijzigen op basis van de client-id.
 
 In het volgende voorbeeld wordt de parameter querytekenreeks `Hawaii`met de naam **campaignId** doorgegeven met een waarde van , een **taalcode** van `en-US`en **app** die de client-id vertegenwoordigt:
 

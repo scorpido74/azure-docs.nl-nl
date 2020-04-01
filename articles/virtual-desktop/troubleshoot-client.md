@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e3a240901ffca2c126e2b61eaee0cf287cc31d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 595762e6e8f22dddff30f1cff8c4bb79e89624b1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127506"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473847"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Problemen met de Extern bureaublad-client oplossen
 
@@ -21,21 +21,15 @@ In dit artikel worden veelvoorkomende problemen met de Extern bureaublad-client 
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Extern bureaublad-client voor Windows 7 of Windows 10 reageert niet meer of kan niet worden geopend
 
-Gebruik de volgende PowerShell-cmdlets om out-of-band (OOB)-clientregisters op te ruimen.
+Vanaf versie 1.2.790 u de gebruikersgegevens opnieuw instellen vanaf de pagina Info of met een opdracht.
 
-```PowerShell
-Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
+Gebruik de volgende opdracht om uw gebruikersgegevens te verwijderen, de standaardinstellingen te herstellen en u af te melden voor alle werkruimten.
 
-#Remove RdClientRadc registry key
-Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
-
-#Remove all files under %appdata%\RdClientRadc
-Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
+```cmd
+msrdcw.exe /reset [/f]
 ```
 
-Navigeer naar **%AppData%\RdClientRadc** en verwijder alle inhoud.
-
-Verwijder en installeer de Extern bureaublad-client opnieuw voor Windows 7 en Windows 10.
+Als u een eerdere versie van de Extern bureaublad-client gebruikt, raden we u aan de client te verwijderen en opnieuw te installeren.
 
 ## <a name="web-client-wont-open"></a>Webclient wordt niet geopend
 

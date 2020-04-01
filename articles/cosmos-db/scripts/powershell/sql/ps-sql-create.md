@@ -1,20 +1,20 @@
 ---
-title: Power shell-script voor het maken van Azure Cosmos DB SQL-API-data base en-container
-description: Azure PowerShell script-Azure Cosmos DB SQL-API-data base en-container maken
+title: PowerShell-script om Azure Cosmos DB SQL API-database en -container te maken
+description: Azure PowerShell-script - Azure Cosmos DB maken SQL API-database en -container
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5a57b8cb3e4e7076d3be73a9010d9a29a8b004a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 719e2cd831a982c62ab965cd7dc8a37c4cb41265
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441360"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365614"
 ---
-# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>Een Data Base en container maken voor de API van Azure Cosmos DB-SQL (core)
+# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-api"></a>Een database en container maken voor Azure Cosmos DB - SQL API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,9 +22,9 @@ ms.locfileid: "75441360"
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
-Met dit script maakt u een Cosmos-account voor SQL-API (core) in twee regio's met consistentie op sessie niveau, een Data Base met een gedeelde door Voer en een container met een partitie sleutel, aangepast indexerings beleid, uniek sleutel beleid, TTL, toegewezen door Voer en laatste schrijver WINS conflict oplossings beleid met een aangepast pad voor conflict oplossing dat wordt gebruikt wanneer `multipleWriteLocations=true`.
+Dit script maakt een Cosmos-account voor SQL (Core) API in twee regio's met consistentie op sessieniveau, een database en een container met een partitiesleutel, aangepast indexeringsbeleid, `multipleWriteLocations=true`uniek sleutelbeleid, TTL, speciale doorvoer en laatste schrijver wint conflictoplossingsbeleid met een aangepast conflictoplossingspad dat wordt gebruikt wanneer .
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create an account, database, and container for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create an account, database, and container for SQL API")]
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
@@ -40,9 +40,17 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure-resources**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resource groepen**| |
+|**Azure Cosmos DB**| |
+| [Nieuw-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Hiermee maakt u een nieuw Cosmos DB-account. |
+| [Set-azcosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Hiermee maakt u een nieuwe of worden een bestaande Cosmos DB SQL Database bijgewerkt. |
+| [Nieuw-azcosmosDBSqlUniqueKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekey) | Hiermee maakt u een nieuw Cosmos DB SQL UniqueKey-object. |
+| [Nieuw-azcosmosDBsqluniqueKeyPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekeypolicy) | Hiermee maakt u een nieuw object Cosmos DB SQL UniqueKeyPolicy. |
+| [Nieuw-azcosmosdbsqlincludedpathindex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpathindex) | Hiermee maakt u een nieuw object van het type PSIndexes dat wordt gebruikt als parameter voor Set-AzCosmosDBSqlIncludedPath. |
+| [Nieuw-azcosmosdbsqlincludedpath](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpath) | Hiermee maakt u een nieuw object van het type PSIncludedPath dat wordt gebruikt als parameter voor Nieuw-AzCosmosDBSqlIndexingPolicy. |
+| [Nieuw-AzCosmosDBSqlIndexingBeleid](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlindexingpolicy) | Hiermee maakt u een nieuw object van het type PSSqlIndexingPolicy dat wordt gebruikt als parameter voor Set-AzCosmosDBSqlContainer. |
+| [Nieuw-azcosmosdbsqlconflictresolutionpolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlconflictresolutionpolicy) | Hiermee maakt u een nieuw object van het type PSSqlConflictResolutionPolicy dat wordt gebruikt als parameter voor Set-AzCosmosDBSqlContainer. |
+| [Set-azcosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Hiermee maakt u een nieuwe of worden een bestaande Cosmos DB SQL Container bijgewerkt. |
+|**Azure-brongroepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: b75b232c048a1ea49256b12ce1b65c4bd87a1cf0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75970783a9408df0a8c128fb9540606e4e4a62f3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535439"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478169"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>De aangepaste scriptextensie van Azure versie 2 gebruiken met virtuele Linux-machines
 De Custom Script Extension Version 2 downloadt en voert scripts uit op virtuele Azure-machines. Deze extensie is handig voor configuratie na implementatie, software-installatie of een andere configuratie/beheertaak. U scripts downloaden van Azure Storage of een andere toegankelijke internetlocatie, of u ze aan de runtime van de extensie verstrekken. 
@@ -209,6 +209,8 @@ CustomScript gebruikt het volgende algoritme om een script uit te voeren.
  1. voer het script uit met behulp van _/bin/sh -c /var/lib/waagent/custom-script/#/script.sh.
 
 ####  <a name="property-managedidentity"></a>Eigenschap: managedIdentity
+> [!NOTE]
+> Deze eigenschap **mag** alleen in beveiligde instellingen worden opgegeven.
 
 CustomScript (versie 2.1) ondersteunt [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor het downloaden van bestanden(en) van URL's die in de instelling 'fileUris' worden gegeven. Hiermee heeft CustomScript toegang tot privéblobs of containers van Azure Storage zonder dat de gebruiker geheimen zoals SAS-tokens of opslagaccountsleutels hoeft door te geven.
 
@@ -283,7 +285,7 @@ Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sja
 >[!NOTE]
 >Deze eigenschapsnamen zijn geval-gevoelig. Gebruik de namen zoals hier weergegeven om implementatieproblemen te voorkomen.
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 Wanneer u Azure CLI gebruikt om de aangepaste scriptextensie uit te voeren, maakt u een configuratiebestand of -bestanden. Je moet minimaal 'commandToExecute' hebben.
 
 ```azurecli
@@ -466,4 +468,3 @@ info:    vm extension get command OK
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [custom-script-extension-linux repo](https://github.com/Azure/custom-script-extension-linux)voor de code, huidige problemen en versies.
-

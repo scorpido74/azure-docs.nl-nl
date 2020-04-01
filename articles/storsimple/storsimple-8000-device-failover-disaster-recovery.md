@@ -1,5 +1,5 @@
 ---
-title: Failover en herstel na noodgevallen voor apparaten uit de StorSimple 8000-serie
+title: Failover en disaster recovery voor StorSimple 8000 serie apparaat
 description: Meer informatie over hoe u falen op uw StorSimple-apparaat voor zichzelf, een ander fysiek apparaat of een cloudtoestel.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: c1acc084d5abe3385fe311873dfd64c9009e83f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 179bc5cdf982792f41e0dec209341f346959a31a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79254961"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397513"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Failover en herstel na noodgevallen voor apparaat uit de StorSimple 8000-serie
 

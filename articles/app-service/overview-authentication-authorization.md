@@ -1,22 +1,22 @@
 ---
 title: Verificatie en autorisatie
-description: Meer informatie over de ingebouwde verificatie- en autorisatieondersteuning in Azure App Service en hoe deze uw app kan beveiligen tegen ongeautoriseerde toegang.
+description: Meer informatie over de ingebouwde verificatie- en autorisatieondersteuning in Azure App Service en Azure-functies en hoe deze uw app kan beveiligen tegen ongeautoriseerde toegang.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
-ms.custom: seodec18
-ms.openlocfilehash: 825d113bbe081ba6fb85da19ff6449824db92d10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f16b10f13c945dd7f1ae4fdc3f4e02dcd7c5a018
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475388"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437948"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service"></a>Verificatie en autorisatie in Azure App Service
+# <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Verificatie en autorisatie in Azure App Service en Azure-functies
 
 > [!NOTE]
-> Op dit moment wordt AAD V2 (inclusief MSAL) niet ondersteund voor Azure App Services en Azure Functions. Kijk terug voor updates.
+> Op dit moment wordt [Azure Active Directory v2.0](../active-directory/develop/v2-overview.md) (inclusief [MSAL)](../active-directory/develop/msal-overview.md)niet ondersteund voor Azure App Service en Azure Functions. Kijk terug voor updates.
 >
 
 Azure App Service biedt ingebouwde verificatie- en autorisatieondersteuning, zodat u gebruikers aanmelden en toegang krijgen tot gegevens door minimale of geen code te schrijven in uw web-app, RESTful API en mobiele back-end, en ook [Azure-functies.](../azure-functions/functions-overview.md) In dit artikel wordt beschreven hoe App Service helpt bij het vereenvoudigen van verificatie en autorisatie voor uw app.
@@ -24,7 +24,7 @@ Azure App Service biedt ingebouwde verificatie- en autorisatieondersteuning, zod
 Veilige verificatie en autorisatie vereisen een diepgaand begrip van beveiliging, waaronder federatie, versleuteling, [JSON-webtokens (JWT)-beheer,](https://wikipedia.org/wiki/JSON_Web_Token) [subsidietypen,](https://oauth.net/2/grant-types/)enzovoort. App Service biedt deze hulpprogramma's, zodat u meer tijd en energie besteden aan het leveren van bedrijfswaarde aan uw klant.
 
 > [!IMPORTANT]
-> U hoeft geen App Service te gebruiken voor AuthN/AuthO. U de gebundelde beveiligingsfuncties gebruiken in uw webframework naar keuze, of u uw eigen hulpprogramma's schrijven. Houd er echter rekening mee dat [Chrome 80 baanbrekende wijzigingen aanbrengt in de implementatie van SameSite voor cookies](https://www.chromestatus.com/feature/5088147346030592) (releasedatum rond maart 2020) en aangepaste verificatie op afstand of andere scenario's die afhankelijk zijn van het plaatsen van cross-site cookies kunnen breken wanneer chrome-browsers van de client worden bijgewerkt. De tijdelijke oplossing is complex omdat deze verschillende SameSite-gedragingen voor verschillende browsers moet ondersteunen. 
+> U hoeft deze functie niet te gebruiken voor verificatie en autorisatie. U de gebundelde beveiligingsfuncties gebruiken in uw webframework naar keuze, of u uw eigen hulpprogramma's schrijven. Houd er echter rekening mee dat [Chrome 80 baanbrekende wijzigingen aanbrengt in de implementatie van SameSite voor cookies](https://www.chromestatus.com/feature/5088147346030592) (releasedatum rond maart 2020) en aangepaste verificatie op afstand of andere scenario's die afhankelijk zijn van het plaatsen van cross-site cookies kunnen breken wanneer chrome-browsers van de client worden bijgewerkt. De tijdelijke oplossing is complex omdat deze verschillende SameSite-gedragingen voor verschillende browsers moet ondersteunen. 
 >
 > De ASP.NET Core 2.1 en hoger versies die worden gehost door App Service zijn al gepatcht voor deze baanbrekende wijziging en omgaan met Chrome 80 en oudere browsers op de juiste manier. Bovendien wordt dezelfde patch voor ASP.NET Framework 4.7.2 in januari 2020 geïmplementeerd in de app-service-exemplaren. Zie [Azure App Service SameSite-cookie-update](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)voor meer informatie, waaronder hoe u weet of uw app de patch heeft ontvangen.
 >
@@ -46,11 +46,11 @@ Deze module behandelt verschillende dingen voor uw app:
 
 De module wordt apart uitgevoerd van uw toepassingscode en is geconfigureerd met behulp van app-instellingen. Er zijn geen SDK's, specifieke talen of wijzigingen in uw toepassingscode vereist. 
 
-### <a name="user-claims"></a>Gebruikersclaims
+### <a name="userapplication-claims"></a>Gebruikers-/toepassingsclaims
 
-Voor alle taalframeworks stelt App Service de claims van de gebruiker beschikbaar voor uw code door ze in de aanvraagkoppen te injecteren. Voor ASP.NET 4.6-apps vult App Service [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) in met de claims van de geverifieerde gebruiker, `[Authorize]` zodat u het standaard .NET-codepatroon volgen, inclusief het kenmerk. Voor PHP-apps vult App Service `_SERVER['REMOTE_USER']` de variabele. Voor Java-apps zijn de claims [toegankelijk vanaf de Tomcat servlet.](containers/configure-language-java.md#authenticate-users-easy-auth)
+Voor alle taalframeworks maakt App Service de claims in het binnenkomende token (of dat nu afkomstig is van een geverifieerde eindgebruiker of een clienttoepassing) beschikbaar voor uw code door ze in de aanvraagkoppen te injecteren. Voor ASP.NET 4.6-apps vult App Service [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) in met de claims van de geverifieerde gebruiker, `[Authorize]` zodat u het standaard .NET-codepatroon volgen, inclusief het kenmerk. Voor PHP-apps vult App Service `_SERVER['REMOTE_USER']` de variabele. Voor Java-apps zijn de claims [toegankelijk vanaf de Tomcat servlet.](containers/configure-language-java.md#authenticate-users-easy-auth)
 
-Voor [Azure-functies](../azure-functions/functions-overview.md) `ClaimsPrincipal.Current` is deze niet gehydrateerd voor .NET-code, maar u de gebruikersclaims nog steeds vinden in de aanvraagkoppen.
+Voor [Azure-functies](../azure-functions/functions-overview.md) `ClaimsPrincipal.Current` wordt deze niet ingevuld voor .NET-code, maar u de `ClaimsPrincipal` gebruikersclaims nog steeds vinden in de aanvraagkoppen of het object ophalen uit de aanvraagcontext of zelfs via een bindende parameter. Zie [werken met klantidentiteiten](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) voor meer informatie.
 
 Zie [Gebruikersclaims van Access](app-service-authentication-how-to.md#access-user-claims)voor meer informatie .
 
@@ -63,7 +63,7 @@ App Service biedt een ingebouwde tokenstore, een opslagplaats van tokens die zij
 
 U moet doorgaans code schrijven om deze tokens in uw toepassing te verzamelen, op te slaan en te vernieuwen. Met de tokenwinkel [haalt](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) u de tokens op wanneer u ze nodig hebt en [vertelt u App Service om ze te vernieuwen](app-service-authentication-how-to.md#refresh-identity-provider-tokens) wanneer ze ongeldig worden. 
 
-De id-tokens, toegangstokens en vernieuwingstokens die in de cache zijn opgeslagen voor de geverifieerde sessie, zijn alleen toegankelijk voor de gekoppelde gebruiker.  
+De id-tokens, toegangstokens en vernieuwingstokens worden in de cache opgeslagen voor de geverifieerde sessie en zijn alleen toegankelijk voor de gekoppelde gebruiker.  
 
 Als u niet met tokens in uw app hoeft te werken, u de tokenstore uitschakelen.
 
@@ -93,7 +93,7 @@ De verificatiestroom is hetzelfde voor alle providers, maar verschilt afhankelij
 - Met provider SDK: De toepassing meldt gebruikers handmatig in bij de provider en verzendt het verificatietoken vervolgens naar App Service voor validatie. Dit is meestal het geval met browserloze apps, die de aanmeldingspagina van de provider niet aan de gebruiker kunnen presenteren. De toepassingscode beheert het aanmeldingsproces, dus het wordt ook wel _clientgerichte stroom_ of _clientstroom_genoemd. Deze case is van toepassing op REST API's, [Azure Functions](../azure-functions/functions-overview.md)en JavaScript-browserclients, evenals browser-apps die meer flexibiliteit nodig hebben in het aanmeldingsproces. Het is ook van toepassing op native mobiele apps die gebruikers aanmelden met behulp van de SDK van de provider.
 
 > [!NOTE]
-> Oproepen vanuit een vertrouwde browser-app in App Service-aanroepen, een andere REST API in App Service of [Azure Functions](../azure-functions/functions-overview.md) kan worden geverifieerd met behulp van de servergestuurde stroom. Zie [Verificatie en autorisatie aanpassen in App-service voor](app-service-authentication-how-to.md)meer informatie.
+> Oproepen van een vertrouwde browser-app in App-service naar een andere REST-API in App-service of [Azure-functies](../azure-functions/functions-overview.md) kunnen worden geverifieerd met behulp van de servergestuurde stroom. Zie [Verificatie en autorisatie aanpassen in App-service voor](app-service-authentication-how-to.md)meer informatie.
 >
 
 De onderstaande tabel toont de stappen van de verificatiestroom.

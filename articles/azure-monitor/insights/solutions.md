@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: a04ca3768ade6058c59393591c252bc4347a3663
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: c2690ad7cc4dcaa295bfb08b8c0396438ada0807
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275202"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437532"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Bewakingsoplossingen in Azure Monitor
 Monitoringoplossingen maken gebruik van services in Azure om extra inzicht te bieden in de werking van een bepaalde toepassing of service. In dit artikel vindt u een kort overzicht van bewakingsoplossingen in Azure en details over het gebruik en de installatie ervan.
@@ -83,11 +83,7 @@ Voor alle bewakingsoplossingen is een [Log Analytics-werkruimte](../platform/man
 * Als een oplossing een Automatiseringsaccount vereist, moeten de werkruimte Log Analytics en het automatiseringsaccount aan elkaar worden gekoppeld. Een Log Analytics-werkruimte mag slechts aan één Automatiseringsaccount worden gekoppeld en een Automatiseringsaccount mag slechts aan één Log Analytics-werkruimte worden gekoppeld.
 * Om te worden gekoppeld, moeten de werkruimte Log Analytics en het automatiseringsaccount zich in dezelfde resourcegroep en -regio bevinden. De uitzondering is een werkruimte in de regio Oost-VS en automatiseringsaccount in Oost-VS 2.
 
-### <a name="create-a-link-between-a-log-analytics-workspace-and-automation-account"></a>Een koppeling maken tussen een Log Analytics-werkruimte en een automatiseringsaccount
-Hoe u het log analytics-werkruimte en automatiseringsaccount opgeeft, is afhankelijk van de installatiemethode voor uw oplossing.
-
-* Wanneer u een oplossing installeert via de Azure Marketplace, wordt u gevraagd om een werkruimte- en automatiseringsaccount. De koppeling tussen hen wordt gemaakt als ze nog niet zijn gekoppeld.
-* Voor oplossingen buiten de Azure Marketplace moet u het log analytics-werkruimte- en automatiseringsaccount koppelen voordat u de oplossing installeert. U dit doen door elke oplossing in de Azure Marketplace te selecteren en het log Analytics-werkruimte- en automatiseringsaccount te selecteren. U hoeft de oplossing niet daadwerkelijk te installeren omdat de koppeling wordt gemaakt zodra de werkruimte log-analyse en het automatiseringsaccount zijn geselecteerd. Zodra de koppeling is gemaakt, u dat Log Analytics-werkruimte en automatiseringsaccount gebruiken voor elke oplossing.
+Wanneer u een oplossing installeert via de Azure Marketplace, wordt u gevraagd om een werkruimte- en automatiseringsaccount. De koppeling tussen hen wordt gemaakt als ze nog niet zijn gekoppeld.
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>De koppeling tussen een Log Analytics-werkruimte en een automatiseringsaccount verifiëren
 U de koppeling tussen een log-analysewerkruimte en een automatiseringsaccount verifiëren via de volgende procedure.

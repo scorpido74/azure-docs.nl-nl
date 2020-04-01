@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: 5aaaf539c07a7ba2c2463d5bfd1f452853f52379
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b471fbb62862cd48ebbb239d65b563aa109ef629
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603686"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435484"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Onboarding van Azure Security Center automatiseren met PowerShell
 
@@ -29,13 +29,13 @@ Onboarding Azure Security Center met PowerShell stelt u in staat om onboarding e
 
 In dit artikel vindt u een voorbeeld van PowerShell-script dat in uw omgeving kan worden gewijzigd en gebruikt om Beveiligingscentrum voor uw abonnementen uit te rollen. 
 
-In dit voorbeeld schakelen we Security Center in op een abonnement met ID: d07c0080-170c-4c24-861d-9c817742786c en passen de aanbevolen instellingen toe die een hoog beschermingsniveau bieden, door de standaardlaag van beveiligingscentrum te implementeren, die de standaardlaag van beveiligingscentrum implementeert, die de aanbevolen instellingen biedt die een hoog beschermingsniveau bieden, geavanceerde mogelijkheden voor bescherming en detectie van bedreigingen:
+In dit voorbeeld schakelen we Security Center in op een abonnement met ID: d07c0080-170c-4c24-861d-9c817742786c en passen de aanbevolen instellingen toe die een hoog beschermingsniveau bieden, door de standaardlaag van beveiligingscentrum te implementeren, die geavanceerde mogelijkheden voor bescherming van bedreigingen en detectiebiedt:
 
 1. Stel het [standaardbeschermingsniveau van het Beveiligingscentrum in.](https://azure.microsoft.com/pricing/details/security-center/) 
  
-2. Stel de werkruimte Log Analytics in waarnaar de Microsoft Monitoring Agent de gegevens verzendt die worden gebruikt op de VM's die aan het abonnement zijn gekoppeld, in dit voorbeeld een bestaande door de gebruiker gedefinieerde werkruimte (myWorkspace).
+2. Stel de werkruimte Log Analytics in waarnaar de Log Analytics-agent de gegevens verzendt die worden gebruikt op de VM's die aan het abonnement zijn gekoppeld, in dit voorbeeld een bestaande door de gebruiker gedefinieerde werkruimte (myWorkspace).
 
-3. Activeer de automatische agentinrichting van het beveiligingscentrum die [de Microsoft Monitoring Agent implementeert.](security-center-enable-data-collection.md#auto-provision-mma)
+3. Activeer de automatische agentinrichting van het beveiligingscentrum die [de log-analyse-agent implementeert.](security-center-enable-data-collection.md#auto-provision-mma)
 
 5. Stel de CISO van de organisatie [in als de beveiligingscontactpersoon voor waarschuwingen van het Beveiligingscentrum en opmerkelijke gebeurtenissen.](security-center-provide-security-contact-details.md)
 
@@ -68,7 +68,7 @@ Deze stappen moeten worden uitgevoerd voordat u de cmdlets van het Beveiligingsc
         Set-AzSecurityWorkspaceSetting -Name "default" -Scope
         "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
 
-4.  Installatie van de Microsoft-bewakingsagent automatisch inrichten op uw Azure VM's:
+4.  Installatie van de Log Analytics-agent automatisch inrichten op uw Azure VM's:
     
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     

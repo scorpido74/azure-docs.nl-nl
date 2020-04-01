@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aa2e2fb4eb6e269f45494db6d87eef40182971a2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 37d1c181c18f69c040040da2be138eaad3a61693
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346928"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396862"
 ---
 # <a name="secure-your-restful-services"></a>Beveilig uw RESTful-services 
 
@@ -186,6 +186,8 @@ Het volgende is een voorbeeld van een RESTful technisch profiel dat is geconfigu
 
 ## <a name="oauth2-bearer-authentication"></a>OAuth2 verificatie aan toonder 
 
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
+
 Tokenverificatie aan toonder wordt gedefinieerd in [OAuth2.0 Authorization Framework: Toondertokengebruik (RFC 6750).](https://www.rfc-editor.org/rfc/rfc6750.txt) Bij verificatie van token aan toonder verzendt Azure AD B2C een HTTP-aanvraag met een token in de autorisatiekoptekst.
 
 ```http
@@ -196,6 +198,7 @@ Een token aan toonder is een ondoorzichtige tekenreeks. Het kan een JWT-toegangs
 
 - **Toondertoken**. Om het token aan toonder in het technische profiel van Restful te kunnen verzenden, moet uw beleid eerst het token aan toonder verwerven en vervolgens gebruiken in het technische profiel van RESTful.  
 - **Statisch token aan de drager**. Gebruik deze aanpak wanneer uw REST API een langdurend toegangstoken uitgeeft. Als u een statisch token aan toonder wilt gebruiken, maakt u een beleidssleutel en verwijst u vanuit het technische profiel RESTful naar uw beleidssleutel. 
+
 
 ## <a name="using-oauth2-bearer"></a>OAuth2-drager gebruiken  
 

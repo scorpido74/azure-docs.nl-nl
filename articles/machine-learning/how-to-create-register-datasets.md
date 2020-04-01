@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: c78c1d3ce6dae874ace2abfa8b2bbec6d489538a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4025c620aea49dfb26ab203630c121d29d88d9d7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536476"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474529"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning-gegevenssets maken
 
@@ -52,7 +52,7 @@ De belangrijkste factor is hoe groot de gegevensset is in het geheugen, d.w.z. a
  
 Als u panda's gebruikt, is er geen reden om meer dan 1 vCPU te hebben, want dat is alles wat het zal gebruiken. U eenvoudig parallel lopen met veel vCPU's op één Azure Machine Learning-rekeninstantie/knooppunt via Modin en Dask/Ray, en indien nodig uitbreiden naar een groot cluster door simpelweg over te schakelen `import pandas as pd` naar `import modin.pandas as pd`. 
  
-Als u geen virtuele virtueel groot genoeg voor de gegevens krijgen, hebt u twee opties: gebruik een framework zoals Spark of Dask om de verwerking op de gegevens 'out of memory' uit te voeren, d.w.z. het dataframe wordt per partitie in RAM-partitie geladen en verwerkt, waarbij het eindresultaat wordt verzameld aan het einde. Als dit te traag is, u met Spark of Dask uitschalen naar een cluster dat nog steeds interactief kan worden gebruikt. 
+Als u niet krijgen een groot genoeg virtuele voor de gegevens, heb je twee opties: gebruik een framework zoals Spark of Dask om de verwerking uit te voeren op de gegevens 'out of memory', dat wil zeggen het dataframe wordt geladen in RAM-partitie door partitie en verwerkt, met het uiteindelijke resultaat wordt verzameld aan het einde. Als dit te traag is, u met Spark of Dask uitschalen naar een cluster dat nog steeds interactief kan worden gebruikt. 
 
 ## <a name="dataset-types"></a>Typen gegevenssets
 
@@ -108,6 +108,7 @@ Wanneer u een TabularDataset maakt, worden kolomgegevenstypen standaard automati
 > Als uw opslag zich achter een virtueel netwerk of firewall bevindt, wordt alleen het maken van een gegevensset via de SDK ondersteund. Als u uw gegevensset wilt `validate=False` maken, moet u de parameters en `infer_column_types=False` in uw `from_delimited_files()` methode opnemen. Hiermee omzeilt u de eerste validatiecontrole en zorgt u ervoor dat u uw gegevensset maken op deze beveiligde bestanden. 
 
 ```Python
+from azureml.core import Dataset
 from azureml.data.dataset_factory import DataType
 
 # create a TabularDataset from a delimited file behind a public web url and convert column "Survived" to boolean

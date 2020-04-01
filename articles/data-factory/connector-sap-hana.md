@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
-ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1a3ff32956e8a8530684ba7f300f06d0c032227
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265881"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421116"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Gegevens van SAP HANA kopiëren met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
@@ -188,7 +188,7 @@ Als u gegevens van SAP HANA wilt kopiëren, worden de volgende eigenschappen ond
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de kopieeractiviteit moet worden ingesteld op: **SapHanaSource** | Ja |
 | query | Hiermee geeft u de SQL-query op om gegevens uit de SAP HANA-instantie te lezen. | Ja |
-| partitieOpties | Hiermee geeft u de opties voor gegevenspartitionering op die worden gebruikt om gegevens van SAP HANA in te nemen. Lees meer van [Parallel copy van SAP HANA](#parallel-copy-from-sap-hana) sectie.<br>Waarden toestaan zijn: **Geen** (standaard), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Lees meer van [Parallel copy van SAP HANA](#parallel-copy-from-sap-hana) sectie. `PhysicalPartitionsOfTable`kan alleen worden gebruikt bij het kopiëren van gegevens uit een tabel, maar niet query. <br>Wanneer een partitieoptie is ingeschakeld (dat wil zeggen, niet), `None`wordt de mate van parallellisme om gelijktijdig gegevens van SAP HANA te laden, gecontroleerd door de [`parallelCopies`](copy-activity-performance.md#parallel-copy) instelling voor de kopieeractiviteit. | False |
+| partitieOpties | Hiermee geeft u de opties voor gegevenspartitionering op die worden gebruikt om gegevens van SAP HANA in te nemen. Lees meer van [Parallel copy van SAP HANA](#parallel-copy-from-sap-hana) sectie.<br>Waarden toestaan zijn: **Geen** (standaard), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Lees meer van [Parallel copy van SAP HANA](#parallel-copy-from-sap-hana) sectie. `PhysicalPartitionsOfTable`kan alleen worden gebruikt bij het kopiëren van gegevens uit een tabel, maar niet query. <br>Wanneer een partitieoptie is ingeschakeld (dat wil zeggen, niet), `None`wordt de mate van parallellisme om gelijktijdig gegevens van SAP HANA te laden, gecontroleerd door de [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) instelling voor de kopieeractiviteit. | False |
 | partitieInstellingen | Geef de groep van de instellingen voor gegevenspartitionering op.<br>Toepassen wanneer partitieoptie is `SapHanaDynamicRange`. | False |
 | partitionColumnName | Geef de naam op van de bronkolom die door partitie wordt gebruikt voor parallelle kopie. Als dit niet is opgegeven, wordt de index of de primaire sleutel van de tabel automatisch gedetecteerd en gebruikt als partitiekolom.<br>Toepassen wanneer de `SapHanaDynamicRange`partitieoptie is . Als u een query gebruikt om `?AdfHanaDynamicRangePartitionCondition` de brongegevens op te halen, haakt u de WHERE-clausule aan. Zie voorbeeld in [Parallelle kopie van sap HANA](#parallel-copy-from-sap-hana) sectie. | Ja bij `SapHanaDynamicRange` het gebruik van partitie. |
 | packetSize | Hiermee geeft u de grootte van het netwerkpakket (in Kilobytes) op om gegevens in meerdere blokken te splitsen. Als u een grote hoeveelheid gegevens moet kopiëren, kan het vergroten van de pakketgrootte in de meeste gevallen de leessnelheid van SAP HANA verhogen. Prestatietests worden aanbevolen bij het aanpassen van de pakketgrootte. | Nee.<br>Standaardwaarde is 2048 (2 MB). |
@@ -233,7 +233,7 @@ De Data Factory SAP HANA-connector biedt ingebouwde gegevenspartitionering om ge
 
 ![Schermafbeelding van partitieopties](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
 
-Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query's uit tegen uw SAP HANA-bron om gegevens op te halen door partities. De parallelle graad wordt [`parallelCopies`](copy-activity-performance.md#parallel-copy) gecontroleerd door de instelling voor de kopieeractiviteit. Als u bijvoorbeeld `parallelCopies` op vier instelt, genereert en voert Data Factory tegelijkertijd vier query's uit op basis van de opgegeven partitieoptie en -instellingen en haalt elke query een deel van de gegevens op uit uw SAP HANA.
+Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query's uit tegen uw SAP HANA-bron om gegevens op te halen door partities. De parallelle graad wordt [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) gecontroleerd door de instelling voor de kopieeractiviteit. Als u bijvoorbeeld `parallelCopies` op vier instelt, genereert en voert Data Factory tegelijkertijd vier query's uit op basis van de opgegeven partitieoptie en -instellingen en haalt elke query een deel van de gegevens op uit uw SAP HANA.
 
 U wordt voorgesteld om parallelle kopiëren met gegevenspartitionering in te schakelen, vooral wanneer u grote hoeveelheden gegevens van uw SAP HANA inneemt. De volgende zijn voorgestelde configuraties voor verschillende scenario's. Bij het kopiëren van gegevens naar het gegevensarchief in bestanden, wordt aanbevolen om naar een map te schrijven als meerdere bestanden (geef alleen de naam van de map op), in welk geval de prestaties beter zijn dan naar één bestand te schrijven.
 

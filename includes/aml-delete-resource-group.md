@@ -9,10 +9,10 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.openlocfilehash: 00980cc69acbe0da8773aa798b693171d07cc1e1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73476162"
 ---
 >[!IMPORTANT]
@@ -23,7 +23,7 @@ Als u niet van plan bent om gebruik te maken van de resources die u hebt gemaakt
 
 1. Selecteer **Resourcegroepen** links in Azure Portal.
  
-   [![verwijderen in de Azure Portal](./media/aml-delete-resource-group/delete-resources.png)](./media/aml-delete-resource-group/delete-resources-expanded.png)
+   [![Verwijderen in Azure Portal](./media/aml-delete-resource-group/delete-resources.png)](./media/aml-delete-resource-group/delete-resources-expanded.png)
 
 1. Selecteer de resourcegroep die u eerder hebt gemaakt uit de lijst.
 

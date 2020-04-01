@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 1d399ffec2cd702dcfa39310803bc780b85bfde1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8124e9860ba5703e96f96c90bc0cf37e42baf9c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187465"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398346"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Gebeurtenissen verzenden naar of ontvangen van Azure Event Hubs met .NET Core (Microsoft.Azure.EventHubs)
 In deze quickstart ziet u hoe u gebeurtenissen verzendt naar en ontvangt vanuit een gebeurtenishub met behulp van de **Microsoft.Azure.EventHubs** .NET Core-bibliotheek.
 
 > [!WARNING]
-> Deze quickstart maakt gebruik van het oude **Microsoft.Azure.EventHubs-pakket.** Zie [Gebeurtenissen verzenden en ontvangen met Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md)voor een snelle start die gebruik maakt van de nieuwste **Azure.Messaging.EventHubs-bibliotheek.** Zie de [handleiding voor het migreren van Microsoft.Azure.EventHubs naar Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)om uw toepassing te verplaatsen van het gebruik van de oude bibliotheek naar de nieuwe.
+> Deze quickstart maakt gebruik van het oude **Microsoft.Azure.EventHubs-pakket.** Zie [Gebeurtenissen verzenden en ontvangen met Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md)voor een snelle start die gebruik maakt van de nieuwste **Azure.Messaging.EventHubs-bibliotheek.** Zie de [handleiding voor het migreren van Microsoft.Azure.EventHubs naar Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)om uw toepassing te verplaatsen van het gebruik van de oude bibliotheek naar de nieuwe.
 
 ## <a name="prerequisites"></a>Vereisten
 Als u nieuw bent in Azure Event Hubs, raadpleegt u [het overzicht van gebeurtenishubs](event-hubs-about.md) voordat u dit snel doet. 

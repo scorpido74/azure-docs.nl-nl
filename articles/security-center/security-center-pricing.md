@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2019
 ms.author: memildin
-ms.openlocfilehash: 60a88e667918533f2c507846fa75b0e036ba5262
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd84058c8421d144678c91fac3e5671511d0fd4a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921280"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435501"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Upgraden naar standaardlaag voor verbeterde beveiliging
 Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor werkbelastingen die worden uitgevoerd in Azure, on-premises en in andere clouds. Het biedt zichtbaarheid en controle over hybride cloudworkloads, actieve verdedigingen die uw blootstelling aan bedreigingen verminderen en intelligente detectie om u te helpen gelijke tred te houden met snel evoluerende cyberaanvallen.
@@ -29,7 +29,7 @@ Security Center wordt aangeboden in twee prijscategorieën:
 - De laag **Gratis** is ingeschakeld voor al uw Azure-abonnementen zodra u het Azure Security Center-dashboard in de Azure-portal voor de eerste keer bezoekt of als deze programmatisch via API is ingeschakeld. De gratis laag biedt beveiligingsbeleid, continue beveiligingsbeoordeling en bruikbare beveiligingsaanbevelingen om u te helpen uw Azure-bronnen te beschermen.
 - De **standaardlaag** breidt de mogelijkheden van de gratis laag uit naar workloads die worden uitgevoerd in privé- en andere openbare clouds, en biedt uniforme beveiliging en bescherming tegen bedreigingen voor uw hybride cloudworkloads. De standaardlaag voegt ook mogelijkheden voor bedreigingsbescherming toe, die ingebouwde gedragsanalyse en machine learning gebruiken om aanvallen en zero-day exploits, toegang en toepassingscontroles te identificeren om de blootstelling aan netwerkaanvallen en malware te verminderen, en meer. Bovendien voegt de standaardlaag het scannen van kwetsbaarheden voor uw virtuele machines toe. U de standaardlaag gratis proberen. Security Center-standaard ondersteunt Azure-resources, waaronder VM's, virtuele machineschaalsets, App Service, SQL-servers en Opslagaccounts. Als u de Azure Security Center-standaard hebt, u zich afmelden voor ondersteuning op basis van het type resource. 
 
-De meeste gratis laagbeveiligingsbeoordelingen voor VM's, evenals veel van de standaardbeveiligingswaarschuwingen voor laag, vereisen de installatie van de MMA-mogelijkheid (Microsoft Monitoring Agent). U Automatisch voorziening op beveiligingscentrum inschakelen om de agent automatisch te implementeren voor uw Azure VM's.
+De meeste gratis laagbeveiligingsbeoordelingen voor VM's, evenals veel van de standaardbeveiligingswaarschuwingen van de laag, vereisen de installatie van de mogelijkheid van de Log Analytics-agent. U Automatisch voorziening op beveiligingscentrum inschakelen om de agent automatisch te implementeren voor uw Azure VM's.
 
 ## <a name="try-standard-tier-free-for-30-days"></a>Probeer standaard laag gratis voor 30 dagen
 De standaardlaag is de eerste 30 dagen gratis. Aan het einde van 30 dagen, als u ervoor kiest om de service te blijven gebruiken, zullen we automatisch beginnen met opladen voor gebruik.

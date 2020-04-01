@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Predictix assortiment plannen | Microsoft Docs'
-description: In deze zelfstudie leert u hoe het configureren van eenmalige aanmelding tussen Azure Active Directory en Predictix assortiment plannen.
+title: 'Zelfstudie: Azure Active Directory-integratie met Predictix-assortimentsplanning | Microsoft Documenten'
+description: In deze zelfstudie leert u hoe u eenmalige aanmelding configureren tussen Azure Active Directory en Predictix-assortimentsplanning.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,95 +16,95 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: bc3ea2f6fddc233a69d96c0c885ab310ed1e77c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094154"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>Zelfstudie: Azure Active Directory-integratie met Predictix assortiment plannen
+# <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>Zelfstudie: Azure Active Directory-integratie met Predictix-assortimentsplanning
 
-In deze zelfstudie leert u hoe u Predictix assortimentplanning integreert met Azure Active Directory (Azure AD).
-Deze integratie biedt de volgende voordelen:
+In deze zelfstudie leert u hoe u Predictix-assortimentsplanning integreren met Azure Active Directory (Azure AD).
+Deze integratie biedt deze voordelen:
 
-* U kunt Azure AD om te bepalen wie toegang tot Predictix assortiment plannen heeft.
-* U kunt uw gebruikers kunnen automatisch worden aangemeld bij het plannen van Predictix assortiment (eenmalige aanmelding) met hun Azure AD-accounts inschakelen.
-* U kunt uw accounts in één centrale locatie kunt beheren: de Azure-portal.
+* U Azure AD gebruiken om te bepalen wie toegang heeft tot Predictix-assortimentsplanning.
+* U uw gebruikers automatisch laten inloggen bij Predictix-assortimentsplanning (enkele aanmelding) met hun Azure AD-accounts.
+* U uw accounts beheren op één centrale locatie: de Azure-portal.
 
 Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
-Als u een Azure-abonnement geen [Maak een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Predictix assortiment plannen, moet u beschikken over:
+Als u azure AD-integratie wilt configureren met Predictix-assortimentsplanning, moet u het volledige nieuwe programma hebben:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
-* Een abonnement voor Predictix assortiment plannen met eenmalige aanmelding ingeschakeld.
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/pricing/free-trial/)krijgen.
+* Een Predictix-abonnement voor assortimentsplanning dat één aanmelding heeft ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en Azure AD eenmalige aanmelding testen in een testomgeving.
+In deze zelfstudie configureert en test u Azure AD single sign-on in een testomgeving.
 
-* Predictix assortimentplanning ondersteunt Serviceprovider geïnitieerde eenmalige aanmelding.
+* Predictix Assortment Planning ondersteunt SP-geïnitieerde SSO.
 
-## <a name="add-predictix-assortment-planning-from-the-gallery"></a>Predictix assortiment plannen uit de galerie toevoegen
+## <a name="add-predictix-assortment-planning-from-the-gallery"></a>Predictix-assortimentsplanning toevoegen vanuit de galerie
 
-Als u de integratie van de Planning van Predictix assortiment in Azure AD instelt, moet u Predictix assortimentplanning toevoegen uit de galerie aan de lijst met beheerde SaaS-apps.
+Als u de integratie van Predictix-assortimentsplanning wilt instellen in Azure AD, moet u Predictix-assortimentsplanning vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. In de [Azure-portal](https://portal.azure.com), selecteer in het linkerdeelvenster **Azure Active Directory**:
+1. Selecteer azure **active directory**in de [Azure-portal](https://portal.azure.com)in het linkerdeelvenster:
 
     ![Selecteer Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfstoepassingen** > **alle toepassingen**:
+2. Ga naar **Enterprise-toepassingen** > **Alle toepassingen:**
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u wilt een toepassing hebt toegevoegd, selecteert u **nieuwe toepassing** aan de bovenkant van het venster:
+3. Als u een toepassing wilt toevoegen, selecteert u **Nieuwe toepassing** boven aan het venster:
 
     ![Nieuwe toepassing selecteren](common/add-new-app.png)
 
-4. Voer in het zoekvak **Predictix assortimentplanning**. Selecteer **Predictix assortimentplanning** in de zoekresultaten en selecteer vervolgens **toevoegen**.
+4. Voer in het zoekvak **Predictix-assortimentsplanning in**. Selecteer **Predictix-assortimentsplanning** in de zoekresultaten en selecteer **Vervolgens Toevoegen**.
 
      ![Zoekresultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en Azure AD eenmalige aanmelding bij het plannen van Predictix assortiment testen met behulp van een testgebruiker met de naam Britta Simon.
-Om in te schakelen eenmalige aanmelding, moet u een relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker bij het plannen van Predictix assortiment instellen.
+In deze sectie configureert en test u Azure AD single sign-on met Predictix-assortimentsplanning met behulp van een testgebruiker genaamd Britta Simon.
+Als u eenmalige aanmelding wilt inschakelen, moet u een relatie tot stand brengen tussen een Azure AD-gebruiker en de desbetreffende gebruiker in Predictix-assortimentsplanning.
 
-Als u wilt configureren en Azure AD eenmalige aanmelding bij het plannen van Predictix assortiment testen, moet u deze stappen:
+Als u Azure AD-singlesign-aan wilt configureren en testen met Predictix-assortimentsplanning, moet u de volgende stappen uitvoeren:
 
-1. **[Azure AD eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**  om in te schakelen van de functie voor uw gebruikers.
-2. **[Predictix assortimentplanning eenmalige aanmelding configureren](#configure-predictix-assortment-planning-single-sign-on)**  aan de toepassing.
-3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  voor het testen van Azure AD eenmalige aanmelding.
-4. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  zodat Azure AD eenmalige aanmelding voor de gebruiker.
-5. **[Maak een testgebruiker Predictix assortimentplanning](#create-a-predictix-assortment-planning-test-user)**  dat gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**  om te controleren of de configuratie werkt.
+1. **[Configureer de single sign-on van Azure AD](#configure-azure-ad-single-sign-on)** om de functie voor uw gebruikers in te schakelen.
+2. **[Configureer Predictix Assortment Planning single sign-on](#configure-predictix-assortment-planning-single-sign-on)** aan de toepassingszijde.
+3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)** om azure AD-enkele aanmelding te testen.
+4. **[Wijs de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)** toe om azure AD-enkele aanmelding voor de gebruiker in te schakelen.
+5. **[Maak een testgebruiker voor predictix-assortimentsplanning](#create-a-predictix-assortment-planning-test-user)** die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Test eenmalige aanmelding](#test-single-sign-on)** om te controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
-In deze sectie schakelt u Azure AD eenmalige aanmelding in de Azure-portal.
+In deze sectie schakelt u Azure AD single sign-on in de Azure-portal in.
 
-Voor het configureren van Azure AD eenmalige aanmelding bij het plannen van Predictix assortiment, de volgende stappen uitvoeren:
+Ga als volgt te werk om Azure AD single sign-on te configureren met Predictix-assortimentsplanning:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Predictix assortimentplanning** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**:
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina Voor de integratie van toepassingsintegratie **voor programma's voor het voorspellen van het assortiment** de optie Enkele **aanmelding:**
 
-    ![Schakel eenmalige aanmelding](common/select-sso.png)
+    ![Eén aanmelding selecteren](common/select-sso.png)
 
-2. In de **selecteert u een methode voor eenmalige aanmelding** in het dialoogvenster, selecteer **SAML/WS-Federation** modus voor eenmalige aanmelding inschakelen:
+2. Selecteer in het dialoogvenster **Een enkele aanmeldingsmethode** selecteren de **SAML/WS-Fed-modus** om eenmalige aanmelding in te schakelen:
 
-    ![Selecteer een methode voor eenmalige aanmelding](common/select-saml-option.png)
+    ![Eén aanmeldingsmethode selecteren](common/select-saml-option.png)
 
-3. Op de **instellen van eenmalige aanmelding met SAML** weergeeft, schakelt de **bewerken** pictogram opent de **SAML-basisconfiguratie** in het dialoogvenster:
+3. Selecteer op de pagina **Eén aanmelding instellen met SAML** het pictogram **Bewerken** om het dialoogvenster **BasisSAML-configuratie** te openen:
 
-    ![Pictogram bewerken](common/edit-urls.png)
+    ![Bewerkpictogram](common/edit-urls.png)
 
-4. In de **SAML-basisconfiguratie** dialoogvenster vak, voer de volgende stappen uit.
+4. Voer in het dialoogvenster **BasisSAML-configuratie** de volgende stappen uit.
 
-    ![In het dialoogvenster van Basic SAML-configuratie](common/sp-identifier.png)
+    ![Dialoogvenster BasisSAML-configuratie](common/sp-identifier.png)
 
-    1. In de **aanmeldings-URL** vak, een URL opgeven in dit patroon:
+    1. Voer in het vak **Aanmelding smaken van URL** een URL in dit patroon in:
 
        | |
         |--|
@@ -112,7 +112,7 @@ Voor het configureren van Azure AD eenmalige aanmelding bij het plannen van Pred
         | `https://<sub-domain>.dev.ap.predictix.com/`|
         | |
 
-    1. In de **id (entiteits-ID)** vak, een URL opgeven in dit patroon:
+    1. Voer in het vak **Id (Entity ID)** een URL in dit patroon in:
 
         | |
         |--|
@@ -121,63 +121,63 @@ Voor het configureren van Azure AD eenmalige aanmelding bij het plannen van Pred
         | |
 
     > [!NOTE]
-    > Deze waarden zijn tijdelijke aanduidingen. U moet de werkelijke aanmeldings-URL en -id gebruiken. Neem contact op met de [ondersteuningsteam Predictix assortimentplanning](https://www.infor.com/support) om de waarden te verkrijgen. U kunt ook verwijzen naar de patronen die wordt weergegeven in de **SAML-basisconfiguratie** in het dialoogvenster in de Azure-portal.
+    > Deze waarden zijn tijdelijke aanduidingen. U moet de werkelijke aanmeldings-URL en id gebruiken. Neem contact op met het [supportteam voor predictix-planning](https://www.infor.com/support) om de waarden te krijgen. U ook verwijzen naar de patronen die worden weergegeven in het dialoogvenster **BasisSAML-configuratie** in de Azure-portal.
 
-5. Op de **instellen van eenmalige aanmelding met SAML** pagina, in de **SAML-handtekeningcertificaat** sectie, selecteer de **downloaden** koppelen naast **certificaat (Base64)** , overeenkomstig uw vereisten en sla het certificaat op uw computer:
+5. Selecteer op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de koppeling **Downloaden** naast **Certificaat (Base64)** en sla het certificaat op uw computer op:
 
     ![De koppeling om het certificaat te downloaden](common/certificatebase64.png)
 
-6. In de **Predictix assortimentplanning instellen** sectie, kopieert u de juiste URL's, op basis van uw vereisten:
+6. Kopieer in de sectie **Predictix-assortimentsplanning** instellen de juiste URL's op basis van uw vereisten:
 
-    ![De configuratie van URL's kopiëren](common/copy-configuration-urls.png)
+    ![De configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
     1. **Aanmeldings-URL**.
 
-    1. **Azure AD Identifier**.
+    1. **Azure AD-id**.
 
-    1. **Afmeldings-URL van**.
+    1. **Url van afmelden**.
 
-### <a name="configure-predictix-assortment-planning-single-sign-on"></a>Predictix assortimentplanning eenmalige aanmelding configureren
+### <a name="configure-predictix-assortment-planning-single-sign-on"></a>Eén aanmelding voor Predictix-assortimentsplanning configureren
 
-Voor het configureren van eenmalige aanmelding aan de zijde Predictix assortiment plannen, moet u voor het verzenden van het certificaat dat u hebt gedownload en de URL's die u hebt gekopieerd uit de Azure-portal naar de [ondersteuningsteam Predictix assortimentplanning](https://www.infor.com/support). Dit team zorgt ervoor dat de SAML SSO-verbinding aan beide zijden juist is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de kant van de programmaplanning van Predictix, moet u het certificaat dat u hebt gedownload en de URL's die u hebt gekopieerd van de Azure-portal naar het [ondersteuningsteam voor de planning van het assortiment van Predictix](https://www.infor.com/support)verzenden. Dit team zorgt ervoor dat de SAML SSO-verbinding aan beide kanten goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker Britta Simon met de naam in Azure portal.
+In deze sectie maakt u een testgebruiker met de naam Britta Simon in de Azure-portal.
 
-1. Selecteer in de Azure portal, **Azure Active Directory** selecteren in het linkerdeelvenster **gebruikers**, en selecteer vervolgens **alle gebruikers**:
+1. Selecteer in de Azure-portal **Azure Active Directory** in het linkerdeelvenster, selecteer **Gebruikers**en selecteer **Alle gebruikers:**
 
-    ![Selecteer alle gebruikers](common/users.png)
+    ![Selecteer Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm:
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm:
 
     ![Nieuwe gebruiker selecteren](common/new-user.png)
 
-3. In de **gebruiker** dialoogvenster vak, voer de volgende stappen uit.
+3. Neem **in** het dialoogvenster Gebruiker de volgende stappen.
 
-    ![In het dialoogvenster](common/user-properties.png)
+    ![Dialoogvenster Gebruiker](common/user-properties.png)
 
-    1. Voer in het vak **Naam** **Britta Simon**in.
+    1. Voer in het vak **Naam****Britta Simon**in.
   
-    1. In de **gebruikersnaam** Voer **BrittaSimon @\<uwbedrijfsdomein >.\< extensie >** . (Bijvoorbeeld BrittaSimon@contoso.com.)
+    1. Voer in het vak **Gebruikersnaam** **BrittaSimon@\<uw\< bedrijfsdomein in>. uitbreiding>**. (Bijvoorbeeld .) BrittaSimon@contoso.com
 
-    1. Selecteer **Show wachtwoord**, en noteer de waarde in de **wachtwoord** vak.
+    1. Selecteer **Wachtwoord weergeven**en noteer de waarde in het vak **Wachtwoord.**
 
     1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Britta Simon gebruik van Azure AD eenmalige aanmelding in haar door toegang te verlenen tot de Predictix assortimentplanning.
+In deze sectie u Britta Simon inschakelen om Azure AD single sign-on te gebruiken door haar toegang te verlenen tot Predictix-assortimentsplanning.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**, en selecteer vervolgens **Predictix assortimentplanning**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen,** selecteer **Alle toepassingen**en selecteer vervolgens **De assortimentsplanning van Predictix**.
 
     ![Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen **Predictix assortimentplanning**.
+2. Selecteer In de lijst met toepassingen de optie **Predictix-assortimentsplanning**.
 
-    ![Lijst met toepassingen](common/all-applications.png)
+    ![Lijst van aanvragen](common/all-applications.png)
 
-3. Selecteer in het linkerdeelvenster **gebruikers en groepen**:
+3. Selecteer in het linkerdeelvenster **gebruikers en groepen:**
 
     ![Gebruikers en groepen selecteren](common/users-groups-blade.png)
 
@@ -185,29 +185,29 @@ In deze sectie schakelt u Britta Simon gebruik van Azure AD eenmalige aanmelding
 
     ![Gebruiker toevoegen selecteren](common/add-assign-user.png)
 
-5. In de **gebruikers en groepen** in het dialoogvenster, selecteer **Britta Simon** in de lijst met gebruikers, en klik op de **Selecteer** knop aan de onderkant van het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen de optie **Britta Simon** in de gebruikerslijst en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor de rol in het SAML-verklaring verwacht in de **rol selecteren** dialoogvenster Selecteer de juiste rol voor de gebruiker in de lijst. Klik op de **Selecteer** knop aan de onderkant van het scherm.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik op de knop **Selecteren** onder aan het scherm.
 
 7. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
 
-### <a name="create-a-predictix-assortment-planning-test-user"></a>Maak een testgebruiker Predictix assortiment plannen
+### <a name="create-a-predictix-assortment-planning-test-user"></a>Een testgebruiker voor predictix-assortimentsplanning maken
 
-Vervolgens moet u een gebruiker met de naam Britta Simon bij het plannen van Predictix assortiment maken. Werken met de [ondersteuningsteam Predictix assortimentplanning](https://www.infor.com/support) gebruikers toe te voegen. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+Vervolgens moet u een gebruiker met de naam Britta Simon maken in Predictix Assortment Planning. Werk samen met het [ondersteuningsteam voor Predictix-assortimentplanning](https://www.infor.com/support) om gebruikers toe te voegen. Gebruikers moeten worden gemaakt en geactiveerd voordat u eenmalige aanmelding gebruikt.
 
 > [!NOTE]
-> De houder van Azure AD-account ontvangt een e-mailbericht en selecteert u een koppeling naar het account te bevestigen voordat deze geactiveerd wordt.
+> De houder van het Azure AD-account ontvangt een e-mail en selecteert een koppeling om het account te bevestigen voordat het actief wordt.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-Nu moet u uw configuratie Azure AD eenmalige aanmelding testen met behulp van het toegangsvenster.
+Nu moet u uw Azure AD-configuratie met eenmalige aanmelding testen met behulp van het Access-paneel.
 
-Wanneer u de tegel Predictix assortimentplanning in het toegangsvenster selecteert, moet u worden automatisch aangemeld bij de Predictix assortimentplanning exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie voor meer informatie, [toegang en gebruik apps op de portal mijn Apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wanneer u de tegel Predictix-assortimentsplanning selecteert in het toegangspaneel, moet u automatisch worden aangemeld bij het voorbeeld Voor het opstellen van Het Assortiment van Predictix waarvoor u SSO hebt ingesteld. Zie [Apps openen en gebruiken op de portal Mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)voor meer informatie.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

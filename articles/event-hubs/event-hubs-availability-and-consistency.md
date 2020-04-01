@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2020
+ms.date: 03/27/2020
 ms.author: shvija
-ms.openlocfilehash: 808e813ad90626acec893a021634566f091c895f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 0546adb6131479a8f5d2e7e31819483200586839
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76904478"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397325"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Beschikbaarheid en consistentie in Event Hubs
 
@@ -36,12 +36,63 @@ De stelling van de brouwer definieert consistentie en beschikbaarheid als volgt:
 Event Hubs is gebouwd bovenop een verdeeld gegevensmodel. U het aantal partities in uw gebeurtenishub configureren tijdens de installatie, maar u deze waarde later niet wijzigen. Aangezien u partities moet gebruiken met Event Hubs, moet u een beslissing nemen over beschikbaarheid en consistentie voor uw toepassing.
 
 ## <a name="availability"></a>Beschikbaarheid
-De eenvoudigste manier om aan de slag te gaan met Gebeurtenishubs is door het standaardgedrag te gebruiken. Als u een nieuw **[EventHubClient-object](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** maakt en de methode **[Verzenden](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** gebruikt, worden uw gebeurtenissen automatisch verdeeld over partities in uw gebeurtenishub. Dit gedrag zorgt voor de grootste hoeveelheid up-time.
+De eenvoudigste manier om aan de slag te gaan met Gebeurtenishubs is door het standaardgedrag te gebruiken. 
+
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 of hoger)](#tab/latest)
+Als u een nieuw **[EventHubProducerClient-object](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** maakt en de **[methode SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** gebruikt, worden uw gebeurtenissen automatisch verdeeld over partities in uw gebeurtenishub. Dit gedrag zorgt voor de grootste hoeveelheid up-time.
+
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 of eerder)](#tab/old)
+Als u een nieuw **[EventHubClient-object](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** maakt en de methode **[Verzenden](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** gebruikt, worden uw gebeurtenissen automatisch verdeeld over partities in uw gebeurtenishub. Dit gedrag zorgt voor de grootste hoeveelheid up-time.
+
+---
 
 Voor use cases waarvoor de maximale uptime nodig is, heeft dit model de voorkeur.
 
 ## <a name="consistency"></a>Consistentie
-In sommige scenario's kan het ordenen van gebeurtenissen belangrijk zijn. U wilt bijvoorbeeld dat uw back-endsysteem een updateopdracht verwerkt voordat een opdracht verwijderen wordt gedaan. In dit geval u de partitiesleutel instellen op `PartitionSender` een gebeurtenis of een object gebruiken om alleen gebeurtenissen naar een bepaalde partitie te verzenden. Als u dit doet, zorgt u ervoor dat wanneer deze gebeurtenissen uit de partitie worden gelezen, ze in volgorde worden gelezen.
+In sommige scenario's kan het ordenen van gebeurtenissen belangrijk zijn. U wilt bijvoorbeeld dat uw back-endsysteem een updateopdracht verwerkt voordat een opdracht verwijderen wordt gedaan. In dit geval u de partitiesleutel instellen op `PartitionSender` een gebeurtenis of een object gebruiken (als u de oude Microsoft.Azure.Messaging-bibliotheek gebruikt) om alleen gebeurtenissen naar een bepaalde partitie te verzenden. Als u dit doet, zorgt u ervoor dat wanneer deze gebeurtenissen uit de partitie worden gelezen, ze in volgorde worden gelezen. Zie [Code migreren van PartitionSender naar EventHubProducerClient voor het publiceren van gebeurtenissen naar een partitie](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)als u de bibliotheek **Azure.Messaging.EventHubs** gebruikt en voor meer informatie.
+
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 of hoger)](#tab/latest)
+
+```csharp
+var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
+var eventHubName = "<< NAME OF THE EVENT HUB >>";
+
+await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
+{
+    var batchOptions = new CreateBatchOptions() { PartitionId = "my-partition-id" };
+    using EventDataBatch eventBatch = await producerClient.CreateBatchAsync(batchOptions);
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First")));
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second")));
+    
+    await producerClient.SendAsync(eventBatch);
+}
+```
+
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 of eerder)](#tab/old)
+
+```csharp
+var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
+var eventHubName = "<< NAME OF THE EVENT HUB >>";
+
+var connectionStringBuilder = new EventHubsConnectionStringBuilder(connectionString){ EntityPath = eventHubName }; 
+var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
+PartitionSender partitionSender = eventHubClient.CreatePartitionSender("my-partition-id");
+try
+{
+    EventDataBatch eventBatch = partitionSender.CreateBatch();
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First")));
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second")));
+
+    await partitionSender.SendAsync(eventBatch);
+}
+finally
+{
+    await partitionSender.CloseAsync();
+    await eventHubClient.CloseAsync();
+}
+```
+
+---
 
 Houd er bij deze configuratie rekening mee dat als de specifieke partitie waarnaar u verzendt niet beschikbaar is, u een foutmelding ontvangt. Als vergelijkingspunt stuurt de gebeurtenisservice uw gebeurtenis naar de eerstvolgende beschikbare partitie als u geen affiniteit hebt met één partitie.
 
@@ -101,4 +152,4 @@ In dit voorbeeld wordt uw gebeurtenis naar een van de beschikbare partities in u
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
 * [Overzicht van de service event hubs](event-hubs-what-is-event-hubs.md)
-* [Een gebeurtenishub maken](event-hubs-create.md)
+* [Een Event Hub maken](event-hubs-create.md)

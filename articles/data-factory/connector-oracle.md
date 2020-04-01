@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244509"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422507"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Gegevens van en naar Oracle kopiëren met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
@@ -213,7 +213,7 @@ Als u gegevens van Oracle wilt kopiëren, `OracleSource`stelt u het brontype in 
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron `OracleSource`van de kopieeractiviteit moet worden ingesteld op . | Ja |
 | oracleReaderQuery | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`.<br>Wanneer u partitioned load inschakelt, moet u alle bijbehorende ingebouwde partitieparameters in uw query aansluiten. Zie bijvoorbeeld de [sectie Parallelle kopie van Oracle.](#parallel-copy-from-oracle) | Nee |
-| partitieOpties | Hiermee geeft u de opties voor gegevenspartitionering op die worden gebruikt om gegevens van Oracle te laden. <br>Toegestane waarden zijn: **Geen** (standaard), **PhysicalPartitionsOfTable** en **DynamicRange**.<br>Wanneer een partitieoptie is ingeschakeld (dat wil zeggen), `None`wordt de mate van parallellisme [`parallelCopies`](copy-activity-performance.md#parallel-copy) om tegelijkertijd gegevens uit een Oracle-database te laden, beheerd door de instelling voor de kopieeractiviteit. | Nee |
+| partitieOpties | Hiermee geeft u de opties voor gegevenspartitionering op die worden gebruikt om gegevens van Oracle te laden. <br>Toegestane waarden zijn: **Geen** (standaard), **PhysicalPartitionsOfTable** en **DynamicRange**.<br>Wanneer een partitieoptie is ingeschakeld (dat wil zeggen), `None`wordt de mate van parallellisme [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) om tegelijkertijd gegevens uit een Oracle-database te laden, beheerd door de instelling voor de kopieeractiviteit. | Nee |
 | partitieInstellingen | Geef de groep van de instellingen voor gegevenspartitionering op. <br>Toepassen wanneer de partitieoptie `None`niet is . | Nee |
 | partitieNamen | De lijst met fysieke partities die gekopieerd moeten worden. <br>Toepassen wanneer de `PhysicalPartitionsOfTable`partitieoptie is . Als u een query gebruikt om `?AdfTabularPartitionName` de brongegevens op te halen, haakt u de WHERE-component aan. Zie bijvoorbeeld de [sectie Parallelle kopie van Oracle.](#parallel-copy-from-oracle) | Nee |
 | partitionColumnName | Geef de naam op van de bronkolom **in het gehele getaltype** die wordt gebruikt door bereikverdeling voor parallelle kopie. Als dit niet is opgegeven, wordt de primaire sleutel van de tabel automatisch gedetecteerd en gebruikt als partitiekolom. <br>Toepassen wanneer de `DynamicRange`partitieoptie is . Als u een query gebruikt om `?AdfRangePartitionColumnName` de brongegevens op te halen, haakt u de WHERE-component aan. Zie bijvoorbeeld de [sectie Parallelle kopie van Oracle.](#parallel-copy-from-oracle) | Nee |
@@ -300,7 +300,7 @@ De Data Factory Oracle-connector biedt ingebouwde gegevenspartitionering om gege
 
 ![Schermafbeelding van partitieopties](./media/connector-oracle/connector-oracle-partition-options.png)
 
-Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query's uit tegen uw Oracle-bron om gegevens te laden op partities. De parallelle graad wordt [`parallelCopies`](copy-activity-performance.md#parallel-copy) gecontroleerd door de instelling voor de kopieeractiviteit. Als u bijvoorbeeld `parallelCopies` op vier instelt, genereert en voert Data Factory tegelijkertijd vier query's uit op basis van de opgegeven partitieoptie en -instellingen en haalt elke query een deel van de gegevens uit uw Oracle-database op.
+Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query's uit tegen uw Oracle-bron om gegevens te laden op partities. De parallelle graad wordt [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) gecontroleerd door de instelling voor de kopieeractiviteit. Als u bijvoorbeeld `parallelCopies` op vier instelt, genereert en voert Data Factory tegelijkertijd vier query's uit op basis van de opgegeven partitieoptie en -instellingen en haalt elke query een deel van de gegevens uit uw Oracle-database op.
 
 U wordt voorgesteld om parallelle kopiëren met gegevenspartitionering in te schakelen, vooral wanneer u grote hoeveelheden gegevens uit uw Oracle-database laadt. De volgende zijn voorgestelde configuraties voor verschillende scenario's. Bij het kopiëren van gegevens naar het gegevensarchief in bestanden wordt aanbevolen om naar een map te schrijven als meerdere bestanden (geef alleen de naam van de map op), in welk geval de prestaties beter zijn dan naar één bestand te schrijven.
 

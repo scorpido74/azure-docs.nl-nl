@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/20/2019
+ms.date: 03/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 8605dae05b7f5270513b645367248090006c04a8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: b08253104eeb61f6bb09fde507473d235a996494
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384905"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422621"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Snelstart: naamruimte voor servicebus en een wachtrij maken met een sjabloon Azure Resource Manager
 
@@ -63,9 +63,27 @@ Met deze sjabloon implementeert u een naamruimte voor servicebus met een wachtri
 
 [Service Bus wachtrijen](service-bus-queues-topics-subscriptions.md#queues) bieden First In, First Out (FIFO) bericht levering aan een of meer concurrerende consumenten.
 
-Klik op de volgende knop om de implementatie automatisch uit te voeren:
+Als u de implementatie automatisch wilt uitvoeren, klikt u op de volgende knop: Een nieuwe brongroep maken voor de implementatie, zodat u later gemakkelijk worden opgemaakt.
 
-[![Implementeren naar Azure](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
+[![Implementeren in Azure](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
+
+## <a name="verify-the-deployment"></a>De implementatie controleren
+
+1. Selecteer **Meldingen** bovenaan om de status van de implementatie te bekijken. Wacht tot de implementatie slaagt. Selecteer vervolgens **Ga naar resourcegroep** in het meldingsbericht om naar de pagina te navigeren voor de resourcegroep die de naamruimte servicebus bevat. 
+
+    ![Melding vanaf implementatie](./media/service-bus-resource-manager-namespace-queue/notification.png)
+2. Controleer of u de naamruimte van uw servicebus ziet in de lijst met bronnen. 
+
+    ![Resourcegroep - naamruimte](./media/service-bus-resource-manager-namespace-queue/resource-group-namespace.png)
+3. Selecteer de naamruimte in de lijst om de pagina **Naamruimte servicebus** weer te geven. 
+
+## <a name="cleanup-resources"></a>Resources opruimen
+
+1. Navigeer in de Azure-portal naar de **groepspagina Resource** voor uw resourcegroep.
+2. Selecteer **Resourcegroep verwijderen** uit de taakbalk. 
+3. Typ de naam van de resourcegroep en selecteer **Verwijderen**. 
+
+    ![Resourcegroep - verwijderen](./media/service-bus-resource-manager-namespace-queue/resource-group-delete.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

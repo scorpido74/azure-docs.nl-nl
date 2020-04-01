@@ -6,46 +6,38 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 305632a0faa1eb7e217e86d36c5159e557df7aaf
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79254285"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409257"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Problemen met Azure Stream Analytics-uitvoer oplossen
 
-Op deze pagina worden veelvoorkomende problemen beschreven met uitvoerverbindingen en hoe u deze oplossen en aanpakken.
+In dit artikel worden veelvoorkomende problemen beschreven met azure stream analytics-uitvoerverbindingen, hoe u uitvoerproblemen oplossen en hoe u de problemen verhelpen. Voor veel stappen voor het oplossen van problemen moeten diagnostische logboeken worden ingeschakeld voor uw Stream Analytics-taak. Zie [Azure Stream Analytics oplossen met behulp van diagnostische logboeken](stream-analytics-job-diagnostic-logs.md)als u geen diagnostische logboeken hebt ingeschakeld.
 
 ## <a name="output-not-produced-by-job"></a>Uitvoer die niet door taak wordt geproduceerd
+
 1.  Controleer de verbinding met uitvoer met behulp van de knop **Verbinding testen** voor elke uitvoer.
 
 2.  Kijk naar [**Monitoring metrics**](stream-analytics-monitoring.md) op het tabblad **Monitor.** Omdat de waarden worden samengevoegd, worden de statistieken met enkele minuten vertraagd.
-    - Als invoergebeurtenissen > 0, kan de taak invoergegevens lezen. Als invoergebeurtenissen niet > 0 zijn, gaat het als nog over op:
-      - Als u wilt zien of de gegevensbron geldige gegevens heeft, controleert u deze met [Service Bus Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a). Deze controle is van toepassing als de taak eventhub als invoer gebruikt.
-      - Controleer of de indeling van de gegevensserialisatie en gegevenscodering zijn zoals verwacht.
-      - Als de taak een gebeurtenishub gebruikt, controleert u of de hoofdtekst van het bericht *Null*is.
+   * Als invoergebeurtenissen groter zijn dan 0, kan de taak invoergegevens lezen. Als invoergebeurtenissen niet groter zijn dan 0, is er een probleem met de invoer van de taak. Zie [Problemen met invoerverbindingen oplossen](stream-analytics-troubleshoot-input.md) voor meer informatie over het oplossen van problemen met de invoerverbinding.
+   * Zie [Azure Stream Analytics-gegevensfouten](data-errors.md) voor gedetailleerde informatie over gegevensconversiefouten als er meer dan 0 zijn en klimmen.
+   * Als runtimefouten groter zijn dan 0, kan uw taak gegevens ontvangen, maar genereert deze fouten tijdens het verwerken van de query. Als u de fouten wilt vinden, gaat u naar [De controlelogboeken](../azure-resource-manager/management/view-activity-logs.md) en filtert u de status *Mislukt.*
+   * Als invoergebeurtenissen groter zijn dan 0 en outputgebeurtenissen gelijk is aan 0, is een van de volgende geldt:
+      * Het verwerken van de query heeft geen uitvoergebeurtenissen opgeleverd.
+      * Gebeurtenissen of velden kunnen misvormd zijn, wat resulteert in nul uitvoer na queryverwerking.
+      * De taak kon gegevens niet naar de uitvoersink pushen om redenen van connectiviteit of verificatie.
 
-    - Als gegevensconversiefouten > 0 en klimmen, kan het volgende het volgende zijn:
-      - De uitvoergebeurtenis voldoet niet aan het schema van de doelgootsteen.
-      - Het gebeurtenisschema komt mogelijk niet overeen met het gedefinieerde of verwachte schema van de gebeurtenissen in de query.
-      - De gegevenstypen van sommige velden in de gebeurtenis komen mogelijk niet overeen met de verwachtingen.
-
-    - Als runtime-fouten > 0, betekent dit dat de taak de gegevens kan ontvangen, maar fouten genereert tijdens het verwerken van de query.
-      - Als u de fouten wilt vinden, gaat u naar [De controlelogboeken](../azure-resource-manager/management/view-activity-logs.md) en filtert u de status *Mislukt.*
-
-    - Als Invoergebeurtenissen > 0 en OutputEvents = 0, betekent dit dat een van de volgende gebeurtenissen waar is:
-      - Het verwerken van de query heeft geen uitvoergebeurtenissen opgeleverd.
-      - Gebeurtenissen of velden kunnen misvormd zijn, wat resulteert in nul uitvoer na queryverwerking.
-      - De taak kon gegevens niet naar de uitvoersink pushen om redenen van connectiviteit of verificatie.
-
-    - In alle eerder genoemde foutgevallen worden in operations log-berichten aanvullende details uitgelegd (inclusief wat er gebeurt), behalve in gevallen waarin de querylogica alle gebeurtenissen heeft gefilterd. Als de verwerking van meerdere gebeurtenissen fouten genereert, registreert Stream Analytics de eerste drie foutberichten van hetzelfde type binnen 10 minuten naar logboeken voor bewerkingen. Het onderdrukt dan extra identieke fouten met een bericht dat luidt: "Fouten gebeuren te snel, deze worden onderdrukt."
+   In alle eerder genoemde foutgevallen worden in operations log-berichten aanvullende details uitgelegd (inclusief wat er gebeurt), behalve in gevallen waarin de querylogica alle gebeurtenissen heeft gefilterd. Als de verwerking van meerdere gebeurtenissen fouten genereert, worden de fouten elke 10 minuten samengevoegd.
 
 ## <a name="job-output-is-delayed"></a>Taakuitvoer is vertraagd
 
 ### <a name="first-output-is-delayed"></a>Eerste output is vertraagd
+
 Wanneer een Stream Analytics-taak wordt gestart, worden de invoergebeurtenissen gelezen, maar kan er in bepaalde omstandigheden een vertraging zijn in de uitvoer die wordt geproduceerd.
 
 Grote tijdwaarden in tijdelijke query-elementen kunnen bijdragen aan de uitvoervertraging. Om de juiste uitvoer te produceren over de grote tijdvensters, start de streamingtaak met het lezen van gegevens van de laatst mogelijke tijd (tot zeven dagen geleden) om het tijdvenster te vullen. Gedurende die tijd wordt er geen output geproduceerd totdat de inhaalslag van de uitstekende invoergebeurtenissen is voltooid. Dit probleem kan opduiken wanneer het systeem de streamingtaken opwaardeert, waardoor de taak opnieuw wordt opgestart. Dergelijke upgrades komen over het algemeen eens in de paar maanden.
@@ -69,6 +61,7 @@ Deze factoren zijn van invloed op de tijdigheid van de eerste uitvoer die wordt 
    - Voor analytische functies wordt de uitvoer gegenereerd voor elke gebeurtenis, er is geen vertraging.
 
 ### <a name="output-falls-behind"></a>Output blijft achter
+
 Tijdens de normale werking van de taak, als u merkt dat de uitvoer van de taak achterblijft (langere en langere latentie), u de onderliggende oorzaken lokaliseren door deze factoren te onderzoeken:
 - Of de stroomafwaartse gootsteen wordt beperkt
 - Of de upstream bron wordt beperkt
@@ -88,11 +81,11 @@ Let op de volgende waarnemingen bij het configureren van IGNORE_DUP_KEY voor ver
 
 * U IGNORE_DUP_KEY niet instellen op een primaire sleutel of een unieke beperking die ALTER INDEX gebruikt, u moet de index laten vallen en opnieuw maken.  
 * U de optie IGNORE_DUP_KEY instellen met ALTER INDEX voor een unieke index, die verschilt van de primaire sleutel/unieke beperking en die is gemaakt met de definitie VAN CREATE INDEX of INDEX.  
+
 * IGNORE_DUP_KEY is niet van toepassing op indexen voor kolomopslag omdat u uniciteit op dergelijke indexen niet afdwingen.  
 
 ## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Kolomnamen worden in kleine letters gedeslopen door Azure Stream Analytics
 Wanneer u het oorspronkelijke compatibiliteitsniveau (1.0) gebruikt, wijzigde Azure Stream Analytics kolomnamen in kleine letters. Dit gedrag is opgelost in latere compatibiliteitsniveaus. Om de zaak te behouden, raden we klanten aan om over te stappen naar het compatibiliteitsniveau 1.1 en hoger. Meer informatie over [compatibiliteitsniveau voor Azure Stream Analytics-taken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)vindt u meer informatie over compatibiliteitsniveau.
-
 
 ## <a name="get-help"></a>Help opvragen
 

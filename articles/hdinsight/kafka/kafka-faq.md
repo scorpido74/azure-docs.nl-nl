@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206976"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436891"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Veelgestelde vragen over Apache Kafka in Azure HDInsight
 
@@ -50,7 +50,7 @@ Met behulp van [Enterprise Security Package (ESP)](../domain-joined/apache-domai
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Zijn mijn gegevens versleuteld? Kan ik mijn eigen sleutels gebruiken?
 
-Alle Kafka-berichten op de beheerde schijven worden versleuteld met [Azure Storage Service Encryption (SSE).](../../storage/common/storage-service-encryption.md) Data-in-transit (bijvoorbeeld gegevens die worden verzonden van clients naar makelaars en andersom) worden niet standaard versleuteld. Het is mogelijk om dergelijk verkeer te versleutelen door [ssl op uw eigen.](./apache-kafka-ssl-encryption-authentication.md) Bovendien u met HDInsight hun eigen sleutels beheren om de gegevens in rust te versleutelen. Zie [door de klant beheerde sleutelschijfversleuteling](../disk-encryption.md)voor meer informatie.
+Alle Kafka-berichten op de beheerde schijven worden versleuteld met [Azure Storage Service Encryption (SSE).](../../storage/common/storage-service-encryption.md) Data-in-transit (bijvoorbeeld gegevens die worden verzonden van clients naar makelaars en andersom) worden niet standaard versleuteld. Het is mogelijk om dergelijk verkeer te versleutelen door [tls zelf in te stellen.](./apache-kafka-ssl-encryption-authentication.md) Bovendien u met HDInsight hun eigen sleutels beheren om de gegevens in rust te versleutelen. Zie [door de klant beheerde sleutelschijfversleuteling](../disk-encryption.md)voor meer informatie.
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>Hoe verbind ik clients met mijn cluster?
 
@@ -96,5 +96,5 @@ Gebruik Azure-monitor om uw [Kafka-logboeken](./apache-kafka-log-analytics-opera
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Ssl-versleuteling en -verificatie (Secure Sockets Layer) instellen voor Apache Kafka in Azure HDInsight](./apache-kafka-ssl-encryption-authentication.md)
+* [TLS-versleuteling en -verificatie instellen voor Apache Kafka in Azure HDInsight](./apache-kafka-ssl-encryption-authentication.md)
 * [MirrorMaker gebruiken om Apache Kafka-onderwerpen te repliceren met Kafka in HDInsight](./apache-kafka-mirroring.md)

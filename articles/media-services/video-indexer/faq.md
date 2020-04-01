@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 03/30/2020
 ms.author: juliako
-ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd41596b6631bb63e1625325f8bec065b43881cd
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77619881"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421386"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer veelgestelde vragen
 
@@ -175,6 +175,12 @@ Toegangstokens zijn nodig om de API's voor video-indexer te gebruiken voor bevei
 ### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>Hoe vaak heb ik een nieuw toegangstoken nodig? Wanneer verlopen toegangstokens?
 
 Toegangstokens verlopen elk uur, dus je moet elk uur een nieuw toegangstoken genereren. 
+
+### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Wat zijn de inlogopties voor video-indexer developer portal?
+
+U inloggen met Azure AD, Microsoft-account, Google-account of Facebook-account. 
+
+Zodra u uw e-mailaccount registreert via een identiteitsprovider, u dit e-mailaccount niet meer gebruiken bij een andere identiteitsprovider.
 
 ## <a name="billing-questions"></a>Vragen over facturering
 

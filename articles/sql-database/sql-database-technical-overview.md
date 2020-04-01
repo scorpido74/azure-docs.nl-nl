@@ -12,16 +12,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 209b4136678e6f04666b4a2b6180f4768bf6afc4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d50ddbbeeaed48c14d07c42588efcbb20bb7d79
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500824"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411159"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Wat is de service Azure SQL Database?
 
-Azure SQL Database is een relationele database voor algemene doeleinden, die wordt geleverd als een beheerde service. Hiermee u een zeer beschikbare en krachtige gegevensopslaglaag maken voor de toepassingen en oplossingen in Azure. SQL Database kan de juiste keuze zijn voor een verscheidenheid aan moderne cloudtoepassingen, omdat u hiermee zowel relationele gegevens als [niet-relationele structuren](sql-database-multi-model-features.md)verwerken, zoals grafieken, JSON, ruimtelijk en XML.
+Azure SQL Database is een volledig beheerde PaaS-database-engine (Platform as a Service) waarmee de meeste databasebeheerfuncties, zoals upgrades, patches, back-ups en bewaking, zonder tussenkomst van de gebruiker worden verwerkt. Azure SQL Database wordt altijd uitgevoerd met de nieuwste stabiele versie van SQL Server Database Engine en een bijgewerkt besturingssysteem met 99,99% beschikbaarheid. Met PaaS-mogelijkheden die zijn ingebouwd in Azure SQL-database, u zich concentreren op de domeinspecifieke databasebeheer- en optimalisatieactiviteiten die essentieel zijn voor uw bedrijf.
+
+Met Azure SQL Database u een zeer beschikbare en krachtige gegevensopslaglaag maken voor de toepassingen en oplossingen in Azure. SQL Database kan de juiste keuze zijn voor een verscheidenheid aan moderne cloudtoepassingen, omdat u hiermee zowel relationele gegevens als [niet-relationele structuren](sql-database-multi-model-features.md)verwerken, zoals grafieken, JSON, ruimtelijk en XML.
 
 Het is gebaseerd op de nieuwste stabiele versie van de [Microsoft SQL Server-databaseengine.](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) U geavanceerde functies voor queryverwerking gebruiken, zoals [krachtige in-memorytechnologieën](sql-database-in-memory.md) en [intelligente queryverwerking.](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json) In feite worden de nieuwste mogelijkheden van SQL Server eerst vrijgegeven aan SQL Database en vervolgens naar SQL Server zelf. U krijgt de nieuwste SQL Server-mogelijkheden zonder overhead voor het patchen of upgraden, getest in miljoenen databases. 
 
@@ -107,7 +109,7 @@ Azure biedt [ingebouwde prestatiebewaking-](sql-database-performance-guidance.md
 
 ## <a name="availability-capabilities"></a>Beschikbaarheid
 
-In een traditionele SQL Server-omgeving hebt u over het algemeen ten minste twee machines lokaal ingesteld. Deze machines hebben exacte, synchroon onderhouden kopieën van de gegevens om te beschermen tegen een storing van een enkele machine of component. Deze omgeving biedt een hoge beschikbaarheid, maar beschermt niet tegen een natuurramp die uw datacenter vernietigt.
+Azure SQL Database stelt uw bedrijf in staat om te blijven werken tijdens onderbrekingen. In een traditionele SQL Server-omgeving hebt u over het algemeen ten minste twee machines lokaal ingesteld. Deze machines hebben exacte, synchroon onderhouden kopieën van de gegevens om te beschermen tegen een storing van een enkele machine of component. Deze omgeving biedt een hoge beschikbaarheid, maar beschermt niet tegen een natuurramp die uw datacenter vernietigt.
 
 Disaster recovery gaat ervan uit dat een catastrofale gebeurtenis geografisch gelokaliseerd genoeg is om een andere machine of set machines te hebben met een kopie van uw gegevens ver weg. In SQL Server u Always On Availability Groups gebruiken die in de async-modus worden uitgevoerd om deze mogelijkheid te krijgen. Mensen willen vaak niet wachten tot replicatie zo ver weg gebeurt voordat ze een transactie plegen, dus er is potentieel voor gegevensverlies wanneer u ongeplande failovers uitvoert.
 

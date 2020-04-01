@@ -3,12 +3,12 @@ title: De MARS-agent (Microsoft Azure Recovery Services) installeren
 description: Meer informatie over het installeren van de MARS-agent (Microsoft Azure Recovery Services) om een back-up te maken van Windows-machines.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: b9a6791709d5aff82d11bbf10e5f084fd8c1a000
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247759"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422922"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>De Azure Backup MARS-agent installeren
 
@@ -36,6 +36,7 @@ De gegevens die beschikbaar zijn voor back-up, zijn afhankelijk van waar de agen
 * Bekijk [wat er wordt ondersteund en wat je back-ups](backup-support-matrix-mars-agent.md) maken door de MARS-agent.
 * Zorg ervoor dat u een Azure-account hebt als u een back-up van een server of client naar Azure wilt maken. Als je geen account hebt, kun je in slechts een paar minuten een [gratis](https://azure.microsoft.com/free/) account aanmaken.
 * Controleer de internettoegang op de machines waarvan u een back-up wilt maken.
+* Zorg ervoor dat de gebruiker die de installatie en configuratie van de MARS-agent uitvoert, lokale beheerdersbevoegdheden op de server heeft om te worden beveiligd.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

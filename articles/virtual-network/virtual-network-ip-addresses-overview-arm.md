@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 176cd9b0bf72a123bc644ebc27ee0e091aa54e97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9de94dab7000cee90f4448aa6d81196d3865e021
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245185"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474408"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-adrestypen en toewijzingsmethoden in Azure
 
@@ -99,7 +99,7 @@ Statische openbare IP-adressen worden vaak gebruikt in de volgende scenario's:
 * U moet firewallregels bijwerken om te communiceren met uw Azure-resources.
 * U gebruikt een DNS-naamomzetting waarbij een wijziging in het IP-adres het bijwerken van A-records vereist.
 * Uw Azure-resources communiceren met andere apps of services die een op IP-adressen gebaseerd beveiligingsmodel gebruiken.
-* U gebruikt SSL-certificaten die zijn gekoppeld aan een IP-adres.
+* U gebruikt TLS/SSL-certificaten die zijn gekoppeld aan een IP-adres.
 
 > [!NOTE]
 > In Azure worden openbare IP-adressen toegewezen uit een bereik dat uniek is voor elke regio in elke Azure-cloud. U kunt de lijst met bereiken (voorvoegsels) downloaden voor de Azure-clouds [Openbaar](https://www.microsoft.com/download/details.aspx?id=56519), [US government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) en [Duitsland](https://www.microsoft.com/download/details.aspx?id=57064).
@@ -121,7 +121,7 @@ U kunt een openbaar IP-adres koppelen aan een virtuele [Windows](../virtual-mach
 
 ### <a name="internet-facing-load-balancers"></a>Internetgerichte load balancers
 
-U kunt een openbaar IP-adres dat met een willekeurige [SKU](#sku) is gemaakt koppelen aan een [Azure Load Balancer](../load-balancer/load-balancer-overview.md) door het toe te wijzen aan de **front-end**-configuratie van de load balancer. Het openbare IP-adres doet dienst als een virtueel IP-adres (VIP) met taakverdeling. U kunt een dynamisch of statisch openbaar IP-adres toewijzen aan de front-end van een load balancer. U kunt ook meerdere openbare IP-adressen toewijzen aan de front-end van een load balancer, zodat [multi-VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-scenario's, zoals een multitenant-omgeving met op SSL gebaseerde websites, mogelijk zijn. Zie [Standaard-SKU's van Azure Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over SKU's van Azure Load Balancer.
+U kunt een openbaar IP-adres dat met een willekeurige [SKU](#sku) is gemaakt koppelen aan een [Azure Load Balancer](../load-balancer/load-balancer-overview.md) door het toe te wijzen aan de **front-end**-configuratie van de load balancer. Het openbare IP-adres doet dienst als een virtueel IP-adres (VIP) met taakverdeling. U kunt een dynamisch of statisch openbaar IP-adres toewijzen aan de front-end van een load balancer. U ook meerdere openbare IP-adressen toewijzen aan een front-end load balancer, waarmee [multi-VIP-scenario's](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mogelijk zijn, zoals een multi-tenantomgeving met TLS-gebaseerde websites. Zie [Standaard-SKU's van Azure Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over SKU's van Azure Load Balancer.
 
 ### <a name="vpn-gateways"></a>VPN-gateways
 

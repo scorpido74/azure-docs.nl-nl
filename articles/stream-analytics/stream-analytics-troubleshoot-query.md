@@ -6,25 +6,30 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: bf0740bbdd4754aeba43e64f1076a1bea33cffc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f049dc6d1261a8201cf79d1779e522b30d13c4b0
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844413"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409446"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics-query's oplossen
 
 In dit artikel worden veelvoorkomende problemen beschreven met het ontwikkelen van Stream Analytics-query's en hoe u deze oplossen.
 
+In dit artikel worden veelvoorkomende problemen beschreven met het ontwikkelen van Azure Stream Analytics-query's, het oplossen van queryproblemen en het oplossen van de problemen. Voor veel stappen voor het oplossen van problemen moeten diagnostische logboeken worden ingeschakeld voor uw Stream Analytics-taak. Zie [Azure Stream Analytics oplossen met behulp van diagnostische logboeken](stream-analytics-job-diagnostic-logs.md)als u geen diagnostische logboeken hebt ingeschakeld.
+
 ## <a name="query-is-not-producing-expected-output"></a>Query produceert geen verwachte uitvoer
+
 1.  Onderzoek fouten door lokaal te testen:
+
     - Selecteer op azure-portal op het tabblad **Query** de optie **Testen**. Gebruik de gedownloade voorbeeldgegevens om de query te [testen.](stream-analytics-test-query.md) Onderzoek eventuele fouten en probeer deze te corrigeren.   
     - U uw query ook lokaal testen met Azure Stream [Analytics-hulpprogramma's](stream-analytics-live-data-local-testing.md) voor Visual Studio of [Visual Studio Code.](visual-studio-code-local-run-live-input.md) 
 
-2.  [Query's stap voor stap nauwkeurig opsporen met behulp van taakdiagram](debug-locally-using-job-diagram.md) in Azure Stream Analytics-hulpprogramma's voor Visual Studio. Het taakdiagram is om te laten zien hoe gegevens stromen van invoerbronnen (Gebeurtenishub, IoT Hub, enz.) door meerdere querystappen en uiteindelijk uitvoer naar sinks. Elke querystap wordt toegewezen aan een tijdelijke resultaatset die is gedefinieerd in het script met behulp van DE instructie. U de gegevens en statistieken in elke querystap in elke tussenliggende resultaatset bekijken om de bron van het probleem te vinden.
+2.  [Query's stap voor stap nauwkeurig opsporen met behulp van taakdiagram](debug-locally-using-job-diagram.md) in Azure Stream Analytics-hulpprogramma's voor Visual Studio. Het taakdiagram laat zien hoe gegevens stromen uit invoerbronnen (Gebeurtenishub, IoT Hub, enz.) via meerdere querystappen en uiteindelijk naar uitvoergootstenen. Elke querystap wordt toegewezen aan een tijdelijke resultaatset die in het script is gedefinieerd met de instructie MET. U de gegevens en statistieken bekijken in elke tussentijdse resultaatset om de bron van het probleem te vinden.
+
     ![Voorbeeld van het voorbeeld van het taakdiagram](./media/debug-locally-using-job-diagram/preview-result.png)
 
 3.  Als u [**Timestamp By gebruikt,**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)controleert u of de gebeurtenissen tijdstempels hebben die groter zijn dan de [begintijd van](stream-analytics-out-of-order-and-late-events.md)de taak.
@@ -33,20 +38,24 @@ In dit artikel worden veelvoorkomende problemen beschreven met het ontwikkelen v
     - Een [**WHERE-component**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) in de query filterde alle gebeurtenissen uit, waardoor geen uitvoer wordt gegenereerd.
     - Een [**CAST-functie**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) mislukt, waardoor de taak mislukt. Gebruik [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) om fouten in het typecast te voorkomen.
     - Wanneer u vensterfuncties gebruikt, wacht u tot de volledige vensterduur een uitvoer van de query ziet.
-    - De tijdstempel voor gebeurtenissen gaat vooraf aan de begintijd van de taak en daarom worden gebeurtenissen verwijderd.
+    - De tijdstempel voor gebeurtenissen gaat vooraf aan de begintijd van de taak en gebeurtenissen worden verwijderd.
+    - [**Join-voorwaarden**](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) komen niet overeen. Als er geen overeenkomsten zijn, zal er nul output zijn.
 
-5.  Zorg ervoor dat het beleid voor het bestellen van gebeurtenissen is geconfigureerd zoals verwacht. Ga naar de **instellingen** en selecteer [**Het bestellen van evenementen**](stream-analytics-out-of-order-and-late-events.md). Het beleid wordt *niet* toegepast wanneer u de knop **Testen** gebruikt om de query te testen. Dit resultaat is een verschil tussen het testen in de browser versus het uitvoeren van de taak in productie. 
+5.  Zorg ervoor dat het beleid voor het bestellen van gebeurtenissen is geconfigureerd zoals verwacht. Ga naar **Instellingen** en selecteer [**Gebeurtenisbestellen**](stream-analytics-out-of-order-and-late-events.md). Het beleid wordt *niet* toegepast wanneer u de knop **Testen** gebruikt om de query te testen. Dit resultaat is een verschil tussen het testen in de browser versus het uitvoeren van de taak in productie. 
 
 6. Foutopsporing met behulp van controle- en diagnostische logboeken:
     - Gebruik [Controlelogboeken](../azure-resource-manager/resource-group-audit.md)en filter om fouten te identificeren en te debuggen.
     - Gebruik [taakdiagnostische logboeken](stream-analytics-job-diagnostic-logs.md) om fouten te identificeren en te debuggen.
 
-## <a name="job-is-consuming-too-many-streaming-units"></a>Job verbruikt te veel streaming-eenheden
+## <a name="resource-utilization-is-high"></a>Het gebruik van resources is hoog
+
 Zorg ervoor dat u profiteert van parallellen in Azure Stream Analytics. U leren [schalen met queryparallelisatie](stream-analytics-parallelization.md) van Stream Analytics-taken door invoerpartities te configureren en de definitie van analysequery's af te stemmen.
 
 ## <a name="debug-queries-progressively"></a>Fouten progressief opsporen in query's
 
-In realtime gegevensverwerking kan het handig zijn om te weten hoe de gegevens er midden in de query uit zien. Omdat invoer of stappen van een Azure Stream Analytics-taak meerdere keren kunnen worden gelezen, u extra SELECT INTO-instructies schrijven. Hierdoor worden tussenliggende gegevens naar opslag uitgevoerd en u de juistheid van de gegevens inspecteren, net zoals *horlogevariabelen* dat doen wanneer u een programma debugt.
+In realtime gegevensverwerking kan het handig zijn om te weten hoe de gegevens er midden in de query uit zien. U dit zien aan de hand van het taakdiagram in Visual Studio. Als u geen Visual Studio hebt, u aanvullende stappen ondernemen om tussentijdse gegevens uit te voeren.
+
+Omdat invoer of stappen van een Azure Stream Analytics-taak meerdere keren kunnen worden gelezen, u extra SELECT INTO-instructies schrijven. Hierdoor worden tussenliggende gegevens naar opslag uitgevoerd en u de juistheid van de gegevens inspecteren, net zoals *horlogevariabelen* dat doen wanneer u een programma debugt.
 
 De volgende voorbeeldquery in een Azure Stream Analytics-taak heeft één streaminvoer, twee referentiegegevensinvoer en een uitvoer naar Azure Table Storage. De query voegt gegevens van de gebeurtenishub en twee referentieblobs samen om de naam- en categoriegegevens op te halen:
 

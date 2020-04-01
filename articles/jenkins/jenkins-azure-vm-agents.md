@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, virtuele machine, agents
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: 2e811d628c017316a5bc50a8ddc22ee24d6f744e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158527"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Uw Jenkins-implementaties schalen met Azure VM-agents om te voldoen aan de vraag
@@ -110,7 +110,7 @@ Configureer een sjabloon dat u wilt gebruiken om een Azure VM-agent te definiër
 
 ## <a name="configure-agent-operating-system-and-tools"></a>Besturingssysteem en hulpprogramma's van agent configureren
 
-In de sectie **Configuratie van installatiekopie** in de configuratie van de invoertoepassing selecteert u **Ubuntu 16.04 LTS**. Vink de vakjes naast **Git installeren (Meest recente)** , **Maven installeren (V3.5.0)** en **Docker installeren** aan om deze hulpprogramma's te installeren op de nieuwe agents.
+In de sectie **Configuratie van installatiekopie** in de configuratie van de invoertoepassing selecteert u **Ubuntu 16.04 LTS**. Vink de vakjes naast **Git installeren (Meest recente)**, **Maven installeren (V3.5.0)** en **Docker installeren** aan om deze hulpprogramma's te installeren op de nieuwe agents.
 
 ![Besturingssysteem en hulpprogramma's VM configureren](./media/jenkins-azure-vm-agents/jenkins-os-config.png)
 
@@ -138,7 +138,7 @@ Selecteer **Sjabloon verifiëren** om de configuratie te verifiëren en selectee
 
 ## <a name="troubleshooting-the-jenkins-plugin"></a>Problemen met de Jenkins-invoegtoepassing oplossen
 
-Als u problemen ondervindt met de Jenkins-invoegtoepassingen, kunt u in [Jenkins JIRA](https://issues.jenkins-ci.org/) een ticket openen voor het specifieke onderdeel.
+Als u bugs tegenkomt met de Jenkins-plug-ins, dient u een probleem op in de [Jenkins JIRA](https://issues.jenkins-ci.org/) voor de specifieke component.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 96d9a0722ae04dc150b639dced34fa290da93630
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0deace98c5be0b2ce2f29abce4c8a804145afdb1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159406"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475620"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -374,7 +374,7 @@ def run(data):
 Zie de volgende scripts voor meer voorbeelden:
 
 * [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
-* [TensorFlow (TensorFlow)](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
+* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
 * [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
 * [AutoML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
 * [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
@@ -537,9 +537,9 @@ De klassen voor lokale, Azure Container Instances en AKS-webservices kunnen word
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-### <a name="securing-deployments-with-ssl"></a>Implementaties beveiligen met SSL
+### <a name="securing-deployments-with-tls"></a>Implementaties beveiligen met TLS
 
-Zie [SSL gebruiken om een webservice te beveiligen voor](how-to-secure-web-service.md#enable)meer informatie over het beveiligen van een webservice.
+Zie TLS inschakelen en implementeren voor meer informatie over het beveiligen van een webservice.for more information over how to secure a web service deployment, see [Enable TLS and deploy](how-to-secure-web-service.md#enable).
 
 ### <a name="local-deployment"></a><a id="local"></a>Lokale implementatie
 
@@ -907,6 +907,24 @@ service_name = 'my-sklearn-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
+OPMERKING: Modellen die predict_proba ondersteunen, gebruiken deze methode standaard. Om dit te overschrijven om te voorspellen u de POST-instantie als hieronder wijzigen:
+```python
+import json
+
+
+input_payload = json.dumps({
+    'data': [
+        [ 0.03807591,  0.05068012,  0.06169621, 0.02187235, -0.0442235,
+         -0.03482076, -0.04340085, -0.00259226, 0.01990842, -0.01764613]
+    ],
+    'method': 'predict'  # If you have a classification model, the default behavior is to run 'predict_proba'.
+})
+
+output = service.run(input_payload)
+
+print(output)
+```
+
 OPMERKING: Deze afhankelijkheden zijn opgenomen in de vooraf gebouwde sklearn-inferentiecontainer:
 
 ```yaml
@@ -1154,7 +1172,7 @@ def run(request):
 
 * [Een model implementeren met een aangepaste Docker-afbeelding](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie](how-to-troubleshoot-deployment.md)
-* [Azure Machine Learning-webservices beveiligen met SSL](how-to-secure-web-service.md)
+* [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](how-to-secure-web-service.md)
 * [Een Azure Machine Learning-model gebruiken dat is geïmplementeerd als webservice](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning-modellen controleren met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)

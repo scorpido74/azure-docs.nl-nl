@@ -1,18 +1,21 @@
 ---
 title: Inzicht in resourcevergrendeling
 description: Meer informatie over de vergrendelingsopties in Azure Blueprints om resources te beschermen bij het toewijzen van een blauwdruk.
-ms.date: 02/27/2020
+ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86897ae6665f7a339b51aaae5f1c00144d8b7309
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78199696"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437734"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Inzicht in bronvergrendeling in Azure Blueprints
 
 Het creëren van consistente omgevingen op schaal is alleen echt waardevol als er een mechanisme is om die consistentie te behouden. In dit artikel wordt uitgelegd hoe resourcevergrendeling werkt in Azure Blueprints. Zie de zelfstudie [voor het beveiligen](../tutorials/protect-new-resources.md) van nieuwe resources voor een voorbeeld van resourcevergrendeling en toepassing van _weigeringstoewijzingen._
+
+> [!NOTE]
+> Resourcevergrendelingen die zijn geïmplementeerd door Azure Blueprints, worden alleen toegepast op resources die zijn geïmplementeerd door de blauwdruktoewijzing. Bestaande bronnen, zoals bronnen in resourcegroepen die al bestaan, hebben geen vergrendelingen toegevoegd.
 
 ## <a name="locking-modes-and-states"></a>Vergrendelingsmodi en -statussen
 

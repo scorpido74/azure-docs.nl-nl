@@ -2,15 +2,15 @@
 title: Zelfstudie - parameters toevoegen aan sjabloon
 description: Voeg parameters toe aan uw Azure Resource Manager-sjabloon om deze herbruikbaar te maken.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b4f8d5098fc9cf2f91139979cae430594edac5af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de7ec961672db2f3120e00f1a42b33f71e7ab092
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369857"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437819"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>Zelfstudie: parameters toevoegen aan uw ARM-sjabloon
 
@@ -44,7 +44,7 @@ Laten we de sjabloon implementeren. In het volgende voorbeeld wordt de sjabloon 
 
 Zie [Resourcegroep maken](template-tutorial-create-first-template.md#create-resource-group)als u de resourcegroep niet hebt gemaakt. In het voorbeeld wordt ervan uitgegaan dat u de **variabele templateFile** hebt ingesteld op het pad naar het sjabloonbestand, zoals wordt weergegeven in de [eerste zelfstudie.](template-tutorial-create-first-template.md#deploy-template)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -90,7 +90,7 @@ De parameter **storageSKU** heeft een standaardwaarde. Deze waarde wordt gebruik
 
 Je bent klaar om weer in te zetten. Omdat de standaard SKU is ingesteld op **Standard_LRS,** hoeft u geen waarde voor die parameter op te geven.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -112,13 +112,16 @@ az deployment group create \
 
 ---
 
+> [!NOTE]
+> Als de implementatie is mislukt, gebruikt u de **foutopsporingsschakelaar** met de opdracht implementatie om de foutopsporingslogboeken weer te geven.  U ook de **verbose-schakelaar** gebruiken om de volledige foutopsporingslogboeken weer te geven.
+
 Als u de flexibiliteit van uw sjabloon wilt zien, zetten we opnieuw in. Stel deze tijd de parameter SKU in op **Standard_GRS**. U een nieuwe naam opgeven om een ander opslagaccount aan te maken of dezelfde naam gebruiken om uw bestaande opslagaccount bij te werken. Beide opties werken.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Name usedefaultsku `
+  -Name usenondefaultsku `
   -ResourceGroupName myResourceGroup `
   -TemplateFile $templateFile `
   -storageName "{your-unique-name}" `
@@ -129,7 +132,7 @@ New-AzResourceGroupDeployment `
 
 ```azurecli
 az deployment group create \
-  --name usedefaultsku \
+  --name usenondefaultsku \
   --resource-group myResourceGroup \
   --template-file $templateFile \
   --parameters storageSKU=Standard_GRS storageName={your-unique-name}
@@ -139,7 +142,7 @@ az deployment group create \
 
 Tot slot, laten we nog een test uitvoeren en zien wat er gebeurt als je slaagt in een SKU die niet een van de toegestane waarden is. In dit geval testen we het scenario waarin een gebruiker van uw sjabloon denkt dat **basic** een van de SKU's is.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `

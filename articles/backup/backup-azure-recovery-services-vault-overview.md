@@ -3,12 +3,12 @@ title: Overzicht van Recovery Services-kluizen
 description: Een overzicht en vergelijking tussen Vaults van Recovery Services en Azure Backup-kluizen.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6a359287533c9ffdd688b5285b24b9c70fa7b7f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673240"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436967"
 ---
 # <a name="recovery-services-vaults-overview"></a>Overzicht van Recovery Services-kluizen
 
@@ -32,11 +32,19 @@ Vaults van Recovery Services zijn gebaseerd op het Azure Resource Manager-model 
 
 - **Direct herstellen voor IaaS VM's:** met Vaults van Recovery Services u bestanden en mappen van een IaaS-vm herstellen zonder de hele VM te herstellen, waardoor snellere hersteltijden mogelijk zijn. Instant restore voor IaaS VM's is beschikbaar voor zowel Windows- als Linux-VM's. [Meer informatie](backup-instant-restore-capability.md)
 
+## <a name="storage-settings-in-the-recovery-services-vault"></a>Opslaginstellingen in de kluis Recovery Services
+
+Een vault van Recovery Services is een entiteit die de back-ups en herstelpunten opslaat die in de loop van de tijd zijn gemaakt. De kluis Recovery Services bevat ook het back-upbeleid dat is gekoppeld aan de beveiligde virtuele machines.
+
+Azure Backup verwerkt automatisch de opslag voor de kluis. Bekijk hoe [opslaginstellingen kunnen worden gewijzigd](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy).
+
+Zie deze artikelen over [geo-](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) en [lokale](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs) redundantie voor meer informatie over redundantie voor opslag.
+
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Uw Vaults van Recovery Services beheren in de portal
 
 Het maken en beheren van Vaults van Recovery Services in de Azure-portal is eenvoudig omdat de Back-upservice is geïntegreerd in andere Azure-services. Deze integratie betekent dat u een Vault voor Recovery Services maken of beheren *in het kader van de doelservice.* Als u bijvoorbeeld de herstelpunten voor een virtuele machine wilt weergeven, selecteert u uw VM en klikt u op **Back-up** in het menu Bewerkingen.
 
-![Vault details VM voor herstelservices](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
+![Recovery Services vault details VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
 Als de VM geen back-up heeft geconfigureerd, wordt u gevraagd een back-up te configureren. Als de back-up is geconfigureerd, ziet u back-upgegevens over de VM, inclusief een lijst met herstelpunten.  
 

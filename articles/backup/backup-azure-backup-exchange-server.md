@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een back-up van een Exchange-ser
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 389713767409ff49c6fc83a4d6e8dc3c87272fc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b45efa0623edbec47b8ae12d3a97b1e032626530
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614375"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396407"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Met System Center 2012 R2 DPM een back-up maken van een Exchange-server in Azure Backup
 
@@ -49,7 +49,7 @@ Voer de volgende stappen uit om de DPM-beveiligingsagent op de Exchange-server t
 4. Selecteer de Exchange-serverdatabase die u wilt beveiligen en klik op **Volgende**.
 
    > [!NOTE]
-   > Als u Exchange 2013 beschermt, controleert u de [vereisten voor Exchange 2013.](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))
+   > Als u Exchange 2013 beschermt, controleert u de [vereisten voor Exchange 2013.](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)
    >
    >
 

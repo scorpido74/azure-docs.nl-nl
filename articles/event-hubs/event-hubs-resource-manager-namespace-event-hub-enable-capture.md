@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 51b69e8b7f6c980fd851cdf3e60ecfe0ade29e71
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 0b20c73ed0590f3afc19db43b4b55dd3ff6bde8e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187347"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79453867"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Een naamruimte maken met Event Hub en Capture inschakelen met behulp van een sjabloon
 
@@ -27,17 +27,17 @@ In dit artikel wordt beschreven hoe u een Azure Resource Manager-sjabloon gebrui
 
 Ook wordt uitgelegd hoe u kunt opgeven dat gebeurtenissen worden vastgelegd in Azure Storage-blobs of in een Azure Data Lake Store, op basis van de bestemming die u kiest.
 
-Zie [Azure Resource Manager sjablonen ontwerpen][Authoring Azure Resource Manager templates]voor meer informatie over het maken van sjablonen. Zie [Microsoft.EventHub resource types](/azure/templates/microsoft.eventhub/allversions) (Microsoft.EventHub-resourcetypen) voor de JSON-syntaxis en eigenschappen die u kunt gebruiken in een sjabloon.
+Zie [Azure Resource Manager-sjablonen samenstellen][Authoring Azure Resource Manager templates] voor meer informatie over het maken van sjablonen. Zie [Microsoft.EventHub resource types](/azure/templates/microsoft.eventhub/allversions) (Microsoft.EventHub-resourcetypen) voor de JSON-syntaxis en eigenschappen die u kunt gebruiken in een sjabloon.
 
-Zie [Azure resources-naamgevings conventies][Azure Resources naming conventions]voor meer informatie over patronen en procedures voor naamgevings regels voor Azure-resources.
+Zie [Naming Conventions][Azure Resources naming conventions] (Naamgevingsconventies) voor meer informatie over de patronen en procedures voor naamgevingsconventies van Azure Resources.
 
 Voor de volledige-sjablonen klikt u op de volgende GitHub-koppelingen:
 
-- [Event hub en het vastleggen van de opslag sjabloon inschakelen][Event Hub and enable Capture to Storage template] 
-- [Event hub en vastleggen van Azure Data Lake Store sjabloon inschakelen][Event Hub and enable Capture to Azure Data Lake Store template]
+- [Event hub and enable Capture to Storage template][Event Hub and enable Capture to Storage template] 
+- [Event hub and enable Capture to Azure Data Lake Store template][Event Hub and enable Capture to Azure Data Lake Store template]
 
 > [!NOTE]
-> Als u de meest recente sjablonen wilt controleren, gaat u naar de galerie met [Azure Quick Start sjablonen][Azure Quickstart Templates] en zoekt u naar Event hubs.
+> Om te controleren op de meest recente sjablonen, gaat u naar de galerie [Azure-snelstartsjablonen][Azure Quickstart Templates] en zoekt u naar Event Hubs.
 > 
 > 
 
@@ -235,7 +235,7 @@ De blob-container waarin uw gebeurtenisgegevens worden vastgelegd.
 }
 ```
 
-Gebruik de volgende para meters als u Azure Data Lake Store gen 1 als uw bestemming kiest. U moet machtigingen instellen voor het Data Lake Store-pad waarin u de gebeurtenis wilt vastleggen. Zie [gegevens vastleggen voor Azure data Lake Storage gen 1](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)om machtigingen in te stellen.
+Gebruik de volgende parameters als u Azure Data Lake Store Gen 1 als bestemming kiest. U moet machtigingen instellen voor het Data Lake Store-pad waarin u de gebeurtenis wilt vastleggen. Zie Gegevens vastleggen [op Azure Data Lake Storage Gen 1](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)als u machtigingen wilt instellen.
 
 ### <a name="subscriptionid"></a>subscriptionId
 
@@ -414,17 +414,13 @@ New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -Templa
 Azure Blob Storage als doel:
 
 ```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
+az group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
 ```
 
 Azure Data Lake Store als doel:
 
 ```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
+az group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -433,7 +429,7 @@ U kunt Event Hubs Capture ook configureren via de [Azure-portal](https://portal.
 
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Event Hubs-overzicht](event-hubs-what-is-event-hubs.md)
+* [Overzicht van gebeurtenishubs](event-hubs-what-is-event-hubs.md)
 * [Een Event Hub maken](event-hubs-create.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)
 

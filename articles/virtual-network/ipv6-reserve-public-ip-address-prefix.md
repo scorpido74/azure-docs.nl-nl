@@ -10,20 +10,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 76d1ba2717ac3c8ac8e86687ef1754a8790f3e4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a0dd56842174d89688c862397c373326ef50d1f
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72595074"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420549"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>Openbaar IPv6-adresvoorvoegsel reserveren
 Met IPv6 voor Azure Virtual Network (VNet) u toepassingen in Azure hosten met IPv6- en IPv4-connectiviteit, zowel binnen een virtueel netwerk als van en naar internet. Naast het reserveren van afzonderlijke IPv6-adressen, u aaneengesloten bereiken van Azure IPv6-adressen (ip-voorvoegsel genoemd) reserveren voor uw gebruik. In deze artikelen wordt beschreven hoe u ip-adressen en adresbereiken van IPv6 maakt met Azure PowerShell en CLI.
 
-> [!Important]
-> IPv6 voor Azure Virtual Network is momenteel in openbare preview. Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-single-reserved-ipv6-public-ip"></a>Eén gereserveerd ip-adres van IPv6 maken
 

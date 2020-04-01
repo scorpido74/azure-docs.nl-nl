@@ -1,6 +1,6 @@
 ---
 title: Externe hulpprogramma's gebruiken om Azure VM-problemen op te lossen | Microsoft Documenten
-description: ''
+description: Meer informatie over PsExec, PowerShell-scripts en andere externe hulpprogramma's die u gebruiken om externe Azure VM-problemen op te lossen zonder RDP te gebruiken.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: b86b1a2d8a49554cc3df99e0a32a2c0ccaacb560
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920005"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422606"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Externe hulpprogramma's gebruiken om Azure VM-problemen op te lossen
 

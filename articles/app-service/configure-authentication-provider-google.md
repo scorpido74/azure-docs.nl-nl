@@ -1,22 +1,22 @@
 ---
 title: Google-verificatie configureren
-description: Meer informatie over het configureren van Google-verificatie als identiteitsprovider voor uw App Service-app.
+description: Meer informatie over het configureren van Google-verificatie als identiteitsprovider voor uw App Service- of Azure-functie-app.
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.topic: article
 ms.date: 09/02/2019
-ms.custom: seodec18
-ms.openlocfilehash: 81ce3e393d308323c8d5a3d688c16c9b45e7be9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: bb6b8eebef3247cf2c39ed4b111296e1e0521a74
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74670814"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437982"
 ---
-# <a name="configure-your-app-service-app-to-use-google-login"></a>Uw App Service-app configureren om Google-aanmelding te gebruiken
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Uw App Service- of Azure Functions-app configureren om Google-aanmelding te gebruiken
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-In dit onderwerp ziet u hoe u Azure App Service configureert om Google als verificatieprovider te gebruiken.
+In dit onderwerp ziet u hoe u Azure App Service of Azure-functies configureert om Google als verificatieprovider te gebruiken.
 
 Als u de procedure in dit onderwerp wilt voltooien, moet u een Google-account hebben met een geverifieerd e-mailadres. Als u een nieuw Google-account wilt maken, gaat u naar [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
 
@@ -63,5 +63,5 @@ U bent nu klaar om Google te gebruiken voor verificatie in uw app.
 
 [Google apis]: https://go.microsoft.com/fwlink/p/?LinkId=268303
 
-[Azure-portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 

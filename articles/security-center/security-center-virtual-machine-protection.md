@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282638"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435631"
 ---
 # <a name="protect-your-machines-and-applications"></a>Bescherm uw machines en toepassingen
 Wanneer Azure Security Center potentiële beveiligingsproblemen identificeert, worden er aanbevelingen gemaakt die u begeleiden bij het configureren van de benodigde besturingselementen om uw resources te verharden en te beschermen.
@@ -84,10 +84,10 @@ Hier ziet u de beveiligingsgegevens voor de VM of computer. Onderaan ziet u de a
 
 
 
-### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>Virtuele machineschaalsets
-Security Center detecteert automatisch of u schaalsets hebt en raadt u aan de Microsoft Monitoring Agent erop te installeren.
+### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>Virtuele-machineschaalsets
+Security Center detecteert automatisch of u schaalsets hebt en raadt u aan de Log Analytics-agent erop te installeren.
 
-Ga als volgt te werk om de Microsoft Monitoring Agent te installeren: 
+Ga als eerste over de installatie van de loganalytics-agent: 
 
 1. Selecteer de aanbeveling **Installeer de bewakingsagent op de virtuele machineschaalset**. U krijgt een lijst met niet-bewaakte schaalsets.
 
@@ -95,7 +95,7 @@ Ga als volgt te werk om de Microsoft Monitoring Agent te installeren:
 
    ![MMS installeren](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-Ga als volgt te werk om nieuwe schaalsets in te stellen om de Microsoft Monitoring Agent automatisch te installeren:
+Ga als volgende voor het automatisch installeren van de Log Analytics-agent:
 1. Ga naar Azure Policy en klik op **Definities**.
 
 1. Zoek naar de **beleidsmedewerker Logboekanalyse-agent implementeren voor Windows- virtuele machineschaalsets** en klik erop.
@@ -104,7 +104,7 @@ Ga als volgt te werk om nieuwe schaalsets in te stellen om de Microsoft Monitori
 
 1. Stel de **werkruimte** **Scope** en Log Analytics in en klik op **Toewijzen**.
 
-Als u alle bestaande schaalsets wilt instellen om de Microsoft Monitoring Agent te installeren, gaat u in Azure Policy naar **Herstel** en past u het bestaande beleid toe op bestaande schaalsets.
+Als u alle bestaande schaalsets wilt instellen om de loganalyse-agent te installeren, gaat u in Azure Policy naar **Herstel** en past u het bestaande beleid toe op bestaande schaalsets.
 
 
 
@@ -195,7 +195,7 @@ Wanneer u op een van de VM's met docker klikt, ziet u de pagina met details met 
 
 Security Center scant uw Docker-configuraties en geeft u inzicht in onjuiste configuraties door een lijst op te stellen met alle mislukte regels die zijn beoordeeld. Security Center biedt richtlijnen om u te helpen deze problemen snel op te lossen en tijd te besparen. Docker-configuraties worden doorlopend beoordeeld door Security Center en u ziet steeds wat de actuele status is.
 
-![tabblad container](./media/security-center-container-recommendations/container-cis-benchmark.png)
+![tabblad container](./media/security-center-virtual-machine-recommendations/container-cis-benchmark.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen

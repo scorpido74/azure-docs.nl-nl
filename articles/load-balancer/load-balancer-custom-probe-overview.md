@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: ec1507e09a183f8d466a456b70151861f5f0e82c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e79f4c791d0252c719846da3aa8024b0e622dca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159435"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477018"
 ---
 # <a name="load-balancer-health-probes"></a>Status van Load Balancer testen
 
@@ -66,7 +66,7 @@ De opgegeven time-out- en intervalwaarden bepalen of een instantie wordt gemarke
 
 We kunnen het gedrag verder illustreren met een voorbeeld. Als u het aantal sondereacties hebt ingesteld op 2 en het interval op 5 seconden, betekent dit dat 2 time-outfouten van de sonde binnen een interval van 10 seconden moeten worden waargenomen.  Omdat het tijdstip waarop een sonde wordt verzonden niet wordt gesynchroniseerd wanneer uw toepassing de status kan wijzigen, kunnen we de tijd verbinden om te detecteren door twee scenario's:
 
-1. Als uw toepassing begint met het produceren van een time-out sondereactie vlak voordat de eerste sonde arriveert, duurt de detectie van deze gebeurtenissen 10 seconden (intervallen van 2 x 5 seconden) plus de duur van de toepassing die een time-out begint te signaleren tot wanneer de eerste sonde arriveert.  U ervan uitgaan dat deze detectie iets meer dan 10 seconden in beslag neemt.
+1. Als uw toepassing begint met het produceren van een time-out sonde reactie net voordat de eerste sonde arriveert, zal de detectie van deze gebeurtenissen 10 seconden (2 x 5 seconden intervallen) plus de duur van de toepassing begint een time-out signaal aan wanneer de eerste sonde aankomt.  U ervan uitgaan dat deze detectie iets meer dan 10 seconden in beslag neemt.
 2. Als uw toepassing begint met het produceren van een time-out sonde reactie net nadat de eerste sonde arriveert, zal de detectie van deze gebeurtenissen niet beginnen totdat de volgende sonde arriveert (en time-out) plus nog eens 10 seconden (2 x 5 seconden intervallen).  U ervan uitgaan dat deze detectie iets minder dan 15 seconden duurt.
 
 In dit voorbeeld neemt het platform, zodra detectie heeft plaatsgevonden, een kleine hoeveelheid tijd om op deze wijziging te reageren.  Dit betekent een afhankelijk van 
@@ -76,7 +76,10 @@ In dit voorbeeld neemt het platform, zodra detectie heeft plaatsgevonden, een kl
 3. wanneer de detectie over het platform is gecommuniceerd 
 
 u ervan uitgaan dat de reactie op een time-out sonderespons tussen een minimum van iets meer dan 10 seconden en een maximum van iets meer dan 15 seconden zal duren om te reageren op een wijziging in het signaal van de toepassing.  Dit voorbeeld wordt gegeven om te illustreren wat er gebeurt, maar het is niet mogelijk om een exacte duur te voorspellen die verder gaat dan de bovenstaande ruwe richtsnoeren die in dit voorbeeld worden geïllustreerd.
- 
+
+>[!NOTE]
+>De statussonde sonde zal alle lopende instanties in de backend pool onderzoeken. Als een instantie wordt gestopt, wordt deze pas gesondeerd als deze opnieuw is gestart.
+
 ## <a name="probe-types"></a><a name="types"></a>Sondetypen
 
 Het protocol dat door de statussonde wordt gebruikt, kan worden geconfigureerd tot een van de volgende opties:
@@ -232,7 +235,7 @@ Voor UDP-taakverdeling moet u een aangepast statussondessignaalsignaal genereren
 
 Bij het gebruik van [HA-poorten load-balancing regels](load-balancer-ha-ports-overview.md) met [Standard Load Balancer,](load-balancer-standard-overview.md)alle poorten zijn load balanced en een enkele health probe reactie moet de status van de gehele instantie weerspiegelen.
 
-Vertaal of proxy een statussonde niet door de instantie die de statussonde ontvangt naar een andere instantie in uw VNet, omdat deze configuratie kan leiden tot trapsgewijze fouten in uw scenario.  Denk aan het volgende scenario: een set apparaten van derden wordt geïmplementeerd in de backend-groep van een Load Balancer-bron om schaal en redundantie voor de apparaten te bieden en de statussonde is geconfigureerd om een poort te bepalen die de proxy's van het apparaat van derden of vertaalt zich naar andere virtuele machines achter het apparaat.  Als u dezelfde poort gebruikt die u gebruikt om aanvragen of proxy-aanvragen te vertalen naar de andere virtuele machines achter het apparaat, zal elke sonderespons van één virtuele machine achter het apparaat het apparaat zelf dood markeren. Deze configuratie kan leiden tot een trapsgewijze storing van het hele toepassingsscenario als gevolg van één backend endpoint achter het toestel.  De trigger kan een onderbroken sondestoring zijn waardoor Load Balancer de oorspronkelijke bestemming (de toestelinstantie) wordt afgeschreven en op zijn beurt het hele toepassingsscenario kan worden uitgeschakeld. Sonde in plaats daarvan de status van het apparaat zelf. De selectie van de sonde om het gezondheidssignaal te bepalen is een belangrijke overweging voor netwerk virtuele apparaten (NVA) scenario's en u moet uw toepassing leverancier te raadplegen voor wat het juiste gezondheidssignaal is voor dergelijke scenario's.
+Vertaal of proxy een statussonde niet door de instantie die de statussonde ontvangt naar een andere instantie in uw VNet, omdat deze configuratie kan leiden tot trapsgewijze fouten in uw scenario.  Denk aan het volgende scenario: een set apparaten van derden wordt geïmplementeerd in de backend-bron van een Load Balancer-bron om schaal en redundantie voor de apparaten te bieden en de statussonde is geconfigureerd om een poort te onderzoeken die de proxy's van het apparaat van derden of vertaalt naar andere virtuele machines achter het apparaat.  Als u dezelfde poort gebruikt die u gebruikt om aanvragen of proxy-aanvragen te vertalen naar de andere virtuele machines achter het apparaat, zal elke sonderespons van één virtuele machine achter het apparaat het apparaat zelf dood markeren. Deze configuratie kan leiden tot een trapsgewijze storing van het hele toepassingsscenario als gevolg van één backend endpoint achter het toestel.  De trigger kan een onderbroken sondestoring zijn waardoor Load Balancer de oorspronkelijke bestemming (de toestelinstantie) wordt afgeschreven en op zijn beurt het hele toepassingsscenario kan worden uitgeschakeld. Sonde in plaats daarvan de status van het apparaat zelf. De selectie van de sonde om het gezondheidssignaal te bepalen is een belangrijke overweging voor netwerk virtuele apparaten (NVA) scenario's en u moet uw toepassing leverancier te raadplegen voor wat het juiste gezondheidssignaal is voor dergelijke scenario's.
 
 Als u het [bron-IP](#probesource) van de sonde niet toestaat in uw firewallbeleid, mislukt de statussonde omdat deze uw instantie niet kan bereiken.  Load Balancer markeert op zijn beurt uw instantie als gevolg van het falen van de statussonde.  Deze verkeerde configuratie kan ertoe leiden dat het scenario van uw load balanced application mislukt.
 

@@ -1,5 +1,5 @@
 ---
-title: Failover en disaster recovery naar hetzelfde StorSimple 8000-apparaat
+title: Zelfstudie - Fail over StorSimple fysiek apparaat naar hetzelfde apparaat
 description: Meer informatie over hoe u falen op uw StorSimple-apparaat op hetzelfde apparaat.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: c8fe2d7ec7649f47f6cb9c8ae2c83f19c15691b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dde01f9b91ff5a04ddb3fcc8d5f0c535278b0539
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471802"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398079"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Fail over uw StorSimple fysieke apparaat naar hetzelfde apparaat
 

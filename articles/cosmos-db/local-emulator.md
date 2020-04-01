@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0c10ec94f6c089b5e5466f5dce73d32d6ce917b3
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238508"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422825"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>De Azure Cosmos Emulator gebruiken voor lokale ontwikkeling en testen
 
@@ -413,7 +413,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 .\importcert.ps1
 ```
 
-Wanneer u de interactieve shell sluit nadat de emulator is gestart, wordt de container van de emulator afgesloten.
+Het sluiten van de interactieve shell zodra de emulator is gestart zal afsluiten van de emulator container.
 
 U opent de Data Explorer door naar de volgende URL in uw browser te gaan. Het eindpunt van de emulator wordt vermeld in het reactiebericht dat hierboven wordt getoond.
 
@@ -445,7 +445,7 @@ Tot slot moeten we het Emulator CA-certificaat importeren in de Linux- of Mac-om
 
 Als u aan Linux werkt, worden .NET-relays op OpenSSL ingeschakeld om de validatie uit te brengen:
 
-1. [Exporteer het certificaat in PFX-formaat](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (PFX is beschikbaar bij het kiezen om de privésleutel te exporteren). 
+1. [Exporteer het certificaat in PFX-formaat](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate) (PFX is beschikbaar bij het kiezen om de privésleutel te exporteren). 
 
 1. Kopieer dat PFX-bestand naar uw Linux-omgeving.
 
@@ -471,7 +471,7 @@ Als u aan Linux werkt, worden .NET-relays op OpenSSL ingeschakeld om de validati
 
 Gebruik de volgende stappen als u aan Mac werkt:
 
-1. [Exporteer het certificaat in PFX-formaat](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (PFX is beschikbaar bij het kiezen om de privésleutel te exporteren).
+1. [Exporteer het certificaat in PFX-formaat](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate) (PFX is beschikbaar bij het kiezen om de privésleutel te exporteren).
 
 1. Kopieer dat PFX-bestand naar uw Mac-omgeving.
 

@@ -4,12 +4,12 @@ description: In dit artikel leest u hoe u problemen oplossen met de installatie 
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 24169356600c25e664221af397051bb0fec3e459
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a15f8a4531bc31dab5b99e125454b0d9c4fd4521
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673106"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421278"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problemen oplossen met de MARS-agent (Microsoft Azure Recovery Services)
 
@@ -132,6 +132,13 @@ Set-ExecutionPolicy Unrestricted
 
 > [!TIP]
 > Als u ervoor wilt zorgen dat wijzigingen consistent worden toegepast, start u de server opnieuw nadat u de voorgaande stappen hebt uitgevoerd.
+
+## <a name="resource-not-provisioned-in-service-stamp"></a>Resource die niet in de servicestempel is ingericht
+
+Fout | Mogelijke oorzaken | Aanbevolen acties
+--- | --- | ---
+De huidige bewerking is mislukt als gevolg van een interne servicefout 'Resource niet in servicestempel is ingericht'. Probeer de bewerking na verloop van tijd opnieuw. (ID: 230006) | De beveiligde server is hernoemd. | <li> Wijzig de naam van de server terug naar de oorspronkelijke naam zoals geregistreerd bij de kluis. <br> <li> Registreer de server opnieuw in de kluis met de nieuwe naam.
+
 
 ## <a name="troubleshoot-restore-problems"></a>Herstelproblemen oplossen
 

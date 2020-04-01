@@ -11,15 +11,15 @@ ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/30/2020
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4df2ec0439e659fd8dc1448c6209c9718114791
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecae47f6aa0ab3f179632467b7da7805f06162d6
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479787"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397266"
 ---
 # <a name="manage-your-batch-account"></a>Uw Batch-account beheren
 
@@ -33,13 +33,13 @@ U kunt in één Batch-account meerdere Batch-workloads uitvoeren of uw workloads
 
 Met het Batch-account u hpc-batchtaken (large-scale parallel en high-performance computing) efficiënt uitvoeren in Azure. Binnen het account dat u beheert:
 
-- de toepassingen die u uitvoert
+- De toepassingen die u uitvoert
 
-- de toewijzing van pools en knooppunten binnen pools
+- De toewijzing van pools en knooppunten binnen pools
 
-- het aantal en de soorten taken 
+- Het aantal en de soorten taken 
 
-- de invoer en output van gegevens. U hoeft geen extra software te installeren om taken te beheren.
+- De invoer en output van gegevens. U hoeft geen extra software te installeren om taken te beheren.
 
 - Wanneer u het Batch-account maakt, wordt u gevraagd er een naam aan toe te wijzen. Deze naam is de id en eenmaal toegewezen kan niet worden gewijzigd.
 

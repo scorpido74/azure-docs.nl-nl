@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
-ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe1f1d2700619bfcac4512bb0e631262edf8401c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274981"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398101"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -1518,6 +1518,10 @@ In deze sectie worden Azure Resource Manager-sjablonen voor drie scenario's besc
 - Alle virtuele machines (in één Azure-regio) in één of meer resourcegroepen controleren.
 - Alle virtuele machines (in één Azure-regio) in een abonnement controleren.
 - Een lijst met virtuele machines (in één Azure-regio) in een abonnement controleren.
+
+> [!NOTE]
+>
+> In een metrische waarschuwingsregel die meerdere resources bewaakt, is slechts één voorwaarde toegestaan.
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Statische drempelwaarschuwing voor alle virtuele machines in een of meer resourcegroepen
 

@@ -1,6 +1,6 @@
 ---
 title: Verificatiefouten oplossen wanneer u RDP gebruikt om verbinding te maken met Azure VM | Microsoft Documenten
-description: ''
+description: Meer informatie over het oplossen van verificatiefouten die optreden wanneer u Extern bureaublad-protocol (RDP) gebruikt om verbinding te maken met een virtuele Azure-machine (VM).
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266973"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420822"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Verificatiefouten oplossen als u RDP gebruikt om verbinding te maken met Azure-VM's
 

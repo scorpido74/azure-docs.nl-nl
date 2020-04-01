@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: fd044d4f32aefc00e1b04f7060e0fc0dc74fd6c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72882354"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411674"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Werken met gegevens in Azure Storage Explorer
 
@@ -103,7 +103,7 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
     ![zoeken vanaf hier](./media/storage-explorer/search-from-here.png) 
 
 ### <a name="database-and-collection-management"></a>Database- en verzamelingbeheer
-#### <a name="create-a-database"></a>Database maken 
+#### <a name="create-a-database"></a>Een database maken 
 -   Klik met de rechtermuisknop op het Azure Cosmos DB-account, kies **Database maken**, voer de naam van de database in en druk op **Enter**.
        
     ![Database maken](./media/storage-explorer/create-database.png) 
@@ -215,14 +215,14 @@ Er zijn enkele redenen waarom u deze fout mogelijk ziet. Dit zijn de twee meest 
 
 + U zit achter een *transparante proxy,* wat betekent dat iemand (zoals uw IT-afdeling) HTTPS-verkeer onderschept, ontsleutelt en deze vervolgens versleutelt met een zelfondertekend certificaat.
 
-+ U voert software uit, zoals antivirussoftware, die zelfondertekende SSL-certificaten injecteert in de HTTPS-berichten die u ontvangt.
++ U gebruikt software, zoals antivirussoftware, die een zelfondertekende TLS/SSL-certificaten injecteert in de HTTPS-berichten die u ontvangt.
 
 Wanneer Storage Explorer een van deze zelfondertekende certificaten tegenkomt, kan de toepassing niet meer weten of met het ontvangen HTTPS-bericht is geknoeid. Als u echter een kopie van het zelfondertekende certificaat hebt, kunt u Storage Explorer instrueren om dit te vertrouwen. Als u niet zeker weet wie het certificaat injecteert, kunt u dit zelf proberen uit te zoeken met de volgende stappen:
 
-1. Installeer Open SSL
+1. OpenSSL installeren
      - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (een van de lichte versies is prima)
      - Mac- en Linux: moet bij het besturingssysteem zijn inbegrepen
-2. Voer Open SSL uit
+2. OpenSSL uitvoeren
     - Windows: ga naar de installatiemap, vervolgens naar **/bin/** en dubbelklik op **openssl.exe**.
     - Mac- en Linux: voer **openssl** uit vanaf een terminal
 3. Voer `s_client -showcerts -connect microsoft.com:443` uit

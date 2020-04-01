@@ -3,12 +3,12 @@ title: Back-up van Azure-bestandsshare
 description: Meer informatie over het maken van back-ups van Azure-bestandsshares in de kluis Van Recovery Services
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 0e17b05a3febaa673fb29d45c2bcef25e2996df8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: fd5bb51b2c7b5c09e9d859b69c3094eb50c205b5
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78386718"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396270"
 ---
 # <a name="about-azure-file-share-backup"></a>Back-up van Azure-bestandsshare
 
@@ -43,6 +43,15 @@ Azure file share backup is een native, cloud gebaseerde back-upoplossing die uw 
 6. U de inhoud van azure-bestandendelen (afzonderlijke bestanden of het volledige aandeel) herstellen van momentopnamen die beschikbaar zijn in de bronbestandsshare. Zodra de bewerking is geactiveerd, wordt de momentopname-URL opgehaald uit het metagegevensarchief en worden de gegevens weergegeven en overgedragen van de bronmomentopname naar het doelbestandaandeel van uw keuze.
 
 7. De gegevens voor het back-upen en herstellen van taakbewaking worden naar de Azure Backup Monitoring-service gepusht. Hiermee u cloudback-ups voor uw bestandsshares in één dashboard controleren. Bovendien u ook waarschuwingen of e-mailmeldingen configureren wanneer de back-upstatus wordt beïnvloed. E-mails worden verzonden via de Azure-e-mailservice.
+
+## <a name="backup-costs"></a>Back-upkosten
+
+Azure File share backup is een op momentopname gebaseerde oplossing en opslagkosten voor momentopnamen worden gefactureerd, samen met Azure Files Gebruik volgens de hier [vermelde](https://azure.microsoft.com/pricing/details/storage/files/)prijsdetails.
+
+De kosten voor beveiligde instantie voor het gebruik van de back-upoplossing zijn echter volgens het prijsmodel dat wordt beschreven onder de sectie [Back-up voor Azure-bestanden.](https://azure.microsoft.com/pricing/details/backup/) Momenteel is de werkelijke prijs alleen bijgewerkt voor West Central US. Voor andere regio's zullen exacte prijzen binnenkort worden bijgewerkt met enkele regionale varianten, maar met hetzelfde prijsmodel.
+
+>[!NOTE]
+>Tijdens de preview zijn er geen "Beschermde instantiekosten" en wordt er alleen kosten in rekening gebracht voor momentopnamen volgens de [hier](https://azure.microsoft.com/pricing/details/storage/files/)vermelde prijzen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

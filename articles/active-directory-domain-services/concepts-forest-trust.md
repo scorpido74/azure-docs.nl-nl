@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 8b79e0fb24c15d2e9f16640e90d62f7df5c21f32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74233699"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476432"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Hoe vertrouwensrelaties werken voor resourceforests in Azure Active Directory Domain Services
 
@@ -110,11 +110,11 @@ De uitgaande forestvertrouwensrelatie voor Azure AD Domain Services wordt gemaak
 
 Veel interdomein- en interforesttransacties zijn afhankelijk van domein- of forestvertrouwensrelaties om verschillende taken uit te voeren. In deze sectie worden de processen en interacties beschreven die optreden wanneer resources worden geopend voor vertrouwensrelaties en worden verificatieverwijzingen geëvalueerd.
 
-### <a name="overview-of-authentication-referral-processing"></a>Overzicht van verificatieverwijzingsverwerking
+### <a name="overview-of-authentication-referral-processing"></a>Overzicht van verwerking van verificatieverwijzingen
 
 Wanneer een verzoek om verificatie naar een domein wordt verwezen, moet de domeincontroller in dat domein bepalen of er een vertrouwensrelatie bestaat met het domein waaruit de aanvraag afkomstig is. De richting van de vertrouwensrelatie en of de vertrouwensrelatie transitief of niet-transitief is, moet ook worden bepaald voordat de gebruiker wordt geverifieerd om toegang te krijgen tot bronnen in het domein. Het verificatieproces tussen vertrouwde domeinen is afhankelijk van het gebruikte verificatieprotocol. De Kerberos V5- en NTLM-protocollen verwerken verwijzingen voor verificatie naar een domein anders
 
-### <a name="kerberos-v5-referral-processing"></a>Kerberos V5 Referral Processing
+### <a name="kerberos-v5-referral-processing"></a>Kerberos V5 verwijzingsverwerking
 
 Het Kerberos V5-verificatieprotocol is afhankelijk van de Net Logon-service voor domeincontrollers voor clientverificatie en autorisatiegegevens. Het Kerberos-protocol maakt verbinding met een online Key Distribution Center (KDC) en het Active Directory-accountarchief voor sessietickets.
 

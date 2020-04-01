@@ -373,7 +373,7 @@ Klik op de koppeling voor de winkel waarin u geïnteresseerd bent om de JSON-sch
 
 | Categorie | Gegevensarchief
 |:--- |:--- |
-| **Azure** |[Azure Blob-opslag](#azure-blob-storage) |
+| **Azure** |[Azure Blob Storage](#azure-blob-storage) |
 | &nbsp; |Azure Data Lake Store |
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL Database](#azure-sql-database) |
@@ -400,7 +400,7 @@ Klik op de koppeling voor de winkel waarin u geïnteresseerd bent om de JSON-sch
 | **Anderen** |[HTTP (HTTP)](#http) |
 | &nbsp; |[OData](#odata) |
 | &nbsp; |[ODBC](#odbc) |
-| &nbsp; |[Salesforce](#salesforce) |
+| &nbsp; |[SalesForce](#salesforce) |
 | &nbsp; |Webtabel |
 
 ## <a name="azure-blob-storage"></a>Azure Blob Storage

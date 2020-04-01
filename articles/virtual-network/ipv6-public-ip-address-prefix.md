@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 096dbcb6b6a732bd21622658f6f30c5158a821c5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72965177"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420529"
 ---
-# <a name="reserved-public-ipv6-address-prefix-preview"></a>Gereserveerd openbaar IPv6-adresvoorvoegsel (voorbeeld)
+# <a name="reserved-public-ipv6-address-prefix"></a>Gereserveerd openbaar IPv6-adresvoorvoegsel
 
 In Azure zijn virtual stack (IPv4+IPv6) virtuele netwerken (VNet) en virtuele machines (VM's) standaard beveiligd omdat ze geen internetverbinding hebben. U eenvoudig een IPv6-internetverbinding toevoegen aan uw Azure Load Balancers en VM's met openbare IPv6-adressen die u van Azure verkrijgt.
 
@@ -30,8 +30,7 @@ Openbare IP's die u reserveert, zijn gekoppeld aan een Azure-gebied naar keuze e
 
 Naast het reserveren van afzonderlijke IPv6-adressen, u aaneengesloten bereiken van Azure IPv6-adressen (bekend als IP-voorvoegsel) reserveren voor uw gebruik.  Net als bij afzonderlijke IP-adressen zijn gereserveerde voorvoegsels gekoppeld aan een Azure-regio naar keuze en aan uw Azure-abonnement. Het reserveren van een voorspelbare, aaneengesloten bereik van adressen heeft vele toepassingen. U bijvoorbeeld de *IP-whitelisting* van uw azure-gehoste toepassingen door uw bedrijf en uw klanten sterk vereenvoudigen, omdat uw statische IP-bereiken gemakkelijk kunnen worden geprogrammeerd in on-premises firewalls.  U indien nodig afzonderlijke openbare IP-IP-ip-ip-voorvoegsel maken en wanneer u deze afzonderlijke openbare IP-ip's verwijdert, worden ze *teruggestuurd naar* uw gereserveerde bereik, zodat u ze later opnieuw gebruiken. Alle IP-adressen in uw IP-voorvoegsel zijn gereserveerd voor exclusief gebruik totdat u uw voorvoegsel verwijdert.
 
-> [!Important]
-> IPv6 voor Azure Virtual Network is momenteel in openbare preview. Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 ## <a name="ipv6-prefix-sizes"></a>IPv6-voorvoegselgroottes
 De volgende openbare IP-voorvoegselformaten zijn beschikbaar:

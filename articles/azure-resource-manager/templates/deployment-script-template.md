@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 03/30/2020
 ms.author: jgao
-ms.openlocfilehash: 7ff91545b1b7ab1920f437e0c3a5410270efaac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ef1c3d3fe0fd1ecad95e027b06ce14fd70d4d3f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153247"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437883"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatiescripts gebruiken in sjablonen (Voorbeeld)
 
@@ -42,7 +42,7 @@ De voordelen van implementatiescript:
 - **Een door de gebruiker toegewezen beheerde identiteit met de rol van de bijdrager aan de doelgroep.** Deze identiteit wordt gebruikt om implementatiescripts uit te voeren. Als u bewerkingen buiten de resourcegroep wilt uitvoeren, moet u extra machtigingen verlenen. Wijs de identiteit bijvoorbeeld toe aan het abonnementsniveau als u een nieuwe resourcegroep wilt maken.
 
   > [!NOTE]
-  > De implementatiescriptengine maakt een opslagaccount en een containerinstantie op de achtergrond.  Een door de gebruiker toegewezen beheerde identiteit met de rol van de inzender op abonnementsniveau is vereist als het abonnement het Azure-opslagaccount (Microsoft.Storage) en Azure container instance (Microsoft.ContainerInstance) resource (Microsoft.ContainerInstance) niet heeft geregistreerd Providers.
+  > De implementatiescriptengine maakt een opslagaccount en een containerinstantie op de achtergrond.  Een door de gebruiker toegewezen beheerde identiteit met de rol van de inzender op abonnementsniveau is vereist als het abonnement het Azure-opslagaccount (Microsoft.Storage) en De Bronproviders voor Azure-containerinstance (Microsoft.ContainerInstance) niet heeft geregistreerd.
 
   Zie Een door [de gebruiker toegewezen beheerde identiteit maken met behulp van de Azure-portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)of [met Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)of met Azure [PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md). U hebt de identiteits-id nodig wanneer u de sjabloon implementeert. Het formaat van de identiteit is:
 
@@ -62,7 +62,7 @@ De voordelen van implementatiescript:
   az identity show -g jgaoidentity1008rg -n jgaouami --query id
   ```
 
-  # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
@@ -101,6 +101,12 @@ De volgende json is een voorbeeld.  Het laatste sjabloonschema is [hier](/azure/
     "forceUpdateTag": 1,
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
+    "environmentVariables": [
+      {
+        "name": "someSecret",
+        "secureValue": "if this is really a secret, don't put it here... in plain text..."
+      }
+    ],
     "scriptContent": "
       param([string] $name)
       $output = 'Hello {0}' -f $name
@@ -126,6 +132,7 @@ Details van de waarde van onroerend goed:
 - **forceUpdateTag:** Als u deze waarde wijzigt tussen sjabloonimplementaties, wordt het implementatiescript opnieuw uitgevoerd. Gebruik de functie newGuid() of utcNow() die moet worden ingesteld als de standaardwaarde van een parameter. Zie [Script meerdere keer uitvoeren voor](#run-script-more-than-once)meer dan één keer .
 - **azPowerShellVersion**/**azCliVersion**: Geef de te gebruiken moduleversie op. Zie Voorwaarden voor een lijst met ondersteunde [PowerShell-](#prerequisites)en CLI-versies.
 - **argumenten:** Geef de parameterwaarden op. De waarden worden gescheiden door spaties.
+- **omgevingVariabelen**: Geef de omgevingsvariabelen op die moeten worden doorgegeven aan het script. Zie [Implementatiescripts ontwikkelen voor](#develop-deployment-scripts)meer informatie .
 - **scriptInhoud:** geef de scriptinhoud op. Als u een extern `primaryScriptUri` script wilt uitvoeren, gebruikt u in plaats daarvan. Zie [Inline script gebruiken](#use-inline-scripts) en Extern script [gebruiken](#use-external-scripts)voor voorbeelden .
 - **primaryScriptUri:** Geef een openbaar toegankelijke url op voor het primaire implementatiescript met ondersteunde bestandsextensies.
 - **supportingScriptUris:** Geef een array met openbaar toegankelijke Url's `ScriptContent` op `PrimaryScriptUri`voor ondersteunende bestanden die in een van beide of .
@@ -234,7 +241,7 @@ U bepalen hoe PowerShell reageert op niet-beëindigende fouten met behulp van de
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Beveiligde tekenreeksen doorgeven aan implementatiescript
 
-Door omgevingsvariabelen in uw containerinstanties in te stellen, kunt u dynamische configuratie mogelijk maken van de toepassing die of het script dat door de container wordt uitgevoerd. Implementatiescript verwerkt niet-beveiligde en beveiligde omgevingsvariabelen op dezelfde manier als Azure Container Instance. Zie [Omgevingsvariabelen instellen in containerinstanties](../../container-instances/container-instances-environment-variables.md#secure-values)voor meer informatie.
+Als u omgevingsvariabelen (EnvironmentVariable) instelt in uw containerinstanties, u een dynamische configuratie bieden van de toepassing of het script dat door de container wordt uitgevoerd. Implementatiescript verwerkt niet-beveiligde en beveiligde omgevingsvariabelen op dezelfde manier als Azure Container Instance. Zie [Omgevingsvariabelen instellen in containerinstanties](../../container-instances/container-instances-environment-variables.md#secure-values)voor meer informatie.
 
 ## <a name="debug-deployment-scripts"></a>Foutopsporingsimplementatiescripts
 

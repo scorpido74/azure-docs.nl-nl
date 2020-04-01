@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 972b5415b85e82a5afdaf7d85d3a3bcb9e144d4d
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384939"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397916"
 ---
 # <a name="workflow-automation"></a>Werkstroomautomatisering
 
@@ -96,10 +96,11 @@ Als u de schema's voor ruwe gebeurtenissen van de beveiligingswaarschuwingen of 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel leerde u over het maken van Logische Apps, het handmatig uitvoeren ervan in Security Center en het automatiseren van de uitvoering ervan. 
+In dit artikel leerde u over het maken van Logische Apps, het automatiseren van de uitvoering ervan in Security Center en het handmatig uitvoeren ervan. 
 
-Zie voor ander gerelateerd materiaal de volgende artikelen: 
+Zie voor ander gerelateerd materiaal: 
 
+- [De Microsoft Learn-module over het gebruik van workflowautomatisering om een beveiligingsantwoord te automatiseren](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Aanbevelingen voor beveiliging in Azure Security Center](security-center-recommendations.md)
 - [Beveiligingswaarschuwingen in Azure Security Center](security-center-alerts-overview.md)
 - [Over Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)

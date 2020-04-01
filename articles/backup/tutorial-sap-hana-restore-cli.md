@@ -1,39 +1,39 @@
 ---
-title: Zelf studie-SAP HANA DB herstellen op Azure met behulp van CLI
-description: In deze zelf studie leert u hoe u SAP HANA-data bases die worden uitgevoerd op een virtuele machine van Azure, kunt herstellen vanuit een Azure Backup Recovery Services kluis met behulp van Azure CLI.
+title: Zelfstudie - SAP HANA DB-herstel op Azure met CLI
+description: In deze zelfstudie leert u hoe SAP HANA-databases die op een Azure VM worden uitgevoerd, worden hersteld vanuit een Azure Backup Recovery Services-kluis met Azure CLI.
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.openlocfilehash: 6dbe0c4382b648506d853feb281c70a8e8401595
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75472070"
 ---
-# <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Zelf studie: SAP HANA data bases herstellen in een Azure-VM met behulp van Azure CLI
+# <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Zelfstudie: SAP HANA-databases herstellen in een Azure VM met Azure CLI
 
-Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdracht regel of in scripts. Deze documentatie bevat informatie over het herstellen van een back-up van SAP HANA Data Base op een Azure-VM met behulp van Azure CLI. U kunt deze stappen ook uitvoeren met behulp van de [Azure Portal](https://docs.microsoft.com/azure/backup/sap-hana-db-restore).
+Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of via scripts. In deze documentatie wordt beschreven hoe u een back-up SAP HANA-database op een Azure VM herstellen - met Azure CLI. U deze stappen ook uitvoeren met de [Azure-portal.](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)
 
-Gebruik [Azure Cloud shell](tutorial-sap-hana-backup-cli.md) om CLI-opdrachten uit te voeren.
+Gebruik [Azure Cloud Shell](tutorial-sap-hana-backup-cli.md) om CLI-opdrachten uit te voeren.
 
-Aan het einde van deze zelf studie kunt u het volgende doen:
+Tegen het einde van deze tutorial zul je in staat zijn om:
 
 > [!div class="checklist"]
 >
-> * Herstel punten weer geven voor een back-up van de data base
+> * Herstelpunten weergeven voor een back-updatabase
 > * Een database herstellen
 
-In deze zelf studie wordt ervan uitgegaan dat u een SAP HANA-Data Base hebt die wordt uitgevoerd op een Azure-VM met een back-up van Azure Backup. Als u een back-up hebt gemaakt van [een SAP Hana-data base in azure met behulp van CLI](tutorial-sap-hana-backup-cli.md) om een back-up te maken van uw SAP Hana-data base, gebruikt u de volgende resources:
+In deze zelfstudie wordt ervan uitgegaan dat er een SAP HANA-database is uitgevoerd op Azure VM waarvan een back-up wordt gemaakt met Azure Backup. Als u een back-up hebt gemaakt [van een SAP HANA-database in Azure met CLI](tutorial-sap-hana-backup-cli.md) om een back-up te maken van uw SAP HANA-database, gebruikt u de volgende bronnen:
 
-* een resource groep met de naam *saphanaResourceGroup*
+* een resourcegroep met de naam *saphanaResourceGroup*
 * een kluis met de naam *saphanaVault*
-* beveiligde container met de naam *VMAppContainer; Compute; saphanaResourceGroup; saphanaVM*
-* back-up maken van data base/item met de naam *saphanadatabase; hxe; hxe*
-* resources in de regio *westus2*
+* beveiligde container met de naam *VMAppContainer; Compute;saphanaResourceGroup;saphanaVM*
+* back-up database/item met de naam *saphanadatabase;hxe;hxe*
+* middelen in de *regio Westus2*
 
-## <a name="view-restore-points-for-a-backed-up-database"></a>Herstel punten weer geven voor een back-up van de data base
+## <a name="view-restore-points-for-a-backed-up-database"></a>Herstelpunten weergeven voor een back-updatabase
 
-Als u de lijst met alle herstel punten voor een Data Base wilt weer geven, gebruikt u de cmdlet [AZ backup Recovery Point List](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) als volgt:
+Als u de lijst met alle herstelpunten voor een database wilt weergeven, gebruikt u de cmdlet van het [AZ-back-upherstelpunt](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) als volgt:
 
 ```azurecli-interactive
 az backup recoverypoint list --resource-group saphanaResourceGroup \
@@ -43,7 +43,7 @@ az backup recoverypoint list --resource-group saphanaResourceGroup \
    --output table
 ```
 
-De lijst met herstel punten ziet er als volgt uit:
+De lijst met herstelpunten ziet er als volgt uit:
 
 ```output
 Name                      Time                               BackupManagementType   Item Name               RecoveryPointType
@@ -53,43 +53,43 @@ Name                      Time                               BackupManagementTyp
 DefaultRangeRecoveryPoint                                    AzureWorkload          SAPHanaDtabase;hxe;hxe  Log
 ```
 
-Zoals u kunt zien, bevat de bovenstaande lijst drie herstel punten: één voor elke volledige, differentiële en logboek back-up.
+Zoals u zien, bevat de bovenstaande lijst drie herstelpunten: één voor volledige, differentiële en logboekback-up.
 
 >[!NOTE]
->U kunt ook de begin-en eind punten van elke niet-verbroken logboek back-upketen weer geven met behulp van de cmdlet [AZ backup Recovery Point Show-Log-keten](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) .
+>U ook de begin- en eindpunten van elke ongebroken logback-upketen bekijken met behulp van de cmdlet van de [AZ-back-up-back-up-tape.](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain)
 
-## <a name="prerequisites-to-restore-a-database"></a>Vereisten voor het herstellen van een Data Base
+## <a name="prerequisites-to-restore-a-database"></a>Vereisten voor het herstellen van een database
 
-Zorg ervoor dat aan de volgende vereisten wordt voldaan voordat u een Data Base herstelt:
+Controleer of aan de volgende voorwaarden is voldaan voordat u een database herstelt:
 
-* U kunt de data base alleen herstellen naar een SAP HANA-exemplaar dat zich in dezelfde regio bevindt
-* Het doel exemplaar moet zijn geregistreerd bij dezelfde kluis als de bron
-* Azure Backup kan niet twee verschillende SAP HANA exemplaren op dezelfde VM identificeren. Daarom is het terugzetten van gegevens van het ene naar het andere exemplaar op dezelfde VM niet mogelijk.
+* U de database alleen herstellen naar een SAP HANA-exemplaar dat zich in dezelfde regio bevindt
+* De doelinstantie moet worden geregistreerd bij dezelfde kluis als de bron
+* Azure Backup kan niet twee verschillende SAP HANA-exemplaren op dezelfde VM identificeren. Daarom is het niet mogelijk om gegevens van de ene instantie naar de andere op dezelfde vm te herstellen.
 
 ## <a name="restore-a-database"></a>Een database herstellen
 
-Azure Backup kunt SAP HANA-data bases die worden uitgevoerd op virtuele Azure-machines als volgt herstellen:
+Azure Backup kan SAP HANA-databases die op Azure VM's worden uitgevoerd als volgt herstellen:
 
-* Herstel naar een specifieke datum of tijd (naar de tweede) met behulp van logboek back-ups. Azure Backup bepaalt automatisch de juiste volledige, differentiële back-ups en de keten van logboek back-ups die nodig zijn om te herstellen op basis van de geselecteerde tijd.
-* Herstel naar een specifieke volledige of een differentiële back-up om naar een specifiek herstel punt te herstellen.
+* Herstellen naar een specifieke datum of tijd (naar de tweede) met behulp van logboekback-ups. Azure Backup bepaalt automatisch de juiste volledige, differentiële back-ups en de keten van logboekback-ups die moeten worden hersteld op basis van de geselecteerde tijd.
+* Herstellen naar een specifieke volledige of differentiële back-up om te herstellen naar een specifiek herstelpunt.
 
-Als u een Data Base wilt herstellen, gebruikt u de [AZ herstellen Restore-azurewl-](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet, waarvoor een herstel configuratie object als een van de invoer is vereist. Dit object kan worden gegenereerd met behulp van de recoveryconfig-cmdlet voor het [weer geven van de methode AZ backup](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) . Het herstel configuratie object bevat alle Details voor het uitvoeren van een herstel bewerking. Een van de twee is de herstel modus – **OriginalWorkloadRestore** of **AlternateWorkloadRestore**.
+Als u een database wilt herstellen, gebruikt u de cmdlet [az restore restore-azurewl,](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) waarvoor een herstelobject als een van de ingangen vereist is. Dit object kan worden gegenereerd met behulp van de [az back-up recoveryconfig show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) cmdlet. Het herstelconfig-object bevat alle details om een herstel uit te voeren. Een van hen is de herstelmodus - **OriginalWorkloadRestore** of **AlternateWorkloadRestore**.
 
 >[!NOTE]
-> **OriginalWorkloadRestore** : herstel de gegevens naar hetzelfde SAP Hana-exemplaar als de oorspronkelijke bron. Met deze optie wordt de oorspronkelijke data base overschreven. <br>
-> **AlternateWorkloadRestore** : herstel de Data Base op een andere locatie en behoud de oorspronkelijke bron database.
+> **OriginalWorkloadRestore** - De gegevens herstellen naar dezelfde SAP HANA-instantie als de oorspronkelijke bron. Met deze optie wordt de oorspronkelijke database overschrijft. <br>
+> **AlternateWorkloadRestore** - De database herstellen naar een alternatieve locatie en de oorspronkelijke brondatabase behouden.
 
 ## <a name="restore-to-alternate-location"></a>Herstellen naar alternatieve locatie
 
-Als u een Data Base op een andere locatie wilt herstellen, gebruikt u **AlternateWorkloadRestore** als herstel modus. Vervolgens moet u het herstel punt kiezen. Dit kan een eerdere punt in de tijd zijn of een van de vorige herstel punten.
+Als u een database wilt herstellen naar een alternatieve locatie, gebruikt u **AlternateWorkloadRestore** als herstelmodus. U moet vervolgens het herstelpunt kiezen, dat een eerdere point-in-time of een van de vorige herstelpunten kan zijn.
 
-In deze zelf studie gaat u naar een eerder herstel punt herstellen. [Bekijk de lijst met herstel punten](#view-restore-points-for-a-backed-up-database) voor de data base en kies het punt waarnaar u wilt herstellen. In deze zelf studie wordt het herstel punt gebruikt met de naam *7660777527047692711*.
+In deze zelfstudie herstelt u naar een eerder herstelpunt. [Bekijk de lijst met herstelpunten](#view-restore-points-for-a-backed-up-database) voor de database en kies het punt waarnaar u wilt herstellen. Deze zelfstudie gebruikt het herstelpunt met de naam *7660777527047692711*.
 
-Met behulp van de bovenstaande herstel punt naam en de herstel modus kunt u het herstel configuratie object maken met behulp van de [AZ backup recoveryconfig show-](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) cmdlet. Laten we eens kijken naar de overige para meters in deze cmdlet:
+Met behulp van de bovenstaande naam van het herstelpunt en de herstelmodus maken we het herstelobject met behulp van de cmdlet van de [AZ-back-uprecoveryconfig.](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) Laten we eens kijken naar wat elk van de resterende parameters in deze cmdlet betekenen:
 
-* **--doel item-naam** Dit is de naam die wordt gebruikt door de herstelde data base. In dit geval hebben we de naam *restored_database*gebruikt.
-* **--doel-server-naam** Dit is de naam van een SAP HANA server die is geregistreerd bij een Recovery Services-kluis en zich in dezelfde regio bevindt als de data base die moet worden hersteld. Voor deze zelf studie herstelt u de Data Base op dezelfde SAP HANA server die we hebben beveiligd, met de naam *hxehost*.
-* **--doel-server-type** Voor het terugzetten van SAP HANA-data bases moet **SapHanaDatabase** worden gebruikt.
+* **--doel-item-naam** Dit is de naam die de herstelde database zal gebruiken. In dit geval gebruikten we de naam *restored_database.*
+* **--doel-server-naam** Dit is de naam van een SAP HANA-server die met succes is geregistreerd bij een kluis van herstelservices en zich in dezelfde regio bevindt als de database die moet worden hersteld. Voor deze zelfstudie herstellen we de database naar dezelfde SAP HANA-server die we hebben beschermd, *hxehost*genaamd.
+* **--doel-servertype** Voor het herstellen van SAP HANA-databases moet **SapHanaDatabase** worden gebruikt.
 
 ```azurecli-interactive
 
@@ -106,13 +106,13 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
     --output json
 ```
 
-De reactie op de bovenstaande query is een herstel configuratie object dat er ongeveer als volgt uitziet:
+Het antwoord op de bovenstaande query is een herstelconfig-object dat er ongeveer als volgt uitziet:
 
 ```output
 "{\"restore_mode\": \"OriginalLocation\", \"container_uri\": \" VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \", \"item_uri\": \"SAPHanaDatabase;hxe;hxe\", \"recovery_point_id\": \"DefaultRangeRecoveryPoint\", \"log_point_in_time\": \"28-11-2019-09:53:00\", \"item_type\": \"SAPHana\", \"source_resource_id\": \"/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm\", \"database_name\": null, \"container_id\": null, \"alternate_directory_paths\": null}"
 ```
 
-Als u de Data Base wilt herstellen, voert u de cmdlet [AZ Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) uit. Als u deze opdracht wilt gebruiken, wordt de bovenstaande JSON-uitvoer ingevoerd die wordt opgeslagen in een bestand met de naam *recoveryconfig. json*.
+Nu, om de database te herstellen draaien de [AZ restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet. Als u deze opdracht wilt gebruiken, voeren we de bovenstaande json-uitvoer in die is opgeslagen in een bestand met de naam *recoveryconfig.json*.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -129,13 +129,13 @@ Name                                  Resource
 5b198508-9712-43df-844b-977e5dfc30ea  SAPHANA
 ```
 
-Met het antwoord krijgt u de taak naam. Deze taak naam kan worden gebruikt om de taak status bij te houden met de cmdlet [AZ back-uptaak show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+Het antwoord geeft je de naam van de baan. Deze taaknaam kan worden gebruikt om de taakstatus bij te houden met behulp van de CMDLet [van de AZ-back-upjobshow.](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show)
 
 ## <a name="restore-and-overwrite"></a>Herstellen en overschrijven
 
-We gebruiken **OrignialWorkloadRestore** als herstel modus om naar de oorspronkelijke locatie te herstellen. Vervolgens moet u het herstel punt kiezen. Dit kan een eerdere punt in de tijd zijn of een van de vorige herstel punten.
+Om te herstellen naar de oorspronkelijke locatie, gebruiken we **OrignialWorkloadRestore** als herstelmodus. U moet vervolgens het herstelpunt kiezen, dat een eerdere point-in-time of een van de vorige herstelpunten kan zijn.
 
-Voor deze zelf studie kiezen we het vorige tijdstip van ' 28-11-2019-09:53:00 ' om terug te zetten naar. U kunt dit herstel punt opgeven in de volgende indelingen: dd-mm-jjjj, dd-mm-jjjj-uu: mm: SS. Als u een geldig punt-in-time wilt kiezen om te herstellen naar, gebruikt u de cmdlet [AZ backup Recovery Point Show-Log-keten](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) , waarin de intervallen van niet-verbroken logboek keten back-ups worden weer gegeven.
+Voor deze zelfstudie kiezen we de vorige point-in-time "28-11-2019-09:53:00" om naar te herstellen. U dit herstelpunt in de volgende formaten: dd-mm-yyyy, dd-mm-yyyy-hh:mm:ss. Als u een geldige point-in-time wilt kiezen om naar te herstellen, gebruikt u de cmdlet van het [AZ-back-upherstelpunt show-log-chain,](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) waarin de intervallen van ongebroken logboekketenback-ups worden weergegeven.
 
 ```azurecli-interactive
 az backup recoveryconfig show --resource-group saphanaResourceGroup \
@@ -147,13 +147,13 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
     --output json
 ```
 
-De reactie op de bovenstaande query is een herstel configuratie object dat er als volgt uitziet:
+Het antwoord op de bovenstaande query is een herstelobject dat er als volgt uitziet:
 
 ```output
 "{\"restore_mode\": \"OriginalLocation\", \"container_uri\": \" VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \", \"item_uri\": \"SAPHanaDatabase;hxe;hxe\", \"recovery_point_id\": \"DefaultRangeRecoveryPoint\", \"log_point_in_time\": \"28-11-2019-09:53:00\", \"item_type\": \"SAPHana\", \"source_resource_id\": \"/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm\", \"database_name\": null, \"container_id\": null, \"alternate_directory_paths\": null}"
 ```
 
-Als u de Data Base wilt herstellen, voert u de cmdlet [AZ Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) uit. Als u deze opdracht wilt gebruiken, wordt de bovenstaande JSON-uitvoer ingevoerd die wordt opgeslagen in een bestand met de naam *recoveryconfig. json*.
+Nu, om de database te herstellen draaien de [AZ restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet. Als u deze opdracht wilt gebruiken, voeren we de bovenstaande json-uitvoer in die is opgeslagen in een bestand met de naam *recoveryconfig.json*.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -170,10 +170,10 @@ Name                                  Resource
 5b198508-9712-43df-844b-977e5dfc30ea  SAPHANA
 ```
 
-Met het antwoord krijgt u de taak naam. Deze taak naam kan worden gebruikt om de taak status bij te houden met de cmdlet [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+Het antwoord geeft je de naam van de baan. Deze taaknaam kan worden gebruikt om de taakstatus bij te houden met behulp van de cmdlet van de [AZ-back-upfunctie.](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor informatie over het beheren van SAP HANA data bases waarvan een back-up is gemaakt met behulp van Azure CLI, gaat u verder met de zelf studie [een SAP Hana-data base in azure VM beheren met CLI](tutorial-sap-hana-backup-cli.md)
+* Ga voor meer informatie over het beheren van SAP HANA-databases waarvan een back-up wordt gemaakt met Azure CLI, door naar de zelfstudie [Een SAP HANA-database beheren in Azure VM met CLI](tutorial-sap-hana-backup-cli.md)
 
-* Raadpleeg voor meer informatie over het herstellen van een SAP HANA-data base die wordt uitgevoerd in de Azure-VM met behulp van de Azure Portal [een SAP Hana-data base herstellen op virtuele machines in azure](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)
+* Voor meer informatie over het herstellen van een SAP HANA-database die wordt uitgevoerd in Azure VM met behulp van de Azure-portal, raadpleegt u [Een SAP HANA-databases herstellen in Azure VM's](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)

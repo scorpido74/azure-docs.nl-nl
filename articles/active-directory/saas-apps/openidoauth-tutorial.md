@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbf9cde8dd2032e81abe0fb2572c2181d4ba21ee
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f8a2c962c69ead28c4e79b663010eab77a499f5c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160209"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048420"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Een OpenID/OAuth-toepassing uit de Azure AD-app-galerie configureren
 
@@ -31,7 +31,7 @@ ms.locfileid: "73160209"
 
     ![De knop Azure Active Directory](common/select-azuread.png))
 
-2. Ga naar **Bedrijfstoepassingen** > **Alle toepassingen**.
+2. Ga naar **Enterprise-toepassingen** > **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -69,11 +69,11 @@ Toepassingen met meerdere tenants moeten in elke map waarin ze zullen worden geb
 De gebruiker of beheerder geeft dan toestemming voor de toepassing. Met deze toestemming krijgt de toepassing toegang tot de opgegeven gegevens én wordt de toepassing in de map geregistreerd.
 
 > [!NOTE]
-> Als u uw toepassing beschikbaar maakt voor gebruikers in meerdere mappen, hebt u een mechanisme nodig om te bepalen in welke tenant deze zich bevinden. Toepassingen met één tenant hoeven alleen in hun eigen map op zoek te gaan naar een gebruiker. Toepassingen met meerdere tenants moeten specifieke gebruikers identificeren vanuit álle mappen in Azure AD.
+> Als u uw toepassing beschikbaar stelt aan gebruikers in meerdere mappen, hebt u een mechanisme nodig om te bepalen in welke tenant ze zich bevindt. Toepassingen met één tenant hoeven alleen in hun eigen map op zoek te gaan naar een gebruiker. Toepassingen met meerdere tenants moeten specifieke gebruikers identificeren vanuit álle mappen in Azure AD.
 > 
-> Om deze taak uit te voeren, biedt Azure AD een algemeen verificatie-eindpunt waar toepassingen met meerdere tenants aanmeldingsaanvragen naartoe kunnen sturen (in plaats van een tenantspecifiek eindpunt). Dit eindpunt is [https://login.microsoftonline.com/common](https://login.microsoftonline.com/common) voor alle mappen in Azure AD. Een tenantspecifiek eindpunt kan bijvoorbeeld [https://login.microsoftonline.com/contoso.onmicrosoft.com](https://login.microsoftonline.com/contoso.onmicrosoft.com) zijn. 
+> Om deze taak uit te voeren, biedt Azure AD een algemeen verificatie-eindpunt waar toepassingen met meerdere tenants aanmeldingsaanvragen naartoe kunnen sturen (in plaats van een tenantspecifiek eindpunt). Dit eindpunt is `https://login.microsoftonline.com/common` voor alle mappen in Azure AD. Een tenantspecifiek eindpunt kan bijvoorbeeld `https://login.microsoftonline.com/contoso.onmicrosoft.com` zijn. 
 >
-> Het algemene eindpunt is belangrijk om in overweging te nemen bij het ontwikkelen van uw toepassing. U hebt de vereiste logica nodig om meerdere tenants tijdens het aanmelden, het afmelden en het valideren van tokens te kunnen verwerken.
+> Het algemene eindpunt is belangrijk om in overweging te nemen bij het ontwikkelen van uw toepassing. U hebt de nodige logica nodig om meerdere tenants te verwerken tijdens het aanmelden, afmelden en tokenvalidatie.
 
 Azure AD promoot standaard toepassingen met meerdere tenants. Ze zijn eenvoudig toegankelijk in meerdere organisaties en zijn eenvoudig te gebruiken nadat de toestemming is geaccepteerd.
 
@@ -99,17 +99,17 @@ De Graph-API biedt ook toegang tot gebruikers en groepen uit Azure AD en andere 
 
 In de volgende stappen ontdekt u hoe de toestemmingservaring werkt voor de toepassingsontwikkelaar en -gebruiker:
 
-1. Stel dat u een webclienttoepassing hebt die specifieke machtigingen moet aanvragen voor toegang tot een resource of API. De Azure-portal wordt gebruikt om tijdens de configuratie machtigingsaanvragen te declareren. Net als andere configuratie-instellingen worden ze onderdeel van de Azure AD-registraties van de toepassing. Voor het pad van de aanvraag voor machtigingen moet u de onderstaande stappen volgen:
+1. Stel dat u een webclienttoepassing hebt die specifieke machtigingen moet aanvragen voor toegang tot een resource of API. De Azure-portal wordt gebruikt om tijdens de configuratie machtigingsaanvragen te declareren. Net als andere configuratie-instellingen worden ze onderdeel van de Azure AD-registraties van de toepassing. Voor het pad Met toestemmingsaanvraag hebt u de onderstaande stappen nodig:
 
-    a. Klik op de **app-registraties** aan de linkerkant van het menu en open uw toepassing door de naam van de toepassing in het zoekvak te typen.
+    a. Klik op de **app-registraties** aan de linkerkant van het menu en open uw toepassing door de toepassingsnaam in het zoekvak te typen.
 
     ![Graph API](./media/openidoauth-tutorial/application.png)
 
-    b. Klik op **API-machtigingen weer geven**.
+    b. Klik **op API-machtigingen weergeven**.
 
     ![Graph API](./media/openidoauth-tutorial/api-permission.png)
 
-    c. Klik op **een machtiging toevoegen**.
+    c. Klik op **Een machtiging toevoegen**.
 
     ![Graph API](./media/openidoauth-tutorial/add-permission.png)
 
@@ -117,41 +117,41 @@ In de volgende stappen ontdekt u hoe de toestemmingservaring werkt voor de toepa
 
     ![Graph API](./media/openidoauth-tutorial/microsoft-graph.png)
 
-    e. Selecteer de vereiste opties van **gedelegeerde machtigingen** en **toepassings machtigingen**.
+    e. Selecteer vereiste opties in **gedelegeerde machtigingen** en **toepassingsmachtigingen**.
 
     ![Graph API](./media/openidoauth-tutorial/graphapi.png)
 
-2. Stel dat de machtigingen van de toepassing zijn bijgewerkt. De toepassing is actief en een gebruiker staat op het punt deze voor het eerst te gebruiken. Om te beginnen moet de toepassing een verificatiecode ophalen bij het Azure AD-eindpunt /authorize. De autorisatiecode kan vervolgens worden gebruikt bij het verkrijgen van een nieuw token voor toegang en vernieuwen.
+2. Houd er rekening mee dat de machtigingen van uw toepassing zijn bijgewerkt. De toepassing is actief en een gebruiker staat op het punt deze voor het eerst te gebruiken. Om te beginnen moet de toepassing een verificatiecode ophalen bij het Azure AD-eindpunt /authorize. De autorisatiecode kan vervolgens worden gebruikt bij het verkrijgen van een nieuw token voor toegang en vernieuwen.
 
 3. Als de gebruiker nog niet is geverifieerd, vraagt het Azure AD-eindpunt /authorize om aanmelding.
 
     ![Verificatie](./media/openidoauth-tutorial/authentication.png)
 
-4. Wanneer de gebruiker zich heeft aangemeld, bepaalt Azure AD of de gebruiker een toestemmingspagina te zien krijgt. Hierbij wordt gecontroleerd of de gebruiker (of de beheerder in de organisatie) de toepassing al toestemming heeft gegeven.
+4. Wanneer de gebruiker zich heeft aangemeld, bepaalt Azure AD of de gebruiker een toestemmingspagina te zien krijgt. Deze bepaling is gebaseerd op de vraag of de gebruiker (of de beheerder van hun organisatie) de aanvraagal toestemming heeft verleend.
 
    Als er nog geen toestemming is gegeven, vraagt Azure AD de gebruiker om toestemming en wordt weergegeven welke machtigingen nodig zijn om de app goed te laten werken. De machtigingen die in het dialoogvenster voor toestemming worden weergegeven, komen overeen met de gedelegeerde toestemmingen die in de Azure-portal zijn geselecteerd.
 
     ![Toestemmingspagina](./media/openidoauth-tutorial/consentpage.png)
 
-Gewone gebruikers kunnen toestemming geven voor verschillende machtigingen. Voor andere machtigingen is de toestemming van een tenantbeheerder nodig.
+Gewone gebruikers kunnen toestemming geven voor verschillende machtigingen. Voor andere machtigingen is toestemming van een tenantbeheerder vereist.
 
 ## <a name="difference-between-admin-consent-and-user-consent"></a>Het verschil tussen de toestemming van een beheerder en de toestemming van een gebruiker
 
-Beheerders kunnen toestemming geven voor de gedelegeerde machtigingen van een toepassing voor alle gebruikers in de tenant. Met beheerderstoestemming wordt het dialoogvenster voor toestemming niet meer weergegeven aan alle gebruikers in de tenant. Gebruikers die beschikken over de beheerdersrol kunnen in de Azure-portal toestemming geven. Selecteer op de pagina **instellingen** voor uw toepassing de **vereiste machtigingen** > **toestemming van de beheerder verlenen**.
+Beheerders kunnen toestemming geven voor de gedelegeerde machtigingen van een toepassing voor alle gebruikers in de tenant. Met beheerderstoestemming wordt het dialoogvenster voor toestemming niet meer weergegeven aan alle gebruikers in de tenant. Gebruikers die beschikken over de beheerdersrol kunnen in de Azure-portal toestemming geven. Selecteer **op** de pagina Instellingen voor uw toepassing de optie **Vereiste machtigingen** > **Verlenen admin toestemming**.
 
 ![De knop Machtigingen verlenen](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
-> Het verlenen van expliciete toestemming met behulp van de knop **toestemming beheerder verlenen** is nu vereist voor toepassingen met één pagina (Spas) die gebruikmaken van ADAL. js. Als dit niet gebeurt, treedt er een fout op in de toepassing wanneer het toegangstoken wordt aangevraagd.
+> Het verlenen van expliciete toestemming door gebruik te maken van de **toestemmingsknop Grant admin** is nu vereist voor toepassingen met één pagina (SB's) die ADAL.js gebruiken. Als dit niet gebeurt, treedt er een fout op in de toepassing wanneer het toegangstoken wordt aangevraagd.
 
-Bij app-specifieke machtigingen is er altijd toestemming van een tenantbeheerder nodig. Als uw toepassing een app-specifieke machtiging aanvraagt en een gebruiker zich bij de toepassing probeert aan te melden, wordt er een foutmelding weergegeven. In het bericht staat dat de gebruiker geen toestemming kan geven.
+Voor app-only machtigingen is altijd toestemming van een tenantbeheerder vereist. Als uw toepassing een app-specifieke machtiging aanvraagt en een gebruiker zich bij de toepassing probeert aan te melden, wordt er een foutmelding weergegeven. In het bericht staat dat de gebruiker geen toestemming kan geven.
 
 Als voor uw toepassing gebruik wordt gemaakt van machtigingen waarvoor beheerderstoestemming nodig is, moet u een knop of een koppeling toevoegen waarmee de beheerder toestemming kan geven. De aanvraag die uw toepassing met deze actie verzendt, is de gebruikelijke OAuth2/OpenID Connect-verificatieaanvraag. De aanvraag bevat de queryreeksparameter *prompt=admin_consent*. 
 
-Wanneer de beheerder toestemming heeft gegeven en de service-principal in de tenant van de klant is gemaakt, is de parameter *prompt=admin_consent* bij latere aanmeldingsaanvragen niet meer nodig. Omdat de beheerder heeft besloten dat de aangevraagde machtigingen worden geaccepteerd, wordt andere gebruikers in de tenant niet meer om toestemming gevraagd.
+Nadat de beheerder heeft ingestemd en de serviceprincipal is gemaakt in de tenant van de klant, hebben latere aanmeldingsverzoeken de parameter *prompt=admin_consent* niet nodig. Omdat de beheerder heeft besloten dat de aangevraagde machtigingen worden geaccepteerd, wordt andere gebruikers in de tenant niet meer om toestemming gevraagd.
 
 Tenantbeheerders kunnen uitschakelen dat normale gebruikers toestemming kunnen geven voor toepassingen. Als dit wordt uitgeschakeld, is er altijd beheerderstoestemming nodig om een toepassing in een tenant te kunnen gebruiken. Als u uw toepassing wilt testen terwijl toestemming voor eindgebruikers is uitgeschakeld, kunt u toestemming uitschakelen in de [Azure-portal](https://portal.azure.com/). Ga hiervoor naar het gedeelte [Gebruikersinstellingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) onder **Bedrijfstoepassingen**.
 
-De parameter *prompt=admin_consent* kan ook worden gebruikt door toepassingen die machtigingen aanvragen waarvoor geen beheerderstoestemming nodig is. Een voorbeeld is een toepassing waarbij de tenantbeheerder zich één keer registreert. Andere gebruikers wordt vervolgens nooit meer om toestemming gevraagd.
+De parameter *prompt=admin_consent* kan ook worden gebruikt door toepassingen die machtigingen aanvragen waarvoor geen beheerderstoestemming nodig is. Een voorbeeld is een toepassing die een ervaring vereist waarbij de tenantbeheerder zich één keer "aanmeldt" en dat er vanaf dat moment geen andere gebruikers om toestemming worden gevraagd.
 
 Stel dat een toepassing beheerderstoestemming vereist en een beheerder zich aanmeldt zonder dat de parameter *prompt=admin_consent* wordt verzonden. Als de beheerder toestemming geeft voor de toepassing, is dit alleen van toepassing op zijn of haar eigen gebruikersaccount. Gewone gebruikers kunnen zich nog altijd niet aanmelden en geen toestemming geven voor de toepassing. Deze functie is handig als u de tenantbeheerder de mogelijkheid wilt bieden om uw toepassing te bekijken voordat andere gebruikers toegang wordt geboden.

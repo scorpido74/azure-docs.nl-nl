@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: f920a789f1ec631c5d70863b10d8364b3eb81b6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2100426923418104c31933bf9d1406a6441d3841
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650466"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410915"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Maak een bedrijfscontinuïteitsplan voor uw QnA Maker-service
 
@@ -33,7 +33,7 @@ Het idee op hoog niveau zoals hierboven weergegeven is als volgt:
 
 4. Zodra de primaire en secundaire stapels zijn ingesteld, gebruikt u [verkeersbeheerbeheer](https://docs.microsoft.com/azure/traffic-manager/) om de twee eindpunten te configureren en een routeringsmethode in te stellen.
 
-5. U moet een SSL-certificaat (Secure Sockets Layer) maken voor het eindpunt van uw verkeersbeheerder. [Bind het SSL-certificaat](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) in uw App-services.
+5. U moet een TLS (Transport Layer Security) maken, voorheen bekend als Secure Sockets Layer (SSL), certificaat voor uw eindpunt voor verkeersbeheerbeheer. [Bind het TLS/SSL-certificaat](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) in uw App-services.
 
 6. Gebruik ten slotte het eindpunt van de verkeersbeheerder in uw Bot of App.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 87c3a3a904705b9fcb702c4745c4c80a4b447e69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476719"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396383"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>De gebruikersinterface van uw toepassing aanpassen met een aangepast beleid in Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Voer de stappen uit in [Aan de slag met aangepast beleid](custom-policy-get-star
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4. Het extensiesbestand wijzigen
+### <a name="4-modify-the-extensions-file"></a>4. Het extensiesbestand wijzigen
 
 Als u aanpassing aan de gebruikersinterface wilt configureren, kopieert u de **ContentDefinition** en de onderliggende elementen ervan vanuit het basisbestand naar het extensiebestand.
 
@@ -60,9 +60,9 @@ Als u aanpassing aan de gebruikersinterface wilt configureren, kopieert u de **C
 
 1. Sla het extensiesbestand op.
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Upload en test uw bijgewerkte aangepaste beleid
+### <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Upload en test uw bijgewerkte aangepaste beleid
 
-### <a name="51-upload-the-custom-policy"></a>5.1 Het aangepaste beleid uploaden
+#### <a name="51-upload-the-custom-policy"></a>5.1 Het aangepaste beleid uploaden
 
 1. Zorg ervoor dat u de map met uw Azure AD B2C-tenant gebruikt door het **filter Directory + abonnement** in het bovenste menu te selecteren en de map te kiezen die uw tenant bevat.
 1. Zoeken naar en selecteer **Azure AD B2C**.
@@ -70,7 +70,7 @@ Als u aanpassing aan de gebruikersinterface wilt configureren, kopieert u de **C
 1. Selecteer **Aangepast beleid uploaden**.
 1. Upload het extensiesbestand dat u eerder hebt gewijzigd.
 
-### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 Het aangepaste beleid testen met **Nu uitvoeren**
+#### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 Het aangepaste beleid testen met **Nu uitvoeren**
 
 1. Selecteer het beleid dat u hebt geüpload en selecteer **Nu uitvoeren**.
 1. Je moet je kunnen aanmelden met een e-mailadres.

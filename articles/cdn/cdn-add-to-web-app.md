@@ -16,10 +16,10 @@ ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67594230"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Zelfstudie: Azure CDN toevoegen aan een Azure App Service-web-app
@@ -40,10 +40,10 @@ Wat u leert:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 - [Git installeren](https://git-scm.com/)
-- [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -72,11 +72,11 @@ Geef op de pagina **Azure Content Delivery Network** de instellingen voor **Nieu
 
 ![Een profiel en eindpunt maken in de portal](media/cdn-add-to-web-app/portal-new-endpoint.png)
 
-| Instelling | Voorgestelde waarde | Description |
+| Instelling | Voorgestelde waarde | Beschrijving |
 | ------- | --------------- | ----------- |
 | **CDN-profiel** | myCDNProfile | Een CDN-profiel is een verzameling van CDN-eindpunten van dezelfde prijscategorie. |
-| **Prijscategorie** | Standard Akamai | De [prijscategorie](cdn-features.md) geeft de provider en de beschikbare functies aan. In deze zelfstudie wordt gebruikgemaakt van *Standard Akamai*. |
-| **Naam van CDN-eindpunt** | Een unieke naam in het domein azureedge.net | U hebt toegang tot uw resources in de cache via het domein *&lt;naamvaneindpunt&gt;* .azureedge.net.
+| **Prijslaag** | Standard Akamai | De [prijscategorie](cdn-features.md) geeft de provider en de beschikbare functies aan. In deze zelfstudie wordt gebruikgemaakt van *Standard Akamai*. |
+| **Naam van CDN-eindpunt** | Een unieke naam in het domein azureedge.net | U hebt toegang tot uw resources in de cache op de * &lt;domeineindpuntnaam&gt;*.azureedge.net.
 
 Selecteer **Maken** om een CDN-profiel te maken.
 

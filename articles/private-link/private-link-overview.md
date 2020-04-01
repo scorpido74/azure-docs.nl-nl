@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3218a2de890124915d62afa86fd5f3dca1e72b2e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f75f8392b01e69760171c13c0e6d3b2e22b20dea
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80063088"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421193"
 ---
 # <a name="what-is-azure-private-link"></a>Wat is Azure Private Link? 
 Met Azure Private Link heeft u toegang tot Azure PaaS-services (bijvoorbeeld Azure Storage en SQL Database) en Azure gehoste client-owned/partnerservices via een [privéeindpunt](private-endpoint-overview.md) in uw virtuele netwerk.
@@ -47,7 +47,7 @@ Azure Private Link biedt de volgende voordelen:
 |  | Azure Data Lake Storage Gen2        |  Alle openbare regio's      | Algemene beschikbaarheid <br/> [Meer informatie](/azure/storage/common/storage-private-endpoints)  |
 |  |  Azure SQL Database         | Alle openbare regio's      |   Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |  |Azure Synapse Analytics (SQL Data Warehouse)| Alle openbare regio's |Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-|  |Azure Cosmos DB|  OOST-VS, OOST-US2, WEST US, WEST US2, CENTRAAL VS, ZUID-CENTRAAL VS, WEST CENTRAL US, NORTH CENTRAL US, NOORD-EUROPA, WEST-EUROPA  |Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  |Azure Cosmos DB|  Alle openbare regio's |Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
 |  |  Azure Database voor PostgreSQL - Enkele server         | Alle openbare regio's      |   Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
 |  |  Azure Database for MySQL         | Alle openbare regio's      |   Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
 |  |  Azure Database for MariaDB         | Alle openbare regio's      |   Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |

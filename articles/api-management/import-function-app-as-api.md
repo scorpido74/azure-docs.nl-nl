@@ -1,5 +1,5 @@
 ---
-title: Een Azure functie-app als API importeren in API Management
+title: Een Azure-functie-app importeren als API in API-beheer
 titleSuffix: Azure API Management
 description: Deze zelfstudie laat zien hoe u een Azure-functie-app importeert in Azure API Management als API.
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
 ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77209185"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Een Azure-functie-app als API importeren in Azure API Management
@@ -42,7 +42,7 @@ U leert het volgende:
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="add-new-api-from-azure-function-app"></a> Een Azure-functie-app als nieuwe API importeren
+## <a name="import-an-azure-function-app-as-a-new-api"></a><a name="add-new-api-from-azure-function-app"></a> Een Azure-functie-app als nieuwe API importeren
 
 Voer de volgende stappen uit om een nieuwe API te maken vanuit een Azure-functie-app.
 
@@ -75,9 +75,9 @@ Voer de volgende stappen uit om een nieuwe API te maken vanuit een Azure-functie
 
     ![Toevoegen vanuit functie-app](./media/import-function-app-as-api/add-06.png)
 
-8. Klik op **Create**.
+8. Klik **op Maken**.
 
-## <a name="append-azure-function-app-to-api"></a> Een Azure-functie-app toevoegen aan een bestaande API
+## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Een Azure-functie-app toevoegen aan een bestaande API
 
 Voer de volgende stappen uit om de Azure-functie-app toe te voegen aan een bestaande API.
 
@@ -107,18 +107,18 @@ Voer de volgende stappen uit om de Azure-functie-app toe te voegen aan een besta
 
     ![Toevoegen vanuit functie-app](./media/import-function-app-as-api/add-05.png)
 
-8. Klik op **Import**.
+8. Klik **op Importeren**.
 
     ![Toevoegen vanuit functie-app](./media/import-function-app-as-api/append-04.png)
 
-## <a name="authorization"></a>Autorisatie
+## <a name="authorization"></a><a name="authorization"></a>Vergunning
 
 Bij het importeren van een Azure-functie-app wordt automatisch het volgende gegenereerd:
 
-* Host-sleutel in de functie-app met de naam APIM-{*your Azure API Management service instance name*},
-* Een benoemde waarde in het Azure API Management instantie met de naam {*uw Azure functie-app instance name*}-sleutel, die de gemaakte host-sleutel bevat.
+* Hostsleutel in de functie-app met de naam apim-{ de naam van*uw Azure API Management-serviceinstantie*},
+* Benoemde waarde in de instantie Azure API Management met de naam {*uw Azure Function App-instantienaam*}-toets, die de gemaakte hostsleutel bevat.
 
-Voor Api's die na 4 april 2019 zijn gemaakt, wordt de host-sleutel in HTTP-aanvragen van API Management aan de functie-app in een header door gegeven. Oudere Api's geven de host-sleutel als [een query parameter](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). Dit gedrag kan worden gewijzigd via de `PATCH Backend` [rest API aanroep](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) van de *back-end* -entiteit die is gekoppeld aan de functie-app.
+Voor API's die na 4 april 2019 zijn gemaakt, wordt de hostsleutel doorgegeven in HTTP-aanvragen van API-beheer naar de functie-app in een koptekst. Oudere API's geven de hostsleutel door als [queryparameter](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). Dit gedrag kan worden `PATCH Backend` gewijzigd via de [REST API-aanroep](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) op de *backend-entiteit* die is gekoppeld aan de functie-app.
 
 > [!WARNING]
 > Als de waarde van de hostsleutel van de Azure-functie-app of de benoemde waarde van Azure API Management wordt verwijderd of gewijzigd, wordt de communicatie tussen de services verbroken. De waarden worden niet automatisch gesynchroniseerd.
@@ -143,7 +143,7 @@ Navigeer naar uw Azure API Management-exemplaar en selecteer **Benoemde waarden*
 
 ![Toevoegen vanuit functie-app](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-in-azure-portal"></a>De nieuwe API in het Azure Portal testen
+## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a>De nieuwe API testen in de Azure-portal
 
 U kunt bewerkingen rechtstreeks vanuit Azure Portal aanroepen. In Azure Portal kunt u de bewerkingen van een API gemakkelijk bekijken en testen.  
 
@@ -153,7 +153,7 @@ U kunt bewerkingen rechtstreeks vanuit Azure Portal aanroepen. In Azure Portal k
 
 3. Selecteer een bewerking.
 
-    De pagina geeft velden weer voor queryparameters en velden voor de headers. Een van de headers is **Ocp-Apim-Subscription-Key** voor de abonnementssleutel van het product dat is gekoppeld aan deze API. Als u het API Management-exemplaar hebt gemaakt, bent u al een beheerder en wordt de sleutel dus automatisch ingevuld. 
+    De pagina geeft velden weer voor queryparameters en velden voor de headers. Een van de headers is **Ocp-Apim-Subscription-Key**, voor de abonnementssleutel van het product dat is gekoppeld aan deze API. Als u het API Management-exemplaar hebt gemaakt, bent u al een beheerder en wordt de sleutel dus automatisch ingevuld. 
 
 4. Selecteer **Verzenden**.
 

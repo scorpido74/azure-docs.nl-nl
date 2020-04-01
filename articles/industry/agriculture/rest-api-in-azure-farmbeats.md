@@ -5,18 +5,18 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 318b3e3f774a4381434fd56154f4c0d95c28c7a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479512"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437525"
 ---
 # <a name="references"></a>Verwijzingen
 
 In dit artikel worden de Azure FarmBeats-API's beschreven.
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 De Azure FarmBeats API's bieden agrarische bedrijven een gestandaardiseerde RESTful-interface met JSON-gebaseerde antwoorden om u te helpen profiteren van Azure FarmBeats-mogelijkheden, zoals:
 
@@ -162,7 +162,7 @@ Azure FarmBeats API's kunnen worden geopend door een gebruiker of een app-regist
     - Ga terug naar **Overzicht**en selecteer de koppeling naast **Toepassing beheren in de lokale map**.
     - Ga naar **Eigenschappen** om de **object-id**vast te leggen.
 
-4. Ga naar je [Datahub Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html) en ga als volgt te werk:
+4. Ga naar uw Datahub Swagger (https://<yourdatahub>.azurewebsites.net/swagger/index.html) en ga als volgt te werk:
     - Ga naar de **API RoleAssignment**.
     - Voer een bericht uit om een **object RoleAssignment** te maken voor de **object-id** die u zojuist hebt gemaakt.
 

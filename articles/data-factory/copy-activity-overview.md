@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 39885782b55dca9c73f10990269d912f9b5727fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edb80c604951a140d21e3775eec3f1dc6d55af73
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257968"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421415"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Activiteit kopiëren in Azure Data Factory
 
@@ -134,10 +134,10 @@ De volgende sjabloon van een kopieeractiviteit bevat een volledige lijst met ond
 | source | Geef het type kopiebron en de bijbehorende eigenschappen op voor het ophalen van gegevens.<br/>Zie de sectie Activiteitseigenschappen kopiëren in het verbindingsartikel in [ondersteunde gegevensarchieven en -indelingen](#supported-data-stores-and-formats)voor meer informatie. | Ja |
 | Wastafel | Geef het type kopieergootsteen en de bijbehorende eigenschappen voor het schrijven van gegevens op.<br/>Zie de sectie Activiteitseigenschappen kopiëren in het verbindingsartikel in [ondersteunde gegevensarchieven en -indelingen](#supported-data-stores-and-formats)voor meer informatie. | Ja |
 | vertalen | Geef expliciete kolomtoewijzingen op van bron tot gootsteen. Deze eigenschap is van toepassing wanneer het standaard kopieergedrag niet aan uw behoeften voldoet.<br/>Zie [Schematoewijzing in kopieeractiviteit voor](copy-activity-schema-and-type-mapping.md)meer informatie . | Nee |
-| dataIntegrationUnits | Geef een maat op die de hoeveelheid stroom vertegenwoordigt die de runtime van [azure-integratie](concepts-integration-runtime.md) gebruikt voor gegevenskopiëren. Deze eenheden stonden voorheen bekend als cloud Data Movement Units (DMU). <br/>Zie [Data Integration Units](copy-activity-performance.md#data-integration-units)voor meer informatie. | Nee |
-| parallellekopieën | Geef de parallellisme op die u wilt dat de activiteit Kopiëren gebruikt bij het lezen van gegevens uit de bron en het schrijven van gegevens naar de gootsteen.<br/>Zie [Parallelle kopie](copy-activity-performance.md#parallel-copy)voor meer informatie . | Nee |
+| dataIntegrationUnits | Geef een maat op die de hoeveelheid stroom vertegenwoordigt die de runtime van [azure-integratie](concepts-integration-runtime.md) gebruikt voor gegevenskopiëren. Deze eenheden stonden voorheen bekend als cloud Data Movement Units (DMU). <br/>Zie [Data Integration Units](copy-activity-performance-features.md#data-integration-units)voor meer informatie. | Nee |
+| parallellekopieën | Geef de parallellisme op die u wilt dat de activiteit Kopiëren gebruikt bij het lezen van gegevens uit de bron en het schrijven van gegevens naar de gootsteen.<br/>Zie [Parallelle kopie](copy-activity-performance-features.md#parallel-copy)voor meer informatie . | Nee |
 | Behouden | Geef op of metagegevens/ACL's moeten worden bewaard tijdens het kopiëren van gegevens. <br/>Zie [Metagegevens behouden voor](copy-activity-preserve-metadata.md)meer informatie . |Nee |
-| inschakelen<br/>stagingInstellingen | Geef op of u de tussentijdse gegevens wilt fasen in blobopslag in plaats van rechtstreeks gegevens van bron naar gootsteen te kopiëren.<br/>Zie [Gefaseerde kopie](copy-activity-performance.md#staged-copy)voor informatie over nuttige scenario's en configuratiedetails. | Nee |
+| inschakelen<br/>stagingInstellingen | Geef op of u de tussentijdse gegevens wilt fasen in blobopslag in plaats van rechtstreeks gegevens van bron naar gootsteen te kopiëren.<br/>Zie [Gefaseerde kopie](copy-activity-performance-features.md#staged-copy)voor informatie over nuttige scenario's en configuratiedetails. | Nee |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Kies hoe u onverenigbare rijen verwerkt wanneer u gegevens van bron naar gootsteen kopieert.<br/>Zie [Fouttolerantie](copy-activity-fault-tolerance.md)voor meer informatie. | Nee |
 
 ## <a name="monitoring"></a>Bewaking

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a429a1e454e73a1a9d544e308e5b2d60052d91a9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7a31eece6629558b14b614853addce59642e698b
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349777"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422728"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -38,7 +38,9 @@ Ga als volgt te werk om het bestand **deployer.log** te downloaden:
 **Corrigerende maatregelen**:
 
 1. Ga naar uw FarmBeats Datahub-brongroep.   
+
 2. Selecteer de **gebeurtenishub** (DatafeedEventHubNamespace) en controleer vervolgens op het aantal binnenkomende berichten.
+
 3. Voer een van de volgende bewerkingen uit:   
    - Als er *geen binnenkomende berichten*zijn, neemt u contact op met uw apparaatpartner.  
    - Als er *binnenkomende berichten* farmbeatssupport@microsoft.comzijn, neemt u contact op met . Voeg uw Datahub- en Accelerator-logboeken toe en vastgelegde telemetrie.
@@ -52,6 +54,7 @@ Als u wilt weten hoe u logboeken downloaden, gaat u naar de sectie [Logboeken ha
 **Corrigerende maatregelen**:
 
 1. Zorg ervoor dat u de partnerregistratie correct hebt gedaan - u dit controleren door naar uw datahub-branie te gaan, naar /Partner API te navigeren, een get te doen en te controleren of de partner is geregistreerd. Zo niet, volg [dan de stappen hier](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om partner toe te voegen.
+
 2. Controleer of u de juiste telemetrieberichtindeling hebt gebruikt:
 
 ```json
@@ -83,9 +86,12 @@ Als u wilt weten hoe u logboeken downloaden, gaat u naar de sectie [Logboeken ha
 
 1. Ga in Datahub Swagger naar de Partner API.
 2. Selecteer **Try** > **it out uitvoeren.** > **Execute**
-3. Let op de partner-ID van de sensorpartner waarin u geïnteresseerd bent.
-4. Ga terug naar de Partner-API en selecteer **>op-\<en>. **
-5. Geef de partner-id op vanaf stap 3 en selecteer **Uitvoeren**.
+
+> [!NOTE]
+> De partner-ID van de sensorpartner waarin u geïnteresseerd bent.
+
+3. Ga terug naar de Partner-API en selecteer **>op-\<en>. **
+4. Geef de partner-id op vanaf stap 3 en selecteer **Uitvoeren**.
 
    De API-respons moet de verbindingstekenreeks Gebeurtenishubs hebben.
 

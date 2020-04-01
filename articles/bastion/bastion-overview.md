@@ -7,16 +7,16 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: e995cba1c2ba06333d7bee507182693002cf4bbf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 299a69675eed1ba958c6d13cf447407450df2abb
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76989485"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411101"
 ---
 # <a name="what-is-azure-bastion"></a>Wat is Azure Bastion?
 
-De Azure Bastion-service is een nieuwe, volledig platformbeheerde PaaS-service die u inuw virtuele netwerk indient. Het biedt veilige en naadloze RDP/SSH-connectiviteit met uw virtuele machines rechtstreeks in de Azure-portal via SSL. Wanneer u verbinding maakt met Azure Bastion, hebben uw virtuele machines geen openbaar IP nodig.
+De Azure Bastion-service is een nieuwe, volledig platformbeheerde PaaS-service die u inuw virtuele netwerk indient. Het biedt veilige en naadloze RDP/SSH-connectiviteit met uw virtuele machines rechtstreeks in de Azure-portal via TLS. Wanneer u verbinding maakt met Azure Bastion, hebben uw virtuele machines geen openbaar IP nodig.
 
 Bastion biedt veilige RDP- en SSH-connectiviteit met alle VM's in het virtuele netwerk waarin het is ingericht. Het gebruik van Azure Bastion beschermt uw virtuele machines tegen het blootstellen van RDP/SSH-poorten aan de buitenwereld, terwijl u toch veilige toegang biedt met RDP/SSH. Met Azure Bastion maakt u rechtstreeks vanuit de Azure-portal verbinding met de virtuele machine. U hebt geen extra client, agent of software nodig.
 
@@ -41,7 +41,7 @@ Deze afbeelding toont de architectuur van een Azure Bastion-implementatie. In di
 De volgende functies zijn beschikbaar:
 
 * **RDP en SSH rechtstreeks in Azure-portal:** U rechtstreeks naar de RDP- en SSH-sessie rechtstreeks in de Azure-portal gaan met behulp van een naadloze ervaring met één klik.
-* **Externe sessie via SSL en firewall traversal voor RDP/SSH:** Azure Bastion maakt gebruik van een HTML5-gebaseerde webclient die automatisch wordt gestreamd naar uw lokale apparaat, zodat u uw RDP/SSH-sessie via SSL op poort 443 krijgt, zodat u bedrijfsfirewalls veilig doorlopen.
+* **Externe sessie via TLS en firewall traversal voor RDP/SSH:** Azure Bastion maakt gebruik van een HTML5-gebaseerde webclient die automatisch wordt gestreamd naar uw lokale apparaat, zodat u uw RDP/SSH-sessie via TLS op poort 443 krijgt, zodat u bedrijfsfirewalls veilig doorlopen.
 * **Er is geen openbaar IP-adres vereist op de Azure VM:** Azure Bastion opent de RDP/SSH-verbinding met uw virtuele Azure-machine met privé-IP op uw VM. U hebt geen openbaar IP op uw virtuele machine nodig.
 * **Geen gedoe met het beheer van NSG's:** Azure Bastion is een volledig beheerde PaaS-service van Azure die intern wordt gehard om u veilige RDP/SSH-connectiviteit te bieden. U hoeft geen NSG's toe te passen op het subnet Azure Bastion. Omdat Azure Bastion via privé-IP verbinding maakt met uw virtuele machines, u uw NPC's zo configureren dat RDP/SSH alleen van Azure Bastion wordt toegestaan. Dit elimineert het gedoe van het beheren van SMG's elke keer dat u nodig hebt om veilig verbinding te maken met uw virtuele machines.
 * **Bescherming tegen poortscanning:** Omdat u uw virtuele machines niet hoeft bloot te stellen aan openbaar internet, worden uw VM's beschermd tegen het scannen van poorten door malafide en kwaadwillende gebruikers die zich buiten uw virtuele netwerk bevinden.

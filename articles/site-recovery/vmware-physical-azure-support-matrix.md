@@ -1,16 +1,14 @@
 ---
 title: Ondersteuningsmatrix voor VMware/fysiek herstel van rampen in Azure Site Recovery
 description: Vat ondersteuning voor noodherstel van VMware VM's en fysieke server samen naar Azure met Azure Site Recovery.
-ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.author: raynew
-ms.openlocfilehash: 05e60c5b008746bbfd72dbe7a2e14b18aa563671
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4cf19f4f74ba24951efb806a9f2e3d88fcad7bc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371389"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478422"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteuningsmatrix voor noodherstel van Vm's en fysieke servers naar Azure
 
@@ -50,10 +48,10 @@ Schijfvrije ruimte | 600 GB ruimte voor de processervercache.
 Schijfvrije ruimte | 600 GB ruimte voor de bewaarschijf.
 Besturingssysteem  | Windows Server 2012 R2 of Windows Server 2016 met bureaubladervaring <br/><br> Als u van plan bent het ingebouwde mastertarget van dit toestel te gebruiken voor failback, moet u ervoor zorgen dat de os-versie hetzelfde of hoger is dan de gerepliceerde items.|
 Landinstelling van het besturingssysteem | Engels (en-us)
-[PowerCLI (PowerCLI)](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Niet nodig voor configuratieserverversie [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) of hoger. 
-Windows Server-functies | Schakel Active Directory Domain Services niet in. Internet Information Services (IIS) of Hyper-V. 
+[PowerCLI (PowerCLI)](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Niet nodig voor configuratieserverversie [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) of hoger.
+Windows Server-functies | Schakel Active Directory Domain Services niet in. Internet Information Services (IIS) of Hyper-V.
 Groepsbeleid| - Voorkom toegang tot de opdrachtprompt. <br/> - Voorkom toegang tot registerbewerkingstools. <br/> - Logica vertrouwen voor bestandsbijlagen. <br/> - Scriptuitvoering inschakelen. <br/> - [Meer informatie](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Zorg ervoor dat u:<br/><br/> - Heb je geen vooraf bestaande standaardwebsite <br/> - [Anonieme verificatie](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) inschakelen <br/> - [FastCGI-instelling](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) inschakelen  <br/> - Heb je geen reeds bestaande website/app luisteren op poort 443<br/>
+IIS | Zorg ervoor dat u:<br/><br/> - Heb je geen vooraf bestaande standaardwebsite <br/> - [Anonieme verificatie](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) inschakelen <br/> - [FastCGI-instelling](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) inschakelen  <br/> - Heb je geen reeds bestaande website/app luisteren op poort 443<br/>
 NIC-type | VMXNET3 (wanneer ingezet als VMware VM)
 Type IP-adres | Statisch
 Poorten | 443 gebruikt voor de orkestratie van het controlekanaal<br/>9443 voor datatransport
@@ -68,24 +66,24 @@ Site recovery ondersteunt replicatie van alle workloads die op een ondersteunde 
 **Component** | **Details**
 --- | ---
 Machine-instellingen | Machines die repliceren naar Azure moeten voldoen aan [azure-vereisten.](#azure-vm-requirements)
-Werkbelasting voor machines | Site recovery ondersteunt replicatie van alle workloads die op een ondersteunde machine worden uitgevoerd. [Meer informatie](https://aka.ms/asr_workload).
+Werkbelasting voor machines | Site recovery ondersteunt replicatie van alle workloads die op een ondersteunde machine worden uitgevoerd. [Meer informatie](site-recovery-workload.md).
 Windows Server 2019 | Ondersteund vanaf [Update rollup 34](https://support.microsoft.com/help/4490016) (versie 9.22 van de Mobility service) en verder.
 Windows Server 2016 64-bits | Ondersteuning voor Server Core, Server met desktopervaring.
 Windows Server 2012 R2 / Windows Server 2012 | Ondersteund.
 Windows Server 2008 R2 met SP1 verder. | Ondersteund.<br/><br/> Vanaf versie [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) van de Mobility-serviceagent hebt u [servicestackupdate (SSU)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) nodig die zijn geïnstalleerd op machines met Windows 2008 R2 met SP1 of hoger. SHA-1 wordt niet meer ondersteund vanaf september 2019 en als sha-2-codeondertekening niet is ingeschakeld, wordt de agentextensie niet geïnstalleerd/geüupgradet zoals verwacht. Meer informatie over [sha-2-upgrade en vereisten.](https://aka.ms/SHA-2KB)
-Windows Server 2008 met SP2 of hoger (64-bits/32-bits) |  Alleen ondersteund voor migratie. [Meer informatie](migrate-tutorial-windows-server-2008.md).<br/><br/> Vanaf versie [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) van de Mobility-serviceagent hebt u [servicestack-update (SSU)](https://support.microsoft.com/help/4493730) en [SHA-2-updates](hhttps://support.microsoft.com/help/4474419) nodig die zijn geïnstalleerd op Windows 2008 SP2-machines. ISHA-1 wordt niet meer ondersteund vanaf september 2019 en als sha-2-codeondertekening niet is ingeschakeld, wordt de agentextensie niet geïnstalleerd/geüupgradet zoals verwacht. Meer informatie over [sha-2-upgrade en vereisten.](https://aka.ms/SHA-2KB)
+Windows Server 2008 met SP2 of hoger (64-bits/32-bits) |  Alleen ondersteund voor migratie. [Meer informatie](migrate-tutorial-windows-server-2008.md).<br/><br/> Vanaf versie [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) van de Mobility-serviceagent hebt u [servicestack-update (SSU)](https://support.microsoft.com/help/4493730) en [SHA-2-updates](https://support.microsoft.com/help/4474419) nodig die zijn geïnstalleerd op Windows 2008 SP2-machines. ISHA-1 wordt niet meer ondersteund vanaf september 2019 en als sha-2-codeondertekening niet is ingeschakeld, wordt de agentextensie niet geïnstalleerd/geüupgradet zoals verwacht. Meer informatie over [sha-2-upgrade en vereisten.](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)
 Windows 10, Windows 8.1, Windows 8 | Ondersteund.
-Windows 7 met SP1 64-bits | Ondersteund vanaf [Update rollup 36](https://support.microsoft.com/help/4503156) (versie 9.22 van de Mobility service) en verder. </br></br> Vanaf [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) van de Mobility service agent, moet u [onderhoud stack update (SSU)](https://support.microsoft.com/help/4490628) en [SHA-2 update](https://support.microsoft.com/help/4474419) geïnstalleerd op Windows 7 SP1 machines.  SHA-1 wordt niet meer ondersteund vanaf september 2019 en als sha-2-codeondertekening niet is ingeschakeld, wordt de agentextensie niet geïnstalleerd/geüupgradet zoals verwacht. Meer informatie over [sha-2-upgrade en vereisten.](https://aka.ms/SHA-2KB)
+Windows 7 met SP1 64-bits | Ondersteund vanaf [Update rollup 36](https://support.microsoft.com/help/4503156) (versie 9.22 van de Mobility service) en verder. </br></br> Vanaf [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) van de Mobility service agent, moet u [onderhoud stack update (SSU)](https://support.microsoft.com/help/4490628) en [SHA-2 update](https://support.microsoft.com/help/4474419) geïnstalleerd op Windows 7 SP1 machines.  SHA-1 wordt niet meer ondersteund vanaf september 2019 en als sha-2-codeondertekening niet is ingeschakeld, wordt de agentextensie niet geïnstalleerd/geüupgradet zoals verwacht. Meer informatie over [sha-2-upgrade en vereisten.](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)
 Linux | Alleen 64-bits systeem wordt ondersteund. Het 32-bits systeem wordt niet ondersteund.<br/><br/>Elke Linux-server moet [Linux Integration Services (LIS) componenten](https://www.microsoft.com/download/details.aspx?id=55106) geïnstalleerd. Het is vereist om de server op te starten in Azure na test failover / failover. Als LIS-componenten ontbreken, moet u ervoor zorgen dat de [onderdelen](https://www.microsoft.com/download/details.aspx?id=55106) worden geïnstalleerd voordat replicatie wordt ingemaakt zodat de machines in Azure kunnen worden opgestart. <br/><br/> Site Recovery orkestreert failover om Linux-servers in Azure uit te voeren. Linux-leveranciers kunnen de ondersteuning echter beperken tot alleen distributieversies die het einde van de levensduur nog niet hebben bereikt.<br/><br/> Op Linux-distributies worden alleen de stockkernels ondersteund die deel uitmaken van de release/update van de distributiekleine versie.<br/><br/> Het upgraden van beveiligde machines in grote Linux-distributieversies wordt niet ondersteund. Als u wilt upgraden, schakelt u replicatie uit, upgradet u het besturingssysteem en schakelt u replicatie opnieuw in.<br/><br/> [Meer informatie](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) over ondersteuning voor Linux en open-sourcetechnologie in Azure.
 Linux Red Hat Enterprise | 5.2 tot 5.11</b><br/> 6.1 tot 6.10</b> </br> 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8.1 <br/> Servers met Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10 hebben geen [Linux Integration Services (LIS) componenten](https://www.microsoft.com/download/details.aspx?id=55106) vooraf geïnstalleerd. Zorg ervoor dat u de [onderdelen](https://www.microsoft.com/download/details.aspx?id=55106) installeert voordat replicatie wordt uitgevoerd voor de machines die in Azure kunnen worden opgestart.
 Linux: CentOS | 5.2 tot 5.11</b><br/> 6.1 tot 6.10</b><br/> 7,0 tot 7,6<br/> <br/> 8,0 tot 8,1<br/><br/> Servers met CentOS 5.2-5.11 & 6.1-6.10 hebben geen [Linux Integration Services (LIS)-componenten](https://www.microsoft.com/download/details.aspx?id=55106) vooraf geïnstalleerd. Zorg ervoor dat u de [onderdelen](https://www.microsoft.com/download/details.aspx?id=55106) installeert voordat replicatie wordt uitgevoerd voor de machines die in Azure kunnen worden opgestart.
 Ubuntu | Ubuntu 14.04 LTS server [(review ondersteunde kernel versies)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS server [(review ondersteunde kernel versies)](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS server [(review ondersteunde kernel versies)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(review ondersteunde kernel versies)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(review ondersteunde kernelversies)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(review ondersteunde kernelversies)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Het upgraden van gerepliceerde machines van SUSE Linux Enterprise Server 11 SP3 naar SP4 wordt niet ondersteund. Als u wilt upgraden, schakelt u replicatie uit en schakelt u het opnieuw in na de upgrade.
-Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Uitvoeren van de Red Hat compatibele kernel of Unbreakable Enterprise Kernel Release 3, 4 & 5 (UEK3, UEK4, UEK5) 
+Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Uitvoeren van de Red Hat compatibele kernel of Unbreakable Enterprise Kernel Release 3, 4 & 5 (UEK3, UEK4, UEK5)
 
 > [!Note]
-> Voor elk van de Windows-versies ondersteunt Azure Site Recovery alleen [LTSC-builds (Long-Term Servicing Channel).](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)  [Semi-Annual Channel](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) releases worden momenteel niet ondersteund op dit moment.
+> Voor elk van de Windows-versies ondersteunt Azure Site Recovery alleen [LTSC-builds (Long-Term Servicing Channel).](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)  [Semi-Annual Channel](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) releases worden momenteel niet ondersteund op dit moment.
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu kernel versies
 
@@ -141,7 +139,7 @@ Gevirtualiseerde opslagapparaten | Apparaten die zijn geëxporteerd door geparav
 Io-apparaten met meerdere wachtrijen blokkeren | Wordt niet ondersteund.
 Fysieke servers met de HP CCISS-opslagcontroller | Wordt niet ondersteund.
 Conventie voor het benoemen van apparaat/bevestigingspunt | De naam van het apparaat of de naam van het bevestigingspunt moet uniek zijn.<br/> Zorg ervoor dat er geen twee apparaten/bevestigingspunten hoofdlettergevoelige namen hebben. Bijvoorbeeld het benoemen van apparaten voor dezelfde VM als *device1* en *Device1* wordt niet ondersteund.
-Mappen | Als u een versie van de Mobiliteitsservice eerder uitvoert dan versie 9.20 (uitgebracht in [Update Rollup 31),](https://support.microsoft.com/help/4478871/)zijn deze beperkingen van toepassing:<br/><br/> - Deze mappen (indien ingesteld als afzonderlijke partities / bestandssystemen) moeten zich op dezelfde OS-schijf op de bronserver bestaan: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - De /boot directory moet zich op een schijfpartitie bevinden en mag geen LVM-volume zijn.<br/><br/> Vanaf versie 9.20 zijn deze beperkingen niet van toepassing. 
+Mappen | Als u een versie van de Mobiliteitsservice eerder uitvoert dan versie 9.20 (uitgebracht in [Update Rollup 31),](https://support.microsoft.com/help/4478871/)zijn deze beperkingen van toepassing:<br/><br/> - Deze mappen (indien ingesteld als afzonderlijke partities / bestandssystemen) moeten zich op dezelfde OS-schijf op de bronserver bestaan: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - De /boot directory moet zich op een schijfpartitie bevinden en mag geen LVM-volume zijn.<br/><br/> Vanaf versie 9.20 zijn deze beperkingen niet van toepassing.
 Opstartmap | - Opstartschijven mogen niet in de GPT-partitieindeling staan. Dit is een Azure-architectuurbeperking. GPT-schijven worden ondersteund als gegevensschijven.<br/><br/> Meerdere opstartschijven op een virtuele machine worden niet ondersteund<br/><br/> - /boot op een LVM-volume op meer dan één schijf wordt niet ondersteund.<br/> - Een machine zonder opstartschijf kan niet worden gerepliceerd.
 Vereisten voor vrije ruimte| 2 GB op de /root partitie <br/><br/> 250 MB op de installatiemap
 XFSv5 (XFSv5) | XFSv5-functies op XFS-bestandssystemen, zoals metadata checksum, worden ondersteund (Mobility service versie 9.10 vanaf).<br/> Gebruik het xfs_info hulpprogramma om het XFS-superblok voor de partitie te controleren. Als `ftype` dit is ingesteld op 1, worden xfsv5-functies gebruikt.
@@ -212,7 +210,7 @@ Gast/server - schijf uitsluiten | Ja
 Gast/server multipath (MPIO) | Nee
 Gpt-partities voor gasten/server | Vanaf [Update Rollup 37](https://support.microsoft.com/help/4508614/) (versie 9.25 van de Mobility-service) worden vijf partities ondersteund. Voorheen werden er vier ondersteund.
 ReFS | Resilient File System wordt ondersteund met Mobility-serviceversie 9.23 of hoger
-Gast/server EFI/UEFI opstarten | - Ondersteund voor Windows Server 2012 of hoger, SLES 12 SP4 en RHEL 8.0 met mobiliteitsagent versie 9.30 en vanaf 06.30<br/> - Secure UEFI boot type wordt niet ondersteund. 
+Gast/server EFI/UEFI opstarten | - Ondersteund voor Windows Server 2012 of hoger, SLES 12 SP4 en RHEL 8.0 met mobiliteitsagent versie 9.30 en vanaf 06.30<br/> - Secure UEFI boot type wordt niet ondersteund.
 
 ## <a name="replication-channels"></a>Replicatiekanalen
 
@@ -268,20 +266,20 @@ VM-naam | Van 1 tot 63 tekens.<br/><br/> Alleen letters, cijfers en afbreekstree
 
 ## <a name="resource-group-limits"></a>Limieten voor resourcegroepen
 
-Als u inzicht wilt krijgen in het aantal virtuele machines dat onder één resourcegroep kan worden beschermd, raadpleegt u het artikel over [abonnementslimieten en quota](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)
+Als u inzicht wilt krijgen in het aantal virtuele machines dat onder één resourcegroep kan worden beschermd, raadpleegt u het artikel over [abonnementslimieten en quota](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits).
 
 ## <a name="churn-limits"></a>Churn-limieten
 
-De volgende tabel bevat de Azure Site Recovery-limieten. 
+De volgende tabel bevat de Azure Site Recovery-limieten.
 - Deze limieten zijn gebaseerd op onze tests, maar dekken niet alle mogelijke app I/O combinaties.
 - De werkelijke resultaten kunnen variëren op basis van uw toepassings-I/O-combinatie.
 - Voor de beste resultaten raden we u ten zeerste aan de [tool Deployment Planner](site-recovery-deployment-planner.md)uit te voeren en uitgebreide toepassingstests uit te voeren met behulp van testfailovers om de werkelijke prestatiefoto voor uw app te krijgen.
 
 **Replicatiedoel** | **Gemiddelde I/O-grootte van bronschijf** |**Gemiddelde bronschijfgegevensverloop** | **Totaal bronschijfgegevensverloop per dag**
 ---|---|---|---
-Standard Storage | 8 kB | 2 MB/s | 168 GB per schijf
-Premium P10 of P15 schijf | 8 kB  | 2 MB/s | 168 GB per schijf
-Premium P10 of P15 schijf | 16 kB | 4 MB/s |  336 GB per schijf
+Standard Storage | 8 kB    | 2 MB/s | 168 GB per schijf
+Premium P10 of P15 schijf | 8 kB    | 2 MB/s | 168 GB per schijf
+Premium P10 of P15 schijf | 16 kB | 4 MB/s |    336 GB per schijf
 Premium P10 of P15 schijf | 32 kB of meer | 8 MB/s | 672 GB per schijf
 Premium P20 of P30 of P40 of P50 schijf | 8 kB    | 5 MB/s | 421 GB per schijf
 Premium P20 of P30 of P40 of P50 schijf | 16 kB of meer |20 MB/s | 1684 GB per schijf
@@ -310,9 +308,9 @@ Verplaats opslag, netwerk, Azure VM's binnen en tussen abonnementen. | Nee
 
 **Naam** | **Beschrijving** | **Details**
 --- | --- | ---
-Configuratieserver | Geïnstalleerd op locatie.<br/> Coördineert de communicatie tussen on-premises VMware-servers of fysieke machines en Azure. | - [Meer informatie over](vmware-physical-azure-config-process-server-overview.md) de configuratieserver.<br/> - [Meer informatie over](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) upgraden naar de nieuwste versie.<br/> - [Meer informatie over](vmware-azure-deploy-configuration-server.md) het instellen van de configuratieserver. 
+Configuratieserver | Geïnstalleerd op locatie.<br/> Coördineert de communicatie tussen on-premises VMware-servers of fysieke machines en Azure. | - [Meer informatie over](vmware-physical-azure-config-process-server-overview.md) de configuratieserver.<br/> - [Meer informatie over](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) upgraden naar de nieuwste versie.<br/> - [Meer informatie over](vmware-azure-deploy-configuration-server.md) het instellen van de configuratieserver.
 Processerver | standaard geïnstalleerd op de configuratieserver.<br/> Ontvangt replicatiegegevens, optimaliseert deze met caching, compressie en versleuteling en stuurt deze naar Azure.<br/> Naarmate uw implementatie toeneemt, u extra processervers toevoegen om grotere hoeveelheden replicatieverkeer te verwerken. | - [Meer informatie over](vmware-physical-azure-config-process-server-overview.md) de processerver.<br/> - [Meer informatie over](vmware-azure-manage-process-server.md#upgrade-a-process-server) upgraden naar de nieuwste versie.<br/> - [Meer informatie over](vmware-physical-large-deployment.md#set-up-a-process-server) het instellen van scale-out processervers.
-Mobility-service | Geïnstalleerd op VMware VM of fysieke servers die u wilt repliceren.<br/> Coördineert replicatie tussen on-premises VMware-servers/fysieke servers en Azure.| - [Meer informatie over](vmware-physical-mobility-service-overview.md) de Mobiliteitsservice.<br/> - [Meer informatie over](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) upgraden naar de nieuwste versie.<br/> 
+Mobility-service | Geïnstalleerd op VMware VM of fysieke servers die u wilt repliceren.<br/> Coördineert replicatie tussen on-premises VMware-servers/fysieke servers en Azure.| - [Meer informatie over](vmware-physical-mobility-service-overview.md) de Mobiliteitsservice.<br/> - [Meer informatie over](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) upgraden naar de nieuwste versie.<br/>
 
 
 

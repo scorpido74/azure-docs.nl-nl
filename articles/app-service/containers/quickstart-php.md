@@ -1,24 +1,24 @@
 ---
-title: 'Snelstartgids: een PHP-app maken in Linux'
-description: Ga aan de slag met Linux-apps op Azure App Service door uw eerste PHP-app te implementeren in een Linux-container in App Service.
+title: 'Quickstart: Maak een PHP-app op Linux'
+description: Ga aan de slag met Linux-apps in Azure App Service door uw eerste PHP-app te implementeren in een Linux-container in App Service.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 7608c10f2d101a3c24209a5e09bccc6dc31401ca
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validatem seodec18
+ms.openlocfilehash: 5a2abaf49071c90ea4fe0d5b5a454ce91f2cb1e4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524101"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046058"
 ---
 # <a name="create-a-php-app-in-app-service-on-linux"></a>Een PHP-web-app maken in App Service op Linux
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie _Een PHP-app maken in Azure_ om een app te implementeren in App Service op [Windows](../app-service-web-get-started-php.md).
+> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie [Een PHP-app maken in Azure](../app-service-web-get-started-php.md) om een app te implementeren in App Service op _Windows_.
 >
 
-[App Service onder Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. In deze Snelstartgids ziet u hoe u een PHP-app implementeert voor Azure App Service op Linux met behulp van de [Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+[Azure App Service on Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. Deze snelstartzelfstudie laat zien hoe u een PHP-app implementeert naar Azure App Service op Linux met behulp van de [Cloud Shell.](https://docs.microsoft.com/azure/cloud-shell/overview)
 
 ![Voorbeeld-app die wordt uitgevoerd in Azure](media/quickstart-php/hello-world-in-browser.png)
 
@@ -28,7 +28,7 @@ U kunt de stappen in dit artikel volgen met behulp van een Mac-, Windows- of Lin
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstartgids:
+Dit zijn de vereisten voor het voltooien van deze snelstart:
 
 * <a href="https://git-scm.com/" target="_blank">Git installeren</a>
 * <a href="https://php.net" target="_blank">PHP installeren</a>
@@ -70,7 +70,7 @@ Druk in uw terminalvenster op **Ctrl + C** om de webserver af te sluiten.
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
-Blader naar de site om uw nieuwe app met de ingebouwde installatiekopie te bekijken. Vervang _&lt;app-naam>_ door de naam van uw app.
+Blader naar de site om uw nieuwe app met de ingebouwde installatiekopie te bekijken. Vervang _ &lt;de naam van de app>_ door de naam van uw app.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -159,7 +159,7 @@ Het linkermenu bevat een aantal pagina's voor het configureren van uw app.
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: PHP-app met MySQL](tutorial-php-mysql-app.md)
+> [Zelfstudie: PHP-app met MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
 > [PHP-app configureren](configure-language-php.md)

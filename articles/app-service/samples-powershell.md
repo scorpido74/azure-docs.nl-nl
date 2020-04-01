@@ -1,16 +1,16 @@
 ---
-title: Power shell-voor beelden
-description: Zoek Azure PowerShell-voor beelden voor een aantal algemene App Service scenario's. Meer informatie over het automatiseren van uw App Service-implementatie-of beheer taken.
+title: PowerShell-voorbeelden
+description: Zoek Azure PowerShell-voorbeelden voor enkele van de algemene App Service-scenario's. Meer informatie over het automatiseren van uw implementatie- of beheertaken van app-service.
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 ms.date: 03/08/2017
 ms.custom: mvc
 ms.openlocfilehash: f32db2a4dda0ceb69644b64a5c76155b448c5a28
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74687032"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>PowerShell-voorbeelden voor Azure App Service

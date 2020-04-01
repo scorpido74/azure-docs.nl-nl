@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Azure Database for MySQL maken-Azure Resource Manager sjabloon'
+title: 'Zelfstudie: Azure Database maken voor MySQL - Azure Resource Manager-sjabloon'
 description: In deze zelfstudie wordt uitgelegd hoe u Azure Database for MySQL-serverimplementaties inricht en automatiseert met behulp van een Azure Resource Manager-sjabloon.
 author: savjani
 ms.author: pariks
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
 ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74771085"
 ---
-# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Zelf studie: een Azure Database for MySQL-server inrichten met Azure Resource Manager sjabloon
+# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Zelfstudie: Een Azure-database voor MySQL-server inrichten met azure resourcebeheersjabloon
 
 Met de [Azure Database for MySQL REST API](https://docs.microsoft.com/rest/api/mysql/) kunnen DevOps-technici de inrichting, configuratie en bewerkingen van beheerde MySQL-servers en -databases in Azure automatiseren en integreren.  Met de API kunnen MySQL-servers en -databases in de Azure Database for MySQL-service worden gemaakt, opgesomd, beheerd en verwijderd.
 
@@ -25,12 +25,12 @@ In deze zelfstudie gebruikt u een sjabloon van Azure Resource Manager en andere 
 
 > [!div class="checklist"]
 > * Een Azure Database for MySQL-server met VNet-service-eindpunt maken met behulp van een Azure Resource Manager-sjabloon
-> * Het [opdrachtregelprogramma mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) gebruiken om een database te maken
+> * [Mysql-opdrachtregelgereedschap gebruiken](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) om een database te maken
 > * Voorbeeldgegevens laden
 > * Querygegevens
 > * Gegevens bijwerken
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="create-an-azure-database-for-mysql-server-with-vnet-service-endpoint-using-azure-resource-manager-template"></a>Een Azure Database for MySQL-server met VNet-service-eindpunt maken met behulp van een Azure Resource Manager-sjabloon
 
@@ -87,8 +87,8 @@ In deze aanvraag moeten de volgende waarden worden aangepast:
 +   `storageProfile/geoRedundantBackup` -Geef Ingeschakeld/uitgeschakeld op, afhankelijk van Geo-DR-vereisten.
 +   `sku/tier` - Geef de laag Basic, GeneralPurpose of MemoryOptimized voor de implementatie op.
 +   `sku/capacity` - Geef de vCore-capaciteit op. Mogelijke waarden zijn 2, 4, 8, 16, 32 of 64.
-+   `sku/family`: Geef GEN5 op om de hardware-generatie voor de server implementatie te kiezen.
-+   `sku/name` -Geef TierPrefix_family_capacity op. Bijvoorbeeld B_Gen5_1, GP_Gen5_16 MO_Gen5_32. Raadpleeg de documentatie over [prijscategorieën](./concepts-pricing-tiers.md) om de geldige waarden per regio en per laag te begrijpen.
++   `sku/family`- Geef Gen5 op om hardwaregeneratie te kiezen voor serverimplementatie.
++   `sku/name` -Geef TierPrefix_family_capacity op. Bijvoorbeeld B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Raadpleeg de documentatie over [prijscategorieën](./concepts-pricing-tiers.md) om de geldige waarden per regio en per laag te begrijpen.
 +   `resources/properties/virtualNetworkSubnetId` -Geef de Azure-id van het subnet in VNet op waar de Azure MySQL-server moet worden geplaatst. 
 +   `tags(optional)` -Geef optioneel tags op. Dit zijn sleutel-waardeparen zijn die u zou gebruiken om de resources voor facturering en dergelijke te categoriseren.
 
@@ -200,10 +200,10 @@ SELECT * FROM inventory;
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 > [!div class="checklist"]
 > * Een Azure Database for MySQL-server met VNet-service-eindpunt maken met behulp van een Azure Resource Manager-sjabloon
-> * Het [opdrachtregelprogramma mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) gebruiken om een database te maken
+> * [Mysql-opdrachtregelgereedschap gebruiken](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) om een database te maken
 > * Voorbeeldgegevens laden
 > * Querygegevens
 > * Gegevens bijwerken

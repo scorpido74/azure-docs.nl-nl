@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: labrenne
-ms.openlocfilehash: 2cff6a0e48fc7bf58a642f509fcda6b114e002ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95f27d913cd288c186bae1a6375212b072f50bb4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022933"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422436"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>De gedeelde afbeeldingsgalerie gebruiken om een aangepaste groep te maken
 
@@ -38,6 +38,9 @@ Het gebruik van een gedeelde afbeelding die is geconfigureerd voor uw scenario, 
 * **Afbeeldingsversies en groepering voor eenvoudiger beheer.** De definitie van afbeeldingsgroepering bevat informatie over waarom de afbeelding is gemaakt, voor welk besturingssysteem het is en informatie over het gebruik van de afbeelding. Het groeperen van afbeeldingen zorgt voor eenvoudiger beeldbeheer. Zie [Afbeeldingsdefinities voor](../virtual-machines/windows/shared-image-galleries.md#image-definitions)meer informatie .
 
 ## <a name="prerequisites"></a>Vereisten
+
+> [!NOTE]
+> U moet zich verifiëren met Azure AD. Als u shared-key-auth gebruikt, krijgt u een verificatiefout.  
 
 * **Een Azure Batch-account.** Als u een Batch-account wilt maken, raadpleegt u batch snel start met de [Azure-portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md).
 
@@ -86,6 +89,9 @@ Nadat u uw beheerde afbeelding hebt gemaakt, moet u een gedeelde afbeeldingsgale
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Een groep maken op basis van een gedeelde afbeelding met de Azure CLI
 
 Als u een groep wilt maken vanuit uw `az batch pool create` gedeelde afbeelding met de Azure CLI, gebruikt u de opdracht. Geef de gedeelde afbeeldings-id in het `--image` veld op. Controleer of het type besturingssysteem en De SKU overeenkomen met de versies die zijn opgegeven door`--node-agent-sku-id`
+
+> [!NOTE]
+> U moet zich verifiëren met Azure AD. Als u shared-key-auth gebruikt, krijgt u een verificatiefout.  
 
 ```azurecli
 az batch pool create \

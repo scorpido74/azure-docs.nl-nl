@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 03/30/2020
 ms.author: allensu
-ms.openlocfilehash: 4a273801290a0a5833ebd83983a8b6b0ad856b45
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c012a8d83761b88cc59b62d11fd3d5542ca7f7a1
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79408481"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396092"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Problemen met Azure Virtual Network NAT-connectiviteit oplossen
 
@@ -40,14 +40,15 @@ Volg de stappen in de volgende sectie om deze problemen op te lossen.
 
 Eén [NAT-gatewaybron](nat-gateway-resource.md) ondersteunt 64.000 tot 1 miljoen gelijktijdige stromen.  Elk IP-adres biedt 64.000 SNAT-poorten voor de beschikbare voorraad. U maximaal 16 IP-adressen per NAT-gatewaybron gebruiken.  Het SNAT-mechanisme wordt [hier](nat-gateway-resource.md#source-network-address-translation) nader beschreven.
 
-Vaak is de oorzaak van SNAT-uitputting een anti-patroon voor hoe uitgaande connectiviteit wordt vastgesteld en beheerd.  Lees deze sectie aandachtig.
+Vaak is de hoofdoorzaak van SNAT-uitputting een anti-patroon voor hoe uitgaande connectiviteit wordt vastgesteld, beheerd of configureerbare timers worden gewijzigd ten opzichte van hun standaardwaarden.  Lees deze sectie aandachtig.
 
 #### <a name="steps"></a>Stappen
 
-1. Onderzoek hoe uw toepassing uitgaande connectiviteit maakt (bijvoorbeeld codecontrole of pakketopname). 
-2. Bepaal of deze activiteit wordt verwacht gedrag of dat de toepassing zich misdraagt.  Gebruik [statistieken](nat-metrics.md) in Azure Monitor om uw bevindingen te onderbouwen. Gebruik de categorie 'Mislukt' voor de statistiek SNAT-verbindingen.
-3. Evalueren als de juiste patronen worden gevolgd.
-4. Evalueer of de uitputting van de SNAT-poort moet worden beperkt met extra IP-adressen die zijn toegewezen aan nat-gatewaybronnen.
+1. Controleer of u de standaard inactieve time-out hebt gewijzigd in een waarde die hoger is dan 4 minuten.
+2. Onderzoek hoe uw toepassing uitgaande connectiviteit maakt (bijvoorbeeld codecontrole of pakketopname). 
+3. Bepaal of deze activiteit wordt verwacht gedrag of dat de toepassing zich misdraagt.  Gebruik [statistieken](nat-metrics.md) in Azure Monitor om uw bevindingen te onderbouwen. Gebruik de categorie 'Mislukt' voor de statistiek SNAT-verbindingen.
+4. Evalueren als de juiste patronen worden gevolgd.
+5. Evalueer of de uitputting van de SNAT-poort moet worden beperkt met extra IP-adressen die zijn toegewezen aan nat-gatewaybronnen.
 
 #### <a name="design-patterns"></a>Ontwerppatronen
 
@@ -55,15 +56,17 @@ Profiteer altijd van het hergebruik van verbindingen en het bundelen van verbind
 
 _**Oplossing:**_ Gebruik geschikte patronen en aanbevolen procedures
 
+- NAT-gatewaybronnen hebben een standaard idle time-out van TCP van 4 minuten.  Als deze instelling wordt gewijzigd in een hogere waarde, houdt NAT de stromen langer vast en kan [dit onnodige druk op de SNAT-poortvoorraad](nat-gateway-resource.md#timers)veroorzaken.
 - Atoomaanvragen (één aanvraag per verbinding) zijn een slechte ontwerpkeuze. Dergelijke anti-patroon beperkt de schaal, vermindert de prestaties en vermindert de betrouwbaarheid. In plaats daarvan u HTTP/S-verbindingen opnieuw gebruiken om het aantal verbindingen en bijbehorende SNAT-poorten te verminderen. De toepassingsschaal wordt verhoogd en de prestaties verbeteren als gevolg van lagere handshakes, overhead- en cryptografische bedrijfskosten bij het gebruik van TLS.
 - DNS kan veel afzonderlijke stromen op volume introduceren wanneer de client het resultaat van de DNS-resolvers niet in cache zet. Gebruik caching.
 - UDP-stromen (bijvoorbeeld DNS-lookups) wijzen SNAT-poorten toe voor de duur van de niet-actieve time-out. Hoe langer de idle time-out, hoe hoger de druk op SNAT-poorten. Gebruik korte idle time-out (bijvoorbeeld 4 minuten).
 - Gebruik verbindingsgroepen om het verbindingsvolume vorm te geven.
-- Verlaat nooit in stilte een TCP-stroom en vertrouw op TCP-timers om de stroom op te schonen. Hierdoor wordt de status toegewezen aan tussenliggende systemen en eindpunten en worden poorten niet beschikbaar voor andere verbindingen. Dit kan leiden tot toepassingsfouten en SNAT-uitputting. 
-- TCP close related timer waarden mogen niet worden gewijzigd zonder deskundige kennis van de impact. Hoewel TCP herstelt, kunnen de prestaties van uw toepassing negatief worden beïnvloed wanneer de eindpunten van een verbinding de verwachtingen niet op elkaar afwerken. De wens om timers te veranderen is meestal een teken van een onderliggend ontwerpprobleem. Bekijk de volgende aanbevelingen.
+- Verlaat nooit in stilte een TCP-stroom en vertrouw op TCP-timers om de stroom op te schonen. Als u TCP de verbinding niet expliciet laat sluiten, blijft de status toegewezen aan tussenliggende systemen en eindpunten en maakt u SNAT-poorten niet beschikbaar voor andere verbindingen. Dit kan leiden tot toepassingsfouten en SNAT-uitputting. 
+- Verander tcp close-gerelateerde timerwaarden op OS-niveau niet zonder deskundige kennis van de impact. Hoewel de TCP-stack herstelt, kunnen de prestaties van uw toepassing negatief worden beïnvloed wanneer de eindpunten van een verbinding de verwachtingen niet op elkaar afwerken. De wens om timers te veranderen is meestal een teken van een onderliggend ontwerpprobleem. Bekijk de volgende aanbevelingen.
 
 Vaak kan SNAT-uitputting ook worden versterkt met andere antipatronen in de onderliggende toepassing. Bekijk deze aanvullende patronen en aanbevolen procedures om de schaal en betrouwbaarheid van uw service te verbeteren.
 
+- Ontdek de impact van het verminderen van [idle time-out van TCP](nat-gateway-resource.md#timers) tot lagere waarden, inclusief een standaard time-out van 4 minuten om snat-poortvoorraad eerder vrij te maken.
 - Overweeg [asynchrone pollingpatronen](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) voor langlopende bewerkingen om verbindingsbronnen vrij te maken voor andere bewerkingen.
 - Langdurige stromen (bijvoorbeeld hergebruikte TCP-verbindingen) moeten TCP-keepalives of keepalives van toepassingslagen gebruiken om tussentijdse systeemtiming te voorkomen. Het verhogen van de niet-actieve time-out is een laatste redmiddel en kan de oorzaak niet oplossen. Een lange time-out kan leiden tot fouten in lage tempo wanneer time-out verloopt en vertraging en onnodige fouten veroorzaken.
 - Sierlijke [retry patronen](https://docs.microsoft.com/azure/architecture/patterns/retry) moeten worden gebruikt om agressieve pogingen / uitbarstingen te voorkomen tijdens voorbijgaande mislukking of herstel van het falen.
@@ -175,7 +178,7 @@ U interesse in extra mogelijkheden aangeven via [Virtual Network NAT UserVoice.]
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [NAT van virtueel netwerk](nat-overview.md)
-* Leer ab Fry uit [NAT gateway resource](nat-gateway-resource.md)
+* Meer informatie over [NAT-gatewaybron](nat-gateway-resource.md)
 * Meer informatie over [statistieken en waarschuwingen voor NAT-gatewaybronnen](nat-metrics.md).
 * [Vertel ons wat we nu moeten bouwen voor Virtual Network NAT in UserVoice.](https://aka.ms/natuservoice)
 

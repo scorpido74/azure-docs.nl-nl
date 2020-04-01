@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 393c3a06a2366a7d6947faf8bbfe038d6c5982fc
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160063"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419668"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Toepassing met één pagina: een token aanschaffen om een API aan te roepen
 
@@ -76,20 +76,40 @@ De MSAL Angular wrapper biedt de HTTP interceptor, die automatisch toegang token
 U de scopes voor `protectedResourceMap` API's opgeven in de configuratieoptie. `MsalInterceptor`zal deze scopes aanvragen bij het automatisch verwerven van tokens.
 
 ```javascript
-//In app.module.ts
+// app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                protectedResourceMap: {"https://graph.microsoft.com/v1.0/me", ["user.read", "mail.send"]}
-            })]
-         })
-
-providers: [ ProductService, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MsalInterceptor,
-        multi: true
+  declarations: [
+    // ...
+  ],
+  imports: [
+    // ...
+    MsalModule.forRoot({
+      auth: {
+        clientId: 'Enter_the_Application_Id_Here',
+      }
+    },
+    {
+      popUp: !isIE,
+      consentScopes: [
+        'user.read',
+        'openid',
+        'profile',
+      ],
+      protectedResourceMap: [
+        ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+      ]
+    })
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
     }
-   ],
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 Voor het succes en het mislukken van de stille token-acquisitie biedt MSAL Angular callbacks waarop u zich abonneren. Het is ook belangrijk om te onthouden om je af te melden.
@@ -103,7 +123,7 @@ Voor het succes en het mislukken van de stille token-acquisitie biedt MSAL Angul
 
 ngOnDestroy() {
    this.broadcastService.getMSALSubject().next(1);
-   if(this.subscription) {
+   if (this.subscription) {
      this.subscription.unsubscribe();
    }
  }
@@ -149,16 +169,16 @@ U optionele claims gebruiken voor de volgende doeleinden:
 
 - Voeg aanvullende claims toe aan tokens voor uw aanvraag.
 - Wijzig het gedrag van bepaalde claims die Azure AD retourneert in tokens.
-- Aangepaste claims voor uw toepassing toevoegen en openen. 
+- Aangepaste claims voor uw toepassing toevoegen en openen.
 
 Als u optionele `IdToken`claims wilt aanvragen in , `claimsRequest` kunt u `AuthenticationParameters.ts` een tekenreeksclaimobject naar het veld van de klasse verzenden.
 
 ```javascript
-"optionalClaims":  
+"optionalClaims":
    {
       "idToken": [
             {
-                  "name": "auth_time", 
+                  "name": "auth_time",
                   "essential": true
              }
       ],

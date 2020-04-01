@@ -11,49 +11,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/17/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: b9021784216f02fb117f6e63e150b37b07755912
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 396c37d4c8de6a890102e435c5ec6cc70b598638
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239853"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421020"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli-preview"></a>Een IPv6 dual stack-toepassing implementeren met Basic Load Balancer - CLI (Preview)
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli"></a>Een IPv6 dual stack-toepassing implementeren met Basic Load Balancer - CLI
 
-In dit artikel ziet u hoe u een dual stack -toepassing (IPv4 + IPv6) implementeert met Basic Load Balancer met Azure CLI die een virtueel dual stack-netwerk bevat met een dual stack-subnet, een Basic Load Balancer met dubbele (IPv4 + IPv6) front-endconfiguraties, VM's met NIC's die een dubbele IP-configuratie, dual network security group regels, en dubbele openbare IP-IP's.
+In dit artikel ziet u hoe u een dual stack -toepassing (IPv4 + IPv6) implementeert met Basic Load Balancer met Azure CLI die een dual stack virtueel netwerk bevat met een dual stack-subnet, een Basic Load Balancer met dubbele (IPv4 + IPv6) front-endconfiguraties, VM's met NIC's met een dubbele IP-configuratie, dubbele netwerkbeveiligingsgroepregels en dubbele openbare IP-adressen.
 
 Zie [Een IPv6 dual stack-toepassing implementeren met Standard Load Balancer met Standaardload Balancer.](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md)
 
-> [!Important]
-> IPv6 dual stack voor Azure Virtual Network is momenteel in openbare preview. Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Als u nog geen abonnement op Azure hebt, maak dan nu een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Als u besluit Azure CLI lokaal te installeren en te gebruiken, moet u azure CLI-versie 2.0.49 of hoger gebruiken. Voer `az --version` uit om na te gaan welke versie er is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) voor installatie- of upgrade-informatie.
-
-## <a name="prerequisites"></a>Vereisten
-Als u de virtuele netwerkfunctie IPv6 voor Azure wilt gebruiken, moet u uw abonnement als volgt configureren met Azure CLI:
-
-```azurecli
-az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-Het duurt maximaal 30 minuten voordat de functieregistratie is voltooid. U uw registratiestatus controleren door de volgende opdracht Azure CLI uit te voeren:
-
-```azurecli
-az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-Voer de volgende opdracht uit nadat de registratie is voltooid:
-
-```azurecli
-az provider register --namespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -387,8 +365,6 @@ U het virtuele IPv6-dual stack-netwerk in Azure-portal als volgt bekijken:
 
   ![IPv6 dual stack virtueel netwerk in Azure](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
-> [!NOTE]
-> Het virtuele IPv6 voor Azure-netwerk is beschikbaar in de Azure-portal in alleen-lezen voor deze preview-release.
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen

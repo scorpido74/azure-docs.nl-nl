@@ -1,83 +1,83 @@
 ---
-title: 'Zelf studie: een hybride netwerk topologie voor hub en spoke maken in azure met behulp van terraform'
-description: Zelf studie waarin wordt uitgelegd hoe u een volledige referentie architectuur van een hybride netwerk maakt in azure met behulp van terraform
+title: Zelfstudie - Een hub- en spoke hybride netwerktopologie maken in Azure met Terraform
+description: Zelfstudie die illustreert hoe u een volledige hybride netwerkreferentiearchitectuur in Azure maakt met Terraform
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 6f156dd90b83ceaf5749c8c2acebae35bcb54a92
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77472176"
 ---
-# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Zelf studie: een hybride netwerk topologie voor hub en spoke maken in azure met behulp van terraform
+# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Zelfstudie: Een hub- en spoke hybrid network-topologie maken in Azure met Terraform
 
-In deze reeks zelf studies ziet u hoe u terraform kunt gebruiken om in azure een [hub-en spoke-netwerk topologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)te implementeren. 
+In deze zelfstudiereeks ziet u hoe u Terraform gebruiken om in Azure een [hub- en spoke-netwerktopologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)te implementeren. 
 
-Een hub-en-spoke-topologie is een manier om workloads te isoleren terwijl algemene services worden gedeeld. Deze services omvatten identiteit en beveiliging. De hub is een virtueel netwerk (VNet) dat fungeert als een centraal verbindings punt voor een on-premises netwerk. De punten zijn VNets die zijn gekoppeld aan de hub. Gedeelde services worden geïmplementeerd in de hub, terwijl afzonderlijke workloads binnen spoke-netwerken worden geïmplementeerd.
+Een hub en spoke topologie is een manier om workloads te isoleren tijdens het delen van gemeenschappelijke services. Deze diensten omvatten identiteit en beveiliging. De hub is een virtueel netwerk (VNet) dat fungeert als een centraal verbindingspunt voor een on-premises netwerk. De punten zijn VNets die zijn gekoppeld aan de hub. Gedeelde services worden geïmplementeerd in de hub, terwijl afzonderlijke workloads worden geïmplementeerd in gesproken netwerken.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * Gebruik HCL (HashiCorp Language) voor het indelen van hub-en spoke hybride netwerk referentie architectuur bronnen
-> * Terraform gebruiken om resources van het netwerk apparaat te maken
-> * Gebruik terraform voor het maken van een hub-netwerk in azure om te fungeren als een gemeen schappelijk punt voor alle resources
-> * Terraform gebruiken om afzonderlijke werk belastingen te maken als spoke VNets in azure
-> * Terraform gebruiken om gateways en verbindingen te maken tussen on-premises en Azure-netwerken
-> * Terraform gebruiken om VNet-peerings te maken voor spoke-netwerken
+> * HCL (HashiCorp Language) gebruiken om hub- en spoke hybride netwerkreferentiearchitectuurbronnen op te stellen
+> * Terraform gebruiken om hubnetwerktoestelbronnen te maken
+> * Terraform gebruiken om hubnetwerk in Azure te maken om als gemeenschappelijk punt voor alle resources op te treden
+> * Terraform gebruiken om afzonderlijke workloads te maken zoals spoke VNets in Azure
+> * Terraform gebruiken om gateways en verbindingen tot stand te brengen tussen on-premises en Azure-netwerken
+> * Terraform gebruiken om VNet-peerings te maken naar gesproken netwerken
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **Azure-abonnement**: als u nog geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
+- **Azure-abonnement**: Als u nog geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
 
-- **Terraform installeren en configureren**: voor het inrichten van virtuele machines en andere infra structuur in azure, het [installeren en configureren van terraform](terraform-install-configure.md)
+- **Terraform installeren en configureren: Terraform** [installeren en configureren](terraform-install-configure.md) voor het inrichten van VM's en andere infrastructuur in Azure
 
-## <a name="hub-and-spoke-topology-architecture"></a>Architectuur hub en spoke-topologie
+## <a name="hub-and-spoke-topology-architecture"></a>Hub en spaak topologie architectuur
 
-In de hub-en spoke-topologie is de hub een VNet. Het VNet fungeert als een centraal punt van connectiviteit met uw on-premises netwerk. De spokes of spaken zijn VNets die via peering zijn verbonden met de hub, en die kunnen worden gebruikt om workloads te isoleren. Verkeer stroomt tussen het on-premises datacentrum en de hub via een ExpressRoute- of VPN-gateway-verbinding. In de volgende afbeelding ziet u de onderdelen van een hub-en spoke-topologie:
+In de hub en spoke topologie is de hub een VNet. Het VNet fungeert als centraal verbindingspunt voor uw on-premises netwerk. De spokes of spaken zijn VNets die via peering zijn verbonden met de hub, en die kunnen worden gebruikt om workloads te isoleren. Verkeer stroomt tussen het on-premises datacentrum en de hub via een ExpressRoute- of VPN-gateway-verbinding. De volgende afbeelding toont de componenten in een hub en spaaktopologie:
 
-![Architectuur van hub-en spoke-topologie in azure](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-architecture.png)
+![Hub- en spoke-topologiearchitectuur in Azure](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-architecture.png)
 
-## <a name="benefits-of-the-hub-and-spoke-topology"></a>Voor delen van de hub-en spoke-topologie
+## <a name="benefits-of-the-hub-and-spoke-topology"></a>Voordelen van de hub en spaaktopologie
 
-Een hub-en-spoke-netwerk topologie is een manier om workloads te isoleren terwijl algemene services worden gedeeld. Deze services omvatten identiteit en beveiliging. De hub is een VNet dat fungeert als een centraal verbindings punt voor een on-premises netwerk. De punten zijn VNets die zijn gekoppeld aan de hub. Gedeelde services worden geïmplementeerd in de hub, terwijl afzonderlijke workloads binnen spoke-netwerken worden geïmplementeerd. Hier volgen enkele voor delen van de hub-en spoke-netwerk topologie:
+Een hub- en spoke-netwerktopologie is een manier om workloads te isoleren tijdens het delen van algemene services. Deze diensten omvatten identiteit en beveiliging. De hub is een VNet dat fungeert als een centraal verbindingspunt voor een on-premises netwerk. De punten zijn VNets die zijn gekoppeld aan de hub. Gedeelde services worden geïmplementeerd in de hub, terwijl afzonderlijke workloads worden geïmplementeerd in gesproken netwerken. Hier zijn enkele voordelen van de hub en spaak netwerk topologie:
 
-- **Kosten besparingen** door de services op één locatie te centraliseren die kunnen worden gedeeld door meerdere werk belastingen. Tot deze werk belastingen behoren virtuele netwerk apparaten en DNS-servers.
+- **Kostenbesparingen** door services te centraliseren op één locatie die door meerdere workloads kunnen worden gedeeld. Deze workloads omvatten virtuele netwerkapparaten en DNS-servers.
 - **Limieten in abonnementen overwinnen** door peering van VNets uit verschillende abonnementen naar de centrale hub.
 - **Scheiding van problemen** tussen centrale IT (SecOps, InfraOps) en workloads (DevOps).
 
-## <a name="typical-uses-for-the-hub-and-spoke-architecture"></a>Typische toepassingen voor de hub-en spoke-architectuur
+## <a name="typical-uses-for-the-hub-and-spoke-architecture"></a>Typische toepassingen voor de hub en spaakarchitectuur
 
-Enkele van de typische toepassingen voor een hub-en spoke-architectuur zijn:
+Enkele van de typische toepassingen voor een hub en spaakarchitectuur zijn:
 
-- Veel klanten hebben werk belastingen die in verschillende omgevingen worden geïmplementeerd. Deze omgevingen omvatten ontwikkeling, testen en productie. Vaak moeten deze werk belastingen Services delen, zoals DNS, ID'S, NTP of AD DS. Deze gedeelde services kunnen in het hub-VNet worden geplaatst. Op die manier wordt elke omgeving geïmplementeerd naar een spoke om isolatie te hand haven.
-- Werk belastingen waarvoor geen verbinding met elkaar is vereist, maar die toegang moet hebben tot gedeelde services.
-- Ondernemingen die centraal toezicht op beveiligings aspecten vereisen.
-- Ondernemingen waarvoor gescheiden beheer is vereist voor de werk belastingen in elke spoke.
+- Veel klanten hebben workloads die in verschillende omgevingen worden geïmplementeerd. Deze omgevingen omvatten ontwikkeling, testen en productie. Vaak moeten deze workloads services zoals DNS, IDS, NTP of AD DS delen. Deze gedeelde diensten kunnen worden geplaatst in de hub VNet. Op die manier wordt elke omgeving ingezet om te praten om isolatie te behouden.
+- Workloads die geen verbinding met elkaar vereisen, maar toegang tot gedeelde services vereisen.
+- Ondernemingen die centrale controle over beveiligingsaspecten nodig hebben.
+- Ondernemingen die gescheiden beheer nodig hebben voor de workloads in elk gesprek.
 
-## <a name="preview-the-demo-components"></a>De demo onderdelen bekijken
+## <a name="preview-the-demo-components"></a>Een voorbeeld van de democomponenten bekijken
 
-Tijdens het uitvoeren van elke zelf studie in deze reeks worden verschillende onderdelen gedefinieerd in afzonderlijke terraform-scripts. De demo architectuur die is gemaakt en geïmplementeerd, bestaat uit de volgende onderdelen:
+Terwijl je elke tutorial in deze serie doorloopt, worden verschillende componenten gedefinieerd in verschillende Terraform-scripts. De demoarchitectuur die is gemaakt en geïmplementeerd, bestaat uit de volgende componenten:
 
-- **On-premises netwerk**. Een particulier lokaal netwerk dat wordt uitgevoerd met een organisatie. Voor hub-en spoke-referentie architectuur wordt een VNet in azure gebruikt voor het simuleren van een on-premises netwerk.
+- **On-premises netwerk**. Een privé netwerk in de omgeving dat wordt uitgevoerd met een organisatie. Voor hub- en spoke-referentiearchitectuur wordt een VNet in Azure gebruikt om een on-premises netwerk te simuleren.
 
-- **VPN-apparaat**. Een VPN-apparaat of service biedt externe verbinding met het on-premises netwerk. Het VPN-apparaat kan een hardwareapparaat of een software oplossing zijn. 
+- **VPN-apparaat**. Een VPN-apparaat of -service biedt externe connectiviteit met het on-premises netwerk. Het VPN-apparaat kan een hardwaretoestel of een softwareoplossing zijn. 
 
-- **Hub VNet**. De hub is het centrale punt van connectiviteit met uw on-premises netwerk en een locatie voor het hosten van services. Deze services kunnen worden gebruikt door de verschillende workloads die worden gehost in de spoke-VNets.
+- **Hub VNet**. De hub is het centrale punt van connectiviteit met uw on-premises netwerk en een plek om diensten te hosten. Deze services kunnen worden verbruikt door de verschillende workloads die worden gehost in de spaakVNets.
 
-- **Gatewaysubnet**. De VNet-gateways worden in hetzelfde subnet bewaard.
+- **Gateway subnet**. De VNet-gateways worden in hetzelfde subnet gehouden.
 
 - **Knooppunt VNets**. Knooppunten kunnen worden gebruikt om werkbelastingen te isoleren in hun eigen VNets, afzonderlijk beheerd vanaf andere knooppunten. Elke workload kan meerdere lagen bevatten, met meerdere subnetten die zijn verbonden via Azure-load balancers. 
 
-- **VNet-peering**. Twee VNets kunnen worden verbonden met behulp van een peering-verbinding. Peeringverbindingen zijn niet-transitieve verbindingen met lage latentie tussen VNets. Wanneer het VNets Exchange-verkeer wordt gebruikt met de Azure-backbone, zonder dat hiervoor een router nodig is. In een hub-en-spoke-netwerk topologie wordt VNet-peering gebruikt om de hub op elke spoke te verbinden. U kunt VNets in dezelfde regio of in verschillende regio's.
+- **VNet-peering**. Twee VNets kunnen worden verbonden via een peering-verbinding. Peeringverbindingen zijn niet-transitieve verbindingen met lage latentie tussen VNets. Eenmaal peered wisselen de VNets verkeer uit met behulp van de Azure-backbone, zonder dat er een router nodig is. In een hub en spoke network topology wordt VNet peering gebruikt om de hub aan te sluiten op elke spaak. U vnets in dezelfde regio of verschillende regio's peeren.
 
-## <a name="create-the-directory-structure"></a>De directorystructuur maken
+## <a name="create-the-directory-structure"></a>De mapstructuur maken
 
-Maak de map die uw terraform-configuratie bestanden bevat voor de demo.
+Maak de map met uw Terraform-configuratiebestanden voor de demo.
 
-1. Blader naar de [Azure-portal](https://portal.azure.com).
+1. Blader naar [Azure Portal](https://portal.azure.com).
 
-1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
+1. Azure [Cloud Shell openen](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
     ![Cloud Shell-prompt](./media/terraform-common/azure-portal-cloud-shell-button-min.png)
 
@@ -87,13 +87,13 @@ Maak de map die uw terraform-configuratie bestanden bevat voor de demo.
     cd clouddrive
     ```
 
-1. Maak een directory met de naam `hub-spoke`.
+1. Maak een map met de naam `hub-spoke`.
 
     ```bash
     mkdir hub-spoke
     ```
 
-1. Ga naar de nieuwe map:
+1. Maak de nieuwe directory de actieve directory:
 
     ```bash
     cd hub-spoke
@@ -103,7 +103,7 @@ Maak de map die uw terraform-configuratie bestanden bevat voor de demo.
 
 Maak het Terraform-configuratiebestand waarin de Azure-provider wordt gedeclareerd.
 
-1. Open in Cloud Shell een nieuw bestand met de naam `main.tf`.
+1. Open in Cloud Shell een `main.tf`nieuw bestand met de naam .
 
     ```bash
     code main.tf
@@ -119,11 +119,11 @@ Maak het Terraform-configuratiebestand waarin de Azure-provider wordt gedeclaree
 
 1. Sla het bestand op en sluit de editor af.
 
-## <a name="create-the-variables-file"></a>Het variabelen bestand maken
+## <a name="create-the-variables-file"></a>Het variabelenbestand maken
 
-Maak het terraform-configuratie bestand voor algemene variabelen die worden gebruikt in verschillende scripts.
+Maak het terraform-configuratiebestand voor veelvoorkomende variabelen die worden gebruikt in verschillende scripts.
 
-1. Open in Cloud Shell een nieuw bestand met de naam `variables.tf`.
+1. Open in Cloud Shell een `variables.tf`nieuw bestand met de naam .
 
     ```bash
     code variables.tf
@@ -158,4 +158,4 @@ Maak het terraform-configuratie bestand voor algemene variabelen die worden gebr
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [On-premises virtueel netwerk maken met terraform in azure](./terraform-hub-spoke-on-prem.md)
+> [On-premises virtueel netwerk maken met Terraform in Azure](./terraform-hub-spoke-on-prem.md)

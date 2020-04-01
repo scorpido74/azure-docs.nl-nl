@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.openlocfilehash: e98ff7fd914bb86cae256bb1bf6c19086758d463
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65e51258b3a24b14b5171968645e88420e92dd5a
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371549"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421075"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Gegevens uit een SAP-tabel kopiëren met Azure Data Factory
 
@@ -230,7 +230,7 @@ Als u gegevens uit een SAP-tabel wilt kopiëren, worden de volgende eigenschappe
 <br/>
 >`partitionOnInt` Als `partitionOption` voorbeeld wordt het aantal rijen in elke partitie berekend met deze `partitionUpperBound` formule: (totale rijen die tussen en `partitionLowerBound`)/`maxPartitionsNumber`vallen.<br/>
 <br/>
->Als u gegevenspartities parallel wilt laden om de kopie [`parallelCopies`](copy-activity-performance.md#parallel-copy) te versnellen, wordt de parallelle graad gecontroleerd door de instelling voor de kopieeractiviteit. Als u bijvoorbeeld `parallelCopies` op vier instelt, genereert en voert Data Factory tegelijkertijd vier query's uit op basis van de opgegeven partitieoptie en -instellingen en haalt elke query een gedeelte gegevens uit uw SAP-tabel op. Wij raden `maxPartitionsNumber` ten zeerste aan `parallelCopies` om een veelvoud van de waarde van het pand te maken. Bij het kopiëren van gegevens naar het gegevensarchief in bestanden, wordt het ook aanbevolen om naar een map te schrijven als meerdere bestanden (geef alleen de naam van de map op), in welk geval de prestaties beter zijn dan het schrijven naar één bestand.
+>Als u gegevenspartities parallel wilt laden om de kopie [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) te versnellen, wordt de parallelle graad gecontroleerd door de instelling voor de kopieeractiviteit. Als u bijvoorbeeld `parallelCopies` op vier instelt, genereert en voert Data Factory tegelijkertijd vier query's uit op basis van de opgegeven partitieoptie en -instellingen en haalt elke query een gedeelte gegevens uit uw SAP-tabel op. Wij raden `maxPartitionsNumber` ten zeerste aan `parallelCopies` om een veelvoud van de waarde van het pand te maken. Bij het kopiëren van gegevens naar het gegevensarchief in bestanden, wordt het ook aanbevolen om naar een map te schrijven als meerdere bestanden (geef alleen de naam van de map op), in welk geval de prestaties beter zijn dan het schrijven naar één bestand.
 
 In `rfcTableOptions`u de volgende algemene SAP-queryoperatoren gebruiken om de rijen te filteren:
 

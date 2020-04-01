@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ee3b5bd3278412949074b77f9d1c53d63a467280
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 403ca480bcf0743d81e375c122c888db96bbf543
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189392"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408705"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Ontwikkelaarsnotities voor aangepast beleid in Azure Active Directory B2C
 
@@ -59,68 +59,82 @@ Ontwikkelaars die de aangepaste beleidsfunctieset gebruiken, moeten zich houden 
 
 De mogelijkheden van het Aangepaste beleids-/Identity Experience Framework worden voortdurend en snel ontwikkeld. De volgende tabel is een index van functies en beschikbaarheid van onderdelen.
 
-### <a name="identity-providers-tokens-protocols"></a>Identiteitsproviders, tokens, protocollen
+
+### <a name="protocols-and-authorization-flows"></a>Protocollen en autorisatiestromen
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| IDP-OpenIDConnect |  |  | X | Bijvoorbeeld Google+.  |
-| IDP-OAUTH2 |  |  | X | Bijvoorbeeld Facebook.  |
-| IDP-OAUTH1 (twitter) |  | X |  | Bijvoorbeeld Twitter. |
-| IDP-OAUTH1 (ex-twitter) |  |  |  | Niet ondersteund |
-| IDP-SAML |  |   | X | Bijvoorbeeld Salesforce, ADFS. |
-| IDP-WSFED | X |  |  |  |
-| Relying Party OAUTH1 |  |  |  | Wordt niet ondersteund. |
-| Relying Party OAUTH2 |  |  | X |  |
-| Relying Party OIDC |  |  | X |  |
-| Relying Party SAML |  |X  |  |  |
-| Relying Party WSFED | X |  |  |  |
-| REST API met basis- en certificaatauth |  |  | X | Bijvoorbeeld Azure Logic Apps. |
+| [OAuth2-autorisatiecode](authorization-code-flow.md) |  |  | X |  |
+| OAuth2-autorisatiecode met PKCE |  |  | X | Alleen mobiele toepassingen  |
+| [Impliciete stroom oAuth2](implicit-flow-single-page-application.md) |  |  | X |  |
+| [Wachtwoordreferenties voor oAuth2-bronnen](ropc-custom.md) |  | X |  |  |
+| [OIDC Connect](openid-connect.md) |  |  | X |  |
+| [SAML2 SAML2](connect-with-saml-service-providers.md)  |  |X  |  | POST en Redirect bindingen. |
+| OAuth1 |  |  |  | Wordt niet ondersteund. |
+| WSFED | X |  |  |  |
 
-### <a name="component-support"></a>Ondersteuning voor onderdelen
+### <a name="identify-providers-federation"></a>Providers federatie identificeren 
+
+| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Bijvoorbeeld Google+.  |
+| [OAuth2](oauth2-technical-profile.md) |  |  | X | Bijvoorbeeld Facebook.  |
+| [OAuth1](oauth1-technical-profile.md) |  | X |  | Bijvoorbeeld Twitter. |
+| [SAML2 SAML2](saml-technical-profile.md) |  |   | X | Bijvoorbeeld Salesforce, ADFS. |
+| WSFED| X |  |  |  |
+
+
+### <a name="rest-api-integration"></a>REST API-integratie
+
+| Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [REST API met basisauth](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
+| [REST API met clientcertificaat auth](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
+| [REST API met OAuth2 drager auth](secure-rest-api.md#oauth2-bearer-authentication) |  | X |  |  |
+
+### <a name="component-support"></a>Componentondersteuning
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Azure-verificatie met meerdere factoren |  |  | X |  |
-| Azure Active Directory als lokale map |  |  | X |  |
+| [Verificatie van telefoonfactor](phone-factor-technical-profile.md) |  |  | X |  |
+| [Azure MFA-verificatie](multi-factor-auth-technical-profile.md) |  | X |  |  |
+| [Eenmalig wachtwoord](one-time-password-technical-profile.md) |  | X |  |  |
+| [Azure Active Directory](active-directory-technical-profile.md) als lokale map |  |  | X |  |
 | Azure-e-mailsubsysteem voor e-mailverificatie |  |  | X |  |
-| Ondersteuning voor meerdere talen|  |  | X |  |
-| Predicaatvalidaties |  |  | X | Bijvoorbeeld wachtwoordcomplexiteit. |
-| Externe e-mailserviceproviders gebruiken |  |X  |  |  |
+| [Externe e-mailserviceproviders](custom-email.md) |  |X  |  |  |
+| [Ondersteuning voor meerdere talen](localization.md)|  |  | X |  |
+| [Predicaatvalidaties](predicates.md) |  |  | X | Bijvoorbeeld wachtwoordcomplexiteit. |
+| [Besturingselementen weergeven](display-controls.md) |  |X  |  |  |
 
-### <a name="content-definition"></a>Inhoudsdefinitie
+
+### <a name="page-layout-versions"></a>Versie van pagina-indeling
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Foutpagina, api.error |  |  | X |  |
-| IDP-selectiepagina, api.idpselecties |  |  | X |  |
-| IDP-selectie voor aanmelding, api.idpselections.signup |  |  | X |  |
-| Wachtwoord vergeten, api.localaccountpasswordreset |  |  | X |  |
-| Aanmelding voor lokaal account, api.localaccountsignin |  |  | X |  |
-| Aanmelden voor lokaal account, api.localaccountsignup |  |  | X |  |
-| MFA-pagina, api.phonefactor |  |  | X |  |
-| Self-asserted social account sign-up, api.selfasserted |  |  | X |  |
-| Self-asserted profile update, api.selfasserted.profileupdate |  |  | X |  |
-| Uniforme aanmeldings- of aanmeldingspagina, api.signuporsignin, met parameter "disableSignup" |  |  | X |  |
-| JavaScript / Pagina-indeling |  | X |  |  |
+| [2.0.0](page-layout.md#200) |  | X |  |  |
+| [1.2.0](page-layout.md#120) |  | X |  |  |
+| [1.1.0](page-layout.md#110) |  |  | X |  |
+| [1.0.0](page-layout.md#100) |  |  | X |  |
+| [JavaScript-ondersteuning](javascript-samples.md) |  | X |  |  |
 
 ### <a name="app-ief-integration"></a>App-IEF-integratie
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Parameter querytekenreeks domain_hint |  |  | X | Beschikbaar als claim, kan worden doorgegeven aan IDP. |
-| Parameter querytekenreeks login_hint |  |  | X | Beschikbaar als claim, kan worden doorgegeven aan IDP. |
-| Json invoegen in UserJourney via client_assertion | X |  |  | Zal worden afgeschaft. |
-| Json invoegen in UserJourney als id_token_hint |  | X |  | Voorwaartse benadering om JSON te passeren. |
-| IDP-token doorgeven aan de toepassing |  | X |  | Bijvoorbeeld van Facebook naar app. |
+| Querytekenreeks, parameter`domain_hint` |  |  | X | Beschikbaar als claim, kan worden doorgegeven aan IDP. |
+| Querytekenreeks, parameter`login_hint` |  |  | X | Beschikbaar als claim, kan worden doorgegeven aan IDP. |
+| Json invoegen in gebruikersreis via`client_assertion` | X |  |  | Zal worden afgeschaft. |
+| JSON invoegen in gebruikersreis als`id_token_hint` |  | X |  | Voorwaartse benadering om JSON te passeren. |
+| [Token van identiteitsprovider doorgeven aan de toepassing](idp-pass-through-custom.md) |  | X |  | Bijvoorbeeld van Facebook naar app. |
 
 ### <a name="session-management"></a>Sessiebeheer
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| SSO-sessieprovider |  |  | X |  |
-| Externe inlogsessieprovider |  |  | X |  |
-| SAML SSO-sessieprovider |  |  | X |  |
-| Standaard SSO-sessieprovider |  |  | X |  |
+| [Standaard SSO-sessieprovider](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
+| [Externe inlogsessieprovider](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
+| [SAML SSO-sessieprovider](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
+
 
 ### <a name="security"></a>Beveiliging
 
@@ -128,16 +142,19 @@ De mogelijkheden van het Aangepaste beleids-/Identity Experience Framework worde
 |-------- | :-----------: | :-------: | :--: | ----- |
 | Beleidssleutels- Genereren, handmatig, uploaden |  |  | X |  |
 | Beleidssleutels- RSA/Cert, Geheimen |  |  | X |  |
-| Beleidsupload |  |  | X |  |
+
 
 ### <a name="developer-interface"></a>Ontwikkelaarsinterface
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Portal-IEF UX |  |  | X |  |
-| UserJourney-logboeken van Application Insights |  | X |  | Wordt gebruikt voor het oplossen van problemen tijdens de ontwikkeling.  |
-| Eventlogs voor Application Insights (via orkestratiestappen) |  | X |  | Wordt gebruikt om gebruikersstromen in productie te controleren. |
+| Beleidsupload |  |  | X |  |
+| [Gebruikersreislogboeken van Application Insights](troubleshoot-with-application-insights.md) |  | X |  | Wordt gebruikt voor het oplossen van problemen tijdens de ontwikkeling.  |
+| [Gebeurtenislogboeken voor Application Insights](application-insights-technical-profile.md) |  | X |  | Wordt gebruikt om gebruikersstromen in productie te controleren. |
+
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [aangepast beleid en de verschillen met gebruikersstromen](custom-policy-overview.md).
+- De [Microsoft Graph-bewerkingen controleren die beschikbaar zijn voor Azure AD B2C](microsoft-graph-operations.md)
+- Meer informatie over [aangepast beleid en de verschillen met gebruikersstromen](custom-policy-overview.md).

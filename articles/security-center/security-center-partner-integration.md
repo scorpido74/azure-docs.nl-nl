@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7a1eccd76313c5b3bc74a5b5ebdbcd202ca6841
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245380"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435749"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Beveiligingsoplossingen integreren in Azure Security Center
 Dit document helpt u bij het beheren van beveiligingsoplossingen die al zijn gekoppeld aan Azure Security Center en bij het toevoegen van nieuwe oplossingen.
@@ -36,7 +36,7 @@ Met Security Center kunt u gemakkelijk geïntegreerde beveiligingsoplossingen in
 Momenteel zijn geïntegreerde beveiligingsoplossingen onder meer kwetsbaarheidsbeoordeling door [Qualys](https://www.qualys.com/public-cloud/#azure) en [Rapid7](https://www.rapid7.com/products/insightvm/) en Microsoft Application Gateway Web-toepassingsfirewall.
 
 > [!NOTE]
-> Security Center installeert de Microsoft Monitoring Agent niet op virtuele apparaten van partners omdat de meeste beveiligingsleveranciers externe agents die op hun apparaten worden uitgevoerd, verbieden.
+> Security Center installeert de Log Analytics-agent niet op virtuele apparaten van partners omdat de meeste beveiligingsleveranciers externe agents die op hun apparaten worden uitgevoerd, verbieden.
 >
 >
 
@@ -141,7 +141,7 @@ Zie het volgende artikel voor de lijst met [ondersteunde SM's](../azure-monitor/
 
 Hier volgen enkele Splunk-query's die u gebruiken om waarschuwingsgegevens op te halen:
 
-| **Beschrijving van query** | **Query** |
+| **Beschrijving van query** | **Query’s uitvoeren** |
 |----|----|
 | All Alerts| index=hoofdMicrosoft.Security/locaties/waarschuwingen|
 | Het aantal bewerkingen op hun naam samenvatten| index=hoofdbrontype="amal:security" \| tabel \| operationName stats count by operationName|

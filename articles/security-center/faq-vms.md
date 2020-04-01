@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: d84085115816a8fe1cba65e191ea391dd91a4aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599364"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436011"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>Veelgestelde vragen - Vragen over virtuele machines
 
@@ -51,7 +51,7 @@ Hieronder staan de latentietijden voor beveiligingscentrumscans van kwetsbaarhed
 Security Center scant doorgaans elk uur naar nieuwe gegevens en vernieuwt de aanbevelingen dienovereenkomstig. 
 
 > [!NOTE]
-> Security Center gebruikt de Microsoft Monitoring Agent om gegevens te verzamelen en op te slaan. Zie Migratie van [azure security centerplatform voor](security-center-platform-migration.md)meer informatie.
+> Security Center gebruikt de Log Analytics-agent om gegevens te verzamelen en op te slaan. Zie Migratie van [azure security centerplatform voor](security-center-platform-migration.md)meer informatie.
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Waarom krijg ik het bericht 'VM-agent ontbreekt?'

@@ -1,14 +1,14 @@
 ---
 title: Wijzigingen in de delegatie in uw beheertenant controleren
 description: Meer informatie over het controleren van delegatieactiviteiten van klanthuurders naar uw beherende tenant.
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 99aa05cb73326e441c0473855c27dc71212cf415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82c41c392210e088c85af510b9698e0140f660e5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79478225"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421912"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Wijzigingen in de delegatie in uw beheertenant controleren
 
@@ -57,7 +57,7 @@ Gebruik een van de volgende methoden om de rootscope-toewijzingen uit te voeren.
 New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName "Monitoring Reader"  -ApplicationId $servicePrincipal.ApplicationId 
 ```
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -73,7 +73,7 @@ Nadat u uw serviceprincipal-account hebt gemaakt en de rol Monitoring Reader bij
 
 Zodra u een nieuw serviceprincipal-account hebt gemaakt met Monitoring Reader-toegang tot het hoofdbereik van uw beheertenant, u deze gebruiken om de activiteiten van de delegatie in uw tenant op te vragen en te rapporteren. 
 
-In het onderstaande voorbeeld wordt Azure PowerShell gebruikt om de afgelopen 1 dag van activiteit en rapporten op te vragen over toegevoegde of verwijderde delegaties (of pogingen die niet zijn gelukt). Het query's de [tenant activiteit log](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) gegevens, dan construeert de volgende waarden te rapporteren over delegaties die worden toegevoegd of verwijderd:
+[Dit Azure PowerShell-script](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/monitor-delegation-changes) kan worden gebruikt om de afgelopen 1 dag van activiteit en rapporten op te vragen over toegevoegde of verwijderde delegaties (of pogingen die niet zijn gelukt). Het query's de [tenant activiteit log](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) gegevens, dan construeert de volgende waarden te rapporteren over delegaties die worden toegevoegd of verwijderd:
 
 - **Gedelegeerdresourceid:** de id van het gedelegeerde abonnement of de resourcegroep
 - **CustomerTenantId**: De klanttenant-id

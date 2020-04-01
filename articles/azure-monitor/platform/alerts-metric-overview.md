@@ -4,12 +4,12 @@ description: Krijg een overzicht van wat u doen met metrische waarschuwingen en 
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: b6d8bc69a407838025c5e78e0a1c773ab457c409
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480229"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397976"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe waarschuwingen voor metrische gegevens werken in Azure Monitor
 
@@ -51,7 +51,7 @@ Stel dat u als volgt een eenvoudige regel dynamische drempelwaarden hebt gemaakt
 - Terugblik periodes: 4
 - Aantal overtredingen: 4
 
-Zodra de waarschuwingsregel is gemaakt, verwerft het machine learning-algoritme Dynamische drempels historische gegevens die beschikbaar zijn, berekent u de drempelwaarde die het beste past bij het gedragspatroon van de metrische reeks en leert het voortdurend op basis van nieuwe gegevens om de drempel nauwkeuriger.
+Zodra de waarschuwingsregel is gemaakt, verwerft het machine learning-algoritme Dynamische drempels historische gegevens die beschikbaar zijn, berekent u de drempelwaarde die het beste past bij het gedragspatroon van de metrische reeks en leert het voortdurend op basis van nieuwe gegevens om de drempel nauwkeuriger te maken.
 
 Vanaf het moment dat de waarschuwingsregel wordt gemaakt, wordt de monitor elke 1 min uitgevoerd en wordt de metrische waarden in de laatste 20 minuten gegroepeerd in perioden van 5 minuten en wordt gecontroleerd of het gemiddelde van de periodewaarden in elk van de 4 perioden de verwachte drempel overschrijdt. Als aan de voorwaarde is voldaan, dat wil zeggen dat de gemiddelde CPU-percentage in de laatste 20 minuten (vier perioden van 5 minuten) vier keer van verwacht gedrag is afgeweken, wordt een geactiveerde melding geactiveerd. Als u een e-mail of een webhaakactie hebt geconfigureerd in de actiegroep die is gekoppeld aan de waarschuwingsregel, ontvangt u op beide een geactiveerde melding.
 
@@ -140,6 +140,10 @@ U het bereik van de bewaking op drie manieren opgeven met één metrische waarsc
 - alle virtuele machines (in één Azure-regio) in één abonnement
 
 Het maken van metrische waarschuwingsregels die meerdere resources bewaken is als [het maken van een andere metrische waarschuwing](alerts-metric.md) die één resource bewaakt. Het enige verschil is dat u alle resources selecteert die u wilt controleren. U deze regels ook maken via [Azure Resource Manager-sjablonen.](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources) U ontvangt individuele meldingen voor elke bewaakte resource.
+
+> [!NOTE]
+>
+> In een metrische waarschuwingsregel die meerdere resources bewaakt, is slechts één voorwaarde toegestaan.
 
 ## <a name="typical-latency"></a>Typische latentie
 

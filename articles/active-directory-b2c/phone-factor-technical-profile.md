@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 03/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a0511a19477f3d76baf9c453316c5348cc31397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2b30e8f6bcbe7c0e739455f4942712f68ff8404
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332658"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437455"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel van een telefoonfactor definiëren in een aangepast Azure Directory B2C-beleid
 
@@ -24,12 +24,11 @@ ms.locfileid: "80332658"
 
 Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor het inschrijven en verifiëren van telefoonnummers. Dit technische profiel:
 
-- Biedt een gebruikersinterface om met de gebruiker te communiceren.
-- Gebruikt inhoudsdefinitie om het uiterlijk te bepalen.
-- Ondersteunt zowel telefoongesprekken als sms-berichten om het telefoonnummer te valideren.
+- Biedt een gebruikersinterface om te communiceren met de gebruiker om een telefoonnummer te verifiëren of in te schrijven.
+- Ondersteunt telefoongesprekken en sms-berichten om het telefoonnummer te valideren.
 - Ondersteunt meerdere telefoonnummers. De gebruiker kan een van de telefoonnummers selecteren om te verifiëren.  
-- Als een telefoonnummer wordt opgegeven, vraagt de gebruikersinterface van de telefoonfactor de gebruiker om het telefoonnummer te verifiëren. Indien dit niet is voorzien, vraagt het de gebruiker om een nieuw telefoonnummer in te schrijven.
-- Retourneert een claim die aangeeft of de gebruiker een nieuw telefoonnummer heeft opgegeven. U deze claim gebruiken om te bepalen of het telefoonnummer moet worden gehandhaafd in het Azure AD-gebruikersprofiel.  
+- Retourneert een claim die aangeeft of de gebruiker een nieuw telefoonnummer heeft opgegeven. U deze claim gebruiken om te bepalen of het telefoonnummer moet worden gehandhaafd in het Azure AD B2C-gebruikersprofiel.  
+- Hiermee wordt een [inhoudsdefinitie gebruikt](contentdefinitions.md) om het uiterlijk te bepalen.
 
 ## <a name="protocol"></a>Protocol
 
@@ -44,18 +43,24 @@ In het volgende voorbeeld wordt een technisch profiel van de telefoonfactor weer
 </TechnicalProfile>
 ```
 
+## <a name="input-claims-transformations"></a>Transformaties van invoerclaims
+
+Het element InputClaimsTransformations kan een verzameling transformaties van invoerclaims bevatten die worden gebruikt om de invoerclaims te wijzigen of nieuwe claims te genereren. De volgende transformatie van `UserId` invoerclaims genereert een claim die later wordt gebruikt in de verzameling invoerclaims.
+
+```xml
+<InputClaimsTransformations>
+  <InputClaimsTransformation ReferenceId="CreateUserIdForMFA" />
+</InputClaimsTransformations>
+```
+
 ## <a name="input-claims"></a>Invoerclaims
 
-Het element InputClaims moet volgende claims bevatten. U de naam van uw claim ook toewijzen aan de naam die is gedefinieerd in het technische profiel van de telefoonfactor. 
+Het element InputClaims moet de volgende claims bevatten. U de naam van uw claim ook toewijzen aan de naam die is gedefinieerd in het technische profiel van de telefoonfactor. 
 
-```XML
-<InputClaims>
-  <!--A unique identifier of the user. The partner claim type must be set to `UserId`. -->
-  <InputClaim ClaimTypeReferenceId="userIdForMFA" PartnerClaimType="UserId" />
-  <!--A claim that contains the phone number. If the claim is empty, Azure AD B2C asks the user to enroll a new phone number. Otherwise, it asks the user to verify the phone number. -->
-  <InputClaim ClaimTypeReferenceId="strongAuthenticationPhoneNumber" />
-</InputClaims>
-```
+|  Gegevenstype| Vereist | Beschrijving |
+| --------- | -------- | ----------- | 
+| tekenreeks| Ja | Een unieke id voor de gebruiker. De claimnaam of PartnerClaimType moet `UserId`zijn ingesteld op . Deze claim mag geen persoonlijke identificeerbare informatie bevatten.|
+| tekenreeks| Ja | Lijst met claimtypen. Elke claim bevat één telefoonnummer. Als een van de invoerclaims geen telefoonnummer bevat, wordt de gebruiker gevraagd zich in te schrijven en een nieuw telefoonnummer te verifiëren. Het gevalideerde telefoonnummer wordt geretourneerd als uitvoerclaim. Als een van de invoerclaims een telefoonnummer bevat, wordt de gebruiker gevraagd het te verifiëren. Als meerdere invoerclaims een telefoonnummer bevatten, wordt de gebruiker gevraagd een van de telefoonnummers te kiezen en te verifiëren. |
 
 In het volgende voorbeeld wordt aangetoond dat u meerdere telefoonnummers gebruikt. Zie [voorbeeldbeleid voor](https://github.com/azure-ad-b2c/samples/tree/master/policies/mfa-add-secondarymfa)meer informatie .
 
@@ -67,20 +72,14 @@ In het volgende voorbeeld wordt aangetoond dat u meerdere telefoonnummers gebrui
 </InputClaims>
 ```
 
-Het element InputClaimsTransformations kan een verzameling inputclaimstransformatie-elementen bevatten die worden gebruikt om de invoerclaims te wijzigen of nieuwe claims te genereren voordat ze worden gepresenteerd aan de pagina met de telefoonfactor.
-
 ## <a name="output-claims"></a>Outputclaims
 
 Het element OutputClaims bevat een lijst met claims die zijn geretourneerd door het technische profiel van de telefoonfactor.
 
-```xml
-<OutputClaims>
-  <!-- The verified phone number. The partner claim type must be set to `Verified.OfficePhone`. -->
-  <OutputClaim ClaimTypeReferenceId="Verified.strongAuthenticationPhoneNumber" PartnerClaimType="Verified.OfficePhone" />
-  <!-- Indicates whether the new phone number has been entered by the user. The partner claim type must be set to `newPhoneNumberEntered`. -->
-  <OutputClaim ClaimTypeReferenceId="newPhoneNumberEntered" PartnerClaimType="newPhoneNumberEntered" />
-</OutputClaims>
-```
+|  Gegevenstype| Vereist | Beschrijving |
+|  -------- | ----------- |----------- |
+| booleaans | Ja | Geeft aan of het nieuwe telefoonnummer door de gebruiker is ingevoerd. De claimnaam of PartnerClaimType moet zijn ingesteld op`newPhoneNumberEntered`|
+| tekenreeks| Ja | Het geverifieerde telefoonnummer. De claimnaam of PartnerClaimType moet `Verified.OfficePhone`zijn ingesteld op .|
 
 Het element OutputClaimsTransformations kan een verzameling outputclaimstransformatie-elementen bevatten die worden gebruikt om de uitvoerclaims te wijzigen of nieuwe claims te genereren.
 
@@ -94,7 +93,9 @@ Het element **CryptographicKeys** wordt niet gebruikt.
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ContentDefinitionReferenceId | Ja | De id van de [inhoudsdefinitie](contentdefinitions.md) die aan dit technische profiel is gekoppeld. |
-| ManualPhoneNumberEntryA toegestaan| Nee | Geef op of een gebruiker handmatig een telefoonnummer mag invoeren. Mogelijke `true` waarden: `false` of (standaard).|
+| ManualPhoneNumberEntryA toegestaan| Nee | Geef op of een gebruiker handmatig een telefoonnummer mag invoeren. Mogelijke waarden: `true` `false` , of (standaard).|
+| instelling.authenticationMode | Nee | De methode om het telefoonnummer te valideren. Mogelijke `sms`waarden: `phone`, `mixed` of (standaard).|
+| instelling.autodial| Nee| Geef op of het technische profiel automatisch moet bellen of automatisch een sms moet verzenden. Mogelijke waarden: `true` `false` , of (standaard). Voor automatisch `setting.authenticationMode` kiezen moet `sms`de `phone`metagegevens worden ingesteld op , of . De verzameling invoerclaims moet één telefoonnummer hebben. |
 
 ### <a name="ui-elements"></a>UI-elementen
 
@@ -103,4 +104,3 @@ De gebruikersinterface-elementen van de telefoonfactorverificatiepagina kunnen w
 ## <a name="next-steps"></a>Volgende stappen
 
 - Controleer de [sociale en lokale accounts met MFA](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccountsWithMfa) starter pack.
-

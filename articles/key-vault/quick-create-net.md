@@ -3,16 +3,16 @@ title: Snelstart - Azure Key Vault-clientbibliotheek voor .NET (v4)
 description: Meer informatie over het maken, ophalen en verwijderen van geheimen uit een Azure-sleutelkluis met behulp van de .NET-clientbibliotheek (v4)
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 05/20/2019
+ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 584fe94a54facf1489382a6052bbff6b44649358
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: a94717c7bed3ba25a4682896053672fe100dc43a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79457233"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398383"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Snelstart: Azure Key Vault-clientbibliotheek voor .NET (SDK v4)
 
@@ -40,7 +40,7 @@ Deze quickstart gaat ervan `dotnet`uit dat u opdrachten in [Azure CLI](/cli/azur
 
 ### <a name="create-new-net-console-app"></a>Nieuwe .NET-console-app maken
 
-Gebruik de `dotnet new` opdracht om in een consolevenster een nieuwe `akv-dotnet`.NET-console-app met de naam te maken.
+Gebruik de `dotnet new` opdracht om in een consolevenster een nieuwe `key-vault-console-app`.NET-console-app met de naam te maken.
 
 ```console
 dotnet new console -n key-vault-console-app
@@ -65,13 +65,13 @@ Build succeeded.
 Installeer vanuit het consolevenster de Azure Key Vault-clientbibliotheek voor .NET:
 
 ```console
-dotnet add package Azure.Security.KeyVault.Secrets --version 4.0.0
+dotnet add package Azure.Security.KeyVault.Secrets
 ```
 
 Voor deze quickstart moet u ook de volgende pakketten installeren:
 
 ```console
-dotnet add package Azure.Identity --version 1.0.0
+dotnet add package Azure.Identity
 ```
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Een resourcegroep en sleutelkluis maken
@@ -85,6 +85,12 @@ Deze quickstart maakt gebruik van een vooraf gemaakte Azure-sleutelkluis. U een 
 az group create --name "myResourceGroup" -l "EastUS"
 
 az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
+```
+
+```azurepowershell
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
+
+New-AzKeyVault -Name <your-unique-keyvault-name> -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
 ### <a name="create-a-service-principal"></a>Een service-principal maken
@@ -113,14 +119,39 @@ Deze bewerking retourneert een reeks sleutel/waardeparen.
 }
 ```
 
+Maak een serviceprincipal met de opdracht [Nieuw-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) van Azure PowerShell:
+
+```azurepowershell
+# Create a new service principal
+$spn = New-AzADServicePrincipal -DisplayName "http://mySP"
+
+# Get the tenant ID and subscription ID of the service principal
+$tenantId = (Get-AzContext).Tenant.Id
+$subscriptionId = (Get-AzContext).Subscription.Id
+
+# Get the client ID
+$clientId = $spn.ApplicationId
+
+# Get the client Secret
+$bstr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($spn.Secret)
+$clientSecret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
+```
+
+Raadpleeg Azure PowerShell [voor](/powershell/azure/create-azure-service-principal-azureps)meer informatie over de serviceprincipal met Azure PowerShell.
+
 Neem nota van de clientId, clientSecret, en tenantId, zoals we zullen ze gebruiken in de volgende stappen.
+
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>Geef de serviceprincipal toegang tot uw sleutelkluis
 
 Maak een toegangsbeleid voor uw sleutelkluis dat toestemming verleent aan uw serviceprincipal door de clientId door te geven aan de opdracht voor het beleid van de [AZ Keyvault-set.](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) Geef de serviceprincipal krijgen, lijst, en machtigingen instellen voor zowel sleutels als geheimen.
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions list get set delete purge
+```
+
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -VaultName <your-unique-keyvault-name> -ServicePrincipalName <clientId-of-your-service-principal> -PermissionsToSecrets list,get,set,delete,purge
 ```
 
 #### <a name="set-environmental-variables"></a>Omgevingsvariabelen instellen
@@ -140,6 +171,16 @@ setx KEY_VAULT_NAME <your-key-vault-name>
 ````
 
 Elke keer `setx`dat u belt, moet u een antwoord krijgen van 'SUCCES: Opgegeven waarde is opgeslagen'.
+
+```shell
+AZURE_CLIENT_ID=<your-clientID>
+
+AZURE_CLIENT_SECRET=<your-clientSecret>
+
+AZURE_TENANT_ID=<your-tenantId>
+
+KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="object-model"></a>Objectmodel
 
@@ -173,6 +214,10 @@ U controleren of het geheim is ingesteld met de [az keyvault secret show](/cli/a
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
+```azurepowershell
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
+```
+
 ### <a name="retrieve-a-secret"></a>Een geheim ophalen
 
 U nu de eerder ingestelde waarde ophalen met de [client. GetSecret-methode](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
@@ -191,6 +236,10 @@ U controleren of het geheim is verdwenen met de [az keyvault secret show](/cli/a
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
+```
+
+```azurepowershell
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
 ```
 
 ## <a name="clean-up-resources"></a>Resources opschonen

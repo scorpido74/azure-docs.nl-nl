@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: apimpm
 ms.openlocfilehash: 57803ec9889cb6a19dae6d6d1070d8381577aff0
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77468385"
 ---
 # <a name="import-an-openapi-specification"></a>Een OpenAPI-specificatie importeren
@@ -35,11 +35,11 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Lees de volgende snelstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
+De volgende quickstart voltooien: [een azure API-beheerexemplaar maken](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Een back-end-API importeren en publiceren
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Een back-end-API importeren en publiceren
 
 1. Selecteer **API's** bij **API MANAGEMENT**.
 2. Selecteer **OpenAPI-specificatie** in de lijst **Een nieuwe API toevoegen**.
@@ -62,9 +62,9 @@ Lees de volgende snelstart: [Een Azure API Management-exemplaar maken](get-start
 4. Selecteer **Maken**.
 
 > [!NOTE]
-> De beperkingen voor het importeren van API'S worden beschreven in [een ander artikel](api-management-api-import-restrictions.md).
+> De api-importbeperkingen worden gedocumenteerd in [een ander artikel.](api-management-api-import-restrictions.md)
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API in het Azure Portal testen
+## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API testen in de Azure-portal
 
 ![API-kaart testen](./media/api-management-get-started/01-import-first-api-01.png)
 

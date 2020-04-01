@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 77a451cb9f6598bbe7013f4215cfa7cab40186bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f2b192765aab4c7cf18c62988ae2f6080b4b17c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037546"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436885"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>De Apache Beeline-client gebruiken met Apache Hive
 
@@ -65,7 +65,7 @@ Ga als verkenner naar de JDBC-URL van Ambari:
 
 ### <a name="over-public-or-private-endpoints"></a>Over openbare of private eindpunten
 
-Wanneer u verbinding maakt met een cluster met de openbare of privéeindpunten, moet u de naam van het clusteraccount (standaard) `admin`en het wachtwoord opgeven. Bijvoorbeeld met Beeline van een clientsysteem `clustername.azurehdinsight.net` om verbinding te maken met het adres. Deze verbinding wordt `443`gemaakt via de poort en wordt versleuteld met SSL.
+Wanneer u verbinding maakt met een cluster met de openbare of privéeindpunten, moet u de naam van het clusteraccount (standaard) `admin`en het wachtwoord opgeven. Bijvoorbeeld met Beeline van een clientsysteem `clustername.azurehdinsight.net` om verbinding te maken met het adres. Deze verbinding wordt `443`gemaakt via de poort en wordt versleuteld met TLS/SSL.
 
 Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `admin` door het clusteraanmeldingsaccount voor uw cluster. Gebruik voor ESP-clusters de volledige UPN (bijvoorbeeld user@domain.com). Vervang `password` door het wachtwoord voor het clusteraanmeldingsaccount.
 

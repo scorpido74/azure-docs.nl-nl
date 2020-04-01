@@ -35,7 +35,7 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 - Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) aan als je nog geen account hebt.
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Als u de zelfstudie wilt voltooien, controleert u of u de volgende items hebt:
 
 - Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) aan als je nog geen account hebt.
@@ -88,7 +88,7 @@ Maak uw failovergroep en voeg er uw enkele database aan toe met behulp van de Az
     ![SQL DB toevoegen aan failovergroep](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Maak uw failovergroep en voeg er uw enkele database aan toe met PowerShell. 
 
    > [!NOTE]
@@ -221,7 +221,7 @@ Test failover met behulp van de Azure-portal.
 1. Controleer welke server nu primair is en welke server secundair is. Als het niet lukt, moeten de twee servers rollen hebben verwisseld. 
 1. Selecteer **Failover** opnieuw om de servers terug te laten vallen naar hun oorspronkelijke rollen. 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Test failover met PowerShell. 
 
 
@@ -330,7 +330,7 @@ Verwijder de brongroep met behulp van de Azure-portal.
 1. Selecteer **Resourcegroep verwijderen** om alle bronnen in de groep te verwijderen, evenals de resourcegroep zelf. 
 1. Typ de naam van `myResourceGroup`de resourcegroep in het tekstvak en selecteer **Verwijderen** om de brongroep te verwijderen.  
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Verwijder de brongroep met PowerShell. 
 
@@ -376,7 +376,7 @@ Dit gedeelte van de zelfstudie maakt gebruik van de volgende Az CLI-cmdlets:
 
 ## <a name="full-scripts"></a>Volledige scripts
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add single database to a failover group")]
 

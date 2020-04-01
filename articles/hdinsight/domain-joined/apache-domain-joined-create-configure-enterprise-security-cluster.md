@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 4edafc0c07e967acfabf7fdc5b58c481b2cfccc3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb3484d013314897ea2e9157b642d8f2b85dcd60
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436045"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437633"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Clusters van Enterprise Security Package maken en configureren in Azure HDInsight
 
@@ -316,7 +316,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 ```
 
 > [!NOTE]  
-> Elk hulpprogramma of toepassing die een geldige PKCS-aanvraag (Public Key Cryptography Standards) 10 maakt, \#kan worden gebruikt om de SSL-certificaataanvraag te vormen.
+> Elk hulpprogramma of toepassing die een geldige PKCS-aanvraag (Public Key Cryptography Standards) 10 maakt, \#kan worden gebruikt om de TLS/SSL-certificaataanvraag te vormen.
 
 Controleer of het certificaat is geïnstalleerd in het persoonlijke archief **van** de computer:
 

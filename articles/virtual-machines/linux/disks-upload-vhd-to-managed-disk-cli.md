@@ -1,63 +1,65 @@
 ---
-title: Een VHD uploaden met de Azure CLI
-description: Meer informatie over het uploaden van een vhd naar een door Azure beheerde schijf en het kopiëren van een beheerde schijf in verschillende regio's, met behulp van de Azure CLI, via directe upload.
+title: Een VHD uploaden naar Azure of een schijf kopiëren tussen regio's - Azure CLI
+description: Meer informatie over het uploaden van een VHD naar een door Azure beheerde schijf en het kopiëren van een beheerde schijf in verschillende regio's, met behulp van de Azure CLI, via directe upload.
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 03/13/2020
+ms.date: 03/27/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: d89a4279d425e4b12e92aae81edfd6c1514c3eef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6813206aebe67e4e6d2afd0d9c78d03f0c20c952
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062670"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420945"
 ---
-# <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Een vhd uploaden naar Azure met Azure CLI
+# <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Een VHD uploaden naar Azure of een beheerde schijf kopiëren naar een andere regio - Azure CLI
 
-In dit artikel wordt uitgelegd hoe u een vhd van uw lokale machine uploadt naar een door Azure beheerde schijf. Voorheen moest u een meer betrokken proces volgen, waarbij uw gegevens in een opslagaccount werden georganiseerd en dat opslagaccount werd beheerd. Nu hoeft u geen opslagaccount meer te beheren of gegevens te fasen om een vhd te uploaden. In plaats daarvan maakt u een lege beheerde schijf en uploadt u er rechtstreeks een vhd naar. Dit vereenvoudigt het uploaden van on-premises VM's naar Azure en stelt u in staat om een vhd tot 32 TiB rechtstreeks te uploaden naar een grote beheerde schijf.
-
-Als u een back-upoplossing voor IaaS-vm's in Azure aanbiedt, raden we u aan directe uploadte te gebruiken om back-ups van klanten te herstellen naar beheerde schijven. Als u een VHD uploadt van een machine buiten Azure, zijn de snelheden afhankelijk van uw lokale bandbreedte. Als u een Azure VM gebruikt, is uw bandbreedte gelijk aan standaard HDD's.
-
-Momenteel wordt direct uploadondersteund voor standaard HDD, standaard SSD en premium SSD managed disks. Het wordt nog niet ondersteund voor ultra SSDs.
+[!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Download de nieuwste [versie van AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Installeer de Azure CLI](/cli/azure/install-azure-cli).
-- Een vhd-bestand, lokaal opgeslagen
-- Als u van plan bent om een vhd te uploaden van on-premises: een vhd met vaste grootte die [is voorbereid voor Azure,](../windows/prepare-for-upload-vhd-image.md)lokaal opgeslagen.
+- Als u van plan bent om een VHD te uploaden van on-premises: een vhd met vaste grootte die [is voorbereid voor Azure,](../windows/prepare-for-upload-vhd-image.md)lokaal opgeslagen.
 - Of een beheerde schijf in Azure als u van plan bent een kopieeractie uit te voeren.
 
-## <a name="create-an-empty-managed-disk"></a>Een lege beheerde schijf maken
+## <a name="getting-started"></a>Aan de slag
 
-Als u uw vhd wilt uploaden naar Azure, moet u een lege beheerde schijf maken die is geconfigureerd voor dit uploadproces. Voordat u er een maakt, is er nog meer informatie die u moet weten over deze schijven.
+Als u liever schijven uploadt via een GUI, u dit doen met Azure Storage Explorer. Voor meer informatie verwijzen naar: [Azure Storage Explorer gebruiken om beheerde Azure-schijven te beheren](disks-use-storage-explorer-managed-disks.md)
+
+Als u uw VHD wilt uploaden naar Azure, moet u een lege beheerde schijf maken die is geconfigureerd voor dit uploadproces. Voordat u er een maakt, is er nog meer informatie die u moet weten over deze schijven.
 
 Dit soort beheerde schijf heeft twee unieke toestanden:
 
 - ReadToUpload, wat betekent dat de schijf klaar is om een upload te ontvangen, maar er is geen [secure access signature](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) gegenereerd.
 - ActiveUpload, wat betekent dat de schijf klaar is om een upload te ontvangen en de SAS is gegenereerd.
 
-Terwijl in een van deze staten, de beheerde schijf zal worden gefactureerd op [standaard HDD prijzen,](https://azure.microsoft.com/pricing/details/managed-disks/)ongeacht het werkelijke type schijf. Een P10 wordt bijvoorbeeld gefactureerd als een S10. Dit geldt totdat `revoke-access` wordt aangeroepen op de beheerde schijf, die nodig is om de schijf te koppelen aan een VM.
+> [!NOTE]
+> Terwijl in een van deze staten, de beheerde schijf zal worden gefactureerd op [standaard HDD prijzen,](https://azure.microsoft.com/pricing/details/managed-disks/)ongeacht het werkelijke type schijf. Een P10 wordt bijvoorbeeld gefactureerd als een S10. Dit geldt totdat `revoke-access` wordt aangeroepen op de beheerde schijf, die nodig is om de schijf te koppelen aan een VM.
 
-Voordat u een lege standaard HDD maken voor het uploaden, moet u de bestandsgrootte hebben van de vhd die u wilt uploaden, in bytes. Om dat te krijgen, `wc -c <yourFileName>.vhd` `ls -al <yourFileName>.vhd`kunt u een van beide gebruiken of . Deze waarde wordt gebruikt bij het opgeven van de parameter **--upload-size-bytes.**
+## <a name="create-an-empty-managed-disk"></a>Een lege beheerde schijf maken
+
+Voordat u een lege standaardHDD maken voor het uploaden, hebt u de bestandsgrootte nodig van de VHD die u wilt uploaden, in bytes. Om dat te krijgen, `wc -c <yourFileName>.vhd` `ls -al <yourFileName>.vhd`kunt u een van beide gebruiken of . Deze waarde wordt gebruikt bij het opgeven van de parameter **--upload-size-bytes.**
 
 Maak een lege standaard HDD voor uploaden door zowel de parameter **-for-upload** als de parameter **--upload-size-bytes** op te geven in een [schijf maken](/cli/azure/disk#az-disk-create) cmdlet:
 
+Vervang `<yourdiskname>` `<yourresourcegroupname>`, `<yourregion>` , met waarden van uw keuze. De `--upload-size-bytes` parameter bevat een `34359738880`voorbeeldwaarde van , vervang deze door een waarde die bij u past.
+
 ```azurecli
-az disk create -n mydiskname -g resourcegroupname -l westus2 --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
+az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
-Als u een premium SSD of een standaard SSD wilt uploaden, vervang **dan standard_lrs** door **premium_LRS** of **standardssd_lrs.** Ultra SSD wordt nog niet ondersteund.
+Als u een premium SSD of een standaard SSD wilt uploaden, vervang **dan standard_lrs** door **premium_LRS** of **standardssd_lrs.** Ultra schijven worden niet ondersteund voor nu.
 
-U hebt nu een lege beheerde schijf gemaakt die is geconfigureerd voor het uploadproces. Als u een vhd naar de schijf wilt uploaden, hebt u een schrijfbare SAS nodig, zodat u deze verwijzen als de bestemming voor uw upload.
+Nu u een lege beheerde schijf hebt gemaakt die is geconfigureerd voor het uploadproces, u er een VHD naar uploaden. Als u een VHD naar de schijf wilt uploaden, hebt u een schrijfbare SAS nodig, zodat u deze verwijzen als de bestemming voor uw upload.
 
-Als u een beschrijfbare SAS van uw lege beheerde schijf wilt genereren, gebruikt u de volgende opdracht:
+Als u een schrijfbare SAS van uw `<yourdiskname>` `<yourresourcegroupname>`lege beheerde schijf wilt genereren, vervangt en gebruikt u vervolgens de volgende opdracht:
 
 ```azurecli
-az disk grant-access -n mydiskname -g resourcegroupname --access-level Write --duration-in-seconds 86400
+az disk grant-access -n <yourdiskname> -g <yourresourcegroupname> --access-level Write --duration-in-seconds 86400
 ```
 
 Voorbeeld geretourneerde waarde:
@@ -68,7 +70,7 @@ Voorbeeld geretourneerde waarde:
 }
 ```
 
-## <a name="upload-vhd"></a>Vhd uploaden
+## <a name="upload-a-vhd"></a>Een VHD uploaden
 
 Nu u een SAS voor uw lege beheerde schijf hebt, u deze gebruiken om uw beheerde schijf in te stellen als bestemming voor uw uploadopdracht.
 
@@ -82,8 +84,10 @@ AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 
 Nadat de upload is voltooid en u geen gegevens meer naar de schijf hoeft te schrijven, trekt u de SAS in. Als u de SAS intrekt, verandert u de status van de beheerde schijf en u de schijf aan een vm koppelen.
 
+Vervang `<yourdiskname>` `<yourresourcegroupname>`en gebruik vervolgens de volgende opdracht om de schijf bruikbaar te maken:
+
 ```azurecli
-az disk revoke-access -n mydiskname -g resourcegroupname
+az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
 ```
 
 ## <a name="copy-a-managed-disk"></a>Een beheerde schijf kopiëren
@@ -121,5 +125,5 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een vhd met succes hebt geüpload naar een beheerde schijf, u de schijf als [gegevensschijf](add-disk.md) aan een bestaande vm koppelen of [de schijf als osschijf aan een VM koppelen](upload-vhd.md#create-the-vm)om een nieuwe vm te maken. 
+Nu u een VHD met succes hebt geüpload naar een beheerde schijf, u de schijf als [gegevensschijf](add-disk.md) aan een bestaande vm koppelen of [de schijf als osschijf aan een VM koppelen](upload-vhd.md#create-the-vm)om een nieuwe vm te maken. 
 

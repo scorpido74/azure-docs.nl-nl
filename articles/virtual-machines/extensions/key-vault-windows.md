@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 22a4177d85cb9dbbaa9ed75e063306484c7b48a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 8e014e7a1c564377582e4503218c4129619daa91
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298968"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410738"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault-extensie voor virtuele machines voor Windows
 
@@ -30,6 +30,7 @@ De Key Vault VM-extensie ondersteunt onderstaande versies van Windows:
 ### <a name="supported-certificate-content-types"></a>Ondersteunde certificaatinhoudstypen
 
 - PKCS #12
+- Pem
 
 ## <a name="extension-schema"></a>Extensieschema
 
@@ -206,7 +207,7 @@ Gegevens over de status van extensie-implementaties kunnen worden opgehaald uit 
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```

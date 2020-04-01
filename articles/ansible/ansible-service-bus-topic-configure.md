@@ -1,17 +1,17 @@
 ---
-title: 'Zelf studie: onderwerpen configureren in Azure Service Bus met behulp van Ansible'
-description: Meer informatie over het gebruik van Ansible voor het maken van een Azure Service Bus onderwerp
-keywords: ansible, azure, devops, bash, Playbook, service bus, topics, abonnementen
+title: Zelfstudie - Onderwerpen configureren in Azure Service Bus met Ansible
+description: Meer informatie over het gebruik van Ansible om een Azure Service Bus-onderwerp te maken
+keywords: ansible, azure, devops, bash, playbook, service bus, onderwerpen, abonnementen
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: d07c7622043353a79d5a82994c2fab4f0835b453
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155792"
 ---
-# <a name="tutorial-configure-topics-in-azure-service-bus-using-ansible"></a>Zelf studie: onderwerpen configureren in Azure Service Bus met behulp van Ansible
+# <a name="tutorial-configure-topics-in-azure-service-bus-using-ansible"></a>Zelfstudie: Onderwerpen configureren in Azure Service Bus met Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
@@ -24,8 +24,8 @@ ms.locfileid: "74155792"
 > * Een onderwerp maken
 > * Een abonnement maken
 > * Een SAS-beleid maken
-> * Naam ruimte gegevens ophalen
-> * Informatie over onderwerpen en abonnementen ophalen
+> * Naamruimte-informatie ophalen
+> * Onderwerp- en abonnementsgegevens ophalen
 > * Een SAS-beleid intrekken
 
 ## <a name="prerequisites"></a>Vereisten
@@ -33,12 +33,12 @@ ms.locfileid: "74155792"
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-the-service-bus-topic"></a>Het Service Bus-onderwerp maken
+## <a name="create-the-service-bus-topic"></a>Het onderwerp Servicebus maken
 
-De voorbeeld code Playbook maakt de volgende resources:
+Met de voorbeeldcode van de playbook worden de volgende bronnen gemaakt:
 - Azure-resourcegroep
-- Naam ruimte in de resource groep Service Bus
-- Service Bus onderwerp met de naam ruimte
+- Naamruimte servicebus binnen de resourcegroep
+- Servicebus-onderwerp met de naamruimte
 
 Sla het volgende playbook op als `servicebus_topic.yml`:
 
@@ -69,7 +69,7 @@ Sla het volgende playbook op als `servicebus_topic.yml`:
           var: topic
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook servicebus_topic.yml
@@ -77,7 +77,7 @@ ansible-playbook servicebus_topic.yml
 
 ## <a name="create-the-subscription"></a>Het abonnement maken
 
-Met de voorbeeld code Playbook wordt het abonnement gemaakt onder een Service Bus onderwerp. Azure Service Bus onderwerpen kunnen meerdere abonnementen hebben. Een abonnee van een onderwerp kan een kopie ontvangen van elk bericht dat naar het onderwerp wordt verzonden. Abonnementen zijn benoemde entiteiten die blijvend zijn gemaakt, maar die optioneel kunnen verlopen.
+Met de voorbeeldcode van de playbook wordt het abonnement gemaakt onder een servicebusonderwerp. Azure Service Bus-onderwerpen kunnen meerdere abonnementen hebben. Een abonnee van een onderwerp kan een kopie ontvangen van elk bericht dat naar het onderwerp wordt verzonden. Abonnementen worden entiteiten genoemd die blijvend zijn gemaakt, maar die optioneel kunnen verlopen.
 
 ```yml
 ---
@@ -102,7 +102,7 @@ Met de voorbeeld code Playbook wordt het abonnement gemaakt onder een Service Bu
 
 Sla het volgende playbook op als `servicebus_subscription.yml`:
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook servicebus_subscription.yml
@@ -110,9 +110,9 @@ ansible-playbook servicebus_subscription.yml
 
 ## <a name="create-the-sas-policy"></a>Het SAS-beleid maken
 
-Een [Shared Access Signature (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) is een autorisatie mechanisme op basis van claims met behulp van tokens. 
+Een [Shared Access Signature (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) is een autorisatiemechanisme op basis van claims met behulp van tokens. 
 
-De voorbeeld code Playbook maakt twee SAS-beleids regels voor een Service Bus wachtrij met andere bevoegdheden.
+Met de voorbeeldcode van de playbook worden twee SAS-beleidsregels gemaakt voor een wachtrij voor servicebussen met verschillende bevoegdheden.
 
 Sla het volgende playbook op als `servicebus_topic_policy.yml`:
 
@@ -139,15 +139,15 @@ Sla het volgende playbook op als `servicebus_topic_policy.yml`:
           var: policy
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook servicebus_topic_policy.yml
 ```
 
-## <a name="retrieve-namespace-information"></a>Naam ruimte gegevens ophalen
+## <a name="retrieve-namespace-information"></a>Naamruimte-informatie ophalen
 
-De voor beeld-Playbook-code voert een query uit op de naam ruimte gegevens.
+De voorbeeldcode van de playbook vraagt de naamruimte-informatie op.
 
 Sla het volgende playbook op als `servicebus_namespace_info.yml`:
 
@@ -169,20 +169,20 @@ Sla het volgende playbook op als `servicebus_namespace_info.yml`:
           var: ns
 ```
 
-Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
-- De waarde `show_sas_policies` geeft aan of de SAS-beleids regels onder de opgegeven naam ruimte moeten worden weer gegeven. Standaard is de waarde `False` om extra netwerk overhead te voor komen.
+Zie de volgende opmerkingen voordat u het draaiboek uitvoert:
+- De `show_sas_policies` waarde geeft aan of het SAS-beleid onder de opgegeven naamruimte moet worden weergegeven. Standaard is `False` de waarde om extra netwerkoverhead te voorkomen.
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml
 ```
 
-## <a name="retrieve-topic-and-subscription-information"></a>Informatie over onderwerpen en abonnementen ophalen
+## <a name="retrieve-topic-and-subscription-information"></a>Onderwerp- en abonnementsgegevens ophalen
 
-De voorbeeld code van de Playbook voert query's uit op de volgende informatie:
-- Informatie over Service Bus onderwerp
-- Lijst met abonnements Details voor het onderwerp
+De voorbeeldquery's voor playbook-code voor de volgende informatie:
+- Informatie over het onderwerp ServiceBus
+- Lijst met abonnementsgegevens voor het onderwerp
  
 Sla het volgende playbook op als `servicebus_list.yml`:
 
@@ -216,18 +216,18 @@ Sla het volgende playbook op als `servicebus_list.yml`:
         - subs_fact.servicebuses
 ```
 
-Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
-- De waarde `show_sas_policies` geeft aan of de SAS-beleids regels in de opgegeven wachtrij moeten worden weer gegeven. Deze waarde is standaard ingesteld op `False` om extra netwerk overhead te voor komen.
+Zie de volgende opmerkingen voordat u het draaiboek uitvoert:
+- De `show_sas_policies` waarde geeft aan of het SAS-beleid onder de opgegeven wachtrij moet worden weergegeven. Deze waarde is standaard `False` ingesteld om extra netwerkoverhead te voorkomen.
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook servicebus_list.yml
 ```
 
-## <a name="revoke-the-queue-sas-policy"></a>Het SAS-beleid van de wachtrij intrekken
+## <a name="revoke-the-queue-sas-policy"></a>Het SAS-beleid voor wachtrijen intrekken
 
-Met de voorbeeld code Playbook wordt een BEVEILIGINGS beleid voor de wachtrij verwijderd.
+De voorbeeldcode van de playbook verwijdert een SAS-wachtrijbeleid in de wachtrij.
 
 Sla het volgende playbook op als `servicebus_queue_policy_delete.yml`:
 
@@ -248,7 +248,7 @@ Sla het volgende playbook op als `servicebus_queue_policy_delete.yml`:
           state: absent
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook servicebus_topic_policy_delete.yml
@@ -256,9 +256,9 @@ ansible-playbook servicebus_topic_policy_delete.yml
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt. 
+Wanneer u niet meer nodig bent, verwijdert u de bronnen die in dit artikel zijn gemaakt. 
 
-Sla de volgende code op als `cleanup.yml`:
+Sla de volgende `cleanup.yml`code op als :
 
 ```yml
 ---
@@ -294,7 +294,7 @@ Sla de volgende code op als `cleanup.yml`:
           force_delete_nonempty: yes
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook cleanup.yml
