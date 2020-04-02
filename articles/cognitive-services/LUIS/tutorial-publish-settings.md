@@ -1,22 +1,14 @@
 ---
 title: 'Zelfstudie: Publicatie-instellingen - LUIS'
-titleSuffix: Azure Cognitive Services
 description: Wijzig in deze zelfstudie de publicatie-instellingen om voorspellingen te verbeteren.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/13/2019
-ms.author: diberry
-ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 19913d16ecb1457ad4edb93ea34e4b96a590aca0
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75890391"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545776"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Zelfstudie: Sentimentanalyse toevoegen als publicatie-instelling
 
@@ -67,11 +59,11 @@ Omdat het een publicatie-instelling is, ziet u deze niet gelabeld op de intentie
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Ga naar het einde van de URL in het adres en voer de volgende utterance in:
+1. Ga naar het einde van de URL in de adresbalk en vervang _YOUR_QUERY_HERE_ door:
 
     `Deliver 2 of the best cheese pizzas ever!!!`
 
-    De laatste querytekenreeksparameter is `query`de **utterancequery**. Deze utterance is niet hetzelfde als een van de gelabelde utterances en dit is dus een goede test die de intentie `OrderPizza` als resultaat moet geven met de sentimentanalyse geëxtraheerd.
+    Deze utterance is niet hetzelfde als een van de gelabelde utterances en dit is dus een goede test die de intentie `OrderPizza` als resultaat moet geven met de sentimentanalyse geëxtraheerd.
 
     ```json
     {
@@ -122,9 +114,7 @@ Omdat het een publicatie-instelling is, ziet u deze niet gelabeld op de intentie
 
     De sentimentanalyse is positief met een score van 86%.
 
-## <a name="clean-up-resources"></a>Resources opschonen
-
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>Gerelateerde informatie
 

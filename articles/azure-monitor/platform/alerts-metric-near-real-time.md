@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 3/5/2020
 ms.subservice: alerts
-ms.openlocfilehash: e4dfc33756a287b6d2f6e41edded3332ca85241d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62c1e29b668c3ef58b0e26e2749c55b913279425
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274929"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545675"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Ondersteunde resources voor metrische waarschuwingen in Azure Monitor
 
@@ -42,7 +42,7 @@ Hier volgt de volledige lijst met azure-monitormetrische bronnen die worden onde
 |Microsoft.ClassicStorage/storageAccounts/mmxclassic/tableServices|Nee|Ja| |
 |Microsoft.CognitiveServices/accounts| N.v.t. | Nee | [Cognitive Services](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
 |Microsoft.Compute/virtualMachines |Ja | Ja | [Virtuele machines](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)|
-|Microsoft.Compute/virtualMachineScaleSets |N.v.t. | Ja |[Virtuele machineschaalsets](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.Compute/virtualMachineScaleSets |N.v.t. | Ja |[Virtuele-machineschaalsets](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
 |Microsoft.ContainerInstance/containerGroepen | Ja| Nee | [Containergroepen](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups)|
 |Microsoft.ContainerService/managedClusters | Ja | Nee | [Beheerde clusters](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerservicemanagedclusters)|
 |Microsoft.DataBoxEdge/dataBoxEdgeDevices | Ja | Ja | |
@@ -56,7 +56,7 @@ Hier volgt de volledige lijst met azure-monitormetrische bronnen die worden onde
 |Microsoft.EventGrid/domeinen|Nee|Ja| |
 |Microsoft.EventGrid/onderwerpen |Ja | Nee |[Onderwerpen voor gebeurtenisrasters](../../azure-monitor/platform/metrics-supported.md#microsofteventgridtopics)|
 |Microsoft.EventHub/clusters |Ja| Nee |[Clusterclusters voor gebeurtenishubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubclusters)|
-|Microsoft.EventHub/naamruimten |Ja| Nee |[Gebeurtenishubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
+|Microsoft.EventHub/naamruimten |Ja| Nee |[Event Hubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
 |Microsoft.KeyVault/kluizen| Nee |Nee |[Kluizen](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/werkstromen |N.v.t. | Nee |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft.MachineLearningServices/werkruimten|Ja| Nee | [Machine Learning](../../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
@@ -76,8 +76,8 @@ Hier volgt de volledige lijst met azure-monitormetrische bronnen die worden onde
 |Microsoft.Peering/peeringServices|Nee|Ja|
 |Microsoft.PowerBIDedicated/capaciteiten | N.v.t. | Nee | [Capaciteiten](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
 |Microsoft.Search/searchServices |N.v.t.|Nee | [Zoekservices](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
-|Microsoft.ServiceBus/naamruimten |Ja| Nee |[Servicebus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
-|Microsoft.Sql/servers/elasticPools |   Nee | Ja |
+|Microsoft.ServiceBus/naamruimten |Ja| Nee |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
+|Microsoft.Sql/servers/elasticPools |    Nee | Ja |
 |Microsoft.Sql/servers/databases    | Nee | Ja |
 |Microsoft.Storage/storageAccounts |Ja | Nee | [Opslagaccounts](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services | Ja| Nee | [Blob Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices), [Bestandsservices,](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices) [wachtrijservices](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) en [tabelservices](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
@@ -86,7 +86,7 @@ Hier volgt de volledige lijst met azure-monitormetrische bronnen die worden onde
 |Microsoft.Web/hostingOmgevingen/multiRolePools | Ja | Nee | [MultirolePools voor app-serviceomgeving](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingOmgevingen/workerPools | Ja | Nee | [Groep werknemers in de app-serviceomgeving](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft.Web/serverfarms | Ja | Nee | [App-serviceplannen](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)|
-|Microsoft.Web/sites | Ja | Nee | [App-services](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-excluding-functions) en [-functies](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-functions)|
+|Microsoft.Web/sites | Ja | Nee | [App Services](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites)|
 |Microsoft.Web/sites/slots | Ja | Nee | [App-servicesleuven](../../azure-monitor/platform/metrics-supported.md#microsoftwebsitesslots)|
 
 ## <a name="payload-schema"></a>Payload-schema

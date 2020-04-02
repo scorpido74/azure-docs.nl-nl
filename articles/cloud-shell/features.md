@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 0aa71e4b78df8087093f183b146c525d2a8a0f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78275211b77cb34cf9aa92e44778e5d4d81fffed
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366237"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521014"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Functies & hulpprogramma's voor Azure Cloud Shell
 
@@ -44,7 +44,7 @@ Bestanden buiten `$HOME` en machinestatus blijven niet bestaan in alle sessies. 
 
 ### <a name="azure-drive-azure"></a>Azure-station (Azure:)
 
-PowerShell in Cloud Shell start`Azure:`u in Azure drive ( ).
+PowerShell in Cloud Shell biedt`Azure:`de Azure-schijf ( ). U overschakelen naar `cd Azure:` het Azure-station `cd  ~`met en terug naar uw thuismap met.
 Het Azure-station maakt eenvoudige detectie en navigatie van Azure-bronnen mogelijk, zoals Compute, Network, Storage etc. vergelijkbaar met bestandssysteemnavigatie.
 U de bekende [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure) blijven gebruiken om deze resources te beheren, ongeacht het station waarin u zich bevindt.
 Alle wijzigingen die zijn aangebracht in de Azure-resources, rechtstreeks in azure-portal of via Azure PowerShell-cmdlets, worden weergegeven in het Azure-station.  U kunt `dir -Force` uitvoeren om uw resources te vernieuwen.
@@ -78,7 +78,7 @@ Cloud Shell bevat vooraf geconfigureerde verificatie voor open-source tools zoal
 |Gereedschappen bouwen            |make<br> maven<br> npm<br> Pip         |
 |Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Roer](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
 |Databases              |MySQL-client<br> PostgreSql-client<br> [sqlcmd-hulpprogramma](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Overige                  |iPython-client<br> [Cloud Gieterij CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible (Ansible)](https://www.ansible.com/microsoft-azure)<br> [Chef-kok Inspec](https://www.chef.io/inspec/)<br> [Poppenbout](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)|
+|Overige                  |iPython-client<br> [Cloud Gieterij CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef-kok Inspec](https://www.chef.io/inspec/)<br> [Poppenbout](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)|
 
 ## <a name="language-support"></a>Taalondersteuning
 

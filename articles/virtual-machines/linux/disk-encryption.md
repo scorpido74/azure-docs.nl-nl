@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: f50115732940eab14db30842be85b47cb4a552e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88d25083a1105023279f3907a4573319fabe087c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299493"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520783"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Server-side encryptie van azure beheerde schijven
 
@@ -68,7 +68,7 @@ Voor nu hebben door de klant beheerde sleutels de volgende beperkingen:
 
 - Als deze functie is ingeschakeld voor uw schijf, u deze niet uitschakelen.
     Als u dit moet omzeilen, moet u [alle gegevens kopiëren](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk) naar een geheel andere beheerde schijf die geen door de klant beheerde sleutels gebruikt.
-- Alleen ["zachte" en "harde" RSA-toetsen](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) van grootte 2080 worden ondersteund, geen andere toetsen of maten.
+- Alleen ["zachte" en "harde" RSA-toetsen](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) van grootte 2048 worden ondersteund, geen andere toetsen of maten.
 - Schijven die zijn gemaakt met aangepaste afbeeldingen die zijn versleuteld met behulp van server-side encryptie en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels en moeten in hetzelfde abonnement zijn.
 - Momentopnamen die zijn gemaakt van schijven die zijn versleuteld met server-side encryptie en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels.
 - Aangepaste afbeeldingen die zijn versleuteld met serverversleuteling en door de klant beheerde sleutels, kunnen niet worden gebruikt in de gedeelde afbeeldingsgalerie.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 24aa3462aef4f719e93d17389ff342084f6c7864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668754"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520746"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Problemen met de Log Analytics-agent voor Linux oplossen 
 
@@ -76,7 +76,7 @@ Als geen van deze stappen voor u werkt, zijn de volgende ondersteuningskanalen o
 | --- | --- |
 | 2 | Ongeldige optie die wordt verstrekt aan het omsadmin-script. Uitvoeren `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` voor gebruik. |
 | 3 | Ongeldige configuratie die wordt verstrekt aan het omsadmin-script. Uitvoeren `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` voor gebruik. |
-| 4 | Ongeldige proxy die wordt verstrekt aan het omsadmin-script. Controleer de proxy en bekijk onze [documentatie voor het gebruik van een HTTP-proxy.](log-analytics-agent.md#network-firewall-requirements) |
+| 4 | Ongeldige proxy die wordt verstrekt aan het omsadmin-script. Controleer de proxy en bekijk onze [documentatie voor het gebruik van een HTTP-proxy.](log-analytics-agent.md#firewall-requirements) |
 | 5 | 403 HTTP-fout ontvangen van Azure Monitor. Zie de volledige uitvoer van het omsadmin-script voor meer informatie. |
 | 6 | Niet-200 HTTP-fout ontvangen van Azure Monitor. Zie de volledige uitvoer van het omsadmin-script voor meer informatie. |
 | 7 | Kan geen verbinding maken met Azure Monitor. Zie de volledige uitvoer van het omsadmin-script voor meer informatie. |
@@ -157,15 +157,8 @@ Onder de uitvoerplugin, uncomment de `#` volgende sectie door het verwijderen va
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. Controleer de [proxy-instellingen van](agent-manage.md#update-proxy-settings) de sectie Bijwerken om te controleren of u de agent correct hebt geconfigureerd om te communiceren via een proxyserver.    
-* Controleer nogmaals of de volgende Azure Monitor-eindpunten op de witte lijst staan:
 
-    |Agentresource| Poorten | Richting |
-    |------|---------|----------|  
-    |*.ods.opinsights.azure.com | Poort 443| Inkomend en uitgaand |  
-    |*.oms.opinsights.azure.com | Poort 443| Inkomend en uitgaand |  
-    |*.blob.core.windows.net | Poort 443| Inkomend en uitgaand |  
-
-    Als u van plan bent de Azure Automation Hybrid Runbook Worker te gebruiken om verbinding te maken met en te registreren bij de automatiseringsservice om runbooks of beheeroplossingen in uw omgeving te gebruiken, moet deze toegang hebben tot het poortnummer en de URL's die zijn beschreven in [Uw netwerk configureren voor de hybride runbookworker.](../../automation/automation-hybrid-runbook-worker.md#network-planning) 
+3. Controleer nogmaals of de eindpunten die in de lijst met [azure-netwerkfirewallvereisten](log-analytics-agent.md#firewall-requirements) worden beschreven, correct aan een lijst met toegestane gegevens worden toegevoegd. Als u Azure Automation gebruikt, zijn hierboven ook de benodigde netwerkconfiguratiestappen gekoppeld.
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Probleem: U ontvangt een fout van 403 wanneer u probeert
 

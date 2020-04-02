@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/06/2020
+ms.date: 03/31/2020
 ms.author: radeltch
-ms.openlocfilehash: 69dcf91957263cea36f8ff6db6a7af14588998ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 215cfd033a3fe8eb0ad9896c1f45f1e0f788823f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78927214"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521366"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hoge beschikbaarheid van SAP HANA op Azure VM's op SUSE Linux Enterprise Server
 
@@ -277,16 +277,20 @@ De stappen in deze sectie gebruiken de volgende voorvoegsels:
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Maak de logische volumes. Er wordt een lineair `lvcreate` volume `-i` gemaakt wanneer u zonder de schakelaar gebruikt. We raden u aan een gestreept volume te maken `-i` voor betere I/O-prestaties, waarbij het argument het nummer van het onderliggende fysieke volume moet zijn. In dit document worden twee fysieke volumes gebruikt `-i` voor het gegevensvolume, zodat het argument voor de switch is ingesteld op **2**. Eén fysiek volume wordt gebruikt voor `-i` het logboekvolume, zodat er geen schakelaar expliciet wordt gebruikt. Gebruik `-i` de schakelaar en stel deze in op het nummer van het onderliggende fysieke volume wanneer u meer dan één fysiek volume gebruikt voor elke gegevens, logboeken of gedeelde volumes.
+   Maak de logische volumes. Er wordt een lineair `lvcreate` volume `-i` gemaakt wanneer u zonder de schakelaar gebruikt. We raden u aan een gestreept volume te maken voor betere I/O-prestaties en de streepgrootteaf te stemmen op de waarden die zijn gedocumenteerd in [SAP HANA VM-opslagconfiguraties.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) Het `-i` argument moet het aantal van de `-I` onderliggende fysieke volumes zijn en het argument is de streepgrootte. In dit document worden twee fysieke volumes gebruikt `-i` voor het gegevensvolume, zodat het argument voor de switch is ingesteld op **2**. De streepgrootte voor het gegevensvolume is **256KiB.** Eén fysiek volume wordt gebruikt voor `-i` het `-I` logboekvolume, zodat er geen of schakelaars expliciet worden gebruikt voor de opdrachten voor het logboekvolume.  
 
-   <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
+   > [!IMPORTANT]
+   > Gebruik `-i` de schakelaar en stel deze in op het nummer van het onderliggende fysieke volume wanneer u meer dan één fysiek volume gebruikt voor elke gegevens, logboeken of gedeelde volumes. Gebruik `-I` de schakelaar om de streepgrootte op te geven bij het maken van een gestreept volume.  
+   > Zie [SAP HANA VM-opslagconfiguraties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) voor aanbevolen opslagconfiguraties, inclusief streepgroottes en het aantal schijven.  
+
+   <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_shared vg_hana_shared_<b>HN1</b>
    sudo mkfs.xfs /dev/vg_hana_data_<b>HN1</b>/hana_data
    sudo mkfs.xfs /dev/vg_hana_log_<b>HN1</b>/hana_log
    sudo mkfs.xfs /dev/vg_hana_shared_<b>HN1</b>/hana_shared
    </code></pre>
-
+  
    Maak de mount mappen en kopieer de UUID van alle logische volumes:
 
    <pre><code>sudo mkdir -p /hana/data/<b>HN1</b>

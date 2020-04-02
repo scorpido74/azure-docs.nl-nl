@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain-servicelimieten
 description: Overzicht van de service- en functionele limieten in Azure Blockchain Service
-ms.date: 11/22/2019
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.reviewer: janders
-ms.openlocfilehash: f4001ee520f3f3136d1bac5ca047c80526fc92e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: c728e617ac37795988cd596c7cb0c5025aac4ccf
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455660"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529581"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Limieten in Azure Blockchain-service
 
@@ -24,7 +24,11 @@ Maximale limieten voor transacties en validatorknooppunten zijn afhankelijk van 
 | Basic | 10 | 1 |
 | Standard | 10 | 2 |
 
-Het wijzigen van de prijslaag tussen Basic en Standard na het maken van leden wordt niet ondersteund.
+Uw consortiumnetwerk moet ten minste twee Azure Blockchain Service-standaardniveauknooppunten hebben. Standaardniveauknooppunten bevatten twee validatorknooppunten. Vier validator knooppunten zijn nodig om Istanbul [Byzantijnse Fault Tolerance consensus](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)te voldoen.
+
+Gebruik de basislaag is voor ontwikkeling, testen en proof of concepts. Gebruik de standaardlaag voor implementaties van productiekwaliteit. U moet ook de *standaardlaag* gebruiken als u Blockchain Data Manager gebruikt of een groot aantal privétransacties verzendt.
+
+Het wijzigen van de prijslaag tussen basis en standaard na het maken van leden wordt niet ondersteund.
 
 ## <a name="storage-capacity"></a>Opslagcapaciteit
 
@@ -50,7 +54,7 @@ De grootte van het aantal grootboek en logboekopslag wordt niet ondersteund.
 
 * **Leden die uit het consortium zijn verwijderd, kunnen niet opnieuw worden toegevoegd**
 
-    In plaats daarvan moeten ze opnieuw worden uitgenodigd om zich bij het consortium aan te sluiten en een nieuw lid te creëren. Hun bestaande ledenbron wordt niet verwijderd om historische transacties te behouden.
+    In plaats daarvan moeten ze opnieuw worden uitgenodigd om zich bij het consortium aan te sluiten en een nieuw lid te creëren. Hun bestaande ledenbronnen worden niet verwijderd om historische transacties te behouden.
 
 * **Alle leden in een consortium moeten dezelfde grootboekversie gebruiken**
 

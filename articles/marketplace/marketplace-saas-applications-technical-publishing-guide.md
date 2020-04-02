@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: 2c1cb755b62812336a306994f6820573130815e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288356"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544282"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Publicatiehandleiding voor SaaS-toepassingen
 
@@ -25,8 +25,8 @@ SaaS-toepassingen zijn beschikbaar in beide Azure Storefronts In de volgende tab
 
 | Storefront, optie | Aanbieding | Proef/Transact |  
 | --- | --- | --- |  
-| AppSource | Ja (Neem contact met mij op) | Ja (PowerBI/Dynamics) |
-| Azure-marktplaats | Nee | Ja (SaaS-apps) |   
+| AppSource | Ja | Ja |
+| Azure-marktplaats | Nee | Ja |   
 
 **Lijst:**  De optie Voor het publiceren van aanbiedingen bestaat uit een aanbiedingstype Contact mij en wordt gebruikt wanneer deelname op proef- of transactieniveau niet haalbaar is. Het voordeel van deze aanpak is dat het uitgevers met een oplossing in de markt in staat stelt om onmiddellijk leads te ontvangen die kunnen worden omgezet in deals om uw bedrijf te vergroten.  
 **Proef/transactie:**  De klant heeft de mogelijkheid om direct een proefversie voor uw oplossing te kopen of aan te vragen. Het bieden van een proefervaring verhoogt het betrokkenheidsniveau dat aan klanten wordt aangeboden en stelt klanten in staat om uw oplossing te verkennen voordat ze kopen. Met een Trial-ervaring hebt u betere kansen op promotie in de etalages en u meer en rijkere leads verwachten van klantinteracties. Proeven moeten gratis ondersteuning bevatten, ten minste voor de duur van de proefperiode.  
@@ -95,7 +95,7 @@ Bovendien biedt Azure Active Directory een site om te controleren op service-upd
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Azure Active Directory gebruiken om proefversies in te schakelen  
 
-Microsoft verifieert alle Marketplace-gebruikers met Azure AD, dus wanneer een geverifieerde gebruiker door uw proefvermelding in Marketplace klikt en wordt doorgestuurd naar uw proefomgeving, u de gebruiker rechtstreeks in een proefversie opnemen zonder dat u een extra aanmeldingsstap. Het token dat uw app ontvangt van Azure AD tijdens verificatie bevat waardevolle gebruikersgegevens die u gebruiken om een gebruikersaccount in uw app te maken, zodat u de inrichtingservaring automatiseren en de kans op conversie vergroten. Zie [Voorbeeldtokens voor](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) meer informatie over het token.
+Microsoft verifieert alle Marketplace-gebruikers met Azure AD, dus wanneer een geverifieerde gebruiker door uw proefvermelding in Marketplace klikt en wordt doorgestuurd naar uw proefomgeving, u de gebruiker rechtstreeks in een proefversie opnemen zonder dat u een extra aanmeldingsstap hoeft te nemen. Het token dat uw app ontvangt van Azure AD tijdens verificatie bevat waardevolle gebruikersgegevens die u gebruiken om een gebruikersaccount in uw app te maken, zodat u de inrichtingservaring automatiseren en de kans op conversie vergroten. Zie [Voorbeeldtokens voor](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) meer informatie over het token.
 
 Als u Azure AD gebruikt om verificatie met één klik in te schakelen voor uw app of proefversie, gaat u als volgt te werk:  
 * Stroomlijnt de klantervaring van Marketplace naar Trial.  

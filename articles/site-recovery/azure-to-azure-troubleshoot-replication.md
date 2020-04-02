@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.openlocfilehash: 67b68cc8a1db4a058675dc51fb3805093c455908
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5389c064e137358670aecabe97f1cea38dfbcbf
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276662"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549277"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Problemen met replicatie in Azure VM-noodherstel oplossen
 
@@ -81,7 +81,7 @@ We raden u aan een eindpunt voor netwerkservice te maken in uw virtuele netwerk 
 
 ### <a name="network-connectivity"></a>Netwerkconnectiviteit
 
-Als replicatie van siteherstel werkt, moet de VM uitgaande connectiviteit bieden voor specifieke URL's of IP-bereiken. Mogelijk hebt u uw VM achter een firewall of gebruikt u NSG-regels (Network Security Group) om uitgaande connectiviteit te beheren. Als dat zo is, u problemen ondervinden. Zie [Uitgaande connectiviteit voor URL's voor siteherstel](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)om ervoor te zorgen dat alle URL's zijn verbonden.
+Als replicatie van siteherstel werkt, moet de VM uitgaande connectiviteit bieden voor specifieke URL's of IP-bereiken. Mogelijk hebt u uw VM achter een firewall of gebruikt u NSG-regels (Network Security Group) om uitgaande connectiviteit te beheren. Als dat zo is, u problemen ondervinden. Zie [Uitgaande connectiviteit voor URL's voor siteherstel](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)om ervoor te zorgen dat alle URL's zijn verbonden.
 
 ## <a name="error-id-153006---no-app-consistent-recovery-point-available-for-the-vm-in-the-past-x-minutes"></a>Fout-id 153006 - Geen app-consistent herstelpunt beschikbaar voor de VM in de afgelopen "X"-minuten
 

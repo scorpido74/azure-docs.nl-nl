@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/01/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1ee8e90d1d690315b2727a050e0383d7d28dc03
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264113"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546139"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>How to: Gebruik de portal om een Azure AD-toepassing en serviceprincipal te maken die toegang heeft tot bronnen
 
@@ -99,7 +99,7 @@ Exporteer dit certificaat naar een bestand met de MMC-module [Gebruikerscertific
 
 1. Als u uw certificaten wilt weergeven, vouwt u onder **Certificaten - Huidige gebruiker** in het linkerdeelvenster de **persoonlijke** map uit.
 1. Klik met de rechtermuisknop op het door u gemaakte cert, selecteer **Alle taken->exporteren**.
-1. Volg de wizard Certificaatexporteren.  Exporteer de privésleutel, geef een wachtwoord op voor het cert-bestand en exporteer naar een bestand.
+1. Volg de wizard Certificaatexporteren.  Exporteer de privésleutel niet en exporteer naar een . CER-bestand.
 
 Ga als nodig de zoveelste keer als u het certificaat uploadt:
 
@@ -148,7 +148,7 @@ U moet over voldoende machtigingen beschikken om een toepassing te registreren b
 1. Selecteer in het linkerdeelvenster **gebruikersinstellingen**.
 1. Controleer de instelling **App-registraties.** Deze waarde kan alleen worden ingesteld door een beheerder. Als deze is ingesteld op **Ja,** kan elke gebruiker in de Azure AD-tenant een app registreren.
 
-Als de instelling voor app-registraties is ingesteld op **Nee,** kunnen alleen gebruikers met een beheerdersrol dit soort toepassingen registreren. Bekijk [beschikbare rollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles) en [functiemachtigingen](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) voor meer informatie over beschikbare beheerdersrollen en de specifieke machtigingen in Azure AD die aan elke rol worden gegeven. Als aan uw account de rol Gebruiker is toegewezen, maar de instelling voor app-registratie beperkt is tot beheerders, vraagt u uw beheerder om u een van de beheerdersrollen toe te wijzen die alle aspecten van app-registraties kunnen maken en beheren, of om gebruikers in staat te stellen zich te registreren Apps.
+Als de instelling voor app-registraties is ingesteld op **Nee,** kunnen alleen gebruikers met een beheerdersrol dit soort toepassingen registreren. Bekijk [beschikbare rollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles) en [functiemachtigingen](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) voor meer informatie over beschikbare beheerdersrollen en de specifieke machtigingen in Azure AD die aan elke rol worden gegeven. Als aan uw account de rol Gebruiker is toegewezen, maar de instelling voor app-registratie beperkt is tot beheerders, vraagt u uw beheerder om u een van de beheerdersrollen toe te wijzen die alle aspecten van app-registraties kunnen maken en beheren, of om gebruikers in staat te stellen apps te registreren.
 
 ### <a name="check-azure-subscription-permissions"></a>Machtigingen voor Azure-abonnementen controleren
 

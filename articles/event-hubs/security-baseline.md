@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f16f6ef38b221e525340858fc7ba131f8a1bdf5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10fc822f9f36512405dd4e3b5aba6270b53e163f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289574"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549035"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Azure-beveiligingsbasislijn voor gebeurtenishubs
 
@@ -72,7 +72,7 @@ Inzicht in netwerkbeveiliging van Azure Security Center:https://docs.microsoft.c
 
 **Richtlijnen:** Schakel De DDoS Protection Standard in op de virtuele netwerken die zijn gekoppeld aan uw gebeurtenishubs om te beschermen tegen ddos-aanvallen (distributed denial-of-service). Gebruik Azure Security Center Integrated Threat Intelligence om communicatie met bekende kwaadaardige of ongebruikte internetIP-adressen te weigeren.
 
-DDoS-beveiliging configureren:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+DDoS-beveiliging configureren:[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](/azure/virtual-network/manage-ddos-protection)
 
 Voor meer informatie over de geïntegreerde bedreigingsinformatie van azure security center:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
@@ -106,7 +106,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 Een firewallregel toevoegen in gebeurtenishubs voor een opgegeven IP-adres:
 
- https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls#add-firewall-for-specified-ip
+ https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
 **Azure Security Center-bewaking**: Nog niet beschikbaar
 
@@ -140,7 +140,7 @@ Azure Ingebouwd beleid voor naamruimte gebeurtenishubs:https://docs.microsoft.co
 
 
 
-Voorbeelden van Azure-beleid voor netwerken:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Voorbeelden van Azure-beleid voor netwerken:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
 
 
@@ -373,10 +373,7 @@ Mfa inschakelen in Azure:https://docs.microsoft.com/azure/active-directory/authe
 
 **Richtlijnen:** Gebruik Azure Active Directory (AD) Privileged Identity Management (PIM) voor het genereren van logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving plaatsvinden. Gebruik Azure AD-risicodetecties om waarschuwingen en rapporten over riskant gebruikersgedrag weer te geven. Stuur azure security center-risicodetectiewaarschuwingen voor extra logboekregistratie naar Azure Monitor en configureer aangepaste waarschuwingen/meldingen met behulp van actiegroepen.
 
-
-
 Privileged Identity Management (PIM) implementeren:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
-
 
 Inzicht in Azure AD-risicodetecties:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
@@ -780,7 +777,7 @@ Voorwaardelijke toegang configureren om toegang tot Azure Resource Manager te bl
 
 - Event Hub moet een eindpunt voor virtuele netwerkservice gebruiken
 
-Azure Ingebouwd beleid voor naamruimte https://docs.microsoft.com/en-\ van gebeurtenishubs: ons/azure/governance/beleid/voorbeelden/ingebouwde-beleid#event-hub
+Azure Ingebouwd beleid voor naamruimte gebeurtenishubs:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
 Beschikbare Azure-beleidsaliassen weergeven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -961,7 +958,7 @@ Microsoft-antimalware is ingeschakeld op de onderliggende host die Azure-service
 
 **Richtlijnen**: Configureer herstel van georampen voor Azure Event Hubs. Wanneer hele Azure-regio's of datacenters (als er geen beschikbaarheidszones worden gebruikt) downtime ervaren, is het van cruciaal belang dat gegevensverwerking in een andere regio of datacenter blijft werken. Als zodanig zijn Geo-disaster recovery en Geo-replicatie belangrijke functies voor elke onderneming. Azure Event Hubs ondersteunt zowel geo-disaster recovery als geo-replicatie, op naamruimteniveau. 
 
-Inzicht in geo-disaster recovery voor Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones-preview
+Inzicht in geo-disaster recovery voor Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones
 
 **Azure Security Center-bewaking**: Momenteel niet beschikbaar
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 75cef47c1ed2b6da054442a4a1215141e67ad1b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c994caf094918b39204437b5194d81a64affc66
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498575"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545660"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Veelgestelde vragen over verschillende API's in Azure Cosmos DB
 
@@ -219,7 +219,7 @@ De API van Azure Cosmos DB voor MongoDB is een compatibiliteitslaag voor draadpr
 
 De snelste manier om verbinding te maken met een Cosmos-database met de API van Azure Cosmos DB voor MongoDB is door naar de [Azure-portal](https://portal.azure.com)te gaan. Ga naar uw account en klik vervolgens in het linkernavigatiemenu op **Snel starten**. Quickstart is de beste manier om codefragmenten te krijgen om verbinding te maken met uw database.
 
-Azure Cosmos DB handhaaft strenge beveiligingseisen en -normen. Azure Cosmos DB-accounts vereisen verificatie en beveiligde communicatie via SSL, dus zorg ervoor dat u TLSv1.2 gebruikt.
+Azure Cosmos DB handhaaft strenge beveiligingseisen en -normen. Azure Cosmos DB-accounts vereisen verificatie en beveiligde communicatie via TLS, dus zorg ervoor dat u TLSv1.2 gebruikt.
 
 Zie [Verbinding maken met uw Cosmos-database met de API van Azure Cosmos DB voor MongoDB voor](connect-mongodb-account.md)meer informatie.
 

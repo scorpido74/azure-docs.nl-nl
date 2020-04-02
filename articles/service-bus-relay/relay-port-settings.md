@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 55bb6b620c7ba9ee13068213cbc867b165acc185
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 532e3c297c42ea16b1f462a01699fc2fd71c6cce
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514881"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529113"
 ---
 # <a name="azure-relay-port-settings"></a>Azure Relay-poortinstellingen
 
@@ -27,7 +27,7 @@ In de volgende tabel wordt de vereiste configuratie voor poortwaarden voor Azure
 
 ## <a name="hybrid-connections"></a>Hybride verbindingen
 
-Hybrid Connections gebruikt WebSockets op poort 443 met SSL als onderliggend transportmechanisme, dat alleen **HTTPS** gebruikt. 
+Hybrid Connections gebruikt WebSockets op poort 443 met TLS als onderliggend transportmechanisme, dat alleen **HTTPS** gebruikt. 
 
 ## <a name="wcf-relays"></a>WCF-relays
   

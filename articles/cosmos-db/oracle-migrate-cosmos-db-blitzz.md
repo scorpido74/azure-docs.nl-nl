@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: fe132ee6ab90fdae99463f11ecf46f352690b810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43d15a7252819a3e4f7635e37458b75e9b7ecca7
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69984353"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546269"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Gegevens migreren van Oracle naar Azure Cosmos DB Cassandra API-account met Blitzz
 
@@ -36,7 +36,7 @@ Blitzz's migratieoplossing volgt een stapsgewijze aanpak om complexe operationel
 
 * Het is fouttolerant en garandeert precies één keer de levering van gegevens, zelfs tijdens een hardware- of softwarestoring in het systeem.
 
-* Het beveiligt de gegevens tijdens het transport met behulp van een verscheidenheid van beveiligingsmethoden zoals SSL, encryptie.
+* Het beveiligt de gegevens tijdens het transport met behulp van een verscheidenheid van beveiligingsmethoden zoals TLS / SSL, encryptie.
 
 * Het biedt services om complexe bedrijfslogica geschreven in PL/SQL om te zetten in gelijkwaardige bedrijfslogica in Azure Cosmos DB.
 
@@ -44,7 +44,7 @@ Blitzz's migratieoplossing volgt een stapsgewijze aanpak om complexe operationel
 
 In deze sectie worden de stappen beschreven die nodig zijn om Blitzz in te stellen en worden gegevens van Oracle-database gemigreerd naar Azure Cosmos DB.
 
-1. Voeg vanaf de computer waar u de Blitzz replicant wilt installeren een beveiligingscertificaat toe. Dit certificaat is vereist door de Blitzz-replicant om een SSL-verbinding met het opgegeven Azure Cosmos DB-account tot stand te brengen. U het certificaat toevoegen met de volgende stappen:
+1. Voeg vanaf de computer waar u de Blitzz replicant wilt installeren een beveiligingscertificaat toe. Dit certificaat is vereist door de Blitzz-replicant om een TLS-verbinding met het opgegeven Azure Cosmos DB-account tot stand te brengen. U het certificaat toevoegen met de volgende stappen:
 
    ```bash
    wget https://cacert.omniroot.com/bc2025.crt

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 894ec4e543f0c68cc652141d2c1578cda61d7f42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c1f0bb715b3c3bf9b3a3350ab11e26834aa84c8
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594737"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528663"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor bedrijfscontinuïteit en disaster recovery in Azure Kubernetes Service (AKS)
 
@@ -59,7 +59,7 @@ Zie [De routeringsmethode voor geografisch verkeer configureren met Traffic Mana
 
 ### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Layer 7-toepassingsroutering met Azure Front Door Service
 
-Traffic Manager gebruikt DNS (laag 3) om verkeer vorm te geven. [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) biedt een http/HTTPS (layer 7) routeringsoptie. Extra functies van Azure Front Door Service zijn SSL-beëindiging, aangepast domein, firewall van webtoepassingen, URL-herschrijven en sessieaffiniteit. Bekijk de behoeften van uw applicatieverkeer om te begrijpen welke oplossing het meest geschikt is.
+Traffic Manager gebruikt DNS (laag 3) om verkeer vorm te geven. [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) biedt een http/HTTPS (layer 7) routeringsoptie. Extra functies van Azure Front Door Service zijn TLS-beëindiging, aangepast domein, firewall van webtoepassingen, URL-herschrijven en sessieaffiniteit. Bekijk de behoeften van uw applicatieverkeer om te begrijpen welke oplossing het meest geschikt is.
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Regio's verbinden met wereldwijd virtueel netwerkpeering
 
@@ -122,7 +122,7 @@ De typische strategie is om een gemeenschappelijk opslagpunt waar toepassingen h
 Als u Azure Managed Disks gebruikt, u replicatie- en DR-oplossingen zoals deze kiezen:
 
 * [Velero op Azure](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Azure-siteherstel](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
+* [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
 
 ### <a name="application-based-asynchronous-replication"></a>Op toepassing gebaseerde asynchrone replicatie
 

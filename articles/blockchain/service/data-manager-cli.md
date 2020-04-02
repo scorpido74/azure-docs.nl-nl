@@ -1,15 +1,15 @@
 ---
 title: Blockchain-gegevensbeheer configureren met Azure CLI - Azure Blockchain-service
 description: Een Blockchain-gegevensbeheer voor Azure Blockchain-service maken en beheren met Azure CLI
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.topic: article
-ms.reviewer: chroyal
-ms.openlocfilehash: a8061aad6d6a1513de70e7c2bc57aa109c666611
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: 5ceca96f760ab62ca7f3df9ad26139b9b4a3e5be
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455939"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529596"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Blockchain Data Manager configureren met behulp van Azure CLI
 
@@ -26,7 +26,7 @@ Als u een blockchain-gegevensbeheerexemplaar wilt configureren, gaat u als:
 ## <a name="prerequisites"></a>Vereisten
 
 * Installeer de nieuwste [Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) CLI `az login`en ben aangemeld met behulp van .
-* Snelstart [voltooien: Visual Studio-code gebruiken om verbinding te maken met een Consortiumnetwerk van Azure Blockchain Service](connect-vscode.md)
+* Snelstart [voltooien: gebruik Visual Studio Code om verbinding te maken met een Azure Blockchain Service consortiumnetwerk.](connect-vscode.md) Azure Blockchain Service *Standard-laag* wordt aanbevolen bij het gebruik van Blockchain Data Manager.
 * Een [gebeurtenisrasteronderwerp maken](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * Meer informatie over [gebeurtenishandlers in Azure Event Grid](../../event-grid/event-handlers.md)
 

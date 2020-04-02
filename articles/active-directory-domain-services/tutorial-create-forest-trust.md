@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb96cb32c05d2ba3fbd38e72c16540d947436117
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77612511"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519075"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Zelfstudie: Een uitgaande forestvertrouwensrelatie maken voor een on-premises domein in Azure Active Directory Domain Services (voorbeeld)
 
@@ -59,7 +59,7 @@ Voordat u een forestvertrouwensrelatie in Azure AD DS configureert, moet u ervoo
 
 * Gebruik privé-IP-adressen. Vertrouw niet op DHCP met dynamische IP-adrestoewijzing.
 * Vermijd overlappende IP-adresruimten om virtuele netwerkpeering en routering mogelijk te maken om succesvol te communiceren tussen Azure en on-premises.
-* Een Virtueel Azure-netwerk heeft een gateway-subnet nodig om een Site-to-site (S2S) VPN- of ExpressRoute-verbinding te configureren
+* Een Virtueel Azure-netwerk heeft een gateway-subnet nodig om een [Azure site-to-site (S2S) VPN-][vpn-gateway] of [ExpressRoute-verbinding][expressroute] te configureren
 * Maak subnetten met voldoende IP-adressen om uw scenario te ondersteunen.
 * Zorg ervoor dat Azure AD DS een eigen subnet heeft, deel dit virtuele netwerksubnet niet met toepassings-VM's en -services.
 * Peered virtuele netwerken zijn niet transitief.
@@ -74,7 +74,7 @@ Als u het beheerde Azure AD DS-domein vanuit de on-premises omgeving correct wil
 1. Selecteer **Start | Administratieve instrumenten | DNS (DNS)**
 1. Dns-server met de rechtermuisknop selecteren, zoals *myAD01*, selecteer **Eigenschappen**
 1. Kies **Doorstuurers**en **bewerk vervolgens** om extra forwarders toe te voegen.
-1. Voeg de IP-adressen van het beheerde Azure AD DS-domein toe, zoals *10.0.1.4* en *10.0.1.5*.
+1. Voeg de IP-adressen van het beheerde Azure AD DS-domein toe, zoals *10.0.2.4* en *10.0.2.5*.
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Inbound forest vertrouwen in het on-premises domein maken
 
@@ -85,10 +85,6 @@ Voer de volgende stappen uit van een beheerwerkstation voor het on-premises AD D
 1. Selecteer **Start | Administratieve instrumenten | Active Directory- domeinen en vertrouwensrelaties**
 1. Domein met de rechtermuisknop selecteren, zoals *onprem.contoso.com*, **eigenschappen** selecteren
 1. Tabblad **Vertrouwensrelaties** kiezen en vervolgens **Nieuwe vertrouwensrelatie**
-
-   > [!NOTE]
-   > Als u de **menuoptie Vertrouwensrelaties** niet ziet, schakelt u onder **Eigenschappen** voor het *foresttype in.* Alleen *resourceforests* kunnen vertrouwensrelaties creëren. Als het foresttype *Gebruiker*is, u geen vertrouwensrelaties maken. Er is momenteel geen manier om het foresttype van een door Azure AD DS beheerd domein te wijzigen. U moet het beheerde domein verwijderen en opnieuw maken als resourceforest.
-
 1. Voer naam in op Azure AD DS-domeinnaam, zoals *aaddscontoso.com*en selecteer **Volgende**
 1. Selecteer de optie om een **forestvertrouwensrelatie**te maken en vervolgens een **enkele manier te maken: binnenkomende** vertrouwensrelatie.
 1. Kies ervoor om alleen de vertrouwensrelatie voor dit domein te **maken.** In de volgende stap maakt u de vertrouwensrelatie in de Azure-portal voor het beheerde Azure AD DS-domein.
@@ -104,12 +100,16 @@ Voer de volgende stappen uit om de uitgaande vertrouwensrelatie voor het beheerd
 
 1. Selecteer in de Azure-portal **Azure AD Domain Services**en selecteer deze vervolgens uw beheerde domein, zoals *aaddscontoso.com*
 1. Selecteer In het menu aan de linkerkant van het door Azure AD DS beheerde domein de optie **Vertrouwensrelaties**en kies je voor + Een vertrouwensrelatie **toevoegen.**
+
+   > [!NOTE]
+   > Als u de **menuoptie Vertrouwensrelaties** niet ziet, schakelt u onder **Eigenschappen** voor het *foresttype in.* Alleen *resourceforests* kunnen vertrouwensrelaties creëren. Als het foresttype *Gebruiker*is, u geen vertrouwensrelaties maken. Er is momenteel geen manier om het foresttype van een door Azure AD DS beheerd domein te wijzigen. U moet het beheerde domein verwijderen en opnieuw maken als resourceforest.
+
 1. Voer een weergavenaam in die uw vertrouwensrelatie identificeert en vervolgens de on-premises vertrouwde DNS-naam van het forest, zoals *onprem.contoso.com*
 1. Geef hetzelfde vertrouwenswachtwoord op dat is gebruikt bij het configureren van de binnenkomende forestvertrouwensrelatie voor het on-premises AD DS-domein in de vorige sectie.
-1. Zorg voor ten minste twee DNS-servers voor het on-premises AD DS-domein, zoals *10.0.2.4* en *10.0.2.5*
+1. Zorg voor ten minste twee DNS-servers voor het on-premises AD DS-domein, zoals *10.1.1.4* en *10.1.1.5*
 1. Wanneer u klaar **bent, slaat u** de uitgaande forestvertrouwensrelatie op
 
-    [Uitgaande forestvertrouwensrelatie in de Azure-portal maken](./media/create-forest-trust/portal-create-outbound-trust.png)
+    ![Uitgaande forestvertrouwensrelatie in de Azure-portal maken](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
 
 ## <a name="validate-resource-authentication"></a>Verificatie van resources valideren
 
@@ -126,11 +126,7 @@ Met de volgende algemene scenario's u valideren dat gebruikers correct worden ge
 
 U moet de virtuele machine van Windows Server hebben aangesloten bij het Azure AD DS-brondomein. Gebruik deze virtuele machine om uw on-premises gebruiker te testen kan verifiëren op een virtuele machine.
 
-1. Maak verbinding met de Windows Server-vm die is verbonden met het Azure AD DS-bronforest met Extern bureaublad en de referenties van uw Azure AD DS-beheerders. Als u een NLA-fout (Network Level Authentication) krijgt, controleert u of het gebruikte gebruikersaccount geen domeingebruikersaccount is.
-
-    > [!NOTE]
-    > Als u veilig verbinding wilt maken met uw VM's die zijn verbonden met Azure AD Domain Services, u de [Azure Bastion Host Service](https://docs.microsoft.com/azure/bastion/bastion-overview) gebruiken in ondersteunde Azure-regio's.
-
+1. Maak verbinding met de Windows Server-VM die is verbonden met het Azure AD DS-bronforest met [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) en uw Azure AD DS-beheerdersreferenties.
 1. Open een opdrachtprompt `whoami` en gebruik de opdracht om de gedistingeerde naam van de momenteel geverifieerde gebruiker weer te geven:
 
     ```console
@@ -152,10 +148,7 @@ Met de Windows Server VM die is gekoppeld aan het Azure AD DS-bronforest, u het 
 
 #### <a name="enable-file-and-printer-sharing"></a>Delen van bestanden en printers inschakelen
 
-1. Maak verbinding met de Windows Server-vm die is verbonden met het Azure AD DS-bronforest met Extern bureaublad en de referenties van uw Azure AD DS-beheerders. Als u een NLA-fout (Network Level Authentication) krijgt, controleert u of het gebruikte gebruikersaccount geen domeingebruikersaccount is.
-
-    > [!NOTE]
-    > Als u veilig verbinding wilt maken met uw VM's die zijn verbonden met Azure AD Domain Services, u de [Azure Bastion Host Service](https://docs.microsoft.com/azure/bastion/bastion-overview) gebruiken in ondersteunde Azure-regio's.
+1. Maak verbinding met de Windows Server-VM die is verbonden met het Azure AD DS-bronforest met [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) en uw Azure AD DS-beheerdersreferenties.
 
 1. Open **Windows-instellingen**en selecteer **netwerk- en deelcentrum**.
 1. Kies de optie voor **Geavanceerde instellingen voor delen wijzigen.**
@@ -221,3 +214,5 @@ Zie [Wat zijn resourceforests voor][concepts-forest] meer conceptuele informatie
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
 [howto-change-sku]: change-sku.md
+[vpn-gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+[expressroute]: ../expressroute/expressroute-introduction.md

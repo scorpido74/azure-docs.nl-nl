@@ -11,15 +11,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0fbe27fb5ed61cc187c679f9cb7420f0b444aa60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f351bba9cd474eab0774efa5ffbd2b24499d105b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77615936"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520955"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-instantiemetagegevensservice
 
@@ -856,11 +856,15 @@ openssl x509 -noout -issuer -in signer.pem
 openssl x509 -noout -subject -in intermediate.pem
 # Verify the issuer for the intermediate certificate
 openssl x509 -noout -issuer -in intermediate.pem
-# Verify the certificate chain
+# Verify the certificate chain, for Azure China 21Vianet the intermediate certificate will be from DigiCert Global Root CA
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
-In gevallen waarin het tussencertificaat niet kan worden gedownload vanwege netwerkbeperkingen tijdens de validatie, kan het tussencertificaat worden vastgemaakt. Azure rolt de certificaten echter over volgens de standaard PKI-praktijk. De vastgemaakte certificaten moeten worden bijgewerkt wanneer de roll over plaatsvindt. Wanneer een wijziging om het tussencertificaat bij te werken is gepland, wordt de Azure-blog bijgewerkt en worden Azure-klanten op de hoogte gebracht. De tussenliggende certificaten zijn [hier](https://www.microsoft.com/pki/mscorp/cps/default.htm)te vinden. De tussenliggende certificaten voor elk van de regio's kunnen verschillend zijn.
+In gevallen waarin het tussencertificaat niet kan worden gedownload vanwege netwerkbeperkingen tijdens de validatie, kan het tussencertificaat worden vastgemaakt. Azure rolt de certificaten echter over volgens de standaard PKI-praktijk. De vastgemaakte certificaten moeten worden bijgewerkt wanneer rollover plaatsvindt. Wanneer een wijziging om het tussencertificaat bij te werken is gepland, wordt de Azure-blog bijgewerkt en worden Azure-klanten op de hoogte gebracht. De tussenliggende certificaten zijn [hier](https://www.microsoft.com/pki/mscorp/cps/default.htm)te vinden. De tussenliggende certificaten voor elk van de regio's kunnen verschillend zijn.
+
+> [!NOTE]
+> Het tussencertificaat voor Azure China 21Vianet is afkomstig van DigiCert Global Root CA in plaats van Baltimore.
+Ook als u de tussenliggende certificaten voor Azure China had vastgemaakt als onderdeel van wijziging van de hoofdketenautoriteit, moeten de tussenliggende certificaten worden bijgewerkt.
 
 ### <a name="failover-clustering-in-windows-server"></a>Failoverclustering in Windows Server
 
@@ -1032,7 +1036,7 @@ Aan de slag  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
-JavaScript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
+Javascript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
 PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
 Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 Perl       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3d71301534d56ef8eca68951c8c9f9a1570b3a6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d3bcc32dc8f1412a5adbc175a5f8618628bce83
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282253"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547891"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: Azure-to-Azure-herstel na noodgevallen
 
@@ -93,7 +93,7 @@ Door Siteherstel te gebruiken, u VM's repliceren en herstellen tussen twee regio
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Vereist Site Recovery internetverbinding?
 
-Nee, siteherstel vereist geen internetverbinding. Maar het vereist wel toegang tot URL's en IP-bereiken voor siteherstel, zoals vermeld in [netwerken in Azure VM-noodherstel.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)
+Nee, siteherstel vereist geen internetverbinding. Maar het vereist wel toegang tot URL's en IP-bereiken voor siteherstel, zoals vermeld in [netwerken in Azure VM-noodherstel.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>Kan ik een toepassing repliceren met een afzonderlijke brongroep voor afzonderlijke lagen?
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: f0e74a366e8dbb515f2f50748eb4a5c76088a723
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 8f4703330190d3907e9a6e3aead8892fe69e7c13
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398034"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521223"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Beveiligingsaanbevelingen - een naslaggids
 
@@ -105,7 +105,7 @@ Uw beveiligde score is gebaseerd op het aantal aanbevelingen van het Beveiliging
 |**Variabelen van automatiseringsaccount moeten worden versleuteld**|Schakel versleuteling van automation-accountvariabele assets in bij het opslaan van gevoelige gegevens.<br>(Gerelateerd beleid: Versleuteling moet worden ingeschakeld op variabelen van het Automatiseringsaccount)|Hoog|N|Compute resources (automatiseringsaccount)|
 |**Schijfversleuteling moet worden toegepast op virtuele machines**|Versleutel uw virtuele machineschijven met Azure Disk Encryption voor zowel Windows- als Linux-virtuele machines. Azure Disk Encryption (ADE) maakt gebruik van de industriestandaard BitLocker-functie van Windows en de DM-Crypt-functie van Linux om os- en gegevensschijfversleuteling te bieden om uw gegevens te beschermen en te beschermen en te helpen voldoen aan uw organisatorische beveiligings- en nalevingsverplichtingen in azure-sleutelkluis van klanten. Wanneer voor uw nalevings- en beveiligingsvereiste moet u de gegevens van eind tot eind versleutelen met behulp van uw versleutelingssleutels, inclusief versleuteling van de tijdelijke (lokaal gekoppelde tijdelijke) schijf, gebruikt u Azure-schijfversleuteling. Beheerde schijven worden standaard standaard versleuteld met Azure Storage Service Encryption, waarbij de coderingssleutels door Microsoft beheerde sleutels in Azure zijn. Als dit voldoet aan uw nalevings- en beveiligingsvereisten, u gebruikmaken van de standaardbeheerde schijfversleuteling om aan uw vereisten te voldoen.<br>(Gerelateerd beleid: Schijfversleuteling moet worden toegepast op virtuele machines)|Hoog|N|Machine|
 |**Virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-bronnen**|Gebruik Azure Resource Manager voor uw virtuele machines om beveiligingsverbeteringen te bieden, zoals: strengere toegangscontrole (RBAC), betere controle, op Resource Manager gebaseerde implementatie en beheer, toegang tot beheerde identiteiten, toegang tot sleutelkluis voor geheimen, Azure AD-gebaseerde verificatie en ondersteuning voor tags en brongroepen voor eenvoudiger beveiligingsbeheer.<br>(Gerelateerd beleid: virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-bronnen)|Laag|N|Machine|
-|**Kwetsbaarheidsbeoordelingsoplossing moet worden geïnstalleerd op uw virtuele machines**|Installeer een oplossing voor de beoordeling van kwetsbaarheden op uw virtuele machines<br>(Gerelateerd beleid: Kwetsbaarheidsbeoordeling moet worden geïnstalleerd op virtuele machines)|Middelgroot|N|Machine|
+|**Kwetsbaarheidsbeoordelingsoplossing moet worden geïnstalleerd op uw virtuele machines**|Installeer een oplossing voor de beoordeling van kwetsbaarheden op uw virtuele machines<br>(Gerelateerd beleid: Kwetsbaarheden moeten worden verholpen door een oplossing voor kwetsbaarheidsbeoordeling)|Middelgroot|N|Machine|
 |**Kwetsbaarheden moeten worden verholpen door een oplossing voor kwetsbaarheidsbeoordeling**|Virtuele machines waarvoor een oplossing voor kwetsbaarheidsbeoordeling van derden wordt geïmplementeerd, worden voortdurend beoordeeld op kwetsbaarheden in toepassingen en besturingssysteem. Wanneer dergelijke kwetsbaarheden worden gevonden, deze zijn beschikbaar voor meer informatie als onderdeel van de aanbeveling.<br>(Gerelateerd beleid: Kwetsbaarheden moeten worden verholpen door een oplossing voor kwetsbaarheidsbeoordeling)|Hoog|N|Machine|
 |**Kwetsbaarheden in beveiligingsconfiguratie op uw machines moeten worden verholpen**|Verwerk kwetsbaarheden in de beveiligingsconfiguratie op uw machines om ze te beschermen tegen aanvallen.<br>(Gerelateerd beleid: Kwetsbaarheden in beveiligingsconfiguratie op uw machines moeten worden verholpen)|Laag|N|Machine|
 |**Kwetsbaarheden in containerbeveiligingsconfiguraties moeten worden verholpen**|Verwerk kwetsbaarheden in beveiligingsconfiguratie op machines met Docker geïnstalleerd om hen te beschermen tegen aanvallen.<br>(Gerelateerd beleid: Kwetsbaarheden in containerbeveiligingsconfiguraties moeten worden verholpen)|Hoog|N|Machine|

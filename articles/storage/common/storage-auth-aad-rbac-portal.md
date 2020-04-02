@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ec32990513d9199c4aaccf1bcfcbf76f348f877b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d224bd9e9e7b1f8fc9eb45d85e78811d8642fc78
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867507"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519574"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>De Azure-portal gebruiken om een RBAC-rol toe te wijzen voor toegang tot blob- en wachtrijgegevens
 
@@ -23,13 +23,13 @@ Azure Active Directory (Azure AD) geeft toegangsrechten voor beveiligde bronnen 
 
 Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligingsprincipal, verleent Azure toegang tot deze bronnen voor die beveiligingsprincipal. Toegang kan worden beperkt tot het niveau van het abonnement, de resourcegroep, het opslagaccount of een afzonderlijke container of wachtrij. Een Azure AD-beveiligingsprincipal kan een gebruiker, een groep, een hoofd van de toepassingsservice of een [beheerde identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)zijn.
 
-In dit artikel wordt beschreven hoe u de Azure-portal gebruiken om RBAC-rollen toe te wijzen. De Azure-portal biedt een eenvoudige interface voor het toewijzen van RBAC-rollen en het beheren van toegang tot uw opslagbronnen. U ook RBAC-rollen toewijzen voor blob- en wachtrijresources met Azure-opdrachtregelhulpprogramma's of de API's voor Azure Storage Management. Zie [Toegang tot Azure blobs en wachtrijen verifiëren met Azure Active Directory](storage-auth-aad.md)voor meer informatie over RBAC-rollen voor opslagresources. 
+In dit artikel wordt beschreven hoe u de Azure-portal gebruiken om RBAC-rollen toe te wijzen. De Azure-portal biedt een eenvoudige interface voor het toewijzen van RBAC-rollen en het beheren van toegang tot uw opslagbronnen. U ook RBAC-rollen toewijzen voor blob- en wachtrijresources met Azure-opdrachtregelhulpprogramma's of de API's voor Azure Storage Management. Zie [Toegang tot Azure blobs en wachtrijen verifiëren met Azure Active Directory](storage-auth-aad.md)voor meer informatie over RBAC-rollen voor opslagresources.
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>RBAC-rollen voor blobs en wachtrijen
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Resourcebereik bepalen 
+## <a name="determine-resource-scope"></a>Resourcebereik bepalen
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
@@ -52,11 +52,11 @@ In de volgende secties worden elk van deze stappen nader beschreven.
 
 Voordat u een rol toewijst aan een beveiligingsprincipal, moet u rekening houden met het bereik van de machtigingen die u verleent. Controleer de sectie [Resourcebereik bepalen](#determine-resource-scope) om het juiste bereik te bepalen.
 
-De hier weergegeven procedure wijst een rol toe die aan een container is toegewezen, maar u dezelfde stappen volgen om een rol toegewezen aan een wachtrij toe te wijzen: 
+De hier weergegeven procedure wijst een rol toe die aan een container is toegewezen, maar u dezelfde stappen volgen om een rol toegewezen aan een wachtrij toe te wijzen:
 
 1. Ga in de [Azure-portal](https://portal.azure.com)naar uw opslagaccount en geef het **overzicht** voor het account weer.
-1. Selecteer **Blobs**onder Services . 
-1. Zoek de container waarvoor u een rol wilt toewijzen en geef de instellingen van de container weer. 
+1. Selecteer **Blobs**onder Services .
+1. Zoek de container waarvoor u een rol wilt toewijzen en geef de instellingen van de container weer.
 1. Selecteer **Toegangsbesturingselement (IAM)** om toegangsbeheerinstellingen voor de container weer te geven. Selecteer het tabblad **Toewijzingen van rollen** om de lijst met roltoewijzingen weer te geven.
 
     ![Schermafbeelding van instellingen voor toegangsbeheer voor containers](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)

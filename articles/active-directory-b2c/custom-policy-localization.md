@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1401cbe1920c7c6df804aadbba1751612ba9cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be12bce8fa29076621bec35228838a4ebdd97433
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126792"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545872"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>De gebruikersinterface van uw toepassing lokaliseren met een aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Met taalaanpassing in Azure Active Directory B2C (Azure AD B2C) u verschillende talen aanpassen aan de behoeften van uw klant. Microsoft biedt de vertalingen voor 36 talen, maar u ook uw eigen vertalingen voor elke taal. Zelfs als uw ervaring slechts voor één taal is bedoeld, u elke tekst op de pagina's aanpassen. 
+Met taalaanpassing in Azure Active Directory B2C (Azure AD B2C) u verschillende talen aanpassen aan de behoeften van uw klant. Microsoft biedt de vertalingen voor [36 talen,](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)maar u ook uw eigen vertalingen voor elke taal. Zelfs als uw ervaring slechts voor één taal is bedoeld, u elke tekst op de pagina's aanpassen. 
 
 In dit artikel ziet u hoe u meerdere landzetten of talen ondersteunen in het beleid voor gebruikersreizen. Lokalisatie vereist drie stappen: de expliciete lijst met ondersteunde talen instellen, taalspecifieke tekenreeksen en verzamelingen bieden en de [inhoudsdefinitie](contentdefinitions.md) voor de pagina bewerken. 
 

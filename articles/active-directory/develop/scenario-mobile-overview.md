@@ -1,6 +1,6 @@
 ---
 title: Een mobiele app bouwen die web-API's aanroept | Azure
-titleSuffix: Microsoft identity platform
+titleSuffix: Microsoft identity platform | Azure
 description: Meer informatie over het bouwen van een mobiele app die webAPI's aanroept (overzicht)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6675d67299091325fcc3e12572a906716bf5b88d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acd44298e401aabaef03f5ddd84f37f32a3d8bcd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77132424"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546095"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenario: Mobiele toepassing die web-API's aanroept
 
@@ -53,13 +53,14 @@ Overwegingen voor mobiele apps:
 - **Gebruikerservaring is essentieel:** gebruikers toestaan om de waarde van uw app te zien voordat u om aanmelding vraagt. Vraag alleen de vereiste machtigingen aan.
 - **Alle gebruikersconfiguraties ondersteunen:** veel gebruikers van mobiele bedrijven moeten zich houden aan het beleid inzake voorwaardelijke toegang en beleid voor naleving van apparaten. Zorg ervoor dat u deze belangrijke scenario's ondersteunt.
 - **Single sign-on (SSO)** implementeren: Door MSAL en Microsoft-identiteitsplatform te gebruiken, u eenmalige aanmelding inschakelen via de browser van het apparaat of Microsoft Authenticator (en Intune Company Portal op Android).
+- **De modus Gedeeld apparaat implementeren:** Stel uw toepassing in staat om te worden gebruikt in scenario's voor gedeelde apparaten, bijvoorbeeld ziekenhuizen, productie, detailhandel en financiën. [Lees meer over het ondersteunen van de modus gedeeld apparaat](msal-shared-devices.md).
 
 ## <a name="specifics"></a>Details
 
 Houd rekening met de volgende overwegingen wanneer u een mobiele app bouwt op het identiteitsplatform van Microsoft:
 
 - Afhankelijk van het platform is enige gebruikersinteractie vereist de eerste keer dat gebruikers zich aanmelden. IOS vereist bijvoorbeeld dat apps gebruikersinteractie weergeven wanneer ze SSO voor het eerst gebruiken via Microsoft Authenticator (en Intune Company Portal op Android).
-- Op iOS en Android kan MSAL een externe browser gebruiken om gebruikers aan te melden. De externe browser kan boven op uw app worden weergegeven. U de configuratie aanpassen om in-app WebViews te gebruiken.
+- Op iOS en Android kan MSAL een externe browser gebruiken om gebruikers aan te melden. De externe browser kan boven op uw app worden weergegeven.
 - Gebruik nooit een geheim in een mobiele applicatie. In deze toepassingen zijn geheimen toegankelijk voor alle gebruikers.
 
 ## <a name="next-steps"></a>Volgende stappen

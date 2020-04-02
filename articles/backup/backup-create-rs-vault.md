@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u vaults van Recovery Services maakt die
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: e722996f516d21445d8e0028df925ca44eb02bfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38f23ee458845b92c04af47307a2411b26c8ac81
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295019"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529385"
 ---
 # <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -90,6 +90,7 @@ Voor dit proces zijn er prijsimplicaties zoals het is op het opslagniveau.
 >- Bekijk de [ondersteuningsmatrix](backup-support-matrix.md#cross-region-restore) voor een lijst met ondersteunde beheerde typen en regio's.
 >- De functie Cross Region Restore (CRR) is momenteel alleen beschikbaar in de volgende regio's: 
 >    - VS - west-centraal
+>    - VS - west
 >    - VS - west 2
 >    - VS - zuid-centraal
 >    - VS - oost
@@ -101,11 +102,14 @@ Voor dit proces zijn er prijsimplicaties zoals het is op het opslagniveau.
 >    - Australië - zuidoost
 >    - India - centraal
 >    - India - zuid
+>    - India - west
 >    - Japan - oost
 >    - Japan - west
 >    - Azië - zuidoost
 >    - Verenigd Koninkrijk Zuid
 >    - Verenigd Koninkrijk West
+>    - Europa -west
+>    - Europa - noord
 >    - Frankrijk - centraal
 >    - Korea - centraal
 >    - Korea - zuid

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 11f9097fc4875f0a4300ac56dafe7af9a0b00c97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8a8502b40410df221886cde2fa5f3db15bf3eed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454615"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549164"
 ---
 # <a name="cloud-tiering-overview"></a>Overzicht van cloudlagen
 Cloudtiering is een optionele functie van Azure File Sync, waarbij vaak geopende bestanden lokaal op de server in de cache worden opgeslagen, terwijl alle andere bestanden zijn gelaagd tot Azure Files op basis van beleidsinstellingen. Wanneer een bestand is gelaagd, vervangt het azure file sync-bestandssysteemfilter (StorageSync.sys) het bestand lokaal door een aanwijzer of een reparsepunt. Het heespunt vertegenwoordigt een URL naar het bestand in Azure-bestanden. Een gelaagd bestand heeft zowel het kenmerk 'offline' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS dat is ingesteld in NTFS, zodat toepassingen van derden trapsgewijs gelaagde bestanden kunnen identificeren.
@@ -51,7 +51,22 @@ Wanneer er meer dan één servereindpunt op een volume is, is de effectieve volu
 
 <a id="date-tiering-policy"></a>
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Hoe werkt het opslaglaagbeleid voor datums in combinatie met het opslaglaagbeleid voor beschikbare volumeruimte? 
-Wanneer u cloudlagen inschakelt op een servereindpunt, stelt u een beleid voor volumevrije ruimte in. Het heeft altijd voorrang op andere beleidsregels, inclusief het datumbeleid. Optioneel u een datumbeleid inschakelen voor elk servereindpunt op dat volume, wat betekent dat alleen bestanden die toegankelijk zijn (dat wil zeggen, lezen of geschreven zijn) binnen het bereik van dagen dat dit beleid beschrijft, lokaal worden bewaard, waarbij stalbestanden worden gelaagd. Houd er rekening mee dat het beleid voor volumevrije ruimte altijd voorrang heeft en als er niet genoeg vrije ruimte op het volume is om zoveel dagen aan bestanden te behouden als beschreven in het datumbeleid, blijft Azure File Sync de koudste bestanden tieren totdat het volume vrij is ruimtepercentage is voldaan.
+Wanneer u cloudlagen inschakelt op een servereindpunt, stelt u een beleid voor volumevrije ruimte in. Het heeft altijd voorrang op andere beleidsregels, inclusief het datumbeleid. Optioneel u een datumbeleid inschakelen voor elk servereindpunt op dat volume. Dit beleid beheert dat alleen bestanden die zijn geopend (dat wil zeggen, lezen of geschreven zijn) binnen het bereik van dagen dat dit beleid beschrijft, lokaal worden bewaard. Bestanden die niet toegankelijk zijn met het opgegeven aantal dagen, worden trapsgewijs weergegeven. 
+
+Cloud Tiering gebruikt de laatste toegangstijd om te bepalen welke bestanden moeten worden gelaagd. Het cloud tiering filter driver (storagesync.sys) volgt de laatste toegangstijd en registreert de informatie in het cloud tiering heat store. U de warmtewinkel zien met behulp van een lokale PowerShell-cmdlet.
+
+```powershell
+Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
+Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+```
+
+> [!IMPORTANT]
+> De timestamp met laatst geopende tijdstempel is geen eigenschap die wordt bijgehouden door NTFS en dus niet standaard zichtbaar is in Verkenner. Gebruik de laatst gewijzigde tijdstempel in een bestand niet om te controleren of het datumbeleid werkt zoals verwacht. Deze timestamp alleen tracks schrijft, niet leest. Gebruik de getoonde cmdlet om de laatst geopende tijdstempel voor deze evaluatie te krijgen.
+
+> [!WARNING]
+> Schakel de NTFS-functie voor het bijhouden van de laatst geopende tijdstempel voor bestanden en mappen niet in. Deze functie is standaard uitgeschakeld omdat deze een grote impact heeft op de prestaties. Azure File Sync houdt de laatst geopende tijden automatisch en zeer efficiënt bij en maakt geen gebruik van deze NTFS-functie.
+
+Houd er rekening mee dat het beleid voor volumevrije ruimte altijd voorrang heeft en als er niet genoeg vrije ruimte op het volume is om zoveel dagen aan bestanden te behouden als beschreven in het datumbeleid, blijft Azure File Sync de koudste bestanden op de hoogte houden totdat het volumevrije ruimtepercentage is voldaan.
 
 Stel dat u een op datum gebaseerd tieringbeleid van 60 dagen en een volumevrije ruimtebeleid van 20% hebt. Als er na het toepassen van het datumbeleid minder dan 20% vrije ruimte op het volume is, zal het volumevrije ruimtebeleid het datumbeleid intrappen en overschrijven. Dit zal resulteren in meer bestanden worden tiered, zodanig dat de hoeveelheid gegevens bewaard op de server kan worden teruggebracht van 60 dagen van de gegevens tot 45 dagen. Omgekeerd zal dit beleid de gelaagdheid van bestanden die buiten uw tijdsbereik vallen, zelfs als u uw drempelruimtedrempel voor vrije ruimte niet hebt bereikt, afdwingen, zodat een bestand dat 61 dagen oud is, wordt gelaagd, zelfs als uw volume leeg is.
 

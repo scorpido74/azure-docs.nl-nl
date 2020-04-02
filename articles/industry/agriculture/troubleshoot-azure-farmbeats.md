@@ -5,29 +5,45 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 7a31eece6629558b14b614853addce59642e698b
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 504dfb721c7b87d5497c73851d0694601b253d5c
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422728"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529697"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
-In dit artikel vindt u oplossingen voor veelvoorkomende Azure FarmBeats-problemen.
+In dit artikel vindt u oplossingen voor veelvoorkomende Azure FarmBeats-problemen. Neem voor extra hulp contact op farmbeatssupport@microsoft.commet ons [ondersteuningsforum](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) of mail ons op .
 
-Voor extra hulp kunt farmbeatssupport@microsoft.comu contact met ons opnemen via . Zorg ervoor dat u het bestand **deployer.log** in uw e-mail opneemt.
+## <a name="install-issues"></a>Problemen met installeren
 
-Ga als volgt te werk om het bestand **deployer.log** te downloaden:
+  > [!NOTE]
+  > Als u de installatie opnieuw start vanwege een fout, moet u de brongroep verwijderen of alle bronnen uit de resourcegroep verwijderen voordat u de installatie opnieuw activeert.
 
-1. Meld u aan bij **azure portal** en selecteer uw abonnement en Azure AD-tenant.
-2. Open Cloud Shell via de bovenste navigatiebalk van de Azure Portal.
-3. Selecteer **Bash** als de voorkeurscloudshell-ervaring.
-4. Selecteer het gemarkeerde pictogram en selecteer vervolgens in de vervolgkeuzelijst **Download**.
+### <a name="invalid-sentinel-credentials"></a>Ongeldige Sentinel-referenties
 
-    ![Project FarmBeats](./media/troubleshoot-azure-farmbeats/download-deployer-log-1.png)
+De Sentinel-referenties die tijdens de installatie worden verstrekt, zijn onjuist. Start de installatie opnieuw met de juiste referenties.
 
-5. Voer in het volgende deelvenster het pad naar het **bestand deployer.log** in. Voer bijvoorbeeld **farmbeats-deployer.log in**.
+### <a name="the-regional-account-quota-of-batch-accounts-for-the-specified-subscription-has-been-reached"></a>Het regionale accountquotum van batchaccounts voor het opgegeven abonnement is bereikt
+
+Verhoog het quotum of verwijder de ongebruikte batchaccounts en start de installatie opnieuw.
+
+### <a name="invalid-resource-group-location"></a>Ongeldige locatie resourcegroep
+
+Controleer of de resourcegroep zich op dezelfde locatie bevindt als de regio die tijdens de installatie is opgegeven.
+
+### <a name="other-install-issues"></a>Andere installatieproblemen
+
+Neem contact met ons op met de volgende gegevens:
+
+- Uw abonnements-id
+- Naam resourcegroep
+- Voeg het logboekbestand voor de implementatiefout toe met de onderstaande stappen:
+
+    1. Navigeer naar de resourcegroep in de Azure-portal.
+    2. Selecteer Implementaties onder sectie Instellingen aan de linkerkant.
+    3. Voor elke implementatie die 'Mislukt' weergeeft, klik je door naar details en download je de implementatiegegevens. Voeg dit bestand toe aan de e-mail.
 
 ## <a name="sensor-telemetry"></a>Sensortelemetrie
 
@@ -37,13 +53,11 @@ Ga als volgt te werk om het bestand **deployer.log** te downloaden:
 
 **Corrigerende maatregelen**:
 
-1. Ga naar uw FarmBeats Datahub-brongroep.   
-
+1. Ga naar uw FarmBeats Datahub-brongroep.
 2. Selecteer de **gebeurtenishub** (DatafeedEventHubNamespace) en controleer vervolgens op het aantal binnenkomende berichten.
-
-3. Voer een van de volgende bewerkingen uit:   
+3. Voer een van de volgende bewerkingen uit:
    - Als er *geen binnenkomende berichten*zijn, neemt u contact op met uw apparaatpartner.  
-   - Als er *binnenkomende berichten* farmbeatssupport@microsoft.comzijn, neemt u contact op met . Voeg uw Datahub- en Accelerator-logboeken toe en vastgelegde telemetrie.
+   - Als er *binnenkomende berichten*zijn, neem dan contact met ons op met uw Datahub- en Accelerator-logboeken en vastgelegde telemetrie.
 
 Als u wilt weten hoe u logboeken downloaden, gaat u naar de sectie [Logboeken handmatig verzamelen.](#collect-logs-manually)  
 
@@ -107,7 +121,7 @@ Terwijl u een apparaat loost, u een van de volgende veelvoorkomende foutscenario
 
 **Bericht**: "Apparaat wordt verwezen in sensoren: Er zijn een of meer sensoren gekoppeld aan het apparaat. Verwijder de sensoren en verwijder het apparaat."  
 
-**Betekenis**: Het apparaat is gekoppeld aan meerdere sensoren die in de farm worden geïmplementeerd.   
+**Betekenis**: Het apparaat is gekoppeld aan meerdere sensoren die in de farm worden geïmplementeerd.
 
 **Corrigerende maatregelen**:  
 
@@ -126,9 +140,7 @@ Terwijl u een apparaat loost, u een van de volgende veelvoorkomende foutscenario
 
     > [!NOTE]
     > U een apparaat niet verwijderen als er sensoren aan zijn gekoppeld. Zie de sectie **Sensor verwijderen** in [Sensorgegevens ophalen van sensorpartners](get-sensor-data-from-sensor-partner.md)voor meer informatie over het verwijderen van bijbehorende sensoren.
-
     > Partners hebben geen toegang tot het verwijderen van een apparaat of sensor. Alleen beheerders hebben toegang tot hetzelfde te doen.
-
 
 ## <a name="issues-with-jobs"></a>Problemen met taken
 
@@ -136,7 +148,7 @@ Terwijl u een apparaat loost, u een van de volgende veelvoorkomende foutscenario
 
 **Bericht:**"Interne fout FarmBeats, zie handleiding voor probleemoplossing voor meer details".
 
-**Corrigerende maatregelen:** dit probleem kan het gevolg zijn van een tijdelijke fout in de gegevenspijplijn. Maak de taak opnieuw. Als de fout blijft bestaan, voegt u het foutbericht toe FarmBeatsSupport@microsoft.comin een bericht op het FarmBeats-forum of neemt u contact op met .
+**Corrigerende maatregelen:** dit probleem kan het gevolg zijn van een tijdelijke fout in de gegevenspijplijn. Maak de taak opnieuw. Als de fout blijft bestaan, neemt u contact met ons op met de foutmelding / logboeken.
 
 ## <a name="accelerator-troubleshooting"></a>Acceleratorprobleemoplossing
 
@@ -146,7 +158,7 @@ Terwijl u een apparaat loost, u een van de volgende veelvoorkomende foutscenario
 
 **Bericht:**'Geen overeenkomende gebruikers gevonden'.
 
-**Corrigerende actie:** controleer de e-id waarvoor u een roltoewijzing probeert toe te voegen. De e-id moet exact overeenkomen met de id, die voor die gebruiker is geregistreerd in de Active Directory. Als de fout blijft bestaan, voegt u het foutbericht toe FarmBeatsSupport@microsoft.comin een bericht op het FarmBeats-forum of neemt u contact op met .
+**Corrigerende actie:** controleer de e-id waarvoor u een roltoewijzing probeert toe te voegen. De e-id moet exact overeenkomen met de id, die voor die gebruiker is geregistreerd in de Active Directory. Als de fout blijft bestaan, neemt u contact met ons op met de foutmelding / logboeken.
 
 ### <a name="unable-to-log-in-to-accelerator"></a>Kan niet inloggen op Accelerator
 
@@ -154,7 +166,7 @@ Terwijl u een apparaat loost, u een van de volgende veelvoorkomende foutscenario
 
 **Corrigerende actie:** Vraag de beheerder om u toestemming te geven voor toegang tot de FarmBeats-implementatie. Dit kan door een post van de RoleAssignment API's te doen of via het toegangsbesturingselement in het deelvenster **Instellingen** in Accelerator.  
 
-Als u al toegang hebt gekregen en met deze fout wordt geconfronteerd, probeert u het opnieuw door de pagina te vernieuwen. Als de fout blijft bestaan, voegt u het foutbericht toe FarmBeatsSupport@microsoft.comin een bericht op het FarmBeats-forum of neemt u contact op met .
+Als u al toegang hebt gekregen en met deze fout wordt geconfronteerd, probeert u het opnieuw door de pagina te vernieuwen. Als de fout blijft bestaan, neemt u contact met ons op met de foutmelding / logboeken.
 
 ![Project FarmBeats](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
@@ -166,7 +178,7 @@ Als u al toegang hebt gekregen en met deze fout wordt geconfronteerd, probeert u
 
 **Corrigerende actie**: Deze fout treedt op als u de pagina te lang inactief laat. Vernieuw de pagina.  
 
-Als de fout blijft bestaan, voegt u het foutbericht toe FarmBeatsSupport@microsoft.comin een bericht op het FarmBeats-forum of neemt u contact op met .
+Als de fout blijft bestaan, neemt u contact met ons op met de foutmelding / logboeken.
 
 **Probleem:** FarmBeats Accelerator toont niet de nieuwste versie, zelfs niet nadat u FarmBeatsDeployment hebt geüpgraded.
 
@@ -185,15 +197,36 @@ Als de fout blijft bestaan, voegt u het foutbericht toe FarmBeatsSupport@microso
 
 Voer een van de volgende handelingen uit:
 
-- Voer het installatieprogramma opnieuw uit voor het upgraden van Datahub met de juiste gebruikersnaam en wachtwoord.
+- Update FarmBeats met de juiste gebruikersnaam / wachtwoord met behulp van de onderstaande stappen en probeer de taak opnieuw.
+
+    *Sentinel-gebruikersnaam bijwerken*
+    1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+    2. Zoek **in het** vak Zoeken naar de brongroep FarmBeats Datahub.
+    3. Selecteer Opslagaccountopslag***** -> containers -> batch-prep-bestanden -> to_vm -> config.ini
+    4. Klik op Bewerken
+    5. De gebruikersnaam bijwerken in de sectie sentinel_account
+
+    *Sentinel-wachtwoord bijwerken*
+    1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+    2. Zoek **in het** vak Zoeken naar de brongroep FarmBeats Datahub.
+    3. Selecteer keyvault-*****
+    4. Selecteer Toegangsbeleid onder Instellingen
+    5. Klik op 'Toegangsbeleid toevoegen'
+    6. Gebruik 'Geheim beheer' voor configureren vanuit sjabloon en voeg uzelf toe aan Principal
+    7. Klik op Toevoegen en klik vervolgens op Opslaan op de pagina Toegangsbeleid
+    8. Klik op Geheimen onder Instellingen
+    9. Klik op Sentinel-wachtwoord
+    10. Een nieuwe versie van de waarde maken en inschakelen
+
 - Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak succesvol is.
 
-### <a name="sentinel-hub-wrongurlor-site-not-accessible"></a>Sentinel-hub: verkeerde URL of site niet toegankelijk 
+### <a name="sentinel-hub-wrongurlor-site-not-accessible"></a>Sentinel-hub: verkeerde URL of site niet toegankelijk
 
-**Job failure bericht:**"Oeps, er ging iets mis. De pagina die u probeerde te openen, is (tijdelijk) niet beschikbaar." 
+**Job failure bericht:**"Oeps, er ging iets mis. De pagina die u probeerde te openen, is (tijdelijk) niet beschikbaar."
 
 **Corrigerende maatregelen**:
-1. Open [Sentinel](https://scihub.copernicus.eu/dhus/) in uw browser om te zien of de website toegankelijk is. 
+
+1. Open [Sentinel](https://scihub.copernicus.eu/dhus/) in uw browser om te zien of de website toegankelijk is.
 2. Als de website niet toegankelijk is, controleert u of een firewall, bedrijfsnetwerk of andere blokkeringssoftware de toegang tot de website verhindert en neemt u de nodige stappen om de Sentinel-URL toe te staan. 
 3. Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak succesvol is.  
 
@@ -215,25 +248,26 @@ Dit probleem kan optreden als er onderhoudswerkzaamheden worden uitgevoerd op de
 
 **Bericht voor het mislukken:**"Maximaal aantal twee\<gelijktijdige stromen bereikt door de gebruikersnaam> van de gebruiker."
 
-**Betekenis:** Als een taak mislukt omdat het maximum aantal verbindingen is bereikt, wordt hetzelfde Sentinel-account gebruikt in een andere software-implementatie.
+**Betekenis:** Als een taak mislukt omdat het maximum aantal verbindingen is bereikt, wordt hetzelfde Sentinel-account in meerdere taken gebruikt.
 
 **Corrigerende maatregelen**: Probeer een van de volgende opties:
 
-* Maak een nieuw Sentinel-account aan en voer het installatieprogramma opnieuw uit om Datahub te upgraden met een nieuwe Sentinel-gebruikersnaam en -wachtwoord.  
-* Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak succesvol is.
+* Wacht tot de andere taken zijn voltooid voordat de mislukte taak opnieuw wordt uitgevoerd.
+* Maak een nieuw Sentinel-account aan en werk de Sentinel-gebruikersnaam en -wachtwoord bij in FarmBeats.
 
-### <a name="sentinel-server-refused-connection"></a>Sentinel-server: geweigerde verbinding 
+### <a name="sentinel-server-refused-connection"></a>Sentinel-server: geweigerde verbinding
 
-**Bericht voor het mislukken**: http://172.30.175.69:8983/solr/dhus"Server weigerde verbinding op: ." 
+**Bericht voor het mislukken**: http://172.30.175.69:8983/solr/dhus"Server weigerde verbinding op: ."
 
-**Corrigerende maatregelen:** Dit probleem kan optreden als er onderhoudswerkzaamheden worden uitgevoerd op de Sentinel-server. 
-1. Als een taak of pijplijn mislukt omdat er onderhoud wordt uitgevoerd, dient u de taak na enige tijd opnieuw in. 
+**Corrigerende maatregelen:** Dit probleem kan optreden als er onderhoudswerkzaamheden worden uitgevoerd op de Sentinel-server.
+
+1. Als een taak of pijplijn mislukt omdat er onderhoud wordt uitgevoerd, dient u de taak na enige tijd opnieuw in.
 
    Ga voor informatie over geplande of ongeplande Sentinel-onderhoudsactiviteiten naar de [Copernicus Open Access Hub-nieuwssite.](https://scihub.copernicus.eu/news/)  
 
 2. Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak succesvol is.
 
-### <a name="soil-moisture-map-has-white-areas"></a>Bodemvocht kaart heeft witte gebieden 
+### <a name="soil-moisture-map-has-white-areas"></a>Bodemvocht kaart heeft witte gebieden
 
 **Probleem**: De bodemvochtkaart is gegenereerd, maar de kaart heeft meestal witte gebieden.
 
@@ -244,114 +278,34 @@ Dit probleem kan optreden als er onderhoudswerkzaamheden worden uitgevoerd op de
 
 [Azure Storage Explorer installeren en implementeren]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
-### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Azure Data Factory-taaklogboeken verzamelen in Datahub
+### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Azure Data Factory-taaklogboeken of App-servicelogboeken verzamelen in Datahub
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Zoek **in het** vak Zoeken naar de brongroep FarmBeats Datahub.
-
-    > [!NOTE]
-    > Selecteer de Gegevenshub-brongroep die u hebt opgegeven tijdens de installatie van FarmBeats.
-
-3. Zoek in het dashboard **van resourcegroep** naar het *opslagaccount van\* datahublogs.* Zoek bijvoorbeeld naar **datahublogsmvxmq**.  
+3. Zoek in het dashboard **van resourcegroep** naar het *opslagaccount van\* datahublogs.* Bijvoorbeeld, *datahublogsmvxmq*.  
 4. Selecteer **in** de kolom Naam het opslagaccount om het dashboard **van het opslagaccount** weer te geven.
 5. Selecteer in het deelvenster **datahubblogs\* ** de optie **Openen in Explorer** om de toepassing Azure Storage **Explorer** te openen.
-6. Selecteer **blobcontainers**in het linkerdeelvenster en selecteer **vervolgens taaklogboeken**.
-7. Selecteer **Downloaden**in het venster **Taaklogboeken** .
-8. Download de logboeken naar een lokale map op uw machine.
-9. E-mail het gedownloade farmbeatssupport@microsoft.com.zip-bestand naar .
+6. Selecteer **blobcontainers**in het linkerdeelvenster en selecteer **vervolgens taaklogboeken** voor Azure Data Factory-logboeken of **appinsights-logs** voor App Service-logboeken.
+7. Selecteer De logboeken **downloaden** en downloaden naar een lokale map op uw machine.
 
     ![Project FarmBeats](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
 
-### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Azure Data Factory-taaklogboeken verzamelen in Accelerator
+### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Azure Data Factory-taaklogboeken of App-servicelogboeken voor Accelerator verzamelen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Zoek **in het** vak Zoeken naar de resourcegroep FarmBeats Accelerator.
-
-    > [!NOTE]
-    > Selecteer de resourcegroep Accelerator die u hebt opgegeven tijdens de installatie farmbeats.
-
-3. Zoek in het dashboard **Resourcegroep** naar het *\* opslagaccount.* Zoek bijvoorbeeld naar **storagedop4k.\***
+3. Zoek in het dashboard **Resourcegroep** naar het *\* opslagaccount.* Bijvoorbeeld *storagedop4k\**.
 4. Selecteer het opslagaccount in de kolom **Naam** om het dashboard **van het opslagaccount** weer te geven.
 5. Selecteer in het **opslagvenster\* ** **Openen in Explorer** om de Azure Storage Explorer-toepassing te openen.
-6. Selecteer **blobcontainers**in het linkerdeelvenster en selecteer **vervolgens taaklogboeken**.
-7. Selecteer **Downloaden**in het venster **Taaklogboeken** .
-8. Download de logboeken naar een lokale map op uw machine.
-9. E-mail het gedownloade farmbeatssupport@microsoft.com.zip-bestand naar .
-
-
-### <a name="collect-datahub-app-service-logs"></a>Gegevenshub-app-servicelogboeken verzamelen
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zoek **in het** vak Zoeken naar de brongroep FarmBeats Datahub.
-
-    > [!NOTE]
-    > Selecteer de Gegevenshub-brongroep die u hebt opgegeven tijdens de installatie van FarmBeats.
-
-3. Zoek in de brongroep naar het *\* datahublogs-opslagaccount.* Zoek bijvoorbeeld naar **datahublogsmvxmq\***.
-4. Selecteer het opslagaccount in de kolom **Naam** om het dashboard **van het opslagaccount** weer te geven.
-5. Selecteer in het deelvenster **datahubblogs\* ** de optie **Openen in Explorer** om de Azure Storage Explorer-toepassing te openen.
-6. Selecteer **blobcontainers**in het linkerdeelvenster en selecteer **vervolgens appinsights-logs**.
-7. Selecteer **Downloaden**in het deelvenster **appinsights-logs** .
-8. Download de logboeken naar een lokale map op uw machine.
-9. E-mail het gedownloade farmbeatssupport@microsoft.com.zip-bestand naar .
-
-### <a name="collect-accelerator-app-service-logs"></a>Servicelogboeken van accelerator-app verzamelen
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zoek **in het** vak Zoeken naar de resourcegroep FarmBeats Accelerator.
-
-    > [!NOTE]
-    > Selecteer de resourcegroep FarmBeats Accelerator die is geleverd tijdens de installatie farmbeats.
-
-3. Zoek in de brongroep naar het *\* opslagaccount.* Zoek bijvoorbeeld naar **storagedop4k.\***
-4. Selecteer het opslagaccount in de kolom **Naam** om het dashboard **van het opslagaccount** weer te geven.
-5. Selecteer in het **opslagvenster\* ** **Openen in Explorer** om de Azure Storage Explorer-toepassing te openen.
-6. Selecteer **blobcontainers**in het linkerdeelvenster en selecteer **vervolgens appinsights-logs**.
-7. Selecteer **Downloaden**in het deelvenster **appinsights-logs** .
-8. Download de logboeken naar een lokale map op uw machine.
-9. E-mail de farmbeatssupport@microsoft.comgedownloade map naar .
-
-## <a name="known-issues"></a>Bekende problemen
-
-## <a name="batch-related-issues"></a>Batchgerelateerde problemen
-
-**Foutbericht:**'Het regionale accountquotum van Batchaccounts voor het opgegeven abonnement is bereikt'.
-
-**Corrigerende maatregelen**: Verhoog het quotum of verwijder de ongebruikte batchaccounts en voer de implementatie opnieuw uit.
-
-### <a name="azure-active-directory-azure-ad-related-issues"></a>Azure Active Directory (Azure AD)-gerelateerde problemen
-
-**Foutbericht:**"Kan de vereiste instellingen niet bijwerken naar Azure AD App d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0: Onvoldoende bevoegdheden om de bewerking te voltooien. Controleer of de bovenstaande instellingen goed zijn geconfigureerd voor de Azure AD-app."
-
-**Betekenis:** de configuratie van de Azure AD-app-app is niet goed voltooid.  
-
-**Corrigerende maatregelen:** Vraag de IT-beheerder (de persoon met leestoegang voor tenant) om ons [script](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) te gebruiken voor het maken van de Azure AD-appregistratie. Dit script zorgt automatisch voor de configuratiestappen.
-
-**Foutbericht**: 'Kan geen nieuwe\<toepassingsnaam\>van Active Directory Application ' maken in deze tenant: een ander object met dezelfde waarde voor URI's van eigenschap-id bestaat al."
-
-**Betekenis**: Er bestaat al een Azure AD-app-registratie met dezelfde naam.
-
-**Corrigerende maatregelen:** verwijder de bestaande Azure AD-app-registratie of gebruik deze opnieuw voor installatie. Als u de bestaande Azure AD-app-registratie opnieuw gebruikt, geeft u de toepassings-id en het clientgeheim door aan het installatieprogramma en implementeert u opnieuw.
-
-## <a name="issues-with-the-inputjson-file"></a>Problemen met het bestand input.json
-
-**Fout:** er is een foutleesinvoer van het *bestand input van input.json.*
-
-**Corrigerende maatregelen**: Dit probleem ontstaat meestal als gevolg van een fout bij het opgeven van het juiste filepad of de naam *van input.json* aan het installatieprogramma. Breng de juiste correcties aan en probeer de implementatie opnieuw.
-
-**Fout:** er is een fout bij het ontleden van waarden in het bestand *input.json.*
-
-**Corrigerende maatregelen**: Dit probleem ontstaat meestal als gevolg van onjuiste waarden in het *bestand input.json.* Breng de juiste correcties aan en probeer de implementatie opnieuw.
+6. Selecteer **blobcontainers**in het linkerdeelvenster en selecteer **vervolgens taaklogboeken** voor Azure Data Factory-logboeken of **appinsights-logs** voor App Service-logboeken.
+7. Selecteer De logboeken **downloaden** en downloaden naar een lokale map op uw machine.
 
 ## <a name="high-cpu-usage"></a>Hoog CPU-gebruik
 
-**Fout:** U ontvangt een e-mailwaarschuwing die verwijst naar een **waarschuwing voor een hoog CPU-gebruik.** 
+**Fout:** U ontvangt een e-mailwaarschuwing die verwijst naar een **waarschuwing voor een hoog CPU-gebruik.**
 
-**Corrigerende maatregelen**: 
+**Corrigerende maatregelen**:
+
 1. Ga naar uw FarmBeats Datahub-brongroep.
 2. Selecteer de **app-service**.  
 3. Ga naar de prijspagina voor [app-service opschalen](https://azure.microsoft.com/pricing/details/app-service/windows/)en selecteer vervolgens een geschikte prijscategorie.
-
-## <a name="next-steps"></a>Volgende stappen
-
-Als u nog steeds te maken hebt met FarmBeats-problemen, neemt u contact op met ons [ondersteuningsforum.](https://aka.ms/farmbeatssupport)

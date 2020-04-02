@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2970ebf42acb87e93f8b827b3687b219da5867c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9225cfd9793a84f371387d6450a3dfa80ba74de3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80244287"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547527"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure Security Baseline voor Azure Container Registry
 
@@ -68,7 +68,6 @@ Bescherm uw netwerkbronnen:https://docs.microsoft.com/azure/security-center/secu
 U Azure Security Center Just In Time-netwerktoegang gebruiken om NSG's te configureren om de blootstelling van eindpunten naar goedgekeurde IP-adressen gedurende een beperkte periode te beperken. Gebruik ook Azure Security Center Adaptive Network Hardening om NSG-configuraties aan te bevelen die poorten en bron-IP's beperken op basis van werkelijke verkeers- en bedreigingsinformatie.
 
 DDoS-beveiliging configureren:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
-
 
 Azure Firewall implementeren:https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 

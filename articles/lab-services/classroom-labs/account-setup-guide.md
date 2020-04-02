@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
-ms.openlocfilehash: 7b9ef32f16369bbb6c5bb69ef500ec8bb90fde20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88b37ea4ff717689f05afbb41d33a56a8cbb2c22
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370859"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547624"
 ---
 # <a name="lab-account-setup-guide"></a>Handleiding voor het instellen van lab-account
 
@@ -90,7 +90,7 @@ Zodra u de vereisten voor uw labaccount begrijpt, bent u klaar om het in te stel
    - [Resourcegroep](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#resource-group)
    - [Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#lab-account)
    - [Classroom Lab](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#classroom-lab)
-   - [Een regio selecteren\Locatie](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regions-or-locations)
+   - [Een regio selecteren\Locatie](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations)
    - [Naamgevingsrichtlijnen voor resources](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#naming)
 
 2. **Gebruikers toevoegen aan de rol Lab Creator**

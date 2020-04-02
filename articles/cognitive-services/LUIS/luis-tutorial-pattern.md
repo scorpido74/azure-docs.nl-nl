@@ -1,26 +1,18 @@
 ---
 title: 'Zelfstudie: Patronen - LUIS'
-titleSuffix: Azure Cognitive Services
 description: Gebruik patronen om de intentie en entiteitsvoorspelling te vergroten en tegelijkertijd minder voorbeelduitingen in deze zelfstudie te geven. Het patroon wordt geleverd als een voorbeeld van een sjabloonutterance, dat syntaxis bevat om entiteiten en negeerbare tekst te identificeren.
-services: cognitive-services
-author: diberry
-ms.custom: seodec18
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 69894dfc6bcbe9eb56451524c78e82da2745aa52
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 10f0ade45dedb3413887cc4b4dea89e857c1bde7
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979766"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545995"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Zelfstudie: Algemene indelingen voor patroonsjabloon-uitingen toevoegen om voorspellingen te verbeteren
 
-Gebruik in deze zelfstudie patronen om de intentie en entiteitsvoorspelling te vergroten, waardoor u minder voorbeelduitingen geven. Het patroon is sjabloonutterance die is toegewezen aan een intentie, die syntaxis bevat om entiteiten en negeerbare tekst te identificeren.
+Gebruik in deze zelfstudie patronen om de intentie en entiteitsvoorspelling te vergroten, waardoor u minder voorbeelduitingen geven. Het patroon is een sjabloonutterance die is toegewezen aan een intentie, die syntaxis bevat om entiteiten en negeerbare tekst te identificeren.
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -41,7 +33,7 @@ Er zijn twee soorten uitingen opgeslagen in de LUIS-app:
 
 Als u sjabloonuitingen als een patroon toevoegt, u in het algemeen minder voorbeelduitingen aan een intentie toevoegen.
 
-Een patroon wordt toegepast als een combinatie van expressie matching en machine learning.  De sjabloonutterance, samen met de voorbeelduitingen, geeft LUIS een beter inzicht in welke uitingen passen bij de intentie.
+Een patroon wordt toegepast als een combinatie van tekstmatching en machine learning.  De sjabloonutterance in het patroon, samen met de voorbeelduitingen in de intentie, geeft LUIS een beter begrip van welke uitingen passen bij de intentie.
 
 ## <a name="import-example-app-and-clone-to-new-version"></a>Voorbeeld-app en kloon importeren naar nieuwe versie
 
@@ -49,11 +41,13 @@ Voer de volgende stappen uit:
 
 1.  Download en sla het [JSON-bestand van](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)de app op.
 
-1. Importeer de JSON in een nieuwe app in de [preview LUIS-portal](https://preview.luis.ai).
+1. Importeer de JSON in een nieuwe app in de [preview LUIS-portal](https://preview.luis.ai). Selecteer **op** de pagina Mijn apps de optie **+ Nieuwe app voor een gesprek**en selecteer Importeren als **JSON**. Selecteer het bestand dat u in de vorige stap hebt gedownload.
 
-1. Ga naar het gedeelte **Beheren**, open het tabblad **Versies**, kloon de versie en noem deze `patterns`. Klonen is een uitstekende manier om te experimenteren met verschillende functies van LUIS zonder dat de oorspronkelijke versie wordt gewijzigd. Omdat de versienaam wordt gebruikt als onderdeel van de URL-route, kan de naam geen tekens bevatten die niet zijn toegestaan in een URL.
+1. Selecteer in de sectie **Beheren** op het tabblad **Versies** de actieve versie en selecteer **Vervolgens Kloon**. Geef de gekloonde versie een naam. `patterns` Klonen is een uitstekende manier om te experimenteren met verschillende functies van LUIS zonder dat de oorspronkelijke versie wordt gewijzigd. Omdat de versienaam wordt gebruikt als onderdeel van de URL-route, kan de naam geen tekens bevatten die niet zijn toegestaan in een URL.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Nieuwe intenties en de bijbehorende utterances maken
+
+De twee intenties vinden de manager of de directe rapporten van de manager, op basis van de utterancetekst. De moeilijkheid is dat de twee bedoelingen verschillende dingen _betekenen,_ maar de meeste woorden zijn hetzelfde. Alleen de woordvolgorde is anders. Om de intentie correct te kunnen voorspellen, zou het veel voorbeelden moeten hebben.
 
 1. Selecteer **Bouwen** op de navigatiebalk.
 
@@ -105,7 +99,7 @@ Voer de volgende stappen uit:
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Ga naar het einde van de URL in het adres en voer `Who is the boss of Jill Jones?` in. De laatste parameter querystring `query`is de utterance .
+1. Ga naar het einde van de URL _YOUR_QUERY_HERE_ in `Who is the boss of Jill Jones?`de adresbalk en vervang YOUR_QUERY_HERE door: .
 
     ```json
     {
@@ -195,16 +189,16 @@ Voer de volgende stappen uit:
     }
     ```
 
-Is deze query gelukt? Voor deze trainingscyclus is het gelukt. De scores van de twee topintents zijn dichtbij, maar de hoogste intentie is niet significant hoog (meer dan 60%) en is niet ver genoeg boven de score van de volgende intentie.
+De scores van de twee topintents zijn dichtbij, maar de hoogste intentie is niet significant hoog (meer dan 60%) en is niet ver genoeg boven de score van de volgende intentie.
 
-Omdat LUIS-training niet altijd precies hetzelfde is en er daarom kleine variaties kunnen ontstaan, kunnen deze twee scores bij de volgende trainingscyclus zijn omgekeerd. Het resultaat is dat de verkeerde intent kan worden geretourneerd.
+Omdat LUIS training is niet precies hetzelfde elke keer (er is een beetje variatie), deze top twee scores kunnen omkeren op de volgende training cyclus. Het resultaat is dat de verkeerde intent kan worden geretourneerd.
 
 Gebruik patronen om de score van de juiste intent een aanzienlijk hoger percentage te geven en ervoor te zorgen dat de score verder weg ligt van de eerstvolgende hogere score.
 
 Laat dit tweede browservenster geopend. U hebt het verderop in deze zelfstudie namelijk weer nodig.
 
 ## <a name="template-utterances"></a>Sjabloon-utterances
-Vanwege de aard van het Human Resources-domein zijn er een paar algemene manieren om te vragen naar werknemersrelaties in organisaties. Bijvoorbeeld:
+Vanwege de aard van het human resource onderwerp domein, zijn er een paar gemeenschappelijke manieren om te vragen over relaties met werknemers in organisaties. Bijvoorbeeld:
 
 |Utterances|
 |--|
@@ -224,7 +218,7 @@ De syntaxis `{Employee}` markeert de locatie van de entiteit in de sjabloon-utte
 
 Hoewel de syntaxis eruit ziet als een gewone expressie, is het geen gewone expressie. Alleen de accolades, `{}`, en de vierkant haakjes, `[]`, worden als syntaxis ondersteund. Ze kunnen tot maximaal twee niveaus worden genest.
 
-Om ervoor te zorgen dat een patroon overeenkomt met een utterance, moeten eerst de entiteiten binnen de utterance worden vergeleken met de entiteiten in de sjabloon-utterance. Dit betekent dat de entiteiten voldoende voorbeelden moeten hebben in voorbeelduitingen met een hoge mate van voorspelling voordat patronen met entiteiten succesvol zijn. De sjabloon helpt echter niet bij het voorspellen van entiteiten, alleen van intenties.
+Als een patroon kan worden gekoppeld aan een _utterance,_ moeten eerst de entiteiten in de utterance overeenkomen met de entiteiten in de sjabloonutterance. Dit betekent dat de entiteiten voldoende voorbeelden moeten hebben in voorbeelduitingen met een hoge mate van voorspelling voordat patronen met entiteiten succesvol zijn. De sjabloon helpt echter niet bij het voorspellen van entiteiten, alleen van intenties.
 
 **Hoewel u voor patronen minder voorbeeld-utterances hoeft op te geven, komt het patroon niet overeen als de entiteiten niet worden gedetecteerd.**
 
@@ -245,6 +239,8 @@ Om ervoor te zorgen dat een patroon overeenkomt met een utterance, moeten eerst 
     |`Who is {Employee}['s] supervisor[?]`|
     |`Who is the boss of {Employee}[?]`|
 
+    Deze sjabloonuitingen omvatten de entiteit **Werknemer** met de aantekening op krullende haakjes.
+
 1. Terwijl u nog steeds op de pagina Patronen staat, selecteert u de intentie **OrgChart-Reports** en voert u de volgende sjabloonuitingen in:
 
     |Sjabloon-utterances|
@@ -264,7 +260,7 @@ Nu de patronen aan de app zijn toegevoegd, trainen, publiceren en query de app o
 
 1. Nadat het publiceren is voltooid, schakelt u browsertabbladen terug naar het tabblad URL van eindpunt.
 
-1. Ga naar het einde van de URL in het adres en voer `Who is the boss of Jill Jones?` in als utterance. De laatste parameter querystring is de `query`.
+1. Ga naar het einde van de URL in de adresbalk en vervang _YOUR_QUERY_HERE_ door:`Who is the boss of Jill Jones?`
 
     ```json
     {
@@ -375,7 +371,7 @@ Voorbeeldsjabloonuitingen die deze optionele informatie mogelijk maken:
 
 |Intentie|Voorbeeld-utterances met optionele tekst en voorafgemaakte entiteiten|
 |:--|:--|
-|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`]|
+|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
 |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
 
 
@@ -389,14 +385,6 @@ Dankzij het gebruik van de optionele syntaxis met vierkante haken, `[]`, kan dez
 **Vraag: Hoe zit het met slecht geformuleerde utterances zoals `Who will {Employee}['s] manager be on March 3?`.** Grammaticaal verschillende werkwoordsvormen, zoals deze waarbij `will` en `be` van elkaar zijn gescheiden, moeten als een nieuwe sjabloon-utterance worden ingesteld. De bestaande sjabloon-utterance zal een dergelijke werkwoordsvorm niet herkennen. Het doel van de utterance is weliswaar niet veranderd, maar dat geldt wel voor de woordplaatsing in de utterance. Deze wijziging heeft gevolgen voor de voorspelling in LUIS. U [groeperen en of](#use-the-or-operator-and-groups) de werkwoord-tijden om deze uitingen te combineren.
 
 **Houd er rekening mee dat als eerste entiteiten worden gevonden, waarna het patroon wordt vergeleken.**
-
-### <a name="edit-the-existing-pattern-template-utterance"></a>De bestaande patroonsjabloon-utterance bewerken
-
-1. Selecteer in de voorbeeldpoort **LUIS-portal Build** in het bovenste menu en selecteer **Patronen** in het linkermenu.
-
-1. Zoek naar de bestaande `Who is {Employee}['s] manager[?]`sjabloonutterance en selecteer de ellips (***...***) aan de rechterkant en selecteer **vervolgens Bewerken** in het pop-upmenu.
-
-1. Wijzig de sjabloon-utterance in: `who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
 ### <a name="add-new-pattern-template-utterances"></a>Nieuwe patroonsjabloon-utterances toevoegen
 
@@ -428,9 +416,9 @@ Dankzij het gebruik van de optionele syntaxis met vierkante haken, `[]`, kan dez
 Voor al deze utterances zijn de daarin opgenomen entiteiten gevonden en daarom komen ze overeen met hetzelfde patroon en hebben ze een hoge voorspellingsscore. U hebt een paar patronen toegevoegd die overeenkomen met veel variaties van uitingen. U hoefde geen voorbeelduitingen toe te voegen aan de intentie om de sjabloonutterance in het patroon te laten werken.
 
 Dit gebruik van patronen voorzien:
-* hogere voorspellingsscores
-* met dezelfde voorbeelduitingen in de intentie
-* met slechts een paar welll-geconstrueerde sjabloonuitingen in het patroon
+* Hogere voorspellingsscores
+* Met dezelfde voorbeelduitingen in de intentie
+* Met slechts een paar goed geconstrueerde sjabloonuitingen in het patroon
 
 ### <a name="use-the-or-operator-and-groups"></a>De OPERATOR en groepen van de OK gebruiken
 
@@ -472,7 +460,7 @@ Dit maakt gebruik van een **groep** `in` rond `on` de vereiste werkwoordtijd en 
     |`Who will be Jill Jones manager in a month`|
     |`Who will be Jill Jones manager on July 5th`|
 
-Door meer patroonsyntaxis te gebruiken, u het aantal sjabloonuitingen verminderen dat u in uw app moet onderhouden, terwijl u nog steeds een hoge voorspellingsscore hebt.
+Door meer patroonsyntaxis te gebruiken, vermindert u het aantal sjabloonuitingen dat u in uw app moet behouden, terwijl u nog steeds een hoge voorspellingsscore hebt.
 
 ### <a name="use-the-utterance-beginning-and-ending-anchors"></a>De begin- en eindankers van uitingen gebruiken
 
@@ -514,7 +502,7 @@ De lengte varieert en er zijn woorden die verwarrend kunnen zijn voor LUIS om te
 
 1. Selecteer **FindForm** in de lijst met intenties.
 
-1. Voeg enkele voorbeelden van utterances toe:
+1. Voeg enkele voorbeelduitingen toe. De tekst die moet worden voorspeld als een patroon.any is in **vette tekst**. De formuliernaam is moeilijk te bepalen aan de andere woorden eromheen in de utterance. Het patroon.any zal helpen door de grenzen van de entiteit te markeren.
 
     |Voorbeeld van een utterance|Formuliernaam|
     |--|--|

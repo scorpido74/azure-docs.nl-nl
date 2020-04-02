@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: a242da8cc98a21248c48a1b3981fa713706028ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cef49f138b96848b8e59cb5b2d0b185d4568aa9
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064946"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521002"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Een toepassing verifiëren met Azure Active Directory om toegang te krijgen tot gebeurtenishubsbronnen
 Microsoft Azure biedt geïntegreerd beheer van toegangsbeheer voor resources en toepassingen op basis van Azure Active Directory (Azure AD). Een belangrijk voordeel van het gebruik van Azure AD met Azure Event Hubs is dat u uw referenties niet meer in de code hoeft op te slaan. In plaats daarvan u een OAuth 2.0-toegangstoken aanvragen bij het Microsoft Identity-platform. De resourcenaam om een `https://eventhubs.azure.net/` token aan te vragen is (Voor Kafka-clients is `https://<namespace>.servicebus.windows.net`de bron om een token aan te vragen ). Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of serviceprincipal) waarop de toepassing wordt uitgevoerd. Als de verificatie slaagt, retourneert Azure AD een toegangstoken naar de toepassing en kan de toepassing vervolgens het toegangstoken gebruiken om het verzoek tot Azure Event Hubs-bronnen te autoriseren.
@@ -106,7 +106,7 @@ Zie het gedeelte [Scenario's](https://aka.ms/msal-net-scenarios) van de Microsof
 ## <a name="samples"></a>Voorbeelden
 - [Voorbeelden van Microsoft.Azure.EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
-    Deze voorbeelden maken gebruik van de oude **Microsoft.Azure.EventHubs-bibliotheek,** maar u deze eenvoudig bijwerken naar de nieuwste **Azure.Messaging.EventHubs-bibliotheek.** Zie de [handleiding voor het migreren van Microsoft.Azure.EventHubs naar Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)als u het voorbeeld wilt verplaatsen van het gebruik van de oude bibliotheek naar de nieuwe bibliotheek.
+    Deze voorbeelden maken gebruik van de oude **Microsoft.Azure.EventHubs-bibliotheek,** maar u deze eenvoudig bijwerken naar de nieuwste **Azure.Messaging.EventHubs-bibliotheek.** Zie de [handleiding voor het migreren van Microsoft.Azure.EventHubs naar Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)als u het voorbeeld wilt verplaatsen van het gebruik van de oude bibliotheek naar de nieuwe bibliotheek.
 - [Azure.Messaging.EventHubs-voorbeelden](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
     Dit voorbeeld is bijgewerkt om de nieuwste **Azure.Messaging.EventHubs-bibliotheek** te gebruiken.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
-ms.openlocfilehash: d58e11551c2857c269e8985e81f84138f6d389ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b87107545761e10c6fb648e54064fbafbdbacd52
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370812"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546010"
 ---
 # <a name="classroom-lab-setup-guide"></a>Handleiding voor het instellen van klassikale laboratorium
 
@@ -79,7 +79,7 @@ Lab Services maakt gebruik van een pay-as-you-go-prijsmodel, wat betekent dat u 
 Studenten krijgen elk hun eigen VM toegewezen die aan hen is toegewezen voor de levensduur van het lab.  Ze kunnen ervoor kiezen om:
 
 - Sla rechtstreeks op de VM.
-- Opslaan in een externe opslagplaats, zoals OneDrive, GitHub, enz.
+- Opslaan op een externe locatie, zoals OneDrive, GitHub, enz.
 
 Als u OneDrive wilt gebruiken, u ervoor kiezen dit automatisch te configureren voor studenten op hun lab-VM's.  Aanvullende informatie hierover vindt u hieronder.
 
@@ -133,7 +133,7 @@ Zodra u de vereisten voor het lab van uw klas begrijpt, bent u klaar om het op t
         > [!NOTE]
         > Afhankelijk van het type besturingssysteem dat u hebt geïnstalleerd, kan het enkele minuten duren voordat een VIRTUELE V.D.  Om ervoor te zorgen dat een lab-VM klaar is voor gebruik tijdens uw geplande uren, raden we u aan vm's 30 minuten van tevoren te starten om ervoor te zorgen dat VM's worden uitgevoerd en klaar voor gebruik.
 
-   - [Quota instellen voor gebruikers](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) en [extra quota instellen voor een specifieke gebruiker](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quota-for-a-specific-user)
+   - [Quota instellen voor gebruikers](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) en [extra quota instellen voor een specifieke gebruiker](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users)
   
    - [De functie Automatisch afsluiten wanneer de verbinding is verbroken inschakelen](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 

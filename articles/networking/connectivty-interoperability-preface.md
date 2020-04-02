@@ -1,5 +1,5 @@
 ---
-title: 'Interoperabiliteit in azure back-end connectiviteitsfuncties: Testsetup | Microsoft Documenten'
+title: 'Interoperabiliteit in Azure : Testopstelling | Microsoft Documenten'
 description: In dit artikel wordt een testopstelling beschreven die u gebruiken om de interoperabiliteit tussen ExpressRoute, een site-to-site VPN en virtueel netwerkpeeren in Azure te analyseren.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 0cbd4b620a03ed26e95679cf7cb1abef277a9471
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3aec41a145d2c94a45a453393831902069b9c41b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873792"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518196"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Interoperabiliteit in Azure back-end connectiviteitsfuncties: testinstallatie
+# <a name="interoperability-in-azure--test-setup"></a>Interoperabiliteit in Azure : Testsetup
 
 In dit artikel wordt een testopstelling beschreven die u gebruiken om te analyseren hoe Azure-netwerkservices samenwerken op het niveau van het controlevlak en het niveau van het gegevensvlak. Laten we eens kort kijken naar de Azure-netwerkcomponenten:
 

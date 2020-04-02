@@ -1,30 +1,25 @@
 ---
-title: Een schaalset maken die Azure Spot VM's (Preview) gebruikt
+title: Een schaalset maken die Azure Spot VM's gebruikt
 description: Meer informatie over het maken van Azure-schaalsets voor virtuele machines die spotvm's gebruiken om kosten te besparen.
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.topic: conceptual
-ms.date: 02/11/2020
+ms.topic: article
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162681"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545943"
 ---
-# <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Voorbeeld: Azure Spot VM's voor virtuele machineschaalsets 
+# <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure Spot VM's voor virtuele machineschaalsets 
 
 Met Azure Spot on scale-sets u profiteren van onze ongebruikte capaciteit tegen aanzienlijke kostenbesparingen. Op elk moment waarop Azure de capaciteit terug nodig heeft, wordt de Azure-infrastructuur uit Spot-exemplaren gezet. Daarom zijn Spot-exemplaren ideaal voor workloads die onderbrekingen kunnen verwerken, zoals batchverwerkingstaken, dev/testomgevingen, grote compute-workloads en meer.
 
 De hoeveelheid beschikbare capaciteit kan variëren op basis van grootte, regio, tijdstip en meer. Bij het implementeren van Spot-exemplaren op schaalsets wijst Azure de instantie alleen toe als er capaciteit beschikbaar is, maar er is geen SLA voor deze exemplaren. Een spotschaalset wordt geïmplementeerd in één foutdomein en biedt geen hoge beschikbaarheidsgaranties.
 
-> [!IMPORTANT]
-> Spotexemplaren staan momenteel in openbare preview.
-> Deze preview-versie wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
->
 
 ## <a name="pricing"></a>Prijzen
 
@@ -47,7 +42,7 @@ Gebruikers kunnen zich aanmelden om in-VM-meldingen te ontvangen via [Azure Sche
 ## <a name="deploying-spot-vms-in-scale-sets"></a>SpotVM's implementeren in schaalsets
 
 Als u Spot VM's op schaalsets wilt implementeren, u de nieuwe *prioriteitsvlag* instellen op *Spot.* Alle VM's in uw schaalset worden ingesteld op Spot. Als u een schaalset met Spot VM's wilt maken, gebruikt u een van de volgende methoden:
-- [Azure-portal](#portal)
+- [Azure Portal](#portal)
 - [Azure-CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Azure Resource Manager-sjablonen](#resource-manager-templates)
@@ -57,7 +52,7 @@ Als u Spot VM's op schaalsets wilt implementeren, u de nieuwe *prioriteitsvlag* 
 Het proces om een schaalset te maken die Spot VM's gebruikt, is hetzelfde als beschreven in het [beginartikel.](quick-create-portal.md) Wanneer u een schaalset implementeert, u ervoor kiezen de ![spotvlag en het uitzettingsbeleid in te stellen: Een schaalset maken met spotvm's](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 Het proces om een schaalset met Spot VM's te maken is hetzelfde als beschreven in het [beginartikel.](quick-create-cli.md) Voeg gewoon de '--Priority Spot' toe en voeg . `--max-price` In dit voorbeeld `-1` gebruiken `--max-price` we voor, zodat de instantie niet wordt uitgezet op basis van de prijs.
 
@@ -172,6 +167,5 @@ Als u de instantie wilt verwijderen nadat `evictionPolicy` deze `Delete`is verwi
 **A:** U uw vraag `azure-spot` plaatsen en taggen bij [Q&A.](https://docs.microsoft.com/answers/topics/azure-spot.html) 
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u een schaalset hebt gemaakt met Spot VM's, probeert u onze [sjabloon voor automatische schaal te](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri)implementeren met Spot .
 
 Bekijk de [prijspagina voor de prijsbepaling van de virtuele machineschaal](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) voor prijsdetails.

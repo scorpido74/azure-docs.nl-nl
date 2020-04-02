@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: 56c31e03eeec0c81207dc402e864eadec2d768bd
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 224526efc2152e0b788c5cbc7f3bd60bb3363c1a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474071"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545716"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Het netwerk van uw lab verbinden met een virtueel netwerk van collega's in Azure Lab Services 
 In dit artikel vindt u informatie over het peering van uw labsnetwerk met een ander netwerk. 
@@ -34,7 +34,7 @@ Mogelijk moet u het netwerk van uw lab verbinden met een virtueel netwerk van co
 Bepaalde on-premises netwerken zijn verbonden met Azure Virtual Network via [ExpressRoute](../../expressroute/expressroute-introduction.md) of [Virtual Network Gateway.](../../vpn-gateway/vpn-gateway-about-vpngateways.md) Deze services moeten buiten Azure Lab Services worden ingesteld. Zie [ExpressRoute-overzicht](../../expressroute/expressroute-introduction.md)voor meer informatie over het verbinden van een on-premises netwerk met Azure via ExpressRoute. Voor on-premises connectiviteit met behulp van een Virtual Network Gateway moeten de gateway, het opgegeven virtuele netwerk en het labaccount zich allemaal in dezelfde regio bevinden.
 
 > [!NOTE]
-> Bij het maken van een Azure Virtual Network dat wordt gekeken met een labaccount, is het belangrijk om te begrijpen hoe de regio van het virtuele netwerk van invloed is op de plaats waar klaslokalen worden gemaakt.  Zie voor meer informatie de sectie beheerdershandleiding over [regio's\locaties](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regions-or-locations).
+> Bij het maken van een Azure Virtual Network dat wordt gekeken met een labaccount, is het belangrijk om te begrijpen hoe de regio van het virtuele netwerk van invloed is op de plaats waar klaslokalen worden gemaakt.  Zie voor meer informatie de sectie beheerdershandleiding over [regio's\locaties](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations).
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Configureren op het moment van het maken van labaccount
 Tijdens het maken van een nieuw labaccount u een bestaand virtueel netwerk kiezen dat wordt weergegeven in de vervolgkeuzelijst **Peer virtueel netwerk** op het tabblad **Geavanceerd.** Het geselecteerde virtuele netwerk is verbonden (peered) met laboratoria die onder het labaccount zijn gemaakt. Alle virtuele machines in laboratoria die zijn gemaakt na het maken van deze verandering zou toegang hebben tot de middelen op de peered virtuele netwerk. 

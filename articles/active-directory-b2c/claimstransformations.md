@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e71d521dce40f6a8ec81286fcc95dc97bf10078c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a919996d00f8ef3fa00109944b60d53b63d95ff
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189733"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529134"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -162,7 +162,8 @@ Zie de volgende referentiepagina's voor voorbeelden van claimstransformaties:
 - [Booleaanse](boolean-transformations.md)
 - [Datum](date-transformations.md)
 - [Geheel getal](integer-transformations.md)
-- [Json](json-transformations.md)
+- [JSON](json-transformations.md)
+- [Telefoonnummer](phone-number-claims-transformations.md)
 - [Algemeen](general-transformations.md)
 - [Sociale rekening](social-transformations.md)
 - [Tekenreeks](string-transformations.md)

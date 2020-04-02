@@ -3,7 +3,7 @@ title: Microsoft Azure-gegevensversleuteling-at-rest | Microsoft Documenten
 description: In dit artikel vindt u een overzicht van microsoft Azure-gegevensversleuteling in rust, de algemene mogelijkheden en algemene overwegingen.
 services: security
 documentationcenter: na
-author: barclayn
+author: msmbaldwin
 manager: barbkess
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
-ms.author: barclayn
-ms.openlocfilehash: d8aa643dcf9734ac983c9c4c0d53bda24ce4688d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mbaldwin
+ms.openlocfilehash: 42b83963dc4996a7347d57be712451086fa79b26
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125074"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548629"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-gegevensversleuteling-at-rest
 
@@ -125,13 +125,13 @@ Elk van de server-side encryptie bij rust modellen impliceert onderscheidende ke
 
 #### <a name="server-side-encryption-using-service-managed-keys"></a>Versleuteling aan de serverzijde met servicebeheerde sleutels
 
-Voor veel klanten is de essentiële eis om ervoor te zorgen dat de gegevens worden versleuteld wanneer deze in rust zijn. Server-side encryptie met behulp van service-managed Keys maakt dit model mogelijk door klanten in staat te stellen de specifieke bron (Storage Account, SQL DB, enz.) te markeren voor versleuteling en alle belangrijke beheeraspecten over te laten, zoals sleuteluitgifte, rotatie en back-up naar Microsoft . De meeste Azure Services die versleuteling in rust ondersteunen, ondersteunen doorgaans dit model van het ontladen van het beheer van de versleutelingssleutels naar Azure. De Azure-resourceprovider maakt de sleutels, plaatst ze in beveiligde opslag en haalt ze op wanneer dat nodig is. Dit betekent dat de service volledige toegang heeft tot de sleutels en dat de service volledige controle heeft over het beheer van de referentielevenscyclus.
+Voor veel klanten is de essentiële eis om ervoor te zorgen dat de gegevens worden versleuteld wanneer deze in rust zijn. Server-side encryptie met behulp van service-managed Keys maakt dit model mogelijk door klanten in staat te stellen de specifieke bron (Storage Account, SQL DB, enz.) te markeren voor versleuteling en alle belangrijke beheeraspecten over te laten, zoals sleuteluitgifte, rotatie en back-up naar Microsoft. De meeste Azure Services die versleuteling in rust ondersteunen, ondersteunen doorgaans dit model van het ontladen van het beheer van de versleutelingssleutels naar Azure. De Azure-resourceprovider maakt de sleutels, plaatst ze in beveiligde opslag en haalt ze op wanneer dat nodig is. Dit betekent dat de service volledige toegang heeft tot de sleutels en dat de service volledige controle heeft over het beheer van de referentielevenscyclus.
 
 ![Beheerd](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
 
 Server-side encryptie met behulp van service-managed keys dus snel adressen de noodzaak om encryptie in rust met lage overhead aan de klant. Wanneer een klant beschikbaar is, opent hij doorgaans de Azure-portal voor de doelabonnements- en resourceprovider en controleert een vak met de vermelding dat de gegevens moeten worden versleuteld. In sommige Resource Managers server-side encryptie met service-managed sleutels is standaard ingeschakeld.
 
-Server-side encryptie met door Microsoft beheerde sleutels impliceert wel dat de service volledige toegang heeft tot het opslaan en beheren van de sleutels. Hoewel sommige klanten de sleutels willen beheren omdat ze het gevoel hebben dat ze meer beveiliging krijgen, moeten de kosten en het risico die gepaard gaan met een aangepaste sleutelopslagoplossing worden overwogen bij de evaluatie van dit model. In veel gevallen kan een organisatie bepalen dat resourcebeperkingen of risico's van een on-premises oplossing groter kunnen zijn dan het risico van cloudbeheer van de versleuteling bij rustsleutels.  Dit model is echter mogelijk niet voldoende voor organisaties die vereisten hebben om de creatie of levenscyclus van de versleutelingssleutels te beheren of om verschillende personeelsleden de versleutelingssleutels van een service te laten beheren dan organisaties die de service beheren (dat wil zeggen segregatie van het sleutelbeheer van het algemene managementmodel voor de service).
+Server-side encryptie met door Microsoft beheerde sleutels impliceert wel dat de service volledige toegang heeft tot het opslaan en beheren van de sleutels. Hoewel sommige klanten de sleutels willen beheren omdat ze het gevoel hebben dat ze meer beveiliging krijgen, moeten de kosten en het risico die gepaard gaan met een aangepaste sleutelopslagoplossing worden overwogen bij de evaluatie van dit model. In veel gevallen kan een organisatie bepalen dat resourcebeperkingen of risico's van een on-premises oplossing groter kunnen zijn dan het risico van cloudbeheer van de versleuteling bij rustsleutels.  Dit model is echter mogelijk niet voldoende voor organisaties die vereisten hebben om de creatie of levenscyclus van de versleutelingssleutels te beheren of om ander personeel de versleutelingssleutels van een service te laten beheren dan die welke de service beheren (dat wil zeggen, de scheiding van sleutelbeheer van het algemene beheermodel voor de service).
 
 ##### <a name="key-access"></a>Toegang tot sleutels
 

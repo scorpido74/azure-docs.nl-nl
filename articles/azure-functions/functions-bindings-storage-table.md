@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: edeafb5730f06dac22fd9919ca42ea388d5fd0f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1aa3537679ee37cbc6085344d2f31ae4043d32bb
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277178"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520675"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table-opslagbindingen voor Azure-functies
 
@@ -564,7 +564,7 @@ In de volgende tabel worden de bindende configuratie-eigenschappen uitgelegd `Ta
 |**rowKey** |**RowKey** | Optioneel. De rijsleutel van de tabelentiteit om te lezen. Zie het [gebruiksgedeelte](#input---usage) voor richtlijnen over het gebruik van deze eigenschap.| 
 |**Nemen** |**Nemen** | Optioneel. Het maximum aantal entiteiten dat moet worden gelezen in JavaScript. Zie het [gebruiksgedeelte](#input---usage) voor richtlijnen over het gebruik van deze eigenschap.| 
 |**Filter** |**Filter** | Optioneel. Een OData-filterexpressie voor tabelinvoer in JavaScript. Zie het [gebruiksgedeelte](#input---usage) voor richtlijnen over het gebruik van deze eigenschap.| 
-|**verbinding** |**Verbinding** | De naam van een app-instelling die de tekenreeks Opslagverbinding bevat die u voor deze binding wilt gebruiken. Als de naam van de app-instelling begint met 'AzureWebJobs', u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld `connection` instelt op 'MyStorage', wordt in de runtime Functies gezocht naar een app-instelling met de naam 'MyStorage'. Als u `connection` leeg blijft, gebruikt de runtime Van Functies de `AzureWebJobsStorage`standaardverbindingstekenreeks voor opslag in de app-instelling met de naam .|
+|**verbinding** |**Verbinding** | De naam van een app-instelling die de tekenreeks Opslagverbinding bevat die u voor deze binding wilt gebruiken. De instelling kan de naam zijn van een vooraf vastgestelde app-instelling of verbindingstekenreeksnaam met azurewebjobs. Als uw instellingsnaam bijvoorbeeld 'AzureWebJobsMyStorage' is, u hier 'MyStorage' opgeven. De runtime van de functies zoekt automatisch naar een app-instelling met de naam "AzureWebJobsMyStorage". Als u `connection` leeg blijft, gebruikt de runtime Van Functies de `AzureWebJobsStorage`standaardverbindingstekenreeks voor opslag in de app-instelling met de naam .|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -995,7 +995,7 @@ Er zijn twee opties voor het uitzetten van een tabelopslagrij vanuit een functie
 |---|---|
 | Tabel | [Tabelfoutcodes](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Blob, Tabel, Wachtrij | [Opslagfoutcodes](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob, Tabel, Wachtrij | [Probleemoplossing](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Blob, Tabel, Wachtrij | [Problemen oplossen](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>Volgende stappen
 

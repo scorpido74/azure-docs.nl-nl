@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9184808b71cce03882022fd37967fe421e64062
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71104967"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548989"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Configuratie van API Management-service opslaan en configureren met behulp van Git
 
@@ -223,7 +223,7 @@ De uiteindelijke `$ref-policy`instelling wordt toegewezen aan het bestand met gl
 De `apis` map bevat een map voor elke API in de service-instantie, die de volgende items bevat.
 
 * `apis\<api name>\configuration.json`- dit is de configuratie voor de API en bevat informatie over de URL van de backendservice en de bewerkingen. Dit is dezelfde informatie die zou worden geretourneerd als u `export=true` `application/json` een [specifieke API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) met in formaat zou aanroepen.
-* `apis\<api name>\api.description.html`- dit is de beschrijving van de `description` API en komt overeen met de eigenschap van de [API-entiteit](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
+* `apis\<api name>\api.description.html`- dit is de beschrijving van de `description` API en komt overeen met de eigenschap van de [API-entiteit](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty).
 * `apis\<api name>\operations\`- deze `<operation name>.description.html` map bevat bestanden die worden toegewezen aan de bewerkingen in de API. Elk bestand bevat de beschrijving van één bewerking in `description` de API, die wordt toegewezen aan de eigenschap van de [bewerkingsentiteit](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) in de REST-API.
 
 ### <a name="groups-folder"></a>groepenmap

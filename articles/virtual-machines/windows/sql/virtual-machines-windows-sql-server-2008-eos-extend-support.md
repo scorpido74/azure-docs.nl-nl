@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6c27fa8f80140e6db92ea0f998852507260cc278
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: faaff9e9ad5982efac6409f2284158a3d0711331
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159537"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548413"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Ondersteuning voor SQL Server 2008 en SQL Server 2008 R2 uitbreiden met Azure
 
@@ -66,7 +66,7 @@ De [Database Migration Service](/azure/dms/dms-overview) is een optie voor klant
 
 Oplossingen voor noodherstel voor EOS SQL Server op een Azure VM zijn als volgt:
 
-- **SQL Server-back-ups**: Gebruik Azure Backup om uw EOS SQL Server 2008 en 2008 R2 te beschermen tegen ransomware, onbedoelde verwijdering en beschadiging met RPO van 15 min en point-in-time recovery. Zie [dit artikel](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support)voor meer informatie.
+- **SQL Server-back-ups**: Gebruik Azure Backup om uw EOS SQL Server 2008 en 2008 R2 te beschermen tegen ransomware, onbedoelde verwijdering en beschadiging met RPO van 15 min en point-in-time recovery. Zie [dit artikel](https://docs.microsoft.com/azure/backup/sql-support-matrix#scenario-support)voor meer informatie.
 - **Logboekverzending:** u een logboekverzendreplica maken in een andere zone of Azure-regio met continue herstelbewegingen om de RTO te verminderen. U moet logboekverzending handmatig configureren.
 - **Azure-siteherstel:** u uw VM repliceren tussen zones en regio's via Azure Site Recovery-replicatie. SQL Server vereist app-consistente momentopnamen om herstel te garanderen in geval van een ramp. Azure Site Recovery biedt minimaal 1 uur RPO en een RTO van 2 uur (plus SQL Server-hersteltijd) Voor EOS SQL Server disaster recovery.
 

@@ -15,12 +15,12 @@ ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: ba07a0b0d3be0366179bba14c786fafad8753dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fe3b94463da07304f2c853910ac5d2a6771d070
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280691"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545646"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde azure-rollen
 
@@ -46,7 +46,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Inloggen voor virtuele machinebeheerders](#virtual-machine-administrator-login) | Virtuele machines in de portal bekijken en inloggen als beheerder | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | [Inzender voor virtuele machines](#virtual-machine-contributor) | Hiermee u virtuele machines beheren, maar geen toegang tot deze machines en niet het virtuele netwerk- of opslagaccount waarmee ze zijn verbonden. | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [Inloggen voor virtuele machine-gebruikers](#virtual-machine-user-login) | Bekijk virtuele machines in de portal en log in als een gewone gebruiker. | fb879df8-f326-4884-b1cf-06f3ad86be52 |
-> | **Networking** |  |  |
+> | **Netwerken** |  |  |
 > | [CDN-eindpuntbijdrager](#cdn-endpoint-contributor) | Kan CDN-eindpunten beheren, maar kan geen toegang verlenen aan andere gebruikers. | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | [CDN-eindpuntlezer](#cdn-endpoint-reader) | Kan CDN-eindpunten weergeven, maar kan geen wijzigingen aanbrengen. | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | [Cdn-profielbijdrager](#cdn-profile-contributor) | Kan CDN-profielen en hun eindpunten beheren, maar kan geen toegang verlenen aan andere gebruikers. | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
@@ -4644,7 +4644,7 @@ Kan service beheren, maar niet de API's
 > | Microsoft.ApiManagement/service/beheerimplementaties/actie | SKU/eenheden wijzigen, regionale implementaties van API Management Service toevoegen/verwijderen |
 > | Microsoft.ApiManagement/service/lezen | Metagegevens voor een API-beheerservice-instantie lezen |
 > | Microsoft.ApiManagement/service/restore/action | API-beheerservice herstellen vanuit de opgegeven container in een door de gebruiker opgegeven opslagaccount |
-> | Microsoft.ApiManagement/service/updatecertificaat/actie | SSL-certificaat uploaden voor een API-beheerservice |
+> | Microsoft.ApiManagement/service/updatecertificaat/actie | TLS/SSL-certificaat uploaden voor een API Management Service |
 > | Microsoft.ApiManagement/service/updatehostname/actie | Aangepaste domeinnamen voor een API-beheerservice instellen, bijwerken of verwijderen |
 > | Microsoft.ApiManagement/service/write | Instantie API Management Service maken of bijwerken |
 > | Microsoft.Authorization/*/gelezen | Rollen en roltoewijzingen lezen |

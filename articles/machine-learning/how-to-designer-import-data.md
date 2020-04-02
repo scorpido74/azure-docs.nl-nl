@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: bd1c2ca182ae8be8425246f691dca805bf38637b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ad7677607d625f673546a6ea29ea58b80a8d1b5
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064020"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546759"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Uw gegevens importeren in Azure Machine Learning-ontwerper (voorbeeld)
 
@@ -60,7 +60,7 @@ Zie de [referentiepagina Gegevens importeren](algorithm-module-reference/import-
 
 ## <a name="supported-sources"></a>Ondersteunde bronnen
 
-In deze sectie worden de gegevensbronnen weergegeven die door de ontwerper worden ondersteund. Gegevens komen in de ontwerper van een datastore of uit [tabeltabel dataset](how-to-create-register-datasets.md#dataset-types).
+In deze sectie worden de gegevensbronnen weergegeven die door de ontwerper worden ondersteund. Gegevens komen in de ontwerper van een datastore of uit [tabeltabelgegevensset.](how-to-create-register-datasets.md#dataset-types)
 
 ### <a name="datastore-sources"></a>Datastore-bronnen
 Zie [Access-gegevens in Azure-opslagservices](how-to-access-data.md#supported-data-storage-service-types)voor een lijst met ondersteunde gegevensarchiefbronnen.

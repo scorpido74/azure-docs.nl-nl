@@ -5,18 +5,23 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
-ms.custom: fasttrack-edit
-ms.openlocfilehash: f16b10f13c945dd7f1ae4fdc3f4e02dcd7c5a018
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: 0fe436b1da551bbc8a0064cb3cfdff864d8f9eb8
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437948"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520685"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Verificatie en autorisatie in Azure App Service en Azure-functies
 
 > [!NOTE]
 > Op dit moment wordt [Azure Active Directory v2.0](../active-directory/develop/v2-overview.md) (inclusief [MSAL)](../active-directory/develop/msal-overview.md)niet ondersteund voor Azure App Service en Azure Functions. Kijk terug voor updates.
+>
+> [!NOTE]
+> Op dit moment ondersteunt ASP.NET Core momenteel geen ondersteuning voor het vullen van de huidige gebruiker met de functie Verificatie/autorisatie.
 >
 
 Azure App Service biedt ingebouwde verificatie- en autorisatieondersteuning, zodat u gebruikers aanmelden en toegang krijgen tot gegevens door minimale of geen code te schrijven in uw web-app, RESTful API en mobiele back-end, en ook [Azure-functies.](../azure-functions/functions-overview.md) In dit artikel wordt beschreven hoe App Service helpt bij het vereenvoudigen van verificatie en autorisatie voor uw app.
@@ -132,11 +137,17 @@ Met deze optie hoeft u geen verificatiecode in uw app te schrijven. Fijnere auto
 > [!CAUTION]
 > Het beperken van de toegang op deze manier is van toepassing op alle oproepen naar uw app, wat mogelijk niet wenselijk is voor apps die een openbaar beschikbare startpagina willen, zoals in veel toepassingen met één pagina.
 
+> [!NOTE]
+> Authenticatie/autorisatie stond voorheen bekend als Easy Auth.
+>
+
 ## <a name="more-resources"></a>Meer bronnen
 
 [Zelfstudie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
 [Zelfstudie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service voor Linux](containers/tutorial-auth-aad.md)  
-[Verificatie en autorisatie aanpassen in App-service](app-service-authentication-how-to.md)
+[Customize authentication and authorization in App Service](app-service-authentication-how-to.md)
+Verificatie en autorisatie aanpassen in App Service[.NET Core-integratie van Azure AppService EasyAuth (derde partij)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+[Azure App Service-verificatie laten werken met .NET Core (derde partij)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 Provider-specifieke handleidingen:
 

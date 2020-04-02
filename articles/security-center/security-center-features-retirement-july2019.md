@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: fda49ae31d7598497a3128a846a3f4e12e84ffe1
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 1f923db5c730f6dec15f4fc211ab7acbd009ac7f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435913"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521420"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Functies van Security Center met pensioen (juli 2019)
 
@@ -169,7 +169,7 @@ Als u bestaande verbonden oplossingen hebt, raden we u aan om over te stappen na
 
 Azure Security Center bewaakt beveiligingsconfiguraties door een set van [meer dan 150 aanbevolen regels](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) toe te passen om het besturingssysteem te beveiligen. Deze regels hebben betrekking op firewalls, auditing, wachtwoordbeleid en meer. Als er wordt geconstateerd dat een computer een kwetsbare configuratie heeft, wordt er door Security Center een beveiligingsaanbeveling gegenereerd. Met het [beveiligingsconfiguratiescherm bewerken](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) kunnen klanten de standaardbeveiligingsconfiguratie van het besturingssysteem aanpassen in security center.
 
-We hebben deze preview-functie met pensioen laten gaan. Als u uw beveiligingsconfiguraties na de pensioendatum wilt terugzetten naar hun standaardwaarden, doet u dit via de API of Powershell met behulp van de [volgende instructies.](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)
+We hebben deze preview-functie met pensioen laten gaan. Als u uw beveiligingsconfiguraties na de pensioendatum wilt terugzetten naar hun standaardwaarden, doet u dit via de API of Powershell met behulp van de [volgende instructies.](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/Reset%20security%20configurations%20customization)
 
 ![Beveiligingsconfiguraties bewerken][17]
 

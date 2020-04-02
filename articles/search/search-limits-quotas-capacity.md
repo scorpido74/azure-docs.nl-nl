@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b54905e201ee7a6dbf4c6837960a6e0b63057ea9
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282976"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549058"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Servicelimieten in Azure Cognitive Search
 
@@ -30,7 +30,7 @@ Maximale limieten voor opslag, workloads en hoeveelheden indexen en andere objec
 > [!NOTE]
 > Vanaf 1 juli zijn alle lagen algemeen beschikbaar, inclusief de laag Storage Optimized. Alle prijzen zijn te vinden op de pagina [Prijsdetails.](https://azure.microsoft.com/pricing/details/search/)
 
-  S3 High Density (S3 HD) is ontworpen voor specifieke workloads: [multi-tenancy](search-modeling-multitenant-saas-applications.md) en grote hoeveelheden kleine indexen (een miljoen documenten per index, drieduizend indexen per service). Deze laag biedt niet de [indexerfunctie](search-indexer-overview.md). Op S3 HD moet gegevensopname gebruikmaken van de push-benadering, waarbij API-aanroepen worden gebruikt om gegevens van bron naar index te pushen. 
+  S3 High Density (S3 HD) is ontworpen voor specifieke workloads: [multi-tenancy](search-modeling-multitenant-saas-applications.md) en grote hoeveelheden kleine indexen (drieduizend indexen per service). Deze laag biedt niet de [indexerfunctie](search-indexer-overview.md). Op S3 HD moet gegevensopname gebruikmaken van de push-benadering, waarbij API-aanroepen worden gebruikt om gegevens van bron naar index te pushen. 
 
 > [!NOTE]
 > Een service wordt op een bepaald niveau ingericht. Springen tiers om capaciteit te winnen omvat het inrichten van een nieuwe dienst (er is geen in-place upgrade). Zie [Een SKU of -laag kiezen](search-sku-tier.md)voor meer informatie. Zie Resourceniveaus schalen [voor query's en indexering van workloads voor](search-capacity-planning.md)meer informatie over het aanpassen van de capaciteit binnen een service die u al hebt ingericht.
@@ -61,38 +61,16 @@ Maximale limieten voor opslag, workloads en hoeveelheden indexen en andere objec
 
 <sup>2</sup> Het hebben van een zeer groot aantal elementen in complexe verzamelingen per document veroorzaakt momenteel een hoog opslaggebruik. Dit is een bekend probleem. In de tussentijd is een limiet van 3000 een veilige bovengrens voor alle servicelagen. Deze limiet wordt alleen afgedwongen voor indexeringsbewerkingen die gebruikmaken van de vroegste`2019-05-06`algemeen beschikbare (GA)-versie die complexe typevelden ( ) ondersteunt. Als we clients die mogelijk eerdere API-versies van preview gebruiken (die complexe typevelden ondersteunen) niet wilt verbreken, zullen we deze limiet niet afdwingen voor indexeringsbewerkingen die deze preview-API-versies gebruiken. Houd er rekening mee dat preview-API-versies niet bedoeld zijn om te worden gebruikt voor productiescenario's en we raden klanten ten zeerste aan om over te stappen op de nieuwste GA API-versie.
 
+> [!NOTE]
+> Hoewel de maximale capaciteit van één index doorgaans wordt beperkt door beschikbare opslag, zijn er maximale bovengrenzen op het totale aantal documenten dat in één index kan worden opgeslagen. Deze limiet is ongeveer 24 miljard documenten per index voor Basic-, S1-, S2- en S3-zoekservices en 2 miljard documenten per index voor S3HD-zoekservices. Elk element van een complexe verzameling telt als afzonderlijke documenten voor de toepassing van deze limieten.
+
 <a name="document-limits"></a>
 
 ## <a name="document-limits"></a>Documentlimieten 
 
-Vanaf oktober 2018 zijn er in geen enkele andere service die op een factuurbare niveau (Basic, S1, S2, S3, S3 HD) is gemaakt, in elke regio. Hoewel de meeste regio's sinds november/december 2017 onbeperkte tellingen van documenten hebben gehad, waren er enkele regio's die na die datum documentlimieten bleven opleggen. Afhankelijk van waar en wanneer u een zoekservice hebt gemaakt, voert u mogelijk een service uit waarvoor nog steeds documentlimieten gelden.
+Vanaf oktober 2018 zijn er in geen enkele factuurbare service (Basic, S1, S2, S3, S3 HD) in elke regio geen limieten voor het aantal documenten meer. Oudere services die vóór oktober 2018 zijn gemaakt, kunnen nog steeds onderworpen zijn aan limieten voor het aantal documenten.
 
 Als u wilt bepalen of uw service documentlimieten heeft, gebruikt u de [API VOOR HERSTELServicestatistieken .](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics) Documentlimieten worden weergegeven in `null` het antwoord, waarbij geen limieten worden aangegeven.
-
-> [!NOTE]
-> Hoewel er geen SKU-specifieke documentlimieten zijn, is elke index nog steeds onderworpen aan een maximale veilige limiet om de stabiliteit van de service te garanderen. Deze limiet komt van Lucene. Elk Azure Cognitive Search-document wordt intern geïndexeerd als een of meer Lucene-documenten. Het aantal Lucene-documenten per zoekdocument is afhankelijk van het totale aantal elementen in complexe verzamelingsvelden. Elk element wordt geïndexeerd als een afzonderlijk Lucene-document. Een document met 3 elementen in een complex verzamelveld wordt bijvoorbeeld geïndexeerd als 4 Lucene-documenten - 1 voor het document zelf en 3 voor de elementen. Het maximum aantal Lucene-documenten is ongeveer 25 miljard per index.
-
-### <a name="regions-previously-having-document-limits"></a>Regio's met documentlimieten
-
-Als de portal een documentlimiet aangeeft, is uw service vóór eind 2017 gemaakt of is deze gemaakt op een datacenter met clusters met een lagere capaciteit voor het hosten van Azure Cognitive Search-services:
-
-+ Australië - oost
-+ Azië - oost
-+ India - centraal
-+ Japan - west
-+ VS - west-centraal
-
-Voor diensten waarvoor documentlimieten gelden, gelden de volgende maximumlimieten:
-
-|  Gratis | Basic | S1 | S2 | S3 | S3&nbsp;HD |
-|-------|-------|----|----|----|-------|
-|  10.000 |1&nbsp;miljoen |15 miljoen per partitie of 180 miljoen per service |60 miljoen per partitie of 720 miljoen per service |120 miljoen per partitie of 1,4 miljard per service |1 miljoen per index of 200 miljoen per partitie |
-
-Als uw service limieten heeft die u blokkeren, maakt u een nieuwe service en publiceert u alle inhoud opnieuw naar die service. Er is geen mechanisme voor het naadloos opnieuw inrichten van uw service op nieuwe hardware achter de schermen.
-
-> [!Note] 
-> Voor S3 High Density-services die na eind 2017 zijn gemaakt, is het document van 200 miljoen per partitie verwijderd, maar blijft de limiet van 1 miljoen documenten per index behouden.
-
 
 ### <a name="document-size-limits-per-api-call"></a>Limieten voor documentgrootte per API-aanroep
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: 777e4e1f8fdd05345d949fe8c78b4a5b1953b8b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 306d847c2bc5af72d37dbf8bf472a5bae63e9fd5
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298251"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528506"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure-monitor
 
@@ -177,7 +177,7 @@ Geef een bestaande of nieuwe [actiegroep](platform/action-groups.md) op, zodat w
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Wat zijn de firewallvereisten voor Azure Monitor-agents?
-Zie [Netwerkfirewallvereisten](platform/log-analytics-agent.md#network-firewall-requirements)voor details over firewallvereisten.
+Zie [Netwerkfirewallvereisten](platform/log-analytics-agent.md#firewall-requirements)voor details over firewallvereisten.
 
 
 ## <a name="visualizations"></a>Visualisaties
@@ -682,7 +682,7 @@ De functie Kaart van Azure Monitor voor VM's is gebaseerd op servicekaart, maar 
 * U geen nieuwe machinegroepen voor servicetoewijzingmaken in de functie Azure Monitor for VM's-kaart.  
 
 ### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Waarom worden in mijn prestatiegrafieken stippellijnen weergegeven?
-Dit kan om een paar redenen gebeuren.  In gevallen waarin er een gat in het verzamelen van gegevens zijn, geven we de lijnen af als gestippeld.  Als u de frequentie van de gegevensbemonstering voor de ingeschakelde prestatiemeteritems hebt gewijzigd (de standaardinstelling is om elke 60 seconden gegevens te verzamelen), u stippellijnen in de grafiek zien als u een smal tijdsbereik voor de grafiek kiest en uw bemonsteringsfrequentie kleiner is dan de emmergrootte die in de grafiek wordt gebruikt (bijvoorbeeld de bemonsteringsfrequentie is elke 10 minuten en elke emmer op de grafiek is 5 minuten).  Als u een breder tijdsbereik kiest om te bekijken, worden de grafieklijnen in dit geval weergegeven als effen lijnen in plaats van puntjes.
+Dit kan om een paar redenen gebeuren.  In gevallen waarin er een gat in het verzamelen van gegevens zijn, geven we de lijnen af als gestippeld.  Als u de frequentie van de gegevensbemonstering hebt gewijzigd voor de ingeschakelde prestatiemeteritems (de standaardinstelling is om elke 60 seconden gegevens te verzamelen), u stippellijnen in de grafiek zien als u een smal tijdsbereik voor de grafiek kiest en uw bemonsteringsfrequentie kleiner is dan de emmergrootte die in de grafiek wordt gebruikt (bijvoorbeeld de bemonsteringsfrequentie is elke 10 minuten en elke emmer in de grafiek is 5 minuten).  Als u een breder tijdsbereik kiest om te bekijken, worden de grafieklijnen in dit geval weergegeven als effen lijnen in plaats van puntjes.
 
 ### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Worden groepen ondersteund met Azure Monitor voor VM's?
 Ja, zodra u de afhankelijkheidsagent installeert, verzamelen we informatie uit de VM's om groepen weer te geven op basis van abonnement, resourcegroep, virtuele machineschaalsets en cloudservices.  Als u Service Map hebt gebruikt en machinegroepen hebt gemaakt, worden deze ook weergegeven.  Computergroepen worden ook weergegeven in het groepenfilter als u ze hebt gemaakt voor de werkruimte die u bekijkt. 

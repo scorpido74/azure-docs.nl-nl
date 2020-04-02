@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b4ec003888d75a582d25feef8ed2ce010fa7996
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368053"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546235"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Naslaginformatieover zoeknaar naar beheerhandleiding voor Azure Active Directory Authentication-beheer
 
@@ -101,7 +101,7 @@ Als uw on-premises organisatie een onderbrekingstolerantiestrategie voor storing
 
 ![wachtwoordhashsynchronisatiestroom](./media/active-directory-ops-guide/active-directory-ops-img5.png)
 
-Zie [De juiste verificatiemethode kiezen voor uw hybride azure directory-identiteitsoplossing voor uw verificatieopties.](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)
+Zie [De juiste verificatiemethode kiezen voor uw hybride azure directory-identiteitsoplossing voor uw verificatieopties.](https://docs.microsoft.com/azure/active-directory/hybrid/choose-ad-authn)
 
 ### <a name="programmatic-usage-of-credentials"></a>Programmatisch gebruik van referenties
 
@@ -115,7 +115,7 @@ Microsoft raadt u ook aan contact op te nemen met toepassingseigenaren om gebrui
 
 ### <a name="on-premises-authentication"></a>On-premises verificatie
 
-Federatieve verificatie met geïntegreerde Windows-verificatie (IWA) of Naadloze single sign-on (SSO) beheerde verificatie met wachtwoordhashsynchronisatie of pass-through-verificatie is de beste gebruikerservaring wanneer u zich binnen het bedrijfsnetwerk bevindt met zichtregel voor on-premises domeincontrollers. Het minimaliseert referentie prompt vermoeidheid en vermindert het risico van gebruikers ten prooi vallen aan phishing-aanvallen. Als u al cloudbeheerde verificatie met PHS of PTA gebruikt, maar gebruikers nog steeds hun wachtwoord moeten invoeren wanneer ze on-premises authenticeren, moet u [naadloze SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)onmiddellijk implementeren. Aan de andere kant, als u momenteel federatief met plannen om uiteindelijk te migreren naar cloud-managed authenticatie, dan moet u implementeren Seamless SSO als onderdeel van het migratieproject.
+Federatieve verificatie met geïntegreerde Windows-verificatie (IWA) of Naadloze Single Sign-On (SSO) beheerde verificatie met wachtwoordhashsynchronisatie of pass-through-verificatie is de beste gebruikerservaring wanneer u zich binnen het bedrijfsnetwerk bevindt met line-of-sight naar on-premises domeincontrollers. Het minimaliseert referentie prompt vermoeidheid en vermindert het risico van gebruikers ten prooi vallen aan phishing-aanvallen. Als u al cloudbeheerde verificatie met PHS of PTA gebruikt, maar gebruikers nog steeds hun wachtwoord moeten invoeren wanneer ze on-premises authenticeren, moet u [naadloze SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)onmiddellijk implementeren. Aan de andere kant, als u momenteel federatief met plannen om uiteindelijk te migreren naar cloud-managed authenticatie, dan moet u implementeren Seamless SSO als onderdeel van het migratieproject.
 
 ### <a name="device-trust-access-policies"></a>Toegangsbeleid voor vertrouwensrelaties voor apparaten
 
@@ -230,11 +230,11 @@ Als u al eigenaar bent van Azure AD Premium P2-licenties die ondersteuning biede
 
 Microsoft Intune Application Management (MAM) biedt de mogelijkheid om besturingselementen voor gegevensbeveiliging, zoals opslagversleuteling, pincode, opschonen van externe opslag, enz. Daarnaast kan beleid voor voorwaardelijke toegang worden gemaakt om [de toegang tot](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) cloudservices zoals Exchange Online te beperken van goedgekeurde of compatibele apps.
 
-Als uw medewerkers mam-geschikte toepassingen zoals mobiele Office-apps installeren om toegang te krijgen tot bedrijfsbronnen zoals Exchange Online of SharePoint Online, en u ook BYOD ondersteunt (bring your own device), raden we u aan om mam-beleid voor toepassingen te implementeren om te beheren de toepassingsconfiguratie in apparaten die persoonlijk eigendom zijn zonder MDM-inschrijving en werk vervolgens uw beleid voor voorwaardelijke toegang bij om alleen toegang van mam-geschikte clients toe te staan.
+Als uw medewerkers MAM-toepassingen installeren, zoals mobiele Office-apps, om toegang te krijgen tot bedrijfsbronnen zoals Exchange Online of SharePoint Online, en u ook BYOD ondersteunt (breng uw eigen apparaat mee), raden we u aan om mam-beleid voor toepassingen te implementeren om de toepassingsconfiguratie te beheren in apparaten die persoonlijk eigendom zijn zonder MDM-inschrijving en vervolgens uw voorwaardelijke toegangsbeleid bij te werken om alleen toegang van MAM-compatibele clients mogelijk te maken.
 
 ![Subsidiebeheer voorwaardelijke toegang](./media/active-directory-ops-guide/active-directory-ops-img12.png)
 
-Als werknemers MAM-toepassingen installeren op bedrijfsbronnen en de toegang is beperkt op Intune Managed-apparaten, moet u overwegen om mam-beleid voor toepassingen te implementeren om de toepassingsconfiguratie voor persoonlijke apparaten te beheren en Voorwaardelijke toegangsbeleidsregels bijwerken om alleen toegang toe te staan van mam-compatibele clients.
+Als werknemers MAM-toepassingen installeren tegen bedrijfsresources en de toegang is beperkt op Intune Managed-apparaten, moet u overwegen om mam-beleid voor toepassingen te implementeren om de toepassingsconfiguratie voor persoonlijke apparaten te beheren en voorwaardelijke toegangsbeleidsregels bij te werken om alleen toegang toe te staan van MAM-compatibele clients.
 
 ### <a name="conditional-access-implementation"></a>Implementatie van voorwaardelijke toegang
 
@@ -329,7 +329,7 @@ Hieronder vindt u de gebruikers- en groepsinstellingen die kunnen worden vergren
 #### <a name="user-settings"></a>Gebruikersinstellingen
 
 - **Externe gebruikers** - externe samenwerking kan organisch plaatsvinden in de onderneming met services zoals Teams, Power BI, Sharepoint Online en Azure Information Protection. Als u expliciete beperkingen hebt om door gebruikers geïnitieerde externe samenwerking te beheren, wordt u aangeraden externe gebruikers in te schakelen met [Azure AD Entitlement-beheer](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) of een gecontroleerde bewerking, zoals via uw helpdesk. Als u geen organische externe samenwerking voor services wilt toestaan, u [ervoor zorgen dat leden externe gebruikers volledig uitnodigen.](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations) U ook [specifieke domeinen toestaan of blokkeren](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list) in uitnodigingen van externe gebruikers.
-- **App-registraties** - wanneer app-registraties zijn ingeschakeld, kunnen eindgebruikers zelf toepassingen aan boord nemen en toegang verlenen tot hun gegevens. Een typisch voorbeeld van app-registratie zijn gebruikers die Outlook-plug-ins inschakelen, of spraakassistenten zoals Alexa en Siri om hun e-mail en agenda te lezen of namens hen e-mails te verzenden. Als de klant besluit de registratie van apps uit te schakelen, moeten de InfoSec- en IAM-teams betrokken zijn bij het beheer van uitzonderingen (app-registraties die nodig zijn op basis van zakelijke vereisten), omdat ze de toepassingen moeten registreren bij een beheerdersaccount, en vereist waarschijnlijk het ontwerpen van een proces om het proces te operationaliseren.
+- **App-registraties** - wanneer app-registraties zijn ingeschakeld, kunnen eindgebruikers zelf toepassingen aan boord nemen en toegang verlenen tot hun gegevens. Een typisch voorbeeld van app-registratie zijn gebruikers die Outlook-plug-ins inschakelen, of spraakassistenten zoals Alexa en Siri om hun e-mail en agenda te lezen of namens hen e-mails te verzenden. Als de klant besluit de registratie van apps uit te schakelen, moeten de InfoSec- en IAM-teams betrokken zijn bij het beheer van uitzonderingen (app-registraties die nodig zijn op basis van zakelijke vereisten), omdat ze de toepassingen moeten registreren bij een beheerdersaccount en waarschijnlijk een proces moeten ontwerpen om het proces te operationaliseren.
 - **Beheerportal** - organisaties kunnen het Azure AD-blad vergrendelen in de Azure-portal, zodat niet-beheerders geen toegang hebben tot Azure AD-beheer in de Azure-portal en in de war raken. Ga naar de gebruikersinstellingen in de Azure AD-beheerportal om de toegang te beperken:
 
 ![Beperkte toegang voor beheerportalen](./media/active-directory-ops-guide/active-directory-ops-img13.png)

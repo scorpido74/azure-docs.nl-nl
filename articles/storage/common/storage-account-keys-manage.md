@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/18/2019
+ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 13adf6de420b54299d04a226dab81e75cbb9fef2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4e91aa59168deb18375bf86ae77f655ca3dab47
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75975787"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521271"
 ---
 # <a name="manage-storage-account-access-keys"></a>Toegangssleutels voor opslagaccount beheren
 
@@ -52,6 +52,8 @@ Volg dit proces om uw opslagaccountsleutels te roteren:
 
 > [!NOTE]
 > Microsoft raadt aan om slechts één van de sleutels in al uw toepassingen tegelijkertijd te gebruiken. Als u toets 1 op sommige plaatsen en Toets 2 in andere gebruikt, u uw sleutels niet roteren zonder dat een toepassing de toegang verliest.
+
+Als u de toegangssleutels van een account wilt roteren, moet de gebruiker een servicebeheerder zijn of een RBAC-rol krijgen toegewezen die de **Microsoft.Storage/storageAccounts/regeneratekey/action**bevat. Sommige ingebouwde RBAC-rollen die deze actie bevatten, zijn de rollen van de functie **rolrollen Van**de eigenaar, **de inzender**en **de opslagaccountsleutel.** Zie Klassieke functies voor [abonnementsbeheerders, Azure RBAC-rollen en Azure AD-rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md)voor meer informatie over de functie Servicebeheerder. Zie de sectie **Opslag** in [azure-ingebouwde rollen voor Azure RBAC voor](../../role-based-access-control/built-in-roles.md#storage)gedetailleerde informatie over ingebouwde RBAC-rollen voor Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 

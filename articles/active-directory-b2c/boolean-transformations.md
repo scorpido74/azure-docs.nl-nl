@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ea3b273070702144d5296d07cb8712da044819a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 007d613a1f170a0ee278a838c92ade2fce9c6dec
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471962"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529203"
 ---
 # <a name="boolean-claims-transformations"></a>Booleaanse claims transformaties
 
@@ -136,7 +136,7 @@ De volgende claimtransformatie laat zien hoe u de waarde `true` van een booleaan
     <InputParameter Id="valueToCompareTo" DataType="boolean" Value="true" />
   </InputParameters>
   <OutputClaims>
-      <OutputClaim  ClaimTypeReferenceId="accountEnabled" TransformationClaimType="compareResult"/>
+    <OutputClaim  ClaimTypeReferenceId="accountEnabled" TransformationClaimType="compareResult"/>
   </OutputClaims>
 </ClaimsTransformation>
 ```
@@ -167,6 +167,7 @@ Gebruik deze claimtransformatie om logische ontkenning uit te voeren op een clai
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="NotClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userExists" TransformationClaimType="inputClaim" />
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="userExists" TransformationClaimType="outputClaim" />
   </OutputClaims>
@@ -201,7 +202,6 @@ De volgende claims transformatie `Or` laat zien hoe twee booleaanse ClaimTypes. 
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="presentTOSSelfAsserted" TransformationClaimType="outputClaim" />
   </OutputClaims>
-</ClaimsTransformation>
 </ClaimsTransformation>
 ```
 

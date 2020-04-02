@@ -8,12 +8,12 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4684daf2a1095a40c478170be37edcae788868ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284835"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546193"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Eigenschappen van de IoT Edge-agent en IoT Edge-hubmoduletwins
 
@@ -55,6 +55,7 @@ De moduletwee voor de IoT `$edgeAgent` Edge-agent wordt aangeroepen en coördine
 | Modules. {moduleId}.status | {"running" \| "gestopt"} | Ja |
 | Modules. {moduleId}.opnieuw opstartenBeleid | {"nooit" \| "on-failure" \| "on-ongezond" \| "altijd"} | Ja |
 | Modules. {moduleId}.imagePullPolicy {moduleId}.imagePullPolicy {moduleId}.imagePullPolicy {module | {"on-create" \| "nooit"} | Nee |
+| Modules. {moduleId}.env | Een lijst met omgevingsvariabelen die naar de module moeten worden doorgegeven. Neemt de indeling`"<name>": {"value": "<value>"}` | Nee |
 | Modules. {moduleId}.settings.image {moduleId}.settings.image {moduleId}.settings.image {module | De URI naar de moduleafbeelding. | Ja |
 | Modules. {moduleId}.settings.createOptions {moduleId}.settings.createOptions {moduleId}.settings.createOptions {module | Een gestringificeerde JSON met de opties voor het maken van de modulecontainer. [Docker maken opties](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nee |
 | Modules. {moduleId}.configuration.id | De id van de implementatie die deze module heeft geïmplementeerd. | IoT Hub stelt deze eigenschap in wanneer het manifest wordt toegepast met behulp van een implementatie. Maakt geen deel uit van een implementatiemanifest. |

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 11/26/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 160873fe889d7eccc7efd08b4767854a5b24c484
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613044"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518978"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Scoped synchronisatie configureren van Azure AD naar Azure Active Directory Domain Services
 
@@ -42,18 +42,20 @@ U gebruikt de Azure-portal of PowerShell om de synchronisatie-instellingen voor 
 
 | Actie | | |
 |--|--|--|
-| Een door Azure AD DS beheerd domein maken en scoped synchronisatie configureren | [Azure-portal](#enable-scoped-synchronization-using-the-azure-portal) | [Powershell](#enable-scoped-synchronization-using-powershell) |
-| Scoped-synchronisatie wijzigen | [Azure-portal](#modify-scoped-synchronization-using-the-azure-portal) | [Powershell](#modify-scoped-synchronization-using-powershell) |
-| Scoped-synchronisatie uitschakelen | [Azure-portal](#disable-scoped-synchronization-using-the-azure-portal) | [Powershell](#disable-scoped-synchronization-using-powershell) |
+| Een door Azure AD DS beheerd domein maken en scoped synchronisatie configureren | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Scoped-synchronisatie wijzigen | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Scoped-synchronisatie uitschakelen | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
-> Als u het synchronisatiebereik wijzigt, wordt het beheerde Azure AD DS-domein opnieuw gesynchroniseerd.
+> Als u het synchronisatiebereik wijzigt, wordt het beheerde Azure AD DS-domein opnieuw gesynchroniseerd. De volgende overwegingen zijn van toepassing:
 > 
 >  * Wanneer u het synchronisatiebereik voor een door Azure AD DS beheerd domein wijzigt, vindt een volledige resynchronisatie plaats.
 >  * Objecten die niet langer nodig zijn in het beheerde Azure AD DS-domein, worden verwijderd. Er worden nieuwe objecten gemaakt in het beheerde domein.
 >  * Opnieuw synchroniseren kan lang duren. De synchronisatietijd is afhankelijk van het aantal objecten, zoals gebruikers, groepen en groepslidmaatschappen in het azure AD DS-beheerde domein en de Azure AD-map. Voor grote mappen met vele honderdduizenden objecten kan opnieuw worden gesanerd, een paar dagen opnieuw worden gesynchroniseerd.
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>Scoped-synchronisatie inschakelen met de Azure-portal
+
+Voer de volgende stappen uit om scoped synchronisatie in de Azure-portal mogelijk te maken:
 
 1. Volg de [zelfstudie om een Azure AD DS-exemplaar te maken en te configureren.](tutorial-create-instance-advanced.md) Voer alle vereisten en implementatiestappen uit, behalve voor synchronisatiebereik.
 1. Kies **Scoped** bij de synchronisatiestap en selecteer vervolgens de Azure AD-groepen die u wilt synchroniseren met het Azure AD DS-exemplaar.
@@ -173,7 +175,7 @@ Write-Output "******************************************************************
 
 ## <a name="enable-scoped-synchronization-using-powershell"></a>Scoped-synchronisatie inschakelen met PowerShell
 
-Gebruik PowerShell om deze set stappen uit te voeren. Raadpleeg de instructies om Azure Active Directory Domain Services in te [schakelen met PowerShell](powershell-create-instance.md). Een paar stappen in dit artikel worden enigszins gewijzigd om scoped synchronization te configureren.
+Gebruik PowerShell om de volgende stappen uit te voeren. Raadpleeg de instructies om Azure Active Directory Domain Services in te [schakelen met PowerShell](powershell-create-instance.md). Een paar stappen in dit artikel worden enigszins gewijzigd om scoped synchronization te configureren.
 
 1. Voltooi de volgende taken uit het artikel om Azure AD DS in te schakelen met PowerShell. Stop bij de stap om het beheerde domein daadwerkelijk te maken. U configureert de scoped synchronisatie die u maakt van het door Azure AD DS beheerde domein.
 

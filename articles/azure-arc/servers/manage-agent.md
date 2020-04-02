@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 758e6123fd09df1e3f8b2e883a729b9fec4328d1
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 8bcf59ee863bb2fd2a3213480372ad215c2fc00d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80367289"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528593"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Het beheren en onderhouden van de Connected Machine-agent
 
@@ -61,6 +61,9 @@ De wizard Setup detecteert of er een vorige versie bestaat en voert vervolgens a
 ### <a name="linux-agent"></a>Linux-agent
 
 Om de agent op een Linux-machine bij te werken naar de nieuwste versie, gaat het om twee opdrachten. Eén opdracht om de lokale pakketindex bij te werken met de lijst met de laatst beschikbare pakketten uit de repositories en één opdracht om het lokale pakket te upgraden. 
+
+> [!NOTE]
+> Als u de agent wilt upgraden, moet u *roottoegangsmachtigingen* hebben of met een account met verhoogde rechten met Sudo.
 
 #### <a name="upgrade-ubuntu"></a>Ubuntu upgraden
 
@@ -112,13 +115,11 @@ Acties van de [zypper](https://en.opensuse.org/Portal:Zypper) opdracht, zoals de
 
 ## <a name="remove-the-agent"></a>De agent verwijderen
 
-Gebruik een van de volgende procedures om de Windows- of Linux-agent te verwijderen met behulp van de opdrachtregel of de installatiewizard die in deze sectie wordt beschreven. Voordat u de installatie van de agent ongedaan maakt, koppelt u de machine eerst los van Azure Arc voor servers (voorbeeld) door de volgende stappen uit te voeren: 
-
-1. Open Azure Arc voor servers (preview) door naar de [Azure-portal](https://aka.ms/hybridmachineportal)te gaan.
-
-2. Selecteer de machine in de lijst, selecteer de ellips (**...**) en selecteer **Verwijderen**.
+Voer een van de volgende methoden uit om de Windows- of Linux Connected Machine-agent van de machine te verwijderen. Het verwijderen van de agent maakt de machine niet uit met Arc voor servers (voorbeeld), dit is een apart proces dat u uitvoert wanneer u de machine niet meer in Azure hoeft te beheren.
 
 ### <a name="windows-agent"></a>Windows-agent
+
+Beide methoden verwijderen de agent, maar verwijderen de map *C:\Program Files\AzureConnectedMachineAgent* niet op de machine.
 
 #### <a name="uninstall-from-control-panel"></a>Verwijderen uit Configuratiescherm
 
@@ -158,6 +159,9 @@ Als u de agent handmatig wilt verwijderen uit de opdrachtprompt of een geautomat
 
 ### <a name="linux-agent"></a>Linux-agent
 
+> [!NOTE]
+> Als u de agent wilt verwijderen, moet u *roottoegangsmachtigingen* hebben of met een account met verhoogde rechten met Sudo.
+
 Om de Linux-agent te verwijderen, is de opdracht om te gebruiken afhankelijk van het Linux-besturingssysteem.
 
 - Voer voor Ubuntu de volgende opdracht uit:
@@ -177,3 +181,11 @@ Om de Linux-agent te verwijderen, is de opdracht om te gebruiken afhankelijk van
     ```bash
     sudo zypper remove azcmagent
     ```
+
+## <a name="unregister-machine"></a>Kassamachine
+
+Als u van plan bent de machine niet meer te beheren met ondersteunende services in Azure, voert u de volgende stappen uit om de registratie van de machine bij Arc voor servers uit te zeggen (voorbeeld). U deze stappen uitvoeren voor of nadat u het agent Connected Machine uit de machine hebt verwijderd.
+
+1. Open Azure Arc voor servers (preview) door naar de [Azure-portal](https://aka.ms/hybridmachineportal)te gaan.
+
+2. Selecteer de machine in de lijst, selecteer de ellips (**...**) en selecteer **Verwijderen**.

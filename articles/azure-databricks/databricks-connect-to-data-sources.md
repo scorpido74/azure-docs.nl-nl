@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: 80ec9b2bbf10d8f500e7f9e0369faca3b9663633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79a821a4c8fe4cb2d048f0dcb0a6e091462a1779
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74129385"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548798"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Verbinding maken met gegevensbronnen van Azure Databricks
 
@@ -35,7 +35,7 @@ In de volgende lijst worden de gegevensbronnen in Azure weergegeven die u gebrui
 
     Deze koppeling bevat voorbeelden over het gebruik van de Azure Active Directory-serviceprincipal om te verifiëren met Azure Data Lake Storage. Het bevat ook instructies over hoe u toegang krijgt tot de gegevens in Azure Data Lake Storage vanuit Azure Databricks.
 
-- [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage)
+- [Azure Blob-opslag](/azure/databricks/data/data-sources/azure/azure-storage)
 
     Deze koppeling bevat voorbeelden over hoe u rechtstreeks toegang krijgt tot Azure Blob Storage vanuit Azure Databricks met behulp van toegangssleutel of de SAS voor een bepaalde container. De koppeling bevat ook informatie over hoe u toegang krijgt tot de Azure Blob Storage vanuit Azure Databricks met behulp van de RDD-API.
 
@@ -47,7 +47,7 @@ In de volgende lijst worden de gegevensbronnen in Azure weergegeven die u gebrui
 
     Deze koppeling bevat instructies voor het gebruik van de [Azure Event Hubs Spark-connector](https://github.com/Azure/azure-event-hubs-spark) van Azure Databricks om toegang te krijgen tot gegevens in Azure Event Hubs.
 
-- [Azure SQL-gegevensmagazijn](/azure/databricks/data/data-sources/azure/sql-data-warehouse)
+- [Azure SQL-gegevensmagazijn](/azure/synapse-analytics/sql-data-warehouse/)
 
     Deze koppeling bevat instructies voor het gebruik van de Azure SQL Data Warehouse-connector om verbinding te maken vanuit Azure Databricks.
     

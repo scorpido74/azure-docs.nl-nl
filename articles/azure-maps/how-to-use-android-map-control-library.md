@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 55bfb5030d0a168e7556240212fcd5f3be30a289
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e0f0f311b7ec8adae6ddb25e01046141adadfa4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335368"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548542"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Aan de slag met Azure Maps Android SDK
 
@@ -267,6 +267,29 @@ Hier is een voorbeeld van Azure Maps met de taal ingesteld op "fr-FR" en regiona
 </center>
 
 Een volledige lijst van ondersteunde talen en regionale weergaven wordt [hier](supported-languages.md)gedocumenteerd.
+
+## <a name="navigating-the-map"></a>Navigeren op de kaart
+
+Er zijn verschillende manieren waarop de kaart kan worden ingezoomd, gepand, gedraaid en geworpen. De volgende details alle verschillende manieren om de kaart te navigeren.
+
+**De kaart inzoomen**
+
+- Raak de kaart met twee vingers aan en knijp samen om uit te zoomen of de vingers uit elkaar te spreiden om in te zoomen.
+- Dubbeltik op de kaart om één niveau in te zoomen.
+- Dubbeltik met twee vingers om de kaart één niveau uit te zoomen.
+- Tik twee keer; houd bij de tweede tik uw vinger op de kaart en sleep omhoog om in te zoomen of omlaag om uit te zoomen.
+
+**De kaart pannen**
+
+- Raak de kaart aan en sleep in elke richting.
+
+**De kaart roteren**
+
+- Raak de kaart met twee vingers aan en draai.
+
+**Pitch de kaart**
+
+- Raak de kaart met twee vingers aan en sleep ze samen omhoog of omlaag.
 
 ## <a name="next-steps"></a>Volgende stappen
 

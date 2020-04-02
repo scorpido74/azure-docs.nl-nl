@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d9cff47c61fc08305427b25f949884b1ef089fd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca3a79b0d31cc18b8ff77f02ce4ce3d517d7a638
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289665"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548688"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure-beveiligingsbasislijn voor Azure-database voor MariaDB
 
@@ -894,9 +894,9 @@ Key Vault-verificatie voorzien van een beheerde identiteit:https://docs.microsof
 
 **Richtlijnen:** Azure Database voor MariaDB-server biedt momenteel geen ondersteuning voor Azure Active Directory-verificatie voor toegang tot databases.  Tijdens het maken van de Azure Database voor MariaDB-server geeft u referenties op voor een beheerdersgebruiker. Deze beheerder kan worden gebruikt om extra MariaDB-gebruikers te maken.  
 
-Voor Azure Virtual Machines of webtoepassingen die worden uitgevoerd op Azure App Service die wordt gebruikt om toegang te krijgen tot uw Azure Database voor MariaDB-server, gebruikt u Managed Service Identity in combinatie met Azure Key Vault om referenties voor Azure Database voor MariaDB op te slaan en op te halen Server.  Zorg ervoor dat Key Vault Soft Delete is ingeschakeld.
+Voor Azure Virtual Machines of webtoepassingen die worden gebruikt op Azure App Service die worden gebruikt om toegang te krijgen tot uw Azure Database voor MariaDB-server, gebruikt u Managed Service Identity in combinatie met Azure Key Vault om referenties voor Azure Database voor MariaDB-server op te slaan en op te halen.  Zorg ervoor dat Key Vault Soft Delete is ingeschakeld.
 
-Beheerde identiteiten gebruiken om Azure-services een automatisch beheerde identiteit te bieden in Azure Active Directory (AD). Met Managed Identities u zich verifiëren voor elke service die Azure AD-verificatie ondersteunt, inclusief Key Vault, zonder referenties in uw code. Beheerde identiteiten configureren: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vmHow integreren met Azure Managed Identities:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Beheerde identiteiten gebruiken om Azure-services een automatisch beheerde identiteit te bieden in Azure Active Directory (AD). Met Managed Identities u zich verifiëren voor elke service die Azure AD-verificatie ondersteunt, inclusief Key Vault, zonder referenties in uw code. Beheerde identiteiten configureren: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm. Integreren met Azure Managed Identities: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity.
 
 
 

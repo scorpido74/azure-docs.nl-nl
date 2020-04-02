@@ -1,15 +1,15 @@
 ---
 title: Blockchain-gegevensbeheer configureren met Azure-portal - Azure Blockchain-service
 description: Maak en beheer Blockchain Data Manager voor Azure Blockchain Service met behulp van de Azure-portal.
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.topic: article
-ms.reviewer: chroyal
-ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: beacef0660a253c90afb507618e8a1742f0c9d2d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273161"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529603"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Blockchain Data Manager configureren met behulp van Azure Portal
 
@@ -22,7 +22,7 @@ Als u een blockchain-gegevensbeheerexemplaar wilt configureren, gaat u als:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Snelstart [voltooien: een blockchain-lid maken met behulp van de Azure-portal](create-member.md) of [Quickstart: een Azure Blockchain Service-blockchain-lid maken met Azure CLI](create-member-cli.md)
+* Snelstart [voltooien: maak een blockchain-lid met behulp van de Azure-portal](create-member.md) of [Quickstart: maak een Azure Blockchain Service-blockchain-lid met Azure CLI](create-member-cli.md). Azure Blockchain Service *Standard-laag* wordt aanbevolen bij het gebruik van Blockchain Data Manager.
 * Een [gebeurtenisrasteronderwerp maken](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * Meer informatie over [gebeurtenishandlers in Azure Event Grid](../../event-grid/event-handlers.md)
 

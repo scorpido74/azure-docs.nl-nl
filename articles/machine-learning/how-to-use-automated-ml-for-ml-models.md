@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: 9999d74bf6bef3e8351460add7efc8bdbfcd1045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa85e80f1a90191a0a34a6962437c27a9d57ef65
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270028"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547559"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Geautomatiseerde machine learning-modellen maken, controleren en implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -178,17 +178,27 @@ Geautomatiseerde machine learning biedt voorbewerking en gegevensvangrails autom
 
 ### <a name="data-guardrails"></a>Gegevensvangrails
 
-Gegevensvangrails worden automatisch toegepast om u te helpen potentiële problemen met uw gegevens te identificeren (bijvoorbeeld ontbrekende waarden, klasse-onbalans) en helpen corrigerende maatregelen te nemen voor betere resultaten. Er zijn veel best practices die beschikbaar zijn en kunnen worden toegepast om betrouwbare resultaten te bereiken. 
-
-In de volgende tabel worden de momenteel ondersteunde gegevensvangrails en de bijbehorende statussen beschreven die gebruikers kunnen tegenkomen bij het indienen van hun experiment.
+Gegevensvangrails worden toegepast wanneer automatische prestatie-in-om-uurs validatie is ingeschakeld of validatie is ingesteld op automatisch. Gegevensvangrails helpen u potentiële problemen met uw gegevens te identificeren (bijvoorbeeld ontbrekende waarden, onbalans in de klasse) en helpen corrigerende maatregelen te nemen voor betere resultaten. Er zijn veel best practices die beschikbaar zijn en kunnen worden toegepast om betrouwbare resultaten te bereiken. Gebruikers kunnen gegevensvangrails in de studio bekijken op het tabblad **Gegevensvangrails** van een geautomatiseerde ML-run of door in te stellen ```show_output=True``` bij het indienen van een experiment met de Python SDK. In de volgende tabel worden de gegevensvangrails beschreven die momenteel worden ondersteund en de bijbehorende statussen die gebruikers kunnen tegenkomen bij het indienen van hun experiment.
 
 Vangrail|Status|Voorwaarde&nbsp;&nbsp;voor trigger
 ---|---|---
-Toerekening ontbrekende&nbsp;waarden&nbsp; |**Doorgegeven** <br> <br> **Vaste**|    Geen ontbrekende waarde in&nbsp;een van de invoerkolommen <br> <br> Sommige kolommen hebben ontbrekende waarden
-Kruisvalidatie|**Gereed**|Als er geen expliciete validatieset is verstrekt
-Detectie&nbsp;van&nbsp;&nbsp;functies met hoge kardinaliteit|    **Doorgegeven** <br> <br>**Gereed**|    Er zijn geen hoge kardinaliteitsfuncties gedetecteerd <br><br> Hoge kardinaliteitsinvoerkolommen zijn gedetecteerd
-Detectie van klassebalans    |**Doorgegeven** <br><br><br>**Gewaarschuwd** |De klassen zijn evenwichtig in de opleidingsgegevens; Een gegevensset wordt als evenwichtig beschouwd als elke klasse een goede weergave heeft in de gegevensset, gemeten naar aantal en verhouding van monsters <br> <br> Klassen in de trainingsgegevens zijn onevenwichtig
-Consistentie van tijdreeksgegevens|**Doorgegeven** <br><br><br><br> **Vaste** |<br> De geselecteerde waarde {horizon, lag, rolling window} is geanalyseerd en er zijn geen potentiële problemen met het geheugen gedetecteerd. <br> <br>De geselecteerde waarden {horizon, lag, rolling window} zijn geanalyseerd en kunnen ervoor zorgen dat uw experiment zonder geheugen komt te zitten. De vertraging of het rollende venster is uitgeschakeld.
+Toerekening ontbrekende functiewaarden |**Doorgegeven** <br><br><br> **Gereed**| Er zijn geen ontbrekende functiewaarden gedetecteerd in uw trainingsgegevens. Meer informatie over [ontbrekende waardetoerekening.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Ontbrekende functiewaarden zijn gedetecteerd in uw trainingsgegevens en toegerekend.
+Hoge kardinaliteit feature handling |**Doorgegeven** <br><br><br> **Gereed**| Uw ingangen werden geanalyseerd, en geen hoge kardinaliteit functies werden gedetecteerd. Meer informatie over detectie van functies met [hoge kardinaliteit.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Hoge kardinaliteit functies werden gedetecteerd in uw ingangen en werden behandeld.
+Verwerking van gesplitste validatie |**Gereed**| *De validatieconfiguratie is ingesteld op 'automatisch' en de trainingsgegevens bevatten **minder** dan 20.000 rijen.* <br> Elke iteratie van het getrainde model werd gevalideerd door middel van cross-validatie. Meer informatie over [validatiegegevens.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *De validatieconfiguratie is ingesteld op 'automatisch' en de trainingsgegevens bevatten **meer** dan 20.000 rijen.* <br> De invoergegevens zijn opgesplitst in een trainingsgegevensset en een validatiegegevensset voor validatie van het model.
+Detectie van klassebalancering |**Doorgegeven** <br><br><br><br> **Gewaarschuwd** | Uw ingangen zijn geanalyseerd en alle klassen zijn in evenwicht in uw trainingsgegevens. Een gegevensset wordt als evenwichtig beschouwd als elke klasse een goede weergave heeft in de gegevensset, gemeten naar aantal en verhouding van de monsters. <br><br><br> Onevenwichtige klassen werden gedetecteerd in uw ingangen. Om modelbias op te lossen, u het evenwichtsprobleem oplossen. Meer informatie over [onevenwichtige gegevens.](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml#imbalance)
+Detectie van geheugenproblemen |**Doorgegeven** <br><br><br><br> **Gereed** |<br> De geselecteerde waarde {horizon, lag, rolling window} is geanalyseerd en er zijn geen potentiële problemen met het geheugen gedetecteerd. Meer informatie over [tijdreeksprognoseconfiguraties.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) <br><br><br>De geselecteerde waarden {horizon, lag, rolling window} zijn geanalyseerd en kunnen ervoor zorgen dat uw experiment zonder geheugen komt te zitten. De configuratie van het vertragings- of rolvenster is uitgeschakeld.
+Frequentiedetectie |**Doorgegeven** <br><br><br><br> **Gereed** |<br> De tijdreeksen zijn geanalyseerd en alle gegevenspunten zijn afgestemd op de gedetecteerde frequentie. <br> <br> De tijdreekswerd geanalyseerd en gegevenspunten die niet overeenkomen met de gedetecteerde frequentie werden gedetecteerd. Deze gegevenspunten zijn uit de gegevensset verwijderd. Meer informatie over [gegevensvoorbereiding voor tijdreeksprognoses.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+
+#### <a name="data-guardrail-states"></a>Gegevens vangrail staten
+Gegevensvangrails worden weergegeven in een van de drie staten: 'Geslaagd', 'Gereed of 'Gewaarschuwd'.
+
+Status| Beschrijving
+----|----
+Doorgegeven| Er zijn geen gegevensproblemen gedetecteerd en er is geen actie van de gebruiker vereist. 
+Gereed| Er zijn wijzigingen toegepast in uw gegevens. We raden gebruikers aan om de corrigerende maatregelen te bekijken die Automated ML heeft genomen om ervoor te zorgen dat de wijzigingen overeenkomen met de verwachte resultaten. 
+Gewaarschuwd| Er is een gegevensprobleem gedetecteerd dat niet kon worden verholpen. We raden gebruikers aan om het probleem te herzien en op te lossen. 
+
+Vorige versie van de Automated ML weergegeven een vierde staat: 'Opgelost'. Nieuwere experimenten zullen deze toestand niet weergeven en alle vangrails die de status 'Vast' weergeven, worden nu 'Klaar' weergegeven.   
 
 ## <a name="run-experiment-and-view-results"></a>Experiment uitvoeren en resultaten weergeven
 

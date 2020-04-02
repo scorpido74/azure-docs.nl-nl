@@ -10,12 +10,12 @@ ms.date: 02/24/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b0f2ad7566d0204871a9c6441315d6201662d92b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53eca8a0b9e7cc9abb8f89cd56fca5df28f2de0f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616289"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521929"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Toegang tot gegevens in Azure Storage toestaan
 
@@ -33,7 +33,7 @@ In de volgende tabel worden de opties beschreven die Azure Storage biedt voor he
 
 Elke autorisatieoptie wordt hieronder kort beschreven:
 
-- **Azure Active Directory -integratie (Azure AD)** voor blobs en wachtrijen. Azure AD biedt rbac (role-based access control) voor fijnmazige controle over de toegang van een client tot bronnen in een opslagaccount. Zie [Toegang tot Azure blobs en wachtrijen autoriseren met Azure Active Directory](storage-auth-aad.md)voor meer informatie over de AD-integratie van Azure voor blobs en wachtrijen.
+- **Azure Active Directory -integratie (Azure AD)** voor blobs en wachtrijen. Azure AD biedt rbac (role-based access control) voor controle over de toegang van een client tot bronnen in een opslagaccount. Zie [Toegang tot Azure blobs en wachtrijen autoriseren met Azure Active Directory](storage-auth-aad.md)voor meer informatie over de AD-integratie van Azure voor blobs en wachtrijen.
 
 - **Azure Active Directory Domain Services (Azure AD DS)-verificatie** voor Azure Files. Azure Files ondersteunt autorisatie op basis van identiteit via Server Message Block (SMB) via Azure AD DS. U RBAC gebruiken voor fijnmazige controle over de toegang van een client tot Azure Files-bronnen in een opslagaccount. Zie ons [overzicht](../files/storage-files-active-directory-overview.md)voor meer informatie over Azure Files-verificatie met domeinservices.
 

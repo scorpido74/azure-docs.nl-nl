@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ad8c05b3347ed4741d574a5e6bcc1d928db08411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad2a34691a00f217db6cf6835eefed18c8862d32
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366833"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547921"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbooks beheren in Azure Automation
 
@@ -128,6 +128,19 @@ $RGName = "ResourceGroup"
 Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
+
+### <a name="schedule-a-runbook-in-the-azure-portal"></a>Een runbook plannen in de Azure-portal
+
+Wanneer uw runbook is gepubliceerd, u het inplannen voor gebruik.
+
+1. Open het runbook in de Azure-portal.
+2. Selecteer **Planningonder** **Resources**.
+3. Selecteer **Een planning toevoegen**.
+4. Selecteer in het deelvenster Runbook plannen de optie **Een planning koppelen aan uw runbook**.
+5. Kies **Een nieuw schema maken** in het deelvenster Planning.
+6. Voer een naam, beschrijving en andere parameters in het deelvenster Nieuwe planning in. 
+7. Zodra het schema is gemaakt, markeert u deze en klikt u op **OK**. Het moet nu worden gekoppeld aan uw runbook.
+8. Zoek naar een e-mail in uw postvak om u op de hoogte te stellen van de status van het runbook.
 
 ## <a name="next-steps"></a>Volgende stappen
 

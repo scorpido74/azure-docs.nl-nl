@@ -1,17 +1,17 @@
 ---
-title: Beheeroplossing in Azure-aanbevolen procedures | Microsoft Documenten
-description: ''
+title: Beheeroplossing in Azure-aanbevolen procedures
+description: In dit artikel vindt u tips voor het maken van een beheeroplossingsbestand. Bekijk hoe u werken met gegevensbronnen, runbooks, weergaven en waarschuwingen.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 837fb87d73698961ec1550b122840563d1707f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cb300297336edcce4294b800520ad570b12bcde
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663195"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548168"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Aanbevolen procedures voor het maken van beheeroplossingen in Azure (Voorbeeld)
 > [!NOTE]

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: d4762c86268353ff0464ff3919250cd86f0038d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 7488fd5f8a572788933856f03bb0ad4351885704
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79214107"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518229"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatische afstemming in Azure SQL-database
 
@@ -69,7 +69,7 @@ Automatische afstemmingsopties die beschikbaar zijn in Azure SQL Database zijn:
 
 Automatische afstemming voor afzonderlijke en gepoolde databases maakt gebruik van de **aanbevelingen CREATE INDEX,** **DROP INDEX**en **FORCE LAST GOOD PLAN database** advisor om de prestaties van uw database te optimaliseren. Zie [Aanbevelingen voor databaseadviseur in de Azure-portal](sql-database-advisor-portal.md), in [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction)en in de [REST-API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)voor meer informatie.
 
-U afstemmingsaanbevelingen handmatig toepassen via de Azure-portal of u automatisch afstemmen autonoom tuningaanbevelingen voor u laten toepassen. De voordelen van het autonoom toepassen van het systeem tuning aanbevelingen voor u is dat het automatisch valideert er een positieve winst aan de werkbelasting prestaties, en als er geen significante prestatieverbetering gedetecteerd, zal het de tuningaanbeveling automatisch terugdraaien. Houd er rekening mee dat in het geval van query's die worden beïnvloed door tuningaanbevelingen die niet vaak worden uitgevoerd, de validatiefase tot 72 uur kan duren.
+U afstemmingsaanbevelingen handmatig toepassen via de Azure-portal of u automatisch afstemmen autonoom tuningaanbevelingen voor u laten toepassen. De voordelen van het autonoom toepassen van het systeem tuning aanbevelingen voor u is dat het automatisch valideert er een positieve winst op de prestaties van de werkbelasting, en als er geen significante prestatieverbetering gedetecteerd, zal het automatisch terug de tuning aanbeveling. Houd er rekening mee dat in het geval van query's die worden beïnvloed door tuningaanbevelingen die niet vaak worden uitgevoerd, de validatiefase tot 72 uur kan duren.
 
 In het geval dat u tuningaanbevelingen toepast via T-SQL, zijn de automatische prestatievalidatie en omkeringsmechanismen niet beschikbaar. Aanbevelingen die op deze wijze worden toegepast, blijven actief en worden weergegeven in de lijst met tuningaanbevelingen voor 24-48 uur. voordat het systeem ze automatisch optrekt. Als u een aanbeveling eerder wilt verwijderen, u deze verwijderen uit azure-portal.
 
@@ -93,3 +93,4 @@ Automatische afstemming van bijvoorbeeld databases in een beheerde instantieimpl
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [Artificial Intelligence tunes Azure SQL-databases](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)voor meer informatie over ingebouwde intelligentie die wordt gebruikt bij automatische tuning.
+- Zie [Automatisch indexeren van miljoenen databases in Microsoft Azure SQL Database](https://www.microsoft.com/en-us/research/uploads/prod/2019/02/autoindexing_azuredb.pdf)voor meer informatie over hoe automatisch stemmen onder de motorkap werkt.

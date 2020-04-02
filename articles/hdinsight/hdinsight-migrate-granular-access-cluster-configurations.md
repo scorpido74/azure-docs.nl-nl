@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: f1fdb9dffbe06430ea7e3eb9339e23f5239e4e36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb78d84aa0f9a2832b6599edeac9d50e0e226437
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310829"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546341"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migreren naar gedetailleerde, op rollen gebaseerde toegang voor clusterconfiguraties
 
@@ -131,8 +131,8 @@ Update naar [versie 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/)
 
 Update naar [versie 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) of hoger van de HDInsight SDK voor Java. Er kunnen minimale codewijzigingen nodig zijn als u een methode gebruikt die door deze wijzigingen wordt beïnvloed:
 
-- [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get)zal **niet langer gevoelige parameters** zoals opslagsleutels (core-site) of HTTP-referenties (gateway) retourneren.
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update)is nu afgeschaft.
+- `ConfigurationsInner.get`zal **niet langer gevoelige parameters** zoals opslagsleutels (core-site) of HTTP-referenties (gateway) retourneren.
+- `ConfigurationsInner.update`is nu afgeschaft.
 
 ### <a name="sdk-for-go"></a>SDK voor onderweg
 
@@ -193,9 +193,9 @@ Clusterconfiguraties zijn nu achter gedetailleerd op rollen `Microsoft.HDInsight
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Waarom zie ik 'Onvoldoende bevoegdheden om de bewerking te voltooien' wanneer ik de opdracht Azure CLI uitvoert om de rol HDInsight Cluster Operator toe te wijzen aan een andere gebruiker of serviceprincipal?
 
-Naast de rol Eigenaar moet de gebruiker of serviceprincipal die de opdracht uitvoert, over voldoende AAD-machtigingen beschikken om de object-id's van de cessionaris op te zoeken. Dit bericht geeft onvoldoende AAD-machtigingen aan. Probeer het `-–assignee` argument `–assignee-object-id` te vervangen door en geef de object-ID van de cessionaris als parameter in plaats van de naam (of de hoofd-id in het geval van een beheerde identiteit). Zie de optionele parameters sectie van de [az rol toewijzing documentatie maken](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) voor meer info.
+Naast de rol Eigenaar moet de gebruiker of serviceprincipal die de opdracht uitvoert, over voldoende Azure AD-machtigingen beschikken om de object-id's van de toegewezen te zoeken. Dit bericht geeft onvoldoende Azure AD-machtigingen aan. Probeer het `-–assignee` argument `–assignee-object-id` te vervangen door en geef de object-ID van de cessionaris als parameter in plaats van de naam (of de hoofd-id in het geval van een beheerde identiteit). Zie de optionele parameters sectie van de [az rol toewijzing documentatie maken](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) voor meer info.
 
-Als dit nog steeds niet werkt, neemt u contact op met uw AAD-beheerder om de juiste machtigingen te verkrijgen.
+Als dit nog steeds niet werkt, neemt u contact op met uw Azure AD-beheerder om de juiste machtigingen te verkrijgen.
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Wat gebeurt er als ik geen actie onderneem?
 

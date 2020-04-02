@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff1b37c3053ffa91dcb432cd97a7dd6fd71dad1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d058ff5f9863642f73725db3472c942161447f25
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250424"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548438"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure-schijfversleuteling voor Linux-VM's 
 
@@ -32,7 +32,7 @@ U de grondbeginselen van Azure Disk Encryption voor Linux in slechts een paar mi
 
 ## <a name="supported-vms-and-operating-systems"></a>Ondersteunde VM's en besturingssystemen
 
-### <a name="supported-vm-sizes"></a>Ondersteunde VM-grootten
+### <a name="supported-vms"></a>Ondersteunde VM's
 
 Linux VM's zijn beschikbaar in [verschillende formaten.](sizes.md) Azure Disk Encryption is niet beschikbaar op [Basic,A-serie VM's](https://azure.microsoft.com/pricing/details/virtual-machines/series/)of op virtuele machines die niet voldoen aan deze minimale geheugenvereisten:
 
@@ -44,7 +44,9 @@ Linux VM's zijn beschikbaar in [verschillende formaten.](sizes.md) Azure Disk En
 
 Zodra het os-schijfversleutelingsproces is voltooid op virtuele Linux-machines, kan de VM worden geconfigureerd om met minder geheugen te worden uitgevoerd. 
 
-Azure Disk Encryption is ook beschikbaar voor VM's met premium opslag. 
+Azure Disk Encryption is ook beschikbaar voor VM's met premium opslag.
+
+Azure Disk Encryption is niet beschikbaar op [Generatie 2 VM's](generation-2.md#generation-1-vs-generation-2-capabilities)) en [LSV2-serie VM's](../lsv2-series.md)). Zie [Azure Disk Encryption: Niet-ondersteunde scenario's voor](disk-encryption-linux.md#unsupported-scenarios)meer uitzonderingen .
 
 ### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
@@ -117,7 +119,7 @@ In de volgende tabel worden enkele van de algemene termen gedefinieerd die worde
 | Terminologie | Definitie |
 | --- | --- |
 | Azure Key Vault | Key Vault is een cryptografische, belangrijke beheerservice die is gebaseerd op gevalideerde hardwarebeveiligingsmodules (Federal Information Processing Standards). Deze standaarden helpen om uw cryptografische sleutels en gevoelige geheimen te beschermen. Zie voor meer informatie de [Azure Key Vault-documentatie](https://azure.microsoft.com/services/key-vault/) en [Het maken en configureren van een sleutelkluis voor Azure Disk Encryption](disk-encryption-key-vault.md). |
-| Azure-CLI | [De Azure CLI](/cli/azure/install-azure-cli) is geoptimaliseerd voor het beheren en beheren van Azure-resources vanaf de opdrachtregel.|
+| Azure CLI | [De Azure CLI](/cli/azure/install-azure-cli) is geoptimaliseerd voor het beheren en beheren van Azure-resources vanaf de opdrachtregel.|
 | DM-Crypt |[DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) is het linux-gebaseerde, transparante schijfversleutelingssubsysteem dat wordt gebruikt om schijfversleuteling op Linux VM's mogelijk te maken. |
 | Sleutelversleutelingssleutel (KEK) | De asymmetrische toets (RSA 2048) die u gebruiken om het geheim te beschermen of om te wikkelen. U een met een hardwarebeveiligingsmodule (HSM)-beveiligde sleutel of softwarebeveiligde sleutel leveren. Zie voor meer informatie de [Azure Key Vault-documentatie](https://azure.microsoft.com/services/key-vault/) en [Het maken en configureren van een sleutelkluis voor Azure Disk Encryption](disk-encryption-key-vault.md). |
 | PowerShell-cmdlets | Zie [Azure PowerShell-cmdlets voor](/powershell/azure/overview)meer informatie . |

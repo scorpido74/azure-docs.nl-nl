@@ -11,20 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2019
+ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: f9b948714f72ba02a100d9941721f073953bf22a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 3c8bf69b745f5dba8c08556908df4d4ae5b5769f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473235"
+ms.locfileid: "80521922"
 ---
 # <a name="supported-platforms"></a>Ondersteunde platforms 
 
-## <a name="virtual-machines--servers"></a>Virtuele machines / servers<a name="vm-server"></a>
+Op deze pagina worden de platforms en omgevingen weergegeven die worden ondersteund door Azure Security Center.
 
-Security Center ondersteunt virtuele machines / servers op verschillende soorten hybride omgevingen:
+## <a name="combinations-of-environments"></a>Combinaties van omgevingen<a name="vm-server"></a>
+
+Azure Security Center ondersteunt virtuele machines en servers op verschillende typen hybride omgevingen:
 
 * Alleen Azure
 * Azure en on-premises
@@ -33,64 +35,30 @@ Security Center ondersteunt virtuele machines / servers op verschillende soorten
 
 Voor een Azure-omgeving die is geactiveerd op een Azure-abonnement, detecteert Azure Security Center automatisch IaaS-resources die binnen het abonnement zijn geïmplementeerd.
 
-> [!NOTE]
-> Als u de volledige set beveiligingsfuncties wilt ontvangen, moet u beschikken over de [Log Analytics-agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent), die wordt gebruikt door Azure Security Center, die is geïnstalleerd en [correct geconfigureerd om gegevens naar Azure Security Center te verzenden.](security-center-enable-data-collection.md#manual-agent)
+## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-In de volgende secties worden de ondersteunde serverbesturingssystemen vermeld waarop de [Log Analytics Agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent), die wordt gebruikt door Azure Security Center, kan worden uitgevoerd.
+Security Center is afhankelijk van de [Log Analytics Agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent). Zorg ervoor dat uw machines een van de ondersteunde besturingssystemen voor deze agent draaien, zoals beschreven op de volgende pagina's:
 
-### <a name="windows-server-operating-systems"></a>Windows-serverbesturingssystemen<a name="os-windows"></a>
+* [Log Analytics-agent voor door Windows ondersteunde besturingssystemen](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+* [Log Analytics-agent voor door Linux ondersteunde besturingssystemen](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
 
-|OS|Ondersteund door Azure Security Center|Ondersteuning voor integratie met Microsoft Defender ATP|
-|:---|:-:|:-:|
-|Windows Server 2019|✔|X|
-|Windows Server 2016|✔|✔|
-|Windows Server 2012 R2|✔|✔|
-|Windows Server 2008 R2|✔|✔|
+Zorg er ook voor dat uw Log Analytics-agent goed is [geconfigureerd om gegevens naar security center te verzenden](security-center-enable-data-collection.md#manual-agent)
 
-Zie Functies voor ondersteunde functies voor virtuele [machines en servers](security-center-services.md#vm-server-features)voor meer informatie over de ondersteunde functies voor de Windows-besturingssystemen.
+> [!TIP]
+> Zie [Functiedekking voor machines voor](security-center-services.md)meer informatie over de specifieke functies van het Beveiligingscentrum die beschikbaar zijn op Windows en Linux.
 
-### <a name="windows-operating-systems"></a>Windows-besturingssystemen<a name="os-windows (non-server)"></a>
+## <a name="managed-virtual-machine-services"></a>Beheerde virtuele machineservices<a name="virtual-machine"></a>
 
-Azure Security Center integreert met Azure-services om uw virtuele windows-apparaten te bewaken en te beschermen.
+Virtuele machines worden ook gemaakt in een klantabonnement als onderdeel van sommige azure-beheerde services, zoals Azure Kubernetes (AKS), Azure Databricks en meer. Security Center detecteert deze virtuele machines ook en de Log Analytics-agent kan worden geïnstalleerd en geconfigureerd als er een ondersteund besturingssysteem beschikbaar is.
 
-### <a name="linux-operating-systems"></a>Linux-besturingssystemen<a name="os-linux"></a>
-
-64-bits
-
-* CentOS 6 en 7
-* Amazon Linux 2017.09
-* Oracle Linux 6 en Oracle Linux 7
-* Red Hat Enterprise Linux Server 6 en 7
-* Debian GNU/Linux 8 en 9
-* Ubuntu Linux 14.04 LTS, 16.04 LTS en 18.04 LTS
-* SUSE Linux Enterprise Server 12
-
-32-bits
-* CentOS 6
-* Oracle Linux 6
-* Red Hat Enterprise Linux Server 6
-* Debian GNU/Linux 8 en 9
-* Ubuntu Linux 14.04 LTS en 16.04 LTS
-
-> [!NOTE]
-> Aangezien de lijst met ondersteunde Linux-besturingssystemen voortdurend verandert, klik dan [hier](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) om de meest actuele lijst met ondersteunde versies te bekijken, voor het geval er wijzigingen zijn geweest sinds dit onderwerp voor het laatst werd gepubliceerd.
-
-Zie Functies voor ondersteunde functies voor virtuele [machines en servers](security-center-services.md#vm-server-features)voor meer informatie over de ondersteunde functies voor de Linux-besturingssystemen.
-
-### <a name="managed-virtual-machine-services"></a>Beheerde virtuele machineservices<a name="virtual-machine"></a>
-
-Virtuele machines worden ook gemaakt in een klantabonnement als onderdeel van sommige Azure managed services, zoals Azure Kubernetes (AKS), Azure Databricks en meer. Deze virtuele machines worden ook ontdekt door Azure Security Center, en de Log analytics agent kan worden geïnstalleerd en geconfigureerd volgens de ondersteunde [Windows / Linux besturingssystemen](#os-windows), hierboven vermeld.
-
-### <a name="cloud-services"></a>Cloudservices<a name="cloud-services"></a>
+## <a name="cloud-services"></a>Cloudservices<a name="cloud-services"></a>
 
 Virtuele machines die in een cloudservice worden uitgevoerd, worden ook ondersteund. Alleen web- en werknemersrollen voor cloudservices die in productieslots worden uitgevoerd, worden gecontroleerd. Zie Overzicht van Azure [Cloud Services](../cloud-services/cloud-services-choose-me.md)voor meer informatie over cloudservices.
 
-Beveiliging voor virtuele machines die in Azure Stack wonen, wordt ook ondersteund. Zie Uw [virtuele Azure Stack-apparaten ingebruikmaken voor](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)meer informatie over de integratie van Security Center met Azure Stack.
+Beveiliging van VM's die in Azure Stack wonen, wordt ook ondersteund. Zie Uw [virtuele Azure Stack-apparaten ingebruikmaken voor](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)meer informatie over de integratie van Security Center met Azure Stack.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Ontdek hoe [Security Center gegevens verzamelt en de Log Analytics Agent](security-center-enable-data-collection.md).
+- Ontdek hoe [Security Center gegevens verzamelt met behulp van de Log Analytics Agent](security-center-enable-data-collection.md).
 - Ontdek hoe [Security Center gegevens beheert en beschermt.](security-center-data-security.md)
 - Meer informatie over het [plannen en begrijpen van de ontwerpoverwegingen voor de goedkeuring van Azure Security Center.](security-center-planning-and-operations-guide.md)
-- Meer informatie over [functies die beschikbaar zijn voor de verschillende cloudomgevingen.](security-center-services.md)
-- Meer informatie over [bedreigingsbeveiliging voor Windows- en Linux-machines in Azure Security Center](threat-protection.md#windows-machines).

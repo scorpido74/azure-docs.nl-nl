@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: 9f694f3f0ec740d0a4e8dc4e6bf8845c408802c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61a85b2554bbd69541b3081f72525d2b7deed625
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75897843"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529238"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Een Azure SQL-database importeren of exporteren zonder Azure-services toegang te geven tot de server
 
@@ -61,7 +61,7 @@ In de volgende stappen ziet u hoe u verbinding maakt met uw virtuele machine via
 
 4. Sluit het **formulier Verbinding met virtuele machine.**
 5. Open het gedownloade RDP-bestand om verbinding met de VM te maken.
-6. Selecteer **Verbinding maken**wanneer u daarom wordt gevraagd. Op een Mac hebt u een RDP-client nodig, zoals deze [Extern-bureaubladclient](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) uit de Mac App Store.
+6. Selecteer **Verbinding maken**wanneer u daarom wordt gevraagd. Op een Mac hebt u een RDP-client nodig, zoals deze [Extern-bureaubladclient](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12) uit de Mac App Store.
 
 7. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine en kies **OK**.
 

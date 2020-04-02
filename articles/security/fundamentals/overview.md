@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045877"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545973"
 ---
 # <a name="introduction-to-azure-security"></a>Inleiding tot Azure-beveiliging
 ## <a name="overview"></a>Overzicht
@@ -233,11 +233,11 @@ Microsoft [Azure Application Gateway](../../application-gateway/overview.md) bie
 
 ![Application Gateway](./media/overview/azure-security-fig2.png)
 
-Hiermee u de productiviteit van webfarms optimaliseren door CPU-intensieve SSL-beëindiging te ontladen naar de Application Gateway (ook bekend als SSL offload of SSL bridging). Het biedt ook andere Layer 7 routing mogelijkheden, waaronder round-robin distributie van inkomend verkeer, cookie-gebaseerde sessie affiniteit, URL pad-gebaseerde routing, en de mogelijkheid om meerdere websites te hosten achter een enkele Application Gateway. Azure Application Gateway is een load balancer in laag 7.
+Hiermee u de productiviteit van webfarm's optimaliseren door CPU-intensieve TLS-beëindiging te ontladen naar de Application Gateway (ook wel bekend als TLS offload of TLS bridging). Het biedt ook andere Layer 7 routing mogelijkheden, waaronder round-robin distributie van inkomend verkeer, cookie-gebaseerde sessie affiniteit, URL pad-gebaseerde routing, en de mogelijkheid om meerdere websites te hosten achter een enkele Application Gateway. Azure Application Gateway is een load balancer in laag 7.
 
 De gateway biedt opties voor failovers en het routeren van HTTP-aanvragen tussen servers (on-premises en in de cloud).
 
-Toepassing biedt veel Application Delivery Controller (ADC) functies, waaronder HTTP load balancing, cookie-based sessie affinity, [Secure Sockets Layer (SSL)](../../application-gateway/tutorial-restrict-web-traffic-powershell.md) offload, custom health probes, support for multi-site, and vele anderen.
+Toepassing biedt veel Application Delivery Controller (ADC) functies, waaronder HTTP load balancing, cookie-based sessie affinity, [TLS offload,](../../application-gateway/tutorial-restrict-web-traffic-powershell.md)custom health probes, ondersteuning voor multi-site, en vele anderen.
 
 ### <a name="web-application-firewall"></a>Web Application Firewall
 Web Application Firewall is een functie van [Azure Application Gateway](../../application-gateway/overview.md) die bescherming biedt aan webtoepassingen die toepassingsgateway gebruiken voor adc-functies (Standard Application Delivery Control). Web Application Firewall doet dit door deze te beschermen tegen het grootste deel van de algemene internetbeveiligingsproblemen uit de OWASP top 10.
@@ -323,7 +323,7 @@ Patchupdates vormen de basis voor het vinden en oplossen van potentiële problem
 [Security Center](../../security-center/security-center-intro.md) helpt u bedreigingen te voorkomen, te detecteren en erop te reageren en biedt u meer inzicht in en controle over de beveiliging van uw Azure-resources. Het biedt geïntegreerde beveiligingsbewaking en beleidsbeheer voor uw Azure-abonnementen, helpt bedreigingen te detecteren die anders onopgemerkt zouden kunnen blijven en werkt met een breed ecosysteem van beveiligingsoplossingen.
 
 ## <a name="identity-and-access-management"></a>Identiteits- en toegangsbeheer
-Het beveiligen van systemen, toepassingen en gegevens begint met identiteitsgebaseerde toegangscontroles. De functies voor identiteits- en toegangsbeheer die zijn ingebouwd in zakelijke producten en services van Microsoft helpen uw organisatorische en persoonlijke gegevens te beschermen tegen ongeautoriseerde toegang en maakt deze beschikbaar voor legitieme gebruikers, waar en wanneer ze ook beschikbaar zijn nodig hebben.
+Het beveiligen van systemen, toepassingen en gegevens begint met identiteitsgebaseerde toegangscontroles. De functies voor identiteits- en toegangsbeheer die zijn ingebouwd in zakelijke producten en services van Microsoft helpen uw organisatorische en persoonlijke gegevens te beschermen tegen ongeautoriseerde toegang en maakt deze beschikbaar voor legitieme gebruikers, waar en wanneer ze deze nodig hebben.
 
 ### <a name="secure-identity"></a>Veilige identiteit
 Microsoft gebruikt meerdere beveiligingspraktijken en -technologieën voor zijn producten en services om identiteit en toegang te beheren.

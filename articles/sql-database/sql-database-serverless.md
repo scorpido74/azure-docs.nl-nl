@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 3/11/2020
-ms.openlocfilehash: 8a72d3dc7f7b3fddf66df8111b1e92116a62883a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 00b9da150569db2972289468b1405e5087ee3321
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474020"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549159"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverless
 
@@ -151,7 +151,7 @@ De latentie om een serverloze database automatisch te hervatten en automatisch t
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Door de klant beheerde transparante gegevensversleuteling (BYOK)
 
-Als de [door de klant beheerde transparante gegevensversleuteling](transparent-data-encryption-byok-azure-sql.md) (BYOK) wordt gebruikt en de serverloze database automatisch wordt onderbroken wanneer de sleutel wordt verwijderd of opnieuw wordt ingetrokken, blijft de database in de automatisch onderbroken status.  In dit geval, wanneer de database volgende wordt hervat, blijft de database online totdat de status na ongeveer 10 minuten of minder ontoegankelijk is.  Zodra de database ontoegankelijk wordt, is het herstelproces hetzelfde als voor ingerichte compute databases.  Als de serverloze database online is wanneer sleutelverwijdering of intrekking plaatsvindt, wordt de database ook ontoegankelijk na ongeveer 10 minuten of minder op dezelfde manier als bij ingerichte compute databases.
+Als de [door de klant beheerde transparante gegevensversleuteling](transparent-data-encryption-byok-azure-sql.md) (BYOK) wordt gebruikt en de serverloze database automatisch wordt onderbroken wanneer de sleutel wordt verwijderd of opnieuw wordt ingetrokken, blijft de database in de automatisch onderbroken status.  In dit geval, nadat de database vervolgens is hervat, wordt de database binnen ongeveer 10 minuten ontoegankelijk.  Zodra de database ontoegankelijk wordt, is het herstelproces hetzelfde als voor ingerichte compute databases.  Als de serverloze database online is wanneer sleutelverwijdering of intrekking plaatsvindt, wordt de database ook ontoegankelijk na ongeveer 10 minuten of minder op dezelfde manier als bij ingerichte compute databases.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Onboarding in serverless compute-laag
 

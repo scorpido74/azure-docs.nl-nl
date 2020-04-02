@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: dcf9a278bfc0ede844f8eb59e3a256e40a47c57d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282423"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519486"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export-service: veelgestelde vragen
 
@@ -99,15 +99,17 @@ U schijven verzenden naar het Azure-datacenter via een bekende vervoerder zoals 
 > [!NOTE]
 > De datacenters in India vereisen een verklaring brief op uw briefhoofd (levering challan) om de stations terug te keren. Om de vereiste toegangspas te regelen, moet u ook de pick-up boeken bij de geselecteerde provider en de details delen met het datacenter.
 
-### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Zijn er beperkingen bij het internationaal verzenden van mijn schijf?
+### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>Zijn er beperkingen met verzending en het retourneren van mijn rit internationaal?
 
 Houd er rekening mee dat de fysieke media die u verzendt mogelijk internationale grenzen moeten overschrijden. U bent verantwoordelijk voor het importeren en/of exporteren van uw fysieke media en gegevens in overeenstemming met de geldende wetgeving. Neem contact op met uw adviseurs voordat u de fysieke media verzendt om te controleren of uw media en gegevens legaal naar het geïdentificeerde datacenter kunnen worden verzonden. Dit zal helpen om ervoor te zorgen dat het Microsoft bereikt in een tijdige wijze.
+
+Nadat de upload is voltooid, kan het proces om drive(s) terug te sturen naar een internationaal adres langer duren dan de typische 2-3 dagen die nodig zijn voor lokale verzending. Tijdens de fase die in de Azure-portal als Verpakking wordt vermeld, zorgt het Data Box-team ervoor dat de juiste documentatie wordt verstrekt om ervoor te zorgen dat de zending voldoet aan de verschillende internationale import- en exportvereisten.
 
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Zijn er speciale vereisten voor het leveren van mijn schijven aan een datacenter?
 
 De vereisten zijn afhankelijk van de specifieke Azure-datacenterbeperkingen.
 
-- Er zijn een paar sites waarvoor om veiligheidsredenen een Microsoft-datacenter-inbound ID-nummer op het pakket moet worden geschreven. Voordat u uw schijven of schijven naar het datacenteradbops@microsoft.comverzendt, neemt u contact op met Azure DataBox Operations ( ) om dit nummer op te halen. Zonder dit nummer wordt het pakket afgewezen.
+- Er zijn een paar sites, zoals Australië, Duitsland en het Verenigd Koninkrijk Zuid, die vereisen dat een Microsoft datacenter Inbound ID-nummer worden geschreven op het pakket om veiligheidsredenen. Voordat u uw schijven of schijven naar het datacenteradbops@microsoft.comverzendt, neemt u contact op met Azure DataBox Operations ( ) om dit nummer op te halen. Zonder dit nummer wordt het pakket afgewezen.
 - De datacenters in India vereisen de persoonlijke gegevens van de bestuurder, zoals de Government ID Card of Proof No. (bijvoorbeeld PAN, AADHAR, DL), naam, contact en het kenteken van de auto om een toegangspas voor de poort te krijgen. Om vertragingen bij de levering te voorkomen, moet u uw provider informeren over deze vereisten.
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Bij het maken van een taak is het verzendadres een locatie die verschilt van mijn opslagaccountlocatie. Wat moet ik doen?

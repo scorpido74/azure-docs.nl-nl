@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd305d2943d1b12756171748f28d32300081d71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42337fe958a881ee263d16c866dda69f13fe09c1
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443396"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519614"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Configureren hoe eindgebruikers toestemming geven voor toepassingen
 
@@ -143,9 +143,53 @@ U de Azure AD PowerShell Preview-module[(AzureADPreview)](https://docs.microsoft
     }
     ```
 
+## <a name="configure-risk-based-step-up-consent"></a>Op risico's gebaseerde op stap omhoog gebaseerde toestemming configureren
+
+Op risico's gebaseerde intensiveringstoestemming helpt de blootstelling van gebruikers aan kwaadaardige apps die [illegale toestemmingsverzoeken doen,](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)te verminderen. Als Microsoft een riskante toestemmingsaanvraag voor eindgebruikers detecteert, moet in plaats daarvan een "opstap" nodig zijn om toestemming van de beheerder te geven. Deze mogelijkheid is standaard ingeschakeld, maar leidt alleen tot een gedragswijziging wanneer toestemming van de eindgebruiker is ingeschakeld.
+
+Wanneer een riskante toestemmingsaanvraag wordt gedetecteerd, wordt in de toestemmingsprompt een bericht weergegeven waarin wordt aangegeven dat goedkeuring door de beheerder nodig is. Als de [werkstroom voor toestemmingsaanvragen](configure-admin-consent-workflow.md) voor beheerders is ingeschakeld, kan de gebruiker het verzoek rechtstreeks naar een beheerder sturen voor verdere controle vanuit de toestemmingsprompt. Als dit niet is ingeschakeld, wordt het volgende bericht weergegeven:
+
+* **AADSTS90094:** &lt;clientAppDisplayName&gt; heeft toestemming nodig om toegang te krijgen tot bronnen in uw organisatie die alleen een beheerder kan verlenen. Vraag een beheerder om toestemming te verlenen voor deze app voordat u deze kunt gebruiken.
+
+In dit geval wordt een auditgebeurtenis ook geregistreerd met een categorie 'ApplicationManagement', activiteitstype 'Toestemming voor toepassing' en statusreden van "Riskante toepassing gedetecteerd".
+
+> [!IMPORTANT]
+> Beheerders moeten [alle toestemmingsverzoeken](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) zorgvuldig evalueren voordat ze worden goedgekeurd, vooral wanneer Microsoft risico's heeft gedetecteerd.
+
+### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Op risico's gebaseerde op risico's gebaseerde toestemming uitschakelen of opnieuw inschakelen met PowerShell
+
+U de Azure AD PowerShell Preview-module[(AzureADPreview)](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)gebruiken om de vereiste stap naar beheerderstoestemming uit te schakelen in gevallen waarin Microsoft risico's detecteert of opnieuw inschakelt als deze eerder is uitgeschakeld.
+
+Dit kan worden gedaan met dezelfde stappen als hierboven wordt weergegeven voor [het configureren van groepseigenaartoestemming met PowerShell,](#configure-group-owner-consent-using-powershell)maar het vervangen van een andere instellingenwaarde. Er zijn drie verschillen in stappen: 
+
+1. Begrijp de instellingswaarden voor op risico's gebaseerde op stap omhoog gebaseerde toestemming:
+
+    | Instelling       | Type         | Beschrijving  |
+    | ------------- | ------------ | ------------ |
+    | _BlockUserConsentForRiskyApps_   | Booleaans |  Vlag die aangeeft of toestemming van de gebruiker wordt geblokkeerd wanneer een riskantverzoek wordt gedetecteerd. |
+
+2. Vervang de volgende waarde in stap 3:
+
+    ```powershell
+    $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
+    ```
+3. Vervang een van de volgende in stap 5:
+
+    ```powershell
+    # Disable risk-based step-up consent entirely
+    $riskBasedConsentEnabledValue.Value = "False"
+    ```
+
+    ```powershell
+    # Re-enable risk-based step-up consent, if disabled previously
+    $riskBasedConsentEnabledValue.Value = "True"
+    ```
+
 ## <a name="next-steps"></a>Volgende stappen
 
 [De werkstroom voor beheerderstoestemming configureren](configure-admin-consent-workflow.md)
+
+[Meer informatie over het beheren van toestemming voor toepassingen en het evalueren van toestemmingsverzoeken](manage-consent-requests.md)
 
 [Toestemming voor een tenantbeheerder verlenen voor een toepassing](grant-admin-consent.md)
 

@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 401019c537cb0eb51fa6002637e170a79210f7d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a7a89b4ff1f6deb94c545e64b4584d7959d573a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617639"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546385"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Gegevensdrift (voorbeeld) detecteren op gegevenssets
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Statistieken en inzichten zijn beschikbaar via de [Azure Application Insights-br
 ## <a name="prerequisites"></a>Vereisten
 
 Als u gegevenssetmonitors wilt maken en ermee wilt werken, hebt u het sein nodig:
-* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning.](https://aka.ms/AMLFree)
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning.](https://aka.ms/AMLFree)
 * Een [Azure Machine Learning-werkruimte](how-to-manage-workspace.md).
 * De [Azure Machine Learning SDK voor Python geïnstalleerd,](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)die de azureml-datasets pakket omvat.
 * Gestructureerde (tabelvormige) gegevens met een tijdstempel die is opgegeven in het bestandspad, de bestandsnaam of de kolom in de gegevens.
@@ -75,9 +75,9 @@ Met Azure Machine Learning wordt gegevensdrift gecontroleerd via gegevenssets. O
 
 De doelgegevensset moet `timeseries` de eigenschap hebben ingesteld door de tijdstempelkolom op te geven uit een kolom in de gegevens of een virtuele kolom die is afgeleid van het padpatroon van de bestanden. Dit kan via de Python SDK of Azure Machine Learning studio. Er moet een kolom worden opgegeven die een `timeseries` "fijnkorrelige" tijdstempel vertegenwoordigt, om de eigenschap aan de gegevensset toe te voegen. Als uw gegevens zijn verdeeld in mapstructuur met tijdsinformatie, zoals '{yyyy/MM/dd}', u een virtuele kolom maken door de instelling van het padpatroon en deze instellen als de tijdstempel 'grofkorrelig' om het belang van de functionaliteit van tijdreeksen te verbeteren. 
 
-#### <a name="python-sdk"></a>Python SDK
+#### <a name="python-sdk"></a>Python-SDK
 
-De [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) klassemethode [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) definieert de tijdstempelkolom voor de gegevensset. 
+De [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) klassemethode [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) definieert de tijdstempelkolom voor de gegevensset. 
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -104,7 +104,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Zie het [voorbeeldnotitieblok](https://aka.ms/azureml-tsd-notebook) `timeseries` of de [SDK-documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)voor gegevenssets voor een volledig voorbeeld van het gebruik van de eigenschap van gegevenssets.
+Zie het [voorbeeldnotitieblok](https://aka.ms/azureml-tsd-notebook) `timeseries` of de [SDK-documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)voor gegevenssets voor een volledig voorbeeld van het gebruik van de eigenschap van gegevenssets.
 
 #### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 4025c620aea49dfb26ab203630c121d29d88d9d7
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f02046d1e2ee558ca4ea4472a03fddb5d0a6a16f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474529"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549326"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning-gegevenssets maken
 
@@ -82,7 +82,7 @@ Ga als een overzicht van gegevenssets uit een [Azure-gegevensarchief](how-to-acc
 
 #### <a name="create-a-tabulardataset"></a>Een tabeltabelsetmaken
 
-Gebruik [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) de methode `TabularDatasetFactory` in de klasse om bestanden in de CSV- of .tsv-indeling te lezen en een niet-geregistreerde TabularDataset te maken. Als u uit meerdere bestanden leest, worden de resultaten samengevoegd tot één tabelvormige weergave. 
+Gebruik [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) de methode `TabularDatasetFactory` in de klasse om bestanden in de CSV- of .tsv-indeling te lezen en een niet-geregistreerde TabularDataset te maken. Als u uit meerdere bestanden leest, worden de resultaten samengevoegd tot één tabelvormige weergave. 
 
 ```Python
 from azureml.core import Workspace, Datastore, Dataset
@@ -164,7 +164,7 @@ sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'
 
 In Tabeltabelgegevenssets u een tijdstempel opgeven vanuit een kolom in de gegevens of van waar de padpatroongegevens worden opgeslagen om een tijdreekskenmerk in te schakelen. Deze specificatie zorgt voor eenvoudige en efficiënte filtering door de tijd.
 
-Gebruik [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) de methode`TabularDataset` in de klasse om uw tijdstempelkolom op te geven en filteren op tijd in te schakelen. Zie [Api-demo met API-demo met NOAA-weersinformatie voor](https://aka.ms/azureml-tsd-notebook)meer informatie.
+Gebruik [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) de methode`TabularDataset` in de klasse om uw tijdstempelkolom op te geven en filteren op tijd in te schakelen. Zie [Api-demo met API-demo met NOAA-weersinformatie voor](https://aka.ms/azureml-tsd-notebook)meer informatie.
 
 ```Python
 # create a TabularDataset with time series trait

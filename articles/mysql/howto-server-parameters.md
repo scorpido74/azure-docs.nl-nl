@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: fc2b1bbe0a3249014e663d43ee4db87cab5eedcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 715f1028597d76915d833b0ade66bc03d939030d
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063262"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546451"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Serverparameters configureren in Azure Database voor MySQL met behulp van de Azure-portal
 
@@ -68,10 +68,10 @@ Andere serverparameters die hier niet worden vermeld, zijn ingesteld op hun MySQ
 
 ### <a name="populating-the-time-zone-tables"></a>De tijdzonetabellen vullen
 
-De tijdzonetabellen op uw server kunnen worden `az_load_timezone` ingevuld door de opgeslagen procedure aan te roepen vanuit een hulpprogramma zoals de MySQL-opdrachtregel of MySQL Workbench.
+De tijdzonetabellen op uw server kunnen worden `mysql.az_load_timezone` ingevuld door de opgeslagen procedure aan te roepen vanuit een hulpprogramma zoals de MySQL-opdrachtregel of MySQL Workbench.
 
 > [!NOTE]
-> Als u de `az_load_timezone` opdracht uitvoert vanuit MySQL Workbench, moet u `SET SQL_SAFE_UPDATES=0;`mogelijk eerst de veilige updatemodus uitschakelen met behulp van .
+> Als u de `mysql.az_load_timezone` opdracht uitvoert vanuit MySQL Workbench, moet u `SET SQL_SAFE_UPDATES=0;`mogelijk eerst de veilige updatemodus uitschakelen met behulp van .
 
 ```sql
 CALL mysql.az_load_timezone();

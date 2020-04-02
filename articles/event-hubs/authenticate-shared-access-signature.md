@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: d17026dba26b3c1cb846d60967180c29563c425d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74545592"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521320"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Toegang tot Bronnen voor gebeurtenishubs verifiëren met behulp van gedeelde toegangshandtekeningen (SAS)
 Met de handtekening van gedeelde toegang (SAS) hebt u gedetailleerde controle over het type toegang dat u verleent aan de clients die de handtekening voor gedeelde toegang hebben. Hier volgen enkele besturingselementen die u in een SAS instellen: 
@@ -33,7 +33,7 @@ In dit artikel wordt de toegang tot Event Hubs-bronnen met SAS geauthenticeren. 
 
 
 ## <a name="configuring-for-sas-authentication"></a>Configureren voor SAS-verificatie
-U de regel voor gedeelde toegangsautorisatie van EventHubs configureren op een naamruimte voor gebeurtenishubs of een entiteit (gebeurtenishub-instantie of Kafka-onderwerp in een gebeurtenishubs voor naamruimte met Kafka). Het configureren van een regel voor gedeelde toegangsautorisatie voor een consumentengroep wordt momenteel niet ondersteund, maar u regels gebruiken die zijn geconfigureerd voor een naamruimte of entiteit om de toegang tot consumentengroep te beveiligen. 
+U de regel voor gedeelde toegangsautorisatie van EventHubs configureren op een naamruimte voor gebeurtenishubs of op een entiteit (gebeurtenishub-instantie of Kafka-onderwerp in een gebeurtenishub). Het configureren van een regel voor gedeelde toegangsautorisatie voor een consumentengroep wordt momenteel niet ondersteund, maar u regels gebruiken die zijn geconfigureerd voor een naamruimte of entiteit om de toegang tot consumentengroep te beveiligen. 
 
 In de volgende afbeelding ziet u hoe de autorisatieregels van toepassing zijn op voorbeeldentiteiten. 
 

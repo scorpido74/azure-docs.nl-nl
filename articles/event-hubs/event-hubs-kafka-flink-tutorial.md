@@ -1,6 +1,6 @@
 ---
 title: Apache Flink gebruiken voor Apache Kafka - Azure Event Hubs | Microsoft Documenten
-description: In dit artikel vindt u informatie over het verbinden van Apache Flink met een Azure-gebeurtenishub met Apache Kafka
+description: In dit artikel vindt u informatie over het verbinden van Apache Flink met een Azure-gebeurtenishub
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: db877279bcfa7e132841e342cfc25b66bb3ec384
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ab542e1328bb986f53d31e2eca75007cf1e0c75
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283596"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521790"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Apache Flink gebruiken met Azure Event Hubs voor Apache Kafka
 In deze zelfstudie ziet u hoe u Apache Flink verbinden met een gebeurtenishub zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. Azure Event Hubs ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html).
@@ -48,7 +48,7 @@ Als u deze zelfstudie wilt voltooien, moet u de volgende vereisten hebben:
 
 ## <a name="create-an-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken
 
-Een naamruimte voor Gebeurtenishubs is vereist om te verzenden of te ontvangen van een Event Hubs-service. Zie [Gebeurtenishubs met ingeschakeld kafka maken](event-hubs-create.md) voor informatie over het verkrijgen van een Kafka-eindpunt voor gebeurtenishubs. Zorg ervoor dat u de verbindingstekenreeks Voor gebeurtenishubs kopieert voor later gebruik.
+Een naamruimte voor Gebeurtenishubs is vereist om te verzenden of te ontvangen van een Event Hubs-service. Zie [Een gebeurtenishub maken](event-hubs-create.md) voor instructies voor het maken van een naamruimte en een gebeurtenishub. Zorg ervoor dat u de verbindingstekenreeks Voor gebeurtenishubs kopieert voor later gebruik.
 
 ## <a name="clone-the-example-project"></a>Het voorbeeldproject klonen
 
@@ -88,11 +88,11 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-De producent zal nu beginnen met het verzenden `test` van evenementen naar de Kafka ingeschakeld Event Hub op onderwerp en het afdrukken van de gebeurtenissen naar stdout.
+De producent zal nu beginnen met het `test` verzenden van evenementen naar de gebeurtenis hub op het onderwerp en het afdrukken van de gebeurtenissen naar stdout.
 
 ## <a name="run-flink-consumer"></a>Run Flink consument
 
-Ontvang berichten van de evenementenhubs met Kafka via het meegeleverde consumentenvoorbeeld.
+Ontvang berichten van de gebeurtenishub via het meegeleverde consumentenvoorbeeld. 
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>Een eindpunt van gebeurtenishubs Kafka geven
 
@@ -136,7 +136,7 @@ Zie het volgende onderwerp voor meer informatie over Event Hubs en Event Hubs vo
 
 - [Meer informatie over Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Event Hubs voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Event Hubs maken waarvoor Kafka is ingeschakeld](event-hubs-create.md)
+- [Een Event Hub maken](event-hubs-create.md)
 - [Streamen naar Event Hubs vanaf uw Kafka-toepassingen](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Een Kafka-broker spiegelen in een Event Hub](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Spark aan een Event Hub koppelen](event-hubs-kafka-spark-tutorial.md)

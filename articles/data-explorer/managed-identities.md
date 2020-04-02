@@ -7,25 +7,25 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9592f5d2666684e0cf5eef687b1e69cfb55066c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 900bf815917a4b7c9841860d663a2183b1ab71b3
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065575"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529679"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Beheerde identiteiten configureren voor uw Azure Data Explorer-cluster
 
 Met een [beheerde identiteit van Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) heeft uw cluster eenvoudig toegang tot andere door AAD beveiligde bronnen, zoals Azure Key Vault. De identiteit wordt beheerd door het Azure-platform en vereist niet dat u geheimen indient of roteert. In dit artikel ziet u hoe u een beheerde identiteit maakt voor Azure Data Explorer-clusters. Beheerde identiteitsconfiguratie wordt momenteel alleen ondersteund om [door de klant beheerde sleutels voor uw cluster in](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)te schakelen.
 
 > [!Note]
-> Beheerde identiteiten voor Azure Data Explorer gedragen zich niet zoals verwacht als uw app is gemigreerd tussen abonnementen of tenants. De app moet een nieuwe identiteit verkrijgen, wat kan worden gedaan door de functie [uit te schakelen](#remove-a-system-assigned-identity) en opnieuw in te [schakelen.](#add-a-system-assigned-identity) Toegangsbeleid van downstreambronnen moet ook worden bijgewerkt om de nieuwe identiteit te gebruiken.
+> Beheerde identiteiten voor Azure Data Explorer gedragen zich niet zoals verwacht als uw Azure Data Explorer-cluster is gemigreerd tussen abonnementen of tenants. De app moet een nieuwe identiteit verkrijgen, wat kan worden gedaan door de functie [uit te schakelen](#disable-a-system-assigned-identity) en opnieuw in te [schakelen.](#add-a-system-assigned-identity) Toegangsbeleid van downstreambronnen moet ook worden bijgewerkt om de nieuwe identiteit te gebruiken.
 
 ## <a name="add-a-system-assigned-identity"></a>Een door het systeem toegewezen identiteit toevoegen
                                                                                                     
 Wijs een door het systeem toegewezen identiteit toe die is gekoppeld aan uw cluster en wordt verwijderd als uw cluster wordt verwijderd. Een cluster kan slechts één door het systeem toegewezen identiteit hebben. Voor het maken van een cluster met een door het systeem toegewezen identiteit moet een extra eigenschap op het cluster worden ingesteld. De door het systeem toegewezen identiteit wordt toegevoegd met Behulp van C#,ARM-sjablonen of de Azure-portal zoals hieronder beschreven.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 ### <a name="add-a-system-assigned-identity-using-the-azure-portal"></a>Een door het systeem toegewezen identiteit toevoegen met behulp van de Azure-portal
 
@@ -164,13 +164,13 @@ Wanneer het cluster wordt gemaakt, heeft het de volgende extra eigenschappen:
 
 ---
 
-## <a name="remove-a-system-assigned-identity"></a>Een door het systeem toegewezen identiteit verwijderen
+## <a name="disable-a-system-assigned-identity"></a>Een door het systeem toegewezen identiteit uitschakelen
 
 Als u een door het systeem toegewezen identiteit verwijdert, wordt deze ook uit AAD verwijderd. Door het systeem toegewezen identiteiten worden ook automatisch uit AAD verwijderd wanneer de clusterbron wordt verwijderd. Een door het systeem toegewezen identiteit kan worden verwijderd door de functie uit te schakelen.  De door het systeem toegewezen identiteit wordt verwijderd met Behulp van C#,ARM-sjablonen of de Azure-portal zoals hieronder beschreven.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-### <a name="remove-a-system-assigned-identity-using-the-azure-portal"></a>Een door het systeem toegewezen identiteit verwijderen met behulp van de Azure-portal
+### <a name="disable-a-system-assigned-identity-using-the-azure-portal"></a>Een door het systeem toegewezen identiteit uitschakelen met behulp van de Azure-portal
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Selecteer > **Instellingen-identiteit** in het linkerdeelvenster van de portal. **Settings**

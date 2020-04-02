@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368516"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549072"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Certificaten roteren in Azure Kubernetes Service (AKS)
 
@@ -32,7 +32,7 @@ AKS genereert en gebruikt de volgende certificaten, certificaatautoriteiten en s
 * Elke kubelet maakt ook een Certificate Signing Request (CSR), die is ondertekend door de Cluster CA, voor communicatie van de kubelet naar de API-server.
 * In het geëetcd-sleutelwaardearchief is een certificaat ondertekend door de cluster-CA voor communicatie van etcd naar de API-server.
 * Het geëetcd-sleutelwaardearchief maakt een CA die certificaten ondertekent om gegevensreplicatie tussen geëetcd replica's in het AKS-cluster te verifiëren en te autoriseren.
-* De API-aggregator gebruikt de Cluster CA om certificaten uit te geven voor communicatie met andere API's, zoals Open Service Broker voor Azure. De API-aggregator kan ook een eigen CA hebben voor de uitgifte van deze certificaten, maar gebruikt momenteel de Cluster CA.
+* De API-aggregator gebruikt de cluster-CA om certificaten uit te geven voor communicatie met andere API's. De API-aggregator kan ook een eigen CA hebben voor de uitgifte van deze certificaten, maar gebruikt momenteel de Cluster CA.
 * Elk knooppunt maakt gebruik van een SA-token (Service Account), dat is ondertekend door de Cluster CA.
 * De `kubectl` client heeft een certificaat voor communicatie met het AKS-cluster.
 

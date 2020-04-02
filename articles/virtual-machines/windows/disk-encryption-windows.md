@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed64ee3d0e024c32be08ed4e010a6933033c3f87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e96f9484c103ebe75e21705b94cf35b9e16c54f
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476515"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529339"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-scenario's voor Windows-VM's
 
@@ -251,6 +251,8 @@ Azure Disk Encryption werkt niet voor de volgende scenario's, functies en techno
 - Kortstondige OS-schijven.
 - Versleuteling van gedeelde/gedistribueerde bestandssystemen zoals (maar niet beperkt tot) DFS, GFS, DRDB en CephFS.
 - Een versleutelde VM's verplaatsen naar een ander abonnement.
+- Gen2 VM's (zie: [Ondersteuning voor generatie 2 VM's op Azure)](generation-2.md#generation-1-vs-generation-2-capabilities)
+- Lsv2 serie VM's (zie: [Lsv2-serie](../lsv2-series.md))
 
 ## <a name="next-steps"></a>Volgende stappen
 

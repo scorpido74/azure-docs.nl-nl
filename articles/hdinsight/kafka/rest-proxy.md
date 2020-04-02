@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d99a3b803b80dc41990a63e647d3ba928deb31af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 8997b385960c58b17747dfcfced74010af80550b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198902"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548220"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interactie met Apache Kafka-clusters in Azure HDInsight met behulp van een REST-proxy
 
@@ -34,7 +34,7 @@ Als u een HDInsight Kafka-cluster maakt met REST-proxy, wordt een nieuw openbaar
 
 ### <a name="security"></a>Beveiliging
 
-Toegang tot de Kafka REST-proxy wordt beheerd met Azure Active Directory-beveiligingsgroepen. Wanneer u het Kafka-cluster maakt met de REST-proxy ingeschakeld, verstrekt u de Azure Active Directory-beveiligingsgroep die toegang moet hebben tot het REST-eindpunt. De Kafka-clients (toepassingen) die toegang tot de REST-proxy nodig hebben, moeten door de eigenaar van de groep aan deze groep worden geregistreerd. De eigenaar van de groep kan dit doen via de Portal of via Powershell.
+Toegang tot de Kafka REST-proxy wordt beheerd met Azure Active Directory-beveiligingsgroepen. Wanneer u het Kafka-cluster maakt met de REST-proxy ingeschakeld, geeft u de Azure Active Directory-beveiligingsgroep op die toegang moet hebben tot het REST-eindpunt. De Kafka-clients (toepassingen) die toegang tot de REST-proxy nodig hebben, moeten door de eigenaar van de groep aan deze groep worden geregistreerd. De eigenaar van de groep kan dit doen via de Portal of via PowerShell.
 
 Voordat u aanvragen doet voor het eindpunt van de REST-proxy, moet de clienttoepassing een OAuth-token krijgen om het lidmaatschap van de juiste beveiligingsgroep te verifiëren. Zoek hieronder een [voorbeeld van clienttoepassingen](#client-application-sample) dat laat zien hoe je een OAuth-token krijgen. Zodra de clienttoepassing het OAuth-token heeft, moeten ze dat token doorgeven in het HTTP-verzoek dat is gedaan aan de REST-proxy.
 
@@ -44,7 +44,12 @@ Voordat u aanvragen doet voor het eindpunt van de REST-proxy, moet de clienttoep
 ## <a name="prerequisites"></a>Vereisten
 
 1. U registreert een toepassing met Azure AD. De clienttoepassingen die u schrijft om te communiceren met de Kafka REST-proxy, gebruiken de id en het geheim van deze toepassing om te verifiëren aan Azure.
-1. Maak een Azure AD-beveiligingsgroep en voeg de toepassing die u hebt geregistreerd bij Azure AD toe aan de beveiligingsgroep. Deze beveiligingsgroep wordt gebruikt om te bepalen welke toepassingen mogen communiceren met de REST-proxy. Zie [Een basisgroep maken en leden toevoegen met Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor meer informatie over het maken van Azure AD-groepen.
+
+1. Maak een Azure AD-beveiligingsgroep en voeg de toepassing die u hebt geregistreerd bij Azure AD toe aan de beveiligingsgroep als 'lid' van de groep. Deze beveiligingsgroep wordt gebruikt om te bepalen welke toepassingen mogen communiceren met de REST-proxy. Zie [Een basisgroep maken en leden toevoegen met Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor meer informatie over het maken van Azure AD-groepen.
+
+    De groep valideren is van ![type Beveiligingsgroep 'Beveiliging'.](./media/rest-proxy/rest-proxy-group.png)
+
+    Valideren dat toepassing lid ![is van groepsongeldig lidmaatschap](./media/rest-proxy/rest-proxy-membergroup.png)
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>Een Kafka-cluster maken met REST-proxy ingeschakeld
 
@@ -69,11 +74,11 @@ U de onderstaande python-code gebruiken om te communiceren met de REST-proxy op 
 1. Sla de voorbeeldcode op een machine op waarop Python is geïnstalleerd.
 1. Installeer vereiste python-afhankelijkheden `pip3 install adal` `pip install msrestazure`door het uitvoeren en .
 1. Wijzig de codesectie *Configureer deze eigenschappen* en werk de volgende eigenschappen voor uw omgeving bij:
-    1.  *Tenant-id* : de Azure-tenant waar uw abonnement zich bevindt.
-    1.  *Client-ID* : de id voor de toepassing die u hebt geregistreerd in de beveiligingsgroep.
-    1.  *Client Secret* - Het geheim voor de toepassing die u hebt geregistreerd in de beveiligingsgroep
-    1.  *Kafkarest_endpoint* – haal deze waarde op het tabblad Eigenschappen in het clusteroverzicht zoals beschreven in de [sectie implementatie](#create-a-kafka-cluster-with-rest-proxy-enabled). Het moet in het volgende formaat -`https://<clustername>-kafkarest.azurehdinsight.net`
-3. Voer vanuit de opdrachtregel het python-bestand uit door uit te voeren`python <filename.py>`
+    1.    *Tenant-id* : de Azure-tenant waar uw abonnement zich bevindt.
+    1.    *Client-ID* : de id voor de toepassing die u hebt geregistreerd in de beveiligingsgroep.
+    1.    *Client Secret* - Het geheim voor de toepassing die u hebt geregistreerd in de beveiligingsgroep
+    1.    *Kafkarest_endpoint* – haal deze waarde op het tabblad Eigenschappen in het clusteroverzicht zoals beschreven in de [sectie implementatie](#create-a-kafka-cluster-with-rest-proxy-enabled). Het moet in het volgende formaat -`https://<clustername>-kafkarest.azurehdinsight.net`
+1. Voer vanuit de opdrachtregel het python-bestand uit door uit te voeren`python <filename.py>`
 
 Deze code doet het volgende:
 
@@ -124,6 +129,12 @@ request_url = kafkarest_endpoint + getstatus
 # sending get request and saving the response as response object
 response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
+```
+
+Hieronder vindt u een ander voorbeeld over hoe u een token krijgen van Azure for REST-proxy met behulp van een opdracht krul. Merk op dat `resource=https://hib.azurehdinsight.net` we de opgegeven tijd nodig hebben terwijl we een token krijgen.
+
+```cmd
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&resource=https://hib.azurehdinsight.net' 'https://login.microsoftonline.com/<tenantid>/oauth2/token'
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

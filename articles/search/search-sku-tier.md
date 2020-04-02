@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f103db1d0de7a9d538f56b8ade331dc856b26bce
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76899844"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547028"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Een prijscategorie kiezen voor Azure Cognitive Search
 
@@ -41,7 +41,9 @@ Lagen worden onderscheiden door:
 
 De laag die u selecteert, bepaalt het factureerbare tarief. De volgende schermafbeelding van azure portal toont de beschikbare lagen, minus prijzen (die u vinden in de portal en op de [prijspagina](https://azure.microsoft.com/pricing/details/search/). **Gratis,** **Basic**en **Standard** zijn de meest voorkomende lagen.
 
-**Gratis** maakt een beperkte zoekservice op een cluster, gedeeld met andere abonnees. U kleine projecten voltooien, waaronder snel starten en zelfstudies, maar u de service niet schalen of aanzienlijke workloads uitvoeren. **Basic** en **Standard** zijn de meest gebruikte factureerbare lagen, waarbij **Standard** de standaard is.
+**Gratis** maakt een beperkte zoekservice voor kleinere projecten, waaronder quickstarts en tutorials. Intern worden replica's en partities gedeeld tussen meerdere abonnees. U een gratis service niet schalen of aanzienlijke workloads uitvoeren.
+
+**Basic** en **Standard** zijn de meest gebruikte factureerbare lagen, waarbij **Standard** de standaard is. Met speciale resources onder uw controle u grotere projecten implementeren, prestaties optimaliseren en de capaciteit instellen.
 
 ![Prijsniveaus van Azure Cognitive Search](media/search-sku-tier/tiers.png "Prijsniveaus van Azure Cognitive Search")
 
@@ -55,10 +57,10 @@ U meer informatie vinden over de verschillende lagen op de [prijspagina,](https:
 
 Een oplossing die is gebaseerd op Azure Cognitive Search kan op de volgende manieren kosten met zich meebrengen:
 
-+ Basiskosten van service bij minimale configuratie (een service maken)
++ Vaste kosten van de service zelf, die 24x7 worden uitgevoerd, bij minimale configuratie (één partitie en replica)
 + Incrementele kosten bij het opschalen (replica's of partities toevoegen)
 + Bandbreedtekosten (uitgaande gegevensoverdracht) 
-+ Cognitief zoeken (cognitieve services toevoegen voor AI-verrijking, Azure-opslag voor kennisarchief)
++ Cognitief zoeken (Cognitive Services koppelen voor AI-verrijking of Azure-opslag gebruiken voor kennisarchief)
 
 ### <a name="service-costs"></a>Servicekosten
 
@@ -106,13 +108,13 @@ De meeste klanten brengen slechts een deel van de totale capaciteit online, met 
 
 De volgende suggesties kunnen u helpen de kosten tot een minimum te beperken:
 
-- Maak alle resources in dezelfde regio, of in zo weinig mogelijk regio's, om bandbreedtekosten te minimaliseren of te elimineren.
++ Maak alle resources in dezelfde regio, of in zo weinig mogelijk regio's, om bandbreedtekosten te minimaliseren of te elimineren.
 
-- Consolider alle services in één resourcegroep, zoals Azure Cognitive Search, Cognitive Services en andere Azure-services die in uw oplossing worden gebruikt. Zoek in de Azure-portal de brongroep en gebruik de opdrachten **Kostenbeheer** voor inzicht in de werkelijke en verwachte uitgaven.
++ Consolider alle services in één resourcegroep, zoals Azure Cognitive Search, Cognitive Services en andere Azure-services die in uw oplossing worden gebruikt. Zoek in de Azure-portal de brongroep en gebruik de opdrachten **Kostenbeheer** voor inzicht in de werkelijke en verwachte uitgaven.
 
-- Overweeg Azure Web App voor uw front-end toepassing, zodat aanvragen en antwoorden binnen de grenzen van het datacenter blijven.
++ Overweeg Azure Web App voor uw front-end toepassing, zodat aanvragen en antwoorden binnen de grenzen van het datacenter blijven.
 
-- Schaal op voor resource-intensieve bewerkingen zoals indexeren en pas vervolgens naar beneden aan voor normale queryworkloads. Begin met de minimale configuratie voor Azure Cognitive Search (één SU bestaande uit één partitie en één replica) en controleer vervolgens de gebruikersactiviteit om gebruikspatronen te identificeren die erop wijzen dat er meer capaciteit nodig is. Als er een voorspelbaar patroon is, u mogelijk de schaal synchroniseren met activiteit (u moet code schrijven om dit te automatiseren).
++ Schaal op voor resource-intensieve bewerkingen zoals indexeren en pas vervolgens naar beneden aan voor normale queryworkloads. Begin met de minimale configuratie voor Azure Cognitive Search (één SU bestaande uit één partitie en één replica) en controleer vervolgens de gebruikersactiviteit om gebruikspatronen te identificeren die erop wijzen dat er meer capaciteit nodig is. Als er een voorspelbaar patroon is, u mogelijk de schaal synchroniseren met activiteit (u moet code schrijven om dit te automatiseren).
 
 Ga daarnaast naar [Facturering en kostenbeheer](https://docs.microsoft.com/azure/billing/billing-getting-started) voor ingebouwde tools en functies met betrekking tot uitgaven.
 
@@ -130,7 +132,6 @@ In Azure Cognitive Search is de capaciteit gestructureerd als *replica's* en *pa
 
 > [!NOTE]
 > Alle standaard- en opslaggeoptimaliseerde lagen ondersteunen [flexibele combinaties van replica's en partities,](search-capacity-planning.md#chart) zodat u uw systeem [optimaliseren voor snelheid of opslag](search-performance-optimization.md) door de balans te wijzigen. De klasse Basic biedt maximaal drie replica's voor hoge beschikbaarheid, maar heeft slechts één partitie. Gratis lagen bieden geen speciale bronnen: computerbronnen worden gedeeld door meerdere abonnees.
-
 
 ### <a name="evaluating-capacity"></a>Evaluatie van de capaciteit
 
@@ -152,7 +153,7 @@ Een benadering voor het schatten van capaciteit is om te beginnen met de gratis 
 
 + [Maak een gratis service.](search-create-service-portal.md)
 + Maak een kleine, representatieve dataset.
-+ [Bouw een eerste index in de portal](search-create-index-portal.md) en noteer de grootte ervan. Functies en kenmerken hebben een impact op de opslag. Als u bijvoorbeeld suggesters toevoegt (typeahead), wordt de opslagvereisten verhoogd. Met dezelfde gegevensset u proberen meerdere versies van een index te maken, met verschillende kenmerken op elk veld, om te zien hoe de opslagvereisten variëren. Zie ['Implicaties voor opslag' voor](search-what-is-an-index.md#index-size)meer informatie in Een basisindex maken .
++ [Bouw een eerste index in de portal](search-create-index-portal.md) en noteer de grootte ervan. Functies en kenmerken hebben een impact op de opslag. Als u bijvoorbeeld suggesties toevoegt (zoekopdrachten per type query's) wordt de opslagvereisten verhoogd. Met dezelfde gegevensset u proberen meerdere versies van een index te maken, met verschillende kenmerken op elk veld, om te zien hoe de opslagvereisten variëren. Zie ['Implicaties voor opslag' voor](search-what-is-an-index.md#index-size)meer informatie in Een basisindex maken .
 
 Met een ruwe schatting in de hand, u dat bedrag verdubbelen tot budget voor twee indexen (ontwikkeling en productie) en kies vervolgens uw laag dienovereenkomstig.
 
@@ -196,7 +197,7 @@ De functies Gratis laag en voorbeeld bieden geen [service-level agreements (SLA'
 
 + Laat statistieken bouwen rond query's en verzamel gegevens rond gebruikspatronen (query's tijdens kantooruren, indexeren tijdens daluren). Gebruik deze gegevens om beslissingen te nemen over het verlenen van diensten. Hoewel het niet praktisch is op een uur- of dagelijkse cadans, u partities en resources dynamisch aanpassen aan geplande wijzigingen in queryvolumes. U ook ongeplande maar aanhoudende wijzigingen opvangen als de niveaus lang genoeg gelden om actie te ondernemen.
 
-+ Vergeet niet dat het enige nadeel van onderprovisioning is dat u mogelijk een service moet afbreken als de werkelijke vereisten groter zijn dan uw voorspellingen. Om onderbreking van de service te voorkomen, maakt u een nieuwe service op een hoger niveau en voert u deze naast elkaar uit totdat alle apps en aanvragen zich op het nieuwe eindpunt richten.
++ Vergeet niet dat het enige nadeel van onder provisioning is dat je zou kunnen hebben om een dienst af te breken als de werkelijke eisen groter zijn dan uw voorspellingen. Om onderbreking van de service te voorkomen, maakt u een nieuwe service op een hoger niveau en voert u deze naast elkaar uit totdat alle apps en aanvragen zich op het nieuwe eindpunt richten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

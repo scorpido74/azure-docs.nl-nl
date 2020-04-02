@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f62be94c901b383e34608508baa87ea37c893af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0a5bfe921687ad964e9321e3874de37ccf9b98
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283600"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549303"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Machine learning-pijplijnen maken en uitvoeren met Azure Machine Learning SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ De ML-pijplijnen die u maakt, zijn zichtbaar voor de leden van uw Azure Machine 
 
 ML-pijplijnen gebruiken externe rekendoelen voor berekening en de opslag van de tussenliggende en uiteindelijke gegevens die aan die pijplijn zijn gekoppeld. Ze kunnen gegevens van en naar ondersteunde [Azure Storage-locaties](https://docs.microsoft.com/azure/storage/) lezen en schrijven.
 
-Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
+Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -118,7 +118,7 @@ output_data1 = PipelineData(
 
 Als u tabelgegevens hebt opgeslagen in een bestand of een set bestanden, `DataReference`is een [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) een efficiënt alternatief voor een . `TabularDataset`objecten ondersteunen versieweergave, diffs en overzichtsstatistieken. `TabularDataset`s worden lui geëvalueerd (zoals Python generatoren) en het is efficiënt om ze te subseten door te splitsen of te filteren. De `FileDataset` klasse biedt vergelijkbare lui geëvalueerde gegevens die een of meer bestanden vertegenwoordigen. 
 
-U maakt `TabularDataset` een met behulp van methoden zoals [from_delimited_files.](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-)
+U maakt `TabularDataset` een met behulp van methoden zoals [from_delimited_files.](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-)
 
 ```python
 from azureml.data import TabularDataset

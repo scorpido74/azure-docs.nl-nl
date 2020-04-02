@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: d4304abf0ca089fbbea86f12cd03dea836db612e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f44be4e1d3d1186f0122bd4669ae800ab42e31d6
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368350"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521297"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Toegang tot Azure Event Hubs autoriseren
 Elke keer dat u gebeurtenissen/gegevens publiceert of gebruikt vanuit een gebeurtenishub, probeert uw client toegang te krijgen tot bronnen van Event Hubs. Elk verzoek om een beveiligde bron moet worden geautoriseerd, zodat de service ervoor kan zorgen dat de client over de vereiste machtigingen beschikt om de gegevens te publiceren/consumeren. 
@@ -39,7 +39,7 @@ Shared access signatures (SAS) voor Event Hubs-bronnen bieden beperkte gedelegee
 
 Het toestaan van gebruikers of toepassingen met behulp van een OAuth 2.0-token dat is geretourneerd door Azure AD biedt superieure beveiliging en gebruiksgemak ten opzichte van sas (Shared Access Signatures). Met Azure AD is het niet nodig om de toegangstokens op te slaan met uw code en potentiële beveiligingsproblemen te riskeren. Hoewel u shared access signatures (SAS) blijven gebruiken om fijnmazige toegang tot Event Hubs-bronnen te verlenen, biedt Azure AD vergelijkbare mogelijkheden zonder dat u SAS-tokens hoeft te beheren of zich zorgen hoeft te maken over het intrekken van een gecompromitteerde SAS. 
 
-Standaard zijn alle Bronnen van Event Hubs beveiligd en alleen beschikbaar voor de eigenaar van het account. Hoewel u een van de hierboven beschreven autorisatiestrategieën gebruiken om clients toegang te verlenen tot Event Hub-bronnen. Alleen Gebeurtenishubs-resources die zijn gemaakt met Azure Resource Manager-implementatiemodel ondersteunen Azure AD-autorisatie. Microsoft raadt aan om Azure AD te gebruiken wanneer dat mogelijk is voor maximale beveiliging en gebruiksgemak.
+Standaard zijn alle Bronnen van Event Hubs beveiligd en alleen beschikbaar voor de eigenaar van het account. Hoewel u een van de hierboven beschreven autorisatiestrategieën gebruiken om clients toegang te verlenen tot Event Hub-bronnen. Microsoft raadt aan om Azure AD te gebruiken wanneer dat mogelijk is voor maximale beveiliging en gebruiksgemak.
 
 Zie Toegang tot bronnen voor [gebeurtenishubs toestaan met behulp van gedeelde toegangshandtekeningen](authorize-access-shared-access-signature.md)voor meer informatie over autorisatie via SAS.
 

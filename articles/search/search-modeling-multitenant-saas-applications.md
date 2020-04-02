@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113273"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549011"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Ontwerppatronen voor Multitenant SaaS-toepassingen en Azure Cognitive Search
 Een multitenant-toepassing is een toepassing die dezelfde services en mogelijkheden biedt aan een willekeurig aantal tenants die de gegevens van een andere tenant niet kunnen zien of delen. In dit document worden tenantisolatiestrategieën voor multitenant-toepassingen besproken die zijn gebouwd met Azure Cognitive Search.
@@ -51,7 +51,7 @@ In de S3-prijscategorie Van Azure Cognitive Search is er een optie voor de HD-mo
 
 S3 HD zorgt ervoor dat de vele kleine indexen worden verpakt onder het beheer van een enkele zoekservice door de mogelijkheid te verhandelen om indexen uit te schalen met behulp van partities voor de mogelijkheid om meer indexen in één service te hosten.
 
-Concreet kan een S3-service tussen de 1 en 200 indexen hebben die samen tot 1,4 miljard documenten kunnen hosten. Een S3 HD aan de andere kant zou individuele indexen in staat stellen om slechts tot 1 miljoen documenten te gaan, maar het kan tot 1000 indexen per partitie verwerken (tot 3000 per service) met een totaal aantal documenten van 200 miljoen per partitie (tot 600 miljoen per service).
+Een S3-service is ontworpen om een vast aantal indexen te hosten (maximaal 200) en elke index horizontaal in grootte te laten schalen terwijl nieuwe partities aan de service worden toegevoegd. Door partities toe te voegen aan S3 HD-services, wordt het maximum aantal indexen verhoogd dat de service kan hosten. De ideale maximale grootte voor een individuele S3HD-index is ongeveer 50 - 80 GB, hoewel er geen harde groottelimiet is voor elke index die door het systeem wordt opgelegd.
 
 ## <a name="considerations-for-multitenant-applications"></a>Overwegingen voor multitenant-toepassingen
 Multitenant-toepassingen moeten effectief middelen verdelen onder de huurders met behoud van een zekere mate van privacy tussen de verschillende tenants. Er zijn een paar overwegingen bij het ontwerpen van de architectuur voor een dergelijke toepassing:
@@ -78,7 +78,7 @@ In een index-per-tenantmodel bezetten meerdere tenants één Azure Cognitive Sea
 
 Tenants bereiken gegevensisolatie omdat alle zoekaanvragen en documentbewerkingen worden uitgegeven op indexniveau in Azure Cognitive Search. In de toepassingslaag is er de noodzaak om het verkeer van de verschillende tenants naar de juiste indexen te leiden en tegelijkertijd resources op serviceniveau over alle tenants te beheren.
 
-Een belangrijk kenmerk van het index-per-tenantmodel is de mogelijkheid voor de toepassingsontwikkelaar om de capaciteit van een zoekservice onder de tenants van de toepassing te overschrijven. Als de tenants een ongelijke verdeling van de werklast hebben, kan de optimale combinatie van tenants worden verdeeld over de indexen van een zoekservice om plaats te bieden aan een aantal zeer actieve, resource-intensieve huurders, terwijl tegelijkertijd een lange staart van minder actieve huurders. De afweging is het onvermogen van het model om situaties te behandelen waarin elke tenant gelijktijdig zeer actief is.
+Een belangrijk kenmerk van het index-per-tenantmodel is de mogelijkheid voor de toepassingsontwikkelaar om de capaciteit van een zoekservice onder de tenants van de toepassing te overschrijven. Als de tenants een ongelijke verdeling van de werklast hebben, kan de optimale combinatie van tenants worden verdeeld over de indexen van een zoekservice om plaats te bieden aan een aantal zeer actieve, resource-intensieve tenants, terwijl tegelijkertijd een lange staart van minder actieve tenants wordt bediend. De afweging is het onvermogen van het model om situaties te behandelen waarin elke tenant gelijktijdig zeer actief is.
 
 Het index-per-tenant-model biedt de basis voor een variabel kostenmodel, waarbij een volledige Azure Cognitive Search-service vooraf wordt opgekocht en vervolgens wordt gevuld met tenants. Hierdoor kan ongebruikte capaciteit worden aangewezen voor proeven en gratis accounts.
 

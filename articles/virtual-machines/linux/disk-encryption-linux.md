@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6a1ea5e09dc70b2c523bf23b28f726cbe2c0818d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7df3c07518a9211bd1abf785e3f4954c41ebffc
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062675"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529456"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-scenario's voor Linux-VM's
 
@@ -39,7 +39,7 @@ In alle gevallen moet u [een momentopname maken](snapshot-copy-managed-disk.md) 
 
 Azure Disk Encryption kan worden ingeschakeld en beheerd via de [Azure CLI](/cli/azure) en [Azure PowerShell.](/powershell/azure/new-azureps-module-az) Hiervoor moet u de hulpprogramma's lokaal installeren en verbinding maken met uw Azure-abonnement.
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 De [Azure CLI 2.0](/cli/azure) is een opdrachtregelhulpmiddel voor het beheer van Azure-resources. De CLI is ontworpen om gegevens flexibel op te vragen, langdurige bewerkingen te ondersteunen als niet-blokkerende processen en scripting eenvoudig te maken. U het lokaal installeren door de stappen in [Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest)te volgen.
 
@@ -407,6 +407,7 @@ Azure Disk Encryption werkt niet voor de volgende Linux-scenario's, -functies en
 - Versleuteling van gedeelde/gedistribueerde bestandssystemen zoals (maar niet beperkt tot): DFS, GFS, DRDB en CephFS.
 - Een versleutelde VM verplaatsen naar een ander abonnement.
 - Kernel Crash Dump (kdump).
+- Lsv2 serie VM's (zie: [Lsv2-serie](../lsv2-series.md))
 
 ## <a name="next-steps"></a>Volgende stappen
 

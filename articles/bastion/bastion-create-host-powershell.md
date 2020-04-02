@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: c3e4c2f2bac45f2e366764473a34b0536bb4cc44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43d834f0c834696cd4a836466c9663fe7c31a392
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76990433"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520503"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Een Azure Bastion-host maken met Azure PowerShell
 
@@ -35,7 +35,7 @@ Met deze sectie u een nieuwe Azure Bastion-bron maken met Azure PowerShell.
    ```azurepowershell-interactive
    $subnetName = "AzureBastionSubnet"
    $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-   $vnet = New-AzVirtualNetwork -Name "myVnet" -ResourceGroupName " myBastionRG " -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+   $vnet = New-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myBastionRG" -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
    ```
 
 2. Maak een openbaar IP-adres voor Azure Bastion. Het openbare IP-adres is het openbare IP-adres van de Bastion-bron waarop RDP/SSH zal worden geopend (via poort 443). Het openbare IP-adres moet zich in dezelfde regio bevinden als de Bastion-bron die u maakt.
@@ -47,7 +47,7 @@ Met deze sectie u een nieuwe Azure Bastion-bron maken met Azure PowerShell.
 3. Maak een nieuwe Azure Bastion-bron in het AzureBastionSubnet van uw virtuele netwerk. Het duurt ongeveer 5 minuten voordat de Bastion-bron is gemaakt en geïmplementeerd.
 
    ```azurepowershell-interactive
-   $bastion = New-AzBastion -ResourceGroupName " myBastionRG " -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
+   $bastion = New-AzBastion -ResourceGroupName "myBastionRG" -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
    ```
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -2,13 +2,13 @@
 title: Resources, resourcegroepen en abonnementen voor logische organisatie taggen
 description: Hier ziet u hoe u tags toepast om Azure-resources te ordenen voor facturering en beheer.
 ms.topic: conceptual
-ms.date: 03/20/2020
-ms.openlocfilehash: ffc97df0923e26c3abf0eed8e7810f3b1dc61ed2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 76f9f61b3fe7002508bbd884f427efcfee698579
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132249"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548482"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Tags gebruiken om uw Azure-resources en beheerhiërarchie te ordenen
 
@@ -20,7 +20,7 @@ Zie Handleiding voor het benoemen en [taggen](/azure/cloud-adoption-framework/de
 
 ## <a name="required-access"></a>Vereiste toegang
 
-Als u tags wilt toepassen op een resource, moet u schrijftoegang hebben tot het brontype **Microsoft.Resources/tags.** Met de rol **Tag Contributor** u tags toepassen op een entiteit zonder toegang te hebben tot de entiteit zelf.
+Als u tags wilt toepassen op een resource, moet u schrijftoegang hebben tot het brontype **Microsoft.Resources/tags.** Met de rol [Tag Contributor](../../role-based-access-control/built-in-roles.md#tag-contributor) u tags toepassen op een entiteit zonder toegang te hebben tot de entiteit zelf. Momenteel kan de tagbijdrage geen tags toepassen op bronnen of resourcegroepen via de portal. Het kan tags toepassen op abonnementen via de portal. Het ondersteunt alle tagbewerkingen via PowerShell en REST API.  
 
 De [rol Inzender](../../role-based-access-control/built-in-roles.md#contributor) verleent ook de vereiste toegang om tags toe te passen op elke entiteit. Als u tags op slechts één resourcetype wilt toepassen, gebruikt u de rol inzender voor die resource. Als u bijvoorbeeld tags wilt toepassen op virtuele machines, gebruikt u de [virtuele machinebijdrager](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
@@ -28,7 +28,7 @@ De [rol Inzender](../../role-based-access-control/built-in-roles.md#contributor)
 
 ### <a name="apply-tags"></a>Tags toepassen
 
-Azure PowerShell biedt twee opdrachten voor het toepassen van tags - [Nieuw-AzTag](/powershell/module/az.resources/new-aztag) en [Update-AzTag](/powershell/module/az.resources/update-aztag). U moet over Azure PowerShell 3.6.1 of hoger beschikken om deze opdrachten te kunnen gebruiken.
+Azure PowerShell biedt twee opdrachten voor het toepassen van tags - [Nieuw-AzTag](/powershell/module/az.resources/new-aztag) en [Update-AzTag](/powershell/module/az.resources/update-aztag). U moet de Az.Resources module 1.12.0 of hoger hebben. U uw `Get-Module Az.Resources`versie controleren met. U die module installeren of [Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 of hoger installeren.
 
 De **Nieuw-AzTag** vervangt alle tags op de resource, resourcegroep of abonnement. Wanneer u de opdracht aanroept, geeft u de resource-id in van de entiteit die u wilt taggen.
 
@@ -230,7 +230,7 @@ $subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
 Remove-AzTag -ResourceId "/subscriptions/$subscription"
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 ### <a name="apply-tags"></a>Tags toepassen
 
@@ -554,7 +554,7 @@ In de volgende sjabloon worden de tags van een object toegevoegd aan een resourc
 
 [!INCLUDE [resource-manager-tag-resource](../../../includes/resource-manager-tag-resources.md)]
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 Gebruik het als u met tags wilt werken via de Azure REST API:
 

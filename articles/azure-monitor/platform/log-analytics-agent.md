@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 1ca03cde57a9496054d0860fbb70bd286caabe46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d52d8e6d0f6e3325b5c5cdc9a2e21654e6a2b621
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79533246"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520721"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van log-analyses
 De Azure Log Analytics-agent is ontwikkeld voor uitgebreid beheer voor virtuele machines in elke cloud, on-premises machines en machines die worden gecontroleerd door [System Center Operations Manager.](https://docs.microsoft.com/system-center/scom/) De Windows- en Linux-agents verzenden verzamelde gegevens uit verschillende bronnen naar uw Log Analytics-werkruimte in Azure Monitor, evenals unieke logboeken of statistieken zoals gedefinieerd in een bewakingsoplossing. De agent Log Analytics ondersteunt ook inzichten en andere services in Azure Monitor, zoals [Azure Monitor for VMs,](../insights/vminsights-enable-overview.md) [Azure Security Center](/azure/security-center/)en [Azure Automation.](../../automation/automation-intro.md)
@@ -156,23 +156,27 @@ De Windows-agent zal op 18 mei 2020 uitsluitend sha-2-ondertekening gebruiken. D
 
 
 ## <a name="network-requirements"></a>Netwerkvereisten
-De agent voor Linux en Windows communiceert outbound naar de Azure Monitor-service via TCP-poort 443 en als de machine verbinding maakt via een firewall of proxyserver om via internet te communiceren, controleert u onderstaande vereisten om de netwerkconfiguratie te begrijpen Vereist. Als in uw IT-beveiligingsbeleid computers in het netwerk geen verbinding kunnen worden gemaakt met internet, u een [Logboekanalysegateway](gateway.md) instellen en vervolgens de agent configureren om verbinding te maken via de gateway naar Azure Monitor-logboeken. De agent kan vervolgens configuratie-informatie ontvangen en gegevens verzenden die zijn verzameld, afhankelijk van welke regels voor het verzamelen van gegevens en bewakingsoplossingen u in uw werkruimte hebt ingeschakeld.
+De agent voor Linux en Windows communiceert uitgaand naar de Azure Monitor-service via TCP-poort 443 en als de machine verbinding maakt via een firewall of proxyserver om via internet te communiceren, controleert u onderstaande vereisten om inzicht te krijgen in de vereiste netwerkconfiguratie. Als in uw IT-beveiligingsbeleid computers in het netwerk geen verbinding kunnen worden gemaakt met internet, u een [Logboekanalysegateway](gateway.md) instellen en vervolgens de agent configureren om verbinding te maken via de gateway naar Azure Monitor-logboeken. De agent kan vervolgens configuratie-informatie ontvangen en gegevens verzenden die zijn verzameld, afhankelijk van welke regels voor het verzamelen van gegevens en bewakingsoplossingen u in uw werkruimte hebt ingeschakeld.
 
 ![Communicatiediagram voor log-analyses-agent](./media/log-analytics-agent/log-analytics-agent-01.png)
 
+In de volgende tabel worden de proxy- en firewallconfiguratiegegevens weergegeven die nodig zijn voor de Linux- en Windows-agents om te communiceren met Azure Monitor-logboeken.
 
-## <a name="network-firewall-requirements"></a>Vereisten voor netwerkfirewall
-In de onderstaande informatie worden de proxy- en firewallconfiguratiegegevens vermeld die nodig zijn voor de Linux- en Windows-agent om te communiceren met Azure Monitor-logboeken.  
+### <a name="firewall-requirements"></a>Firewallvereisten
 
 |Agentresource|Poorten |Richting |HTTPS-controle overslaan|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
-|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
-|*.blob.core.windows.net |Poort 443 |Uitgaand|Ja |  
+|*.ods.opinsights.azure.com |Poort 443 |Binnenkomend en uitgaand|Ja |  
+|*.oms.opinsights.azure.com |Poort 443 |Binnenkomend en uitgaand|Ja |  
+|*.blob.core.windows.net |Poort 443 |Binnenkomend en uitgaand|Ja |
+|*.azure-automation.net |Poort 443 |Binnenkomend en uitgaand|Ja |
+|*.azure.com |Poort 443|Binnenkomend en uitgaand|Ja |
 
 Zie [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)voor firewallgegevens die vereist zijn voor Azure Government. 
 
 Als u van plan bent de Azure Automation Hybrid Runbook Worker te gebruiken om verbinding te maken met en te registreren bij de automatiseringsservice om runbooks of beheeroplossingen in uw omgeving te gebruiken, moet deze toegang hebben tot het poortnummer en de URL's die zijn beschreven in [Uw netwerk configureren voor de hybride runbookworker.](../../automation/automation-hybrid-runbook-worker.md#network-planning) 
+
+### <a name="proxy-configuration"></a>Proxyconfiguratie
 
 De Windows- en Linux-agent ondersteunt communiceren via een proxyserver of Log Analytics-gateway naar Azure Monitor met behulp van het HTTPS-protocol.  Zowel anonieme als basisverificatie (gebruikersnaam/wachtwoord) worden ondersteund.  Voor de Windows-agent die rechtstreeks met de service is verbonden, wordt de proxyconfiguratie opgegeven tijdens de installatie of [na implementatie](agent-manage.md#update-proxy-settings) vanuit het Configuratiescherm of met PowerShell.  
 

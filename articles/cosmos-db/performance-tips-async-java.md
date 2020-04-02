@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 89df941eb6ebaad6e078c278f1ed883db5528c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b892b1f4ff73679ab425d0e97f5361e0f3712252
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152551"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549192"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Tips voor betere prestaties van Azure Cosmos DB en Async Java
 
@@ -112,7 +112,7 @@ Dus als je vraagt "Hoe kan ik mijn databaseprestaties verbeteren?" overweeg de v
 
         + **Gebruik multithreading in uw toepassing voor efficiënte TCP-gegevensoverdracht** - Nadat u een aanvraag hebt ingediend, moet uw toepassing zich abonneren om gegevens over een andere thread te ontvangen. Als u dit niet doet, wordt onbedoeld "half-duplex"-bewerking en worden de daaropvolgende verzoeken geblokkeerd in afwachting van het antwoord van het vorige verzoek.
 
-        + **Compute-intensieve workloads uitvoeren op een speciale thread** - Om vergelijkbare redenen als de vorige tip kunnen bewerkingen zoals complexe gegevensverwerking het best in een afzonderlijke thread worden geplaatst. Een verzoek dat gegevens uit een ander gegevensarchief ophaalt (bijvoorbeeld als de thread azure cosmos DB- en Spark-gegevensopslag tegelijkertijd gebruikt) kan een verhoogde latentie ervaren en het wordt aanbevolen om een extra thread te spawnen die wacht op een antwoord van de andere gegevensarchief.
+        + **Compute-intensieve workloads uitvoeren op een speciale thread** - Om vergelijkbare redenen als de vorige tip kunnen bewerkingen zoals complexe gegevensverwerking het best in een afzonderlijke thread worden geplaatst. Een aanvraag die gegevens uit een ander gegevensarchief ophaalt (bijvoorbeeld als de thread azure cosmos DB- en Spark-gegevensopslag tegelijkertijd gebruikt) kan een verhoogde latentie ervaren en het wordt aanbevolen om een extra thread te spawnen die wacht op een reactie van het andere gegevensarchief.
 
             + Het onderliggende netwerk IO in de Async Java SDK wordt beheerd door Netty, zie deze [tips voor het vermijden van coderingspatronen die Netty IO-threads blokkeren.](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread)
 
@@ -230,9 +230,9 @@ Dus als je vraagt "Hoe kan ik mijn databaseprestaties verbeteren?" overweeg de v
     * - nofile 100000
     ```
 
-* **Native SSL-implementatie gebruiken voor netty**
+* **Native TLS/SSL-implementatie gebruiken voor netty**
 
-    Netty kan OpenSSL rechtstreeks gebruiken voor SSL-implementatiestack om betere prestaties te bereiken. Bij afwezigheid van deze configuratie netty zal terugvallen naar de standaard SSL-implementatie van Java.
+    Netty kan OpenSSL rechtstreeks gebruiken voor TLS-implementatiestack om betere prestaties te bereiken. Bij afwezigheid van deze configuratie netty zal terugvallen naar standaard TLS-implementatie van Java.
 
     op Ubuntu:
     ```bash

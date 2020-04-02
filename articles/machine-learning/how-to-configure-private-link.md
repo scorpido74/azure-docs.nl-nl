@@ -10,16 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: c6593a2746e628c89e20f6ef92a1430bd294e4fe
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fb70600ad245968377cdebd23a7b531e552bb546
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438305"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529323"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Private Link configureren voor een Azure Machine Learning-werkruimte
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Private Link configureren voor een Azure Machine Learning-werkruimte (voorbeeld)
 
-In dit document leert u hoe u Azure Private Link gebruikt met uw Azure Machine Learning-werkruimte. Met Azure Private Link u verbinding maken met uw werkruimte met behulp van een privéeindpunt. Het privéeindpunt is een set privé-IP-adressen binnen uw virtuele netwerk. U de toegang tot uw werkruimte vervolgens beperken tot alleen via de privé-IP-adressen. Private Link helpt het risico op dataexfiltratie te verminderen. Zie het artikel Azure Private [Link](/azure/private-link/private-link-overview) voor meer informatie over privéeindpunten.
+In dit document leert u hoe u Azure Private Link gebruikt met uw Azure Machine Learning-werkruimte. Deze mogelijkheid is momenteel in preview, en is beschikbaar in het Amerikaanse oosten, US West 2, US South Central regio's. 
+
+Met Azure Private Link u verbinding maken met uw werkruimte met behulp van een privéeindpunt. Het privéeindpunt is een set privé-IP-adressen binnen uw virtuele netwerk. U de toegang tot uw werkruimte vervolgens beperken tot alleen via de privé-IP-adressen. Private Link helpt het risico op dataexfiltratie te verminderen. Zie het artikel Azure Private [Link](/azure/private-link/private-link-overview) voor meer informatie over privéeindpunten.
 
 > [!IMPORTANT]
 > Azure Private Link heeft geen gevolgen voor Azure control plane (beheerbewerkingen), zoals het verwijderen van de werkruimte of het beheren van compute resources. Bijvoorbeeld het maken, bijwerken of verwijderen van een compute target. Deze bewerkingen worden normaal via het openbare internet uitgevoerd.

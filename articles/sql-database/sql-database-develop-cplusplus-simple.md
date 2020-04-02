@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: fb6094ec418d2b212759bddd2c4d49c7e6193849
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed8e5eaa0ff9b58f80473b052aacfb9f01d45055
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73690697"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529208"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Verbinding maken met SQL Database met C en C++
 
@@ -28,7 +28,7 @@ Zorg ervoor dat u over de volgende zaken beschikt:
 
 * Een actief Azure-account. Als u nog geen abonnement hebt, kunt u zich registreren voor een [gratis Azure-proefversie](https://azure.microsoft.com/pricing/free-trial/).
 * [Visual Studio](https://www.visualstudio.com/downloads/). U moet de C++-taalcomponenten installeren om dit voorbeeld te bouwen en uit te voeren.
-* [Visual Studio Linux Ontwikkeling](https://visualstudiogallery.msdn.microsoft.com/725025cf-7067-45c2-8d01-1e0fd359ae6e). Als u op Linux ontwikkelt, moet u ook de Visual Studio Linux-extensie installeren.
+* [Visual Studio Linux Ontwikkeling](https://docs.microsoft.com/cpp/linux/?view=vs-2019). Als u op Linux ontwikkelt, moet u ook de Visual Studio Linux-extensie installeren.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL Database en SQL Server op virtuele machines
 Azure SQL is gebouwd op Microsoft SQL Server en is ontworpen om een krachtige, performante en schaalbare service te bieden. Er zijn veel voordelen aan het gebruik van SQL Azure via uw eigen database die op locatie wordt uitgevoerd. Met SQL Azure hoeft u uw database niet te installeren, in te stellen, te onderhouden of te beheren, maar alleen de inhoud en de structuur van uw database. Typische dingen waar we ons zorgen over maken met databases zoals fouttolerantie en redundantie zijn allemaal ingebouwd.

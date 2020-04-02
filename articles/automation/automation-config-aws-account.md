@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 596dc334a412b3e0839d7661a23af771e5cd7394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 891db5d17ddde681f75845fdca6c9252c5b32b86
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366937"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520821"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Runbooks met Amazon Web Services verifiëren
 
@@ -26,7 +26,7 @@ Als u wilt verifiëren met AWS, moet u een set AWS-referenties opgeven om uw run
 
 Voor communicatie tussen Azure Automation en AWS moet u eerst uw AWS-referenties ophalen en deze opslaan als assets in Azure Automation. Voer de volgende stappen uit die in het AWS-document [Toegangssleutels voor uw AWS-account beheren](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) zijn gedocumenteerd om een toegangssleutel te maken en kopieer de **toegangssleutel-id** en **geheime toegangssleutel** (download desgewenst uw sleutelbestand om het ergens veilig op te slaan).
 
-Nadat u uw AWS-beveiligingssleutels hebt gemaakt en gekopieerd, moet u een referentieasset met een Azure Automation-account maken om deze sleutels veilig op te slaan en ernaar te verwijzen met uw runbooks. Volg de stappen in de sectie: **Maak een nieuwe referentie** in het artikel Credential assets in Azure [Automation](shared-resources/credentials.md#to-create-a-new-credential-asset-with-the-azure-portal) en voer de volgende gegevens in:
+Nadat u uw AWS-beveiligingssleutels hebt gemaakt en gekopieerd, moet u een referentieasset met een Azure Automation-account maken om deze sleutels veilig op te slaan en ernaar te verwijzen met uw runbooks. Volg de stappen in de sectie: **Maak een nieuwe referentie** in het artikel Credential assets in Azure [Automation](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal) en voer de volgende gegevens in:
 
 1. Voer in het vak **Naam****AWScred** in of een geschikte waarde die voldoet aan uw naamgevingsstandaarden.
 2. Typ **in** het vak Gebruikersnaam uw **Toegangs-id** en uw **geheime toegangssleutel** in het vak **Wachtwoord** en **Wachtwoord bevestigen.**

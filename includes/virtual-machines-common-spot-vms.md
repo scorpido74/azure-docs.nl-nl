@@ -1,28 +1,23 @@
 ---
 title: bestand opnemen
 description: bestand opnemen
-services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d56964b7415e4ca5903950cd46c02b3c27f62d5e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77178996"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547414"
 ---
 Met behulp van Spot VM's u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kostenbesparing. Op elk moment waarop Azure de capaciteit terug nodig heeft, wordt spotvm's van Spot v.s. Daarom zijn Spot VM's ideaal voor workloads die onderbrekingen kunnen verwerken, zoals batchverwerkingstaken, dev/testomgevingen, grote compute workloads en meer.
 
 De hoeveelheid beschikbare capaciteit kan variëren op basis van grootte, regio, tijdstip en meer. Bij het implementeren van Spot VM's wijst Azure de VM's toe als er capaciteit beschikbaar is, maar er is geen SLA voor deze VM's. Een Spot VM biedt geen hoge beschikbaarheidsgaranties. Op elk moment waarop Azure de capaciteit terug nodig heeft, wordt spotvm's met 30 seconden verwijderd. 
 
-> [!IMPORTANT]
-> Spotexemplaren staan momenteel in openbare preview.
-> Deze preview-versie wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
->
 
 ## <a name="eviction-policy"></a>Uitzettingsbeleid
 

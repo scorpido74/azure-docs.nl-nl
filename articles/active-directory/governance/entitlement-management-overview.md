@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3deb87fec8241ad6126314f3f6ce5fb9600ad1fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 477bb5430214b497f90e3cb6d5df69f9fcf4035f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128549"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546163"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Wat is Azure AD-rechtenbeheer?
 
@@ -101,7 +101,7 @@ In het volgende diagram ziet u een voorbeeld van de verschillende elementen in h
 
 Toegangspakketten vervangen geen andere mechanismen voor toegangstoewijzing.  Ze zijn het meest geschikt in situaties zoals:
 
-- Werknemers hebben tijdsbeperkte toegang nodig voor een bepaalde taak.  U bijvoorbeeld groepslicenties en een dynamische groep gebruiken om ervoor te zorgen dat alle werknemers een Exchange Online-postvak hebben en vervolgens toegangspakketten gebruiken voor situaties waarin werknemers extra toegang nodig hebben, zoals het lezen van afdelingsbronnen uit een ander Departement.
+- Werknemers hebben tijdsbeperkte toegang nodig voor een bepaalde taak.  U bijvoorbeeld groepslicenties en een dynamische groep gebruiken om ervoor te zorgen dat alle werknemers een Exchange Online-postvak hebben en vervolgens toegangspakketten gebruiken voor situaties waarin werknemers extra toegang nodig hebben, zoals het lezen van afdelingsbronnen van een andere afdeling.
 - Toegang moet worden goedgekeurd door de manager van een werknemer of andere aangewezen personen.
 - Afdelingen willen hun eigen toegangsbeleid voor hun resources beheren zonder tussenkomst van IT.  
 - Twee of meer organisaties werken samen aan een project en als gevolg hiervan moeten meerdere gebruikers van één organisatie worden ingeschakeld via Azure AD B2B om toegang te krijgen tot de bronnen van een andere organisatie.
@@ -132,15 +132,16 @@ Om het beheer van rechten en de bijbehorende documentatie beter te begrijpen, u 
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-Gespecialiseerde clouds, zoals Azure Government, Azure Germany en Azure China 21Vianet, zijn momenteel niet beschikbaar voor gebruik.
+Gespecialiseerde clouds, zoals Azure Germany en Azure China 21Vianet, zijn momenteel niet beschikbaar voor gebruik.
 
 ### <a name="how-many-licenses-must-you-have"></a>Hoeveel licenties moet u hebben?
 
-Controleer of uw directory minstens evenveel Azure AD Premium P2-licenties heeft als werknemers die de volgende taken uitvoeren:
+Controleer of uw directory minstens evenveel Azure AD Premium P2-licenties heeft als u hebt:
 
 - Leden die een toegangspakket **kunnen** aanvragen.
 - Leden en gastgebruikers die een toegangspakket aanvragen.
 - Leden en gastgebruikers die verzoeken om een toegangspakket goedkeuren.
+- Leden en gastgebruikers die een directe opdracht hebben voor een toegangspakket.
 
 Azure AD Premium **P2-licenties** zijn niet vereist voor de volgende taken:
 

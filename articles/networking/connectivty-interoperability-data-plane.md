@@ -1,5 +1,5 @@
 ---
-title: 'Interoperabiliteit in azure back-end connectiviteitsfuncties: analyse van gegevensvlak | Microsoft Documenten'
+title: 'Interoperabiliteit in Azure : Analyse van gegevensvlak'
 description: Dit artikel biedt de analyse van het gegevensvlak van de testopstelling die u gebruiken om de interoperabiliteit tussen ExpressRoute, een site-to-site VPN en virtueel netwerkpeeren in Azure te analyseren.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 815976c672272270e465610e17fef3aea79387f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe7b74b0d4d065d4f222fefbbdc4a1d434d1163b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77526634"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518251"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Interoperabiliteit in Azure back-end connectiviteitsfuncties: analyse van gegevensvlak
+# <a name="interoperability-in-azure--data-plane-analysis"></a>Interoperabiliteit in Azure : Analyse van gegevensvlak
 
 In dit artikel wordt de analyse van het gegevensvlak van de [testopstelling][Setup]beschreven. U ook de configuratie van de [testinstallatie][Configuration] en de analyse van het [controlevlak][Control-Analysis] van de testopstelling bekijken.
 

@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea14e02920cf7ba6c5e0a7b415cb92137c915576
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65824946"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519712"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Onverwachte fout bij het uitvoeren van toestemming voor een toepassing
 
@@ -33,8 +33,11 @@ Bepaalde voorwaarden moeten gelden voor een gebruiker om in te stemmen met de ma
 
 ## <a name="requesting-not-authorized-permissions-error"></a>Fout niet-geautoriseerde machtigingen aanvragen
 * **AADSTS90093:** &lt;clientAppDisplayName&gt; vraagt een of meer machtigingen die u niet mag verlenen. Neem contact op met een beheerder, die namens u kan instemmen met deze toepassing.
+* **AADSTS90094:** &lt;clientAppDisplayName&gt; heeft toestemming nodig om toegang te krijgen tot bronnen in uw organisatie die alleen een beheerder kan verlenen. Vraag een beheerder om toestemming te verlenen voor deze app voordat u deze kunt gebruiken.
 
 Deze fout treedt op wanneer een gebruiker die geen bedrijfsbeheerder is, probeert een toepassing te gebruiken die machtigingen aanvraagt die alleen een beheerder kan verlenen. Deze fout kan worden opgelost door een beheerder die namens de organisatie toegang verleent tot de toepassing.
+
+Deze fout kan ook optreden wanneer een gebruiker geen toestemming kan geven voor een toepassing omdat Microsoft detecteert dat het machtigingsverzoek riskant is. In dit geval wordt een auditgebeurtenis ook geregistreerd met een categorie 'ApplicationManagement', activiteitstype 'Toestemming voor toepassing' en statusreden van "Riskante toepassing gedetecteerd".
 
 ## <a name="policy-prevents-granting-permissions-error"></a>Beleid voorkomt fout machtigingen verlenen
 * **AADSTS90093:** Een beheerder &lt;van&gt; tenantDisplayName heeft een beleid &lt;ingesteld&gt; dat voorkomt dat u de naam van de app de machtigingen verleent die deze aanvraagt. Neem contact &lt;op met&gt;een beheerder van tenantDisplayName , die namens u machtigingen voor deze app kan verlenen.

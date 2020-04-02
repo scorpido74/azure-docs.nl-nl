@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 99517e45892cd7a6167ae83ff3058edae1377b10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 95d943685cf511acb88f9e48d36a9dd43b0a27d2
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80109561"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548004"
 ---
 # <a name="install-and-use-lightingest"></a>LightIngest installeren en gebruiken
 
@@ -22,6 +22,9 @@ Het hulpprogramma kan brongegevens ophalen uit een lokale map of uit een Azure b
 ## <a name="prerequisites"></a>Vereisten
 
 * LightIngest - download het als onderdeel van het [Microsoft.Azure.Kusto.Tools NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)
+
+    ![Lichtste download](media/lightingest/lightingest-download-area.png)
+
 * WinRAR - download het van [www.win-rar.com/download.html](http://www.win-rar.com/download.html)
 
 ## <a name="install-lightingest"></a>LightIngest installeren
@@ -44,16 +47,20 @@ Het hulpprogramma kan brongegevens ophalen uit een lokale map of uit een Azure b
     >
     >![Help voor opdrachtregel](media/lightingest/lightingest-cmd-line-help.png)
 
-1. Voer, `LightIngest` gevolgd door de verbindingstekenreeks, in naar het Azure Data Explorer-cluster dat de opname beheert.
+1. Voer, `ingest-` gevolgd door de verbindingstekenreeks, in naar het Azure Data Explorer-cluster dat de opname beheert.
     Sluit de verbindingstekenreeks in dubbele aanhalingstekens en volg de specificatie van de [Kusto-verbindingstekenreeksen](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto).
 
     Bijvoorbeeld:
     ```
-    LightIngest "Data Source=https://{Cluster name and region}.kusto.windows.net;AAD Federated Security=True"  -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+    ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 
-* De aanbevolen methode `LightIngest` is om te werken `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`met het innameeindpunt op . Op deze manier kan de Azure Data Explorer-service de innamebelasting beheren en u eenvoudig herstellen van tijdelijke fouten. U echter `LightIngest` ook configureren om direct met`https://{yourClusterNameAndRegion}.kusto.windows.net`het eindpunt van de motor te werken ( ).
-* Voor optimale opnameprestaties is het belangrijk dat LightIngest de `LightIngest` ruwe gegevensgrootte kent en zo de niet-gecomprimeerde grootte van lokale bestanden inschat. Het `LightIngest` is echter mogelijk dat de ruwe grootte van gecomprimeerde blobs niet correct kan worden geschat zonder ze eerst te downloaden. Stel daarom bij het innemen van `rawSizeBytes` gecomprimeerde blobs de eigenschap op de blobmetagegevens in op niet-gecomprimeerde gegevensgrootte in bytes.
+* De aanbevolen methode is voor LightIngest om te `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`werken met het innameeindpunt op . Op deze manier kan de Azure Data Explorer-service de innamebelasting beheren en u eenvoudig herstellen van tijdelijke fouten. U LightIngest echter ook configureren om direct`https://{yourClusterNameAndRegion}.kusto.windows.net`met het eindpunt van de motor te werken ( ).
+
+> [!Note]
+> Als u direct met het eindpunt van de motor `ingest-`inneemt, hoeft u niet op te nemen, maar er zal geen DM-functie zijn om de motor te beschermen en het slagingspercentage van de inname te verbeteren.
+
+* Voor optimale opnameprestaties is het belangrijk dat LightIngest de ruwe gegevensgrootte kent en dus schat LightIngest de ongecomprimeerde grootte van lokale bestanden. LightIngest kan echter mogelijk niet de ruwe grootte van gecomprimeerde blobs correct schatten zonder ze eerst te downloaden. Stel daarom bij het innemen van `rawSizeBytes` gecomprimeerde blobs de eigenschap op de blobmetagegevens in op niet-gecomprimeerde gegevensgrootte in bytes.
 
 ## <a name="general-command-line-arguments"></a>Algemene opdrachtregelargumenten
 
@@ -66,21 +73,27 @@ Het hulpprogramma kan brongegevens ophalen uit een lokale map of uit een Azure b
 |-voorvoegsel               |             |tekenreeks  |Optioneel  |Wanneer de brongegevens die moeten worden ingenomen zich in blobopslag bevinden, wordt dit URL-voorvoegsel gedeeld door alle blobs, met uitzondering van de containernaam. <br>Als de gegevens zich `MyContainer/Dir1/Dir2`bijvoorbeeld in de gegevens `Dir1/Dir2`begeven, moet het voorvoegsel zijn . Bijvoegen in dubbele aanhalingstekens wordt aanbevolen |
 |-patroon              |             |tekenreeks  |Optioneel  |Patroon waarmee bronbestanden/blobs worden gekozen. Ondersteunt wildcards. Bijvoorbeeld `"*.csv"`. Aanbevolen om dubbele aanhalingstekens in te sluiten |
 |-zipPatroon           |             |tekenreeks  |Optioneel  |Regelmatige expressie te gebruiken bij het selecteren van welke bestanden in een ZIP-archief in te nemen.<br>Alle andere bestanden in het archief worden genegeerd. Bijvoorbeeld. `"*.csv"` Het wordt aanbevolen om het te omringen in dubbele aanhalingstekens |
-|-notatie               |-f           |tekenreeks  |Optioneel  |Brongegevensindeling. Moet een van de [ondersteunde formaten](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#supported-data-formats) zijn |
+|-notatie               |-f           |tekenreeks  |Optioneel  |Brongegevensindeling. Moet een van de [ondersteunde formaten](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats) zijn |
 |-ingestionMappingPath |-mappingPath |tekenreeks  |Optioneel  |Pad naar inname kolom-mapping bestand (verplicht voor Json en Avro formaten). Bekijk [gegevenstoewijzingen](https://docs.microsoft.com/azure/kusto/management/mappings) |
 |-ingestionMappingRef  |-MappingRef  |tekenreeks  |Optioneel  |Naam van een vooraf gemaakte toewijzing van innamekolom (verplicht voor Json- en Avro-formaten). Bekijk [gegevenstoewijzingen](https://docs.microsoft.com/azure/kusto/management/mappings) |
 |-creationTimePattern  |             |tekenreeks  |Optioneel  |Wanneer ingesteld, wordt gebruikt om de eigenschap CreationTime uit het bestand of blobpad te halen. Zie [Argument CreationTimePattern gebruiken](#using-creationtimepattern-argument) |
 |-ignoreFirstRow       |-ignoreFirst |Booleaanse waarde    |Optioneel  |Als deze is ingesteld, wordt de eerste record van elk bestand/blob genegeerd (bijvoorbeeld als de brongegevens kopteksten hebben) |
 |-tag                  |             |tekenreeks  |Optioneel  |[Tags](https://docs.microsoft.com/azure/kusto/management/extents-overview#extent-tagging) om te associëren met de ingenomen gegevens. Meerdere gebeurtenissen zijn toegestaan |
-|-dontWait             |             |Booleaanse waarde    |Optioneel  |Als ingesteld op 'waar', wacht dan niet op inname voltooiing. Handig bij het innemen van grote hoeveelheden bestanden/blobs |
+|-dontWait             |             |Booleaanse waarde    |Optioneel  |Als ingesteld op 'waar', wacht niet op inname voltooiing. Handig bij het innemen van grote hoeveelheden bestanden/blobs |
 
 ### <a name="using-creationtimepattern-argument"></a>Argument CreationTimePattern gebruiken
 
 Met `-creationTimePattern` het argument wordt de eigenschap CreationTime uit het bestand of blobpad gehaald. Het patroon hoeft niet het hele itempad weer te geven, alleen de sectie die de tijdstempel omsluit die u wilt gebruiken.
-De waarde van het argument moet drie secties bevatten:
+
+De argumentwaarden moeten bestaan uit:
 * Constante test onmiddellijk voorafgaand aan de tijdstempel, ingesloten in enkele aanhalingstekens
 * De tijdstempelnotatie in standaard [.NET DateTime-notatie](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
-* Constante tekst direct na de tijdstempel Als blobnamen bijvoorbeeld eindigen met 'historicalvalues19840101.parquet' (de tijdstempel is vier cijfers voor het jaar, twee `-creationTimePattern` cijfers voor de maand en twee cijfers voor de dag van de maand), is de overeenkomstige waarde voor het argument 'historicalvalues'yyyyMdd'.parket'.
+* Constante tekst onmiddellijk na de tijdstempel. Als blobnamen bijvoorbeeld eindigen `historicalvalues19840101.parquet` met (de tijdstempel is vier cijfers voor het jaar, twee cijfers voor de maand `-creationTimePattern` en twee cijfers voor de dag van de maand), is de overeenkomstige waarde voor het argument:
+
+```
+ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
+ -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+```
 
 ### <a name="command-line-arguments-for-advanced-scenarios"></a>Opdrachtregelargumenten voor geavanceerde scenario's
 
@@ -96,7 +109,7 @@ De waarde van het argument moet drie secties bevatten:
 |-devTracing           |-trace       |tekenreeks  |Optioneel  |Als diagnostische logboeken zijn ingesteld, worden diagnostische `RollingLogs` logboeken naar een lokale map geschreven (standaard, in de huidige map of kunnen worden gewijzigd door de switchwaarde in te stellen) |
 
 ## <a name="blob-metadata-properties"></a>Eigenschappen van blobmeta's
-Wanneer u wordt gebruikt `LightIngest` met Azure blobs, gebruikt u bepaalde eigenschappen van blobmetagegevens om het opnameproces te vergroten.
+In gebruik bij Azure blobs gebruikt LightIngest bepaalde eigenschappen van blob-metagegevens om het opnameproces te vergroten.
 
 |Eigenschap Metagegevens                            | Gebruik                                                                           |
 |---------------------------------------------|---------------------------------------------------------------------------------|

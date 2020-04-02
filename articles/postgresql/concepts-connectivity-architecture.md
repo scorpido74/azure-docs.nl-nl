@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: b0af19ec740e96cd572ffe37285d7e58ead83b25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d23a59e97ee3fc935a0d0954bc70b547b727fddc
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76774845"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546603"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Connectiviteitsarchitectuur in Azure Database voor PostgreSQL
 In dit artikel wordt de Azure Database for PostgreSQL-connectiviteitsarchitectuur uitgelegd en hoe het verkeer wordt doorgestuurd naar uw Azure Database voor PostgreSQL-database-instantie van clients binnen en buiten Azure.
@@ -35,14 +35,14 @@ In de volgende tabel worden de primaire en secundaire IP's van de Azure Database
 | Brazilië - zuid | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Canada - midden |40.85.224.249  |
 | Canada - oost | 40.86.226.166    |
-| VS - centraal | 23.99.160.139, 13.67.215.62   |
+| VS - centraal | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
 | China East | 139.219.130.35    |
 | China Oost 2 | 40.73.82.1  |
 | China - noord | 139.219.15.17    |
 | China Noord 2 | 40.73.50.0     |
 | Azië - oost | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
 | VS - oost | 40.121.158.30, 191.238.6.43  |
-| VS - oost 2 |40.79.84.180, 191.239.224.107, 52.177.185.181   |
+| VS - oost 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | Frankrijk - centraal | 40.79.137.0, 40.79.129.1  |
 | Duitsland - centraal | 51.4.144.100     |
 | Duitsland Noord-Oost | 51.5.144.179  |
@@ -54,7 +54,7 @@ In de volgende tabel worden de primaire en secundaire IP's van de Azure Database
 | Korea - centraal | 52.231.32.42   |
 | Korea - zuid | 52.231.200.86    |
 | VS - noord-centraal | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
-| Europa - noord | 40.113.93.91, 191.235.193.75    |
+| Europa - noord | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
 | Zuid-Afrika Noord  | 102.133.152.0    |
 | Zuid-Afrika West | 102.133.24.0   |
 | VS - zuid-centraal |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
@@ -64,7 +64,7 @@ In de volgende tabel worden de primaire en secundaire IP's van de Azure Database
 | Verenigd Koninkrijk Zuid | 51.140.184.11   |
 | Verenigd Koninkrijk West | 51.141.8.11  |
 | VS - west-centraal | 13.78.145.25     |
-| Europa -west | 40.68.37.158, 191.237.232.75     |
+| Europa -west | 40.68.37.158, 191.237.232.75, 13.69.105.208  |
 | VS - west | 104.42.238.205, 23.99.34.75  |
 | VS - west 2 | 13.66.226.202  |
 ||||

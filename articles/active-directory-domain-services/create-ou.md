@@ -9,26 +9,29 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 7abbdf03e85f425f65a45e6640b82529c2b9c84f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b95a3e32bc2b8df3d02453e42fa9bbc3719134b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614072"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519160"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Een organisatie-eenheid (OU) maken in een beheerd Azure AD Domain Services-domein
 
 Met organisatie-eenheden (OE's) in Active Directory Domain Services (AD DS) u objecten zoals gebruikersaccounts, serviceaccounts of computeraccounts logisch groeperen. U vervolgens beheerders toewijzen aan specifieke OE's en groepsbeleid toepassen om gerichte configuratie-instellingen af te dwingen.
 
-Azure AD DS-beheerde domeinen bevatten twee ingebouwde OE's - *AADDC-computers* en *AADDC-gebruikers*. De *aaddc-computers-organisatie* bevat computerobjecten voor alle computers die zijn verbonden met het beheerde domein. De *aaddc-gebruikers-organisatie-eenheid* bevat gebruikers en groepen die zijn gesynchroniseerd vanuit de Azure AD-tenant. Terwijl u workloads maakt en uitvoert die Azure AD DS gebruiken, moet u mogelijk serviceaccounts maken voor toepassingen om zichzelf te verifiëren. Als u deze serviceaccounts wilt ordenen, maakt u vaak een aangepaste organisatie-eenheid in het beheerde Azure AD DS-domein en maakt u serviceaccounts binnen die organisatie-eenheid.
+Azure AD DS-beheerde domeinen bevatten de volgende twee ingebouwde OK's:
+
+* *AADDC-computers* - bevat computerobjecten voor alle computers die zijn verbonden met het beheerde domein.
+* *AADDC-gebruikers* - bevat gebruikers en groepen die zijn gesynchroniseerd vanuit de Azure AD-tenant.
+
+Terwijl u workloads maakt en uitvoert die Azure AD DS gebruiken, moet u mogelijk serviceaccounts maken voor toepassingen om zichzelf te verifiëren. Als u deze serviceaccounts wilt ordenen, maakt u vaak een aangepaste organisatie-eenheid in het beheerde Azure AD DS-domein en maakt u serviceaccounts binnen die organisatie-eenheid.
 
 In een hybride omgeving worden de in een on-premises AD DS-omgeving gemaakte gegevens niet gesynchroniseerd met Azure AD DS. Azure AD DS-beheerde domeinen gebruiken een platte-eenheidsstructuur. Alle gebruikersaccounts en -groepen worden opgeslagen in de container *AADDC-gebruikers,* ondanks dat ze zijn gesynchroniseerd vanuit verschillende on-premises domeinen of forests, zelfs als u daar een hiërarchische organisatiestructuur hebt geconfigureerd.
 
 In dit artikel ziet u hoe u een organisatie-eenheid maakt in uw door Azure AD DS beheerde domein.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -68,19 +71,19 @@ Als u een aangepaste organisatie-eenheid wilt maken, gebruikt u de Active Direct
 1. Als u Ok's wilt maken en beheren, selecteert u **Active Directory-beheercentrum** in de lijst met beheergereedschappen.
 1. Kies in het linkerdeelvenster uw door Azure AD DS beheerde domein, zoals *aaddscontoso.com*. Een lijst met bestaande O's en resources wordt weergegeven:
 
-    ![Selecteer uw door Azure AD DS beheerd domein in het Active Directory-beheercentrum](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
+    ![Selecteer uw door Azure AD DS beheerd domein in het Active Directory-beheercentrum](./media/create-ou/create-ou-adac-overview.png)
 
 1. Het deelvenster **Taken** wordt aan de rechterkant van het Active Directory-beheercentrum weergegeven. Selecteer Onder het domein, zoals *aaddscontoso.com,* de optie **Nieuwe > Organisatie-eenheid**.
 
-    ![Selecteer de optie om een nieuwe organisatie-eenheid te maken in het Active Directory-beheercentrum](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
+    ![Selecteer de optie om een nieuwe organisatie-eenheid te maken in het Active Directory-beheercentrum](./media/create-ou/create-ou-adac-new-ou.png)
 
 1. Geef in het dialoogvenster **Organisatieeenheid maken** een **naam** op voor de nieuwe organisatie-eenheid, zoals *MyCustomOu*. Geef een korte beschrijving voor de organisatie-eenheid, zoals *aangepaste organisatievoor serviceaccounts.* Indien gewenst u ook het veld Beheerd door instellen voor de organisatie.If gewenst u ook het veld **Beheerd door** instellen voor de organisatie van de organisatie. Als u de aangepaste organisatie-eenheid wilt maken, selecteert u **OK**.
 
-    ![Een aangepaste organisatie-eenheid maken vanuit het Active Directory-beheercentrum](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
+    ![Een aangepaste organisatie-eenheid maken vanuit het Active Directory-beheercentrum](./media/create-ou/create-ou-dialog.png)
 
 1. Terug in het Active Directory-beheercentrum wordt de aangepaste ou nu weergegeven en is deze beschikbaar voor gebruik:
 
-    ![Aangepaste organisatie-eenheid beschikbaar voor gebruik in het Active Directory-beheercentrum](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
+    ![Aangepaste organisatie-eenheid beschikbaar voor gebruik in het Active Directory-beheercentrum](./media/create-ou/create-ou-done.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

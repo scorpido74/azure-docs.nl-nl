@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c52a1212d160adce3a0a0638164833bc2907a856
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76515000"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521176"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Handleiding voor het instellen van een Windows-sjabloonmachine in Azure Lab Services
 
@@ -185,7 +185,7 @@ We raden u aan dat alle Microsoft Store-apps worden bijgewerkt naar de nieuwste 
 3. Selecteer **Downloaden** en updates in het vervolgkeuzemenu.
 4. Klik **op Update downloaden.**
 
-U Powershell ook gebruiken om Microsoft Store-toepassingen bij te werken die al zijn geïnstalleerd.
+U PowerShell ook gebruiken om Microsoft Store-toepassingen bij te werken die al zijn geïnstalleerd.
 
 ```powershell
 (Get-WmiObject -Namespace "root\cimv2\mdm\dmmap" -Class "MDM_EnterpriseModernAppManagement_AppManagement01").UpdateScanMethod()
@@ -234,3 +234,6 @@ Installeer andere apps die vaak worden gebruikt voor lesgeven via de Windows Sto
 ## <a name="conclusion"></a>Conclusie
 
 In dit artikel ziet u optionele stappen om uw Windows-sjabloon-VM voor te bereiden op een effectieve klasse.  Stappen zijn het installeren van OneDrive en het installeren van Office 365, het installeren van de updates voor Windows en het installeren van updates voor Microsoft Store-apps.  We hebben ook besproken hoe u updates instellen voor een schema dat het beste werkt voor uw klas.  
+
+## <a name="next-steps"></a>Volgende stappen
+Zie het artikel over het beheren van het afsluiten van Windows-gedrag om te helpen bij het beheren van kosten: [handleiding voor het beheren van het shutdown-gedrag van Windows](how-to-windows-shutdown.md)

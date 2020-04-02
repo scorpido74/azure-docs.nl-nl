@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 05db717f5d3adc2429431503f588f2cc7f79aef6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e00fee8841a2d5a817a00b942bfe0733a80b2cfc
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266778"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546329"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure-schijfversleuteling voor Windows VM's 
 
@@ -30,11 +30,13 @@ U de grondbeginselen van Azure Disk Encryption voor Windows in slechts een paar 
 
 ## <a name="supported-vms-and-operating-systems"></a>Ondersteunde VM's en besturingssystemen
 
-### <a name="supported-vm-sizes"></a>Ondersteunde VM-grootten
+### <a name="supported-vms"></a>Ondersteunde VM's
 
 Windows VM's zijn beschikbaar in [verschillende formaten.](sizes-general.md) Azure Disk Encryption is niet beschikbaar op [Basic, A-serie VM's](https://azure.microsoft.com/pricing/details/virtual-machines/series/)of op virtuele machines met minder dan 2 GB geheugen.
 
 Azure Disk Encryption is ook beschikbaar voor VM's met premium opslag.
+
+Azure Disk Encryption is niet beschikbaar op [Generatie 2 VM's](generation-2.md#generation-1-vs-generation-2-capabilities)) en [LSV2-serie VM's](../lsv2-series.md)). Zie [Azure Disk Encryption: Niet-ondersteunde scenario's voor](disk-encryption-windows.md#unsupported-scenarios)meer uitzonderingen .
 
 ### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
@@ -75,7 +77,7 @@ In de volgende tabel worden enkele van de algemene termen gedefinieerd die worde
 | Terminologie | Definitie |
 | --- | --- |
 | Azure Key Vault | Key Vault is een cryptografische, belangrijke beheerservice die is gebaseerd op gevalideerde hardwarebeveiligingsmodules (Federal Information Processing Standards). Deze standaarden helpen om uw cryptografische sleutels en gevoelige geheimen te beschermen. Zie voor meer informatie de [Azure Key Vault-documentatie](https://azure.microsoft.com/services/key-vault/) en [Het maken en configureren van een sleutelkluis voor Azure Disk Encryption](disk-encryption-key-vault.md). |
-| Azure-CLI | [De Azure CLI](/cli/azure/install-azure-cli) is geoptimaliseerd voor het beheren en beheren van Azure-resources vanaf de opdrachtregel.|
+| Azure CLI | [De Azure CLI](/cli/azure/install-azure-cli) is geoptimaliseerd voor het beheren en beheren van Azure-resources vanaf de opdrachtregel.|
 | BitLocker |[BitLocker](https://technet.microsoft.com/library/hh831713.aspx) is een door de industrie erkende Windows-volumeversleutelingstechnologie die wordt gebruikt om schijfversleuteling op Windows VM's in te schakelen. |
 | Sleutelversleutelingssleutel (KEK) | De asymmetrische toets (RSA 2048) die u gebruiken om het geheim te beschermen of om te wikkelen. U een met een hardwarebeveiligingsmodule (HSM)-beveiligde sleutel of softwarebeveiligde sleutel leveren. Zie voor meer informatie de [Azure Key Vault-documentatie](https://azure.microsoft.com/services/key-vault/) en [Het maken en configureren van een sleutelkluis voor Azure Disk Encryption](disk-encryption-key-vault.md). |
 | PowerShell-cmdlets | Zie [Azure PowerShell-cmdlets voor](/powershell/azure/overview)meer informatie . |

@@ -7,26 +7,26 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: f290b08d1f625600d03c9540b28c289e9b449471
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475153"
+ms.locfileid: "80517929"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Optie voor co-verkoop in partnercentrum
 
-Het verstrekken van informatie op het tabblad Co-sell is volledig optioneel. Het is vereist om co-sell ready en IP Co-sell Ready status te bereiken. De informatie die u verstrekt, wordt door Microsoft-verkoopteams gebruikt om meer te weten te komen over uw oplossing bij het beoordelen van de behoeften van de klant. Het is niet rechtstreeks beschikbaar voor klanten. Zie [verkopen via Microsoft](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft)voor meer informatie.
+Het verstrekken van informatie op het tabblad Co-sell is volledig optioneel. Het is vereist om co-sell ready en IP Co-sell Ready status te bereiken. De informatie die u verstrekt, wordt door Microsoft-verkoopteams gebruikt om meer te weten te komen over uw oplossing bij het beoordelen van de behoeften van de klant. Het is niet rechtstreeks beschikbaar voor klanten. Zie [verkopen via Microsoft](https://partner.microsoft.com/membership/sell-with-microsoft)voor meer informatie.
 
 De optie voor co-verkoop in partnercentrum is momenteel beschikbaar voor sommige aanbiedingstypen. Ondersteuning voor extra aanbiedingstypen zal in de loop van de tijd beschikbaar worden gesteld.
 
 | **Aanbiedingstype** | **Pagina voor co-verkoop beschikbaar in partnercentrum** |
 |    -----------------------    |    -----------------------------  |
-| Software as a Service (SaaS) |     Algemene beschikbaarheid rond april 2020     |
+| Software as a Service (SaaS) |     Algemene beschikbaarheid april 2020      |
 | Dynamics 365 voor customer engagement & PowerApps      |     Nu verkrijgbaar      |
 | Dynamics 365 for Operations     |     Nu verkrijgbaar       |
-| Dynamics 365 Business Central      |  Algemene beschikbaarheid rond april 2020    |
-| Azure Application     |     Algemene beschikbaarheid rond april 2020     |
+| Dynamics 365 Business Central      |  Algemene beschikbaarheid april 2020     |
+| Azure Application     |     Algemene beschikbaarheid april 2020     |
 | Virtuele Azure-machine      |     Te worden aangekondigd       |
 | Azure-container     |     Te worden aangekondigd       |
 | Adviesservice      |     Te worden aangekondigd       |
@@ -66,8 +66,7 @@ U microsoft onderpand bieden om te gebruiken voor het evalueren van de behoeften
 
 | **Documenten**    | **Beschrijving**  |
 | :------------------- | :-------------------|
-| *Klant one-pager* | Klantklare beschrijving van uw aanbod. Microsoft-verkoopteams kunnen deze informatie delen met klanten om te bepalen of uw aanbod goed past en om ervoor te zorgen dat het klaar is voor de klant. <br> <br> Gebruik een van de relevante sjablonen die beschikbaar zijn in partnercentrum: <br> <ul> <li> Microsoft Azure-sjabloon met één pagina </li> <li> Microsoft Dynamics 365-sjabloon met één pagina </li> <li> Sjabloon voor Office 365 met één pagina </li> <li> Windows 10-sjabloon met één pagina </li> </ul>
- |
+| *Klant one-pager* | Klantklare beschrijving van uw aanbod. Microsoft-verkoopteams kunnen deze informatie delen met klanten om te bepalen of uw aanbod goed past en om ervoor te zorgen dat het klaar is voor de klant. <br> <br> Gebruik een van de relevante sjablonen die beschikbaar zijn in partnercentrum: <br> <ul> <li> Microsoft Azure-sjabloon met één pagina </li> <li> Microsoft Dynamics 365-sjabloon met één pagina </li> <li> Sjabloon voor Office 365 met één pagina </li> <li> Windows 10-sjabloon met één pagina </li> </ul> |
 | *Klantpresentatie* | Schuifdek om uw oplossing en zijn waardepropositie te pitchen. Nadat u ervoor heeft gezorgd dat uw aanbieding klantklaar is, kunnen microsoft-verkoopteams de presentatie delen met klanten om de waarde te verwoorden die beide bedrijven bieden bij het implementeren van een gezamenlijke oplossing. De presentatie moet betrekking hebben op wat uw oplossing doet, hoe het klanten kan helpen, voor welke industrieën de oplossing is en hoe deze zich verhoudt tot concurrerende oplossingen. <br> <br> Gebruik de sjabloon die beschikbaar is in Partnercentrum.|
 | *Case study van de klant* | Deze informatie toont een potentiële klant hoe u en Microsoft deze oplossing in eerdere gevallen met succes hebben geïmplementeerd. <br> <br> Gebruik de sjabloon die beschikbaar is in Partnercentrum. |
 | *Verifieerbare klant wint (optioneel)* | Specifieke voorbeelden van klantsuccessen nadat uw oplossing is geïmplementeerd. |

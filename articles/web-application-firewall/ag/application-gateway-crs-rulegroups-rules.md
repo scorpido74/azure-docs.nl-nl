@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563aa701c1403a1ef26c6073496e7e59c7c5096c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279245"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521847"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>CRS-regelgroepen en regels voor Web Application Firewall CRS
 
@@ -42,7 +42,7 @@ CRS 3.1 bevat 13 regelgroepen, zoals in de volgende tabel wordt weergegeven. Elk
 
 |Regelgroep|Beschrijving|
 |---|---|
-|**[Algemene](#general-31)**|Algemene groep|
+|**[Algemeen](#general-31)**|Algemene groep|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|Lock-down methoden (PUT, PATCH)|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-31)**|Beschermen tegen poort- en milieuscanners|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-31)**|Beschermen tegen protocol- en coderingsproblemen|
@@ -62,7 +62,7 @@ CRS 3.0 bevat 12 regelgroepen, zoals in de volgende tabel wordt weergegeven. Elk
 
 |Regelgroep|Beschrijving|
 |---|---|
-|**[Algemene](#general-30)**|Algemene groep|
+|**[Algemeen](#general-30)**|Algemene groep|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|Lock-down methoden (PUT, PATCH)|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-30)**|Beschermen tegen poort- en milieuscanners|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-30)**|Beschermen tegen protocol- en coderingsproblemen|
@@ -281,6 +281,7 @@ De volgende regelgroepen en regels zijn beschikbaar wanneer u Web Application Fi
 |---|---|
 |942100|SQL Injection Attack gedetecteerd via libinjection|
 |942110|SQL Injection Attack: Common Injection Testing gedetecteerd|
+|942120|SQL Injection Attack: SQL Operator gedetecteerd|
 |942130|SQL Injection Attack: SQL Tautology gedetecteerd.|
 |942140|SQL Injection Attack = Gemeenschappelijke DB-namen gedetecteerd|
 |942150|SQL-injectieaanval|

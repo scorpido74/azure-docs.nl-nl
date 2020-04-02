@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 090446d286b38a0bfcbde4ed9e77235050b36417
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70137343"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547704"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK voor SQL API: notities en bronnen vrijgeven
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70137343"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Rest](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Bulkexecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -35,8 +35,8 @@ ms.locfileid: "70137343"
 |**SDK downloaden**|[PyPI](https://pypi.org/project/azure-cosmos)|
 |**API-documentatie**|[Python API-referentiedocumentatie](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**Installatie-instructies voor SDK**|[Installatie-instructies voor Python SDK](https://github.com/Azure/azure-cosmos-python)|
-|**Bijdragen aan SDK**|[GitHub GitHub](https://github.com/Azure/azure-cosmos-python)|
-|**Slag**|[Aan de slag met de Python SDK](sql-api-python-application.md)|
+|**Bijdragen aan SDK**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
+|**Aan de slag**|[Aan de slag met de Python SDK](sql-api-python-application.md)|
 |**Huidig ondersteund platform**|[Python 2.7](https://www.python.org/downloads/) en [Python 3.5](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
@@ -84,7 +84,7 @@ ms.locfileid: "70137343"
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
 * Ondersteuning toegevoegd voor aggregatiequery's (COUNT, MIN, MAX, SOM en AVG).
-* Added an option for disabling SSL verification when running against Cosmos DB Emulator.
+* Added an option for disabling TLS verification when running against Cosmos DB Emulator.
 * Verwijderde de beperking van afhankelijke verzoeken module om precies 2.10.0.
 * Verlaagde minimale doorvoer op partitieverzamelingen van 10.100 RU/s naar 2500 RU/s.
 * Added support for enabling script logging during stored procedure execution.
@@ -102,7 +102,7 @@ ms.locfileid: "70137343"
 ### <a name="190"></a><a name="1.9.0"/>1.9.0
 * Ondersteuning voor het beleid opnieuw proberen voor geweigerde aanvragen. (Throttled-aanvragen ontvangen een aanvraagpercentage met een te grote uitzondering, foutcode 429.) Azure Cosmos DB probeert standaard negen keer voor elk verzoek wanneer foutcode 429 wordt aangetroffen, ter ere van de retryAfter-tijd in de antwoordkop. Een vaste intervaltijd voor opnieuw proberen kan nu worden ingesteld als onderdeel van de eigenschap RetryOptions op het object Verbindingsbeleid als u de nieuwe poging wilt negerenNa de tijd die door de server tussen de nieuwe pogingen is geretourneerd. Azure Cosmos DB wacht nu maximaal 30 seconden op elk verzoek dat wordt beperkt (ongeacht het aantal nieuwe try's) en retourneert het antwoord met foutcode 429. Deze tijd kan ook worden overschreven in de eigenschap RetryOptions op het object Verbindingsbeleid.
 * Cosmos DB retourneert nu x-ms-throttle-retry-count en x-ms-throttle-retry-wait-time-ms als de responsheaders in elk verzoek om het gaspedaal opnieuw te tellen en de cumulatieve tijd die het verzoek wachtte tussen de pogingen aan te geven.
-* Verwijderde de klasse RetryPolicy en de bijbehorende eigenschap (retry_policy) die in de klasse document_client is weergegeven en introduceerde in plaats daarvan een klasse RetryOptions waarin de eigenschap RetryOptions wordt blootgesteld aan de klasse ConnectionPolicy die kan worden gebruikt om een deel van de opties voor het opnieuw proberen.
+* Verwijderde de klasse RetryPolicy en de bijbehorende eigenschap (retry_policy) die in de klasse document_client is weergegeven en introduceerde in plaats daarvan een klasse RetryOptions waarin de eigenschap RetryOptions wordt blootgesteld aan de klasse Verbindingbeleid die kan worden gebruikt om een aantal van de standaardopties voor opnieuw proberen te overschrijven.
 
 ### <a name="180"></a><a name="1.8.0"/>1.8.0
 * De ondersteuning voor databaseaccounts met meerdere regio's toegevoegd.

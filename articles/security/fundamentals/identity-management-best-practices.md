@@ -3,7 +3,7 @@ title: Azure-identiteit & aanbevolen procedures voor toegang tot beveiliging | M
 description: In dit artikel vindt u een reeks aanbevolen procedures voor identiteitsbeheer en toegangscontrole met behulp van ingebouwde Azure-mogelijkheden.
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: RKarlin
 editor: TomSh
 ms.assetid: 07d8e8a8-47e8-447c-9c06-3a88d2713bc1
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
-ms.author: barclayn
-ms.openlocfilehash: 52ef3a9b1df058d5d2e954b424094f9dbaeba15b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: ffd9919092cdf2481767e58f10ba6525d56ca4a8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73053342"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548459"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Aanbevolen procedures voor azure Identity Management en beveiliging van toegangsbeheer
 
@@ -269,7 +269,7 @@ Evalueer de accounts die zijn toegewezen of in aanmerking komen voor de globale 
 **Aanbevolen procedures**: Vereisen dat alle kritieke beheerdersaccounts wachtwoordloos (voorkeur) zijn of multifactorauthenticatie vereisen.
 **Detail:** Gebruik de [Microsoft Authenticator-app](/azure/active-directory/authentication/howto-authentication-phone-sign-in) om u aan te melden bij een Azure AD-account zonder een wachtwoord te gebruiken. Net als [Bij Windows Hello voor Bedrijven](/windows/security/identity-protection/hello-for-business/hello-identity-verification)gebruikt de Microsoft Authenticator verificatie op basis van sleutels om een gebruikersreferentie in te schakelen die is gekoppeld aan een apparaat en biometrische verificatie of een pincode gebruikt.
 
-Azure Multi-Factor Authentication vereisen bij aanmelding voor alle individuele gebruikers die permanent zijn toegewezen aan een of meer van de Azure AD-beheerdersrollen: globale beheerder, beheerder van bevoorrechte rollen, Exchange Online-beheerder en SharePoint Online Beheerder. Schakel [Multi-Factor Authentication in voor uw beheerdersaccounts](/azure/active-directory/authentication/howto-mfa-userstates) en zorg ervoor dat beheerdersaccountgebruikers zich hebben geregistreerd.
+Azure Multi-Factor Authentication vereisen bij aanmelding voor alle individuele gebruikers die permanent zijn toegewezen aan een of meer van de Azure AD-beheerdersrollen: Globale beheerder, beheerder van bevoorrechte rollen, Exchange Online-beheerder en SharePoint Online-beheerder. Schakel [Multi-Factor Authentication in voor uw beheerdersaccounts](/azure/active-directory/authentication/howto-mfa-userstates) en zorg ervoor dat beheerdersaccountgebruikers zich hebben geregistreerd.
 
 **Aanbevolen procedures**: Voor kritieke beheerdersaccounts hebt u een beheerwerkstation waar productietaken niet zijn toegestaan (bijvoorbeeld browsen en e-mail). Dit beschermt uw beheerdersaccounts tegen aanvalsvectoren die browsen en e-mail gebruiken en verlaagt uw risico op een groot incident aanzienlijk.
 **Detail:** Gebruik een beheerwerkstation. Kies een niveau van workstationbeveiliging:

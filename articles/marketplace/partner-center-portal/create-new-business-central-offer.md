@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 9a167ac1cc9b9ca8cc8951f14f43ba4cf5d10551
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 908d0fb9d494ec048e6b254f91ec1faf56b47c90
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294414"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529401"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Maak een nieuwe Dynamics 365 Business Central-aanbieding
 
@@ -267,7 +267,7 @@ Vereist als uw aanbieding moet worden geïnstalleerd, samen met een andere exten
 
 ### <a name="url-to-app-installation"></a>URL naar app-installatie
 
-Als u **Verbinding** hierboven hebt geselecteerd, geeft u hier de URL voor uw app-installatie op.
+Als u **Verbinding** hierboven hebt geselecteerd, geeft u hier de URL voor uw app-installatie op. Voor verbonden services waarvoor geen installatie vereist is, geeft u de URL op voor uw bestemmingspagina of aanmeldingspagina van uw service.
 
 ## <a name="test-drive-technical-configuration"></a>Technische configuratie van teststations
 

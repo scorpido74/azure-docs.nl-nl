@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.author: rogarana
-ms.openlocfilehash: b7820bc3d1b14e87064e4120edcffb6762041db9
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: dbcc204f71a9bfe4f48f51ab6af36014e130cb7f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411488"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548954"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Active Directory-verificatie via SMB inschakelen voor Azure-bestandsshares
 
@@ -63,11 +63,7 @@ Voordat u AD-verificatie inschakelt voor Azure-bestandsshares, controleert u of 
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
-Azure Files AD-verificatie (preview) is beschikbaar in [de meeste openbare regio's.](https://azure.microsoft.com/global-infrastructure/regions/)
-
-Ad-verificatie voor Azure Files is niet beschikbaar in:
-- VS - west
-
+Azure Files AD-verificatie (preview) is beschikbaar in [alle regio's in de openbare cloud.](https://azure.microsoft.com/global-infrastructure/regions/)
 
 ## <a name="workflow-overview"></a>Overzicht van werkstroom
 

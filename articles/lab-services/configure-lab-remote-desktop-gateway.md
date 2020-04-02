@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170284"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529428"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Uw lab configureren in Azure DevTest Labs om een externe desktopgateway te gebruiken
 In Azure DevTest Labs u een externe desktopgateway voor uw lab configureren om veilige toegang tot de virtuele machines van het lab te garanderen zonder dat u de RDP-poort hoeft bloot te leggen. Het lab biedt een centrale plek voor uw labgebruikers om alle virtuele machines waartoe ze toegang hebben te bekijken en te verbinden. Met de knop **Verbinding** maken op de pagina **Virtuele machine** wordt een machinespecifiek RDP-bestand gemaakt dat u openen om verbinding te maken met de machine. U de RDP-verbinding verder aanpassen en beveiligen door uw lab te verbinden met een externe desktopgateway. 
@@ -43,7 +43,7 @@ Deze aanpak is veiliger omdat de labgebruiker zich rechtstreeks bij de gatewayma
 Om te werken met de devTest Labs-tokenverificatiefunctie, zijn er een aantal configuratievereisten voor de gatewaymachines, dns-domeinnaamservices en -functies.
 
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>Vereisten voor extern bureaublad-gatewaymachines
-- SSL-certificaat moet worden geïnstalleerd op de gatewaymachine om HTTPS-verkeer te verwerken. Het certificaat moet overeenkomen met de volledig gekwalificeerde domeinnaam (FQDN) van de load balancer voor het gatewayfarm of de FQDN van de machine zelf als er slechts één machine is. Ssl-certificaten met een wildkaart werken niet.  
+- TLS/SSL-certificaat moet op de gatewaymachine worden geïnstalleerd om HTTPS-verkeer te verwerken. Het certificaat moet overeenkomen met de volledig gekwalificeerde domeinnaam (FQDN) van de load balancer voor het gatewayfarm of de FQDN van de machine zelf als er slechts één machine is. Tls/SSL-certificaten met een wildkaart werken niet.  
 - Een ondertekeningscertificaat dat is geïnstalleerd op gatewaymachine(s). Maak een ondertekeningscertificaat met het script [Create-SigningCertificate.ps1.](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1)
 - Installeer de [module Pluggable Authentication](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) die tokenverificatie voor de extern bureaublad-gateway ondersteunt. Een voorbeeld van een `RDGatewayFedAuth.msi` dergelijke module is dat wordt geleverd met [System Center Virtual Machine Manager (VMM) beelden.](/system-center/vmm/install-console?view=sc-vmm-1807) Zie Documentatie en [prijsdetails](https://www.microsoft.com/cloud-platform/system-center-pricing) [van het Systeemcentrum](https://docs.microsoft.com/system-center/) voor meer informatie over Systeemcentrum.  
 - De gatewayserver kan aanvragen `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`verwerken die zijn gedaan aan .
@@ -58,7 +58,7 @@ Azure-functie verwerkt aanvraag `https://{function-app-uri}/app/host/{lab-machin
 
 ## <a name="requirements-for-network"></a>Vereisten voor het netwerk
 
-- DNS voor de FQDN die is gekoppeld aan het SSL-certificaat dat op de gatewaymachines is geïnstalleerd, moet verkeer naar de gatewaymachine of de load balancer van de gatewaymachinefarm leiden.
+- DNS voor de FQDN die is gekoppeld aan het TLS/SSL-certificaat dat op de gatewaymachines is geïnstalleerd, moet verkeer naar de gatewaymachine of de load balancer van de gatewaymachinefarm leiden.
 - Als de labmachine privé-IP's gebruikt, moet er een netwerkpad zijn van de gatewaymachine naar de labmachine, hetzij door hetzelfde virtuele netwerk te delen of door peered virtuele netwerken te gebruiken.
 
 ## <a name="configure-the-lab-to-use-token-authentication"></a>Het lab configureren om tokenverificatie te gebruiken 
@@ -79,7 +79,7 @@ Configureer het lab om de tokenverificatie te gebruiken met behulp van de volgen
 1. Selecteer in de lijst met labs uw **lab.**
 1. Selecteer **configuratie en beleid**op de pagina van het lab.
 1. Selecteer in het linkermenu in de sectie **Instellingen** de optie **Lab-instellingen**.
-1. Voer in de sectie **Extern bureaublad** de volledig gekwalificeerde domeinnaam (FQDN) of het IP-adres van de gatewaymachine voor extern bureaublad-services of de farm voor het veld **Gateway hostname** in. Deze waarde moet overeenkomen met de FQDN van het SSL-certificaat dat wordt gebruikt op gatewaymachines.
+1. Voer in de sectie **Extern bureaublad** de volledig gekwalificeerde domeinnaam (FQDN) of het IP-adres van de gatewaymachine voor extern bureaublad-services of de farm voor het veld **Gateway hostname** in. Deze waarde moet overeenkomen met de FQDN van het TLS/SSL-certificaat dat wordt gebruikt op gatewaymachines.
 
     ![Opties voor extern bureaublad in labinstellingen](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
 1. Voer in de sectie **Extern bureaublad** voor **Gateway-tokengeheim** de naam in van het eerder gemaakte geheim. Deze waarde is niet de functiesleutel zelf, maar de naam van het geheim in de sleutelkluis van het lab die de functiesleutel bevat.
@@ -110,7 +110,7 @@ De [GitHub-repository van Azure DevTest Labs](https://github.com/Azure/azure-dev
 Volg deze stappen om een voorbeeldoplossing voor de extern bureaublad-gatewayfarm in te stellen.
 
 1. Maak een ondertekeningscertificaat.  Uitvoeren [Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1). Sla de duimafdruk, het wachtwoord en de Base64-codering van het gemaakte certificaat op.
-2. Ontvang een SSL-certificaat. FQDN dat is gekoppeld aan het SSL-certificaat moet zijn voor het domein dat u beheert. Sla de duimafdruk, wachtwoord en Base64-codering op voor dit certificaat. Als u duimafdruk wilt maken met PowerShell, gebruikt u de volgende opdrachten.
+2. Ontvang een TLS/SSL-certificaat. FQDN dat is gekoppeld aan het TLS/SSL-certificaat moet zijn voor het domein dat u beheert. Sla de duimafdruk, wachtwoord en Base64-codering op voor dit certificaat. Als u duimafdruk wilt maken met PowerShell, gebruikt u de volgende opdrachten.
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
@@ -132,9 +132,9 @@ Volg deze stappen om een voorbeeldoplossing voor de extern bureaublad-gatewayfar
     - instanceCount – Aantal gatewaymachines dat moet worden gemaakt.  
     - alwaysOn – geeft aan of de gemaakte Azure Functions-app in een warme staat moet blijven of niet. Als u de Azure Functions-app houdt, voorkomt u vertragingen wanneer gebruikers voor het eerst verbinding proberen te maken met hun lab-vm, maar dit heeft wel gevolgen voor de kosten.  
     - tokenLifetime – De tijdsduur van het gemaakte token is geldig. Formaat is HH:MM:SS.
-    - sslCertificate – De Base64-codering van het SSL-certificaat voor de gatewaymachine.
-    - sslCertificatePassword – Het wachtwoord van het SSL-certificaat voor de gatewaymachine.
-    - sslCertificateThumbprint - De duimafdruk van het certificaat voor identificatie in het lokale certificaatarchief van het SSL-certificaat.
+    - sslCertificate – De Base64-codering van het TLS/SSL-certificaat voor de gatewaymachine.
+    - sslCertificatePassword – Het wachtwoord van het TLS/SSL-certificaat voor de gatewaymachine.
+    - sslCertificateThumbprint - De duimafdruk van het certificaat voor identificatie in het lokale certificaatarchief van het TLS/SSL-certificaat.
     - signCertificate – De Base64-codering voor het ondertekenen van certificaat voor de gatewaymachine.
     - signCertificatePassword – Het wachtwoord voor het ondertekenen van certificaat voor de gatewaymachine.
     - signCertificateThumbprint - De duimafdruk van het certificaat voor identificatie in het lokale certificaatarchief van het ondertekeningscertificaat.
@@ -157,7 +157,7 @@ Volg deze stappen om een voorbeeldoplossing voor de extern bureaublad-gatewayfar
         - De {utc-expiratiedatum} is de datum in UTC waarop het SAS-token verloopt en het SAS-token niet langer kan worden gebruikt om toegang te krijgen tot het opslagaccount.
 
     Noteer de waarden voor gatewayFQDN en gatewayIP vanuit de implementatieuitvoer van de sjabloon. U moet ook de waarde van de functiesleutel opslaan voor de nieuw gemaakte functie, die u vinden op het tabblad [Instellingen voor de functie-app.](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
-5. Configureer DNS zodat FQDN van SSL-cert vanaf vorige stap naar IP-adres van gatewayIP wordt doorgestroomd.
+5. Configureer DNS zodat FQDN van TLS/SSL-cert vanaf vorige stap naar IP-adres van gatewayIP wordt doorgestroomd.
 
     Nadat de Remote Desktop Gateway-farm is gemaakt en de juiste DNS-updates zijn gemaakt, is deze klaar om te worden gebruikt door een lab in DevTest Labs. De **toegangspoorthostname** en **de geheime gatewaytoken-instellingen** moeten zijn geconfigureerd om de gatewaymachine(s) te gebruiken die u hebt geïmplementeerd. 
 

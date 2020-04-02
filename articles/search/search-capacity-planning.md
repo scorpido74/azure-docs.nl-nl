@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: e2ba5301b81b1a6f5de696ab4587cd8ff43e3c68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462561"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546267"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>Capaciteit aanpassen in Azure Cognitive Search
 
@@ -38,7 +38,8 @@ Eén service moet over voldoende resources beschikken om alle workloads (indexer
 
 Als algemene regel hebben zoektoepassingen meestal meer replica's nodig dan partities, vooral wanneer de servicebewerkingen zijn bevooroordeeld ten opzichte van queryworkloads. De sectie over [hoge beschikbaarheid](#HA) legt uit waarom.
 
-Als u meer replica's of partities toevoegt, worden de kosten voor het uitvoeren van de service verhoogd. Controleer de [prijscalculator](https://azure.microsoft.com/pricing/calculator/) om inzicht te krijgen in de factureringsimplicaties van het toevoegen van meer knooppunten. De [onderstaande grafiek](#chart) kan u helpen bij het vergelijken van het aantal zoekeenheden dat nodig is voor een specifieke configuratie.
+> [!NOTE]
+> Het toevoegen van meer replica's of partities verhoogt de kosten van het uitvoeren van de service en kan kleine variaties introduceren in de manier waarop resultaten worden geordend. Controleer de [prijscalculator](https://azure.microsoft.com/pricing/calculator/) om inzicht te krijgen in de factureringsimplicaties van het toevoegen van meer knooppunten. De [onderstaande grafiek](#chart) kan u helpen bij het vergelijken van het aantal zoekeenheden dat nodig is voor een specifieke configuratie. Zie [Resultaten bestellen](search-pagination-page-layout.md#ordering-results)voor meer informatie over de invloed van extra replica's op queryverwerking.
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>Replica's en partities toewijzen
 

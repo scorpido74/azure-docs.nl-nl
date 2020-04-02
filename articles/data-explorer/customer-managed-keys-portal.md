@@ -7,12 +7,12 @@ ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: c014ed2c25711677617d3bf8ff5d2f0f968a3b14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 180196f2c368207b76811700fd845406098600df
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80301042"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529443"
 ---
 # <a name="configure-customer-managed-keys-using-the-azure-portal"></a>Door de klant beheerde sleutels configureren met behulp van de Azure-portal
 
@@ -46,7 +46,7 @@ In dit artikel ziet u hoe u versleuteling met beheerde sleutels van klanten insc
 
     ![Door de klant beheerde sleutel opslaan](media/customer-managed-keys-portal/cmk-encryption-setting.png)
 
-Door door de klantbeheersleutels in te schakelen voor uw Azure Data Explorer-cluster, maakt u een door het systeem toegewezen identiteit voor het cluster als deze niet bestaat. Daarnaast verstrekt u de vereiste weergavemachtigingen voor uw Azure Data Explorer-cluster op de geselecteerde Key Vault-eigenschappen en krijgt u de eigenschappen Key Vault. 
+Door door de klantbeheersleutels in te schakelen voor uw Azure Data Explorer-cluster, maakt u een door het systeem toegewezen identiteit voor het cluster als deze niet bestaat. Daarnaast biedt u de vereiste machtigingen voor de beschikbaarheid, wrapKey en unwarpKey naar uw Azure Data Explorer-cluster op de geselecteerde Key Vault en krijgt u de eigenschappen Key Vault. 
 
 > [!NOTE]
 > Selecteer **Uit** om de door de klant beheerde sleutel te verwijderen nadat deze is gemaakt.

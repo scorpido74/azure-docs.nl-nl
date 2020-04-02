@@ -7,12 +7,12 @@ ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/15/2020
-ms.openlocfilehash: 796b37f98fed7e389fa71a15b5e6697a14db1a16
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 1b9d593b0f0895e2ba75fae7ab7e78ea883c8907
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397196"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521697"
 ---
 # <a name="microsoft-flow-connector-preview-usage-examples"></a>Voorbeelden van gebruiksvoorbeelden van Microsoft Flow-connector (Preview)
 
@@ -24,8 +24,6 @@ Zie [Microsoft Flow-connector (Voorbeeld) voor](flow.md)meer informatie.
 * [Gegevens pushen naar de Power BI-gegevensset](#push-data-to-power-bi-dataset)
 * [Voorwaardelijke query's](#conditional-queries)
 * [Meerdere Azure Data Explorer Flow-diagrammen e-mailen](#email-multiple-azure-data-explorer-flow-charts)
-* [Een andere e-mail verzenden naar verschillende contactpersonen](#send-a-different-email-to-different-contacts)
-* [Een aangepaste HTML-tabel maken](#create-a-custom-html-table)
 
 ## <a name="microsoft-flow-connector-and-sql"></a>Microsoft Flow-connector en SQL
 
@@ -101,23 +99,21 @@ Visualiseer deze informatie als een cirkeldiagram en e-mail deze naar het team.
 
 ## <a name="email-multiple-azure-data-explorer-flow-charts"></a>Meerdere Azure Data Explorer Flow-diagrammen e-mailen
 
-1. Maak een nieuwe stroom met 'Recidief'-trigger en definieer het interval van de stroom en de frequentie. 
+1. Maak een nieuwe stroom met de recidieftrigger en definieer het interval van de stroom en de frequentie. 
 1. Voeg een nieuwe stap toe, met een of meer Kusto - Voer query-en -resultatenacties uit. 
 
     ![Meerdere query's uitvoeren in een stroom](./media/flow-usage/flow-severalqueries.png)
 1. Definieer voor elke Kusto - Run query en visualiseer het resultaat de volgende velden:
-    * Cluster-URL (in het veld *Clusternaam)*
+    * Cluster-URL
     * Databasenaam
-    * Query- en grafiektype (HTML-tabel/ cirkeldiagram/ tijdgrafiek/ staafdiagram/ Voer aangepaste waarde in).
+    * Query en grafiektype (HTML-tabel, cirkeldiagram, tijdgrafiek, staafdiagram of voer een aangepaste waarde in).
 
     ![Resultaten visualiseren met meerdere bijlagen](./media/flow-usage/flow-visualizeresultsmultipleattachments.png)
 
-    > [!IMPORTANT]
-    > Voer in de velden *Clusternaam* de cluster-URL in.
-
-1. Een actie Een e-mail verzenden toevoegen. 
-    * Plaats in het veld *Hoofdlichaam* de vereiste hoofdtekst zodat het gevisualiseerde resultaat van de query in de hoofdtekst van de e-mail wordt opgenomen.
-    * Als u een bijlage aan de e-mail wilt toevoegen, voegt u bijlagenaam en bijlageinhoud toe.
+1. Voeg een actie Een e-mail verzenden (v2) toe: 
+    1. Selecteer in de hoofdsectie het pictogram codeweergave.
+    1. Plaats in het veld **Hoofdtekst** de vereiste BodyHtml in, zodat het gevisualiseerde resultaat van de query is opgenomen in de hoofdtekst van de e-mail.
+    1. Als u een bijlage aan de e-mail wilt toevoegen, voegt u bijlagenaam en bijlageinhoud toe.
     
     ![Meerdere bijlagen e-mailen](./media/flow-usage/flow-email-multiple-attachments.png)
 
@@ -128,68 +124,6 @@ Resultaten:
 [![](./media/flow-usage/flow-resultsmultipleattachments.png "Results of multiple attachments")](./media/flow-usage/flow-resultsmultipleattachments.png#lightbox)
 
 [![](./media/flow-usage/flow-resultsmultipleattachments2.png "Results of multiple attachments")](./media/flow-usage/flow-resultsmultipleattachments2.png#lightbox)
-
-## <a name="send-a-different-email-to-different-contacts"></a>Een andere e-mail verzenden naar verschillende contactpersonen
-
-U Microsoft Flow gebruiken om verschillende aangepaste e-mails naar verschillende contactpersonen te verzenden. De e-mailadressen en de e-mailinhoud zijn het resultaat van een Kusto-query.
-
-Voorbeeld:
-
-![Dynamische e-mail met een Kusto-query](./media/flow-usage/flow-dynamicemailkusto.png)
-
-> [!IMPORTANT]
-> Voer in het veld *Clusternaam* de cluster-URL in.
-
-![Dynamische e-mail in de stroomactie](./media/flow-usage/flow-dynamicemail.png)
-
-## <a name="create-a-custom-html-table"></a>Een aangepaste HTML-tabel maken
-
-U Microsoft Flow gebruiken om aangepaste HTML-elementen te maken en te gebruiken, zoals een aangepaste HTML-tabel.
-
-In het volgende voorbeeld wordt uitgelegd hoe u een aangepaste HTML-tabel maakt. In de HTML-tabel worden de rijen gekleurd op logboekniveau (hetzelfde als in Azure Data Explorer).
-
-Volg deze instructies om een vergelijkbare stroom te maken:
-
-1. Maak een nieuwe Kusto - Voer query- en lijstresultatenactie uit.
-
-    ![Resultaten voor een HTML-tabel weergeven](./media/flow-usage/flow-listresultforhtmltable.png)
-
-> [!IMPORTANT]
-> Voer in het veld *Clusternaam* de cluster-URL in.
-
-1. Loop over de queryresultaten en maak de HTML-tabeltekst: 
-    1. Als u een variabele wilt maken om de HTML-tekenreeks vast te houden, selecteert u **Nieuwe stap**
-    1. Selecteer **Een actie toevoegen** en zoeken naar variabelen. 
-    1. Selecteer **Variabelen - Variabele initialiseren**. 
-    1. Initialiseer een tekenreeksvariabele als volgt:
-
-    ![Een variabele initialiseren](./media/flow-usage/flow-initializevariable.png)
-
-1. Loop over de resultaten:
-    1. Selecteer **Nieuwe stap**.
-    1. Selecteer **Een actie toevoegen**.
-    1. Zoek naar variabelen. 
-    1. Selecteer **Variabelen - Toevoegen aan tekenreeksvariabele**. 
-    1. Selecteer de variabele naam die u eerder hebt geïnitialeerd en maak de HTML-tabelrijen met behulp van de queryresultaten. 
-    Bij het selecteren van de queryresultaten wordt Toepassen op elk automatisch toegevoegd.
-
-    In het onderstaande `if` voorbeeld wordt de expressie gebruikt om de stijl van elke rij te definiëren:
-
-    ```if(equals(items('Apply_to_each')?['Level'], 'Warning'), 'Yellow', if(equals(items('Apply_to_each')?['Level'], 'Error'), 'red', 'white'))```
-
-    [![](./media/flow-usage/flow-createhtmltableloopcontent.png "Create HTML table loop content")](./media/flow-usage/flow-createhtmltableloopcontent.png#lightbox)
-
-1. De volledige HTML-inhoud maken: 
-    1. Een nieuwe actie toevoegen buiten Toepassen op elke actie. 
-    In het volgende voorbeeld wordt een e-mail verzenden.
-    1. Definieer uw HTML-tabel met de variabele uit de vorige stappen. 
-    1. Als u een e-mail verzendt, selecteert u **Geavanceerde opties weergeven** en selecteert u onder Is HTML **Ja**.
-
-    ![Aangepaste HTML-tabele-mail](./media/flow-usage/flow-customhtmltablemail.png)
-
-Resultaat:
-
-![Aangepast HTML-tabele-e-mailresultaat](./media/flow-usage/flow-customhtmltableresult.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

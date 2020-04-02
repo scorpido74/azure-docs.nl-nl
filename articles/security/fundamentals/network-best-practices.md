@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 3ded20f37a394e6adf726ad40c01aa36d41e4e8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299342"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548309"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Aanbevolen procedures voor Azure voor netwerkbeveiliging
 In dit artikel wordt een verzameling aanbevolen procedures voor Azure besproken om uw netwerkbeveiliging te verbeteren. Deze best practices zijn afgeleid van onze ervaring met Azure-netwerken en de ervaringen van klanten zoals uzelf.
@@ -153,12 +153,12 @@ We raden u aan om waar mogelijk en waar nodig voor uw services lastbalancing in 
 - Accepteert alleen een beveiligde verbinding, dus onversleutelde communicatie naar de server is geen acceptabele optie.
 - Hiervoor zijn meerdere HTTP-aanvragen vereist op dezelfde langlopende TCP-verbinding die moet worden doorgestuurd of in evenwicht moet worden gebracht naar verschillende back-endservers.
 
-**Load-balancing option**: Gebruik [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction), een HTTP-webverkeerslastenbalans. Application Gateway ondersteunt end-to-end SSL-encryptie en [SSL-beëindiging](/azure/application-gateway/application-gateway-introduction) bij de gateway. Webservers kunnen vervolgens worden ontzorgd van encryptie en decryptie overhead en het verkeer stroomt onversleuteld naar de back-end servers.
+**Load-balancing option**: Gebruik [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction), een HTTP-webverkeerslastenbalans. Application Gateway ondersteunt end-to-end TLS-versleuteling en [TLS-beëindiging](/azure/application-gateway/application-gateway-introduction) bij de gateway. Webservers kunnen vervolgens worden ontzorgd van encryptie en decryptie overhead en het verkeer stroomt onversleuteld naar de back-end servers.
 
 **Scenario:** U moet binnenkomende verbindingen van het internet laden tussen uw servers in een virtueel Azure-netwerk. Scenario's zijn wanneer u:
 
 - Hebben stateless toepassingen die inkomende verzoeken van het internet te accepteren.
-- Vereist geen plaksessies of SSL-offload. Sticky sessies is een methode die wordt gebruikt met Application Load Balancing, om server-affiniteit te bereiken.
+- Vereist geen plaksessies of TLS-offload. Sticky sessies is een methode die wordt gebruikt met Application Load Balancing, om server-affiniteit te bereiken.
 
 **Load-balancing option:** Gebruik de Azure-portal om [een externe load balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) te maken die binnenkomende aanvragen verspreidt over meerdere VM's om een hoger beschikbaarheidsniveau te bieden.
 

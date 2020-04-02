@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 03329252c0ed4231585d1717d9361a2aef35b36f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cea3245176e6c38137d68e3ad4b47477bedc78be
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186987"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529167"
 ---
 Als u een toepassing wilt registreren in uw Azure AD B2C-tenant, u de huidige **ervaring met toepassingen** of onze nieuwe uniforme **app-registratie (Preview)-ervaring** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
 
@@ -37,4 +37,10 @@ Als u een toepassing wilt registreren in uw Azure AD B2C-tenant, u de huidige **
 1. Selecteer onder **Beheren**de optie **Verificatie**.
 1. Selecteer **Probeer de nieuwe ervaring** uit (indien weergegeven).
 1. Selecteer **Onder Standaardclienttype**de optie **Ja** om de toepassing als openbare client te behandelen. Deze instelling is vereist voor de ROPC-stroom.
+1. Selecteer **Opslaan**.
+1. Selecteer **Manifest** in het linkermenu om de manifesteditor te openen. 
+1. Stel het kenmerk **oauth2AllowImplicitFlow** in *op true:*
+    ```json
+    "oauth2AllowImplicitFlow": true,
+    ```
 1. Selecteer **Opslaan**.
