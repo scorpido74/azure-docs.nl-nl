@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c021e68f8b76d8b0d3e6e9ff21c242580f53313
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220081"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520945"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Grenzen voor uw LUIS-model en sleutels
 LUIS heeft verschillende grensgebieden. De eerste is de [modelgrens](#model-boundaries), die intents, entiteiten en functies in LUIS beheert. Het tweede gebied is [quotalimieten](#key-limits) op basis van sleuteltype. Een derde gebied van grenzen is de [toetsenbordcombinatie](#keyboard-controls) voor het besturen van de LUIS-website. Een vierde gebied is de [wereldregio mapping](luis-reference-regions.md) tussen de LUIS authoring website en de LUIS [endpoint](luis-glossary.md#endpoint) API's.
@@ -40,7 +40,7 @@ Als uw app de grenzen en grenzen van het LUIS-model overschrijdt, u overwegen ee
 | [Voorbeeld - Dynamische lijstentiteiten](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 lijsten van ~ 1k per query voorspelling eindpunt aanvraag|
 | [Patronen](luis-concept-patterns.md)|500 patronen per toepassing.<br>Maximale lengte van het patroon is 400 tekens.<br>3 Patroon.alle entiteiten per patroon<br>Maximaal 2 geneste optionele teksten in patroon|
 | [Patroon.elk](./luis-concept-entity-types.md)|100 per toepassing, 3 patroon.alle entiteiten per patroon |
-| [Lijst met zinnen][phrase-list]|500 zinnenlijsten. Niet-verwisselbare phraselist heeft max van 5.000 zinnen. Verwisselbare Phraselist heeft maximaal 50.000 zinnen. Maximum aantal zinnen per toepassing van 500.000 zinnen.|
+| [Lijst met zinnen][phrase-list]|500 zinnenlijsten. 10 globale woordgroeplijsten als gevolg van het model als functielimiet. Niet-verwisselbare phraselist heeft max van 5.000 zinnen. Verwisselbare Phraselist heeft maximaal 50.000 zinnen. Maximum aantal zinnen per toepassing van 500.000 zinnen.|
 | [Vooraf gebouwde entiteiten](./luis-prebuilt-entities.md) | geen limiet|
 | [Entiteiten in de vorm van reguliere expressies](./luis-concept-entity-types.md)|20 entiteiten<br>500 karakter max. per entiteitspatroon voor reguliere expressies|
 | [Rollen](luis-concept-roles.md)|300 rollen per toepassing. 10 rollen per entiteit|

@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 2c9baa4c0e048419ece09b954cee1af21b1f0cc1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5a34ac2d1b7401d31ae518334aedc15c626b66a3
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77158006"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529491"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Java gebruiken om gebeurtenissen naar Azure Event Hubs te verzenden of te ontvangen (azure-eventhubs)
 
@@ -110,7 +110,7 @@ Maak een enkelvoudige gebeurtenis door een tekenreeks om te zetten in de utf-8-b
         // handling different flavors of ingestion to Event Hubs here.
         final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(4);
 
-        // Each EventHubClient instance spins up a new TCP/SSL connection, which is expensive.
+        // Each EventHubClient instance spins up a new TCP/TLS connection, which is expensive.
         // It is always a best practice to reuse these instances. The following sample shows this.
         final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
 
@@ -144,7 +144,7 @@ Gefeliciteerd! U hebt nu berichten verzonden naar een Event Hub.
 
 ### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Bijlage: Hoe berichten worden doorgestuurd naar EventHub-partities
 
-Voordat berichten door consumenten worden opgehaald, moeten ze eerst door de uitgevers naar de partities worden gepubliceerd. Wanneer berichten synchroon worden gepubliceerd naar gebeurtenishub met de methode sendSync() op het object com.microsoft.azure.eventhubs.EventHubClient, kan het bericht worden verzonden naar een specifieke partitie of op een round-robin-manier worden gedistribueerd naar alle beschikbare partities afhankelijk van of de partitiesleutel is opgegeven of niet.
+Voordat berichten door consumenten worden opgehaald, moeten ze eerst door de uitgevers naar de partities worden gepubliceerd. Wanneer berichten synchroon worden gepubliceerd naar gebeurtenishub met de methode sendSync() op het object com.microsoft.azure.eventhubs.EventHubClient, kan het bericht naar een specifieke partitie worden verzonden of op een round-robin-manier naar alle beschikbare partities worden gedistribueerd, afhankelijk van of de partitiesleutel is opgegeven of niet.
 
 Wanneer een tekenreeks die de partitiesleutel vertegenwoordigt is opgegeven, wordt de sleutel gehasht om te bepalen naar welke partitie de gebeurtenis moet worden verzonden.
 
@@ -384,7 +384,7 @@ In deze zelfstudie wordt één exemplaar van EventProcessorHost gebruikt. Om de 
 
 ### <a name="publishing-messages-to-eventhub"></a>Berichten publiceren naar EventHub
 
-Voordat berichten door consumenten worden opgehaald, moeten ze eerst door de uitgevers naar de partities worden gepubliceerd. Het is vermeldenswaard dat wanneer berichten synchroon worden gepubliceerd naar gebeurtenishub met behulp van de methode sendSync() op het object com.microsoft.azure.eventhubs.EventHubClient, het bericht naar een specifieke partitie kan worden verzonden of kan worden gedistribueerd naar alle beschikbare partities op een round-robin manier, afhankelijk van of de partitiesleutel is opgegeven of niet.
+Voordat berichten door consumenten worden opgehaald, moeten ze eerst door de uitgevers naar de partities worden gepubliceerd. Het is vermeldenswaard dat wanneer berichten synchroon worden gepubliceerd naar gebeurtenishub met behulp van de methode sendSync() op het object com.microsoft.azure.eventhubs.EventHubClient, het bericht naar een specifieke partitie kan worden verzonden of op een round-robin-manier naar alle beschikbare partities kunnen worden gedistribueerd, afhankelijk van of de partitiesleutel is opgegeven of niet.
 
 Wanneer een tekenreeks die de partitiesleutel vertegenwoordigt is opgegeven, wordt de sleutel gehasht om te bepalen naar welke partitie de gebeurtenis moet worden verzonden.
 

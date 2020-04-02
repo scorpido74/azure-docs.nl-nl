@@ -1,15 +1,15 @@
 ---
 title: Een Azure Blockchain Service-lid maken - Azure CLI
 description: Maak een Azure Blockchain Service-lid voor een blockchainconsortium met de Azure CLI.
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 0a3cf3d7c7f3dc0b8ece6fd6a466e42ae970b61c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 322b1884726b6dfe322560032ed1b8a98c600154
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214737"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529621"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Snelstart: een Azure Blockchain Service-blockchain-lid maken met Azure CLI
 
@@ -58,7 +58,7 @@ az resource create \
 | **wachtwoord** | Het wachtwoord voor het standaard transactieknooppunt van het lid. Gebruik het wachtwoord voor basisverificatie wanneer u verbinding maakt met het standaardtransactieknooppunt openbare eindpunt van het blockchain-lid.
 | **Consortium** | Naam van het consortium om toe te treden of te maken. Zie [Azure Blockchain Service consortium](consortium.md)voor meer informatie over consortia.
 | **consortiumAccountPassword** | Het wachtwoord van het consortiumaccount wordt ook wel het wachtwoord van het ledenaccount genoemd. Het wachtwoord van het ledenaccount wordt gebruikt om de privésleutel voor het Ethereum-account dat voor uw lid is gemaakt, te versleutelen. U gebruikt het accountaccount en het wachtwoord van het ledenaccount voor consortiumbeheer.
-| **skuName** | Niveautype. Gebruik S0 voor Standard en B0 voor Basic. Gebruik de *basislaag* voor ontwikkeling, testen en proof of concepts. Gebruik de *standaardlaag* voor implementaties van productiekwaliteit.
+| **skuName** | Niveautype. Gebruik S0 voor Standard en B0 voor Basic. Gebruik de *basislaag* voor ontwikkeling, testen en proof of concepts. Gebruik de *standaardlaag* voor implementaties van productiekwaliteit. U moet ook de *standaardlaag* gebruiken als u Blockchain Data Manager gebruikt of een groot aantal privétransacties verzendt. Het wijzigen van de prijslaag tussen basis en standaard na het maken van leden wordt niet ondersteund.
 
 Het duurt ongeveer 10 minuten om het blockchain-lid te maken en resources te ondersteunen.
 

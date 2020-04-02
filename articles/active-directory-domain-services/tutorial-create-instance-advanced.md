@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f6817c1ec308e75a4af88825d46848b504775e19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a7ab79fe7ccfbf6d292b6ba7be58026955a06516
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239145"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519247"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Zelfstudie: Een Azure Active Directory Domain Services-exemplaar maken en configureren met geavanceerde configuratieopties
 
@@ -90,7 +90,7 @@ Voltooi de velden in het venster *Basisbeginselen* van de Azure-portal om een Az
 1. Voer een **DNS-domeinnaam** in voor uw beheerde domein, rekening houdend met de vorige punten.
 1. Kies de **Azure-locatie** waarin het beheerde domein moet worden gemaakt. Als u een regio kiest die beschikbaarheidszones ondersteunt, worden de Azure AD DS-resources verdeeld over zones voor extra redundantie.
 
-    Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's.
+    Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Tolerantie wordt gegarandeerd door aanwezigheid van minimaal drie afzonderlijke zones in alle actieve regio's.
 
     U er niets voor configureren dat Azure AD DS over zones wordt verdeeld. Het Azure-platform verwerkt automatisch de zonedistributie van resources. Zie [Beschikbaarheidszones in Azure voor][availability-zones] meer informatie en voor de beschikbaarheid van de regio?
 

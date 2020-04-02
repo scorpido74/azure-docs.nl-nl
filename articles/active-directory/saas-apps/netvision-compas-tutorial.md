@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12a83c6381d3f068eecc2dda4838b981a8b59ab7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c3015ea26d81505c4f058846dbcb3b7858f79267
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135837"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520106"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Netvision Compas
 
@@ -69,7 +69,7 @@ Als u Azure AD SSO wilt configureren en testen met Netvision Compas, voert u de 
     1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
     1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
 1. **[Configureer Netvision Compas SSO](#configure-netvision-compas-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
-    1. **[Maak Netvision Compas-testgebruiker](#create-netvision-compas-test-user)** - om een tegenhanger van B.Simon in Netvision Compas te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+    1. **[Configureer Netvision Compas-testgebruiker](#configure-netvision-compas-test-user)** - om een tegenhanger van B.Simon in Netvision Compas te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
 1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
@@ -95,13 +95,11 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [het ondersteuningsteam van Netvision Compas Client](mailto:contact@net.vision) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** **certificaat** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
+1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de optie **Federation Metadata XML** en selecteer **Downloaden** om het metagegevensbestand te downloaden en op te slaan op uw computer.
 
-    ![De link om het certificaat te downloaden](common/certificatebase64.png)
+    ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer in de sectie **Netvision Compas instellen** de juiste URL(s) op basis van uw vereiste.
 
-    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -135,17 +133,58 @@ In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door t
 
 ## <a name="configure-netvision-compas-sso"></a>Netvision Compas SSO configureren
 
-Als u eenmalige aanmelding wilt configureren aan de kant **van Netvision Compas,** moet u het gedownloade **certificaat (Base64)** en de juiste gekopieerde URL's van Azure-portal naar [het ondersteuningsteam van Netvision Compas](mailto:contact@net.vision)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+In deze sectie schakelt u SAML SSO in **Netvision Compas**in.
+1. Log in bij **Netvision Compas** met een administratief account en krijg toegang tot het administratiegebied.
 
-### <a name="create-netvision-compas-test-user"></a>Netvision Compas-testgebruiker maken
+    ![Beheerdersgebied](media/netvision-compas-tutorial/admin.png)
 
-In deze sectie maakt u een gebruiker genaamd B.Simon in Netvision Compas. Werk samen met [netvision Compas support team](mailto:contact@net.vision) om de gebruikers toe te voegen aan het Netvision Compas platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+1. Zoek het **systeemgebied** en selecteer **Identiteitsproviders**.
+
+    ![Admin-id's](media/netvision-compas-tutorial/admin-idps.png)
+
+1. Selecteer de actie **Toevoegen** om Azure AD te registreren als een nieuw IDP.
+
+    ![IDP toevoegen](media/netvision-compas-tutorial/idps-add.png)
+
+1. Selecteer **SAML** voor het **type Provider**.
+1. Voer betekenisvolle waarden in voor de velden **Weergavenaam** en **Beschrijving.**
+1. Wijs **Netvision Compas-gebruikers** toe aan het IDP door in de lijst **Beschikbare gebruikers** te selecteren en vervolgens de knop Geselecteerd **toevoegen te** selecteren. Gebruikers kunnen ook worden toegewezen aan het IDP tijdens het volgen van de inrichtingsprocedure.
+1. Klik voor de optie **Saml met ametjes** op de knop **Bestand kiezen** en selecteer het metagegevensbestand dat eerder op uw computer is opgeslagen.
+1. Klik op **Opslaan**.
+
+    ![IDP bewerken](media/netvision-compas-tutorial/idp-edit.png)
+
+
+### <a name="configure-netvision-compas-test-user"></a>Netvision Compas-testgebruiker configureren
+
+In deze sectie configureert u een bestaande gebruiker in **Netvision Compas** om Azure AD voor SSO te gebruiken.
+1. Volg de gebruiksprocedure van **Netvision Compas,** zoals gedefinieerd door uw bedrijf of bewerk een bestaand gebruikersaccount.
+1. Controleer tijdens het definiëren van het profiel van de gebruiker of het **e-mailadres (Persoonlijk)** van de gebruiker overeenkomt met de Azure AD-gebruikersnaam: username@companydomain.extension. Bijvoorbeeld `B.Simon@contoso.com`.
+
+    ![Gebruiker bewerken](media/netvision-compas-tutorial/user-config.png)
+
+Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ## <a name="test-sso"></a>Test SSO 
 
-In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
+In deze sectie test u uw configuratie met eenmalige aanmelding in Azure AD.
+
+### <a name="using-the-access-panel-idp-initiated"></a>Het Access Panel gebruiken (IDP gestart).
 
 Wanneer u op de tegel Netvision Compas in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Netvision Compas waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+
+### <a name="directly-accessing-netvision-compas-sp-initiated"></a>Rechtstreeks toegang tot Netvision Compas (SP geïnitieerd).
+
+1. Toegang tot de **URL van Netvision Compas.** Bijvoorbeeld `https://tenant.compas.cloud`.
+1. Voer de gebruikersnaam **netvision Compas** in en selecteer **Volgende**.
+
+    ![Aangemelde gebruiker](media/netvision-compas-tutorial/login-user.png)
+
+1. **(facultatief)** Als de gebruiker meerdere IdP's binnen **Netvision Compas**krijgt toegewezen, wordt een lijst met beschikbare IdP's weergegeven. Selecteer de Azure AD IDP die eerder is geconfigureerd in **Netvision Compas**.
+
+    ![Aanmelden kiezen](media/netvision-compas-tutorial/login-choose.png)
+
+1. U wordt doorgestuurd naar Azure AD om de verificatie uit te voeren. Zodra u met succes bent geverifieerd, moet u automatisch worden aangemeld bij **Netvision Compas** waarvoor u SSO hebt ingesteld.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

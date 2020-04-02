@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: 4dff471fa0f2194756409e01512ed223a1d46024
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99c32122fc48aaea7428fa559d7289713849f34e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241437"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548906"
 ---
 # <a name="create-an-azure-data-explorer-cluster-in-your-virtual-network"></a>Een Azure Data Explorer-cluster maken in uw virtuele netwerk
 
@@ -68,7 +68,7 @@ Ga als u de netwerkbeveiligingsgroep maken:
     | Name | AllowAzureDataExplorerManagement
     | | |
     
-1. Herhaal de vorige twee stappen voor alle inkomende en uitgaande afhankelijkheden op basis [van afhankelijkheden voor VNet-implementatie](/azure/data-explorer/vnet-deloyment#dependencies-for-vnet-deployment). Als alternatief kunnen uitgaande regels worden vervangen door enkele regel om *internet* toe te staan voor poorten 443 en 80.
+1. Herhaal de vorige twee stappen voor alle inkomende en uitgaande afhankelijkheden op basis [van afhankelijkheden voor VNet-implementatie](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment). Als alternatief kunnen uitgaande regels worden vervangen door enkele regel om *internet* toe te staan voor poorten 443 en 80.
     
     De NSG-regels voor inkomende en uitgaande afhankelijkheden moeten er als volgt uitzien:
 
@@ -121,7 +121,7 @@ Ga als het virtuele netwerk en het subnet:
     | | | |
 
     > [!NOTE]
-    > Voor productieworkloads, plan uw subnetgrootte op [basis van plan subnetgrootte in uw VNet](/azure/data-explorer/vnet-deloyment#plan-subnet-size-in-your-vnet)
+    > Voor productieworkloads, plan uw subnetgrootte op [basis van plan subnetgrootte in uw VNet](/azure/data-explorer/vnet-deployment#plan-subnet-size-in-your-vnet)
 
 1. Selecteer **Bekijken + maken** om de gegevens van uw cluster te controleren, en **Maken** voor het inrichten van het cluster.
 

@@ -5,20 +5,20 @@ services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 02/05/2019
-ms.author: lahugh
-ms.openlocfilehash: e8952218675493710cbdd1f92661e9a9c077f34c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.author: jushiman
+ms.openlocfilehash: 3e0552570d5bdb7f812852cd058710b833b7fdd4
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164046"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521330"
 ---
 # <a name="m-series"></a>M-serie
 
-De M-serie biedt een hoog aantal vCPU's (tot 128 vCPU's) en een grote hoeveelheid geheugen (tot 3,8 TiB). Het is ook ideaal voor extreem grote databases of andere toepassingen die profiteren van hoge vCPU-tellingen en grote hoeveelheden geheugen. M-serie maten zijn gebaseerd op de Intel® Xeon® CPU E7-8890 v3 @ 2,50 GHz
+De M-serie biedt een hoog aantal vCPU's (tot 128 vCPU's) en een grote hoeveelheid geheugen (tot 3,8 TiB). Het is ook ideaal voor extreem grote databases of andere toepassingen die profiteren van hoge vCPU-tellingen en grote hoeveelheden geheugen. M-serie maten worden ondersteund zowel&reg; &reg; op de Intel Xeon CPU E7-8890 v3&reg; @&reg; 2,50 GHz en op de Intel Xeon Platinum 8280M 2.7GHz (Cascade Lake).
 
-M-serie VM's functie Intel® Hyper-Threading Technology
+M-serie VM's&reg; zijn voorzien van Intel Hyper-Threading Technology.
 
 ACU: 160-180
 

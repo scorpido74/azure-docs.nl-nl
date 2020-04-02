@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e62b3c551f41bca0055f35cf6bf62c59d921c73b
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 01767e88714bfb4e134957298505edd218d462d3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294836"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546928"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -43,7 +43,7 @@ Met Windows Virtual Desktop u een schaalbare en flexibele omgeving instellen:
 * Maak een volledige desktopvirtualisatieomgeving in uw Azure-abonnement zonder dat u extra gatewayservers hoeft uit te voeren.
 * Publiceer zoveel hostpools als u nodig hebt om uw diverse workloads aan te passen.
 * Breng uw eigen afbeelding mee voor productieworkloads of test vanuit de Azure Gallery.
-* Verlaag de kosten met gepoolde bronnen voor meerdere sessies. Met de nieuwe Windows 10 Enterprise multi-session mogelijkheid exclusief voor Windows Virtual Desktop en Remote Desktop Session Host (RDSH) rol op Windows Server, u het aantal virtuele machines en besturingssysteem (OS) overhead sterk verminderen, terwijl nog steeds het verstrekken van dezelfde middelen aan uw gebruikers.
+* Verlaag de kosten met gepoolde bronnen voor meerdere sessies. Met de nieuwe Windows 10 Enterprise multi-session mogelijkheid exclusief voor Windows Virtual Desktop en Remote Desktop Session Host (RDSH) rol op Windows Server, u het aantal virtuele machines en besturingssysteem (OS) overhead sterk verminderen, terwijl u nog steeds dezelfde bronnen aan uw gebruikers.
 * Zorg voor individueel eigendom via persoonlijke (permanente) desktops.
 
 U virtuele bureaubladen implementeren en beheren:
@@ -89,21 +89,38 @@ De virtuele Azure-machines die u maakt voor Windows Virtual Desktop, moeten:
 
 De virtuele Azure-machines die u voor Windows Virtual Desktop maakt, moeten toegang hebben tot de volgende URL's:
 
-|Adres|Uitgaande poort|Doel|
-|---|---|---|
-|*.wvd.microsoft.com|TCP-poort 443|Serviceverkeer|
-|*.blob.core.windows.net|TCP-poort 443|Agent, SXS stack updates en Agent verkeer|
-|*.core.windows.net|TCP-poort 443|Het verkeer van de agent|
-|*.servicebus.windows.net|TCP-poort 443|Het verkeer van de agent|
-|prod.warmpath.msftcloudes.com|TCP-poort 443|Het verkeer van de agent|
-|catalogartifact.azureedge.net|TCP-poort 443|Azure Marketplace|
-|kms.core.windows.net|TCP-poort 1688|Windows 10-activering|
+|Adres|Uitgaande TCP-poort|Doel|Servicetag|
+|---|---|---|---|
+|*.wvd.microsoft.com|443|Serviceverkeer|WindowsVirtualDesktop|
+|mrsglobalsteus2prod.blob.core.windows.net|443|Updates voor de stack van agent en SXS|AzureCloud|
+|*.core.windows.net|443|Het verkeer van de agent|AzureCloud|
+|*.servicebus.windows.net|443|Het verkeer van de agent|AzureCloud|
+|prod.warmpath.msftcloudes.com|443|Het verkeer van de agent|AzureCloud|
+|catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
+|kms.core.windows.net|1688|Windows-activering|Internet|
+
+
 
 >[!IMPORTANT]
 >Het openen van deze URL's is essentieel voor een betrouwbare Windows Virtual Desktop-implementatie. Het blokkeren van de toegang tot deze URL's wordt niet ondersteund en heeft invloed op de servicefunctionaliteit. Deze URL's komen alleen overeen met Windows Virtual Desktop-sites en -bronnen en bevatten geen URL's voor andere services zoals Azure Active Directory.
 
+In de volgende tabel worden optionele URL's weergegeven waartoe uw virtuele Azure-machines toegang kunnen hebben:
+
+|Adres|Uitgaande TCP-poort|Doel|Servicetag|
+|---|---|---|---|
+|*.microsoftonline.com|443|Verificatie naar MS Online Services|Geen|
+|*.events.data.microsoft.com|443|Telemetrieservice|Geen|
+|www.msftconnecttest.com|443|Detecteert of het besturingssysteem is verbonden met het internet|Geen|
+|*.prod.do.dsp.mp.microsoft.com|443|Windows Update|Geen|
+|login.windows.net|443|Inloggen bij MS Online Services, Office 365|Geen|
+|*.sfx.ms|443|Updates voor OneDrive-clientsoftware|Geen|
+|*.digicert.com|443|Certificaatintrekkingscontrole|Geen|
+
+
 >[!NOTE]
 >Windows Virtual Desktop heeft momenteel geen lijst met IP-adresbereiken die u whitelisten om netwerkverkeer toe te staan. We ondersteunen op dit moment alleen het whitelisten van specifieke URL's.
+>
+>Zie [Office 365-URL's en IP-adresbereiken](/office365/enterprise/urls-and-ip-address-ranges)voor een lijst met Office-gerelateerde URL's, waaronder vereiste Azure Active Directory-gerelateerde URL's.
 >
 >U moet het jokerteken (*) gebruiken voor URL's waarbij serviceverkeer betrokken is. Als u * liever niet gebruikt voor agentgerelateerd verkeer, vindt u als u de URL's zonder wildcards:
 >
@@ -137,15 +154,15 @@ De volgende Extern bureaublad-clients ondersteunen Windows Virtual Desktop:
 
 De Extern bureaublad-clients moeten toegang hebben tot de volgende URL's:
 
-|Adres|Uitgaande poort|Doel|Client(s)|
+|Adres|Uitgaande TCP-poort|Doel|Client(s)|
 |---|---|---|---|
-|*.wvd.microsoft.com|TCP-poort 443|Serviceverkeer|Alle|
-|*.servicebus.windows.net|TCP-poort 443|Problemen met gegevens oplossen|Alle|
-|go.microsoft.com|TCP-poort 443|Microsoft FWLinks|Alle|
-|aka.ms|TCP-poort 443|Microsoft URL shortener|Alle|
-|docs.microsoft.com|TCP-poort 443|Documentatie|Alle|
-|privacy.microsoft.com|TCP-poort 443|Privacyverklaring|Alle|
-|query.prod.cms.rt.microsoft.com|TCP-poort 443|Clientupdates|Windows-pc|
+|*.wvd.microsoft.com|443|Serviceverkeer|Alle|
+|*.servicebus.windows.net|443|Problemen met gegevens oplossen|Alle|
+|go.microsoft.com|443|Microsoft FWLinks|Alle|
+|aka.ms|443|Microsoft URL shortener|Alle|
+|docs.microsoft.com|443|Documentatie|Alle|
+|privacy.microsoft.com|443|Privacyverklaring|Alle|
+|query.prod.cms.rt.microsoft.com|443|Clientupdates|Windows-pc|
 
 >[!IMPORTANT]
 >Het openen van deze URL's is essentieel voor een betrouwbare klantervaring. Het blokkeren van de toegang tot deze URL's wordt niet ondersteund en heeft invloed op de servicefunctionaliteit. Deze URL's komen alleen overeen met de clientsites en -bronnen en bevatten geen URL's voor andere services zoals Azure Active Directory.

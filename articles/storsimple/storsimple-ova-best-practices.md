@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5da0297dd97c8263bdc47f1d5a3d7d2d1f835e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298836"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544330"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Best practices virtuele array van StorSimple
 
@@ -161,8 +161,8 @@ Houd rekening met de volgende aanbevolen procedures bij het inrichten van aandel
 
 * De bestandsgrootte ten opzichte van de ingerichte grootte van een gelaagd aandeel kan van invloed zijn op de tieringprestaties. Werken met grote bestanden kan resulteren in een langzame laag uit. Bij het werken met grote bestanden raden we aan dat het grootste bestand kleiner is dan 3% van de grootte van het aandeel.
 * Er kunnen maximaal 16 volumes/shares worden gemaakt op de virtuele array. Voor de groottelimieten van de lokaal vastgemaakte en gelaagde volumes/shares raadpleegt u altijd de [Limieten voor Virtuele Array storSimple.](storsimple-ova-limits.md)
-* Let bij het maken van een volume op het verwachte dataverbruik en de toekomstige groei. Het volume kan later niet worden uitgebreid.
-* Zodra het volume is gemaakt, u de grootte van het volume op StorSimple niet verkleinen.
+* Let bij het maken van een volume op het verwachte dataverbruik en de toekomstige groei. Het volume of aandeel kan later niet worden uitgebreid.
+* Zodra het volume/aandeel is gemaakt, u de grootte van het volume/aandeel op StorSimple niet verkleinen.
 * Wanneer u naar een gelaagd volume op StorSimple schrijft, wordt de IO beperkt wanneer de volumegegevens een bepaalde drempelwaarde bereiken (ten opzichte van de lokale ruimte die is gereserveerd voor het volume. Doorgaan met schrijven naar dit volume vertraagt de IO aanzienlijk. Hoewel u schrijven naar een gelaagd volume buiten de ingerichte capaciteit (we stoppen de gebruiker niet actief om te schrijven buiten de ingerichte capaciteit), ziet u een waarschuwingsmelding met het effect dat u bent overschreven. Zodra u de waarschuwing ziet, is het noodzakelijk dat u corrigerende maatregelen neemt, zoals het verwijderen van de volumegegevens (volumeuitbreiding wordt momenteel niet ondersteund).
 * Voor gebruiksgevallen voor noodherstel, aangezien het aantal toegestane aandelen/volumes 16 is en het maximum aantal aandelen/volumes dat parallel kan worden verwerkt ook 16 is, heeft het aantal aandelen/volumes geen invloed op uw RPO's en RPO's.
 

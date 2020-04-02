@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 856410f2166ae442e8beadf36eac312748407b13
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77526808"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529735"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Zelfstudie: Een Azure Time Series Insights Preview-omgeving instellen
 
@@ -30,7 +30,6 @@ In deze zelfstudie leert u het volgende:
 > * Een voorbeeldoplossingsverbetering uitvoeren om gegevens te streamen naar de Azure Time Series Insights Preview-omgeving.
 > * Voer een eenvoudige analyse van de gegevens uit.
 > * Een type Time Series Model en een hiërarchie definiëren en deze koppelen aan uw exemplaren.
-> * Gebruik de Power BI-connector en visualiseer gegevens in Power BI.
 
 >[!TIP]
 > [IoT-oplossingsversnellers](https://www.azureiotsolutions.com/Accelerators) bieden vooraf geconfigureerde oplossingen van bedrijfsniveau die u gebruiken om de ontwikkeling van aangepaste IoT-oplossingen te versnellen.
@@ -359,3 +358,8 @@ Meer informatie over Time Series-modellen:
 
 > [!div class="nextstepaction"]
 > [Azure Time Series Insights Preview-gegevensmodellering](./time-series-insights-update-tsm.md)
+
+Meer informatie over Uw omgeving verbinden met Power BI
+
+> [!div class="nextstepaction"]
+> [Visualiseer gegevens uit inzichten uit de Time Series in Power BI](./how-to-connect-power-bi.md)

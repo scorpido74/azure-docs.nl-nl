@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 50fc8b9cefe88a80f3f954ce363139b6a4a38589
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79409895"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548391"
 ---
 # <a name="what-is-virtual-network-nat"></a>Wat is Virtual Network NAT?
 
@@ -40,11 +40,11 @@ Virtual Network NAT (network address translation) vereenvoudigt de internetverbi
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Statische IP-adressen voor alleen uitgaande
 
-Uitgaande connectiviteit kan worden gedefinieerd voor elk subnet met NAT.  Meerdere subnetten binnen hetzelfde virtuele netwerk kunnen verschillende NAT's hebben. Een subnet wordt geconfigureerd door op te geven welke [NAT-gatewaybron](./nat-gateway-resource.md) moet worden gebruikt. Alle UDP- en TCP-uitgaande stromen van elke virtuele machine-instantie gebruiken NAT. 
+Uitgaande connectiviteit kan worden gedefinieerd voor elk subnet met NAT.  Meerdere subnetten binnen hetzelfde virtuele netwerk kunnen verschillende NAT's hebben. Een subnet wordt geconfigureerd door op te geven welke NAT-gatewaybron moet worden gebruikt. Alle UDP- en TCP-uitgaande stromen van elke virtuele machine-instantie gebruiken NAT. 
 
-NAT is compatibel met standaard SKU [public IP-adresbronnen](./virtual-network-ip-addresses-overview-arm.md#standard) of [openbare IP-voorvoegselbronnen](./public-ip-address-prefix.md) of een combinatie van beide.  U een openbaar IP-voorvoegsel rechtstreeks gebruiken of de openbare IP-adressen van het voorvoegsel over meerdere NAT-gatewaybronnen distribueren. NAT verzorgt al het verkeer naar het bereik van IP-adressen van het voorvoegsel.  Elke IP whitelisting van uw implementaties is nu eenvoudig.
+NAT is compatibel met standaard SKU public IP-adresbronnen of openbare IP-voorvoegselbronnen of een combinatie van beide.  U een openbaar IP-voorvoegsel rechtstreeks gebruiken of de openbare IP-adressen van het voorvoegsel over meerdere NAT-gatewaybronnen distribueren. NAT verzorgt al het verkeer naar het bereik van IP-adressen van het voorvoegsel.  Elke IP whitelisting van uw implementaties is nu eenvoudig.
 
-Al het uitgaande verkeer voor het subnet wordt automatisch door NAT verwerkt zonder enige klantconfiguratie.  Door de gebruiker gedefinieerde routes zijn niet nodig. NAT heeft voorrang op andere [uitgaande scenario's](../load-balancer/load-balancer-outbound-connections.md) en vervangt de standaardinternetbestemming van een subnet.
+Al het uitgaande verkeer voor het subnet wordt automatisch door NAT verwerkt zonder enige klantconfiguratie.  Door de gebruiker gedefinieerde routes zijn niet nodig. NAT heeft voorrang op andere uitgaande scenario's en vervangt de standaardinternetbestemming van een subnet.
 
 ## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>On-demand SNAT met meerdere IP-adressen voor schaal
 
@@ -60,9 +60,9 @@ In tegenstelling tot load balancer uitgaande SNAT, nat heeft geen beperkingen wa
 
 NAT is compatibel met de volgende standaard SKU-resources:
 
-- [Load balancer](../load-balancer/load-balancer-overview.md)
-- [Openbaar IP-adres](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [Voorvoegsel voor het openbare IP-adres](../virtual-network/public-ip-address-prefix.md)
+- Load balancer
+- Openbaar IP-adres
+- Voorvoegsel voor het openbare IP-adres
 
 Wanneer deze bronnen samen met NAT worden gebruikt, bieden deze bronnen inkomende internetverbinding met uw subnet(s). NAT biedt alle uitgaande internetverbinding van uw subnet(s).
 

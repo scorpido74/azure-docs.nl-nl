@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 713a9762206b5083268fd48136cd8077c296c690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6de6f23fe9564b28a5d436ac00999dbb3e9183e1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289291"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548966"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Beveiliging en gegevensprivacy in Azure Cognitive Search
 
@@ -75,7 +75,7 @@ Verificatie is vereist op elk verzoek, waarbij elke aanvraag bestaat uit een ver
 
 ### <a name="restricted-access"></a>Beperkte toegang
 
-Wanneer u een openbare dienst hebt en u het gebruik van de service wilt beperken, u de IP-beperkingsregel gebruiken in de Api-versie van Beheer REST: 2020-03-13, [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2020-03-13/createorupdate-service#iprule-). Met IpRule u de toegang tot uw service beperken door IP-adressen te identificeren, individueel of in een bereik, die u toegang wilt verlenen tot uw zoekservice. 
+Wanneer u een openbare dienst hebt en u het gebruik van de service wilt beperken, u de IP-beperkingsregel gebruiken in de Api-versie van Beheer REST: 2020-03-13, [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule). Met IpRule u de toegang tot uw service beperken door IP-adressen te identificeren, individueel of in een bereik, die u toegang wilt verlenen tot uw zoekservice. 
 
 ### <a name="private-access"></a>Privétoegang
 
@@ -93,7 +93,7 @@ De toegang van beheerders en ontwikkelaars tot indexen is ongedifferentieerd: be
 
 Voor multitenancy-oplossingen waarvoor beveiligingsgrenzen op indexniveau nodig zijn, omvatten dergelijke oplossingen doorgaans een middelste laag, die klanten gebruiken om indexisolatie te verwerken. Zie [Ontwerppatronen voor multitenant SaaS-toepassingen en Azure Cognitive Search voor](search-modeling-multitenant-saas-applications.md)meer informatie over de use case voor multitenant.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 ### <a name="admin-access"></a>Beheerderstoegang
 

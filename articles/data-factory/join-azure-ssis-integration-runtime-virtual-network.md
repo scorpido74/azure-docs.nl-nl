@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 7e8a1793a329a863c9df97ae5ddcbee6cef10e8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4819eaf2a65cf542029cf36f262d0cea5be75f2e
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76964319"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521951"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Een Azure-SSIS Integration Runtime samenvoegen met een virtueel netwerk
 
@@ -129,7 +129,7 @@ Als u een subnet kiest:
 
 Als u uw eigen statische openbare IP-adressen voor Azure-SSIS IR wilt meenemen terwijl u deze wilt samenvoegen tot een virtueel netwerk, controleert u of ze voldoen aan de volgende vereisten:
 
-- Precies twee ongebruikte bronnen die nog niet zijn gekoppeld aan andere Azure-bronnen moeten worden verstrekt. De extra wordt gebruikt wanneer we uw Azure-SSIS IR periodiek upgraden.
+- Precies twee ongebruikte bronnen die nog niet zijn gekoppeld aan andere Azure-bronnen moeten worden verstrekt. De extra wordt gebruikt wanneer we uw Azure-SSIS IR periodiek upgraden. Houd er rekening mee dat één openbaar IP-adres niet kan worden gedeeld tussen uw actieve Azure-SSIS-IRs.
 
 - Ze moeten beide statische degenen van standaard type. Raadpleeg [SKU's van openbaar IP-adres](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) voor meer informatie.
 
@@ -191,10 +191,55 @@ Als uw Azure-SSIS IR zich `UK South` bijvoorbeeld bevindt en u uitgaand verkeer 
 > [!NOTE]
 > Deze aanpak brengt extra onderhoudskosten met zich mee. Controleer regelmatig het IP-bereik en voeg nieuwe IP-bereiken toe aan uw UDR om te voorkomen dat de Azure-SSIS IR wordt gebroken. We raden aan om het IP-bereik maandelijks te controleren, want wanneer het nieuwe IP in de servicetag verschijnt, duurt het IP nog een maand. 
 
+Als u de instelling van UDR-regels eenvoudiger wilt maken, u het volgende Powershell-script uitvoeren om UDR-regels toe te voegen voor Azure Batch-beheerservices:
+```powershell
+$Location = "[location of your Azure-SSIS IR]"
+$RouteTableResourceGroupName = "[name of Azure resource group that contains your Route Table]"
+$RouteTableResourceName = "[resource name of your Azure Route Table ]"
+$RouteTable = Get-AzRouteTable -ResourceGroupName $RouteTableResourceGroupName -Name $RouteTableResourceName
+$ServiceTags = Get-AzNetworkServiceTag -Location $Location
+$BatchServiceTagName = "BatchNodeManagement." + $Location
+$UdrRulePrefixForBatch = $BatchServiceTagName
+if ($ServiceTags -ne $null)
+{
+    $BatchIPRanges = $ServiceTags.Values | Where-Object { $_.Name -ieq $BatchServiceTagName }
+    if ($BatchIPRanges -ne $null)
+    {
+        Write-Host "Start to add rule for your route table..."
+        for ($i = 0; $i -lt $BatchIPRanges.Properties.AddressPrefixes.Count; $i++)
+        {
+            $UdrRuleName = "$($UdrRulePrefixForBatch)_$($i)"
+            Add-AzRouteConfig -Name $UdrRuleName `
+                -AddressPrefix $BatchIPRanges.Properties.AddressPrefixes[$i] `
+                -NextHopType "Internet" `
+                -RouteTable $RouteTable `
+                | Out-Null
+            Write-Host "Add rule $UdrRuleName to your route table..."
+        }
+        Set-AzRouteTable -RouteTable $RouteTable
+    }
+}
+else
+{
+    Write-Host "Failed to fetch service tags, please confirm that your Location is valid."
+}
+```
+
 Als firewalltoestel uitgaand verkeer toestaat, moet u uitgaande poorten toestaan die hetzelfde zijn als de vereisten in nsg-uitgaande regels.
 -   Poort 443 met bestemming als Azure Cloud-services.
 
-    Als u Azure Firewall gebruikt, u netwerkregel opgeven met AzureCloud Service Tag, anders u de bestemming toestaan als alle in firewall-toestel.
+    Als u Azure Firewall gebruikt, u de netwerkregel opgeven met AzureCloud-servicetag. Voor firewall van de andere typen u eenvoudig bestemming toestaan als alle voor poort 443 of onder FQDN's toestaan op basis van het type azure-omgeving:
+    | Azure-omgeving | Eindpunten                                                                                                                                                                                                                                                                                                                                                              |
+    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Openbare Azure-peering      | <ul><li><b>Azure-gegevensfabriek (beheer)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.clouddatahub.net</li></ul></li><li><b>Azure Storage (Beheer)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.windows.net</li><li>\*.table.core.windows.net</li></ul></li><li><b>Azure-containerregister (aangepaste installatie)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.io</li></ul></li><li><b>Gebeurtenishub (logboekregistratie)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>Microsoft Logging-service (intern gebruik)</b></li><li style="list-style-type:none"><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
+    | Azure Government  | <ul><li><b>Azure-gegevensfabriek (beheer)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.datamovement.azure.us</li></ul></li><li><b>Azure Storage (Beheer)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*.table.core.usgovcloudapi.net</li></ul></li><li><b>Azure-containerregister (aangepaste installatie)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.us</li></ul></li><li><b>Gebeurtenishub (logboekregistratie)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft Logging-service (intern gebruik)</b></li><li style="list-style-type:none"><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
+    | Azure China 21Vianet     | <ul><li><b>Azure-gegevensfabriek (beheer)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.datamovement.azure.cn</li></ul></li><li><b>Azure Storage (Beheer)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.chinacloudapi.cn</li><li>\*.table.core.chinacloudapi.cn</li></ul></li><li><b>Azure-containerregister (aangepaste installatie)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.cn</li></ul></li><li><b>Gebeurtenishub (logboekregistratie)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft Logging-service (intern gebruik)</b></li><li style="list-style-type:none"><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul>
+
+    Wat betreft de FQDN's van Azure Storage, Azure Container Registry en Event Hub, u er ook voor kiezen om de volgende serviceeindpunten voor uw virtuele netwerk in te schakelen, zodat netwerkverkeer naar deze eindpunten via azure-backbonenetwerk verloopt in plaats van naar uw firewalltoestel te worden doorgestuurd:
+    -  Microsoft.Storage
+    -  Microsoft.ContainerRegistry
+    -  Microsoft.EventHub
+
 
 -   Poort 80 met bestemming als CRL-downloadsites.
 
@@ -219,7 +264,7 @@ Als firewalltoestel uitgaand verkeer toestaat, moet u uitgaande poorten toestaan
     Als u Azure Firewall gebruikt, u netwerkregel opgeven met Storage Service Tag, anders u de bestemming toestaan als specifieke url voor azure-bestandsopslag in firewall-toestel.
 
 > [!NOTE]
-> Als u voor Azure SQL en Storage eindpunten van de Virtual Network-service configureert op uw subnet, wordt het verkeer tussen Azure-SSIS IR en Azure SQL in dezelfde regio \ Azure Storage in dezelfde regio of gekoppelde regio rechtstreeks doorgestuurd naar het Microsoft Azure-backbonenetwerk in plaats van uw firewalltoestel.
+> Als u voor Azure SQL en Storage eindpunten van de Virtual Network-service configureert op uw subnet, wordt het verkeer tussen Azure-SSIS IR en Azure SQL in dezelfde regio \ Azure Storage in dezelfde regio of gekoppelde regio rechtstreeks doorgestuurd naar het Microsoft Azure-backbonenetwerk in plaats van naar uw firewalltoestel.
 
 Als u geen mogelijkheid nodig hebt om uitgaand verkeer van Azure-SSIS IR te inspecteren, u eenvoudig een route toepassen om al het verkeer naar het volgende hoptype **Internet**te forceren:
 
@@ -241,7 +286,7 @@ De Azure-SSIS IR moet bepaalde netwerkbronnen maken onder dezelfde brongroep als
 > [!NOTE]
 > U nu uw eigen statische openbare IP-adressen voor Azure-SSIS IR meenemen. In dit scenario maken we alleen de azure load balancer en netwerkbeveiligingsgroep onder dezelfde resourcegroep als uw statische openbare IP-adressen in plaats van het virtuele netwerk.
 
-Deze bronnen worden gemaakt wanneer uw Azure-SSIS IR wordt gestart. Ze worden verwijderd wanneer uw Azure-SSIS IR stopt. Als u uw eigen statische openbare IP-adressen voor Azure-SSIS IR meeneemt, worden deze niet verwijderd wanneer uw Azure-SSIS IR stopt. Als u wilt voorkomen dat uw Azure-SSIS IR wordt geblokkeerd, u deze netwerkbronnen niet opnieuw gebruiken in uw andere bronnen. 
+Deze bronnen worden gemaakt wanneer uw Azure-SSIS IR wordt gestart. Ze worden verwijderd wanneer uw Azure-SSIS IR stopt. Als u uw eigen statische openbare IP-adressen voor Azure-SSIS IR meeneemt, worden uw eigen statische openbare IP-adressen niet verwijderd wanneer uw Azure-SSIS IR stopt. Als u wilt voorkomen dat uw Azure-SSIS IR wordt geblokkeerd, u deze netwerkbronnen niet opnieuw gebruiken in uw andere bronnen.
 
 Zorg ervoor dat u geen resourcevergrendeling hebt op de brongroep/het abonnement waartoe het virtuele netwerk/uw statische openbare IP-adressen behoren. Als u een vergrendelbericht/verwijdervergrendeling voor lezen configureert, mislukt en stopt u uw Azure-SSIS IR of reageert deze niet meer.
 
@@ -249,6 +294,8 @@ Zorg ervoor dat u geen Azure-beleid hebt dat voorkomt dat de volgende resources 
 - Microsoft.Network/LoadBalancers 
 - Microsoft.Network/NetworkSecurityGroups 
 - Microsoft.Network/PublicIPAddresses 
+
+Zorg ervoor dat het resourcequotum van uw abonnement voldoende is voor de bovenstaande drie netwerkbronnen. Specifiek voor elke Azure-SSIS IR die in virtueel netwerk is gemaakt, moet u twee gratis quota reserveren voor elk van de bovenstaande drie netwerkbronnen. Het extra quotum wordt gebruikt wanneer we uw Azure-SSIS IR periodiek upgraden.
 
 ### <a name="faq"></a><a name="faq"></a>FAQ
 
@@ -262,7 +309,7 @@ Zorg ervoor dat u geen Azure-beleid hebt dat voorkomt dat de volgende resources 
 
   U nu uw eigen statische openbare IP-adressen voor Azure-SSIS IR meenemen. In dit geval u uw IP-adressen toevoegen aan de lijst met toegestane gegevens van de firewall voor uw gegevensbronnen. U hieronder ook andere opties overwegen om gegevenstoegang vanuit uw Azure-SSIS IR te beveiligen, afhankelijk van uw scenario:
 
-  - Als uw gegevensbron on-premises is, u, nadat u een virtueel netwerk hebt aangesloten op uw on-premises netwerk en uw Azure-SSIS IR hebt aangesloten bij het subnet van het virtuele netwerk, het privé-IP-adresbereik van dat subnet toevoegen aan de lijst met toestaan van de firewall voor uw gegevensbron .
+  - Als uw gegevensbron on-premises is, u, nadat u een virtueel netwerk hebt aangesloten op uw on-premises netwerk en uw Azure-SSIS IR hebt aangesloten bij het subnet van het virtuele netwerk, het privé-IP-adresbereik van dat subnet toevoegen aan de lijst met toestaan van de firewall voor uw gegevensbron.
   - Als uw gegevensbron een Azure-service is die eindpunten voor virtuele netwerkservices ondersteunt, u een eindpunt voor virtuele netwerkservice configureren op uw virtuele netwerksubnet en uw Azure-SSIS IR aansluiten bij dat subnet. U vervolgens een virtuele netwerkregel met dat subnet toevoegen aan de firewall voor uw gegevensbron.
   - Als uw gegevensbron een niet-Azure-cloudservice is, u een UDR gebruiken om uitgaand verkeer van uw Azure-SSIS IR naar een NVA/Azure Firewall te routeren via een statisch openbaar IP-adres. Vervolgens u het statische openbare IP-adres van uw NVA/Azure Firewall toevoegen aan de lijst met toestaan van de firewall voor uw gegevensbron.
   - Als geen van de bovenstaande opties aan uw behoeften voldoet, u [overwegen een zelf gehoste IR te configureren als proxy voor uw Azure-SSIS IR.](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis) U vervolgens het statische openbare IP-adres van de machine dat uw zelfgehoste IR host, toevoegen aan de lijst met toestaan van de firewall voor uw gegevensbron.

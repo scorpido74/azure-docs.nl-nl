@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: ad3b38a12020c56c31e03879b3fbcb9a8dda25f1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d0f30272a4e605449c946ca402db4f3ba00735bc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79136864"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520544"
 ---
 # <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Snelstart: Gebruik Java en Maven/Gradle om een functie te maken en te publiceren naar Azure
 
@@ -67,13 +67,10 @@ Maven vraagt u om waarden die nodig zijn om het genereren van het project op imp
 | **artefactId** | Een waarde die de naam van de pot is, zonder versienummer. De voorbeelden in deze `fabrikam-functions`quickstart gebruiken . |
 | **Versie** | Kies de standaardwaarde van `1.0-SNAPSHOT`. |
 | **Pakket** | Een waarde die het Java-pakket is voor de gegenereerde functiecode. Gebruik de standaard. De voorbeelden in deze `com.fabrikam.functions`quickstart gebruiken . |
-| **Appname** | Wereldwijd unieke naam die uw nieuwe functie-app in Azure identificeert. Gebruik de standaardinstelling, namelijk de _artefactId_ die is toegevoegd met een willekeurig getal. Noteer deze waarde, die heb je later nodig. |
-| **appRegio** | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. De standaardwaarde is `westus`. Voer deze opdracht [Azure CLI] uit om een lijst met alle regio's te krijgen:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **resourceGroep** | Naam voor de nieuwe [resourcegroep](../azure-resource-manager/management/overview.md) waarin u uw functie-app maken. Gebruik `myResourceGroup`, dat wordt gebruikt door voorbeelden in deze quickstart. Een brongroep moet uniek zijn voor uw Azure-abonnement.|
 
 Typ `Y` of druk op Enter om dit te bevestigen.
 
-Maven maakt de projectbestanden in een nieuwe map met een `fabrikam-functions`naam van _artefactId_, die in dit voorbeeld is . Voer de volgende opdracht uit om de map te wijzigen in de gemaakte projectmap.
+Maven maakt de projectbestanden in een nieuwe map met een `fabrikam-functions`naam van **artefactId**, die in dit voorbeeld is . Voer de volgende opdracht uit om de map te wijzigen in de gemaakte projectmap.
 ```bash
 cd fabrikam-function
 ```
@@ -236,4 +233,4 @@ U hebt een Java-functieproject gemaakt met een HTTP-geactiveerde functie, het ui
 
 
 [Azure-CLI]: /cli/azure
-[Azure-portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

@@ -8,17 +8,17 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
-ms.openlocfilehash: bc7e77cc498958b2f8f0c5b2d5ab2d59db97a235
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79deb2f33a11e8ccb6f059bde7590b7cc0fe20c0
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240406"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521077"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Snelstart: een Azure Cosmos-account, database, container en items maken vanuit de Azure-portal
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](create-cosmosdb-resources-portal.md)
+> * [Azure Portal](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
@@ -26,7 +26,7 @@ ms.locfileid: "79240406"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U Azure Cosmos DB gebruiken om snel sleutel-/waardedatabases, documentdatabases en grafiekdatabases te maken en op te vragen, die allemaal profiteren van de wereldwijde distributie- en horizontale schaalmogelijkheden in de kern van Azure Cosmos DB. 
+Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U Azure Cosmos DB gebruiken om snel sleutel-/waardedatabases, documentdatabases en grafiekdatabases te maken en op te vragen, die allemaal profiteren van de wereldwijde distributie- en horizontale schaalmogelijkheden in de kern van Azure Cosmos DB. 
 
 Deze quickstart laat zien hoe u de Azure-portal gebruiken om een Azure Cosmos DB [SQL API-account](sql-api-introduction.md) te maken, een documentdatabase en -container te maken en gegevens aan de container toe te voegen. 
 
@@ -40,7 +40,38 @@ Een Azure-abonnement of een gratis Proefversie van Azure Cosmos DB
 <a id="create-account"></a>
 ## <a name="create-an-azure-cosmos-db-account"></a>Maak een Azure Cosmos DB-account
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+Ga naar de [Azure-portal](https://portal.azure.com/) om een Azure Cosmos DB-account te maken. Zoek en selecteer **Azure Cosmos DB**.
+
+   ![Het deelvenster Databases in Azure Portal](./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png)
+
+1. Selecteer **Toevoegen**.
+1. Voer op de pagina **Azure Cosmos DB-account maken** de basisinstellingen in voor het nieuwe Azure Cosmos-account. 
+
+    |Instelling|Waarde|Beschrijving |
+    |---|---|---|
+    |Abonnement|Abonnementsnaam|Selecteer het Azure-abonnement dat u wilt gebruiken voor dit Azure Cosmos-account. |
+    |Resourcegroep|Naam van de resourcegroep|Selecteer een resourcegroep of selecteer **Nieuw maken**en voer vervolgens een unieke naam in voor de nieuwe resourcegroep. |
+    |Accountnaam|Een unieke naam|Voer een naam in om uw Azure Cosmos-account te identificeren. Omdat *documents.azure.com* is toegevoegd aan de naam die u verstrekt om uw URI te maken, gebruikt u een unieke naam.<br><br>De naam kan alleen kleine letters, cijfers en het koppelteken (-) bevatten. Het moet tussen de 3-31 tekens in lengte.|
+    |API|Het type account dat u wilt maken|Selecteer **Core (SQL)** om een documentdatabase en query te maken met SQL-syntaxis. <br><br>De API bepaalt het type te maken account. Azure Cosmos DB biedt vijf API's: Core (SQL) en MongoDB voor documentgegevens, Gremlin voor grafiekgegevens, Azure Table en Cassandra. Op dit moment moet u voor elke API een afzonderlijk account maken. <br><br>[Meer informatie over de SQL-API](introduction.md).|
+    |Gratis laagkorting toepassen|Solliciteren of niet toepassen|Met azure cosmos DB gratis laag, krijgt u de eerste 400 RU / s en 5 GB opslag gratis in een account. Meer informatie over [gratis laag](https://azure.microsoft.com/pricing/details/cosmos-db/).|
+    |Locatie|De regio het dichtst bij uw gebruikers|Selecteer een geografische locatie waar u het Azure Cosmos DB-account wilt hosten. Gebruik de locatie die het dichtst bij uw gebruikers staat om hen de snelste toegang tot de gegevens te geven.|
+    |Accounttype|Productie of niet-productie|Selecteer **Productie** als het account wordt gebruikt voor een productiewerkbelasting. Selecteer **Niet-productie** als het account wordt gebruikt voor niet-productie, bijvoorbeeld ontwikkeling, testen, QA of fasering. Dit is een Azure-brontaginstelling die de Portal-ervaring afstemt, maar geen invloed heeft op het onderliggende Azure Cosmos DB-account. U deze waarde op elk gewenst moment wijzigen.|
+
+
+> [!NOTE]
+> U maximaal één gratis Azure Cosmos DB-account per Azure-abonnement hebben en u moet zich aanmelden bij het maken van het account. Als u de optie om de gratis laagkorting toe te passen niet ziet, betekent dit dat een ander account in het abonnement al is ingeschakeld met een gratis laag.
+   
+   ![De pagina Nieuw account voor Azure Cosmos DB](./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png)
+
+1. Selecteer **Controleren + maken**. U de secties **Netwerk** en **tags** overslaan.
+
+1. Controleer de accountinstellingen en selecteer **Vervolgens Maken**. Het maken van het account duurt enkele minuten. Wacht tot de portalpagina wordt weergegeven **Uw implementatie is voltooid.** 
+
+    ![Het deelvenster Meldingen in Azure Portal](./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png)
+
+1. Selecteer **Ga naar resource om** naar de azure cosmos DB-accountpagina te gaan. 
+
+    ![De pagina Azure Cosmos DB-account](./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png)
 
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>Een database en een container toevoegen 

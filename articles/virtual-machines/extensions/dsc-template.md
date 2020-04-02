@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: ef781653332984a7fb6d71ef91d53cbf77e6c91c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89bae60c30cfe82d38c61f385dbaef574b4152d8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72437951"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547786"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Gewenste statusconfiguratie-extensie met Azure Resource Manager-sjablonen
 
-In dit artikel wordt de azure resource manager-sjabloon voor de [DSC-extensiehandler (Desired State Configuration) beschreven.](dsc-overview.md) Veel van de voorbeelden gebruiken **RegistrationURL** (verstrekt als string) en **RegistrationKey** (verstrekt als [PSCredential)](/dotnet/api/system.management.automation.pscredential)om aan boord te gaan met Azure Automation. Zie [Onboarding-machines voor beheer door Azure Automation State Configuration - Secure registration voor](/azure/automation/automation-dsc-onboarding#secure-registration)meer informatie over het verkrijgen van deze waarden.
+In dit artikel wordt de azure resource manager-sjabloon voor de [DSC-extensiehandler (Desired State Configuration) beschreven.](dsc-overview.md) Veel van de voorbeelden gebruiken **RegistrationURL** (verstrekt als string) en **RegistrationKey** (verstrekt als [PSCredential)](/dotnet/api/system.management.automation.pscredential)om aan boord te gaan met Azure Automation. Zie [Onboarding-machines voor beheer door Azure Automation State Configuration - Secure registration voor](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration)meer informatie over het verkrijgen van deze waarden.
 
 > [!NOTE]
 > U iets andere schemavoorbeelden tegenkomen. De wijziging in het schema vond plaats in de release van oktober 2016. Zie Bijwerken [vanaf een vorige indeling](#update-from-a-previous-format)voor meer informatie.

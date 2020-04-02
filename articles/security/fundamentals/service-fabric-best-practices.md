@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75548816"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549231"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Best practices voor Azure Service Fabric-beveiliging
 Het implementeren van een toepassing op Azure is snel, eenvoudig en kosteneffectief. Before you deploy your cloud application into production, review our list of essential and recommended best practices for implementing secure clusters in your application.
@@ -32,7 +32,7 @@ We raden de volgende aanbevolen procedures voor Azure Service Fabric-beveiliging
 -   X.509-certificaten gebruiken.
 -   Beveiligingsbeleid configureren.
 -   Implementeer de beveiligingsconfiguratie Betrouwbare Actoren.
--   SSL configureren voor Azure Service Fabric.
+-   TLS configureren voor Azure Service Fabric.
 -   Gebruik netwerkisolatie en -beveiliging met Azure Service Fabric.
 -   Configureer Azure Key Vault voor beveiliging.
 -   Gebruikers toewijzen aan rollen.
@@ -118,13 +118,13 @@ Elke actor wordt gedefinieerd als een instantie van een actortype, identiek aan 
 [Replicator-beveiligingsconfiguraties](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md) worden gebruikt om het communicatiekanaal te beveiligen dat wordt gebruikt tijdens de replicatie. Deze configuratie voorkomt dat services elkaars replicatieverkeer kunnen zien en zorgt ervoor dat hoog beschikbare gegevens veilig zijn. Standaard voorkomt een lege beveiligingsconfiguratiesectie replicatiebeveiliging.
 Replicatorconfiguraties configureren de replicator die verantwoordelijk is voor het maken van de status Actor State Provider zeer betrouwbaar.
 
-## <a name="configure-ssl-for-azure-service-fabric"></a>SSL configureren voor Azure Service Fabric
-Het serververificatieproces [verifieert](../../service-fabric/service-fabric-cluster-creation-via-arm.md) de eindpunten voor clusterbeheer naar een beheerclient. De beheerclient erkent dan dat hij in gesprek is met het echte cluster. Dit certificaat biedt ook een [SSL](../../service-fabric/service-fabric-cluster-creation-via-arm.md) voor de HTTPS-beheer-API en voor Service Fabric Explorer via HTTPS.
+## <a name="configure-tls-for-azure-service-fabric"></a>TLS configureren voor Azure Service Fabric
+Het serververificatieproces [verifieert](../../service-fabric/service-fabric-cluster-creation-via-arm.md) de eindpunten voor clusterbeheer naar een beheerclient. De beheerclient erkent dan dat hij in gesprek is met het echte cluster. Dit certificaat biedt ook een [TLS](../../service-fabric/service-fabric-cluster-creation-via-arm.md) voor de HTTPS-beheer-API en voor Service Fabric Explorer via HTTPS.
 U hebt voor uw cluster een aangepaste domeinnaam nodig. Wanneer u een certificaat aanvraagt bij een certificaatautoriteit, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domeinnaam die u voor uw cluster gebruikt.
 
-Als u SSL voor een toepassing wilt configureren, moet u eerst een SSL-certificaat verkrijgen dat is ondertekend door een CA. De CA is een vertrouwde derde partij die certificaten uitgeeft voor SSL-beveiligingsdoeleinden. Als u nog geen SSL-certificaat hebt, moet u er een aanvragen bij een bedrijf dat SSL-certificaten verkoopt.
+Als u TLS voor een toepassing wilt configureren, moet u eerst een SSL/TLS-certificaat aanvragen dat is ondertekend door een CA. De CA is een vertrouwde derde partij die certificaten uitgeeft voor TLS-beveiligingsdoeleinden. Als u nog geen SSL/TLS-certificaat hebt, moet u er een aanvragen bij een bedrijf dat SSL/TLS-certificaten verkoopt.
 
-Het certificaat moet voldoen aan de volgende vereisten voor SSL-certificaten in Azure:
+Het certificaat moet voldoen aan de volgende vereisten voor SSL/TLS-certificaten in Azure:
 -   Het certificaat moet een privésleutel bevatten.
 
 -   Het certificaat moet worden gemaakt voor sleuteluitwisseling en kan worden geëxporteerd naar een bestand voor het uitwisselen van persoonlijke gegevens (.pfx).
@@ -135,13 +135,13 @@ Het certificaat moet voldoen aan de volgende vereisten voor SSL-certificaten in 
     - Vraag een certificaat aan van een CA met een onderwerpnaam die overeenkomt met de aangepaste domeinnaam van uw service. Als uw aangepaste domeinnaam bijvoorbeeld __contoso__**.com**is, moet het certificaat van uw CA de onderwerpnaam **.contoso.com** of __www__**.contoso.com**hebben.
 
     >[!NOTE]
-    >U geen SSL-certificaat verkrijgen van een CA voor het __cloudapp__**.net-domein.**
+    >U geen SSL/TLS-certificaat verkrijgen van een CA voor het __cloudapp__**.net-domein.**
 
 -   Het certificaat moet minimaal 2.048-bits versleuteling gebruiken.
 
 Het HTTP-protocol is onveilig en onderhevig aan afluisteraanvallen. Gegevens die via HTTP worden verzonden, worden als platte tekst van de webbrowser naar de webserver of tussen andere eindpunten verzonden. Aanvallers kunnen gevoelige gegevens die via HTTP worden verzonden, zoals creditcardgegevens en accountaanmeldingen onderscheppen en bekijken. Wanneer gegevens via HTTPS via een browser worden verzonden of verzonden, zorgt SSL ervoor dat gevoelige informatie wordt versleuteld en beveiligd tegen onderschepping.
 
-Zie SSL voor Azure-toepassingen configureren voor meer informatie over het gebruik [van SSL-certificaten.](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)
+Zie [TLS configureren voor een toepassing in Azure voor](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)meer informatie over het gebruik van SSL/TLS-certificaten.
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Netwerkisolatie en -beveiliging gebruiken met Azure Service Fabric
 Stel een beveiligd cluster met 3 nodetype in met de [sjabloon Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) als voorbeeld. Beheer het inkomende en uitgaande netwerkverkeer met behulp van de sjabloon en netwerkbeveiligingsgroepen.

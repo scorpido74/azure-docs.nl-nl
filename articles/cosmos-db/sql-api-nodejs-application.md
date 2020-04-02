@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 7a01c436f31a8ce5b8071db3eda4cf5562c421c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3c50e82647b22a18edee92f47abc1d136670cacc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441266"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519676"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Zelfstudie: Een Node.js-web-app bouwen met de JavaScript SDK om een SQL API-account in Azure Cosmos DB te beheren 
 
@@ -83,7 +83,7 @@ Laten we eens kijken hoe u het Express-framework gebruikt om een eenvoudig Hallo
    npm start
    ```
 
-1. U uw nieuwe toepassing bekijken [http://localhost:3000](http://localhost:3000)door door uw browser te navigeren naar.
+1. U kunt uw nieuwe toepassing bekijken door in uw browser naar `http://localhost:3000` te gaan.
    
    ![Node.js leren - Schermopname van de toepassing Hello World in een browservenster](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
@@ -359,7 +359,7 @@ U hebt nu de initiële setup en configuratie voltooid. U gaat nu code schrijven 
 
 ## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>Een gebruikersinterface maken
 
-Nu gaan we de gebruikersinterface bouwen zodat een gebruiker kan werken met de toepassing. De Express-toepassing die is gemaakt in de vorige secties, gebruikt **Jade** als de weergave-engine.
+Laten we nu de gebruikersinterface bouwen zodat een gebruiker met de toepassing kan communiceren. De Express-toepassing die is gemaakt in de vorige secties, gebruikt **Jade** als de weergave-engine.
 
 1. Het bestand **layout.jade** in de map **views** wordt gebruikt als een algemeen sjabloon voor andere **.jade**-bestanden. In deze stap wordt het bestand aangepast voor het gebruik van Twitter Bootstrap. Dit is een werkset waarmee u een website kunt ontwerpen.  
 

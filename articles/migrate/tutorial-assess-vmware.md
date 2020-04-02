@@ -3,12 +3,12 @@ title: VMware-VM's evalueren voor migratie naar Azure
 description: Beschrijft hoe u on-premises VM's voor VMware-gegevens beoordelen op migratie naar Azure met Azure Migrate Server Assessment.
 ms.topic: tutorial
 ms.date: 03/23/2019
-ms.openlocfilehash: f33e56f7e0af920363475edfa7e86977c2efd1d9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336732"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548747"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>VMware VM's beoordelen met Azure Migrate Server Assessment
 
@@ -163,7 +163,7 @@ Het toestel moet verbinding maken met vCenter Server om de configuratie- en pres
 1. Geef **in VCenter Server-gegevens opgeven**de naam (FQDN) of het IP-adres van het vCenter-server-exemplaar op. U de standaardpoort verlaten of een aangepaste poort opgeven waarop vCenter Server luistert.
 2. Geef in **Gebruikersnaam** en **wachtwoord**de vCenter Server-accountreferenties op die het toestel zal gebruiken om VM's te detecteren in het vCenter Server-exemplaar. 
 
-    - U had in de [vorige zelfstudie](/tutorial-prepare-vmware.md#set-up-an-account-for-assessment)een account met de vereiste machtigingen moeten instellen.
+    - U had in de [vorige zelfstudie](tutorial-prepare-vmware.md#set-up-an-account-for-assessment)een account met de vereiste machtigingen moeten instellen.
     - Als u detectie wilt uitvoeren naar specifieke VMware-objecten (vCenter Server-datacenters, clusters, een map met clusters, hosts, een map met hosts of afzonderlijke VM's.), controleert u de instructies in [dit artikel](set-discovery-scope.md) om het account dat wordt gebruikt door Azure Migrate te beperken.
 
 3. Selecteer **Verbinding valideren** om ervoor te zorgen dat het toestel verbinding kan maken met vCenter Server.

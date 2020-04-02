@@ -3,7 +3,7 @@ title: Azure-beveiligingsservices en -technologieën | Microsoft Documenten
 description: Het artikel bevat een samengestelde lijst met Azure Security-services en -technologieën.
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: a5a7f60a-97e2-49b4-a8c5-7c010ff27ef8
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
-ms.author: barclayn
-ms.openlocfilehash: 741e6b9cad20645fdfc085623fd9492a12ac1dfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726568"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549212"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Beveiligingsservices en -technologieën die beschikbaar zijn in Azure
 
@@ -91,5 +91,5 @@ Na verloop van tijd zal deze lijst veranderen en groeien, net als Azure. Zorg er
 | [Azure-beheer](/azure/traffic-manager/traffic-manager-overview)| Een globale DNS load balancer.|
 | [Azure-toepassingsproxy](/azure/active-directory/active-directory-application-proxy-get-started)| Een authenticerende front-end die wordt gebruikt om externe toegang te beveiligen voor on-premises webtoepassingen. |
 |[Azure Firewall](/azure/firewall/overview)|Een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-bronnen beschermt.|
-|[Azure DDoS Protection](/azure/virtual-network/ddos-protection-overview)|In combinatie met best practices voor applicatieontwerp biedt het verdediging tegen DDoS-aanvallen.|
+|[Azure DDoS-beveiliging](/azure/virtual-network/ddos-protection-overview)|In combinatie met best practices voor applicatieontwerp biedt het verdediging tegen DDoS-aanvallen.|
 |[Eindpunten van virtuele netwerkservice](/azure/virtual-network/virtual-network-service-endpoints-overview)|Hiermee breidt u uw privéadresruimte voor virtuele netwerken en de identiteit van uw VNet uit naar de Azure-services via een directe verbinding.|

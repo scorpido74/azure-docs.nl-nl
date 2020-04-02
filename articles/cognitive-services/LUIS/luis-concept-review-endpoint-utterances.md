@@ -1,22 +1,14 @@
 ---
 title: Uiting van de gebruiker controleren - LUIS
-titleSuffix: Azure Cognitive Services
 description: Met actief leren u eindpuntuitingen controleren voor de juiste intentie en entiteit. LUIS kiest eindpuntuitingen waarvan het niet zeker is.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: diberry
-ms.openlocfilehash: 375d4b4e7c3fcafbdfde1ff447bedc3e16aff2f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 8d267fc441dc2cbf7f8ae3746486d5e7be55f135
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219938"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546854"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Concepten voor het inschakelen van actief leren door eindpuntuitingen te bekijken
 Actief leren is een van de drie strategieën om de nauwkeurigheid van voorspellingen te verbeteren en het gemakkelijkst te implementeren. Met actief leren u eindpuntuitingen controleren voor de juiste intentie en entiteit. LUIS kiest eindpuntuitingen waarvan het niet zeker is.
@@ -29,6 +21,8 @@ LUIS voegt uitingen toe aan de beoordelingslijst wanneer de bovenste vuurintenti
 
 ## <a name="single-pool-for-utterances-per-app"></a>Eén groep voor uitingen per app
 De lijst **Eindpuntuitingen controleren** wordt niet gewijzigd op basis van de versie. Er is één groep uitingen om te beoordelen, ongeacht welke versie van de uiting u actief bewerkt of welke versie van de app wordt gepubliceerd op het eindpunt.
+
+In de [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9)is de naam van de versie vereist en moet deze in de toepassing bestaan, maar wordt deze niet gebruikt na die validatie. De revisieuitingen zijn van toepassing op een volledige toepassing. Als u uitingen uit één _versie_verwijdert, worden alle versies beïnvloed.
 
 ## <a name="where-are-the-utterances-from"></a>Waar zijn de uitingen van
 Eindpuntuitingen worden overgenomen uit query's van eindgebruikers op het HTTP-eindpunt van de toepassing. Als uw app nog niet is gepubliceerd of nog geen hits heeft ontvangen, u geen uitingen bekijken. Als er geen eindpunttreffers worden ontvangen voor een specifieke intentie of entiteit, hebt u geen uitingen om deze te controleren.

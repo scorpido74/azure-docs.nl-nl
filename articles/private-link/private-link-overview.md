@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f75f8392b01e69760171c13c0e6d3b2e22b20dea
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 5b4347cb5032b7f3651d0d3fcb20dc5d416f9bee
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421193"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546558"
 ---
 # <a name="what-is-azure-private-link"></a>Wat is Azure Private Link? 
 Met Azure Private Link heeft u toegang tot Azure PaaS-services (bijvoorbeeld Azure Storage en SQL Database) en Azure gehoste client-owned/partnerservices via een [privéeindpunt](private-endpoint-overview.md) in uw virtuele netwerk.
@@ -53,15 +53,15 @@ Azure Private Link biedt de volgende voordelen:
 |  |  Azure Database for MariaDB         | Alle openbare regio's      |   Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
 |  |  Azure Key Vault         | Alle openbare regio's      |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
 |  |Azure Kubernetes-service - Kubernetes API | Alle openbare regio's      |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/aks/private-clusters)   |
-|  |Azure Search | OOST-VS, WEST US2, ZUID CENTRAAL VS |   Preview    |
+|  |Azure Search | OOST-VS, WEST US 2, ZUID CENTRAAL VS |   Preview    |
 |  |Azure Container Registry | Alle openbare regio's      |   Preview   |
 |  |Azure App Configuration | Alle openbare regio's      |   Preview   |
-|  |Azure Backup | OOST-VS, WEST US2, ZUID CENTRAAL VS     |   Preview   |
+|  |Azure Backup | OOST-VS, WEST US 2, ZUID CENTRAAL VS     |   Preview   |
 |  |Azure Event Hub | Alle openbare regio's      |   Preview    |
 |  |Azure Service Bus | Alle openbare regio's      |   Preview   |
 |  |Azure Relay | Alle openbare regio's      |   Preview   |
-|  |Azure Event Grid| Alle openbare regio's      |   Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/event-grid/network-security)   |
-|  |Azure Web Apps | OOST-VS, WEST US2, ZUID CENTRAAL VS      |   Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|  |Azure Event Grid| OOST-VS, WEST US 2, ZUID CENTRAAL VS      |   Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/event-grid/network-security)   |
+|  |Azure Web Apps | OOST-VS, WEST US 2, ZUID CENTRAAL VS      |   Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 
 Ga voor de meest actuele meldingen naar de [pagina Azure Virtual Network-updates](https://azure.microsoft.com/updates/?product=virtual-network).
 

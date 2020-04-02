@@ -13,17 +13,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 054b5c7d13df39de4fa57167e0363c0b4acf9b08
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4cabd63dc39590a9bf728528f3e7b3aa5d3f6b04
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80280742"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521763"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Zelfstudie: Apache Kafka verwerken voor gebeurtenissen in eventhubs met streamanalyses 
 In dit artikel ziet u hoe u gegevens streamen naar gebeurtenishubs en deze verwerken met Azure Stream Analytics. Het leidt u door de volgende stappen: 
 
-1. Maak een naamruimte voor gebeurtenissenhubs met Kafka.Create a Kafka enabled Event Hubs namespace.
+1. Maak een Event Hubs-naamruimte.
 2. Maak een Kafka-client die berichten naar de gebeurtenishub verzendt.
 3. Maak een Stream Analytics-taak die gegevens van de gebeurtenishub kopieert naar een Azure blob-opslag. 
 
@@ -41,7 +41,7 @@ Zorg ervoor dat u aan de volgende vereisten voldoet om deze snelstart uit te voe
 * Een **Azure Storage-account**. Als u er geen hebt, [maakt u er een](../storage/common/storage-account-create.md) voordat u verder gaat. De taak Stream Analytics in deze walkthrough slaat de uitvoergegevens op in een Azure blob-opslag. 
 
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken waarvoor Kafka is ingeschakeld
+## <a name="create-an-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken
 Wanneer u een naamruimte voor **standaardgebeurtenishubs** maakt, wordt het Kafka-eindpunt voor de naamruimte automatisch ingeschakeld. U gebeurtenissen streamen vanuit uw toepassingen die het Kafka-protocol gebruiken naar gebeurtenishubs met standaardniveau. Volg stapsgewijze instructies in de [gebeurtenishub maken met Azure-portal](event-hubs-create.md) om een naamruimte voor **standaardniveaugebeurtenishubs** te maken. 
 
 > [!NOTE]
@@ -185,7 +185,7 @@ In dit artikel heb je geleerd hoe je streamen naar Event Hubs zonder je protocol
 
 - [Meer informatie over Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Event Hubs voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Event Hubs maken waarvoor Kafka is ingeschakeld](event-hubs-create.md)
+- [Een Event Hub maken](event-hubs-create.md)
 - [Streamen naar Event Hubs vanaf uw Kafka-toepassingen](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Een Kafka-broker spiegelen in een Event Hub](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Spark aan een Event Hub koppelen](event-hubs-kafka-spark-tutorial.md)

@@ -1,25 +1,18 @@
 ---
-title: Een sjabloon gebruiken om Azure Spot VM's (Preview) te implementeren
+title: Een sjabloon gebruiken om Azure Spot VM's te implementeren
 description: Meer informatie over het gebruik van een sjabloon om Spot VM's te implementeren om kosten te besparen.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 0e635fe7ce9b442a9cc8f0fdf614feef5a3a756a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1352761e308aa2e26864654dae65c290df47102b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79082792"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548256"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>SpotVM's implementeren met een sjabloon Resourcebeheer
 
@@ -29,11 +22,6 @@ De prijzen voor spotVM's zijn variabel, gebaseerd op regio en SKU. Zie VM-prijze
 
 Je hebt de mogelijkheid om een maximale prijs die u bereid bent te betalen, per uur, voor de VM. De maximale prijs voor een Spot VM kan worden ingesteld in Amerikaanse dollars (USD), met behulp van maximaal 5 decimalen. De waarde `0.98765`is bijvoorbeeld een maximale prijs van $ 0,98765 USD per uur. Als u de maximale `-1`prijs instelt, wordt de VM niet uitgezet op basis van de prijs. De prijs voor de VM is de huidige prijs voor Spot of de prijs voor een standaard VM, die ooit minder is, zolang er capaciteit en quotum beschikbaar is. Zie [Spot VM's - Prijzen](spot-vms.md#pricing)voor meer informatie over het instellen van de max.
 
-> [!IMPORTANT]
-> Spotexemplaren staan momenteel in openbare preview.
-> Deze preview-versie wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
->
 
 ## <a name="use-a-template"></a>Een sjabloon gebruiken
 

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238676"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546025"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Train je eerste ML-model
 
@@ -28,7 +28,7 @@ In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 > * Uw werkruimte verbinden en een experiment maken
 > * Gegevens laden en scikit-learn-modellen trainen
-> * Bekijk de trainingsresultaten in de portal
+> * Bekijk de trainingsresultaten in de studio
 > * Het beste model ophalen
 
 ## <a name="prerequisites"></a>Vereisten
@@ -124,32 +124,33 @@ De bovenstaande code bereikt het volgende:
 
 1. Voor elke alfahyperparameterwaarde `alphas` in de array wordt een nieuwe run gemaakt binnen het experiment. De alfawaarde wordt geregistreerd om onderscheid te maken tussen elke run.
 1. In elke run wordt een Ridge-model geinstantieerd, getraind en gebruikt om voorspellingen uit te voeren. De fout root-gemiddelde-kwadraat wordt berekend voor de werkelijke versus voorspelde waarden en vervolgens aangemeld bij de run. Op dit punt de run heeft metadata bevestigd voor zowel de alfa waarde en de rmse nauwkeurigheid.
-1. Vervolgens wordt het model voor elke run geserialiseerd en geüpload naar de run. Hiermee u het modelbestand downloaden van de run in de portal.
+1. Vervolgens wordt het model voor elke run geserialiseerd en geüpload naar de run. Hiermee u het modelbestand downloaden van de run in de studio.
 1. Aan het einde van elke iteratie `run.complete()`wordt de run voltooid door aan te roepen .
 
-Nadat de training is `experiment` voltooid, belt u de variabele om een koppeling naar het experiment in de portal op te halen.
+Nadat de training is `experiment` voltooid, belt u de variabele om een koppeling naar het experiment in de studio op te halen.
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name</th><th>Werkruimte</th><th>Rapportpagina</th><th>Documentenpagina</th></tr><tr><td>diabetes-experiment</td><td>uw naam van uw werkruimte</td><td>Koppeling naar Azure-portal</td><td>Koppeling naar documentatie</td></tr></table>
+<table style="width:100%"><tr><th>Name</th><th>Werkruimte</th><th>Rapportpagina</th><th>Documentenpagina</th></tr><tr><td>diabetes-experiment</td><td>uw naam van uw werkruimte</td><td>Koppeling naar Azure Machine Learning-studio</td><td>Koppeling naar documentatie</td></tr></table>
 
-## <a name="view-training-results-in-portal"></a>Trainingsresultaten weergeven in portal
+## <a name="view-training-results-in-studio"></a>Bekijk de trainingsresultaten in de studio
 
-Na de **Koppeling naar Azure-portal** gaat u naar de hoofdexperimentpagina. Hier zie je alle individuele runs in het experiment. Alle op maat`alpha_value` geregistreerde `rmse`waarden (en in dit geval) worden velden voor elke run en worden ook beschikbaar voor de grafieken en tegels boven aan de experimentpagina. Als u een aangemelde statistiek wilt toevoegen aan een grafiek of tegel, plaats je er boven, klik je op de knop Bewerken en zoek je de statistiek die is aangepast.
+Volg de **Koppeling naar Azure Machine Learning-studio** brengt u naar de hoofdexperimentpagina. Hier zie je alle individuele runs in het experiment. Alle op maat`alpha_value` geregistreerde `rmse`waarden (en in dit geval) worden velden voor elke run en worden ook beschikbaar voor de grafieken en tegels boven aan de experimentpagina. Als u een aangemelde statistiek wilt toevoegen aan een grafiek of tegel, plaats je er boven, klik je op de knop Bewerken en zoek je de statistiek die is aangepast.
 
 Wanneer u modellen op schaal traint over honderden en duizenden afzonderlijke uitvoeringen, u met deze pagina eenvoudig elk model zien dat u hebt getraind, met name hoe ze zijn opgeleid en hoe uw unieke statistieken in de loop van de tijd zijn veranderd.
 
-![Pagina Hoofdexperiment in Portal](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Belangrijkste experiment pagina in de studio.":::
 
-Als u op een koppeling `RUN NUMBER` runnummer in de kolom klikt, gaat u naar de pagina voor elke afzonderlijke uitvoering. Op het tabblad **Standaardgegevens** vindt u meer gedetailleerde informatie over elke run. Navigeer naar het tabblad **Uitvoer** en `.pkl` u ziet het bestand voor het model dat tijdens elke trainingsiteratie naar de run is geüpload. Hier u het modelbestand downloaden, in plaats van het handmatig om te scholen.
 
-![Pagina Details uitvoeren in Portal](./media/tutorial-1st-experiment-sdk-train/model-download.png)
+Selecteer een koppeling runnummer in de `RUN NUMBER` kolom om de pagina voor een afzonderlijke run weer te geven. Op het tabblad **Standaardgegevens** vindt u meer gedetailleerde informatie over elke run. Navigeer naar het tabblad **Uitvoer + logboeken** en u ziet het `.pkl` bestand voor het model dat tijdens elke trainingsiteratie naar de run is geüpload. Hier u het modelbestand downloaden, in plaats van het handmatig om te scholen.
+
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Voer details pagina in de studio.":::
 
 ## <a name="get-the-best-model"></a>Krijg het beste model
 
-Naast de mogelijkheid om modelbestanden van het experiment in de portal te downloaden, u ze ook programmatisch downloaden. De volgende code wordt herhaald door elke run in het experiment, en toegang tot zowel de geregistreerde run metrics en de run details (die de run_id bevat). Dit houdt bij van de beste run, in dit geval de run met de laagste root-mean-kwadraat-fout.
+Naast de mogelijkheid om modelbestanden van het experiment in de studio te downloaden, kun je ze ook programmatisch downloaden. De volgende code wordt herhaald door elke run in het experiment, en toegang tot zowel de geregistreerde run metrics en de run details (die de run_id bevat). Dit houdt bij van de beste run, in dit geval de run met de laagste root-mean-kwadraat-fout.
 
 ```python
 minimum_rmse_runid = None
@@ -214,7 +215,7 @@ In deze zelfstudie hebt u de volgende taken uitgevoerd:
 > [!div class="checklist"]
 > * Uw werkruimte verbonden en een experiment gemaakt
 > * Geladen gegevens en getrainde scikit-learn-modellen
-> * Bekeken trainingsresultaten in de portal en opgehaalde modellen
+> * Bekeken trainingsresultaten in de studio en opgehaalde modellen
 
 [Uw model implementeren](tutorial-deploy-models-with-aml.md) met Azure Machine Learning.
 Leer hoe u [geautomatiseerde machine learning-experimenten](tutorial-auto-train-models.md) ontwikkelen.

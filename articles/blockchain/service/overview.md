@@ -1,15 +1,15 @@
 ---
 title: Overzicht van Azure Blockchain Service
 description: Overzicht van Azure Blockchain-service
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 821bac0da13209e5126f5bab109aa0895ade840a
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79205071"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529143"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Wat is Azure Blockchain Service?
 
@@ -19,7 +19,7 @@ Azure Blockchain Service is een volledig beheerde grootboekservice waarmee gebru
 * Ingebouwd consortiumbeheer
 * Ontwikkel slimme contracten met vertrouwde ontwikkeltools
 
-Azure Blockchain Service is ontworpen om meerdere grootboekprotocollen te ondersteunen. Momenteel biedt het ondersteuning voor [Quorum](https://www.goquorum.com/) het Ethereum Quorum-grootboek met behulp van het [IBFT-consensusmechanisme.](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)
+Azure Blockchain Service is ontworpen om meerdere grootboekprotocollen te ondersteunen. Momenteel biedt het ondersteuning voor het Ethereum [Quorum](https://www.goquorum.com/) grootboek met behulp van de [Istanbul Byzantijnse Fault Tolerance (IBFT)](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) consensus mechanisme.
 
 Deze mogelijkheden vereisen nauwelijks beheer, en alles wordt zonder extra kosten geleverd. U zich richten op app-ontwikkeling en bedrijfslogica in plaats van tijd en resources toe te wijzen aan het beheer van virtuele machines en infrastructuur. Daarnaast u uw applicatie blijven ontwikkelen met de open-source tools en het platform van uw keuze om uw oplossingen te leveren zonder nieuwe vaardigheden te leren.
 
@@ -33,13 +33,13 @@ Azure Blockchain Service biedt twee servicelagen: *Basic* en *Standard.* Elke la
 
 ![Prijscategorieën](./media/overview/pricing-tiers.png)
 
-Naast het aanbieden van twee validatorknooppunten biedt de *standaardlaag* 2 *vCores* voor elke transactie en het knooppunt van validator, terwijl de Basic-laag een 1 vCore-configuratie biedt.  Door 2 vCores aan te bieden voor transactie- en validatorknooppunten, kan 1 vCore worden toegewezen aan het Quorum-grootboek, terwijl de resterende 1 vCore kan worden gebruikt voor andere infrastructuurgerelateerde services, wat optimale prestaties voor productieblockchain-workloads garanderen. Zie [Azure Blockchain Service-prijzen](https://azure.microsoft.com/pricing/details/blockchain-service)voor meer informatie over prijsdetails.
+Naast het aanbieden van twee validatorknooppunten biedt de *standaardlaag* twee *vCores* voor elke transactie en het validatorknooppunt, terwijl de *Basic-laag* een 1 vCore-configuratie biedt.  Door 2 vCores aan te bieden voor transactie- en validatorknooppunten, kan 1 vCore worden toegewezen aan het Quorum-grootboek, terwijl de resterende 1 vCore kan worden gebruikt voor andere infrastructuurgerelateerde services, wat optimale prestaties voor productieblockchain-workloads garanderen. Zie [Azure Blockchain Service-prijzen](https://azure.microsoft.com/pricing/details/blockchain-service)voor meer informatie over prijsdetails.
 
 ### <a name="security-and-maintenance"></a>Beveiliging en onderhoud
 
 Nadat u uw eerste blockchain-lid hebt ingericht, hebt u de mogelijkheid om extra transactieknooppunten toe te voegen aan uw lid.  Transactieknooppunten worden standaard beveiligd via firewallregels en vereisen configuratie voor toegang.  Bovendien versleutelen alle transactieknooppunten gegevens in beweging via TLS.  Er bestaan meerdere opties voor het beveiligen van toegang tot transactieknooppunt, waaronder firewallregels, basisverificatie, toegangssleutels en Azure Active Directory-integratie. Zie [Transactieknooppunten configureren](configure-transaction-nodes.md) en [Azure Active Directory-toegang configureren](configure-aad.md)voor meer informatie.
 
-Als beheerde service zorgt Azure Blockchain Service ervoor dat de knooppunten van uw blockchain-leden worden gepatcht met de nieuwste updates voor host-besturingssysteem en grootboeksoftwarestack, geconfigureerd voor hoge beschikbaarheid (alleen standaardniveau), waardoor veel van de DevOps worden geëlimineerd vereist voor traditionele IaaS blockchain-knooppunten.  Zie [ondersteunde Azure Blockchain Service-grootboekversies](ledger-versions.md)voor meer informatie over patchen en updates.
+Als beheerde service zorgt Azure Blockchain Service ervoor dat de knooppunten van uw blockchain-leden worden gepatcht met de nieuwste updates voor het host-besturingssysteem en grootboeksoftwarestack, geconfigureerd voor hoge beschikbaarheid (alleen standaardniveau), waardoor veel van de DevOps worden geëlimineerd die vereist zijn voor traditionele IaaS-blockchain-knooppunten.  Zie [ondersteunde Azure Blockchain Service-grootboekversies](ledger-versions.md)voor meer informatie over patchen en updates.
 
 ### <a name="monitoring-and-logging"></a>Bewaking en registratie
 

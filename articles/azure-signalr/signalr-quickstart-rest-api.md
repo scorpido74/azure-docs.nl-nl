@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 70053fbc47a5ba85e7bb18ab762868973d014beb
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74157677"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548133"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Snelstartgids: Realtimeberichten verzenden via de console-app
 
@@ -131,10 +131,17 @@ API | `1.0-preview` | `1.0`
 [Uitzenden naar alle](#broadcast) | **&#x2713;** | **&#x2713;**
 [Uitzenden naar een groep](#broadcast-group) | **&#x2713;** | **&#x2713;**
 Uitzenden naar bepaalde groepen | **&#x2713;** (afgeschaft) | `N / A`
-[Verzenden naar specifieke gebruikers](#send-user) | **&#x2713;** | **&#x2713;**
+[Verzenden naar een gebruiker](#send-user) | **&#x2713;** | **&#x2713;**
 Verzenden naar bepaalde gebruikers | **&#x2713;** (afgeschaft) | `N / A`
 [Een gebruiker aan een groep toevoegen](#add-user-to-group) | `N / A` | **&#x2713;**
 [Een gebruiker uit een groep verwijderen](#remove-user-from-group) | `N / A` | **&#x2713;**
+[Gebruikersbestaan controleren](#check-user-existence) | `N / A` | **&#x2713;**
+[Een gebruiker uit alle groepen verwijderen](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
+[Naar een verbinding verzenden](#send-connection) | `N / A` | **&#x2713;**
+[Een verbinding toevoegen aan een groep](#add-connection-to-group) | `N / A` | **&#x2713;**
+[Een verbinding uit een groep verwijderen](#remove-connection-from-group) | `N / A` | **&#x2713;**
+[Een clientverbinding sluiten](#close-connection) | `N / A` | **&#x2713;**
+[Service Health](#service-health) | `N / A` | **&#x2713;**
 
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>Uitzenden naar iedereen
@@ -153,7 +160,7 @@ Versie | API HTTP-methode | Aanvraag-URL | Aanvraagbody
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | Hetzelfde als hierboven
 
 <a name="send-user"> </a>
-### <a name="sending-to-specific-users"></a>Verzenden naar specifieke gebruikers
+### <a name="sending-to-a-user"></a>Verzenden naar een gebruiker
 
 Versie | API HTTP-methode | Aanvraag-URL | Aanvraagbody
 --- | --- | --- | ---
@@ -165,14 +172,77 @@ Versie | API HTTP-methode | Aanvraag-URL | Aanvraagbody
 
 Versie | API HTTP-methode | Aanvraag-URL
 --- | --- | ---
-`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>Een gebruiker uit een groep verwijderen
 
 Versie | API HTTP-methode | Aanvraag-URL
 --- | --- | ---
-`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
+
+<a name="check-user-existence"> </a>
+### <a name="check-user-existence-in-a-group"></a>Het gebruikersbestaan in een groep controleren
+
+API-versie | API HTTP-methode | Aanvraag-URL
+---|---|---
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
+
+Statuscode respons | Beschrijving
+---|---
+`200` | Gebruiker bestaat
+`404` | Gebruiker bestaat niet
+
+<a name="remove-user-from-all-groups"> </a>
+### <a name="remove-a-user-from-all-groups"></a>Een gebruiker uit alle groepen verwijderen
+
+API-versie | API HTTP-methode | Aanvraag-URL
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups`
+
+<a name="send-connection"> </a>
+### <a name="send-message-to-a-connection"></a>Bericht verzenden naar een verbinding
+
+API-versie | API HTTP-methode | Aanvraag-URL | Aanvraagtekst
+---|---|---|---
+`1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>` | `{ "target":"<method-name>", "arguments":[ ... ] }`
+
+<a name="add-connection-to-group"> </a>
+### <a name="add-a-connection-to-a-group"></a>Een verbinding toevoegen aan een groep
+
+API-versie | API HTTP-methode | Aanvraag-URL
+---|---|---
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
+
+<a name="remove-connection-from-group"> </a>
+### <a name="remove-a-connection-from-a-group"></a>Een verbinding uit een groep verwijderen
+
+API-versie | API HTTP-methode | Aanvraag-URL
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
+
+<a name="close-connection"> </a>
+### <a name="close-a-client-connection"></a>Een clientverbinding sluiten
+
+API-versie | API HTTP-methode | Aanvraag-URL
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>?reason=<close-reason>`
+
+<a name="service-health"> </a>
+### <a name="service-health"></a>Service Health
+
+API-versie | API HTTP-methode | Aanvraag-URL
+---|---|---                             
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
+
+Statuscode respons | Beschrijving
+---|---
+`200` | Service Goed
+`503` | Service niet beschikbaar
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 

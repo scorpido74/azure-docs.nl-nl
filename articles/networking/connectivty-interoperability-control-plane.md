@@ -1,5 +1,5 @@
 ---
-title: 'Interoperabiliteit in Azure-back-endconnectiviteitsfuncties: analyse van het besturingsvlak | Microsoft Documenten'
+title: 'Interoperabiliteit in Azure : Analyse van besturingsvlak'
 description: In dit artikel vindt u de analyse van het controlevlak van de testopstelling die u gebruiken om de interoperabiliteit tussen ExpressRoute, een site-to-site VPN en virtueel netwerkpeering in Azure te analyseren.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 4921e4c4fc0da95250a0171c66d6a69093b10687
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e41bc86533815c394077bf5276d930fe958cd19
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873842"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518275"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Interoperabiliteit in Azure back-end connectiviteitsfuncties: analyse van vliegtuigen beheren
+# <a name="interoperability-in-azure--control-plane-analysis"></a>Interoperabiliteit in Azure : Analyse van besturingsvlak
 
 In dit artikel wordt de analyse van het controlevlak van de [testopstelling][Setup]beschreven. U ook de configuratie van de [testinstallatie][Configuration] en de analyse van het [gegevensvlak][Data-Analysis] van de testopstelling bekijken.
 

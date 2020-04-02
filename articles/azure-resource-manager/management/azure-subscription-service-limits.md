@@ -3,12 +3,12 @@ title: Azure-abonnementslimieten en -quota
 description: Biedt een lijst met algemene Azure-abonnements- en servicelimieten, quota en beperkingen. Dit artikel bevat informatie over hoe u limieten verhogen, samen met de maximumwaarden.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 325f7b3d03435945779c1f42e13681dcfd9604b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 397d6a719f64a49208e651469fab9cf841ccd4ad
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334576"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521359"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnements- en servicelimieten, quota en beperkingen
 
@@ -244,7 +244,11 @@ In de volgende tabel worden de functies en limieten van de serviceniveaus Basic,
 
 ## <a name="media-services-limits"></a>Limieten voor mediaservices
 
-[!INCLUDE [azure-mediaservices-limits](../../../includes/azure-mediaservices-limits.md)]
+[!INCLUDE [azure-mediaservices-limits](../../../includes/media-servieces-limits-quotas-constraints.md)]
+
+### <a name="media-services-v2-legacy"></a>Media Services v2 (verouderd)
+
+Zie [Media Services v2 (legacy)](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations) voor beperkingen die specifiek zijn voor Media Services v2 (legacy)
 
 ## <a name="mobile-services-limits"></a>Limieten voor mobiele diensten
 

@@ -18,12 +18,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: e0682a33540cafd8ebab1bb248d462b30ee4dc2a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6bc4ed94c8b8e62740f81497231a163283ebcb7
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80127543"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521560"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>Zelfstudie: Pushmeldingen verzenden naar Android-apparaten met Firebase
 
@@ -31,7 +31,7 @@ ms.locfileid: "80127543"
 
 In deze zelfstudie wordt gedemonstreerd hoe u met Azure Notification Hubs en Firebase Cloud Messaging (FCM) meldingen kunt pushen naar een Android-toepassing. In deze zelfstudie gaat u een lege Android-app maken die pushmeldingen ontvangt via Firebase Cloud Messaging (FCM).
 
-De voltooide code voor deze zelfstudie kan worden gedownload [van GitHub.](https://github.com/Azure/azure-notificationhubs-android/tree/master/samples/FCMTutorialApp)
+De voltooide code voor deze zelfstudie kan worden gedownload [van GitHub.](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp)
 
 In deze zelfstudie voert u de volgende stappen uit:
 
