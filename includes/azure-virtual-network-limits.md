@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 8752585e731f905636f57d31741e2be67f7140b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95cb29e871cce2ba600ab654d48c685b90ed027e
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334641"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80573256"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netwerklimieten - Azure Resource Manager
 De volgende limieten gelden alleen voor netwerkbronnen die worden beheerd via **Azure Resource Manager** per regio per abonnement. Meer informatie over het [weergeven van uw huidige resourcegebruik aan de hand van uw abonnementslimieten.](../articles/networking/check-usage-against-limits.md)
@@ -72,10 +72,12 @@ De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd v
 | Regels per NIC (in alle IP's op een NIC) | 300                           |
 | Frontend IP-configuraties              | 600                           |
 | Grootte van back-end-pool                       | 1.000 IP-configuraties, één virtueel netwerk |
+| Back-endresources per <sup>load balancer 1<sup> | 150                   |
 | Poorten met hoge beschikbaarheid                 | 1 per interne frontend       |
 | Uitgaande regels per load balancer        | 20                            |
 | [TCP-inactieve time-out](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 minuten/30 minuten          |
 
+<sup>1.</sup> De limiet is maximaal 150 resources, in elke combinatie van zelfstandige virtuele machineresources, beschikbaarheidssetresources en bronnen met virtuele machineschaalset.
 
 **Basisbalansbalans**
 

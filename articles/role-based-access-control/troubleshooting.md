@@ -15,12 +15,12 @@ ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 8aedc78772858815a18425fb1e6cb36a4600f647
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 09d5b7a126a1b8832bfe40e2e25dd4000d5d9155
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385092"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548287"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Problemen met Azure RBAC oplossen
 
@@ -80,7 +80,7 @@ $ras.Count
 
 ## <a name="access-denied-or-permission-errors"></a>Toegangsfouten of machtigingsfouten
 
-- Als u de machtigingsfout 'De client met object-id heeft geen autorisatie om actie uit te voeren over bereik (code: Autorisatiemislukt)' krijgt wanneer u een resource probeert te maken, controleert u of u momenteel bent aangemeld bij een gebruiker die een rol heeft toegewezen die is geschreven toestemming voor de resource op het geselecteerde bereik. Als u bijvoorbeeld virtuele machines in een resourcegroep wilt beheren, moet u de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) toewijzen aan de resourcegroep (of bovenliggend bereik). Voor een lijst met machtigingen voor elke ingebouwde rol, raadpleegt u [Ingebouwde rollen voor Azure-resources](built-in-roles.md).
+- Als u de machtigingsfout 'De client met object-id heeft geen toestemming om actie uit te voeren over bereik (code: Autorisatiemislukt)' krijgt wanneer u een resource probeert te maken, controleert u of u momenteel bent aangemeld bij een gebruiker die een rol heeft toegewezen die schrijftoestemming heeft voor de resource in het geselecteerde bereik. Als u bijvoorbeeld virtuele machines in een resourcegroep wilt beheren, moet u de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) toewijzen aan de resourcegroep (of bovenliggend bereik). Voor een lijst met machtigingen voor elke ingebouwde rol, raadpleegt u [Ingebouwde rollen voor Azure-resources](built-in-roles.md).
 - Als u de machtigingsfout 'U hebt geen toestemming hebt om een ondersteuningsverzoek te maken' krijgt wanneer u een ondersteuningsticket probeert te maken `Microsoft.Support/supportTickets/write` of bij te werken, controleert u of u momenteel bent aangemeld bij een gebruiker die een rol heeft toegewezen die de toestemming heeft, zoals [ondersteuningsaanvraaginzender.](built-in-roles.md#support-request-contributor)
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Rolopdrachten met onbekende beveiligingsprincipal
@@ -179,7 +179,7 @@ Deze items vereisen **schrijftoegang** tot het **App Service-abonnement** dat ov
 
 Deze items vereisen **schrijftoegang** tot de hele **resourcegroep** die uw website bevat:  
 
-* SSL-certificaten en bindingen (SSL-certificaten kunnen worden gedeeld tussen sites in dezelfde brongroep en geolocatie)  
+* TLS/SSL-certificaten en bindingen (TLS/SSL-certificaten kunnen worden gedeeld tussen sites in dezelfde brongroep en geolocatie)  
 * Waarschuwingsregels  
 * Instellingen voor automatisch schalen  
 * Componenten voor toepassingsinzichten  

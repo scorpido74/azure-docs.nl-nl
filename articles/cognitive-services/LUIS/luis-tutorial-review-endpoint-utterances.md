@@ -1,22 +1,15 @@
 ---
 title: 'Zelfstudie: Eindpuntuitingen controleren - LUIS'
-titleSuffix: Azure Cognitive Services
 description: Verbeter in deze zelfstudie app-voorspellingen door uitingen die zijn ontvangen via het LUIS HTTP-eindpunt waarvan LUIS niet zeker is, te verifiëren of te corrigeren. Bij sommige uitingen moet mogelijk de intentie worden gecontroleerd en bij andere de entiteit.
 services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76843970"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548728"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Zelfstudie: Herstel van onzekere voorspellingen door eindpuntuitingen te bekijken
 Verbeter in deze zelfstudie app-voorspellingen door uitingen te verifiëren of te corrigeren die zijn ontvangen via het LUIS HTTPS-eindpunt waarvan LUIS niet zeker is. U moet eindpuntuitingen controleren als een regelmatig onderdeel van uw geplande LUIS-onderhoud.
@@ -46,15 +39,11 @@ Gebruik de volgende stappen om een app te importeren.
 
 1.  Download het [JSON-bestand van de app](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) en sla het op.
 
-1. Importeer het JSon-bestand in een nieuwe app in de [preview LUIS-portal.](https://preview.luis.ai)
+[!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-1. Ga naar het gedeelte **Beheren**, open het tabblad **Versies**, kloon de versie en noem deze `review`.
+## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>De app trainen om de entiteitswijzigingen toe te passen op de app
 
-    > [!TIP]
-    > Klonen in een nieuwe versie is een aanbevolen manier voordat u uw app wijzigt. Wanneer u een versie voltooit, exporteert u de versie (als een .json- of .lu-bestand) en controleert u het bestand in uw bronbesturingssysteem.
-
-
-1. Als u de app wilt trainen, selecteert u **Trainen**.
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>De app publiceren om deze te openen vanaf het HTTP-eindpunt
 
@@ -66,7 +55,7 @@ In deze app hebt u intents en entiteiten, maar hebt u geen eindpuntgebruik. Dit 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Gebruik het eindpunt om de volgende uitingen toe te voegen.
+1. Ga naar het einde van de URL in de adresbalk en vervang _YOUR_QUERY_HERE_ door de uitingen in de volgende tabel. Voor elke utterance dient u de utterance in en krijgt u het resultaat. Vervang vervolgens de utterance aan het einde door de volgende utterance.
 
     |Eindpuntutterance|Uitgelijnde intentie|
     |--|--|
@@ -110,9 +99,9 @@ Controleer de eindpuntuitingen op correct uitgelijnde intentie. Hoewel er één 
 
 Als u wilt controleren of de correct uitgelijnde voorbeelduitingen de voorspelling van de app hebben verbeterd, probeert u een uiting in de buurt van de gecorrigeerde utterance.
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Ga naar het einde van de URL in het adres en voer `Are there any natural language processing jobs in my department right now?` in. De laatste querytekenreeksparameter is `q`de **utterancequery**.
+1. Ga naar het einde van de URL _YOUR_QUERY_HERE_ in `Are there any natural language processing jobs in my department right now?`de adresbalk en vervang YOUR_QUERY_HERE door .
 
    ```json
     {

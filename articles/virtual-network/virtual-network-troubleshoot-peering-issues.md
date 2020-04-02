@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 662619e101b45d1dd8b34ea97e31f214b254124a
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73796240"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521872"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Peering-problemen van virtueel netwerk oplossen
 
@@ -234,6 +234,15 @@ Als u dit probleem wilt oplossen, verwijdert u het peering van beide virtuele ne
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Kan geen peer-peer van een virtueel netwerk van Databricks
 
 Als u dit probleem wilt oplossen, configureert u het virtuele netwerkpeering onder **Azure Databricks**en geeft u het virtuele doelnetwerk op met Behulp van **Resource-id**. Zie [Peer a Databricks virtueel netwerk naar een extern virtueel netwerk](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2)voor meer informatie.
+
+### <a name="the-remote-virtual-network-lacks-a-gateway"></a>Het externe virtuele netwerk mist een gateway
+
+Dit probleem treedt op wanneer u virtuele netwerken `Use Remote Gateways`van verschillende tenants peert en later wilt configureren . Een beperking van de Azure-portal is dat deze de aanwezigheid van een virtuele netwerkgateway in het virtuele netwerk van een andere tenant niet kan valideren.
+
+Er zijn twee manieren om het probleem op te lossen:
+
+ * Verwijder de peerings `Use Remote Gateways` en activeer de optie wanneer u een nieuwe peering maakt.
+ * Gebruik PowerShell of CLI, in plaats `Use Remote Gateways`van de Azure-portal, om .
 
 ## <a name="next-steps"></a>Volgende stappen
 

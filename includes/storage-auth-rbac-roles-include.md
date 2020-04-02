@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 4b10955a1d3b85acbcae109836bebc03ec04c72c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d73bab76860abf3e9fa442dad44e1ddb66d147a3
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76279621"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519547"
 ---
 Azure biedt de volgende ingebouwde RBAC-rollen voor het toestaan van toegang tot blob- en wachtrijgegevens met Azure AD en OAuth:
 
@@ -24,6 +24,8 @@ Azure biedt de volgende ingebouwde RBAC-rollen voor het toestaan van toegang tot
 - [Gegevenslezer opslagwachtrij:](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader)gebruik om alleen-lezen machtigingen toe te kennen aan Azure-wachtrijen.
 - [Beheer van gegevensbeheer voor opslagwachtrij:](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor)hiermee u toestaan dat machtigingen voor berichten in Azure Storage-wachtrijen worden toegestaan, op te halen en te verwijderen.
 - [Afzender van gegevensin de opslagwachtrij:](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender)gebruik om machtigingen toe te voegen aan berichten in Azure Storage-wachtrijen.
+
+Zie de sectie **Opslag** in azure ingebouwde rollen voor Azure RBAC voor gedetailleerde informatie over ingebouwde [RBAC-rollen](../articles/role-based-access-control/built-in-roles.md#storage)voor Azure Storage voor zowel de gegevensservices als de beheerservice. Zie daarnaast [klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-rollen](../articles/role-based-access-control/rbac-and-directory-admin-roles.md)voor informatie over de verschillende typen rollen die machtigingen in Azure bieden.
 
 > [!NOTE]
 > RBAC-roltoewijzingen kunnen maximaal vijf minuten duren voordat ze worden gepropageerd.

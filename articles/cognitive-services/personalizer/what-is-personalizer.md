@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 850ab0ee89ee167886d8747a0c721bb643529e14
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ac6d72cbb69796851e58098138d51bb0988be4ec
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80052070"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520979"
 ---
 # <a name="what-is-personalizer"></a>Wat is Personalizer?
 
@@ -59,7 +59,7 @@ Personalizer gebruikte reinforcement learning om de beste actie te selecteren, b
 
 De Rank **Rank** [API](https://go.microsoft.com/fwlink/?linkid=2092082) van Personalizer wordt _elke keer_ dat je content presenteert in real-time aangeroepen. Dit staat bekend als een **gebeurtenis**, genoteerd met een _gebeurtenis-ID_.
 
-De Reward **Reward** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) van Personalizer kan in realtime worden aangeroepen of vertraagd om beter bij uw infrastructuur te passen. U bepaalt de beloningsscore op basis van uw bedrijfsbehoeften. Dat kan een enkele waarde zijn, zoals 1 voor goed, en 0 voor slecht, of een getal dat wordt geproduceerd door een algoritme dat u maakt, rekening houdend met uw zakelijke doelen en statistieken.
+De Reward **Reward** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) van Personalizer kan in realtime worden aangeroepen of vertraagd om beter bij uw infrastructuur te passen. U bepaalt de beloningsscore op basis van uw bedrijfsbehoeften. De beloningsscore ligt tussen 0 en 1. Dat kan een enkele waarde zijn, zoals 1 voor goed, en 0 voor slecht, of een getal dat wordt geproduceerd door een algoritme dat u maakt, rekening houdend met uw zakelijke doelen en statistieken.
 
 ## <a name="personalizer-content-requirements"></a>Vereisten voor gepersonaliseerde inhoud
 
@@ -101,6 +101,6 @@ Aangezien Personalizer collectieve informatie in bijna realtime gebruikt om het 
 * [Wat is Reinforcement Learning?](concepts-reinforcement-learning.md)
 * [Meer informatie over functies en acties voor de rangaanvraag](concepts-features.md)
 * [Meer informatie over het bepalen van de score voor het beloningsverzoek](concept-rewards.md)
-* [Snel gestart](sdk-learning-loop.md)
+* [Snelstartgidsen](sdk-learning-loop.md)
 * [Zelfstudie](tutorial-use-azure-notebook-generate-loop-data.md)
 * [Gebruik de interactieve demo](https://personalizationdemo.azurewebsites.net/)

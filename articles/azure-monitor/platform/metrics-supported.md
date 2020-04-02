@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 03/17/2020
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e01ed9f784d77b3c425c60de31ab87f86dbb688b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 674321878cfce2d05189700a8b5118e233d9044d
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500597"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520709"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Ondersteunde statistieken met Azure Monitor
 
@@ -24,6 +24,9 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 > *Een voorbeeld*: de meetwaarde 'Binnenkomende berichten' voor een Event Hub kan worden verkend en uitgezet op wachtrijniveau. Wanneer de waarde wordt geëxporteerd via diagnostische instellingen, wordt deze echter voorgesteld als alle binnenkomende berichten voor alle wachtrijen in de Event Hub.
 >
 > Zie [dit artikel](metrics-supported-export-diagnostic-settings.md)voor een lijst met platformstatistieken die via diagnostische instellingen kunnen worden geëxporteerd.
+
+
+
 
 
 
@@ -101,15 +104,15 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |EventHubDroppedGebeurtenissen|Gebeurtenisgebeurtenissen van EventHub laten vallen|Count|Totaal|Aantal overgeslagen gebeurtenissen vanwege limiet voor wachtrijgrootte bereikt|Locatie|
 |EventHubTotalBytesSent|Grootte van EventHub-gebeurtenissen|Bytes|Totaal|Totale grootte van EventHub-gebeurtenissen in bytes|Locatie|
 |Aanvragen|Aanvragen|Count|Totaal|Gatewayaanvraagstatistieken met meerdere dimensies|Locatie,Hostname,LastErrorReason,BackendResponseCode,GatewayResponseCode,BackendResponseCodeCategory,GatewayResponseCodeCategory|
+|Netwerkconnectiviteit|Status van bronnen voor netwerkconnectiviteit (voorbeeld)|Count|Totaal|Netwerkconnectiviteitsstatus van afhankelijke resourcetypen van de API-beheerservice|Locatie, ResourceType|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
 
 |Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
-|HttpIncomingRequestCount|HttpIncomingRequestCount|Count|Count|Totaal aantal binnenkomende http-aanvragen.|Geen|
-|MislukthttpRequestCount|MislukthttpRequestCount|Count|Count|Mislukt http-aanvragen.|Geen|
-|HttpIncomingRequestDuration|HttpIncomingRequestDuration|Count|Average|Latentie op een http-aanvraag.|Geen|
+|HttpIncomingRequestCount|HttpIncomingRequestCount|Count|Count|Totaal aantal binnenkomende http-aanvragen.|Statuscode|
+|HttpIncomingRequestDuration|HttpIncomingRequestDuration|Count|Average|Latentie op een http-aanvraag.|Statuscode|
 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
@@ -171,21 +174,21 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |LeavingPoolNodeCount|Poolknooppunt tellen verlaten|Count|Totaal|Aantal knooppunten dat de pool verlaat|Geen|
 |UnusableNodeCount|Aantal onbruikbare knooppunt|Count|Totaal|Aantal onbruikbare knooppunten|Geen|
 |VoorrangNodeCount|Voorrang Node Count|Count|Totaal|Aantal vooraf gelopen knooppunten|Geen|
-|TaakstartGebeurtenis|Gebeurtenissen voor het starten van taken|Count|Totaal|Totaal aantal taken dat is gestart|Geen|
-|TaakCompleteEvent|Gebeurtenissen voltooien van taken|Count|Totaal|Totaal aantal taken dat is voltooid|Geen|
-|Taakfailgebeurtenis|Gebeurtenissen als taakmislukt|Count|Totaal|Totaal aantal taken dat in een mislukte status is voltooid|Geen|
-|PoolCreateEvent|Gebeurtenissen maken|Count|Totaal|Totaal aantal groepen dat is gemaakt|Geen|
-|PoolResizeStartEvent|Begingebeurtenissen voor het aanpassen van het formaat wijzigen|Count|Totaal|Totaal aantal zwembadgroottes dat is gestart|Geen|
-|PoolResizeCompleteEvent|Het formaat complete gebeurtenissen van de groep wijzigen|Count|Totaal|Totaal aantal groottes van de groep dat is voltooid|Geen|
-|PooldeleteStartEvent|Startgebeurtenissen verwijderen verwijderen groep|Count|Totaal|Totaal aantal groepverwijdert dat is gestart|Geen|
-|PooldeleteCompleteEvent|Complete gebeurtenissen verwijderen verwijderen|Count|Totaal|Totaal aantal groepverwijdert dat is voltooid|Geen|
-|JobDeleteCompleteEvent|Complete gebeurtenissen verwijderen van taak|Count|Totaal|Totaal aantal taken dat met succes is verwijderd.|Geen|
-|JobdeleteStartEvent|Startgebeurtenissen voor taak verwijderen|Count|Totaal|Totaal aantal taken waarvan is gevraagd om te worden verwijderd.|Geen|
-|JobDisableCompleteEvent|Complete gebeurtenissen uitschakelen|Count|Totaal|Totaal aantal taken dat met succes is uitgeschakeld.|Geen|
-|JobDisableStartEvent|Startgebeurtenissen uitschakelen|Count|Totaal|Totaal aantal banen dat is aangevraagd om te worden uitgeschakeld.|Geen|
-|JobStartEvent|Gebeurtenissen voor het starten van vacatures|Count|Totaal|Totaal aantal banen dat met succes is gestart.|Geen|
-|Gebeurtenis TaakterminateComplete|Volledige gebeurtenissen beëindigen van taak|Count|Totaal|Totaal aantal taken dat is beëindigd.|Geen|
-|JobterminateStartEvent|Begingebeurtenissen voor het beëindigen van taken beëindigen|Count|Totaal|Totaal aantal taken die zijn aangevraagd om te worden beëindigd.|Geen|
+|TaakstartGebeurtenis|Gebeurtenissen voor het starten van taken|Count|Totaal|Totaal aantal taken dat is gestart|poolId, jobId|
+|TaakCompleteEvent|Gebeurtenissen voltooien van taken|Count|Totaal|Totaal aantal taken dat is voltooid|poolId, jobId|
+|Taakfailgebeurtenis|Gebeurtenissen als taakmislukt|Count|Totaal|Totaal aantal taken dat in een mislukte status is voltooid|poolId, jobId|
+|PoolCreateEvent|Gebeurtenissen maken|Count|Totaal|Totaal aantal groepen dat is gemaakt|poolId (poolId)|
+|PoolResizeStartEvent|Begingebeurtenissen voor het aanpassen van het formaat wijzigen|Count|Totaal|Totaal aantal zwembadgroottes dat is gestart|poolId (poolId)|
+|PoolResizeCompleteEvent|Het formaat complete gebeurtenissen van de groep wijzigen|Count|Totaal|Totaal aantal groottes van de groep dat is voltooid|poolId (poolId)|
+|PooldeleteStartEvent|Startgebeurtenissen verwijderen verwijderen groep|Count|Totaal|Totaal aantal groepverwijdert dat is gestart|poolId (poolId)|
+|PooldeleteCompleteEvent|Complete gebeurtenissen verwijderen verwijderen|Count|Totaal|Totaal aantal groepverwijdert dat is voltooid|poolId (poolId)|
+|JobDeleteCompleteEvent|Complete gebeurtenissen verwijderen van taak|Count|Totaal|Totaal aantal taken dat met succes is verwijderd.|jobId|
+|JobdeleteStartEvent|Startgebeurtenissen voor taak verwijderen|Count|Totaal|Totaal aantal taken waarvan is gevraagd om te worden verwijderd.|jobId|
+|JobDisableCompleteEvent|Complete gebeurtenissen uitschakelen|Count|Totaal|Totaal aantal taken dat met succes is uitgeschakeld.|jobId|
+|JobDisableStartEvent|Startgebeurtenissen uitschakelen|Count|Totaal|Totaal aantal banen dat is aangevraagd om te worden uitgeschakeld.|jobId|
+|JobStartEvent|Gebeurtenissen voor het starten van vacatures|Count|Totaal|Totaal aantal banen dat met succes is gestart.|jobId|
+|Gebeurtenis TaakterminateComplete|Volledige gebeurtenissen beëindigen van taak|Count|Totaal|Totaal aantal taken dat is beëindigd.|jobId|
+|JobterminateStartEvent|Begingebeurtenissen voor het beëindigen van taken beëindigen|Count|Totaal|Totaal aantal taken die zijn aangevraagd om te worden beëindigd.|jobId|
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/werkruimten
@@ -417,6 +420,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 
 
 
+
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallbeleid
 
 |Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
@@ -537,11 +541,12 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |DataIn|Gegevens in|Bytes|Totaal|Grootte van binnenkomende gegevens in bytes.|ApiName, OperationName,Regio|
 |Gegevensout|Gegevens uit|Bytes|Totaal|Grootte van uitgaande gegevens in bytes.|ApiName, OperationName,Regio|
 |Latentie|Latentie|Milliseconden|Average|Latentie in milliseconden.|ApiName, OperationName,Regio|
+|TotalTokencalls|Totaal aantal tokenoproepen|Count|Totaal|Totaal aantal tokenoproepen.|ApiName, OperationName,Regio|
 |Tekensvertaald|Tekens vertaald|Count|Totaal|Totaal aantal tekens in binnenkomende tekstaanvraag.|ApiName, OperationName,Regio|
 |TekensGetraind|Personages getraind|Count|Totaal|Totaal aantal getrainde tekens.|ApiName, OperationName,Regio|
 |SessiesessieDuur|Sessieduur van spraaksessies|Seconden|Totaal|Totale duur van de spraaksessie in seconden.|ApiName, OperationName,Regio|
 |TotaalTransacties|Totaal aantal transacties|Count|Totaal|Totaal aantal transacties.|Geen|
-|TotalTokencalls|Totaal aantal tokenoproepen|Count|Totaal|Totaal aantal tokenoproepen.|ApiName, OperationName,Regio|
+|Verwerkte afbeeldingen|Verwerkte afbeeldingen|Count|Totaal| Aantal transacties voor beeldverwerking.|ApiName, FeatureName, Kanaal, Regio|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
@@ -556,16 +561,16 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Bewerkingen voor schijfschrijfbewerkingen/sec|Bewerkingen voor schijfschrijfbewerkingen/sec|CountPerSeconde|Average|SchijfschrijfiOPS|Geen|
 |Resterende CPU-credits|Resterende CPU-credits|Count|Average|Totaal aantal credits beschikbaar om te barsten|Geen|
 |CPU-credits verbruikt|CPU-credits verbruikt|Count|Average|Totaal aantal credits verbruikt door de virtuele machine|Geen|
-|Bytes per seconde per schijf gelezen|Bytes/Sec gegevensschijf lezen (afgeschaft)|CountPerSeconde|Average|Bytes/seconde die tijdens de controleperiode vanaf één schijf wordt gelezen|SlotId (SlotId)|
-|Schrijfbytes per schijf per seconde|Bytes/Sec voor gegevensschijfschrijven (afgeschaft)|CountPerSeconde|Average|Bytes/sec die tijdens de controleperiode naar één schijf is geschreven|SlotId (SlotId)|
-|Leesbewerkingen per schijf per seconde|Gegevensschijfleesbewerkingen/Sec (afgeschaft)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
-|Schrijfbewerkingen per schijf per seconde|Gegevensschijfschrijfbewerkingen/Sec (afgeschaft)|CountPerSeconde|Average|IOPS schrijven vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
-|QD per schijf|Gegevensschijf QD (afgeschaft)|Count|Average|Gegevensschijfwachtrijdiepte(of wachtrijlengte)|SlotId (SlotId)|
-|Bytes per seconde voor gelezen besturingssysteem per schijf|Bytes/Sec voor gelezen SCHIJVEN (afgeschaft)|CountPerSeconde|Average|Bytes/seconde die van één schijf tijdens controleperiode voor OS-schijf worden gelezen|Geen|
-|Schrijven bytes per schijf per seconde per schijf|Bytes/Sec voor schrijven in de schijf van HET BE (afgeschaft)|CountPerSeconde|Average|Bytes/sec die naar één schijf is geschreven tijdens de controleperiode voor de os-schijf|Geen|
-|Leesbewerkingen van het besturingssysteem per schijf per seconde|Bewerkingen voor lezen van schijven/sec van het besturingssysteem (afgeschaft)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode voor de OS-schijf|Geen|
-|Schrijfbewerkingen per schijf per seconde|Bewerkingen voor schrijven van OS-schijven/Sec (afgeschaft)|CountPerSeconde|Average|IOPS schrijven vanaf één schijf tijdens de controleperiode voor de OS-schijf|Geen|
-|OS Per schijf QD|OS Disk QD (afgeschaft)|Count|Average|Diepte van de schijfwachtrij(of wachtrijlengte)|Geen|
+|Bytes per seconde per schijf gelezen|Bytes/Sec gegevensschijf lezen [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/seconde die tijdens de controleperiode vanaf één schijf wordt gelezen|SlotId (SlotId)|
+|Schrijfbytes per schijf per seconde|Bytes/Sec voor gegevensschijfschrijven [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/sec die tijdens de controleperiode naar één schijf is geschreven|SlotId (SlotId)|
+|Leesbewerkingen per schijf per seconde|Gegevensschijfleesbewerkingen/Sec [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
+|Schrijfbewerkingen per schijf per seconde|Gegevensschijfschrijfbewerkingen/Sec [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS schrijven vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
+|QD per schijf|[Gegevensschijf QD [(afgeschaft)](portal-disk-metrics-deprecation.md)](portal-disk-metrics-deprecation.md)|Count|Average|Gegevensschijfwachtrijdiepte(of wachtrijlengte)|SlotId (SlotId)|
+|Bytes per seconde voor gelezen besturingssysteem per schijf|Bytes/Sec voor gelezen SCHIJVEN [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/seconde die van één schijf tijdens controleperiode voor OS-schijf worden gelezen|Geen|
+|Schrijven bytes per schijf per seconde per schijf|Bytes/Sec voor schrijven in de schijf van HET BE [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/sec die naar één schijf is geschreven tijdens de controleperiode voor de os-schijf|Geen|
+|Leesbewerkingen van het besturingssysteem per schijf per seconde|Bewerkingen voor lezen van schijven/sec van het besturingssysteem [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode voor de OS-schijf|Geen|
+|Schrijfbewerkingen per schijf per seconde|Bewerkingen voor schrijven van OS-schijven/Sec [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS schrijven vanaf één schijf tijdens de controleperiode voor de OS-schijf|Geen|
+|OS Per schijf QD|OS Disk QD [(afgeschaft)](portal-disk-metrics-deprecation.md)|Count|Average|Diepte van de schijfwachtrij(of wachtrijlengte)|Geen|
 |Bytes/seconde gegevensschijf gelezen|Bytes/Seconde voor gegevensschijf lezen (voorbeeld)|CountPerSeconde|Average|Bytes/seconde die tijdens de controleperiode vanaf één schijf wordt gelezen|Lun|
 |Schrijfbytes voor gegevensschijf per seconde|Bytes/sec voor gegevensschijf schrijven (voorbeeld)|CountPerSeconde|Average|Bytes/sec die tijdens de controleperiode naar één schijf is geschreven|Lun|
 |Leesbewerkingen gegevensschijf/sec|Gegevensschijfleesbewerkingen/Sec (voorbeeld)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode|Lun|
@@ -578,8 +583,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Wachtrijlengte van besturingssysteemschijf|Diepte van de schijfwachtrij van HET BE (voorbeeld)|Count|Average|Diepte van de schijfwachtrij(of wachtrijlengte)|Geen|
 |Binnenkomende stromen|Binnenkomende stromen|Count|Average|Binnenkomende stromen zijn het aantal stroomstromen in de inkomende richting (verkeer dat naar de VM gaat)|Geen|
 |Uitgaande stromen|Uitgaande stromen|Count|Average|Uitgaande stromen zijn het aantal stroomstromen in de uitgaande richting (verkeer dat uit de VM gaat)|Geen|
-|Maximale creatiesnelheid inkomende stromen|Maximale creatiesnelheid inkomende stromen (voorbeeld)|CountPerSeconde|Average|Het maximale creatiepercentage van inkomende stromen (verkeer dat naar de VM gaat)|Geen|
-|Maximale creatiesnelheid voor uitgaande stromen|Maximale creatiesnelheid uitgaande stromen (voorbeeld)|CountPerSeconde|Average|Het maximale creatiepercentage van uitgaande stromen (verkeer dat uit de VM gaat)|Geen|
+|Maximale creatiesnelheid inkomende stromen|Maximale creatiesnelheid inkomende stromen|CountPerSeconde|Average|Het maximale creatiepercentage van inkomende stromen (verkeer dat naar de VM gaat)|Geen|
+|Maximale creatiesnelheid voor uitgaande stromen|Maximale creatiesnelheid voor uitgaande stromen|CountPerSeconde|Average|Het maximale creatiepercentage van uitgaande stromen (verkeer dat uit de VM gaat)|Geen|
 |Premium Data Disk Cache Read Hit|Gelezen hit in de schijfcache van Premium-gegevens (voorbeeld)|Percentage|Average|Premium Data Disk Cache Read Hit|Lun|
 |Premium Data Disk Cache Lees Miss|Leesmisser van de schijfcache van Premium-gegevens (voorbeeld)|Percentage|Average|Premium Data Disk Cache Lees Miss|Lun|
 |Premium OS Disk Cache Read Hit|Premium OS Disk Cache Read Hit (Preview)|Percentage|Average|Premium OS Disk Cache Read Hit|Geen|
@@ -601,16 +606,16 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Bewerkingen voor schijfschrijfbewerkingen/sec|Bewerkingen voor schijfschrijfbewerkingen/sec|CountPerSeconde|Average|SchijfschrijfiOPS|VMName|
 |Resterende CPU-credits|Resterende CPU-credits|Count|Average|Totaal aantal credits beschikbaar om te barsten|Geen|
 |CPU-credits verbruikt|CPU-credits verbruikt|Count|Average|Totaal aantal credits verbruikt door de virtuele machine|Geen|
-|Bytes per seconde per schijf gelezen|Bytes/Sec gegevensschijf lezen (afgeschaft)|CountPerSeconde|Average|Bytes/seconde die tijdens de controleperiode vanaf één schijf wordt gelezen|SlotId (SlotId)|
-|Schrijfbytes per schijf per seconde|Bytes/Sec voor gegevensschijfschrijven (afgeschaft)|CountPerSeconde|Average|Bytes/sec die tijdens de controleperiode naar één schijf is geschreven|SlotId (SlotId)|
-|Leesbewerkingen per schijf per seconde|Gegevensschijfleesbewerkingen/Sec (afgeschaft)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
-|Schrijfbewerkingen per schijf per seconde|Gegevensschijfschrijfbewerkingen/Sec (afgeschaft)|CountPerSeconde|Average|IOPS schrijven vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
-|QD per schijf|Gegevensschijf QD (afgeschaft)|Count|Average|Gegevensschijfwachtrijdiepte(of wachtrijlengte)|SlotId (SlotId)|
-|Bytes per seconde voor gelezen besturingssysteem per schijf|Bytes/Sec voor gelezen SCHIJVEN (afgeschaft)|CountPerSeconde|Average|Bytes/seconde die van één schijf tijdens controleperiode voor OS-schijf worden gelezen|Geen|
-|Schrijven bytes per schijf per seconde per schijf|Bytes/Sec voor schrijven in de schijf van HET BE (afgeschaft)|CountPerSeconde|Average|Bytes/sec die naar één schijf is geschreven tijdens de controleperiode voor de os-schijf|Geen|
-|Leesbewerkingen van het besturingssysteem per schijf per seconde|Bewerkingen voor lezen van schijven/sec van het besturingssysteem (afgeschaft)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode voor de OS-schijf|Geen|
-|Schrijfbewerkingen per schijf per seconde|Bewerkingen voor schrijven van OS-schijven/Sec (afgeschaft)|CountPerSeconde|Average|IOPS schrijven vanaf één schijf tijdens de controleperiode voor de OS-schijf|Geen|
-|OS Per schijf QD|OS Disk QD (afgeschaft)|Count|Average|Diepte van de schijfwachtrij(of wachtrijlengte)|Geen|
+|Bytes per seconde per schijf gelezen|Bytes/Sec gegevensschijf lezen [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/seconde die tijdens de controleperiode vanaf één schijf wordt gelezen|SlotId (SlotId)|
+|Schrijfbytes per schijf per seconde|Bytes/Sec voor gegevensschijfschrijven [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/sec die tijdens de controleperiode naar één schijf is geschreven|SlotId (SlotId)|
+|Leesbewerkingen per schijf per seconde|Gegevensschijfleesbewerkingen/Sec [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
+|Schrijfbewerkingen per schijf per seconde|Gegevensschijfschrijfbewerkingen/Sec [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS schrijven vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
+|QD per schijf|Gegevensschijf QD [(afgeschaft)](portal-disk-metrics-deprecation.md)|Count|Average|Gegevensschijfwachtrijdiepte(of wachtrijlengte)|SlotId (SlotId)|
+|Bytes per seconde voor gelezen besturingssysteem per schijf|Bytes/Sec voor gelezen SCHIJVEN [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/seconde die van één schijf tijdens controleperiode voor OS-schijf worden gelezen|Geen|
+|Schrijven bytes per schijf per seconde per schijf|Bytes/Sec voor schrijven in de schijf van HET BE [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/sec die naar één schijf is geschreven tijdens de controleperiode voor de os-schijf|Geen|
+|Leesbewerkingen van het besturingssysteem per schijf per seconde|Bewerkingen voor lezen van schijven/sec van het besturingssysteem [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode voor de OS-schijf|Geen|
+|Schrijfbewerkingen per schijf per seconde|Bewerkingen voor schrijven van OS-schijven/Sec [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS schrijven vanaf één schijf tijdens de controleperiode voor de OS-schijf|Geen|
+|OS Per schijf QD|OS Disk QD [(afgeschaft)](portal-disk-metrics-deprecation.md)|Count|Average|Diepte van de schijfwachtrij(of wachtrijlengte)|Geen|
 |Bytes/seconde gegevensschijf gelezen|Bytes/Seconde voor gegevensschijf lezen (voorbeeld)|CountPerSeconde|Average|Bytes/seconde die tijdens de controleperiode vanaf één schijf wordt gelezen|LUN, VMName|
 |Schrijfbytes voor gegevensschijf per seconde|Bytes/sec voor gegevensschijf schrijven (voorbeeld)|CountPerSeconde|Average|Bytes/sec die tijdens de controleperiode naar één schijf is geschreven|LUN, VMName|
 |Leesbewerkingen gegevensschijf/sec|Gegevensschijfleesbewerkingen/Sec (voorbeeld)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode|LUN, VMName|
@@ -623,8 +628,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Wachtrijlengte van besturingssysteemschijf|Diepte van de schijfwachtrij van HET BE (voorbeeld)|Count|Average|Diepte van de schijfwachtrij(of wachtrijlengte)|VMName|
 |Binnenkomende stromen|Binnenkomende stromen|Count|Average|Binnenkomende stromen zijn het aantal stroomstromen in de inkomende richting (verkeer dat naar de VM gaat)|VMName|
 |Uitgaande stromen|Uitgaande stromen|Count|Average|Uitgaande stromen zijn het aantal stroomstromen in de uitgaande richting (verkeer dat uit de VM gaat)|VMName|
-|Maximale creatiesnelheid inkomende stromen|Maximale creatiesnelheid inkomende stromen (voorbeeld)|CountPerSeconde|Average|Het maximale creatiepercentage van inkomende stromen (verkeer dat naar de VM gaat)|VMName|
-|Maximale creatiesnelheid voor uitgaande stromen|Maximale creatiesnelheid uitgaande stromen (voorbeeld)|CountPerSeconde|Average|Het maximale creatiepercentage van uitgaande stromen (verkeer dat uit de VM gaat)|VMName|
+|Maximale creatiesnelheid inkomende stromen|Maximale creatiesnelheid inkomende stromen|CountPerSeconde|Average|Het maximale creatiepercentage van inkomende stromen (verkeer dat naar de VM gaat)|VMName|
+|Maximale creatiesnelheid voor uitgaande stromen|Maximale creatiesnelheid voor uitgaande stromen|CountPerSeconde|Average|Het maximale creatiepercentage van uitgaande stromen (verkeer dat uit de VM gaat)|VMName|
 |Premium Data Disk Cache Read Hit|Gelezen hit in de schijfcache van Premium-gegevens (voorbeeld)|Percentage|Average|Premium Data Disk Cache Read Hit|LUN, VMName|
 |Premium Data Disk Cache Lees Miss|Leesmisser van de schijfcache van Premium-gegevens (voorbeeld)|Percentage|Average|Premium Data Disk Cache Lees Miss|LUN, VMName|
 |Premium OS Disk Cache Read Hit|Premium OS Disk Cache Read Hit (Preview)|Percentage|Average|Premium OS Disk Cache Read Hit|VMName|
@@ -646,16 +651,16 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Bewerkingen voor schijfschrijfbewerkingen/sec|Bewerkingen voor schijfschrijfbewerkingen/sec|CountPerSeconde|Average|SchijfschrijfiOPS|Geen|
 |Resterende CPU-credits|Resterende CPU-credits|Count|Average|Totaal aantal credits beschikbaar om te barsten|Geen|
 |CPU-credits verbruikt|CPU-credits verbruikt|Count|Average|Totaal aantal credits verbruikt door de virtuele machine|Geen|
-|Bytes per seconde per schijf gelezen|Bytes/Sec gegevensschijf lezen (afgeschaft)|CountPerSeconde|Average|Bytes/seconde die tijdens de controleperiode vanaf één schijf wordt gelezen|SlotId (SlotId)|
-|Schrijfbytes per schijf per seconde|Bytes/Sec voor gegevensschijfschrijven (afgeschaft)|CountPerSeconde|Average|Bytes/sec die tijdens de controleperiode naar één schijf is geschreven|SlotId (SlotId)|
-|Leesbewerkingen per schijf per seconde|Gegevensschijfleesbewerkingen/Sec (afgeschaft)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
-|Schrijfbewerkingen per schijf per seconde|Gegevensschijfschrijfbewerkingen/Sec (afgeschaft)|CountPerSeconde|Average|IOPS schrijven vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
-|QD per schijf|Gegevensschijf QD (afgeschaft)|Count|Average|Gegevensschijfwachtrijdiepte(of wachtrijlengte)|SlotId (SlotId)|
-|Bytes per seconde voor gelezen besturingssysteem per schijf|Bytes/Sec voor gelezen SCHIJVEN (afgeschaft)|CountPerSeconde|Average|Bytes/seconde die van één schijf tijdens controleperiode voor OS-schijf worden gelezen|Geen|
-|Schrijven bytes per schijf per seconde per schijf|Bytes/Sec voor schrijven in de schijf van HET BE (afgeschaft)|CountPerSeconde|Average|Bytes/sec die naar één schijf is geschreven tijdens de controleperiode voor de os-schijf|Geen|
-|Leesbewerkingen van het besturingssysteem per schijf per seconde|Bewerkingen voor lezen van schijven/sec van het besturingssysteem (afgeschaft)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode voor de OS-schijf|Geen|
-|Schrijfbewerkingen per schijf per seconde|Bewerkingen voor schrijven van OS-schijven/Sec (afgeschaft)|CountPerSeconde|Average|IOPS schrijven vanaf één schijf tijdens de controleperiode voor de OS-schijf|Geen|
-|OS Per schijf QD|OS Disk QD (afgeschaft)|Count|Average|Diepte van de schijfwachtrij(of wachtrijlengte)|Geen|
+|Bytes per seconde per schijf gelezen|Bytes/Sec gegevensschijf lezen [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/seconde die tijdens de controleperiode vanaf één schijf wordt gelezen|SlotId (SlotId)|
+|Schrijfbytes per schijf per seconde|Bytes/Sec voor gegevensschijfschrijven [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/sec die tijdens de controleperiode naar één schijf is geschreven|SlotId (SlotId)|
+|Leesbewerkingen per schijf per seconde|Gegevensschijfleesbewerkingen/Sec [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
+|Schrijfbewerkingen per schijf per seconde|Gegevensschijfschrijfbewerkingen/Sec [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS schrijven vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
+|QD per schijf|Gegevensschijf QD [(afgeschaft)](portal-disk-metrics-deprecation.md)|Count|Average|Gegevensschijfwachtrijdiepte(of wachtrijlengte)|SlotId (SlotId)|
+|Bytes per seconde voor gelezen besturingssysteem per schijf|Bytes/Sec voor gelezen SCHIJVEN [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/seconde die van één schijf tijdens controleperiode voor OS-schijf worden gelezen|Geen|
+|Schrijven bytes per schijf per seconde per schijf|Bytes/Sec voor schrijven in de schijf van HET BE [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/sec die naar één schijf is geschreven tijdens de controleperiode voor de os-schijf|Geen|
+|Leesbewerkingen van het besturingssysteem per schijf per seconde|Bewerkingen voor lezen van schijven/sec van het besturingssysteem [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode voor de OS-schijf|Geen|
+|Schrijfbewerkingen per schijf per seconde|Bewerkingen voor schrijven van OS-schijven/Sec [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS schrijven vanaf één schijf tijdens de controleperiode voor de OS-schijf|Geen|
+|OS Per schijf QD|OS Disk QD [(afgeschaft)](portal-disk-metrics-deprecation.md)|Count|Average|Diepte van de schijfwachtrij(of wachtrijlengte)|Geen|
 |Bytes/seconde gegevensschijf gelezen|Bytes/Seconde voor gegevensschijf lezen (voorbeeld)|CountPerSeconde|Average|Bytes/seconde die tijdens de controleperiode vanaf één schijf wordt gelezen|Lun|
 |Schrijfbytes voor gegevensschijf per seconde|Bytes/sec voor gegevensschijf schrijven (voorbeeld)|CountPerSeconde|Average|Bytes/sec die tijdens de controleperiode naar één schijf is geschreven|Lun|
 |Leesbewerkingen gegevensschijf/sec|Gegevensschijfleesbewerkingen/Sec (voorbeeld)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode|Lun|
@@ -668,8 +673,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Wachtrijlengte van besturingssysteemschijf|Diepte van de schijfwachtrij van HET BE (voorbeeld)|Count|Average|Diepte van de schijfwachtrij(of wachtrijlengte)|Geen|
 |Binnenkomende stromen|Binnenkomende stromen|Count|Average|Binnenkomende stromen zijn het aantal stroomstromen in de inkomende richting (verkeer dat naar de VM gaat)|Geen|
 |Uitgaande stromen|Uitgaande stromen|Count|Average|Uitgaande stromen zijn het aantal stroomstromen in de uitgaande richting (verkeer dat uit de VM gaat)|Geen|
-|Maximale creatiesnelheid inkomende stromen|Maximale creatiesnelheid inkomende stromen (voorbeeld)|CountPerSeconde|Average|Het maximale creatiepercentage van inkomende stromen (verkeer dat naar de VM gaat)|Geen|
-|Maximale creatiesnelheid voor uitgaande stromen|Maximale creatiesnelheid uitgaande stromen (voorbeeld)|CountPerSeconde|Average|Het maximale creatiepercentage van uitgaande stromen (verkeer dat uit de VM gaat)|Geen|
+|Maximale creatiesnelheid inkomende stromen|Maximale creatiesnelheid inkomende stromen|CountPerSeconde|Average|Het maximale creatiepercentage van inkomende stromen (verkeer dat naar de VM gaat)|Geen|
+|Maximale creatiesnelheid voor uitgaande stromen|Maximale creatiesnelheid voor uitgaande stromen|CountPerSeconde|Average|Het maximale creatiepercentage van uitgaande stromen (verkeer dat uit de VM gaat)|Geen|
 |Premium Data Disk Cache Read Hit|Gelezen hit in de schijfcache van Premium-gegevens (voorbeeld)|Percentage|Average|Premium Data Disk Cache Read Hit|Lun|
 |Premium Data Disk Cache Lees Miss|Leesmisser van de schijfcache van Premium-gegevens (voorbeeld)|Percentage|Average|Premium Data Disk Cache Lees Miss|Lun|
 |Premium OS Disk Cache Read Hit|Premium OS Disk Cache Read Hit (Preview)|Percentage|Average|Premium OS Disk Cache Read Hit|Geen|
@@ -734,6 +739,21 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |HypervMemoryUsage HyperVMemoryUsage HyperVMemoryUsage HyperV|Edge Compute - Geheugengebruik|Percentage|Average|Hoeveelheid RAM in gebruik|Instancename|
 
 
+## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft.DataCatalog/datacatalogi
+
+|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|---|---|---|---|---|---|
+|AssetDistributionbyclassification|Asset distributie per classificatie|Count|Totaal|Geeft het aantal activa aan waarbij een bepaalde classificatie is toegewezen, d.w.z. ze zijn ingedeeld met dat label.|Classificatie, Bron|
+|AssetDistributionByStorageType|Distributie van activa op opslagtype|Count|Totaal|Geeft het aantal elementen aan met een bepaald opslagtype.|StorageType|
+|NumberOfAssetsWithClassificaties|Aantal activa met ten minste één classificatie|Count|Average|Geeft het aantal elementen aan met ten minste één tagclassificatie.|Geen|
+|ScanCancelled|Scan geannuleerd|Count|Totaal|Geeft het aantal geannuleerde scans aan.|Geen|
+|Scannen voltooid|Scan voltooid|Count|Totaal|Geeft het aantal scans aan dat is voltooid.|Geen|
+|Scannen mislukt|Scannen is mislukt|Count|Totaal|Geeft aan dat het aantal scans is mislukt.|Geen|
+|ScanTimeTaken|Scan tijd genomen|Seconden|Totaal|Geeft de totale scantijd in seconden aan.|Geen|
+|CatalogusActieveGebruikers|Dagelijkse actieve gebruikers|Count|Totaal|Aantal actieve gebruikers dagelijks|Geen|
+|Catalogusgebruik|Gebruiksdistributie per bewerking|Count|Totaal|Geef het aantal bewerkingen aan dat de gebruiker aan de catalogus maakt, d.w.z. Access, Search, Glossary.|Bewerking|
+
+
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafabrieken
 
 |Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
@@ -775,6 +795,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Jobauendedsucces|Succesvolle AU-tijd|Seconden|Totaal|Totale AU tijd voor succesvolle banen.|Geen|
 |JobauendedFailure|Mislukte AU-tijd|Seconden|Totaal|Totale AU-tijd voor mislukte taken.|Geen|
 |Jobaucancelled|Geannuleerde AU-tijd|Seconden|Totaal|Totale AU-tijd voor geannuleerde taken.|Geen|
+|JobStage|Vacatures in fase|Count|Totaal|Aantal vacatures in elke fase.|Geen|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
@@ -786,6 +807,18 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Gegevenslezen|Gegevens lezen|Bytes|Totaal|Totale hoeveelheid gegevens die van de rekening wordt gelezen.|Geen|
 |Schrijfverzoeken|Schrijfverzoeken|Count|Totaal|Aantal gegevens dat aanvragen naar het account schrijft.|Geen|
 |Leesverzoeken|Leesverzoeken|Count|Totaal|Aantal gegevensleesverzoeken naar het account.|Geen|
+
+
+## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
+
+|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|---|---|---|---|---|---|
+|Aantal delen|Verzonden aandelen|Count|Maximum|Aantal verzonden aandelen op de rekening|Sharenaam|
+|Aantal aandelenabonnementen|Ontvangen aandelen|Count|Maximum|Aantal ontvangen aandelen op de rekening|ShareSubscriptionName|
+|SucceededShareSynchronizations|Geslaagde momentopnamen voor verzonden delen|Count|Count|Aantal verzonden delen geslaagd momentopnamen in het account|Geen|
+|FailedShareSynchronizations|Mislukte momentopnamen voor verzonden delen|Count|Count|Aantal verzonden share mislukte momentopnamen in het account|Geen|
+|SucceededShareSubscriptionSynchronizations|Geslaagde momentopnamen voor ontvangen delen|Count|Count|Aantal ontvangen delen geslaagd momentopnamen in de account|Geen|
+|FailedShareSubscriptionSynchronizations|Mislukte momentopnamen voor ontvangen delen|Count|Count|Aantal mislukte momentopnamen van ontvangen delen in het account|Geen|
 
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
@@ -866,6 +899,23 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |network_bytes_ingress|Netwerk in|Bytes|Totaal|Netwerk In over actieve verbindingen|Geen|
 
 
+## <a name="microsoftdbforpostgresqlsingleservers"></a>Microsoft.DBforPostgreSQL/singleservers
+
+|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|---|---|---|---|---|---|
+|cpu_percent|CPU-percentage|Percentage|Average|CPU-percentage|Geen|
+|memory_percent|Geheugenpercentage|Percentage|Average|Geheugenpercentage|Geen|
+|iops iops|IOPS|Count|Average|IO-bewerkingen per seconde|Geen|
+|storage_percent|Opslagpercentage|Percentage|Average|Opslagpercentage|Geen|
+|storage_used|Gebruikte opslag|Bytes|Average|Gebruikte opslag|Geen|
+|active_connections|Actieve verbindingen|Count|Average|Actieve verbindingen|Geen|
+|network_bytes_egress|Netwerk uit|Bytes|Totaal|Netwerk uit over actieve verbindingen|Geen|
+|network_bytes_ingress|Netwerk in|Bytes|Totaal|Netwerk In over actieve verbindingen|Geen|
+|connections_failed|Mislukte verbindingen|Count|Totaal|Mislukte verbindingen|Geen|
+|connections_succeeded|Geslaagde verbindingen|Count|Totaal|Geslaagde verbindingen|Geen|
+|maximum_used_transactionIDs|Maximale gebruikte transactie-i-d's|Count|Average|Maximale gebruikte transactie-i-d's|Geen|
+
+
 
 
 
@@ -898,8 +948,10 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |d2c.endpoints.latency.storage|Routering: berichtlatentie voor opslag|Milliseconden|Average|De gemiddelde latentie (milliseconden) tussen berichtbinnendringen naar IoT Hub en telemetrie bericht binnendringen in een opslag eindpunt.|Geen|
 |d2c.endpoints.egress.storage.bytes|Routering: gegevens die aan opslag worden geleverd|Bytes|Totaal|De hoeveelheid gegevens (bytes) IoT Hub-routering die wordt geleverd aan opslageindpunten.|Geen|
 |d2c.endpoints.egress.storage.blobs|Routering: blobs geleverd aan opslag|Count|Totaal|Het aantal keren dat IoT Hub-routering blobs naar opslageindpunten heeft geleverd.|Geen|
-|EventGridDeliveries EventGridDeliveries EventGridDeliveries EventGrid|Gebeurtenisgridleveringen(preview)|Count|Totaal|Het aantal IoT Hub-gebeurtenissen dat is gepubliceerd in Event Grid. Gebruik de dimensie Resultaat voor het aantal geslaagde en mislukte aanvragen. Met de dimensie EventTypehttps://aka.ms/ioteventgrid)wordt het type gebeurtenis weergegeven ( .|Resourceid, Resultaat, Eventtype|
+|EventGridDeliveries EventGridDeliveries EventGridDeliveries EventGrid|Gebeurtenisgridleveringen (voorbeeld)|Count|Totaal|Het aantal IoT Hub-gebeurtenissen dat is gepubliceerd in Event Grid. Gebruik de dimensie Resultaat voor het aantal geslaagde en mislukte aanvragen. Met de dimensie EventTypehttps://aka.ms/ioteventgrid)wordt het type gebeurtenis weergegeven ( .|Resourceid, Resultaat, Eventtype|
 |EventGridLatentie|Latentie van gebeurtenisraster (voorbeeld)|Milliseconden|Average|De gemiddelde latentie (milliseconden) vanaf het moment dat de gebeurtenis Iot Hub werd gegenereerd tot het moment waarop de gebeurtenis werd gepubliceerd in Gebeurtenisraster. Dit getal is een gemiddelde tussen alle gebeurtenistypen. Gebruik de dimensie EventType om de latentie van een specifiek type gebeurtenis te zien.|ResourceId, EventType|
+|RouteringLeveringen|Routeringsleveringen (voorbeeld)|Milliseconden|Totaal|Het aantal keren dat IoT Hub heeft geprobeerd berichten aan alle eindpunten te leveren via routering. Als u het aantal geslaagde of mislukte pogingen wilt zien, gebruikt u de dimensie Resultaat. Als u de reden van het mislukken wilt zien, zoals ongeldig, laten vallen of verweesd, gebruikt u de dimensie FailureReasonCategory. U ook de dimensies EndpointName en EndpointType gebruiken om te begrijpen hoeveel berichten op uw verschillende eindpunten zijn afgeleverd. De metrische waarde wordt met één verhoogd voor elke afleverpoging, inclusief als het bericht op meerdere eindpunten wordt bezorgd of als het bericht meerdere keren op hetzelfde eindpunt wordt bezorgd.|ResourceId, EndpointType, EndpointName, FailureReasonCategory,Resultaat,RoutingSource|
+|Routeringslatentie|Latentie voor routeringsweergave (voorbeeld)|Milliseconden|Average|De gemiddelde latentie (milliseconden) tussen bericht binnendringen naar IoT Hub en telemetrie bericht binnendringen in een eindpunt. U de afmetingen EndpointName en EndpointType gebruiken om inzicht te krijgen in de latentie voor uw verschillende eindpunten.|ResourceId, EndpointType, EndpointName, RoutingSource|
 |d2c.twin.read.success|Succesvolle tweeling leest van apparaten|Count|Totaal|De telling van alle succesvolle apparaat-geïnitieerde tweeling leest.|Geen|
 |d2c.twin.read.failure|Mislukte tweeling leest van apparaten|Count|Totaal|De telling van alle mislukte apparaat-geïnitieerde tweeling leest.|Geen|
 |d2c.twin.read.size|Reactiegrootte van dubbele leest van apparaten|Bytes|Average|Het gemiddelde, min, en max van alle succesvolle apparaat geïnitieerde tweeling leest.|Geen|
@@ -949,6 +1001,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |AttestationPogingen|Attestpogingen|Count|Totaal|Aantal apparaatverklaringen geprobeerd|ProvisioningServiceName, Status,Protocol|
 
 
+
+
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 |Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
@@ -956,32 +1010,62 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Regio toevoegen|Regio toegevoegd|Count|Count|Regio toegevoegd|Regio|
 |Beschikbare opslagruimte|Beschikbare opslagruimte|Bytes|Totaal|Totaal beschikbare opslag gerapporteerd bij 5 minuten granulariteit|CollectionName, DatabaseName,Regio|
 |CassandraConnectionSluitingen|Cassandra Connection Sluitingen|Count|Totaal|Aantal Cassandra-verbindingen dat gesloten is, gerapporteerd op een granulariteit van 1 minuut|APIType, Regio, ClosureReason|
+|CassandraKeyspaceDelete CassandraKeyspaceDelete|Cassandra Keyspace verwijderd|Count|Count|Cassandra Keyspace verwijderd|ResourceName, apikind, apikindResourcetype, operationtype|
+|CassandraKeyspaceThroughputUpdate|Cassandra Keyspace-doorvoer bijgewerkt|Count|Count|Cassandra Keyspace-doorvoer bijgewerkt|ResourceName, apikind, apikindResourcetype, IsThroughputRequest|
+|CassandraKeyspaceUpdate|Cassandra Keyspace bijgewerkt|Count|Count|Cassandra Keyspace bijgewerkt|ResourceName, apikind, apikindResourcetype, IsThroughputRequest|
 |CassandraRequestCharges|Cassandra Verzoek Kosten|Count|Totaal|RU's verbruikt voor Cassandra verzoeken gedaan|APIType,DatabaseName,CollectionName,Region,OperationType,ResourceType|
 |CassandraRequests|Cassandra Verzoeken|Count|Count|Aantal Cassandra verzoeken gedaan|APIType,DatabaseName,CollectionName,Region,OperationType,ResourceType,ErrorCode|
+|CassandraTableDelete|Cassandra Tafel verwijderd|Count|Count|Cassandra Tafel verwijderd|ResourceName, ChildResourceName, ApiKind, ApiKindResourceType, OperationType|
+|CassandraTableThroughputUpdate|Cassandra-tabeldoorvoer bijgewerkt|Count|Count|Cassandra-tabeldoorvoer bijgewerkt|Resourcename, ChildResourceName, ApiKind, ApiKindResourceType, IsThroughputRequest|
+|CassandraTableUpdate|Cassandra Tafel bijgewerkt|Count|Count|Cassandra Tafel bijgewerkt|Resourcename, ChildResourceName, ApiKind, ApiKindResourceType, IsThroughputRequest|
 |Account maken|Account gemaakt|Count|Count|Account gemaakt|Geen|
 |DataGebruik|Gegevensgebruik|Bytes|Totaal|Totaal gegevensgebruik gerapporteerd bij granulariteit van 5 minuten|CollectionName, DatabaseName,Regio|
 |Account verwijderen|Account verwijderd|Count|Count|Account verwijderd|Geen|
 |Documenttelling|Documentaantal|Count|Totaal|Totaal aantal documenten gerapporteerd bij granulariteit van 5 minuten|CollectionName, DatabaseName,Regio|
 |Documentquota|Documentquota|Bytes|Totaal|Totaal opslagquotum gerapporteerd bij granulariteit van 5 minuten|CollectionName, DatabaseName,Regio|
+|GremlinDatabaseDelete GremlinDatabaseDelete|Gremlin-database verwijderd|Count|Count|Gremlin-database verwijderd|ResourceName, apikind, apikindResourcetype, operationtype|
+|GremlinDatabaseThroughputUpdate|Gremlin Database Doorvoer bijgewerkt|Count|Count|Gremlin Database Doorvoer bijgewerkt|ResourceName, apikind, apikindResourcetype, IsThroughputRequest|
+|GremlinDatabaseUpdate|Gremlin-database bijgewerkt|Count|Count|Gremlin-database bijgewerkt|ResourceName, apikind, apikindResourcetype, IsThroughputRequest|
+|GremlinGraphDelete GremlinGraphDelete GremlinGraphDelete Greml|Gremlin-grafiek verwijderd|Count|Count|Gremlin-grafiek verwijderd|ResourceName, ChildResourceName, ApiKind, ApiKindResourceType, OperationType|
+|GremlinGraphThroughputUpdate|Gremlin-grafiekdoorvoer bijgewerkt|Count|Count|Gremlin-grafiekdoorvoer bijgewerkt|Resourcename, ChildResourceName, ApiKind, ApiKindResourceType, IsThroughputRequest|
+|GremlinGraphUpdate|Gremlin Grafiek bijgewerkt|Count|Count|Gremlin Grafiek bijgewerkt|Resourcename, ChildResourceName, ApiKind, ApiKindResourceType, IsThroughputRequest|
 |IndexGebruik|Indexgebruik|Bytes|Totaal|Totaal indexgebruik gerapporteerd op 5 minuten granulariteit|CollectionName, DatabaseName,Regio|
 |MetagegevensVerzoeken|Metagegevensaanvragen|Count|Count|Aantal metagegevensaanvragen. Cosmos DB onderhoudt systeemmetadata verzameling voor elk account, waarmee u collecties, databases, etc, en hun configuraties gratis opsommen.|Databasenaam, CollectionName,Regio,Statuscode, Rol|
-|MongoRequest|Mongo Aanvraag Kosten|Count|Totaal|Mongo Aanvraag Eenheden verbruikt|Databasenaam, CollectionName,Regio,CommandName, ErrorCode|
-|MongoRequests|Mongo-verzoeken|Count|Count|Aantal Mongo-verzoeken|Databasenaam, CollectionName,Regio,CommandName, ErrorCode|
+|MongoCollectionDelete|Mongo-verzameling verwijderd|Count|Count|Mongo-verzameling verwijderd|ResourceName, ChildResourceName, ApiKind, ApiKindResourceType, OperationType|
+|MongoCollectionThroughputUpdate|Mongo-collectiedoorvoer bijgewerkt|Count|Count|Mongo-collectiedoorvoer bijgewerkt|Resourcename, ChildResourceName, ApiKind, ApiKindResourceType, IsThroughputRequest|
+|MongoCollectionUpdate|Mongo-collectie bijgewerkt|Count|Count|Mongo-collectie bijgewerkt|Resourcename, ChildResourceName, ApiKind, ApiKindResourceType, IsThroughputRequest|
+|MongoDBDatabaseUpdate|Mongo-database bijgewerkt|Count|Count|Mongo-database bijgewerkt|ResourceName, apikind, apikindResourcetype, IsThroughputRequest|
+|MongoDatabaseDelete MongoDatabaseDelete|Mongo-database verwijderd|Count|Count|Mongo-database verwijderd|ResourceName, apikind, apikindResourcetype, operationtype|
+|MongoDatabaseThroughputUpdate|Mongo-databasedoorvoer bijgewerkt|Count|Count|Mongo-databasedoorvoer bijgewerkt|ResourceName, apikind, apikindResourcetype, IsThroughputRequest|
+|MongoRequest|Mongo Aanvraag Kosten|Count|Totaal|Mongo Aanvraag Eenheden verbruikt|Databasenaam, CollectionName,Regio,CommandName, ErrorCode, Status|
+|MongoRequests|Mongo-verzoeken|Count|Count|Aantal Mongo-verzoeken|Databasenaam, CollectionName,Regio,CommandName, ErrorCode, Status|
 |Aantal mongoverzoeken|Mongo-aanvraagtarief|CountPerSeconde|Average|Mongo aanvraag Aantal per seconde|Databasenaam, CollectionName,Regio,CommandName, ErrorCode|
 |MongoRequestsDelete|Aanvraagtarief voor mongo verwijderen|CountPerSeconde|Average|Mongo Delete-aanvraag per seconde|Databasenaam, CollectionName,Regio,CommandName, ErrorCode|
 |MongoRequestsInsert|Aanvraagpercentage voor invoegen van Mongo|CountPerSeconde|Average|Aantal invoegplaten per seconde|Databasenaam, CollectionName,Regio,CommandName, ErrorCode|
 |MongoRequestsQuery|Mongo-aanvraagpercentage|CountPerSeconde|Average|Mongo Query-aanvraag per seconde|Databasenaam, CollectionName,Regio,CommandName, ErrorCode|
 |MongoRequestsUpdate|Mongo-updateaanvraagpercentage|CountPerSeconde|Average|Aanvraag voor Mongo-update per seconde|Databasenaam, CollectionName,Regio,CommandName, ErrorCode|
+|Genormaliseerd RUConsumption|Genormaliseerd RU-verbruik|Percentage|Maximum|Maximaal RU-verbruikspercentage per minuut|CollectionName, DatabaseName,Regio|
 |Voorzieningen|Ingerichte doorvoer|Count|Maximum|Ingerichte doorvoer|DatabaseNaam, CollectionName|
 |RegioFailover|Regio mislukt voorbij|Count|Count|Regio mislukt voorbij|Geen|
 |Regio verwijderen|Regio verwijderd|Count|Count|Regio verwijderd|Regio|
 |Replicatielatentie|Laattie voor P99-replicatie|Milliseconden|Average|P99-replicatielatentie in bron- en doelregio's voor een geo-enabled account|Bronregio, Doelregio|
+|ServerSideLatentie|Latentie aan serverzijde|Milliseconden|Average|Latentie aan serverzijde|DatabaseNaam, CollectionName,Regio,ConnectionMode, OperationType, PublicAPIType|
 |Beschikbaarheid van service|Beschikbaarheid van service|Percentage|Average|Beschikbaarheid van accountaanvragen op een uur, dag of maand granulariteit|Geen|
-|TotalRequestUnits|Eenheden voor totale aanvragen|Count|Totaal|Eenheden aanvragen verbruikt|Databasenaam, CollectionName,Regio,StatusCode, OperationType|
-|TotalRequests|Totaal aantal aanvragen|Count|Count|Aantal gedaane verzoeken|Databasenaam, CollectionName,Regio,StatusCode, OperationType|
+|SqlContainerDelete SqlContainerDelete|Sql-container verwijderd|Count|Count|Sql-container verwijderd|ResourceName, ChildResourceName, ApiKind, ApiKindResourceType, OperationType|
+|SqlContainerThroughputUpdate SqlContainerThroughputUpdate|Sql-containerdoorvoer bijgewerkt|Count|Count|Sql-containerdoorvoer bijgewerkt|Resourcename, ChildResourceName, ApiKind, ApiKindResourceType, IsThroughputRequest|
+|SqlContainerUpdate SqlContainerUpdate|Sql-container bijgewerkt|Count|Count|Sql-container bijgewerkt|Resourcename, ChildResourceName, ApiKind, ApiKindResourceType, IsThroughputRequest|
+|SqlDatabaseDelete SqlDatabaseDelete|Sql-database verwijderd|Count|Count|Sql-database verwijderd|ResourceName, apikind, apikindResourcetype, operationtype|
+|SqlDatabaseThroughputUpdate SqlDatabaseThroughputUpdate|Sql-databasedoorvoer bijgewerkt|Count|Count|Sql-databasedoorvoer bijgewerkt|ResourceName, apikind, apikindResourcetype, IsThroughputRequest|
+|SqlDatabaseUpdate SqlDatabaseUpdate|Sql-database bijgewerkt|Count|Count|Sql-database bijgewerkt|ResourceName, apikind, apikindResourcetype, IsThroughputRequest|
+|Tabeltabelverwijderen|AzureTable-tabel verwijderd|Count|Count|AzureTable-tabel verwijderd|ResourceName, apikind, apikindResourcetype, operationtype|
+|TabeltabeldoorvoerUpdate|AzureTable-tabeldoorvoer bijgewerkt|Count|Count|AzureTable-tabeldoorvoer bijgewerkt|ResourceName, apikind, apikindResourcetype, IsThroughputRequest|
+|TabeltabelUpdate|AzureTable-tabel bijgewerkt|Count|Count|AzureTable-tabel bijgewerkt|ResourceName, apikind, apikindResourcetype, IsThroughputRequest|
+|TotalRequestUnits|Eenheden voor totale aanvragen|Count|Totaal|Eenheden aanvragen verbruikt|Databasenaam, CollectionName,Regio,StatusCode, OperationType, Status|
+|TotalRequests|Totaal aantal aanvragen|Count|Count|Aantal gedaane verzoeken|Databasenaam, CollectionName,Regio,StatusCode, OperationType, Status|
 |Accountkeys bijwerken|Accountsleutels bijgewerkt|Count|Count|Accountsleutels bijgewerkt|Keytype|
 |Instellingen voor UpdateAccountNetwork|Accountnetwerkinstellingen bijgewerkt|Count|Count|Accountnetwerkinstellingen bijgewerkt|Geen|
 |Instellingen voor updateAccountReplicatie|Accountreplicatie-instellingen bijgewerkt|Count|Count|Accountreplicatie-instellingen bijgewerkt|Geen|
+|Instellingen voor bijwerken|Diagnostische instellingen voor account bijgewerkt|Count|Count|Diagnostische instellingen voor account bijgewerkt|DiagnosticSettingsName,ResourceGroupName|
 
 
 
@@ -1023,6 +1107,21 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Aantal gevallengebeurtenissen|Gebeurtenissen laten vallen|Count|Totaal|Totaal aantal gevallen gebeurtenissen die overeenkomen met dit gebeurtenisabonnement|DropReason,EventSubscriptionName|
 |DeadLetteredCount DeadLetteredCount DeadLetteredCount DeadLetter|Dode letterde gebeurtenissen|Count|Totaal|Totaal aantal dode-geletterde evenementen dat overeenkomt met dit evenementabonnement|DeadletterReason, EventSubscriptionName|
 
+## <a name="microsofteventgridsystemtopics"></a>Microsoft.EventGrid/systemTopics
+
+|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|---|---|---|---|---|---|
+|SuccessCount publiceren|Gepubliceerde evenementen|Count|Totaal|Totaal aantal gebeurtenissen gepubliceerd in dit onderwerp|Geen|
+|Aantal publishfailfail|Mislukte gebeurtenissen publiceren|Count|Totaal|Totaal aantal gebeurtenissen kan niet worden gepubliceerd in dit onderwerp|ErrorType,Fout|
+|Ongeëvenaardaantal gebeurtenissen|Ongeëvenaarde evenementen|Count|Totaal|Totaal aantal evenementen komt niet overeen met een van de gebeurtenisabonnementen voor dit onderwerp|Geen|
+|PublicerenSuccessLatencyInMs|Succeslatentie publiceren|Milliseconden|Totaal|Succeslatentie publiceren in milliseconden|Geen|
+|MatchedEventCount|Overeenkomende gebeurtenissen|Count|Totaal|Totaal aantal evenementen dat is gekoppeld aan dit evenementabonnement|EventSubscriptionName|
+|DeliveryAttemptFailCount|Mislukte gebeurtenissen voor bezorging|Count|Totaal|Totaal aantal gebeurtenissen kan niet worden geleverd aan dit gebeurtenisabonnement|Fout,ErrorType,EventSubscriptionName|
+|DeliverySuccessCount|Geleverde evenementen|Count|Totaal|Totaal aantal evenementen dat is geleverd aan dit evenementabonnement|EventSubscriptionName|
+|DestinationProcessingDurationInMs|Duur bestemmingsverwerking|Milliseconden|Average|Duur van bestemmingsverwerking in milliseconden|EventSubscriptionName|
+|Aantal gevallengebeurtenissen|Gebeurtenissen laten vallen|Count|Totaal|Totaal aantal gevallen gebeurtenissen die overeenkomen met dit gebeurtenisabonnement|DropReason,EventSubscriptionName|
+|DeadLetteredCount DeadLetteredCount DeadLetteredCount DeadLetter|Dode letterde gebeurtenissen|Count|Totaal|Totaal aantal dode-geletterde evenementen dat overeenkomt met dit evenementabonnement|DeadletterReason, EventSubscriptionName|
+
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft.EventGrid/eventAbonnementen
 
 |Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
@@ -1042,6 +1141,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Aantal publishfailfail|Mislukte gebeurtenissen publiceren|Count|Totaal|Totaal aantal gebeurtenissen kan niet worden gepubliceerd in dit onderwerp|ErrorType,Fout|
 |Ongeëvenaardaantal gebeurtenissen|Ongeëvenaarde evenementen|Count|Totaal|Totaal aantal evenementen komt niet overeen met een van de gebeurtenisabonnementen voor dit onderwerp|Geen|
 |PublicerenSuccessLatencyInMs|Succeslatentie publiceren|Milliseconden|Totaal|Succeslatentie publiceren in milliseconden|Geen|
+
 
 
 
@@ -1106,6 +1206,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |CapturedBytes|Vastgelegde bytes.|Bytes|Totaal|Vastgelegde bytes voor Microsoft.EventHub.|Geen|
 |CPU|CPU|Percentage|Maximum|CPU-gebruik voor het cluster Gebeurtenishub als percentage|Rol|
 |BeschikbaarGeheugen|Beschikbaar geheugen|Percentage|Maximum|Beschikbaar geheugen voor het cluster van de gebeurtenishub als percentage van het totale geheugen.|Rol|
+|Grootte|Grootte van een EventHub in bytes.|Bytes|Average|Grootte van een EventHub in bytes.|Rol|
 
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
@@ -1126,9 +1227,6 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |WaargenomenCapaciteit|Waargenomen capaciteit|Count|Average|De capaciteit die wordt gerapporteerd aan autoscale wanneer deze werd uitgevoerd.|Geen|
 |ScaleActionsInitiated|Schaalacties gestart|Count|Totaal|De richting van de schaalbewerking.|Schaalrichting|
 
-
-
-
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Componenten
 
 |Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
@@ -1141,9 +1239,9 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |browserTimings/receiveDuration|Ontvangstvan de reactietijd|Milliseconden|Average|Tijd tussen de eerste en laatste bytes, of tot de verbinding.|Geen|
 |browserTimings/sendDuration|Aanvraagtijd verzenden|Milliseconden|Average|Tijd tussen netwerkverbinding en ontvangst van de eerste byte.|Geen|
 |browserTimings/totalDuration|Laadtijd van browserpagina's|Milliseconden|Average|Tijd vanaf gebruikersaanvraag tot DOM, stylesheets, scripts en afbeeldingen worden geladen.|Geen|
-|afhankelijkheden/aantal|Afhankelijkheidsoproepen|Count|Count|Aantal oproepen die door de toepassing naar externe bronnen worden gedaan.|afhankelijkheid/type,afhankelijkheid/performanceBucket, afhankelijkheid/succes,afhankelijkheid/doel,bewerking/synthetisch,cloud/roleInstance,cloud/roleName|
-|afhankelijkheden/duur|Afhankelijkheidsduur|Milliseconden|Average|Duur van de oproepen die door de toepassing naar externe bronnen worden gedaan.|afhankelijkheid/type,afhankelijkheid/performanceBucket, afhankelijkheid/succes,afhankelijkheid/doel,bewerking/synthetisch,cloud/roleInstance,cloud/roleName|
-|afhankelijkheden/mislukt|Fouten in afhankelijkheidsoproepen|Count|Count|Aantal mislukte afhankelijkheidsoproepen die door de toepassing naar externe bronnen worden uitgevoerd.|afhankelijkheid/type,afhankelijkheid/performanceBucket, afhankelijkheid/succes,afhankelijkheid/doel,bewerking/synthetisch,cloud/roleInstance,cloud/roleName|
+|afhankelijkheden/aantal|Afhankelijkheidsoproepen|Count|Count|Aantal oproepen die door de toepassing naar externe bronnen worden gedaan.|afhankelijkheid/type,afhankelijkheid/performanceBucket, afhankelijkheid/succes,afhankelijkheid/doel,afhankelijkheid/resultaatCode,bewerking/synthetisch,cloud/roleInstance,cloud/roleName|
+|afhankelijkheden/duur|Afhankelijkheidsduur|Milliseconden|Average|Duur van de oproepen die door de toepassing naar externe bronnen worden gedaan.|afhankelijkheid/type,afhankelijkheid/performanceBucket, afhankelijkheid/succes,afhankelijkheid/doel,afhankelijkheid/resultaatCode,bewerking/synthetisch,cloud/roleInstance,cloud/roleName|
+|afhankelijkheden/mislukt|Fouten in afhankelijkheidsoproepen|Count|Count|Aantal mislukte afhankelijkheidsoproepen die door de toepassing naar externe bronnen worden uitgevoerd.|afhankelijkheid/type,afhankelijkheid/performanceBucket, afhankelijkheid/succes,afhankelijkheid/doel,afhankelijkheid/resultaatCode,bewerking/synthetisch,cloud/roleInstance,cloud/roleName|
 |pageViews/count pageViews/count pageViews/count pageViews|Paginaweergaven|Count|Count|Aantal paginaweergaven.|operation/synthetic,cloud/roleName|
 |pageViews/duur|Laadtijd van de paginaweergave|Milliseconden|Average|Laadtijd van de paginaweergave|operation/synthetic,cloud/roleName|
 |performanceCounters/requestExecutionTime|HTTP-aanvraaguitvoeringstijd|Milliseconden|Average|Uitvoeringstijd van het meest recente verzoek.|cloud/rolInstantie|
@@ -1164,6 +1262,20 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |uitzonderingen/server|Serveruitzonderingen|Count|Count|Aantal niet-gevangen uitzonderingen die in de servertoepassing zijn gegooid.|client/isServer,cloud/roleName,cloud/roleInstance|
 |sporen/telling|Traceringen|Count|Count|Aantal traceerdocumenten|trace/severityLevel,operation/synthetic,cloud/roleName,cloud/roleInstance|
 
+
+## <a name="microsoftiotcentraliotapps"></a>Microsoft.IoTCentral/IoTApps
+
+|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|---|---|---|---|---|---|
+|connectedDeviceCount|Totaal verbonden apparaten|Count|Average|Aantal apparaten dat is aangesloten op IoT Central|Geen|
+|c2d.property.read.success|Succesvolle eigenschap apparaat leest van IoT Central|Count|Totaal|De telling van alle succesvolle eigenschappen leest geïnitieerd van IoT Central|Geen|
+|c2d.property.read.failure|De eigenschap Failed Device leest van IoT Central|Count|Totaal|De telling van alle mislukte eigenschap leest geïnitieerd van IoT Central|Geen|
+|d2c.property.read.success|Succesvolle eigenschap apparaat leest van apparaten|Count|Totaal|De telling van alle succesvolle eigenschap leest geïnitieerd van apparaten|Geen|
+|d2c.property.read.failure|De eigenschap Failed Device leest van apparaten|Count|Totaal|De telling van alle mislukte eigenschap leest geïnitieerd van apparaten|Geen|
+|c2d.property.update.success|Succesvolle updates van apparaateigendom van IoT Central|Count|Totaal|De telling van alle succesvolle vastgoedupdates die zijn gestart vanuit IoT Central|Geen|
+|c2d.property.update.failure|Updates van de eigenschap Failed Device van IoT Central|Count|Totaal|De telling van alle mislukte eigenschapsupdates die zijn gestart vanuit IoT Central|Geen|
+|d2c.property.update.success|Updates voor de eigenschap van een succesvol apparaat vanaf apparaten|Count|Totaal|De telling van alle succesvolle eigenschapsupdates die vanaf apparaten zijn gestart|Geen|
+|d2c.property.update.failure|Updates van de eigenschap failed Device van apparaten|Count|Totaal|Het aantal mislukte eigenschapsupdates dat vanaf apparaten is gestart|Geen|
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/kluizen
@@ -1189,10 +1301,10 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |EventsProcessedForEventHubs|Gebeurtenissen verwerkt (voor gebeurtenis/IoT-hubs)|Count|Totaal|Aantal gebeurtenissen dat door het cluster wordt verwerkt wanneer het wordt ingenomen vanuit gebeurtenis/IoT-hub|EventStatus|
 |OpnameResultaat|Innameresultaat|Count|Count|Aantal innamebewerkingen|IngestionResultDetails|
 |CPU|CPU|Percentage|Average|CPU-gebruiksniveau|Geen|
-|ContinuexportNumOfRecordsExported|Continue export – aantal geëxporteerde records|Count|Totaal|Aantal records geëxporteerd, afgevuurd voor elk opslagartefact geschreven tijdens de exportbewerking|Geen|
+|ContinuexportNumOfRecordsExported|Continue export – aantal geëxporteerde records|Count|Totaal|Aantal records geëxporteerd, afgevuurd voor elk opslagartefact geschreven tijdens de exportbewerking|ContinueexportName, Database|
 |ExportGebruik|Gebruik exporteren|Percentage|Maximum|Exportgebruik|Geen|
 |ContinuExportPendingCount|Aantal continue export in behandeling|Count|Maximum|Het aantal lopende continue exporttaken klaar voor uitvoering|Geen|
-|ContinuExportMaxLatenessMinutes|Continue export Max Lateness Minuten|Count|Maximum|De maximale vertraging in minuten van alle continue export in behandeling en klaar voor uitvoering|Geen|
+|ContinuExportMaxLatenessMinutes|Continue export Max Lateness|Count|Maximum|De te late (in minuten) gerapporteerd door de continue exporttaken in het cluster|Geen|
 |ContinuExportResultaat|Continu exportresultaat|Count|Count|Geeft aan of Continue export is geslaagd of mislukt|ContinueexportName, Resultaat, Database|
 |StreamingIngestDuration|Streaming Ingest Duur|Milliseconden|Average|Streaming duurt in milliseconden|Geen|
 |StreamingIngestDataRate|Gegevenssnelheid streamen|Count|Average|Streaming gegevenssnelheid (MB per seconde)|Geen|
@@ -1202,6 +1314,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |TotalNumberNumberOfThrottledQueries|Totaal aantal aanzet tot beperkingen|Count|Totaal|Totaal aantal aanzet tot beperkingen|Geen|
 |TotalNumberNumberOfThrottledCommands TotalNumberOfThrottledCommands TotalNumber|Totaal aantal opdrachten met een beperkt bedrag|Count|Totaal|Totaal aantal opdrachten met een beperkt bedrag|Commandtype|
 |TotalNumberOfExtents TotalNumberExtents TotalNumberOfExtents TotalNumberOf|Totaal aantal inomvang|Count|Totaal|Totaal aantal gegevensomvang|Geen|
+|InstanceCount|Aantal instanties|Count|Average|Totaal aantal instance's|Geen|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/werkstromen
@@ -1242,11 +1355,6 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |BillingUsageNativeOperation|Factureringsgebruik voor uitvoeringen van native bewerkingen|Count|Totaal|Aantal native operatie-uitvoeringen dat wordt gefactureerd.|Geen|
 |FactureringGebruikSstandaardconnector|Factureringsgebruik voor standaardconnectoruitvoeringen|Count|Totaal|Aantal standaardconnectoruitvoeringen die worden gefactureerd.|Geen|
 |FactureringUsageStorageVerbruik|Factureringsgebruik voor uitvoer van opslagverbruik|Count|Totaal|Aantal uitvoeringen van opslagverbruik die worden gefactureerd.|Geen|
-|BillingUsageNativeOperation|Factureringsgebruik voor uitvoeringen van native bewerkingen|Count|Totaal|Aantal native operatie-uitvoeringen dat wordt gefactureerd.|Geen|
-|FactureringGebruikSstandaardconnector|Factureringsgebruik voor standaardconnectoruitvoeringen|Count|Totaal|Aantal standaardconnectoruitvoeringen die worden gefactureerd.|Geen|
-|FactureringUsageStorageVerbruik|Factureringsgebruik voor uitvoer van opslagverbruik|Count|Totaal|Aantal uitvoeringen van opslagverbruik die worden gefactureerd.|Geen|
-
-
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft.Logic/integrationServiceEnvironments
 
@@ -1289,15 +1397,26 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 
 |Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
+|Geannuleerde runs|Geannuleerde runs|Count|Totaal|Aantal geannuleerde runs voor deze werkruimte|Scenario, RunType, PublishedPipelineId, Computetype, PipelineStepType|
+|Aangevraagde runs annuleren|Aangevraagde runs annuleren|Count|Totaal|Aantal runs waarbij annuleren is aangevraagd voor deze werkruimte|Scenario, RunType, PublishedPipelineId, Computetype, PipelineStepType|
 |Voltooide uitvoeringen|Voltooide uitvoeringen|Count|Totaal|Aantal voltooide uitvoeringen voor deze werkruimte|Scenario, RunType, PublishedPipelineId, Computetype, PipelineStepType|
-|Gestarte runs|Gestarte runs|Count|Totaal|Aantal gestarte runs voor deze werkruimte|Scenario, RunType, PublishedPipelineId, Computetype, PipelineStepType|
 |Mislukte uitvoeringen|Mislukte uitvoeringen|Count|Totaal|Aantal runs dat is mislukt voor deze werkruimte|Scenario, RunType, PublishedPipelineId, Computetype, PipelineStepType|
+|Het afronden van runs|Het afronden van runs|Count|Totaal|Aantal ingevoerde actieve runs voor deze werkruimte|Scenario, RunType, PublishedPipelineId, Computetype, PipelineStepType|
+|Niet reageren wordt uitgevoerd|Niet reageren wordt uitgevoerd|Count|Totaal|Aantal runs dat niet reageert voor deze werkruimte|Scenario, RunType, PublishedPipelineId, Computetype, PipelineStepType|
+|Niet gestarte runs|Niet gestarte runs|Count|Totaal|Aantal runs in niet gestarte status voor deze werkruimte|Scenario, RunType, PublishedPipelineId, Computetype, PipelineStepType|
+|Runs voorbereiden|Runs voorbereiden|Count|Totaal|Aantal runs dat zich voorbereidt op deze werkruimte|Scenario, RunType, PublishedPipelineId, Computetype, PipelineStepType|
+|Inrichten van uitvoeringen|Inrichten van uitvoeringen|Count|Totaal|Aantal uitvoeringen dat voor deze werkruimte is ingericht|Scenario, RunType, PublishedPipelineId, Computetype, PipelineStepType|
+|In de wachtrij staande runs|In de wachtrij staande runs|Count|Totaal|Aantal uitvoeringen dat in de wachtrij staat voor deze werkruimte|Scenario, RunType, PublishedPipelineId, Computetype, PipelineStepType|
+|Gestarte runs|Gestarte runs|Count|Totaal|Aantal gestarte runs voor deze werkruimte|Scenario, RunType, PublishedPipelineId, Computetype, PipelineStepType|
+|Startruns|Startruns|Count|Totaal|Aantal gestarte runs voor deze werkruimte|Scenario, RunType, PublishedPipelineId, Computetype, PipelineStepType|
+|Fouten|Fouten|Count|Totaal|Aantal runfouten in deze werkruimte|Scenario|
+|Waarschuwingen|Waarschuwingen|Count|Totaal|Aantal waarschuwingen voor uitvoeren in deze werkruimte|Scenario|
 |Modelregister geslaagd|Modelregister geslaagd|Count|Totaal|Aantal modelregistraties dat in deze werkruimte is geslaagd|Scenario|
 |Modelregister is mislukt|Modelregister is mislukt|Count|Totaal|Aantal modelregistraties dat in deze werkruimte is mislukt|Scenario, Statuscode|
 |Modeldeploy gestart|Modeldeploy gestart|Count|Totaal|Aantal modelimplementaties dat in deze werkruimte is gestart|Scenario|
 |Modeldeploy geslaagd|Modeldeploy geslaagd|Count|Totaal|Aantal modelimplementaties dat is geslaagd in deze werkruimte|Scenario|
 |Modeldeploy mislukt|Modeldeploy mislukt|Count|Totaal|Aantal modelimplementaties dat is mislukt in deze werkruimte|Scenario, Statuscode|
-|Totaal aantal knooppunten|Totaal aantal knooppunten|Count|Average|Aantal totale knooppunten. Dit totaal omvat enkele actieve knooppunten, niet-actieve knooppunten, onbruikbare knooppunten, voorkoming van knooppunten, knooppunten verlaten|Scenario,ClusterNaam|
+|Totaal aantal knooppunten|Totaal aantal knooppunten|Count|Average|Aantal totale knooppunten. Dit totaal omvat enkele actieve knooppunten, niet-actieve knooppunten, onbruikbare knooppunten, vooraf gemepted knooppunten, knooppunten verlaten|Scenario,ClusterNaam|
 |Actieve knooppunten|Actieve knooppunten|Count|Average|Aantal Acitve-knooppunten. Dit zijn de knooppunten die actief een taak uitvoeren.|Scenario,ClusterNaam|
 |Inactieve knooppunten|Inactieve knooppunten|Count|Average|Aantal niet-actieve knooppunten. Niet-actieve knooppunten zijn de knooppunten die geen taken uitvoeren, maar die een nieuwe taak kunnen accepteren indien beschikbaar.|Scenario,ClusterNaam|
 |Onbruikbare knooppunten|Onbruikbare knooppunten|Count|Average|Aantal onbruikbare knooppunten. Onbruikbare knooppunten zijn niet functioneel vanwege een onoplosbaar probleem. Azure recyclet deze knooppunten.|Scenario,ClusterNaam|
@@ -1344,13 +1463,21 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Aantal streamingbeleid|Aantal streamingbeleid|Count|Average|Hoeveel streamingbeleid er al zijn gemaakt in het huidige mediaserviceaccount|Geen|
 |StreamingPolicyQuotaUsedPercentage|Gebruikt percentage streamingbeleid|Percentage|Average|Streamingbeleid gebruikt percentage in huidige mediaserviceaccount|Geen|
 
+
+## <a name="microsoftmixedrealityremoterenderingaccounts"></a>Microsoft.MixedReality/remoteRenderingAccounts
+
+|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|---|---|---|---|---|---|
+|Activa geconverteerd|Geconverteerde activa|Count|Totaal|Totaal aantal geconverteerde activa|AppId, Resourceid, SDKVersion|
+|ActiveRenderingSessies|Actieve renderingsessies|Count|Totaal|Totaal aantal actieve renderingsessies|Appid, Resourceid, SessionType, SDKVersion|
+
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft.NetApp/netAppAccounts/capacityPools/volumes
 
 |Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
 |Gemiddelde leeslatentie|Gemiddelde leeslatentie|Milliseconden|Average|Gemiddelde leeslatentie in milliseconden per bewerking|Geen|
 |Gemiddelde writelatentie|Gemiddelde schrijflatentie|Milliseconden|Average|Gemiddelde schrijflatentie in milliseconden per bewerking|Geen|
-|VolumeLogische grootte|Volumelogische grootte|Bytes|Average|Logische grootte van het volume (gebruikte bytes)|Geen|
+|VolumeLogische grootte|Volume verbruikt grootte|Bytes|Average|Logische grootte van het volume (gebruikte bytes)|Geen|
 |VolumeSnapshotSize|Grootte van volumemomentopnamen|Bytes|Average|Grootte van alle momentopnamen in volume|Geen|
 |ReadIops|Iops lezen|CountPerSeconde|Average|In/uit-bewerkingen per seconde lezen|Geen|
 |Schrijfiops|Iops schrijven|CountPerSeconde|Average|In/out-bewerkingen per seconde schrijven|Geen|
@@ -1359,8 +1486,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 
 |Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
-|VolumePoolToegewezengebruikt|Toegewezen volumepool gebruikt|Bytes|Average|Toegewezen gebruikte grootte van het zwembad|Geen|
-|VolumepooltotallogicalSize|Volumepool totale logische grootte|Bytes|Average|Som van de logische omvang van alle volumes die behoren tot de pool|Geen|
+|VolumePoolToegewezengebruikt|Pool toegewezen aan volumegrootte|Bytes|Average|Toegewezen gebruikte grootte van het zwembad|Geen|
+|VolumepooltotallogicalSize|Geconsumed Size|Bytes|Average|Som van de logische omvang van alle volumes die behoren tot de pool|Geen|
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
 
@@ -1383,7 +1510,6 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Aantal snat-verbindingen|Aantal SNAT-verbindingen|Count|Totaal|Totaal aantal nieuwe SNAT-verbindingen dat binnen de periode is gemaakt|FrontendIPAddress, BackendIPAddress, ConnectionState|
 |ToegewezenSnatPorts|Toegewezen SNAT-poorten (voorbeeld)|Count|Totaal|Totaal aantal SNAT-poorten toegewezen binnen de periode|FrontendIPAddress, BackendIPAddress,ProtocolType, IsAwaitingRemoval|
 |UsedSnatPorts|Gebruikte SNAT-poorten (voorbeeld)|Count|Totaal|Totaal aantal SNAT-poorten dat binnen de periode wordt gebruikt|FrontendIPAddress, BackendIPAddress,ProtocolType, IsAwaitingRemoval|
-
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft.Network/dnszones
 
@@ -1458,8 +1584,11 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Mislukte aanvragen|Mislukte aanvragen|Count|Totaal|Aantal mislukte aanvragen dat Application Gateway heeft betekend|BackendInstellingenPool|
 |Reactiestatus|Reactiestatus|Count|Totaal|Reactiestatus http-antwoord geretourneerd door Application Gateway|HttpStatusgroep|
 |Huidige verbindingen|Huidige verbindingen|Count|Totaal|Aantal huidige verbindingen met Application Gateway|Geen|
+|NewConnectionsPerSeconde|Nieuwe verbindingen per seconde|CountPerSeconde|Average|Nieuwe verbindingen per seconde met Application Gateway|Geen|
 |Cpu-gebruik|CPU-gebruik|Percentage|Average|Huidig CPU-gebruik van de toepassingsgateway|Geen|
 |Capaciteitseenheden|Huidige capaciteitseenheden|Count|Average|Capaciteitseenheden verbruikt|Geen|
+|FixedBillableCapacityUnits FixedBillableCapacityUnits|Vaste factureerbare capaciteitseenheden|Count|Average|Minimale capaciteitseenheden die in rekening worden gebracht|Geen|
+|Geschatte gefactureerde capaciteitseenheden|Geschatte gefactureerde capaciteitseenheden|Count|Average|Geschatte capaciteitseenheden die in rekening worden gebracht|Geen|
 |ComputeUnits|Huidige compute-eenheden|Count|Average|Rekeneenheden verbruikt|Geen|
 |BackendResponseStatus|Status backend-antwoord|Count|Totaal|Het aantal HTTP-antwoordcodes dat door de backend-leden wordt gegenereerd. Dit omvat geen antwoordcodes die door de Application Gateway worden gegenereerd.|BackendServer, BackendPool, BackendhttpSetting, HttpStatusGroep|
 |TlsProtocol TlsProtocol|TLS-protocol voor client|Count|Totaal|Het aantal TLS- en niet-TLS-aanvragen dat is geïnitieerd door de client die verbinding heeft gemaakt met de Application Gateway. Als u tls-protocoldistributie wilt weergeven, filtert u op het dimension TLS-protocol.|Listener, TlsProtocol|
@@ -1473,6 +1602,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |MatchedCount|Web Application Firewall v1 Totale regelverdeling|Count|Totaal|Web Application Firewall v1 Totale regelverdeling voor het binnenkomende verkeer|Regelgroep, RuleId|
 |Geblokkeerdaantal|Regelverdeling van webtoepassingsfirewall v1 geblokkeerd|Count|Totaal|Web Application Firewall v1 geblokkeerde aanvragen regeldistributie|Regelgroep, RuleId|
 |GeblokkeerdEReqCount|Aantal geblokkeerde aanvragen voor webtoepassingsfirewall v1|Count|Totaal|Aantal geblokkeerde aanvragen voor Web Application Firewall v1|Geen|
+
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
@@ -1500,6 +1630,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |LineProtocol|LineProtocol|Count|Average|De status van het lijnprotocol van de poort|Koppeling|
 |PortBitsInPerSeconde|BitsinperSeconde|CountPerSeconde|Average|Bits die Azure per seconde binnendringen|Koppeling|
 |PortBitsOutPerSeconde|BitsOutperSeconde|CountPerSeconde|Average|Bits die Azure per seconde uitvallen|Koppeling|
+
+
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
@@ -1568,6 +1700,18 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Back-endHealthPercentage|Backend-statuspercentage|Percentage|Average|Het percentage succesvolle statussondes van de HTTP/S-proxy naar backends|Backend, BackendPool|
 |WebApplicationFirewallRequestCount|Aantal firewallaanvragen voor webtoepassingen|Count|Totaal|Het aantal clientaanvragen dat door de webtoepassingsfirewall wordt verwerkt|PolicyName, RuleName, Actie|
 
+
+## <a name="microsoftnetworkprivatednszones"></a>Microsoft.Network/privateDnsZones
+
+|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|---|---|---|---|---|---|
+|QueryVolume|Queryvolume|Count|Totaal|Aantal query's dat wordt weergegeven voor een privé-DNS-zone|Geen|
+|RecordSetCount RecordSetCount RecordSetCount RecordSet|Recordsetaantal|Count|Maximum|Aantal recordsets in een privé-DNS-zone|Geen|
+|RecordSetCapacityUsage RecordSetCapacityUsage RecordSetCapacityUsage RecordSet|Capaciteitsbenutting recordset|Percentage|Maximum|Percentage recordsetcapaciteit dat wordt gebruikt door een privé-DNS-zone|Geen|
+|VirtualNetworkLinkCount VirtualNetworkLinkCount VirtualNetworkLinkCount VirtualNetwork|Aantal virtuele netwerkkoppelingen|Count|Maximum|Aantal virtuele netwerken dat is gekoppeld aan een privé-DNS-zone|Geen|
+|VirtualNetworkLinkCapacityBenut|Capaciteitsbenutting van virtuele netwerkkoppelingen|Percentage|Maximum|Percentage van de capaciteit van virtual network link die wordt gebruikt door een privé-DNS-zone|Geen|
+|VirtualNetworkWithRegistrationLinkCount VirtualNetworkWithRegistrationLinkCount VirtualNetworkWithRegistrationLinkCount VirtualNetwork|Aantal koppelingskoppelingen voor virtuele netwerken|Count|Maximum|Aantal virtuele netwerken dat is gekoppeld aan een privé-DNS-zone waarbij automatische registratie is ingeschakeld|Geen|
+|VirtualNetworkWithRegistrationCapacityUtilization VirtualNetworkWithRegistrationCapacityUtilization VirtualNetworkWithRegistrationCapacityUtilization VirtualNetwork|Capaciteitsbenutting van de koppeling voor virtuele netwerk|Percentage|Maximum|Percentage van virtual network link met automatische registratiecapaciteit die wordt gebruikt door een private DNS-zone|Geen|
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
@@ -1693,20 +1837,12 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Average_Size opgeslagen in pagingbestanden|Grootte opgeslagen in paging-bestanden|Count|Average|Average_Size opgeslagen in pagingbestanden|Computer, objectnaam, instancename, contrapath, sourcesystem|
 |Average_Uptime|Uptime|Count|Average|Average_Uptime|Computer, objectnaam, instancename, contrapath, sourcesystem|
 |Average_Users|Gebruikers|Count|Average|Average_Users|Computer, objectnaam, instancename, contrapath, sourcesystem|
-|Average_Avg. Gelezen bytes per seconde|Avg. Schijf sec/read|Count|Average|Average_Avg. Gelezen bytes per seconde|Computer, objectnaam, instancename, contrapath, sourcesystem|
-|Average_Avg. voor de fysieke schijf|Avg. Schijf sec/write|Count|Average|Average_Avg. voor de fysieke schijf|Computer, objectnaam, instancename, contrapath, sourcesystem|
 |Average_Current-schijfwachtrijlengte|Huidige schijfwachtrijlengte|Count|Average|Average_Current-schijfwachtrijlengte|Computer, objectnaam, instancename, contrapath, sourcesystem|
-|Average_Disk leest/sec|Schijfleest/sec|Count|Average|Average_Disk leest/sec|Computer, objectnaam, instancename, contrapath, sourcesystem|
-|Average_Disk Transfers/sec|Schijfoverdrachten per seconde|Count|Average|Average_Disk Transfers/sec|Computer, objectnaam, instancename, contrapath, sourcesystem|
-|Average_Disk schrijft/sec|Schijfschrijft/sec|Count|Average|Average_Disk schrijft/sec|Computer, objectnaam, instancename, contrapath, sourcesystem|
-|Average_Free Megabytes|Gratis Megabytes|Count|Average|Average_Free Megabytes|Computer, objectnaam, instancename, contrapath, sourcesystem|
-|Average_% vrije ruimte|% vrije ruimte|Count|Average|Average_% vrije ruimte|Computer, objectnaam, instancename, contrapath, sourcesystem|
 |Average_Available MBytes|Beschikbare mbytes|Count|Average|Average_Available MBytes|Computer, objectnaam, instancename, contrapath, sourcesystem|
 |Average_% vastgelegde bytes in gebruik|% vastgelegde bytes in gebruik|Count|Average|Average_% vastgelegde bytes in gebruik|Computer, objectnaam, instancename, contrapath, sourcesystem|
 |Average_Bytes ontvangen/sec|Ontvangen bytes per seconde|Count|Average|Average_Bytes ontvangen/sec|Computer, objectnaam, instancename, contrapath, sourcesystem|
 |Average_Bytes verzonden/sec|Verzonden bytes per seconde|Count|Average|Average_Bytes verzonden/sec|Computer, objectnaam, instancename, contrapath, sourcesystem|
 |Average_Bytes Totaal/sec|Totaal aantal bytes per seconde|Count|Average|Average_Bytes Totaal/sec|Computer, objectnaam, instancename, contrapath, sourcesystem|
-|Average_% processortijd|Percentage processortijd|Count|Average|Average_% processortijd|Computer, objectnaam, instancename, contrapath, sourcesystem|
 |Average_Processor wachtrijlengte|Processorwachtrijlengte|Count|Average|Average_Processor wachtrijlengte|Computer, objectnaam, instancename, contrapath, sourcesystem|
 |Hartslag|Hartslag|Count|Totaal|Hartslag|Computer, OSType, Versie, SourceComputerId|
 |Update|Update|Count|Average|Update|Computer, Product, Classificatie, UpdateState, optioneel, goedgekeurd|
@@ -1727,6 +1863,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |IngressTrafficRate|Invallen verkeerstarief|BitsPerSeconde|Average|Invallen de verkeerssnelheid in bits per seconde|ConnectionId|
 |UitgaandeTrafficRate|Verkeer segress|BitsPerSeconde|Average|Uitgaande verkeerssnelheid in bits per seconde|ConnectionId|
 
+
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capaciteiten
 
 |Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
@@ -1736,6 +1873,22 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |qpu_high_utilization_metric|Hoog QPU-gebruik|Count|Totaal|QPU hoog gebruik in de laatste minuut, 1 voor een hoge QPU-gebruik, anders 0|Geen dimensies|
 |memory_metric|Geheugen|Bytes|Average|Geheugen. Bereik 0-3 GB voor A1, 0-5 GB voor A2, 0-10 GB voor A3, 0-25 GB voor A4, 0-50 GB voor A5 en 0-100 GB voor A6|Geen dimensies|
 |memory_thrashing_metric|Geheugenthrashing|Percentage|Average|Gemiddelde geheugen geseling.|Geen dimensies|
+
+
+## <a name="microsoftprojectbabylonaccounts"></a>Microsoft.ProjectBabylon/accounts
+
+|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|---|---|---|---|---|---|
+|AssetDistributionbyclassification|Asset distributie per classificatie|Count|Totaal|Geeft het aantal activa aan waarbij een bepaalde classificatie is toegewezen, d.w.z. ze zijn ingedeeld met dat label.|Classificatie, Bron,ResourceId|
+|AssetDistributionByStorageType|Distributie van activa op opslagtype|Count|Totaal|Geeft het aantal elementen aan met een bepaald opslagtype.|StorageType, ResourceId|
+|CatalogusActieveGebruikers|Dagelijkse actieve gebruikers|Count|Totaal|Aantal actieve gebruikers dagelijks|ResourceId|
+|Catalogusgebruik|Gebruiksdistributie per bewerking|Count|Totaal|Geef het aantal bewerkingen aan dat de gebruiker aan de catalogus maakt, d.w.z. Access, Search, Glossary.|Bewerking, ResourceId|
+|NumberOfAssetsWithClassificaties|Aantal activa met ten minste één classificatie|Count|Average|Geeft het aantal elementen aan met ten minste één tagclassificatie.|ResourceId|
+|ScanCancelled|Scan geannuleerd|Count|Totaal|Geeft het aantal geannuleerde scans aan.|ResourceId|
+|Scannen voltooid|Scan voltooid|Count|Totaal|Geeft het aantal scans aan dat is voltooid.|ResourceId|
+|Scannen mislukt|Scannen is mislukt|Count|Totaal|Geeft aan dat het aantal scans is mislukt.|ResourceId|
+|ScanTimeTaken|Scan tijd genomen|Seconden|Totaal|Geeft de totale scantijd in seconden aan.|ResourceId|
+
 
 
 
@@ -1849,8 +2002,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |dwu_used|Gebruikte DWU|Count|Maximum|DWU gebruikt. Geldt alleen voor datawarehouses.|Geen|
 |cache_hit_percent|Percentage cachehit|Percentage|Maximum|Cache hit percentage. Geldt alleen voor datawarehouses.|Geen|
 |cache_used_percent|Door cache gebruikt percentage|Percentage|Maximum|Cache gebruikt percentage. Geldt alleen voor datawarehouses.|Geen|
-|sqlserver_process_core_percent|SQL Server-proceskernpercentage|Percentage|Maximum|CPU-gebruikspercentage voor het SQL Server-proces, gemeten door het besturingssysteem.|Geen|
-|sqlserver_process_memory_percent|SQL Server-procesgeheugenpercentage|Percentage|Maximum|Percentage geheugengebruik voor het SQL Server-proces, gemeten door het besturingssysteem.|Geen|
+|sqlserver_process_core_percent|SQL Server-proceskernpercentage|Percentage|Maximum|CPU-gebruik als percentage van het SQL DB-proces. Niet van toepassing op datawarehouses.|Geen|
+|sqlserver_process_memory_percent|SQL Server-procesgeheugenpercentage|Percentage|Maximum|Geheugengebruik als percentage van het SQL DB-proces. Niet van toepassing op datawarehouses.|Geen|
 |tempdb_data_size|Tempdb-gegevensbestandsgrootte Kilobytes|Count|Maximum|Tempdb Data File Size Kilobytes. Niet van toepassing op datawarehouses.|Geen|
 |tempdb_log_size|Tempdb Log File Size Kilobytes|Count|Maximum|Tempdb Log File Size Kilobytes. Niet van toepassing op datawarehouses.|Geen|
 |tempdb_log_used_percent|Tempdb Procent Log gebruikt|Percentage|Maximum|Tempdb Procent Log gebruikt. Niet van toepassing op datawarehouses.|Geen|
@@ -1860,9 +2013,23 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |app_memory_percent|Percentage app-geheugen|Percentage|Average|App-geheugenpercentage. Van toepassing op serverloze databases.|Geen|
 |allocated_data_storage|Toegewezen gegevensruimte|Bytes|Average|Toegewezen gegevensopslag. Niet van toepassing op datawarehouses.|Geen|
 |memory_usage_percent|Geheugenpercentage|Percentage|Maximum|Geheugenpercentage. Geldt alleen voor datawarehouses.|Geen|
+|dw_backup_size_gb|Grootte van gegevensopslag|Count|Totaal|De grootte van de gegevensopslag bestaat uit de grootte van uw gegevens en het transactielogboek. De statistiek wordt meegeteld voor het gedeelte 'Opslag' van uw factuur. Geldt alleen voor datawarehouses.|Geen|
+|dw_snapshot_size_gb|Momentopnameopslaggrootte|Count|Totaal|Momentopnameopslaggrootte is de grootte van de incrementele wijzigingen die zijn vastgelegd door momentopnamen om door de gebruiker gedefinieerde en automatische herstelpunten te maken. De statistiek wordt meegeteld voor het gedeelte 'Opslag' van uw factuur. Geldt alleen voor datawarehouses.|Geen|
+|dw_geosnapshot_size_gb|Opslaggrootte na herstel na noodgevallen|Count|Totaal|Storage size disaster recovery wordt weerspiegeld als 'Disaster Recovery Storage' in uw factuur. Geldt alleen voor datawarehouses.|Geen|
+|wlg_allocation_relative_to_system_percent|Toewijzing workloadgroep per systeempercentage|Percentage|Maximum|Toegewezen percentage resources ten opzichte van het hele systeem per werkbelastinggroep. Geldt alleen voor datawarehouses.|WorkloadGroupName, IsUserDefined|
+|wlg_allocation_relative_to_wlg_effective_cap_percent|Toewijzing workloadgroep op cap resourcepercentage|Percentage|Maximum|Toegewezen percentage resources ten opzichte van de opgegeven limietresources per werkbelastinggroep. Geldt alleen voor datawarehouses.|WorkloadGroupName, IsUserDefined|
+|wlg_active_queries|Actieve query's voor workloadgroep|Count|Totaal|Actieve query's binnen de werkbelastinggroep. Geldt alleen voor datawarehouses.|WorkloadGroupName, IsUserDefined|
+|wlg_queued_queries|Query's in de groep Werkbelasting in de wachtrij|Count|Totaal|Query's in de wachtrij binnen de werkbelastinggroep. Geldt alleen voor datawarehouses.|WorkloadGroupName, IsUserDefined|
+|active_queries|Actieve query's|Count|Totaal|Actieve query's voor alle werkbelastinggroepen. Geldt alleen voor datawarehouses.|Geen|
+|queued_queries|Query's in de wachtrij|Count|Totaal|Query's in de wachtrij voor alle werkbelastinggroepen. Geldt alleen voor datawarehouses.|Geen|
+|wlg_active_queries_timeouts|Time-outs van werkgroepquery's|Count|Totaal|Query's die een time-out hebben voor de werkbelastinggroep. Geldt alleen voor datawarehouses.|WorkloadGroupName, IsUserDefined|
+|wlg_effective_min_resource_percent|Effectief min resource percentage|Percentage|Maximum|Minimumpercentage van de gereserveerde en geïsoleerde resources voor de werkbelastinggroep, rekening houdend met het minimumniveau van de service. Geldt alleen voor datawarehouses.|WorkloadGroupName, IsUserDefined|
+|wlg_effective_cap_resource_percent|Percentage effectieve cap-resources|Percentage|Maximum|Een harde limiet voor het percentage resources dat is toegestaan voor de werkbelastinggroep, rekening houdend met het effectieve Min Resource Percentage dat is toegewezen voor andere werkbelastinggroepen. Geldt alleen voor datawarehouses.|WorkloadGroupName, IsUserDefined|
 |full_backup_size_bytes|Volledige grootte van de back-upopslag|Bytes|Maximum|Cumulatieve volledige back-upopslaggrootte. Is van toepassing op vCore-gebaseerde databases. Niet van toepassing op Hyperscale-databases.|Geen|
 |diff_backup_size_bytes|Differentiële grootte van de back-upopslag|Bytes|Maximum|Cumulatieve differentiële opslaggrootte. Is van toepassing op vCore-gebaseerde databases. Niet van toepassing op Hyperscale-databases.|Geen|
-|log_backup_size_bytes|Grootte van de opslagvan logboekback-ups|Bytes|Maximum|Cumulatieve opslaggrootte van logboekback-ups. Is van toepassing op vCore-gebaseerde databases. Niet van toepassing op Hyperscale-databases.|Geen|
+|log_backup_size_bytes|Grootte van de opslagvan logboekback-ups|Bytes|Maximum|Cumulatieve opslaggrootte van logboekback-ups. Is van toepassing op vCore-gebaseerde en Hyperscale-databases.|Geen|
+|snapshot_backup_size_bytes|Momentopname back-upopslaggrootte|Bytes|Maximum|Cumulatieve momentopname-opslaggrootte. Is van toepassing op Hyperscale-databases.|Geen|
+|base_blob_size_bytes|Opslaggrootte van basisblob|Bytes|Maximum|De opslaggrootte van de basisblob. Is van toepassing op Hyperscale-databases.|Geen|
 
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
@@ -1893,8 +2060,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |database_cpu_limit|CPU-limiet|Count|Average|CPU-limiet|DatabaseResourceId|
 |cpu_used|CPU gebruikt|Count|Average|CPU gebruikt. Van toepassing op vCore-gebaseerde elastische pools.|Geen|
 |database_cpu_used|CPU gebruikt|Count|Average|CPU gebruikt|DatabaseResourceId|
-|sqlserver_process_core_percent|SQL Server-proceskernpercentage|Percentage|Maximum|CPU-gebruikspercentage voor het SQL Server-proces, gemeten door het besturingssysteem. Geldt voor elastische zwembaden.|Geen|
-|sqlserver_process_memory_percent|SQL Server-procesgeheugenpercentage|Percentage|Maximum|Percentage geheugengebruik voor het SQL Server-proces, gemeten door het besturingssysteem. Geldt voor elastische zwembaden.|Geen|
+|sqlserver_process_core_percent|SQL Server-proceskernpercentage|Percentage|Maximum|CPU-gebruik als percentage van het SQL DB-proces. Geldt voor elastische zwembaden.|Geen|
+|sqlserver_process_memory_percent|SQL Server-procesgeheugenpercentage|Percentage|Maximum|Geheugengebruik als percentage van het SQL DB-proces. Geldt voor elastische zwembaden.|Geen|
 |tempdb_data_size|Tempdb-gegevensbestandsgrootte Kilobytes|Count|Maximum|Tempdb-gegevensbestandsgrootte Kilobytes|Geen|
 |tempdb_log_size|Tempdb Log File Size Kilobytes|Count|Maximum|Tempdb Log File Size Kilobytes|Geen|
 |tempdb_log_used_percent|Tempdb Procent Log gebruikt|Percentage|Maximum|Tempdb Procent Log gebruikt|Geen|
@@ -2090,6 +2257,46 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |InputEventsSourcesBacklogged|Backlogged Invoergebeurtenissen|Count|Maximum|Backlogged Invoergebeurtenissen|Logische naam, partitionid|
 |InputEventsSourcesPerSeconde|Ontvangen invoerbronnen|Count|Totaal|Ontvangen invoerbronnen|Logische naam, partitionid|
 
+## <a name="microsoftsynapseworkspaces"></a>Microsoft.Synapse/werkruimten
+
+|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|---|---|---|---|---|---|
+|OrchestrationPipelineRunsEnded OrchestrationPipelineRunsEnded OrchestrationPipelineRunsEnded Orchestration|Pijplijnruns beëindigd|Count|Totaal|Aantal orchestration pipeline runs die zijn geslaagd, mislukt of geannuleerd|Resultaat, FailureType, Pipeline|
+|OrchestrationActivityRunsEnded OrchestrationActivityRunsEnded OrchestrationActivityRunsEnded Orchestration|Activiteitsruns beëindigd|Count|Totaal|Aantal orkestratieactiviteiten die zijn geslaagd, mislukt of geannuleerd|Resultaat, FailureType, Activiteit,ActivityType, Pijplijn|
+|OrchestrationTriggersEnded|Triggers beëindigd|Count|Totaal|Aantal orchestration-triggers die zijn geslaagd, mislukt of geannuleerd|Resultaat, FailureType, Trigger|
+|SQLOnDemandLoginAttempts|Inlogpogingen|Count|Totaal|Aantal inlogpogingen die zijn mislukt of mislukt|Resultaat|
+|SQLOnDemandQueriesEnded|Query's beëindigd|Count|Totaal|Aantal query's dat is geslaagd, mislukt of is geannuleerd|Resultaat|
+|SQLOnDemandQueryProcessedBytes|Gegevens verwerkt|Bytes|Totaal|Hoeveelheid gegevens die door query's worden verwerkt|Geen|
+
+## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft.Synapse/workspaces/bigDataPools
+
+|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|---|---|---|---|---|---|
+|SparkJobsEnded|Beëindigde toepassingen|Count|Totaal|Aantal beëindigde aanvragen|JobType, JobResult|
+|CoresCapaciteit|Capaciteit van kernen|Count|Maximum|Capaciteit van kernen|Geen|
+|GeheugencapaciteitGB|Geheugencapaciteit (GB)|Count|Maximum|Geheugencapaciteit (GB)|Geen|
+
+## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
+
+|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|---|---|---|---|---|---|
+|DWULimit|DWU-limiet|Count|Maximum|Doelstelling op serviceniveau van de SQL-pool|Geen|
+|DWUGebruikt|Gebruikte DWU|Count|Maximum|Vertegenwoordigt een weergave op hoog niveau van het gebruik in de SQL-groep. Gemeten naar DWU-limiet * DWU-percentage|Geen|
+|DWUUsedProcent|DWU gebruikt percentage|Percentage|Maximum|Vertegenwoordigt een weergave op hoog niveau van het gebruik in de SQL-groep. Gemeten door het maximum te nemen tussen CPU-percentage en Data IO-percentage|Geen|
+|ConnectionsBlockedByFirewall|Verbindingen geblokkeerd door firewall|Count|Totaal|Aantal verbindingen geblokkeerd door firewallregels. Opnieuw toegangsbeheerbeleid voor uw SQL-groep en deze verbindingen controleren als het aantal hoog is|Geen|
+|AdaptiveCacheHitPercent|Percentage adaptieve cachehit|Percentage|Maximum|Meet hoe goed workloads zijn met behulp van de adaptieve cache. Gebruik deze statistiek met de statistiek cachehitpercentage om te bepalen of u moet schalen voor extra capaciteit of om workloads opnieuw uit te voeren om de cache te hydrateren|Geen|
+|AdaptiveCacheUsedPercent|Gebruikt percentage adaptieve cache|Percentage|Maximum|Meet hoe goed workloads zijn met behulp van de adaptieve cache. Gebruik deze statistiek met de cache die percentagestatistiek wordt gebruikt om te bepalen of u moet schalen voor extra capaciteit of om workloads opnieuw uit te voeren om de cache te hydrateren|Geen|
+|LocalTempDBUsedPercent|Lokaal tempdb gebruikt percentage|Percentage|Maximum|Lokaal tempdb-gebruik voor alle compute nodes - waarden worden elke vijf minuten uitgestoten|Geen|
+|MemoryUsedPercent|Geheugengebruikt percentage|Percentage|Maximum|Geheugengebruik voor alle knooppunten in de SQL-groep|Geen|
+|Verbindingen|Verbindingen|Count|Totaal|Aantal aanmeldingen van totaal in de SQL-groep|Resultaat|
+|WLGActiveQueries|Actieve query's voor workloadgroep|Count|Totaal|De actieve query's binnen de werkbelastinggroep. Met deze ongefilterde en ongesplitste statistiek worden alle actieve query's weergegeven die op het systeem worden uitgevoerd|IsUserDefined,WorkloadGroup|
+|WLGActiveQueriesTime-outs|Time-outs van werkgroepquery's|Count|Totaal|Query's voor de werkbelastinggroep die een time-out heeft. Query-time-outs die door deze statistiek worden gerapporteerd, zijn pas nadat de query is gestart met uitvoeren (er is geen wachttijd opgenomen vanwege vergrendeling of resourcewachttijden)|IsUserDefined,WorkloadGroup|
+|WLGAllocationBySystemPercent|Toewijzing workloadgroep per systeempercentage|Percentage|Maximum|Het percentage toewijzing van middelen ten opzichte van het gehele systeem|IsUserDefined,WorkloadGroup|
+|WLGAllocationByMaxResourceProcent|Toewijzing workloadgroep op basis van maximaal resourcepercentage|Percentage|Maximum|Hiermee geeft u het percentage toewijzing van resources weer ten opzichte van het percentage effectieve limietresources per werkbelastinggroep. Deze statistiek biedt het effectieve gebruik van de werkbelastinggroep|IsUserDefined,WorkloadGroup|
+|WLGEffectiveCapResourcePercent|Percentage effectieve cap-resources|Percentage|Maximum|Het effectieve cap resource percentage voor de workloadgroep. Als er andere werkbelastinggroepen met min_percentage_resource > 0 zijn, wordt de effective_cap_percentage_resource proportioneel verlaagd|IsUserDefined,WorkloadGroup|
+|wlg_effective_min_resource_percent|Effectief min resource percentage|Percentage|Minimum|De instelling voor het effectieve min-resourcepercentage is toegestaan, rekening houdend met het serviceniveau en de instellingen voor de werkbelastinggroep. De effectieve min_percentage_resource kan hoger worden aangepast op lagere serviceniveaus|IsUserDefined,WorkloadGroup|
+|WLGQueuedQueries|Query's in de groep Werkbelasting in de wachtrij|Count|Totaal|Cumulatief aantal aanvragen in de wachtrij nadat de maximale gelijktijdigheidslimiet is bereikt|IsUserDefined,WorkloadGroup|
+
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/omgevingen
 
 |Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
@@ -2103,6 +2310,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |IngressReceivedMessagesCountLag|Aantal meldingen van ontvangen berichten lag|Count|Average|Verschil tussen het volgordenummer van het laatst in de wachtrij staande bericht in de gebeurtenisbronpartitie en het volgordenummer van berichten die worden verwerkt in Ingress|Geen|
 |WarmStorageMaxProperties WarmStorageMaxProperties|Eigenschappen voor warme opslag max.|Count|Maximum|Maximaal aantal eigenschappen die door de omgeving zijn toegestaan voor S1/S2 SKU en maximaal aantal eigenschappen die door Warm Store zijn toegestaan voor PAYG SKU|Geen|
 |WarmStorageUsedEigenschappen|Gebruikte eigenschappen voor warme opslag |Count|Maximum|Aantal eigenschappen dat door de omgeving wordt gebruikt voor S1/S2 SKU en aantal eigenschappen die door Warm Store worden gebruikt voor PAYG SKU|Geen|
+
+
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft.TimeSeriesInsights/omgevingen/eventsources
 
@@ -2171,7 +2380,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |TcpLastAck|TCP Last Ack|Count|Average|TCP Last Ack|Exemplaar|
 |TcpTimeWait|TCP-tijd wachten|Count|Average|TCP-tijd wachten|Exemplaar|
 
-## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites (met uitzondering van functies)
+## <a name="microsoftwebsites"></a>Microsoft.Web/sites
 
 > [!NOTE]
 > **Bestandssysteemgebruik** is een nieuwe statistiek die wereldwijd wordt uitgerold, er worden geen gegevens verwacht, tenzij u op de witte lijst staat voor een privévoorbeeld.
@@ -2217,35 +2426,6 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Gen2Collecties|Gen 2 Garbage Collections|Count|Totaal|Gen 2 Garbage Collections|Exemplaar|
 |Status van HealthCheck|Status van status van status van status van status|Count|Average|Status van status van status van status van status|Exemplaar|
 |FileSystemUsage FileSystemUsage|Gebruik van bestandssysteem|Bytes|Average|Gebruik van bestandssysteem|Geen|
-
-## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (functies)
-
-|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
-|---|---|---|---|---|---|
-|Ontvangen bytes|Gegevens in|Bytes|Totaal|Gegevens in|Exemplaar|
-|BytesSent|Gegevens uit|Bytes|Totaal|Gegevens uit|Exemplaar|
-|Http5xx (Http5xx)|Http-serverfouten|Count|Totaal|Http-serverfouten|Exemplaar|
-|MemoryWorkingSet (MemoryWorkingSet)|Geheugenwerkset|Bytes|Average|Geheugenwerkset|Exemplaar|
-|Gemiddelde MemoryWorkingSet|Gemiddelde geheugenwerkset|Bytes|Average|Gemiddelde geheugenwerkset|Exemplaar|
-|FunctionExecutionUnits|Functieuitvoeringseenheden|MB / Milliseconden|Totaal|[Functieuitvoeringseenheden](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Exemplaar|
-|Aantal functies|Aantal functieuitvoeringen|Count|Totaal|Aantal functieuitvoeringen|Exemplaar|
-|PrivateBytes|Privébytes|Bytes|Average|Privébytes|Exemplaar|
-|IoReadBytesPerSeconde|IO Leesbytes per seconde|BytesPerSeconde|Totaal|IO Leesbytes per seconde|Exemplaar|
-|IoWriteBytesPerSeconde|IO-schrijfbytes per seconde|BytesPerSeconde|Totaal|IO-schrijfbytes per seconde|Exemplaar|
-|IootherbytesPerSeconde|IO Andere bytes per seconde|BytesPerSeconde|Totaal|IO Andere bytes per seconde|Exemplaar|
-|IoReadOperationsPerSeconde|IO-leesbewerkingen per seconde|BytesPerSeconde|Totaal|IO-leesbewerkingen per seconde|Exemplaar|
-|IoWriteOperationsPerSeconde|IO-schrijfbewerkingen per seconde|BytesPerSeconde|Totaal|IO-schrijfbewerkingen per seconde|Exemplaar|
-|IootherOperationsperSeconde|IO Andere bewerkingen per seconde|BytesPerSeconde|Totaal|IO Andere bewerkingen per seconde|Exemplaar|
-|RequestsinApplicationQueue|Aanvragen in toepassingswachtrij|Count|Average|Aanvragen in toepassingswachtrij|Exemplaar|
-|Huidige vergaderingen|Huidige vergaderingen|Count|Average|Huidige vergaderingen|Exemplaar|
-|TotalAppDomains TotalAppDomains|Totaal aantal app-domeinen|Count|Average|Totaal aantal app-domeinen|Exemplaar|
-|TotalAppDomainsUnloaded TotalAppDomainsUnloaded TotalAppDomainsUnloaded TotalApp|Totaal aantal app-domeinen gelost|Count|Average|Totaal aantal app-domeinen gelost|Exemplaar|
-|Gen0Collecties|Gen 0 Garbage Collections|Count|Totaal|Gen 0 Garbage Collections|Exemplaar|
-|Gen1Collecties|Gen 1 Garbage Collections|Count|Totaal|Gen 1 Garbage Collections|Exemplaar|
-|Gen2Collecties|Gen 2 Garbage Collections|Count|Totaal|Gen 2 Garbage Collections|Exemplaar|
-|Status van HealthCheck|Status van status van status van status van status|Count|Average|Status van status van status van status van status|Exemplaar|
-|FileSystemUsage FileSystemUsage|Gebruik van bestandssysteem|Bytes|Average|Gebruik van bestandssysteem|Geen|
-
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 

@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: 50501413a63921a9a34be1c04ed259990922b686
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae44ce77ce480cc1bc56ead5547e003d7d4bb39c
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70141470"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547585"
 ---
 # <a name="use-service-management-from-python"></a>Servicebeheer van Python gebruiken
 In deze handleiding ziet u hoe u programmatisch algemene servicebeheertaken van Python uitvoeren. De klasse **ServiceManagementService** in de [Azure SDK voor Python](https://github.com/Azure/azure-sdk-for-python) ondersteunt programmatische toegang tot een groot deel van de functionaliteit die betrekking heeft op servicebeheer die beschikbaar is in de [Azure-portal.][management-portal] U deze functionaliteit gebruiken om cloudservices, implementaties, gegevensbeheerservices en virtuele machines te maken, bij te werken en te verwijderen. Deze functionaliteit kan nuttig zijn bij het bouwen van toepassingen die programmatische toegang tot servicebeheer nodig hebben.
@@ -30,10 +30,10 @@ De Azure Service Management API biedt programmatische toegang tot een groot deel
 Als u de API voor servicebeheer wilt gebruiken, moet u [een Azure-account maken.](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="concepts"></a><a name="Concepts"> </a>Concepten
-De Azure SDK voor Python omsluit de [Api voor servicebeheer][svc-mgmt-rest-api], een REST-API. Alle API-bewerkingen worden uitgevoerd via SSL en wederzijds geverifieerd met behulp van X.509 v3-certificaten. De beheerservice is toegankelijk vanuit een service die in Azure wordt uitgevoerd. Het kan ook rechtstreeks via het internet worden geopend vanaf elke toepassing die een HTTPS-verzoek kan verzenden en een HTTPS-antwoord kan ontvangen.
+De Azure SDK voor Python omsluit de [Api voor servicebeheer][svc-mgmt-rest-api], een REST-API. Alle API-bewerkingen worden uitgevoerd via TLS en wederzijds geverifieerd met behulp van X.509 v3-certificaten. De beheerservice is toegankelijk vanuit een service die in Azure wordt uitgevoerd. Het kan ook rechtstreeks via het internet worden geopend vanaf elke toepassing die een HTTPS-verzoek kan verzenden en een HTTPS-antwoord kan ontvangen.
 
 ## <a name="installation"></a><a name="Installation"> </a>Installeren
-Alle functies beschreven in dit artikel `azure-servicemanagement-legacy` zijn beschikbaar in het pakket, die u installeren met behulp van pip. Zie [Python installeren en de Azure SDK](/azure/python/python-sdk-azure-install)voor meer informatie over de installatie (bijvoorbeeld als u nieuw bent bij Python).
+Alle functies beschreven in dit artikel `azure-servicemanagement-legacy` zijn beschikbaar in het pakket, die u installeren met behulp van pip. Zie [Python installeren en de Azure SDK](/azure/developer/python/azure-sdk-install)voor meer informatie over de installatie (bijvoorbeeld als u nieuw bent bij Python).
 
 ## <a name="connect-to-service-management"></a><a name="Connect"> </a>Verbinding maken met servicebeheer
 Als u verbinding wilt maken met het eindpunt voor servicebeheer, hebt u uw Azure-abonnements-id en een geldig beheercertificaat nodig. U uw abonnements-id verkrijgen via de [Azure-portal.][management-portal]
