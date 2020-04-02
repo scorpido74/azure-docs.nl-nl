@@ -1,24 +1,26 @@
 ---
-title: Veelgestelde vragen over Cloudyn in Azure | Microsoft Docs
+title: Veelgestelde vragen over Cloudyn in Azure
 description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Cloudyn.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
-ms.topic: troubleshooting
+ms.date: 03/12/2020
+ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 5c770d83d59edf0a56184f8eea0bda6b0603893c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: b1ec81ea135079defb390becc025f51cde2dad7f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770085"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411244"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Veelgestelde vragen over Cloudyn
 
 In dit artikel worden enkele veelgestelde vragen over Cloudyn behandeld. Als u vragen hebt over Cloudyn, kunt u deze stellen op [Veelgestelde vragen over Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Hoe kan ik algemene indirecte ondernemingsinstallatieproblemen oplossen?
 
@@ -58,13 +60,13 @@ Als u geen Optimizer-aanbevelingsgegevens kunt weergeven, hebt u waarschijnlijk 
 
 Een account activeren:
 
-1.  Klik in de rechterbovenhoek van de portal van Cloudyn op **Settings** en selecteer **Cloud Accounts**.
-2.  Zoek op het tabblad Microsoft Azure-accounts naar accounts met een **niet-geactiveerd** abonnement.
-3.  Klik rechts van een niet-geactiveerd account op het symbool **bewerken**, dat lijkt op een potlood.
-4.  Uw tenant-id en tarief-id worden automatisch gedetecteerd. Klik op **Volgende**.
-5.  U wordt omgeleid naar de Azure-portal. Meld u aan bij de portal en autoriseer Cloudyn Collector voor toegang tot uw Azure-gegevens.
-6.  U wordt omgeleid naar de Cloudyn-pagina Accounts beheren en uw abonnement wordt bijgewerkt met **actieve** accountstatus. Er wordt een groen vinkje weergegeven.
-7.  Als u geen groen vinkje ziet voor een of meer van de abonnementen, betekent dit dat u niet bent gemachtigd om een lezer-app (CloudynCollector) te maken voor het abonnement. Een gebruiker met hogere machtigingen voor het abonnement moet stap 3 en 4 herhalen.  
+1.    Klik in de rechterbovenhoek van de portal van Cloudyn op **Settings** en selecteer **Cloud Accounts**.
+2.    Zoek op het tabblad Microsoft Azure-accounts naar accounts met een **niet-geactiveerd** abonnement.
+3.    Klik rechts van een niet-geactiveerd account op het symbool **bewerken**, dat lijkt op een potlood.
+4.    Uw tenant-id en tarief-id worden automatisch gedetecteerd. Klik op **Volgende**.
+5.    U wordt omgeleid naar de Azure-portal. Meld u aan bij de portal en autoriseer Cloudyn Collector voor toegang tot uw Azure-gegevens.
+6.    U wordt omgeleid naar de pagina voor het beheren van Cloudyn-accounts, en uw abonnement wordt bijgewerkt naar de accountstatus **Actief**. Er wordt een groen vinkje weergegeven.
+7.    Als u geen groen vinkje ziet voor een of meer van de abonnementen, betekent dit dat u niet bent gemachtigd om een lezer-app (CloudynCollector) te maken voor het abonnement. Een gebruiker met hogere machtigingen voor het abonnement moet stap 3 en 4 herhalen.  
 
 Nadat u de voorgaande stappen hebt voltooid, kunt u Optimizer-aanbevelingen binnen een tot twee dagen weergeven. Het kan echter tot wel vijf dagen duren voordat alle optimalisatiegegevens beschikbaar zijn.
 
@@ -95,7 +97,7 @@ We raden u aan ten minste twee Cloudyn-beheerdersaccounts te maken voor het geva
 
 Als u zich niet kunt aanmelden bij de Cloudyn-portal, moet u nagaan of u wel de juiste URL gebruikt om u aan te melden bij Cloudyn. Gebruik [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
-Gebruik niet de rechtstreekse Cloudyn-URL https://app.cloudyn.com.
+Gebruik niet de rechtstreekse Cloudyn-URL `https://app.cloudyn.com`.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Hoe kan ik niet-geactiveerde accounts activeren met Azure-referenties?
 
