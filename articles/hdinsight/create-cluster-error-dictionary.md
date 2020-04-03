@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: b0dc974185ad616d57327e9cc3743db9ecb20e54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 803783eddfbffd5c3dbab7353ee00dd7f11a09e5
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302726"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618907"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: fouten bij het maken van clusteren
 
@@ -157,7 +157,7 @@ Als u netwerkbeveiligingsgroepen wilt gebruiken om het netwerkverkeer te beheren
 
 ---
 
-## <a name="error-code-storagepermissionsblockedformsi"></a>Foutcode: StoragePermissionsBlockedForMsi  
+## <a name="error-code-storagepermissionsblockedformsi"></a>Foutcode: StoragePermissionsBlockedForMsi
 
 ### <a name="error"></a>Fout
 
@@ -178,11 +178,11 @@ Zie [Machtigingen instellen voor de beheerde identiteit op het Data Lake Storage
 
 ---
 
-## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Foutcode: Ongeldige NetworkSecurityGroupSecurityRules  
+## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Foutcode: Ongeldige NetworkSecurityGroupSecurityRules
 
 ### <a name="error"></a>Fout
 
-"De beveiligingsregels in de Network\<Security\>Group /subscriptions/ SubscriptionID\> /resourceGroups/<Resource Group naam\<default/providers/Microsoft.Network/networkSecurityGroups/\>Network Security\<Group Name\> \> configured with subnet /subscriptions/\<SubscriptionID /resourceGroups/ Resource\<Group name RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/ Virtual Netwerknaam\>/subnetten/\<Subnetnaam\> staat geen vereiste inkomende en/of uitgaande connectiviteit toe. Ga voor meer informatie naar [Een virtueel netwerk plannen voor Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)of neem contact op met ondersteuning."
+"De beveiligingsregels in de Network\<Security\>Group /subscriptions/ SubscriptionID\> /resourceGroups/<Resource Group naam\<default/providers/Microsoft.Network/networkSecurityGroups/\>Network Security\<Group Name\> \> configureerd with subnet /subscriptions/\<SubscriptionID /resourceGroups/\<Resource Group\>name RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/ Virtual Network Name /subnets/\<Subnet Name\> does not allow required inbound and/or outbound connectivity. Ga voor meer informatie naar [Een virtueel netwerk plannen voor Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)of neem contact op met ondersteuning."
 
 ### <a name="cause"></a>Oorzaak
 
@@ -195,12 +195,12 @@ Als u netwerkbeveiligingsgroepen wilt gebruiken om het netwerkverkeer te beheren
 - Identificeer het Azure-gebied dat u voor HDInsight wilt gebruiken en maak een veilige lijst met de IP-adressen voor uw regio. Zie [gezondheids- en beheerdiensten: Specifieke regio's voor](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)meer informatie.
 - Identificeer de IP-adressen die HDInsight nodig heeft. Zie [IP-adressen van HDInsight-beheer voor](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)meer informatie.
 - Maak of wijzig de netwerkbeveiligingsgroepen voor het subnet waarop u HDInsight wilt installeren. Voor netwerkbeveiligingsgroepen u binnenkomend verkeer toestaan op poort 443 vanaf de IP-adressen. Deze configuratie zorgt ervoor dat HDInsight-beheerservices het cluster van buiten het virtuele netwerk kunnen bereiken.
-  
+
 ---
 
 ## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>Foutcode: clusterinstelling kan geen onderdelen installeren op een of meer hosts
 
-###  <a name="error"></a>Fout
+### <a name="error"></a>Fout
 
 "De clusterinstelling kan geen onderdelen installeren op een of meer hosts. Probeer uw verzoek opnieuw."
 
@@ -211,6 +211,42 @@ Deze fout wordt meestal gegenereerd wanneer er een tijdelijk probleem of een Azu
 ### <a name="resolution"></a>Oplossing
 
 Controleer de [Azure-statuspagina](https://status.azure.com) op Azure-storingen die van invloed kunnen zijn op de clusterimplementatie. Als er geen uitval is, probeert u de implementatie van het cluster opnieuw.
+
+---
+
+## <a name="error-code-failedtoconnectwithclustererrorcode"></a>Foutcode: failedtoconnectwithclustererrorcode
+
+### <a name="error"></a>Fout
+
+Kan geen verbinding maken met het eindpunt van clusterbeheer. Probeer het later opnieuw.
+
+### <a name="cause"></a>Oorzaak
+
+HDInsight-service kan geen verbinding maken met uw cluster wanneer u het cluster probeert te maken
+
+### <a name="resolution"></a>Oplossing
+
+Als u aangepaste VNet-netwerkbeveiligingsgroep (NSG's) en door de gebruiker gedefinieerde routes (UDR's) gebruikt, moet u ervoor zorgen dat uw cluster kan communiceren met HDInsight-beheerservices. Zie VOOR meer informatie [HDInsight management IP-adressen](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+
+---
+
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Foutcode: implementaties zijn mislukt vanwege beleidsschending: 'Resource '<Resource URI>is geweigerd door het beleid. Beleids-id's: '[{"policyAssignment":{"name":"<Policy Name> ","id":"/providers/Microsoft.Management/managementGroups/<Management Group Name> providers/Microsoft.Authorization/policyAssignments/<Policy Name>"},"policyDefinition":<Policy Definition>
+
+### <a name="cause"></a>Oorzaak
+
+Azure-beleid op basis van abonnementen kan het maken van openbare IP-adressen weigeren. Voor het maken van een HDInsight-cluster zijn twee openbare IP-adressen vereist.
+
+De volgende beleidsregels hebben over het algemeen invloed op het maken van cluster:
+
+* Beleid dat het maken van IP-adressen of load-balancers binnen het abonnement voorkomt.
+* Beleid dat het maken van opslagaccounts voorkomt.
+* Beleid dat het verwijderen van netwerkbronnen zoals IP-adressen of load balancers voorkomt.
+
+### <a name="resolution"></a>Oplossing
+
+Het Azure-beleid op basis van abonnementen verwijderen of uitschakelen tijdens het maken van HDInsight-cluster.
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

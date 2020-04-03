@@ -1,6 +1,6 @@
 ---
 title: Prestaties afstemmen door resultatensets op te slaan in de cache
-description: Overzicht van caching-functies voor SQL Analytics in Azure Synapse Analytics
+description: Overzicht van caching-functies voor Synapse SQL-pool in Azure Synapse Analytics
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,26 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: da476dc14949ebab1a054a9624d91acb25b9f2b4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ef5be63b2068297aedf4cf12d914da09b1efed41
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474477"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583825"
 ---
-# <a name="performance-tuning-with-result-set-caching"></a>Prestaties afstemmen door resultatensets op te slaan in de cache  
-Wanneer de cache van de resultatenset is ingeschakeld, cachet SQL Analytics automatisch queryresultaten in de gebruikersdatabase voor herhaald gebruik.  Hierdoor kunnen volgende query-uitvoeringen rechtstreeks resultaten uit de volgehouden cache krijgen, zodat herberekening niet nodig is.   Het incachezetten van resultaten verbetert de queryprestaties en vermindert het gebruik van rekenbronnen.  Bovendien gebruiken query's met in de cache ingestelde resultaten geen gelijktijdigheidssleuven en tellen ze dus niet mee voor bestaande gelijktijdigheidslimieten. Voor beveiliging hebben gebruikers alleen toegang tot de resultaten in de cache als ze dezelfde machtigingen voor gegevenstoegang hebben als de gebruikers die de resultaten in de cache maken.  
+# <a name="performance-tuning-with-result-set-caching"></a>Prestaties afstemmen door resultatensets op te slaan in de cache
+
+Wanneer het incacheplaatsen van het resultaat is ingeschakeld, cachet Synapse SQL-groep automatisch queryresultaten in de gebruikersdatabase voor herhaald gebruik.  Hierdoor kunnen volgende query-uitvoeringen rechtstreeks resultaten uit de volgehouden cache krijgen, zodat herberekening niet nodig is.   Het incachezetten van resultaten verbetert de queryprestaties en vermindert het gebruik van rekenbronnen.  Bovendien gebruiken query's met in de cache ingestelde resultaten geen gelijktijdigheidssleuven en tellen ze dus niet mee voor bestaande gelijktijdigheidslimieten. Voor beveiliging hebben gebruikers alleen toegang tot de resultaten in de cache als ze dezelfde machtigingen voor gegevenstoegang hebben als de gebruikers die de resultaten in de cache maken.  
 
 ## <a name="key-commands"></a>Toetsopdrachten
-[Aan/UIT-resultaatset instellen voor een gebruikersdatabase inschakelen](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
 
-[In/UIT-resultaatset instellen voor een sessie](https://docs.microsoft.com/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)
+[Aan/UIT-resultaatset instellen voor een gebruikersdatabase inschakelen](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-[De grootte van de in de cache opgeslagen resultatenset controleren](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest)  
+[In/UIT-resultaatset instellen voor een sessie](/sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-[De cache opschonen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)
+[De grootte van de in de cache opgeslagen resultatenset controleren](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
+
+[De cache opschonen](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="whats-not-cached"></a>Wat is niet in de cache opgeslagen  
 
@@ -39,7 +41,7 @@ Zodra de resulterenset cache is ingeschakeld voor een database, worden de result
 - Query's die gegevens retourneren met een rijgrootte groter dan 64 KB
 
 > [!IMPORTANT]
-> De bewerkingen voor het maken van resultatensetcache en het ophalen van gegevens uit de cache vinden plaats op het controleknooppunt van een SQL Analytics-exemplaar.
+> De bewerkingen voor het maken van resultatensetcache en het ophalen van gegevens uit de cache vinden plaats op het controleknooppunt van een Synapse SQL-poolinstantie.
 > Wanneer het incachezetten van het resultaat is ingeschakeld, kunnen query's die grote resultaatset retourneren (bijvoorbeeld >1 miljoen rijen) leiden tot een hoog CPU-gebruik op het controleknooppunt en het algemene queryantwoord op de instantie vertragen.  Deze query's worden vaak gebruikt tijdens gegevensverkenning of ETL-bewerkingen. Om te voorkomen dat het controleknooppunt wordt benadrukt en prestatieproblemen ontstaan, moeten gebruikers de cache van de resultatenset in de database uitschakelen voordat deze typen query's worden uitgevoerd.  
 
 Voer deze query uit voor de tijd die wordt genomen door de cachingbewerkingen van de resultatenset voor een query:
@@ -76,7 +78,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 De maximale grootte van de cache van de resultaatset is 1 TB per database.  De in de cache opgeslagen resultaten worden automatisch ongeldig gemaakt wanneer de onderliggende querygegevens worden gewijzigd.  
 
-De cacheuitzetting wordt beheerd door SQL Analytics die automatisch volgens dit schema volgt: 
+De cacheuitzetting wordt automatisch beheerd volgens dit schema: 
 - Elke 48 uur als de resultaatset niet is gebruikt of ongeldig is gemaakt. 
 - Wanneer de cache met resultaatset de maximale grootte nadert.
 
@@ -87,4 +89,5 @@ Gebruikers kunnen handmatig de volledige cache van de resultaatset legen met beh
 Als u een database pauzeert, wordt de set resultaten in de cache niet leeg.  
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Zie voor meer ontwikkelingstips [het ontwikkelingsoverzicht.](sql-data-warehouse-overview-develop.md) 

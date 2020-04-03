@@ -1,6 +1,6 @@
 ---
 title: Workloadurgentie
-description: Richtlijnen voor het instellen van het belang voor SQL Analytics-query's in Azure Synapse Analytics.
+description: Richtlijnen voor het instellen van het belang voor Synapse SQL-poolquery's in Azure Synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 3dde2ad4af17313bcfce28964f8be1e831317a5a
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 84f432c45729091be1264bff85d1e32fac10f3ef
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349966"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583161"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics-workloadbelang
 
-In dit artikel wordt uitgelegd hoe het belang van de werkbelasting de volgorde van uitvoering voor SQL Analytics-aanvragen in Azure Synapse kan beïnvloeden.
+In dit artikel wordt uitgelegd hoe het werkbelastingbelang de volgorde van uitvoering voor Synapse SQL-poolaanvragen in Azure Synapse kan beïnvloeden.
 
 ## <a name="importance"></a>Urgentie
 
@@ -38,7 +38,7 @@ Naast het hierboven beschreven basisscenario met verkoop- en weergegevens, zijn 
 
 ### <a name="locking"></a>Vergrendelen
 
-Toegang tot sloten voor lees- en schrijfactiviteit is een gebied van natuurlijke twist. Activiteiten zoals [partitieschakelen](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) of [OBJECT RENAME](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) vereisen verhoogde vergrendelingen.  Zonder het belang van de werkbelasting optimaliseert SQL Analytics in Azure Synapse voor doorvoer. Optimaliseren voor doorvoer betekent dat wanneer uitvoerende en in de wachtrij staande aanvragen dezelfde vergrendelingsbehoeften hebben en dat resources beschikbaar zijn, de wachtrijaanvragen aanvragen kunnen omzeilen met hogere vergrendelingsbehoeften die eerder in de aanvraagwachtrij zijn aangekomen. Zodra het werkbelastingbelang wordt toegepast op aanvragen met hogere vergrendelingsbehoeften. Verzoek met een hoger belang zal worden uitgevoerd voor de aanvraag met een lager belang.
+Toegang tot sloten voor lees- en schrijfactiviteit is een gebied van natuurlijke twist. Activiteiten zoals [partitieschakelen](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) of [OBJECT RENAME](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) vereisen verhoogde vergrendelingen.  Zonder het belang van de werkbelasting optimaliseert Synapse SQL-pool in Azure Synapse voor doorvoer. Optimaliseren voor doorvoer betekent dat wanneer uitvoerende en in de wachtrij staande aanvragen dezelfde vergrendelingsbehoeften hebben en dat resources beschikbaar zijn, de wachtrijaanvragen aanvragen kunnen omzeilen met hogere vergrendelingsbehoeften die eerder in de aanvraagwachtrij zijn aangekomen. Zodra het werkbelastingbelang wordt toegepast op aanvragen met hogere vergrendelingsbehoeften. Verzoek met een hoger belang zal worden uitgevoerd voor de aanvraag met een lager belang.
 
 Kijk een naar het volgende voorbeeld:
 
@@ -50,7 +50,7 @@ Als Q2 en Q3 hetzelfde belang hebben en Q1 nog steeds wordt uitgevoerd, zal Q3 b
 
 ### <a name="non-uniform-requests"></a>Niet-uniforme verzoeken
 
-Een ander scenario waarin belangrijk kan helpen voldoen aan query-eisen is wanneer aanvragen met verschillende resourceklassen worden ingediend.  Zoals eerder vermeld, optimaliseert SQL Analytics in Azure Synapse onder hetzelfde belang voor doorvoer. Wanneer aanvragen voor gemengde grootte (zoals smallrc of mediumrc) in de wachtrij staan, kiest SQL Analytics de vroegste binnenkomende aanvraag die binnen de beschikbare resources past. Als het werkbelastingbelang wordt toegepast, wordt vervolgens de aanvraag voor het hoogste belang gepland.
+Een ander scenario waarin belangrijk kan helpen voldoen aan query-eisen is wanneer aanvragen met verschillende resourceklassen worden ingediend.  Zoals eerder vermeld, onder hetzelfde belang, synapse SQL pool in Azure Synapse optimaliseert voor doorvoer. Wanneer aanvragen voor gemengde grootte (zoals smallrc of mediumrc) in de wachtrij staan, kiest Synapse SQL-groep de vroegste binnenkomende aanvraag die binnen de beschikbare resources past. Als het werkbelastingbelang wordt toegepast, wordt vervolgens de aanvraag voor het hoogste belang gepland.
   
 Overweeg het volgende voorbeeld op DW500c:
 

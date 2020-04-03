@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73a9680cc570179c47b527a4844488da69193cb3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78851392"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586099"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problemen met de VM's starten/stoppen tijdens de oplossing voor buitenkantoor
 
@@ -137,7 +137,7 @@ Deze fout kan worden veroorzaakt door een van de volgende redenen:
 
 Bekijk de volgende lijst voor mogelijke oplossingen voor uw probleem of plaatsen om te zoeken:
 
-* Wanneer u het [sequentiescenario](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags) van de VM Start/Stop tijdens de oplossing voor buitenkantooruren gebruikt, moet u ervoor zorgen dat elke vm die u wilt starten of stoppen de juiste tag heeft. Zorg ervoor dat de VM's `sequencestart` die u wilt starten de tag `sequencestop` en de VM's hebben die u wilt stoppen, de tag. Beide tags vereisen een positieve gehele waarde. U een query gebruiken die vergelijkbaar is met het volgende voorbeeld om te zoeken naar alle VM's met de tags en hun waarden.
+* Wanneer u het [sequentiescenario](../automation-solution-vm-management.md) van de VM Start/Stop tijdens de oplossing voor buitenkantooruren gebruikt, moet u ervoor zorgen dat elke vm die u wilt starten of stoppen de juiste tag heeft. Zorg ervoor dat de VM's `sequencestart` die u wilt starten de tag `sequencestop` en de VM's hebben die u wilt stoppen, de tag. Beide tags vereisen een positieve gehele waarde. U een query gebruiken die vergelijkbaar is met het volgende voorbeeld om te zoeken naar alle VM's met de tags en hun waarden.
 
   ```powershell-interactive
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
@@ -187,7 +187,7 @@ Neem de volgende stappen om ervoor te zorgen dat de oplossing correct is geconfi
 2. Zorg ervoor dat de resourcegroepen voor de VM's die moeten worden gestart of gestopt, zich in de `External_Start_ResourceGroupNames` of `External_Stop_ResourceGroupNames` variabelen bevinden, afhankelijk van uw situatie.
 3. Test uw wijzigingen door `SequencedStartStop_Parent` het runbook uit te voeren met de parameter WHATIF ingesteld op True om een voorbeeld van uw wijzigingen te bekijken.
 
-Zie [VM's starten/stoppen in de juiste volgorde voor](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags)meer gedetailleerde en aanvullende instructies over het gebruik van de oplossing om VM's achter elkaar te starten en te stoppen.
+Zie [VM's starten/stoppen in de juiste volgorde voor](../automation-solution-vm-management.md)meer gedetailleerde en aanvullende instructies over het gebruik van de oplossing om VM's achter elkaar te starten en te stoppen.
 
 ## <a name="scenario-startstop-vm-job-fails-with-403-forbidden-status"></a><a name="403"></a>Scenario: Start/Stop VM-taak mislukt met 403 verboden status
 

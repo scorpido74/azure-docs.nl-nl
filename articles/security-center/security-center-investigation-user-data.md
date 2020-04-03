@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 9e4c6577f0b8b18aff343ac54b31ff292632f5d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa262b0be3902f6e143a53f8f1302156fc5aede6
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979218"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582986"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Gebruikersgegevens beheren die zijn gevonden in een Azure Security Center-onderzoek
 In dit artikel vindt u informatie over het beheren van de gebruikersgegevens in de onderzoeksfunctie van Azure Security Center. Onderzoeksgegevens worden opgeslagen in [Azure Monitor-logboeken](../log-analytics/log-analytics-overview.md) en worden weergegeven in security center. Het beheren van gebruikersgegevens omvat de mogelijkheid om gegevens te verwijderen of te exporteren.
@@ -26,7 +26,7 @@ In dit artikel vindt u informatie over het beheren van de gebruikersgegevens in 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Persoonsgegevens zoeken en identificeren
-In de Azure-portal u de [onderzoeksfunctie](../security-center/security-center-investigation.md) van Security Center gebruiken om naar persoonlijke gegevens te zoeken. De onderzoeksfunctie is beschikbaar onder **beveiligingswaarschuwingen**.
+In de Azure-portal u de onderzoeksfunctie van Security Center gebruiken om naar persoonlijke gegevens te zoeken. De onderzoeksfunctie is beschikbaar onder **beveiligingswaarschuwingen**.
 
 De onderzoeksfunctie toont alle entiteiten, gebruikersgegevens en gegevens onder het tabblad **Entiteiten.**
 

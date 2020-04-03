@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a640f2f260c94cd7502aa79badb32bd26abebb11
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 81191fd3b654f612f2621757f3006268276477de
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350310"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586539"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>De kwaliteit van rijgroepen maximaliseren voor kolomarchief
 
@@ -89,7 +89,7 @@ wanneer korte-string-kolommen tekenreeksgegevenstypen van <= 32 bytes en lange-s
 
 Lange tekenreeksen worden gecomprimeerd met een compressiemethode die is ontworpen voor het comprimeren van tekst. Deze compressiemethode gebruikt een *woordenboek* om tekstpatronen op te slaan. De maximale grootte van een woordenboek is 16 MB. Er is slechts één woordenboek voor elke lange tekenreekskolom in de rijgroep.
 
-Zie de video [SQL Analytics-schaling: configuratie en richtlijnen voor](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)een diepgaande bespreking van de geheugenvereisten van columnstore.
+Zie de video [Synapse SQL scaling: configuration and guidance](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)voor een diepgaande bespreking van de geheugenvereisten van columnstore.
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Manieren om geheugenvereisten te verminderen
 
@@ -141,4 +141,4 @@ DWU-grootte en de gebruikersbronklasse bepalen samen hoeveel geheugen beschikbaa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het [prestatieoverzicht](cheat-sheet.md)voor meer manieren om de prestaties voor SQL Analytics te verbeteren.
+Zie het [prestatieoverzicht](cheat-sheet.md)voor meer manieren om de prestaties voor Synapse SQL te verbeteren.

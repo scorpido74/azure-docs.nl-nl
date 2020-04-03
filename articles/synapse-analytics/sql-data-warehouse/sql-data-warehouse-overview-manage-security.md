@@ -1,7 +1,6 @@
 ---
 title: Een database beveiligen
-description: Tips voor het beveiligen van een database en het ontwikkelen van oplossingen in de SQL-poolbron van SQL Analytics.
-services: synapse-analytics
+description: Tips voor het beveiligen van een database en het ontwikkelen van oplossingen in een Synapse SQL-poolbron.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -12,14 +11,15 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6ae9580803563971764eec4bd18fcc2430cee06d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 46d32fdca615833bd602480ac182585da898ab98
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350189"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586430"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Een database beveiligen in Azure Synapse
+
 > [!div class="op_single_selector"]
 > * [Overzicht van beveiliging](sql-data-warehouse-overview-manage-security.md)
 > * [Verificatie](sql-data-warehouse-authentication.md)
@@ -28,9 +28,10 @@ ms.locfileid: "80350189"
 > 
 > 
 
-In dit artikel vindt u de basisprincipes van het beveiligen van uw SQL-pool binnen SQL Analytics. In dit artikel wordt u met name aan de slag gegaan met resources voor het beperken van de toegang, het beveiligen van gegevens en het controleren van activiteiten op een database die is ingericht met SQL-pool.
+In dit artikel vindt u de basisprincipes van het beveiligen van uw Synapse SQL-pool. In dit artikel wordt u met name aan de slag gegaan met resources voor het beperken van de toegang, het beveiligen van gegevens en het controleren van activiteiten op een database die is ingericht met SQL-pool.
 
 ## <a name="connection-security"></a>Verbindingsbeveiliging
+
 Verbindingsbeveiliging verwijst naar de manier waarop u verbindingen met uw database beperkt en beveiligt met behulp van firewallregels en verbindingsversleuteling.
 
 Firewallregels worden door zowel de server als de database gebruikt om verbindingspogingen van IP-adressen die niet expliciet op de witte lijst zijn gezet, af te wijzen. Als u verbindingen wilt toestaan vanaf het openbare IP-adres van uw toepassing of clientmachine, moet u eerst een firewallregel op serverniveau maken met behulp van de Azure-portal, REST API of PowerShell. 
@@ -41,7 +42,8 @@ Azure Synapse Analytics maakt gebruik van IP-firewallregels op serverniveau. Het
 
 Verbindingen met uw SQL-groep worden standaard versleuteld.  Het wijzigen van verbindingsinstellingen om versleuteling uit te schakelen wordt genegeerd.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
+
 Verificatie verwijst naar hoe u uw identiteit bewijst bij het maken van verbinding met de database. SQL-groep ondersteunt momenteel SQL Server-verificatie met een gebruikersnaam en wachtwoord en met Azure Active Directory. 
 
 Wanneer u de logische server voor uw database hebt gemaakt, hebt u een aanmelding 'serverbeheerder' opgegeven met een gebruikersnaam en wachtwoord. Met behulp van deze referenties u zich verifiëren naar elke database op die server als de eigenaar van de database, of dbo via SQL Server Authentication.

@@ -1,6 +1,6 @@
 ---
-title: SQL Analytics-aanbevelingen
-description: Meer informatie over SQL Analytics-aanbevelingen en hoe ze worden gegenereerd
+title: Synapse SQL-aanbevelingen
+description: Meer informatie over Synapse SQL-aanbevelingen en hoe deze worden gegenereerd
 services: synapse-analytics
 author: kevinvngo
 manager: craigg-msft
@@ -11,18 +11,18 @@ ms.date: 02/05/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6d57fdb035e076c75363d23fbf36d39eeb72bb3f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c4bbd98cc28b242be5310fab76521a80de8fcb7c
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350694"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584126"
 ---
-# <a name="sql-analytics-recommendations"></a>SQL Analytics-aanbevelingen
+# <a name="synapse-sql-recommendations"></a>Synapse SQL-aanbevelingen
 
-In dit artikel worden de SQL Analytics-aanbevelingen beschreven die via Azure Advisor worden weergegeven.  
+In dit artikel worden de Synapse SQL-aanbevelingen beschreven die via Azure Advisor worden weergegeven.  
 
-SQL Analytics bevat aanbevelingen om ervoor te zorgen dat uw werkbelasting voor gegevensmagazijnen consistent is geoptimaliseerd voor prestaties. Aanbevelingen zijn nauw geïntegreerd met [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) om u direct binnen de [Azure-portal](https://aka.ms/Azureadvisor)van best practices te voorzien. SQL Analytics verzamelt telemetrie en brengt aanbevelingen voor uw actieve workload op een dagelijkse cadans. De ondersteunde aanbevelingsscenario's worden hieronder beschreven, samen met hoe aanbevolen acties kunnen worden toegepast.
+Synapse SQL geeft aanbevelingen om ervoor te zorgen dat uw werkbelasting voor gegevensmagazijnen consistent is geoptimaliseerd voor prestaties. Aanbevelingen zijn nauw geïntegreerd met [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) om u direct binnen de [Azure-portal](https://aka.ms/Azureadvisor)van best practices te voorzien. Synapse SQL verzamelt telemetrie en brengt aanbevelingen voor uw actieve werkbelasting op een dagelijkse cadans. De ondersteunde aanbevelingsscenario's worden hieronder beschreven, samen met hoe aanbevolen acties kunnen worden toegepast.
 
 U uw aanbevelingen vandaag [nog bekijken!](https://aka.ms/Azureadvisor) Momenteel is deze functie alleen van toepassing op Gen2-gegevensmagazijnen. 
 

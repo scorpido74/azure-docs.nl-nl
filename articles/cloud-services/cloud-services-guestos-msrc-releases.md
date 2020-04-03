@@ -10,34 +10,31 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 03/14/2020
+ms.date: 04/2/2020
 ms.author: raiye
-ms.openlocfilehash: 51c46414b5fe39da13b6ffff53c9509b482fa0d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b929481af3df8bc3bc6a9a6955e8277e3de3298
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408298"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618682"
 ---
 # <a name="azure-guest-os"></a>Azure-gastbesturingssysteem
 In de volgende tabellen worden de MSRC-updates (Microsoft Security Response Center) weergegeven die zijn toegepast op het Azure Guest OS. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gastbesturingssysteem dat u gebruikt. Updates voeren altijd voor de specifieke [familie die][family-explain] ze werden geïntroduceerd in.
 
 ## <a name="march-2020-guest-os"></a>Maart 2020 GastOS
 
->[!NOTE]
->Het besturingssysteem van Maart wordt momenteel uitgerold naar Vm's van Cloud Service die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor handmatige updates via de Azure-portal en configuratiebestanden. De volgende patches zijn opgenomen in het March Guest OS. Deze lijst kan worden gewijzigd.
-
 | Productcategorie | Moeder-KB-artikel | Beschrijving van kwetsbaarheid | Gastbesturingssysteem | Datum voor het eerst geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 20-03  |  [4541500]  |  Windows-beveiliging  | 2.96 | 10 maart 2020 |
-|  Rel 20-03  |  [4540671]  |  Internet Explorer  | 2.96, 3.83, 4.76 | 10 maart 2020 |
-|  Rel 20-03  |  [4540694]  |  Windows-beveiliging  | 3.83 | 10 maart 2020 |
-|  Rel 20-03  |  [4541505]  |  Windows-beveiliging  | 4.76 | 10 maart 2020 |
-|  Rel 20-03  |  [4540670]  |  Laatste cumulatieve update (LCU)  | 5.41 | 10 maart 2020 |
-|  Rel 20-03  |  [4538461]  |  Laatste cumulatieve update (LCU)  | 6.17 | 10 maart 2020 |
-|  Rel 20-03  |  [4537820]  |  Maandelijkse rollup  | 2.96 | 11 februari 2020 |
-|  Rel 20-03  |  [4537814]  |  Maandelijkse rollup  | 3.83 | 11 februari 2020 |
-|  Rel 20-03  |  [4537821]  |  Maandelijkse rollup  | 4.76 | 11 februari 2020 |
+|  Rel 20-03  |  [4541500]  |  Windows-beveiliging  | [2.96] | 10 maart 2020 |
+|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2,96], [3,83], [4,76] | 10 maart 2020 |
+|  Rel 20-03  |  [4540694]  |  Windows-beveiliging  | [3.83] | 10 maart 2020 |
+|  Rel 20-03  |  [4541505]  |  Windows-beveiliging  | [4.76] | 10 maart 2020 |
+|  Rel 20-03  |  [4540670]  |  Laatste cumulatieve update (LCU)  | [5.41] | 10 maart 2020 |
+|  Rel 20-03  |  [4538461]  |  Laatste cumulatieve update (LCU)  | [6.17] | 10 maart 2020 |
+|  Rel 20-03  |  [4537820]  |  Maandelijkse rollup  | [2.96] | 11 februari 2020 |
+|  Rel 20-03  |  [4537814]  |  Maandelijkse rollup  | [3.83] | 11 februari 2020 |
+|  Rel 20-03  |  [4537821]  |  Maandelijkse rollup  | [4.76] | 11 februari 2020 |
 
 [4541500]: https://support.microsoft.com/kb/4541500 
 [4540671]: https://support.microsoft.com/kb/4540671 

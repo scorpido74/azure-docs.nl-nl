@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7df3c07518a9211bd1abf785e3f4954c41ebffc
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: cf6f53639cff23a9e709b44a1ddf1332df2164b7
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529456"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586051"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-scenario's voor Linux-VM's
 
@@ -407,6 +407,8 @@ Azure Disk Encryption werkt niet voor de volgende Linux-scenario's, -functies en
 - Versleuteling van gedeelde/gedistribueerde bestandssystemen zoals (maar niet beperkt tot): DFS, GFS, DRDB en CephFS.
 - Een versleutelde VM verplaatsen naar een ander abonnement.
 - Kernel Crash Dump (kdump).
+- Oracle ACFS (ASM-clusterbestandssysteem)
+- Gen2 VM's (zie: [Ondersteuning voor generatie 2 VM's op Azure)](generation-2.md#generation-1-vs-generation-2-capabilities)
 - Lsv2 serie VM's (zie: [Lsv2-serie](../lsv2-series.md))
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,6 +1,6 @@
 ---
 title: Transacties optimaliseren
-description: Leer hoe u de prestaties van uw transactionele code in SQL Analytics optimaliseren en tegelijkertijd het risico voor lange terugdraaiingen minimaliseren.
+description: Leer hoe u de prestaties van uw transactionele code in Synapse SQL optimaliseren en tegelijkertijd het risico voor lange terugdraaiingen minimaliseren.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,29 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 700f4717db652d678255aaa9fce6ff8b8ff3b52f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d97a388477c895a4a8632d7ab3d06dc4c8982857
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350591"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582130"
 ---
-# <a name="optimizing-transactions-in-sql-analytics"></a>Transacties optimaliseren in SQL Analytics
-Leer hoe u de prestaties van uw transactionele code in SQL Analytics optimaliseren en tegelijkertijd het risico voor lange terugdraaiingen minimaliseren.
+# <a name="optimizing-transactions-in-synapse-sql"></a>Transacties optimaliseren in Synapse SQL
+
+Leer hoe u de prestaties van uw transactionele code in Synapse SQL optimaliseren en tegelijkertijd het risico voor lange terugdraaiingen minimaliseren.
 
 ## <a name="transactions-and-logging"></a>Transacties en logboekregistratie
-Transacties zijn een belangrijk onderdeel van een relationele database engine. SQL Analytics gebruikt transacties tijdens het wijzigen van gegevens. Deze transacties kunnen expliciet of impliciet zijn. Afzonderlijke overzichten voor insert, update en delete zijn allemaal voorbeelden van impliciete transacties. Expliciete transacties gebruiken BEGIN TRAN, COMMIT TRAN of ROLLBACK TRAN. Expliciete transacties worden meestal gebruikt wanneer meerdere wijzigingsoverzichten in één atoomeenheid moeten worden gekoppeld. 
 
-SQL Analytics verbindt wijzigingen in de database met behulp van transactielogboeken. Elke distributie heeft zijn eigen transactielogboek. Transactielogboekschrijft zijn automatisch. Er is geen configuratie vereist. Echter, terwijl dit proces garandeert het schrijven het introduceert een overhead in het systeem. U deze impact minimaliseren door transactioneel efficiënte code te schrijven. Transactioneel efficiënte code valt grofweg in twee categorieën.
+Transacties zijn een belangrijk onderdeel van een relationele database engine. Transacties worden gebruikt tijdens het wijzigen van gegevens. Deze transacties kunnen expliciet of impliciet zijn. Afzonderlijke overzichten voor insert, update en delete zijn allemaal voorbeelden van impliciete transacties. Expliciete transacties gebruiken BEGIN TRAN, COMMIT TRAN of ROLLBACK TRAN. Expliciete transacties worden meestal gebruikt wanneer meerdere wijzigingsoverzichten in één atoomeenheid moeten worden gekoppeld. 
+
+Wijzigingen in de database worden bijgehouden met behulp van transactielogboeken. Elke distributie heeft zijn eigen transactielogboek. Transactielogboekschrijft zijn automatisch. Er is geen configuratie vereist. Echter, terwijl dit proces garandeert het schrijven het introduceert een overhead in het systeem. U deze impact minimaliseren door transactioneel efficiënte code te schrijven. Transactioneel efficiënte code valt grofweg in twee categorieën.
 
 * Gebruik waar mogelijk minimale logging-constructies
 * Gegevens verwerken met scoped batches om enkelvoudige langlopende transacties te voorkomen
 * Een verdelingsschakelpatroon aannemen voor grote wijzigingen in een bepaalde partitie
 
 ## <a name="minimal-vs-full-logging"></a>Minimale versus volledige logging
+
 In tegenstelling tot volledig geregistreerde bewerkingen, die het transactielogboek gebruiken om elke rijwijziging bij te houden, houden minimaal geregistreerde bewerkingen alleen de omvangtoewijzingen en metagegevenswijzigingen bij. Daarom omvat minimale logboekregistratie alleen de informatie die nodig is om de transactie terug te draaien na een fout, of voor een expliciet verzoek (ROLLBACK TRAN). Omdat er veel minder informatie wordt bijgehouden in het transactielogboek, presteert een minimaal geregistreerde bewerking beter dan een volledig geregistreerde bewerking van vergelijkbare grootte. Bovendien, omdat minder schrijft gaan de transactie log, een veel kleinere hoeveelheid log gegevens wordt gegenereerd en dus is meer I / O efficiënt.
 
 De veiligheidslimieten voor transacties zijn alleen van toepassing op volledig geregistreerde bewerkingen.
@@ -41,6 +44,7 @@ De veiligheidslimieten voor transacties zijn alleen van toepassing op volledig g
 > 
 
 ## <a name="minimally-logged-operations"></a>Minimaal geregistreerde bewerkingen
+
 De volgende bewerkingen kunnen minimaal worden geregistreerd:
 
 * TABEL MAKEN ALS SELECTEREN[(CTAS](sql-data-warehouse-develop-ctas.md))
@@ -78,14 +82,13 @@ CTAS en INSERT... SELECT zijn beide bulkladingsbewerkingen. Beide worden echter 
 Het is vermeldenswaard dat alle schrijft om secundaire of niet-geclusterde indexen bij te werken altijd volledig worden geregistreerd bewerkingen.
 
 > [!IMPORTANT]
-> Een SQL Analytics-database heeft 60 distributies. Ervan uitgaande dat alle rijen gelijkmatig zijn verdeeld en in één partitie worden geland, moet uw batch daarom 6.144.000 rijen of groter bevatten om minimaal te worden geregistreerd bij het schrijven naar een clusteropslagindex. Als de tabel is verdeeld en de rijen worden ingevoegd sewijdverdelingsgrenzen, dan moet u 6.144.000 rijen per partitiegrens ervan uitgaande dat zelfs gegevens distributie. Elke partitie in elke verdeling moet onafhankelijk van elkaar de drempel van 102.400 rij overschrijden om de invoeging minimaal in de distributie te laten inloggen.
-> 
+> Een Synapse SQL-pooldatabase heeft 60 distributies. Ervan uitgaande dat alle rijen gelijkmatig zijn verdeeld en in één partitie worden geland, moet uw batch daarom 6.144.000 rijen of groter bevatten om minimaal te worden geregistreerd bij het schrijven naar een clusteropslagindex. Als de tabel is verdeeld en de rijen worden ingevoegd sewijdverdelingsgrenzen, dan moet u 6.144.000 rijen per partitiegrens ervan uitgaande dat zelfs gegevens distributie. Elke partitie in elke verdeling moet onafhankelijk van elkaar de drempel van 102.400 rij overschrijden om de invoeging minimaal in de distributie te laten inloggen.
 > 
 
 Het laden van gegevens in een niet-lege tabel met een geclusterde index kan vaak een mengsel van volledig gelogde en minimaal gelogde rijen bevatten. Een geclusterde index is een gebalanceerde boom (b-tree) van pagina's. Als de pagina die wordt geschreven al rijen van een andere transactie bevat, worden deze schrijfbewerkingen volledig geregistreerd. Als de pagina echter leeg is, wordt het schrijven naar die pagina minimaal geregistreerd.
 
 ## <a name="optimizing-deletes"></a>Verwijderen optimaliseren
-DELETE is een volledig geregistreerde bewerking.  Als u een grote hoeveelheid gegevens in een tabel of partitie moet `SELECT` verwijderen, is het vaak logischer voor de gegevens die u wilt bewaren, die kunnen worden uitgevoerd als een minimaal geregistreerde bewerking.  Als u de gegevens wilt selecteren, maakt u een nieuwe tabel met [CTAS](sql-data-warehouse-develop-ctas.md).  Gebruik, nadat u bent gemaakt, [RENAME](/sql/t-sql/statements/rename-transact-sql) om uw oude tabel te ruilen met de nieuw gemaakte tabel.
+DELETE is een volledig geregistreerde bewerking.  Als u een grote hoeveelheid gegevens in een tabel of partitie moet `SELECT` verwijderen, is het vaak logischer voor de gegevens die u wilt bewaren, die kunnen worden uitgevoerd als een minimaal geregistreerde bewerking.  Als u de gegevens wilt selecteren, maakt u een nieuwe tabel met [CTAS](sql-data-warehouse-develop-ctas.md).  Gebruik, nadat u bent gemaakt, [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om uw oude tabel te ruilen met de nieuw gemaakte tabel.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -116,7 +119,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Updates optimaliseren
-UPDATE is een volledig geregistreerde bewerking.  Als u een groot aantal rijen in een tabel of partitie moet bijwerken, kan het vaak veel efficiënter zijn om een minimaal geregistreerde bewerking zoals [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) te gebruiken om dit te doen.
+UPDATE is een volledig geregistreerde bewerking.  Als u een groot aantal rijen in een tabel of partitie moet bijwerken, kan het vaak veel efficiënter zijn om een minimaal geregistreerde bewerking zoals [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) te gebruiken om dit te doen.
 
 In het onderstaande voorbeeld is een volledige tabelupdate omgezet naar een CTAS, zodat minimale logging mogelijk is.
 
@@ -177,7 +180,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Het opnieuw maken van grote tabellen kan profiteren van het gebruik van SQL Analytics-functies voor risicobeheer. Zie [Resourceklassen voor werkbelastingbeheer voor](resource-classes-for-workload-management.md)meer informatie .
+> Het opnieuw maken van grote tabellen kan profiteren van het gebruik van Functies voor synapssql-poolworkloadbeheer. Zie [Resourceklassen voor werkbelastingbeheer voor](resource-classes-for-workload-management.md)meer informatie .
 > 
 > 
 
@@ -405,7 +408,8 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Richtlijnen onderbreken en schalen
-Met SQL Analytics u uw SQL-groep op aanvraag [onderbreken, hervatten en schalen.](sql-data-warehouse-manage-compute-overview.md) Wanneer u uw SQL-pool pauzeert of schaalt, is het belangrijk om te begrijpen dat transacties aan boord onmiddellijk worden beëindigd; waardoor openstaande transacties worden teruggedraaid. Als uw werklast een langdurige en onvolledige gegevenswijziging heeft doorgevoerd voorafgaand aan de pauze- of schaalbewerking, moet dit werk ongedaan worden gemaakt. Deze ongedaan maken kan van invloed zijn op de tijd die nodig is om uw SQL-pool te pauzeren of te schalen. 
+
+Met Synapse SQL u uw SQL-pool op aanvraag [onderbreken, hervatten en schalen.](sql-data-warehouse-manage-compute-overview.md) Wanneer u uw SQL-pool pauzeert of schaalt, is het belangrijk om te begrijpen dat transacties aan boord onmiddellijk worden beëindigd; waardoor openstaande transacties worden teruggedraaid. Als uw werklast een langdurige en onvolledige gegevenswijziging heeft doorgevoerd voorafgaand aan de pauze- of schaalbewerking, moet dit werk ongedaan worden gemaakt. Deze ongedaan maken kan van invloed zijn op de tijd die nodig is om uw SQL-pool te pauzeren of te schalen. 
 
 > [!IMPORTANT]
 > Beide `UPDATE` `DELETE` en zijn volledig gelogd operaties en dus deze ongedaan maken / opnieuw operaties kan aanzienlijk langer duren dan gelijkwaardige minimaal gelogde bewerkingen. 
@@ -414,9 +418,10 @@ Met SQL Analytics u uw SQL-groep op aanvraag [onderbreken, hervatten en schalen.
 
 Het beste scenario is om in flight data modificatie transacties te laten voltooien voorafgaand aan het pauzeren of schalen sql pool. Dit scenario is echter niet altijd praktisch. Als u het risico van een lange terugdraaiing wilt beperken, moet u een van de volgende opties overwegen:
 
-* Langlopende bewerkingen herschrijven met [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+* Langlopende bewerkingen herschrijven met [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * Breek de bewerking in stukken; werken op een subset van de rijen
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Transacties in SQL Analytics](sql-data-warehouse-develop-transactions.md) voor meer informatie over isolatieniveaus en transactionele limieten.  Zie [Best Practices](sql-data-warehouse-best-practices.md)van SQL Data Warehouse voor een overzicht van andere aanbevolen procedures.
+
+Zie [Transacties in Synapse SQL](sql-data-warehouse-develop-transactions.md) voor meer informatie over isolatieniveaus en transactionele limieten.  Zie [Best Practices](sql-data-warehouse-best-practices.md)van SQL Data Warehouse voor een overzicht van andere aanbevolen procedures.
 

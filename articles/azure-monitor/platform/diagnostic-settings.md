@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: fb2f9ff5af68575d9f9d29e9a6aca83d603395b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ff9e62ed145b7892d2997193dae8e171ae49c98
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672409"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585389"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Diagnostische instelling maken om platformlogboeken en -statistieken in Azure te verzamelen
 [Platformlogboeken](platform-logs-overview.md) in Azure, inclusief Azure Activity log en resource logs, bieden gedetailleerde diagnostische en controle-informatie voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel vindt u informatie over het maken en configureren van diagnostische instellingen om platformlogboeken naar verschillende bestemmingen te verzenden.
@@ -37,7 +37,7 @@ Platformlogboeken kunnen worden verzonden naar de bestemmingen in de volgende ta
 | Doel | Beschrijving |
 |:---|:---|
 | [Log Analytics-werkruimte](resource-logs-collect-workspace.md) | Als u logboeken verzamelt in een Log Analytics-werkruimte, u deze analyseren met andere bewakingsgegevens die door Azure Monitor zijn verzameld met behulp van krachtige logboekquery's en ook andere Azure Monitor-functies zoals waarschuwingen en visualisaties gebruiken. |
-| [Event hubs](resource-logs-stream-event-hubs.md) | Als u logboeken naar Event Hubs verzendt, u gegevens streamen naar externe systemen, zoals EXTERNE SM's en andere oplossingen voor logboekanalyse. |
+| [Gebeurtenishubs](resource-logs-stream-event-hubs.md) | Als u logboeken naar Event Hubs verzendt, u gegevens streamen naar externe systemen, zoals EXTERNE SM's en andere oplossingen voor logboekanalyse. |
 | [Azure-opslagaccount](resource-logs-collect-storage.md) | Het archiveren van logboeken naar een Azure-opslagaccount is handig voor controle, statische analyse of back-up. |
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Diagnostische instellingen maken in Azure-portal
@@ -53,7 +53,7 @@ U diagnostische instellingen in de Azure-portal configureren in het menu Azure M
     
         ![Diagnostische instellingen](media/diagnostic-settings/menu-monitor.png)
 
-    - Klik voor het logboek Activiteit op **Activiteitslogboek** in het menu **Azure Monitor** en vervolgens op **Diagnostische instellingen**. Zorg ervoor dat u een verouderde configuratie uitschakelt voor het logboek Activiteit. Zie [Bestaande instellingen uitschakelen](diagnostic-settings-legacy.md#disable-existing-settings) voor meer informatie.
+    - Klik voor het logboek Activiteit op **Activiteitslogboek** in het menu **Azure Monitor** en vervolgens op **Diagnostische instellingen**. Zorg ervoor dat u een verouderde configuratie uitschakelt voor het logboek Activiteit. Zie [Bestaande instellingen uitschakelen](/azure/azure-monitor/platform/activity-log-collect#collecting-activity-log) voor meer informatie.
 
         ![Diagnostische instellingen](media/diagnostic-settings/menu-activity-log.png)
 

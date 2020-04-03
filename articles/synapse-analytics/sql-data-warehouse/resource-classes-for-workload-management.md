@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47fd30fbb6e6836d6edf18ac68164d515f3aeb93
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8ac9ff1f46e1d2d0ddaa313499340b4723c7da07
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350734"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584253"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Workloadbeheer met resourceklassen in Azure Synapse Analytics
 
-Richtlijnen voor het gebruik van resourceklassen voor het beheren van geheugen en gelijktijdigheid voor SQL Analytics-query's in Azure Synapse.  
+Richtlijnen voor het gebruik van resourceklassen voor het beheren van geheugen en gelijktijdigheid voor Synapse SQL-poolquery's in Azure Synapse.  
 
 ## <a name="what-are-resource-classes"></a>Wat zijn resourceklassen
 
-De prestatiecapaciteit van een query wordt bepaald door de resourceklasse van de gebruiker.  Resourceklassen zijn vooraf bepaalde resourcelimieten in SQL Analytics die bepalen van compute resources en gelijktijdigheid voor queryuitvoering. Resourceklassen kunnen u helpen resources voor uw query's te configureren door limieten in te stellen voor het aantal query's dat gelijktijdig wordt uitgevoerd en op de rekenbronnen die aan elke query zijn toegewezen.  Er is een afweging tussen geheugen en gelijktijdigheid.
+De prestatiecapaciteit van een query wordt bepaald door de resourceklasse van de gebruiker.  Resourceklassen zijn vooraf bepaalde resourcelimieten in de Synapse SQL-groep die rekenresources en gelijktijdigheid voor query-uitvoering regelen. Resourceklassen kunnen u helpen resources voor uw query's te configureren door limieten in te stellen voor het aantal query's dat gelijktijdig wordt uitgevoerd en op de rekenbronnen die aan elke query zijn toegewezen.  Er is een afweging tussen geheugen en gelijktijdigheid.
 
 - Kleinere resourceklassen verminderen het maximale geheugen per query, maar verhogen de gelijktijdigheid.
 - Grotere resourceklassen verhogen het maximale geheugen per query, maar verminderen de gelijktijdigheid.
@@ -82,7 +82,7 @@ De geheugentoewijzing voor elke resourceklasse is als volgt.
 
 Standaard is elke gebruiker lid van de dynamische resourceklasse **smallrc**.
 
-De resourceklasse van de servicebeheerder is vastgesteld op smallrc en kan niet worden gewijzigd.  De servicebeheerder is de gebruiker die tijdens het inrichtingsproces is gemaakt.  De servicebeheerder in deze context is de aanmelding die is opgegeven voor de 'Serveradmin login' bij het maken van een nieuw SQL Analytics-exemplaar met een nieuwe server.
+De resourceklasse van de servicebeheerder is vastgesteld op smallrc en kan niet worden gewijzigd.  De servicebeheerder is de gebruiker die tijdens het inrichtingsproces is gemaakt.  De servicebeheerder in deze context is de login die is opgegeven voor de "Server admin login" bij het maken van een nieuwe Synapse SQL-pool met een nieuwe server.
 
 > [!NOTE]
 > Gebruikers of groepen die zijn gedefinieerd als Active Directory-beheerder, zijn ook servicebeheerders.
@@ -594,5 +594,5 @@ GO
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Een database beveiligen in SQL Analytics](sql-data-warehouse-overview-manage-security.md)voor meer informatie over het beheren van databasegebruikers en beveiliging. Zie [Geheugenoptimalisaties voor compressie](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)van kolomarchief voor meer informatie over hoe grotere resourceklassen de kwaliteit van de geclusterde kolomarchiefindex kunnen verbeteren.
+Zie [Een database beveiligen in Synapse SQL](sql-data-warehouse-overview-manage-security.md)voor meer informatie over het beheren van databasegebruikers en beveiliging. Zie [Geheugenoptimalisaties voor compressie](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)van kolomarchief voor meer informatie over hoe grotere resourceklassen de kwaliteit van de geclusterde kolomarchiefindex kunnen verbeteren.
 

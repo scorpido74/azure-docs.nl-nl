@@ -1,6 +1,6 @@
 ---
 title: Indexeren van tabellen
-description: Aanbevelingen en voorbeelden voor het indexeren van tabellen in SQL Analytics.
+description: Aanbevelingen en voorbeelden voor het indexeren van tabellen in Synapse SQL-pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ced965f94808bdc672f694bede5c239178891f97
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d5acc2b69ed521af4fd4777dc9f3496290078379
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351289"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583271"
 ---
-# <a name="indexing-tables-in-sql-analytics"></a>Indexeren van tabellen in SQL Analytics
+# <a name="indexing-tables-in-synapse-sql-pool"></a>Indexeren van tabellen in Synapse SQL-groep
 
-Aanbevelingen en voorbeelden voor het indexeren van tabellen in SQL Analytics.
+Aanbevelingen en voorbeelden voor het indexeren van tabellen in Synapse SQL-pool.
 
 ## <a name="index-types"></a>Indextypen
 
-SQL Analytics biedt verschillende indexeringsopties, waaronder [geclusterde columnstore-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview), [geclusterde indexen en niet-geclusterde indexen](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), en een niet-indexoptie die ook wel [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)wordt genoemd .  
+Synapse SQL-pool biedt verschillende indexeringsopties, waaronder [geclusterde columnstore-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview), [geclusterde indexen en niet-geclusterde indexen](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), en een niet-indexoptie die ook wel [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)wordt genoemd .  
 
-Zie de SQL [Analytics-documentatie (CREATE TABLE)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) om een tabel met een index te maken.
+Zie de documentatie van DE [TABEL MAKEN (Synapse SQL-groep)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) als u een tabel met een index wilt maken.
 
 ## <a name="clustered-columnstore-indexes"></a>Geclusterde kolomarchiefindexen
 
-SQL Analytics maakt standaard een geclusterde columnstore-index wanneer er geen indexopties zijn opgegeven in een tabel. Geclusterde kolomarchieftabellen bieden zowel het hoogste niveau van gegevenscompressie als de beste algemene queryprestaties.  Geclusterde kolomarchieftabellen presteren over het algemeen beter dan geclusterde index- of heaptabellen en zijn meestal de beste keuze voor grote tabellen.  Om deze redenen is het geclusterde kolomarchief de beste plek om te beginnen wanneer u niet zeker weet hoe u uw tabel indexeren.  
+Synapse SQL-groep maakt standaard een geclusterde kolomarchiefindex wanneer er geen indexopties zijn opgegeven in een tabel. Geclusterde kolomarchieftabellen bieden zowel het hoogste niveau van gegevenscompressie als de beste algemene queryprestaties.  Geclusterde kolomarchieftabellen presteren over het algemeen beter dan geclusterde index- of heaptabellen en zijn meestal de beste keuze voor grote tabellen.  Om deze redenen is het geclusterde kolomarchief de beste plek om te beginnen wanneer u niet zeker weet hoe u uw tabel indexeren.  
 
 Als u een geclusterde kolomarchieftabel wilt maken, geeft u gewoon CLUSTERED COLUMNSTORE INDEX op in de MET-component of laat u de WITH-component uit:
 
@@ -52,7 +52,7 @@ Er zijn een paar scenario's waarin geclusterde kolomarchief mogelijk geen goede 
 
 ## <a name="heap-tables"></a>Heaptabellen
 
-Wanneer u tijdelijk gegevens in SQL Analytics landt, u merken dat het gebruik van een heaptabel het algehele proces sneller maakt. Dit komt omdat ladingen op heaps sneller zijn dan het indexeren van tabellen en in sommige gevallen kan het volgende lezen vanuit de cache worden gedaan.  Als u gegevens alleen laadt om deze te faseren voordat u meer transformaties uitvoert, is het laden van de tabel naar heaptabel veel sneller dan het laden van de gegevens naar een geclusterde kolomarchieftabel. Bovendien laadt het laden van gegevens naar een [tijdelijke tabel](sql-data-warehouse-tables-temporary.md) sneller dan het laden van een tabel naar permanente opslag.  
+Wanneer u tijdelijk gegevens in synapsen-SQL-groep landt, u merken dat het gebruik van een heaptabel het algehele proces sneller maakt. Dit komt omdat ladingen op heaps sneller zijn dan het indexeren van tabellen en in sommige gevallen kan het volgende lezen vanuit de cache worden gedaan.  Als u gegevens alleen laadt om deze te faseren voordat u meer transformaties uitvoert, is het laden van de tabel naar heaptabel veel sneller dan het laden van de gegevens naar een geclusterde kolomarchieftabel. Bovendien laadt het laden van gegevens naar een [tijdelijke tabel](sql-data-warehouse-tables-temporary.md) sneller dan het laden van een tabel naar permanente opslag.  
 
 Voor kleine opzoektabellen, minder dan 60 miljoen rijen, zijn heaptabellen vaak zinvol.  Clusterkolomarchieftabellen beginnen optimale compressie te bereiken zodra er meer dan 60 miljoen rijen zijn.
 
@@ -190,7 +190,7 @@ Deze factoren kunnen ertoe leiden dat een index voor kolomopslag aanzienlijk min
 
 ### <a name="memory-pressure-when-index-was-built"></a>Geheugendruk bij de opbouw van de index
 
-Het aantal rijen per gecomprimeerde rijgroep is rechtstreeks gerelateerd aan de breedte van de rij en de hoeveelheid geheugen die beschikbaar is om de rijgroep te verwerken.  Wanneer rijen naar columnstore-tabellen worden geschreven onder geheugendruk, kan dit ten koste gaan van de kwaliteit van columnstore-segmenten.  Daarom is de beste praktijk is om de sessie die is het schrijven naar uw columnstore index tabellen toegang tot zo veel mogelijk geheugen.  Aangezien er een trade-off is tussen geheugen en gelijktijdigheid, is de richtlijnen voor de juiste geheugentoewijzing afhankelijk van de gegevens in elke rij van uw tabel, de SQL Analytics-eenheden die aan uw systeem zijn toegewezen en het aantal gelijktijdige sleuven dat u geven aan de sessie die gegevens naar uw tabel te schrijven.
+Het aantal rijen per gecomprimeerde rijgroep is rechtstreeks gerelateerd aan de breedte van de rij en de hoeveelheid geheugen die beschikbaar is om de rijgroep te verwerken.  Wanneer rijen naar columnstore-tabellen worden geschreven onder geheugendruk, kan dit ten koste gaan van de kwaliteit van columnstore-segmenten.  Daarom is de beste praktijk is om de sessie die is het schrijven naar uw columnstore index tabellen toegang tot zo veel mogelijk geheugen.  Aangezien er een afweging is tussen geheugen en gelijktijdigheid, is de richtlijnen voor de juiste geheugentoewijzing afhankelijk van de gegevens in elke rij van uw tabel, de gegevensmagazijnen die aan uw systeem zijn toegewezen en het aantal gelijktijdige sleuven dat u geven aan de sessie die gegevens naar uw tabel schrijft.
 
 ### <a name="high-volume-of-dml-operations"></a>Hoog volume DML-activiteiten
 
@@ -204,13 +204,13 @@ Batched update- en invoegbewerkingen die de bulkdrempel van 102.400 rijen per ve
 
 ### <a name="small-or-trickle-load-operations"></a>Kleine of druppellaadbewerkingen
 
-Kleine lasten die in SQL Analytics-databases stromen, worden ook wel trickle loads genoemd. Ze vertegenwoordigen meestal een bijna constante stroom van gegevens die door het systeem worden ingenomen. Echter, als deze stroom is in de buurt van continu het volume van de rijen is niet bijzonder groot. Vaker wel dan niet de gegevens is aanzienlijk onder de drempel die nodig is voor een directe belasting naar columnstore formaat.
+Kleine lasten die in synapsen sql pool stromen zijn ook wel bekend als druppelbelastingen. Ze vertegenwoordigen meestal een bijna constante stroom van gegevens die door het systeem worden ingenomen. Echter, als deze stroom is in de buurt van continu het volume van de rijen is niet bijzonder groot. Vaker wel dan niet de gegevens is aanzienlijk onder de drempel die nodig is voor een directe belasting naar columnstore formaat.
 
 In deze situaties is het vaak beter om de gegevens eerst in Azure blob-opslag te landen en deze te laten accumuleren voordat deze wordt geladen. Deze techniek is vaak bekend als *micro-batching*.
 
 ### <a name="too-many-partitions"></a>Te veel partities
 
-Een ander ding om te overwegen is de impact van partitionering op uw geclusterde kolomstore tabellen.  Voordat sql analytics wordt partitie, worden uw gegevens al opgesplitst in 60 databases.  Het verdelen verdeelt uw gegevens verder.  Als u uw gegevens partitioneert, moet u er rekening mee houden dat **elke** partitie ten minste 1 miljoen rijen nodig heeft om te profiteren van een geclusterde kolomarchiefindex.  Als u uw tabel in 100 partities verdeelt, heeft uw tabel ten minste 6 miljard rijen nodig om te profiteren van een geclusterde kolomarchiefindex (60 distributies *100 partities* 1 miljoen rijen). Als uw tabel met 100 partities geen 6 miljard rijen heeft, vermindert u het aantal partities of overweegt u in plaats daarvan een heaptabel te gebruiken.
+Een ander ding om te overwegen is de impact van partitionering op uw geclusterde kolomstore tabellen.  Voordat synapse SQL-pool wordt partitie, worden uw gegevens al opgesplitst in 60 databases.  Het verdelen verdeelt uw gegevens verder.  Als u uw gegevens partitioneert, moet u er rekening mee houden dat **elke** partitie ten minste 1 miljoen rijen nodig heeft om te profiteren van een geclusterde kolomarchiefindex.  Als u uw tabel in 100 partities verdeelt, heeft uw tabel ten minste 6 miljard rijen nodig om te profiteren van een geclusterde kolomarchiefindex (60 distributies *100 partities* 1 miljoen rijen). Als uw tabel met 100 partities geen 6 miljard rijen heeft, vermindert u het aantal partities of overweegt u in plaats daarvan een heaptabel te gebruiken.
 
 Zodra uw tabellen zijn geladen met bepaalde gegevens, volgt u de onderstaande stappen om tabellen te identificeren en opnieuw op te bouwen met suboptimale geclusterde kolomarchiefindexen.
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Het opnieuw opbouwen van een index in SQL Analytics is een offlinebewerking.  Zie de sectie REBOUWEN VAN DE INDEXEN WIJZIGEN in [Columnstore Indexen Defragmentatie](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)en [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)voor meer informatie over het opnieuw opbouwen van indexen .
+Het opnieuw opbouwen van een index in synapse SQL-pool is een offlinebewerking.  Zie de sectie REBOUWEN VAN DE INDEXEN WIJZIGEN in [Columnstore Indexen Defragmentatie](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)en [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)voor meer informatie over het opnieuw opbouwen van indexen .
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Stap 3: De kwaliteit van het geclusterde kolomarchief is verbeterd
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-Zie [Partities gebruiken in SQL Analytics](sql-data-warehouse-tables-partition.md)voor meer informatie over het opnieuw maken van partities met CTAS.
+Zie [Partities gebruiken in de Synapse SQL-pool](sql-data-warehouse-tables-partition.md)voor meer informatie over het opnieuw maken van partities met CTAS.
 
 ## <a name="next-steps"></a>Volgende stappen
 

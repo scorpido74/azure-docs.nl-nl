@@ -1,6 +1,6 @@
 ---
 title: Geïntegreerde oplossingen bouwen
-description: Oplossingstools en partners die integreren met een datawarehouse dat is ingericht met SQL Analytics.
+description: Oplossingstools en partners die integreren met een Synapse SQL-pool.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,15 +11,16 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 680e561c08c5113e3d7f26b00422f3696bb133e9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c8e3598e55d3f90ab2b7401380406677f56c0ce3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350224"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586483"
 ---
-# <a name="integrate-other-services-with-a-sql-analytics-data-warehouse"></a>Andere services integreren met een SQL Analytics-gegevensmagazijn 
-De SQL Analytics-mogelijkheid binnen Azure Synapse Analytics stelt gebruikers in staat om te integreren met veel van de andere services in Azure. Met SQL Analytics u een gegevensmagazijn maken via de SQL Pool-bron, die vervolgens verschillende aanvullende services kan gebruiken, waaronder:
+# <a name="integrate-other-services-with-a-synapse-sql-pool"></a>Andere services integreren met een Synapse SQL-pool
+
+Met de Synapse SQL-poolmogelijkheid binnen Azure Synapse Analytics kunnen gebruikers integreren met veel van de andere services in Azure. Met Synapse SQL u een datawarehouse maken via de SQL-poolbron, die vervolgens verschillende aanvullende services kan gebruiken, waaronder:
 
 * Power BI
 * Azure Data Factory

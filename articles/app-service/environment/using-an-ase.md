@@ -4,24 +4,24 @@ description: Meer informatie over het maken, publiceren en schalen van apps in e
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 01/01/2020
+ms.date: 3/26/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8a73c1998203a8696b67a5e7eb3af23898239265
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477634"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586124"
 ---
 # <a name="use-an-app-service-environment"></a>Een App Service-omgeving gebruiken
 
 Een App Service Environment (ASE) is een implementatie van Azure App Service in een subnet in het Azure Virtual Network-exemplaar van een klant. Een ASE bestaat uit:
 
-- **Front-ends:** Waar HTTP of HTTPS eindigt in een App Service-omgeving.
-- **Werknemers:** de bronnen die uw apps hosten.
-- **Database:** bevat informatie die de omgeving definieert.
-- **Opslag:** wordt gebruikt om de door de klant gepubliceerde apps te hosten.
+- **Front-ends**: Wanneer HTTP of HTTPS eindigt in een App Service-omgeving
+- **Werknemers:** de bronnen die uw apps hosten
+- **Database**: Bevat informatie die de omgeving definieert
+- **Opslag:** wordt gebruikt om de door klanten gepubliceerde apps te hosten
 
 U een ASE implementeren met een extern of intern virtueel IP (VIP) voor app-toegang. Een implementatie met een externe VIP wordt gewoonlijk een *externe ASE*genoemd. Een implementatie met een interne VIP wordt een *ILB ASE* genoemd omdat deze een interne load balancer (ILB) gebruikt. Zie [Een ILB ASE maken en gebruiken][MakeILBASE]voor meer informatie over de ILB ASE.
 
@@ -120,6 +120,22 @@ Zie [Een ILB ASE maken en gebruiken][MakeILBASE]voor informatie over het maken v
 
 De SCM-URL wordt gebruikt om toegang te krijgen tot de Kudu-console of om uw app te publiceren met Behulp van Web Deploy. Zie [Kudu-console voor Azure App Service voor][Kudu]meer informatie over de Kudu-console. De Kudu-console biedt u een web-gebruikersinterface voor foutopsporing, het uploaden van bestanden, het bewerken van bestanden en nog veel meer.
 
+### <a name="dns-configuration"></a>DNS-configuratie 
+
+Wanneer u een externe ASE gebruikt, worden apps die in uw ASE zijn gemaakt, geregistreerd bij Azure DNS. Met een ILB ASE moet u uw eigen DNS beheren. 
+
+Ga als u DNS configureert met uw ILB ASE:
+
+    create a zone for <ASE name>.appserviceenvironment.net
+    create an A record in that zone that points * to the ILB IP address
+    create an A record in that zone that points @ to the ILB IP address
+    create a zone in <ASE name>.appserviceenvironment.net named scm
+    create an A record in the scm zone that points * to the ILB IP address
+
+De DNS-instellingen voor uw ASE-standaarddomeinachtervoegsel beperken uw apps niet om alleen toegankelijk te zijn voor die namen. U een aangepaste domeinnaam instellen zonder validatie op uw apps in een ILB ASE. Als u vervolgens een zone met de naam *contoso.net*wilt maken, u dit doen en deze naar het IP-adres van ILB richten. De aangepaste domeinnaam werkt voor app-aanvragen, maar niet voor de scm-site. De scm-site is alleen beschikbaar op * &lt;appname&gt;.scm.&lt; asename&gt;.appserviceenvironment.net*. 
+
+De zone met de naam *.&lt; asename&gt;.appserviceenvironment.net* is wereldwijd uniek. Vóór mei 2019 konden klanten het domeinachtervoegsel van de ILB ASE opgeven. Als u *.contoso.com* voor het domeinachtervoegsel wilt gebruiken, kon u dit doen en dat zou de scm-site omvatten. Er waren uitdagingen met dat model, waaronder; het beheren van het standaard SSL-certificaat, het ontbreken van eenmalige aanmelding met de scm-site en de vereiste om een wildcardcertificaat te gebruiken. Het ILB ASE standaard certificaat upgradeproces was ook storend en zorgde ervoor dat de toepassing opnieuw werd opgestart. Om deze problemen op te lossen, werd het ilb ASE-gedrag gewijzigd om een domeinachtervoegsel te gebruiken op basis van de naam van de ASE en met een achtervoegsel van Microsoft. De wijziging in het ILB ASE-gedrag heeft alleen gevolgen voor ILB ASEs die na mei 2019 zijn gemaakt. Reeds bestaande ILB ASEs moeten nog steeds het standaardcertificaat van de ASE en hun DNS-configuratie beheren.
+
 ## <a name="publishing"></a>Publiceren
 
 In een ASE, net als bij de multitenant App Service, u publiceren op basis van deze methoden:
@@ -132,7 +148,7 @@ In een ASE, net als bij de multitenant App Service, u publiceren op basis van de
 
 Met een externe ASE werken deze publicatieopties allemaal op dezelfde manier. Zie [Implementatie in Azure App Service][AppDeploy]voor meer informatie.
 
-Publiceren is aanzienlijk anders met een ILB ASE, waarvoor de publicerende eindpunten zijn allemaal alleen beschikbaar via de ILB. De ILB is op een prive-IP in het ASE subnet in het virtuele netwerk. Als u geen netwerktoegang hebt tot de ILB, u geen apps op die ASE publiceren. Zoals vermeld in [Maken en gebruik maken van een ILB ASE,][MakeILBASE]moet u DNS configureren voor de apps in het systeem. Deze eis omvat het SCM-eindpunt. Als de eindpunten niet goed zijn gedefinieerd, u niet publiceren. Uw IDC's moeten ook toegang hebben tot het ILB om deze rechtstreeks te kunnen publiceren.
+Met een ILB ASE zijn de publicatieeindpunten alleen beschikbaar via de ILB. De ILB is op een prive-IP in het ASE subnet in het virtuele netwerk. Als u geen netwerktoegang hebt tot de ILB, u geen apps op die ASE publiceren. Zoals vermeld in [Maken en gebruik maken van een ILB ASE,][MakeILBASE]moet u DNS configureren voor de apps in het systeem. Deze eis omvat het SCM-eindpunt. Als de eindpunten niet goed zijn gedefinieerd, u niet publiceren. Uw IDC's moeten ook toegang hebben tot het ILB om deze rechtstreeks te kunnen publiceren.
 
 Zonder extra wijzigingen werken op internet gebaseerde CI-systemen zoals GitHub en Azure DevOps niet met een ILB ASE omdat het publicatieeindpunt niet toegankelijk is via internet. U publiceren naar een ILB ASE van Azure DevOps inschakelen door een zelfgehoste releaseagent in het virtuele netwerk te installeren die de ILB ASE bevat. Je ook een CI-systeem gebruiken dat een pull-model gebruikt, zoals Dropbox.
 
@@ -169,7 +185,18 @@ Ga als u wilt inloggen op uw ASE:
 
 ![ASE diagnostische logboekinstellingen][4]
 
-Als u integreert met Log Analytics, u de logboeken bekijken door **logboeken** te selecteren in de ASE-portal en een query te maken tegen **AppServiceEnvironmentPlatformLogs.**
+Als u integreert met Log Analytics, u de logboeken bekijken door **logboeken** te selecteren in de ASE-portal en een query te maken tegen **AppServiceEnvironmentPlatformLogs.** Logboeken worden alleen uitgezonden wanneer uw ASE een gebeurtenis heeft die deze activeert. Als uw ASE niet over een dergelijke gebeurtenis beschikt, worden er geen logboeken weergegeven. Als u snel een voorbeeld van logboeken in uw Log Analytics-werkruimte wilt zien, voert u een schaalbewerking uit met een van de app-serviceplannen in uw ASE. U vervolgens een query uitvoeren tegen **AppServiceEnvironmentPlatformLogs** om deze logboeken te bekijken. 
+
+**Een waarschuwing maken**
+
+Als u een waarschuwing wilt maken voor uw logboeken, volgt u de instructies in [Logboekwaarschuwingen maken, weergeven en beheren met Azure Monitor][logalerts]. In het kort:
+
+* De pagina Waarschuwingen openen in uw ASE-portal
+* **Nieuwe waarschuwingsregel selecteren**
+* Selecteer uw resource als uw Logboekanalysewerkruimte
+* Stel uw voorwaarde in met een aangepaste logboekzoekopdracht om een query te gebruiken zoals :"AppServiceEnvironmentPlatformLogs | waar ResultDescription "is begonnen met schalen" of wat je maar wilt. Stel de drempelwaarde in. 
+* Voeg desgewenst een actiegroep toe of maak deze. De actiegroep is waar u het antwoord op de waarschuwing definieert, zoals het verzenden van een e-mail of een sms-bericht
+* Geef uw waarschuwing een naam en sla deze op.
 
 ## <a name="upgrade-preference"></a>Voorkeur voor upgrade
 
@@ -245,3 +272,4 @@ Een ASE verwijderen:
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[logalerts]: ../../azure-monitor/platform/alerts-log.md

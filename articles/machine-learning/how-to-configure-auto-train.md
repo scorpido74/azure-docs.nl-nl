@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4cf940e38a84ea2eeb1896c8f7c628c8d5734374
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247126"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618539"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Geautomatiseerde ML-experimenten configureren in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -166,7 +166,7 @@ Voorbeelden zijn:
       automl_regressor = AutoMLConfig(
       task='regression',
       experiment_timeout_minutes=60,
-      whitelist_models=['kNN regressor'],
+      whitelist_models=['KNN'],
       primary_metric='r2_score',
       training_data=train_data,
       label_column_name=label,
@@ -245,7 +245,7 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 ### <a name="ensemble-configuration"></a><a name="ensemble"></a>Ensembleconfiguratie
 
-Ensemblemodellen zijn standaard ingeschakeld en worden weergegeven als de laatste uitvoeringiteraties in een geautomatiseerde machine learning-uitvoering. Momenteel ondersteund ensemble methoden zijn stemmen en stapelen. Stemmen wordt geïmplementeerd als soft-voting met behulp van gewogen gemiddelden, en de stapelen implementatie is met behulp van een twee laag implementatie, waar de eerste laag heeft dezelfde modellen als de stemming ensemble, en de tweede laag model wordt gebruikt om de optimale combinatie van de modellen vanaf de eerste laag. Als u ONNX-modellen gebruikt **of** modelexplainability hebt ingeschakeld, wordt stapelen uitgeschakeld en wordt alleen stemmen gebruikt.
+Ensemblemodellen zijn standaard ingeschakeld en worden weergegeven als de laatste uitvoeringiteraties in een geautomatiseerde machine learning-uitvoering. Momenteel ondersteund ensemble methoden zijn stemmen en stapelen. Stemmen wordt geïmplementeerd als soft-voting met behulp van gewogen gemiddelden, en de stapeling implementatie is met behulp van een twee laag implementatie, waar de eerste laag heeft dezelfde modellen als de stemming ensemble, en de tweede laag model wordt gebruikt om de optimale combinatie van de modellen uit de eerste laag te vinden. Als u ONNX-modellen gebruikt **of** modelexplainability hebt ingeschakeld, wordt stapelen uitgeschakeld en wordt alleen stemmen gebruikt.
 
 Er zijn meerdere standaardargumenten die `kwargs` kunnen `AutoMLConfig` worden opgegeven als in een object om het standaardgedrag van het stackensemble te wijzigen.
 

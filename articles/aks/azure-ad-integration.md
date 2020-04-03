@@ -4,12 +4,12 @@ description: Aks-clusters (Azure Kubernetes Service) met Azure Kubernetes Servic
 services: container-service
 ms.topic: article
 ms.date: 02/02/2019
-ms.openlocfilehash: 0476acadf5af3a3e2c470fe6c08ebbd355653e22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de57a46f92fab2486aa7722daf8745a01be1f4f6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596586"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617582"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory integreren met Azure Kubernetes Service
 
@@ -116,9 +116,9 @@ De tweede Azure AD-toepassing wordt gebruikt wanneer u zich aanmeldt met de Kube
     c. Selecteer **Web** voor het type URI omleiden en voer *https://aksazureadclient*een uri-opgemaakte waarde in, zoals .
 
     >[!NOTE]
-    >Als u een nieuw rbac-cluster maakt om Azure Monitor voor containers te ondersteunen, voegt **Web** u de volgende twee extra omleidings-URL's toe aan deze lijst als webtoepassingstypen. De URL-waarde van `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` de eerste basis moet `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`zijn en de URL-waarde van de tweede basis moet zijn .
+    >Als u een nieuw rbac-cluster maakt om Azure Monitor voor containers te ondersteunen, voegt **Web** u de volgende twee extra omleidings-URL's toe aan deze lijst als webtoepassingstypen. De URL-waarde van `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` de eerste basis moet zijn en de URL-waarde van de tweede basis moet`https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`
     >
-    >Als u deze functie in Azure China gebruikt, moet `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` de URL-waarde van `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`de eerste basis zijn en moet de URL-waarde van het tweede basisbasis zijn .
+    >Als u deze functie in Azure China gebruikt, moet `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` de URL-waarde van de eerste basis zijn en moet de URL-waarde van het tweede basisbestand worden`https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`
     >
     >Zie [De functie Live-gegevens (voorbeeld)](../azure-monitor/insights/container-insights-livedata-setup.md) voor Azure Monitor voor containers en de stappen voor het configureren van verificatie instellen onder de sectie [AD-geïntegreerde verificatie configureren](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication) voor meer informatie.
 

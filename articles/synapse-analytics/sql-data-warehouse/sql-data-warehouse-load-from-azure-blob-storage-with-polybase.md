@@ -1,6 +1,6 @@
 ---
-title: Contoso-retailgegevens laden in een SQL Analytics-gegevensmagazijn
-description: Gebruik PolyBase- en T-SQL-opdrachten om twee tabellen van de Contoso-retailgegevens in Azure SQL Analytics te laden.
+title: Contoso-retailgegevens laden in een Synapse SQL-gegevensmagazijn
+description: Gebruik PolyBase- en T-SQL-opdrachten om twee tabellen van de Contoso-retailgegevens in Synapse SQL te laden.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62105b783577d70ae975cf514304d2c564357641
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7460a59dd2a7a5906a483195929136391657fa50
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351464"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584012"
 ---
-# <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>Contoso-retailgegevens laden in een SQL Analytics-gegevensmagazijn
+# <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>Contoso-retailgegevens laden in een Synapse SQL-gegevensmagazijn
 
-In deze zelfstudie leert u PolyBase- en T-SQL-opdrachten te gebruiken om twee tabellen uit de Contoso-retailgegevens in een SQL Analytics-gegevensmagazijn te laden. 
+In deze zelfstudie leert u PolyBase- en T-SQL-opdrachten te gebruiken om twee tabellen van de Contoso-retailgegevens in een Synapse SQL-gegevensmagazijn te laden.
 
 In deze tutorial zul je:
 
@@ -30,11 +30,11 @@ In deze tutorial zul je:
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u deze zelfstudie wilt uitvoeren, hebt u een Azure-account nodig dat al een SQL Analytics-gegevensmagazijn heeft. Zie [Een gegevensmagazijn maken en firewallregel op serverniveau instellen als](create-data-warehouse-portal.md)u geen gegevensmagazijn hebt ingericht.
+Als u deze zelfstudie wilt uitvoeren, hebt u een Azure-account nodig dat al een Synapse SQL-gegevensmagazijn heeft. Zie [Een gegevensmagazijn maken en firewallregel op serverniveau instellen als](create-data-warehouse-portal.md)u geen gegevensmagazijn hebt ingericht.
 
 ## <a name="configure-the-data-source"></a>De gegevensbron configureren
 
-PolyBase gebruikt externe T-SQL-objecten om de locatie en kenmerken van de externe gegevens te definiëren. De definities van externe objecten worden opgeslagen in uw SQL Analytics-gegevensmagazijn. De gegevens worden extern opgeslagen.
+PolyBase gebruikt externe T-SQL-objecten om de locatie en kenmerken van de externe gegevens te definiëren. De definities van externe objecten worden opgeslagen in uw Synapse SQL-gegevensmagazijn. De gegevens worden extern opgeslagen.
 
 ## <a name="create-a-credential"></a>Een referentie maken
 
@@ -121,7 +121,7 @@ GO
 
 ## <a name="create-the-external-tables"></a>De externe tabellen maken
 
-Voer het volgende script uit om de externe tabellen DimProduct en FactOnlineSales te maken. Het enige wat u hier doet, is kolomnamen en gegevenstypen definiëren en deze koppelen aan de locatie en indeling van de Azure blob-opslagbestanden. De definitie wordt opgeslagen in het SQL Analytics-gegevensmagazijn en de gegevens bevinden zich nog steeds in de Azure Storage Blob.
+Voer het volgende script uit om de externe tabellen DimProduct en FactOnlineSales te maken. Het enige wat u hier doet, is kolomnamen en gegevenstypen definiëren en deze koppelen aan de locatie en indeling van de Azure blob-opslagbestanden. De definitie wordt opgeslagen in het gegevensmagazijn en de gegevens bevinden zich nog steeds in de Azure Storage Blob.
 
 De parameter **LOCATIE** is de map onder de hoofdmap in de Azure Storage Blob. Elke tabel bevindt zich in een andere map.
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Compressie van kolomarchief optimaliseren
 
-Standaard slaat het SQL Analytics-gegevensmagazijn de tabel op als een geclusterde kolomarchiefindex. Nadat een belasting is voltooid, worden sommige gegevensrijen mogelijk niet gecomprimeerd in het kolomarchief.  Er zijn verschillende redenen waarom dit kan gebeuren. Zie [kolomarchiefindexen beheren](sql-data-warehouse-tables-index.md)voor meer informatie .
+Standaard slaat het Sql-gegevensmagazijn van Synapse de tabel op als een geclusterde kolomarchiefindex. Nadat een belasting is voltooid, worden sommige gegevensrijen mogelijk niet gecomprimeerd in het kolomarchief.  Er zijn verschillende redenen waarom dit kan gebeuren. Zie [kolomarchiefindexen beheren](sql-data-warehouse-tables-index.md)voor meer informatie .
 
 Als u de queryprestaties en compressie van het kolomarchief na een belasting wilt optimaliseren, bouwt u de tabel opnieuw om de kolomarchiefindex te dwingen alle rijen te comprimeren. 
 

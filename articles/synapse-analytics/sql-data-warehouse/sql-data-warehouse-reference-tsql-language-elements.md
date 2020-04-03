@@ -1,6 +1,6 @@
 ---
 title: Taalelementen T-SQL
-description: Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund in SQL Analytics.
+description: Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund in synapse SQL-pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,19 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 040a6d519896d71227777168ea9de9612f97ca6e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f27a0a351e4a446dc950ac13f850bd14b2b3c65a
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351422"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586402"
 ---
-# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>T-SQL-taalelementen ondersteund in SQL Analytics
-Koppelingen naar de documentatie voor T-SQL-taalelementen die worden ondersteund in SQL Analytics.
+# <a name="t-sql-language-elements-supported-in-synapse-sql-pool"></a>T-SQL-taalelementen ondersteund in Synapse SQL-pool
+
+Koppelingen naar de documentatie voor T-SQL-taalelementen die worden ondersteund in synapse SQL-pool.
 
 ## <a name="core-elements"></a>Kernelementen
+
 * [syntaxisconventies](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
 * [objectnaamgevingsregels](https://msdn.microsoft.com/library/ms175874.aspx)
 * [gereserveerde trefwoorden](https://msdn.microsoft.com/library/ms189822.aspx)
@@ -37,6 +39,7 @@ Koppelingen naar de documentatie voor T-SQL-taalelementen die worden ondersteund
 * [Gebruiken](https://msdn.microsoft.com/library/ms188366.aspx)
 
 ## <a name="batches-control-of-flow-and-variables"></a>Batches, controle-van-stroom en variabelen
+
 * [Beginnen... Einde](https://msdn.microsoft.com/library/ms190487.aspx)
 * [Breken](https://msdn.microsoft.com/library/ms181271.aspx)
 * [Verklaren@local_variable](https://msdn.microsoft.com/library/ms188927.aspx)
@@ -48,6 +51,7 @@ Koppelingen naar de documentatie voor T-SQL-taalelementen die worden ondersteund
 * [Terwijl](https://msdn.microsoft.com/library/ms178642.aspx)
 
 ## <a name="operators"></a>Operators
+
 * [+ (Toevoegen)](https://msdn.microsoft.com/library/ms178565.aspx)
 * [+ (String Concatenation)](https://msdn.microsoft.com/library/ms177561.aspx)
 * [- (Negatief)](https://msdn.microsoft.com/library/ms189480.aspx)
@@ -57,6 +61,7 @@ Koppelingen naar de documentatie voor T-SQL-taalelementen die worden ondersteund
 * [Modulo](https://msdn.microsoft.com/library/ms190279.aspx)
 
 ## <a name="wildcard-characters-to-match"></a>Jokerteken(en) dat overeenkomt
+
 * [= (Gelijken)](https://msdn.microsoft.com/library/ms175118.aspx)
 * [> (Groter dan)](https://msdn.microsoft.com/library/ms178590.aspx)
 * [< (Minder dan)](https://msdn.microsoft.com/library/ms179873.aspx)
@@ -74,6 +79,7 @@ Koppelingen naar de documentatie voor T-SQL-taalelementen die worden ondersteund
 * [Of](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>Bitwise operators
+
 * [& (Bitwise AND)](https://msdn.microsoft.com/library/ms174965.aspx)
 * [| (Bitwise OR)](https://msdn.microsoft.com/library/ms186714.aspx)
 * [^ (Exclusieve OR Bitwise)](https://msdn.microsoft.com/library/ms190277.aspx)
@@ -83,6 +89,7 @@ Koppelingen naar de documentatie voor T-SQL-taalelementen die worden ondersteund
 * [&= (Bitwise AND EQUALS)](https://msdn.microsoft.com/library/cc627427.aspx)
 
 ## <a name="functions"></a>Functions
+
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)
@@ -227,12 +234,15 @@ Koppelingen naar de documentatie voor T-SQL-taalelementen die worden ondersteund
 * [XACT_STATE](https://msdn.microsoft.com/library/ms189797.aspx)
 
 ## <a name="transactions"></a>Transacties
+
 * [Transacties](https://msdn.microsoft.com/library/mt204031.aspx)
 
 ## <a name="diagnostic-sessions"></a>Diagnostische sessies
+
 * [DIAGNOSTISCHE SESSIE MAKEN](https://msdn.microsoft.com/library/mt204029.aspx)
 
 ## <a name="procedures"></a>Procedures
+
 * [sp_addrolemember](https://msdn.microsoft.com/library/ms187750.aspx)
 * [sp_columns](https://msdn.microsoft.com/library/ms176077.aspx)
 * [sp_configure](https://msdn.microsoft.com/library/ms188787.aspx)
@@ -256,6 +266,7 @@ Koppelingen naar de documentatie voor T-SQL-taalelementen die worden ondersteund
 * [sp_unprepare](https://msdn.microsoft.com/library/ff848735.aspx)
 
 ## <a name="set-statements"></a>SET-instructies
+
 * [STEL ANSI_DEFAULTS IN](https://msdn.microsoft.com/library/ms188340.aspx)
 * [SET ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
 * [Stel ANSI_NULL_DFLT_ON IN](https://msdn.microsoft.com/library/ms187375.aspx)
@@ -278,5 +289,6 @@ Koppelingen naar de documentatie voor T-SQL-taalelementen die worden ondersteund
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [T-SQL-instructies in SQL Analytics](sql-data-warehouse-reference-tsql-statements.md)en [Systeemweergaven in SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md)voor meer referentiegegevens.
+
+Zie [T-SQL-instructies in Synapse SQL-pool](sql-data-warehouse-reference-tsql-statements.md)en [Systeemweergaven in Synapse SQL-pool](sql-data-warehouse-reference-tsql-system-views.md)voor meer referentiegegevens.
 

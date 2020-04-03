@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 766615a92e616a254cca4b2b3ce1ccde40118275
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9ce87bac6fbcc3833684dc540c542bc14c9b4955
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350255"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586514"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (voorheen SQL DW) Veelgestelde vragen
 
@@ -29,9 +29,9 @@ V. Wat is er gebeurd met Azure SQL Data Warehouse?
 
 A. Azure Synapse is Azure SQL Data Warehouse (SQL DW) geëvolueerd. We hebben hetzelfde toonaangevende datawarehouse naar een geheel nieuw niveau van prestaties en mogelijkheden gebracht. U uw bestaande datawarehouseworkloads in productie blijven uitvoeren met Azure Synapse en automatisch profiteren van de nieuwe mogelijkheden, die in voorbeeldzijn. Zie [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)voor meer informatie.
 
-V. Wat is SQL Analytics?
+V. Wat is Synapse SQL-pool?
 
-A. SQL Analytics verwijst naar de enterprise data warehousing-functies die algemeen beschikbaar zijn met Azure Synapse. Zie [Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)voor meer informatie.
+A. Synapse SQL-pool verwijst naar de enterprise data warehousing-functies die algemeen beschikbaar zijn met Azure Synapse. Zie [Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)voor meer informatie.
 
 V. Hoe ga ik aan de slag met Azure Synapse?
 
@@ -49,7 +49,7 @@ V. Kan ik Power BI aansluiten?
 
 A. Ja. Hoewel Power BI directe query's ondersteunt met Azure Synapse, is het niet bedoeld voor een groot aantal gebruikers of realtime gegevens. Als u de Prestaties van Power BI verder wilt optimaliseren, u overwegen Power BI te gebruiken bovenop Azure Analysis Services of Analysis Service IaaS.
 
-V. Wat zijn SQL Analytics-capaciteitslimieten?
+V. Wat zijn de capaciteitslimieten van synaps SQL-pool?
 
 A. Zie onze pagina met huidige [capaciteitslimieten.](sql-data-warehouse-service-capacity-limits.md) 
 
@@ -83,16 +83,15 @@ A. Veel functies worden ondersteund. Functies die niet worden ondersteund, zijn 
 
 ## <a name="tooling-and-administration"></a>Tooling en administratie
 
-V. Ondersteunt SQL Analytics REST API's?
+V. Ondersteunt Synapse SQL-pool REST API's?
 
-A. Ja. De meeste REST-functionaliteit die kan worden gebruikt met SQL Database is ook beschikbaar met SQL Analytics. U API-informatie vinden op REST-documentatiepagina's of [MSDN.](https://msdn.microsoft.com/library/azure/mt163685.aspx)
-
+A. Ja. De meeste REST-functionaliteit die kan worden gebruikt met SQL Database is ook beschikbaar met Synapse SQL-pool. U API-informatie vinden op REST-documentatiepagina's of [MSDN.](https://msdn.microsoft.com/library/azure/mt163685.aspx)
 
 ## <a name="loading"></a>Laden
 
 V. Welke client drivers ondersteunt u?
 
-A. Driver-ondersteuning voor SQL Analytics is te vinden op de pagina [Verbindingstekenreeksen](sql-data-warehouse-connection-strings.md)
+A. Driver support voor Synapse SQL pool is te vinden op de pagina [Connection Strings](sql-data-warehouse-connection-strings.md)
 
 V: Welke bestandsindelingen worden ondersteund door PolyBase?
 
@@ -108,7 +107,8 @@ A: Nee, PolyBase werkt alleen samen met de opslagcomponenten.
 
 V: Kan ik verbinding maken met HDI?
 
-A: HDI kan ADLS of WASB gebruiken als HDFS-laag. Als u een hdfs-laag hebt, u die gegevens in een SQL Analytics-gegevensmagazijn laden. U echter geen pushdown-berekening genereren naar de HDI-instantie. 
+A: HDI kan ADLS of WASB gebruiken als HDFS-laag. Als u een hdfs-laag hebt, u die gegevens in een Synapse SQL-groep laden. U echter geen pushdown-berekening genereren naar de HDI-instantie. 
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Zie onze [overzichtspagina](sql-data-warehouse-overview-faq.md) voor meer informatie over Azure Synapse als geheel.

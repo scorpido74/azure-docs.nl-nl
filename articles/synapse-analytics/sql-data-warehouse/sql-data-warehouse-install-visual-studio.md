@@ -1,6 +1,6 @@
 ---
 title: Visual Studio 2019 installeren
-description: Visual Studio en SQL Server Development Tools (SSDT) installeren voor SQL Analytics
+description: Visual Studio en SQL Server Development Tools (SSDT) installeren voor Synapse SQL
 services: synapse-analytics
 ms.custom: vs-azure, azure-synapse
 ms.workload: azure-vs
@@ -12,12 +12,12 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d0a1772706fa838f51322d5f5d5bd1b46eb9144a
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: aa2f903611f52f8f7a8ede0040b592a7dddd0e89
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351630"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584455"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Aan de slag met Visual Studio 2019
 Visual Studio **2019** SQL Server Data Tools (SSDT) is één tool waarmee u het volgende doen:
@@ -34,7 +34,7 @@ Zie [Visual Studio 2019 downloaden][] om Visual Studio **16.3 en hoger**te downl
 
 ## <a name="unsupported-features-in-ssdt"></a>Niet-ondersteunde functies in SSDT
 
-Er zijn momenten waarop functiereleases voor SQL Analytics mogelijk geen ondersteuning voor SSDT bevatten. De volgende functies worden momenteel niet ondersteund:
+Er zijn momenten waarop functiereleases voor Synapse SQL mogelijk geen ondersteuning voor SSDT bevatten. De volgende functies worden momenteel niet ondersteund:
 
 - [Gematerialiseerde weergaven](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) (in uitvoering)
 - [Geordende geclusterde kolomarchiefindexen](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest#examples--and-) (in uitvoering)
@@ -42,7 +42,7 @@ Er zijn momenten waarop functiereleases voor SQL Analytics mogelijk geen onderst
 - [Workloadmanagement](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-management) - werkbelastinggroepen en classificaties (in uitvoering)
 - [Beveiliging op rijniveau](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?view=sql-server-ver15)
   - Stuur hier een supportticket in of stem [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) om de functie te ondersteunen.
-- [Dynamisch maskeren van gegevens](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json&view=sql-server-2017#defining-a-dynamic-data-mask)
+- [Dynamische gegevensmaskering](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json&view=sql-server-2017#defining-a-dynamic-data-mask)
   - Stuur hier een supportticket in of stem [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) om de functie te ondersteunen. 
 - [PREDICT,](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=sql-server-ver15&viewFallbackFrom=azure-sqldw-latest) functie 
 - [Tabellen met beperkingen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-table-constraints#table-constraints) worden niet ondersteund. Stel voor deze tabelobjecten de buildactie in op 'Geen'.

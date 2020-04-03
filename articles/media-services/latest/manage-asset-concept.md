@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: fcdb8af770fa0068e8413d4609a56223a9a20ce2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345899"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582201"
 ---
 # <a name="manage-assets"></a>Assets beheren
 
@@ -60,7 +60,7 @@ Nadat de digitale bestanden zijn geüpload naar opslag en gekoppeld aan een asse
 
     **AssetContainerSas.listContainerSas** neemt een [parameter ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) waarop u instelt `expiryTime`. De tijd moet worden ingesteld op < 24 uur.
 
-    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) retourneert meerdere SAS-URL's omdat er twee opslagaccountsleutels voor elk opslagaccount zijn. Een opslagaccount heeft twee sleutels omdat het zorgt voor een naadloze rotatie van opslagaccountsleutels (bijvoorbeeld de ene keer tijdens het gebruik van de andere, en begint vervolgens de nieuwe sleutel te gebruiken en de andere sleutel te roteren). De 1e SAS URL staat voor storage key1 en de tweede opslagsleutel2.
+    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) retourneert meerdere SAS-URL's omdat er twee opslagaccountsleutels voor elk opslagaccount zijn. Een opslagaccount heeft twee sleutels omdat het helpt bij failover en naadloze rotatie van opslagaccountsleutels. De eerste SAS-URL vertegenwoordigt de eerste opslagaccountsleutel en de tweede SAS-URL vertegenwoordigt de tweede sleutel.
 3. Gebruik de Azure Storage API's of SDK's (bijvoorbeeld de [Storage REST API](../../storage/common/storage-rest-api-auth.md) of [.NET SDK)](../../storage/blobs/storage-quickstart-blobs-dotnet.md)om bestanden in de Asset-container te uploaden.
 4. Gebruik Media Services v3-API's om een transformatie en een taak te maken om uw 'invoer'-asset te verwerken. Zie [Transformeren en taken voor](transform-concept.md)meer informatie.
 5. Stream de inhoud van het item 'uitvoer'.

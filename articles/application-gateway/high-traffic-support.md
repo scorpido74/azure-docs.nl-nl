@@ -7,18 +7,21 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: e3f8445f68ec959ce1bb0d1ba4029807bd25907a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257424"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617205"
 ---
-# <a name="application-gateway-high-traffic-support"></a>Ondersteuning voor veel verkeer van Application Gateway 
+# <a name="application-gateway-high-traffic-support"></a>Ondersteuning voor intensief verkeer in Application Gateway
 
-In dit artikel worden enkele voorgestelde richtlijnen beschreven waarmee u uw Application Gateway instellen om extra verkeer te verwerken vanwege scenario's met een hoog verkeersvolume, zoals de SITUATIE COVID-19. U Application Gateway with Web Application Firewall (WAF) gebruiken voor een schaalbare en veilige manier om verkeer naar uw webtoepassingen te beheren. 
+>[!NOTE]
+> In dit artikel worden enkele voorgestelde richtlijnen beschreven om u te helpen bij het instellen van uw Application Gateway om extra verkeer te verwerken vanwege het hoge verkeersvolume dat kan optreden als gevolg van de COVID-19-crisis.
 
-Met de volgende suggesties u Application Gateway instellen met WAF om extra verkeer te verwerken. 
+U Application Gateway with Web Application Firewall (WAF) gebruiken voor een schaalbare en veilige manier om verkeer naar uw webtoepassingen te beheren.
+
+Met de volgende suggesties u Application Gateway instellen met WAF om extra verkeer te verwerken.
 
 ## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Gebruik de v2 SKU over v1 voor de mogelijkheden en prestatievoordelen voor automatisch schalen
 De v2 SKU biedt automatisch schalen om ervoor te zorgen dat uw Application Gateway kan worden opgeschaald naarmate het verkeer toeneemt. Het biedt ook andere belangrijke prestatievoordelen, zoals 5x betere TLS offload prestaties, snellere implementatie en update tijden, zone redundantie, en meer in vergelijking met v1. Zie voor meer informatie onze [v2-documentatie.](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) 

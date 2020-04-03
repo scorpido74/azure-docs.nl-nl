@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 6edea1d0de53e2dc9f764de26209dc1f3110556e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75978601"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585977"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Gebruikersgegevens beheren in Azure Security Center
 In dit artikel vindt u informatie over hoe u de gebruikersgegevens beheren in Azure Security Center. Het beheren van gebruikersgegevens omvat de mogelijkheid om gegevens te openen, te verwijderen of te exporteren.
@@ -98,6 +98,3 @@ Een gebruiker van het Security Center kan ervoor kiezen om zich af te melden doo
 
 ## <a name="auditing-and-reporting"></a>Controle en rapportage
 Controleer logboeken van beveiligingscontact, just-in-time en waarschuwingsupdates worden bijgehouden in [Azure Activity Logs.](../azure-monitor/platform/platform-logs-overview.md)
-
-## <a name="next-steps"></a>Volgende stappen
-Zie [Gebruikersgegevens beheren in een Azure Security Center-onderzoek](security-center-investigation-user-data.md)voor meer informatie over het beheren van gebruikersgegevens.

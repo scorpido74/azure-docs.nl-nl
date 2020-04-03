@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c868d8c159bca0c8462acde48225dc45003cf84e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350988"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586055"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Geheugen- en gelijktijdigheidslimieten voor Azure Synapse Analytics
 Bekijk de geheugen- en gelijktijdigheidslimieten die zijn toegewezen aan de verschillende prestatieniveaus en resourceklassen in Azure Synapse Analytics.  
@@ -73,7 +73,7 @@ Met de invoering van [werkbelastingsgroepen](sql-data-warehouse-workload-isolati
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Gelijktijdigheidsmaxima voor resourceklassen
-Om ervoor te zorgen dat elke query voldoende resources heeft om efficiënt uit te voeren, houdt SQL Analytics in Azure Synapse het gebruik van resources bij door gelijktijdigheidssleuven toe te kennen aan elke query. Het systeem plaatst query's in een wachtrij op basis van belang en gelijktijdige sleuven. Query's wachten in de wachtrij tot er voldoende gelijktijdige sleuven beschikbaar zijn. [Belang](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) en gelijktijdigheid slots bepalen CPU prioritering. Zie [Uw werkbelasting analyseren](analyze-your-workload.md) voor meer informatie
+Om ervoor te zorgen dat elke query voldoende resources heeft om efficiënt uit te voeren, wordt het gebruik van resources bijgehouden door gelijktijdigheidssleuven toe te kennen aan elke query. Het systeem plaatst query's in een wachtrij op basis van belang en gelijktijdige sleuven. Query's wachten in de wachtrij tot er voldoende gelijktijdige sleuven beschikbaar zijn. [Belang](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) en gelijktijdigheid slots bepalen CPU prioritering. Zie [Uw werkbelasting analyseren](analyze-your-workload.md) voor meer informatie
 
 **Statische resourceklassen**
 

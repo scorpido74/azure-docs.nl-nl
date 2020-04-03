@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 0541b12d73cc5b5f7fdf713c759069e2ecbd8c18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13985b07b4903504fde6b58031a532337d3b1971
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299628"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584602"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Server-side encryptie van azure beheerde schijven
 
@@ -34,7 +34,11 @@ Managed Disks maken standaard gebruik van door het platform beheerde versleuteli
 
 ## <a name="customer-managed-keys"></a>Door klant beheerde sleutels
 
-U ervoor kiezen om versleuteling te beheren op het niveau van elke beheerde schijf, met uw eigen sleutels. Server-side encryptie voor beheerde schijven met door de klant beheerde sleutels biedt een geïntegreerde ervaring met Azure Key Vault. U [uw RSA-sleutels](../../key-vault/key-vault-hsm-protected-keys.md) importeren in uw Key Vault of nieuwe RSA-sleutels genereren in Azure Key Vault. Azure beheerde schijven verwerkt de versleuteling en decryptie op een volledig transparante manier met behulp van [envelopversleuteling.](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique) Het versleutelt gegevens met behulp van een [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 gebaseerde data encryptie sleutel (DEK), die op zijn beurt, is beveiligd met behulp van uw sleutels. U moet toegang verlenen tot beheerde schijven in uw Key Vault om uw sleutels te gebruiken voor het versleutelen en decoderen van de DEK. Hierdoor u volledige controle over uw gegevens en sleutels. U uw sleutels op elk gewenst moment uitschakelen of de toegang tot beheerde schijven intrekken. U ook het gebruik van de versleutelingssleutel controleren met Azure Key Vault-bewaking om ervoor te zorgen dat alleen beheerde schijven of andere vertrouwde Azure-services toegang hebben tot uw sleutels.
+U ervoor kiezen om versleuteling te beheren op het niveau van elke beheerde schijf, met uw eigen sleutels. Server-side encryptie voor beheerde schijven met door de klant beheerde sleutels biedt een geïntegreerde ervaring met Azure Key Vault. U [uw RSA-sleutels](../../key-vault/key-vault-hsm-protected-keys.md) importeren in uw Key Vault of nieuwe RSA-sleutels genereren in Azure Key Vault. 
+
+Azure beheerde schijven verwerkt de versleuteling en decryptie op een volledig transparante manier met behulp van [envelopversleuteling.](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique) Het versleutelt gegevens met behulp van een [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 gebaseerde data encryptie sleutel (DEK), die op zijn beurt, is beveiligd met behulp van uw sleutels. De opslagservice genereert gegevensversleutelingssleutels en versleutelt deze met door de klant beheerde sleutels met RSA-versleuteling. Met de envelopversleuteling u uw sleutels periodiek roteren (wijzigen) volgens uw nalevingsbeleid zonder dat dit gevolgen heeft voor uw VM's. Wanneer u uw sleutels draait, versleutelt de opslagservice de gegevensversleutelingssleutels opnieuw met de nieuwe door de klant beheerde sleutels. 
+
+U moet toegang verlenen tot beheerde schijven in uw Key Vault om uw sleutels te gebruiken voor het versleutelen en decoderen van de DEK. Hierdoor u volledige controle over uw gegevens en sleutels. U uw sleutels op elk gewenst moment uitschakelen of de toegang tot beheerde schijven intrekken. U ook het gebruik van de versleutelingssleutel controleren met Azure Key Vault-bewaking om ervoor te zorgen dat alleen beheerde schijven of andere vertrouwde Azure-services toegang hebben tot uw sleutels.
 
 Voor premium SSD's, standaard SSD's en standaard HDD's: Wanneer u uw sleutel uitschakelt of verwijdert, worden alle VM's met schijven met die sleutel automatisch afgesloten. Hierna zijn de VM's niet meer bruikbaar, tenzij de sleutel opnieuw is ingeschakeld of u een nieuwe sleutel toewijst.
 
@@ -238,6 +242,32 @@ $VMSS = Add-AzVmssDataDisk -VirtualMachineScaleSet $VMSS -CreateOption Empty -Lu
 $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
 New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMScaleSetName
+```
+
+#### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>De sleutel van een DiskEncryptionSet wijzigen om de sleutel te roteren voor alle bronnen die verwijzen naar de DiskEncryptionSet
+
+```PowerShell
+$ResourceGroupName="yourResourceGroupName"
+$keyVaultName="yourKeyVaultName"
+$keyName="yourKeyName"
+$diskEncryptionSetName="yourDiskEncryptionSetName"
+
+$keyVault = Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $ResourceGroupName
+
+$keyVaultKey = Get-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName
+
+Update-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName -SourceVaultId $keyVault.ResourceId -KeyUrl $keyVaultKey.Id
+```
+
+#### <a name="find-the-status-of-server-side-encryption-of-a-disk"></a>De status van serverversleuteling van een schijf zoeken
+
+```PowerShell
+$ResourceGroupName="yourResourceGroupName"
+$DiskName="yourDiskName"
+
+$disk=Get-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName
+$disk.Encryption.Type
+
 ```
 
 > [!IMPORTANT]

@@ -4,12 +4,12 @@ description: Leer de basiscluster- en workloadcomponenten van Kubernetes en hoe 
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019c886aba1c8fe34211e73e4d960b14e79303b9
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259641"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617445"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes kernconcepten voor Azure Kubernetes Service (AKS)
 
@@ -65,9 +65,9 @@ Als u uw toepassingen en ondersteunende services wilt uitvoeren, hebt u een *Kub
 
 ![Azure virtuele machine en ondersteunende bronnen voor een Kubernetes-knooppunt](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
-De Azure VM-grootte voor uw knooppunten bepaalt hoeveel CPU's, hoeveel geheugen en de beschikbare grootte en het type opslag (zoals krachtige SSD of gewone hdd). Als u op een behoefte aan toepassingen verwacht waarvoor grote hoeveelheden CPU en geheugen of krachtige opslag nodig zijn, plant u de grootte van het knooppunt dienovereenkomstig. U ook het aantal knooppunten in uw AKS-cluster opschalen om aan de vraag te voldoen.
+De Azure VM-grootte voor uw knooppunten bepaalt hoeveel CPU's, hoeveel geheugen en de beschikbare grootte en het type opslag (zoals krachtige SSD of gewone hdd). Als u op een behoefte aan toepassingen verwacht waarvoor grote hoeveelheden CPU en geheugen of krachtige opslag nodig zijn, plant u de grootte van het knooppunt dienovereenkomstig. U ook het aantal knooppunten in uw AKS-cluster uitschalen om aan de vraag te voldoen.
 
-In AKS is de VM-afbeelding voor de knooppunten in uw cluster momenteel gebaseerd op Ubuntu Linux of Windows Server 2019. Wanneer u een AKS-cluster maakt of het aantal knooppunten opschaalt, maakt het Azure-platform het gevraagde aantal VM's en configureert het deze. Er is geen handmatige configuratie voor u uit te voeren. Agentknooppunten worden gefactureerd als standaard virtuele machines, dus eventuele kortingen die u hebt op de VM-grootte die u gebruikt (inclusief [Azure-reserveringen)][reservation-discounts]worden automatisch toegepast.
+In AKS is de VM-afbeelding voor de knooppunten in uw cluster momenteel gebaseerd op Ubuntu Linux of Windows Server 2019. Wanneer u een AKS-cluster maakt of het aantal knooppunten schaalt, maakt het Azure-platform het gevraagde aantal VM's en configureert het deze. Er is geen handmatige configuratie voor u uit te voeren. Agentknooppunten worden gefactureerd als standaard virtuele machines, dus eventuele kortingen die u hebt op de VM-grootte die u gebruikt (inclusief [Azure-reserveringen)][reservation-discounts]worden automatisch toegepast.
 
 Als u een ander hostbesturingssysteem, containerruntime of aangepaste pakketten moet gebruiken, u uw eigen Kubernetes-cluster implementeren met [aks-engine.][aks-engine] De `aks-engine` upstream releases functies en biedt configuratie-opties voordat ze officieel worden ondersteund in AKS clusters. Als u bijvoorbeeld een andere containerruntime dan Moby wilt `aks-engine` gebruiken, u een Kubernetes-cluster configureren en implementeren dat aan uw huidige behoeften voldoet.
 
@@ -96,7 +96,7 @@ Om de prestaties en functionaliteit van knooppunten te behouden, worden resource
 
 1. De kubelet daemon is geïnstalleerd op alle Kubernetes agent nodes om het maken en beëindigen van containers te beheren. Standaard op AKS heeft deze daemon de volgende uitzettingsregel: *memory.available<750Mi*, wat betekent dat een knooppunt altijd ten minste 750 Mi moet zijn toewijsbaar te allen tijde.  Wanneer een host onder die drempel van het beschikbare geheugen ligt, beëindigt de kubelet een van de lopende pods om geheugen op de hostmachine vrij te maken en te beschermen. Dit is een reactieve actie zodra het beschikbare geheugen afneemt tot boven de 750Mi-drempelwaarde.
 
-2. De tweede waarde is een progressieve snelheid van geheugenreserveringen voor de kubelet daemon om goed te functioneren (kube-gereserveerd).
+2. De tweede waarde is een regressieve snelheid van geheugenreserveringen voor de kubelet daemon om goed te functioneren (kube-gereserveerd).
     - 25% van de eerste 4 GB geheugen
     - 20% van de volgende 4 GB geheugen (tot 8 GB)
     - 10% van de volgende 8 GB geheugen (tot 16 GB)
@@ -118,7 +118,7 @@ Zie [Aanbevolen procedures voor basisplannerfuncties in AKS voor][operator-best-
 Knooppunten van dezelfde configuratie worden gegroepeerd in *knooppuntgroepen.* Een Kubernetes-cluster bevat een of meer knooppuntgroepen. Het beginaantal knooppunten en grootte worden gedefinieerd wanneer u een AKS-cluster maakt, waarmee een *standaardknooppuntgroep*wordt gemaakt. Deze standaardknooppuntgroep in AKS bevat de onderliggende VM's waarop de agentknooppunten worden uitgevoerd.
 
 > [!NOTE]
-> Als u wilt dat uw cluster betrouwbaar werkt, moet u ten minste twee (twee) knooppunten uitvoeren in de standaardknooppuntgroep.
+> Als u ervoor wilt zorgen dat uw cluster betrouwbaar werkt, moet u ten minste twee (twee) knooppunten uitvoeren in de standaardknooppuntgroep.
 
 Wanneer u een AKS-cluster schaalt of upgradet, wordt de actie uitgevoerd tegen de standaardknooppuntgroep. U er ook voor kiezen om een specifieke knooppuntgroep te schalen of te upgraden. Voor upgradebewerkingen worden lopende containers gepland op andere knooppunten in de knooppuntgroep totdat alle knooppunten zijn bijgewerkt.
 

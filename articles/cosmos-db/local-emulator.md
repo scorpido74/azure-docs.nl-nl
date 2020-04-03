@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 0c10ec94f6c089b5e5466f5dce73d32d6ce917b3
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 9650bb3214c22926427717569f718ca0426ed729
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422825"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618754"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>De Azure Cosmos Emulator gebruiken voor lokale ontwikkeling en testen
 
@@ -99,7 +99,7 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > [!NOTE]
 > Als u de emulator met de optie /Key hebt `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`gestart, gebruikt u de gegenereerde sleutel in plaats van . Zie Naslaginformatie over opdrachtregelgereedschap voor meer informatie over /Key.For more information about /Key option, see [Command-line tool reference.](#command-line)
 
-Net als bij de Azure Cosmos DB ondersteunt de Azure Cosmos Emulator alleen beveiligde communicatie via SSL.
+Net als bij de Azure Cosmos DB ondersteunt de Azure Cosmos Emulator alleen beveiligde communicatie via TLS.
 
 ## <a name="running-on-a-local-network"></a>Uitvoeren op een lokaal netwerk
 
@@ -215,17 +215,17 @@ Start emulator van een administrator opdracht prompt met "/EnableGremlinEndpoint
   :> g.V()
   ```
 
-## <a name="export-the-ssl-certificate"></a>Het SSL-certificaat exporteren
+## <a name="export-the-tlsssl-certificate"></a>Het TLS/SSL-certificaat exporteren
 
 .NET-talen en -runtime maken gebruik van het Windows-certificaatarchief om veilig verbinding te maken met de lokale Azure DB Cosmos Emulator. Andere talen hebben hun eigen methode voor het beheren en gebruiken van certificaten. Java maakt gebruik van een eigen [certificaatarchief](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html), terwijl Python gebruikmaakt van [socketwrappers](https://docs.python.org/2/library/ssl.html).
 
 Om een certificaat te verkrijgen voor gebruik bij talen en runtimes die niet worden geïntegreerd in het certificaatarchief van Windows, moet u het exporteren met behulp van de Windows Certificate Manager. U het starten door certlm.msc uit te voeren of de stapsgewijze instructies te volgen in [De Azure Cosmos Emulator-certificaten exporteren.](./local-emulator-export-ssl-certificates.md) Zodra de certificaatmanager wordt uitgevoerd, opent u de persoonlijke certificaten zoals hieronder weergegeven en exporteert u het certificaat met de beschrijvende naam 'DocumentDBEmulatorCertificate' als een BASE 64-gecodeerd X.509-bestand (.cer).
 
-![SSL-certificaat voor een lokale Azure Cosmos DB Emulator](./media/local-emulator/database-local-emulator-ssl_certificate.png)
+![Azure Cosmos DB lokale emulator TLS/SSL-certificaat](./media/local-emulator/database-local-emulator-ssl_certificate.png)
 
 Volg de instructies in [Een certificaat toevoegen aan het Java CA-certificaatarchief](https://docs.microsoft.com/azure/java-add-certificate-ca-store) om het X.509-certificaat te importeren in het Java-certificaatarchief. Zodra het certificaat is geïmporteerd in het certificaatarchief, kunnen clients voor SQL en Azure Cosmos DB's API voor MongoDB verbinding maken met de Azure Cosmos Emulator.
 
-Bij het verbinden met de emulator van Python en Node.js SDK's, is SSL-verificatie uitgeschakeld.
+Wanneer u verbinding maakt met de emulator van Python en Node.js SDKs, is tls-verificatie uitgeschakeld.
 
 ## <a name="command-line-tool-reference"></a><a id="command-line"></a>Opdrachtregelprogramma
 Vanaf de installatielocatie u de opdrachtregel gebruiken om de emulator te starten en te stoppen, opties te configureren en andere bewerkingen uit te voeren.
@@ -260,8 +260,8 @@ Typ `Microsoft.Azure.Cosmos.Emulator.exe /?` bij de opdrachtprompt om een lijst 
 | StopTraces     | Stop met het verzamelen van foutopsporingslogboeken met LOGMAN. | Microsoft.Azure.Cosmos.Emulator.exe /StopTraces  | |
 | StartWprTraces  |  Begin met het verzamelen van foutopsporingstraceringslogboeken met het windows performance-opnamegereedschap. | Microsoft.Azure.Cosmos.Emulator.exe /StartWprTraces | |
 | StopWprTraces     | Stop met het verzamelen van foutopsporingslogboeken met het windows performance-opnamegereedschap. | Microsoft.Azure.Cosmos.Emulator.exe /StopWprTraces  | |
-|FailonsslCertificateNameMismatch FailonsslCertificateNameMismatch FailonsslCertificateNameMismatch Failon | Standaard regenereert de Emulator zijn zelfondertekende SSL-certificaat, als het SAN van het certificaat niet de domeinnaam van de Emulator-host, het lokale IPv4-adres, 'localhost' en '127.0.0.1' bevat. Met deze optie zal de emulator mislukken bij het opstarten in plaats daarvan. U moet dan de optie /GenCert gebruiken om een nieuw zelfondertekend SSL-certificaat te maken en te installeren. | Microsoft.azure.cosmos.emulator.exe /FailonsslCertificateNameMismatch  | |
-| GenCert GenCert | Een nieuw zelfondertekend SSL-certificaat genereren en installeren. eventueel inclusief een door komma's gescheiden lijst met extra DNS-namen voor toegang tot de Emulator via het netwerk. | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-namen\> |\<dns-namen\>: Optionele door komma's gescheiden lijst met extra dns-namen  |
+|FailonsslCertificateNameMismatch FailonsslCertificateNameMismatch FailonsslCertificateNameMismatch Failon | Standaard regenereert de Emulator zijn zelfondertekende TLS/SSL-certificaat, als het SAN van het certificaat niet de domeinnaam van de Emulator-host, het lokale IPv4-adres, 'localhost' en '127.0.0.1' bevat. Met deze optie zal de emulator mislukken bij het opstarten in plaats daarvan. U moet dan de optie /GenCert gebruiken om een nieuw zelfondertekend TLS/SSL-certificaat te maken en te installeren. | Microsoft.azure.cosmos.emulator.exe /FailonsslCertificateNameMismatch  | |
+| GenCert GenCert | Een nieuw zelfondertekend TLS/SSL-certificaat genereren en installeren. eventueel inclusief een door komma's gescheiden lijst met extra DNS-namen voor toegang tot de Emulator via het netwerk. | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-namen\> |\<dns-namen\>: Optionele door komma's gescheiden lijst met extra dns-namen  |
 | DirectPorts |Specificeert de poorten die worden gebruikt voor rechtstreekse connectiviteit. Standaardwaarden zijn 10251,10252,10253,10254. | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<directports\>: door komma's gescheiden lijst met 4 poorten |
 | Sleutel |De autorisatiesleutel voor de emulator. De sleutel moet de base 64-codering zijn van een 64-byte-vector. | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<sleutel\> | \<sleutel\>: sleutel moet de base 64-codering zijn van een 64-byte-vector|
 | EnableRateLimiting | Geeft aan dat het beperkingsgedrag van de aanvraagsnelheid is ingeschakeld. |Microsoft.Azure.Cosmos.Emulator.exe /EnableRateLimiting | |
@@ -398,7 +398,7 @@ powershell .\importcert.ps1
 Starting interactive shell
 ```
 
-Gebruik nu het eindpunt en de hoofdsleutel uit de reactie in uw client en importeer het SSL-certificaat in de host. Doe het volgende vanaf een opdrachtprompt voor een beheerder om het SSL-certificaat te importeren:
+Gebruik nu het eindpunt en de hoofdsleutel van het antwoord in uw client en importeer het TLS/SSL-certificaat in uw host. Ga als volgt te werk om het TLS/SSL-certificaat te importeren uit een opdrachtprompt voor beheerders:
 
 Vanaf de opdrachtregel:
 
@@ -527,7 +527,7 @@ Voor het verzamelen van foutopsporingsgegevens, voert u de volgende opdrachten u
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u de lokale emulator kunt gebruiken voor gratis lokale ontwikkelingsdoeleinden. U kunt nu verder gaan met de volgende zelfstudie om te leren hoe u SSL-certificaten voor de emulator exporteert.
+In deze zelfstudie hebt u geleerd hoe u de lokale emulator kunt gebruiken voor gratis lokale ontwikkelingsdoeleinden. U nu verder gaan naar de volgende zelfstudie en leren hoe u emulator TLS/SSL-certificaten exporteert.
 
 > [!div class="nextstepaction"]
 > [De Azure Cosmos Emulator-certificaten exporteren](local-emulator-export-ssl-certificates.md)

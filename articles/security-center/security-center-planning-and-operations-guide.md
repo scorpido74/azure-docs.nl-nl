@@ -1,5 +1,5 @@
 ---
-title: Plannings- en bedieningsgids voor het Beveiligingscentrum | Microsoft Docs
+title: Handleiding voor planning en bedrijfsvoering van het beveiligingscentrum
 description: Dit document helpt u met uw planning voordat u overstapt op het Azure Beveiligingscentrum en bevat aandachtspunten voor het dagelijks gebruik.
 services: security-center
 author: memildin
@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 46994413ba765e18a826eebfe85a38bb65efc749
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 8244a0f164c8578bf9f79e4b66beb529b6a15f67
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435616"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586002"
 ---
-# <a name="azure-security-center-planning-and-operations-guide"></a>Plannings- en bedieningsgids voor Azure Security Center
+# <a name="planning-and-operations-guide"></a>Gids planning en bedrijfsvoering
 Deze handleiding is voor IT-professionals, IT-architecten, informatiebeveiligingsanalisten en cloudbeheerders die van plan zijn Azure Security Center te gebruiken.
 
 
@@ -135,7 +135,7 @@ Azure Security Center gebruikt de Log Analytics-agent – dit is dezelfde agent 
 
 ### <a name="agent"></a>Agent
 
-Wanneer automatische inrichting is ingeschakeld in het beveiligingsbeleid, wordt de agent Log Analytics (voor [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) of [Linux)](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)geïnstalleerd op alle ondersteunde Azure VM's en alle nieuwe die zijn gemaakt. Als de VM of computer de loganalytics-agent al heeft geïnstalleerd, maakt Azure Security Center gebruik van de huidige geïnstalleerde agent. Het proces van de agent is ontworpen om niet-invasief te zijn en minimale invloed te hebben op de prestaties van de virtuele machine.
+Wanneer automatische inrichting is ingeschakeld in het beveiligingsbeleid, wordt de agent Log Analytics (voor [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) of [Linux)](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)geïnstalleerd op alle ondersteunde Azure VM's en alle nieuwe die zijn gemaakt. Als de VM of computer de loganalytics-agent al heeft geïnstalleerd, maakt Azure Security Center gebruik van de huidige geïnstalleerde agent. Het proces van de agent is ontworpen om niet-invasief te zijn en heeft een zeer minimale impact op de VM-prestaties.
 
 De Log Analytics-agent voor Windows vereist tcp-poort 443. Zie de [Handleiding voor het oplossen van problemen met Azure Security Center](security-center-troubleshooting-guide.md) voor meer informatie.
 
@@ -181,7 +181,7 @@ Zodra u alle aanbevelingen hebt toegepast, wordt de sectie **Preventie** groen v
 
 De sectie **Detectie** is meer reactief en betreft waarschuwingen over problemen die nu plaatsvinden of hebben plaatsgevonden in het verleden en zijn gedetecteerd bij controles door Security Center of door systemen van derden. Op de tegel Beveiligingswaarschuwingen worden staafgrafieken weergegeven die het aantal waarschuwingen weergeven dat elke dag is gevonden en de verdeling ervan over de verschillende ernstcategorieën (laag, gemiddeld, hoog). Lees voor meer informatie over beveiligingswaarschuwingen [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md).
 
-Het is een goed idee om de functie [Bedreigingsinformatie](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) iedere dag even te bekijken. U daar bedreigingen van de omgeving identificeren, bijvoorbeeld dat een bepaalde computer deel uitmaakt van een botnet.
+Het is een goed idee om de functie Bedreigingsinformatie iedere dag even te bekijken. U daar bedreigingen van de omgeving identificeren, bijvoorbeeld dat een bepaalde computer deel uitmaakt van een botnet.
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>Bewaking voor nieuwe of gewijzigde resources
 De meeste Azure-omgevingen zijn dynamisch, waarbij resources regelmatig worden gemaakt, omhoog of omlaag worden gesponnen, opnieuw worden geconfigureerd en gewijzigd. Security Center zorgt ervoor dat de beveiligingsstatus van deze nieuwe resources voor u goed zichtbaar is.
@@ -213,7 +213,7 @@ U [Adaptive Application Controls](https://docs.microsoft.com/azure/security-cent
 ## <a name="incident-response"></a>Reageren op incidenten
 Security Center detecteert en waarschuwt voor bedreigingen wanneer deze optreden. Organisaties moeten controleren op nieuwe beveiligingswaarschuwingen en zo nodig maatregelen nemen om het probleem verder te onderzoeken of de aanval af te weren. Lees hoe Azure Security Center bedreigingen [detecteert en reageert](security-center-alerts-overview.md#detect-threats)voor meer informatie over hoe beveiligingsbeveiliging van beveiligingscentrum bedreigingen werkt.
 
-Hoewel dit artikel niet de bedoeling heeft om u te helpen uw eigen plan voor het reageren op incidenten te maken, maken we gebruik van Microsoft Azure Security Response in de cloud-levenscyclus als de basis voor fasen voor het reageren op incidenten. In het volgende diagram ziet u de fasen:
+Hoewel dit artikel niet de intentie heeft om u te helpen bij het maken van uw eigen Incident Response-abonnement, gaan we Microsoft Azure Security Response gebruiken in de cloudlevenscyclus als basis voor de fasen van incidentrespons. In het volgende diagram ziet u de fasen:
 
 ![Verdachte activiteit](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
@@ -235,7 +235,7 @@ Het volgende voorbeeld betreft een verdachte RDP-activiteit die op dat moment pl
 
 Deze pagina bevat informatie over het tijdstip waarop de aanval plaatsvond, de hostnaam van de bron, de VM die het doelwit was en aanbevolen maatregelen. In sommige omstandigheden kan de broninformatie van de aanval leeg zijn. Lees [Missing Source Information in Azure Security Center Alerts](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) voor meer informatie over dit type gedrag.
 
-Vanaf deze pagina kunt u ook een [onderzoek](https://docs.microsoft.com/azure/security-center/security-center-investigation) starten om de tijdlijn van de aanval beter te begrijpen, een goed beeld te krijgen van de aanval, te zien welke systemen er mogelijk in gevaar zijn en welke referenties er zijn gebruikt. Daarnaast kunt u een grafische weergave bekijken van de hele aanvalsketen.
+Vanaf deze pagina kunt u ook een onderzoek starten om de tijdlijn van de aanval beter te begrijpen, een goed beeld te krijgen van de aanval, te zien welke systemen er mogelijk in gevaar zijn en welke referenties er zijn gebruikt. Daarnaast kunt u een grafische weergave bekijken van de hele aanvalsketen.
 
 Zodra u het gecompromitteerde systeem hebt geïdentificeerd, u een [werkstroomautomatisering](workflow-automation.md) uitvoeren die eerder is gemaakt. Dit zijn een verzameling procedures die kunnen worden uitgevoerd vanuit Security Center zodra deze is geactiveerd door een waarschuwing.
 

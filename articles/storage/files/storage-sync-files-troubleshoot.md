@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ebe5ddf72e13b1a66ded7a90976e0b6209a26dfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d46f513fccf9921d4cf47835bc9d5be4c6ffe241
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060968"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607496"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestandsshares van uw organisatie in Azure-bestanden te centraliseren, terwijl de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver behouden blijven. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U elk protocol dat beschikbaar is op Windows Server gebruiken om lokaal toegang te krijgen tot uw gegevens, waaronder SMB, NFS en FTPS. Je zoveel caches hebben als je nodig hebt over de hele wereld.
@@ -187,7 +187,7 @@ Set-AzStorageSyncServerEndpoint `
 
 Dit probleem kan optreden als het proces voor synchronisatievan opslag (AzureStorageSyncMonitor.exe) niet wordt uitgevoerd of als de server geen toegang heeft tot de Azure File Sync-service.
 
-Op de server die wordt weergegeven als 'Wordt weergegeven offline' in de portal, kijkt u naar gebeurtenis-id 9301 in het gebeurtenislogboek telemetrie (bevindt zich onder Toepassingen en Services\Microsoft\FileSync\Agent in logboeken) om te bepalen waarom de server geen toegang heeft tot de Azure File Sync Service. 
+Bekijk gebeurtenis-id 9301 op de server die wordt weergegeven als 'Wordt weergegeven offline' in de portal om te bepalen waarom de server geen toegang heeft tot de Azure File Sync-service. 
 
 - Als **GetNextJob is voltooid met status: 0** is geregistreerd, kan de server communiceren met de Azure File Sync-service. 
     - Open Taakbeheer op de server en controleer of het Storage Sync Monitor-proces (AzureStorageSyncMonitor.exe) actief is. Als het proces niet wordt uitgevoerd, start u om te beginnen de server opnieuw op. Als het probleem niet wordt verholpen bij het opnieuw opstarten van de server, voert u een upgrade naar de laatste versie van de Azure File Sync-[agent](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes) uit. 
@@ -588,7 +588,7 @@ Als deze fout langer dan een paar uur duurt, maakt u een ondersteuningsverzoek e
 | **Fouttekenreeks** | CERT_E_UNTRUSTEDROOT |
 | **Herstel vereist** | Ja |
 
-Deze fout kan zich voordoen als uw organisatie een SSL-beëindigingsproxy gebruikt of als een kwaadaardige entiteit het verkeer tussen uw server en de Azure File Sync-service onderschept. Als u er zeker van bent dat dit verwacht wordt (omdat uw organisatie een SSL-beëindigingsproxy gebruikt), slaat u de verificatie van het certificaat over met een registeroverschrijving.
+Deze fout kan optreden als uw organisatie een TLS-beëindigingsproxy gebruikt of als een kwaadwillende entiteit het verkeer tussen uw server en de Azure File Sync-service onderschept. Als u zeker weet dat dit wordt verwacht (omdat uw organisatie een TLS-beëindigingsproxy gebruikt), slaat u certificaatverificatie over met een registeroverschrijving.
 
 1. Maak de registerwaarde Voor het verifiëren van vastgedraaide basiscertificaat.
 
@@ -602,7 +602,7 @@ Deze fout kan zich voordoen als uw organisatie een SSL-beëindigingsproxy gebrui
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Als u deze registerwaarde instelt, accepteert de Azure File Sync-agent elk lokaal vertrouwd SSL-certificaat tijdens de gegevensoverdracht tussen de server en de cloudservice.
+Door deze registerwaarde in te stellen, accepteert de Azure File Sync-agent elk lokaal vertrouwd TLS/SSL-certificaat bij het overbrengen van gegevens tussen de server en de cloudservice.
 
 <a id="-2147012894"></a>**Er kon geen verbinding met de service worden gelegd.**  
 
@@ -894,7 +894,7 @@ Deze fout treedt op wanneer een gegevensopnamebewerking de time-out overschrijdt
 4. Selecteer het gekoppelde opslagaccount. Als deze koppeling mislukt, is het opslagaccount waarnaar wordt verwezen verwijderd.
     ![Een schermafbeelding van het detailvenster voor eindpunt in de cloud met een koppeling naar het opslagaccount.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $region = "<Az_Region>"
@@ -975,7 +975,7 @@ if ($storageAccount -eq $null) {
 2. Selecteer **Bestanden** om de lijst met bestandsshares weer te geven.
 3. Controleer of het bestandsaandeel waarnaar wordt verwezen door het cloudeindpunt wordt weergegeven in de lijst met bestandsshares (u had dit in stap 1 hierboven moeten noteren).
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.AzureFileShareName -and
@@ -1002,7 +1002,7 @@ if ($fileShare -eq $null) {
     - Selecteer **in** het veld Rol de optie **Reader en Data Access**.
     - Typ **microsoft.storagesync**in het veld **Selecteren,** selecteer de rol en klik op **Opslaan**.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
 $role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Microsoft.StorageSync" }
 

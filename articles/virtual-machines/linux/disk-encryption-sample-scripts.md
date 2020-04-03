@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c98da4b41da183f56d80fad1e8c01706d1cfcf23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970513"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585962"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Voorbeeldscripts voor Azure Disk Encryption 
 
@@ -80,7 +80,7 @@ In de volgende tabel ziet u welke parameters kunnen worden gebruikt in het Power
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>Vereisten voor os-schijfversleuteling
 
-* De VM moet een distributie gebruiken die compatibel is met OS-schijfversleuteling zoals vermeld in de [ondersteunde besturingssystemen voor Azure Disk Encryption](disk-encryption-overview.md#supported-vm-sizes) 
+* De VM moet een distributie gebruiken die compatibel is met OS-schijfversleuteling zoals vermeld in de [ondersteunde besturingssystemen voor Azure Disk Encryption](disk-encryption-overview.md#supported-vms) 
 * De VM moet worden gemaakt op de Marketplace-afbeelding in Azure Resource Manager.
 * Azure VM met minimaal 4 GB RAM (aanbevolen grootte is 7 GB).
 * (Voor RHEL en CentOS) Selinux uitschakelen. Zie "4.4.2 voor het uitschakelen van SELinux. SELinux uitschakelen" in de [SELinux Gebruikers- en Beheerdershandleiding](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) op de VM.

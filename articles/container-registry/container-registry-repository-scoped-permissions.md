@@ -3,12 +3,12 @@ title: Machtigingen voor opslagplaatsen in Azure Container Registry
 description: Een token maken met machtigingen die zijn afgestemd op specifieke opslagplaatsen in een register om afbeeldingen op te halen of te pushen of andere acties uit te voeren
 ms.topic: article
 ms.date: 02/13/2020
-ms.openlocfilehash: 7d390bf4d97561e374c70f184534ac4f98a40611
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9004c45401833d3070266055dd7eb99a2bb43bde
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444280"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618832"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Een token maken met machtigingen met opslagplaatsen
 
@@ -27,6 +27,7 @@ Scenario's voor het maken van een token zijn:
 
 * Deze functie is alleen **Premium** beschikbaar in een Premium-containerregister. Zie [SKU's](container-registry-skus.md)voor Azure Container Registry voor informatie over lagen en limieten voor registerservice.
 * U momenteel geen machtigingen met opslagplaatsen toewijzen aan een Azure Active Directory-identiteit, zoals een serviceprincipal of beheerde identiteit.
+* U geen scopemap maken in een register dat is ingeschakeld voor [anonieme pull-toegang.](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)
 
 ## <a name="concepts"></a>Concepten
 

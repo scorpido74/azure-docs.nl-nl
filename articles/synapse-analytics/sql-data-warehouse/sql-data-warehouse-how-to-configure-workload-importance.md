@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 85fa6a989ae1a6214392914ffd46cd12af27a8d2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4aa0e7da1e77334a8b9048dab4a461133f220bd1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350481"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582453"
 ---
 # <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Het werkgebied configureren in Azure Synapse Analytics
 
-Als u belangrijk bent in SQL Analytics voor Azure Synapse, u de planning van query's beïnvloeden. Query's met een groter belang worden gepland om uit te voeren vóór query's met een lager belang. Als u belangrijk wilt zijn voor query's, moet u een classificatie voor werkbelasting maken.
+Als u belangrijk bent in Synapse SQL voor Azure Synapse, u de planning van query's beïnvloeden. Query's met een groter belang worden gepland om uit te voeren vóór query's met een lager belang. Als u belangrijk wilt zijn voor query's, moet u een classificatie voor werkbelasting maken.
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Een workloadclassificatie maken met belang
 

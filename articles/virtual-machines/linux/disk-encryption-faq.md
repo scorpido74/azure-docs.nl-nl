@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: b285daa465c8d069b359e94c9203c1ffbea24c06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f3d6580b738a77de9654de0df9b4ce1120fc6eb
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970687"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584041"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Veelgestelde vragen over Azure Disk Encryption for IaaS VMs
 
@@ -37,7 +37,7 @@ Lees het overzicht [Azure Disk Encryption](disk-encryption-overview.md)om aan de
 
 ## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Welke VM-formaten en besturingssystemen ondersteunen Azure Disk Encryption?
 
-In het [overzichtsartikel azure disk-versleuteling](disk-encryption-overview.md) worden de [VM-formaten](disk-encryption-overview.md#supported-vm-sizes) en [VM-besturingssystemen](disk-encryption-overview.md#supported-operating-systems) weergegeven die Azure Disk Encryption ondersteunen.
+In het [overzichtsartikel azure disk-versleuteling](disk-encryption-overview.md) worden de [VM-formaten](disk-encryption-overview.md#supported-vms) en [VM-besturingssystemen](disk-encryption-overview.md#supported-operating-systems) weergegeven die Azure Disk Encryption ondersteunen.
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Kan ik zowel opstart- als gegevensvolumes versleutelen met Azure Disk Encryption?
 
@@ -93,7 +93,7 @@ Gebruik de nieuwste versie van de Azure PowerShell SDK om Azure Disk Encryption 
 > [!NOTE]
 > De Linux Azure disk encryption preview extensie "Microsoft.OSTCExtension.AzureDiskEncryptionForLinux" is afgeschaft. Deze extensie is gepubliceerd voor azure disk encryption preview release. U mag de voorbeeldversie van de extensie niet gebruiken in uw test- of productie-implementatie.
 
-> Voor implementatiescenario's zoals Azure Resource Manager (ARM), waarbij u azure-schijfversleutelingsextensie voor Linux VM moet implementeren om versleuteling op uw Linux IaaS VM in te schakelen, moet u de ondersteunde azure-schijfversleutelingsextensie gebruiken " Microsoft.azure.security.azurediskencryptionforlinux".
+> Voor implementatiescenario's zoals Azure Resource Manager (ARM), waarbij u azure-schijfversleutelingsextensie voor Linux VM moet implementeren om versleuteling op uw Linux IaaS VM mogelijk te maken, moet u de ondersteunde azure-schijfversleutelingsextensie "Microsoft.Azure.Security.AzureDiskEncryptionForLinux" gebruiken.
 
 ## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>Kan ik Azure Disk Encryption toepassen op mijn aangepaste Linux-afbeelding?
 

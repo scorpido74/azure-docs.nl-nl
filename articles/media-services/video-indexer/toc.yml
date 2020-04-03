@@ -65,7 +65,7 @@
       href: use-editor-create-project.md
     - name: Widgets insluiten in uw toepassing
       href: video-indexer-embed-widgets.md
-    - name: Herstel na noodgevallen
+    - name: Herstel na noodgeval
       href: video-indexer-disaster-recovery.md
     - name: Inhoudsmodellen aanpassen
       items:
@@ -93,7 +93,7 @@
   items:
     - name: Video Indexer-API
       href: 'https://api-portal.videoindexer.ai/'
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
@@ -111,3 +111,5 @@
       href: release-notes.md
     - name: Mening van gebruikers
       href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'
+    - name: Blogs
+      href: 'https://azure.microsoft.com/blog/tag/video-indexer/'

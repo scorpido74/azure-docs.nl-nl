@@ -1,6 +1,6 @@
 ---
 title: Workload bewaken - Azure-portal
-description: SQL Analytics bewaken met de Azure-portal
+description: Synapse SQL bewaken met behulp van de Azure-portal
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 344e2cd03408b5bd1e966abc8abb72bce6078acc
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 64e61b00ecebec82b465cb13c6df0e323f6c7777
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350330"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586559"
 ---
 # <a name="monitor-workload---azure-portal"></a>Workload bewaken - Azure-portal
 
-In dit artikel wordt beschreven hoe u de Azure-portal gebruiken om uw werkbelasting te controleren. Dit omvat het instellen van Azure Monitor Logs om query-uitvoering en workloadtrends te onderzoeken met behulp van loganalytics voor [SQL Analytics.](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)
+In dit artikel wordt beschreven hoe u de Azure-portal gebruiken om uw werkbelasting te controleren. Dit omvat het instellen van Azure Monitor Logs om query-uitvoering en workloadtrends te onderzoeken met behulp van loganalytics voor [Synapse SQL.](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)
 
 ## <a name="prerequisites"></a>Vereisten
 

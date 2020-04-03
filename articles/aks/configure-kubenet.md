@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 3fe1d36b859884ab19a645e5693c7e7931fe5c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 119265efa7b6504f3faf2e89cb68b9e9bd70bf9f
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368465"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617242"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Kubenet-netwerken gebruiken met uw eigen IP-adresbereiken in Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,7 @@ In dit artikel ziet u hoe u *kubenet-netwerken* gebruiken om een virtueel netwer
 * Het virtuele netwerk voor het AKS-cluster moet uitgaande internetverbinding mogelijk maken.
 * Maak niet meer dan één AKS-cluster in hetzelfde subnet.
 * AKS-clusters mogen `169.254.0.0/16` `172.30.0.0/16`geen `172.31.0.0/16`gebruik `192.0.2.0/24` maken van , , of voor het bereik van de Kubernetes-serviceadres.
-* De serviceprincipal die door het AKS-cluster wordt gebruikt, moet ten minste machtigingen voor [netwerkbijdragen in het](../role-based-access-control/built-in-roles.md#network-contributor) subnet binnen uw virtuele netwerk hebben. Als u een [aangepaste rol](../role-based-access-control/custom-roles.md) wilt definiëren in plaats van de ingebouwde rol netwerkbijdrager te gebruiken, zijn de volgende machtigingen vereist:
+* De serviceprincipal die door het AKS-cluster wordt gebruikt, moet ten minste een [netwerkbijdrager op](../role-based-access-control/built-in-roles.md#network-contributor) het subnet binnen uw virtuele netwerk hebben. Als u een [aangepaste rol](../role-based-access-control/custom-roles.md) wilt definiëren in plaats van de ingebouwde rol netwerkbijdrager te gebruiken, zijn de volgende machtigingen vereist:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
@@ -195,7 +195,7 @@ az aks create \
     --client-secret <password>
 ```
 
-Wanneer u een AKS-cluster maakt, worden een netwerkbeveiligingsgroep en routetabel gemaakt. Deze netwerkbronnen worden beheerd door het AKS-controlevlak. De netwerkbeveiligingsgroep wordt automatisch gekoppeld aan de virtuele NIC's op uw knooppunten. De routetabel wordt automatisch gekoppeld aan het virtuele netwerksubnet. Regels voor netwerkbeveiliging en routetabellen en worden automatisch bijgewerkt wanneer u services maakt en blootstelt.
+Wanneer u een AKS-cluster maakt, worden een netwerkbeveiligingsgroep en routetabel gemaakt. Deze netwerkbronnen worden beheerd door het AKS-controlevlak. De netwerkbeveiligingsgroep wordt automatisch gekoppeld aan de virtuele NIC's op uw knooppunten. De routetabel wordt automatisch gekoppeld aan het virtuele netwerksubnet. Netwerkbeveiligingsgroepregels en routetabellen worden automatisch bijgewerkt wanneer u services maakt en blootstelt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

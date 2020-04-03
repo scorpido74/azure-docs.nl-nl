@@ -3,14 +3,14 @@ title: Veelgestelde vragen
 description: Antwoorden op veelgestelde vragen met betrekking tot de Azure Container Registry-service
 author: sajayantony
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7452b5dd3c952a13a28566914d2fe513689d4751
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78403222"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618796"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -104,7 +104,8 @@ Het duurt enige tijd om wijzigingen in firewallregels te verspreiden. Nadat u de
 - [Hoe schakel je TLS 1.2 in?](#how-to-enable-tls-12)
 - [Ondersteunt Azure Container Registry Content Trust?](#does-azure-container-registry-support-content-trust)
 - [Hoe geef ik toegang tot het trekken of pushen van afbeeldingen zonder toestemming om de registerbron te beheren?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
-- [Hoe schakel ik automatische afbeeldingsquarantaine in voor een register](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [Hoe schakel ik automatische afbeeldingsquarantaine in voor een register?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [Hoe schakel ik anonieme pull-toegang in?](#how-do-i-enable-anonymous-pull-access)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Hoe krijg ik toegang tot Docker Registry HTTP API V2?
 
@@ -251,13 +252,18 @@ Met het gebruik `AcrPull` van `AcrPush` alleen de of rol heeft de cessionaris ni
 
 Afbeeldingsquarantaine is momenteel een voorbeeldfunctie van ACR. U de quarantainemodus van een register inschakelen, zodat alleen de afbeeldingen die de beveiligingsscan hebben doorstaan, zichtbaar zijn voor normale gebruikers. Zie voor meer informatie de [ACR GitHub repo.](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)
 
+### <a name="how-do-i-enable-anonymous-pull-access"></a>Hoe schakel ik anonieme pull-toegang in?
+
+Het instellen van een Azure-containerregister voor anonieme (openbare) pull-toegang is momenteel een voorbeeldfunctie. Open een ondersteuningsticket op https://aka.ms/acr/support/create-ticket. Zie het [Azure Feedback Forum](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)voor meer informatie.
+
+
 ## <a name="diagnostics-and-health-checks"></a>Diagnostiek en gezondheidscontroles
 
 - [Controleer de gezondheid met`az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker pull mislukt met fout: net/http: aanvraag geannuleerd tijdens het wachten op verbinding (Client.Timeout overschreden tijdens het wachten headers)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [docker push slaagt, maar docker pull mislukt met fout: ongeautoriseerd: authenticatie vereist](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [`az acr login`slaagt, maar docker commando's mislukt met fout: ongeautoriseerd: authenticatie vereist](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
-- [Schakel de foutopsporingslogboeken van de docker daemon in en ontvang deze](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
+- [Schakel de foutopsporingslogboeken van de docker daemon in en ontvang deze](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [Nieuwe gebruikersmachtigingen zijn mogelijk niet onmiddellijk na het bijwerken van kracht](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Verificatiegegevens worden niet in de juiste indeling gegeven voor directe REST API-aanroepen](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Waarom worden in de Azure-portal niet al mijn repositories of tags vermeld?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
@@ -323,13 +329,13 @@ Details `--signature-verification` van kan worden `man dockerd`gevonden door het
 
 Zorg ervoor dat u bijvoorbeeld een URL `docker push myregistry.azurecr.io/myimage:latest`van de all lowercaseserver gebruikt, zelfs `myRegistry`als de naam van de registerbron hoofdletters of gemengde letters is, zoals .
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Schakel de foutopsporingslogboeken van de Docker daemon in en ontvang deze  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Schakel de foutopsporingslogboeken van de Docker daemon in en ontvang deze    
 
 Begin `dockerd` met `debug` de optie. Maak eerst het configuratiebestand docker daemon ( )`/etc/docker/daemon.json`als het `debug` niet bestaat en voeg de optie toe:
 
 ```json
-{   
-    "debug": true   
+{    
+    "debug": true    
 }
 ```
 
@@ -339,12 +345,12 @@ Start vervolgens de daemon opnieuw. Bijvoorbeeld met Ubuntu 14.04:
 sudo service docker restart
 ```
 
-Details zijn te vinden in de [Docker documentatie.](https://docs.docker.com/engine/admin/#enable-debugging) 
+Details zijn te vinden in de [Docker documentatie.](https://docs.docker.com/engine/admin/#enable-debugging)    
 
- * De logboeken kunnen worden gegenereerd op verschillende locaties, afhankelijk van uw systeem. Bijvoorbeeld, voor Ubuntu 14.04, `/var/log/upstart/docker.log`het is .   
+ * De logboeken kunnen worden gegenereerd op verschillende locaties, afhankelijk van uw systeem. Bijvoorbeeld, voor Ubuntu 14.04, `/var/log/upstart/docker.log`het is .    
 Zie [Docker-documentatie](https://docs.docker.com/engine/admin/#read-the-logs) voor meer informatie.    
 
- * Voor Docker voor Windows worden de logboeken gegenereerd onder %LOCALAPPDATA%/docker/. Het kan echter niet alle debug informatie nog niet bevatten.   
+ * Voor Docker voor Windows worden de logboeken gegenereerd onder %LOCALAPPDATA%/docker/. Het kan echter niet alle debug informatie nog niet bevatten.    
 
    Om toegang te krijgen tot het volledige daemon-logboek, heb je mogelijk wat extra stappen nodig:
 

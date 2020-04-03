@@ -4,12 +4,12 @@ description: Meer informatie over het dynamisch maken van een blijvend volume me
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 37fea36567866af69e832a1f7e3caff2a68477a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f16a6134b1d2065668952ea11c0cab7398a3559a
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596960"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617477"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamisch een blijvend volume maken en gebruiken met Azure-schijven in Azure Kubernetes Service (AKS)
 
@@ -33,7 +33,7 @@ Een opslagklasse wordt gebruikt om te bepalen hoe een opslageenheid dynamisch wo
 Elk AKS-cluster bevat twee vooraf gemaakte opslagklassen, beide geconfigureerd om met Azure-schijven te werken:
 
 * In *de standaardopslagklasse* wordt een standaard Azure-schijf voorzien.
-    * Standaardopslag wordt ondersteund door HDD's en levert kosteneffectieve opslag terwijl deze nog steeds performant is. Standard-schijven zijn ideaal voor een kostenefficiënte werkbelasting voor ontwikkelen en testen.
+    * Standaardopslag wordt ondersteund door HDD's en levert kosteneffectieve opslag terwijl deze nog steeds performant is. Standaard schijven zijn ideaal voor een kosteneffectieve dev en test workload.
 * De *beheerde premium* opslagklasse voorziet in een premium Azure-schijf.
     * Premium-schijven worden ondersteund door hoogwaardige schijven met een lage latentie op basis van SSD. Ideaal voor virtuele machines met een productiewerkbelasting. Als de AKS-knooppunten in uw cluster premiumopslag gebruiken, selecteert u de *klasse managed-premium.*
     

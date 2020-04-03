@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 41dd336bdb74fbe745ab48ebd3c168af0492ae2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a048ddefbcd76193436da13cd3ba68b8b6ffb0a
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75691002"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607601"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transactionele replicatie met afzonderlijke, samengevoegde en instantiedatabases in Azure SQL Database
 
@@ -95,7 +95,7 @@ Er zijn verschillende [soorten replicatie:](https://docs.microsoft.com/sql/relat
 - Connectiviteit maakt gebruik van SQL-verificatie tussen replicatiedeelnemers. 
 - Een Azure Storage Account share voor de werkmap die wordt gebruikt door replicatie. 
 - Poort 445 (TCP-uitgaande) moet worden geopend in de beveiligingsregels van het beheerde instantiesubnet om toegang te krijgen tot het Azure-bestandsshare. 
-- Poort 1433 (TCP outbound) moet worden geopend als de uitgever/distributeur zich op een beheerde instantie bevindt en de abonnee on-premises is.
+- Poort 1433 (TCP outbound) moet worden geopend als de uitgever/distributeur zich op een beheerde instantie bevindt en de abonnee dat niet is. Mogelijk moet u ook de regel voor beheerde `allow_linkedserver_outbound` instantie NSG-uitgaande beveiligingsregels wijzigen `internet`voor de poort 1433 **Destination Service-tag** van `virtualnetwork` naar . 
 - Alle typen replicatiedeelnemers (uitgever, distributeur, pull-abonnee en pushabonnee) kunnen worden geplaatst op beheerde instanties, maar de uitgever en de distributeur moeten zich zowel in de cloud als on-premises bevinden.
 - Als de uitgever, distributeur en/of de abonnee in verschillende virtuele netwerken bestaan, moet VPN-peering tussen elke entiteit worden vastgesteld, zodat er VPN-peering is tussen de uitgever en distributeur, en/of er VPN-peering is tussen de distributeur en abonnee. 
 
@@ -124,7 +124,7 @@ Uitgever en distributeur zijn geconfigureerd in één beheerde instantie en dist
 
 ### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Uitgever met externe distributeur op een beheerde instantie
 
-In deze configuratie publiceert een beheerde instantie wijzigingen in een distributeur die op een andere beheerde instantie zijn geplaatst en die veel bronbeheerde exemplaren kunnen dienen en wijzigingen kunnen distribueren naar een of meer doelen op beheerde instantie, enkele database, samengevoegde database of SQL Server.
+In deze configuratie publiceert een beheerde instantie wijzigingen in een distributeur die op een andere beheerde instantie zijn geplaatst en die veel bronbeheerde exemplaren kunnen weergeven en wijzigingen kunnen distribueren naar een of meer doelen op beheerde instantie, enkele database, samengevoegde database of SQL Server.
 
 ![Afzonderlijke exemplaren voor uitgever en distributeur](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 

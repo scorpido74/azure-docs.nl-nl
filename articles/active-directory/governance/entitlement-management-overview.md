@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 477bb5430214b497f90e3cb6d5df69f9fcf4035f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 65100e8584eba5c31edc2f9fd8c57ad8bd14c0d1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546163"
+ms.locfileid: "80582545"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Wat is Azure AD-rechtenbeheer?
 
@@ -43,7 +43,7 @@ Deze problemen worden verergerd voor gebruikers die toegang nodig hebben van een
 - Niemand mag niet alle specifieke personen in de mappen van andere organisaties kennen om hen uit te nodigen
 - Zelfs als ze in staat waren om deze gebruikers uit te nodigen, kan niemand in die organisatie herinneren om alle toegang van de gebruiker consistent te beheren
 
-Azure AD-rechtenbeheer kan helpen deze uitdagingen aan te pakken.  Voor meer informatie over hoe klanten Azure AD-rechtenbeheer hebben gebruikt, u de [Avanade-casestudy](https://aka.ms/AvanadeELMCase) en de [Centrica-casestudy](https://aka.ms/CentricaELMCase)lezen.  Deze video geeft een overzicht van het rechtenbeheer en de waarde ervan:
+Azure AD-rechtenbeheer kan helpen deze uitdagingen aan te pakken.  Voor meer informatie over hoe klanten Azure AD-rechtenbeheer hebben gebruikt, u de [Avanade-casestudy](https://customers.microsoft.com/story/avanade-professional-services-azure-canada) en de [Centrica-casestudy](https://customers.microsoft.com/story/757467-centrica-energy-azure)lezen.  Deze video geeft een overzicht van het rechtenbeheer en de waarde ervan:
 
 >[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 

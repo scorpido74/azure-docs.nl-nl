@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 2df83e3b62994381895315b2ef100299e40b745e
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 9fa93af72c2869efd7b6d2f1e8b96b0e667f8b16
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366510"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607540"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database release notes SQL Database release notes SQL Database release notes SQL Database
 
@@ -33,7 +33,7 @@ In dit artikel worden SQL Database-functies weergegeven die momenteel in openbar
 |Batchmodus op Rowstore (onder compatibiliteitsniveau 150)|Zie [Batchmodus in Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)voor meer informatie.|
 | Gegevensdetectie en -classificatie  |Zie Azure [SQL Database en SQL Data Warehouse-gegevensdetectie & classificatie](sql-database-data-discovery-and-classification.md)voor informatie.|
 | Taken voor Elastic Database | Zie [Elastische taken maken, configureren en beheren](elastic-jobs-overview.md)voor informatie. |
-| Query's in Elastic Database | Zie Overzicht [van elastische query's voor](sql-database-elastic-query-overview.md)informatie. |
+| Elastische query’s | Zie Overzicht [van elastische query's voor](sql-database-elastic-query-overview.md)informatie. |
 | Elastische transacties | [Gedistribueerde transacties over clouddatabases](sql-database-elastic-transactions-overview.md). |
 |Feedback voor geheugensubsidie (rijmodus) (onder compatibiliteitsniveau 150)|Zie Feedback [voor geheugenverlening (rijmodus)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)voor meer informatie.|
 | Queryeditor in de Azure-portal |Zie De [SQL-queryeditor van de Azure-portal gebruiken om verbinding te maken en querygegevens op te vragen.](sql-database-connect-query-portal.md)|
@@ -78,6 +78,7 @@ De volgende functies zijn ingeschakeld in het implementatiemodel voor beheerde i
 
 |Probleem  |Datum ontdekt  |Status  |Datum opgelost  |
 |---------|---------|---------|---------|
+|[Machtigingen voor resourcegroep die niet zijn toegepast op Beheerde instantie](#permissions-on-resource-group-not-applied-to-managed-instance)|Februari 2020|Heeft tijdelijke oplossing||
 |[Beperking van handmatige failover via portal voor failovergroepen](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|Heeft tijdelijke oplossing||
 |[SQL Agent-rollen hebben expliciete UITVOER-machtigingen nodig voor niet-sysadmin-aanmeldingen](#in-memory-oltp-memory-limits-are-not-applied)|December 2019|Heeft tijdelijke oplossing||
 |[SQL Agent-taken kunnen worden onderbroken door opnieuw opstarten van het Agent-proces](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|December 2019|Geen tijdelijke oplossing|Maart 2020|
@@ -101,6 +102,12 @@ De volgende functies zijn ingeschakeld in het implementatiemodel voor beheerde i
 |Point-in-time database restore from Business Critical tier to General Purpose tier will not succeed if source database contains in-memory OLTP objects.||Opgelost|Okt 2019|
 |DatabaseMail-functie met externe (niet-Azure) e-mailservers met behulp van een beveiligde verbinding||Opgelost|Okt 2019|
 |Opgenomen databases die niet worden ondersteund in beheerde instantie||Opgelost|Augustus 2019|
+
+### <a name="permissions-on-resource-group-not-applied-to-managed-instance"></a>Machtigingen voor resourcegroep die niet zijn toegepast op beheerde instantie
+
+RBAC-rol managed instance contributor wanneer deze wordt toegepast op een resourcegroep (RG) wordt niet toegepast op Beheerde instantie en heeft geen effect.
+
+**Tijdelijke oplossing:** rol voor beheerde instantieinzender voor gebruikers op abonnementsniveau.
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>Beperking van handmatige failover via portal voor failovergroepen
 

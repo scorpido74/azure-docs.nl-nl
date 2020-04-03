@@ -11,18 +11,20 @@ ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9d2a9bb0fcaab38f897987a1922e9c95497821d4
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0b7accec9fdce1ad81a08aee17b37d655409948b
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350676"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607560"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Beheer van resource- en queryactiviteit in Azure Synapse Analytics controleren
-Azure Synapse Analytics biedt een uitgebreide monitoringervaring binnen de Azure-portal om inzicht te geven in de werkbelasting van uw gegevensmagazijn. De Azure-portal is het aanbevolen hulpmiddel bij het bewaken van uw gegevensmagazijn, omdat het configureerbare bewaarperioden, waarschuwingen, aanbevelingen en aanpasbare grafieken en dashboards voor statistieken en logboeken biedt. De portal stelt u ook in staat om te integreren met andere Azure-bewakingsservices, zoals Azure Monitor (logboeken) met Log-analyses, zodat u een holistische bewakingservaring biedt voor niet alleen uw datawarehouse, maar ook uw hele Azure-analyseplatform voor een geïntegreerd monitoring ervaring. In deze documentatie wordt beschreven welke bewakingsmogelijkheden beschikbaar zijn om uw analyseplatform te optimaliseren en te beheren met SQL Analytics. 
 
-## <a name="resource-utilization"></a>Resourcegebruik 
-De volgende statistieken zijn beschikbaar in de Azure-portal voor SQL Analytics. Deze statistieken worden weergegeven via [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
+Azure Synapse Analytics biedt een uitgebreide monitoringervaring binnen de Azure-portal om inzicht te geven in de werkbelasting van uw gegevensmagazijn. De Azure-portal is het aanbevolen hulpmiddel bij het bewaken van uw gegevensmagazijn, omdat het configureerbare bewaarperioden, waarschuwingen, aanbevelingen en aanpasbare grafieken en dashboards voor statistieken en logboeken biedt. De portal stelt u ook in staat om te integreren met andere Azure-bewakingsservices, zoals Azure Monitor (logboeken) met Logboekanalyses, zodat u niet alleen uw gegevensmagazijn, maar ook uw hele Azure-analyseplatform een geïntegreerde monitoringervaring biedt. In deze documentatie wordt beschreven welke bewakingsmogelijkheden beschikbaar zijn om uw analyseplatform te optimaliseren en te beheren. 
+
+## <a name="resource-utilization"></a>Resourcegebruik
+
+De volgende statistieken zijn beschikbaar in de Azure-portal voor Synapse SQL. Deze statistieken worden weergegeven via [Azure Monitor](../../azure-monitor/platform/data-collection.md#metrics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 
 | Metrische naam             | Beschrijving                                                  | Aggregatietype |
@@ -41,27 +43,28 @@ De volgende statistieken zijn beschikbaar in de Azure-portal voor SQL Analytics.
 | Percentage cachehit    | (cache hits / cache miss) * 100 waar cache hits is de som van alle columnstore segmenten hits in de lokale SSD cache en cache missen is de columnstore segmenten mist in de lokale SSD cache samengevat over alle knooppunten | Avg, Min, Max    |
 | Door cache gebruikt percentage   | (gebruikte cache / cachecapaciteit) * 100 waar cache wordt gebruikt is de som van alle bytes in de lokale SSD-cache op alle knooppunten en cachecapaciteit is de som van de opslagcapaciteit van de lokale SSD-cache op alle knooppunten | Avg, Min, Max    |
 | Lokaal tempdb percentage | Lokaal tempdb-gebruik voor alle compute nodes - waarden worden elke vijf minuten uitgestoten | Avg, Min, Max    |
-| Grootte van gegevensopslag | Totale grootte van de gegevens die in de database zijn geladen. Dit omvat gegevens die zich in CCI- en niet-CCI-tabellen bevinden, waarbij de grootte van niet-CCI-tabellen wordt gemeten aan de basis van de totale bestandsgrootte van de database | Sum |
-| Omvang herstel na noodgevallen | Totale grootte van de geo-back-up genomen om de 24 uur | Sum |
-| Momentopnameopslaggrootte | Totale grootte van momentopnamen die zijn gemaakt om databaseherstelpunten te bieden. Dit omvat geautomatiseerde en door de gebruiker gedefinieerde momentopnamen. | Sum |
+| Grootte van de gegevensopslag (GB) | Totale grootte van de gegevens die in de database zijn geladen. Dit omvat gegevens die zich in CCI- en niet-CCI-tabellen bevinden, waarbij de grootte van niet-CCI-tabellen wordt gemeten aan de basis van de totale bestandsgrootte van de database | Sum |
+| Grootte van noodherstel (GB) | Totale grootte van de geo-back-up genomen om de 24 uur | Sum |
+| Grootte van momentopnameopslag (GB) | Totale grootte van momentopnamen die zijn gemaakt om databaseherstelpunten te bieden. Dit omvat geautomatiseerde en door de gebruiker gedefinieerde momentopnamen. | Sum |
 
 Dingen om rekening mee te houden bij het bekijken van statistieken en het instellen van waarschuwingen:
 
-- Gebruikte DWU vertegenwoordigt slechts een weergave op hoog niveau van het gebruik in de **SQL-groep** en is niet bedoeld als een uitgebreide indicator van het gebruik. Om te bepalen of u wilt opschalen of omlaag wilt, moet u rekening houden met alle factoren die door DWU kunnen worden beïnvloed, zoals gelijktijdigheid, geheugen, tempdb en adaptieve cachecapaciteit. We raden u aan uw werklast uit te [voeren op verschillende DWU-instellingen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview#finding-the-right-size-of-data-warehouse-units) om te bepalen wat het beste werkt om aan uw bedrijfsdoelstellingen te voldoen.
+- Gebruikte DWU vertegenwoordigt slechts een weergave op hoog niveau van het gebruik in de **SQL-groep** en is niet bedoeld als een uitgebreide indicator van het gebruik. Om te bepalen of u wilt opschalen of omlaag wilt, moet u rekening houden met alle factoren die door DWU kunnen worden beïnvloed, zoals gelijktijdigheid, geheugen, tempdb en adaptieve cachecapaciteit. We raden u aan uw werklast uit te [voeren op verschillende DWU-instellingen](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) om te bepalen wat het beste werkt om aan uw bedrijfsdoelstellingen te voldoen.
 - Mislukte en succesvolle verbindingen worden gerapporteerd voor een bepaald gegevensmagazijn - niet voor de logische server
 - Het geheugenpercentage weerspiegelt het gebruik, zelfs als het gegevensmagazijn niet actief is, maar weerspiegelt geen actief geheugenverbruik. Gebruik en houd deze statistiek samen met anderen (tempdb, gen2-cache) bij om een holistische beslissing te nemen over het niveau van schalen voor extra cachecapaciteit zal de prestaties van de werkbelasting verhogen om aan uw vereisten te voldoen.
 
-
 ## <a name="query-activity"></a>Queryactiviteit
-Voor een programmatische ervaring bij het monitoren van SQL Analytics via T-SQL, biedt de service een set Dynamic Management Views (DMVs). Deze weergaven zijn handig bij het actief oplossen van problemen en het identificeren van prestatieknelpunten met uw werkbelasting.
 
-Als u de lijst met DMVs wilt bekijken die SQL Analytics biedt, raadpleegt u deze [documentatie.](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs) 
+Voor een programmatische ervaring bij het monitoren van Synapse SQL via T-SQL, biedt de service een set Dynamic Management Views (DMVs). Deze weergaven zijn handig bij het actief oplossen van problemen en het identificeren van prestatieknelpunten met uw werkbelasting.
+
+Als u de lijst met DMVs wilt bekijken die van toepassing zijn op Synapse SQL, raadpleegt u deze [documentatie.](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs) 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metrische gegevens en diagnoselogboeken
-Zowel statistieken als logboeken kunnen worden geëxporteerd naar Azure Monitor, met name de azure [monitor-logboekencomponent](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) en kunnen programmatisch worden geopend via [logboekquery's.](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata) De loglatentie voor SQL Analytics is ongeveer 10-15 minuten. Ga voor meer informatie over de factoren die van invloed zijn op de latentie naar de volgende documentatie.
 
+Zowel statistieken als logboeken kunnen worden geëxporteerd naar Azure Monitor, met name de azure [monitor-logboekencomponent](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en kunnen programmatisch worden geopend via [logboekquery's.](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) De loglatentie voor Synapse SQL is ongeveer 10-15 minuten. Ga voor meer informatie over de factoren die van invloed zijn op de latentie naar de volgende documentatie.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 In de volgende handleidingen worden veelvoorkomende scenario's en use cases beschreven bij het bewaken en beheren van uw gegevensmagazijn:
 
-- [Uw werkbelasting voor gegevensmagazijnen bewaken met DMVs](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)
+- [Uw werkbelasting voor gegevensmagazijnen bewaken met DMVs](/sql-data-warehouse/sql-data-warehouse-manage-monitor?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  

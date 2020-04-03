@@ -1,6 +1,6 @@
 ---
 title: Richtlijnen voor het ontwerp van gedistribueerde tabellen
-description: Aanbevelingen voor het ontwerpen van door hash gedistribueerde en round-robin gedistribueerde tabellen in SQL Analytics.
+description: Aanbevelingen voor het ontwerpen van hash-distributed en round-robin gedistribueerde tabellen in Synapse SQL-pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,19 +11,21 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 35106e73a3a4a143bf22c72c4fe8ac6798ac5219
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8a93f3ada8e56853b78321bdc7d99a667cee6158
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351336"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583505"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>Richtlijnen voor het ontwerpen van gedistribueerde tabellen in SQL Analytics
-Aanbevelingen voor het ontwerpen van door hash gedistribueerde en round-robin gedistribueerde tabellen in SQL Analytics.
+# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Richtlijnen voor het ontwerpen van gedistribueerde tabellen in de Synapse SQL-groep
 
-In dit artikel wordt ervan uitgegaan dat u bekend bent met concepten voor gegevensdistributie en gegevensverplaatsing in SQL Analytics.Zie [SQL Analytics-architectuur (MPP) voor](massively-parallel-processing-mpp-architecture.md)meer informatie. 
+Aanbevelingen voor het ontwerpen van hash-distributed en round-robin gedistribueerde tabellen in Synapse SQL-pools.
+
+In dit artikel wordt ervan uitgegaan dat u bekend bent met concepten voor gegevensdistributie en gegevensverplaatsing in synapse SQL-pool.Zie Azure Synapse Analytics voor meer informatie [over de MPP-architectuur (Massively Parallel Processing).](massively-parallel-processing-mpp-architecture.md) 
 
 ## <a name="what-is-a-distributed-table"></a>Wat is een gedistribueerde tabel?
+
 Een gedistribueerde tabel wordt weergegeven als één tabel, maar de rijen worden daadwerkelijk opgeslagen in 60 distributies. De rijen worden verdeeld met een hash of round-robin algoritme.  
 
 **Door hash gedistribueerde tabellen** verbeteren de queryprestaties op grote feitentabellen en zijn de focus van dit artikel. **Round-robin tafels** zijn handig voor het verbeteren van de laadsnelheid. Deze ontwerpkeuzes hebben een aanzienlijke impact op het verbeteren van query- en laadprestaties.
@@ -34,15 +36,16 @@ Als onderdeel van tabelontwerp, begrijp zoveel mogelijk over uw gegevens en hoe 
 
 - Hoe groot is de tafel?   
 - Hoe vaak wordt de tabel vernieuwd?   
-- Heb ik feiten- en dimensioneringstabellen in een SQL Analytics-database?   
+- Heb ik feit- en dimensiontabellen in een Synapse SQL-pool?   
 
 
 ### <a name="hash-distributed"></a>Hash gedistribueerd
+
 Een tabel met hash-gedistribueerde tabel verdeelt tabelrijen over de Compute-knooppunten met behulp van een deterministische hashfunctie om elke rij aan één [distributie](massively-parallel-processing-mpp-architecture.md#distributions)toe te wijzen. 
 
 ![Gedistribueerde tabel](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Gedistribueerde tabel")  
 
-Omdat identieke waarden altijd hash naar dezelfde distributie, de SQL Analytics heeft ingebouwde kennis van de rij locaties. SQL Analytics gebruikt deze kennis om gegevensverplaatsing tijdens query's te minimaliseren, wat de prestaties van query's verbetert. 
+Omdat identieke waarden altijd hash naar dezelfde distributie, het data warehouse heeft ingebouwde kennis van de rij locaties. In Synapse SQL-pool wordt deze kennis gebruikt om gegevensverplaatsing tijdens query's te minimaliseren, wat de queryprestaties verbetert. 
 
 Hash-gedistribueerde tabellen werken goed voor grote feitentabellen in een sterschema. Ze kunnen zeer grote aantallen rijen hebben en nog steeds hoge prestaties leveren. Er zijn natuurlijk een aantal ontwerpoverwegingen die u helpen om de prestaties van het gedistribueerde systeem te krijgen is ontworpen om te bieden. Het kiezen van een goede distributiekolom is een dergelijke overweging die wordt beschreven in dit artikel. 
 
@@ -52,6 +55,7 @@ Overweeg een hash-gedistribueerde tabel te gebruiken wanneer:
 - De tabel heeft frequente bewerkingen voor het invoegen, bijwerken en verwijderen. 
 
 ### <a name="round-robin-distributed"></a>Round-robin verdeeld
+
 Een ronde-robin verdeelde lijst verdeelt lijstrijen gelijk over alle distributies. De toewijzing van rijen aan distributies is willekeurig. In tegenstelling tot door hash gedistribueerde tabellen, worden rijen met gelijke waarden niet gegarandeerd toegewezen aan dezelfde verdeling. 
 
 Als gevolg hiervan moet het systeem soms een bewerking voor gegevensverplaatsing aanroepen om uw gegevens beter te ordenen voordat het een query kan oplossen.  Deze extra stap kan uw query's vertragen. Als u bijvoorbeeld lid wordt van een round-robin-tabel, moet u de rijen opnieuw schuiven, wat een prestatiehit is.
@@ -65,7 +69,7 @@ Overweeg de round-robin-verdeling voor uw tabel te gebruiken in de volgende scen
 - Als de join minder belangrijk is dan andere joins in de query
 - Wanneer de tabel een tijdelijke faseringstabel is
 
-De tutorial [Load New York taxigegevens](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) geven een voorbeeld van het laden van gegevens in een round-robin staging tabel in SQL Analytics.
+De tutorial [Load New York taxi gegevens](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) geeft een voorbeeld van het laden van gegevens in een round-robin staging tabel.
 
 
 ## <a name="choosing-a-distribution-column"></a>Een distributiekolom kiezen
@@ -109,7 +113,7 @@ Als u de parallelle verwerking wilt in evenwicht brengen, selecteert u een distr
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Kies een distributiekolom die de gegevensverplaatsing minimaliseert
 
-Als u de juiste queryresultatenquery's wilt ophalen, kunnen gegevens van het ene Compute-knooppunt naar het andere worden verplaatst. Gegevensverplaatsing gebeurt vaak wanneer query's joins en aggregaties hebben op gedistribueerde tabellen. Het kiezen van een distributiekolom die helpt bij het minimaliseren van gegevensverplaatsing is een van de belangrijkste strategieën voor het optimaliseren van de prestaties van uw SQL Analytics-database.
+Als u de juiste queryresultatenquery's wilt ophalen, kunnen gegevens van het ene Compute-knooppunt naar het andere worden verplaatst. Gegevensverplaatsing gebeurt vaak wanneer query's joins en aggregaties hebben op gedistribueerde tabellen. Het kiezen van een distributiekolom die helpt bij het minimaliseren van gegevensverplaatsing is een van de belangrijkste strategieën voor het optimaliseren van de prestaties van uw Synapse SQL-pool.
 
 Als u de gegevensverplaatsing wilt minimaliseren, selecteert u een distributiekolom die:
 
@@ -217,7 +221,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Als u een gedistribueerde tabel wilt maken, gebruikt u een van de volgende instructies:
 
-- [TABEL MAKEN (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [TABEL MAKEN ALS SELECTEREN (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [TABEL MAKEN (Synapsische SQL-groep)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [TABEL MAKEN ALS SELECT (Synapsische SQL-groep)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

@@ -81,14 +81,10 @@
           href: howto-create-personal-dashboards.md
         - name: Een taak uitvoeren
           href: howto-run-a-job.md
-        - name: Versie van de sjabloon van het apparaat
-          href: howto-version-device-template.md
     - name: Transformeren
       items:
         - name: Gegevens exporteren naar bestemmingen in Azure
           href: howto-export-data.md
-        - name: De IoT Central-API's verkennen
-          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
         - name: Webhooks voor regels maken
           href: howto-create-webhooks.md
         - name: Azure Monitor-actiegroepen verbinden met regels
@@ -127,7 +123,7 @@
               href: howto-manage-preferences.md
             - name: Live chat in-/uitschakelen
               href: howto-show-hide-chat.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Opties voor ondersteuning en hulp
       href: /azure/iot-fundamentals/iot-support-help
@@ -171,5 +167,5 @@
       href: iot-central-customer-data-requests.md
     - name: Ondersteunde browsers
       href: iot-central-supported-browsers.md
-    - name: Azure-IoT Central (verouderde sjablonen)
+    - name: Azure IoT Central (verouderde sjablonen)
       href: 'https://docs.microsoft.com/previous-versions/azure/iot-central/core/overview-iot-central'

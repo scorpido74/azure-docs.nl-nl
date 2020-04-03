@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: c1ad8390bc5db72636c637c2ffb817e34674d0fa
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b0530ddada68cc9d07753a3b8ab30bff642e26dd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548854"
+ms.locfileid: "80618665"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Azure Data Explorer-cluster implementeren in uw virtuele netwerk
 
@@ -106,7 +106,7 @@ Als u azure data explorer-cluster implementeert in uw subnet, u gegevensverbindi
 | BraziliëZuid | 191.233.25.183 |
 | Canada - midden | 40.82.188.208 |
 | Canada - oost | 40.80.255.12 |
-| India - centraal | 40.81.249.251 |
+| India - centraal | 40.81.249.251, 104.211.98.159 |
 | VS - centraal | 40.67.188.68 |
 | Centrale EUAP van de VS | 40.89.56.69 |
 | Azië - oost | 20.189.74.103 |
@@ -125,12 +125,12 @@ Als u azure data explorer-cluster implementeert in uw subnet, u gegevensverbindi
 | Zuid-Afrika West | 102.133.0.97 |
 | VS - zuid-centraal | 20.45.3.60 |
 | Azië - zuidoost | 40.119.203.252 |
-| India - zuid | 40.81.72.110 |
+| India - zuid | 40.81.72.110, 104.211.224.189 |
 | Verenigd Koninkrijk Zuid | 40.81.154.254 |
 | Verenigd Koninkrijk West | 40.81.122.39 |
 | VS - west-centraal | 52.159.55.120 |
 | Europa -west | 51.145.176.215 |
-| India - west | 40.81.88.112 |
+| India - west | 40.81.88.112, 104.211.160.120 |
 | VS - west | 13.64.38.225 |
 | VS - west 2 | 40.90.219.23 |
 

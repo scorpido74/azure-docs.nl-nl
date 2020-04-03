@@ -4,12 +4,12 @@ description: In deze zelfstudie maakt u een Kubernetes-cluster met Azure Kuberne
 keywords: azure devops terraform aks kubernetes
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7a84d7562e99e53ff7be75b7d40795cd3f9e203
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78945297"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618928"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Zelfstudie: Een Kubernetes-cluster maken met Azure Kubernetes Service met Terraform
 
@@ -28,7 +28,7 @@ In deze zelfstudie leert u hoe u de volgende taken uitvoert:
 
 - **Terraform configureren**: volg de aanwijzingen in het artikel [Terraform en toegang tot Azure configureren](terraform-install-configure.md)
 
-- **Azure service-principal**: volg de aanwijzingen in de sectie **Create the service principal** (de service-principal maken) in het artikel [Create an Azure service principal with Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) (een Azure-service-principal maken met Azure CLI). Noteer de waarden voor appId, displayName, password en tenant.
+- **Azure-serviceprincipal**: Volg de aanwijzingen in het gedeelte **Serviceprincipal maken** in het artikel, [Een Azure-serviceprincipal maken met Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Noteer de waarden voor appId, displayName, password en tenant.
 
 ## <a name="create-the-directory-structure"></a>De mapstructuur maken
 
@@ -303,7 +303,7 @@ In deze sectie ziet u hoe u de volgende taken uitvoert:
 
 ## <a name="create-the-kubernetes-cluster"></a>Het Kubernetes-cluster maken
 
-In deze sectie ziet u hoe u de opdracht `terraform init` gebruikt om de resources te maken die zijn gedefinieerd in de configuratiebestanden die u in de vorige secties hebt gemaakt.
+In deze sectie ziet u `terraform init` hoe u de opdracht gebruikt om de resources te maken die zijn gedefinieerd in de configuratiebestanden die u in de vorige secties hebt gemaakt.
 
 1. In Cloud Shell, initialiseren Terraform. Vervang de tijdelijke aanduidingen door de juiste waarden voor uw omgeving.
 

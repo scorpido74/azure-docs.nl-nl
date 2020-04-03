@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9f0a7425fc09d391828a748832f662f02c6022cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79f2df0f94b212ea45c01c825b23f1dbb4cc40db
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970784"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582295"
 ---
 # <a name="scaling-media-processing"></a>Mediaverwerking schalen
 
@@ -73,5 +73,5 @@ Er worden kosten in rekening gebracht op basis van het aantal minuten dat de ger
 
 ## <a name="see-also"></a>Zie ook
 
-* [Quota en beperkingen](limits-quotas-constraints.md)
+* [Quota en limieten](limits-quotas-constraints.md)
 * [Azure-CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f99c4d096bcbe1fbdc42cac80a491d6017266cb2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445207"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583586"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-extensieopdrachten gebruiken om gegevens te beheren die zijn opgeslagen in de API van Azure Cosmos DB voor MongoDB 
 
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U communiceren met de API van Azure Cosmos DB voor MongoDB met behulp van een van de open source [MongoDB-clientstuurprogramma's.](https://docs.mongodb.org/ecosystem/drivers) De API van Azure Cosmos DB voor MongoDB maakt het gebruik van bestaande clientstuurprogramma's mogelijk door vast te houden aan het [MongoDB-draadprotocol.](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)
+Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U communiceren met de API van Azure Cosmos DB voor MongoDB met behulp van een van de open-source [MongoDB-clientstuurprogramma's.](https://docs.mongodb.org/ecosystem/drivers) De API van Azure Cosmos DB voor MongoDB maakt het gebruik van bestaande clientstuurprogramma's mogelijk door vast te houden aan het [MongoDB-draadprotocol.](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)
 
-Door de API van Azure Cosmos DB voor MongoDB te gebruiken, u genieten van de voordelen van Cosmos DB, zoals wereldwijde distributie, automatische sharding, hoge beschikbaarheid, latentiegaranties, automatische, versleuteling in rust, back-ups en nog veel meer, met behoud van uw investeringen in uw MongoDB app.
+Door de API van Azure Cosmos DB voor MongoDB te gebruiken, u genieten van de voordelen van Cosmos DB, zoals wereldwijde distributie, automatische sharding, hoge beschikbaarheid, latentiegaranties, automatische versleuteling, versleuteling in rust, back-ups en nog veel meer, terwijl uw investeringen in uw MongoDB-app behouden blijven.
 
 ## <a name="mongodb-protocol-support"></a>Ondersteuning voor MongoDB-protocol
 
-Standaard is de API van azure cosmos DB voor MongoDB compatibel met MongoDB-serverversie 3.2, zie [ondersteunde functies en syntaxis](mongodb-feature-support.md)voor meer informatie. De functies of queryoperators die zijn toegevoegd in MongoDB-versie 3.4 zijn momenteel beschikbaar als voorbeeld in de API van Azure Cosmos DB voor MongoDB. De volgende extensieopdrachten ondersteunen azure cosmos DB-specifieke functionaliteit bij het uitvoeren van CRUD-bewerkingen op de gegevens die zijn opgeslagen in de API van Azure Cosmos DB voor MongoDB:
+Standaard is de API van azure cosmos DB voor MongoDB compatibel met MongoDB-serverversie 3.2, zie [ondersteunde functies en syntaxis](mongodb-feature-support.md)voor meer informatie. De functies of queryoperators die zijn toegevoegd in MongoDB-versie 3.4 zijn momenteel beschikbaar als voorbeeld in de API van Azure Cosmos DB voor MongoDB. De volgende extensieopdrachten ondersteunen specifieke Azure Cosmos DB-functionaliteit bij het uitvoeren van CRUD-bewerkingen op de gegevens die zijn opgeslagen in de API van Azure Cosmos DB voor MongoDB:
 
 * [Database maken](#create-database)
 * [Database bijwerken](#update-database)
@@ -160,12 +160,12 @@ Met de opdracht Verzamelingenextensie maken wordt een nieuwe MongoDB-verzameling
 
 In de volgende tabel worden de parameters in de opdracht beschreven:
 
-|**Veld**|**Type** |**Beschrijving** |
-|---------|---------|---------|
-| aangepaste actie    | tekenreeks | Naam van de aangepaste opdracht. Moet "CreateCollection" zijn     |
-| verzameling      | tekenreeks | Naam van de collectie                                   |
-| aanbiedingDoorvoer | int    | Ingerichte doorvoer die in de database moet worden ingesteld. Het is een optionele parameter |
-| shardKey shardKey        | tekenreeks | Shard Key pad om een geshard collectie te maken. Het is een optionele parameter |
+| **Veld** | **Type** | **Vereist** | **Beschrijving** |
+|---------|---------|---------|---------|
+| aangepaste actie | tekenreeks | Vereist | Naam van de aangepaste opdracht. Moet "CreateCollection" zijn.|
+| verzameling | tekenreeks | Vereist | Naam van de collectie. Speciale tekens zijn niet toegestaan.|
+| aanbiedingDoorvoer | int | Optioneel* | Ingerichte doorvoer die in de database moet worden ingesteld. Als deze parameter niet wordt opgegeven, wordt deze standaard ingesteld op minimaal 400 RU/s. * Om doorvoer boven de 10.000 `shardKey` RU/s op te geven, is de parameter vereist.|
+| shardKey shardKey | tekenreeks | Optioneel* | Het pad naar de Shard Key voor de geshard collectie. Deze parameter is vereist als u meer dan 10.000 RU/s instelt in `offerThroughput`.  Als deze is opgegeven, hebben alle ingevoegde documenten deze waarde nodig. |
 
 ### <a name="output"></a>Uitvoer
 
@@ -184,7 +184,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 **Een geshard verzameling maken**
 
-Als u een geshard verzameling wilt maken met de naam "testCollection" en een ingerichte doorvoer van 1000 RALLY's, gebruikt u de volgende opdracht:
+Als u een geshard verzameling wilt maken met de naam "testCollection" en een ingerichte doorvoer van 1000 RU's en een shardkey-eigenschap "a.b", gebruikt u de volgende opdracht:
 
 ```shell
 use test

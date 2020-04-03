@@ -1,20 +1,23 @@
 ---
 title: Ondersteunde metrische gegevens azure monitor op resourcetype
 description: Lijst met statistieken die beschikbaar zijn voor elk resourcetype met Azure Monitor.
-author: anirudhcavale
+author: rboucher
 services: azure-monitor
 ms.topic: reference
 ms.date: 03/17/2020
-ms.author: ancav
+ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 674321878cfce2d05189700a8b5118e233d9044d
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 79bae9712cea04425cc36414ec56fdddd4345eab
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520709"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586023"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Ondersteunde statistieken met Azure Monitor
+
+> [!NOTE]
+> Deze lijst wordt grotendeels automatisch gegenereerd uit de AZURE Monitor Metrics REST API. Elke wijziging in deze lijst via Github kan zonder waarschuwing worden overgeschreven. Neem contact op met de auteur van dit artikel voor meer informatie over het maken van permanente updates.
 
 Azure Monitor biedt verschillende manieren om te communiceren met statistieken, waaronder het in kaart brengen ervan in de portal, toegang tot deze gegevens via de REST API of het opvragen ervan met PowerShell of CLI. Hieronder vindt u een volledige lijst met alle statistieken die momenteel beschikbaar zijn met de metrische pijplijn van Azure Monitor. Andere statistieken kunnen beschikbaar zijn in de portal of met behulp van oudere API's. Deze lijst hieronder bevat alleen statistieken die beschikbaar zijn via de geconsolideerde Azure Monitor-metrische pijplijn. De statistieken worden georganiseerd op naamruimte. Zie [Resourceproviders voor Azure-services voor](../../azure-resource-manager/management/azure-services-resource-providers.md)een lijst met services en de naamruimten die ertoe behoren. Gebruik de [api-versie 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) voor en toegang tot deze statistieken om deze statistieken programmatisch te zoeken en te openen
 
@@ -24,10 +27,6 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 > *Een voorbeeld*: de meetwaarde 'Binnenkomende berichten' voor een Event Hub kan worden verkend en uitgezet op wachtrijniveau. Wanneer de waarde wordt geëxporteerd via diagnostische instellingen, wordt deze echter voorgesteld als alle binnenkomende berichten voor alle wachtrijen in de Event Hub.
 >
 > Zie [dit artikel](metrics-supported-export-diagnostic-settings.md)voor een lijst met platformstatistieken die via diagnostische instellingen kunnen worden geëxporteerd.
-
-
-
-
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
@@ -565,7 +564,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Schrijfbytes per schijf per seconde|Bytes/Sec voor gegevensschijfschrijven [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/sec die tijdens de controleperiode naar één schijf is geschreven|SlotId (SlotId)|
 |Leesbewerkingen per schijf per seconde|Gegevensschijfleesbewerkingen/Sec [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
 |Schrijfbewerkingen per schijf per seconde|Gegevensschijfschrijfbewerkingen/Sec [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS schrijven vanaf één schijf tijdens de controleperiode|SlotId (SlotId)|
-|QD per schijf|[Gegevensschijf QD [(afgeschaft)](portal-disk-metrics-deprecation.md)](portal-disk-metrics-deprecation.md)|Count|Average|Gegevensschijfwachtrijdiepte(of wachtrijlengte)|SlotId (SlotId)|
+|QD per schijf|Gegevensschijf QD [(afgeschaft)](portal-disk-metrics-deprecation.md)](portal-disk-metrics-deprecation.md)|Count|Average|Gegevensschijfwachtrijdiepte(of wachtrijlengte)|SlotId (SlotId)|
 |Bytes per seconde voor gelezen besturingssysteem per schijf|Bytes/Sec voor gelezen SCHIJVEN [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/seconde die van één schijf tijdens controleperiode voor OS-schijf worden gelezen|Geen|
 |Schrijven bytes per schijf per seconde per schijf|Bytes/Sec voor schrijven in de schijf van HET BE [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|Bytes/sec die naar één schijf is geschreven tijdens de controleperiode voor de os-schijf|Geen|
 |Leesbewerkingen van het besturingssysteem per schijf per seconde|Bewerkingen voor lezen van schijven/sec van het besturingssysteem [(afgeschaft)](portal-disk-metrics-deprecation.md)|CountPerSeconde|Average|IOPS lezen vanaf één schijf tijdens de controleperiode voor de OS-schijf|Geen|
@@ -1974,8 +1973,6 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 
 
 
-
-
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
 |Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
@@ -2002,8 +1999,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |dwu_used|Gebruikte DWU|Count|Maximum|DWU gebruikt. Geldt alleen voor datawarehouses.|Geen|
 |cache_hit_percent|Percentage cachehit|Percentage|Maximum|Cache hit percentage. Geldt alleen voor datawarehouses.|Geen|
 |cache_used_percent|Door cache gebruikt percentage|Percentage|Maximum|Cache gebruikt percentage. Geldt alleen voor datawarehouses.|Geen|
-|sqlserver_process_core_percent|SQL Server-proceskernpercentage|Percentage|Maximum|CPU-gebruik als percentage van het SQL DB-proces. Niet van toepassing op datawarehouses.|Geen|
-|sqlserver_process_memory_percent|SQL Server-procesgeheugenpercentage|Percentage|Maximum|Geheugengebruik als percentage van het SQL DB-proces. Niet van toepassing op datawarehouses.|Geen|
+|sqlserver_process_core_percent|SQL Server-proceskernpercentage|Percentage|Maximum|CPU-gebruikspercentage voor het SQL Server-proces, gemeten door het besturingssysteem.|Geen|
+|sqlserver_process_memory_percent|SQL Server-procesgeheugenpercentage|Percentage|Maximum|Percentage geheugengebruik voor het SQL Server-proces, gemeten door het besturingssysteem.|Geen|
 |tempdb_data_size|Tempdb-gegevensbestandsgrootte Kilobytes|Count|Maximum|Tempdb Data File Size Kilobytes. Niet van toepassing op datawarehouses.|Geen|
 |tempdb_log_size|Tempdb Log File Size Kilobytes|Count|Maximum|Tempdb Log File Size Kilobytes. Niet van toepassing op datawarehouses.|Geen|
 |tempdb_log_used_percent|Tempdb Procent Log gebruikt|Percentage|Maximum|Tempdb Procent Log gebruikt. Niet van toepassing op datawarehouses.|Geen|
@@ -2060,8 +2057,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |database_cpu_limit|CPU-limiet|Count|Average|CPU-limiet|DatabaseResourceId|
 |cpu_used|CPU gebruikt|Count|Average|CPU gebruikt. Van toepassing op vCore-gebaseerde elastische pools.|Geen|
 |database_cpu_used|CPU gebruikt|Count|Average|CPU gebruikt|DatabaseResourceId|
-|sqlserver_process_core_percent|SQL Server-proceskernpercentage|Percentage|Maximum|CPU-gebruik als percentage van het SQL DB-proces. Geldt voor elastische zwembaden.|Geen|
-|sqlserver_process_memory_percent|SQL Server-procesgeheugenpercentage|Percentage|Maximum|Geheugengebruik als percentage van het SQL DB-proces. Geldt voor elastische zwembaden.|Geen|
+|sqlserver_process_core_percent|SQL Server-proceskernpercentage|Percentage|Maximum|CPU-gebruikspercentage voor het SQL Server-proces, gemeten door het besturingssysteem. Geldt voor elastische zwembaden.|Geen|
+|sqlserver_process_memory_percent|SQL Server-procesgeheugenpercentage|Percentage|Maximum|Percentage geheugengebruik voor het SQL Server-proces, gemeten door het besturingssysteem. Geldt voor elastische zwembaden.|Geen|
 |tempdb_data_size|Tempdb-gegevensbestandsgrootte Kilobytes|Count|Maximum|Tempdb-gegevensbestandsgrootte Kilobytes|Geen|
 |tempdb_log_size|Tempdb Log File Size Kilobytes|Count|Maximum|Tempdb Log File Size Kilobytes|Geen|
 |tempdb_log_used_percent|Tempdb Procent Log gebruikt|Percentage|Maximum|Tempdb Procent Log gebruikt|Geen|
@@ -2351,15 +2348,6 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Percentage CPU|Percentage CPU|Percentage|Average|Het CPU-gebruik. Deze waarde wordt gerapporteerd met 100% die alle processorkernen op het systeem vertegenwoordigt. Een 2-weg VM met 50% van een viercore-systeem gebruikt bijvoorbeeld volledig twee cores.|Geen|
 |PercentageCpuReady|Percentage CPU-ready|Milliseconden|Totaal|Klaar tijd is de tijd besteden aan wachten tot CPU(s) beschikbaar komen in het afgelopen update-interval.|Geen|
 
-
-
-
-
-
-
-
-
-
 ## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
 
 |Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
@@ -2380,7 +2368,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |TcpLastAck|TCP Last Ack|Count|Average|TCP Last Ack|Exemplaar|
 |TcpTimeWait|TCP-tijd wachten|Count|Average|TCP-tijd wachten|Exemplaar|
 
-## <a name="microsoftwebsites"></a>Microsoft.Web/sites
+## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites (met uitzondering van functies) 
 
 > [!NOTE]
 > **Bestandssysteemgebruik** is een nieuwe statistiek die wereldwijd wordt uitgerold, er worden geen gegevens verwacht, tenzij u op de witte lijst staat voor een privévoorbeeld.
@@ -2410,6 +2398,37 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |AppVerbindingen|Verbindingen|Count|Average|Verbindingen|Exemplaar|
 |Behandelt|Aantal ingangen|Count|Average|Aantal ingangen|Exemplaar|
 |Threads|Aantal draad|Count|Average|Aantal draad|Exemplaar|
+|PrivateBytes|Privébytes|Bytes|Average|Privébytes|Exemplaar|
+|IoReadBytesPerSeconde|IO Leesbytes per seconde|BytesPerSeconde|Totaal|IO Leesbytes per seconde|Exemplaar|
+|IoWriteBytesPerSeconde|IO-schrijfbytes per seconde|BytesPerSeconde|Totaal|IO-schrijfbytes per seconde|Exemplaar|
+|IootherbytesPerSeconde|IO Andere bytes per seconde|BytesPerSeconde|Totaal|IO Andere bytes per seconde|Exemplaar|
+|IoReadOperationsPerSeconde|IO-leesbewerkingen per seconde|BytesPerSeconde|Totaal|IO-leesbewerkingen per seconde|Exemplaar|
+|IoWriteOperationsPerSeconde|IO-schrijfbewerkingen per seconde|BytesPerSeconde|Totaal|IO-schrijfbewerkingen per seconde|Exemplaar|
+|IootherOperationsperSeconde|IO Andere bewerkingen per seconde|BytesPerSeconde|Totaal|IO Andere bewerkingen per seconde|Exemplaar|
+|RequestsinApplicationQueue|Aanvragen in toepassingswachtrij|Count|Average|Aanvragen in toepassingswachtrij|Exemplaar|
+|Huidige vergaderingen|Huidige vergaderingen|Count|Average|Huidige vergaderingen|Exemplaar|
+|TotalAppDomains TotalAppDomains|Totaal aantal app-domeinen|Count|Average|Totaal aantal app-domeinen|Exemplaar|
+|TotalAppDomainsUnloaded TotalAppDomainsUnloaded TotalAppDomainsUnloaded TotalApp|Totaal aantal app-domeinen gelost|Count|Average|Totaal aantal app-domeinen gelost|Exemplaar|
+|Gen0Collecties|Gen 0 Garbage Collections|Count|Totaal|Gen 0 Garbage Collections|Exemplaar|
+|Gen1Collecties|Gen 1 Garbage Collections|Count|Totaal|Gen 1 Garbage Collections|Exemplaar|
+|Gen2Collecties|Gen 2 Garbage Collections|Count|Totaal|Gen 2 Garbage Collections|Exemplaar|
+|Status van HealthCheck|Status van status van status van status van status|Count|Average|Status van status van status van status van status|Exemplaar|
+|FileSystemUsage FileSystemUsage|Gebruik van bestandssysteem|Bytes|Average|Gebruik van bestandssysteem|Geen|
+
+## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (functies)
+
+> [!NOTE]
+> **Bestandssysteemgebruik** is een nieuwe statistiek die wereldwijd wordt uitgerold, er worden geen gegevens verwacht, tenzij u op de witte lijst staat voor een privévoorbeeld.
+
+|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|---|---|---|---|---|---|
+|Ontvangen bytes|Gegevens in|Bytes|Totaal|Gegevens in|Exemplaar|
+|BytesSent|Gegevens uit|Bytes|Totaal|Gegevens uit|Exemplaar|
+|Http5xx (Http5xx)|Http-serverfouten|Count|Totaal|Http-serverfouten|Exemplaar|
+|MemoryWorkingSet (MemoryWorkingSet)|Geheugenwerkset|Bytes|Average|Geheugenwerkset|Exemplaar|
+|Gemiddelde MemoryWorkingSet|Gemiddelde geheugenwerkset|Bytes|Average|Gemiddelde geheugenwerkset|Exemplaar|
+|FunctionExecutionUnits|Functieuitvoeringseenheden|MB / Milliseconden|Totaal|[Functieuitvoeringseenheden](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Exemplaar|
+|Aantal functies|Aantal functieuitvoeringen|Count|Totaal|Aantal functieuitvoeringen|Exemplaar|
 |PrivateBytes|Privébytes|Bytes|Average|Privébytes|Exemplaar|
 |IoReadBytesPerSeconde|IO Leesbytes per seconde|BytesPerSeconde|Totaal|IO Leesbytes per seconde|Exemplaar|
 |IoWriteBytesPerSeconde|IO-schrijfbytes per seconde|BytesPerSeconde|Totaal|IO-schrijfbytes per seconde|Exemplaar|
@@ -2510,3 +2529,4 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 * [Lees meer over statistieken in Azure Monitor](data-platform.md)
 * [Waarschuwingen maken op basis van metrische gegevens](alerts-overview.md)
 * [Statistieken exporteren naar opslag, gebeurtenishub of logboekanalyse](platform-logs-overview.md)
+

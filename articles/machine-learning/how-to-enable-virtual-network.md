@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: 6e300bbec097201b33f0c576db91c2ca720fb921
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4d845514965a8d60c636902660ce838926cbf3c9
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437344"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607619"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten en inference-taken beveiligen binnen een Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Dit artikel bevat ook gedetailleerde informatie over *geavanceerde beveiligingsi
 > Tenzij specifiek genoemd, zal het gebruik van resources zoals opslagaccounts of rekendoelen binnen een virtueel netwerk werken met zowel machine learning-pijplijnen als niet-pijplijnwerkstromen zoals scriptuitvoeringen.
 
 > [!WARNING]
-> Microsoft biedt geen ondersteuning voor het gebruik van de Azure Machine Learning-ontwerper of geautomatiseerde machine learning (vanuit de studio) met bronnen in een virtueel netwerk.
+> Microsoft biedt geen ondersteuning voor het gebruik van de azure machine learning studio-functies zoals Automated ML, Datasets, Datalabeling, Designer en Notebooks als de onderliggende opslag is ingeschakeld voor virtueel netwerk.
 
 ## <a name="prerequisites"></a>Vereisten
 

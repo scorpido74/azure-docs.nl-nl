@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 03/26/2020
-ms.openlocfilehash: c8743385f8c3c801b2f06e4a30a8672d1d80acc4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 18c926d16319eb8a8736a51d5f10e434b94d0ebe
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422516"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582512"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor door de klant beheerde sleutelconfiguratie 
 
@@ -50,11 +50,11 @@ Ingenomen gegevens in de afgelopen 14 dagen wordt ook bewaard in hot-cache (SSD-
 
 Azure Monitor maakt gebruik van door het systeem toegewezen beheerde identiteit om toegang te verlenen tot uw Azure Key Vault.Beheerde identiteit met systeemtoegewezen kan alleen worden gekoppeld aan één Azure-bron. De identiteit van Azure Monitor data-store (ADX-cluster) wordt ondersteund op clusterniveau en dit dicteert dat de CMK-capaciteit wordt geleverd op een speciaal ADX-cluster. Als u CMK op meerdere werkruimten wilt ondersteunen, wordt een nieuwe Log Analytics-bron *(Cluster)* uitgevoerd als een tussenliggende identiteitsverbinding tussen uw Key Vault en uw Log Analytics-werkruimten. Dit concept voldoet aan de door het systeem toegewezen identiteitsbeperking en de identiteit wordt behouden tussen het ADX-cluster en de *clusterbron* Log Analytics, terwijl de gegevens van alle bijbehorende werkruimten worden beveiligd met uw Key Vault-sleutel. De ADX-clusteropslag onder de\'laag gebruikt de beheerde identiteit die is gekoppeld aan de *clusterbron* om uw Azure Key Vault te verifiëren en te openen via Azure Active Directory.
 
-![CMK-overzicht](media/customer-managed-keys/cmk-overview.png)
-1.  De sleutelkluis van de klant.
-2.  De Log Analytics *Cluster-bron van* de klant met beheerde identiteit met machtigingen voor Key Vault : de identiteit wordt ondersteund op het niveau van het ADX-cluster (Data-Store).
-3.  Azure Monitor dedicated ADX-cluster.
-4.  Werkruimten van de klant die zijn gekoppeld aan *clusterbron* voor CMK-versleuteling.
+![CMK-overzicht](media/customer-managed-keys/cmk-overview-8bit.png)
+1.    De sleutelkluis van de klant.
+2.    De Log Analytics *Cluster-bron van* de klant met beheerde identiteit met machtigingen voor Key Vault : de identiteit wordt ondersteund op het niveau van het ADX-cluster (Data-Store).
+3.    Azure Monitor dedicated ADX-cluster.
+4.    Werkruimten van de klant die zijn gekoppeld aan *clusterbron* voor CMK-versleuteling.
 
 ## <a name="encryption-keys-management"></a>Beheer van versleutelingssleutels
 
@@ -210,7 +210,7 @@ Werk uw Sleutelkluis bij met een nieuw toegangsbeleid waarmee machtigingen worde
 - Belangrijkste machtigingen: selecteer 'Get', 'Wrap Key' en 'Uitpaksleutel' machtigingen.
 - Selecteer hoofd: voer de hoofd-id-waarde in die in de vorige stap is geretourneerd in het antwoord.
 
-![Key Vault-machtigingen verlenen](media/customer-managed-keys/grant-key-vault-permissions.png)
+![Key Vault-machtigingen verlenen](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
 De machtiging *Verkrijg* is vereist om te controleren of uw Key Vault is geconfigureerd als herstelbaar om uw sleutel en de toegang tot uw Azure Monitor-gegevens te beschermen.
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1f923db5c730f6dec15f4fc211ab7acbd009ac7f
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521420"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583221"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Functies van Security Center met pensioen (juli 2019)
 
@@ -97,7 +97,7 @@ Alle functies van het **dashboard Identity & Access** in Log Analytics kunnen wo
 
 ## <a name="security-events-map"></a>Kaart voor beveiligingsgebeurtenissen<a name="menu_securityeventsmap"></a>
 
-Security Center biedt u een [beveiligingswaarschuwingen kaart](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) om te helpen bij het identificeren van beveiligingsrisico's. Met de **kaartkaart Naar beveiligingsgebeurtenissen** in die kaart opent u een dashboard waarmee u onbewerkte beveiligingsgebeurtenissen op de geselecteerde werkruimte weergeven.
+Security Center biedt u een beveiligingswaarschuwingen kaart om te helpen bij het identificeren van beveiligingsrisico's. Met de **kaartkaart Naar beveiligingsgebeurtenissen** in die kaart opent u een dashboard waarmee u onbewerkte beveiligingsgebeurtenissen op de geselecteerde werkruimte weergeven.
 
 We hebben de **kaartknop Naar beveiligingsgebeurtenissen en** het dashboard per werkruimte verwijderd.
 
@@ -136,7 +136,7 @@ Zie [Aangepaste waarschuwingsregels in Azure Security Center (Preview)](https://
 
 ## <a name="security-alerts-investigation"></a>Beveiligingswaarschuwingen onderzoek<a name="menu_investigate"></a>
 
-[De functie Onderzoek](https://docs.microsoft.com/azure/security-center/security-center-investigation) in Security Center helpt u bij het triage een mogelijk beveiligingsincident. Met de functie u de omvang van een incident begrijpen en de oorzaak ervan opsporen. We hebben deze functie uit het Beveiligingscentrum verwijderd omdat deze is vervangen door een verbeterde ervaring in [Azure Sentinel.](https://azure.microsoft.com/services/azure-sentinel/)
+De functie Onderzoek in Security Center helpt u bij het triage een mogelijk beveiligingsincident. Met de functie u de omvang van een incident begrijpen en de oorzaak ervan opsporen. We hebben deze functie uit het Beveiligingscentrum verwijderd omdat deze is vervangen door een verbeterde ervaring in [Azure Sentinel.](https://azure.microsoft.com/services/azure-sentinel/)
 
 ![Beveiligingsincident][14]
 

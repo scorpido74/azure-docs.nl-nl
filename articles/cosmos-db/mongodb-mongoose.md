@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 7f4d955583b82b224e3c963431c234ef4690198a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff4455571aa5cfa5c9214bdf18af1853b0cef352
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063740"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585407"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Een Node.js Mongoose-toepassing verbinden met Azure Cosmos DB
 
@@ -36,6 +36,16 @@ Laten we een Cosmos-account aanmaken. Als u al een account hebt dat u wilt gebru
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
+### <a name="create-a-database"></a>Een database maken 
+In deze toepassing behandelen we twee manieren om verzamelingen te maken in Azure Cosmos DB: 
+- **Elk objectmodel opslaan in een aparte verzameling:** We raden u aan [een database met speciale doorvoer te maken.](set-throughput.md#set-throughput-on-a-database) Met behulp van deze capaciteit model geeft u een betere kostenefficiëntie.
+
+    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js-zelfstudie - Schermafbeelding van de Azure-portal, waarin wordt weergegeven hoe u een database maakt in de Data Explorer voor een Azure Cosmos DB-account, voor gebruik met de Mongoose Node-module":::
+
+- **Alle objectmodellen opslaan in één Cosmos DB-verzameling:** Als u alle modellen liever in één verzameling opslaat, u gewoon een nieuwe database maken zonder de optie Doorvoervoorziening te selecteren. Met behulp van dit capaciteitsmodel wordt elke verzameling gemaakt met een eigen doorvoercapaciteit voor elk objectmodel.
+
+Nadat u de database hebt gemaakt, gebruikt `COSMOSDB_DBNAME` u de naam in de onderstaande omgevingsvariabele.
+
 ## <a name="set-up-your-nodejs-application"></a>Uw Node.js-toepassing instellen
 
 >[!Note]
@@ -47,8 +57,8 @@ Laten we een Cosmos-account aanmaken. Als u al een account hebt dat u wilt gebru
 
     Beantwoord de vragen en uw project is klaar voor gebruik.
 
-1. Voeg een nieuw bestand toe aan de map en noem het ```index.js```.
-1. Installeer de vereiste pakketten met een van de ```npm install```-opties:
+2. Voeg een nieuw bestand toe aan de map en noem het ```index.js```.
+3. Installeer de vereiste pakketten met een van de ```npm install```-opties:
    * Mongoose: ```npm install mongoose@5 --save```
 
      > [!Note]
@@ -59,26 +69,26 @@ Laten we een Cosmos-account aanmaken. Als u al een account hebt dat u wilt gebru
      >[!Note]
      > Met de ```--save```-markering wordt de afhankelijkheid toegevoegd aan het package.json-bestand.
 
-1. Importeer de afhankelijkheden in uw index.js-bestand.
+4. Importeer de afhankelijkheden in uw index.js-bestand.
 
     ```JavaScript
    var mongoose = require('mongoose');
    var env = require('dotenv').config();   //Use the .env file to load the variables
     ```
 
-1. Voeg uw Cosmos-DB-verbindingsreeks en de naam van de Cosmos DB toe aan het ```.env```-bestand. Vervang de tijdelijke aanduidingen {cosmos-account-name} en {dbname} door uw eigen Cosmos-accountnaam en databasenaam, zonder de bracesymbolen.
+5. Voeg uw Cosmos-DB-verbindingsreeks en de naam van de Cosmos DB toe aan het ```.env```-bestand. Vervang de tijdelijke aanduidingen {cosmos-account-name} en {dbname} door uw eigen Cosmos-accountnaam en databasenaam, zonder de bracesymbolen.
 
     ```JavaScript
    # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
 
-   COSMODDB_USER = "<Azure Cosmos account's user name>"
-   COSMOSDB_PASSWORD = "<Azure Cosmos account passowrd>"
+   COSMODDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
+   COSMOSDB_PASSWORD = "<Azure Cosmos account password, this is one of the keys specified in your account>"
    COSMOSDB_DBNAME = "<Azure Cosmos database name>"
    COSMOSDB_HOST= "<Azure Cosmos Host name>"
    COSMOSDB_PORT=10255
     ```
 
-1. Maak verbinding met Cosmos DB met behulp van het Mongoose-framework door de volgende code toe te voegen aan het einde van index.js.
+6. Maak verbinding met Cosmos DB met behulp van het Mongoose-framework door de volgende code toe te voegen aan het einde van index.js.
     ```JavaScript
    mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
@@ -94,19 +104,15 @@ Laten we een Cosmos-account aanmaken. Als u al een account hebt dat u wilt gebru
 
     Zodra u verbonden bent met Azure Cosmos DB, kunt u objectmodellen gaan instellen in Mongoose.
 
-## <a name="caveats-to-using-mongoose-with-cosmos-db"></a>Kanttekeningen bij het gebruik van Mongoose met Cosmos DB
+## <a name="best-practices-for-using-mongoose-with-cosmos-db"></a>Aanbevolen procedures voor het gebruik van Mongoose met Cosmos DB
 
-Voor elk model dat u maakt, creëert Mongoose een nieuwe collectie. Echter, gezien de per-collectie facturering model van Cosmos DB, is het misschien niet de meest kostenefficiënte manier om te gaan, als je hebt meerdere object modellen die dunbevolkt zijn.
+Voor elk model dat u maakt, creëert Mongoose een nieuwe collectie. Dit kan het beste worden aangepakt met de [optie Doorvoer databaseniveau](set-throughput.md#set-throughput-on-a-database), die eerder is besproken. Om één collectie te gebruiken, moet u Mongoose [Discriminators](https://mongoosejs.com/docs/discriminators.html)gebruiken. Discriminators zijn een mechanisme voor schema-overname. Hiermee kunt u meerdere modellen met overlappende schema's boven op dezelfde onderliggende MongoDB-verzameling hebben.
 
-In deze zelfstudie worden beide modellen besproken. Eerst bespreken we het opslaan van één soort gegevens per verzameling. Dit is het de facto gedrag voor Mongoose.
-
-Mongoose heeft ook een concept genaamd [discriminators](https://mongoosejs.com/docs/discriminators.html). Discriminators zijn een mechanisme voor schema-overname. Hiermee kunt u meerdere modellen met overlappende schema's boven op dezelfde onderliggende MongoDB-verzameling hebben.
-
-U kunt de verschillende gegevensmodellen opslaan in dezelfde verzameling en vervolgens een filtercomponent gebruiken op het moment dat de query voor het ophalen van de benodigde gegevens wordt uitgevoerd.
+U kunt de verschillende gegevensmodellen opslaan in dezelfde verzameling en vervolgens een filtercomponent gebruiken op het moment dat de query voor het ophalen van de benodigde gegevens wordt uitgevoerd. Laten we door elk van de modellen lopen.
 
 ### <a name="one-collection-per-object-model"></a>Eén verzameling per objectmodel
 
-Standaard maakt Mongoose telkens wanneer u een objectmodel maakt een MongoDB-verzameling. In dit gedeelte wordt onderzocht hoe u dit bereiken met de API van Azure Cosmos DB voor MongoDB. Deze methode wordt aanbevolen wanneer u objectmodellen met grote hoeveelheden gegevens hebt. Dit is het standaardmodel voor Mongoose, dus mogelijk bent u hiermee bekend als u bekend bent met Mongoose.
+In dit gedeelte wordt onderzocht hoe u dit bereiken met de API van Azure Cosmos DB voor MongoDB. Deze methode is onze aanbevolen aanpak, omdat het u in staat stelt om kosten en capaciteit te beheersen. Als gevolg hiervan is het aantal aanvraageenheden in de database niet afhankelijk van het aantal objectmodellen. Dit is het standaard bedrijfsmodel voor Mongoose, dus misschien bent u hier bekend mee.
 
 1. Open uw ```index.js``` opnieuw.
 
@@ -319,3 +325,4 @@ Zoals u ziet, is het eenvoudig om met Mongoose-discriminators te werken. Dus als
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
 [multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
+[dbleveltp]: ./media/mongodb-mongoose/db-level-throughput.png

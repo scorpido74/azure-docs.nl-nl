@@ -2,26 +2,26 @@
 title: "Snelstart: een zoekindex maken in Python met REST API's"
 titleSuffix: Azure Cognitive Search
 description: Hier wordt uitgelegd hoe u een index maakt, gegevens laadt en query's uitvoert met Python, Jupyter-notitieblokken en de AZURE Cognitive Search REST API.
-author: tchristiani
+author: HeidiSteen
 manager: nitinme
-ms.author: terrychr
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: 93fb9ec735de1abf89eb217d0f4096fcfc0afe94
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/01/2020
+ms.openlocfilehash: fd87dbe125e84c171cc35a2b242879c44bc50fd9
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78227100"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585931"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Snelstart: een Azure Cognitive Search-index maken in Python met Jupyter-notitieblokken
 
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C #](search-create-index-dotnet.md)
+> * [C#](search-create-index-dotnet.md)
 > * [Postbode (REST)](search-get-started-postman.md)
 > * [Portal](search-create-index-portal.md)
 > 
@@ -197,7 +197,7 @@ Als u documenten wilt pushen, gebruikt u een HTTP-POST-verzoek om het URL-eindpu
         "@search.action": "upload",
         "HotelId": "3",
         "HotelName": "Triple Landscape Hotel",
-        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
         "Description_fr": "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
         "Category": "Resort and Spa",
         "Tags": [ "air conditioning", "bar", "continental breakfast" ],
@@ -256,45 +256,59 @@ In deze stap ziet u hoe u een index opvraagt met behulp van de [API Voor zoekdoc
 
    ```python
    searchstring = '&search=*&$count=true'
-   ```
 
-1. Geef in een nieuwe cel het volgende voorbeeld om te zoeken op de termen "hotels" en "wifi". Voeg $select toe om op te geven welke velden in de zoekresultaten moeten worden opgenomen.
-
-   ```python
-   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
-   ```
-
-1. In een andere cel, formuleer een verzoek. Deze GET-aanvraag is gericht op het verzamelen van documenten van de index voor hotels snel beginnen en wordt de query die u in de vorige stap hebt opgegeven, gekoppeld.
-
-   ```python
    url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
    response  = requests.get(url, headers=headers, json=searchstring)
    query = response.json()
    pprint(query)
    ```
 
-1. Voer elke stap uit. Resultaten moeten er vergelijkbaar uitzien met de volgende uitvoer. 
+1. Geef in een nieuwe cel het volgende voorbeeld om te zoeken op de termen "hotels" en "wifi". Voeg $select toe om op te geven welke velden in de zoekresultaten moeten worden opgenomen.
+
+   ```python
+   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)   
+   ```
+
+   Resultaten moeten er vergelijkbaar uitzien met de volgende uitvoer. 
 
     ![Een index doorzoeken](media/search-get-started-python/search-index.png "Een index doorzoeken")
 
-1. Probeer een paar andere queryvoorbeelden om een gevoel voor de syntaxis te krijgen. U `searchstring` de volgende voorbeelden vervangen door de volgende voorbeelden en vervolgens de zoekaanvraag opnieuw uitvoeren. 
-
-   Een filter toepassen: 
+1. Pas vervolgens een $filter-expressie toe die alleen hotels selecteert met een classificatie van meer dan 4. 
 
    ```python
    searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)     
    ```
 
-   Neem de top twee resultaten:
+1. Standaard retourneert de zoekmachine de top 50 documenten, maar u top gebruiken en overslaan om pagination toe te voegen en te kiezen hoeveel documenten in elk resultaat. Met deze query worden twee documenten in elke resultaatset geretourneerd.
 
    ```python
-   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
-    Orde op een specifiek veld:
+1. Gebruik in dit laatste voorbeeld $orderby om resultaten te sorteren op plaats. In dit voorbeeld worden velden uit de verzameling Adres bevat.
 
    ```python
-   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
 ## <a name="clean-up"></a>Opruimen

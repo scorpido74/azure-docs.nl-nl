@@ -3,12 +3,12 @@ title: Overzicht van beveiligingsfuncties
 description: Meer informatie over beveiligingsmogelijkheden in Azure Backup waarmee u uw back-upgegevens beschermen en voldoen aan de beveiligingsbehoeften van uw bedrijf.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 91a0f29862b0c9c35e562c143e28ebbc6c39cf94
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80423182"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585822"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Overzicht van beveiligingsfuncties in Azure Backup
 
@@ -66,6 +66,8 @@ Azure Backup-service gebruikt de MARS-agent (Microsoft Azure Recovery Services) 
 * Er wordt een extra verificatielaag toegevoegd wanneer een kritieke bewerking zoals het wijzigen van een wachtwoordzin wordt uitgevoerd. Deze validatie is om ervoor te zorgen dat dergelijke bewerkingen alleen kunnen worden uitgevoerd door gebruikers die over geldige Azure-referenties beschikken. [Meer informatie over de functies die aanvallen voorkomen.](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#prevent-attacks)
 
 * Verwijderde back-upgegevens worden bewaard gedurende nog eens 14 dagen vanaf de datum van verwijdering. Dit zorgt voor herstelbaarheid van de gegevens binnen een bepaalde periode, dus er is geen gegevensverlies, zelfs als er een aanval plaatsvindt. Ook wordt een groter aantal minimale herstelpunten gehandhaafd om te beschermen tegen corrupte gegevens. [Meer informatie over het herstellen van verwijderde back-upgegevens](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#recover-deleted-backup-data).
+
+* Voor gegevens die een back-up maken met de MARS-agent (Microsoft Azure Recovery Services), wordt een wachtwoordzin gebruikt om ervoor te zorgen dat gegevens worden versleuteld voordat ze worden geüpload naar Azure Backup en alleen worden gedecodeerd nadat ze zijn gedownload van Azure Backup. De wachtwoordzindetails zijn alleen beschikbaar voor de gebruiker die de wachtwoordzin heeft gemaakt en de agent die ermee is geconfigureerd. Er wordt niets verzonden of gedeeld met de service. Dit zorgt voor volledige beveiliging van uw gegevens, omdat alle gegevens die per ongeluk worden blootgesteld (zoals een man-in-the-middle-aanval op het netwerk) onbruikbaar zijn zonder de wachtwoordzin en de wachtwoordzin niet op het netwerk wordt verzonden.
 
 ## <a name="compliance-with-standardized-security-requirements"></a>Naleving van gestandaardiseerde beveiligingsvereisten
 
