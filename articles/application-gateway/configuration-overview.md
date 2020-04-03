@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: f31c24c96732ec3311ea904fc9c63344e2d14109
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f08cfab8f8de9183e6bee241959f7feabc31c8e3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371243"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585907"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van toepassingsgatewayconfiguratie
 
@@ -167,8 +167,6 @@ Kies de front-end poort. Selecteer een bestaande poort of maak een nieuwe poort.
 Kies HTTP of HTTPS:
 
 - Als u HTTP kiest, is het verkeer tussen de client en de toepassingsgateway onversleuteld.
-
-- Kies HTTPS als u [TLS-beëindiging](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) of [end-to-end TLS-versleuteling](https://docs.microsoft.com/azure/application-gateway/ssl-overview)wilt. Het verkeer tussen de client en de toepassingsgateway wordt versleuteld. En de TLS-verbinding eindigt bij de toepassingsgateway. Als u end-to-end TLS-versleuteling wilt, moet u HTTPS kiezen en de **back-end HTTP-instelling** configureren. Dit zorgt ervoor dat het verkeer opnieuw wordt versleuteld wanneer het van de toepassingsgateway naar de back-end reist.
 
 - Kies HTTPS als u [TLS-beëindiging](features.md#secure-sockets-layer-ssltls-termination) of [end-to-end TLS-versleuteling](https://docs.microsoft.com/azure/application-gateway/ssl-overview)wilt. Het verkeer tussen de client en de toepassingsgateway wordt versleuteld. En de TLS-verbinding eindigt bij de toepassingsgateway. Als u end-to-end TLS-versleuteling wilt, moet u HTTPS kiezen en de **back-end HTTP-instelling** configureren. Dit zorgt ervoor dat het verkeer opnieuw wordt versleuteld wanneer het van de toepassingsgateway naar de back-end reist.
 

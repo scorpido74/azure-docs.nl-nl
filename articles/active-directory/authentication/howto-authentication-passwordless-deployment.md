@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136531"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582477"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Een wachtwoordloze verificatie-implementatie plannen in Azure Active Directory
 
@@ -59,7 +59,7 @@ De wachtwoordloze verificatiemethoden van Microsoft maken verschillende scenario
 | **Aanmelding voor web-apps:** <br> vanaf een mobiel of niet-windows-apparaat | **Ja** | **Nee** | **Nee** |
 | **Computerlog aanmelden:** <br> Niet-Windows-computer | **Nee** | **Nee** | **Nee** |
 
-Zie [Een wachtwoordloze methode bepalen](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#deciding-a-passwordless-method)voor informatie over het selecteren van de beste methode voor uw organisatie.
+Zie [Een wachtwoordloze methode bepalen](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method)voor informatie over het selecteren van de beste methode voor uw organisatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -97,7 +97,7 @@ In de volgende tabel worden de use cases beschreven die tijdens dit project moet
 | --- | --- |
 | **Toegang** | Aanmelden zonder wachtwoord is beschikbaar vanaf een zakelijk of persoonlijk apparaat binnen of buiten het bedrijfsnetwerk. |
 | **Controleren** | Gebruiksgegevens zijn beschikbaar voor beheerders om in bijna realtime te controleren. <br> Gebruiksgegevens worden minstens om de 29 dagen gedownload naar bedrijfssystemen of siem-tool wordt gebruikt. |
-| **Governance** | Levenscyclus van gebruikerstoewijzingen naar de juiste verificatiemethode en bijbehorende groepen wordt gedefinieerd en gecontroleerd. |
+| **Beheer** | Levenscyclus van gebruikerstoewijzingen naar de juiste verificatiemethode en bijbehorende groepen wordt gedefinieerd en gecontroleerd. |
 | **Beveiliging** | De toegang tot de juiste verificatiemethode wordt beheerd via gebruikers- en groepstoewijzingen. <br> Alleen geautoriseerde gebruikers kunnen zich zonder wachtwoord aanmelden. |
 | **Prestaties** | Toegangstoewijzingstijdlijnen worden gedocumenteerd en gecontroleerd. <br> De aanmeldingstijden worden gemeten voor gebruiksgemak. |
 | **Gebruikerservaring** | Gebruikers zijn zich bewust van mobiele compatibiliteit. <br> Gebruikers kunnen de Authenticator-app zonder wachtwoord configureren. |
@@ -132,7 +132,7 @@ Zie [Aanbevolen procedures voor een pilot](https://aka.ms/deploymentplans) op de
 
 De Microsoft Authenticator-app is gratis te downloaden via Google Play of de Apple App Store. [Meer informatie over het downloaden van de Microsoft Authenticator-app](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). Laat gebruikers de Microsoft Authenticator-app downloaden. en volg de aanwijzingen om telefoonaanmelden in te schakelen. 
 
-Het verandert elke iOS of Android telefoon in een sterke, wachtwoordloze referentie. Gebruikers melden zich aan bij elk platform of browser door een melding op hun telefoon te krijgen, een nummer op het scherm te matchen met het nummer op hun telefoon en vervolgens biometrie of een pincode te gebruiken om te bevestigen. [Meer informatie over hoe de Microsoft Authenticator-app werkt.](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in) 
+Het verandert elke iOS of Android telefoon in een sterke, wachtwoordloze referentie. Gebruikers melden zich aan bij elk platform of browser door een melding op hun telefoon te krijgen, een nummer op het scherm te matchen met het nummer op hun telefoon en vervolgens biometrie of een pincode te gebruiken om te bevestigen. [Meer informatie over hoe de Microsoft Authenticator-app werkt.](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#microsoft-authenticator-app)
 
 ![inloggen met de Authenticator-app](./media/howto-authentication-passwordless-deployment/passwordless-dp-sign-in.png)
 

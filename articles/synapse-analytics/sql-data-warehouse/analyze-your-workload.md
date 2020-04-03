@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a382ef2d93f10e69569ecbbed1399f256a7afbb3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d10a642f9309e4bb93368564488fc75be15fa27c
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351223"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586081"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Uw werkbelasting analyseren in Azure Synapse Analytics
 
-Technieken voor het analyseren van uw SQL Analytics-workload in Azure Synapse Analytics.
+Technieken voor het analyseren van uw Synapse SQL-workload in Azure Synapse Analytics.
 
 ## <a name="resource-classes"></a>Resourceklassen
 
-SQL Analytics biedt resourceklassen om systeembronnen toe te wijzen aan query's.  Zie [Resourceklassen & workloadmanagement](resource-classes-for-workload-management.md)voor meer informatie over resourceklassen.  Query's wachten als de resourceklasse die aan een query is toegewezen, meer resources nodig heeft dan momenteel beschikbaar is.
+Synapse SQL biedt resourceklassen om systeembronnen toe te wijzen aan query's.  Zie [Resourceklassen & workloadmanagement](resource-classes-for-workload-management.md)voor meer informatie over resourceklassen.  Query's wachten als de resourceklasse die aan een query is toegewezen, meer resources nodig heeft dan momenteel beschikbaar is.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Querydetectie in de wachtrij en andere DMVs
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL Analytics heeft de volgende wachttypen:
+Synapse SQL heeft de volgende wachttypen:
 
 * **LocalQueriesConcurrencyResourceType:** query's die buiten het gelijktijdigheidssleufkader zitten. DMV-query's en `SELECT @@VERSION` systeemfuncties, zoals voorbeelden van lokale query's.
 * **UserConcurrencyResourceType:** query's die binnen het gelijktijdigheidssleufkader zitten. Query's tegen tabellen voor eindgebruikers vertegenwoordigen voorbeelden die dit resourcetype zouden gebruiken.
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Een database beveiligen in SQL Analytics](sql-data-warehouse-overview-manage-security.md)voor meer informatie over het beheren van databasegebruikers en beveiliging. Zie [Indexen opnieuw opbouwen om de segmentkwaliteit te verbeteren voor](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)meer informatie over hoe grotere resourceklassen de kwaliteit van de geclusterde kolomarchiefindex kunnen verbeteren.
+Zie [Een database beveiligen in Synapse SQL](sql-data-warehouse-overview-manage-security.md)voor meer informatie over het beheren van databasegebruikers en beveiliging. Zie [Indexen opnieuw opbouwen om de segmentkwaliteit te verbeteren voor](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)meer informatie over hoe grotere resourceklassen de kwaliteit van de geclusterde kolomarchiefindex kunnen verbeteren.

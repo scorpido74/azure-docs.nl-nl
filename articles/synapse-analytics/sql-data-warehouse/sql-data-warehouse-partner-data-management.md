@@ -11,15 +11,16 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 05d5e4f7334c6a9ef7a4f9e8ce7acbdf007a6a44
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f3d5076b8ca4e1c79451bfe3bcd1dbe554b17a88
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351437"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586461"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics-gegevensbeheerpartners
-Als u uw datawarehouse-oplossing wilt maken met de SQL Analytics-functie van Azure Synapse, hebt u een breed scala aan toonaangevende tools om uit te kiezen. In dit artikel worden microsoft-partnerbedrijven belicht met hulpprogramma's voor gegevensbeheer en oplossingen die Azure Synapse ondersteunen.
+
+Als u uw datawarehouse-oplossing wilt maken met de Synapse SQL-poolfunctie van Azure Synapse, hebt u een breed scala aan toonaangevende tools om uit te kiezen. In dit artikel worden microsoft-partnerbedrijven belicht met hulpprogramma's voor gegevensbeheer en oplossingen die Azure Synapse ondersteunen.
 
 ## <a name="data-management-partners"></a>Data management partners
 | Partner | Beschrijving | Link Website/Product |

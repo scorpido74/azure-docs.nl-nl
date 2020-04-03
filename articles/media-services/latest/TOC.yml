@@ -370,7 +370,7 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.media/allversions
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure Media Services-community
       displayName: 'forums, twitter, feedback'
@@ -401,7 +401,7 @@
           href: 'https://aka.ms/ams-v3-ruby-sdk'
     - name: Azure Media Services Explorer
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
-    - name: Quota en beperkingen
+    - name: Quota en limieten
       href: limits-quotas-constraints.md
     - name: Azure-clouds en -regio's
       href: azure-clouds-regions.md

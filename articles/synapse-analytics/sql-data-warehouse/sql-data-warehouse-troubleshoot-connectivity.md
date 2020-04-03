@@ -1,6 +1,6 @@
 ---
 title: Connectiviteit oplossen van problemen
-description: Problemen met connectiviteit oplossen in SQL Analytics.
+description: Problemen met connectiviteit oplossen in Synapse SQL-pool.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 689a2e549c2627c607b6549f164e55a73318f63e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2b0e144220e36de6157101190adb838ae651d7c4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350050"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583328"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Connectiviteitsproblemen oplossen
 
-In dit artikel worden veelvoorkomende probleemoplossingstechnieken weergegeven rond verbinding maken met uw SQL Analytics-database.
+In dit artikel worden veelvoorkomende probleemoplossingstechnieken weergegeven rond verbinding maken met uw Synapse SQL-groep.
 - [Beschikbaarheid van de service controleren](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Controleren op onderbroken of schaalbewerking](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [Uw firewallinstellingen controleren](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -32,33 +32,33 @@ In dit artikel worden veelvoorkomende probleemoplossingstechnieken weergegeven r
 
 ## <a name="check-service-availability"></a>Beschikbaarheid van de service controleren
 
-Controleer of de service beschikbaar is. Ga in de Azure-portal naar de SQL Analytics-database die u probeert te verbinden. Klik in het linker-TOC-paneel op **Diagnosticeren en los problemen op.**
+Controleer of de service beschikbaar is. Ga in de Azure-portal naar de Synapse SQL-groep die u probeert te verbinden. Klik in het linker-TOC-paneel op **Diagnosticeren en los problemen op.**
 
 ![Resourcestatus selecteren](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-De status van uw SQL Analytics wordt hier weergegeven. Als de service niet wordt weergegeven als **beschikbaar,** controleert u verdere stappen.
+De status van uw Synapse SQL-pool wordt hier weergegeven. Als de service niet wordt weergegeven als **beschikbaar,** controleert u verdere stappen.
 
 ![Beschikbare service](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Als uit de resourcestatus blijkt dat uw SQL Analytics-exemplaar is onderbroken of geschaald, volgt u de richtlijnen om uw instantie te hervatten.
+Als uit de resourcestatus blijkt dat uw Synapse SQL-poolinstantie is onderbroken of geschaald, volgt u de richtlijnen om uw instantie te hervatten.
 
 ![Service onderbroken](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) Aanvullende informatie over resourcestatus vindt u hier.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Controleren op onderbroken of schaalbewerking
 
-Controleer de portal om te zien of uw SQL Analytics-exemplaar is onderbroken of geschaald.
+Controleer de portal om te zien of uw Synapse SQL-poolinstantie is onderbroken of geschaald.
 
 ![Service onderbroken](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Als u ziet dat uw service is onderbroken of geschaald, controleert u of deze niet tijdens uw onderhoudsschema is. Op de portal voor uw SQL *Analytics-overzicht*ziet u het gekozen onderhoudsschema.
+Als u ziet dat uw service is onderbroken of geschaald, controleert u of deze niet tijdens uw onderhoudsschema is. Op de portal voor uw Synapse *SQL-pooloverzicht*ziet u het gekozen onderhoudsschema.
 
 ![Overzicht Onderhoudsschema](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Neem anders contact op met uw IT-beheerder om te controleren of dit onderhoud geen geplande gebeurtenis is. Volg de [hier](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)beschreven stappen om de SQL Analytics-instantie te hervatten.
+Neem anders contact op met uw IT-beheerder om te controleren of dit onderhoud geen geplande gebeurtenis is. Als u de instantie synapsSQL-pool wilt hervatten, voert u de [hier](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)beschreven stappen uit.
 
 ## <a name="check-your-firewall-settings"></a>Uw firewallinstellingen controleren
 
-SQL Analytics-database communiceert via poort 1433.Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt. Aanvullende informatie over firewallconfiguraties vindt u [hier.](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
+Synapse SQL-pool communiceert via poort 1433.Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt. Aanvullende informatie over firewallconfiguraties vindt u [hier.](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>De instellingen van uw VNet/service-eindpunt controleren
 
@@ -68,7 +68,7 @@ Zie [foutbeschrijving en resolutie hier](https://docs.microsoft.com/azure/sql-da
 
 ### <a name="software"></a>Software
 
-Controleer of u de nieuwste tools gebruikt om verbinding te maken met uw SQL Analytics-database:
+Controleer of u de nieuwste tools gebruikt om verbinding te maken met uw Synapse SQL-groep:
 
 * SSMS
 * Azure Data Studio
@@ -81,7 +81,7 @@ Controleer of u de nieuwste stuurprogrammaversies gebruikt.Het gebruik van een o
 * [ODBC](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
 * [JDBC](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
 * [OLE DB](https://docs.microsoft.com/sql/connect/oledb/download-oledb-driver-for-sql-server)
-* [Php](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server)
+* [PHP](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server)
 
 ## <a name="check-your-connection-string"></a>Uw verbindingsreeks controleren
 
@@ -113,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Onregelmatige verbindingsproblemen
 
-Controleer of er sprake is van een zware belasting op de server met een groot aantal aanvragen in de wachtrij. Mogelijk moet u uw SQL Analytics-exemplaar opschalen voor extra bronnen.
+Controleer of er sprake is van een zware belasting op de server met een groot aantal aanvragen in de wachtrij. Mogelijk moet u uw Synapse SQL-groep opschalen voor extra bronnen.
 
 ## <a name="common-error-messages"></a>Veelvoorkomende foutberichten
 

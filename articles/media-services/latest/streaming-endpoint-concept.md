@@ -12,18 +12,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: a8674714451f3cc686acb74d6c66ac6800b75936
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478079"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582730"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming Endpoints (Origin) in Azure Media Services
 
 In Microsoft Azure Media Services vertegenwoordigt een [Streaming Endpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) een dynamische (just-in-time) verpakkings- en herkomstservice die uw live en on-demand content rechtstreeks aan een clientplayer-app kan leveren met behulp van een van de gebruikelijke streaming mediaprotocollen (HLS of DASH). Daarnaast biedt het **Streaming Endpoint** dynamische (just-in-time) encryptie aan toonaangevende DRM's. 
 
-Wanneer u een Media Services-account maakt, wordt een **standaard** streamingeindpunt voor u gemaakt in een gestopte status. U het **standaard** eindpunt voor streaming niet verwijderen. Er kunnen meer streaming eindpunten worden gemaakt onder het account (zie [Quota en beperkingen).](limits-quotas-constraints.md)
+Wanneer u een Media Services-account maakt, wordt een **standaard** streamingeindpunt voor u gemaakt in een gestopte status. U het **standaard** eindpunt voor streaming niet verwijderen. Er kunnen meer streaming eindpunten worden gemaakt onder het account (zie [Quota en limieten).](limits-quotas-constraints.md)
 
 > [!NOTE]
 > Als je video's wilt streamen, moet je het **streamingeindpunt** starten van waaruit je de video wilt streamen.

@@ -1,19 +1,19 @@
 ---
-title: GitHub-acties gebruiken met synchronisatie van Azure-app-configuratie
-description: GitHub-acties gebruiken om een update te activeren voor uw app-configuratie-exemplaar wanneer u uw GitHub-opslagplaats bijwerkt
+title: Uw GitHub-repository synchroniseren met app-configuratie
+description: Gebruik GitHub Actions om uw app-configuratie-exemplaar automatisch bij te werken wanneer u uw GitHub-opslagplaats bijwerkt.
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 46d4aa4d4d37e9cac928e8d1a9e5e77ca0f30f18
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 602ccddf97938022df3c5903b573608558fe5d35
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384055"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585483"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>Uw App Configuration-exemplaar synchroniseren met GitHub-acties
+# <a name="sync-your-github-repository-to-app-configuration"></a>Uw GitHub-repository synchroniseren met app-configuratie
 
 Teams die hun bestaande bronbeheerpraktijken willen blijven gebruiken, kunnen GitHub Actions gebruiken om hun GitHub-repository automatisch te synchroniseren met hun App Configuration Store. Hiermee u wijzigingen aanbrengen in uw config-bestanden zoals u dat normaal zou doen, terwijl u voordelen voor app-configuratie krijgt, zoals: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;• Gecentraliseerde configuratie buiten uw code <br>

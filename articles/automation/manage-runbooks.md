@@ -5,21 +5,21 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ad2a34691a00f217db6cf6835eefed18c8862d32
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 29ac9239b8dc87b1ed12fc8333bf5201fe8fa204
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547921"
+ms.locfileid: "80617130"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbooks beheren in Azure Automation
 
-U een runbook toevoegen aan Azure Automation door [een nieuwe](#create-a-runbook) te maken of een bestaand boek uit een bestand of de [Runbook Gallery te](automation-runbook-gallery.md) [importeren.](#import-a-runbook) In dit artikel vindt u informatie over het maken en importeren van runbooks uit een bestand. U alle details krijgen van toegang tot communityrunbooks en -modules in [Runbook- en modulegalerieën voor Azure Automation.](automation-runbook-gallery.md)
+U een runbook toevoegen aan Azure Automation door [een nieuwe](#creating-a-runbook) te maken of een bestaand boek uit een bestand of de [Runbook Gallery te](automation-runbook-gallery.md) [importeren.](#importing-a-runbook) In dit artikel vindt u informatie over het maken en importeren van runbooks uit een bestand. U alle details krijgen van toegang tot communityrunbooks en -modules in [Runbook- en modulegalerieën voor Azure Automation.](automation-runbook-gallery.md)
 
 >[!NOTE]
 >Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](automation-update-azure-modules.md)
 
-## <a name="create-a-runbook"></a>Een runbook maken
+## <a name="creating-a-runbook"></a>Een runbook maken
 
 U een nieuwe runbook maken in Azure Automation met een van de Azure-portals of Windows PowerShell. Zodra het runbook is gemaakt, u het bewerken met behulp van informatie in [Learning PowerShell Workflow](automation-powershell-workflow.md) en [grafische ontwerpen in Azure Automation](automation-graphical-authoring-intro.md).
 
@@ -42,9 +42,9 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 -Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
 ```
 
-## <a name="import-a-runbook"></a>Een runbook importeren
+## <a name="importing-a-runbook"></a>Een runbook importeren
 
-U een nieuw runbook maken in Azure Automation door een PowerShell-script of PowerShell-werkstroom (**.ps1),** een geëxporteerd grafisch runbook (**.graphrunbook)** of een Python 2-script (**.py ) te**importeren.  U moet het [type runbook](automation-runbook-types.md) opgeven dat tijdens het importeren wordt gemaakt, rekening houdend met de volgende overwegingen.
+U een nieuw runbook maken in Azure Automation door een PowerShell-script of PowerShell-werkstroom (**.ps1),** een geëxporteerd grafisch runbook (**.graphrunbook)** of een Python2-script (**.py ) te**importeren.  U moet het [type runbook](automation-runbook-types.md) opgeven dat tijdens het importeren wordt gemaakt, rekening houdend met de volgende overwegingen.
 
 * Een **.ps1-bestand** dat geen werkstroom bevat, kan worden geïmporteerd in een [PowerShell-runbook](automation-runbook-types.md#powershell-runbooks) of een [PowerShell-werkstroomrunboek](automation-runbook-types.md#powershell-workflow-runbooks). Als u deze importeert in een PowerShell-werkstroom-runbook, wordt deze geconverteerd naar een werkstroom. In dit geval worden opmerkingen opgenomen in het runbook om de wijzigingen te beschrijven die zijn aangebracht.
 
@@ -68,7 +68,7 @@ U de volgende procedure gebruiken om een scriptbestand te importeren in Azure Au
 5. Als het veld **Naam** is ingeschakeld, u de naam van het runbook wijzigen. De naam moet beginnen met een letter en kan letters, cijfers, underscores en streepjes bevatten.
 6. Het [type runbook](automation-runbook-types.md) wordt automatisch geselecteerd, maar u het type wijzigen nadat u rekening hebt gehouden met de toepasselijke beperkingen.
 7. Klik **op Maken**. Het nieuwe runbook wordt weergegeven in de lijst met runbooks voor het automatiseringsaccount.
-8. U moet [het runbook publiceren](#publish-a-runbook) voordat u het uitvoeren.
+8. U moet [het runbook publiceren](#publishing-a-runbook) voordat u het uitvoeren.
 
 > [!NOTE]
 > Nadat u een grafisch runbook of een grafisch PowerShell-werkstroomboek hebt geïmporteerd, u deze converteren naar een ander type. U echter een van deze grafische runbooks niet converteren naar een tekstueel runbook.
@@ -90,9 +90,9 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 -Type PowerShellWorkflow
 ```
 
-## <a name="test-a-runbook"></a>Een runbook testen
+## <a name="testing-a-runbook"></a>Een runbook testen
 
-Wanneer u een runbook test, wordt de [conceptversie](#publish-a-runbook) uitgevoerd en worden alle acties die worden uitgevoerd voltooid. Er wordt geen taakgeschiedenis gemaakt, maar de [uitvoer-](automation-runbook-output-and-messages.md#output-stream) en [waarschuwings- en foutstromen](automation-runbook-output-and-messages.md#message-streams) worden weergegeven in het deelvenster Uitvoer van de test. Berichten naar de [Verbose-stream](automation-runbook-output-and-messages.md#message-streams) worden alleen weergegeven `VerbosePreference` in het deelvenster Uitvoer als de variabele(automation-runbook-output-and-messages.md#preference-variables) is ingesteld op Doorgaan.
+Wanneer u een runbook test, wordt de [conceptversie](#publishing-a-runbook) uitgevoerd en worden alle acties die worden uitgevoerd voltooid. Er wordt geen taakgeschiedenis gemaakt, maar de [uitvoer-](automation-runbook-output-and-messages.md#output-stream) en [waarschuwings- en foutstromen](automation-runbook-output-and-messages.md#message-streams) worden weergegeven in het deelvenster Uitvoer van de test. Berichten naar de [Verbose-stream](automation-runbook-output-and-messages.md#message-streams) worden alleen weergegeven in het deelvenster Uitvoer `Continue`als de variabele [VerbosePreference](automation-runbook-output-and-messages.md#preference-variables) is ingesteld op .
 
 Hoewel de conceptversie wordt uitgevoerd, wordt het runbook nog steeds normaal uitgevoerd en voert het alle acties uit tegen resources in de omgeving. Daarom moet u alleen runbooks testen op niet-productieresources.
 
@@ -106,7 +106,7 @@ De procedure om elk [type runbook](automation-runbook-types.md) te testen is het
 1. U de knoppen onder het deelvenster Uitvoer gebruiken om een [PowerShell-werkstroom](automation-runbook-types.md#powershell-workflow-runbooks) of [grafisch](automation-runbook-types.md#graphical-runbooks) runbook te stoppen of op te schorten terwijl deze wordt getest. Wanneer u het runbook onderbreekt, wordt de huidige activiteit voltooid voordat het runbook wordt onderbroken. Als het runbook is onderbroken, kunt u het stoppen of opnieuw starten.
 1. Controleer de uitvoer uit de runbook in het deelvenster Uitvoer.
 
-## <a name="publish-a-runbook"></a>Een runbook publiceren
+## <a name="publishing-a-runbook"></a>Een runbook publiceren
 
 Wanneer u een nieuw runbook maakt of importeert, moet u het publiceren voordat u het uitvoeren. Elk runbook in Azure Automation heeft een conceptversie en een gepubliceerde versie. Alleen de gepubliceerde versie is beschikbaar om te worden uitgevoerd en alleen de conceptversie kan worden bewerkt. De gepubliceerde versie wordt niet beïnvloed door wijzigingen in de conceptversie. Wanneer de conceptversie beschikbaar moet worden gesteld, publiceert u deze en overschrijft u de huidige gepubliceerde versie met de conceptversie.
 
@@ -129,7 +129,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
 
-### <a name="schedule-a-runbook-in-the-azure-portal"></a>Een runbook plannen in de Azure-portal
+## <a name="scheduling-a-runbook-in-the-azure-portal"></a>Een runbook plannen in de Azure-portal
 
 Wanneer uw runbook is gepubliceerd, u het inplannen voor gebruik.
 

@@ -2,24 +2,23 @@
 title: 'Azure ExpressRoute-sjabloon: een ExpressRoute-circuit maken'
 description: Maak, indik, verwijder en deprovisioneer een ExpressRoute-circuit.
 services: expressroute
-author: cherylmc
+author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 11/13/2019
-ms.author: cherylmc
-ms.reviewer: ganesr
-ms.openlocfilehash: 78da84a462566cca1a2800174849159ace8dd6dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: ac2fb2f884feb0fbe6fbb1731ebe7c8bdad5114b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75981136"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616498"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Een ExpressRoute-circuit maken met azure resource manager-sjabloon
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](expressroute-howto-circuit-portal-resource-manager.md)
-> * [Powershell](expressroute-howto-circuit-arm.md)
+> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure-CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager-sjabloon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video - Azure-portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
@@ -64,7 +63,7 @@ Een ExpressRoute-circuit maken door een sjabloon te implementeren:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **De SKU-laag** bepaalt of een ExpressRoute-circuit [lokaal](expressroute-faqs.md#expressroute-local), standaard of [premium](expressroute-faqs.md#expressroute-premium)is. U *Lokaal,* *Standaard* of *Premium*opgeven.
+   * **De SKU-laag** bepaalt of een ExpressRoute-circuit [lokaal,](expressroute-faqs.md#expressroute-local)standaard of [premium](expressroute-faqs.md#expressroute-premium)is. U *Lokaal,**Standaard of *Premium*opgeven.
    * **De SKU-familie** bepaalt het factureringstype. U *Datadata* opgeven voor een data-abonnement met data met data met data en *Unlimiteddata* voor een onbeperkt data-abonnement. U het factureringstype wijzigen van *Gemetendata* naar *Unlimiteddata,* maar u het type niet wijzigen van *Unlimiteddata* naar *Gemetendata.* Een *lokaal* circuit is alleen *Unlimiteddata.*
    * **Peering-locatie** is de fysieke locatie waar u peering met Microsoft.
 

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1809902fb153c5c9c83a9d00b6f817fde975d0fe
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 06fc9edd55aa51c985cbb981fc5a6892d0ca75e5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349900"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583128"
 ---
 # <a name="what-is-workload-management"></a>Wat is workloadmanagement?
 
@@ -36,11 +36,12 @@ De prestatiecapaciteit van een datawarehouse wordt bepaald door de [datawarehous
 
 
 ## <a name="workload-management-concepts"></a>Concepten voor werkbelastingbeheer
-In het verleden hebt u voor SQL Analytics in Azure Synapse de queryprestaties beheerd via [resourceklassen.](resource-classes-for-workload-management.md)  Resourceklassen toegestaan voor het toewijzen van geheugen aan een query op basis van het lidmaatschap van een rol.  De primaire uitdaging met resources klassen is dat, eenmaal geconfigureerd, was er geen governance of de mogelijkheid om de werkbelasting te controleren.  
+
+In het verleden hebt u voor Synapse SQL-pool in Azure Synapse de queryprestaties beheerd via [resourceklassen.](resource-classes-for-workload-management.md)  Resourceklassen toegestaan voor het toewijzen van geheugen aan een query op basis van het lidmaatschap van een rol.  De primaire uitdaging met resources klassen is dat, eenmaal geconfigureerd, was er geen governance of de mogelijkheid om de werkbelasting te controleren.  
 
 Door bijvoorbeeld een ad-hoc gebruikersrollidmaatschap toe te kennen aan smallrc, kon die gebruiker 100% van het geheugen op het systeem verbruiken.  Met resourceklassen is er geen manier om resources te reserveren en ervoor te zorgen dat resources beschikbaar zijn voor kritieke workloads.
 
-SQL Analytics-workloadbeheer in Azure Synapse bestaat uit drie concepten op hoog niveau: [Workload Classification,](sql-data-warehouse-workload-classification.md) [Workload Importance](sql-data-warehouse-workload-importance.md) en Workload [Isolation](sql-data-warehouse-workload-isolation.md).  Deze mogelijkheden geven u meer controle over hoe uw werkbelasting gebruik maakt van systeembronnen.
+Synapse SQL-poolworkloadbeheer in Azure Synapse bestaat uit drie concepten op hoog niveau: [Workload Classification,](sql-data-warehouse-workload-classification.md) [Workload Importance](sql-data-warehouse-workload-importance.md) en Workload [Isolation](sql-data-warehouse-workload-isolation.md).  Deze mogelijkheden geven u meer controle over hoe uw werkbelasting gebruik maakt van systeembronnen.
 
 Workloadclassificatie is het concept om een aanvraag toe te stellen aan een werkbelastinggroep en belangrijke niveaus in te stellen.  Historisch gezien werd deze opdracht gedaan via rollidmaatschap met behulp van [sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class).  Dit kan nu via de [CREATE WORKLOAD CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  De classificatiemogelijkheid biedt een uitgebreidere set opties, zoals label, sessie en tijd om aanvragen te classificeren.
 

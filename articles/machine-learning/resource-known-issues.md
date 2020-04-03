@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 22a24d01f606cd3f76a0de950351feb3d964da54
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2db7a25f3f463e9210544354395c9d33a75f633c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478916"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619381"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en het oplossen van problemen met Azure Machine Learning
 
@@ -48,16 +48,6 @@ Meer informatie over de [resourcequota](how-to-manage-quotas.md) die u tegenkome
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
-* **Foutbericht: Geen overeenkomende distributie gevonden voor azureml-dataprep-native**
-
-    Anaconda's Python 3.7.4 distributie heeft een bug die azureml-sdk install breekt. Dit probleem wordt besproken in deze [GitHub Issue](https://github.com/ContinuumIO/anaconda-issues/issues/11195)
-    
-    Dit kan worden opgelost door een nieuwe Conda-omgeving te maken met behulp van deze opdracht:
-    ```bash
-    conda create -n <env-name> python=3.7.3
-    ```
-    Dat creëert een Conda-omgeving met Python 3.7.3, die niet het installatieprobleem aanwezig is in 3.7.4.
-
 * **Databricks-storing bij het installeren van pakketten**
 
     Azure Machine Learning SDK-installatie mislukt op Azure Databricks wanneer er meer pakketten zijn geïnstalleerd. Sommige pakketten, `psutil`zoals , kunnen conflicten veroorzaken. Als u installatiefouten wilt voorkomen, installeert u pakketten door de bibliotheekversie te bevriezen. Dit probleem is gerelateerd aan Databricks en niet aan de Azure Machine Learning SDK. Mogelijk u dit probleem ook met andere bibliotheken ervaren. Voorbeeld:
@@ -89,10 +79,9 @@ Meer informatie over de [resourcequota](how-to-manage-quotas.md) die u tegenkome
 
 * **Databricks FailToSendFeather:** Als `FailToSendFeather` u een fout ziet bij het lezen van gegevens op het Azure Databricks-cluster, raadpleegt u de volgende oplossingen:
     
-        * Upgrade `azureml-sdk[automl]` package to the latest version.
-        * Add `azureml-dataprep` version 1.1.8 or above.
-        * Add `pyarrow` version 0.11 or above.
-        `
+    * Upgradepakket `azureml-sdk[automl]` naar de nieuwste versie.
+    * Voeg `azureml-dataprep` versie 1.1.8 of hoger toe.
+    * Voeg `pyarrow` versie 0.11 of hoger toe.
 
 ## <a name="create-and-manage-workspaces"></a>Werkruimten maken en beheren
 
@@ -113,9 +102,7 @@ Als u een `Unable to upload project files to working directory in AzureFile beca
 
 Als u bestandsshare gebruikt voor andere workloads, zoals gegevensoverdracht, is de aanbeveling om blobs te gebruiken, zodat bestandsshare gratis kan worden gebruikt voor het verzenden van uitvoeringen. U de werkbelasting ook verdelen over twee verschillende werkruimten.
 
-### <a name="datasets-and-data-preparation"></a>Gegevenssets en gegevensvoorbereiding
-
-Dit zijn bekende problemen voor Azure Machine Learning-gegevenssets.
+### <a name="passing-data-as-input"></a>Gegevens doorgeven als invoer
 
 *  **TypeError: FileNotFound: geen dergelijk bestand of map:** deze fout treedt op als het bestandspad dat u opgeeft niet is waar het bestand zich bevindt. U moet ervoor zorgen dat de manier waarop u naar het bestand verwijst, overeenkomt met de plaats waar u uw gegevensset op uw gegevensset hebt gemonteerd. Om een deterministische toestand te garanderen, raden we u aan het abstracte pad te gebruiken bij het monteren van een gegevensset op een compute-doel. In de volgende code monteren we bijvoorbeeld de gegevensset onder de `/tmp`hoofdmap van het bestandssysteem van het rekendoel. 
     
@@ -128,8 +115,7 @@ Dit zijn bekende problemen voor Azure Machine Learning-gegevenssets.
 
     Als u de leidende slash naar voren niet opneemt, '/', moet u `/mnt/batch/.../tmp/dataset` de werkmap vooraf maken, bijvoorbeeld op het rekendoel om aan te geven waar u de gegevensset wilt monteren.
 
-### <a name="data-labeling-projects-issues"></a>Problemen met het labelen van gegevens
-
+### <a name="data-labeling-projects"></a>Projecten voor het labelen van gegevens
 
 |Probleem  |Oplossing  |
 |---------|---------|
@@ -138,9 +124,9 @@ Dit zijn bekende problemen voor Azure Machine Learning-gegevenssets.
 |Bij het bekijken van afbeeldingen worden nieuw gelabelde afbeeldingen niet weergegeven     |   Als u alle gelabelde afbeeldingen wilt laden, kiest u de knop **Eerste.** De **eerste** knop brengt u terug naar de voorkant van de lijst, maar laadt alle gelabelde gegevens.      |
 |Als u op de Esc-toets drukt terwijl u labelt voor objectdetectie, wordt een nulformaatlabel in de linkerbovenhoek aangebracht. Het indienen van labels in deze status mislukt.     |   Verwijder het label door op het kruisteken ernaast te klikken.  |
 
-## <a name="azure-machine-learning-designer-issues"></a>Problemen met Azure Machine Learning-ontwerpers
+## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-ontwerper
 
-Bekende problemen met de ontwerper.
+Bekende problemen:
 
 * **Lange voorbereidingstijd voor berekenen**: Het kan een paar minuten of zelfs langer zijn wanneer u voor het eerst verbinding maakt met of een rekendoel maakt. 
 

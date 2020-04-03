@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van de Azure-portal om een AKS-clu
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: ea93ea4a68fad213fe5bd1dc61abcb2deaef2c9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 696821e12e963292107cad5b22f00a9816a94b25
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473588"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616409"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren om virtuele knooppunten in de Azure-portal te gebruiken
 
@@ -30,9 +30,9 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 De *Microsoft.ContainerInstance-provider* moet rapporteren als *Geregistreerd,* zoals weergegeven in de volgende voorbeelduitvoer:
 
 ```output
-Namespace                    RegistrationState
----------------------------  -------------------
-Microsoft.ContainerInstance  Registered
+Namespace                    RegistrationState    RegistrationPolicy
+---------------------------  -------------------  --------------------
+Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
 Als de aanbieder als *NotRegistered*aangeeft, registreert u de aanbieder via het [az-providerregister][az-provider-register] zoals aangegeven in het volgende voorbeeld:

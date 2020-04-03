@@ -6,36 +6,35 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 04/02/2020
 ms.author: rajanaki
-ms.openlocfilehash: 3a9b0717368fa67f5a7dd477e018a68e048b6740
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67298ecf0c17feee2d36bb8774cae37b1ca81381
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75451407"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618962"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische update van de Mobiliteitsservice in Azure-naar-Azure-replicatie
 
-Azure Site Recovery maakt gebruik van een maandelijkse releasecadans om eventuele problemen op te lossen en bestaande functies te verbeteren of nieuwe toe te voegen. Als u actueel wilt blijven met de service, moet u elke maand een patchimplementatie plannen. Om overhead te voorkomen die aan elke upgrade is gekoppeld, u siteherstel toestaan om componentupdates te beheren.
+Azure Site Recovery maakt gebruik van een maandelijkse releasecadans om eventuele problemen op te lossen en bestaande functies te verbeteren of nieuwe toe te voegen. Als u actueel wilt blijven met de service, moet u elke maand een patchimplementatie plannen. Om de overhead die aan elke upgrade is gekoppeld te voorkomen, u Site Recovery toestaan om componentupdates te beheren.
 
-Zoals vermeld in [azure-naar-Azure-noodherstelarchitectuur,](azure-to-azure-architecture.md)is de Mobiliteitsservice geïnstalleerd op alle Virtuele Azure-machines (VM's) waarvoor replicatie is ingeschakeld, terwijl VM's van de ene Azure-regio naar de andere worden gerepliceerd. Wanneer u automatische updates gebruikt, wordt de extensie van de Mobiliteitsservice bijgewerkt in elke nieuwe versie.
- 
+Zoals vermeld in [azure-naar-Azure-noodherstelarchitectuur,](azure-to-azure-architecture.md)is de Mobiliteitsservice geïnstalleerd op alle Virtuele Azure-machines (VM's) waarop replicatie is ingeschakeld van de ene Azure-regio naar de andere. Wanneer u automatische updates gebruikt, wordt de extensie van de Mobiliteitsservice bijgewerkt in elke nieuwe versie.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="how-automatic-updates-work"></a>Hoe automatische updates werken
 
-Wanneer u Site recovery gebruikt om updates te beheren, wordt een globale runbook (gebruikt door Azure-services) geïmplementeerd via een automatiseringsaccount dat is gemaakt in hetzelfde abonnement als de kluis. Elke kluis maakt gebruik van één automatiseringsaccount. De runbook controleert voor elke VM in een kluis op actieve automatische updates en verbetert de extensie van de Mobiliteitsservice als er een nieuwere versie beschikbaar is.
+Wanneer u Site recovery gebruikt om updates te beheren, wordt een globale runbook (gebruikt door Azure-services) geïmplementeerd via een automatiseringsaccount dat is gemaakt in hetzelfde abonnement als de kluis. Elke kluis maakt gebruik van één automatiseringsaccount. Voor elke vm in een kluis controleert het runbook op actieve automatische updates. Als er een nieuwere versie van de mobiliteitsservice-extensie beschikbaar is, wordt de update geïnstalleerd.
 
-Het standaard verloopboekschema komt dagelijks om 12:00 uur opnieuw voor in de tijdzone van de geo van de gerepliceerde VM. U ook de runbook-planning wijzigen via het automatiseringsaccount.
+Het standaard verloopboekschema vindt dagelijks om 12:00 uur plaats in de tijdzone van de geografie van de gerepliceerde VM. U ook de runbook-planning wijzigen via het automatiseringsaccount.
 
 > [!NOTE]
-> Vanaf Update Rollup 35 u een bestaand automatiseringsaccount kiezen dat u wilt gebruiken voor updates. Voorafgaand aan deze update heeft Site Recovery dit account standaard gemaakt. Houd er rekening mee dat u deze optie alleen selecteren wanneer u replicatie inschakelt voor een virtuele machine. Het is niet beschikbaar voor een replicerende VM. De instelling die u selecteert, is van toepassing op alle Azure VM's die in dezelfde kluis zijn beveiligd.
- 
-> Als u automatische updates inschakelt, hoeft u uw Azure VM's niet opnieuw op te starten of de lopende replicatie te beïnvloeden.
+> Vanaf [Update Rollup 35](site-recovery-whats-new.md#updates-march-2019)u een bestaand automatiseringsaccount kiezen dat u wilt gebruiken voor updates. Voorafgaand aan Update Rollup 35 heeft Site Recovery standaard het automatiseringsaccount gemaakt. U deze optie alleen selecteren wanneer u replicatie inschakelt voor een virtuele machine. Het is niet beschikbaar voor een vm die al replicatie heeft ingeschakeld. De instelling die u selecteert, is van toepassing op alle Azure VM's die in dezelfde kluis zijn beveiligd.
 
-> Taakfacturering in het automatiseringsaccount is gebaseerd op het aantal taakverloopminuten dat in een maand wordt gebruikt. Standaard worden 500 minuten opgenomen als gratis eenheden voor een automatiseringsaccount. Taakuitvoering duurt een paar seconden tot ongeveer een minuut per dag en wordt gedekt als gratis eenheden.
+Als u automatische updates inschakelt, hoeft u uw Azure VM's niet opnieuw op te starten of de lopende replicatie te beïnvloeden.
+
+Taakfacturering in het automatiseringsaccount is gebaseerd op het aantal taakverloopminuten dat in een maand wordt gebruikt. Taakuitvoering duurt een paar seconden tot ongeveer een minuut per dag en wordt gedekt als gratis eenheden. Standaard worden 500 minuten opgenomen als gratis eenheden voor een automatiseringsaccount, zoals in de volgende tabel wordt weergegeven:
 
 | Gratis eenheden inbegrepen (elke maand) | Prijs |
 |---|---|
@@ -43,31 +42,38 @@ Het standaard verloopboekschema komt dagelijks om 12:00 uur opnieuw voor in de t
 
 ## <a name="enable-automatic-updates"></a>Automatische updates inschakelen
 
-U Site Recovery toestaan om updates op de volgende manieren te beheren.
+Er zijn verschillende manieren waarop Site Recovery de uitbreidingsupdates kan beheren:
+
+- [Beheren als onderdeel van de replicatiestap inschakelen](#manage-as-part-of-the-enable-replication-step)
+- [De instellingen voor uitbreidingsupdate in de kluis in- of uitschakelen](#toggle-the-extension-update-settings-inside-the-vault)
+- [Updates handmatig beheren](#manage-updates-manually)
 
 ### <a name="manage-as-part-of-the-enable-replication-step"></a>Beheren als onderdeel van de replicatiestap inschakelen
 
 Wanneer u replicatie voor een virtuele machine inschakelt vanaf [de VM-weergave](azure-to-azure-quickstart.md) of [vanuit de kluis van herstelservices,](azure-to-azure-how-to-enable-replication.md)u Site recovery toestaan om updates voor de siteherstelextensie te beheren of handmatig beheren.
 
-![Uitbreidingsinstellingen](./media/azure-to-azure-autoupdate/enable-rep.png)
+:::image type="content" source="./media/azure-to-azure-autoupdate/enable-rep.png" alt-text="Uitbreidingsinstellingen":::
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>De instellingen voor uitbreidingsupdate in de kluis in- of uitschakelen
 
-1. Ga in de kluis naar**Site Recovery Infrastructure** **beheren.** > 
-2. Schakel onder Instellingen voor het bijwerken van azure virtual**machines-extensie** **For Azure Virtual Machines** > instellingen de functie voor het beheren van het **instellen inschakelen.** Als u het handmatig wilt beheren, schakelt u deze uit. 
-3. Selecteer **Opslaan**.
+1. Ga vanuit de kluis Recovery Services naar**Site Recovery Infrastructure** **beheren.** > 
+1. Selecteer **onder For Azure Virtual Machines** > **Extension Update Settings** > **Allow Site Recovery to manage**, **selecteer Op**.
 
-![Instellingen voor uitbreidingupdate](./media/azure-to-azure-autoupdate/vault-toggle.png)
+   Als u de extensie handmatig wilt beheren, selecteert u **Uit .**
 
-> [!Important]
-> Wanneer u **Siteherstel toestaan kiest om te beheren,** wordt de instelling toegepast op alle VM's in de bijbehorende kluis.
+1. Selecteer **Opslaan**.
 
-
-> [!Note]
-> Beide opties waarschuwt u van het automatiseringsaccount dat wordt gebruikt voor het beheren van updates. Als u deze functie voor het eerst in een kluis gebruikt, wordt er standaard een nieuw automatiseringsaccount gemaakt. U de instelling afwisselend aanpassen en een bestaand automatiseringsaccount kiezen. Alle daaropvolgende replicaties in dezelfde kluis maken gebruik van de eerder gemaakte replicaties. Op dit moment wordt in de vervolgkeuzelijst alleen automatiseringsaccounts weergegeven die zich in dezelfde resourcegroep bevinden als de kluis.  
+:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="Instellingen voor uitbreidingupdate":::
 
 > [!IMPORTANT]
-> Het onderstaande script moet worden uitgevoerd in de context van een automatiseringsaccount Voor een aangepast automatiseringsaccount gebruikt u het volgende script:
+> Wanneer u **Siteherstel toestaan kiest om te beheren,** wordt de instelling toegepast op alle VM's in de kluis.
+
+> [!NOTE]
+> Beide opties waarschuwt u van het automatiseringsaccount dat wordt gebruikt voor het beheren van updates. Als u deze functie voor het eerst in een kluis gebruikt, wordt er standaard een nieuw automatiseringsaccount gemaakt. U de instelling afwisselend aanpassen en een bestaand automatiseringsaccount kiezen. Alle volgende taksen om replicatie in dezelfde kluis in te schakelen, gebruiken het eerder gemaakte automatiseringsaccount. Op dit moment wordt in het vervolgkeuzemenu alleen automatiseringsaccounts weergegeven die zich in dezelfde resourcegroep bevinden als de kluis.
+
+> [!IMPORTANT]
+> Het volgende script moet worden uitgevoerd in de context van een automatiseringsaccount.
+Gebruik het volgende script voor een aangepast automatiseringsaccount:
 
 ```azurepowershell
 param(
@@ -96,32 +102,32 @@ $Timeout = "160"
 
 function Throw-TerminatingErrorMessage
 {
-    Param
+        Param
     (
         [Parameter(Mandatory=$true)]
         [String]
         $Message
-    )
+        )
 
     throw ("Message: {0}, TaskId: {1}.") -f $Message, $TaskId
 }
 
 function Write-Tracing
 {
-    Param
+        Param
     (
-        [Parameter(Mandatory=$true)]      
+        [Parameter(Mandatory=$true)]
         [ValidateSet("Informational", "Warning", "ErrorLevel", "Succeeded", IgnoreCase = $true)]
-        [String]
+                [String]
         $Level,
 
         [Parameter(Mandatory=$true)]
         [String]
         $Message,
 
-        [Switch]
+            [Switch]
         $DisplayMessageToUser
-    )
+        )
 
     Write-Output $Message
 
@@ -129,12 +135,12 @@ function Write-Tracing
 
 function Write-InformationTracing
 {
-    Param
+        Param
     (
         [Parameter(Mandatory=$true)]
         [String]
         $Message
-    )
+        )
 
     Write-Tracing -Message $Message -Level Informational -DisplayMessageToUser
 }
@@ -183,14 +189,14 @@ function Initialize-SubscriptionId()
         $Tokens = $VaultResourceId.SubString(1).Split("/")
 
         $Count = 0
-        $ArmResources = @{}
+                $ArmResources = @{}
         while($Count -lt $Tokens.Count)
         {
             $ArmResources[$Tokens[$Count]] = $Tokens[$Count+1]
             $Count = $Count + 2
         }
-        
-        return $ArmResources["subscriptions"]
+
+                return $ArmResources["subscriptions"]
     }
     catch
     {
@@ -207,7 +213,7 @@ function Invoke-InternalRestMethod($Uri, $Headers, [ref]$Result)
     {
         try
         {
-            $ResultObject = Invoke-RestMethod -Uri $Uri -Headers $Headers    
+            $ResultObject = Invoke-RestMethod -Uri $Uri -Headers $Headers
             ($Result.Value) += ($ResultObject)
             break
         }
@@ -253,7 +259,7 @@ function Invoke-InternalWebRequest($Uri, $Headers, $Method, $Body, $ContentType,
 }
 
 function Get-Header([ref]$Header, $AadAudience, $AadAuthority, $RunAsConnectionName){
-    try 
+    try
     {
         $RunAsConnection = Get-AutomationConnection -Name $RunAsConnectionName
         $TenantId = $RunAsConnection.TenantId
@@ -284,14 +290,14 @@ function Get-Header([ref]$Header, $AadAudience, $AadAuthority, $RunAsConnectionN
 
 function Get-ProtectionContainerToBeModified([ref] $ContainerMappingList)
 {
-    try 
+    try
     {
         Write-InformationTracing ("Get protection container mappings : {0}." -f $VaultResourceId)
         $ContainerMappingListUrl = $ArmEndPoint + $VaultResourceId + "/replicationProtectionContainerMappings" + "?api-version=" + $AsrApiVersion
-        
+
         Write-InformationTracing ("Getting the bearer token and the header.")
         Get-Header ([ref]$Header) $AadAudience $AadAuthority $RunAsConnectionName
-        
+
         $Result = @()
         Invoke-InternalRestMethod -Uri $ContainerMappingListUrl -Headers $header -Result ([ref]$Result)
         $ContainerMappings = $Result[0]
@@ -389,7 +395,7 @@ try
     try {
             $UpdateUrl = $ArmEndPoint + $Mapping + "?api-version=" + $AsrApiVersion
             Get-Header ([ref]$Header) $AadAudience $AadAuthority $RunAsConnectionName
-            
+
             $Result = @()
             Invoke-InternalWebRequest -Uri $UpdateUrl -Headers $Header -Method 'PATCH' `
                 -Body $InputJson  -ContentType "application/json" -Result ([ref]$Result)
@@ -479,7 +485,7 @@ catch
 {
     $ErrorMessage = ("Tracking modify cloud pairing jobs failed with [Exception: {0}]." -f $_.Exception)
     Write-Tracing -Level ErrorLevel -Message $ErrorMessage  -DisplayMessageToUser
-    Throw-TerminatingErrorMessage -Message $ErrorMessage 
+    Throw-TerminatingErrorMessage -Message $ErrorMessage
 }
 
 Write-InformationTracing ("Tracking modify cloud pairing jobs completed.")
@@ -491,7 +497,7 @@ Write-InformationTracing ("Modify cloud pairing jobs timedout: {0}." -f $JobsTim
 if($JobsTimedOut -gt  0)
 {
     $ErrorMessage = "One or more modify cloud pairing jobs has timedout."
-    Write-Tracing -Level ErrorLevel -Message ($ErrorMessage)   
+    Write-Tracing -Level ErrorLevel -Message ($ErrorMessage)
     Throw-TerminatingErrorMessage -Message $ErrorMessage
 }
 elseif($JobsCompletedSuccessList.Count -ne $ContainerMappingList.Count)
@@ -506,44 +512,44 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 ### <a name="manage-updates-manually"></a>Updates handmatig beheren
 
-1. Als er nieuwe updates zijn voor de Mobiliteitsservice die op uw VM's zijn geïnstalleerd, ziet u de volgende melding: 'Er is een update voor de replicatieagent van de nieuwe siteherstel beschikbaar. Klik om te installeren"
+1. Als er nieuwe updates zijn voor de Mobiliteitsservice die op uw VM's zijn geïnstalleerd, ziet u de volgende melding: **Nieuwe replicatieagent-update voor siteherstel is beschikbaar. Klik om te installeren.**
 
-     ![Venster Gerepliceerde items](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
-2. Selecteer de melding om de vm-selectiepagina te openen.
-3. Kies de VM's die u wilt upgraden en selecteer **OK**. De updatemobiliteitsservice start voor elke geselecteerde VM.
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="Venster Gerepliceerde items":::
 
-     ![VM-lijst met gerepliceerde items](./media/vmware-azure-install-mobility-service/update-okpng.png)
+1. Selecteer de melding om de vm-selectiepagina te openen.
+1. Kies de VM's die u wilt upgraden en selecteer **OK**. De updatemobiliteitsservice start voor elke geselecteerde VM.
 
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="VM-lijst met gerepliceerde items":::
 
 ## <a name="common-issues-and-troubleshooting"></a>Veelvoorkomende problemen en probleemoplossing
 
 Als er een probleem is met de automatische updates, ziet u een foutmelding onder **Configuratieproblemen** in het vault-dashboard.
 
-Als u geen automatische updates inschakelen, raadpleegt u de volgende veelvoorkomende fouten en aanbevolen acties:
+Als u automatische updates niet inschakelen, raadpleegt u de volgende veelvoorkomende fouten en aanbevolen acties:
 
 - **Fout:** u hebt geen machtigingen om een Azure Run As-account (serviceprincipal) te maken en de rol Inzender toe te kennen aan de serviceprincipal.
 
-   **Aanbevolen actie:** zorg ervoor dat het aangemelde account is toegewezen als Bijdrager en probeer het opnieuw. Raadpleeg de sectie vereiste machtigingen in [De portal gebruiken om een Azure AD-toepassing en serviceprincipal te maken die toegang hebben tot bronnen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) voor meer informatie over het toewijzen van machtigingen.
- 
-   Als u de meeste problemen wilt oplossen nadat u automatische updates hebt ingeschakeld, selecteert u **Herstellen**. Als de reparatieknop niet beschikbaar is, raadpleegt u het foutbericht dat wordt weergegeven in het deelvenster Instellingen voor extensie-updates.
+  **Aanbevolen actie:** zorg ervoor dat het aangemelde account is toegewezen als Bijdrager en probeer het opnieuw. Zie het gedeelte vereiste machtigingen van [Hoe: Gebruik de portal om een Azure AD-toepassing en serviceprincipal te maken die toegang heeft tot bronnen](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)voor meer informatie over het toewijzen van machtigingen.
 
-   ![Knop Site Recovery-servicereparatie in instellingen voor uitbreidingupdate](./media/azure-to-azure-autoupdate/repair.png)
+  Als u de meeste problemen wilt oplossen nadat u automatische updates hebt ingeschakeld, selecteert u **Herstellen**. Als de reparatieknop niet beschikbaar is, raadpleegt u het foutbericht dat wordt weergegeven in het deelvenster Instellingen voor extensie-updates.
+
+  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="Knop Site Recovery-servicereparatie in instellingen voor uitbreidingupdate":::
 
 - **Fout:** Het account Uitvoeren als heeft niet de toestemming om toegang te krijgen tot de bron van herstelservices.
 
-    **Aanbevolen actie**: Verwijder en [maak vervolgens het account uitvoeren als opnieuw](https://docs.microsoft.com/azure/automation/automation-create-runas-account). Of zorg ervoor dat de Azure Active Directory-toepassing van het Azure Directory-account van het Azure Run Als-account toegang heeft tot de bron voor herstelservices.
+  **Aanbevolen actie**: Verwijder en [maak vervolgens het account uitvoeren als opnieuw](/azure/automation/automation-create-runas-account). Of zorg ervoor dat de Azure Active Directory-toepassing van het Azure-account van het Azure Run Als-account toegang heeft tot de bron voor herstelservices.
 
-- **Fout:** Uitvoeren als account wordt niet gevonden. Een van deze is verwijderd of niet gemaakt - Azure Active Directory Application, Service Principal, Role, Automation Certificate asset, Automation Connection asset - of de Thumbprint is niet identiek tussen Certificaat en Verbinding. 
+- **Fout:** Uitvoeren als account wordt niet gevonden. Een van deze is verwijderd of niet gemaakt - Azure Active Directory Application, Service Principal, Role, Automation Certificate asset, Automation Connection asset - of de Thumbprint is niet identiek tussen Certificaat en Verbinding.
 
-    **Aanbevolen actie**: Verwijder en [maak vervolgens het account uitvoeren als opnieuw](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+  **Aanbevolen actie**: Verwijder en [maak vervolgens het account uitvoeren als opnieuw](/azure/automation/automation-create-runas-account).
 
--  **Fout:** de Azure Run as Certificate die wordt gebruikt door het automatiseringsaccount, loopt bijna af. 
+- **Fout:** de Azure Run as Certificate die wordt gebruikt door het automatiseringsaccount, loopt bijna af.
 
-    Het zelfondertekende certificaat dat is gemaakt voor het Run As-account verloopt een jaar na de datum van aanmaken. U kunt het certificaat op elk gewenst moment vernieuwen voordat het verloopt. Als u zich hebt aangemeld voor e-mailmeldingen, ontvangt u ook e-mails wanneer een actie van uw kant vereist is. Deze fout wordt twee maanden voor de vervaldatum weergegeven en verandert in een kritieke fout als het certificaat is verlopen. Zodra het certificaat is verlopen, is de automatische update pas functioneel als u hetzelfde verlengt.
+  Het zelfondertekende certificaat dat is gemaakt voor het Run As-account verloopt een jaar na de datum van aanmaken. U kunt het certificaat op elk gewenst moment vernieuwen voordat het verloopt. Als u zich hebt aangemeld voor e-mailmeldingen, ontvangt u ook e-mails wanneer een actie van uw kant vereist is. Deze fout wordt twee maanden voor de vervaldatum weergegeven en verandert in een kritieke fout als het certificaat is verlopen. Zodra het certificaat is verlopen, is de automatische update pas functioneel als u hetzelfde verlengt.
 
-   **Aanbevolen actie**: Klik op 'Herstellen' en vervolgens op 'Certificaat vernieuwen' om dit probleem op te lossen.
-    
-   ![vernieuwing-cert](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
+  **Aanbevolen actie:** Als u dit probleem wilt oplossen, selecteert u **Herstel** en vervolgens **Certificaat verlengen**.
 
-> [!NOTE]
-> Zodra u het certificaat hebt vernieuwd, vernieuwt u de pagina zodat de huidige status wordt bijgewerkt.
+  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="vernieuwing-cert":::
+
+  > [!NOTE]
+  > Nadat u het certificaat hebt vernieuwd, vernieuwt u de pagina om de huidige status weer te geven.

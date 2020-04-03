@@ -15,12 +15,12 @@
       href: quick-backup-vm-powershell.md
     - name: Back-up maken van een VM - CLI
       href: quick-backup-vm-cli.md
-    - name: Back-up maken van een VM - Resource Manager-sjabloon
-      displayName: ARM
+    - name: Back-up maken van een VM - ARM-sjabloon
+      displayName: Resource Manager
       href: quick-backup-vm-template.md
 - name: Zelfstudies
   items:
-    - name: Back-ups maken van Azure-VM's op grote schaal
+    - name: Back-up maken van meerdere Azure-VM’s
       href: tutorial-backup-vm-at-scale.md
     - name: Back-ups maken van Azure-VM's met behulp van PowerShell
       href: tutorial-backup-azure-vm.md
@@ -58,6 +58,8 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: Ondersteuningsmatrix voor MARS-agent
           href: backup-support-matrix-mars-agent.md
+        - name: Ondersteuningsmatrix voor SQL Server Backup
+          href: sql-support-matrix.md
         - name: Ondersteuningsmatrix voor SAP HANA Backup
           href: sap-hana-backup-support-matrix.md
         - name: Ondersteunde VM-SKU's voor Azure Policy
@@ -164,10 +166,10 @@
           href: backup-azure-manage-mars.md
     - name: Back-up van Azure-bestandsshare
       items:
+        - name: Overzicht
+          href: azure-file-share-backup-overview.md
         - name: Vanuit Azure Portal
           items:
-            - name: Overzicht
-              href: azure-file-share-backup-overview.md
             - name: Backup
               href: backup-afs.md
             - name: Herstellen
@@ -336,6 +338,8 @@
           href: backup-rm-template-samples.md
     - name: Beveiliging
       items:
+        - name: Overzicht
+          href: security-overview.md
         - name: Op rollen gebaseerd toegangsbeheer
           href: backup-rbac-rs-vault.md
         - name: Beveiliging voor cloudworkloads
@@ -382,6 +386,8 @@
       href: /azure/templates/microsoft.recoveryservices/allversions
 - name: Resources
   items:
+    - name: Naleving
+      href: compliance-offerings.md
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN-forum

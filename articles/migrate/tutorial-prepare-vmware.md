@@ -4,12 +4,12 @@ description: Meer informatie over hoe u zich voorbereiden op beoordeling/migrati
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: aecc82ff4403c044fae95eb9b7c8c7561fcb82b6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336674"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619431"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware-VM's voorbereiden op evaluatie en migratie naar Azure
 
@@ -36,7 +36,7 @@ U hebt deze machtigingen nodig voor deze taken in Azure, voordat u VMware VM's b
 
 **Taak** | **Details** 
 --- | --- 
-**Een Azure-migratieproject maken** | Uw Azure-account heeft ontributer- of eigenaarmachtigingen nodig om een project te maken. 
+**Een Azure-migratieproject maken** | Uw Azure-account heeft inzender- of eigenaarmachtigingen nodig om een project te maken. 
 **Resourceproviders registreren** | Azure Migrate maakt gebruik van een lichtgewicht Azure Migrate-toestel om VMware VM's te detecteren en te beoordelen en deze te migreren naar Azure met Azure Migrate:Server Assessment.<br/><br/> Tijdens de registratie van apparaten worden resourceproviders geregistreerd met het abonnement dat in het toestel is gekozen. [Meer informatie](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Als u de resourceproviders wilt registreren, hebt u een rol inzender of eigenaar bij het abonnement nodig.
 **Azure AD-apps maken** | Bij de registratie van het toestel maakt Azure Migrate Azure Active Directory (Azure AD)-apps. <br/><br/> - De eerste app wordt gebruikt voor communicatie tussen de agents die op het toestel worden uitgevoerd en hun respectieve services die op Azure worden uitgevoerd.<br/><br/> - De tweede app wordt uitsluitend gebruikt om toegang te krijgen tot KeyVault die is gemaakt in het abonnement van de gebruiker voor agentloze VMware VM-migratie. [Meer informatie](migrate-appliance-architecture.md#appliance-registration).<br/><br/> U hebt machtigingen nodig om Azure AD-apps te maken (beschikbaar in de rol Toepassingsontwikkelaar).
 **Een sleutelkluis maken** | Als u Vm's met VMware wilt migreren met behulp van agentloze migratie, maakt Azure Migrate een Key Vault om toegangssleutels tot het replicatieopslagaccount in uw abonnement te beheren.<br/><br/> Als u de kluis wilt maken, hebt u machtigingen voor toewijzing van rollen nodig voor de resourcegroep waarin het Azure Migrate-project zich bevindt.

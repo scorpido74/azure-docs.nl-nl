@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: a0bc6aef1becd53217be0eeb8c865b5c78a5d69f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239468"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585883"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Een Application Gateway Ingress Controller (AGIC) installeren met een nieuwe toepassingsgateway
 
@@ -263,7 +263,7 @@ Ga als het gaat om het installeren van AAD Pod Identity in uw cluster:
 
 
    > [!NOTE]
-   > De `identityResourceID` `identityClientID` waarden en waarden die zijn gemaakt tijdens de stappen [Een identiteit maken](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-new.md#create-an-identity) en opnieuw kunnen worden verkregen met de volgende opdracht:
+   > De `identityResourceID` `identityClientID` waarden en waarden die zijn gemaakt tijdens de stappen [Onderdelen implementeren](ingress-controller-install-new.md#deploy-components) en opnieuw kunnen worden verkregen met de volgende opdracht:
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```

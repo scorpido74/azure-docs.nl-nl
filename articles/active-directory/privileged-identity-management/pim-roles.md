@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 03/31/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fac7074cf85a585c93ece60be9eea8ffb9a6345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6eaa50f57dd8037ef0ad96b69284f565bd3558f
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72895209"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607526"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Rollen die u niet beheren in Privileged Identity Management
 
-Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) u alle [Azure AD-rollen](../users-groups-roles/directory-assign-admin-roles.md) en alle [Azure-bronrollen](../../role-based-access-control/built-in-roles.md)beheren. Deze rollen omvatten ook uw aangepaste rollen die zijn gekoppeld aan uw beheergroepen, abonnementen, resourcegroepen en resources. Er zijn echter weinig rollen die u niet beheren. In dit artikel worden de rollen beschreven die u niet beheren in Privileged Identity Management.
+Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) u alle [Azure AD-rollen](../users-groups-roles/directory-assign-admin-roles.md) en alle [Azure-rollen](../../role-based-access-control/built-in-roles.md)beheren. Azure-rollen kunnen ook uw aangepaste rollen bevatten die zijn gekoppeld aan uw beheergroepen, abonnementen, brongroepen en resources. Er zijn echter weinig rollen die u niet beheren. In dit artikel worden de rollen beschreven die u niet beheren in Privileged Identity Management.
 
 ## <a name="classic-subscription-administrator-roles"></a>Klassieke abonnementsbeheerdersrollen
 
@@ -37,10 +37,10 @@ Zie Klassieke functies voor [abonnementsbeheerders, Azure RBAC-rollen en Azure A
 
 ## <a name="what-about-office-365-admin-roles"></a>Hoe zit het met Office 365-beheerdersrollen?
 
-Rollen binnen Exchange Online of SharePoint Online, met uitzondering van Exchange Administrator en SharePoint Administrator, zijn niet vertegenwoordigd in Azure AD en kunnen dus niet worden beheerd in Privileged Identity Management. Zie [Office 365-beheerdersrollen](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles)voor meer informatie over deze Office 365-services.
+We ondersteunen alle Office365-rollen in de azure AD-rollen- en beheerdersportalervaring, zoals Exchange Administrator en SharePoint Administrator, maar we ondersteunen geen specifieke rollen binnen Exchange RBAC of SharePoint RBAC. Zie [Office 365-beheerdersrollen](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles)voor meer informatie over deze Office 365-services.
 
 > [!NOTE]
-> SharePoint-beheerder heeft beheerderstoegang tot SharePoint Online via het SharePoint Online-beheercentrum en kan bijna elke taak uitvoeren in SharePoint Online. In aanmerking komende gebruikers kunnen vertragingoplopen bij het gebruik van deze rol binnen SharePoint nadat ze zijn geactiveerd in Privileged Identity Management.
+> In aanmerking komende gebruikers voor de Rol van SharePoint-beheerder en alle rollen die toegang proberen te krijgen tot het Microsoft Security and Compliance Center, kunnen vertragingen oplopen tot enkele uren na het activeren van hun rol. We werken samen met die teams om de problemen op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

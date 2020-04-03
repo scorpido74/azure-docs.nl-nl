@@ -8,20 +8,19 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 10/7/2019
+ms.date: 04/01/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afb295ca561bfa69805362182dc60ce908e1f206
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01956c2fee1c15bc86e8d80aa05c70db647bf593
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331139"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616868"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: releasegeschiedenis versie
 Het Azure Active Directory-team (Azure AD) werkt Azure AD Connect regelmatig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doelgroepen.
-
 
 Dit artikel is ontworpen om u te helpen bij te houden van de versies die zijn vrijgegeven, en om te begrijpen wat de wijzigingen zijn in de nieuwste versie.
 
@@ -34,7 +33,7 @@ Vereiste machtigingen | Zie [accounts en machtigingen](reference-connect-account
 Download| [Azure AD Connect downloaden](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
->Het vrijgeven van een nieuwe versie van Azure AD Connect is een proces dat verschillende kwaliteitscontrolestappen vereist om de werkingsfunctionaliteit van de service te garanderen, en terwijl we dit proces doorlopen, wordt het versienummer van een nieuwe versie en de releasestatus bijgewerkt om de meest recente staat weer te geven.
+>Het vrijgeven van een nieuwe versie van Azure AD Connect is een proces dat verschillende kwaliteitscontrolestappen vereist om de werkingsfunctionaliteit van de service te garanderen, en terwijl we dit proces doorlopen, wordt het versienummer van een nieuwe versie en de releasestatus bijgewerkt om de meest recente status weer te geven.
 Terwijl we dit proces doorlopen, wordt het versienummer van de release weergegeven met een "X" in de kleine releasenummerpositie, zoals in "1.3.X.0" - dit geeft aan dat de releasenotes in dit document geldig zijn voor alle versies die beginnen met "1.3". Zodra wij het versieproces hebben gefinaliseerd zal het versienummer van de versie aan de onlangs vrijgegeven versie worden bijgewerkt en de versiestatus zal worden bijgewerkt aan "Vrijgegeven voor download en autoverbetering".
 Niet alle releases van Azure AD Connect worden beschikbaar gesteld voor een automatische upgrade. De releasestatus geeft aan of een release beschikbaar is voor automatische upgrade of alleen voor download. Als de automatische upgrade is ingeschakeld op uw Azure AD Connect-server, wordt deze server automatisch geüpdatet naar de nieuwste versie van Azure AD Connect die is uitgebracht voor automatische upgrade. Houd er rekening mee dat niet alle Azure AD Connect-configuraties in aanmerking komen voor een automatische upgrade. Volg deze link om meer te lezen over [automatische upgrade](how-to-connect-install-automatic-upgrade.md)
 
@@ -43,11 +42,36 @@ Niet alle releases van Azure AD Connect worden beschikbaar gesteld voor een auto
 >
 > U moet ervoor zorgen dat u een recente versie van Azure AD Connect uitvoert om een optimale ondersteuningservaring te ontvangen. 
 >
->Als u een afgeschafte versie van Azure AD Connect uitvoert, beschikt u mogelijk niet over de nieuwste beveiligingsoplossingen, prestatieverbeteringen, probleemoplossing en diagnostische hulpprogramma's en serviceverbeteringen, en als u ondersteuning nodig hebt, kunnen we u mogelijk niet het niveau van service die uw organisatie nodig heeft.
+>Als u een afgeschafte versie van Azure AD Connect uitvoert, beschikt u mogelijk niet over de nieuwste beveiligingsoplossingen, prestatieverbeteringen, probleemoplossing en diagnostische hulpprogramma's en serviceverbeteringen, en als u ondersteuning nodig hebt, kunnen we u mogelijk niet het serviceniveau bieden dat uw organisatie nodig heeft.
 >
 >Als u Azure AD Connect hebt ingeschakeld voor synchronisatie, ontvangt u binnenkort automatisch statusmeldingen die u waarschuwen voor aankomende afschrijvingen wanneer u een van de oudere versies uitvoert.
 >
 >Raadpleeg [dit artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) voor meer informatie over het upgraden van Azure AD Connect naar de nieuwste versie.
+
+
+## <a name="15180"></a>1.5.18.0
+
+### <a name="release-status"></a>Status van de release
+04/02/2020: Vrijgegeven voor download
+
+### <a name="functional-changes-adsyncautoupgrade"></a>Functionele wijzigingen ADSyncAutoUpgrade 
+
+- Ondersteuning toegevoegd voor de mS-DS-ConsistencyGuid-functie voor groepsobjecten. Hiermee u groepen verplaatsen tussen forests of groepen opnieuw verbinden in AD naar Azure AD, waar de AD-groepsobjectID is gewijzigd, bijvoorbeeld wanneer een AD-server na een calamiteit opnieuw wordt opgebouwd. Zie Groepen [verplaatsen tussen bossen voor](how-to-connect-migrate-groups.md)meer informatie.
+- Het kenmerk mS-DS-ConsistencyGuid wordt automatisch ingesteld op al gesynchroniseerde groepen en u hoeft niets te doen om deze functie in te schakelen. 
+- Verwijderd van de Get-ADSyncRunProfile omdat deze niet meer in gebruik is. 
+- Wijzigde de waarschuwing die u ziet wanneer u een ondernemingsbeheerder- of domeinbeheerdersaccount probeert te gebruiken voor het AD DS-connectoraccount om meer context te bieden. 
+- Een nieuwe cmdlet toegevoegd om objecten uit de connectorruimte te verwijderen, wordt het oude gereedschap CSDelete.exe verwijderd en wordt vervangen door de nieuwe cmdlet Remove-ADSyncCSObject. De cmdlet Remove-ADSyncCSObject neemt een CsObject als invoer. Dit object kan worden opgehaald met de cmdlet Get-ADSyncCSObject.
+
+>[!NOTE]
+>Het oude gereedschap CSDelete.exe is verwijderd en vervangen door de nieuwe cmdlet Remove-ADSyncCSObject 
+
+### <a name="fixed-issues"></a>Problemen opgelost
+
+- Fixed a bug in the group writeback forest/OU selector on rerunning the Azure AD Connect wizard after disablof the feature. 
+- Introduceerde een nieuwe foutpagina die wordt weergegeven als de vereiste DCOM-registerwaarden ontbreken met een nieuwe helpkoppeling. Informatie is ook geschreven om bestanden te loggen. 
+- Fixed an issue with the creation of the Azure Active Directory synchronization account where enabling Directory Extensions or PHS may fail because the account has not propagated across all service replicas before attempted use. 
+- Fixed a bug in the sync errors compression utility that was not handling surrogate characters correctly. 
+- Fixed a bug in the auto upgrade which left the server in the scheduler suspended state. 
 
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>Status van de release
@@ -68,7 +92,8 @@ Niet alle releases van Azure AD Connect worden beschikbaar gesteld voor een auto
 11-08-2019: Vrijgegeven voor download. Niet beschikbaar via automatische upgrade.
 
 >[!IMPORTANT]
->Als gevolg van een interne schemawijziging in deze release van Azure AD Connect, moet u uw MSOnline PowerShell-module bijwerken naar versie 1.1.183.57 of hoger als u aDFS-configuratieinstellingen voor vertrouwensrelatie beheert met MSOnline PowerShell.
+>Als u een interne schemawijziging in deze versie van Azure AD Connect hebt, moet u uw MSOnline PowerShell-module bijwerken naar versie 1.1.183.57 of hoger als u de configuratievan ad FS-vertrouwensrelatie beheert met MSOnline PowerShell.
+
 ### <a name="fixed-issues"></a>Problemen opgelost
 
 Met deze versie wordt een probleem opgelost met bestaande hybride Azure AD-apparaten. Deze release bevat een nieuwe synchronisatieregel voor apparaten die dit probleem corrigeert.
@@ -105,10 +130,10 @@ We hebben een bug in de synchronisatie fouten compressie hulpprogramma dat niet 
 - Klanten moeten ervan op de hoogte worden gesteld dat de afgeschafte WMI-eindpunten voor MIIS_Service nu zijn verwijderd. Elke WMI-bewerking moet nu worden gedaan via PS-cmdlets.
 - Verbetering van de beveiliging door beperkte delegatie op AZUREADSSOACC-object opnieuw in te stellen
 - Bij het toevoegen/bewerken van een synchronisatieregel, als er kenmerken zijn die in de regel worden gebruikt die in het connectorschema staan maar niet aan de connector zijn toegevoegd, worden de kenmerken automatisch aan de connector toegevoegd. Hetzelfde geldt voor het objecttype dat de regel beïnvloedt. Als er iets aan de connector wordt toegevoegd, wordt de connector gemarkeerd voor volledige import op de volgende synchronisatiecyclus.
-- Het gebruik van een Enterprise- of Domeinbeheerder als connectoraccount wordt niet langer ondersteund in nieuwe AAD Connect-implementaties. Huidige AAD Connect-implementaties met behulp van een Enterprise- of Domeinbeheerder als connectoraccount worden niet beïnvloed door deze release.
+- Een Enterprise- of domeinbeheerder gebruiken als connectoraccount wordt niet langer ondersteund in nieuwe Azure AD Connect-implementaties. Huidige AAD Connect-implementaties met behulp van een Enterprise- of Domeinbeheerder als connectoraccount worden niet beïnvloed door deze release.
 - In Synchronisatiebeheer wordt een volledige synchronisatie uitgevoerd op het maken/bewerken/verwijderen van regels. Er verschijnt een pop-up op elke regelwijziging die de gebruiker op de hoogte stelt als volledige import of volledige synchronisatie wordt uitgevoerd.
 - Extra mitigatiestappen voor wachtwoordfouten naar pagina 'connectors > eigenschappen > connectiviteit'
-- Added a deprecation warning for the sync service manager on the connector properties page. Met deze waarschuwing wordt de gebruiker gewaarschuwd dat wijzigingen moeten worden aangebracht via de wizard AADC.
+- Added a deprecation warning for the sync service manager on the connector properties page. Met deze waarschuwing wordt de gebruiker gewaarschuwd dat wijzigingen moeten worden aangebracht via de wizard Azure AD Connect.
 - Nieuwe fout toegevoegd voor problemen met het wachtwoordbeleid van een gebruiker.
 - Voorkom een verkeerde configuratie van groepsfiltering op domein- en ou-filters. Groepsfiltering geeft een fout weer wanneer het domein/de vk van de ingevoerde groep al is uitgefilterd en de gebruiker niet verder kan gaan totdat het probleem is opgelost.
 - Gebruikers kunnen niet langer een connector maken voor Active Directory Domain Services of Windows Azure Active Directory in de gebruikersinterface van Synchronization Service Manager.
@@ -139,9 +164,9 @@ We hebben een bug in de synchronisatie fouten compressie hulpprogramma dat niet 
 >[!IMPORTANT]
 >Er is een bekend probleem met het upgraden van Azure AD Connect van een eerdere versie naar 1.3.21.0, waarbij de O365-portal de bijgewerkte versie niet weergeeft, ook al is Azure AD Connect geüpgraded.
 >
-> Om dit op te lossen moet u de`Set-ADSyncDirSyncConfiguration` **AdSync-module** importeren en vervolgens de powershell-cmdlet uitvoeren op de Azure AD Connect-server.  U de volgende stappen gebruiken:
+> Om dit op te lossen moet u de`Set-ADSyncDirSyncConfiguration` **AdSync-module** importeren en vervolgens de PowerShell-cmdlet uitvoeren op de Azure AD Connect-server.  U de volgende stappen gebruiken:
 >
->1. Powershell openen in de beheermodus
+>1. Open PowerShell in de beheermodus.
 >2. Voer `Import-Module "ADSync"` uit.
 >3. Voer `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` uit.
  
@@ -151,7 +176,7 @@ We hebben een bug in de synchronisatie fouten compressie hulpprogramma dat niet 
 
 ### <a name="fixed-issues"></a>Problemen opgelost 
 
-- Fixed an elevation of privilege vulnerability that exists in Microsoft Azure Active Directory Connect build 1.3.20.0.  Dit beveiligingslek kan een aanvaller onder bepaalde voorwaarden in staat stellen om twee powershell-cmdlets uit te voeren in de context van een geprivilegieerd account en bevoorrechte acties uit te voeren.  Deze beveiligingsupdate verhelpt het probleem door deze cmdlets uit te schakelen. Zie [beveiligingsupdate](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000)voor meer informatie.
+- Fixed an elevation of privilege vulnerability that exists in Microsoft Azure Active Directory Connect build 1.3.20.0.  Dit beveiligingslek kan een aanvaller onder bepaalde voorwaarden in staat stellen twee PowerShell-cmdlets uit te voeren in de context van een geprivilegieerd account en bevoorrechte acties uit te voeren.  Deze beveiligingsupdate verhelpt het probleem door deze cmdlets uit te schakelen. Zie [beveiligingsupdate](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000)voor meer informatie.
 
 ## <a name="13200"></a>1.3.20.0 
 
@@ -256,8 +281,8 @@ Deze hotfix-build lost een regressie op in de vorige build waarbij Password Writ
 
 
 - Wijzigde de functionaliteit van het terugschrijven van kenmerken om ervoor te zorgen dat gehoste voicemail werkt zoals verwacht.  Onder bepaalde scenario's overschreef Azure AD het kenmerk msExchUcVoicemailSettings tijdens het terugschrijven met een null-waarde.  Azure AD geeft nu niet langer de on-premises waarde van dit kenmerk vrij als de cloudwaarde niet is ingesteld.
-- Diagnostics toegevoegd in de wizard Azure AD Connect om verbindingsproblemen te onderzoeken en te identificeren met Azure AD. Dezelfde diagnostiek kan ook rechtstreeks via Powershell worden uitgevoerd met behulp van de Test-AdSyncAzureServiceConnectivity Cmdlet. 
-- Ondersteuning toegevoegd in de wizard Azure AD Connect om verbindingsproblemen aan AD te onderzoeken en te identificeren. Dezelfde diagnostiek kan ook rechtstreeks via Powershell worden uitgevoerd met de functie Start-ConnectivityValidation in de ADConnectivityTools Powershell-module.  Zie Wat [is de ADConnectivityTool PowerShell Module voor](how-to-connect-adconnectivitytools.md) meer informatie?
+- Diagnostics toegevoegd in de wizard Azure AD Connect om verbindingsproblemen te onderzoeken en te identificeren met Azure AD. Dezelfde diagnostiek kan ook rechtstreeks via PowerShell worden uitgevoerd met behulp van de Test-AdSyncAzureServiceConnectivity Cmdlet. 
+- Ondersteuning toegevoegd in de wizard Azure AD Connect om verbindingsproblemen aan AD te onderzoeken en te identificeren. Dezelfde diagnostiek kan ook rechtstreeks via PowerShell worden uitgevoerd met de functie Start-ConnectivityValidation in de ADConnectivityTools PowerShell-module.  Zie Wat [is de ADConnectivityTool PowerShell Module voor](how-to-connect-adconnectivitytools.md) meer informatie?
 - Een AD-schemaversie toegevoegd voorcontrole voor Hybride Azure Active Directory Join en apparaatterugschrijven 
 - De zoekfunctie directoryextensiepagina is niet-hoofdlettergevoelig.
 -   Volledige ondersteuning toegevoegd voor TLS 1.2. Deze release ondersteunt alle andere protocollen die worden uitgeschakeld en alleen TLS 1.2 wordt ingeschakeld op de machine waar Azure AD Connect is geïnstalleerd.  Zie TLS [1.2-handhaving voor Azure AD Connect voor](reference-connect-tls-enforcement.md) meer informatie
@@ -652,7 +677,7 @@ Statuut: 05 september 2017
 
 ### <a name="ad-fs-management"></a>AD FS-Management
 #### <a name="fixed-issues"></a>Problemen opgelost
-* De cmdlet Initialize-ADSyncNGCKeysWriteBack in de AD prep powershell-module heeft acl. ten onrechte toegepast op de apparaatregistratiecontainer en zou daarom alleen bestaande machtigingen overnemen.  Dit is bijgewerkt zodat het synchronisatieserviceaccount de juiste machtigingen heeft.
+* De cmdlet Initialize-ADSyncNGCKeysWriteBack in de PowerShell-module AD prep heeft acl.l.' onjuist toegepast op de apparaatregistratiecontainer en zou daarom alleen bestaande machtigingen overnemen.  Dit is bijgewerkt zodat het synchronisatieserviceaccount de juiste machtigingen heeft.
 
 #### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 * De aad connect verify ADFS Login-taak is bijgewerkt, zodat het aanmeldingen controleert tegen Microsoft Online en niet alleen token ophalen van ADFS.

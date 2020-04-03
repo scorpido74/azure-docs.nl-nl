@@ -69,6 +69,8 @@
   items:
     - name: Batch-accounts beheren
       items:
+        - name: Uw account beheren
+          href: batch-manage-account-basics.md
         - name: Batch-accounts beheren met de portal
           href: batch-account-create-portal.md
         - name: Batch-accounts beheren met Batch Management .NET
@@ -83,8 +85,12 @@
           href: batch-aad-auth-management.md
         - name: Key Vault veilig openen met Batch
           href: credential-access-key-vault.md
+    - name: Toepassingspakketten gebruiken
+      href: batch-application-packages.md
     - name: Bestanden en toepassingen kopiëren naar groepsknooppunten
       items:
+        - name: Toepassingen en gegevens kopiëren naar groepsknooppunten
+          href: batch-applications-to-pool-nodes.md
         - name: Toepassingspakketten gebruiken
           href: batch-application-packages.md
         - name: Bronbestanden maken
@@ -229,7 +235,7 @@
           href: batch-task-complete-event.md
         - name: Gebeurtenis taak mislukt
           href: batch-task-fail-event.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-updates
       href: 'https://azure.microsoft.com/updates/'

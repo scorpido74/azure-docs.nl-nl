@@ -3,25 +3,57 @@ title: Release Notes - Spraakservice
 titleSuffix: Azure Cognitive Services
 description: Een lopend logboek van Speech Service-functie releases, verbeteringen, bug fixes, en bekende problemen.
 services: cognitive-services
-author: brianem
+author: oliversc
 manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: brianem
+ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: cbe9c7cbd0f402e38d1163050d77b055f89948ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bab0a28ba2b75903b6bdf4708e6aa0a98bdc9e5
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219641"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607409"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
+## <a name="speech-sdk-1110-2020-march-release"></a>Speech SDK 1.11.0: release 2020-maart
+
+**Nieuwe functies**
+
+- Linux: Ondersteuning toegevoegd voor Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 met [instructies](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7) voor het configureren van het systeem voor Speech SDK.
+- Linux: Ondersteuning toegevoegd voor .NET Core C# op Linux ARM32 en ARM64. Lees [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux)meer . 
+- C#, C++: `UtteranceId` `ConversationTranscriptionResult`Een consistente ID toegevoegd voor alle tussenproducten en het uiteindelijke resultaat voor spraakherkenning. Details voor [C#,](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet) [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult).
+- Python: Ondersteuning `Language ID`toegevoegd voor . Zie speech_sample.py in [GitHub repo](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console).
+- Windows: Ondersteuning voor gecomprimeerde audio-invoerindeling en Windows-platform toegevoegd voor alle win32-consoletoepassingen. Details [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams). 
+- JavaScript: Ondersteuning van spraaksynthese (tekst-naar-spraak) in NodeJS. Lees [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)meer . 
+- JavaScript: Voeg nieuwe API's toe om alle verzonden en ontvangen berichten te inspecteren. Lees [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript)meer . 
+        
+**Opgeloste fouten**
+
+- C#, C++: Fixed `SendMessageAsync` an issue so now sends binary message as binary type. Details voor [C#,](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_) [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection).
+- C#, C++: Een probleem `Connection MessageReceived` opgelost waarbij `Recognizer` het gebruik `Connection` van een gebeurtenis een crash kan veroorzaken als deze vóór het object wordt verwijderd. Details voor [C#,](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet) [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived).
+- Android: Audio buffer grootte van microfoon gedaald van 800ms tot 100ms om de latentie te verbeteren.
+- Android: Probleem opgelost [met](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) x86 Android emulator in Android Studio.
+- JavaScript: Ondersteuning toegevoegd voor regio's in China met de `fromSubscription` API. Details [hier](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#fromsubscription-string--string-). 
+- JavaScript: Voeg meer foutgegevens toe voor verbindingsfouten van NodeJS.
+        
+**Voorbeelden**
+
+- Eenheid: Intent recognition public sample is fixed, where LUIS json import was failing. Details [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369).
+- Python: Voorbeeld `Language ID`toegevoegd voor . Details [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py).
+    
+**Covid19 verkorte testen**
+
+Vanwege het werken op afstand in de afgelopen weken, konden we niet zo veel handmatige apparaat verificatie testen als we normaal doen. Een voorbeeld hiervan is het testen van microfooninvoer en luidsprekeruitvoer op Linux, iOS en macOS. We hebben geen wijzigingen aangebracht die we denken dat ze iets kunnen breken op deze platforms, en onze geautomatiseerde tests zijn allemaal geslaagd. In het onwaarschijnlijke geval dat we iets gemist, laat het ons weten op [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen).<br> Bedankt voor uw voortdurende steun. Zoals altijd, plaats vragen of feedback op [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen) of [Stack Overflow.](https://stackoverflow.microsoft.com/questions/tagged/731)<br>
+Blijf gezond!
+
 ## <a name="speech-sdk-1100-2020-february-release"></a>Speech SDK 1.10.0: release 2020-februari
 
 **Nieuwe functies**
+
  - Toegevoegd Python pakketten ter ondersteuning van de nieuwe 3.8 release van Python.
  - Ondersteuning voor Red Hat Enterprise Linux (RHEL)/CentOS 8 x64 (C++, C#, Java, Python).
    > [!NOTE] 
@@ -33,6 +65,7 @@ ms.locfileid: "79219641"
  - Bijgewerkte spraakherkenningsmodellen voor 19 locaties voor een gemiddelde vermindering van het woordfoutenpercentage van 18,6% (es-ES, es-MX, fr-CA, fr-FR, it-IT, ja-JP, ko-KR, pt-BR, zh-CN, zh-HK, nb-NO, fi-FL, ru-RU, pl-PL, ca-ES, zh-TW, th-TH, pt-PT, tr-TR). De nieuwe modellen brengen aanzienlijke verbeteringen op meerdere domeinen, waaronder dicteren, Call-Center Transcriptie en Video Indexering scenario's.
 
 **Opgeloste fouten**
+
  - Fixed bug where Conversation Transcriber did not await properly in JAVA API's Fixed bug where Conversation Transcriber did not await properly in JAVA API's Fixed bug where Conversation Transcriber did not await properly in JAVA API' 
  - Android x86 emulator fix voor Xamarin [GitHub probleem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363)
  - Ontbreken toevoegen (Get| Eigenschapsmethoden instellen voor AudioConfig
@@ -40,10 +73,12 @@ ms.locfileid: "79219641"
  - Het gebruik van een eindpunt zonder regio zou leiden tot USP-fouten voor gespreksvertaler
  - ID-generatie in Universal Windows Applications maakt nu gebruik van een passend uniek GUID-algoritme; het eerder en onbedoeld in gebreke gebleven tot een stubbed implementatie die vaak geproduceerd botsingen over grote sets van interacties.
  
- **Monsters**
+ **Voorbeelden**
+ 
  - Unity-voorbeeld voor het gebruik van Speech SDK met [Unity-microfoon en pushmodus streaming](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone)
 
 **Andere wijzigingen**
+
  - [OpenSSL-configuratiedocumentatie bijgewerkt voor Linux](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
 ## <a name="speech-sdk-190-2020-january-release"></a>Speech SDK 1.9.0: release 2020-januari
@@ -59,13 +94,11 @@ ms.locfileid: "79219641"
 - JavaScript: Ondersteuning `FromHost API` toegevoegd voor het gebruik met on-prem-containers en soevereine clouds. Zie documentatie [hier](speech-container-howto.md).
 - JavaScript: We `NODE_TLS_REJECT_UNAUTHORIZED` eer nu dankzij een bijdrage van [orgads](https://github.com/orgads). Zie [details hier](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75).
 
-
 **Wijzigingen doorbreken**
 
 - `OpenSSL`is bijgewerkt naar versie 1.1.1b en is statisch gekoppeld aan de Speech SDK core library voor Linux. Dit kan een onderbreking veroorzaken `OpenSSL` als uw postvak `/usr/lib/ssl` IN niet is geïnstalleerd op de map in het systeem. Controleer [onze documentatie](how-to-configure-openssl-linux.md) onder Speech SDK-documenten om het probleem te omzeilen.
 - We hebben het gegevenstype dat `WordLevelTimingResult.Offset` `int` voor `long` C# is `WordLevelTimingResults` geretourneerd, gewijzigd om toegang te krijgen tot wanneer spraakgegevens langer zijn dan 2 minuten.
 - `PushAudioInputStream`en `PullAudioInputStream` stuur nu wav-header-informatie `AudioStreamFormat`naar de spraakservice op basis van , optioneel opgegeven toen ze zijn gemaakt. Klanten moeten nu de [ondersteunde audio-invoerindeling](how-to-use-audio-input-streams.md)gebruiken. Alle andere indelingen krijgen suboptimale herkenningsresultaten of kunnen andere problemen veroorzaken. 
-
 
 **Opgeloste fouten**
 
@@ -81,13 +114,11 @@ ms.locfileid: "79219641"
 - JavaScript: added support for setting service properties, as added in 1.7.
 - JavaScript: een probleem opgelost waarbij een verbindingsfout kan leiden tot continue, mislukte pogingen om opnieuw verbinding te maken.
 
-
-**Monsters**
+**Voorbeelden**
 
 - Toegevoegd trefwoord herkenning monster voor Android [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo).
 - TTS-voorbeeld toegevoegd voor het serverscenario [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs).
 - Added Multi-device conversation quickstarts for C# and C++ [here](quickstarts/multi-device-conversation.md).
-
 
 **Andere wijzigingen**
 
@@ -114,7 +145,7 @@ ms.locfileid: "79219641"
 
 - Oplossing voor crash `KeywordRecognizer` als lokaal wordt gebruikt zonder geldige abonnementssleutel voor spraakservice
 
-**Monsters**
+**Voorbeelden**
 
 - Xamarin monster voor`KeywordRecognizer`
 - Eenheidsmonster voor`KeywordRecognizer`
@@ -145,7 +176,7 @@ ms.locfileid: "79219641"
 - `DialogServiceConnector`start van de sessie biedt nu `ListenOnceAsync()` goed evenementen, ook wanneer u belt tijdens een actieve`StartKeywordRecognitionAsync()`
 - Een crash verholpen `DialogServiceConnector` die verband houdt met de ontvangen activiteiten
 
-**Monsters**
+**Voorbeelden**
 
 - Snel start voor Xamarin
 - Bijgewerkt CPP Quickstart met Linux ARM64 informatie
@@ -153,7 +184,7 @@ ms.locfileid: "79219641"
 
 ## <a name="speech-sdk-160-2019-june-release"></a>Speech SDK 1.6.0: release 2019-juni
 
-**Monsters**
+**Voorbeelden**
 
 - Quickstart samples voor Text To Speech op UWP en Unity
 - Quickstart-voorbeeld voor Swift op iOS
@@ -202,7 +233,7 @@ Dit is een bug fix release en alleen van invloed op de native / managed SDK. Het
 - Gesprekstranscriptiefunctionaliteit is beschikbaar via de SDK. Zie [hier](conversation-transcription-service.md).
 - Ondersteuning voor spraakassistenten toevoegen met behulp van het kanaal Direct Line Spraak.
 
-**Monsters**
+**Voorbeelden**
 
 - Voorbeelden toegevoegd voor nieuwe functies of nieuwe services die worden ondersteund door de SDK.
 
@@ -238,7 +269,7 @@ Dit is een JavaScript-only release. Er zijn geen functies toegevoegd. De volgend
 - JavaScript: Ondersteuning voor niet-standaard microfoon als invoerapparaat.
 - JavaScript: Proxy-ondersteuning voor Node.js.
 
-**Monsters**
+**Voorbeelden**
 
 - Er zijn voorbeelden toegevoegd voor het gebruik van de Speech SDK met C++ en met Objective-C op macOS.
 - Voorbeelden die het gebruik van de tekst-naar-spraakservice aantonen, zijn toegevoegd.
@@ -271,7 +302,7 @@ Dit is een bug fix release en alleen van invloed op de native / managed SDK. Het
 - De Speech SDK ondersteunt Unity nu in een bètaversie. Geef feedback via de uitgiftesectie in de [GitHub-voorbeeldopslagplaats.](https://aka.ms/csspeech/samples) Deze release ondersteunt Unity op Windows x86 en x64 (desktop of Universal Windows Platform-toepassingen) en Android (ARM32/64, x86). Meer informatie is beschikbaar in onze [Unity quickstart.](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)
 - Het `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` bestand (verzonden in eerdere releases) is niet meer nodig. De functionaliteit is nu geïntegreerd in de core SDK.
 
-**Monsters**
+**Voorbeelden**
 
 De volgende nieuwe content is beschikbaar in onze [sample repository:](https://aka.ms/csspeech/samples)
 
@@ -292,7 +323,7 @@ De volgende nieuwe content is beschikbaar in onze [sample repository:](https://a
   - De SDK is nu gebouwd tegen de iOS SDK versie 12.1.
   - De SDK ondersteunt nu iOS-versies 9.2 en hoger.
   - Verbeter de referentiedocumentatie en los verschillende eigenschapsnamen op.
-- JavaScript
+- Javascript
   - Ondersteuning voor `Connection` het object toevoegen.
   - Tekstdefinitiebestanden toevoegen voor gebundelde JavaScript
   - Eerste ondersteuning en implementatie voor zinszin.
@@ -324,7 +355,7 @@ Dit is een JavaScript-only release. Er zijn geen functies toegevoegd. De volgend
 
 - Python
   - De bètaversie van Python-ondersteuning (3.5 en hoger) is beschikbaar met deze release. Zie hier voor meer informatie(quickstart-python.md).
-- JavaScript
+- Javascript
   - De SpraakSDK voor JavaScript is open-source. De broncode is beschikbaar op [GitHub.](https://github.com/Microsoft/cognitive-services-speech-sdk-js)
   - We ondersteunen nu Node.js, meer info is [hier](quickstart-js-node.md)te vinden.
   - De lengtebeperking voor audiosessies is verwijderd, de verbinding gebeurt automatisch onder de hoes.
@@ -354,7 +385,7 @@ Dit is een JavaScript-only release. Er zijn geen functies toegevoegd. De volgend
 - JavaScript: stel de standaarduitvoerindeling `SpeechConfig`in op 'eenvoudig' in .
 - JavaScript: inconsistentie tussen eigenschappen op het config-object in JavaScript en andere talen verwijderen.
 
-**Monsters**
+**Voorbeelden**
 
 - Bijgewerkt en vaste verschillende monsters (bijvoorbeeld output stemmen voor vertaling, enz.).
 - Node.js-voorbeelden toegevoegd in de [monsteropslagplaats](https://aka.ms/csspeech/samples).
@@ -386,7 +417,7 @@ Dit is een JavaScript-only release. Er zijn geen functies toegevoegd. De volgend
 - Fixed a bug preventing setting the `EndpointId` (in some cases) in JavaScript.
 - Gewijzigde parametervolgorde in AddIntent in JavaScript en ontbrekende `AddIntent` JavaScript-handtekening toegevoegd.
 
-**Monsters**
+**Voorbeelden**
 
 - C++ en C#-samples toegevoegd voor pull- en pushstreamgebruik in de [sample repository.](https://aka.ms/csspeech/samples)
 

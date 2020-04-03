@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 692f70e4666416f34a6e3f32fd5804d4aeb63a5b
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: d7ce77404359b32effcc7a5da3f9429e9fdf7005
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477823"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618581"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Ondersteuning en feedback van Azure Cognitive Services
 
-Bent u net begonnen met het verkennen van de functionaliteit van Azure Cognitive Services? Misschien bent u de uitvoering van een nieuwe functie in uw applicatie. Of na het gebruik van de dienst, heb je suggesties over hoe het te verbeteren? Hier zijn opties voor waar u ondersteuning krijgen, up-to-date blijven en feedback geven voor Cognitive Services.
+Bent u net begonnen met het verkennen van de functionaliteit van Azure Cognitive Services? Misschien bent u de uitvoering van een nieuwe functie in uw applicatie. Of na het gebruik van de dienst, heb je suggesties over hoe het te verbeteren? Hier volgen opties voor waar u ondersteuning krijgen, up-to-date blijven, feedback geven en bugs voor Cognitive Services melden.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
@@ -83,7 +83,7 @@ De releasenotes van Cognitive Services worden bijgewerkt als er nieuwe releases 
 
  - [Custom Vision](custom-vision-service/release-notes.md)
  - [Face](face/releasenotes.md)
- - [Language Understanding (LUIS)](luis/whats-new.md)
+ - [Language Understanding (LUIS)](LUIS/whats-new.md)
  - [Spraakservices](speech-service/releasenotes.md)
  - [Spraakservices SDK](speech-service/devices-sdk-release-notes.md)
  - [Tekstanalyse](text-analytics/whats-new.md)

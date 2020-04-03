@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 7e00d03a8b3ec7ef56935ff7714fd932bc343cd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02d9ce87d45c5f1c9a123aae18f7d710b268f03e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277438"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582261"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus-uitvoerbinding voor Azure-functies
 
@@ -21,7 +21,7 @@ Zie het [overzicht](functions-bindings-service-bus-output.md)voor informatie ove
 
 ## <a name="example"></a>Voorbeeld
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 In het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) weergegeven die een wachtrijbericht servicebus verzendt:
 
@@ -227,7 +227,7 @@ Java-functies kunnen ook schrijven naar een Service Bus onderwerp. In het volgen
 
 ## <a name="attributes-and-annotations"></a>Kenmerken en annotaties
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Gebruik in [klassebibliotheken van C#](functions-dotnet-class-library.md)het [ServiceBusAttribuut](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
 
@@ -295,7 +295,7 @@ In de volgende tabel worden de bindende configuratie-eigenschappen uitgelegd `Se
 
 In Azure Functions 1.x maakt de runtime de wachtrij als `accessRights` deze `manage`niet bestaat en u bent ingesteld op . In functies versie 2.x en hoger moet de wachtrij of het onderwerp al bestaan; Als u een wachtrij of onderwerp opgeeft dat niet bestaat, mislukt de functie. 
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Gebruik de volgende parametertypen voor de uitvoerbinding:
 
@@ -383,6 +383,7 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
+|prefetchCount prefetchCount prefetchCount prefetch|0|Hiermee wordt het aantal berichten dat de ontvanger van het bericht tegelijk kan aanvragen, ontvangen of ingesteld.|
 |maxAutoRenewDuur|00:05:00|De maximale duur waarbinnen het berichtslot automatisch wordt verlengd.|
 |Autoaanvullen|waar|Of de trigger het bericht onmiddellijk als voltooid moet markeren (automatisch aanvullen) of moet wachten tot de functie is afgesloten om te bellen.|
 |maxConcurrentCalls|16|Het maximum aantal gelijktijdige oproepen naar de callback die de berichtpomp moet initiëren. Standaard verwerkt de runtime Functies meerdere berichten tegelijk. Als u de runtime wilt richten op het verwerken `maxConcurrentCalls` van slechts één wachtrij of onderwerpbericht tegelijk, stelt u deze in op 1. |

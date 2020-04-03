@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: d061a132699e733e78a7d717ee32222b158d73b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f265cdc955becd53ae7ba61ad827b2be69b92907
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927523"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618270"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Verwijderactiviteit in Azure Data Factory
 
 U de activiteit verwijderen in Azure Data Factory gebruiken om bestanden of mappen te verwijderen uit on-premises opslagopslag of cloudopslag. Gebruik deze activiteit om bestanden op te schonen of te archiveren wanneer ze niet meer nodig zijn.
 
 > [!WARNING]
-> Verwijderde bestanden of mappen kunnen niet worden hersteld. Wees voorzichtig wanneer u de activiteit Verwijderen gebruikt voor het verwijderen van bestanden of mappen.
+> Verwijderde bestanden of mappen kunnen niet worden hersteld (tenzij de opslag is ingeschakeld voor soft-delete). Wees voorzichtig wanneer u de activiteit Verwijderen gebruikt voor het verwijderen van bestanden of mappen.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
@@ -40,7 +40,7 @@ Hier volgen enkele aanbevelingen voor het gebruik van de activiteit Verwijderen:
 
 ## <a name="supported-data-stores"></a>Ondersteunde gegevensarchieven
 
--   [Azure Blob-opslag](connector-azure-blob-storage.md)
+-   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 -   [Azure File Storage](connector-azure-file-storage.md)
@@ -327,7 +327,7 @@ U een pijplijn maken om de oude of verlopen bestanden op te schonen door gebruik
 U een bestand verplaatsen met behulp van een kopieeractiviteit om een bestand te kopiëren en vervolgens een verwijderactiviteit om een bestand in een pijplijn te verwijderen.  Wanneer u meerdere bestanden wilt verplaatsen, u de activiteit GetMetadata + Filteractiviteit + Activiteit voor elke activiteit + Kopieeractiviteit + Activiteit verwijderen gebruiken zoals in het volgende voorbeeld:
 
 > [!NOTE]
-> Als u de hele map wilt verplaatsen door een gegevensset te definiëren die alleen een mappad bevat, en vervolgens een kopieeractiviteit en een activiteit Verwijderen wilt gebruiken om te verwijzen naar dezelfde gegevensset die een map vertegenwoordigt, moet u heel voorzichtig zijn. Het is omdat je ervoor moet zorgen dat er geen nieuwe bestanden in de map komen tussen kopieerbewerking en verwijderen.  Als er nieuwe bestanden in de map aankomen op het moment dat uw kopieeractiviteit net de kopieertaak heeft voltooid, maar de activiteit Verwijderen niet is aangestaard, is het mogelijk dat de activiteit Verwijderen dit nieuwe binnenkomende bestand verwijdert dat NIET naar de bestemming nog niet door het verwijderen van de hele map. 
+> Als u de hele map wilt verplaatsen door een gegevensset te definiëren die alleen een mappad bevat, en vervolgens een kopieeractiviteit en een activiteit Verwijderen wilt gebruiken om te verwijzen naar dezelfde gegevensset die een map vertegenwoordigt, moet u heel voorzichtig zijn. Het is omdat je ervoor moet zorgen dat er geen nieuwe bestanden in de map komen tussen kopieerbewerking en verwijderen.  Als er nieuwe bestanden in de map aankomen op het moment dat uw kopieeractiviteit net de kopieertaak heeft voltooid, maar de activiteit Verwijderen niet is aangestaard, is het mogelijk dat de activiteit Verwijderen dit nieuwe binnenkomende bestand verwijdert dat nog niet naar de bestemming is gekopieerd door de hele map te verwijderen. 
 
 #### <a name="sample-pipeline"></a>Voorbeeldpijplijn
 

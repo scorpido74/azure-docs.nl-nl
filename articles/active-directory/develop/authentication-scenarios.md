@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: f8f5ab99086ee38e2f56247ce31f8ac0e7affc81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6191e67f097b5ab471c5b31eff11a0e570d1c990
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128992"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617028"
 ---
 # <a name="authentication-basics"></a>Basisbeginselen van verificatie
 
@@ -32,7 +32,7 @@ Dit artikel behandelt veel van de verificatieconcepten die u moet begrijpen om b
 
 In plaats van apps te maken die elk hun eigen gebruikersnaam en wachtwoordinformatie behouden, wat een hoge administratieve last met zich meebrengt wanneer u gebruikers in meerdere apps moet toevoegen of verwijderen, kunnen apps die verantwoordelijkheid delegeren aan een gecentraliseerde identiteitsprovider.
 
-Azure Active Directory (Azure AD) is een gecentraliseerde identiteitsprovider in de cloud. Als u verificatie en autorisatie delegeren, kunnen scenario's zoals beleid voor voorwaardelijke toegang die vereisen dat een gebruiker zich op een specifieke locatie bevindt, het gebruik van meervoudige verificatie, evenals een gebruiker in staat stellen zich eenmalig aan te melden en vervolgens automatisch worden aangemeld aangemeld bij alle web-apps die dezelfde gecentraliseerde directory delen. Deze mogelijkheid wordt aangeduid als Single Sign On (SSO).
+Azure Active Directory (Azure AD) is een gecentraliseerde identiteitsprovider in de cloud. Als u verificatie en autorisatie delegeren, kunnen scenario's zoals beleid voor voorwaardelijke toegang die vereisen dat een gebruiker zich op een specifieke locatie bevindt, het gebruik van meervoudige verificatie, evenals een gebruiker in staat stellen zich eenmalig aan te melden en vervolgens automatisch worden aangemeld bij alle web-apps die dezelfde gecentraliseerde directory delen. Deze mogelijkheid wordt aangeduid als Single Sign On (SSO).
 
 Een gecentraliseerde identiteitsprovider is nog belangrijker voor apps met gebruikers over de hele wereld die zich niet per se aanmelden vanuit het netwerk van de onderneming. Azure AD verifieert gebruikers en biedt toegangstokens. Een [toegangstoken](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#access-token) is een beveiligingstoken dat wordt uitgegeven door een autorisatieserver. Het bevat informatie over de gebruiker en de app waarvoor het token is bedoeld; die kunnen worden gebruikt om toegang te krijgen tot web-API's en andere beveiligde bronnen.
 
@@ -170,7 +170,7 @@ Dit kenmerk zorgt ervoor dat ASP.NET controleert op de aanwezigheid van een sess
 Gebruikersverificatie gebeurt via de browser. Het OpenID-protocol maakt gebruik van standaard HTTP-protocolberichten.
 * De web-app stuurt een HTTP 302 (redirect) naar de browser om Azure AD te gebruiken.
 * Wanneer de gebruiker is geverifieerd, stuurt Azure AD het token naar de web-app met behulp van een omleiding via de browser.
-* De omleiding wordt geleverd door de web-app in de vorm van een omleiding URI. Deze omleidinguri is geregistreerd met het Azure AD-toepassingsobject. Er kunnen verschillende omleidings-URI's zijn omdat de toepassing op verschillende URL's kan worden geïmplementeerd. Dus de web-app zal ook nodig hebben om de omleiding URi te gebruiken op te geven.
+* De omleiding wordt geleverd door de web-app in de vorm van een omleiding URI. Deze omleidinguri is geregistreerd met het Azure AD-toepassingsobject. Er kunnen verschillende omleidings-URI's zijn omdat de toepassing op verschillende URL's kan worden geïmplementeerd. Dus de web-app zal ook nodig hebben om de omleiding URI te gebruiken opgeven.
 * Azure AD controleert of de omleidinguri die door de web-app wordt verzonden, een van de geregistreerde omleidings-URI's voor de app is.
 
 ## <a name="desktop-and-mobile-app-sign-in-flow-with-azure-ad"></a>Aanmeldingsstroom voor desktop- en mobiele apps met Azure AD

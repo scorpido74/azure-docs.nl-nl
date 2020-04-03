@@ -1,6 +1,6 @@
 ---
 title: Zelfstudieladen gegevens van Azure Data Lake Storage
-description: Gebruik externe tabellen van PolyBase om gegevens uit Azure Data Lake Storage te laden voor SQL-analyses.
+description: Gebruik externe tabellen van PolyBase om gegevens uit Azure Data Lake Storage voor Synapse SQL te laden.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,15 @@ ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b9e28f41b251ea526044bf88dc3e79c0374fe369
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7d599ce121b4c53662b91e5aab94130b0f3f4458
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350372"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583942"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Gegevens laden vanuit Azure Data Lake Storage voor SQL Analytics
+# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Gegevens laden vanuit Azure Data Lake Storage voor Synapse SQL
+
 In deze handleiding wordt beschreven hoe u externe tabellen van PolyBase gebruiken om gegevens uit Azure Data Lake Storage te laden. Hoewel u adhocquery's uitvoeren op gegevens die zijn opgeslagen in Data Lake Storage, raden we u aan de gegevens te importeren voor de beste prestaties. 
 
 > [!NOTE]  

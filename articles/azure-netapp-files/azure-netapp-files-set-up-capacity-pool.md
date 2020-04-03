@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 04/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 8f50b2ad34c705c8d3831d8243f136c41d750dc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b21db3e842898e8ce11b560714888b946373300e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60691079"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616440"
 ---
 # <a name="set-up-a-capacity-pool"></a>Een capaciteitspool instellen
 
@@ -47,7 +47,7 @@ U moet al een NetApp-account hebben gemaakt.
 
    * **Serviceniveau**   
      In dit veld worden de doelprestaties voor de capaciteitspool weergegeven.  
-     Geef het serviceniveau voor de capaciteitsgroep op: [**Premium**](azure-netapp-files-service-levels.md#Premium) of [**Standard**](azure-netapp-files-service-levels.md#Standard).
+     Geef het serviceniveau voor de capaciteitsgroep op: [**Ultra,**](azure-netapp-files-service-levels.md#Ultra) [**Premium**](azure-netapp-files-service-levels.md#Premium)of [**Standard**](azure-netapp-files-service-levels.md#Standard).
 
    * **Grootte**     
      Geef de grootte op van de capaciteitspool die u aanschaft.        

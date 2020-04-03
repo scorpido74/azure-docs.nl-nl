@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7661981f07799592f9fdfcab3fb402336d48b4d4
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 67f863826a2e9eb1bffcb316754ad5c40a2f2bb1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349980"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583140"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics-workloadclassificatie
 
-In dit artikel wordt het proces van workloadclassificatie uitgelegd van het toewijzen van een workloadgroep en het belang voor binnenkomende aanvragen met SQL Analytics in Azure Synapse.
+In dit artikel wordt het werkproces uitgelegd van het toewijzen van een workloadgroep en het belang voor binnenkomende aanvragen met Synapse SQL-groepen in Azure Synapse.
 
 ## <a name="classification"></a>Classificatie
 
@@ -36,7 +36,7 @@ Niet alle verklaringen zijn geclassificeerd omdat ze geen middelen vereisen of b
 
 ## <a name="classification-process"></a>Classificatieproces
 
-Classificatie voor SQL Analytics in Azure Synapse wordt vandaag bereikt door gebruikers toe te wijzen aan een rol waarvoor een overeenkomstige resourceklasse is toegewezen met behulp van [sp_addrolemember.](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) De mogelijkheid om aanvragen te karakteriseren buiten een login op een resourceklasse is beperkt met deze mogelijkheid. Er is nu een rijkere classificatiemethode beschikbaar met de syntaxis VAN DE [KLASSEKLASSE 'WERKBELASTING MAKEN'.](/sql/t-sql/statements/create-workload-classifier-transact-sql)  Met deze syntaxis kunnen SQL Analytics-gebruikers belang toewijzen en hoeveel `workload_group` systeembronnen via de parameter aan een aanvraag worden toegewezen. 
+Classificatie voor Synapse SQL-pool in Azure Synapse wordt vandaag bereikt door gebruikers toe te wijzen aan een rol waarvoor een overeenkomstige resourceklasse is toegewezen met behulp van [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). De mogelijkheid om aanvragen te karakteriseren buiten een login op een resourceklasse is beperkt met deze mogelijkheid. Er is nu een rijkere classificatiemethode beschikbaar met de syntaxis VAN DE [KLASSEKLASSE 'WERKBELASTING MAKEN'.](/sql/t-sql/statements/create-workload-classifier-transact-sql)  Met deze syntaxis kunnen gebruikers van de Synapse SQL-groep belang `workload_group` toewijzen en hoeveel systeembronnen via de parameter aan een aanvraag worden toegewezen. 
 
 > [!NOTE]
 > De classificatie wordt per aanvraag geëvalueerd. Meerdere aanvragen in één sessie kunnen anders worden geclassificeerd.
@@ -87,7 +87,7 @@ JOIN    sys.database_principals AS m ON rm.member_principal_id = m.principal_id
 WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','staticrc30','staticrc40','staticrc50','staticrc60','staticrc70','staticrc80');
 
 --for each row returned run
-sp_droprolemember ‘[Resource Class]’, membername
+sp_droprolemember '[Resource Class]', membername
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

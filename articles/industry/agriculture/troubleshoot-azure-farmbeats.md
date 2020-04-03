@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 504dfb721c7b87d5497c73851d0694601b253d5c
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 2270ee7c850c528bd24fa2e58c2b1684acfc24d6
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529697"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585293"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -19,7 +19,7 @@ In dit artikel vindt u oplossingen voor veelvoorkomende Azure FarmBeats-probleme
 ## <a name="install-issues"></a>Problemen met installeren
 
   > [!NOTE]
-  > Als u de installatie opnieuw start vanwege een fout, moet u de brongroep verwijderen of alle bronnen uit de resourcegroep verwijderen voordat u de installatie opnieuw activeert.
+  > Als u de installatie opnieuw start vanwege een fout, moet u ervoor zorgen dat u de **brongroep** verwijdert of alle bronnen uit de resourcegroep verwijdert voordat u de installatie opnieuw activeert.
 
 ### <a name="invalid-sentinel-credentials"></a>Ongeldige Sentinel-referenties
 
@@ -31,7 +31,7 @@ Verhoog het quotum of verwijder de ongebruikte batchaccounts en start de install
 
 ### <a name="invalid-resource-group-location"></a>Ongeldige locatie resourcegroep
 
-Controleer of de resourcegroep zich op dezelfde locatie bevindt als de regio die tijdens de installatie is opgegeven.
+Zorg ervoor dat de **resourcegroep** zich op dezelfde locatie bevindt als de **regio die** tijdens de installatie is opgegeven.
 
 ### <a name="other-install-issues"></a>Andere installatieproblemen
 
@@ -39,11 +39,11 @@ Neem contact met ons op met de volgende gegevens:
 
 - Uw abonnements-id
 - Naam resourcegroep
-- Voeg het logboekbestand voor de implementatiefout toe met de onderstaande stappen:
+- Volg de onderstaande stappen om het logboekbestand voor de implementatiefout toe te voegen:
 
-    1. Navigeer naar de resourcegroep in de Azure-portal.
-    2. Selecteer Implementaties onder sectie Instellingen aan de linkerkant.
-    3. Voor elke implementatie die 'Mislukt' weergeeft, klik je door naar details en download je de implementatiegegevens. Voeg dit bestand toe aan de e-mail.
+    1. Navigeer naar de **resourcegroep** in de Azure-portal.
+    2. Selecteer **Implementaties** onder sectie **Instellingen** aan de linkerkant.
+    3. Voor elke implementatie die **mislukt**wordt weergegeven, selecteert u door naar de details en downloadt u de implementatiegegevens. Voeg dit bestand toe aan de e-mail.
 
 ## <a name="sensor-telemetry"></a>Sensortelemetrie
 
@@ -51,11 +51,12 @@ Neem contact met ons op met de volgende gegevens:
 
 **Symptoom:** Apparaten of sensoren worden geïmplementeerd en u hebt FarmBeats gekoppeld aan uw apparaatpartner, maar u geen telemetriegegevens op FarmBeats krijgen of bekijken.
 
-**Corrigerende maatregelen**:
+**Corrigerende maatregelen**
 
 1. Ga naar uw FarmBeats Datahub-brongroep.
 2. Selecteer de **gebeurtenishub** (DatafeedEventHubNamespace) en controleer vervolgens op het aantal binnenkomende berichten.
 3. Voer een van de volgende bewerkingen uit:
+
    - Als er *geen binnenkomende berichten*zijn, neemt u contact op met uw apparaatpartner.  
    - Als er *binnenkomende berichten*zijn, neem dan contact met ons op met uw Datahub- en Accelerator-logboeken en vastgelegde telemetrie.
 
@@ -65,9 +66,9 @@ Als u wilt weten hoe u logboeken downloaden, gaat u naar de sectie [Logboeken ha
 
 **Symptoom:** Apparaten of sensoren worden geïmplementeerd en u hebt de apparaten/sensoren op FarmBeats gemaakt en telemetrie ingenomen naar de EventHub, maar u geen telemetriegegevens op FarmBeats krijgen of bekijken.
 
-**Corrigerende maatregelen**:
+**Corrigerende maatregelen**
 
-1. Zorg ervoor dat u de partnerregistratie correct hebt gedaan - u dit controleren door naar uw datahub-branie te gaan, naar /Partner API te navigeren, een get te doen en te controleren of de partner is geregistreerd. Zo niet, volg [dan de stappen hier](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om partner toe te voegen.
+1. Zorg ervoor dat u de partnerregistratie correct hebt gedaan - u dit controleren door naar uw datahub-branie te gaan, naar /Partner API te navigeren, een get te doen en te controleren of de partner is geregistreerd. Als dit niet het zo is, volgt u deze [stappen](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om partner toe te voegen.
 
 2. Controleer of u de juiste telemetrieberichtindeling hebt gebruikt:
 
@@ -96,7 +97,7 @@ Als u wilt weten hoe u logboeken downloaden, gaat u naar de sectie [Logboeken ha
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>De verbindingstekenreeks Azure Event Hubs niet hebben
 
-**Corrigerende maatregelen**:
+**Corrigerende maatregelen**
 
 1. Ga in Datahub Swagger naar de Partner API.
 2. Selecteer **Try** > **it out uitvoeren.** > **Execute**
@@ -113,7 +114,7 @@ Als u wilt weten hoe u logboeken downloaden, gaat u naar de sectie [Logboeken ha
 
 **Symptomen:** Apparaten zijn geïnstalleerd en u hebt FarmBeats gekoppeld aan uw apparaatpartner. De apparaten zijn online en verzenden telemetriegegevens, maar ze worden offline weergegeven.
 
-**Corrigerende actie:** het rapportageinterval is niet geconfigureerd voor dit apparaat. Neem contact op met de fabrikant van het apparaat om het rapportage-interval in te stellen. 
+**Corrigerende maatregelen** Het rapportage-interval is niet geconfigureerd voor dit apparaat. Neem contact op met de fabrikant van het apparaat om het rapportage-interval in te stellen. 
 
 ### <a name="error-deleting-a-device"></a>Fout bij het verwijderen van een apparaat
 
@@ -123,7 +124,7 @@ Terwijl u een apparaat loost, u een van de volgende veelvoorkomende foutscenario
 
 **Betekenis**: Het apparaat is gekoppeld aan meerdere sensoren die in de farm worden geïmplementeerd.
 
-**Corrigerende maatregelen**:  
+**Corrigerende maatregelen**  
 
 1. Verwijder de sensoren die aan het apparaat zijn gekoppeld via Accelerator.  
 2. Als u de sensoren aan een ander apparaat wilt koppelen, vraagt u uw apparaatpartner hetzelfde te doen.  
@@ -140,15 +141,15 @@ Terwijl u een apparaat loost, u een van de volgende veelvoorkomende foutscenario
 
     > [!NOTE]
     > U een apparaat niet verwijderen als er sensoren aan zijn gekoppeld. Zie de sectie **Sensor verwijderen** in [Sensorgegevens ophalen van sensorpartners](get-sensor-data-from-sensor-partner.md)voor meer informatie over het verwijderen van bijbehorende sensoren.
-    > Partners hebben geen toegang tot het verwijderen van een apparaat of sensor. Alleen beheerders hebben toegang tot hetzelfde te doen.
+    > Partners hebben geen toestemming om een apparaat of sensor te verwijderen. Alleen beheerders hebben toestemming om te verwijderen.
 
 ## <a name="issues-with-jobs"></a>Problemen met taken
 
 ### <a name="farmbeats-internal-error"></a>Interne farmbeats-fout
 
-**Bericht:**"Interne fout FarmBeats, zie handleiding voor probleemoplossing voor meer details".
+**Bericht:**'Interne fout FarmBeats, zie handleiding voor probleemoplossing voor meer informatie'.
 
-**Corrigerende maatregelen:** dit probleem kan het gevolg zijn van een tijdelijke fout in de gegevenspijplijn. Maak de taak opnieuw. Als de fout blijft bestaan, neemt u contact met ons op met de foutmelding / logboeken.
+**Corrigerende maatregelen** Dit probleem kan het gevolg zijn van een tijdelijke fout in de gegevenspijplijn. Maak de taak opnieuw. Als de fout blijft bestaan, neemt u contact met ons op met het foutbericht/de logboeken.
 
 ## <a name="accelerator-troubleshooting"></a>Acceleratorprobleemoplossing
 
@@ -158,15 +159,15 @@ Terwijl u een apparaat loost, u een van de volgende veelvoorkomende foutscenario
 
 **Bericht:**'Geen overeenkomende gebruikers gevonden'.
 
-**Corrigerende actie:** controleer de e-id waarvoor u een roltoewijzing probeert toe te voegen. De e-id moet exact overeenkomen met de id, die voor die gebruiker is geregistreerd in de Active Directory. Als de fout blijft bestaan, neemt u contact met ons op met de foutmelding / logboeken.
+**Corrigerende maatregelen** Controleer de e-id waarvoor u een roltoewijzing probeert toe te voegen. De e-id moet exact overeenkomen met de id, die voor die gebruiker is geregistreerd in de Active Directory. Als de fout blijft bestaan, neemt u contact met ons op met het foutbericht/de logboeken.
 
 ### <a name="unable-to-log-in-to-accelerator"></a>Kan niet inloggen op Accelerator
 
 **Bericht:**"Fout: u bent niet bevoegd om de service te bellen. Neem contact op met de beheerder voor autorisatie."
 
-**Corrigerende actie:** Vraag de beheerder om u toestemming te geven voor toegang tot de FarmBeats-implementatie. Dit kan door een post van de RoleAssignment API's te doen of via het toegangsbesturingselement in het deelvenster **Instellingen** in Accelerator.  
+**Corrigerende maatregelen** Vraag de beheerder om u toestemming te geven voor toegang tot de FarmBeats-implementatie. Dit kan door een post van de RoleAssignment API's te doen of via het toegangsbesturingselement in het deelvenster **Instellingen** in Accelerator.  
 
-Als u al toegang hebt gekregen en met deze fout wordt geconfronteerd, probeert u het opnieuw door de pagina te vernieuwen. Als de fout blijft bestaan, neemt u contact met ons op met de foutmelding / logboeken.
+Als u al toegang hebt gekregen en deze fout onder ogen hebt gezien, probeert u het opnieuw door de pagina te vernieuwen. Als de fout blijft bestaan, neemt u contact met ons op met het foutbericht/de logboeken.
 
 ![Project FarmBeats](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
@@ -176,13 +177,11 @@ Als u al toegang hebt gekregen en met deze fout wordt geconfronteerd, probeert u
 
 **Bericht**: "Fout: er is een onbekende fout opgetreden."
 
-**Corrigerende actie**: Deze fout treedt op als u de pagina te lang inactief laat. Vernieuw de pagina.  
-
-Als de fout blijft bestaan, neemt u contact met ons op met de foutmelding / logboeken.
+**Corrigerende maatregelen** Deze fout treedt op als u de pagina te lang inactief laat. Vernieuw de pagina. Als de fout blijft bestaan, neemt u contact met ons op met het foutbericht/de logboeken.
 
 **Probleem:** FarmBeats Accelerator toont niet de nieuwste versie, zelfs niet nadat u FarmBeatsDeployment hebt geüpgraded.
 
-**Corrigerende maatregelen:** Deze fout treedt op als gevolg van persistentie van de servicemedewerker in de browser. Ga als volgt te werk:
+**Corrigerende maatregelen** Deze fout treedt op als gevolg van de persistentie van de servicemedewerker in de browser. Ga als volgt te werk:
 
 1. Sluit alle browsertabbladen met Accelerator open en sluit het browservenster.
 2. Start een nieuw exemplaar van de browser en herlaad de Accelerator URI. Deze actie laadt de nieuwe versie van Accelerator.
@@ -193,30 +192,30 @@ Als de fout blijft bestaan, neemt u contact met ons op met de foutmelding / logb
 
 **Bericht voor het mislukken:**'Volledige verificatie is vereist om toegang te krijgen tot deze bron'.
 
-**Corrigerende maatregelen**:
+**Corrigerende maatregelen**: Doe een van de volgende handelingen:
 
-Voer een van de volgende handelingen uit:
+- Werk FarmBeats bij met de juiste gebruikersnaam/wachtwoord met de onderstaande stappen en probeer de taak opnieuw.
 
-- Update FarmBeats met de juiste gebruikersnaam / wachtwoord met behulp van de onderstaande stappen en probeer de taak opnieuw.
+  **Sentinel-gebruikersnaam bijwerken**
 
-    *Sentinel-gebruikersnaam bijwerken*
     1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
     2. Zoek **in het** vak Zoeken naar de brongroep FarmBeats Datahub.
-    3. Selecteer Opslagaccountopslag***** -> containers -> batch-prep-bestanden -> to_vm -> config.ini
-    4. Klik op Bewerken
+    3. Selecteer opslagaccountopslag***** >**batch-prep-bestanden** > van **containers** > **to_vm** > **config.ini**
+    4. Selecteer **Bewerken**
     5. De gebruikersnaam bijwerken in de sectie sentinel_account
 
-    *Sentinel-wachtwoord bijwerken*
+  **Sentinel-wachtwoord bijwerken**
+
     1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
     2. Zoek **in het** vak Zoeken naar de brongroep FarmBeats Datahub.
     3. Selecteer keyvault-*****
     4. Selecteer Toegangsbeleid onder Instellingen
-    5. Klik op 'Toegangsbeleid toevoegen'
-    6. Gebruik 'Geheim beheer' voor configureren vanuit sjabloon en voeg uzelf toe aan Principal
-    7. Klik op Toevoegen en klik vervolgens op Opslaan op de pagina Toegangsbeleid
-    8. Klik op Geheimen onder Instellingen
-    9. Klik op Sentinel-wachtwoord
-    10. Een nieuwe versie van de waarde maken en inschakelen
+    5. **Access-beleid toevoegen selecteren**
+    6. Gebruik **Geheim beheer** voor configureren vanuit sjabloon en voeg uzelf toe aan Principal
+    7. Selecteer **Toevoegen**en selecteer **Opslaan** op de pagina **Toegangsbeleid**
+    8. Geheimen **selecteren** onder **Instellingen**
+    9. **Sentinel-wachtwoord selecteren**
+    10. Maak een nieuwe versie van de waarde en schakel deze in.
 
 - Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak succesvol is.
 
@@ -228,7 +227,7 @@ Voer een van de volgende handelingen uit:
 
 1. Open [Sentinel](https://scihub.copernicus.eu/dhus/) in uw browser om te zien of de website toegankelijk is.
 2. Als de website niet toegankelijk is, controleert u of een firewall, bedrijfsnetwerk of andere blokkeringssoftware de toegang tot de website verhindert en neemt u de nodige stappen om de Sentinel-URL toe te staan. 
-3. Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak succesvol is.  
+3. Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak is geslaagd.  
 
 ### <a name="sentinel-server-down-for-maintenance"></a>Sentinel-server: omlaag voor onderhoud
 
@@ -242,7 +241,7 @@ Dit probleem kan optreden als er onderhoudswerkzaamheden worden uitgevoerd op de
 
    Ga voor informatie over geplande of ongeplande Sentinel-onderhoudsactiviteiten naar de [Copernicus Open Access Hub-nieuwssite.](https://scihub.copernicus.eu/news/)  
 
-2. Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak succesvol is.
+2. Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak is geslaagd.
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: Maximaal aantal verbindingen bereikt
 
@@ -265,14 +264,15 @@ Dit probleem kan optreden als er onderhoudswerkzaamheden worden uitgevoerd op de
 
    Ga voor informatie over geplande of ongeplande Sentinel-onderhoudsactiviteiten naar de [Copernicus Open Access Hub-nieuwssite.](https://scihub.copernicus.eu/news/)  
 
-2. Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak succesvol is.
+2. Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak is geslaagd.
 
 ### <a name="soil-moisture-map-has-white-areas"></a>Bodemvocht kaart heeft witte gebieden
 
-**Probleem**: De bodemvochtkaart is gegenereerd, maar de kaart heeft meestal witte gebieden.
+**Probleem**: De **bodemvochtkaart** is gegenereerd, maar de kaart heeft meestal witte gebieden.
 
 **Corrigerende maatregelen**: Dit probleem kan optreden als de satellietindexen die zijn gegenereerd voor de tijd waarvoor de kaart is aangevraagd NDVI-waarden hebben die minder dan 0,3 zijn. Ga voor meer informatie naar [de Technische Gids van Sentinel.](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm)
-1. Voer de taak opnieuw uit voor een ander datumbereik en controleer of de NDVI-waarden in de satellietindexen meer dan 0,3 zijn
+
+1. Voer de taak opnieuw uit voor een ander datumbereik en controleer of de NDVI-waarden in de satellietindexen meer dan 0,3 bedragen.
 
 ## <a name="collect-logs-manually"></a>Logboeken handmatig verzamelen
 
