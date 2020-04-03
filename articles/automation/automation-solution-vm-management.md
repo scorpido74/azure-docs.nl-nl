@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: cef3176c99cd57ae229b602feb3c825081fcfe3e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 906c7728365cc902549bd46c57972e1c90af979c
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548375"
+ms.locfileid: "80607478"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Oplossing voor VM's buiten bedrijfsuren starten/stoppen in Azure Automation
 
@@ -112,9 +112,9 @@ Alle bovenliggende runbooks bevatten de parameter _WhatIf._ Wanneer ingesteld op
 |AutoStop_CreateAlert_Child | VMObject <br> Waarschuwingsactie <br> WebHookURI (WebHookURI) | Gebeld vanuit het ouderloopboek. Met dit runbook worden waarschuwingen per resource voor het AutoStop-scenario aangenomen.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: Waar of Onwaar  | Hiermee worden Azure-waarschuwingsregels voor VM's gemaakt of bijgewerkt in de beoogde abonnements- of brongroepen. <br> VMList: Door komma's gescheiden lijst met VM's. Bijvoorbeeld _vm1, vm2, vm3_.<br> *WhatIf* valideert de runbook-logica zonder uit te voeren.|
 |AutoStop_Disable | geen | Hiermee schakelt u Waarschuwingen voor Automatisch stoppen en standaardplanning uit.|
-|AutoStop_VM_Child | WebHookData | Gebeld vanuit het ouderloopboek. Waarschuwingsregels roepen dit runbook op om de klassieke VM te stoppen.|
+|AutoStop_VM_Child | WebHookData | Gebeld vanuit het ouderloopboek. Waarschuwingsregels roepen dit runbook op om de klassieke vm te stoppen.|
 |AutoStop_VM_Child_ARM | WebHookData |Gebeld vanuit het ouderloopboek. Waarschuwingsregels roepen dit runbook op om de VM te stoppen.  |
-|ScheduledStartStop_Base_Classic | CloudServiceName<br> Actie: Starten of stoppen<br> VMList  | Dit runbook wordt gebruikt om actiestart of -stop uit te voeren in de klassieke VM-groep van Cloud Services.<br> VMList: Door komma's gescheiden lijst met VM's. Bijvoorbeeld _vm1, vm2, vm3_. |
+|ScheduledStartStop_Base_Classic | CloudServiceName<br> Actie: Starten of stoppen<br> VMList  | Deze runbook wordt gebruikt om actiestart of -stop uit te voeren in de klassieke VM-groep van Cloud Services.<br> VMList: Door komma's gescheiden lijst met VM's. Bijvoorbeeld _vm1, vm2, vm3_. |
 |ScheduledStartStop_Child | VMName <br> Actie: Starten of stoppen <br> ResourceGroupName | Gebeld vanuit het ouderloopboek. Hiermee wordt een start- of stopactie uitgevoerd voor de geplande stop.|
 |ScheduledStartStop_Child_Classic | VMName<br> Actie: Starten of stoppen<br> ResourceGroupName | Gebeld vanuit het ouderloopboek. Hiermee voert u een start- of stopactie uit voor de geplande stop voor klassieke VM's. |
 |ScheduledStartStop_Parent | Actie: Starten of stoppen <br>VMList <br> WhatIf: Waar of Onwaar | Deze instelling is van invloed op alle VM's in het abonnement. Bewerk de **External_Start_ResourceGroupNames** en **External_Stop_ResourceGroupNames** alleen uit te voeren op deze gerichte resourcegroepen. U ook specifieke VM's uitsluiten door de **External_ExcludeVMNames** variabele bij te werken.<br> VMList: Door komma's gescheiden lijst met VM's. Bijvoorbeeld _vm1, vm2, vm3_.<br> _WhatIf_ valideert de runbook-logica zonder uit te voeren.|
@@ -140,8 +140,8 @@ In de volgende tabel worden de variabelen weergegeven die zijn gemaakt in uw aut
 |External_Stop_ResourceGroupNames | Hiermee geeft u een of meer resourcegroepen op, waardoor waarden worden gescheiden met behulp van een komma die is getarget voor stopacties.|
 |External_WaitTimeForVMRetrySeconds |De wachttijd in seconden voor de acties die moeten worden uitgevoerd op de VM's voor de gesequenced start/stop-runbook.<br> De standaardwaarde bedraagt 2100 seconden en ondersteunt configureren tot een maximale waarde van 10800 of drie uur.|
 |Internal_AutomationAccountName | Hiermee geeft u de naam op van het automatiseringsaccount.|
-|Internal_AutoSnooze_ARM_WebhookURI | Hiermee geeft u Webhook URI op die is ingeschakeld voor het AutoStop-scenario voor klassieke VM's.|
-|Internal_AutoSnooze_WebhookUri | Hiermee geeft u Webhook URI op die is opgeroepen voor het AutoStop-scenario.|
+|Internal_AutoSnooze_ARM_WebhookURI | Hiermee geeft u Webhook URI op die is ingeschakeld voor het AutoStop-scenario voor VM's.|
+|Internal_AutoSnooze_WebhookUri | Hiermee geeft u Webhook URI op die is ingeschakeld voor het AutoStop-scenario voor klassieke VM's.|
 |Internal_AzureSubscriptionId | Hiermee geeft u de Azure-abonnements-id op.|
 |Internal_ResourceGroupName | Hiermee geeft u de naam van de groep automatiseringsaccountbron op.|
 

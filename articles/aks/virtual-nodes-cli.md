@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van de Azure CLI om een AKS-cluste
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 31e8b5aceb356ca1415419650a9df3070462bde0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05e32b6b0017e945044bc7593d4d6dbc543a5b64
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475524"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616469"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren om virtuele knooppunten te gebruiken met de Azure CLI
 
@@ -19,7 +19,7 @@ In dit artikel ziet u hoe u de virtuele netwerkbronnen en het AKS-cluster maken 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Virtuele knooppunten maken netwerkcommunicatie mogelijk tussen pods die worden uitgevoerd in ACI en het AKS-cluster. Om deze communicatie te bieden, wordt een virtueel netwerksubnet gemaakt en worden gedelegeerde machtigingen toegewezen. Virtuele knooppunten werken alleen met AKS-clusters die zijn gemaakt met behulp van *geavanceerde* netwerken. Standaard worden AKS-clusters gemaakt met *basisnetwerken.* In dit artikel ziet u hoe u een virtueel netwerk en subnetten maakt en vervolgens een AKS-cluster implementeert dat geavanceerde netwerken gebruikt.
+Virtuele knooppunten maken netwerkcommunicatie mogelijk tussen pods die worden uitgevoerd in Azure Container Instances (ACI) en het AKS-cluster. Om deze communicatie te bieden, wordt een virtueel netwerksubnet gemaakt en worden gedelegeerde machtigingen toegewezen. Virtuele knooppunten werken alleen met AKS-clusters die zijn gemaakt met behulp van *geavanceerde* netwerken. Standaard worden AKS-clusters gemaakt met *basisnetwerken.* In dit artikel ziet u hoe u een virtueel netwerk en subnetten maakt en vervolgens een AKS-cluster implementeert dat geavanceerde netwerken gebruikt.
 
 Als u ACI nog niet eerder hebt gebruikt, registreert u de serviceprovider bij uw abonnement. U de status van de ACI-providerregistratie controleren met de [opdracht lijst met AZ-provider,][az-provider-list] zoals in het volgende voorbeeld wordt weergegeven:
 
@@ -30,9 +30,9 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 De *Microsoft.ContainerInstance-provider* moet rapporteren als *Geregistreerd,* zoals weergegeven in de volgende voorbeelduitvoer:
 
 ```output
-Namespace                    RegistrationState
----------------------------  -------------------
-Microsoft.ContainerInstance  Registered
+Namespace                    RegistrationState    RegistrationPolicy
+---------------------------  -------------------  --------------------
+Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
 Als de aanbieder als *NotRegistered*aangeeft, registreert u de aanbieder via het [az-providerregister][az-provider-register] zoals aangegeven in het volgende voorbeeld:
@@ -155,7 +155,7 @@ U implementeert een AKS-cluster in het AKS-subnet dat in een vorige stap is gema
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-Gebruik de opdracht [az aks create][az-aks-create] om een AKS-cluster te maken. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluster* gemaakt met één knooppunt. Vervang `<subnetId>` door de ID verkregen in `<appId>` `<password>` de vorige stap, en vervolgens en met de 
+Gebruik de opdracht [az aks create][az-aks-create] om een AKS-cluster te maken. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluster* gemaakt met één knooppunt. Vervang `<subnetId>` de ID die in de `<appId>` vorige `<password>` stap is verkregen en vervolgens en met de waarden die in de vorige sectie zijn verzameld.
 
 ```azurecli-interactive
 az aks create \
@@ -302,7 +302,7 @@ Als u geen virtuele knooppunten meer wilt gebruiken, u deze uitschakelen met de 
 
 Ga indien nodig [https://shell.azure.com](https://shell.azure.com) naar Azure Cloud Shell in uw browser.
 
-Verwijder eerst de helloworld-pod die op het virtuele knooppunt wordt uitgevoerd:
+Verwijder eerst `aci-helloworld` de pod die op het virtuele knooppunt wordt uitgevoerd:
 
 ```console
 kubectl delete -f virtual-node.yaml

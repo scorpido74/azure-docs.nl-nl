@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 94be0ec16aedc317f1be41998356bc52b66f7e86
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75441952"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619199"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Snelstart: een console-app bouwen met de API van Azure Cosmos DB voor MongoDB en Golang SDK
 
@@ -93,7 +93,7 @@ De volgende codefragmenten zijn allemaal afkomstig uit het bestand main.go.
 
 ### <a name="connecting-the-go-app-to-cosmos-db"></a>De Go-app verbinden met Cosmos DB
 
-De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor verbindingen waarop SSL is ingeschakeld. Als u verbinding wilt maken, moet u de functie **DialServer** definiëren in [mgo. DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) en gebruikmaken van de functie [tls.*Dial*](https://golang.org/pkg/crypto/tls#Dial) om de verbinding tot stand te brengen.
+De API van Azure Cosmos DB voor MongoDB ondersteunt de tls-verbinding. Als u verbinding wilt maken, moet u de functie **DialServer** definiëren in [mgo. DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) en gebruikmaken van de functie [tls.*Dial*](https://golang.org/pkg/crypto/tls#Dial) om de verbinding tot stand te brengen.
 
 Met het volgende Golang-codefragment verbindt u de Go-app met de API van Azure Cosmos DB voor MongoDB. De klasse *DialInfo* bevat opties voor het starten van een sessie.
 
@@ -129,7 +129,7 @@ defer session.Close()
 session.SetSafe(&mgo.Safe{})
 ```
 
-De methode **mgo.Dial()** wordt gebruikt als er geen SSL-verbinding is. Voor een SSL-verbinding is de methode **mgo.DialWithInfo()** vereist.
+De **mgo. Dial()** methode wordt gebruikt wanneer er geen TLS-verbinding. Voor een TLS-verbinding, de **mgo. DialWithInfo()** methode is vereist.
 
 Er wordt een exemplaar van het object **DialWIthInfo{}** gebruikt om het sessieobject te maken. Zodra de sessie is gestart, kunt u de verzameling openen met het volgende codefragment:
 

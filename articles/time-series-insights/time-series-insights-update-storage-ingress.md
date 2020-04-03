@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8987cbe6860422ff92119a9f3b13a0a365e6d1a4
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246185"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618325"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Gegevensopslag en -ingress in azure time series insights preview
 
@@ -39,7 +39,7 @@ Belangrijke configuratie, opmaak en aanbevolen procedures worden hieronder samen
 
 Azure Time Series Insights Preview ondersteunt de volgende gebeurtenisbronnen:
 
-- [Azure IoT-hub](../iot-hub/about-iot-hub.md)
+- [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
 Azure Time Series Insights Preview ondersteunt maximaal twee gebeurtenisbronnen per exemplaar.
@@ -91,7 +91,7 @@ In het algemeen worden invallende percentages beschouwd als de factor van het aa
 
 *  **Aantal apparaten** × **Frequentie van gebeurtenis** × Grootte van elke **gebeurtenis**.
 
-Standaard kan time series Insights preview binnenkomende gegevens opnemen met een snelheid van **maximaal 1 megabyte per seconde (MBps) per Time Series Insights-omgeving.**
+Standaard kan time series Insights preview binnenkomende gegevens opnemen met een snelheid van **maximaal 1 megabyte per seconde (MBps) per Time Series Insights-omgeving.** Er zijn extra beperkingen [per hubpartitie.](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits)
 
 > [!TIP] 
 > * Ondersteuning voor het innemen van omgevingen tot 16 MBps kan op aanvraag worden geboden.
@@ -99,7 +99,7 @@ Standaard kan time series Insights preview binnenkomende gegevens opnemen met ee
  
 * **Voorbeeld 1:**
 
-    Contoso Shipping heeft 100.000 apparaten die een gebeurtenis drie keer per minuut uitzenden. De grootte van een gebeurtenis is 200 bytes. Ze gebruiken een Event Hub met vier partities als gebeurtenisbron time series Insights.
+    Contoso Shipping heeft 100.000 apparaten die een gebeurtenis drie keer per minuut uitzenden. De grootte van een gebeurtenis is 200 bytes. Ze gebruiken een Iot Hub met vier partities als de Time Series Insights-gebeurtenisbron.
 
     * De opnamesnelheid voor hun Time Series Insights-omgeving zou zijn: **100.000 apparaten * 200 bytes/gebeurtenis * (3/60 event/sec) = 1 MBps**.
     * De opnamesnelheid per partitie zou 0,25 MBps zijn.
@@ -107,11 +107,11 @@ Standaard kan time series Insights preview binnenkomende gegevens opnemen met ee
 
 * **Voorbeeld 2:**
 
-    Contoso Fleet Analytics heeft 60.000 apparaten die elke seconde een evenement uitzenden. Ze gebruiken een IoT Hub 24-partitietelling van 4 als de gebeurtenisbron Time Series Insights. De grootte van een gebeurtenis is 200 bytes.
+    Contoso Fleet Analytics heeft 60.000 apparaten die elke seconde een evenement uitzenden. Ze gebruiken een Event Hub met een partitieaantal van 4 als de gebeurtenisbron Time Series Insights. De grootte van een gebeurtenis is 200 bytes.
 
-    * De milieuopnamesnelheid zou zijn: **20.000 apparaten * 200 bytes/gebeurtenis * 1 gebeurtenis/sec = 4 MBps**.
-    * De per partitiesnelheid zou 1 MBps zijn.
-    * Contoso Fleet Analytics kan via Azure-portal een aanvraag indienen bij Time Series Insights om de opnamesnelheid voor hun omgeving te verhogen.
+    * De milieuopnamesnelheid zou zijn: **60.000 apparaten * 200 bytes/gebeurtenis * 1 gebeurtenis/sec = 12 MBps**.
+    * De per partitie snelheid zou zijn 3 MBps.
+    * De opnamegraad van Contoso Fleet Analytics is over de omgevings- en partitielimieten. Ze kunnen een aanvraag indienen bij Time Series Insights via Azure portal om de opnamesnelheid voor hun omgeving te verhogen en een Event Hub te maken met meer partities die binnen de Preview-limieten moeten vallen.
 
 #### <a name="hub-partitions-and-per-partition-limits"></a>Hubpartities en per partitielimieten
 

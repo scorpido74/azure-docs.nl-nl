@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 4819eaf2a65cf542029cf36f262d0cea5be75f2e
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: e94eef3072b9636c8022a5949b05519c1554cb9e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521951"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585797"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Een Azure-SSIS Integration Runtime samenvoegen met een virtueel netwerk
 
@@ -229,11 +229,12 @@ Als firewalltoestel uitgaand verkeer toestaat, moet u uitgaande poorten toestaan
 -   Poort 443 met bestemming als Azure Cloud-services.
 
     Als u Azure Firewall gebruikt, u de netwerkregel opgeven met AzureCloud-servicetag. Voor firewall van de andere typen u eenvoudig bestemming toestaan als alle voor poort 443 of onder FQDN's toestaan op basis van het type azure-omgeving:
+
     | Azure-omgeving | Eindpunten                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Openbare Azure-peering      | <ul><li><b>Azure-gegevensfabriek (beheer)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.clouddatahub.net</li></ul></li><li><b>Azure Storage (Beheer)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.windows.net</li><li>\*.table.core.windows.net</li></ul></li><li><b>Azure-containerregister (aangepaste installatie)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.io</li></ul></li><li><b>Gebeurtenishub (logboekregistratie)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>Microsoft Logging-service (intern gebruik)</b></li><li style="list-style-type:none"><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
-    | Azure Government  | <ul><li><b>Azure-gegevensfabriek (beheer)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.datamovement.azure.us</li></ul></li><li><b>Azure Storage (Beheer)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*.table.core.usgovcloudapi.net</li></ul></li><li><b>Azure-containerregister (aangepaste installatie)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.us</li></ul></li><li><b>Gebeurtenishub (logboekregistratie)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft Logging-service (intern gebruik)</b></li><li style="list-style-type:none"><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
-    | Azure China 21Vianet     | <ul><li><b>Azure-gegevensfabriek (beheer)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.datamovement.azure.cn</li></ul></li><li><b>Azure Storage (Beheer)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.chinacloudapi.cn</li><li>\*.table.core.chinacloudapi.cn</li></ul></li><li><b>Azure-containerregister (aangepaste installatie)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.cn</li></ul></li><li><b>Gebeurtenishub (logboekregistratie)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft Logging-service (intern gebruik)</b></li><li style="list-style-type:none"><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul>
+    | Openbare Azure-peering      | <ul><li><b>Azure-gegevensfabriek (beheer)</b><ul><li>\*.frontend.clouddatahub.net</li></ul></li><li><b>Azure Storage (Beheer)</b><ul><li>\*.blob.core.windows.net</li><li>\*.table.core.windows.net</li></ul></li><li><b>Azure-containerregister (aangepaste installatie)</b><ul><li>\*.azurecr.io</li></ul></li><li><b>Gebeurtenishub (logboekregistratie)</b><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>Microsoft Logging-service (intern gebruik)</b><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
+    | Azure Government  | <ul><li><b>Azure-gegevensfabriek (beheer)</b><ul><li>\*.frontend.datamovement.azure.us</li></ul></li><li><b>Azure Storage (Beheer)</b><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*.table.core.usgovcloudapi.net</li></ul></li><li><b>Azure-containerregister (aangepaste installatie)</b><ul><li>\*.azurecr.us</li></ul></li><li><b>Gebeurtenishub (logboekregistratie)</b><ul><li>\*.servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft Logging-service (intern gebruik)</b><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
+    | Azure China 21Vianet     | <ul><li><b>Azure-gegevensfabriek (beheer)</b><ul><li>\*.frontend.datamovement.azure.cn</li></ul></li><li><b>Azure Storage (Beheer)</b><ul><li>\*.blob.core.chinacloudapi.cn</li><li>\*.table.core.chinacloudapi.cn</li></ul></li><li><b>Azure-containerregister (aangepaste installatie)</b><ul><li>\*.azurecr.cn</li></ul></li><li><b>Gebeurtenishub (logboekregistratie)</b><ul><li>\*.servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft Logging-service (intern gebruik)</b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
 
     Wat betreft de FQDN's van Azure Storage, Azure Container Registry en Event Hub, u er ook voor kiezen om de volgende serviceeindpunten voor uw virtuele netwerk in te schakelen, zodat netwerkverkeer naar deze eindpunten via azure-backbonenetwerk verloopt in plaats van naar uw firewalltoestel te worden doorgestuurd:
     -  Microsoft.Storage

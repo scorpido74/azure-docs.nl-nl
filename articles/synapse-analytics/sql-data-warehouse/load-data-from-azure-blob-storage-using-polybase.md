@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Gegevens over New York Taxicab laden'
-description: Zelfstudie maakt gebruik van Azure portal en SQL Server Management Studio om New York Taxicab-gegevens te laden vanuit een wereldwijde Azure-blob voor SQL Analytics.
+description: Zelfstudie maakt gebruik van Azure portal en SQL Server Management Studio om New York Taxicab-gegevens te laden vanuit een wereldwijde Azure-blob voor Synapse SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f1614538f6ab735720d090f66fee0e017e96cf72
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e17b5be0f4f3d568bd5ec836659c4444b384b2fa
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346728"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583754"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Zelfstudie: Laad de gegevensset Van New York Taxicab
 
@@ -148,7 +148,7 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Servertype    | Database-engine                            | Deze waarde is verplicht                                       |
     | Servernaam    | De volledig gekwalificeerde servernaam            | De naam moet zoiets als dit: **mynewserver-20180430.database.windows.net**. |
-    | Authentication | SQL Server-verificatie                  | SQL-verificatie is het enige verificatietype dat we in deze zelfstudie hebben geconfigureerd. |
+    | Verificatie | SQL Server-verificatie                  | SQL-verificatie is het enige verificatietype dat we in deze zelfstudie hebben geconfigureerd. |
     | Aanmelden          | Het beheerdersaccount voor de server                   | Dit is het account dat u hebt opgegeven tijdens het maken van de server. |
     | Wachtwoord       | Het wachtwoord voor het beheerdersaccount voor de server | Dit is het wachtwoord dat u hebt opgegeven tijdens het maken van de server. |
 

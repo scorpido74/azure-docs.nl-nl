@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 30991f17970eefe1a140cdd70e1f6b305160349c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 345fc329df1c57cab7dd66c609bf3701fa3a6124
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537326"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619133"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Beveiliging in Azure Cosmos DB - overzicht
 
@@ -48,7 +48,7 @@ Wij raden de volgende checklist van eisen aan waarop databasesystemen te vergeli
 En hoewel het misschien voor de hand liggend lijkt, herinneren recente [grootschalige databaselekken](https://thehackernews.com/2017/01/mongodb-database-security.html) ons aan het eenvoudige maar kritieke belang van de volgende vereisten:
 
 - Gepatchte servers die up-to-date worden gehouden
-- HTTPS-standaard/SSL-versleuteling
+- HTTPS by default/TLS-versleuteling
 - Beheerdersaccounts met sterke wachtwoorden
 
 ## <a name="how-does-azure-cosmos-db-secure-my-database"></a>Hoe beveiligt Azure Cosmos DB mijn database
@@ -76,7 +76,7 @@ Laten we in detail ingaan op elk.
 |HTTPS/SSL/TLS-versleuteling|Alle verbindingen met Azure Cosmos DB ondersteunen HTTPS. Azure Cosmos DB ondersteunt ook TLS 1.2.<br>Het is mogelijk om een minimale TLS-versie server-kant af te dwingen. Neem hiervoor contact [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)op met .|
 |Versleuteling 'at rest'|Alle gegevens die zijn opgeslagen in Azure Cosmos DB worden in rust versleuteld. Meer informatie over [Azure Cosmos DB-versleuteling in rust](./database-encryption-at-rest.md)|
 |Gepatchte servers|Als beheerde database elimineert Azure Cosmos DB de noodzaak om servers, die voor u worden gedaan, automatisch te beheren en te patchen.|
-|Beheerdersaccounts met sterke wachtwoorden|Het is moeilijk te geloven dat we deze vereiste zelfs moeten vermelden, maar in tegenstelling tot sommige van onze concurrenten is het onmogelijk om een administratief account te hebben zonder wachtwoord in Azure Cosmos DB.<br><br> Beveiliging via SSL en HMAC secret based authentication wordt standaard ingebakken.|
+|Beheerdersaccounts met sterke wachtwoorden|Het is moeilijk te geloven dat we deze vereiste zelfs moeten vermelden, maar in tegenstelling tot sommige van onze concurrenten is het onmogelijk om een administratief account te hebben zonder wachtwoord in Azure Cosmos DB.<br><br> Beveiliging via TLS en HMAC secret based authentication wordt standaard ingebakken.|
 |Certificeringen voor beveiliging en gegevensbescherming| Voor de meest recente lijst met certificeringen ziet u de algemene [Azure Compliance-site](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) en het nieuwste [Azure Compliance Document](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) met alle certificeringen (zoeken naar Cosmos). Voor een meer gerichte lees check out de 25 april 2018 post [Azure #CosmosDB: Secure, private, compliant that includes SOCS 1/2 Type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP High, and vele anderen.
 
 In de volgende schermafbeelding ziet u hoe u controlelogboekregistratie en activiteitslogboeken gebruiken om uw account te controleren: ![Activiteitslogboeken voor Azure Cosmos DB](./media/database-security/nosql-database-security-application-logging.png)

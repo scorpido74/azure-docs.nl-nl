@@ -2,17 +2,17 @@
 title: Verbinding maken met een Windows-set voor virtuele machines met Azure Bastion | Microsoft Documenten
 description: In dit artikel leest u hoe u verbinding maken met een Azure-set voor virtuele machines met Azure Bastion.
 services: bastion
-author: cherylmc
+author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: cherylmc
-ms.openlocfilehash: 4f513aaf113ef4bd6e75e5c4b31e0f0252d45f10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: 290a20fcd827841c24983f3bdd54b6db8e154462
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988087"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619344"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Verbinding maken met een virtuele machineschaalset met Azure Bastion
 

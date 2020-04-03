@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7ddef1e78b4f8f62145e10b4cabc4537e28aba2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85a9cad80156dc6ac40e78610c91805d485ff3df
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74969901"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585997"
 ---
 # <a name="content-key-policies"></a>Beleid voor inhoudssleutels
 
@@ -32,7 +32,7 @@ Meestal koppelt u uw contentkey-beleid aan uw [streaminglocator.](streaming-loca
 > [!IMPORTANT]
 > Bekijk de volgende aanbevelingen.
 
-* U moet een beperkt aantal beleidsregels voor uw Media Service-account ontwerpen en deze opnieuw gebruiken voor uw streaminglocators wanneer dezelfde opties nodig zijn. Zie [Quota en beperkingen](limits-quotas-constraints.md)voor meer informatie .
+* U moet een beperkt aantal beleidsregels voor uw Media Service-account ontwerpen en deze opnieuw gebruiken voor uw streaminglocators wanneer dezelfde opties nodig zijn. Zie [Quota en limieten voor](limits-quotas-constraints.md)meer informatie .
 * Contentkey-beleid is updateerbaar. Het kan tot 15 minuten duren voordat de caches voor het leveren van sleutels worden bijgewerkt en het bijgewerkte beleid worden opgehaald. 
 
    Door het beleid bij te werken, overschrijft u uw bestaande CDN-cache, wat problemen met het afspelen kan veroorzaken voor klanten die inhoud in de cache gebruiken.  

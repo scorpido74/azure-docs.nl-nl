@@ -314,10 +314,6 @@
                   maintainContext: true
         - name: Toepassingen uitvoeren met Helm
           href: kubernetes-helm.md
-        - name: Open Service Broker voor Azure gebruiken
-          href: integrate-azure.md
-        - name: Cosmos DB-API voor MongoDB gebruiken met OSBA
-          href: use-cosmosdb-osba-mongo-app.md
         - name: OpenFaaS gebruiken
           href: openfaas.md
         - name: Spark-taken uitvoeren

@@ -11,17 +11,19 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 08df8266cc3ef8ba1b20efcf135e502a9df69e80
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 587b2aa23aa822f44d7763cbfec21eb36055b091
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351492"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583718"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics-gegevensintegratiepartners
-Als u uw datawarehouse-oplossing wilt maken met de SQL Analytics-functie van Azure Synapse, u kiezen uit een breed scala aan toonaangevende hulpprogramma's. In dit artikel worden microsoft-partnerbedrijven belicht met officiële oplossingen voor gegevensintegratie die Azure Synapse ondersteunen.
+
+Als u uw datawarehouse-oplossing wilt maken met de Synapse SQL-poolfunctie van Azure Synapse, u kiezen uit een breed scala aan toonaangevende hulpprogramma's. In dit artikel worden microsoft-partnerbedrijven belicht met officiële oplossingen voor gegevensintegratie die Azure Synapse ondersteunen.
 
 ## <a name="data-integration-partners"></a>Partners voor gegevensintegratie
+
 | Partner | Beschrijving | Link Website/Product |
 | ------- | ----------- | -------------------- |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma is een ETL-oplossing (Extract, Transform en Load) waarmee datateams gegevens uit verschillende datasilo's kunnen integreren, verrijken en streamen naar een Azure Synapse-datawarehouse. |[Productpagina](https://www.alooma.com/) |

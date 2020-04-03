@@ -1,6 +1,6 @@
 ---
 title: Id gebruiken om surrogaatsleutels te maken
-description: Aanbevelingen en voorbeelden voor het gebruik van de eigenschap IDENTITY om surrogaatsleutels te maken op tabellen in SQL Analytics.
+description: Aanbevelingen en voorbeelden voor het gebruik van de eigenschap IDENTITY om surrogaatsleutels te maken op tabellen in synapse SQL-groep.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ab8f4a64f7273f0fa15c20f324e132003d5afe32
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d4a9880ed7ab26d0127026f49c0bc781cfc2a941
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351299"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586336"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>ID gebruiken om surrogaatsleutels te maken in SQL Analytics
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>ID gebruiken om surrogaatsleutels te maken in de Synapse SQL-groep
 
-Aanbevelingen en voorbeelden voor het gebruik van de eigenschap IDENTITY om surrogaatsleutels te maken op tabellen in SQL Analytics.
+Aanbevelingen en voorbeelden voor het gebruik van de eigenschap IDENTITY om surrogaatsleutels te maken op tabellen in synapse SQL-groep.
 
 ## <a name="what-is-a-surrogate-key"></a>Wat is een surrogaatsleutel
 
-Een surrogaatsleutel op een tabel is een kolom met een unieke id voor elke rij. De sleutel wordt niet gegenereerd uit de tabelgegevens. Gegevensmodelers maken graag surrogaatsleutels op hun tabellen wanneer ze SQL Analytics-modellen ontwerpen. U de eigenschap IDENTITY gebruiken om dit doel eenvoudig en effectief te bereiken zonder de belastingsprestaties te beïnvloeden.  
+Een surrogaatsleutel op een tabel is een kolom met een unieke id voor elke rij. De sleutel wordt niet gegenereerd uit de tabelgegevens. Gegevensmodelers maken graag surrogaatsleutels op hun tabellen wanneer ze gegevensmagazijnmodellen ontwerpen. U de eigenschap IDENTITY gebruiken om dit doel eenvoudig en effectief te bereiken zonder de belastingsprestaties te beïnvloeden.  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Een tabel maken met een identiteitskolom
 
-De eigenschap IDENTITY is ontworpen om alle distributies in de SQL Analytics-database uit te schalen zonder dat dit gevolgen heeft voor de laadprestaties. Daarom is de implementatie van IDENTITY gericht op het bereiken van deze doelen.
+De eigenschap IDENTITY is ontworpen om alle distributies in de Synapse SQL-groep uit te schalen zonder dat dit gevolgen heeft voor de laadprestaties. Daarom is de implementatie van IDENTITY gericht op het bereiken van deze doelen.
 
 U een tabel definiëren als de eigenschap IDENTITY wanneer u de tabel voor het eerst maakt met behulp van syntaxis die vergelijkbaar is met de volgende instructie:
 
@@ -50,7 +50,7 @@ Deze rest van deze sectie belicht de nuances van de implementatie om u te helpen
 
 ### <a name="allocation-of-values"></a>Toewijzing van waarden
 
-De eigenschap IDENTITY garandeert niet de volgorde waarin de surrogaatwaarden worden toegewezen, wat het gedrag van SQL Server en Azure SQL Database weerspiegelt. In SQL Analytics is het ontbreken van een garantie echter meer uitgesproken.
+De eigenschap IDENTITY garandeert niet de volgorde waarin de surrogaatwaarden worden toegewezen, wat het gedrag van SQL Server en Azure SQL Database weerspiegelt. In synapse SQL-pool is het ontbreken van een garantie echter meer uitgesproken.
 
 Het volgende voorbeeld is een illustratie:
 
@@ -100,7 +100,7 @@ CREATE TABLE AS SELECT (CTAS) volgt hetzelfde SQL Server-gedrag dat is gedocumen
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Waarden expliciet invoegen in een identiteitskolom
 
-SQL Analytics `SET IDENTITY_INSERT <your table> ON|OFF` ondersteunt syntaxis. U deze syntaxis gebruiken om waarden expliciet in de kolom IDENTITEITS in te voegen.
+Synapse SQL-groep ondersteunt `SET IDENTITY_INSERT <your table> ON|OFF` syntaxis. U deze syntaxis gebruiken om waarden expliciet in de kolom IDENTITEITS in te voegen.
 
 Veel gegevensmodelers gebruiken graag vooraf gedefinieerde negatieve waarden voor bepaalde rijen in hun afmetingen. Een voorbeeld is de rij -1 of 'onbekend lid'.
 
@@ -161,7 +161,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > Het is momenteel niet `CREATE TABLE AS SELECT` mogelijk om gegevens te gebruiken bij het laden van gegevens in een tabel met een identiteitskolom.
 >
 
-Zie [Extraheren, laden en transformeren (ELT) voor SQL Analytics](design-elt-data-loading.md) en [best practices laden](guidance-for-loading-data.md)voor meer informatie over het laden van gegevens.
+Zie [Uitpakken, laden en transformeren (ELT) voor Synapse SQL-pool](design-elt-data-loading.md) en [Best practices laden](guidance-for-loading-data.md)voor meer informatie over het laden van gegevens.
 
 ## <a name="system-views"></a>Systeemweergaven
 
@@ -195,7 +195,7 @@ De eigenschap IDENTITY kan niet worden gebruikt:
 - Wanneer de kolom ook de distributiesleutel is
 - Wanneer de tabel een externe tabel is
 
-De volgende gerelateerde functies worden niet ondersteund in SQL Analytics:
+De volgende gerelateerde functies worden niet ondersteund in de Synapse SQL-groep:
 
 - [IDENTITEIT()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)

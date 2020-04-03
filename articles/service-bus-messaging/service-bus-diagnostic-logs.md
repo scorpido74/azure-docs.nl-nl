@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c8eba538a7015648611e6054ce85b381dcfc9105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760995"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618731"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Diagnostische logboeken inschakelen voor Service Bus
 
@@ -76,10 +76,10 @@ De volgende beheerbewerkingen worden vastgelegd in operationele logboeken:
 
 | Bereik | Bewerking|
 |-------| -------- |
-| Naamruimte | <ul> <li> Naamruimte maken</li> <li> Naamruimte bijwerken </li> <li> Naamruimte verwijderen </li>  </ul> | 
-| Wachtrij | <ul> <li> Wachtrij maken</li> <li> Wachtrij bijwerken</li> <li> Wachtrij verwijderen </li> </ul> | 
-| Onderwerp | <ul> <li> Onderwerp maken </li> <li> Onderwerp bijwerken </li> <li> Onderwerp verwijderen </li> </ul> |
-| Abonnement | <ul> <li> Abonnement maken </li> <li> Abonnement bijwerken </li> <li> Abonnement verwijderen </li> </ul> |
+| Naamruimte | <ul> <li> Naamruimte maken</li> <li> Naamruimte bijwerken </li> <li> Naamruimte verwijderen </li> <li> Beleid voor gedeelde naamruimte bijwerken </li> </ul> | 
+| Wachtrij | <ul> <li> Wachtrij maken</li> <li> Wachtrij bijwerken</li> <li> Wachtrij verwijderen </li> <li> Wachtrij automatisch verwijderen </li> </ul> | 
+| Onderwerp | <ul> <li> Onderwerp maken </li> <li> Onderwerp bijwerken </li> <li> Onderwerp verwijderen </li> <li> Onderwerp automatisch verwijderen </li> </ul> |
+| Abonnement | <ul> <li> Abonnement maken </li> <li> Abonnement bijwerken </li> <li> Abonnement verwijderen </li> <li> Abonnement automatisch verwijderen </li> </ul> |
 
 > [!NOTE]
 > Momenteel *worden Leesbewerkingen* niet bijgehouden in de operationele logboeken.

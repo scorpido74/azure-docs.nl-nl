@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 3/5/2020
 ms.subservice: alerts
-ms.openlocfilehash: 62c1e29b668c3ef58b0e26e2749c55b913279425
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: c036fa3708d718d6199d27989e60b11015a1227e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545675"
+ms.locfileid: "80585860"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Ondersteunde resources voor metrische waarschuwingen in Azure Monitor
 
@@ -86,7 +86,7 @@ Hier volgt de volledige lijst met azure-monitormetrische bronnen die worden onde
 |Microsoft.Web/hostingOmgevingen/multiRolePools | Ja | Nee | [MultirolePools voor app-serviceomgeving](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingOmgevingen/workerPools | Ja | Nee | [Groep werknemers in de app-serviceomgeving](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft.Web/serverfarms | Ja | Nee | [App-serviceplannen](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)|
-|Microsoft.Web/sites | Ja | Nee | [App Services](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites)|
+|Microsoft.Web/sites | Ja | Nee | [App-services](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-excluding-functions) en [-functies](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft.Web/sites/slots | Ja | Nee | [App-servicesleuven](../../azure-monitor/platform/metrics-supported.md#microsoftwebsitesslots)|
 
 ## <a name="payload-schema"></a>Payload-schema

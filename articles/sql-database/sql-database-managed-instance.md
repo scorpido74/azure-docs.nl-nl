@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 01/21/2020
-ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 06242af6cb00e3adebbc80da722898fb8e348e36
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268780"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585360"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Wat wordt azure SQL Database beheerd instantie?
 
@@ -67,7 +67,7 @@ De belangrijkste kenmerken van beheerde instanties worden weergegeven in de volg
 | Portal-ondersteuning | Ja|
 | Ingebouwde integratieservice (SSIS) | Nee - SSIS is een onderdeel van [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Ingebouwde analyseservice (SSAS) | Nee - SSAS is aparte [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
-| Ingebouwde rapportageservice (SSRS) | Nee - gebruik Power BI of SSRS IaaS |
+| Ingebouwde rapportageservice (SSRS) | Nee : gebruik in plaats daarvan [Power BI-paginarapporten](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) of host SSRS op Azure VM. Hoewel Managed Instance ssrs als service niet kan uitvoeren, kan het SSRS 2019-catalogusdatabases hosten voor een externe rapportageserver met SQL Server-verificatie. |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>Aankoopmodel op basis van vCore
@@ -247,7 +247,7 @@ Migratie van een versleutelde database naar een beheerde instantie wordt onderst
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory-integratie
 
-De beheerde optie voor het implementeren van instance ondersteunt traditionele aanmeldingen en aanmeldingen van SQL-servers Database engine die zijn geïntegreerd met Azure Active Directory (AAD). Azure AD-serverprincipals (aanmeldingen)**(openbare preview)** zijn Azure-cloudversie van on-premises databaseaanmeldingen die u gebruikt in uw on-premises omgeving. Met Azure AD-serverprincipals (aanmeldingen) u gebruikers en groepen van uw Azure Active Directory-tenant opgeven als true instance-scoped principals, die in staat zijn om elke bewerking op instantieniveau uit te voeren, inclusief cross-databasequery's binnen dezelfde beheerde Exemplaar.
+De beheerde optie voor het implementeren van instance ondersteunt traditionele aanmeldingen en aanmeldingen van SQL-servers Database engine die zijn geïntegreerd met Azure Active Directory (AAD). Azure AD-serverprincipals (aanmeldingen)**(openbare preview)** zijn Azure-cloudversie van on-premises databaseaanmeldingen die u gebruikt in uw on-premises omgeving. Met Azure AD-serverprincipals (aanmeldingen) u gebruikers en groepen van uw Azure Active Directory-tenant opgeven als true instance-scoped principals, die in staat zijn om elke bewerking op instantieniveau uit te voeren, inclusief cross-databasequery's binnen hetzelfde beheerde exemplaar.
 
 Er wordt een nieuwe syntaxis geïntroduceerd om Azure AD-serverprincipals (aanmeldingen) **te maken, VAN EXTERNE PROVIDER**. Zie <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">AANMELDING MAKEN</a>en raadpleeg de [Azure Active Directory-beheerder inrichten voor uw beheerde instantieartikel](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) voor meer informatie over de syntaxis.
 
@@ -255,7 +255,7 @@ Er wordt een nieuwe syntaxis geïntroduceerd om Azure AD-serverprincipals (aanme
 
 Met de optie beheerde instantieimplementatie u de identiteit van databasegebruikers en andere Microsoft-services centraal beheren met [Azure Active Directory-integratie.](sql-database-aad-authentication.md) Deze mogelijkheid vereenvoudigt het beheer van machtigingen en verbetert de beveiliging. Azure Active Directory ondersteunt [Multi-Factor Authentication](sql-database-ssms-mfa-authentication-configure.md) (MFA) voor betere beveiliging van gegevens en toepassingen, en ondersteunt ook een proces voor eenmalige aanmelding (SSO).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Beheerde instantieverificatie verwijst naar hoe gebruikers hun identiteit bewijzen wanneer ze verbinding maken met de database. SQL Database ondersteunt twee typen verificatie:  
 

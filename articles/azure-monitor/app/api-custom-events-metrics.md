@@ -3,12 +3,12 @@ title: Application Insights API voor aangepaste gebeurtenissen en statistieken |
 description: Voeg een paar regels code in uw apparaat of bureaublad-app, webpagina of service in om het gebruik bij te houden en problemen te diagnosticeren.
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 4275d3ea3a340f0a4083ab929eb7f7872f3311e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06bd8bd0958afd26e1256a010b08c908c59aaf7d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295038"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585869"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens
 
@@ -58,9 +58,9 @@ Ontvang een `TelemetryClient` exemplaar van (behalve in JavaScript op webpagina'
 
 Voor [ASP.NET Core-apps](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) en [Niet HTTP/Worker voor .NET/.NET Core-apps](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) wordt aanbevolen om een exemplaar van de injectiecontainer voor `TelemetryClient` afhankelijkheid te halen, zoals uitgelegd in hun respectievelijke documentatie.
 
-Als u AzureFunctions v2+ of Azure WebJobs v3+ gebruikt, volgt u dit document:https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-3
+Als u AzureFunctions v2+ of Azure WebJobs v3+ gebruikt, volgt u dit document:https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
-*C #*
+*C#*
 
 ```csharp
 private TelemetryClient telemetry = new TelemetryClient();
@@ -89,7 +89,7 @@ TelemetryClient is draadveilig.
 
 Voor ASP.NET- en Java-projecten worden binnenkomende HTTP-aanvragen automatisch vastgelegd. U extra exemplaren van TelemetryClient maken voor andere modules van uw app. U bijvoorbeeld één telemetrieclient-exemplaar in uw middleware-klasse hebben om zakelijke logische gebeurtenissen te rapporteren. U eigenschappen zoals UserId en DeviceId instellen om de machine te identificeren. Deze informatie is gekoppeld aan alle gebeurtenissen die de instantie verzendt.
 
-*C #*
+*C#*
 
 ```csharp
 TelemetryClient.Context.User.Id = "...";
@@ -119,7 +119,7 @@ Stuur bijvoorbeeld in een game-app een evenement wanneer een gebruiker het spel 
 appInsights.trackEvent({name:"WinGame"});
 ```
 
-*C #*
+*C#*
 
 ```csharp
 telemetry.TrackEvent("WinGame");
@@ -153,7 +153,7 @@ Als [de steekproef](../../azure-monitor/app/sampling.md) in werking is, geeft de
 
 ### <a name="examples"></a>Voorbeelden
 
-*C #*
+*C#*
 
 ```csharp
 namespace User.Namespace.Example01
@@ -263,7 +263,7 @@ Eén metrische waarde verzenden:
 appInsights.trackMetric("queueLength", 42.0);
  ```
 
-*C #*
+*C#*
 
 ```csharp
 var sample = new MetricTelemetry();
@@ -305,7 +305,7 @@ Gebruikers- en sessiegegevens worden verzonden als eigenschappen samen met pagin
 appInsights.trackPageView("tab1");
 ```
 
-*C #*
+*C#*
 
 ```csharp
 telemetry.TrackPageView("GameReviewPage");
@@ -398,7 +398,7 @@ Zie [Telemetriecorrelatie in Application Insights](../../azure-monitor/app/corre
 
 Bij het handmatig bijhouden van telemetrie, de eenvoudigste manier om telemetrie correlatie te waarborgen met behulp van dit patroon:
 
-*C #*
+*C#*
 
 ```csharp
 // Establish an operation context and associated telemetry item:
@@ -448,7 +448,7 @@ Uitzonderingen verzenden naar toepassingsinzichten:
 
 De rapporten bevatten de stapelsporen.
 
-*C #*
+*C#*
 
 ```csharp
 try
@@ -543,7 +543,7 @@ In .NET [Log-adapters](../../azure-monitor/app/asp-net-trace-logs.md) gebruiken 
 
 In Java voor [standaardloggers zoals Log4J, Logback](../../azure-monitor/app/java-trace-logs.md) gebruik Application Insights Log4j of Logback Appenders om logs van derden naar de portal te sturen.
 
-*C #*
+*C#*
 
 ```csharp
 telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
@@ -586,7 +586,7 @@ Een voordeel van TrackTrace is dat je relatief lange gegevens in het bericht pla
 
 Daarnaast u een ernstniveau toevoegen aan uw bericht. En, net als andere telemetrie, u eigenschapswaarden toevoegen om u te helpen filteren of zoeken naar verschillende sets van sporen. Bijvoorbeeld:
 
-*C #*
+*C#*
 
 ```csharp
 var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
@@ -615,7 +615,7 @@ Als [de steekproef](../../azure-monitor/app/sampling.md) in werking is, geeft de
 
 Gebruik de oproep TrackDependency om de responstijden en slagingspercentages van oproepen naar een extern stukje code bij te houden. De resultaten worden weergegeven in de afhankelijkheidsdiagrammen in de portal. Het onderstaande codefragment moet worden toegevoegd waar een afhankelijkheidsoproep wordt gedaan.
 
-*C #*
+*C#*
 
 ```csharp
 var success = false;
@@ -706,7 +706,7 @@ dependencies
 
 Normaal gesproken verzendt de SDK gegevens met vaste intervallen (meestal 30 seconden) of wanneer de buffer vol is (meestal 500 items). In sommige gevallen wilt u de buffer echter doorspoelen, bijvoorbeeld als u de SDK gebruikt in een toepassing die wordt afgesloten.
 
-*C #*
+*C#*
 
  ```csharp
 telemetry.Flush();
@@ -812,7 +812,7 @@ appInsights.trackPageView
         );
 ```
 
-*C #*
+*C#*
 
 ```csharp
 // Set up some properties and metrics:
@@ -913,7 +913,7 @@ Merk op dat:
 
 Soms wilt u in kaart brengen hoe lang het duurt om een actie uit te voeren. U wilt bijvoorbeeld weten hoe lang gebruikers er nodig hebben om keuzes in een game te overwegen. Hiervoor u de meetparameter gebruiken.
 
-*C #*
+*C#*
 
 ```csharp
 var stopwatch = System.Diagnostics.Stopwatch.StartNew();
@@ -956,7 +956,7 @@ telemetry.trackEvent("SignalProcessed", properties, metrics);
 
 Als u standaardeigenschapwaarden wilt instellen voor sommige aangepaste gebeurtenissen die u schrijft, u deze instellen in een instantie TelemetryClient. Ze zijn gekoppeld aan elk telemetrie-item dat van die client wordt verzonden.
 
-*C #*
+*C#*
 
 ```csharp
 using Microsoft.ApplicationInsights.DataContracts;
@@ -1022,7 +1022,7 @@ U code schrijven om uw telemetrie te verwerken voordat deze wordt verzonden vanu
 
 Ga als het gaat om *dynamisch te stoppen en* te starten met het verzamelen en verzenden van telemetrie:
 
-*C #*
+*C#*
 
 ```csharp
 using  Microsoft.ApplicationInsights.Extensibility;
@@ -1062,7 +1062,7 @@ Als u deze verzamelingen na de initialisatie wilt uitschakelen, gebruikt u het o
 
 Tijdens het foutopsporing is het handig om uw telemetrie via de pijplijn te laten versnellen, zodat u onmiddellijk resultaten zien. U krijgt ook aanvullende berichten die u helpen eventuele problemen met de telemetrie op te sporen. Schakel het uit in de productie, omdat het uw app kan vertragen.
 
-*C #*
+*C#*
 
 ```csharp
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
@@ -1087,7 +1087,7 @@ applicationInsights.defaultClient.config.maxBatchSize = 0;
 
 ## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>De instrumentatiesleutel instellen voor geselecteerde aangepaste telemetrie
 
-*C #*
+*C#*
 
 ```csharp
 var telemetry = new TelemetryClient();
@@ -1101,7 +1101,7 @@ Om te voorkomen dat telemetrie van ontwikkel-, test- en productieomgevingen word
 
 In plaats van de instrumentatiesleutel uit het configuratiebestand te halen, u deze instellen in uw code. Stel de sleutel in een initialisatiemethode in, zoals global.aspx.cs in een ASP.NET-service:
 
-*C #*
+*C#*
 
 ```csharp
 protected void Application_Start()
@@ -1187,7 +1187,7 @@ Zie [Gegevensbehoud en privacy](../../azure-monitor/app/data-retention-privacy.m
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Windows Server-pakketten](https://github.com/Microsoft/applicationInsights-dotnet-server)
-* [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
+* [Java-SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
@@ -1204,4 +1204,4 @@ Zie [Gegevensbehoud en privacy](../../azure-monitor/app/data-retention-privacy.m
 ## <a name="next-steps"></a><a name="next"></a>Volgende stappen
 
 * [Zoekgebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md)
-* [Probleemoplossing](../../azure-monitor/app/troubleshoot-faq.md)
+* [Problemen oplossen](../../azure-monitor/app/troubleshoot-faq.md)

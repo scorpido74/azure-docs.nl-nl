@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: 8234bb82ba1f4ff9bd7aea9887121d9c703ac4a3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 405d9bc09462f2940567080ec86775baf066d70d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473288"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584573"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuele netwerken ontwerpen met NAT-gatewaybronnen
 
@@ -67,19 +67,18 @@ Het volgende voorbeeld is een fragment van een Azure Resource Manager-sjabloon. 
 - **natgatewayname** - Naam van de NAT-gateway.
 - **locatie** - Azure-gebied waar de bron zich bevindt.
 - **publicipname** - Naam van het uitgaande openbare IP dat is gekoppeld aan de NAT-gateway.
-- **publicipprefixname** - Naam van het uitgaande openbare IP-voorvoegsel dat is gekoppeld aan de NAT-gateway.
 - **vnetname** - Naam van het virtuele netwerk.
 - **subnetnaam** - Naam van het subnet dat is gekoppeld aan de NAT-gateway.
 
 Het totale aantal IP-adressen dat door alle IP-adres- en voorvoegselbronnen wordt verstrekt, mag niet meer bedragen dan 16 IP-adressen in totaal. Een willekeurig aantal IP-adressen tussen 1 en 16 is toegestaan.
 
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="256-281":::
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="81-96":::
 
 Wanneer de NAT-gatewaybron is gemaakt, kan deze worden gebruikt op een of meer subnetten van een virtueel netwerk. Geef op welke subnetten deze NAT-gatewaybron gebruiken. Een NAT-gateway kan niet meer dan één virtueel netwerk omvatten. Het is niet vereist om dezelfde NAT-gateway toe te wijzen aan alle subnetten van een virtueel netwerk. Afzonderlijke subnetten kunnen worden geconfigureerd met verschillende NAT-gatewaybronnen.
 
 Scenario's die geen gebruik maken van beschikbaarheidszones zijn regionaal (geen zone opgegeven). Als u beschikbaarheidszones gebruikt, u een zone opgeven om NAT te isoleren naar een specifieke zone. Zone-redundantie wordt niet ondersteund. [Nat-beschikbaarheidszones controleren](#availability-zones).
 
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="225-255" highlight="239-251":::
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="1-146" highlight="81-96":::
 
 NAT-gateways worden gedefinieerd met een eigenschap op een subnet binnen een virtueel netwerk. Stromen die door virtuele machines op **subnetsubnetnaam** van virtuele **netwerkvnetname** worden gemaakt, gebruiken de NAT-gateway. Alle uitgaande connectiviteit gebruikt de IP-adressen die zijn gekoppeld aan **natgatewaynaam** als bron-IP-adres.
 

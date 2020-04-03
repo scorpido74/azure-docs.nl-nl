@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: da5db7d956b1ba8aa1ac245b77fe0d4cb31909c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5219af0ec343a6e7f87a07e4a7280ac5f4e85cd3
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061452"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619112"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -90,7 +90,7 @@ Mogelijk vindt u de reeks waarden na elke parameter wat cryptisch. Deze paramete
 Nu de SAS is gegenereerd, kopieer t u de retourwaarde en slaat u deze ergens op voor gebruik in een komende stap. Als u uw SAS hebt gegenereerd met een andere methode dan `?` de Azure CLI, moet u de initiaal verwijderen als deze aanwezig is. Dit teken is een URL-scheidingsteken die later in dit onderwerp al in de URL-sjabloon staat waarin de SAS wordt gebruikt.
 
 > [!IMPORTANT]
-> Geef in productie SAS-tokens altijd door met behulp van SSL. SAS-tokens moeten op de server worden gegenereerd en naar de HTML-pagina verzonden om ze opnieuw door te geven aan Azure Blob Storage. U kunt eventueel een serverloze functie gebruiken om SAS-tokens te genereren. Azure Portal bevat functiesjablonen waarmee een SAS kan worden gemaakt met behulp van een JavaScript-functie.
+> Geef in productie altijd SAS-tokens door met TLS. SAS-tokens moeten op de server worden gegenereerd en naar de HTML-pagina verzonden om ze opnieuw door te geven aan Azure Blob Storage. U kunt eventueel een serverloze functie gebruiken om SAS-tokens te genereren. Azure Portal bevat functiesjablonen waarmee een SAS kan worden gemaakt met behulp van een JavaScript-functie.
 
 ## <a name="implement-the-html-page"></a>HTML-pagina implementeren
 

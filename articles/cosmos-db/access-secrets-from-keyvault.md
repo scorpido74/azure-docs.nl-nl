@@ -9,14 +9,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 55e6bbc338c1ac6f9ef935b4a3a05c32f2b5e9f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72755215"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618756"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Cosmos-sleutels beveiligen met Azure Key Vault 
+
+>[!IMPORTANT]
+> De aanbevolen oplossing voor toegang tot Azure Cosmos DB-sleutels is het gebruik van een [door het systeem toegewezen beheerde identiteit.](managed-identity-based-authentication.md) Als uw service geen misbruik kan maken van beheerde identiteiten, gebruikt u de [cert-gebaseerde oplossing.](certificate-based-authentication.md) Als zowel de beheerde identiteitsoplossing als de cert-gebaseerde oplossing niet aan uw behoeften voldoen, u de onderstaande sleutelkluisoplossing gebruiken.
 
 Wanneer u Azure Cosmos DB voor uw toepassingen gebruikt, hebt u toegang tot de database, verzamelingen, documenten met behulp van het eindpunt en de sleutel in het configuratiebestand van de app.  Het is echter niet veilig om sleutels en URL rechtstreeks in de toepassingscode te plaatsen, omdat ze beschikbaar zijn in duidelijke tekstindeling voor alle gebruikers. Zorg ervoor dat het eindpunt en de sleutels wel beschikbaar zijn, maar via een beveiligd mechanisme. Azure Key Vault kan u helpen bij het veilig opslaan en beheren van toepassingsgeheimen.
 
@@ -30,7 +33,7 @@ De volgende stappen zijn vereist om Azure Cosmos DB-toegangssleutels op te slaan
 
 ## <a name="create-a-key-vault"></a>Een sleutelkluis maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).  
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).  
 2. Selecteer **Een bron maken > Beveiliging > Sleutelkluis**.  
 3. Geef in de sectie **Sleutelkluis maken** de volgende gegevens op:  
    * **Naam:** Geef een unieke naam op voor uw Key Vault.  

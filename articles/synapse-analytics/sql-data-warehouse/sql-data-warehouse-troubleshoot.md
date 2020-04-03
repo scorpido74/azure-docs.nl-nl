@@ -11,31 +11,32 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b1b841c7532e975f9a1ad928ffd0559231207fb2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 47ee6f7627602732800949bcb9701045fcbff1a8
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350012"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583164"
 ---
-# <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Problemen met SQL Analytics in Azure Synapse oplossen
+# <a name="troubleshooting-synapse-sql-pool-in-azure-synapse-analytics"></a>Problemen met Synapse SQL-pool oplossen in Azure Synapse Analytics
+
 In dit artikel worden veelvoorkomende probleemoplossingsvragen weergegeven.
 
 ## <a name="connecting"></a>Verbinding maken
 | Probleem                                                        | Oplossing                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Aanmelding mislukt voor gebruiker 'NT AUTHORITY\ANONYMOUS LOGON'. (Microsoft SQL Server, Fout: 18456) | Deze fout treedt op wanneer een AAD-gebruiker die geen gebruiker heeft in de hoofddatabase probeert verbinding te maken met de hoofddatabase.  Als u dit probleem wilt verhelpen, geeft u de SQL-groep op waarmee u verbinding wilt maken op het moment van verbinding of voegt u de gebruiker toe aan de hoofddatabase.  Zie artikel [over het overzicht sonbeveiliging](sql-data-warehouse-overview-manage-security.md) voor meer informatie. |
-| De server-principal 'MijnGebruikersnaam' heeft in de huidige beveiligingscontext geen toegang tot de hoofddatabase. Kan de standaarddatabase van de gebruiker niet openen. Aanmelden mislukt. Aanmelden is mislukt voor gebruiker 'MijnGebruikersnaam'. (Microsoft SQL Server, Fout: 916) | Deze fout treedt op wanneer een AAD-gebruiker die geen gebruiker heeft in de hoofddatabase probeert verbinding te maken met de hoofddatabase.  Als u dit probleem wilt verhelpen, geeft u de SQL-groep op waarmee u verbinding wilt maken op het moment van verbinding of voegt u de gebruiker toe aan de hoofddatabase.  Zie artikel [over het overzicht sonbeveiliging](sql-data-warehouse-overview-manage-security.md) voor meer informatie. |
+| Aanmelding mislukt voor gebruiker 'NT AUTHORITY\ANONYMOUS LOGON'. (Microsoft SQL Server, Fout: 18456) | Deze fout treedt op wanneer een Azure AD-gebruiker verbinding probeert te maken met de hoofddatabase, maar geen gebruiker in master heeft.  Als u dit probleem wilt verhelpen, geeft u de SQL-groep op waarmee u verbinding wilt maken op het moment van verbinding of voegt u de gebruiker toe aan de hoofddatabase.  Zie artikel [over het overzicht sonbeveiliging](sql-data-warehouse-overview-manage-security.md) voor meer informatie. |
+| De server-principal 'MijnGebruikersnaam' heeft in de huidige beveiligingscontext geen toegang tot de hoofddatabase. Kan de standaarddatabase van de gebruiker niet openen. Aanmelden mislukt. Aanmelden is mislukt voor gebruiker 'MijnGebruikersnaam'. (Microsoft SQL Server, Fout: 916) | Deze fout treedt op wanneer een Azure AD-gebruiker verbinding probeert te maken met de hoofddatabase, maar geen gebruiker in master heeft.  Als u dit probleem wilt verhelpen, geeft u de SQL-groep op waarmee u verbinding wilt maken op het moment van verbinding of voegt u de gebruiker toe aan de hoofddatabase.  Zie artikel [over het overzicht sonbeveiliging](sql-data-warehouse-overview-manage-security.md) voor meer informatie. |
 | CTAIP-fout                                                  | Deze fout kan optreden wanneer een aanmelding is gemaakt in de SQL-servermasterdatabase, maar niet in de SQL-database.  Als u deze fout tegenkomt, neemt u het artikel [beveiligingsoverzicht](sql-data-warehouse-overview-manage-security.md) in.  In dit artikel wordt uitgelegd hoe u een aanmelding en gebruiker op master maakt en hoe u vervolgens een gebruiker in de SQL-database maakt. |
 | Geblokkeerd door firewall                                          | SQL-groepen worden beschermd door firewalls om ervoor te zorgen dat alleen bekende IP-adressen toegang hebben tot een database. De firewalls zijn standaard beveiligd, wat betekent dat u expliciet moet inschakelen en IP-adres of bereik van adressen voordat u verbinding maken.  Als u uw firewall wilt configureren voor toegang, voert u de stappen uit in [Serverfirewalltoegang configureren voor uw client-IP](create-data-warehouse-portal.md) in de [inrichtingsinstructies.](create-data-warehouse-portal.md) |
-| Kan geen verbinding maken met gereedschap of stuurprogramma                           | SQL Analytics raadt aan [om SSMS](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15), [SSDT voor Visual Studio](sql-data-warehouse-install-visual-studio.md)of [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) te gebruiken om uw gegevens op te vragen. Zie Drivers for Azure Synapse en Verbinding maken met Azure [Synapse](sql-data-warehouse-connect-overview.md) voor meer informatie over stuurprogramma's en verbinding maken met Azure Synapse.For more information on drivers and connecting to Azure Synapse, see Drivers for Azure [Synapse](sql-data-warehouse-connection-strings.md) and Connect to Azure Synapse articles. |
+| Kan geen verbinding maken met gereedschap of stuurprogramma                           | Synapse SQL pool raadt aan om [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15), [SSDT voor Visual Studio](sql-data-warehouse-install-visual-studio.md)of [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) te gebruiken om uw gegevens op te vragen. Zie Drivers for Azure Synapse en Verbinding maken met Azure [Synapse](sql-data-warehouse-connect-overview.md) voor meer informatie over stuurprogramma's en verbinding maken met Azure Synapse.For more information on drivers and connecting to Azure Synapse, see Drivers for Azure [Synapse](sql-data-warehouse-connection-strings.md) and Connect to Azure Synapse articles. |
 
 ## <a name="tools"></a>Hulpprogramma's
 | Probleem                                                        | Oplossing                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Visual Studio object explorer mist AAD-gebruikers           | Dit is een bekend probleem.  Bekijk de gebruikers in [sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15)als tijdelijke oplossing.  Zie [Verificatie naar Azure Synapse](sql-data-warehouse-authentication.md) voor meer informatie over het gebruik van Azure Active Directory met SQL Analytics. |
+| Visual Studio-objectexplorer mist Azure AD-gebruikers           | Dit is een bekend probleem.  Bekijk de gebruikers in [sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15)als tijdelijke oplossing.  Zie [Verificatie naar Azure Synapse](sql-data-warehouse-authentication.md) voor meer informatie over het gebruik van Azure Active Directory met Synapse SQL-pool. |
 | Handmatig scripten, de wizard scripting gebruiken of verbinding maken via SSMS is traag, reageert niet of produceert geen fouten | Controleer of gebruikers zijn gemaakt in de hoofddatabase. Zorg er bij scriptingopties ook voor dat de engine-editie is ingesteld als "Microsoft Azure SQL Data Warehouse Edition" en het motortype "Microsoft Azure SQL Database". |
-| Scripts genereren mislukt in SSMS                               | Het genereren van een script voor SQL Analytics mislukt als de optie 'Script genereren voor afhankelijke objecten' is ingesteld op 'Waar'. Als tijdelijke oplossing moeten gebruikers handmatig naar **Extra->-opties ->SQL Server Object Explorer -> Script genereren voor afhankelijke opties en instellen op false** |
+| Scripts genereren mislukt in SSMS                               | Het genereren van een script voor Synapse SQL-pool mislukt als de optie 'Script genereren voor afhankelijke objecten' is ingesteld op 'Waar'. Als tijdelijke oplossing moeten gebruikers handmatig naar **Extra->-opties ->SQL Server Object Explorer -> Script genereren voor afhankelijke opties en instellen op false** |
 
 ## <a name="performance"></a>Prestaties
 | Probleem                                                        | Oplossing                                                   |
@@ -44,7 +45,7 @@ In dit artikel worden veelvoorkomende probleemoplossingsvragen weergegeven.
 | TempDB ruimteproblemen | [Monitor](sql-data-warehouse-manage-monitor.md#monitor-tempdb) tempdb-ruimtegebruik.  Veelvoorkomende oorzaken voor het opraken van TempDB ruimte zijn:<br>- Niet genoeg resources toegewezen aan de query waardoor gegevens te morsen naar TempDB.  Zie [Werkbelastingbeheer](resource-classes-for-workload-management.md) <br>- Statistieken ontbreken of verouderd zijn en veroorzaken overmatige gegevensverplaatsing.  Zie [Tabelstatistieken bijhouden](sql-data-warehouse-tables-statistics.md) voor meer informatie over het maken van statistieken<br>- TempDB-ruimte wordt per serviceniveau toegewezen.  [Als u uw SQL-groep opeenschaalt](sql-data-warehouse-manage-compute-overview.md#scaling-compute) naar een hogere DWU-instelling, wordt meer TempDB-ruimte toegewezen.|
 | Slechte queryprestaties en -plannen zijn vaak het gevolg van ontbrekende statistieken | De meest voorkomende oorzaak van slechte prestaties is het ontbreken van statistieken op uw tabellen.  Zie [Tabelstatistieken bijhouden](sql-data-warehouse-tables-statistics.md) voor meer informatie over het maken van statistieken en waarom deze essentieel zijn voor uw prestaties. |
 | Lage gelijktijdigheid / query's in de wachtrij                             | Inzicht [in Workload management](resource-classes-for-workload-management.md) is belangrijk om te begrijpen hoe geheugen toewijzing in evenwicht te brengen met gelijktijdigheid. |
-| Best practices implementeren                              | De beste plek om manieren te leren om de prestaties van query's te verbeteren, is het best [practices-artikel van SQL Analytics.](sql-data-warehouse-best-practices.md) |
+| Best practices implementeren                              | De beste plek om manieren te leren om de queryprestaties te verbeteren, is het best [practices-artikel van Synapse SQL-pool.](sql-data-warehouse-best-practices.md) |
 | Hoe de prestaties te verbeteren met schalen                      | Soms is de oplossing voor het verbeteren van de prestaties is om gewoon meer rekenkracht toe te voegen aan uw query's door [het schalen van uw SQL-pool.](sql-data-warehouse-manage-compute-overview.md) |
 | Slechte queryprestaties als gevolg van slechte indexkwaliteit     | Soms kunnen query's vertragen vanwege [de slechte kolomarchiefindexkwaliteit](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality).  Zie dit artikel voor meer informatie en hoe [u indexen herstellen om de kwaliteit van het segment te verbeteren.](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality) |
 
@@ -71,7 +72,7 @@ In dit artikel worden veelvoorkomende probleemoplossingsvragen weergegeven.
 Voor meer hulp bij het vinden van een oplossing voor uw probleem, hier zijn enkele andere bronnen die u proberen.
 
 * [Blogs](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
-* [Functieaanvragen](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+* [Functieverzoeken](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 * [Video's](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 * [Ondersteuningsticket maken](sql-data-warehouse-get-started-create-support-ticket.md)
 * [MSDN-forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)

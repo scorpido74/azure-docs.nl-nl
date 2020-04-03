@@ -1,6 +1,6 @@
 ---
 title: T-SQL-lussen gebruiken
-description: Tips voor het gebruik van T-SQL-lussen en het vervangen van cursors in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
+description: Tips voor het ontwikkelen van oplossingen met T-SQL-lussen en het vervangen van cursors in Synapse SQL-pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,28 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: afb2160cb9b4e34d3d17db86bac9cd3be79886d0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4cec4801f2a15ebf858f50377c9718fdacac4e29
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351595"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619004"
 ---
-# <a name="using-t-sql-loops-in-sql-data-warehouse"></a>T-SQL-lussen gebruiken in SQL Data Warehouse
-Tips voor het gebruik van T-SQL-lussen en het vervangen van cursors in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
+# <a name="using-t-sql-loops-in-synapse-sql-pool"></a>T-SQL-lussen gebruiken in synapssql-pool
+In dit artikel zijn tips opgenomen voor sql-pooloplossingsontwikkeling met Behulp van T-SQL-lussen en het vervangen van cursors.
 
 ## <a name="purpose-of-while-loops"></a>Doel van WHILE-lussen
 
-SQL Data Warehouse ondersteunt de [WHILE-lus](/sql/t-sql/language-elements/while-transact-sql) voor het herhaaldelijk uitvoeren van instructieblokken. Deze WHILE-lus gaat door zolang de opgegeven voorwaarden waar zijn of totdat de code de lus specifiek beëindigt met het trefwoord BREAK. Lussen zijn handig voor het vervangen van cursors die zijn gedefinieerd in SQL-code. Gelukkig zijn bijna alle cursors die in SQL-code zijn geschreven van de fast forward, alleen-lezen variëteit. Daarom zijn [WHILE] lussen een geweldig alternatief voor het vervangen van cursors.
+Synapse SQL-pool ondersteunt de [WHILE-lus](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) voor het herhaaldelijk uitvoeren van instructieblokken. Deze WHILE-lus gaat door zolang de opgegeven voorwaarden waar zijn of totdat de code de lus specifiek beëindigt met het trefwoord BREAK. 
 
-## <a name="replacing-cursors-in-sql-data-warehouse"></a>Cursors vervangen in SQL Data Warehouse
-Echter, voordat duiken in het hoofd eerst moet je jezelf de volgende vraag stellen: "Kan deze cursor worden herschreven om set-based operaties te gebruiken?." In veel gevallen is het antwoord ja en is het vaak de beste aanpak. Een set-based bewerking presteert vaak sneller dan een iteratieve, rij voor rij aanpak.
+Lussen zijn handig voor het vervangen van cursors die zijn gedefinieerd in SQL-code. Gelukkig zijn bijna alle cursors die in SQL-code zijn geschreven van de fast forward, alleen-lezen variëteit. Dus, terwijl lussen zijn een geweldig alternatief voor het vervangen van cursors.
 
-Fast forward read-only cursors kunnen eenvoudig worden vervangen door een lusconstructie. Het volgende is een eenvoudig voorbeeld. In dit codevoorbeeld worden de statistieken voor elke tabel in de database bijgewerkt. Door over de tabellen in de lus te herhalen, voert elke opdracht in opeenvolging uit.
+## <a name="replacing-cursors-in-synapse-sql-pool"></a>Cursors vervangen in Synapse SQL-groep
+Echter, voordat duiken in het hoofd eerst moet je jezelf de volgende vraag: "Kan deze cursor worden herschreven om set-based operaties te gebruiken?" 
+
+In veel gevallen is het antwoord ja en vaak de beste aanpak. Een set-based bewerking presteert vaak sneller dan een iteratieve, rij voor rij aanpak.
+
+Fast forward read-only cursors kunnen eenvoudig worden vervangen door een lusconstructie. Het volgende voorbeeld is een eenvoudig voorbeeld. In dit codevoorbeeld worden de statistieken voor elke tabel in de database bijgewerkt. Door over de tabellen in de lus te herhalen, voert elke opdracht in opeenvolging uit.
 
 Maak eerst een tijdelijke tabel met een uniek rijnummer dat wordt gebruikt om de afzonderlijke instructies te identificeren:
 

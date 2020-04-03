@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d0b32fb2b52d2dbb126053247cff83f05781ba5e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 44dbc03a41cfde94c344ae331b21d7536778050c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350874"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619104"
 ---
 # <a name="best-practices-for-sql-analytics-in-azure-synapse-analytics-formerly-sql-dw"></a>Aanbevolen procedures voor SQL Analytics in Azure Synapse Analytics (voorheen SQL DW)
 
-Dit artikel is een verzameling van best practices om u te helpen optimale prestaties te bereiken vanuit uw [SQL Analytics-implementatie.](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)  Het doel van dit artikel is om u een aantal fundamentele begeleiding en markeren belangrijke aandachtsgebieden.  Elke sectie laat u kennismaken met een concept en wijst u vervolgens naar meer gedetailleerde artikelen die het concept in meer diepte behandelen. De volgorde van onderwerpen is in de volgorde van belang. 
+Dit artikel is een verzameling van best practices om u te helpen optimale prestaties te bereiken vanuit uw [SQL Analytics-implementatie.](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)  Het doel van dit artikel is om u een aantal fundamentele begeleiding en markeren belangrijke aandachtsgebieden.  Elke sectie laat u kennismaken met een concept en wijst u vervolgens naar meer gedetailleerde artikelen die het concept in meer diepte behandelen. De volgorde van onderwerpen is in de volgorde van belang. 
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Kosten verlagen met onderbreken en schalen
 
@@ -115,7 +115,7 @@ Wanneer rijen naar columnstore-tabellen worden geschreven onder geheugendruk, ka
 
 Omdat kolomarchiefsegmenten van hoge kwaliteit belangrijk zijn, is het een goed idee om gebruikers-id's te gebruiken die zich in de middelgrote of grote resourceklasse bevinden voor het laden van gegevens. Als u lagere [gegevensmagazijnen gebruikt,](what-is-a-data-warehouse-unit-dwu-cdwu.md) wilt u een grotere resourceklasse toewijzen aan uw beladingsgebruiker.
 
-Aangezien kolomarchieftabellen over het algemeen geen gegevens in een gecomprimeerd kolomarchiefsegment pushen totdat er meer dan 1 miljoen rijen per tabel zijn en elke SQL Analytics-tabel is verdeeld in 60 tabellen, komen kolomarchieftabellen als vuistregel niet ten goede aan een query, tenzij de tabel heeft meer dan 60 miljoen rijen.  Voor tabellen met minder dan 60 miljoen rijen is het meestal niet nodig om een columnstore-index te hebben.  Het is misschien ook niet verkeerd.  
+Aangezien kolomarchieftabellen over het algemeen geen gegevens in een gecomprimeerd kolomarchiefsegment duwen totdat er meer dan 1 miljoen rijen per tabel zijn en elke SQL Analytics-tabel is verdeeld in 60 tabellen, komen kolomarchieftabellen als vuistregel niet ten goede aan een query, tenzij de tabel meer dan 60 miljoen rijen heeft.  Voor tabellen met minder dan 60 miljoen rijen is het meestal niet nodig om een columnstore-index te hebben.  Het is misschien ook niet verkeerd.  
 
 Als u uw gegevens partitioneert, houd er dan ook rekening mee dat elke partitie 1 miljoen rijen nodig heeft om voordeel te halen uit een geclusterde columnstore-index.  Als een tabel 100 partities heeft, heeft deze ten minste 6 miljard rijen nodig om voordeel te halen uit een geclusterde columnstore (60 distributies * 100 partities * 1 miljoen rijen).  
 

@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: 1acbcdf1aeed383591626c083f3335d9d7cf61c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0fb6bd68026684599d94270906f1792e084ec5f6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79382143"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80624477"
 ---
 |Name |Beschrijving |Effect(en) |Versie |GitHub |
 |---|---|---|---|---|
@@ -23,4 +23,4 @@ ms.locfileid: "79382143"
 |[Alleen goedgekeurde VM-extensies moeten worden geïnstalleerd](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc0e996f8-39cf-4af9-9f45-83fbde810432) |Dit beleid regelt de virtuele machine-extensies die niet zijn goedgekeurd. |Controleren, Weigeren, Uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VirtualMachines_ApprovedExtensions_Audit.json)
 |[Automatische patchen van os-afbeeldingen vereisen op virtuele machineschaalsets](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F465f0161-0087-490a-9ad9-ad6217f4f43a) |Dit beleid dwingt automatische het ontlapen van het OS op virtuele machineschaalsets in staat te stellen virtuele machines altijd veilig te houden door elke maand veilig de nieuwste beveiligingspatches toe te passen. |Weigeren |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSSOSUpgradeHealthCheck_Deny.json)
 |[Niet-bevestigde schijven moeten worden versleuteld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fb2) |Dit beleid controleert elke niet-gekoppelde schijf zonder versleuteling ingeschakeld. |Audit, Uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/UnattachedDisk_Encryption_Audit.json)
-|[Virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-bronnen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |Gebruik nieuwe Azure Resource Manager voor uw virtuele machines om beveiligingsverbeteringen te bieden, zoals: strengere toegangscontrole (RBAC), betere controle, op Azure Resource Manager gebaseerde implementatie en governance, toegang tot beheerde identiteiten, toegang tot sleutelkluis voor geheimen, Azure AD-gebaseerde verificatie en ondersteuning voor tags en resourcegroepen voor eenvoudiger beveiligingsbeheer |Controleren, Weigeren, Uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)
+|[Virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-bronnen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |Gebruik nieuwe Azure Resource Manager voor uw virtuele machines om beveiligingsverbeteringen te bieden, zoals: strengere toegangscontrole (RBAC), betere controle, op Azure Resource Manager gebaseerde implementatie en beheer, toegang tot beheerde identiteiten, toegang tot sleutelkluis voor geheimen, Azure AD-gebaseerde verificatie en ondersteuning voor tags en resourcegroepen voor eenvoudiger beveiligingsbeheer |Controleren, Weigeren, Uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)

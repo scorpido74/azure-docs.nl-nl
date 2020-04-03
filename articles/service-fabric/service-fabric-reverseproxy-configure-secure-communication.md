@@ -5,12 +5,12 @@ author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282248"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617113"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Verbinding maken met een beveiligde service met de omgekeerde proxy
 
@@ -77,7 +77,7 @@ Geef het **ApplicationCertificateValidationPolicy** op met waarde **Geen** in de
 
    Als u de lijst met algemene naam en duimafdrukken van de uitgever wilt opgeven, voegt u een sectie [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) toe onder **fabricSettings**, zoals hieronder wordt weergegeven. Meerdere gemeenschappelijke naam- en emittentduimafdrukparen kunnen worden toegevoegd in de **parametersarray.** 
 
-   Als de reverse proxy van het eindpunt verbinding maakt met een certificaat met de algemene naam en de duimafdruk van de uitgever komt overeen met een van de waarden die hier zijn opgegeven, wordt ssl-kanaal ingesteld. 
+   Als de reverse proxy van het eindpunt verbinding maakt met een certificaat met de algemene naam en de duimafdruk van de uitgever komt overeen met een van de waarden die hier zijn opgegeven, wordt een TLS-kanaal ingesteld.
    Als de certificaatgegevens niet overeenkomen, mislukt de reverse proxy het verzoek van de client met een statuscode van 502 (Bad Gateway). De HTTP-statusregel bevat ook de zinsnede 'Ongeldig SSL-certificaat'. 
 
    ```json
@@ -143,7 +143,7 @@ Geef het **ApplicationCertificateValidationPolicy** op met waarde **Geen** in de
    }
    ```
 
-   Als de duimafdruk van het servercertificaat in deze config-vermelding wordt vermeld, volgt de omgekeerde proxy de SSL-verbinding op. Anders wordt de verbinding beëindigd en wordt het verzoek van de client met een 502 (Bad Gateway) mislukt. De HTTP-statusregel bevat ook de zinsnede 'Ongeldig SSL-certificaat'.
+   Als de duimafdruk van het servercertificaat in deze config-vermelding wordt vermeld, volgt de reverse proxy de TLS-verbinding op. Anders wordt de verbinding beëindigd en wordt het verzoek van de client met een 502 (Bad Gateway) mislukt. De HTTP-statusregel bevat ook de zinsnede 'Ongeldig SSL-certificaat'.
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>Logica voor de selectie van eindpunten wanneer services zowel beveiligde als onbeveiligde eindpunten blootleggen
 Servicefabric ondersteunt het configureren van meerdere eindpunten voor een service. Zie [Resources opgeven in een servicemanifest voor](service-fabric-service-manifest-resources.md)meer informatie .
@@ -173,12 +173,12 @@ Reverse proxy selecteert een van de eindpunten om de aanvraag door te sturen op 
 > Wanneer een **SecureOnlyMode**client een **ListenerName** heeft opgegeven die overeenkomt met een HTTP-eindpunt(onbeveiligd) kanaal, mislukt de omgekeerde proxy de aanvraag met een HTTP-statuscode (Niet gevonden) 404 (Niet gevonden).
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>Clientcertificaatverificatie instellen via de omgekeerde proxy
-SSL-beëindiging gebeurt bij de omgekeerde proxy en alle clientcertificaatgegevens gaan verloren. Geef de instelling **ForwardClientCertificate** op in de sectie [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) voor de services die clientcertificaatverificatie uitvoeren.
+TLS-beëindiging gebeurt bij de omgekeerde proxy en alle clientcertificaatgegevens gaan verloren. Geef de instelling **ForwardClientCertificate** op in de sectie [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) voor de services die clientcertificaatverificatie uitvoeren.
 
-1. Wanneer **ForwardClientCertificate** is ingesteld op **false,** zal reverse proxy het clientcertificaat niet aanvragen tijdens de SSL-handshake met de client.
+1. Wanneer **ForwardClientCertificate** is ingesteld op **false,** zal reverse proxy het clientcertificaat niet aanvragen tijdens de TLS-handshake met de client.
 Dit is de standaardinstelling.
 
-2. Wanneer **ForwardClientCertificate** is ingesteld op **true,** vraagt reverse proxy het certificaat van de client aan tijdens de SSL-handshake met de client.
+2. Wanneer **ForwardClientCertificate** is ingesteld op **true,** vraagt reverse proxy het certificaat van de client aan tijdens de TLS-handshake met de client.
 Vervolgens worden de clientcertificaatgegevens doorgestuurd in een aangepaste HTTP-header met de naam **X-Client-Certificate.** De kopwaarde is de basis64 gecodeerde PEM-formaatreeks van het certificaat van de client. De service kan de aanvraag na het inspecteren van de certificaatgegevens met de juiste statuscode opvolgen/mislukken.
 Als de client geen certificaat presenteert, stuurt de proxy een lege koptekst door en laat de service de aanvraag afhandelen.
 

@@ -1,6 +1,6 @@
 ---
 title: Opties voor groep op
-description: Tips voor het implementeren van groeps-op-opties in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
+description: Tips voor het implementeren van groeps-op-opties in synapse SQL-pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,28 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f77445e80e701053b7fbfa1aa559248cf505353c
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 28ac075d043f7605b6dfdac6879063fbe9308123
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350516"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619049"
 ---
-# <a name="group-by-options-in-sql-data-warehouse"></a>Groeperen op opties in SQL Data Warehouse
-Tips voor het implementeren van groeps-op-opties in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
+# <a name="group-by-options-in-synapse-sql-pool"></a>Groeperen op opties in de Synapse SQL-groep
+
+In dit artikel vindt u tips voor het implementeren van groeps-op-opties in SQL-pool.
 
 ## <a name="what-does-group-by-do"></a>Wat doet GROUP BY?
 
-De [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL-component verzamelt gegevens tot een overzichtsset van rijen. GROUP BY heeft een aantal opties die SQL Data Warehouse niet ondersteunt. Deze opties hebben tijdelijke oplossingen.
-
-Deze opties zijn
+De [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL-component verzamelt gegevens tot een overzichtsset van rijen. GROUP BY heeft een aantal opties die SQL Pool niet ondersteunt. Deze opties hebben tijdelijke oplossingen, die als volgt zijn:
 
 * GROEPEREN OP met ROLLUP
 * GROEPERINGSSETS
 * GROEP DOOR met KUBUS
 
 ## <a name="rollup-and-grouping-sets-options"></a>Opties voor rollup- en groeperingssets
-De eenvoudigste optie hier is om UNION ALL te gebruiken in plaats daarvan om de rollup uit te voeren in plaats van te vertrouwen op de expliciete syntaxis. Het resultaat is precies hetzelfde
+
+De eenvoudigste optie hier is om UNION ALL te gebruiken om de rollup uit te voeren in plaats van te vertrouwen op de expliciete syntaxis. Het resultaat is precies hetzelfde.
 
 In het volgende voorbeeld wordt de instructie GROEP PER met de optie ROLLUP gebruikt:
 ```sql
@@ -84,11 +84,11 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 Om GROUPING SETS te vervangen, is het voorbeeldprincipe van toepassing. U hoeft alleen ALLE SECTIES UNION te maken voor de aggregatieniveaus die u wilt zien.
 
 ## <a name="cube-options"></a>Kubusopties
-Het is mogelijk om een GROEP BY WITH CUBE te creëren met behulp van de UNION ALL aanpak. Het probleem is dat de code snel omslachtig en onhandig kan worden. Om dit te beperken, u deze meer geavanceerde aanpak gebruiken.
+Het is mogelijk om een GROEP BY WITH CUBE te maken met behulp van de UNION ALL aanpak. Het probleem is dat de code snel omslachtig en onhandig kan worden. Om dit probleem te verhelpen, u deze meer geavanceerde aanpak gebruiken.
 
-Laten we het bovenstaande voorbeeld gebruiken.
+Met behulp van het vorige voorbeeld is de eerste stap het definiëren van de 'kubus' die alle aggregatieniveaus definieert die we willen maken. 
 
-De eerste stap is het definiëren van de 'kubus' die alle aggregatieniveaus definieert die we willen maken. Het is belangrijk om kennis te nemen van de CROSS JOIN van de twee afgeleide tabellen. Dit genereert alle niveaus voor ons. De rest van de code is er echt voor de opmaak.
+Neem nota van de CROSS JOIN van de twee afgeleide tabellen, omdat dit genereert alle niveaus voor ons. De rest van de code is er voor opmaak:
 
 ```sql
 CREATE TABLE #Cube
@@ -119,7 +119,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Hieronder ziet u de resultaten van de CTAS:
+De volgende afbeelding toont de resultaten van de CTAS:
 
 ![Groeperen op kubus](./media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
@@ -146,7 +146,7 @@ WITH
 ;
 ```
 
-De derde stap is om lus over onze kubus van kolommen het uitvoeren van de aggregatie. De query wordt één keer uitgevoerd voor elke rij in de #Cube tijdelijke tabel en slaat de resultaten op in de #Results tijdelijke tabel
+De derde stap is om lus over onze kubus van kolommen het uitvoeren van de aggregatie. De query wordt één keer uitgevoerd voor elke rij in de #Cube tijdelijke tabel. De resultaten worden opgeslagen in de #Results temp tabel:
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -170,7 +170,7 @@ BEGIN
 END
 ```
 
-Ten slotte u de resultaten retourneren door simpelweg te lezen uit de #Results tijdelijke tabel
+Ten slotte u de resultaten retourneren door uit de #Results tijdelijke tabel te lezen:
 
 ```sql
 SELECT *

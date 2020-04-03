@@ -4,12 +4,12 @@ description: Meer informatie over het maken en beheren van meerdere knooppuntgro
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 607419787bc0bab243d6cc2b8cbaa0ec22921e87
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 87f066ed17e5274439082956803d269bdd5853f5
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422316"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616500"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppuntgroepen voor een cluster maken en beheren in Azure Kubernetes Service (AKS)
 
@@ -41,7 +41,7 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 Maak een AKS-cluster met één knooppuntgroep om aan de slag te gaan. In het volgende voorbeeld wordt de opdracht [Az-groep maken][az-group-create] gebruikt om een resourcegroep met de naam *myResourceGroup* in het *eastus-gebied* te maken. Vervolgens wordt een AKS-cluster met de naam *myAKSCluster* gemaakt met de opdracht [az aks create.][az-aks-create] Een *--kubernetes-versie* van *1.15.7* wordt gebruikt om te laten zien hoe u een knooppuntpool in een volgende stap bijwerken. U elke [ondersteunde Kubernetes-versie][supported-versions]opgeven.
 
 > [!NOTE]
-> De *Basic* load balancer SKU **wordt niet ondersteund** bij het gebruik van meerdere knooppuntgroepen. Standaard worden AKS-clusters gemaakt met de *SKU* voor standaardlastbalancer van Azure CLI en Azure-portal.
+> De *Basic* load balancer SKU **wordt niet ondersteund** bij het gebruik van meerdere knooppuntgroepen. Standaard worden AKS-clusters gemaakt met de *SKU* voor standaardlastbalancer vanuit de Azure CLI- en Azure-portal.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -420,7 +420,7 @@ De Kubernetes scheduler kan taints en toleranties gebruiken om te beperken welke
 
 Zie [Aanbevolen procedures voor geavanceerde plannerfuncties in AKS][taints-tolerations] voor meer informatie over het gebruik van geavanceerde kubernetes-geplande functies
 
-Breng in dit voorbeeld een taint toe op uw GPU-gebaseerde knooppunt met de opdracht --node-taints. Geef de naam van uw GPU-knooppunt op `kubectl get nodes` uit de uitvoer van de vorige opdracht. De taint wordt toegepast als een *sleutel:waarde* en vervolgens een planningsoptie. In het volgende voorbeeld wordt het *sku=gpu-paar* gebruikt en worden pods gedefinieerd die anders de *noschedule-mogelijkheid* hebben:
+Breng in dit voorbeeld een taint toe op uw GPU-gebaseerde knooppunt met de opdracht --node-taints. Geef de naam van uw GPU-knooppunt op `kubectl get nodes` uit de uitvoer van de vorige opdracht. De taint wordt toegepast als een *key=value* pair en vervolgens als planningsoptie. In het volgende voorbeeld wordt het *sku=gpu-paar* gebruikt en worden pods gedefinieerd die anders de *noschedule-mogelijkheid* hebben:
 
 ```console
 az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -480,7 +480,7 @@ Events:
   Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
 ```
 
-Alleen pods die deze taint hebben toegepast, kunnen worden gepland op knooppunten in *gpunodepool.* Elke andere pod zou worden gepland in de *nodepool1* knooppunt zwembad. Als u extra knooppuntgroepen maakt, u extra taints en toleranties gebruiken om te beperken welke pods kunnen worden gepland op die knooppuntbronnen.
+Alleen pods waarop deze tolerantie is toegepast, kunnen worden gepland op knooppunten in *gpunodepool.* Elke andere pod zou worden gepland in de *nodepool1* knooppunt zwembad. Als u extra knooppuntgroepen maakt, u extra taints en toleranties gebruiken om te beperken welke pods kunnen worden gepland op die knooppuntbronnen.
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Een taint, label of tag opgeven voor een knooppuntgroep
 

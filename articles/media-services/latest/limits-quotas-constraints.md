@@ -1,6 +1,6 @@
 ---
-title: Quota en beperkingen in Azure Media Services
-description: In dit onderwerp worden quota en beperkingen in Microsoft Azure Media Services beschreven.
+title: Quota en limieten in Azure Media Services
+description: In dit onderwerp worden quota en limieten in Microsoft Azure Media Services beschreven.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: 6fb2f8f9172533a2c7f4aa03e99bd08e16a1f1dc
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 2d4f5f83335f6f115362bcf66cf69d7f9de7eaa5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545917"
+ms.locfileid: "80582323"
 ---
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services-quota en -limieten
 
@@ -79,7 +79,7 @@ Elke record in uw account ouder dan 90 dagen wordt automatisch verwijderd, zelfs
 | Live-uitgangen per live-evenement |3 <sup>.5.</sup> |
 | Maximale duur van de live-uitvoer | 25 uur |
 
-<sup>4</sup> Zie Vergelijking en beperkingen van [typen live-evenementen](live-event-types-comparison.md)voor gedetailleerde informatie over beperkingen van live-evenementen.
+<sup>4</sup> Zie Vergelijking en limieten voor [live-evenementen](live-event-types-comparison.md)voor gedetailleerde informatie over limieten voor live-evenementen.
 
 <sup>5</sup> Live-uitgangen beginnen bij het maken en stoppen wanneer ze worden verwijderd.
 
@@ -87,7 +87,7 @@ Elke record in uw account ouder dan 90 dagen wordt automatisch verwijderd, zelfs
 
 | Resource | Standaardlimiet | 
 | --- | --- | 
-| [Streaming eindpunten](streaming-endpoint-concept.md) (gestopt of uitgevoerd) per Media Services-account|2 (vast)|
+| [Streaming eindpunten](streaming-endpoint-concept.md) (gestopt of uitgevoerd) per Media Services-account|2 |
 | [Dynamisch-manifestfilters](filters-dynamic-manifest-overview.md)|100|
 | [Beleid voor streaming](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | Unieke [streaming locators](streaming-locators-concept.md) in verband met een asset in één keer | 100<sup>(7)</sup> (vast) |

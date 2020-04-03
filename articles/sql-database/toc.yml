@@ -58,8 +58,6 @@
       href: sql-database-managed-instance-quickstart-guide.md
 - name: Concepten
   items:
-    - name: Documentatie over algemene functies
-      href: sql-database-paas-index.yml
     - name: Vergelijking van functies
       href: sql-database-features.md
     - name: Instructiegids
@@ -280,8 +278,6 @@
                   href: sql-database-xevent-code-ring-buffer.md
     - name: Schaalbaarheid
       items:
-        - name: Documentatie voor schaalbaarheid
-          href: sql-database-scalability-index.yml
         - name: Omhoog/omlaag schalen
           href: sql-database-scale-resources.md
         - name: Uitschaling lezen
@@ -310,8 +306,6 @@
           href: sql-database-elastic-transactions-overview.md
     - name: Databasefuncties
       items:
-        - name: Documentatie over databasefuncties
-          href: sql-database-features-index.yml
         - name: Mogelijkheden voor meerdere modellen
           href: sql-database-multi-model-features.md
         - name: In het geheugen
@@ -685,7 +679,6 @@
         - name: Codevoorbeelden
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Beheerd SQL-exemplaar
-  href: sql-database-managed-instance-index.yml
   items:
     - name: Overzicht
       items:

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9d41aa3447caebfeeffc05c36b5073f57c3e16cd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6354390c44c0991b0d6bf36cba8efd4272f9c73d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350808"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583769"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Snelstart: een classificatie voor werkbelasting maken met T-SQL
 
@@ -25,7 +25,7 @@ In deze quickstart creëer je snel een workload classifier met een groot belang 
 Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
 
 > [!NOTE]
-> Als u een SQL Analytics-exemplaar maakt in Azure Synapse Analytics, kan dit resulteren in een nieuwe factureerbare service.  Zie [Azure Synapse Analytics-prijzen voor](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)meer informatie.
+> Als u een Synapse SQL-poolinstantie maakt in Azure Synapse Analytics, kan dit resulteren in een nieuwe factureerbare service.  Zie [Azure Synapse Analytics-prijzen voor](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)meer informatie.
 >
 >
 
@@ -109,5 +109,5 @@ Volg deze stappen om resources op te schonen.
 ## <a name="next-steps"></a>Volgende stappen
 
 - U hebt nu een workload classificatie gemaakt. Voer een paar query's uit als TheCEO om te zien hoe ze presteren. Zie [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) om query's en het toegewezen belang weer te geven.
-- Zie [Workloadbelang](sql-data-warehouse-workload-importance.md) en [workloadclassificatie](sql-data-warehouse-workload-classification.md)voor meer informatie over SQL Analytics-workloadmanagement.
+- Zie [Workload importance](sql-data-warehouse-workload-importance.md) en [workload classification](sql-data-warehouse-workload-classification.md)voor meer informatie over Synapse SQL-workloadmanagement.
 - Bekijk de how-to-artikelen om [het belang van workloads](sql-data-warehouse-how-to-configure-workload-importance.md) te configureren en hoe [u Workload Management beheren en bewaken.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
