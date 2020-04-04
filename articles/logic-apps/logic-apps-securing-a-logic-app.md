@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: cc349e5851627ee830196982509f91a83198dfe0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4fc4960eb3af8a3d3c9902c9b24505bb5610b709
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349581"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657162"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -27,7 +27,7 @@ Als u de toegang tot en de beveiliging van gegevens in Azure Logic Apps wilt beh
 
 ## <a name="access-to-request-based-triggers"></a>Toegang tot triggers op basis van aanvragen
 
-Als uw logische app een trigger op basis van aanvragen gebruikt, die binnenkomende oproepen of verzoeken ontvangt, zoals de trigger [Request](../connectors/connectors-native-reqres.md) of [Webhook,](../connectors/connectors-native-webhook.md) u de toegang beperken zodat alleen geautoriseerde clients uw logische app kunnen bellen. Alle aanvragen die door een logische app worden ontvangen, worden versleuteld en beveiligd met het SSL-protocol (Secure Sockets Layer).
+Als uw logische app een trigger op basis van aanvragen gebruikt, die binnenkomende oproepen of verzoeken ontvangt, zoals de trigger [Request](../connectors/connectors-native-reqres.md) of [Webhook,](../connectors/connectors-native-webhook.md) u de toegang beperken zodat alleen geautoriseerde clients uw logische app kunnen bellen. Alle aanvragen die door een logische app worden ontvangen, worden versleuteld en beveiligd met TLS (Transport Layer Security), voorheen bekend als Secure Sockets Layer (SSL), protocol.
 
 Hier volgen opties waarmee u de toegang tot dit triggertype beveiligen:
 
@@ -655,7 +655,7 @@ Als de optie [Clientcertificaat](../active-directory/authentication/active-direc
 
 | Eigenschap (ontwerper) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
-| **Verificatie** | `type` | Ja | **Clientcertificaat** <br>of <br>`ClientCertificate` | Het verificatietype dat moet worden gebruikt voor SSL-clientcertificaten (Secure Sockets Layer). Hoewel zelfondertekende certificaten worden ondersteund, worden zelfondertekende certificaten voor SSL niet ondersteund. |
+| **Verificatie** | `type` | Ja | **Clientcertificaat** <br>of <br>`ClientCertificate` | Het verificatietype dat moet worden gebruikt voor TLS/SSL-clientcertificaten. Hoewel zelfondertekende certificaten worden ondersteund, worden zelfondertekende certificaten voor TLS/SSL niet ondersteund. |
 | **Pfx Pfx** | `pfx` | Ja | <*gecodeerde pfx-bestandsinhoud*> | De basis64-gecodeerde inhoud uit een PFX-bestand (Personal Information Exchange) <p><p>Als u het PFX-bestand wilt converteren naar een basisindeling met 64 code, u PowerShell gebruiken door de volgende stappen te volgen: <p>1. Sla de inhoud van het certificaat op in een variabele: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Converteer de `ToBase64String()` certificaatinhoud met de functie en sla die inhoud op in een tekstbestand: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Wachtwoord** | `password`| Nee | <*password-for-pfx-bestand*> | Het wachtwoord voor toegang tot het PFX-bestand |
 |||||
@@ -684,7 +684,7 @@ Zie de volgende onderwerpen voor meer informatie over het beveiligen van service
 * [Beveiliging voor back-endservices verbeteren door verificatie van clientcertificaat in Azure API-beheer te gebruiken](../api-management/api-management-howto-mutual-certificates.md)
 * [Verbeter de beveiliging van uw RESTfuL-service met behulp van clientcertificaten](../active-directory-b2c/secure-rest-api.md)
 * [Certificaatreferenties voor toepassingsverificatie](../active-directory/develop/active-directory-certificate-credentials.md)
-* [Een SSL-certificaat gebruiken in uw toepassingscode in Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
+* [Een TLS/SSL-certificaat gebruiken in uw code in Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 
 <a name="azure-active-directory-oauth-authentication"></a>
 

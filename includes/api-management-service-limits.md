@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/10/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 2d4c8c2c831bd6ef16f60c34a6353f4a742798f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5608683578a796ae0fffff7544a749043e8698fd
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76159371"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656175"
 ---
 | Resource | Limiet |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -38,7 +38,7 @@ ms.locfileid: "76159371"
 <sup>2.</sup> De grootte van de cache per eenheid is afhankelijk van de prijscategorie. Zie [API Management-prijzen](https://azure.microsoft.com/pricing/details/api-management/)voor de prijsniveaus en de schalingslimieten daarvan.<br/>
 <sup>3.</sup> Verbindingen worden samengevoegd en hergebruikt, tenzij deze expliciet door de back-end worden gesloten.<br/>
 <sup>4.</sup> Deze limiet is per eenheid van de laagBasis-, Standaard- en Premium-lagen. De projectlaag is beperkt tot 1.024. Deze limiet is niet van toepassing op de laag Verbruik.<br/>
-<sup>5.</sup> Deze limiet is van toepassing op de laagBasis-, Standaard- en Premium-niveaus. In de categorie Verbruik is de beleidsdocumentgrootte beperkt tot 4 KiB.<br/>
+<sup>5.</sup> Deze limiet is van toepassing op de laagBasis-, Standaard- en Premium-niveaus. In de categorie Verbruik is de beleidsdocumentgrootte beperkt tot 16 KiB.<br/>
 <sup>6.</sup> Deze resource is alleen beschikbaar in de laag Premium.<br/>
 <sup>7.</sup> Deze resource is alleen van toepassing op de laag Verbruik.<br/>
 <sup>8.</sup> Geldt alleen voor de verbruikslaag. Bevat een lange queryreeks van maximaal 2048 bytes.<br/>

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 62826b209b37e5abe5d33455809ba1b894ddb85f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 5925e3374634dd4db4bdc6855949dc3880d8de7c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476463"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655514"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Zelfbeheerde Active Directory Domain Services, Azure Active Directory en beheerde Azure Active Directory Domain Services vergelijken
 
@@ -25,12 +25,16 @@ Hoewel de drie op Active Directory gebaseerde identiteitsoplossingen een gemeens
 
 * **Active Directory Domain Services (AD DS)** - LDAP-server (Enterprise-ready lightweight directory access protocol) die belangrijke functies biedt, zoals identiteit en verificatie, computerobjectbeheer, groepsbeleid en vertrouwensrelaties.
     * AD DS is een centraal onderdeel in veel organisaties met een on-premises IT-omgeving en biedt kernfuncties voor gebruikersaccountverificatie en computerbeheer.
+    * Zie [overzicht van Active Directory Domain Services in de windows server-documentatie][overview-adds]voor meer informatie.
 * **Azure Active Directory (Azure AD)** - Cloudgebaseerd identiteits- en beheer van mobiele apparaten die gebruikersaccount- en verificatieservices biedt voor bronnen zoals Office 365, de Azure-portal of SaaS-toepassingen.
     * Azure AD kan worden gesynchroniseerd met een on-premises AD DS-omgeving om één identiteit te bieden aan gebruikers die native in de cloud werken.
+    * Zie Wat is Azure [Active Directory voor][whatis-azuread] meer informatie over Azure AD?
 * **Azure Active Directory Domain Services (Azure AD DS)** - Biedt beheerde domeinservices met een subset van volledig compatibele traditionele AD DS-functies, zoals domeinjoin, groepsbeleid, LDAP en Kerberos / NTLM-verificatie.
     * Azure AD DS integreert met Azure AD, dat zelf kan synchroniseren met een on-premises AD DS-omgeving. Deze mogelijkheid breidt centrale identiteitsgebruiksgevallen uit tot traditionele webtoepassingen die in Azure worden uitgevoerd als onderdeel van een lift-and-shift-strategie.
 
 In dit overzichtsartikel wordt vergeleken met hoe deze identiteitsoplossingen kunnen samenwerken of onafhankelijk kunnen worden gebruikt, afhankelijk van de behoeften van uw organisatie.
+
+Maak om aan de slag [te gaan een door Azure AD DS beheerd domein met behulp van de Azure-portal.][tutorial-create]
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS en zelfbeheerde AD DS
 
@@ -118,3 +122,5 @@ Als u aan de slag wilt met het gebruik van Azure AD DS, [maakt u een door Azure 
 [manage-gpos]: manage-group-policy.md
 [tutorial-ldaps]: tutorial-configure-ldaps.md
 [tutorial-create]: tutorial-create-instance.md
+[whatis-azuread]: ../active-directory/fundamentals/active-directory-whatis.md
+[overview-adds]: /windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview

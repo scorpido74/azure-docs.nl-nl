@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ea9bfd21e7f3b92c99600a2492a809a0fc051ed9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b9b33076a2c2cea27fea181b760a721488682c9
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159616"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657008"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft Teams gebruiken op Windows Virtual-bureaublad
 
@@ -33,15 +33,25 @@ Voordat u Microsoft Teams op Windows Virtual Desktop gebruiken, moet u de volgen
 
 U niet-geoptimaliseerde Microsoft Teams in uw Windows Virtual Desktop-omgevingen gebruiken om gebruik te maken van de volledige chat- en samenwerkingsfuncties van Microsoft Teams en audiobellen. De audiokwaliteit in gesprekken varieert afhankelijk van uw hostconfiguratie, omdat niet-geoptimaliseerde oproepen meer van uw host-CPU gebruiken.
 
+### <a name="prepare-your-image-for-teams"></a>Uw afbeelding voorbereiden op Teams
+
+Als u de installatie van Teams per machine wilt inschakelen, stelt u de volgende registersleutel in op de host:
+
+```shell
+  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams\IsWVDEnvironment]
+  Type: REG_DWORD
+  Value: 0x1
+```
+
 ### <a name="install-microsoft-teams"></a>Microsoft Teams installeren
 
-Ga als verkenner met het installeren van Microsoft Teams in uw Windows Virtual Desktop-omgeving:
+U de Bureaublad-app Teams implementeren met een installatie per machine. Ga als verkenner met het installeren van Microsoft Teams in uw Windows Virtual Desktop-omgeving:
 
 1. Download het [Teams MSI-pakket](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) dat bij uw omgeving past. We raden u aan de 64-bits installer te gebruiken op een 64-bits besturingssysteem.
 2. Voer deze opdracht uit om de MSI op de host-VM te installeren.
 
       ```shell
-      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSER=1
+      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSERS=1
       ```
 
       Hiermee worden Teams geïnstalleerd op programbestanden of programmabestanden (x86). De volgende keer dat u zich aanmeldt en Teams start, vraagt de app om uw referenties.
@@ -56,4 +66,4 @@ Ga als verkenner met het installeren van Microsoft Teams in uw Windows Virtual D
       ```
 
       > [!NOTE]
-      > Als u Teams installeert met de MSI-instelling ALLUSER=1, worden automatische updates uitgeschakeld. We raden je aan om Teams minstens één keer per maand bij te werken.
+      > Als u Teams installeert met de MSI-instelling ALLUSERS=1, worden automatische updates uitgeschakeld. We raden je aan om Teams minstens één keer per maand bij te werken.
