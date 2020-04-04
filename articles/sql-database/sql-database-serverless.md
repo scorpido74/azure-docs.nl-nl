@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 3/11/2020
-ms.openlocfilehash: 00b9da150569db2972289468b1405e5087ee3321
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 4/3/2020
+ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549159"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657064"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverless
 
@@ -151,13 +151,13 @@ De latentie om een serverloze database automatisch te hervatten en automatisch t
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Door de klant beheerde transparante gegevensversleuteling (BYOK)
 
-Als de [door de klant beheerde transparante gegevensversleuteling](transparent-data-encryption-byok-azure-sql.md) (BYOK) wordt gebruikt en de serverloze database automatisch wordt onderbroken wanneer de sleutel wordt verwijderd of opnieuw wordt ingetrokken, blijft de database in de automatisch onderbroken status.  In dit geval, nadat de database vervolgens is hervat, wordt de database binnen ongeveer 10 minuten ontoegankelijk.  Zodra de database ontoegankelijk wordt, is het herstelproces hetzelfde als voor ingerichte compute databases.  Als de serverloze database online is wanneer sleutelverwijdering of intrekking plaatsvindt, wordt de database ook ontoegankelijk na ongeveer 10 minuten of minder op dezelfde manier als bij ingerichte compute databases.
+Als de [door de klant beheerde transparante gegevensversleuteling](transparent-data-encryption-byok-azure-sql.md) (BYOK) wordt gebruikt en de serverloze database automatisch wordt onderbroken wanneer de sleutel wordt verwijderd of opnieuw wordt ingetrokken, blijft de database in de automatisch onderbroken status.  In dit geval, nadat de database vervolgens is hervat, wordt de database binnen ongeveer 10 minuten ontoegankelijk.  Zodra de database ontoegankelijk wordt, is het herstelproces hetzelfde als voor ingerichte compute databases.  Als de serverloze database online is wanneer sleutelverwijdering of intrekking plaatsvindt, wordt de database ook binnen ongeveer 10 minuten ontoegankelijk op dezelfde manier als bij ingerichte compute databases.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Onboarding in serverless compute-laag
 
 Het maken van een nieuwe database of het verplaatsen van een bestaande database naar een serverloze compute-laag volgt hetzelfde patroon als het maken van een nieuwe database in de ingerichte compute-laag en omvat de volgende twee stappen.
 
-1. Geef de naam van de servicedoelstelling op. De servicedoelstelling schrijft de servicelaag, de hardwaregeneratie en de max vCores voor. In de volgende tabel worden de opties voor servicedoelstelling weergegeven:
+1. Geef de servicedoelstelling op. De servicedoelstelling schrijft de servicelaag, de hardwaregeneratie en de max vCores voor. In de volgende tabel worden de opties voor servicedoelstelling weergegeven:
 
    |Naam servicedoelstelling|Servicelaag|Hardwaregeneratie|Max.|
    |---|---|---|---|
@@ -176,12 +176,12 @@ Het maken van een nieuwe database of het verplaatsen van een bestaande database 
    |Parameter|Waardekeuzes|Standaardwaarde|
    |---|---|---|---|
    |Min vCores|Afhankelijk van max vCores geconfigureerd - zie [resource limieten](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).|0,5 vCores|
-   |Vertraging automatisch onderbreken|Minimum: 60 minuten (1 uur)<br>Maximum: 10080 minuten (7 dagen)<br>Stappen: 60 minuten<br>Automatisch pauzeren uitschakelen: -1|60 minuten|
+   |Vertraging automatisch onderbreken|Minimum: 60 minuten (1 uur)<br>Maximum: 10080 minuten (7 dagen)<br>Stappen: 10 minuten<br>Automatisch pauzeren uitschakelen: -1|60 minuten|
 
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Nieuwe database maken in de serverless compute-laag 
 
-In de volgende voorbeelden wordt een nieuwe database gemaakt in de serverloze compute-laag. De voorbeelden geven expliciet de min vCores, max vCores en autopause vertraging.
+In de volgende voorbeelden wordt een nieuwe database gemaakt in de serverloze compute-laag.
 
 #### <a name="use-azure-portal"></a>Azure Portal gebruiken
 
@@ -205,7 +205,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) gebruiken
 
-In het volgende voorbeeld wordt een nieuwe database gemaakt in de serverloze compute-laag.
+Bij het gebruik van T-SQL worden standaardwaarden toegepast voor de min vcores en de autopause-vertraging.
 
 ```sql
 CREATE DATABASE testdb
@@ -216,7 +216,7 @@ Zie DATABASE [MAKEN](/sql/t-sql/statements/create-database-transact-sql?view=azu
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Database verplaatsen van ingerichte compute-laag naar serverloze compute-laag
 
-In de volgende voorbeelden wordt een database van de ingerichte compute-laag verplaatst naar de serverloze compute-laag. De voorbeelden geven expliciet de min vCores, max vCores en autopause vertraging.
+In de volgende voorbeelden wordt een database van de ingerichte compute-laag verplaatst naar de serverloze compute-laag.
 
 #### <a name="use-powershell"></a>PowerShell gebruiken
 
@@ -237,7 +237,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) gebruiken
 
-In het volgende voorbeeld wordt een database van de ingerichte compute-laag verplaatst naar de serverloze compute-laag.
+Bij het gebruik van T-SQL worden standaardwaarden toegepast voor de min vcores en de autopause-vertraging.
 
 ```sql
 ALTER DATABASE testdb 

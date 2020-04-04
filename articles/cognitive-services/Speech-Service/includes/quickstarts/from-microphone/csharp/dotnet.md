@@ -1,27 +1,22 @@
 ---
-title: 'Snelstart: spraak herkennen van een microfoon, C# (.NET) - Spraakservice'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
-ms.author: erhopf
-ms.openlocfilehash: c969b5e5daa4c4cfd84695fef70f0a2a5c50ce02
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/03/2020
+ms.author: dapine
+ms.openlocfilehash: 35116ca2c1792b7a94e5f4078d5e213a65eee5de
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78924889"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658577"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * [Een Azure-spraakbron maken](../../../../get-started.md)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een Azure-spraakbron maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * Zorg ervoor dat u toegang hebt tot een microfoon voor audio-opname
 
@@ -29,58 +24,79 @@ Voordat u aan de slag gaat:
 
 De eerste stap is ervoor te zorgen dat u uw project open hebt in Visual Studio.
 
-1. Start Visual Studio 2019.
-2. Laad uw project `Program.cs`en open .
+1. Start **Visual Studio 2019**.
+2. Laad uw project en open *Program.cs.*
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een soort boilerplate-code
+## <a name="source-code"></a>Broncode
 
-Laten we wat code toevoegen die werkt als een skelet voor ons project. Houd er rekening mee dat u `RecognizeSpeechAsync()`een async-methode hebt gemaakt met de naam .
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=5-15,43-52)]
+Vervang de inhoud van het *Program.cs* bestand door de volgende C#-code.
 
-## <a name="create-a-speech-configuration"></a>Een spraakconfiguratie maken
+```csharp
+using System;
+using System.Threading.Tasks;
+using Microsoft.CognitiveServices.Speech;
 
-Voordat u een `SpeechRecognizer` object initialiseren, moet u een configuratie maken die uw abonnementssleutel en abonnementsregio gebruikt (kies de **regio-id** uit [regio.](https://aka.ms/speech/sdkregion) Voeg deze code `RecognizeSpeechAsync()` in de methode in.
+namespace Speech.Recognition
+{
+    class Program
+    {
+        static async Task Main()
+        {
+            await RecognizeSpeechAsync();
 
-> [!NOTE]
-> Dit voorbeeld `FromSubscription()` gebruikt de `SpeechConfig`methode om de . Zie [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)voor een volledige lijst met beschikbare methoden.
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=16)]
-> De Spraak-SDK wordt standaard herkend door het gebruik van en-ons voor de taal, zie [Brontaal opgeven voor spraak naar tekst](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
+            Console.WriteLine("Please press any key to continue...");
+            Console.ReadLine();
+        }
 
-## <a name="initialize-a-speechrecognizer"></a>Een SpeechRecognizeer initialiseren
+        static async Task RecognizeSpeechAsync()
+        {
+            var config =
+                SpeechConfig.FromSubscription(
+                    "YourSubscriptionKey",
+                    "YourServiceRegion");
 
-Laten we nu een. `SpeechRecognizer` Dit object wordt gemaakt in een gebruiksinstructie om ervoor te zorgen dat onbeheerde resources correct worden vrijgegeven. Voeg deze code `RecognizeSpeechAsync()` in de methode in, direct onder uw spraakconfiguratie.
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=17-19,42)]
+            using var recognizer = new SpeechRecognizer(config);
+            
+            var result = await recognizer.RecognizeOnceAsync();
+            switch (result.Reason)
+            {
+                case ResultReason.RecognizedSpeech:
+                    Console.WriteLine($"We recognized: {result.Text}");
+                    break;
+                case ResultReason.NoMatch:
+                    Console.WriteLine($"NOMATCH: Speech could not be recognized.");
+                    break;
+                case ResultReason.Canceled:
+                    var cancellation = CancellationDetails.FromResult(result);
+                    Console.WriteLine($"CANCELED: Reason={cancellation.Reason}");
+    
+                    if (cancellation.Reason == CancellationReason.Error)
+                    {
+                        Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
+                        Console.WriteLine($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
+                        Console.WriteLine($"CANCELED: Did you update the subscription info?");
+                    }
+                    break;
+            }
+        }
+    }
+}
+```
 
-## <a name="recognize-a-phrase"></a>Een zin herkennen
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-Van `SpeechRecognizer` het object, ga je `RecognizeOnceAsync()` de methode aanroepen. Met deze methode kan de spraakservice weten dat u één woordgroep verzendt voor herkenning en dat wanneer de woordgroep is geïdentificeerd om te stoppen met het herkennen van spraak.
+## <a name="code-explanation"></a>Code uitleg
 
-Voeg deze code toe in de instructie met gebruik.
+[!INCLUDE [code explanation](../code-explanation.md)]
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=20)]
+## <a name="build-and-run-app"></a>App bouwen en uitvoeren
 
-## <a name="display-the-recognition-results-or-errors"></a>De herkenningsresultaten weergeven (of fouten)
-
-Wanneer het herkenningsresultaat wordt geretourneerd door de spraakservice, wilt u er iets mee doen. We houden het simpel en printen het resultaat af op de console.
-
-Voeg deze code `RecognizeOnceAsync()`toe in de gebruiksinstructie hieronder.
-
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=22-41)]
-
-## <a name="check-your-code"></a>Controleer uw code
-
-Op dit punt moet je code er zo uitzien.
-
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs)]
-
-## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
-
-Nu bent u klaar om uw app te bouwen en onze spraakherkenning te testen met behulp van de Spraakservice.
+Nu bent u klaar om uw app opnieuw op te bouwen en de spraakherkenningsfunctionaliteit te testen met behulp van de spraakservice.
 
 1. **Compileer de code** - Kies op de menubalk van Visual Studio **Build** > **Solution**.
-2. **Start uw app** - Kies op de menubalk Debug**genfout opsporing van** **foutopsporing debuggen** > of druk op **F5**.
-3. **Start herkenning** - Het zal u vragen om een zin in het Engels te spreken. Uw toespraak wordt verzonden naar de spraakservice, getranscribeerd als tekst en weergegeven in de console.
+2. **Start uw app** - Kies op de menubalk Debug**genfout opsporing van** **foutopsporing debuggen** > of druk op <kbd>F5</kbd>.
+3. **Start erkenning** - Het zal u vragen om een zin in het Engels te spreken. Uw toespraak wordt verzonden naar de spraakservice, getranscribeerd als tekst en weergegeven in de console.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

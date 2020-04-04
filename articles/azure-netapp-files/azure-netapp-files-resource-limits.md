@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/13/2020
+ms.date: 04/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 36b2d50722a1840e461d6907f440d859c7c82117
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ac660b20d519e49e832e979603f763fa672757a5
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408824"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637406"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Resourcelimieten voor Azure NetApp Files
 
@@ -36,7 +36,7 @@ In de volgende tabel worden resourcelimieten voor Azure NetApp-bestanden beschre
 |  Aantal volumes per capaciteitspool     |    500   |    Ja     |
 |  Aantal momentopnamen per volume       |    255     |    Nee        |
 |  Aantal subnetten dat is gedelegeerd aan Azure NetApp-bestanden (Microsoft.NetApp/volumes) per Azure Virtual Network    |   1   |    Nee    |
-|  Aantal gebruikte IP's in een VNet (inclusief onmiddellijk peered VNets) met Azure NetApp-bestanden   |    1000   |    Ja   |
+|  Aantal gebruikte IP's in een VNet (inclusief onmiddellijk peered VNets) met Azure NetApp-bestanden   |    1000   |    Nee   |
 |  Minimumgrootte van een enkele capaciteitsgroep   |  4 TiB     |    Nee  |
 |  Maximale grootte van een enkele capaciteitsgroep    |  500 TiB   |   Nee   |
 |  Minimale grootte van één volume    |    100 GiB    |    Nee    |

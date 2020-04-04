@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: ad8b4b39e582d10c2a3b6003bfa07138f4697b71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499188"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632932"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-querytaal voor apparaat- en moduledubbels, taken en-berichtroutering
 
@@ -481,7 +481,7 @@ In routesomstandigheden worden de volgende typecontrole- en gietfuncties onderst
 | AS_NUMBER | Hiermee converteert u de invoertekenreeks naar een getal. `noop`als invoer een getal is; `Undefined` als tekenreeks geen getal vertegenwoordigt.|
 | IS_ARRAY | Geeft als resultaat een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een array is. |
 | IS_BOOL | Geeft als resultaat een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een Booleaan is. |
-| IS_DEFINED | Retourneert een Booleaanse waarde die aangeeft of aan de eigenschap een waarde is toegewezen. |
+| IS_DEFINED | Retourneert een Booleaanse waarde die aangeeft of aan de eigenschap een waarde is toegewezen. Dit wordt alleen ondersteund wanneer de waarde een primitief type is. Primitieve typen zijn tekenreeks, Booleaan, numeriek of `null`. DateTime, objecttypen en arrays worden niet ondersteund. |
 | IS_NULL | Geeft als resultaat een Booleaanse waarde die aangeeft of het type van de opgegeven expressie null is. |
 | IS_NUMBER | Geeft als resultaat een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een getal is. |
 | IS_OBJECT | Geeft als resultaat een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een JSON-object is. |

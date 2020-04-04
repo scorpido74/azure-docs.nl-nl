@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 525c20f5b6e24811ab092a63fa84fe6ebbd7b618
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72808189"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656427"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Een eenvoudige query maken in Azure Cognitive Search
 
-In Azure Cognitive Search roept de [eenvoudige querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) de standaardqueryparser aan voor het uitvoeren van zoekopdrachten met volledige tekst op basis van een index. Deze parser is snel en behandelt veelvoorkomende scenario's, waaronder zoeken in volledige tekst, gefilterd en gefacetteerd zoeken en geo-search. 
+In Azure Cognitive Search roept de [eenvoudige querysyntaxis](query-simple-syntax.md) de standaardqueryparser aan voor het uitvoeren van zoekopdrachten met volledige tekst op basis van een index. Deze parser is snel en behandelt veelvoorkomende scenario's, waaronder zoeken in volledige tekst, gefilterd en gefacetteerd zoeken en geo-search. 
 
 In dit artikel gebruiken we voorbeelden om de eenvoudige syntaxis te illustreren.
 
-Een alternatieve querysyntaxis is [Full Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), dat complexere querystructuren ondersteunt, zoals fuzzy en wildcard search, wat extra tijd kan kosten om te verwerken. Zie De volledige syntaxis van [Lucene gebruiken](search-query-lucene-examples.md)voor meer informatie en voorbeelden die de volledige syntaxis van Lucene weergeven.
+Een alternatieve querysyntaxis is [Full Lucene](query-lucene-syntax.md), dat complexere querystructuren ondersteunt, zoals fuzzy en wildcard search, wat extra tijd kan kosten om te verwerken. Zie De volledige syntaxis van [Lucene gebruiken](search-query-lucene-examples.md)voor meer informatie en voorbeelden die de volledige syntaxis van Lucene weergeven.
 
 ## <a name="formulate-requests-in-postman"></a>Verzoeken formuleren in Postbode
 

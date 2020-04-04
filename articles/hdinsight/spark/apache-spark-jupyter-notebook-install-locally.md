@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 225ee7028b9610a4974f9bee05da667d78d3355e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/02/2020
+ms.openlocfilehash: 1d044ddaea0a2c7a1d489523cc9aa4515df0728a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73903737"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632662"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Installeer Jupyter-laptop op uw computer en maak verbinding met Apache Spark op HDInsight
 
-In dit artikel leert u hoe u Jupyter-laptop installeert, met de aangepaste PySpark -kernels (voor Python) en Apache Spark (voor Scala) kernels met Spark-magie, en sluit u het notitieblok aan op een HDInsight-cluster. Er kunnen een aantal redenen zijn om Jupyter op uw lokale computer te installeren, en er kunnen ook enkele uitdagingen zijn. Zie voor meer informatie hierover de sectie [Waarom zou ik Jupyter aan het](#why-should-i-install-jupyter-on-my-computer) einde van dit artikel op mijn computer installeren.
+In dit artikel leert u hoe u Jupyter-laptop installeren met de aangepaste PySpark -kernels (voor Python) en Apache Spark (voor Scala) met Spark-magie. Vervolgens sluit u het notitieblok aan op een HDInsight-cluster.
 
 Er zijn vier belangrijke stappen die betrokken zijn bij het installeren van Jupyter en het aansluiten op Apache Spark op HDInsight.
 
@@ -26,17 +26,17 @@ Er zijn vier belangrijke stappen die betrokken zijn bij het installeren van Jupy
 * Installeer de PySpark- en Spark-kernels met de Spark-magie.
 * Configureer Spark-magie om toegang te krijgen tot spark-cluster op HDInsight.
 
-Zie [Kernels beschikbaar voor Jupyter-laptops met Apache Spark Linux-clusters op HDInsight](apache-spark-jupyter-notebook-kernels.md)voor meer informatie over de aangepaste kernels en de Spark-magie die beschikbaar is voor Jupyter-laptops.
+Zie [Kernels beschikbaar voor Jupyter-laptops met Apache Spark Linux-clusters op HDInsight voor](apache-spark-jupyter-notebook-kernels.md)meer informatie over aangepaste kernels en Spark-magie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies. Dit is een vereiste voor het aansluiten van de Jupyter-notebook op een HDInsight-cluster zodra de notebook is geïnstalleerd.
+* Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies. De lokale notebook maakt verbinding met het HDInsight-cluster.
 
 * Weten hoe u Jupyter Notebook gebruikt met Spark on HDInsight.
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Jupyter-laptop op uw computer installeren
 
-U moet Python installeren voordat u Jupyter-notitieblokken installeren. De [Anaconda-distributie](https://www.anaconda.com/download/) installeert zowel Python als Jupyter Notebook.
+Installeer Python voordat u Jupyter-notitieblokken installeert. De [Anaconda-distributie](https://www.anaconda.com/download/) installeert zowel Python als Jupyter Notebook.
 
 Download de [Anaconda installer](https://www.anaconda.com/download/) voor uw platform en voer de setup uit. Controleer tijdens het uitvoeren van de wizard Setup of u de optie selecteert om Anaconda toe te voegen aan de VARIABELE PATH.  Zie ook, [Het installeren van Jupyter met behulp van Anaconda](https://jupyter.readthedocs.io/en/latest/install.html).
 
@@ -63,7 +63,7 @@ Download de [Anaconda installer](https://www.anaconda.com/download/) voor uw pla
     pip show sparkmagic
     ```
 
-    Wijzig vervolgens uw werkmap in de locatie die met de bovenstaande opdracht is geïdentificeerd.
+    Wijzig vervolgens uw werkmap in de **locatie** die met de bovenstaande opdracht is geïdentificeerd.
 
 1. Voer in uw nieuwe werkmap een of meer van de onderstaande opdrachten in om de gewenste kernel(s) te installeren:
 
@@ -90,7 +90,7 @@ In deze sectie configureert u de Spark-magie die u eerder hebt geïnstalleerd om
     python
     ```
 
-2. De Jupyter-configuratie-informatie wordt meestal opgeslagen in de gebruikershomedirectory. Voer de volgende opdracht in om de startmap te identificeren en maak een map met de naam **.sparkmagic**.  Het volledige pad wordt uitgevoerd.
+2. De Jupyter-configuratie-informatie wordt meestal opgeslagen in de gebruikershomedirectory. Voer de volgende opdracht in om de startmap te identificeren en maak een map met de naam ** \.sparkmagic**.  Het volledige pad wordt uitgevoerd.
 
     ```python
     import os
@@ -146,7 +146,7 @@ In deze sectie configureert u de Spark-magie die u eerder hebt geïnstalleerd om
     jupyter notebook
     ```
 
-6. Controleer of u de Spark-magie gebruiken die beschikbaar is met de kernels. Voer de volgende stappen uit.
+6. Controleer of u de Spark-magie gebruiken die beschikbaar is met de kernels. Voltooi de volgende stappen.
 
     a. Maak een nieuwe notebook. **Selecteer**Nieuw in de rechterhoek. U ziet de standaardkernel **Python 2** of **Python 3** en de kernels die u hebt geïnstalleerd. De werkelijke waarden kunnen variëren afhankelijk van uw installatiekeuzes.  Selecteer **PySpark**.
 
@@ -168,9 +168,9 @@ In deze sectie configureert u de Spark-magie die u eerder hebt geïnstalleerd om
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Waarom zou ik Jupyter op mijn computer installeren?
 
-Er kunnen een aantal redenen zijn waarom u Jupyter op uw computer wilt installeren en deze vervolgens wilt aansluiten op een Apache Spark-cluster op HDInsight.
+Redenen om Jupyter op uw computer te installeren en deze vervolgens aan te sluiten op een Apache Spark-cluster op HDInsight:
 
-* Hoewel Jupyter-notitieblokken al beschikbaar zijn op het Spark-cluster in Azure HDInsight, biedt het installeren van Jupyter op uw computer u de mogelijkheid om uw notitieblokken lokaal te maken, uw toepassing te testen op een lopend cluster en vervolgens de notitieblokken naar het cluster. Als u de notitieblokken naar het cluster wilt uploaden, u ze uploaden met het Jupyter-notitieblok dat wordt uitgevoerd of het cluster, of ze opslaan in de map /HdiNotebooks in het opslagaccount dat aan het cluster is gekoppeld. Zie [Waar worden Jupyter-notitieblokken opgeslagen](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)voor meer informatie over hoe notitieblokken op het cluster worden opgeslagen?
+* Biedt u de mogelijkheid om uw notitieblokken lokaal te maken, uw toepassing te testen op een lopend cluster en vervolgens de notitieblokken naar het cluster te uploaden. Als u de notitieblokken naar het cluster wilt uploaden, u ze uploaden met `/HdiNotebooks` het Jupyter-notitieblok dat wordt uitgevoerd of het cluster, of ze opslaan in de map in het opslagaccount dat aan het cluster is gekoppeld. Zie [Waar worden Jupyter-notitieblokken opgeslagen](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)voor meer informatie over hoe notitieblokken op het cluster worden opgeslagen?
 * Met de notitieblokken die lokaal beschikbaar zijn, u verbinding maken met verschillende Spark-clusters op basis van uw toepassingsvereisten.
 * U GitHub gebruiken om een bronbesturingssysteem te implementeren en versiebeheer voor de notitieblokken te hebben. U ook een samenwerkingsomgeving hebben waar meerdere gebruikers met hetzelfde notitieblok kunnen werken.
 * U lokaal met notitieblokken werken zonder zelfs maar een cluster te hebben. U hebt alleen een cluster nodig om uw notitieblokken tegen te testen, niet om uw notitieblokken of een ontwikkelomgeving handmatig te beheren.
@@ -182,5 +182,5 @@ Er kunnen een aantal redenen zijn waarom u Jupyter op uw computer wilt installer
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
-* [Apache Spark met BI: interactieve data-analyse uitvoeren met Spark in HDInsight met BI-tools](apache-spark-use-bi-tools.md)
+* [Apache Spark met BI: Apache Spark-gegevens analyseren met Power BI in HDInsight](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Gebruik Spark in HDInsight voor het analyseren van de temperatuur van gebouwen met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)

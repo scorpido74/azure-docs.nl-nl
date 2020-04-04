@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 03/04/2020
+ms.date: 04/03/2020
 ms.author: labrenne
 ms.custom: include file
-ms.openlocfilehash: e9460108499ca76d1b149b61cebe3d3081bf6544
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc08dcded6418208751edbffcb5d263db059ec01
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086280"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657482"
 ---
 ### <a name="general-requirements"></a>Algemene vereisten
 
@@ -65,7 +65,7 @@ Het subnet moet inkomende communicatie vanuit de Batch-service toestaan om taken
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>Netwerkbeveiligingsgroepen: regels op subnetniveau opgeven
 
-Het is niet vereist om NSGs op het subnetniveau van het virtuele netwerk op te geven omdat Batch zijn eigen NSG's configureert (zie hierboven). Als u een NSG hebt die is gekoppeld aan het subnet waarbij batchcomputenodes worden geïmplementeerd of aangepaste NSG-regels wilt toepassen om de toegepaste standaardwaarden te overschrijven, moet u deze NSG configureren met ten minste de inkomende en uitgaande beveiligingsregels zoals weergegeven in de volgende Tabellen.
+Het is niet vereist om NSGs op het subnetniveau van het virtuele netwerk op te geven omdat Batch zijn eigen NSG's configureert (zie hierboven). Als u een NSG hebt die is gekoppeld aan het subnet waarbij batchcomputenodes worden geïmplementeerd of aangepaste NSG-regels willen toepassen om de toegepaste standaardwaarden te overschrijven, moet u deze NSG configureren met ten minste de inkomende en uitgaande beveiligingsregels zoals weergegeven in de volgende tabellen.
 
 Configureer binnenkomend verkeer op poort 3389 (Windows) of 22 (Linux) alleen als u externe toegang tot de compute nodes van externe bronnen moet toestaan. Mogelijk moet u poort 22-regels voor Linux inschakelen als u ondersteuning nodig hebt voor taken met meerdere taken met bepaalde MPI-runtimes. Het toestaan van verkeer op deze poorten is niet strikt vereist om de rekenknooppunten van de groep bruikbaar te maken.
 
@@ -75,6 +75,9 @@ Configureer binnenkomend verkeer op poort 3389 (Windows) of 22 (Linux) alleen al
 | --- | --- | --- | --- | --- | --- | --- |
 | N.v.t. | `BatchNodeManagement`[Servicetag](../articles/virtual-network/security-overview.md#service-tags) (als u een regionale variant gebruikt in dezelfde regio als uw Batch-account) | * | Alle | 29876-29877 | TCP | Toestaan |
 | Ip-functie van gebruikersbron voor het op afstand openen van compute nodes en/of compute node subnet voor Linux multi-instance taken, indien nodig. | N.v.t. | * | Alle | 3389 (Windows), 22 (Linux) | TCP | Toestaan |
+
+> [!WARNING]
+> Ip-adressen van batchservice kunnen in de loop van de tijd veranderen. Daarom is het sterk aanbevolen `BatchNodeManagement` om de servicetag (of regionale variant) te gebruiken voor NSG-regels. Het wordt afgeraden om NSG-regels rechtstreeks te vullen met IP-adressen van batchservice.
 
 **Uitgaande beveiligingsregels**
 

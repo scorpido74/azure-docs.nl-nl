@@ -1,6 +1,6 @@
 ---
 title: Probleemoplossing - Azure Automation Hybrid Runbook Workers
-description: In dit artikel vindt u informatie over het oplossen van problemen met Azure Automation Hybrid Runbook Workers
+description: In dit artikel vindt u informatie voor het oplossen van problemen met Azure Automation Hybrid Runbook Workers.
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 33e3e162892f1e2a148258273160ca26fa9c2efd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2587af0ada18b5c4271e7411783fe60211a3479
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153519"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637862"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Problemen met hybride runbook-werknemers oplossen
 
@@ -131,7 +131,9 @@ De initiële registratiefase van de werknemer mislukt en u ontvangt de volgende 
 #### <a name="cause"></a>Oorzaak
 
 De volgende oorzaken zijn:
+
 * Er is een verkeerd getypte werkruimte-id of werkruimtesleutel (primair) in de instellingen van de agent. 
+
 * De hybride runbookworker kan de configuratie niet downloaden, waardoor er een fout optreedt bij het koppelen van accounts. Wanneer Azure oplossingen inschakelt, ondersteunt het alleen bepaalde regio's voor het koppelen van een Log Analytics-werkruimte en een Automatiseringsaccount. Het is ook mogelijk dat er een onjuiste datum en/of tijd op de computer is ingesteld. Als de tijd +/-15 minuten van de huidige tijd is, mislukt de onboarding.
 
 #### <a name="resolution"></a>Oplossing
@@ -143,7 +145,7 @@ Zie Een werkruimte toevoegen of verwijderen als u wilt controleren of de werkrui
 
 Uw Log Analytics-werkruimte en automatiseringsaccount moeten zich in een gekoppelde regio bevinden. Zie [Azure Automation and Log Analytics workspace mappings](../how-to/region-mappings.md)voor een lijst met ondersteunde regio's.
 
-Mogelijk moet u ook de datum en of tijdzone van uw computer bijwerken. Als u een aangepast tijdsbereik selecteert, moet u ervoor zorgen dat het bereik zich in UTC bevindt, wat kan verschillen van uw lokale tijdzone.
+Mogelijk moet u ook de datum en/of tijdzone van uw computer bijwerken. Als u een aangepast tijdsbereik selecteert, moet u ervoor zorgen dat het bereik zich in UTC bevindt, wat kan verschillen van uw lokale tijdzone.
 
 ## <a name="linux"></a>Linux
 
@@ -220,6 +222,35 @@ Dit probleem kan worden veroorzaakt doordat uw proxy- of netwerkfirewall de comm
 Logboeken worden lokaal opgeslagen op elke hybride werknemer bij **C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes**. U controleren of er waarschuwings- of foutgebeurtenissen zijn in de **logboeken van toepassing en services\Microsoft-SMA\Operations** and **Application and Services Logs\Operations** Manager-gebeurtenislogboeken. Deze logboeken geven een verbindings- of ander type probleem aan dat van invloed is op de onboarding van de rol van Azure Automation of een probleem dat is ondervonden bij normale bewerkingen. Zie [Problemen met de Windows-agent Log Analytics oplossen](../../azure-monitor/platform/agent-windows-troubleshoot.md)voor aanvullende problemen met de log-analyse-agent.
 
 Hybride werknemers verzenden [Runbook-uitvoer en -berichten](../automation-runbook-output-and-messages.md) naar Azure Automation op dezelfde manier als runbook-taken die in de cloud worden uitgevoerd, uitvoer uitvoer en berichten verzenden. U de Verbose- en Progress-streams inschakelen, net zoals u dat doet voor runbooks.
+
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Scenario: Orchestrator.Sandbox.exe kan geen verbinding maken met Office 365 via proxy
+
+#### <a name="issue"></a>Probleem
+
+Een script dat wordt uitgevoerd op een Windows Hybrid Runbook Worker kan niet verbinding maken zoals verwacht met Office 365 op een Orchestrator sandbox. Het script maakt gebruik van [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) voor verbinding. 
+
+Als u **Orchestrator.Sandbox.exe.config** aanpast om de proxy en de bypasslijst in te stellen, wordt de sandbox nog steeds niet goed verbonden. Een **Powershell_ise.exe.config** bestand met dezelfde proxy en bypass lijst instellingen lijkt te werken als je verwacht. Sma-logboeken (Service Management Automation) en PowerShell-logboeken bieden geen informatie over proxy.
+
+#### <a name="cause"></a>Oorzaak
+
+De verbinding met de Active Directory Federation Services (ADFS) op de server kan de proxy niet omzeilen. Houd er rekening mee dat een PowerShell-sandbox wordt uitgevoerd als de aangemelde gebruiker. Een Orchestrator-sandbox is echter zwaar aangepast en kan de bestandsinstellingen **orchestrator.Sandbox.exe.config** negeren. Het heeft speciale code voor het hanteren van machine of MMA proxy-instellingen, maar niet voor het hanteren van andere aangepaste proxy-instellingen. 
+
+#### <a name="resolution"></a>Oplossing
+
+U het probleem voor de Sandbox Orchestrator oplossen door uw script te migreren om de Azure AD-modules te gebruiken in plaats van de MSOnline-module voor PowerShell-cmdlets. Zie [Migreren van Orchestrator naar Azure Automation (Beta).](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration)
+
+Als u de CMDlets van de MSOnline-module wilt blijven gebruiken, wijzigt u uw script om [Aanroep-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)te gebruiken. Waarden voor `ComputerName` de `Credential` parameters en parameters opgeven. 
+
+```powershell
+$Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential
+Invoke-Command -ComputerName $env:COMPUTERNAME -Credential $Credential 
+{ Connect-MsolService … }
+```
+
+Met deze codewijziging wordt een geheel nieuwe PowerShell-sessie gestart onder de context van de opgegeven referenties. Het moet het verkeer in staat stellen om door een proxyserver te stromen die de actieve gebruiker authenticert.
+
+>[!NOTE]
+>Deze oplossing maakt het niet nodig om het sandbox-configuratiebestand te manipuleren. Zelfs als u erin slaagt het configuratiebestand te laten werken met uw script, wordt het bestand elke keer dat de hybride runbookworker-agent wordt bijgewerkt, weggevaagd.
 
 ### <a name="scenario-hybrid-runbook-worker-not-reporting"></a><a name="corrupt-cache"></a>Scenario: Hybride runbookworker niet rapporteren
 

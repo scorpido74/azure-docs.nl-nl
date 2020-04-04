@@ -11,28 +11,28 @@ ms.date: 2/5/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: feb7b52c84e5e702202bc668cfda676d291ea82e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e281f8a1fb3959256d836134b4c59f5399deb9bd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350440"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633284"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Stream Analytics gebruiken met Azure Synapse Analytics
 
-Azure Stream Analytics is een volledig beheerde service die een laag-latentie, zeer beschikbare, schaalbare complexe gebeurtenisverwerking via streaminggegevens in de cloud biedt. U de basisbeginselen leren door [Inleiding tot Azure Stream Analytics te](../../stream-analytics/stream-analytics-introduction.md)lezen. U vervolgens leren hoe u een end-to-end oplossing maakt met Stream Analytics door de zelfstudie [van Azure Stream Analytics te](../../stream-analytics/stream-analytics-real-time-fraud-detection.md) volgen.
+Azure Stream Analytics is een volledig beheerde service die een laag-latentie, zeer beschikbare, schaalbare complexe gebeurtenisverwerking via streaminggegevens in de cloud biedt. U de basisbeginselen leren door [Inleiding tot Azure Stream Analytics te](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)lezen. U vervolgens leren hoe u een end-to-end oplossing maakt met Stream Analytics door de zelfstudie [van Azure Stream Analytics te](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) volgen.
 
 In dit artikel leert u hoe u uw gegevensmagazijn gebruiken als uitvoerput voor uw Azure Stream Analytics-taken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure Stream Analytics-taak - Als u een Azure Stream Analytics-taak wilt maken, voert u de stappen uit in de zelfstudie [Van Azure Stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md) om:  
+* Azure Stream Analytics-taak - Als u een Azure Stream Analytics-taak wilt maken, voert u de stappen uit in de zelfstudie [Van Azure Stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) om:  
 
     1. Een gebeurtenishub-ingang maken
     2. Toepassing gebeurtenisgenerator configureren en starten
     3. Een Stream Analytics-taak inrichten
     4. Taakinvoer en query opgeven
-* Azure Synapse SQL-poolgegevensmagazijn - Als u een nieuw gegevensmagazijn wilt maken, voert u de stappen in de [Quickstart om een nieuw gegevensmagazijn te maken.](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)
+* Azure Synapse SQL-poolgegevensmagazijn - Als u een nieuw gegevensmagazijn wilt maken, voert u de stappen in de [Quickstart om een nieuw gegevensmagazijn te maken.](create-data-warehouse-portal.md)
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Streaminguitvoer opgeven om naar uw gegevensmagazijn te wijzen
 
@@ -44,7 +44,7 @@ Ga vanuit de Azure-portal naar uw streamanalytics-taak en klik op **Uitvoer** on
 
 Klik op de knop **Toevoegen** en kies **SQL Database** in het vervolgkeuzemenu.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
+![SQL-database kiezen](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
 
 ### <a name="step-3"></a>Stap 3
 
@@ -60,7 +60,7 @@ Voer de volgende waarden in:
 * *Tabel:* Geef de naam op van de doeltabel in de database.
 * klik op de knop **Opslaan**
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
+![Voltooid SQL-databaseformulier](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
 
 ### <a name="step-4"></a>Stap 4
 
@@ -102,23 +102,23 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 Klik op de Azure-portal voor de taak Stream Analytics op uw taaknaam.  Klik op de knop ***Testen*** in het deelvenster ***Uitvoerdetails.***
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png)Wanneer de verbinding met de database slaagt, ziet u een melding in de portal.
+![Testknop op Outpout-details](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) Wanneer de verbinding met de database slaagt, ziet u een melding in de portal.
 
 ### <a name="step-6"></a>Stap 6
 
 Klik op het menu ***Query*** onder ***Taaktopologie*** en wijzig de query om gegevens in te voegen in de streamuitvoer die u hebt gemaakt.  Klik op de ***geselecteerde queryknop Testen*** om uw query te testen.  Klik op de knop ***Query opslaan*** wanneer de querytest is geslaagd.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
+![Query opslaan](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>Stap 7
 
 Start de azure stream analytics-taak.  Klik op de knop ***Start*** in het menu ***Overzicht.***
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
+![Stream Analytics-taak starten](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
-klik op de knop ***Start*** in het taakvenster start.
+Klik op de knop ***Start*** in het taakvenster start.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
+![Klik op Start](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

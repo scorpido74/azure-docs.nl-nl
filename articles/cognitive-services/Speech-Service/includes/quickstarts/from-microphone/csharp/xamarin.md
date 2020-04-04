@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 2ed41f424dfe985cc078314da5b138c7d7bcdf37
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 98181bac7cf9aca85766d78fcd753ad8bdabc3ee
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925962"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659065"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -146,4 +146,4 @@ Het bouwen en uitvoeren van Android- en iOS-toepassingen in het apparaat of de s
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

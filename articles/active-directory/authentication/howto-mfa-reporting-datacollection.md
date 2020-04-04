@@ -4,19 +4,19 @@ description: Welke informatie wordt gebruikt om gebruikers te authenticeren door
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848286"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653634"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication-gebruikersgegevensverzameling
 
@@ -141,7 +141,7 @@ Met het volgende proces kunnen beheerders met het volgende proces alle gegevens 
 - Zoek `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` en eventuele back-ups voor "\<gebruikersnaam>" (neem de aanhalingstekens in de zoekopdracht) om alle exemplaren van de gebruikersrecord te vinden die worden toegevoegd of gewijzigd.
    - Deze records kunnen worden beperkt (maar niet geëlimineerd) door het uitvinken van **"Wijzigingen van de gebruiker van het logboek"** in de MFA Server UX, logging sectie, Log Files tabblad.
    - Als syslog is geconfigureerd en **'Wijzigingen van de logboekgebruiker'** is aangevinkt in de MFA Server UX, Logging sectie, Syslog tabblad, dan kunnen de logboekvermeldingen worden verzameld uit syslog plaats.
-- Andere exemplaren van de gebruikersnaam in MultiFactorAuthSvc.log en andere MFA Server logbestanden met betrekking tot authenticatiepogingen worden beschouwd als operationeel en duplicatief voor de informatie die wordt verstrekt met multifactorauthgdpr.exe export of Web Service SDK GetUsergdpr.
+- Andere gebeurtenissen van de gebruikersnaam in MultiFactorAuthSvc.log en andere MFA Server logbestanden met betrekking tot authenticatie pogingen worden beschouwd als operationeel en duplicatief voor de informatie die met behulp van MultiFactorAuthGdpr.exe export of Web Service SDK GetUserGdpr.
 
 ## <a name="delete-data-from-mfa-server"></a>Gegevens verwijderen uit MFA-server
 

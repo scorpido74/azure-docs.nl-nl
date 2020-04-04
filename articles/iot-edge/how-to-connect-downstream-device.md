@@ -8,12 +8,12 @@ ms.date: 12/08/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6ddda38d887cdfe30b449847e2f625ba17f33898
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff9415ca20b859468528b56d27355430c4fc5a0f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76510801"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652070"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Een downstreamapparaat verbinden met een Azure IoT Edge-gateway
 
@@ -182,7 +182,7 @@ In deze sectie wordt een voorbeeldtoepassing geïntroduceerd om een Azure IoT Ja
 
 In deze sectie wordt een voorbeeldtoepassing geïntroduceerd om een Azure IoT Python-apparaatclient te verbinden met een IoT Edge-gateway.
 
-1. Download het voorbeeld voor **send_message** van de [Azure IoT-apparaat SDK voor Python-voorbeelden.](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios)
+1. Download het voorbeeld voor **send_message** van de [Azure IoT-apparaat SDK voor Python-voorbeelden.](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)
 2. Zorg ervoor dat u in een IoT Edge-container of in `EdgeHubConnectionString` `EdgeModuleCACertificateFile` een foutopsporingsscenario de variabelen en omgevings hebt ingesteld.
 3. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voorbeeld op uw apparaat.
 

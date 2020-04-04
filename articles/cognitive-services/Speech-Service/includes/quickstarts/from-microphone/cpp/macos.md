@@ -1,42 +1,36 @@
 ---
-title: 'Snelstart: spraak herkennen van een microfoon, C++ (macOS) - Spraakservice'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: wolfma61
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
-ms.author: wolfma
-ms.openlocfilehash: 96836c494cdf8f3df1621ee0e2eea6c6f64a039c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/03/2020
+ms.author: dapine
+ms.openlocfilehash: 4a8b91fbcecbc4f763c9a24ef8c2bcedc377e3b0
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925765"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659345"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * [Een Azure-spraakbron maken](../../../../get-started.md)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een Azure-spraakbron maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=macos)
 > * Zorg ervoor dat u toegang hebt tot een microfoon voor audio-opname
 
-## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
+## <a name="source-code"></a>Broncode
 
-1. Maak een C++ bronbestand met de naam `helloworld.cpp` en plak er de volgende code in.
+Maak een C++ bronbestand met de naam *helloworld.cpp*en plak de volgende code erin.
 
-   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/macos/from-microphone/helloworld.cpp#code)]
+[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/macos/from-microphone/helloworld.cpp#code)]
 
-1. Vervang in dit nieuwe bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel van de Speech-service.
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-1. Vervang de `YourServiceRegion` tekenreeks door de **regio-id** van [regio](https://aka.ms/speech/sdkregion) die is gekoppeld aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+## <a name="code-explanation"></a>Code uitleg
 
-> [!NOTE]
-> De Spraak-SDK wordt standaard herkend door het gebruik van en-ons voor de taal, zie [Brontaal opgeven voor spraak naar tekst](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
+[!INCLUDE [code explanation](../code-explanation.md)]
 
 ## <a name="build-the-app"></a>De app bouwen
 
@@ -72,4 +66,4 @@ Voordat u aan de slag gaat:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

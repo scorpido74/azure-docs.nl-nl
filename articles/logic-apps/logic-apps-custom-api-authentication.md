@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191407"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656239"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>De beveiliging voor oproepen naar aangepaste API's van Azure Logic Apps verhogen
 
@@ -179,7 +179,7 @@ Nadat u de client-id en tenant-id hebt opgemaakt, neemt u deze id's op als subbr
 
 Als u een lege web-app en een logische app automatisch wilt implementeren in combinatie met Azure Active Directory-verificatie, [bekijkt u hier de volledige sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json)of klikt u hier op Implementeren naar **Azure:**
 
-[![Implementeren naar Azure](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
+[![Implementeren in Azure](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
 #### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>Deel 3: De sectie Autorisatie in uw logica-app invullen
 
@@ -250,7 +250,7 @@ Neem **in** de sectie Autorisatie de volgende eigenschappen op:
 
 | Eigenschap | Vereist | Beschrijving |
 | -------- | -------- | ----------- |
-| `type` | Ja | Het verificatietype. Voor SSL-clientcertificaten moet `ClientCertificate`de waarde . |
+| `type` | Ja | Het verificatietype. Voor TLS/SSL-clientcertificaten moet `ClientCertificate`de waarde . |
 | `password` | Nee | Het wachtwoord voor toegang tot het clientcertificaat (PFX-bestand) |
 | `pfx` | Ja | De basis64-gecodeerde inhoud van het clientcertificaat (PFX-bestand) |
 ||||

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d5acdab9fb6eec585c53cfe0d7149aafa7cdc6f9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c3fcbf69e7dae14ccd2114a14c685b0443f70fef
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350113"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632442"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation-preview"></a>Celisolatie azure Synapse Analytics-werkbelastinggroep (voorbeeld)
 
@@ -30,13 +30,13 @@ In de volgende secties wordt uitgelegd hoe werkbelastinggroepen de mogelijkheid 
 
 ## <a name="workload-isolation"></a>Isolatie van workloads
 
-Werkbelastingisolatie betekent dat resources uitsluitend zijn gereserveerd voor een workloadgroep.  Workloadisolatie wordt bereikt door de parameter MIN_PERCENTAGE_RESOURCE te configureren tot groter dan nul in de syntaxis [VAN DE WERKBELASTINGGROEP MAKEN.](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)  Voor continue uitvoeringsworkloads die moeten voldoen aan krappe SLA's, zorgt isolatie ervoor dat resources altijd beschikbaar zijn voor de workloadgroep. 
+Werkbelastingisolatie betekent dat resources uitsluitend zijn gereserveerd voor een workloadgroep.  Workloadisolatie wordt bereikt door de parameter MIN_PERCENTAGE_RESOURCE te configureren tot groter dan nul in de syntaxis [VAN DE WERKBELASTINGGROEP MAKEN.](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)  Voor continue uitvoeringsworkloads die moeten voldoen aan krappe SLA's, zorgt isolatie ervoor dat resources altijd beschikbaar zijn voor de workloadgroep.
 
 Het configureren van workloadisolatie definieert impliciet een gegarandeerd niveau van gelijktijdigheid. Een werkbelastinggroep met `MIN_PERCENTAGE_RESOURCE` een ingesteld op `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 30% en ingesteld op 2% is bijvoorbeeld gegarandeerd 15 gelijktijdigheid.  Het niveau van gelijktijdigheid is gegarandeerd omdat 15-2% slots van resources te allen `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` tijde binnen de werkbelastinggroep zijn gereserveerd (ongeacht hoe is geconfigureerd).  Als `REQUEST_MAX_RESOURCE_GRANT_PERCENT` groter `REQUEST_MIN_RESOURCE_GRANT_PERCENT` is `CAP_PERCENTAGE_RESOURCE` dan `MIN_PERCENTAGE_RESOURCE` en groter is dan extra resources worden toegevoegd per aanvraag.  Als `REQUEST_MAX_RESOURCE_GRANT_PERCENT` `REQUEST_MIN_RESOURCE_GRANT_PERCENT` en gelijk `CAP_PERCENTAGE_RESOURCE` zijn `MIN_PERCENTAGE_RESOURCE`en groter is dan , is extra gelijktijdigheid mogelijk.  Overweeg de onderstaande methode voor het bepalen van gegarandeerde gelijktijdigheid:
 
 [Gegarandeerde gelijktijdigheid] =`MIN_PERCENTAGE_RESOURCE`[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`] / [ ]
 
-> [!NOTE] 
+> [!NOTE]
 > Er zijn specifieke serviceniveau minimale haalbare waarden voor min_percentage_resource.  Zie [Effectieve waarden](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values) voor meer informatie voor meer informatie.
 
 Bij afwezigheid van werkbelastingisolatie werken aanvragen in de [gedeelde groep](#shared-pool-resources) resources.  Toegang tot bronnen in de gedeelde groep is niet gegarandeerd en wordt toegewezen op basis [van belang.](sql-data-warehouse-workload-importance.md)
@@ -45,7 +45,7 @@ Het configureren van workloadisolatie moet met de nodige voorzichtigheid worden 
 
 Gebruikers moeten voorkomen dat een oplossing voor werkbelastingbeheer wordt geconfigureerd die 100% workload isolation configureert: 100% isolatie wordt bereikt wanneer de som van min_percentage_resource geconfigureerd voor alle workloadgroepen 100% bedraagt.  Dit type configuratie is te restrictief en rigide, waardoor er weinig ruimte overblijft voor resourceaanvragen die per ongeluk verkeerd zijn geclassificeerd. Er is een bepaling die een aanvraag kan uitvoeren vanuit werkbelastinggroepen die niet zijn geconfigureerd voor isolatie. De middelen die aan dit verzoek worden toegewezen, worden weergegeven als een nul in de systemen DMVs en lenen een smallrc-niveau van middelensubsidie uit systeemgereserveerde resources.
 
-> [!NOTE] 
+> [!NOTE]
 > Om een optimaal gebruik van resources te garanderen, overweeg dan een oplossing voor werkbelastingbeheer die gebruikmaakt van een isolatie om ervoor te zorgen dat SLA's worden nageleefd en worden gemengd met gedeelde resources die worden benaderd op basis van [het belang van de werkbelasting.](sql-data-warehouse-workload-importance.md)
 
 ## <a name="workload-containment"></a>Werkbelastinginsbeperking
@@ -56,21 +56,21 @@ Het configureren van workloadcontainment definieert impliciet een maximaal nivea
 
 [Max Concurrency]`CAP_PERCENTAGE_RESOURCE`= [`REQUEST_MIN_RESOURCE_GRANT_PERCENT`] / [ ]
 
-> [!NOTE] 
+> [!NOTE]
 > De effectieve CAP_PERCENTAGE_RESOURCE van een werkbelastinggroep zal niet 100% bereiken wanneer workloadgroepen met MIN_PERCENTAGE_RESOURCE op een niveau van meer dan nul worden gemaakt.  Zie [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) voor effectieve runtime-waarden.
 
 ## <a name="resources-per-request-definition"></a>Definitie van resources per aanvraag
 
 Werkbelastinggroepen bieden een mechanisme om de min- en maximumhoeveelheid resources te definiëren die per aanvraag worden toegewezen met de REQUEST_MIN_RESOURCE_GRANT_PERCENT- en REQUEST_MAX_RESOURCE_GRANT_PERCENT parameters in de [syntaxis VAN DE WERKBELASTINGGROEP MAKEN.](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)  Bronnen in dit geval zijn CPU en geheugen.  Het configureren van deze waarden bepaalt hoeveel resources en welk niveau van gelijktijdigheid kan worden bereikt op het systeem.
 
-> [!NOTE] 
+> [!NOTE]
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT is een optionele parameter die standaard wordt ingesteld op dezelfde waarde die is opgegeven voor REQUEST_MIN_RESOURCE_GRANT_PERCENT.
 
 Net als het kiezen van een resourceklasse, stelt u REQUEST_MIN_RESOURCE_GRANT_PERCENT de waarde in voor de resources die door een aanvraag worden gebruikt.  Het bedrag van de middelen aangegeven door de ingestelde waarde is gegarandeerd voor toewijzing aan de aanvraag voordat deze met de uitvoering begint.  Voor klanten die migreren van resourceklassen naar werkbelastinggroepen, u het artikel [How To](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md) volgen om van resourcesklassen naar werkbelastinggroepen als uitgangspunt te brengen.
 
-Door REQUEST_MAX_RESOURCE_GRANT_PERCENT te configureren naar een waarde die groter is dan REQUEST_MIN_RESOURCE_GRANT_PERCENT, kan het systeem meer resources per aanvraag toewijzen.  Tijdens het plannen van een aanvraag bepaalt het systeem de werkelijke toewijzing van resources aan de aanvraag, die tussen REQUEST_MIN_RESOURCE_GRANT_PERCENT en REQUEST_MAX_RESOURCE_GRANT_PERCENT ligt, op basis van de beschikbaarheid van resources in de gedeelde groep en de huidige belasting op de Systeem.  De resources moeten bestaan in de [gedeelde groep](#shared-pool-resources) resources wanneer de query is gepland.  
+Door REQUEST_MAX_RESOURCE_GRANT_PERCENT te configureren naar een waarde die groter is dan REQUEST_MIN_RESOURCE_GRANT_PERCENT, kan het systeem meer resources per aanvraag toewijzen.  Tijdens het plannen van een aanvraag bepaalt het systeem de werkelijke toewijzing van resources aan de aanvraag, die tussen REQUEST_MIN_RESOURCE_GRANT_PERCENT en REQUEST_MAX_RESOURCE_GRANT_PERCENT ligt, op basis van de beschikbaarheid van resources in de gedeelde groep en de huidige belasting van het systeem.  De resources moeten bestaan in de [gedeelde groep](#shared-pool-resources) resources wanneer de query is gepland.  
 
-> [!NOTE] 
+> [!NOTE]
 > REQUEST_MIN_RESOURCE_GRANT_PERCENT en REQUEST_MAX_RESOURCE_GRANT_PERCENT hebben effectieve waarden die afhankelijk zijn van de effectieve MIN_PERCENTAGE_RESOURCE en CAP_PERCENTAGE_RESOURCE waarden.  Zie [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) voor effectieve runtime-waarden.
 
 ## <a name="execution-rules"></a>Uitvoeringsregels

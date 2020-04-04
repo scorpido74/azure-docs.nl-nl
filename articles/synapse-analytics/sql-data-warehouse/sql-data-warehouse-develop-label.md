@@ -11,18 +11,21 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c1a4ffcab3d10f1dc91ce036e995ae0026a0d718
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 5e2cd03ae878e80139a7f7a8ba67cef15b24d571
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619017"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633497"
 ---
 # <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Labels gebruiken voor instrumentquery's in de Synapse SQL-groep
+
 In dit artikel zijn tips opgenomen voor het ontwikkelen van oplossingen met behulp van labels voor instrumentquery's in SQL-pool.
 
+Tips voor het gebruik van labels voor instrumentquery's in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
 
 ## <a name="what-are-labels"></a>Wat zijn labels?
+
 SQL-groep ondersteunt een concept dat querylabels wordt genoemd. Voordat we in gaan op een diepte, laten we eens kijken naar een voorbeeld:
 
 ```sql
@@ -32,7 +35,7 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-De laatste regel tagt de tekenreeks 'Mijn querylabel' aan de query. Deze tag is handig omdat het label query-able is via de DMVs. 
+De laatste regel tagt de tekenreeks 'Mijn querylabel' aan de query. Deze tag is handig omdat het label query-able is via de DMVs.
 
 Zoeken naar labels biedt een mechanisme voor het lokaliseren van probleemquery's en het helpen identificeren van de voortgang via een ELT-run.
 
@@ -48,11 +51,8 @@ WHERE   r.[label] = 'My Query Label'
 ```
 
 > [!NOTE]
-> Het is essentieel om vierkante haakjes of dubbele aanhalingstekens rond het woordetiket te zetten wanneer het vragen. Label is een gereserveerd woord en veroorzaakt een fout wanneer het niet wordt afgebakend. 
-> 
-> 
+> Het is essentieel om vierkante haakjes of dubbele aanhalingstekens rond het woordetiket te zetten wanneer het vragen. Label is een gereserveerd woord en veroorzaakt een fout wanneer het niet wordt afgebakend.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Zie voor meer ontwikkelingstips [het ontwikkelingsoverzicht.](sql-data-warehouse-overview-develop.md)
-
-

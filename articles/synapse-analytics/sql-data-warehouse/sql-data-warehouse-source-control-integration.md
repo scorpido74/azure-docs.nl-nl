@@ -10,22 +10,22 @@ ms.subservice: ''
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9898addfa840752e27de8716d2185e767aac809b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0ffa33811957af95fc10396ffecef0b3de7959fe
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350096"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633025"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Source Control Integration for SQL pool
 
-In deze zelfstudie wordt beschreven hoe u uw SQL Server Data Tools (SSDT)-databaseproject integreren met bronbeheer.  Source control integration is de eerste stap in het bouwen van uw pijplijn voor continue integratie en implementatie met de SQL-poolbron in Azure Synapse Analytics. 
+In deze zelfstudie wordt beschreven hoe u uw SQL Server Data Tools (SSDT)-databaseproject integreren met bronbeheer.  Source control integration is de eerste stap in het bouwen van uw pijplijn voor continue integratie en implementatie met de SQL-poolbron in Azure Synapse Analytics.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 - Aanmelden voor een [Azure DevOps-organisatie](https://azure.microsoft.com/services/devops/)
-- Ga door de [zelfstudie Maken en Verbinden](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)
--  [Visual Studio 2019 installeren](https://visualstudio.microsoft.com/vs/older-downloads/) 
+- Ga door de [zelfstudie Maken en Verbinden](create-data-warehouse-portal.md)
+- [Visual Studio 2019 installeren](https://visualstudio.microsoft.com/vs/older-downloads/)
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>Azure DevOps instellen en verbinding maken met Azure DevOps
 
@@ -53,7 +53,7 @@ In deze zelfstudie wordt beschreven hoe u uw SQL Server Data Tools (SSDT)-databa
 
    ![Project importeren](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "Project importeren")  
 
-3. In teamexplorer in Visual Studio verbind je je alle wijzigingen in je lokale Git-repository 
+3. In teamexplorer in Visual Studio verbind je je alle wijzigingen in je lokale Git-repository
 
    ![Doorvoeren](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Doorvoeren")  
 

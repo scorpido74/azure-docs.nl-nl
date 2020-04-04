@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11c57065e21c48a23148cacd91a42737edc13538
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1e60c35a32152d4adec72fb507becc0db535036f
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80049409"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631729"
 ---
 # <a name="what-is-azure-ad-connect"></a>Wat is Azure AD Connect?
 
@@ -26,7 +26,7 @@ Azure AD Connect is het programma van Microsoft dat is ontworpen om te voldoen a
 - [Pass through-verificatie](how-to-connect-pta.md): een aanmeldingsmethode waarmee gebruikers hetzelfde wachtwoord on-premises en in de cloud kunnen gebruiken, zonder dat er een extra infrastructuur van een federatieve omgeving vereist is.
 - [Integratie van federatie](how-to-connect-fed-whatis.md): een optioneel onderdeel van Azure AD Connect dat kan worden gebruikt om een hybride omgeving te configureren met behulp van een on-premises AD FS-infrastructuur. Het onderdeel biedt ook beheermogelijkheden voor AD FS, zoals het verlengen van certificaten en aanvullende implementaties van AD FS-servers.
 - [Synchronisatie](how-to-connect-sync-whatis.md): verantwoordelijk voor het maken van gebruikers, groepen en andere objecten.  Het kan ook gebruikt worden om te controleren of de identiteitsinformatie van uw on-premises gebruikers en groepen overeenkomt met de cloud.  Deze synchronisatie bevat ook wachtwoord-hashes.
--      [Statusbewaking](whatis-hybrid-identity-health.md) - Azure AD Connect Health kan robuuste bewaking bieden en een centrale locatie bieden in de Azure-portal om deze activiteit te bekijken. 
+- [Statusbewaking](whatis-hybrid-identity-health.md) - Azure AD Connect Health kan robuuste bewaking bieden en een centrale locatie bieden in de Azure-portal om deze activiteit te bekijken. 
 
 
 ![Wat is Azure AD Connect?](./media/whatis-hybrid-identity/arch.png)

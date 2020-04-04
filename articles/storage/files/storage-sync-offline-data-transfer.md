@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9398aceeb7465392e82aeaa5760f6c0504f8e33d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0331419de89775062f1309c5d854cd7325c68e4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159520"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656752"
 ---
-# <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Bulkgegevens migreren naar Azure File Sync met Azure DataBox
+# <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Bulkgegevens migreren in Azure File Sync met Azure DataBox
 U bulkgegevens op twee manieren migreren naar Azure File Sync:
 
 * **Upload uw bestanden met Azure File Sync.** Dit is de eenvoudigste methode. Verplaats uw bestanden lokaal naar Windows Server 2012 R2 of hoger en installeer de Azure File Sync-agent. Nadat u de synchronisatie hebt ingesteld, worden uw bestanden geüpload vanaf de server. (Onze klanten ervaren momenteel een gemiddelde uploadsnelheid van 1 TiB ongeveer om de twee dagen.) Als u ervoor wilt zorgen dat uw server niet te veel bandbreedte voor uw datacenter gebruikt, u een [bandbreedtebeperkingsschema](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter)instellen.
@@ -25,7 +25,7 @@ In dit artikel wordt uitgelegd hoe u bestanden offline migreert op een manier di
 ## <a name="migration-tools"></a>Hulpprogramma's voor migratie
 Het proces dat we in dit artikel beschrijven werkt niet alleen voor Data Box, maar ook voor andere offline migratietools. Het werkt ook voor tools zoals AzCopy, Robocopy of partnertools en -services die rechtstreeks via het internet werken. Volg echter de stappen in dit artikel om deze hulpprogramma's te gebruiken op een manier die compatibel is met Azure File Sync.
 
-In sommige gevallen moet u van de ene Windows Server naar de andere Windows Server gaan voordat u Azure File Sync overneemt. [Storage Migration Service](https://aka.ms/storagemigrationservice) (SMS) kan daarbij helpen. Of u nu moet migreren naar een Server OS-versie die wordt ondersteund door Azure File Sync (Windows Server 2012R2 en meer) of dat u gewoon moet migreren omdat u een nieuw systeem voor Azure File Sync koopt, SMS heeft tal van functies en voordelen die u helpen om uw migratie soepel verlopen.
+In sommige gevallen moet u van de ene Windows Server naar de andere Windows Server gaan voordat u Azure File Sync overneemt. [Storage Migration Service](https://aka.ms/storagemigrationservice) (SMS) kan daarbij helpen. Of u nu moet migreren naar een Server OS-versie die wordt ondersteund door Azure File Sync (Windows Server 2012R2 en meer) of dat u gewoon moet migreren omdat u een nieuw systeem voor Azure File Sync koopt, SMS heeft tal van functies en voordelen die ervoor zorgen dat uw migratie soepel verloopt.
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>Voordelen van het gebruik van een tool om gegevens offline over te dragen
 Dit zijn de belangrijkste voordelen van het gebruik van een transfertool zoals Data Box voor offline migratie:
@@ -53,14 +53,17 @@ U Azure File Sync als voorbeeld instellen op een manier die compatibel is met hu
 |---|---------------------------------------------------------------------------------------|
 | ![Stap 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Bestel uw databox.](../../databox/data-box-deploy-ordered.md) De Data Box-familie biedt [verschillende producten](https://azure.microsoft.com/services/storage/databox/data) om aan uw behoeften te voldoen. Wanneer u uw gegevensvak ontvangt, volgt u de [documentatie om uw gegevens](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) naar dit UNC-pad te kopiëren in de gegevensvak: * \\<DeviceIPAddres\>\<StorageAccountName_AzFile\>\<ShareName\>*. Hier is *ShareName* de naam van het staging share. Stuur het gegevensvak terug naar Azure. |
 | ![Stap 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Wacht tot uw bestanden worden weergegeven in de Azure-bestandsshares die u hebt gekozen als tijdelijke faseringsshares. *Schakel synchronisatie met deze shares niet in.* |
-| ![Stap 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Maak een nieuwe lege share voor elke bestandsshare die gegevensvak voor u heeft gemaakt. Dit nieuwe aandeel moet in dezelfde opslagaccount staan als het aandeel Data Box. [Een nieuwe Azure-bestandsshare maken.](storage-how-to-create-file-share.md) |
-| ![Stap 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Maak een synchronisatiegroep](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) in een opslagsynchronisatieservice. Verwijs naar het lege aandeel als een eindpunt in de cloud. Herhaal deze stap voor elke gegevensboxbestandsshare. [Azure File Sync instellen](storage-sync-files-deployment-guide.md). |
-| ![Stap 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | [Voeg uw live servermap toe als servereindpunt.](storage-sync-files-deployment-guide.md#create-a-server-endpoint) Geef in het proces op dat u de bestanden naar Azure hebt verplaatst en verwijs naar de faseringsshares. U cloudlagen indien nodig in- of uitschakelen. Terwijl u een servereindpunt maakt op uw liveserver, verwijst u naar de faseringsshare. Selecteer op het **eindpuntblad Van** de server onder **Offline gegevensoverdracht**de optie **Ingeschakeld**en selecteer vervolgens het faseringsaandeel dat zich in hetzelfde opslagaccount moet bevinden als het eindpunt van de cloud. Hier wordt de lijst met beschikbare aandelen gefilterd op opslagaccount en aandelen die nog niet zijn gesynchroniseerd. |
+| ![Stap 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | <ul><li>Maak een nieuwe lege share voor elke bestandsshare die gegevensvak voor u heeft gemaakt. Dit nieuwe aandeel moet in dezelfde opslagaccount staan als het aandeel Data Box. [Een nieuwe Azure-bestandsshare maken.](storage-how-to-create-file-share.md)</li><li>[Maak een synchronisatiegroep](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) in een Storage Sync Service. Verwijs naar het lege aandeel als een eindpunt in de cloud. Herhaal deze stap voor elke gegevensboxbestandsshare. [Azure File Sync instellen](storage-sync-files-deployment-guide.md).</li></ul> |
+| ![Stap 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Voeg uw live servermap toe als servereindpunt.](storage-sync-files-deployment-guide.md#create-a-server-endpoint) Geef in het proces op dat u de bestanden naar Azure hebt verplaatst en verwijs naar de faseringsshares. U cloudlagen indien nodig in- of uitschakelen. Terwijl u een servereindpunt maakt op uw liveserver, verwijst u naar de faseringsshare. Selecteer op het **eindpuntblad Van** de server onder **Offline gegevensoverdracht**de optie **Ingeschakeld**en selecteer vervolgens het faseringsaandeel dat zich in hetzelfde opslagaccount moet bevinden als het eindpunt van de cloud. Hier wordt de lijst met beschikbare aandelen gefilterd op opslagaccount en aandelen die nog niet zijn gesynchroniseerd. In de schermafbeelding na deze tabel ziet u hoe u naar het aandeel DataBox verwijzen tijdens het maken van servereindpunten in de Azure-portal. |
+| ![Stap 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | Zodra u het servereindpunt in de vorige stap hebt toegevoegd, worden de gegevens automatisch vanuit de juiste bron weergegeven. In de sectie [Synchroniseren van de share](#syncing-the-share) wordt uitgelegd wanneer gegevens afkomstig zijn van het aandeel DataBox of van de Windows Server |
+| |
 
 ![Schermafbeelding van de gebruikersinterface van de Azure-portal, waarin wordt weergegeven hoe u offline gegevensoverdracht inschakelen terwijl u een nieuw servereindpunt maakt](media/storage-sync-files-offline-data-transfer/data-box-integration-2-600.png)
 
 ## <a name="syncing-the-share"></a>Het aandeel synchroniseren
-Nadat u het servereindpunt hebt gemaakt, wordt de synchronisatie gestart. Het synchronisatieproces bepaalt of elk bestand op de server ook bestaat in de faseringsshare waarin Gegevensvak de bestanden heeft gedeponeerd. Als het bestand daar bestaat, kopieert het synchronisatieproces het bestand van de faseringsshare in plaats van het te uploaden vanaf de server. Als het bestand niet bestaat in de faseringsshare of als er een nieuwere versie beschikbaar is op de lokale server, wordt het bestand van de lokale server geüpload.
+Nadat u het eindpunt van de server hebt gemaakt, wordt de synchronisatie gestart. Het synchronisatieproces bepaalt of elk bestand op de server ook bestaat in de faseringsshare waarin Gegevensvak de bestanden heeft gedeponeerd. Als het bestand daar bestaat, kopieert het synchronisatieproces het bestand van de faseringsshare in plaats van het te uploaden vanaf de server. Als het bestand niet bestaat in de faseringsshare of als er een nieuwere versie beschikbaar is op de lokale server, wordt het bestand van de lokale server geüpload.
+
+Wanneer u de share synchroniseert, worden ontbrekende bestandskenmerken, machtigingen of tijdstempels van de bestandsvarianten op de lokale server samengevoegd, waarbij ze worden gecombineerd met hun bestandstegenhangers uit het aandeel DataBox. Dit zorgt ervoor dat elk bestand en elke map wordt geleverd met alle mogelijke bestandsgetrouwheid in het Azure-bestandsaandeel.
 
 > [!IMPORTANT]
 > U de bulkmigratiemodus alleen inschakelen terwijl u een servereindpunt maakt. Nadat u een servereindpunt hebt ingesteld, u bulkgemigreerde gegevens van een reeds synchroniserende server niet integreren in de naamruimte.

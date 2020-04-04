@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77211702"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637932"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Richtlijnen voor het implementeren van webapps met Azure Resource Manager-sjablonen
 
@@ -109,7 +109,7 @@ De naam voor uw web-app moet wereldwijd uniek zijn. U een naamgevingsconventie g
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Als uw sjabloon een [Microsoft.Web/certificaten-bron](/azure/templates/microsoft.web/certificates) voor SSL-binding bevat en het certificaat is opgeslagen in een Sleutelkluis, moet u ervoor zorgen dat de app-service-identiteit toegang heeft tot het certificaat.
+Als uw sjabloon een [Microsoft.Web/certificaten-bron](/azure/templates/microsoft.web/certificates) voor TLS/SSL-binding bevat en het certificaat is opgeslagen in een Key Vault, moet u ervoor zorgen dat de app-service-identiteit toegang heeft tot het certificaat.
 
 In globale Azure heeft de serviceprincipal van App Service de ID van **abfa0a7c-a6b6-4736-8310-5855508787cd**. Gebruik het als belangrijkste toegang tot Key Vault voor de hoofdsom van de App-serviceservice:
 

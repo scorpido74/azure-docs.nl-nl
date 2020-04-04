@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a54d7490fb306bfbc8e1b111e7b7d64c09d2292
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92ac0417e9d8adca168dd68e1721a1c9c890de1c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276606"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656939"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Schaal en hosting van Azure Functions
 
@@ -109,7 +109,7 @@ Zelfs als Always On is ingeschakeld, wordt de uitvoeringstime-out voor afzonderl
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Het hostingplan van een bestaande toepassing bepalen
 
-Zie **App Service-plan /prijscategorie** op het tabblad **Overzicht** voor de functie-app in de [Azure-portal](https://portal.azure.com)voor het bepalen van het hostingplan dat door uw functie-app wordt gebruikt. Voor App Service-abonnementen wordt ook de prijscategorie aangegeven.
+Zie **App Service-abonnement** op het tabblad **Overzicht** voor de functie-app in de [Azure-portal](https://portal.azure.com)als u het hostingplan wilt bepalen dat door uw functie-app wordt gebruikt. Als u de prijslaag wilt bekijken, selecteert u de naam van het **App-serviceplan**en selecteert u **Eigenschappen** in het linkerdeelvenster.
 
 ![Schaalplan weergeven in de portal](./media/functions-scale/function-app-overview-portal.png)
 
@@ -124,7 +124,7 @@ Wanneer de uitvoer van `dynamic`deze opdracht is, bevindt uw functie-app zich in
 
 ## <a name="storage-account-requirements"></a>Vereisten voor een opslagaccount
 
-Voor elk abonnement is een functie-app vereist, waarvoor een algemeen Azure Storage-account is vereist, dat Azure Blob, Queue, Files en Tabelopslag ondersteunt. Dit komt omdat Functions afhankelijk is van Azure Storage voor bewerkingen zoals het beheren van triggers en beheerfunctieuitvoeringen, maar sommige opslagaccounts ondersteunen geen wachtrijen en tabellen. Deze accounts, waaronder opslagaccounts met bloballeen (inclusief premium opslag) en opslagaccounts voor algemene doeleinden met zoneredundante opslagreplicatie, worden uit gefilterd uit uw bestaande **selecties voor opslagaccounts** wanneer u een functie-app maakt.
+Voor elk abonnement is een functie-app vereist, waarvoor een algemeen Azure Storage-account is vereist, dat Azure Blob, Queue, Files en Tabelopslag ondersteunt. Azure-functies zijn namelijk afhankelijk van Azure Storage voor bewerkingen zoals het beheren van triggers en beheerfunctieuitvoeringen, maar sommige opslagaccounts ondersteunen geen wachtrijen en tabellen. Deze accounts, waaronder opslagaccounts met bloballeen (inclusief premium opslag) en opslagaccounts voor algemene doeleinden met zoneredundante opslagreplicatie, worden uit gefilterd uit uw bestaande **selecties voor opslagaccounts** wanneer u een functie-app maakt.
 
 Hetzelfde opslagaccount dat door uw functie-app wordt gebruikt, kan ook worden gebruikt door uw triggers en bindingen om uw toepassingsgegevens op te slaan. Voor opslagintensieve bewerkingen moet u echter een apart opslagaccount gebruiken.  
 
@@ -134,7 +134,7 @@ Het is zeker mogelijk voor meerdere functie-apps om hetzelfde opslagaccount te d
 
 Zie [De azure storageservices introduceren](../storage/common/storage-introduction.md#azure-storage-services)voor meer informatie over opslagaccounttypen.
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>Hoe de consumptie- en premieplannen werken
+## <a name="how-the-consumption-and-premium-plans-work"></a>Hoe de consumptie- en premiumplannen werken
 
 In de abonnementen Voor verbruik en Premium worden de infrastructuur voor Azure-functies geschaald door cpu- en geheugenbronnen toe te voegen door extra exemplaren van de functiehost toe te voegen, op basis van het aantal gebeurtenissen waarop de functies worden geactiveerd. Elk exemplaar van de functiehost in het verbruiksplan is beperkt tot 1,5 GB geheugen en één CPU.  Een instantie van de host is de volledige functie-app, wat betekent dat alle functies binnen een functie-app bron delen binnen een instantie en schalen op hetzelfde moment. Functie-apps die hetzelfde verbruiksplan delen, worden onafhankelijk van elkaar geschaald.  In het Premium-abonnement bepaalt uw abonnementsgrootte het beschikbare geheugen en de CPU voor alle apps in dat abonnement op dat exemplaar.  
 
@@ -162,7 +162,7 @@ Schalen kan variëren op een aantal factoren en anders schalen op basis van de g
 
 Er zijn veel aspecten van een functie-app die van invloed zijn op hoe goed deze wordt geschaald, waaronder hostconfiguratie, runtime-footprint en resource-efficiëntie.  Zie voor meer informatie het [gedeelte schaalbaarheid van het artikel prestatieoverwegingen](functions-best-practices.md#scalability-best-practices). U moet zich ook bewust zijn van hoe verbindingen zich gedragen als uw functie-app schaalt. Zie [Verbindingen beheren in Azure-functies](manage-connections.md)voor meer informatie.
 
-Zie [Azure Functions Python-ontwikkelaarshandleiding - Schalen en gelijktijdigheid](functions-reference-python.md#scaling-and-concurrency) en [Azure Functions Node.js-ontwikkelaarshandleiding - Schalen en gelijktijdigheid](functions-reference-node.md#scaling-and-concurrency)voor meer informatie over schalen in Python en Node.js .
+Zie [Azure Functions Python-ontwikkelaarshandleiding - Schalen en gelijktijdigheid](functions-reference-python.md#scaling-and-concurrency) en [Azure Functions Node.js-ontwikkelaarshandleiding - Schalen en gelijktijdigheid](functions-reference-node.md#scaling-and-concurrency)voor meer informatie over schalen in Python en Node.js.
 
 ### <a name="billing-model"></a>Factureringsmodel
 

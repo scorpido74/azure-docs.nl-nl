@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 147f43148c0f804adf70f1a792ba1b8a772fdae4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8da8cd7110cd17d0aadd52cce1263c7c0fcfdf5c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294492"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632158"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tien dingen die u doen op de Virtuele Windows Data Science-machine
 
@@ -803,16 +803,6 @@ pd.read_sql(queryString, connection)
 ```
 
 ![Bovenste rijen met gegevens uit de tabel](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
-
-#### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>Gegevens van HDI lezen met Azure Machine Learning Studio (klassiek): leesmodule
-
-U de lezermodule in Azure Machine Learning Studio (klassiek) ook gebruiken om toegang te krijgen tot de database in een Hadoop-cluster. Sluit de referenties van uw HDI-clusters en Azure-opslagaccount aan om machine learning-modellen te bouwen met behulp van een database in HDI-clusters.
-
-![Eigenschappen van lezermodule](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
-
-U vervolgens de gescoorde gegevensset bekijken:
-
-![Gegevensset gescoorde gegevensset weergeven](./media/vm-do-ten-things/AML_Model_Results.PNG)
 
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL Data Warehouse en databases
 Azure SQL Data Warehouse is een elastisch datawarehouse als een service met een SQL Server-ervaring van bedrijfsklasse.

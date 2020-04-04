@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
-ms.openlocfilehash: 76de7a8854a58deb924cbbe3177ad5a7b5fd57a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 587a17659a412d6f894faf5a744a7d9c444935c8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083471"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656751"
 ---
 # <a name="configure-expressroute-global-reach"></a>ExpressRoute Global Reach configureren
 
@@ -38,7 +38,7 @@ Bevestig het volgende voordat u de configuratie start:
 1. Als u de configuratie wilt starten, meldt u zich aan bij uw Azure-account en selecteert u het abonnement dat u wilt gebruiken.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. Identificeer de ExpressRoute-circuits die u wilt gebruiken. U ExpressRoute Global Reach inschakelen tussen twee ExpressRoute-circuits, zolang ze zich in de ondersteunde landen/regio's bevinden en op verschillende peeringlocaties zijn gemaakt. 
+2. Identificeer de ExpressRoute-circuits die u wilt gebruiken. U ExpressRoute Global Reach inschakelen tussen het privé-peering van twee ExpressRoute-circuits, zolang ze zich in de ondersteunde landen/regio's bevinden en op verschillende peeringlocaties zijn gemaakt. 
 
    * Als uw abonnement eigenaar is van beide circuits, u kiezen voor een van beide circuits om de configuratie in de volgende secties uit te voeren.
    * Als de twee circuits zich in verschillende Azure-abonnementen bevinden, hebt u autorisatie nodig van één Azure-abonnement. Vervolgens geeft u de autorisatiesleutel door wanneer u de configuratieopdracht uitvoert in het andere Azure-abonnement.

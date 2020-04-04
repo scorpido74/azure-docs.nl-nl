@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: bd384f2b4dd879c30fafd2b765dd9ba0efb12447
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/03/2020
+ms.openlocfilehash: 343e94fe681d398b695e0e24c22544bca470d75a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348395"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652193"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB-servicequota
 
@@ -152,6 +152,9 @@ Cosmos DB ondersteunt queryitems met [SQL](how-to-sql-query.md). In de volgende 
 | Maximale JOIN per query| 5<sup>*</sup>|
 | Maximale UDF's per query| 10<sup>*</sup>|
 | Maximale punten per veelhoek| 4096 |
+| Maximaal opgenomen paden per container| 500 |
+| Maximaal uitgesloten paden per container| 500 |
+| Maximale eigenschappen in een samengestelde index| 8 |
 
 <sup>*</sup>U deze SQL-querylimieten verhogen door contact op te nemen met Azure Support.
 
@@ -163,7 +166,7 @@ In de volgende tabel worden de grenzen vermeld die specifiek zijn voor mongoDB-f
 
 | Resource | Standaardlimiet |
 | --- | --- |
-| Maximale MongoDB-querygeheugengrootte | 40 MB |
+| Maximale MongoDB-querygeheugengrootte (Deze beperking is alleen voor 3.2-serverversie) | 40 MB |
 | Maximale uitvoeringstijd voor MongoDB-activiteiten| 30s |
 | Time-out voor idle verbinding voor afsluiting van de verbinding aan de server* | 30 minuten |
 

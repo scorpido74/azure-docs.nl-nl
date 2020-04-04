@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 00c6b09662d19fb50d3b0bffc1148fb225da7def
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1d77acf9f076bbb9a4f4da5c592a0443b8585299
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74973846"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656111"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Snelstart: Een externe afbeelding analyseren met behulp van de REST-API en JavaScript in Computer Vision
 
@@ -26,18 +26,18 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
+U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Sla uw abonnementssleutel en url van eindpunt op naar een tijdelijke locatie.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
 U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
-1. Kopieer de volgende code naar een teksteditor.
+1. Maak een bestand genaamd _analyze-image.html,_ open het in een teksteditor en kopieer de volgende code erin.
 1. Vervang eventueel de waarde van het `value`-kenmerk voor het `inputImage`-besturingselement door de URL van een andere afbeelding die u wilt analyseren.
-1. Sla de code op als een bestand met de extensie `.html`. Bijvoorbeeld `analyze-image.html`.
 1. Open een browservenster.
 1. Sleep het bestand in de browser naar het browservenster.
-1. Wanneer de webpagina wordt weergegeven in de browser, kiest u de knop **Afbeelding analyseren**.
+1. Wanneer de webpagina in de browser wordt weergegeven, plakt u uw abonnementssleutel en url van eindpunt in de juiste invoervakken.
+1. Selecteer de knop **Afbeelding analyseren.**
 
 ```html
 <!DOCTYPE html>
@@ -54,9 +54,8 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
         // *** Update or verify the following values. ***
         // **********************************************
 
-        let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
-        let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
-        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        var subscriptionKey = document.getElementById("subscriptionKey").value;
+        var endpoint = document.getElementById("endpointUrl").value;
         
         var uriBase = endpoint + "vision/v2.1/analyze";
 
@@ -106,6 +105,13 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
 <h1>Analyze image:</h1>
 Enter the URL to an image, then click the <strong>Analyze image</strong> button.
+<br><br>
+Subscription key: 
+<input type="text" name="subscriptionKey" id="subscriptionKey"
+    value="" /> 
+Endpoint URL:
+<input type="text" name="endpointUrl" id="endpointUrl"
+    value="" />
 <br><br>
 Image to analyze:
 <input type="text" name="inputImage" id="inputImage"

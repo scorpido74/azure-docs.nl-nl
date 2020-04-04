@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 99220fdf5dfb47f235637f83ba9be4ec015758bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f33dc9528d5f7043dda2c6fad207a9a51347a2b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294444"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631481"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Problemen met Azure Automation Desired State Configuration (DSC) oplossen
 
@@ -48,7 +48,7 @@ Zie [XDscDiagnostics gebruiken om DSC-logboeken te analyseren voor](/powershell/
 
 ### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. Zorg ervoor dat knooppunten en de werkruimte Automatisering modules nodig hebben
 
-DSC is afhankelijk van modules die op het knooppunt zijn geïnstalleerd. Wanneer u Azure Automation State Configuration gebruikt, importeert u alle vereiste modules in uw Automatiseringsaccount met behulp van de stappen die worden vermeld in [Importmodules.](../shared-resources/modules.md#import-modules) Configuraties kunnen ook afhankelijk zijn van specifieke versies van modules. Zie [Modules oplossen voor](shared-resources.md#modules)meer informatie .
+DSC is afhankelijk van modules die op het knooppunt zijn geïnstalleerd. Wanneer u Azure Automation State Configuration gebruikt, importeert u alle vereiste modules in uw Automatiseringsaccount met behulp van de stappen die worden vermeld in [Importmodules.](../shared-resources/modules.md#importing-modules) Configuraties kunnen ook afhankelijk zijn van specifieke versies van modules. Zie [Modules oplossen voor](shared-resources.md#modules)meer informatie .
 
 ## <a name="common-errors-when-working-with-dsc"></a>Veelvoorkomende fouten bij het werken met DSC
 

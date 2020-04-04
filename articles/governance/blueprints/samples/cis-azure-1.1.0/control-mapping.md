@@ -3,12 +3,12 @@ title: CIS Microsoft Azure Foundations Benchmark blueprint sample besturingselem
 description: Aanbevelingstoewijzing van het blauwdrukvoorbeeld van de CIS Microsoft Azure Foundations Benchmark-blauwdruk voor Azure Policy.
 ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74707416"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656972"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Aanbevelingstoewijzing van het blauwdrukvoorbeeld van de CIS Microsoft Azure Foundations Benchmark
 
@@ -245,7 +245,7 @@ In deze blauwdruk worden [Azure Policy-definities](../../../policy/overview.md) 
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11 Ervoor zorgen dat 'SSL-verbinding afdwingen' is ingesteld op 'ENABLED' voor MySQL Database Server
 
-In deze blauwdruk wordt een [Azure-beleidsdefinitie](../../../policy/overview.md) opgenomen waarmee u ervoor zorgen dat MySQL-databaseservers SSL-verbindingen afdwingen.
+In deze blauwdruk wordt een [Azure-beleidsdefinitie](../../../policy/overview.md) opgenomen waarmee u ervoor zorgen dat MySQL-databaseservers TLS/SSL-verbindingen afdwingen.
 
 - SSL-verbinding afdwingen moet zijn ingeschakeld voor MySQL-databaseservers
 
@@ -257,7 +257,7 @@ In deze blauwdruk wordt een [Azure-beleidsdefinitie](../../../policy/overview.md
 
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4.13 Ervoor zorgen dat 'SSL-verbinding afdwingen' is ingesteld op 'ENABLED' voor PostgreSQL Database Server
 
-In deze blauwdruk wordt een [Azure-beleidsdefinitie](../../../policy/overview.md) opgenomen waarmee u ervoor zorgen dat PostgreSQL-databaseservers SSL-verbindingen afdwingen.
+In deze blauwdruk wordt een [Azure-beleidsdefinitie](../../../policy/overview.md) opgenomen waarmee u ervoor zorgen dat PostgreSQL-databaseservers TLS/SSL-verbindingen afdwingen.
 
 - SSL-verbinding afdwingen moet zijn ingeschakeld voor PostgreSQL-databaseservers
 

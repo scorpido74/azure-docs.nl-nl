@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 8e0515727c2155b91f18398bd9def700f4a15b34
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 55b00af9afeafb2a3fa7992cc457819dc1dcb2b2
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619411"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631290"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Spiekblad voor Azure Synapse Analytics (voorheen SQL DW)
 
-Dit spiekbriefje bevat handige tips en aanbevolen procedures voor het bouwen van Azure Synapse-oplossingen. 
+Dit spiekbriefje bevat handige tips en aanbevolen procedures voor het bouwen van Azure Synapse-oplossingen.
 
 De volgende afbeelding geeft het proces weer voor het ontwerpen van een datawarehouse:
 
@@ -28,6 +28,7 @@ De volgende afbeelding geeft het proces weer voor het ontwerpen van een dataware
 ## <a name="queries-and-operations-across-tables"></a>Query's en bewerkingen op tabellen
 
 Als u van tevoren de primaire bewerkingen en query's kent die in uw datawarehouse kunnen worden uitgevoerd, kunt u prioriteiten stellen voor deze bewerkingen in uw datawarehouse-architectuur. Deze query's en bewerkingen zijn onder andere:
+
 * Een of meerdere feitentabellen met dimensietabellen samenvoegen, de gecombineerde tabel filteren en vervolgens de resultaten aan een datamart toevoegen.
 * Grote of kleine updates in uw feitelijke omzet aanbrengen.
 * Alleen gegevens aan uw tabellen toevoegen.
@@ -36,7 +37,7 @@ Als u de typen bewerkingen van tevoren kent, kunt u het ontwerp van uw tabellen 
 
 ## <a name="data-migration"></a>Gegevensmigratie
 
-Laad eerst uw gegevens in [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md) of Azure Blob Storage. Gebruik vervolgens PolyBase om uw gegevens in faseringstabellen te laden. Gebruik de volgende configuratie:
+Laad eerst uw gegevens in [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) of Azure Blob Storage. Gebruik vervolgens PolyBase om uw gegevens in faseringstabellen te laden. Gebruik de volgende configuratie:
 
 | Ontwerp | Aanbeveling |
 |:--- |:--- |
@@ -45,7 +46,7 @@ Laad eerst uw gegevens in [Azure Data Lake Storage](../../data-factory/connector
 | Partitionering | Geen |
 | Resourceklasse | largerc of xlargerc |
 
-Meer informatie over [gegevensmigratie](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [gegevens laden](design-elt-data-loading.md), en het [ELT-proces (extraheren, laden en transformeren)](design-elt-data-loading.md). 
+Meer informatie over [gegevensmigratie](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [gegevens laden](design-elt-data-loading.md), en het [ELT-proces (extraheren, laden en transformeren)](design-elt-data-loading.md).
 
 ## <a name="distributed-or-replicated-tables"></a>Gedistribueerde of gerepliceerde tabellen
 
@@ -58,12 +59,13 @@ Gebruik de volgende strategieën, afhankelijk van de eigenschappen van de tabel:
 | Hash | * Feitentabellen<br></br>* Tabellen met grote afmetingen |* De distributiesleutel kan niet worden bijgewerkt |
 
 **Tips:**
+
 * Begin met round robin, maar ga voor een hashdistributiestrategie om te profiteren van een massively parallel-architectuur.
 * Zorg ervoor dat algemene hashsleutels dezelfde gegevensindeling hebben.
 * Niet distribueren op varchar formaat.
 * Dimensietabellen met een algemene hashsleutel voor een feitentabel met regelmatige samenvoegbewerkingen kunnen met hash worden verdeeld.
-* Gebruik *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql)* om eventuele asymmetrie in gegevens te analyseren.
-* Gebruik *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)* om gegevensverplaatsingen achter query's te analyseren, de tijdbroadcast te bewaken en de opnamevolgorde van bewerkingen te wijzigen. Dit is handig om uw distributiestrategie te controleren.
+* Gebruik *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* om eventuele asymmetrie in gegevens te analyseren.
+* Gebruik *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* om gegevensverplaatsingen achter query's te analyseren, de tijdbroadcast te bewaken en de opnamevolgorde van bewerkingen te wijzigen. Dit is handig om uw distributiestrategie te controleren.
 
 Meer informatie over [gerepliceerde tabellen](design-guidance-for-replicated-tables.md) en [gedistribueerde tabellen](sql-data-warehouse-tables-distribute.md).
 
@@ -78,7 +80,8 @@ Indexeren is handig voor het snel lezen van tabellen. Er bestaat een unieke reek
 | Geclusterde columnstore-index (CCI) (standaardinstelling) | * Grote tafels (meer dan 100 miljoen rijen) | * Gebruikt op een gerepliceerde tabel<br></br>* U maakt enorme update operaties op uw tafel<br></br>* U overpartitioneert uw tabel: rijgroepen beslaan niet over verschillende distributieknooppunten en partities |
 
 **Tips:**
-* Mogelijk wilt u boven op een geclusterde index een niet-geclusterde index toevoegen aan een kolom die veel wordt gebruikt voor filteren. 
+
+* Mogelijk wilt u boven op een geclusterde index een niet-geclusterde index toevoegen aan een kolom die veel wordt gebruikt voor filteren.
 * Wees voorzichtig met hoe u het geheugen van een tabel met CCI beheert. Wanneer u gegevens laadt, wilt u dat de gebruiker (of de query) profiteert van een grote resourceklasse. Voorkom bijsnijden en het maken van veel kleine gecomprimeerde rijgroepen.
 * Bij Gen2 worden CCI-tabellen lokaal in de cache op de rekenknooppunten opgeslagen om de prestaties te maximaliseren.
 * Bij CCI kunnen trage prestaties optreden vanwege slechte compressie van de rijgroepen. Als dit het geval is, herbouwt u uw CCI of ordent u deze opnieuw. U hebt ten minste 100.000 rijen per gecomprimeerde rijgroepen nodig. Ideaal is 1 miljoen rijen in een rijgroep.
@@ -88,6 +91,7 @@ Indexeren is handig voor het snel lezen van tabellen. Er bestaat een unieke reek
 Meer informatie over [indexen](sql-data-warehouse-tables-index.md).
 
 ## <a name="partitioning"></a>Partitionering
+
 U kunt uw tabel partitioneren wanneer het een grote feitentabel is (groter dan 1 miljard rijen). De partitiesleutel moet in 99 procent van de gevallen worden gebaseerd op datum. Zorg ervoor dat geen overpartitionering plaatsvindt, vooral wanneer u een geclusterde columnstore-index hebt.
 
 Met faseringstabellen waarvoor ELT is vereist, kan partitionering voordelen opleveren. Het vergemakkelijkt het beheer van de gegevenslevenscyclus.
@@ -104,13 +108,15 @@ We raden u aan PolyBase en ADF V2 te gebruiken voor het automatiseren van uw ELT
 Voor een grote batch updates in uw historische gegevens u overwegen een [CTAS](sql-data-warehouse-develop-ctas.md) te gebruiken om de gegevens te schrijven die u in een tabel wilt bewaren in plaats van INSERT, UPDATE en DELETE te gebruiken.
 
 ## <a name="maintain-statistics"></a>Statistieken bijhouden
- Totdat automatische statistieken algemeen beschikbaar zijn, is handmatig onderhoud van statistieken vereist. Het is belangrijk om uw statistieken bij te werken wanneer er *significante* wijzigingen optreden in uw gegevens. Dit helpt u om uw queryplannen te optimaliseren. Als u vindt dat het onderhouden van al uw statistieken te lang duurt, kunt u selectiever zijn over welke kolommen statistieken bevatten. 
+
+ Totdat automatische statistieken algemeen beschikbaar zijn, is handmatig onderhoud van statistieken vereist. Het is belangrijk om uw statistieken bij te werken wanneer er *significante* wijzigingen optreden in uw gegevens. Dit helpt u om uw queryplannen te optimaliseren. Als u vindt dat het onderhouden van al uw statistieken te lang duurt, kunt u selectiever zijn over welke kolommen statistieken bevatten.
 
 U kunt ook de frequentie van de updates definiëren. Zo wilt u datumkolommen, waar nieuwe waarden kunnen zijn toegevoegd, misschien dagelijks bijwerken. U haalt het meeste voordeel uit statistieken bij kolommen die onderdeel uitmaken van samenvoegingen, kolommen met het WHERE-component en kolommen in GROUP BY.
 
 Meer informatie over [statistieken](sql-data-warehouse-tables-statistics.md).
 
 ## <a name="resource-class"></a>Resourceklasse
+
 Resourcegroepen worden gebruikt als een manier om geheugen toe te wijzen aan query's. Als u meer geheugenruimte nodig hebt voor het verbeteren van de query- of laadsnelheid, kunt u hogere resourceklassen toewijzen. Aan de andere kant hebben grotere resourceklassen een impact op de gelijktijdigheid. Denk hier goed over na voordat u alle gebruikers naar een grote resourceklasse verplaatst.
 
 Als u merkt dat query's te lang duren, controleert u of uw gebruikers niet in grote resourceklassen worden uitgevoerd. Grote resourceklassen nemen veel gelijktijdigheidssleuven in beslag. Ze kunnen ervoor zorgen dat andere query's in de wachtrij komen.
@@ -120,10 +126,8 @@ Ten slotte krijgt elke resourceklasse met behulp van Gen2 van [SQL-pool](sql-dat
 Meer informatie over het werken met [resourceklassen en gelijktijdigheid](resource-classes-for-workload-management.md).
 
 ## <a name="lower-your-cost"></a>Uw kosten verlagen
-Een belangrijk kenmerk van Azure Synapse is de mogelijkheid om rekenbronnen te [beheren.](sql-data-warehouse-manage-compute-overview.md) U SQL-groep onderbreken wanneer u deze niet gebruikt, waardoor de facturering van rekenbronnen wordt gestopt. U kunt de schaal van resources aanpassen om te voldoen aan uw prestatievereisten. Voor onderbreken gebruikt u [Azure Portal](../../synapse-analytics/sql-data-warehouse/pause-and-resume-compute-portal.md) of [PowerShell](../../synapse-analytics/sql-data-warehouse/pause-and-resume-compute-powershell.md). Voor schaal aanpassen gebruikt u [Azure Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md) of een [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
-
-Een belangrijk kenmerk van Azure Synapse is de mogelijkheid om rekenbronnen te [beheren.](sql-data-warehouse-manage-compute-overview.md) U SQL-groep onderbreken wanneer u deze niet gebruikt, waardoor de facturering van rekenbronnen wordt gestopt. U kunt de schaal van resources aanpassen om te voldoen aan uw prestatievereisten. Voor onderbreken gebruikt u [Azure Portal](../../sql-data-warehouse/pause-and-resume-compute-portal.md) of [PowerShell](../../sql-data-warehouse/pause-and-resume-compute-powershell.md). Voor schaal aanpassen gebruikt u [Azure Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md) of een [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+Een belangrijk kenmerk van Azure Synapse is de mogelijkheid om rekenbronnen te [beheren.](sql-data-warehouse-manage-compute-overview.md) U SQL-groep onderbreken wanneer u deze niet gebruikt, waardoor de facturering van rekenbronnen wordt gestopt. U kunt de schaal van resources aanpassen om te voldoen aan uw prestatievereisten. Voor onderbreken gebruikt u [Azure Portal](pause-and-resume-compute-portal.md) of [PowerShell](pause-and-resume-compute-powershell.md). Voor schaal aanpassen gebruikt u [Azure Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md) of een [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
 U kunt nu op elk moment automatisch de schaal aanpassen met Azure Functions:
 

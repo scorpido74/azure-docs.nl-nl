@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/2/2020
+ms.date: 04/3/2020
 ms.author: raiye
-ms.openlocfilehash: 2b929481af3df8bc3bc6a9a6955e8277e3de3298
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 758f0e3198ef83635ead3f9bd8565cd64f9d413c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618682"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656358"
 ---
 # <a name="azure-guest-os"></a>Azure-gastbesturingssysteem
 In de volgende tabellen worden de MSRC-updates (Microsoft Security Response Center) weergegeven die zijn toegepast op het Azure Guest OS. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gastbesturingssysteem dat u gebruikt. Updates voeren altijd voor de specifieke [familie die][family-explain] ze werden geïntroduceerd in.
@@ -26,26 +26,25 @@ In de volgende tabellen worden de MSRC-updates (Microsoft Security Response Cent
 
 | Productcategorie | Moeder-KB-artikel | Beschrijving van kwetsbaarheid | Gastbesturingssysteem | Datum voor het eerst geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 20-03  |  [4541500]  |  Windows-beveiliging  | [2.96] | 10 maart 2020 |
-|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2,96], [3,83], [4,76] | 10 maart 2020 |
-|  Rel 20-03  |  [4540694]  |  Windows-beveiliging  | [3.83] | 10 maart 2020 |
-|  Rel 20-03  |  [4541505]  |  Windows-beveiliging  | [4.76] | 10 maart 2020 |
-|  Rel 20-03  |  [4540670]  |  Laatste cumulatieve update (LCU)  | [5.41] | 10 maart 2020 |
-|  Rel 20-03  |  [4538461]  |  Laatste cumulatieve update (LCU)  | [6.17] | 10 maart 2020 |
-|  Rel 20-03  |  [4537820]  |  Maandelijkse rollup  | [2.96] | 11 februari 2020 |
-|  Rel 20-03  |  [4537814]  |  Maandelijkse rollup  | [3.83] | 11 februari 2020 |
-|  Rel 20-03  |  [4537821]  |  Maandelijkse rollup  | [4.76] | 11 februari 2020 |
+|  Rel 20-03  |  [4541500]  |  Windows-beveiliging  | [2.96] | 10 maart 2020 |
+|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2,96], [3,83], [4,76] | 10 maart 2020 |
+|  Rel 20-03  |  [4540694]  |  Windows-beveiliging  | [3.83] | 10 maart 2020 |
+|  Rel 20-03  |  [4541505]  |  Windows-beveiliging  | [4.76] | 10 maart 2020 |
+|  Rel 20-03  |  [4540670]  |  Laatste cumulatieve update (LCU)  | [5.41] | 10 maart 2020 |
+|  Rel 20-03  |  [4538461]  |  Laatste cumulatieve update (LCU)  | [6.17] | 10 maart 2020 |
+|  Rel 20-03  |  [4537820]  |  Maandelijkse rollup  | [2.96] | 11 februari 2020 |
+|  Rel 20-03  |  [4537814]  |  Maandelijkse rollup  | [3.83] | 11 februari 2020 |
+|  Rel 20-03  |  [4537821]  |  Maandelijkse rollup  | [4.76] | 11 februari 2020 |
 
-[4541500]: https://support.microsoft.com/kb/4541500 
-[4540671]: https://support.microsoft.com/kb/4540671 
-[4540694]: https://support.microsoft.com/kb/4540694 
-[4541505]: https://support.microsoft.com/kb/4541505 
-[4540670]: https://support.microsoft.com/kb/4540670 
-[4538461]: https://support.microsoft.com/kb/4538461 
-[4537820]: https://support.microsoft.com/kb/4537820  
-[4537814]: https://support.microsoft.com/kb/4537814 
-[4537821]: https://support.microsoft.com/kb/4537821 
-
+[4541500]: https://support.microsoft.com/kb/4541500 
+[4540671]: https://support.microsoft.com/kb/4540671 
+[4540694]: https://support.microsoft.com/kb/4540694 
+[4541505]: https://support.microsoft.com/kb/4541505 
+[4540670]: https://support.microsoft.com/kb/4540670 
+[4538461]: https://support.microsoft.com/kb/4538461 
+[4537820]: https://support.microsoft.com/kb/4537820  
+[4537814]: https://support.microsoft.com/kb/4537814 
+[4537821]: https://support.microsoft.com/kb/4537821 
 
 [6.17]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 [5.41]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases

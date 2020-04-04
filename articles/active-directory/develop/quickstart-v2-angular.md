@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 95db8115a80dcf4be74ef0463bbf915578dd9dae
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 61a098b92db13b8422d9cfebb19610c5de7685cd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80423100"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631750"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-spa"></a>Snelstart: Meld u aan voor gebruikers en ontvang een toegangstoken in een Hoekige SPA
 
@@ -68,7 +68,7 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een Toepassing m
 >[!div renderon="docs"]
 >Als u het project met een webserver wilt https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular uitvoeren met Behulp van Node.js, kloont of [downloadt u](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip) de kernprojectbestanden. Open de bestanden met een editor zoals Visual Studio Code.
 
-> [!div renderon="portal" id="autoupdate" class="sxs-lookup" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Het codevoorbeeld downloaden](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip)
 
 > [!div renderon="docs"]

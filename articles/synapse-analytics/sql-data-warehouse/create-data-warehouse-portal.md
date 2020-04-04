@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5d5b2509b212172758fa867d9f27b829f43aeeaa
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 685d6970b0e88032fe503bf97a139c0b8c0f8a73
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349104"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631355"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Snelstart: een Synapsische SQL-groep maken en opvragen met behulp van de Azure-portal
 
@@ -29,7 +29,7 @@ Maak en query er snel een Synapse SQL-groep (datawarehouse) in Azure Synapse Ana
    > [!NOTE]
    > Het maken van een SQL-pool in Azure Synapse kan resulteren in een nieuwe factureerbare service. Zie [Azure Synapse Analytics-prijzen voor](https://azure.microsoft.com/pricing/details/synapse-analytics/)meer informatie.
 
-2. Download en installeer de nieuwste versie van [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) (SQL Server Management Studio).
+2. Download en installeer de nieuwste versie van [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SQL Server Management Studio).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -37,7 +37,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-sql-pool"></a>Een SQL-groep maken
 
-Gegevensmagazijnen worden gemaakt met SQL-pool in Azure Synapse Analytics. Er wordt een SQL-groep gemaakt met een gedefinieerde set [compute resources.](memory-concurrency-limits.md) De database wordt gemaakt in een [Azure-resourcegroep](../../azure-resource-manager/management/overview.md) en in een [logische Azure SQL-server](../../sql-database/sql-database-servers.md).
+Gegevensmagazijnen worden gemaakt met SQL-pool in Azure Synapse Analytics. Er wordt een SQL-groep gemaakt met een gedefinieerde set [compute resources.](memory-concurrency-limits.md) De database wordt gemaakt in een [Azure-resourcegroep](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en in een [logische Azure SQL-server](../../sql-database/sql-database-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 Volg deze stappen om een SQL-groep te maken die de **voorbeeldgegevens van AdventureWorksDW** bevat.
 
@@ -54,9 +54,9 @@ Volg deze stappen om een SQL-groep te maken die de **voorbeeldgegevens van Adven
    | Instelling | Voorgestelde waarde | Beschrijving |
    | :------ | :-------------- | :---------- |
    | **Abonnement** | Uw abonnement | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-   | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
-   | **SQL-poolnaam** | Elke wereldwijd unieke naam (een voorbeeld is *mySampleDataWarehouse)* | Zie [Database-id's voor](/sql/relational-databases/databases/database-identifiers)geldige databasenamen . Let op, een SQL-groep is één type database. |
-   | **Server** | Een wereldwijd unieke naam | Selecteer bestaande server of maak een nieuwe servernaam en selecteer **Nieuw maken**. Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige servernamen. |
+   | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
+   | **SQL-poolnaam** | Elke wereldwijd unieke naam (een voorbeeld is *mySampleDataWarehouse)* | Zie [Database-id's voor](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)geldige databasenamen . Let op, een SQL-groep is één type database. |
+   | **Server** | Een wereldwijd unieke naam | Selecteer bestaande server of maak een nieuwe servernaam en selecteer **Nieuw maken**. Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige servernamen. |
 
    ![basisgegevens van een gegevensmagazijn maken](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
 
@@ -78,7 +78,7 @@ Volg deze stappen om een SQL-groep te maken die de **voorbeeldgegevens van Adven
 
 ## <a name="create-a-server-level-firewall-rule"></a>Een serverfirewallregel maken
 
-De Azure Synapse-service maakt een firewall op serverniveau. Deze firewall voorkomt dat externe toepassingen en hulpprogramma's verbinding maken met de server of databases op de server. Als u de connectiviteit wilt inschakelen, kunt u firewallregels toevoegen waarmee connectiviteit voor bepaalde IP-adressen wordt ingeschakeld. Volg deze stappen om een [firewallregel op serverniveau](../../sql-database/sql-database-firewall-configure.md) te maken voor het IP-adres van uw client.
+De Azure Synapse-service maakt een firewall op serverniveau. Deze firewall voorkomt dat externe toepassingen en hulpprogramma's verbinding maken met de server of databases op de server. Als u de connectiviteit wilt inschakelen, kunt u firewallregels toevoegen waarmee connectiviteit voor bepaalde IP-adressen wordt ingeschakeld. Volg deze stappen om een [firewallregel op serverniveau](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) te maken voor het IP-adres van uw client.
 
 > [!NOTE]
 > Azure Synapse communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt.
@@ -124,7 +124,7 @@ Haal de volledig gekwalificeerde servernaam van uw SQL-server op uit Azure Porta
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Als serverbeheerder verbinding maken met de server
 
-In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) (SQL Server Management Studio) om een verbinding tot stand te brengen met de Azure SQL-server.
+In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SQL Server Management Studio) om een verbinding tot stand te brengen met de Azure SQL-server.
 
 1. Open SQL Server Management Studio.
 
@@ -134,18 +134,18 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
    | :------ | :-------------- | :---------- |
    | Servertype | Database-engine | Deze waarde is verplicht |
    | Servernaam | De volledig gekwalificeerde servernaam | Hier is een voorbeeld: **sqlpoolservername.database.windows.net**. |
-   | Authentication | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat in deze zelfstudie is geconfigureerd. |
+   | Verificatie | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat in deze zelfstudie is geconfigureerd. |
    | Aanmelden | Het beheerdersaccount voor de server | Account dat u hebt opgegeven toen u de server maakte. |
    | Wachtwoord | Het wachtwoord voor het beheerdersaccount voor de server | Wachtwoord dat u hebt opgegeven toen u de server maakte. |
    ||||
 
    ![verbinding maken met server](./media/create-data-warehouse-portal/connect-to-server-ssms.png)
 
-3. selecteer **Verbinding maken**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio. 
+3. selecteer **Verbinding maken**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio.
 
 4. Vouw **Databases** uit in Objectverkenner. Vouw vervolgens **mySampleDatabase** uit om de objecten in uw nieuwe database weer te geven.
 
-   ![databaseobjecten](./media/create-data-warehouse-portal/connected-ssms.png) 
+   ![databaseobjecten](./media/create-data-warehouse-portal/connected-ssms.png)
 
 ## <a name="run-some-queries"></a>Een aantal query's uitvoeren
 
@@ -163,7 +163,7 @@ SQL Data Warehouse maakt gebruik van T-SQL als querytaal. Gebruik de volgende st
 
    ![Querydatabases](./media/create-data-warehouse-portal/query-databases.png)
 
-4. Als u wat gegevens wilt bekijken, gebruikt u de volgende opdracht om het aantal klanten te zien met de achternaam Adams en met drie kinderen. De resultaten bestaan uit zes klanten. 
+4. Als u wat gegevens wilt bekijken, gebruikt u de volgende opdracht om het aantal klanten te zien met de achternaam Adams en met drie kinderen. De resultaten bestaan uit zes klanten.
 
     ```sql
     SELECT LastName, FirstName FROM dbo.dimCustomer
@@ -196,4 +196,4 @@ Volg deze stappen om resources op te schonen die u niet meer nodig hebt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga voor meer informatie over het laden van gegevens in uw SQL-groep verder naar het artikel [Gegevens laden in SQL-groep.](load-data-from-azure-blob-storage-using-polybase.md) 
+Ga voor meer informatie over het laden van gegevens in uw SQL-groep verder naar het artikel [Gegevens laden in SQL-groep.](load-data-from-azure-blob-storage-using-polybase.md)

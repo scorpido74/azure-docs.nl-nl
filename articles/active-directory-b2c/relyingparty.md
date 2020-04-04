@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 04/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90ac6f35cafbe63e8c6cdb77450089d00c0e3099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 221ed3169fff78a2721e91023036593570fbd723
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264347"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637798"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -125,7 +125,7 @@ Het element **SingleSignOn** bevat in het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Bereik | Ja | De reikwijdte van het enkele aanmeldingsgedrag. Mogelijke `Suppressed`waarden: `Tenant` `Application`, `Policy`, of . De `Suppressed` waarde geeft aan dat het gedrag wordt onderdrukt. In het geval van een enkele aanmeldingssessie wordt bijvoorbeeld geen sessie voor de gebruiker bijgehouden en wordt de gebruiker altijd gevraagd om een selectie van een identiteitsprovider. De `TrustFramework` waarde geeft aan dat het gedrag wordt toegepast voor alle beleidsregels in het vertrouwenskader. Een gebruiker die bijvoorbeeld door twee beleidsreizen voor een vertrouwenskader navigeert, wordt niet gevraagd om een selectie van identiteitsprovideren. De `Tenant` waarde geeft aan dat het gedrag wordt toegepast op alle beleidsregels in de tenant. Een gebruiker die bijvoorbeeld door twee beleidsreizen voor een tenant navigeert, wordt niet gevraagd om een selectie van een identiteitsprovider. De `Application` waarde geeft aan dat het gedrag wordt toegepast op alle beleidsregels voor de toepassing die de aanvraag maakt. Een gebruiker die bijvoorbeeld door twee beleidsreizen voor een toepassing navigeert, wordt niet gevraagd om een selectie van een identiteitsprovider. De `Policy` waarde geeft aan dat het gedrag alleen van toepassing is op een beleid. Een gebruiker die bijvoorbeeld door twee beleidsreizen voor een vertrouwenskader navigeert, wordt gevraagd om een selectie van identiteitsprovideren bij het schakelen tussen beleid. |
+| Bereik | Ja | De reikwijdte van het enkele aanmeldingsgedrag. Mogelijke `Suppressed`waarden: `Tenant` `Application`, `Policy`, of . De `Suppressed` waarde geeft aan dat het gedrag wordt onderdrukt en dat de gebruiker altijd wordt gevraagd om een selectie van identiteitsprovideren.  De `Tenant` waarde geeft aan dat het gedrag wordt toegepast op alle beleidsregels in de tenant. Een gebruiker die bijvoorbeeld door twee beleidsreizen voor een tenant navigeert, wordt niet gevraagd om een selectie van een identiteitsprovider. De `Application` waarde geeft aan dat het gedrag wordt toegepast op alle beleidsregels voor de toepassing die de aanvraag maakt. Een gebruiker die bijvoorbeeld door twee beleidsreizen voor een toepassing navigeert, wordt niet gevraagd om een selectie van een identiteitsprovider. De `Policy` waarde geeft aan dat het gedrag alleen van toepassing is op een beleid. Een gebruiker die bijvoorbeeld door twee beleidsreizen voor een vertrouwenskader navigeert, wordt gevraagd om een selectie van identiteitsprovideren bij het schakelen tussen beleid. |
 | KeepAliveinDays | Ja | Hiermee bepaalt u hoe lang de gebruiker is aangemeld. Als u de waarde instelt op 0, schakelt u de KMSI-functionaliteit uit. Zie [Mij ingetekend houden](custom-policy-keep-me-signed-in.md)voor meer informatie. |
 |EnforceIdTokenHintOnLogout| Nee|  Forceer een eerder uitgegeven ID-token naar het afmeldpunt als een hint over de huidige geverifieerde sessie van de eindgebruiker met de client. Mogelijke waarden: `false` (standaard) of `true`. Zie [Webaanmelding met OpenID Connect](openid-connect.md)voor meer informatie.  |
 
@@ -190,7 +190,7 @@ Het **element Protocol** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Name | Ja | De naam van een geldig protocol dat wordt ondersteund door Azure AD B2C dat wordt gebruikt als onderdeel van het technische profiel. Mogelijke `OpenIdConnect` waarden: `SAML2`of . De `OpenIdConnect` waarde vertegenwoordigt de OpenID Connect 1.0-protocolstandaard volgens de OpenID-funderingsspecificatie. De `SAML2` vertegenwoordigt de SAML 2.0 protocol standaard volgens OASIS specificatie. Gebruik geen SAML-token in productie. |
+| Name | Ja | De naam van een geldig protocol dat wordt ondersteund door Azure AD B2C dat wordt gebruikt als onderdeel van het technische profiel. Mogelijke `OpenIdConnect` waarden: `SAML2`of . De `OpenIdConnect` waarde vertegenwoordigt de OpenID Connect 1.0-protocolstandaard volgens de OpenID-funderingsspecificatie. De `SAML2` vertegenwoordigt de SAML 2.0 protocol standaard volgens OASIS specificatie. |
 
 ## <a name="outputclaims"></a>Uitvoerclaims
 

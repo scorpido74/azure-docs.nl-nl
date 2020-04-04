@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: b48c37a6e607d121416ebae4d74e58f39670b79a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dbcf953ad5f70c6ddf2a73eef2ea712f1e1278c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73821928"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632085"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mailmeldingen voor automatisch afstemmen
 
@@ -69,7 +69,7 @@ De volgende stap is het maken van een Runbook in Azure Automation waarin het Pow
 Volg de volgende stappen om een nieuwe Azure Automation-runbook te maken:
 
 - Toegang tot het Azure Automation-account dat u in de vorige stap hebt gemaakt
-- Eenmaal in het deelvenster automatiseringsaccount klikt u op het menu-item**Runbooks**aan de linkerkant om een nieuwe Azure Automation-runbook te maken met het PowerShell-script. Zie [Een nieuw runbook](../automation/manage-runbooks.md#create-a-runbook)maken voor meer informatie over het maken van automatiseringsrunbooks.
+- Eenmaal in het deelvenster automatiseringsaccount klikt u op het menu-item**Runbooks**aan de linkerkant om een nieuwe Azure Automation-runbook te maken met het PowerShell-script. Zie [Een nieuw runbook](../automation/manage-runbooks.md#creating-a-runbook)maken voor meer informatie over het maken van automatiseringsrunbooks.
 - Als u een nieuw runbook wilt toevoegen, klikt u op de menuoptie **" +Een runbook toevoegen"** en klikt u vervolgens op de "**Snel maken - Maak een nieuw runbook**".
 - Typ in het deelvenster Runbook de naam van uw runbook (voor dit voorbeeld wordt "**AutomaticTuningEmailAutomation**" gebruikt), selecteert u het type runbook als **PowerShell** en schrijf u een beschrijving van dit runbook om het doel ervan te beschrijven.
 - Klik op de knop **Maken** om een nieuw runbook te maken
@@ -88,7 +88,7 @@ In het geval van meerdere abonnementen u deze toevoegen als komma's beperkt tot 
 ```powershell
 # PowerShell script to retrieve Azure SQL Database Automatic tuning recommendations.
 #
-# Provided “as-is” with no implied warranties or support.
+# Provided "as-is" with no implied warranties or support.
 # The script is released to the public domain.
 #
 # Replace <SUBSCRIPTION_ID_WITH_DATABASES> in the header with your Azure subscription ID.
@@ -225,7 +225,7 @@ De volgende stap is het toevoegen van drie taken (maken, uitvoeren en e-mail ver
    - Voltooi het maken van deze actie door te klikken op "**Flow opslaan**"
 
 > [!TIP]
-> Als u geautomatiseerde e-mails naar verschillende ontvangers wilt verzenden, maakt u afzonderlijke stromen. Wijzig in deze extra stromen het e-mailadres van de geadresseerde in het veld Aan en de onderwerpregel voor e-mail in het veld Onderwerp. Het maken van nieuwe runbooks in Azure Automation met aangepaste PowerShell-scripts (zoals met wijziging van Azure-abonnements-ID) maakt verdere aanpassing van geautomatiseerde scenario's mogelijk, zoals het e-mailen van afzonderlijke ontvangers op geautomatiseerde tuning aanbevelingen voor afzonderlijke abonnementen.
+> Als u geautomatiseerde e-mails naar verschillende ontvangers wilt verzenden, maakt u afzonderlijke stromen. Wijzig in deze extra stromen het e-mailadres van de geadresseerde in het veld Aan en de onderwerpregel voor e-mail in het veld Onderwerp. Het maken van nieuwe runbooks in Azure Automation met aangepaste PowerShell-scripts (zoals met wijziging van Azure-abonnements-ID) maakt verdere aanpassing van geautomatiseerde scenario's mogelijk, zoals het e-mailen van afzonderlijke ontvangers op automatische tuningaanbevelingen voor afzonderlijke abonnementen.
 >
 
 De bovenstaande afsluitingen stappen die nodig zijn om de e-mail levering taak workflow configureren. De volledige stroom bestaande uit drie gebouwde acties wordt weergegeven in de volgende afbeelding.

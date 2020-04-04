@@ -1,21 +1,15 @@
 ---
-title: 'Snelstart: spraak herkennen vanuit een microfoon - Spraakservice'
-titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 11/20/2019
-ms.author: erhopf
-ms.openlocfilehash: ab51fe0323ea23c16cb52aa7a0570f8d51d40b2f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/02/2020
+ms.author: dapine
+ms.openlocfilehash: 3775690802c89805ccf9df1ee6d6717a8818213f
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75468485"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658490"
 ---
 In deze quickstart gebruikt u de [Spraak-SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) om spraak interactief te herkennen van een microfooningang en de teksttranscriptie te halen uit vastgelegde audio. Het is eenvoudig om deze functie te integreren in uw apps of apparaten voor algemene herkenningstaken, zoals het transcriberen van gesprekken. Het kan ook worden gebruikt voor complexere integraties, zoals het gebruik van het Bot Framework met de Speech SDK om spraakassistenten te bouwen.
 

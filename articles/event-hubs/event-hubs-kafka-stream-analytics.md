@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: spelluru
-ms.openlocfilehash: 4cabd63dc39590a9bf728528f3e7b3aa5d3f6b04
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 9c678a91b88b87acb438311b4968be4cae46733b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521763"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632802"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Zelfstudie: Apache Kafka verwerken voor gebeurtenissen in eventhubs met streamanalyses 
 In dit artikel ziet u hoe u gegevens streamen naar gebeurtenishubs en deze verwerken met Azure Stream Analytics. Het leidt u door de volgende stappen: 
@@ -181,15 +181,4 @@ Nadat u een Stream Analytics-taak zodanig hebt ingesteld dat een binnenkomende g
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel heb je geleerd hoe je streamen naar Event Hubs zonder je protocolclients te wijzigen of je eigen clusters uit te voeren. Zie het volgende onderwerp voor meer informatie over Event Hubs en Event Hubs voor Kafka:  
-
-- [Meer informatie over Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Event Hubs voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Een Event Hub maken](event-hubs-create.md)
-- [Streamen naar Event Hubs vanaf uw Kafka-toepassingen](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Een Kafka-broker spiegelen in een Event Hub](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Apache Spark aan een Event Hub koppelen](event-hubs-kafka-spark-tutorial.md)
-- [Apache Flink aan een Event Hub koppelen](event-hubs-kafka-flink-tutorial.md)
-- [Integreer Kafka Connect met een gebeurtenishub](event-hubs-kafka-connect-tutorial.md)
-- [Akka Streams verbinden met een gebeurtenishub](event-hubs-kafka-akka-streams-tutorial.md)
-- [Explore samples on our GitHub](https://github.com/Azure/azure-event-hubs-for-kafka) (Voorbeelden bekijken op GitHub) 
+In dit artikel heb je geleerd hoe je streamen naar Event Hubs zonder je protocolclients te wijzigen of je eigen clusters uit te voeren. Zie [de ontwikkelaarhandleiding voor Azure Event Hubs voor Meer](apache-kafka-developer-guide.md)informatie over gebeurtenishubs voor Apache Kafka. 

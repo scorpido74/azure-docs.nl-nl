@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: bf83155e971061f22e5f5fc33d216b58621c9249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f1a56fa6ea38acd8061180407eb47fe416b61e9
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462646"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631704"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Zelfstudie: Een SQL-databasebeheerexemplaar toevoegen aan een failovergroep
 
@@ -42,7 +42,7 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 - Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) aan als je nog geen account hebt.
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Als u de zelfstudie wilt voltooien, controleert u of u de volgende items hebt:
 
 - Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) aan als je nog geen account hebt.
@@ -75,7 +75,7 @@ Maak de resourcegroep en uw primaire beheerde instantie met behulp van de Azure-
 1. Laat de rest van de instellingen op standaardwaarden staan en selecteer **Controleren + maken** om de beheerde instantie-instellingen te controleren. 
 1. Selecteer **Maken** om uw primaire beheerde instantie te maken. 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Maak uw resourcegroep en de primaire beheerde instantie met PowerShell. 
 
@@ -433,7 +433,7 @@ Voer de volgende stappen uit om een virtueel netwerk te maken:
 
     ![Secundaire virtuele netwerkwaarden](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Deze stap is alleen nodig als u de Azure-portal gebruikt om uw beheerde instantie te implementeren. Ga door naar stap 3 als u PowerShell gebruikt. 
 
@@ -482,7 +482,7 @@ Maak de secundaire beheerde instantie met behulp van de Azure-portal.
 1. Selecteer **Controleren + maken** om de instellingen voor uw secundaire beheerde instantie te controleren. 
 1. Selecteer **Maken** om uw secundaire beheerde instantie te maken. 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Maak de secundaire beheerde instantie met PowerShell. 
 
@@ -756,7 +756,7 @@ Maak de gateway voor het virtuele netwerk van uw primaire beheerde instantie met
     | --- | --- |
     | **Abonnement** |  Het abonnement waar uw primaire beheerde instantie zich bevindt. |
     | **Naam** | De naam voor uw virtuele `primary-mi-gateway`netwerkgateway, zoals . | 
-    | **Regio** | Het gebied waar uw secundaire beheerde instantie zich bevindt. |
+    | **Regio** | Het gebied waar uw primaire beheerde instantie zich bevindt. |
     | **Gatewaytype** | Selecteer **VPN**. |
     | **VPN-type** | Selecteer **Route-gebaseerd** |
     | **Sku**| Standaard laten `VpnGw1`staan van . |
@@ -773,7 +773,7 @@ Maak de gateway voor het virtuele netwerk van uw primaire beheerde instantie met
 1. Selecteer **Maken** om uw nieuwe virtuele netwerkgateway te maken. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Maak de gateway voor het virtuele netwerk van uw primaire beheerde instantie met PowerShell. 
 
@@ -851,7 +851,7 @@ Herhaal met de Azure-portal de stappen in de vorige sectie om het virtuele netwe
    ![Secundaire gateway-instellingen](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Maak de gateway voor het virtuele netwerk van de secundaire beheerde instantie met PowerShell. 
 
@@ -933,7 +933,7 @@ Sluit de twee gateways aan via de Azure-portal.
 1. Controleer op het tabblad **Overzicht** de instellingen voor uw bidirectionele verbinding en selecteer **OK** om uw verbinding te maken. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Sluit de twee gateways aan met PowerShell. 
 
@@ -984,7 +984,7 @@ Maak de failovergroep met behulp van de Azure-portal.
 1. Zodra de implementatie van failovergroepen is voltooid, wordt u teruggezet naar de **groeppagina Failover.** 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Maak de failovergroep met PowerShell. 
 
    ```powershell-interactive
@@ -1027,7 +1027,7 @@ Test failover met behulp van de Azure-portal.
 1. Ga naar de nieuwe _secundaire_ beheerde instantie en selecteer **Failover** nogmaals om de primaire instantie terug naar de primaire rol te laten mislukken. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Test failover met PowerShell. 
 
    ```powershell-interactive
@@ -1083,7 +1083,7 @@ Ruim resources op door eerst de beheerde instantie te verwijderen, vervolgens he
 1. Verwijder de resterende bronnen. Typ `yes` in het tekstvak om te bevestigen dat u de bron wilt verwijderen en selecteer **Verwijderen**. 
 1. Verwijder de brongroep door **resourcegroep verwijderen**te selecteren, `myResourceGroup`de naam van de resourcegroep in te typen en vervolgens **Verwijderen**te selecteren . 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 U moet de brongroep twee keer verwijderen. Als u de resourcegroep de eerste keer verwijdert, worden de beheerde instantie en virtuele clusters verwijderd, maar wordt deze vervolgens mislukt met het foutbericht `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.`. Voer de opdracht Verwijderen-AzResourceGroep een tweede keer uit om resterende resources en de resourcegroep te verwijderen.
 
@@ -1104,7 +1104,7 @@ In dit gedeelte van de zelfstudie wordt de volgende PowerShell-cmdlet gebruikt:
 
 ## <a name="full-script"></a>Volledige script
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add managed instance to a failover group")]
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.

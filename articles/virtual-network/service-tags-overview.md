@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 568fc880711d42941fd9aef2ea19b8ac3123793a
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 7da20a0bf87b33f05ea7f1d457157c5b7ee2ec7b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384242"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631515"
 ---
 # <a name="virtual-network-service-tags"></a>Tags voor virtuele netwerkservice
 <a name="network-service-tags"></a>
@@ -79,7 +79,7 @@ Standaard geven servicetags de bereiken voor de hele cloud weer. Sommige service
 | **AzureSiteHerstel** | Azure-siteherstel.<br/><br/>*Let op:* Deze tag is afhankelijk van de **azureactivedirectory-** en **AzureKeyVault-,** **EventHub-,****GuestAndHybridManagement-** en **opslagtags.** | Uitgaand | Nee | Nee |
 | **AzureTrafficManager** | IP-adressen van Azure Traffic Manager-sonde.<br/><br/>Zie [Veelgestelde vragen](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)over Azure Traffic Manager voor meer informatie over IP-adressen van Traffic Manager probe. | Inkomend | Nee | Ja |  
 | **BatchNodeManagement** | Beheerverkeer voor implementaties die zijn gewijd aan Azure Batch. | Beide | Nee | Ja |
-| **CognitiveServicesManagement** | De adresbereiken voor verkeer voor Azure Cognitive Services. | Uitgaand | Nee | Nee |
+| **CognitiveServicesManagement** | De adresbereiken voor verkeer voor Azure Cognitive Services. | Beide | Nee | Nee |
 | **Datafactory**  | Azure Data Factory | Beide | Nee | Nee |
 | **DataFactoryManagement** | Beheerverkeer voor Azure Data Factory. | Uitgaand | Nee | Nee |
 | **Dynamics365MarketingE-mail** | Het adres varieert voor de marketing e-mailservice van Dynamics 365. | Uitgaand | Ja | Nee |
@@ -124,7 +124,7 @@ U de huidige servicetag- en bereikgegevens verkrijgen die u opnemen als onderdee
 ### <a name="use-the-service-tag-discovery-api-public-preview"></a>De API voor detectie van servicetags gebruiken (openbare voorbeeld)
 U de huidige lijst met servicetags programmatisch ophalen, samen met ip-adresbereikgegevens:
 
-- [Rest](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
+- [REST](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
 - [Azure-CLI](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
 

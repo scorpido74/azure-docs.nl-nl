@@ -4,19 +4,19 @@ description: Leer hoe u RADIUS-verificatie en Azure Multi-Factor Authentication-
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38341613c98bf85df8cb47ccafc3df5709a1fd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 552226c35d4d129f73b96b689871708950b7ffb1
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425204"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652951"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS-verificatie integreren met Azure Multi-Factor Authentication-server
 
@@ -77,9 +77,9 @@ De configuratie van de Azure Multi-Factor Authentication-server is hiermee volto
 
 Als u de RADIUS-client wilt configureren, gebruikt u de volgende richtlijnen:
 
-* Configureer uw toestel/server voor verificatie via RADIUS bij het IP-adres van de Azure Multi-Factor Authentication-server, die als de RADIUS-server fungeert.
+* Configureer uw toestel/server om via RADIUS te verifiëren naar het IP-adres van de Azure Multi-Factor Authentication Server, dat fungeert als de RADIUS-server.
 * Gebruik hetzelfde gedeelde geheim dat eerder is geconfigureerd.
-* Stel de time-out voor RADIUS in op 30 tot 60 seconden, zodat er voldoende tijd is om de referenties van de gebruiker te valideren, verificatie in twee stappen uit te voeren, de reactie daarop te ontvangen en vervolgens te reageren op de RADIUS-toegangsaanvraag.
+* Configureer de RADIUS-time-out op 30-60 seconden, zodat er tijd is om de referenties van de gebruiker te valideren, verificatie in twee stappen uit te voeren, hun antwoord te ontvangen en vervolgens te reageren op het RADIUS-toegangsverzoek.
 
 ## <a name="next-steps"></a>Volgende stappen
 

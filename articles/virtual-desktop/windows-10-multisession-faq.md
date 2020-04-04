@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4301aaed0152e07eb2a941b56637239b66c33878
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7ea99e2ee8e2882c211ee17acec70222dc058a8
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127350"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637088"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Veelgestelde vragen over meervoudige Windows 10 Enterprise-sessies
 
@@ -39,7 +39,7 @@ Windows 10 Enterprise-sessies kunnen niet worden uitgevoerd in on-premises produ
 
 U een virtuele machine (VM) starten in Azure met Windows 10 Windows 10 Enterprise-multisessie en deze aanpassen door LOB-toepassingen te installeren, sysprep/generaliseren en vervolgens een afbeelding te maken met behulp van de Azure-portal.  
  
-Maak om aan de slag te gaan een VM in Azure met Windows 10 Windows 10 Enterprise-multisessie. In plaats van de VM in Azure te starten, u de VHD rechtstreeks downloaden. Daarna u de VHD die u hebt gedownload gebruiken om een nieuwe Generatie 1 VM te maken op een Windows 10-pc met Hyper-V ingeschakeld.
+Maak om aan de slag te gaan een VM in Azure met Windows 10 Enterprise-multisessie. In plaats van de VM in Azure te starten, u de VHD rechtstreeks downloaden. Daarna u de VHD die u hebt gedownload gebruiken om een nieuwe Generatie 1 VM te maken op een Windows 10-pc met Hyper-V ingeschakeld.
 
 Pas de afbeelding aan uw behoeften aan door LOB-toepassingen te installeren en de afbeelding te sysprepen. Wanneer u klaar bent met aanpassen, uploadt u de afbeelding naar Azure met de VHD erin. Haal daarna Windows Virtual Desktop uit de Azure Marketplace en gebruik deze om een nieuwe hostpool met de aangepaste afbeelding te implementeren.
  

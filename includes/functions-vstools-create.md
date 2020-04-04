@@ -5,25 +5,25 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/06/2020
+ms.date: 03/26/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 034e966d259f1ca5f22eec5935013de32c883b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 477f3cf270377bc1341e65ab500093e05277afa8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056575"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657543"
 ---
 De projectsjabloon Azure Functions in Visual Studio maakt een project dat u publiceren naar een functie-app in Azure. U een functie-app gebruiken om functies te groeperen als een logische eenheid voor eenvoudiger beheer, implementatie, schalen en delen van resources.
 
-1. Selecteer in Visual Studio in het menu **Bestand** de optie **Nieuw** > **project**.
+1. Selecteer **Bestand** > **nieuw** > **project**in het menu Visual Studio .
 
-1. Voer **in Een nieuw project maken** *functies* in het zoekvak in en kies vervolgens de sjabloon **Azure-functies.**
+1. Voer **in Een nieuw project maken** *functies* in het zoekvak in, kies de sjabloon **Azure-functies** en selecteer **Volgende**.
 
 1. Voer in **Uw nieuwe project configureren**een **projectnaam** voor uw project in en selecteer **Vervolgens Maken**. De functie-appnaam moet geldig zijn als een C#-naamruimte. Gebruik dus geen onderstrepingstekens, afbreekstreepjes of andere niet-alfanumerieke tekens.
 
-1. Gebruik voor het **nieuwe project - &lt;uw&gt; projectnaam-instellingen** de waarden in de volgende tabel:
+1. Gebruik de waarden in de volgende tabel voor de instellingen **voor een nieuwe Azure-functietoepassing** maken:
 
     | Instelling      | Waarde  | Beschrijving                      |
     | ------------ |  ------- |----------------------------------------- |
@@ -38,4 +38,4 @@ De projectsjabloon Azure Functions in Visual Studio maakt een project dat u publ
 
     Zorg ervoor dat u de **toegangsrechten** instelt op **Anoniem**. Als u het standaardfunctieniveau **kiest,** moet u de [functiesleutel](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) weergeven in aanvragen om toegang te krijgen tot het eindpunt van de functie.
 
-1. Selecteer **OK** om het functieproject en de functie HTTP-geactiveerd te maken.
+1. Selecteer **Maken** om het functieproject en de HTTP-triggerfunctie te maken.

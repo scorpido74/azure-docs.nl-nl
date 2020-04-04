@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77647582"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657005"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail verzenden vanaf uw SMTP-account met Azure Logic Apps
 
@@ -56,7 +56,7 @@ Met Azure Logic Apps en de SMTP-connector (Simple Mail Transfer Protocol) u geau
    | **Gebruikersnaam** | Ja | Uw gebruikersnaam voor uw SMTP-account | 
    | **Wachtwoord** | Ja | Uw wachtwoord voor uw SMTP-account | 
    | **SMTP-serverpoort** | Nee | Een specifieke poort op uw SMTP-server die u wilt gebruiken | 
-   | **SSL inschakelen?** | Nee | SSL-versleuteling in- of uitschakelen. | 
+   | **SSL inschakelen?** | Nee | TLS/SSL-versleuteling in- of uitschakelen. | 
    |||| 
 
 1. Geef de benodigde details op voor uw geselecteerde actie. 

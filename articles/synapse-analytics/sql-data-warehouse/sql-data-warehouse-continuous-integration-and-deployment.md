@@ -11,23 +11,22 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 39501cef3bb2f7e4a0e061968520f687cf97ecc5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 20afa3f37bb85fd268962aea03107f0eaeb9bea2
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584208"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633600"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Continue integratie en implementatie voor data warehousing
 
-Deze eenvoudige zelfstudie beschrijft hoe u uw SQL Server Data Tools (SSDT)-databaseproject integreren met Azure DevOps en Azure Pipelines gebruiken om continue integratie en implementatie in te stellen. Deze zelfstudie is de tweede stap in het bouwen van uw continue integratie- en implementatiepijplijn voor gegevensopslag. 
+Deze eenvoudige zelfstudie beschrijft hoe u uw SQL Server Data Tools (SSDT)-databaseproject integreren met Azure DevOps en Azure Pipelines gebruiken om continue integratie en implementatie in te stellen. Deze zelfstudie is de tweede stap in het bouwen van uw continue integratie- en implementatiepijplijn voor gegevensopslag.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-- Ga door de [zelfstudie voor integratie van bronbeheer](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)
+- Ga door de [zelfstudie voor integratie van bronbeheer](sql-data-warehouse-source-control-integration.md)
 
 - Azure DevOps instellen en verbinding maken met Azure DevOps
-
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Continue integratie met Visual Studio build
 
@@ -37,7 +36,7 @@ Deze eenvoudige zelfstudie beschrijft hoe u uw SQL Server Data Tools (SSDT)-data
 
 2. Selecteer uw broncoderepository (Azure Repos Git) en selecteer de sjabloon .NET Desktop-app.
 
-      ![Pijplijninstellingen](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Pijplijninstellingen") 
+      ![Pijplijninstellingen](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Pijplijninstellingen")
 
 3. Bewerk uw YAML-bestand om de juiste pool van uw agent te gebruiken. Uw YAML-bestand moet er ongeveer zo uitzien:
 
@@ -45,10 +44,9 @@ Deze eenvoudige zelfstudie beschrijft hoe u uw SQL Server Data Tools (SSDT)-data
 
 Op dit punt hebt u een eenvoudige omgeving waar elke check-in bij uw source control repository master branch automatisch een succesvolle Visual Studio build van uw databaseproject moet activeren. Valideren van de automatisering werkt end-to-end door een wijziging aan te brengen in uw lokale databaseproject en die wijziging in te checken in uw masterbranch.
 
-
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Continue implementatie met de implementatietaak Azure SQL Data Warehouse (of Database)
 
-1. Voeg een nieuwe taak toe met de [azure SQL Database-implementatietaak](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) en vul de vereiste velden in om verbinding te maken met uw doelgegevensmagazijn. Wanneer deze taak wordt uitgevoerd, wordt de DACPAC die is gegenereerd uit het vorige buildproces geïmplementeerd in het doelgegevensmagazijn. U ook de [implementatietaak azure SQL Data Warehouse](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)gebruiken. 
+1. Voeg een nieuwe taak toe met de [azure SQL Database-implementatietaak](/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en vul de vereiste velden in om verbinding te maken met uw doelgegevensmagazijn. Wanneer deze taak wordt uitgevoerd, wordt de DACPAC die is gegenereerd uit het vorige buildproces geïmplementeerd in het doelgegevensmagazijn. U ook de [implementatietaak azure SQL Data Warehouse](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)gebruiken.
 
       ![Implementatietaak](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Implementatietaak")
 

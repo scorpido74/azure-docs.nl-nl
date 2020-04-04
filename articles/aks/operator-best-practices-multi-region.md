@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3c1f0bb715b3c3bf9b3a3350ab11e26834aa84c8
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 6aff60cbc4a4cab557e6e202ea1181d5b20bbd20
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528663"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655870"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor bedrijfscontinuïteit en disaster recovery in Azure Kubernetes Service (AKS)
 
-Als u clusters beheert in Azure Kubernetes Service (AKS), wordt uptime van toepassingen belangrijk. AKS biedt een hoge beschikbaarheid door gebruik te maken van meerdere knooppunten in een beschikbaarheidsset. Maar deze meerdere knooppunten beschermen uw systeem niet tegen een regiostoring. Om uw uptime te maximaliseren, u vooruit plannen om de bedrijfscontinuïteit te behouden en u voor te bereiden op herstel na noodgevallen.
+Als u clusters beheert in Azure Kubernetes Service (AKS), wordt uptime van toepassingen belangrijk. AKS biedt standaard een hoge beschikbaarheid door meerdere knooppunten te gebruiken in een [VMSS (Virtual Machine Scale Set).](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) Maar deze meerdere knooppunten beschermen uw systeem niet tegen een regiostoring. Om uw uptime te maximaliseren, u vooruit plannen om de bedrijfscontinuïteit te behouden en u voor te bereiden op herstel na noodgevallen.
 
 Dit artikel richt zich op hoe te plannen voor bedrijfscontinuïteit en disaster recovery in AKS. Procedures voor:
 

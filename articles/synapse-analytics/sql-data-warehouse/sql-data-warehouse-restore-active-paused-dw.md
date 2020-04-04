@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 635b65d16ae9a59816506023d323243f043ce7da
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e1d0c5cd850fa0dbacf104d3fcd72d83007df878
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350376"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632256"
 ---
 # <a name="restore-an-existing-sql-pool"></a>Een bestaande SQL-groep herstellen
 
@@ -51,7 +51,7 @@ Als u een bestaande SQL-groep vanaf een herstelpunt wilt herstellen, gebruikt u 
 
 7. Controleer of de herstelde SQL-groep online is.
 
-8. Nadat het herstel is voltooid, u de herstelde SQL-groep configureren door [uw database na herstel te configureren.](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)
+8. Nadat het herstel is voltooid, u de herstelde SQL-groep configureren door [uw database na herstel te configureren.](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)
 
 ```Powershell
 
@@ -100,7 +100,6 @@ $RestoredDatabase.status
     ![Automatische herstelpunten](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>Volgende stappen
+
 - [Een verwijderde SQL-groep herstellen](sql-data-warehouse-restore-deleted-dw.md)
 - [Herstellen vanuit een SQL-groep met geoback-up](sql-data-warehouse-restore-from-geo-backup.md)
-
- 

@@ -4,14 +4,14 @@ description: Vereisten voor het gebruik van Azure HPC-cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271848"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655647"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Vereisten voor Azure HPC-cache
 
@@ -113,7 +113,7 @@ Meer informatie is opgenomen in [Problemen met NAS-configuratie en NFS-opslagdoe
 
   Zorg ervoor dat alle poorten ``rpcinfo`` die door de query zijn geretourneerd, onbeperkt verkeer toestaan van het subnet van de Azure HPC-cache.
 
-  * Controleer naast de poorten `rpcinfo` die door de opdracht zijn geretourneerd, of deze veelgebruikte poorten inkomend en uitgaand verkeer mogelijk maken:
+  * Als u de `rpcinfo` opdracht niet gebruiken, moet u ervoor zorgen dat deze veelgebruikte poorten binnenkomend en uitgaand verkeer toestaan:
 
     | Protocol | Poort  | Service  |
     |----------|-------|----------|
@@ -122,6 +122,8 @@ Meer informatie is opgenomen in [Problemen met NAS-configuratie en NFS-opslagdoe
     | TCP/UDP  | 4045  | nlockmgr |
     | TCP/UDP  | 4046  | gemonteerd   |
     | TCP/UDP  | 4047  | status   |
+
+    Sommige systemen gebruiken verschillende poortnummers voor deze services - raadpleeg de documentatie van uw opslagsysteem om zeker te zijn.
 
   * Controleer firewall-instellingen om er zeker van te zijn dat ze verkeer op al deze vereiste poorten toestaan. Controleer firewalls die worden gebruikt in Azure en on-premises firewalls in uw datacenter.
 
@@ -132,7 +134,7 @@ Meer informatie is opgenomen in [Problemen met NAS-configuratie en NFS-opslagdoe
 
   Meer informatie over toegang tot directoryvermeldingen vindt u in het artikel over [het oplossen van problemen met het probleemie van NFS-opslagtarget](troubleshoot-nas.md#enable-export-listing).
 
-* **Root-toegang:** De cache maakt verbinding met het back-endsysteem als gebruikers-ID 0. Controleer de volgende instellingen op uw opslagsysteem:
+* **Root-toegang** (lezen/schrijven): de cache maakt verbinding met het back-endsysteem als gebruikers-ID 0. Controleer de volgende instellingen op uw opslagsysteem:
   
   * Inschakelen `no_root_squash`. Deze optie zorgt ervoor dat de externe hoofdgebruiker toegang heeft tot bestanden die eigendom zijn van root.
 

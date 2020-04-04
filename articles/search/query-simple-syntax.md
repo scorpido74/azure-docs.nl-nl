@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 04/03/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3d5a4ddf863115747c27efbca1808d51444aac8c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152666"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656169"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Eenvoudige querysyntaxis in Azure Cognitive Search
 
@@ -68,9 +68,15 @@ De OPERATOR NOT is een minteken. Zoek bijvoorbeeld `wifi –luxury` naar documen
 > [!NOTE]  
 >  De `searchMode` optie bepaalt of een term met de OPERATOR NOT ANDed of ORed `+` is `|` met de andere termen in de query zonder een of operator. Terugroepactie `searchMode` die kan worden `any` ingesteld op `all`(standaard) of . Als u `any`query's gebruikt, wordt het terugroepen van `-` query's verhoogd door meer resultaten op te nemen en wordt deze standaard geïnterpreteerd als "OF niet". Komt bijvoorbeeld `wifi -luxury` overeen met documenten `wifi` die de term bevatten `luxury`of documenten die de term niet bevatten. Als u `all`deze gebruikt, zal het de precisie van query's verhogen door minder resultaten op te nemen, en standaard - wordt geïnterpreteerd als "EN NIET". Bijvoorbeeld, `wifi -luxury` zal overeenkomen met documenten `wifi` die de term bevatten en bevatten niet de term "luxe". Dit is aantoonbaar een meer `-` intuïtief gedrag voor de operator. Daarom moet u `searchMode=all` overwegen `searchMode=any` om zoekopdrachten te optimaliseren voor precisie in plaats van terugroepen *en* uw gebruikers gebruiken de `-` operator vaak in zoekopdrachten.
 
-## <a name="suffix-operator"></a>Achtervoegseloperator
+<a name="prefix-search"></a>
 
-De bediener is een `*`sterretje . Zoek bijvoorbeeld `lux*` naar documenten met een term `lux`die begint met het negeren van aanvragen.  
+## <a name="suffix--operator-for-prefix-search"></a>Achtervoegseloperator `*` voor zoeken naar voorvoegsel
+
+De bediener is een `*`sterretje . Zoek bijvoorbeeld `cap*` naar documenten met een term `cap`die begint met het negeren van aanvragen. 
+
+Net als bij filters zoekt een voorvoegselquery naar een exacte overeenkomst. Als zodanig is er geen relevantie score (alle resultaten ontvangen een zoekscore van 1,0). Voorvoegselquery's kunnen traag zijn, vooral als de index groot is en het voorvoegsel uit een klein aantal tekens bestaat. 
+
+Als u een achtervoegselquery wilt uitvoeren, overeenkomend op het laatste deel van de tekenreeks, gebruikt u een [jokerzoeking](query-lucene-syntax.md#bkmk_wildcard) en de volledige syntaxis van Lucene.
 
 ## <a name="phrase-search-operator"></a>Zoekoperator voor woordtermen
 

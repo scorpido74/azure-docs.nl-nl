@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 0a9c32affc50a6d357d4160e00486c896d762e3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75385810"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652077"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>De levenscyclus van een web- of werknemersrol aanpassen in .NET
 Wanneer u een werknemersrol maakt, breidt u de klasse [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) uit, die methoden biedt waarmee u overschrijven waarmee u reageren op levenscyclusgebeurtenissen. Voor webrollen is deze klasse optioneel, dus u moet deze gebruiken om te reageren op levenscyclusgebeurtenissen.
@@ -23,7 +23,7 @@ De klasse [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.1
 
 Wanneer u **RoleEntryPoint**uitbreidt, moet u zich bewust zijn van het volgende gedrag van de methoden:
 
-* De [OnStart-](/previous-versions/azure/reference/ee772851(v=azure.100)) en [OnStop-methoden](/previous-versions/azure/reference/ee772844(v=azure.100)) geven een booleaanse waarde terug, dus het is mogelijk om **false** van deze methoden terug te keren.
+* De [Methode OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) retourneert een booleaanse waarde, dus het is mogelijk om **false** van deze methode terug te sturen.
   
    Als uw code **false**retourneert, wordt het rolproces abrupt beëindigd, zonder dat u een afsluitvolgorde uitvoert die u mogelijk hebt uitgevoerd. In het algemeen moet u voorkomen dat false van de **OnStart-methode** **wordt** geretourneerd.
 * Elke niet-gevangen uitzondering binnen een overbelasting van een **RoleEntryPoint-methode** wordt behandeld als een niet-behandelde uitzondering.

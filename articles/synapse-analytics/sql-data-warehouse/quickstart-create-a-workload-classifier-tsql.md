@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6354390c44c0991b0d6bf36cba8efd4272f9c73d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: bcac6af9efd18ef8abeea7d82961fd8f2fe70ba3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583769"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633751"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Snelstart: een classificatie voor werkbelasting maken met T-SQL
 
@@ -39,7 +39,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-login-for-theceo"></a>Login maken voor TheCEO
 
-Maak een SQL Server-verificatielogin in de `master` database met CREATE [LOGIN](/sql/t-sql/statements/create-login-transact-sql) voor 'TheCEO'.
+Maak een SQL Server-verificatielogin in de `master` database met CREATE [LOGIN](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor 'TheCEO'.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -51,7 +51,7 @@ END
 
 ## <a name="create-user"></a>Gebruiker maken
 
-[Maak gebruiker](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest)"TheCEO", in mySampleDataWarehouse
+[Maak gebruiker](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)"TheCEO", in mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -63,7 +63,7 @@ END
 
 ## <a name="create-a-workload-classifier"></a>Een classificatie voor werkbelasting maken
 
-Maak een [workload classifier](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) voor "TheCEO" met een hoog belang.
+Maak een [workload classifier](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor "TheCEO" met een hoog belang.
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];
@@ -108,6 +108,6 @@ Volg deze stappen om resources op te schonen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- U hebt nu een workload classificatie gemaakt. Voer een paar query's uit als TheCEO om te zien hoe ze presteren. Zie [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) om query's en het toegewezen belang weer te geven.
+- U hebt nu een workload classificatie gemaakt. Voer een paar query's uit als TheCEO om te zien hoe ze presteren. Zie [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om query's en het toegewezen belang weer te geven.
 - Zie [Workload importance](sql-data-warehouse-workload-importance.md) en [workload classification](sql-data-warehouse-workload-classification.md)voor meer informatie over Synapse SQL-workloadmanagement.
 - Bekijk de how-to-artikelen om [het belang van workloads](sql-data-warehouse-how-to-configure-workload-importance.md) te configureren en hoe [u Workload Management beheren en bewaken.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)

@@ -4,19 +4,19 @@ description: Self-service wachtwoord opnieuw instellen inschakelen met vergeten 
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a8675756aeef1140dbebd94023d7f7fb4c7af99
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77370066"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652261"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>How to: Wachtwoordopnieuw instellen inschakelen vanaf het Windows-aanmeldingsscherm
 
@@ -97,7 +97,7 @@ Het auditlogboek van Azure AD bevat informatie over het IP-adres en het ClientTy
 
 ![Voorbeeld van windows 7-wachtwoordreset in het Azure AD-controlelogboek](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Wanneer gebruikers hun wachtwoord opnieuw instellen vanaf het inlogscherm van een Windows `defaultuser1` 10-apparaat, wordt een tijdelijk account met lage bevoegdheden aangemaakt. Dit account wordt gebruikt om het proces voor het opnieuw instellen van het wachtwoord te beveiligen. Het account zelf kent een willekeurig gegenereerd wachtwoord, wordt niet getoond bij het aanmelden op een apparaat en wordt automatisch verwijderd nadat de gebruiker het wachtwoord opnieuw heeft ingesteld. Er `defaultuser` kunnen meerdere profielen bestaan, maar kunnen veilig worden genegeerd.
+Wanneer gebruikers hun wachtwoord opnieuw instellen vanaf het inlogscherm van een Windows `defaultuser1` 10-apparaat, wordt een tijdelijk account met lage bevoegdheden aangemaakt. Dit account wordt gebruikt om het proces voor het opnieuw instellen van het wachtwoord te beveiligen. Het account zelf heeft een willekeurig gegenereerd wachtwoord, wordt niet weergegeven voor het aanmelden van het apparaat en wordt automatisch verwijderd nadat de gebruiker zijn wachtwoord opnieuw heeft ingesteld. Er `defaultuser` kunnen meerdere profielen bestaan, maar kunnen veilig worden genegeerd.
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 en 8.1 wachtwoord opnieuw instellen
 
@@ -141,8 +141,8 @@ Als extra logging vereist is, kan een registersleutel op de machine worden gewij
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- Als u verboselogging `REG_DWORD: “EnableLogging”`wilt inschakelen, maakt u een , en stelt u deze in op 1.
-- Als u de verbose-logboekregistratie wilt uitschakelen, wijzigt u de `REG_DWORD: “EnableLogging”` 0.
+- Als u verboselogging `REG_DWORD: "EnableLogging"`wilt inschakelen, maakt u een , en stelt u deze in op 1.
+- Als u de verbose-logboekregistratie wilt uitschakelen, wijzigt u de `REG_DWORD: "EnableLogging"` 0.
 
 ## <a name="what-do-users-see"></a>Wat gebruikers zien
 

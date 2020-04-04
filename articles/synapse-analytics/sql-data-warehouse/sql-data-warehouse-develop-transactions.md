@@ -1,6 +1,6 @@
 ---
-title: Transacties gebruiken
-description: Tips voor het implementeren van transacties in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
+title: Transacties gebruiken in de Synapse SQL-groep
+description: Dit artikel bevat tips voor het implementeren van transacties en het ontwikkelen van oplossingen in Synapse SQL-pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,30 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a14201131eac5ce1efc4020c9ce0f40a80cac8a3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: fdbffba7bee84c32d11f8b60431a35f185d9e637
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351576"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633433"
 ---
-# <a name="using-transactions-in-sql-data-warehouse"></a>Transacties gebruiken in SQL Data Warehouse
-Tips voor het implementeren van transacties in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
+# <a name="use-transactions-in-synapse-sql-pool"></a>Transacties gebruiken in de Synapse SQL-groep
+Dit artikel bevat tips voor het implementeren van transacties en het ontwikkelen van oplossingen in SQL-pool.
 
 ## <a name="what-to-expect"></a>Wat te verwachten
-Zoals u zou verwachten, ondersteunt SQL Data Warehouse transacties als onderdeel van de data warehouse-workload. Om ervoor te zorgen dat de prestaties van SQL Data Warehouse echter op schaal worden gehandhaafd, zijn sommige functies beperkt in vergelijking met SQL Server. Dit artikel belicht de verschillen en geeft een overzicht van de anderen. 
+Zoals u zou verwachten, ondersteunt SQL-pool transacties als onderdeel van de werkbelasting van het gegevensmagazijn. Om ervoor te zorgen dat SQL-pool echter op schaal wordt onderhouden, zijn sommige functies beperkt in vergelijking met SQL Server. Dit artikel belicht de verschillen. 
 
 ## <a name="transaction-isolation-levels"></a>Transactieisolatieniveaus
-SQL Data Warehouse implementeert ACID-transacties. Het isolatieniveau van de transactionele ondersteuning is standaard lezen NIET-VASTGELEGD.  U deze wijzigen in HET LEZEN VAN VASTGELEGDE MOMENTOPNAMEISOLATIE door de READ_COMMITTED_SNAPSHOT-databaseoptie in te schakelen voor een gebruikersdatabase wanneer deze is verbonden met de hoofddatabase.  Zodra deze is ingeschakeld, worden alle transacties in deze database uitgevoerd onder LEES COMMITTED SNAPSHOT ISOLATION en wordt het instellen van READ UNCOMMITTED op sessieniveau niet gehonoreerd. Schakel [opties voor WIJZIGINGDATABASESET (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) in voor meer informatie.
+SQL-groep implementeert ACID-transacties. Het isolatieniveau van de transactionele ondersteuning is standaard lezen NIET-VASTGELEGD.  U deze wijzigen in HET LEZEN VAN VASTGELEGDE MOMENTOPNAMEISOLATIE door de READ_COMMITTED_SNAPSHOT-databaseoptie in te schakelen voor een gebruikersdatabase wanneer deze is verbonden met de hoofddatabase.  
+
+Zodra deze is ingeschakeld, worden alle transacties in deze database uitgevoerd onder LEES COMMITTED SNAPSHOT ISOLATION en wordt het instellen van READ UNCOMMITTED op sessieniveau niet gehonoreerd. Schakel [opties voor WIJZIGINGDATABASESET (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) in voor meer informatie.
 
 ## <a name="transaction-size"></a>Transactiegrootte
-Een enkele transactie voor gegevenswijziging is beperkt in omvang. De limiet wordt per distributie toegepast. Daarom kan de totale toewijzing worden berekend door de limiet te vermenigvuldigen met het aantal verdelingen. Als u het maximumaantal rijen in de transactie wilt benaderen, deelt u de distributiedop door de totale grootte van elke rij. Voor kolommen met variabele lengte u overwegen een gemiddelde kolomlengte te nemen in plaats van de maximale grootte te gebruiken.
+Een enkele transactie voor gegevenswijziging is beperkt in omvang. De limiet wordt per distributie toegepast. Daarom kan de totale toewijzing worden berekend door de limiet te vermenigvuldigen met het aantal verdelingen. 
 
-In onderstaande tabel zijn de volgende aannames gemaakt:
+Als u het maximumaantal rijen in de transactie wilt benaderen, deelt u de distributiedop door de totale grootte van elke rij. Voor kolommen met variabele lengte u overwegen een gemiddelde kolomlengte te nemen in plaats van de maximale grootte te gebruiken.
+
+In de volgende tabel zijn twee veronderstellingen gemaakt:
 
 * Er is een gelijkmatige verdeling van gegevens opgetreden 
 * De gemiddelde rijlengte is 250 bytes
@@ -84,12 +88,15 @@ Raadpleeg het artikel Transacties best [practices](sql-data-warehouse-develop-be
 > 
 
 ## <a name="transaction-state"></a>Transactiestatus
-SQL Data Warehouse gebruikt de functie XACT_STATE() om een mislukte transactie te melden met de waarde -2. Deze waarde betekent dat de transactie is mislukt en alleen is gemarkeerd voor terugdraaien.
+SQL-groep gebruikt de functie XACT_STATE() om een mislukte transactie te melden met de waarde -2. Deze waarde betekent dat de transactie is mislukt en alleen is gemarkeerd voor terugdraaien.
 
 > [!NOTE]
-> Het gebruik van -2 door de XACT_STATE functie om een mislukte transactie aan te duiden, vertegenwoordigt een ander gedrag dan SQL Server. SQL Server gebruikt de waarde -1 om een vrijblijvende transactie weer te geven. SQL Server kan bepaalde fouten in een transactie verdragen zonder dat deze als vrijblijvend hoeft te worden gemarkeerd. Bijvoorbeeld `SELECT 1/0` zou leiden tot een fout, maar niet dwingen een transactie in een niet-committable staat. SQL Server maakt ook reads in de vrijblijvende transactie mogelijk. SQL Data Warehouse laat u dit echter niet doen. Als er een fout optreedt in een SQL Data Warehouse-transactie, wordt automatisch de status -2 ingevoerd en u geen verdere selectieverklaringen uitvoeren totdat de instructie is teruggedraaid. Het is daarom belangrijk om te controleren of uw toepassingscode om te zien of het gebruik maakt van XACT_STATE() als je nodig hebt om code wijzigingen aan te brengen.
-> 
-> 
+> Het gebruik van -2 door de XACT_STATE functie om een mislukte transactie aan te duiden, vertegenwoordigt een ander gedrag dan SQL Server. SQL Server gebruikt de waarde -1 om een vrijblijvende transactie weer te geven. SQL Server kan bepaalde fouten in een transactie verdragen zonder dat deze als vrijblijvend hoeft te worden gemarkeerd. Bijvoorbeeld, `SELECT 1/0` zou leiden tot een fout, maar niet dwingen een transactie in een niet-committable staat. 
+
+SQL Server maakt ook reads in de vrijblijvende transactie mogelijk. In SQL-pool u dit echter niet doen. Als er een fout optreedt binnen een SQL-pooltransactie, wordt automatisch de status -2 ingevoerd en u geen verdere selectieverklaringen uitvoeren totdat de instructie is teruggedraaid. 
+
+Als zodanig is het belangrijk om te controleren of uw toepassingscode om te zien of het XACT_STATE() gebruikt, omdat u mogelijk codewijzigingen moet aanbrengen.
+
 
 In SQL Server ziet u bijvoorbeeld een transactie die er als volgt uitziet:
 
@@ -131,11 +138,11 @@ SELECT @xact_state AS TransactionState;
 
 De voorgaande code geeft het volgende foutbericht:
 
-Msg 111233, niveau 16, staat 1, lijn 1 111233; De huidige transactie is afgebroken en wijzigingen in behandeling zijn teruggedraaid. Oorzaak: een transactie in een rollback-status is niet expliciet teruggedraaid voor een DDL-, DML- of SELECT-instructie.
+Msg 111233, niveau 16, staat 1, lijn 1 111233; De huidige transactie is afgebroken en wijzigingen in behandeling zijn teruggedraaid. De oorzaak van dit probleem is dat een transactie in een terugdraaistatus niet expliciet wordt teruggedraaid vóór een DDL-, DML- of SELECT-instructie.
 
 U krijgt de uitvoer van de ERROR_* functies niet.
 
-In SQL Data Warehouse moet de code enigszins worden gewijzigd:
+In SQL-pool moet de code enigszins worden gewijzigd:
 
 ```sql
 SET NOCOUNT ON;
@@ -177,17 +184,19 @@ Het verwachte gedrag wordt nu waargenomen. De fout in de transactie wordt beheer
 Het enige dat is veranderd, is dat de terugdraaiing van de transactie moest plaatsvinden voordat de foutinformatie in het CATCH-blok werd gelezen.
 
 ## <a name="error_line-function"></a>Error_Line()
-Het is ook vermeldenswaard dat SQL Data Warehouse de functie ERROR_LINE() niet implementeert of ondersteunt. Als u dit in uw code hebt, moet u deze verwijderen om te voldoen aan SQL Data Warehouse. Gebruik querylabels in uw code in plaats daarvan om gelijkwaardige functionaliteit te implementeren. Zie het artikel [LABEL voor](sql-data-warehouse-develop-label.md) meer informatie.
+Het is ook vermeldenswaard dat SQL-pool de functie ERROR_LINE() niet implementeert of ondersteunt. Als u dit in uw code hebt, moet u deze verwijderen om te voldoen aan SQL-pool. 
+
+Gebruik querylabels in uw code in plaats daarvan om gelijkwaardige functionaliteit te implementeren. Zie het artikel [LABEL voor](sql-data-warehouse-develop-label.md) meer informatie.
 
 ## <a name="using-throw-and-raiserror"></a>Throw en RAISERROR gebruiken
-THROW is de modernere implementatie voor het verhogen van uitzonderingen in SQL Data Warehouse, maar RAISERROR wordt ook ondersteund. Er zijn een paar verschillen die de moeite waard zijn aandacht te besteden aan echter.
+THROW is de modernere implementatie voor het verhogen van uitzonderingen in SQL-pool, maar RAISERROR wordt ook ondersteund. Er zijn een paar verschillen die de moeite waard zijn aandacht te besteden aan echter.
 
 * Door de gebruiker gedefinieerde foutberichtennummers kunnen niet in het bereik van 100.000 - 150.000 voor THROW
 * RAISERROR foutmeldingen zijn vastgesteld op 50.000
 * Het gebruik van sys.messages wordt niet ondersteund
 
 ## <a name="limitations"></a>Beperkingen
-SQL Data Warehouse heeft wel een paar andere beperkingen die betrekking hebben op transacties.
+SQL-groep heeft een paar andere beperkingen die betrekking hebben op transacties.
 
 De verschillen zijn als volgt:
 
@@ -199,5 +208,5 @@ De verschillen zijn als volgt:
 * Geen ondersteuning voor DDL, zoals CREATE TABLE in een door de gebruiker gedefinieerde transactie
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Aanbevolen procedures voor](sql-data-warehouse-develop-best-practices-transactions.md)transacties voor meer informatie over het optimaliseren van transacties. Zie Best practices voor SQL Data Warehouse voor meer informatie over andere best practices van SQL Data [Warehouse.](sql-data-warehouse-best-practices.md)
+Zie [Aanbevolen procedures voor](sql-data-warehouse-develop-best-practices-transactions.md)transacties voor meer informatie over het optimaliseren van transacties. Zie Best [practices voor SQL Pool](sql-data-warehouse-best-practices.md)voor meer informatie over andere best practices voor SQL-pool.
 

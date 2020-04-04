@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: 306d847c2bc5af72d37dbf8bf472a5bae63e9fd5
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528506"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637773"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure-monitor
 
@@ -177,7 +177,7 @@ Geef een bestaande of nieuwe [actiegroep](platform/action-groups.md) op, zodat w
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Wat zijn de firewallvereisten voor Azure Monitor-agents?
-Zie [Netwerkfirewallvereisten](platform/log-analytics-agent.md#firewall-requirements)voor details over firewallvereisten.
+Zie [Netwerkfirewallvereisten](platform/log-analytics-agent.md#network-requirements)voor details over firewallvereisten.
 
 
 ## <a name="visualizations"></a>Visualisaties
@@ -284,7 +284,7 @@ Uit andere bronnen, als u ze configureert:
 
 * [Azure-diagnose](platform/diagnostics-extension-to-application-insights.md)
 * [Importeren in Analytics](platform/data-collector-api.md)
-* [Logboekanalyse](platform/data-collector-api.md)
+* [Log Analytics](platform/data-collector-api.md)
 * [Logstash](platform/data-collector-api.md)
 
 ### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Kan ik wat telemetrie filteren of wijzigen?
@@ -718,7 +718,7 @@ Onder deze voorwaarde wordt u gevraagd met de optie **Nu proberen** wanneer u de
 ## <a name="next-steps"></a>Volgende stappen
 Als uw vraag hier niet wordt beantwoord, u naar de volgende forums verwijzen naar aanvullende vragen en antwoorden.
 
-- [Logboekanalyse](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
+- [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
 - [Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 
 Ga voor algemene feedback over Azure Monitor naar het [feedbackforum.](https://feedback.azure.com/forums/34192--general-feedback)

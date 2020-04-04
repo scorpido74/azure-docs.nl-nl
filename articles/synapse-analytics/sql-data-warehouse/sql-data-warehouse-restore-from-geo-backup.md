@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4390ed39c86e041d3fbd776415f0ffbe71f605bd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 68d53d2a33b7ab705dfa88f03618a5d5a3d1bced
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350168"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633029"
 ---
 # <a name="geo-restore-for-sql-pool"></a>Geo-herstel voor SQL-pool
 
@@ -38,12 +38,12 @@ Als u wilt herstellen vanuit een geoback-up, gebruikt u de cmdlet [Get-AzSqlData
 
 1. Voordat u begint, moet u [Azure PowerShell installeren.](https://docs.microsoft.com/powershell/azure/overview)
 2. Open PowerShell.
-2. Maak verbinding met uw Azure-account en vermeld alle abonnementen die aan uw account zijn gekoppeld.
-3. Selecteer het abonnement dat het gegevensmagazijn bevat dat moet worden hersteld.
-4. Haal het gegevensmagazijn dat u wilt herstellen.
-5. Maak de herstelaanvraag voor het gegevensmagazijn.
-6. Controleer de status van het geoherstelde gegevensmagazijn.
-7. Zie [Uw database configureren na herstel]( ../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)als u uw gegevensmagazijn wilt configureren nadat het herstel is voltooid.
+3. Maak verbinding met uw Azure-account en vermeld alle abonnementen die aan uw account zijn gekoppeld.
+4. Selecteer het abonnement dat het gegevensmagazijn bevat dat moet worden hersteld.
+5. Haal het gegevensmagazijn dat u wilt herstellen.
+6. Maak de herstelaanvraag voor het gegevensmagazijn.
+7. Controleer de status van het geoherstelde gegevensmagazijn.
+8. Zie [Uw database configureren na herstel]( ../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)als u uw gegevensmagazijn wilt configureren nadat het herstel is voltooid.
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -77,24 +77,25 @@ De herstelde database is tde-ingeschakeld als de brondatabase tde-ingeschakeld i
 Volg de onderstaande stappen om een SQL-groep te herstellen vanuit een geoback-up:
 
 1. Meld u aan bij uw [Azure-portalaccount.](https://portal.azure.com/)
-1. Klik **op + Een resource maken**. 
+2. Klik **op + Een resource maken**.
 
-![Nieuwe DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
+   ![Nieuwe DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
 3. Klik **op Databases** en vervolgens **Azure Synapse Analytics (voorheen SQL DW) **.
 
-![Nieuwe DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
+   ![Nieuwe DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 
 4. Vul de gevraagde informatie in op het tabblad **Basisbeginselen** en klik op **Volgende: Aanvullende instellingen**.
 
-![Basisbeginselen](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+   ![Basisbeginselen](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
 5. Selecteer Back-up voor **Het gebruik van bestaande gegevensparameter** **back-up** en selecteer de juiste back-up in de opties voor omlaag schuiven. Klik **op Controleren + Maken**.
- 
-![Back-up](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
+
+   ![Back-up](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
 6. Controleer na het herstel van het gegevensmagazijn of de **status** online is.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 - [Een bestaande SQL-groep herstellen](sql-data-warehouse-restore-active-paused-dw.md)
 - [Een verwijderde SQL-groep herstellen](sql-data-warehouse-restore-deleted-dw.md)
