@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 65a6f51d0eef28ea33adcc755d3d51f1e06a5341
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 70fa66a96291e0c2a638bf69bdce7da531d32bb7
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528326"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637468"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows-computers verbinden met Azure Monitor
 
@@ -32,7 +32,7 @@ Het middel kan worden geïnstalleerd met behulp van een van de volgende methoden
 
 Als u de agent moet configureren om aan meer dan één werkruimte te rapporteren, kan dit niet worden uitgevoerd tijdens de eerste installatie, alleen daarna door de instellingen van het Configuratiescherm of PowerShell bij te werken, zoals beschreven in [Het toevoegen of verwijderen van een werkruimte.](agent-manage.md#adding-or-removing-a-workspace)  
 
-Als u meer wilt weten over de ondersteunde configuratie, kunt u de informatie over [ondersteunde Windows-besturingssystemen](log-analytics-agent.md#supported-windows-operating-systems) en de [ netwerkconfiguratie voor de firewall](log-analytics-agent.md#firewall-requirements) raadplegen.
+Als u meer wilt weten over de ondersteunde configuratie, kunt u de informatie over [ondersteunde Windows-besturingssystemen](log-analytics-agent.md#supported-windows-operating-systems) en de [ netwerkconfiguratie voor de firewall](log-analytics-agent.md#network-requirements) raadplegen.
 
 ## <a name="obtain-workspace-id-and-key"></a>Werkruimte-ID en -sleutel ophalen
 Voordat u de Log Analytics-agent voor Windows installeert, hebt u de werkruimte-id en -sleutel nodig voor uw Log Analytics-werkruimte.  Deze informatie is vereist tijdens het instellen van elke installatiemethode om de agent correct te configureren en ervoor te zorgen dat deze met succes kan communiceren met Azure Monitor in de commerciële azure- en amerikaanse overheidscloud. 
@@ -136,44 +136,44 @@ De 32-bits en 64-bits versies van het agentpakket hebben verschillende productco
 Als u de productcode rechtstreeks uit het installatiepakket van de agent wilt ophalen, u Orca.exe gebruiken uit de [Windows SDK Components for Windows Installer Developers,](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) een onderdeel van de Windows Software Development Kit of powershell gebruiken volgens een [voorbeeldscript](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) dat is geschreven door een Microsoft Valuable Professional (MVP).  Voor beide benaderingen moet u eerst het **MOMagent.msi-bestand** uit het MMASetup-installatiepakket halen.  Dit wordt eerder weergegeven in de eerste stap onder de sectie [Installeer de agent met behulp van de opdrachtregel](#install-the-agent-using-the-command-line).  
 
 1. Importeer de xPSDesiredStateConfiguration DSC-module vanuit [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) Azure Automation.  
-1. Azure Automation-variabele elementen maken voor *OPSINSIGHTS_WS_ID* en *OPSINSIGHTS_WS_KEY*. Stel *OPSINSIGHTS_WS_ID* in op uw Log Analytics-werkruimte-id en stel *OPSINSIGHTS_WS_KEY* in op de primaire sleutel van uw werkruimte.
-1. Kopieer het script en sla het op als MMAgent.ps1.
+2.    Azure Automation-variabele elementen maken voor *OPSINSIGHTS_WS_ID* en *OPSINSIGHTS_WS_KEY*. Stel *OPSINSIGHTS_WS_ID* in op uw Log Analytics-werkruimte-id en stel *OPSINSIGHTS_WS_KEY* in op de primaire sleutel van uw werkruimte.
+3.    Kopieer het script en sla het op als MMAgent.ps1.
 
-   ```powershell
-   Configuration MMAgent
-   {
-       $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
-       $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
-       $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
+```powershell
+Configuration MMAgent
+{
+    $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
+    $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
+    $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
 
-       Import-DscResource -ModuleName xPSDesiredStateConfiguration
-       Import-DscResource -ModuleName PSDesiredStateConfiguration
+    Import-DscResource -ModuleName xPSDesiredStateConfiguration
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
 
-       Node OMSnode {
-           Service OIService
-           {
-               Name = "HealthService"
-               State = "Running"
-               DependsOn = "[Package]OI"
-           }
+    Node OMSnode {
+        Service OIService
+        {
+            Name = "HealthService"
+            State = "Running"
+            DependsOn = "[Package]OI"
+        }
 
-           xRemoteFile OIPackage {
-               Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
-               DestinationPath = $OIPackageLocalPath
-           }
+        xRemoteFile OIPackage {
+            Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
+            DestinationPath = $OIPackageLocalPath
+        }
 
-           Package OI {
-               Ensure = "Present"
-               Path  = $OIPackageLocalPath
-               Name = "Microsoft Monitoring Agent"
-               ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
-               Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + '      OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
-               DependsOn = "[xRemoteFile]OIPackage"
-           }
-       }
-   }
+        Package OI {
+            Ensure = "Present"
+            Path  = $OIPackageLocalPath
+            Name = "Microsoft Monitoring Agent"
+            ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
+            Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
+            DependsOn = "[xRemoteFile]OIPackage"
+        }
+    }
+}
 
-   ```
+```
 
 4. Werk `ProductId` de waarde in het script bij met de productcode die is geëxtraheerd uit de nieuwste versie van het installatiepakket van de agent met behulp van de eerder aanbevolen methoden. 
 5. [Importeer het MMAgent.ps1-configuratiescript](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) in uw Automatiseringsaccount. 

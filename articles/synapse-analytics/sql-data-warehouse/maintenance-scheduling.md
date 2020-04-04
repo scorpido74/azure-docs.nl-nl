@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: f193580ca03d4b1805f3c044658a34f468f3f44f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 43fc32e910c51e8b70e15aa49584a18e5b703fca
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346563"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631586"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Onderhoudsschema's gebruiken om service-updates en onderhoud te beheren
 
-De functie onderhoudsschema integreert de servicestatus geplande onderhoudsmeldingen, de monitor voor de controle van de resourcestatus en de onderhoudsplanningsservice voor Synapse SQL-pool (datawarehouse) in Azure Synapse Analytics. 
+De functie onderhoudsschema integreert de servicestatus geplande onderhoudsmeldingen, de monitor voor de controle van de resourcestatus en de onderhoudsplanningsservice voor Synapse SQL-pool (datawarehouse) in Azure Synapse Analytics.
 
 U moet onderhoudsplanning gebruiken om een tijdvenster te kiezen wanneer het handig is om nieuwe functies, upgrades en patches te ontvangen. U moet binnen een periode van zeven dagen een primair en secundair onderhoudsvenster kiezen, elk venster moet binnen afzonderlijke dagbereiken zijn.
 
@@ -48,52 +48,55 @@ Alle actieve onderhoudsgebeurtenissen worden weergegeven in de sectie **Services
 
 Zelfs als onderhoudsplanning niet beschikbaar is in de geselecteerde regio, u uw onderhoudsschema op elk gewenst moment bekijken en bewerken. Wanneer onderhoudsplanning beschikbaar komt in uw regio, wordt het geïdentificeerde schema onmiddellijk actief op uw Synapse SQL-pool.
 
-## <a name="view-a-maintenance-schedule"></a>Een onderhoudsschema weergeven 
+## <a name="view-a-maintenance-schedule"></a>Een onderhoudsschema weergeven
 
 Standaard zijn alle nieuw gemaakte gegevensmagazijninstanties een primair en secundair onderhoudsvenster van acht uur toegepast tijdens de implementatie. Zoals hierboven aangegeven, u de vensters wijzigen zodra de implementatie is voltooid. Er vindt geen onderhoud plaats buiten de opgegeven onderhoudsperioden zonder voorafgaande kennisgeving.
 
 Voer de volgende stappen uit om het onderhoudsschema weer te geven dat is toegepast op uw Synapse SQL-groep:
 
-1.    Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2.    Selecteer de Synapse SQL-groep die u wilt weergeven. 
-3.    De geselecteerde Synapse SQL-pool wordt geopend op het overzichtsblad. Het onderhoudsschema dat wordt toegepast op het gegevensmagazijn wordt weergegeven onder **Onderhoudsschema**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+2. Selecteer de Synapse SQL-groep die u wilt weergeven.
+3. De geselecteerde Synapse SQL-pool wordt geopend op het overzichtsblad. Het onderhoudsschema dat wordt toegepast op het gegevensmagazijn wordt weergegeven onder **Onderhoudsschema**.
 
 ![Overzichtsblad](./media/maintenance-scheduling/clear-overview-blade.PNG)
 
-## <a name="change-a-maintenance-schedule"></a>Een onderhoudsschema wijzigen 
+## <a name="change-a-maintenance-schedule"></a>Een onderhoudsschema wijzigen
 
-Een onderhoudsschema kan op elk gewenst moment worden bijgewerkt of gewijzigd. Als de geselecteerde instantie een actieve onderhoudscyclus doormaakt, worden de instellingen opgeslagen. Ze zullen actief worden tijdens de volgende geïdentificeerde onderhoudsperiode. [Meer informatie](../../service-health/resource-health-overview.md) over het bewaken van uw datawarehouse tijdens een actief onderhoudsevenement. 
+Een onderhoudsschema kan op elk gewenst moment worden bijgewerkt of gewijzigd. Als de geselecteerde instantie een actieve onderhoudscyclus doormaakt, worden de instellingen opgeslagen. Ze zullen actief worden tijdens de volgende geïdentificeerde onderhoudsperiode. [Meer informatie](../../service-health/resource-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) over het bewaken van uw datawarehouse tijdens een actief onderhoudsevenement.
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>De primaire en secundaire vensters identificeren
 
 De primaire en secundaire vensters moeten afzonderlijke dagbereiken hebben. Een voorbeeld is een primair venster van dinsdag tot en met donderdag en een secundair venster van zaterdag-zondag.
 
 Voer de volgende stappen uit om het onderhoudsschema voor uw Synapse SQL-groep te wijzigen:
-1.    Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2.    Selecteer de Synapse SQL-groep die u wilt bijwerken. De pagina wordt geopend op het overzichtsblad. 
-3.    Open de pagina voor instellingen voor onderhoudsschema's door de koppeling **Onderhoudsschema overzicht** op het overzichtsblad te selecteren. Of selecteer de optie **Onderhoudsschema** in het menu resource aan de linkerkant.  
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+2. Selecteer de Synapse SQL-groep die u wilt bijwerken. De pagina wordt geopend op het overzichtsblad.
+Open de pagina voor instellingen voor onderhoudsschema's door de koppeling **Onderhoudsschema overzicht** op het overzichtsblad te selecteren. Of selecteer de optie **Onderhoudsschema** in het menu resource aan de linkerkant.
 
     ![Opties voor het overzichtsblad](./media/maintenance-scheduling/maintenance-change-option.png)
 
-4. Identificeer het gewenste dagbereik voor uw primaire onderhoudsvenster met behulp van de opties boven aan de pagina. Deze selectie bepaalt of uw primaire venster op een doordeweekse dag of in het weekend plaatsvindt. Uw selectie werkt de vervolgkeuzewaarden bij. Tijdens de preview ondersteunen sommige regio's mogelijk nog niet de volledige set beschikbare **dagopties.**
+3. Identificeer het gewenste dagbereik voor uw primaire onderhoudsvenster met behulp van de opties boven aan de pagina. Deze selectie bepaalt of uw primaire venster op een doordeweekse dag of in het weekend plaatsvindt. Uw selectie werkt de vervolgkeuzewaarden bij.
+Tijdens de preview ondersteunen sommige regio's mogelijk nog niet de volledige set beschikbare **dagopties.**
 
    ![Blad onderhoudsinstellingen](./media/maintenance-scheduling/maintenance-settings-page.png)
 
-5. Kies de primaire en secundaire onderhoudsvensters van uw voorkeur met behulp van de vervolgkeuzelijsten:
+4. Kies de primaire en secundaire onderhoudsvensters van uw voorkeur met behulp van de vervolgkeuzelijsten:
    - **Dag**: Voorkeursdag om onderhoud uit te voeren tijdens het geselecteerde venster.
    - **Begintijd**: Voorkeur begintijd voor het onderhoudsvenster.
    - **Tijdvenster**: Voorkeursduur van uw tijdvenster.
 
-   Het **overzichtsgebied Schema** onder aan het blad wordt bijgewerkt op basis van de waarden die u hebt geselecteerd. 
+   Het **overzichtsgebied Schema** onder aan het blad wordt bijgewerkt op basis van de waarden die u hebt geselecteerd.
   
-6. Selecteer **Opslaan**. Er verschijnt een bericht waarin wordt bevestigd dat uw nieuwe planning nu actief is. 
+5. Selecteer **Opslaan**. Er verschijnt een bericht waarin wordt bevestigd dat uw nieuwe planning nu actief is.
 
-   Als u een planning opslaat in een regio die geen onderhoudsplanning ondersteunt, wordt het volgende bericht weergegeven. Uw instellingen worden opgeslagen en worden actief wanneer de functie beschikbaar komt in uw geselecteerde regio.    
+   Als u een planning opslaat in een regio die geen onderhoudsplanning ondersteunt, wordt het volgende bericht weergegeven. Uw instellingen worden opgeslagen en worden actief wanneer de functie beschikbaar komt in uw geselecteerde regio.
 
    ![Bericht over de beschikbaarheid van regio's](./media/maintenance-scheduling/maintenance-not-active-toast.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Meer informatie](../../azure-monitor/platform/alerts-metric.md) over het maken, bekijken en beheren van waarschuwingen met Azure Monitor.
-- [Meer informatie](../..//azure-monitor/platform/alerts-log-webhook.md) over webhook-acties voor logboekwaarschuwingsregels.
-- [Meer weten?](../..//azure-monitor/platform/action-groups.md) Actiegroepen maken en beheren.
-- [Meer informatie](../../service-health/service-health-overview.md) over Azure Service Health.
+
+- [Meer informatie](../../azure-monitor/platform/alerts-metric.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) over het maken, bekijken en beheren van waarschuwingen met Azure Monitor.
+- [Meer informatie](../..//azure-monitor/platform/alerts-log-webhook.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) over webhook-acties voor logboekwaarschuwingsregels.
+- [Meer weten?](../..//azure-monitor/platform/action-groups.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Actiegroepen maken en beheren.
+- [Meer informatie](../../service-health/service-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) over Azure Service Health.

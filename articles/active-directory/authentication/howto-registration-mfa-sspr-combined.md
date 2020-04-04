@@ -4,19 +4,19 @@ description: Gecombineerde Azure AD Multi-Factor Authentication en selfservice p
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f454b0296a3463d7346c2945b21162e5a38c0eb7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425152"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652511"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Registratie van gecombineerde beveiligingsgegevens inschakelen (voorbeeld)
 
@@ -48,7 +48,7 @@ Voer deze stappen uit om gecombineerde registratie in te schakelen:
 > Vanaf maart 2019 zijn de opties voor bellen niet beschikbaar voor Multi-Factor Authentication- en SSPR-gebruikers in gratis/trial Azure AD-tenants. SMS-berichten worden niet beïnvloed door deze wijziging. De telefoongespreksopties zijn nog steeds beschikbaar voor gebruikers in betaalde Azure AD-tenants.
 
 > [!NOTE]
-> Nadat u gecombineerde registratie hebt ingeschakeld, kunnen gebruikers die hun telefoonnummer of mobiele app registreren of bevestigen via de nieuwe ervaring deze gebruiken voor multi-factorauthenticatie en SSPR, als deze methoden zijn ingeschakeld in de Multi-Factor Authentication en SSPR Beleid. Als u deze ervaring vervolgens uitschakelt, moeten gebruikers die `https://aka.ms/ssprsetup` naar de vorige SSPR-registratiepagina gaan, multifactorauthenticatie uitvoeren voordat ze toegang hebben tot de pagina.
+> Nadat u gecombineerde registratie hebt ingeschakeld, kunnen gebruikers die hun telefoonnummer of mobiele app registreren of bevestigen via de nieuwe ervaring deze gebruiken voor Multi-Factor Authentication en SSPR, als deze methoden zijn ingeschakeld in het Multi-Factor Authentication- en SSPR-beleid. Als u deze ervaring vervolgens uitschakelt, moeten gebruikers die `https://aka.ms/ssprsetup` naar de vorige SSPR-registratiepagina gaan, multifactorauthenticatie uitvoeren voordat ze toegang hebben tot de pagina.
 
 Als u de lijst met site-toewijzing naar zone hebt geconfigureerd in Internet Explorer, moeten de volgende sites zich in dezelfde zone bevinden:
 

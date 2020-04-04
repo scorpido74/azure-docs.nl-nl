@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 56975c52b22b90840fb1534187e99f6efa19469e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 3ba06ea592d51eedbe827e1ab6418f65722d579c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527670"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632308"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Serverconfiguratieparameters aanpassen met Azure CLI
 U configuratieparameters voor een Azure Database voor MariaDB-server aanbieden, weergeven en bijwerken met Azure CLI, het Azure-opdrachtregelhulpprogramma. Een subset van motorconfiguraties wordt op serverniveau weergegeven en kan worden gewijzigd.
@@ -59,10 +59,10 @@ Met deze code wordt de configuratie van het **logboek voor langzame\_\_query's**
 
 ### <a name="populating-the-time-zone-tables"></a>De tijdzonetabellen vullen
 
-De tijdzonetabellen op uw server kunnen worden `az_load_timezone` ingevuld door de opgeslagen procedure aan te roepen vanuit een tool zoals de MariaDB-opdrachtregel of MariaDB Workbench.
+De tijdzonetabellen op uw server kunnen worden `mysql.az_load_timezone` ingevuld door de opgeslagen procedure aan te roepen vanuit een tool zoals de MariaDB-opdrachtregel of MariaDB Workbench.
 
 > [!NOTE]
-> Als u de `az_load_timezone` opdracht van MariaDB Workbench uitvoert, moet u `SET SQL_SAFE_UPDATES=0;`mogelijk eerst de veilige updatemodus uitschakelen met behulp van .
+> Als u de `mysql.az_load_timezone` opdracht van MariaDB Workbench uitvoert, moet u `SET SQL_SAFE_UPDATES=0;`mogelijk eerst de veilige updatemodus uitschakelen met behulp van .
 
 ```sql
 CALL mysql.az_load_timezone();

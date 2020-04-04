@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cd922d0e65da627f11e6aab3827cb848c3dd635
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7c6db9ed92161e968b36c75b8bee5a847137c072
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75560483"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631872"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met JIRA SAML SSO door Microsoft
 
@@ -42,7 +42,7 @@ Gebruik uw Microsoft Azure Active Directory-account met JIRA Server van Atlassia
 Voor het configureren van Azure AD-integratie met JIRA SAML SSO by Microsoft hebt u het volgende nodig:
 
 - Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-- JIRA Core en Software 6.4 tot 8.5.1 of JIRA Service Desk 3.0 tot 4.6.0 moeten worden geïnstalleerd en geconfigureerd op windows 64-bits versie
+- JIRA Core en Software 6.4 tot 8.8.0 of JIRA Service Desk 3.0 tot 4.8.0 moeten worden geïnstalleerd en geconfigureerd op windows 64-bits versie
 - JIRA-server is ingeschakeld voor HTTPS
 - In de volgende sectie kunt u zien wat de ondersteunde versies zijn van de JIRA-invoegtoepassing.
 - De JIRA-server is bereikbaar op internet vanaf de aanmeldingspagina van Azure AD voor verificatie en moet token uit Azure AD kunnen ontvangen
@@ -60,8 +60,8 @@ Om aan de slag te gaan, heb je de volgende items nodig:
 
 ## <a name="supported-versions-of-jira"></a>Ondersteunde versies van JIRA
 
-* JIRA-kern en software: 6,4 tot 8,5.1
-* JIRA Service Desk 3.0.0 tot 4.6.0
+* JIRA-kern en software: 6,4 tot 8,8,0
+* JIRA Service Desk 3.0.0 tot 4.8.0
 * JIRA ondersteunt ook 5.2. Klik voor meer informatie op [Microsoft Azure Active Directory-eenmalige aanmelding voor JIRA 5.2](jira52microsoft-tutorial.md)
 
 > [!NOTE]

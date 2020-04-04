@@ -45,7 +45,7 @@
       href: concepts-architecture.md
     - name: Wat zijn toepassingssjablonen?
       href: concepts-app-templates.md
-    - name: Verbinding maken
+    - name: Connectiviteit van apparaten
       href: concepts-get-connected.md
     - name: IoT Edge-apparaten verbinden
       href: concepts-iot-edge.md

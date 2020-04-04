@@ -11,49 +11,49 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0b240c45afcb2374f41eb26e86e46b106e314e76
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 128b4203d34b99df8363ef19783baa4a7b608aa5
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582230"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631314"
 ---
-# <a name="design-guidance-for-using-replicated-tables-in-synapse-sql"></a>Ontwerprichtlijnen voor het gebruik van gerepliceerde tabellen in Synapse SQL
+# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>Ontwerprichtlijnen voor het gebruik van gerepliceerde tabellen in SQL Analytics
 
-In dit artikel worden aanbevelingen gedaan voor het ontwerpen van gerepliceerde tabellen in uw Synapse SQL-schema. Gebruik deze aanbevelingen om de queryprestaties te verbeteren door de gegevensverplaatsing en de complexiteit van query's te verminderen.
+In dit artikel worden aanbevelingen gedaan voor het ontwerpen van gerepliceerde tabellen in uw SQL Analytics-schema. Gebruik deze aanbevelingen om de queryprestaties te verbeteren door de gegevensverplaatsing en de complexiteit van query's te verminderen.
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u bekend bent met concepten voor gegevensdistributie en gegevensverplaatsing in Synapse SQL.Zie voor meer informatie het [architectuurartikel.](massively-parallel-processing-mpp-architecture.md) 
+In dit artikel wordt ervan uitgegaan dat u bekend bent met concepten voor gegevensdistributie en gegevensverplaatsing in SQL Analytics.Zie voor meer informatie het [architectuurartikel.](massively-parallel-processing-mpp-architecture.md)
 
 Als onderdeel van tabelontwerp, begrijp zoveel mogelijk over uw gegevens en hoe de gegevens worden opgevraagd.Denk bijvoorbeeld aan deze vragen:
 
-- Hoe groot is de tafel?   
-- Hoe vaak wordt de tabel vernieuwd?   
-- Heb ik feit- en dimensiontabellen in een Synapse SQL-database?   
+- Hoe groot is de tafel?
+- Hoe vaak wordt de tabel vernieuwd?
+- Heb ik feiten- en dimensioneringstabellen in een SQL Analytics-database?
 
 ## <a name="what-is-a-replicated-table"></a>Wat is een gerepliceerde tabel?
 
 Een gerepliceerde tabel heeft een volledige kopie van de tabel die toegankelijk is op elk Compute-knooppunt. Als een tabel wordt gerepliceerd, hoeven de gegevens niet meer te worden overgedragen tussen rekenknooppunten voordat er sprake is van een samenvoeging of aggregatie. Aangezien de tabel meerdere kopieën bevat, werken gerepliceerde tabellen het beste wanneer de tabelgrootte minder dan 2 GB is gecomprimeerd.  2 GB is geen harde limiet.  Als de gegevens statisch zijn en niet worden gewijzigd, u grotere tabellen repliceren.
 
-In het volgende diagram ziet u een gerepliceerde tabel die toegankelijk is op elk Compute-knooppunt. In Synapse SQL wordt de gerepliceerde tabel volledig gekopieerd naar een distributiedatabase op elk compute-knooppunt. 
+In het volgende diagram ziet u een gerepliceerde tabel die toegankelijk is op elk Compute-knooppunt. In SQL Analytics wordt de gerepliceerde tabel volledig gekopieerd naar een distributiedatabase op elk Compute-knooppunt.
 
 ![Gerepliceerde tabel](./media/design-guidance-for-replicated-tables/replicated-table.png "Gerepliceerde tabel")  
 
-Gerepliceerde tabellen werken goed voor dimensietabellen in een sterschema. Dimensietabellen worden doorgaans samengevoegd met feitentabellen die anders zijn verdeeld dan de dimensietabel.  Afmetingen zijn meestal van een grootte die het mogelijk maakt om meerdere exemplaren op te slaan en te onderhouden. Dimensies slaan beschrijvende gegevens op die langzaam veranderen, zoals de naam en het adres van de klant en productgegevens. De langzaam veranderende aard van de gegevens leidt tot minder onderhoud van de gerepliceerde tabel. 
+Gerepliceerde tabellen werken goed voor dimensietabellen in een sterschema. Dimensietabellen worden doorgaans samengevoegd met feitentabellen die anders zijn verdeeld dan de dimensietabel.  Afmetingen zijn meestal van een grootte die het mogelijk maakt om meerdere exemplaren op te slaan en te onderhouden. Dimensies slaan beschrijvende gegevens op die langzaam veranderen, zoals de naam en het adres van de klant en productgegevens. De langzaam veranderende aard van de gegevens leidt tot minder onderhoud van de gerepliceerde tabel.
 
 Overweeg een gerepliceerde tabel te gebruiken wanneer:
 
-- De tabelgrootte op schijf is minder dan 2 GB, ongeacht het aantal rijen. Als u de grootte van een tabel wilt vinden, u de opdracht [DBCC-PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
+- De tabelgrootte op schijf is minder dan 2 GB, ongeacht het aantal rijen. Als u de grootte van een tabel wilt vinden, u de opdracht [DBCC-PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`.
 - De tabel wordt gebruikt in joins die anders gegevensverplaatsing vereisen. Wanneer u tabellen aansluit die niet op dezelfde kolom worden gedistribueerd, zoals een tabel die door hash is gedistribueerd naar een round-robin-tabel, is gegevensverplaatsing vereist om de query te voltooien.  Als een van de tabellen klein is, u een gerepliceerde tabel overwegen. We raden u aan in de meeste gevallen gerepliceerde tabellen te gebruiken in plaats van round-robin-tabellen. Als u gegevensverplaatsingsbewerkingen in queryplannen wilt weergeven, gebruikt u [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  De BroadcastMoveOperation is de typische bewerking voor gegevensverplaatsing die kan worden geëlimineerd met behulp van een gerepliceerde tabel.  
- 
+
 Gerepliceerde tabellen leveren mogelijk niet de beste queryprestaties op wanneer:
 
 - De tabel heeft frequente bewerkingen voor het invoegen, bijwerken en verwijderen.De DML-bewerkingen (Data Manipulation Language) vereisen een reconstructie van de gerepliceerde tabel.Vaak opnieuw opbouwen kan leiden tot tragere prestaties.
-- De Synapse SQL-database wordt regelmatig geschaald. Als u een database schaalt, wordt het aantal compute nodes gewijzigd, waardoor de gerepliceerde tabel opnieuw wordt opgebouwd.
-- De tabel heeft een groot aantal kolommen, maar gegevensbewerkingen hebben meestal slechts toegang tot een klein aantal kolommen. In dit scenario is het mogelijk dat de tabel effectiever is om de tabel te distribueren en vervolgens een index te maken voor de veelgebruikte kolommen. Wanneer een query gegevensverplaatsing vereist, worden alleen de gegevens voor de gevraagde kolommen verplaatst.
+- De SQL Analytics-database wordt regelmatig geschaald. Als u een SQL Analytics-database opschaalt, wordt het aantal Compute-knooppunten gewijzigd, waardoor de gerepliceerde tabel opnieuw wordt opgebouwd.
+- De tabel heeft een groot aantal kolommen, maar gegevensbewerkingen hebben meestal slechts toegang tot een klein aantal kolommen. In dit scenario is het mogelijk dat de tabel effectiever is om de tabel te distribueren en vervolgens een index te maken voor de veelgebruikte kolommen. Wanneer een query gegevensverplaatsing vereist, verplaatst SQL Analytics alleen gegevens voor de gevraagde kolommen.
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>Gerepliceerde tabellen gebruiken met eenvoudige querypredicaten
 
@@ -68,36 +68,37 @@ Deze query heeft bijvoorbeeld een complex predicaat.  Het loopt sneller wanneer 
 
 ```sql
 
-SELECT EnglishProductName 
-FROM DimProduct 
+SELECT EnglishProductName
+FROM DimProduct
 WHERE EnglishDescription LIKE '%frame%comfortable%'
-       
-```       
-           
+
+```
+
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>Bestaande round-robin-tabellen converteren naar gerepliceerde tabellen
-Als u al round-robin-tabellen hebt, raden we u aan deze te converteren naar gerepliceerde tabellen als deze voldoen aan de criteria die in dit artikel worden beschreven. Gerepliceerde tabellen verbeteren de prestaties ten opzichte van round-robin-tabellen, omdat ze de noodzaak voor gegevensverplaatsing elimineren.  Een round-robin tafel vereist altijd data beweging voor joins. 
+
+Als u al round-robin-tabellen hebt, raden we u aan deze te converteren naar gerepliceerde tabellen als deze voldoen aan de criteria die in dit artikel worden beschreven. Gerepliceerde tabellen verbeteren de prestaties ten opzichte van round-robin-tabellen, omdat ze de noodzaak voor gegevensverplaatsing elimineren.  Een round-robin tafel vereist altijd data beweging voor joins.
 
 In dit voorbeeld wordt [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruikt om de tabel DimSalesTerritory te wijzigen in een gerepliceerde tabel. Dit voorbeeld werkt ongeacht of DimSalesTerritory hash-distributed of round-robin is.
 
 ```sql
-CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]   
-WITH   
-  (   
+CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]
+WITH
+  (
     CLUSTERED COLUMNSTORE INDEX,  
     DISTRIBUTION = REPLICATE  
   )  
 AS SELECT * FROM [dbo].[DimSalesTerritory]
-OPTION  (LABEL  = 'CTAS : DimSalesTerritory_REPLICATE') 
+OPTION  (LABEL  = 'CTAS : DimSalesTerritory_REPLICATE')
 
 -- Switch table names
 RENAME OBJECT [dbo].[DimSalesTerritory] to [DimSalesTerritory_old];
 RENAME OBJECT [dbo].[DimSalesTerritory_REPLICATE] TO [DimSalesTerritory];
 
 DROP TABLE [dbo].[DimSalesTerritory_old];
-``` 
-    
-### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Queryprestaties voorbeeld voor round-robin versus gerepliceerd 
-    
+```
+
+### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Queryprestaties voorbeeld voor round-robin versus gerepliceerd
+
 Voor een gerepliceerde tabel is geen gegevensverplaatsing vereist voor joins, omdat de hele tabel al aanwezig is op elk Compute-knooppunt. Als de dimensietabellen round-robin zijn gedistribueerd, kopieert een join de dimensietabel volledig naar elk Compute-knooppunt. Als u de gegevens wilt verplaatsen, bevat het queryplan een bewerking met de naam BroadcastMoveOperation. Dit type gegevensverplaatsingsbewerking vertraagt de queryprestaties en wordt geëlimineerd met behulp van gerepliceerde tabellen. Als u queryplanstappen wilt weergeven, gebruikt u de systeemcatalogusweergave [sys.dm_pdw_request_steps.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
 
 In het volgende van query's tegen `FactInternetSales` het AdventureWorks-schema wordt de tabel bijvoorbeeld verspreid over hash. De `DimDate` `DimSalesTerritory` en de tabellen zijn kleinere dimensie tabellen. Met deze query wordt de totale omzet in Noord-Amerika voor het boekjaar 2004 geretourneerd:
@@ -112,38 +113,41 @@ INNER JOIN dbo.DimSalesTerritory t
 WHERE d.FiscalYear = 2004
   AND t.SalesTerritoryGroup = 'North America'
 ```
-We hebben `DimDate` opnieuw `DimSalesTerritory` gemaakt en als round-robin tafels. Als gevolg hiervan toonde de query het volgende queryplan, dat meerdere broadcast move-bewerkingen heeft: 
- 
-![Round-robin queryplan](./media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg) 
+
+We hebben `DimDate` opnieuw `DimSalesTerritory` gemaakt en als round-robin tafels. Als gevolg hiervan toonde de query het volgende queryplan, dat meerdere broadcast move-bewerkingen heeft:
+
+![Round-robin queryplan](./media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg)
 
 We hebben `DimDate` opnieuw `DimSalesTerritory` gemaakt en als gerepliceerde tabellen, en liep de query opnieuw. Het resulterende queryplan is veel korter en heeft geen broadcastmoves.
 
-![Gerepliceerd queryplan](./media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg) 
-
+![Gerepliceerd queryplan](./media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg)
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Prestatieoverwegingen voor het wijzigen van gerepliceerde tabellen
 
-Een gerepliceerde tabel wordt geïmplementeerd door een hoofdversie van de tabel te behouden. Het kopieert de hoofdversie naar één distributiedatabase op elk Compute-knooppunt. Wanneer er een wijziging is, wordt de hoofdtabel eerst bijgewerkt. Vervolgens wordt de tabel op elk Compute-knooppunt opnieuw opgebouwd. Een reconstructie van een gerepliceerde tabel omvat het kopiëren van de tabel naar elk Compute-knooppunt en vervolgens het bouwen van de indexen.  Een gerepliceerde tabel op een DW400 bevat bijvoorbeeld 5 kopieën van de gegevens.  Een stramienkopie en een volledige kopie op elk Compute-knooppunt.  Alle gegevens worden opgeslagen in distributiedatabases om snellere gegevenswijzigingsinstructies en flexibele schalingsbewerkingen te ondersteunen. 
+SQL Analytics implementeert een gerepliceerde tabel door een hoofdversie van de tabel te behouden. Het kopieert de hoofdversie naar één distributiedatabase op elk Compute-knooppunt. Wanneer er een wijziging is, werkt SQL Analytics eerst de hoofdtabel bij. Vervolgens worden de tabellen op elk Compute-knooppunt opnieuw opgebouwd. Een reconstructie van een gerepliceerde tabel omvat het kopiëren van de tabel naar elk Compute-knooppunt en vervolgens het bouwen van de indexen.  Een gerepliceerde tabel op een DW400 bevat bijvoorbeeld 5 kopieën van de gegevens.  Een stramienkopie en een volledige kopie op elk Compute-knooppunt.  Alle gegevens worden opgeslagen in distributiedatabases. SQL Analytics gebruikt dit model om snellere gegevenswijzigingsinstructies en flexibele schalingsbewerkingen te ondersteunen.
 
 Reconstructies zijn nodig na:
+
 - Gegevens worden geladen of gewijzigd
 - De Synapse SQL-instantie wordt geschaald naar een ander niveau
 - Tabeldefinitie wordt bijgewerkt
 
 Reconstructies zijn niet nodig na:
+
 - Bewerking onderbreken
 - Hervattingsbewerking
 
-De herbouw gebeurt niet onmiddellijk nadat gegevens zijn gewijzigd. In plaats daarvan wordt de reconstructie geactiveerd wanneer een query voor het eerst in de tabel wordt geselecteerd.  De query die de reconstructie heeft geactiveerd, wordt onmiddellijk gelezen vanuit de hoofdversie van de tabel, terwijl de gegevens asynchroon worden gekopieerd naar elk Compute-knooppunt. Totdat de gegevenskopie is voltooid, blijven volgende query's de hoofdversie van de tabel gebruiken.  Als er een activiteit optreedt tegen de gerepliceerde tabel die een andere herbouw dwingt, wordt de gegevenskopie ongeldig verklaard en wordt de volgende selecte instructie geactiveerd voor gegevens die opnieuw worden gekopieerd. 
+De herbouw gebeurt niet onmiddellijk nadat gegevens zijn gewijzigd. In plaats daarvan wordt de reconstructie geactiveerd wanneer een query voor het eerst in de tabel wordt geselecteerd.  De query die de reconstructie heeft geactiveerd, wordt onmiddellijk gelezen vanuit de hoofdversie van de tabel, terwijl de gegevens asynchroon worden gekopieerd naar elk Compute-knooppunt. Totdat de gegevenskopie is voltooid, blijven volgende query's de hoofdversie van de tabel gebruiken.  Als er een activiteit optreedt tegen de gerepliceerde tabel die een andere herbouw dwingt, wordt de gegevenskopie ongeldig verklaard en wordt de volgende selecte instructie geactiveerd voor gegevens die opnieuw worden gekopieerd.
 
 ### <a name="use-indexes-conservatively"></a>Indexen conservatief gebruiken
 
-Standaardindexeringspraktijken zijn van toepassing op gerepliceerde tabellen. Elke gerepliceerde tabelindex wordt opnieuw opgebouwd als onderdeel van een indexreconstructie. Gebruik alleen indexen wanneer de prestatiewinst opweegt tegen de kosten van de wederopbouw van de indexen.  
- 
-### <a name="batch-data-loads"></a>Batchgegevens ladingen
+Standaardindexeringspraktijken zijn van toepassing op gerepliceerde tabellen. SQL Analytics herbouwt elke gerepliceerde tabelindex als onderdeel van de wederopbouw. Gebruik alleen indexen wanneer de prestatiewinst opweegt tegen de kosten van de wederopbouw van de indexen.
+
+### <a name="batch-data-load"></a>Batchgegevens laden
+
 Probeer bij het laden van gegevens in gerepliceerde tabellen de reconstructies te minimaliseren door ladingen samen te batcheren. Voer alle batchte ladingen uit voordat u bepaalde instructies uitvoert.
 
-Dit belastingspatroon laadt bijvoorbeeld gegevens uit vier bronnen en roept vier reconstructies op. 
+Dit belastingspatroon laadt bijvoorbeeld gegevens uit vier bronnen en roept vier reconstructies op.
 
         Load from source 1.
 - Selecteer instructietriggers opnieuw opbouwen 1.
@@ -164,22 +168,22 @@ Dit belastingspatroon laadt bijvoorbeeld gegevens uit vier bronnen, maar roept s
 
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>Een gerepliceerde tabel opnieuw opbouwen na batchbelasting
 
-Als u consistente uitvoeringstijden voor query's wilt garanderen, u overwegen de verzameling van de gerepliceerde tabellen te forceren na een batchbelasting. Anders gebruikt de eerste query nog steeds gegevensverplaatsing om de query te voltooien. 
+Als u consistente uitvoeringstijden voor query's wilt garanderen, u overwegen de verzameling van de gerepliceerde tabellen te forceren na een batchbelasting. Anders gebruikt de eerste query nog steeds gegevensverplaatsing om de query te voltooien.
 
 Deze query gebruikt de [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV om de gerepliceerde tabellen weer te geven die zijn gewijzigd, maar niet opnieuw zijn opgebouwd.
 
-```sql 
+```sql
 SELECT [ReplicatedTable] = t.[name]
   FROM sys.tables t  
   JOIN sys.pdw_replicated_table_cache_state c  
-    ON c.object_id = t.object_id 
-  JOIN sys.pdw_table_distribution_properties p 
-    ON p.object_id = t.object_id 
+    ON c.object_id = t.object_id
+  JOIN sys.pdw_table_distribution_properties p
+    ON p.object_id = t.object_id
   WHERE c.[state] = 'NotReady'
     AND p.[distribution_policy_desc] = 'REPLICATE'
 ```
- 
-Als u een reconstructie wilt activeren, voert u de volgende instructie uit op elke tabel in de vorige uitvoer. 
+
+Als u een reconstructie wilt activeren, voert u de volgende instructie uit op elke tabel in de vorige uitvoer.
 
 ```sql
 SELECT TOP 1 * FROM [ReplicatedTable]
@@ -189,7 +193,7 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 
 Als u een gerepliceerde tabel wilt maken, gebruikt u een van de volgende instructies:
 
-- [TABEL MAKEN](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [TABEL MAKEN ALS SELECTEREN](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [TABEL MAKEN (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [TABEL MAKEN ALS SELECTEREN (SQL Analytics)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 Zie [gedistribueerde tabellen voor](sql-data-warehouse-tables-distribute.md)een overzicht van gedistribueerde tabellen.

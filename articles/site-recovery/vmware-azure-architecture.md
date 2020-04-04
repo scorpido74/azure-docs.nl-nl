@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: ccf258594aa68fc9b5d0189c9ada640078e0ba6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77b4dd4c0efbe6d03e64865f18c2c87614aaecb5
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514864"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632524"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware naar Azure-architectuur voor noodherstel
 
@@ -35,7 +35,6 @@ De volgende tabel en afbeelding bieden een weergave op hoog niveau van de compon
 ![Onderdelen](./media/vmware-azure-architecture/arch-enhanced.png)
 
 
-
 ## <a name="replication-process"></a>Replicatieproces
 
 1. Wanneer u replicatie inschakelt voor een virtuele machine, begint de eerste replicatie naar Azure-opslag met behulp van het opgegeven replicatiebeleid. Houd rekening met het volgende:
@@ -43,10 +42,10 @@ De volgende tabel en afbeelding bieden een weergave op hoog niveau van de compon
     - Alle instellingen voor replicatiebeleid worden toegepast:
         - **RPO-drempelwaarde**. Deze instelling heeft geen invloed op replicatie. Het helpt bij het monitoren. Een gebeurtenis wordt verhoogd en eventueel een verzonden e-mail als de huidige RPO de door u opgegeven drempelwaarde overschrijdt.
         - **Herstelpunt behoud**. Met deze instelling geeft u aan hoe ver terug in de tijd u wilt gaan wanneer er een verstoring optreedt. Maximale retentie op premium opslag is 24 uur. Op standaard opslag is het 72 uur. 
-        - **App-consistente momentopnamen**. App-consistente momentopname kan elke 1 tot 12 uur duren, afhankelijk van de behoeften van uw app. Momentopnamen zijn standaard Azure blob snapshots. De mobiliteitsagent die op een VM wordt uitgevoerd, vraagt een VSS-momentopname aan in overeenstemming met deze instelling en bladwijzers die als consistent punt in de replicatiestream in de tijdstoepassing worden weergegeven.
+        - **App-consistente momentopnamen**. App-consistente momentopname kan elke 1 tot 12 uur worden gemaakt, afhankelijk van de behoeften van uw app. Momentopnamen zijn standaard Azure blob snapshots. De mobiliteitsagent die op een VM wordt uitgevoerd, vraagt een VSS-momentopname aan in overeenstemming met deze instelling en bladwijzers die als consistent punt in de replicatiestream in de tijdstoepassing worden weergegeven.
 
 2. Verkeer wordt via internet gerepliceerd naar openbare eindpunten voor Azure-opslag. U Azure ExpressRoute ook gebruiken met [Microsoft-peering.](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) Het repliceren van verkeer via een vpn (site-to-site virtual private network) van een on-premises site naar Azure wordt niet ondersteund.
-3. Nadat de eerste replicatie is voltooid, wordt de replicatie van deltawijzigingen in Azure gestart. Bijgehouden wijzigingen voor een machine worden naar de processerver verzonden.
+3. De eerste replicatiebewerking zorgt ervoor dat volledige gegevens op de machine op het moment van inschakelen replicatie naar Azure worden verzonden. Nadat de eerste replicatie is voltooid, wordt de replicatie van deltawijzigingen in Azure gestart. Bijgehouden wijzigingen voor een machine worden naar de processerver verzonden.
 4. Communicatie gebeurt als volgt:
 
     - VM's communiceren met de on-premises configuratieserver op poort HTTPS 443 inkomende, voor replicatiebeheer.
@@ -55,12 +54,21 @@ De volgende tabel en afbeelding bieden een weergave op hoog niveau van de compon
     - De processerver ontvangt replicatiegegevens, optimaliseert en versleutelt deze en stuurt deze naar Azure-opslag via poort 443-uitgaand.
 5. De replicatiegegevens worden eerst in een cacheopslagaccount in Azure opgeslagen. Deze logboeken worden verwerkt en de gegevens worden opgeslagen in een Azure Managed Disk (asr seed disk genoemd). De herstelpunten worden op deze schijf gemaakt.
 
-
-
-
 **VMware naar Azure-replicatieproces**
 
 ![Replicatieproces](./media/vmware-azure-architecture/v2a-architecture-henry.png)
+
+## <a name="resynchronization-process"></a>Opnieuw synchronisatieproces
+
+1. Soms, tijdens de eerste replicatie of tijdens het overbrengen van deltawijzigingen, kunnen er problemen zijn met de netwerkconnectiviteit tussen de bronmachine om server te verwerken of tussen processerver naar Azure. Een van deze kan leiden tot fouten in de overdracht van gegevens naar Azure tijdelijk.
+2. Om problemen met de gegevensintegriteit te voorkomen en de kosten voor gegevensoverdracht te minimaliseren, markeert Site Recovery een machine voor opnieuw synchronisatie.
+3. Een machine kan ook worden gemarkeerd voor opnieuw synchronisatie in situaties zoals volgen om de consistentie van de bronmachine en gegevens die zijn opgeslagen in Azure te behouden
+    - Als een machine force shut-down ondergaat
+    - Als een machine configuratiewijzigingen ondergaat, zoals het formaat van de schijf (het wijzigen van de grootte van de schijf van 2 TB tot 4 TB)
+4. Resynchronisatie stuurt alleen deltagegevens naar Azure. Gegevensoverdracht tussen on-premises en Azure door het berekenen van gegevensgegevens tussen de bronmachine en gegevens die in Azure zijn opgeslagen.
+5. Standaard wordt opnieuw synchronisatie automatisch buiten kantooruren uitgevoerd. Als u niet wilt wachten op standaardsynchronisatie buiten de openingstijden, u een virtuele machine handmatig opnieuw synchroniseren. Ga hiervoor naar Azure-portal en selecteer de VM > **Opnieuw synchroniseren**.
+6. Als standaardsynchronisatie buiten kantooruren mislukt en een handmatige interventie vereist is, wordt er een fout gegenereerd op de specifieke machine in azure-portal. U de fout oplossen en de resynchronisatie handmatig activeren.
+7. Na voltooiing van de resynchronisatie wordt de replicatie van deltawijzigingen hervat.
 
 ## <a name="failover-and-failback-process"></a>Failover- en failbackproces
 

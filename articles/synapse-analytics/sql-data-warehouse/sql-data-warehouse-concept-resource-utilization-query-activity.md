@@ -11,21 +11,20 @@ ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 0b7accec9fdce1ad81a08aee17b37d655409948b
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: 61c823aee5d8a6755a3bd7971cd7cca952cbb911
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607560"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633606"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Beheer van resource- en queryactiviteit in Azure Synapse Analytics controleren
 
-Azure Synapse Analytics biedt een uitgebreide monitoringervaring binnen de Azure-portal om inzicht te geven in de werkbelasting van uw gegevensmagazijn. De Azure-portal is het aanbevolen hulpmiddel bij het bewaken van uw gegevensmagazijn, omdat het configureerbare bewaarperioden, waarschuwingen, aanbevelingen en aanpasbare grafieken en dashboards voor statistieken en logboeken biedt. De portal stelt u ook in staat om te integreren met andere Azure-bewakingsservices, zoals Azure Monitor (logboeken) met Logboekanalyses, zodat u niet alleen uw gegevensmagazijn, maar ook uw hele Azure-analyseplatform een geïntegreerde monitoringervaring biedt. In deze documentatie wordt beschreven welke bewakingsmogelijkheden beschikbaar zijn om uw analyseplatform te optimaliseren en te beheren. 
+Azure Synapse Analytics biedt een uitgebreide monitoringervaring binnen de Azure-portal om inzicht te geven in de werkbelasting van uw gegevensmagazijn. De Azure-portal is het aanbevolen hulpmiddel bij het bewaken van uw gegevensmagazijn, omdat het configureerbare bewaarperioden, waarschuwingen, aanbevelingen en aanpasbare grafieken en dashboards voor statistieken en logboeken biedt. De portal stelt u ook in staat om te integreren met andere Azure-bewakingsservices, zoals Azure Monitor (logboeken) met Logboekanalyses, zodat u niet alleen uw gegevensmagazijn, maar ook uw hele Azure-analyseplatform een geïntegreerde monitoringervaring biedt. In deze documentatie wordt beschreven welke bewakingsmogelijkheden beschikbaar zijn om uw analyseplatform te optimaliseren en te beheren met SQL Analytics.
 
 ## <a name="resource-utilization"></a>Resourcegebruik
 
-De volgende statistieken zijn beschikbaar in de Azure-portal voor Synapse SQL. Deze statistieken worden weergegeven via [Azure Monitor](../../azure-monitor/platform/data-collection.md#metrics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
-
+De volgende statistieken zijn beschikbaar in de Azure-portal voor SQL Analytics. Deze statistieken worden weergegeven via [Azure Monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
 
 | Metrische naam             | Beschrijving                                                  | Aggregatietype |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -55,16 +54,16 @@ Dingen om rekening mee te houden bij het bekijken van statistieken en het instel
 
 ## <a name="query-activity"></a>Queryactiviteit
 
-Voor een programmatische ervaring bij het monitoren van Synapse SQL via T-SQL, biedt de service een set Dynamic Management Views (DMVs). Deze weergaven zijn handig bij het actief oplossen van problemen en het identificeren van prestatieknelpunten met uw werkbelasting.
+Voor een programmatische ervaring bij het monitoren van SQL Analytics via T-SQL, biedt de service een set Dynamic Management Views (DMVs). Deze weergaven zijn handig bij het actief oplossen van problemen en het identificeren van prestatieknelpunten met uw werkbelasting.
 
-Als u de lijst met DMVs wilt bekijken die van toepassing zijn op Synapse SQL, raadpleegt u deze [documentatie.](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs) 
+Als u de lijst met DMVs wilt bekijken die SQL Analytics biedt, raadpleegt u deze [documentatie.](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs)
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metrische gegevens en diagnoselogboeken
 
-Zowel statistieken als logboeken kunnen worden geëxporteerd naar Azure Monitor, met name de azure [monitor-logboekencomponent](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en kunnen programmatisch worden geopend via [logboekquery's.](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) De loglatentie voor Synapse SQL is ongeveer 10-15 minuten. Ga voor meer informatie over de factoren die van invloed zijn op de latentie naar de volgende documentatie.
+Zowel statistieken als logboeken kunnen worden geëxporteerd naar Azure Monitor, met name de azure [monitor-logboekencomponent](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en kunnen programmatisch worden geopend via [logboekquery's.](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) De loglatentie voor SQL Analytics is ongeveer 10-15 minuten. Ga voor meer informatie over de factoren die van invloed zijn op de latentie naar de volgende documentatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In de volgende handleidingen worden veelvoorkomende scenario's en use cases beschreven bij het bewaken en beheren van uw gegevensmagazijn:
 
-- [Uw werkbelasting voor gegevensmagazijnen bewaken met DMVs](/sql-data-warehouse/sql-data-warehouse-manage-monitor?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
+- [Uw werkbelasting voor gegevensmagazijnen bewaken met DMVs](sql-data-warehouse-manage-monitor.md)

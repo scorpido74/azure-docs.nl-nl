@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4aa0e7da1e77334a8b9048dab4a461133f220bd1
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 0ab7b8be8780f7edb2734d99587bc7709ced9436
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582453"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633351"
 ---
 # <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Het werkgebied configureren in Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ Als u belangrijk bent in Synapse SQL voor Azure Synapse, u de planning van query
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Een workloadclassificatie maken met belang
 
-Vaak heb je in een datawarehousescenario gebruikers die hun query's snel moeten uitvoeren.  De gebruiker kan leidinggevenden van het bedrijf zijn die rapporten moeten uitvoeren of de gebruiker kan een analist zijn die een adhocquery uitvoert. U maakt een classificatie voor werkbelasting om belang toe te wijzen aan een query.  In de onderstaande voorbeelden wordt de syntaxis van de classificatie [voor de werkbelasting gemaakt](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) om twee classificaties te maken.  De naam van het lid kan één gebruiker of een groep zijn. Individuele gebruikersclassificaties hebben voorrang op rolclassificaties. Voer het als u bestaande gebruikers van het gegevensmagazijn wilt vinden:
+Vaak heb je in een datawarehousescenario gebruikers die hun query's snel moeten uitvoeren.  De gebruiker kan leidinggevenden van het bedrijf zijn die rapporten moeten uitvoeren of de gebruiker kan een analist zijn die een adhocquery uitvoert. U maakt een classificatie voor werkbelasting om belang toe te wijzen aan een query.  In de onderstaande voorbeelden wordt de syntaxis van de classificatie [voor de werkbelasting gemaakt](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om twee classificaties te maken. `Membername`kan een enkele gebruiker of een groep zijn. Individuele gebruikersclassificaties hebben voorrang op rolclassificaties. Voer het als u bestaande gebruikers van het gegevensmagazijn wilt vinden:
 
 ```sql
 Select name from sys.sysusers
@@ -50,6 +50,7 @@ CREATE WORKLOAD CLASSIFIER AdhocClassifier 
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
+
 - Zie Workloadclassification voor meer informatie over [workloadmanagement](sql-data-warehouse-workload-classification.md)
 - Zie [Werklastbelang](sql-data-warehouse-workload-importance.md) voor meer informatie over Belang
 

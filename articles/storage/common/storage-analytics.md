@@ -8,12 +8,12 @@ ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 86b399879807e480176ee9a3ca3feaba1ec5dd85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ad9f13bcdf36b67400adb62d58ee260ff256bb3
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250883"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637148"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -26,8 +26,6 @@ De geaggregeerde gegevens worden opgeslagen in een bekende blob (voor logboekreg
 Storage Analytics heeft een limiet van 20 TB voor de hoeveelheid opgeslagen gegevens die onafhankelijk is van de totale limiet voor uw opslagaccount. Zie [Schaalbaarheids- en prestatiedoelen voor standaardopslagaccounts voor](scalability-targets-standard-account.md)meer informatie over opslagaccountlimieten.
 
 Zie [Microsoft Azure Storage controleren, diagnosticeren en oplossen](storage-monitoring-diagnosing-troubleshooting.md)van Problemen met Azure Storage voor een uitgebreide handleiding voor het gebruik van Storage Analytics en andere hulpprogramma's voor het identificeren, diagnosticeren en oplossen van azure storage.
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="billing-for-storage-analytics"></a>Facturering voor opslaganalyse
 

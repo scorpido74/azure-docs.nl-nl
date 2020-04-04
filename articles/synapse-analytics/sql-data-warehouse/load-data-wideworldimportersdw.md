@@ -11,18 +11,19 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 5bc9490733f5e29b6668a9655ac5b8b5dbe9bda8
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: b6d2d5c9ac7eabf703887d559a2d2b86b89dd5c8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346690"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632018"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Zelfstudie: Gegevens laden naar Azure Synapse Analytics SQL-groep
 
-Deze zelfstudie gebruikt PolyBase om het wideworldimportersDW-gegevensmagazijn van Azure Blob-opslag te laden naar uw gegevensmagazijn in Azure Synapse Analytics SQL-groep. De zelfstudie gebruikt [Azure Portal](https://portal.azure.com) en [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) voor het volgende:
+Deze zelfstudie gebruikt PolyBase om het wideworldimportersDW-gegevensmagazijn van Azure Blob-opslag te laden naar uw gegevensmagazijn in Azure Synapse Analytics SQL-groep. De zelfstudie gebruikt [Azure Portal](https://portal.azure.com) en [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) voor het volgende:
 
 > [!div class="checklist"]
+>
 > * Een gegevensmagazijn maken met SQL-groep in de Azure-portal
 > * Een serverfirewallregel ingesteld in Azure Portal
 > * Verbinding maken met de SQL-pool met SSMS
@@ -37,7 +38,7 @@ Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.mic
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Download en installeer voordat u met deze zelfstudie begint de nieuwste versie van [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) (SQL Server Management Studio).
+Download en installeer voordat u met deze zelfstudie begint de nieuwste versie van [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SQL Server Management Studio).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -45,9 +46,9 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Een leeg gegevensmagazijn maken in SQL-groep
 
-Er wordt een SQL-groep gemaakt met een gedefinieerde set [compute resources.](memory-concurrency-limits.md) De SQL-groep wordt gemaakt binnen een [Azure-brongroep](../../azure-resource-manager/management/overview.md) en in een [Azure SQL-logische server.](../../sql-database/sql-database-features.md) 
+Er wordt een SQL-groep gemaakt met een gedefinieerde set [compute resources.](memory-concurrency-limits.md) De SQL-groep wordt gemaakt binnen een [Azure-brongroep](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en in een [Azure SQL-logische server.](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
-Volg deze stappen om een lege SQL-groep te maken. 
+Volg deze stappen om een lege SQL-groep te maken.
 
 1. Selecteer **Een resource maken** in de Azure-portal.
 
@@ -55,58 +56,57 @@ Volg deze stappen om een lege SQL-groep te maken.
 
     ![SQL-groep maken](./media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
 
-1. Vul de sectie **Projectdetails** in met de volgende informatie:   
+1. Vul de sectie **Projectdetails** in met de volgende informatie:
 
-   | Instelling | Voorbeeld | Beschrijving | 
+   | Instelling | Voorbeeld | Beschrijving |
    | ------- | --------------- | ----------- |
    | **Abonnement** | Uw abonnement  | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-   | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
+   | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
 
-1. Geef onder **SQL-pooldetails**een naam op voor uw SQL-groep. Selecteer vervolgens een bestaande server in de vervolgkeuzelijst of selecteer **Nieuw maken** onder de **serverinstellingen** om een nieuwe server te maken. Vul het formulier in met de volgende gegevens: 
+1. Geef onder **SQL-pooldetails**een naam op voor uw SQL-groep. Selecteer vervolgens een bestaande server in de vervolgkeuzelijst of selecteer **Nieuw maken** onder de **serverinstellingen** om een nieuwe server te maken. Vul het formulier in met de volgende gegevens:
 
-    | Instelling | Voorgestelde waarde | Beschrijving | 
+    | Instelling | Voorgestelde waarde | Beschrijving |
     | ------- | --------------- | ----------- |
-    |**SQL-poolnaam**|SampleDW| Zie [Database-id's voor](/sql/relational-databases/databases/database-identifiers)geldige databasenamen . | 
-    | **Servernaam** | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige servernamen. | 
+    |**SQL-poolnaam**|SampleDW| Zie [Database-id's voor](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)geldige databasenamen . |
+    | **Servernaam** | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige servernamen. |
     | **Inloggen voor serverbeheerder** | Een geldige naam | Zie [Database-id's voor](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)geldige aanmeldingsnamen .|
     | **Wachtwoord** | Een geldig wachtwoord | Uw wachtwoord moet uit minstens acht tekens bestaan en moet tekens bevatten uit drie van de volgende categorieën: hoofdletters, kleine letters, cijfers en niet-alfanumerieke tekens. |
     | **Locatie** | Een geldige locatie | Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor informatie over regio's . |
 
     ![databaseserver maken](./media/load-data-wideworldimportersdw/create-database-server.png)
 
-1. **Selecteer prestatieniveau**. De schuifregelaar is standaard ingesteld op **DW1000c**. Verplaats de schuifregelaar op en neer om de gewenste prestatieschaal te kiezen. 
+1. **Selecteer prestatieniveau**. De schuifregelaar is standaard ingesteld op **DW1000c**. Verplaats de schuifregelaar op en neer om de gewenste prestatieschaal te kiezen.
 
     ![databaseserver maken](./media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
-1. Stel op de pagina **Extra instellingen** de bestaande **gegevens gebruiken** in op Geen en laat de **collatie** bij de standaardinstelling *SQL_Latin1_General_CP1_CI_AS*. 
+1. Stel op de pagina **Extra instellingen** de bestaande **gegevens gebruiken** in op Geen en laat de **collatie** bij de standaardinstelling *SQL_Latin1_General_CP1_CI_AS*.
 
-1. Selecteer **Controleren + maken** om uw instellingen te controleren en selecteer Vervolgens **Maken** om uw gegevensmagazijn te maken. U uw voortgang controleren door de pagina **Implementatie in uitvoering te** openen in het menu **Meldingen.** 
+1. Selecteer **Controleren + maken** om uw instellingen te controleren en selecteer Vervolgens **Maken** om uw gegevensmagazijn te maken. U uw voortgang controleren door de pagina **Implementatie in uitvoering te** openen in het menu **Meldingen.**
 
      ![melding](./media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Een serverfirewallregel maken
 
-De Azure Synapse Analytics-service maakt een firewall op serverniveau die voorkomt dat externe toepassingen en hulpprogramma's verbinding maken met de server of databases op de server. Als u de connectiviteit wilt inschakelen, kunt u firewallregels toevoegen waarmee connectiviteit voor bepaalde IP-adressen wordt ingeschakeld.  Volg deze stappen om een [firewallregel op serverniveau](../../sql-database/sql-database-firewall-configure.md) te maken voor het IP-adres van uw client. 
+De Azure Synapse Analytics-service maakt een firewall op serverniveau die voorkomt dat externe toepassingen en hulpprogramma's verbinding maken met de server of databases op de server. Als u de connectiviteit wilt inschakelen, kunt u firewallregels toevoegen waarmee connectiviteit voor bepaalde IP-adressen wordt ingeschakeld.  Volg deze stappen om een [firewallregel op serverniveau](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) te maken voor het IP-adres van uw client.
 
 > [!NOTE]
 > De SQL-pool azure Synapse Analytics communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt.
 >
 
+1. Nadat de implementatie is voltooid, zoekt u naar uw poolnaam in het zoekvak in het navigatiemenu en selecteert u de SQL-poolbron. Selecteer de servernaam.
 
-1. Nadat de implementatie is voltooid, zoekt u naar uw poolnaam in het zoekvak in het navigatiemenu en selecteert u de SQL-poolbron. Selecteer de servernaam. 
+    ![ga naar uw bron](./media/load-data-wideworldimportersdw/search-for-sql-pool.png)
 
-    ![ga naar uw bron](./media/load-data-wideworldimportersdw/search-for-sql-pool.png) 
+1. Selecteer de servernaam.
+    ![servernaam](././media/load-data-wideworldimportersdw/find-server-name.png)
 
-1. Selecteer de servernaam. 
-    ![servernaam](././media/load-data-wideworldimportersdw/find-server-name.png) 
+1. Selecteer **Firewall-instellingen weergeven**. De pagina **Firewall-instellingen** voor de SQL-poolserver wordt geopend.
 
-1. Selecteer **Firewall-instellingen weergeven**. De pagina **Firewall-instellingen** voor de SQL-poolserver wordt geopend. 
-
-    ![serverinstellingen](./media/load-data-wideworldimportersdw/server-settings.png) 
+    ![serverinstellingen](./media/load-data-wideworldimportersdw/server-settings.png)
 
 1. Selecteer op de pagina **Firewalls en virtuele netwerken** de optie **Client-IP toevoegen** om uw huidige IP-adres toe te voegen aan een nieuwe firewallregel. Een firewallregel kan poort 1433 openen voor een afzonderlijk IP-adres of voor een aantal IP-adressen.
 
-    ![serverfirewallregel](./media/load-data-wideworldimportersdw/server-firewall-rule.png) 
+    ![serverfirewallregel](./media/load-data-wideworldimportersdw/server-firewall-rule.png)
 
 1. Selecteer **Opslaan**. Er wordt een firewallregel op serverniveau gemaakt voor uw huidige IP-adres waarbij poort 1433 op de logische server wordt geopend.
 
@@ -119,45 +119,45 @@ U nu verbinding maken met de SQL-server met behulp van uw client IP-adres. De ve
 
 De volledig gekwalificeerde servernaam is wat wordt gebruikt om verbinding te maken met de server. Ga naar uw SQL-poolbron in de Azure-portal en bekijk de volledig gekwalificeerde naam onder **Servernaam.**
 
-![servernaam](././media/load-data-wideworldimportersdw/find-server-name.png) 
+![servernaam](././media/load-data-wideworldimportersdw/find-server-name.png)
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Als serverbeheerder verbinding maken met de server
 
-In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) (SQL Server Management Studio) om een verbinding tot stand te brengen met de Azure SQL-server.
+In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SQL Server Management Studio) om een verbinding tot stand te brengen met de Azure SQL-server.
 
 1. Open SQL Server Management Studio.
 
 2. Voer in het dialoogvenster **Verbinding maken met server** de volgende informatie in:
 
-    | Instelling      | Voorgestelde waarde | Beschrijving | 
-    | ------------ | --------------- | ----------- | 
+    | Instelling      | Voorgestelde waarde | Beschrijving |
+    | ------------ | --------------- | ----------- |
     | Servertype | Database-engine | Deze waarde is verplicht |
     | Servernaam | De volledig gekwalificeerde servernaam | **Sqlpoolservername.database.windows.net** is bijvoorbeeld een volledig gekwalificeerde servernaam. |
-    | Authentication | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat in deze zelfstudie is geconfigureerd. |
+    | Verificatie | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat in deze zelfstudie is geconfigureerd. |
     | Aanmelden | Het beheerdersaccount voor de server | Dit is het account dat u hebt opgegeven tijdens het maken van de server. |
     | Wachtwoord | Het wachtwoord voor het beheerdersaccount voor de server | Dit is het wachtwoord dat u hebt opgegeven tijdens het maken van de server. |
 
     ![verbinding maken met server](./media/load-data-wideworldimportersdw/connect-to-server.png)
 
-4. Klik op **Verbinden**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio. 
+3. Klik op **Verbinden**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio.
 
-5. Vouw **Databases** uit in Objectverkenner. Vouw **Systeemdatabases** en **Hoofd** uit om de objecten in de hoofddatabase weer te geven.  Vouw **SampleDW** uit om de objecten in uw nieuwe database weer te geven.
+4. Vouw **Databases** uit in Objectverkenner. Vouw **Systeemdatabases** en **Hoofd** uit om de objecten in de hoofddatabase weer te geven.  Vouw **SampleDW** uit om de objecten in uw nieuwe database weer te geven.
 
-    ![databaseobjecten](./media/load-data-wideworldimportersdw/connected.png) 
+    ![databaseobjecten](./media/load-data-wideworldimportersdw/connected.png)
 
 ## <a name="create-a-user-for-loading-data"></a>Een gebruiker maken voor het laden van gegevens
 
-De serverbeheerdersaccount is bedoeld voor het uitvoeren van beheerbewerkingen en is niet geschikt voor het uitvoeren van query's op gebruikersgegevens. Het laden van gegevens is een geheugenintensieve bewerking. Geheugenmaxima worden gedefinieerd op basis van de generatie van SQL-groep die u gebruikt, [gegevensmagazijneenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md)en [resourceklasse.](resource-classes-for-workload-management.md) 
+De serverbeheerdersaccount is bedoeld voor het uitvoeren van beheerbewerkingen en is niet geschikt voor het uitvoeren van query's op gebruikersgegevens. Het laden van gegevens is een geheugenintensieve bewerking. Geheugenmaxima worden gedefinieerd op basis van de generatie van SQL-groep die u gebruikt, [gegevensmagazijneenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md)en [resourceklasse.](resource-classes-for-workload-management.md)
 
 Het is raadzaam een aanmelding en gebruiker te maken die speciaal wordt toegewezen voor het laden van gegevens. Voeg vervolgens de ladende gebruiker toe aan een [bronklasse](resource-classes-for-workload-management.md). Hiermee wordt een maximale hoeveelheid geheugen ingesteld.
 
-Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en gebruikers maken. Gebruik deze stappen om een aanmelding en gebruiker te maken met de naam **LoaderRC60**. Wijs de gebruiker vervolgens toe aan de bronklasse **staticrc60**. 
+Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en gebruikers maken. Gebruik deze stappen om een aanmelding en gebruiker te maken met de naam **LoaderRC60**. Wijs de gebruiker vervolgens toe aan de bronklasse **staticrc60**.
 
-1.  Klik in SSMS met de rechtermuisknop op **Hoofd** om een vervolgkeuzemenu weer te geven en kies **Nieuwe query**. Een nieuwe queryvenster wordt geopend.
+1. Klik in SSMS met de rechtermuisknop op **Hoofd** om een vervolgkeuzemenu weer te geven en kies **Nieuwe query**. Een nieuwe queryvenster wordt geopend.
 
     ![Nieuwe query in Hoofd](./media/load-data-wideworldimportersdw/create-loader-login.png)
 
-2. Voer in het queryvenster deze T-SQL-opdrachten in om een aanmelding en een gebruiker te maken met de naam LoaderRC60, waarbij u uw eigen wachtwoord vervangt door 'een123STERKwachtwoord!'. 
+2. Voer in het queryvenster deze T-SQL-opdrachten in om een aanmelding en een gebruiker te maken met de naam LoaderRC60, waarbij u uw eigen wachtwoord vervangt door 'een123STERKwachtwoord!'.
 
     ```sql
     CREATE LOGIN LoaderRC60 WITH PASSWORD = 'a123STRONGpassword!';
@@ -169,8 +169,8 @@ Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en geb
 4. Klik met de rechtermuisknop op **SampleDW** en kies **Nieuwe query**. Er wordt een nieuw queryvenster geopend.  
 
     ![Nieuwe query op voorbeeld van datawarehouse](./media/load-data-wideworldimportersdw/create-loading-user.png)
- 
-5. Voer de volgende T-SQL-opdrachten in om een databasegebruiker met de naam LoaderRC60 te maken voor de aanmelding LoaderRC60. De tweede regel verleent de nieuwe gebruiker beheermachtigingen voor het nieuwe datawarehouse.  Deze machtigingen zijn vergelijkbaar met de machtigingen als u de gebruiker de eigenaar van de database maakt. De derde regel voegt de nieuwe gebruiker toe als lid van de [bronklasse](resource-classes-for-workload-management.md) staticrc60.
+
+5. Voer de volgende T-SQL-opdrachten in om een databasegebruiker met de naam LoaderRC60 te maken voor de aanmelding LoaderRC60. De tweede regel verleent de nieuwe gebruiker beheermachtigingen voor het nieuwe datawarehouse.  Deze machtigingen zijn vergelijkbaar met de machtigingen als u de gebruiker de eigenaar van de database maakt. De derde regel voegt de nieuwe `staticrc60` gebruiker toe als lid van de [resourceklasse.](resource-classes-for-workload-management.md)
 
     ```sql
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
@@ -202,19 +202,19 @@ U bent klaar om te beginnen met het laden van gegevens in uw nieuwe datawarehous
 
 Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die u wilt laden. Deze informatie omvat de locatie waar de gegevens zich bevinden, de indeling van de inhoud van de gegevens en de tabeldefinitie voor de gegevens. De gegevens bevinden zich in een wereldwijde Azure Blob.
 
-1. In de vorige sectie hebt u zich bij uw datawarehouse aangemeld als LoaderRC60. Klik in SQL Server Management Studio met de rechtermuisknop op **SampleDW** onder uw LoaderRC60-verbinding en selecteer **Nieuwe query**.  Er wordt een nieuw queryvenster geopend. 
+1. In de vorige sectie hebt u zich bij uw datawarehouse aangemeld als LoaderRC60. Klik in SQL Server Management Studio met de rechtermuisknop op **SampleDW** onder uw LoaderRC60-verbinding en selecteer **Nieuwe query**.  Er wordt een nieuw queryvenster geopend.
 
     ![Nieuw venster voor het laden van een query](./media/load-data-wideworldimportersdw/new-loading-query.png)
 
 2. Vergelijk uw queryvenster met de vorige afbeelding.  Controleer of uw nieuwe queryvenster wordt uitgevoerd als LoaderRC60 en query's uitvoert op uw SampleDW-database. Gebruik dit queryvenster om alle laadstappen uit te voeren.
 
-3. Maak een hoofdsleutel voor de SampleDW-database. U hoeft maar één hoofdsleutel per database te maken. 
+3. Maak een hoofdsleutel voor de SampleDW-database. U hoeft maar één hoofdsleutel per database te maken.
 
     ```sql
     CREATE MASTER KEY;
     ```
 
-4. Voer de volgende instructie [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) uit om de locatie van de Azure-blob te definiëren. Dit is de locatie van de externe wereldwijde importeurs gegevens.  Als u een opdracht die u hebt toegevoegd aan het queryvenster wilt uitvoeren, markeert u de opdrachten die u wilt uitvoeren en klikt u op **Execute**.
+4. Voer de volgende instructie [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uit om de locatie van de Azure-blob te definiëren. Dit is de locatie van de externe wereldwijde importeurs gegevens.  Als u een opdracht die u hebt toegevoegd aan het queryvenster wilt uitvoeren, markeert u de opdrachten die u wilt uitvoeren en klikt u op **Execute**.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -225,22 +225,22 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
     );
     ```
 
-5. Voer de volgende T-SQL-instructie [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql) uit om de opmaakeigenschappen en -opties voor het externe gegevensbestand op te geven. Deze instructie geeft aan dat de externe gegevens zijn opgeslagen als tekst en de waarden worden gescheiden door het pipe-teken ('|').  
+5. Voer de volgende T-SQL-instructie [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uit om de opmaakeigenschappen en -opties voor het externe gegevensbestand op te geven. Deze instructie geeft aan dat de externe gegevens zijn opgeslagen als tekst en de waarden worden gescheiden door het pipe-teken ('|').  
 
     ```sql
-    CREATE EXTERNAL FILE FORMAT TextFileFormat 
-    WITH 
-    (   
+    CREATE EXTERNAL FILE FORMAT TextFileFormat
+    WITH
+    (
         FORMAT_TYPE = DELIMITEDTEXT,
         FORMAT_OPTIONS
-        (   
+        (
             FIELD_TERMINATOR = '|',
-            USE_TYPE_DEFAULT = FALSE 
+            USE_TYPE_DEFAULT = FALSE
         )
     );
     ```
 
-6.  Voer de volgende [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql)-instructies uit om een schema te maken voor de externe bestandsindeling. Het ext-schema biedt een manier om de externe tabellen die u gaat maken te organiseren. Het wwi-schema organiseert de standaardtabellen die de gegevens bevatten. 
+6. Voer de volgende [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)-instructies uit om een schema te maken voor de externe bestandsindeling. Het ext-schema biedt een manier om de externe tabellen die u gaat maken te organiseren. Het wwi-schema organiseert de standaardtabellen die de gegevens bevatten.
 
     ```sql
     CREATE SCHEMA ext;
@@ -267,7 +267,7 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH (LOCATION='/v1/dimension_City/',   
+    WITH (LOCATION='/v1/dimension_City/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -286,7 +286,7 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH (LOCATION='/v1/dimension_Customer/',   
+    WITH (LOCATION='/v1/dimension_Customer/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -303,7 +303,7 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION='/v1/dimension_Employee/',   
+    WITH ( LOCATION='/v1/dimension_Employee/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -317,7 +317,7 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/dimension_PaymentMethod/',   
+    WITH ( LOCATION ='/v1/dimension_PaymentMethod/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -345,7 +345,7 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/dimension_StockItem/',   
+    WITH ( LOCATION ='/v1/dimension_StockItem/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -364,7 +364,7 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/dimension_Supplier/',   
+    WITH ( LOCATION ='/v1/dimension_Supplier/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -377,8 +377,8 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
         [Valid From] [datetime2](7) NOT NULL,
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
-    )    
-    WITH ( LOCATION ='/v1/dimension_TransactionType/',   
+    )
+    WITH ( LOCATION ='/v1/dimension_TransactionType/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -397,7 +397,7 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
         [Quantity] [int] NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/fact_Movement/',   
+    WITH ( LOCATION ='/v1/fact_Movement/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -424,8 +424,8 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
         [Total Including Tax] [decimal](18, 2) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/fact_Order/',   
-        DATA_SOURCE = WWIStorage,  
+    WITH ( LOCATION ='/v1/fact_Order/',
+        DATA_SOURCE = WWIStorage,
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
         REJECT_VALUE = 0
@@ -443,7 +443,7 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
         [Is Order Finalized] [bit] NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/fact_Purchase/',   
+    WITH ( LOCATION ='/v1/fact_Purchase/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -472,7 +472,7 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
         [Total Chiller Items] [int] NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/fact_Sale/',   
+    WITH ( LOCATION ='/v1/fact_Sale/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -489,7 +489,7 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
         [Target Stock Level] [int] NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/fact_StockHolding/',   
+    WITH ( LOCATION ='/v1/fact_StockHolding/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -515,7 +515,7 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
         [Is Finalized] [bit] NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/fact_Transaction/',   
+    WITH ( LOCATION ='/v1/fact_Transaction/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -533,9 +533,8 @@ In deze sectie worden de externe tabellen die u hebt gedefinieerd gebruikt om de
 
 > [!NOTE]
 > In deze zelfstudie worden de gegevens rechtstreeks in de definitieve tabel geladen. In een productieomgeving gebruikt u meestal CREATE TABLE AS SELECT om naar een faseringstabel te laden. U kunt alle benodigde transformaties uitvoeren wanneer de gegevens zich in de faseringstabel bevinden. Als u de gegevens in de faseringstabel wilt toevoegen aan een productietabel, kunt u de instructie INSERT... SELECT gebruiken. Zie [Gegevens in een productietabel invoegen](guidance-for-loading-data.md#inserting-data-into-a-production-table) voor meer informatie.
-> 
 
-Het script gebruikt de T-SQL-instructie [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) om de gegevens uit Azure Storage Blob naar de nieuwe tabellen in het datawarehouse te laden. CTAS maakt een nieuwe tabel op basis van de resultaten van een SELECT-instructie. De nieuwe tabel heeft dezelfde gegevenstypen en kolommen als de resultaten van de selecteerinstructie. Wanneer de selecte instructie uit een externe tabel wordt geselecteerd, worden de gegevens geïmporteerd in een relationele tabel in het gegevensmagazijn. 
+Het script gebruikt de T-SQL-instructie [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de gegevens uit Azure Storage Blob naar de nieuwe tabellen in het datawarehouse te laden. CTAS maakt een nieuwe tabel op basis van de resultaten van een SELECT-instructie. De nieuwe tabel heeft dezelfde gegevenstypen en kolommen als de resultaten van de selecteerinstructie. Wanneer de selecte instructie uit een externe tabel wordt geselecteerd, worden de gegevens geïmporteerd in een relationele tabel in het gegevensmagazijn.
 
 Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sale. Deze tabellen worden gegenereerd in een latere stap om de tabellen te maken die een aanzienlijk aantal rijen bevatten.
 
@@ -544,7 +543,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
     ```sql
     CREATE TABLE [wwi].[dimension_City]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -555,7 +554,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
 
     CREATE TABLE [wwi].[dimension_Customer]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -566,7 +565,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
 
     CREATE TABLE [wwi].[dimension_Employee]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -577,7 +576,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
 
     CREATE TABLE [wwi].[dimension_PaymentMethod]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -588,7 +587,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
 
     CREATE TABLE [wwi].[dimension_StockItem]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -599,7 +598,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
 
     CREATE TABLE [wwi].[dimension_Supplier]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -610,7 +609,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
 
     CREATE TABLE [wwi].[dimension_TransactionType]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -621,7 +620,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
 
     CREATE TABLE [wwi].[fact_Movement]
     WITH
-    ( 
+    (
         DISTRIBUTION = HASH([Movement Key]),
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -632,7 +631,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
 
     CREATE TABLE [wwi].[fact_Order]
     WITH
-    ( 
+    (
         DISTRIBUTION = HASH([Order Key]),
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -643,7 +642,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
 
     CREATE TABLE [wwi].[fact_Purchase]
     WITH
-    ( 
+    (
         DISTRIBUTION = HASH([Purchase Key]),
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -654,7 +653,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
 
     CREATE TABLE [wwi].[seed_Sale]
     WITH
-    ( 
+    (
         DISTRIBUTION = HASH([WWI Invoice ID]),
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -665,7 +664,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
 
     CREATE TABLE [wwi].[fact_StockHolding]
     WITH
-    ( 
+    (
         DISTRIBUTION = HASH([Stock Holding Key]),
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -676,7 +675,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
 
     CREATE TABLE [wwi].[fact_Transaction]
     WITH
-    ( 
+    (
         DISTRIBUTION = HASH([Transaction Key]),
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -695,7 +694,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
         r.status,
         count(distinct input_name) as nbr_files,
         sum(s.bytes_processed)/1024/1024/1024 as gb_processed
-    FROM 
+    FROM
         sys.dm_pdw_exec_requests r
         INNER JOIN sys.dm_pdw_dms_external_work s
         ON r.request_id = s.request_id
@@ -717,7 +716,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
         s.request_id,
         r.status
     ORDER BY
-        nbr_files desc, 
+        nbr_files desc,
         gb_processed desc;
     ```
 
@@ -755,7 +754,7 @@ In deze sectie worden de tabellen wwi.dimension_Date en wwi.fact_Sale aan. Het c
         [Fiscal Year Label] [nvarchar](10) NOT NULL,
         [ISO Week Number] [int] NOT NULL
     )
-    WITH 
+    WITH
     (
         DISTRIBUTION = REPLICATE,
         CLUSTERED INDEX ([Date])
@@ -791,7 +790,7 @@ In deze sectie worden de tabellen wwi.dimension_Date en wwi.fact_Sale aan. Het c
     )
     ```
 
-2. Maak [wwi].[InitialSalesDataPopulation] om het aantal rijen in [wwi].[seed_Sale] te verhogen met een factor van acht. 
+2. Maak [wwi].[InitialSalesDataPopulation] om het aantal rijen in [wwi].[seed_Sale] te verhogen met een factor van acht.
 
     ```sql
     CREATE PROCEDURE [wwi].[InitialSalesDataPopulation] AS
@@ -824,7 +823,7 @@ In deze sectie worden de tabellen wwi.dimension_Date en wwi.fact_Sale aan. Het c
     ```sql
     CREATE PROCEDURE [wwi].[PopulateDateDimensionForYear] @Year [int] AS
     BEGIN
-        IF OBJECT_ID('tempdb..#month', 'U') IS NOT NULL 
+        IF OBJECT_ID('tempdb..#month', 'U') IS NOT NULL
             DROP TABLE #month
         CREATE TABLE #month (
             monthnum int,
@@ -834,7 +833,7 @@ In deze sectie worden de tabellen wwi.dimension_Date en wwi.fact_Sale aan. Het c
         INSERT INTO #month
             SELECT 1, 31 UNION SELECT 2, CASE WHEN (@YEAR % 4 = 0 AND @YEAR % 100 <> 0) OR @YEAR % 400 = 0 THEN 29 ELSE 28 END UNION SELECT 3,31 UNION SELECT 4,30 UNION SELECT 5,31 UNION SELECT 6,30 UNION SELECT 7,31 UNION SELECT 8,31 UNION SELECT 9,30 UNION SELECT 10,31 UNION SELECT 11,30 UNION SELECT 12,31
 
-        IF OBJECT_ID('tempdb..#days', 'U') IS NOT NULL 
+        IF OBJECT_ID('tempdb..#days', 'U') IS NOT NULL
             DROP TABLE #days
         CREATE TABLE #days (days int)
         WITH (DISTRIBUTION = ROUND_ROBIN, HEAP)
@@ -843,7 +842,7 @@ In deze sectie worden de tabellen wwi.dimension_Date en wwi.fact_Sale aan. Het c
             SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 UNION SELECT 20    UNION SELECT 21 UNION SELECT 22 UNION SELECT 23 UNION SELECT 24 UNION SELECT 25 UNION SELECT 26 UNION SELECT 27 UNION SELECT 28 UNION SELECT 29 UNION SELECT 30 UNION SELECT 31
 
         INSERT [wwi].[dimension_Date] (
-            [Date], [Day Number], [Day], [Month], [Short Month], [Calendar Month Number], [Calendar Month Label], [Calendar Year], [Calendar Year Label], [Fiscal Month Number], [Fiscal Month Label], [Fiscal Year], [Fiscal Year Label], [ISO Week Number] 
+            [Date], [Day Number], [Day], [Month], [Short Month], [Calendar Month Number], [Calendar Month Label], [Calendar Year], [Calendar Year Label], [Fiscal Month Number], [Fiscal Month Label], [Fiscal Year], [Fiscal Year Label], [ISO Week Number]
         )
         SELECT
             CAST(CAST(monthnum AS VARCHAR(2)) + '/' + CAST([days] AS VARCHAR(3)) + '/' + CAST(@year AS CHAR(4)) AS DATE) AS [Date]
@@ -876,6 +875,7 @@ In deze sectie worden de tabellen wwi.dimension_Date en wwi.fact_Sale aan. Het c
     DROP table #days;
     END;
     ```
+
 4. Maak deze procedure die de tabellen wwi.dimension_Date en wwi.fact_Sale vult. Hiermee wordt [wwi].[PopulateDateDimensionForYear] aangeroepen om wwi.dimension_Date te vullen.
 
     ```sql
@@ -888,7 +888,7 @@ In deze sectie worden de tabellen wwi.dimension_Date en wwi.fact_Sale aan. Het c
 
         DECLARE @OrderCounter bigint = 0;
         DECLARE @NumberOfSalesPerDay bigint = @EstimatedRowsPerDay;
-        DECLARE @DateCounter date; 
+        DECLARE @DateCounter date;
         DECLARE @StartingSaleKey bigint;
         DECLARE @MaximumSaleKey bigint = (SELECT MAX([Sale Key]) FROM wwi.seed_Sale);
         DECLARE @MaxDate date;
@@ -920,7 +920,7 @@ In deze sectie worden de tabellen wwi.dimension_Date en wwi.fact_Sale aan. Het c
             SELECT TOP(@VariantNumberOfSalesPerDay)
                 [City Key], [Customer Key], [Bill To Customer Key], [Stock Item Key], @DateCounter, DATEADD(day, 1, @DateCounter), [Salesperson Key], [WWI Invoice ID], [Description], Package, Quantity, [Unit Price], [Tax Rate], [Total Excluding Tax], [Tax Amount], Profit, [Total Including Tax], [Total Dry Items], [Total Chiller Items], [Lineage Key]
             FROM [wwi].[seed_Sale]
-            WHERE 
+            WHERE
                  --[Sale Key] > @StartingSaleKey and /* IDENTITY DOES NOT WORK THE SAME IN SQLDW AND CAN'T USE THIS METHOD FOR VARIANT */
                 [Invoice Date Key] >=cast(@YEAR AS CHAR(4)) + '-01-01'
             ORDER BY [Sale Key];
@@ -932,12 +932,12 @@ In deze sectie worden de tabellen wwi.dimension_Date en wwi.fact_Sale aan. Het c
     ```
 
 ## <a name="generate-millions-of-rows"></a>Miljoenen rijen genereren
-Gebruik de opgeslagen procedures die u hebt gemaakt om miljoenen rijen in de tabel wwi.fact_Sale en de bijbehorende gegevens in de tabel wwi.dimension_Date te genereren. 
 
+Gebruik de opgeslagen procedures die u hebt gemaakt om miljoenen rijen in de tabel wwi.fact_Sale en de bijbehorende gegevens in de tabel wwi.dimension_Date te genereren.
 
 1. Voer deze procedure uit om [wwi].[seed_Sale] met meer rijen te seeden.
 
-    ```sql    
+    ```sql
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
@@ -946,6 +946,7 @@ Gebruik de opgeslagen procedures die u hebt gemaakt om miljoenen rijen in de tab
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000
     ```
+
 3. Het genereren van de gegevens in de vorige stap kan even duren naarmate het jaar wordt doorlopen.  Als u wilt zien op welke dag het huidige proces is, opent u een nieuwe query en voert u deze SQL-opdracht uit:
 
     ```sql
@@ -962,22 +963,22 @@ Gebruik de opgeslagen procedures die u hebt gemaakt om miljoenen rijen in de tab
 
 SQL-groep repliceert een tabel door de gegevens aan elk Compute-knooppunt te plaatsen. De cache wordt gevuld wanneer een query wordt uitgevoerd op de tabel. Daarom heeft de eerste query in een gerepliceerde tabel mogelijk extra tijd nodig om de cache te vullen. Nadat de cache is ingevuld, worden query's in gerepliceerde tabellen sneller uitgevoerd.
 
-Voer deze SQL-query's uit om de gerepliceerde tabelcache op de rekenknooppunten te vullen. 
+Voer deze SQL-query's uit om de gerepliceerde tabelcache op de rekenknooppunten te vullen.
 
-    ```sql
-    SELECT TOP 1 * FROM [wwi].[dimension_City];
-    SELECT TOP 1 * FROM [wwi].[dimension_Customer];
-    SELECT TOP 1 * FROM [wwi].[dimension_Date];
-    SELECT TOP 1 * FROM [wwi].[dimension_Employee];
-    SELECT TOP 1 * FROM [wwi].[dimension_PaymentMethod];
-    SELECT TOP 1 * FROM [wwi].[dimension_StockItem];
-    SELECT TOP 1 * FROM [wwi].[dimension_Supplier];
-    SELECT TOP 1 * FROM [wwi].[dimension_TransactionType];
-    ```
+```sql
+SELECT TOP 1 * FROM [wwi].[dimension_City];
+SELECT TOP 1 * FROM [wwi].[dimension_Customer];
+SELECT TOP 1 * FROM [wwi].[dimension_Date];
+SELECT TOP 1 * FROM [wwi].[dimension_Employee];
+SELECT TOP 1 * FROM [wwi].[dimension_PaymentMethod];
+SELECT TOP 1 * FROM [wwi].[dimension_StockItem];
+SELECT TOP 1 * FROM [wwi].[dimension_Supplier];
+SELECT TOP 1 * FROM [wwi].[dimension_TransactionType];
+```
 
 ## <a name="create-statistics-on-newly-loaded-data"></a>Statistieken maken voor nieuw geladen gegevens
 
-Voor hoge queryprestaties is het belangrijk dat u voor elke kolom in elke tabel statistieken maakt nadat de tabel de eerste keer is geladen. Het is ook belangrijk dat de statistieken worden bijgewerkt wanneer gegevens substantieel zijn gewijzigd. 
+Voor hoge queryprestaties is het belangrijk dat u voor elke kolom in elke tabel statistieken maakt nadat de tabel de eerste keer is geladen. Het is ook belangrijk dat de statistieken worden bijgewerkt wanneer gegevens substantieel zijn gewijzigd.
 
 1. Maak deze opgeslagen procedure waarmee statistieken over alle kolommen van alle tabellen worden bijgewerkt.
 
@@ -1007,7 +1008,7 @@ Voor hoge queryprestaties is het belangrijk dat u voor elke kolom in elke tabel 
     BEGIN;
         DROP TABLE #stats_ddl;
     END;
-    
+
     CREATE TABLE #stats_ddl
     WITH    (   DISTRIBUTION    = HASH([seq_nmbr])
             ,   LOCATION        = USER_DB
@@ -1090,11 +1091,13 @@ Volg deze stappen om de resources op te schonen zoals gewenst.
 
 5. Als u de resourcegroep wilt verwijderen, klikt u op **SampleRG**. Klik vervolgens op **Resourcegroep verwijderen**.
 
-## <a name="next-steps"></a>Volgende stappen 
-In deze zelfstudie hebt u geleerd hoe u een datawarehouse en een gebruiker voor het laden van gegevens maakt. U hebt externe tabellen gemaakt om de structuur te definiëren voor gegevens die zijn opgeslagen in Azure Storage Blob en vervolgens de PolyBase-instructie CREATE TABLE AS SELECT gebruikt voor het laden van gegevens in uw datawarehouse. 
+## <a name="next-steps"></a>Volgende stappen
+
+In deze zelfstudie hebt u geleerd hoe u een datawarehouse en een gebruiker voor het laden van gegevens maakt. U hebt externe tabellen gemaakt om de structuur te definiëren voor gegevens die zijn opgeslagen in Azure Storage Blob en vervolgens de PolyBase-instructie CREATE TABLE AS SELECT gebruikt voor het laden van gegevens in uw datawarehouse.
 
 U hebt het volgende gedaan:
 > [!div class="checklist"]
+>
 > * Een gegevensmagazijn maken met SQL-pool in de Azure-portal
 > * Een serverfirewallregel ingesteld in Azure Portal
 > * Verbonden met de SQL-pool met SSMS

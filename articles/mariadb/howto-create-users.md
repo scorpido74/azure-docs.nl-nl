@@ -5,22 +5,25 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 23e3c9db6302d2db597283358ff71c3693ecf435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/2/2020
+ms.openlocfilehash: 1b79a49b2fb87ebf180aaaa40447f40c5a982c2e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530169"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632291"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Create users in Azure Database for MariaDB (Gebruikers maken in Azure Database for MariaDB) 
 In dit artikel wordt beschreven hoe u gebruikers maken in Azure Database voor MariaDB.
 
 Toen u uw Azure Database voor MariaDB voor het eerst hebt gemaakt, hebt u een gebruikersnaam en wachtwoord voor het inloggen van een serverbeheerder opgegeven. Voor meer informatie u de [Quickstart](quickstart-create-mariadb-server-database-using-azure-portal.md)volgen. U de gebruikersnaam van uw serverbeheerder inlogfunctie vinden via de Azure-portal.
 
-De serverbeheerder krijgt bepaalde bevoegdheden voor uw server zoals vermeld: SELECT, INSERT, UPDATE, Delete, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, WEERGAVE MAKEN, WEERGAVE WEERGEVEN, ROUTINE MAKEN, ROUTINE WIJZIGEN, GEBRUIKER MAKEN, GEBEURTENIS, TRIGGER
+De serverbeheerder krijgt bepaalde bevoegdheden voor uw server zoals vermeld: SELECT, INSERT, UPDATE, Delete, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, CREATE, EVENT, TRIGGER
 
 Zodra de Azure Database voor MariaDB-server is gemaakt, u het eerste gebruikersaccount voor serverbeheerders gebruiken om extra gebruikers te maken en beheerders toegang tot deze server te verlenen. Het serverbeheeraccount kan ook worden gebruikt om minder bevoorrechte gebruikers te maken die toegang hebben tot afzonderlijke databaseschema's.
+
+> [!NOTE]
+> De SUPER privilege en DBA rol worden niet ondersteund. Bekijk de [bevoegdheden](concepts-limits.md#privilege-support) in het artikel beperkingen om te begrijpen wat er niet wordt ondersteund in de service.
 
 ## <a name="create-additional-admin-users"></a>Extra beheerdersgebruikers maken
 1. Download de verbindingsgegevens en de gebruikersnaam van de beheerder.

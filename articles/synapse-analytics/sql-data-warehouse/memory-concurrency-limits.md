@@ -11,17 +11,19 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586055"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632668"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Geheugen- en gelijktijdigheidslimieten voor Azure Synapse Analytics
+
 Bekijk de geheugen- en gelijktijdigheidslimieten die zijn toegewezen aan de verschillende prestatieniveaus en resourceklassen in Azure Synapse Analytics.  
 
 ## <a name="data-warehouse-capacity-settings"></a>Capaciteitsinstellingen voor gegevensmagazijnen
+
 In de volgende tabellen wordt de maximale capaciteit voor het gegevensmagazijn op verschillende prestatieniveaus weergegeven. Zie [Schaalgegevensberekenen - portal](quickstart-scale-compute-portal.md)als u het prestatieniveau wilt wijzigen.
 
 ### <a name="service-levels"></a>Serviceniveaus
@@ -50,7 +52,8 @@ De serviceniveaus variëren van DW100c tot DW30000c.
 Het maximale serviceniveau is DW30000c, dat 60 Compute-knooppunten en één distributie per Compute-knooppunt heeft. Een gegevensmagazijn van 600 TB bij DW30000c verwerkt bijvoorbeeld ongeveer 10 TB per Compute-knooppunt.
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>Gelijktijdigheidsmaxima voor werkbelastingsgroepen
-Met de invoering van [werkbelastingsgroepen](sql-data-warehouse-workload-isolation.md)is het concept van gelijktijdigheidssleuven niet langer van toepassing.  Resources per aanvraag worden toegewezen op basis van een percentage en gespecificeerd in de definitie van werkbelastinggroep.  Echter, zelfs met het verwijderen van gelijktijdigheid slots, zijn er minimale hoeveelheden resources nodig per query's op basis van het serviceniveau.  In de onderstaande tabel wordt de minimale hoeveelheid resources gedefinieerd die nodig zijn per query tussen serviceniveaus en de bijbehorende gelijktijdigheid die kan worden bereikt. 
+
+Met de invoering van [werkbelastingsgroepen](sql-data-warehouse-workload-isolation.md)is het concept van gelijktijdigheidssleuven niet langer van toepassing.  Resources per aanvraag worden toegewezen op basis van een percentage en gespecificeerd in de definitie van werkbelastinggroep.  Echter, zelfs met het verwijderen van gelijktijdigheid slots, zijn er minimale hoeveelheden resources nodig per query's op basis van het serviceniveau.  In de onderstaande tabel wordt de minimale hoeveelheid resources gedefinieerd die nodig zijn per query tussen serviceniveaus en de bijbehorende gelijktijdigheid die kan worden bereikt.
 
 |Serviceniveau|Maximale gelijktijdige query's|Min % ondersteund voor REQUEST_MIN_RESOURCE_GRANT_PERCENT|
 |---|---|---|
@@ -73,7 +76,8 @@ Met de invoering van [werkbelastingsgroepen](sql-data-warehouse-workload-isolati
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Gelijktijdigheidsmaxima voor resourceklassen
-Om ervoor te zorgen dat elke query voldoende resources heeft om efficiënt uit te voeren, wordt het gebruik van resources bijgehouden door gelijktijdigheidssleuven toe te kennen aan elke query. Het systeem plaatst query's in een wachtrij op basis van belang en gelijktijdige sleuven. Query's wachten in de wachtrij tot er voldoende gelijktijdige sleuven beschikbaar zijn. [Belang](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) en gelijktijdigheid slots bepalen CPU prioritering. Zie [Uw werkbelasting analyseren](analyze-your-workload.md) voor meer informatie
+
+Om ervoor te zorgen dat elke query voldoende resources heeft om efficiënt uit te voeren, houdt SQL Analytics in Azure Synapse het gebruik van resources bij door gelijktijdigheidssleuven toe te kennen aan elke query. Het systeem plaatst query's in een wachtrij op basis van belang en gelijktijdige sleuven. Query's wachten in de wachtrij tot er voldoende gelijktijdige sleuven beschikbaar zijn. [Belang](sql-data-warehouse-workload-importance.md) en gelijktijdigheid slots bepalen CPU prioritering. Zie [Uw werkbelasting analyseren](analyze-your-workload.md) voor meer informatie
 
 **Statische resourceklassen**
 
@@ -121,11 +125,11 @@ In de volgende tabel worden de maximale gelijktijdige query's en gelijktijdige s
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-
-Als er niet genoeg gelijktijdige sleuven zijn om query-uitvoering te starten, worden query's in de wachtrij geplaatst en uitgevoerd op basis van het belang.  Als er een gelijkwaardig belang is, worden query's uitgevoerd op een first-in, first-out basis.  Als query's zijn voltooid en het aantal query's en sleuven onder de limieten valt, brengt SQL Data Warehouse wachtrijquery's uit. 
+Als er niet genoeg gelijktijdige sleuven zijn om query-uitvoering te starten, worden query's in de wachtrij geplaatst en uitgevoerd op basis van het belang.  Als er een gelijkwaardig belang is, worden query's uitgevoerd op een first-in, first-out basis.  Als query's zijn voltooid en het aantal query's en sleuven onder de limieten valt, brengt SQL Data Warehouse wachtrijquery's uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Bekijk de volgende artikelen voor meer informatie over het gebruik van resourceklassen om uw werklast verder te optimaliseren:
+
 * [Resourceklassen voor werkbelastingbeheer](resource-classes-for-workload-management.md)
 * [Uw werkbelasting analyseren](analyze-your-workload.md)

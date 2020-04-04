@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 84f432c45729091be1264bff85d1e32fac10f3ef
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 2c8617cffaa81da6423011a494b8dbc82c42d218
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583161"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632460"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics-workloadbelang
 
@@ -64,6 +64,6 @@ Omdat Q5 mediumrc is, vereist het twee gelijktijdigheidssleuven. Q5 moet wachten
 
 - Zie de [KLASSER (Transact-SQL) maken voor](/sql/t-sql/statements/create-workload-classifier-transact-sql)meer informatie over het maken van een classificatie.  
 - Zie [Workloadclassificatie](sql-data-warehouse-workload-classification.md)voor meer informatie over workloadclassificatie.  
-- Zie de classificatie Snelstart [Werkbelasting maken voor](quickstart-create-a-workload-classifier-tsql.md) het maken van een classificatie voor werkbelasting. 
+- Zie de classificatie Snelstart [Werkbelasting maken voor](quickstart-create-a-workload-classifier-tsql.md) het maken van een classificatie voor werkbelasting.
 - Bekijk de how-to-artikelen om [het belang van workloads](sql-data-warehouse-how-to-configure-workload-importance.md) te configureren en hoe [u Workload Management beheren en bewaken.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
 - Zie [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) om query's en het toegewezen belang weer te geven.

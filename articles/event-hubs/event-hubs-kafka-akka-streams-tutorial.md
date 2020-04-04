@@ -4,21 +4,19 @@ description: In dit artikel vindt u informatie over het verbinden van Akka Strea
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
-manager: timlt
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 04/02/2020
 ms.author: shvija
-ms.openlocfilehash: c53fcc7b4b99e77237ba7ea9219aef4182f2af61
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 0b96f1448fd223aae2dde77c5c05a8c9bd74ee9b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521822"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632842"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Akka Streams gebruiken met Event Hubs voor Apache Kafka
 In deze zelfstudie ziet u hoe u Akka Streams verbinden met een gebeurtenishub zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. Azure Event Hubs voor de Kafka ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html)
@@ -140,22 +138,11 @@ Als de gebeurtenishub gebeurtenissen heeft (bijvoorbeeld als uw producent ook ac
 Bekijk de [Akka Streams Kafka Guide](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) voor meer gedetailleerde informatie over Akka Streams.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie heb je geleerd hoe je Akka Streams verbinden met de gebeurtenishub zonder je protocolclients te wijzigen of je eigen clusters uit te voeren. Azure Event Hubs voor de Kafka ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html). Je hebt de volgende acties als onderdeel van deze tutorial: 
+Zie de volgende artikelen voor meer informatie over gebeurtenishubs voor Kafka:  
 
-> [!div class="checklist"]
-> * Een Event Hubs-naamruimte maken
-> * Het voorbeeldproject klonen
-> * Run Akka Streams producent 
-> * Run Akka Streams consument
-
-Zie het volgende onderwerp voor meer informatie over Event Hubs en Event Hubs voor Kafka:  
-
-- [Meer informatie over Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Event Hubs voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Een gebeurtenishub maken](event-hubs-create.md)
-- [Streamen naar Event Hubs vanaf uw Kafka-toepassingen](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Een Kafka-broker spiegelen in een Event Hub](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Spark aan een Event Hub koppelen](event-hubs-kafka-spark-tutorial.md)
 - [Apache Flink aan een Event Hub koppelen](event-hubs-kafka-flink-tutorial.md)
 - [Integreer Kafka Connect met een gebeurtenishub](event-hubs-kafka-connect-tutorial.md)
 - [Explore samples on our GitHub](https://github.com/Azure/azure-event-hubs-for-kafka) (Voorbeelden bekijken op GitHub)
+- [Apache Kafka-ontwikkelaarshandleiding voor Azure Event Hubs](apache-kafka-developer-guide.md)

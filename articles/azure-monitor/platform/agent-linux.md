@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: aa2356901403c7a63aa4aa96dcb38f9c0c971e58
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528353"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637522"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux-computers verbinden met Azure Monitor
 
@@ -22,7 +22,7 @@ De Log Analytics-agent voor Linux kan worden geïnstalleerd met behulp van een v
 * [De agent handmatig downloaden en installeren.](#install-the-agent-manually) Dit is vereist wanneer de Linux-computer geen toegang heeft tot internet en via de [Log Analytics-gateway](gateway.md)communiceert met Azure Monitor of Azure Automation. 
 * [Installeer de agent voor Linux met behulp van een wrapper-script](#install-the-agent-using-wrapper-script) gehost op GitHub. Dit is de aanbevolen methode om de agent te installeren en te upgraden wanneer de computer verbinding heeft met internet, rechtstreeks of via een proxyserver.
 
-Als u meer wilt weten over de ondersteunde configuratie, kunt u de informatie over [ondersteunde Linux-besturingssystemen](log-analytics-agent.md#supported-linux-operating-systems) en de [ netwerkconfiguratie voor de firewall](log-analytics-agent.md#firewall-requirements) raadplegen.
+Als u meer wilt weten over de ondersteunde configuratie, kunt u de informatie over [ondersteunde Linux-besturingssystemen](log-analytics-agent.md#supported-linux-operating-systems) en de [ netwerkconfiguratie voor de firewall](log-analytics-agent.md#network-requirements) raadplegen.
 
 >[!NOTE]
 >De Log Analytics-agent voor Linux kan niet worden geconfigureerd om aan meer dan één Log Analytics-werkruimte te rapporteren. Het kan alleen worden geconfigureerd om gelijktijdig te rapporteren aan zowel een beheergroep van System Center Operations Manager als log analytics, of aan een afzonderlijk systeemcentrum.

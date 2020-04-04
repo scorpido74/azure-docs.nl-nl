@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b5d326d02587d6b5bd8fd73dcccfefdb13c47d57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26c5c5b31d5f3f9e1a642c0bafb947190e479055
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500917"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632630"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Problemen in runbooks oplossen
 
@@ -33,7 +33,7 @@ Wanneer er fouten optreden bij het uitvoeren van runbooks in Azure Automation, u
 
 3. **Zorg ervoor dat uw knooppunten en automatiseringswerkruimte over de vereiste modules beschikken.** 
 
-    Als uw runbook modules importeert, controleert u of ze beschikbaar zijn voor uw Automatiseringsaccount met behulp van de stappen die worden vermeld in [Importmodules.](../shared-resources/modules.md#import-modules) Werk uw modules bij naar de nieuwste versie door de instructies te volgen bij [Azure-modules bijwerken in Azure Automation.](..//automation-update-azure-modules.md) Zie Modules oplossen [voor](shared-resources.md#modules)meer informatie over probleemoplossing .
+    Als uw runbook modules importeert, controleert u of ze beschikbaar zijn voor uw Automatiseringsaccount met behulp van de stappen die worden vermeld in [Importmodules.](../shared-resources/modules.md#importing-modules) Werk uw modules bij naar de nieuwste versie door de instructies te volgen bij [Azure-modules bijwerken in Azure Automation.](..//automation-update-azure-modules.md) Zie Modules oplossen [voor](shared-resources.md#modules)meer informatie over probleemoplossing .
 
 4. **Doen als uw runbook is opgeschort of onverwacht mislukt.**
 
@@ -284,7 +284,7 @@ Deze fout treedt op als gevolg van een van de volgende problemen:
 
 ### <a name="resolution"></a>Oplossing
 
-* Geheugenlimiet, netwerksockets. Voorgestelde manieren om binnen de geheugenlimieten te werken, zijn om de werkbelasting te splitsen in meerdere runbooks, minder gegevens in het geheugen te verwerken, onnodige uitvoer uit uw runbooks te vermijden en na te gaan hoeveel controlepunten zijn geschreven in uw PowerShell-werkstroom runbooks. Gebruik de duidelijke methode, zoals `$myVar.clear`, om `[GC]::Collect` variabelen op te ruimen en te gebruiken om garbage collection onmiddellijk uit te voeren. Deze acties verminderen de geheugenvoetafdruk van uw runbook tijdens runtime.
+* Geheugenlimiet, netwerksockets. Voorgestelde manieren om binnen de geheugenlimieten te werken, zijn om de werkbelasting te splitsen in meerdere runbooks, minder gegevens in het geheugen te verwerken, onnodige uitvoer uit uw runbooks te voorkomen en na te gaan hoeveel controlepunten zijn geschreven in uw PowerShell-werkstroomrunboeken. Gebruik de duidelijke methode, zoals `$myVar.clear`, om `[GC]::Collect` variabelen op te ruimen en te gebruiken om garbage collection onmiddellijk uit te voeren. Deze acties verminderen de geheugenvoetafdruk van uw runbook tijdens runtime.
 
 * Module onverenigbaar. Werk uw Azure-modules bij door de stappen te volgen in [Azure PowerShell-modules bijwerken in Azure Automation.](../automation-update-azure-modules.md)
 

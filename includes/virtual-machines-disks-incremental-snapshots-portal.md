@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8f2e2081ee31e2ce7b21677bd261ed7eda705334
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de0cf260207747f4acb02a377819a13de8b8ba22
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79485981"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80628425"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -26,9 +26,8 @@ ms.locfileid: "79485981"
 
 ## <a name="portal"></a>Portal
 
-Als u incrementele momentopnamen wilt maken en configureren in [https://aka.ms/incrementalsnapshots](https://aka.ms/incrementalsnapshots)de wereldwijde Azure-portal, moet u de volgende koppeling gebruiken: . Incrementele momentopnamecreatie is nog niet beschikbaar in de wereldwijde Azure-portal.
 
-1. Meld u aan bij de [Azure-portal](https://aka.ms/incrementalsnapshots) met de meegeleverde koppeling en navigeer naar de schijf die u wilt momentopnamemaken.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) en navigeer naar de schijf die u wilt momentopnamemaken.
 1. Selecteer op uw schijf **Een momentopname maken**
 
     :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-snapshot-button-incremental.png" alt-text="Screenshot. Het blad van uw schijf, met **+Momentopname maken** gemarkeerd, want dat is wat u moet selecteren.":::

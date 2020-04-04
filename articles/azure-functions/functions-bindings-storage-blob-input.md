@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: e074d7d74c0c5f020cb8086124634b25012927db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33db9a8d86e02db2076cdb85170d466697930b96
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77202149"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633888"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Blob-opslaginvoerbinding voor Azure-functies
 
@@ -20,7 +20,7 @@ Zie het [overzicht](./functions-bindings-storage-blob.md)voor informatie over de
 
 ## <a name="example"></a>Voorbeeld
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Het volgende voorbeeld is een [C#-functie](functions-dotnet-class-library.md) die een wachtrijtrigger en een invoerblobbinding gebruikt. Het wachtrijbericht bevat de naam van de blob en de functie registreert de grootte van de blob.
 
@@ -154,6 +154,7 @@ In het *bestand function.json* wordt de `queueTrigger` eigenschap metagegevens `
     {
       "name": "inputblob",
       "type": "blob",
+      "dataType": "binary",
       "path": "samples-workitems/{queueTrigger}",
       "connection": "MyStorageConnectionAppSetting",
       "direction": "in"
@@ -245,7 +246,7 @@ Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/f
 
 ## <a name="attributes-and-annotations"></a>Kenmerken en annotaties
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Gebruik in [klassebibliotheken van C#](functions-dotnet-class-library.md)de [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs).
 
@@ -313,7 +314,7 @@ In de volgende tabel worden de bindende configuratie-eigenschappen uitgelegd `Bl
 
 ## <a name="usage"></a>Gebruik
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 

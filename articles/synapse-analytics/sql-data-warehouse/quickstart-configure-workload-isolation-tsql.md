@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c4920b2a5b4ff0b1a94fa8fa0e83f72761802b97
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d3d1b9af0b26fa775beb78b313937890cb9287b3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583801"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633763"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Snelstart: workloadisolatie configureren met T-SQL
 
@@ -25,13 +25,11 @@ In deze snelle start maakt u snel een werkbelastinggroep en classificatie voor h
 Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
 
 > [!NOTE]
-> Het maken van een Synapse SQL-pool in Azure Synapse Analytics kan resulteren in een nieuwe factureerbare service.  Zie [Azure Synapse Analytics-prijzen voor](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)meer informatie.
->
->
+> Als u een SQL Analytics-exemplaar maakt in Azure Synapse Analytics, kan dit resulteren in een nieuwe factureerbare service.  Zie [Azure Synapse Analytics-prijzen voor](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
- 
-Deze quickstart gaat ervan uit dat u al een Synapse SQL-pool in Azure Synapse hebt en dat u controldatabasemachtigingen hebt. Gebruik [Maken en verbinden - portal](create-data-warehouse-portal.md) om een datawarehouse met de naam **mySampleDataWarehouse** te maken.
+
+Met deze quickstart wordt ervan uitgegaan dat u al een SQL Analytics-exemplaar in Azure Synapse hebt en dat u controldatabasemachtigingen hebt. Gebruik [Maken en verbinden - portal](create-data-warehouse-portal.md) om een datawarehouse met de naam **mySampleDataWarehouse** te maken.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -62,12 +60,14 @@ END
 ```
 
 ## <a name="create-a-workload-group"></a>Een werkbelastinggroep maken
+
 Maak een [workloadgroep](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor DataLoads met een isolatie van 20%.
+
 ```sql
 CREATE WORKLOAD GROUP DataLoads
-WITH ( MIN_PERCENTAGE_RESOURCE = 20   
+WITH ( MIN_PERCENTAGE_RESOURCE = 20
       ,CAP_PERCENTAGE_RESOURCE = 100
-      ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 5) 
+      ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 5)
 ;
 ```
 
@@ -86,15 +86,15 @@ WITH (WORKLOAD_GROUP = 'DataLoads'
 
 ```sql
 --Workload groups
-SELECT * FROM 
+SELECT * FROM
 sys.workload_management_workload_groups
 
 --Workload classifiers
-SELECT * FROM 
+SELECT * FROM
 sys.workload_management_workload_classifiers
 
 --Run-time values
-SELECT * FROM 
+SELECT * FROM
 sys.dm_workload_management_workload_groups_stats
 ```
 

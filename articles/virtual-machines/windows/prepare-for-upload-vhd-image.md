@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 719a1985aeb0db7b0cf7f55a10762bf3ebb3e045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8118ecde698b54213547e717d25613c0c3e0d3fd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250190"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631559"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Een Windows VHD of VHDX voorbereiden om te uploaden naar Azure
 
-Voordat u een Virtuele Windows-machine (VM) uploadt van on-premises naar Azure, moet u de virtuele harde schijf (VHD of VHDX) voorbereiden. Azure ondersteunt zowel generatie 1- als generatie2 VM's die zich in VHD-bestandsindeling bevinden en die een schijf met een vaste grootte hebben. De maximaal toegestane grootte voor de VHD is 1.023 GB. 
+Voordat u een Virtuele Windows-machine (VM) uploadt van on-premises naar Azure, moet u de virtuele harde schijf (VHD of VHDX) voorbereiden. Azure ondersteunt zowel generatie 1- als generatie2 VM's die zich in VHD-bestandsindeling bevinden en die een schijf met een vaste grootte hebben. De maximale grootte voor de VHD is 2 TB.
 
 In een generatie 1 VM u een VHDX-bestandssysteem converteren naar VHD. U ook een dynamisch uitbreidende schijf converteren naar een schijf met een vaste grootte. Maar je de generatie van een VM niet veranderen. Zie [Moet ik een generatie 1 of 2 VM maken in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) en [Azure-ondersteuning voor generatie 2 VM's (preview).](generation-2.md)
 

@@ -1,22 +1,22 @@
 ---
 title: 'Snelstart: uw eerste functie in Azure maken met Visual Studio'
-description: In deze quickstart leert u hoe u een door HTTP geactiveerde Azure-functie maakt en publiceert met Behulp van Visual Studio.
+description: In deze quickstart leert u hoe u een HTTP-trigger Azure-functie maakt en publiceert met Behulp van Visual Studio.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 13a03ca6820229fc90467236e0c23f236664d73f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dadb705e8b756418be40d738aa81b3e77961aead
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80056564"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657529"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Snelstart: uw eerste functie in Azure maken met Visual Studio
 
 Met Azure Functions u uw code uitvoeren in een serverloze omgeving zonder eerst een VM te hoeven maken of een webtoepassing te publiceren.
 
-In deze quickstart leert u hoe u Visual Studio 2019 gebruiken om lokaal een HTTP-geactiveerde C#-functie-app met 'hallo wereld' te maken en te testen, die u vervolgens publiceert naar Azure. 
+In deze quickstart leert u hoe u Visual Studio 2019 gebruiken om lokaal een HTTP-trigger C#-functie-app 'hallo wereld' te maken en te testen, die u vervolgens publiceert naar Azure. 
 
 ![De reactie van de lokale host van de functie in de browser](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
@@ -38,7 +38,7 @@ Visual Studio maakt een project en klasse die ketelplaatcode bevat voor het http
 
 Breid de mogelijkheden van uw functie uit met invoer- en uitvoerbindingen door de juiste kenmerken op de methode toe te passen. Zie de sectie [Triggers en bindingen](functions-dotnet-class-library.md#triggers-and-bindings) van de [Azure Functions C#-referentie voor ontwikkelaars](functions-dotnet-class-library.md) voor meer informatie.
 
-Nu u uw functieproject en een HTTP-geactiveerde functie hebt gemaakt, kunt u deze testen op uw lokale computer.
+Nu u uw functieproject en een HTTP-triggerfunctie hebt gemaakt, u het testen op uw lokale computer.
 
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
 
@@ -58,7 +58,7 @@ Voordat u uw project publiceren, moet u een functie-app in uw Azure-abonnement h
 
 1. Kopieer de basis-URL van de functie-app vanaf de pagina **Profiel publiceren.** Vervang `localhost:port` het gedeelte van de URL dat u hebt gebruikt om de functie lokaal te testen door de nieuwe basis-URL. Sluit de querytekenreeks `?name=<YOUR_NAME>` toe aan deze URL en voer het verzoek uit.
 
-    De URL die uw HTTP-geactiveerde functie aanroept, is in de volgende indeling:
+    De URL die uw HTTP-triggerfunctie aanroept, bevindt zich in de volgende indeling:
 
     `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
 
@@ -72,7 +72,7 @@ Voordat u uw project publiceren, moet u een functie-app in uw Azure-abonnement h
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u Visual Studio gebruikt om een C#-functie-app in Azure te maken en te publiceren met een eenvoudige HTTP-geactiveerde functie. 
+In deze quickstart hebt u Visual Studio gebruikt om een C#-functie-app in Azure te maken en te publiceren met een eenvoudige HTTP-triggerfunctie. 
 
 Ga naar het volgende artikel voor meer informatie over het toevoegen van een Azure Storage-wachtrijbinding aan uw functie:
 > [!div class="nextstepaction"]

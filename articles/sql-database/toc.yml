@@ -780,6 +780,8 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: Toepassingen koppelen
           href: sql-database-managed-instance-connect-app.md
+        - name: Waarschuwingen maken
+          href: sql-database-managed-instance-alerts.md
     - name: Voorbeelden
       items:
         - name: Azure CLI

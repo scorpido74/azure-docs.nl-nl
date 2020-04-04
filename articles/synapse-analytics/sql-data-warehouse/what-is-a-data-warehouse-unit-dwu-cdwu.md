@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ace4bc2e46d9e1926da18dedb163657d4f343979
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 01a05755fc18a85a95e9c1bec1c470d37af656d1
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586317"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632237"
 ---
 # <a name="data-warehouse-units-dwus"></a>Gegevensmagazijneenheden (DOM)
 
@@ -24,14 +24,18 @@ Aanbevelingen voor het kiezen van het ideale aantal datawarehouse-eenheden (DDC'
 
 ## <a name="what-are-data-warehouse-units"></a>Wat zijn datawarehouse-eenheden
 
-Een [Synapse SQL-pool](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) vertegenwoordigt een verzameling analytische resources die worden ingericht. Analytische bronnen worden gedefinieerd als een combinatie van CPU, geheugen en IO. Deze drie resources worden gebundeld in eenheden van compute scale genaamd Data Warehouse Units (DWUs). Met een DWU wordt een abstracte, genormaliseerde meting van rekenresources en prestaties aangeduid. Een wijziging in uw serviceniveau wijzigt het aantal DBO's dat beschikbaar is voor het systeem, dat op zijn beurt de prestaties en kosten van uw systeem aanpast.
+Een [Synapse SQL-pool](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) vertegenwoordigt een verzameling analytische resources die worden ingericht. Analytische bronnen worden gedefinieerd als een combinatie van CPU, geheugen en IO. 
+
+Deze drie resources worden gebundeld in eenheden van compute scale genaamd Data Warehouse Units (DWUs). Met een DWU wordt een abstracte, genormaliseerde meting van rekenresources en prestaties aangeduid. 
+
+Een wijziging in uw serviceniveau wijzigt het aantal DBO's dat beschikbaar is voor het systeem, dat op zijn beurt de prestaties en kosten van uw systeem aanpast.
 
 Voor hogere prestaties u het aantal gegevensmagazijneenheden verhogen. Voor minder prestaties u de eenheden van het gegevensmagazijn verlagen. Opslagkosten en rekenkosten worden afzonderlijk gefactureerd, waardoor het wijzigen van het aantal DWU's niet van invloed is op de opslagkosten.
 
 De prestaties voor gegevensmagazijnen zijn gebaseerd op deze werkbelastingsstatistieken:
 
-- Hoe snel een standaard query voor gegevensopslag een groot aantal rijen kan scannen en vervolgens een complexe aggregatie kan uitvoeren. Deze bewerking is I/O en CPU intensief.
-- Hoe snel het gegevensmagazijn gegevens kan opnemen uit Azure Storage Blobs of Azure Data Lake. Deze bewerking is netwerk- en CPU-intensief.
+- Hoe snel een standaard SQL-poolquery een groot aantal rijen kan scannen en vervolgens een complexe aggregatie kan uitvoeren. Deze bewerking is I/O en CPU intensief.
+- Hoe snel de SQL-groep gegevens kan opnemen uit Azure Storage Blobs of Azure Data Lake. Deze bewerking is netwerk- en CPU-intensief.
 - Hoe snel [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) de opdracht T-SQL een tabel kan kopiëren. Deze bewerking omvat het lezen van gegevens uit de opslag, het distribueren over de knooppunten van het toestel en het opnieuw schrijven naar opslag. Deze bewerking is CPU, IO en netwerkintensief.
 
 Toenemende dOM:
@@ -42,7 +46,7 @@ Toenemende dOM:
 
 ## <a name="service-level-objective"></a>Service Level Objective
 
-De Service Level Objective (SLO) is de schaalbaarheidsinstelling die het kosten- en prestatieniveau van uw datawarehouse bepaalt. De serviceniveaus voor Gen2 SQL-pool worden gemeten in data warehouse units (DWU), bijvoorbeeld DW2000c.
+De Service Level Objective (SLO) is de schaalbaarheidsinstelling die het kosten- en prestatieniveau van uw SQL-groep bepaalt. De serviceniveaus voor Gen2 SQL-pool worden gemeten in data warehouse units (DWU), bijvoorbeeld DW2000c.
 
 In T-SQL bepaalt de SERVICE_OBJECTIVE instelling het serviceniveau voor uw SQL-groep.
 
@@ -56,7 +60,7 @@ CREATE DATABASE mySQLDW
 
 ## <a name="capacity-limits"></a>Capaciteitslimieten
 
-Elke SQL-server (myserver.database.windows.net) heeft bijvoorbeeld een [DTU-quotum (Database Transaction Unit)](../../sql-database/sql-database-service-tiers-dtu.md) waarmee een specifiek aantal gegevensmagazijneenheden mogelijk is. Zie voor meer informatie de [capaciteitslimieten voor werkbelastingbeheer](sql-data-warehouse-service-capacity-limits.md#workload-management).
+Elke SQL-server (myserver.database.windows.net) heeft bijvoorbeeld een [DTU-quotum (Database Transaction Unit)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) waarmee een specifiek aantal gegevensmagazijneenheden mogelijk is. Zie voor meer informatie de [capaciteitslimieten voor werkbelastingbeheer](sql-data-warehouse-service-capacity-limits.md#workload-management).
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>Hoeveel datawarehouse-eenheden heb ik nodig
 
@@ -68,7 +72,9 @@ Stappen voor het vinden van de beste DWU voor uw werkbelasting:
 2. Controleer de prestaties van uw toepassing terwijl u gegevensbelastingen in het systeem test, waarbij het aantal selecteerde DFC's wordt waargenomen in vergelijking met de prestaties die u waarneemt.
 3. Eventuele aanvullende vereisten voor periodieke perioden van piekactiviteit identificeren. Workloads die aanzienlijke pieken en dalen in activiteit vertonen, moeten mogelijk regelmatig worden geschaald.
 
-SQL Analytics is een scale-outsysteem dat enorme hoeveelheden reken- en querygrote hoeveelheden gegevens kan inrichten. Als u de werkelijke mogelijkheden voor schalen wilt zien, met name bij grotere DKU's, raden we u aan de gegevensset te schalen terwijl u schaalt om ervoor te zorgen dat u voldoende gegevens hebt om de CPU's te voeden. Voor schaaltesten raden we aan om ten minste 1 TB te gebruiken.
+SQL-pool is een scale-outsysteem dat enorme hoeveelheden reken- en querygrote hoeveelheden gegevens kan inrichten. 
+
+Als u de werkelijke mogelijkheden voor schalen wilt zien, met name bij grotere DKU's, raden we u aan de gegevensset te schalen terwijl u schaalt om ervoor te zorgen dat u voldoende gegevens hebt om de CPU's te voeden. Voor schaaltesten raden we aan om ten minste 1 TB te gebruiken.
 
 > [!NOTE]
 >
@@ -172,7 +178,7 @@ Ga als het gaat om de status van DWU-wijzigingen:
     FROM      sys.databases
     ;
     ```
-    
+
 1. De volgende query indienen om de status van de bewerking te controleren
 
     ```sql
@@ -182,7 +188,7 @@ Ga als het gaat om de status van DWU-wijzigingen:
     AND       major_resource_id = 'MySQLDW'
     ;
     ```
-    
+
 Deze DMV retourneert informatie over verschillende beheerbewerkingen op uw SQL-groep, zoals de bewerking en de status van de bewerking, die IN_PROGRESS of VOLTOOID is.
 
 ## <a name="the-scaling-workflow"></a>De schalingswerkstroom

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3bd166572cea23fbb710cd053c28f51e76ba534a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42596ba5470c6062efba4fd1050c1c9745b76e80
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476668"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637335"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C-gebruikersaccounts beheren met Microsoft Graph
 
@@ -151,7 +151,7 @@ De toepassing geeft een lijst weer met opdrachten die u uitvoeren. Download bijv
 
 ### <a name="code-discussion"></a>Codediscussie
 
-De voorbeeldcode maakt gebruik van de [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview), die is ontworpen om het bouwen van hoogwaardige, efficiënte en veerkrachtige toepassingen die toegang hebben tot Microsoft Graph te vereenvoudigen. U hoeft dus niet alle Microsoft Graph API direct te maken.
+De voorbeeldcode maakt gebruik van de [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview), die is ontworpen om het bouwen van hoogwaardige, efficiënte en veerkrachtige toepassingen die toegang hebben tot Microsoft Graph te vereenvoudigen.
 
 Voor elk verzoek tot de Microsoft Graph API is een toegangstoken voor verificatie vereist. De oplossing maakt gebruik van het [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet-pakket dat een op verificatiescenario gebaseerde wrapper van de Microsoft Authentication Library (MSAL) biedt voor gebruik met de Microsoft Graph SDK.
 

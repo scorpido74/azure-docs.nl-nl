@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c7ec8db212a24f1f23f393e4cb0e7f4150605a56
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e3038617c6270acf9af295c910e9fd5c7dae2043
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350799"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633785"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Snelstart: Schaalcompute voor Synapse SQL-pool met Azure PowerShell
 
-U compute schalen voor Synapse SQL-pool (datawarehouse) met Azure PowerShell. [Vergroot de schaal van Compute](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties of verklein de schaal juist om kosten te besparen. 
+U compute schalen voor Synapse SQL-pool (datawarehouse) met Azure PowerShell. [Vergroot de schaal van Compute](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties of verklein de schaal juist om kosten te besparen.
 
 Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
 
@@ -32,19 +32,19 @@ Deze quickstart gaat ervan uit dat u al een SQL-pool hebt die u schalen. Als u e
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
-Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) en volg de aanwijzingen op het scherm.
+Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en volg de aanwijzingen op het scherm.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Voer [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)uit om te zien welk abonnement u gebruikt.
+Voer [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)uit om te zien welk abonnement u gebruikt.
 
 ```powershell
 Get-AzSubscription
 ```
 
-Als u een ander abonnement moet gebruiken dan de standaardinstelling, voert u [Set-AzContext](/powershell/module/az.accounts/set-azcontext)uit.
+Als u een ander abonnement moet gebruiken dan de standaardinstelling, voert u [Set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)uit.
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -69,7 +69,7 @@ Volg deze stappen om de locatiegegevens voor uw datawarehouse op te zoeken.
 
 In SQL-groep u de rekenresources vergroten of verkleinen door gegevensmagazijnen aan te passen. Met behulp van [Maken en verbinden - portal](create-data-warehouse-portal.md) is **mySampleDataWarehouse** gemaakt en vervolgens gestart met 400 DWU's. In de volgende stappen wordt het aantal DWU's voor **mySampleDataWarehouse** aangepast.
 
-Als u gegevensmagazijnen wilt wijzigen, gebruikt u de cmdlet [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell. In het volgende voorbeeld worden de gegevensmagazijnen ingesteld op DW300c voor de database **mySampleDataWarehouse**, die wordt gehost in de **resourcegroepnaam resourcegroep** resource op **serversqlpoolservernaam.**
+Als u gegevensmagazijnen wilt wijzigen, gebruikt u de cmdlet [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell. In het volgende voorbeeld worden de gegevensmagazijnen ingesteld op DW300c voor de database **mySampleDataWarehouse**, die wordt gehost in de **resourcegroepnaam resourcegroep** resource op **serversqlpoolservernaam.**
 
 ```Powershell
 Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySampleDataWarehouse" -ServerName "sqlpoolservername" -RequestedServiceObjectiveName "DW300c"
@@ -77,7 +77,7 @@ Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySample
 
 ## <a name="check-data-warehouse-state"></a>Status van datawarehouse controleren
 
-Als u de huidige status van het gegevensmagazijn wilt bekijken, gebruikt u de [cmdlet Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) PowerShell. Deze cmdlet toont de status van de **mySampleDataWarehouse-database** in **resourcegroup-resourcegroepnaam** en **serversqlpoolservername.database.windows.net**.
+Als u de huidige status van het gegevensmagazijn wilt bekijken, gebruikt u de [cmdlet Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell. Deze cmdlet toont de status van de **mySampleDataWarehouse-database** in **resourcegroup-resourcegroepnaam** en **serversqlpoolservername.database.windows.net**.
 
 ```powershell
 $database = Get-AzSqlDatabase -ResourceGroupName resourcegroupname -ServerName sqlpoolservername -DatabaseName mySampleDataWarehouse
@@ -120,6 +120,7 @@ $database | Select-Object DatabaseName,Status
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
+
 U hebt nu geleerd hoe u compute schalen voor SQL-pool. Ga voor meer informatie over SQL-pool verder naar de zelfstudie voor het laden van gegevens.
 
 > [!div class="nextstepaction"]

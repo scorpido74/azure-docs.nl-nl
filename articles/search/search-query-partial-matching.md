@@ -1,38 +1,71 @@
 ---
-title: Patronen en speciale tekens matchen
+title: Gedeeltelijke termen, patronen en speciale tekens
 titleSuffix: Azure Cognitive Search
-description: Gebruik wildcard- en voorvoegquery's die overeenkomen met algemene of gedeeltelijke termen in een Azure Cognitive Search-queryaanvraag. Moeilijk te matchen patronen met speciale tekens kunnen worden opgelost met behulp van volledige querysyntaxis en aangepaste analysers.
+description: Gebruik wildcard-, regex- en voorvoegquery's die overeenkomen met algemene of gedeeltelijke termen in een Azure Cognitive Search-queryaanvraag. Moeilijk te matchen patronen met speciale tekens kunnen worden opgelost met behulp van volledige querysyntaxis en aangepaste analysers.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/14/2020
-ms.openlocfilehash: f78ba5b351a3da46d7b8b3780cf00772c4f3b2ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 3e0e0291ff855b4502224466e17696a4fe668c2a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289308"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655989"
 ---
-# <a name="match-on-patterns-and-special-characters-dashes"></a>Overeenkomen met patronen en speciale tekens (streepjes)
+# <a name="partial-term-search-in-azure-cognitive-search-queries-wildcard-regex-fuzzy-search-patterns"></a>Zoeken naar gedeeltelijke termen in Azure Cognitive Search-query's (wildcard, regex, fuzzy search, patronen)
 
-Voor query's die`-, *, (, ), /, \, =`speciale tekens bevatten ( ) of voor querypatronen op basis van gedeeltelijke termen binnen een grotere term, zijn doorgaans aanvullende configuratiestappen nodig om ervoor te zorgen dat de index de verwachte inhoud in de juiste indeling bevat. 
+Een *gedeeltelijke term zoekopdracht* verwijst naar query's die bestaan uit termfragmenten, zoals de eerste, laatste of binnendelen van een tekenreeks, of een patroon bestaande uit een combinatie van fragmenten, vaak gescheiden door speciale tekens zoals streepjes of schuine strepen. Veelgebruikte use-cases omvatten query's voor delen van een telefoonnummer, URL, personen of productcodes of samengestelde woorden.
 
-Standaard wordt een telefoonnummer `+1 (425) 703-6214` als tokengemaakt `"425"` `"703"`als `"6214"` `"1"`, , , . Zoals u zich kunt `"3-62"`voorstellen, zal zoeken op , gedeeltelijke termen die een streepje bevatten, mislukken omdat die inhoud niet echt bestaat in de index. 
+Gedeeltelijke zoekopdracht kan problematisch zijn omdat de index zelf termen meestal niet opslaat op een manier die bevorderlijk is voor gedeeltelijke tekenreeks- en patroonmatching. Tijdens de tekstanalysefase van indexering worden speciale tekens verwijderd, samengestelde tekenreeksen en samengestelde tekenreeksen opgesplitst, waardoor patroonquery's mislukken wanneer er geen overeenkomst wordt gevonden. Een telefoonnummer zoals `+1 (425) 703-6214`(tokenized als `"1"` `"425"`, `"703"` `"6214"`, , ) wordt `"3-62"` bijvoorbeeld niet weergegeven in een query omdat die inhoud niet echt in de index bestaat. 
 
-Wanneer u op gedeeltelijke tekenreeksen of speciale tekens moet zoeken, u de standaardanalyzer overschrijven met een aangepaste analyzer die werkt onder eenvoudigere tokenisatieregels, waarbij hele termen worden behouden, die nodig zijn wanneer querytekenreeksen delen van een term of speciale Tekens. Een stap terug, de aanpak ziet er als volgt uit:
+De oplossing is om intacte versies van deze tekenreeksen op te slaan in de index, zodat u gedeeltelijke zoekscenario's ondersteunen. Het maken van een extra veld voor een intacte tekenreeks, plus het gebruik van een content-preserving analyzer, is de basis van de oplossing.
 
-+ Kies een vooraf gedefinieerde analyzer of definieer een aangepaste analyzer die de gewenste uitvoer produceert
+## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Wat is gedeeltelijke zoekopdracht in Azure Cognitive Search
+
+In Azure Cognitive Search is gedeeltelijk zoeken beschikbaar in de volgende formulieren:
+
++ [Prefix zoeken,](query-simple-syntax.md#prefix-search) `search=cap*`zoals , matching op "Cap'n Jack's Waterfront Inn" of "Gacc Capital". U de syntaxis van de query gebruiken voor zoeken naar voorvoegsel.
++ [Zoeken met jokertekens](query-lucene-syntax.md#bkmk_wildcard) of [reguliere expressies](query-lucene-syntax.md#bkmk_regex) die zoeken naar een patroon of delen van een ingesloten tekenreeks, inclusief het achtervoegsel. Bijvoorbeeld, gezien de term "alfanumerieke", zou u`search=/.*numeric.*/`gebruik maken van een wildcard zoeken ( ) voor een achtervoegsel query overeenkomen met die term. Wildcard en reguliere expressies vereisen de volledige Lucene-syntaxis.
+
+Wanneer een van de bovenstaande querytypen nodig is in uw clienttoepassing, voert u de stappen in dit artikel uit om ervoor te zorgen dat de benodigde inhoud in uw index aanwezig is.
+
+## <a name="solving-partial-search-problems"></a>Problemen met gedeeltelijke zoekopdrachtoplossen
+
+Wanneer u op patronen of speciale tekens moet zoeken, u de standaardanalyzer overschrijven met een aangepaste analyzer die werkt onder eenvoudigere tokenisatieregels, waarbij de hele tekenreeks behouden blijft. Een stap terug, de aanpak ziet er als volgt uit:
+
++ Een veld definiëren om een intacte versie van de tekenreeks op te slaan (ervan uitgaande dat u geanalyseerde en niet-geanalyseerde tekst wilt)
++ Kies een vooraf gedefinieerde analyzer of definieer een aangepaste analyzer om een intacte tekenreeks uit te geven
 + De analyzer toewijzen aan het veld
-+ De index en test samenstellen
-
-In dit artikel u deze taken uitvoeren. De hier beschreven aanpak is nuttig in andere scenario's: wildcard- en reguliere expressiequery's hebben ook hele termen nodig als basis voor patroonmatching. 
++ De index bouwen en testen
 
 > [!TIP]
-> Het evalueren van analyers is een iteratief proces dat frequente indexreconstructies vereist. U deze stap eenvoudiger maken door Postman, de REST API's voor [Index maken,](https://docs.microsoft.com/rest/api/searchservice/create-index) [Index maken,](https://docs.microsoft.com/rest/api/searchservice/delete-index)[Documenten laden](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)en [Documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents). Voor Het laden van documenten moet de aanvraaginstantie een kleine representatieve gegevensset bevatten die u wilt testen (bijvoorbeeld een veld met telefoonnummers of productcodes). Met deze API's in dezelfde Postman-collectie u deze stappen snel doorlopen.
+> Het evalueren van analysers is een iteratief proces waarvoor frequente indexreconstructies nodig zijn. U deze stap eenvoudiger maken door Postman, de REST API's voor [Index maken,](https://docs.microsoft.com/rest/api/searchservice/create-index) [Index maken,](https://docs.microsoft.com/rest/api/searchservice/delete-index)[Documenten laden](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)en [Documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents). Voor Het laden van documenten moet de aanvraaginstantie een kleine representatieve gegevensset bevatten die u wilt testen (bijvoorbeeld een veld met telefoonnummers of productcodes). Met deze API's in dezelfde Postman-collectie u deze stappen snel doorlopen.
 
-## <a name="choosing-an-analyzer"></a>Een analyzer kiezen
+## <a name="duplicate-fields-for-different-scenarios"></a>Velden dupliceren voor verschillende scenario's
+
+Analysers worden per veld toegewezen, wat betekent dat u velden in uw index maken om te optimaliseren voor verschillende scenario's. In het bijzonder u featureCode en featureCodeRegex definiëren om regelmatig zoeken in volledige tekst op de eerste en geavanceerde patroonmatching op de tweede te ondersteunen.
+
+```json
+{
+  "name": "featureCode",
+  "type": "Edm.String",
+  "retrievable": true,
+  "searchable": true,
+  "analyzer": null
+},
+{
+  "name": "featureCodeRegex",
+  "type": "Edm.String",
+  "retrievable": true,
+  "searchable": true,
+  "analyzer": "my_customanalyzer"
+},
+```
+
+## <a name="choose-an-analyzer"></a>Kies een analyzer
 
 Bij het kiezen van een analyzer die langetermijntokens produceert, zijn de volgende analysers veelvoorkomende keuzes:
 
@@ -42,7 +75,9 @@ Bij het kiezen van een analyzer die langetermijntokens produceert, zijn de volge
 | [Whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Scheidt alleen op witte ruimten. Termen met streepjes of andere tekens worden behandeld als één token. |
 | [aangepaste analyzer](index-add-custom-analyzers.md) | (aanbevolen) Met het maken van een aangepaste analyzer u zowel de tokenizer als het tokenfilter opgeven. De vorige analysesystemen moeten worden gebruikt zoals het is. Met een aangepaste analyzer u kiezen welke tokenizers en tokenfilters u wilt gebruiken. <br><br>Een aanbevolen combinatie is de [keyword tokenizer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) met een [kleintokenfilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Op zichzelf heeft de vooraf gedefinieerde [trefwoordanalyzer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) geen hoofdletters, waardoor query's kunnen mislukken. Een aangepaste analyzer geeft u een mechanisme voor het toevoegen van het kleine tokenfilter. |
 
-Als u een web-API-testtool zoals Postman gebruikt, u de [TEST Analyzer REST-aanroep](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) toevoegen om tokenized output te inspecteren. Gezien een bestaande index en een veld met streepjes of gedeeltelijke termen, u verschillende analysers proberen over specifieke termen om te zien welke tokens worden uitgestoten.  
+Als u een web-API-testtool zoals Postman gebruikt, u de [TEST Analyzer REST-aanroep](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) toevoegen om tokenized output te inspecteren.
+
+U moet een bestaande index hebben om mee te werken. Gezien een bestaande index en een veld met streepjes of gedeeltelijke termen, u verschillende analysers proberen over specifieke termen om te zien welke tokens worden uitgestoten.  
 
 1. Controleer de standaardanalyzer om te zien hoe termen standaard worden tokenized.
 
@@ -105,15 +140,15 @@ Als u een web-API-testtool zoals Postman gebruikt, u de [TEST Analyzer REST-aanr
     }
     ```
 > [!Important]
-> Houd er rekening mee dat queryparsers vaak lagere termen in een zoekexpressie gebruiken bij het bouwen van de querystructuur. Als u een analyzer gebruikt die geen tekstingangen in kleine letters gebruikt en u geen verwachte resultaten krijgt, kan dit de reden zijn. De oplossing is om een lwower-case token filter toe te voegen.
+> Houd er rekening mee dat queryparsers vaak lagere termen in een zoekexpressie gebruiken bij het bouwen van de querystructuur. Als u een analyzer gebruikt die geen tekstingangen in kleine letters gebruikt en u geen verwachte resultaten krijgt, kan dit de reden zijn. De oplossing is om een kleintokenfilter toe te voegen, zoals beschreven in de sectie 'Aangepaste analysers gebruiken' hieronder.
 
-## <a name="analyzer-definitions"></a>Analyseerdefinities
+## <a name="configure-an-analyzer"></a>Een analyzer configureren
  
 Of u nu analysers evalueert of verder gaat met een specifieke configuratie, u moet de analyzer op de velddefinitie opgeven en eventueel de analyzer zelf configureren als u geen ingebouwde analyzer gebruikt. Wanneer u analysers verwisselt, moet u de index meestal opnieuw opbouwen (neerzetten, opnieuw maken en opnieuw laden). 
 
 ### <a name="use-built-in-analyzers"></a>Ingebouwde analysers gebruiken
 
-Ingebouwde of vooraf gedefinieerde analysatoren kunnen op `analyzer` naam worden opgegeven op een eigenschap van een velddefinitie, zonder dat er extra configuratie in de index vereist is. In het volgende voorbeeld wordt `whitespace` uitgelegd hoe u de analyzer op een veld zou instellen.
+Ingebouwde of vooraf gedefinieerde analysatoren kunnen op `analyzer` naam worden opgegeven op een eigenschap van een velddefinitie, zonder dat er extra configuratie in de index vereist is. In het volgende voorbeeld wordt `whitespace` uitgelegd hoe u de analyzer op een veld zou instellen. Zie Lijst met vooraf gedefinieerde analysers voor meer informatie over beschikbare ingebouwde [analysers.](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference) 
 
 ```json
     {
@@ -125,7 +160,6 @@ Ingebouwde of vooraf gedefinieerde analysatoren kunnen op `analyzer` naam worden
       "analyzer": "whitespace"
     }
 ```
-Zie Lijst met [vooraf gedefinieerde analysers voor](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)meer informatie over alle beschikbare ingebouwde analysers. 
 
 ### <a name="use-custom-analyzers"></a>Aangepaste analysers gebruiken
 
@@ -134,7 +168,7 @@ Als u een [aangepaste analyzer](index-add-custom-analyzers.md)gebruikt, definiee
 Wanneer het doel tokenisatie voor de hele termijn is, wordt een aangepaste analyzer aanbevolen die bestaat uit een **trefwoordtokenizer** en **een kleintokenfilter.**
 
 + De trefwoordtokenizer maakt één token voor de volledige inhoud van een veld.
-+ Het tokenfilter voor kleine letters transformeert hoofdletters in kleine letters. Queryparsers hebben doorgaans kleine hoofdletters voor hoofdletters. Lowercasing homogeniseert de ingangen met de tokenized termen.
++ Het tokenfilter voor kleine letters transformeert hoofdletters in kleine letters. Queryparsers hebben doorgaans kleine hoofdletters voor hoofdletters. De onderste behuizing homogeniseert de ingangen met de tokenized termen.
 
 In het volgende voorbeeld wordt een aangepaste analyzer geïllustreerd die de trefwoordtokenizer en een kleine tokenfilter biedt.
 
@@ -169,6 +203,22 @@ In het volgende voorbeeld wordt een aangepaste analyzer geïllustreerd die de tr
 
 > [!NOTE]
 > De `keyword_v2` tokenizer `lowercase` en token filter zijn bekend bij het systeem en met behulp van hun standaard configuraties, dat is waarom je ze verwijzen op naam zonder ze eerst te definiëren.
+
+## <a name="build-and-test"></a>Bouwen en testen
+
+Zodra u een index hebt gedefinieerd met analysators en velddefinities die uw scenario ondersteunen, laadt u documenten met representatieve tekenreeksen, zodat u gedeeltelijke tekenreeksquery's testen. 
+
+De vorige delen legden de logica uit. In deze sectie wordt elke API doorlopen die u moet aanroepen bij het testen van uw oplossing. Zoals eerder opgemerkt, als u een interactieve webtesttool zoals Postman gebruikt, u deze taken snel doorlopen.
+
++ [Als u Index verwijderen](https://docs.microsoft.com/rest/api/searchservice/delete-index) een bestaande index met dezelfde naam verwijdert, zodat u deze opnieuw maken.
+
++ [Met Index maken,](https://docs.microsoft.com/rest/api/searchservice/create-index) wordt de indexstructuur van uw zoekservice gemaakt, inclusief analysedefinities en -velden met een analyzer-specificatie.
+
++ [Load Documents](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) importeert documenten met dezelfde structuur als uw index en doorzoekbare inhoud. Na deze stap is uw index klaar om te bevragen of te testen.
+
++ [Test Analyzer](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) werd geïntroduceerd in [Kies een analyzer](#choose-an-analyzer). Test enkele tekenreeksen in uw index met behulp van verschillende analysers om te begrijpen hoe termen worden tokenized.
+
++ [In zoekdocumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents) wordt uitgelegd hoe u een queryaanvraag maken, met behulp van [eenvoudige syntaxis](query-simple-syntax.md) of [volledige lucene-syntaxis](query-lucene-syntax.md) voor wildcard en reguliere expressies.
 
 ## <a name="tips-and-best-practices"></a>Tips en best practices
 
@@ -227,27 +277,6 @@ Als u rolspecifieke analyses wilt opgeven, u eigenschappen `indexAnalyzer` `sear
 "name": "featureCode",
 "indexAnalyzer":"my_customanalyzer",
 "searchAnalyzer":"standard",
-```
-
-### <a name="duplicate-fields-for-different-scenarios"></a>Velden dupliceren voor verschillende scenario's
-
-Een andere optie maakt gebruik van de opdracht voor analyseper veld om te optimaliseren voor verschillende scenario's. In het bijzonder u featureCode en featureCodeRegex definiëren om regelmatig zoeken in volledige tekst op de eerste en geavanceerde patroonmatching op de tweede te ondersteunen.
-
-```json
-{
-  "name": "featureCode",
-  "type": "Edm.String",
-  "retrievable": true,
-  "searchable": true,
-  "analyzer": null
-},
-{
-  "name": "featureCodeRegex",
-  "type": "Edm.String",
-  "retrievable": true,
-  "searchable": true,
-  "analyzer": "my_customanalyzer"
-},
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

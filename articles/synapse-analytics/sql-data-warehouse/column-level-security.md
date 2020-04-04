@@ -1,6 +1,6 @@
 ---
 title: Wat is beveiliging op kolomniveau voor Azure Synapse?
-description: Met kolombeveiliging kunnen klanten de toegang tot databasetabelkolommen beheren op basis van de uitvoeringscontext of het groepslidmaatschap van de gebruiker, waardoor het ontwerp en de codering van beveiliging in uw toepassing worden vereenvoudigd en u beperkingen op kolomgegevens implementeren Toegang.
+description: Met beveiliging op kolomniveau kunnen klanten de toegang tot databasetabelkolommen beheren op basis van de uitvoeringscontext of het groepslidmaatschap van de gebruiker, waardoor het ontwerp en de codering van beveiliging in uw toepassing worden vereenvoudigd en u beperkingen op kolomtoegang implementeren.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,24 +12,23 @@ ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 24ead458232b096a5c69ffe8b45c6298a9da9f75
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 61a3e2eadaf79cdb30a931b31cff709298d0a22c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349100"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631300"
 ---
 # <a name="column-level-security"></a>Beveiliging op kolomniveau
 
 Met beveiliging op kolomniveau kunnen klanten de toegang tot tabelkolommen beheren op basis van de uitvoeringscontext of groepslidmaatschap van de gebruiker.
 
-
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Sinds deze video is [geplaatst,](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) is Row level Security beschikbaar voor Azure Synapse. 
+Sinds deze video is [geplaatst,](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) is Row level Security beschikbaar voor Azure Synapse.
 
 Beveiliging op kolomniveau vereenvoudigt het ontwerp en de codering van beveiliging in uw toepassing, zodat u de toegang tot kolommen beperken om gevoelige gegevens te beschermen. Bijvoorbeeld ervoor zorgen dat specifieke gebruikers alleen toegang hebben tot bepaalde kolommen van een tabel die relevant zijn voor hun afdeling. De logica voor toegangsbeperking bevindt zich in de databaselaag in plaats van in plaats van in de buurt van de gegevens in een andere toepassingslaag. De database past de toegangsbeperkingen toe telkens wanneer gegevenstoegang vanaf elke laag wordt geprobeerd. Deze beperking maakt uw beveiliging betrouwbaarder en robuuster door het verkleinen van de oppervlakte van uw algehele beveiligingssysteem. Bovendien elimineert beveiliging op kolomniveau ook de noodzaak voor het introduceren van weergaven om kolommen uit te filteren voor het opleggen van toegangsbeperkingen aan de gebruikers.
 
-U beveiliging op kolomniveau implementeren met de [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL-instructie. Met dit mechanisme worden zowel SQL- als Azure Active Directory -verificatie (AAD) ondersteund.
+U beveiliging op kolomniveau implementeren met de [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-instructie. Met dit mechanisme worden zowel SQL- als Azure Active Directory -verificatie (AAD) ondersteund.
 
 ![Cls](./media/column-level-security/cls.png)
 
@@ -52,6 +51,7 @@ GRANT <permission> [ ,...n ] ON
 ```
 
 ## <a name="example"></a>Voorbeeld
+
 In het volgende voorbeeld `TestUser` ziet u `SSN` hoe `Membership` u de toegang tot de kolom van de tabel beperken:
 
 Tabel `Membership` maken met de Kolom SSN die wordt gebruikt om burgerservicenummers op te slaan:

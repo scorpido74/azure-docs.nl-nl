@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met sqlcmd
-description: Gebruik het opdrachtregelhulpprogramma sqlcmd om verbinding te maken met en een query uit te voeren op een Azure SQL-datawarehouse.
+description: Gebruik sqlcmd command-line utility om verbinding te maken met en query een Synapse SQL pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,31 +11,31 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 118997c39b56254eb47bc24350a0558e0b7620f9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: cfb1b7558f8d7675009a0ebc729cc1a560f03d12
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350508"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633380"
 ---
-# <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Verbinding maken met SQL Data Warehouse met sqlcmd
+# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>Verbinding maken met Synapse SQL-pool met sqlcmd
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
-> * [Ssms](sql-data-warehouse-query-ssms.md)
+> * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
-Gebruik het opdrachtregelhulpprogramma [sqlcmd][sqlcmd] om verbinding te maken met en een query uit te voeren op een Azure SQL-datawarehouse.  
+Gebruik het hulpprogramma [sqlcmd][sqlcmd] command-line om verbinding te maken met een SQL-groep en op te vragen.  
 
 ## <a name="1-connect"></a>1.
-Open de opdrachtprompt om aan de slag te gaan met [sqlcmd][sqlcmd]en voer **sqlcmd** in, gevolgd door de verbindingstekenreeks voor uw SQL Data Warehouse-database. De verbindingstekenreeks moet de volgende parameters bevatten:
+Om aan de slag te gaan met [sqlcmd][sqlcmd], opent u de opdrachtprompt en voert **u sqlcmd** in, gevolgd door de verbindingstekenreeks voor uw SQL-pooldatabase. De verbindingstekenreeks moet de volgende parameters bevatten:
 
 * **Server (-S):** server in de notatie `<`servernaam`>`.database.windows.net
 * **Database (-d):** databasenaam.
-* **Id's tussen aanhalingstekens inschakelen (-I):** id's tussen aanhalingstekens moeten zijn ingeschakeld om verbinding te kunnen maken met een exemplaar van SQL Data Warehouse.
+* **Geciteerde id's inschakelen (-I):** Genoteerde id's moeten zijn ingeschakeld om verbinding te maken met een SQL-poolinstantie.
 
 Als u gebruik wilt maken van SQL Server-verificatie, moet u de gebruikersnaam- en wachtwoordparameters toevoegen:
 
@@ -84,14 +84,4 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [sqlcmd-documentatie][sqlcmd] voor meer informatie over de opties die beschikbaar zijn in sqlcmd.
-
-<!--Image references-->
-
-<!--Article references-->
-
-<!--MSDN references--> 
-[sqlcmd]: https://msdn.microsoft.com/library/ms162773.aspx
-[Azure portal]: https://portal.azure.com
-
-<!--Other Web references-->
+Zie [sqlcmd-documentatie](https://msdn.microsoft.com/library/ms162773.aspx) voor meer informatie over de opties die beschikbaar zijn in sqlcmd.

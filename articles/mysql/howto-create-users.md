@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c4e95164badaf0b255f5ee76d0fec7686c2abf8b
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 4/2/2020
+ms.openlocfilehash: 99b614de87c666d1cb1fb8a34eaafadf6fa82849
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382865"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632550"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>Gebruikers maken in Azure Database voor MySQL-server
 
@@ -19,9 +19,12 @@ In dit artikel wordt beschreven hoe u gebruikers maken in een Azure Database voo
 
 Toen u uw Azure Database voor MySQL voor het eerst hebt gemaakt, hebt u een gebruikersnaam en wachtwoord voor het inloggen van een serverbeheerder opgegeven. Voor meer informatie u de [Quickstart](quickstart-create-mysql-server-database-using-azure-portal.md)volgen. U de gebruikersnaam van uw serverbeheerder inlogfunctie vinden via de Azure-portal.
 
-De serverbeheerder krijgt bepaalde bevoegdheden voor uw server zoals vermeld: SELECT, INSERT, UPDATE, Delete, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, WEERGAVE MAKEN, WEERGAVE WEERGEVEN, ROUTINE MAKEN, ROUTINE WIJZIGEN, GEBRUIKER MAKEN, GEBEURTENIS, TRIGGER
+De serverbeheerder krijgt bepaalde bevoegdheden voor uw server zoals vermeld: SELECT, INSERT, UPDATE, Delete, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, CREATE, EVENT, TRIGGER
 
 Zodra de Azure Database voor MySQL-server is gemaakt, u het eerste gebruikersaccount voor serverbeheerders gebruiken om extra gebruikers te maken en beheerderstoegang te verlenen. Het serverbeheeraccount kan ook worden gebruikt om minder bevoorrechte gebruikers te maken die toegang hebben tot afzonderlijke databaseschema's.
+
+> [!NOTE]
+> De SUPER privilege en DBA rol worden niet ondersteund. Bekijk de [bevoegdheden](concepts-limits.md#privilege-support) in het artikel beperkingen om te begrijpen wat er niet wordt ondersteund in de service.
 
 ## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>Extra beheerdersgebruikers maken in Azure Database voor MySQL
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 6dcbf0ad0f6678d892c5c02446cac09b4325384c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d3525bc7a25550a79ceeb008e3c69c77a56aa0a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283647"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632873"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Azure-gebeurtenishubs gebruiken vanuit Apache Kafka-toepassingen
 Event Hubs biedt een Kafka-eindpunt dat door uw bestaande Kafka-gebaseerde toepassingen kan worden gebruikt als alternatief voor het uitvoeren van uw eigen Kafka-cluster. Event Hubs ondersteunt [Apache Kafka protocol 1.0 en hoger](https://kafka.apache.org/documentation/)en werkt met uw bestaande Kafka-toepassingen, waaronder MirrorMaker.  
@@ -94,16 +94,6 @@ Hier is de lijst met Kafka-functies die nog niet worden ondersteund:
 *   Kafka Streams
 
 ## <a name="next-steps"></a>Volgende stappen
-
-Dit artikel gaf een inleiding tot Event Hubs voor Kafka. Zie de volgende koppelingen voor meer informatie:
-
-- [Een gebeurtenishub maken](event-hubs-create.md)
-- [Streamen naar Event Hubs vanaf uw Kafka-toepassingen](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Een Kafka-broker spiegelen in een Event Hub](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Apache Spark aan een Event Hub koppelen](event-hubs-kafka-spark-tutorial.md)
-- [Apache Flink aan een Event Hub koppelen](event-hubs-kafka-flink-tutorial.md)
-- [Integreer Kafka Connect met een gebeurtenishub](event-hubs-kafka-connect-tutorial.md)
-- [Akka Streams verbinden met een gebeurtenishub](event-hubs-kafka-akka-streams-tutorial.md)
-- [Explore samples on our GitHub](https://github.com/Azure/azure-event-hubs-for-kafka) (Voorbeelden bekijken op GitHub)
+Dit artikel gaf een inleiding tot Event Hubs voor Kafka. Zie [de ontwikkelaarshandleiding van Apache Kafka voor Azure Event Hubs voor](apache-kafka-developer-guide.md)meer informatie.
 
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6077db0a09b09f7e4bfb859902da53b173845e55
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: b8073240bdda38757a5e4feee66c9f54746966c4
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520766"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632052"
 ---
 ### <a name="portal"></a>Portal
 
@@ -21,7 +21,7 @@ Als u de sleutels voor uw schijven voor de klant instelt, moet u resources in ee
 
 #### <a name="setting-up-your-azure-key-vault"></a>Uw Azure Key Vault instellen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) en zoek naar Key Vault
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Zoeken naar en selecteer **Sleutelkluizen**.
 
     [![sse-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
@@ -30,7 +30,7 @@ Als u de sleutels voor uw schijven voor de klant instelt, moet u resources in ee
     > Uw Azure-sleutelkluis, schijfversleutelingsset, VM, schijven en momentopnamen moeten zich allemaal in dezelfde regio bevinden en moeten een abonnement hebben om de implementatie te laten slagen.
 
 1. Selecteer **+Toevoegen** om een nieuwe sleutelkluis te maken.
-1. Een nieuwe resourcegroep maken
+1. Maak een nieuwe resourcegroep.
 1. Voer een naam van een sleutelkluis in, selecteer een regio en selecteer een prijscategorie.
 1. Selecteer **Controleren + Maken,** verifieer uw keuzes en selecteer **Vervolgens Maken**.
 
@@ -38,7 +38,7 @@ Als u de sleutels voor uw schijven voor de klant instelt, moet u resources in ee
 
 1. Zodra de implementatie van uw sleutelkluis is voltooid, selecteert u deze.
 1. Selecteer **Toetsen** onder **Instellingen**.
-1. Selecteer **Genereren/importeren**
+1. Selecteer **Genereren/importeren**.
 
     ![Schermafbeelding van het deelvenster Bronnen met de bronbron van De sleutel. Toont de knop genereren/importeren in de instellingen.](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
@@ -49,15 +49,8 @@ Als u de sleutels voor uw schijven voor de klant instelt, moet u resources in ee
 
 #### <a name="setting-up-your-disk-encryption-set"></a>Uw schijfversleutelingsset instellen
 
-Als u schijfversleutelingssets wilt maken en https://aka.ms/diskencryptionsetsconfigureren, moet u de volgende koppeling gebruiken: . Als u zich in de regio's van Microsoft [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)Azure Government bevindt, moet u deze koppeling in plaats daarvan gebruiken: . Het maken van schijfversleutelingssets is nog niet beschikbaar in de wereldwijde Azure-portal.
-
-1. Open de koppeling met schijfversleutelingsets die geschikt zijn voor uw regio:
-
-    Openbare regio's:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Azure-overheidsregio's:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
-    
-1. Selecteer **+Toevoegen**.
+1. Zoek naar **schijfversleutelingssets** en selecteer deze.
+1. Selecteer op het blad **Schijfversleutelingssets** de optie **+Toevoegen**.
 
     ![Schermafbeelding van het hoofdscherm van de schijfversleutelingportal. De knop Toevoegen markeren](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
 
@@ -82,12 +75,6 @@ Twee meldingen moeten verschijnen en slagen. Als u dit doet, u de schijfversleut
 Nu u uw sleutelkluis en de schijfversleutelinghebt gemaakt en ingesteld, u een vm implementeren met behulp van de versleuteling.
 Het VM-implementatieproces is vergelijkbaar met het standaardimplementatieproces, de enige verschillen zijn dat u de VM in dezelfde regio moet implementeren als uw andere resources en u kiest ervoor om een door de klant beheerde sleutel te gebruiken.
 
-1. Open de koppeling met schijfversleutelingsets die geschikt zijn voor uw regio:
-
-    Openbare regio's:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Azure-overheidsregio's:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
-
 1. Zoek naar **virtuele machines** en selecteer **+ Toevoegen** om een vm te maken.
 1. Selecteer op het tabblad **Basic** dezelfde regio als de schijfversleutelingset en Azure Key Vault.
 1. Vul de andere waarden op het tabblad **Basis** in zoals u wilt.
@@ -102,16 +89,8 @@ Het VM-implementatieproces is vergelijkbaar met het standaardimplementatieproces
 
 #### <a name="enable-on-an-existing-disk"></a>Inschakelen op een bestaande schijf
 
-Als u schijfversleuteling op uw bestaande schijven wilt beheren https://aka.ms/diskencryptionsetsen configureren, moet u de volgende koppeling gebruiken: . Het inschakelen van door de klant beheerde sleutels op bestaande schijven is nog niet beschikbaar in de wereldwijde Azure-portal.
-
 > [!CAUTION]
 > Als u schijfversleuteling inschakelt op schijven die aan een vm zijn gekoppeld, moet u de vm stoppen.
-
-1. Open de koppeling met schijfversleutelingsets die geschikt zijn voor uw regio:
-
-    Openbare regio's:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Azure-overheidsregio's:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
     
 1. Navigeer naar een vm die zich in dezelfde regio bevindt als een van uw schijfversleutelingssets.
 1. Open de VM en selecteer **Stoppen**.

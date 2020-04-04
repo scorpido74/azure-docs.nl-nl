@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 114f8d637a927a899807a676fb3e1b45f5c7687c
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 3efd8a776542616a9ceefba331b06406540905a8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585751"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633325"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Het belang van de werkbelasting beheren en bewaken in Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ Het belang van Synapse SQL-aanvraagniveau in Azure Synapse beheren en bewaken me
 
 ## <a name="monitor-importance"></a>Belang bewaken
 
-Controleer het belang met behulp van de nieuwe belangrijkheidskolom in de dynamische beheerweergave [sys.dm_pdw_exec_requests.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest)
+Controleer het belang met behulp van de nieuwe belangrijkheidskolom in de dynamische beheerweergave [sys.dm_pdw_exec_requests.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 In de onderstaande bewakingsquery worden de tijd en begintijd voor query's weergegeven. Bekijk de tijd en starttijd voor verzenden, samen met het belang om te zien hoe belangrijk het plannen heeft beïnvloed.
 
 ```sql
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-De catalogusweergave, [sys.workload_management_workload_classifier_details,](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest)bevat informatie over de parameters die worden gebruikt bij het maken van de classificatie.  De onderstaande query laat zien dat ExecReportsClassifier is gemaakt op de ```membername``` parameter voor waarden met ExecutiveReports:
+De catalogusweergave, [sys.workload_management_workload_classifier_details,](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bevat informatie over de parameters die worden gebruikt bij het maken van de classificatie.  De onderstaande query laat zien dat ExecReportsClassifier is gemaakt op de ```membername``` parameter voor waarden met ExecutiveReports:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
@@ -69,6 +69,7 @@ GO
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
+
 - Zie [Workloadclassification](sql-data-warehouse-workload-classification.md)voor meer informatie over classificatie.
 - Zie [Werklastbelang](sql-data-warehouse-workload-importance.md) voor meer informatie over Belang
 

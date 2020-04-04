@@ -2,17 +2,17 @@
 title: Server-side encryptie van Azure Managed Disks - Azure CLI
 description: Azure Storage beschermt uw gegevens door deze in rust te versleutelen voordat deze worden weergegeven in opslagclusters. U vertrouwen op door Microsoft beheerde sleutels voor de versleuteling van uw beheerde schijven, of u door de klant beheerde sleutels gebruiken om versleuteling met uw eigen sleutels te beheren.
 author: roygara
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 912677a10d7098b891a4f6972b61761cd72cf292
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 20aa55f9fc4ea65da1973628aeec313a5367816a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585947"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632066"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Server-side encryptie van azure beheerde schijven
 

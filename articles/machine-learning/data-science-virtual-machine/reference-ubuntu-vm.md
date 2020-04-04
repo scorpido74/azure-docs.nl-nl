@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 5c184e7f1dc828c3f9ff8d449d29ab3aaa4d1cf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 830668a78929a5e6a7e131ade5c62b81e6d725c3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525818"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631373"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referentie: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -239,9 +239,9 @@ U hebt toegang tot de [Azure-portal](https://portal.azure.com) vanuit de vooraf 
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-Azure Machine Learning is een volledig beheerde cloudservice waarmee u voorspellende analyseoplossingen bouwen, implementeren en delen. U uw experimenten en modellen bouwen vanuit Azure Machine Learning Studio (klassiek). U het openen vanuit een webbrowser op de Data Science Virtual Machine door [microsoft Azure Machine Learning](https://studio.azureml.net)te bezoeken.
+Azure Machine Learning is een volledig beheerde cloudservice waarmee u voorspellende analyseoplossingen bouwen, implementeren en delen. U uw experimenten en modellen bouwen in Azure Machine Learning studio (preview). U het openen vanuit een webbrowser op de Data Science Virtual Machine door [microsoft Azure Machine Learning](https://ml.azure.com)te bezoeken.
 
-Nadat u zich hebt aangemeld bij Azure Machine Learning Studio (klassiek), u een experimenteercanvas gebruiken om een logische stroom voor de machine learning-algoritmen op te bouwen. U hebt ook toegang tot een Jupyter-notitieblok dat wordt gehost op Azure Machine Learning en naadloos kan samenwerken met de experimenten in Azure Machine Learning Studio (klassiek). 
+Nadat u zich hebt aangemeld bij Azure Machine Learning-studio, u een experimenteercanvas gebruiken om een logische stroom voor de machine learning-algoritmen op te bouwen. U hebt ook toegang tot een Jupyter-notitieblok dat wordt gehost op Azure Machine Learning en naadloos kan samenwerken met de experimenten in Azure Machine Learning-studio. 
 
 Operationaliseer de machine learning-modellen die u hebt gebouwd door ze in een webservice-interface te verpakken. Door machine learning-modellen te operationaliseren, kunnen klanten die in elke taal worden geschreven, voorspellingen van die modellen aanroepen. Zie de machine [learning-documentatie](https://azure.microsoft.com/documentation/services/machine-learning/)voor meer informatie.
 

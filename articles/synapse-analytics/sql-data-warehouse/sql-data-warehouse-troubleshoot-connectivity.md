@@ -11,16 +11,17 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 2b0e144220e36de6157101190adb838ae651d7c4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 08fb0a6675d18370482abe9b1d7b9a0d9ee5c364
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583328"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633006"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Connectiviteitsproblemen oplossen
 
-In dit artikel worden veelvoorkomende probleemoplossingstechnieken weergegeven rond verbinding maken met uw Synapse SQL-groep.
+In dit artikel worden veelvoorkomende probleemoplossingstechnieken weergegeven rond verbinding maken met uw SQL Analytics-database.
+
 - [Beschikbaarheid van de service controleren](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Controleren op onderbroken of schaalbewerking](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [Uw firewallinstellingen controleren](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -54,15 +55,15 @@ Als u ziet dat uw service is onderbroken of geschaald, controleert u of deze nie
 
 ![Overzicht Onderhoudsschema](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Neem anders contact op met uw IT-beheerder om te controleren of dit onderhoud geen geplande gebeurtenis is. Als u de instantie synapsSQL-pool wilt hervatten, voert u de [hier](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)beschreven stappen uit.
+Neem anders contact op met uw IT-beheerder om te controleren of dit onderhoud geen geplande gebeurtenis is. Voer de volgende stappen [uit](pause-and-resume-compute-portal.md)om de SQL Analytics-instantie te hervatten.
 
 ## <a name="check-your-firewall-settings"></a>Uw firewallinstellingen controleren
 
-Synapse SQL-pool communiceert via poort 1433.Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt. Aanvullende informatie over firewallconfiguraties vindt u [hier.](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
+SQL Analytics-database communiceert via poort 1433.Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt. Aanvullende informatie over firewallconfiguraties vindt u [hier.](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>De instellingen van uw VNet/service-eindpunt controleren
 
-Zie [foutbeschrijving en resolutie hier](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615)als u fouten 40914 en 40615 ontvangt.
+Zie [foutbeschrijving en resolutie hier](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)als u fouten 40914 en 40615 ontvangt.
 
 ## <a name="check-for-the-latest-drivers"></a>Controleren op de meest recente stuurprogramma's
 
@@ -70,22 +71,22 @@ Zie [foutbeschrijving en resolutie hier](https://docs.microsoft.com/azure/sql-da
 
 Controleer of u de nieuwste tools gebruikt om verbinding te maken met uw Synapse SQL-groep:
 
-* SSMS
-* Azure Data Studio
-* SQL Server-gegevenshulpprogramma's (Visual Studio)
+- SSMS
+- Azure Data Studio
+- SQL Server-gegevenshulpprogramma's (Visual Studio)
 
 ### <a name="drivers"></a>Stuurprogramma's
 
 Controleer of u de nieuwste stuurprogrammaversies gebruikt.Het gebruik van een oudere versie van de stuurprogramma's kan leiden tot onverwacht gedrag, omdat de oudere stuurprogramma's mogelijk geen nieuwe functies ondersteunen.
 
-* [ODBC](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
-* [JDBC](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
-* [OLE DB](https://docs.microsoft.com/sql/connect/oledb/download-oledb-driver-for-sql-server)
-* [PHP](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server)
+- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server)
+- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
+- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server)
+- [PHP](/sql/connect/php/download-drivers-php-sql-server)
 
 ## <a name="check-your-connection-string"></a>Uw verbindingsreeks controleren
 
-Controleer of de verbindingsreeksen juist zijn ingesteld.  Hieronder staan enkele voorbeelden.  Meer informatie over verbindingstekenreeksen vindt u [hier](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
+Controleer of de verbindingsreeksen juist zijn ingesteld.  Hieronder staan enkele voorbeelden.  Meer informatie over verbindingstekenreeksen vindt u [hier](/sql-data-warehouse/sql-data-warehouse-connection-strings.md).
 
 ADO.NET-verbindingsreeks
 
@@ -117,7 +118,8 @@ Controleer of er sprake is van een zware belasting op de server met een groot aa
 
 ## <a name="common-error-messages"></a>Veelvoorkomende foutberichten
 
-Fouten 40914 en 40615, zie de [foutbeschrijving en resolutie hier](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615).
+Fouten 40914 en 40615, zie de [foutbeschrijving en resolutie hier](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615).
 
 ## <a name="still-having-connectivity-issues"></a>Heb je nog steeds verbindingsproblemen?
-Maak een [ondersteuningsticket](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) zodat het engineeringteam u kan ondersteunen.
+
+Maak een [ondersteuningsticket](/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md) zodat het engineeringteam u kan ondersteunen.

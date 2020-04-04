@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/01/2020
+ms.date: 04/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01956c2fee1c15bc86e8d80aa05c70db647bf593
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 60dca30496aa17ad7add00ca4eca914cb58fddd7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616868"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655985"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: releasegeschiedenis versie
 Het Azure Active Directory-team (Azure AD) werkt Azure AD Connect regelmatig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doelgroepen.
@@ -57,7 +57,7 @@ Niet alle releases van Azure AD Connect worden beschikbaar gesteld voor een auto
 ### <a name="functional-changes-adsyncautoupgrade"></a>Functionele wijzigingen ADSyncAutoUpgrade 
 
 - Ondersteuning toegevoegd voor de mS-DS-ConsistencyGuid-functie voor groepsobjecten. Hiermee u groepen verplaatsen tussen forests of groepen opnieuw verbinden in AD naar Azure AD, waar de AD-groepsobjectID is gewijzigd, bijvoorbeeld wanneer een AD-server na een calamiteit opnieuw wordt opgebouwd. Zie Groepen [verplaatsen tussen bossen voor](how-to-connect-migrate-groups.md)meer informatie.
-- Het kenmerk mS-DS-ConsistencyGuid wordt automatisch ingesteld op al gesynchroniseerde groepen en u hoeft niets te doen om deze functie in te schakelen. 
+- Het kenmerk mS-DS-ConsistencyGuid wordt automatisch ingesteld op alle gesynchroniseerde groepen en u hoeft niets te doen om deze functie in te schakelen. 
 - Verwijderd van de Get-ADSyncRunProfile omdat deze niet meer in gebruik is. 
 - Wijzigde de waarschuwing die u ziet wanneer u een ondernemingsbeheerder- of domeinbeheerdersaccount probeert te gebruiken voor het AD DS-connectoraccount om meer context te bieden. 
 - Een nieuwe cmdlet toegevoegd om objecten uit de connectorruimte te verwijderen, wordt het oude gereedschap CSDelete.exe verwijderd en wordt vervangen door de nieuwe cmdlet Remove-ADSyncCSObject. De cmdlet Remove-ADSyncCSObject neemt een CsObject als invoer. Dit object kan worden opgehaald met de cmdlet Get-ADSyncCSObject.

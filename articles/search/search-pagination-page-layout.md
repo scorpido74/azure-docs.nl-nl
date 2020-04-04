@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 8543894f3f518df6b9b0054973ca1683b82e38f1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: df80668f5e4a31d6247e9e9806e3de0667fd9036
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548997"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656018"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Werken met zoekresultaten in Azure Cognitive Search
 
@@ -39,7 +39,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 > [!NOTE]
 > Als u afbeeldingsbestanden wilt opnemen in een resultaat, zoals een productfoto of -logo, slaat u deze op buiten Azure Cognitive Search, maar neemt u een veld op in uw index om naar de afbeeldings-URL in het zoekdocument te verwijzen. Voorbeeldindexen die afbeeldingen in de resultaten ondersteunen, zijn onder andere de **demo van realestate-sample-us,** te zien in deze [quickstart](search-create-app-portal.md)en de [demo-app van New York City Jobs](https://aka.ms/azjobsdemo).
 
-## <a name="results-returned"></a>Resultaten geretourneerd
+## <a name="paging-results"></a>Resultaten pagineren
 
 Standaard retourneert de zoekmachine tot de eerste 50 overeenkomsten, zoals bepaald door de zoekscore als de query full text search is, of in een willekeurige volgorde voor exacte overeenkomende query's.
 
@@ -74,19 +74,19 @@ Merk op dat document 2 twee keer wordt opgehaald. Dit komt omdat het nieuwe docu
 
 ## <a name="ordering-results"></a>Resultaten ordenen
 
-Voor zoekopdrachten in volledige tekst worden de resultaten automatisch gerangschikt op basis van een zoekscore, berekend op basis van de termfrequentie en nabijheid in een document, waarbij hogere scores naar documenten gaan die meer of sterkere overeenkomsten hebben op een zoekterm. Zoekscores geven een algemeen gevoel van relevantie, ten opzichte van andere documenten in dezelfde resultatenset, en zijn niet gegarandeerd consistent van de ene query naar de volgende.
+Voor zoekopdrachten in volledige tekst worden de resultaten automatisch gerangschikt op basis van een zoekscore, berekend op basis van de termfrequentie en nabijheid in een document, waarbij hogere scores naar documenten gaan die meer of sterkere overeenkomsten hebben op een zoekterm. 
 
-Als u met query's werkt, ziet u mogelijk kleine verschillen in geordende resultaten. Er zijn verschillende verklaringen waarom dit zou kunnen gebeuren.
+Zoekscores geven een algemeen gevoel van relevantie over, dat de sterkte van de overeenkomst weerspiegelt in vergelijking met andere documenten in dezelfde resultatenset. Scores zijn niet altijd consistent van de ene query naar de volgende, dus als u met query's werkt, u kleine verschillen opmerken in de manier waarop zoekdocumenten worden geordend. Er zijn verschillende verklaringen waarom dit zou kunnen gebeuren.
 
-| Voorwaarde | Beschrijving |
+| Oorzaak | Beschrijving |
 |-----------|-------------|
-| Datavolatiliteit | De inhoud van een index varieert wanneer u documenten toevoegt, wijzigt of verwijdert. Termfrequenties worden gewijzigd naarmate indexupdates in de loop van de tijd worden verwerkt, wat van invloed is op de zoekscores van overeenkomende documenten. |
-| Locatie queryuitvoering | Voor services met meerdere replica's worden query's parallel aan elke replica uitgegeven. De indexstatistieken die worden gebruikt om een zoekscore te berekenen, worden berekend op basis van een replica, waarbij de resultaten worden samengevoegd en geordend in het queryantwoord. Replica's zijn meestal spiegels van elkaar, maar statistieken kunnen verschillen als gevolg van kleine verschillen in staat. Een replica kan bijvoorbeeld documenten hebben verwijderd die bijdragen aan hun statistieken, die zijn samengevoegd uit andere replica's. Over het algemeen zijn verschillen in statistieken per replica meer merkbaar in kleinere indexen. |
-| Een gelijkspel tussen identieke zoekscores verbreken | Verschillen in geordende resultaten kunnen ook optreden wanneer zoekdocumenten identieke scores hebben. In dit geval is er geen garantie welk document als eerste wordt weergegeven wanneer u dezelfde query opnieuw uitvoert. |
+| Datavolatiliteit | Indexinhoud varieert wanneer u documenten toevoegt, wijzigt of verwijdert. Termfrequenties worden gewijzigd naarmate indexupdates in de loop van de tijd worden verwerkt, wat van invloed is op de zoekscores van overeenkomende documenten. |
+| Meerdere replica's | Voor services met meerdere replica's worden query's parallel aan elke replica uitgegeven. De indexstatistieken die worden gebruikt om een zoekscore te berekenen, worden berekend op basis van een replica, waarbij de resultaten worden samengevoegd en geordend in het queryantwoord. Replica's zijn meestal spiegels van elkaar, maar statistieken kunnen verschillen als gevolg van kleine verschillen in staat. Een replica kan bijvoorbeeld documenten hebben verwijderd die bijdragen aan hun statistieken, die zijn samengevoegd uit andere replica's. Doorgaans zijn verschillen in statistieken per replica meer merkbaar in kleinere indexen. |
+| Identieke scores | Als meerdere documenten dezelfde score hebben, kan elk van deze documenten eerst worden weergegeven.  |
 
 ### <a name="consistent-ordering"></a>Consistente bestelling
 
-Gezien de flex in zoekscore wilt u misschien andere opties verkennen als consistentie in resultaatorders een vereiste voor toepassingen is. De eenvoudigste benadering is sorteren op een veldwaarde, zoals beoordeling of datum. Voor scenario's waarin u wilt sorteren op een specifiek veld, zoals [ `$orderby` ](query-odata-filter-orderby-syntax.md)een classificatie of datum, u expliciet een expressie definiëren, die kan worden toegepast op elk veld dat is geïndexeerd als **Sorteerbaar**.
+Gezien de flex in het bestellen van resultaten, wilt u misschien andere opties verkennen als consistentie een toepassingsvereiste is. De eenvoudigste benadering is sorteren op een veldwaarde, zoals beoordeling of datum. Voor scenario's waarin u wilt sorteren op een specifiek veld, zoals [ `$orderby` ](query-odata-filter-orderby-syntax.md)een classificatie of datum, u expliciet een expressie definiëren, die kan worden toegepast op elk veld dat is geïndexeerd als **Sorteerbaar**.
 
 Een andere optie is het gebruik van een [aangepast scoreprofiel](index-add-scoring-profiles.md). Scoreprofielen geven u meer controle over de rangschikking van items in zoekresultaten, met de mogelijkheid om overeenkomsten in specifieke velden te promoten. De aanvullende scorelogica kan helpen bij het overschrijven van kleine verschillen tussen replica's, omdat de zoekscores voor elk document verder uit elkaar liggen. Wij raden het [ranking algoritme](index-ranking-similarity.md) voor deze aanpak.
 

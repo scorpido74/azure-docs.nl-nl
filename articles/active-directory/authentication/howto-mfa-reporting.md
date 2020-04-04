@@ -4,19 +4,19 @@ description: Hierin wordt beschreven hoe u de functie Azure Multi-Factor Authent
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/30/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b47e6bac031a5f2cffc8734fee976fbf8dadc666
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5d5354f5bca7a4c9ab00066167ad19890536629
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129088"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653609"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Rapporten in Azure Multi-Factor Authentication
 
@@ -90,7 +90,7 @@ De rapporten voor aanmeldingsactiviteiten voor MFA bieden u toegang tot de volge
       - telefonische oproep verzonden naar voicemail
       - telefoonnummer heeft een ongeldige indeling
       - servicefout
-      - kan telefoonnummer van gebruiker niet bereiken
+      - de telefoon van de gebruiker niet kunnen bereiken
       - kan de mobiele-app-melding niet verzenden naar het apparaat
       - kan de mobiele-app-melding niet verzenden
       - gebruiker heeft verificatie geweigerd

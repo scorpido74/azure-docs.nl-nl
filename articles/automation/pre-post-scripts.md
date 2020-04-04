@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbf7f2945ad6a94c51cfd0c7db1e8c85d739c6ed
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75417790"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631622"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Pre- en postscripts beheren
 
@@ -18,7 +18,7 @@ Met prescripts en postscripts u PowerShell-runbooks uitvoeren in uw Azure Automa
 
 ## <a name="runbook-requirements"></a>Runbook-vereisten
 
-Als u een runbook wilt gebruiken als pre- of postscript, moet het runbook worden geïmporteerd in uw Automatiseringsaccount en worden gepubliceerd. Zie [Een runbook publiceren](manage-runbooks.md#publish-a-runbook)voor meer informatie over dit proces.
+Als u een runbook wilt gebruiken als pre- of postscript, moet het runbook worden geïmporteerd in uw Automatiseringsaccount en worden gepubliceerd. Zie [Een runbook publiceren](manage-runbooks.md#publishing-a-runbook)voor meer informatie over dit proces.
 
 ## <a name="using-a-pre-script-or-post-script"></a>Een prescript of postscript gebruiken
 

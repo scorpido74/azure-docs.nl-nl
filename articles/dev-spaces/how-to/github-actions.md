@@ -1,17 +1,17 @@
 ---
 title: GitHub-acties & Azure Kubernetes-service (voorbeeld)
 services: azure-dev-spaces
-ms.date: 02/04/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 description: Wijzigingen van een pull-aanvraag rechtstreeks in Azure Kubernetes-service bekijken en testen met GitHub-acties en Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, GitHub Actions, Helm, service mesh, service mesh routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252381"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637950"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-acties & Azure Kubernetes-service (voorbeeld)
 
@@ -101,6 +101,11 @@ Navigeer naar uw gevorkte opslagplaats en klik op *Instellingen*. Klik op *Gehei
 > Al deze geheimen worden gebruikt door de GitHub actie en zijn geconfigureerd in [.github/workflows/bikes.yml][github-action-yaml].
 
 Als u de hoofdruimte wilt bijwerken nadat uw PR is samengevoegd, voegt u het *GATEWAY_HOST-geheim* toe, dat de vorm aanneemt *<MASTER_SPACE>.gateway.<HOST_SUFFIX>*, die in dit voorbeeld *dev.gateway.fedcab0987.eus.azds.io*is. Zodra u uw wijzigingen samenvoegt in de hoofdbranch in uw vork, wordt er een andere actie uitgevoerd om uw hele toepassing opnieuw op te bouwen en uit te voeren in de master-dev-ruimte. In dit voorbeeld is de hoofdruimte *dev.* Deze actie is geconfigureerd in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml].
+
+Bovendien, als u wilt dat de wijzigingen in uw PR te draaien in een kleinkind ruimte, update de *MASTER_SPACE* en *HOST* geheimen. Als uw toepassing bijvoorbeeld in *dev met* een onderliggende *spatie dev/azureuser1*wordt uitgevoerd, moet u de PR laten uitvoeren in een onderliggende ruimte van *dev/azureuser1:*
+
+* Werk *MASTER_SPACE* bij naar de onderliggende ruimte die u als bovenliggende ruimte wilt hebben, in dit voorbeeld *azureuser1*.
+* Update *HOST* *om GRANDPARENT_SPACE>.<>.<APP_NAME>.<HOST_SUFFIX>* in dit voorbeeld *dev.bikesharingweb.fedcab0987.eus.azds.io*<.
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Een nieuwe vertakking maken voor codewijzigingen
 

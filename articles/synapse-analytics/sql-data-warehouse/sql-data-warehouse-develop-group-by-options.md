@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28ac075d043f7605b6dfdac6879063fbe9308123
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 25e6770fb38d13591186754bc5e6a7641083a899
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619049"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633514"
 ---
 # <a name="group-by-options-in-synapse-sql-pool"></a>Groeperen op opties in de Synapse SQL-groep
 
@@ -24,7 +24,7 @@ In dit artikel vindt u tips voor het implementeren van groeps-op-opties in SQL-p
 
 ## <a name="what-does-group-by-do"></a>Wat doet GROUP BY?
 
-De [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL-component verzamelt gegevens tot een overzichtsset van rijen. GROUP BY heeft een aantal opties die SQL Pool niet ondersteunt. Deze opties hebben tijdelijke oplossingen, die als volgt zijn:
+De [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-component verzamelt gegevens tot een overzichtsset van rijen. GROUP BY heeft een aantal opties die SQL Pool niet ondersteunt. Deze opties hebben tijdelijke oplossingen, die als volgt zijn:
 
 * GROEPEREN OP met ROLLUP
 * GROEPERINGSSETS
@@ -35,6 +35,7 @@ De [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL-component v
 De eenvoudigste optie hier is om UNION ALL te gebruiken om de rollup uit te voeren in plaats van te vertrouwen op de expliciete syntaxis. Het resultaat is precies hetzelfde.
 
 In het volgende voorbeeld wordt de instructie GROEP PER met de optie ROLLUP gebruikt:
+
 ```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
@@ -84,9 +85,10 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 Om GROUPING SETS te vervangen, is het voorbeeldprincipe van toepassing. U hoeft alleen ALLE SECTIES UNION te maken voor de aggregatieniveaus die u wilt zien.
 
 ## <a name="cube-options"></a>Kubusopties
+
 Het is mogelijk om een GROEP BY WITH CUBE te maken met behulp van de UNION ALL aanpak. Het probleem is dat de code snel omslachtig en onhandig kan worden. Om dit probleem te verhelpen, u deze meer geavanceerde aanpak gebruiken.
 
-Met behulp van het vorige voorbeeld is de eerste stap het definiëren van de 'kubus' die alle aggregatieniveaus definieert die we willen maken. 
+Met behulp van het vorige voorbeeld is de eerste stap het definiëren van de 'kubus' die alle aggregatieniveaus definieert die we willen maken.
 
 Neem nota van de CROSS JOIN van de twee afgeleide tabellen, omdat dit genereert alle niveaus voor ons. De rest van de code is er voor opmaak:
 
@@ -182,5 +184,5 @@ ORDER BY 1,2,3
 Door de code op te splitsen in secties en een lusconstructie te genereren, wordt de code beter beheersbaar en onderhoudbaar.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer ontwikkelingstips [het ontwikkelingsoverzicht.](sql-data-warehouse-overview-develop.md)
 
+Zie voor meer ontwikkelingstips [het ontwikkelingsoverzicht.](sql-data-warehouse-overview-develop.md)

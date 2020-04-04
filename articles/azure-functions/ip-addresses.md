@@ -3,12 +3,12 @@ title: IP-adressen in Azure-functies
 description: Meer informatie over het vinden van inkomende en uitgaande IP-adressen voor functie-apps en wat de oorzaak is van deze wijzigingen.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276489"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656770"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-adressen in Azure-functies
 
@@ -86,7 +86,7 @@ Het binnenkomende IP-adres **kan** veranderen wanneer u:
 
 - Verwijder een functie-app en maak deze opnieuw in een andere resourcegroep.
 - Verwijder de laatste functie-app in een resourcegroep en regiocombinatie en maak deze opnieuw.
-- Verwijder een SSL-binding, bijvoorbeeld tijdens [het verlengen van het certificaat.](../app-service/configure-ssl-certificate.md#renew-certificate)
+- Een TLS-binding verwijderen, bijvoorbeeld tijdens [het verlengen van het certificaat.](../app-service/configure-ssl-certificate.md#renew-certificate)
 
 Wanneer uw functie-app wordt uitgevoerd in een [verbruiksplan,](functions-scale.md#consumption-plan)kan het binnenkomende IP-adres ook veranderen, zelfs als u geen acties hebt uitgevoerd, zoals de [hierboven genoemde](#inbound-ip-address-changes).
 

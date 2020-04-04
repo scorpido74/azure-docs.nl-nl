@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: b3949159d939a043fd4ccc820bc1cdad14da7751
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 6435535ee14450c590a79ea68c8855c29df8bd9a
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528384"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637868"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gegevens van een Windows-computer verzamelen in een hybride omgeving met Azure Monitor
 
 [Azure Monitor](../overview.md) kan gegevens rechtstreeks van uw fysieke of virtuele Windows-computers in uw omgeving verzamelen in een Werkruimte Log Analytics voor gedetailleerde analyse en correlatie. Als azure monitor de [loganalytics-agent](../platform/log-analytics-agent.md) installeert, kan deze gegevens verzamelen uit een datacenter of andere cloudomgeving. In deze quickstart wordt beschreven hoe u met een paar eenvoudige stappen gegevens van uw Windows-computer configureert en verzamelt. Zie [Gegevens verzamelen over virtuele Azure-machines voor](../../azure-monitor/learn/quick-collect-azurevm.md)informatie over Azure Windows VM's.  
 
-Zie [Ondersteunde Windows-besturingssystemen](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) en [netwerkfirewallconfiguratie](../../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)voor meer informatie over de ondersteunde configuratie.
+Zie [Ondersteunde Windows-besturingssystemen](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) en [netwerkfirewallconfiguratie](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)voor meer informatie over de ondersteunde configuratie.
  
 Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 

@@ -4,19 +4,19 @@ description: Aanmelding met wachtwoordloze beveiligingssleutel bij Azure AD insc
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e088d239a91edeff34ecd1a7dc5be7a9f8628da3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8574fcdff12e61f7039174ed6297d0558a66dc4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129145"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653941"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aanmelden voor een wachtwoordloze beveiligingssleutel inschakelen (voorbeeld)
 
@@ -95,7 +95,7 @@ Als u feedback wilt delen of problemen wilt ondervinden tijdens het bekijken van
 
 Het inrichten en de-inrichten van beveiligingssleutels door beheerders is niet beschikbaar in de openbare preview.
 
-### <a name="upn-changes"></a>UPN wijzigingen
+### <a name="upn-changes"></a>UPN-wijzigingen
 
 We werken aan het ondersteunen van een functie waarmee UPN-wijzigingen op hybride Azure AD kunnen worden samengevoegd en Azure AD-apparaten. Als de UPN van een gebruiker verandert, u fido2-beveiligingssleutels niet langer wijzigen om rekening te houden met de wijziging. De resolutie is om het apparaat te resetten en de gebruiker moet opnieuw registreren.
 

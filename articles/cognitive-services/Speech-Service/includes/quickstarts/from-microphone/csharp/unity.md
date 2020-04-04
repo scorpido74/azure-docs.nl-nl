@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: be8497cb07bd3c761c59bfc55e773b5dcc937c50
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 209242f723032c9e93f3dd6b20fac77c6a2badce
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925684"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658568"
 ---
 > [!NOTE]
 > De SpraakSDK voor Unity ondersteunt Windows Desktop (x86 en x64) of Universal Windows Platform (x86, x64, ARM/ARM64), Android (x86, ARM32/64) en iOS (x64 simulator, ARM32 en ARM64)
@@ -133,4 +133,4 @@ Zie voor meer informatie onze [voorbeeldopslagplaats.](https://aka.ms/csspeech/s
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

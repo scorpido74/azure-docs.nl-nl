@@ -1,14 +1,14 @@
 ---
 title: Details van de beleidsdefinitiestructuur
 description: Beschrijft hoe beleidsdefinities worden gebruikt om conventies voor Azure-resources in uw organisatie vast te stellen.
-ms.date: 02/26/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7cb1ab7d045a0595f6949052ecedba6cd1bf694
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6b1d5c43f290fc2dd953492440670608a15faca
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239992"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638079"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -361,7 +361,7 @@ Met dit beleidsregelvoorbeeld wordt **waarde** gebruikt om te controleren of het
     "policyRule": {
         "if": {
             "value": "[less(length(field('tags')), 3)]",
-            "equals": true
+            "equals": "true"
         },
         "then": {
             "effect": "deny"
@@ -578,6 +578,9 @@ Alle [sjabloonfuncties resourcebeheer](../../../azure-resource-manager/templates
 - resourceId()
 - variabelen()
 
+> [!NOTE]
+> Deze functies zijn nog `details.deployment.properties.template` steeds beschikbaar binnen het gedeelte van de sjabloonimplementatie in een beleidsdefinitie **van deployIfNotExists.**
+
 De volgende functie is beschikbaar voor gebruik in een beleidsregel, maar verschilt van het gebruik in een Azure Resource Manager-sjabloon:
 
 - `utcNow()`- In tegenstelling tot een Resource Manager-sjabloon kan deze buiten standaardwaarde worden gebruikt.
@@ -593,10 +596,9 @@ De volgende functies zijn alleen beschikbaar in beleidsregels:
   - Geeft als resultaat de waarde van dat veld van de resource die wordt geëvalueerd door de voorwaarde Als
   - `field`wordt voornamelijk gebruikt met **AuditIfNotExists** en **DeployIfNotExists** voor referentievelden op de resource die wordt geëvalueerd. Een voorbeeld van dit gebruik is te zien in het [voorbeeld DeployIfNotExists](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
-  - Geeft als resultaat de API-versie van `2019-09-01`de aanvraag die beleidsevaluatie heeft geactiveerd (voorbeeld: ). Dit is de API-versie die is gebruikt in de PUT/PATCH-aanvraag voor evaluaties over het maken/bijwerken van resources. De nieuwste API-versie wordt altijd gebruikt tijdens de nalevingsevaluatie van bestaande resources.
+  - Geeft als resultaat de API-versie van `2019-09-01`de aanvraag die beleidsevaluatie heeft geactiveerd (voorbeeld: ).
+    Dit is de API-versie die is gebruikt in de PUT/PATCH-aanvraag voor evaluaties over het maken/bijwerken van resources. De nieuwste API-versie wordt altijd gebruikt tijdens de nalevingsevaluatie van bestaande resources.
   
-
-
 #### <a name="policy-function-example"></a>Voorbeeld van de functie Beleid
 
 In dit voorbeeld `resourceGroup` van de beleidsregel wordt de resourcefunctie gebruikt om de `like` eigenschap **naam** op te halen, gecombineerd met de `concat` array- en objectfunctie om een voorwaarde te maken die de naam van de resource afdwingt om te beginnen met de naam van de resourcegroep.
@@ -658,7 +660,7 @@ De lijst met aliassen groeit altijd. Als u wilt weten welke aliassen momenteel w
   (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
   ```
 
-- Azure-CLI
+- Azure CLI
 
   ```azurecli-interactive
   # Login first with az login if not using Cloud Shell
@@ -707,8 +709,6 @@ Deze voorbeeldregel controleert op eventuele overeenkomsten van **\[\*\]ipRules 
     }
 }
 ```
-
-
 
 Zie voor meer informatie [de\*beoordeling van de [ ] alias](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 

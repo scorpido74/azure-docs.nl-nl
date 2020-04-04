@@ -4,19 +4,19 @@ description: Dit is de Azure Multi-Factor Authentication-pagina waarop wordt bes
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e71c1d28a90af72890b2399d5da24d08885f3cce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c79a42bbd60d7a1857649cffc97ed7f0103fa16
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051215"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653521"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Azure Multi-Factor Authentication-server configureren om met AD FS 2.0 te werken
 
@@ -59,7 +59,7 @@ Als u AD FS 2.0 wilt beveiligen met een proxy, installeert u de Multi-Factor Aut
 13. Als u klaar bent, klikt u op **OK** om terug te gaan naar het dialoogvenster Formulier-gebaseerde website.
 14. Klik op **OK** om het dialoogvenster te sluiten.
 15. Zodra de URL- en paginavariabelen zijn gedetecteerd of ingevoerd, worden de websitegegevens weergegeven in het paneel Op formulier gebaseerd.
-16. Klik op het tabblad **Systeemeigen module** en selecteer de server, de website waaronder de AD FS-proxy wordt uitgevoerd (zoals 'Standaardwebsite') of de AD FS-proxytoepassing (zoals 'ls' onder 'adfs') om de IIS-invoegtoepassing op het gewenste niveau in te schakelen.
+16. Klik op het tabblad **Native Module** en selecteer de server, de website waarop de AD FS-proxy wordt uitgevoerd (zoals 'Standaardwebsite'), of de AD FS-proxytoepassing (zoals 'ls' onder 'adfs') om de IIS-invoegtoepassing op het gewenste niveau in te schakelen.
 17. Klik op het vak **IIS-verificatie** inschakelen aan de bovenkant van het scherm.
 
 De IIS-authenticatie is nu ingeschakeld.
@@ -85,8 +85,8 @@ U hebt IIS-authenticatie ingeschakeld, maar om de pre-authenticatie voor uw Acti
 
 1. Klik vervolgens op het pictogram **Bedrijfsinstellingen** en selecteer het tabblad **Gebruikersnaamresolutie.**
 2. Selecteer het **kenmerk LDAP-kenmerk gebruiken voor het afstemmen van de keuzerondjes voor gebruikersnamen.**
-3. Als gebruikers hun gebruikersnaam invoeren in de opmaak ‘domein\gebruikersnaam’, moet de server het domein van de gebruikersnaam kunnen verwijderen bij het maken van de LDAP-query. Dat kan worden gedaan met behulp van een registerinstelling.
-4. Open de Register-editor en ga op een 64-bits-server naar HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor. Op een 32-bits-server verwijdert u het gedeelte 'Wow6432Node' uit het pad. Maak een DWORD-registersleutel met de naam UsernameCxz_stripPrefixDomain en stel de waarde in op 1. De AD FS-proxy wordt nu beveiligd met Azure Multi-Factor Authentication.
+3. Als gebruikers hun gebruikersnaam invoeren in de indeling 'domein\gebruikersnaam', moet de server het domein van de gebruikersnaam kunnen ontdoen wanneer de LDAP-query wordt gemaakt. Dat kan worden gedaan met behulp van een registerinstelling.
+4. Open de Register-editor en ga op een 64-bits-server naar HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor. Als op een 32-bits server, neem de "Wow6432Node" uit het pad. Maak een DWORD-registersleutel met de naam "UsernameCxz_stripPrefixDomain" en stel de waarde in op 1. De AD FS-proxy wordt nu beveiligd met Azure Multi-Factor Authentication.
 
 Zorg ervoor dat gebruikers uit Active Directory in de server zijn geïmporteerd. Zie de [sectie Vertrouwde IP's](#trusted-ips) als u interne IP-adressen wilt toestaan, zodat verificatie in twee stappen niet vereist is wanneer u zich vanaf die locaties aanmeldt bij de website.
 
@@ -107,7 +107,7 @@ U kunt AD FS beveiligen wanneer de AD FS-proxy niet wordt gebruikt. Installeer d
    ![AD FS 2.0 Direct zonder een proxy](./media/howto-mfaserver-adfs-2/noproxy.png)
 
 8. Klik op **OK**.
-9. Klik op het tabblad **Systeemeigen module** en selecteer de server, de website (zoals 'Standaardwebsite') of de AD FS-toepassing (bijvoorbeeld 'ls' onder 'adfs') om de IIS-invoegtoepassing op het gewenste niveau in te schakelen.
+9. Klik op het tabblad **Native Module** en selecteer de server, de website (zoals 'Standaardwebsite'), of de AD FS-toepassing (zoals 'ls' onder 'adfs') om de IIS-invoegtoepassing op het gewenste niveau in te schakelen.
 10. Klik op het vak **IIS-verificatie** inschakelen aan de bovenkant van het scherm.
 
 AD FS wordt nu beveiligd met Azure Multi-Factor Authentication.

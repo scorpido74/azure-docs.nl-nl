@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5f0432cafee07dbed071d24aa8c24ee9b2176967
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 251fdb83e848aaac3a5391320df23149ce1bce33
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350179"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633054"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Een verwijderde SQL-groep herstellen met Azure Synapse Analytics
 
@@ -39,16 +39,16 @@ Als u een verwijderde SQL-groep wilt herstellen, gebruikt u de cmdlet [Restore-A
 5. Download het specifieke verwijderde gegevensmagazijn.
 6. Het magazijn voor verwijderde gegevens herstellen
     1. Als u het verwijderde SQL Data Warehouse wilt herstellen naar een andere logische server, moet u de andere logische servernaam opgeven.  Deze logische server kan zich ook in een andere brongroep en -regio bevinden.
-    1. Als u wilt herstellen naar een ander abonnement, gebruikt u de knop [Verplaatsen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#use-the-portal) om de logische server naar een ander abonnement te verplaatsen.
-1. Controleer of het herstelde gegevensmagazijn online is.
-1. Nadat het herstel is voltooid, u het magazijn voor herstelde gegevens configureren door [uw database na herstel te configureren.](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)
+    1. Als u wilt herstellen naar een ander abonnement, gebruikt u de knop [Verplaatsen](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal) om de logische server naar een ander abonnement te verplaatsen.
+7. Controleer of het herstelde gegevensmagazijn online is.
+8. Nadat het herstel is voltooid, u het magazijn voor herstelde gegevens configureren door [uw database na herstel te configureren.](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
 #$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different logical server.
-#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>" 
+#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
 
@@ -86,5 +86,6 @@ $RestoredDatabase.status
     ![Databasenaam opgeven](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>Volgende stappen
+
 - [Een bestaande SQL-groep herstellen](sql-data-warehouse-restore-active-paused-dw.md)
 - [Herstellen vanuit een SQL-groep met geoback-up](sql-data-warehouse-restore-from-geo-backup.md)

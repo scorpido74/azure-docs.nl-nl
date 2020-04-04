@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 04/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c90566006868c817d977699c35f2213895f3fe70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1dd2da51cb33582c90ff592e0061b5c1ebf8ee1
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295229"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631826"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Voorwaardelijke toegang: MFA vereisen voor Azure-beheer
 
@@ -24,7 +24,7 @@ Organisaties gebruiken verschillende Azure-services en beheren deze vanuit azure
 
 * Azure Portal
 * Azure PowerShell
-* Azure-CLI
+* Azure CLI
 
 Deze hulpprogramma's kunnen zeer bevoorrechte toegang bieden tot bronnen, die configuraties voor het hele abonnement, service-instellingen en abonnementsfacturering kunnen wijzigen. Om deze bevoegde bronnen te beschermen, raadt Microsoft aan om meervoudige verificatie te vereisen voor elke gebruiker die toegang heeft tot deze bronnen.
 
@@ -34,7 +34,7 @@ Beleid voor voorwaardelijke toegang zijn krachtige tools, we raden u aan de volg
 
 * **Noodtoegang** of **break-glass-accounts** om tenant-brede accountlock-out te voorkomen. In het onwaarschijnlijke scenario dat alle beheerders zijn uitgesloten van uw tenant, kan uw beheeraccount met noodtoegang worden gebruikt om zich aan te melden bij de tenant om de toegang te herstellen.
    * Meer informatie vindt u in het artikel, [Accounts voor noodtoegang beheren in Azure AD](../users-groups-roles/directory-emergency-access.md).
-* **Serviceaccounts** en **serviceprincipes,** zoals het Azure AD Connect Sync-account. Serviceaccounts zijn niet-interactieve accounts die niet aan een bepaalde gebruiker zijn gekoppeld. Ze worden normaal gesproken gebruikt door back-endservices en bieden programmatische toegang tot toepassingen. Serviceaccounts moeten worden uitgesloten, omdat MFA niet programmatisch kan worden voltooid.
+* **Serviceaccounts** en **serviceprincipals,** zoals het Azure AD Connect Sync-account. Serviceaccounts zijn niet-interactieve accounts die niet aan een bepaalde gebruiker zijn gekoppeld. Ze worden normaal gesproken gebruikt door back-endservices die programmatische toegang tot toepassingen mogelijk maken, maar worden ook gebruikt om in te loggen op systemen voor administratieve doeleinden. Serviceaccounts zoals deze moeten worden uitgesloten, omdat MFA niet programmatisch kan worden voltooid.
    * Als uw organisatie deze accounts in scripts of code heeft gebruikt, u overwegen deze te vervangen door [beheerde identiteiten.](../managed-identities-azure-resources/overview.md) Als tijdelijke tijdelijke oplossing u deze specifieke accounts uitsluiten van het basislijnbeleid.
 
 ## <a name="create-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken

@@ -11,16 +11,17 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 336b5a65c7a23a060e422b69f8ad3216bee6ad19
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f257f3751e7a411015ca188d704b676950845a74
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350985"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633840"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Snelstart: gegevens in Synapse SQL-groep onderbreken en hervatten met Azure PowerShell
 
-U Azure PowerShell gebruiken om de compute resources (Synapse SQL Pool) (datawarehouse) te pauzeren en te hervatten. Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
+U Azure PowerShell gebruiken om de compute resources (Synapse SQL Pool) (datawarehouse) te pauzeren en te hervatten.
+Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -30,19 +31,19 @@ Deze quickstart gaat ervan uit dat u al een SQL-pool hebt die u pauzeren en herv
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
-Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) en volg de aanwijzingen op het scherm.
+Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en volg de aanwijzingen op het scherm.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Voer [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)uit om te zien welk abonnement u gebruikt.
+Voer [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)uit om te zien welk abonnement u gebruikt.
 
 ```powershell
 Get-AzSubscription
 ```
 
-Als u een ander abonnement moet gebruiken dan de standaardinstelling, voert u [Set-AzContext](/powershell/module/az.accounts/set-azcontext)uit.
+Als u een ander abonnement moet gebruiken dan de standaardinstelling, voert u [Set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)uit.
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -65,20 +66,19 @@ Volg de volgende stappen om locatiegegevens voor uw SQL-groep te vinden:
 
 ## <a name="pause-compute"></a>Compute onderbreken
 
-Om kosten te besparen, u op aanvraag gegevensbronnen onderbreken en hervatten. Als u bijvoorbeeld 's nachts en in het weekend de database niet gebruikt, u deze tijdens die tijden pauzeren en overdag hervatten. 
+Om kosten te besparen, u op aanvraag gegevensbronnen onderbreken en hervatten. Als u bijvoorbeeld 's nachts en in het weekend de database niet gebruikt, u deze tijdens die tijden pauzeren en overdag hervatten.
 
 >[!NOTE]
 >Er zijn geen kosten verbonden aan rekenbronnen terwijl de database wordt onderbroken. Er worden echter nog steeds kosten in rekening gebracht voor opslag.
 
-Als u een database wilt pauzeren, gebruikt u de cmdlet [Suspend-AzSqlDatabase.](/powershell/module/az.sql/suspend-azsqldatabase) In het volgende voorbeeld wordt een SQL-groep met de naam **mySampleDataWarehouse** gepauzeerd op een server met de naam **sqlpoolserver**. De server bevindt zich in een Azure-brongroep met de naam **myResourceGroup**.
-
+Als u een database wilt pauzeren, gebruikt u de cmdlet [Suspend-AzSqlDatabase.](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) In het volgende voorbeeld wordt een SQL-groep met de naam **mySampleDataWarehouse** gepauzeerd op een server met de naam **sqlpoolserver**. De server bevindt zich in een Azure-brongroep met de naam **myResourceGroup**.
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "nsqlpoolservername" –DatabaseName "mySampleDataWarehouse"
 ```
 
-In het volgende voorbeeld wordt de database opgehaald in het $database object. Vervolgens wordt het object naar [Suspend-AzSqlDatabase getransporteerd.](/powershell/module/az.sql/suspend-azsqldatabase) De resultaten worden opgeslagen in het object resultDatabase. De laatste opdracht toont de resultaten.
+In het volgende voorbeeld wordt de database opgehaald in het $database object. Vervolgens wordt het object naar [Suspend-AzSqlDatabase getransporteerd.](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) De resultaten worden opgeslagen in het object resultDatabase. De laatste opdracht toont de resultaten.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -89,7 +89,7 @@ $resultDatabase
 
 ## <a name="resume-compute"></a>Compute hervatten
 
-Als u een database wilt starten, gebruikt u de cmdlet [Cv-AzSqlDatabase.](/powershell/module/az.sql/resume-azsqldatabase) In het volgende voorbeeld wordt een database gestart met de naam **mySampleDataWarehouse** die wordt gehost op een server met de naam **sqlpoolserver.** De server bevindt zich in een Azure-brongroep met de naam **myResourceGroup**.
+Als u een database wilt starten, gebruikt u de cmdlet [Cv-AzSqlDatabase.](/powershell/module/az.sql/resume-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) In het volgende voorbeeld wordt een database gestart met de naam **mySampleDataWarehouse** die wordt gehost op een server met de naam **sqlpoolserver.** De server bevindt zich in een Azure-brongroep met de naam **myResourceGroup**.
 
 ```Powershell
 Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -107,7 +107,7 @@ $resultDatabase
 
 ## <a name="check-status-of-your-sql-pool-operation"></a>Status van uw SQL-poolbewerking controleren
 
-Als u de status van uw SQL-groep wilt controleren, gebruikt u de cmdlet [Get-AzSqlDatabaseActivity.](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description)
+Als u de status van uw SQL-groep wilt controleren, gebruikt u de cmdlet [Get-AzSqlDatabaseActivity.](/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 ```Powershell
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
@@ -134,7 +134,6 @@ Volg deze stappen om de resources op te schonen zoals gewenst.
 
 5. Als u de resourcegroep wilt verwijderen, klikt u op **myResourceGroup**. Klik vervolgens op **Resourcegroep verwijderen**.
 
-
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga voor meer informatie over SQL-groep verder naar het artikel [Gegevens laden in SQL-groep.](load-data-from-azure-blob-storage-using-polybase.md) Zie het artikel [Compute overview beheren](sql-data-warehouse-manage-compute-overview.md) voor meer informatie over het beheren van rekenmogelijkheden. 
+Ga voor meer informatie over SQL-groep verder naar het artikel [Gegevens laden in SQL-groep.](load-data-from-azure-blob-storage-using-polybase.md) Zie het artikel [Compute overview beheren](sql-data-warehouse-manage-compute-overview.md) voor meer informatie over het beheren van rekenmogelijkheden.

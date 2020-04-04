@@ -11,12 +11,12 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 45982c0761fecdb456dba5dc4a5d604972b9c3e5
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 57564e9dffd6022e1e4fe464b4b26a5bb8eb318b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349317"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631328"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>Snelstart: een Synapse SQL-groep maken en opvragen met Azure PowerShell
 
@@ -33,24 +33,23 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.c
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) en volg de aanwijzingen op het scherm.
+Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en volg de aanwijzingen op het scherm.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Voer [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)uit om te zien welk abonnement u gebruikt.
+Voer [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)uit om te zien welk abonnement u gebruikt.
 
 ```powershell
 Get-AzSubscription
 ```
 
-Als u een ander abonnement moet gebruiken dan de standaardinstelling, voert u [Set-AzContext](/powershell/module/az.accounts/set-azcontext)uit.
+Als u een ander abonnement moet gebruiken dan de standaardinstelling, voert u [Set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)uit.
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
 ```
-
 
 ## <a name="create-variables"></a>Variabelen maken
 
@@ -75,7 +74,7 @@ $databasename = "mySampleDataWarehouse"
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een [Azure-brongroep](../../azure-resource-manager/management/overview.md) met de opdracht [Nieuw-AzResourceGroep.](/powershell/module/az.resources/new-azresourcegroup) Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd. In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` gemaakt op de locatie `westeurope`.
+Maak een [Azure-brongroep](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) met de opdracht [Nieuw-AzResourceGroep.](/powershell/module/az.resources/new-azresourcegroup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd. In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` gemaakt op de locatie `westeurope`.
 
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
@@ -83,7 +82,7 @@ New-AzResourceGroup -Name $resourcegroupname -Location $location
 
 ## <a name="create-a-logical-server"></a>Een logische server maken
 
-Maak een [Azure SQL-logische server](../../sql-database/sql-database-logical-servers.md) met de opdracht [Nieuw-AzSqlServer.](/powershell/module/az.sql/new-azsqlserver) Een logische server bevat een groep met databases die worden beheerd als groep. In het volgende voorbeeld wordt een willekeurig benoemde server `ServerAdmin` in uw `ChangeYourAdminPassword1`brongroep met een benoemde beheerdersgebruiker en een wachtwoord van . U kunt deze vooraf gedefinieerde waarden vervangen.
+Maak een [Azure SQL-logische server](../../sql-database/sql-database-logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) met de opdracht [Nieuw-AzSqlServer.](/powershell/module/az.sql/new-azsqlserver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Een logische server bevat een groep met databases die worden beheerd als groep. In het volgende voorbeeld wordt een willekeurig benoemde server `ServerAdmin` in uw `ChangeYourAdminPassword1`brongroep met een benoemde beheerdersgebruiker en een wachtwoord van . U kunt deze vooraf gedefinieerde waarden vervangen.
 
 ```powershell
 New-AzSqlServer -ResourceGroupName $resourcegroupname `
@@ -94,7 +93,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Een serverfirewallregel configureren
 
-Maak een [firewallregel op Azure SQL-serverniveau](../../sql-database/sql-database-firewall-configure.md) met de opdracht [Nieuw-AzSqlServerFirewallRule.](/powershell/module/az.sql/new-azsqlserverfirewallrule) Met een firewallregel op serverniveau kan een externe toepassing, zoals SQL Server Management Studio of het SQLCMD-hulpprogramma, verbinding maken met een SQL-groep via de SQL-poolservicefirewall. 
+Maak een [firewallregel op Azure SQL-serverniveau](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) met de opdracht [Nieuw-AzSqlServerFirewallRule.](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Met een firewallregel op serverniveau kan een externe toepassing, zoals SQL Server Management Studio of het SQLCMD-hulpprogramma, verbinding maken met een SQL-groep via de SQL-poolservicefirewall.
 
 In het volgende voorbeeld wordt de firewall alleen geopend voor andere Azure-resources. Voor externe connectiviteit wijzigt u het IP-adres in een correct adres voor uw omgeving. Als u alle IP-adressen wilt openen, gebruikt u 0.0.0.0 als beginadres en 255.255.255.255 als eindadres.
 
@@ -108,9 +107,9 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 > SQL-eindpunten communiceren via poort 1433. Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 1433 mogelijk niet toegestaan door de firewall van uw netwerk. Als dat het zo is, u geen verbinding maken met uw Azure SQL-server, tenzij uw IT-afdeling poort 1433 opent.
 >
 
-
 ## <a name="create-a-sql-pool"></a>Een SQL-groep maken
-In het volgende voorbeeld wordt een SQL-groep gemaakt met behulp van de eerder gedefinieerde variabelen.  Hiermee wordt de servicedoelstelling als DW100c opgegeven, wat een lager uitgangspunt is voor uw SQL-groep. 
+
+In het volgende voorbeeld wordt een SQL-groep gemaakt met behulp van de eerder gedefinieerde variabelen.  Hiermee wordt de servicedoelstelling als DW100c opgegeven, wat een lager uitgangspunt is voor uw SQL-groep.
 
 ```Powershell
 New-AzSqlDatabase `
@@ -133,15 +132,14 @@ De vereiste parameters zijn:
 
 De optionele parameters zijn:
 
-- **CollationName**: de standaardsortering, indien niet opgegeven, is COLLATE SQL_Latin1_General_CP1_CI_AS. Collatie kan niet worden gewijzigd in een database.
-- **MaxSizeBytes:** de standaard maximale grootte van een database is 240 TB. De maximale grootte beperkt de gegevens van rowstore. Er is onbeperkte opslag voor kolomgegevens.
+* **CollationName**: de standaardsortering, indien niet opgegeven, is COLLATE SQL_Latin1_General_CP1_CI_AS. Collatie kan niet worden gewijzigd in een database.
+* **MaxSizeBytes:** de standaard maximale grootte van een database is 240 TB. De maximale grootte beperkt de gegevens van rowstore. Er is onbeperkte opslag voor kolomgegevens.
 
-Zie [Nieuw-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)voor meer informatie over de parameteropties.
-
+Zie [Nieuw-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor meer informatie over de parameteropties.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Andere zelfstudies in deze verzameling zijn gebaseerd op deze snelstart. 
+Andere zelfstudies in deze verzameling zijn gebaseerd op deze snelstart.
 
 > [!TIP]
 > Als u van plan bent om verder te werken met latere quickstart-zelfstudies, ruimt u de bronnen die in deze quickstart zijn gemaakt, niet op. Als u niet van plan bent door te gaan, gebruikt u de volgende stappen om alle resources te verwijderen die door deze quickstart in de Azure-portal zijn gemaakt.

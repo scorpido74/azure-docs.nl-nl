@@ -9,15 +9,15 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: c28b63749cfdbcd16b94cbd3ca7dd4023f46a351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1703853f42b52dccc80fdfadaa09b67e18a19db8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78897729"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632901"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Veelvoorkomende problemen met tweefactorverificatie en uw werk- of schoolaccount
 
@@ -99,6 +99,8 @@ App-wachtwoorden vervangen uw normale wachtwoord voor oudere bureaubladtoepassin
 ## <a name="i-cant-turn-two-factor-verification-off"></a>Ik kan tweefactorverificatie niet uitschakelen
 
 Als u tweestapsverificatie gebruikt met uw werk- of alain@contoso.comschoolaccount (bijvoorbeeld), betekent dit waarschijnlijk dat uw organisatie heeft besloten dat u deze toegevoegde beveiligingsfunctie moet gebruiken. Omdat uw organisatie heeft besloten dat u deze functie moet gebruiken, is er geen manier voor u om deze afzonderlijk uit te schakelen. Als u echter tweestapsverificatie gebruikt met een persoonlijk alain@outlook.comaccount, zoals, hebt u de mogelijkheid om de functie in- en uit te schakelen. Zie [Tweestapsverificatie in- of uitschakelen voor uw Microsoft-account voor](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)instructies over het beheren van tweestapsverificatie voor uw persoonlijke accounts.
+
+Als u tweestapsverificatie niet uitschakelen, kan dit ook komen door de beveiligingsstandaards die op organisatieniveau zijn toegepast. Zie [Wat zijn beveiligingsdefulta](../fundamentals/concept-fundamentals-security-defaults.md) voor meer informatie over beveiligingsstandaards?
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Ik heb geen antwoord gevonden op mijn probleem
 

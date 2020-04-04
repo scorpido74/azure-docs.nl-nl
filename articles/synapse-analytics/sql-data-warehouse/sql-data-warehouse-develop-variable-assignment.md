@@ -1,6 +1,6 @@
 ---
 title: Variabelen toewijzen
-description: Tips voor het toewijzen van T-SQL-variabelen in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
+description: In dit artikel vindt u essentiële tips voor het toewijzen van T-SQL-variabelen in SQL-pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0adcd9bdf92b7ec649b7d91ca0e655fc006b3549
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351651"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633412"
 ---
-# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Variabelen toewijzen in Azure SQL Data Warehouse
+# <a name="assign-variables-in-synapse-sql-pool"></a>Variabelen toewijzen in de Synapse SQL-groep
 
-Tips voor het toewijzen van T-SQL-variabelen in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
+In dit artikel vindt u essentiële tips voor het toewijzen van T-SQL-variabelen in SQL-pool.
 
-## <a name="setting-variables-with-declare"></a>Variabelen instellen met DECLARE
+## <a name="set-variables-with-declare"></a>Variabelen instellen met DECLARE
 
-Variabelen in SQL Data Warehouse `DECLARE` worden ingesteld `SET` met behulp van de instructie of de instructie. Het initialiseren van variabelen met DECLARE is een van de meest flexibele manieren om een variabele waarde in SQL Data Warehouse in te stellen.
+Variabelen in SQL-groep worden `DECLARE` ingesteld `SET` met behulp van de instructie of de instructie. Het initialiseren van variabelen met DECLARE is een van de meest flexibele manieren om een variabele waarde in SQL-groep in te stellen.
 
 ```sql
 DECLARE @v  int = 0
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-U een variabele niet initialiseren en gebruiken in dezelfde DECLARE-instructie. Ter illustratie van het punt **not** is het @p1 volgende voorbeeld niet toegestaan, omdat het zowel geïnitialiseerd als gebruikt wordt in dezelfde DECLARE-instructie. In het volgende voorbeeld wordt een fout weergegeven.
+U een variabele niet initialiseren en gebruiken in dezelfde DECLARE-instructie. Ter illustratie van het punt **not** is het @p1 volgende voorbeeld niet toegestaan, omdat het zowel geïnitialiseerd als gebruikt wordt in dezelfde DECLARE-instructie. Als zodanig geeft het volgende voorbeeld een foutmelding:
 
 ```sql
 DECLARE @p1 int = 0
@@ -47,7 +47,7 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>Waarden instellen met SET
+## <a name="set-values-with-set"></a>Waarden instellen met SET
 
 SET is een veelgebruikte methode voor het instellen van één variabele.
 

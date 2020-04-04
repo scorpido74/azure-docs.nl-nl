@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b56375388f6293d27bcd2f2548d8b20205a92b15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256911"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638035"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Een beheerde instantie gebruiken in Azure SQL Database
 
@@ -43,6 +43,7 @@ In dit artikel vindt u verschillende handleidingen, scripts en uitleg die u kunn
 
 - [Transactionele replicatie](replication-with-sql-database-managed-instance.md) stelt u in staat om uw gegevens te repliceren tussen beheerde exemplaren of van on-premises SQL Server naar een beheerde instantie, en vice versa. Meer informatie over het gebruik en configureren van transactiereplicatie vindt u in deze handleiding.
 - [Bedreigingsdetectie configureren](sql-database-managed-instance-threat-detection.md) – [bedreigingsdetectie](sql-database-threat-detection-overview.md) is een ingebouwde Azure SQL Database-functie die verschillende potentiële aanvallen detecteert, zoals SQL Injection of toegang vanaf verdachte locaties. In deze handleiding u leren hoe u [bedreigingsdetectie](sql-database-threat-detection-overview.md) in- en configureert voor een beheerde instantie.
+- [Met het maken van waarschuwingen](sql-database-managed-instance-alerts.md) u waarschuwingen instellen op bewaakte statistieken, zoals CPU-gebruik, opslagruimteverbruik, IOPS en anderen voor beheerde bijvoorbeeld. In deze handleiding leert u hoe u waarschuwingen voor beheerde bijvoorbeeld inschakelen en configureren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a37e1b9bc4a0b953dc727dbab2813dd938ed576
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720347"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652220"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: veelgestelde vragen
 
@@ -135,7 +135,7 @@ Ja, u een Hive-metastore migreren van een ESP naar een niet-ESP-cluster.
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>Hoe kan ik de grootte van een Hive metastore database schatten?
 
-Een Hive-metastore wordt gebruikt om de metagegevens op te slaan voor gegevensbronnen die worden gebruikt door de Hive-server. De groottevereisten zijn deels afhankelijk van het aantal en de complexiteit van uw Hive-gegevensbronnen en kunnen niet vooraf worden geschat. Zoals beschreven in [hive metastore best practices,](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices)u beginnen met een S2-laag, die 50 DTU en 250 GB opslagruimte biedt, en als u een knelpunt ziet, u de database opschalen.
+Een Hive-metastore wordt gebruikt om de metagegevens op te slaan voor gegevensbronnen die worden gebruikt door de Hive-server. De groottevereisten zijn deels afhankelijk van het aantal en de complexiteit van uw Hive-gegevensbronnen en kunnen niet vooraf worden geschat. Zoals beschreven in [hive metastore richtlijnen](hdinsight-use-external-metadata-stores.md#hive-metastore-guidelines), u beginnen met een S2-laag, die 50 DTU en 250 GB opslag biedt, en als je een knelpunt ziet, u de database opschalen.
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>Ondersteunt u een andere database dan Azure SQL Database als een externe metastore?
 
@@ -302,7 +302,7 @@ Nadat u een randknooppunt hebt gemaakt, u er verbinding mee maken met SSH op poo
 
 U gebruikt doorgaande scripts om nieuwe werknemersknooppunten aan te passen die aan het cluster zijn toegevoegd door middel van schaalbewerkingen. Doorgaande scripts zijn niet van toepassing op randknooppunten.
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 ### <a name="what-are-the-rest-api-calls-to-pull-a-tez-query-view-from-the-cluster"></a>Wat zijn de REST API-aanroepen om een Tez-queryweergave uit het cluster te halen?
 

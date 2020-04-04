@@ -11,18 +11,20 @@ ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 322f1dfcb709727ddd3a97ea22dbe8243aedca20
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4efd5c63af9f09d41733e8e172270410245977ec
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350352"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633203"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>REST-API's voor Azure SQL Data Warehouse
+
 REST API's voor het beheren van compute in Azure Synapse Analytics datawarehouse.
 
 ## <a name="scale-compute"></a>De schaal van Compute aanpassen
-Als u de gegevensmagazijnen wilt wijzigen, gebruikt u de API Database REST [maken of bijwerken.](/rest/api/sql/databases/createorupdate) In het volgende voorbeeld worden de gegevensmagazijnen ingesteld op DW1000 voor de database MySQLDW, die wordt gehost op server MyServer. De server bevindt zich in een Azure-brongroep met de naam ResourceGroup1.
+
+Als u de gegevensmagazijnen wilt wijzigen, gebruikt u de API Database REST [maken of bijwerken.](/rest/api/sql/databases/createorupdate?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) In het volgende voorbeeld worden de gegevensmagazijnen ingesteld op DW1000 voor de database MySQLDW, die wordt gehost op server MyServer. De server bevindt zich in een Azure-brongroep met de naam ResourceGroup1.
 
 ```
 PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -37,7 +39,7 @@ Content-Type: application/json; charset=UTF-8
 
 ## <a name="pause-compute"></a>Compute onderbreken
 
-Als u een database wilt onderbreken, gebruikt u de API Voor de rest van de [pauze.](/rest/api/sql/databases/pause) In het volgende voorbeeld wordt een database met de naam Database02 onderbroken op een server met de naam Server01. De server bevindt zich in een Azure-brongroep met de naam ResourceGroup1.
+Als u een database wilt onderbreken, gebruikt u de API Voor de rest van de [pauze.](/rest/api/sql/databases/pause?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) In het volgende voorbeeld wordt een database met de naam Database02 onderbroken op een server met de naam Server01. De server bevindt zich in een Azure-brongroep met de naam ResourceGroup1.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
@@ -45,7 +47,7 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 
 ## <a name="resume-compute"></a>Compute hervatten
 
-Als u een database wilt starten, gebruikt u de [API VOOR hersteldatabaseREST.](/rest/api/sql/databases/resume) In het volgende voorbeeld wordt een database met de naam Database02 gestart die wordt gehost op een server met de naam Server01. De server bevindt zich in een Azure-brongroep met de naam ResourceGroup1. 
+Als u een database wilt starten, gebruikt u de [API VOOR hersteldatabaseREST.](/rest/api/sql/databases/resume?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) In het volgende voorbeeld wordt een database met de naam Database02 gestart die wordt gehost op een server met de naam Server01. De server bevindt zich in een Azure-brongroep met de naam ResourceGroup1.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1
@@ -61,7 +63,8 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 ```
 
 ## <a name="get-maintenance-schedule"></a>Onderhoudsschema ophalen
-Controleer het onderhoudsschema dat is ingesteld voor een gegevensmagazijn. 
+
+Controleer het onderhoudsschema dat is ingesteld voor een gegevensmagazijn.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -69,6 +72,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 ```
 
 ## <a name="set-maintenance-schedule"></a>Onderhoudsschema instellen
+
 Een onderhoudsschema instellen en bijwerken voor een bestaand gegevensmagazijn.
 
 ```
@@ -93,7 +97,6 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ```
 
-
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Compute beheren voor](sql-data-warehouse-manage-compute-overview.md)meer informatie .
 
+Zie [Compute beheren voor](sql-data-warehouse-manage-compute-overview.md)meer informatie .

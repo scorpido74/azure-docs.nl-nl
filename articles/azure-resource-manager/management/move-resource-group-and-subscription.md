@@ -3,12 +3,12 @@ title: Resources verplaatsen naar een nieuw abonnement of resourcegroep
 description: Gebruik Azure Resource Manager om resources naar een nieuwe brongroep of -abonnement te verplaatsen.
 ms.topic: conceptual
 ms.date: 03/02/2020
-ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248851"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631508"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement
 
@@ -107,7 +107,7 @@ Ter illustratie hebben we slechts één afhankelijke bron.
 
 * Stap 1: Als afhankelijke resources over verschillende resourcegroepen zijn verdeeld, verplaatst u deze eerst naar één resourcegroep.
 * Stap 2: Verplaats de resource en afhankelijke resources samen van het bronabonnement naar het doelabonnement.
-* Stap 3: Distribueer de afhankelijke resources optioneel naar verschillende resourcegroepen binnen het doelabonnement. 
+* Stap 3: Distribueer de afhankelijke resources optioneel naar verschillende resourcegroepen binnen het doelabonnement.
 
 ## <a name="validate-move"></a>Verplaatsen valideren
 
@@ -260,8 +260,9 @@ Bij het verplaatsen van een resource moeten de afhankelijke resources bestaan in
 Voor het verplaatsen van een virtuele machine kunnen bijvoorbeeld zeven resourcetypen met drie verschillende resourceproviders worden verplaatst. Deze resourceproviders en -typen zijn:
 
 * Microsoft.Compute
-   * virtueleMachines
-   * Schijven
+
+  * virtueleMachines
+  * Schijven
 * Microsoft.Network
   * netwerkInterfaces
   * publicIPAddresses

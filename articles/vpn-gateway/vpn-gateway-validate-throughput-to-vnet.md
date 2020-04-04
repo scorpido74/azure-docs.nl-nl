@@ -4,17 +4,18 @@ description: Het doel van dit document is om een gebruiker te helpen de netwerkd
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
+manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: a88e339e82484c2ec1cd2276f6218fa718b990f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75860483"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631775"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>VPN-doorvoer naar een virtueel netwerk valideren
 
@@ -242,7 +243,7 @@ Vermeldde de subnetten van on-premises bereiken die u wilt dat Azure bereikt via
 
 * **Policy Based Gateway**: Op beleid gebaseerde VPN's versleutelen en sturen pakketten door IPsec-tunnels op basis van de combinaties van adresvoorvoegsels tussen uw on-premises netwerk en het Azure VNet. Het beleid (of de verkeersselector) wordt gewoonlijk gedefinieerd als een toegangslijst in de VPN-configuratie.
 
-* **UsePolicyBasedTrafficSelector-verbindingen:** ("UsePolicyBasedTrafficSelectors" om te $True op een verbinding, configureert de Azure VPN-gateway om verbinding te maken met vpn-firewall op basis van beleid op locatie. Als u PolicyBasedTrafficSelectors inschakelt, moet u ervoor zorgen dat uw VPN-apparaat de overeenkomende verkeersselectors heeft gedefinieerd met alle combinaties van uw voorvoegsels van uw on-premises netwerk (lokale netwerkgateway) van en naar de voorvoegsels van het Azure-virtuele netwerk, in plaats van any-to-any.
+* **UsePolicyBasedTrafficSelector-verbindingen:** ("UsePolicyBasedTrafficSelectors" om te $True op een verbinding, configureert de Azure VPN-gateway om verbinding te maken met vpn-firewall op basis van beleid op locatie. Als u PolicyBasedTrafficSelectors inschakelt, moet u ervoor zorgen dat uw VPN-apparaat de overeenkomende verkeersselectors heeft gedefinieerd met alle combinaties van uw voorvoegsels voor het lokale netwerk (local network gateway) van en naar de voorvoegsels van het Azure-virtuele netwerk, in plaats van alle-to-any.If you enable policyBasedTrafficSelectselectors, you need to ensure your VPN device has has the matching traffic selectors defined with all combinations of your on-premises network (local network gateway) prefixes to and from the Azure virtual network prefixes, instead of any-to-any.
 
 Ongepaste configuratie kan leiden tot frequente verbreekt binnen de tunnel, packet drops, slechte doorvoer, en latentie.
 

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7460a59dd2a7a5906a483195929136391657fa50
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: c93dab2f6086b10e1e8d75c4fc3334a95c3fcafa
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584012"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633279"
 ---
 # <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>Contoso-retailgegevens laden in een Synapse SQL-gegevensmagazijn
 
@@ -77,41 +77,40 @@ WITH (
 
 ## <a name="create-the-external-data-source"></a>De externe gegevensbron maken
 
-Gebruik deze opdracht [EXTERNE GEGEVENSBRON MAKEN](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=sql-server-ver15) om de locatie van de gegevens en het gegevenstype op te slaan. 
+Gebruik deze opdracht [EXTERNE GEGEVENSBRON MAKEN](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de locatie van de gegevens en het gegevenstype op te slaan.
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
-WITH 
+WITH
 (  
-    TYPE = Hadoop 
+    TYPE = Hadoop
 ,   LOCATION = 'wasbs://contosoretaildw-tables@contosoretaildw.blob.core.windows.net/'
-); 
+);
 ```
 
 > [!IMPORTANT]
-> Als u ervoor kiest om uw azure blob-opslagcontainers openbaar te maken, moet u er rekening mee brengen dat u als gegevenseigenaar in rekening wordt gebracht voor gegevensuitweie wanneer gegevens het datacenter verlaten. 
-> 
+> Als u ervoor kiest om uw azure blob-opslagcontainers openbaar te maken, moet u er rekening mee brengen dat u als gegevenseigenaar in rekening wordt gebracht voor gegevensuitweie wanneer gegevens het datacenter verlaten.
 
 ## <a name="configure-the-data-format"></a>De gegevensindeling configureren
 
 De gegevens worden opgeslagen in tekstbestanden in Azure blob-opslag en elk veld wordt gescheiden met een scheidingsteken. Voer in SSMS de volgende opdracht EXTERNE BESTANDSNOTatie MAKEN uit om de indeling van de gegevens in de tekstbestanden op te geven. De Contoso-gegevens zijn ongecomprimeerd en de pijp worden afgebakend.
 
 ```sql
-CREATE EXTERNAL FILE FORMAT TextFileFormat 
-WITH 
+CREATE EXTERNAL FILE FORMAT TextFileFormat
+WITH
 (   FORMAT_TYPE = DELIMITEDTEXT
 ,    FORMAT_OPTIONS    (   FIELD_TERMINATOR = '|'
                     ,    STRING_DELIMITER = ''
                     ,    DATE_FORMAT         = 'yyyy-MM-dd HH:mm:ss.fff'
-                    ,    USE_TYPE_DEFAULT = FALSE 
+                    ,    USE_TYPE_DEFAULT = FALSE
                     )
 );
-``` 
+```
 
-## <a name="create-the-external-tables"></a>De externe tabellen maken
-Nu u de gegevensbron en bestandsindeling hebt opgegeven, bent u klaar om de externe tabellen te maken. 
+## <a name="create-the-schema-for-the-external-tables"></a>Het schema voor de externe tabellen maken
 
-## <a name="create-a-schema-for-the-data"></a>Een schema voor de gegevens maken
+Nu u de gegevensbron en bestandsindeling hebt opgegeven, u het schema voor de externe tabellen maken.
+
 Als u een plaats wilt maken om de Contoso-gegevens in uw database op te slaan, maakt u een schema.
 
 ```sql
@@ -163,7 +162,7 @@ CREATE EXTERNAL TABLE [asb].DimProduct (
 )
 WITH
 (
-    LOCATION='/DimProduct/' 
+    LOCATION='/DimProduct/'
 ,   DATA_SOURCE = AzureStorage_west_public
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE
@@ -172,7 +171,7 @@ WITH
 ;
 
 --FactOnlineSales
-CREATE EXTERNAL TABLE [asb].FactOnlineSales 
+CREATE EXTERNAL TABLE [asb].FactOnlineSales
 (
     [OnlineSalesKey] [int]  NOT NULL,
     [DateKey] [datetime] NOT NULL,
@@ -198,7 +197,7 @@ CREATE EXTERNAL TABLE [asb].FactOnlineSales
 )
 WITH
 (
-    LOCATION='/FactOnlineSales/' 
+    LOCATION='/FactOnlineSales/'
 ,   DATA_SOURCE = AzureStorage_west_public
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE
@@ -208,9 +207,10 @@ WITH
 ```
 
 ## <a name="load-the-data"></a>De gegevens laden
+
 Er zijn verschillende manieren om toegang te krijgen tot externe gegevens.  U gegevens rechtstreeks vanuit de externe tabellen opvragen, de gegevens laden in nieuwe tabellen in het gegevensmagazijn of externe gegevens toevoegen aan bestaande gegevensmagazijntabellen.  
 
-###  <a name="create-a-new-schema"></a>Een nieuw schema maken
+### <a name="create-a-new-schema"></a>Een nieuw schema maken
 
 CTAS maakt een nieuwe tabel met gegevens.  Maak eerst een schema voor de contoso-gegevens.
 
@@ -221,11 +221,11 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>De gegevens in nieuwe tabellen laden
 
-Als u gegevens uit Azure blob-opslag wilt laden in de tabel met het gegevensmagazijn, gebruikt u de instructie [TABEL MAKEN ALS SELECT (Transact-SQL).](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7) Laden met [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md) maakt gebruik van de sterk getypte externe tabellen die u hebt gemaakt. Als u de gegevens in nieuwe tabellen wilt laden, gebruikt u één CTAS-instructie per tabel. 
- 
+Als u gegevens uit Azure blob-opslag wilt laden in de tabel met het gegevensmagazijn, gebruikt u de instructie [TABEL MAKEN ALS SELECT (Transact-SQL).](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Laden met [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md) maakt gebruik van de sterk getypte externe tabellen die u hebt gemaakt. Als u de gegevens in nieuwe tabellen wilt laden, gebruikt u één CTAS-instructie per tabel.
+
 CTAS maakt een nieuwe tabel en vult deze met de resultaten van een selecte instructie. CTAS definieert de nieuwe tabel met dezelfde kolommen en gegevenstypen als de resultaten van de select-instructie. Als u alle kolommen uit een externe tabel selecteert, wordt de nieuwe tabel een replica van de kolommen en gegevenstypen in de externe tabel.
 
-In dit voorbeeld maken we zowel de dimensie als de feitentabel als hash gedistribueerde tabellen. 
+In dit voorbeeld maken we zowel de dimensie als de feitentabel als hash gedistribueerde tabellen.
 
 ```sql
 SELECT GETDATE();
@@ -237,7 +237,7 @@ CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey
 
 ### <a name="track-the-load-progress"></a>De voortgang van de belasting bijhouden
 
-U de voortgang van uw belasting bijhouden met behulp van dynamische beheerweergaven (DMVs). 
+U de voortgang van uw belasting bijhouden met behulp van dynamische beheerweergaven (DMVs).
 
 ```sql
 -- To see all requests
@@ -254,13 +254,13 @@ SELECT
     r.command,
     s.request_id,
     r.status,
-    count(distinct input_name) as nbr_files, 
+    count(distinct input_name) as nbr_files,
     sum(s.bytes_processed)/1024/1024/1024 as gb_processed
 FROM
     sys.dm_pdw_exec_requests r
     inner join sys.dm_pdw_dms_external_work s
         on r.request_id = s.request_id
-WHERE 
+WHERE
     r.[label] = 'CTAS : Load [cso].[DimProduct]             '
     OR r.[label] = 'CTAS : Load [cso].[FactOnlineSales]        '
 GROUP BY
@@ -276,7 +276,7 @@ ORDER BY
 
 Standaard slaat het Sql-gegevensmagazijn van Synapse de tabel op als een geclusterde kolomarchiefindex. Nadat een belasting is voltooid, worden sommige gegevensrijen mogelijk niet gecomprimeerd in het kolomarchief.  Er zijn verschillende redenen waarom dit kan gebeuren. Zie [kolomarchiefindexen beheren](sql-data-warehouse-tables-index.md)voor meer informatie .
 
-Als u de queryprestaties en compressie van het kolomarchief na een belasting wilt optimaliseren, bouwt u de tabel opnieuw om de kolomarchiefindex te dwingen alle rijen te comprimeren. 
+Als u de queryprestaties en compressie van het kolomarchief na een belasting wilt optimaliseren, bouwt u de tabel opnieuw om de kolomarchiefindex te dwingen alle rijen te comprimeren.
 
 ```sql
 SELECT GETDATE();
@@ -290,7 +290,7 @@ Zie het artikel [indexen voor kolomarchief](sql-data-warehouse-tables-index.md) 
 
 ## <a name="optimize-statistics"></a>Statistieken optimaliseren
 
-Het is het beste om statistieken met één kolom direct na een belasting te maken. Als u weet dat bepaalde kolommen niet in querypredicaten staan, u het maken van statistieken over die kolommen overslaan. Als u op elke kolom statistieken met één kolom maakt, kan het lang duren voordat alle statistieken opnieuw worden hersteld. 
+Het is het beste om statistieken met één kolom direct na een belasting te maken. Als u weet dat bepaalde kolommen niet in querypredicaten staan, u het maken van statistieken over die kolommen overslaan. Als u op elke kolom statistieken met één kolom maakt, kan het lang duren voordat alle statistieken opnieuw worden hersteld.
 
 Als u besluit om statistieken met één kolom te maken voor elke `prc_sqldw_create_stats` kolom van elke tabel, u het voorbeeld van de opgeslagen procedurecode gebruiken in het [statistiekartikel.](sql-data-warehouse-tables-statistics.md)
 
@@ -339,6 +339,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ```
 
 ## <a name="achievement-unlocked"></a>Prestatie ontgrendeld!
+
 U hebt met succes openbare gegevens in uw gegevensmagazijn geladen. Geweldig werk!
 
 U nu beginnen met het opvragen van de tabellen om uw gegevens te verkennen. Voer de volgende query uit om de totale omzet per merk te achterhalen:
@@ -352,5 +353,6 @@ GROUP BY p.[BrandName]
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Als u de volledige gegevensset wilt laden, voert u het voorbeeld [het volledige Contoso-winkelgegevensmagazijn](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md) uit vanuit de Microsoft SQL Server-opslagplaats voor voorbeelden.
 Zie [Ontwerpbeslissingen en coderingstechnieken voor datawarehouses voor](sql-data-warehouse-overview-develop.md)meer ontwikkelingstips.

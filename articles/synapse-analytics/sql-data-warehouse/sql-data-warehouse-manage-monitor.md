@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: b2eee4cdf822b6904b7a407aa2796770a2502135
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: cf6f25e8839ead5738eb7259cc4fccb674a4adea
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351452"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633197"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>Uw AZURE Synapse Analytics SQL-poolworkload bewaken met DMVs
 
@@ -32,7 +32,7 @@ GRANT VIEW DATABASE STATE TO myuser;
 
 ## <a name="monitor-connections"></a>Verbindingen controleren
 
-Alle aanmeldingen in uw datawarehouse worden geregistreerd op [sys.dm_pdw_exec_sessions](https://msdn.microsoft.com/library/mt203883.aspx).  Deze DMV bevat de laatste 10.000 aanmeldingen.  De session_id is de primaire sleutel en wordt achtereenvolgens toegewezen voor elke nieuwe aanmelding.
+Alle aanmeldingen in uw datawarehouse worden geregistreerd op [sys.dm_pdw_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Deze DMV bevat de laatste 10.000 aanmeldingen.  De session_id is de primaire sleutel en wordt achtereenvolgens toegewezen voor elke nieuwe aanmelding.
 
 ```sql
 -- Other Active Connections
@@ -41,7 +41,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 
 ## <a name="monitor-query-execution"></a>Query-uitvoering controleren
 
-Alle query's die in SQL-groep worden uitgevoerd, worden geregistreerd op [sys.dm_pdw_exec_requests](https://msdn.microsoft.com/library/mt203887.aspx).  Deze DMV bevat de laatste 10.000 query's uitgevoerd.  De request_id identificeert op unieke wijze elke query en is de primaire sleutel voor deze DMV.  De request_id wordt achtereenvolgens toegewezen voor elke nieuwe query en is vooraf bevestigd met QID, wat staat voor query-ID.  Als u deze dmv opvraagt voor een bepaald session_id worden alle query's voor een bepaalde aanmelding weergegeven.
+Alle query's die in SQL-groep worden uitgevoerd, worden geregistreerd op [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Deze DMV bevat de laatste 10.000 query's uitgevoerd.  De request_id identificeert op unieke wijze elke query en is de primaire sleutel voor deze DMV.  De request_id wordt achtereenvolgens toegewezen voor elke nieuwe query en is vooraf bevestigd met QID, wat staat voor query-ID.  Als u deze dmv opvraagt voor een bepaald session_id worden alle query's voor een bepaalde aanmelding weergegeven.
 
 > [!NOTE]
 > Opgeslagen procedures maken gebruik van meerdere aanvraag-id's.  Aanvraag-id's worden in opeenvolgende volgorde toegewezen.
@@ -52,24 +52,24 @@ Hier volgen volgen stappen om queryuitvoeringsplannen en -tijden voor een bepaal
 
 ```sql
 -- Monitor active queries
-SELECT * 
-FROM sys.dm_pdw_exec_requests 
+SELECT *
+FROM sys.dm_pdw_exec_requests
 WHERE status not in ('Completed','Failed','Cancelled')
   AND session_id <> session_id()
 ORDER BY submit_time DESC;
 
 -- Find top 10 queries longest running queries
-SELECT TOP 10 * 
-FROM sys.dm_pdw_exec_requests 
+SELECT TOP 10 *
+FROM sys.dm_pdw_exec_requests
 ORDER BY total_elapsed_time DESC;
 
 ```
 
 Noteer in de voorgaande queryresultaten **de aanvraag-id** van de query die u wilt onderzoeken.
 
-Query's in de **status Opgeschort** kunnen in de wachtrij worden geplaatst vanwege een groot aantal actieve actieve query's. Deze query's worden ook weergegeven in de [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) wacht query met een type UserConcurrencyResourceType. Zie [Geheugen- en gelijktijdigheidslimieten of](../sql-data-warehouse/memory-concurrency-limits.md) [Resourceklassen voor werkbelastingbeheer voor](resource-classes-for-workload-management.md)informatie over gelijktijdigheidslimieten . Query's kunnen ook wachten op andere redenen, zoals voor objectvergrendelingen.  Zie [Query's onderzoeken die wachten op bronnen](#monitor-waiting-queries) verderop in dit artikel als uw query op een resource wacht.
+Query's in de **status Opgeschort** kunnen in de wachtrij worden geplaatst vanwege een groot aantal actieve actieve query's. Deze query's worden ook weergegeven in de [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) wacht query met een type UserConcurrencyResourceType. Zie [Geheugen- en gelijktijdigheidslimieten of](memory-concurrency-limits.md) [Resourceklassen voor werkbelastingbeheer voor](resource-classes-for-workload-management.md)informatie over gelijktijdigheidslimieten . Query's kunnen ook wachten op andere redenen, zoals voor objectvergrendelingen.  Zie [Query's onderzoeken die wachten op bronnen](#monitor-waiting-queries) verderop in dit artikel als uw query op een resource wacht.
 
-Als u het opzoeken van een query in de [tabel sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) wilt vereenvoudigen, gebruikt u [LABEL](https://msdn.microsoft.com/library/ms190322.aspx) om een opmerking toe te wijzen aan uw query, die kan worden opgezocht in de sys.dm_pdw_exec_requests-weergave.
+Als u het opzoeken van een query in de [tabel sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) wilt vereenvoudigen, gebruikt u [LABEL](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om een opmerking toe te wijzen aan uw query, die kan worden opgezocht in de sys.dm_pdw_exec_requests-weergave.
 
 ```sql
 -- Query with Label
@@ -87,7 +87,7 @@ WHERE   [label] = 'My Query';
 
 ### <a name="step-2-investigate-the-query-plan"></a>STAP 2: Het queryplan onderzoeken
 
-Gebruik de aanvraag-id om het gedistribueerde SQL-sql-abonnement (distributed SQL) van de query op te halen van [sys.dm_pdw_request_steps](https://msdn.microsoft.com/library/mt203913.aspx).
+Gebruik de aanvraag-id om het gedistribueerde SQL-sql-abonnement (distributed SQL) van de query op te halen van [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -107,7 +107,7 @@ Als u meer details over één stap wilt onderzoeken, wordt in de *operation_type
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>STAP 3: SQL onderzoeken op de gedistribueerde databases
 
-Gebruik de aanvraag-id en de stapindex om gegevens op te halen uit [sys.dm_pdw_sql_requests](https://msdn.microsoft.com/library/mt203889.aspx), die uitvoeringsgegevens van de querystap op alle gedistribueerde databases bevat.
+Gebruik de aanvraag-id en de stapindex om gegevens op te halen uit [sys.dm_pdw_sql_requests](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), die uitvoeringsgegevens van de querystap op alle gedistribueerde databases bevat.
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -117,7 +117,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-Wanneer de querystap wordt uitgevoerd, kunnen [DBCC-PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx) worden gebruikt om het sql-server-geschatte plan op te halen uit de SQL Server-plancache voor de stap die wordt uitgevoerd op een bepaalde distributie.
+Wanneer de querystap wordt uitgevoerd, kunnen [DBCC-PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) worden gebruikt om het sql-server-geschatte plan op te halen uit de SQL Server-plancache voor de stap die wordt uitgevoerd op een bepaalde distributie.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL pool or control node.
@@ -127,7 +127,8 @@ DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
 ### <a name="step-4-investigate-data-movement-on-the-distributed-databases"></a>STAP 4: Gegevensverplaatsing op de gedistribueerde databases onderzoeken
-Gebruik de aanvraag-id en de stapindex om informatie over een stap voor gegevensverplaatsing die op elke distributie wordt uitgevoerd, op te halen via [sys.dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx).
+
+Gebruik de aanvraag-id en de stapindex om informatie over een stap voor gegevensverplaatsing die op elke distributie wordt uitgevoerd, op te halen via [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ```sql
 -- Find information about all the workers completing a Data Movement Step.
@@ -140,7 +141,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 * Controleer de *total_elapsed_time* kolom om te zien of een bepaalde distributie aanzienlijk langer duurt dan andere voor gegevensverplaatsing.
 * Controleer voor de langlopende verdeling de *kolom rows_processed* om te zien of het aantal rijen dat uit die verdeling wordt verplaatst aanzienlijk groter is dan andere. Als dit het zo is, kan deze bevinding wijzen op scheeftrekking van uw onderliggende gegevens.
 
-Als de query wordt uitgevoerd, u [DBCC-PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx) gebruiken om het sql-server-geschatte plan op te halen uit de SQL Server-plancache voor de momenteel actieve SQL Step binnen een bepaalde distributie.
+Als de query wordt uitgevoerd, u [DBCC-PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om het sql-server-geschatte plan op te halen uit de SQL Server-plancache voor de momenteel actieve SQL Step binnen een bepaalde distributie.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL pool Compute or control node.
@@ -152,10 +153,11 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 <a name="waiting"></a>
 
 ## <a name="monitor-waiting-queries"></a>Wachtquery's bewaken
+
 Als u ontdekt dat uw query geen vooruitgang boekt omdat deze wacht op een resource, is hier een query die alle resources weergeeft waarop een query wacht.
 
 ```sql
--- Find queries 
+-- Find queries
 -- Replace request_id with value from Step 1.
 
 SELECT waits.session_id,
@@ -178,7 +180,7 @@ Als de query actief wacht op resources van een andere query, wordt de status **A
 
 ## <a name="monitor-tempdb"></a>Monitor tempdb
 
-Tempdb wordt gebruikt om tussentijdse resultaten te behouden tijdens de uitvoering van query's. Een hoog gebruik van de tempdb-database kan leiden tot trage queryprestaties. Voor elke DW100c geconfigureerd, 399 GB tempdb ruimte wordt toegewezen (DW1000c zou hebben 3,99 TB van de totale tempdb ruimte).  Hieronder vindt u tips voor het monitoren van tempdb gebruik en voor het verminderen van tempdb gebruik in uw zoekopdrachten. 
+Tempdb wordt gebruikt om tussentijdse resultaten te behouden tijdens de uitvoering van query's. Een hoog gebruik van de tempdb-database kan leiden tot trage queryprestaties. Voor elke DW100c geconfigureerd, 399 GB tempdb ruimte wordt toegewezen (DW1000c zou hebben 3,99 TB van de totale tempdb ruimte).  Hieronder vindt u tips voor het monitoren van tempdb gebruik en voor het verminderen van tempdb gebruik in uw zoekopdrachten.
 
 ### <a name="monitoring-tempdb-with-views"></a>Monitoring tempdb met views
 
@@ -210,11 +212,11 @@ FROM sys.dm_pdw_nodes_db_session_space_usage AS ssu
     INNER JOIN microsoft.vw_sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
 WHERE DB_NAME(ssu.database_id) = 'tempdb'
     AND es.session_id <> @@SPID
-    AND es.login_name <> 'sa' 
+    AND es.login_name <> 'sa'
 ORDER BY sr.request_id;
 ```
 
-Als u een query hebt die een grote hoeveelheid geheugen verbruikt of een foutbericht hebt ontvangen met betrekking tot de toewijzing van tempdb, kan dit te wijten zijn aan een zeer grote [TABEL MAKEN ALS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) of [SELECT-instructie INVOEGEN](/sql/t-sql/statements/insert-transact-sql) die niet optreedt in de bewerking van de uiteindelijke gegevensverplaatsing. Dit kan meestal worden geïdentificeerd als een ShuffleMove-bewerking in het gedistribueerde queryplan vlak voor de uiteindelijke INSERT SELECT.  Gebruik [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) om shufflemove-bewerkingen te controleren. 
+Als u een query hebt die een grote hoeveelheid geheugen verbruikt of een foutbericht hebt ontvangen met betrekking tot de toewijzing van tempdb, kan dit te wijten zijn aan een zeer grote [TABEL MAKEN ALS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) of [SELECT-instructie INVOEGEN](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) die niet optreedt in de bewerking van de uiteindelijke gegevensverplaatsing. Dit kan meestal worden geïdentificeerd als een ShuffleMove-bewerking in het gedistribueerde queryplan vlak voor de uiteindelijke INSERT SELECT.  Gebruik [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om shufflemove-bewerkingen te controleren.
 
 De meest voorkomende beperking is om uw CTAS- of INSERT SELECT-instructie in meerdere belastingsinstructies te breken, zodat het gegevensvolume de tempdb-limiet van 1 TB per knooppunt niet overschrijdt. U uw cluster ook schalen naar een groter formaat dat de tempdb-grootte over meer knooppunten verspreidt, waardoor de tempdb op elk afzonderlijk knooppunt wordt verminderd.
 
@@ -224,11 +226,12 @@ Naast CTAS- en INSERT SELECT-instructies kunnen grote, complexe query's die met 
 
 Geheugen kan de hoofdoorzaak zijn voor trage prestaties en geheugenproblemen. Overweeg uw gegevensmagazijn te schalen als u merkt dat sql server-geheugengebruik zijn grenzen bereikt tijdens het uitvoeren van query's.
 
-Met de volgende query retourneert SQL Server-geheugengebruik en geheugendruk per knooppunt:    
+Met de volgende query retourneert SQL Server-geheugengebruik en geheugendruk per knooppunt:
+
 ```sql
 -- Memory consumption
 SELECT
-  pc1.cntr_value as Curr_Mem_KB, 
+  pc1.cntr_value as Curr_Mem_KB,
   pc1.cntr_value/1024.0 as Curr_Mem_MB,
   (pc1.cntr_value/1048576.0) as Curr_Mem_GB,
   pc2.cntr_value as Max_Mem_KB,
@@ -240,13 +243,15 @@ FROM
 -- pc1: current memory
 sys.dm_pdw_nodes_os_performance_counters AS pc1
 -- pc2: total memory allowed for this SQL instance
-JOIN sys.dm_pdw_nodes_os_performance_counters AS pc2 
+JOIN sys.dm_pdw_nodes_os_performance_counters AS pc2
 ON pc1.object_name = pc2.object_name AND pc1.pdw_node_id = pc2.pdw_node_id
 WHERE
 pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
+
 ## <a name="monitor-transaction-log-size"></a>Transactielogboekgrootte controleren
+
 Met de volgende query wordt de grootte van het transactielogboek op elke distributie geretourneerd. Als een van de logboekbestanden 160 GB bereikt, u overwegen uw instantie op te schalen of de transactiegrootte te beperken.
 
 ```sql
@@ -254,19 +259,20 @@ Met de volgende query wordt de grootte van het transactielogboek op elke distrib
 SELECT
   instance_name as distribution_db,
   cntr_value*1.0/1048576 as log_file_size_used_GB,
-  pdw_node_id 
-FROM sys.dm_pdw_nodes_os_performance_counters 
-WHERE 
-instance_name like 'Distribution_%' 
+  pdw_node_id
+FROM sys.dm_pdw_nodes_os_performance_counters
+WHERE
+instance_name like 'Distribution_%'
 AND counter_name = 'Log File(s) Used Size (KB)'
 ```
 
 ## <a name="monitor-transaction-log-rollback"></a>Rollback van transactielogboeken controleren
 
 Als uw query's mislukken of lang duren om door te gaan, u controleren en controleren of transacties worden teruggedraaid.
+
 ```sql
 -- Monitor rollback
-SELECT 
+SELECT
     SUM(CASE WHEN t.database_transaction_next_undo_lsn IS NOT NULL THEN 1 ELSE 0 END),
     t.pdw_node_id,
     nod.[type]
@@ -277,7 +283,7 @@ GROUP BY t.pdw_node_id, nod.[type]
 
 ## <a name="monitor-polybase-load"></a>PolyBase-belasting controleren
 
-De volgende query geeft een schatting van de voortgang van uw belasting. De query toont alleen bestanden die momenteel worden verwerkt. 
+De volgende query geeft een schatting van de voortgang van uw belasting. De query toont alleen bestanden die momenteel worden verwerkt.
 
 ```sql
 
@@ -286,7 +292,7 @@ SELECT
     r.command,
     s.request_id,
     r.status,
-    count(distinct input_name) as nbr_files, 
+    count(distinct input_name) as nbr_files,
     sum(s.bytes_processed)/1024/1024/1024 as gb_processed
 FROM
     sys.dm_pdw_exec_requests r

@@ -4,19 +4,19 @@ description: Integreer uw VPN-infrastructuur met Azure MFA met de extensie Netwe
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f446f1549b3efcd5f27752fac972dfd80c8650d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec8d5b66c71c558e56f3d1f48cec96d7cc487552
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425414"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654129"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Uw VPN-infrastructuur integreren met Azure MFA met de extensie Netwerkbeleidsserver voor Azure
 
@@ -108,8 +108,8 @@ De NPS-extensie vereist Windows Server 2008 R2 SP1 of hoger, waarbij de rol Netw
 
 De volgende bibliotheken worden automatisch geïnstalleerd met de NPS-extensie:
 
--   [Visual C++ Verredbare pakketten voor Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
--   [Microsoft Azure Active Directory Module voor Windows PowerShell versie 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
+-    [Visual C++ Verredbare pakketten voor Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
+-    [Microsoft Azure Active Directory Module voor Windows PowerShell versie 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
 
 Als de Microsoft Azure Active Directory PowerShell-module nog niet aanwezig is, wordt deze geïnstalleerd met een configuratiescript dat u uitvoert als onderdeel van het installatieproces. Het is niet nodig om de module van tevoren te installeren als deze nog niet is geïnstalleerd.
 

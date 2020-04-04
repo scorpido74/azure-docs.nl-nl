@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2020
-ms.openlocfilehash: e2e1ddd031041f49107545cd0b3d3de4eaebcd6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: a5244086c185c111762496086f8044f12f52be14
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77472125"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632599"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Problemen met gegevensstromen in Azure Data Factory oplossen
 
@@ -55,6 +55,18 @@ In dit artikel worden veelvoorkomende probleemoplossingsmethoden voor gegevensst
 - **Bericht:** Kolomnaam moet worden opgegeven in de query, een alias instellen als u een SQL-functie gebruikt
 - **Oorzaken**: Er is geen kolomnaam opgegeven
 - **Aanbeveling**: Stel een alias in als u een SQL-functie gebruikt, zoals min()/max(), enz.
+
+### <a name="error-code-getcommand-outputasync-failed"></a>Foutcode: GetCommand OutputAsync is mislukt
+
+- **Bericht:** Tijdens dataflow debug genfout en data preview: GetCommand OutputAsync is mislukt met ...
+- **Oorzaken:** dit is een back-end servicefout. U de bewerking opnieuw proberen en ook uw foutopsporingssessie opnieuw starten.
+- **Aanbeveling:** Als u het probleem opnieuw probeert en opnieuw start, neemt u contact op met de klantenservice.
+
+### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>Foutcode: Onverwachte uitzondering raken en uitvoering is mislukt
+
+- **Bericht:** Tijdens de activiteitsuitvoering gegevensstroom: Klik op onverwachte uitzondering en de uitvoering is mislukt.
+- **Oorzaken:** dit is een back-end servicefout. U de bewerking opnieuw proberen en ook uw foutopsporingssessie opnieuw starten.
+- **Aanbeveling:** Als u het probleem opnieuw probeert en opnieuw start, neemt u contact op met de klantenservice.
 
 ## <a name="general-troubleshooting-guidance"></a>Algemene richtlijnen voor probleemoplossing
 

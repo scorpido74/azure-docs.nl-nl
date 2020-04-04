@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 25c047dc9b2ce08ca39e69c6f106e41c5d9bd0dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b94a97f1286e1273300014e4eef140be412436b
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268416"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637185"
 ---
 # <a name="azure-storage-analytics-logging"></a>Logboekregistratie van Azure Opslaganalyse
 
@@ -25,8 +25,6 @@ Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte a
 
 > [!NOTE]
 >  Logboekregistratie voor opslaganalyse is momenteel alleen beschikbaar voor de blob-, wachtrij- en tabelservices. Premium-opslagaccounts worden echter niet ondersteund.
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="requests-logged-in-logging"></a>Aanvragen die zijn aangemeld bij het aanmelden
 ### <a name="logging-authenticated-requests"></a>Geverifieerde aanvragen vastleggen

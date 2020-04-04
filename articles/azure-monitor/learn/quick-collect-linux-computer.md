@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b83592aa069b5262961f5e41a909821786a178b6
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 1da862a7994d7db5ee8c9f090119e14f19c6b13a
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528554"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637899"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Snelstart: gegevens van een Linux-computer verzamelen in een hybride omgeving met Azure Monitor
 
 [Azure Monitor](../overview.md) kan gegevens rechtstreeks van uw fysieke of virtuele Linux-computers in uw omgeving verzamelen in een Werkruimte Log Analytics voor gedetailleerde analyse en correlatie. Als azure monitor de [loganalytics-agent](../platform/log-analytics-agent.md) installeert, kan deze gegevens verzamelen uit een datacenter of andere cloudomgeving. Deze quickstart laat u zien hoe u gegevens van uw Linux-server configureren en verzamelen met een paar eenvoudige stappen. Zie [Gegevens verzamelen over virtuele Azure-machines voor](../../azure-monitor/learn/quick-collect-azurevm.md)informatie over Azure Linux VM's.  
 
-Zie [Ondersteunde Windows-besturingssystemen](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) en [netwerkfirewallconfiguratie](../../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)voor meer informatie over de ondersteunde configuratie.
+Zie [Ondersteunde Windows-besturingssystemen](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) en [netwerkfirewallconfiguratie](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)voor meer informatie over de ondersteunde configuratie.
  
 Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 

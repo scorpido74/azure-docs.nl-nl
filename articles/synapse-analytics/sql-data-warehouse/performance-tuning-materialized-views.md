@@ -11,75 +11,82 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e359537bbd0686d27825eee79e1cd35516ba6099
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 28dbe66d27ac75bee2ceecd160ead3dea6538034
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350911"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633818"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weergaven 
+# <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weergaven
+
+De gematerialiseerde weergaven in synapssql-pool bieden een onderhoudsarme methode voor complexe analytische query's om snelle prestaties te krijgen zonder dat query's worden gewijzigd. Dit artikel bespreekt de algemene richtlijnen voor het gebruik van gematerialiseerde weergaven.
+
 De gematerialiseerde weergaven in Azure SQL Data Warehouse bieden een onderhoudsarme methode voor complexe analytische query's om snelle prestaties te krijgen zonder dat query's worden gewijzigd. Dit artikel bespreekt de algemene richtlijnen voor het gebruik van gematerialiseerde weergaven.
 
-
 ## <a name="materialized-views-vs-standard-views"></a>Gematerialiseerde weergaven versus standaardweergaven
-Azure SQL Data Warehouse ondersteunt standaard- en gematerialiseerde weergaven.  Beide zijn virtuele tabellen gemaakt met SELECT-expressies en gepresenteerd aan query's als logische tabellen.  Weergaven bevatten de complexiteit van algemene gegevensberekening en voegen een abstractielaag toe aan berekeningswijzigingen, zodat query's niet hoeven te worden herschreven.  
 
-Een standaardweergave berekent de gegevens telkens wanneer de weergave wordt gebruikt.  Er zijn geen gegevens opgeslagen op schijf. Mensen gebruiken standaardweergaven meestal als een hulpmiddel waarmee de logische objecten en query's in een database kunnen worden georganiseerd.  Als u een standaardweergave wilt gebruiken, moet een query er rechtstreeks naar verwijzen. 
+SQL-pool ondersteunt standaard- en gematerialiseerde weergaven.  Beide zijn virtuele tabellen gemaakt met SELECT-expressies en gepresenteerd aan query's als logische tabellen.  Weergaven bevatten de complexiteit van algemene gegevensberekening en voegen een abstractielaag toe aan berekeningswijzigingen, zodat query's niet hoeven te worden herschreven.  
 
-Een gematerialiseerde weergave berekent, slaat en onderhoudt de gegevens ervan in Azure SQL Data Warehouse, net als een tabel.  Er is geen herberekening nodig elke keer wanneer een gematerialiseerde weergave wordt gebruikt.  Daarom kunnen query's die alle of subset van de gegevens in gematerialiseerde weergaven gebruiken, snellere prestaties krijgen.  Nog beter, query's kunnen een gematerialiseerde weergave gebruiken zonder er direct naar te verwijzen, dus het is niet nodig om toepassingscode te wijzigen.  
+Een standaardweergave berekent de gegevens telkens wanneer de weergave wordt gebruikt.  Er zijn geen gegevens opgeslagen op schijf. Mensen gebruiken standaardweergaven meestal als een hulpmiddel waarmee de logische objecten en query's in een database kunnen worden georganiseerd.  Als u een standaardweergave wilt gebruiken, moet een query er rechtstreeks naar verwijzen.
+
+Een gematerialiseerde weergave berekent, slaat en onderhoudt de gegevens in SQL-groep, net als een tabel.  Er is geen herberekening nodig elke keer wanneer een gematerialiseerde weergave wordt gebruikt.  Daarom kunnen query's die alle of subset van de gegevens in gematerialiseerde weergaven gebruiken, snellere prestaties krijgen.  Nog beter, query's kunnen een gematerialiseerde weergave gebruiken zonder er direct naar te verwijzen, dus het is niet nodig om toepassingscode te wijzigen.  
 
 De meeste vereisten voor een standaardweergave zijn nog steeds van toepassing op een gematerialiseerde weergave. Zie [GEMATERIALISEERDE WEERGAVE MAKEN ALS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)voor meer informatie over de gematerialiseerde weergavesyntaxis en andere vereisten .
 
-
-
-| Vergelijking                     | Weergave                                         | Gerealiseerde weergave             
-|:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------| 
-|Definitie weergeven                 | Opgeslagen in azure-gegevensmagazijn.              | Opgeslagen in azure-gegevensmagazijn.    
-|Inhoud weergeven                    | Elke keer gegenereerd wanneer de weergave wordt gebruikt.   | Voorverwerkt en opgeslagen in Azure-gegevensmagazijn tijdens het maken van de weergave. Bijgewerkt als gegevens worden toegevoegd aan de onderliggende tabellen.                                             
-|Gegevensvernieuwing                    | Altijd bijgewerkt                               | Altijd bijgewerkt                          
+| Vergelijking                     | Weergave                                         | Gerealiseerde weergave
+|:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
+|Definitie weergeven                 | Opgeslagen in SQL-pool.              | Opgeslagen in SQL-pool.
+|Inhoud weergeven                    | Elke keer gegenereerd wanneer de weergave wordt gebruikt.   | Voorverwerkt en opgeslagen in SQL-groep tijdens het maken van de weergave. Bijgewerkt als gegevens worden toegevoegd aan de onderliggende tabellen.
+|Gegevensvernieuwing                    | Altijd bijgewerkt                               | Altijd bijgewerkt
 |Snelheid om weergavegegevens uit complexe query's op te halen     | Langzaam                                         | Snel  
-|Extra opslag                   | Nee                                           | Ja                             
-|Syntaxis                          | WEERGAVE MAKEN                                  | GEMATERIALISEERDE WEERGAVE MAKEN ALS SELECTEREN           
-     
+|Extra opslag                   | Nee                                           | Ja
+|Syntaxis                          | WEERGAVE MAKEN                                  | GEMATERIALISEERDE WEERGAVE MAKEN ALS SELECTEREN
+
 ## <a name="benefits-of-using-materialized-views"></a>Voordelen van het gebruik van gematerialiseerde weergaven
 
 Een goed ontworpen gematerialiseerde weergave kan de volgende voordelen bieden:
 
 - Verkort de uitvoeringstijd voor complexe query's met JOIN's en samengevoegde functies. Hoe complexer de query, hoe groter het potentieel voor uitvoeringstijdbesparing. Het meeste voordeel wordt behaald wanneer de berekeningskosten van een query hoog zijn en de resulterende gegevensset klein is.  
-
-- De optimizer in Azure SQL Data Warehouse kan geïmplementeerde gematerialiseerde weergaven automatisch gebruiken om de uitvoeringsplannen voor query's te verbeteren.  Dit proces is transparant voor gebruikers die snellere queryprestaties leveren en vereist geen query's om direct te verwijzen naar de gematerialiseerde weergaven. 
-
-- Vereisen weinig onderhoud op de uitzichten.  Alle incrementele gegevenswijzigingen uit de basistabellen worden automatisch synchroon aan de gematerialiseerde weergaven toegevoegd.  Met dit ontwerp kunnen gematerialiseerde weergaven dezelfde gegevens retourneren als het rechtstreeks opvragen van de basistabellen. 
+- De optimizer in SQL-groep kan geïmplementeerde gematerialiseerde weergaven automatisch gebruiken om de uitvoeringsplannen voor query's te verbeteren.  Dit proces is transparant voor gebruikers die snellere queryprestaties leveren en vereist geen query's om direct te verwijzen naar de gematerialiseerde weergaven.
+- Vereisen weinig onderhoud op de uitzichten.  Alle incrementele gegevenswijzigingen uit de basistabellen worden automatisch synchroon aan de gematerialiseerde weergaven toegevoegd.  Met dit ontwerp kunnen gematerialiseerde weergaven dezelfde gegevens retourneren als het rechtstreeks opvragen van de basistabellen.
 - De gegevens in een gematerialiseerde weergave kunnen anders worden verdeeld dan de basistabellen.  
 - Gegevens in gematerialiseerde weergaven krijgen dezelfde voordelen voor hoge beschikbaarheid en tolerantie als gegevens in reguliere tabellen.  
- 
-In vergelijking met andere leveranciers van gegevensmagazijnen bieden de gematerialiseerde weergaven die zijn geïmplementeerd in Azure SQL Data Warehouse ook de volgende extra voordelen: 
 
-- Automatische en synchrone gegevens vernieuwen met gegevenswijzigingen in basistabellen. Er is geen actie van de gebruiker vereist. 
+De gematerialiseerde weergaven die zijn geïmplementeerd in SQL-groep bieden ook de volgende extra voordelen:
+
+In vergelijking met andere leveranciers van gegevensmagazijnen bieden de gematerialiseerde weergaven die zijn geïmplementeerd in Azure SQL Data Warehouse ook de volgende extra voordelen:
+
+- Automatische en synchrone gegevens vernieuwen met gegevenswijzigingen in basistabellen. Er is geen actie van de gebruiker vereist.
 - Brede geaggregeerde functieondersteuning. Zie [GEMATERIALISEERDE WEERGAVE MAKEN ALS SELECT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).
 - De ondersteuning voor queryspecifieke gematerialiseerde weergaveaanbeveling.  Zie [EXPLAIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest).
 
 ## <a name="common-scenarios"></a>Algemene scenario's  
 
-Gematerialiseerde weergaven worden meestal gebruikt in volgende scenario's: 
+Gematerialiseerde weergaven worden meestal gebruikt in volgende scenario's:
 
 **Noodzaak om de prestaties van complexe analytische query's te verbeteren tegen grote gegevens in omvang**
 
-Complexe analytische query's gebruiken doorgaans meer aggregatiefuncties en tabeljoins, waardoor meer rekenzware bewerkingen worden veroorzaakt, zoals shuffles en voegt ze samen in queryuitvoering.  Daarom duurt het langer voordat deze query's zijn voltooid, speciaal op grote tafels.  Gebruikers kunnen gematerialiseerde weergaven maken voor de gegevens die worden geretourneerd uit de algemene berekeningen van query's, zodat er geen herberekening nodig is wanneer deze gegevens nodig zijn door query's, waardoor lagere rekenkosten en een snellere queryrespons mogelijk zijn. 
+Complexe analytische query's gebruiken doorgaans meer aggregatiefuncties en tabeljoins, waardoor meer rekenzware bewerkingen worden veroorzaakt, zoals shuffles en voegt ze samen in queryuitvoering.  Daarom duurt het langer voordat deze query's zijn voltooid, speciaal op grote tafels.  
+
+Gebruikers kunnen gematerialiseerde weergaven maken voor de gegevens die worden geretourneerd uit de algemene berekeningen van query's, zodat er geen herberekening nodig is wanneer deze gegevens nodig zijn door query's, waardoor lagere rekenkosten en een snellere queryrespons mogelijk zijn.
 
 **Snellere prestaties nodig zonder of minimale querywijzigingen**
 
-Schema- en querywijzigingen in gegevensmagazijnen worden doorgaans tot een minimum beperkt om reguliere ETL-bewerkingen en rapportages te ondersteunen.  Mensen kunnen gematerialiseerde weergaven gebruiken voor het afstemmen van queryprestaties, als de kosten die de weergaven maken, kunnen worden gecompenseerd door de winst in queryprestaties. In vergelijking met andere tuningopties, zoals schaal- en statistiekbeheer, is het een veel minder impactvolle productiewijziging om een gematerialiseerde weergave te creëren en te behouden en de potentiële prestatiewinst is ook hoger.
+Schema- en querywijzigingen in SQL-pools worden doorgaans tot een minimum beperkt om reguliere ETL-bewerkingen en rapportages te ondersteunen.  Mensen kunnen gematerialiseerde weergaven gebruiken voor het afstemmen van queryprestaties, als de kosten die de weergaven maken, kunnen worden gecompenseerd door de winst in queryprestaties.
+
+In vergelijking met andere tuningopties, zoals schaal- en statistiekbeheer, is het een veel minder impactvolle productiewijziging om een gematerialiseerde weergave te creëren en te behouden en de potentiële prestatiewinst is ook hoger.
 
 - Het maken of onderhouden van gematerialiseerde weergaven heeft geen invloed op de query's die worden uitgevoerd ten opzichte van de basistabellen.
-- De queryoptimizer kan de geïmplementeerde gematerialiseerde weergaven automatisch gebruiken zonder directe weergaveverwijzing in een query. Deze mogelijkheid vermindert de behoefte aan queryverandering in prestatieafstemming. 
+- De queryoptimizer kan de geïmplementeerde gematerialiseerde weergaven automatisch gebruiken zonder directe weergaveverwijzing in een query. Deze mogelijkheid vermindert de behoefte aan queryverandering in prestatieafstemming.
 
 **Verschillende datadistributiestrategie nodig voor snellere queryprestaties**
 
-Azure data warehouse is een distributed massively parallel processing (MPP) systeem.   Gegevens in een gegevensmagazijntabel worden verdeeld over 60 knooppunten met behulp van een van de drie [distributiestrategieën](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute) (hash, round_robin of gerepliceerd).  De gegevensdistributie wordt opgegeven op de tijd voor het maken van de tabel en blijft ongewijzigd totdat de tabel is verwijderd. Gematerialiseerde weergave wordt een virtuele tabel op schijf ondersteunt hash en round_robin gegevensdistributies.  Gebruikers kunnen een gegevensdistributie kiezen die verschilt van de basistabellen, maar die optimaal is voor de prestaties van query's die de meest weergaven gebruiken.  
+SQL-pool is een gedistribueerd massaal parallel processing (MPP) systeem.   Gegevens in een SQL-pooltabel worden verdeeld over 60 knooppunten met behulp van een van de drie [distributiestrategieën](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (hash, round_robin of gerepliceerd).  
 
-## <a name="design-guidance"></a>Ontwerprichtlijnen 
+De gegevensdistributie wordt opgegeven op de tijd voor het maken van de tabel en blijft ongewijzigd totdat de tabel is verwijderd. Gematerialiseerde weergave wordt een virtuele tabel op schijf ondersteunt hash en round_robin gegevensdistributies.  Gebruikers kunnen een gegevensdistributie kiezen die verschilt van de basistabellen, maar die optimaal is voor de prestaties van query's die de meest weergaven gebruiken.  
+
+## <a name="design-guidance"></a>Ontwerprichtlijnen
 
 Hier vindt u de algemene richtlijnen voor het gebruik van gematerialiseerde weergaven om de queryprestaties te verbeteren:
 
@@ -87,21 +94,25 @@ Hier vindt u de algemene richtlijnen voor het gebruik van gematerialiseerde weer
 
 Voordat u gematerialiseerde weergaven gaat maken, is het belangrijk om een diepgaand inzicht te hebben in uw werkbelasting in termen van querypatronen, belang, frequentie en de grootte van de resulterende gegevens.  
 
-Gebruikers kunnen EXPLAIN WITH_RECOMMENDATIONS <SQL_statement> uitvoeren voor de gematerialiseerde weergaven die door de queryoptimizer worden aanbevolen.  Aangezien deze aanbevelingen queryspecifiek zijn, is een gematerialiseerde weergave die ten goede komt aan één query mogelijk niet optimaal voor andere query's in dezelfde werkbelasting.  Evalueer deze aanbevelingen met uw werkbelastingbehoeften in gedachten.  De ideale gematerialiseerde weergaven zijn die welke de prestaties van de werkbelasting ten goede komen.  
+Gebruikers kunnen EXPLAIN WITH_RECOMMENDATIONS <SQL_statement> uitvoeren voor de gematerialiseerde weergaven die door de queryoptimizer worden aanbevolen.  Aangezien deze aanbevelingen queryspecifiek zijn, is een gematerialiseerde weergave die ten goede komt aan één query mogelijk niet optimaal voor andere query's in dezelfde werkbelasting.  
 
-**Wees je bewust van de afweging tussen snellere query's en de kosten** 
+Evalueer deze aanbevelingen met uw werkbelastingbehoeften in gedachten.  De ideale gematerialiseerde weergaven zijn die welke de prestaties van de werkbelasting ten goede komen.  
 
-Voor elke gematerialiseerde weergave zijn er kosten voor gegevensopslag en kosten voor het onderhouden van de weergave.  Naarmate gegevens in basistabellen veranderen, neemt de grootte van de gematerialiseerde weergave toe en verandert ook de fysieke structuur.  Om degradatie van queryprestaties te voorkomen, wordt elke gematerialiseerde weergave afzonderlijk onderhouden door de datawarehouse-engine.  De onderhoudswerklast wordt hoger wanneer het aantal gematerialiseerde weergaven en wijzigingen in de basistabel toeneemt.   Gebruikers moeten controleren of de kosten van alle gematerialiseerde weergaven kunnen worden gecompenseerd door de prestatiewinst van query's.  
+**Wees je bewust van de afweging tussen snellere query's en de kosten**
 
-U deze query uitvoeren voor de lijst met gematerialiseerde weergave in een database: 
+Voor elke gematerialiseerde weergave zijn er kosten voor gegevensopslag en kosten voor het onderhouden van de weergave.  Naarmate gegevens in basistabellen veranderen, neemt de grootte van de gematerialiseerde weergave toe en verandert ook de fysieke structuur.  Om degradatie van queryprestaties te voorkomen, wordt elke gematerialiseerde weergave afzonderlijk onderhouden door de SQL-poolengine.  
+
+De onderhoudswerklast wordt hoger wanneer het aantal gematerialiseerde weergaven en wijzigingen in de basistabel toeneemt.   Gebruikers moeten controleren of de kosten van alle gematerialiseerde weergaven kunnen worden gecompenseerd door de prestatiewinst van query's.  
+
+U deze query uitvoeren voor de lijst met gematerialiseerde weergave in een database:
 
 ```sql
-SELECT V.name as materialized_view, V.object_id 
-FROM sys.views V 
+SELECT V.name as materialized_view, V.object_id
+FROM sys.views V
 JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
-``` 
+```
 
-Opties om het aantal gematerialiseerde weergaven te verminderen: 
+Opties om het aantal gematerialiseerde weergaven te verminderen:
 
 - Identificeer veelvoorkomende gegevenssets die vaak worden gebruikt door de complexe query's in uw werkbelasting.  Maak gematerialiseerde weergaven om deze gegevenssets op te slaan, zodat de optimizer ze kan gebruiken als bouwstenen bij het maken van uitvoeringsplannen.  
 
@@ -133,19 +144,25 @@ GROUP BY A, C
 
 **Niet alle prestatieafstemming vereist querywijziging**
 
-De optimizer van het gegevensmagazijn kan geïmplementeerde gematerialiseerde weergaven automatisch gebruiken om de queryprestaties te verbeteren.  Deze ondersteuning wordt transparant toegepast op query's die niet verwijzen naar de weergaven en query's die niet-ondersteunde aggregaten gebruiken bij het maken van gematerialiseerde weergaven.  Er is geen querywijziging nodig. U het geschatte uitvoeringsplan van een query controleren om te bevestigen of een gematerialiseerde weergave wordt gebruikt.  
+De SQL-pooloptimizer kan geïmplementeerde gematerialiseerde weergaven automatisch gebruiken om de queryprestaties te verbeteren.  Deze ondersteuning wordt transparant toegepast op query's die niet verwijzen naar de weergaven en query's die niet-ondersteunde aggregaten gebruiken bij het maken van gematerialiseerde weergaven.  Er is geen querywijziging nodig. U het geschatte uitvoeringsplan van een query controleren om te bevestigen of een gematerialiseerde weergave wordt gebruikt.  
 
-**Gematerialiseerde weergaven controleren** 
+**Gematerialiseerde weergaven controleren**
 
-Een gematerialiseerde weergave wordt opgeslagen in het gegevensmagazijn, net als een tabel met geclusterde kolomarchiefindex (CCI).  Het lezen van gegevens uit een gematerialiseerde weergave omvat het scannen van de CCI-indexsegmenten en het toepassen van incrementele wijzigingen uit basistabellen. Wanneer het aantal incrementele wijzigingen te hoog is, kan het oplossen van een query vanuit een gematerialiseerde weergave langer duren dan het rechtstreeks opvragen van de basistabellen.  Om degradatie van queryprestaties te voorkomen, is het een goede gewoonte om [DBCC-PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest) uit te voeren om de overhead_ratio van de weergave te controleren (total_rows / max(1, base_view_row)).  Gebruikers moeten de gematerialiseerde weergave opnieuw opbouwen als de overhead_ratio te hoog is. 
+Een gematerialiseerde weergave wordt opgeslagen in de SQL-groep, net als een tabel met geclusterde columnstore-index (CCI).  Het lezen van gegevens uit een gematerialiseerde weergave omvat het scannen van de CCI-indexsegmenten en het toepassen van incrementele wijzigingen uit basistabellen. Wanneer het aantal incrementele wijzigingen te hoog is, kan het oplossen van een query vanuit een gematerialiseerde weergave langer duren dan het rechtstreeks opvragen van de basistabellen.  
+
+Om degradatie van queryprestaties te voorkomen, is het een goede gewoonte om [DBCC-PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) uit te voeren om de overhead_ratio van de weergave te controleren (total_rows / max(1, base_view_row)).  Gebruikers moeten de gematerialiseerde weergave opnieuw opbouwen als de overhead_ratio te hoog is.
 
 **Gematerialiseerde weergave en resultaatset caching**
 
-Deze twee functies worden rond dezelfde tijd geïntroduceerd in Azure SQL Data Warehouse voor het afstemmen van queryprestaties.  Resultaatset caching wordt gebruikt voor het verkrijgen van hoge gelijktijdigheid en snelle respons van repetitieve query's tegen statische gegevens.  Als u het resultaat in de cache wilt gebruiken, moet de vorm van de query voor cacheaanvragen overeenkomen met de query die de cache heeft geproduceerd.  Bovendien moet het in de cache opgeslagen resultaat van toepassing zijn op de hele query.  Met gematerialiseerde weergaven kunnen gegevenswijzigingen in de basistabellen worden aangebracht.  Gegevens in gematerialiseerde weergaven kunnen worden toegepast op een stuk van een query.  Met deze ondersteuning kunnen dezelfde gematerialiseerde weergaven worden gebruikt door verschillende query's die een bepaalde berekening delen voor snellere prestaties.
+Deze twee functies worden geïntroduceerd in SQL-pool rond dezelfde tijd voor queryprestaties afstemmen.  Resultaatset caching wordt gebruikt voor het verkrijgen van hoge gelijktijdigheid en snelle respons van repetitieve query's tegen statische gegevens.  
+
+Als u het resultaat in de cache wilt gebruiken, moet de vorm van de query voor cacheaanvragen overeenkomen met de query die de cache heeft geproduceerd.  Bovendien moet het in de cache opgeslagen resultaat van toepassing zijn op de hele query.  
+
+Met gematerialiseerde weergaven kunnen gegevenswijzigingen in de basistabellen worden aangebracht.  Gegevens in gematerialiseerde weergaven kunnen worden toegepast op een stuk van een query.  Met deze ondersteuning kunnen dezelfde gematerialiseerde weergaven worden gebruikt door verschillende query's die een bepaalde berekening delen voor snellere prestaties.
 
 ## <a name="example"></a>Voorbeeld
 
-In dit voorbeeld wordt een TPCDS-achtige query gebruikt waarin klanten die meer geld uitgeven via de catalogus dan in winkels, de voorkeursklanten en hun land van herkomst identificeren.   De query omvat het selecteren van TOP 100-records uit de UNIE van drie sub-SELECT-instructies met som() en GROEP DOOR. 
+In dit voorbeeld wordt een TPCDS-achtige query gebruikt waarin klanten die meer geld uitgeven via de catalogus dan in winkels, de voorkeursklanten en hun land van herkomst identificeren.   De query omvat het selecteren van TOP 100-records uit de UNIE van drie sub-SELECT-instructies met som() en GROEP DOOR.
 
 ```sql
 WITH year_total AS (
@@ -160,7 +177,7 @@ SELECT c_customer_id customer_id
        ,sum(isnull(ss_ext_list_price-ss_ext_wholesale_cost-ss_ext_discount_amt+ss_ext_sales_price, 0)/2) year_total
        ,'s' sale_type
 FROM customer
-     ,store_sales 
+     ,store_sales
      ,date_dim
 WHERE c_customer_sk = ss_customer_sk
    AND ss_sold_date_sk = d_date_sk
@@ -184,7 +201,7 @@ SELECT c_customer_id customer_id
        ,sum(isnull(cs_ext_list_price-cs_ext_wholesale_cost-cs_ext_discount_amt+cs_ext_sales_price, 0)/2) year_total
        ,'c' sale_type
 FROM customer
-     ,catalog_sales 
+     ,catalog_sales
      ,date_dim
 WHERE c_customer_sk = cs_bill_customer_sk
    AND cs_sold_date_sk = d_date_sk
@@ -208,7 +225,7 @@ SELECT c_customer_id customer_id
        ,sum(isnull(ws_ext_list_price-ws_ext_wholesale_cost-ws_ext_discount_amt+ws_ext_sales_price, 0)/2) year_total
        ,'w' sale_type
 FROM customer
-     ,web_sales 
+     ,web_sales
      ,date_dim
 WHERE c_customer_sk = ws_bill_customer_sk
    AND ws_sold_date_sk = d_date_sk
@@ -221,7 +238,7 @@ GROUP BY c_customer_id
          ,c_email_address
          ,d_year
          )
-  SELECT TOP 100 
+  SELECT TOP 100
                   t_s_secyear.customer_id
                  ,t_s_secyear.customer_first_name
                  ,t_s_secyear.customer_last_name
@@ -263,7 +280,7 @@ ORDER BY t_s_secyear.customer_id
 OPTION ( LABEL = 'Query04-af359846-253-3');
 ```
 
-Controleer het geschatte uitvoeringsplan van de query.  Er zijn 18 shuffles en 17 joins operaties, die meer tijd in beslag nemen om uit te voeren. Laten we nu één gematerialiseerde weergave maken voor elk van de drie sub-SELECT-instructies.   
+Controleer het geschatte uitvoeringsplan van de query.  Er zijn 18 shuffles en 17 joins operaties, die meer tijd in beslag nemen om uit te voeren. Laten we nu één gematerialiseerde weergave maken voor elk van de drie sub-SELECT-instructies.
 
 ```sql
 CREATE materialized view nbViewSS WITH (DISTRIBUTION=HASH(customer_id)) AS
@@ -343,6 +360,7 @@ GROUP BY c_customer_id
          ,d_year
 
 ```
+
 Controleer het uitvoeringsplan van de oorspronkelijke query opnieuw.  Nu verandert het aantal joins van 17 naar 5 en is er geen shuffle meer.  Klik op het pictogram Filterbewerking in het plan, in de uitvoerlijst wordt weergegeven dat de gegevens worden gelezen uit de gematerialiseerde weergaven in plaats van basistabellen.  
 
  ![Plan_Output_List_with_Materialized_Views](./media/performance-tuning-materialized-views/output-list.png)
@@ -350,4 +368,5 @@ Controleer het uitvoeringsplan van de oorspronkelijke query opnieuw.  Nu verande
 Bij gematerialiseerde weergaven wordt dezelfde query veel sneller uitgevoerd zonder dat de code wordt gewijzigd.  
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Overzicht van SQL Data Warehouse voor ontwikkelaars](sql-data-warehouse-overview-develop.md) voor meer tips voor ontwikkelaars.
+
+Zie [Synapse SQL-pool development overview](sql-data-warehouse-overview-develop.md)voor meer ontwikkelingstips.

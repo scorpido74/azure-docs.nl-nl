@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 8a4fbb3803f2eed4f961792a29a6bf8a327ea208
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 0e69a11ab81406f650049e3c7d4d446b6628b29b
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80502350"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657567"
 ---
 1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Publiceren**.
 
@@ -21,23 +21,24 @@ ms.locfileid: "80502350"
 
     | Optie      | Beschrijving                                |
     | ------------ |  -------------------------------------------------- |
-    | **Azure-functie-app** | Maak een functie-app in een Azure-cloudomgeving. | 
-    | **Nieuwe maken** | Er wordt een nieuwe functie-app met bijbehorende resources gemaakt in Azure. <br/>Als u **Bestaand selecteren**kiest, worden alle bestanden in de bestaande functie-app in Azure overschreven door bestanden uit het lokale project. Gebruik deze optie alleen wanneer u updates opnieuw publiceert naar een bestaande functie-app. |
+    | **Azure-functies-gebruiksplan** | Maak een functie-app in een Azure-cloudomgeving die wordt uitgevoerd in een [verbruiksplan](../articles/azure-functions/functions-scale.md#consumption-plan). Wanneer u een verbruiksabonnement gebruikt, betaalt u alleen voor uitvoeringen van uw functies-app. Andere hostingplannen brengen hogere kosten met zich mee. Als u een ander plan dan een verbruiksplan uitvoert, moet u de [schaling van uw functie-app](../articles/azure-functions/functions-scale.md)beheren.| 
+    | **Nieuw maken** | Er wordt een nieuwe functie-app met bijbehorende resources gemaakt in Azure. <br/>Als u **Bestaand selecteren**kiest, worden alle bestanden in de bestaande functie-app in Azure overschreven door bestanden uit het lokale project. Gebruik deze optie alleen wanneer u updates opnieuw publiceert naar een bestaande functie-app. |
     | **Uitvoeren vanaf pakketbestand** | Uw functie-app wordt geïmplementeerd met [Zip Deploy](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) met [run-from-package-modus](../articles/azure-functions/run-functions-from-deployment-package.md) ingeschakeld. Deze implementatie, die resulteert in betere prestaties, is de aanbevolen manier om uw functies uit te voeren. <br/>Als u deze optie niet gebruikt, moet u ervoor zorgen dat het project van de functie-app niet lokaal wordt uitgevoerd voordat u publiceert naar Azure. |
 
     ![Kies een publicatiedoel](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
 
-3. Selecteer **Publiceren**. Als u zich nog niet hebt aangemeld bij uw Azure-account vanuit Visual Studio, selecteert u **Aanmelden**. U ook een gratis Azure-account maken.
+3. Selecteer **Profiel maken**. Als u zich nog niet hebt aangemeld bij uw Azure-account vanuit Visual Studio, selecteert u **Aanmelden**. U ook een gratis Azure-account maken.
 
-4. In **Azure App Service: Nieuw maken,** gebruik de waarden die zijn opgegeven in de volgende tabel:
+4. In **App-service: Nieuw maken,** gebruik de waarden die in de volgende tabel zijn opgegeven:
 
     | Instelling      | Waarde  | Beschrijving                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Naam** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app uniek wordt aangeduid. Accepteer deze naam of voer een nieuwe naam in. Geldige tekens `a-z`zijn: `0-9` `-`, , en . |
     | **Abonnement** | Uw abonnement | Het te gebruiken Azure-abonnement. Accepteer dit abonnement of selecteer een nieuw abonnement in de vervolgkeuzelijst. |
     | **[Resourcegroep](../articles/azure-resource-manager/management/overview.md)** | Naam van uw resourcegroep |  De resourcegroep waarin u de functie-app maken. Selecteer een bestaande resourcegroep in de vervolgkeuzelijst of kies **Nieuw** om een nieuwe resourcegroep te maken.|
-    | **[Hostingplan](../articles/azure-functions/functions-scale.md)** | Naam van uw hostingplan | Selecteer **Nieuw** om een serverloos abonnement te configureren. Zorg ervoor dat u het **verbruik** onder **Grootte**kiest. Wanneer u uw project publiceert naar een functie-app die wordt uitgevoerd in een [verbruiksplan,](../articles/azure-functions/functions-scale.md#consumption-plan)betaalt u alleen voor uitvoeringen van uw functie-app. Andere hostingplannen brengen hogere kosten met zich mee. Als u een ander plan dan **verbruik uitvoert,** moet u de [schaling van uw functie-app](../articles/azure-functions/functions-scale.md)beheren. Kies een **locatie** in een [regio](https://azure.microsoft.com/regions/) bij u in de buurt of andere services waartoe uw functies toegang hebben.  |
+    | **[Hostingplan](../articles/azure-functions/functions-scale.md)** | Naam van uw hostingplan | Selecteer **Nieuw** om een serverloos abonnement te configureren. Zorg ervoor dat u het **verbruik** onder **Grootte**kiest. Wanneer u uw project publiceert naar een functie-app die wordt uitgevoerd in een [verbruiksplan,](../articles/azure-functions/functions-scale.md#consumption-plan)betaalt u alleen voor uitvoeringen van uw functie-app. Andere hostingplannen brengen hogere kosten met zich mee. Als u een ander plan dan **verbruik uitvoert,** moet u de [schaling van uw functie-app](../articles/azure-functions/functions-scale.md)beheren.  |
+    | **Locatie** | Locatie van de app-service | Kies een **locatie** in een [regio](https://azure.microsoft.com/regions/) bij u in de buurt of andere services waartoe uw functies toegang hebben. |
     | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | Opslagaccount voor algemene doeleinden | Een Azure Storage-account is vereist door de runtime Van Functies. Selecteer **Nieuw** om een opslagaccount voor algemene doeleinden te configureren. U ook een bestaand account kiezen dat voldoet aan de [vereisten voor opslagaccount.](../articles/azure-functions/functions-scale.md#storage-account-requirements)  |
 
     ![Het dialoogvenster Create App Service](./media/functions-vstools-publish/functions-visual-studio-publish.png)

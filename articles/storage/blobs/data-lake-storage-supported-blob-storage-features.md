@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/03/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 215244204aa58cc2fdedc639d48e01b514759694
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b270ce3cd15dbd1e8dd53bd60376a87d6e08f75c
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78196005"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637220"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Blob-opslagfuncties beschikbaar in Azure Data Lake Storage Gen2
 
@@ -38,7 +38,7 @@ In deze tabel worden de blob-opslagfuncties weergegeven die u gebruiken met Azur
 |Blob-opslag-API's|Algemeen verkrijgbaar|[Snelstart: Azure Blob-opslagclientbibliotheek v12 voor .NET](storage-quickstart-blobs-dotnet.md)<br>[Snelstart: blobs beheren met Java v12 SDK](storage-quickstart-blobs-java.md)<br>[Snelstart: blobs beheren met Python v12 SDK](storage-quickstart-blobs-python.md)<br>[Snelstart: blobs beheren met JavaScript v12 SDK in Node.js](storage-quickstart-blobs-nodejs.md)|
 |Laag voor archieftoegang|Preview|[Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag](storage-blob-storage-tiers.md)|
 |Beleid voor levenscyclusbeheer|Preview|[De levenscyclus van Azure Blob-opslag beheren](storage-lifecycle-management-concepts.md)|
-|Diagnostische logboeken|Preview|[Logboekregistratie van Azure Opslaganalyse](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Diagnostische logboeken|Algemeen verkrijgbaar|[Logboekregistratie van Azure Opslaganalyse](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Feed wijzigen|Nog niet ondersteund|[Feedondersteuning wijzigen in Azure Blob-opslag](storage-blob-change-feed.md)|
 |Accountfailover|Nog niet ondersteund|[Disaster recovery en account failover](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blobcontainer ACL|Nog niet ondersteund|[Container ACL instellen](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|

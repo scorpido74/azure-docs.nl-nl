@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b067b18985905b226287f9dd10ad4b937fab6df1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 38f9f85a7e961d426b66a24bb4a5c63f9f0301da
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76767972"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638068"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Overzicht van Azure FarmBeats (voorbeeld)
 
@@ -42,6 +42,24 @@ Datahub is ontworpen als een uitbreidbaar API-platform. We werken met veel meer 
 ## <a name="accelerator"></a>Accelerator
 
 De Azure FarmBeats Accelerator is een voorbeeldwebtoepassing die bovenop Datahub is gebouwd. De Accelerator start uw gebruikersinterface en modelontwikkeling. De Azure FarmBeats-versneller maakt gebruik van api's van Azure FarmBeats. Het visualiseert ingenomen sensorgegevens als grafieken en modeloutputs als kaarten. U de versneller bijvoorbeeld gebruiken om snel een boerderij te maken en gemakkelijk een vegetatie-indexkaart of een sensorplaatsingskaart voor die boerderij te krijgen.
+
+## <a name="role-based-access-control-rbac"></a>Toegangsbeheer op basis van rollen (RBAC)
+
+Een beheerder kan toegangsregels voor Azure FarmBeats definiëren met behulp van een van de vooraf gedefinieerde rollen. Rollen bepalen tot welke gebieden van de toepassing een gebruiker toegang heeft en tot welke acties hij of zij kan uitvoeren. Er zijn twee soorten rollen in Azure FarmBeats - voor gebruikers en voor partners.
+
+### <a name="user-roles"></a>Gebruikersrollen
+
+Een [beheerder kan gebruikers toevoegen en beheren](manage-users-in-azure-farmbeats.md) en hun toegangsniveaus definiëren op basis van twee gebruikersrollen: Beheerder en Alleen-lezen.
+
+### <a name="partner-roles"></a>Partnerrollen
+
+Een beheerder kan meerdere partners als gegevensproviders toevoegen aan Azure FarmBeats. Hieronder worden de beschikbare partnerrollen in FarmBeats en hun machtigingen samengevat:
+
+| Partnertype    |   Acties  | Bereik |
+| ---- | -------- | -------- |
+| Sensorpartner  |   Maken, lezen, bijwerken <br/> <br/> Lezen, bijwerken | DeviceModel, Apparaat, SensorModel, Sensor <br/> <br/> ExtendedType |
+| Imagery-partner  |   Maken, lezen, bijwerken <br/> <br/> Lezen, bijwerken <br/> <br/> Lezen | Scène, Scènefile <br/> <br/> ExtendedType <br/> <br/> Boerderij |
+| Imagery-partner  |   Maken, lezen, bijwerken <br/> <br/> Lezen, bijwerken <br/> <br/> Lezen | WeatherDataModel, WeatherDataLocatie, JobType <br/> <br/> ExtendedType <br/> <br/> Boerderij |
 
 ## <a name="resources"></a>Resources
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 02/14/2020
+ms.openlocfilehash: 096943ff796f9c12c7f8715cadce5c3085965d4d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456569"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657139"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Verbinding maken met on-premises gegevensbronnen vanuit Azure Logic Apps
 
@@ -59,6 +59,9 @@ Azure Logic Apps ondersteunt lees- en schrijfbewerkingen via de gegevensgateway.
 * Uw gateway-installatie is nog niet geregistreerd en geclaimd door een andere Azure-gatewaybron.
 
   Wanneer u een gatewaybron maakt in de Azure-portal, selecteert u een gateway-installatie, die wordt gekoppeld aan uw gatewaybron en alleen die gatewaybron. In Azure Logic Apps gebruiken on-premises triggers en acties vervolgens de gatewaybron om verbinding te maken met on-premises gegevensbronnen. In deze triggers en acties selecteert u uw Azure-abonnement en de bijbehorende gatewaybron die u wilt gebruiken. Elke gatewaybron wordt gekoppeld aan slechts één gateway-installatie, die wordt gekoppeld aan slechts één Azure-account.
+
+  > [!NOTE]
+  > Alleen de gatewaybeheerder kan de gatewaybron maken in de Azure-portal. Momenteel worden serviceprincipals niet ondersteund. 
 
 <a name="create-gateway-resource"></a>
 

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d10a642f9309e4bb93368564488fc75be15fa27c
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586081"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631234"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Uw werkbelasting analyseren in Azure Synapse Analytics
 
@@ -68,7 +68,7 @@ Synapse SQL heeft de volgende wachttypen:
 * **LocalQueriesConcurrencyResourceType:** query's die buiten het gelijktijdigheidssleufkader zitten. DMV-query's en `SELECT @@VERSION` systeemfuncties, zoals voorbeelden van lokale query's.
 * **UserConcurrencyResourceType:** query's die binnen het gelijktijdigheidssleufkader zitten. Query's tegen tabellen voor eindgebruikers vertegenwoordigen voorbeelden die dit resourcetype zouden gebruiken.
 * **DmsConcurrencyResourceType**: Wacht als gevolg van gegevensverplaatsingsbewerkingen.
-* **BackupConcurrencyResourceType**: Deze wachttijd geeft aan dat er een back-up van een database wordt gemaakt. De maximale waarde voor dit resourcetype is 1. Als er meerdere back-ups tegelijk zijn aangevraagd, staan de andere back-ups in de wachtrij. In het algemeen raden we een minimale tijd aan tussen opeenvolgende momentopnamen van 10 minuten. 
+* **BackupConcurrencyResourceType**: Deze wachttijd geeft aan dat er een back-up van een database wordt gemaakt. De maximale waarde voor dit resourcetype is 1. Als er meerdere back-ups tegelijk zijn aangevraagd, staan de andere back-ups in de wachtrij. In het algemeen raden we een minimale tijd aan tussen opeenvolgende momentopnamen van 10 minuten.
 
 De `sys.dm_pdw_waits` DMV kan worden gebruikt om te zien op welke resources een aanvraag wacht.
 

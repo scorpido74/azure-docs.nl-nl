@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d35c96657f48905f37c9ebe246d81ebb9545cf27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1392f69bea09996e46ad4c112474f9067ff5a63d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283132"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656917"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Syntaxis van Lucene query in Azure Cognitive Search
 
@@ -161,16 +161,17 @@ In het volgende voorbeeld worden de verschillen geïllustreerd. Stel dat er een 
 ##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a>Zoeken naar reguliere expressies  
  Bij een zoekopdracht met reguliere expressievindt u een overeenkomst op basis van de inhoud tussen voorwaartse slashes "/", zoals gedocumenteerd in de [klasse RegExp.](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)  
 
- Bijvoorbeeld, om documenten te vinden die "motel" `/[mh]otel/`of "hotel" bevatten, specificeert u .  Zoekopdrachten met reguliere expressie worden gekoppeld aan afzonderlijke woorden.   
+ Bijvoorbeeld, om documenten te vinden die "motel" `/[mh]otel/`of "hotel" bevatten, specificeert u . Zoekopdrachten met reguliere expressie worden gekoppeld aan afzonderlijke woorden.
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>Zoeken naar jokertekens  
- U algemeen erkende syntaxis gebruiken voor meerdere (*) of enkele (?) tekenwildcardzoekopdrachten. Let op de Lucene query parser ondersteunt het gebruik van deze symbolen met een enkele term, en niet een zin.  
+ U algemeen erkende syntaxis gebruiken voor meerdere (*) of enkele (?) tekenwildcardzoekopdrachten. Let op de Lucene query parser ondersteunt het gebruik van deze symbolen met een enkele term, en niet een zin.
 
- Als u bijvoorbeeld documenten wilt zoeken met de woorden met het voorvoegsel 'notitie', zoals 'notitieblok' of 'notitieblok', geeft u 'notitie*' op.  
+Voorvoegsel zoeken maakt ook`*`gebruik van het sterretje ( ) karakter. Een queryexpressie van `search=note*` retourneert bijvoorbeeld 'notitieblok' of 'notitieblok'. Volledige lucene syntaxis is niet vereist voor prefix zoeken. De eenvoudige syntaxis ondersteunt dit scenario.
+
+Achtervoegsel zoeken, waar `*` of `?` voorafgaat aan de string, vereist volledige Lucene syntaxis en een reguliere expressie (je geen gebruik maken van een * of? symbool als het eerste teken van een zoekopdracht). Onder de term "alfanumeriek"`search=/.*numeric.*/`vindt u de queryexpressie van ( ) de overeenkomst.
 
 > [!NOTE]  
->  Je geen * of? symbool als het eerste teken van een zoekopdracht.  
->  Er wordt geen tekstanalyse uitgevoerd op zoekopdrachten met jokertekens. Op querytijd worden wildcardquerytermen vergeleken met geanalyseerde termen in de zoekindex en uitgebreid.
+> Tijdens queryparsing worden query's die zijn geformuleerd als voorvoegsel, achtervoegsel, wildcard of reguliere expressies doorgegeven aan de querystructuur, waarbij [lexicale analyse](search-lucene-query-architecture.md#stage-2-lexical-analysis)wordt omzeild. Overeenkomsten worden alleen gevonden als de index de tekenreeksen bevat in de indeling die uw query opgeeft. In de meeste gevallen hebt u een alternatieve analyzer nodig tijdens het indexeren die de integriteit van de tekenreeks behoudt, zodat gedeeltelijke term- en patroonmatching slaagt. Zie Zoeken in Azure Cognitive Search voor meer informatie [in Azure Cognitive Search.](search-query-partial-matching.md)
 
 ## <a name="see-also"></a>Zie ook  
 

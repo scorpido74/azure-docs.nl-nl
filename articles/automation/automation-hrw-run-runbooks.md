@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9b9196cde45686e42d1baf7faedf94bdb73acccc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 902734ddc7195d643c3aedb4054f57723d1a51c2
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367054"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632127"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een hybride runbookworker
 
@@ -252,7 +252,7 @@ $SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprin
 Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
-Wanneer een runbook is ondertekend, moet u het importeren in uw Automatiseringsaccount en het publiceren met het handtekeningblok. Zie [Een runbook importeren uit een bestand importeren in Azure Automation](manage-runbooks.md#import-a-runbook)voor meer informatie over het importeren van runbooks.
+Wanneer een runbook is ondertekend, moet u het importeren in uw Automatiseringsaccount en het publiceren met het handtekeningblok. Zie [Een runbook importeren uit een bestand importeren in Azure Automation](manage-runbooks.md#importing-a-runbook)voor meer informatie over het importeren van runbooks.
 
 ## <a name="working-with-signed-runbooks-on-a-linux-hybrid-runbook-worker"></a>Werken met ondertekende runbooks op een Linux Hybrid Runbook Worker
 

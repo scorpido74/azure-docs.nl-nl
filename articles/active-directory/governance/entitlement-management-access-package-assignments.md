@@ -16,16 +16,23 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12e3b86f41e7188778393ab717554907ef5d44ec
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262020"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631747"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Toewijzingen voor een toegangspakket in Azure AD-rechtenbeheer weergeven, toevoegen en verwijderen
 
 In Azure AD-rechtenbeheer u zien wie is toegewezen aan toegang tot pakketten, hun beleid en status. Als een toegangspakket een passend beleid heeft, u de gebruiker ook rechtstreeks toewijzen aan een toegangspakket. In dit artikel wordt beschreven hoe u toewijzingen voor toegangspakketten weergeven, toevoegen en verwijderen.
+
+## <a name="prerequisites"></a>Vereisten
+
+Als u Azure AD-rechtenbeheer wilt gebruiken en gebruikers toegang wilt geven tot pakketten, moet u over een van de volgende licenties beschikken:
+
+- Azure AD Premium P2
+- Enterprise Mobility + Security (EMS) E5-licentie
 
 ## <a name="view-who-has-an-assignment"></a>Zien wie een opdracht heeft
 

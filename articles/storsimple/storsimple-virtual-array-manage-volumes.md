@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: a233a9deb58a7c1abc87a622a4f1f2581ee2e477
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2dbbe6bcd4957a108cc3eae4d41816b130cf8f07
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62125794"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633869"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Gebruik de StorSimple-apparaatbeheerfunctie om volumes te beheren in de virtuele StorSimple-matrix
 
@@ -44,7 +44,7 @@ Raadpleeg de volgende tabel voor de maximale ingerichte capaciteit voor elk volu
 | Minimumgrootte van een gelaagd volume                            | 500 GB        |
 | Maximale grootte van een gelaagd volume                            | 5 TB          |
 | Minimale grootte van een lokaal vastgemaakt volume                    | 50 GB         |
-| Maximale grootte van een lokaal vastgemaakt volume                    | 500 GB        |
+| Maximale grootte van een lokaal vastgemaakt volume                    | 200 GB        |
 
 ## <a name="the-volumes-blade"></a>Het volumesblad
 In het menu **Volumes** op uw StorSimple-serviceoverzichtsblad wordt de lijst met opslagvolumes op een bepaalde StorSimple-array weergegeven en u deze beheren.

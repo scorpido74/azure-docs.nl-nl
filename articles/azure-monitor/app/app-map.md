@@ -4,12 +4,12 @@ description: Complexe toepassingstopologieën bewaken met de toepassingskaart
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: dce2fdbe7e0c390309be38d2ebab4c73dbb4ed2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0823dd5d880c778f9b7a231ac14f1cbba1940927
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666272"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657397"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Toepassingskaart: Triage Distributed Applications
 
@@ -85,7 +85,7 @@ Als u actieve waarschuwingen en de onderliggende regels wilt weergeven die ervoo
 
 Application Map gebruikt de eigenschap **cloudrolnaam** om de componenten op de kaart te identificeren. De Application Insights SDK voegt automatisch de eigenschap van de naam van de cloudrol toe aan de telemetrie die door componenten wordt uitgezonden. De SDK voegt bijvoorbeeld een naam van de website of de naam van de servicerol toe aan de eigenschap van de naam van de cloudrol. Er zijn echter gevallen waarin u de standaardwaarde wilt overschrijven. Ga als een andere naam van de cloudrol overschrijven en wijzigt wat er op de toepassingskaart wordt weergegeven:
 
-### <a name="netnet-core"></a>.NET/.NET-kern
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 **Schrijf aangepaste TelemetrieInitializer zoals hieronder.**
 
@@ -153,7 +153,26 @@ Voor [ASP.NET Core-toepassingen](asp-net-core.md#adding-telemetryinitializers) `
 }
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="java"></a>[Java](#tab/java)
+
+Vanaf Application Insights Java SDK 2.5.0 u de `<RoleName>` naam `ApplicationInsights.xml` van de cloudrol opgeven door bijvoorbeeld aan uw bestand toe te voegen.
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
+Als u Spring Boot gebruikt met de starter Voor het voorspringen van Toepassing-inzichten, hoeft u alleen uw aangepaste naam voor de toepassing in het bestand application.properties in te stellen.
+
+`spring.application.name=<name-of-app>`
+
+Met de startstart van De Spring Boot wordt automatisch de naam van de cloudrol toegewezen aan de waarde die u invoert voor de eigenschap spring.application.name.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -174,26 +193,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 });
 ```
 
-### <a name="java"></a>Java
-
-Vanaf Application Insights Java SDK 2.5.0 u de `<RoleName>` naam `ApplicationInsights.xml` van de cloudrol opgeven door bijvoorbeeld aan uw bestand toe te voegen.
-
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-   <RoleName>** Your role name **</RoleName>
-   ...
-</ApplicationInsights>
-```
-
-Als u Spring Boot gebruikt met de starter Voor het voorspringen van Toepassing-inzichten, hoeft u alleen uw aangepaste naam voor de toepassing in het bestand application.properties in te stellen.
-
-`spring.application.name=<name-of-app>`
-
-Met de startstart van De Spring Boot wordt automatisch de naam van de cloudrol toegewezen aan de waarde die u invoert voor de eigenschap spring.application.name.
-
-### <a name="clientbrowser-side-javascript"></a>JavaScript aan client/browser
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 appInsights.queue.push(() => {
@@ -203,6 +203,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+---
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Inzicht in de naam van de cloudrol binnen de context van de toepassingskaart
 
@@ -254,7 +255,7 @@ Als u problemen ondervindt om toepassingstoewijzing te laten werken zoals verwac
 
 Application Map construeert een toepassingsknooppunt voor elke unieke naam van de cloudrol die aanwezig is in uw aanvraagtelemetrie en een afhankelijkheidsknooppunt voor elke unieke combinatie van type,doel en cloudrolnaam in uw afhankelijkheidstelemetrie. Als er meer dan 10.000 knooppunten in uw telemetrie zijn, kan Toepassingskaart niet alle knooppunten en koppelingen ophalen, zodat uw kaart onvolledig is. Als dit gebeurt, verschijnt er een waarschuwingsbericht bij het bekijken van de kaart.
 
-Bovendien ondersteunt Application Map slechts maximaal 1000 afzonderlijke niet-gegroepeerde knooppunten die tegelijk worden weergegeven. Application Map vermindert visuele complexiteit door afhankelijkheden te groeperen die hetzelfde type en bellers hebben, maar als uw telemetrie te veel unieke cloudrolnamen of te veel afhankelijkheidstypen heeft, is die groepering onvoldoende en kan de kaart niet Render.
+Bovendien ondersteunt Application Map slechts maximaal 1000 afzonderlijke niet-gegroepeerde knooppunten die tegelijk worden weergegeven. Toepassingskaart vermindert de visuele complexiteit door afhankelijkheden te groeperen die hetzelfde type en bellers hebben, maar als uw telemetrie te veel unieke namen van de cloudrol of te veel afhankelijkheidstypen heeft, is die groepering onvoldoende en kan de kaart niet worden weergegeven.
 
 Om dit op te lossen, moet u uw instrumentatie wijzigen om de naam van de cloudrol, het afhankelijkheidstype en de afhankelijkheidsdoelvelden goed in te stellen.
 

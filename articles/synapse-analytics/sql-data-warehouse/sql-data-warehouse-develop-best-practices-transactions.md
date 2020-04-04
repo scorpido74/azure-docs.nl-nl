@@ -11,12 +11,12 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d97a388477c895a4a8632d7ab3d06dc4c8982857
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 0139c581e6660622f1ab6db9f407725816377a6d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582130"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633566"
 ---
 # <a name="optimizing-transactions-in-synapse-sql"></a>Transacties optimaliseren in Synapse SQL
 
@@ -24,7 +24,7 @@ Leer hoe u de prestaties van uw transactionele code in Synapse SQL optimaliseren
 
 ## <a name="transactions-and-logging"></a>Transacties en logboekregistratie
 
-Transacties zijn een belangrijk onderdeel van een relationele database engine. Transacties worden gebruikt tijdens het wijzigen van gegevens. Deze transacties kunnen expliciet of impliciet zijn. Afzonderlijke overzichten voor insert, update en delete zijn allemaal voorbeelden van impliciete transacties. Expliciete transacties gebruiken BEGIN TRAN, COMMIT TRAN of ROLLBACK TRAN. Expliciete transacties worden meestal gebruikt wanneer meerdere wijzigingsoverzichten in één atoomeenheid moeten worden gekoppeld. 
+Transacties zijn een belangrijk onderdeel van een relationele database engine. Transacties worden gebruikt tijdens het wijzigen van gegevens. Deze transacties kunnen expliciet of impliciet zijn. Afzonderlijke overzichten voor insert, update en delete zijn allemaal voorbeelden van impliciete transacties. Expliciete transacties gebruiken BEGIN TRAN, COMMIT TRAN of ROLLBACK TRAN. Expliciete transacties worden meestal gebruikt wanneer meerdere wijzigingsoverzichten in één atoomeenheid moeten worden gekoppeld.
 
 Wijzigingen in de database worden bijgehouden met behulp van transactielogboeken. Elke distributie heeft zijn eigen transactielogboek. Transactielogboekschrijft zijn automatisch. Er is geen configuratie vereist. Echter, terwijl dit proces garandeert het schrijven het introduceert een overhead in het systeem. U deze impact minimaliseren door transactioneel efficiënte code te schrijven. Transactioneel efficiënte code valt grofweg in twee categorieën.
 
@@ -39,9 +39,7 @@ In tegenstelling tot volledig geregistreerde bewerkingen, die het transactielogb
 De veiligheidslimieten voor transacties zijn alleen van toepassing op volledig geregistreerde bewerkingen.
 
 > [!NOTE]
-> Minimaal geregistreerde bewerkingen kunnen deelnemen aan expliciete transacties. Aangezien alle wijzigingen in toewijzingsstructuren worden bijgehouden, is het mogelijk om minimaal geregistreerde bewerkingen terug te draaien. 
-> 
-> 
+> Minimaal geregistreerde bewerkingen kunnen deelnemen aan expliciete transacties. Aangezien alle wijzigingen in toewijzingsstructuren worden bijgehouden, is het mogelijk om minimaal geregistreerde bewerkingen terug te draaien.
 
 ## <a name="minimally-logged-operations"></a>Minimaal geregistreerde bewerkingen
 
@@ -64,10 +62,9 @@ De volgende bewerkingen kunnen minimaal worden geregistreerd:
 
 > [!NOTE]
 > Interne gegevensverplaatsingsbewerkingen (zoals BROADCAST en SHUFFLE) worden niet beïnvloed door de transactieveiligheidslimiet.
-> 
-> 
 
 ## <a name="minimal-logging-with-bulk-load"></a>Minimale logboekregistratie met bulkbelasting
+
 CTAS en INSERT... SELECT zijn beide bulkladingsbewerkingen. Beide worden echter beïnvloed door de definitie van de doeltabel en zijn afhankelijk van het belastingscenario. In de volgende tabel wordt uitgelegd wanneer bulkbewerkingen volledig of minimaal worden geregistreerd:  
 
 | Primaire index | Laadscenario | Logboekmodus |
@@ -83,11 +80,11 @@ Het is vermeldenswaard dat alle schrijft om secundaire of niet-geclusterde index
 
 > [!IMPORTANT]
 > Een Synapse SQL-pooldatabase heeft 60 distributies. Ervan uitgaande dat alle rijen gelijkmatig zijn verdeeld en in één partitie worden geland, moet uw batch daarom 6.144.000 rijen of groter bevatten om minimaal te worden geregistreerd bij het schrijven naar een clusteropslagindex. Als de tabel is verdeeld en de rijen worden ingevoegd sewijdverdelingsgrenzen, dan moet u 6.144.000 rijen per partitiegrens ervan uitgaande dat zelfs gegevens distributie. Elke partitie in elke verdeling moet onafhankelijk van elkaar de drempel van 102.400 rij overschrijden om de invoeging minimaal in de distributie te laten inloggen.
-> 
 
 Het laden van gegevens in een niet-lege tabel met een geclusterde index kan vaak een mengsel van volledig gelogde en minimaal gelogde rijen bevatten. Een geclusterde index is een gebalanceerde boom (b-tree) van pagina's. Als de pagina die wordt geschreven al rijen van een andere transactie bevat, worden deze schrijfbewerkingen volledig geregistreerd. Als de pagina echter leeg is, wordt het schrijven naar die pagina minimaal geregistreerd.
 
 ## <a name="optimizing-deletes"></a>Verwijderen optimaliseren
+
 DELETE is een volledig geregistreerde bewerking.  Als u een grote hoeveelheid gegevens in een tabel of partitie moet `SELECT` verwijderen, is het vaak logischer voor de gegevens die u wilt bewaren, die kunnen worden uitgevoerd als een minimaal geregistreerde bewerking.  Als u de gegevens wilt selecteren, maakt u een nieuwe tabel met [CTAS](sql-data-warehouse-develop-ctas.md).  Gebruik, nadat u bent gemaakt, [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om uw oude tabel te ruilen met de nieuw gemaakte tabel.
 
 ```sql
@@ -98,7 +95,7 @@ CREATE TABLE [dbo].[FactInternetSales_d]
 WITH
 (    CLUSTERED COLUMNSTORE INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -113,12 +110,13 @@ WHERE    [PromotionKey] = 2
 OPTION (LABEL = 'CTAS : Delete')
 ;
 
---Step 02. Rename the Tables to replace the 
+--Step 02. Rename the Tables to replace the
 RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Updates optimaliseren
+
 UPDATE is een volledig geregistreerde bewerking.  Als u een groot aantal rijen in een tabel of partitie moet bijwerken, kan het vaak veel efficiënter zijn om een minimaal geregistreerde bewerking zoals [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) te gebruiken om dit te doen.
 
 In het onderstaande voorbeeld is een volledige tabelupdate omgezet naar een CTAS, zodat minimale logging mogelijk is.
@@ -126,12 +124,12 @@ In het onderstaande voorbeeld is een volledige tabelupdate omgezet naar een CTAS
 In dit geval voegen we met terugwerkende kracht een kortingsbedrag toe aan de verkoop in de tabel:
 
 ```sql
---Step 01. Create a new table containing the "Update". 
+--Step 01. Create a new table containing the "Update".
 CREATE TABLE [dbo].[FactInternetSales_u]
 WITH
 (    CLUSTERED INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -140,15 +138,15 @@ WITH
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -165,7 +163,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 OPTION (LABEL = 'CTAS : Update')
@@ -181,10 +179,9 @@ DROP TABLE [dbo].[FactInternetSales_old]
 
 > [!NOTE]
 > Het opnieuw maken van grote tabellen kan profiteren van het gebruik van Functies voor synapssql-poolworkloadbeheer. Zie [Resourceklassen voor werkbelastingbeheer voor](resource-classes-for-workload-management.md)meer informatie .
-> 
-> 
 
 ## <a name="optimizing-with-partition-switching"></a>Optimaliseren met partitieschakelen
+
 Als geconfronteerd met grootschalige wijzigingen in een [tabel partitie](sql-data-warehouse-tables-partition.md), dan is een partitie schakelen patroon zinvol. Als de gegevenswijziging aanzienlijk is en meerdere partities overspant, bereikt herhalen over de partities hetzelfde resultaat.
 
 De stappen om een partitieswitch uit te voeren zijn als volgt:
@@ -223,11 +220,11 @@ SELECT     s.name                            AS [schema_name]
 FROM        sys.schemas                    AS s
 JOIN        sys.tables                    AS t    ON  s.[schema_id]        = t.[schema_id]
 JOIN        sys.indexes                    AS i    ON     t.[object_id]        = i.[object_id]
-JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id] 
-                                                AND i.[index_id]        = p.[index_id] 
+JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id]
+                                                AND i.[index_id]        = p.[index_id]
 JOIN        sys.partition_schemes        AS h    ON     i.[data_space_id]    = h.[data_space_id]
 JOIN        sys.partition_functions        AS f    ON     h.[function_id]        = f.[function_id]
-LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id] 
+LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id]
                                                 AND r.[boundary_id]        = p.[partition_number]
 WHERE i.[index_id] <= 1
 )
@@ -246,7 +243,7 @@ Deze procedure maximaliseert het hergebruik van code en houdt het voorbeeld van 
 De volgende code toont de eerder genoemde stappen om een volledige partitieschakelroutine te bereiken.
 
 ```sql
---Create a partitioned aligned empty table to switch out the data 
+--Create a partitioned aligned empty table to switch out the data
 IF OBJECT_ID('[dbo].[FactInternetSales_out]') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[FactInternetSales_out]
@@ -256,7 +253,7 @@ CREATE TABLE [dbo].[FactInternetSales_out]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
@@ -278,20 +275,20 @@ CREATE TABLE [dbo].[FactInternetSales_in]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -308,7 +305,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 WHERE    OrderDateKey BETWEEN 20020101 AND 20021231
@@ -347,9 +344,10 @@ DROP TABLE #ptn_data
 ```
 
 ## <a name="minimize-logging-with-small-batches"></a>Logboekregistratie met kleine batches minimaliseren
+
 Voor grote gegevenswijzigingsbewerkingen kan het zinvol zijn om de bewerking in brokken of batches te verdelen om de eenheid van het werk te plaatsen.
 
-Een volgende code is een werkend voorbeeld. De batchgrootte is ingesteld op een triviaal getal om de techniek te markeren. In werkelijkheid zou de batchgrootte aanzienlijk groter zijn. 
+Een volgende code is een werkend voorbeeld. De batchgrootte is ingesteld op een triviaal getal om de techniek te markeren. In werkelijkheid zou de batchgrootte aanzienlijk groter zijn.
 
 ```sql
 SET NO_COUNT ON;
@@ -409,12 +407,10 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>Richtlijnen onderbreken en schalen
 
-Met Synapse SQL u uw SQL-pool op aanvraag [onderbreken, hervatten en schalen.](sql-data-warehouse-manage-compute-overview.md) Wanneer u uw SQL-pool pauzeert of schaalt, is het belangrijk om te begrijpen dat transacties aan boord onmiddellijk worden beëindigd; waardoor openstaande transacties worden teruggedraaid. Als uw werklast een langdurige en onvolledige gegevenswijziging heeft doorgevoerd voorafgaand aan de pauze- of schaalbewerking, moet dit werk ongedaan worden gemaakt. Deze ongedaan maken kan van invloed zijn op de tijd die nodig is om uw SQL-pool te pauzeren of te schalen. 
+Met Synapse SQL u uw SQL-pool op aanvraag [onderbreken, hervatten en schalen.](sql-data-warehouse-manage-compute-overview.md) Wanneer u uw SQL-pool pauzeert of schaalt, is het belangrijk om te begrijpen dat transacties aan boord onmiddellijk worden beëindigd; waardoor openstaande transacties worden teruggedraaid. Als uw werklast een langdurige en onvolledige gegevenswijziging heeft doorgevoerd voorafgaand aan de pauze- of schaalbewerking, moet dit werk ongedaan worden gemaakt. Deze ongedaan maken kan van invloed zijn op de tijd die nodig is om uw SQL-pool te pauzeren of te schalen.
 
 > [!IMPORTANT]
-> Beide `UPDATE` `DELETE` en zijn volledig gelogd operaties en dus deze ongedaan maken / opnieuw operaties kan aanzienlijk langer duren dan gelijkwaardige minimaal gelogde bewerkingen. 
-> 
-> 
+> Beide `UPDATE` `DELETE` en zijn volledig gelogd operaties en dus deze ongedaan maken / opnieuw operaties kan aanzienlijk langer duren dan gelijkwaardige minimaal gelogde bewerkingen.
 
 Het beste scenario is om in flight data modificatie transacties te laten voltooien voorafgaand aan het pauzeren of schalen sql pool. Dit scenario is echter niet altijd praktisch. Als u het risico van een lange terugdraaiing wilt beperken, moet u een van de volgende opties overwegen:
 
@@ -424,4 +420,3 @@ Het beste scenario is om in flight data modificatie transacties te laten voltooi
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Transacties in Synapse SQL](sql-data-warehouse-develop-transactions.md) voor meer informatie over isolatieniveaus en transactionele limieten.  Zie [Best Practices](sql-data-warehouse-best-practices.md)van SQL Data Warehouse voor een overzicht van andere aanbevolen procedures.
-

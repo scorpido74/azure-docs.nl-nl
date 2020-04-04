@@ -3,12 +3,12 @@ title: Azure App Service-resources verplaatsen
 description: Gebruik Azure Resource Manager om App Service-resources te verplaatsen naar een nieuwe brongroep of -abonnement.
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.openlocfilehash: 338b0559a5de9468ff60024b88d0f676a9fc3e8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0ecd117bdcda9238e310a3020dba19a6871a3fc
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75479798"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655770"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>Richtlijnen verplaatsen voor App-servicebronnen
 
@@ -19,12 +19,12 @@ In dit artikel worden de stappen beschreven om app-servicebronnen te verplaatsen
 Wanneer u een web-app over abonnementen verplaatst, geldt de volgende richtlijnen:
 
 - De resourcegroep bestemming mag geen bestaande App Service-bronnen hebben. Bronnen voor app-service omvatten:
-    - Web-apps
+    - Web Apps
     - App Service-abonnementen
-    - Geüploade of geïmporteerde SSL-certificaten
+    - Geüploade of geïmporteerde TLS/SSL-certificaten
     - App Service-omgevingen
 - Alle App-servicebronnen in de resourcegroep moeten samen worden verplaatst. Houd er rekening mee dat App-serviceomgevingen niet kunnen worden verplaatst naar een nieuwe resourcegroep of naar een nieuw abonnement.
-- U een certificaat verplaatsen dat is gekoppeld aan een web zonder de SSL-bindingen te verwijderen, zolang het certificaat wordt verplaatst met alle andere bronnen in de resourcegroep.
+- U een certificaat verplaatsen dat naar een web is gebonden zonder de TLS-bindingen te verwijderen, zolang het certificaat wordt verplaatst met alle andere bronnen in de resourcegroep.
 - App Service-resources kunnen alleen worden verplaatst van de resourcegroep waarin ze oorspronkelijk zijn gemaakt. Als een App Service-bron zich niet meer in de oorspronkelijke resourcegroep bevindt, verplaatst u deze terug naar de oorspronkelijke brongroep. Verplaats de resource vervolgens over abonnementen.
 
 Als u de oorspronkelijke brongroep niet meer weet, u deze vinden via diagnostische gegevens. Selecteer voor uw web-app **Diagnose en los problemen op.** Selecteer vervolgens **Configuratie en beheer**.

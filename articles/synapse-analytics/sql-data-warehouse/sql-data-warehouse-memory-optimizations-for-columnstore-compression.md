@@ -11,28 +11,32 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 81191fd3b654f612f2621757f3006268276477de
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 8e78ad26701bae1357ef6a2a0a03dff1319f0efe
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586539"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633172"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>De kwaliteit van rijgroepen maximaliseren voor kolomarchief
 
 De kwaliteit van rijgroepen wordt bepaald door het aantal rijen in een rijgroep. Als u het beschikbare geheugen verhoogt, kan het aantal rijen dat een kolomarchiefindex samencomtomeert in elke rijgroep maximaliseren.  Gebruik deze methoden om compressiesnelheden en queryprestaties voor kolomarchiefindexen te verbeteren.
 
 ## <a name="why-the-rowgroup-size-matters"></a>Waarom de grootte van de rijgroep belangrijk is
-Aangezien een kolomarchiefindex een tabel scant door kolomsegmenten van afzonderlijke rijgroepen te scannen, verbetert het maximaliseren van het aantal rijen in elke rijgroep de queryprestaties. Wanneer rijgroepen een groot aantal rijen hebben, verbetert de gegevenscompressie, wat betekent dat er minder gegevens van de schijf kunnen worden gelezen.
+Aangezien een kolomarchiefindex een tabel scant door kolomsegmenten van afzonderlijke rijgroepen te scannen, verbetert het maximaliseren van het aantal rijen in elke rijgroep de queryprestaties. 
+
+Wanneer rijgroepen een groot aantal rijen hebben, verbetert de gegevenscompressie, wat betekent dat er minder gegevens van de schijf kunnen worden gelezen.
 
 Zie [KolomarchiefIndexengids](https://msdn.microsoft.com/library/gg492088.aspx)voor meer informatie over rijgroepen.
 
 ## <a name="target-size-for-rowgroups"></a>Doelgrootte voor rijgroepen
-Voor de beste queryprestaties is het doel om het aantal rijen per rijgroep in een kolomarchiefindex te maximaliseren. Een rijgroep kan maximaal 1.048.576 rijen hebben. Het is goed om niet het maximum aantal rijen per rijgroep te hebben. Columnstore-indexen leveren goede prestaties wanneer rijgroepen ten minste 100.000 rijen hebben.
+Voor de beste queryprestaties is het doel om het aantal rijen per rijgroep in een kolomarchiefindex te maximaliseren. Een rijgroep kan maximaal 1.048.576 rijen hebben. 
+
+Het is goed om niet het maximum aantal rijen per rijgroep te hebben. Columnstore-indexen leveren goede prestaties wanneer rijgroepen ten minste 100.000 rijen hebben.
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>Rijgroepen kunnen worden bijgesneden tijdens compressie
 
-Tijdens een bulkbelasting of kolomarchiefindex wordt opnieuw opgebouwd, is er soms niet genoeg geheugen beschikbaar om alle rijen die voor elke rijgroep zijn aangewezen, te comprimeren. Wanneer er geheugendruk is, worden de indexen van kolomarchief de grootte van de rijgroep bijsnijden, zodat compressie in het kolomarchief kan slagen. 
+Tijdens een bulkbelasting of kolomarchiefindex wordt opnieuw opgebouwd, is er soms niet genoeg geheugen beschikbaar om alle rijen die voor elke rijgroep zijn aangewezen, te comprimeren. Wanneer de geheugendruk aanwezig is, worden de indexen van de kolomopslag bijsnijdde de grootte van de rijgroep zodat compressie in het kolomarchief kan slagen. 
 
 Wanneer er onvoldoende geheugen is om ten minste 10.000 rijen in elke rijgroep te comprimeren, wordt er een fout gegenereerd.
 
@@ -40,7 +44,9 @@ Zie [Bulkbelasting in een geclusterde kolomarchiefindex](https://msdn.microsoft.
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>De kwaliteit van rijgroepen controleren
 
-De DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats[(sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) bevat de weergavedefinitie die overeenkomt met SQL DB) die nuttige informatie blootlegt, zoals het aantal rijen in rijgroepen en de reden voor het bijsnijden als er werd bijgeknipt. U de volgende weergave maken als een handige manier om deze DMV op te vragen om informatie te krijgen over het bijsnijden van rijgroepen.
+De DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats[(sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) bevat de weergavedefinitie die overeenkomt met SQL DB) die nuttige informatie blootlegt, zoals het aantal rijen in rijgroepen en de reden voor het bijsnijden, als er werd bijgeknipt. 
+
+U de volgende weergave maken als een handige manier om deze DMV op te vragen om informatie te krijgen over het bijsnijden van rijgroepen.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -68,7 +74,7 @@ from cte;
 ```
 
 De trim_reason_desc geeft aan of de rijgroep is bijgesneden (trim_reason_desc = NO_TRIM impliceert dat er geen bijsnijd- en rijgroep van optimale kwaliteit is). De volgende bijsnijdredenen geven aan dat de rijgroep voortijdig moet worden bijgeknipt:
-- BULKLOAD: Deze trimreden wordt gebruikt wanneer de binnenkomende batch rijen voor de lading minder dan 1 miljoen rijen had. De engine maakt gecomprimeerde rijgroepen als er meer dan 100.000 rijen worden ingevoegd (in tegenstelling tot het invoegen in het deltaarchief), maar stelt de trimreden in op BULKLOAD. In dit scenario u overwegen de batchbelasting te verhogen om meer rijen op te nemen. Evalueer ook uw partitieschema opnieuw om ervoor te zorgen dat het niet te gedetailleerd is, omdat rijgroepen geen partitiegrenzen kunnen overschrijden.
+- BULKLOAD: Deze trimreden wordt gebruikt wanneer de binnenkomende batch rijen voor de lading minder dan 1 miljoen rijen had. De engine maakt gecomprimeerde rijgroepen als er meer dan 100.000 rijen worden ingevoegd (in tegenstelling tot het invoegen in het deltaarchief), maar stelt de trimreden in op BULKLOAD. In dit scenario u overwegen de batchbelasting te verhogen om meer rijen op te nemen. Evalueer ook uw partitieschema opnieuw om ervoor te zorgen dat het niet te gedetailleerd is, omdat rijgroepen geen scheidingsgrenzen kunnen overschrijden.
 - MEMORY_LIMITATION: Om rijgroepen met 1 miljoen rijen te maken, is een bepaalde hoeveelheid werkgeheugen vereist door de engine. Wanneer het beschikbare geheugen van de laadsessie lager is dan het vereiste werkgeheugen, worden rijgroepen voortijdig bijgesneden. In de volgende secties wordt uitgelegd hoe u het vereiste geheugen schatten en meer geheugen toewijzen.
 - DICTIONARY_SIZE: Deze aanrijreden geeft aan dat het bijsnijden van rijgroepen is opgetreden omdat er ten minste één tekenreekskolom met brede en/of hoge kardinaliteitstekenreeksen was. De grootte van het woordenboek is beperkt tot 16 MB in het geheugen en zodra deze limiet is bereikt, wordt de rijgroep gecomprimeerd. Als u deze situatie tegenkomt, u overwegen de problematische kolom in een aparte tabel te isoleren.
 
@@ -85,18 +91,21 @@ Het maximaal vereiste geheugen om één rijgroep te comprimeren is ongeveer
 - \#rijen \* \#korte tekenreekskolommen \* 32 bytes +
 - \#lange-string-kolommen \* 16 MB voor compressie woordenboek
 
-wanneer korte-string-kolommen tekenreeksgegevenstypen van <= 32 bytes en lange-string-kolommen gebruiken stringgegevenstypen van > 32 bytes.
+> [!NOTE]
+> Korte-string-kolommen gebruiken string gegevenstypen van <= 32 bytes en lange-string-kolommen maken gebruik van string gegevenstypen van > 32 bytes.
 
 Lange tekenreeksen worden gecomprimeerd met een compressiemethode die is ontworpen voor het comprimeren van tekst. Deze compressiemethode gebruikt een *woordenboek* om tekstpatronen op te slaan. De maximale grootte van een woordenboek is 16 MB. Er is slechts één woordenboek voor elke lange tekenreekskolom in de rijgroep.
 
-Zie de video [Synapse SQL scaling: configuration and guidance](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)voor een diepgaande bespreking van de geheugenvereisten van columnstore.
+Zie de video [Synapse SQL-poolscaling: configuratie en richtlijnen voor](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)een diepgaande bespreking van de geheugenvereisten van columnstore.
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Manieren om geheugenvereisten te verminderen
 
 Gebruik de volgende technieken om de geheugenvereisten voor het comprimeren van rijgroepen in kolomarchiefindexen te verminderen.
 
 ### <a name="use-fewer-columns"></a>Minder kolommen gebruiken
-Ontwerp indien mogelijk de tabel met minder kolommen. Wanneer een rijgroep wordt gecomprimeerd in het kolomarchief, comprimeert de kolomarchiefindex elk kolomsegment afzonderlijk. Daarom nemen de geheugenvereisten voor het comprimeren van een rijgroep toe naarmate het aantal kolommen toeneemt.
+Ontwerp indien mogelijk de tabel met minder kolommen. Wanneer een rijgroep wordt gecomprimeerd in het kolomarchief, comprimeert de kolomarchiefindex elk kolomsegment afzonderlijk. 
+
+Als zodanig nemen de geheugenvereisten voor het comprimeren van een rijgroep toe naarmate het aantal kolommen toeneemt.
 
 
 ### <a name="use-fewer-string-columns"></a>Minder tekenreekskolommen gebruiken
@@ -109,19 +118,28 @@ Aanvullende geheugenvereisten voor tekenreekscompressie:
 
 ### <a name="avoid-over-partitioning"></a>Over-partitionering voorkomen
 
-Indexen van het columnstore maken een of meer rijgroepen per partitie. Voor gegevensopslag in Azure Synapse Analytics neemt het aantal partities snel toe omdat de gegevens worden gedistribueerd en elke distributie wordt verdeeld. Als de tabel te veel partities heeft, zijn er mogelijk niet genoeg rijen om de rijgroepen te vullen. Het ontbreken van rijen leidt niet tot geheugendruk tijdens compressie, maar leidt tot rijgroepen die niet de beste queryprestaties van de kolomarchief bereiken.
+Indexen van het columnstore maken een of meer rijgroepen per partitie. Voor SQL-pool in Azure Synapse Analytics groeit het aantal partities snel omdat de gegevens worden gedistribueerd en elke distributie wordt verdeeld. 
 
-Een andere reden om over-partitionering te vermijden is er een geheugenoverhead voor het laden van rijen in een kolomarchiefindex op een verdeelde lijst. Tijdens een belasting kunnen veel partities de binnenkomende rijen ontvangen, die in het geheugen worden bewaard totdat elke partitie voldoende rijen heeft om te worden gecomprimeerd. Het hebben van te veel partities zorgt voor extra geheugendruk.
+Als de tabel te veel partities heeft, zijn er mogelijk niet genoeg rijen om de rijgroepen te vullen. Het ontbreken van rijen creëert geen geheugendruk tijdens compressie. Maar het leidt tot rijgroepen die niet de beste queryprestaties van kolomarchiefbereiken.
+
+Een andere reden om over-partitionering te vermijden is er een geheugenoverhead voor het laden van rijen in een kolomarchiefindex op een verdeelde lijst. 
+
+Tijdens een belasting kunnen veel partities de binnenkomende rijen ontvangen, die in het geheugen worden bewaard totdat elke partitie voldoende rijen heeft om te worden gecomprimeerd. Het hebben van te veel partities zorgt voor extra geheugendruk.
 
 ### <a name="simplify-the-load-query"></a>De belastingsquery vereenvoudigen
 
 De database deelt de geheugensubsidie voor een query tussen alle operatoren in de query. Wanneer een belastingsquery complexe soorten en joins heeft, wordt het geheugen dat beschikbaar is voor compressie verminderd.
 
-Ontwerp de laadquery om zich alleen te richten op het laden van de query. Als u transformaties op de gegevens moet uitvoeren, voert u deze apart uit van de belastingsquery. Zet de gegevens bijvoorbeeld in een heaptabel, voer de transformaties uit en laad de faseringstabel vervolgens in de kolomarchiefindex. U de gegevens ook eerst laden en vervolgens het MPP-systeem gebruiken om de gegevens te transformeren.
+Ontwerp de laadquery om zich alleen te richten op het laden van de query. Als u transformaties op de gegevens moet uitvoeren, voert u deze apart uit van de belastingsquery. Zet de gegevens bijvoorbeeld in een heaptabel, voer de transformaties uit en laad de faseringstabel vervolgens in de kolomarchiefindex. 
+
+> [!TIP]
+> U de gegevens ook eerst laden en vervolgens het MPP-systeem gebruiken om de gegevens te transformeren.
 
 ### <a name="adjust-maxdop"></a>MAXDOP aanpassen
 
-Elke distributie comprimeert rijgroepen parallel in het kolomarchief wanneer er meer dan één CPU-kern beschikbaar is per distributie. De parallellisme vereist extra geheugenbronnen, wat kan leiden tot geheugendruk en het bijsnijden van rijgroepen.
+Elke distributie comprimeert rijgroepen parallel in het kolomarchief wanneer er meer dan één CPU-kern beschikbaar is per distributie. 
+
+De parallellisme vereist extra geheugenbronnen, wat kan leiden tot geheugendruk en het bijsnijden van rijgroepen.
 
 Om de geheugendruk te verminderen, u de hint VAN MAXDOP-query gebruiken om de belastingsbewerking binnen elke distributie in de seriële modus uit te voeren.
 
@@ -134,11 +152,13 @@ OPTION (MAXDOP 1);
 
 ## <a name="ways-to-allocate-more-memory"></a>Manieren om meer geheugen toe te wijzen
 
-DWU-grootte en de gebruikersbronklasse bepalen samen hoeveel geheugen beschikbaar is voor een gebruikersquery. Als u de geheugensubsidie voor een belastingquery wilt verhogen, u het aantal DTO's verhogen of de resourceklasse verhogen.
+DWU-grootte en de gebruikersbronklasse bepalen samen hoeveel geheugen beschikbaar is voor een gebruikersquery. 
+
+Als u de geheugensubsidie voor een belastingquery wilt verhogen, u het aantal DTO's verhogen of de resourceklasse verhogen.
 
 - Zie [Hoe schaal ik de prestaties?](quickstart-scale-compute-portal.md)
 - Zie [Voorbeeld van een gebruikersbronklasse wijzigen](resource-classes-for-workload-management.md#change-a-users-resource-class)als u de resourceklasse voor een query wilt wijzigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het [prestatieoverzicht](cheat-sheet.md)voor meer manieren om de prestaties voor Synapse SQL te verbeteren.
+Zie het [overzicht Prestaties](cheat-sheet.md)voor meer manieren om de prestaties voor SQL-groep te verbeteren.

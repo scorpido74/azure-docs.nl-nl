@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/06/2020
 tags: connectors
-ms.openlocfilehash: 1578ca030bc8bab971a44e1afcce1d1ab9e1d5e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a3fb9a8a72b384d2af4af38bdc382e541ddf535
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78674110"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656283"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Geautomatiseerde op gebeurtenissen gebaseerde werkstromen maken en uitvoeren met HTTP-webhooks in Azure Logic Apps
 
@@ -36,7 +36,7 @@ Een HTTP-webhook-actie is ook op gebeurtenissen gebaseerd en *schrijft zich op* 
 De [**e-mailactie**](connectors-create-api-office365-outlook.md) voor goedkeuring van de Office 365 Outlook-connector is bijvoorbeeld een voorbeeld van webhook-actie die dit patroon volgt. U dit patroon uitbreiden naar elke service met behulp van de webhook-actie.
 
 > [!NOTE]
-> Logic Apps dwingt TLS (Transport Layer Security) 1.2 af wanneer u de oproep terugontvangt naar de HTTP-webhooktrigger of -actie. Als u SSL-handshakefouten ziet, moet u TLS 1.2 gebruiken. Voor inkomende oproepen, hier zijn de ondersteunde cipher suites:
+> Logic Apps dwingt TLS (Transport Layer Security) 1.2 af wanneer u de oproep terugontvangt naar de HTTP-webhooktrigger of -actie. Als u TLS-handshakefouten ziet, moet u TLS 1.2 gebruiken. Voor inkomende oproepen, hier zijn de ondersteunde cipher suites:
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256

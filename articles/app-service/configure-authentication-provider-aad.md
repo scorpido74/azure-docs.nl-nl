@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 4b42f0966288e4ee72b689ddce6313a41e91f13e
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: dbbe58df4f1cfe93555b494e525fad18f5b02664
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438036"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632573"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Uw App-service- of Azure-functie-app configureren om Azure AD-aanmelding te gebruiken
 
@@ -78,7 +78,7 @@ Voer de volgende stappen uit:
 1. Nadat de app-registratie is gemaakt, kopieert u de **id van toepassing (client)** en de **id directory (tenant)** voor later.
 1. Selecteer **Verificatie**. Schakel **onder Impliciete toekenning** **ID-tokens** in om Aanmeldingen van OpenID Connect-gebruikers van App Service toe te staan.
 1. (Optioneel) Selecteer **Branding**. Voer in **de URL**van de startpagina de URL van uw App Service-app in en selecteer **Opslaan**.
-1. Selecteer **Een API-set** > **blootleggen**. Plak de URL van uw App Service-app en selecteer **Opslaan**.
+1. Selecteer **Een API-set** > **blootleggen**. Plak voor app met één tenant de URL van uw App Service-app en selecteer **Opslaan** en voor multi-tenant-app, plak in de URL die is gebaseerd op een van tenant geverifieerde domeinen en selecteer **Vervolgens Opslaan**.
 
    > [!NOTE]
    > Deze waarde is de **Application ID URI** van de app-registratie. Als uw web-app toegang tot een API in de cloud vereist, hebt u de **Application ID URI** van de web-app nodig wanneer u de cloud App Service-bron configureert. U dit bijvoorbeeld gebruiken als u wilt dat de cloudservice expliciet toegang verleent tot de web-app.
