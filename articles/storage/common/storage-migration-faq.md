@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1445d74e3050ffd6da7c45037df552f4bee9acf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f1137638f9cd4926b712bdd18e681d90adcdc4
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116668"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668553"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Veelgestelde vragen over de Azure Storage-migratie
 
@@ -269,7 +269,7 @@ Ga als u ervoor om andere mensen toegang te geven tot de opslagbronnen:
 
 **Hoe gebruik ik een aangepast HTTPS-domein met mijn opslagaccount? Hoe laat ik bijvoorbeeld 'https:\//mystorageaccountname.blob.core.windows.net/images/image.gif' verschijnen\/als 'https: /www.contoso.com/images/image.gif'?**
 
-SSL wordt momenteel niet ondersteund op opslagaccounts met aangepaste domeinen.
+TLS/SSL wordt momenteel niet ondersteund op opslagaccounts met aangepaste domeinen.
 Maar u niet-HTTPS aangepaste domeinen gebruiken. Zie [Een aangepaste domeinnaam configureren voor het eindpunt van uw Blob-opslag voor](../blobs/storage-custom-domain-name.md)meer informatie.
 
 ## <a name="access-to-storage"></a>Toegang tot opslag

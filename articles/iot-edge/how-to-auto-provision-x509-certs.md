@@ -9,12 +9,12 @@ ms.date: 03/06/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 48c8179af4a4b69924fb943ac98918b48d3a2008
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4d247f151240da8c3f0d38bbd22e43e230a1b95
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537360"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668620"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Een IoT Edge-apparaat maken en inrichten met X.509-certificaten
 
@@ -72,6 +72,9 @@ Als u meerdere IoT Edge-apparaten wilt inrichten, voert u de stappen in de volge
 Wanneer u een inschrijving maakt in DPS, u een **eerste apparaattweelingstatus**declareren. In de apparaattweeling u tags instellen op apparaten groeperen op elke statistiek die u nodig hebt in uw oplossing, zoals regio, omgeving, locatie of apparaattype. Deze tags worden gebruikt om [automatische implementaties](how-to-deploy-monitor.md)te maken.
 
 Zie [Apparaatinschrijvingen beheren](../iot-dps/how-to-manage-enrollments.md)voor meer informatie over inschrijvingen in de service voor apparaatinrichting.
+
+   > [!TIP]
+   > In azure cli u een [inschrijving](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) of een [inschrijvingsgroep](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) maken en de vlag met randfunctionaliteit gebruiken om op te geven dat een apparaat of groep apparaten een IoT **Edge-apparaat** is.
 
 1. Navigeer in de [Azure-portal](https://portal.azure.com)naar uw exemplaar van de IoT Hub Device Provisioning Service.
 

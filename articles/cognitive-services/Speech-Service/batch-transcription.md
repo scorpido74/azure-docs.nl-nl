@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: ee7fbddade055c11f5870aa5a588a2fd02f10a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131608"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668841"
 ---
 # <a name="what-is-batch-transcription"></a>Wat is batchtranscriptie?
 
@@ -304,9 +304,6 @@ De transcriptieservice kan een groot aantal ingediende transcripties verwerken. 
 ## <a name="sample-code"></a>Voorbeeldcode
 
 Volledige voorbeelden zijn beschikbaar in de [GitHub-monsteropslagplaats](https://aka.ms/csspeech/samples) in de `samples/batch` submap.
-
-> [!NOTE]
-> Batch transcriptie functionaliteit wordt blootgesteld via de REST API hierboven beschreven. Zo batch transcriptie kan worden gebruikt vanuit bijna elke programmeertaal of omgeving die REST ondersteunt. De onderstaande voorbeelden en voorbeelden in GitHub zijn slechts representatief en geven **geen** grenzen aan over waar de API kan worden gebruikt.
 
 U moet de voorbeeldcode aanpassen met uw abonnementsgegevens, het servicegebied, de SAS URI die naar het audiobestand wijst dat u wilt transcriberen en id's modelleren voor het geval u een aangepast akoestisch of taalmodel wilt gebruiken.
 

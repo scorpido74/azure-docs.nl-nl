@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cabfc84d2bc0c9d08a457e67c0182d7550f04ceb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75647880"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668889"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Een of meer listeners van de beschikbaarheidsgroep Always On configureren - Resourcebeheer
 In dit onderwerp ziet u hoe u:
@@ -58,9 +58,13 @@ Als u de toegang beperkt met een Azure Network Security Group, moet u ervoor zor
 
 ## <a name="determine-the-load-balancer-sku-required"></a>Bepaal de benodigde load balancer SKU
 
-[Azure load balancer](../../../load-balancer/load-balancer-overview.md) is beschikbaar in 2 SKU's: Basic & Standard. De standaard load balancer wordt aanbevolen. Als de virtuele machines zich in een beschikbaarheidsset bevinden, is basislastbalancer toegestaan. Standaard load balancer vereist dat alle VM IP-adressen standaard IP-adressen gebruiken.
+[Azure load balancer](../../../load-balancer/load-balancer-overview.md) is beschikbaar in 2 SKU's: Basic & Standard. De standaard load balancer wordt aanbevolen. Als de virtuele machines zich in een beschikbaarheidsset bevinden, is basislastbalancer toegestaan. Als de virtuele machines zich in een beschikbaarheidszone bevinden, is een standaard load balancer vereist. Standaard load balancer vereist dat alle VM IP-adressen standaard IP-adressen gebruiken.
 
 De huidige [Microsoft-sjabloon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) voor een beschikbaarheidsgroep maakt gebruik van een basisloadbalancer met basisIP-adressen.
+
+   > [!NOTE]
+   > U moet een [serviceeindpunt](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) configureren als u een standaard load balancer en Azure Storage gebruikt voor de cloudgetuige. 
+
 
 De voorbeelden in dit artikel geven een standaard load balancer op. In de voorbeelden bevat `-sku Standard`het script .
 
@@ -226,6 +230,8 @@ Let op de volgende richtlijnen voor de listener van de beschikbaarheidsgroep in 
 * Met een interne load balancer hebt u alleen toegang tot de listener vanuit hetzelfde virtuele netwerk.
 
 * Als u de toegang beperkt met een Azure Network Security Group, moet u ervoor zorgen dat de regels voor toestaan de IP-adressen van de backend SQL Server VM bevatten en de zwevende IP-adressen van de load balancer voor de AG-listener en het IP-adres van de clusterkern, indien van toepassing.
+
+* Maak een serviceeindpunt bij gebruik van een standaard load balancer met Azure Storage voor de cloudgetuige. Zie [Toegang verlenen vanuit een virtueel netwerk](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)voor meer informatie.
 
 ## <a name="for-more-information"></a>Voor meer informatie
 Zie [Beschikbaarheidsgroep Altijd op configureren in Azure VM handmatig](virtual-machines-windows-portal-sql-availability-group-tutorial.md)voor meer informatie.

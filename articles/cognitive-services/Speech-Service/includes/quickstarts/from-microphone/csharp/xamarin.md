@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 98181bac7cf9aca85766d78fcd753ad8bdabc3ee
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 699bbea9d50c24558f6c9d4671cb6035e4718a43
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80659065"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671895"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -23,7 +23,7 @@ Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
 > * [Een Azure-spraakbron maken](../../../../get-started.md)
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=xamarin)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=xamarin&pivots=programming-language-csharp)
 > * Zorg ervoor dat u toegang hebt tot een microfoon voor audio-opname
 
 Als je dit al gedaan hebt, geweldig. Laten we doorgaan.

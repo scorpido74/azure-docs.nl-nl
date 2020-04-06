@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71121953"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668563"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Back-endservercertificaat wordt niet op de witte lijst voor een toepassingsgateway weergegeven met behulp van een interne load balancer met een app-serviceomgeving
 
-In dit artikel wordt het volgende probleem opgelost: een certificaat wordt niet op de witte lijst weergegeven wanneer u een toepassingsgateway maakt met behulp van een ILB (Internal Load Balancer) samen met een App Service Environment (ASE) aan de achterkant bij het gebruik van end-to-end SSL in Azure.
+In dit artikel wordt het volgende probleem opgelost: een certificaat wordt niet op de witte lijst weergegeven wanneer u een toepassingsgateway maakt met behulp van een ILB (Internal Load Balancer) samen met een App Service Environment (ASE) aan de achterkant wanneer u end-to-end TLS in Azure gebruikt.
 
 ## <a name="symptoms"></a>Symptomen
 
@@ -68,7 +68,7 @@ Wanneer u een volledig gekwalificeerde domeinnaam (FQDN) gebruikt om toegang te 
 
 - Schakel de optie **Gebruik voor App-service** voor de toepassingsgateway uit voor het geval u het IP-adres van de ILB gebruikt.
 
-Om de overhead te verminderen, u het ILB-certificaat uploaden in de HTTP-instellingen om het sondepad te laten werken. (Deze stap is alleen voor whitelisting. Het zal niet worden gebruikt voor SSL-communicatie.) U het ILB-certificaat ophalen door toegang te krijgen tot de ILB met het IP-adres vanuit uw browser op HTTPS en vervolgens het SSL-certificaat te exporteren in een basis-64 gecodeerde CER-indeling en het certificaat te uploaden naar de respectievelijke HTTP-instellingen.
+Om de overhead te verminderen, u het ILB-certificaat uploaden in de HTTP-instellingen om het sondepad te laten werken. (Deze stap is alleen voor whitelisting. Het wordt niet gebruikt voor TLS-communicatie.) U het ILB-certificaat ophalen door toegang te krijgen tot de ILB met het IP-adres vanuit uw browser op HTTPS en vervolgens het TLS/SSL-certificaat te exporteren in een door basis-64 gecodeerde CER-indeling en het certificaat te uploaden naar de respectievelijke HTTP-instellingen.
 
 ## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 

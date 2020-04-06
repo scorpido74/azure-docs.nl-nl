@@ -8,29 +8,32 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 3e0e0291ff855b4502224466e17696a4fe668c2a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655989"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666790"
 ---
-# <a name="partial-term-search-in-azure-cognitive-search-queries-wildcard-regex-fuzzy-search-patterns"></a>Zoeken naar gedeeltelijke termen in Azure Cognitive Search-query's (wildcard, regex, fuzzy search, patronen)
+# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>Zoeken naar gedeeltelijke termen en patronen met speciale tekens - Azure Cognitive Search (wildcard, regex, patronen)
 
-Een *gedeeltelijke term zoekopdracht* verwijst naar query's die bestaan uit termfragmenten, zoals de eerste, laatste of binnendelen van een tekenreeks, of een patroon bestaande uit een combinatie van fragmenten, vaak gescheiden door speciale tekens zoals streepjes of schuine strepen. Veelgebruikte use-cases omvatten query's voor delen van een telefoonnummer, URL, personen of productcodes of samengestelde woorden.
+Een *gedeeltelijke term zoekopdracht* verwijst naar query's die bestaan uit termfragmenten, zoals de eerste, laatste of binnendelen van een tekenreeks. Een *patroon* kan een combinatie zijn van fragmenten, soms met speciale tekens zoals streepjes of schuine strepen die deel uitmaken van de query. Veelgebruikte use-cases omvatten query's voor delen van een telefoonnummer, URL, personen of productcodes of samengestelde woorden.
 
-Gedeeltelijke zoekopdracht kan problematisch zijn omdat de index zelf termen meestal niet opslaat op een manier die bevorderlijk is voor gedeeltelijke tekenreeks- en patroonmatching. Tijdens de tekstanalysefase van indexering worden speciale tekens verwijderd, samengestelde tekenreeksen en samengestelde tekenreeksen opgesplitst, waardoor patroonquery's mislukken wanneer er geen overeenkomst wordt gevonden. Een telefoonnummer zoals `+1 (425) 703-6214`(tokenized als `"1"` `"425"`, `"703"` `"6214"`, , ) wordt `"3-62"` bijvoorbeeld niet weergegeven in een query omdat die inhoud niet echt in de index bestaat. 
+Gedeeltelijke zoekopdracht kan problematisch zijn als de index geen termen heeft in de indeling die nodig is voor patroonmatching. Tijdens de tekstanalysefase van de indexering, met behulp van de standaardstandaardanalyzer, worden speciale tekens verwijderd, samengestelde en samengestelde tekenreeksen opgesplitst, waardoor patroonquery's mislukken wanneer er geen overeenkomst wordt gevonden. Een telefoonnummer zoals `+1 (425) 703-6214`(tokenized als `"1"` `"425"`, `"703"` `"6214"`, , ) wordt `"3-62"` bijvoorbeeld niet weergegeven in een query omdat die inhoud niet echt in de index bestaat. 
 
-De oplossing is om intacte versies van deze tekenreeksen op te slaan in de index, zodat u gedeeltelijke zoekscenario's ondersteunen. Het maken van een extra veld voor een intacte tekenreeks, plus het gebruik van een content-preserving analyzer, is de basis van de oplossing.
+De oplossing is om een analyzer aan te roepen die een volledige tekenreeks behoudt, inclusief spaties en speciale tekens indien nodig, zodat u gedeeltelijke termen en patronen ondersteunen. Het maken van een extra veld voor een intacte tekenreeks, plus het gebruik van een content-preserving analyzer, is de basis van de oplossing.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Wat is gedeeltelijke zoekopdracht in Azure Cognitive Search
 
-In Azure Cognitive Search is gedeeltelijk zoeken beschikbaar in de volgende formulieren:
+In Azure Cognitive Search is gedeeltelijk zoeken en patroon beschikbaar in deze formulieren:
 
 + [Prefix zoeken,](query-simple-syntax.md#prefix-search) `search=cap*`zoals , matching op "Cap'n Jack's Waterfront Inn" of "Gacc Capital". U de syntaxis van de query gebruiken voor zoeken naar voorvoegsel.
-+ [Zoeken met jokertekens](query-lucene-syntax.md#bkmk_wildcard) of [reguliere expressies](query-lucene-syntax.md#bkmk_regex) die zoeken naar een patroon of delen van een ingesloten tekenreeks, inclusief het achtervoegsel. Bijvoorbeeld, gezien de term "alfanumerieke", zou u`search=/.*numeric.*/`gebruik maken van een wildcard zoeken ( ) voor een achtervoegsel query overeenkomen met die term. Wildcard en reguliere expressies vereisen de volledige Lucene-syntaxis.
 
-Wanneer een van de bovenstaande querytypen nodig is in uw clienttoepassing, voert u de stappen in dit artikel uit om ervoor te zorgen dat de benodigde inhoud in uw index aanwezig is.
++ [Zoeken met jokertekens](query-lucene-syntax.md#bkmk_wildcard) of [reguliere expressies](query-lucene-syntax.md#bkmk_regex) die zoeken naar een patroon of delen van een ingesloten tekenreeks, inclusief het achtervoegsel. Wildcard en reguliere expressies vereisen de volledige Lucene-syntaxis. 
+
+  Enkele voorbeelden van zoeken in gedeeltelijke termen zijn het volgende. Voor een achtervoegselquery, gezien de term 'alfanumeriek', gebruikt u een wildcardzoekopdracht (`search=/.*numeric.*/`) om een overeenkomst te vinden. Voor een gedeeltelijke term die tekens bevat, zoals een URL-fragment, moet u mogelijk vluchttekens toevoegen. In JSON, een `/` voorwaartse slash `\`is ontsnapt met een achterwaartse slash . Als zodanig `search=/.*microsoft.com\/azure\/.*/` is de syntaxis voor het URL-fragment "microsoft.com/azure/".
+
+Zoals opgemerkt, al het bovenstaande vereisen dat de index bevat strings in een formaat dat bevorderlijk is voor patroon matching, die de standaard analyzer niet biedt. Door de stappen in dit artikel te volgen, u ervoor zorgen dat de benodigde inhoud aanwezig is om deze scenario's te ondersteunen.
 
 ## <a name="solving-partial-search-problems"></a>Problemen met gedeeltelijke zoekopdrachtoplossen
 

@@ -4,16 +4,16 @@ description: Gebruik een gesimuleerd apparaat op uw Windows-machine om automatis
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/09/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ee4f01c3ec57b0cf9e3ecf47254b57be95ea051a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc051e2a0ebbdae7c62ff8a249747d118d3c2ce4
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76510937"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668681"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Een gesimuleerd IoT Edge-apparaat maken en inrichten met een virtuele TPM op Windows
 
@@ -60,11 +60,14 @@ Kies de SDK-taal die u wilt gebruiken om het gesimuleerde apparaat te maken en v
 
 Wanneer u de afzonderlijke inschrijving maakt, selecteert u **True** om te verklaren dat het gesimuleerde TPM-apparaat op uw Windows-ontwikkelingsmachine een **IoT Edge-apparaat**is.
 
+> [!TIP]
+> In azure cli u een [inschrijving](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) of een [inschrijvingsgroep](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) maken en de vlag met randfunctionaliteit gebruiken om op te geven dat een apparaat of groep apparaten een IoT **Edge-apparaat** is.
+
 Gesimuleerdapparaat en individuele inschrijvingsgidsen:
 
 * [C](../iot-dps/quick-create-simulated-device.md)
 * [Java](../iot-dps/quick-create-simulated-device-tpm-java.md)
-* [C #](../iot-dps/quick-create-simulated-device-tpm-csharp.md)
+* [C#](../iot-dps/quick-create-simulated-device-tpm-csharp.md)
 * [Node.js](../iot-dps/quick-create-simulated-device-tpm-node.md)
 * [Python](../iot-dps/quick-create-simulated-device-tpm-python.md)
 

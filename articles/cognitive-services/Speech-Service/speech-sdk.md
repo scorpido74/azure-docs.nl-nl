@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: a2ff4a94c1b2941f645cd7032ef476d33dffdb00
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 440944033e4b6a8fb29cf9ace6ad784b91316526
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656498"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668774"
 ---
 # <a name="about-the-speech-sdk"></a>Info over de Speech-SDK
 
@@ -69,21 +69,11 @@ Verschillende programmeertalen Van De Sdk van de Toespraak steunen codec samenge
 
 ## <a name="rest-api"></a>REST-API
 
-Hoewel de SpraakSDK veel functiemogelijkheden van de Spraakservice omvat, wilt u voor sommige scenario's de REST-API gebruiken. Als voorbeeld wordt endpointbeheer alleen via de REST API weergegeven.
-
-> [!TIP]
-> Wanneer u vertrouwt op de REST API, gebruikt u de Swagger Editor om automatisch clientbibliotheken te genereren. Bijvoorbeeld om een batchtranscriptieclientbibliotheek te genereren.
-> 1. Kopieer hieronder de voorbeeld-URL:
->     ```http
->     https://westus.cris.ai/docs/v2.0/swagger
->     ```
-> 1. Navigeer naar de <a href="https://editor.swagger.io/" target="_blank">Swagger <span class="docon docon-navigate-external x-hidden-focus"></span> Editor</a>
-> 1. URL **van bestand** > **importeren selecteren** en de URL plakken
-> 1. Selecteer **Client genereren** en kies de gewenste programmeertaal
+Hoewel de SpraakSDK veel functiemogelijkheden van de Spraakservice omvat, wilt u voor sommige scenario's de REST-API gebruiken.
 
 ### <a name="batch-transcription"></a>Batchtranscriptie
 
-[Batch transcriptie](batch-transcription.md) maakt asynchrone spraak-naar-tekst transcriptie van grote hoeveelheden gegevens. Batch transcriptie is alleen mogelijk vanuit de REST API.
+[Batch transcriptie](batch-transcription.md) maakt asynchrone spraak-naar-tekst transcriptie van grote hoeveelheden gegevens. Batch transcriptie is alleen mogelijk vanuit de REST API. Naast het converteren van spraakaudio naar tekst, maakt batch spraak-naar-tekst ook diarisatie en sentiment-analyse mogelijk.
 
 ## <a name="customization"></a>Aanpassing
 

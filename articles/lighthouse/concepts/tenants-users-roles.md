@@ -1,14 +1,14 @@
 ---
 title: Tenants, rollen en gebruikers in Azure Lighthouse-scenario's
 description: Inzicht in de concepten van Azure Active Directory-tenants, -gebruikers en -rollen en hoe ze kunnen worden gebruikt in Azure Lighthouse-scenario's.
-ms.date: 03/24/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7540e17fd80f9a1d8e996295000c126614b838d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4734f12c8b4b25bf75ecabc39d9e99d8ebe0951c
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246888"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668881"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Tenants, rollen en gebruikers in Azure Lighthouse-scenario's
 
@@ -41,6 +41,7 @@ Bij het maken van uw autorisaties raden we de volgende aanbevolen procedures aan
 - Zorg ervoor dat u het principe van de minste bevoegdheden te volgen, zodat gebruikers alleen de machtigingen die nodig zijn om hun taak te voltooien, helpen om de kans op onbedoelde fouten te verminderen. Zie [Aanbevolen beveiligingsprocedures voor](../concepts/recommended-security-practices.md)meer informatie .
 - Neem een gebruiker op met de [rol Registratietoewijzing Beheerservices,](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) zodat u de [toegang tot de delegatie](../how-to/onboard-customer.md#remove-access-to-a-delegation) later verwijderen als dat nodig is. Als deze rol niet is toegewezen, kunnen gedelegeerde resources alleen worden verwijderd door een gebruiker in de tenant van de klant.
 - Zorg ervoor dat elke gebruiker die [de pagina Mijn klanten in de Azure-portal](../how-to/view-manage-customers.md) moet bekijken, de [leesrol](../../role-based-access-control/built-in-roles.md#reader) heeft (of een andere ingebouwde rol die lezerstoegang bevat).
+- Gebruikers in de beheertenant hebben geen toegang tot factureringsgegevens voor een gedelegeerd klantabonnement, zelfs niet als ze een ingebouwde rol hebben die doorgaans toegang zou toestaan. Dit komt omdat toegang tot factureringsgegevens extra stappen vereist die momenteel alleen worden ondersteund voor gebruikers binnen dezelfde tenant.
 
 > [!IMPORTANT]
 > Als u machtigingen wilt toevoegen voor een Azure AD-groep, moet het **type Groep** **beveiliging** zijn en geen **Office 365**. Deze optie wordt geselecteerd wanneer de groep wordt gemaakt. Zie [Een basisgroep maken en leden toevoegen met behulp van Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie.

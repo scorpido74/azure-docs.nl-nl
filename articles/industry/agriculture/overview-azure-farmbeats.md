@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 38f9f85a7e961d426b66a24bb4a5c63f9f0301da
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638068"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667307"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Overzicht van Azure FarmBeats (voorbeeld)
 
@@ -59,7 +59,7 @@ Een beheerder kan meerdere partners als gegevensproviders toevoegen aan Azure Fa
 | ---- | -------- | -------- |
 | Sensorpartner  |   Maken, lezen, bijwerken <br/> <br/> Lezen, bijwerken | DeviceModel, Apparaat, SensorModel, Sensor <br/> <br/> ExtendedType |
 | Imagery-partner  |   Maken, lezen, bijwerken <br/> <br/> Lezen, bijwerken <br/> <br/> Lezen | Scène, Scènefile <br/> <br/> ExtendedType <br/> <br/> Boerderij |
-| Imagery-partner  |   Maken, lezen, bijwerken <br/> <br/> Lezen, bijwerken <br/> <br/> Lezen | WeatherDataModel, WeatherDataLocatie, JobType <br/> <br/> ExtendedType <br/> <br/> Boerderij |
+| Weerpartner* <br/> <br/>  (* Binnenkort) |   Maken, lezen, bijwerken <br/> <br/> Lezen, bijwerken <br/> <br/> Lezen | WeatherDataModel, WeatherDataLocatie, JobType <br/> <br/> ExtendedType <br/> <br/> Boerderij |
 
 ## <a name="resources"></a>Resources
 

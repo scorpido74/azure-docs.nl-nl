@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73242476"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667863"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Richtlijnen voor Azure NetApp Files-netwerkplanning
 
@@ -39,10 +39,11 @@ De onderstaande functies worden momenteel niet ondersteund voor Azure NetApp-bes
 * Door de gebruiker gedefinieerde routes (UDR's) met adresvoorvoegsel als subnet Azure NetApp-bestanden
 * Azure-beleid (bijvoorbeeld aangepaste naamgevingsbeleidsregels) op de Azure NetApp-bestandeninterface
 * Load balancers voor Azure NetApp Files-verkeer
+* Azure NetApp Files wordt niet ondersteund met Azure Virtual WAN
 
 De volgende netwerkbeperkingen zijn van toepassing op Azure NetApp-bestanden:
 
-* Het aantal IP's dat wordt gebruikt in een VNet met Azure NetApp-bestanden (inclusief peered VNets) mag niet hoger zijn dan 1000. We werken aan het verhogen van deze limiet om te voldoen aan de vraag van klantenschaal. Als u in de tussentijd meer IP's nodig hebt, neem dan contact op met ons ondersteuningsteam met uw use case en vereiste limiet.
+* Het aantal IP's dat wordt gebruikt in een VNet met Azure NetApp-bestanden (inclusief peered VNets) mag niet hoger zijn dan 1000. We werken aan het verhogen van deze limiet om te voldoen aan de vraag van klantenschaal. 
 * In elk virtueel Azure-netwerk (VNet) kan er slechts één subnet aan Azure NetApp Files worden gedelegeerd.
 
 
@@ -123,8 +124,8 @@ In de hierboven geïllustreerde topologie is het on-premises netwerk verbonden m
 * On-premises bronnen VM 1 en VM 2 kunnen verbinding maken met Deel 2 of Deel 3 via een site-to-site VPN en regionale Vnet-peering.
 * VM 3 in de hub VNet kan verbinding maken met Volume 2 in spaak VNet 1 en Volume 3 in spaak VNet 2.
 * VM 4 van spaakVNet 1 en VM 5 van spaak VNet 2 kunnen verbinding maken met Volume 1 in de hub VNet.
-
-VM 4 in spaak VNet 1 kan geen verbinding maken met Volume 3 in spaak VNet 2. Ook VM 5 in spaak VNet2 kan geen verbinding maken met Volume 2 in spaak VNet 1. Dit is het geval omdat de spaak VNets niet worden peered en _transit routing wordt niet ondersteund via VNet peering_.
+* VM 4 in spaak VNet 1 kan geen verbinding maken met Volume 3 in spaak VNet 2. Ook VM 5 in spaak VNet2 kan geen verbinding maken met Volume 2 in spaak VNet 1. Dit is het geval omdat de spaak VNets niet worden peered en _transit routing wordt niet ondersteund via VNet peering_.
+* In de bovenstaande architectuur als er ook een gateway in de spaak VNET zit, gaat de verbinding met het ANF-volume van on-prem verbinding via de gateway in de Hub verloren. Door het ontwerp, zou de voorkeur worden gegeven aan de gateway in de spaak VNet en dus alleen machines die verbinding maken over die gateway kan verbinding maken met de ANF volume.
 
 ## <a name="next-steps"></a>Volgende stappen
 

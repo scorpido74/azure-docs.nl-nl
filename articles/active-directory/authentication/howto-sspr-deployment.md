@@ -1,6 +1,6 @@
 ---
-title: Selfservice-implementatie van wachtwoorden - Azure Active Directory
-description: Strategie voor een succesvolle implementatie van Azure AD selfservice wachtwoord reset
+title: Implementatieoverwegingen voor het opnieuw instellen van azure Active Directory-zelfservicewachtwoord
+description: Meer informatie over implementatieoverwegingen en strategie voor een succesvolle implementatie van azure AD selfservice wachtwoordreset
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,27 +11,34 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7be99959c2ae420cff667491f68c40dfa0862a9
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: cd5b9e1f2640e68f7c819a49ad34d9c051c582c5
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652391"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667318"
 ---
-# <a name="plan-an-azure-active-directory-self-service-password-reset"></a>Een azure Active Directory selfservicewachtwoord opnieuw instellen
+# <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Een azure Active Directory selfservice-implementatie voor het opnieuw instellen van wachtwoorden plannen
 
-> [!NOTE]
-> Dit implementatieplan biedt planningsrichtlijnen en aanbevolen procedures voor het implementeren van Azure AD selfservice wachtwoordreset (SSPR). <br>**Als u op zoek bent naar de SSPR-tool [https://aka.ms/sspr](https://aka.ms/sspr)om weer in uw account te komen, ga dan naar **.
+> [!IMPORTANT]
+> Dit implementatieplan biedt richtlijnen en aanbevolen procedures voor het implementeren van Azure AD selfservice password reset (SSPR).
+>
+> **Als u en de eindgebruiker en de noodzaak om [https://aka.ms/sspr](https://aka.ms/sspr)terug te krijgen in uw account, ga naar **.
 
-[Self-Service Password Reset (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) is een Azure Active Directory (AD)-functie waarmee gebruikers hun wachtwoorden kunnen resetten zonder contact op te nemen met IT-personeel voor hulp. De gebruikers kunnen zichzelf snel deblokkeren en blijven werken, ongeacht waar ze zijn of het tijdstip van de dag. Door de werknemers deblokkering te laten deblokkeren, kan uw organisatie de niet-productieve tijd en hoge ondersteuningskosten voor de meest voorkomende wachtwoordgerelateerde problemen verlagen. 
+[Self-Service Password Reset (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) is een Azure Active Directory (AD)-functie waarmee gebruikers hun wachtwoorden kunnen resetten zonder contact op te nemen met IT-personeel voor hulp. De gebruikers kunnen zichzelf snel deblokkeren en blijven werken, ongeacht waar ze zijn of het tijdstip van de dag. Door de werknemers deblokkering te laten deblokkeren, kan uw organisatie de niet-productieve tijd en hoge ondersteuningskosten voor de meest voorkomende wachtwoordgerelateerde problemen verlagen.
 
 SSPR heeft de volgende belangrijke mogelijkheden:
 
 * Met selfservice kunnen eindgebruikers hun verlopen of niet-verlopen wachtwoorden opnieuw instellen zonder contact op te nemen met een beheerder of helpdesk voor ondersteuning.
-
 * [Password Writeback](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback) maakt het beheer van on-premises wachtwoorden en het oplossen van account lockout via de cloud mogelijk.
-
 * Rapporten over wachtwoordbeheeractiviteit geven beheerders inzicht in wachtwoordreset en registratieactiviteit die zich in hun organisatie voordoen.
+
+Deze implementatiehandleiding laat u zien hoe u een Implementatie-implementatie van SSPR plannen en vervolgens testen.
+
+Ga als u snel sspr in actie wilt zien en vervolgens terug wilt komen om aanvullende implementatieoverwegingen te begrijpen:
+
+> [!div class="nextstepaction"]
+> [Self-service wachtwoordreset inschakelen (SSPR)](tutorial-enable-sspr.md)
 
 ## <a name="learn-about-sspr"></a>Meer informatie over SSPR
 
@@ -134,7 +141,7 @@ Communicatie is cruciaal voor het succes van elke nieuwe dienst. U moet proactie
 
 ### <a name="plan-a-pilot"></a>Een pilot plannen
 
-We raden u aan de eerste configuratie van SSPR in een testomgeving te bevinden. Begin met een pilotgroep door SSPR in te schakelen voor een subset van gebruikers in uw organisatie. Zie [Aanbevolen procedures voor een pilot.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans)
+We raden u aan dat de eerste configuratie van SSPR zich in een testomgeving bevindt. Begin met een pilotgroep door SSPR in te schakelen voor een subset van gebruikers in uw organisatie. Zie [Aanbevolen procedures voor een pilot.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans)
 
 Als u een groep wilt maken, ziet u hoe [u een groep maakt en leden toevoegt in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal). 
 
@@ -213,7 +220,7 @@ We raden u aan uw active directory-beheeraccounts niet te synchroniseren met Azu
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>Omgevingen met meerdere identiteitsbeheersystemen
 
-Sommige omgevingen hebben meerdere identiteitsbeheersystemen. On-premesis identity managers zoals Oracle AM en SiteMinder, vereisen synchronisatie met AD voor wachtwoorden. U dit doen met behulp van een tool zoals de Password Change Notification Service (PCNS) met Microsoft Identity Manager (MIM). Zie het artikel De MIM Password [Change Notification Service implementeren op een domeincontroller](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)voor het vinden van informatie over dit complexere scenario.
+Sommige omgevingen hebben meerdere identiteitsbeheersystemen. On-premises identiteitsmanagers zoals Oracle AM en SiteMinder vereisen synchronisatie met AD voor wachtwoorden. U dit doen met behulp van een tool zoals de Password Change Notification Service (PCNS) met Microsoft Identity Manager (MIM). Zie het artikel De MIM Password [Change Notification Service implementeren op een domeincontroller](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)voor het vinden van informatie over dit complexere scenario.
 
 ## <a name="plan-testing-and-support"></a>Testen en ondersteuning plannen
 
@@ -255,7 +262,7 @@ Om het succes van uw ondersteuningsteam mogelijk te maken, u een veelgestelde vr
 | Gebruiker kan geen nieuw wachtwoord instellen| Een gebruiker voltooit de verificatie tijdens de wachtwoordresetstroom, maar kan geen nieuw wachtwoord instellen. |
 | Gebruiker ziet geen koppeling Wachtwoord opnieuw instellen op een Windows 10-apparaat| Een gebruiker probeert het wachtwoord opnieuw in te stellen vanaf het vergrendelingsscherm van Windows 10, maar het apparaat is niet verbonden met Azure AD of het intune-apparaatbeleid is niet ingeschakeld |
 
-### <a name="plan-roll-back"></a>Terugdraaien plannen
+### <a name="plan-rollback"></a>Terugdraaien plannen
 
 Ga als u de implementatie terugzet:
 
@@ -295,7 +302,7 @@ Zie [Self-service wachtwoord opnieuw instellen](https://docs.microsoft.com/azure
 1. [On-premises integratie](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)
 
 ### <a name="enable-sspr-in-windows"></a>SSPR inschakelen in Windows
-Voor machines met Windows 7, 8, 8.1 en 10 u [gebruikers in staat stellen hun wachtwoord opnieuw in te stellen op het Windows-aanmeldingsscherm](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows)
+Voor machines met Windows 7, 8, 8.1 en 10 u [gebruikers in staat stellen hun wachtwoord opnieuw in te stellen op het windows-aanmeldingsscherm](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows)
 
 ## <a name="manage-sspr"></a>SSPR beheren
 
@@ -336,7 +343,7 @@ Controlelogboeken voor registratie en wachtwoordreset zijn 30 dagen beschikbaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie Een azure [AD selfservice-pilot voor het opnieuw instellen](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) van wachtwoorden voltooien om aan de slag te gaan met het implementeren van SSPR.
+* Zie [Azure AD selfservice-wachtwoord opnieuw instellen inschakelen](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr.md) voor SSPR als u aan de slag wilt gaan met het implementeren van SSPR
 
 * [Overweeg azure AD-wachtwoordbeveiliging te implementeren](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
 

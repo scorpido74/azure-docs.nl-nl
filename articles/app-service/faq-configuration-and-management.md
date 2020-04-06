@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e7070e925d12df82adbc3683da5b10e48c5d4b0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942933"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668121"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over configuratie en beheer voor Web Apps in Azure
 
@@ -35,14 +35,14 @@ Zie onze zeven minuten durende video [Een aangepaste domeinnaam toevoegen](https
 Zie Een aangepaste domeinnaam kopen [en configureren in App Service](manage-custom-dns-buy-domain.md)voor meer informatie over het kopen en instellen van een aangepast domein voor uw app-webapp.
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Hoe upload en configureer ik een bestaand SSL-certificaat voor mijn web-app?
+## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>Hoe upload en configureer ik een bestaand TLS/SSL-certificaat voor mijn web-app?
 
-Zie [Een SSL-certificaat toevoegen aan uw App Service-app](configure-ssl-certificate.md)voor meer informatie over het uploaden en instellen van een bestaand aangepast SSL-certificaat.
+Zie [Een TLS/SSL-certificaat toevoegen aan uw App Service-app](configure-ssl-certificate.md)voor meer informatie over het uploaden en instellen van een bestaand aangepast TLS/SSL-certificaat.
 
 
-## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Hoe koop en configureer ik een nieuw SSL-certificaat in Azure voor mijn web-app?
+## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>Hoe koop en configureer ik een nieuw TLS/SSL-certificaat in Azure voor mijn web-app?
 
-Zie [Een SSL-certificaat toevoegen aan uw App Service-app](configure-ssl-certificate.md)voor meer informatie over het aanschaffen en instellen van een SSL-certificaat voor uw app-webapp.
+Zie [Een TLS/SSL-certificaat toevoegen aan uw App Service-app](configure-ssl-certificate.md)voor meer informatie over het aanschaffen en instellen van een TLS/SSL-certificaat voor uw App Service-webapp.
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>Hoe verplaats ik de resources van Application Insights?
@@ -84,7 +84,7 @@ Zie [Uitgaande netwerkadressen](environment/app-service-app-service-environment-
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Hoe krijg ik een gereserveerd of speciaal inkomend IP-adres voor mijn web-app?
 
-Als u een speciaal of gereserveerd IP-adres wilt instellen voor inkomende oproepen naar uw Azure-app-website, installeert en configureert u een IP-gebaseerd SSL-certificaat.
+Als u een speciaal of gereserveerd IP-adres wilt instellen voor inkomende oproepen naar uw Azure-app-website, installeert en configureert u een TLS/SSL-certificaat op basis van IP.
 
 Houd er rekening mee dat als u een speciaal of gereserveerd IP-adres wilt gebruiken voor inkomende gesprekken, uw App Service-abonnement in een basis- of hoger serviceabonnement moet zijn.
 

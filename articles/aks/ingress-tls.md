@@ -1,15 +1,16 @@
 ---
-title: Een HTTPS-binnendringen maken met het AKS-cluster (Azure Kubernetes Service)
+title: Binnendringen maken met automatische TLS
+titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het installeren en configureren van een NGINX-ingress-controller die Let's Encrypt gebruikt voor het genereren van automatische TLS-certificaten in een AKS-cluster (Azure Kubernetes Service).
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: ece117d60ae3d7fd70c0972bb463340c5d38c9e1
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: c98310bc5dc6b8f17403505cbcdd7e51355ca2b7
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637266"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668430"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Een HTTPS-ingress-controller maken op Azure Kubernetes Service (AKS)
 

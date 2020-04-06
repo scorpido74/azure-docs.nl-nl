@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 10/04/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9944308d00c9cfecbd38a6443efb49913148806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 139a2cafe137d000b991cbad8b8567e005ffc728
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535915"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668675"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Een IoT Edge-apparaat maken en inrichten met behulp van symmetrische sleutelattest
 
@@ -71,6 +71,9 @@ Wanneer u een inschrijving maakt in DPS, u een **eerste apparaattweelingstatus**
    1. Geef desgevraagd een **IoT Hub-apparaat-id** voor uw apparaat op. U apparaat-id's gebruiken om een individueel apparaat te targeten voor de implementatie van modules. Als u geen apparaat-id verstrekt, wordt de registratie-ID gebruikt.
 
    1. Selecteer **Waar** om aan te geven dat de inschrijving voor een IoT Edge-apparaat is. Voor een groepsinschrijving moeten alle apparaten IoT Edge-apparaten zijn of geen van deze apparaten.
+
+   > [!TIP]
+   > In azure cli u een [inschrijving](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) of een [inschrijvingsgroep](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) maken en de vlag met randfunctionaliteit gebruiken om op te geven dat een apparaat of groep apparaten een IoT **Edge-apparaat** is.
 
    1. Accepteer de standaardwaarde van het toewijzingsbeleid van de Apparaatinrichtingsservice voor **hoe u apparaten aan hubs wilt toewijzen** of kies een andere waarde die specifiek is voor deze inschrijving.
 

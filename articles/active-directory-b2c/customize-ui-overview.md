@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 839e13dffc7d15b8cd258dd4b7dda6776223d052
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051738"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666872"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>De gebruikersinterface aanpassen in Azure Active Directory B2C
 
@@ -41,7 +41,7 @@ Als u [aangepaste beleidsregels](custom-policy-overview.md) gebruikt om aanmeldi
 
 Als u dynamische inhoud moet bieden op basis van de beslissing van een klant, gebruikt u aangepast beleid dat [pagina-inhoud dynamisch](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) kan wijzigen, afhankelijk van een parameter die in een querytekenreeks wordt verzonden. U bijvoorbeeld de achtergrondafbeelding op de aanmeldings- of aanmeldingspagina van Azure AD B2C wijzigen op basis van een parameter die u passeert vanaf uw web- of mobiele toepassing.
 
-### <a name="javascript"></a>JavaScript
+### <a name="javascript"></a>Javascript
 
 U JavaScript-code aan clientzijde inschakelen in zowel [gebruikersstromen](user-flow-javascript-overview.md) als [aangepaste beleidsregels.](page-layout.md)
 
@@ -91,7 +91,10 @@ Bekijk de volgende richtlijnen voordat u uw eigen HTML- en CSS-bestanden gebruik
 
 Wanneer u uw eigen HTML- en CSS-bestanden gebruikt om de gebruikersinterface aan te passen, u uw UI-inhoud hosten op een openbaar beschikbaar HTTPS-eindpunt dat CORS ondersteunt. Azure [Blob-opslag,](../storage/blobs/storage-blobs-introduction.md)webservers, CDN's, AWS S3 of systemen voor het delen van bestanden.
 
-Het belangrijkste punt is dat u de inhoud host op een openbaar beschikbaar HTTPS-eindpunt met CORS ingeschakeld. U moet een absolute URL gebruiken wanneer u deze in uw inhoud opgeeft.
+Het belangrijkste punt is dat u de inhoud host op een openbaar beschikbaar HTTPS-eindpunt met [CORS ingeschakeld.](https://enable-cors.org/server.html) U moet een absolute URL gebruiken wanneer u deze in uw inhoud opgeeft.
+
+> [!NOTE]
+> Zie de [sectie Aangepaste pagina-inhoud](custom-policy-ui-customization.md#custom-page-content-walkthrough) in het artikel UI aanpassen voor meer informatie over het maken van HTML-inhoud, het uploaden van inhoud naar Azure Blob-opslag en het configureren van CORS.
 
 ## <a name="get-started-with-custom-html-and-css"></a>Aan de slag met aangepaste HTML en CSS
 

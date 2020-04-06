@@ -12,14 +12,14 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: a4cfcf20fc7a6a3532f65c3e797da6c876844d2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 349a9920adc0d9353ee8e8e821f54bc2ea2f2616
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76985506"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666991"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Wdesk
 
@@ -181,6 +181,10 @@ In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken d
 
     ![Eenmalige aanmelding configureren](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
+1. Controleer **onder SAML-gebruikers-id-instellingen** **saml-gebruikersnaam is Wdesk gebruikersnaam**.
+
+    ![Eenmalige aanmelding configureren](./media/wdesk-tutorial/wdesk-username.png)
+
 4. Controleer **onder Algemene instellingen**de **inschakeling van SAML Single Sign On:**
 
     ![Eenmalige aanmelding configureren](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
@@ -223,7 +227,7 @@ Als u Azure AD-gebruikers in staat wilt stellen zich aan te melden bij Wdesk, mo
    
     ![Een Azure AD-testgebruiker maken](./media/wdesk-tutorial/createuser1.png)  
 
-5. Voer **in het** tekstvak Gebruiker brittasimon@contoso.com de gebruikersnaam van gebruiker like in en klik op **Doorgaan.**
+5. Voer **in het** tekstvak Gebruiker b.simon@contoso.com de gebruikersnaam van gebruiker like in en klik op **Doorgaan.**
 
     ![Een Azure AD-testgebruiker maken](./media/wdesk-tutorial/createuser3.png)
 
@@ -231,9 +235,9 @@ Als u Azure AD-gebruikers in staat wilt stellen zich aan te melden bij Wdesk, mo
   
     ![Een Azure AD-testgebruiker maken](./media/wdesk-tutorial/createuser4.png)
  
-    a. Voer in **het e-mailtekstvak** de brittasimon@contoso.come-mail van de gebruiker in, zoals .
+    a. Voer in **het e-mailtekstvak** de b.simon@contoso.come-mail van de gebruiker in, zoals .
 
-    b. Voer in het tekstvak **Voornaam** de voornaam van de gebruiker in, zoals **Britta**.
+    b. Voer in het tekstvak **Voornaam** de voornaam van de gebruiker in, zoals **B.**
 
     c. Voer in het tekstvak **Achternaam** de achternaam van de gebruiker in, zoals **Simon**.
 

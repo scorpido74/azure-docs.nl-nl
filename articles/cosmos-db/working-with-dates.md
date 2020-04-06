@@ -5,13 +5,13 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: 92fa35fbe8e5eef4dbdc8b6c47a9055affd449a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/03/2020
+ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273191"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667010"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Werken met datums in Azure Cosmos DB
 
@@ -21,7 +21,9 @@ Naast de basistypen hebben veel toepassingen het Type DateTime nodig om datums e
 
 ## <a name="storing-datetimes"></a>Datumtijd opslaan
 
-Azure Cosmos DB ondersteunt JSON-typen zoals - tekenreeks, getal, booleaan, null, array, object. Het ondersteunt niet direct een DateTime-type. Azure Cosmos DB ondersteunt momenteel geen lokalisatie van datums. U moet DateTimes dus als tekenreeksen opslaan. De aanbevolen indeling voor DateTime-tekenreeksen `YYYY-MM-DDThh:mm:ss.sssZ` in Azure Cosmos DB is die de ISO 8601 UTC-standaard volgt. Het wordt aanbevolen om alle datums in Azure Cosmos DB op te slaan als UTC. Als u de datumtekenreeksen naar deze indeling converteert, kunnen de sorteerdatums lexicografisch worden gesorteerd. Als niet-UTC-datums worden opgeslagen, moet de logica aan de clientzijde worden verwerkt. Als u een lokale DateTime wilt converteren naar UTC, moet de verschuiving bekend/opgeslagen staan als een eigenschap in de JSON en kan de client de verschuiving gebruiken om de UTC DateTime-waarde te berekenen.
+Azure Cosmos DB ondersteunt JSON-typen zoals - tekenreeks, getal, booleaan, null, array, object. Het ondersteunt niet direct een DateTime-type. Azure Cosmos DB ondersteunt momenteel geen lokalisatie van datums. U moet DateTimes dus als tekenreeksen opslaan. De aanbevolen indeling voor DateTime-tekenreeksen `YYYY-MM-DDThh:mm:ss.fffffffZ` in Azure Cosmos DB is die de ISO 8601 UTC-standaard volgt. Het wordt aanbevolen om alle datums in Azure Cosmos DB op te slaan als UTC. Als u de datumtekenreeksen naar deze indeling converteert, kunnen de sorteerdatums lexicografisch worden gesorteerd. Als niet-UTC-datums worden opgeslagen, moet de logica aan de clientzijde worden verwerkt. Als u een lokale DateTime wilt converteren naar UTC, moet de verschuiving bekend/opgeslagen staan als een eigenschap in de JSON en kan de client de verschuiving gebruiken om de UTC DateTime-waarde te berekenen.
+
+Bereikquery's met DateTime-tekenreeksen als filters worden alleen ondersteund als de DateTime-tekenreeksen allemaal in UTC en dezelfde lengte zijn. In Azure Cosmos DB retourneert de systeemfunctie [GetCurrentDateTime](sql-query-getcurrentdatetime.md) de huidige UTC-datum en `YYYY-MM-DDThh:mm:ss.fffffffZ`-tijd de ISO 8601-tekenreekswaarde in de indeling: .
 
 De meeste toepassingen kunnen de standaardtekenreeksweergave voor DateTime gebruiken om de volgende redenen:
 
@@ -47,7 +49,7 @@ In het volgende fragment `Order` wordt bijvoorbeeld een object `ShipDate` opgesl
         {
             Id = "09152014101",
             OrderDate = DateTime.UtcNow.AddDays(-30),
-            ShipDate = DateTime.UtcNow.AddDays(-14), 
+            ShipDate = DateTime.UtcNow.AddDays(-14),
             Total = 113.39
         });
 ```
@@ -76,7 +78,7 @@ De SQL .NET SDK ondersteunt automatisch querygegevens die via LINQ zijn opgeslag
 Vertaald naar de volgende SQL-instructie en uitgevoerd op Azure Cosmos DB:
 
 ```sql
-    SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
+    SELECT * FROM root WHERE (root["ShipDate"] >= "2014-09-30T23:14:25.7251173Z")
 ```
 
 Meer informatie over de SQL-querytaal van Azure Cosmos DB en de LINQ-provider vindt u [in LINQ.](sql-query-linq-to-sql.md)

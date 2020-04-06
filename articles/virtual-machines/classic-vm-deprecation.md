@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 764567bffd2a08ebb5beb17e3063998848b3f110
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e56aa5ec073aadc2a16d53c266d33255a34077cb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127331"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668813"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Uw IaaS-resources vmigreren naar Azure Resource Manager vtegen 1 maart 2023 
 
@@ -32,7 +32,7 @@ Klassieke VM's volgen het [moderne levenscyclusbeleid](https://support.microsoft
 2) Op 1 maart 2023 worden abonnementen die niet zijn gemigreerd naar Azure Resource Manager op de hoogte gebracht van tijdlijnen voor het verwijderen van resterende Klassieke VM's.  
 
 De volgende Azure-services en -functionaliteit worden **NIET** beïnvloed door dit pensioen: 
-- Cloudservices 
+- Cloud Services 
 - Opslagaccounts **die niet** worden gebruikt door klassieke VM's 
 - Virtuele netwerken (VNets) **worden niet** gebruikt door klassieke VM's. 
 - Andere klassieke bronnen
@@ -45,6 +45,6 @@ De volgende Azure-services en -functionaliteit worden **NIET** beïnvloed door d
 
 - Raadpleeg voor meer informatie de [veelgestelde vragen over de migratie naar Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq)
 
-- Voor technische vragen en problemen [u contact opnemen met ondersteuning.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+- Voor technische vragen, problemen en het whitelisting van abonnementen [kunt u contact opnemen met ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)voor contact .
 
 - Voor andere vragen die geen deel uitmaken van faq en feedback, commentaar hieronder.

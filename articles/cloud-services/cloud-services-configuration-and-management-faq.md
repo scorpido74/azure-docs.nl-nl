@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77656922"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668581"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Configuratie- en beheerproblemen voor Azure Cloud Services: veelgestelde vragen (veelgestelde vragen)
 
@@ -30,14 +30,14 @@ Dit artikel bevat veelgestelde vragen over configuratie- en beheerproblemen voor
 
 **Certificaten**
 
-- [Waarom is de certificaatketen van mijn SSL-certificaat van Cloud Service onvolledig?](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
+- [Waarom is de certificaatketen van mijn Cloud Service TLS/SSL-certificaat onvolledig?](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
 - [Wat is het doel van het versleutelingscertificaat voor Windows Azure Tools voor extensies?](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [Hoe kan ik een Csr (Certificate Signing Request) genereren zonder 'RDP-ing' in de instantie?](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [Mijn Cloud Service Management Certificate verloopt. Hoe te vernieuwen?](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [Hoe automatiseer je de installatie van het hoofdSSL-certificaat(.pfx) en intermediate certificaat(.p7b)?](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [Hoe automatiseer je de installatie van het hoofdTLS/SSL-certificaat(.pfx) en intermediate certificaat(.p7b)?](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
 - [Wat is het doel van het certificaat 'Microsoft Azure Service Management for MachineKey'?](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
-**Monitoring en logging**
+**Bewaking en registratie**
 
 - [Wat zijn de komende Cloud Service-mogelijkheden in de Azure-portal die kunnen helpen bij het beheren en bewaken van toepassingen?](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
 - [Waarom schrijft IIS niet meer naar de logboekmap?](#why-does-iis-stop-writing-to-the-log-directory)
@@ -75,7 +75,7 @@ Dit artikel bevat veelgestelde vragen over configuratie- en beheerproblemen voor
 
 ## <a name="certificates"></a>Certificaten
 
-### <a name="why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete"></a>Waarom is de certificaatketen van mijn SSL-certificaat van Cloud Service onvolledig?
+### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>Waarom is de certificaatketen van mijn Cloud Service TLS/SSL-certificaat onvolledig?
     
 We raden klanten aan om de volledige certificaatketen (leaf cert, intermediate certs en root cert) te installeren in plaats van alleen het bladcertificaat. Wanneer u alleen het bladcertificaat installeert, vertrouwt u op Windows om de certificaatketen op te bouwen door de CTL te lopen. Als er intermitterende netwerk- of DNS-problemen optreden in Azure of Windows Update wanneer Windows het certificaat probeert te valideren, kan het certificaat als ongeldig worden beschouwd. Door de volledige certificaatketen te installeren, kan dit probleem worden voorkomen. De blog op [Hoe een geketend SSL-certificaat te installeren](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) laat zien hoe dit te doen.
 
@@ -103,7 +103,7 @@ U de volgende PowerShell-opdrachten gebruiken om uw beheercertificaten te vernie
 
 Met **het Get-AzurePublishSettingsFile** wordt een nieuw beheercertificaat gemaakt in **certificaten voor abonnementsbeheer** > **Management Certificates** in de Azure-portal. De naam van het nieuwe certificaat ziet eruit als "YourSubscriptionNam]-[CurrentDate]-credentials".
 
-### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Hoe automatiseer je de installatie van het hoofdSSL-certificaat(.pfx) en intermediate certificaat(.p7b)?
+### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>Hoe automatiseer je de installatie van het hoofdTLS/SSL-certificaat(.pfx) en intermediate certificaat(.p7b)?
 
 U deze taak automatiseren met een opstartscript (batch/cmd/PowerShell) en dat opstartscript registreren in het servicedefinitiebestand. Voeg zowel het opstartscript als het certificaat(.p7b-bestand) toe in de projectmap van dezelfde map van het opstartscript.
 

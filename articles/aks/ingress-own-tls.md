@@ -1,15 +1,16 @@
 ---
-title: Uw eigen TLS-certificaten gebruiken voor binnendringen met het AKS-cluster (Azure Kubernetes Service)
+title: Uw TLS-certificaten gebruiken voor binnendringen
+titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het installeren en configureren van een NGINX-ingress-controller die uw eigen certificaten gebruikt in een AKS-cluster (Azure Kubernetes Service).
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: e567f5384cdd1e40ea67284713a29a92ee87af7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec6a398b52424c142b3d7ee82625c10c733456ab
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595498"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668459"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>HTTPS-controller voor inkomend verkeer maken en uw eigen TLS-certificaten gebruiken in Azure Kubernetes Service (AKS)
 

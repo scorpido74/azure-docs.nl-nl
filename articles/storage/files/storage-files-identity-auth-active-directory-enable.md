@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: rogarana
-ms.openlocfilehash: 0bf8960f1e97de45d5369f69c698311d0b4e3dbb
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 081ee364b3ddee5d1d1be75613309a4ae427066f
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584515"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666813"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Active Directory-verificatie via SMB inschakelen voor Azure-bestandsshares
 
@@ -34,6 +34,9 @@ ms.locfileid: "80584515"
 Wanneer u AD voor Azure-bestandsshares inschakelt via SMB, kunnen uw AD-domein samengevoegde machines Azure-bestandsshares monteren met uw bestaande AD-referenties. Deze mogelijkheid kan worden ingeschakeld met een AD-omgeving die wordt gehost in on-prem-machines of wordt gehost in Azure.
 
 AD-identiteiten die worden gebruikt om toegang te krijgen tot Azure-bestandsshares, moeten worden gesynchroniseerd met Azure AD om bestandsmachtigingen op shareniveau af te dwingen via het [RBAC-model (Standard Role-based Access Control).](../../role-based-access-control/overview.md) [Windows-achtige DACLs](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) voor bestanden/mappen die worden overgedragen vanaf bestaande bestandsservers, worden bewaard en afgedwongen. Deze functie biedt naadloze integratie met uw bedrijfs-AD-domeininfrastructuur. Als u on-prem-bestandsservers vervangt door Azure-bestandsshares, hebben bestaande gebruikers toegang tot Azure-bestandsshares van hun huidige clients met één aanmeldingservaring, zonder dat de ingebruikzijnde referenties worden gewijzigd.  
+
+> [!NOTE]
+> Om u te helpen bij het instellen van AD-verificatie voor Azure Files voor de algemene use cases, hebben we [twee video's](https://docs.microsoft.com/azure/storage/files/storage-files-introduction#videos) gepubliceerd met de stapsgewijze richtlijnen voor het vervangen van on-premises bestandsservers met Azure Files en het gebruik van Azure Files als profielcontainer voor Windows Virtual Desktop.
  
 ## <a name="prerequisites"></a>Vereisten 
 
@@ -69,15 +72,17 @@ Azure Files AD-verificatie (preview) is beschikbaar in [alle regio's in de openb
 
 Voordat u AD-verificatie over SMB voor Azure-bestandsshares inschakelt, raden we u aan de vereisten door [te](#prerequisites) nemen en ervoor te zorgen dat u alle stappen hebt voltooid. De vereisten valideren dat uw AD-, Azure AD- en Azure-opslagomgevingen correct zijn geconfigureerd. 
 
-Geef vervolgens toegang tot Azure Files-bronnen met AD-referenties: 
+Volg vervolgens de onderstaande stappen om Azure Files in te stellen voor AD-verificatie: 
 
-- Azure Files AD-verificatie inschakelen in uw opslagaccount.  
+1. Azure Files AD-verificatie inschakelen in uw opslagaccount. 
 
-- Toegangsmachtigingen voor een aandeel toewijzen aan de Azure AD-identiteit (een gebruiker, groep of serviceprincipal) die synchroon loopt met de doel-AD-identiteit. 
+2. Toegangsmachtigingen voor een aandeel toewijzen aan de Azure AD-identiteit (een gebruiker, groep of serviceprincipal) die synchroon loopt met de doel-AD-identiteit. 
 
-- Configureer ACL's boven SMB voor mappen en bestanden. 
+3. Configureer ACL's boven SMB voor mappen en bestanden. 
 
-- Een Azure-bestandsshare monteren vanuit een AD-domein dat is samengevoegd als VM. 
+4. Een Azure-bestandsshare monteren vanuit een AD-domein dat is samengevoegd als VM. 
+
+5. Ad-accountwachtwoord roteren (optioneel)
 
 In het volgende diagram wordt de end-to-end-werkstroom weergegeven voor het inschakelen van Azure AD-verificatie via SMB voor Azure-bestandsshares. 
 
@@ -86,25 +91,28 @@ In het volgende diagram wordt de end-to-end-werkstroom weergegeven voor het insc
 > [!NOTE]
 > AD-verificatie via SMB voor Azure-bestandsshares wordt alleen ondersteund op machines of VM's die worden uitgevoerd op nieuwe versies van het besturingssysteem dan Windows 7 of Windows Server 2008 R2. 
 
-## <a name="enable-ad-authentication-for-your-account"></a>AD-verificatie inschakelen voor uw account 
+## <a name="1-enable-ad-authentication-for-your-account"></a>1. AD-verificatie inschakelen voor uw account 
 
 Als u AD-verificatie via SMB voor Azure-bestandsshares wilt inschakelen, moet u eerst uw opslagaccount registreren bij AD en vervolgens de vereiste domeineigenschappen instellen op het opslagaccount. Wanneer de functie is ingeschakeld op het opslagaccount, is deze van toepassing op alle nieuwe en bestaande bestandsshares in het account. Gebruiken `join-AzStorageAccountForAuth` om de functie in te schakelen. In de sectie hieronder vindt u de gedetailleerde beschrijving van de end-to-end workflow. 
 
 > [!IMPORTANT]
 > De `Join-AzStorageAccountForAuth` cmdlet zal wijzigingen aanbrengen in uw AD-omgeving. Lees de volgende uitleg om beter te begrijpen wat het doet om ervoor te zorgen dat u de juiste machtigingen hebt om de opdracht uit te voeren en dat de toegepaste wijzigingen overeenkomen met het nalevings- en beveiligingsbeleid. 
 
-De `Join-AzStorageAccountForAuth` cmdlet voert het equivalent uit van een offline domein dat lid wordt namens het aangegeven opslagaccount. Het maakt een account aan in uw AD-domein, een [computeraccount](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) of een [service-aanmeldingsaccount.](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) Het aangemaakt AD-account vertegenwoordigt het opslagaccount in het AD-domein. Als het AD-account wordt gemaakt onder een AD-organisatie-eenheid (OU) die het verlopen van het wachtwoord afdwingt, moet u het wachtwoord bijwerken vóór de maximale wachtwoordleeftijd. Als het wachtwoord van het AD-account niet wordt bijgewerkt, leidt dit tot verificatiefouten bij het openen van Azure-bestandsshares. Zie Het wachtwoord van het [AD-account bijwerken](#update-ad-account-password)voor meer informatie over het bijwerken van het wachtwoord .
+De `Join-AzStorageAccountForAuth` cmdlet voert het equivalent uit van een offline domein dat lid wordt namens het aangegeven opslagaccount. Het maakt een account aan in uw AD-domein, een [computeraccount](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standaard) of een [service-aanmeldingsaccount.](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) Het aangemaakt AD-account vertegenwoordigt het opslagaccount in het AD-domein. Als het AD-account wordt gemaakt onder een AD-organisatie-eenheid (OU) die het verlopen van het wachtwoord afdwingt, moet u het wachtwoord bijwerken vóór de maximale wachtwoordleeftijd. Als het wachtwoord van het AD-account niet wordt bijgewerkt, leidt dit tot verificatiefouten bij het openen van Azure-bestandsshares. Zie Het wachtwoord van het [AD-account bijwerken](#5-update-ad-account-password)voor meer informatie over het bijwerken van het wachtwoord .
 
 U het volgende script gebruiken om de registratie uit te voeren en de functie in te schakelen of, als alternatief, u handmatig de bewerkingen uitvoeren die het script zou uitvoeren. Deze bewerkingen worden beschreven in de sectie naar aanleiding van het script. Je hoeft niet beide te doen.
 
-### <a name="1-check-prerequisites"></a>1. Controleer de vereisten
+### <a name="11-check-prerequisites"></a>1.1 Voorwaarden controleren
 - [De AzFilesHybrid-module downloaden en uitpakken](https://github.com/Azure-Samples/azure-files-samples/releases)
 - Installeer en voer de module uit in een apparaat dat is gekoppeld aan AD met AD-referenties met machtigingen voor het maken van een service-aanmeldingsaccount of een computeraccount in het doel-AD.
 -  Voer het script uit met een AD-referentie die is gesynchroniseerd met uw Azure-AD. De AD-referentie moet de eigenaar van het opslagaccount of de rbac-functiemachtigingen voor inzender hebben.
 - Controleer of uw opslagaccount zich in een [ondersteund gebied bevindt.](#regional-availability)
 
-### <a name="2-domain-join-your-storage-account"></a>2. Domein wordt lid van uw opslagaccount
+### <a name="12-domain-join-your-storage-account"></a>1.2 Domein word lid van uw opslagaccount
 Vergeet niet om de tijdelijke aanduidingswaarden te vervangen door die van u in de onderstaande parameters voordat u deze uitvoert in PowerShell.
+> [!IMPORTANT]
+> We raden u aan om een AD-organisatie-eenheid (OU) op te geven die de vervaldatum van het wachtwoord niet afdwingt. Als u een organisatie-eenheid gebruikt waarop het wachtwoord is verlopen, moet u het wachtwoord bijwerken vóór de maximale wachtwoordleeftijd. Als het wachtwoord van het AD-account niet wordt bijgewerkt, leidt dit tot verificatiefouten bij het openen van Azure-bestandsshares. Zie Het wachtwoord van het [AD-account bijwerken](#5-update-ad-account-password)voor meer informatie over het bijwerken van het wachtwoord .
+
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -123,19 +131,19 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
-# You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName.
+# You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName. You can choose to provide one of the two names to specify the target OU.
 # You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
 Join-AzStorageAccountForAuth `
         -ResourceGroupName "<resource-group-name-here>" `
         -Name "<storage-account-name-here>" `
         -DomainAccountType "ComputerAccount" `
-        -OrganizationalUnitName "<ou-name-here>"
+        -OrganizationalUnitName "<ou-name-here>" or -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>"
 ```
 
 In de volgende beschrijving worden `Join-AzStorageAccountForAuth` alle acties samengevat die worden uitgevoerd wanneer de cmdlet wordt uitgevoerd. U deze stappen handmatig uitvoeren als u de opdracht liever niet gebruikt:
 
 > [!NOTE]
-> Als u het `Join-AzStorageAccountForAuth` bovenstaande script al hebt uitgevoerd, gaat u naar de volgende sectie "3. Controleer of de functie is ingeschakeld". U hoeft de onderstaande bewerkingen niet opnieuw uit te voeren.
+> Als u het `Join-AzStorageAccountForAuth` bovenstaande script al hebt uitgevoerd, gaat u naar de volgende sectie "1.3 Bevestigen dat de functie is ingeschakeld". U hoeft de onderstaande bewerkingen niet opnieuw uit te voeren.
 
 #### <a name="a-checking-environment"></a>a. Omgeving controleren
 
@@ -147,7 +155,7 @@ Als u dit account handmatig wilt maken, maakt u `New-AzStorageAccountKey -KeyNam
 
 Zodra u die sleutel hebt, maakt u een service- of computeraccount onder uw organisatieorganisatie. Gebruik de volgende specificatie: SPN: "cifs/your-storage-account-name-here.file.core.windows.net" Wachtwoord: Kerberos-sleutel voor uw opslagaccount.
 
-Als uw organisatie het wachtwoord tot een vervaldatum afdwingt, moet u het wachtwoord bijwerken vóór de maximale wachtwoordleeftijd om verificatiefouten bij het openen van Azure-bestandsshares te voorkomen. Zie [Het wachtwoord van het AD-account bijwerken](#update-ad-account-password) voor meer informatie.
+Als uw organisatie het wachtwoord tot een vervaldatum afdwingt, moet u het wachtwoord bijwerken vóór de maximale wachtwoordleeftijd om verificatiefouten bij het openen van Azure-bestandsshares te voorkomen. Zie [Het wachtwoord van het AD-account bijwerken](#5-update-ad-account-password) voor meer informatie.
 
 Houd de SID van het nieuw gemaakte account, je hebt het nodig voor de volgende stap. De AD-identiteit die u zojuist hebt gemaakt en die het opslagaccount vertegenwoordigt, hoeft niet te worden gesynchroniseerd met Azure AD.
 
@@ -170,7 +178,7 @@ Set-AzStorageAccount `
 ```
 
 
-### <a name="3-confirm-that-the-feature-is-enabled"></a>3. Controleer of de functie is ingeschakeld
+### <a name="13-confirm-that-the-feature-is-enabled"></a>1.3 Bevestigen dat de functie is ingeschakeld
 
 U controleren of de functie is ingeschakeld in uw opslagaccount, u het volgende script gebruiken:
 
@@ -191,9 +199,9 @@ Je hebt de functie nu in je opslagaccount ingeschakeld. Hoewel de functie is ing
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-U hebt nu AD-verificatie via SMB ingeschakeld en een aangepaste rol toegewezen die toegang biedt tot een Azure-bestandsshare met een AD-identiteit. Als u extra gebruikers toegang wilt verlenen tot uw bestandsshare, volgt u de instructies in de [toegangsmachtigingen toewijzen](#assign-access-permissions-to-an-identity) om een identiteit te gebruiken en [NTFS-machtigingen configureren voor SMB-secties.](#configure-ntfs-permissions-over-smb)
+U hebt nu AD-verificatie via SMB ingeschakeld en een aangepaste rol toegewezen die toegang biedt tot een Azure-bestandsshare met een AD-identiteit. Als u extra gebruikers toegang wilt verlenen tot uw bestandsshare, volgt u de instructies in de [toegangsmachtigingen toewijzen](#2-assign-access-permissions-to-an-identity) om een identiteit te gebruiken en [NTFS-machtigingen configureren voor SMB-secties.](#3-configure-ntfs-permissions-over-smb)
 
-## <a name="update-ad-account-password"></a>Wachtwoord van het AD-account bijwerken
+## <a name="5-update-ad-account-password"></a>5. Wachtwoord voor AD-account bijwerken
 
 Als u de AD-identiteit/-account hebt geregistreerd die uw opslagaccount vertegenwoordigt onder een organisatie-eenheid die de vervaldatum van het wachtwoord afdwingt, moet u het wachtwoord roteren vóór de maximale wachtwoordleeftijd. Als u het wachtwoord van het AD-account niet bijwerkt, leidt dit tot verificatiefouten om toegang te krijgen tot Azure-bestandsshares.  
 

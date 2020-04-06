@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 209242f723032c9e93f3dd6b20fac77c6a2badce
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 6b3c8c62382d548d8a1bc7d5f611cdfbe2fd72fb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80658568"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671776"
 ---
 > [!NOTE]
 > De SpraakSDK voor Unity ondersteunt Windows Desktop (x86 en x64) of Universal Windows Platform (x86, x64, ARM/ARM64), Android (x86, ARM32/64) en iOS (x64 simulator, ARM32 en ARM64)
@@ -25,7 +25,7 @@ Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
 > * [Een Azure-spraakbron maken](../../../../get-started.md)
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=unity)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=unity&pivots=programming-language-csharp)
 > * Zorg ervoor dat u toegang hebt tot een microfoon voor audio-opname
 
 Als je dit al gedaan hebt, geweldig. Laten we doorgaan.

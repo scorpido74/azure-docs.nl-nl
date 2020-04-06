@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication implementeren - Azure Active Directory
-description: Implementatieplanning voor implementatie van Microsoft Azure-verificatie met meerdere factoren
+title: Implementatieoverwegingen voor Azure Multi-Factor Authentication
+description: Meer informatie over implementatieoverwegingen en strategie voor een succesvolle implementatie van Azure Multi-Factor Authentication
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,18 +11,25 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ae58482ced524958ffcdd6094ae57856d088eaf
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a70c6ae3ebc7f5b39550508594bd4d4907e68a67
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653961"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667345"
 ---
-# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planning van een cloudgebaseerde Azure Multi-Factor Authentication-implementatie
+# <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie plannen
 
 Mensen maken verbinding met organisatorische middelen in steeds ingewikkelder scenario's. Mensen maken verbinding vanaf apparaten die eigendom zijn van een organisatie op en buiten het bedrijfsnetwerk met behulp van smartphones, tablets, pc's en laptops, vaak op meerdere platforms. In deze altijd verbonden, multi-device en multi-platform wereld is de beveiliging van gebruikersaccounts belangrijker dan ooit. Wachtwoorden, ongeacht hun complexiteit, die worden gebruikt op apparaten, netwerken en platforms, zijn niet langer voldoende om de veiligheid van het gebruikersaccount te garanderen, vooral wanneer gebruikers de neiging hebben om wachtwoorden tussen accounts te hergebruiken. Geavanceerde phishing en andere social engineering-aanvallen kunnen ertoe leiden dat gebruikersnamen en wachtwoorden worden geplaatst en verkocht op het dark web.
 
 [Azure Multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) helpt de toegang tot gegevens en toepassingen te waarborgen. Het biedt een extra beveiligingslaag met behulp van een tweede vorm van verificatie. Organisaties kunnen [Voorwaardelijke toegang](../conditional-access/overview.md) gebruiken om de oplossing aan hun specifieke behoeften te laten voldoen.
+
+In deze implementatiehandleiding ziet u hoe u een uitrol van Azure Multi-Factor Authentication plannen en vervolgens testen.
+
+Ga snel met Azure Multi-Factor Authentication in actie en kom vervolgens terug om aanvullende implementatieoverwegingen te begrijpen:
+
+> [!div class="nextstepaction"]
+> [Azure Multi-Factor Authentication inschakelen](tutorial-enable-azure-mfa.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -173,7 +180,7 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
 
 Als uw gebruikers zijn ingeschakeld met behulp van azure multifactorauthenticatie per gebruiker, kan de volgende PowerShell u helpen bij het converteren naar op voorwaardelijke toegang gebaseerde Azure Multi-Factor Authentication.
 
-Voer deze PowerShell uit in een ISE-venster of sla op als een . PS1-bestand om lokaal uit te voeren.
+Voer deze PowerShell uit in een `.PS1` ISE-venster of sla op als een bestand dat lokaal wordt uitgevoerd.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -357,6 +364,7 @@ Oplossingen zoeken voor veelvoorkomende problemen met Azure MFA in het [artikel 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat zijn verificatiemethoden?](concept-authentication-methods.md)
-* [Geconvergeerde registratie inschakelen voor Azure Multi-Factor Authentication en Azure AD selfservice wachtwoord reset](concept-registration-mfa-sspr-converged.md)
-* Waarom is een gebruiker gevraagd of niet gevraagd om MFA uit te voeren? Zie de sectie [Azure AD-aanmeldingsrapport in het document Rapporten in Azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+Voer de volgende zelfstudie uit om Azure Multi-Factor Authentication in actie te zien:
+
+> [!div class="nextstepaction"]
+> [Azure Multi-Factor Authentication inschakelen](tutorial-enable-azure-mfa.md)

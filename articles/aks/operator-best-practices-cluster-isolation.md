@@ -1,15 +1,16 @@
 ---
-title: Aanbevolen procedures voor operatoren - Clusterisolatie in Azure Kubernetes Services (AKS)
+title: Aanbevolen procedures voor clusterisolatie
+titleSuffix: Azure Kubernetes Service
 description: Lees de aanbevolen procedures voor de clusteroperator voor isolatie in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 228b856d5c5ffa2bfac7df12094667e02f797690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594852"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668340"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor clusterisolatie in Azure Kubernetes Service (AKS)
 

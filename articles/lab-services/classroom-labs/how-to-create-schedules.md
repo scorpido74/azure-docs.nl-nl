@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4887b4359451ca5ce85042b4de42d5376bf4a730
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72330593"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667766"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Schema's maken en beheren voor klaslabs in Azure Lab Services 
 Met schema's u een klaslokaallab zo configureren dat VM's in het lab automatisch op een bepaald tijdstip worden gestart en afgesloten. U een eenmalig schema of een terugkerend schema definiëren. De volgende procedures geven u stappen om schema's voor een klaslokaallab te maken en te beheren: 
@@ -28,6 +28,12 @@ Met schema's u een klaslokaallab zo configureren dat VM's in het lab automatisch
 
 ## <a name="set-a-schedule-for-the-lab"></a>Stel een schema voor het lab
 Maak een geplande gebeurtenis voor het lab, zodat VM's in het lab automatisch worden gestart/gestopt op specifieke tijdstippen. Het gebruikersquotum dat u eerder hebt opgegeven, is de extra tijd die buiten deze geplande tijd aan elke gebruiker is toegewezen. 
+
+> [!NOTE]
+> Voordat we aan de slag gaan, gaan schema's als een van invloed op virtuele machines in het lab: 
+>- Sjabloon virtuele machine is niet opgenomen in schema's. 
+>- Alleen toegewezen virtuele machines worden gestart. Dit betekent dat als een machine niet wordt geclaimd door een eindgebruiker (student), de machine niet start op de geplande uren. 
+>- Alle virtuele machines (al dan niet geclaimd door een gebruiker) worden gestopt op basis van het labschema. 
 
 1. Ga naar de pagina **Schema's** en selecteer **Geplande gebeurtenis toevoegen** op de werkbalk. 
 

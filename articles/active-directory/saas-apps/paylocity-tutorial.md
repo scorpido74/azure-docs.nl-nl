@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6684df42971b91975f6a7f5aeded9326cef3f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d2324343a31c3f3930975eea47659d023b9bbb94
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72969803"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667565"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Paylocity
 
@@ -45,6 +44,8 @@ Om aan de slag te gaan, heb je de volgende items nodig:
 In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
 
 * Paylocity ondersteunt **SP en IDP** geïnitieerd sso
+
+* Zodra u de Paylocity hebt geconfigureerd, u sessiebesturingselementen afdwingen, die exfiltratie en infiltratie van de gevoelige gegevens van uw organisatie in realtime beschermen. Sessiebesturingselementen zijn van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad).
 
 ## <a name="adding-paylocity-from-the-gallery"></a>Paylocity toevoegen vanuit de galerie
 
@@ -82,8 +83,6 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
 1. In de sectie **SAML-basisconfiguratie** hoeft de gebruiker geen enkele stap uit te voeren omdat de app al vooraf is geïntegreerd met Azure.
 
-    ![Informatie over paylocity-domein en URL's met eenmalige aanmelding](common/preintegrated.png)
-
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
     Typ een URL in het tekstvak **AANmeldings-URL:**`https://access.paylocity.com/`
@@ -98,13 +97,24 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
     | Name |  Bronkenmerk|
     | ---------------| --------------- |
-    | PartnerID | < "PartnerID"> |
-    | PaylocityGebruiker | < "PaylocityUser"> |
-    | PaylocityEntiteit | <"PaylocityEntity"> |
+    | PartnerID | `P8000010` |
+    | PaylocityGebruiker | `user.mail`|
+    | PaylocityEntiteit | < `PaylocityEntity` > |
+
+    > [!NOTE]
+    > De PaylocityEntity is Paylocity Company ID.
 
 1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de optie **Federation Metadata XML** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
+
+1. Klik op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** op **Pictogram bewerken**.
+
+    ![Het SAML-certificaat certificaat bewerken](./media/paylocity-tutorial/edit-samlassertion.png)
+
+1. Selecteer **Ondertekeningsoptie** als **antwoord en bevestiging van TEKEN SAML** en klik op **Opslaan**.
+
+    ![Het SAML-certificaat certificaat bewerken](./media/paylocity-tutorial/saml-assertion.png)
 
 1. Kopieer in de sectie **Paylocity instellen** de juiste URL(s) op basis van uw vereiste.
 
@@ -163,3 +173,7 @@ Wanneer u op de tegel Paylocity in het toegangspaneel klikt, moet u automatisch 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer Paylocity met Azure AD](https://aad.portal.azure.com/)
+
+* [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+* [Hoe paylocity te beschermen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: c5972b602d92b2e08fd70850dd1af5c1236e2b1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 97aa446636ea3131246a06f69f74b5868abff608
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234461"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668645"
 ---
 # <a name="connect-to-azure-storage-services"></a>Verbinding maken met Azure-opslagservices
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ U hebt het volgende nodig:
 
 ## <a name="supported-data-storage-service-types"></a>Ondersteunde servicetypen voor gegevensopslag
 
-Datastores ondersteunen momenteel het opslaan van verbindingsgegevens op de opslagservices die in de volgende matrix worden vermeld. Op dit moment wordt het Azure Data-magazijn niet ondersteund. 
+Datastores ondersteunen momenteel het opslaan van verbindingsgegevens op de opslagservices die in de volgende matrix worden vermeld.
 
 | Opslagtype&nbsp; | Verificatietype&nbsp; | [Azure&nbsp;&nbsp;Machine Learning-studio](https://ml.azure.com/) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;Machine&nbsp;Learning CLI](reference-azure-machine-learning-cli.md) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Rest API](https://docs.microsoft.com/rest/api/azureml/)
 ---|---|---|---|---|---
@@ -87,7 +87,7 @@ Wanneer u een Azure-opslagoplossing registreert als een gegevensarchief, maakt e
 <br><br>
 Na het maken van gegevensarchief wordt deze validatie alleen uitgevoerd voor methoden die toegang tot de onderliggende opslagcontainer vereisen, **niet** telkens wanneer gegevensarchiefobjecten worden opgehaald. Validatie vindt bijvoorbeeld plaats als u bestanden wilt downloaden van uw datastore; maar als u gewoon uw standaard gegevensarchief wilt wijzigen, gebeurt de validatie niet.
 
-### <a name="python-sdk"></a>Python SDK
+### <a name="python-sdk"></a>Python-SDK
 
 Alle register methoden zijn [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) op de klasse `register_azure_*`en hebben het formulier .
 
@@ -287,5 +287,5 @@ Azure Data Factory biedt efficiënte en veerkrachtige gegevensoverdracht met mee
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een Azure machine learning-gegevensset maken](how-to-create-register-datasets.md)
-* [Train een model](how-to-train-ml-models.md)
+* [Een model trainen](how-to-train-ml-models.md)
 * [Een model implementeren](how-to-deploy-and-where.md)

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: cde731f9d9e673446bc4d08117004b028db2a7f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fe80b7343f67b06981707081931e35142985688e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77462459"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668782"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>De API van Azure Cosmos DB voor MongoDB (versie 3.6): ondersteunde functies en syntaxis
 
@@ -44,7 +44,7 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 |getPrevError | Nee  |
 |insert  |   Ja  |
 |parallelCollectionScan  | Ja   |
-|resetFout |   Nee  |
+|resetFout |    Nee  |
 |update  |   Ja  |
 |[Stromen wijzigen](mongodb-change-streams.md)  |  Ja  |
 |GridfS (Gridfs) |   Ja  |
@@ -88,7 +88,7 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|buildInfo       |   Ja      |
+|buildInfo         |   Ja      |
 |collStats    |  Ja       |
 |connPoolStats connPoolStats     |  Nee       |
 |connectionStatus     |  Nee       |
@@ -99,7 +99,7 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 |uitleggen: executionStats     |     Nee    |
 |functies     |    Nee     |
 |hostInfo     |   Nee      |
-|listDatabases       |   Ja      |
+|listDatabases         |   Ja      |
 |lijstOpdrachten     |  Nee       |
 |Profiler     |  Nee       |
 |serverStatus     |  Nee       |
@@ -123,31 +123,31 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$collStats |Nee|
-|$project   |Ja|
-|$match |Ja|
-|$redact|   Ja|
-|$limit |Ja|
-|$skip  |Ja|
-|$unwind|   Ja|
-|$group |   Ja|
-|$sample|       Ja|
-|$sort  |Ja|
-|$geoNear|  Nee|
-|$lookup    |   Ja|
-|$out       |Ja|
-|$indexStats|       Nee|
-|$facet |Nee|
-|$bucket|   Nee|
-|$bucketAuto|   Nee|
-|$sortByCount|  Ja|
-|$addFields |Ja|
-|$replaceRoot|  Ja|
-|$count |Ja|
+|$collStats    |Nee|
+|$project    |Ja|
+|$match    |Ja|
+|$redact|    Ja|
+|$limit    |Ja|
+|$skip    |Ja|
+|$unwind|    Ja|
+|$group    |    Ja|
+|$sample|        Ja|
+|$sort    |Ja|
+|$geoNear|    Nee|
+|$lookup    |    Ja|
+|$out        |Ja|
+|$indexStats|        Nee|
+|$facet    |Nee|
+|$bucket|    Nee|
+|$bucketAuto|    Nee|
+|$sortByCount|    Ja|
+|$addFields    |Ja|
+|$replaceRoot|    Ja|
+|$count    |Ja|
 |$currentOp|    Nee|
-|$listLocalSessions |Nee|
-|$listSessions  |Nee|
-|$graphLookup   |Nee|
+|$listLocalSessions    |Nee|
+|$listSessions    |Nee|
+|$graphLookup    |Nee|
 
 ### <a name="boolean-expressions"></a>Booleaanse expressies
 
@@ -174,14 +174,14 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 |Opdracht  |Ondersteund |
 |---------|---------|
 |$cmp     |  Ja       |
-|$eq|   Ja| 
-|$gt |  Ja| 
-|$gte|  Ja| 
+|$eq|    Ja| 
+|$gt |    Ja| 
+|$gte|    Ja| 
 |$lt    |Ja|
-|$lte|  Ja| 
-|$ne    |   Ja| 
-|$in    |   Ja| 
-|$nin   |   Ja| 
+|$lte|    Ja| 
+|$ne    |    Ja| 
+|$in    |    Ja| 
+|$nin    |    Ja| 
 
 ### <a name="arithmetic-expressions"></a>Rekenkundige expressies
 
@@ -230,66 +230,66 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$arrayElemAt   |   Ja|
+|$arrayElemAt    |    Ja|
 |$arrayToObject|    Ja|
-|$concatArrays  |   Ja|
-|$filter    |   Ja|
-|$indexOfArray  |Ja|
-|$isArray   |   Ja|
-|$objectToArray |Ja|
-|$range |Ja|
-|$reverseArray  |   Ja|
-|$reduce|   Ja|
-|$size  |   Ja|
-|$slice |   Ja|
-|$zip   |   Ja|
-|$in    |   Ja|
+|$concatArrays    |    Ja|
+|$filter    |    Ja|
+|$indexOfArray    |Ja|
+|$isArray    |    Ja|
+|$objectToArray    |Ja|
+|$range    |Ja|
+|$reverseArray    |    Ja|
+|$reduce|    Ja|
+|$size    |    Ja|
+|$slice    |    Ja|
+|$zip    |    Ja|
+|$in    |    Ja|
 
 ### <a name="variable-operators"></a>Variabele operatoren
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$map   |Nee|
-|$let   |Ja|
+|$map    |Nee|
+|$let    |Ja|
 
 ### <a name="system-variables"></a>Systeemvariabelen
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$$CURRENT| Ja|
-|$$DESCEND|     Ja|
-|$$KEEP     |Ja|
-|$$PRUNE    |   Ja|
-|$$REMOVE   |Ja|
-|$$ROOT     |Ja|
+|$$CURRENT|    Ja|
+|$$DESCEND|        Ja|
+|$$KEEP        |Ja|
+|$$PRUNE    |    Ja|
+|$$REMOVE    |Ja|
+|$$ROOT        |Ja|
 
 ### <a name="literal-operator"></a>Letterlijke operator
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$literal   |Ja|
+|$literal    |Ja|
 
 ### <a name="date-expressions"></a>Datumexpressies
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$dayOfYear |Ja    |
-|$dayOfMonth|   Ja |
-|$dayOfWeek |Ja    |
-|$year  |Ja    |
-|$month |Ja|   
-|$week  |Ja    |
-|$hour  |Ja    |
-|$minute|   Ja|    
+|$dayOfYear    |Ja    |
+|$dayOfMonth|    Ja    |
+|$dayOfWeek    |Ja    |
+|$year    |Ja    |
+|$month    |Ja|    
+|$week    |Ja    |
+|$hour    |Ja    |
+|$minute|    Ja|    
 |$second    |Ja    |
-|$millisecond|  Ja|    
-|$dateToString  |Ja    |
-|$isoDayOfWeek  |Ja    |
-|$isoWeek   |Ja    |
-|$dateFromParts|    Nee| 
-|$dateToParts   |Nee |
-|$dateFromString|   Nee|
-|$isoWeekYear   |Ja    |
+|$millisecond|    Ja|    
+|$dateToString    |Ja    |
+|$isoDayOfWeek    |Ja    |
+|$isoWeek    |Ja    |
+|$dateFromParts|    Nee|    
+|$dateToParts    |Nee    |
+|$dateFromString|    Nee|
+|$isoWeekYear    |Ja    |
 
 ### <a name="conditional-expressions"></a>Voorwaardelijke expressies
 
@@ -309,16 +309,16 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$sum   |Ja    |
-|$avg   |Ja    |
+|$sum    |Ja    |
+|$avg    |Ja    |
 |$first|    Ja|
-|$last  |Ja    |
-|$max   |Ja    |
-|$min   |Ja    |
-|$push| Ja|
-|$addToSet| Ja|
-|$stdDevPop|    Nee  |
-|$stdDevSamp|   Nee|
+|$last    |Ja    |
+|$max    |Ja    |
+|$min    |Ja    |
+|$push|    Ja|
+|$addToSet|    Ja|
+|$stdDevPop|    Nee    |
+|$stdDevSamp|    Nee|
 
 ### <a name="merge-operator"></a>Operator samenvoegen
 
@@ -330,25 +330,25 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|Double |Ja    |
-|Tekenreeks |Ja    |
-|Object |Ja    |
-|Matrix  |Ja    |
-|Binaire gegevens    |Ja|   
-|ObjectId   |Ja    |
+|Double    |Ja    |
+|Tekenreeks    |Ja    |
+|Object    |Ja    |
+|Matrix    |Ja    |
+|Binaire gegevens    |Ja|    
+|ObjectId    |Ja    |
 |Booleaans    |Ja    |
-|Date   |Ja    |
-|Null   |Ja    |
-|32-bits geheel getal (int)   |Ja    |
-|Tijdstempel  |Ja    |
-|64-bits geheel getal (lang)  |Ja    |
-|MinKey MinKey |Ja    |
-|MaxKey (MaxKey) |Ja    |
-|Decimal128 |Ja|   
-|Reguliere expressie |Ja|
-|JavaScript |Ja|
-|JavaScript (met bereik)|   Ja |
-|Undefined  |Ja    |
+|Date    |Ja    |
+|Null    |Ja    |
+|32-bits geheel getal (int)    |Ja    |
+|Tijdstempel    |Ja    |
+|64-bits geheel getal (lang)    |Ja    |
+|MinKey MinKey    |Ja    |
+|MaxKey (MaxKey)    |Ja    |
+|Decimal128    |Ja|    
+|Reguliere expressie    |Ja|
+|Javascript    |Ja|
+|JavaScript (met bereik)|    Ja    |
+|Undefined    |Ja    |
 
 ## <a name="indexes-and-index-properties"></a>Indexen en indexeigenschappen
 
@@ -356,23 +356,23 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|Index met één veld |Ja    |
-|Samengestelde index |Ja    |
-|Multikey-index |Ja    |
-|Tekstindex |Nee|
-|2dsfeer   |Ja    |
-|2d-index   |Nee |
-|Gehashte index   | Ja|
+|Index met één veld    |Ja    |
+|Samengestelde index    |Ja    |
+|Multikey-index    |Ja    |
+|Tekstindex    |Nee|
+|2dsfeer    |Ja    |
+|2d-index    |Nee    |
+|Gehashte index    | Ja|
 
 ### <a name="index-properties"></a>Indexeigenschappen
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|TTL|   Ja |
-|Uniek |Ja|
-|Gedeeltelijk|   Nee|
-|Geval Ongevoelig   |Nee|
-|Sparse |Nee |
+|TTL|    Ja    |
+|Uniek    |Ja|
+|Gedeeltelijk|    Nee|
+|Geval Ongevoelig    |Nee|
+|Sparse    |Nee |
 |Achtergrond|    Ja |
 
 ## <a name="operators"></a>Operators
@@ -381,28 +381,28 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$or    |   Ja|
-|$and   |   Ja|
-|$not   |   Ja|
-|$nor   |   Ja| 
+|$or    |    Ja|
+|$and    |    Ja|
+|$not    |    Ja|
+|$nor    |    Ja| 
 
 ### <a name="element-operators"></a>Elementenoperatoren
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$exists|   Ja|
-|$type  |   Ja|
+|$exists|    Ja|
+|$type    |    Ja|
 
 ### <a name="evaluation-query-operators"></a>Query-operatoren voor evaluatie
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$expr  |   Nee|
-|$jsonSchema    |   Nee|
-|$mod   |   Ja|
-|$regex |   Ja|
-|$text  | Nee (Niet ondersteund. Gebruik $regex in plaats daarvan.)| 
-|$where |Nee| 
+|$expr    |    Nee|
+|$jsonSchema    |    Nee|
+|$mod    |    Ja|
+|$regex |    Ja|
+|$text    | Nee (Niet ondersteund. Gebruik $regex in plaats daarvan.)| 
+|$where    |Nee| 
 
 In de $regex query's staan links verankerde expressies indexzoeken toe. Als u echter de aanpassingsfuncties i (geen hoofdlettergevoeligheid) en m (meerdere regels) gebruikt, wordt de verzameling gescand in alle expressies.
 
@@ -430,9 +430,9 @@ $comment |Ja|
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$elemMatch |Ja|
-|$meta| Nee|
-|$slice | Ja|
+|$elemMatch    |Ja|
+|$meta|    Nee|
+|$slice    | Ja|
 
 ### <a name="update-operators"></a>Operators voor updates
 
@@ -440,28 +440,28 @@ $comment |Ja|
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$inc   |   Ja|
-|$mul   |   Ja|
-|$rename    |   Ja|
-|$setOnInsert|  Ja|
-|$set   |Ja|
+|$inc    |    Ja|
+|$mul    |    Ja|
+|$rename    |    Ja|
+|$setOnInsert|    Ja|
+|$set    |Ja|
 |$unset| Ja|
-|$min   |Ja|
-|$max   |Ja|
-|$currentDate   | Ja|
+|$min    |Ja|
+|$max    |Ja|
+|$currentDate    | Ja|
 
 #### <a name="array-update-operators"></a>Operators voor matrixupdates
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$  |Ja|
-|$[]|   Ja|
-|$[<identifier>]|   Ja|
-|$addToSet  |Ja|
-|$pop   |Ja|
-|$pullAll|  Ja|
-|$pull  |Ja|
-|$push  |Ja|
+|$    |Ja|
+|$[]|    Ja|
+|$[<identifier>]|    Ja|
+|$addToSet    |Ja|
+|$pop    |Ja|
+|$pullAll|    Ja|
+|$pull    |Ja|
+|$push    |Ja|
 |$pushAll| Ja|
 
 
@@ -469,20 +469,20 @@ $comment |Ja|
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|$each  |   Ja|
-|$slice |Ja|
-|$sort  |Ja|
-|$position  |Ja|
+|$each    |    Ja|
+|$slice    |Ja|
+|$sort    |Ja|
+|$position    |Ja|
 
 #### <a name="bitwise-update-operator"></a>Operators voor bitwise-updates
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-| $bit  |   Ja|    
-|$bitsAllSet    |   Nee|
-|$bitsAnySet    |   Nee|
-|$bitsAllClear  |Nee|
-|$bitsAnyClear  |Nee|
+| $bit    |    Ja|    
+|$bitsAllSet    |    Nee|
+|$bitsAnySet    |    Nee|
+|$bitsAllClear    |Nee|
+|$bitsAnyClear    |Nee|
 
 ### <a name="geospatial-operators"></a>Georuimtelijke operators
 
@@ -504,37 +504,37 @@ $polygon |  Ja |
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|cursor.batchSize() |   Ja|
-|cursor.close() |Ja|
-|cursor.isGesloten()|     Ja|
+|cursor.batchSize()    |    Ja|
+|cursor.close()    |Ja|
+|cursor.isGesloten()|        Ja|
 |cursor.collation()|    Nee|
-|cursor.comment()   |Ja|
-|cursor.count() |Ja|
-|cursor.explain()|  Nee|
-|cursor.forEach()   |Ja|
-|cursor.hasNext()   |Ja|
-|cursor.hint()  |Ja|
-|cursor.isExhausted()|  Ja|
-|cursor.itcount()   |Ja|
-|cursor.limit() |Ja|
-|cursor.map()   |Ja|
-|cursor.maxScan()   |Ja|
+|cursor.comment()    |Ja|
+|cursor.count()    |Ja|
+|cursor.explain()|    Nee|
+|cursor.forEach()    |Ja|
+|cursor.hasNext()    |Ja|
+|cursor.hint()    |Ja|
+|cursor.isExhausted()|    Ja|
+|cursor.itcount()    |Ja|
+|cursor.limit()    |Ja|
+|cursor.map()    |Ja|
+|cursor.maxScan()    |Ja|
 |cursor.maxTimeMS()|    Ja|
-|cursor.max()   |Ja|
-|cursor.min()   |Ja|
-|cursor.volgende()| Ja|
-|cursor.noCursorTimeout()   |Nee|
-|cursor.objsLeftInBatch()   |Ja|
-|cursor.pretty()|   Ja|
-|cursor.readConcern()|  Ja|
-|cursor.readPref()      |Ja|
-|cursor.returnKey() |Nee|
-|cursor.showRecordId()| Nee|
-|cursor.size()  |Nes|
-|cursor.overslaan()  |Ja|
-|cursor.sort()  |   Ja|
-|cursor.tailable()| Nee|
-|cursor.toArray()   |Ja|
+|cursor.max()    |Ja|
+|cursor.min()    |Ja|
+|cursor.volgende()|    Ja|
+|cursor.noCursorTimeout()    |Nee|
+|cursor.objsLeftInBatch()    |Ja|
+|cursor.pretty()|    Ja|
+|cursor.readConcern()|    Ja|
+|cursor.readPref()        |Ja|
+|cursor.returnKey()    |Nee|
+|cursor.showRecordId()|    Nee|
+|cursor.size()    |Ja|
+|cursor.overslaan()    |Ja|
+|cursor.sort()    |    Ja|
+|cursor.tailable()|    Nee|
+|cursor.toArray()    |Ja|
 
 ## <a name="sort-operations"></a>Bewerkingen sorteren
 
@@ -542,7 +542,7 @@ Tijdens het gebruik van bewerking `findOneAndUpdate`, worden sorteerbewerkingen 
 
 ## <a name="unique-indexes"></a>Unieke indexen
 
-Unieke indexen zorgen ervoor dat een specifiek veld geen dubbele waarden bevat in alle documenten van een verzameling, net zoals de uniekheid van de standaard-id-sleutel behouden blijft. U kunt met behulp van de opdracht createIndex aangepaste indexen maken in Cosmos DB, met inbegrip van de uniekheidsbeperking.
+Unieke indexen zorgen ervoor dat een specifiek veld geen dubbele waarden heeft voor alle documenten in een verzameling, vergelijkbaar met de manier waarop uniciteit wordt bewaard op de standaardsleutel '_id'. U aangepaste indexen maken in Cosmos DB met de opdracht createIndex, inclusief de 'unieke' beperking.
 
 ## <a name="time-to-live-ttl"></a>TTL (time-to-live)
 

@@ -3,12 +3,12 @@ title: Beveiligingsfuncties om cloudworkloads te beschermen
 description: Meer informatie over het gebruik van beveiligingsfuncties in Azure Backup om back-ups veiliger te maken.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 57c9fd76ae32aea49f480f2a88d8296538d8052d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7c86e18114513a264a0f9252589533fb7ff2d3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156069"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668742"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Beveiligingsfuncties om cloudworkloads te beschermen die Azure Backup gebruiken
 
@@ -34,7 +34,7 @@ Soft delete voor VM's beschermt de back-ups van uw VM's tegen onbedoelde verwijd
 
 ### <a name="supported-regions"></a>Ondersteunde regio’s
 
-Soft delete wordt momenteel ondersteund in het Westen van de Vs, Oost-Azië, Canada Centraal, Canada Oost, Frankrijk Centraal, Korea Centraal, Korea Zuid, UK South, UK West, Australië Oost, Australië Zuid-Oosten, Noord-Europa, West-VS, West US2, Centraal VS, Zuid-Korea Oost-Azië, Noord-Centraal VS, Zuid-Centraal VS, Japan-Oosten, Japan West, India South, India Central, India West, Oost-VS 2, Zwitserland Noord, Zwitserland West, en alle nationale regio's.
+Soft delete wordt momenteel ondersteund in het Westen van de Centrale VS, Oost-Azië, Canada Centraal, Canada Oost, Frankrijk Centraal, Korea Centraal, Korea Zuid, UK South, UK West, Australia East, Australia South East, North Europe, West US, West US2, Central US, South East Asia, North Central US, South Central US, Japan East, Japan West, India South, India Central, India West, East US 2 , Zwitserland Noord, Zwitserland West, Noorwegen West, Noorwegen Oosten en alle nationale regio's.
 
 ### <a name="soft-delete-for-vms-using-azure-portal"></a>Soft delete voor VM's met Azure-portal
 
@@ -264,7 +264,7 @@ Wanneer u een back-up maakt van uw Azure Virtual Machines, u uw gegevens nu vers
 
 ### <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Back-up van beheerde schijfVM's versleuteld met door de klant beheerde sleutels
 
-Met Azure Backup u ook een back-up maken van uw Azure VM's die uw sleutel gebruiken voor serverversleuteling. De sleutel die wordt gebruikt voor het versleutelen van de schijven wordt opgeslagen in de Azure Key Vault en door u beheerd. Server-side encryptie met behulp van door de klant beheerde sleutels verschilt van Azure Disk Encryption, omdat ADE BitLocker (voor Windows) en DM-Crypt (voor Linux) gebruikt om in-guest encryptie uit te voeren, versleutelt SSE gegevens in de opslagservice, zodat u elk besturingssysteem of afbeeldingen voor uw VM's. Raadpleeg [Versleuteling van beheerde schijven met door de klant beheerde sleutels](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) voor meer details.
+Met Azure Backup u ook een back-up maken van uw Azure VM's die uw sleutel gebruiken voor serverversleuteling. De sleutel die wordt gebruikt voor het versleutelen van de schijven wordt opgeslagen in de Azure Key Vault en door u beheerd. Server-side encryptie met behulp van door de klant beheerde sleutels verschilt van Azure Disk Encryption, omdat ADE BitLocker (voor Windows) en DM-Crypt (voor Linux) gebruikt om in-guest encryptie uit te voeren, versleutelt SSE gegevens in de opslagservice, zodat u elk besturingssysteem of afbeeldingen voor uw VM's gebruiken. Raadpleeg [Versleuteling van beheerde schijven met door de klant beheerde sleutels](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) voor meer details.
 
 ### <a name="backup-of-vms-encrypted-using-ade"></a>Back-up van VM's versleuteld met ADE
 

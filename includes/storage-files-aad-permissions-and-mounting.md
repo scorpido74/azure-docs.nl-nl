@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 23550c83e76631e44d5036e0a038f01b61a79f1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f71c039aa6666cec1b871a158d84a6f5a2a107c
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79208233"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666819"
 ---
-## <a name="assign-access-permissions-to-an-identity"></a>Toegangsmachtigingen toewijzen aan een identiteit
+## <a name="2-assign-access-permissions-to-an-identity"></a>2. Toegangsmachtigingen toewijzen aan een identiteit
 
-Om toegang te krijgen tot Azure Files-bronnen met verificatie op basis van identiteit, moet een identiteit (een gebruiker, groep of serviceprincipal) over de vereiste machtigingen op shareniveau beschikken. Dit proces is vergelijkbaar met het opgeven van machtigingen voor delen van Windows, waarbij u het type toegang opgeeft dat een bepaalde gebruiker heeft om een bestandsshare te delen. De richtlijnen in deze sectie laten zien hoe u lees-, schrijf- of verwijdermachtigingen voor een bestandsshare aan een identiteit toewijzen.
+Om toegang te krijgen tot Azure Files-bronnen met verificatie op basis van identiteit, moet een identiteit (een gebruiker, groep of serviceprincipal) over de vereiste machtigingen op shareniveau beschikken. Dit proces is vergelijkbaar met het opgeven van machtigingen voor delen van Windows, waarbij u het type toegang opgeeft dat een bepaalde gebruiker heeft om een bestandsshare te delen. De algemene aanbeveling is om toestemming op aandelenniveau te gebruiken voor toegangsbeheer op hoog niveau voor een team of groep en vervolgens NTFS-machtigingen te gebruiken voor gedetailleerd toegangscontroleop directory-/bestandsniveau. De richtlijnen in deze sectie laten zien hoe u lees-, schrijf- of verwijdermachtigingen voor een bestandsshare aan een identiteit toewijzen. 
 
 We hebben drie azure-ingebouwde rollen geïntroduceerd voor het verlenen van machtigingen op share-level aan gebruikers:
 
@@ -68,7 +68,7 @@ Voordat u het volgende voorbeeldscript uitvoert, moet u rekening houden met het 
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="configure-ntfs-permissions-over-smb"></a>NTFS-machtigingen configureren via SMB 
+## <a name="3-configure-ntfs-permissions-over-smb"></a>3. NTFS-machtigingen configureren via SMB 
 Nadat u machtigingen op share-level hebt toegewezen aan RBAC, moet u de juiste NTFS-machtigingen toewijzen op root-, directory- of bestandsniveau. Denk aan machtigingen op share-level als de poortwachter op hoog niveau die bepaalt of een gebruiker toegang heeft tot het aandeel. Terwijl NTFS-machtigingen op een gedetailleerder niveau werken om te bepalen welke bewerkingen de gebruiker kan uitvoeren op map- of bestandsniveau.
 
 Azure Files ondersteunt de volledige set NTFS-basis- en geavanceerde machtigingen. U NTFS-machtigingen voor mappen en bestanden in een Azure-bestandsshare weergeven en configureren door het aandeel te monteren en vervolgens Windows File Explorer te gebruiken of de opdracht Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) of [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) uit te voeren. 
@@ -113,9 +113,9 @@ Gebruik Windows Verkenner om alle mappen en bestanden onder de bestandsshare, in
 8.  Selecteer op het tabblad Beveiliging alle machtigingen die u wilt verlenen aan de nieuw toe te voegen gebruiker
 9.  Klik op **Solliciteren**
 
-## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Een bestandsshare vanaf een vm met domein
+## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. Een bestandsshare van een vm met domein
 
-In het volgende proces wordt gecontroleerd of uw bestandsshare- en toegangsmachtigingen correct zijn ingesteld en dat u toegang hebt tot een Azure-bestandsshare vanuit een vm die is verbonden met een domein:
+In het volgende proces wordt gecontroleerd of uw bestandsshare- en toegangsmachtigingen correct zijn ingesteld en dat u toegang hebt tot een Azure-bestandsshare vanuit een vm die is verbonden met een domein. Houd er rekening mee dat de rbac-roltoewijzing op aandelenniveau enige tijd in beslag kan nemen. 
 
 Meld u aan bij de VM met de Azure AD-identiteit waaraan u machtigingen hebt verleend, zoals in de volgende afbeelding wordt weergegeven. Als u AD-verificatie voor Azure-bestanden hebt ingeschakeld, gebruikt u de AD-referenties. Meld u voor Azure AD DS-verificatie aan met Azure AD-referenties.
 

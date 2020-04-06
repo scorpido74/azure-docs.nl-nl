@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: dapine
-ms.openlocfilehash: dd5dfa6db6b6855e377600a71a923c5be3557b60
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 81ee9b305df5e177f34b06472068913ad8a61d5f
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80658894"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671404"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -17,7 +17,7 @@ Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een Azure-spraakbron maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
 > * Zorg ervoor dat u toegang hebt tot een microfoon voor audio-opname
 
 ## <a name="source-code"></a>Broncode

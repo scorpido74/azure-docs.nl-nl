@@ -1,17 +1,18 @@
 ---
-title: Intelligente routering en canary releases met Istio in Azure Kubernetes Service (AKS)
+title: Istio gebruiken voor intelligente routering
+titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het gebruik van Istio voor het bieden van intelligente routering en het implementeren van canary-releases in een AKS-cluster (Azure Kubernetes Service)
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 4a695957c287e69ff6b40e5a01254a729eaae441
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01a7764eb0a353e6842441093f70ad29c9316bbd
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273010"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668279"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligente routering en canary-releases gebruiken met Istio in Azure Kubernetes Service (AKS)
 

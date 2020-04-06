@@ -4,16 +4,16 @@ description: Een Azure IoT Edge-apparaat gebruiken als een transparante gateway 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/30/2019
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6069e0782f69d0dfb73d9be2998cbb11d59d7d22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b3aeff595671c5f924d01599b572b6b938ef09d
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529166"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666665"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway
 
@@ -42,7 +42,7 @@ U elke certificaatinfrastructuur maken waarmee de vertrouwensrelatie die vereist
 >[!NOTE]
 >De term "root CA" gebruikt in dit artikel verwijst naar de bovenste autoriteit openbare certificaat van de PKI certificaat keten, en niet noodzakelijkerwijs het certificaat wortel van een gesyndiceerde certificaat autoriteit. In veel gevallen is het eigenlijk een tussentijds ca-openbaar certificaat.
 
-De gateway presenteert zijn IoT Edge device CA-certificaat aan het downstream-apparaat tijdens het starten van de verbinding. Het downstream-apparaat controleert of het CA-certificaat van het IoT Edge-apparaat is ondertekend door het basis-CA-certificaat. Met dit proces kan het downstream-apparaat bevestigen dat de gateway afkomstig is van een vertrouwde bron.
+De IoT Edge security daemon gebruikt het IoT Edge device CA-certificaat om een CA-workload-certificaat te ondertekenen, dat op zijn beurt een servercertificaat voor IoT Edge-hub ondertekent. De gateway presenteert zijn servercertificaat aan het downstream-apparaat tijdens het starten van de verbinding. Het downstream-apparaat controleert of het servercertificaat deel uitmaakt van een certificaatketen die wordt gerolld naar het basis-CA-certificaat. Met dit proces kan het downstream-apparaat bevestigen dat de gateway afkomstig is van een vertrouwde bron. Zie [Begrijpen hoe Azure IoT Edge certificaten gebruikt](iot-edge-certs.md)voor meer informatie.
 
 De volgende stappen leiden u door het proces van het maken van de certificaten en het installeren van hen op de juiste plaatsen op de gateway. U elke machine gebruiken om de certificaten te genereren en deze vervolgens naar uw IoT Edge-apparaat kopiëren.
 

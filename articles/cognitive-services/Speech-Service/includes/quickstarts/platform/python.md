@@ -1,21 +1,15 @@
 ---
-title: 'Snelstart: SpraakSDK voor Python-platformsetup - Spraakservice'
-titleSuffix: Azure Cognitive Services
-description: Gebruik deze handleiding om uw platform in te stellen voor het gebruik van Python met de Spraakservice SDK.
-services: cognitive-services
-author: markamos
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/09/2019
-ms.author: erhopf
-ms.openlocfilehash: 458a6940ce214ef1931a2cc9ee95f2cb5ca16779
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/04/2020
+ms.author: dapine
+ms.openlocfilehash: 327000173b4c5c378f60c76eb1a24bd155901671
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925227"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666925"
 ---
 In deze handleiding ziet u hoe u de [SpraakSDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor Python installeert. Als je gewoon wilt dat de naam van `pip install azure-cognitiveservices-speech`het pakket zelf aan de slag gaat, voer dan uit.
 
@@ -26,7 +20,7 @@ In deze handleiding ziet u hoe u de [SpraakSDK](~/articles/cognitive-services/sp
 - Het Python Speech-SDK-pakket is beschikbaar voor deze besturingssystemen:
   - Windows: x64 en x86
   - Mac: macOS X versie 10.12 of hoger
-  - Linux: Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8 op x64
+  - Linux: Ubuntu 16.04/18.04, Debian 9, RHEL 7/8, CentOS 7/8 op x64
 
 ## <a name="prerequisites"></a>Vereisten
 

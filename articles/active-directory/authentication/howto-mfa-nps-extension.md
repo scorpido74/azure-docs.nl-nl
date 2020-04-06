@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c251569cfe6a2f27f86421ffe6a446ace52b435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f884f4c0ea3a610f28a8fdbb34b081f0b0a64d08
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051160"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666954"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Uw bestaande NPS-infrastructuur integreren met Azure Multi-Factor Authentication
 
@@ -78,6 +78,7 @@ De NPS-server moet kunnen communiceren met de volgende URL's via poorten 80 en 4
 
 - https:\//adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
+- https:\//credentials.azure.com
 
 Bovendien is connectiviteit met de volgende URL's vereist om de installatie van de adapter te voltooien [met behulp van het meegeleverde PowerShell-script](#run-the-powershell-script)
 
@@ -125,7 +126,7 @@ Er zijn twee factoren die van invloed zijn op welke verificatiemethoden beschikb
       > [!NOTE]
       > Wanneer u de NPS-extensie implementeert, gebruikt u deze factoren om te evalueren welke methoden beschikbaar zijn voor uw gebruikers. Als uw RADIUS-client PAP ondersteunt, maar de client-UX geen invoervelden heeft voor een verificatiecode, zijn telefoongesprekken en meldingen van mobiele apps de twee ondersteunde opties.
       >
-      > Als uw UX van uw VPN-client invoerveld ondersteunt en u netwerktoegangsbeleid hebt geconfigureerd - kan de verificatie slagen, maar geen van de RADIUS-kenmerken die zijn geconfigureerd in het netwerkbeleid, wordt toegepast op het netwerktoegangsapparaat, zoals de RRAS-server, noch de VPN-client. Als gevolg hiervan heeft de VPN-client mogelijk meer toegang dan gewenst of minder tot geen toegang.
+      > Als uw UX met VPN-client invoerveld ondersteunt en u netwerktoegangsbeleid hebt geconfigureerd, kan de verificatie bovendien slagen, maar geen van de RADIUS-kenmerken die zijn geconfigureerd in het netwerkbeleid, wordt toegepast op noch het netwerktoegangsapparaat, zoals de RRAS-server, noch op de VPN-client. Als gevolg hiervan heeft de VPN-client mogelijk meer toegang dan gewenst of minder tot geen toegang.
       >
 
 2. De invoermethoden die de clienttoepassing (VPN, Netscaler-server of andere) aankan. Heeft de VPN-client bijvoorbeeld een aantal middelen om de gebruiker in staat te stellen een verificatiecode in te typen vanuit een tekst of mobiele app?

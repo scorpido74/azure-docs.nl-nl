@@ -1,15 +1,16 @@
 ---
-title: Aanbevolen procedures voor operatoren - Identiteit in Azure Kubernetes Services (AKS)
+title: Aanbevolen procedures voor het beheren van identiteit
+titleSuffix: Azure Kubernetes Service
 description: Lees de aanbevolen procedures voor de clusteroperator voor het beheren van verificatie en autorisatie voor clusters in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 5ff5bdaced46a20dec3e7c5d7fb029f9428a12f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e3569be769fcf70a65cbfee62a3b80a5abdc3b5
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594767"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668317"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor verificatie en autorisatie in Azure Kubernetes Service (AKS)
 

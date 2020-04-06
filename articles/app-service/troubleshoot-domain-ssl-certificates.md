@@ -1,6 +1,6 @@
 ---
-title: Problemen met domein- en SSL-certificaten oplossen
-description: Oplossingen zoeken voor de veelvoorkomende problemen die u tegenkomen wanneer u een domein of SSL-certificaat configureert in Azure App Service.
+title: Problemen met domein- en TLS/SSL-certificaten oplossen
+description: Oplossingen zoeken voor de veelvoorkomende problemen die u tegenkomen wanneer u een domein of TLS/SSL-certificaat configureert in Azure App Service.
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966983"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668028"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Problemen met domein- en SSL-certificaten oplossen in Azure App Service
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Problemen met domein- en TLS/SSL-certificaten oplossen in Azure App Service
 
-In dit artikel worden veelvoorkomende problemen weergegeven die u tegenkomen wanneer u een domein of SSL-certificaat configureert voor uw webapps in Azure App Service. Het beschrijft ook mogelijke oorzaken en oplossingen voor deze problemen.
+In dit artikel worden veelvoorkomende problemen weergegeven die u tegenkomen wanneer u een domein of TLS/SSL-certificaat configureert voor uw webapps in Azure App Service. Het beschrijft ook mogelijke oorzaken en oplossingen voor deze problemen.
 
 Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de [Azure-experts op de MSDN- en Stack Overflow-forums.](https://azure.microsoft.com/support/forums/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure Support-site](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.
 
@@ -26,17 +26,17 @@ Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met 
 
 ## <a name="certificate-problems"></a>Certificaatproblemen
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>U geen SSL-certificaat binding aan een app toevoegen 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>U geen TLS/SSL-certificaat binding aan een app toevoegen 
 
 #### <a name="symptom"></a>Symptoom
 
-Wanneer u een SSL-binding toevoegt, ontvangt u het volgende foutbericht:
+Wanneer u een TLS-binding toevoegt, ontvangt u het volgende foutbericht:
 
 "Kan geen SSL-binding toevoegen. Kan geen certificaat instellen voor bestaande VIP omdat een andere VIP dat certificaat al gebruikt."
 
 #### <a name="cause"></a>Oorzaak
 
-Dit probleem kan optreden als u meerdere IP-gebaseerde SSL-bindingen hebt voor hetzelfde IP-adres in meerdere apps. App A heeft bijvoorbeeld een IP-gebaseerde SSL met een oud certificaat. App B heeft een IP-gebaseerde SSL met een nieuw certificaat voor hetzelfde IP-adres. Wanneer u de SSL-binding van de app bijwerkt met het nieuwe certificaat, mislukt deze met deze fout omdat hetzelfde IP-adres wordt gebruikt voor een andere app. 
+Dit probleem kan optreden als u meerdere IP-gebaseerde SSL-bindingen hebt voor hetzelfde IP-adres in meerdere apps. App A heeft bijvoorbeeld een IP-gebaseerde SSL met een oud certificaat. App B heeft een IP-gebaseerde SSL met een nieuw certificaat voor hetzelfde IP-adres. Wanneer u de TLS-binding van de app bijwerkt met het nieuwe certificaat, mislukt deze met deze fout omdat hetzelfde IP-adres wordt gebruikt voor een andere app. 
 
 #### <a name="solution"></a>Oplossing 
 
@@ -51,7 +51,7 @@ Als u dit probleem wilt oplossen, gebruikt u een van de volgende methoden:
 
 Wanneer u een certificaat probeert te verwijderen, ontvangt u het volgende foutbericht:
 
-"Kan het certificaat niet verwijderen omdat het momenteel wordt gebruikt in een SSL-binding. De SSL-binding moet worden verwijderd voordat u het certificaat verwijderen.
+"Kan het certificaat niet verwijderen omdat het momenteel wordt gebruikt in een TLS/SSL-binding. De TLS-binding moet worden verwijderd voordat u het certificaat verwijderen.
 
 #### <a name="cause"></a>Oorzaak
 
@@ -59,7 +59,7 @@ Dit probleem kan zich voordoen als een andere app het certificaat gebruikt.
 
 #### <a name="solution"></a>Oplossing
 
-Verwijder de SSL-binding voor dat certificaat uit de apps. Probeer vervolgens het certificaat te verwijderen. Als u het certificaat nog steeds niet verwijderen, verwijdert u de cache van de internetbrowser en opent u de Azure-portal opnieuw in een nieuw browservenster. Probeer vervolgens het certificaat te verwijderen.
+Verwijder de TLS-binding voor dat certificaat uit de apps. Probeer vervolgens het certificaat te verwijderen. Als u het certificaat nog steeds niet verwijderen, verwijdert u de cache van de internetbrowser en opent u de Azure-portal opnieuw in een nieuw browservenster. Probeer vervolgens het certificaat te verwijderen.
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>U geen App Service-certificaat kopen 
 
@@ -69,7 +69,7 @@ U geen [Azure App Service-certificaat](./configure-ssl-certificate.md#import-an-
 #### <a name="cause-and-solution"></a>Oorzaak en oplossing
 Dit probleem kan zich om een van de volgende redenen voordoen:
 
-- Het App-serviceplan is gratis of gedeeld. Deze prijsniveaus bieden geen ondersteuning voor SSL. 
+- Het App-serviceplan is gratis of gedeeld. Deze prijsniveaus ondersteunen TLS niet. 
 
     **Oplossing:** Upgrade het App Service-abonnement voor app naar Standaard.
 
@@ -165,7 +165,7 @@ Als uw domein minder dan zeven dagen geleden is verwijderd, is het domein nog ni
 
 ## <a name="domain-problems"></a>Domeinproblemen
 
-### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>U hebt een SSL-certificaat voor het verkeerde domein gekocht
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>U hebt een TLS/SSL-certificaat voor het verkeerde domein gekocht
 
 #### <a name="symptom"></a>Symptoom
 
@@ -306,7 +306,7 @@ Wanneer u een domein koopt, worden er gedurende een periode van vijf dagen geen 
 
 **Kan ik het domein gebruiken in een andere Azure App Service-app in mijn abonnement?**
 
-Ja. Wanneer u het aangepaste domeinen en ssl-blad opent in de Azure-portal, ziet u de domeinen die u hebt gekocht. U uw app configureren om een van deze domeinen te gebruiken.
+Ja. Wanneer u het aangepaste domeinen en tls-blad opent in de Azure-portal, ziet u de domeinen die u hebt gekocht. U uw app configureren om een van deze domeinen te gebruiken.
 
 **Kan ik een domein van het ene abonnement naar een ander abonnement overzetten?**
 

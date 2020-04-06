@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 969193b2c0843c4eb217d2bdb9f9ad9a40ccf9af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154964"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666929"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uw toepassing weergeven in de Azure Active Directory-toepassingsgalerie
 
@@ -49,9 +49,9 @@ U een gratis testaccount krijgen met alle premium Azure AD-functies - 90 dagen g
 
 ## <a name="submit-the-request-in-the-portal"></a>Dien de aanvraag in in het portaal
 
-Nadat u hebt getest of uw toepassingsintegratie werkt met Azure AD, dient u uw verzoek om toegang in de [portal voor toepassingsnetwerk](https://microsoft.sharepoint.com/teams/apponboarding/Apps)in. Als u een Office 365-account hebt, gebruikt u deze om u aan te melden bij deze portal. Als dit niet het zo is, gebruikt u uw Microsoft-account, zoals Outlook of Hotmail, om u aan te melden.
+Nadat u hebt getest of uw toepassingsintegratie werkt met Azure AD, dient u uw aanvraag voor toepassingen in in de [Microsoft Application Network-portal.](https://microsoft.sharepoint.com/teams/apponboarding/Apps)
 
-Als de volgende pagina wordt weergegeven nadat u zich hebt aangemeld, neemt u contact op met het [Azure AD SSO-integratieteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Geef het e-mailaccount op dat u wilt gebruiken voor het indienen van de aanvraag. Het Azure AD-team voegt het account toe in de Portal van het Microsoft Application Network.
+Als de volgende pagina wordt weergegeven nadat u zich hebt aangemeld, neemt u contact op met het [Azure AD SSO-integratieteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Geef het e-mailaccount op dat u wilt gebruiken voor het indienen van de aanvraag. Een zakelijk e-mailadres zoals [name@yourbusiness.com](mailto:name@yourbusiness.com) dat de voorkeur heeft. Het Azure AD-team voegt het account toe in de Portal van het Microsoft Application Network.
 
 ![Bericht voor toegangsaanvragen op SharePoint-portal](./media/howto-app-gallery-listing/errorimage.png)
 

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1392f69bea09996e46ad4c112474f9067ff5a63d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ed7686bbef7dc1342528475226d11b8b8b8fb640
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656917"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668594"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Syntaxis van Lucene query in Azure Cognitive Search
 
@@ -104,7 +104,7 @@ Veldgroepering is vergelijkbaar, maar scopes de groepering naar een enkel veld. 
 
 ### <a name="or-operator-or-or-"></a>OR `OR` operator of`||`
 
-De OR-operator is een verticaal balk- of pijpteken. Bijvoorbeeld: `wifi || luxury` zal zoeken naar documenten die ofwel "wifi" of "luxe" of beide. Omdat OR de standaardconjunctieoperator is, `wifi luxury` u deze `wifi || luxuery`ook weglaten, zodat dit het equivalent is van.
+De OR-operator is een verticaal balk- of pijpteken. Bijvoorbeeld: `wifi || luxury` zal zoeken naar documenten die ofwel "wifi" of "luxe" of beide. Omdat OR de standaardconjunctieoperator is, `wifi luxury` u deze `wifi || luxury`ook weglaten, zodat dit het equivalent is van.
 
 ### <a name="and-operator-and--or-"></a>EN `AND`operator `&&` , of`+`
 
@@ -162,6 +162,8 @@ In het volgende voorbeeld worden de verschillen geïllustreerd. Stel dat er een 
  Bij een zoekopdracht met reguliere expressievindt u een overeenkomst op basis van de inhoud tussen voorwaartse slashes "/", zoals gedocumenteerd in de [klasse RegExp.](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)  
 
  Bijvoorbeeld, om documenten te vinden die "motel" `/[mh]otel/`of "hotel" bevatten, specificeert u . Zoekopdrachten met reguliere expressie worden gekoppeld aan afzonderlijke woorden.
+
+Sommige tools en talen leggen extra vereisten voor escape character op. Voor JSON worden tekenreeksen met een voorwaartse slash ontsnapt `search=/.*microsoft.com\/azure\/.*/` met `search=/.* <string-placeholder>.*/` een achterwaartse slash: "microsoft.com/azure/" wordt waar de reguliere expressie wordt ingesteld, en `microsoft.com\/azure\/` is de tekenreeks met een ontsnapte slash naar voren.
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>Zoeken naar jokertekens  
  U algemeen erkende syntaxis gebruiken voor meerdere (*) of enkele (?) tekenwildcardzoekopdrachten. Let op de Lucene query parser ondersteunt het gebruik van deze symbolen met een enkele term, en niet een zin.

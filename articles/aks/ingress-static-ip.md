@@ -1,15 +1,16 @@
 ---
-title: Een HTTP-ingress-controller maken met een statisch IP-adres in Azure Kubernetes Service (AKS)
+title: Invallencontroller gebruiken met statisch IP-adres
+titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het installeren en configureren van een NGINX-ingress-controller met een statisch openbaar IP-adres in een AKS-cluster (Azure Kubernetes Service).
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 3e79bbe76a751097acd5c9d3c42dbd4020b6866b
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: fe7f1070ce233c204d9658d4a75c5e1c7a189f12
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617279"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668511"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Een invallende controller maken met een statisch openbaar IP-adres in Azure Kubernetes Service (AKS)
 

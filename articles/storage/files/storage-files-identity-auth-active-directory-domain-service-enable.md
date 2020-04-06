@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e2e3c7763a13c8850554b079a426ed4172b74d28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599273"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666857"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Active Directory Domain Services-verificatie inschakelen in Azure-bestanden
 
@@ -61,16 +61,16 @@ Voordat u Azure AD DS-verificatie over SMB voor Azure-bestandsshares inschakelt,
 
 Ga vervolgens de volgende dingen uit om toegang te verlenen tot Azure Files-bronnen met Azure AD-referenties:
 
-- Azure AD DS-verificatie via SMB inschakelen voor uw opslagaccount om het opslagaccount te registreren bij de bijbehorende Azure AD DS-implementatie.
-- Toegangsmachtigingen voor een aandeel toewijzen aan een Azure AD-identiteit (een gebruiker, groep of serviceprincipal).
-- NTFS-machtigingen configureren via SMB voor mappen en bestanden.
-- Een Azure-bestandsshare monteren vanaf een vm die is verbonden met een domein.
+1. Azure AD DS-verificatie via SMB inschakelen voor uw opslagaccount om het opslagaccount te registreren bij de bijbehorende Azure AD DS-implementatie.
+2. Toegangsmachtigingen voor een aandeel toewijzen aan een Azure AD-identiteit (een gebruiker, groep of serviceprincipal).
+3. NTFS-machtigingen configureren via SMB voor mappen en bestanden.
+4. Een Azure-bestandsshare monteren vanaf een vm die is verbonden met een domein.
 
 In het volgende diagram wordt de end-to-end werkstroom weergegeven voor het inschakelen van Azure AD DS-verificatie via SMB voor Azure-bestanden.
 
 ![Diagram met Azure AD over smb voor Azure-bestanden](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>Azure AD DS-verificatie inschakelen voor uw account
+## <a name="1-enable-azure-ad-ds-authentication-for-your-account"></a>1. Azure AD DS-verificatie inschakelen voor uw account
 
 Als u Azure AD DS-verificatie via SMB voor Azure Files wilt inschakelen, u een eigenschap voor opslagaccounts instellen met behulp van de Azure-portal, Azure PowerShell of Azure CLI. Deze eigenschap is impliciet 'domeinjoins' van het opslagaccount met de bijbehorende Azure AD DS-implementatie. Azure AD DS-verificatie via SMB is vervolgens ingeschakeld voor alle nieuwe en bestaande bestandsshares in het opslagaccount.
 
@@ -115,7 +115,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 ```
 
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Als u Azure AD-verificatie via SMB met Azure CLI wilt inschakelen, installeert u de nieuwste CLI-versie (versie 2.0.70 of nieuwer). Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)voor meer informatie over het installeren van Azure CLI.
 
@@ -135,7 +135,7 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-U hebt azure AD DS-verificatie nu met smb-verificatie ingeschakeld en een aangepaste rol toegewezen die toegang biedt tot een Azure-bestandsshare met een Azure AD-identiteit. Als u extra gebruikers toegang wilt verlenen tot uw bestandsshare, volgt u de instructies in de [toegangsmachtigingen toewijzen](#assign-access-permissions-to-an-identity) om een identiteit te gebruiken en [NTFS-machtigingen configureren voor SMB-secties](#configure-ntfs-permissions-over-smb).
+U hebt azure AD DS-verificatie nu met smb-verificatie ingeschakeld en een aangepaste rol toegewezen die toegang biedt tot een Azure-bestandsshare met een Azure AD-identiteit. Als u extra gebruikers toegang wilt verlenen tot uw bestandsshare, volgt u de instructies in de [toegangsmachtigingen toewijzen](#2-assign-access-permissions-to-an-identity) om een identiteit te gebruiken en [NTFS-machtigingen configureren voor SMB-secties](#3-configure-ntfs-permissions-over-smb).
 
 ## <a name="next-steps"></a>Volgende stappen
 
