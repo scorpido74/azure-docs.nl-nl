@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dd44d9cb01ff072d89afeb4efc4a59071c621315
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77112344"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758146"
 ---
 Deze snelstart op basis van Postman begeleidt u bij het ophalen van een antwoord uit een knowledge base.
 
@@ -49,7 +49,7 @@ Gebruik deze procedure om Postman te configureren en lees vervolgens elke volgen
 
 ## <a name="use-metadata-to-filter-answer"></a>Metagegevens gebruiken om antwoord te filteren
 
-In een vorige quickstart werden metadata toegevoegd aan twee QnA-sets om onderscheid te maken tussen twee verschillende vragen. Voeg de metagegevens toe aan de query om het filter te beperken tot alleen de relevante QnA-set.
+In een vorige quickstart werden metadata toegevoegd aan twee QnA-paren om onderscheid te maken tussen twee verschillende vragen. Voeg de metagegevens toe aan de query om het filter te beperken tot alleen het relevante QnA-paar.
 
 1. Wijzig in Postman alleen de queryJSON door de `strictFilters` eigenschap `service:qna_maker`toe te voegen met de naam/waardepaar van . Het lichaam JSON moet zijn:
 

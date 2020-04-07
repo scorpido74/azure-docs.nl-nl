@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: df0708ff964595181d00d8402f1162e0832c70eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0079c5a9409aafd4d6341ec9febb5115dc4023a1
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286367"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745397"
 ---
 # <a name="create-power-bi-app-offer-technical-assets"></a>Power BI-app maken bieden technische elementen
+
+>[!Important]
+>Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
 
 Het primaire technische element dat u nodig hebt voor dit aanbiedingstype is een Power BI-app. Een Power BI-app is een verzameling primaire gegevenssets, rapporten of dashboards en optionele verbonden services en ingesloten gegevenssets. Het is geëvolueerd van een assettype dat voorheen bekend stond als een [contentpack.](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction) Zie [Wat zijn Power BI-sjabloon-apps voor](https://go.microsoft.com/fwlink/?linkid=2028636)meer informatie over het ontwikkelen van dit type app?
 

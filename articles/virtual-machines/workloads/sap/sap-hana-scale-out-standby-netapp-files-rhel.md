@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 04/06/2020
 ms.author: radeltch
-ms.openlocfilehash: ace30b044682cb4e62a0f81da90f21a77be1edd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78f60cbd20e7801f4af26372884275d7d6782777
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372970"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754147"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Een SAP HANA-scale-outsysteem met stand-by node op Azure VM's implementeren met Azure NetApp-bestanden op Red Hat Enterprise Linux 
 
@@ -337,7 +337,7 @@ Configureer en bereid uw besturingssysteem voor door de volgende stappen uit te 
     yum install nfs-utils
     </code></pre>
 
-3. **[A]** Bereid het besturingssysteem voor op het uitvoeren van SAP HANA op Azure NetApp met NFS, zoals beschreven in [SAP HANA op NetApp AFF-systemen met NFS-configuratiehandleiding](https://www.netapp.com/us/media/tr-4435.pdf). Maak configuratiebestand */etc/sysctl.d/netapp-hana.conf* voor de NetApp-configuratie-instellingen.  
+3. **[A]** Bereid het besturingssysteem voor op het uitvoeren van SAP HANA op Azure NetApp met NFS, zoals beschreven in [NetApp SAP-toepassingen op Microsoft Azure met Azure NetApp-bestanden][anf-sap-applications-azure]. Maak configuratiebestand */etc/sysctl.d/netapp-hana.conf* voor de NetApp-configuratie-instellingen.  
 
     <pre><code>
     vi /etc/sysctl.d/netapp-hana.conf
@@ -369,7 +369,7 @@ Configureer en bereid uw besturingssysteem voor door de volgende stappen uit te 
     vm.swappiness=10
     </code></pre>
 
-5. **[A]** Pas de sunrpc-instellingen aan, zoals aanbevolen in de [SAP HANA op NetApp AFF-systemen met NFS-configuratiehandleiding.](https://www.netapp.com/us/media/tr-4435.pdf)  
+5. **[A]** Pas de sunrpc-instellingen aan, zoals aanbevolen in de [NetApp SAP-toepassingen op Microsoft Azure met Azure NetApp-bestanden][anf-sap-applications-azure].  
 
     <pre><code>
     vi /etc/modprobe.d/sunrpc.conf
@@ -707,7 +707,7 @@ In dit voorbeeld voor het implementeren van SAP HANA in scale-outconfiguratie me
    - `async_write_submit_active`**op**
    - `async_write_submit_blocks`**alle**
 
-   Zie [SAP HANA op NetApp AFF Systems met NFS Configuration Guide](https://www.netapp.com/us/media/tr-4435.pdf)voor meer informatie. 
+   Zie [NetApp SAP-toepassingen op Microsoft Azure met Azure NetApp-bestanden][anf-sap-applications-azure]voor meer informatie. 
 
    Vanaf SAP HANA 2.0-systemen u `global.ini`de parameters instellen in. Zie SAP Note [1999930](https://launchpad.support.sap.com/#/notes/1999930)voor meer informatie.  
    
@@ -923,5 +923,4 @@ In dit voorbeeld voor het implementeren van SAP HANA in scale-outconfiguratie me
 * [Azure Virtual Machines planning en implementatie voor SAP][planning-guide]
 * [Azure Virtual Machines-implementatie voor SAP][deployment-guide]
 * [Azure Virtual Machines DBMS-implementatie voor SAP][dbms-guide]
-* Zie [SAP HANA (grote exemplaren) hoge beschikbaarheid en noodherstel op Azure](hana-overview-high-availability-disaster-recovery.md)voor meer informatie over het instellen van hoge beschikbaarheid en het plannen van noodherstel van SAP HANA op Azure.
 * Zie [Hoge beschikbaarheid van SAP HANA op Azure Virtual Machines (VM's)][sap-hana-ha]voor meer informatie over het instellen van hoge beschikbaarheid en het plannen van noodherstel van SAP HANA op Azure VM's.

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 4a71f50a130bd9b22965d39fa942b47c70857a86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71aa937536f35c9af44adb5822ce7a2bb8f3a9eb
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265036"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755999"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid-gebeurtenisschema voor Blob-opslag
 
@@ -21,7 +21,7 @@ In dit artikel worden de eigenschappen en het schema voor blobopslaggebeurteniss
 Zie Bron van de gebeurtenis [Opslag](event-sources.md#storage)voor een lijst met voorbeeldscripts en -zelfstudies .
 
 >[!NOTE]
-> Alleen opslagaccounts van soort **StorageV2 (v2 voor algemeen gebruik)** en **BlobStorage** ondersteunen gebeurtenis-integratie. **Opslag (genral ei v1)** biedt *geen* ondersteuning voor integratie met Event Grid.
+> Alleen opslagaccounts van natura **StorageV2 (v2 voor algemeen gebruik),** **BlockBlobStorage**en **BlobStorage** ondersteunen gebeurtenis-integratie. **Opslag (genral ei v1)** biedt *geen* ondersteuning voor integratie met Event Grid.
 
 ## <a name="list-of-events-for-blob-rest-apis"></a>Lijst met gebeurtenissen voor Blob REST API's
 
@@ -37,7 +37,7 @@ Deze gebeurtenissen worden geactiveerd wanneer een client een blob maakt, vervan
 
 ## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Lijst met de gebeurtenissen voor Azure Data Lake Storage Gen 2 REST API's
 
-Deze gebeurtenissen worden geactiveerd als u een hiërarchische naamruimte inschakelt op het opslagaccount en clients Azure Data Lake Storage Gen2 REST API's aanroepen.
+Deze gebeurtenissen worden geactiveerd als u een hiërarchische naamruimte inschakelt op het opslagaccount en clients Azure Data Lake Storage Gen2 REST API's aanroepen. Zie Inleiding tot Azure Data Lake Storage Gen2 voor meer informatie over Azure Data Lake Storage [Gen2.](../storage/blobs/data-lake-storage-introduction.md)
 
 |Gebeurtenisnaam|Beschrijving|
 |----------|-----------|
@@ -89,7 +89,7 @@ Deze sectie bevat een voorbeeld van hoe die gegevens eruit zouden zien voor elke
 
 ### <a name="microsoftstorageblobcreated-event-data-lake-storage-gen2"></a>Gebeurtenis Microsoft.Storage.BlobGemaakt (Data Lake Storage Gen2)
 
-Als het blob-opslagaccount een hiërarchische naamruimte heeft, lijken de gegevens op het vorige voorbeeld, met uitzondering van de volgende wijzigingen:
+Als het blob-opslagaccount een hiërarchische naamruimte heeft, lijken de gegevens op het vorige voorbeeld, met uitzondering van deze wijzigingen:
 
 * De `dataVersion` sleutel is ingesteld `2`op een waarde van .
 
@@ -154,7 +154,7 @@ Als het blob-opslagaccount een hiërarchische naamruimte heeft, lijken de gegeve
 
 ### <a name="microsoftstorageblobdeleted-event-data-lake-storage-gen2"></a>Microsoft.Storage.BlobDeleted-gebeurtenis (Data Lake Storage Gen2)
 
-Als het blob-opslagaccount een hiërarchische naamruimte heeft, lijken de gegevens op het vorige voorbeeld, met uitzondering van de volgende wijzigingen:
+Als het blob-opslagaccount een hiërarchische naamruimte heeft, lijken de gegevens op het vorige voorbeeld, met uitzondering van deze wijzigingen:
 
 * De `dataVersion` sleutel is ingesteld `2`op een waarde van .
 

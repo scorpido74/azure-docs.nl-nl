@@ -6,12 +6,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: a305914c5c870543e16c515880955693c2634044
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: e49fafc2889b98d013d77471f8177fd85a307cc8
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239181"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754891"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Zelfstudie: Azure Key Vault integreren in de implementatie van uw ARM-sjabloon
 
@@ -198,7 +198,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een geheim uit uw Azure-sleutelkluis opgehaald. Vervolgens gebruikte u het geheim in uw sjabloonimplementatie. Voor meer informatie over het maken van gekoppelde sjablonen ziet u:
+In deze zelfstudie hebt u een geheim uit uw Azure-sleutelkluis opgehaald. Vervolgens gebruikte u het geheim in uw sjabloonimplementatie. Voor meer informatie over het gebruik van extensies van virtuele machines voor de uitvoering van post-implementatietaken raadpleegt u:
 
 > [!div class="nextstepaction"]
-> [Gekoppelde sjablonen maken](./template-tutorial-create-linked-templates.md)
+> [Virtuele machine-extensies implementeren](./template-tutorial-deploy-vm-extensions.md)

@@ -3,14 +3,14 @@ title: Configuraties compileren in Azure Automation State Configuration
 description: In dit artikel wordt beschreven hoe u DSC-configuraties (Desired State Configuration) compileren voor Azure Automation.
 services: automation
 ms.subservice: dsc
-ms.date: 09/10/2018
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48593920bdfcf743fceaeaeec891c0d5c4f2e108
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b366777cce4dd4212a2e3ec0cdcd180e0d7164f4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80057636"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757186"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>DSC-configuraties compileren in Azure-automatiseringsstatusconfiguratie
 
@@ -27,7 +27,7 @@ U de configuraties van de gewenste statusconfiguratie (DSC) op de volgende manie
   - Werken met knooppuntgegevens en niet-knooppuntgegevens op schaal
   - Aanzienlijke prestatieverbetering
 
-Zie [Extensie gewenste statusconfiguratie met Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)voor compilatiedetails.
+U azure resource beheersjablonen ook gebruiken met Azure Desired State Configuration (DSC)-extensie om configuraties naar uw Azure VM's te pushen. De Azure DSC-extensie maakt gebruik van het Azure VM Agent-framework voor het leveren, uitvoeren en rapporteren over DSC-configuraties die worden uitgevoerd op Azure VM's. Zie [Extensie gewenste statusconfiguratie met Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)voor compilatiedetails. 
 
 ## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>Een DSC-configuratie samenstellen in Azure-statusconfiguratie
 

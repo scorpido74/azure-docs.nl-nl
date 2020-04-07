@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bf65f69d9dcaf6de2236c98b56b58ec7e021099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74025402"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755113"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>LinkedIn-accountverbindingen integreren in Azure Active Directory
 
@@ -26,8 +26,9 @@ U gebruikers in uw organisatie toegang geven tot hun LinkedIn-verbindingen in so
 
 > [!IMPORTANT]
 > De instelling Voor LinkedIn-accountverbindingen wordt momenteel uitgerold naar Azure AD-organisaties. Wanneer deze wordt uitgerold naar uw organisatie, is deze standaard ingeschakeld.
-> 
+>
 > Uitzonderingen:
+>
 > * De instelling is niet beschikbaar voor klanten die Microsoft Cloud gebruiken voor de Amerikaanse overheid, Microsoft Cloud Germany of Azure en Office 365 die worden beheerd door 21Vianet in China.
 > * De instelling is standaard uitgeschakeld voor huurders die in Duitsland zijn ingericht. Houd er rekening mee dat de instelling niet beschikbaar is voor klanten die Microsoft Cloud Germany gebruiken.
 > * De instelling is standaard uitgeschakeld voor huurders die in Frankrijk zijn ingericht.
@@ -40,7 +41,7 @@ U LinkedIn-accountverbindingen inschakelen voor alleen de gebruikers die u toega
 
 1. Meld u aan bij het [Azure AD-beheercentrum](https://aad.portal.azure.com/) met een account dat een globale beheerder is voor de Azure AD-organisatie.
 1. Selecteer **Gebruikers**.
-1. Selecteer **gebruikersinstellingen**in het blad **Gebruikers** .
+1. Selecteer **op** de pagina Gebruikers de optie **Gebruikersinstellingen**.
 1. Laat gebruikers onder **LinkedIn-accountverbindingen**hun accounts verbinden om toegang te krijgen tot hun LinkedIn-verbindingen binnen sommige Microsoft-apps. Er worden geen gegevens gedeeld totdat gebruikers toestemming geven om hun accounts met elkaar te verbinden.
 
     * Selecteer **Ja** om de service in te schakelen voor alle gebruikers in uw organisatie
@@ -55,6 +56,7 @@ U LinkedIn-accountverbindingen inschakelen voor alleen de gebruikers die u toega
 > LinkedIn-integratie is niet volledig ingeschakeld voor uw gebruikers totdat ze toestemming geven om hun accounts te verbinden. Er worden geen gegevens gedeeld wanneer u accountverbindingen inschakelt voor uw gebruikers.
 
 ### <a name="assign-selected-users-with-a-group"></a>Geselecteerde gebruikers toewijzen met een groep
+
 We hebben de optie 'Geselecteerd' vervangen die een lijst met gebruikers opgeeft met de optie om een groep gebruikers te selecteren, zodat u de mogelijkheid inschakelen om LinkedIn- en Microsoft-accounts voor één groep te verbinden in plaats van veel individuele gebruikers. Als u geen LinkedIn-accountverbindingen hebt ingeschakeld voor geselecteerde individuele gebruikers, hoeft u niets te doen. Als u eerder LinkedIn-accountverbindingen voor geselecteerde individuele gebruikers hebt ingeschakeld, moet u het als:
 
 1. Download de huidige lijst met individuele gebruikers
@@ -64,16 +66,12 @@ We hebben de optie 'Geselecteerd' vervangen die een lijst met gebruikers opgeeft
 > [!NOTE]
 > Zelfs als u uw momenteel geselecteerde individuele gebruikers niet naar een groep verplaatst, kunnen ze nog steeds LinkedIn-gegevens in Microsoft-apps zien.
 
-### <a name="get-the-current-list-of-selected-users"></a>De huidige lijst met geselecteerde gebruikers weergeven
+### <a name="move-currently-selected-users-to-a-group"></a>Momenteel geselecteerde gebruikers naar een groep verplaatsen
 
+1. Maak een CSV-bestand van de gebruikers die zijn geselecteerd voor LinkedIn-accountverbindingen.
 1. Meld u aan bij Microsoft 365 met uw beheerdersaccount.
-1. Ga naar https://linkedinselectedusermigration.azurewebsites.net/. U ziet een lijst met gebruikers die zijn geselecteerd voor LinkedIn-accountverbindingen.
-1. Exporteer de lijst naar een CSV-bestand.
-
-### <a name="move-the-currently-selected-individual-users-to-a-group"></a>De momenteel geselecteerde afzonderlijke gebruikers naar een groep verplaatsen
-
-1. PowerShell starten
-1. Azure AD-module installeren door`Install-Module AzureAD`
+1. Start PowerShell.
+1. De Azure AD-module installeren door`Install-Module AzureAD`
 1. Voer het volgende script uit:
 
   ``` PowerShell

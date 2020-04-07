@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c2717b1f29af39c6fdc4602b11acba131d959f03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534385"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756272"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privéeindpunten gebruiken voor Azure Web App (voorbeeld)
 
@@ -25,7 +25,7 @@ U Privéeindpunt voor uw Azure Web App gebruiken om clients in uw privénetwerk 
 
 Met Privéeindpunt voor uw web-app u:
 
-- Beveilig uw web-app door het Service Endpoint te configureren, waardoor openbare blootstelling wordt geëlimineerd.
+- Beveilig uw web-app door het privéeindpunt te configureren, waardoor openbare blootstelling wordt geëlimineerd.
 - Maak veilig verbinding met Web App van on-premises netwerken die verbinding maken met het VNet via een VPN of ExpressRoute private peering.
 
 Als u alleen een veilige verbinding nodig hebt tussen uw VNet en uw Web App, is een Service Endpoint de eenvoudigste oplossing. Als u de web-app ook on-premises moet bereiken via een Azure-gateway, een regionaal getouwerde VNet of een wereldwijd peered VNet, is Private Endpoint de oplossing.  

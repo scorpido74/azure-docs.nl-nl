@@ -4,12 +4,12 @@ description: Meer informatie over het verbinden van Azure-functies met een Azure
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 22f7df52e90a35a3ed9a26a7672f8354efc173e3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241330"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673463"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure-functies verbinden met Azure Storage met Behulp van Visual Studio-code
 
@@ -52,9 +52,13 @@ In het [vorige quickstart-artikel](functions-create-first-function-vs-code.md)he
 
 Omdat u een binding voor de uitvoer van wachtrijopslag gebruikt, moet u de extensie Opslagbindingen hebben geïnstalleerd voordat u het project uitvoert. 
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+Uw project is geconfigureerd voor het gebruik van [extensiebundels,](functions-bindings-register.md#extension-bundles)die automatisch een vooraf gedefinieerde set extensiepakketten installeert. 
+
+Extensiebundels zijn ingeschakeld in het bestand host.json aan de basis van het project, dat er als volgt uitziet:
+
+:::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
 ::: zone-end
 
@@ -74,7 +78,7 @@ U nu de binding van de opslaguitvoer toevoegen aan uw project.
 
 In Functies vereist elk type `direction` `type`binding een `name` , , en een unieke om te worden gedefinieerd in het function.json-bestand. De manier waarop u deze kenmerken definieert, is afhankelijk van de taal van uw functie-app.
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -83,6 +87,12 @@ In Functies vereist elk type `direction` `type`binding een `name` , , en een uni
 ::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+[!INCLUDE [functions-add-output-binding-java](../../includes/functions-add-output-binding-java.md)]
 
 ::: zone-end
 
@@ -111,8 +121,20 @@ Nadat de binding is gedefinieerd, `name` kunt u de binding gebruiken om toegang 
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"  
+
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+
 ::: zone-end  
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end  
+
+<!--- Local testing section --->
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
@@ -127,6 +149,12 @@ Nadat de binding is gedefinieerd, `name` kunt u de binding gebruiken om toegang 
 ::: zone-end
 
 In uw opslagaccount wordt een nieuwe wachtrij met de naam **outqueue** gemaakt door de runtime Van Functies wanneer de uitvoerbinding voor het eerst wordt gebruikt. U gebruikt Storage Explorer om te controleren of de wachtrij samen met het nieuwe bericht is gemaakt.
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end
 
 ### <a name="connect-storage-explorer-to-your-account"></a>Storage Explorer verbinden met uw account
 

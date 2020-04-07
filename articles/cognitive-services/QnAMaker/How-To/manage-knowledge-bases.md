@@ -3,12 +3,12 @@ title: Beheer kennisbanken - QnA Maker
 description: Met QnA Maker u uw kennisbanken beheren door toegang te bieden tot de instellingen en inhoud van de kennisbank.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 57839125011016daed5f0b3d441a83e8db488198
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80071142"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756798"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Kennisbank maken en instellingen beheren
 
@@ -107,5 +107,5 @@ Als u uw kennisbank deelt met medewerkers,](collaborate-knowledge-base.md) en de
 
 Meer informatie over het beheren van [de taal](language-knowledge-base.md) van alle kennisbanken in een resource.
 
-* QnA-sets bewerken
+* QnA-paren bewerken
 * Azure-resources beheren die worden gebruikt door QnA Maker

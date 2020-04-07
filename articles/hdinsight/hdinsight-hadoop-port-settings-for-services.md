@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: fe2cb04f36026740dc54f4668d3c3188592bd8ae
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314688"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754223"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Poorten gebruikt door Apache Hadoop diensten op HDInsight
 
@@ -21,9 +21,9 @@ Dit document bevat een lijst van de poorten die worden gebruikt door Apache Hado
 
 ## <a name="public-ports-vs-non-public-ports"></a>Openbare poorten versus niet-openbare havens
 
-Linux-gebaseerde HDInsight clusters alleen bloot drie poorten openbaar op het internet; 22, 23 en 443. Deze poorten worden gebruikt om veilig toegang te krijgen tot het cluster met behulp van SSH en services die via het beveiligde HTTPS-protocol worden blootgesteld.
+Linux-gebaseerde HDInsight clusters alleen bloot drie poorten openbaar op het internet: 22, 23, en 443. Deze poorten beveiligen clustertoegang met SSH en services die worden blootgesteld via het beveiligde HTTPS-protocol.
 
-Intern wordt HDInsight geïmplementeerd door verschillende Azure Virtual Machines (de knooppunten binnen het cluster) die worden uitgevoerd op een Azure Virtual Network. Vanuit het virtuele netwerk hebt u toegang tot poorten die niet via internet worden blootgesteld. Als u bijvoorbeeld verbinding maakt met een van de hoofdknooppunten via SSH, u vanaf het hoofdknooppunt rechtstreeks toegang krijgen tot services die op de clusterknooppunten worden uitgevoerd.
+HDInsight wordt geïmplementeerd door verschillende Azure Virtual Machines (clusterknooppunten) die worden uitgevoerd op een Azure Virtual Network. Vanuit het virtuele netwerk hebt u toegang tot poorten die niet via internet worden blootgesteld. Als u via SSH verbinding maakt met het hoofdknooppunt, hebt u rechtstreeks toegang tot services die op de clusterknooppunten worden uitgevoerd.
 
 > [!IMPORTANT]  
 > Als u een Azure Virtual Network niet opgeeft als configuratieoptie voor HDInsight, wordt er automatisch een gemaakt. U echter geen andere machines (zoals andere Azure Virtual Machines of uw clientontwikkelingsmachine) aansluiten bij dit virtuele netwerk.
@@ -32,7 +32,7 @@ Als u extra machines wilt aansluiten bij het virtuele netwerk, moet u eerst het 
 
 ## <a name="public-ports"></a>Openbare havens
 
-Alle knooppunten in een HDInsight-cluster bevinden zich in een Azure Virtual Network en zijn niet rechtstreeks toegankelijk via internet. Een openbare gateway biedt internettoegang tot de volgende poorten, die gebruikelijk zijn voor alle HDInsight-clustertypen.
+Alle knooppunten in een HDInsight-cluster bevinden zich in een Azure Virtual Network. De knooppunten zijn niet rechtstreeks toegankelijk via het internet. Een openbare gateway biedt internettoegang tot de volgende poorten, die gebruikelijk zijn voor alle HDInsight-clustertypen.
 
 | Service | Poort | Protocol | Beschrijving |
 | --- | --- | --- | --- |
@@ -49,13 +49,13 @@ Voor specifieke clustertypen zijn de volgende opties beschikbaar:
 
 | Service | Poort | Protocol | Clustertype | Beschrijving |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |HBase |HBase REST API. Zie [Aan de slag met Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| `Stargate` |443 |HTTPS |HBase |HBase REST API. Zie [Aan de slag met Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Spark REST API. Zie [Apache Spark-taken op afstand verzenden met Apache Livy](spark/apache-spark-livy-rest-interface.md) |
 | Spark Thrift-server |443 |HTTPS |Spark |Spark Thrift-server wordt gebruikt om Hive-query's in te dienen. Zie [Beeline gebruiken met Apache Hive op HDInsight](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Storm web UI. Bekijk [De topologieën van Apache Storm](storm/apache-storm-deploy-monitor-topology-linux.md) implementeren en beheren op HDInsight |
 | Kafka Rest proxy |443 |HTTPS |Kafka |Kafka REST API. Zie [Interactie met Apache Kafka-clusters in Azure HDInsight met behulp van een REST-proxy](kafka/rest-proxy.md) |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Alle diensten die openbaar zijn blootgesteld op het internet moeten worden geverifieerd:
 
@@ -89,7 +89,7 @@ Voorbeelden:
 | --- | --- | --- | --- | --- |
 | Gebruikersinterface namenode |Hoofdknooppunten |30070 |HTTPS |Web-gebruikersinterface om de status weer te geven |
 | Metagegevensservice NameNode |hoofdknooppunten |8020 |Ipc |Metagegevens van bestandssystemen |
-| DataNode |Alle werkknooppunten |30075 |HTTPS |Web-gebruikersinterface om status, logboeken, enz. |
+| DataNode |Alle werkknooppunten |30075 |HTTPS |Web-gebruikersinterface om status, logboeken enzovoort weer te geven. |
 | DataNode |Alle werkknooppunten |30010 |&nbsp; |Gegevensoverdracht |
 | DataNode |Alle werkknooppunten |30020 |Ipc |Metagegevensbewerkingen |
 | Secundaire naamknooppunt |Hoofdknooppunten |50090 |HTTP |Controlepunt voor metagegevens namenode |
@@ -100,7 +100,7 @@ Voorbeelden:
 | --- | --- | --- | --- | --- |
 | Gebruikersinterface van Resource Manager |Hoofdknooppunten |8088 |HTTP |Web-gebruikersinterface voor resourcebeheer |
 | Gebruikersinterface van Resource Manager |Hoofdknooppunten |8090 |HTTPS |Web-gebruikersinterface voor resourcebeheer |
-| Beheerinterface voor resourcebeheer |hoofdknooppunten |8141 |Ipc |Voor inzendingen voor toepassingen (Hive, Hive server, Pig, enz.) |
+| Beheerinterface voor resourcebeheer |hoofdknooppunten |8141 |Ipc |Voor inzendingen voor toepassingen (Hive, Hive-server, pig, enzovoort.) |
 | Resource Manager-planner |hoofdknooppunten |8030 |HTTP |Administratieve interface |
 | Resource Manager-toepassingsinterface |hoofdknooppunten |8050 |HTTP |Adres van de interface voor toepassingenbeheer |
 | NodeManager |Alle werkknooppunten |30050 |&nbsp; |Het adres van de containerbeheerder |

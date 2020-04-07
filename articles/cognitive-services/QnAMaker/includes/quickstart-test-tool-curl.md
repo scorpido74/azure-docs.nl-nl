@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: f3a1a33b2fe859839deec587191b3b3a319c0cf8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4bd483e40e3a85a2934e58abdf46d09b17a33ed4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77495220"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758760"
 ---
 Deze cURL-gebaseerde quickstart leidt je door het krijgen van een antwoord van uw kennisbank.
 
@@ -34,13 +34,13 @@ Deze cURL-gebaseerde quickstart leidt je door het krijgen van een antwoord van u
 Gebruik de kennisbank van de vorige snel te vragen voor een antwoord op basis van metadata.
 
 1. Selecteer op de pagina **Instellingen van** de kennisbank het tabblad **CURL** om een voorbeeldvan de cURL-opdracht te zien die wordt gebruikt om een antwoord uit de kennisbank te genereren.
-1. Kopieer de opdracht naar een bewerkbare omgeving (zoals een tekstbestand) zodat u de opdracht bewerken. Bewerk de vraagwaarde als volgt, `service:qna_maker` zodat de metagegevens van wordt gebruikt als een filter voor de QnA-sets.
+1. Kopieer de opdracht naar een bewerkbare omgeving (zoals een tekstbestand) zodat u de opdracht bewerken. Bewerk de vraagwaarde als volgt, `service:qna_maker` zodat de metagegevens van wordt gebruikt als een filter voor de QnA-paren.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    De vraag is slechts `size`een enkel woord, die kan terugkeren een van de twee QnA sets. De `strictFilters` array vertelt de reactie `qna_maker` te verminderen tot alleen de antwoorden.
+    De vraag is slechts `size`een enkel woord, die kan terugkeren een van de twee QnA paren. De `strictFilters` array vertelt de reactie `qna_maker` te verminderen tot alleen de antwoorden.
 
 1. Het antwoord bevat alleen het antwoord dat voldoet aan de filtercriteria. De volgende cURL-respons is opgemaakt voor leesbaarheid:
 

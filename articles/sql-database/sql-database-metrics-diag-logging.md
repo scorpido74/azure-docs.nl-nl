@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 880072c9865e38e181869506e35968767fa95e8a
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.date: 04/06/2020
+ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387900"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756412"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>Streaming-export van diagnostische telemetrie van Azure SQL Database configureren
 
@@ -454,9 +454,15 @@ Raadpleeg de volgende tabel voor meer informatie over geavanceerde statistieken.
 
 |**Gegevens**|**Metrische weergavenaam**|**Beschrijving**|
 |---|---|---|
-|tempdb_data_size| Tempdb-gegevensbestandsgrootte Kilobytes |Tempdb Data File Size Kilobytes. Niet van toepassing op datawarehouses. Deze statistiek zal beschikbaar zijn voor databases met behulp van de vCore inkoopmodel met 2 vCores en hoger, of 200 DTU en hoger voor DTU-gebaseerde inkoopmodellen. Deze statistiek is momenteel niet beschikbaar voor Hyperscale-databases.|
-|tempdb_log_size| Tempdb Log File Size Kilobytes |Tempdb Log File Size Kilobytes. Niet van toepassing op datawarehouses. Deze statistiek zal beschikbaar zijn voor databases met behulp van de vCore inkoopmodel met 2 vCores en hoger, of 200 DTU en hoger voor DTU-gebaseerde inkoopmodellen. Deze statistiek is momenteel niet beschikbaar voor Hyperscale-databases.|
-|tempdb_log_used_percent| Tempdb Procent Log gebruikt |Tempdb Procent Log gebruikt. Niet van toepassing op datawarehouses. Deze statistiek zal beschikbaar zijn voor databases met behulp van de vCore inkoopmodel met 2 vCores en hoger, of 200 DTU en hoger voor DTU-gebaseerde inkoopmodellen. Deze statistiek is momenteel niet beschikbaar voor Hyperscale-databases.|
+|sqlserver_process_core_percent<sup>1.</sup>|SQL Server-proceskernpercentage|CPU-gebruikspercentage voor het SQL Server-proces, gemeten door het besturingssysteem.|
+|sqlserver_process_memory_percent<sup>1.</sup> |SQL Server-procesgeheugenpercentage|Percentage geheugengebruik voor het SQL Server-proces, gemeten door het besturingssysteem.|
+|tempdb_data_size<sup>2.</sup>| Tempdb-gegevensbestandsgrootte Kilobytes |Tempdb Data File Size Kilobytes.|
+|tempdb_log_size<sup>2.</sup>| Tempdb Log File Size Kilobytes |Tempdb Log File Size Kilobytes.|
+|tempdb_log_used_percent<sup>2.</sup>| Tempdb Procent Log gebruikt |Tempdb Procent Log gebruikt.|
+
+<sup>1</sup> Deze statistiek is beschikbaar voor databases met behulp van het vCore-inkoopmodel met 2 vCores en hoger, of 200 DTU en hoger voor DTU-gebaseerde inkoopmodellen. 
+
+<sup>2</sup> Deze statistiek is beschikbaar voor databases met behulp van het vCore-inkoopmodel met 2 vCores en hoger, of 200 DTU en hoger voor DTU-gebaseerde inkoopmodellen. Deze statistiek is momenteel niet beschikbaar voor Hyperscale-databases of gegevensmagazijnen.
 
 ### <a name="basic-logs"></a>Basislogboeken
 

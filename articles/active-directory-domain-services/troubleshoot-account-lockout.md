@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 04/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 2e274aa353f6c3e485ae10a6a67ee2940eb88b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246314"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743446"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Problemen met accountvergrendeling oplossen met een beheerd Azure AD Domain Services-domein
 
@@ -33,11 +33,11 @@ De standaarddrempelwaarden voor accountvergrendeling worden geconfigureerd met b
 
 ### <a name="fine-grained-password-policy"></a>Fijnkorrelig wachtwoordbeleid
 
-Met fijnmazig wachtwoordbeleid (FGPP's) u specifieke beperkingen toepassen voor het beleid voor wachtwoord- en accountvergrendeling op verschillende gebruikers in een domein. FGPP heeft alleen invloed op gebruikers die zijn gemaakt in Azure AD DS. Cloudgebruikers en domeingebruikers die vanuit Azure AD zijn gesynchroniseerd met het beheerde Azure AD-domein, worden niet beïnvloed door het wachtwoordbeleid.
+Met fijnmazig wachtwoordbeleid (FGPP's) u specifieke beperkingen toepassen voor het beleid voor wachtwoord- en accountvergrendeling op verschillende gebruikers in een domein. FGPP heeft alleen gevolgen voor gebruikers binnen een door Azure AD DS beheerd domein. Cloudgebruikers en domeingebruikers die vanuit Azure AD zijn gesynchroniseerd met het beheerde Azure AD-domein, worden alleen beïnvloed door het wachtwoordbeleid binnen Azure AD DS. Hun accounts in Azure AD of een on-premises directory worden niet beïnvloed.
 
 Beleidsregels worden gedistribueerd via groepskoppeling in het door Azure AD DS beheerde domein en alle wijzigingen die u aanbrengt, worden toegepast bij de volgende aanmelding van de gebruiker. Als u het beleid wijzigt, wordt een gebruikersaccount dat al is vergrendeld, niet ontgrendeld.
 
-Zie [Beleid voor wachtwoord- en accountuitsluiting configureren][configure-fgpp]voor meer informatie over fijnkorrelig wachtwoordbeleid.
+Zie [Wachtwoord- en accountuitsluitingsbeleid configureren][configure-fgpp]voor meer informatie over fijnmazige wachtwoordbeleidsregels en de verschillen tussen gebruikers die rechtstreeks zijn gemaakt in Azure AD DS versus gesynchroniseerd vanuit Azure AD.
 
 ## <a name="common-account-lockout-reasons"></a>Algemene redenen voor het vergrendelen van een account
 

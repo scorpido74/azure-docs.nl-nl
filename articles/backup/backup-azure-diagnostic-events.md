@@ -3,12 +3,12 @@ title: Diagnostische instellingen gebruiken voor Vaults van Recovery Services
 description: Een artikel waarin wordt beschreven hoe de oude en nieuwe diagnostische gebeurtenissen voor Azure Backup kunnen worden gebruikt
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d10bedf3818559971eff12624152d0e797f6c3cc
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136936"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672783"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Diagnostische instellingen gebruik voor Recovery Services-kluizen
 
@@ -39,28 +39,60 @@ Azure Backup sluit zich aan op de Azure Log Analytics-roadmap en stelt u nu in s
 
 Ga als u uw kluisdiagnosegegevens naar LA sturen:
 
-1.  Navigeer naar uw kluis en klik op **Diagnostische instellingen**. Klik **op + Diagnostische instelling toevoegen**.
-2.  Geef een naam aan de instelling Diagnostische gegevens.
-3.  Schakel het selectievakje **Verzenden naar logboekanalyse** in en selecteer een Logboekanalysewerkruimte.
-4.  Selecteer **Resourcespecifiek** in de schakeloptie en controleer de volgende zes gebeurtenissen - **CoreAzureBackup**, **AddonAzureBackupAlerts**, **AddonAzureBackupProtectedInstance**, **AddonAzureBackupJobs**, **AddonAzureBackupPolicy**en **AddonAzureBackupStorage**.
-5.  Klik op **Opslaan**.
+1.    Navigeer naar uw kluis en klik op **Diagnostische instellingen**. Klik **op + Diagnostische instelling toevoegen**.
+2.    Geef een naam aan de instelling Diagnostische gegevens.
+3.    Schakel het selectievakje **Verzenden naar logboekanalyse** in en selecteer een Logboekanalysewerkruimte.
+4.    Selecteer **Resourcespecifiek** in de schakeloptie en controleer de volgende zes gebeurtenissen - **CoreAzureBackup**, **AddonAzureBackupAlerts**, **AddonAzureBackupProtectedInstance**, **AddonAzureBackupJobs**, **AddonAzureBackupPolicy**en **AddonAzureBackupStorage**.
+5.    Klik op **Opslaan**.
 
 ![Resourcespecifieke modus](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
 Zodra gegevens in de LA Workspace worden ingevoerd, worden er speciale tabellen voor elk van deze gebeurtenissen gemaakt in uw werkruimte. U een van deze tabellen rechtstreeks opvragen en indien nodig ook joins of vakbonden tussen deze tabellen uitvoeren.
 
 > [!IMPORTANT]
-> De bovenstaande zes gebeurtenissen, namelijk CoreAzureBackup, AddonAzureBackupAlerts, AddonAzureBackupProtectedInstance, AddonAzureBackupJobs, AddonAzureBackupPolicy en AddonAzureBackupStorage, worden **alleen** ondersteund in resourcespecifieke modus. **Houd er rekening mee dat als u gegevens probeert te verzenden voor deze zes gebeurtenissen in de Azure Diagnostics Mode, er geen gegevens naar de LA Workspace worden verzonden.**
+> De bovenstaande zes gebeurtenissen, namelijk CoreAzureBackup, AddonAzureBackupAlerts, AddonAzureBackupProtectedInstance, AddonAzureBackupJobs, AddonAzureBackupPolicy en AddonAzureBackupStorage, worden **alleen** ondersteund in resourcespecifieke modus in [back-uprapporten.](https://docs.microsoft.com/azure/backup/configure-reports) **Houd er rekening mee dat als u gegevens probeert te verzenden voor deze zes gebeurtenissen in de Azure Diagnostics Mode, er geen gegevens zichtbaar zijn in back-uprapporten.**
 
 ## <a name="legacy-event"></a>Legacy-evenement
 
 Traditioneel zijn alle back-upgerelateerde diagnostische gegevens voor een kluis opgenomen in één gebeurtenis genaamd 'AzureBackupReport'. De zes hierboven beschreven gebeurtenissen zijn in wezen een ontleding van alle gegevens in AzureBackupReport. 
 
-Momenteel blijven we de AzureBackupReport-gebeurtenis ondersteunen voor achterwaartse compatibiliteit, in gevallen waarin gebruikers bestaande aangepaste query's op deze gebeurtenis hebben, bijvoorbeeld aangepaste logboekwaarschuwingen, aangepaste visualisaties enz. We raden echter **aan om zo vroeg mogelijk naar de nieuwe gebeurtenissen te gaan,** omdat dit de gegevens veel gemakkelijker maakt om mee te werken in logboekquery's, een betere vindbaarheid van schema's en hun structuur biedt, de prestaties verbetert in zowel de innamelaten als de querytijden. **Ondersteuning voor het gebruik van de Azure Diagnostics-modus wordt uiteindelijk geleidelijk afgeschaft en dus kan het kiezen van de nieuwe gebeurtenissen u helpen om complexe migraties op een later tijdstip te voorkomen.**
+Momenteel blijven we de AzureBackupReport-gebeurtenis ondersteunen voor achterwaartse compatibiliteit, in gevallen waarin gebruikers bestaande aangepaste query's op deze gebeurtenis hebben, bijvoorbeeld aangepaste logboekwaarschuwingen, aangepaste visualisaties enz. We raden echter **aan om zo vroeg mogelijk naar de nieuwe [gebeurtenissen](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users) te gaan,** omdat dit de gegevens veel gemakkelijker maakt om mee te werken in logboekquery's, een betere vindbaarheid van schema's en hun structuur biedt, de prestaties verbetert in zowel de innamelaten als de querytijden. 
 
-Het ingebouwde beleid van Azure Backup gebruiken om een nieuwe diagnostische instelling toe te voegen aan de 6 nieuwe gebeurtenissen, voor al uw kluizen in een bepaald bereik: [Vault Diagnostics Settings op schaal configureren](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
+**De verouderde gebeurtenis in de Azure Diagnostics-modus wordt uiteindelijk afgeschaft en dus kan het kiezen van de nieuwe gebeurtenissen u helpen om complexe migraties op een later tijdstip te voorkomen.** Onze [rapportageoplossing](https://docs.microsoft.com/azure/backup/configure-reports) die gebruikmaakt van Log Analytics, zal ook stoppen met het ondersteunen van gegevens van de legacy-gebeurtenis.
 
-U ervoor kiezen om afzonderlijke diagnostische instellingen voor AzureBackupReport en de zes nieuwe gebeurtenissen te maken, totdat u al uw aangepaste query's hebt gemigreerd om gegevens uit de nieuwe tabellen te gebruiken. De onderstaande afbeelding toont een voorbeeld van een kluis met twee diagnostische instellingen. De eerste instelling, met de naam **Instelling1,** verzendt gegevens van de gebeurtenis AzureBackupReport naar een LA Workspace in de AzureDiagnostics-modus. De tweede instelling, met de naam **Instelling2,** verzendt gegevens van de zes nieuwe Azure Backup-gebeurtenissen naar een LA Workspace in de modus Resourcespecifiek.
+### <a name="steps-to-move-to-new-diagnostics-settings-to-log-analytics-workspace"></a>Stappen om over te gaan naar nieuwe diagnostische instellingen (naar Log Analytics-werkruimte)
+
+1. Bepaal welke kluizen gegevens naar de Log Analytics Workspace(s) verzenden met behulp van de legacy-gebeurtenis en tot welke abonnementen ze behoren. Voer de onderstaande werkruimten uit om deze kluizen en abonnementen te identificeren:
+
+    ````Kusto
+    let RangeStart = startofday(ago(3d));
+    let VaultUnderAzureDiagnostics = (){
+        AzureDiagnostics
+        | where TimeGenerated >= RangeStart | where Category == "AzureBackupReport" and OperationName == "Vault" and SchemaVersion_s == "V2"
+        | summarize arg_max(TimeGenerated, *) by ResourceId    
+        | project ResourceId, Category};
+    let VaultUnderResourceSpecific = (){
+        CoreAzureBackup
+        | where TimeGenerated >= RangeStart | where OperationName == "Vault" 
+        | summarize arg_max(TimeGenerated, *) by ResourceId
+        | project ResourceId, Category};
+        // Some Workspaces will not have AzureDiagnostics Table, hence you need to use isFuzzy
+    let CombinedVaultTable = (){
+        CombinedTable | union isfuzzy = true 
+        (VaultUnderAzureDiagnostics() ),
+        (VaultUnderResourceSpecific() )
+        | distinct ResourceId, Category};
+    CombinedVaultTable | where Category == "AzureBackupReport"
+    | join kind = leftanti ( 
+    CombinedVaultTable | where Category == "CoreAzureBackup"
+    ) on ResourceId
+    | parse ResourceId with * "SUBSCRIPTIONS/" SubscriptionId:string "/RESOURCEGROUPS" * "MICROSOFT.RECOVERYSERVICES/VAULTS/" VaultName:string
+    | project ResourceId, SubscriptionId, VaultName
+    ````
+
+2. Gebruik het [ingebouwde Azure Policy](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics) van Azure Backup om een nieuwe diagnostische instelling toe te voegen voor alle kluizen in een opgegeven bereik. Met dit beleid wordt een nieuwe diagnostische instelling toegevoegd aan de kluizen die geen diagnostische instelling hebben (of) alleen een verouderde diagnostische instelling hebben. Dit beleid kan worden toegewezen aan een volledig abonnement of resourcegroep tegelijk. Houd er rekening mee dat u 'Eigenaar' toegang nodig hebt tot elk abonnement waarvoor het beleid is toegewezen.
+
+U ervoor kiezen om afzonderlijke diagnostische instellingen voor AzureBackupReport en de zes nieuwe gebeurtenissen te hebben, totdat u al uw aangepaste query's hebt gemigreerd om gegevens uit de nieuwe tabellen te gebruiken. De onderstaande afbeelding toont een voorbeeld van een kluis met twee diagnostische instellingen. De eerste instelling, met de naam **Instelling1,** verzendt gegevens van de gebeurtenis AzureBackupReport naar een LA Workspace in de AzureDiagnostics-modus. De tweede instelling, met de naam **Instelling2,** verzendt gegevens van de zes nieuwe Azure Backup-gebeurtenissen naar een LA Workspace in de modus Resourcespecifiek.
 
 ![Twee instellingen](./media/backup-azure-diagnostics-events/two-settings-example.png)
 

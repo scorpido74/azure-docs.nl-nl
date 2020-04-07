@@ -3,12 +3,12 @@ title: Meer informatie over azure service fabric-toepassingsbeveiliging
 description: Een overzicht van hoe u microservices-applicaties veilig uitvoeren op Service Fabric. Leer hoe u services en opstartscript uitvoert onder verschillende beveiligingsaccounts, gebruikers verifieert en autoriseert, toepassingsgeheimen beheert, servicecommunicatie beveiligt, een API-gateway gebruikt en in rust toepassingsgegevens beveiligt.
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9b4a1209838bdd5eee401b0defb01839b5cf684
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452256"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756234"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric-toepassing en servicebeveiliging
 Een microservices-architectuur kan [veel voordelen opleveren.](service-fabric-overview-microservices.md) Het beheer van de beveiliging van microservices is echter een uitdaging en anders dan het beheren van traditionele monolithische applicatiebeveiliging. 
@@ -20,7 +20,7 @@ Dit artikel is geen gids voor de beveiliging van microservices, er zijn veel van
 ## <a name="authentication-and-authorization"></a>Verificatie en autorisatie
 Het is vaak noodzakelijk dat resources en API's die door een service worden blootgesteld, worden beperkt tot bepaalde vertrouwde gebruikers of clients. Verificatie is het proces om de identiteit van een gebruiker betrouwbaar vast te stellen.  Autorisatie is het proces dat API's of services beschikbaar maakt voor sommige geverifieerde gebruikers, maar niet voor anderen.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 De eerste stap naar het maken van vertrouwensbeslissingen op API-niveau is verificatie. Verificatie is het proces om de identiteit van een gebruiker betrouwbaar vast te stellen.  In microservicescenario's wordt verificatie meestal centraal behandeld. Als u een API-gateway gebruikt, u verificatie naar de gateway [verwijderen.](/azure/architecture/patterns/gateway-offloading) Als u deze aanpak gebruikt, moet u ervoor zorgen dat de afzonderlijke services niet rechtstreeks kunnen worden bereikt (zonder de API-gateway), tenzij er extra beveiliging is om berichten te verifiëren, ongeacht of ze afkomstig zijn van de gateway of niet.
 
 Als services rechtstreeks kunnen worden geopend, kan een verificatieservice zoals Azure Active Directory of een speciale verificatiemicroservice die fungeert als een beveiligingstokenservice (STS) worden gebruikt om gebruikers te verifiëren. Vertrouwensbeslissingen worden gedeeld tussen services met beveiligingstokens of cookies. 
@@ -33,7 +33,7 @@ Na verificatie moeten services gebruikerstoegang autoriseren of bepalen wat een 
 [ASP.NET Core-autorisatie](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) kan worden uitgevoerd op basis van de rollen van gebruikers of op basis van aangepaste beleidsregels, waaronder het inspecteren van claims of andere heuristieken.
 
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>Toegang beperken en beveiligen met een API-gateway
-Cloudtoepassingen hebben meestal een gateway in de front-end nodig om een centraal ingangspunt te bieden voor gebruikers, apparaten of andere toepassingen. Een [API-gateway](/azure/architecture/microservices/gateway) zit tussen clients en services en is het toegangspunt tot alle services die uw toepassing levert. Het fungeert als een omgekeerde proxy, routering verzoeken van clients naar diensten. Het kan ook verschillende cross-cutting taken uitvoeren, zoals authenticatie en autorisatie, SSL-beëindiging en tariefbeperking. Als u geen gateway implementeert, moeten clients aanvragen rechtstreeks naar front-endservices verzenden.
+Cloudtoepassingen hebben meestal een gateway in de front-end nodig om een centraal ingangspunt te bieden voor gebruikers, apparaten of andere toepassingen. Een [API-gateway](/azure/architecture/microservices/gateway) zit tussen clients en services en is het toegangspunt tot alle services die uw toepassing levert. Het fungeert als een omgekeerde proxy, routering verzoeken van clients naar diensten. Het kan ook verschillende cross-cutting taken uitvoeren, zoals authenticatie en autorisatie, TLS-beëindiging en tariefbeperking. Als u geen gateway implementeert, moeten clients aanvragen rechtstreeks naar front-endservices verzenden.
 
 In Service Fabric kan een gateway elke stateloze service zijn, zoals een [ASP.NET Core-toepassing](service-fabric-reliable-services-communication-aspnetcore.md)of een andere service die is ontworpen voor verkeersinformatie, zoals [Traefik,](https://docs.traefik.io/) [Event Hubs,](https://docs.microsoft.com/azure/event-hubs/) [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)of Azure API [Management.](https://docs.microsoft.com/azure/api-management)
 

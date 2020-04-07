@@ -2,13 +2,13 @@
 title: Resourcetypen van extensies
 description: Lijsten met de Azure-brontypen worden gebruikt om de mogelijkheden van andere resourcetypen uit te breiden.
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: c14cf6fec2da11534a7358599c79961a3258470b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 3a3fbc531750bec4b16e38f1fe79f613c1b94f5e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76515365"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754870"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Resourcetypen die de mogelijkheden van andere resources uitbreiden
 
@@ -81,7 +81,6 @@ Een extensiebron is een resource die bijdraagt aan de mogelijkheden van een ande
 - Microsoft.GuestConfiguration/software
 - Microsoft.GuestConfiguration/softwareUpdateProfile
 - Microsoft.GuestConfiguration/softwareUpdates
-- microsoft.insights/automatedExportSettings
 - microsoft.insights/baseline
 - microsoft.insights/calculatebaseline
 - microsoft.insights/dataCollectionRuleAssociations
@@ -114,7 +113,7 @@ Een extensiebron is een resource die bijdraagt aan de mogelijkheden van een ande
 - Microsoft.PolicyInsights/policyTrackedResources
 - Microsoft.PolicyInsights/remediations
 - Microsoft.RecoveryServices/backupProtectedItems
-- Microsoft.RecoveryServices/replicatieGeschiktheidResultaten  
+- Microsoft.RecoveryServices/replicatieGeschiktheidResultaten    
 - Microsoft.ResourceHealth/availabilityStatussen
 - Microsoft.ResourceHealth/childAvailabilityStatussen
 - Microsoft.ResourceHealth/childResources
@@ -131,7 +130,6 @@ Een extensiebron is een resource die bijdraagt aan de mogelijkheden van een ande
 - Microsoft.Security/assessments
 - Microsoft.Security/complianceResultaten
 - Microsoft.Security/dataCollectionAgents
-- Microsoft.Security/dataCollectionResults
 - Microsoft.Security/deviceSecurityGroups
 - Microsoft.Security/networkData
 - Microsoft.Security/serverVulnerabilityAssessments
@@ -141,13 +139,14 @@ Een extensiebron is een resource die bijdraagt aan de mogelijkheden van een ande
 - Microsoft.SecurityInsights/bladwijzers
 - Microsoft.SecurityInsights/cases
 - Microsoft.SecurityInsights/dataConnectors
+- Microsoft.SecurityInsights/dataConnectorsCheckRequirements
 - Microsoft.SecurityInsights/entiteiten
 - Microsoft.SecurityInsights/entityQueries
+- Microsoft.SecurityInsights/incidenten
 - Microsoft.SecurityInsights/officeConsents
 - Microsoft.SecurityInsights/instellingen
 - Microsoft.SoftwarePlan/hybridUseBenefits
 - Microsoft.Subscription/Abonnement maken
-- microsoft.support/createsupportticket
 - microsoft.support/supporttickets
 - Microsoft.WorkloadMonitor/componenten
 - Microsoft.WorkloadMonitor/monitorInstanties

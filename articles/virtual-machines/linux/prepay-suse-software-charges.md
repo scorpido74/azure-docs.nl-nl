@@ -7,14 +7,14 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 3bb7a62433993f1af26b1ce8bcb4ed258c34623c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e05920e495dd4aa14be6c849590a37a2bafa33f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75973136"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757226"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Vooruitbetalen voor Azure-softwareabonnementen
 
@@ -38,6 +38,7 @@ De betaalmethode voor het abonnement wordt de aanloopkosten voor de reservering 
 4. Selecteer een bereik. Het bereik kan betrekking hebben op één abonnement of meerdere abonnementen (gedeelde scope).
     - Eén abonnement - De abonnementskorting wordt toegepast op het overeenkomenvan het gebruik in het abonnement.
     - Gedeeld - De abonnementskorting wordt toegepast op overeenkomende exemplaren in een abonnement in uw factureringscontext. Voor zakelijke klanten is de factureringscontext de inschrijving en omvat alle abonnementen in de inschrijving. Voor een individueel abonnement met klanten met een vergoeding per gebruik, is de factureringscontext alle afzonderlijke abonnementen met abonnementen op betalen per gebruik die door de accountbeheerder zijn gemaakt.
+    - Enkele resourcegroep : hiermee past u alleen de reserveringskorting toe op de overeenkomende resources in de geselecteerde resourcegroep.
 5. Selecteer een product om de VM-grootte en het afbeeldingstype te kiezen. De korting is alleen van toepassing op de geselecteerde VM-grootte.
 6. Selecteer een termijn van één jaar of drie jaar.
 7. Kies een aantal, het aantal prepaid VM-exemplaren dat de factureringskorting kan krijgen.

@@ -2,13 +2,13 @@
 title: Richtlijnen voor documentindeling importeren - QnA Maker
 description: Begrijpen hoe de typen URL's worden gebruikt om QnA-sets te importeren en te maken.
 ms.topic: reference
-ms.date: 01/02/2020
-ms.openlocfilehash: 6a954f2fd607b70c6db256ab6dcc1dbcd7a5a473
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 1e006520ce5c61f2da3f425af2332b0d41cc3881
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651837"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754903"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>Richtlijnen voor geïmporteerde documenten en URL's opmaken
 
@@ -20,6 +20,8 @@ Na het importeren van een bestand of URL converteert en slaat QnA Maker uw inhou
 
 Als u uw inhoud rechtstreeks in uw kennisbank toevoegt of bewerkt, gebruikt u **opmaak opmaak** om inhoud met rijke tekst te maken of wijzigt u de markeringsindeling inhoud die al in het antwoord staat. QnA Maker ondersteunt een groot deel van de markdown-indeling om rijke tekstmogelijkheden aan uw inhoud te bieden. De clienttoepassing, zoals een chatbot, ondersteunt mogelijk echter niet dezelfde set markdown-indelingen. Het is belangrijk om de weergave van antwoorden van de clienttoepassing te testen.
 
+Bekijk een volledige lijst met [inhoudstypen en voorbeelden.](./Concepts/content-types.md#file-and-url-data-types)
+
 ## <a name="basic-document-formatting"></a>Basisdocumentopmaak
 
 QnA Maker identificeert secties en subsecties en relaties in het bestand op basis van visuele aanwijzingen zoals:
@@ -28,12 +30,6 @@ QnA Maker identificeert secties en subsecties en relaties in het bestand op basi
 * Tekenstijl
 * Nummering
 * kleuren
-
-|Voorbeelden voor documenten|
-|--|
-||
-
-
 
 ## <a name="product-manuals"></a>Producthandleidingen
 
@@ -116,7 +112,8 @@ Het importeren van een kennisbank vervangt de inhoud van de bestaande kennisbank
 * Het eerste teken van de rubriek moet worden gekapitaliseerd.
 * Beëindig een kop niet met `?`een vraagteken.
 
+**Voorbeelddocumenten**:<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso Voordelen (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso-voordelen (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 
-|Voorbeelden voor documenten|
-|--|
-||
+## <a name="next-steps"></a>Volgende stappen
+
+Bekijk een volledige lijst met [inhoudstypen en voorbeelden](./Concepts/content-types.md#file-and-url-data-types)

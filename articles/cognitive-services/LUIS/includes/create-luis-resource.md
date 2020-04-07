@@ -6,30 +6,38 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 04/06/2020
 ms.author: dapine
-ms.openlocfilehash: a765ac27936da9da5a2f41464c17491e3561f44b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88289686e5b091ef3ec309ee9b54ee0f895c8c22
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73465918"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754369"
 ---
-## <a name="create-a-luis-resource"></a>Een LUIS-bron maken
+<a name="create-luis-resources"></a>
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com)
-1. Klik [op **Taalverstaan maken** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+## <a name="create-luis-resources-in-azure-portal"></a>LUIS-resources maken in Azure-portal
+
+1. Gebruik [deze koppeling](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) om LUIS-resources te maken in de Azure-portal.
+
 1. Voer alle vereiste instellingen in:
 
-    |Instelling|Waarde|
+    |Name|Doel|
     |--|--|
-    |Name|Gewenste naam (2-64 tekens)|
-    |Abonnement|Passend abonnement selecteren|
-    |Locatie|Selecteer een nabijgelegen en beschikbare locatie|
-    |Prijscategorie|`F0`- de minimale prijscategorie|
-    |Resourcegroep|Een beschikbare resourcegroep selecteren|
+    |Abonnementsnaam| het abonnement dat wordt gefactureerd voor de resource.|
+    |Resourcegroep| Een aangepaste resourcegroepnaam die u kiest of maakt. Met resourcegroepen u Azure-bronnen groeperen voor toegang en beheer.|
+    |Name| Een aangepaste naam die u kiest en die wordt gebruikt als uw aangepaste subdomein voor uw ontwerp- en voorspellingseindpuntquery's.|
+    |Ontwerplocatie|De regio die aan uw model is gekoppeld.|
+    |Prijscategorie voor het ontwerpen|De prijscategorie bepaalt de maximale transactie per seconde en maand.|
+    |Runtime-locatie|De regio die is gekoppeld aan de runtime van het gepubliceerde voorspellingseindpunt.|
+    |Prijscategorie runtime|De prijscategorie bepaalt de maximale transactie per seconde en maand.|
 
-1. Klik **op Maken** en wacht tot de resource is gemaakt. Nadat deze is gemaakt, navigeert u naar de resourcepagina.
-1. Verzamel geconfigureerde `endpoint` en een API-sleutel, zie [het verzamelen van vereiste parameters.](#gathering-required-parameters)
+    > [!div class="mx-imgBorder"]
+    > [![De bron voor taalbegrip maken](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png)](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png#lightbox)
 
-[!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
+1. Klik **op Controleren + maken** en wachten tot de resource is gemaakt.
+1. Nadat beide resources zijn gemaakt, nog steeds in de Azure-portal, selecteert u de nieuwe ontwerpbron en **start Quickstarts** om de **URL** en **de sleutel** voor het ontwerpen van het ontwerp programmatisch te krijgen.
+
+> [!TIP]
+> Als u de resources wilt gebruiken, [wijst u de resources toe](../luis-how-to-azure-subscription.md#assign-an-authoring-resource-in-the-luis-portal-for-all-apps)in de LUIS-portal .

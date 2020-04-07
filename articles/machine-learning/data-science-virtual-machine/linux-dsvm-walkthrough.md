@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 7292064a1df8aa9bfffcd9a19a03f7b332c0615e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 1298d5fe1d7407e836f454c2130a913dde6f8eec
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632734"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755145"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data science met een Linux Data Science Virtual Machine in Azure
 
@@ -39,7 +39,7 @@ Voordat u een Linux DSVM gebruiken, moet u de volgende vereisten hebben:
 De [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) dataset is een relatief kleine set gegevens die 4.601 voorbeelden bevat. De gegevensset is een handige grootte voor het aantonen van enkele van de belangrijkste functies van de DSVM, omdat het houdt de resource vereisten bescheiden.
 
 > [!NOTE]
-> Deze walkthrough is gemaakt met behulp van een D2 v2-formaat Linux DSVM (CentOS Edition). U een DSVM van dit formaat gebruiken om de procedures te voltooien die in deze walkthrough worden gedemonstreerd.
+> Deze walkthrough is gemaakt met behulp van een D2 v2-formaat Linux DSVM (Ubuntu 18.04 Edition). U een DSVM van dit formaat gebruiken om de procedures te voltooien die in deze walkthrough worden gedemonstreerd.
 
 Als u meer opslagruimte nodig hebt, u extra schijven maken en deze aan uw DSVM koppelen. De schijven maken gebruik van permanente Azure-opslag, zodat hun gegevens behouden blijven, zelfs als de server opnieuw is ingericht vanwege het formaat of wordt afgesloten. Als u een schijf wilt toevoegen en aan uw DSVM wilt koppelen, voert u de stappen uit in [Een schijf toevoegen aan een Linux-vm.](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) De stappen voor het toevoegen van een schijf gebruiken de Azure CLI, die al is geïnstalleerd op de DSVM. U de stappen volledig uitvoeren vanuit de DSVM zelf. Een andere optie om de opslag te vergroten, is het gebruik van [Azure Files.](../../storage/files/storage-how-to-use-files-linux.md)
 

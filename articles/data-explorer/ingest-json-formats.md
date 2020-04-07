@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: d293b76e004d693813a074cb8551a86cb3c0bec2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcf6a0ccfc04890052f1a4bab19f97ee4e55f87a
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76772336"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756627"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>Opgenomen JSON-opgemaakte voorbeeldgegevens in Azure Data Explorer
 
@@ -82,7 +82,7 @@ Gebruik Kusto-querytaal om gegevens in te nemen in een ruwe JSON-indeling.
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 Gebruik C# om gegevens in raw JSON-indeling in te nemen.
 
@@ -232,7 +232,7 @@ In dit voorbeeld neemt u JSON records op. Elke JSON-eigenschap wordt toegewezen 
 
     Het bestand 'simple.json' heeft een paar line-gescheiden JSON records. De indeling `json`is , en de toewijzing die `FlatEventMapping` wordt gebruikt in de inname opdracht is de u hebt gemaakt.
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. Maak een nieuwe tabel, met een vergelijkbaar schema als de JSON-invoergegevens. We gebruiken deze tabel voor alle volgende voorbeelden en innameopdrachten. 
 
@@ -337,7 +337,7 @@ Gegevens innemen `Events` in de tabel.
 .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/multilined.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=FlatEventMapping)
 ```
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 Gegevens innemen `Events` in de tabel.
 
@@ -427,7 +427,7 @@ Arraygegevenstypen zijn een geordende verzameling waarden. Inname van een JSON-a
 1. Gegevens innemen `RawEvents` in de tabel.
 
     ```Kusto
-    .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
+    .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
     ```
 
 1. Gegevens in `Events` de tabel bekijken.
@@ -436,7 +436,7 @@ Arraygegevenstypen zijn een geordende verzameling waarden. Inname van een JSON-a
     Events
     ```
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. Maak een updatefunctie waarmee `records` de verzameling wordt uitgebreid, zodat elke waarde `mv-expand` in de verzameling een aparte rij ontvangt, met behulp van de operator. We gebruiken de `RawEvents` tabel als `Events` brontabel en als doeltabel.   
 
@@ -584,7 +584,7 @@ Woordenboek gestructureerde JSON bevat sleutel-waarde paren. Json-records onderg
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=KeyValueEventMapping)
     ```
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. Maak een JSON-toewijzing.
 

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/09/2020
 ms.author: glenga
-ms.openlocfilehash: d53c41752d57a27ebea9bd60f7e723dab1e7308a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 749b733039e89421ac33ef76a11f3291b296e718
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78190840"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673203"
 ---
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
 
@@ -25,6 +25,13 @@ func start
 ```
 npm install
 npm start
+```
+::: zone-end
+
+::: zone pivot="programming-language-java"
+```
+mvn clean package 
+mvn azure-functions:run
 ```
 ::: zone-end
 
@@ -44,12 +51,12 @@ Http Functions:
 </pre>
 
 >[!NOTE]  
-> Als HttpExample niet wordt weergegeven zoals hieronder wordt weergegeven, hebt u de host waarschijnlijk gestart vanuit de *map HttpExample.* Gebruik in dat geval **Ctrl**+**C** om de host te stoppen, navigeer naar de bovenliggende *map LocalFunctionProj* en voer de vorige opdracht opnieuw uit.
+> Als HttpExample niet wordt weergegeven zoals hieronder wordt weergegeven, hebt u de host waarschijnlijk van buiten de hoofdmap van het project gestart. Gebruik in dat geval **Ctrl**+**C** om de host te stoppen, naar de hoofdmap van het project te navigeren en de vorige opdracht opnieuw uit te voeren.
 
 Kopieer de URL `HttpExample` van uw functie vanuit deze uitvoer `?name=<your-name>`naar een browser `http://localhost:7071/api/HttpExample?name=Functions`en sluit de querytekenreeks toe, waardoor de volledige URL zo leuk is . De browser moet een `Hello Functions`bericht weergeven als:
 
 ![Resultaat van de functie lokaal in de browser wordt uitgevoerd](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
 
-De terminal waarin `func start` u liep toont ook log uitvoer als u verzoeken.
+De terminal waarin u uw project hebt gestart, toont ook de uitvoer van logboeken terwijl u aanvragen doet.
 
 Wanneer u klaar bent, gebruikt `y` u **Ctrl**+**C** en kiest u ervoor om de hosthost van de functies te stoppen.

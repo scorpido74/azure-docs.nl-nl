@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 44d7b4196e53bfcc89105236e446c74d50e7812a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0c30294f2ca139a602074a980810e7c6737c4e2d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633122"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742982"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Een database beveiligen in Azure Synapse
 
@@ -81,9 +81,9 @@ Het serverbeheerdersaccount waarmee u verbinding maakt is lid van db_owner, die 
 
 Er zijn manieren om verder te beperken wat een gebruiker kan doen in de database:
 
-* Met granulaire [machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver15) u bepalen welke bewerkingen u uitvoeren op afzonderlijke kolommen, tabellen, weergaven, schema's, procedures en andere objecten in de database. Gebruik gedetailleerde machtigingen om de meeste controle te hebben en de minimale machtigingen toe te kennen die nodig zijn.
-* [Databaserollen](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15) anders dan db_datareader en db_datawriter kunnen worden gebruikt om krachtigere gebruikersaccounts van toepassingen of minder krachtige beheeraccounts te maken. De ingebouwde vaste databaserollen bieden een eenvoudige manier om machtigingen te verlenen, maar kunnen resulteren in het verlenen van meer machtigingen dan nodig is.
-* [Opgeslagen procedures](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine?redirectedfrom=MSDN&view=sql-server-ver15) kunnen worden gebruikt om de acties die op de database kunnen worden uitgevoerd te beperken.
+* Met granulaire [machtigingen](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) u bepalen welke bewerkingen u uitvoeren op afzonderlijke kolommen, tabellen, weergaven, schema's, procedures en andere objecten in de database. Gebruik gedetailleerde machtigingen om de meeste controle te hebben en de minimale machtigingen toe te kennen die nodig zijn.
+* [Databaserollen](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) anders dan db_datareader en db_datawriter kunnen worden gebruikt om krachtigere gebruikersaccounts van toepassingen of minder krachtige beheeraccounts te maken. De ingebouwde vaste databaserollen bieden een eenvoudige manier om machtigingen te verlenen, maar kunnen resulteren in het verlenen van meer machtigingen dan nodig is.
+* [Opgeslagen procedures](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kunnen worden gebruikt om de acties die op de database kunnen worden uitgevoerd te beperken.
 
 In het volgende voorbeeld wordt leestoegang tot een door de gebruiker gedefinieerd schema toegekend.
 
@@ -92,13 +92,13 @@ In het volgende voorbeeld wordt leestoegang tot een door de gebruiker gedefiniee
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Het beheren van databases en logische servers vanuit de Azure-portal of het gebruik van de Azure Resource Manager API wordt beheerd door de roltoewijzingen van uw portalgebruikersaccount. Zie [Op rollen gebaseerd toegangsbeheer in Azure-portal](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure)voor meer informatie.
+Het beheren van databases en logische servers vanuit de Azure-portal of het gebruik van de Azure Resource Manager API wordt beheerd door de roltoewijzingen van uw portalgebruikersaccount. Zie [Op rollen gebaseerd toegangsbeheer in Azure-portal](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor meer informatie.
 
 ## <a name="encryption"></a>Versleuteling
 
 Transparent Data Encryption (TDE) helpt beschermen tegen de dreiging van kwaadaardige activiteiten door uw gegevens in rust te versleutelen en te decoderen. Wanneer u uw database versleutelt, worden gekoppelde back-ups en transactielogboekbestanden versleuteld zonder dat er wijzigingen in uw toepassingen nodig zijn. TDE versleutelt de opslag van een hele database met behulp van een symmetrische sleutel (de zogeheten databaseversleutelingssleutel).
 
-In SQL Database wordt de databaseversleutelingssleutel beschermd door een ingebouwd servercertificaat. Het ingebouwde servercertificaat is uniek voor elke SQL Database-server. Microsoft draait deze certificaten automatisch ten minste om de 90 dagen. Het gebruikte encryptie-algoritme is AES-256. Zie [Transparante gegevensversleuteling](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15)voor een algemene beschrijving van TDE.
+In SQL Database wordt de databaseversleutelingssleutel beschermd door een ingebouwd servercertificaat. Het ingebouwde servercertificaat is uniek voor elke SQL Database-server. Microsoft draait deze certificaten automatisch ten minste om de 90 dagen. Het gebruikte encryptie-algoritme is AES-256. Zie [Transparante gegevensversleuteling](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor een algemene beschrijving van TDE.
 
 U uw database versleutelen met de [Azure-portal](sql-data-warehouse-encryption-tde.md) of [T-SQL.](sql-data-warehouse-encryption-tde-tsql.md)
 

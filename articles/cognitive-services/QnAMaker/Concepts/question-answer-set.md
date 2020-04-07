@@ -3,12 +3,12 @@ title: Ontwerp kennisbank - QnA Maker
 description: Een QnA Maker knowledge base bestaat uit een set vraag-en-antwoordsets (QnA) en optionele metadata die aan elk QnA-paar zijn gekoppeld.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: cb71de0f6a3e372d8c1c1fede67ba0c0354532ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76844312"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756783"
 ---
 # <a name="question-and-answer-set-concepts"></a>Concepten voor vraag- en antwoordreeksen
 
@@ -33,7 +33,7 @@ De **optionele** instellingen voor een set zijn:
 
 ## <a name="editorially-add-to-knowledge-base"></a>Redactioneel toe te voegen aan de kennisbank
 
-Als u geen reeds bestaande inhoud hebt om de kennisbasis te vullen, u QnA-sets redactioneel toevoegen in de QnA Maker-portal. Hier leest u hoe u uw kennisbank [kunt bijwerken.](../How-To/edit-knowledge-base.md)
+Als u geen reeds bestaande inhoud hebt om de kennisbasis te vullen, u QnA-paren redactioneel toevoegen in de QnA Maker-portal. Hier leest u hoe u uw kennisbank [kunt bijwerken.](../How-To/edit-knowledge-base.md)
 
 ## <a name="editing-your-knowledge-base-locally"></a>Uw kennisbank lokaal bewerken
 

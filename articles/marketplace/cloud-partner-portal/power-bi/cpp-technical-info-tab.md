@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ab84cc2f4910d1186e842758df7814ca5dd6464d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92bc172fd9a47d3b140e60a4083d65a2f532769a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281643"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745572"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>Tabblad Technische gegevens van Power BI Apps
+
+>[!Important]
+>Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
 
 Gebruik op de pagina **Nieuwe aanbieding** het tabblad **Technische informatie** om de URL van het Installatiepakket van Power BI en andere informatie te verstrekken die u nodig hebt om de nieuwe aanbieding te valideren.  Voor de eerste release zijn alle Power BI-apps gratis en zijn ze beschikbaar om te downloaden via AppSource. Hierdoor u geen voorraadeenheden (SKU's) definiëren voor dit aanbiedingstype.
 

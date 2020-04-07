@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 04/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43ae866959dd2112bacbb6b56e5683e7b3b851a0
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631924"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755258"
 ---
 # <a name="conditional-access-users-and-groups"></a>Voorwaardelijke toegang: gebruikers en groepen
 
@@ -35,9 +35,9 @@ De volgende opties zijn beschikbaar om op te nemen bij het maken van een beleid 
 - Alle gebruikers
    - Alle gebruikers die in de directory aanwezig zijn, inclusief B2B-gasten.
 - Gebruikers en groepen selecteren
-   - Alle gast- en externe gebruikers (preview)
+   - Alle gast- en externe gebruikers
       - Deze selectie omvat alle B2B-gasten en `user type` externe gebruikers, inclusief elke gebruiker met het kenmerk ingesteld op `guest`. Deze selectie is ook van toepassing op externe gebruikers die zijn aangemeld bij een andere organisatie, zoals een Cloud Solution Provider (CSP). 
-   - Directoryrollen (voorbeeld)
+   - Directory-rollen
       - Hiermee kunnen beheerders specifieke Azure AD-maprollen selecteren die worden gebruikt om toewijzing te bepalen. Organisaties kunnen bijvoorbeeld een restrictiever beleid maken voor gebruikers die de globale beheerdersrol toegewezen hebben.
    - Gebruikers en groepen
       - Hiermee u specifieke sets gebruikers targeten. Organisaties kunnen bijvoorbeeld een groep selecteren die alle leden van de HR-afdeling bevat wanneer een HR-app is geselecteerd als de cloud-app. Een groep kan elk type groep in Azure AD zijn, inclusief dynamische of toegewezen beveiligings- en distributiegroepen.
@@ -51,9 +51,9 @@ Wanneer organisaties zowel een gebruiker of groep opnemen als uitsluiten, wordt 
 
 De volgende opties zijn beschikbaar om uit te sluiten bij het maken van een beleid voor voorwaardelijke toegang.
 
-- Alle gast- en externe gebruikers (preview)
+- Alle gast- en externe gebruikers
    - Deze selectie omvat alle B2B-gasten en `user type` externe gebruikers, inclusief elke gebruiker met het kenmerk ingesteld op `guest`. Deze selectie is ook van toepassing op externe gebruikers die zijn aangemeld bij een andere organisatie, zoals een Cloud Solution Provider (CSP). 
-- Directoryrollen (voorbeeld)
+- Directory-rollen
    - Hiermee kunnen beheerders specifieke Azure AD-maprollen selecteren die worden gebruikt om toewijzing te bepalen. Organisaties kunnen bijvoorbeeld een restrictiever beleid maken voor gebruikers die de globale beheerdersrol toegewezen hebben.
 - Gebruikers en groepen
    - Hiermee u specifieke sets gebruikers targeten. Organisaties kunnen bijvoorbeeld een groep selecteren die alle leden van de HR-afdeling bevat wanneer een HR-app is geselecteerd als de cloud-app. Een groep kan elk type groep in Azure AD zijn, inclusief dynamische of toegewezen beveiligings- en distributiegroepen.

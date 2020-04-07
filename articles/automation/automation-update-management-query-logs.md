@@ -3,14 +3,14 @@ title: Logboeken voor Azure-updatebeheer
 description: In dit artikel wordt beschreven hoe u de logboeken voor Updatebeheer in uw logboekanalysewerkruimte opvragen.
 services: automation
 ms.subservice: update-management
-ms.date: 03/31/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 863016bbeda9b4aec3bf2b4e12830bd30098150f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 81e12e775306cc8637dedd534f50e8a14bc09a26
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437847"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743866"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Query-updaterecords voor Updatebeheer in Azure-monitorlogboeken
 
@@ -112,7 +112,7 @@ Er `UpdateRunProgress` wordt een record gemaakt met een type bestand dat de impl
 | CorrelationId | Unieke id van de runbook-taak die wordt uitgevoerd voor de update. |
 | EndTime | Het moment waarop het synchronisatieproces is beëindigd. | 
 | Foutresultaat | Windows Update-foutcode gegenereerd als een update niet wordt geïnstalleerd. | 
-| Installatiestatus | De mogelijke installatiestatus van een update op de clientcomputer, *In uitvoering*, *Geslaagd*, *Gedeeltelijk mislukt*. |
+| Installatiestatus | De mogelijke installatiestatus van een update op de clientcomputer,<br> *NotStarted* - taak nog niet geactiveerd.<br> *FailedToStart* - kan de taak niet starten op de machine.<br> *Mislukt* - taak is gestart, maar is mislukt met een uitzondering.<br> *InProgress* - job in progress.<br> *MaintenanceWindowExceeded* - als de uitvoering overbleef, maar onderhoudsvenster interval bereikt.<br> *Geslaagd* - baan geslaagd.<br> *InstallFailed* - update kan niet worden geïnstalleerd.<br> *Niet inbegrepen*<br> *Uitgesloten* |
 | KBID | Knowledge base artikel-ID voor de Windows-update. | 
 | ManagementGroupName | Naam van de beheergroep Operations Manager of de werkruimte Log Analytics. |
 | OSType | Hiermee geeft u het type besturingssysteem, *Windows* of *Linux op.* | 

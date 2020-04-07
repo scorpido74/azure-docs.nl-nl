@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
-ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938561"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757273"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Eindpuntbewaking in Traffic Manager
 
@@ -25,7 +25,7 @@ Azure Traffic Manager bevat ingebouwde endpoint-monitoring en automatische failo
 
 Als u eindpuntbewaking wilt configureren, moet u de volgende instellingen opgeven in uw Traffic Manager-profiel:
 
-* **Protocol**. Kies HTTP, HTTPS of TCP als het protocol dat Traffic Manager gebruikt bij het onderzoeken van uw eindpunt om de status ervan te controleren. HTTPS-monitoring controleert niet of uw SSL-certificaat geldig is, het controleert alleen of het certificaat aanwezig is.
+* **Protocol**. Kies HTTP, HTTPS of TCP als het protocol dat Traffic Manager gebruikt bij het onderzoeken van uw eindpunt om de status ervan te controleren. HTTPS-monitoring controleert niet of uw TLS/SSL-certificaat geldig is, het controleert alleen of het certificaat aanwezig is.
 * **Haven**. Kies de poort die voor de aanvraag wordt gebruikt.
 * **Pad.** Deze configuratie-instelling is alleen geldig voor de HTTP- en HTTPS-protocollen, waarvoor de padinstelling is opgegeven. Het verstrekken van deze instelling voor het TCP-bewakingsprotocol resulteert in een fout. Geef voor HTTP- en HTTPS-protocol het relatieve pad en de naam van de webpagina of het bestand dat de controle opent. Een slash doorsturen (/) is een geldige vermelding voor het relatieve pad. Deze waarde houdt in dat het bestand zich in de hoofdmap (standaard).
 * **Aangepaste koptekstinstellingen** Met deze configuratie-instelling u specifieke HTTP-koppen toevoegen aan de statuscontroles die Traffic Manager naar eindpunten onder een profiel verzendt. De aangepaste headers kunnen worden opgegeven op profielniveau dat van toepassing is op alle eindpunten in dat profiel en/of op een eindpuntniveau dat alleen van toepassing is op dat eindpunt. U aangepaste kopteksten gebruiken voor het uitvoeren van statuscontroles op eindpunten in een omgeving met meerdere tenants die correct naar hun bestemming worden doorgestuurd door een hostheader op te geven. U deze instelling ook gebruiken door unieke kopteksten toe te voegen die kunnen worden gebruikt om http-aanvragen van traffic manager te identificeren en deze anders te verwerken. U maximaal acht koptekst:waardeparen opgeven die door een komma zijn gescheiden. Bijvoorbeeld 'header1:value1,header2:value2'. 
@@ -108,7 +108,7 @@ Een eindpunt is niet in orde wanneer een van de volgende gebeurtenissen optreedt
 
 Zie [Status oplossen oplossen van problemen oplossen in Azure Traffic Manager](traffic-manager-troubleshooting-degraded.md)voor meer informatie over het oplossen van mislukte controles. 
 
-De tijdlijn in de volgende figuur is een gedetailleerde beschrijving van het controleproces van Traffic Manager eindpunt dat de volgende instellingen heeft: monitoring protocol is HTTP, indringende interval is 30 seconden, aantal getolereerde fouten is 3, time-out waarde is 10 seconden en DNS TTL is 30 seconden.
+De tijdlijn in de volgende figuur is een gedetailleerde beschrijving van het controleproces van Traffic Manager-eindpunt met de volgende instellingen: monitoringprotocol is HTTP, indringende interval is 30 seconden, aantal getolereerde fouten is 3, time-outwaarde is 10 seconden en DNS TTL is 30 seconden.
 
 ![Eindpuntfailover- en failbackreeks van Traffic Manager](./media/traffic-manager-monitoring/timeline.png)
 

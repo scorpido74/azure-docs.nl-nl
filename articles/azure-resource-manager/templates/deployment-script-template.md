@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: 3ef1c3d3fe0fd1ecad95e027b06ce14fd70d4d3f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437883"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743310"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatiescripts gebruiken in sjablonen (Voorbeeld)
 
@@ -33,6 +33,8 @@ De voordelen van implementatiescript:
 - Geef het opgeven van de identiteiten toe die worden gebruikt om de scripts uit te voeren. Momenteel wordt alleen [de door azure toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) ondersteund.
 - Hiermee u opdrachtregelargumenten doorgeven aan het script.
 - Kan scriptuitvoer opgeven en deze doorgeven aan de implementatie.
+
+De implementatiescriptbron is alleen beschikbaar in de regio's waar Azure Container Instance beschikbaar is.  Zie [Beschikbaarheid van resources voor Azure Container Instances in Azure-regio's](../../container-instances/container-instances-region-availability.md).
 
 > [!IMPORTANT]
 > Twee implementatiescriptbronnen, een opslagaccount en een containerinstantie, worden gemaakt in dezelfde resourcegroep voor het uitvoeren van scripts en het oplossen van problemen. Deze resources worden meestal verwijderd door de scriptservice wanneer de implementatiescriptuitvoering in een terminalstatus wordt uitgevoerd. Er worden kosten in rekening gebracht voor de resources totdat de resources zijn verwijderd. Zie [Scriptbronnen voor het opschonen](#clean-up-deployment-script-resources)van implementatiescripts voor meer informatie .
@@ -189,6 +191,8 @@ Naast inline scripts u ook externe scriptbestanden gebruiken. Alleen primaire Po
 Als u een voorbeeld wilt zien, selecteert u [hier](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
 
 De externe scriptbestanden moeten toegankelijk zijn.  Zie [Zelfstudie: Beheer artefacten in Azure Resource Manager-sjabloonimplementaties](./template-tutorial-secure-artifacts.md)om uw scriptbestanden te beveiligen die zijn opgeslagen in Azure-opslagaccounts.
+
+U bent verantwoordelijk voor het waarborgen van de integriteit van de scripts waarnaar wordt verwezen door implementatiescript, **primaryScriptUri** of **SupportingScriptUris.**  Verwijs alleen naar scripts die u vertrouwt.
 
 ## <a name="use-supporting-scripts"></a>Ondersteunende scripts gebruiken
 

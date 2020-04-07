@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77108994"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756710"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Quickstart: Test kennisbank met batchvragen en verwachte antwoorden
 
@@ -149,7 +149,7 @@ Gebruik de volgende grafiek om te begrijpen hoe u de veldwaarden voor optionele 
     |Laad je Surface Pro 4 op|
     |Controleer het batterijniveau|
 
-    Twee QnA-sets hebben de metadataset.
+    Twee QnA-paren hebben de metadataset.
 
     > [!TIP]
     > Als u de metagegevens en QnA-id's van elke set wilt bekijken, exporteert u de kennisbank. Selecteer de pagina **Instellingen** en `.xls` selecteer **Exporteren** als bestand. Zoek dit gedownloade bestand en open met Excel-controle op metagegevens en id.Find this downloaded file and open with Excel reviewing for metadata and ID.
@@ -169,7 +169,7 @@ Er zijn twee belangrijke scenario's voor batchtesten:
 
 De volgende procedure gaat ervan uit dat het scenario is om chatlogs te verwerken met
 
-1. Maak een nieuw batchtestbestand met `batch-test-data-2.tsv`optionele gegevens. Voeg de 6 rijen uit het oorspronkelijke batchtestinvoerbestand toe en voeg vervolgens de metagegevens, de bovenste en QnA-set-id voor elke rij toe.
+1. Maak een nieuw batchtestbestand met `batch-test-data-2.tsv`optionele gegevens. Voeg de 6 rijen uit het oorspronkelijke batchtestinvoerbestand toe en voeg vervolgens de metagegevens, de bovenste en QnA-paar-id voor elke rij toe.
 
     Als u het geautomatiseerde proces wilt simuleren om nieuwe tekst uit chatlogboeken te `topic:power`controleren op de kennisbank, stelt u de metagegevens voor elke kolom in op dezelfde waarde: .
 

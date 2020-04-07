@@ -3,12 +3,12 @@ title: 'Quickstart: Kennisbank maken, trainen en publiceren - QnA Maker'
 description: U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. Dit artikel bevat een voorbeeld van het creëren van een QnA Maker kennisbank van een eenvoudige FAQ webpagina, om vragen QnA Maker te beantwoorden.
 ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220576"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756822"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Snelstart: maak, train en publiceer uw QnA Maker kennisbank
 
@@ -135,7 +135,7 @@ Wanneer u wijzigingen aanbrengt in de kennisbank en opnieuw publiceert, hoeft u 
 
 ## <a name="what-did-you-accomplish"></a>Wat heb je bereikt?
 
-Je hebt een nieuwe kennisbank gemaakt, een publieke URL toegevoegd aan de kennisbank, je eigen QnA-set toegevoegd, de kennisbank getraind, getest en gepubliceerd.
+Je hebt een nieuwe kennisbank gemaakt, een publieke URL toegevoegd aan de kennisbank, je eigen QnA-paar toegevoegd, de kennisbank getraind, getest en gepubliceerd.
 
 Na het publiceren van de kennisbank hebt u een bot gemaakt en de bot getest.
 

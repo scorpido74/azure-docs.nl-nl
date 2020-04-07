@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a8675756aeef1140dbebd94023d7f7fb4c7af99
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d4f08161daf1d9c1a4431d9e3fba3ca741d88b16
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652261"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743341"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>How to: Wachtwoordopnieuw instellen inschakelen vanaf het Windows-aanmeldingsscherm
 
@@ -43,7 +43,7 @@ Voor machines met Windows 7, 8, 8.1 en 10 u gebruikers in staat stellen hun wach
 - De combinatie van de volgende specifieke drie instellingen kan ervoor zorgen dat deze functie niet werkt.
     - Interactieve aanmelding: Ctrl+ALT+DEL = Uitgeschakeld
     - LockScreenAppMeldingen uitschakelen = 1 of ingeschakeld
-    - IsContentDeliveryPolicyEnforced = 1 of True
+    - Windows SKU is geen thuis- of professionele editie
 
 ## <a name="windows-10-password-reset"></a>Windows 10 wachtwoord opnieuw instellen
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: d8e6f4b58cf17a7502e2c0d67e4fa67af7cdb3f5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 25b8df0d8565686737b33aac16d4bf698ce43280
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632956"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757208"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Server-side encryptie van azure beheerde schijven
 
@@ -91,6 +91,9 @@ Voor nu hebben door de klant beheerde sleutels de volgende beperkingen:
 
     Bij het maken van de Key Vault-instantie moet u bescherming voor zachte verwijdering en zuivering inschakelen. Soft delete zorgt ervoor dat de Key Vault een verwijderde sleutel bevat voor een bepaalde bewaarperiode (standaard 90 dagen). Verwijderingsbeveiliging zorgt ervoor dat een verwijderde sleutel niet permanent kan worden verwijderd totdat de bewaartermijn is verstreken. Deze instellingen beschermen u tegen het verlies van gegevens als gevolg van onbedoelde verwijdering. Deze instellingen zijn verplicht bij het gebruik van een Key Vault voor het versleutelen van beheerde schijven.
 
+    > [!IMPORTANT]
+    > Niet kameel geval de regio, als je dat doet u problemen ondervinden bij het toewijzen van extra schijven aan de bron in de Azure-portal.
+    
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
     $LocationName="westcentralus"

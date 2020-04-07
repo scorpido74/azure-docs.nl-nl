@@ -10,12 +10,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: afbd9950c31bc1c40b01ec0aaf3d2bfffb8a6b94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09164580b8bdb249fc12d14e827ad799d51cab34
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78398204"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756589"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Een model implementeren in compute-exemplaren van Azure Machine Learning
 
@@ -96,7 +96,7 @@ print("prediction:", resp.text)
 
 * [Een model implementeren met een aangepaste Docker-afbeelding](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie](how-to-troubleshoot-deployment.md)
-* [Azure Machine Learning-webservices beveiligen met SSL](how-to-secure-web-service.md)
+* [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](how-to-secure-web-service.md)
 * [Een ML-model gebruiken dat is geïmplementeerd als webservice](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning-modellen controleren met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)

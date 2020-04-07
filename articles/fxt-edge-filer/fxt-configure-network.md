@@ -6,12 +6,12 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9b0154889544e0054e309cc5f43851b73b4396b4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239796"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754691"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Zelfstudie: De netwerkinstellingen van het cluster configureren
 
@@ -76,7 +76,7 @@ Het FXT Edge Filer-cluster gebruikt X.509-certificaten voor deze functies:
 
 Als u certificaten naar het cluster wilt uploaden, gebruikt u de pagina > **Clustercertificaten-instellingen.** **Cluster** Details staan op de pagina [Cluster > certificaten](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) van de clusterconfiguratiehandleiding.
 
-Als u de communicatie met clusterbeheer wilt versleutelen, gebruikt u de pagina Instellingen voor algemene instellingen **clusterinstellingen** > **General Setup** om te selecteren welk certificaat moet worden gebruikt voor beheer-SSL.
+Als u de communicatie met clusterbeheer wilt versleutelen, gebruikt u de pagina Instellingen voor algemene instellingen **clusterinstellingen** > **General Setup** om te selecteren welk certificaat moet worden gebruikt voor tls voor beheer.
 
 > [!Note] 
 > Toegangssleutels voor cloudservices worden opgeslagen met behulp van de configuratiepagina **CloudReferenties.** In de sectie [Een kernfiler](fxt-add-storage.md#add-a-core-filer) toevoegen hierboven wordt een voorbeeld weergegeven. lees de sectie [Clusterconfiguratiehandleiding Cloudreferenties](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) voor meer informatie. 

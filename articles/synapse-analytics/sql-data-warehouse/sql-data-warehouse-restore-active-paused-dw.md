@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e1d0c5cd850fa0dbacf104d3fcd72d83007df878
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6fa8bd42eb067124ab6ea1db77e2f3d6fba79638
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632256"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745209"
 ---
 # <a name="restore-an-existing-sql-pool"></a>Een bestaande SQL-groep herstellen
 
@@ -28,12 +28,12 @@ In dit artikel leert u hoe u een bestaande SQL-groep in Azure Synapse Analytics 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-1. Zorg ervoor dat [Azure PowerShell wordt geïnstalleerd.](https://docs.microsoft.com/powershell/azure/overview)
+1. Zorg ervoor dat [Azure PowerShell wordt geïnstalleerd.](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 2. Een bestaand herstelpunt hebben waarvan u wilt herstellen. Als u een nieuw herstel wilt maken, raadpleegt u [de zelfstudie om een nieuw door de gebruiker gedefinieerd herstelpunt te maken.](sql-data-warehouse-restore-points.md)
 
 ## <a name="restore-an-existing-sql-pool-through-powershell"></a>Een bestaande SQL-pool herstellen via PowerShell
 
-Als u een bestaande SQL-groep vanaf een herstelpunt wilt herstellen, gebruikt u de cmdlet [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) PowerShell.
+Als u een bestaande SQL-groep vanaf een herstelpunt wilt herstellen, gebruikt u de cmdlet [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell.
 
 1. Open PowerShell.
 
@@ -45,7 +45,7 @@ Als u een bestaande SQL-groep vanaf een herstelpunt wilt herstellen, gebruikt u 
 
 5. Kies het gewenste herstelpunt met de RestorePointCreationDate.
 
-6. Herstel de SQL-pool naar het gewenste herstelpunt met [restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) PowerShell-cmdlet.
+6. Herstel de SQL-pool naar het gewenste herstelpunt met [restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell-cmdlet.
         1. Als u de SQL-groep wilt herstellen naar een andere logische server, moet u de andere logische servernaam opgeven.  Deze logische server kan zich ook in een andere brongroep en -regio bevinden.
         2. Als u wilt herstellen naar een ander abonnement, gebruikt u de knop 'Verplaatsen' om de logische server naar een ander abonnement te verplaatsen.
 

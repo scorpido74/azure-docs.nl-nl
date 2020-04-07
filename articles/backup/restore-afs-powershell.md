@@ -3,21 +3,24 @@ title: Azure-bestanden herstellen met PowerShell
 description: In dit artikel leest u hoe u Azure-bestanden herstellen met de Azure Backup-service en PowerShell.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12bff49bc249b23542534d218b13b517411f461b
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086820"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756190"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Azure-bestanden herstellen met PowerShell
 
-In dit artikel wordt uitgelegd hoe u een volledige bestandsshare of specifieke bestanden herstellen vanuit een herstelpunt dat is gemaakt door de [Azure Backup-service](backup-overview.md) met Azure Powershell.
+In dit artikel wordt uitgelegd hoe u een volledige bestandsshare of specifieke bestanden herstellen vanuit een herstelpunt dat is gemaakt door de [Azure Backup-service](backup-overview.md) met Azure PowerShell.
 
 U een volledige bestandsshare of specifieke bestanden op het aandeel herstellen. U herstellen naar de oorspronkelijke locatie of naar een alternatieve locatie.
 
 > [!WARNING]
-> Zorg ervoor dat de PS-versie is geüpgraded naar de minimale versie voor 'Az.RecoveryServices 2.6.0' voor AFS-back-ups. Voor meer informatie, verwijzen wij u naar [de sectie](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) waarin de vereiste voor deze wijziging.
+> Zorg ervoor dat de PS-versie is geüpgraded naar de minimale versie voor 'Az.RecoveryServices 2.6.0' voor AFS-back-ups. Zie voor meer informatie [de sectie](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) waarin de vereiste voor deze wijziging wordt beschreven.
+
+>[!NOTE]
+>Azure Backup ondersteunt nu het herstellen van meerdere bestanden of mappen naar de oorspronkelijke of alternatieve locatie met PowerShell. Raadpleeg [dit gedeelte](#restore-multiple-files-or-folders-to-original-or-alternate-location) van het document om te leren hoe.
 
 ## <a name="fetch-recovery-points"></a>Herstelpunten ophalen
 
@@ -102,17 +105,67 @@ Met deze opdracht wordt een taak geretourneerd met een id die moet worden bijgeh
 
 Wanneer u herstelt naar een oorspronkelijke locatie, hoeft u geen doel- en doelgerelateerde parameters op te geven. Alleen **ResolveConflict** moet worden verstrekt.
 
-#### <a name="overwrite-an-azure-file-share"></a>Een Azure-bestandsshare overschrijven
+### <a name="overwrite-an-azure-file-share"></a>Een Azure-bestandsshare overschrijven
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite
 ```
 
-#### <a name="overwrite-an-azure-file"></a>Een Azure-bestand overschrijven
+### <a name="overwrite-an-azure-file"></a>Een Azure-bestand overschrijven
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
+
+## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Meerdere bestanden of mappen herstellen naar de oorspronkelijke of alternatieve locatie
+
+Gebruik de opdracht [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) door het pad door te geven van alle bestanden of mappen die u wilt herstellen als waarde voor de parameter **MultipleSourceFilePath.**
+
+### <a name="restore-multiple-files"></a>Meerdere bestanden herstellen
+
+In het volgende script proberen we de *bestanden FileSharePage.png* en *MyTestFile.txt* te herstellen.
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
+
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "afsaccount" -VaultId $vault.ID
+
+$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "azurefiles"
+
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID
+
+$files = ("FileSharePage.png", "MyTestFile.txt")
+
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePath $files -SourceFileType File -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+### <a name="restore-multiple-directories"></a>Meerdere mappen herstellen
+
+In het volgende script proberen we de *zrs1_restore* en *herstelmappen* te herstellen.
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
+
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "afsaccount" -VaultId $vault.ID
+
+$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "azurefiles"
+
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID
+
+$files = ("Restore","zrs1_restore")
+
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePath $files -SourceFileType Directory -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+De uitvoer ziet er ongeveer als volgt uit:
+
+```output
+WorkloadName         Operation         Status          StartTime                EndTime       JobID
+------------         ---------         ------          ---------                -------       -----
+azurefiles           Restore           InProgress      4/5/2020 8:01:24 AM                    cd36abc3-0242-44b1-9964-0a9102b74d57
+```
+
+Als u meerdere bestanden of mappen naar een alternatieve locatie wilt herstellen, gebruikt u de bovenstaande scripts door de parameterwaarden voor doellocatie op te geven, zoals hierboven uiteengezet in [Een Azure-bestand herstellen naar een alternatieve locatie](#restore-an-azure-file-to-an-alternate-location).
 
 ## <a name="next-steps"></a>Volgende stappen
 

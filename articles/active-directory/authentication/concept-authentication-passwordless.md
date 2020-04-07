@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07ba38a5d7e8e8a89ba122efb1734c1f13a94d48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 402eaecbf03fd52fbb5e871fdd196da2bc9a3e1f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332189"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743531"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Wachtwoordloze verificatieopties voor Azure Active Directory
 
@@ -97,7 +97,7 @@ Het volgende proces wordt gebruikt wanneer een gebruiker zich aanmeldt met een F
 8. Azure AD verifieert de ondertekende nonce met behulp van de fido2-openbare sleutel.
 9. Azure AD retourneert PRT om toegang tot on-premises resources mogelijk te maken.
 
-Hoewel er veel sleutels zijn die FIDO2-gecertificeerd zijn door de FIDO Alliance, vereist Microsoft een aantal optionele uitbreidingen van de FIDO2 Client-to-Authenticator Protocol (CTAP)-specificatie die door de leverancier moet worden geïmplementeerd om maximale beveiliging en de beste Ervaring.
+Hoewel er veel sleutels zijn die FIDO2-gecertificeerd zijn door de FIDO Alliance, vereist Microsoft een aantal optionele uitbreidingen van de FIDO2 Client-to-Authenticator Protocol (CTAP)-specificatie die door de leverancier moet worden geïmplementeerd om maximale beveiliging en de beste ervaring te garanderen.
 
 Een beveiligingssleutel **MOET** de volgende functies en extensies uit het FIDO2 CTAP-protocol implementeren om Microsoft-compatibel te zijn:
 
@@ -162,7 +162,7 @@ Gebruik de volgende tabel om te kiezen welke methode uw vereisten en gebruikers 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Fido2-beveiligingssleutelwachtwoordopties inschakelen in uw organisatie](howto-authentication-passwordless-security-key.md)
+[Fido2-beveiligingssleutelwachtwoordloze opties in uw organisatie inschakelen](howto-authentication-passwordless-security-key.md)
 
 [Opties zonder telefoon inschakelen in uw organisatie](howto-authentication-passwordless-phone.md)
 

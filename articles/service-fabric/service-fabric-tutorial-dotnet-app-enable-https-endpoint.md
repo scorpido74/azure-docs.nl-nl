@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u met behulp van Kestrel een HTTPS-e
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0e8b79a88fc173674caa0ca65e394e21d58d5f2f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238928"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756094"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Zelfstudie: Een HTTPS-eindpunt toevoegen aan een front-end-service van ASP.NET Core Web-API met behulp van Kestrel
 
@@ -20,7 +20,7 @@ In deel drie van de serie leert u het volgende:
 > [!div class="checklist"]
 > * Een HTTPS-eindpunt in de service definiëren
 > * Kestrel configureren voor gebruik van HTTPS
-> * Het SSL-certificaat installeren op de externe clusterknooppunten
+> * Het TLS/SSL-certificaat installeren op de externe clusterknooppunten
 > * Netwerkservice toegang geven tot de persoonlijke sleutel van het certificaat
 > * Poort 443 openen in de Azure-load balancer
 > * De toepassing implementeren in een extern cluster
@@ -396,7 +396,7 @@ In dit deel van de zelfstudie hebt u het volgende geleerd:
 > [!div class="checklist"]
 > * Een HTTPS-eindpunt in de service definiëren
 > * Kestrel configureren voor gebruik van HTTPS
-> * Het SSL-certificaat installeren op de externe clusterknooppunten
+> * Het TLS/SSL-certificaat installeren op de externe clusterknooppunten
 > * Netwerkservice toegang geven tot de persoonlijke sleutel van het certificaat
 > * Poort 443 openen in de Azure-load balancer
 > * De toepassing implementeren in een extern cluster

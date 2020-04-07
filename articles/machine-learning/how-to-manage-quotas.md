@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 03/05/2020
-ms.openlocfilehash: 17a4652604c0faa804d24530869aac0848c972b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 530647c3d32b62f0cac250795ccce580b182fa92
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399152"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756600"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Quota voor Azure-resources beheren en aanvragen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,7 +60,7 @@ Beschikbare middelen:
 
 + Clusters per regio hebben een standaardlimiet van 200. Deze worden gedeeld tussen een trainingscluster en een rekeninstantie (die wordt beschouwd als één knooppuntcluster voor quotadoeleinden). Neem contact op met Azure-ondersteuning als u een verhoging wilt aanvragen die verder gaat dan deze limiet.
 
-+ Er zijn ** andere strikte grenzen die niet kunnen worden overschreden eenmaal geraakt.
++ Er zijn andere strikte grenzen die niet kunnen worden overschreden eenmaal getroffen.
 
 | **Resource** | **Maximumlimiet** |
 | --- | --- |

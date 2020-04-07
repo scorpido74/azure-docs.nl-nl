@@ -3,18 +3,18 @@ title: 'Zelfstudie: Voorbeeld van blauwdruk naar nieuwe omgeving'
 description: In deze zelfstudie gebruikt u een blauwdrukvoorbeeld om een blauwdrukdefinitie te maken die twee resourcegroepen instelt en een roltoewijzing voor elk groep configureert.
 ms.date: 03/25/2020
 ms.topic: tutorial
-ms.openlocfilehash: c4230282223b0a64f6254448fe069bf8f7ab9a15
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80282015"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677092"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Zelfstudie: Een omgeving maken op basis van een blauwdrukvoorbeeld
 
 Voorbeeldblauwdrukken geven voorbeelden van wat er met Azure Blueprints kan worden gedaan. Elk is een voorbeeld met een specifieke intentie of doel, maar creëert niet zelf een volledige omgeving. Elk is bedoeld als startplaats om te verkennen met behulp van Azure Blueprints met verschillende combinaties van opgenomen artefacten, ontwerpen en parameters.
 
-De volgende zelfstudie gebruikt het voorbeeld **resourcegroepen met een Blauwdrukvan RBAC** om verschillende aspecten van de blueprints-service te presenteren. De volgende stappen worden behandeld:
+De volgende zelfstudie gebruikt het voorbeeld **resourcegroepen met een RBAC-blauwdrukom** verschillende aspecten van de Azure Blueprints-service te presenteren. De volgende stappen worden behandeld:
 
 > [!div class="checklist"]
 > - Een nieuwe blauwdrukdefinitie maken in het voorbeeld

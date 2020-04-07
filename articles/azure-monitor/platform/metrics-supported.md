@@ -4,15 +4,15 @@ description: Lijst met statistieken die beschikbaar zijn voor elk resourcetype m
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 03/17/2020
+ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 79bae9712cea04425cc36414ec56fdddd4345eab
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 846e8da889e3913c4a8eaab7808495bbd8afad29
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586023"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754659"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Ondersteunde statistieken met Azure Monitor
 
@@ -1999,11 +1999,11 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |dwu_used|Gebruikte DWU|Count|Maximum|DWU gebruikt. Geldt alleen voor datawarehouses.|Geen|
 |cache_hit_percent|Percentage cachehit|Percentage|Maximum|Cache hit percentage. Geldt alleen voor datawarehouses.|Geen|
 |cache_used_percent|Door cache gebruikt percentage|Percentage|Maximum|Cache gebruikt percentage. Geldt alleen voor datawarehouses.|Geen|
-|sqlserver_process_core_percent|SQL Server-proceskernpercentage|Percentage|Maximum|CPU-gebruikspercentage voor het SQL Server-proces, gemeten door het besturingssysteem.|Geen|
-|sqlserver_process_memory_percent|SQL Server-procesgeheugenpercentage|Percentage|Maximum|Percentage geheugengebruik voor het SQL Server-proces, gemeten door het besturingssysteem.|Geen|
-|tempdb_data_size|Tempdb-gegevensbestandsgrootte Kilobytes|Count|Maximum|Tempdb Data File Size Kilobytes. Niet van toepassing op datawarehouses.|Geen|
-|tempdb_log_size|Tempdb Log File Size Kilobytes|Count|Maximum|Tempdb Log File Size Kilobytes. Niet van toepassing op datawarehouses.|Geen|
-|tempdb_log_used_percent|Tempdb Procent Log gebruikt|Percentage|Maximum|Tempdb Procent Log gebruikt. Niet van toepassing op datawarehouses.|Geen|
+|sqlserver_process_core_percent<sup>1.</sup> |SQL Server-proceskernpercentage|Percentage|Maximum|CPU-gebruikspercentage voor het SQL Server-proces, gemeten door het besturingssysteem.|Geen|
+|sqlserver_process_memory_percent<sup>1.</sup> |SQL Server-procesgeheugenpercentage|Percentage|Maximum|Percentage geheugengebruik voor het SQL Server-proces, gemeten door het besturingssysteem.|Geen|
+|tempdb_data_size<sup>2.</sup> |Tempdb-gegevensbestandsgrootte Kilobytes|Count|Maximum|Tempdb Data File Size Kilobytes.|Geen|
+|tempdb_log_size<sup>2.</sup> |Tempdb Log File Size Kilobytes|Count|Maximum|Tempdb Log File Size Kilobytes.|Geen|
+|tempdb_log_used_percent<sup>2.</sup> |Tempdb Procent Log gebruikt|Percentage|Maximum|Tempdb Procent Log gebruikt.|Geen|
 |local_tempdb_usage_percent|Lokaal tempdb percentage|Percentage|Average|Lokaal tempdb percentage. Geldt alleen voor datawarehouses.|Geen|
 |app_cpu_billed|App CPU gefactureerd|Count|Totaal|App CPU gefactureerd. Van toepassing op serverloze databases.|Geen|
 |app_cpu_percent|Cpu-percentage voor apps|Percentage|Average|App CPU-percentage. Van toepassing op serverloze databases.|Geen|
@@ -2028,6 +2028,9 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |snapshot_backup_size_bytes|Momentopname back-upopslaggrootte|Bytes|Maximum|Cumulatieve momentopname-opslaggrootte. Is van toepassing op Hyperscale-databases.|Geen|
 |base_blob_size_bytes|Opslaggrootte van basisblob|Bytes|Maximum|De opslaggrootte van de basisblob. Is van toepassing op Hyperscale-databases.|Geen|
 
+<sup>1</sup> Deze statistiek is beschikbaar voor databases met behulp van het vCore-inkoopmodel met 2 vCores en hoger, of 200 DTU en hoger voor DTU-gebaseerde inkoopmodellen. 
+
+<sup>2</sup> Deze statistiek is beschikbaar voor databases met behulp van het vCore-inkoopmodel met 2 vCores en hoger, of 200 DTU en hoger voor DTU-gebaseerde inkoopmodellen. Deze statistiek is momenteel niet beschikbaar voor Hyperscale-databases of gegevensmagazijnen.
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -2057,14 +2060,19 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |database_cpu_limit|CPU-limiet|Count|Average|CPU-limiet|DatabaseResourceId|
 |cpu_used|CPU gebruikt|Count|Average|CPU gebruikt. Van toepassing op vCore-gebaseerde elastische pools.|Geen|
 |database_cpu_used|CPU gebruikt|Count|Average|CPU gebruikt|DatabaseResourceId|
-|sqlserver_process_core_percent|SQL Server-proceskernpercentage|Percentage|Maximum|CPU-gebruikspercentage voor het SQL Server-proces, gemeten door het besturingssysteem. Geldt voor elastische zwembaden.|Geen|
-|sqlserver_process_memory_percent|SQL Server-procesgeheugenpercentage|Percentage|Maximum|Percentage geheugengebruik voor het SQL Server-proces, gemeten door het besturingssysteem. Geldt voor elastische zwembaden.|Geen|
-|tempdb_data_size|Tempdb-gegevensbestandsgrootte Kilobytes|Count|Maximum|Tempdb-gegevensbestandsgrootte Kilobytes|Geen|
-|tempdb_log_size|Tempdb Log File Size Kilobytes|Count|Maximum|Tempdb Log File Size Kilobytes|Geen|
-|tempdb_log_used_percent|Tempdb Procent Log gebruikt|Percentage|Maximum|Tempdb Procent Log gebruikt|Geen|
+|sqlserver_process_core_percent<sup>1.</sup>|SQL Server-proceskernpercentage|Percentage|Maximum|CPU-gebruikspercentage voor het SQL Server-proces, gemeten door het besturingssysteem. Geldt voor elastische zwembaden. |Geen|
+|sqlserver_process_memory_percent<sup>1.</sup>|SQL Server-procesgeheugenpercentage|Percentage|Maximum|Percentage geheugengebruik voor het SQL Server-proces, gemeten door het besturingssysteem. Geldt voor elastische zwembaden. |Geen|
+|tempdb_data_size<sup>2.</sup>|Tempdb-gegevensbestandsgrootte Kilobytes|Count|Maximum|Tempdb Data File Size Kilobytes.|Geen|
+|tempdb_log_size<sup>2.</sup>|Tempdb Log File Size Kilobytes|Count|Maximum|Tempdb Log File Size Kilobytes. |Geen|
+|tempdb_log_used_percent<sup>2.</sup>|Tempdb Procent Log gebruikt|Percentage|Maximum|Tempdb Procent Log gebruikt.|Geen|
 |allocated_data_storage|Toegewezen gegevensruimte|Bytes|Average|Toegewezen gegevensruimte|Geen|
 |database_allocated_data_storage|Toegewezen gegevensruimte|Bytes|Average|Toegewezen gegevensruimte|DatabaseResourceId|
 |allocated_data_storage_percent|Toegewezen gegevensruimte percentage|Percentage|Maximum|Toegewezen gegevensruimte percentage|Geen|
+
+<sup>1</sup> Deze statistiek is beschikbaar voor databases met behulp van het vCore-inkoopmodel met 2 vCores en hoger, of 200 DTU en hoger voor DTU-gebaseerde inkoopmodellen. 
+
+<sup>2</sup> Deze statistiek is beschikbaar voor databases met behulp van het vCore-inkoopmodel met 2 vCores en hoger, of 200 DTU en hoger voor DTU-gebaseerde inkoopmodellen. Deze statistiek is momenteel niet beschikbaar voor Hyperscale-databases.
+
 
 ## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
 

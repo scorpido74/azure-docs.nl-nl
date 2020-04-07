@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 359fd7fc787db5710deca75dd562215d25ed9148
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437493"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756565"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Bedrijfsbeveiliging voor Azure Machine Learning
 
@@ -134,7 +134,15 @@ U Azure Private Link ook inschakelen voor uw werkruimte. Met Private Link u de c
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
 > [!IMPORTANT]
-> Als uw werkruimte gevoelige gegevens bevat, raden we u aan de [hbi_workspace vlag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) in te stellen tijdens het maken van uw werkruimte. Hiermee wordt de hoeveelheid gegevens die Microsoft verzamelt voor diagnostische doeleinden geregeld en wordt extra versleuteling in door Microsoft beheerde omgevingen mogelijk.
+> Als uw werkruimte gevoelige gegevens bevat, raden we u aan de [hbi_workspace vlag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) in te stellen tijdens het maken van uw werkruimte. 
+
+De `hbi_workspace` vlag bepaalt de hoeveelheid gegevens die Microsoft verzamelt voor diagnostische doeleinden en maakt extra versleuteling mogelijk in door Microsoft beheerde omgevingen. Daarnaast maakt het het volgende mogelijk:
+
+* Hiermee wordt begonnen met het versleutelen van de lokale krasschijf in uw Amlcompute-cluster, op voorwaarde dat u geen eerdere clusters in dat abonnement hebt gemaakt. Anders moet u een ondersteuningsticket verhogen om versleuteling van de krasschijf van uw compute-clusters mogelijk te maken 
+* Ruimt uw lokale krasschijf tussen de uitvoeringen op
+* Doorgeeft u referenties voor uw opslagaccount, containerregister en SSH-account veilig van de uitvoeringslaag naar uw compute clusters met behulp van uw sleutelkluis
+* Maakt IP-filtering mogelijk om ervoor te zorgen dat de onderliggende batchgroepen niet kunnen worden aangeroepen door andere externe services dan AzureMachineLearningService
+
 
 Zie [Azure-gegevensversleuteling in rust](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)voor meer informatie over hoe versleuteling in rust werkt.
 

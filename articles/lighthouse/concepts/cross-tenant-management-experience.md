@@ -1,14 +1,14 @@
 ---
 title: Beheerervaring in meerdere tenants
 description: Azure gedelegeerd resourcebeheer maakt een cross-tenant beheerervaring mogelijk.
-ms.date: 03/12/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0e55923e688d1062adc5838a88e8d3202864282a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ac5d62fbf6b6ee418cd4b2f2b00dfc12e05f809
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218393"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754144"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -21,7 +21,7 @@ Als serviceprovider u [Azure delegated resource beheer](../concepts/azure-delega
 
 Een Azure AD-tenant (Azure Directory) is een weergave van een organisatie. Het is een speciaal exemplaar van Azure AD dat een organisatie ontvangt wanneer ze een relatie met Microsoft maken door zich aan te melden voor Azure, Microsoft 365 of andere services. Elke Azure AD-tenant is verschillend en staat los van andere Azure AD-tenants en heeft een eigen tenant-id (een GUID). Zie Wat is Azure Active Directory voor meer [informatie?](../../active-directory/fundamentals/active-directory-whatis.md)
 
-Om Azure-resources voor een klant te beheren, moeten serviceproviders zich doorgaans aanmelden bij de Azure-portal met behulp van een account dat is gekoppeld aan de tenant van die klant, waardoor een beheerder in de tenant van de klant gebruikersaccounts moet maken en beheren voor de dienstverlener.
+Om Azure-resources voor een klant te beheren, moeten serviceproviders zich doorgaans aanmelden bij de Azure-portal met behulp van een account dat is gekoppeld aan de tenant van die klant, waardoor een beheerder in de tenant van de klant gebruikersaccounts voor de serviceprovider moet maken en beheren.
 
 Met Azure gedelegeerd resourcebeheer geeft het onboardingproces gebruikers binnen de tenant van de serviceprovider op die abonnementen, brongroepen en resources in de tenant van de klant kunnen openen en beheren. Deze gebruikers kunnen zich vervolgens aanmelden bij de Azure-portal met hun eigen referenties. Binnen de Azure-portal kunnen ze resources beheren die behoren tot alle klanten waartoe ze toegang hebben. Dit kan door de pagina [Mijn klanten](../how-to/view-manage-customers.md) in de Azure-portal te bezoeken of door rechtstreeks te werken binnen de context van het abonnement van die klant, in de Azure-portal of via API's.
 
@@ -141,6 +141,7 @@ Bij alle scenario's moet u rekening houden met de volgende huidige beperkingen:
 - Roltoewijzingen moeten gebruik maken van [rbac-ingebouwde rollen](../../role-based-access-control/built-in-roles.md)(Role based access control). Alle ingebouwde rollen worden momenteel ondersteund met Azure-gedelegeerd bronbeheer, behalve voor eigenaar of ingebouwde rollen met [toestemming voor DataActions.](../../role-based-access-control/role-definitions.md#dataactions) De functie Administrator voor gebruikerstoegang wordt slechts voor beperkt gebruik ondersteund bij [het toewijzen van rollen aan beheerde identiteiten.](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)  Aangepaste rollen en [klassieke abonnementsbeheerdersrollen](../../role-based-access-control/classic-administrators.md) worden niet ondersteund.
 - Hoewel u abonnementen aan boord die Azure Databricks gebruiken, kunnen gebruikers in de beheertenant op dit moment geen Azure Databricks-werkruimten starten op een gedelegeerd abonnement.
 - Hoewel u abonnementen en resourcegroepen onboarden voor azure-gedelegeerd bronbeheer met resourcevergrendelingen, worden deze vergrendelingen niet voorkomen dat acties worden uitgevoerd door gebruikers in de beheertenant. [Toewijzingen weigeren](../../role-based-access-control/deny-assignments.md) die systeembeheerbronnen beschermen, zoals resources die zijn gemaakt door door Azure beheerde toepassingen of Azure Blueprints (met systeem toegewezen weigeringstoewijzingen), voorkomen dat gebruikers in de beheertenant op deze resources reageren; Op dit moment kunnen gebruikers in de klanttenant echter geen eigen weigeringstoewijzingen maken (door de gebruiker toegewezen weigeringstoewijzingen).
+- Gebruikers in de beheertenant hebben geen toegang tot factureringsgegevens voor een gedelegeerd klantabonnement, zelfs niet als ze een ingebouwde rol hebben die doorgaans toegang zou toestaan. Dit komt omdat toegang tot factureringsgegevens extra stappen vereist die momenteel alleen worden ondersteund voor gebruikers binnen dezelfde tenant.
 
 ## <a name="next-steps"></a>Volgende stappen
 

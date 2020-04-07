@@ -3,12 +3,12 @@ title: De volgorde van de implementatiereeks begrijpen
 description: Meer informatie over de standaardvolgorde waarin blauwdrukartefacten worden geïmplementeerd tijdens een blauwdruktoewijzing en hoe u de implementatievolgorde aanpassen.
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.openlocfilehash: 51026862c989f15acf6d3e21702cfcfc8b2b27b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74128816"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677564"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>De implementatiereeks in Azure Blueprints begrijpen
 
@@ -42,7 +42,7 @@ Binnen elk artefact **van de resourcegroep** wordt de volgende volgorde gebruikt
 
 ## <a name="customizing-the-sequencing-order"></a>De volgorde aanpassen
 
-Bij het samenstellen van grote blauwdrukdefinities kan het nodig zijn dat resources in een specifieke volgorde worden gemaakt. Het meest voorkomende gebruikspatroon van dit scenario is wanneer een blauwdrukdefinitie verschillende Azure Resource Manager-sjablonen bevat. Blauwdrukken verwerkt dit patroon door de volgorde te definiëren.
+Bij het samenstellen van grote blauwdrukdefinities kan het nodig zijn dat resources in een specifieke volgorde worden gemaakt. Het meest voorkomende gebruikspatroon van dit scenario is wanneer een blauwdrukdefinitie verschillende Azure Resource Manager-sjablonen bevat. Azure Blueprints verwerkt dit patroon door de volgorde te definiëren.
 
 De bestelling wordt uitgevoerd door `dependsOn` het definiëren van een woning in de JSON. De blauwdrukdefinitie voor resourcegroepen en artefactobjecten ondersteunen deze eigenschap. `dependsOn`is een reeks artefactnamen die het specifieke artefact moet maken voordat het wordt gemaakt.
 

@@ -2,15 +2,15 @@
 title: Uw eerste functie maken in Azure Portal
 description: Leer hoe u uw eerste serverloze Azure-functie kunt maken met behulp van Azure Portal.
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 417ad96dc3dea25e322dbdb4d81c034a9b9c1e80
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a96d2ede80b4c57e7b85048379a4bfb66cacfd52
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656881"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754859"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Uw eerste functie maken in Azure Portal
 
@@ -34,29 +34,27 @@ Maak vervolgens een functie in de nieuwe functie-app.
 
 ## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>Een door HTTP geactiveerde functie maken
 
-1. Selecteer In het linkermenu van het venster **Functies** de optie **Functies**en selecteer vervolgens **Toevoegen in** het bovenste menu. 
- 
-1. Selecteer **http-trigger** in **Http trigger**het venster Nieuwe functie .
+1. Vouw de nieuwe functie-app uit, selecteer **+** de knop naast **Functies,** kies **In-portal**en selecteer **Doorgaan**.
 
-    ![Http-triggerfunctie kiezen](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
+    ![Functies snelstart voor het kiezen van een platform.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 
-1. Accepteer in het venster **Nieuwe functie** de standaardnaam voor **nieuwe functie**of voer een nieuwe naam in. 
+1. Kies **WebHook + API**en selecteer Vervolgens **Maken**.
 
-1. Kies **Anoniem** in de vervolgkeuzelijst **Autorisatieniveau** en selecteer **Vervolgens Functie maken**.
+    ![De Quick Start van Azure Functions in Azure Portal.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
-    Azure maakt de HTTP-triggerfunctie. U kunt de nieuwe functie nu uitvoeren door een HTTP-aanvraag te verzenden.
+   Een functie wordt gemaakt met een taalspecifieke sjabloon voor een door HTTP getriggerde functie.
+
+U kunt de nieuwe functie nu uitvoeren door een HTTP-aanvraag te verzenden.
 
 ## <a name="test-the-function"></a>De functie testen
 
-1. Selecteer in de nieuwe HTTP-triggerfunctie **Code + Test** in het linkermenu en selecteer vervolgens **FUNCTIE-URL ophalen** in het bovenste menu.
+1. Selecteer in uw nieuwe functie **</> URL** van de functie ophalen rechtsboven. 
 
-    ![Functie-URL ophalen selecteren](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
-
-1. Selecteer in het dialoogvenster **URL van** de functie ophalen **standaard** in de vervolgkeuzelijst en selecteer vervolgens het pictogram Kopiëren **naar klembord.** 
+1. Selecteer in het dialoogvenster **URL van** de functie ophalen de **standaardinstelling (functiesleutel)** in de vervolgkeuzelijst en selecteer **Kopiëren**. 
 
     ![De functie-URL vanuit Azure Portal kopiëren](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. Plak de URL van de functie in de adresbalk van uw browser. Voeg de waarde `?name=<your_name>` van de querytekenreeks toe aan het einde van deze URL en druk op Enter om de aanvraag uit te voeren. 
+1. Plak de URL van de functie in de adresbalk van uw browser. Voeg de waarde `&name=<your_name>` van de querytekenreeks toe aan het einde van deze URL en druk op Enter om de aanvraag uit te voeren. 
 
     Het volgende voorbeeld toont het antwoord in de browser:
 
@@ -64,7 +62,7 @@ Maak vervolgens een functie in de nieuwe functie-app.
 
     De aanvraag-URL bevat een sleutel die standaard is vereist, en waarmee u via HTTP toegang hebt tot de functie.
 
-1. Wanneer uw functie wordt uitgevoerd, wordt traceringsinformatie naar de logboeken geschreven. Als u de traceringsuitvoer wilt zien, gaat u terug naar de pagina **Code + Test** in de portal en vouwt u de pijl **Logboeken** onder aan de pagina uit.
+1. Wanneer uw functie wordt uitgevoerd, wordt traceringsinformatie naar de logboeken geschreven. Als u de traceringsuitvoer van de vorige uitvoering wilt zien, gaat u terug naar uw functie in de portal en selecteert u de pijl onder aan het scherm om de **logboeken**uit te vouwen.
 
    ![De viewer voor functielogboeken in Azure Portal.](./media/functions-create-first-azure-function/function-view-logs.png)
 

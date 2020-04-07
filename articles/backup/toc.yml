@@ -32,8 +32,6 @@
       href: tutorial-sql-backup.md
     - name: Back-ups maken van SAP HANA-databases in virtuele Azure-machines
       href: tutorial-backup-sap-hana-db.md
-    - name: Een back-up maken van Azure Files-bestandsshares
-      href: tutorial-backup-azure-files.md
     - name: Back-up maken van Windows Server
       href: tutorial-backup-windows-server-to-azure.md
     - name: Bestanden terugzetten naar Windows Server

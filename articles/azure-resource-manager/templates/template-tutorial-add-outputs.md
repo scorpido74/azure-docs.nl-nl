@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 150801fe66da1ea8c6f10d437c6d7616a77b544e
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 2ee1a2c7037bde68b7858b57a03c78bd2016ff1c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411011"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743549"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Zelfstudie: uitvoer toevoegen aan uw ARM-sjabloon
 
@@ -77,7 +77,7 @@ az deployment group create \
 
 ---
 
-In de uitvoer voor de opdracht implementatie ziet u een object dat vergelijkbaar is met:
+In de uitvoer voor de opdracht implementatie ziet u een object dat vergelijkbaar is met het volgende voorbeeld alleen als de uitvoer in JSON-indeling is:
 
 ```json
 {

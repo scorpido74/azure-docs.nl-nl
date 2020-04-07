@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 90adb3b973b6952d10ef89e4b40d0fc68489e224
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061098"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756023"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -21,7 +21,7 @@ AzCopy is een command-line hulpprogramma dat u gebruiken om blobs of bestanden t
 > [!NOTE]
 > AzCopy **V10** is de momenteel ondersteunde versie van AzCopy.
 >
-> Als u AzCopy **v8.1**wilt gebruiken, raadpleegt u de vorige versie van de sectie [AzCopy](#previous-version) van dit artikel gebruiken.
+> Als u een vorige versie van AzCopy wilt gebruiken, raadpleegt u [de vorige versie van azcopy gebruiken](#previous-version) van dit artikel.
 
 <a id="download-and-install-azcopy" />
 
@@ -308,11 +308,11 @@ Storage Explorer gebruikt uw accountsleutel om bewerkingen uit te voeren, dus na
 
 ## <a name="use-the-previous-version-of-azcopy"></a>De vorige versie van AzCopy gebruiken
 
-Als u de vorige versie van AzCopy (AzCopy v8.1) moet gebruiken, raadpleegt u een van de volgende koppelingen:
+Als u de vorige versie van AzCopy wilt gebruiken, raadpleegt u een van de volgende koppelingen:
 
 - [AzCopy in Windows (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
 
-- [AzCopy in Linux (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+- [AzCopy op Linux (v7)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
 
 ## <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy configureren, optimaliseren en oplossen
 

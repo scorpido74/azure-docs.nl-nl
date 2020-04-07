@@ -3,12 +3,12 @@ title: Azure-bestandsshares herstellen met de Azure CLI
 description: Meer informatie over het gebruik van de Azure CLI om back-upazure-bestandsshares te herstellen in de kluis Recovery Services
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 63b2be2fe24c1274ed1581b7b849de578c978842
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 980044011e3417a2aff8447a939e02299923da38
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76931038"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757088"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Azure-bestandsshares herstellen met de Azure CLI
 
@@ -19,6 +19,9 @@ Aan het einde van dit artikel leert u hoe u de volgende bewerkingen uitvoert met
 * Herstelpunten weergeven voor een back-up azure-bestandsshare.
 * Een volledig Azure-bestandsshare herstellen.
 * Afzonderlijke bestanden of mappen herstellen.
+
+>[!NOTE]
+> Azure Backup ondersteunt nu het herstellen van meerdere bestanden of mappen naar het origineel of een alternatieve locatie met Azure CLI. Raadpleeg de sectie [Meerdere bestanden of mappen herstellen naar de oorspronkelijke of alternatieve locatie](#restore-multiple-files-or-folders-to-original-or-alternate-location) sectie van dit document voor meer informatie.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +45,7 @@ Gebruik de cmdlet van de [AZ-back-upherstelpunt](https://docs.microsoft.com/cli/
 In het volgende voorbeeld wordt de lijst met herstelpunten opgehaald voor het *azurefiles-bestandsaandeel* in het account voor opslag van *afsaccount.*
 
 ```azurecli-interactive
-az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --backup-management-type azurestorage --item-name “AzureFileShare;azurefiles” --workload-type azurefileshare --out table
+az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --backup-management-type azurestorage --item-name "AzureFileShare;azurefiles" --workload-type azurefileshare --out table
 ```
 
 U de vorige cmdlet ook uitvoeren met de vriendelijke naam voor de container en het item door de volgende twee extra parameters op te geven:
@@ -82,7 +85,7 @@ Wanneer u herstelt naar een oorspronkelijke locatie, hoeft u geen doelgerelateer
 In het volgende voorbeeld wordt de cmdlet [az-back-backup restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) gebruikt, waarbij de herstelmodus is ingesteld op *de oorspronkelijke locatie* om het bestandsaandeel *azurefiles* op de oorspronkelijke locatie te herstellen. U gebruikt het herstelpunt 932883129628959823, dat u hebt verkregen in [herstelpunten ophalen voor het Azure-bestandsaandeel:](#fetch-recovery-points-for-the-azure-file-share)
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -105,7 +108,7 @@ U deze optie gebruiken om een bestandsshare te herstellen naar een alternatieve 
 In het volgende voorbeeld wordt [az backup restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) met herstelmodus gebruikt als *alternatieve locatie* om het *azurefiles-bestandsaandeel* in het account *van afsaccount* opslag te herstellen naar het *azurefiles1"-bestandsshare* in het *account1-opslagaccount.*
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -138,7 +141,7 @@ Gebruik de cmdlet [az-back-uprestore restore-azurefiles](https://docs.microsoft.
 In het volgende voorbeeld wordt het bestand *RestoreTest.txt* op de oorspronkelijke locatie hersteld: de bestandsshare *van AzureFiles.*
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
 ```
 
 ```output
@@ -160,7 +163,7 @@ Als u specifieke bestanden of mappen wilt herstellen naar een alternatieve locat
 In het volgende voorbeeld wordt het bestand *RestoreTest.txt* dat oorspronkelijk in het *azurefiles-bestand* is weergegeven, hersteld naar een alternatieve locatie: de map *restoredata* in het *azurefiles1-bestandsshare* dat wordt gehost in het *opslagaccount 1.File*
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
 ```
 
 ```output
@@ -170,6 +173,28 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 ```
 
 Het kenmerk **Naam** in de uitvoer komt overeen met de naam van de taak die is gemaakt door de back-upservice voor uw herstelbewerking. Gebruik de [az-back-upfunctie](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet om de status van de taak bij te houden.
+
+## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Meerdere bestanden of mappen herstellen naar de oorspronkelijke of alternatieve locatie
+
+Als u herstel voor meerdere items wilt uitvoeren, geeft u de waarde voor de parameter **bron-file-path** door als **spatiegescheiden** paden van alle bestanden of mappen die u wilt herstellen.
+
+In het volgende voorbeeld worden de *Report.docx-bestanden* *Restore.txt* en AFS op de oorspronkelijke locatie hersteld.
+
+```azurecli-interactive
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932889937058317910 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore Test.txt" "AFS Testing Report.docx" --resolve-conflict overwrite  --out table
+```
+
+De uitvoer ziet er ongeveer als volgt uit:
+
+```output
+Name                                          ResourceGroup
+------------------------------------          ---------------
+649b0c14-4a94-4945-995a-19e2aace0305          azurefiles
+```
+
+Het kenmerk **Naam** in de uitvoer komt overeen met de naam van de taak die is gemaakt door de back-upservice voor uw herstelbewerking. Gebruik de [az-back-upfunctie](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet om de status van de taak bij te houden.
+
+Als u meerdere items naar een alternatieve locatie wilt herstellen, gebruikt u de bovenstaande opdracht door doelgerelateerde parameters op te geven zoals uitgelegd in de sectie [Afzonderlijke bestanden of mappen herstellen naar een alternatieve locatiesectie.](#restore-individual-files-or-folders-to-an-alternate-location)
 
 ## <a name="next-steps"></a>Volgende stappen
 

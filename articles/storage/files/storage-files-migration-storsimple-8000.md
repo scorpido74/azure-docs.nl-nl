@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7e5f70d0323aa5c502491ab99db303fde31ade83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528622"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755045"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100- en 8600-migratie naar Azure File Sync
 
@@ -146,7 +146,10 @@ De totale grootte van de gegevens is minder een knelpunt - het is het aantal ite
 > Zorg ervoor dat de VM wordt geïmplementeerd in dezelfde Azure-regio als het virtuele apparaat StorSimple 8020. Als u in het kader van deze migratie ook de regio van uw cloudgegevens moet wijzigen uit de regio waarin deze momenteel is opgeslagen, u dat in een later stadium doen wanneer u Azure-bestandsshares indient.
 
 > [!IMPORTANT]
-> Om te optimaliseren voor prestaties, implementeert u een **zeer snelle OS-schijf** voor uw cloud-VM. U slaat de synchronisatiedatabase op de OS-schijf op voor al uw gegevensvolumes. Zorg er bovendien voor dat u een **grote OS-schijf maakt.** Afhankelijk van het aantal items (bestanden en mappen) op uw StorSimple-volumes heeft de OS-schijf mogelijk een **paar honderd GiB-ruimte** nodig om de synchronisatiedatabase te kunnen aanpassen.
+> Vaak wordt een on-premises Windows Server gebruikt om uw on-premises StorSimple-toestel te bedienen. In een dergelijke configuratie is het mogelijk om de functie "[Gegevensdeduplicatie](https://docs.microsoft.com/windows-server/storage/data-deduplication/install-enable)" in te schakelen op die Windows Server. **Als u Gegevensdeduplicatie met uw StorSimple-gegevens hebt gebruikt, moet u ervoor zorgen dat u ook gegevensdeduplicatie inschakelt op deze Azure VM.** Verwar deze ontdubbeling op bestandsniveau niet met storSimples ingebouwde deduplicatie op blokniveau, waarvoor geen actie nodig is.
+
+> [!IMPORTANT]
+> Als u wilt optimaliseren voor prestaties, implementeert u een **snelle osschijf** voor uw cloud-vm. U slaat de synchronisatiedatabase op de OS-schijf op voor al uw gegevensvolumes. Zorg er bovendien voor dat u een **grote OS-schijf maakt.** Afhankelijk van het aantal items (bestanden en mappen) op uw StorSimple-volumes heeft de OS-schijf mogelijk een **paar honderd GiB-ruimte** nodig om de synchronisatiedatabase te kunnen aanpassen.
 
 ### <a name="expose-the-storsimple-8020-volumes-to-the-azure-vm"></a>De StorSimple 8020-volumes blootstellen aan de Azure VM
 
@@ -424,7 +427,7 @@ Raadpleeg het robocopy log bestand(en) om te zien of bestanden zijn achtergelate
 
 Het is waarschijnlijk nodig om de SMB-aandelen te maken op de Windows Server die u eerder op de StorSimple-gegevens had. U deze stap vooraf laden en dit eerder doen om hier geen tijd te verliezen, maar u moet ervoor zorgen dat er voor dit punt geen wijzigingen in bestanden plaatsvinden op de Windows-server.
 
-Als u een DFS-N-implementatie hebt, u de DFN-naamruimten naar de nieuwe locatie van de servermap wijzen. Als u geen DFS-N-implementatie hebt en u uw 8100 8600-toestel lokaal hebt geopend met een Windows Server, u die server van het domein halen en u uw nieuwe Windows Server met AFS aansluiten bij het domein, en deze server dezelfde servernaam geven als de oude server , en dezelfde namen delen, dan blijft de cut-over naar de nieuwe server transparant voor uw gebruikers, groepsbeleid of scripts.
+Als u een DFS-N-implementatie hebt, u de DFN-naamruimten naar de nieuwe locatie van de servermap wijzen. Als u geen DFS-N-implementatie hebt en u uw 8100 8600-toestel lokaal met een Windows Server hebt geplaatst, u die server van het domein halen en u uw nieuwe Windows Server met AFS aansluiten bij het domein, dezelfde servernaam geven als de oude server en dezelfde sharenamen, dan blijft de cut-over naar de nieuwe server transparant voor uw gebruikers , groepsbeleid of scripts.
 
 ## <a name="phase-7-deprovision"></a>Fase 7: Deprovision
 

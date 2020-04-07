@@ -11,30 +11,34 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5857a10d0aaf0d0c37ab55a2d0d29e5315340c9f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 9c4f08b143ab4a0d3e780f68f8d5ab823d4eae12
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633655"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745362"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Best practices ontwikkelen voor Synapse SQL-pool
-In dit artikel worden richtlijnen en aanbevolen procedures beschreven terwijl u uw SQL-pooloplossing ontwikkelt. 
 
-## <a name="tune-query-performance-with-new-product-enhancements"></a>Queryprestaties afstemmen met nieuwe productverbeteringen  
+In dit artikel worden richtlijnen en aanbevolen procedures beschreven terwijl u uw SQL-pooloplossing ontwikkelt.
+
+## <a name="tune-query-performance-with-new-product-enhancements"></a>Queryprestaties afstemmen met nieuwe productverbeteringen
+
 - [Prestaties afstemmen met gerealiseerde weergaven](performance-tuning-materialized-views.md)
 - [Prestaties afstemmen met geordende en geclusterde columnstore-index](performance-tuning-ordered-cci.md)
 - [Prestaties afstemmen door resultatensets op te slaan in de cache](performance-tuning-result-set-caching.md)
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Kosten verlagen met onderbreken en schalen
-Zie het artikel [Compute beheren](sql-data-warehouse-manage-compute-overview.md) voor meer informatie over het verlagen van de kosten door te pauzeren en te schalen. 
+
+Zie het artikel [Compute beheren](sql-data-warehouse-manage-compute-overview.md) voor meer informatie over het verlagen van de kosten door te pauzeren en te schalen.
 
 ## <a name="maintain-statistics"></a>Statistieken bijhouden
+
 SQL-pool kan worden geconfigureerd om automatisch statistieken over kolommen te detecteren en te maken.  De queryplannen die door de optimizer zijn gemaakt, zijn slechts zo goed als de beschikbare statistieken.  
 
-We raden u aan AUTO_CREATE_STATISTICS voor uw databases in te schakelen en de statistieken dagelijks of na elke belasting up-to-date te houden om ervoor te zorgen dat de statistieken over kolommen die in uw query's worden gebruikt, altijd up-to-date zijn. 
+We raden u aan AUTO_CREATE_STATISTICS voor uw databases in te schakelen en de statistieken dagelijks of na elke belasting up-to-date te houden om ervoor te zorgen dat de statistieken over kolommen die in uw query's worden gebruikt, altijd up-to-date zijn.
 
-Als u merkt dat het te lang duurt om al uw statistieken bij te werken, wilt u misschien proberen selectiever te zijn over welke kolommen frequente statistische updates nodig hebben. Zo wilt u datumkolommen, waar nieuwe gegevens kunnen zijn toegevoegd, misschien dagelijks bijwerken. 
+Als u merkt dat het te lang duurt om al uw statistieken bij te werken, wilt u misschien proberen selectiever te zijn over welke kolommen frequente statistische updates nodig hebben. Zo wilt u datumkolommen, waar nieuwe gegevens kunnen zijn toegevoegd, misschien dagelijks bijwerken.
 
 > [!TIP]
 > U profiteert het meeste voordeel door bijgewerkte statistieken te hebben over kolommen die betrokken zijn bij joins, kolommen die worden gebruikt in de WHERE-component en kolommen in GROEP BY.
@@ -42,6 +46,7 @@ Als u merkt dat het te lang duurt om al uw statistieken bij te werken, wilt u mi
 Zie ook [Tabelstatistieken beheren](sql-data-warehouse-tables-statistics.md), [STATISTIEKEN MAKEN](sql-data-warehouse-tables-statistics.md)EN [STATISTIEKEN BIJWERKEN](sql-data-warehouse-tables-statistics.md#update-statistics).
 
 ## <a name="hash-distribute-large-tables"></a>Grote tabellen distribueren met hash
+
 Tabellen worden standaard gedistribueerd middels Round Robin.  Dit ontwerp maakt het gemakkelijk voor gebruikers om aan de slag te gaan met het maken van tabellen zonder te hoeven beslissen hoe hun tabellen moeten worden gedistribueerd.  
 
 Round Robin-tabellen leveren voldoende prestaties voor sommige workloads, maar in de meeste gevallen leidt het selecteren van een distributiekolom tot veel betere prestaties.  Het meestvoorkomende geval waarin een tabel die per kolom is gedistribueerd veel beter presteert dan een Round Robin-tabel, is wanneer twee grote feitentabellen worden samengevoegd.  
@@ -53,6 +58,7 @@ Zorg er bij het laden van een distributietabel voor dat uw inkomende gegevens ni
 Zie ook [Tabeloverzicht](sql-data-warehouse-tables-overview.md), [Tabeldistributie,](sql-data-warehouse-tables-distribute.md) [Tabeldistributie selecteren,](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/) [TABEL MAKEN](sql-data-warehouse-tables-overview.md)en [TABEL MAKEN ALS SELECT](sql-data-warehouse-develop-ctas.md)
 
 ## <a name="do-not-over-partition"></a>Niet te veel partities maken
+
 Hoewel het partitioneren van gegevens effectief kan zijn voor het bijhouden van uw gegevens door het schakelen van partities of het optimaliseren van scans door met partitieverwijdering, kan het hebben van te veel partities uw query's vertragen.  
 
 Vaak werkt een hoge granulariteitspartitioneringsstrategie die goed kan werken op SQL Server mogelijk niet goed op SQL-pool.  Te veel partities kunnen ook geclusterde columnstore-indexen minder effectief maken als elke partitie minder dan 1 miljoen rijen bevat.  
@@ -65,6 +71,7 @@ Houd er rekening mee dat SQL-pool achter de schermen uw gegevens voor u in 60 da
 Zie ook [Tabelpartitionering](sql-data-warehouse-tables-partition.md).
 
 ## <a name="minimize-transaction-sizes"></a>Transactiegrootten minimaliseren
+
 De instructies INSERT, UPDATE en DELETE worden in een transactie uitgevoerd en wanneer ze mislukken, moeten ze worden teruggedraaid.  Om de kans op een lange terugdraaiactie te verkleinen, kunt u transactiegrootten minimaliseren waar mogelijk.  Dit kan door de instructies INSERT, UPDATE en DELETE op te delen.  
 
 Als u bijvoorbeeld een INSERT hebt, waarvan u verwacht dat deze 1 uur duurt, wanneer dat mogelijk is, u de INSERT opsplitsen in vier delen, die elk in 15 minuten worden uitgevoerd.  Maak gebruik van speciale minimal logging-cases, zoals CTAS, TRUNCATE, DROP TABLE of INSERT om tabellen te legen, om het terugdraairisico te verminderen.  
@@ -73,9 +80,10 @@ Een andere manier om terugdraaiacties te voorkomen, is door alleen-metagegevensb
 
 Voor niet-gepartitioneerde tabellen u overwegen een CTAS te gebruiken om de gegevens te schrijven die u in een tabel wilt bewaren in plaats van Delete te gebruiken.  Als een CTAS even veel tijd in beslag neemt, is het een veel veiligere bewerking om uit te voeren omdat deze minimale transactielogboekregistratie heeft en indien nodig snel kan worden geannuleerd.
 
-Zie ook [Transacties begrijpen,](sql-data-warehouse-develop-transactions.md) [Transacties optimaliseren,](sql-data-warehouse-develop-best-practices-transactions.md) [Tabelpartitionering,](sql-data-warehouse-tables-partition.md) [TRUNCATE-tabel,](https://msdn.microsoft.com/library/ms177570.aspx) [WIJZIGINGSTABEL](https://msdn.microsoft.com/library/ms190273.aspx)en [Tabel maken als selecteren (CTAS).](sql-data-warehouse-develop-ctas.md)
+Zie ook [Transacties begrijpen,](sql-data-warehouse-develop-transactions.md) [Transacties optimaliseren,](sql-data-warehouse-develop-best-practices-transactions.md) [Tabelpartitionering,](sql-data-warehouse-tables-partition.md) [TRUNCATE-tabel,](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [WIJZIGINGSTABEL](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)en [Tabel maken als selecteren (CTAS).](sql-data-warehouse-develop-ctas.md)
 
 ## <a name="use-the-smallest-possible-column-size"></a>De kleinst mogelijke kolomgrootte gebruiken
+
 Wanneer u uw DDL definieert, verbetert het gebruik van het kleinste gegevenstype dat uw gegevens ondersteunt, de queryprestaties.  Deze aanpak is vooral belangrijk voor char en VARCHAR kolommen.  
 
 Als de langste waarde in een kolom 25 tekens is, definieert u uw kolom als VARCHAR(25).  U kunt alle tekenkolommen beter niet volgens een grote standaardlengte definiëren.  Definieer daarnaast kolommen als VARCHAR als dat alles is wat nodig is in plaats van NVARCHAR.
@@ -83,6 +91,7 @@ Als de langste waarde in een kolom 25 tekens is, definieert u uw kolom als VARCH
 Zie ook [Tabeloverzicht](sql-data-warehouse-tables-overview.md), [Tabelgegevenstypen](sql-data-warehouse-tables-data-types.md)en [TABEL MAKEN](sql-data-warehouse-tables-overview.md).
 
 ## <a name="optimize-clustered-columnstore-tables"></a>Geclusterde columnstore-tabellen optimaliseren
+
 Geclusterde columnstore-indexen zijn een van de meest efficiënte manieren waarop u uw gegevens opslaan in SQL-groep.  Tabellen in SQL-groep worden standaard gemaakt als Clustered ColumnStore.  
 
 > [!NOTE]
@@ -98,16 +107,17 @@ Aangezien kolomarchieftabellen over het algemeen geen gegevens in een gecomprime
 
 Voor een tabel met minder dan 60 miljoen rijen heeft het mogelijk geen zin om een kolomarchiefindex te hebben.  Het is misschien ook niet verkeerd.  
 
-Als u uw gegevens partitioneert, houd er dan ook rekening mee dat elke partitie 1 miljoen rijen nodig heeft om voordeel te halen uit een geclusterde columnstore-index.  Als een tabel 100 partities heeft, heeft deze ten minste 6 miljard rijen nodig om voordeel te halen uit een geclusterde columnstore (60 distributies * 100 partities * 1 miljoen rijen).  
+Als u uw gegevens partitioneert, houd er dan ook rekening mee dat elke partitie 1 miljoen rijen nodig heeft om voordeel te halen uit een geclusterde columnstore-index.  Als een tabel 100 partities heeft, moet deze ten minste 6 miljard rijen hebben om te profiteren van een geclusterde kolommenopslag (60 distributies *100 partities* 1 miljoen rijen).  
 
 Als uw tabel in dit voorbeeld geen 6 miljoen rijen heeft, kunt u het aantal partities verminderen of overwegen een heap-tabel te gebruiken.  U kunt ook experimenteren om te zien of u de prestaties kunt verbeteren met een heap-tabel met secondaire sleutels in plaats van een columnstore-tabel.
 
 > [!TIP]
 > Query’s worden sneller uitgevoerd voor een columnstore-tabel als u alleen de kolommen selecteert die u nodig hebt.  
 
-Zie ook [Tabelindexen](sql-data-warehouse-tables-index.md), [kolomarchiefindexengids](https://msdn.microsoft.com/library/gg492088.aspx)en[Indexen van kolomarchief opnieuw opbouwen](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Zie ook [Tabelindexen](sql-data-warehouse-tables-index.md), [kolomarchiefindexengids](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)en [Indexen van kolomarchief opnieuw opbouwen](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Als u niet vindt wat u zoekt in dit artikel, probeert u de 'Zoeken naar documenten' aan de linkerkant van deze pagina te gebruiken om alle Azure Synapse-documenten te doorzoeken.  
 
 Het [Azure Synapse Forum](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) is een plek voor u om vragen te plaatsen aan andere gebruikers en aan de Azure Synapse Product Group.  We controleren het forum regelmatig om er zeker van te zijn dat uw vragen worden beantwoord door een andere gebruiker of een van ons.  
@@ -115,5 +125,3 @@ Het [Azure Synapse Forum](https://social.msdn.microsoft.com/Forums/sqlserver/hom
 We hebben ook een [Stack Overflow-forum Azure SQL Data Warehouse](https://stackoverflow.com/questions/tagged/azure-sqldw) voor als u uw vragen liever in Stack Overflow stelt.
 
 Gebruik de pagina [Feedback van Azure Synapse](https://feedback.azure.com/forums/307516-sql-data-warehouse) om functieaanvragen in te dienen.  Het toevoegen van aanvragen of het stemmen op andere aanvragen helpt ons prioriteit te geven aan bepaalde functies.
-
-

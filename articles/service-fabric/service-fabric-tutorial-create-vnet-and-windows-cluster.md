@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u een Windows Service Fabric-cluster
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75551706"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756050"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Zelfstudie: Een ServiceFabric-cluster implementeren waarop Windows wordt uitgevoerd in een virtueel Azure-netwerk
 
@@ -156,7 +156,7 @@ Het parameterbestand [azuredeploy.parameters.json][parameters] bepaalt veel waar
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Clientverificatie via Azure Active Directory instellen
 Voor Service Fabric-clusters die zijn geïmplementeerd in een openbaar netwerk dat wordt gehost op Azure, is de aanbeveling voor wederzijdse verificatie van client-naar-knooppunt:
 * Gebruik Azure Active Directory voor clientidentiteit.
-* Gebruik een certificaat voor serveridentiteit en SSL-versleuteling van HTTP-communicatie.
+* Gebruik een certificaat voor serveridentiteit en TLS-versleuteling van HTTP-communicatie.
 
 Het instellen van Azure Active Directory (Azure AD) om clients voor een Service Fabric-cluster te verifiëren, moet worden uitgevoerd voordat [het cluster wordt gemaakt.](#createvaultandcert) Azure Active Directory maakt het beheren van toegang tot toepassingen door organisaties (bekend als tenants) mogelijk. 
 

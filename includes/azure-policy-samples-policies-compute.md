@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/02/2020
+ms.date: 04/03/2020
 ms.author: dacoulte
-ms.openlocfilehash: 0fb6bd68026684599d94270906f1792e084ec5f6
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: e65d24b30cecdbabefabc652c7c864205414d5a6
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80624477"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758139"
 ---
 |Name |Beschrijving |Effect(en) |Versie |GitHub |
 |---|---|---|---|---|
 |[Toegestane virtuele machine SKU's](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcccc23c7-8427-4f53-ad12-b6a63eb452b3) |Met dit beleid kunt u een set SKU's voor virtuele machines opgeven die uw organisatie mag implementeren. |Weigeren |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSkusAllowed_Deny.json)
-|[Virtuele machines controleren zonder herstel van noodgevallen geconfigureerd](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Controleer virtuele machines die geen noodherstel hebben geconfigureerd. Ga voor meer informatie https://aka.ms/asr-docover herstel na noodgevallen naar . |auditIfNotExists |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json)
+|[Virtuele machines controleren zonder herstel van noodgevallen geconfigureerd](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Controleer virtuele machines die geen noodherstel hebben geconfigureerd. Ga voor meer informatie [https://aka.ms/asr-doc](https://aka.ms/asr-doc)over herstel na noodgevallen naar . |auditIfNotExists |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json)
 |[VM's controleren die geen beheerde schijven gebruiken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F06a78e20-9358-41c9-923c-fb736d382a4d) |Met dit beleid worden VM's gecontroleerd die geen beheerde schijven gebruiken |Audit |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMRequireManagedDisk_Audit.json)
 |[Standaard Microsoft IaaSAntimalware-extensie implementeren voor Windows Server](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2835b622-407b-4114-9198-6f7064cbe0dc) |Met dit beleid wordt een Microsoft IaaSAntimalware-extensie met een standaardconfiguratie geïmplementeerd wanneer een VM niet is geconfigureerd met de antimalware-extensie. |deployIfNotExists |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMAntimalwareExtension_Deploy.json)
 |[Diagnostische logboeken in virtuele machineschaalsets moeten zijn ingeschakeld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7c1b1214-f927-48bf-8882-84f0af6588b1) |Het wordt aanbevolen om logboeken in te schakelen, zodat activiteitensporen opnieuw kunnen worden gemaakt wanneer onderzoeken nodig zijn in het geval van een incident of een compromis. |AuditIfNotExists, Uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ServiceFabric_and_VMSS_AuditVMSSDiagnostics.json)
