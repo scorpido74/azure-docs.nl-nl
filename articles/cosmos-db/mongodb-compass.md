@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 author: LuisBosquez
 ms.author: lbosq
-ms.openlocfilehash: 5a3ec79b27231f781b5e4104922993de38c7fe4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c683ec0c4b3a536b0627a7c1c8abf28ee4f83663
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063654"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757027"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB Compass gebruiken om verbinding te maken met de API van Azure Cosmos DB voor MongoDB
 
@@ -22,10 +22,13 @@ Cosmos DB is microsoft's wereldwijd gedistribueerde multi-model database service
 
 ## <a name="pre-requisites"></a>Vereisten
 
-Als u verbinding wilt maken met uw Cosmos DB-account met Robo 3T, moet u het:
+Als u verbinding wilt maken met uw Cosmos DB-account met MongoDB Compass, moet u het:
 
 * [Compass](https://www.mongodb.com/download-center/compass?jmp=hero) downloaden en installeren
 * Gegevens over de Cosmos [DB-verbindingstekenreeks](connect-mongodb-account.md)
+
+> [!NOTE]
+> Momenteel wordt de API van Azure Cosmos DB voor MongoDB Server versie 3.2 ondersteund met MongoDB Compass.
 
 ## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Verbinding maken met de API van Cosmos DB voor MongoDB
 

@@ -2,18 +2,18 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/02/2020
+ms.date: 04/03/2020
 ms.author: dacoulte
-ms.openlocfilehash: 3b40f4740d4d7aedc6a4997662a4738293721817
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: ecca4208d8c3d471e3ff4d1fc951888dcf18255d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80623975"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758380"
 ---
 |Name |Beschrijving |Effect(en) |Versie |GitHub |
 |---|---|---|---|---|
-|[Een aangepast IPsec/IKE-beleid moet worden toegepast op alle Azure-verbindingen voor virtuele netwerkgateway](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Dit beleid zorgt ervoor dat alle Azure virtual network gateway-verbindingen gebruik maken van een aangepast Internet Protocol Security(Ipsec)/Internet Key Exchange(IKE)-beleid. Ondersteunde algoritmen en belangrijke sterke punten -https://aka.ms/AA62kb0 |Audit, Uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json)
+|[Een aangepast IPsec/IKE-beleid moet worden toegepast op alle Azure-verbindingen voor virtuele netwerkgateway](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Dit beleid zorgt ervoor dat alle Azure virtual network gateway-verbindingen gebruik maken van een aangepast Internet Protocol Security(Ipsec)/Internet Key Exchange(IKE)-beleid. Ondersteunde algoritmen en belangrijke sterke punten -[https://aka.ms/AA62kb0](https://aka.ms/AA62kb0) |Audit, Uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json)
 |[App Service moet een eindpunt voor virtuele netwerkservice gebruiken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d21331d-a4c2-4def-a9ad-ee4e1e023beb) |Met dit beleid wordt elke App-service gecontroleerd die niet is geconfigureerd voor het gebruik van een eindpunt voor virtuele netwerkservice. |AuditIfNotExists, Uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_AppService_AuditIfNotExists.json)
 |[Azure VPN-gateways mogen geen 'basic' SKU gebruiken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345b6c3-24bd-4c93-9bbb-7e5e49a17b78) |Dit beleid zorgt ervoor dat VPN-gateways geen 'basic' SKU gebruiken. |Audit, Uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_BasicSKU_Audit.json)
 |[Containerregistry moet een eindpunt van de virtuele netwerkservice gebruiken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78) |Met dit beleid wordt elk containerregister gecontroleerd dat niet is geconfigureerd voor het gebruik van een eindpunt voor virtuele netwerkservice. |Audit, Uitgeschakeld |1.0.0-preview |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ContainerRegistry_Audit.json)

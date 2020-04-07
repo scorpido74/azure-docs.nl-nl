@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 695773da624bc8d4ccff09119d64fc43319ff488
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d11be1d971922095d4a1ace1c81c763134b4e58c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246429"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743334"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Wijzigingen in de naam van de gebruikersnaam plannen en oplossen in Azure Active Directory
 
@@ -58,11 +58,11 @@ Bsimon@contoso.com aanBritta.Simon@contoso.com
 
    * Britta.Simon@contoso.comAanBritta.Simon@contosolabs.com <br>
      of<br>
-    *   Britta.Simon@corp.contoso.comAanBritta.Simon@labs.contoso.com 
+    * Britta.Simon@corp.contoso.comAanBritta.Simon@labs.contoso.com 
 
 Wijzig de UPN van de gebruiker telkens wanneer het primaire e-mailadres voor een gebruiker wordt bijgewerkt. Ongeacht de reden voor de e-mailwijziging, de UPN moet altijd worden bijgewerkt om aan te passen.
 
-Controleer tijdens de eerste synchronisatie van Active Directory naar Azure AD of de e-mails van de gebruikers identiek zijn aan hun UPN's
+Controleer tijdens de eerste synchronisatie van Active Directory naar Azure AD of de e-mails van de gebruikers identiek zijn aan hun UPN's.
 
 ### <a name="upns-in-active-directory"></a>UPN's in Active Directory
 
@@ -100,7 +100,7 @@ Als de waarde van het kenmerk userPrincipalName niet overeenkomt met een geverif
 
 ### <a name="roll-out-bulk-upn-changes"></a>Wijzigingen in bulk UPN
 
-Volg de[best practices voor een pilot](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans) voor bulk UPN-wijzigingen. Heb ook een getest rollback-plan voor het terugdraaien van UPN's als u problemen vindt die niet snel kunnen worden opgelost. Zodra uw pilot wordt uitgevoerd, u beginnen met het targeten van kleine sets gebruikers met verschillende organisatorische rollen en hun specifieke sets apps of apparaten.
+Volg de [best practices voor een pilot](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans) voor bulk UPN-wijzigingen. Heb ook een getest rollback-plan voor het terugdraaien van UPN's als u problemen vindt die niet snel kunnen worden opgelost. Zodra uw pilot wordt uitgevoerd, u beginnen met het targeten van kleine sets gebruikers met verschillende organisatorische rollen en hun specifieke sets apps of apparaten.
 
 Gaan door deze eerste subset van gebruikers geeft u een goed idee van wat gebruikers moeten verwachten als onderdeel van de verandering. Voeg deze informatie toe aan de communicatie van uw gebruikers.
 
@@ -108,7 +108,7 @@ Maak een gedefinieerde procedure voor het wijzigen van UPN's op individuele gebr
 
 In de volgende secties worden mogelijke bekende problemen en tijdelijke oplossingen beschreven wanneer UPN's worden gewijzigd.
 
-## <a name="user-provisioning-known-issues-and-workarounds"></a>gebruikersinrichting bekende problemen en tijdelijke oplossingen
+## <a name="apps-known-issues-and-workarounds"></a>Bekende problemen en tijdelijke oplossingen voor apps
 
 [Software as a service (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) en Line of Business (LoB)-toepassingen vertrouwen vaak op UPN's om gebruikers te vinden en gebruikersprofielinformatie op te slaan, inclusief rollen. Toepassingen die [Just in Time-inrichting](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning) gebruiken om een gebruikersprofiel te maken wanneer gebruikers zich voor de eerste keer aanmelden bij de app, kunnen worden beïnvloed door wijzigingen in UPN.
 
@@ -117,6 +117,7 @@ Als u de UPN van een gebruiker wijzigt, kan de relatie tussen de Azure AD-gebrui
 
 **Oplossing**<br>
 [Met Azure AD Automated User Provisioning](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) u automatisch uw gebruikersidentiteiten maken, onderhouden en verwijderen in ondersteunde cloudtoepassingen. Het configureren van geautomatiseerde gebruikersinrichting voor uw toepassingen werkt UPN's automatisch bij op de toepassingen. Test de toepassingen als onderdeel van de progressieve implementatie om te valideren dat ze niet worden beïnvloed door UPN-wijzigingen.
+Als u een ontwikkelaar bent, u overwegen [SCIM-ondersteuning toe te voegen aan uw toepassing](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) om automatische gebruikersvoorziening vanuit Azure Active Directory in te schakelen. 
 
 ## <a name="managed-devices-known-issues-and-workarounds"></a>Bekende problemen en tijdelijke oplossingen voor beheerde apparaten
 
@@ -130,7 +131,7 @@ Door [uw apparaten naar Azure AD te brengen,](https://docs.microsoft.com/azure/a
 Gebruikers kunnen problemen ondervinden met toepassingen die afhankelijk zijn van Azure AD voor verificatie.
 
 **Oplossing** <br>
-Geef voldoende tijd voor de UPN-wijziging om te synchroniseren met Azure AD. Zodra u controleert of de nieuwe UPN wordt weergegeven in de Azure AD-portal, vraagt u de gebruiker de tegel 'Andere gebruiker' te selecteren om zich aan te melden met zijn nieuwe UPN. u ook verifiëren via [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0). Nadat u zich hebt aangemeld bij hun nieuwe UPN, worden verwijzingen naar de oude UPN mogelijk nog steeds weergegeven in de Windows-instelling 'Toegang tot werk of school'.
+Geef voldoende tijd voor de UPN-wijziging om te synchroniseren met Azure AD. Zodra u controleert of de nieuwe UPN wordt weergegeven in de Azure AD-portal, vraagt u de gebruiker de tegel 'Andere gebruiker' te selecteren om zich aan te melden met zijn nieuwe UPN. U ook verifiëren via [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0). Nadat u zich hebt aangemeld bij hun nieuwe UPN, worden verwijzingen naar het oude UPN mogelijk nog steeds weergegeven in de Windows-instelling 'Toegang tot werk of school'.
 
 ![Schermafbeelding van geverifieerde domeinen](./media/howto-troubleshoot-upn-changes/other-user.png)
 
@@ -142,7 +143,7 @@ Geef voldoende tijd voor de UPN-wijziging om te synchroniseren met Azure AD. Zod
 
 Windows 10 Hybrid Azure AD-apparaten krijgen waarschijnlijk te maken met onverwachte opnieuw opstarten en toegangsproblemen.
 
-Als gebruikers zich bij Windows aanmelden voordat de nieuwe UPN is gesynchroniseerd met Azure AD of een bestaande Windows-sessie blijven gebruiken, kunnen ze eenmalige aanmeldingsproblemen ondervinden bij toepassingen die Azure AD gebruiken voor verificatie als voorwaardelijke toegang is geconfigureerd om het gebruik van hybride samengevoegde apparaten af te dwingen om toegang te krijgen tot bronnen. 
+Als gebruikers zich bij Windows aanmelden voordat de nieuwe UPN is gesynchroniseerd met Azure AD, of een bestaande Windows-sessie blijven gebruiken, kunnen ze eenmalige aanmeldingsproblemen ondervinden bij toepassingen die Azure AD gebruiken voor verificatie als Voorwaardelijke toegang is geconfigureerd om het gebruik van hybride samengevoegde apparaten af te dwingen om toegang te krijgen tot bronnen. 
 
 Daarnaast verschijnt het volgende bericht, waardoor een herstart na een minuut wordt geforceerd. 
 
@@ -166,7 +167,7 @@ De [Microsoft Authenticator-app](https://docs.microsoft.com/azure/active-directo
 
 * Fungeren als verificatiemakelaar op iOS- en Android-apparaten om één aanmelding te bieden voor toepassingen die [brokered-verificatie](https://docs.microsoft.com/azure/active-directory/develop/brokered-auth) gebruiken
 
-* Apparaatregistratie (ook bekend als Workplace Joined) bij Azure AD, wat een vereiste is voor andere functies zoals Intune-appbeveiliging en apparaatregistratie/-beheer,
+* Apparaatregistratie (ook bekend als Workplace Join) bij Azure AD, wat een vereiste is voor andere functies zoals Intune-appbeveiliging en apparaatregistratie/-beheer,
 
 * Telefoonaanmelden, waarvoor MFA en apparaatregistratie vereist zijn.
 
@@ -174,15 +175,13 @@ De [Microsoft Authenticator-app](https://docs.microsoft.com/azure/active-directo
 
 De Microsoft Authenticator-app biedt een out-of-band verificatieoptie. In plaats van een geautomatiseerd telefoongesprek of sms naar de gebruiker te plaatsen tijdens het aanmelden, pusht [Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) een melding naar de Microsoft Authenticator-app op de smartphone of tablet van de gebruiker. De gebruiker tikt gewoon op Goedkeuren (of voert een pincode of biometrische gegevens in en tikt op 'Authenticeren') in de app om de aanmelding te voltooien.
 
-Wanneer u de UPN van een gebruiker wijzigt, kunnen mobiele apparaten de volgende problemen ondervinden:
-
 **Bekende problemen** 
 
-De oude UPN wordt nog steeds weergegeven op het gebruikersaccount en er wordt mogelijk geen melding ontvangen. [Verificatiecodes](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq) blijven werken.
+Wanneer u de UPN van een gebruiker wijzigt, wordt het oude UPN nog steeds weergegeven op het gebruikersaccount en wordt er mogelijk geen melding ontvangen. [Verificatiecodes](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq) blijven werken.
 
 **Oplossing**
 
-Als er een melding wordt ontvangen, instrueert u de gebruiker de melding te verwijderen, opent u de authenticator-app, tikt u op de optie Controleren op meldingen en keurt u de MFA-prompt goed. Hierna wordt de UPN die op het account wordt weergegeven, bijgewerkt. Let op: de bijgewerkte UPN kan worden weergegeven als een nieuw account, dit is te wijten aan andere Authenticator functionaliteit wordt gebruikt. Voor meer informatie aanvullende bekende problemen in dit artikel.
+Als er een melding wordt ontvangen, instrueert u de gebruiker de melding te verwijderen, opent u de authenticator-app, tikt u op de optie Controleren op meldingen en keurt u de MFA-prompt goed. Hierna wordt de UPN die op het account wordt weergegeven, bijgewerkt. Let op: de bijgewerkte UPN kan worden weergegeven als een nieuw account, dit is te wijten aan andere Authenticator functionaliteit wordt gebruikt. Voor meer informatie verwijzen wij u naar de extra bekende problemen in dit artikel.
 
 ### <a name="brokered-authentication"></a>Gebrokereerde verificatie
 

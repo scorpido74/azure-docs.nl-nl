@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: fe35dc4c22f3852934cde0d6f33084b56266d514
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e3c33bb7493f07d9fbf19710f21d0114e7abec8
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73807691"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757057"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Migratie van Azure SQL Database-verkeer naar nieuwere gateways
 
@@ -54,7 +54,7 @@ U zult geen invloed hebben als u:
 
 We raden u aan uitgaand verkeer toe te staan naar IP-adressen voor alle IP-adressen van de [Azure SQL Database-gateway](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) in de regio op TCP-poort 1433 en poortbereik 11000-11999. Deze aanbeveling is van toepassing op klanten die verbinding maken vanuit on-premises en ook op klanten die verbinding maken via Service Endpoints. Zie [Verbindingsbeleid voor](sql-database-connectivity-architecture.md#connection-policy)meer informatie over poortbereiken .
 
-Verbindingen die zijn gemaakt met toepassingen met Microsoft JDBC Driver onder versie 4.0, mislukken mogelijk de validatie van certificaten. Lagere versies van Microsoft JDBC zijn gebaseerd op Common Name (CN) in het veld Onderwerp van het certificaat. De beperking is om ervoor te zorgen dat de eigenschap hostNameInCertificate is ingesteld op *.database.windows.net. Zie [Verbinding maken met SSL-versleuteling](/sql/connect/jdbc/connecting-with-ssl-encryption)voor meer informatie over het instellen van de eigenschap hostNameInCertificate.
+Verbindingen die zijn gemaakt met toepassingen met Microsoft JDBC Driver onder versie 4.0, mislukken mogelijk de validatie van certificaten. Lagere versies van Microsoft JDBC zijn gebaseerd op Common Name (CN) in het veld Onderwerp van het certificaat. De beperking is om ervoor te zorgen dat de eigenschap hostNameInCertificate is ingesteld op *.database.windows.net. Zie [Verbinding maken met versleuteling](/sql/connect/jdbc/connecting-with-ssl-encryption)voor meer informatie over het instellen van de eigenschap hostNameInCertificate.
 
 Als de bovenstaande beperking niet werkt, dient u een ondersteuningsverzoek voor SQL Database in met de volgende URL:https://aka.ms/getazuresupport
 

@@ -3,17 +3,17 @@ title: Een Service Fabric-cluster maken in Azure Portal
 description: Meer informatie over het instellen van een beveiligd Cluster van ServiceFabric in Azure met behulp van de Azure-portal en Azure Key Vault.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2de920ce9517e156934a636559a6fd6f5a71eb5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258796"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754104"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Een cluster van Servicefabric maken in Azure met behulp van de Azure-portal
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure-portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -36,13 +36,13 @@ Als dit de eerste keer is dat u een cluster voor servicefabricmaakt of een clust
 Dit certificaat is vereist om een cluster te beveiligen en ongeautoriseerde toegang tot het cluster te voorkomen. Het biedt clusterbeveiliging op een paar manieren:
 
 * **Clusterverificatie:** Verifieert knooppuntcommunicatie voor clusterfederatie. Alleen knooppunten die hun identiteit met dit certificaat kunnen bewijzen, kunnen lid worden van het cluster.
-* **Serververificatie:** Verifieert de eindpunten voor clusterbeheer naar een beheerclient, zodat de beheerclient weet dat hij met het echte cluster praat. Dit certificaat biedt ook SSL voor de HTTPS-beheer-API en voor Service Fabric Explorer via HTTPS.
+* **Serververificatie:** Verifieert de eindpunten voor clusterbeheer naar een beheerclient, zodat de beheerclient weet dat hij met het echte cluster praat. Dit certificaat biedt ook TLS voor de HTTPS-beheer-API en voor Service Fabric Explorer via HTTPS.
 
 Om deze doeleinden te bereiken, moet het certificaat aan de volgende eisen voldoen:
 
 * Het certificaat moet een privésleutel bevatten.
 * Het certificaat moet worden gemaakt voor sleuteluitwisseling, exporteerbaar naar een bestand voor persoonlijke informatie-uitwisseling (.pfx).
-* De **onderwerpnaam** van het certificaat moet overeenkomen met het domein dat wordt gebruikt om toegang te krijgen tot het cluster ServiceFabric. Dit is vereist om SSL te bieden voor de HTTPS-beheereindpunten en Service Fabric Explorer van het cluster. U geen SSL-certificaat verkrijgen van een `.cloudapp.azure.com` certificeringsinstantie (CA) voor het domein. Een aangepaste domeinnaam voor uw cluster aanschaffen. Wanneer u een certificaat aanvraagt bij een CA, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domeinnaam die voor uw cluster wordt gebruikt.
+* De **onderwerpnaam** van het certificaat moet overeenkomen met het domein dat wordt gebruikt om toegang te krijgen tot het cluster ServiceFabric. Dit is vereist om TLS te verstrekken voor de HTTPS-beheereindpunten en Service Fabric Explorer van het cluster. U geen TLS/SSL-certificaat verkrijgen van een `.cloudapp.azure.com` certificeringsinstantie (CA) voor het domein. Een aangepaste domeinnaam voor uw cluster aanschaffen. Wanneer u een certificaat aanvraagt bij een CA, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domeinnaam die voor uw cluster wordt gebruikt.
 
 #### <a name="client-authentication-certificates"></a>Clientverificatiecertificaten
 Aanvullende clientcertificaten verifiëren beheerders voor clusterbeheertaken. Service Fabric heeft twee toegangsniveaus: **admin** en **alleen-lezen gebruiker**. Ten minste één enkel certificaat voor administratieve toegang moet worden gebruikt. Voor extra toegang op gebruikersniveau moet een apart certificaat worden verstrekt. Zie voor meer informatie over toegangsrollen [op rollen het op rollen gebaseerde toegangscontrole voor Service Fabric-clients.][service-fabric-cluster-security-roles]

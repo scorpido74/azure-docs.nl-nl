@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 74e5a427d62d5249ffe6b0426b62a3577e43462f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444483"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757161"
 ---
 # <a name="ip-groups-preview-in-azure-firewall"></a>IP-groepen (voorbeeld) in Azure Firewall
 
@@ -54,7 +54,7 @@ U alle IP-adressen in de IP-groep en de regels of bronnen die eraan zijn gekoppe
 
 1. Als u de IP-adressen wilt weergeven of bewerken, selecteert u **IP-adressen** onder **Instellingen** in het linkerdeelvenster.
 2. Als u één of meerdere IP-adres(en) wilt toevoegen, selecteert u **IP-adressen toevoegen**. Hiermee wordt de pagina **Slepen of Bladeren** geopend voor een upload of u het adres handmatig invoeren.
-3.  Het selecteren van de ellipsen (**...**) aan de rechterkant te bewerken of te verwijderen IP-adressen. Als u meerdere IP-adressen wilt bewerken of verwijderen, selecteert u de vakken en selecteert u **Bewerken** of **Verwijderen** bovenaan.
+3.    Het selecteren van de ellipsen (**...**) aan de rechterkant te bewerken of te verwijderen IP-adressen. Als u meerdere IP-adressen wilt bewerken of verwijderen, selecteert u de vakken en selecteert u **Bewerken** of **Verwijderen** bovenaan.
 4. Ten slotte kan u het bestand exporteren in de CSV-bestandsindeling.
 
 > [!NOTE]
@@ -72,24 +72,47 @@ U NU **IP-groep** selecteren als **brontype** of **doeltype** voor het IP-adres(
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-IP-groepen zijn momenteel beschikbaar in de volgende regio's:
+IP-groepen zijn beschikbaar in alle openbare cloudregio's.
 
-- VS - west
-- VS - west 2
-- VS - oost
-- VS - oost 2
-- VS - centraal
-- VS - noord-centraal
-- VS - west-centraal
-- VS - zuid-centraal
-- Canada - midden
-- Europa - noord
-- Europa -west
-- Frankrijk - centraal
-- Verenigd Koninkrijk Zuid
-- Australië - oost
-- Australië - centraal
-- Australië - zuidoost
+## <a name="ip-address-limits"></a>IP-adreslimieten
+
+Voor 50 IP-groepen of minder u maximaal 5000 afzonderlijke IP-adressen per firewall-exemplaar hebben. Voor 51 tot 100 IP-groepen u elk 500 afzonderlijke IP-adres per firewall-exemplaar hebben.
+
+### <a name="examples"></a>Voorbeelden
+
+#### <a name="example-1-supported"></a>Voorbeeld 1: ondersteund
+
+|IP-groepen  |# IP-adressen  |Notatie  |Regel  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |Regel1|
+|IPGroup2     |3|196.0.0.0 - 196.0.0.2|Regel1|
+|IPGroup3     |1|1.2.3.4|Regel1|
+|     |**Totaal 4100**|         |         |
+|     |         |         |         |
+
+#### <a name="example-2-supported"></a>Voorbeeld 2: ondersteund
+
+|IP-groepen  |# IP-adressen  |Notatie  |Regel  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |Regel1|
+|IPGroup2     |4096|11.0.0.0/20|Regel1|
+|     |**Totaal 8192**|         |         |
+
+#### <a name="example-3-not-supported"></a>Voorbeeld 3: niet ondersteund
+
+|IP-groepen  |# IP-adressen  |Notatie  |Regel  |
+|---------|---------|---------|---------|
+|IPGroup1 |8192     |10.0.0.0/20, 11.0.0.0/20  |Regel1|
+|     |**Totaal 8192**|||
+
+#### <a name="example-4-supported"></a>Voorbeeld 4: ondersteund
+
+|IP-groepen  |# IP-adressen  |Notatie  |Regel  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |Regel1|
+|IPGroup2     |4096|11.0.0.0/20|Regel2|
+|     |**Totaal 8192**|         |         |
+
 
 ## <a name="related-azure-powershell-cmdlets"></a>Gerelateerde Azure PowerShell-cmdlets
 

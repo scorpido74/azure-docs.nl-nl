@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37d1c181c18f69c040040da2be138eaad3a61693
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 5a80c6e3bd8cf647590ed757c042ef3301e27b4a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396862"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743512"
 ---
 # <a name="secure-your-restful-services"></a>Beveilig uw RESTful-services 
 
@@ -272,7 +272,7 @@ Als u tokenverificatie aan toonder wilt ondersteunen in uw aangepaste beleid, wi
 1. Zorg ervoor dat u de bovenstaande claim toevoegt als invoerclaim:
 
     ```xml
-    <InputClaim ClaimTyeReferenceId="bearerToken"/>
+    <InputClaim ClaimTypeReferenceId="bearerToken"/>
     ```    
 
 Nadat u de bovenstaande fragmenten hebt toegevoegd, moet uw technische profiel er uitzien als de volgende XML-code:
@@ -292,7 +292,7 @@ Nadat u de bovenstaande fragmenten hebt toegevoegd, moet uw technische profiel e
         <Item Key="AllowInsecureAuthInProduction">false</Item>
       </Metadata>
       <InputClaims>
-        <InputClaim ClaimTyeReferenceId="bearerToken"/>
+        <InputClaim ClaimTypeReferenceId="bearerToken"/>
       </InputClaims>
       ...
     </TechnicalProfile>

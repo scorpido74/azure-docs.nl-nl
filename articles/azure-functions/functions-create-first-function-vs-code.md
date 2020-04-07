@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 6f1c211a8110d95adb5e6802313c5b7deafe3864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1e5c0a714a8b66d83c19acc53f6a680a9196a90
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276458"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673428"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Snelstart: een Azure-functieproject maken met Visual Studio Code
 
@@ -26,7 +26,7 @@ Voordat u aan de slag gaat, moet u ervoor zorgen dat u de volgende vereisten heb
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
 + [Node.js](https://nodejs.org/), vereist door Windows voor npm. Alleen [Actieve LTS- en Maintenance LTS-versies. ](https://nodejs.org/about/releases/) Gebruik `npm --version` de opdracht om uw versie te controleren.
-    Niet vereist voor lokale ontwikkeling op MacOS en Linux.   
+    Niet vereist voor lokale ontwikkeling op macOS en Linux.   
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
 + [Node.js](https://nodejs.org/), Active LTS en Maintenance LTS versies (10.14.1 aanbevolen). Gebruik `npm --version` de opdracht om uw versie te controleren.
@@ -39,6 +39,11 @@ Voordat u aan de slag gaat, moet u ervoor zorgen dat u de volgende vereisten heb
 
 + De [.NET Core SDK 2.2+](https://www.microsoft.com/net/download)  
 ::: zone-end  
+::: zone pivot="programming-language-java"  
++ De [Java Developer Kit](https://aka.ms/azure-jdks), versie 8.
+
++ [Apache Maven](https://maven.apache.org), versie 3.0 of hoger.
+::: zone-end  
 + [Visual Studio Code](https://code.visualstudio.com/) op een van de [ondersteunde platforms.](https://code.visualstudio.com/docs/supporting/requirements#_platforms)  
 ::: zone pivot="programming-language-csharp"  
 + De [C#-extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) voor Visual Studio Code.  
@@ -47,7 +52,10 @@ Voordat u aan de slag gaat, moet u ervoor zorgen dat u de volgende vereisten heb
 + De [Python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python) voor Visual Studio Code.  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"
-+ De [PowerShell-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).  
++ De [PowerShell-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell). 
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ Het [Java-uitbreidingspakket](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
 ::: zone-end  
 
 + De [Azure Functions-extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) voor Visual Studio Code. 
@@ -85,21 +93,35 @@ In deze sectie gebruikt u Visual Studio Code om een lokaal Azure-functieproject 
     + **Selecteer een Python-alias om een virtuele omgeving te maken:** Kies de locatie van uw Python-tolk. Als de locatie niet wordt weergegeven, typt u het volledige pad naar uw Python-binaire.  
     ::: zone-end
 
+    ::: zone pivot="programming-language-java"  
+    + **Selecteer een taal voor uw functieproject:** Kies `Java`.
+
+    + **Geef een groeps-ID op:** Kies `com.function`.
+
+    + **Geef een artefact-id op:** Kies `myFunction`.
+
+    + **Geef een**versie `1.0-SNAPSHOT`op: Kies .
+
+    + **Geef een pakketnaam op:** Kies `com.function`.
+
+    + **Geef een app-naam op:** Kies `myFunction-12345`.
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
     + **Selecteer een sjabloon voor de eerste functie van uw project:** Kies `HTTP trigger`.
     
     + **Geef een functienaam**op: Type `HttpExample`.
-    
+    ::: zone-end  
     ::: zone pivot="programming-language-csharp"
     + **Geef een naamruimte op:** Type `My.Functions`. 
-    ::: zone-end
-
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
     + **Autorisatieniveau**: `Anonymous`Kies , waarmee iedereen uw functieeindpunt kan aanroepen. Zie [Autorisatiesleutels](functions-bindings-http-webhook-trigger.md#authorization-keys)voor meer informatie over autorisatieniveau.
-
+    ::: zone-end  
     + **Selecteer hoe u uw project wilt openen:** Kies `Add to workspace`.
 
 1. Met behulp van deze informatie genereert Visual Studio Code een Azure Functions-project met een HTTP-trigger. U de lokale projectbestanden in de Explorer weergeven. Zie [Gegenereerde projectbestanden](functions-develop-vs-code.md#generated-project-files)voor meer informatie over bestanden die zijn gemaakt. 
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python,programming-language-java"
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
@@ -119,7 +141,7 @@ Nadat u hebt geverifieerd dat de functie correct wordt uitgevoerd op uw lokale c
 
 ## <a name="run-the-function-in-azure"></a>De functie uitvoeren in Azure
 
-1. Terug in het **azure: het** gebied Functies in de zijbalk, vouw t/m de nieuwe functie-app uit onder uw abonnement. **Functies**uitvouwen , met de rechtermuisknop (Windows) of Ctrl + klik op (MacOS) op **HttpExample**en kies **vervolgens URL van functie kopiëren**.
+1. Terug in het **azure: het** gebied Functies in de zijbalk, vouw t/m de nieuwe functie-app uit onder uw abonnement. **Functies**uitvouwen , met de rechtermuisknop (Windows) of Ctrl + klik op **(macOS)** op HttpExample en kies **vervolgens URL van functie kopiëren**.
 
     ![De functie-URL voor de nieuwe HTTP-trigger kopiëren](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 

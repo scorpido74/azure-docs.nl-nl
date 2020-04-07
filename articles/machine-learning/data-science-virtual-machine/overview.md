@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 074b547917b65a411d2b1d1b2f094156828eef78
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 03bfee258fe96d90c32b6a305b99856a11d9a087
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631377"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754977"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Wat is de Azure Data Science Virtual Machine voor Linux en Windows?
 
@@ -26,7 +26,7 @@ De DSVM is beschikbaar op:
 + **Windows Server 2019**
 + **Ubuntu 18.04 LTS**
 + Windows Server 2016
-+ Ubuntu 16.04 LTS en CentOS 7.4
++ Ubuntu 16.04 LTS
 
 > [!NOTE]
 > Alle VM-tools voor deep learning zijn opgevouwen in de Data Science Virtual Machine. 
@@ -68,9 +68,9 @@ U de DSVM gebruiken om nieuwe data [science-tools](./tools-included.md)te evalue
 
 In de DSVM kunnen uw trainingsmodellen deep learning-algoritmen gebruiken op hardware die is gebaseerd op grafische verwerkingseenheden (GPU's). Door gebruik te maken van de VM-schalingsmogelijkheden van het Azure-platform, helpt de DSVM u gpu-gebaseerde hardware in de cloud te gebruiken volgens uw behoeften. U overschakelen naar een VM op basis van GPU wanneer u grote modellen traint of wanneer u snelle berekeningen nodig hebt terwijl u dezelfde schijf van het besturingssysteem houdt. U kiezen uit een van de N-serie GPU ingeschakeld virtuele machine SKU's met DSVM. Houd er rekening mee dat gratis Azure-accounts geen ONDERSTEUNING bieden voor GPU-enabled virtual machine SKU's.
 
-De Windows Server 2016-editie van de DSVM is vooraf geïnstalleerd met GPU-stuurprogramma's, frameworks en GPU-versies van deep learning-frameworks. Op de Linux-editie is deep learning op GPU's ingeschakeld op zowel de CentOS- als Ubuntu-DSVMs. 
+De Windows-edities van de DSVM worden vooraf geïnstalleerd met GPU-stuurprogramma's, frameworks en GPU-versies van deep learning-frameworks. Op de Linux-editie is deep learning op GPU's ingeschakeld op de Ubuntu DSVMs. 
 
-U ook de Ubuntu-, CentOS- of Windows 2016-editie van de DSVM implementeren op een virtuele Azure-machine die niet is gebaseerd op GPU's. In dit geval zullen alle deep learning frameworks terugvallen naar de CPU-modus.
+U de Ubuntu- of Windows-edities van de DSVM ook implementeren op een virtuele Azure-machine die niet is gebaseerd op GPU's. In dit geval zullen alle deep learning frameworks terugvallen naar de CPU-modus.
 
 [Meer informatie over beschikbare deep learning- en AI-frameworks](dsvm-tools-deep-learning-frameworks.md).
 
@@ -89,5 +89,4 @@ Meer informatie met deze artikelen:
 
 + Linux:
   + [Een Linux DSVM (Ubuntu) instellen](dsvm-ubuntu-intro.md)
-  + [Een Linux DSVM (CentOS) instellen](linux-dsvm-intro.md)
   + [Data science op een Linux DSVM](linux-dsvm-walkthrough.md)

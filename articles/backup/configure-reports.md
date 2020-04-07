@@ -3,12 +3,12 @@ title: Azure Backup-rapporten configureren
 description: Rapporten voor Azure Backup configureren en weergeven met behulp van Logboekanalyses en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 497d70c1bcc577faa467720b959eb828e785a26a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78161198"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672670"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
@@ -21,7 +21,7 @@ Vandaag biedt Azure Backup een rapportageoplossing die gebruikmaakt van [Azure M
 * Back-uprapporten worden ondersteund voor Azure VM's, SQL in Azure VM's, SAP HANA/ASE in Azure VM's, Azure Backup Agent (MARS), Azure Backup Server (MABS) en System Center DPM.
 * Voor DPM-workloads worden back-uprapporten ondersteund voor DPM-versie 5.1.363.0 en hoger en Agent Versie 2.0.9127.0 en hoger.
 * Voor MABS-workloads worden back-uprapporten ondersteund voor MABS-versie 13.0.415.0 en hoger en Agent Versie 2.0.9170.0 en hoger.
-* Back-uprapporten kunnen worden bekeken in alle back-upitems, kluizen, abonnementen en regio's, zolang hun gegevens worden verzonden naar een LA-werkruimte (Log Analytics) waartoe de gebruiker toegang heeft. 
+* Back-uprapporten kunnen worden bekeken in alle back-upitems, kluizen, abonnementen en regio's, zolang hun gegevens worden verzonden naar een LA-werkruimte (Log Analytics) waartoe de gebruiker toegang heeft. Houd er rekening mee dat u alleen toegang nodig hebt tot **de LA Workspace** waarnaar de kluizen hun gegevens verzenden om rapporten voor een set kluizen te bekijken. U **hoeft geen** toegang te hebben tot de individuele kluizen.
 * Als u een [Azure Lighthouse-gebruiker](https://docs.microsoft.com/azure/lighthouse/) bent met gedelegeerde toegang tot de abonnementen van uw klanten, u deze rapporten met Azure Lighthouse gebruiken om rapporten voor al uw tenants weer te geven.
 * Gegevens voor logboekback-uptaken worden momenteel niet weergegeven in de rapporten.
 

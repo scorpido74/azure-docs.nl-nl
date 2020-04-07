@@ -3,35 +3,35 @@ title: Reageren op Azure Blob-opslaggebeurtenissen | Microsoft Documenten
 description: Gebruik Azure Event Grid om u te abonneren op gebeurtenissen van Blob Storage.
 author: normesta
 ms.author: normesta
-ms.date: 01/30/2018
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 5281dab8fd42326d88964614fd20a81621b5e9dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4dd6bab6198546dc5acab78ec59d92387328dbb
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268494"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755003"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reageren op gebeurtenissen van Blob Storage
 
-Azure Storage-gebeurtenissen stellen toepassingen in staat om te reageren op gebeurtenissen, zoals het maken en verwijderen van blobs. Het doet dit zonder de noodzaak van ingewikkelde code of dure en inefficiënte polling diensten.
+Azure Storage-gebeurtenissen stellen toepassingen in staat om te reageren op gebeurtenissen, zoals het maken en verwijderen van blobs. Het doet dit zonder de noodzaak van ingewikkelde code of dure en inefficiënte polling diensten. Het beste deel is dat je alleen betaalt voor wat je gebruikt.
 
-Gebeurtenissen worden met [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) naar abonnees zoals Azure-functies, Azure Logic Apps of zelfs naar uw eigen http-listener gepusht. Het beste deel is dat je alleen betaalt voor wat je gebruikt.
+Blob-opslaggebeurtenissen worden met [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) naar abonnees zoals Azure-functies, Azure Logic Apps of zelfs naar uw eigen http-listener gepusht. Event Grid biedt betrouwbare levering van gebeurtenissen aan uw toepassingen door middel van uitgebreide retry beleid en dead-lettering.
 
-Blob-opslag stuurt gebeurtenissen naar Event Grid, wat betrouwbare gebeurtenislevering biedt aan uw toepassingen via een uitgebreid beleid voor nieuwe apparaten en dode letters.
+Zie het [schema voor opslaggebeurtenissen van Blob](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) om de volledige lijst met gebeurtenissen weer te geven die blob-opslag ondersteunt.
 
 Veelvoorkomende scenario's voor blob-opslaggebeurtenissen omvatten beeld- of videoverwerking, zoekindexering of een bestandsgeoriënteerde werkstroom. Asynchrone bestandsuploads passen goed bij gebeurtenissen. Wanneer wijzigingen zeldzaam zijn, maar uw scenario onmiddellijke responsiviteit vereist, kan architectuur op basis van gebeurtenissen bijzonder efficiënt zijn.
 
-Als u dit nu wilt uitproberen, raadpleegt u een van deze quickstart-artikelen:
+Als u blob-opslaggebeurtenissen wilt proberen, raadpleegt u een van deze snelstartartikelen:
 
 |Als u deze tool wilt gebruiken:    |Zie dit artikel: |
 |--|-|
 |Azure Portal    |[Snelstart: Blob-opslaggebeurtenissen routeren naar webeindpunt met de Azure-portal](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[Snelstart: opslaggebeurtenissen routeren naar webeindpunt met PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure-CLI    |[Snelstart: opslaggebeurtenissen routeren naar webeindpunt met Azure CLI](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure CLI    |[Snelstart: opslaggebeurtenissen routeren naar webeindpunt met Azure CLI](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 Zie de volgende artikelen om diepgaande voorbeelden van reageren op Blob-opslaggebeurtenissen met Azure-functies weer te geven:
 
@@ -39,7 +39,7 @@ Zie de volgende artikelen om diepgaande voorbeelden van reageren op Blob-opslagg
 - [Zelfstudie: Het formaat van geüploade afbeeldingen wijzigen met gebeurtenisraster](https://docs.microsoft.com/azure/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
 
 >[!NOTE]
-> Alleen opslagaccounts van soort **StorageV2 (v2 voor algemeen gebruik)** en **BlobStorage** ondersteunen gebeurtenis-integratie. **Opslag (genral ei v1)** biedt *geen* ondersteuning voor integratie met Event Grid.
+> Alleen opslagaccounts van natura **StorageV2 (v2 voor algemeen gebruik),** **BlockBlobStorage**en **BlobStorage** ondersteunen gebeurtenis-integratie. **Opslag (genral ei v1)** biedt *geen* ondersteuning voor integratie met Event Grid.
 
 ## <a name="the-event-model"></a>Het gebeurtenismodel
 
@@ -98,6 +98,7 @@ Toepassingen die blob-opslaggebeurtenissen verwerken, moeten een aantal aanbevol
 > * Controleer ook of het eventType een gebeurtenis is die u bereid bent te verwerken en ga er niet van uit dat alle gebeurtenissen die u ontvangt, de typen zijn die u verwacht.
 > * Aangezien berichten na enige vertraging kunnen binnenkomen, gebruikt u de etag-velden om te begrijpen of uw informatie over objecten nog steeds up-to-date is. Zie Gelijktijdigheid beheren [in Blob-opslag](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)voor meer informatie over het gebruik van het veld etag. 
 > * Aangezien berichten niet in orde kunnen komen, gebruikt u de sequencervelden om de volgorde van gebeurtenissen op een bepaald object te begrijpen. Het sequencerveld is een tekenreekswaarde die de logische volgorde van gebeurtenissen voor een bepaalde blobnaam vertegenwoordigt. U standaardtekenreeksvergelijking gebruiken om de relatieve volgorde van twee gebeurtenissen op dezelfde blobnaam te begrijpen.
+> Opslaggebeurtenissen garanderen ten minste eenmaal levering aan abonnees, wat ervoor zorgt dat alle berichten worden uitgevoerd. Vanwege nieuwe pogingen of beschikbaarheid van abonnementen kunnen er af en toe dubbele berichten optreden.
 > * Gebruik het veld blobType om te begrijpen welk type bewerkingen zijn toegestaan op de blob en welke clientbibliotheektypen u moet gebruiken om toegang te krijgen tot de blob. Geldige waarden `BlockBlob` zijn `PageBlob`of . 
 > * Gebruik het url-veld met de `CloudBlockBlob` constructors om `CloudAppendBlob` toegang te krijgen tot de blob.
 > * Velden negeren die u niet begrijpt. Deze praktijk zal u helpen om u bestand te houden tegen nieuwe functies die in de toekomst kunnen worden toegevoegd.
@@ -109,4 +110,5 @@ Toepassingen die blob-opslaggebeurtenissen verwerken, moeten een aantal aanbevol
 Meer informatie over gebeurtenisraster en geef Blob-opslaggebeurtenissen een kans:
 
 - [Over Event Grid](../../event-grid/overview.md)
+- [Schema voor opslaggebeurtenissen in Blob](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Blob-opslaggebeurtenissen routeren naar een aangepast webeindpunt](storage-blob-event-quickstart.md)

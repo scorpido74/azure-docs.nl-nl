@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4e19c20036d74752b75a668d6a37c46ef1b008e6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 368276f75128c80b8df326a26acf26c841e9f68a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583193"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742688"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>Partitietabellen in Synapse SQL-groep
 
@@ -46,9 +46,9 @@ Bij het maken van partities in **geclusterde kolomarchieftabellen** is het belan
 
 ## <a name="syntax-differences-from-sql-server"></a>Syntaxisverschillen ten opzichte van SQL Server
 
-Synapse SQL-pool introduceert een manier om partities te definiëren die eenvoudiger is dan SQL Server. Partitiefuncties en -schema's worden niet gebruikt in de Synapse SQL-groep zoals ze zich in SQL Server bevinden. In plaats daarvan hoeft u alleen de partitiekolom en de grenspunten te identificeren. Hoewel de syntaxis van partitionering enigszins kan verschillen van SQL Server, zijn de basisconcepten hetzelfde. SQL Server en Synapse SQL-pool ondersteunen één partitiekolom per tabel, die kan worden verdeeld. Zie [Partitietabellen en -indexen](/sql/relational-databases/partitions/partitioned-tables-and-indexes)voor meer informatie over partitionering.
+Synapse SQL-pool introduceert een manier om partities te definiëren die eenvoudiger is dan SQL Server. Partitiefuncties en -schema's worden niet gebruikt in de Synapse SQL-groep zoals ze zich in SQL Server bevinden. In plaats daarvan hoeft u alleen de partitiekolom en de grenspunten te identificeren. Hoewel de syntaxis van partitionering enigszins kan verschillen van SQL Server, zijn de basisconcepten hetzelfde. SQL Server en Synapse SQL-pool ondersteunen één partitiekolom per tabel, die kan worden verdeeld. Zie [Partitietabellen en -indexen](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over partitionering.
 
-In het volgende voorbeeld wordt de instructie [TABEL MAKEN](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) gebruikt om de factinternetsales-tabel te partitioneren in de kolom OrderDateKey:
+In het volgende voorbeeld wordt de instructie [TABEL MAKEN](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruikt om de factinternetsales-tabel te partitioneren in de kolom OrderDateKey:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -78,8 +78,8 @@ WITH
 
 Ga als lid van het emigreren van SQL Server-partitiedefinities eenvoudig naar de Synapse SQL-groep:
 
-- Elimineer het SQL [Server-partitieschema](/sql/t-sql/statements/create-partition-scheme-transact-sql).
-- Voeg de definitie van de [partitiefunctie](/sql/t-sql/statements/create-partition-function-transact-sql) toe aan de TABEL MAKEN.
+- Elimineer het SQL [Server-partitieschema](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Voeg de definitie van de [partitiefunctie](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) toe aan de TABEL MAKEN.
 
 Als u een partitietabel migreert vanuit een SQL Server-instantie, kan de volgende SQL u helpen om het aantal rijen te achterhalen dat in elke partitie zit. Houd er rekening mee dat als dezelfde partitioneringsgranulariteit wordt gebruikt op synapse SQL-pool, het aantal rijen per partitie met een factor 60 afneemt.  
 
@@ -119,7 +119,7 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>Partitieschakelen
 
-Synapse SQL-pool ondersteunt partitiesplitsing, samenvoegen en schakelen. Elk van deze functies wordt uitgevoerd met de [verklaring ALTER TABLE.](/sql/t-sql/statements/alter-table-transact-sql)
+Synapse SQL-pool ondersteunt partitiesplitsing, samenvoegen en schakelen. Elk van deze functies wordt uitgevoerd met de [verklaring ALTER TABLE.](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 Als u partities tussen twee tabellen wilt schakelen, moet u ervoor zorgen dat de partities worden uitgelijnd op hun respectieve grenzen en dat de tabeldefinities overeenkomen. Omdat controlebeperkingen niet beschikbaar zijn om het waardenbereik in een tabel af te dwingen, moet de brontabel dezelfde partitiegrenzen bevatten als de doeltabel. Als de partitiegrenzen dan niet hetzelfde zijn, mislukt de partitieswitch omdat de partitiemetagegevens niet worden gesynchroniseerd.
 
@@ -344,4 +344,3 @@ Met deze aanpak blijft de code in bronbesturingselement statisch en mogen de par
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie de artikelen over [tabeloverzicht](sql-data-warehouse-tables-overview.md)voor meer informatie over het ontwikkelen van tabellen.
-

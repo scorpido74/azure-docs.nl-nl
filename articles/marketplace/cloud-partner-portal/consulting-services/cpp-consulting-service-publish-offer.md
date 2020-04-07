@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1b00e177ed45762d10d0603b1d0a1fb2c1807416
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2de4114e8a1b48de2ad64b783d15f56fef4fc30
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278498"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743761"
 ---
 # <a name="publish-a-consulting-service-offer"></a>Een consulting service aanbieding publiceren
+
+>[!Important]
+>Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw Consulting-serviceaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van consultingservicecreatie](https://aka.ms/AzureCreateConsultingService) om uw gemigreerde aanbiedingen te beheren.
 
 Nadat u **aanbiedingsinstellingen**, **Storefront-gegevens**en **contactpersonen hebt**voltooid, selecteert u **Publiceren** en een e-mailadres opgeven. Wanneer Microsoft klaar is om uw aanbieding te publiceren, ontvangt u een e-mail om een voorbeeld ervan te bekijken voordat deze live gaat. U op elk gewenst moment terugkeren naar de portal om de status van uw aanbieding te controleren.
 
@@ -29,7 +32,7 @@ Selecteer op basis van het CRM-systeem dat u kiest de bijbehorende URL in de vol
 Selecteer [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) als u een van de volgende CRM-systemen hebt:  
 * [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)
 * [Microsoft Dynamics CRM](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
-* [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
+* [SalesForce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
 
 ## <a name="next-steps"></a>Volgende stappen
 

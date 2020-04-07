@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
-ms.openlocfilehash: fe1f1d2700619bfcac4512bb0e631262edf8401c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398101"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676997"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -563,7 +563,7 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Sjabloon voor een statische drempelmetrische waarschuwing die meerdere criteria bewaakt
 
-Nieuwere metrische waarschuwingen ondersteunen waarschuwingen over multidimensionale statistieken en ondersteunen meerdere criteria. U de volgende sjabloon gebruiken om een meer geavanceerde metrische waarschuwingsregel voor dimensionale statistieken te maken en meerdere criteria op te geven.
+Nieuwere metrische waarschuwingen ondersteunen waarschuwingen over multidimensionale statistieken en ondersteuning bij het definiëren van meerdere criteria (maximaal 5 criteria per waarschuwingsregel). U de volgende sjabloon gebruiken om een meer geavanceerde metrische waarschuwingsregel voor dimensionale statistieken te maken en meerdere criteria op te geven.
 
 Houd rekening met de volgende beperkingen bij het gebruik van dimensies in een waarschuwingsregel die meerdere criteria bevat:
 - U binnen elk criterium slechts één waarde per dimensie selecteren.
