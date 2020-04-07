@@ -3,15 +3,15 @@ title: Resourcegebruik van Azure-service controleren met REST API
 description: Lees hier hoe u met behulp van REST-API's van Azure het resourcegebruik van Azure-services kunt controleren.
 author: lleonard-msft
 ms.service: cost-management-billing
-ms.topic: article
-ms.date: 02/12/2020
+ms.topic: reference
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 337523c489089eeae5d669252b61cc61478ae1b3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60a9e17b16f0b539693beb987b4d0610d11a3050
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202842"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521203"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Gebruik van Azure-resources controleren met behulp van de REST-API
 
@@ -32,7 +32,9 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-De parameter `{subscriptionGuid}` is vereist en moet een abonnements-id bevatten die kan worden gelezen met behulp van de referenties die zijn opgegeven in het API-token. De `{reportName}`
+De parameter `{subscriptionGuid}` is vereist en moet een abonnements-id bevatten die kan worden gelezen met behulp van de referenties die zijn opgegeven in het API-token. 
+
+Met de parameter `{reportName}` wordt de naam van het rapport aangeduid. Als u een lijst met rapportnamen wilt ophalen, kunt u de bewerking Reports_List gebruiken om een lijst op te halen: `/subscriptions/{subscriptionId}/providers/Microsoft.CostManagement/reports`. Bekijk een voorbeeld van uitvoer op [GitHub](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/cost-management/resource-manager/Microsoft.CostManagement/preview/2018-08-01-preview/examples/ReportList.json).
 
 De volgende headers zijn vereist:
 

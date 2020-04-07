@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e27f34572eef7d50c7b140c65cb78c6d0678fa8
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203012"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477611"
 ---
 # <a name="understand-cost-management-data"></a>Inzicht in gegevens van Cost Management
 
@@ -94,9 +94,9 @@ In de volgende tabellen ziet u welke gegevens wel en niet worden opgenomen in Co
 
 _<sup>**5**</sup> Gebruik van Azure-service is gebaseerd op reservering en overeengekomen prijzen._
 
-_<sup>**6**</sup> Marketplace-aankopen zijn op dit moment niet beschikbaar voor aanbiedingen van betalen per gebruik, MSDN en Visual Studio._
+_<sup>**6**</sup> Marketplace-aankopen zijn op dit moment niet beschikbaar voor aanbiedingen van MSDN en Visual Studio._
 
-_<sup>**7**</sup> Reserveringsaankopen zijn op dit moment alleen beschikbaar voor EA-accounts (Enterprise Agreement)._
+_<sup>**7**</sup> Reserveringsaankopen zijn op dit moment alleen beschikbaar voor EA-accounts (Enterprise Agreement) en Microsoft-klantovereenkomstaccounts._
 
 ## <a name="how-tags-are-used-in-cost-and-usage-data"></a>Hoe tags worden gebruikt bij kosten- en gebruiksgegevens
 

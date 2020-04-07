@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 24f7a81b267e858d16ae0805f9c7ab384be3b2fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
+ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200639"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80258053"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Uw factureringsrekening configureren voor een Microsoft-klantovereenkomst
 
@@ -80,7 +80,7 @@ Uw nieuwe factureringsrekening vereenvoudigt de facturering voor uw organisatie 
 
 1. U gebruikt de factureringsrekening om de facturering voor uw Microsoft-klantovereenkomst te beheren. Enterprise-beheerders worden eigenaar van de factureringsrekening. Raadpleeg [Inzicht in de factureringsrekening](../understand/mca-overview.md#your-billing-account) voor meer informatie over de factureringsrekening.
 2. U gebruikt het factureringsprofiel om de facturering voor uw organisatie te beheren, vergelijkbaar met uw Enterprise Agreement-inschrijving. Ondernemingsbeheerders worden eigenaar van het factureringsprofiel. Raadpleeg [Inzicht in factureringsprofielen](../understand/mca-overview.md#billing-profiles) voor meer informatie over factureringsprofielen.
-3. U gebruikt een factuursectie om uw kosten te ordenen op basis van uw behoeften, net als de afdelingen in uw Enterprise Agreement-inschrijving. Afdelingen worden factuursecties en afdelingsbeheerders worden eigenaar van de respectieve factuursecties. Raadpleeg [inzicht in factuursecties](../understand/mca-overview.md#invoice-sections) voor meer informatie over factuursecties.
+3. U gebruikt een factuursectie om uw kosten te ordenen op basis van uw behoeften, net als de afdelingen in uw Enterprise Agreement-inschrijving. Afdelingen worden factuursecties en afdelingsbeheerders worden eigenaar van de respectieve factuursecties. Raadpleeg [Informatie over factuursecties](../understand/mca-overview.md#invoice-sections) voor meer informatie over factuursecties.
 4. De accounts die in uw Enterprise Agreement zijn gemaakt, worden niet ondersteund in de nieuwe factureringsrekening. De abonnementen van het account horen bij de respectieve factuursectie voor hun afdeling. Accounteigenaren kunnen abonnementen voor hun factuursecties maken en beheren.
 
 ## <a name="changes-to-billing-administrator-access"></a>Wijzigingen in de toegang van de factureringsbeheerder
@@ -115,7 +115,7 @@ Contactpersonen voor meldingen ontvangen e-mails over de Azure Enterprise Agreem
 
 ### <a name="spending-quotas"></a>Bestedingsquota
 
-Bestedingsquota die zijn ingesteld voor de afdelingen in uw Enterprise Agreement-inschrijving worden vervangen door budgetten in de nieuwe factureringsrekening. Er wordt een budget gemaakt voor elk bestedingsquotum in afdelingen in uw inschrijving. Voor meer informatie over budgetten raadpleegt u [Azure-budgetten maken en beheren](../cloudyn/manage-budgets.md).
+Bestedingsquota die zijn ingesteld voor de afdelingen in uw Enterprise Agreement-inschrijving worden vervangen door budgetten in de nieuwe factureringsrekening. Er wordt een budget gemaakt voor elk bestedingsquotum in afdelingen in uw inschrijving. Voor meer informatie over budgetten zie [Zelfstudie: Azure-budgetten maken en beheren](../costs/tutorial-acm-create-budgets.md).
 
 ### <a name="cost-centers"></a>Kostenplaatsen
 
@@ -181,7 +181,7 @@ Als u de configuratie wilt afronden, hebt u toegang nodig tot zowel de nieuwe fa
 
     - In de nieuwe factureringsrekening wordt een factureringshiërarchie gemaakt die correspondeert met uw Enterprise Agreement-hiërarchie. Raadpleeg [inzicht in uw factureringshiërarchie begrijpen](#understand-changes-to-your-billing-hierarchy) voor meer informatie.
     - Beheerders van uw Enterprise Agreement-inschrijving krijgen toegang tot de nieuwe factureringsrekening, zodat zij de facturering voor uw organisatie kunnen blijven beheren.
-    - De facturering van uw Azure-abonnement wordt overgezet naar het nieuwe account. **Er zijn tijdens deze overgang geen gevolgen voor uw Azure-Services. Ze blijven zonder onderbrekingen actief**.
+    - De facturering van uw Azure-abonnement wordt overgezet naar het nieuwe account. **Deze overgang heeft geen gevolgen voor uw Azure-Services. Ze blijven zonder onderbrekingen actief**.
     - Als u Azure-reserveringen hebt, worden die verplaatst naar uw nieuwe factureringsrekening met dezelfde voordelen en termijn.
 
 4. U kunt de status van de overgang controleren op de pagina **Overgangsstatus**.

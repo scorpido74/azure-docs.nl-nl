@@ -1,24 +1,24 @@
 ---
-title: Aan de slag met facturering voor Microsoft-klantovereenkomst - Azure
+title: Aan de slag met de factureringsrekening voor Microsoft-klantovereenkomst - Azure
 description: Uw factureringsaccount voor Microsoft-klantovereenkomst begrijpen
 author: bandersmsft
 ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/27/2020
 ms.author: banders
-ms.openlocfilehash: a580dd1fb9d2965a9da1e4918733bd5cf137e443
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: df54109010c694934dda005d6e8f1c219ec49efc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79139943"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371010"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Aan de slag met uw factureringsaccount voor Microsoft-klantovereenkomst
 
 Er wordt een factureringsaccount gemaakt wanneer u zich aanmeldt om Azure te gebruiken. U gebruikt uw factureringsaccount om facturen en betalingen te beheren en kosten bij te houden. U kunt toegang hebben tot meerdere factureringsaccounts. Stel dat u zich voor uw persoonlijke projecten hebt geregistreerd voor Azure. U kunt ook toegang hebben tot Azure via de Enterprise Agreement van uw organisatie of de Microsoft-klantovereenkomst. Voor elk van deze scenario's hebt u een afzonderlijk factureringsaccount.
 
-Dit artikel is van toepassing op een factureringsrekening voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement).
+Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="your-billing-account"></a>Uw factureringsaccount
 
@@ -71,21 +71,21 @@ Azure-plannen bepalen de prijzen en de serviceovereenkomsten voor Azure-abonneme
 
 Maak factuursecties om de kosten op uw factuur te ordenen. Het is bijvoorbeeld mogelijk dat u één factuur voor uw organisatie nodig hebt, maar dat u de kosten wilt indelen per afdeling, team of project. Voor dit scenario hebt u één factureringsprofiel waarin u een factuursectie maakt voor elke afdeling, elk team of elk project.
 
-Wanneer een factuursectie is gemaakt, kunt u anderen toestemming geven om Azure-abonnementen te maken die worden gefactureerd aan de sectie. Alle gebruikskosten en aankopen voor de abonnementen worden in het vervolg gefactureerd op die sectie.
+Wanneer een factuursectie is gemaakt, kunt u anderen toestemming geven om Azure-abonnementen te maken die worden gefactureerd aan de sectie. Alle gebruikskosten en aankopen voor de abonnementen worden vervolgens gefactureerd aan de sectie.
 
 Rollen in de factuursecties hebben machtigingen om te bepalen wie Azure-abonnementen maakt. Wijs deze rollen toe aan gebruikers die de Azure-omgeving instellen voor teams in onze organisatie, zoals engineering leads en technische architecten. Zie [Rollen en taken van een factuursectie](../manage/understand-mca-roles.md#invoice-section-roles-and-tasks) voor meer informatie.
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning.
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
 
-Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
+Als u hulp nodig hebt, neemt u [contact op met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Raadpleeg de volgende artikelen voor meer informatie over uw factureringsaccount:
 
 - [Informatie over beheerdersrollen voor Microsoft-klantovereenkomsten in Azure](../manage/understand-mca-roles.md)
-- [Een extra Azure-abonnement maken voor een Microsoft-klantovereenkomst](../manage/create-subscription.md)
+- [Een extra Azure-abonnement voor Microsoft-klantovereenkomst maken](../manage/create-subscription.md)
 - [Secties maken op uw factuur voor het ordenen van uw kosten](../manage/mca-section-invoice.md)

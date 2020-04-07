@@ -193,10 +193,10 @@
       href: luis-how-to-publish-app.md
     - name: Een app beheren
       items:
-        - name: Ontwerp- en runtimesleutels
+        - name: Azure-resources
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: Migreren naar ontwerpsleutel
+        - name: Naar ontwerpresource migreren
           items:
             - name: Overzicht
               href: luis-migration-authoring.md

@@ -7,6 +7,8 @@
       href: what-is-application-management.md
     - name: Wat is een toepassingsproxy voor on-premises apps?
       href: what-is-application-proxy.md
+    - name: Algemene appbeheerscenario's
+      href: common-scenarios.md
     - name: Wat is toepassingsinrichting?
       href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Snelstartgidsen

@@ -1,20 +1,20 @@
 ---
-title: Voorbereiden op de aankoop van een Azure-reservering
-description: Meer informatie over belangrijke punten voordat u een Azure-reservering koopt.
+title: Azure-reservering aanschaffen
+description: Meer informatie over belangrijke punten die u helpen om een Azure-reservering te kopen.
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 1f5ca2d43356eab98cffe8414c00d97e5744739a
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235652"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436971"
 ---
-# <a name="prepare-to-buy-a-reservation"></a>Voorbereiden op de aankoop van een reservering
+# <a name="buy-a-reservation"></a>Een reservering kopen
 
 Azure-reserveringen helpen u geld te besparen door een toezegging te doen voor een abonnement van één of drie jaar voor veel Azure-resources. Bekijk vóórdat u een toezegging doet om een reservering aan te schaffen, eerst de volgende secties om u voor te bereiden op de aankoop.
 
@@ -50,6 +50,17 @@ U kunt het bereik altijd bijwerken nadat u een reservering hebt gekocht. Ga hier
 
 ![Voorbeeld van het wijzigen van een reserveringsbereik](./media/prepare-buy-reservation/rescope-reservation-resource-group.png)
 
+## <a name="discounted-subscription-and-offer-types"></a>Typen abonnementen en aanbiedingen met korting
+
+Reserveringskortingen zijn van toepassing op de volgende in aanmerking komende typen abonnementen en aanbiedingen.
+
+- Enterprise Agreement (aanbiedingsnummers: MS-AZR-0017P of MS-AZR-0148P)
+- Abonnementen met een Microsoft-klantovereenkomst.
+- Afzonderlijke abonnementen met tarieven voor betalen naar gebruik (aanbiedingsnummers: MS-AZR-0003P of MS-AZR-0023P)
+- CSP-abonnementen
+
+Voor resources die voor een abonnement met andere typen aanbiedingen worden uitgevoerd, wordt geen reserveringskorting verkregen.
+
 ## <a name="purchase-reservations"></a>Reserveringen aanschaffen
 
 U kunt reserveringen aanschaffen bij de Azure-portal, API's, PowerShell, CLI. Lees de volgende artikelen die van toepassing zijn, wanneer u klaar bent om een reservering aan te schaffen:
@@ -66,6 +77,54 @@ U kunt reserveringen aanschaffen bij de Azure-portal, API's, PowerShell, CLI. Le
 - [SQL Database](../../sql-database/sql-database-reserved-capacity.md)
 - [SQL Data Warehouse](prepay-sql-data-warehouse-charges.md)
 - [Virtuele machines](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+
+## <a name="buy-reservations-with-monthly-payments"></a>Reserveringen kopen met maandelijkse betalingen
+
+U kunt reserveringen aanschaffen met maandelijkse betalingen. In tegenstelling tot een aankoop vooraf waarbij u het volledige bedrag betaalt, worden bij de optie voor maandelijkse betaling de totale kosten van de reservering gelijkmatig verdeeld over alle maanden in de periode. De totale kosten van betalingen vooraf en per maand voor reserveringen zijn hetzelfde en u hoeft ook geen toeslag te betalen wanneer u voor maandelijks betalen kiest.
+
+Als een reservering is aangeschaft met behulp van een Microsoft-klantovereenkomst (MCA), kan uw maandbedrag variëren op basis van de wisselkoers van de huidige maand voor uw lokale valuta.
+
+Maandelijkse betalingen zijn niet beschikbaar voor: Databricks, SUSE Linux-reserveringen, Red Hat-abonnementen en Azure Red Hat OpenShift-rekenkracht.
+
+### <a name="view-payments-made"></a>Gedane betalingen weergeven
+
+U kunt gedane betalingen weergeven met behulp van API's en gebruiksgegevens of in de kostenanalyse. Voor reserveringen die maandelijks worden betaald, wordt de frequentiewaarde weergegeven als **Terugkerend** in gebruiksgegevens en de reserveringskosten-API. Voor reserveringen die vooraf zijn betaald, wordt de waarde weergegeven als **Eenmalig**.
+
+Maandelijkse aankopen worden weergegeven in de standaardweergave van de kostenanalyse. Pas het filter **Aankoop** toe op **Kostentype** en het filter **Terugkerend** op **Frequentie** om alle aankopen te bekijken. Als u alleen reserveringen wilt weergeven, past u een filter toe op **Reservering**.
+
+![Voorbeeld van de aanschafkosten van een reservering in de kostenanalyse](./media/prepare-buy-reservation/cost-analysis.png)
+
+### <a name="exchange-and-refunds"></a>Omruiling en terugbetaling
+
+Net als bij andere reserveringen is terugbetaling of omruiling mogelijk van reserveringen die zijn aangeschaft met maandelijkse facturering. 
+
+Wanneer u een reservering met maandelijkse betaling omruilt, moeten de kosten voor de totale levensduur van de nieuwe aankoop hoger zijn dan de resterende betalingen die worden geannuleerd voor de geretourneerde reservering. Er zijn geen andere limieten of kosten verbonden aan omruiling. U kunt een reservering die vooraf is betaald, omruilen voor een nieuwe reservering die maandelijks wordt gefactureerd. De waarde van de levensduur van de nieuwe reservering moet echter hoger zijn dan de waarde naar rato van de reservering die wordt geretourneerd.
+
+Als u een reservering annuleert die maandelijks wordt betaald, worden geannuleerde toekomstige betalingen in rekening gebracht met een restitutielimiet van USD 50.000.
+
+Zie [Selfservice voor omruiling en terugbetaling van Azure-reserveringen](exchange-and-refund-azure-reservations.md) voor meer informatie over omruiling en terugbetaling.
+
+## <a name="reservation-notifications"></a>Reserveringsmeldingen
+
+Afhankelijk van de manier waarop u voor uw Azure-abonnement betaalt, worden er reserveringsmeldingen per e-mail naar de volgende gebruikers in uw organisatie verzonden. Meldingen worden verzonden voor verschillende gebeurtenissen, zoals: 
+
+- Kopen
+- Reserveringen die binnenkort verlopen
+- Vervaldatum
+- Verlenging
+- Opzegging
+- Gewijzigd bereik
+
+Voor klanten met EA-abonnementen:
+
+- Meldingen worden alleen naar contactpersonen voor EA-meldingen verzonden.
+- Gebruikers die aan een reservering zijn toegevoegd met behulp van de machtiging voor RBAC (IAM), krijgen geen enkele e-mailmelding.
+
+Voor klanten met afzonderlijk abonnementen:
+
+- De koper ontvangt een melding over de aankoop.
+- Op het moment van de aankoop krijgt de eigenaar van het factureringsaccount van het abonnement een melding over de aankoop.
+- De accounteigenaar ontvangt alle andere meldingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

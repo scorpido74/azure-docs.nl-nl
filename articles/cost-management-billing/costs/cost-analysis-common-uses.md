@@ -3,16 +3,16 @@ title: Veelgebruikte toepassingen van kostenanalyse in Azure Cost Management
 description: In dit artikel wordt uitgelegd hoe u veelvoorkomende analysetaken kunt uitvoeren in Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/21/2020
+ms.date: 03/31/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 901f271ac401cb985e59c434b9e6d7f8db03889f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a333cad51e6fc089e7e6994c7b89210b12686cd5
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203097"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520884"
 ---
 # <a name="common-cost-analysis-uses"></a>Veelgebruikte toepassingen van kostenanalyse
 
@@ -26,7 +26,7 @@ Door de kosten per Azure-service te bekijken, kunt u een beter inzicht krijgen i
 1. Selecteer **Kosten per service** en groepeer vervolgens op **Servicelaag**.
 1. Wijzig de weergave in **Tabel**.
 
-![Uitsplitsing van kosten per Azure-service](./media/cost-analysis-common-uses/breakdown-by-service.png)
+[![Uitsplitsing van kosten per Azure-service](./media/cost-analysis-common-uses/breakdown-by-service.png)](./media/cost-analysis-common-uses/breakdown-by-service.png#lightbox)
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Uitsplitsing van kosten weergeven per Azure-resource
 
@@ -36,7 +36,7 @@ Uw services zijn gebouwd met Azure-resources. Door kosten op basis van resources
 1. Selecteer **Kosten per resource**
 1. Wijzig de weergave in **Tabel**.
 
-![Uitsplitsing van kosten weergeven per Azure-resource](./media/cost-analysis-common-uses/cost-by-resource.png)
+[![Uitsplitsing van kosten weergeven per Azure-resource](./media/cost-analysis-common-uses/cost-by-resource.png)](./media/cost-analysis-common-uses/cost-by-resource.png#lightbox)
 
 ## <a name="view-cost-breakdown-by-selected-dimensions"></a>Uitsplitsing van kosten weergeven op geselecteerde dimensies
 
@@ -44,10 +44,10 @@ Met dimensies kunt u uw kosten indelen op basis van verschillende waarden voor m
 
 1. Ga in de Azure-portal naar het onderdeel Kostenanalyse voor uw bereik. Bijvoorbeeld: **Kostenbeheer en facturering** > **Kostenbeheer** > **Kostenanalyse**.
 1. Selecteer het filter **Groeperen op**.  
-    ![Selecteer een optie voor Groeperen op](./media/cost-analysis-common-uses/group-by.png)
+    [![Selecteer een optie voor Groeperen op](./media/cost-analysis-common-uses/group-by.png)](./media/cost-analysis-common-uses/group-by.png#lightbox)
 1. U kunt de weergave eventueel opslaan voor later gebruik.
 1. Klik op een cirkeldiagram onder het diagram om meer gedetailleerde gegevens weer te geven.  
-    ![Uitsplitsing van kosten weergeven op geselecteerde dimensies](./media/cost-analysis-common-uses/drill-down.png)
+    [![Uitsplitsing van kosten weergeven op geselecteerde dimensies](./media/cost-analysis-common-uses/drill-down.png)](./media/cost-analysis-common-uses/drill-down.png#lightbox)
 
 ## <a name="view-costs-per-day-or-by-month"></a>Kosten per dag of per maand weergeven
 
@@ -56,7 +56,58 @@ Een goed overzicht van de dagelijkse en maandelijkse kosten kan helpen om vast t
 1. Ga in de Azure-portal naar het onderdeel Kostenanalyse voor uw bereik. Bijvoorbeeld: **Kostenbeheer en facturering** > **Kostenbeheer** > **Kostenanalyse**.
 1. Stel **Granulariteit** in op **Maandelijks** of **Dagelijks**.
 
-![Kosten per dag weergeven](./media/cost-analysis-common-uses/daily-granularity.png)
+[![Kosten per dag weergeven](./media/cost-analysis-common-uses/daily-granularity.png)](./media/cost-analysis-common-uses/daily-granularity.png#lightbox)
+
+
+## <a name="view-your-spot-vm-charges"></a>De kosten van uw spot-VM weergeven
+
+Spot-VM's kunnen grote kostenbesparingen opleveren voor workloads die onderbrekingen kunnen afhandelen. Workloads worden uitgevoerd op ongebruikte Azure-capaciteit. Omdat deze op elk gewenst moment kunnen worden verwijderd, geldt voor spot-VM's een aanzienlijke korting. Voer de volgende stappen uit om de kosten voor uw spot-VM weer te geven.
+
+1. Ga in de Azure-portal naar het onderdeel Kostenanalyse voor uw bereik. Bijvoorbeeld **Kostenbeheer en facturering** > **Kostenbeheer** > **Kostenanalyse**.
+2. Een filter toevoegen voor **prijsmodel: Spot**.
+
+![Voorbeeld van een spot-VM-filter](./media/cost-analysis-common-uses/spot-vm-filter.png)
+
+De prijsmodeldimensie wordt ook gebruikt om kosten voor op aanvraag en voor reserveringen weer te geven.
+
+## <a name="view-your-reservation-charges"></a>De reserveringskosten weergeven
+
+Gereserveerde instanties zijn een manier om geld te besparen met Azure. Door gebruik te maken van reserveringen betaalt u vooraf voor een bepaald aantal resources voor een bepaalde periode. Kostenanalyse toont de kosten zoals deze op uw factuur worden weergegeven. De kosten worden weergegeven als werkelijke kosten of worden afgeschreven over de loop van de reserveringsperiode.
+
+1. Ga in de Azure-portal naar het onderdeel Kostenanalyse voor uw bereik. Bijvoorbeeld **Kostenbeheer en facturering** > **Kostenbeheer** > **Kostenanalyse**.
+1. Een filter toevoegen voor **prijsmodel: Reservering**.
+1. Klik onder **Bereik** naast de weergegeven kosten op de pijl-omlaag, selecteer de kostenmetriek **Werkelijke kosten** of **Afgeschreven kosten**.
+
+![Een kostenmetriek selecteren](./media/cost-analysis-common-uses/metric-cost.png)
+
+Elke metriek heeft invloed op de manier waarop gegevens worden weergegeven voor de reserveringskosten.
+
+**Werkelijke kosten**: toont de aankoop zoals die op uw factuur wordt weergegeven. Als u bijvoorbeeld een reservering voor één jaar hebt gekocht voor € 1200 in januari, wordt er in de kostenanalyse een kostenpost van € 1200 in de maand januari voor de reservering weergegeven. Er worden geen reserveringskosten weergegeven voor de andere maanden van het jaar. Als u de werkelijke kosten per VM groepeert, zouden er voor een VM die voor een bepaalde maand het voordeel van de reservering heeft gekregen, voor die maand geen kosten zijn.
+
+**Afgeschreven kosten**: dit is een uitsplitsing van de reserveringsaankoop die wordt weergegeven als afgeschreven kosten voor de looptijd van de reserveringstermijn. Als we hetzelfde voorbeeld van voorheen gebruiken, ziet u dat in de kostenanalyse voor elke maand gedurende het hele jaar een kostenpost van € 100 wordt weergegeven, als u in januari een reservering van één jaar hebt aangeschaft voor € 1200. Als u in dit voorbeeld de kosten per VM groepeert, ziet u dat er kosten worden toegekend aan elke virtuele machine die het voordeel van de reservering heeft gekregen.
+
+## <a name="view-your-reservation-utilization"></a>Reserveringsgebruik weergeven
+
+Nadat u een reservering hebt gekocht, is het belangrijk dat u het gebruik ervan bijhoudt, zodat u weet dat u krijgt waarvoor u hebt betaald. Als u bijvoorbeeld tien VM's hebt gekocht voor een jaar en er slechts vijf hebt gebruikt, betekent dat dat de helft van de aankoop een onnodige investering is geweest. Er zijn twee verschillende manieren om uw gebruik te beoordelen:
+
+### <a name="view-unused-ri-costs-in-cost-analysis"></a>Kosten voor gereserveerde instanties bekijken in kostenanalyse
+
+Volg de onderstaande stappen om te bepalen hoeveel onnodige kosten momenteel elke maand worden gemaakt voor uw reserveringsaankoop.
+
+1. Ga in de Azure-portal naar Kostenanalyse voor het bereik waar uw reservering op wordt toegepast. Bijvoorbeeld **Kostenbeheer en facturering** > **Kostenbeheer** > **Kostenanalyse**.
+1. Een filter toevoegen voor **prijsmodel: Reservering**.
+1. Selecteer de weergave **Afgeschreven kosten**.
+1. Stel de granulariteit in op **Maandelijks**.
+1. Stel de periode in op het huidige jaar of op uw reserveringstermijn.
+1. Stel het grafiektype in op **Kolom (gestapeld)** .
+1. Groepeer de kosten per **kostentype**.
+1. Controleer de resultaten op waarden voor `unusedreservation`.
+
+[![Voorbeeld met het gebruik van de reservering](./media/cost-analysis-common-uses/view-reservation-cost.png)](./media/cost-analysis-common-uses/view-reservation-cost.png#lightbox)
+
+### <a name="view-utilization-in-reservations"></a>Gebruik in Reserveringen weergeven
+
+Zie [Gebruik van reservering optimaliseren](../reservations/manage-reserved-vm-instance.md#optimize-reservation-use) voor gedetailleerde instructies.
 
 ## <a name="view-costs-for-a-specific-tag"></a>Kosten voor een specifieke tag weergeven
 
@@ -67,7 +118,7 @@ Ondersteuning voor labels is van toepassing op het gebruik dat is gerapporteerd 
 1. Ga in de Azure-portal naar het onderdeel Kostenanalyse voor uw bereik. Bijvoorbeeld: **Kostenbeheer en facturering** > **Kostenbeheer** > **Kostenanalyse**.
 1. Selecteer **Groeperen op** voor de tag.
 
-![Kosten voor een specifieke tag weergeven](./media/cost-analysis-common-uses/tag.png)
+[![Kosten voor een specifieke tag weergeven](./media/cost-analysis-common-uses/tag.png)](./media/cost-analysis-common-uses/tag.png#lightbox)
 
 ## <a name="download-your-usage-details"></a>Uw gebruiksgegevens downloaden
 
@@ -75,7 +126,7 @@ Het rapportbestand met gebruiksgegevens, in CSV-indeling, bevat een overzicht va
 
 1. Ga in de Azure-portal naar het tabblad **Gebruik en kosten** voor een factureringsaccount of abonnement. Bijvoorbeeld: **Kostenbeheer en facturering** > **Facturering** > **Gebruik + kosten**.
 1. Selecteer het regelitem dat u wilt downloaden en klik vervolgens op het downloadsymbool.  
-    ![Gebruik en kosten downloaden](./media/cost-analysis-common-uses/download1.png)
+    [![Gebruik en kosten downloaden](./media/cost-analysis-common-uses/download1.png)](./media/cost-analysis-common-uses/download1.png#lightbox)
 1.  Selecteer het gebruiksbestand dat u wilt downloaden.  
     ![Kies een gebruiksbestand om te downloaden](./media/cost-analysis-common-uses/download2.png)
 
@@ -88,9 +139,9 @@ Er worden alleen kosten weergegeven voor uw actieve inschrijving. Als u een insc
 
 1. Ga in de Azure-portal naar **Kostenbeheer en facturering** > **Overzicht**.
 1. Klik op **Uitsplitsing** voor de huidige maand en kijk waaruit de kosten zijn opgebouwd.  
-    ![Overzicht EA-kosten overzicht van uitsplitsing](./media/cost-analysis-common-uses/breakdown1.png)
+    [![Overzicht EA-kosten overzicht van uitsplitsing](./media/cost-analysis-common-uses/breakdown1.png)](./media/cost-analysis-common-uses/breakdown1.png#lightbox)
 1.  Klik op het tabblad **Gebruik en kosten** en bekijk de uitsplitsing van de vorige maand in de gekozen tijdsperiode.  
-    ![Het tabblad Gebruik en kosten](./media/cost-analysis-common-uses/breakdown2.png)
+    [![Het tabblad Gebruik en kosten](./media/cost-analysis-common-uses/breakdown2.png)](./media/cost-analysis-common-uses/breakdown2.png#lightbox)
 
 ## <a name="view-enrollment-monthly-cost-by-term"></a>Maandelijkse inschrijvingskosten weergeven per periode
 
@@ -102,7 +153,7 @@ Gebruik een grafische weergave van de maandelijkse kosten van uw inschrijving om
 
 U kunt gegevens groeperen en filteren voor een meer gedetailleerde analyse.
 
-![Maandelijkse inschrijvingskosten per periode](./media/cost-analysis-common-uses/enrollment-term1.png)
+[![Maandelijkse inschrijvingskosten per periode](./media/cost-analysis-common-uses/enrollment-term1.png)](./media/cost-analysis-common-uses/enrollment-term1.png#lightbox)
 
 ## <a name="view-ea-enrollment-accumulated-costs"></a>Samengevoegde kosten voor EA-inschrijving weergeven
 
@@ -111,7 +162,7 @@ Bekijk de netto samengevoegde kosten om inzicht te krijgen in de algemene uitgav
 1. Ga in de Azure-portal naar het onderdeel Kostenanalyse voor uw bereik. Bijvoorbeeld: **Kostenbeheer en facturering** > **Kostenbeheer** > **Kostenanalyse**.
 1. Selecteer uw inschrijving en bekijk de huidige samengevoegde kosten.
 
-![Samengevoegde kosten voor inschrijving](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
+[![Samengevoegde kosten voor inschrijving](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)](./media/cost-analysis-common-uses/cost-analysis-enrollment.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 - Als u de eerste quickstart voor Cost Management nog niet hebt voltooid, leest u die op [Kosten analyseren](quick-acm-cost-analysis.md).

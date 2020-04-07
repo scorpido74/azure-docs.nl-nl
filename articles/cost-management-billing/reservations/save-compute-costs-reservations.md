@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 6277a7e7dc5891a3bc67c298a31344284c92e31d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 97bd03fb2aa8f5b486ef87a04f260fec43eb81bd
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235638"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396699"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
@@ -20,7 +20,7 @@ Azure-reserveringen helpen u geld te besparen door een toezegging te doen voor e
 
 U kunt vooraf of maandelijks voor een reservering betalen. De totale kosten van betalingen vooraf en per maand voor reserveringen zijn hetzelfde en u hoeft ook geen toeslag te betalen wanneer u voor maandelijks betalen kiest. Maandelijkse betaling is beschikbaar voor Azure-reserveringen, niet voor producten van derden.
 
-U kunt een reservering kopen via [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+U kunt een reservering kopen via de Azure-portal op [https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
 ## <a name="why-buy-a-reservation"></a>Redenen om een reservering te kopen
 
@@ -34,6 +34,48 @@ Raadpleeg [Toepassing van korting voor de gereserveerde instantie](reservation-d
 
 Zie [Het bereik van reserveringen bepalen](prepare-buy-reservation.md#scope-reservations) voor meer informatie over de werking van een reserveringsbereik.
 
+## <a name="determine-what-to-purchase"></a>Bepalen wat u moet aanschaffen 
+
+Alle reserveringen, met uitzondering van Azure Databricks, worden per uur toegepast. Overweeg reserveringen aan te schaffen op basis van consistent basisgebruik. U kunt zelf bepalen welke reservering u moet aanschaffen door uw gebruiksgegevens te analyseren of door aanbevelingen voor reserveringen op te volgen. Aanbevelingen zijn beschikbaar in
+
+- Azure Advisor (alleen VM's)
+- Reserveringen aanschaffen in de Azure-portal
+- Cost Management Power BI-app
+- API's 
+
+Zie  [Bepalen welke reservering u moet aanschaffen](determine-reservation-purchase.md) voor meer informatie 
+
+## <a name="buying-a-reservation"></a>Een reservering kopen 
+
+U kunt reserveringen aanschaffen in de Azure-portal, via API's, PowerShell en CLI. 
+
+Voor het doen van een aankoop, gaat u naar de Azure-portal (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) 
+
+Zie  [Een reservering kopen](prepare-buy-reservation.md) voor meer informatie 
+
+## <a name="how-is-a-reservation-billed"></a>Op welke manier wordt een reservering gefactureerd? 
+
+De aangeschafte reservering wordt verrekend volgens de betalingswijze die is gekoppeld aan het abonnement. De reserveringskosten worden afgetrokken van het saldo van uw financiële toezegging, indien beschikbaar. Wanneer het saldo van uw financiële toezegging ontoereikend is voor de kosten van de reservering, wordt de overschrijding gefactureerd. Als u een abonnement hebt van een afzonderlijk plan met tarieven voor betalen per gebruik, worden kosten voor vooruitbetalingen onmiddellijk in rekening gebracht op de creditcard die in uw account is geregistreerd. Maandelijkse betalingen worden op uw factuur weergegeven en deze kosten worden maandelijks op uw creditcard in rekening gebracht. Wanneer u per factuur wordt gefactureerd, ziet u de kosten op uw volgende factuur. 
+
+## <a name="permissions-to-view-and-manage-reservations"></a>Machtigingen voor het weergeven en beheren van reserveringen 
+
+De gebruiker die een reservering koopt en de accountbeheerder van het abonnement dat wordt gebruikt om de reservering te factureren, krijgen de rol van eigenaar voor de reserveringsorder en voor de reservering.
+
+U kunt het reserveringsbeheer delegeren door personen toe te voegen aan rollen voor de reserveringsbestelling of de reservering. U wijst de rollen toe in de Azure-portal of met behulp van API's en PowerShell. 
+
+Zie  [Gebruikers toevoegen of wijzigen die een reservering kunnen beheren](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation) voor meer informatie 
+
+## <a name="get-reservation-details-and-utilization-after-purchase"></a>Details en het gebruik van een reserveringsdetails ontvangen na de aankoop
+
+Als u bent gemachtigd om de reservering weer te geven, kunt u deze via de Azure-portal zien en het gebruik ervan weergeven. U kunt de gegevens ook ophalen met behulp van API's. 
+
+Zie  [Reserveringen weergegeven in de Azure-portal](view-reservations.md) voor meer informatie over hoe u reserveringen in de Azure-portal kunt bekijken. 
+
+## <a name="manage-reservations-after-purchase"></a>Reserveringen beheren na aankoop 
+
+Nadat u een Azure-reservering hebt gekocht, kunt u het bereik bijwerken om een reservering op een ander abonnement toe te passen, kunt u aanpassen wie de reservering kan beheren, kunt u een reservering in kleinere onderdelen opsplitsen of kunt u de flexibiliteit om de grootte van een instantie aan te passen, wijzigen. 
+
+Zie  [Reserveringen voor Azure-resources beheren](manage-reserved-vm-instance.md) voor meer informatie 
 
 ## <a name="flexibility-with-azure-reservations"></a>Flexibiliteit met Azure-reserveringen
 

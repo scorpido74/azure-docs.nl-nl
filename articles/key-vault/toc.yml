@@ -75,6 +75,8 @@
           href: overview-security.md
         - name: Beveiligingsbasislijn
           href: security-baseline.md
+        - name: Ingebouwde beveiliging
+          href: key-vault-security-controls.md
         - name: Beveiligingsgebieden
           href: key-vault-ovw-security-worlds.md
         - name: Uw Key Vault beveiligen
