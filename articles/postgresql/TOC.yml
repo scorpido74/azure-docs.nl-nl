@@ -149,6 +149,8 @@
           items:
             - name: Leesreplica's
               href: concepts-read-replicas.md
+            - name: Logische decodering
+              href: concepts-logical.md
     - name: Hyperscale (Citus)
       items:
         - name: Knooppunten
@@ -269,6 +271,8 @@
           items:
             - name: Azure Portal
               href: howto-data-encryption-portal.md
+            - name: Azure CLI
+              href: howto-data-encryption-cli.md
         - name: Server opnieuw opstarten
           items:
             - name: Azure Portal

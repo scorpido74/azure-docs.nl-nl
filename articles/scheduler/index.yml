@@ -1,0 +1,37 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Scheduler
+summary: Azure Logic Apps vervangt Azure Scheduler, dat buiten gebruik wordt gesteld. Migreer zo snel mogelijk naar Azure Logic Apps om door te gaan met taken die u hebt ingesteld in Scheduler.
+metadata:
+  title: Documentatie voor Azure Scheduler
+  description: Geautomatiseerde taken maken, plannen en uitvoeren in de cloud, bijvoorbeeld terugkerende toepassingsacties en routinematig onderhoud. Azure Logic Apps vervangt Azure Scheduler, dat buiten gebruik wordt gesteld. Migreer zo snel mogelijk naar Azure Logic Apps om door te gaan met taken die u hebt ingesteld in Scheduler.
+  services: scheduler
+  ms.service: scheduler
+  ms.topic: landing-page
+  author: derek1ee
+  ms.author: estfan
+  ms.date: 03/30/2020
+  ms.openlocfilehash: 04be683d3bd3d874efb44685b0d40b8c2d5a9698
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "80422975"
+landingContent:
+- title: Migreren
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Scheduler?
+      url: scheduler-intro.md
+    - text: Wat is Azure Logic Apps?
+      url: ../logic-apps/logic-apps-overview.md
+  - linkListType: get-started
+    links:
+    - text: Azure Scheduler-taken migreren naar Azure Logic Apps
+      url: migrate-from-scheduler-to-logic-apps.md
+  - linkListType: reference
+    links:
+    - text: REST-API
+      url: https://docs.microsoft.com/rest/api/scheduler/
+    - text: PowerShell
+      url: scheduler-powershell-reference.md

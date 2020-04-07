@@ -39,6 +39,8 @@
       href: logic-apps-enterprise-integration-overview.md
     - name: Toegang tot virtuele Azure-netwerken
       href: connect-virtual-network-vnet-isolated-environment-overview.md
+    - name: Bedrijfscontinuïteit en herstel na noodgevallen
+      href: business-continuity-disaster-recovery-guidance.md
 - name: Instructiegidsen
   items:
     - name: Ontwikkelen
@@ -85,7 +87,7 @@
           href: logic-apps-exception-handling.md
         - name: Grote berichten verwerken
           href: logic-apps-handle-large-messages.md
-        - name: Beveiligd
+        - name: Beveiligen
           items:
             - name: Beveiliging verbeteren voor logische apps
               href: logic-apps-securing-a-logic-app.md
@@ -327,7 +329,7 @@
           href: logic-apps-create-azure-resource-manager-templates.md
         - name: Sjablonen voor logische app gebruiken
           href: logic-apps-deploy-azure-resource-manager-templates.md
-    - name: Bewaken
+    - name: Controleren
       items:
         - name: Logische apps bewaken
           href: monitor-logic-apps.md
@@ -387,9 +389,9 @@
           href: logic-apps-track-integration-account-x12-tracking-schema.md
         - name: Aangepaste volgschema's
           href: logic-apps-track-integration-account-custom-tracking-schema.md
-- name: Bronnen
+- name: Resources
   items:
-    - name: Ontwikkel uw vaardigheden met Microsoft Learn
+    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: 'https://docs.microsoft.com/learn/browse/?products=azure-logic-apps'
     - name: Roadmap voor Azure Logic Apps
       href: 'https://aka.ms/logicappsroadmap/'

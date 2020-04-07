@@ -61,7 +61,7 @@
           items:
             - name: Beschikbaarheidszones met SQL Database
               href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
-        - name: Opslag
+        - name: Storage
           items:
             - name: Zone-redundante opslag
               href: ../storage/common/storage-redundancy-zrs.md
@@ -85,6 +85,10 @@
           items:
             - name: Een Azure Active Directory Domain Services-instantie maken
               href: ../active-directory-domain-services/tutorial-create-instance.md
+    - name: Documentatie over Edge-zones
+      items:
+        - name: Wat zijn Edge-zones?
+          href: ../networking/edge-zones-overview.md
 - name: Herstel na noodgevallen
   items:
     - name: Azure Site Recovery gebruiken
@@ -93,7 +97,7 @@
   items:
     - name: Azure Backup gebruiken
       href: 'https://docs.microsoft.com/azure/backup/'
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

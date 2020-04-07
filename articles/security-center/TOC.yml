@@ -29,6 +29,8 @@
       href: quick-onboard-azure-stack.md
 - name: Zelfstudies
   items:
+    - name: Handleiding voor planning en bewerking
+      href: security-center-planning-and-operations-guide.md
     - name: Uw resources beveiligen
       href: tutorial-protect-resources.md
     - name: Reageren op incidenten
@@ -71,8 +73,8 @@
           href: security-center-incident.md
         - name: Correlatie van Cloud Smart Alert (incidenten)
           href: security-center-alerts-cloud-smart.md
-        - name: Overzicht beveiligingswaarschuwingen en informatie over bedreigingen
-          href: security-center-threat-intel.md
+        - name: Bedreigingsrapporten
+          href: security-center-threat-report.md
         - name: Waarschuwingen valideren (EICAR-testbestand)
           href: security-center-alert-validation.md
 - name: Instructiegidsen
@@ -149,6 +151,8 @@
           href: security-center-sql-service-recommendations.md
         - name: Identiteit en toegang beveiligen
           href: security-center-identity-access.md
+        - name: Onderzoek gebruikersgegevens beheren
+          href: security-center-investigation-user-data.md
     - name: Cloudbeveiliging toepassen
       items:
         - name: Just-in-time-toegang beheren
@@ -159,24 +163,6 @@
           href: security-center-file-integrity-monitoring.md
         - name: Adaptieve netwerkbeveiliging
           href: security-center-adaptive-network-hardening.md
-    - name: Archiveren
-      items:
-        - name: Schijfversleuteling toepassen
-          href: security-center-apply-disk-encryption.md
-        - name: Systeemupdates toepassen
-          href: security-center-apply-system-updates.md
-        - name: Eindpuntbeveiliging installeren
-          href: security-center-install-endpoint-protection.md
-        - name: Bedreigingsrapporten
-          href: security-center-threat-report.md
-        - name: Betrouwbaarheidsscore waarschuwing
-          href: security-center-confidence-score.md
-        - name: Onderzoek
-          href: security-center-investigation.md
-        - name: Onderzoek gebruikersgegevens beheren
-          href: security-center-investigation-user-data.md
-        - name: Planning en bewerkingen
-          href: security-center-planning-and-operations-guide.md
 - name: Naslaginformatie
   items:
     - name: REST-API’s

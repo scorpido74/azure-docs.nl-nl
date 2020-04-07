@@ -143,12 +143,18 @@
           href: how-to-auto-provision-x509-certs.md
         - name: Attestation met behulp van een symmetrische sleutel
           href: how-to-auto-provision-symmetric-keys.md
-    - name: Aangepaste modules ontwikkelen en er fouten in opsporen
+    - name: Aangepaste modellen ontwikkelen
       items:
-        - name: Visual Studio 2019
+        - name: Ontwikkelen met Visual Studio 2019
           href: how-to-visual-studio-develop-module.md
-        - name: Visual Studio Code
+        - name: Ontwikkelen met Visual Studio Code
           href: how-to-vs-code-develop-module.md
+        - name: Module createOptions configureren
+          items:
+            - name: createOptions begrijpen en gebruiken
+              href: how-to-use-create-options.md
+            - name: Modules toegang geven tot de lokale opslag van een apparaat
+              href: how-to-access-host-storage-from-module.md
     - name: Modules implementeren
       items:
         - name: Implementeren op afzonderlijke apparaten
@@ -183,11 +189,9 @@
           href: deploy-modbus-gateway.md
     - name: Proxyondersteuning configureren
       href: how-to-configure-proxy-support.md
-    - name: Gegevens opslaan aan de rand
+    - name: Azure Blob Storage op IoT Edge
       items:
-        - name: Modules toegang geven tot de lokale opslag van een apparaat
-          href: how-to-access-host-storage-from-module.md
-        - name: Azure Blob Storage op IoT Edge
+        - name: Blobopslag in Edge begrjipen
           href: how-to-store-data-blob.md
         - name: Blob-opslagmodules implementeren
           href: how-to-deploy-blob.md

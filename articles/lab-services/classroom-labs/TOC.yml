@@ -102,6 +102,8 @@
               href: how-to-enable-nested-virtualization-template-vm-using-script.md
         - name: Een VM met Windows-sjabloon voorbereiden
           href: how-to-prepare-windows-template.md
+        - name: Het gedrag van Windows afsluiten bepalen
+          href: how-to-windows-shutdown.md
         - name: Ondersteuningsinformatie weergeven (docent)
           href: lab-creator-support-information.md
     - name: Verbinding maken met VM's in leslokaallabs (student)

@@ -23,6 +23,9 @@
           href: knowledge-store-create-portal.md
         - name: Query uitvoeren met Search Explorer
           href: search-explorer.md
+    - name: ARM-sjabloon
+      displayName: Resource Manager
+      href: search-get-started-arm.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -77,14 +80,6 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST-voorbeelden
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
-- name: Training
-  items:
-    - name: Inleiding (Microsoft Learn)
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
-    - name: Zoekfunctionaliteit toevoegen aan apps (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
-    - name: Cursus voor ontwikkelaars (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
 - name: Concepten
   items:
     - name: Zoekopdracht in volledige tekst
@@ -233,7 +228,7 @@
           href: search-query-simple-examples.md
         - name: Volledige Lucene-syntaxis gebruiken
           href: search-query-lucene-examples.md
-        - name: Speciale tekens en gedeeltelijke voorwaarden
+        - name: Gedeeltelijk uitgevoerde coderegels en speciale tekens
           href: search-query-partial-matching.md
         - name: Query uitvoeren vanuit Power Apps
           href: search-howto-powerapps.md
@@ -261,7 +256,7 @@
           href: search-example-adventureworks-multilevel-faceting.md
     - name: Resultaten
       items:
-        - name: Paginagerelateerde functies
+        - name: Werken met resultaten
           href: search-pagination-page-layout.md
         - name: Relevantie afstemmen (scoreprofielen)
           href: index-add-scoring-profiles.md
@@ -460,6 +455,14 @@
           href: 'https://aka.ms/azjobsdemo'
         - name: Scenario’s zoeken
           href: 'https://searchsamples.azurewebsites.net/'
+    - name: Training
+      items:
+        - name: Inleiding (Microsoft Learn)
+          href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
+        - name: Zoekfunctionaliteit toevoegen aan apps (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
+        - name: Cursus voor ontwikkelaars (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
     - name: Veelgestelde vragen
       href: search-faq-frequently-asked-questions.md
     - name: Prijzen

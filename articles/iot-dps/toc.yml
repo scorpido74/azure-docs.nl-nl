@@ -103,6 +103,8 @@
       href: concepts-tpm-attestation.md
     - name: Attestation met behulp van een symmetrische sleutel
       href: concepts-symmetric-key-attestation.md
+    - name: Beveiligingsprocedures voor fabrikanten van apparaten
+      href: concepts-device-oem-security-practices.md
 - name: Instructiegidsen
   items:
     - name: MXChip IoT DevKit verbinden met IoT Hub

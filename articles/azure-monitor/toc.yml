@@ -15,7 +15,7 @@
     - name: Virtuele machines bewaken
       items:
         - name: Azure-VM's
-          href: learn/quick-collect-azurevm.md
+          href: learn/quick-monitor-azure-vm.md
         - name: Linux-computer
           href: learn/quick-collect-linux-computer.md
         - name: Windows-computer
@@ -303,10 +303,6 @@
             - name: Telemetriecorrelatie
               href: app/correlation.md
               displayname: 'correlation headers, w3c, distributed tracing, tracing'
-            - name: Lokale doorstuurserver
-              href: app/opencensus-local-forwarder.md
-            - name: Aan de slag
-              href: app/opencensus-go.md
         - name: Live Metrics-stream
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
@@ -488,9 +484,17 @@
             - name: Overzicht
               displayName: 'Platform logs, Resource logs, Activity log'
               href: platform/platform-logs-overview.md
-            - name: Activiteitenlogboek weergeven
-              displayName: Platform logs
-              href: platform/activity-log-view.md
+            - name: Activiteitenlogboek
+              items:
+                - name: Openen in de Azure-portal
+                  displayName: 'Platform logs, Activity log'
+                  href: platform/activity-log-view.md
+                - name: Verzamelen en analyseren
+                  displayName: 'Platform logs, Activity log'
+                  href: platform/activity-log-collect.md
+                - name: Exporteren (verouderd)
+                  displayname: Activity log
+                  href: platform/activity-log-export.md
             - name: Verzenden naar bestemmingen
               items:
                 - name: Log Analytics-werkruimte
@@ -502,20 +506,6 @@
                 - name: Event Hubs
                   displayname: 'Resource logs, Activity log, Platform logs'
                   href: platform/resource-logs-stream-event-hubs.md
-            - name: Verzameling verouderde activiteitenlogboeken
-              items:
-                - name: Overzicht
-                  displayName: Resource logs
-                  href: platform/diagnostic-settings-legacy.md
-                - name: Verzamelen en analyseren
-                  displayname: Activity log
-                  href: platform/activity-log-collect.md
-                - name: Verzamelen voor meerdere tenants
-                  displayname: Activity log
-                  href: platform/activity-log-collect-tenants.md
-                - name: Exporteren
-                  displayname: Activity log
-                  href: platform/activity-log-export.md
         - name: Diagnostische instellingen
           items:
             - name: Diagnostische instelling maken
@@ -531,6 +521,8 @@
           href: platform/stream-monitoring-data-event-hubs.md
     - name: VM's en gastbesturingssysteem beheren
       items:
+        - name: Virtuele Azure-machine bewaken
+          href: insights/monitor-vm-azure.md
         - name: Agents
           items:
             - name: Overzicht van agents
@@ -636,12 +628,10 @@
           items:
             - name: Overzicht
               href: insights/vminsights-overview.md
-            - name: Bekende problemen
-              href: insights/vminsights-known-issues.md
             - name: Veelgestelde vragen over algemene beschikbaarheid
               href: insights/vminsights-ga-release-faq.md
             - name: Veelgestelde vragen
-              href: 'faq.md#azure-monitor-for-vms-preview'
+              href: 'faq.md#azure-monitor-for-vms'
             - name: Bewaking inschakelen
               items:
                 - name: Bewakingsoverzicht inschakelen
@@ -654,18 +644,16 @@
                   href: insights/vminsights-enable-at-scale-powershell.md
                 - name: Inschakelen voor een hybride omgeving
                   href: insights/vminsights-enable-hybrid-cloud.md
-                - name: Integratie met Operations Manager
-                  href: insights/service-map-scom.md
-            - name: Statusbewaking
-              href: insights/vminsights-health.md
             - name: Afhankelijkheden toewijzen
               href: insights/vminsights-maps.md
             - name: Prestaties bewaken
               href: insights/vminsights-performance.md
-            - name: Werkmappen gebruiken
-              href: insights/vminsights-workbooks.md
             - name: Gegevens analyseren met logboekquery's
               href: insights/vminsights-log-search.md
+            - name: Gegevens visualiseren met werkmappen
+              href: insights/vminsights-workbooks.md
+            - name: Waarschuwingsregels maken
+              href: insights/vminsights-alerts.md
             - name: Dependency Agent upgraden
               href: insights/vminsights-dependency-agent-maintenance.md
             - name: Bewaking uitschakelen
@@ -680,6 +668,8 @@
               href: insights/wire-data.md
             - name: Oplossing voor servicetoewijzing
               href: insights/service-map.md
+            - name: Servicetoewijzing en Operations Manager
+              href: insights/service-map-scom.md
         - name: Computergroepen
           href: platform/computer-groups.md
     - name: Containers bewaken
@@ -708,6 +698,8 @@
               href: insights/container-insights-analyze.md
             - name: Statusbewaking
               href: insights/container-insights-health.md
+            - name: GPU-prestaties bewaken
+              href: insights/container-insights-gpu-monitoring.md
             - name: Livegegevens weergeven
               items:
                 - name: Overzicht van livegegevens (preview)
@@ -896,13 +888,11 @@
                   href: log-query/query-optimization.md
                 - name: Tekstgegevens parseren
                   href: log-query/parse-text.md
-        - name: Flow/Logic Apps
+        - name: Logic Apps
           items:
-            - name: Flow-connector met logboeken
-              href: platform/flow-tutorial.md
-            - name: Flow-connector met toepassingen
-              href: app/automate-with-flow.md
-            - name: Logic Apps met toepassingen
+            - name: Connector voor Azure Monitor-logboeken
+              href: platform/logicapp-flow-connector.md
+            - name: Application Insights-connector
               href: app/automate-with-logic-apps.md
         - name: REST-API
           displayname: 'metrics, analyze'
@@ -975,6 +965,8 @@
           href: platform/grafana-plugin.md
     - name: Waarschuwingen
       items:
+        - name: Waarschuwingsproblemen oplossen
+          href: platform/alerts-troubleshoot.md
         - name: Waarschuwingsregels voor toepassingen
           items:
             - name: Beschikbaarheid
@@ -999,7 +991,7 @@
               href: platform/alerts-log-query.md
             - name: Webhookacties
               href: platform/alerts-log-webhook.md
-            - name: Problemen oplossen
+            - name: Problemen met logboekwaarschuwingen oplossen
               href: platform/alert-log-troubleshoot.md
         - name: Waarschuwingsregels voor activiteitenlogboek
           items:
@@ -1263,8 +1255,6 @@
           href: 'https://azure.microsoft.com/updates/?product=log-analytics'
         - name: Releaseopmerkingen bij de SDK
           href: app/release-notes.md
-    - name: Windows Analytics
-      href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
     - name: Regionale beschikbaarheid
       href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
     - name: Video's

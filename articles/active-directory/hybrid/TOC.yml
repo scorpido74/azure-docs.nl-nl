@@ -150,6 +150,8 @@
               href: plan-migrate-adfs-password-hash-sync.md
             - name: Migreren van federatie naar pass-througverificatie
               href: plan-migrate-adfs-pass-through-authentication.md
+            - name: Groepen van een forest naar de andere verplaatsen
+              href: how-to-connect-migrate-groups.md
         - name: Ontwerpoverwegingen voor hybride identiteit
           items:
             - name: Overzicht van ontwerpoverwegingen voor hybride identiteit

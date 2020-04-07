@@ -32,6 +32,8 @@
           href: migrate-cost-management-api.md
     - name: Instructiegidsen
       items:
+        - name: Onverwachte kosten voorkomen en analyseren
+          href: ../manage/getting-started.md
         - name: Toegang tot gegevens toewijzen
           href: assign-access-acm-data.md
         - name: Kosten analyse gebruiken voor veelvoorkomende taken

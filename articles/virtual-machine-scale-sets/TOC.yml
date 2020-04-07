@@ -13,11 +13,13 @@
       href: quick-create-cli.md
     - name: Maken met Azure PowerShell
       href: quick-create-powershell.md
-    - name: Maken met een sjabloon
+    - name: Maken met ARM-sjabloon
       items:
         - name: Linux-schaalset
+          displayName: 'ARM, resource manager'
           href: quick-create-template-linux.md
         - name: Windows-schaalset
+          displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
 - name: Zelfstudies
   items:
@@ -174,7 +176,7 @@
           maintainContext: true
     - name: Veelgestelde vragen over schaalsets
       href: virtual-machine-scale-sets-faq.md
-- name: Procedure
+- name: Procedures
   items:
     - name: Plannen en ontwerpen
       items:
@@ -301,7 +303,7 @@
       href: /rest/api/virtualmachinescalesets/
     - name: Azure-sjablonen
       href: /azure/templates/microsoft.compute/virtualmachinescalesets
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
