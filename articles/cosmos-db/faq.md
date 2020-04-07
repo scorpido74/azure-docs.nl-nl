@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0c994caf094918b39204437b5194d81a64affc66
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 114c632d43dbb254222def2437fbffc22ec84688
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545660"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672467"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Veelgestelde vragen over verschillende API's in Azure Cosmos DB
 
@@ -640,7 +640,7 @@ De uitvoer van het bovenstaande profiel geeft aan hoeveel tijd er wordt besteed 
 
 ## <a name="cassandra-api"></a><a id="cassandra"></a>Cassandra API
 
-### <a name="what-is-the-protocol-version-supported-by-azure-cosmso-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Wat is de protocolversie die wordt ondersteund door Azure Cosmso DB Cassandra API? Is er een plan om andere protocollen te ondersteunen?
+### <a name="what-is-the-protocol-version-supported-by-azure-cosmos-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Wat wordt de protocolversie ondersteund door Azure Cosmos DB Cassandra API? Is er een plan om andere protocollen te ondersteunen?
 
 Apache Cassandra API voor Azure Cosmos DB ondersteunt vandaag CQL versie 4. Als u feedback hebt over het ondersteunen van andere protocollen, laat [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)het ons dan weten via [spraakfeedback van gebruikers](https://feedback.azure.com/forums/263030-azure-cosmos-db) of stuur een e-mail naar .
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: 787d88d336abcf3b0ba9b14c3d3798850b665eca
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73097106"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745092"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari Hive-weergave gebruiken met Apache Hadoop in HDInsight
 
@@ -23,14 +23,13 @@ Meer informatie over het uitvoeren van Hive-query's met apache Ambari Hive View.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Hadoop cluster op HDInsight. Zie [Aan de slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
-* Een webbrowser
+Een Hadoop cluster op HDInsight. Zie [Aan de slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="run-a-hive-query"></a>Een Hive-query uitvoeren
 
-1. Selecteer uw cluster in de [Azure-portal.](https://portal.azure.com/)  Zie [Clusters weergeven en weergeven](../hdinsight-administer-use-portal-linux.md#showClusters) voor instructies. Het cluster wordt geopend in een nieuw portaalblad.
+1. Selecteer uw cluster in de [Azure-portal.](https://portal.azure.com/)  Zie [Clusters weergeven en weergeven](../hdinsight-administer-use-portal-linux.md#showClusters) voor instructies. Het cluster wordt geopend in een nieuwe portalweergave.
 
-1. Selecteer **ambari-weergaven**in **clusterdashboards**. Wanneer u wordt gevraagd om te `admin`verifiëren, gebruikt u de accountnaam en het wachtwoord van het cluster dat u hebt opgegeven toen u het cluster hebt gemaakt. U ook `https://CLUSTERNAME.azurehdinsight.net/#/main/views` naar in `CLUSTERNAME` uw browser navigeren waar de naam van uw cluster is.
+1. Selecteer **ambari-weergaven**in **clusterdashboards**. Wanneer u wordt gevraagd om te `admin`verifiëren, gebruikt u de accountnaam en het wachtwoord van het cluster dat u hebt opgegeven toen u het cluster hebt gemaakt. U ook `https://CLUSTERNAME.azurehdinsight.net/#/main/views` in uw `CLUSTERNAME` browser navigeren waar de naam van uw cluster is.
 
 1. Selecteer __Hive View__in de lijst met weergaven .
 
@@ -59,18 +58,15 @@ Meer informatie over het uitvoeren van Hive-query's met apache Ambari Hive View.
         GROUP BY t4;
     ```
 
-    Met deze instructies worden de volgende acties uitgevoerd:
+    Deze verklaringen doen de volgende acties:
 
-   * `DROP TABLE`: Hiermee verwijdert u de tabel en het gegevensbestand, voor het geval de tabel al bestaat.
-
-   * `CREATE EXTERNAL TABLE`: Hiermee maakt u een nieuwe "externe" tabel in Hive.
-     Externe tabellen slaan alleen de tabeldefinitie op in Hive. De gegevens worden op de oorspronkelijke locatie achtergelaten.
-
-   * `ROW FORMAT`: Geeft aan hoe de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.
-
-   * `STORED AS TEXTFILE LOCATION`: Geeft aan waar de gegevens worden opgeslagen en dat ze als tekst worden opgeslagen.
-
-   * `SELECT`: Hiermee selecteert u een telling van alle rijen waar kolom t4 de waarde bevat [FOUT].
+    |Verklaring | Beschrijving |
+    |---|---|
+    |KEUZELIJST LATEN VALLEN|Hiermee verwijdert u de tabel en het gegevensbestand, voor het geval de tabel al bestaat.|
+    |EXTERNE TABEL MAKEN|Hiermee maakt u een nieuwe 'externe' tabel in Hive. Externe tabellen slaan alleen de tabeldefinitie op in Hive. De gegevens worden op de oorspronkelijke locatie achtergelaten.|
+    |RIJNOTATIE|Laat zien hoe de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.|
+    |OPGESLAGEN ALS TEXTFILE-LOCATIE|Hiermee wordt weergegeven waar de gegevens worden opgeslagen en dat deze als tekst worden opgeslagen.|
+    |SELECT|Hiermee selecteert u een aantal rijen waarin kolom t4 de waarde bevat [FOUT].|
 
    > [!IMPORTANT]  
    > Laat de __databaseselectie__ __standaard staan__. De voorbeelden in dit document maken gebruik van de standaarddatabase die is opgenomen met HDInsight.
@@ -116,7 +112,7 @@ U het tabblad __Tabellen__ gebruiken om te werken met tabellen in een Hive-datab
 
 Op het tabblad **Query** u optioneel query's opslaan. Nadat u een query hebt opgeslagen, u deze opnieuw gebruiken via het tabblad __Opgeslagen query's.__
 
-![Tabblad Opgeslagen query's in Apache Hive-weergave](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Tabblad Opgeslagen query's van Apache Hive](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > Opgeslagen query's worden opgeslagen in de standaardclusteropslag. U de opgeslagen query's onder het pad `/user/<username>/hive/scripts`vinden. Deze worden opgeslagen als `.hql` plain-text bestanden.
@@ -131,7 +127,7 @@ Declareer en sla een set UDF's op met het tabblad **UDF** boven aan de Hive-weer
 
 ![Tabblad UDF's van Apache Hive-weergave](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-Nadat u een UDF aan de Hive-weergave hebt toegevoegd, wordt onder aan de queryeditor een **udfs-knop invoegen** **weergegeven.** Als u dit item selecteert, wordt een vervolgkeuzelijst weergegeven met de UDF's die zijn gedefinieerd in de hive-weergave. Als u een UDF selecteert, worden HiveQL-instructies toegevoegd aan uw query om de UDF in te schakelen.
+Onder aan de **queryeditor**wordt een **knop Udfs invoegen** weergegeven. In dit item wordt een vervolgkeuzelijst weergegeven met de UDF's die zijn gedefinieerd in de hive-weergave. Als u een UDF selecteert, worden HiveQL-instructies toegevoegd aan uw query om de UDF in te schakelen.
 
 Als u bijvoorbeeld een UDF hebt gedefinieerd met de volgende eigenschappen:
 
@@ -155,13 +151,13 @@ U de UDF vervolgens gebruiken in uw query. Bijvoorbeeld `SELECT myawesomeudf(nam
 Zie de volgende artikelen voor meer informatie over het gebruik van UDF's met Hive op HDInsight:
 
 * [Python gebruiken met Apache Hive en Apache Pig in HDInsight](python-udf-hdinsight.md)
-* [Een aangepaste Apache Hive UDF toevoegen aan HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Gebruik een Java UDF met Apache Hive in HDInsight](./apache-hadoop-hive-java-udf.md)
 
 ## <a name="hive-settings"></a>Hive-instellingen
 
 U verschillende Hive-instellingen wijzigen, zoals het wijzigen van de uitvoeringsengine voor Hive van Tez (de standaardinstelling) in MapReduce.
 
-## <a name="next-steps"></a><a id="nextsteps"></a>Volgende stappen
+## <a name="next-steps"></a>Volgende stappen
 
 Voor algemene informatie over Hive over HDInsight:
 

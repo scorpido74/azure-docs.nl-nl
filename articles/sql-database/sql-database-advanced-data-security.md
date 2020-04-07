@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: 1f0e6694e596dc60264dfe0789a2f80090e0da3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aed0bcb79dedf057c5943cea9f4b4399b2f630cb
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269131"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677457"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Geavanceerde gegevensbeveiliging voor Azure SQL Database
 
@@ -26,8 +26,8 @@ Geavanceerde gegevensbeveiliging is een uniform pakket voor geavanceerde SQL-bev
 
 Advanced data security (ADS) biedt een reeks geavanceerde SQL-beveiligingsmogelijkheden, waaronder gegevensdetectie & classificatie, kwetsbaarheidsbeoordeling en Geavanceerde bedreigingsbeveiliging.
 
-- [Gegevensdetectie & classificatie](sql-database-data-discovery-and-classification.md) biedt mogelijkheden die zijn ingebouwd in Azure SQL Database voor het ontdekken, classificeren, labelen & het beveiligen van de gevoelige gegevens in uw databases. Het kan worden gebruikt voor het zichtbaar maken van de classificatiestatus van gegevens in uw database, en het traceren van de toegang tot gevoelige gegevens binnen en buiten de database.
-- [Kwetsbaarheidsbeoordeling](sql-vulnerability-assessment.md) is een eenvoudig te configureren service die potentiële databasekwetsbaarheden kan opsporen, bijhouden en helpen oplossen. Deze service biedt u inzicht in de status van de beveiliging en bruikbare stappen om beveiligingsproblemen op te lossen en de beveiliging van uw database te verbeteren.
+- [Gegevensdetectie & classificatie](sql-database-data-discovery-and-classification.md) biedt mogelijkheden die zijn ingebouwd in Azure SQL Database voor het ontdekken, classificeren, labelen & het rapporteren van de gevoelige gegevens in uw databases. Het kan worden gebruikt voor het zichtbaar maken van de classificatiestatus van gegevens in uw database, en het traceren van de toegang tot gevoelige gegevens binnen en buiten de database.
+- [Evaluatie van beveiligingsproblemen](sql-vulnerability-assessment.md) is een eenvoudig te configureren service waarmee u potentiële zwakke plekken in de beveiliging van de database kunt detecteren, volgen en verhelpen. Deze service biedt u inzicht in de status van de beveiliging en bruikbare stappen om beveiligingsproblemen op te lossen en de beveiliging van uw database te verbeteren.
 - [Advanced Threat Protection](sql-database-threat-detection-overview.md) detecteert vreemde activiteiten die duiden op ongebruikelijke en mogelijk schadelijke pogingen om toegang te verkrijgen tot of op aanvallen op uw databases. Hiermee wordt uw database continu gecontroleerd op verdachte activiteiten en wordt u onmiddellijk gewaarschuwd bij mogelijke beveiligingsproblemen, SQL-injectieaanvallen en afwijkende databasetoegangspatronen. Meldingen van Advanced Threat Protection bevatten detailinformatie over verdachte activiteiten en aanbevelingen voor het onderzoeken en tegenhouden ervan.
 
 Schakel SQL ADS één keer in om al deze meegeleverde functies in te schakelen. Met één klik u ADS inschakelen voor alle databases op uw SQL Database-server of beheerde instantie. Voor het inschakelen of beheren van ADS-instellingen moet u behoren tot de [SQL-beveiligingsbeheerrol,](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) sql-databasebeheerrol of SQL-serverbeheerrol. 
@@ -74,7 +74,7 @@ Geavanceerde instellingen voor gegevensbeveiliging voor uw databaseserver of beh
 
 ## <a name="next-steps"></a>Volgende stappen 
 
-- Meer informatie over [gegevensdetectie & classificatie](sql-database-data-discovery-and-classification.md) 
+- Meer informatie over [&-classificatie voor gegevensdetectie](sql-database-data-discovery-and-classification.md) 
 - Meer informatie over [kwetsbaarheidsbeoordeling](sql-vulnerability-assessment.md) 
 - Meer informatie over [Geavanceerde bedreigingsbeveiliging](sql-database-threat-detection.md)
-- Meer informatie over [Azure security center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

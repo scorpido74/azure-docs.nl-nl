@@ -4,12 +4,12 @@ description: Hiermee wordt de ondersteuning voor Azure VM's disaster recovery sa
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 0b4a654093e0842e66e1f8b0924edfa6c9c215e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f61f32ddc0a1cc6575907bc72522228b77552947
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276645"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673807"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteuningsmatrix voor Azure VM-noodherstel tussen Azure-regio's
 
@@ -20,8 +20,8 @@ In dit artikel worden ondersteuning en vereisten voor noodherstel van Azure VM's
 
 **Implementatie** |  **Ondersteuning**
 --- | ---
-**Azure-portal** | Ondersteund.
-**Powershell** | Ondersteund. [Meer informatie](azure-to-azure-powershell.md)
+**Azure Portal** | Ondersteund.
+**PowerShell** | Ondersteund. [Meer informatie](azure-to-azure-powershell.md)
 **REST-API** | Ondersteund.
 **CLI** | Momenteel niet ondersteund
 
@@ -36,7 +36,7 @@ In dit artikel worden ondersteuning en vereisten voor noodherstel van Azure VM's
 **VM's migreren over regio's binnen ondersteunde geografische clusters (binnen en tussen abonnementen)** | Ondersteund binnen dezelfde Azure Active Directory-tenant.
 **VM's migreren binnen dezelfde regio** | Wordt niet ondersteund.
 
-## <a name="region-support"></a>Ondersteuning voor regio's
+## <a name="region-support"></a>Ondersteuning voor regio
 
 U VM's repliceren en herstellen tussen twee regio's binnen hetzelfde geografische cluster. Geografische clusters worden gedefinieerd met het oog op gegevenslatentie en soevereiniteit.
 
@@ -44,13 +44,13 @@ U VM's repliceren en herstellen tussen twee regio's binnen hetzelfde geografisch
 **Geografisch cluster** | **Azure-regio's**
 -- | --
 Amerika | Canada East, Canada Central, South Central US, West Central US, East US, East US 2, West US, West US 2, Central US, North Central US
-Europa | Uk West, UK South, Noord-Europa, West-Europa, Frankrijk Centraal, Frankrijk Zuid-, Zuid-Afrika West, Zuid-Afrika Noord, Noorwegen Oost, Noorwegen West
-Azië | Zuid-India, Centraal-India, West-India, Zuidoost-Azië, Oost-Azië, Japan Oost-, Japan West, Korea Centraal, Korea Zuid, VAE Centraal, VAE Noord
+Europa | Uk West, UK South, Noord-Europa, West-Europa, Zuid-Afrika West, Zuid-Afrika Noord, Noorwegen Oost, Noorwegen West
+Azië | Zuid-India, Centraal-India, West-India, Zuidoost-Azië, Oost-Azië, Japan Oost,Japan West, Korea Centraal, Korea Zuid
 Australië    | Australië Oost, Australië Zuidoost, Australië Centraal, Australië Centraal 2
 Azure Government    | US GOV Virginia, US GOV Iowa, US GOV Arizona, US GOV Texas, US DOD East, US DOD Central
 Duitsland    | Duitsland Centraal, Duitsland Noordoost
 China | China East, China North, China North2, China East2
-Beperkte regio's gereserveerd voor herstel na rampen in het land |Duitsland Noord gereserveerd voor Duitsland West-Centraal, Zwitserland West gereserveerd voor Zwitserland Noord, Frankrijk Zuid gereserveerd voor Frankrijk Centraal klanten
+Beperkte regio's gereserveerd voor herstel na rampen in het land |Duitsland Noord gereserveerd voor Duitsland West Central, Zwitserland West gereserveerd voor Zwitserland Noord, Frankrijk Zuid gereserveerd voor Frankrijk Centraal, VAE Centraal beperkt voor VAE Noord klanten
 
 >[!NOTE]
 >

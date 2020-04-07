@@ -4,12 +4,12 @@ description: Meer informatie over beveiligingsscenario's voor een Azure Service 
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 92d2c4d03075eaafce039f94b4f03c0791985b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258679"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80753794"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Beveiligingsscenario's voor servicefabric-cluster
 
@@ -74,7 +74,7 @@ Voor clusters die op Azure worden uitgevoerd, u ook de toegang tot beheereindpun
 Voor Service Fabric-clusters die zijn geïmplementeerd in een openbaar netwerk dat wordt gehost op Azure, is de aanbeveling voor wederzijdse verificatie van client-naar-knooppunt:
 
 * Azure Active Directory gebruiken voor de identiteit van de client
-* Een certificaat voor de identiteit van de server en SSL-codering van HTTP-communicatie
+* Een certificaat voor serveridentiteit en TLS-versleuteling van http-communicatie
 
 Voor servicefabricclusters die zijn geïmplementeerd in een openbaar netwerk dat wordt gehost op Azure, is de aanbeveling voor node-to-nodebeveiliging het gebruik van een clustercertificaat om knooppunten te verifiëren.
 
@@ -103,13 +103,13 @@ Enkele belangrijke dingen om te overwegen:
 
 Deze certificaten (een primaire en eventueel een secundaire) zijn vereist om een cluster te beveiligen en onbevoegde toegang tot het te voorkomen. Deze certificaten bieden cluster- en serververificatie.
 
-Clusterverificatie verifieert knooppuntcommunicatie voor clusterfederatie. Alleen knooppunten die hun identiteit met dit certificaat kunnen bewijzen, kunnen lid worden van het cluster. Serververificatie verifieert de eindpunten voor clusterbeheer naar een beheerclient, zodat de beheerclient weet dat hij met het echte cluster praat en niet met een 'man in the middle'. Dit certificaat biedt ook een SSL voor de HTTPS-beheer-API en voor Service Fabric Explorer via HTTPS. Wanneer een client of knooppunt een knooppunt verifieert, is een van de eerste controles de waarde van de algemene naam in het veld **Onderwerp.** Deze algemene naam of een van de alternatieve namen van het certificaat (SAN's) moeten aanwezig zijn in de lijst met toegestane algemene namen.
+Clusterverificatie verifieert knooppuntcommunicatie voor clusterfederatie. Alleen knooppunten die hun identiteit met dit certificaat kunnen bewijzen, kunnen lid worden van het cluster. Serververificatie verifieert de eindpunten voor clusterbeheer naar een beheerclient, zodat de beheerclient weet dat hij met het echte cluster praat en niet met een 'man in the middle'. Dit certificaat biedt ook een TLS voor de HTTPS-beheer-API en voor Service Fabric Explorer via HTTPS. Wanneer een client of knooppunt een knooppunt verifieert, is een van de eerste controles de waarde van de algemene naam in het veld **Onderwerp.** Deze algemene naam of een van de alternatieve namen van het certificaat (SAN's) moeten aanwezig zijn in de lijst met toegestane algemene namen.
 
 Het certificaat moet aan de volgende eisen voldoen:
 
 * Het certificaat moet een privésleutel bevatten. Deze certificaten hebben meestal extensies .pfx of .pem  
 * Het certificaat moet worden gemaakt voor sleuteluitwisseling, dat kan worden geëxporteerd naar een bestand voor persoonlijke informatie-uitwisseling (.pfx).
-* De **onderwerpnaam van het certificaat moet overeenkomen met het domein dat u gebruikt om toegang te krijgen tot het cluster Servicefabric.** Deze matching is vereist om een SSL te bieden voor het HTTPS-beheereindpunt en De Fabric Explorer van het cluster. U geen SSL-certificaat verkrijgen van een certificeringsinstantie (CA) voor het domein *.cloudapp.azure.com. U hebt voor uw cluster een aangepaste domeinnaam nodig. Wanneer u een certificaat van een CA aanvraagt, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domeinnaam die u voor uw cluster gebruikt.
+* De **onderwerpnaam van het certificaat moet overeenkomen met het domein dat u gebruikt om toegang te krijgen tot het cluster Servicefabric.** Deze matching is vereist om een TLS te bieden voor het HTTPS-beheereindpunt en De Fabric Explorer van het cluster. U geen TLS/SSL-certificaat verkrijgen van een certificeringsinstantie (CA) voor het domein *.cloudapp.azure.com. U hebt voor uw cluster een aangepaste domeinnaam nodig. Wanneer u een certificaat van een CA aanvraagt, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domeinnaam die u voor uw cluster gebruikt.
 
 Enkele andere dingen om te overwegen:
 

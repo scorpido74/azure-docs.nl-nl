@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 2c8617cffaa81da6423011a494b8dbc82c42d218
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 43ee14784b6049e9b5c1a78e733e72bbc45f915d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632460"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744037"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics-workloadbelang
 
@@ -38,7 +38,7 @@ Naast het hierboven beschreven basisscenario met verkoop- en weergegevens, zijn 
 
 ### <a name="locking"></a>Vergrendelen
 
-Toegang tot sloten voor lees- en schrijfactiviteit is een gebied van natuurlijke twist. Activiteiten zoals [partitieschakelen](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) of [OBJECT RENAME](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) vereisen verhoogde vergrendelingen.  Zonder het belang van de werkbelasting optimaliseert Synapse SQL-pool in Azure Synapse voor doorvoer. Optimaliseren voor doorvoer betekent dat wanneer uitvoerende en in de wachtrij staande aanvragen dezelfde vergrendelingsbehoeften hebben en dat resources beschikbaar zijn, de wachtrijaanvragen aanvragen kunnen omzeilen met hogere vergrendelingsbehoeften die eerder in de aanvraagwachtrij zijn aangekomen. Zodra het werkbelastingbelang wordt toegepast op aanvragen met hogere vergrendelingsbehoeften. Verzoek met een hoger belang zal worden uitgevoerd voor de aanvraag met een lager belang.
+Toegang tot sloten voor lees- en schrijfactiviteit is een gebied van natuurlijke twist. Activiteiten zoals [partitieschakelen](sql-data-warehouse-tables-partition.md) of [OBJECT RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vereisen verhoogde vergrendelingen.  Zonder het belang van de werkbelasting optimaliseert Synapse SQL-pool in Azure Synapse voor doorvoer. Optimaliseren voor doorvoer betekent dat wanneer uitvoerende en in de wachtrij staande aanvragen dezelfde vergrendelingsbehoeften hebben en dat resources beschikbaar zijn, de wachtrijaanvragen aanvragen kunnen omzeilen met hogere vergrendelingsbehoeften die eerder in de aanvraagwachtrij zijn aangekomen. Zodra het werkbelastingbelang wordt toegepast op aanvragen met hogere vergrendelingsbehoeften. Verzoek met een hoger belang zal worden uitgevoerd voor de aanvraag met een lager belang.
 
 Kijk een naar het volgende voorbeeld:
 
@@ -62,8 +62,8 @@ Omdat Q5 mediumrc is, vereist het twee gelijktijdigheidssleuven. Q5 moet wachten
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [KLASSER (Transact-SQL) maken voor](/sql/t-sql/statements/create-workload-classifier-transact-sql)meer informatie over het maken van een classificatie.  
+- Zie de [KLASSER (Transact-SQL) maken voor](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)meer informatie over het maken van een classificatie.  
 - Zie [Workloadclassificatie](sql-data-warehouse-workload-classification.md)voor meer informatie over workloadclassificatie.  
 - Zie de classificatie Snelstart [Werkbelasting maken voor](quickstart-create-a-workload-classifier-tsql.md) het maken van een classificatie voor werkbelasting.
 - Bekijk de how-to-artikelen om [het belang van workloads](sql-data-warehouse-how-to-configure-workload-importance.md) te configureren en hoe [u Workload Management beheren en bewaken.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
-- Zie [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) om query's en het toegewezen belang weer te geven.
+- Zie [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om query's en het toegewezen belang weer te geven.

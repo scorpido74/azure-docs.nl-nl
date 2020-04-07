@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain-servicelimieten
 description: Overzicht van de service- en functionele limieten in Azure Blockchain Service
-ms.date: 03/30/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: c728e617ac37795988cd596c7cb0c5025aac4ccf
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529581"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676523"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Limieten in Azure Blockchain-service
 
@@ -35,7 +35,6 @@ Het wijzigen van de prijslaag tussen basis en standaard na het maken van leden w
 De maximale hoeveelheid opslagruimte die per knooppunt kan worden gebruikt voor grootboekgegevens en logboeken is 1,8 terabyte.
 
 De grootte van het aantal grootboek en logboekopslag wordt niet ondersteund.
-
 ## <a name="consortium-limits"></a>Consortiumlimieten
 
 * **Consortium- en lidnamen moeten uniek zijn** voor andere consortium- en lidnamen in de Azure Blockchain-service.
@@ -59,6 +58,12 @@ De grootte van het aantal grootboek en logboekopslag wordt niet ondersteund.
 * **Alle leden in een consortium moeten dezelfde grootboekversie gebruiken**
 
     Zie [Patchen, updates en versies](ledger-versions.md)voor meer informatie over de versies voor patchen, updates en grootboeken die beschikbaar zijn in Azure Blockchain Service.
+
+## <a name="performance"></a>Prestaties
+
+Gebruik *geen eth.estimate* gasfunctie voor elke transactieindiening. De *eth.estimate-functie* is geheugenintensief. Als u de functie meerdere keren aanroept, worden transacties per seconde drastisch verminderd.
+
+Gebruik indien mogelijk een conservatieve gaswaarde voor het indienen van transacties en minimaliseer het gebruik van *eth.estimate*.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,14 +4,14 @@ description: Meer informatie over het migreren van uw toepassing van het gebruik
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 04/06/2020
 ms.author: maquaran
-ms.openlocfilehash: e1a2a5d849d3c94d62b8645c41f288ba130aa6a4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 820a5398d84122659b1676b7d5722bce08b1837d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479329"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755969"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migreren van de bulkexecutorbibliotheek naar de bulkondersteuning in Azure Cosmos DB .NET V3 SDK
 
@@ -73,6 +73,15 @@ De `BulkOperationResponse` bevat:
 1. Het aantal succesvolle operaties.
 1. Het totaal van de gevraagde eenheden verbruikt.
 1. Als er fouten zijn, wordt een lijst met tuples weergegeven die de uitzondering en het bijbehorende item voor logboekregistratie en identificatiedoel bevatten.
+
+## <a name="retry-configuration"></a>Configuratie opnieuw proberen
+
+Bulk executor bibliotheek had [begeleiding](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) `MaxRetryWaitTimeInSeconds` die `MaxRetryAttemptsOnThrottledRequests` vermeld om de en van [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) in te `0` stellen om het beheer te delegeren aan de bibliotheek.
+
+Voor bulkondersteuning in de .NET SDK is er geen verborgen gedrag. U de opties voor opnieuw proberen rechtstreeks configureren via de [CosmosClientOptions.MaxRetryAttemptsOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) en [CosmosClientOptions.MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests).
+
+> [!NOTE]
+> In gevallen waarin de ingerichte aanvraageenheden veel lager zijn dan de verwachte op basis van de hoeveelheid gegevens, u overwegen deze in te stellen op hoge waarden. De bulk operatie zal langer duren, maar het heeft een hogere kans van volledig slagen als gevolg van de hogere pogingen.
 
 ## <a name="performance-improvements"></a>Prestatieverbeteringen
 

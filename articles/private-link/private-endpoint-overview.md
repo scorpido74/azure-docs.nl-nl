@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 6782d745bfced576fe06019b0d41af86c8c63ed4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: b8f55b0693b7ffdf10516cfb19b67ccc5a94dc5a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656262"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742910"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is Azure Private Endpoint?
 
@@ -144,7 +144,7 @@ Gebruik voor Azure-services de aanbevolen zonenamen zoals beschreven in de volge
 |Azure Relay (Microsoft.Relay/naamruimten) | naamruimte |privatelink.servicebus.windows.net|
 |Azure-gebeurtenisraster (Microsoft.EventGrid/onderwerpen)   | onderwerp | Onderwerp. {region}.privatelink.eventgrid.azure.net {region}.privatelink.eventgrid.azure.net {region}.privatelink.eventgrid.azure.net {region|
 |Azure-gebeurtenisraster (Microsoft.EventGrid/domains) | domein | Domein. {region}.privatelink.eventgrid.azure.net {region}.privatelink.eventgrid.azure.net {region}.privatelink.eventgrid.azure.net {region |
-|Azure WebApps(Microsoft.Web/sites) | site | privatelink.azurewebsites.net |
+|Azure WebApps (Microsoft.Web/sites)    | site | privatelink.azurewebsites.net |
 |Azure Machine Learning(Microsoft.MachineLearningServices/werkruimten)   | werkruimte | privatelink.api.azureml.ms |
  
 Azure maakt een canonieke naam DNS-record (CNAME) op de openbare DNS om de resolutie om te leiden naar de voorgestelde domeinnamen. U de resolutie overschrijven met het privé-IP-adres van uw privéeindpunten. 

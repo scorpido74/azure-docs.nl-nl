@@ -4,12 +4,12 @@ description: Meer informatie over het implementeren van een gekoppelde sjabloon
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a09315b0947f41e7602e630460cb3e674a7bf8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80082242"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672921"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Zelfstudie: Een gekoppelde sjabloon implementeren
 
@@ -90,6 +90,9 @@ Write-Host "Press [ENTER] to continue ..."
 Als u een privésjabloon wilt implementeren in een opslagaccount, genereert u een SAS-token en neemt u deze op in de URI voor de sjabloon. Stel de vervaldatum in om voldoende tijd te hebben om de implementatie te voltooien. De blob met de sjabloon is alleen toegankelijk voor de eigenaar van het account. Wanneer u echter een SAS-token voor de blob maakt, is de blob toegankelijk voor iedereen met die URI. Als een andere gebruiker de URI onderschept, heeft die gebruiker toegang tot de sjabloon. Een SAS-token is een goede manier om de toegang tot uw sjablonen te beperken, maar u moet gevoelige gegevens zoals wachtwoorden niet rechtstreeks in de sjabloon opnemen.
 
 Zie [Resourcegroep maken](./deployment-tutorial-local-template.md#create-resource-group)als u de resourcegroep niet hebt gemaakt.
+
+> [!NOTE]
+> In de onderstaande Azure CLI-code zou datumparameter -d een ongeldig argument zijn in macOS. Dus macOS-gebruikers, om 2 uur toe te voegen aan de huidige tijd in terminal op macOS moet je -v+2H gebruiken.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

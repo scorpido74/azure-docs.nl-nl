@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 5c95c50f5597eee51c66cc68273478b1b9f0e2df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e8f63d63739f15d6d140b1eff510e6e006955b8
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286333"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744259"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>Vereisten voor de Power BI-app-aanbieding
+
+>[!Important]
+>Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzurePBIAppCreationOverview) om uw gemigreerde aanbiedingen te beheren.
 
 In dit artikel vindt u de technische en zakelijke vereisten waaraan u moet voldoen voordat u een Power BI-app-aanbieding publiceren naar de AppSource-marktplaats.  Als u dit nog niet hebt gedaan, bekijkt u de [Office 365-, Dynamics 365-, PowerApps- en Power BI-publicatiegids voor aanbiedingen](../../appsource-offer-publishing-guide.md).
 

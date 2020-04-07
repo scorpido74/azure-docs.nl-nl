@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c2700339a7ac8342da0250227cff898c20e60118
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1298a6d277f072491d05945b272925a2aba52e02
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278549"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745649"
 ---
 # <a name="create-a-consulting-offer"></a>Een adviesaanbod maken
+
+>[!Important]
+>Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw Consulting-serviceaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van consultingservicecreatie](https://aka.ms/AzureCreateConsultingService) om uw gemigreerde aanbiedingen te beheren.
 
 In dit artikel wordt beschreven hoe u een adviesserviceaanbieding maken en publiceren.
 
@@ -34,5 +37,5 @@ Als u een nieuwe aanbieding wilt maken, voert u deze stappen uit.
 
 De pagina **Nieuwe aanbieding** voor het type adviesserviceaanbieding biedt een reeks tabbladen en formuliervelden die u gebruikt om een nieuwe aanbieding te maken. In de volgende artikelen wordt uitgelegd hoe u het tabblad gebruikt om de aanbiedingsinstellingen te definiëren en de gegevens voor het nieuwe aanbod op te slaan:
 
--   [Aanbiedingsinstellingen definiëren](./cpp-consulting-service-define-offer-settings.md)
--   [Storefront-gegevens invoeren en publiceren in de Azure Marketplace of op AppSource](./cpp-consulting-service-storefront-details.md)
+-    [Aanbiedingsinstellingen definiëren](./cpp-consulting-service-define-offer-settings.md)
+-    [Storefront-gegevens invoeren en publiceren in de Azure Marketplace of op AppSource](./cpp-consulting-service-storefront-details.md)

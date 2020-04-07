@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9ce87bac6fbcc3833684dc540c542bc14c9b4955
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: dcefe6a6144c9a8f9c6ab7daf5b34b2d81a73c3f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586514"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743001"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (voorheen SQL DW) Veelgestelde vragen
 
@@ -35,7 +35,7 @@ A. Synapse SQL-pool verwijst naar de enterprise data warehousing-functies die al
 
 V. Hoe ga ik aan de slag met Azure Synapse?
 
-A. U aan de slag met een [gratis Azure-account](https://azure.microsoft.com/free/sql-data-warehouse/) of [contact opnemen met verkoop voor meer informatie.](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html) 
+A. U aan de slag met een [gratis Azure-account](https://azure.microsoft.com/free/sql-data-warehouse/) of [contact opnemen met verkoop voor meer informatie.](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html)
 
 V. Wat biedt Azure Synapse voor gegevensbeveiliging?
 
@@ -43,7 +43,8 @@ A. Azure Synapse biedt verschillende oplossingen voor het beschermen van gegeven
 
 V. Waar kan ik erachter komen met welke wettelijke of zakelijke standaarden Azure Synapse voldoet?
 
-A. Ga naar de [Microsoft Compliance-pagina](https://www.microsoft.com/trustcenter/compliance/complianceofferings) voor verschillende compliance-aanbiedingen per product zoals SOC en ISO. Kies eerst op nalevingstitel. Vouw Azure vervolgens uit in de sectie Microsoft in-scope cloudservices aan de rechterkant van de pagina om te zien welke services Azure Synapse compatibel zijn.
+A. Ga naar de [Microsoft Compliance-pagina](https://www.microsoft.com/trustcenter/compliance/complianceofferings) voor verschillende compliance-aanbiedingen per product zoals SOC en ISO.
+Kies eerst op nalevingstitel. Vouw Azure vervolgens uit in de sectie Microsoft in-scope cloudservices aan de rechterkant van de pagina om te zien welke services Azure Synapse compatibel zijn.
 
 V. Kan ik Power BI aansluiten?
 
@@ -51,7 +52,7 @@ A. Ja. Hoewel Power BI directe query's ondersteunt met Azure Synapse, is het nie
 
 V. Wat zijn de capaciteitslimieten van synaps SQL-pool?
 
-A. Zie onze pagina met huidige [capaciteitslimieten.](sql-data-warehouse-service-capacity-limits.md) 
+A. Zie onze pagina met huidige [capaciteitslimieten.](sql-data-warehouse-service-capacity-limits.md)
 
 V. Waarom duurt het zo lang met mijn schaal/pauze/cv?
 
@@ -65,13 +66,13 @@ A. Als je een functieaanvraag hebt, dien je deze in op onze [UserVoice-pagina](h
 
 V. Hoe kan ik x doen?
 
-A. Voor hulp bij het ontwikkelen met Azure Synapse u vragen stellen op onze [Stack Overflow-pagina.](https://stackoverflow.com/questions/tagged/azure-sqldw) 
+A. Voor hulp bij het ontwikkelen met Azure Synapse u vragen stellen op onze [Stack Overflow-pagina.](https://stackoverflow.com/questions/tagged/azure-sqldw)
 
 V. Hoe dien ik een ondersteuningsticket in?
 
 A. [Ondersteuningstickets](sql-data-warehouse-get-started-create-support-ticket.md) kunnen worden ingediend via azure portal.
 
-## <a name="sql-languagefeature-support"></a>ONDERSTEUNING voor SQL-taal/functie 
+## <a name="sql-languagefeature-support"></a>ONDERSTEUNING voor SQL-taal/functie
 
 V. Welke gegevenstypen worden ondersteund?
 
@@ -85,7 +86,7 @@ A. Veel functies worden ondersteund. Functies die niet worden ondersteund, zijn 
 
 V. Ondersteunt Synapse SQL-pool REST API's?
 
-A. Ja. De meeste REST-functionaliteit die kan worden gebruikt met SQL Database is ook beschikbaar met Synapse SQL-pool. U API-informatie vinden op REST-documentatiepagina's of [MSDN.](https://msdn.microsoft.com/library/azure/mt163685.aspx)
+A. Ja. De meeste REST-functionaliteit die kan worden gebruikt met SQL Database is ook beschikbaar met Synapse SQL-pool. U API-informatie vinden op REST-documentatiepagina's of [databases.](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 ## <a name="loading"></a>Laden
 
@@ -97,17 +98,17 @@ V: Welke bestandsindelingen worden ondersteund door PolyBase?
 
 A: Orc, RC, Parket en platte afgebakende tekst
 
-V: Met welke gegevensbronnen kan ik verbinding maken met PolyBase? 
+V: Met welke gegevensbronnen kan ik verbinding maken met PolyBase?
 
 A: [Azure Data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md) en Azure Storage [Blobs](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 
-V: Is berekening pushdown mogelijk bij het maken van verbinding met Azure Storage Blobs of ADLS? 
+V: Is berekening pushdown mogelijk bij het maken van verbinding met Azure Storage Blobs of ADLS?
 
-A: Nee, PolyBase werkt alleen samen met de opslagcomponenten. 
+A: Nee, PolyBase werkt alleen samen met de opslagcomponenten.
 
 V: Kan ik verbinding maken met HDI?
 
-A: HDI kan ADLS of WASB gebruiken als HDFS-laag. Als u een hdfs-laag hebt, u die gegevens in een Synapse SQL-groep laden. U echter geen pushdown-berekening genereren naar de HDI-instantie. 
+A: HDI kan ADLS of WASB gebruiken als HDFS-laag. Als u een hdfs-laag hebt, u die gegevens in een Synapse SQL-groep laden. U echter geen pushdown-berekening genereren naar de HDI-instantie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

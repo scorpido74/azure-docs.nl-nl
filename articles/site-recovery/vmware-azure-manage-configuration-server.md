@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 692834903899448707200b24a955301e29e14f90
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478464"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672742"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>De configuratieserver voor VMware VM/physical server disaster recovery beheren
 
@@ -45,7 +45,7 @@ U hebt als volgt toegang tot de configuratieserver:
 
 U de referenties ook wijzigen via CSPSConfigtool.exe.
 
-1. Inloggen op de configuratieserver en cspsconfigtool.exe starten
+1. Log in op de configuratieserver en start CSPSConfigtool.exe
 2. Kies het account dat u wilt wijzigen en klik op **Bewerken**.
 3. Voer de gewijzigde referenties in en klik op **Ok**
 
@@ -93,6 +93,32 @@ Met de OVF-sjabloon (Open Virtualisatie Format) wordt de vm van de configuraties
 - U [een extra adapter aan de VM toevoegen,](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter)maar u moet deze toevoegen voordat u de configuratieserver in de kluis registreert.
 - Als u een adapter wilt toevoegen nadat u de configuratieserver in de kluis hebt geregistreerd, voegt u de adapter toe in de VM-eigenschappen. Dan moet u de server [opnieuw registreren](#reregister-a-configuration-server-in-the-same-vault) in de kluis.
 
+## <a name="how-to-renew-ssl-certificates"></a>SSL-certificaten vernieuwen
+
+De configuratieserver heeft een ingebouwde webserver, die activiteiten van de Mobiliteitsagents orkestreert op alle beveiligde machines, ingebouwde/scale-out processervers en hoofddoelservers die ermee zijn verbonden. De webserver gebruikt een SSL-certificaat om clients te verifiëren. Het certificaat verloopt na drie jaar en kan te huur worden verlengd.
+
+### <a name="check-expiry"></a>Verlopen controleren
+
+De vervaldatum wordt weergegeven onder **de status Configuratieserver**. Voor configuratieserverimplementaties vóór mei 2016 is het verlopen van het certificaat ingesteld op één jaar. Als u een certificaat hebt dat verloopt, vindt u het volgende:
+
+- Wanneer de vervaldatum twee maanden of minder is, begint de service meldingen te verzenden in de portal en per e-mail (als u zich hebt geabonneerd op meldingen voor siteherstel).
+- Er wordt een meldingsbanner weergegeven op de pagina met de bronvan de kluis. Selecteer de banner voor meer informatie.
+- Als u een **knop Nu bijwerken** ziet, geeft dit aan dat sommige onderdelen in uw omgeving niet zijn geüpgraded naar 9.4.xxxx.x of hogere versies. Upgrade de onderdelen voordat u het certificaat verlengt. U niet verlengen op oudere versies.
+
+### <a name="if-certificates-are-yet-to-expire"></a>Als certificaten nog niet verlopen
+
+1. Open **Site Recovery Infrastructure** > **Configuration Server**in de kluis om te verlengen. Selecteer de vereiste configuratieserver.
+2. Zorg ervoor dat alle componenten processervers, hoofddoelservers en mobiliteitsagents op alle beveiligde machines op de nieuwste versies uitvoeren en in verbonden staat zijn.
+3. Selecteer nu **Certificaten vernieuwen**.
+4. Volg de instructies op deze pagina zorgvuldig en klik op goed om certificaten te vernieuwen op geselecteerde configuratieserver en de bijbehorende componenten.
+
+### <a name="if-certificates-have-already-expired"></a>Als certificaten al zijn verlopen
+
+1. Na het verlopen kunnen certificaten **niet worden verlengd vanuit azure portal.** Voordat u verdergaat, moet u ervoor zorgen dat alle componenten processervers, hoofddoelservers en mobiliteitsagents op alle beveiligde machines op de nieuwste versies gebruiken en in verbonden toestand zijn.
+2. **Volg deze procedure alleen als certificaten al zijn verlopen.** Log in bij configuratieserver, navigeer naar C-station > Programmagegevens > Site Recovery > thuis > svsystems > opslaglocatie en voer het executortool Vernieuwen certs uit als beheerder.
+3. Er verschijnt een PowerShell-uitvoeringsvenster en activeert de verlenging van certificaten. Dit kan tot 15 minuten duren. Sluit het venster niet totdat de vernieuwing is voltooid.
+
+:::image type="content" source="media/vmware-azure-manage-configuration-server/renew-certificates.png" alt-text="RenewCertificaten":::
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Een configuratieserver opnieuw registreren in dezelfde kluis
 
@@ -112,7 +138,7 @@ U de configuratieserver opnieuw registreren in dezelfde kluis als dat nodig is. 
    ```
 
     >[!NOTE]
-    >Om de nieuwste certificaten van configuratieserver naar scale-out processerver te **halen,** voert u de opdracht *\<" Installatiestation\Microsoft Azure Site Recovery\agent\cdpcli.exe>" uit - registermt*
+    >Als u de nieuwste certificaten van configuratieserver naar scale-outprocesserver wilt **halen,** voert u de opdracht *\<" Installatiestation\Microsoft Azure Site Recovery\agent\cdpcli.exe>"--registermt uit*
 
 8. Start ten slotte de obengine opnieuw door de volgende opdracht uit te voeren.
    ```
@@ -269,24 +295,6 @@ U de configuratieserver optioneel verwijderen met PowerShell.
 2. Als u de map wilt wijzigen in de map met opslaglocatie, voert u de opdracht **cd %ProgramData%\ASR\home\svsystems\bin uit**
 3. Voer **genpassphrase.exe -v > MobSvc.passphrase**uit om het wachtwoordzinsbestand te genereren.
 4. Uw wachtwoordzin wordt opgeslagen in het bestand dat zich bevindt bij **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
-
-## <a name="renew-tlsssl-certificates"></a>TLS/SSL-certificaten verlengen
-
-De configuratieserver heeft een ingebouwde webserver, die activiteiten van de Mobiliteitsservice, processervers en hoofddoelservers die ermee zijn verbonden orkestreert. De webserver gebruikt een TLS/SSL-certificaat om clients te verifiëren. Het certificaat verloopt na drie jaar en kan te huur worden verlengd.
-
-### <a name="check-expiry"></a>Verlopen controleren
-
-Voor configuratieserverimplementaties vóór mei 2016 is het verlopen van het certificaat ingesteld op één jaar. Als u een certificaat hebt dat verloopt, vindt u het volgende:
-
-- Wanneer de vervaldatum twee maanden of minder is, begint de service meldingen te verzenden in de portal en per e-mail (als u zich hebt geabonneerd op meldingen voor siteherstel).
-- Er wordt een meldingsbanner weergegeven op de pagina met de bronvan de kluis. Selecteer de banner voor meer informatie.
-- Als u een **knop Nu bijwerken** ziet, geeft dit aan dat sommige onderdelen in uw omgeving niet zijn geüpgraded naar 9.4.xxxx.x of hogere versies. Upgrade de onderdelen voordat u het certificaat verlengt. U niet verlengen op oudere versies.
-
-### <a name="renew-the-certificate"></a>Het certificaat verlengen
-
-1. Open **siteherstelinfrastructuurserver** > **Configuration Server**in de kluis . Selecteer de vereiste configuratieserver.
-2. De vervaldatum wordt weergegeven onder **de status Configuratieserver**.
-3. Selecteer **Certificaten vernieuwen**.
 
 ## <a name="refresh-configuration-server"></a>Configuratieserver vernieuwen
 

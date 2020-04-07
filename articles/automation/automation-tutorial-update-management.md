@@ -4,14 +4,14 @@ description: In dit artikel vindt u een overzicht van het gebruik van Azure Auto
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 03/04/2020
+ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: b5b03efafbed3439e5f8fdf98e2cd5b2d63a3d45
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 888dc99162551482afc715f1a793614d2c866384
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411046"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677037"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Updates en patches voor uw Azure VM's beheren
 
@@ -123,7 +123,7 @@ Geef onder **Nieuwe update-implementatie** de volgende informatie op:
 
    Zie Classificaties bijwerken voor beschrijvingen van de [classificatietypen.](automation-view-update-assessments.md#update-classifications)
 
-* **Updates die moeten worden opgenomen/uitgesloten** : hiermee opent u de pagina Opnemen/uitsluiten. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven.
+* **Updates die moeten worden opgenomen/uitgesloten** : hiermee opent u de pagina Opnemen/uitsluiten. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven door de KB-artikel-ID-nummers op te geven. Wanneer u een of meer ID-nummers opgeeft, moet u alle classificaties met de update-implementatie verwijderen of ongedaan maken. Dit zorgt ervoor dat er geen andere updates in uw updatepakket worden opgenomen bij het opgeven van update-id's.
 
 > [!NOTE]
 > Het is belangrijk om te weten dat uitsluitingen inclusies overschrijven. Als u bijvoorbeeld een uitsluitingsregel definieert van `*`Update Management, worden er geen patches of pakketten geïnstalleerd, omdat ze allemaal zijn uitgesloten. Uitgesloten patches nog steeds als ontbrekende van de machine. Voor Linux-machines installeert Update Management het hoofdpakket niet als u een pakket bevat dat een afhankelijk pakket heeft dat is uitgesloten.

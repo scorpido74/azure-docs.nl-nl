@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b69ef8aa57393c5be8d23aaf4af1821697295235
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bcf06056dd7fdaf22716409f53d86da7321b94d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281677"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745583"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Tabblad Gegevens van De Power BI-app Storefront
+
+>[!Important]
+>Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
 
 Gebruik op de pagina **Nieuwe aanbieding** het tabblad **Storefront Details** om marketing-, verkoop- en juridische informatie te verstrekken aan uw potentiële klanten. Op dit tabblad u ook beheer instellen voor leads die de Azure Marketplace genereert. Deze lange vorm is onderverdeeld in zes secties: **Aanbiedingsdetails**, **Aanbiedingsdetails,** **Marketingartefacten**, **Juridische**, **Klantenondersteuning**en **Leadmanagement**.  Een sterretje (*) aan het einde van een veldlabel betekent dat het veld vereist is.
 
@@ -74,7 +77,7 @@ Als u de velden in deze sectie wilt voltooien, gebruikt u de volgende tabel. Ver
 | **Bestand**                             | Een PDF-bestand uploaden.                             |
 | *Schermopnamen\**                      | Voeg maximaal vijf screenshots toe.                        |
 | **Naam**                             | Voer een naam of titel van een schermafbeelding in.                                       |
-| **Afbeelding**                            | Upload een PNG-screenshot. De resolutie moet 1280 x 720 px zijn.  | 
+| **Installatiekopie**                            | Upload een PNG-screenshot. De resolutie moet 1280 x 720 px zijn.  | 
 |   |   |
 
 De logo's die u uploadt naar [Cloud Partner Portal](https://cloudpartner.azure.com) mogen *niet:*
@@ -115,7 +118,7 @@ Stel in de sectie **Leadmanagement** uw systeem in om de klantleads te verzamele
 | **Dynamics CRM Online** | Dynamics [365](https://dynamics.microsoft.com/) opgeven met behulp van een URL en verificatiereferenties. |
 | **HTTPS-eindpunt**     | Geef het HTTPS-eindpunt op met een JSON-payload.   |
 | **Marketo**            | Geef een [Marketo-instantie](https://www.marketo.com/) op met behulp van een server-id, munchkin-id en formulier-ID.   |
-| **Salesforce**         | Salesforce [Salesforce](https://www.salesforce.com/) opgeven met behulp van een object-id. |
+| **SalesForce**         | Salesforce [Salesforce](https://www.salesforce.com/) opgeven met behulp van een object-id. |
 |  |  |
 
 Nadat u uw aanbieding hebt gepubliceerd, wordt de leadverbinding gevalideerd en wordt een testlead automatisch naar de opgegeven bestemming verzonden. Beheer continu leadinformatie en werk uw instellingen onmiddellijk bij om uw huidige architectuur voor klantbeheer weer te geven.

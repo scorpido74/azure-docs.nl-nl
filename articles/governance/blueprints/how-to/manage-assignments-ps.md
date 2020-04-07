@@ -3,12 +3,12 @@ title: Opdrachten beheren met PowerShell
 description: Meer informatie over het beheren van blauwdruktoewijzingen met de officiële Azure Blueprints PowerShell-module, Az.Blueprint.
 ms.date: 09/30/2019
 ms.topic: how-to
-ms.openlocfilehash: b16cf887ba8bfc51616839db5f4af87944ec686d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0868e5e207202511c1981a930870bfdc68a77a8f
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247398"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677428"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Opdrachten beheren met PowerShell
 
@@ -27,12 +27,12 @@ De azure blueprints-module vereist de volgende software:
 
 ### <a name="install-the-module"></a>Installeer de module
 
-De module Blauwdrukken voor PowerShell is **Az.Blueprint**.
+De Azure Blueprints-module voor PowerShell is **Az.Blueprint**.
 
 1. Voer vanuit een PowerShell-prompt met **beheerdersrechten** de volgende opdracht uit:
 
    ```azurepowershell-interactive
-   # Install the Blueprints module from PowerShell Gallery
+   # Install the Azure Blueprints module from PowerShell Gallery
    Install-Module -Name Az.Blueprint
    ```
 

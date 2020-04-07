@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 01a05755fc18a85a95e9c1bec1c470d37af656d1
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 62cf1f369cbde372e82e7c3ffe26473f09668bc7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632237"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742554"
 ---
 # <a name="data-warehouse-units-dwus"></a>Gegevensmagazijneenheden (DOM)
 
@@ -24,9 +24,9 @@ Aanbevelingen voor het kiezen van het ideale aantal datawarehouse-eenheden (DDC'
 
 ## <a name="what-are-data-warehouse-units"></a>Wat zijn datawarehouse-eenheden
 
-Een [Synapse SQL-pool](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) vertegenwoordigt een verzameling analytische resources die worden ingericht. Analytische bronnen worden gedefinieerd als een combinatie van CPU, geheugen en IO. 
+Een [Synapse SQL-pool](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) vertegenwoordigt een verzameling analytische resources die worden ingericht. Analytische bronnen worden gedefinieerd als een combinatie van CPU, geheugen en IO.
 
-Deze drie resources worden gebundeld in eenheden van compute scale genaamd Data Warehouse Units (DWUs). Met een DWU wordt een abstracte, genormaliseerde meting van rekenresources en prestaties aangeduid. 
+Deze drie resources worden gebundeld in eenheden van compute scale genaamd Data Warehouse Units (DWUs). Met een DWU wordt een abstracte, genormaliseerde meting van rekenresources en prestaties aangeduid.
 
 Een wijziging in uw serviceniveau wijzigt het aantal DBO's dat beschikbaar is voor het systeem, dat op zijn beurt de prestaties en kosten van uw systeem aanpast.
 
@@ -72,7 +72,7 @@ Stappen voor het vinden van de beste DWU voor uw werkbelasting:
 2. Controleer de prestaties van uw toepassing terwijl u gegevensbelastingen in het systeem test, waarbij het aantal selecteerde DFC's wordt waargenomen in vergelijking met de prestaties die u waarneemt.
 3. Eventuele aanvullende vereisten voor periodieke perioden van piekactiviteit identificeren. Workloads die aanzienlijke pieken en dalen in activiteit vertonen, moeten mogelijk regelmatig worden geschaald.
 
-SQL-pool is een scale-outsysteem dat enorme hoeveelheden reken- en querygrote hoeveelheden gegevens kan inrichten. 
+SQL-pool is een scale-outsysteem dat enorme hoeveelheden reken- en querygrote hoeveelheden gegevens kan inrichten.
 
 Als u de werkelijke mogelijkheden voor schalen wilt zien, met name bij grotere DKU's, raden we u aan de gegevensset te schalen terwijl u schaalt om ervoor te zorgen dat u voldoende gegevens hebt om de CPU's te voeden. Voor schaaltesten raden we aan om ten minste 1 TB te gebruiken.
 
@@ -82,7 +82,7 @@ Als u de werkelijke mogelijkheden voor schalen wilt zien, met name bij grotere D
 
 ## <a name="permissions"></a>Machtigingen
 
-Voor het wijzigen van de gegevensmagazijneenheden zijn de machtigingen vereist die zijn beschreven in [ALTER DATABASE.](/sql/t-sql/statements/alter-database-transact-sql)
+Voor het wijzigen van de gegevensmagazijneenheden zijn de machtigingen vereist die zijn beschreven in [ALTER DATABASE.](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 Ingebouwde rollen voor Azure-resources zoals SQL DB Contributor en SQL Server Contributor kunnen de DWU-instellingen wijzigen.
 
@@ -134,7 +134,7 @@ Met T-SQL u de huidige DWU-instellingen bekijken, de instellingen wijzigen en de
 Ga als u de DOM's wijzigen:
 
 1. Maak verbinding met de hoofddatabase die is gekoppeld aan uw logische SQL Database-server.
-2. Gebruik de verklaring [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL. In het volgende voorbeeld wordt de doelstelling serviceniveau ingesteld op DW1000c voor de database MySQLDW.
+2. Gebruik de verklaring [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL. In het volgende voorbeeld wordt de doelstelling serviceniveau ingesteld op DW1000c voor de database MySQLDW.
 
 ```Sql
 ALTER DATABASE MySQLDW

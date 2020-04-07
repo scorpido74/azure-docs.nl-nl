@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b24706943cdf59fba89a8007c4914b628b9e34d5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 973d2339db1e55f2cca45025f2d678e5126f4317
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632971"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743664"
 ---
 # <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Problemen met SQL Analytics in Azure Synapse oplossen
 
@@ -30,13 +30,13 @@ In dit artikel worden veelvoorkomende probleemoplossingsvragen weergegeven.
 | De server-principal 'MijnGebruikersnaam' heeft in de huidige beveiligingscontext geen toegang tot de hoofddatabase. Kan de standaarddatabase van de gebruiker niet openen. Aanmelden mislukt. Aanmelden is mislukt voor gebruiker 'MijnGebruikersnaam'. (Microsoft SQL Server, Fout: 916) | Deze fout treedt op wanneer een Azure AD-gebruiker verbinding probeert te maken met de hoofddatabase, maar geen gebruiker in master heeft.  Als u dit probleem wilt verhelpen, geeft u de SQL-groep op waarmee u verbinding wilt maken op het moment van verbinding of voegt u de gebruiker toe aan de hoofddatabase.  Zie artikel [over het overzicht sonbeveiliging](sql-data-warehouse-overview-manage-security.md) voor meer informatie. |
 | CTAIP-fout                                                  | Deze fout kan optreden wanneer een aanmelding is gemaakt in de SQL-servermasterdatabase, maar niet in de SQL-database.  Als u deze fout tegenkomt, neemt u het artikel [beveiligingsoverzicht](sql-data-warehouse-overview-manage-security.md) in.  In dit artikel wordt uitgelegd hoe u een aanmelding en gebruiker op master maakt en hoe u vervolgens een gebruiker in de SQL-database maakt. |
 | Geblokkeerd door firewall                                          | SQL-groepen worden beschermd door firewalls om ervoor te zorgen dat alleen bekende IP-adressen toegang hebben tot een database. De firewalls zijn standaard beveiligd, wat betekent dat u expliciet moet inschakelen en IP-adres of bereik van adressen voordat u verbinding maken.  Als u uw firewall wilt configureren voor toegang, voert u de stappen uit in [Serverfirewalltoegang configureren voor uw client-IP](create-data-warehouse-portal.md) in de [inrichtingsinstructies.](create-data-warehouse-portal.md) |
-| Kan geen verbinding maken met gereedschap of stuurprogramma                           | Synapse SQL pool raadt aan om [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15), [SSDT voor Visual Studio](sql-data-warehouse-install-visual-studio.md)of [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) te gebruiken om uw gegevens op te vragen. Zie Drivers for Azure Synapse en Verbinding maken met Azure [Synapse](sql-data-warehouse-connect-overview.md) voor meer informatie over stuurprogramma's en verbinding maken met Azure Synapse.For more information on drivers and connecting to Azure Synapse, see Drivers for Azure [Synapse](sql-data-warehouse-connection-strings.md) and Connect to Azure Synapse articles. |
+| Kan geen verbinding maken met gereedschap of stuurprogramma                           | Synapse SQL pool raadt aan om [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [SSDT voor Visual Studio](sql-data-warehouse-install-visual-studio.md)of [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) te gebruiken om uw gegevens op te vragen. Zie Drivers for Azure Synapse en Verbinding maken met Azure [Synapse](sql-data-warehouse-connect-overview.md) voor meer informatie over stuurprogramma's en verbinding maken met Azure Synapse.For more information on drivers and connecting to Azure Synapse, see Drivers for Azure [Synapse](sql-data-warehouse-connection-strings.md) and Connect to Azure Synapse articles. |
 
 ## <a name="tools"></a>Hulpprogramma's
 
 | Probleem                                                        | Oplossing                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Visual Studio-objectexplorer mist Azure AD-gebruikers           | Dit is een bekend probleem.  Bekijk de gebruikers in [sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15)als tijdelijke oplossing.  Zie [Verificatie naar Azure Synapse](sql-data-warehouse-authentication.md) voor meer informatie over het gebruik van Azure Active Directory met Synapse SQL-pool. |
+| Visual Studio-objectexplorer mist Azure AD-gebruikers           | Dit is een bekend probleem.  Bekijk de gebruikers in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)als tijdelijke oplossing.  Zie [Verificatie naar Azure Synapse](sql-data-warehouse-authentication.md) voor meer informatie over het gebruik van Azure Active Directory met Synapse SQL-pool. |
 | Handmatig scripten, de wizard scripting gebruiken of verbinding maken via SSMS is traag, reageert niet of produceert geen fouten | Controleer of gebruikers zijn gemaakt in de hoofddatabase. Zorg er bij scriptingopties ook voor dat de engine-editie is ingesteld als "Microsoft Azure SQL Data Warehouse Edition" en het motortype "Microsoft Azure SQL Database". |
 | Scripts genereren mislukt in SSMS                               | Het genereren van een script voor Synapse SQL-pool mislukt als de optie 'Script genereren voor afhankelijke objecten' is ingesteld op 'Waar'. Als tijdelijke oplossing moeten gebruikers handmatig naar **Extra->-opties ->SQL Server Object Explorer -> Script genereren voor afhankelijke opties en instellen op false** |
 
@@ -59,7 +59,7 @@ In dit artikel worden veelvoorkomende probleemoplossingsvragen weergegeven.
 | Msg 40847: Kon de bewerking niet uitvoeren omdat de server het toegestane databasetransactie-eenheidsquotum van 45000 zou overschrijden. | Verklein de [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md) van de database die u probeert te maken of [vraag een quotumverhoging aan.](sql-data-warehouse-get-started-create-support-ticket.md) |
 | Ruimtegebruik onderzoeken                              | Zie [Tabelgroottes](sql-data-warehouse-tables-overview.md#table-size-queries) om inzicht te krijgen in het ruimtegebruik van uw systeem. |
 | Hulp bij het beheren van tabellen                                    | Zie het artikel [tabeloverzicht](sql-data-warehouse-tables-overview.md) voor hulp bij het beheren van uw tabellen.  Dit artikel bevat ook koppelingen naar meer gedetailleerde onderwerpen zoals [tabelgegevenstypen](sql-data-warehouse-tables-data-types.md), [Het distribueren van een tabel](sql-data-warehouse-tables-distribute.md), Het [indexeren van een tabel](sql-data-warehouse-tables-index.md), het [partitioneren van een tabel](sql-data-warehouse-tables-partition.md), Het [bijhouden van tabelstatistieken](sql-data-warehouse-tables-statistics.md) en [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md). |
-| De voortgangsbalk voor transparante gegevensversleuteling (TDE) wordt niet bijgewerkt in de Azure-portal | U de toestand van TDE bekijken via [powershell.](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |
+| De voortgangsbalk voor transparante gegevensversleuteling (TDE) wordt niet bijgewerkt in de Azure-portal | U de toestand van TDE bekijken via [powershell.](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) |
 
 ## <a name="differences-from-sql-database"></a>Verschillen met SQL-database
 
@@ -70,7 +70,7 @@ In dit artikel worden veelvoorkomende probleemoplossingsvragen weergegeven.
 | Beperkingen verwijderen en bijwerken         | Zie [Tijdelijke oplossingen bijwerken,](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements)Tijdelijke oplossingen verwijderen en [CTAS gebruiken om de syntaxis van niet-ondersteunde UPDATE en Delete te](sql-data-warehouse-develop-ctas.md) [omzeilen](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements) . |
 | De instructie MERGE wordt niet ondersteund      | Zie [Tijdelijke oplossingen SAMENVOEGEN](sql-data-warehouse-develop-ctas.md#replace-merge-statements).                  |
 | Beperkte opgeslagen procedure          | Zie [Beperkingen van de opgeslagen procedure](sql-data-warehouse-develop-stored-procedures.md#limitations) om enkele van de beperkingen van opgeslagen procedures te begrijpen. |
-| UDF's ondersteunen SELECT-instructies niet | Dit is een huidige beperking van onze UDF's.  Zie [FUNCTIE MAKEN](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=aps-pdw-2016-au7) voor de syntaxis die wij ondersteunen. |
+| UDF's ondersteunen SELECT-instructies niet | Dit is een huidige beperking van onze UDF's.  Zie [FUNCTIE MAKEN](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor de syntaxis die wij ondersteunen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

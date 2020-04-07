@@ -3,12 +3,12 @@ title: Back-up inschakelen wanneer u een Azure-VM maakt
 description: Beschrijft hoe u back-up inschakelen wanneer u een Azure VM maakt met Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247850"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672809"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Back-up inschakelen wanneer u een Azure-VM maakt
 
@@ -64,6 +64,8 @@ Aandachtspunten:
 5. U de naam van de RG bewerken door het beleid te wijzigen indien en wanneer dat nodig is. Als het naampatroon wordt gewijzigd, worden er nieuwe R's gemaakt in de nieuwe RG. De oude R's blijven echter in de oude RG wonen en worden niet verplaatst, omdat RP Collection geen ondersteuning biedt voor resourcemove. Uiteindelijk krijgen de RPs afval verzameld als de punten verlopen.
 ![Naam wijzigen bij wijzigen van beleid](./media/backup-during-vm-creation/modify-policy.png)
 6. Het wordt aangeraden de resourcegroep die is gemaakt voor gebruik door de back-upservice, niet te vergrendelen.
+
+Als u de azure backup-brongroep voor virtuele machines wilt configureren met PowerShell, raadpleegt u [Azure Backup-brongroep maken tijdens het bewaren van momentopnamen](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention).
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Een back-up starten na het maken van de VM
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 12/05/2019
-ms.openlocfilehash: 797cd82327d68003d4e5f007d1f16e9534092ac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2f8b9f207993c49201d03d3d1fed3c5800e8780
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283990"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673819"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevensgateway installeren voor Azure Logic Apps
 
@@ -22,7 +22,7 @@ Voordat u verbinding [maken met on-premises gegevensbronnen van Azure Logic Apps
 * [On-premises microsoft Power Apps-gateway](/powerapps/maker/canvas-apps/gateway-reference)
 * [On-premises azure Analysis Services-gateway](../analysis-services/analysis-services-gateway.md)
 
-In dit artikel ziet u hoe u uw on-premises gegevensgateway downloaden, installeren en instellen, zodat u toegang hebt tot on-premises gegevensbronnen van Azure Logic Apps. U later in dit onderwerp ook meer te weten komen over [hoe de gegevensgateway werkt.](#gateway-cloud-service) Zie Wat is een [on-premises gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)voor meer informatie over de gateway?
+In dit artikel ziet u hoe u uw on-premises gegevensgateway downloaden, installeren en instellen, zodat u toegang hebt tot on-premises gegevensbronnen van Azure Logic Apps. U later in dit onderwerp ook meer te weten komen over [hoe de gegevensgateway werkt.](#gateway-cloud-service) Zie Wat is een [on-premises gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)voor meer informatie over de gateway? Ga naar de PowerShell-galerie voor de [GegevensGateway PowerShell-cmdlets](https://www.powershellgallery.com/packages/DataGateway/3000.15.15)om installatie- en beheertaken van poorten te automatiseren.
 
 <a name="requirements"></a>
 

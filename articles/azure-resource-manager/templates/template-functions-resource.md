@@ -3,12 +3,12 @@ title: Sjabloonfuncties - resources
 description: Beschrijft de functies die u moet gebruiken in een Azure Resource Manager-sjabloon om waarden over resources op te halen.
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 641602218aa19b790eb6e7feabdb7b46a520b590
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478274"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744988"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Resourcefuncties voor ARM-sjablonen
 
@@ -444,12 +444,12 @@ Geeft als resultaat een object dat de runtime-status van een resource vertegenwo
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | resourceName of resourceIdentifier |Ja |tekenreeks |Naam of unieke id van een resource. Wanneer u een resource in de huidige sjabloon verwijst, geeft u alleen de resourcenaam als parameter op. Wanneer u verwijst naar een eerder geïmplementeerde resource of wanneer de naam van de resource dubbelzinnig is, geeft u de resource-id op. |
-| apiVersion |Nee |tekenreeks |API-versie van de opgegeven bron. Neem deze parameter op wanneer de resource niet in dezelfde sjabloon is ingericht. Typisch, in het formaat, **yyyy-mm-dd**. Zie [sjabloonverwijzing](/azure/templates/)voor geldige API-versies voor uw resource. |
+| apiVersion |Nee |tekenreeks |API-versie van de opgegeven bron. **Deze parameter is vereist wanneer de resource niet binnen dezelfde sjabloon is ingericht.** Typisch, in het formaat, **yyyy-mm-dd**. Zie [sjabloonverwijzing](/azure/templates/)voor geldige API-versies voor uw resource. |
 | 'Vol' |Nee |tekenreeks |Waarde die aangeeft of het volledige resourceobject moet worden retourneren. Als u dit `'Full'`niet opgeeft, wordt alleen het eigenschappenobject van de resource geretourneerd. Het volledige object bevat waarden zoals de resource-id en de locatie. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Elk resourcetype retourneert verschillende eigenschappen voor de referentiefunctie. De functie retourneert geen enkele vooraf gedefinieerde notatie. De geretourneerde waarde verschilt ook op basis van de vraag of u het volledige object hebt opgegeven. Als u de eigenschappen voor een resourcetype wilt weergeven, geeft u het object in de sectie uitvoer weer, zoals in het voorbeeld wordt weergegeven.
+Elk resourcetype retourneert verschillende eigenschappen voor de referentiefunctie. De functie retourneert geen enkele vooraf gedefinieerde notatie. Ook verschilt de geretourneerde waarde op `'Full'` basis van de waarde van het argument. Als u de eigenschappen voor een resourcetype wilt weergeven, geeft u het object in de sectie uitvoer weer, zoals in het voorbeeld wordt weergegeven.
 
 ### <a name="remarks"></a>Opmerkingen
 
@@ -514,7 +514,7 @@ Wanneer u verwijst naar een resource die in dezelfde sjabloon is geïmplementeer
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-Wanneer u verwijst naar een resource die niet in dezelfde sjabloon is geïmplementeerd, geeft u de bron-id op.
+Wanneer u verwijst naar een resource die niet in dezelfde sjabloon `apiVersion`is geïmplementeerd, geeft u de resource-id en .
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"

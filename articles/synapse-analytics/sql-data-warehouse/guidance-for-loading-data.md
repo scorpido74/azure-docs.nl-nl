@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e5ad5f6f2f5be239af23ee4802cf09c388c93ae9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: e170a789727fb0de36705895245cc638d30ee3d7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632912"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745507"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Aanbevolen procedures voor het laden van gegevens met synapssql-pool
 
@@ -104,7 +104,7 @@ Bij geheugenbelasting kan het zijn dat de columnstore-index de maximale compress
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Batchgrootte vergroten bij gebruik van SqLBulkCopy API of bcp
 
-Laden met PolyBase zorgt voor de hoogste doorvoer met SQL-pool. Als u PolyBase niet gebruiken om de [SqLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx) of [bcp](https://docs.microsoft.com/sql/tools/bcp-utility?view=sql-server-ver15)te laden en moet gebruiken, moet u overwegen de batchgrootte te vergroten voor een betere doorvoer.
+Laden met PolyBase zorgt voor de hoogste doorvoer met SQL-pool. Als u PolyBase niet gebruiken om de [SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) of [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)te laden en moet gebruiken, moet u overwegen de batchgrootte te vergroten voor een betere doorvoer.
 
 > [!TIP]
 > Een batchgrootte tussen 100 K en 1M rijen is de aanbevolen basislijn voor het bepalen van de optimale batchgroottecapaciteit.
@@ -120,7 +120,7 @@ Een gegevensrecord wordt als vuil beschouwd als deze voldoet aan een van de volg
 
 U kunt vervuilde records voorkomen door ervoor te zorgen dat uw externe tabel- en bestandindelingsdefinities correct zijn en uw externe gegevens overeenstemmen met deze definities.
 
-Als een subset van externe gegevensrecords vuil is, u ervoor kiezen deze records voor uw query's af te wijzen met behulp van de afwijsopties in [EXTERNE TABEL MAKEN (Transact-SQL).](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15)
+Als een subset van externe gegevensrecords vuil is, u ervoor kiezen deze records voor uw query's af te wijzen met behulp van de afwijsopties in [EXTERNE TABEL MAKEN (Transact-SQL).](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="inserting-data-into-a-production-table"></a>Gegevens in een productietabel invoegen
 

@@ -3,12 +3,12 @@ title: Parameters gebruiken om dynamische blauwdrukken te maken
 description: Leer meer over statische en dynamische parameters en hoe u deze gebruiken om veilige en dynamische blauwdrukken te maken.
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36735d71b746301819e5079aba1697b55fe5e183
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264711"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677589"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dynamische blauwdrukken maken door middel van parameters
 
@@ -20,7 +20,7 @@ Een eenvoudig voorbeeld is het artefact van de brongroep. Wanneer een resourcegr
 > Het is geen probleem voor twee verschillende blauwdrukken om een resourcegroep met dezelfde naam op te nemen.
 > Als er al een resourcegroep in een blauwdruk bestaat, blijft de blauwdruk de gerelateerde artefacten in die resourcegroep maken. Dit kan leiden tot een conflict omdat er geen twee resources met dezelfde naam en resourcetype kunnen bestaan binnen een abonnement.
 
-De oplossing voor dit probleem zijn parameters. Met blauwdrukken u de waarde voor elke eigenschap van het artefact definiëren tijdens de toewijzing aan een abonnement. De parameter maakt het mogelijk om een blauwdruk opnieuw te gebruiken die een resourcegroep en andere bronnen binnen één abonnement maakt zonder conflict.
+De oplossing voor dit probleem zijn parameters. Met Azure Blueprints u de waarde voor elke eigenschap van het artefact definiëren tijdens toewijzing aan een abonnement. De parameter maakt het mogelijk om een blauwdruk opnieuw te gebruiken die een resourcegroep en andere bronnen binnen één abonnement maakt zonder conflict.
 
 ## <a name="blueprint-parameters"></a>Blauwdrukparameters
 

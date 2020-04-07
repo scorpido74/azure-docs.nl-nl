@@ -3,12 +3,12 @@ title: 'Snelstart: een blauwdruk maken met REST API'
 description: In deze quickstart gebruikt u Azure Blueprints om artefacten te maken, te definiëren en te implementeren met behulp van de REST API.
 ms.date: 02/26/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 93c9aef9efd826b88da59cdb77dedfb10fb11262
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241540"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676568"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Snelstart: een Azure Blueprint definiëren en toewijzen met REST-API
 
@@ -25,7 +25,7 @@ Als u leert hoe u blauwdrukken in Azure maakt en toewijst, kunnen er algemene pa
 
 Als u niet bekend bent met REST API, begint u met de [Azure REST API-verwijzing](/rest/api/azure/) voor een algemeen begrip van REST API, in het bijzonder van aanvraag-URI en aanvraagbody. In dit artikel worden deze concepten gebruikt om u aan de slag te helpen met Azure Blueprints. Er wordt van uitgegaan dat u er praktische kennis van hebt. Hulpprogramma's zoals [ARMClient](https://github.com/projectkudu/ARMClient) en anderen verwerken autorisatie automatisch en zijn voor beginners aangeraden.
 
-Zie [Azure Blueprints REST API](/rest/api/blueprints/) voor de specificaties van Blueprints.
+Zie Azure [Blueprints REST API](/rest/api/blueprints/)voor de specificaties van Azure Blueprints.
 
 ### <a name="rest-api-and-powershell"></a>REST API en PowerShell
 
@@ -406,7 +406,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      De **door een gebruiker toegewezen beheerde identiteit** kan in elk abonnement en in elke resourcegroep aanwezig zijn waarvoor de gebruiker die de blauwdruk toewijst, is gemachtigd.
 
      > [!IMPORTANT]
-     > De door een gebruiker toegewezen beheerde identiteit wordt niet beheerd door blauwdrukken. Gebruikers zijn verantwoordelijk voor het toewijzen van voldoende rollen en machtigingen, anders mislukken de blauwdruktoewijzingen.
+     > Azure Blueprints beheert de door de gebruiker toegewezen beheerde identiteit niet. Gebruikers zijn verantwoordelijk voor het toewijzen van voldoende rollen en machtigingen, anders mislukken de blauwdruktoewijzingen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 439de17ef9eb9c0c2c264884652236d47600b8ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 306f13cbc83c0c48ce1c90581762275a86dfcb90
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286503"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743971"
 ---
 # <a name="iot-edge-module-support-tab"></a>Tabblad Ondersteuning voor IoT Edge-modules
+
+>[!Important]
+>Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
 
 Gebruik het tabblad **Ondersteuning** van de pagina **Nieuwe aanbieding** om technische en gebruikersondersteuningsbronnen voor uw aanbieding te bieden.  De volgende invoergebieden worden weergegeven op het ondersteuningsformulier: **Engineering Contact,** **Customer Support**en **Support Urls**. Een sterretje (*) dat aan de veldnaam is toegevoegd, geeft aan dat dit vereist is.
 

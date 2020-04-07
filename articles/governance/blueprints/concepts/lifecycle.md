@@ -3,17 +3,16 @@ title: De levenscyclus van een blauwdruk begrijpen
 description: Meer informatie over de levenscyclus die een blauwdrukdefinitie doorloopt en details over elke fase, inclusief het bijwerken en verwijderen van blauwdruktoewijzingen.
 ms.date: 07/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4dd5cb7d085744377cf12998f14c994fb1dcd2d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74404579"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677372"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>De levenscyclus van een Azure Blueprint begrijpen
 
-Net als veel andere bronnen binnen Azure heeft een blauwdruk in Azure Blueprints een typische en natuurlijke levenscyclus. Ze worden gemaakt, geïmplementeerd en uiteindelijk verwijderd wanneer ze niet meer nodig of relevant zijn.
-Blueprints ondersteunt standaard levenscyclusbewerkingen. Het bouwt vervolgens op hen voort om extra statusniveaus te bieden die gemeenschappelijke continue integratie- en continue implementatiepijplijnen ondersteunen voor organisaties die hun infrastructuur als code beheren - een belangrijk element in DevOps.
+Net als veel andere bronnen binnen Azure heeft een blauwdruk in Azure Blueprints een typische en natuurlijke levenscyclus. Ze worden gemaakt, geïmplementeerd en uiteindelijk verwijderd wanneer ze niet meer nodig of relevant zijn. Azure Blueprints ondersteunt standaardlevenscyclusbewerkingen. Het bouwt vervolgens op hen voort om extra statusniveaus te bieden die gemeenschappelijke continue integratie- en continue implementatiepijplijnen ondersteunen voor organisaties die hun infrastructuur als code beheren - een belangrijk element in DevOps.
 
 Om een blauwdruk en de fasen volledig te begrijpen, bestrijken we een standaardlevenscyclus:
 

@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4c5964bc944cd50e05d548eb731450a4944e854d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2802c62acef0d78f8cfa7dd7f06bc34d8eecca4c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631269"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742625"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Tabellen ontwerpen in de Synapse SQL-groep
 
@@ -111,7 +111,7 @@ De tabelcategorie bepaalt vaak welke optie u wilt kiezen voor het distribueren v
 
 ## <a name="table-partitions"></a>Tabelpartities
 
-Een partitietabel slaat bewerkingen op de tabelrijen op en voert deze uit op basis van gegevensbereiken. Een tabel kan bijvoorbeeld worden verdeeld per dag, maand of jaar. U de queryprestaties verbeteren door partitieverwijdering, waardoor een queryscan beperkt tot gegevens binnen een partitie. U de gegevens ook onderhouden door te schakelen met partitie. Aangezien de gegevens in SQL Data Warehouse al zijn gedistribueerd, kunnen te veel partities de queryprestaties vertragen. Zie [Richtlijnen voor het verdelen voor](sql-data-warehouse-tables-partition.md)meer informatie .  Wanneer partitie overschakelt naar tabelpartities die niet leeg zijn, u overwegen de TRUNCATE_TARGET optie in de [wijzigingstabelinstructie](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) te gebruiken als de bestaande gegevens moeten worden afgekapt. De onderstaande code schakelt in de getransformeerde dagelijkse gegevens in de SalesFact overschrijven van bestaande gegevens.
+Een partitietabel slaat bewerkingen op de tabelrijen op en voert deze uit op basis van gegevensbereiken. Een tabel kan bijvoorbeeld worden verdeeld per dag, maand of jaar. U de queryprestaties verbeteren door partitieverwijdering, waardoor een queryscan beperkt tot gegevens binnen een partitie. U de gegevens ook onderhouden door te schakelen met partitie. Aangezien de gegevens in SQL Data Warehouse al zijn gedistribueerd, kunnen te veel partities de queryprestaties vertragen. Zie [Richtlijnen voor het verdelen voor](sql-data-warehouse-tables-partition.md)meer informatie .  Wanneer partitie overschakelt naar tabelpartities die niet leeg zijn, u overwegen de TRUNCATE_TARGET optie in de [wijzigingstabelinstructie](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) te gebruiken als de bestaande gegevens moeten worden afgekapt. De onderstaande code schakelt in de getransformeerde dagelijkse gegevens in de SalesFact overschrijven van bestaande gegevens.
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -126,7 +126,7 @@ De geclusterde kolomarchiefindex is meestal de beste keuze, maar in sommige geva
 > [!TIP]
 > Een heaptabel kan vooral handig zijn voor het laden van tijdelijke gegevens, zoals een faseringstabel die wordt omgezet in een laatste tabel.
 
-Zie [Nieuw voor kolomarchiefindexen voor](/sql/relational-databases/indexes/columnstore-indexes-what-s-new)een lijst met functies voor kolomarchief . Zie De kwaliteit van [de rijgroep maximaliseren voor kolomarchiefindexen](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)als u de indexprestaties van de kolomopslag wilt verbeteren.
+Zie [Nieuw voor kolomarchiefindexen voor](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)een lijst met functies voor kolomarchief . Zie De kwaliteit van [de rijgroep maximaliseren voor kolomarchiefindexen](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)als u de indexprestaties van de kolomopslag wilt verbeteren.
 
 ## <a name="statistics"></a>statistieken
 
@@ -146,10 +146,10 @@ U een tabel maken als een nieuwe lege tabel. U ook een tabel maken en vullen met
 
 | T-SQL-instructie | Beschrijving |
 |:----------------|:------------|
-| [TABEL MAKEN](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | Hiermee maakt u een lege tabel door alle tabelkolommen en -opties te definiëren. |
-| [EXTERNE TABEL MAKEN](/sql/t-sql/statements/create-external-table-transact-sql) | Hiermee maakt u een externe tabel. De definitie van de tabel wordt opgeslagen in SQL-groep. De tabelgegevens worden opgeslagen in Azure Blob-opslag of Azure Data Lake Store. |
-| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) | Hiermee wordt een nieuwe tabel gevuld met de resultaten van een selecte instructie. De tabelkolommen en gegevenstypen zijn gebaseerd op de resultaten van de selecte instructie. Als u gegevens wilt importeren, kan deze instructie kiezen uit een externe tabel. |
-| [EXTERNE TABEL MAKEN ALS SELECTEREN](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | Hiermee maakt u een nieuwe externe tabel door de resultaten van een geselecteerde instructie naar een externe locatie te exporteren.  De locatie is Azure Blob-opslag of Azure Data Lake Store. |
+| [TABEL MAKEN](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Hiermee maakt u een lege tabel door alle tabelkolommen en -opties te definiëren. |
+| [EXTERNE TABEL MAKEN](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Hiermee maakt u een externe tabel. De definitie van de tabel wordt opgeslagen in SQL-groep. De tabelgegevens worden opgeslagen in Azure Blob-opslag of Azure Data Lake Store. |
+| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Hiermee wordt een nieuwe tabel gevuld met de resultaten van een selecte instructie. De tabelkolommen en gegevenstypen zijn gebaseerd op de resultaten van de selecte instructie. Als u gegevens wilt importeren, kan deze instructie kiezen uit een externe tabel. |
+| [EXTERNE TABEL MAKEN ALS SELECTEREN](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Hiermee maakt u een nieuwe externe tabel door de resultaten van een geselecteerde instructie naar een externe locatie te exporteren.  De locatie is Azure Blob-opslag of Azure Data Lake Store. |
 
 ## <a name="aligning-source-data-with-the-sql-pool"></a>Brongegevens afstemmen op de SQL-groep
 
@@ -174,7 +174,7 @@ SQL-pool ondersteunt veel, maar niet alle, van de tabelfuncties die worden aange
 
 ## <a name="table-size-queries"></a>Query's met tabelgrootte
 
-Een eenvoudige manier om ruimte en rijen verbruikt door een tabel in elk van de 60 distributies te identificeren, is het gebruik van [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql).
+Een eenvoudige manier om ruimte en rijen verbruikt door een tabel in elk van de 60 distributies te identificeren, is het gebruik van [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');

@@ -6,12 +6,12 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d9815fd27a57acc8b418962e610d2ae1c106edde
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78272806"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673302"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Uw Java-functie verbinden met Azure Storage
 
@@ -37,77 +37,13 @@ U nu de binding van de opslaguitvoer toevoegen aan uw project.
 
 ## <a name="add-an-output-binding"></a>Een uitvoerbinding toevoegen
 
-In een Java-project worden de bindingen gedefinieerd als bindende annotaties op de functiemethode. Het *bestand function.json* wordt vervolgens automatisch gegenereerd op basis van deze annotaties.
-
-Blader naar de locatie van uw functiecode onder _src/main/java,_ open het *projectbestand Function.java* en voeg de volgende parameter toe aan de `run` methodedefinitie:
-
-```java
-@QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") OutputBinding<String> msg
-```
-
-De `msg` parameter [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) is een type dat een verzameling tekenreeksen vertegenwoordigt die als berichten naar een uitvoerbinding worden geschreven wanneer de functie is voltooid. In dit geval is de uitvoer `outqueue`een opslagwachtrij met de naam . De verbindingstekenreeks voor het opslagaccount `connection` wordt ingesteld door de methode. In plaats van de verbindingstekenreeks zelf, passeert u de toepassingsinstelling die de tekenreeks Opslagaccountverbinding bevat.
-
-De `run` methodedefinitie moet er nu uitzien als het volgende voorbeeld:  
-
-```java
-@FunctionName("HttpTrigger-Java")
-public HttpResponseMessage run(
-        @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION)  
-        HttpRequestMessage<Optional<String>> request, 
-        @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") 
-        OutputBinding<String> msg, final ExecutionContext context) {
-    ...
-}
-```
+[!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Code toevoegen die gebruikmaakt van de uitvoerbinding
 
-U de nieuwe `msg` parameter nu gebruiken om naar de uitvoerbinding van uw functiecode te schrijven. Voeg de volgende coderegel toe voordat de `name` succesrespons `msg` wordt uitgevoerd om de waarde van de uitvoerbinding toe te voegen.
+[!INCLUDE [functions-add-output-binding-java-code](../../includes/functions-add-output-binding-java-code.md)]
 
-```java
-msg.setValue(name);
-```
-
-Wanneer u een uitvoerbinding gebruikt, hoeft u de Azure Storage SDK-code niet te gebruiken voor verificatie, het verkrijgen van een wachtrijverwijzing of het schrijven van gegevens. De runtime en queue output binding van functies doen deze taken voor u.
-
-Uw `run` methode moet er nu uitzien als het volgende voorbeeld:
-
-```java
-@FunctionName("HttpTrigger-Java")
-public HttpResponseMessage run(
-        @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request, 
-        @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") 
-        OutputBinding<String> msg, final ExecutionContext context) {
-    context.getLogger().info("Java HTTP trigger processed a request.");
-
-    // Parse query parameter
-    String query = request.getQueryParameters().get("name");
-    String name = request.getBody().orElse(query);
-
-    if (name == null) {
-        return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name on the query string or in the request body").build();
-    } else {
-        // Write the name to the message queue. 
-        msg.setValue(name);
-
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-    }
-}
-```
-
-## <a name="update-the-tests"></a>De tests bijwerken
-
-Omdat het archetype ook een reeks tests maakt, moet u `msg` deze `run` tests bijwerken om de nieuwe parameter in de methodehandtekening te verwerken.  
-
-Blader naar de locatie van uw testcode onder _src/test/java,_ open het *projectbestand Function.java* en vervang de coderegel onder `//Invoke` door de volgende code.
-
-```java
-@SuppressWarnings("unchecked")
-final OutputBinding<String> msg = (OutputBinding<String>)mock(OutputBinding.class);
-
-// Invoke
-final HttpResponseMessage ret = new Function().run(req, msg, context);
-``` 
+[!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 
 U bent nu klaar om de nieuwe uitvoerbinding lokaal uit te proberen.
 
@@ -115,19 +51,17 @@ U bent nu klaar om de nieuwe uitvoerbinding lokaal uit te proberen.
 
 Net als voorheen gebruikt u de volgende opdracht om het project te bouwen en de runtime Functies lokaal te starten:
 
-::: zone pivot="java-build-tools-maven"  
+# <a name="maven"></a>[Maven](#tab/maven)
 ```bash
 mvn clean package 
 mvn azure-functions:run
 ```
-::: zone-end
-
-::: zone pivot="java-build-tools-gradle"  
+# <a name="gradle"></a>[Gradle](#tab/gradle) 
 ```bash
 gradle jar --info
 gradle azureFunctionsRun
 ```
-::: zone-end
+---
 
 > [!NOTE]  
 > Omdat u extensiebundels inschakelt in host.json, is de [extensie Opslagbinding](functions-bindings-storage-blob.md#add-to-your-functions-app) tijdens het opstarten voor u gedownload en geïnstalleerd, samen met de andere bindende extensies van Microsoft.
@@ -150,17 +84,15 @@ Vervolgens gebruikt u de Azure CLI om de nieuwe wachtrij weer te geven en te con
 
 Voer de volgende opdracht opnieuw uit om uw gepubliceerde app bij te werken:  
 
-::: zone pivot="java-build-tools-maven"  
+# <a name="maven"></a>[Maven](#tab/maven)  
 ```bash
 mvn azure-functions:deploy
 ```
-::: zone-end
-
-::: zone pivot="java-build-tools-gradle"  
+# <a name="gradle"></a>[Gradle](#tab/gradle)  
 ```bash
 gradle azureFunctionsDeploy
 ```
-::: zone-end
+---
 
 Nogmaals, u cURL gebruiken om de geïmplementeerde functie te testen. Net als voorheen `AzureFunctions` geeft u de waarde in de hoofdtekst van het POST-verzoek door aan de URL, zoals in dit voorbeeld:
 

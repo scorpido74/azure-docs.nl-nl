@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8987cbe6860422ff92119a9f3b13a0a365e6d1a4
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 95a579cacc339360295f5f25fa6415ab29cd68ff
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618325"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673901"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Gegevensopslag en -ingress in azure time series insights preview
 
@@ -42,7 +42,7 @@ Azure Time Series Insights Preview ondersteunt de volgende gebeurtenisbronnen:
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Azure Time Series Insights Preview ondersteunt maximaal twee gebeurtenisbronnen per exemplaar.
+Azure Time Series Insights Preview ondersteunt maximaal twee gebeurtenisbronnen per exemplaar. Wanneer u een gebeurtenisbron aansluit, leest uw TSI-omgeving alle gebeurtenissen die momenteel zijn opgeslagen in uw Iot- of Event Hub, te beginnen met de oudste gebeurtenis. 
 
 > [!IMPORTANT] 
 > * U een hoge initiële latentie ervaren wanneer u een gebeurtenisbron aan uw Preview-omgeving koppelt. 

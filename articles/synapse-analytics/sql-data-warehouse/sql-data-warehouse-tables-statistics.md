@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8ecd0909176560e6b51bcb8449cb681558d96f90
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 5fae2bba0acc4ab462c91f7272694d032fc6ceaa
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80628640"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742660"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Tabelstatistieken in de Synapse SQL-groep
 
@@ -70,9 +70,9 @@ Het automatisch maken van statistieken gebeurt synchroon, zodat u mogelijk enigs
 Om meetbare prestatiedegradatie te voorkomen, moet u ervoor zorgen dat statistieken eerst zijn gemaakt door de benchmarkworkload uit te voeren voordat u het systeem profileert.
 
 > [!NOTE]
-> Het maken van statistieken wordt aangemeld bij [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) onder een andere gebruikerscontext.
+> Het maken van statistieken wordt aangemeld bij [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) onder een andere gebruikerscontext.
 
-Wanneer automatische statistieken worden gemaakt, nemen ze de vorm aan: _WA_Sys_<8-cijferige kolom-id in Hex>_<8-cijferige tabel-id in Hex>. U statistieken bekijken die al zijn gemaakt door de opdracht [DBCC-SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) uit te voeren:
+Wanneer automatische statistieken worden gemaakt, nemen ze de vorm aan: _WA_Sys_<8-cijferige kolom-id in Hex>_<8-cijferige tabel-id in Hex>. U statistieken bekijken die al zijn gemaakt door de opdracht [DBCC-SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uit te voeren:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -142,7 +142,7 @@ Omgekeerd hoeven statistieken over een genderkolom in een klantentabel mogelijk 
 
 Als uw SQL-groep slechts één geslacht bevat en een nieuwe vereiste resulteert in meerdere geslachten, moet u statistieken over de geslachtkolom bijwerken.
 
-Zie voor meer informatie algemene richtlijnen voor [statistieken](/sql/relational-databases/statistics/statistics).
+Zie voor meer informatie algemene richtlijnen voor [statistieken](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="implementing-statistics-management"></a>Uitvoering van het beheer van de statistiek
 
@@ -158,7 +158,7 @@ De volgende leidende principes zijn voorzien voor het bijwerken van uw statistie
 - Overweeg om statische distributiekolommen minder vaak bij te werken.
 - Vergeet niet dat elk statistisch object achter elkaar wordt bijgewerkt. Gewoon implementeren `UPDATE STATISTICS <TABLE_NAME>` is niet altijd ideaal, vooral voor brede tabellen met veel statistieken objecten.
 
-Zie [Cardinality Estimation](/sql/relational-databases/performance/cardinality-estimation-sql-server)voor meer informatie.
+Zie [Cardinality Estimation](/sql/relational-databases/performance/cardinality-estimation-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie.
 
 ## <a name="examples-create-statistics"></a>Voorbeelden: Statistieken maken
 
@@ -227,7 +227,7 @@ U de opties ook combineren. In het volgende voorbeeld wordt een gefilterd statis
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Zie STATISTIEKEN MAKEN [voor](/sql/t-sql/statements/create-statistics-transact-sql)de volledige referentie .
+Zie STATISTIEKEN MAKEN [voor](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)de volledige referentie .
 
 ### <a name="create-multi-column-statistics"></a>Statistieken met meerdere kolommen maken
 
@@ -420,7 +420,7 @@ De update statistieken verklaring is gemakkelijk te gebruiken. Vergeet niet dat 
 
 Zie [Tijdelijke](sql-data-warehouse-tables-temporary.md)tabellen `UPDATE STATISTICS` voor de uitvoering van een procedure. De implementatiemethode verschilt enigszins van `CREATE STATISTICS` de vorige procedure, maar het resultaat is hetzelfde.
 
-Zie [Statistieken bijwerken](/sql/t-sql/statements/update-statistics-transact-sql)voor de volledige syntaxis .
+Zie [Statistieken bijwerken](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor de volledige syntaxis .
 
 ## <a name="statistics-metadata"></a>Metagegevens statistieken
 
@@ -432,13 +432,13 @@ Deze systeemweergaven geven informatie over statistieken:
 
 | Catalogusweergave | Beschrijving |
 |:--- |:--- |
-| [sys.kolommen](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Eén rij voor elke kolom. |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Eén rij voor elk object in de database. |
-| [sys.schema's](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Eén rij voor elk schema in de database. |
-| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Eén rij voor elk object statistiek. |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Eén rij voor elke kolom in het object Statistieken. Links terug naar sys.columns. |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Eén rij voor elke tabel (inclusief externe tabellen). |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Eén rij voor elk gegevenstype. |
+| [sys.kolommen](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eén rij voor elke kolom. |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eén rij voor elk object in de database. |
+| [sys.schema's](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eén rij voor elk schema in de database. |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eén rij voor elk object statistiek. |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eén rij voor elke kolom in het object Statistieken. Links terug naar sys.columns. |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eén rij voor elke tabel (inclusief externe tabellen). |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eén rij voor elk gegevenstype. |
 
 ### <a name="system-functions-for-statistics"></a>Systeemfuncties voor statistieken
 
@@ -446,8 +446,8 @@ Deze systeemfuncties zijn handig voor het werken met statistieken:
 
 | Systeemfunctie | Beschrijving |
 |:--- |:--- |
-| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |Datum waarop het statistiekobject voor het laatst is bijgewerkt. |
-| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Overzichtsniveau en gedetailleerde informatie over de verdeling van waarden zoals begrepen door het statistische object. |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Datum waarop het statistiekobject voor het laatst is bijgewerkt. |
+| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Overzichtsniveau en gedetailleerde informatie over de verdeling van waarden zoals begrepen door het statistische object. |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Statistiekenkolommen en -functies combineren in één weergave
 

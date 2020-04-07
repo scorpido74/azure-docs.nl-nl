@@ -11,32 +11,36 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fdbffba7bee84c32d11f8b60431a35f185d9e637
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: d9578653ff8074fee8336df447caf119f79febe0
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633433"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745265"
 ---
 # <a name="use-transactions-in-synapse-sql-pool"></a>Transacties gebruiken in de Synapse SQL-groep
+
 Dit artikel bevat tips voor het implementeren van transacties en het ontwikkelen van oplossingen in SQL-pool.
 
 ## <a name="what-to-expect"></a>Wat te verwachten
-Zoals u zou verwachten, ondersteunt SQL-pool transacties als onderdeel van de werkbelasting van het gegevensmagazijn. Om ervoor te zorgen dat SQL-pool echter op schaal wordt onderhouden, zijn sommige functies beperkt in vergelijking met SQL Server. Dit artikel belicht de verschillen. 
+
+Zoals u zou verwachten, ondersteunt SQL-pool transacties als onderdeel van de werkbelasting van het gegevensmagazijn. Om ervoor te zorgen dat SQL-pool echter op schaal wordt onderhouden, zijn sommige functies beperkt in vergelijking met SQL Server. Dit artikel belicht de verschillen.
 
 ## <a name="transaction-isolation-levels"></a>Transactieisolatieniveaus
+
 SQL-groep implementeert ACID-transacties. Het isolatieniveau van de transactionele ondersteuning is standaard lezen NIET-VASTGELEGD.  U deze wijzigen in HET LEZEN VAN VASTGELEGDE MOMENTOPNAMEISOLATIE door de READ_COMMITTED_SNAPSHOT-databaseoptie in te schakelen voor een gebruikersdatabase wanneer deze is verbonden met de hoofddatabase.  
 
-Zodra deze is ingeschakeld, worden alle transacties in deze database uitgevoerd onder LEES COMMITTED SNAPSHOT ISOLATION en wordt het instellen van READ UNCOMMITTED op sessieniveau niet gehonoreerd. Schakel [opties voor WIJZIGINGDATABASESET (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) in voor meer informatie.
+Zodra deze is ingeschakeld, worden alle transacties in deze database uitgevoerd onder LEES COMMITTED SNAPSHOT ISOLATION en wordt het instellen van READ UNCOMMITTED op sessieniveau niet gehonoreerd. Schakel [opties voor WIJZIGINGDATABASESET (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) in voor meer informatie.
 
 ## <a name="transaction-size"></a>Transactiegrootte
-Een enkele transactie voor gegevenswijziging is beperkt in omvang. De limiet wordt per distributie toegepast. Daarom kan de totale toewijzing worden berekend door de limiet te vermenigvuldigen met het aantal verdelingen. 
+
+Een enkele transactie voor gegevenswijziging is beperkt in omvang. De limiet wordt per distributie toegepast. Daarom kan de totale toewijzing worden berekend door de limiet te vermenigvuldigen met het aantal verdelingen.
 
 Als u het maximumaantal rijen in de transactie wilt benaderen, deelt u de distributiedop door de totale grootte van elke rij. Voor kolommen met variabele lengte u overwegen een gemiddelde kolomlengte te nemen in plaats van de maximale grootte te gebruiken.
 
 In de volgende tabel zijn twee veronderstellingen gemaakt:
 
-* Er is een gelijkmatige verdeling van gegevens opgetreden 
+* Er is een gelijkmatige verdeling van gegevens opgetreden
 * De gemiddelde rijlengte is 250 bytes
 
 ## <a name="gen2"></a>Gen2 Gen2
@@ -77,26 +81,24 @@ In de volgende tabel zijn twee veronderstellingen gemaakt:
 | DW3000 |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
 | DW6000 |45 |60 |2,700 |180,000,000 |10,800,000,000 |
 
-De limiet voor de transactiegrootte wordt per transactie of bewerking toegepast. Het wordt niet toegepast voor alle gelijktijdige transacties. Daarom is elke transactie toegestaan om deze hoeveelheid gegevens naar het logboek te schrijven. 
+De limiet voor de transactiegrootte wordt per transactie of bewerking toegepast. Het wordt niet toegepast voor alle gelijktijdige transacties. Daarom is elke transactie toegestaan om deze hoeveelheid gegevens naar het logboek te schrijven.
 
 Raadpleeg het artikel Transacties best [practices](sql-data-warehouse-develop-best-practices-transactions.md) om de hoeveelheid gegevens die naar het logboek zijn geschreven te optimaliseren en te minimaliseren.
 
 > [!WARNING]
 > De maximale transactiegrootte kan alleen worden bereikt voor HASH of ROUND_ROBIN gedistribueerde tabellen waar de verspreiding van de gegevens gelijk is. Als de transactie op een scheve manier gegevens schrijft aan de distributies, wordt de limiet waarschijnlijk bereikt vóór de maximale transactiegrootte.
 > <!--REPLICATED_TABLE-->
-> 
-> 
 
 ## <a name="transaction-state"></a>Transactiestatus
+
 SQL-groep gebruikt de functie XACT_STATE() om een mislukte transactie te melden met de waarde -2. Deze waarde betekent dat de transactie is mislukt en alleen is gemarkeerd voor terugdraaien.
 
 > [!NOTE]
-> Het gebruik van -2 door de XACT_STATE functie om een mislukte transactie aan te duiden, vertegenwoordigt een ander gedrag dan SQL Server. SQL Server gebruikt de waarde -1 om een vrijblijvende transactie weer te geven. SQL Server kan bepaalde fouten in een transactie verdragen zonder dat deze als vrijblijvend hoeft te worden gemarkeerd. Bijvoorbeeld, `SELECT 1/0` zou leiden tot een fout, maar niet dwingen een transactie in een niet-committable staat. 
+> Het gebruik van -2 door de XACT_STATE functie om een mislukte transactie aan te duiden, vertegenwoordigt een ander gedrag dan SQL Server. SQL Server gebruikt de waarde -1 om een vrijblijvende transactie weer te geven. SQL Server kan bepaalde fouten in een transactie verdragen zonder dat deze als vrijblijvend hoeft te worden gemarkeerd. Bijvoorbeeld, `SELECT 1/0` zou leiden tot een fout, maar niet dwingen een transactie in een niet-committable staat.
 
-SQL Server maakt ook reads in de vrijblijvende transactie mogelijk. In SQL-pool u dit echter niet doen. Als er een fout optreedt binnen een SQL-pooltransactie, wordt automatisch de status -2 ingevoerd en u geen verdere selectieverklaringen uitvoeren totdat de instructie is teruggedraaid. 
+SQL Server maakt ook reads in de vrijblijvende transactie mogelijk. In SQL-pool u dit echter niet doen. Als er een fout optreedt binnen een SQL-pooltransactie, wordt automatisch de status -2 ingevoerd en u geen verdere selectieverklaringen uitvoeren totdat de instructie is teruggedraaid.
 
 Als zodanig is het belangrijk om te controleren of uw toepassingscode om te zien of het XACT_STATE() gebruikt, omdat u mogelijk codewijzigingen moet aanbrengen.
-
 
 In SQL Server ziet u bijvoorbeeld een transactie die er als volgt uitziet:
 
@@ -184,11 +186,13 @@ Het verwachte gedrag wordt nu waargenomen. De fout in de transactie wordt beheer
 Het enige dat is veranderd, is dat de terugdraaiing van de transactie moest plaatsvinden voordat de foutinformatie in het CATCH-blok werd gelezen.
 
 ## <a name="error_line-function"></a>Error_Line()
-Het is ook vermeldenswaard dat SQL-pool de functie ERROR_LINE() niet implementeert of ondersteunt. Als u dit in uw code hebt, moet u deze verwijderen om te voldoen aan SQL-pool. 
+
+Het is ook vermeldenswaard dat SQL-pool de functie ERROR_LINE() niet implementeert of ondersteunt. Als u dit in uw code hebt, moet u deze verwijderen om te voldoen aan SQL-pool.
 
 Gebruik querylabels in uw code in plaats daarvan om gelijkwaardige functionaliteit te implementeren. Zie het artikel [LABEL voor](sql-data-warehouse-develop-label.md) meer informatie.
 
 ## <a name="using-throw-and-raiserror"></a>Throw en RAISERROR gebruiken
+
 THROW is de modernere implementatie voor het verhogen van uitzonderingen in SQL-pool, maar RAISERROR wordt ook ondersteund. Er zijn een paar verschillen die de moeite waard zijn aandacht te besteden aan echter.
 
 * Door de gebruiker gedefinieerde foutberichtennummers kunnen niet in het bereik van 100.000 - 150.000 voor THROW
@@ -196,6 +200,7 @@ THROW is de modernere implementatie voor het verhogen van uitzonderingen in SQL-
 * Het gebruik van sys.messages wordt niet ondersteund
 
 ## <a name="limitations"></a>Beperkingen
+
 SQL-groep heeft een paar andere beperkingen die betrekking hebben op transacties.
 
 De verschillen zijn als volgt:
@@ -208,5 +213,5 @@ De verschillen zijn als volgt:
 * Geen ondersteuning voor DDL, zoals CREATE TABLE in een door de gebruiker gedefinieerde transactie
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Aanbevolen procedures voor](sql-data-warehouse-develop-best-practices-transactions.md)transacties voor meer informatie over het optimaliseren van transacties. Zie Best [practices voor SQL Pool](sql-data-warehouse-best-practices.md)voor meer informatie over andere best practices voor SQL-pool.
 
+Zie [Aanbevolen procedures voor](sql-data-warehouse-develop-best-practices-transactions.md)transacties voor meer informatie over het optimaliseren van transacties. Zie Best [practices voor SQL Pool](sql-data-warehouse-best-practices.md)voor meer informatie over andere best practices voor SQL-pool.

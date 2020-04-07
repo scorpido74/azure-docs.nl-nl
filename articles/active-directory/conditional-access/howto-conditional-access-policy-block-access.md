@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9ea88da0a575647eecacbfd8a476202f814b821
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2834fd3d4901b6394eabe000f9efc572c2efd497
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631817"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755078"
 ---
 # <a name="conditional-access-block-access"></a>Voorwaardelijke toegang: toegang blokkeren
 
@@ -33,7 +33,7 @@ Beleid voor voorwaardelijke toegang zijn krachtige tools, we raden u aan de volg
 
 * **Noodtoegang** of **break-glass-accounts** om tenant-brede accountlock-out te voorkomen. In het onwaarschijnlijke scenario dat alle beheerders zijn uitgesloten van uw tenant, kan uw beheeraccount met noodtoegang worden gebruikt om zich aan te melden bij de tenant om de toegang te herstellen.
    * Meer informatie vindt u in het artikel, [Accounts voor noodtoegang beheren in Azure AD](../users-groups-roles/directory-emergency-access.md).
-* **Serviceaccounts** en **serviceprincipals,** zoals het Azure AD Connect Sync-account. Serviceaccounts zijn niet-interactieve accounts die niet aan een bepaalde gebruiker zijn gekoppeld. Ze worden normaal gesproken gebruikt door back-endservices die programmatische toegang tot toepassingen mogelijk maken, maar worden ook gebruikt om in te loggen op systemen voor administratieve doeleinden. Serviceaccounts zoals deze moeten worden uitgesloten, omdat MFA niet programmatisch kan worden voltooid.
+* **Serviceaccounts** en **serviceprincipals,** zoals het Azure AD Connect Sync-account. Serviceaccounts zijn niet-interactieve accounts die niet aan een bepaalde gebruiker zijn gekoppeld. Ze worden normaal gesproken gebruikt door back-endservices die programmatische toegang tot toepassingen mogelijk maken, maar worden ook gebruikt om in te loggen op systemen voor administratieve doeleinden. Serviceaccounts zoals deze moeten worden uitgesloten, omdat MFA niet programmatisch kan worden voltooid. Oproepen van serviceprincipals worden niet geblokkeerd door Voorwaardelijke toegang.
    * Als uw organisatie deze accounts in scripts of code heeft gebruikt, u overwegen deze te vervangen door [beheerde identiteiten.](../managed-identities-azure-resources/overview.md) Als tijdelijke tijdelijke oplossing u deze specifieke accounts uitsluiten van het basislijnbeleid.
 
 ## <a name="create-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken

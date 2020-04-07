@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a6d46c2adf1d886f804a3a542a208558d7f935b9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: dd867d4aa9a9ef5ed73e78a46826a8cd5239039b
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632393"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744234"
 ---
 # <a name="what-is-workload-management"></a>Wat is workloadmanagement?
 
@@ -44,7 +44,7 @@ Door bijvoorbeeld een ad-hoc gebruikersrollidmaatschap toe te kennen aan smallrc
 
 Synapse SQL-poolworkloadbeheer in Azure Synapse bestaat uit drie concepten op hoog niveau: [Workload Classification,](sql-data-warehouse-workload-classification.md) [Workload Importance](sql-data-warehouse-workload-importance.md) en Workload [Isolation](sql-data-warehouse-workload-isolation.md).  Deze mogelijkheden geven u meer controle over hoe uw werkbelasting gebruik maakt van systeembronnen.
 
-Workloadclassificatie is het concept om een aanvraag toe te stellen aan een werkbelastinggroep en belangrijke niveaus in te stellen.  Historisch gezien werd deze opdracht gedaan via rollidmaatschap met behulp van [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Dit kan nu via de [CREATE WORKLOAD CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  De classificatiemogelijkheid biedt een uitgebreidere set opties, zoals label, sessie en tijd om aanvragen te classificeren.
+Workloadclassificatie is het concept om een aanvraag toe te stellen aan een werkbelastinggroep en belangrijke niveaus in te stellen.  Historisch gezien werd deze opdracht gedaan via rollidmaatschap met behulp van [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Dit kan nu via de [CREATE WORKLOAD CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  De classificatiemogelijkheid biedt een uitgebreidere set opties, zoals label, sessie en tijd om aanvragen te classificeren.
 
 Het werkgebied beïnvloedt de volgorde waarin een aanvraag toegang krijgt tot resources.  Op een bezet systeem heeft een aanvraag met een groter belang eerst toegang tot bronnen.  Belang kan ook zorgen voor geordende toegang tot sloten.
 

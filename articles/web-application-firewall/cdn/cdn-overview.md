@@ -7,19 +7,19 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 559ce4d1500dc5f1b67a3b3dbdbeb5d8dda7e487
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79485851"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754295"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure Web Application Firewall op Azure Content Delivery Network
 
-Azure Web Application Firewall (WAF) op Azure Content Delivery Network (CDN) biedt gecentraliseerde bescherming voor uw webinhoud. WAF verdedigt uw webservices tegen veelvoorkomende exploits en kwetsbaarheden. Het houdt uw service zeer beschikbaar voor uw gebruikers en helpt u te voldoen aan de nalevingsvereisten.
+Azure Web Application Firewall (WAF) op Azure Content Delivery Network (CDN) van Microsoft biedt gecentraliseerde bescherming voor uw webinhoud. WAF verdedigt uw webservices tegen veelvoorkomende exploits en kwetsbaarheden. Het houdt uw service zeer beschikbaar voor uw gebruikers en helpt u te voldoen aan de nalevingsvereisten.
 
 > [!IMPORTANT]
-> WAF op Azure CDN is momenteel in openbare preview en wordt voorzien van een preview service level agreement. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.  Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> WAF op Azure CDN van Microsoft is momenteel in openbare preview en wordt voorzien van een preview service level overeenkomst. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.  Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 WAF op Azure CDN is een wereldwijde en gecentraliseerde oplossing. Het wordt geïmplementeerd op Azure-netwerkrandlocaties over de hele wereld. WAF stopt kwaadaardige aanvallen in de buurt van de aanvalbronnen, voordat ze uw oorsprong bereiken. U krijgt wereldwijde bescherming op schaal zonder in te leveren op prestaties. 
 

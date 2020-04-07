@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ac7ac2cc049c87b3f619f68a9a93a2268d961114
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b2c9d136a32e54ce5b5db8f6ce9ba8cd63a4f3c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278566"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745648"
 ---
 # <a name="offer-settings-tab"></a>Tabblad voor aanbiedingsinstellingen
+
+>[!Important]
+>Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw Consulting-serviceaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van consultingservicecreatie](https://aka.ms/AzureCreateConsultingService) om uw gemigreerde aanbiedingen te beheren.
 
 Op het scherm **Nieuwe aanbieding** is de eerste stap het maken van de aanbiedingsidentiteit. De advertentieidentiteit bestaat uit drie delen: **Aanbiedings-ID,** **Publisher ID**en **Name**. Elk van deze onderdelen is bedekt met de volgende secties.
 

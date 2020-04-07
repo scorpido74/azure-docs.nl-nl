@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 6b44d9fd0bdd6e4b41013373472b5882a7ca1434
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73b1d93cc7f6325a5319b632aa7f827d9ee6303c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286588"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745041"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge-module biedt publicatieoverzicht
+
+>[!Important]
+>Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
 
 <table> <tr> <td>In deze sectie wordt uitgelegd hoe u een nieuwe Azure IoT Edge-moduleaanbieding publiceert naar de Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace.</a> Een IoT Edge-module is een Docker-compatibele container die is gemaakt om op een IoT Edge-apparaat te draaien. Azure IoT Edge-modules zijn de kleinste rekeneenheid die wordt beheerd door IoT Edge en kunnen Azure-services of aangepaste oplossingscode bevatten. </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 

@@ -3,12 +3,12 @@ title: Java-ontwikkelaarsreferentie voor Azure-functies
 description: Begrijpen hoe u functies ontwikkelen met Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b1f39ff4fd48a3ed99b34391e9cc6efdad86a5d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276749"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673009"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-ontwikkelaarshandleiding voor Azure Functions
 
@@ -16,7 +16,7 @@ De runtime van Azure Functions ondersteunt [Java SE 8 LTS (zulu8.31.0.2-jre8.0.1
 
 Aangezien het andere talen overkomt, kan een functie-app een of meer functies hebben. Een Java-functie `public` is een methode, versierd `@FunctionName`met de annotatie. Deze methode definieert de vermelding voor een Java-functie en moet uniek zijn in een bepaald pakket. Een functie-app geschreven in Java kan meerdere klassen met meerdere `@FunctionName`openbare methoden geannoteerd met .
 
-In dit artikel wordt ervan uitgegaan dat u de verwijzing naar de [ontwikkelaar van Azure-functies](functions-reference.md)al hebt gelezen. U moet ook de functies snel starten om uw eerste functie te maken, met behulp van [Visual Studio Code](functions-create-first-function-vs-code.md) of [Maven](functions-create-first-java-maven.md).
+In dit artikel wordt ervan uitgegaan dat u de verwijzing naar de [ontwikkelaar van Azure-functies](functions-reference.md)al hebt gelezen. U moet ook de functies snel starten om uw eerste functie te maken, met behulp van [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) of [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java).
 
 ## <a name="programming-model"></a>Programmeermodel 
 
@@ -30,7 +30,7 @@ Om het gemakkelijker te maken om Java-functies te maken, zijn er Maven-gebaseerd
 
 De volgende ontwikkelaarsomgevingen hebben Azure Functions-hulpprogramma's waarmee u Java-functieprojecten maken: 
 
-+ [Visual Studio-code](https://code.visualstudio.com/docs/java/java-azurefunctions)
++ [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)
 + [Eclipse](functions-create-maven-eclipse.md)
 + [IntelliJ](functions-create-maven-intellij.md)
 
@@ -38,28 +38,31 @@ Het artikel links hierboven laten zien hoe je je eerste functies te maken met be
 
 ### <a name="project-scaffolding"></a>Project Steigers
 
-Als u liever commando lijn ontwikkeling van de Terminal, de eenvoudigste manier `Apache Maven` om java-gebaseerde functie projecten steiger is het gebruik van archetypen. Er zijn momenteel twee functies archetypen voor Maven:
+Als u liever commando lijn ontwikkeling van de Terminal, de eenvoudigste manier `Apache Maven` om java-gebaseerde functie projecten steiger is het gebruik van archetypen. Het Archetype Java Maven voor Azure-functies wordt gepubliceerd onder de volgende _groupId:__artifactId_: [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
-+ **Java Archetype**: gepubliceerd onder de volgende groupId en artefactId [com.microsoft.azure:azure-functions-archetype:](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/)
+De volgende opdracht genereert een nieuw Java-functieproject met behulp van dit archetype:
 
-    ```
-    mvn archetype:generate \
-        -DarchetypeGroupId=com.microsoft.azure \
-        -DarchetypeArtifactId=azure-functions-archetype 
-    ```
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype 
+```
 
-    Om aan de slag te gaan met dit archetype, zie de [Java quickstart](functions-create-first-java-maven.md). 
+Om aan de slag te gaan met dit archetype, zie de [Java quickstart](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java). 
 
-+ **Kotlin Archetype (Preview)** gepubliceerd onder de volgende groupId en artifactId [com.microsoft.azure:azure-functions-kotlin-archetype:](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/)
+## <a name="create-kotlin-functions-preview"></a>Kotlin-functies maken (voorbeeld)
 
-    ```
-    mvn archetype:generate \
-        -DarchetypeGroupId=com.microsoft.azure \
-        -DarchetypeArtifactId=azure-functions-kotlin-archetype
-    ```
+Er is ook een Maven archetype om Kotlin functies te genereren. Dit archetype, momenteel in preview, wordt gepubliceerd onder de volgende _groupId:__artifactId_: [com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/). 
 
-De broncode van deze archetypen is te vinden op de [Azure Maven Archetypes GitHub repository.](https://github.com/microsoft/azure-maven-archetypes)
+De volgende opdracht genereert een nieuw Java-functieproject met behulp van dit archetype:
 
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-kotlin-archetype
+```
+
+Om aan de slag te gaan met dit archetype, zie de [Kotlin quickstart.](functions-create-first-kotlin-maven.md)
 
 ## <a name="folder-structure"></a>Mapstructuur
 
@@ -160,7 +163,7 @@ U aanvullende argumenten geven `JAVA_OPTS`in een app-instelling met de naam. U a
 
 Gebruik in de [Azure-portal](https://portal.azure.com)het tabblad `JAVA_OPTS` [Toepassingsinstellingen](functions-how-to-use-azure-function-app-settings.md#settings) om de instelling toe te voegen.
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 U de [opdracht az-functieapp config appsettings instellen](/cli/azure/functionapp/config/appsettings) om in te stellen, `JAVA_OPTS`zoals in het volgende voorbeeld:
 

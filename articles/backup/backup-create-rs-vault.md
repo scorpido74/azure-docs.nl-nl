@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u vaults van Recovery Services maakt die
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 38f23ee458845b92c04af47307a2411b26c8ac81
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 439f102e8f13bff63ab388be8f10df07ab2dc7d2
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529385"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672854"
 ---
 # <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -88,31 +88,7 @@ Voor dit proces zijn er prijsimplicaties zoals het is op het opslagniveau.
 >Voordat u begint:
 >
 >- Bekijk de [ondersteuningsmatrix](backup-support-matrix.md#cross-region-restore) voor een lijst met ondersteunde beheerde typen en regio's.
->- De functie Cross Region Restore (CRR) is momenteel alleen beschikbaar in de volgende regio's: 
->    - VS - west-centraal
->    - VS - west
->    - VS - west 2
->    - VS - zuid-centraal
->    - VS - oost
->    - VS - oost 2
->    - VS - noord-centraal
->    - Canada - midden
->    - Canada - oost
->    - Australië - oost
->    - Australië - zuidoost
->    - India - centraal
->    - India - zuid
->    - India - west
->    - Japan - oost
->    - Japan - west
->    - Azië - zuidoost
->    - Verenigd Koninkrijk Zuid
->    - Verenigd Koninkrijk West
->    - Europa -west
->    - Europa - noord
->    - Frankrijk - centraal
->    - Korea - centraal
->    - Korea - zuid
+>- De crr-functie (Cross Region Restore) wordt nu weergegeven in alle openbare Azure-regio's.
 >- CRR is een opt-in-functie voor een vault level voor elke GRS-kluis (standaard uitgeschakeld).
 >- Gebruik de volgende opdracht om aan boord te gaan van uw abonnement voor deze functie:<br>
 >  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`

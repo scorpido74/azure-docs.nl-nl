@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 45276884d59ac8d1d876e2225ac02bb51c3f74fc
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 5ddbb58837fbda0f14a07186d5a3053055954454
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437733"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677449"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -212,4 +212,8 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Waarom kunnen een TCP-ping en vergelijkbare hulpprogramma's met succes verbinding maken met een doel-FQDN, zelfs als er geen regel op Azure Firewall dat verkeer toestaat?
 
-Een TCP-ping maakt niet echt verbinding met de doel-FQDN. Dit gebeurt omdat de transparante proxy van Azure Firewall luistert op poort 80/443 voor uitgaand verkeer. De TCP-ping maakt een verbinding met de firewall, die vervolgens het pakket laat vallen en de verbinding registreert. Dit gedrag heeft geen impact op de beveiliging. Echter, om verwarring te voorkomen onderzoeken we mogelijke wijzigingen in dit gedrag. 
+Een TCP-ping maakt niet echt verbinding met de doel-FQDN. Dit gebeurt omdat de transparante proxy van Azure Firewall luistert op poort 80/443 voor uitgaand verkeer. De TCP-ping maakt een verbinding met de firewall, die vervolgens het pakket laat vallen en de verbinding registreert. Dit gedrag heeft geen impact op de beveiliging. Echter, om verwarring te voorkomen onderzoeken we mogelijke wijzigingen in dit gedrag.
+
+## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Zijn er limieten voor het aantal IP-adressen dat wordt ondersteund door IP-groepen?
+
+Ja. Zie [Azure-abonnements- en servicelimieten, quota's en beperkingen voor](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) meer informatie

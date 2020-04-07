@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220851"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744145"
 ---
 # <a name="language-and-region-support-for-luis"></a>Ondersteuning voor taal en regio voor LUIS
 
@@ -35,18 +35,25 @@ LUIS begrijpt uitingen in de volgende talen:
 | Amerikaans Engels |`en-US` | ✔ | ✔  |✔|✔|
 | Arabisch (voorbeeld - modern standaard Arabisch) |`ar-AR`|-|-|-|-|
 | *[Chinees](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Nederlands |`nl-NL` |✔|  -   |-|✔|
+| Nederlands |`nl-NL` |✔|-|-|✔|
 | Frans (Frankrijk) |`fr-FR` |✔| ✔ |✔ |✔|
-| Frans (Canada) |`fr-CA` |-|   -   |-|✔|
+| Frans (Canada) |`fr-CA` |-|-|-|✔|
 | Duits |`de-DE` |✔| ✔ |✔ |✔|
-| Hindi | `hi-IN`|-|-|-|-|
+| Gujarati | `gu-IN`|-|-|-|-|
+| Hindi | `hi-IN`|-|✔|-|-|
 | Italiaans |`it-IT` |✔| ✔ |✔|✔|
 | *[Japans](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Alleen sleutelzin|
-| Koreaans |`ko-KR` |✔|   -   |-|Alleen sleutelzin|
+| Koreaans |`ko-KR` |✔|-|-|Alleen sleutelzin|
+| Marathi | `mr-IN`|-|-|-|-|
 | Portugees (Brazilië) |`pt-BR` |✔| ✔ |✔ |niet alle subculturen|
 | Spaans (Spanje) |`es-ES` |✔| ✔ |✔|✔|
-| Spaans (Mexico)|`es-MX` |-|  -   |✔|✔|
-| Turks | `tr-TR` |✔|-|-|Sentiment alleen|
+| Spaans (Mexico)|`es-MX` |-|-|✔|✔|
+| Tamil | `ta-IN`|-|-|-|-|
+| Telugu | `te-IN`|-|-|-|-|
+| Turks | `tr-TR` |✔|✔|-|Sentiment alleen|
+
+
+
 
 Taalondersteuning varieert voor [vooraf gebouwde entiteiten](luis-reference-prebuilt-entities.md) en [vooraf gebouwde domeinen.](luis-reference-prebuilt-domains.md)
 
@@ -77,22 +84,28 @@ Hybride talen combineren woorden uit twee culturen zoals Engels en Chinees. Deze
 ## <a name="tokenization"></a>Tokenisatie
 Om machine learning uit te voeren, breekt LUIS een utterance in [tokens](luis-glossary.md#token) op basis van cultuur.
 
-|Taal|  elke ruimte of speciaal teken | tekenniveau|samengestelde woorden|[tokenized entiteit geretourneerd](luis-concept-data-extraction.md#tokenized-entity-returned)
-|--|:--:|:--:|:--:|:--:|
-|Arabisch|||||
-|Chinees||✔||✔|
-|Nederlands|||✔|✔|
-|Engels (en-us)|✔ ||||
-|Frans (fr-FR)|✔||||
-|Frans (fr-CA)|✔||||
-|Duits|||✔|✔|
-| Hindi |✔|-|-|-|-|
-|Italiaans|✔||||
-|Japans||||✔|
-|Koreaans||✔||✔|
-|Portugees (Brazilië)|✔||||
-|Spaans (es-ES)|✔||||
-|Spaans (es-MX)|✔||||
+|Taal|  elke ruimte of speciaal teken | tekenniveau|samengestelde woorden
+|--|:--:|:--:|:--:|
+|Arabisch|✔|||
+|Chinees||✔||
+|Nederlands|✔||✔|
+|Engels (en-us)|✔ |||
+|Frans (fr-FR)|✔|||
+|Frans (fr-CA)|✔|||
+|Duits|✔||✔|
+|Gujarati|✔|||
+|Hindi|✔|||
+|Italiaans|✔|||
+|Japans|||✔
+|Koreaans||✔||
+|Marathi|✔|||
+|Portugees (Brazilië)|✔|||
+|Spaans (es-ES)|✔|||
+|Spaans (es-MX)|✔|||
+|Tamil|✔|||
+|Telugu|✔|||
+|Turks|✔|||
+
 
 ### <a name="custom-tokenizer-versions"></a>Aangepaste tokenizerversies
 
@@ -101,7 +114,10 @@ De volgende culturen hebben aangepaste tokenizer-versies:
 |Cultuur|Versie|Doel|
 |--|--|--|
 |Duits<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een op machine learning gebaseerde tokenizer die samengestelde woorden probeert op te splitsen in hun afzonderlijke componenten.<br>Als een `Ich fahre einen krankenwagen` gebruiker als utterance wordt `Ich fahre einen kranken wagen`ingeschakeld, wordt deze ingeschakeld om . Het toestaan van `kranken` `wagen` het markeren van en onafhankelijk als verschillende entiteiten.|
-|Duits<br>`de-de`|1.0.2|Tokenizes woorden door ze op te splitsen op spaties.<br> als een `Ich fahre einen krankenwagen` gebruiker als een utterance invoert, blijft het één token. Wordt `krankenwagen` dus gemarkeerd als één entiteit. |
+|Duits<br>`de-de`|1.0.2|Tokenizes woorden door ze op te splitsen op spaties.<br> Als een `Ich fahre einen krankenwagen` gebruiker als een utterance wordt ingesloten, blijft het één token. Wordt `krankenwagen` dus gemarkeerd als één entiteit. |
+|Nederlands<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een op machine learning gebaseerde tokenizer die samengestelde woorden probeert op te splitsen in hun afzonderlijke componenten.<br>Als een `Ik ga naar de kleuterschool` gebruiker als utterance wordt `Ik ga naar de kleuter school`ingeschakeld, wordt deze ingeschakeld om . Het toestaan van `kleuter` `school` het markeren van en onafhankelijk als verschillende entiteiten.|
+|Nederlands<br>`de-de`|1.0.1|Tokenizes woorden door ze op te splitsen op spaties.<br> Als een `Ik ga naar de kleuterschool` gebruiker als een utterance wordt ingesloten, blijft het één token. Wordt `kleuterschool` dus gemarkeerd als één entiteit. |
+
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migreren tussen tokenizer-versies
 <!--

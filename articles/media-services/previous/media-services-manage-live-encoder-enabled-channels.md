@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0569907537f91f7e84b8156dffa0f313461f6e1
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162528"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677023"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Live streamen met Azure Media Services om multi-bitrate streams te maken
 
@@ -167,7 +167,7 @@ Een kanaal biedt een invoereindpunt (inname VAN URL) dat u opgeeft in de live-en
 
 Je de inname URL's krijgen zodra je een kanaal hebt gemaakt. Om deze URL's te krijgen, hoeft het kanaal niet in de **status Actief** te zijn. Wanneer u klaar bent om gegevens in het kanaal te duwen, moet deze in de **status Actief zijn.** Zodra het kanaal gegevens begint in te nemen, u een voorbeeld van uw stream bekijken via de url van het voorbeeld.
 
-Je hebt de mogelijkheid om gefragmenteerde MP4 -stream (Smooth Streaming) via een SSL-verbinding in te nemen. Als u SSL wilt innemen, moet u de inname van DE URL bijwerken naar HTTPS. Op dit moment ondersteunt AMS geen SSL met aangepaste domeinen.  
+Je hebt een optie om gefragmenteerde MP4 (Smooth Streaming) live stream in te nemen via een TLS-verbinding. Als u TLS wilt innemen, moet u de inname van DE URL bijwerken naar HTTPS. Op dit moment ondersteunt AMS TLS niet met aangepaste domeinen.  
 
 ### <a name="allowed-ip-addresses"></a>Toegestane IP-adressen
 U de IP-adressen definiëren die video op dit kanaal mogen publiceren. Toegestane IP-adressen kunnen worden opgegeven als één IP-adres (bijvoorbeeld '10.0.0.1'), een IP-bereik met behulp van een IP-adres en een CIDR-subnetmasker (bijvoorbeeld '10.0.0.1/22'), of een IP-bereik met een IP-adres en een gestippeld subnetmasker (bijvoorbeeld '10.0.0.1(255.255.252.0)).
@@ -205,7 +205,7 @@ U de bron voor signalen van advertentiemarkeertekens opgeven. Standaardwaarde is
 Een optionele vlag die de levende encoder vertelt om cea 708-bijschriften gegevens te negeren die zijn ingesloten in de binnenkomende video. Wanneer de vlag is ingesteld op false (default), detecteert en voegt de encoder CEA 708-gegevens in de uitvoervideostreams.
 
 #### <a name="index"></a>Index
-Het wordt aanbevolen om één programma transportstream (SPTS) in te sturen. Als de invoerstream meerdere programma's bevat, ontleden de live-encoder in het kanaal de Program Map Table (PMT) in de invoer, worden de ingangen geïdentificeerd die een streamtypenaam van MPEG-2 AAC ADTS of AC-3 System-A of AC-3 System-B of MPEG-2 Private PES of MPEG-1 hebben Audio- of MPEG-2-audio en rangschikt deze in de volgorde die is opgegeven in de PMT. De nul-gebaseerde index wordt vervolgens gebruikt om de n-th entry in die regeling op te halen.
+Het wordt aanbevolen om één programma transportstream (SPTS) in te sturen. Als de invoerstream meerdere programma's bevat, onteert de live-encoder binnen het Kanaal de Program Map Table (PMT) in de invoer, identificeert de ingangen met een streamtypenaam van MPEG-2 AAC ADTS of AC-3 System-A of AC-3 System-B of MPEG-2 Private PES of MPEG-1 Audio of MPEG-2 Audio en rangschikt deze in de volgorde die in de PMT is opgegeven. De nul-gebaseerde index wordt vervolgens gebruikt om de n-th entry in die regeling op te halen.
 
 #### <a name="language"></a>Taal
 De taal-id van de audiostream, die overeenkomt met ISO 639-2, zoals ENG. Als deze niet aanwezig is, is de standaardinstelling UND (niet gedefinieerd).

@@ -3,12 +3,12 @@ title: Inzicht in resourcevergrendeling
 description: Meer informatie over de vergrendelingsopties in Azure Blueprints om resources te beschermen bij het toewijzen van een blauwdruk.
 ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 86897ae6665f7a339b51aaae5f1c00144d8b7309
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 9c4e2f4c6fd8f5fb574002217ca71d1e7d130ff7
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437734"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676755"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Inzicht in bronvergrendeling in Azure Blueprints
 
@@ -20,20 +20,20 @@ Het creëren van consistente omgevingen op schaal is alleen echt waardevol als e
 ## <a name="locking-modes-and-states"></a>Vergrendelingsmodi en -statussen
 
 De vergrendelingsmodus is van toepassing op de blauwdruktoewijzing en heeft drie opties: **Niet vergrendelen,** **alleen lezen**of **niet verwijderen.** De vergrendelingsmodus wordt geconfigureerd tijdens de implementatie van artefacten tijdens een blauwdruktoewijzing. Een andere vergrendelingsmodus kan worden ingesteld door de blauwdruktoewijzing bij te werken.
-Vergrendelingsmodi kunnen echter niet buiten Blauwdrukken worden gewijzigd.
+Vergrendelingsmodi kunnen echter niet worden gewijzigd buiten Azure Blueprints.
 
 Resources die zijn gemaakt door artefacten in een blauwdruktoewijzing hebben vier statussen: **Niet vergrendeld**, **alleen lezen**, kan niet bewerken **/ verwijderen**of kan niet **worden verwijderd**. Elk artefacttype kan zich in de **status Niet vergrendeld bevindt.** De volgende tabel kan worden gebruikt om de status van een resource te bepalen:
 
 |Modus|Artefact-brontype|Status|Beschrijving|
 |-|-|-|-|
-|Niet vergrendelen|*|Niet vergrendeld|Resources worden niet beschermd door Blauwdrukken. Deze status wordt ook gebruikt voor resources die zijn toegevoegd aan een artefact voor **alleen-lezen** of **niet-verwijderen** van een brongroep van buiten een blauwdruktoewijzing.|
+|Niet vergrendelen|*|Niet vergrendeld|Resources worden niet beschermd door Azure Blueprints. Deze status wordt ook gebruikt voor resources die zijn toegevoegd aan een artefact voor **alleen-lezen** of **niet-verwijderen** van een brongroep van buiten een blauwdruktoewijzing.|
 |Alleen-lezen|Resourcegroep|Kan niet bewerken / verwijderen|De brongroep wordt alleen gelezen en tags in de resourcegroep kunnen niet worden gewijzigd. **Niet vergrendelde** resources kunnen uit deze brongroep worden toegevoegd, verplaatst, gewijzigd of verwijderd.|
 |Alleen-lezen|Niet-resourcegroep|Alleen-lezen|De bron kan op geen enkele manier worden gewijzigd, er worden geen wijzigingen aangebracht en kan niet worden verwijderd.|
 |Niet verwijderen|*|Kan niet verwijderen|De bronnen kunnen worden gewijzigd, maar kunnen niet worden verwijderd. **Niet vergrendelde** resources kunnen uit deze brongroep worden toegevoegd, verplaatst, gewijzigd of verwijderd.|
 
 ## <a name="overriding-locking-states"></a>Dwingende vergrendelingstoestanden
 
-Het is meestal mogelijk dat iemand met het juiste [op rollen gebaseerde toegangscontrole](../../../role-based-access-control/overview.md) (RBAC) op het abonnement, zoals de rol 'Eigenaar', een resource kan wijzigen of verwijderen. Deze toegang is niet het geval wanneer Blauwdrukken vergrendeling toepast als onderdeel van een geïmplementeerde toewijzing. Als de toewijzing is ingesteld met de optie **Alleen lezen** of **Niet verwijderen,** kan zelfs de eigenaar van het abonnement de geblokkeerde actie op de beveiligde bron niet uitvoeren.
+Het is meestal mogelijk dat iemand met het juiste [op rollen gebaseerde toegangscontrole](../../../role-based-access-control/overview.md) (RBAC) op het abonnement, zoals de rol 'Eigenaar', een resource kan wijzigen of verwijderen. Deze toegang is niet het geval wanneer Azure Blueprints vergrendeling toepast als onderdeel van een geïmplementeerde toewijzing. Als de toewijzing is ingesteld met de optie **Alleen lezen** of **Niet verwijderen,** kan zelfs de eigenaar van het abonnement de geblokkeerde actie op de beveiligde bron niet uitvoeren.
 
 Deze beveiligingsmaatregel beschermt de consistentie van de gedefinieerde blauwdruk en de omgeving die is ontworpen om te maken van toevallige of programmatische verwijdering of wijziging.
 
@@ -97,11 +97,11 @@ Als het nodig wordt om een resource die door een toewijzing wordt beschermd, te 
 - De blauwdruktoewijzing bijwerken naar een vergrendelingsmodus van **Niet vergrendelen**
 - De blauwdruktoewijzing verwijderen
 
-Wanneer de toewijzing wordt verwijderd, worden de vergrendelingen die door Blauwdrukken zijn gemaakt, verwijderd. De bron blijft echter achter en moet op normale wijze worden verwijderd.
+Wanneer de toewijzing wordt verwijderd, worden de vergrendelingen die zijn gemaakt door Azure Blueprints verwijderd. De bron blijft echter achter en moet op normale wijze worden verwijderd.
 
 ## <a name="how-blueprint-locks-work"></a>Hoe blauwdrukvergrendelingen werken
 
-Een [weigeringsactie voor RBAC-toewijzingen](../../../role-based-access-control/deny-assignments.md) wordt toegepast op artefactbronnen tijdens de toewijzing van een blauwdruk als de toewijzing de optie **Alleen lezen** of niet **verwijderen heeft** geselecteerd. De weigeringsactie wordt toegevoegd door de beheerde identiteit van de blauwdruktoewijzing en kan alleen met dezelfde beheerde identiteit uit de artefactbronnen worden verwijderd. Deze veiligheidsmaatregel dwingt het vergrendelingsmechanisme af en voorkomt het verwijderen van het blauwdrukslot buiten Blauwdrukken.
+Een [weigeringsactie voor RBAC-toewijzingen](../../../role-based-access-control/deny-assignments.md) wordt toegepast op artefactbronnen tijdens de toewijzing van een blauwdruk als de toewijzing de optie **Alleen lezen** of niet **verwijderen heeft** geselecteerd. De weigeringsactie wordt toegevoegd door de beheerde identiteit van de blauwdruktoewijzing en kan alleen met dezelfde beheerde identiteit uit de artefactbronnen worden verwijderd. Deze beveiligingsmaatregel dwingt het vergrendelingsmechanisme af en voorkomt het verwijderen van het blauwdrukslot buiten Azure Blueprints.
 
 ![Toewijzing voor blueprint weigeren op resourcegroep](../media/resource-locking/blueprint-deny-assignment.png)
 

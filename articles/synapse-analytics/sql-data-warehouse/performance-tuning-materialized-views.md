@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28dbe66d27ac75bee2ceecd160ead3dea6538034
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633818"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743168"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weergaven
 
@@ -32,7 +32,7 @@ Een standaardweergave berekent de gegevens telkens wanneer de weergave wordt geb
 
 Een gematerialiseerde weergave berekent, slaat en onderhoudt de gegevens in SQL-groep, net als een tabel.  Er is geen herberekening nodig elke keer wanneer een gematerialiseerde weergave wordt gebruikt.  Daarom kunnen query's die alle of subset van de gegevens in gematerialiseerde weergaven gebruiken, snellere prestaties krijgen.  Nog beter, query's kunnen een gematerialiseerde weergave gebruiken zonder er direct naar te verwijzen, dus het is niet nodig om toepassingscode te wijzigen.  
 
-De meeste vereisten voor een standaardweergave zijn nog steeds van toepassing op een gematerialiseerde weergave. Zie [GEMATERIALISEERDE WEERGAVE MAKEN ALS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)voor meer informatie over de gematerialiseerde weergavesyntaxis en andere vereisten .
+De meeste vereisten voor een standaardweergave zijn nog steeds van toepassing op een gematerialiseerde weergave. Zie [GEMATERIALISEERDE WEERGAVE MAKEN ALS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie over de gematerialiseerde weergavesyntaxis en andere vereisten
 
 | Vergelijking                     | Weergave                                         | Gerealiseerde weergave
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -58,8 +58,8 @@ De gematerialiseerde weergaven die zijn geïmplementeerd in SQL-groep bieden ook
 In vergelijking met andere leveranciers van gegevensmagazijnen bieden de gematerialiseerde weergaven die zijn geïmplementeerd in Azure SQL Data Warehouse ook de volgende extra voordelen:
 
 - Automatische en synchrone gegevens vernieuwen met gegevenswijzigingen in basistabellen. Er is geen actie van de gebruiker vereist.
-- Brede geaggregeerde functieondersteuning. Zie [GEMATERIALISEERDE WEERGAVE MAKEN ALS SELECT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).
-- De ondersteuning voor queryspecifieke gematerialiseerde weergaveaanbeveling.  Zie [EXPLAIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest).
+- Brede geaggregeerde functieondersteuning. Zie [GEMATERIALISEERDE WEERGAVE MAKEN ALS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+- De ondersteuning voor queryspecifieke gematerialiseerde weergaveaanbeveling.  Zie [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="common-scenarios"></a>Algemene scenario's  
 

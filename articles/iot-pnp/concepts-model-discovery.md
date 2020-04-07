@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 66da0321930ac38217a336380c9889963a433e67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94e5e6fb826528aab1a358d44cb51bfcd6219032
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75531357"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673571"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT Plug and Play Preview-modeldetectie implementeren in een IoT-oplossing
 
@@ -46,7 +46,7 @@ Een speciaal gebouwde IoT-oplossing werkt met een bekende set iot-plug-en-play-a
 
 U beschikt over het capaciteitsmodel en de interfaces voor de apparaten die van tevoren verbinding maken met uw oplossing. Gebruik de volgende stappen om uw oplossing voor te bereiden:
 
-1. Sla de INTERFACE JSON-bestanden op in Azure op een locatie waar uw oplossing ze kan lezen.
+1. Sla de interface JSON-bestanden op in een [modelopslagplaats](./howto-manage-models.md) waar uw oplossing ze kan lezen.
 1. Schrijf logica in uw IoT-oplossing op basis van de verwachte IoT Plug and Play-mogelijkheden en interface.
 1. Abonneer u op meldingen van de IoT-hub die uw oplossing gebruikt.
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: a0547243ddf114d5c9f7034f182a5e76d8c3e016
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 872eec62e7a629d76533aa6c9906cbdb64c32236
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75369419"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745556"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Inleiding tot vensterfuncties Stream Analytics
 
@@ -35,7 +35,7 @@ HoppingWindow-functies worden gebruikt om met een vaste tijdstuur vooruit te gaa
 ![Stream Analytics-hopping-venster](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Schuifvenster
-Schuifvensterfuncties produceren, in tegenstelling tot Tumbling- of Hopping-vensters, **alleen** een uitvoer wanneer een gebeurtenis optreedt. Elk venster moet ten minste één gebeurtenis hebben en het venster wordt continu met een € (epsilon) naar voren verplaatst. Net als bij HoppingWindows kunnen gebeurtenissen deel uitmaken van meer dan één SlidingWindow.
+Schuifvensterfuncties produceren, in tegenstelling tot Tumbling- of Hopping-vensters, **alleen** een uitvoer wanneer een gebeurtenis optreedt. Elk venster heeft ten minste één gebeurtenis en het venster beweegt voortdurend naar voren door een ε (epsilon). Net als bij HoppingWindows kunnen gebeurtenissen deel uitmaken van meer dan één SlidingWindow.
 
 ![Schuifvenster Stream Analytics](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 

@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e65ebbfa0971bf2156165b55ca18eee3cc74bc9
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 83108c056035b16d26343d82c721b275ebcad0c5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239283"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754323"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Zelfstudie: SQL BACPAC-bestanden importeren met ARM-sjablonen
 
-Meer informatie over het gebruik van Azure SQL Database-extensies om een BACPAC-bestand te importeren met ARM-sjablonen (Azure Resource Manager). Implementatieartefacten zijn alle bestanden, naast de hoofdsjabloonbestanden, die nodig zijn om een implementatie te voltooien. Het BACPAC-bestand is een artefact. 
+Meer informatie over het gebruik van Azure SQL Database-extensies om een BACPAC-bestand te importeren met ARM-sjablonen (Azure Resource Manager). Implementatieartefacten zijn alle bestanden, naast de hoofdsjabloonbestanden, die nodig zijn om een implementatie te voltooien. Het BACPAC-bestand is een artefact.
 
 In deze zelfstudie maakt u een sjabloon om een Azure SQL-server en een SQL-database te implementeren en een BACPAC-bestand te importeren. Zie [Zelfstudie: Virtuele machine-extensies implementeren met ARM-sjablonen](./template-tutorial-deploy-vm-extensions.md)voor informatie over het implementeren van Azure-extensies voor virtuele machine met BEHULP VAN ARM-sjablonen.
 
@@ -255,7 +255,7 @@ Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een SQL-server en een SQL-database geïmplementeerd en een BACPAC-bestand geïmporteerd. Het BACPAC-bestand wordt opgeslagen in een Azure Storage-account. Iedereen die de URL heeft, kan het bestand openen. Zie voor meer informatie over het beveiligen van het BACPAC-bestand (artefact) als:
+In deze zelfstudie hebt u een SQL-server en een SQL-database geïmplementeerd en een BACPAC-bestand geïmporteerd. Zie voor meer informatie over het oplossen van problemen met de implementatie van sjablonen:
 
 > [!div class="nextstepaction"]
-> [Secure the artifacts](./template-tutorial-secure-artifacts.md) (Artefacten beveiligen)
+> [Problemen met ARM-sjabloonimplementaties oplossen](./template-tutorial-troubleshoot.md)

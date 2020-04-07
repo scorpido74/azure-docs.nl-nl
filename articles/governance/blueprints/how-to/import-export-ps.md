@@ -3,16 +3,16 @@ title: Blauwdrukken importeren en exporteren met PowerShell
 description: Meer informatie over het werken met uw blauwdrukdefinities als code. Deel, bronbeheer en beheer ze met behulp van de opdrachten exporteren en importeren.
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: fc7b9818072665d79deaf8a456868943e8428730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873196"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677142"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Blauwdrukdefinities importeren en exporteren met PowerShell
 
-Azure Blueprints kunnen volledig worden beheerd via Azure portal. Naarmate organisaties verder gaan in hun gebruik van blauwdrukken, moeten ze beginnen te denken van blauwdrukdefinities als beheerde code. Dit concept wordt vaak aangeduid als Infrastructuur als Code (IaC). Het behandelen van uw blauwdrukdefinities als code biedt extra voordelen die verder gaan dan wat Azure-portal biedt. Deze voordelen zijn onder andere:
+Azure Blueprints kunnen volledig worden beheerd via Azure portal. Naarmate organisaties verder gaan in hun gebruik van Azure Blueprints, moeten ze beginnen met het denken van blauwdrukdefinities als beheerde code. Dit concept wordt vaak aangeduid als Infrastructuur als Code (IaC). Het behandelen van uw blauwdrukdefinities als code biedt extra voordelen die verder gaan dan wat Azure-portal biedt. Deze voordelen zijn onder andere:
 
 - Blauwdrukdefinities delen
 - Back-ups maken van uw blauwdrukdefinities

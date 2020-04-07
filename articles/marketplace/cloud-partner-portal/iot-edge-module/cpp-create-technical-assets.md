@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 304ea31f2a6f9820226a6ad0db8bfc803e6fdb94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd9cd9f3986ef1944d9f9119296af5512b352d1d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285211"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744314"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Uw technische activa van uw IoT Edge-module voorbereiden
+
+>[!Important]
+>Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureIoTTechAsset) om uw gemigreerde aanbiedingen te beheren.
 
 In dit artikel worden de vereisten beschreven waaraan de technische elementen van uw IoT Edge-module moeten voldoen voordat ze worden gepubliceerd op Azure Marketplace.
 

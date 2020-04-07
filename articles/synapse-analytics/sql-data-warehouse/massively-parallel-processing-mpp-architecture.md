@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: e321df3f27defdceab31fe3b425a4169928ba3f6
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0d768581b8f1a177190da08986af8b60b4861432
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631939"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744212"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (voorheen SQL DW)-architectuur
 
@@ -66,7 +66,7 @@ Het Control-knooppunt is het brein van de architectuur. Het is de front-end met 
 
 De rekenknooppunten leveren de rekenkracht. Distributies worden toegewezen aan Compute-knooppunten voor verwerking. Naarmate u voor meer rekenresources betaalt, worden distributies toegewezen aan beschikbare Compute-knooppunten. Het aantal compute nodes varieert van 1 tot 60 en wordt bepaald door het serviceniveau voor Synapse SQL.
 
-Elk Compute-knooppunt heeft een knooppunt-id die zichtbaar is in systeemweergaven. U de Compute-knooppunt-id zien door te zoeken naar de node_id kolom in systeemweergaven waarvan de namen beginnen met sys.pdw_nodes. Zie [MPP-systeemweergaven](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7)voor een lijst met deze systeemweergaven.
+Elk Compute-knooppunt heeft een knooppunt-id die zichtbaar is in systeemweergaven. U de Compute-knooppunt-id zien door te zoeken naar de node_id kolom in systeemweergaven waarvan de namen beginnen met sys.pdw_nodes. Zie [MPP-systeemweergaven](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor een lijst met deze systeemweergaven.
 
 ### <a name="data-movement-service"></a>Data Movement Service
 

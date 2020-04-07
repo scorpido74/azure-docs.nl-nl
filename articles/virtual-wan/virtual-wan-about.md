@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 927c09f61ce0847c72cefb51935116070e956861
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241414"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743099"
 ---
 # <a name="about-azure-virtual-wan"></a>Over Azure Virtual WAN
 
-Azure Virtual WAN is een netwerkservice die geoptimaliseerde en geautomatiseerde branchconnectiviteit biedt met en door Azure. Azure-regio's dienen als hubs waarmee u kiezen om uw branches aan te sluiten. U de Azure-backbone gebruiken om ook branches met elkaar te verbinden en te genieten van branch-to-VNet-connectiviteit. We hebben een lijst met partners die connectiviteitsautomatisering ondersteunen met Azure Virtual WAN VPN. Zie het artikel [Virtual WAN-partners en locaties](virtual-wan-locations-partners.md) voor meer informatie.
+Azure Virtual WAN is een netwerkservice die veel netwerk-, beveiligings- en routeringsfuncties samenbrengt om één operationele interface te bieden. Deze functionaliteiten omvatten Branch-connectiviteit (via connectiviteitsautomatisering van Virtual WAN Partner-apparaten zoals SD-WAN of VPN CPE), Site-to-site VPN-connectiviteit, VPN-connectiviteit (Point-to-site) connectiviteit (Point-to-site), Private (ExpressRoute) connectiviteit, Intra cloud-connectiviteit (Transitive connectivity for Virtual Networks), VPN ExpressRoute Interconnectivity, Routing, Azure firewall, Encryptie voor privéconnectiviteit enz. U hoeft niet al deze use cases te hebben om Virtual WAN te gebruiken. U eenvoudig aan de slag met slechts één use case en uw netwerk aanpassen terwijl het evolueert. De Virtual WAN-architectuur is een hub- en spoke-architectuur met schaal en prestaties ingebouwd voor branches (VPN/SD-WAN-apparaten), gebruikers (Azure VPN/OpenVPN/IKEv2 Clients), ExpressRoute-circuits en Virtuele netwerken. Het maakt [wereldwijde transitnetwerkarchitectuur](virtual-wan-global-transit-network-architecture.md) mogelijk waarbij de cloud gehoste netwerkhub transitive connectiviteit mogelijk maakt tussen eindpunten die over verschillende soorten 'spaken' kunnen worden verdeeld.
 
-Azure Virtual WAN brengt veel Azure-cloudconnectiviteitsservices samen, zoals site-to-site VPN, User VPN (point-to-site) en ExpressRoute in één operationele interface. Connectiviteit met Azure VNets wordt tot stand gebracht door gebruik te maken van virtuele netwerkverbindingen. Het maakt [wereldwijde transitnetwerkarchitectuur](virtual-wan-global-transit-network-architecture.md) mogelijk op basis van een klassiek hub-and-spoke connectiviteitsmodel waarbij de cloud gehoste netwerkhub transitive connectiviteit mogelijk maakt tussen eindpunten die over verschillende soorten 'spaken' kunnen worden verdeeld.
+Azure-regio's dienen als hubs waarmee u verbinding maken. Alle hubs zijn volledig mesh aangesloten in een Standard Virtual WAN, waardoor het voor de gebruiker gemakkelijk is om de Microsoft-backbone te gebruiken voor elke (spaak)connectiviteit. Voor spaakconnectiviteit met SD-WAN/VPN-apparaten kunnen gebruikers deze handmatig instellen in Azure Virtual WAN of de Partneroplossing Virtual WAN CPE (SD-WAN/VPN) gebruiken om connectiviteit met Azure in te stellen. We hebben een lijst met partners die connectiviteitsautomatisering ondersteunen (de mogelijkheid om de apparaatgegevens naar Azure te exporteren, de Azure-configuratie te downloaden en connectiviteit tot stand te brengen) met Azure Virtual WAN. Zie het artikel [Virtual WAN-partners en locaties](virtual-wan-locations-partners.md) voor meer informatie. 
 
 ![Virtual WAN-diagram](./media/virtual-wan-about/virtualwan1.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: e5fe58891aa901509dc44d3b2465c794bd92b22d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f13ab3cd6ff765bc3b1bee8e8fad7e7273f6c7d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476566"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673916"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Vorige generaties van virtuele machinematen
 
@@ -66,6 +66,7 @@ Premium Storage-cache: ondersteund
 MBps = 10^6 bytes per seconde en GiB = 1024^3 bytes.
 
 <sup>1</sup> De maximale schijfdoorvoer (IOPS of MBps) mogelijk met een Fs-serie VM kan worden beperkt door het aantal, de grootte en de striping van de aangesloten schijf(en).  Zie ontwerpen voor hoge prestaties voor [Windows](windows/premium-storage-performance.md) of [Linux](linux/premium-storage-performance.md)voor meer informatie.  
+
 
 ## <a name="nvv2-series"></a>NVv2-serie
 
@@ -339,6 +340,30 @@ Premium Storage caching: niet ondersteund
 | Standard_G5&nbsp;<sup>1.</sup> | 32 | 448 | 6144 | 96000/1500/750| 64/64x500 | 8/20000 |
 
 <sup>1</sup> Instantie is geïsoleerd voor hardware die is gewijd aan één klant.
+<br>
+
+# <a name="nv-series"></a>NV-serie
+**Nieuwere grootte aanbeveling**: [NVv3-serie](nvv3-series.md) en [NVv4-serie](nvv4-series.md)
+
+De virtuele machines uit de NV-serie worden aangedreven door [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU's en NVIDIA GRID-technologie voor desktopversnelde toepassingen en virtuele desktops waar klanten hun gegevens of simulaties kunnen visualiseren. Gebruikers kunnen hun grafisch intensieve workflows op de NV-instanties visualiseren om superieure grafische mogelijkheden te krijgen en bovendien enkele precisieworkloads uit te voeren, zoals codering en rendering. NV-serie VM's worden ook aangedreven door Intel Xeon E5-2690 v3 (Haswell) CPU's.
+
+Elke GPU in NV-exemplaren wordt geleverd met een GRID-licentie. Deze licentie geeft u de flexibiliteit om een NV-exemplaar te gebruiken als een virtueel werkstation voor één gebruiker, of 25 gelijktijdige gebruikers kunnen verbinding maken met de VM voor een virtueel toepassingsscenario.
+
+Premium opslag: niet ondersteund
+
+Premium Storage caching: niet ondersteund
+
+Live migratie: niet ondersteund
+
+Updates voor geheugenbehoud: niet ondersteund
+
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | GPU | GPU-geheugen: GiB | Max. aantal gegevensschijven | Max. aantal NIC's | Virtuele werkstations | Virtuele toepassingen |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_NV6  | 6  | 56  | 340  | 1 | 8  | 24 | 1 | 1 | 25  |
+| Standard_NV12 | 12 | 112 | 680  | 2 | 16 | 48 | 2 | 2 | 50  |
+| Standard_NV24 | 24 | 224 | 1440 | 4 | 32 | 64 | 4 | 4 | 100 |
+
+1 GPU = halve M60-kaart.
 <br>
 
 ## <a name="other-sizes"></a>Andere maten

@@ -3,12 +3,12 @@ title: Overzicht van Azure Blueprints
 description: Ontdek hoe u met de Azure Blueprints-service artefacten maken, definiëren en implementeren in uw Azure-omgeving.
 ms.date: 11/21/2019
 ms.topic: overview
-ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74321768"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677419"
 ---
 # <a name="what-is-azure-blueprints"></a>Wat is Azure Blueprints?
 
@@ -22,17 +22,17 @@ Blauwdrukken zijn een declaratieve manier om de implementatie van diverse resour
 - Resourcegroepen
 
 De Azure Blueprints-service wordt gesteund door de wereldwijd gedistribueerde [Azure Cosmos DB](../../cosmos-db/introduction.md).
-Blauwdrukobjecten worden naar meerdere Azure-regio's gerepliceerd. Deze replicatie biedt lage latentie, hoge beschikbaarheid en consistente toegang tot uw blauwdrukobjecten, ongeacht in welke regio uw resources worden geïmplementeerd.
+Blauwdrukobjecten worden naar meerdere Azure-regio's gerepliceerd. Deze replicatie biedt lage latentie, hoge beschikbaarheid en consistente toegang tot uw blauwdrukobjecten, ongeacht naar welke regio Azure Blueprints uw resources implementeert.
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>Waarin verschilt het van Resource Manager-sjablonen?
 
 De service is ontworpen om u te helpen met de _setup van de omgeving_. Deze setup bestaat vaak uit een set resourcegroepen, beleidsmaatregelen, roltoewijzingen en Resource Manager-sjabloonimplementaties. Een blauwdruk is een pakket waarmee al deze _artefact_typen bij elkaar worden gebracht en u in staat wordt gesteld om dat pakket samen te stellen en versies ervan te beheren – ook via een CI/CD-pijplijn. Uiteindelijk wordt elke blauwdruk toegewezen aan een abonnement in één bewerking die kan worden gecontroleerd en bijgehouden.
 
-Bijna alles dat u voor implementatie in Blueprints wilt opnemen, kan worden bereikt met een Resource Manager-sjabloon. Een Resource Manager-sjabloon is echter een document dat niet in Azure zelf bestaat. Elke sjabloon wordt lokaal of in broncodebeheer opgeslagen. De sjabloon wordt gebruikt voor de implementatie van een of meer Azure-resources, maar zodra die resources zijn geïmplementeerd, is er geen actieve verbinding of relatie meer met de sjabloon.
+Bijna alles wat u wilt opnemen voor implementatie in Azure Blueprints kan worden uitgevoerd met een Resource Manager-sjabloon. Een Resource Manager-sjabloon is echter een document dat niet in Azure zelf bestaat. Elke sjabloon wordt lokaal of in broncodebeheer opgeslagen. De sjabloon wordt gebruikt voor de implementatie van een of meer Azure-resources, maar zodra die resources zijn geïmplementeerd, is er geen actieve verbinding of relatie meer met de sjabloon.
 
-Met Blueprints blijft de relatie tussen de blauwdrukdefinitie (wat _moet worden_ geïmplementeerd) en de blauwdruktoewijzing (wat _is_ geïmplementeerd) behouden. Deze verbinding ondersteunt verbeterde tracering en controle van implementaties. Met blauwdrukken kunt u bovendien in één keer een upgrade uitvoeren van meerdere abonnementen die zijn onderworpen aan dezelfde blauwdruk.
+Met Azure Blueprints blijft de relatie tussen de blauwdrukdefinitie (wat _moet worden_ geïmplementeerd) en de blauwdruktoewijzing (wat _is_ geïmplementeerd) behouden. Deze verbinding ondersteunt verbeterde tracering en controle van implementaties. Azure Blueprints kan ook meerdere abonnementen tegelijk upgraden die onder dezelfde blauwdruk vallen.
 
-U hoeft niet te kiezen tussen een Resource Manager-sjabloon en een blauwdruk. Elke blauwdruk kan bestaan uit nul of meer Resource Manager-sjabloon_artefacten_. Deze ondersteuning betekent dat eerdere inspanningen om een ​​bibliotheek met Resource Manager-sjablonen te ontwikkelen en te onderhouden, in Blueprints kunnen worden hergebruikt.
+U hoeft niet te kiezen tussen een Resource Manager-sjabloon en een blauwdruk. Elke blauwdruk kan bestaan uit nul of meer Resource Manager-sjabloon_artefacten_. Deze ondersteuning betekent dat eerdere inspanningen om een bibliotheek met Resource Manager-sjablonen te ontwikkelen en te onderhouden, herbruikbaar zijn in Azure Blueprints.
 
 ## <a name="how-its-different-from-azure-policy"></a>Wat is het verschil met Azure Policy?
 
@@ -46,7 +46,7 @@ Een beleid kan worden opgenomen als een van de vele _artefacten_ in de definitie
 
 ## <a name="blueprint-definition"></a>Blauwdrukdefinitie
 
-Een blauwdruk bestaat uit _artefacten_. Blauwdrukken ondersteunen momenteel de volgende resources als artefacten:
+Een blauwdruk bestaat uit _artefacten_. Azure Blueprints ondersteunt momenteel de volgende bronnen als artefacten:
 
 |Resource  | Hiërarchieopties| Beschrijving  |
 |---------|---------|---------|

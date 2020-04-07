@@ -1,14 +1,14 @@
 ---
 title: Ondersteunde resourcemanager-resourcetypen
 description: Geef een lijst op met de resourcetypen Resource Manager die worden ondersteund door Azure Resource Graph en Wijzigingsgeschiedenis.
-ms.date: 03/23/2020
+ms.date: 04/06/2020
 ms.topic: reference
-ms.openlocfilehash: 64fd860090cc15cc6914ee926772146b98477edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85cab92981568f5ea3770e1102c3480ae4f3e638
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130614"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677055"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Tabel en verwijzing naar resourcetype azure resourcegraph
 
@@ -188,6 +188,7 @@ Azure Resource Graph ondersteunt de volgende **resourcetypen** azure [resource b
 - microsoft.eventhub/clusters
 - microsoft.eventhub/naamruimten
 - microsoft.experimenteer-/experimentwerkruimten
+- microsoft.falcon/namespaces
 - microsoft.gaming/titels
 - microsoft.genomics/accounts
 - microsoft.guestconfiguration/automanagedaccounts
@@ -290,6 +291,7 @@ Azure Resource Graph ondersteunt de volgende **resourcetypen** azure [resource b
 - microsoft.network/networkexperimentprofielen
 - microsoft.network/networkintentpolicies
 - microsoft.network/networkinterfaces
+- microsoft.network/networkmanagers
 - microsoft.network/netwerkprofielen
 - microsoft.network/networksecuritygroups
 - microsoft.network/networkvirtualappliances
@@ -446,6 +448,7 @@ Azure Resource Graph ondersteunt de volgende **resourcetypen** azure [resource b
 - wandisco.fusion/fusiongroepen
 - wandisco.fusion/fusiongroups/azurezones
 - wandisco.fusion/fusiongroups/azurezones/plug-ins
+- wandisco.fusion/fusiongroups/hivereplicationrules
 - wandisco.fusion/fusiongroups/managedonpremzones
 - wandisco.fusion/fusiegroepen/onpremzones
 - wandisco.fusion/fusiegroepen/replicatieregels

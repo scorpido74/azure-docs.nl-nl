@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 3ff65a637c1d3722e773ab27f051b3b5bc109a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4290bad405ddab6d89cac5ef7bfd185247d41da1
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281728"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745113"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Tabblad Marktplaats voor IoT Edge-module
+
+>[!Important]
+>Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
 
 Op het tabblad **Marketplace** van de pagina **Nieuwe aanbieding** u uw potentiële klanten marketing- en verkoop- en juridische informatie en overeenkomsten bieden en leads beheren die vanuit de markt worden gegenereerd. Deze lange vorm is verdeeld in vier secties: **Overzicht**, **Marketing Artefacten,** **Lead Management**, en **Juridische**.
 
@@ -92,7 +95,7 @@ Deze sectie bevat de volgende subsecties: **Logos**, **Screenshot**en **Video's*
 | **Held**                  | 815x290 pixel PNG-indeling.  Optioneel, maar eenmaal geüpload kan het heldenpictogram niet worden verwijderd. |
 | *Schermopnamen*  | Schermafbeeldingen worden weergegeven op de pagina met productdetails. Ze zijn een goede manier om visueel te communiceren wat uw IoT Edge-module doet en hoe het werkt. U bijvoorbeeld architectuurdiagrammen weergeven of voorbeeld voorbeelden van voorbeelden gebruiken. Optioneel, maar maximaal vijf screenshots per SKU. |
 | **Naam**                  | Naam of titel. Maximale lengte van 100 tekens.                             |
-| **Afbeelding**                 | Schermopnameafbeelding, PNG-indeling van 533x324 pixels                               |
+| **Installatiekopie**                 | Schermopnameafbeelding, PNG-indeling van 533x324 pixels                               |
 | *Video's*  | Video's worden weergegeven op de pagina met productdetails. Ze zijn een goede manier om visueel te communiceren wat uw IoT Edge-module doet en hoe het werkt. |
 | **Naam**                  | Naam of titel. Maximale lengte van 100 tekens.                             |
 | **Koppeling**                  | Video-URL, gehost op YouTube of Vimeo                                        |

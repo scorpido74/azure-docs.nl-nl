@@ -11,12 +11,12 @@ ms.date: 02/19/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 87b33e91076f8f7f31740795f0ec05cea49a1e83
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: e99fd898956e11a4827d023691111a47e5a790c0
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631190"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744958"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategieën voor het laden van gegevens voor Synapse SQL-pool
 
@@ -24,7 +24,7 @@ Traditionele SMP SQL-pools gebruiken een ETL-proces (Extract, Transform en Load)
 
 Met behulp van een EXTRACT, Load, and Transform (ELT) proces maakt gebruik van MPP en elimineert de middelen die nodig zijn voor gegevenstransformatie voorafgaand aan het laden.
 
-Hoewel SQL-pool veel laadmethoden ondersteunt, waaronder populaire SQL Server-opties zoals [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) en de [SqlBulkCopy API,](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)is de snelste en meest schaalbare manier om gegevens te laden via externe tabellen van PolyBase en de [COPY-instructie](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (preview).
+Hoewel SQL-pool veel laadmethoden ondersteunt, waaronder populaire SQL Server-opties zoals [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) en de [SqlBulkCopy API,](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)is de snelste en meest schaalbare manier om gegevens te laden via externe tabellen van PolyBase en de [COPY-instructie](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (preview).
 
 Met PolyBase en de instructie COPY hebt u toegang tot externe gegevens die zijn opgeslagen in Azure Blob-opslag of Azure Data Lake Store via de T-SQL-taal. Voor de meeste flexibiliteit bij het laden raden we u aan de copy-instructie te gebruiken.
 
@@ -58,7 +58,7 @@ Het verkrijgen van gegevens uit uw bronsysteem is afhankelijk van de opslaglocat
 
 Met PolyBase en de instructie COPY u gegevens laden van UTF-8- en UTF-16-gecodeerde gedefinieerde tekst- of CSV-bestanden. Naast de afgebakende tekst- of CSV-bestanden, worden deze ook geladen vanuit de Hadoop-bestandsindelingen zoals ORC en Parket. PolyBase en de COPY-instructie kunnen ook gegevens van Gzip- en Snappy-gecomprimeerde bestanden laden.
 
-Uitgebreide ASCII-indeling, indeling met vaste breedte en geneste indelingen zoals WinZip of XML worden niet ondersteund. Als u exporteert vanuit SQL Server, u het [bcp-opdrachtregelgereedschap](/sql/tools/bcp-utility?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om de gegevens naar afgebakende tekstbestanden te exporteren.
+Uitgebreide ASCII-indeling, indeling met vaste breedte en geneste indelingen zoals WinZip of XML worden niet ondersteund. Als u exporteert vanuit SQL Server, u het [bcp-opdrachtregelgereedschap](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om de gegevens naar afgebakende tekstbestanden te exporteren.
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. De gegevens in Azure Blob-opslag of Azure Data Lake Store verwerken
 
@@ -141,10 +141,10 @@ Als u gegevens wilt laden met PolyBase, u een van de volgende laadopties gebruik
 
 ### <a name="other-loading-options"></a>Andere laadopties
 
-Naast PolyBase en de COPY-instructie u [bcp](https://docs.microsoft.com/sql/tools/bcp-utility?view=sql-server-ver15) of de [SqlBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx)gebruiken. bcp wordt rechtstreeks naar de database geladen zonder azure blob-opslag te doorlopen en is alleen bedoeld voor kleine belastingen.
+Naast PolyBase en de COPY-instructie u [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) of de [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)gebruiken. bcp wordt rechtstreeks naar de database geladen zonder azure blob-opslag te doorlopen en is alleen bedoeld voor kleine belastingen.
 
 > [!NOTE]
-> Let op, de laadprestaties van deze opties zijn trager dan PolyBase en de instructie COPY.
+> De laadprestaties van deze opties zijn trager dan PolyBase en de instructie COPY.
 
 ## <a name="5-transform-the-data"></a>5. De gegevens transformeren
 

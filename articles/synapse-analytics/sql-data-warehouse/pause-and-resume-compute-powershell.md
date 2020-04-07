@@ -11,12 +11,12 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f257f3751e7a411015ca188d704b676950845a74
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: dc56fe8cffa72c61b3f29f8b0fb8108547395f9c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633840"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742783"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Snelstart: gegevens in Synapse SQL-groep onderbreken en hervatten met Azure PowerShell
 
@@ -31,19 +31,19 @@ Deze quickstart gaat ervan uit dat u al een SQL-pool hebt die u pauzeren en herv
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
-Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en volg de aanwijzingen op het scherm.
+Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en volg de aanwijzingen op het scherm.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Voer [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)uit om te zien welk abonnement u gebruikt.
+Voer [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)uit om te zien welk abonnement u gebruikt.
 
 ```powershell
 Get-AzSubscription
 ```
 
-Als u een ander abonnement moet gebruiken dan de standaardinstelling, voert u [Set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)uit.
+Als u een ander abonnement moet gebruiken dan de standaardinstelling, voert u [Set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)uit.
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -96,7 +96,7 @@ Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
 ```
 
-In het volgende voorbeeld wordt de database opgehaald in het $database object. Vervolgens wordt het object naar [Cv-AzSqlDatabase geleid](/powershell/module/az.sql/resume-azsqldatabase) en worden de resultaten in $resultDatabase opgeslagen. De laatste opdracht toont de resultaten.
+In het volgende voorbeeld wordt de database opgehaald in het $database object. Vervolgens wordt het object naar [Cv-AzSqlDatabase geleid](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en worden de resultaten in $resultDatabase opgeslagen. De laatste opdracht toont de resultaten.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `

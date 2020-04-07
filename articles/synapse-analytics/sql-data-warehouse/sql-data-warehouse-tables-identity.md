@@ -11,12 +11,12 @@ ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d4a9880ed7ab26d0127026f49c0bc781cfc2a941
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e681e8ad655c31d5078b56b8f1a49cfd7c664533
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586336"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742635"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>ID gebruiken om surrogaatsleutels te maken in de Synapse SQL-groep
 
@@ -165,7 +165,7 @@ Zie [Uitpakken, laden en transformeren (ELT) voor Synapse SQL-pool](design-elt-d
 
 ## <a name="system-views"></a>Systeemweergaven
 
-U de [catalogusweergave sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) gebruiken om een kolom met de eigenschap IDENTITY te identificeren.
+U de [catalogusweergave sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om een kolom met de eigenschap IDENTITY te identificeren.
 
 Om u te helpen het databaseschema beter te begrijpen, laat dit voorbeeld zien hoe u sys.identity_column' integreren met andere systeemcatalogusweergaven:
 
@@ -197,12 +197,12 @@ De eigenschap IDENTITY kan niet worden gebruikt:
 
 De volgende gerelateerde functies worden niet ondersteund in de Synapse SQL-groep:
 
-- [IDENTITEIT()](/sql/t-sql/functions/identity-function-transact-sql)
-- [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)
-- [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql)
-- [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql)
-- [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql)
-- [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql)
+- [IDENTITEIT()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="common-tasks"></a>Algemene taken
 
@@ -241,6 +241,6 @@ AND     tb.name = 'T1'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Tabeloverzicht](/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)
-- [IDENTITEIT VAN DE TABEL MAKEN (Transact-SQL) (Eigenschap)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)
-- [DBCC-CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)
+- [Tabeloverzicht](sql-data-warehouse-tables-overview.md)
+- [IDENTITEIT VAN DE TABEL MAKEN (Transact-SQL) (Eigenschap)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [DBCC-CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

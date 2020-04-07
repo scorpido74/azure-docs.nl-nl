@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d5acc2b69ed521af4fd4777dc9f3496290078379
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 0d63f2c29bfdbdf320185647bd33ec30500ed874
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583271"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742704"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Indexeren van tabellen in Synapse SQL-groep
 
@@ -24,9 +24,9 @@ Aanbevelingen en voorbeelden voor het indexeren van tabellen in Synapse SQL-pool
 
 ## <a name="index-types"></a>Indextypen
 
-Synapse SQL-pool biedt verschillende indexeringsopties, waaronder [geclusterde columnstore-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview), [geclusterde indexen en niet-geclusterde indexen](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), en een niet-indexoptie die ook wel [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)wordt genoemd .  
+Synapse SQL-pool biedt verschillende indexeringsopties, waaronder [geclusterde columnstore-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [geclusterde indexen en niet-geclusterde indexen](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), en een niet-indexoptie die ook wel [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)wordt genoemd .  
 
-Zie de documentatie van DE [TABEL MAKEN (Synapse SQL-groep)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) als u een tabel met een index wilt maken.
+Zie de documentatie van DE [TABEL MAKEN (Synapse SQL-groep)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) als u een tabel met een index wilt maken.
 
 ## <a name="clustered-columnstore-indexes"></a>Geclusterde kolomarchiefindexen
 
@@ -230,7 +230,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 
 Meld u aan als gebruiker vanaf stap 1 (bijvoorbeeld LoadUser), die nu een hogere resourceklasse gebruikt, en voer de ALTER INDEX-instructies uit. Zorg ervoor dat deze gebruiker ALTER-toestemming heeft voor de tabellen waarin de index wordt herbouwd. In deze voorbeelden ziet u hoe u de hele kolomarchiefindex herbouwen of hoe u één partitie herbouwen. Op grote tafels is het praktischer om indexen één partitie tegelijk weer op te bouwen.
 
-Als alternatief u in plaats van de index opnieuw op te bouwen, de tabel kopiëren naar een nieuwe tabel [met CTAS](sql-data-warehouse-develop-ctas.md). Welke kant is het beste? Voor grote hoeveelheden gegevens is CTAS meestal sneller dan [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Voor kleinere hoeveelheden gegevens is ALTER INDEX gemakkelijker te gebruiken en hoeft u de tabel niet uit te wisselen.
+Als alternatief u in plaats van de index opnieuw op te bouwen, de tabel kopiëren naar een nieuwe tabel [met CTAS](sql-data-warehouse-develop-ctas.md). Welke kant is het beste? Voor grote hoeveelheden gegevens is CTAS meestal sneller dan [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Voor kleinere hoeveelheden gegevens is ALTER INDEX gemakkelijker te gebruiken en hoeft u de tabel niet uit te wisselen.
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Het opnieuw opbouwen van een index in synapse SQL-pool is een offlinebewerking.  Zie de sectie REBOUWEN VAN DE INDEXEN WIJZIGEN in [Columnstore Indexen Defragmentatie](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)en [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)voor meer informatie over het opnieuw opbouwen van indexen .
+Het opnieuw opbouwen van een index in synapse SQL-pool is een offlinebewerking.  Zie de sectie REBOUWEN VAN DE INDEXEN WIJZIGEN in [Columnstore Indexen Defragmentatie](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)en [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over het opnieuw opbouwen van indexen .
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Stap 3: De kwaliteit van het geclusterde kolomarchief is verbeterd
 
@@ -260,7 +260,7 @@ Voer de query opnieuw uit waarin de tabel met een slechte segmentkwaliteit is ge
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Indexen opnieuw opbouwen met CTAS en partitiewisseling
 
-In dit voorbeeld wordt de [CTAS-instructie (CREATE TABLE AS SELECT)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) en partitieoverschakelen gebruikt om een tabelpartitie opnieuw op te bouwen.
+In dit voorbeeld wordt de [CTAS-instructie (CREATE TABLE AS SELECT)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) en partitieoverschakelen gebruikt om een tabelpartitie opnieuw op te bouwen.
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS

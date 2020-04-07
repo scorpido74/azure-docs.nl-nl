@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b30fde19c4474ba7e2d3bbaed44802884a5b27f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2220352f817b488b3992b88920428063edde006e
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286520"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745010"
 ---
 # <a name="publish-iot-edge-module-offer"></a>Aanbieding voor IoT Edge-module publiceren
+
+>[!Important]
+>Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
 
  Nadat u een nieuwe aanbieding hebt gemaakt door de informatie op de pagina **Nieuwe aanbieding te** verstrekken, u de aanbieding publiceren. Selecteer **Publiceren** om het publicatieproces te starten.
 

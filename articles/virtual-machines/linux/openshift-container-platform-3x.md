@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 615d9a3c5c359174ef15028e82044a85da0dd733
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd1c381ecd2b7dba4c77a025cb0332ace4147bf
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561283"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673665"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>OpenShift Container Platform 3.11 implementeren in Azure
 
@@ -303,7 +303,7 @@ Verschillende releases kunnen verschillende parameters hebben, dus controleer de
 | `masterClusterType` | Geef op of het cluster privé- of openbare hoofdknooppunten gebruikt. Als privé wordt gekozen, worden de hoofdknooppunten niet blootgesteld aan het internet via een openbaar IP-adres. In plaats daarvan zal het gebruik maken van het privé-IP dat is opgegeven in de`masterPrivateClusterIp` | Openbare <br> Privé | Openbare |
 | `masterPrivateClusterIp` | Als private master-knooppunten zijn geselecteerd, moet een privé-IP-adres worden opgegeven voor gebruik door de interne load balancer voor hoofdknooppunten. Dit statische IP moet zich binnen het CIDR-blok voor het hoofdsubnet begeven en nog niet in gebruik zijn. Als openbare hoofdknooppunten zijn geselecteerd, wordt deze waarde niet gebruikt, maar moet deze nog steeds worden opgegeven |  | 10.1.0.200 |
 | `routerClusterType` | Geef op of het cluster private of openbare infraknooppunten gebruikt. Als privé wordt gekozen, worden de infraknooppunten niet blootgesteld aan het internet via een openbaar IP. In plaats daarvan zal het gebruik maken van het privé-IP dat is opgegeven in de`routerPrivateClusterIp` | Openbare <br> Privé | Openbare |
-| `routerPrivateClusterIp` | Als particuliere infraknooppunten zijn geselecteerd, moet een privé-IP-adres worden opgegeven voor gebruik door de interne load balancer voor infraknooppunten. Dit statische IP moet zich binnen het CIDR-blok voor het hoofdsubnet begeven en nog niet in gebruik zijn. Als openbare infraknooppunten zijn geselecteerd, wordt deze waarde niet gebruikt, maar moet deze nog steeds worden opgegeven |  | 10.2.0.200 |
+| `routerPrivateClusterIp` | Als particuliere infraknooppunten zijn geselecteerd, moet een privé-IP-adres worden opgegeven voor gebruik door de interne load balancer voor infraknooppunten. Dit statische IP moet zich binnen het CIDR-blok bevinden voor het infrasubnet en nog niet in gebruik zijn. Als openbare infraknooppunten zijn geselecteerd, wordt deze waarde niet gebruikt, maar moet deze nog steeds worden opgegeven |  | 10.2.0.200 |
 | `routingCertType` | Aangepaste certificaat gebruiken voor routeringsdomein of het standaard zelfondertekende certificaat - volg instructies in de sectie **Aangepaste certificaten** | zelfondertekend <br> Aangepaste | zelfondertekend |
 | `masterCertType` | Aangepast certificaat gebruiken voor hoofddomein of het standaard zelfondertekend certificaat - volg instructies in de sectie **Aangepaste certificaten** | zelfondertekend <br> Aangepaste | zelfondertekend |
 

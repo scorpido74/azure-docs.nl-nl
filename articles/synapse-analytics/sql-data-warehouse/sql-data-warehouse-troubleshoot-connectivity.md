@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 08fb0a6675d18370482abe9b1d7b9a0d9ee5c364
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 8aaca40961b1294336b236305ecdffcc92c5a4d9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633006"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742575"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Connectiviteitsproblemen oplossen
 
@@ -79,14 +79,14 @@ Controleer of u de nieuwste tools gebruikt om verbinding te maken met uw Synapse
 
 Controleer of u de nieuwste stuurprogrammaversies gebruikt.Het gebruik van een oudere versie van de stuurprogramma's kan leiden tot onverwacht gedrag, omdat de oudere stuurprogramma's mogelijk geen nieuwe functies ondersteunen.
 
-- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server)
-- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
-- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server)
-- [PHP](/sql/connect/php/download-drivers-php-sql-server)
+- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [PHP](/sql/connect/php/download-drivers-php-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="check-your-connection-string"></a>Uw verbindingsreeks controleren
 
-Controleer of de verbindingsreeksen juist zijn ingesteld.  Hieronder staan enkele voorbeelden.  Meer informatie over verbindingstekenreeksen vindt u [hier](/sql-data-warehouse/sql-data-warehouse-connection-strings.md).
+Controleer of de verbindingsreeksen juist zijn ingesteld.  Hieronder staan enkele voorbeelden.  Meer informatie over verbindingstekenreeksen vindt u [hier](sql-data-warehouse-connection-strings.md).
 
 ADO.NET-verbindingsreeks
 
@@ -122,4 +122,4 @@ Fouten 40914 en 40615, zie de [foutbeschrijving en resolutie hier](../../sql-dat
 
 ## <a name="still-having-connectivity-issues"></a>Heb je nog steeds verbindingsproblemen?
 
-Maak een [ondersteuningsticket](/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md) zodat het engineeringteam u kan ondersteunen.
+Maak een [ondersteuningsticket](sql-data-warehouse-get-started-create-support-ticket.md) zodat het engineeringteam u kan ondersteunen.

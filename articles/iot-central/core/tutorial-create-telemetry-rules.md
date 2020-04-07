@@ -3,23 +3,23 @@ title: Zelfstudie - Regels maken en beheren in uw Azure IoT Central-toepassing
 description: In deze zelfstudie ziet u hoe de Azure IoT Central-regels u in staat stellen uw apparaten in bijna realtime te controleren en automatisch acties aan te roepen, zoals het verzenden van een e-mail, wanneer de regel wordt geactiveerd.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 04/06/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f61a41fa89c7006341db928472f6b20d272bc550
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0d55bafc513ef7553952ee2096ea32db65d6205d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77167424"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673774"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Zelfstudie: Een regel maken en meldingen instellen in uw Azure IoT Central-toepassing
 
 *Dit artikel is van toepassing op operators, opbouwfuncties en beheerders.*
 
-U Azure IoT Central gebruiken om uw verbonden apparaten op afstand te controleren. Met Azure IoT Central-regels u uw apparaten in bijna realtime controleren en automatisch acties aanroepen, zoals een e-mail verzenden. In slechts een paar klikken u een voorwaarde definiëren om telemetrie vanaf uw apparaten te controleren en een overeenkomstige actie te configureren. In dit artikel wordt uitgelegd hoe u regels maakt om telemetrie te controleren die door het apparaat wordt verzonden.
+U Azure IoT Central gebruiken om uw verbonden apparaten op afstand te controleren. Met azure IoT Central-regels u uw apparaten in bijna realtime controleren en automatisch acties aanroepen, zoals het verzenden van een e-mail. In dit artikel wordt uitgelegd hoe u regels maakt om de telemetrie te controleren die uw apparaten verzenden.
 
 Apparaten gebruiken telemetrie om numerieke gegevens van het apparaat te verzenden. Een regel wordt geactiveerd wanneer de geselecteerde apparaattelemetrie een opgegeven drempelwaarde overschrijdt.
 
@@ -34,11 +34,11 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, moet u de [toepassing Een Azure IoT Central maken](./quick-deploy-iot-central.md) en een gesimuleerd apparaat toevoegen aan uw [IoT Central-toepassing](./quick-create-pnp-device.md) snel start om de **MXChip IoT DevKit-apparaatsjabloon** te maken om mee te werken.
+Voordat u begint, voltooit u de [toepassing Een Azure IoT Central maken](./quick-deploy-iot-central.md) en Voegt u snel een gesimuleerd apparaat toe aan uw [IoT Central-toepassing](./quick-create-pnp-device.md) om de **MXChip IoT DevKit-apparaatsjabloon** te maken om mee te werken.
 
 ## <a name="create-a-rule"></a>Een regel maken
 
-Als u een telemetrieregel wilt maken, moet de apparaatsjabloon ten minste één telemetriemeting hebben gedefinieerd. Deze zelfstudie maakt gebruik van een milieusensor apparaat dat temperatuur en vochtigheid telemetrie stuurt. U hebt deze apparaatsjabloon toegevoegd en een gesimuleerd apparaat gemaakt in het snel [startmaken van een gesimuleerd apparaat toevoegen aan uw IoT Central-toepassing.](./quick-create-pnp-device.md) De regel controleert de temperatuur gerapporteerd door het apparaat en stuurt een e-mail wanneer het gaat boven de 70 graden.
+Als u een telemetrieregel wilt maken, moet de apparaatsjabloon ten minste één telemetriewaarde bevatten. Deze zelfstudie maakt gebruik van een gesimuleerd **mxchip IoT DevKit-apparaat** dat telemetrie over temperatuur en vochtigheid verzendt. U hebt deze apparaatsjabloon toegevoegd en een gesimuleerd apparaat gemaakt in het snel [startmaken van een gesimuleerd apparaat toevoegen aan uw IoT Central-toepassing.](./quick-create-pnp-device.md) De regel controleert de temperatuur gerapporteerd door het apparaat en stuurt een e-mail wanneer het gaat boven de 70 graden.
 
 1. Selecteer **Regels**in het linkerdeelvenster .
 
@@ -66,8 +66,8 @@ Voorwaarden definiëren de criteria die de regel bewaakt. In deze zelfstudie con
 
 1. Optioneel u een **tijdaggregatie**instellen. Wanneer u een tijdsaggregatie selecteert, moet u ook een aggregatietype selecteren, zoals gemiddeld of som uit de vervolgkeuzelijst aggregatie.
 
-    * Zonder aggregatie wordt de regel geactiveerd voor elk telemetriegegevenspunt dat aan de voorwaarde voldoet. Als de regel bijvoorbeeld is geconfigureerd om te activeren wanneer de temperatuur boven de 70 ligt, wordt de regel vrijwel direct geactiveerd wanneer het apparaat de temperatuur > 70 rapporteert.
-    * Bij aggregatie wordt de regel geactiveerd als de totale waarde van de telemetriegegevenspunten in het tijdvenster voldoet aan de voorwaarde. Als de regel bijvoorbeeld is geconfigureerd om te activeren wanneer de temperatuur hoger is dan 70, wordt de tijdsaggregatie ingesteld op 10 minuten en is het aggregatietype gemiddeld, waarna de regel wordt geactiveerd wanneer het apparaat een gemiddelde temperatuur rapporteert > 70, berekend over een interval van 10 minuten.
+    * Zonder aggregatie wordt de regel geactiveerd voor elk telemetriegegevenspunt dat aan de voorwaarde voldoet. Als u bijvoorbeeld de regel configureert om te activeren wanneer de temperatuur boven de 70 ligt, wordt de regel vrijwel direct geactiveerd wanneer de temperatuur van het apparaat deze waarde overschrijdt.
+    * Bij aggregatie wordt de regel geactiveerd als de totale waarde van de telemetriegegevenspunten in het tijdvenster voldoet aan de voorwaarde. Als u bijvoorbeeld de regel configureert om te activeren wanneer de temperatuur hoger is dan 70 en met een gemiddelde tijdsaggregatie van 10 minuten, wordt de regel geactiveerd wanneer het apparaat een gemiddelde temperatuur rapporteert van meer dan 70, berekend over een interval van 10 minuten.
 
      ![Geaggregeerde voorwaarde](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 
@@ -100,11 +100,11 @@ Als u geen regel meer nodig hebt, verwijdert u deze door de regel te openen en *
 
 ## <a name="enable-or-disable-a-rule"></a>Een regel in- of uitschakelen
 
-Kies de regel die u wilt in- of uitschakelen. Schakel de knop **In-** of **uitschakelen** in de regel in om de regel in of uit te schakelen voor alle apparaten die in de regel zijn verdeeld.
+Kies de regel die u wilt in- of uitschakelen. Schakel de knop **Ingeschakeld/uitgeschakeld** in de regel in om de regel in of uit te schakelen voor alle apparaten die in de regel zijn verdeeld.
 
-## <a name="enable-or-disable-a-rule-for-a-device"></a>Een regel voor een apparaat in- of uitschakelen
+## <a name="enable-or-disable-a-rule-for-specific-devices"></a>Een regel voor specifieke apparaten in- of uitschakelen
 
-Kies de regel die u wilt in- of uitschakelen. Voeg een filter toe in de sectie **Scopes** om een bepaald apparaat in de apparaatsjabloon op te nemen of uit te sluiten.
+Kies de regel die u wilt aanpassen. Gebruik een of meer filters in de sectie **Doelapparaten** om het bereik van de regel te beperken tot de apparaten die u wilt controleren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

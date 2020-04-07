@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor VMware/fysiek herstel van rampen in Azure Site 
 description: Vat ondersteuning voor noodherstel van VMware VM's en fysieke server samen naar Azure met Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: b4cf19f4f74ba24951efb806a9f2e3d88fcad7bc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: fbd5d87b219cbb482569dc5e45adc9c81181670c
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478422"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672442"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteuningsmatrix voor noodherstel van Vm's en fysieke servers naar Azure
 
@@ -36,7 +36,7 @@ vSphere-hosts | Versie 6.7, 6.5, 6.0 of 5.5 | We raden u aan vSphere-hosts en vC
 
 De configuratieserver is een on-premises machine die siteherstelcomponenten uitvoert, waaronder de configuratieserver, processerver en hoofddoelserver.
 
-- Voor VMware VM's stelt u de configuratieserver in door een OVF-sjabloon te downloaden om een VMware VM te maken.
+- Voor VMware VM's stelt u de configuratieserver in door een OVF-sjabloon te downloaden om een Vm vmware te maken.
 - Voor fysieke servers stelt u de configuratieservermachine handmatig in.
 
 **Component** | **Vereisten**
@@ -51,7 +51,7 @@ Landinstelling van het besturingssysteem | Engels (en-us)
 [PowerCLI (PowerCLI)](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Niet nodig voor configuratieserverversie [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) of hoger.
 Windows Server-functies | Schakel Active Directory Domain Services niet in. Internet Information Services (IIS) of Hyper-V.
 Groepsbeleid| - Voorkom toegang tot de opdrachtprompt. <br/> - Voorkom toegang tot registerbewerkingstools. <br/> - Logica vertrouwen voor bestandsbijlagen. <br/> - Scriptuitvoering inschakelen. <br/> - [Meer informatie](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Zorg ervoor dat u:<br/><br/> - Heb je geen vooraf bestaande standaardwebsite <br/> - [Anonieme verificatie](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) inschakelen <br/> - [FastCGI-instelling](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) inschakelen  <br/> - Heb je geen reeds bestaande website/app luisteren op poort 443<br/>
+IIS | Zorg ervoor dat u:<br/><br/> - Heb je geen bestaande standaardwebsite <br/> - [Anonieme verificatie](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) inschakelen <br/> - [FastCGI-instelling](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) inschakelen  <br/> - Heb je geen reeds bestaande website/app luisteren op poort 443<br/>
 NIC-type | VMXNET3 (wanneer ingezet als VMware VM)
 Type IP-adres | Statisch
 Poorten | 443 gebruikt voor de orkestratie van het controlekanaal<br/>9443 voor datatransport
@@ -66,7 +66,8 @@ Site recovery ondersteunt replicatie van alle workloads die op een ondersteunde 
 **Component** | **Details**
 --- | ---
 Machine-instellingen | Machines die repliceren naar Azure moeten voldoen aan [azure-vereisten.](#azure-vm-requirements)
-Werkbelasting voor machines | Site recovery ondersteunt replicatie van alle workloads die op een ondersteunde machine worden uitgevoerd. [Meer informatie](site-recovery-workload.md).
+Werkbelasting voor machines | Site recovery ondersteunt replicatie van alle workloads die op een ondersteunde machine worden uitgevoerd. [Meer informatie](https://aka.ms/asr_workload).
+Machinenaam | Ervoor zorgen dat de weergavenaam van de machine niet in [azure-gereserveerde bronnamen](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name) valt<br/><br/> Logische volumenamen zijn niet hoofdlettergevoelig. Zorg ervoor dat geen twee volumes op een apparaat dezelfde naam hebben. Bijvoorbeeld: Volumes met de namen 'voLUME1', 'volume1' kunnen niet worden beveiligd via Azure Site Recovery.
 Windows Server 2019 | Ondersteund vanaf [Update rollup 34](https://support.microsoft.com/help/4490016) (versie 9.22 van de Mobility service) en verder.
 Windows Server 2016 64-bits | Ondersteuning voor Server Core, Server met desktopervaring.
 Windows Server 2012 R2 / Windows Server 2012 | Ondersteund.
@@ -118,16 +119,16 @@ Debian 8 | [9.29][9.29 UR] | 3.16.0-4-amd64 naar 3.16.0-10-amd64, 4.9.0-0.bpo.4-
 
 **Release** | **Mobility service versie** | **Kernelversie** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1,SP2, SP3, SP4) | [9.32][9.32 UR] | Alle [voorraad SUSE 12 SP1,SP2,SP3,SP4 kernels](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) worden ondersteund.</br></br> 4.4.138-4.7-azure naar 4.4.180-4.31-azure,</br>4.12.14-6.3-azure naar 4.12.14-6.34-azure  |
-SUSE Linux Enterprise Server 12 (SP1,SP2, SP3, SP4) | [9.31][9.31 UR] | Alle [voorraad SUSE 12 SP1,SP2,SP3,SP4 kernels](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) worden ondersteund.</br></br> 4.4.138-4.7-azure naar 4.4.180-4.31-azure,</br>4.12.14-6.3-azure naar 4.12.14-6.29-azure  |
-SUSE Linux Enterprise Server 12 (SP1,SP2, SP3, SP4) | [9.30][9.30 UR] | Alle [voorraad SUSE 12 SP1,SP2,SP3,SP4 kernels](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) worden ondersteund.</br></br> 4.4.138-4.7-azure naar 4.4.180-4.31-azure,</br>4.12.14-6.3-azure naar 4.12.14-6.26-azure  |
-SUSE Linux Enterprise Server 12 (SP1,SP2, SP3, SP4) | [9.29][9.29 UR] | Alle [voorraad SUSE 12 SP1,SP2,SP3,SP4 kernels](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) worden ondersteund.</br></br> 4.4.138-4.7-azure naar 4.4.180-4.31-azure,</br>4.12.14-6.3-azure naar 4.12.14-6.23-azure  |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.28][9.28 UR] | SP1 3.12.49-11-default naar 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.118-default</br></br> SP2 4.4.21-69-default naar 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-standaard naar 4.4.121-92.117-standaard</br></br>SP3 4.4.73-5-standaard naar 4.4.180-94.100-standaard</br></br>SP3 4.4.138-4.7-azure naar 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-standaard naar 4.12.14-95.29-default</br>SP4 4.12.14-6.3-azure naar 4.12.14-6.23-azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.27][9.27 UR] | SP1 3.12.49-11-default naar 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69-default naar 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-standaard naar 4.4.121-92.114-standaard</br></br>SP3 4.4.73-5-standaard naar 4.4.180-94.97-standaard</br></br>SP3 4.4.138-4.7-azure naar 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-standaard naar 4.12.14-95.19-default</br>SP4 4.12.14-6.3-azure naar 4.12.14-6.15-azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.26][9.26 UR] | SP1 3.12.49-11-default naar 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.110-default</br></br> SP2 4.4.21-69-default naar 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-standaard naar 4.4.121-92.109-default</br></br>SP3 4.4.73-5-standaard naar 4.4.178-94.91-standaard</br></br>SP3 4.4.138-4.7-azure naar 4.4.178-4.28-azure</br></br>SP4 4.12.14-94.41-standaard naar 4.12.14-95.16-default</br>SP4 4.12.14-6.3-azure naar 4.12.14-6.9-azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.25][9.25 UR] | SP1 3.12.49-11-default naar 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default naar 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-standaard naar 4.4.121-92.104-default</br></br>SP3 4.4.73-5-standaard naar 4.4.176-94.88-standaard</br></br>SP3 4.4.138-4.7-azure naar 4.4.176-4,25-azure</br></br>SP4 4.12.14-94.41-standaard naar 4.12.14-95.13-standaard</br>SP4 4.12.14-6.3-azure naar 4.12.14-6.9-azure |
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux Enterprise Server 15 ondersteunde kernelversies
 
 **Release** | **Mobility service versie** | **Kernelversie** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 en 15 SP1 | 9.32 | Alle [stock SUSE 15 en 15 kernels](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15) worden ondersteund.</br></br> 4.12.14-5,5-azure naar 4.12.14-8,22-azure |
+SUSE Linux Enterprise Server 15 en 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | Alle [stock SUSE 15 en 15 kernels](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15) worden ondersteund. </br></br> 4.12.14-5,5-azure naar 4.12.14-8,22-azure
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux-bestandssystemen/gastopslag
 
@@ -138,8 +139,8 @@ Volumemanager | - LVM wordt ondersteund.<br/> - /boot on LVM wordt vanaf [Update
 Gevirtualiseerde opslagapparaten | Apparaten die zijn geëxporteerd door geparavirtualiseerde stuurprogramma's worden niet ondersteund.
 Io-apparaten met meerdere wachtrijen blokkeren | Wordt niet ondersteund.
 Fysieke servers met de HP CCISS-opslagcontroller | Wordt niet ondersteund.
-Conventie voor het benoemen van apparaat/bevestigingspunt | De naam van het apparaat of de naam van het bevestigingspunt moet uniek zijn.<br/> Zorg ervoor dat er geen twee apparaten/bevestigingspunten hoofdlettergevoelige namen hebben. Bijvoorbeeld het benoemen van apparaten voor dezelfde VM als *device1* en *Device1* wordt niet ondersteund.
-Mappen | Als u een versie van de Mobiliteitsservice eerder uitvoert dan versie 9.20 (uitgebracht in [Update Rollup 31),](https://support.microsoft.com/help/4478871/)zijn deze beperkingen van toepassing:<br/><br/> - Deze mappen (indien ingesteld als afzonderlijke partities / bestandssystemen) moeten zich op dezelfde OS-schijf op de bronserver bestaan: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - De /boot directory moet zich op een schijfpartitie bevinden en mag geen LVM-volume zijn.<br/><br/> Vanaf versie 9.20 zijn deze beperkingen niet van toepassing.
+Conventie voor het benoemen van apparaat/bevestigingspunt | De naam van het apparaat of de naam van het bevestigingspunt moet uniek zijn.<br/> Zorg ervoor dat er geen twee apparaten/bevestigingspunten hoofdlettergevoelige namen hebben. Het benoemen van apparaten voor dezelfde VM als *device1* en *Device1* wordt bijvoorbeeld niet ondersteund.
+Mappen | Als u een versie van de Mobiliteitsservice eerder uitvoert dan versie 9.20 (uitgebracht in [Update Rollup 31),](https://support.microsoft.com/help/4478871/)zijn deze beperkingen van toepassing:<br/><br/> - Deze mappen (indien ingesteld als afzonderlijke partities / bestandssystemen) moeten zich op dezelfde OS-schijf op de bronserver bestaan: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - De /boot directory moet zich op een schijfpartitie bevinden en mag geen LVM-volume zijn.<br/><br/> Vanaf versie 9.20 zijn deze beperkingen niet van toepassing. 
 Opstartmap | - Opstartschijven mogen niet in de GPT-partitieindeling staan. Dit is een Azure-architectuurbeperking. GPT-schijven worden ondersteund als gegevensschijven.<br/><br/> Meerdere opstartschijven op een virtuele machine worden niet ondersteund<br/><br/> - /boot op een LVM-volume op meer dan één schijf wordt niet ondersteund.<br/> - Een machine zonder opstartschijf kan niet worden gerepliceerd.
 Vereisten voor vrije ruimte| 2 GB op de /root partitie <br/><br/> 250 MB op de installatiemap
 XFSv5 (XFSv5) | XFSv5-functies op XFS-bestandssystemen, zoals metadata checksum, worden ondersteund (Mobility service versie 9.10 vanaf).<br/> Gebruik het xfs_info hulpprogramma om het XFS-superblok voor de partitie te controleren. Als `ftype` dit is ingesteld op 1, worden xfsv5-functies gebruikt.
@@ -231,7 +232,7 @@ Koele opslag | Nee
 Hete opslag| Nee
 Blok-blobs | Nee
 Encryptie-at-rest (SSE)| Ja
-Encryptie-at-rest (CMK)| Ja (via Powershell Az 3.3.0 module verder)
+Encryptie-at-rest (CMK)| Ja (via PowerShell Az 3.3.0 module)
 Premium Storage | Ja
 Import/exportservice | Nee
 Azure Storage-firewalls voor VNets | Ja.<br/> Geconfigureerd op doelopslag-/cacheopslagaccount (gebruikt om replicatiegegevens op te slaan).

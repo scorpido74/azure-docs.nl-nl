@@ -2,13 +2,13 @@
 title: Verbeter kennisbank - QnA Maker
 description: Verbeter de kwaliteit van je kennisbank met actief leren. Bestaande vragen controleren, accepteren of weigeren, toevoegen zonder bestaande vragen te verwijderen of te wijzigen.
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 1eb0ed42f700c14350a5e4f1eff9b7592cbf8ef6
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 04/06/2020
+ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474882"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756742"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Accepteer actieve leervragen in de kennisbank
 
@@ -33,7 +33,7 @@ Als u voorgestelde vragen wilt zien, moet u [actief leren inschakelen](use-activ
 
 1. Elk QnA-paar stelt de nieuwe vraagalternatieven voor met een vinkje, `✔` om de vraag of een `x` om de suggesties af te wijzen te accepteren. Selecteer het vinkje om de vraag toe te voegen.
 
-    [![De voorgestelde vraagalternatieven voor actief leren selecteren of afwijzen door het groene vinkje of het rode verwijdermerk te selecteren.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![De voorgestelde vraagalternatieven voor actief leren selecteren of afwijzen door het groene vinkje of het rode verwijdermerk te selecteren.](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     U _alle suggesties_ toevoegen of verwijderen door **Alles toevoegen** of Alles **afwijzen op** de contextuele werkbalk te selecteren.
 

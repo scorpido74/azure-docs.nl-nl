@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: dceff3e320554edc972654aa49552bffbc4c9a13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 821007e40eaa91c98f157ee0b28fe01f37e3cbc9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286486"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743959"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>Een bestaande IoT Edge-moduleaanbieding bijwerken
+
+>[!Important]
+>Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
 
 In dit artikel worden de verschillende aspecten van het bijwerken van uw IoT Edge-moduleaanbieding in de [Cloud Partner Portal](https://cloudpartner.azure.com/) doorlopen en vervolgens de aanbieding opnieuw gepubliceerd.
 

@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 251fdb83e848aaac3a5391320df23149ce1bce33
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: d2e2fdb181b553d330368b043b75159e211dd0d2
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633054"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745128"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Een verwijderde SQL-groep herstellen met Azure Synapse Analytics
 
@@ -30,9 +30,9 @@ In dit artikel leert u een SQL te herstellen met behulp van de Azure-portal of P
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Een verwijderd gegevensmagazijn herstellen via PowerShell
 
-Als u een verwijderde SQL-groep wilt herstellen, gebruikt u de cmdlet [Restore-AzSqlDatabase.](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) Als de bijbehorende logische server ook is verwijderd, u dat gegevensmagazijn niet herstellen.
+Als u een verwijderde SQL-groep wilt herstellen, gebruikt u de cmdlet [Restore-AzSqlDatabase.](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Als de bijbehorende logische server ook is verwijderd, u dat gegevensmagazijn niet herstellen.
 
-1. Voordat u begint, moet u [Azure PowerShell installeren.](https://docs.microsoft.com/powershell/azure/overview)
+1. Voordat u begint, moet u [Azure PowerShell installeren.](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 2. Open PowerShell.
 3. Maak verbinding met uw Azure-account en vermeld alle abonnementen die aan uw account zijn gekoppeld.
 4. Selecteer het abonnement dat het verwijderde gegevensmagazijn bevat dat moet worden hersteld.

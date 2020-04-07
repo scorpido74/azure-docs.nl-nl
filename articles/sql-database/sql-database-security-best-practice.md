@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 39747ac0a7133562bed526f44e30bf4a656127c0
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387645"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673610"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Playbook voor het aanpakken van algemene beveiligingsvereisten met Azure SQL Database
 
@@ -63,7 +63,7 @@ Tenzij anders vermeld, raden we u aan alle aanbevolen procedures in elke sectie 
 
 We zijn van plan de aanbevelingen en best practices die hier worden vermeld, verder bij te werken. Geef invoer of correcties voor dit document met behulp van de **koppeling Feedback** onder aan dit artikel.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Authenticatie is het proces om te bewijzen dat de gebruiker is wie hij beweert te zijn. Azure SQL Database ondersteunt twee soorten verificatie:
 
@@ -466,7 +466,7 @@ Bij gebruik van CLE:
 
 Houd er rekening mee dat Always Encrypted voornamelijk is ontworpen om gevoelige gegevens die worden gebruikt te beschermen tegen gebruikers met hoge bevoegdheden van Azure SQL Database (cloudoperators, DBA's) - zie [Gevoelige gegevens beschermen die worden gebruikt door gebruikers met een hoge bevoorrechte, onbevoegde bevoegdheid](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users). Wees u bewust van de volgende uitdagingen bij het gebruik van Always Encrypted om gegevens te beschermen tegen gebruikers van toepassingen:
 
-- Standaard behouden alle Microsoft-clientstuurprogramma's die Always Encrypted ondersteunen een globale cache (één per toepassing) met kolomversleutelingssleutels. Zodra een clientstuurprogramma een versleutelingssleutel voor plaintext-kolommen verwerft door contact op te nemen met een sleutelarchief met een kolomhoofdsleutel, wordt de versleutelingssleutel voor de kolomindecache in de cache opgeslagen. Dit maakt het isoleren van gegevens van gebruikers van een multi-user applicatie uitdagend. Als uw toepassing zich voordoet als eindgebruikers wanneer ze interactie hebben met een sleutelarchief (zoals Azure Key Vault), wordt de cache na een query van een gebruiker gevuld met een kolomversleutelingssleutel, een volgende query die dezelfde sleutel vereist, maar wordt geactiveerd door een andere gebruiker, cached sleutel. Het stuurprogramma belt het sleutelarchief niet en controleert niet of de tweede gebruiker een toestemming heeft om toegang te krijgen tot de kolomversleutelingssleutel. Als gevolg hiervan kan de gebruiker de versleutelde gegevens zien, zelfs als de gebruiker geen toegang heeft tot de sleutels. Als u de isolatie van gebruikers binnen een toepassing voor meerdere gebruikers wilt bereiken, u kolomversleutelingssleutelcaches uitschakelen. Het uitschakelen van caching zal leiden tot extra overheadkosten, omdat het stuurprogramma contact moet opnemen met het sleutelarchief voor elke gegevensversleuteling of decryptiebewerking.
+- Standaard behouden alle Microsoft-clientstuurprogramma's die Always Encrypted ondersteunen een globale cache (één per toepassing) met kolomversleutelingssleutels. Zodra een clientstuurprogramma een versleutelingssleutel voor plaintext-kolommen verwerft door contact op te nemen met een sleutelarchief met een kolomhoofdsleutel, wordt de versleutelingssleutel voor de kolomindecache in de cache opgeslagen. Dit maakt het isoleren van gegevens van gebruikers van een multi-user applicatie uitdagend. Als uw toepassing zich voordoet als eindgebruikers wanneer ze interactie hebben met een sleutelarchief (zoals Azure Key Vault), wordt de cache, nadat een gebruiker de cache heeft gevuld met een kolomversleutelingssleutel, een volgende query die dezelfde sleutel vereist, maar wordt geactiveerd door een andere gebruiker, de sleutel in de cache. Het stuurprogramma belt het sleutelarchief niet en controleert niet of de tweede gebruiker een toestemming heeft om toegang te krijgen tot de kolomversleutelingssleutel. Als gevolg hiervan kan de gebruiker de versleutelde gegevens zien, zelfs als de gebruiker geen toegang heeft tot de sleutels. Als u de isolatie van gebruikers binnen een toepassing voor meerdere gebruikers wilt bereiken, u kolomversleutelingssleutelcaches uitschakelen. Het uitschakelen van caching zal leiden tot extra overheadkosten, omdat het stuurprogramma contact moet opnemen met het sleutelarchief voor elke gegevensversleuteling of decryptiebewerking.
 
 ### <a name="protect-data-against-unauthorized-viewing-by-application-users-while-preserving-data-format"></a>Bescherm gegevens tegen ongeautoriseerde weergave door gebruikers van toepassingen met behoud van de gegevensindeling
 Een andere techniek om te voorkomen dat onbevoegde gebruikers gegevens bekijken, is het verdoezelen of maskeren van de gegevens met behoud van gegevenstypen en -indelingen om ervoor te zorgen dat gebruikerstoepassingen de gegevens kunnen blijven verwerken en weergeven.
@@ -735,7 +735,7 @@ Controleer wie toegang heeft tot gevoelige gegevens en leg query's vast op gevoe
 **Hoe te implementeren:**
 
 - Gebruik SQL Audit en Data Classification in combinatie. 
-  - In uw [SQL Database Audit-logboek](sql-database-auditing.md) u de toegang tot gevoelige gegevens specifiek bijhouden. U ook informatie bekijken, zoals de gegevens die zijn geopend, evenals het gevoeligheidslabel. Zie [Toegang tot gevoelige gegevens controleren voor](sql-database-data-discovery-and-classification.md#subheading-3)meer informatie . 
+  - In uw [SQL Database Audit-logboek](sql-database-auditing.md) u de toegang tot gevoelige gegevens specifiek bijhouden. U ook informatie bekijken, zoals de gegevens die zijn geopend, evenals het gevoeligheidslabel. Zie [Gegevensdetectie & classificatie-](sql-database-data-discovery-and-classification.md) [en controletoegang tot gevoelige gegevens voor](sql-database-data-discovery-and-classification.md#audit-sensitive-data)meer informatie . 
 
 **Aanbevolen procedures**:
 
