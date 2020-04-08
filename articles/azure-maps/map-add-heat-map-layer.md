@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19765bd28f365cc6f6d5b06646896613dd3e3e87
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77208536"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804551"
 ---
 # <a name="add-a-heat-map-layer"></a>Een heatmap-laag toevoegen
 
@@ -98,11 +98,11 @@ Standaard hebben de stralen van gegevenspunten die in de heatmaplaag worden weer
 
 Gebruik `zoom` een expressie om de straal voor elk zoomniveau te schalen, zodat elk gegevenspunt hetzelfde fysieke gebied van de kaart bestrijkt. Deze expressie zorgt ervoor dat de heatmaplaag er statischer en consistenter uitziet. Elk zoomniveau van de kaart heeft twee keer zoveel pixels verticaal en horizontaal als het vorige zoomniveau. 
 
-Als u de straal zo schaalt dat deze wordt verdubbelt met elk zoomniveau, wordt een warmtekaart gemaakt die er consistent uitziet op alle zoomniveaus. Als u deze `zoom` schaling wilt `exponential interpolation` toepassen, gebruikt u met een basisexpressie 2, zoals in het volgende voorbeeld wordt weergegeven. Zoom op de kaart in om te zien hoe de warmtekaart wordt geschaald met het zoomniveau.
+Als u de straal zo schaalt dat deze wordt verdubbelt met elk zoomniveau, wordt een warmtekaart gemaakt die er consistent uitziet op alle zoomniveaus. Als u deze `zoom` schaling wilt `exponential interpolation` toepassen, gebruikt u met een basisexpressie 2, waarbij de pixelstraal is ingesteld voor het minimale zoomniveau en een geschaalde straal voor het maximale zoomniveau dat wordt berekend zoals `2 * Math.pow(2, minZoom - maxZoom)` weergegeven in het volgende voorbeeld. Zoom op de kaart in om te zien hoe de warmtekaart wordt geschaald met het zoomniveau.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Consistente zoombare warmtekaart" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Consistente zoombare warmtekaart" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zie de <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>penconsistente zoombare warmtekaart</a> van Azure Maps ()<a href='https://codepen.io/azuremaps'>@azuremaps</a>op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

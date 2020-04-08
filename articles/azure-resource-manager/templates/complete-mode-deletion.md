@@ -2,13 +2,13 @@
 title: Modus voor volledige verwijdering
 description: Toont hoe resourcetypen de verwijdering van de volledige modus verwerken in Azure Resource Manager-sjablonen.
 ms.topic: conceptual
-ms.date: 02/26/2020
-ms.openlocfilehash: 5f797974212636460306c6a17869d6b8380545ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: e0250b289ce7a228d844023c3e1d1110438b3afc
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77664403"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802566"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Verwijderen van Azure-resources voor implementaties in de volledige modus
 
@@ -43,6 +43,7 @@ Ga naar de naamruimte van een resourceprovider:
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Microsoft.Blockchain](#microsoftblockchain)
+> - [Microsoft.BlockchainTokens](#microsoftblockchaintokens)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
 > - [Microsoft.Cache](#microsoftcache)
@@ -60,7 +61,6 @@ Ga naar de naamruimte van een resourceprovider:
 > - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
 > - [Microsoft.ContainerService](#microsoftcontainerservice)
-> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [Microsoft.CustomerLockbox](#microsoftcustomerlockbox)
 > - [Microsoft.CustomProviders](#microsoftcustomproviders)
@@ -88,6 +88,7 @@ Ga naar de naamruimte van een resourceprovider:
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft.Falcon (Microsoft.Falcon)](#microsoftfalcon)
 > - [Microsoft.Features](#microsoftfeatures)
 > - [Microsoft.Gallery](#microsoftgallery)
 > - [Microsoft.Genomics (Microsoft.Genomics)](#microsoftgenomics)
@@ -104,11 +105,13 @@ Ga naar de naamruimte van een resourceprovider:
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.ioTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
+> - [Microsoft.Kubernetes (Microsoft.Kubernetes)](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.Logic](#microsoftlogic)
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft.Maintenance](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [Microsoft.ManagedServices](#microsoftmanagedservices)
 > - [Microsoft.Management](#microsoftmanagement)
@@ -121,8 +124,8 @@ Ga naar de naamruimte van een resourceprovider:
 > - [Microsoft.Migreren](#microsoftmigrate)
 > - [Microsoft.MixedReality Microsoft.MixedReality](#microsoftmixedreality)
 > - [Microsoft.NetApp](#microsoftnetapp)
-> - [Microsoft.Notebooks](#microsoftnotebooks)
 > - [Microsoft.Network](#microsoftnetwork)
+> - [Microsoft.Notebooks](#microsoftnotebooks)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [Microsoft.ObjectStore](#microsoftobjectstore)
 > - [Microsoft.OffAzure](#microsoftoffazure)
@@ -134,6 +137,7 @@ Ga naar de naamruimte van een resourceprovider:
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
 > - [Microsoft.ProjectBabylon (Microsoft.ProjectBabylon)](#microsoftprojectbabylon)
+> - [Microsoft.Quantum](#microsoftquantum)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.RemoteApp](#microsoftremoteapp)
@@ -225,9 +229,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | alertsMetaData | Nee |
 > | waarschuwingenSamenvatting | Nee |
 > | waarschuwingenOverzichtslijst | Nee |
-> | Feedback | Nee |
 > | smartDetectorAlertRegels | Ja |
-> | smartDetectorRuntimeEnvironments | Nee |
 > | smartGroups | Nee |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
@@ -336,7 +338,6 @@ Ga naar de naamruimte van een resourceprovider:
 > | ------------- | ----------- |
 > | hybridDataManagers | Ja |
 > | postgresInstances | Ja |
-> | sqlBigDataClusters | Ja |
 > | sqlInstances | Ja |
 > | sqlServerRegistraties | Ja |
 > | sqlServerRegistrations / sqlServers | Nee |
@@ -346,10 +347,10 @@ Ga naar de naamruimte van een resourceprovider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
+> | cloudManifestBestanden | Nee |
 > | Registraties | Ja |
 > | registraties / klantAbonnementen | Nee |
 > | registraties / producten | Nee |
-> | verificatieToetsen | Nee |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -464,6 +465,17 @@ Ga naar de naamruimte van een resourceprovider:
 > | cordaLeden | Ja |
 > | Watchers | Ja |
 
+## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | TokenServices | Ja |
+> | TokenServices / BlockchainNetworks | Nee |
+> | TokenServices / Groepen | Nee |
+> | TokenServices / Groepen / Accounts | Nee |
+> | TokenServices / TokenSjablonen | Nee |
+
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
 > [!div class="mx-tableFixed"]
@@ -533,6 +545,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | Profielen | Ja |
 > | profielen / eindpunten | Ja |
 > | profielen / eindpunten / aangepaste domeinen | Nee |
+> | profielen / eindpunten / oorsprongsgroepen | Nee |
 > | profielen / eindpunten / oorsprong | Nee |
 > | validateProbe validateProbe validateProbe validateProbe | Nee |
 
@@ -653,9 +666,12 @@ Ga naar de naamruimte van een resourceprovider:
 > | proximityPlacementGroepen | Ja |
 > | restorePointCollections | Ja |
 > | restorePointCollections / restorePoints | Nee |
+> | sharedVMExtensions | Ja |
+> | sharedVMExtensions / versies | Nee |
 > | sharedVMImages | Ja |
 > | sharedVMImages / versies | Nee |
 > | momentopnamen | Ja |
+> | sshPublicKeys sshPublicKeys sshPublicKeys ssh | Ja |
 > | virtueleMachines | Ja |
 > | virtualMachines / extensies | Ja |
 > | virtualMachines / metrischeDefinities | Nee |
@@ -706,6 +722,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | Registers | Ja |
+> | registers / agentPools | Ja |
 > | registers / builds | Nee |
 > | registers / builds / annuleren | Nee |
 > | registers / builds / getLogLink | Nee |
@@ -744,13 +761,6 @@ Ga naar de naamruimte van een resourceprovider:
 > | containerServices | Ja |
 > | managedClusters | Ja |
 > | openShiftManagedClusters | Ja |
-
-## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Modus voor volledige verwijdering |
-> | ------------- | ----------- |
-> | accounts | Ja |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
@@ -944,6 +954,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | servers / virtualNetworkRules | Nee |
 > | servers / waitStatistics | Nee |
 > | serversv2 | Ja |
+> | singleServers | Ja |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
@@ -1080,13 +1091,22 @@ Ga naar de naamruimte van een resourceprovider:
 > | naamruimten / eventhubs / consumentengroepen | Nee |
 > | naamruimten / netwerkregelsets | Nee |
 
+## <a name="microsoftfalcon"></a>Microsoft.Falcon (Microsoft.Falcon)
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | Naamruimten | Ja |
+
 ## <a name="microsoftfeatures"></a>Microsoft.Features
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
+> | featureProviders | Nee |
 > | functies | Nee |
 > | providers | Nee |
+> | abonnementFeatureRegistrations | Nee |
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
 
@@ -1221,6 +1241,13 @@ Ga naar de naamruimte van een resourceprovider:
 > | kluizen / eventGridFilters | Nee |
 > | kluizen / geheimen | Nee |
 
+## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes (Microsoft.Kubernetes)
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | connectedClusters | Ja |
+
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
@@ -1232,6 +1259,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | clusters / databases / dataverbindingen | Nee |
 > | clusters / databases / eventhubverbindingen | Nee |
 > | clusters / databases / principalassignments | Nee |
+> | clusters / dataverbindingen | Nee |
 > | clusters / principalassignments | Nee |
 > | clusters / gedeelde identiteiten | Nee |
 
@@ -1273,6 +1301,16 @@ Ga naar de naamruimte van een resourceprovider:
 > | werkruimten / berekent | Nee |
 > | werkruimten / eventGridFilters | Nee |
 
+## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | applyUpdates toepassen | Nee |
+> | configuratieToewijzingen | Nee |
+> | onderhoudsConfiguraties | Ja |
+> | updates | Nee |
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
@@ -1309,6 +1347,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | ------------- | ----------- |
 > | accounts | Ja |
 > | accounts / eventGridFilters | Nee |
+> | accounts / privateAtes | Ja |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
 
@@ -1325,10 +1364,13 @@ Ga naar de naamruimte van een resourceprovider:
 > | offerTypes / uitgevers / aanbiedingen / plannen / configs / importImage | Nee |
 > | privategalleryitems | Nee |
 > | privateStoreClient | Nee |
+> | privateStores | Nee |
+> | privateStores / aanbiedingen | Nee |
 > | Producten | Nee |
 > | Uitgevers | Nee |
 > | uitgevers / aanbiedingen | Nee |
 > | uitgevers / aanbiedingen / wijzigingen | Nee |
+> | registreren | Nee |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -1395,7 +1437,6 @@ Ga naar de naamruimte van een resourceprovider:
 > | objectAccounts begrijpen | Ja |
 > | remoteRenderingAccounts | Ja |
 > | spatialAnchorsAccounts | Ja |
-> | oppervlakteReconstructieAccounts | Ja |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1403,17 +1444,10 @@ Ga naar de naamruimte van een resourceprovider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | netAppAccounts | Ja |
+> | netAppAccounts / accountBack-ups | Nee |
 > | netAppAccounts / capaciteitPools | Ja |
 > | netAppAccounts / capaciteitPools / volumes | Ja |
-> | netAppAccounts / capacityPools / volumes / mountTargets | Ja |
 > | netAppAccounts / capaciteitPools / volumes / momentopnamen | Ja |
-
-## <a name="microsoftnotebooks"></a>Microsoft.Notebooks
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Modus voor volledige verwijdering |
-> | ------------- | ----------- |
-> | NotebookProxies | Nee |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1498,6 +1532,13 @@ Ga naar de naamruimte van een resourceprovider:
 > | vpnSites | Ja |
 > | webApplicationFirewallBeleid | Ja |
 
+## <a name="microsoftnotebooks"></a>Microsoft.Notebooks
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | NotebookProxies | Nee |
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -1535,9 +1576,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | werkruimten / gegevensExport | Nee |
 > | werkruimten / gegevensBronnen | Nee |
 > | werkruimten / linkedServices | Nee |
-> | werkruimten / privateEndpointConnectionProxies | Nee |
-> | werkruimten / privateEndpointVerbindingen | Nee |
-> | werkruimten / privateLinkResources | Nee |
+> | werkruimten / linkedStorageAccounts | Nee |
 > | werkruimten / query | Nee |
 > | werkruimten / scopedPrivateLinkProxies | Nee |
 
@@ -1603,6 +1642,13 @@ Ga naar de naamruimte van een resourceprovider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | accounts | Ja |
+
+## <a name="microsoftquantum"></a>Microsoft.Quantum
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | Workspaces | Ja |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -1725,6 +1771,10 @@ Ga naar de naamruimte van een resourceprovider:
 > | regelgevingComplianceStandards | Nee |
 > | wettelijke ComplianceStandards / regulatoryComplianceControls | Nee |
 > | wettelijke ComplianceStandards / regulatoryComplianceControls / regulatoryComplianceAssessments | Nee |
+> | secureScoreControlDefinities | Nee |
+> | secureScoreControls | Nee |
+> | secureScores | Nee |
+> | secureScores / secureScoreControls | Nee |
 > | securityContacten | Nee |
 > | securitySolutions | Nee |
 > | securitySolutionsReferenceData | Nee |
@@ -1988,6 +2038,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | naam wijzigen | Nee |
 > | Abonnementsdefinities | Nee |
 > | Abonnementen | Nee |
+> | Abonnementen | Nee |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -2018,6 +2069,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | Leveranciers | Nee |
 > | leveranciers / skus | Nee |
 > | leveranciers / vnfs | Nee |
+> | virtualNetworkFunctionSkus virtualNetworkFunctionSkus | Nee |
 > | vnfs | Ja |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
@@ -2045,6 +2097,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | hostingOmgevingen / eventGridFilters | Nee |
 > | hostingOmgevingen / multiRolePools | Nee |
 > | hostingOmgevingen / workerPools | Nee |
+> | kubeOmgevingen | Ja |
 > | publicerenGebruikers | Nee |
 > | aanbevelingen | Nee |
 > | resourceHealthMetadata | Nee |

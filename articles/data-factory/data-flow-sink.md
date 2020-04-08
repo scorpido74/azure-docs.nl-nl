@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: a0b9d424c1995fba075c05ffe5058e297d764775
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8941c097fbb2d05c3a28be87d216b7a2679ebc68
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531257"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804891"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Sinktransformatie in kaartgegevensstroom
 
@@ -39,7 +39,9 @@ Azure Data Factory heeft toegang tot meer dan [90 native connectors.](connector-
 
 ## <a name="sink-settings"></a>Sink-instellingen
 
-Zodra u een gootsteen hebt toegevoegd, configureert u dit via het tabblad **Sink.** Hier u de gegevensset kiezen of maken waarnaar uw gootsteen schrijft 
+Zodra u een gootsteen hebt toegevoegd, configureert u dit via het tabblad **Sink.** Hier u de gegevensset kiezen of maken waarnaar uw gootsteen schrijft. Hieronder is een video waarin een aantal verschillende Sink opties voor tekst afgebakende bestandstypen:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
 
 ![Sink-instellingen](media/data-flow/sink-settings.png "Sink-instellingen")
 

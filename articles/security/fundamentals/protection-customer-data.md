@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 741cbc82f2ed3ffffb553b146d981b4e35a273f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726684"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811424"
 ---
 # <a name="azure-customer-data-protection"></a>Azure-klantgegevensbeveiliging   
 Toegang tot klantgegevens door Microsoft-operations en ondersteuningspersoneel wordt standaard geweigerd. Wanneer toegang tot klantgegevens wordt verleend, is goedkeuring van leiderschap vereist en wordt de toegang zorgvuldig beheerd en geregistreerd. De vereisten voor toegangscontrole worden vastgesteld door het volgende Azure-beveiligingsbeleid:
@@ -45,7 +45,7 @@ Azure biedt klanten een sterke gegevensbeveiliging, zowel standaard als als klan
 - De klant en de cloud.
 - Intern tussen Azure-systemen en datacenters.
 
-**Versleuteling**: Versleuteling van gegevens in opslag en onderweg kan door klanten worden geïmplementeerd als een best practice om de vertrouwelijkheid en integriteit van gegevens te waarborgen. Het is eenvoudig voor klanten om hun Azure-cloudservices te configureren om SSL te gebruiken om communicatie te beschermen tegen internet en zelfs tussen hun door Azure gehoste VM's.
+**Versleuteling**: Versleuteling van gegevens in opslag en onderweg kan door klanten worden geïmplementeerd als een best practice om de vertrouwelijkheid en integriteit van gegevens te waarborgen. Het is eenvoudig voor klanten om hun Azure-cloudservices te configureren om TLS te gebruiken om communicatie te beschermen tegen internet en zelfs tussen hun door Azure gehoste VM's.
 
 **Gegevensredundantie**: Microsoft helpt ervoor te zorgen dat gegevens worden beschermd als er een cyberaanval of fysieke schade aan een datacenter is. Klanten kunnen kiezen voor:
 

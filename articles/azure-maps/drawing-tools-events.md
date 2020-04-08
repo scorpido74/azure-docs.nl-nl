@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: cf9c79f608aa3ffd1137be41ff3348f62b890867
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8509af7829910bdda8bba3d63553e83626fe784
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198306"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804670"
 ---
 # <a name="drawing-tool-events"></a>Gebeurtenissen met tekengereedschap
 
@@ -31,7 +31,7 @@ In de volgende code ziet u hoe de gebeurtenissen in de module Hulpmiddelen voor 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Gebeurtenissen met tekengereedschappen" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Gebeurtenissen met tekengereedschappen" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zie de <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>hulpprogramma's voor pentekenen van</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -59,7 +59,7 @@ Deze code zoekt naar punten van belang in het gebied van een vorm nadat de gebru
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Tekenen en zoeken in veelhoekgebied" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Tekenen en zoeken in veelhoekgebied" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zie de <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>pentekenen en zoeken in het veelhoekgebied</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -71,7 +71,7 @@ De onderstaande code laat zien hoe de tekengebeurtenissen kunnen worden gebruikt
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Meetgereedschap" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Meetgereedschap" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zie het <a href='https://codepen.io/azuremaps/pen/RwNaZXe'>gereedschap Penmeten</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>van Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

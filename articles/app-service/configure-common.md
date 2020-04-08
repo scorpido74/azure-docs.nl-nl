@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280168"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811118"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Een App Service-app configureren in de Azure-portal
 
@@ -35,7 +35,7 @@ Andere taalstapels krijgen ook de app-instellingen als omgevingsvariabelen bij r
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [Php](containers/configure-language-php.md#access-environment-variables)
+- [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
 - [Java](containers/configure-language-java.md#data-sources)
 - [Ruby](containers/configure-language-ruby.md#access-environment-variables)
@@ -96,16 +96,17 @@ Voor andere taalstapels is het beter om in plaats daarvan [app-instellingen](#co
 
 Bij runtime zijn verbindingstekenreeksen beschikbaar als omgevingsvariabelen, vooraf gekoppeld aan de volgende verbindingstypen:
 
-* SQL Server:`SQLCONNSTR_`
-* Mysql:`MYSQLCONNSTR_`
-* SQL-database:`SQLAZURECONNSTR_`
+* Sqlserver:`SQLCONNSTR_`  
+* Mysql:`MYSQLCONNSTR_` 
+* SQLAzure:`SQLAZURECONNSTR_` 
 * Aangepaste:`CUSTOMCONNSTR_`
+* Postgresql:`POSTGRESQLCONNSTR_`  
 
 Een MySql-verbindingstekenreeks met de naam *connectionstring1* is `MYSQLCONNSTR_connectionString1`bijvoorbeeld toegankelijk als omgevingsvariabele . Zie voor specifieke stappen voor taalstapel, zie:
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [Php](containers/configure-language-php.md#access-environment-variables)
+- [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
 - [Java](containers/configure-language-java.md#data-sources)
 - [Ruby](containers/configure-language-ruby.md#access-environment-variables)
@@ -173,7 +174,7 @@ Hier u enkele algemene instellingen voor de app configureren. Voor sommige inste
     - **Beheerde pijplijnversie**: de IIS-pijplijnmodus . [pipeline mode] Stel deze in op **Klassiek** als u een verouderde app hebt waarvoor een oudere versie van IIS vereist is.
     - **HTTP-versie**: Ingesteld op **2.0** om ondersteuning voor [HTTPS/2-protocol](https://wikipedia.org/wiki/HTTP/2) in te schakelen.
     > [!NOTE]
-    > De meeste moderne browsers ondersteunen alleen http/2-protocol via TLS, terwijl niet-versleuteld verkeer HTTP/1.1 blijft gebruiken. Als u ervoor wilt zorgen dat clientbrowsers verbinding maken met uw app met HTTP/2, [beveiligt u uw aangepaste DNS-naam met een SSL-binding in Azure App Service.](configure-ssl-bindings.md)
+    > De meeste moderne browsers ondersteunen alleen http/2-protocol via TLS, terwijl niet-versleuteld verkeer HTTP/1.1 blijft gebruiken. Als u ervoor wilt zorgen dat clientbrowsers verbinding maken met uw app met HTTP/2, beveiligt u uw aangepaste DNS-naam. Zie [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md)voor meer informatie.
     - **ARR-affiniteit**: Zorg er in een implementatie met meerdere instanties voor dat de client wordt doorgestuurd naar hetzelfde exemplaar voor de levensduur van de sessie. U deze optie instellen op **Uit** voor stateloze toepassingen.
 - **Foutopsporing:** Externe foutopsporing inschakelen voor [ASP.NET,](troubleshoot-dotnet-visual-studio.md#remotedebug) [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)of [Node.js-apps.](containers/configure-language-nodejs.md#debug-remotely) Deze optie wordt na 48 uur automatisch uitgeschakeld.
 - **Binnenkomende clientcertificaten:** vereisen clientcertificaten in [wederzijdse verificatie](app-service-web-configure-tls-mutual-auth.md).
@@ -235,7 +236,7 @@ Zie voor Linux-apps:
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md)
 - [Node.js](containers/configure-language-nodejs.md)
-- [Php](containers/configure-language-php.md)
+- [PHP](containers/configure-language-php.md)
 - [Python](containers/how-to-configure-python.md)
 - [Java](containers/configure-language-java.md)
 - [Ruby](containers/configure-language-ruby.md)
@@ -248,7 +249,7 @@ Zie [Een aangepaste Linux-container configureren voor Azure App Service](contain
 
 - [Een aangepaste domeinnaam configureren in Azure App Service]
 - [Faseringsomgevingen in Azure App Service instellen]
-- [Een aangepaste DNS-naam beveiligen met een SSL-binding in Azure App Service](configure-ssl-bindings.md)
+- [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md)
 - [Diagnostische logboeken inschakelen](troubleshoot-diagnostic-logs.md)
 - [Een app schalen in Azure App Service]
 - [Basisbeginselen in Azure App-service bewaken]

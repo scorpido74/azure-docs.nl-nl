@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599c4a31840b47294b43c4c4d1f0200b17f04540
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937982"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810546"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Veilige app ontwikkelen voor een Azure AD-app
 ## <a name="overview"></a>Overzicht
@@ -228,7 +228,7 @@ $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:
 
 $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
 
-#Upload the certificate to be used on the SSL-enabled back-end pool resources
+#Upload the certificate to be used on the TLS/SSL-enabled back-end pool resources
 
 #$authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
 
@@ -246,7 +246,7 @@ $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basi
 
 $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-#Configure the SSL policy to be used on the application gateway
+#Configure the TLS/SSL policy to be used on the application gateway
 
 $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
 
@@ -380,7 +380,7 @@ Met Azure Security Center kunnen klanten beveiligingsbeleid centraal toepassen e
    - Azure Security Center biedt geprioriteerd beveiligingswaarschuwingen en -incidenten, waardoor het voor klanten eenvoudiger wordt om potentiële beveiligingsproblemen te ontdekken en aan te pakken. Een threat intelligence rapport wordt gegenereerd voor elke gedetecteerde bedreiging om incident response teams te helpen bij het onderzoeken en herstellen van bedreigingen.
 ### <a name="azure-application-gateway"></a>Azure Application Gateway 
    De architectuur vermindert het risico op beveiligingsproblemen met behulp van een Azure Application Gateway met een firewall voor webtoepassingen geconfigureerd en de OWASP-regelset is ingeschakeld. Extra mogelijkheden zijn o.a.
-   - End-to-end-SSL.
+   - End-to-end TLS.
    - Schakel TLS v1.0 en v1.1 uit.
    - Schakel TLSv1.2 in.
    - Firewall voor webtoepassingen (preventiemodus).

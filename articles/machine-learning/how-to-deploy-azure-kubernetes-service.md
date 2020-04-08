@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: 792964f28ddb3fcb10932b8de9499a9c7027960f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: aec1b7f7bf60be34d21d52ca652a776cf3275fe8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475378"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811762"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Een model implementeren in een Azure Kubernetes Service-cluster
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -135,7 +135,7 @@ Als u `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`dit instelt, hoeft h
 
 Zie de volgende artikelen voor meer informatie over het maken van een AKS-cluster met de Azure CLI of portal:
 
-* [Een AKS-cluster (CLI) maken](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
+* [Een AKS-cluster maken (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [Een AKS-cluster maken (portal)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
 In de volgende voorbeelden wordt uitgelegd hoe u een bestaand AKS-cluster aan uw werkruimte koppelt:
@@ -233,10 +233,28 @@ Zie [Implementeren naar AKS via de VS Code-extensie](tutorial-train-deploy-image
 > Voor het implementeren via VS-code moet het AKS-cluster vooraf worden gemaakt of gekoppeld aan uw werkruimte.
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Modellen implementeren op AKS met gecontroleerde uitrol (voorbeeld)
-Modelversies op een gecontroleerde manier analyseren en promoten met behulp van eindpunten. Implementeer maximaal 6 versies achter één eindpunt en configureer het percentage scoreverkeer naar elke geïmplementeerde versie. U app-inzichten inschakelen om operationele statistieken van eindpunten en geïmplementeerde versies weer te geven.
+
+Modelversies op een gecontroleerde manier analyseren en promoten met behulp van eindpunten. U maximaal zes versies achter één eindpunt implementeren. Eindpunten bieden de volgende mogelijkheden:
+
+* Configureer het __percentage scoreverkeer dat naar elk eindpunt wordt verzonden__. Bijvoorbeeld route 20% van het verkeer naar eindpunt 'test' en 80% naar 'productie'.
+
+    > [!NOTE]
+    > Als u niet 100% van het verkeer voor zijn rekening __default__ neemt, wordt het resterende percentage doorgestuurd naar de standaardeindpuntversie. Als u bijvoorbeeld eindpuntversie 'test' configureert om 10% van het verkeer te genereren en 'prod' voor 30%, wordt de resterende 60% naar de standaardeindpuntversie verzonden.
+    >
+    > De eerste eindpuntversie die is gemaakt, wordt automatisch geconfigureerd als standaardversie. U dit `is_default=True` wijzigen door in te stellen bij het maken of bijwerken van een eindpuntversie.
+     
+* Tag een eindpuntversie als __controle__ of __behandeling__. De huidige eindpuntversie van de productie kan bijvoorbeeld het besturingselement zijn, terwijl potentiële nieuwe modellen worden geïmplementeerd als behandelingsversies. Na evaluatie van de prestaties van de behandelingsversies, als men beter presteert dan de huidige controle, kan het worden bevorderd tot de nieuwe productie / controle.
+
+    > [!NOTE]
+    > Je maar __één__ controle hebben. U meerdere behandelingen hebben.
+
+U app-inzichten inschakelen om operationele statistieken van eindpunten en geïmplementeerde versies weer te geven.
 
 ### <a name="create-an-endpoint"></a>Een eindpunt maken
-Zodra u klaar bent om uw modellen te implementeren, maakt u een scoreeindpunt en implementeert u uw eerste versie. In de onderstaande stap ziet u hoe u het eindpunt implementeert en maakt met de SDK. De eerste implementatie wordt gedefinieerd als de standaardversie, wat betekent dat niet-gespecificeerd verkeerspercentiel in alle versies naar de standaardversie gaat.  
+Zodra u klaar bent om uw modellen te implementeren, maakt u een scoreeindpunt en implementeert u uw eerste versie. In het volgende voorbeeld ziet u hoe u het eindpunt implementeert en maakt met de SDK. De eerste implementatie wordt gedefinieerd als de standaardversie, wat betekent dat niet-gespecificeerd verkeerspercentiel in alle versies naar de standaardversie gaat.  
+
+> [!TIP]
+> In het volgende voorbeeld stelt de configuratie de oorspronkelijke eindpuntversie in om 20% van het verkeer te verwerken. Aangezien dit het eerste eindpunt is, is het ook de standaardversie. En omdat we geen andere versies hebben voor de andere 80% van het verkeer, wordt het ook naar de standaard doorgestuurd. Totdat andere versies die een percentage van het verkeer nemen worden ingezet, deze ontvangt effectief 100% van het verkeer.
 
 ```python
 import azureml.core,
@@ -247,8 +265,8 @@ from azureml.core.compute import ComputeTarget
 compute = ComputeTarget(ws, 'myaks')
 namespace_name= endpointnamespace
 # define the endpoint and version name
-endpoint_name = "mynewendpoint",
-version_name= "versiona",
+endpoint_name = "mynewendpoint"
+version_name= "versiona"
 # create the deployment config and define the scoring traffic percentile for the first deployment
 endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
                                                               enable_app_insights = True,
@@ -258,11 +276,16 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
                                                               traffic_percentile = 20)
  # deploy the model and endpoint
  endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
+ # Wait for he process to complete
+ endpoint.wait_for_deployment(True)
  ```
 
 ### <a name="update-and-add-versions-to-an-endpoint"></a>Versies bijwerken en toevoegen aan een eindpunt
 
-Voeg een andere versie toe aan uw eindpunt en configureer het scoreverkeer percentiel naar de versie. Er zijn twee soorten versies, een controle en een behandeling versie. Er kan meerdere behandeling versie te helpen vergelijken met een enkele controle-versie.
+Voeg een andere versie toe aan uw eindpunt en configureer het scoreverkeer percentiel naar de versie. Er zijn twee soorten versies, een controle en een behandeling versie. Er kunnen meerdere behandelingsversies zijn om te helpen vergelijken met één controleversie.
+
+> [!TIP]
+> De tweede versie, gemaakt door het volgende codefragment, accepteert 10% van het verkeer. De eerste versie is geconfigureerd voor 20%, dus slechts 30% van het verkeer is geconfigureerd voor specifieke versies. De resterende 70% wordt verzonden naar de eerste eindpuntversie, omdat het ook de standaardversie is.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -275,9 +298,13 @@ endpoint.create_version(version_name = version_name_add,
                         tags = {'modelVersion':'b'},
                         description = "my second version",
                         traffic_percentile = 10)
+endpoint.wait_for_deployment(True)
 ```
 
-Bestaande versies bijwerken of verwijderen in een eindpunt. U het standaardtype, het besturingselementtype en het verkeerspercentiel van de versie wijzigen.
+Bestaande versies bijwerken of verwijderen in een eindpunt. U het standaardtype, het besturingselementtype en het verkeerspercentiel van de versie wijzigen. In het volgende voorbeeld verhoogt de tweede versie het verkeer tot 40% en is het nu de standaardinstelling.
+
+> [!TIP]
+> Na het volgende codefragment is de tweede versie nu standaard. Het is nu geconfigureerd voor 40%, terwijl de oorspronkelijke versie is nog steeds geconfigureerd voor 20%. Dit betekent dat 40% van het verkeer niet wordt verantwoord door versieconfiguraties. Het overgebleven verkeer wordt doorgestuurd naar de tweede versie, omdat deze nu standaard is. Het ontvangt effectief 80% van het verkeer.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -288,7 +315,8 @@ endpoint.update_version(version_name=endpoint.versions["versionb"].name,
                         traffic_percentile=40,
                         is_default=True,
                         is_control_version_type=True)
-
+# Wait for the process to complete before deleting
+endpoint.wait_for_deployment(true)
 # delete a version in an endpoint
 endpoint.delete_version(version_name="versionb")
 

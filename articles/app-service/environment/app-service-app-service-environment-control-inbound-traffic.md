@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 857b2b00aadced567bc8ac191cdd9908f7bea7a3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687395"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804398"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Inkomend verkeer naar een app-serviceomgeving beheren
 ## <a name="overview"></a>Overzicht
@@ -31,10 +31,10 @@ Voordat het binnenkomende netwerkverkeer wordt geblokkeerd met een netwerkbeveil
 
 Hieronder volgt een lijst met poorten die worden gebruikt door een App Service-omgeving. Alle poorten zijn **TCP,** tenzij anders duidelijk vermeld:
 
-* 454: **Vereiste poort** die wordt gebruikt door Azure-infrastructuur voor het beheren en onderhouden van App-serviceomgevingen via SSL.  Blokkeer het verkeer naar deze poort niet.  Deze haven is altijd gebonden aan de openbare VIP van een ASE.
-* 455: **Vereiste poort** die wordt gebruikt door Azure-infrastructuur voor het beheren en onderhouden van App-serviceomgevingen via SSL.  Blokkeer het verkeer naar deze poort niet.  Deze haven is altijd gebonden aan de openbare VIP van een ASE.
+* 454: **Vereiste poort** die wordt gebruikt door Azure-infrastructuur voor het beheren en onderhouden van App-serviceomgevingen via TLS.  Blokkeer het verkeer naar deze poort niet.  Deze haven is altijd gebonden aan de openbare VIP van een ASE.
+* 455: **Vereiste poort** die wordt gebruikt door Azure-infrastructuur voor het beheren en onderhouden van App-serviceomgevingen via TLS.  Blokkeer het verkeer naar deze poort niet.  Deze haven is altijd gebonden aan de openbare VIP van een ASE.
 * 80: Standaardpoort voor binnenkomend HTTP-verkeer naar apps die worden uitgevoerd in App-serviceplannen in een App-serviceomgeving.  Op een ASE met ILB-poort is deze poort gebonden aan het ILB-adres van de ASE.
-* 443: Standaardpoort voor binnenkomend SSL-verkeer naar apps die worden uitgevoerd in App-serviceplannen in een App-serviceomgeving.  Op een ASE met ILB-poort is deze poort gebonden aan het ILB-adres van de ASE.
+* 443: Standaardpoort voor binnenkomend TLS-verkeer naar apps die worden uitgevoerd in App-serviceplannen in een App-serviceomgeving.  Op een ASE met ILB-poort is deze poort gebonden aan het ILB-adres van de ASE.
 * 21: Controlekanaal voor FTP.  Deze poort kan veilig worden geblokkeerd als FTP niet wordt gebruikt.  Op een ASE met ILB-poort kan deze poort worden gekoppeld aan het ILB-adres voor een ASE.
 * 990: Besturingskanaal voor FTPS.  Deze poort kan veilig worden geblokkeerd als FTPS niet wordt gebruikt.  Op een ASE met ILB-poort kan deze poort worden gekoppeld aan het ILB-adres voor een ASE.
 * 10001-10020: Datakanalen voor FTP.  Net als bij het controlekanaal kunnen deze poorten veilig worden geblokkeerd als FTP niet wordt gebruikt.  Op een ASE met ILB-poort kan deze poort worden gekoppeld aan het ILB-adres van de ASE.
@@ -62,7 +62,7 @@ Het volgende toont het maken van een netwerkbeveiligingsgroep:
 
 Zodra een netwerkbeveiligingsgroep is gemaakt, worden er een of meer netwerkbeveiligingsregels aan toegevoegd.  Aangezien de reeks regels in de loop van de tijd kan veranderen, wordt aanbevolen om ruimte uit de nummeringregeling die wordt gebruikt voor regelprioriteiten om het gemakkelijk te maken om in de loop van de tijd aanvullende regels in te voegen.
 
-In het onderstaande voorbeeld ziet u een regel die expliciet toegang verleent tot de beheerpoorten die de Azure-infrastructuur nodig heeft om een App-serviceomgeving te beheren en te onderhouden.  Houd er rekening mee dat al het beheerverkeer via SSL stroomt en wordt beveiligd door clientcertificaten, dus ook al worden de poorten geopend, ze zijn niet toegankelijk voor een andere entiteit dan azure-beheerinfrastructuur.
+In het onderstaande voorbeeld ziet u een regel die expliciet toegang verleent tot de beheerpoorten die de Azure-infrastructuur nodig heeft om een App-serviceomgeving te beheren en te onderhouden.  Houd er rekening mee dat alle beheerverkeer via TLS stroomt en wordt beveiligd door clientcertificaten, dus ook al worden de poorten geopend, zijn ze ontoegankelijk voor een andere entiteit dan azure-beheerinfrastructuur.
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 

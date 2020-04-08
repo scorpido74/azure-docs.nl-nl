@@ -7,12 +7,12 @@ ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: 04b145622a1a4237b576a1bb512b5f749f9c3823
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133293"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804619"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>De Azure Blob Storage op de IoT Edge-module implementeren naar uw apparaat
 
@@ -32,7 +32,7 @@ De Azure-portal begeleidt u bij het maken van een implementatiemanifest en het p
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en navigeer naar uw IoT-hub.
 1. Selecteer **IoT Edge** in het menu.
-1. Klik op de id van het doelapparaat in de lijst met apparaten.
+1. Klik op de ID van het doelapparaat in de lijst met apparaten.'
 1. Selecteer **Modules instellen**.
 
 ### <a name="configure-a-deployment-manifest"></a>Een implementatiemanifest configureren
@@ -88,16 +88,16 @@ Een implementatiemanifest is een JSON-document dat beschrijft welke modules moet
 
    - Vervang `<storage mount>` volgens uw containerbesturingssysteem. Geef de naam van een [volume](https://docs.docker.com/storage/volumes/) of het absolute pad op naar een bestaande map op uw IoT Edge-apparaat waar de blobmodule de gegevens opslaat. De opslagberg brengt een locatie op uw apparaat in kaart die u aan een ingestelde locatie in de module verstrekt.
 
-     - Voor Linux-containers is * \<de indeling opslagpad of volume>:/blobroot*. Bijvoorbeeld
-         - gebruik [volume mount](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot**
-         - gebruik [binding mount](https://docs.docker.com/storage/bind-mounts/): **/srv/containerdata:/blobroot**. Zorg ervoor dat u de stappen volgt om [de containergebruiker toegang te verlenen](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
-     - Voor Windows-containers is * \<de indeling opslagpad of volume>:C:/BlobRoot*. Bijvoorbeeld
-         - gebruik [volume mount](https://docs.docker.com/storage/volumes/): **my-volume:C:/blobroot**.
-         - [bindingshouder gebruiken:](https://docs.docker.com/storage/bind-mounts/) **C:/ContainerData:C:/BlobRoot**.
+     - Voor Linux-containers is ** \<de indeling uw opslagpad of volume>:/blobroot**. Bijvoorbeeld:
+         - [gebruikvolumemount](https://docs.docker.com/storage/volumes/):`my-volume:/blobroot`
+         - gebruik [bindmount](https://docs.docker.com/storage/bind-mounts/): `/srv/containerdata:/blobroot`. Zorg ervoor dat u de stappen volgt om [de containergebruiker toegang te verlenen](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
+     - Voor Windows-containers is ** \<de indeling uw opslagpad of volume>:C:/BlobRoot**. Bijvoorbeeld:
+         - gebruik [volumemount](https://docs.docker.com/storage/volumes/): `my-volume:C:/BlobRoot`.
+         - gebruik [bindmount](https://docs.docker.com/storage/bind-mounts/): `C:/ContainerData:C:/BlobRoot`.
          - In plaats van uw lokale schijf te gebruiken, u uw smb-netwerklocatie in kaart brengen, voor meer informatie, zie [het gebruik van SMB-share als uw lokale opslag](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
 
      > [!IMPORTANT]
-     > Wijzig de tweede helft van de opslagbergwaarde niet, wat wijst op een specifieke locatie in de module. De opslagmount moet altijd eindigen met **:/blobroot** voor Linux-containers en **:C:/BlobRoot** voor Windows-containers.
+     > Wijzig de tweede helft van de opslagbergwaarde niet, wat verwijst naar een specifieke locatie in de Blob Storage on IoT Edge-module. De opslagbevestiging moet altijd eindigen met **:/blobroot** voor Linux-containers en **:C:/BlobRoot** voor Windows-containers.
 
 5. Kopieer op het tabblad **Twee instellingen voor modules** het volgende JSON en plak deze in het vak.
 
@@ -200,16 +200,16 @@ Azure IoT Edge biedt sjablonen in Visual Studio Code om u te helpen randoplossin
 
 1. Vervang `<storage mount>` volgens uw containerbesturingssysteem. Geef de naam van een [volume](https://docs.docker.com/storage/volumes/) of het absolute pad op naar een map op uw IoT Edge-apparaat waar u wilt dat de blobmodule de gegevens opslaat. De opslagberg brengt een locatie op uw apparaat in kaart die u aan een ingestelde locatie in de module verstrekt.  
 
-     - Voor Linux-containers is * \<de indeling opslagpad of volume>:/blobroot*. Bijvoorbeeld
-         - gebruik [volume mount](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot**
-         - gebruik [binding mount](https://docs.docker.com/storage/bind-mounts/): **/srv/containerdata:/blobroot**. Zorg ervoor dat u de stappen volgt om [de containergebruiker toegang te verlenen](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
-     - Voor Windows-containers is * \<de indeling opslagpad of volume>:C:/BlobRoot*. Bijvoorbeeld
-         - gebruik [volume mount](https://docs.docker.com/storage/volumes/): **my-volume:C:/blobroot**.
-         - [bindingshouder gebruiken:](https://docs.docker.com/storage/bind-mounts/) **C:/ContainerData:C:/BlobRoot**.
+     - Voor Linux-containers is ** \<de indeling uw opslagpad of volume>:/blobroot**. Bijvoorbeeld:
+         - [gebruikvolumemount](https://docs.docker.com/storage/volumes/):`my-volume:/blobroot`
+         - gebruik [bindmount](https://docs.docker.com/storage/bind-mounts/): `/srv/containerdata:/blobroot`. Zorg ervoor dat u de stappen volgt om [de containergebruiker toegang te verlenen](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
+     - Voor Windows-containers is ** \<de indeling uw opslagpad of volume>:C:/BlobRoot**. Bijvoorbeeld
+         - gebruik [volumemount](https://docs.docker.com/storage/volumes/): `my-volume:C:/BlobRoot`.
+         - gebruik [bindmount](https://docs.docker.com/storage/bind-mounts/): `C:/ContainerData:C:/BlobRoot`.
          - In plaats van uw lokale schijf te gebruiken, u uw smb-netwerklocatie in kaart brengen, voor meer informatie zie [het gebruik van SMB-share als uw lokale opslag](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
 
      > [!IMPORTANT]
-     > Wijzig de tweede helft van de opslagbergwaarde niet, wat wijst op een specifieke locatie in de module. De opslagmount moet altijd eindigen met **:/blobroot** voor Linux-containers en **:C:/BlobRoot** voor Windows-containers.
+     > Wijzig de tweede helft van de opslagbergwaarde niet, wat verwijst naar een specifieke locatie in de Blob Storage on IoT Edge-module. De opslagbevestiging moet altijd eindigen met **:/blobroot** voor Linux-containers en **:C:/BlobRoot** voor Windows-containers.
 
 1. Configureer [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) en [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) voor uw module door de volgende JSON toe te voegen aan het bestand *deployment.template.json.* Configureer elke eigenschap met de juiste waarde en sla het bestand op. Als u de IoT Edge-simulator gebruikt, stelt u de waarden in op de gerelateerde omgevingsvariabelen voor deze eigenschappen, die u vinden in de uitlegsectie van [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) en [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties)
 

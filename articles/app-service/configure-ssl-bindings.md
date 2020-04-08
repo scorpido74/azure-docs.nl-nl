@@ -1,28 +1,28 @@
 ---
-title: Een aangepaste DNS beveiligen met een SSL-binding
+title: Een aangepaste DNS beveiligen met een TLS/SSL-binding
 description: Beveilig HTTPS-toegang tot uw aangepaste domein door een TLS/SSL-binding te maken met een certificaat. Verbeter de beveiliging van uw website door HTTPS of TLS 1.2 af te dwingen.
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239705"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811745"
 ---
-# <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Een aangepaste DNS-naam beveiligen met een SSL-binding in Azure App Service
+# <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service
 
 In dit artikel ziet u hoe u het [aangepaste domein](app-service-web-tutorial-custom-domain.md) in uw [App Service-app](https://docs.microsoft.com/azure/app-service/) of [functie-app](https://docs.microsoft.com/azure/azure-functions/) beveiligen door een certificaatbinding te maken. Wanneer u klaar bent, hebt u toegang `https://` tot uw App Service-app op `https://www.contoso.com`het eindpunt voor uw aangepaste DNS-naam (bijvoorbeeld). 
 
-![Web-app met aangepast SSL-certificaat](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+![Web-app met aangepast TLS/SSL-certificaat](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
 Het beveiligen van een [aangepast domein](app-service-web-tutorial-custom-domain.md) met een certificaat omvat twee stappen:
 
-- [Voeg een privécertificaat toe aan App Service](configure-ssl-certificate.md) dat voldoet aan alle vereisten voor [SSL-bindingen.](configure-ssl-certificate.md#private-certificate-requirements)
--  Maak een SSL-binding voor het bijbehorende aangepaste domein. Deze tweede stap wordt behandeld door dit artikel.
+- [Voeg een privécertificaat toe aan App Service](configure-ssl-certificate.md) dat voldoet aan alle vereisten voor [privécertificaten.](configure-ssl-certificate.md#private-certificate-requirements)
+-  Maak een TLS-binding voor het bijbehorende aangepaste domein. Deze tweede stap wordt behandeld door dit artikel.
 
 In deze zelfstudie leert u het volgende:
 
@@ -77,17 +77,17 @@ Als uw app geen certificaat heeft voor het geselecteerde aangepaste domein, hebt
 
 ### <a name="create-binding"></a>Binding maken
 
-Gebruik de volgende tabel om de SSL-binding te configureren in het dialoogvenster **TLS/SSL-binding** en klik vervolgens op **Binding toevoegen**.
+Gebruik de volgende tabel om de TLS-binding in het dialoogvenster **TLS/SSL-binding** te configureren en klik vervolgens op **Binding toevoegen**.
 
 | Instelling | Beschrijving |
 |-|-|
-| Aangepast domein | De domeinnaam om de SSL-binding voor toe te voegen. |
+| Aangepast domein | De domeinnaam om de TLS/SSL-binding voor toe te voegen. |
 | Duimafdruk privécertificaat | Het certificaat te binden. |
-| TLS/SSL-type | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - Er kunnen meerdere SNI SSL-bindingen worden toegevoegd. Met deze optie kunnen meerdere SSL-certificaten verschillende domeinen beveiligen op hetzelfde IP-adres. De meeste moderne browsers (waaronder Internet Explorer, Chrome, Firefox en Opera) ondersteunen SNI (zie [Servernaamaanduiding](https://wikipedia.org/wiki/Server_Name_Indication)voor meer informatie).</li><li>**IP SSL** - Er mag slechts één IP SSL-binding worden toegevoegd. Met deze optie kan slechts één SSL-certificaat een specifiek openbaar IP-adres beveiligen. Nadat u de binding hebt geconfigureerd, volgt u de stappen in [Remap A-record voor IP SSL.](#remap-a-record-for-ip-ssl)<br/>IP SSL wordt alleen ondersteund in productie- of geïsoleerde lagen. </li></ul> |
+| TLS/SSL-type | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - Er kunnen meerdere SNI SSL-bindingen worden toegevoegd. Met deze optie kunnen meerdere TLS/SSL-certificaten meerdere domeinen op hetzelfde IP-adres beveiligen. De meeste moderne browsers (waaronder Internet Explorer, Chrome, Firefox en Opera) ondersteunen SNI (zie [Servernaamaanduiding](https://wikipedia.org/wiki/Server_Name_Indication)voor meer informatie).</li><li>**IP SSL** - Er mag slechts één IP SSL-binding worden toegevoegd. Met deze optie kan slechts één TLS/SSL-certificaat een speciaal openbaar IP-adres beveiligen. Nadat u de binding hebt geconfigureerd, volgt u de stappen in [Remap A-record voor IP SSL.](#remap-a-record-for-ip-ssl)<br/>IP SSL wordt alleen ondersteund in productie- of geïsoleerde lagen. </li></ul> |
 
-Zodra de bewerking is voltooid, wordt de SSL-status van het aangepaste domein gewijzigd in **Secure.**
+Zodra de bewerking is voltooid, wordt de TLS/SSL-status van het aangepaste domein gewijzigd in **Secure.**
 
-![SSL-binding geslaagd](./media/configure-ssl-bindings/secure-domain-finished.png)
+![TLS/SSL-binding geslaagd](./media/configure-ssl-bindings/secure-domain-finished.png)
 
 > [!NOTE]
 > Een **veilige** status in de **aangepaste domeinen** betekent dat deze is beveiligd met een certificaat, maar App Service controleert niet of het certificaat bijvoorbeeld zelf is ondertekend of verlopen, waardoor browsers ook een fout of waarschuwing kunnen weergeven.
@@ -147,23 +147,23 @@ Selecteer in het linkernavigatievenster van de app-pagina **SSL-instellingen**. 
 
 Als de bewerking is voltooid, worden in de app alle verbindingen met lagere TLS-versies geweigerd.
 
-## <a name="handle-ssl-termination"></a>SSL-beëindiging afhandelen
+## <a name="handle-tls-termination"></a>TLS-beëindiging afhandelen
 
-In App Service vindt [SSL-beëindiging](https://wikipedia.org/wiki/TLS_termination_proxy) plaats in de load balancers voor het netwerk, zodat alle HTTPS-aanvragen uw app bereiken als niet-versleutelde HTTP-aanvragen. Inspecteer de header `X-Forwarded-Proto` als de app-logica moet controleren of de aanvragen van gebruikers al dan niet zijn versleuteld.
+In App Service vindt [TLS-beëindiging](https://wikipedia.org/wiki/TLS_termination_proxy) plaats bij de netwerklastsbalansen, zodat alle HTTPS-verzoeken uw app bereiken als onversleutelde HTTP-verzoeken. Inspecteer de header `X-Forwarded-Proto` als de app-logica moet controleren of de aanvragen van gebruikers al dan niet zijn versleuteld.
 
 Taalspecifieke configuratiehandleidingen, zoals de [Configuratiegids Linux Node.js,](containers/configure-language-nodejs.md#detect-https-session) laten u zien hoe u een HTTPS-sessie in uw toepassingscode detecteren.
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Meer bronnen
 
-* [Een SSL-certificaat gebruiken in uw toepassingscode](configure-ssl-certificate-in-code.md)
+* [Een TLS/SSL-certificaat gebruiken in uw code in Azure App Service](configure-ssl-certificate-in-code.md)
 * [Veelgestelde vragen: App-servicecertificaten](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

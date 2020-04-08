@@ -1,15 +1,16 @@
 ---
-title: Een statisch volume maken voor meerdere pods in Azure Kubernetes Service (AKS)
+title: Azure-bestanden handmatig maken
+titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het handmatig maken van een volume met Azure Files voor gebruik met meerdere gelijktijdige pods in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 084ab5cd6736c9148bcab1faf048d3d9081855d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 412b7158ea366eefb1c3e9c1d2586d54c316aa6c
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596399"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803446"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Handmatig een volume maken en gebruiken met Azure Files share in Azure Kubernetes Service (AKS)
 
@@ -132,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Koppelingsopties
 
-De standaardwaarde voor *fileMode* en *dirMode* is *0755* voor Kubernetes versie 1.9.1 en hoger. Als u een cluster met Kuberetes versie 1.8.5 of hoger gebruikt en statisch het permanente volumeobject maakt, moeten de opties voor het *persistentvolume* worden opgegeven. In het volgende voorbeeld wordt *0777 ingesteld:*
+De standaardwaarde voor *fileMode* en *dirMode* is *0755* voor Kubernetes versie 1.9.1 en hoger. Als u een cluster met Kubernetes-versie 1.8.5 of hoger gebruikt en statisch het permanente volumeobject maakt, moeten bevestigingsopties worden opgegeven op het object *PersistentVolume.* In het volgende voorbeeld wordt *0777 ingesteld:*
 
 ```yaml
 apiVersion: v1

@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9f12849525daeea69ece6e81077446f062e8889
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: f5588503825281f407ddbbc2c1c57cd94a9c7ee6
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384395"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804704"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory gebruiken voor verificatie met PostgreSQL
 
@@ -24,7 +24,9 @@ In dit artikel vindt u de stappen doorlopen waarmee azure Active Directory-toega
 
 ## <a name="setting-the-azure-ad-admin-user"></a>De Azure AD-beheerder instellen
 
-Alleen een Azure AD-beheerder kan gebruikers maken/inschakelen voor Azure AD-gebaseerde verificatie. Als u de gebruiker van de AD-beheerder wilt maken en Azure wilt gebruiken, voert u de volgende stappen uit
+Alleen Azure AD-beheerders kunnen gebruikers maken/inschakelen voor Azure AD-gebaseerde verificatie. We raden u aan de Azure AD-beheerder niet te gebruiken voor regelmatige databasebewerkingen, omdat deze gebruikersmachtigingen heeft verhoogd (bijvoorbeeld CREATEDB).
+
+Als u de Azure AD-beheerder wilt instellen (u een gebruiker of een groep gebruiken), voert u de volgende stappen uit
 
 1. Selecteer in de Azure-portal de instantie van Azure Database voor PostgreSQL die u wilt inschakelen voor Azure AD.
 2. Selecteer Active Directory-beheerder onder Instellingen:
@@ -37,36 +39,6 @@ Alleen een Azure AD-beheerder kan gebruikers maken/inschakelen voor Azure AD-geb
 > Bij het instellen van de beheerder wordt een nieuwe gebruiker toegevoegd aan de Azure Database voor PostgreSQL-server met volledige beheerdersmachtigingen. De Azure AD-beheergebruiker in Azure Database voor `azure_ad_admin`PostgreSQL heeft de rol .
 
 Er kan slechts één Azure AD-beheerder worden gemaakt per PostgreSQL-server en de selectie van een andere is de bestaande Azure AD-beheerder die voor de server is geconfigureerd, overschreven. U een Azure AD-groep opgeven in plaats van dat een afzonderlijke gebruiker meerdere beheerders heeft. Houd er rekening mee dat u zich dan aanmeldt met de groepsnaam voor beheerdoeleinden.
-
-## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Azure AD-gebruikers maken in Azure Database voor PostgreSQL
-
-Als u een Azure AD-gebruiker wilt toevoegen aan uw Azure Database for PostgreSQL-database, voert u de volgende stappen uit na het verbinden (zie latere sectie over verbinding maken):
-
-1. Controleer eerst of de `<user>@yourtenant.onmicrosoft.com` Azure AD-gebruiker een geldige gebruiker is in de AZURE AD-tenant.
-2. Meld u aan bij uw Azure Database voor PostgreSQL-instantie als de Azure AD-beheerder.
-3. Rol `<user>@yourtenant.onmicrosoft.com` maken in Azure Database voor PostgreSQL.
-4. Maak `<user>@yourtenant.onmicrosoft.com` een lid van de rol azure_ad_user. Dit mag alleen worden gegeven aan Azure AD-gebruikers.
-
-**Voorbeeld:**
-
-```sql
-CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-> [!NOTE]
-> Als u een gebruiker via Azure AD authenticeert, geeft deze de gebruiker geen machtigingen voor toegang tot objecten in de Azure Database voor PostgreSQL-database. U moet de gebruiker handmatig de vereiste machtigingen verlenen.
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Azure AD-groepen maken in Azure Database voor PostgreSQL
-
-Als u een Azure AD-groep wilt inschakelen voor toegang tot uw database, gebruikt u hetzelfde mechanisme als voor gebruikers, maar geeft u in plaats daarvan de groepsnaam op:
-
-**Voorbeeld:**
-
-```sql
-CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-Bij het inloggen gebruiken leden van de groep hun persoonlijke toegangstokens, maar ondertekenen ze met de groepsnaam die is opgegeven als gebruikersnaam.
 
 ## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>Verbinding maken met Azure Database voor PostgreSQL met Azure AD
 
@@ -167,6 +139,36 @@ psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgre
 ```
 
 U bent nu geverifieerd naar uw PostgreSQL-server met Azure AD-verificatie.
+
+## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Azure AD-gebruikers maken in Azure Database voor PostgreSQL
+
+Als u een Azure AD-gebruiker wilt toevoegen aan uw Azure Database for PostgreSQL-database, voert u de volgende stappen uit na het verbinden (zie latere sectie over verbinding maken):
+
+1. Controleer eerst of de `<user>@yourtenant.onmicrosoft.com` Azure AD-gebruiker een geldige gebruiker is in de AZURE AD-tenant.
+2. Meld u aan bij uw Azure Database voor PostgreSQL-instantie als de Azure AD-beheerder.
+3. Rol `<user>@yourtenant.onmicrosoft.com` maken in Azure Database voor PostgreSQL.
+4. Maak `<user>@yourtenant.onmicrosoft.com` een lid van de rol azure_ad_user. Dit mag alleen worden gegeven aan Azure AD-gebruikers.
+
+**Voorbeeld:**
+
+```sql
+CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
+```
+
+> [!NOTE]
+> Als u een gebruiker via Azure AD authenticeert, geeft deze de gebruiker geen machtigingen voor toegang tot objecten in de Azure Database voor PostgreSQL-database. U moet de gebruiker handmatig de vereiste machtigingen verlenen.
+
+## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Azure AD-groepen maken in Azure Database voor PostgreSQL
+
+Als u een Azure AD-groep wilt inschakelen voor toegang tot uw database, gebruikt u hetzelfde mechanisme als voor gebruikers, maar geeft u in plaats daarvan de groepsnaam op:
+
+**Voorbeeld:**
+
+```sql
+CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
+```
+
+Bij het inloggen gebruiken leden van de groep hun persoonlijke toegangstokens, maar ondertekenen ze met de groepsnaam die is opgegeven als gebruikersnaam.
 
 ## <a name="token-validation"></a>Tokenvalidatie
 

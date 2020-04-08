@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 51375c13d842bda2450a83e1bbc48b741adba39b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 987228c5cf0f5231006726718684528a777e92fd
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80057453"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804466"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Een Web Application Firewall (WAF) voor App Service Environment configureren
 ## <a name="overview"></a>Overzicht
@@ -71,7 +71,7 @@ Klik op het tabblad **Services** om uw WAF te configureren voor services die dez
 ![Beheerservices toevoegen][ManagementAddServices]
 
 > [!NOTE]
-> Afhankelijk van hoe uw toepassingen zijn geconfigureerd en welke functies worden gebruikt in uw App Service Environment, moet u verkeer voor andere TCP-poorten dan 80 en 443 doorsturen, bijvoorbeeld als u IP SSL hebt ingesteld voor een App Service-app. Zie voor een lijst met netwerkpoorten die worden gebruikt in App Service Environments, [Documentatie voor inkomend verkeer beheren](app-service-app-service-environment-control-inbound-traffic.md), in de sectie Netwerkpoorten.
+> Afhankelijk van hoe uw toepassingen zijn geconfigureerd en welke functies worden gebruikt in uw App Service-omgeving, moet u verkeer doorsturen voor andere TCP-poorten dan 80 en 443, bijvoorbeeld als u IP TLS-instellingen hebt voor een App Service-app. Zie voor een lijst met netwerkpoorten die worden gebruikt in App Service Environments, [Documentatie voor inkomend verkeer beheren](app-service-app-service-environment-control-inbound-traffic.md), in de sectie Netwerkpoorten.
 > 
 > 
 

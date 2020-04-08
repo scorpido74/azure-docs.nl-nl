@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: 5136a00421aebaa72998b1dfcdf75feb935851c6
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: a502541a5a01ec3304338054239fc3b50f4d3c61
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435443"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810303"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Geavanceerde bedreigingsbeveiliging van Microsoft Defender met Azure Security Center
 
@@ -36,7 +36,7 @@ Wanneer u Microsoft Defender ATP gebruikt, krijgt u het:
 
 De volgende mogelijkheden zijn nu beschikbaar in Azure Security Center:
 
-- **Automatische onboarding**: De Microsoft Defender ATP-sensor is automatisch ingeschakeld voor Windows-servers die zijn aangesloten op Azure Security Center.
+- **Automatische onboarding**: De Microsoft Defender ATP-sensor is automatisch ingeschakeld voor Windows-servers die zijn aangesloten op Azure Security Center (met uitzondering van de servers waarop Windows Server 2019 wordt uitgevoerd).
 
 - **Eén ruit:** in de Azure Security Center-console worden ATP-waarschuwingen van Microsoft Defender weergegeven.
 
@@ -107,11 +107,11 @@ Ga als lid van het werk om een goedaardige Microsoft Defender ATP-testwaarschuwi
 
    ![Een opdrachtpromptvenster met de opdracht hierboven](media/security-center-wdatp/image4.jpeg)
 
-3. Als de opdracht succesvol is, ziet u een nieuwe waarschuwing op het Azure Security Center-dashboard en de ATP-portal van Microsoft Defender. Het kan enkele minuten duren voordat deze waarschuwing is weergegeven.
+1. Als de opdracht succesvol is, ziet u een nieuwe waarschuwing op het Azure Security Center-dashboard en de ATP-portal van Microsoft Defender. Het kan enkele minuten duren voordat deze waarschuwing is weergegeven.
 
-4. Als u de waarschuwing in Beveiligingscentrum wilt controleren, gaat u naar **Beveiligingswaarschuwingen** > **Verdachte PowerShell CommandLine**.
+1. Als u de waarschuwing in Beveiligingscentrum wilt controleren, gaat u naar **Beveiligingswaarschuwingen** > **Verdachte PowerShell CommandLine**.
 
-5. Selecteer in het onderzoeksvenster de koppeling om naar de ATP-portal van Microsoft Defender te gaan.
+1. Selecteer in het onderzoeksvenster de koppeling om naar de ATP-portal van Microsoft Defender te gaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

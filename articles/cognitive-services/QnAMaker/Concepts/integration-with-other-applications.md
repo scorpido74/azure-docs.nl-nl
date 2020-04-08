@@ -3,12 +3,12 @@ title: Integreren met andere toepassingen - QnA Maker
 description: QnA Maker integreert in clienttoepassingen zoals chatbots en met andere natuurlijke taalverwerkingsservices zoals Language Understanding (LUIS).
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1edbfb6badfb73ce08a99709da0f8bfb61b7dc3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300516"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804184"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>Ontwerp kennisbank voor klanttoepassingen
 
@@ -24,7 +24,7 @@ Nadat u uw kennisbasis hebt gepubliceerd, maakt u een bot op de **pagina Publice
 
 ## <a name="providing-multi-turn-conversations"></a>Multi-turn gesprekken bieden
 
-Een botclient biedt het best geselecteerde antwoord uit uw kennisbank en kan vervolgaanwijzingen geven als het antwoord deel uitmaakt van een Multi-turn QnA-set. Meer informatie over [het](../how-to/multiturn-conversation.md) toevoegen van multi-turn gespreksvragen en antwoordsets aan uw kennisbank.
+Een bot client biedt het best geselecteerde antwoord uit uw kennisbank, en kan follow-up vragen als het antwoord is onderdeel van een multi-turn QnA paar. Meer informatie over [het](../how-to/multiturn-conversation.md) toevoegen van multi-turn gespreksvragen en antwoordsets aan uw kennisbank.
 
 ## <a name="natural-language-processing"></a>Natuurlijke taalverwerking
 

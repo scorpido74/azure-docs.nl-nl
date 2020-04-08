@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5b247e8f4a611ace227f5adcef7e0e27de341c96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 578d00d4bd65b3ffbfb6cdac439762344604e6b8
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454632"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804874"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Releaseopmerkingen voor de Azure File Sync-agent
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Uw installaties van Windows Server worden getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als u waar ook ter wereld nodig hebt.
@@ -35,9 +35,7 @@ De volgende versies worden ondersteund voor de Azure File Sync-agent:
 | Update-rollup juni 2019 - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13 juni 2019 | Ondersteund - Agent-versie verloopt op 21 april 2020 |
 | Update-rollup mei 2019 - [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7 mei 2019 | Ondersteund - Agent-versie verloopt op 21 april 2020 |
 | V6 Release - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21 april 2019 | Ondersteund - Agent-versie verloopt op 21 april 2020 |
-| Update-rollup april 2019 - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4 april 2019 | Ondersteund - Agent-versie verloopt op 18 maart 2020 |
-| Update-rollup van maart 2019 - [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7 maart 2019 | Ondersteund - Agent-versie verloopt op 18 maart 2020 |
-| V5 Release - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12 februari 2019 | Ondersteund - Agent-versie verloopt op 18 maart 2020 |
+| V5-versie | 5.0.2.0 - 5.2.0.0 | N.v.t. | Niet ondersteund - Agent-versies verlopen op 18 maart 2020 |
 | V4-versie | 4.0.1.0 - 4.3.0.0 | N.v.t. | Niet ondersteund - Agent-versies verlopen op 6 november 2019 |
 | V3-versie | 3.1.0.0 - 3.4.0.0 | N.v.t. | Niet ondersteund - Agent-versies verlopen op 19 augustus 2019 |
 | Pre-GA-agenten | 1.1.0.0 - 3.0.13.0 | N.v.t. | Niet ondersteund - Agent-versies zijn verlopen op 1 oktober 2018 |

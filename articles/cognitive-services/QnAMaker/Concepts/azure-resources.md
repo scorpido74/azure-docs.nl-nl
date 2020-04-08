@@ -3,12 +3,12 @@ title: Azure-bronnen - QnA Maker
 description: QnA Maker gebruikt verschillende Azure-bronnen, elk met een ander doel. Als u begrijpt hoe ze afzonderlijk worden gebruikt, u de juiste prijscategorie plannen en selecteren of weten wanneer u uw prijscategorie moet wijzigen. Als u begrijpt hoe ze in combinatie worden gebruikt, u problemen vinden en oplossen wanneer ze zich voordoen.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 8a5cc0f4889e31470514015035a92d230c40ed43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bd491ecbd878cb7bb05a7eaa5712c75653f2cba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284242"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804296"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-bronnen voor QnA Maker
 
@@ -54,7 +54,7 @@ De volgende tabel geeft u een aantal richtlijnen op hoog niveau.
 
 |Upgraden|Reden|
 |--|--|
-|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) QnA Maker management SKU|U wilt meer QnA-sets of documentbronnen in uw kennisbank hebben.|
+|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) QnA Maker management SKU|U wilt meer QnA-paren of documentbronnen in uw kennisbank hebben.|
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) App Service SKU en controleer de categorie Cognitief zoeken en [maak replica's voor cognitief zoeken](../../../search/search-capacity-planning.md)|Uw kennisbank moet meer aanvragen van uw client-app, zoals een chatbot, verwerken.|
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Azure Cognitive Search-service|Je bent van plan om veel kennisbanken te hebben.|
 
@@ -95,8 +95,8 @@ Elke Azure-bron die met QnA Maker is gemaakt, heeft een specifiek doel:
 
 De [resource Cognitive Search](../../../search/index.yml) is gewend aan:
 
-* Sla de QnA-sets op
-* Geef de eerste rangschikking (ranker #1) van de QnA-sets op runtime
+* De QnA-paren opslaan
+* Geef de eerste rangschikking (ranker #1) van de QnA-paren op tijdens runtime
 
 #### <a name="index-usage"></a>Indexgebruik
 
@@ -110,7 +110,7 @@ De eerste kennisbasis die is gemaakt in de QnA Maker-bron wordt gebruikt om de _
 
 ### <a name="qna-maker-resource"></a>QnA Maker-bron
 
-De QnA Maker-bron biedt toegang tot de api's voor het ontwerpen en publiceren, evenals de op de tweede rangschikkingslaag (ranker #2) van de QnA-sets op runtime.
+De QnA Maker-bron biedt toegang tot de api's voor het ontwerpen en publiceren, evenals de op de tweede rangschikkingslaag (ranker #2) gebaseerde natuurlijke taalverwerking (NLP) van de QnA-paren tijdens runtime.
 
 De tweede rangschikking past intelligente filters toe die metadata en follow-upprompts kunnen bevatten.
 
@@ -164,7 +164,7 @@ Gebruik deze sleutels bij het indienen van aanvragen voor de service via API's.
 
 |Name|Locatie|Doel|
 |--|--|--|
-|Ontwerpsleutel|[Azure-portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Deze sleutels worden gebruikt om toegang te krijgen tot de [QnA Maker management service API's.](https://go.microsoft.com/fwlink/?linkid=2092179) Met deze API's u de vragen en antwoorden in uw kennisbank bewerken en uw kennisbank publiceren. Deze sleutels worden gemaakt wanneer u een nieuwe QnA Maker-service maakt.<br><br>Zoek deze sleutels op de resource **Cognitive Services** op de pagina **Sleutels.**|
+|Ontwerpsleutel|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Deze sleutels worden gebruikt om toegang te krijgen tot de [QnA Maker management service API's.](https://go.microsoft.com/fwlink/?linkid=2092179) Met deze API's u de vragen en antwoorden in uw kennisbank bewerken en uw kennisbank publiceren. Deze sleutels worden gemaakt wanneer u een nieuwe QnA Maker-service maakt.<br><br>Zoek deze sleutels op de resource **Cognitive Services** op de pagina **Sleutels.**|
 |Queryeindpunttoets|[QnA Maker-portal](https://www.qnamaker.ai)|Deze sleutels worden gebruikt om het gepubliceerde eindpunt van de kennisbank op te vragen om een antwoord te krijgen op een gebruikersvraag. U gebruikt dit queryeindpunt meestal in uw chatbot of in de clienttoepassingscode die verbinding maakt met de QnA Maker-service. Deze sleutels worden gemaakt wanneer u uw QnA Maker-kennisbank publiceert.<br><br>Zoek deze toetsen op de pagina **Service-instellingen.** Zoek deze pagina in het menu van de gebruiker rechtsboven op de pagina in het vervolgkeuzemenu.|
 
 ### <a name="subscription-keys"></a>Abonnementssleutels

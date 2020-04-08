@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 75890efebc42b74c56fb95ed1803152b516588b9
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385211"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811233"
 ---
 # <a name="develop-a-secure-web-app"></a>Een beveiligde web-app ontwikkelen
 
@@ -94,7 +94,7 @@ Er zijn veel manieren om apps op Azure te implementeren, waaronder:
 
 - Azure Resource Manager-sjablonen
 - PowerShell
-- Azure-CLI
+- Azure CLI
 - Azure Portal
 - Azure DevOps
 
@@ -108,7 +108,7 @@ Deze toepassing wordt gebruikt:
 
 ### <a name="network"></a>Netwerk
 
-De voorbeeld-app maakt gebruik van end-to-end SSL-versleuteling voor binnenkomende gegevens die in en uit het netwerk stromen. De gateway is geconfigureerd met een zelfondertekend certificaat.
+De voorbeeld-app maakt gebruik van end-to-end TLS/SSL-versleuteling voor binnenkomende gegevens die in en uit het netwerk stromen. De gateway is geconfigureerd met een zelfondertekend certificaat.
 > [!IMPORTANT]
 > In deze demonstratie wordt een zelfondertekend certificaat gebruikt. In een productieomgeving moet u certificaten verkrijgen van een geverifieerde certificeringsinstantie (CA).
 
@@ -363,7 +363,7 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-Zie [SSL-connectiviteit configureren in Azure Database voor PostgreSQL voor](/azure/postgresql/concepts-ssl-connection-security)meer informatie over het instellen van SSL- en Certificate Authority -verificatie (CA).
+Zie [TLS-connectiviteit configureren in Azure Database voor PostgreSQL voor](/azure/postgresql/concepts-ssl-connection-security)meer informatie over het instellen van TLS- en Certificate Authority (CA)-verificatie voor PostgreSQL.
 
 Een rootcertificaat is opgenomen in de container. De stappen die zijn genomen om het certificaat te verkrijgen zijn:
 
@@ -375,7 +375,7 @@ Een rootcertificaat is opgenomen in de container. De stappen die zijn genomen om
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-Lees hier meer over het configureren van SSL-beveiliging voor PostgreSQL [Configureer SSL Connection Security.](/azure/postgresql/concepts-ssl-connection-security)
+Lees hier meer over het configureren van TLS-beveiliging voor PostgreSQL, [TLS Connection Security configureren.](/azure/postgresql/concepts-ssl-connection-security)
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Azure Web Apps implementeren op Linux
 

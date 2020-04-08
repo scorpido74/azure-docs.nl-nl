@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 787640ef08ee91220f42065af155c372247f0136
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274214"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804602"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure-bronlogboeken archiveren naar opslagaccount
 [Platformlogboeken](platform-logs-overview.md) in Azure, inclusief Azure Activity log en resource logs, bieden gedetailleerde diagnostische en controle-informatie voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn.  In dit artikel worden platformlogboeken verzameld voor een Azure-opslagaccount om gegevens te bewaren voor archivering.
@@ -20,6 +20,8 @@ ms.locfileid: "79274214"
 ## <a name="prerequisites"></a>Vereisten
 U moet [een Azure-opslagaccount maken](../../storage/common/storage-account-create.md) als u er nog geen hebt. Het opslagaccount hoeft niet in hetzelfde abonnement te zitten als de logboeken voor het verzenden van resources, zolang de gebruiker die de instelling configureert, de juiste RBAC-toegang tot beide abonnementen heeft.
 
+> [!IMPORTANT]
+> Als u de gegevens naar onveranderlijke opslag wilt verzenden, stelt u het onveranderlijke beleid in voor het opslagaccount zoals beschreven in [Set en beheert u het onveranderlijkheidsbeleid voor Blob-opslag](../../storage/blobs/storage-blob-immutability-policies-manage.md). U moet alle stappen in dit artikel volgen, inclusief het inschakelen van beveiligde toevoegende blobs.
 
 > [!IMPORTANT]
 > Azure Data Lake Storage Gen2-accounts worden momenteel niet ondersteund als bestemming voor diagnostische instellingen, ook al worden ze mogelijk vermeld als een geldige optie in de Azure-portal.

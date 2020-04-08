@@ -2,13 +2,13 @@
 title: Sjabloonfuncties - resources
 description: Beschrijft de functies die u moet gebruiken in een Azure Resource Manager-sjabloon om waarden over resources op te halen.
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.date: 04/06/2020
+ms.openlocfilehash: 90cee78c29c26c88d808cdef798e74a2184a5fcf
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744988"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804755"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Resourcefuncties voor ARM-sjablonen
 
@@ -496,7 +496,9 @@ Gebruik `'Full'` wanneer u resourcewaarden nodig hebt die geen deel uitmaken van
 
 ### <a name="valid-uses"></a>Geldig gebruik
 
-De referentiefunctie kan alleen worden gebruikt in de eigenschappen van een resourcedefinitie en de sectie uitvoer van een sjabloon of implementatie. Wanneer u wordt gebruikt met [eigenschapsiteratie,](copy-properties.md)u de referentiefunctie gebruiken voor `input` omdat de expressie is toegewezen aan de eigenschap resource. U het niet `count` gebruiken omdat het aantal moet worden bepaald voordat de referentiefunctie is opgelost.
+De referentiefunctie kan alleen worden gebruikt in de eigenschappen van een resourcedefinitie en de sectie uitvoer van een sjabloon of implementatie. Wanneer u wordt gebruikt met [eigenschapsiteratie,](copy-properties.md)u de referentiefunctie gebruiken voor `input` omdat de expressie is toegewezen aan de eigenschap resource.
+
+U de referentiefunctie niet gebruiken om `count` de waarde van de eigenschap in een kopieerlus in te stellen. U andere eigenschappen in de lus instellen. De verwijzing wordt geblokkeerd voor de eigenschap tellen omdat die eigenschap moet worden bepaald voordat de referentiefunctie is opgelost.
 
 U de referentiefunctie in de uitvoer van een [geneste sjabloon](linked-templates.md#nested-template) niet gebruiken om een resource die u hebt geïmplementeerd in de geneste sjabloon terug te sturen. Gebruik in plaats daarvan een [gekoppelde sjabloon](linked-templates.md#linked-template).
 

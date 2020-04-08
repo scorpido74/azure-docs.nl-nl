@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 173f5c698ab44ea269995665bcbc33c726d4f03a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248136"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811456"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Overzicht van certificaten voor Azure Cloud Services
 Certificaten worden gebruikt in Azure voor cloudservices[(servicecertificaten)](#what-are-service-certificates)en voor het verifiëren met de beheer-API[(beheercertificaten).](#what-are-management-certificates) In dit onderwerp vindt u een algemeen overzicht van beide certificaattypen, hoe u [deze maken](#create) en implementeren in Azure.
@@ -55,7 +55,7 @@ U elk hulpprogramma gebruiken dat beschikbaar is om een zelfondertekend certific
 * Gemaakt voor sleuteluitwisseling (.pfx-bestand).
 * De onderwerpnaam moet overeenkomen met het domein dat wordt gebruikt om toegang te krijgen tot de cloudservice.
 
-    > U geen SSL-certificaat aanschaffen voor de cloudapp.net (of voor een Azure-gerelateerd) domein; de onderwerpnaam van het certificaat moet overeenkomen met de aangepaste domeinnaam die wordt gebruikt om toegang te krijgen tot uw toepassing. Bijvoorbeeld, **contoso.net**, niet **contoso.cloudapp.net**.
+    > U geen TLS/SSL-certificaat aanschaffen voor de cloudapp.net (of voor een Azure-gerelateerd) domein; de onderwerpnaam van het certificaat moet overeenkomen met de aangepaste domeinnaam die wordt gebruikt om toegang te krijgen tot uw toepassing. Bijvoorbeeld, **contoso.net**, niet **contoso.cloudapp.net**.
 
 * Minimaal 2048-bits versleuteling.
 * **Alleen servicecertificaat**: Client-side certificaat moet zich in het *persoonlijke* certificaatarchief bevinden.

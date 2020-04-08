@@ -1,15 +1,16 @@
 ---
-title: Clusterbronnen beheren met RBAC en Azure AD in Azure Kubernetes Service
+title: Azure AD en RBAC gebruiken voor clusters
+titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het gebruik van Azure Active Directory-groepslidmaatschap om de toegang tot clusterbronnen te beperken met behulp van rbac (Azure Kubernetes Service) in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: 456b6dcdd590b48e06c830db85b726d4bebb69e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad195085c049776bf0db418c57f2c72830f1adff
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596518"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803566"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Toegang tot clusterbronnen beheren met behulp van toegangsbeheer op basis van rollen en Azure Active Directory-identiteiten in Azure Kubernetes Service
 

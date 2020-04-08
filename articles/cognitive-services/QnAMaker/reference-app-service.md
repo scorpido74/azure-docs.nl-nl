@@ -3,12 +3,12 @@ title: Serviceconfiguratie - QnA Maker
 description: Begrijp hoe en waar u resources configureren.
 ms.topic: reference
 ms.date: 02/21/2020
-ms.openlocfilehash: 8ef6fecbfeb119d0c68ec5bc3bbc90ec449dbb7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3be32d1778604121c2acac88415cbfbc4bdbca3d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651859"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804257"
 ---
 # <a name="service-configuration"></a>Serviceconfiguratie
 
@@ -27,8 +27,8 @@ U een afzonderlijke instelling instellen via de lijst Toepassingsinstellingen of
 
 |Resource|Instelling|
 |--|--|
-|AzureSearchAdminKey|Cognitief zoeken - gebruikt voor QnA set storage en Ranker #1|
-|AzureSearchName|Cognitief zoeken - gebruikt voor QnA set storage en Ranker #1|
+|AzureSearchAdminKey|Cognitive Search - gebruikt voor QnA pair storage en Ranker #1|
+|AzureSearchName|Cognitive Search - gebruikt voor QnA pair storage en Ranker #1|
 |Standaardantwoord|Tekst van het antwoord wanneer er geen overeenkomst wordt gevonden|
 |UserAppInsightsAppId|Chatlogboek en telemetrie|
 |UserAppInsightsKey|Chatlogboek en telemetrie|

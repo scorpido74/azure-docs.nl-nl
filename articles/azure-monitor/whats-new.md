@@ -6,15 +6,79 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 03/05/2020
-ms.openlocfilehash: c29790035ec4e971957784e826a1e8bd8e0c9329
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a2e6d2a459a6713aa9372496fc3a933c0a886ed9
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79500495"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802601"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Wat is er nieuw in Azure Monitor-documentatie?
 In dit artikel vindt u lijsten met Azure Monitor-artikelen die nieuw zijn of aanzienlijk zijn bijgewerkt. Het zal worden vernieuwd de eerste week van elke maand om artikel updates van de vorige maand op te nemen.
+
+## <a name="march-2020"></a>Maart 2020
+
+### <a name="general"></a>Algemeen
+- [Overzicht van Azure Monitor](overview.md) - Overzichtsvideo voor Azure Monitor toegevoegd.
+- [Azure Monitor door de klant beheerde sleutelconfiguratie](platform/customer-managed-keys.md) - Algemene updates.
+- [Azure Monitor gegevensreferentie](/azure/azure-monitor/reference) - Nieuwe site.
+
+### <a name="alerts"></a>Waarschuwingen
+
+- [Waarschuwingen voor activiteitenlogboeken maken, weergeven en beheren in Azure Monitor](platform/alerts-activity-log.md) - Aanvullende uitleg van de sjabloon Resourcebeheer.
+- [Begrijpen hoe metrische waarschuwingen werken in Azure Monitor.](platform/alerts-metric-overview.md) - Bijgewerkt voor overheidssteun.
+- [Problemen met Azure Monitor-waarschuwingen en -meldingen oplossen](platform/alerts-troubleshoot.md) - Nieuw artikel
+
+### <a name="application-insights"></a>Application Insights
+- [Automatiseer Azure Application Insights met PowerShell](app/powershell.md) - Added ARMClient examples.
+- [Continue export van telemetrie vanuit Application Insights](app/export-telemetry.md) - Tabel toevoegen met details van de exportstructuur.
+- [Snapshot Debugger inschakelen voor .NET-apps in Azure App Service](app/snapshot-debugger-appservice.md) - Voorbeeld van de sjabloon Added Resource Manager.
+- [Beheer het gebruik en de kosten voor Azure Application Insights](app/pricing.md) - Extra informatie over de waarschuwing voor gegevensdop.
+- [Python-toepassingen controleren met Azure Monitor (preview)](app/opencensus-python.md) - Standaardstatistieken toegevoegd.
+- [Bronkaartondersteuning voor JavaScript-toepassingen - Azure Monitor Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/source-map-support) - Nieuw artikel.
+
+
+### <a name="containers"></a>Containers
+- [Veelgestelde vragen over Azure Monitor](faq.md) - Bijwerken voor Azure Monitor voor containers.
+- [GPU-bewaking configureren met Azure Monitor voor containers](insights/container-insights-gpu-monitoring.md) - Nieuw artikel
+
+### <a name="insights"></a>Inzichten
+- [Office 365-beheeroplossing in Azure](insights/solution-office-365.md) - Bijgewerkte afschrijvingsdatum.
+
+### <a name="logs"></a>Logboeken
+- [Logquery's optimaliseren in Azure Monitor](log-query/query-optimization.md) - Added CPU condition for XML and JSON parsing.
+- [Azure Log Analytics-werkruimte verwijderen en herstellen](platform/delete-workspace.md) - Probleemoplossing toegevoegd.
+- [Gebruik Azure Monitor Logs met Azure Logic Apps en Power Automate](platform/logicapp-flow-connector.md) - Bijgewerkt voor nieuwe Azure Monitor connector.
+
+### <a name="metrics"></a>Metrische gegevens
+- [Afschaffing van schijfstatistieken in de Azure-portal](https://docs.microsoft.com/azure/azure-monitor/platform/portal-disk-metrics-deprecation) - Nieuw artikel.
+- [Zelfstudie - Maak een metrische grafiek in Azure Monitor](learn/tutorial-metrics-explorer.md) - Toegevoegde video.
+
+### <a name="platform-logs"></a>Platformlogboeken
+- [Azure-activiteitenlogboek verzamelen en analyseren in Azure Monitor](platform/activity-log-collect.md) - Opnieuw schrijven om het verzamelen van activiteitslogboeken beter uit te leggen met diagnostische instellingen.
+
+### <a name="virtual-machines"></a>Virtuele machines
+- [Azure virtual machines monitoren met Azure Monitor](insights/monitor-vm-azure.md) - Nieuw artikel.
+- [Snelstart: Azure-virtuele machines controleren met Azure Monitor](learn/quick-monitor-azure-vm.md) - Bijgewerkt om Azure-monitor voor VM's toe te voegen.
+- [Waarschuwingen van Azure Monitor voor VM's](insights/vminsights-alerts.md) - Nieuw artikel
+- [Overzicht van Azure Monitor voor VM's inschakelen](insights/vminsights-enable-overview.md) - Bijgewerkte koppelingskoppelingen voor agents.
+
+
+Algemene updates voor algemene beschikbaarheid van Azure Monitor voor VM's
+- [Wat is Azure Monitor voor VM's?](insights/vminsights-overview.md)
+- [Veelgestelde vragen over Azure Monitor for VM's (GA)](insights/vminsights-ga-release-faq.md) 
+- [Azure-monitor voor VM's inschakelen met Azure-beleid](insights/vminsights-enable-at-scale-policy.md) 
+- [Prestaties in kaart brengen met Azure Monitor voor VM's](insights/vminsights-performance.md)
+- [Logboeken opvragen vanuit Azure-monitor voor VM's](insights/vminsights-log-search.md)
+- [App-afhankelijkheden weergeven met Azure Monitor voor VM's](insights/vminsights-maps.md) 
+
+
+### <a name="visualizations"></a>Visualisaties
+- [Gegevens van Azure Monitor visualiseren](visualizations.md) - Bijgewerkt om geplande afschrijving van View Designer op te merken.
+
+
+
+
 
 ## <a name="february-2020"></a>Februari 2020
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 550d9f4f5396b2165260e39cd28222b083dd6756
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279986"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810230"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway-functies
 
@@ -34,7 +34,7 @@ Application Gateway bevat de volgende functies:
 - [Sessieaffiniteit](#session-affinity)
 - [Websocket- en HTTP-/2-verkeer](#websocket-and-http2-traffic)
 - [Verwerkingsstop voor verbindingen](#connection-draining)
-- [Aangepaste foutenpagina's](#custom-error-pages)
+- [Aangepaste foutpagina's](#custom-error-pages)
 - [HTTP-headers opnieuw genereren](#rewrite-http-headers)
 - [Grootte aanpassen](#sizing)
 
@@ -125,7 +125,7 @@ Verwerkingsstop voor verbindingen helpt u om back-endgroepsleden zonder probleme
 
 Zie [Overzicht van configuratie van toepassingsgateway](configuration-overview.md#connection-draining)voor meer informatie .
 
-## <a name="custom-error-pages"></a>Aangepaste foutenpagina's
+## <a name="custom-error-pages"></a>Aangepaste foutpagina's
 
 Met Application Gateway kunt u aangepaste foutpagina's maken in plaats van standaardfoutpagina's weer te geven. U kunt uw eigen huisstijl en lay-out hanteren door een aangepaste foutpagina te gebruiken.
 
@@ -160,6 +160,10 @@ In de volgende tabel ziet u een gemiddelde prestatiedoorvoer voor elke v1-exempl
 
 > [!NOTE]
 > Deze waarden zijn geschatte waarden voor de doorvoer van een toepassingsgateway. De werkelijke doorvoer hangt af van verschillende details van de omgeving, zoals de gemiddelde paginagrootte, locatie van back-endexemplaren en de verwerkingstijd voor een pagina. Voor nauwkeurige prestatiecijfers moet u uw eigen tests uitvoeren. Deze waarden worden alleen geboden als richtlijn voor de capaciteitsplanning.
+
+## <a name="version-feature-comparison"></a>Vergelijking van versiefuncties
+
+Zie [Autoscaling en Zone-redundante Application Gateway v2](application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku) voor een vergelijking van de functie V1-v2 van een Toepassingsgateway v2
 
 ## <a name="next-steps"></a>Volgende stappen
 

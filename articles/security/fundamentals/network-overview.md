@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75749950"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811107"
 ---
 # <a name="azure-network-security-overview"></a>Overzicht van Azure-netwerkbeveiliging
 
@@ -160,7 +160,7 @@ U mogelijk individuele ontwikkelaars of bedrijfspersoneel in staat stellen virtu
 
 Met de point-to-site VPN-verbinding u een privé- en beveiligde verbinding tussen de gebruiker en het virtuele netwerk instellen. Wanneer de VPN-verbinding tot stand is gebracht, kan de gebruiker RDP of SSH via de VPN-koppeling naar een virtuele machine op het virtuele netwerk. (Dit veronderstelt dat de gebruiker kan verifiëren en is geautoriseerd.) Point-to-site VPN-ondersteuning:
 
-* Secure Socket Tunneling Protocol (SSTP), een eigen SSL-gebaseerd VPN-protocol. Een SSL VPN-oplossing kan firewalls binnendringen, omdat de meeste firewalls TCP-poort 443 openen, die SSL gebruikt. SSTP wordt alleen ondersteund op Windows-apparaten. Azure ondersteunt alle versies van Windows met SSTP (Windows 7 en hoger).
+* Secure Socket Tunneling Protocol (SSTP), een eigen SSL-gebaseerd VPN-protocol. Een SSL VPN-oplossing kan firewalls binnendringen, omdat de meeste firewalls TCP-poort 443 openen, die TLS/SSL gebruikt. SSTP wordt alleen ondersteund op Windows-apparaten. Azure ondersteunt alle versies van Windows met SSTP (Windows 7 en hoger).
 
 * IKEv2 VPN, een op standaarden gebaseerde IPsec VPN-oplossing. IKEv2 VPN kan worden gebruikt om verbinding te maken vanaf Mac-apparaten (OSX-versie 10.11 en hoger).
 
@@ -232,7 +232,7 @@ Organisaties die webservices uitvoeren, willen vaak een OP HTTP gebaseerde load 
 Azure Application Gateway biedt OP HTTP gebaseerde taakverdeling voor uw webservices. Application Gateway ondersteunt:
 
 * Cookie-gebaseerde sessie affiniteit. Deze mogelijkheid zorgt ervoor dat verbindingen met een van de servers achter die load balancer intact blijven tussen de client en de server. Dit zorgt voor stabiliteit van transacties.
-* SSL offload. Wanneer een client verbinding maakt met de load balancer, wordt die sessie versleuteld met behulp van het HTTPS -protocol (SSL). Om de prestaties te verhogen, u echter het HTTP-protocol (onversleuteld) gebruiken om verbinding te maken tussen de load balancer en de webserver achter de load balancer. Dit wordt aangeduid als "SSL offload", omdat de webservers achter de load balancer niet de processor overhead die betrokken zijn bij encryptie ervaring. De webservers kunnen daarom sneller serviceaanvragen indienen.
+* TLS offload. Wanneer een client verbinding maakt met de load balancer, wordt die sessie versleuteld met behulp van het HTTPS-protocol (TLS). Om de prestaties te verhogen, u echter het HTTP-protocol (onversleuteld) gebruiken om verbinding te maken tussen de load balancer en de webserver achter de load balancer. Dit wordt aangeduid als "TLS offload," omdat de webservers achter de load balancer niet de processor overhead die betrokken zijn bij encryptie ervaring. De webservers kunnen daarom sneller serviceaanvragen indienen.
 * INHOUDsroutering op basis van URL's. Deze functie maakt het mogelijk voor de load balancer om beslissingen te nemen over waar verbindingen door te sturen op basis van de doel-URL. Dit biedt veel meer flexibiliteit dan oplossingen die beslissingen nemen over het balanceren op basis van IP-adressen.
 
 Meer informatie:
@@ -336,7 +336,7 @@ Meer informatie:
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
-Azure Front Door Service stelt u in staat om de globale routering van uw webverkeer te definiëren, te beheren en te bewaken. Het optimaliseert de routering van uw verkeer voor de beste prestaties en hoge beschikbaarheid. Met Azure Front Door kunt u regels voor toegangsbeheer maken voor aangepaste webtoepassingsfirewalls (WAF) om uw HTTP/HTTPS-workload te beschermen tegen exploitatie op basis van klant-IP-adressen, landcode en http-parameters. Daarnaast u met Front Door ook tariefbeperkende regels maken om kwaadaardig botverkeer te bestrijden, het omvat SSL-offloading en per-HTTP/HTTPS-verzoek, verwerking van toepassingslagen.
+Azure Front Door Service stelt u in staat om de globale routering van uw webverkeer te definiëren, te beheren en te bewaken. Het optimaliseert de routering van uw verkeer voor de beste prestaties en hoge beschikbaarheid. Met Azure Front Door kunt u regels voor toegangsbeheer maken voor aangepaste webtoepassingsfirewalls (WAF) om uw HTTP/HTTPS-workload te beschermen tegen exploitatie op basis van klant-IP-adressen, landcode en http-parameters. Daarnaast u met Front Door ook tariefbeperkende regels maken om kwaadaardig botverkeer te bestrijden, het omvat TLS-offloading en per-HTTP/HTTPS-verzoek, verwerking van toepassingslagen.
 
 Het Front Door-platform wordt zelf beschermd door Azure DDoS Protection Basic. Voor verdere bescherming kan Azure DDoS Protection Standard worden ingeschakeld op uw VNETs en bronnen beschermen tegen netwerklaagaanvallen (TCP/UDP) via automatische afstemming en risicobeperking. Front Door is een laag 7 omgekeerde proxy, het staat alleen webverkeer door te geven aan back-end servers en blokkeren andere soorten verkeer standaard.
 

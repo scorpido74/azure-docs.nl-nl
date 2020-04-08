@@ -1,15 +1,16 @@
 ---
-title: Statisch IP-adres voor uitgangsverkeer in Azure Kubernetes Service (AKS)
+title: Statisch IP gebruiken voor uitgangsverkeer
+titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het maken en gebruiken van een statisch openbaar IP-adres voor het uitreizigers verkeer in een AKS-cluster (Azure Kubernetes Service)
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 5850f8dfc08ed80dfe5e5e13f49808c3fd9338c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595753"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803379"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Een statisch openbaar IP-adres gebruiken voor uitgaande verkeer in Azure Kubernetes Service (AKS)
 

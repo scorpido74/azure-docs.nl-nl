@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7eb1670ee911895bdba23921845b8795f4998af
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421554"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811300"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Gegevens verplaatsen tussen uitgeschaalde clouddatabases
 
@@ -62,7 +62,7 @@ Het hulpprogramma voor splitsen samenvoegen wordt uitgevoerd als een Azure-webse
 
 - **Door de klant gehoste services**
 
-  De split-merge wordt geleverd als een door de klant gehoste service. U moet de service implementeren en hosten in uw Microsoft Azure-abonnement. Het pakket dat u downloadt van NuGet bevat een configuratiesjabloon om te voltooien met de informatie voor uw specifieke implementatie. Zie de [zelfstudie voor het samenvoegen](sql-database-elastic-scale-configure-deploy-split-and-merge.md) voor meer informatie. Aangezien de service wordt uitgevoerd in uw Azure-abonnement, u de meeste beveiligingsaspecten van de service beheren en configureren. De standaardsjabloon bevat de opties voor het configureren van SSL, op certificaten gebaseerde clientverificatie, versleuteling voor opgeslagen referenties, DoS-bewaking en IP-beperkingen. Meer informatie over de beveiligingsaspecten vindt u in de volgende [beveiligingsconfiguratie voor het samenvoegen van](sql-database-elastic-scale-split-merge-security-configuration.md)documenten.
+  De split-merge wordt geleverd als een door de klant gehoste service. U moet de service implementeren en hosten in uw Microsoft Azure-abonnement. Het pakket dat u downloadt van NuGet bevat een configuratiesjabloon om te voltooien met de informatie voor uw specifieke implementatie. Zie de [zelfstudie voor het samenvoegen](sql-database-elastic-scale-configure-deploy-split-and-merge.md) voor meer informatie. Aangezien de service wordt uitgevoerd in uw Azure-abonnement, u de meeste beveiligingsaspecten van de service beheren en configureren. De standaardsjabloon bevat de opties voor het configureren van TLS, op certificaten gebaseerde clientverificatie, versleuteling voor opgeslagen referenties, DoS-bewaking en IP-beperkingen. Meer informatie over de beveiligingsaspecten vindt u in de volgende [beveiligingsconfiguratie voor het samenvoegen van](sql-database-elastic-scale-split-merge-security-configuration.md)documenten.
 
   De standaard geïmplementeerde service wordt uitgevoerd met één werknemer en één webrol. Elk maakt gebruik van de A1 VM-grootte in Azure Cloud Services. Hoewel u deze instellingen niet wijzigen bij het implementeren van het pakket, u deze wijzigen na een succesvolle implementatie in de lopende cloudservice (via de Azure-portal). Houd er rekening mee dat de werkrol om technische redenen niet om meer dan één exemplaar mag worden geconfigureerd.
 
@@ -72,7 +72,7 @@ Het hulpprogramma voor splitsen samenvoegen wordt uitgevoerd als een Azure-webse
 
 - **Consistente shardletverbindingen**
 
-  Wanneer de gegevensverplaatsing begint voor een nieuwe batch shardlets, worden alle shard-map verstrekte gegevensafhankelijke routeringsverbindingen naar de shard die de shardlet opslaat, gedood en worden de daaropvolgende verbindingen van de shardkaart-API's met de shardlets geblokkeerd terwijl de gegevensverplaatsing in uitvoering om inconsistenties te voorkomen. Verbindingen met andere scherven op dezelfde scherf zal ook gedood, maar zal onmiddellijk weer slagen op opnieuw proberen. Zodra de batch is verplaatst, worden de shardlets weer online gemarkeerd voor de doelshard en worden de brongegevens uit de bronshard verwijderd. De service gaat door deze stappen voor elke batch totdat alle shardlets zijn verplaatst. Dit zal leiden tot verschillende connection kill operaties in de loop van de volledige split /merge/move operatie.  
+  Wanneer de gegevensverplaatsing begint voor een nieuwe batch shardlets, worden alle shard-map verstrekte gegevensafhankelijke routeringsverbindingen naar de shard die de shardlet opslaat, gedood en worden de daaropvolgende verbindingen van de shardmap-API's naar de shardlets geblokkeerd terwijl de gegevensverplaatsing aan de gang is om inconsistenties te voorkomen. Verbindingen met andere scherven op dezelfde scherf zal ook gedood, maar zal onmiddellijk weer slagen op opnieuw proberen. Zodra de batch is verplaatst, worden de shardlets weer online gemarkeerd voor de doelshard en worden de brongegevens uit de bronshard verwijderd. De service gaat door deze stappen voor elke batch totdat alle shardlets zijn verplaatst. Dit zal leiden tot verschillende connection kill operaties in de loop van de volledige split /merge/move operatie.  
 
 - **Beschikbaarheid shardlet beheren**
 

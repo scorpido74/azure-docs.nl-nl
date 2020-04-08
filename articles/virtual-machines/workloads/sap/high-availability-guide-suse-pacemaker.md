@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/17/2020
+ms.date: 04/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 9d3d0ddbd1282827f17cd82228fcf0f3fba3a60f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06ee1b6184e69ace68adcbfa36ad2384dc9fdd99
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471979"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811573"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Pacemaker instellen op SUSE Linux Enterprise Server in Azure
 
@@ -365,6 +365,9 @@ De volgende items zijn vooraf vastgesteld met **[A]** - van toepassing op alle k
    </code></pre>
 
 1. **[A]** Cloud-netconfig-azure configureren voor HA-cluster
+
+   >[!NOTE]
+   > Controleer de geïnstalleerde versie van pakket **cloud-netconfig-azure** door **zypper info cloud-netconfig-azure**uit te voeren. Als de versie in uw omgeving 1,3 of hoger is, is het niet langer nodig om het beheer van netwerkinterfaces door de plug-in van het cloudnetwerk te onderdrukken. Als de versie lager is dan 1.3, raden we aan om het **pakket cloud-netconfig-azure** bij te werken naar de nieuwste beschikbare versie.  
 
    Wijzig het configuratiebestand voor de netwerkinterface zoals hieronder wordt weergegeven om te voorkomen dat de plug-in van het cloudnetwerk het virtuele IP-adres verwijdert (Pacemaker moet de VIP-toewijzing beheren). Zie [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)voor meer informatie. 
 

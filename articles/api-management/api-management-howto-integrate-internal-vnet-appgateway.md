@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 2b8cf66afa1d8aa592d5755ebab70cd6ad2e75fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298050"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811169"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API-beheer integreren in een interne VNET met Application Gateway
 
@@ -64,7 +64,7 @@ In het eerste installatievoorbeeld worden al uw API's alleen beheerd vanuit uw v
 * **Back-endservergroep:** Dit is het interne virtuele IP-adres van de API Management-service.
 * **Instellingen voor back-endservergroep:** Elke groep heeft instellingen zoals poort, protocol en cookie-gebaseerde affiniteit. Deze instellingen worden toegepast op alle servers in de groep.
 * **Front-end poort:** Dit is de openbare poort die wordt geopend op de toepassingsgateway. Verkeer raken wordt doorgestuurd naar een van de back-end servers.
-* **Luisteraar:** De listener heeft een front-end poort, een protocol (Http of Https, deze waarden zijn hoofdlettergevoelig) en de naam van het SSL-certificaat (als ssl-offload wordt geconfigureerd).
+* **Luisteraar:** De listener heeft een front-end poort, een protocol (Http of Https, deze waarden zijn hoofdlettergevoelig) en de naam TLS/SSL-certificaat (als tls-offload wordt geconfigureerd).
 * **Regel:** De regel bindt een listener aan een back-endservergroep.
 * **Aangepaste statussonde:** Application Gateway gebruikt standaard op IP-adres gebaseerde sondes om erachter te komen welke servers in de BackendAddressPool actief zijn. De API Management-service reageert alleen op aanvragen met de juiste hostheader, vandaar dat de standaardsondes mislukken. Er moet een aangepaste statussonde worden gedefinieerd om de toepassingsgateway te helpen bepalen of de service in leven is en moet aanvragen doorsturen.
 * **Aangepaste domeincertificaten:** Als u apibeheer vanaf internet wilt openen, moet u een CNAME-toewijzing van de hostnaam maken naar de front-end DNS-naam van de Application Gateway. Dit zorgt ervoor dat de hostname header en certificaat verzonden naar Application Gateway die wordt doorgestuurd naar API Management is een APIM kan herkennen als geldig. In dit voorbeeld gebruiken we twee certificaten - voor de backend en voor de ontwikkelaarsportal.  
@@ -271,7 +271,7 @@ $certPortal = New-AzApplicationGatewaySslCertificate -Name "cert02" -Certificate
 
 ### <a name="step-5"></a>Stap 5
 
-Maak de HTTP-listeners voor de toepassingsgateway. Wijs de front-end IP-configuratie-, poort- en ssl-certificaten aan hen toe.
+Maak de HTTP-listeners voor de toepassingsgateway. Wijs de front-end IP-configuratie, poort en TLS/SSL-certificaten aan hen toe.
 
 ```powershell
 $listener = New-AzApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert -HostName $gatewayHostname -RequireServerNameIndication true
@@ -280,7 +280,7 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>Stap 6
 
-Aangepaste sondes maken `ContosoApi` voor het eindpunt van het API Management-proxydomein. Het `/status-0123456789abcdef` pad is een standaardeindpunt voor de status dat wordt gehost op alle API-beheerservices. Stel `api.contoso.net` in als een aangepaste hostname van sondeomslag om deze te beveiligen met SSL-certificaat.
+Aangepaste sondes maken `ContosoApi` voor het eindpunt van het API Management-proxydomein. Het `/status-0123456789abcdef` pad is een standaardeindpunt voor de status dat wordt gehost op alle API-beheerservices. Stel `api.contoso.net` in als een aangepaste hostname van een sonde om deze te beveiligen met het TLS/SSL-certificaat.
 
 > [!NOTE]
 > De hostnaam `contosoapi.azure-api.net` is de standaardnaam van de `contosoapi` proxyhost die is geconfigureerd wanneer een service met de naam wordt gemaakt in het openbare Azure.
@@ -293,7 +293,7 @@ $apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -
 
 ### <a name="step-7"></a>Stap 7
 
-Upload het certificaat dat moet worden gebruikt op de backend-bronnen met SSL-functie. Dit is hetzelfde certificaat dat u in stap 4 hierboven hebt opgegeven.
+Upload het certificaat dat moet worden gebruikt op de backend-bronnen met TLS-ingeschakeld. Dit is hetzelfde certificaat dat u in stap 4 hierboven hebt opgegeven.
 
 ```powershell
 $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath

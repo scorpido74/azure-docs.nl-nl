@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0de94cdce1d7f0e9da9d2844b300956ad6f6970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80330842"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803157"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Houd me aangemeld (KMSI) inschakelen in Azure Active Directory B2C
 
@@ -54,7 +54,7 @@ Als u KMSI wilt `DataUri` inschakelen, stelt u het element inhoudsdefinitie in o
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Voeg de metadata toe aan het zelfverklaarde technische profiel
 
-Als u het kmsi-selectievakje wilt toevoegen aan de aanmeldings- en aanmeldingspagina, stelt u de `setting.enableRememberMe` metagegevens in op false. Overschrijven van de technische profielen SelfAsserted-LocalAccountSignin-Email in het extensiebestand.
+Als u het kmsi-selectievakje wilt toevoegen aan de aanmeldings- en aanmeldingspagina, stelt u de `setting.enableRememberMe` metagegevens in op true. Overschrijven van de technische profielen SelfAsserted-LocalAccountSignin-Email in het extensiebestand.
 
 1. Zoek het element Claimproviders. Als het element niet bestaat, voeg je het toe.
 1. Voeg de volgende claimprovider toe aan het element ClaimsProviders:

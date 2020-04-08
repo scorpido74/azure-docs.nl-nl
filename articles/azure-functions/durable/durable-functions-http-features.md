@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 29d837446960b7535b26284efdfab7a1c59ea968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fece1155d2f707f11dda9f3896bd8a08deff1557
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132501"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802380"
 ---
 # <a name="http-features"></a>HTTP-functies
 
@@ -41,7 +41,7 @@ Zie het [HTTP API's-artikel](durable-functions-http-api.md) voor een volledige b
 
 De [orchestration client binding](durable-functions-bindings.md#orchestration-client) onthult API's die handige HTTP-responspayloads kunnen genereren. Het kan bijvoorbeeld een antwoord maken met koppelingen naar beheer-API's voor een specifieke orchestration-instantie. In de volgende voorbeelden wordt een HTTP-triggerfunctie weergegeven die laat zien hoe u deze API gebruiken voor een nieuwe instantie voor orkestratie:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
@@ -114,7 +114,7 @@ Vanaf duurzame functies 2.0 kunnen orkestraties http-API's native gebruiken met 
 
 In de volgende voorbeeldcode wordt een orchestrator-functie weergegeven die een uitgaand HTTP-verzoek indient:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -172,7 +172,7 @@ Duurzame functies ondersteunen standaard oproepen naar API's die Azure Active Di
 
 De volgende code is een voorbeeld van een .NET orchestrator-functie. De functie zorgt ervoor dat geverifieerde aanroepen om een virtuele machine opnieuw op te starten met behulp van de Azure Resource Manager [virtual machines REST API.](https://docs.microsoft.com/rest/api/compute/virtualmachines)
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -232,7 +232,7 @@ Bij runtime retourneert de geconfigureerde tokenbron automatisch een OAuth 2.0-t
 * Tokens worden nooit opgeslagen in de duurzame orchestration-status.
 * U hoeft geen code te schrijven om tokenacquisitie te beheren.
 
-U vindt een vollediger voorbeeld in het [vooraf gecompileerde C# RestartVm's-voorbeeld.](https://github.com/Azure/azure-functions-durable-extension/blob/v2/samples/v2/precompiled/RestartVMs.cs)
+U vindt een vollediger voorbeeld in het [vooraf gecompileerde C# RestartVm's-voorbeeld.](https://github.com/Azure/azure-functions-durable-extension/blob/dev/samples/precompiled/RestartVMs.cs)
 
 Beheerde identiteiten zijn niet beperkt tot Azure-bronbeheer. U beheerde identiteiten gebruiken om toegang te krijgen tot elke API die Azure AD-tokens voor ad-dragers accepteert, waaronder Azure-services van Microsoft en web-apps van partners. De web-app van een partner kan zelfs een andere functie-app zijn. Zie [Azure-services die Azure AD-verificatie ondersteunen](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)voor een lijst met Azure-services die verificatie van Azure ONDERSTEUNEN.
 

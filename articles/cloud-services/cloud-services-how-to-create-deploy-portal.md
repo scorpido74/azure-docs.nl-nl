@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386167"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811336"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Een cloudservice maken en implementeren
 De Azure-portal biedt u op twee manieren om een cloudservice te maken en te implementeren: *Snel maken* en *aanpassen maken.*
@@ -42,7 +42,7 @@ Voordat u een cloudservice implementeren, moet u het cloudservicepakket (.cspkg)
 
 Drie functies voor cloudservices vereisen speciale configuraties voordat u een servicepakket exporteert:
 
-* Als u een cloudservice wilt implementeren die Ssl (Secure Sockets Layer) gebruikt voor gegevensversleuteling, [configureert u uw toepassing](cloud-services-configure-ssl-certificate-portal.md#modify) voor SSL.
+* Als u een cloudservice wilt implementeren die tls (Transport Layer Security), voorheen bekend als Secure Sockets Layer (SSL), gebruikt voor gegevensversleuteling, [configureert u uw toepassing](cloud-services-configure-ssl-certificate-portal.md#modify) voor TLS.
 * Als u Extern bureaublad-verbindingen wilt configureren voor rolinstanties, [configureert u de rollen](cloud-services-role-enable-remote-desktop-new-portal.md) voor Extern bureaublad.
 * Als u verbose-monitoring voor uw cloudservice wilt configureren, schakelt u Azure Diagnostics in voor de cloudservice. *Minimale bewaking* (het standaardbewakingsniveau) maakt gebruik van prestatiemeteritems die zijn verzameld van de hostbesturingssystemen voor rolexemplaren (virtuele machines). *Verbose monitoring* verzamelt aanvullende statistieken op basis van prestatiegegevens binnen de rolinstanties om een betere analyse van problemen die optreden tijdens de verwerking van toepassingen mogelijk te maken. Zie Diagnostische gegevens inschakelen in [Azure](cloud-services-dotnet-diagnostics.md)voor meer informatie over het inschakelen van Azure Diagnostics.
 
@@ -70,7 +70,7 @@ Als u een cloudservice wilt maken met implementaties van webrollen of werknemers
 ## <a name="upload-a-certificate"></a>Een certificaat uploaden
 Als uw implementatiepakket is [geconfigureerd om certificaten te gebruiken,](cloud-services-configure-ssl-certificate-portal.md#modify)u het certificaat nu uploaden.
 
-1. Selecteer **Certificaten**en selecteer in het deelvenster **Certificaten toevoegen** het SSL-certificaat .pfx-bestand en geef vervolgens het **wachtwoord** voor het certificaat op.
+1. Selecteer **Certificaten**en selecteer in het deelvenster **Certificaten toevoegen** het TLS/SSL-certificaat .pfx-bestand en geef vervolgens het **wachtwoord** voor het certificaat op.
 2. Klik **op Certificaat bijvoegen**en klik vervolgens op **OK** in het deelvenster **Certificaten toevoegen.**
 3. Klik **op Maken** in het deelvenster **Cloudservice.** Wanneer de implementatie de status **Gereed** heeft bereikt, u doorgaan naar de volgende stappen.
 
@@ -90,7 +90,7 @@ Als uw implementatiepakket is [geconfigureerd om certificaten te gebruiken,](clo
 * [Algemene configuratie van uw cloudservice.](cloud-services-how-to-configure-portal.md)
 * Een [aangepaste domeinnaam configureren](cloud-services-custom-domain-name-portal.md).
 * [Beheer uw cloudservice.](cloud-services-how-to-manage-portal.md)
-* [Ssl-certificaten](cloud-services-configure-ssl-certificate-portal.md)configureren .
+* [TLS/SSL-certificaten](cloud-services-configure-ssl-certificate-portal.md)configureren.
 
 
 

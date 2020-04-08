@@ -1,19 +1,19 @@
 ---
-title: SSL-certificaten toevoegen en beheren
+title: TLS/SSL-certificaten toevoegen en beheren
 description: Maak een gratis certificaat, importeer een App Service-certificaat, importeer een Key Vault-certificaat of koop een App Service-certificaat in Azure App Service.
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239761"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810585"
 ---
-# <a name="add-an-ssl-certificate-in-azure-app-service"></a>Een SSL-certificaat toevoegen in Azure App Service
+# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Een TLS/SSL-certificaat toevoegen in Azure App Service
 
 [Azure App Service](overview.md) biedt een zeer schaalbare, zelfpatchende webhostingservice. In dit artikel ziet u hoe u een privécertificaat of een openbaar certificaat maken, uploaden of importeren in App Service. 
 
@@ -47,7 +47,7 @@ Het [gratis App Service Managed Certificate](#create-a-free-certificate-preview)
 * Bevat een persoonlijke sleutel van minstens 2048 bits
 * Bevat alle tussenliggende certificaten in de certificaatketen
 
-Als u een aangepast domein in een SSL-binding wilt beveiligen, heeft het certificaat aanvullende vereisten:
+Als u een aangepast domein in een TLS-binding wilt beveiligen, heeft het certificaat aanvullende vereisten:
 
 * Bevat een [uitgebreid sleutelgebruik](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Extensions_informing_a_specific_usage_of_a_certificate) voor serververificatie (OID = 1.3.6.1.5.5.7.3.1)
 * Ondertekend door een vertrouwde certificeringsinstantie
@@ -59,7 +59,7 @@ Als u een aangepast domein in een SSL-binding wilt beveiligen, heeft het certifi
 
 ## <a name="create-a-free-certificate-preview"></a>Een gratis certificaat maken (Voorbeeld)
 
-Het gratis App Service Managed Certificate is een turn-key oplossing voor het beveiligen van uw aangepaste DNS-naam in App Service. Het is een volledig functioneel SSL-certificaat dat wordt beheerd door App Service en automatisch wordt vernieuwd. Het gratis certificaat wordt geleverd met de volgende beperkingen:
+Het gratis App Service Managed Certificate is een turn-key oplossing voor het beveiligen van uw aangepaste DNS-naam in App Service. Het is een volledig functioneel TLS/SSL-certificaat dat wordt beheerd door App Service en automatisch wordt vernieuwd. Het gratis certificaat wordt geleverd met de volgende beperkingen:
 
 - Ondersteunt geen wildcardcertificaten.
 - Ondersteunt geen naakte domeinen.
@@ -237,7 +237,7 @@ Maak een bestand voor het samengevoegde certificaat met de naam _mergedcertifica
 
 ### <a name="export-certificate-to-pfx"></a>Certificaat naar PFX exporteren
 
-Exporteer uw samengevoegde SSL-certificaat met de persoonlijke sleutel die met uw certificaataanvraag is gegenereerd.
+Exporteer uw samengevoegde TLS/SSL-certificaat met de privésleutel waarmee uw certificaataanvraag is gegenereerd.
 
 Als u de certificaataanvraag met OpenSSL hebt gegenereerd, hebt u een bestand met een persoonlijke sleutel gemaakt. Voer de volgende opdracht uit om uw certificaat naar PFX te exporteren. Vervang de tijdelijke aanduidingen _ &lt;met een privésleutelbestand>_ en _ &lt;samengevoegd-certificaatbestand>_ door de paden naar uw privésleutel en uw samengevoegde certificaatbestand.
 
@@ -245,7 +245,7 @@ Als u de certificaataanvraag met OpenSSL hebt gegenereerd, hebt u een bestand me
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
 ```
 
-Wanneer u daarom wordt gevraagd, geeft u een wachtwoord voor export op. U gebruikt dit wachtwoord later wanneer u uw SSL-certificaat naar App Service uploadt.
+Wanneer u daarom wordt gevraagd, geeft u een wachtwoord voor export op. U gebruikt dit wachtwoord wanneer u uw TLS/SSL-certificaat later uploadt naar App Service.
 
 Als u IIS of _Certreq.exe_ hebt gebruikt voor het genereren van uw certificaataanvraag, installeert u het certificaat op uw lokale computer en [exporteert u het certificaat naar PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
 
@@ -361,18 +361,18 @@ Nu u het App Service-certificaat verwijderen. Selecteer **Overzicht** > **verwij
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Meer bronnen
 
-* [Een aangepaste DNS-naam beveiligen met een SSL-binding](configure-ssl-bindings.md)
+* [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md)
 * [HTTPS afdwingen](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 afdwingen](configure-ssl-bindings.md#enforce-tls-versions)
-* [Een SSL-certificaat gebruiken in uw toepassingscode](configure-ssl-certificate-in-code.md)
+* [Een TLS/SSL-certificaat gebruiken in uw code in Azure App Service](configure-ssl-certificate-in-code.md)
 * [Veelgestelde vragen: App-servicecertificaten](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

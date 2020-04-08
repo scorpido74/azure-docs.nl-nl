@@ -3,12 +3,12 @@ title: Actieve leersuggesties - QnA Maker
 description: Met actieve leersuggesties u de kwaliteit van uw kennisbasis verbeteren door alternatieve vragen, op basis van gebruikersinzendingen, voor te stellen aan uw vraag- en antwoordpaar.
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: af4f6b399bfd537b38ea741d03e59371ee81e588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edbe06b12fbb97473b28ccca968fd3e7d8366152
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053141"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804210"
 ---
 # <a name="active-learning-suggestions"></a>Actieve leersuggesties
 
@@ -27,7 +27,7 @@ Beide methoden bieden de ranker vergelijkbare query's die zijn geclusterd.
 
 ## <a name="how-active-learning-works"></a>Hoe actief leren werkt
 
-Actief leren wordt geactiveerd op basis van de scores van de top enkele antwoorden geretourneerd door QnA Maker. Als de scoreverschillen tussen QnA-sets die overeenkomen met de query binnen een klein bereik liggen, wordt de query beschouwd als een mogelijke suggestie (als een alternatieve vraag) voor elk van de mogelijke QnA-paren. Zodra u de voorgestelde vraag voor een specifiek QnA-paar accepteert, wordt deze afgewezen voor de andere paren. Je moet niet vergeten om op te slaan en te trainen, na het accepteren van suggesties.
+Actief leren wordt geactiveerd op basis van de scores van de top enkele antwoorden geretourneerd door QnA Maker. Als de scoreverschillen tussen QnA-paren die overeenkomen met de query binnen een klein bereik liggen, wordt de query beschouwd als een mogelijke suggestie (als een alternatieve vraag) voor elk van de mogelijke QnA-paren. Zodra u de voorgestelde vraag voor een specifiek QnA-paar accepteert, wordt deze afgewezen voor de andere paren. Je moet niet vergeten om op te slaan en te trainen, na het accepteren van suggesties.
 
 Actief leren geeft de best mogelijke suggesties in gevallen waarin de eindpunten een redelijke hoeveelheid en verscheidenheid aan gebruiksquery's krijgen. Wanneer 5 of meer vergelijkbare query's worden geclusterd, stelt QnA Maker elke 30 minuten de gebruikersvragen voor aan de knowledge base designer om te accepteren of te weigeren. Alle suggesties worden geclusterd door gelijkenis en topsuggesties voor alternatieve vragen worden weergegeven op basis van de frequentie van de specifieke query's door eindgebruikers.
 

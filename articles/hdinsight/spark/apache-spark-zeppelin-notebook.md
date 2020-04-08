@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/18/2020
-ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: 3c1369e813ba6518f6cd4b27082020ae36a24c82
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598269"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811201"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin-notebooks gebruiken met Apache Spark-cluster in Azure HDInsight
 
-HDInsight Spark-clusters bevatten [Apache Zeppelin-laptops](https://zeppelin.apache.org/) die u gebruiken om [Apache Spark-taken](https://spark.apache.org/) uit te voeren. In dit artikel leert u hoe u de Zeppelin-notebook gebruiken op een HDInsight-cluster.
+HDInsight Spark-clusters bevatten [Apache Zeppelin-laptops.](https://zeppelin.apache.org/) Gebruik de notitieblokken om [Apache Spark-taken](https://spark.apache.org/) uit te voeren. In dit artikel leert u hoe u de Zeppelin-notebook gebruiken op een HDInsight-cluster.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies.
-* Het URI-schema voor de primaire opslag van uw clusters. Dit geldt `wasb://` voor Azure `abfs://` Blob Storage, Azure Data `adl://` Lake Storage Gen2 of voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Blob `wasbs://`Storage, is de URI .  Zie [Veilige overdracht in Azure Storage vereisen](../../storage/common/storage-require-secure-transfer.md) voor meer informatie.
+* Het URI-schema voor de primaire opslag van uw clusters. Het schema `wasb://` zou zijn voor `abfs://` Azure Blob Storage, `adl://` voor Azure Data Lake Storage Gen2 of voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Blob `wasbs://`Storage, is de URI .  Zie [Veilige overdracht in Azure Storage vereisen](../../storage/common/storage-require-secure-transfer.md) voor meer informatie.
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Een Apache Zeppelin-laptop starten
 
@@ -71,7 +71,7 @@ HDInsight Spark-clusters bevatten [Apache Zeppelin-laptops](https://zeppelin.apa
     hvac.registerTempTable("hvac")
     ```
 
-    Druk op **Shift + ENTER** of selecteer de knop **Afspelen** voor de alinea om het fragment uit te voeren. De status in de rechterhoek van de alinea moet worden uitgevoerd van READY, IN BEHANDELING, LOPEND naar VOLTOOID. De uitvoer wordt onder aan dezelfde alinea weergegeven. De screenshot ziet er als volgt uit:
+    Druk op **Shift + ENTER** of selecteer de knop **Afspelen** voor de alinea om het fragment uit te voeren. De status in de rechterhoek van de alinea moet worden uitgevoerd van READY, IN BEHANDELING, LOPEND naar VOLTOOID. De uitvoer wordt onder aan dezelfde alinea weergegeven. De screenshot ziet eruit als de volgende afbeelding:
 
     ![Een tijdelijke tabel maken op basis van ruwe gegevens](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "Een tijdelijke tabel maken op basis van ruwe gegevens")
 
@@ -80,7 +80,7 @@ HDInsight Spark-clusters bevatten [Apache Zeppelin-laptops](https://zeppelin.apa
     > [!NOTE]  
     > %spark2-interpreter wordt niet ondersteund in Zeppelin-laptops in alle HDInsight-versies en %sh-interpreter wordt niet meer ondersteund vanaf HDInsight 4.0.
 
-5. U nu Spark SQL-instructies op de `hvac` tabel uitvoeren. Plak de volgende query in een nieuwe alinea. De query haalt de bouw-ID en het verschil tussen het doel en de werkelijke temperaturen voor elk gebouw op een bepaalde datum. Druk op **Shift + ENTER**.
+5. U nu Spark SQL-instructies op de `hvac` tabel uitvoeren. Plak de volgende query in een nieuwe alinea. De query haalt de bouw-ID op. Ook het verschil tussen het doel en de werkelijke temperaturen voor elk gebouw op een bepaalde datum. Druk op **Shift + ENTER**.
 
     ```sql
     %sql
@@ -89,7 +89,7 @@ HDInsight Spark-clusters bevatten [Apache Zeppelin-laptops](https://zeppelin.apa
 
     De **%sql-instructie** aan het begin vertelt het notitieblok om de Livy Scala-tolk te gebruiken.
 
-6. Selecteer het pictogram **Staafdiagram** om de weergave te wijzigen.  **instellingen**, die worden weergegeven nadat u **Staafdiagram**hebt geselecteerd, u **Toetsen**en **Waarden**kiezen.  De volgende schermafbeelding toont de uitvoer.
+6. Selecteer het pictogram **Staafdiagram** om de weergave te wijzigen.  **instellingen**, worden weergegeven nadat u **Staafdiagram**hebt geselecteerd, u **Toetsen**en **Waarden**kiezen.  De volgende schermafbeelding toont de uitvoer.
 
     ![Een Spark SQL-instructie uitvoeren met het notitieblok1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Een Spark SQL-instructie uitvoeren met het notitieblok1")
 
@@ -113,7 +113,7 @@ HDInsight Spark-clusters bevatten [Apache Zeppelin-laptops](https://zeppelin.apa
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Hoe gebruik ik externe pakketten met het notitieblok?
 
-U het Zeppelin-notitieblok in het Apache Spark-cluster op HDInsight configureren om externe pakketten te gebruiken die niet out-of-the-box in het cluster zijn opgenomen. U zoeken in de [Maven repository](https://search.maven.org/) voor de volledige lijst van pakketten die beschikbaar zijn. U ook een lijst met beschikbare pakketten uit andere bronnen krijgen. Een volledige lijst met door de community bijgedragen pakketten is bijvoorbeeld beschikbaar bij [Spark-pakketten.](https://spark-packages.org/)
+Zeppelin-laptop in apache spark-cluster op HDInsight kan externe pakketten die door de community zijn bijgedragen en die niet in het cluster zijn opgenomen, gebruiken. Zoek in de [Maven-opslagplaats](https://search.maven.org/) naar de volledige lijst met pakketten die beschikbaar zijn. U ook een lijst met beschikbare pakketten uit andere bronnen krijgen. Een volledige lijst met door de community bijgedragen pakketten is bijvoorbeeld beschikbaar bij [Spark-pakketten.](https://spark-packages.org/)
 
 In dit artikel ziet u hoe u het [spark-csv-pakket](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) gebruiken met het Jupyter-notitieblok.
 
@@ -149,12 +149,13 @@ De Zeppelin-notitieblokken worden opgeslagen in de clusterhoofdknooppunten. Dus 
 
 ![Notitieblok downloaden](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "Het notitieblok downloaden")
 
-Dit slaat het notitieblok op als JSON-bestand op uw downloadlocatie.
+Met deze actie slaat u het notitieblok op als JSON-bestand op uw downloadlocatie.
 
-## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Shiro gebruiken om toegang tot Zeppelin-tolken te configureren in ESP-clusters (Enterprise Security Package)
-Zoals hierboven vermeld, wordt de `%sh` tolk niet ondersteund vanaf HDInsight 4.0. Aangezien `%sh` interpreter potentiële beveiligingsproblemen introduceert, zoals toegangskeytabs met shell-opdrachten, is deze ook uit HDInsight 3.6 ESP-clusters verwijderd. Dit `%sh` betekent dat de tolk niet beschikbaar is wanneer u standaard op **Nieuwe notitie maken** of in de gebruikersinterface voor tolken klikt. 
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Toegang `Shiro` tot Zeppelin-tolken configureren in ESP-clusters (Enterprise Security Package)
 
-Gebruikers van bevoorrechte `Shiro.ini` domeinen kunnen het bestand gebruiken om de toegang tot de gebruikersinterface van de tolk te beheren. Zo kunnen alleen deze `%sh` gebruikers nieuwe tolken maken en `%sh` machtigingen instellen voor elke nieuwe tolk. Als u de `shiro.ini` toegang met het bestand wilt beheren, gebruikt u de volgende stappen:
+Zoals hierboven vermeld, wordt de `%sh` tolk niet ondersteund vanaf HDInsight 4.0. Aangezien `%sh` interpreter potentiële beveiligingsproblemen introduceert, zoals toegangskeytabs met shell-opdrachten, is deze ook uit HDInsight 3.6 ESP-clusters verwijderd. Dit `%sh` betekent dat de tolk niet beschikbaar is wanneer u standaard op **Nieuwe notitie maken** of in de gebruikersinterface voor tolken klikt.
+
+Gebruikers van bevoorrechte `Shiro.ini` domeinen kunnen het bestand gebruiken om de toegang tot de gebruikersinterface van de tolk te beheren. Alleen deze gebruikers `%sh` kunnen nieuwe tolken maken en `%sh` machtigingen instellen voor elke nieuwe tolk. Als u de `shiro.ini` toegang met het bestand wilt beheren, gebruikt u de volgende stappen:
 
 1. Een nieuwe rol definiëren met een bestaande domeinnaam. In het volgende `adminGroupName` voorbeeld is een groep bevoorrechte gebruikers in AAD. Gebruik geen speciale tekens of witte spaties in de groepsnaam. De tekens `=` na geven de machtigingen voor deze rol. `*`betekent dat de groep volledige machtigingen heeft.
 
@@ -172,7 +173,7 @@ Gebruikers van bevoorrechte `Shiro.ini` domeinen kunnen het bestand gebruiken om
 
 ## <a name="livy-session-management"></a>Livy sessiemanagement
 
-Wanneer u de eerste codealinea uitvoert in uw Zeppelin-notitieblok, wordt er een nieuwe Livy-sessie gemaakt in uw HDInsight Spark-cluster. Deze sessie wordt gedeeld over alle Zeppelin-notitieblokken die u vervolgens maakt. Als om wat voor reden dan ook de Livy-sessie wordt gedood (cluster reboot, enzovoort), kun je geen taken uitvoeren vanuit het Zeppelin-notitieblok.
+De eerste codealinea in uw Zeppelin-notitieblok maakt een nieuwe Livy-sessie in uw cluster. Deze sessie wordt gedeeld in alle Zeppelin-notitieblokken die u later maakt. Als de Livy sessie om welke reden dan ook wordt gedood, zullen er geen banen worden uitgevoerd van de Zeppelin notebook.
 
 In een dergelijk geval moet u de volgende stappen uitvoeren voordat u taken uitvoeren vanuit een Zeppelin-notitieblok.  
 
@@ -184,7 +185,7 @@ In een dergelijk geval moet u de volgende stappen uitvoeren voordat u taken uitv
 
     ![Start de Livy-tolk opnieuw](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "De Zeppelin-tolk opnieuw starten")
 
-3. Een codecel uitvoeren vanuit een bestaand Zeppelin-notitieblok. Hierdoor ontstaat een nieuwe Livy-sessie in het HDInsight-cluster.
+3. Een codecel uitvoeren vanuit een bestaand Zeppelin-notitieblok. Deze code maakt een nieuwe Livy-sessie in het HDInsight-cluster.
 
 ## <a name="general-information"></a>Algemene informatie
 
@@ -206,7 +207,7 @@ Als u de service wilt valideren vanaf een opdrachtregel, gaat SSH naar het hoofd
 |---|---|
 |zeppelin-server|/usr/hdp/current/zeppelin-server/|
 |Serverlogboeken|/var/log/zeppelin|
-|Configuratietolk, Shiro, site.xml, log4j|/usr/hdp/current/zeppelin-server/conf or /etc/zeppelin/conf|
+|Configuratietolk, `Shiro`, site.xml, log4j|/usr/hdp/current/zeppelin-server/conf or /etc/zeppelin/conf|
 |PID-map|/var/run/zeppelin|
 
 ### <a name="enable-debug-logging"></a>Foutopsporingslogboekregistratie inschakelen
@@ -227,7 +228,7 @@ Als u de service wilt valideren vanaf een opdrachtregel, gaat SSH naar het hoofd
 
 ### <a name="scenarios"></a>Scenario's
 
-* [Apache Spark met BI: interactieve data-analyse uitvoeren met Spark in HDInsight met BI-tools](apache-spark-use-bi-tools.md)
+* [Apache Spark met BI: interactieve data-analyse met Spark in HDInsight met BI-tools](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Gebruik Spark in HDInsight voor het analyseren van de temperatuur van gebouwen met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark met Machine Learning: Gebruik Spark in HDInsight om de resultaten van voedselinspectie te voorspellen](apache-spark-machine-learning-mllib-ipython.md)
 * [Website log analyse met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)

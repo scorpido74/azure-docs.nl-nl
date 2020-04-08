@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/03/2020
+ms.date: 04/07/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: a8930af1366fef3d8c4491fca5e9403905648de1
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 951396afc95a215a6ff9f4885f83fcdf6efdeb72
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638016"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810334"
 ---
 # <a name="what-is-azure-firewall"></a>Wat is Azure Firewall?
 
@@ -120,6 +120,7 @@ Netwerkfilterregels voor niet-TCP/UDP-protocollen (bijvoorbeeld ICMP) werken nie
 |Actieve FTP wordt niet ondersteund|Active FTP is uitgeschakeld op Azure Firewall om te beschermen tegen FTP-bounceaanvallen met de opdracht FTP-poort.|U in plaats daarvan Passieve FTP gebruiken. U moet nog steeds expliciet TCP-poorten 20 en 21 op de firewall openen.
 |SNAT-poortgebruiksstatistiek toont 0%|De azure firewall SNAT-poortgebruiksstatistiek kan het gebruik van 0% weergeven, zelfs wanneer SNAT-poorten worden gebruikt. In dit geval geeft het gebruik van de statistiek als onderdeel van de statistiek firewallstatus een onjuist resultaat.|Dit probleem is opgelost en de uitrol naar de productie is gericht voor mei 2020. In sommige gevallen lost firewall-herschikking het probleem op, maar het is niet consistent. Als tussenoplossing gebruikt u alleen de status van de firewall om te zoeken naar *status=gedegradeerd*, niet voor *status=ongezond*. Port uitputting zal worden weergegeven als *gedegradeerd*. *Niet gezond* is gereserveerd voor toekomstig gebruik wanneer de meer statistieken zijn die van invloed zijn op de firewallstatus.
 |DNAT wordt niet ondersteund met Forced Tunneling ingeschakeld|Firewalls die zijn geïmplementeerd met Geforceerde tunneling ingeschakeld, kunnen geen inkomende toegang vanaf het internet ondersteunen vanwege asymmetrische routering.|Dit is door het ontwerp vanwege asymmetrische routing. Het retourpad voor binnenkomende verbindingen gaat via de on-premises firewall, die de verbinding niet heeft zien tot stand zijn gebracht.
+|Uitgaande passieve FTP werkt niet voor firewalls met meerdere openbare IP-adressen.|Passive FTP legt verschillende verbindingen voor besturingen en datakanalen. Wanneer een firewall met meerdere openbare IP-adressen uitgaande gegevens verzendt, selecteert deze willekeurig een van de openbare IP-adressen voor het bron-IP-adres. FTP mislukt wanneer gegevens en controlekanalen verschillende bron-IP-adressen gebruiken.|Er is een expliciete SNAT-configuratie gepland. Overweeg in de tussentijd om in deze situatie één IP-adres te gebruiken.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

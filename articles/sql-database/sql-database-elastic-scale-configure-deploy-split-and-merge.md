@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 50dbca0b3a761b72134eaa6cfed57e231be4ef13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6f61de23ab4b637cfb5b8ee365ddea9764bf515
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421030"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810202"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Een gesplitste samenvoegservice implementeren om gegevens tussen geshard databases te verplaatsen
 
@@ -150,7 +150,7 @@ Houd er rekening mee dat voor productie-implementaties afzonderlijke certificate
 
 ## <a name="troubleshoot-the-deployment"></a>Problemen met de implementatie oplossen
 
-Als uw webrol niet online komt, is dit waarschijnlijk een probleem met de beveiligingsconfiguratie. Controleer of de SSL is geconfigureerd zoals hierboven beschreven.
+Als uw webrol niet online komt, is dit waarschijnlijk een probleem met de beveiligingsconfiguratie. Controleer of de TLS/SSL is geconfigureerd zoals hierboven beschreven.
 
 Als uw werknemersrol niet online komt, maar uw webrol slaagt, is het waarschijnlijk een probleem om verbinding te maken met de statusdatabase die u eerder hebt gemaakt.
 
@@ -254,7 +254,7 @@ De meegeleverde scriptbestanden zijn:
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Voer het *script ExecuteSampleSplitMerge.ps1* uit om een gesplitste bewerking uit te voeren (de helft van de gegevens op de eerste shard naar de tweede shard verplaatsen) en vervolgens een samenvoegbewerking (de gegevens terug naar de eerste shard). Als u SSL hebt geconfigureerd en het http-eindpunt uitgeschakeld hebt gelaten, moet u ervoor zorgen dat u het https:// eindpunt gebruikt.
+5. Voer het *script ExecuteSampleSplitMerge.ps1* uit om een gesplitste bewerking uit te voeren (de helft van de gegevens op de eerste shard naar de tweede shard verplaatsen) en vervolgens een samenvoegbewerking (de gegevens terug naar de eerste shard). Als u TLS hebt geconfigureerd en het http-eindpunt uitgeschakeld hebt gelaten, moet u ervoor zorgen dat u het https:// eindpunt gebruikt.
 
    Voorbeeldopdrachtregel:
 
@@ -333,7 +333,7 @@ Mogelijk ziet u het onderstaande bericht wanneer u de powershell-scripts van het
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-Deze fout betekent dat uw SSL-certificaat niet correct is geconfigureerd. Volg de instructies in de rubriek 'Verbinden met een webbrowser'.
+Deze fout betekent dat uw TLS/SSL-certificaat niet correct is geconfigureerd. Volg de instructies in de rubriek 'Verbinden met een webbrowser'.
 
 Als u geen aanvragen indienen, ziet u mogelijk het:
 

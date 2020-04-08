@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 0aa62a76727f6f913c277100d8c5b36ed1b00110
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2133524f57576c4646de9d4bf7f37b573a77e6d
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77618507"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80813824"
 ---
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -23,7 +23,7 @@ Een resourcegroep is een logische container waarin Azure-resources worden geïmp
 
 Maak een resourcegroep met de [opdracht AZ-groep maak](/cli/azure/group?view=azure-cli-latest#az-group-create) Azure CLI, de opdracht [Nieuw-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell of vanuit de [Azure-portal.](https://portal.azure.com)
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" --location eastus
@@ -40,11 +40,11 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 Maak een sleutelkluis met de sjabloon [AZ KeyVault maak](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Azure CLI, de opdracht [Nieuw-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell, de [Azure-portal](https://portal.azure.com)of een [Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
 >[!WARNING]
-> Om ervoor te zorgen dat versleutelingsgeheimen de regionale grenzen niet overschrijden, vereist Azure Disk Encryption dat de Key Vault en de VM's in dezelfde regio worden geplaatst. Maak en gebruik een Key Vault die zich in dezelfde regio bevindt als de VM's die moeten worden versleuteld. 
+> Om ervoor te zorgen dat versleutelingsgeheimen de regionale grenzen niet overschrijden, vereist Azure Disk Encryption dat de Key Vault en de VM's in dezelfde regio en hetzelfde abonnement worden geplaatst. Maak en gebruik een Key Vault die zich in dezelfde regio bevindt als de VM's die moeten worden versleuteld. 
 
 Elke Key Vault moet een unieke naam hebben. Vervang <uw-unieke-keyvault-naam> met de naam van uw sleutelkluis in de volgende voorbeelden.
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Voeg bij het maken van een sleutelkluis met Azure CLI de vlag '--enabled-for-disk-encryption' toe.
 
@@ -73,7 +73,7 @@ Het Azure-platform heeft toegang nodig tot de versleutelingssleutels of -geheime
 
 Als u uw sleutelkluis niet hebt ingeschakeld voor schijfversleuteling, -implementatie of sjabloonimplementatie op het moment van maken (zoals in de vorige stap is aangetoond), moet u het geavanceerde toegangsbeleid bijwerken.  
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Gebruik [de AZ KeyVault-update](/cli/azure/keyvault#az-keyvault-update) om schijfversleuteling voor de sleutelkluis in te schakelen. 
 
@@ -143,7 +143,7 @@ Azure Disk Encryption ondersteunt geen ondersteuning voor het opgeven van poortn
   * URL van acceptabele sleutelkluis:*https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * URL van onaanvaardbare sleutelkluis:*https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Gebruik de opdracht Azure CLI [az keyvault-toets om](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) een nieuwe KEK te genereren en op te slaan in uw sleutelkluis.
 

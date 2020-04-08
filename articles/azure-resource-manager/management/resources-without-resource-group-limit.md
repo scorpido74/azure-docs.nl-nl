@@ -2,13 +2,13 @@
 title: Resources zonder limiet voor 800 tellingen
 description: Hiermee worden de Azure-brontypen weergegeven die meer dan 800 exemplaren in een resourcegroep kunnen bevatten.
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 8644bec1a68acebff18cf83d17acb014784dc964
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937937"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804772"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resources die niet zijn beperkt tot 800 exemplaren per resourcegroep
 
@@ -26,7 +26,6 @@ Voor sommige resourcetypen moet u contact opnemen met ondersteuning om de 800-in
 * Registraties
 * registraties/klantAbonnementen
 * registraties/producten
-* verificatieToetsen
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -35,6 +34,9 @@ Voor sommige resourcetypen moet u contact opnemen met ondersteuning om de 800-in
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 * Schijven
+* Galeries
+* galerijen/afbeeldingen
+* galerijen/afbeeldingen/versies
 * images
 * momentopnamen
 * virtueleMachines
@@ -67,6 +69,11 @@ Voor sommige resourcetypen moet u contact opnemen met ondersteuning om de 800-in
 * serverGroepen
 * Servers
 * serversv2
+* singleServers
+
+## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
+
+* schema's - Standaard beperkt tot 800 exemplaren. Die limiet kan worden verhoogd door contact op te nemen met ondersteuning.
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
@@ -90,7 +97,7 @@ Voor sommige resourcetypen moet u contact opnemen met ondersteuning om de 800-in
 * softwareUpdateProfiel
 * softwareUpdates
 
-## <a name="microsoftinsights"></a>Microsoft.Insights
+## <a name="microsoftinsights"></a>microsoft.insights
 
 * metrische waarschuwingen
 

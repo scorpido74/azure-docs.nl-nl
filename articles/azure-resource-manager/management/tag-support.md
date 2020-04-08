@@ -2,13 +2,13 @@
 title: Ondersteuning voor resources taggen
 description: Hiermee ziet u welke Azure-brontypen tags ondersteunen. Biedt details voor alle Azure-services.
 ms.topic: conceptual
-ms.date: 02/26/2020
-ms.openlocfilehash: 6100c667c7df0b3e1740777565d260af9fa818a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: e012126995136bec15dc360be5e91007b6f69f09
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77657570"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802489"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagondersteuning voor Azure-bronnen
 In dit artikel wordt beschreven of een resourcetype [tags](tag-resources.md)ondersteunt. De kolom met **de labels Ondersteunt geeft** aan of het resourcetype een eigenschap voor de tag heeft. De kolom met het label **Tag in het kostenrapport** geeft aan of dat resourcetype de tag doorgeeft aan het kostenrapport. U de kosten bekijken op tags in de [kostenanalyse van kostenbeheer](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) en de [Azure-factuur en gegevens over het dagelijks gebruik.](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)
@@ -38,6 +38,7 @@ Ga naar de naamruimte van een resourceprovider:
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Microsoft.Blockchain](#microsoftblockchain)
+> - [Microsoft.BlockchainTokens](#microsoftblockchaintokens)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
 > - [Microsoft.Cache](#microsoftcache)
@@ -55,7 +56,6 @@ Ga naar de naamruimte van een resourceprovider:
 > - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
 > - [Microsoft.ContainerService](#microsoftcontainerservice)
-> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [Microsoft.CustomerLockbox](#microsoftcustomerlockbox)
 > - [Microsoft.CustomProviders](#microsoftcustomproviders)
@@ -83,6 +83,7 @@ Ga naar de naamruimte van een resourceprovider:
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft.Falcon (Microsoft.Falcon)](#microsoftfalcon)
 > - [Microsoft.Features](#microsoftfeatures)
 > - [Microsoft.Gallery](#microsoftgallery)
 > - [Microsoft.Genomics (Microsoft.Genomics)](#microsoftgenomics)
@@ -99,11 +100,13 @@ Ga naar de naamruimte van een resourceprovider:
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.ioTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
+> - [Microsoft.Kubernetes (Microsoft.Kubernetes)](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.Logic](#microsoftlogic)
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft.Maintenance](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [Microsoft.ManagedServices](#microsoftmanagedservices)
 > - [Microsoft.Management](#microsoftmanagement)
@@ -129,6 +132,7 @@ Ga naar de naamruimte van een resourceprovider:
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
 > - [Microsoft.ProjectBabylon (Microsoft.ProjectBabylon)](#microsoftprojectbabylon)
+> - [Microsoft.Quantum](#microsoftquantum)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.RemoteApp](#microsoftremoteapp)
@@ -220,9 +224,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | alertsMetaData | Nee | Nee |
 > | waarschuwingenSamenvatting | Nee | Nee |
 > | waarschuwingenOverzichtslijst | Nee | Nee |
-> | Feedback | Nee | Nee |
 > | smartDetectorAlertRegels | Ja | Ja |
-> | smartDetectorRuntimeEnvironments | Nee | Nee |
 > | smartGroups | Nee | Nee |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
@@ -331,7 +333,6 @@ Ga naar de naamruimte van een resourceprovider:
 > | ------------- | ----------- | ----------- |
 > | hybridDataManagers | Ja | Ja |
 > | postgresInstances | Ja | Ja |
-> | sqlBigDataClusters | Ja | Ja |
 > | sqlInstances | Ja | Ja |
 > | sqlServerRegistraties | Ja | Ja |
 > | sqlServerRegistrations / sqlServers | Nee | Nee |
@@ -341,10 +342,10 @@ Ga naar de naamruimte van een resourceprovider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt tags | Tag in kostenrapport |
 > | ------------- | ----------- | ----------- |
+> | cloudManifestBestanden | Nee | Nee |
 > | Registraties | Ja | Ja |
 > | registraties / klantAbonnementen | Nee | Nee |
 > | registraties / producten | Nee | Nee |
-> | verificatieToetsen | Nee | Nee |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -459,6 +460,17 @@ Ga naar de naamruimte van een resourceprovider:
 > | cordaLeden | Ja | Ja |
 > | Watchers | Ja | Ja |
 
+## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Ondersteunt tags | Tag in kostenrapport |
+> | ------------- | ----------- | ----------- |
+> | TokenServices | Ja | Ja |
+> | TokenServices / BlockchainNetworks | Nee | Nee |
+> | TokenServices / Groepen | Nee | Nee |
+> | TokenServices / Groepen / Accounts | Nee | Nee |
+> | TokenServices / TokenSjablonen | Nee | Nee |
+
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
 > [!div class="mx-tableFixed"]
@@ -528,6 +540,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | Profielen | Ja | Ja |
 > | profielen / eindpunten | Ja | Ja |
 > | profielen / eindpunten / aangepaste domeinen | Nee | Nee |
+> | profielen / eindpunten / oorsprongsgroepen | Nee | Nee |
 > | profielen / eindpunten / oorsprong | Nee | Nee |
 > | validateProbe validateProbe validateProbe validateProbe | Nee | Nee |
 
@@ -648,9 +661,12 @@ Ga naar de naamruimte van een resourceprovider:
 > | proximityPlacementGroepen | Ja | Ja |
 > | restorePointCollections | Ja | Ja |
 > | restorePointCollections / restorePoints | Nee | Nee |
+> | sharedVMExtensions | Ja | Ja |
+> | sharedVMExtensions / versies | Nee | Nee |
 > | sharedVMImages | Ja | Ja |
 > | sharedVMImages / versies | Nee | Nee |
 > | momentopnamen | Ja | Ja |
+> | sshPublicKeys sshPublicKeys sshPublicKeys ssh | Ja | Ja |
 > | virtueleMachines | Ja | Ja |
 > | virtualMachines / extensies | Ja | Ja |
 > | virtualMachines / metrischeDefinities | Nee | Nee |
@@ -701,6 +717,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | Resourcetype | Ondersteunt tags | Tag in kostenrapport |
 > | ------------- | ----------- | ----------- |
 > | Registers | Ja | Ja |
+> | registers / agentPools | Ja | Ja |
 > | registers / builds | Nee | Nee |
 > | registers / builds / annuleren | Nee | Nee |
 > | registers / builds / getLogLink | Nee | Nee |
@@ -739,13 +756,6 @@ Ga naar de naamruimte van een resourceprovider:
 > | containerServices | Ja | Ja |
 > | managedClusters | Ja | Ja |
 > | openShiftManagedClusters | Ja | Ja |
-
-## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Ondersteunt tags | Tag in kostenrapport |
-> | ------------- | ----------- | ----------- |
-> | accounts | Ja | Ja |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
@@ -939,6 +949,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | servers / virtualNetworkRules | Nee | Nee |
 > | servers / waitStatistics | Nee | Nee |
 > | serversv2 | Ja | Ja |
+> | singleServers | Ja | Ja |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
@@ -1075,13 +1086,22 @@ Ga naar de naamruimte van een resourceprovider:
 > | naamruimten / eventhubs / consumentengroepen | Nee | Nee |
 > | naamruimten / netwerkregelsets | Nee | Nee |
 
+## <a name="microsoftfalcon"></a>Microsoft.Falcon (Microsoft.Falcon)
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Ondersteunt tags | Tag in kostenrapport |
+> | ------------- | ----------- | ----------- |
+> | Naamruimten | Ja | Ja |
+
 ## <a name="microsoftfeatures"></a>Microsoft.Features
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt tags | Tag in kostenrapport |
 > | ------------- | ----------- | ----------- |
+> | featureProviders | Nee | Nee |
 > | functies | Nee | Nee |
 > | providers | Nee | Nee |
+> | abonnementFeatureRegistrations | Nee | Nee |
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
 
@@ -1216,6 +1236,13 @@ Ga naar de naamruimte van een resourceprovider:
 > | kluizen / eventGridFilters | Nee | Nee |
 > | kluizen / geheimen | Nee | Nee |
 
+## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes (Microsoft.Kubernetes)
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Ondersteunt tags | Tag in kostenrapport |
+> | ------------- | ----------- | ----------- |
+> | connectedClusters | Ja | Ja |
+
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
@@ -1227,6 +1254,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | clusters / databases / dataverbindingen | Nee | Nee |
 > | clusters / databases / eventhubverbindingen | Nee | Nee |
 > | clusters / databases / principalassignments | Nee | Nee |
+> | clusters / dataverbindingen | Nee | Nee |
 > | clusters / principalassignments | Nee | Nee |
 > | clusters / gedeelde identiteiten | Nee | Nee |
 
@@ -1268,6 +1296,16 @@ Ga naar de naamruimte van een resourceprovider:
 > | werkruimten / berekent | Nee | Nee |
 > | werkruimten / eventGridFilters | Nee | Nee |
 
+## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Ondersteunt tags | Tag in kostenrapport |
+> | ------------- | ----------- | ----------- |
+> | applyUpdates toepassen | Nee | Nee |
+> | configuratieToewijzingen | Nee | Nee |
+> | onderhoudsConfiguraties | Ja | Ja |
+> | updates | Nee | Nee |
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
@@ -1304,6 +1342,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | ------------- | ----------- | ----------- |
 > | accounts | Ja | Ja |
 > | accounts / eventGridFilters | Nee | Nee |
+> | accounts / privateAtes | Ja | Ja |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
 
@@ -1320,10 +1359,13 @@ Ga naar de naamruimte van een resourceprovider:
 > | offerTypes / uitgevers / aanbiedingen / plannen / configs / importImage | Nee | Nee |
 > | privategalleryitems | Nee | Nee |
 > | privateStoreClient | Nee | Nee |
+> | privateStores | Nee | Nee |
+> | privateStores / aanbiedingen | Nee | Nee |
 > | Producten | Nee | Nee |
 > | Uitgevers | Nee | Nee |
 > | uitgevers / aanbiedingen | Nee | Nee |
 > | uitgevers / aanbiedingen / wijzigingen | Nee | Nee |
+> | registreren | Nee | Nee |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -1390,7 +1432,6 @@ Ga naar de naamruimte van een resourceprovider:
 > | objectAccounts begrijpen | Ja | Ja |
 > | remoteRenderingAccounts | Ja | Ja |
 > | spatialAnchorsAccounts | Ja | Ja |
-> | oppervlakteReconstructieAccounts | Ja | Ja |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1398,6 +1439,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | Resourcetype | Ondersteunt tags | Tag in kostenrapport |
 > | ------------- | ----------- | ----------- |
 > | netAppAccounts | Ja | Nee |
+> | netAppAccounts / accountBack-ups | Nee | Nee |
 > | netAppAccounts / capaciteitPools | Ja | Nee |
 > | netAppAccounts / capaciteitPools / volumes | Ja | Nee |
 > | netAppAccounts / capaciteitPools / volumes / momentopnamen | Nee | Nee |
@@ -1536,9 +1578,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | werkruimten / gegevensExport | Nee | Nee |
 > | werkruimten / gegevensBronnen | Nee | Nee |
 > | werkruimten / linkedServices | Nee | Nee |
-> | werkruimten / privateEndpointConnectionProxies | Nee | Nee |
-> | werkruimten / privateEndpointVerbindingen | Nee | Nee |
-> | werkruimten / privateLinkResources | Nee | Nee |
+> | werkruimten / linkedStorageAccounts | Nee | Nee |
 > | werkruimten / query | Nee | Nee |
 > | werkruimten / scopedPrivateLinkProxies | Nee | Nee |
 
@@ -1604,6 +1644,13 @@ Ga naar de naamruimte van een resourceprovider:
 > | Resourcetype | Ondersteunt tags | Tag in kostenrapport |
 > | ------------- | ----------- | ----------- |
 > | accounts | Ja | Ja |
+
+## <a name="microsoftquantum"></a>Microsoft.Quantum
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Ondersteunt tags | Tag in kostenrapport |
+> | ------------- | ----------- | ----------- |
+> | Workspaces | Ja | Ja |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -1726,6 +1773,10 @@ Ga naar de naamruimte van een resourceprovider:
 > | regelgevingComplianceStandards | Nee | Nee |
 > | wettelijke ComplianceStandards / regulatoryComplianceControls | Nee | Nee |
 > | wettelijke ComplianceStandards / regulatoryComplianceControls / regulatoryComplianceAssessments | Nee | Nee |
+> | secureScoreControlDefinities | Nee | Nee |
+> | secureScoreControls | Nee | Nee |
+> | secureScores | Nee | Nee |
+> | secureScores / secureScoreControls | Nee | Nee |
 > | securityContacten | Nee | Nee |
 > | securitySolutions | Nee | Nee |
 > | securitySolutionsReferenceData | Nee | Nee |
@@ -1998,6 +2049,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | naam wijzigen | Nee | Nee |
 > | Abonnementsdefinities | Nee | Nee |
 > | Abonnementen | Nee | Nee |
+> | Abonnementen | Nee | Nee |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -2028,6 +2080,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | Leveranciers | Nee | Nee |
 > | leveranciers / skus | Nee | Nee |
 > | leveranciers / vnfs | Nee | Nee |
+> | virtualNetworkFunctionSkus virtualNetworkFunctionSkus | Nee | Nee |
 > | vnfs | Ja | Ja |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
@@ -2055,6 +2108,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | hostingOmgevingen / eventGridFilters | Nee | Nee |
 > | hostingOmgevingen / multiRolePools | Nee | Nee |
 > | hostingOmgevingen / workerPools | Nee | Nee |
+> | kubeOmgevingen | Ja | Ja |
 > | publicerenGebruikers | Nee | Nee |
 > | aanbevelingen | Nee | Nee |
 > | resourceHealthMetadata | Nee | Nee |

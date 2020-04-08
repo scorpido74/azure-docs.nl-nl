@@ -7,16 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73df5b7f10e038b6894996eb83dec7b6914a4536
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270249"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803187"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logische apps beheren met Visual Studio
 
 Hoewel u logische apps maken, bewerken, beheren en implementeren in de [Azure-portal,](https://portal.azure.com)u Visual Studio ook gebruiken wanneer u uw logische apps wilt toevoegen aan bronbeheer, verschillende versies wilt publiceren en [Azure Resource Manager-sjablonen](../azure-resource-manager/management/overview.md) voor verschillende implementatieomgevingen wilt maken. Met Visual Studio Cloud Explorer u uw logische apps vinden en beheren, samen met andere Azure-bronnen. U bijvoorbeeld logische apps openen, downloaden, bewerken, uitvoeren, uitvoeren, geschiedenis weergeven, uitschakelen en logische apps inschakelen die al zijn geïmplementeerd in de Azure-portal. Als u nieuw bent in het werken met Azure Logic Apps in Visual Studio, leest u [hoe u logische apps maakt met Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+
+U uw logische apps ook [beheren in de Azure-portal.](manage-logic-apps-with-azure-portal.md)
 
 > [!IMPORTANT]
 > Door een logische app vanuit Visual Studio te implementeren of te publiceren, wordt de versie van die app in de Azure-portal overgeschreven. Als u dus wijzigingen aanbrengt in de Azure-portal die u wilt behouden, moet u ervoor zorgen dat u [de logische app in Visual Studio vernieuwt](#refresh) vanuit de Azure-portal voordat u de volgende keer implementeert of publiceert vanuit Visual Studio.

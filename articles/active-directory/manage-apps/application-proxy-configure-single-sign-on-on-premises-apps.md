@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf34b52e06e369fe4dd459ff9dfa2880596fb35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481344"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803294"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML-aanmelding voor on-premises toepassingen met application proxy
 
@@ -74,14 +74,14 @@ Voordat u SSO leveren voor on-premises toepassingen, moet u Application Proxy in
 
 2. Ga op de pagina **Eén aanmelding instellen met SAML** naar de kop **BasisSAML-configuratie** en selecteer het pictogram **Bewerken** (een potlood). Controleer of de **externe URL** die u hebt geconfigureerd in toepassingsproxy wordt ingevuld in de velden **Id,** **URL voor beantwoorden**en **Afmelden.** Deze URL's zijn vereist om application proxy correct te laten werken. 
 
-3. Bewerk de eerder geconfigureerde **URL van het antwoord,** zodat het domein bereikbaar is via Application Proxy. Als uw **externe URL** `https://contosotravel-f128.msappproxy.net` dat is en `https://contosotravel.com/acs`de oorspronkelijke URL van het **antwoord** `https://contosotravel-f128.msappproxy.net/acs`is, moet u bijvoorbeeld de oorspronkelijke URL van **antwoord** bijwerken naar . 
+3. Bewerk de eerder geconfigureerde **URL van het antwoord,** zodat het domein op internet bereikbaar is via Application Proxy. Als uw **externe URL** `https://contosotravel-f128.msappproxy.net` dat is en `https://contosotravel.com/acs`de oorspronkelijke URL van het **antwoord** `https://contosotravel-f128.msappproxy.net/acs`is, moet u bijvoorbeeld de oorspronkelijke URL van **antwoord** bijwerken naar .
 
     ![BasisSAML-configuratiegegevens invoeren](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
 
 4. Schakel het selectievakje naast de bijgewerkte **URL van antwoord** in om deze als standaard te markeren.
 
-   * Als de vereiste **url van antwoord** al wordt vermeld, markeert u deze URL van **antwoord** als standaard en verwijdert u de eerder geconfigureerde URL **van antwoord**.
+   * Nadat u de vereiste **url van het antwoord** als standaard hebt gemarkeerd, u ook de eerder geconfigureerde url van **antwoord** verwijderen die de interne URL heeft gebruikt.
 
    * Controleer voor een door SP gestarte stroom of de back-endtoepassing de juiste **URL van de antwoord-URL** of de URL van de Bevestigingsconsumentenservice opgeeft voor het ontvangen van het verificatietoken.
 

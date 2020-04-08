@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 02/17/2020
-ms.openlocfilehash: b80b58d64ea27df95c2704243d8a89fa6ca12e2a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/06/2020
+ms.openlocfilehash: 1f339d987d67047f5857679b440e93e6c3730059
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548512"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810445"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Actieve georeplicatie maken en gebruiken
 
@@ -113,14 +113,19 @@ Om ervoor te zorgen dat uw toepassing direct toegang heeft tot de nieuwe primair
 
 ## <a name="configuring-secondary-database"></a>Secundaire database configureren
 
-Zowel primaire als secundaire databases moeten dezelfde servicelaag hebben. Het wordt ook sterk aanbevolen dat secundaire database wordt gemaakt met dezelfde compute size (DTU's of vCores) als de primaire. Als de primaire database een zware schrijfwerkbelasting ondervindt, kan een secundaire met een lagere rekengrootte deze mogelijk niet bijhouden. Het zal leiden tot de redo lag op de secundaire en potentiële onbeschikbaarheid. Een secundaire database die achterloopt op de primaire risico's ook een groot verlies van gegevens moet een gedwongen failover nodig zijn. Om deze risico's te beperken, zal effectieve actieve geo-replicatie de logsnelheid van de primaire beperken om de secondaries in te staan om in te halen. Het andere gevolg van een onevenwichtige secundaire configuratie is dat na failover de prestaties van de toepassing zal lijden als gevolg van onvoldoende rekencapaciteit van de nieuwe primaire. Het zal nodig zijn om te upgraden naar een hoger rekenniveau naar het noodzakelijke niveau, wat niet mogelijk zal zijn totdat de storing is beperkt. 
+Zowel primaire als secundaire databases moeten dezelfde servicelaag hebben. Het wordt ook sterk aanbevolen dat secundaire database wordt gemaakt met dezelfde compute size (DTU's of vCores) als de primaire. Als de primaire database een zware schrijfwerkbelasting ondervindt, kan een secundaire met een lagere rekengrootte deze mogelijk niet bijhouden. Dat zal leiden tot redo lag op de secundaire, en potentiële onbeschikbaarheid van de secundaire. Een secundaire database die achterloopt op de primaire risico's ook een groot verlies van gegevens, moet een gedwongen failover nodig zijn. Om deze risico's te beperken, zal actieve geo-replicatie de logsnelheid van de primaire beperken indien nodig om de secondaries in te staan om in te halen. 
 
+Het andere gevolg van een onevenwichtige secundaire configuratie is dat na failover, applicatieprestaties kunnen lijden als gevolg van onvoldoende rekencapaciteit van de nieuwe primaire. In dat geval zal het nodig zijn om de doelstelling van de databaseservice op te schalen naar het noodzakelijke niveau, wat aanzienlijke tijd en rekenbronnen kan vergen en een [failover met hoge beschikbaarheid](sql-database-high-availability.md) vereist aan het einde van het scale-upproces.
 
 > [!IMPORTANT]
-> De gepubliceerde RPO = 5 sec kan niet worden gegarandeerd, tenzij de secundaire database is geconfigureerd met dezelfde rekengrootte als de primaire. 
+> De gepubliceerde RPO SLA van 5 sec kan niet worden gegarandeerd, tenzij de secundaire database is geconfigureerd met dezelfde of hogere rekengrootte als de primaire. 
 
+Als u besluit de secundaire met lagere rekengrootte te maken, biedt de log IO-percentagegrafiek in Azure-portal een goede manier om de minimale rekengrootte van het secundaire te schatten dat nodig is om de replicatiebelasting te ondersteunen. Als uw primaire database bijvoorbeeld P6 (1000 DTU) is en het schrijfpercentage van het logboek 50%, moet de secundaire database ten minste P4 (500 DTU) zijn. Als u historische LOG IO-gegevens wilt ophalen, gebruikt u de [weergave sys.resource_stats.](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Als u recente logboekschrijfgegevens wilt ophalen met een hogere granulariteit die de pieken in de logsnelheid op korte termijn beter weergeeft, gebruikt u de weergave [sys.dm_db_resource_stats.](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 
 
-Als u besluit de secundaire met lagere rekengrootte te maken, biedt de log IO-percentagegrafiek op Azure-portal een goede manier om de minimale rekengrootte van het secundaire te schatten dat nodig is om de replicatiebelasting te ondersteunen. Als uw primaire database bijvoorbeeld P6 (1000 DTU) is en het IO-percentage van het logboek 50% is, moet de secundaire moet ten minste P4 (500 DTU) zijn. U de IO-gegevens van het logboek ook ophalen met [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) of [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) databaseweergaven.  De beperking wordt gerapporteerd als een HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO wachtstatus in de [databaseweergaven sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) en [sys.dm_os_wait_stats.](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 
+Beperking van de transactielogboeksnelheid op de primaire als gevolg van een lagere rekengrootte op een secundaire wordt gerapporteerd met behulp van het HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO wachttype, zichtbaar in de [databaseweergaven sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) en [sys.dm_os_wait_stats.](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 
+
+> [!NOTE]
+> Transactielogboeksnelheid op de primaire kan worden beperkt om redenen die niets te maken hebben met een lagere rekengrootte op een secundaire. Dit soort beperking kan optreden, zelfs als de secundaire heeft dezelfde of hogere rekengrootte dan de primaire. Zie [Transactielogtariefbeheer](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)voor meer informatie, inclusief wachttypen voor verschillende soorten beperking van de logsnelheid.
 
 Zie [Wat sql databaseservicelagen zijn SQL Database Service Tiers](sql-database-purchase-models.md)voor meer informatie over de compute sizes van SQL Database.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0643ae792c890b65f239d9a0c16a05639dd4f8b9
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77138023"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811470"
 ---
 # <a name="securing-paas-deployments"></a>PaaS-implementaties beveiligen
 
@@ -100,8 +100,8 @@ In de volgende tabel worden de STRIDE-bedreigingen weergegeven en worden enkele 
 
 | Bedreiging | Beveiligingseigenschap | Mogelijke azure-platformmitigaties |
 | --- | --- | --- |
-| Adresvervalsing (spoofing) | Authentication | Https-verbindingen vereisen. |
-| Knoeien | Gegevensintegriteit | SSL-certificaten valideren. |
+| Adresvervalsing (spoofing) | Verificatie | Https-verbindingen vereisen. |
+| Knoeien | Gegevensintegriteit | TLS/SSL-certificaten valideren. |
 | Verwerping | Niet-verwerping | [Azure-bewaking en -diagnose inschakelen](/azure/architecture/best-practices/monitoring). |
 | Openbaarmaking van informatie | Vertrouwelijkheid | Versleutel gevoelige gegevens in rust met behulp van [servicecertificaten.](/rest/api/appservice/certificates) |
 | Denial of Service | Beschikbaarheid | Monitor prestatiestatistieken voor mogelijke denial-of-service-omstandigheden. Verbindingsfilters implementeren. |
@@ -155,7 +155,7 @@ In dit artikel hebben we ons gericht op beveiligingsvoordelen van een azure PaaS
 
 - [Azure App Service](paas-applications-using-app-services.md)
 - [Azure SQL Database en Azure SQL Data Warehouse](paas-applications-using-sql.md)
-- [Azure Storage](paas-applications-using-storage.md)
+- [Azure-opslag](paas-applications-using-storage.md)
 - Azure Cache voor Redis
 - Azure Service Bus
 - Firewalls voor webtoepassingen

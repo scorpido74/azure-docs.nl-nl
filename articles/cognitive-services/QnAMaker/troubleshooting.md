@@ -4,12 +4,12 @@ description: De samengestelde lijst met de meest gestelde vragen over de QnA Mak
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: 310cfe0cc8c1f647c09b8e0efb435a1ab326ff62
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474955"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804347"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Probleemoplossing voor QnA Maker
 
@@ -142,7 +142,7 @@ Alle verwijderingen zijn permanent, inclusief vraag- en antwoordparen, bestanden
 * Bestanden - niet ondersteund
 
 #### <a name="answer-text-in-markdown"></a>Tekst beantwoorden in afwaardering
-Zodra QnA-sets zich in de kennisbasis bevinden, u de markeringstekst van een antwoord bewerken om koppelingen naar media op te nemen die beschikbaar zijn via openbare URL's.
+Zodra QnA-paren zich in de kennisbasis bevinden, u de markeringstekst van een antwoord bewerken om koppelingen naar media op te nemen die beschikbaar zijn via openbare URL's.
 
 
 </details>

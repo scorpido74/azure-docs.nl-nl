@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: b8f95f22553a3b4639b1aba6576ce844116ae20b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71528385563b29ce70edf396434be0174beac105
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73679880"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804840"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-activiteit in Azure Data Factory
 Met De ForEach-activiteit wordt een herhalende besturingselementstroom in uw pijplijn gedefinieerd. Deze activiteit wordt gebruikt om een verzameling te herhalen en voert opgegeven activiteiten uit in een lus. De lusimplementatie van deze activiteit is vergelijkbaar met Foreach-lusstructuur in computertalen.
@@ -73,7 +73,7 @@ Eigenschap | Beschrijving | Toegestane waarden | Vereist
 name | Naam van de voor-elke activiteit. | Tekenreeks | Ja
 type | Moet worden ingesteld op **ForEach** | Tekenreeks | Ja
 isSequentiële | Hiermee geeft u op of de lus achtereenvolgens of parallel moet worden uitgevoerd.  Maximaal 20 lusiteraties kunnen parallel tegelijk worden uitgevoerd). Als u bijvoorbeeld een ForEach-activiteit hebt die wordt gewijzigd boven een kopieeractiviteit met 10 verschillende bron- en sinkgegevenssets met **isSequential** ingesteld op False, worden alle kopieën tegelijk uitgevoerd. Standaard is False. <br/><br/> Als 'isSequential' is ingesteld op False, moet u ervoor zorgen dat er een juiste configuratie is om meerdere uitvoerbare bestanden uit te voeren. Anders moet deze eigenschap met de nodige voorzichtigheid worden gebruikt om te voorkomen dat er schrijfconflicten ontstaan. Zie Sectie [Parallelle uitvoering](#parallel-execution) voor meer informatie. | Booleaans | Nee. Standaard is False.
-batchAantal | Batchaantal dat moet worden gebruikt voor het regelen van het aantal parallelle uitvoeringen (wanneer isSequential is ingesteld op false). | Geheel getal (maximaal 50) | Nee. Standaard is 20.
+batchAantal | Batchaantal dat moet worden gebruikt voor het regelen van het aantal parallelle uitvoeringen (wanneer isSequential is ingesteld op false). Dit is de bovenste gelijktijdigheidslimiet, maar de activiteit voor elke activiteit wordt niet altijd uitgevoerd op dit nummer | Geheel getal (maximaal 50) | Nee. Standaard is 20.
 Items | Een expressie die een JSON-array retourneert om te worden herhaald. | Expressie (waarmee een JSON-array wordt geretourneerd) | Ja
 Activiteiten | De uit te voeren activiteiten. | Lijst met activiteiten | Ja
 

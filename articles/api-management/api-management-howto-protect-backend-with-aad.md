@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190370"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804364"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Een API beveiligen met behulp van OAuth 2.0 met Azure Active Directory en API Management
 
@@ -137,7 +137,7 @@ In dit voorbeeld is de Developer Console de client-app. In de volgende stappen w
 
 1. Als u **v1-eindpunten** gebruikt, voegt u een hoofdparameter met de naam **resource**toe . Gebruik **toepassings-id** van de back-end-app voor de waarde van deze parameter. 
 
-1. Als u **v2-eindpunten** gebruikt, gebruikt u het bereik dat u hebt gemaakt voor de backend-app in het veld **Standaardbereik.**
+1. Als u **v2-eindpunten** gebruikt, gebruikt u het bereik dat u hebt gemaakt voor de backend-app in het veld **Standaardbereik.** Zorg er ook voor dat [`accessTokenAcceptedVersion`](/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) u `2` de waarde voor de eigenschap instelt op in uw [aanvraagmanifest.](/azure/active-directory/develop/reference-app-manifest)
 
 1. Geef vervolgens de clientreferenties op. Dit zijn de referenties voor de client-app.
 

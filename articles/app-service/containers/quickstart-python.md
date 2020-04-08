@@ -2,16 +2,16 @@
 title: 'Snelstart: een Linux Python-app maken'
 description: Ga aan de slag met Linux-apps in Azure App Service door uw eerste Python-app te implementeren in een Linux-container in App Service.
 ms.topic: quickstart
-ms.date: 10/22/2019
+ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 9cc314edf35d6a327522ed49fcc0c7798c7dcf63
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 63daecca710e0e4d7b3326cea59c0c025c24f619
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80045672"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811157"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Snelstart: een Python-app maken in Azure App Service op Linux
 
@@ -24,7 +24,7 @@ Zie [Python-apps implementeren naar app-service implementeren vanuit Visual Stud
 - Azure-abonnement - [maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3.7</a> (Python 3.6 wordt ook ondersteund)
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
-- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure-CLI</a>
+- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 of hoger. Voer `az --version` uit om uw versie te controleren.
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
@@ -56,7 +56,7 @@ export FLASK_APP=application.py
 flask run
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -3 -m venv env
@@ -98,39 +98,44 @@ az login
 
 Met [`az webapp up`](/cli/azure/webapp#az-webapp-up) de opdracht wordt de web-app op App-service gemaakt en wordt uw code geïmplementeerd.
 
-Voer in de map *python-docs-hello-world* met de `az webapp up` voorbeeldcode de volgende opdracht uit. Vervangen `<app-name>` door een wereldwijd unieke app-naam *(geldige tekens zijn `a-z`, `0-9`en `-` *). Ook `<location-name>` vervangen door een Azure regio zoals **centralus**, **eastasia**, **West-Europe**, **Koreasouth**, **Brazilsouth**, **centralindia**, en ga zo maar door. (U een lijst met toegestane regio's [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) voor uw Azure-account ophalen door de opdracht uit te voeren.)
+Voer in de map *python-docs-hello-world* met de `az webapp up` voorbeeldcode de volgende opdracht uit. Vervangen `<app-name>` door een wereldwijd unieke app-naam *(geldige tekens zijn `a-z`, `0-9`en `-` *).
 
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up --sku F1 -n <app-name>
 ```
 
-Het kan enkele minuten duren voordat deze opdracht volledig is uitgevoerd. De opdracht geeft informatie weer die lijkt op het volgende voorbeeld:
+Met `--sku F1` het argument wordt de web-app gemaakt op de prijscategorie Gratis. U dit argument weglaten om in plaats daarvan een premiumlaag te gebruiken, wat per uur kost.
 
-```output
-The behavior of this command has been altered by the following extension: webapp
+U optioneel het `-l <location-name>` `<location_name>` argument opnemen waar een Azure-regio is, zoals **centralus,** **eastasia**, **West-Europe,** **Koreasouth,** **Brazilsouth,** **CentralIndia**, enzovoort. U een lijst met toegestane regio's [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) voor uw Azure-account ophalen door de opdracht uit te voeren.
+
+Het `az webapp up` kan enkele minuten duren voordat de opdracht volledig is uitgevoerd. Tijdens het uitvoeren wordt informatie weergegeven die `<app_name>` vergelijkbaar is met het volgende voorbeeld, waar de eerder opgegeven naam zal zijn:
+
+<pre>
 Creating Resource group 'appsvc_rg_Linux_centralus' ...
 Resource group creation complete
 Creating App service plan 'appsvc_asp_Linux_centralus' ...
 App service plan creation complete
 Creating app '<app-name>' ....
-Webapp creation complete
-Creating zip with contents of dir /home/username/quickstart/python-docs-hello-world ...
-Preparing to deploy contents to app.
-All done.
+Configuring default logging for the app, if not already enabled
+Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
+Getting scm site credentials for zip deployment
+Starting zip deployment. This operation can take a while to complete ...
+Deployment endpoint responded with status code 202
+You can launch the app at http://<app-name>.azurewebsites.net
 {
-  "app_url": "https:/<app-name>.azurewebsites.net",
-  "location": "Central US",
+  "URL": "http://<app-name>.net",
+  "appserviceplan": "appsvc_asp_Linux_centralus",
+  "location": "eastus",
   "name": "<app-name>",
   "os": "Linux",
-  "resourcegroup": "appsvc_rg_Linux_centralus ",
-  "serverfarm": "appsvc_asp_Linux_centralus",
-  "sku": "BASIC",
-  "src_path": "/home/username/quickstart/python-docs-hello-world ",
-  "version_detected": "-",
-  "version_to_create": "python|3.7"
+  "resourcegroup": "appsvc_rg_Linux_centralus",
+  "runtime_version": "python|3.7",
+  "runtime_version_detected": "-",
+  "sku": "FREE",
+  "src_path": "D:\\Examples\\python-docs-hello-world"
 }
-```
+</pre>
 
 [!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
@@ -146,20 +151,23 @@ De Python-voorbeeldcode wordt uitgevoerd met een Linux-container in App-service 
 
 ## <a name="redeploy-updates"></a>Updates opnieuw implementeren
 
-Open *in* uw favoriete codeeditor `return` application.py en wijzig de instructie op de laatste regel om overeen te komen met de volgende code. De `print` instructie is hier opgenomen om logboeken te genereren waarmee u werkt in de volgende sectie. 
+Open *in* uw favoriete codeeditor `hello` application.py en werk de functie als volgt bij. Met deze `print` wijziging wordt een instructie toegevoegd om logboekuitvoer te genereren waarmee u in de volgende sectie werkt. 
 
 ```python
-print("Handling request to home page.")
-return "Hello Azure!"
+def hello():
+    print("Handling request to home page.")
+    return "Hello Azure!"
 ```
 
 Sla uw wijzigingen op en sluit de editor af. 
 
-Implementeer de app opnieuw `az webapp up` met de volgende opdracht, met dezelfde opdracht die `<app-name>` u `<location-name>` de app de eerste keer hebt geïmplementeerd, waarbij u de app vervangt en dezelfde namen gebruikt die u eerder hebt gebruikt. 
+Implementeer de app `az webapp up` opnieuw met de opdracht:
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up
 ```
+
+Met deze opdracht worden waarden gebruikt die in het *bestand .azure/config* zijn opgeslagen, waaronder de naam van de app, de brongroep en het App Service-abonnement.
 
 Zodra de implementatie is voltooid, schakelt `http://<app-name>.azurewebsites.net` u terug naar het browservenster dat is geopend naar en vernieuwt u de pagina, die het gewijzigde bericht moet weergeven:
 
@@ -172,24 +180,18 @@ Zodra de implementatie is voltooid, schakelt `http://<app-name>.azurewebsites.ne
 
 U hebt toegang tot de consolelogboeken die vanuit de app worden gegenereerd en de container waarin deze wordt uitgevoerd. Logboeken bevatten alle `print` uitvoer die wordt gegenereerd met behulp van instructies.
 
-Schakel eerst containerlogboekregistratie in door de volgende opdracht `<app-name>` in een terminal `<resource-group-name>` uit te voeren, te vervangen door `az webapp up` de naam van uw app en door de naam van de resourcegroep die wordt weergegeven in de uitvoer van de opdracht die u hebt gebruikt (zoals 'appsvc_rg_Linux_centralus'):
+Voer de volgende opdracht uit om logboeken te streamen:
 
 ```azurecli
-az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
-```
-
-Zodra containerlogboekregistratie is ingeschakeld, voert u de volgende opdracht uit om de logboekstroom weer te geven:
-
-```azurecli
-az webapp log tail --name <app-name> --resource-group <resource-group-name>
+az webapp log tail
 ```
 
 Vernieuw de app in de browser om consolelogboeken te genereren, die regels moeten bevatten die vergelijkbaar zijn met de volgende tekst. Als u de uitvoer niet onmiddellijk ziet, probeert u het opnieuw in 30 seconden.
 
-```output
-2019-10-23T12:40:03.815574424Z Handling request to home page.
-2019-10-23T12:40:03.815602424Z 172.16.0.1 - - [23/Oct/2019:12:40:03 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.63 Safari/537.36 Edg/78.0.276.19"
-```
+<pre>
+2020-04-03T22:54:04.236405938Z Handling request to home page.
+2020-04-03T22:54:04.236497641Z 172.16.0.1 - - [03/Apr/2020:22:54:04 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.83 Safari/537.36 Edg/81.0.416.41"
+</pre>
 
 U ook de logbestanden `https://<app-name>.scm.azurewebsites.net/api/logs/docker`vanuit de browser bekijken op.
 
@@ -213,7 +215,7 @@ Het menu App-service bevat verschillende pagina's voor het configureren van uw a
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. De resourcegroep heeft een naam als 'appsvc_rg_Linux_CentralUS' afhankelijk van uw locatie. Als u een Andere App Service SKU gebruikt dan de gratis F1-laag, zullen deze resources blijvende kosten met zich meebrengen.
+In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. De resourcegroep heeft een naam als 'appsvc_rg_Linux_CentralUS' afhankelijk van uw locatie. Als u een SKU voor app-service gebruikt, andere dan de gratis F1-laag, gaan deze resources voor voortdurende kosten (zie [App Service-prijzen).](https://azure.microsoft.com/pricing/details/app-service/linux/)
 
 Als u deze resources in de toekomst niet meer nodig verwacht, verwijdert u `<resource-group-name>` de brongroep door de `az webapp up` volgende opdracht uit te voeren en te vervangen door de resourcegroep die wordt weergegeven in de uitvoer van de opdracht, zoals 'appsvc_rg_Linux_centralus'. Het kan even duren voordat de opdracht is voltooid.
 

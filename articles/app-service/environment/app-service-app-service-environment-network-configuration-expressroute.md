@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243872"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804432"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Netwerkconfiguratiegegevens voor App-serviceomgeving voor PowerApps met Azure ExpressRoute
 
@@ -39,7 +39,7 @@ Voor de app-serviceomgeving moeten de volgende netwerkverbindingsinstellingen go
 
 * Uitgaande netwerkconnectiviteit met de eindpunten Azure-beheervlak (zowel het klassieke implementatiemodel van Azure als azure resourcebeheereindpunten). Connectiviteit met deze eindpunten omvat de management.core.windows.net en management.azure.com domeinen. 
 
-* Uitgaande netwerkconnectiviteit met de domeinen ocsp.msocsp.com, mscrl.microsoft.com en crl.microsoft.com. Connectiviteit met deze domeinen is nodig om SSL-functionaliteit te ondersteunen.
+* Uitgaande netwerkconnectiviteit met de domeinen ocsp.msocsp.com, mscrl.microsoft.com en crl.microsoft.com. Connectiviteit met deze domeinen is nodig om TLS-functionaliteit te ondersteunen.
 
 * De DNS-configuratie voor het virtuele netwerk moet alle eindpunten en domeinen die in dit artikel worden genoemd, kunnen oplossen. Als de eindpunten niet kunnen worden opgelost, mislukt het maken van de app-serviceomgeving. Elke bestaande App-serviceomgeving is gemarkeerd als ongezond.
 

@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: d8582dfc796fe3e87b8bdc5be763dddfb5d0176b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b3579d12981e2b0add916a280bac7b4f9392d8ba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245409"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803140"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Snelstart: functievlaggen toevoegen aan een ASP.NET Core-app
 
@@ -126,13 +126,13 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
 
     U dit geheim openen met de App Configuration API. Een dikke darm (:) werkt in de configuratienaam met de App Configuration API op alle ondersteunde platforms. Zie [Configuratie per omgeving](https://docs.microsoft.com/aspnet/core/fundamentals/configuration).
 
-1. Werk `CreateWebHostBuilder` de methode bij om `config.AddAzureAppConfiguration()` app-configuratie te gebruiken door de methode aan te roepen.
-    
+1. Werk *in*Program.cs `CreateWebHostBuilder` de methode bij om `config.AddAzureAppConfiguration()` app-configuratie te gebruiken door de methode aan te roepen.
+
     > [!IMPORTANT]
     > `CreateHostBuilder`vervangt `CreateWebHostBuilder` in .NET Core 3.0.  Selecteer de juiste syntaxis op basis van uw omgeving.
 
     #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
-    
+
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
@@ -148,7 +148,7 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
     ```
 
     #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-    
+
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -188,12 +188,12 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
         services.AddControllersWithViews();
         services.AddFeatureManagement();
     }
-    ```
+
     ---
 
-1. Werk `Configure` de methode bij om een middleware toe te voegen zodat de waarden van de functievlag met een terugkerend interval kunnen worden vernieuwd terwijl de ASP.NET Core-web-app aanvragen blijft ontvangen.
-    
-    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+1. Update the `Configure` method to add a middleware to allow the feature flag values to be refreshed at a recurring interval while the ASP.NET Core web app continues to receive requests.
+
+    #### [.NET Core 2.x](#tab/core2x)
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
@@ -351,7 +351,7 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
     Uw browser moet een pagina weergeven die vergelijkbaar is met de afbeelding hieronder.
     ![Quickstart voor het lokaal starten van een app](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Alle bronnen**en selecteer de instantie app-configuratiearchief die u in de snelstart hebt gemaakt.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Alle bronnen**en selecteer de instantie app-configuratiearchief die u in de snelstart hebt gemaakt.
 
 1. Selecteer **Functiebeheer**en wijzig de status van de **bètasleutel** in **Aan**.
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: e65681aefc047ba540d4ad0d91ef6e4d2af5f3ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190264"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804568"
 ---
 # <a name="clustering-point-data"></a>Clustergegevens van clusterpunten
 
@@ -62,7 +62,7 @@ Als u de grootte van het cluster boven op de bel wilt weergeven, gebruikt u een 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Clustering van basisbellenlagen" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Clustering van basisbellenlagen" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zie de <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>penbasisringlaagclustering</a> door<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -74,7 +74,7 @@ Gebruik clustering om de dichtheid van gegevenspunten weer te geven terwijl een 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Clusterdesymboollaag" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Clusterdesymboollaag" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zie de <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>laag Pen clustered</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>symbol van Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -84,7 +84,7 @@ Heat maps zijn een geweldige manier om de dichtheid van gegevens weer te geven o
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster gewogen warmtekaart" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster gewogen warmtekaart" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zie de <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>met pencluster gewogen heatmap van</a> Azure Maps ()<a href='https://codepen.io/azuremaps'>@azuremaps</a>op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -103,7 +103,7 @@ In dit voorbeeld wordt een bellaag gebruikt die clusterpunten rendert en een kli
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zie het <a href='https://codepen.io/azuremaps/pen/moZWeV/'>pencluster getClusterExpansionZoom</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>by Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -113,7 +113,7 @@ De puntgegevens die een cluster vertegenwoordigt, zijn verspreid over een gebied
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="Clustergebied bolle romp" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+ <iframe height="500" style="width: 100%;" scrolling="no" title="Clustergebied bolle romp" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zie de <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>convexe romp van</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>het penclustergebied door Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -123,7 +123,7 @@ Vaak worden clusters weergegeven met behulp van een symbool met het aantal punte
 
 In het volgende voorbeeld wordt een geaggregeerde expressie gebruikt. De code berekent een telling op basis van de eigenschap entiteitstype van elk gegevenspunt in een cluster. Wanneer een gebruiker op een cluster klikt, wordt een pop-up weergegeven met aanvullende informatie over het cluster.
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Clusteraggregaten" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Clusteraggregaten" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zie de <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>penclusteraggregaten</a> van<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps ( ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 8244a0f164c8578bf9f79e4b66beb529b6a15f67
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: f31c084be2fb017c0db521328e4ccdff9dd2aa25
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586002"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810468"
 ---
-# <a name="planning-and-operations-guide"></a>Gids planning en bedrijfsvoering
+# <a name="planning-and-operations-guide"></a>Handleiding voor planning en bewerking
 Deze handleiding is voor IT-professionals, IT-architecten, informatiebeveiligingsanalisten en cloudbeheerders die van plan zijn Azure Security Center te gebruiken.
 
 
@@ -25,7 +25,7 @@ Deze handleiding bevat taken die u volgen om uw gebruik van Security Center te o
 * Beveiligingsrollen en toegangsbeheer
 * Beveiligingsbeleid en aanbevelingen
 * Gegevensverzameling en -opslag
-* Continue niet-Azure-resources
+* Onboarding van niet-Azure-resources
 * Continue beveiligingsbewaking
 * Reageren op incidenten
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: e4dd6bab6198546dc5acab78ec59d92387328dbb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d9c666fd6fcf020908b6fc5bdd639261853ad9c6
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755003"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811542"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reageren op gebeurtenissen van Blob Storage
 
@@ -98,7 +98,7 @@ Toepassingen die blob-opslaggebeurtenissen verwerken, moeten een aantal aanbevol
 > * Controleer ook of het eventType een gebeurtenis is die u bereid bent te verwerken en ga er niet van uit dat alle gebeurtenissen die u ontvangt, de typen zijn die u verwacht.
 > * Aangezien berichten na enige vertraging kunnen binnenkomen, gebruikt u de etag-velden om te begrijpen of uw informatie over objecten nog steeds up-to-date is. Zie Gelijktijdigheid beheren [in Blob-opslag](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)voor meer informatie over het gebruik van het veld etag. 
 > * Aangezien berichten niet in orde kunnen komen, gebruikt u de sequencervelden om de volgorde van gebeurtenissen op een bepaald object te begrijpen. Het sequencerveld is een tekenreekswaarde die de logische volgorde van gebeurtenissen voor een bepaalde blobnaam vertegenwoordigt. U standaardtekenreeksvergelijking gebruiken om de relatieve volgorde van twee gebeurtenissen op dezelfde blobnaam te begrijpen.
-> Opslaggebeurtenissen garanderen ten minste eenmaal levering aan abonnees, wat ervoor zorgt dat alle berichten worden uitgevoerd. Vanwege nieuwe pogingen of beschikbaarheid van abonnementen kunnen er af en toe dubbele berichten optreden.
+> * Opslaggebeurtenissen garanderen ten minste eenmaal levering aan abonnees, wat ervoor zorgt dat alle berichten worden uitgevoerd. Vanwege nieuwe pogingen of beschikbaarheid van abonnementen kunnen er af en toe dubbele berichten optreden. Zie [Gebeurtenisgrid-berichtbezorging en opnieuw proberen](../../event-grid/delivery-and-retry.md)voor meer informatie over het bezorgen en opnieuw proberen van berichten.
 > * Gebruik het veld blobType om te begrijpen welk type bewerkingen zijn toegestaan op de blob en welke clientbibliotheektypen u moet gebruiken om toegang te krijgen tot de blob. Geldige waarden `BlockBlob` zijn `PageBlob`of . 
 > * Gebruik het url-veld met de `CloudBlockBlob` constructors om `CloudAppendBlob` toegang te krijgen tot de blob.
 > * Velden negeren die u niet begrijpt. Deze praktijk zal u helpen om u bestand te houden tegen nieuwe functies die in de toekomst kunnen worden toegevoegd.

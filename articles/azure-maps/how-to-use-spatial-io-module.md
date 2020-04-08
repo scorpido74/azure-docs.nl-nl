@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5bcfeebc1fcb96cfdf6ea802293eb4027f339815
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335216"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804636"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>De Azure Maps Spatial IO-module gebruiken
 
@@ -26,6 +26,13 @@ De Azure Maps Web SDK biedt de **Spatial IO-module**, die ruimtelijke gegevens i
 - [Maak gebruik van snelle XML- en afgebakende bestandslezer- en schrijverklassen](spatial-io-core-operations.md).
 
 In deze handleiding leren we hoe we de Spatial IO module kunnen integreren en gebruiken in een webapplicatie.
+
+Deze video geeft een overzicht van de Spatial IO-module in de Azure Maps Web SDK.
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="Ruimtelijke gegevens eenvoudig integreren in de Azure Maps - Microsoft Channel 9 Video"></iframe>
+
 
 > [!WARNING]
 > Gebruik alleen gegevens en services die afkomstig zijn van een bron die u vertrouwt, vooral als u ernaar verwijst vanuit een ander domein. De ruimtelijke IO-module neemt wel stappen om risico's te minimaliseren, maar de veiligste aanpak is om te beginnen geen danagerous-gegevens in uw toepassing toe te staan. 

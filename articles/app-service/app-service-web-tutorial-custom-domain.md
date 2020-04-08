@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/06/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2e62062fabfbb7c320bbeaf473979ccef96b0ba3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80047216"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811782"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Zelfstudie: een bestaande aangepaste DNS-naam toewijzen aan Azure App Service
 
@@ -151,7 +151,7 @@ Het kan enige tijd duren voordat het nieuwe aangepaste domein wordt weergegeven 
 ![CNAME-record toegevoegd](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> Een **Niet Veilig** label voor uw aangepaste domein betekent dat het nog niet is gekoppeld aan een SSL-certificaat, en elk HTTPS-verzoek van een browser naar uw aangepaste domein ontvangt en fout of waarschuwing, afhankelijk van de browser. Zie [Een aangepaste DNS-naam beveiligen met een SSL-binding in Azure App Service](configure-ssl-bindings.md)als u een SSL-binding wilt toevoegen.
+> Een **Not Secure-label** voor uw aangepaste domein betekent dat het nog niet is gekoppeld aan een TLS/SSL-certificaat en dat elk HTTPS-verzoek van een browser naar uw aangepaste domein wordt ontvangen en fout of waarschuwing, afhankelijk van de browser. Zie [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md)als u een TLS-binding wilt toevoegen.
 
 Als u een stap hebt gemist of eerder ergens een typefout hebt gemaakt, ziet u een verificatie-foutmelding aan de onderkant van de pagina.
 
@@ -235,7 +235,7 @@ Het kan enige tijd duren voordat het nieuwe aangepaste domein wordt weergegeven 
 ![A-record toegevoegd](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> Een **Niet Veilig** label voor uw aangepaste domein betekent dat het nog niet is gekoppeld aan een SSL-certificaat, en elk HTTPS-verzoek van een browser naar uw aangepaste domein ontvangt en fout of waarschuwing, afhankelijk van de browser. Zie [Een aangepaste DNS-naam beveiligen met een SSL-binding in Azure App Service](configure-ssl-bindings.md)als u een SSL-binding wilt toevoegen.
+> Een **Not Secure-label** voor uw aangepaste domein betekent dat het nog niet is gekoppeld aan een TLS/SSL-certificaat en dat elk HTTPS-verzoek van een browser naar uw aangepaste domein wordt ontvangen en fout of waarschuwing, afhankelijk van de browser. Zie [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md)als u een TLS-binding wilt toevoegen.
 
 Als u een stap hebt gemist of eerder ergens een typefout hebt gemaakt, ziet u een verificatie-foutmelding aan de onderkant van de pagina.
 
@@ -290,7 +290,7 @@ Selecteer **+** het pictogram opnieuw om een ander aangepast domein toe te voege
 ![CNAME-record toegevoegd](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> Een **Note Secure-label** voor uw aangepaste domein betekent dat het nog niet is gekoppeld aan een SSL-certificaat en dat elk HTTPS-verzoek van een browser naar uw aangepaste domein wordt ontvangen en fouten of waarschuwingen, afhankelijk van de browser. Zie [Een aangepaste DNS-naam beveiligen met een SSL-binding in Azure App Service](configure-ssl-bindings.md)als u een SSL-binding wilt toevoegen.
+> Een **Note Secure-label** voor uw aangepaste domein betekent dat het nog niet is gekoppeld aan een TLS/SSL-certificaat en dat elk HTTPS-verzoek van een browser naar uw aangepaste domein wordt ontvangen en fout of waarschuwing, afhankelijk van de browser. Zie [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md)als u een TLS-binding wilt toevoegen.
 
 ## <a name="test-in-browser"></a>Testen in browser
 
@@ -366,7 +366,7 @@ In deze zelfstudie hebt u het volgende geleerd:
 > * Standaard-URL omleiden naar een aangepaste map
 > * Domeintoewijzing met scripts automatiseren
 
-Ga door naar de volgende zelfstudie om te leren hoe u een aangepast SSL-certificaat aan een web-app kunt toewijzen.
+Ga naar de volgende zelfstudie om te leren hoe u een aangepast TLS/SSL-certificaat aan een web-app binden.
 
 > [!div class="nextstepaction"]
-> [Een aangepaste DNS-naam beveiligen met een SSL-binding in Azure App Service](configure-ssl-bindings.md)
+> [Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md)

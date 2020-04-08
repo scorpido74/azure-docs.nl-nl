@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ca1327a547e8550e47ff37e4ba100fcbd2b7a79f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282457"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811440"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Door de klant beheerde sleutels gebruiken in Azure Key Vault voor import/exportservice
 
@@ -103,7 +103,7 @@ Als u fouten ontvangt met betrekking tot de door uw klant beheerde sleutel, gebr
 | CmkErrorAccessingetrokken | Toegepast een door de klant beheerde sleutel, maar de belangrijkste toegang is momenteel ingetrokken. Zie voor meer informatie hoe u [de sleuteltoegang inschakelt](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).                                                      | Ja, controleer of: <ol><li>Key vault heeft nog steeds de MSI in het toegangsbeleid.</li><li>Toegangsbeleid biedt machtigingen voor Get, Wrap, Unwrap.</li><li>Als de sleutelkluis zich in een vNet achter de firewall bevindt, controleert u of **Microsoft Trusted Services toestaan** is ingeschakeld.</li></ol>                                                                                            |
 | CmkErrorDisabled      | Toegepast een klant beheerde sleutel, maar de sleutel is uitgeschakeld. Zie voor meer informatie hoe u [de sleutel inschakelt.](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate)                                                                             | Ja, door de sleutelversie in te schakelen     |
 | CmkErrorNotFound      | Applied een door de klant beheerde sleutel toe, maar kan de sleutel niet vinden. <br>Als de sleutel na de bewaarperiode wordt verwijderd en verwijderd, u de sleutel niet herstellen. Als u een back-up van de sleutel hebt, u de sleutel herstellen om dit probleem op te lossen. | Nee, de sleutel is verwijderd en ook verwijderd na de bewaartermijn. <br>Ja, alleen als de klant de sleutel heeft, wordt deze back-upondersteund en hersteld.  |
-| CmkErrorVaultNotFound | Applied een door de klant beheerde sleutel toe, maar kan de sleutelkluis die aan de sleutel is gekoppeld niet vinden.<br>Als u de sleutelkluis hebt verwijderd, u de door de klant beheerde sleutel niet herstellen.  Zie [Een sleutelkluistenant-id wijzigen na een abonnementswijziging](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)als u de sleutelkluishebt gemigreerd naar een andere tenant. |   Nee, als de klant de sleutelkluis heeft verwijderd.<br> Ja, als sleutelkluis een tenantmigratie onderging, doe dan een van: <ol><li>verplaats de sleutelkluis terug naar de oude huurder.</li><li>stel Identiteit = Geen en vervolgens terug naar Identiteit = SystemAssigned, dit verwijdert en reconstrueert de identiteit</li></ol><br>Opmerking: De migratiecase voor tenant's is gebaseerd op beperkt begrip, moet het werkelijke gedrag testen en bevestigen en kan later worden herzien. |
+| CmkErrorVaultNotFound | Applied een door de klant beheerde sleutel toe, maar kan de sleutelkluis die aan de sleutel is gekoppeld niet vinden.<br>Als u de sleutelkluis hebt verwijderd, u de door de klant beheerde sleutel niet herstellen.  Zie [Een sleutelkluistenant-id wijzigen na een abonnementswijziging](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)als u de sleutelkluishebt gemigreerd naar een andere tenant. |   Nee, als de klant de sleutelkluis heeft verwijderd.<br> Ja, als sleutelkluis een tenantmigratie onderging, doe dan een van: <ol><li>verplaats de sleutelkluis terug naar de oude huurder.</li><li>stel Identiteit = Geen en vervolgens terug naar Identiteit = SystemAssigned, dit verwijdert en reconstrueert de identiteit</li></ol>|
 
 ## <a name="next-steps"></a>Volgende stappen
 

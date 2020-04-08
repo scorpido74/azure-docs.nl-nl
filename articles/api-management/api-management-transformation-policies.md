@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 34a70a4698b69881a06cfb7a7017fa0c30647197
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81b7fb687bb6ef88d1ed436923d0e5ff7561c22b
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047685"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803242"
 ---
 # <a name="api-management-transformation-policies"></a>Transformatiebeleid API Management
 In dit onderwerp wordt een verwijzing naar het volgende API-beheerbeleid bevat. Zie [Beleid in API-beheer](https://go.microsoft.com/fwlink/?LinkID=398186)voor informatie over het toevoegen en configureren van beleidsregels.
@@ -540,17 +540,12 @@ OriginalUrl.
 </set-query-parameter>
 ```
 
-### <a name="examples"></a>Voorbeelden
-
 #### <a name="example"></a>Voorbeeld
 
 ```xml
 
-<set-query-parameter>
-  <parameter name="api-key" exists-action="skip">
-    <value>12345678901</value>
-  </parameter>
-  <!-- for multiple parameters with the same name add additional value elements -->
+<set-query-parameter name="api-key" exists-action="skip">
+  <value>12345678901</value>
 </set-query-parameter>
 
 ```
@@ -596,7 +591,7 @@ OriginalUrl.
 
 - URL aanvragen -`http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
 
-  Dit beleid kan worden gebruikt wanneer een menselijke en/of browservriendelijke URL moet worden omgezet in de URL-indeling die door de webservice wordt verwacht. Dit beleid hoeft alleen te worden toegepast bij het blootstellen van een alternatieve URL-indeling, zoals schone URL's, RESTful URL's, gebruiksvriendelijke URL's of SEO-vriendelijke URL's die zuiver structurele URL's zijn die geen querytekenreeks bevatten en in plaats daarvan alleen het pad van de resource bevatten ( na de regeling en de autoriteit). Dit wordt vaak gedaan voor esthetische, bruikbaarheid, of zoekmachine optimalisatie (SEO) doeleinden.
+  Dit beleid kan worden gebruikt wanneer een menselijke en/of browservriendelijke URL moet worden omgezet in de URL-indeling die door de webservice wordt verwacht. Dit beleid hoeft alleen te worden toegepast bij het blootstellen van een alternatieve URL-indeling, zoals schone URL's, RESTful URL's, gebruiksvriendelijke URL's of SEO-vriendelijke URL's die zuiver structurele URL's zijn die geen querytekenreeks bevatten en in plaats daarvan alleen het pad van de resource bevatten (na de regeling en de autoriteit). Dit wordt vaak gedaan voor esthetische, bruikbaarheid, of zoekmachine optimalisatie (SEO) doeleinden.
 
 > [!NOTE]
 >  U alleen querytekenreeksparameters toevoegen met behulp van het beleid. U geen extra sjabloonpadparameters toevoegen aan de URL herschrijven.

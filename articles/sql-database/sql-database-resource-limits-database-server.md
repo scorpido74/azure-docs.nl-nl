@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 550c315023c0ae907c369778c81b16e137004bec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: afb30a17d7a1450f169402c18f41ce249415e89d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067251"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804823"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database-resourcelimieten en resourcegovernance
 
@@ -103,7 +103,7 @@ Om resourcelimieten af te dwingen, gebruikt Azure SQL Database een implementatie
 
 Azure SQL Database gebruikt niet alleen Resource Governor om resources binnen het SQL Server-proces te beheren, maar gebruikt ook Windows [Job Objects](https://docs.microsoft.com/windows/win32/procthread/job-objects) voor resourcegovernance op procesniveau en Windows File Server Resource [Manager (FSRM)](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) voor opslagquotumbeheer.
 
-Azure SQL Database resource governance is hiërarchisch van aard. Van boven naar beneden worden limieten afgedwongen op os-niveau en op het niveau van het opslagvolume met behulp van beheermechanismen voor besturingssysteemresources en Resource Governor, vervolgens op resourcepoolniveau met Resource Governor en vervolgens op het niveau van de werkbelastinggroep met behulp van Resource Gouverneur. Resourcegovernancelimieten die van kracht zijn voor de huidige database of elastische groep, worden weergegeven in de [sys.dm_user_db_resource_governance-weergave.](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 
+Azure SQL Database resource governance is hiërarchisch van aard. Van boven naar beneden worden limieten afgedwongen op os-niveau en op het niveau van het opslagvolume met behulp van beheermechanismen voor besturingssysteemresources en Resource Governor, vervolgens op resourcepoolniveau met resourcegouverneur en vervolgens op het niveau van de werkbelastinggroep met behulp van Resource Governor. Resourcegovernancelimieten die van kracht zijn voor de huidige database of elastische groep, worden weergegeven in de [sys.dm_user_db_resource_governance-weergave.](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 
 
 ### <a name="data-io-governance"></a>Data IO-governance
 
@@ -134,7 +134,7 @@ Als logboekrecords worden gegenereerd, wordt elke bewerking geëvalueerd en beoo
 
 De werkelijke log generatie tarieven opgelegd tijdens de looptijd kan ook worden beïnvloed door feedback mechanismen, tijdelijk verminderen van de toegestane log tarieven, zodat het systeem kan stabiliseren. Log bestandsruimtebeheer, voorkomen dat u uit de instellingen van de logboekruimte loopt en replicatiemechanismen voor beschikbaarheidsgroepen de algemene systeemlimieten tijdelijk kunnen verlagen.
 
-Log rate governor traffic shaping is opgedoken via de volgende wachttypen (blootgesteld in de [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
+Log rate governor traffic shaping is opgedoken via de volgende wachttypen (blootgesteld in de [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) en [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) views):
 
 | Wachttype | Opmerkingen |
 | :--- | :--- |
@@ -143,6 +143,7 @@ Log rate governor traffic shaping is opgedoken via de volgende wachttypen (bloot
 | INSTANCE_LOG_RATE_GOVERNOR | Beperking van het instantieniveau |  
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Feedbackbesturingselement, fysieke replicatie van beschikbaarheidsgroepen in Premium/Business Critical houdt het niet bij |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | Feedbackcontrole, beperking van de tarieven om een voorwaarde voor een niet-logboekruimte te voorkomen |
+| HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO | Geo-replicatiefeedbackbesturingselement, beperking van de logsnelheid om hoge gegevenslatentie en onbeschikbaarheid van geo-secondaries te voorkomen|
 |||
 
 Wanneer u een limiet voor de logsnelheid tegenkomt die de gewenste schaalbaarheid belemmert, moet u rekening houden met de volgende opties:

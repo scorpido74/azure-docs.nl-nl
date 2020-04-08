@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/06/2020
+ms.date: 04/07/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: df7461443fc9e89209545e8a2dfb9ad0addf3f3e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 86c5f572ba66845467a7e3f4412b8da8368fe772
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757150"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811262"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelastingscenario's te hosten en uit te voeren
 
@@ -110,6 +110,7 @@ Zie voor informatie over de integratie van Azure-services in SAP-componenten:
 
 
 ## <a name="change-log"></a>Logboek wijzigen
+- 04/07/2020: Wijzigen in [het instellen van pacemaker op SLES in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) om instructies voor cloud-netconfig-azure te verduidelijken
 - 04/06/2020: Wijzigingen in [SAP HANA-scale-out met stand-by node op Azure VM's met Azure NetApp Files op SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) en in [SAP HANA scale-out met stand-by node op Azure VM's met Azure NetApp Files op RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) om verwijzingen naar NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf) te verwijderen (vervangen door [TR-4746](https://www.netapp.com/us/media/tr-4746.pdf))
 - 03/31/2020: Wijziging in [hoge beschikbaarheid van SAP HANA op Azure VM's op SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) en hoge beschikbaarheid van SAP [HANA op Azure VM's op RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) om instructies toe te voegen hoe u de streepgrootte opgeeft bij het maken van gestreepte volumes
 - 03/27/2020: Wijziging in [hoge beschikbaarheid voor SAP NW op Azure VM's op SLES met ANF voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) om de opties voor het monteren van bestandssystemen uit te lijnen op NetApp TR-4746 (verwijder de optie synchronisatiebevestiging)

@@ -1,31 +1,31 @@
 ---
 title: Uw Azure IoT Central-gegevens exporteren | Microsoft Documenten
-description: Gegevens exporteren vanuit uw Azure IoT Central-toepassing naar Azure Event Hubs, Azure Service Bus en Azure Blob Storage
+description: Gegevens exporteren vanuit uw Azure IoT Central-toepassing naar Azure Event Hubs, Azure Service Bus en Azure Blob-opslag
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 01/30/2019
+ms.date: 04/07/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 725c5acf961fffb1fd4cf9bc17e37a5940f871cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c83c97aab43b6978922202cc96ff92e1e046a7e2
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157905"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811621"
 ---
 # <a name="export-iot-data-to-destinations-in-azure"></a>IoT-gegevens exporteren naar bestemmingen in Azure
 
 *Dit onderwerp is van toepassing op beheerders.*
 
-In dit artikel wordt beschreven hoe u de functie voor het exporteren van continue gegevens in Azure IoT Central gebruiken om uw gegevens te exporteren naar **Azure Event Hubs,** **Azure Service Bus**of Azure **Blob-opslagexemplaren.** Gegevens worden geëxporteerd in JSON-indeling en kunnen telemetrie, apparaatinformatie en apparaatsjabloongegevens bevatten. Gebruik de geëxporteerde gegevens voor:
+In dit artikel wordt beschreven hoe u de functie voor het exporteren van gegevens gebruiken in Azure IoT Central. Met deze functie u uw gegevens continu exporteren naar **Azure Event Hubs,** **Azure Service Bus**of Azure **Blob-opslagexemplaren.** Het exporteren van gegevens maakt gebruik van de JSON-indeling en kan telemetrie, apparaatgegevens en apparaatsjabloongegevens bevatten. Gebruik de geëxporteerde gegevens voor:
 
 - Inzichten en analyses van warme paden. Deze optie omvat het activeren van aangepaste regels in Azure Stream Analytics, het activeren van aangepaste werkstromen in Azure Logic Apps of het doorgeven via Azure-functies om te worden getransformeerd.
 - Cold-path analytics zoals trainingsmodellen in Azure Machine Learning of langetermijntrendanalyse in Microsoft Power BI.
 
 > [!Note]
-> Wanneer u continue gegevensexport inschakelt, krijgt u vanaf dat moment alleen de gegevens. Momenteel kunnen gegevens niet worden opgehaald voor een tijd waarin continue gegevensexporteren was uitgeschakeld. Als u meer historische gegevens wilt bewaren, schakelt u continue gegevensexport vroegtijdig in.
+> Wanneer u gegevensexport inschakelt, krijgt u vanaf dat moment alleen de gegevens. Momenteel kunnen gegevens niet worden opgehaald voor een tijd waarin de uitvoer van gegevens was uitgeschakeld. Als u meer historische gegevens wilt bewaren, schakelt u gegevensexport vroegtijdig in.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,7 +33,7 @@ U moet een beheerder zijn in uw IoT Central-toepassing of machtigingen voor het 
 
 ## <a name="set-up-export-destination"></a>Exportbestemming instellen
 
-Uw exportbestemming moet bestaan voordat u uw continue gegevensexport configureert.
+Uw exportbestemming moet bestaan voordat u de export van uw gegevens configureert.
 
 ### <a name="create-event-hubs-namespace"></a>De Event Hubs-naamruimte maken
 
@@ -52,15 +52,15 @@ Als u geen bestaande naamruimte van servicebus hebt om naar te exporteren, voert
 1. Maak een [nieuwe naamruimte voor servicebus in de Azure-portal.](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) Meer informatie vindt u in [Azure Service Bus-documenten](../../service-bus-messaging/service-bus-create-namespace-portal.md).
 2. Kies een abonnement. U gegevens exporteren naar andere abonnementen die niet in hetzelfde abonnement zitten als uw IoT Central-toepassing. U maakt in dit geval verbinding via een verbindingstekenreeks.
 
-3. Ga naar de naamruimte van uw servicebus en selecteer **+ Wachtrij** of **+ Onderwerp** bovenaan om een wachtrij of onderwerp te maken om naar te exporteren.
+3. Als u een wachtrij of onderwerp wilt maken om naar te exporteren, gaat u naar de naamruimte van uw servicebus en selecteert **u + Wachtrij** of + **onderwerp**.
 
 Wanneer u ServiceBus als exportbestemming kiest, mogen de wachtrijen en onderwerpen geen sessies of dubbele detectie hebben ingeschakeld. Als een van deze opties is ingeschakeld, worden sommige berichten niet in uw wachtrij of onderwerp weergegeven.
 
 ### <a name="create-storage-account"></a>Een opslagaccount maken
 
-Als u geen bestaand Azure Storage-account hebt om naar te exporteren, voert u de volgende stappen uit:
+Als u geen bestaand Azure-opslagaccount hebt om naar te exporteren, voert u de volgende stappen uit:
 
-1. Maak een [nieuw opslagaccount in de Azure-portal.](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) Meer informatie over het maken van nieuwe [Azure Blob Storage-accounts](https://aka.ms/blobdocscreatestorageaccount) of [Azure Data Lake Storage v2-opslagaccounts](../../storage/blobs/data-lake-storage-quickstart-create-account.md). Het exporteren van gegevens kan alleen gegevens schrijven naar opslagaccounts die blokblobs ondersteunen. Hieronder volgt een lijst met bekende compatibele typen opslagaccounts: 
+1. Maak een [nieuw opslagaccount in de Azure-portal.](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) Meer informatie over het maken van nieuwe [Azure Blob-opslagaccounts](https://aka.ms/blobdocscreatestorageaccount) of [Azure Data Lake Storage v2-opslagaccounts](../../storage/blobs/data-lake-storage-quickstart-create-account.md). Het exporteren van gegevens kan alleen gegevens schrijven naar opslagaccounts die blokblobs ondersteunen. In de volgende lijst worden de bekende compatibele opslagaccounttypen weergegeven:
 
     |Prestatielaag|Accounttype|
     |-|-|
@@ -71,30 +71,30 @@ Als u geen bestaand Azure Storage-account hebt om naar te exporteren, voert u de
 
 2. Maak een container in uw opslagaccount. Ga naar uw opslagaccount. Selecteer Blobs onder **Blob-service**door **Blobs bladeren**. Selecteer **+ Container** bovenaan om een nieuwe container te maken.
 
-## <a name="set-up-continuous-data-export"></a>Continue gegevensexport instellen
+## <a name="set-up-data-export"></a>Gegevensexporteren instellen
 
-Nu u een bestemming hebt om gegevens naar te exporteren, voert u deze stappen uit om continue gegevensexport in te stellen.
+Nu u een bestemming hebt om gegevens naar te exporteren, voert u deze stappen uit om gegevensexport in te stellen.
 
 1. Meld u aan bij uw IoT Central-toepassing.
 
 2. Selecteer **Gegevens exporteren**in het linkerdeelvenster .
 
-    > [!Note]
-    > Als u Gegevensexporteren niet in het linkerdeelvenster ziet, hebt u geen machtigingen om gegevensexport in uw app te configureren. Praat met een beheerder om gegevensexport in te stellen.
+    > [!Tip]
+    > Als u **gegevensexporteren** niet in het linkerdeelvenster ziet, hebt u geen machtigingen om gegevensexport in uw app te configureren. Praat met een beheerder om gegevensexport in te stellen.
 
 3. Selecteer de knop **+ Nieuw** rechtsboven. Kies een van **Azure Event Hubs,** **Azure Service Bus**of Azure **Blob-opslag** als bestemming van uw export. Het maximum aantal uitvoer per aanvraag is vijf.
 
-    ![Nieuwe continue gegevensexport maken](media/howto-export-data/new-export-definition.png)
+    ![Nieuwe gegevens exporteren maken](media/howto-export-data/new-export-definition.png)
 
 4. Selecteer in de vervolgkeuzelijst de **naamruimte van gebeurtenishubs,** **naamruimte servicebus,** **naamruimte voor opslagaccount**of **Voer een verbindingstekenreeks in**.
 
-    - U ziet alleen naamruimten voor opslagaccounts, gebeurtenishubs en naamruimten van servicebus in hetzelfde abonnement als uw IoT Central-toepassing. Als u wilt exporteren naar een bestemming buiten dit abonnement, kiest u **Een verbindingstekenreeks invoeren** en ziet u stap 5.
-    - Voor apps die zijn gemaakt met behulp van het gratis prijsplan, is de enige manier om continue gegevensexport te configureren via een verbindingstekenreeks. Apps met het gratis prijsplan hebben geen gekoppeld Azure-abonnement.
+    - U ziet alleen opslagaccounts, naamruimten voor gebeurtenishubs en naamruimten van servicebus in hetzelfde abonnement als uw IoT Central-toepassing. Als u wilt exporteren naar een bestemming buiten dit abonnement, kiest u **Een verbindingstekenreeks invoeren** en ziet u de volgende stap.
+    - Voor apps die zijn gemaakt met behulp van het gratis prijsplan, is de enige manier om gegevensexport te configureren via een verbindingstekenreeks. Apps met het gratis prijsplan hebben geen gekoppeld Azure-abonnement.
 
     ![Nieuwe gebeurtenishub maken](media/howto-export-data/export-event-hub.png)
 
 5. (Optioneel) Als u **Een verbindingstekenreeks invoeren**hebt gekozen, wordt er een nieuw vak weergegeven dat u de verbindingstekenreeks plakken. Ga als u op zoek naar de verbindingstekenreeks voor uw:
-    - Gebeurtenishubs of servicebus, ga naar de naamruimte in de Azure-portal.
+    - Gebeurtenishubs of servicebus, ga naar de naamruimte in de Azure-portal:
         - Selecteer **Onder Instellingen**de optie Beleid voor gedeelde **toegang**
         - Kies de standaard **RootManageSharedAccessKey** of maak een nieuwe
         - De primaire of secundaire verbindingstekenreeks kopiëren
@@ -106,7 +106,7 @@ Nu u een bestemming hebt om gegevens naar te exporteren, voert u deze stappen ui
 
 7. Kies **onder Gegevens om te exporteren**de typen gegevens die u wilt exporteren door het type in te stellen op **Aan**.
 
-8. Als u continue gegevensexport wilt inschakelen, controleert u of de **ingeschakelde** toggle ingeschakeld is **ingeschakeld**. Selecteer **Opslaan**.
+8. Als u gegevensexport wilt inschakelen, controleert u of de **ingeschakelde** toggle ingeschakeld is **ingeschakeld**. Selecteer **Opslaan**.
 
 9. Na een paar minuten worden uw gegevens weergegeven in de door u gekozen bestemming.
 
@@ -114,58 +114,46 @@ Nu u een bestemming hebt om gegevens naar te exporteren, voert u deze stappen ui
 
 Geëxporteerde telemetriegegevens bevatten het volledige bericht dat uw apparaten naar IoT Central hebben verzonden, niet alleen de telemetriewaarden zelf. Geëxporteerde apparatengegevens bevatten wijzigingen in eigenschappen en metagegevens van alle apparaten en geëxporteerde apparaatsjablonen bevatten wijzigingen in alle apparaatsjablonen.
 
-Voor eventhubs en servicebus worden gegevens in bijna realtime geëxporteerd. De gegevens zitten in de eigenschap body en zijn in JSON-formaat (zie hieronder voor voorbeelden).
+Voor eventhubs en servicebus worden gegevens in bijna realtime geëxporteerd. De gegevens zijn `body` in de eigenschap en zijn in JSON-indeling. Zie hieronder voor voorbeelden.
 
-Voor Blob Storage worden gegevens één keer per minuut geëxporteerd, waarbij elk bestand de batch met wijzigingen bevat sinds het laatst geëxporteerde bestand. Geëxporteerde gegevens worden in drie mappen in JSON-indeling geplaatst. De standaardpaden in uw opslagaccount zijn:
+Voor Blob-opslag worden gegevens één keer per minuut geëxporteerd, waarbij elk bestand de batch met wijzigingen bevat sinds het laatst geëxporteerde bestand. Geëxporteerde gegevens worden in drie mappen in JSON-indeling geplaatst. De standaardpaden in uw opslagaccount zijn:
 
 - Telemetrie: _{container}/{app-id}/telemetrie/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
 - Apparaten: _{container}/{app-id}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
 - Apparaatsjablonen: _{container}/{app-id}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
 
-U door de geëxporteerde bestanden in de Azure-portal bladeren door naar het bestand te navigeren en het **tabblad Blob bewerken** te kiezen.
-
+Als u door de geëxporteerde bestanden in de Azure-portal wilt bladeren, navigeert u naar het bestand en selecteert u het **tabblad Blob bewerken.**
 
 ## <a name="telemetry"></a>Telemetrie
 
-Voor gebeurtenishubs en servicebus wordt een nieuw bericht snel geëxporteerd nadat IoT Central het bericht van een apparaat heeft ontvangen en elk geëxporteerd bericht het volledige bericht bevat dat het apparaat in de eigenschap Body in JSON-indeling heeft verzonden.
+Voor gebeurtenishubs en servicebus exporteert IoT Central een nieuw bericht snel nadat het bericht van een apparaat is ontvangen. Elk geëxporteerd bericht bevat het volledige bericht dat het apparaat in de eigenschap body heeft verzonden in JSON-indeling.
 
-Voor Blob Storage worden berichten één keer per minuut gebatcht en geëxporteerd. De geëxporteerde bestanden gebruiken dezelfde indeling als de berichtbestanden die worden geëxporteerd door [de routeringsroute van het IoT Hub-bericht](../../iot-hub/tutorial-routing.md) naar blobopslag. 
+Voor Blob-opslag worden berichten eenmaal per minuut gebatched en geëxporteerd. De geëxporteerde bestanden gebruiken dezelfde indeling als de berichtbestanden die worden geëxporteerd door [de routeringsroute van het IoT Hub-bericht](../../iot-hub/tutorial-routing.md) naar blobopslag.
 
 > [!NOTE]
 > Controleer bij Blob-opslag of uw apparaten `contentType: application/JSON` berichten `contentEncoding:utf-8` verzenden `utf-16` `utf-32`die berichten verzenden en (of , ). Zie de [IoT Hub-documentatie](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body) voor een voorbeeld.
 
 Het apparaat dat de telemetrie heeft verzonden, wordt vertegenwoordigd door de apparaat-id (zie de volgende secties). Als u de namen van de apparaten wilt krijgen, exporteert u apparaatgegevens en correleert u elk bericht met behulp van de **verbindingDeviceId** die overeenkomt met de **deviceId** van het apparaatbericht.
 
-Dit is een voorbeeldbericht dat is ontvangen in een gebeurtenishub of servicebuswachtrij of -onderwerp.
+In het volgende voorbeeld wordt een bericht weergegeven dat is ontvangen vanuit een gebeurtenishub of servicebuswachtrij of -onderwerp:
 
 ```json
 {
-  "body":{
-    "temp":67.96099945281145,
-    "humid":58.51139305465015,
-    "pm25":36.91162432340187
-  },
-  "annotations":{
-    "iothub-connection-device-id":"<deviceId>",
-    "iothub-connection-auth-method":"{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-    "iothub-connection-auth-generation-id":"<generationId>",
-    "iothub-enqueuedtime":1539381029965,
-    "iothub-message-source":"Telemetry",
-    "x-opt-sequence-number":25325,
-    "x-opt-offset":"<offset>",
-    "x-opt-enqueued-time":1539381030200
-  },
-  "sequenceNumber":25325,
-  "enqueuedTimeUtc":"2018-10-12T21:50:30.200Z",
-  "offset":"<offset>",
-  "properties":{
-    "content_type":"application/json",
-    "content_encoding":"utf-8"
-  }
+  "temp":81.129693132351775,
+  "humid":59.488071477541247,
+  "EventProcessedUtcTime":"2020-04-07T09:41:15.2877981Z",
+  "PartitionId":0,
+  "EventEnqueuedUtcTime":"2020-04-07T09:38:32.7380000Z"
 }
 ```
 
-Dit is een voorbeeldrecord dat naar blobopslag wordt geëxporteerd:
+Dit bericht bevat niet de apparaat-ID van het verzendende apparaat.
+
+Als u de apparaat-id wilt ophalen uit de berichtgegevens in een Azure Stream Analytics-query, gebruikt u de functie [GetMetadataPropertyValue.](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) Zie bijvoorbeeld de query in [Azure IoT Central uitbreiden met aangepaste regels met Stream Analytics, Azure Functions en SendGrid](./howto-create-custom-rules.md).
+
+Als u de apparaat-id wilt ophalen in een Azure Databricks- of Apache Spark-werkruimte, gebruikt u [systemProperties](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md). Zie bijvoorbeeld de werkruimte Databricks in [Azure IoT Central uitbreiden met aangepaste analyses met Azure Databricks.](./howto-create-custom-analytics.md)
+
+In het volgende voorbeeld ziet u een record dat naar blobopslag wordt geëxporteerd:
 
 ```json
 {
@@ -191,11 +179,11 @@ Dit is een voorbeeldrecord dat naar blobopslag wordt geëxporteerd:
 
 ## <a name="devices"></a>Apparaten
 
-Elk bericht of record in een momentopname vertegenwoordigt een of meer wijzigingen in een apparaat en de eigenschappen van het apparaat en de cloud sinds het laatst geëxporteerde bericht. Dit omvat:
+Elk bericht of record in een momentopname vertegenwoordigt een of meer wijzigingen in een apparaat en de eigenschappen van het apparaat en de cloud sinds het laatst geëxporteerde bericht. Het bericht bevat de:
 
 - `id`van het apparaat in IoT Central
 - `displayName`van het apparaat
-- Apparaatsjabloon-id in`instanceOf`
+- Apparaatsjabloon-ID in`instanceOf`
 - `simulated`vlag, true als het apparaat een gesimuleerd apparaat is
 - `provisioned`vlag, waar als het apparaat is ingericht
 - `approved`vlag, true als het apparaat is goedgekeurd om gegevens te verzenden
@@ -204,11 +192,11 @@ Elk bericht of record in een momentopname vertegenwoordigt een of meer wijziging
 
 Verwijderde apparaten worden niet geëxporteerd. Momenteel zijn er geen indicatoren in geëxporteerde berichten voor verwijderde apparaten.
 
-Voor gebeurtenishubs en servicebus worden berichten met apparaatgegevens in bijna realtime verzonden naar uw gebeurtenishub of servicebuswachtrij of -onderwerp, zoals deze wordt weergegeven in IoT Central. 
+Voor gebeurtenishubs en servicebus verzendt IoT Central berichten met apparaatgegevens in bijna realtime naar uw gebeurtenishub of servicebuswachtrij of -onderwerp.
 
-Voor Blob Storage wordt een nieuwe momentopname met alle wijzigingen sinds de laatste geschreven keer per minuut geëxporteerd.
+Voor Blob-opslag wordt een nieuwe momentopname met alle wijzigingen sinds de laatste geschreven keer per minuut geëxporteerd.
 
-Dit is een voorbeeldbericht over gegevens over apparaten en eigenschappen in de gebeurtenishub of servicebuswachtrij of -onderwerp:
+In het volgende voorbeeldbericht wordt informatie weergegeven over gegevens over apparaten en eigenschappen in een gebeurtenishub of servicebuswachtrij of -onderwerp:
 
 ```json
 {
@@ -262,7 +250,7 @@ Dit is een voorbeeldbericht over gegevens over apparaten en eigenschappen in de 
 }
 ```
 
-Dit is een voorbeeldmomentopname met apparaten en eigenschappengegevens in Blob Storage. Geëxporteerde bestanden bevatten één regel per record.
+Deze momentopname is een voorbeeldbericht met gegevens over apparaten en eigenschappen in blob-opslag. Geëxporteerde bestanden bevatten één regel per record.
 
 ```json
 {
@@ -315,11 +303,11 @@ Elk bericht of momentopnamerecord vertegenwoordigt een of meer wijzigingen in ee
 
 Verwijderde apparaatsjablonen worden niet geëxporteerd. Momenteel zijn er geen indicatoren in geëxporteerde berichten voor verwijderde apparaatsjablonen.
 
-Voor gebeurtenishubs en servicebus worden berichten met apparaatsjabloongegevens in bijna realtime verzonden naar uw gebeurtenishub of servicebuswachtrij of -onderwerp, zoals deze wordt weergegeven in IoT Central. 
+Voor gebeurtenishubs en servicebus verzendt IoT Central berichten met apparaatsjabloongegevens in bijna realtime naar uw gebeurtenishub of servicebuswachtrij of -onderwerp.
 
-Voor Blob Storage wordt een nieuwe momentopname met alle wijzigingen sinds de laatste geschreven keer per minuut geëxporteerd.
+Voor Blob-opslag wordt een nieuwe momentopname met alle wijzigingen sinds de laatste geschreven keer per minuut geëxporteerd.
 
-Dit is een voorbeeldbericht over gegevens over apparaatsjablonen in gebeurtenishub of servicebuswachtrij of -onderwerp:
+In dit voorbeeld wordt een bericht weergegeven over gegevens over apparaatsjablonen in gebeurtenishub of servicebuswachtrij of -onderwerp:
 
 ```json
 {
@@ -444,7 +432,7 @@ Dit is een voorbeeldbericht over gegevens over apparaatsjablonen in gebeurtenish
 }
 ```
 
-Dit is een voorbeeldmomentopname met apparaten en eigenschappengegevens in Blob Storage. Geëxporteerde bestanden bevatten één regel per record.
+In deze voorbeeldmomentopname wordt een bericht weergegeven dat apparaat- en eigenschappengegevens bevat in blobopslag. Geëxporteerde bestanden bevatten één regel per record.
 
 ```json
 {
@@ -554,15 +542,16 @@ Dit is een voorbeeldmomentopname met apparaten en eigenschappengegevens in Blob 
       }
   }
 ```
+
 ## <a name="data-format-change-notice"></a>Melding van wijziging van gegevensindeling
 
 > [!Note]
 > De gegevensindeling van de telemetriestroom wordt niet beïnvloed door deze wijziging. Alleen de gegevensstromen van apparaten en apparaatsjablonen worden beïnvloed.
 
-Als u een bestaande gegevensexport in uw preview-toepassing hebt met de streams *voor apparaten* en *apparaatsjablonen* ingeschakeld, moet u uw export v:v. **30 juni 2020 bijwerken.** Dit geldt voor export naar Azure Blob Storage, Azure Event Hubs en Azure Service Bus.
+Als u een bestaande gegevensexport in uw preview-toepassing hebt met de streams *voor apparaten* en *apparaten,* werkt u uw export v.m. **30 juni 2020**bij . Deze vereiste is van toepassing op export naar Azure Blob-opslag, Azure Event Hubs en Azure Service Bus.
 
-Vanaf 3 februari 2020 wordt in alle nieuwe exporten in toepassingen met apparaten en apparaatsjablonen de hierboven beschreven gegevensindeling beschreven. Alle exporten die hiervoor zijn gemaakt, blijven tot 30 juni 2020 in het oude gegevensformaat, waarna deze export automatisch wordt gemigreerd naar het nieuwe gegevensformaat. De nieuwe gegevensindeling komt overeen met de eigenschap van het [apparaat,](https://docs.microsoft.com/rest/api/iotcentral/devices/get)de [eigenschap van de apparaatwolk](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties)en de [device cloud property](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties) [objectobjecten van de apparaatsjabloon](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) in de openbare IOT Central-API. 
- 
+Vanaf 3 februari 2020 wordt in alle nieuwe exporten in toepassingen met apparaten en apparaatsjablonen de hierboven beschreven gegevensindeling beschreven. Alle uitvoer die vóór deze datum is gemaakt, blijft op de oude gegevensnotatie tot 30 juni 2020, waarna deze uitvoer automatisch wordt gemigreerd naar het nieuwe gegevensformaat. De nieuwe gegevensindeling komt overeen met de eigenschap van het [apparaat,](https://docs.microsoft.com/rest/api/iotcentral/devices/get)de [eigenschap van de](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties) [apparaatcloud](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)en de objectobjecten [van de apparaatsjabloon](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) in de openbare IOT-API.
+
 Voor **apparaten**zijn opmerkelijke verschillen tussen de oude gegevensindeling en de nieuwe gegevensindeling:
 - `@id`voor apparaat wordt `deviceId` verwijderd, wordt hernoemd naar`id` 
 - `provisioned`vlag wordt toegevoegd om de inrichtingsstatus van het apparaat te beschrijven
@@ -575,6 +564,7 @@ Voor **apparaatsjablonen**zijn opmerkelijke verschillen tussen de oude gegevensi
 - `@type`voor de apparaatsjabloon wordt `types`hernoemd naar , en is nu een array
 
 ### <a name="devices-format-deprecated-as-of-3-february-2020"></a>Apparaten (formaat afgeschaft vanaf 3 februari 2020)
+
 ```json
 {
   "@id":"<id-value>",
@@ -620,6 +610,7 @@ Voor **apparaatsjablonen**zijn opmerkelijke verschillen tussen de oude gegevensi
 ```
 
 ### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>Apparaatsjablonen (indeling afgeschaft vanaf 3 februari 2020)
+
 ```json
 {
   "@id":"<template-id>",
@@ -751,9 +742,10 @@ Voor **apparaatsjablonen**zijn opmerkelijke verschillen tussen de oude gegevensi
   }
 }
 ```
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u weet hoe u uw gegevens exporteren naar Azure Event Hubs, Azure Service Bus en Azure Blob Storage, gaat u verder met de volgende stap:
+Nu u weet hoe u uw gegevens exporteren naar Azure Event Hubs, Azure Service Bus en Azure Blob-opslag, gaat u verder met de volgende stap:
 
 > [!div class="nextstepaction"]
 > [Webhooks maken](./howto-create-webhooks.md)

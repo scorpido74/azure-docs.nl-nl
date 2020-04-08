@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 1a0ec9465be3b714e90bfca6a15b60423d6065a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f05780610a2a6033b069721b143aca5e5efa6c35
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295583"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804517"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Een ILB ASE maken met behulp van Azure Resource Manager-sjablonen
 
@@ -28,8 +28,8 @@ App Service-omgevingen kunnen worden gemaakt met een intern netwerkadres in plaa
 Er zijn drie stappen betrokken bij het automatiseren van de creatie van een ILB ASE:
 
 1. Eerst wordt de basis ASE gemaakt in een virtueel netwerk met behulp van een intern adres van de load balancer in plaats van een openbare VIP.  Als onderdeel van deze stap wordt een hoofddomeinnaam toegewezen aan de ILB ASE.
-2. Zodra de ILB ASE is gemaakt, wordt een SSL-certificaat geüpload.  
-3. Het geüploade SSL-certificaat wordt expliciet toegewezen aan de ILB ASE als het 'standaard' SSL-certificaat.  Dit SSL-certificaat wordt gebruikt voor SSL-verkeer naar apps op de ILB ASE wanneer de apps worden `https://someapp.mycustomrootcomain.com`geadresseerd met behulp van het gemeenschappelijke hoofddomein dat is toegewezen aan de ASE (bijv. )
+2. Zodra de ILB ASE is gemaakt, wordt een TLS/SSL-certificaat geüpload.  
+3. Het geüploade TLS/SSL-certificaat wordt expliciet toegewezen aan de ILB ASE als het 'standaard' TLS/SSL-certificaat.  Dit TLS/SSL-certificaat wordt gebruikt voor TLS-verkeer naar apps op de ILB ASE wanneer de apps worden `https://someapp.mycustomrootcomain.com`geadresseerd met behulp van het gemeenschappelijk hoofddomein dat is toegewezen aan de ASE (bijv. )
 
 ## <a name="creating-the-base-ilb-ase"></a>De Basis ILB ASE maken
 Een voorbeeld van Azure Resource Manager-sjabloon en het bijbehorende parametersbestand zijn [hier][quickstartilbasecreate]beschikbaar op GitHub.
@@ -49,17 +49,17 @@ Zodra het *azuredeploy.parameters.json-bestand* is ingevuld voor een ILB ASE, ka
 
 Nadat de sjabloon Azure Resource Manager is ingediend, duurt het enkele uren voordat de ILB ASE is gemaakt.  Zodra de creatie is voltooid, wordt de ILB ASE weergegeven in de portal UX in de lijst met App Service-omgevingen voor het abonnement dat de implementatie heeft geactiveerd.
 
-## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>'Standaard'-SSL-certificaat uploaden en configureren
-Zodra de ILB ASE is gemaakt, moet een SSL-certificaat worden gekoppeld aan de ASE als het 'standaard' SSL-certificaatgebruik voor het tot stand brengen van SSL-verbindingen met apps.  Als het standaard DNS-achtervoegsel van de ASE *internal-contoso.com*is, vereist een *https://some-random-app.internal-contoso.com* verbinding met een SSL-certificaat dat geldig is voor **.internal-contoso.com*. 
+## <a name="uploading-and-configuring-the-default-tlsssl-certificate"></a>Het 'Standaard' TLS/SSL-certificaat uploaden en configureren
+Zodra de ILB ASE is gemaakt, moet een TLS/SSL-certificaat worden gekoppeld aan de ASE als het 'standaard' TLS/SSL-certificaat gebruik voor het tot stand brengen van TLS/ SSL-verbindingen met apps.  Als het standaard DNS-achtervoegsel van de ASE *internal-contoso.com*is, vereist een *https://some-random-app.internal-contoso.com* verbinding met een TLS/SSL-certificaat dat geldig is voor **.internal-contoso.com*. 
 
-Er zijn verschillende manieren om een geldig SSL-certificaat te verkrijgen, waaronder interne A's, het kopen van een certificaat bij een externe uitgever en het gebruik van een zelfondertekend certificaat.  De volgende certificaatkenmerken moeten juist zijn geconfigureerd, ongeacht wat de bron van het SSL-certificaat is:
+Er zijn verschillende manieren om een geldig TLS/SSL-certificaat te verkrijgen, waaronder interne A's, het kopen van een certificaat bij een externe uitgever en het gebruik van een zelfondertekend certificaat.  Ongeacht de bron van het TLS/SSL-certificaat moeten de volgende certificaatkenmerken correct zijn geconfigureerd:
 
 * *Onderwerp*: Dit kenmerk moet worden ingesteld op **.your-root-domain-here.com*
-* *Alternatieve naam van het onderwerp:* dit kenmerk moet zowel **.your-root-domain-here.com*als **.scm.your-root-domain-here.com*bevatten.  De reden voor de tweede vermelding is dat SSL-verbindingen met de SCM/Kudu-site die aan elke app zijn gekoppeld, worden gemaakt met behulp van een adres van het *formulier your-app-name.scm.your-root-domain-here.com.*
+* *Alternatieve naam van het onderwerp:* dit kenmerk moet zowel **.your-root-domain-here.com*als **.scm.your-root-domain-here.com*bevatten.  De reden voor de tweede vermelding is dat TLS-verbindingen met de SCM/Kudu-site die aan elke app zijn gekoppeld, worden gemaakt met behulp van een adres van het *formulier your-app-name.scm.your-root-domain-here.com*.
 
-Met een geldig SSL-certificaat in de hand zijn twee extra voorbereidende stappen nodig.  Het SSL-certificaat moet worden geconverteerd/opgeslagen als een .pfx-bestand.  Vergeet niet dat het .pfx-bestand alle tussenliggende en rootcertificaten moet bevatten en ook moet worden beveiligd met een wachtwoord.
+Met een geldig TLS/SSL-certificaat in de hand zijn twee extra voorbereidende stappen nodig.  Het TLS/SSL-certificaat moet worden geconverteerd/opgeslagen als een .pfx-bestand.  Vergeet niet dat het .pfx-bestand alle tussenliggende en rootcertificaten moet bevatten en ook moet worden beveiligd met een wachtwoord.
 
-Vervolgens moet het resulterende .pfx-bestand worden geconverteerd naar een base64-tekenreeks, omdat het SSL-certificaat wordt geüpload met behulp van een Azure Resource Manager-sjabloon.  Aangezien Azure Resource Manager-sjablonen tekstbestanden zijn, moet het PFX-bestand worden geconverteerd naar een base64-tekenreeks, zodat het kan worden opgenomen als parameter van de sjabloon.
+Vervolgens moet het resulterende .pfx-bestand worden geconverteerd naar een base64-tekenreeks, omdat het TLS/SSL-certificaat wordt geüpload met behulp van een Azure Resource Manager-sjabloon.  Aangezien Azure Resource Manager-sjablonen tekstbestanden zijn, moet het PFX-bestand worden geconverteerd naar een base64-tekenreeks, zodat het kan worden opgenomen als parameter van de sjabloon.
 
 Het onderstaande Powershell-codefragment toont een voorbeeld van het genereren van een zelfondertekend certificaat, het exporteren van het certificaat als een PFX-bestand, het omzetten van het .pfx-bestand naar een base64-gecodeerde tekenreeks en vervolgens de basis64 gecodeerde tekenreeks opslaan in een apart bestand.  De Powershell-code voor base64-codering is aangepast van de [Powershell Scripts Blog][examplebase64encoding].
 
@@ -75,7 +75,7 @@ Het onderstaande Powershell-codefragment toont een voorbeeld van het genereren v
     $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
     $fileContentEncoded | set-content ($fileName + ".b64")
 
-Zodra het SSL-certificaat is gegenereerd en geconverteerd naar een door basis64 gecodeerde tekenreeks, kan het voorbeeld Azure Resource Manager-sjabloon op GitHub voor [het configureren van het standaard SSL-certificaat][configuringDefaultSSLCertificate] worden gebruikt.
+Zodra het TLS/SSL-certificaat is gegenereerd en geconverteerd naar een door basis64 gecodeerde tekenreeks, kan het voorbeeld Azure Resource Manager-sjabloon op GitHub voor [het configureren van het standaard TLS/SSL-certificaat][configuringDefaultSSLCertificate] worden gebruikt.
 
 De parameters in het bestand *azuredeploy.parameters.json* worden hieronder weergegeven:
 
@@ -84,7 +84,7 @@ De parameters in het bestand *azuredeploy.parameters.json* worden hieronder weer
 * *pfxBlobString*: De op basis 64 gecodeerde tekenreeksweergave van het .pfx-bestand.  Met behulp van het eerder getoonde codefragment kopieert u de tekenreeks in 'exportcert.pfx.b64' en plakt u deze in als de waarde van het *kenmerk pfxBlobString.*
 * *wachtwoord*: Het wachtwoord dat wordt gebruikt om het .pfx-bestand te beveiligen.
 * *certificateThumbprint*: De duimafdruk van het certificaat.  Als u deze waarde ophaalt uit Powershell (bijv. *$certificate. Duimafdruk* van het eerdere codefragment), u de waarde as-is gebruiken.  Als u de waarde echter kopieert uit het dialoogvenster Windows-certificaat, moet u de vreemde spaties niet uitkleden.  Het *certificaatThumbprint* moet er ongeveer uitzien als: AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* *certificateName:* een vriendelijke tekenreeks-id van uw eigen keuze die wordt gebruikt om het certificaat te identificeren.  De naam wordt gebruikt als onderdeel van de unieke Azure Resource Manager-id voor de entiteit *Microsoft.Web/certificaten* die het SSL-certificaat vertegenwoordigt.  De naam **moet** eindigen met \_het volgende achtervoegsel: yourASENameHere_InternalLoadBalancingASE.  Dit achtervoegsel wordt door de portal gebruikt als indicator dat het certificaat wordt gebruikt voor het beveiligen van een ASE met ILB.
+* *certificateName:* een vriendelijke tekenreeks-id van uw eigen keuze die wordt gebruikt om het certificaat te identificeren.  De naam wordt gebruikt als onderdeel van de unieke Azure Resource Manager-id voor de entiteit *Microsoft.Web/certificaten* die het TLS/SSL-certificaat vertegenwoordigt.  De naam **moet** eindigen met \_het volgende achtervoegsel: yourASENameHere_InternalLoadBalancingASE.  Dit achtervoegsel wordt door de portal gebruikt als indicator dat het certificaat wordt gebruikt voor het beveiligen van een ASE met ILB.
 
 Hieronder wordt een verkortvoorbeeld van *azuredeploy.parameters.json* weergegeven:
 
@@ -113,7 +113,7 @@ Hieronder wordt een verkortvoorbeeld van *azuredeploy.parameters.json* weergegev
          }
     }
 
-Zodra het *azuredeploy.parameters.json-bestand* is ingevuld, kan het standaard SSL-certificaat worden geconfigureerd met behulp van het volgende Powershell-codefragment.  Wijzig de bestand PATH's die overeenkomen met de plaats waar de sjabloonbestanden van Azure Resource Manager zich op uw machine bevinden.  Vergeet ook niet om uw eigen waarden te leveren voor de naam azure resource manager-implementatie en de naam van de resourcegroep.
+Zodra het *azuredeploy.parameters.json-bestand* is ingevuld, kan het standaard TLS/SSL-certificaat worden geconfigureerd met behulp van het volgende Powershell-codefragment.  Wijzig de bestand PATH's die overeenkomen met de plaats waar de sjabloonbestanden van Azure Resource Manager zich op uw machine bevinden.  Vergeet ook niet om uw eigen waarden te leveren voor de naam azure resource manager-implementatie en de naam van de resourcegroep.
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
@@ -122,9 +122,9 @@ Zodra het *azuredeploy.parameters.json-bestand* is ingevuld, kan het standaard S
 
 Nadat de azure resource manager-sjabloon is ingediend, duurt het ongeveer veertig minuten per ASE-front-end om de wijziging toe te passen.  Als de sjabloon bijvoorbeeld met een standaardformaat ASE met twee front-ends twee front-ends gebruikt, duurt het ongeveer een uur en twintig minuten.  Terwijl de sjabloon wordt uitgevoerd, kan de ASE niet worden geschaald.  
 
-Zodra de sjabloon is voltooid, kunnen apps op de ILB ASE worden geopend via HTTPS en worden de verbindingen beveiligd met behulp van het standaard SSL-certificaat.  Het standaard SSL-certificaat wordt gebruikt wanneer apps op de ILB ASE worden geadresseerd met behulp van een combinatie van de toepassingsnaam plus de standaardhostnaam.  Gebruik *https://mycustomapp.internal-contoso.com* bijvoorbeeld het standaard SSL-certificaat voor **.internal-contoso.com*.
+Zodra de sjabloon is voltooid, kunnen apps op de ILB ASE worden geopend via HTTPS en worden de verbindingen beveiligd met behulp van het standaard TLS/SSL-certificaat.  Het standaard TLS/SSL-certificaat wordt gebruikt wanneer apps op de ILB ASE worden geadresseerd met behulp van een combinatie van de toepassingsnaam plus de standaardhostnaam.  Gebruik *https://mycustomapp.internal-contoso.com* bijvoorbeeld het standaard TLS/SSL-certificaat voor **.internal-contoso.com*.
 
-Net als apps die op de openbare multitenantservice worden uitgevoerd, kunnen ontwikkelaars echter ook aangepaste hostnamen voor afzonderlijke apps configureren en vervolgens unieke SNI SSL-certificaatbindingen voor afzonderlijke apps configureren.  
+Net als apps die op de openbare multitenantservice worden uitgevoerd, kunnen ontwikkelaars echter ook aangepaste hostnamen voor afzonderlijke apps configureren en vervolgens unieke SNI TLS/SSL-certificaatbindingen voor afzonderlijke apps configureren.  
 
 ## <a name="getting-started"></a>Aan de slag
 Zie [Inleiding tot app-serviceomgeving](app-service-app-service-environment-intro.md) om aan de slag te gaan met app-serviceomgeving

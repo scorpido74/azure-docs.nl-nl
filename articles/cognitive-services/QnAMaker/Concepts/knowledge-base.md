@@ -3,12 +3,12 @@ title: Importeren uit gegevensbronnen - QnA Maker
 description: Een QnA Maker knowledge base bestaat uit een set vraag-en-antwoordsets (QnA) en optionele metadata die aan elk QnA-paar zijn gekoppeld.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: e7772b2c76dfb92ced4d2c0d4b8dae97a59d1b83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79457818"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804279"
 ---
 # <a name="importing-from-data-sources"></a>Importeren uit gegevensbronnen
 
@@ -56,7 +56,7 @@ De **weergaveVolgorde** is numeriek en de **displayText** is tekst die geen afwa
 
 ## <a name="export-as-example"></a>Exporteren als voorbeeld
 
-Als u niet zeker weet hoe u uw `.tsv` QnA-set in het bestand weergeven:
+Als u niet zeker weet hoe u uw `.tsv` QnA-paar in het bestand weergeven:
 * Gebruik dit [downloadbare voorbeeld van GitHub](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)
 * Of maak de set in de QnA Maker-portal, sla op en exporteer de kennisbank voor een voorbeeld van hoe u de set weergeven.
 

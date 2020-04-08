@@ -1,6 +1,6 @@
 ---
-title: SSL configureren voor een cloudservice | Microsoft Documenten
-description: Meer informatie over het opgeven van een HTTPS-eindpunt voor een webrol en hoe u een SSL-certificaat uploadt om uw toepassing te beveiligen. In deze voorbeelden wordt de Azure-portal gebruikt.
+title: TLS configureren voor een cloudservice | Microsoft Documenten
+description: Meer informatie over het opgeven van een HTTPS-eindpunt voor een webrol en hoe u een TLS/SSL-certificaat uploadt om uw toepassing te beveiligen. In deze voorbeelden wordt de Azure-portal gebruikt.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -8,16 +8,16 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
-ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d397279ac7e5949398d695db615d9a003ab7acd
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273135"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811675"
 ---
-# <a name="configuring-ssl-for-an-application-in-azure"></a>SSL configureren voor een toepassing in Azure
+# <a name="configuring-tls-for-an-application-in-azure"></a>TLS configureren voor een toepassing in Azure
 
-Ssl-versleuteling (Secure Socket Layer) is de meest gebruikte methode voor het beveiligen van gegevens die via internet worden verzonden. In deze veelgebruikte taak wordt besproken hoe u een HTTPS-eindpunt opgeeft voor een webrol en hoe u een SSL-certificaat uploadt om uw toepassing te beveiligen.
+Transport Layer Security (TLS), voorheen bekend als Secure Socket Layer (SSL) encryptie, is de meest gebruikte methode voor het beveiligen van gegevens die via het internet worden verzonden. In deze veelgebruikte taak wordt besproken hoe u een HTTPS-eindpunt opgeeft voor een webrol en hoe u een TLS/SSL-certificaat uploadt om uw toepassing te beveiligen.
 
 > [!NOTE]
 > De procedures in deze taak zijn van toepassing op Azure Cloud Services; voor App Services, zie [dit](../app-service/configure-ssl-bindings.md).
@@ -27,14 +27,14 @@ Deze taak maakt gebruik van een productie-implementatie. Aan het einde van dit o
 
 Lees [dit](cloud-services-how-to-create-deploy-portal.md) eerst als u nog geen cloudservice hebt gemaakt.
 
-## <a name="step-1-get-an-ssl-certificate"></a>Stap 1: Een SSL-certificaat aanvragen
-Als u SSL voor een toepassing wilt configureren, moet u eerst een SSL-certificaat ontvangen dat is ondertekend door een Certificate Authority (CA), een vertrouwde derde partij die hiervoor certificaten uitgeeft. Als u er nog geen hebt, moet u er een verkrijgen bij een bedrijf dat SSL-certificaten verkoopt.
+## <a name="step-1-get-a-tlsssl-certificate"></a>Stap 1: Een TLS/SSL-certificaat aanvragen
+Als u TLS voor een toepassing wilt configureren, moet u eerst een TLS/SSL-certificaat ontvangen dat is ondertekend door een Certificate Authority (CA), een vertrouwde derde partij die hiervoor certificaten uitgeeft. Als u er nog geen hebt, moet u er een verkrijgen bij een bedrijf dat TLS/SSL-certificaten verkoopt.
 
-Het certificaat moet voldoen aan de volgende vereisten voor SSL-certificaten in Azure:
+Het certificaat moet voldoen aan de volgende vereisten voor TLS/SSL-certificaten in Azure:
 
 * Het certificaat moet een privésleutel bevatten.
 * Het certificaat moet worden gemaakt voor sleuteluitwisseling, exporteerbaar naar een bestand voor persoonlijke informatie-uitwisseling (.pfx).
-* De onderwerpnaam van het certificaat moet overeenkomen met het domein dat wordt gebruikt om toegang te krijgen tot de cloudservice. U geen SSL-certificaat verkrijgen van een certificeringsinstantie (CA) voor het cloudapp.net domein. U moet een aangepaste domeinnaam aanschaffen om te gebruiken wanneer u toegang krijgt tot uw service. Wanneer u een certificaat aanvraagt bij een CA, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domeinnaam die wordt gebruikt om toegang te krijgen tot uw toepassing. Als uw aangepaste domeinnaam bijvoorbeeld **contoso.com,** zou u een certificaat aanvragen bij uw CA voor ***.contoso.com** of **\.www contoso.com**.
+* De onderwerpnaam van het certificaat moet overeenkomen met het domein dat wordt gebruikt om toegang te krijgen tot de cloudservice. U geen TLS/SSL-certificaat verkrijgen van een certificeringsinstantie (CA) voor het cloudapp.net domein. U moet een aangepaste domeinnaam aanschaffen om te gebruiken wanneer u toegang krijgt tot uw service. Wanneer u een certificaat aanvraagt bij een CA, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domeinnaam die wordt gebruikt om toegang te krijgen tot uw toepassing. Als uw aangepaste domeinnaam bijvoorbeeld **contoso.com,** zou u een certificaat aanvragen bij uw CA voor ***.contoso.com** of **\.www contoso.com**.
 * Het certificaat moet minimaal 2048-bits versleuteling gebruiken.
 
 Voor testdoeleinden u een zelfondertekend certificaat [maken](cloud-services-certs-create.md) en gebruiken. Een zelfondertekend certificaat wordt niet geverifieerd via een CA en kan het cloudapp.net-domein als URL van de website gebruiken. In de volgende taak wordt bijvoorbeeld een zelfondertekend certificaat gebruikt waarin de algemene naam (GN) die in het certificaat wordt **gebruikt, sslexample.cloudapp.net**is.
@@ -166,7 +166,7 @@ Nu uw implementatie in Azure actief is, u er verbinding mee maken via HTTPS.
    ![Voorvertoning van de site](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > Als u SSL wilt gebruiken voor een implementatie met tijdelijke bestanden in plaats van een productie-implementatie, moet u eerst de URL bepalen die wordt gebruikt voor de implementatie van de fasering. Zodra uw cloudservice is geïmplementeerd, wordt de URL naar de faseringsomgeving bepaald door de **GUID implementatie-id** in deze indeling:`https://deployment-id.cloudapp.net/`  
+   > Als u TLS wilt gebruiken voor een implementatie met fasering in plaats van een productie-implementatie, moet u eerst de URL bepalen die wordt gebruikt voor de implementatie van de fasering. Zodra uw cloudservice is geïmplementeerd, wordt de URL naar de faseringsomgeving bepaald door de **GUID implementatie-id** in deze indeling:`https://deployment-id.cloudapp.net/`  
    >
    > Maak een certificaat met de algemene naam (CN) gelijk aan de URL op basis van GUID (bijvoorbeeld **328187776e774ceda8fc57609d404462.cloudapp.net).** Gebruik de portal om het certificaat toe te voegen aan uw gefaseerde cloudservice. Voeg vervolgens de certificaatgegevens toe aan uw CSDEF- en CSCFG-bestanden, verpak uw toepassing opnieuw en werk uw gefaseerde implementatie bij om het nieuwe pakket te gebruiken.
    >
