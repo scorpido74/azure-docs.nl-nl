@@ -21,8 +21,8 @@
           href: event-hubs-quickstart-cli.md
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
-        - name: Azure Resource Manager-sjabloon
-          displayName: ARM
+        - name: ARM-sjabloon
+          displayName: Resource Manager
           href: event-hubs-resource-manager-namespace-event-hub.md
     - name: Gebeurtenissen verzenden en ontvangen
       items:
@@ -115,13 +115,19 @@
                   href: authenticate-application.md
             - name: Verifiëren met een Shared Access Signature
               href: authenticate-shared-access-signature.md
+        - name: Netwerkbeveiliging
+          href: network-security.md
         - name: Ingebouwde beveiligingsmaatregelen
           href: event-hubs-security-controls.md
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: AMQP 1.0-protocolhandleiding
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
 - name: Instructiegidsen
   items:
+    - name: Blob Storage gebruiken als controlepuntopslag in Azure Stack Hub
+      href: use-blob-storage-checkpoint-store-azure-stack-hub.md
     - name: Migreren van Azure Service Manager-API's (klassiek) naar Resource Manager-API's
       href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fevent-hubs%2ftoc.json
     - name: Ontwikkelen
@@ -156,17 +162,17 @@
           maintainContext: true
     - name: Integreren met Apache Kafka
       items:
-        - name: Event-hubs maken waarvoor Apache Kafka is ingeschakeld
-          href: event-hubs-create-kafka-enabled.md
-        - name: Een Kafka-broker spiegelen in een Event Hub waar Apache Kafka is ingeschakeld
+        - name: Kafka-ontwikkelaarshandleiding voor Event Hubs
+          href: apache-kafka-developer-guide.md
+        - name: Een Kafka-broker spiegelen in een Event Hub
           href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: Apache Spark verbinden met een event hub waar Apache Kafka is ingeschakeld
+        - name: Apache Spark aan een Event Hub koppelen
           href: event-hubs-kafka-spark-tutorial.md
-        - name: Apache Flink verbinden met een Event Hub waar Apache Kafka is ingeschakeld
+        - name: Apache Flink aan een Event Hub koppelen
           href: event-hubs-kafka-flink-tutorial.md
-        - name: Apache Kafka Connect integreren met een event hub waar Kafka is ingeschakeld (preview)
+        - name: Apache Kafka Connect integreren met een hub (preview)
           href: event-hubs-kafka-connect-tutorial.md
-        - name: Akka Streams verbinden met een Event Hub waar Apache Kafka is ingeschakeld
+        - name: Akka-streams verbinden met een Event Hub
           href: event-hubs-kafka-akka-streams-tutorial.md
     - name: Beheren en bewaken
       items:
@@ -182,13 +188,13 @@
           href: event-hubs-management-libraries.md
     - name: Beveiligen
       items:
-        - name: Gebruik firewalls
+        - name: IP-firewall configureren
           href: event-hubs-ip-filtering.md
-        - name: Service-eindpunten voor virtueel netwerk gebruiken
+        - name: Service-eindpunten voor virtuele netwerken configureren
           href: event-hubs-service-endpoints.md
-        - name: Integratie van virtuele netwerken en firewalls inschakelen in Event Hubs-naamruimte
-          href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: Door de klant beheerde sleutels configureren voor versleuteling van data-at-rest
+        - name: Privé-eindpunten configureren (preview)
+          href: private-link-service.md
+        - name: Door de klant beheerde sleutels configureren
           href: configure-customer-managed-key.md
     - name: Problemen oplossen
       items:

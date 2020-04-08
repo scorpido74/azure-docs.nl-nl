@@ -22,8 +22,6 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: Opdrachtregel
           href: functions-create-first-azure-function-azure-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-create-first-java-maven.md
     - name: Verbinding maken met opslag
       items:
         - name: Visual Studio Code
@@ -32,8 +30,6 @@
           href: functions-add-output-binding-storage-queue-vs.md
         - name: Opdrachtregel
           href: functions-add-output-binding-storage-queue-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-add-output-binding-storage-queue-java.md
 - name: Zelfstudies
   items:
     - name: Functions met Logic Apps
@@ -175,10 +171,16 @@
                   href: create-visual-studio.md
                 - name: Visual Studio Code
                   href: create-visual-studio-code.md
+                - name: Java met behulp van Gradle
+                  href: functions-create-first-java-gradle.md
                 - name: Java met behulp van Eclipse
                   href: functions-create-maven-eclipse.md
                 - name: Java met behulp van IntelliJ IDEA
                   href: functions-create-maven-intellij.md
+                - name: Kotlin met behulp van Maven
+                  href: functions-create-first-kotlin-maven.md
+                - name: Kotlin met behulp van IntelliJ
+                  href: functions-create-maven-kotlin-intellij.md
                 - name: App Service-abonnement voor Linux
                   href: create-function-app-linux-app-service-plan.md
                 - name: Verbruiksabonnement voor Linux
@@ -205,6 +207,8 @@
               href: add-output-binding-storage-queue-vs-code.md
             - name: Opslag - Visual Studio
               href: add-output-binding-storage-queue-vs.md
+            - name: Opslag - Java/Gradle
+              href: functions-add-output-binding-storage-queue-java.md
         - name: Fouten opsporen en testen
           items:
             - name: Functies testen

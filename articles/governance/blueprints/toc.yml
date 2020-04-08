@@ -225,7 +225,7 @@
     - name: Sequentievolgorde voor implementatie van blauwdrukken
       displayName: customize
       href: ./concepts/sequencing-order.md
-    - name: Resourcevergrendeling in Blueprints
+    - name: Resourcevergrendeling in Azure Blueprints
       displayName: 'mode, state, read only, edit, denyAssignments'
       href: ./concepts/resource-locking.md
 - name: Instructiegidsen
@@ -261,7 +261,7 @@
       href: 'https://www.powershellgallery.com/packages/Manage-AzureRMBlueprint'
     - name: Blueprint-functies
       href: ./reference/blueprint-functions.md
-- name: Bronnen
+- name: Resources
   items:
     - name: GitHub - Azure Blueprints-voorbeelden
       href: 'https://github.com/Azure/azure-blueprints'

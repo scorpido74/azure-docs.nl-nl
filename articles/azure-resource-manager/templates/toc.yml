@@ -14,6 +14,8 @@
       items:
         - name: AKS
           href: ../../aks/kubernetes-walkthrough-rm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Application Gateway
+          href: ../../application-gateway/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Backup
           href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Cosmos DB
@@ -22,6 +24,18 @@
           href: ../../event-grid/blob-event-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Event Hub
           href: ../../event-hubs/event-hubs-resource-manager-namespace-event-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: HDInsight - Spark
+          href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: HDInsight - Hadoop
+          href: ../../hdinsight/hadoop/apache-hadoop-linux-tutorial-get-started.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: HDInsight - Kafka
+          href: ../../hdinsight/kafka/apache-kafka-quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: HDInsight - HBase
+          href: ../../hdinsight/hbase/quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: HDInsight - Interactive Query
+          href: ../../hdinsight/interactive-query/quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: HDInsight - ML Services
+          href: ../../hdinsight/r-server/quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Key Vault
           href: ../../key-vault/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Load Balancer
@@ -32,6 +46,10 @@
           href: ../../service-bus-messaging/service-bus-resource-manager-namespace-queue.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: SQL Database
           href: ../../sql-database/sql-database-single-database-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Virtuele-machineschaalsets - Linux
+          href: ../../virtual-machine-scale-sets/quick-create-template-linux.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Virtuele-machineschaalsets - Windows
+          href: ../../virtual-machine-scale-sets/quick-create-template-windows.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: Zelfstudies
   items:
     - name: Sjablonen voor beginners
@@ -65,10 +83,10 @@
         - name: 3 - Een pijplijn maken
           displayName: Devop
           href: deployment-tutorial-pipeline.md
-    - name: Geavanceerd
+    - name: Geavanceerde sjablonen
       items:
         - name: Sjabloonverwijzing gebruiken
-          href: template-tutorial-create-encrypted-storage-accounts.md
+          href: template-tutorial-use-template-reference.md
         - name: Meerdere exemplaren maken
           displayName: 'iteration,copy'
           href: template-tutorial-create-multiple-instances.md
@@ -83,23 +101,21 @@
         - name: Key Vault integreren
           displayName: secrets
           href: template-tutorial-use-key-vault.md
-        - name: Gekoppelde sjablonen maken
-          href: template-tutorial-create-linked-templates.md
         - name: VM-extensies implementeren
           displayName: virtual machine extensions
           href: template-tutorial-deploy-vm-extensions.md
         - name: SQL-extensies implementeren
           href: template-tutorial-deploy-sql-extensions-bacpac.md
-        - name: Artefacten beveiligen
-          href: template-tutorial-secure-artifacts.md
+        - name: Problemen met sjabloonimplementatie oplossen
+          href: template-tutorial-troubleshoot.md
+    - name: Implementatiebeheer
+      items:
         - name: Veilige implementatiemethoden gebruiken
           displayName: adm
           href: deployment-manager-tutorial.md
         - name: Statuscontrole gebruiken in Configuratiebeheer
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-        - name: Problemen met sjabloonimplementatie oplossen
-          href: template-tutorial-troubleshoot.md
 - name: Voorbeelden
   items:
     - name: Azure-quickstartsjablonen

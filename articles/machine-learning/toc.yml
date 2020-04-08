@@ -17,18 +17,22 @@
   items:
     - name: Studio & Designer
       items:
-        - name: 'Designer: 1. Een regressiemodel trainen'
-          displayName: studio
-          href: tutorial-designer-automobile-price-train-score.md
-        - name: 'Designer: 2. Dit model implementeren'
-          displayName: studio
-          href: tutorial-designer-automobile-price-deploy.md
-        - name: Geautomatiseerd ML-experiment maken
-          displayName: 'automl, automated, auto ml, portal, ui'
-          href: tutorial-first-experiment-automated-ml.md
-        - name: De vraag voorspellen met geautomatiseerde ML (gegevens over het gebruik van deelfietsen)
-          displayName: 'automl, automated, auto ml, portal, ui'
-          href: tutorial-automated-ml-forecast.md
+        - name: Designer (slepen en neerzetten)
+          items:
+            - name: 'Designer: 1. Een regressiemodel trainen'
+              displayName: studio
+              href: tutorial-designer-automobile-price-train-score.md
+            - name: 'Designer: 2. Dit model implementeren'
+              displayName: studio
+              href: tutorial-designer-automobile-price-deploy.md
+        - name: Geautomatiseerde machine learning (UI)
+          items:
+            - name: Geautomatiseerd ML-experiment maken
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-first-experiment-automated-ml.md
+            - name: De vraag voorspellen met geautomatiseerde ML (gegevens over het gebruik van deelfietsen)
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-automated-ml-forecast.md
     - name: Python-SDK
       items:
         - name: Uw eerste ML-experiment maken
@@ -139,6 +143,9 @@
             - name: Virtuele netwerken gebruiken
               displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
+            - name: Private Link gebruiken
+              displayName: private endpoint
+              href: how-to-configure-private-link.md
             - name: Webservices beveiligen met SSL
               href: how-to-secure-web-service.md
             - name: Azure AD-identiteit gebruiken in AKS-implementaties
@@ -254,8 +261,6 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
-        - name: Chainer
-          href: how-to-train-chainer.md
     - name: Modellen interpreteren
       displayName: interpretability
       items:

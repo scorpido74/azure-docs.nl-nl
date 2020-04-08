@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Remote Rendering
+summary: Azure Remote Rendering (ARR) is een service waarmee u zeer complexe 3D-modellen in realtime kunt weergeven op apparaten zoals HoloLens 2. ARR is momenteel in openbare preview.
+metadata:
+  title: Documentatie voor Azure Remote Rendering
+  description: Meer informatie over hoe u de Azure Remote Rendering-service (ARR) gebruik om zeer complexe 3D-modellen extern en in realtime te renderen en het resultaat weer te geven op apparaten als HoloLens 2.
+  ms.service: azure-remote-rendering
+  ms.topic: landing-page
+  author: florianborn71
+  ms.author: flborn
+  ms.date: 03/26/2020
+  ms.openlocfilehash: a257b294c105ca153a57afe90db95a1bd1b753e8
+  ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 04/06/2020
+  ms.locfileid: "80678311"
+landingContent:
+- title: Over Azure Remote Rendering
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Remote Rendering?
+      url: overview/about.md
+    - text: Systeemvereisten
+      url: overview/system-requirements.md
+    - text: Een Azure Remote Rendering-account maken
+      url: how-tos/create-an-account.md
+- title: Maak kennis met de belangrijkste kenmerken om aan de slag te gaan met Azure Remote Rendering
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Verificatie configureren
+      url: how-tos/authentication.md
+    - text: Remote Rendering-sessies
+      url: concepts/sessions.md
+    - text: Entiteiten
+      url: concepts/entities.md
+    - text: Onderdelen
+      url: concepts/components.md
+    - text: Modellen
+      url: concepts/models.md
+    - text: Modellen converteren
+      url: how-tos/conversion/model-conversion.md
+- title: Uw eerste model converteren en weergeven
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een model weergeven met Unity
+      url: quickstarts/render-model.md
+    - text: Unity-voorbeeld implementeren in HoloLens
+      url: quickstarts/deploy-to-hololens.md
+    - text: Unity-voorbeeld implementeren in Desktop
+      url: quickstarts/deploy-to-desktop.md
+    - text: Een model converteren voor rendering
+      url: quickstarts/convert-model.md
+- title: Meer informatie over hoe u uw eigen app bouwt in Unity
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Een geheel nieuw Unity-project opstarten
+      url: tutorials/unity/project-setup.md
+    - text: Werken met externe entiteiten in Unity
+      url: tutorials/unity/working-with-remote-entities.md
+    - text: Omgeving en materialen wijzigen
+      url: tutorials/unity/changing-environment-and-materials.md

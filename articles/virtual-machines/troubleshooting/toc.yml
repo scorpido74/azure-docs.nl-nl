@@ -77,6 +77,8 @@
           href: troubleshoot-guide-critical-process-died.md
         - name: Kritieke service is mislukt
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: De VM reageert niet wanneer beleid voor lokale gebruikers en groepen wordt toegepast
+          href: troubleshoot-vm-unresponsive-group-policy-local-users.md
         - name: Geen opstartbare schijf
           href: troubleshoot-guide-not-bootable-disk.md
         - name: Lus opnieuw starten
@@ -87,6 +89,8 @@
           href: troubleshoot-vm-boot-configure-update.md
         - name: VM kan niet worden opgestart vanwege Windows Opstartbeheer
           href: troubleshoot-guide-windows-boot-manager-menu.md
+        - name: VM is niet responsief vanwege een update
+          href: unresponsive-vm-apply-windows-update.md
 - name: Kan geen verbinding maken met mijn VM
   items:
     - name: RDP

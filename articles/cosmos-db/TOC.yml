@@ -39,6 +39,8 @@
               href: sql-api-java-get-started.md
             - name: Async Java
               href: sql-api-async-java-get-started.md
+            - name: End-to-end-voorbeeld-app in asynchrone Java
+              href: create-sql-api-java-changefeed.md
             - name: Node.js
               href: sql-api-nodejs-get-started.md
         - name: Een web-app bouwen
@@ -595,6 +597,8 @@
           items:
             - name: Elastisch schalen
               href: manage-scale-cassandra.md
+            - name: Secundaire indexen
+              href: cassandra-secondary-index.md
         - name: Instructiegidsen
           items:
             - name: Feed wijzigen
@@ -636,10 +640,6 @@
           items:
             - name: Wat is MongoDB-API in Cosmos DB?
               href: mongodb-introduction.md
-            - name: Ondersteuning voor wire-protocol (3.2)
-              href: mongodb-feature-support.md
-            - name: Ondersteuning voor wire-protocol (3.6)
-              href: mongodb-feature-support-36.md
         - name: Snelstartgidsen
           items:
             - name: .NET
@@ -683,6 +683,12 @@
               href: tutorial-query-mongodb.md
             - name: 4 - Gegevens wereldwijd distribueren
               href: tutorial-global-distribution-mongodb.md
+        - name: Concepten
+          items:
+            - name: Ondersteuning voor wire-protocol (3.6)
+              href: mongodb-feature-support-36.md
+            - name: Ondersteuning voor wire-protocol (3.2)
+              href: mongodb-feature-support.md
         - name: Instructiegidsen
           items:
             - name: Pre-migratiehandleiding
@@ -1008,10 +1014,13 @@
           href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Cross Origin Resource Sharing (CORS) configureren
           href: how-to-configure-cross-origin-resource-sharing.md
-        - name: Azure Cosmos-sleutels met Key Vault beveiligen
-          href: access-secrets-from-keyvault.md
-        - name: Verificatie op basis van certificaat met Azure AD
+        - name: Beheerde identiteiten gebruiken om gegevens te openen
+          href: managed-identity-based-authentication.md
+          displayName: 'msi, managed service identity, aad, azure active directory, identity'
+        - name: Certificaten gebruiken om gegevens te openen
           href: certificate-based-authentication.md
+        - name: Azure Key Vault gebruiken om gegevens te openen
+          href: access-secrets-from-keyvault.md
         - name: Gebruikerstoegang beperken tot alleen gegevensbewerkingen
           href: how-to-restrict-user-data.md
         - name: Door klant beheerde sleutels configureren
@@ -1026,6 +1035,8 @@
           href: monitor-cosmos-db.md
         - name: Diagnostische logboeken bewaken
           href: cosmosdb-monitor-resource-logs.md
+        - name: Besturingsvlaklogboeken controleren
+          href: audit-control-plane-logs.md
         - name: Azure Monitor voor Cosmos (preview)
           href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Metrische gegevens weergeven vanuit Cosmos DB-account
@@ -1102,6 +1113,8 @@
           href: bulk-executor-overview.md
         - name: Bulkuitvoering - .NET-bibliotheek
           href: bulk-executor-dot-net.md
+        - name: Migreren van bulkuitvoering naar .NET SDK
+          href: how-to-migrate-from-bulk-executor-library.md
         - name: Bulkuitvoering - Java-bibliotheek
           href: bulk-executor-java.md
 - name: Naslaginformatie

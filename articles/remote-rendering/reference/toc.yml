@@ -1,0 +1,12 @@
+- name: Materiaaltoewijzing voor modelindelingen
+  href: material-mapping.md
+- name: Regio's
+  href: regions.md
+- name: Netwerkvereisten
+  href: network-requirements.md
+- name: Limieten
+  href: limits.md
+- name: arrClient-opslagplaats (GitHub)
+  href: 'https://dev.azure.com/arrClient/arrClient/_git/arrClient'
+- name: REST API voor resourcebeheer in Azure Mixed Reality
+  href: 'https://docs.microsoft.com/rest/api/mixedreality/'

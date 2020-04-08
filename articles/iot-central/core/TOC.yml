@@ -21,8 +21,10 @@
   items:
     - name: Verbinding maken
       items:
-        - name: Een apparaat verbinden
-          href: tutorial-connect-device.md
+        - name: Een apparaat verbinden (Node.js)
+          href: tutorial-connect-device-nodejs.md
+        - name: Een apparaat verbinden (Python)
+          href: tutorial-connect-device-python.md
         - name: Een Plug en Play-apparaat (preview) verbinden
           href: tutorial-connect-pnp-device.md
         - name: Een gateway-apparaatsjabloon maken

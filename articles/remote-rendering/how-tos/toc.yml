@@ -1,0 +1,16 @@
+- name: Een Azure Remote Rendering-account maken
+  href: create-an-account.md
+- name: Tokens voor servicetoegang ophalen
+  href: tokens.md
+- name: Verificatie configureren
+  href: authentication.md
+- name: De Azure-frontend-API's gebruiken voor verificatie
+  href: frontend-apis.md
+- name: De REST API voor sessiebeheer gebruiken
+  href: session-rest-api.md
+- name: Modellen converteren
+  href: conversion/toc.yml
+- name: Externe rendering met Unity
+  href: unity/toc.yml
+- name: Prestatietracering aan de clientzijde maken
+  href: performance-tracing.md
