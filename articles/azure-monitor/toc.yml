@@ -220,6 +220,8 @@
               href: app/api-custom-events-metrics.md
             - name: Problemen met ASP.NET oplossen
               href: app/asp-net-troubleshoot-no-data.md
+            - name: Application Insights verwijderen
+              href: app/remove-application-insights.md
         - name: Bewaking zonder code
           items:
             - name: Azure VM en schaalset

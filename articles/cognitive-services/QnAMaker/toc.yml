@@ -87,9 +87,9 @@
           displayName: 'metadata, pair'
         - name: Testen
           href: How-To/test-knowledge-base.md
-    - name: Q&A-sets beheren
+    - name: QnA-paren beheren
       items:
-        - name: QnA-set bewerken
+        - name: QnA-paar bewerken
           href: How-To/edit-knowledge-base.md
         - name: Opvolgingsaanwijzingen toevoegen
           href: How-To/multiturn-conversation.md
