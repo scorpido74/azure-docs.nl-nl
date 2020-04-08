@@ -1,19 +1,19 @@
 ---
-title: Onverwachte kosten voorkomen en facturering beheren in Azure
-description: Meer informatie over het vermijden van onverwachte kosten op uw Azure-factuur. Gebruik functies voor het bijhouden van kosten en beheer voor uw Azure-account.
+title: Onverwachte kosten voorkomen en analyseren met Azure kostenbeheer en facturering
+description: Meer informatie over het voorkomen van onverwachte kosten op uw Azure-factuur en het gebruik van functies voor het bijhouden en beheren van kosten voor uw Azure-account.
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/11/2020
+ms.date: 3/30/2020
 ms.author: banders
-ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238139"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475255"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Onverwachte kosten voorkomen met Azure-facturering en -kostenbeheer
 
@@ -112,11 +112,6 @@ Selecteer **Kosten** aan de linkerkant. Op het tabblad **Kosten** ziet u aanbeve
 
 Lees de zelfstudie [Kosten optimaliseren op basis van aanbevelingen](../costs/tutorial-acm-opt-recommendations.md) voor een begeleide zelfstudie over kostenbesparende Advisor-aanbevelingen.
 
-## <a name="review-charges-against-your-latest-invoice"></a>In rekening gebrachte kosten controleren op basis van uw meest recente factuur
-
-Aan het einde van de factureringscyclus is uw factuur beschikbaar. U kunt ook [facturen en bestanden met gedetailleerde gebruiksgegevens downloaden](download-azure-invoice-daily-usage-date.md) en deze vergelijken om te controleren of de juiste kosten in rekening zijn gebracht. Zie[Meer informatie over uw factuur voor Microsoft Azure](../understand/review-individual-bill.md) voor meer informatie over het vergelijken van uw dagelijkse gebruik met uw factuur.
-
-Als u Azure gebruikt via een Microsoft-klantovereenkomst (MCA), kunt u ook [uw factuur vergelijken met de transacties ](../understand/review-customer-agreement-bill.md#review-invoiced-transactions-in-the-azure-portal) om inzicht te krijgen in de kosten op uw factuur.
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Integreren met de API's voor facturerings- en verbruiksgegevens
 
@@ -178,9 +173,65 @@ Voor een aantal services gelden voorwaarden voordat de SLA van toepassing is. Vo
 
 Zie [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/) en de documentatie met de [SLA-samenvatting voor Azure-services](https://azure.microsoft.com/support/legal/sla/summary/) voor meer informatie.
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="analyze-unexpected-charges"></a>Onverwachte kosten analyseren
 
-Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
+De infrastructuur van de cloudresource die u voor uw organisatie hebt gemaakt, is waarschijnlijk ingewikkeld. Veel Azure-resourcetypen kunnen verschillende soorten kosten hebben. Azure-resources zijn mogelijk eigendom van verschillende teams in uw organisatie en zij kunnen verschillende typen factureringsmodellen hebben die van toepassing zijn op verschillende resources. Als u meer inzicht wilt krijgen in de kosten, kunt u om te beginnen deze analyseren met behulp van een of meer van de strategieën in de volgende secties.
+
+### <a name="review-your-invoice-and-identify-the-resource-that-is-responsible-for-the-charge"></a>Controleer uw factuur en identificeer de resource die verantwoordelijk is voor de kosten
+
+Hoe u uw Azure-services aanschaft, helpt u te bepalen welke methodologie en hulpprogramma's er voor u beschikbaar zijn wanneer u de resource identificeert die voor de kosten verantwoordelijk is. Als u wilt bepalen welke methodologie op u van toepassing is, [ moet u eerst vaststellen welk type Azure-aanbieding u hebt](../costs/understand-cost-mgt-data.md#determine-your-offer-type). Bepaal vervolgens uw klantcategorie in de lijst met [ondersteunde Azure-aanbiedingen](../costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers).
+
+De volgende artikelen bevatten gedetailleerde stappen waarin wordt uitgelegd hoe u uw factuur kunt controleren op basis van uw klanttype. In elk artikel vindt u instructies voor het downloaden van een CSV-bestand met daarin gegevens over het gebruik en de kosten over een bepaalde factureringsperiode.
+
+- [Controleproces voor factuur voor Betalen per gebruik](../understand/review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [Controleproces voor factuur voor Enterprise Agreement](../understand/review-enterprise-agreement-bill.md)
+- [Controleproces voor factuur voor Microsoft-klantovereenkomst](../understand/review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
+- [Controleproces voor Microsoft Partner-overeenkomst](../understand/review-partner-agreement-bill.md#analyze-your-azure-usage-charges)
+
+Op uw Azure-factuur worden alle kosten voor die maand per _meter_ geaggregeerd. Meters worden gebruikt om het gebruik van een resource gedurende een bepaalde periode bij te houden, en worden gebruikt om uw factuur te berekenen. Wanneer u één Azure-resource maakt, zoals een virtuele machine, worden er een of meer meterexemplaren voor die resource gemaakt.
+
+Filter het CSV-bestand met het gebruik op de _MeterName_ zoals die wordt weergegeven op de factuur die u wilt analyseren, zodat u alle regelitems ziet die van toepassing zijn op de meter. De _InstanceID_ voor het regelitem komt overeen met de werkelijke Azure-resource die de kosten heeft gegenereerd.
+
+Wanneer u de desbetreffende resource hebt geïdentificeerd, kunt u Kostenanalyse in Azure Cost Management gebruiken om de kosten verder te analyseren die zijn gerelateerd aan de resource. Zie [Beginnen met analyseren van kosten](../costs/quick-acm-cost-analysis.md) voor meer informatie over het gebruik van Kostenanalyse.
+
+### <a name="identify-spikes-in-cost-over-time"></a>Pieken in de kosten in de loop van de tijd identificeren
+
+Soms weet u mogelijk niet welke recente kosten de wijzigingen in uw gefactureerde kosten hebben veroorzaakt. Als u wilt weten wat er is gewijzigd, kunt u Kostenanalyse gebruiken om [een uitsplitsing per dag of per maand te zien van kosten die in de loop van de tijd zijn gemaakt](../costs/cost-analysis-common-uses.md#view-costs-per-day-or-by-month). Nadat u de weergave hebt gemaakt, kunt u de kosten groeperen op **service** of **resource** om de wijzigingen te identificeren. U kunt uw weergave ook wijzigen in een **lijndiagram** voor een betere visualisatie van de gegevens.
+
+![Voorbeeld van de kosten in de loop van de tijd in Kostenanalyse](./media/getting-started/costs-over-time.png)
+
+### <a name="determine-resource-pricing-and-understand-its-billing-model"></a>Resourceprijzen bepalen en het factureringsmodel begrijpen
+
+Eén enkele resource kan zorgen voor een toename van de kosten voor meerdere Azure-producten en -services. Bekijk de pagina [Azure-prijzen per product](https://azure.microsoft.com/pricing/#product-pricing) voor meer informatie over de prijzen voor elke Azure-service. Een virtuele machine (VM) die in Azure is gemaakt, kan bijvoorbeeld de volgende meters hebben om het gebruik bij te houden. Elk van deze kan verschillende prijzen hebben.
+
+- Rekenuren
+- Uren IP-adres
+- Inkomende gegevensoverdracht
+- Uitgaande gegevensoverdracht
+- Standard - Beheerde schijf
+- Standard - Beheerde schijfbewerkingen
+- Standard - IO - Schijf
+- Standard - IO - Lezen blok-blob
+- Standard - IO - Schrijven blok-blob
+- Standard - IO - Verwijderen blok-blob
+
+Wanneer de virtuele machine wordt gemaakt, begint elke meter gebruiksrecords te verzenden. Het gebruik en de metertarieven worden bijgehouden in het Azure-metersysteem. In het CSV-gebruiksbestand kunt u de meters zien die zijn gebruikt voor het berekenen van uw factuur.
+
+### <a name="find-the-people-responsible-for-the-resource-and-engage-them"></a>Stel vast welke personen verantwoordelijk zijn voor de resource en spreek ze erop aan
+
+Vaak weet het team dat verantwoordelijk is voor een bepaalde resource, dat er iets is veranderd met betrekking tot een resource. Het is nuttig om het team erbij te betrekken als u wilt vaststellen waarom er bepaalde kosten zijn gemaakt. Het verantwoordelijke team kan de resource bijvoorbeeld onlangs hebben gemaakt, de SKU ervan hebben bijgewerkt (waardoor de resourcetarieven zijn gewijzigd) of de workload voor de resource hebben verhoogd vanwege wijzigingen in de code. Lees ook de volgende secties voor meer technieken om te bepalen wie eigenaar is van een resource.
+
+#### <a name="analyze-the-audit-logs-for-the-resource"></a>De auditlogboeken voor de resource analyseren
+
+Als u gemachtigd bent om een resource weer te geven, zou u ook toegang moeten hebben tot de auditlogboeken. Raadpleeg de logboeken om de gebruiker te vinden die verantwoordelijk is voor de meest recente wijzigingen aan een resource. Zie [Gebeurtenissen in het Azure-activiteitenlogboek weergeven en ophalen](../../azure-monitor/platform/activity-log-view.md) voor meer informatie.
+
+#### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>Gebruikersmachtigingen voor het bovenliggende bereik van de resource analyseren
+
+Personen met schrijftoegang tot een abonnement of resourcegroep beschikken meestal over informatie over de resources die zijn gemaakt. Ze zouden het doel van een resource moeten kunnen verklaren of u kunnen verwijzen naar de persoon die het wel weet. Zie [Roltoewijzingen weergeven](../../role-based-access-control/check-access.md#view-role-assignments) als u wilt weten hoe u kunt vaststellen welke mensen er machtigingen voor een abonnementsbereik hebben. U kunt een vergelijkbaar proces voor resourcegroepen gebruiken.
+
+### <a name="get-help-to-identify-charges"></a>Hulp krijgen bij het identificeren van kosten
+
+Als u de voorgaande strategieën hebt gebruikt en u nog steeds niet weet waar bepaalde kosten vandaan komen, of als u hulp nodig hebt bij factureringsproblemen, kunt u [een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over het gebruik van [bestedingslimieten](spending-limit.md) om te voorkomen dat u teveel uitgeeft.
