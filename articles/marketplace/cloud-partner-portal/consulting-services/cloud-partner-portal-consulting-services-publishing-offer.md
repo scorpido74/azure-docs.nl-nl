@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ceef030d2c0176313cbce8f6817a89c06f134d3d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: dace05715828395aed3953b42bf7926df292bbdb
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745676"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981338"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure- en Dynamics 365-adviesserviceaangeboden
 
 >[!Important]
->Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw Consulting-serviceaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van consultingservicecreatie](https://aka.ms/AzureCreateConsultingService) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Consulting-serviceaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van consultingservicecreatie](https://aka.ms/AzureCreateConsultingService) om uw gemigreerde aanbiedingen te beheren.
 
 In dit artikel wordt uitgelegd hoe u een consultingserviceaanbieding publiceert voor de Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> of <a href="https://appsource.microsoft.com">AppSource.</a> Oplossingen op basis van Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365,</a> <a href="https://powerbi.microsoft.com">Power BI</a>en Power <a href="https://powerapps.microsoft.com">Apps</a> kunnen worden vermeld op AppSource. Andere aanbiedingen op basis van andere Microsoft <a href="https://azure.microsoft.com/services">Azure-services</a> kunnen worden vermeld in de Azure Marketplace.
 

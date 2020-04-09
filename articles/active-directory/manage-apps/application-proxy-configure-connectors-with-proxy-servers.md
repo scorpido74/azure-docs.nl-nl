@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fe3a63e119fed6825982b9de13bc78cb7da5415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481395"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877385"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Werken met bestaande on-premises proxyservers
 
@@ -27,6 +27,7 @@ We beginnen met het bekijken van deze belangrijkste implementatiescenario's:
 
 * Configureer connectors om uw on-premises uitgaande proxy's te omzeilen.
 * Configureer connectors om een uitgaande proxy te gebruiken om toegang te krijgen tot Azure AD Application Proxy.
+* Configureren met behulp van een proxy tussen de connector en backend-toepassing.
 
 Zie [Meer informatie over Azure AD-toepassingsproxyconnectoren](application-proxy-connectors.md) voor meer informatie over de werking van connectoren.
 
@@ -137,6 +138,23 @@ De connector maakt uitgaande TLS-verbindingen met behulp van de CONNECT-methode.
 #### <a name="tls-inspection"></a>TLS-inspectie
 
 Gebruik geen TLS-inspectie voor het verbindingsverkeer, omdat dit problemen veroorzaakt voor het verbindingsverkeer. De connector gebruikt een certificaat om te verifiëren aan de Application Proxy-service en dat certificaat kan verloren gaan tijdens tls-inspectie.
+
+## <a name="configure-using-a-proxy-between-the-connector-and-backend-application"></a>Configureren met behulp van een proxy tussen de connector en backend-toepassing
+Het gebruik van een voorwaartse proxy voor de communicatie naar de backend-toepassing kan in sommige omgevingen een speciale vereiste zijn.
+Volg de volgende stappen om dit in te schakelen:
+
+### <a name="step-1-add-the-required-registry-value-to-the-server"></a>Stap 1: De vereiste registerwaarde toevoegen aan de server
+1. Als u de standaardproxy wilt inschakelen, voegt `UseDefaultProxyForBackendRequests = 1` u de volgende registerwaarde (DWORD) toe aan de registersleutel connectorconfiguratie in "HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector".
+
+### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>Stap 2: De proxyserver handmatig configureren met de opdracht NetSh
+1.  Schakel het groepsbeleid In Maak proxy-instellingen per machine. Dit is te vinden in: Computerconfiguratie\Beleid\Beheersjablonen\Windows Components\Internet Explorer. Dit moet worden ingesteld in plaats van dat dit beleid is ingesteld op per gebruiker.
+2.  Voer `gpupdate /force` uit op de server of start de server opnieuw op om ervoor te zorgen dat deze de bijgewerkte groepsbeleidsinstellingen gebruikt.
+3.  Start een opdrachtprompt met verhoogde `control inetcpl.cpl`bevoegdheid met beheerdersrechten en voer .
+4.  Configureer de vereiste proxy-instellingen. 
+
+Met deze instellingen wordt de connector dezelfde forward proxy gebruikt voor de communicatie naar Azure en naar de backend-toepassing. Als de connector voor Azure-communicatie geen forward proxy of een andere forward proxy vereist, u dit instellen met het wijzigen van het bestand ApplicationProxyConnectorService.exe.config zoals beschreven in de secties Bypass uitgaande proxy's of Gebruik de uitgaande proxyserver.
+
+De connector updater service zal gebruik maken van de machine proxy ook. Dit gedrag kan worden gewijzigd door het bestand ApplicationProxyConnectorUpdaterService.exe.config te wijzigen.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Problemen met de proxy van de connector oplossen en problemen met de serviceconnectiviteit oplossen
 

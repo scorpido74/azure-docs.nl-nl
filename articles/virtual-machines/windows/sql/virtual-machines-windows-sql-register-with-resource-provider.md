@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9c1cff53d5d0f0385d3d61938c7fb6309efb7b1
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243183"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985385"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Een virtuele SQL Server-machine registreren in Azure met de SQL VM-bronprovider
 
@@ -42,7 +42,7 @@ Als u een SQL Server VM Azure Marketplace-afbeelding implementeert via de Azure-
    $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
    ```
 
-   # <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+   # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell-interactive
    Get-AzSqlVM | Where-Object {$_.LicenseType -eq 'AHUB'}
@@ -113,7 +113,7 @@ Registreer uw SQL VM-resourceprovider op uw Azure-abonnement met Az CLI of Power
 az provider register --namespace Microsoft.SqlVirtualMachine 
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell-interactive
 # Register the SQL VM resource provider to your subscription
@@ -142,7 +142,7 @@ Registreer SQL Server VM in lichtgewicht modus met de Az CLI:
   ```
 
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Registreer SQL Server VM in lichtgewicht modus met PowerShell:  
 
@@ -178,9 +178,9 @@ Als u uw SQL Server VM rechtstreeks in de volledige modus wilt registreren (en e
 
 SQL Server 2008 en 2008 R2 die zijn geïnstalleerd op Windows Server 2008 (_niet R2_) kunnen worden geregistreerd bij de SQL VM-resourceprovider in de [NoAgent-modus](#management-modes). Met deze optie u naleving garanderen en kan de SQL Server VM worden gecontroleerd in de Azure-portal met beperkte functionaliteit.
 
-Geef `AHUB`een `PAYG`sqlLicenseType op `DR` of als `SQL2008-WS2008` `SQL2008R2-WS2008` **sqlLicenseType**en een van beide of als **sqlImageOffer**. 
+Geef `AHUB`een `PAYG`sqlLicenseType op `DR` of `SQL2008-WS2008` als `SQL2008R2-WS2008` **sqlImageType**en of als **sqlImageOffer**. 
 
-Als u uw SQL Server 2008- of 2008 R2-exemplaar wilt registreren op de instantie Windows Server 2008, gebruikt u het volgende codefragment Az CLI of PowerShell: 
+Als u uw SQL Server 2008 of 2008 R2 wilt registreren op de instantie Windows Server 2008, gebruikt u het volgende az CLI- of PowerShell-codefragment: 
 
 
 # <a name="az-cli"></a>[AZ CLI](#tab/bash)
@@ -190,7 +190,7 @@ Registreer uw SQL Server 2008 VM in noagent-modus met de Az CLI:
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
    --license-type PAYG --sql-mgmt-type NoAgent 
-   --image-sku Enterprise --image-offer SQL2008-WS2008R2
+   --image-sku Enterprise --image-offer SQL2008-WS2008
  ```
  
  
@@ -199,10 +199,10 @@ Registreer uw SQL Server 2008 R2 VM in NoAgent-modus met de AZ CLI:
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
    --license-type PAYG --sql-mgmt-type NoAgent 
-   --image-sku Enterprise --image-offer SQL2008R2-WS2008R2
+   --image-sku Enterprise --image-offer SQL2008R2-WS2008
  ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Registreer SQL Server 2008 VM in NoAgent-modus met PowerShell: 
 
@@ -245,7 +245,7 @@ Ga als u de agentmodus naar volledig upgraden:
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar uw [SQL virtuele machines](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) bron. 
 1. Selecteer uw virtuele SQL Server-machine en selecteer **Overzicht**. 
 1. Voor SQL Server VM's met de NoAgent- of lichtgewicht IaaS-modus selecteert u het **alleen licentietype en zijn editieupdates beschikbaar met het SQL IaaS-extensiebericht.**
@@ -267,7 +267,7 @@ Voer het volgende AZ CLI-codefragment uit:
   az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
   ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Voer het volgende PowerShell-codefragment uit:
 
@@ -286,7 +286,7 @@ U controleren of uw SQL Server VM al is geregistreerd bij de SQL VM-resourceprov
 
 ### <a name="azure-portal"></a>Azure Portal 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 1. Ga naar uw [virtuele SQL Server-machines.](virtual-machines-windows-sql-manage-portal.md)
 1. Selecteer uw SQL Server VM in de lijst. Als uw SQL Server VM hier niet wordt vermeld, is deze waarschijnlijk niet geregistreerd bij de SQL VM-bronprovider. 
 1. Bekijk de waarde onder **Status**. Als **de status** is **geslaagd,** is de SQL Server VM geregistreerd bij de SQL VM-resourceprovider. 
@@ -304,7 +304,7 @@ Controleer de huidige SQL Server VM-registratiestatus met Az CLI of PowerShell. 
   az sql vm show -n <vm_name> -g <resource_group>
  ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
   ```powershell-interactive
   Get-AzSqlVM -Name <vm_name> -ResourceGroupName <resource_group>
@@ -356,7 +356,7 @@ az sql vm delete
   --yes 
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Als u uw virtuele SQL Server-machine wilt uitschrijven van de resourceprovider met Azure CLI, gebruikt u de opdracht [Nieuw-AzSqlVM.](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) Hiermee wordt de sql server-bron *voor* virtuele machines verwijderd, maar wordt de virtuele machine niet verwijderd. 
 
 ```powershell-interactive

@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898512"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878966"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Uitgaande verificatie voor Azure Scheduler
 
@@ -47,8 +47,8 @@ Wanneer u verificatie `ClientCertificate` toevoegt met het model, geeft u deze e
 
 | Element | Vereist | Beschrijving |
 |---------|----------|-------------|
-| **verificatie** (bovenliggend element) | Het verificatieobject voor het gebruik van een SSL-clientcertificaat |
-| **Type** | Ja | Het verificatietype. Voor SSL-clientcertificaten is `ClientCertificate`de waarde . |
+| **verificatie** (bovenliggend element) | Het verificatieobject voor het gebruik van een SSL/TLS-clientcertificaat |
+| **Type** | Ja | Het verificatietype. Voor SSL/TLS-clientcertificaten is `ClientCertificate`de waarde . |
 | **pfx** | Ja | De basis64-gecodeerde inhoud van het PFX-bestand |
 | **wachtwoord** | Ja | Het wachtwoord voor toegang tot het PFX-bestand |
 ||| 
@@ -59,8 +59,8 @@ Wanneer een aanvraag wordt verzonden met verificatiegegevens, bevat het antwoord
 
 | Element | Beschrijving | 
 |---------|-------------| 
-| **verificatie** (bovenliggend element) | Het verificatieobject voor het gebruik van een SSL-clientcertificaat |
-| **Type** | Het verificatietype. Voor SSL-clientcertificaten is `ClientCertificate`de waarde . |
+| **verificatie** (bovenliggend element) | Het verificatieobject voor het gebruik van een SSL/TLS-clientcertificaat |
+| **Type** | Het verificatietype. Voor SSL/TLS-clientcertificaten is `ClientCertificate`de waarde . |
 | **certificateThumbprint** |De duimafdruk van het certificaat |
 | **certificateSubjectName** |De naam van het certificaatonderwerp |
 | **certificaatVervaldatum** | De vervaldatum van het certificaat |

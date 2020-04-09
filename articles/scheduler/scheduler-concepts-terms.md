@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898577"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878388"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Concepten, terminologie en entiteiten in Azure Scheduler
 
@@ -66,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Azure Scheduler ondersteunt meerdere jobtypen: 
 
-* HTTP-jobs, inclusief HTTP-jobs die SSL ondersteunen, voor wanneer u het eindpunt voor een bestaande service of workload hebt.
+* HTTP-taken, inclusief HTTPS-taken die TLS ondersteunen, voor wanneer u het eindpunt hebt voor een bestaande service of werkbelasting
 * Opslagwachtrijjobs voor workloads die opslagwachtrijen gebruiken, zoals het posten van berichten naar opslagwachtrijen
 * Service Bus-wachtrijjobs voor workloads die gebruikmaken van Service Bus-wachtrijen
 * Service Bus-onderwerpjobs voor workloads die gebruikmaken van Service Bus-onderwerpen
@@ -87,10 +87,10 @@ De job bevat ook door het systeem geleverde gegevens, zoals volgende geplande ui
 | [**Starttime**](#start-time) | Nee | De begintijd voor de taak, met een tijdverschuiving in de [indeling ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**Actie**](#action) | Ja | De details van de primaire actie, die een **errorAction**-object kan omvatten | 
 | [**errorAction**](#error-action) | Nee | De details van de secundaire actie, die wordt uitgevoerd als de eerste actie mislukt |
-| [**recurrence**](#recurrence) | Nee | Details als frequentie en interval van een terugkerende job | 
+| [**Herhaling**](#recurrence) | Nee | Details als frequentie en interval van een terugkerende job | 
 | [**retryPolicy**](#retry-policy) | Nee | De details voor hoe vaak een actie moet worden herhaald | 
 | [**state**](#state) | Ja | De details van de huidige status van de job |
-| [**status**](#status) | Ja | De details van de huidige status van de job, die onder controle staan van de service |
+| [**Status**](#status) | Ja | De details van de huidige status van de job, die onder controle staan van de service |
 ||||
 
 Hier is een voorbeeld dat een uitgebreide jobdefinitie laat zien voor een HTTP-actie, waarvan meer details van het element in latere secties ter sprake komen: 

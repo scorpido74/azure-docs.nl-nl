@@ -11,21 +11,26 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/02/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
-ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd0b8a50d25cd8d1a66a8eb98e54ec231aa2c62f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302046"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878711"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Een directe verbinding tussen Azure en Oracle Cloud Infrastructure instellen  
 
-Om een [geïntegreerde multi-cloudervaring](oracle-oci-overview.md) (preview) te creëren, bieden Microsoft en Oracle directe interconnectie tussen Azure en Oracle Cloud Infrastructure (OCI) via [ExpressRoute](../../../expressroute/expressroute-introduction.md) en [FastConnect.](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) Via de ExpressRoute en FastConnect-interconnectie kunnen klanten een lage latentie, hoge doorvoer, directe privéconnectiviteit tussen de twee clouds ervaren.
+Om een [geïntegreerde multi-cloudervaring](oracle-oci-overview.md)te creëren, bieden Microsoft en Oracle directe interconnectie tussen Azure en Oracle Cloud Infrastructure (OCI) via [ExpressRoute](../../../expressroute/expressroute-introduction.md) en [FastConnect.](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) Via de ExpressRoute en FastConnect-interconnectie kunnen klanten een lage latentie, hoge doorvoer, directe privéconnectiviteit tussen de twee clouds ervaren.
 
 > [!IMPORTANT]
-> De verbinding tussen Microsoft Azure en OCI bevindt zich in de voorvertoningsfase. Om een low latency-verbinding tussen Azure en OCI tot stand te brengen, moet uw Azure-abonnement eerst voor deze mogelijkheid zijn ingeschakeld. U moet zich inschrijven voor de preview door dit korte [enquêteformulier in te vullen.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu) U ontvangt een e-mailbevestiging zodra uw abonnement is geregistreerd. U de mogelijkheid pas gebruiken als u een bevestigingsmail hebt ontvangen. U ook contact opnemen met uw Microsoft-vertegenwoordiger om voor deze preview te worden ingeschakeld. Toegang tot de preview-mogelijkheid is afhankelijk van beschikbaarheid en beperkt door Microsoft naar eigen inzicht. De voltooiing van de enquête garandeert geen toegang. Deze preview wordt zonder serviceniveau geleverd en mag niet worden gebruikt voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Zie [de aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor Microsoft Azure Previews voor meer informatie. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
+> Oracle zal deze toepassingen certificeren om in Azure uit te voeren wanneer het de Azure / Oracle Cloud interconnect-oplossing in mei 2020 gebruikt.
+> * E-Business Suite
+> * JD Edwards EnterpriseOne
+> * Peoplesoft
+> * Oracle Retail-toepassingen
+> * Oracle Hyperion Financieel Beheer
 
 De volgende afbeelding toont een overzicht op hoog niveau van de interconnectie:
 
@@ -36,8 +41,6 @@ De volgende afbeelding toont een overzicht op hoog niveau van de interconnectie:
 * Als u de verbinding tussen Azure en OCI wilt tot stand brengen, moet u een actief Azure-abonnement en een actieve OCI-huurovereenkomst hebben.
 
 * Connectiviteit is alleen mogelijk wanneer een Azure ExpressRoute-peeringlocatie zich in de nabijheid van of op dezelfde peeringlocatie bevindt als de OCI FastConnect. Zie [Beschikbaarheid van regio .](oracle-oci-overview.md#region-availability)
-
-* Uw Azure-abonnement moet zijn ingeschakeld voor deze voorbeeldmogelijkheid.
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>Directe verbinding tussen ExpressRoute en FastConnect configureren
 

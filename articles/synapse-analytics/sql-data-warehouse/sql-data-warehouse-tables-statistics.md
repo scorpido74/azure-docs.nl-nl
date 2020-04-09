@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5fae2bba0acc4ab462c91f7272694d032fc6ceaa
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6f2af87cf5cef1b5a80bc16d962fba579b4ff309
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742660"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985861"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Tabelstatistieken in de Synapse SQL-groep
 
@@ -146,11 +146,11 @@ Zie voor meer informatie algemene richtlijnen voor [statistieken](/sql/relationa
 
 ## <a name="implementing-statistics-management"></a>Uitvoering van het beheer van de statistiek
 
-Het is vaak een goed idee om uw gegevenslaadproces uit te breiden om ervoor te zorgen dat statistieken aan het einde van de belasting worden bijgewerkt.
+Het is vaak een goed idee om uw gegevensladen proces uit te breiden om ervoor te zorgen dat statistieken worden bijgewerkt aan het einde van de belasting te voorkomen / minimaliseren blokkeren of resource geschil tussen gelijktijdige query's.  
 
 De gegevensbelasting is wanneer tabellen het vaakst hun grootte en/of hun verdeling van waarden wijzigen. Het laden van gegevens is een logische plek om bepaalde beheerprocessen te implementeren.
 
-De volgende leidende principes zijn voorzien voor het bijwerken van uw statistieken tijdens het laadproces:
+De volgende leidende beginselen zijn voorzien voor het bijwerken van uw statistieken:
 
 - Controleer of in elke geladen tabel ten minste één statistisch object is bijgewerkt. Hiermee worden de tabelgrootte (aantal rij's en het aantal pagina's) bijgewerkt als onderdeel van de statistische update.
 - Focus op kolommen die deelnemen aan JOIN, GROUP BY, ORDER BY en DISTINCT-clausules.

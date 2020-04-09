@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
-ms.reviwer: lenalepa, sureshja
+ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40e7a05505bc501c1c622e627a6d97cc57db1cfa
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300006"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884236"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>How to: Servicevoorwaarden en privacyverklaring configureren voor een app
 
@@ -55,10 +55,10 @@ Wanneer de servicevoorwaarden en de privacyverklaring klaar zijn, u koppelingen 
 * [Het app-object JSON gebruiken](#app-object-json)
 * [De Microsoft Graph-API gebruiken](#msgraph-rest-api)
 
-### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>De Azure-portal gebruiken
+### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Azure Portal gebruiken
 Volg deze stappen in de Azure-portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Navigeer naar de sectie **App-registraties** en selecteer uw app.
 3. Open het deelvenster **Huisstijl.**
 4. Vul de **URL-voorwaarden** en **de URL-voorwaarden van de privacyverklaring** in.

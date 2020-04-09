@@ -1,5 +1,5 @@
 ---
-title: Inzicht in het Azure Active Directory-app-manifest | Microsoft Documenten
+title: Het Azure Active Directory-app-manifest begrijpen
 description: Gedetailleerde dekking van het Azure Active Directory-appmanifest, dat de identiteitsconfiguratie van een toepassing in een Azure AD-tenant vertegenwoordigt en wordt gebruikt om de OAuth-autorisatie, toestemmingservaring en meer te vergemakkelijken.
 services: active-directory
 author: rwike77
@@ -12,12 +12,12 @@ ms.date: 03/23/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 6d9a4af5ee814282589959fcf840c1061358ca18
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 487559aaf632a30b7efcda490f92a90d4f59b8f5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383936"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883471"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-app-manifest
 

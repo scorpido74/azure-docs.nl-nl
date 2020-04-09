@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 04/01/2020
-ms.openlocfilehash: 0ab9297e772a3b75a077da1c2ae74e5058b2731f
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657196"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879170"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Geavanceerde JSON-transformaties uitvoeren met Liquid-sjablonen in Azure Logic Apps
 
@@ -33,7 +33,7 @@ Voordat u een Liquid-transformatie in uw logica-app uitvoeren, moet u eerst de J
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Vloeibare sjabloon of kaart maken voor uw integratieaccount
 
-1. Maak in dit voorbeeld de in deze stap beschreven sjabloon monstervloeistof. In uw liquide sjabloon u [vloeibare filters](https://shopify.github.io/liquid/basics/introduction/#filters)gebruiken, die [gebruikmaken van DotLiquid-](https://dotliquidmarkup.org/) en C#-naamgevingsconventies.
+1. Maak in dit voorbeeld de in deze stap beschreven sjabloon monstervloeistof. In uw liquide sjabloon u [vloeibare filters](https://shopify.github.io/liquid/basics/introduction/#filters)gebruiken, die [gebruikmaken van DotLiquid-](https://github.com/dotliquid/dotliquid) en C#-naamgevingsconventies.
 
    > [!NOTE]
    > Zorg ervoor dat de filternamen *de zinsbehuizing* in uw sjabloon gebruiken. Anders werken de filters niet. Kaarten hebben ook [limieten voor bestandsgrootte.](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)

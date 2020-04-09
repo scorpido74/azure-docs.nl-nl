@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 7f13ab3cd6ff765bc3b1bee8e8fad7e7273f6c7d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 6cf43df756e9bed0438169c9c01b868653d84b57
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673916"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985725"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Vorige generaties van virtuele machinematen
 
@@ -342,7 +342,7 @@ Premium Storage caching: niet ondersteund
 <sup>1</sup> Instantie is geïsoleerd voor hardware die is gewijd aan één klant.
 <br>
 
-# <a name="nv-series"></a>NV-serie
+## <a name="nv-series"></a>NV-serie
 **Nieuwere grootte aanbeveling**: [NVv3-serie](nvv3-series.md) en [NVv4-serie](nvv4-series.md)
 
 De virtuele machines uit de NV-serie worden aangedreven door [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU's en NVIDIA GRID-technologie voor desktopversnelde toepassingen en virtuele desktops waar klanten hun gegevens of simulaties kunnen visualiseren. Gebruikers kunnen hun grafisch intensieve workflows op de NV-instanties visualiseren om superieure grafische mogelijkheden te krijgen en bovendien enkele precisieworkloads uit te voeren, zoals codering en rendering. NV-serie VM's worden ook aangedreven door Intel Xeon E5-2690 v3 (Haswell) CPU's.

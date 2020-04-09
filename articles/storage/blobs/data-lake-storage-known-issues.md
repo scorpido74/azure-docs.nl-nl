@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f8fae6580272ed53b8d440ba3e74c6a1ed1e61a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f69f17dc9d0cab2491a2c7f37b5bd082cc96b2d6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061513"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985419"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
 In dit artikel worden beperkingen en bekende problemen van Azure Data Lake Storage Gen2 beschreven.
 
-## <a name="supported-blob-storage-features"></a>Ondersteunde Blob-opslagfuncties
+## <a name="supported-blob-storage-features"></a>Ondersteunde Blob Storage-functies
 
 Steeds meer Blob-opslagfuncties werken nu met accounts met een hiërarchische naamruimte. Zie [Blob Storage-functies die beschikbaar zijn in Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)voor een volledige lijst.
 
 ## <a name="supported-azure-service-integrations"></a>Ondersteunde Azure-service-integraties
 
-Data Lake Storage gen2 ondersteunt verschillende Azure-services die u gebruiken om gegevens in te nemen, analyses uit te voeren en visuele weergaven te maken. Zie [Azure-services die Azure Data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-azure-services.md)voor een lijst met ondersteunde Azure-services.
+Azure Data Lake Storage Gen2 ondersteunt verschillende Azure-services die u gebruiken om gegevens in te nemen, analyses uit te voeren en visuele weergaven te maken. Zie [Azure-services die Azure Data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-azure-services.md)voor een lijst met ondersteunde Azure-services.
 
 Bekijk [Azure-services die Azure Data Lake Storage Gen2 ondersteunen.](data-lake-storage-supported-azure-services.md)
 
-## <a name="supported-open-source-platforms"></a>Ondersteunde open source platforms
+## <a name="supported-open-source-platforms"></a>Ondersteunde open source-platforms
 
 Verschillende open source platforms ondersteunen Data Lake Storage Gen2. Zie [Open source-platforms die Azure Data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-open-source-platforms.md)voor een volledige lijst.
 
@@ -41,7 +41,7 @@ Blob API's en Data Lake Storage Gen2 API's kunnen op dezelfde gegevens werken.
 
 In deze sectie worden problemen en beperkingen beschreven met het gebruik van blob-API's en API's voor Gegevensmeeropslag Gen2 om op dezelfde gegevens te werken.
 
-* U niet beide Blob API's en API's voor gegevensopslag gebruiken om naar dezelfde instantie van een bestand te schrijven. Als u naar een bestand schrijft met behulp van API's van Data Lake Storage Gen2, zijn de blokken van dat bestand niet zichtbaar voor oproepen naar de BLOB-API [voor bloklijst downloaden.](https://docs.microsoft.com/rest/api/storageservices/get-block-list) U een bestand overschrijven met api's van Data Lake Storage Gen2 of Blob API's. Dit heeft geen invloed op bestandseigenschappen.
+* U niet zowel Blob API's als API's voor gegevensopslag gebruiken om naar dezelfde instantie van een bestand te schrijven. Als u naar een bestand schrijft met behulp van API's van Data Lake Storage Gen2, zijn de blokken van dat bestand niet zichtbaar voor oproepen naar de BLOB-API [voor bloklijst downloaden.](https://docs.microsoft.com/rest/api/storageservices/get-block-list) U een bestand overschrijven met api's van Data Lake Storage Gen2 of Blob API's. Dit heeft geen invloed op bestandseigenschappen.
 
 * Wanneer u de [bewerking Lijstblobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruikt zonder een scheidingsteken op te geven, bevatten de resultaten zowel mappen als blobs. Als u ervoor kiest om een scheidingsteken te`/`gebruiken, gebruikt u alleen een voorwaartse slash ( ). Dit is de enige ondersteunde scheidingsteken.
 
@@ -112,11 +112,8 @@ Toepassingen van derden die REST API's gebruiken om te werken, blijven werken al
 
 Als [anonieme leestoegang](storage-manage-access-to-resources.md) is verleend aan een container, hebben ACL's geen effect op die container of de bestanden in die container.
 
-## <a name="windows-azure-storage-blob-wasb-driver"></a>Wasb-stuurprogramma (Windows Azure Storage Blob)
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-adls-gen2"></a>Wasb-stuurprogramma (Windows Azure Storage Blob) (niet ondersteund met ADLS Gen2)
 
-Momenteel zijn er verschillende problemen verbonden aan het gebruik van het WASB-stuurprogramma, samen met accounts met een hiërarchische naamruimte. We raden u aan het [ABFS-stuurprogramma (Azure Blob File System)](data-lake-storage-abfs-driver.md) te gebruiken in uw workloads. 
+Momenteel stuit het WASB-stuurprogramma - dat is ontworpen om alleen met de Blob API te werken - problemen op in een paar veelvoorkomende scenario's, dat wil zeggen wanneer het een client is voor een opslagaccount met naamruimte. Houd er rekening mee dat Multi-Protocol Access (MPA) deze problemen ook NIET zal beperken. 
 
-
-
-
-
+Op dit moment (en waarschijnlijk de nabije toekomst), zullen we klanten niet ondersteunen met behulp van de WASB-driver als klant naar een naamruimte-enabled storage account. We raden u in plaats daarvan aan om het [ABFS-stuurprogramma (Azure Blob File System)](data-lake-storage-abfs-driver.md) te gebruiken in uw Hadoop-omgeving. Als u probeert te migreren off van een on-premise Hadoop-omgeving met een versie eerder dan Hadoop branch-3, open dan een Azure Support-ticket, zodat we contact met u kunnen opnemen op het juiste pad voorwaarts voor u en uw organisatie.

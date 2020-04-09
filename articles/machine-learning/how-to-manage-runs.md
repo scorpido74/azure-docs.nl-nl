@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: 8c261a010a1e8f4d1be9b3883510eb38c37a15ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1b70aaef49cc2b993c873509dc935d71069efa2
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296884"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985912"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Trainingsruns starten, controleren en annuleren in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -264,16 +264,41 @@ Als u veel onderliggende runs [`create_children()`](https://docs.microsoft.com/p
 
 ### <a name="submit-child-runs"></a>Onderliggende uitvoeringen verzenden
 
-Onderliggende uitvoeringen kunnen ook worden ingediend vanaf een bovenliggende run. Hiermee u hiërarchieën van bovenliggende en onderliggende uitvoeringen maken, die elk worden uitgevoerd op verschillende rekendoelen, verbonden door algemene bovenliggende run-ID.
+Onderliggende uitvoeringen kunnen ook worden ingediend vanaf een bovenliggende run. Hiermee u hiërarchieën van bovenliggende en onderliggende uitvoeringen maken. 
 
-Gebruik de methode ['submit_child()'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) om een onderliggend e-mail uit te voeren vanuit een bovenliggende run. Als u dit wilt doen in het bovenliggende run-script, krijgt u de runcontext en verzendt u het onderliggende uitvoeren met behulp van de ``submit_child`` methode van de contextinstantie.
+U wensen dat uw kind een andere runconfiguratie gebruikt dan de bovenliggende uitvoering. U bijvoorbeeld een minder krachtige, CPU-gebaseerde configuratie voor de ouder gebruiken, terwijl u GPU-configuraties voor uw kinderen gebruikt. Een andere gemeenschappelijke wens is om elk kind verschillende argumenten en gegevens door te geven. Als u een onderliggende `RunConfiguration` run wilt aanpassen, geeft u een object door aan de constructor van `ScriptRunConfig` het kind. Dit codevoorbeeld, dat deel zou `ScriptRunConfig` uitmaken van het script van het bovenliggende object:
+
+- Hiermee `RunConfiguration` maakt u een ophalen van een benoemde compute resource`"gpu-compute"`
+- Iterates over verschillende argumentwaarden die `ScriptRunConfig` aan de kinderenvoorwerpen moeten worden doorgegeven
+- Hiermee maakt en verzendt u een nieuwe onderliggende run met behulp van de aangepaste compute resource en het argument
+- Blokkeert totdat alle onderliggende
 
 ```python
-## In parent run script
-parent_run = Run.get_context()
-child_run_config = ScriptRunConfig(source_directory='.', script='child_script.py')
-parent_run.submit_child(child_run_config)
+# parent.py
+# This script controls the launching of child scripts
+from azureml.core import Run, ScriptRunConfig, RunConfiguration
+
+run_config_for_aml_compute = RunConfiguration()
+run_config_for_aml_compute.target = "gpu-compute"
+run_config_for_aml_compute.environment.docker.enabled = True 
+
+run = Run.get_context()
+
+child_args = ['Apple', 'Banana', 'Orange']
+for arg in child_args: 
+    run.log('Status', f'Launching {arg}')
+    child_config = ScriptRunConfig(source_directory=".", script='child.py', arguments=['--fruit', arg], run_config = run_config_for_aml_compute)
+    # Starts the run asynchronously
+    run.submit_child(child_config)
+
+# Experiment will "complete" successfully at this point. 
+# Instead of returning immediately, block until child runs complete
+
+for child in run.get_children():
+    child.wait_for_completion()
 ```
+
+Als u veel onderliggende uitvoeringen met identieke configuraties, [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) argumenten en ingangen efficiënt wilt maken, gebruikt u de methode. Omdat elke creatie resulteert in een netwerkaanroep, is het maken van een batch met uitvoeringen efficiënter dan ze één voor één maken.
 
 Binnen een onderliggende run u de bovenliggende run-ID bekijken:
 

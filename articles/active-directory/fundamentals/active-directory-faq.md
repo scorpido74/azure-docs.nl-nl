@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb0b5e37843413667e51112f52e6a69534e3425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f4a961e601949689db89f8819f0a1fe1c5a7b3a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063625"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875789"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Veelgestelde vragen over Azure Active Directory
 Azure Active Directory (Azure AD) is een uitgebreide IDaaS-oplossing (Identity as a Service) waarin alle aspecten van identiteit, toegangsbeheer en beveiliging zijn opgenomen.
@@ -27,9 +27,10 @@ Zie [Wat is Azure Active Directory?](active-directory-whatis.md) voor meer infor
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>Toegang tot Azure en Azure Active Directory
-**V: Waarom wordt 'Geen abonnementen gevonden' weergegeven wanneer ik Azure AD wil openen in Azure Portal?**
+**V: Waarom krijg ik 'Geen abonnementen gevonden' wanneer ik Azure AD probeer te openen in de Azure-portal?**
 
-**A:** Voor toegang tot Azure Portal moet elke gebruiker machtigingen hebben in een Azure-abonnement. Als u een betaald Office 365- of [https://aka.ms/accessAAD](https://aka.ms/accessAAD) Azure AD-abonnement hebt, gaat u naar voor een eenmalige activeringsstap. Anders moet u een gratis [Azure-account](https://azure.microsoft.com/pricing/free-trial/) activeren of een betaald abonnement afsluiten.
+**A:** Voor toegang tot Azure Portal moet elke gebruiker machtigingen hebben in een Azure-abonnement. Als u geen betaald Office 365- of Azure AD-abonnement hebt, moet u een gratis [Azure-account](https://azure.microsoft.com/free/
+) of een betaald abonnement activeren.
 
 Zie voor meer informatie:
 
@@ -138,7 +139,7 @@ Beheerders kunnen wachtwoorden van Azure AD-accounts via een van de volgende opt
 
 We gebruiken een geavanceerdere strategie om account te vergrendelen.  Dit is gebaseerd op het IP-adres van de aanvraag en op de ingevoerde wachtwoorden. De duur van de vergrendeling wordt ook langer op basis van de kans dat het een aanval betreft.  
 
-**V: Bepaalde (algemene) wachtwoorden worden geweigerd met de melding dat het wachtwoord te vaak is gebruikt. Heeft dit betrekking op wachtwoorden die worden gebruikt in de huidige Active Directory?**
+**V: Bepaalde (veelvoorkomende) wachtwoorden worden afgewezen met de berichten 'dit wachtwoord is al vele malen gebruikt', verwijst dit naar wachtwoorden die worden gebruikt in de huidige active directory?**
 
 Dit verwijst naar wachtwoorden die wereldwijd gebruikelijk zijn, zoals varianten van "Wachtwoord" en "123456".
 
@@ -157,7 +158,7 @@ Zie de [Active Directory Marketplace](https://azure.microsoft.com/marketplace/ac
 ---
 **V: Wat moet ik doen als de benodigde toepassing niet beschikbaar in de Azure AD Marketplace?**
 
-**A:** Met Azure AD Premium kunt u elke gewenste toepassing toevoegen en configureren. U kunt eenmalige aanmelding en geautomatiseerde inrichting configureren, afhankelijk van de mogelijkheden van uw toepassing en uw voorkeuren.  
+**A:** Met Azure AD Premium kunt u elke gewenste toepassing toevoegen en configureren. Afhankelijk van de mogelijkheden van uw toepassing en uw voorkeuren u SSO en geautomatiseerde inrichting configureren.  
 
 Zie voor meer informatie:
 
@@ -188,7 +189,7 @@ Zie voor meer informatie:
 * [Eén aanmelding voor toepassingen in Azure AD](../manage-apps/what-is-single-sign-on.md)
 
 ---
-**V: Kan ik toepassingen toevoegen die ik on-premises uitvoer?**
+**V: Kan ik applicaties toevoegen die ik on-premises run?**
 
 **A:** Via de Azure AD-toepassingsproxy hebt u eenvoudig en veilig toegang tot on-premises webtoepassingen die u kiest. U kunt deze toepassingen in Azure AD op dezelfde manier openen als uw SaaS-apps (Software as a Service). U hebt geen VPN nodig en u hoeft uw netwerkinfrastructuur niet te wijzigen.  
 
@@ -199,7 +200,7 @@ Zie [How to provide secure remote access to on-premises applications](../manage-
 
 **A:** Met Voorwaardelijke toegang tot Azure AD u voor elke toepassing een uniek toegangsbeleid toewijzen. In uw beleid kunt u aangeven dat Multi-Factor Authentication altijd is vereist of alleen wanneer gebruikers niet zijn verbonden met het lokale netwerk.  
 
-Zie [Securing access to Office 365 and other apps connected to Azure Active Directory](../active-directory-conditional-access-azure-portal.md) (De toegang beveiligen tot Office 365 en andere apps die zijn verbonden met Azure Active Directory) voor meer informatie.
+Zie [Securing access to Office 365 and other apps connected to Azure Active Directory](../conditional-access/overview.md) (De toegang beveiligen tot Office 365 en andere apps die zijn verbonden met Azure Active Directory) voor meer informatie.
 
 ---
 **V: Wat is geautomatiseerde gebruikersinrichting voor SaaS-apps?**
@@ -211,4 +212,4 @@ Zie [Automate user provisioning and deprovisioning to SaaS applications with Azu
 ---
 **V: Kan ik een veilige LDAP-verbinding instellen met Azure AD?**
 
-**A:** Nee. Azure AD ondersteunt niet rechtstreeks het LDAP-protocol (Lightweight Directory Access Protocol) of Secure LDAP. Het is echter mogelijk om Azure AD Domain Services (Azure AD DS)-instantie in te schakelen op uw Azure AD-tenant met goed geconfigureerde netwerkbeveiligingsgroepen via Azure Networking om LDAP-connectiviteit te bereiken. Zie https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap voor meer informatie.
+**A:** Nee. Azure AD ondersteunt niet rechtstreeks het LDAP-protocol (Lightweight Directory Access Protocol) of Secure LDAP. Het is echter mogelijk om Azure AD Domain Services (Azure AD DS)-instantie in te schakelen op uw Azure AD-tenant met goed geconfigureerde netwerkbeveiligingsgroepen via Azure Networking om LDAP-connectiviteit te bereiken. Zie [Beveiligde LDAP configureren voor een beheerd Azure Active Directory Domain Services-domein](../../active-directory-domain-services/tutorial-configure-ldaps.md) voor meer informatie.

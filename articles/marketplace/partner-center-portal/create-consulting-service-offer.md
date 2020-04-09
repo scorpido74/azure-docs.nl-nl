@@ -1,25 +1,27 @@
 ---
-title: Een consultingserviceaanbieding maken in Partnercenter - Azure Marketplace
-description: Meer informatie over het publiceren van een consultingserviceaanbieding naar Azure Marketplace of AppSource met behulp van Partner Center.
+title: Een consultingserviceaanbieding maken in partnercentrum - Azure Marketplace
+description: Meer informatie over het publiceren van een Consulting-serviceaanbieding naar Azure Marketplace of AppSource met behulp van Partner Center.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/26/2020
-ms.openlocfilehash: ce8df36d3417417a5f70a5385aa94d9c8c7ff0cc
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.date: 04/06/2020
+ms.openlocfilehash: f1354ce824bc4e57ab55846c714d4a0a73a46966
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674278"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873817"
 ---
-# <a name="consulting-service-creation-overview"></a>Overzicht van consulting servicecreatie
+# <a name="create-a-consulting-service-offer"></a>Een consultingserviceaanbieding maken
 
 > [!IMPORTANT]
 > We verplaatsen het beheer van uw Consulting-serviceaanbiedingen van Cloud Partner Portal naar Partner Center. Volg de instructies in Azure en [Dynamics 365 consulting service voor](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) Cloud Partner Portal om uw aanbiedingen te beheren totdat uw aanbiedingen zijn gemigreerd.
 
-In dit artikel wordt beschreven hoe u een consultingserviceaanbieding publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com/) of [AppSource.](https://appsource.microsoft.com/) Lijst consulting service aanbiedingen op basis van Microsoft [Dynamics 365](https://dynamics.microsoft.com/) en Power Platform op AppSource. Lijst consulting service aanbiedingen op basis van Microsoft Azure op Azure Marketplace.
+In dit artikel wordt beschreven hoe u een Consulting-serviceaanbieding publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com/) of [AppSource.](https://appsource.microsoft.com/) List Consulting-serviceaanbiedingen op basis van Microsoft [Dynamics 365](https://dynamics.microsoft.com/) en Power Platform op AppSource. Lijst consulting-serviceaanbiedingen op basis van Microsoft Azure op Azure Marketplace.
+
+Als u een Consulting-serviceaanbieding wilt maken in Azure Marketplace- of AppSource Consulting-services, moet u eerst [een uitgeversaccount hebben in het Partnercentrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)en moet uw account zijn ingeschreven voor het commerciële marktplaatsprogramma. Voordat u uw aanbieding maakt, bekijkt u de vereisten in [consultingservicevereisten.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)
 
 ## <a name="publishing-benefits"></a>Publicatievoordelen
 
@@ -30,60 +32,9 @@ Voordelen van publiceren op de commerciële marktplaats:
 - Ontvang leads van hoge kwaliteit van deze marktplaatsen.
 - Laat uw services promoten door de Microsoft-veld- en telesalesteams
 
-## <a name="requirements"></a>Vereisten
+## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
-### <a name="business-requirements"></a>Zakelijke vereisten
-
-Voor aanbiedingen waarbij Azure is geselecteerd als het primaire product, moet uw aanbieding ten minste een van de volgende volledig verdiende competenties weergeven:
-
-- Ontwikkeling van toepassingen
-- Toepassingsintegratie
-- Levenscyclusbeheer van toepassingen
-- Cloudplatform
-- Data Analytics
-- Datacentrum
-- Dataplatform
-- DevOps
-
-Voor aanbiedingen met een van de volgende opties die als primaire product zijn geselecteerd, moet u voldoen aan de desbetreffende geschiktheidsvereisten of een medeverkoopaanbieding hebben voor het primaire product waaraan het serviceaanbod is gerelateerd.
-
-**Toepassingen voor klantbetrokkenheid**
-
-- **Geldt voor**: Dynamics 365 Sales, Dynamics 365 Marketing, Dynamics 365 Customer Service, Dynamics 365 Field Service, Dynamics 365 Human Resources
-
-- **Criteria:** Moet goud of zilver gecertificeerd zijn in de [cloud business applicaties competentie](https://partner.microsoft.com/membership/cloud-business-applications-competency) voor Customer Engagement optie.
-
-**Financiële en operationele toepassingen**
-
-- **Geldt voor**: Dynamics 365 Finance, Dynamics 365 Operations, Dynamics 365 Commerce, Dynamics 365 Human Resources, Dynamics 365 Project Service Automation
-
-- **Criteria:** Moet goud of zilver gecertificeerd zijn in de [cloud business applicaties competentie](https://partner.microsoft.com/membership/cloud-business-applications-competency) voor Unified Operations optie.
-
-**Dynamics 365 Customer Insights**
-
-- **Criteria**: Moet ten minste één succesvolle in-productie implementatie van [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) hebben met ten minste vijf maten en vijf segmenten.
-
-**Dynamics 365 Business Central**
-
-- **Criteria**: Moet gold of silver-gecertificeerd zijn in de [competentie Enterprise Resource Planning](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) en ten minste drie klanten bedienen of een Business Central-toepassing in Microsoft AppSource hebben gepubliceerd.
-
-**Power BI**
-
-- **Criteria**: Moet worden vermeld op de [Power BI-partnershowcase](https://powerbi.microsoft.com/partner-showcase/).
-
-**Power Apps**
-
-- **Criteria:** Moet in aanmerking komen voor geavanceerde voordelen in het [Power Apps Partnership-programma.](https://aka.ms/PowerAppsPartner)
-
-Zie de [vereisten voor consultingservice](consulting-service-prerequisites.md)voor meer informatie over het voldoen aan deze vereisten.
-
-### <a name="logistical-requirements"></a>Logistieke eisen
-
-Als u een consultingserviceaanbieding wilt maken in Azure Marketplace- of AppSource-consultingservices, moet u eerst [een uitgeversaccount hebben in het Partnercentrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)en moet uw account zijn ingeschreven in het commerciële marktplaatsprogramma.
-
-## <a name="create-a-new-consulting-service-offer-in-partner-center"></a>Maak een nieuw adviesaanbod in Partner Center
-
-Volg deze stappen om een adviesserviceaanbieding te maken nadat u aan de hierboven beschreven vereisten hebt voldaan.
+Volg deze stappen om een consultingserviceaanbieding te maken nadat u aan de hierboven beschreven vereisten hebt voldaan.
 
 1. Meld u aan bij [Partnercentrum](https://partner.microsoft.com)en selecteer **Dashboard** in het bovenste menu.
 2. Selecteer in de linkernavigatiebalk de optie **Commerciële marktplaats**en selecteer **Overzicht**.
@@ -139,13 +90,13 @@ Selecteer **Concept opslaan** voordat u doorgaat naar de volgende sectie, Eigens
 
 ### <a name="properties"></a>Eigenschappen
 
-Op deze pagina u het primaire product instellen dat uw consultingservice het beste biedt, een consultingservicetype instellen en toepasselijke producten kiezen.
+Op deze pagina u het primaire product instellen dat de beste dekking biedt voor uw Consulting-service, een Consulting-servicetype instellen en toepasselijke producten kiezen.
 
 1. Selecteer een **primair product** in de vervolgkeuzelijst.
 2. Selecteer een **consulting-servicetype** in de vervolgkeuzelijst:
 
     - **Beoordeling** : Een evaluatie van de omgeving van een klant&#39;om de toepasbaarheid van een oplossing te bepalen en een schatting te geven van kosten en timing.
-    - **Briefing** : Een inleiding tot een oplossing of een consulting service om de interesse van de klant te trekken met behulp van frameworks, demo's en voorbeelden van klanten.
+    - **Briefing** : Een inleiding tot een oplossing of een Consulting-service om de interesse van de klant te wekken door gebruik te maken van frameworks, demo's en voorbeelden van klanten.
     - **Implementatie** : Een complete installatie die resulteert in een volledig werkende oplossing. Beperk oplossingen die binnen twee weken of minder kunnen worden geïmplementeerd.
     - **Proof of concept** : Een implementatie met beperkte scope om te bepalen of een oplossing voldoet aan de eisen van de klant.
     - **Workshop** : Een interactieve betrokkenheid uitgevoerd op het terrein van een klant&#39;. Het kan gaan om training, briefings, assessments of demo's die zijn gebouwd op de gegevens of omgeving van de klant&#39;.
@@ -153,7 +104,7 @@ Op deze pagina u het primaire product instellen dat uw consultingservice het bes
 1. Als u een primair product van **Azure**hebt geselecteerd, selecteert u maximaal drie **oplossingsgebieden**. Deze maken het voor klanten in Azure Marketplace gemakkelijker om uw aanbieding te vinden. Als u&#39;niet voor Azure hebt gekozen, slaat u deze stap over.
 2. Als u een _ander_ primair product dan Azure hebt geselecteerd, selecteert u maximaal drie **toepasselijke producten**. Deze maken het makkelijker voor klanten in AppSource om uw aanbod te vinden. Zie Richtlijnen voor [Microsoft AppSource Consulting Service Listing (PDF)](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) voor meer informatie.
 3. Selecteer maximaal zes **industrieën waarop** uw aanbieding van toepassing is. Dit maakt het makkelijker voor klanten om uw aanbod te vinden.
-4. Voeg maximaal drie **competenties toe** die uw bedrijf heeft verdiend om weer te geven op uw aanbiedingvoor adviesservice. Ten minste één competentie is vereist, behalve voor Azure Expert MSP&#39;s en Azure Networking MSP&#39;s.
+4. Voeg maximaal drie **competenties toe** die uw bedrijf heeft verdiend om weer te geven op uw aanbieding voor consultingservices. Ten minste één competentie is vereist, behalve voor Azure Expert MSP&#39;s en Azure Networking MSP&#39;s.
 
 Selecteer **Concept opslaan** voordat u doorgaat naar de volgende sectie, Aanbieding smaken.
 
@@ -205,7 +156,7 @@ Als u uw beschrijving aantrekkelijker wilt maken, gebruikt u de editor voor rijk
 
 ### <a name="keywords"></a>Trefwoorden
 
-Voer maximaal drie zoekwoorden in die relevant zijn voor uw primaire product- en adviesservice. Deze zullen het gemakkelijker maken om uw aanbod te vinden.
+Voer maximaal drie zoekwoorden in die relevant zijn voor uw primaire product- en consultingservice. Deze zullen het gemakkelijker maken om uw aanbod te vinden.
 
 ### <a name="duration"></a>Duur
 
@@ -252,7 +203,7 @@ Hier definieert u elementen zoals prijzen, markt en een privésleutel.
 3. **Prijzen:** Geef op of uw aanbieding een **gratis** of **betaalde** aanbieding is.
 
     > [!NOTE]
-    > Consulting Service aanbiedingen zijn alleen voor de aanbieding. Alle transacties zullen direct plaatsvinden, buiten de commerciële markt.
+    > Consulting service aanbiedingen zijn alleen voor de aanbieding. Alle transacties zullen direct plaatsvinden, buiten de commerciële markt.
 
 4. Geef voor een betaalde aanbieding de **prijs en valuta** op en of de prijs **vast** of **geschat**is. Als u schat, moet u in de beschrijving opgeven welke factoren van invloed zijn op de prijs.
 5. Selecteer **Concept opslaan**.
@@ -261,7 +212,7 @@ Hier definieert u elementen zoals prijzen, markt en een privésleutel.
 
 Nadat u alle vereiste onderdelen van de aanbieding hebt voltooid, u uw voorstel indienen om te bekijken en te publiceren.
 
-1. Wanneer u klaar bent om uw adviesserviceaanbieding te publiceren, klikt u op **Controleren en publiceren.**
+1. Wanneer u klaar bent om uw consultingserviceaanbieding te publiceren, klikt u op **Controleren en publiceren.**
 2. Bekijk de details op de laatste inzendingspagina.
 3. Schrijf indien nodig een notitie naar het certificeringsteam als u van mening bent dat een van de details van uw aanbieding uitleg vereist.
 4. Wanneer u klaar bent, selecteert u **Verzenden**.
@@ -269,6 +220,6 @@ Nadat u alle vereiste onderdelen van de aanbieding hebt voltooid, u uw voorstel 
 
 Zie [De publicatiestatus van uw commerciële marktplaatsaanbieding controleren voor](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status)meer informatie over hoe lang u verwachten dat uw aanbieding zich in elke publicatiefase bevindt.
 
-## <a name="update-your-existing-consulting-service-offers"></a>Uw bestaande adviesserviceaanbiedingen bijwerken
+## <a name="update-your-existing-consulting-service-offers"></a>Uw bestaande Consulting-serviceaanbiedingen bijwerken
 
 - [Een bestaand aanbod bijwerken in de commerciële markt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

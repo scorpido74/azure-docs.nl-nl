@@ -11,14 +11,15 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa0a5bfe921687ad964e9321e3874de37ccf9b98
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: d175a2cea685585da3767acdb0ab77a99c541d09
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549303"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873868"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Machine learning-pijplijnen maken en uitvoeren met Azure Machine Learning SDK
+
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u een [machine learning-pijplijn](concept-ml-pipelines.md) maakt, publiceert, uitvoert en bijhoudt met behulp van de [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Gebruik **ML-pijplijnen** om een werkstroom te maken die verschillende ML-fasen samenvoegt en vervolgens die pijplijn in uw Azure Machine Learning-werkruimte publiceert om later toegang te krijgen of met anderen te delen.  ML-pijplijnen zijn ideaal voor batchscoringscenario's, waarbij verschillende gegevens worden gebruikt, stappen worden hergebruikt in plaats van opnieuw worden uitgevoerd en ml-workflows met anderen worden gedeeld.
@@ -48,14 +49,13 @@ from azureml.core import Workspace, Datastore
 ws = Workspace.from_config()
 ```
 
-
 ## <a name="set-up-machine-learning-resources"></a>Machine learning-resources instellen
 
 Maak de resources die nodig zijn om een ML-pijplijn uit te voeren:
 
 * Stel een gegevensarchief in dat wordt gebruikt om toegang te krijgen tot de gegevens die nodig zijn in de pijplijnstappen.
 
-* Een `DataReference` object configureren om te wijzen op gegevens die in een gegevensarchief leven of toegankelijk zijn.
+* Configureer `Dataset` een object om te wijzen op permanente gegevens die in een gegevensarchief leven of toegankelijk zijn. Een `PipelineData` object configureren voor tijdelijke gegevens die tussen pijplijnstappen worden doorgegeven. 
 
 * Stel de [rekendoelen](concept-azure-machine-learning-architecture.md#compute-targets) in waarop uw pijplijnstappen worden uitgevoerd.
 
@@ -90,17 +90,18 @@ Een pijplijn bestaat uit een of meer stappen. Een stap is een eenheid die wordt 
 
 Zie de artikelen [Hoe u gegevens openen](how-to-access-data.md) en [gegevenssets registreren](how-to-create-register-datasets.md)voor meer informatie over het koppelen van uw pijplijn aan uw gegevens. 
 
-### <a name="configure-data-reference"></a>Gegevensverwijzing configureren
+### <a name="configure-data-using-dataset-and-pipelinedata-objects"></a>Gegevens configureren `Dataset` `PipelineData` met en objecten
 
-U hebt zojuist een gegevensbron gemaakt waarnaar kan worden verwezen in een pijplijn als invoer voor een stap. Een gegevensbron in een pijplijn wordt weergegeven door een [Object DataReference.](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) Het `DataReference` object verwijst naar gegevens die in een datastore leven of toegankelijk zijn.
+U hebt zojuist een gegevensbron gemaakt waarnaar kan worden verwezen in een pijplijn als invoer voor een stap. De voorkeursmanier om gegevens aan een pijplijn te verstrekken, is een [object Dataset.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.Dataset) Het `Dataset` object verwijst naar gegevens die in een gegevensarchief of op een web-URL worden weergegeven of toegankelijk zijn. De `Dataset` klasse is abstract, dus u maakt `FileDataset` een instantie van een (verwijzend `TabularDataset` naar een of meer bestanden) of een die is gemaakt door uit een of meer bestanden met afgebakende kolommen met gegevens.
+
+`Dataset`objecten ondersteunen versieweergave, diffs en overzichtsstatistieken. `Dataset`s worden lui geëvalueerd (zoals Python generatoren) en het is efficiënt om ze te subseten door te splitsen of te filteren. 
+
+U maakt `Dataset` een gebruiksmethode zoals [from_file](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) of [from_delimited_files.](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-)
 
 ```python
-from azureml.data.data_reference import DataReference
+from azureml.core import Dataset
 
-blob_input_data = DataReference(
-    datastore=def_blob_store,
-    data_reference_name="test_data",
-    path_on_datastore="20newsgroups/20news.pkl")
+iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 'train-dataset/tabular/iris.csv')])
 ```
 
 Tussenliggende gegevens (of uitvoer van een stap) worden weergegeven door een [object PipelineData.](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) `output_data1`wordt geproduceerd als de output van een stap en wordt gebruikt als de input van een of meer toekomstige stappen. `PipelineData`hiermee wordt een gegevensafhankelijkheid tussen stappen geïntroduceerd en wordt een impliciete uitvoeringsorder in de pijplijn gemaakt. Dit object wordt later gebruikt bij het maken van pijplijnstappen.
@@ -114,25 +115,11 @@ output_data1 = PipelineData(
     output_name="output_data1")
 ```
 
-### <a name="configure-data-using-datasets"></a>Gegevens configureren met behulp van gegevenssets
+Meer details en voorbeeldcode voor het werken met gegevenssets en pijplijngegevens zijn te vinden in [Het verplaatsen van gegevens naar en tussen ML-pijplijnstappen (Python).](how-to-move-data-in-out-of-pipelines.md)
 
-Als u tabelgegevens hebt opgeslagen in een bestand of een set bestanden, `DataReference`is een [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) een efficiënt alternatief voor een . `TabularDataset`objecten ondersteunen versieweergave, diffs en overzichtsstatistieken. `TabularDataset`s worden lui geëvalueerd (zoals Python generatoren) en het is efficiënt om ze te subseten door te splitsen of te filteren. De `FileDataset` klasse biedt vergelijkbare lui geëvalueerde gegevens die een of meer bestanden vertegenwoordigen. 
+## <a name="set-up-a-compute-target"></a>Een rekendoel instellen
 
-U maakt `TabularDataset` een met behulp van methoden zoals [from_delimited_files.](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-)
-
-```python
-from azureml.data import TabularDataset
-
-iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 'train-dataset/tabular/iris.csv')])
-```
-
- U maakt `FileDataset` een gebruiks- [from_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-).
-
- U meer informatie krijgen over het werken met gegevenssets van [Gegevenssets toevoegen & gegevenssets](how-to-create-register-datasets.md) of [dit voorbeeldnotitieblok .](https://aka.ms/train-datasets)
-
-## <a name="set-up-compute-target"></a>Compute-doel instellen
-
-In Azure Machine Learning verwijst de term __computes__ (of __compute target)__ naar de machines of clusters die de computationele stappen in uw machine learning-pijplijn uitvoeren.   Bekijk [rekendoelen voor modeltraining](how-to-set-up-training-targets.md) voor een volledige lijst met rekendoelen en hoe u deze maken en koppelen aan uw werkruimte.  Het proces voor het maken en of koppelen van een compute target is hetzelfde, ongeacht of u een model traint of een pijplijnstap uitvoert. Nadat u uw rekendoel hebt `ComputeTarget` gemaakt en bevestigd, gebruikt u het object in de [pijplijnstap](#steps).
+In Azure Machine Learning verwijst de term __compute__ (of __compute target)__ naar de machines of clusters die de computationele stappen in uw machine learning-pijplijn uitvoeren.   Bekijk [rekendoelen voor modeltraining](how-to-set-up-training-targets.md) voor een volledige lijst met rekendoelen en hoe u deze maken en koppelen aan uw werkruimte.  Het proces voor het maken en of koppelen van een compute target is hetzelfde, ongeacht of u een model traint of een pijplijnstap uitvoert. Nadat u uw rekendoel hebt `ComputeTarget` gemaakt en bevestigd, gebruikt u het object in de [pijplijnstap](#steps).
 
 > [!IMPORTANT]
 > Het uitvoeren van beheerbewerkingen op compute targets wordt niet ondersteund vanuit externe taken. Aangezien machine learning-pijplijnen worden ingediend als een externe taak, gebruikt u geen beheerbewerkingen op compute-doelen vanuit de pijplijn.
@@ -287,13 +274,16 @@ Zodra u een rekendoel aan uw werkruimte hebt gemaakt en toegevoegd, bent u klaar
 ```python
 from azureml.pipeline.steps import PythonScriptStep
 
+ds_input = my_dataset.as_named_input('input1')
+
 trainStep = PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", blob_input_data, "--output", output_data1],
-    inputs=[blob_input_data],
+    arguments=["--input", ds_input.as_download(), "--output", output_data1],
+    inputs=[ds_input],
     outputs=[output_data1],
     compute_target=compute_target,
-    source_directory=project_folder
+    source_directory=project_folder,
+    allow_reuse=True
 )
 ```
 
@@ -339,8 +329,6 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 
 ### <a name="use-a-dataset"></a>Een gegevensset gebruiken 
 
-Als u `TabularDataset` een `FileDataset` of een pijplijn wilt gebruiken, moet u het object [DatasetConsumptionConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_consumption_config.datasetconsumptionconfig?view=azure-ml-py) gebruiken door [as_named_input(naam)](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#as-named-input-name-)aan te roepen. U geeft `DatasetConsumptionConfig` dit object `inputs` door als een van de stappen naar uw pijplijn. 
-
 Gegevenssets die zijn gemaakt met Azure Blob-opslag, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database en Azure Database voor PostgreSQL, kunnen worden gebruikt als invoer voor elke pijplijnstap. Met uitzondering van het schrijven van uitvoer naar een [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) of [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py), kunnen uitvoergegevens ([PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)) alleen worden geschreven naar Azure Blob en Azure File share datastores.
 
 ```python
@@ -363,7 +351,15 @@ iris_dataset = run_context.input_datasets['iris_data']
 dataframe = iris_dataset.to_pandas_dataframe()
 ```
 
-Zie het pakket [azure-pipeline-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) en naslagverwijzing [naar pijplijnklassen](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) voor meer informatie.
+De `Run.get_context()` lijn is de moeite waard te benadrukken. Met deze functie `Run` wordt een afbeelding van de huidige experimentele run opgehaald. In het bovenstaande voorbeeld gebruiken we deze om een geregistreerde gegevensset op te halen. Een ander algemeen `Run` gebruik van het object is het ophalen van zowel het experiment zelf als de werkruimte waarin het experiment zich bevindt: 
+
+```python
+# Within a PythonScriptStep
+
+ws = Run.get_context().experiment.workspace
+```
+
+Zie [Gegevens verplaatsen naar en tussen ML-pijplijnstappen (Python)](how-to-move-data-in-out-of-pipelines.md)voor meer details, inclusief alternatieve manieren om gegevens door te geven en te openen.
 
 ## <a name="submit-the-pipeline"></a>De pijplijn verzenden
 
@@ -387,7 +383,7 @@ Wanneer u een pijplijn voor het eerst uitvoert, azure machine learning:
 * Downloadt de projectmomentopname naar het rekendoel vanuit de Blob-opslag die is gekoppeld aan de werkruimte.
 * Hiermee bouwt u een Docker-afbeelding die overeenkomt met elke stap in de pijplijn.
 * Downloadt de Docker-afbeelding voor elke stap naar het rekendoel vanuit het containerregister.
-* Monteert het gegevensarchief `DataReference` als een object in een stap is opgegeven. Als de bevestiging niet wordt ondersteund, worden de gegevens in plaats daarvan gekopieerd naar het rekendoel.
+* Hiermee configureert u de toegang tot `Dataset` en `PipelineData` objecten. Voor `as_mount()` als toegangsmodus wordt FUSE gebruikt om virtuele toegang te bieden. Als de bevestiging niet wordt ondersteund of `as_download()`als de gebruiker toegang als heeft opgegeven, worden de gegevens in plaats daarvan gekopieerd naar het rekendoel.
 * Met de stap in het rekendoel dat is opgegeven in de stapdefinitie. 
 * Hiermee worden artefacten, zoals logboeken, stdout en stderr, statistieken en uitvoer die door de stap zijn opgegeven, maakt. Deze artefacten worden vervolgens geüpload en bewaard in het standaardgegevensarchief van de gebruiker.
 
@@ -464,6 +460,7 @@ response = requests.post(published_pipeline1.endpoint,
 ```
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>Een versiepunt van een versie
+
 U een pijplijneindpunt maken met meerdere gepubliceerde pijplijnen erachter. Dit kan worden gebruikt als een gepubliceerde pijplijn, maar geeft u een vast REST-eindpunt terwijl u uw ML-pijplijnen aangeeft en bijwerkt.
 
 ```python
@@ -475,19 +472,24 @@ pipeline_endpoint = PipelineEndpoint.publish(workspace=ws, name="PipelineEndpoin
 ```
 
 ### <a name="submit-a-job-to-a-pipeline-endpoint"></a>Een taak verzenden naar een eindpunt van een pijplijn
+
 U een taak indienen bij de standaardversie van een eindpunt van een pijplijn:
+
 ```python
 pipeline_endpoint_by_name = PipelineEndpoint.get(workspace=ws, name="PipelineEndpointTest")
 run_id = pipeline_endpoint_by_name.submit("PipelineEndpointExperiment")
 print(run_id)
 ```
+
 U ook een taak indienen bij een specifieke versie:
+
 ```python
 run_id = pipeline_endpoint_by_name.submit("PipelineEndpointExperiment", pipeline_version="0")
 print(run_id)
 ```
 
 Hetzelfde kan worden bereikt met behulp van de REST API:
+
 ```python
 rest_endpoint = pipeline_endpoint_by_name.endpoint
 response = requests.post(rest_endpoint, 
@@ -512,19 +514,17 @@ U ook een gepubliceerde pijplijn vanuit de studio uitvoeren:
 
 1. Selecteer een specifieke pijplijn om de resultaten van eerdere uitvoeringen van het eindpunt van de pijplijn uit te voeren, te consumeren of te bekijken.
 
-
 ### <a name="disable-a-published-pipeline"></a>Een gepubliceerde pijplijn uitschakelen
 
 Als u een pijplijn wilt verbergen voor uw lijst met gepubliceerde pijplijnen, schakelt u deze uit, in de studio of in de SDK:
 
-```
+```python
 # Get the pipeline by using its ID from Azure Machine Learning studio
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
 U het `p.enable()`opnieuw inschakelen met. Zie [Verwijzing naar de klasse PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) voor meer informatie.
-
 
 ## <a name="caching--reuse"></a>Caching & hergebruik  
 

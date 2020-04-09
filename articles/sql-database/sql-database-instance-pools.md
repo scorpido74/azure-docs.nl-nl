@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0938fbe94cb0d1e6dae3dcb84950a11f90dd9db8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256209"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878150"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Wat zijn SQL Database-instantiegroepen (preview)?
 
@@ -59,7 +59,7 @@ In de volgende lijst worden de belangrijkste gebruiksvoorbeelden weergegeven waa
 
 ## <a name="architecture-of-instance-pools"></a>Architectuur van instantiepools
 
-Instantiegroepen hebben een vergelijkbare architectuur als reguliere beheerde exemplaren *(afzonderlijke exemplaren).* Om [implementaties binnen Azure Virtual Networks (VNets)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) te ondersteunen en klanten isolatie en beveiliging te bieden, zijn bijvoorbeeld groepen ook afhankelijk van [virtuele clusters.](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture) Virtuele clusters vertegenwoordigen een speciale set van geïsoleerde virtuele machines geïmplementeerd in het virtuele netwerk subnet van de klant.
+Instantiegroepen hebben een vergelijkbare architectuur als reguliere beheerde exemplaren *(afzonderlijke exemplaren).* Om [implementaties binnen Azure Virtual Networks (VNets)](../virtual-network/virtual-network-for-azure-services.md) te ondersteunen en klanten isolatie en beveiliging te bieden, zijn bijvoorbeeld groepen ook afhankelijk van [virtuele clusters.](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture) Virtuele clusters vertegenwoordigen een speciale set van geïsoleerde virtuele machines geïmplementeerd in het virtuele netwerk subnet van de klant.
 
 Het belangrijkste verschil tussen de twee implementatiemodellen is dat instantiegroepen meerdere SQL Server-procesimplementaties toestaan op hetzelfde virtuele machineknooppunt, die worden beheerd met [Windows-taakobjecten,](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)terwijl afzonderlijke exemplaren altijd alleen zijn op een knooppunt voor virtuele machines.
 

@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Resource Health
 description: Overzicht van Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7459a29dca01dc186d75b4545f89068569975607
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75912773"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985028"
 ---
 # <a name="azure-resource-health-faq"></a>Veelgestelde vragen over Azure Resource Health
 Meer informatie over de antwoorden op veelgestelde vragen over Azure Resource Health.
@@ -37,7 +37,7 @@ De status is ingesteld op onbekend wanneer Resourcehealth geen informatie meer o
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Hoe kan ik hulp krijgen voor een resource die niet beschikbaar is?
 U een ondersteuningsverzoek indienen via het blade resourcestatus. U hebt geen ondersteuningsovereenkomst met Microsoft nodig om een aanvraag te openen wanneer de bron niet beschikbaar is omdat platformgebeurtenissen.
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Maakt Resource Health onderscheid tussen onbeschikbaarheid door platformproblemen ten opzichte van iets wat ik heb gedaan?
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>Maakt Resource Health onderscheid tussen onbeschikbaarheid veroorzaakt door platformproblemen ten opzichte van iets wat ik heb gedaan?
 Ja, wanneer een resource niet beschikbaar is, identificeert Resource Health de hoofdoorzaak binnen een van de volgende categorieën: 
 -   Door de gebruiker gestarte actie
 -   Geplande gebeurtenis 

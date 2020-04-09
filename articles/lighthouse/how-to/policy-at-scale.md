@@ -3,12 +3,12 @@ title: Azure-beleid implementeren voor gedelegeerde abonnementen op schaal
 description: Lees hoe azure gedelegeerd resourcebeheer u een beleidsdefinitie en beleidstoewijzing implementeren voor meerdere tenants.
 ms.date: 11/8/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9e061995b728e2864d1bd33a32d530634ab794d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9015351c3fc8f374c5ce85712907fa05249cde11
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456842"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984569"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure-beleid implementeren voor gedelegeerde abonnementen op schaal
 
@@ -32,7 +32,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 
 ## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>Een beleid implementeren voor meerdere klanttenants
 
-In het onderstaande voorbeeld ziet u hoe u een [Azure Resource Manager-sjabloon](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-https-storage/enforceHttpsStorage.json) gebruiken om een beleidsdefinitie en beleidstoewijzing te implementeren voor gedelegeerde abonnementen in meerdere klanttenants. Deze beleidsdefinitie vereist dat alle opslagaccounts HTTPS-verkeer gebruiken, waardoor het maken van nieuwe opslagaccounts die niet voldoen en het markeren van bestaande opslagaccounts wordt voorkomen zonder dat de instelling als niet-compatibel is.
+In het onderstaande voorbeeld ziet u hoe u een [Azure Resource Manager-sjabloon](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json) gebruiken om een beleidsdefinitie en beleidstoewijzing te implementeren voor gedelegeerde abonnementen in meerdere klanttenants. Deze beleidsdefinitie vereist dat alle opslagaccounts HTTPS-verkeer gebruiken, waardoor het maken van nieuwe opslagaccounts die niet voldoen en het markeren van bestaande opslagaccounts wordt voorkomen zonder dat de instelling als niet-compatibel is.
 
 ```powershell
 Write-Output "In total, there are $($ManagedSubscriptions.Count) delegated customer subscriptions to be managed"
@@ -43,7 +43,7 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
     New-AzDeployment -Name mgmt `
                      -Location eastus `
-                     -TemplateUri "https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/policy-enforce-https-storage/enforceHttpsStorage.json" `
+                     -TemplateUri "https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json" `
                      -AsJob
 }
 ```

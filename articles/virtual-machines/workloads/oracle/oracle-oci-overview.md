@@ -11,30 +11,30 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: e1249913300be532cc6514f1478bbc6f4183c001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5d5ebda850163989e6ef1af94ec623d2d758f07
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300550"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878286"
 ---
-# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle-toepassingsoplossingen die Microsoft Azure en Oracle Cloud Infrastructure integreren (preview)
+# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Oracle-toepassingsoplossingen die Microsoft Azure en Oracle Cloud Infrastructure integreren
 
 Microsoft en Oracle werken samen om cross-cloudconnectiviteit met een lage latentie met hoge doorvoer te bieden, zodat u profiteren van het beste van beide clouds. 
 
 Met deze cross-cloud-connectiviteit u een toepassing met meerdere lagen partitioneren om uw databaselaag uit te voeren op Oracle Cloud Infrastructure (OCI) en de toepassing en andere lagen op Microsoft Azure. De ervaring is vergelijkbaar met het uitvoeren van de volledige oplossingsstack in één cloud. 
-
-> [!IMPORTANT]
-> Deze cross-cloudmogelijkheid bevindt zich momenteel in preview en [er gelden beperkingen.](#region-availability) Om een low latency-verbinding tussen Azure en OCI tot stand te brengen, moet uw Azure-abonnement eerst voor deze mogelijkheid zijn ingeschakeld. U moet zich inschrijven voor de preview door dit korte [enquêteformulier in te vullen.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu) U ontvangt een e-mailbevestiging zodra uw abonnement is geregistreerd. U de mogelijkheid pas gebruiken als u een bevestigingsmail hebt ontvangen. U ook contact opnemen met uw Microsoft-vertegenwoordiger om voor deze preview te worden ingeschakeld. Toegang tot de preview-mogelijkheid is afhankelijk van beschikbaarheid en beperkt door Microsoft naar eigen inzicht. De voltooiing van de enquête garandeert geen toegang. Deze preview wordt zonder serviceniveau geleverd en mag niet worden gebruikt voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Zie [de aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor Microsoft Azure Previews voor meer informatie. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
 
 Als u oracle-oplossingen volledig wilt implementeren op azure-infrastructuur, raadpleegt u [Oracle VM-afbeeldingen en de implementatie ervan op Microsoft Azure.](oracle-vm-solutions.md)
 
 ## <a name="scenario-overview"></a>Overzicht van scenario's
 
 Cross-cloudconnectiviteit biedt u een oplossing om de toonaangevende toepassingen van Oracle en uw eigen aangepaste toepassingen op virtuele Azure-machines uit te voeren, terwijl u geniet van de voordelen van gehoste databaseservices in OCI. 
+
+> [!IMPORTANT]
+> Oracle zal deze toepassingen certificeren om in Azure uit te voeren wanneer het de Azure / Oracle Cloud interconnect-oplossing in mei 2020 gebruikt.
 
 Toepassingen die u uitvoeren in een cross-cloudconfiguratie zijn:
 

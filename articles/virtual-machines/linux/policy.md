@@ -3,8 +3,8 @@ title: Beveiliging afdwingen met beleid voor Linux VM's in Azure
 description: Een beleid toepassen op een Virtual Machine van Azure Resource Manager Linux
 services: virtual-machines-linux
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 06778ab4-f8ff-4eed-ae10-26a276fc3faa
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: kasing
-ms.openlocfilehash: 7ab48430ae4d6585c908b53017122096175abac3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: b585b4d0aef06b01cba07ab8ef016b59f9b4f61b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74035323"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878915"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Beleidsregels toepassen op Linux VM's met Azure Resource Manager
 Door beleid te gebruiken, kan een organisatie verschillende conventies en regels in de hele onderneming afdwingen. Handhaving van het gewenste gedrag kan helpen risico's te beperken en tegelijkertijd bij te dragen aan het succes van de organisatie. In dit artikel beschrijven we hoe u azure resource manager-beleid gebruiken om het gewenste gedrag voor de virtuele machines van uw organisatie te definiëren.

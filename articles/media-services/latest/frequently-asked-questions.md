@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: 11123ee04dd02a60dff0b88e2e6e85fcd613a7d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4f4bd6eaa07907dd672abe068b515b5127adac9
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067997"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886820"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 veelgestelde vragen
 
@@ -166,6 +166,112 @@ Zie [Migreren naar Media Services v3](media-services-v2-vs-v3.md)voor meer infor
 ### <a name="where-did-client-side-storage-encryption-go"></a>Waar is client-side storage encryptie gebleven?
 
 Het wordt nu aanbevolen om de server-side storage encryptie te gebruiken (die standaard is ingeschakeld). Zie [Azure Storage Service Encryption for Data at Rest voor](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)meer informatie.
+
+## <a name="offline-streaming"></a>Offline streamen
+
+### <a name="fairplay-streaming-for-ios"></a>FairPlay Streaming voor iOS
+
+De volgende veelgestelde vragen helpen bij het oplossen van problemen met offline FairPlay-streaming voor iOS:
+
+#### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>Waarom wordt alleen audio afgespeeld, maar geen video tijdens de offline modus?
+
+Dit gedrag lijkt te zijn door het ontwerp van de steekproef app. Wanneer een alternatieve audiotrack aanwezig is (wat het geval is voor HLS) tijdens de offline modus, worden zowel iOS 10 als iOS 11 standaard weergegeven op het alternatieve audiospoor. Als u dit gedrag wilt compenseren voor de offlinefps-modus, verwijdert u het alternatieve audionummer uit de stream. Om dit te doen op Media Services, voegt u het dynamische manifestfilter 'audio-only=false' toe. Met andere woorden, een HLS URL eindigt met .ism/manifest(format=m3u8-aapl,audio-only=false). 
+
+#### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>Waarom speelt het nog steeds audio alleen af zonder video tijdens de offline modus nadat ik audio-only=false heb toegevoegd?
+
+Afhankelijk van het ontwerp van de cachesleutel van het contentdelivery-netwerk (CDN) kan de inhoud in de cache in de cache worden opgeslagen. Verwijder de cache.
+
+#### <a name="is-fps-offline-mode-also-supported-on-ios-11-in-addition-to-ios-10"></a>Wordt de FPS offline modus naast iOS 10 ook ondersteund in iOS 11?
+
+Ja. Fps offline modus wordt ondersteund voor iOS 10 en iOS 11.
+
+#### <a name="why-cant-i-find-the-document-offline-playback-with-fairplay-streaming-and-http-live-streaming-in-the-fps-server-sdk"></a>Waarom kan ik het document 'Offline afspelen met FairPlay Streaming en HTTP Live Streaming' niet vinden in de FPS Server SDK?
+
+Sinds FPS Server SDK versie 4 is dit document samengevoegd tot de 'FairPlay Streaming Programming Guide'.
+
+#### <a name="what-is-the-downloadedoffline-file-structure-on-ios-devices"></a>Wat is de gedownloade/offline bestandsstructuur op iOS-apparaten?
+
+De gedownloade bestandsstructuur op een iOS-apparaat ziet eruit als de volgende schermafbeelding. De `_keys` map slaat gedownloade FPS-licenties op, met één winkelbestand voor elke licentieservicehost. De `.movpkg` map slaat audio- en video-inhoud op. De eerste map met een naam die eindigt met een streepje gevolgd door een numerieke bevat video-inhoud. De numerieke waarde is de PeakBandwidth van de videoweergaven. De tweede map met een naam die eindigt met een streepje gevolgd door 0 bevat audio-inhoud. De derde map met de naam "Data" bevat de hoofdafspeellijst van de FPS-inhoud. Ten slotte biedt boot.xml een `.movpkg` volledige beschrijving van de inhoud van de map. 
+
+![Offline FairPlay iOS voorbeeld app bestandsstructuur](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
+
+Een voorbeeld van boot.xml-bestand:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
+  <Version>1.0</Version>
+  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
+  <Streams>
+    <Stream ID="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" Path="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+    <Stream ID="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" Path="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+  </Streams>
+  <MasterPlaylist>
+    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>
+  </MasterPlaylist>
+  <DataItems Directory="Data">
+    <DataItem>
+      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>
+      <Category>Playlist</Category>
+      <Name>master.m3u8</Name>
+      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>
+      <Role>Master</Role>
+    </DataItem>
+  </DataItems>
+</HLSMoviePackage>
+```
+
+### <a name="widevine-streaming-for-android"></a>Widevine-streaming voor Android
+
+#### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-key"></a>Hoe kan ik permanente licenties (offline ingeschakeld) leveren voor sommige clients/gebruikers en niet-permanente licenties (offline uitgeschakeld) voor anderen? Moet ik de inhoud dupliceren en een aparte inhoudssleutel gebruiken?
+
+Sinds Media Services v3 kan een asset meerdere StreamingLocators hebben. Je.
+
+* Eén ContentKeyPolicy met license_type = "persistent", ContentKeyPolicyRestriction met claim op "persistent" en de StreamingLocator;
+* Een ander ContentKeyPolicy met license_type="niet-persistent", ContentKeyPolicyRestriction met claim op "niet-persistent", en de StreamingLocator.
+* De twee StreamingLocators hebben verschillende ContentKey.
+
+Afhankelijk van de bedrijfslogica van aangepaste STS worden verschillende claims uitgegeven in het JWT-token. Met het token kan alleen de bijbehorende licentie worden verkregen en kan alleen de bijbehorende URL worden afgespeeld.
+
+#### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Wat is de mapping tussen de WIDEvine en Media Services DRM beveiligingsniveaus?
+
+Google's "Widevine DRM Architecture Overview" definieert drie verschillende beveiligingsniveaus. In [Azure Media Services-documentatie over widevine-licentiesjabloon](widevine-license-template-overview.md)worden echter vijf verschillende beveiligingsniveaus beschreven. In dit gedeelte wordt uitgelegd hoe de beveiligingsniveaus worden toegewezen.
+
+In het document 'Widevine DRM Architecture Review' van Google worden de volgende drie beveiligingsniveaus gedefinieerd:
+
+* Beveiligingsniveau 1: Alle inhoudsverwerking, cryptografie en beheer worden uitgevoerd binnen de Trusted Execution Environment (TEE). In sommige implementatiemodellen kan beveiligingsverwerking worden uitgevoerd in verschillende chips.
+* Beveiligingsniveau 2: Voert cryptografie uit (maar geen videoverwerking) binnen de TEE: gedecodeerde buffers worden teruggestuurd naar het toepassingsdomein en verwerkt via afzonderlijke videohardware of -software. Op niveau 2 wordt cryptografische informatie echter nog steeds alleen binnen de TEE verwerkt.
+* Beveiligingsniveau 3 Heeft geen TEE op het apparaat. Er kunnen passende maatregelen worden genomen om de cryptografische informatie en gedecodeerde inhoud op het hostbesturingssysteem te beschermen. Een Level 3-implementatie kan ook een cryptografische hardware-engine bevatten, maar dat verbetert alleen de prestaties, niet de beveiliging.
+
+Tegelijkertijd kan in [Azure Media Services-documentatie over widevine-licentiesjabloon](widevine-license-template-overview.md)de security_level eigenschap van content_key_specs de volgende vijf verschillende waarden hebben (vereisten voor robuustheid van clients voor afspelen):
+
+* Software-gebaseerde white-box crypto is vereist.
+* Software crypto en een versluierde decoder is vereist.
+* Het belangrijkste materiaal en crypto-bewerkingen moeten worden uitgevoerd binnen een tee met hardwareondersteund.
+* De crypto en decodering van inhoud moeten worden uitgevoerd binnen een hardware ondersteund TEE.
+* De crypto, decodering en alle verwerking van de media (gecomprimeerd en ongecomprimeerd) moeten worden afgehandeld binnen een hardware backed TEE.
+
+Beide beveiligingsniveaus worden gedefinieerd door Google Widevine. Het verschil zit hem in het gebruiksniveau: architectuurniveau of API-niveau. De vijf beveiligingsniveaus worden gebruikt in de Widevine API. Het content_key_specs object, dat security_level bevat, wordt gedeserialiseerd en doorgegeven aan de widevine-wereldwijde leveringsservice door Azure Media Services Widevine-licentieservice. De onderstaande tabel toont de toewijzing tussen de twee sets beveiligingsniveaus.
+
+| **Beveiligingsniveaus gedefinieerd in Widevine-architectuur** |**Beveiligingsniveaus die worden gebruikt in Widevine API**|
+|---|---| 
+| **Beveiligingsniveau 1:** Alle inhoudsverwerking, cryptografie en beheer worden uitgevoerd binnen de Trusted Execution Environment (TEE). In sommige implementatiemodellen kan beveiligingsverwerking worden uitgevoerd in verschillende chips.|**security_level=5**: De crypto, decodering en alle verwerking van de media (gecomprimeerd en ongecomprimeerd) moeten worden afgehandeld binnen een door hardware gesteunde TEE.<br/><br/>**security_level=4**: De crypto en decodering van inhoud moeten worden uitgevoerd binnen een tee met hardwareondersteund.|
+**Beveiligingsniveau 2**: Voert cryptografie uit (maar geen videoverwerking) binnen de TEE: gedecodeerde buffers worden teruggestuurd naar het toepassingsdomein en verwerkt via afzonderlijke videohardware of -software. Op niveau 2 wordt cryptografische informatie echter nog steeds alleen binnen de TEE verwerkt.| **security_level=3**: Het belangrijkste materiaal en crypto-bewerkingen moeten worden uitgevoerd binnen een tee met hardwareondersteuning. |
+| **Beveiligingsniveau 3**: Heeft geen TEE op het apparaat. Er kunnen passende maatregelen worden genomen om de cryptografische informatie en gedecodeerde inhoud op het hostbesturingssysteem te beschermen. Een Level 3-implementatie kan ook een cryptografische hardware-engine bevatten, maar dat verbetert alleen de prestaties, niet de beveiliging. | **security_level=2**: Software crypto en een versluierde decoder zijn vereist.<br/><br/>**security_level=1**: Software-based white-box crypto is vereist.|
+
+#### <a name="why-does-content-download-take-so-long"></a>Waarom duurt het downloaden van inhoud zo lang?
+
+Er zijn twee manieren om de downloadsnelheid te verbeteren:
+
+* Schakel CDN in, zodat eindgebruikers eerder cdn raken in plaats van origin/streaming endpoint voor het downloaden van inhoud. Als de gebruiker streaming eindpunt raakt, wordt elk HLS-segment of DASH-fragment dynamisch verpakt en versleuteld. Hoewel deze latentie is in milliseconde schaal voor elk segment / fragment, wanneer u een uur lang video, de geaccumuleerde latentie kan groot zijn waardoor langere download.
+* Geef eindgebruikers de mogelijkheid om lagen en audiotracks van videokwaliteit selectief te downloaden in plaats van alle inhoud. Voor de offline modus heeft het geen zin om alle kwaliteitslagen te downloaden. Er zijn twee manieren om dit te bereiken:
+
+   * Client gecontroleerd: ofwel speler app automatisch selecteert of gebruiker selecteert video kwaliteit laag en audio tracks te downloaden;
+   * Servicegestuurd: men kan de Dynamic Manifest-functie in Azure Media Services gebruiken om een (globaal) filter te maken, dat HLS-afspeellijst of DASH MPD beperkt tot één laag met videokwaliteit en geselecteerde audiotracks. Dan is de download URL gepresenteerd aan eindgebruikers zal dit filter bevatten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

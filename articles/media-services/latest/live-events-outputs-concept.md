@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: e6f2ad2c5c30e3c75e8d3588e386ea14e8e3350b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a00f7c0ec76510cc521966acf98b7250e723697
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065947"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985895"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Live-evenementen en live-uitgangen in mediaservices
 
@@ -112,8 +112,11 @@ U kunt niet-vanity-URL's en vanity-URL's gebruiken.
 * Url van ijdelheid
 
     De vanity-modus heeft de voorkeur van grote media-omroepen die gebruik maken van hardware-broadcast-encoders en hun encoders niet opnieuw willen configureren wanneer ze het Live Event starten. Ze willen een voorspellende URL, die in de loop van de tijd niet verandert.
+    
+    > [!NOTE]
+    > In de Azure-portal wordt de ijdelheids-URL "*Persistent input URL*" genoemd.
 
-    Als u deze modus `vanityUrl` `true` wilt opgeven, stelt `false`u in op de tijd van het maken (standaard is ). Je moet ook je eigen`LiveEventInput.accessToken`toegangstoken () doorgeven bij het maken van de tijd. U geeft de tokenwaarde op om een willekeurig token in de URL te vermijden. Het toegangstoken moet een geldige GUID-tekenreeks zijn (met of zonder de koppeltekens). Zodra de modus is ingesteld, kan deze niet meer worden bijgewerkt.
+    Als u deze modus in `vanityUrl` `true` de API wilt `false`opgeven, stelt u in op de tijd van het maken (standaard is ). Je moet ook je eigen`LiveEventInput.accessToken`toegangstoken () doorgeven bij het maken van de tijd. U geeft de tokenwaarde op om een willekeurig token in de URL te vermijden. Het toegangstoken moet een geldige GUID-tekenreeks zijn (met of zonder de koppeltekens). Zodra de modus is ingesteld, kan deze niet meer worden bijgewerkt.
 
     Het toegangstoken moet uniek zijn in uw datacenter. Als uw app een ijdelheids-URL moet gebruiken, wordt het aanbevolen om altijd een nieuwe GUID-instantie voor uw toegangstoken te maken (in plaats van bestaande GUID opnieuw te gebruiken).
 

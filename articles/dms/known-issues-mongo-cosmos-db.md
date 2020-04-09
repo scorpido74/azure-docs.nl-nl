@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 194da036260a78b27748dfc7f755212ab4f30b1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae5d5f2d282c546f5172ca1c8cb0e420d3b6e96b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78256037"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878048"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Bekende problemen/migratiebeperkingen met migraties van MongoDB naar Azure Cosmos DB's API voor MongoDB
 
@@ -45,7 +45,7 @@ Bekende problemen en beperkingen in verband met migraties van MongoDB naar Cosmo
 
 | Oorzaak         | Oplossing |
 | ------------- | ------------- |
-| U probeert te migreren naar Azure Cosmos DB vanuit een niet-ondersteunde versie van MongoDB. | Wanneer nieuwe versies van MongoDB worden uitgebracht, worden ze getest om compatibiliteit met azure databasemigratieservice te garanderen en wordt de service periodiek bijgewerkt om de nieuwste versie(s) te accepteren. Als er onmiddellijk moet worden gemigreerd, u als tijdelijke oplossing de databases/verzamelingen exporteren naar Azure Storage en het punt waarop de bron naar de resulterende dump gaat. Maak de SAS op de blobcontainer in Storage Explorer en gebruik de URL met containerSAS-info als verbindingstekenreeks voor brondetails.<br><br> |
+| U probeert te migreren naar Azure Cosmos DB vanuit een niet-ondersteunde versie van MongoDB. | Wanneer nieuwe versies van MongoDB worden uitgebracht, worden ze getest om compatibiliteit met azure databasemigratieservice te garanderen en wordt de service periodiek bijgewerkt om de nieuwste versie(s) te accepteren. Als er onmiddellijk moet worden gemigreerd, u als tijdelijke oplossing de databases/verzamelingen exporteren naar Azure Storage en de bron vervolgens naar de resulterende dump leiden. Maak de SAS op de blobcontainer in Storage Explorer en gebruik de URL met containerSAS-info als verbindingstekenreeks voor brondetails.<br><br> |
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,12 +4,12 @@ description: Azure Blockchain Service-transactieknooppunten configureren
 ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
-ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252257"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876926"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Knooppunten voor Azure Blockchain-servicetransacties configureren
 
@@ -17,7 +17,7 @@ Transactieknooppunten worden gebruikt om blockchain-transacties naar Azure Block
 
 Ga als instellen voor de standaardgegevens van het transactieknooppunt:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Navigeer naar uw Azure Blockchain Service-lid. Selecteer **Transactieknooppunten**.
 
     ![Standaardtransactieknooppunt selecteren](./media/configure-transaction-nodes/nodes.png)
@@ -54,7 +54,7 @@ Ga als lid van het eindpunt van een transactieknooppunt als voorbeeld naar de be
 
     ![Eindpunten](./media/configure-transaction-nodes/endpoints.png)
 
-Eindpunten voor transactieknooppunt zijn veilig en vereisen verificatie. U verbinding maken met een transactieeindpunt met Azure AD-verificatie, HTTPS-basisverificatie en een toegangssleutel via HTTPS of Websocket via SSL gebruiken.
+Eindpunten voor transactieknooppunt zijn veilig en vereisen verificatie. U verbinding maken met een transactieeindpunt met Azure AD-verificatie, HTTPS-basisverificatie en een toegangssleutel via HTTPS of Websocket via TLS gebruiken.
 
 ### <a name="azure-active-directory-access-control"></a>Azure Active Directory-toegangsbeheer
 

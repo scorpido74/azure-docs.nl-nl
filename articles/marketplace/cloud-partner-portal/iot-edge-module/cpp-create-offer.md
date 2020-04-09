@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 112c2ba831ab27faaca755079e9d20e2aebfcf9f
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ab40a0e90bee8f034d811aac2781192359cbc109
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744393"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981746"
 ---
 # <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Maak een nieuwe IoT Edge-modulemet de Cloud Partner Portal
 
 >[!Important]
->Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
 
 In dit artikel wordt beschreven hoe u een IoT Edge-module maken en publiceren, vermelding voor de Azure Marketplace. Elke aanbieding wordt weergegeven als een eigen entiteit in Azure Marketplace en is gekoppeld aan een of meer SKU's.  Een IoT Edge-moduleaanbod bestaat uit de volgende groeperingen van activa en ondersteunende services:
 

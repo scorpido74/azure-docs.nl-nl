@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 668b72fa89916de6d2aa5971543b0ec085de8263
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8264e78d938d91782c45697cc226148adadadb14
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530679"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985827"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure Database voor MariaDB
 Azure Database voor MariaDB ondersteunt het verbinden van uw Azure Database voor MariaDB-server met clienttoepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
@@ -101,9 +101,21 @@ client = Mysql2::Client.new(
         :username => 'myadmin@mydemoserver',      
         :password => 'yourpassword',    
         :database => 'quickstartdb',
-        :ssl_ca => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
+        :sslca => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
+        :ssl_mode => 'required'
     )
 ```
+#### <a name="ruby-on-rails"></a>Ruby on Rails
+```ruby
+default: &default
+  adapter: mysql2
+  username: username@mydemoserver
+  password: yourpassword
+  host: mydemoserver.mariadb.database.azure.com
+  sslca: BaltimoreCyberTrustRoot.crt.pem
+  sslverify: true
+```
+
 ### <a name="golang"></a>Golang
 ```go
 rootCertPool := x509.NewCertPool()

@@ -13,143 +13,128 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
-ms.openlocfilehash: b87107545761e10c6fb648e54064fbafbdbacd52
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: e00b6dd5af1cb489aee9e8b4c9f3337eb02e4b14
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546010"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878099"
 ---
 # <a name="classroom-lab-setup-guide"></a>Handleiding voor het instellen van klassikale laboratorium
 
-Het proces voor het publiceren van een lab aan uw studenten kan enkele uren duren, afhankelijk van het aantal virtuele machines (VM's) dat in uw lab wordt gemaakt.  Je moet jezelf ten minste een dag om het opzetten van een lab om ervoor te zorgen dat het goed werkt en om voldoende tijd om studenten 'VM's te publiceren.
+Het proces voor het publiceren van een lab aan uw studenten kan enkele uren duren, afhankelijk van het aantal virtuele machines (VM's) dat in uw lab wordt gemaakt. Laat ten minste een dag om het opzetten van een lab, om ervoor te zorgen dat het goed werkt en om voldoende tijd om studenten 'VM's te publiceren.
 
-## <a name="understand-your-classs-lab-requirements"></a>Begrijp de labvereisten van uw klas
+## <a name="understand-the-lab-requirements-of-your-class"></a>Inzicht in de labvereisten van uw klas
 
-Voordat u een nieuw lab instelt, moet u rekening houden met de volgende vragen:
+Voordat u een nieuw lab instelt, moet u de volgende vragen overwegen.
 
-**Welke softwarevereisten heeft de klas?**
+### <a name="what-software-requirements-does-the-class-have"></a>Welke softwarevereisten heeft de klas?
 
-Op basis van de leerdoelstellingen van uw klas moet u beslissen welk besturingssysteem, toepassingen, tools, enz.   Als u lab-VM's wilt instellen, hebt u drie opties:
+Bepaal op basis van de leerdoelstellingen van uw klas welk besturingssysteem, toepassingen en hulpprogramma's op de VM's van het lab moeten worden geïnstalleerd. Als u lab-VM's wilt instellen, hebt u drie opties:
 
-- **Gebruik een Azure Marketplace-afbeelding** : Marketplace biedt honderden afbeeldingen die u gebruiken bij het maken van een lab.  Voor sommige klassen kan een marktplaatsafbeelding al alles bevatten wat u nodig hebt voor uw klas.
+- **Gebruik een Azure Marketplace-afbeelding:** Azure Marketplace biedt honderden afbeeldingen die u gebruiken wanneer u een lab maakt. Voor sommige klassen bevat een van deze afbeeldingen mogelijk al alles wat u nodig hebt voor uw klas.
 
-- **Een nieuwe aangepaste afbeelding maken** - U uw eigen aangepaste afbeelding maken door een marketplace-afbeelding als uitgangspunt te gebruiken en deze aan te werken door extra software te installeren, configuratiewijzigingen aan te brengen, enz.
+- **Een nieuwe aangepaste afbeelding maken:** u uw eigen aangepaste afbeelding maken door een Azure Marketplace-afbeelding als uitgangspunt te gebruiken en deze aan te werken door extra software te installeren en configuratiewijzigingen aan te brengen.
 
-- **Een bestaande aangepaste afbeelding gebruiken** : u bestaande aangepaste afbeeldingen die u eerder hebt gemaakt of die zijn gemaakt door andere beheerders of docenten op uw school, opnieuw gebruiken. Dit vereist dat uw beheerders een gedeelde afbeeldingsgalerie hebben geconfigureerd, een opslagplaats voor het opslaan van aangepaste afbeeldingen.
+- **Gebruik een bestaande aangepaste afbeelding:** u bestaande aangepaste afbeeldingen die u eerder hebt gemaakt of die zijn gemaakt door andere beheerders of docenten op uw school, opnieuw gebruiken. Dit vereist dat uw beheerders een gedeelde afbeeldingsgalerie hebben geconfigureerd, een opslagplaats voor het opslaan van aangepaste afbeeldingen.
 
 > [!NOTE]
-> Uw beheerders zijn verantwoordelijk voor het inschakelen van Marketplace en aangepaste afbeeldingen, zodat u ze gebruiken; u moet coördineren met uw IT-afdeling om ervoor te zorgen dat afbeeldingen die u nodig hebt, zijn ingeschakeld.  Aangepaste afbeeldingen die u maakt, worden automatisch ingeschakeld voor gebruik binnen laboratoria die u bezit.
+> Uw beheerders zijn verantwoordelijk voor het inschakelen van Azure Marketplace-afbeeldingen en aangepaste afbeeldingen, zodat u ze gebruiken. Coördineer met uw IT-afdeling om ervoor te zorgen dat afbeeldingen die u nodig hebt, zijn ingeschakeld. Aangepaste afbeeldingen die u maakt, worden automatisch ingeschakeld voor gebruik binnen laboratoria die u bezit.
 
-**Welke hardwarevereisten heeft de klas?**
+### <a name="what-hardware-requirements-does-the-class-have"></a>Welke hardwarevereisten heeft de klas?
 
-Er zijn verschillende rekengroottes waaruit u kiezen, waaronder:
+Er zijn verschillende rekengroottes waaruit u kiezen:
 
-- Geneste virtualisatieformaten, zodat u studenten toegang geven tot een VM die meerdere geneste VM's kan hosten; Deze rekengrootte wordt bijvoorbeeld vaak gebruikt voor netwerkcursussen.
+- Geneste virtualisatieformaten, zodat u studenten toegang geven tot een VM die meerdere geneste VM's kan hosten. U deze rekengrootte bijvoorbeeld gebruiken voor netwerkcursussen.
 
-- GPU-formaten zodat uw studenten computerintensieve soorten toepassingen kunnen gebruiken, zoals voor kunstmatige intelligentie en machine learning.
+- GPU-formaten, zodat uw studenten computerintensieve soorten toepassingen kunnen gebruiken. Deze keuze kan bijvoorbeeld geschikt zijn voor kunstmatige intelligentie en machine learning.
 
 Raadpleeg de handleiding voor [VM-grootte](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#vm-sizing) om de volledige lijst met beschikbare rekenformaten te bekijken.
 
 > [!NOTE]
-> Afhankelijk van de regio waarin uw lab wordt gemaakt, zijn er mogelijk minder rekengroottes beschikbaar, omdat dit per regio verschilt.  Onze algemene aanbeveling is om de kleinste rekengrootte te selecteren die het dichtst bij uw behoeften ligt.  Met Azure Lab Services u later een nieuw lab instellen met een andere rekencapaciteit als dat nodig is.
+> Afhankelijk van de regio van uw lab, ziet u mogelijk minder rekengroottes beschikbaar, omdat dit per regio verschilt. Over het algemeen moet u de kleinste rekengrootte selecteren die het dichtst bij uw behoeften ligt. Met Azure Lab Services u later, indien nodig, een nieuw lab instellen met een andere rekencapaciteit.
 
-**Welke afhankelijkheden heeft de klasse van externe Azure- of netwerkbronnen?**
+### <a name="what-dependencies-does-the-class-have-on-external-azure-or-network-resources"></a>Welke afhankelijkheden heeft de klasse van externe Azure- of netwerkbronnen?
 
-Als uw lab VM's externe bronnen moeten gebruiken, zoals een database, bestandsshare, licentieserver, enz.
+Als uw lab-VM's externe bronnen moeten gebruiken, zoals een database, bestandsshare of licentieserver, coördineert u met uw beheerders om ervoor te zorgen dat uw lab toegang heeft tot deze bronnen.
 
-Voor toegang tot Azure-bronnen die *niet* zijn beveiligd door een virtueel netwerk, u deze bronnen openen via het openbare internet zonder extra configuratie door uw beheerders.
+Voor toegang tot Azure-bronnen die *niet* zijn beveiligd door een virtueel netwerk, hoeft u geen aanvullende configuratie door uw beheerders te zoeken. U toegang krijgen tot deze bronnen via het openbare internet.
 
 > [!NOTE]
-> U moet overwegen of u de afhankelijkheid van uw lab tot externe bronnen verminderen door de bron rechtstreeks op de VM te verstrekken.  Als u bijvoorbeeld niet meer nodig hebt om gegevens uit een externe database te lezen, u de database rechtstreeks op de vm installeren.  
+> U moet overwegen of u de afhankelijkheid van uw lab tot externe bronnen verminderen door de bron rechtstreeks op de VM te verstrekken. Om bijvoorbeeld gegevens uit een externe database te hoeven lezen, u de database rechtstreeks op de VM installeren.  
 
-**Hoe worden de kosten onder controle?**
+### <a name="how-will-costs-be-controlled"></a>Hoe worden de kosten onder controle?
 
-Lab Services maakt gebruik van een pay-as-you-go-prijsmodel, wat betekent dat u alleen betaalt voor de tijd dat een lab-VM wordt uitgevoerd.  Als u de kosten wilt beheersen, hebt u drie opties die doorgaans in combinatie met elkaar worden gebruikt:
+Lab Services maakt gebruik van een pay-as-you-go-prijsmodel, wat betekent dat u alleen betaalt voor de tijd dat een lab-VM wordt uitgevoerd. Als u de kosten wilt beheersen, hebt u drie opties die doorgaans in combinatie met elkaar worden gebruikt:
 
-- **Schema** - Met een schema u automatisch bepalen wanneer de VM's van uw labs worden gestart en afgesloten.
-- **Quotum** : het quotum bepaalt het aantal uren dat studenten toegang hebben tot een virtuele machine buiten de geplande uren.  Als het quotum wordt bereikt terwijl een student het gebruikt, wordt de vm automatisch afgesloten en kan de student de vm niet opnieuw starten, tenzij het quotum wordt verhoogd.
-- **Automatisch afsluiten** - Wanneer ingeschakeld, zorgt de instelling voor automatisch afsluiten ervoor dat Windows VM's na een bepaalde tijd automatisch worden afgesloten zodra een student de verbinding met zijn RDP-sessie heeft verbroken.  Deze instelling is standaard uitgeschakeld.  
+- **Planning:** Met een planning u automatisch bepalen wanneer de VM's van uw labs worden gestart en afgesloten.
+- **Quotum:** het quotum bepaalt het aantal uren dat studenten toegang hebben tot een virtuele machine buiten de geplande uren. Als het quotum wordt bereikt terwijl een student het gebruikt, wordt de vm automatisch afgesloten. De student kan de vm niet opnieuw starten, tenzij het quotum wordt verhoogd.
+- **Automatisch afsluiten:** Wanneer ingeschakeld, zorgt de instelling voor automatisch afsluiten ervoor dat Windows VM's na een bepaalde tijd automatisch worden afgesloten, nadat een student de verbinding heeft verbroken met een RDP-sessie (Remote Desktop Protocol). Deze instelling is standaard uitgeschakeld.  
 
     > [!NOTE]
     > Deze instelling bestaat momenteel alleen voor Windows.
 
-**Hoe zullen studenten hun werk redden?**
+### <a name="how-will-students-save-their-work"></a>Hoe zullen studenten hun werk redden?
 
-Studenten krijgen elk hun eigen VM toegewezen die aan hen is toegewezen voor de levensduur van het lab.  Ze kunnen ervoor kiezen om:
+Studenten krijgen elk hun eigen VM toegewezen, die aan hen is toegewezen voor de levensduur van het lab. Ze kunnen ervoor kiezen om:
 
 - Sla rechtstreeks op de VM.
-- Opslaan op een externe locatie, zoals OneDrive, GitHub, enz.
+- Opslaan op een externe locatie, zoals OneDrive of GitHub.
 
-Als u OneDrive wilt gebruiken, u ervoor kiezen dit automatisch te configureren voor studenten op hun lab-VM's.  Aanvullende informatie hierover vindt u hieronder.
+Het is mogelijk om OneDrive automatisch te configureren voor studenten op hun lab VM's.
 
 > [!NOTE]
-> Om ervoor te zorgen dat uw studenten nog steeds toegang hebben tot hun opgeslagen werk buiten het lab, waaronder na afloop van de les, raden we studenten aan hun werk op te slaan in een externe opslagplaats.
+> Om ervoor te zorgen dat uw studenten toegang hebben tot hun opgeslagen werk buiten het lab en nadat de les is afgelopen, raden we studenten aan hun werk op te slaan in een externe opslagplaats.
 
-**Hoe maken studenten verbinding met hun VM?**
+### <a name="how-will-students-connect-to-their-vm"></a>Hoe maken studenten verbinding met hun VM?
 
-Voor RDP naar Windows VM's raden we studenten aan [microsoft Remote Desktop-client te](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)gebruiken.  De Extern bureaublad-client ondersteunt Macs, Chromebooks en Windows.
+Voor RDP naar Windows VM's raden we studenten aan de [Microsoft Remote Desktop-client te](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)gebruiken. De Extern bureaublad-client ondersteunt Macs, Chromebooks en Windows.
 
-Voor Linux VM's kunnen studenten SSH of RDP gebruiken.   Om verbinding te maken via RDP, bent u verantwoordelijk voor het installeren en configureren van de benodigde RDP- en GUI-pakketten.  Meer details hierover vindt u hieronder.
+Voor Linux VM's kunnen studenten SSH of RDP gebruiken. Als u de studenten verbinding wilt laten maken met RDP, moet u de benodigde RDP- en GUI-pakketten installeren en configureren.
 
 ## <a name="set-up-your-lab"></a>Uw lab instellen
 
-Zodra u de vereisten voor het lab van uw klas begrijpt, bent u klaar om het op te zetten.  Volg de links in deze sectie om te zien hoe u uw lab instelt.
+Nadat u de vereisten voor het lab van uw klas hebt begrepen, bent u klaar om het op te zetten. Volg de links in deze sectie om te zien hoe u uw lab instelt.
 
-1. **Een lab maken**
-
-   Raadpleeg de zelfstudie over [het maken van een klaslokaallab](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#create-a-classroom-lab) voor instructies.
+1. **Maak een lab.** Raadpleeg de zelfstudie over [het maken van een klaslokaallab](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#create-a-classroom-lab) voor instructies.
 
     > [!NOTE]
-    > Als uw klas geneste virtualisatie vereist, raadpleegt u stappen in de handleiding die [geneste virtualisatie inschakelt.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-nested-virtualization-template-vm)
+    > Als uw klas geneste virtualisatie vereist, raadpleegt u de stappen voor [het inschakelen van geneste virtualisatie.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-nested-virtualization-template-vm)
 
-1. **Afbeeldingen aanpassen en vm's van labv's publiceren**
-
-    Als u afbeeldingen wilt aanpassen en VM's in uw lab wilt publiceren, maakt u verbinding met een speciale VM, de sjabloon-VM; raadpleeg de volgende stappen:
+1. **Afbeeldingen aanpassen en laboratorium-VM's publiceren.** Maak verbinding met een speciale VM genaamd de sjabloon-VM. Bekijk de stappen in de volgende hulplijnen:
     - [Een sjabloon-vm maken en beheren](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#publish-the-template-vm)
-    - [Een gedeelde afbeeldingsgalerie gebruiken](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-shared-image-gallery)
+    - [Een gedeelde installatiekopiegalerie gebruiken](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-shared-image-gallery)
 
     > [!NOTE]
-    > Als u Windows gebruikt, moet u ook verwijzen naar instructies in de handleiding voor [het voorbereiden van een Windows-sjabloonVM.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-prepare-windows-template)  Deze instructies bevatten stappen voor het instellen van OneDrive en Office voor uw studenten om te gebruiken.
+    > Als u Windows gebruikt, ziet u ook de instructies bij [het voorbereiden van een Windows-sjabloon-VM.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-prepare-windows-template) Deze instructies bevatten stappen voor het instellen van OneDrive en Office voor uw studenten om te gebruiken.
 
-1. **VM-pool en -capaciteit beheren**
+1. **Vm-pool en -capaciteit beheren.** U de VM-capaciteit eenvoudig op- of neerschalen, zoals nodig door uw klas. Houd er rekening mee dat het verhogen van de VM-capaciteit enkele uren kan duren, omdat dit het instellen van nieuwe VM's inhoudt. Bekijk de stappen in [het instellen en beheren van een VM-groep.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-set-virtual-machine-passwords)
 
-   U de VM-capaciteit eenvoudig op- of neerschalen als dat nodig is voor uw klas.  Houd er rekening mee dat het verhogen van de VM-capaciteit enkele uren kan duren, omdat dit het instellen van nieuwe VM's inhoudt.  Raadpleeg stappen in de handleiding voor [het instellen en beheren van een VM-groep.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-set-virtual-machine-passwords)
-
-1. **Labgebruikers toevoegen en beheren**
-
-   Als u gebruikers aan uw lab wilt toevoegen, raadpleegt u stappen in de volgende zelfstudies:
+1. **Labgebruikers toevoegen en beheren.** Als u gebruikers aan uw lab wilt toevoegen, raadpleegt u stappen in de volgende zelfstudies:
    - [Gebruikers toevoegen aan het lab](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#add-users-to-the-lab)
    - [Uitnodigingen verzenden naar gebruikers](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#send-invitation-emails-to-users)
 
-    Raadpleeg ook het volgende artikel voor informatie over de typen accounts die studenten kunnen gebruiken:
-    - [Studentenaccounts](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#student-accounts)
+    Zie [Studentenaccounts](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#student-accounts)voor informatie over de typen accounts die studenten kunnen gebruiken.
   
-1. **Kostenregelaars instellen**
-
-    Als u de kosten van uw lab wilt beheren, stelt u schema's, quota's en automatische afsluiting in. raadpleeg de instructies in de volgende tutorials:
+1. **Kostenregelaars instellen.** Als u de kosten van uw lab wilt beheren, stelt u schema's, quota's en automatische afsluiting in. Zie de volgende zelfstudies:
 
    - [Een schema instellen](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
         > [!NOTE]
-        > Afhankelijk van het type besturingssysteem dat u hebt geïnstalleerd, kan het enkele minuten duren voordat een VIRTUELE V.D.  Om ervoor te zorgen dat een lab-VM klaar is voor gebruik tijdens uw geplande uren, raden we u aan vm's 30 minuten van tevoren te starten om ervoor te zorgen dat VM's worden uitgevoerd en klaar voor gebruik.
+        > Afhankelijk van het type besturingssysteem dat u hebt geïnstalleerd, kan het enkele minuten duren voordat een VM is gestart. Om ervoor te zorgen dat een lab-VM klaar is voor gebruik tijdens uw geplande uren, raden we u aan vm's 30 minuten van tevoren te starten.
 
    - [Quota instellen voor gebruikers](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) en [extra quota instellen voor een specifieke gebruiker](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users)
   
    - [De functie Automatisch afsluiten wanneer de verbinding is verbroken inschakelen](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 
         > [!NOTE]
-        > Schema's, quota's en automatische afsluiting zijn *niet* van toepassing op de sjabloon-vm.  Als gevolg hiervan moet u ervoor zorgen dat u de sjabloon-vm afsluit wanneer deze niet wordt gebruikt, anders blijft deze kosten maken.  Wanneer u een lab maakt, wordt de sjabloon-VM standaard automatisch gestart, dus u wilt ervoor zorgen dat u het opzetten van het lab onmiddellijk hebt voltooid en de sjabloon-VM afsluit.
+        > Schema's, quota's en automatische afsluiting zijn niet van toepassing op de sjabloon-vm. Als gevolg hiervan moet u ervoor zorgen dat u de sjabloon-vm afsluit wanneer deze niet wordt gebruikt. Anders blijft het kosten met zich meebrengen. Wanneer u een lab maakt, wordt de sjabloon-VM standaard ook automatisch gestart. Zorg ervoor dat u het opzetten van het lab onmiddellijk hebt voltooid en de sjabloon-vm afsluit.
 
-1. **Dashboard gebruiken**
-
-    Raadpleeg de handleiding voor [het gebruik van het dashboard van het lab](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard) voor instructies.
+1. **Gebruik het dashboard.** Zie voor instructies [het dashboard van het lab gebruiken.](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard)
 
     > [!NOTE]
-    > De geschatte kosten in het dashboard zijn de maximale kosten die u verwachten voor studenten die het lab gebruiken.  Er worden bijvoorbeeld *geen* kosten in rekening gebracht voor ongebruikte quotumuren door je studenten.  De geschatte kosten weerspiegelen *geen* kosten voor het gebruik van de sjabloon-VM of de gedeelde afbeeldingsgalerie.
+    > De geschatte kosten in het dashboard zijn de maximale kosten die u verwachten voor studenten die het lab gebruiken. Er worden bijvoorbeeld *geen* kosten in rekening gebracht voor ongebruikte quotumuren door je studenten. De geschatte kosten weerspiegelen *geen* kosten voor het gebruik van de sjabloon-VM of de gedeelde afbeeldingsgalerie.
 
 ## <a name="next-steps"></a>Volgende stappen
-
-Zie de volgende artikelen:
 
 - [Gebruik van een leslokaallab bijhouden](tutorial-track-usage.md)
   

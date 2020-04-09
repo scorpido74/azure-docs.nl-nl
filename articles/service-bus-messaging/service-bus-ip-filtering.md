@@ -11,17 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: a20882de34cb306b767959e21327180ff284e658
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24591c20ed707d9541eece0698ecd6e6b5ddee35
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475940"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878184"
 ---
 # <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>IP-firewallregels configureren voor Azure Service Bus
 Standaard zijn naamruimten van servicebus toegankelijk vanaf internet, zolang de aanvraag wordt geleverd met geldige verificatie en autorisatie. Met IP-firewall u deze verder beperken tot alleen een set IPv4-adressen of IPv4-adresbereiken in [CIDR-notatie (Classless Inter-Domain Routing).](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 
 Deze functie is handig in scenario's waarin Azure Service Bus alleen toegankelijk mag zijn vanaf bepaalde bekende sites. Met firewallregels u regels configureren om verkeer te accepteren dat afkomstig is van specifieke IPv4-adressen. Als u bijvoorbeeld Service Bus met [Azure Express Route][express-route]gebruikt, u een **firewallregel** maken om verkeer toe te staan vanaf alleen uw on-premises infrastructuur IP-adressen of adressen van een bedrijfsNAT-gateway. 
+
+> [!IMPORTANT]
+> Firewalls en virtuele netwerken worden alleen ondersteund in de **premium-laag** servicebus. Als upgraden naar de **bovenste** laag geen optie is, raden we u aan het SAS-token (Shared Access Signature) veilig te houden en te delen met alleen geautoriseerde gebruikers. Zie Verificatie en autorisatie voor informatie over [SAS-verificatie.](service-bus-authentication-and-authorization.md#shared-access-signature)
 
 ## <a name="ip-firewall-rules"></a>IP-firewallregels
 De IP-firewallregels worden toegepast op het naamruimteniveau servicebus. Daarom zijn de regels van toepassing op alle verbindingen van clients die een ondersteund protocol gebruiken. Elke verbindingspoging vanaf een IP-adres dat niet overeenkomt met een toegestane IP-regel op de naamruimte servicebus, wordt afgewezen als ongeautoriseerd. In het antwoord wordt geen IP-regel vermeld. IP-filterregels worden op volgorde toegepast en de eerste regel die overeenkomt met het IP-adres bepaalt de actie Accepteren of weigeren.
@@ -44,8 +47,6 @@ In deze sectie ziet u hoe u de Azure-portal gebruiken om IP-firewallregels voor 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sjabloon gebruiken
 Deze sectie heeft een voorbeeld van Azure Resource Manager-sjabloon waarmee een virtueel netwerk en een firewallregel worden gemaakt.
 
-> [!IMPORTANT]
-> Firewalls en virtuele netwerken worden alleen ondersteund in de **premium-laag** servicebus.
 
 Met de volgende sjabloon Resourcebeheer u een virtuele netwerkregel toevoegen aan een bestaande naamruimte van servicebus.
 

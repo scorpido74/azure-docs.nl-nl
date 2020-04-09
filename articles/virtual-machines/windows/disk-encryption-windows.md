@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7e96f9484c103ebe75e21705b94cf35b9e16c54f
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: b51f7a8b62d7131b7bbfc77101e60fab22e1f148
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529339"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985793"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-scenario's voor Windows-VM's
 
-Azure Disk Encryption maakt gebruik van de Externe sleutelbeveiliging van BitLocker om volumeversleuteling te bieden voor het besturingssysteem en de gegevensschijven van Virtuele Azure-machines (VM's) en is geïntegreerd met Azure Key Vault om u te helpen de schijfversleutelingssleutels en -geheimen te beheren en te beheren. Zie Azure Disk Encryption [for Windows VM's voor](disk-encryption-overview.md)een overzicht van de service.
+Azure Disk Encryption for Windows virtual machines (VM's) maakt gebruik van de Bitlocker-functie van Windows om volledige schijfversleuteling van de WindOS-schijf en gegevensschijf te bieden. Bovendien biedt het versleuteling van de kortstondige resourceschijf wanneer de parameter VolumeType Alles is.
 
-Er zijn veel scenario's voor schijfversleuteling en de stappen kunnen variëren afhankelijk van het scenario. De volgende secties behandelen de scenario's in meer detail voor Windows VM's.
+Azure Disk Encryption is [geïntegreerd met Azure Key Vault](disk-encryption-key-vault.md) om u te helpen de schijfversleutelingssleutels en -geheimen te beheren en te beheren. Zie Azure Disk Encryption [for Windows VM's voor](disk-encryption-overview.md)een overzicht van de service.
 
 U schijfversleuteling alleen toepassen op virtuele machines met [ondersteunde VM-formaten en besturingssystemen.](disk-encryption-overview.md#supported-vms-and-operating-systems) U moet ook aan de volgende voorwaarden voldoen:
 
@@ -39,9 +39,6 @@ U schijfversleuteling alleen toepassen op virtuele machines met [ondersteunde VM
 
 ## <a name="enable-encryption-on-an-existing-or-running-windows-vm"></a>Versleuteling inschakelen op een bestaande of draaiende Windows-vm
 In dit scenario u versleuteling inschakelen met behulp van de resourcebeheersjabloon, PowerShell-cmdlets of CLI-opdrachten. Zie het artikel [Azure Disk Encryption for Windows extension](../extensions/azure-disk-enc-windows.md) als u schema-informatie nodig hebt voor de extensie virtuele machine.
-
-## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a>Versleuteling inschakelen op bestaande of met IaaS Windows VM's
-U versleuteling inschakelen met behulp van een sjabloon, PowerShell-cmdlets of CLI-opdrachten. Zie het artikel [Azure Disk Encryption for Windows extension](../extensions/azure-disk-enc-windows.md) als u schema-informatie nodig hebt voor de extensie virtuele machine.
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a>Versleuteling inschakelen op bestaande of draaiende VM's met Azure PowerShell 
 Gebruik de cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) om versleuteling in te schakelen op een met iaas-virtuele machine in Azure. 

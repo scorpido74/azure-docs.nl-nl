@@ -8,16 +8,22 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f3d6580b738a77de9654de0df9b4ce1120fc6eb
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: ae3743530440c9df9094a0b9784922d2d6a3dfdf
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584041"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985402"
 ---
-# <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Veelgestelde vragen over Azure Disk Encryption for IaaS VMs
+# <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Veelgestelde vragen over Azure Disk Encryption voor Virtuele Linux-machines
 
-In dit artikel vindt u antwoorden op veelgestelde vragen (FAQ) over Azure Disk Encryption for Linux VM's. Zie [overzicht azure disk-encryptie](disk-encryption-overview.md)voor meer informatie over deze service.
+In dit artikel vindt u antwoorden op veelgestelde vragen (FAQ) over Azure Disk Encryption for Linux virtual machines (VM's). Zie [overzicht azure disk-encryptie](disk-encryption-overview.md)voor meer informatie over deze service.
+
+## <a name="what-is-azure-disk-encryption-for-linux-vms"></a>Wat is Azure Disk Encryption voor Linux VM's?
+
+Azure Disk Encryption for Linux VM's maakt gebruik van de dm-crypt-functie van Linux om volledige schijfversleuteling van de OS-schijf* en gegevensschijven te bieden. Bovendien biedt het versleuteling van de kortstondige resourceschijf bij het gebruik van de [functie EncryptFormatAll.](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms) De inhoud stroomt versleuteld van de VM naar de backend opslag. Hierdoor wordt end-to-end-encryptie voorzien van een door de klant beheerde sleutel.
+ 
+Zie [ondersteunde VM's en besturingssystemen](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
 ## <a name="where-is-azure-disk-encryption-in-general-availability-ga"></a>Waar is Azure Disk Encryption in algemene beschikbaarheid (GA)?
 
@@ -48,6 +54,20 @@ Nadat u het besturingssysteemvolume hebt versleuteld, wordt het uitschakelen van
 ## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Kan ik een niet-gemonteerd volume versleutelen met Azure Disk Encryption?
 
 Nee, Azure Disk Encryption versleutelt alleen gemonteerde volumes.
+
+## <a name="what-is-storage-server-side-encryption"></a>Wat is storage server-side encryptie?
+
+Versleuteling aan de opslagserver versleutelt azure-beheerde schijven in Azure Storage. Beheerde schijven worden standaard versleuteld met server-side encryptie met een platformbeheerde sleutel (vanaf 10 juni 2017). U versleuteling van beheerde schijven beheren met uw eigen sleutels door een door de klant beheerde sleutel op te geven. Zie voor meer informatie: [Server-side encryptie van door Azure beheerde schijven](disk-encryption.md).
+ 
+## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Waarin verschilt Azure Disk Encryption van Storage server-side encryptie met door de klant beheerde sleutel en wanneer moet ik elke oplossing gebruiken?
+
+Azure Disk Encryption biedt end-to-end encryptie voor de OS-schijf, gegevensschijven en de kortstondige resourceschijf met een door de klant beheerde sleutel.
+- Als uw vereisten het versleutelen van alle bovenstaande en end-to-end-versleuteling omvatten, gebruikt u Azure Disk Encryption. 
+- Als uw vereisten bestaan uit het versleutelen van alleen gegevens in rust met door de klant beheerde sleutel, gebruikt u [serverversleuteling met door de klant beheerde sleutels.](disk-encryption.md) U een schijf niet versleutelen met zowel Azure Disk Encryption als Storage server-side encryptie met door de klant beheerde sleutels. 
+- Als uw Linux-distro niet wordt vermeld onder [ondersteunde besturingssystemen voor Azure Disk Encryption](disk-encryption-overview.md#supported-operating-systems) of als u een scenario gebruikt dat wordt genoemd in de [niet-ondersteunde scenario's voor Windows,](disk-encryption-linux.md#unsupported-scenarios)u [serverversleuteling met door de klant beheerde sleutels](disk-encryption.md)overwegen.
+- Als het beleid van uw organisatie u toestaat om inhoud in rust te versleutelen met een door Azure beheerde sleutel, is er geen actie nodig - de inhoud wordt standaard versleuteld. Voor beheerde schijven wordt de inhoud in de opslag standaard versleuteld met server-side encryptie met platformbeheerde sleutel. De sleutel wordt beheerd door de Azure Storage-service. 
+
+
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Hoe draai ik geheimen of encryptiesleutels?
 

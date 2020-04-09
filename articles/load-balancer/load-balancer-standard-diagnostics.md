@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 861961bb66adc7ed9509eab973516a964cb67492
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 1d6fa75beabdc36750525310008add9594562228
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521070"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887109"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnose van Standard Load Balancer met metrische gegevens, meldingen en status van resources
 
@@ -69,8 +69,6 @@ Ga als het gaat om de statistieken voor uw resources voor standaardlastbalansen 
 
 Zie Azure [Monitoring REST API-walkthrough](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api)voor API-richtlijnen voor het ophalen van multidimensionale metrische definities en waarden. Deze statistieken kunnen alleen via de optie 'Alle statistieken' naar een opslagaccount worden geschreven. 
 
-### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Veelvoorkomende diagnostische scenario's en aanbevolen weergaven
-
 ### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Waarschuwingen configureren voor multidimensionale statistieken ###
 
 Azure Standard Load Balancer ondersteunt eenvoudig configureerbare waarschuwingen voor multidimensionale statistieken. Configureer aangepaste drempelwaarden voor specifieke statistieken om waarschuwingen met verschillende ernstniveaus te activeren om een touchless resourcemonitoring-ervaring mogelijk te maken.
@@ -82,10 +80,11 @@ Waarschuwingen configureren:
     1.  (Optioneel) Actiegroep toevoegen voor geautomatiseerde reparatie
     1.  Toewijzen van waarschuwingsernst, naam en beschrijving die intuïtieve reactie mogelijk maakt
 
-
   >[!NOTE]
   >Het configuratievenster van de waarschuwingsvoorwaarde toont tijdreeksen voor de signaalgeschiedenis. Er is een optie om deze tijdreeks te filteren op dimensies zoals Backend IP. Dit filtert de tijdreeksgrafiek, maar **niet** de waarschuwing zelf. U geen waarschuwingen configureren voor specifieke Backend IP-adressen.
-  
+
+### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Veelvoorkomende diagnostische scenario's en aanbevolen weergaven
+
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Is het gegevenspad omhoog en beschikbaar voor mijn load balancer VIP?
 
 De statistiek VIP-beschikbaarheid beschrijft de status van het gegevenspad in de regio naar de compute host waar uw VM's zich bevinden. De statistiek is een weerspiegeling van de status van de Azure-infrastructuur. U de statistiek gebruiken om:

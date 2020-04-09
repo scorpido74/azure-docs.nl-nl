@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462442"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985249"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloze databasecomputing met Azure Cosmos DB- en Azure-functies
 
@@ -110,7 +110,7 @@ In al deze use cases, omdat de functie de app zelf heeft losgekoppeld, hoeft u n
 
 Native integratie tussen Azure Cosmos DB en Azure Functions is beschikbaar in de Azure-portal en in Visual Studio 2019.
 
-* In de Azure Functions-portal u een trigger maken. Zie [Een Azure-functietrigger voor Cosmos DB maken voor](https://aka.ms/cosmosdbtriggerportalfunc)snelstartinstructies voor snelstart in de Azure-portal.
+* In de Azure Functions-portal u een trigger maken. Zie [Een Azure-functietrigger voor Cosmos DB maken voor](../azure-functions/functions-create-cosmos-db-triggered-function.md)snelstartinstructies voor snelstart in de Azure-portal.
 * In de Azure Cosmos DB-portal u een Azure-functietrigger voor Cosmos DB toevoegen aan een bestaande Azure Function-app in dezelfde brongroep.
 * In Visual Studio 2019 u de trigger maken met behulp van de [Azure Functions Tools:](../azure-functions/functions-develop-vs.md)
 
@@ -146,6 +146,6 @@ Zie [Kiezen tussen Flow, Logic Apps, Functions en WebJobs](../azure-functions/fu
 
 Laten we nu echt Azure Cosmos DB- en Azure-functies verbinden: 
 
-* [Een Azure-functietrigger voor Cosmos DB maken in de Azure-portal](https://aka.ms/cosmosdbtriggerportalfunc)
-* [Een Azure Functions HTTP-trigger maken met een Azure Cosmos DB-invoerbinding](https://aka.ms/cosmosdbinputbind)
+* [Een Azure-functietrigger voor Cosmos DB maken in de Azure-portal](../azure-functions/functions-create-cosmos-db-triggered-function.md)
+* [Een Azure Functions HTTP-trigger maken met een Azure Cosmos DB-invoerbinding](../azure-functions/functions-bindings-cosmosdb.md?tabs=csharp)
 * [Azure Cosmos DB bindingen en triggers](../azure-functions/functions-bindings-cosmosdb-v2.md)

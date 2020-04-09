@@ -3,7 +3,6 @@ title: Fouten met Azure AD Connected Service (Visual Studio) diagnosticeren
 description: De active directory connected service heeft een onverenigbaar verificatietype gedetecteerd
 author: ghogen
 manager: jillfra
-ms.assetid: dd89ea63-4e45-4da1-9642-645b9309670a
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
@@ -11,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: a6ec31f0d60c7f6e3737dc4042b05a6d8bf3dd5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b39aa77ea3895a606ad34a3bc9b70dba924a23f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76699968"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886089"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Fouten diagnosticeren met de Azure Active Directory Connected Service
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 1cfee9749bf2eb30799efb05ac875843bcde6651
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fe5d245d629c731a47ca5441afd2a3388a22de4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372620"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878014"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Veelgestelde vragen voor Azure Front Door
 
@@ -34,7 +34,7 @@ Azure Front Door is een Application Delivery Network (ADN) als service, die vers
 
 ### <a name="what-features-does-azure-front-door-support"></a>Welke functies ondersteunt Azure Front Door?
 
-Azure Front Door ondersteunt dynamic site acceleration (DSA), SSL offloading and end to end SSL, Web Application Firewall, cookie-based session affinity, url path-based routing, free certificates and multiple domain management, and others. Zie Overzicht van Azure Front [Door](front-door-overview.md)voor een volledige lijst met ondersteunde functies.
+Azure Front Door ondersteunt dynamic site acceleration (DSA), TLS/SSL offloading en end-to-end TLS, Web Application Firewall, cookie-based session affinity, url path-based routing, gratis certificaten en meerdere domeinbeheer, en anderen. Zie Overzicht van Azure Front [Door](front-door-overview.md)voor een volledige lijst met ondersteunde functies.
 
 ### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Wat is het verschil tussen Azure Front Door en Azure Application Gateway?
 
@@ -46,7 +46,7 @@ De belangrijkste scenario's waarom men Application Gateway achter Front Door zou
 
 - Front Door kan alleen op pad gebaseerde load balancing uitvoeren op mondiaal niveau, maar als men het balansverkeer nog verder wil laden binnen hun virtuele netwerk (VNET), dan moeten ze Application Gateway gebruiken.
 - Aangezien Voordeur niet werkt op VM/containerniveau, kan het niet doen Connection Draining. Met Application Gateway u echter Connection Draining doen. 
-- Met een Application Gateway achter AFD kan men 100% SSL offload bereiken en alleen HTTP-aanvragen routeren binnen hun virtuele netwerk (VNET).
+- Met een Application Gateway achter AFD kan men 100% TLS/SSL offload bereiken en alleen HTTP-aanvragen routeren binnen hun virtuele netwerk (VNET).
 - Front Door en Application Gateway ondersteunen beide sessieaffiniteit. Terwijl Front Door het volgende verkeer van een gebruikerssessie naar hetzelfde cluster of backend in een bepaald gebied kan leiden, kan Application Gateway het verkeer naar dezelfde server binnen het cluster leiden.  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Kunnen we Azure Load Balancer achter voordeur implementeren?
@@ -118,7 +118,7 @@ Meer informatie over de door de [voordeur ondersteunde HTTP-headers](front-door-
 
 Een nieuwe front door creatie of updates van een bestaande Front Door duurt ongeveer 3 tot 5 minuten voor wereldwijde implementatie. Dat betekent dat in ongeveer 3 tot 5 minuten, uw Front Door configuratie zal worden ingezet in al onze POP's wereldwijd.
 
-Opmerking - Het duurt ongeveer 30 minuten voordat aangepaste SSL-certificaatupdates wereldwijd worden geïmplementeerd.
+Opmerking - Het duurt ongeveer 30 minuten voordat aangepaste TLS/SSL-certificaatupdates wereldwijd worden geïmplementeerd.
 
 Alle updates voor routes of backend pools etc. zijn naadloos en veroorzaken nul downtime (als de nieuwe configuratie juist is). Certificaatupdates zijn ook atoom en veroorzaken geen uitval, tenzij u overstapt van 'AFD Managed' naar 'Gebruik uw eigen cert' of vice versa.
 
@@ -139,7 +139,7 @@ Meer informatie over alle gedocumenteerde [time-outs en limieten voor Azure Fron
 
 Azure Front Door is een wereldwijd gedistribueerd multi-tenant platform met enorme hoeveelheden capaciteit om tegemoet te komen aan de schaalbaarheidsbehoeften van uw toepassing. Front Door wordt geleverd vanaf de rand van het wereldwijde netwerk van Microsoft en biedt wereldwijde mogelijkheden voor het balanceren van de lasten, waarmee u falen over uw hele toepassing of zelfs individuele microservices in verschillende regio's of verschillende clouds.
 
-## <a name="ssl-configuration"></a>SSL-configuratie
+## <a name="tls-configuration"></a>TLS-configuratie
 
 ### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Welke TLS-versies worden ondersteund door Azure Front Door?
 
@@ -150,12 +150,12 @@ Front Door ondersteunt TLS-versies 1.0, 1.1 en 1.2. TLS 1.3 wordt nog niet onder
 ### <a name="what-certificates-are-supported-on-azure-front-door"></a>Welke certificaten worden ondersteund op Azure Front Door?
 
 Als u het HTTPS-protocol wilt inschakelen voor het veilig leveren van inhoud op een aangepast frontdoordomein, u ervoor kiezen om een certificaat te gebruiken dat wordt beheerd door Azure Front Door of uw eigen certificaat te gebruiken.
-De voordeur beheerde optie een standaard SSL-certificaat via Digicert en opgeslagen in De Sleutelkluis van De Voordeur. Als u ervoor kiest om uw eigen certificaat te gebruiken, u een certificaat van een ondersteunde CA aan boord nemen en kan het een standaard SSL, uitgebreid validatiecertificaat of zelfs een wildcardcertificaat zijn. Zelfondertekende certificaten worden niet ondersteund. Meer informatie over [het inschakelen van HTTPS voor een aangepast domein](https://aka.ms/FrontDoorCustomDomainHTTPS).
+De voordeur beheerde optie voorziet in een standaard TLS/SSL-certificaat via Digicert en wordt opgeslagen in De Sleutelkluis van De Voordeur. Als u ervoor kiest om uw eigen certificaat te gebruiken, u een certificaat van een ondersteunde CA aan boord nemen en kan het een standaard TLS, uitgebreid validatiecertificaat of zelfs een wildcardcertificaat zijn. Zelfondertekende certificaten worden niet ondersteund. Meer informatie over [het inschakelen van HTTPS voor een aangepast domein](https://aka.ms/FrontDoorCustomDomainHTTPS).
 
 ### <a name="does-front-door-support-autorotation-of-certificates"></a>Ondersteunt Front Door autorotatie van certificaten?
 
 Voor de optie Voordeurbeheercertificaat worden de certificaten automatisch gedraaid door Voordeur. Als u een door de voordeur beheerd certificaat gebruikt en ziet dat de vervaldatum van het certificaat minder dan 60 dagen verwijderd is, dient u een ondersteuningsticket in.
-</br>Voor uw eigen aangepaste SSL-certificaat wordt autorotatie niet ondersteund. Net als bij de manier waarop het de eerste keer is ingesteld voor een bepaald aangepast domein, moet u Front Door wijzen op de juiste certificaatversie in uw Key Vault en ervoor zorgen dat de serviceprincipal voor Front Door nog steeds toegang heeft tot de Key Vault. Deze bijgewerkte certificaatimplementatiebewerking door Front Door is atoom en veroorzaakt geen productie-impact op voorwaarde dat de onderwerpnaam of SAN voor het certificaat niet verandert.
+</br>Voor uw eigen aangepaste TLS/SSL-certificaat wordt autorotatie niet ondersteund. Net als bij de manier waarop het de eerste keer is ingesteld voor een bepaald aangepast domein, moet u Front Door wijzen op de juiste certificaatversie in uw Key Vault en ervoor zorgen dat de serviceprincipal voor Front Door nog steeds toegang heeft tot de Key Vault. Deze bijgewerkte certificaatimplementatiebewerking door Front Door is atoom en veroorzaakt geen productie-impact op voorwaarde dat de onderwerpnaam of SAN voor het certificaat niet verandert.
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Wat zijn de huidige cipher suites ondersteund door Azure Front Door?
 
@@ -182,13 +182,13 @@ Hieronder volgen de huidige ciphersuites die worden ondersteund door Azure Front
 - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Kan ik SSL-beleid configureren om SSL-protocolversies te beheren?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Kan ik tls-beleid configureren om TLS-protocolversies te beheren?
 
 U een minimale TLS-versie configureren in Azure Front Door in de aangepaste domeinHTTPS-instellingen via Azure portal of de [Azure REST API.](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion) Momenteel u kiezen tussen 1.0 en 1.2.
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Kan ik Front Door configureren om alleen specifieke cijfersuites te ondersteunen?
 
-Nee, het configureren van Front Door voor specifieke cipher suites wordt niet ondersteund. U echter uw eigen aangepaste SSL-certificaat krijgen van uw Certificaatautoriteit (bijvoorbeeld Verisign, Entrust of Digicert) en specifieke cijfersuites op het certificaat hebben gemarkeerd wanneer u het hebt gegenereerd. 
+Nee, het configureren van Front Door voor specifieke cipher suites wordt niet ondersteund. U echter uw eigen aangepaste TLS/SSL-certificaat krijgen van uw Certificate Authority (bijvoorbeeld Verisign, Entrust of Digicert) en specifieke cijfersuites op het certificaat hebben gemarkeerd wanneer u het hebt gegenereerd. 
 
 ### <a name="does-front-door-support-ocsp-stapling"></a>Ondersteunt Front Door OCSP nieten?
 
@@ -196,20 +196,20 @@ Ja, OCSP-nieting wordt standaard ondersteund door Front Door en er is geen confi
 
 ### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Ondersteunt Azure Front Door ook herversleuteling van verkeer naar de backend?
 
-Ja, Azure Front Door ondersteunt SSL-offload en end-to-end SSL, waarmee het verkeer opnieuw wordt versleuteld naar de backend. In feite, aangezien de verbindingen met de backend plaatsvinden via het openbare IP, is het raadzaam dat u uw voordeur configureren om HTTPS te gebruiken als het doorsturen protocol.
+Ja, Azure Front Door ondersteunt TLS/SSL-offload en end-to-end TLS, waarmee het verkeer opnieuw wordt versleuteld naar de backend. In feite, aangezien de verbindingen met de backend plaatsvinden via het openbare IP, is het raadzaam dat u uw voordeur configureren om HTTPS te gebruiken als het doorsturen protocol.
 
 ### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Ondersteunt Front Door zelfondertekende certificaten op de backend voor HTTPS-verbinding?
 
 Nee, zelfondertekende certificaten worden niet ondersteund op Front Door en de beperking geldt voor beide:
 
 1. **Backends**: U zelfondertekende certificaten niet gebruiken wanneer u het verkeer doorstuurt als HTTPS- of HTTPS-statussondes of de cache vult voor vanaf de oorsprong voor routeringsregels met caching ingeschakeld.
-2. **Frontend**: U zelfondertekende certificaten niet gebruiken wanneer u uw eigen aangepaste SSL-certificaat gebruikt voor het inschakelen van HTTPS op uw aangepaste domein.
+2. **Frontend**: U zelfondertekende certificaten niet gebruiken wanneer u uw eigen aangepaste TLS/SSL-certificaat gebruikt voor het inschakelen van HTTPS op uw aangepaste domein.
 
 ### <a name="why-is-https-traffic-to-my-backend-failing"></a>Waarom mislukt HTTPS-verkeer naar mijn backend?
 
 Voor het hebben van succesvolle HTTPS-verbindingen met uw backend, of het nu gaat om statussondes of voor doorsturen van aanvragen, kunnen er twee redenen zijn waarom HTTPS-verkeer mogelijk mislukt:
 
-1. **Foutie naam van het certificaatonderwerp:** Voor HTTPS-verbindingen verwacht Front Door dat uw backend certificaat presenteert van een geldige CA met onderwerpnaam(en) die overeenkomt met de backendhostnaam. Als uw backendhostnaam bijvoorbeeld is `myapp-centralus.contosonews.net` ingesteld op en het certificaat dat uw back-end presenteert tijdens de SSL-handshake die noch `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` in de onderwerpnaam heeft, weigert de voordeur de verbinding en resulteert dit in een fout. 
+1. **Foutie naam van het certificaatonderwerp:** Voor HTTPS-verbindingen verwacht Front Door dat uw backend certificaat presenteert van een geldige CA met onderwerpnaam(en) die overeenkomt met de backendhostnaam. Als uw backendhostnaam bijvoorbeeld is `myapp-centralus.contosonews.net` ingesteld op en het certificaat dat uw backend `*myapp-centralus*.contosonews.net` presenteert tijdens de TLS-handshake die noch in de onderwerpnaam heeft, `myapp-centralus.contosonews.net` weigert de voordeur de verbinding en resulteert dit in een fout. 
     1. **Oplossing:** Hoewel het niet wordt aanbevolen vanuit het oogpunt van naleving, u deze fout oplossen door de naamcontrole van het certificaatvak voor uw voordeur uit te schakelen. Dit is aanwezig onder Instellingen in Azure-portal en onder BackendPoolsInstellingen in de API.
 2. **Backend hostingcertificaat van ongeldige CA:** Alleen certificaten van [geldige CA's](/azure/frontdoor/front-door-troubleshoot-allowed-ca) kunnen worden gebruikt aan de backend met Voordeur. Certificaten van interne CV's of zelfondertekende certificaten zijn niet toegestaan.
 

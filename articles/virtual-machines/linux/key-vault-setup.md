@@ -1,19 +1,19 @@
 ---
 title: Azure Key Vault instellen voor Linux VM's
 description: Key Vault instellen voor gebruik met een virtuele azure resource manager met de Azure CLI.
-author: singhkays
-manager: gwallace
+author: mimckitt
+manager: vashan
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/24/2017
-ms.author: kasing
-ms.openlocfilehash: c9659c38e349bd62f22ed0d0839d97651b1b3b66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 59b11d22f054a98fe176e4393843606bd01cc872
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944823"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879476"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Key Vault instellen voor virtuele machines met de Azure CLI
 

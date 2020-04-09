@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a22808b1d7ab2b2451f50470e8da3770d07407a5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271172"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985657"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>X. 509-beveiliging instellen in uw Azure IoT-hub
 
@@ -38,6 +38,9 @@ U een van de volgende manieren kiezen om uw certificaten te krijgen:
 * Maak uw eigen X.509-certificaten met behulp van een tool van derden, zoals [OpenSSL.](https://www.openssl.org/) Deze techniek is prima voor test- en ontwikkelingsdoeleinden. Zie [CA-certificaten voor testen beheren voor voorbeelden en zelfstudies](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) voor informatie over het genereren van CA-testcertificaten met PowerShell of Bash. De rest van deze zelfstudie maakt gebruik van test CA-certificaten die worden gegenereerd door de instructies in [Het beheren van test CA-certificaten voor voorbeelden en zelfstudies](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
 
 * Genereer een [X.509 intermediate CA-certificaat](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) dat is ondertekend door een bestaand basis-CA-certificaat en upload het naar de hub. Zodra het tussentijdse certificaat is geüpload en geverifieerd, zoals hieronder geïnstrueerd, kan het worden gebruikt in de plaats van een root CA-certificaat hieronder vermeld. Tools zoals OpenSSL[(openssl req](https://www.openssl.org/docs/man1.1.0/man1/req.html) en [openssl ca)](https://www.openssl.org/docs/man1.1.0/man1/ca.html)kunnen worden gebruikt om een tussenliggend CA-certificaat te genereren en te ondertekenen.
+
+> [!NOTE]
+> Upload de hoofdmap van derden niet als deze niet uniek voor u is, omdat andere klanten van de derde partij hun apparaten kunnen aansluiten op uw IoT-hub.
 
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>X.509 CA-certificaten registreren bij uw IoT-hub
 

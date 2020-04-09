@@ -1,5 +1,5 @@
 ---
-title: Beheer veelvoorkomende ML-modelvalkuilen met geautomatiseerde machine learning.
+title: Vermijd overfitting & onevenwichtige gegevens met AutoML
 titleSuffix: Azure Machine Learning
 description: Identificeer en beheer veelvoorkomende valkuilen van ML-modellen met de geautomatiseerde machine learning-oplossingen van Azure Machine Learning.
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 03/27/2020
-ms.openlocfilehash: e0bc1aa48dfb40ea146fa79fdfd57da841ca1404
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 04/09/2020
+ms.openlocfilehash: 76f920ad6aae68defb567a7a6623d1ffd488af5f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385530"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874854"
 ---
-# <a name="manage-ml-pitfalls-with-automated-machine-learning"></a>Ml-valkuilen beheren met geautomatiseerde machine learning
+# <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Voorkomen dat overfitting en onevenwichtige gegevens met geautomatiseerde machine learning
 
 Over-fitting en onevenwichtige gegevens zijn veel voorkomende valkuilen bij het bouwen van machine learning-modellen. Standaard biedt de geautomatiseerde machine learning van Azure Machine Learning grafieken en statistieken om u te helpen deze risico's te identificeren en implementeert u best practices om ze te beperken. 
 

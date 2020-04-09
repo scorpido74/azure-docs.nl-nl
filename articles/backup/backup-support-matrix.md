@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor Azure Backup
 description: Bevat een samenvatting van ondersteuningsinstellingen en -beperkingen voor de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: d036e527880a98d323e8de2f3a8721d7e12dbb07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 120882b15dcf9f27c280984ff6d0df31e38ebb73
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273265"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878949"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteuningsmatrix voor Azure Backup
 
@@ -116,7 +116,7 @@ Azure Backup ondersteunt versleuteling voor binnenkomende en rustgegevens.
 **Machine** | **In-transit** | **Inactief**
 --- | --- | ---
 **On-premises Windows-machines zonder DPM/MABS** | ![Ja][green] | ![Ja][green]
-**Azure VM's** | ![Ja][green] | ![Ja][green]
+**Azure-VM's** | ![Ja][green] | ![Ja][green]
 **On-premises Windows-machines of Azure VM's met DPM** | ![Ja][green] | ![Ja][green]
 **On-premises Windows-machines of Azure VM's met MABS** | ![Ja][green] | ![Ja][green]
 
@@ -135,7 +135,7 @@ Back-up ondersteunt de compressie van back-upverkeer, zoals samengevat in de vol
 
 ## <a name="retention-limits"></a>Bewaarlimieten
 
-**Instelling** | **Grenzen**
+**Instelling** | **Limieten**
 --- | ---
 **Maximale herstelpunten per beveiligde instantie (machine of werkbelasting)** | 9,999
 **Maximale verlooptijd voor een herstelpunt** | Geen limiet
@@ -151,7 +151,7 @@ Azure Backup heeft de functie Cross Region Restore toegevoegd om de beschikbaarh
 
 | Type Back-upbeheer | Ondersteund                                                    | Ondersteunde regio's |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Ja. Openbare beperkte preview ondersteund voor versleutelde VM's en VM's met minder dan 4 TB-schijven | VS - west-centraal   |
+| Azure VM               | Ja.   Ondersteund voor versleutelde VM's en VM's met minder dan 4 TB-schijven | Alle openbare Azure-regio's.  |
 | MARS-agent/on-premises | Nee                                                           | N.v.t.               |
 | SQL /SAP HANA          | Nee                                                           | N.v.t.               |
 | Afs                    | Nee                                                           | N.v.t.               |

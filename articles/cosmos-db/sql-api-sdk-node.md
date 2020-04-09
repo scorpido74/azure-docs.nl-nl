@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411271"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982885"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK voor SQL API: notities en bronnen vrijgeven
 > [!div class="op_single_selector"]
@@ -295,14 +295,14 @@ Niet altijd de meest zichtbare veranderingen, maar ze helpen ons team schip bete
 
 ### <a name=""></a><a name="1.14.0"/>1.14.0</a>
 * Voegt ondersteuning toe voor sessieconsistentie.
-* Deze SDK-versie vereist de nieuwste versie van https://aka.ms/cosmosdb-emulatorAzure Cosmos DB Emulator beschikbaar voor download van .
+* Deze SDK-versie vereist de nieuwste versie van [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator).
 
 ### <a name=""></a><a name="1.13.0"/>1.13.0</a>
 * Gesplitste kruispartitiequery's.
 * Voegt ondersteuning toe voor resourcekoppeling met voorloop- en slepende slashes (en bijbehorende tests).
 
 ### <a name=""></a><a name="1.12.2"/>1.12.2</a>
-*   npm documentatie vastgesteld.
+*    npm documentatie vastgesteld.
 
 ### <a name=""></a><a name="1.12.1"/>1.12.1</a>
 * Fixed a bug in executeStoredProcedure where documents involved had special Unicode characters (LS, PS).

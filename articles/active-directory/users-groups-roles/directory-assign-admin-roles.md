@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 02/28/2020
+ms.date: 04/07/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63e561ff1b976b3de993414607b694e621b1d536
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e097173712693754baab99912301c98ee336f64f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346949"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877912"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
 Met Azure Ad (Azure AD) u beperkte beheerders aanwijzen voor het beheren van identiteitstaken in minder bevoorrechte rollen. Beheerders kunnen worden toegewezen voor doeleinden zoals het toevoegen of wijzigen van gebruikers, het toewijzen van beheerdersrollen, het opnieuw instellen van gebruikerswachtwoorden, het beheren van gebruikerslicenties en het beheren van domeinnamen. De standaardgebruikersmachtigingen kunnen alleen worden gewijzigd in gebruikersinstellingen in Azure AD.
 
-## <a name="limit-the-use-of-global-administrator"></a>Het gebruik van globale beheerder beperken
+## <a name="limit-use-of-global-administrator"></a>Het gebruik van globale beheerder beperken
 
 Gebruikers die zijn toegewezen aan de functie Globale beheerder, kunnen elke beheerinstelling in uw Azure AD-organisatie lezen en wijzigen. De persoon die zich aanmeldt voor een Azure-abonnement krijgt standaard de globale beheerdersrol voor de Azure AD-organisatie toegewezen. Alleen globale beheerders en beheerders van bevoorrechte rollen kunnen beheerdersrollen delegeren. Om het risico voor uw bedrijf te verminderen, raden we u aan deze rol toe te wijzen aan zo min mogelijk mensen in uw organisatie.
 
@@ -70,7 +70,8 @@ Gebruikers in deze rol kunnen toepassingsregistraties maken wanneer de instellin
 
 ### <a name="authentication-administrator"></a>[Verificatiebeheerder](#authentication-administrator-permissions)
 
-Gebruikers in deze rol kunnen niet-wachtwoordreferenties instellen of resetten, wachtwoorden bijwerken, zich opnieuw registreren tegen bestaande niet-wachtwoordreferenties (bijvoorbeeld MFA of FIDO) en **de herinneringsgegevens op het apparaat intrekken** (dat mfa vraagt bij de volgende aanmelding) van gebruikers die niet-beheerders zijn of alleen de volgende rollen hebben toegewezen:
+De functie Verificatiebeheerder bevindt zich momenteel in een openbare preview. Gebruikers met deze rol kunnen niet-wachtwoordreferenties instellen of opnieuw instellen en kunnen wachtwoorden bijwerken voor alle gebruikers. Verificatiebeheerders kunnen gebruikers verplichten zich opnieuw te registreren tegen bestaande niet-wachtwoordreferenties (bijvoorbeeld MFA of FIDO) en **onthoud MFA op het apparaat**in te trekken, wat vraagt om MFA bij de volgende aanmelding van gebruikers die niet-beheerders zijn of alleen de volgende rollen hebben toegewezen:
+
 * Verificatiebeheerder
 * Directorylezers
 * Gast genodigden
@@ -113,7 +114,7 @@ De gebruiker kan beleidssleutels en -geheimen maken en beheren voor tokenversleu
 
 ### <a name="b2c-ief-policy-administrator"></a>[B2C IEF-beleidsbeheerder](#b2c-ief-policy-administrator-permissions)
 
-Gebruikers in deze rol hebben de mogelijkheid om alle aangepaste beleidsregels in Azure AD B2C te maken, te lezen, bij te werken en te verwijderen en hebben daarom volledige controle over het Identity Experience Framework in de relevante Azure AD B2C-tenant. Door beleid te bewerken, kan deze gebruiker directe federatie met externe identiteitsproviders tot stand brengen, het directoryschema wijzigen, alle inhoud voor gebruikers wijzigen (HTML, CSS, JavaScript), de vereisten wijzigen om een verificatie te voltooien, nieuwe gebruikers maken, verzenden gebruikersgegevens naar externe systemen, waaronder volledige migraties, en alle gebruikersinformatie bewerken, waaronder gevoelige velden zoals wachtwoorden en telefoonnummers. Omgekeerd kan deze rol de versleutelingssleutels niet wijzigen of de geheimen bewerken die worden gebruikt voor federatie in de tenant.
+Gebruikers in deze rol hebben de mogelijkheid om alle aangepaste beleidsregels in Azure AD B2C te maken, te lezen, bij te werken en te verwijderen en hebben daarom volledige controle over het Identity Experience Framework in de relevante Azure AD B2C-tenant. Door beleid te bewerken, kan deze gebruiker directe federatie met externe identiteitsproviders opzetten, het directoryschema wijzigen, alle gebruikersgerichte inhoud wijzigen (HTML, CSS, JavaScript), de vereisten wijzigen om een verificatie te voltooien, nieuwe gebruikers maken, gebruikersgegevens naar externe systemen sturen, inclusief volledige migraties, en alle gebruikersinformatie bewerken, waaronder gevoelige velden zoals wachtwoorden en telefoonnummers. Omgekeerd kan deze rol de versleutelingssleutels niet wijzigen of de geheimen bewerken die worden gebruikt voor federatie in de tenant.
 
 > [!IMPORTANT]
 > De B2 IEF Beleidsbeheerder is een zeer gevoelige rol die op een zeer beperkte basis moet worden toegewezen voor huurders in productie.Activiteiten van deze gebruikers moeten nauwlettend worden gecontroleerd, met name voor huurders in productie.
@@ -139,7 +140,7 @@ Gebruikers in deze rol kunnen apparaten in Azure AD in- en uitschakelen en verwi
 
 ### <a name="compliance-administrator"></a>[Beheerder voor naleving](#compliance-administrator-permissions)
 
-Gebruikers met deze rol hebben machtigingen voor het beheren van nalevingsgerelateerde functies in het Microsoft 365-compliancecenter, het Microsoft 365-beheercentrum, Azure en Office 365-beveiliging & Compliance Center. Toesdien kan ook ondersteuningstickets maken voor Azure en Microsoft 365. Meer informatie is beschikbaar bij [Over Office 365-beheerdersrollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+Gebruikers met deze rol hebben machtigingen voor het beheren van nalevingsgerelateerde functies in het Microsoft 365-compliancecenter, het Microsoft 365-beheercentrum, Azure en Office 365-beveiliging & Compliance Center. Toegewezens kunnen ook alle functies beheren in het Exchange-beheercentrum en Teams & Skype voor Bedrijven-beheercentra en ondersteuningstickets maken voor Azure en Microsoft 365. Meer informatie is beschikbaar bij [Over Office 365-beheerdersrollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 In | Kan doen
 ----- | ----------
@@ -214,7 +215,7 @@ Gebruikers met deze rol hebben algemene machtigingen binnen Microsoft Exchange O
 Deze beheerder beheert de federatie tussen Azure Active Directory-tenants en externe identiteitsproviders.Met deze rol kunnen gebruikers nieuwe identiteitsproviders toevoegen en alle beschikbare instellingen configureren (bijvoorbeeld verificatiepad, service-id, toegewezen sleutelcontainers).Deze gebruiker kan de tenant in staat stellen verificaties van externe identiteitsproviders te vertrouwen.De resulterende impact op de ervaringen van eindgebruikers is afhankelijk van het type tenant:
 
 * Azure Active Directory-tenants voor werknemers en partners: de toevoeging van een federatie (bijvoorbeeld met Gmail) heeft onmiddellijk invloed op alle gastuitnodigingen die nog niet zijn ingewisseld. Zie [Google toevoegen als identiteitsprovider voor B2B-gastgebruikers](https://docs.microsoft.com/azure/active-directory/b2b/google-federation).
-* Azure Active Directory B2C-tenants: de toevoeging van een federatie (bijvoorbeeld met Facebook of met een andere Azure AD-organisatie) heeft niet onmiddellijk invloed op eindgebruikersstromen totdat de identiteitsprovider als optie in een gebruikersstroom is toegevoegd (ook wel een ingebouwde beleid). Zie [Een Microsoft-account configureren als identiteitsprovider](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) voor een voorbeeld.Om gebruikersstromen te wijzigen, is de beperkte rol van "B2C User Flow Administrator" vereist.
+* Azure Active Directory B2C-tenants: de toevoeging van een federatie (bijvoorbeeld met Facebook of met een andere Azure AD-organisatie) heeft niet onmiddellijk invloed op eindgebruikersstromen totdat de identiteitsprovider als optie in een gebruikersstroom is toegevoegd (ook wel een ingebouwd beleid genoemd). Zie [Een Microsoft-account configureren als identiteitsprovider](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) voor een voorbeeld.Om gebruikersstromen te wijzigen, is de beperkte rol van "B2C User Flow Administrator" vereist.
 
 ### <a name="global-administrator--company-administrator"></a>[Globale beheerder / bedrijfsbeheerder](#company-administrator-permissions)
 
@@ -764,7 +765,10 @@ Kan nalevingsconfiguratie en rapporten lezen en beheren in Azure AD en Office 36
 | microsoft.azure.supportTickets/allEntiteiten/allTasks | Azure-ondersteuningstickets maken en beheren. |
 | microsoft.office365.webPortal/allEntiteiten/basic/read | Lees basiseigenschappen op alle bronnen in microsoft.office365.webPortal. |
 | microsoft.office365.complianceManager/allEntiteiten/allTasks | Alle aspecten van Office 365 Compliance Manager beheren |
+| microsoft.office365.exchange/allEntiteiten/allTasks | Beheer alle aspecten van Exchange Online. |
 | microsoft.office365.serviceHealth/allEntiteiten/allTasks | Office 365-servicestatus lezen en configureren. |
+| microsoft.office365.sharepoint/allEntiteiten/allTasks | Alle resources maken en verwijderen en standaardeigenschappen lezen en bijwerken in microsoft.office365.sharepoint. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Beheer alle aspecten van Skype voor Bedrijven Online. |
 | microsoft.office365.supportTickets/allEntiteiten/allTasks | Office 365-ondersteuningstickets maken en beheren. |
 
 ### <a name="compliance-data-administrator-permissions"></a>Machtigingen voor nalevingsgegevensbeheerder
@@ -784,7 +788,10 @@ Hiermee maakt en beheert u nalevingsinhoud.
 | microsoft.azure.supportTickets/allEntiteiten/allTasks | Azure-ondersteuningstickets maken en beheren. |
 | microsoft.office365.webPortal/allEntiteiten/basic/read | Lees basiseigenschappen op alle bronnen in microsoft.office365.webPortal. |
 | microsoft.office365.complianceManager/allEntiteiten/allTasks | Alle aspecten van Office 365 Compliance Manager beheren |
+| microsoft.office365.exchange/allEntiteiten/allTasks | Beheer alle aspecten van Exchange Online. |
 | microsoft.office365.serviceHealth/allEntiteiten/allTasks | Office 365-servicestatus lezen en configureren. |
+| microsoft.office365.sharepoint/allEntiteiten/allTasks | Alle resources maken en verwijderen en standaardeigenschappen lezen en bijwerken in microsoft.office365.sharepoint. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Beheer alle aspecten van Skype voor Bedrijven Online. |
 | microsoft.office365.supportTickets/allEntiteiten/allTasks | Office 365-ondersteuningstickets maken en beheren. |
 
 ### <a name="conditional-access-administrator-permissions"></a>Machtigingen voor beheerders van voorwaardelijke toegang
@@ -1755,8 +1762,31 @@ De volgende rollen mogen niet worden gebruikt. Ze zijn afgeschaft en worden in d
 * Postvakbeheerder
 * Deelnemen aan werkplekapparaten
 
+## <a name="roles-not-shown-in-the-portal"></a>Rollen die niet in de portal worden weergegeven
+
+Niet elke rol die door PowerShell of MS Graph API wordt geretourneerd, is zichtbaar in azure-portal. In de volgende tabel worden deze verschillen georganiseerd.
+
+API-naam | Azure-portalnaam | Opmerkingen
+-------- | ------------------- | -------------
+Company Administratoristrain opr | Globale beheerder | [Naam veranderd voor een betere duidelijkheid](directory-assign-admin-roles.md#role-template-ids)
+CRM-servicebeheerder | Dynamics 365-beheerder | [Weerspiegelt de huidige productbranding](directory-assign-admin-roles.md#role-template-ids)
+Apparaat lid worden | Afgeschaft | [Documentatie van afgeschafte rollen](directory-assign-admin-roles.md#deprecated-roles)
+Apparaatbeheerders | Afgeschaft | [Documentatie van afgeschafte rollen](directory-assign-admin-roles.md#deprecated-roles)
+Apparaatgebruikers | Afgeschaft | [Documentatie van afgeschafte rollen](directory-assign-admin-roles.md#deprecated-roles)
+Adreslijstsynchronisatieaccounts | Niet getoond omdat het niet mag worden gebruikt | [Documentatie over adreslijstsynchronisatieaccounts](directory-assign-admin-roles.md#directory-synchronization-accounts)
+Directory Schrijvers | Niet getoond omdat het niet mag worden gebruikt | [Documentatie van Directory Writers](directory-assign-admin-roles.md#directory-writers)
+Gastgebruiker | Niet weergegeven omdat het niet kan worden gebruikt  | N.v.t.
+Lync-servicebeheerder | Skype voor Bedrijven-beheerder | [Weerspiegelt de huidige productbranding](directory-assign-admin-roles.md#role-template-ids)
+Ondersteuning voor Partner Tier 1 | Niet getoond omdat het niet mag worden gebruikt | [Documentatie van Partner Tier1-ondersteuning](directory-assign-admin-roles.md#partner-tier1-support)
+Ondersteuning voor Partner Tier 2 | Niet getoond omdat het niet mag worden gebruikt | [Partner Tier2-ondersteuningsdocumentatie](directory-assign-admin-roles.md#partner-tier2-support)
+Printerbeheerder | Work in progress | Work in progress
+Printertechnicus | Work in progress | Work in progress
+Beperkte gastgebruiker | Niet weergegeven omdat het niet kan worden gebruikt | N.v.t.
+Gebruiker | Niet weergegeven omdat het niet kan worden gebruikt | N.v.t.
+Deelnemen aan werkplekapparaten | Afgeschaft | [Documentatie van afgeschafte rollen](directory-assign-admin-roles.md#deprecated-roles)
+
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Toegang beheren met RBAC en de Azure-portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie over het toewijzen van een gebruiker als beheerder van een Azure-abonnement.
-* Als u meer wilt weten over hoe de toegang tot resources wordt beheerd in Microsoft Azure, ziet u [Inzicht krijgen in toegang tot resources in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+* Zie Toegang beheren [met Azure-rollen (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) voor meer informatie over het toewijzen van een gebruiker als beheerder van een Azure-abonnement.
+* Zie [De verschillende rollen begrijpen](../../role-based-access-control/rbac-and-directory-admin-roles.md) voor meer informatie over hoe toegang tot resources wordt beheerd in Microsoft Azure
 * Zie [Hoe Azure-abonnementen worden gekoppeld aan Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md) voor meer informatie over hoe Azure Active Directory aan uw Azure-abonnement wordt gekoppeld

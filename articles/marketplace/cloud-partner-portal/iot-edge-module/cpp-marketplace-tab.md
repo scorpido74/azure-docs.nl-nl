@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 4290bad405ddab6d89cac5ef7bfd185247d41da1
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: df51a408cc47908a240ceb66bf510fe3df3ce87f
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745113"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983395"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Tabblad Marktplaats voor IoT Edge-module
 
 >[!Important]
->Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
 
 Op het tabblad **Marketplace** van de pagina **Nieuwe aanbieding** u uw potentiële klanten marketing- en verkoop- en juridische informatie en overeenkomsten bieden en leads beheren die vanuit de markt worden gegenereerd. Deze lange vorm is verdeeld in vier secties: **Overzicht**, **Marketing Artefacten,** **Lead Management**, en **Juridische**.
 

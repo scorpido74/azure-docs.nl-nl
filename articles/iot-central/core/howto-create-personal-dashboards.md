@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: db886006ff5b9adf3de0932951f6cce4958e8ebd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06225e284000d7f10f575be08cd683488abec339
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158126"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985487"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Meerdere dashboards maken en beheren
 
-Het **dashboard** is de pagina die wordt geladen wanneer u voor het eerst naar uw toepassing navigeert. Een **bouwer** in uw toepassing definieert het standaardtoepassingsdashboard voor alle gebruikers. U dit standaarddashboard vervangen door uw eigen, gepersonaliseerde applicatiedashboard. U verschillende dashboards hebben die verschillende gegevens weergeven en er tussen schakelen. 
+Het **dashboard** is de pagina die wordt geladen wanneer u voor het eerst naar uw toepassing navigeert. Een **bouwer** in uw toepassing definieert het standaardtoepassingsdashboard voor alle gebruikers. U bovendien uw eigen, gepersonaliseerde applicatiedashboard maken. U verschillende dashboards hebben die verschillende gegevens weergeven en er tussen schakelen.
 
 Als u een **beheerder** van de toepassing bent, u ook maximaal 10 dashboards op toepassingsniveau maken om te delen met andere gebruikers van de toepassing. Alleen **beheerders** hebben de mogelijkheid om dashboards op toepassingsniveau te maken, bewerken en verwijderen. 
 

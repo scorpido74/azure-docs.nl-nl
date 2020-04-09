@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 4603240a76ec72223b88853c63ed11152707201c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d74ea2b967112a794cda204cbbfcac707e1d7c4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76281288"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879459"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Roadmap naar Azure Security Center-gereedheid
 Dit document bevat een roadmap naar gereedheid die u helpt aan de slag te gaan met Azure Security Center.
@@ -37,16 +37,14 @@ Video's
 * [Overzicht van de Security Center-preventie-, detectie- en reactiemogelijkheden](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
 ## <a name="planning-and-operations"></a>Planning en bewerkingen
+
 Als u optimaal wilt profiteren van Security Center, is het belangrijk te begrijpen hoe verschillende personen of teams binnen uw organisatie de service gaan gebruiken om te voldoen aan alle vereisten voor veilig gebruik, bewaking, bestuur en reactie op incidenten.
 
 Gebruik de volgende bronnen als hulpmiddel tijdens de plannings- en bewerkingsprocessen.
 
-
 Artikel
 * [Handleiding voor planning en bewerkingvan Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 
-Video
-* [Hybrid cloud workload protection with Security Center](https://mva.microsoft.com/training-courses/hybrid-cloud-workload-protection-with-azure-security-center-18173?l=X4WqTA3jE_1106218965) (Workloadbescherming in hybride clouds met Security Center)
 
 ### <a name="onboarding-computers-to-security-center"></a>Computers voorbereiden voor Security Center
 Security Center detecteert automatisch alle Azure-abonnementen of werkruimten die niet zijn ingeschakeld voor Security Center Standard. Hiertoe behoren Azure-abonnementen die Security Center Free gebruiken en werkruimten waarvoor de Security-oplossing niet is ingeschakeld.
@@ -71,15 +69,15 @@ Artikelen
 * [Protecting Azure SQL service and data in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations) (Azure SQL-service en -gegevens beveiligen in Azure Security Center)
 
 
-Video   
+Video    
 * [Beperkende beveiligingsproblemen met Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
 
 ### <a name="security-center-for-incident-response"></a>Security Center voor reactie op incidenten
-Als u de kosten en schade wilt beperken, is het belangrijk dat u een plan hebt voor het reageren op incidenten voordat er een aanval plaatsvindt. U kunt Azure Security Center gebruiken in verschillende fasen tijdens een reactie op een incident.
+Om kosten en schade te verminderen, is het belangrijk om een incident response plan op zijn plaats voordat een aanval plaatsvindt. U kunt Azure Security Center gebruiken in verschillende fasen tijdens een reactie op een incident.
 
 Gebruik de volgende bronnen als u wilt weten hoe Security Center kan worden opgenomen in het incidentreactieproces.
 
-Video's  
+Video's    
 * [Azure Security Center in Incident Response](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Security-Center-in-Incident-Response) (Azure Security Center in incidentreacties)
 * [Respond quickly to threats with next-generation security operation, and investigation](https://youtu.be/e8iFCz5RM4g) (Snel op bedreigingen reageren met beveiligingsprocessen van een volgende generatie, en onderzoek)
 
@@ -93,7 +91,7 @@ Virtuele machines in Azure kunnen gebruikmaken van geavanceerde cloudverdediging
 
 Gebruik de volgende bronnen voor meer informatie over het gebruik van deze mogelijkheden in Security Center.
 
-Video's  
+Video's    
 * [Azure Security Center – Just-in-time VM Access](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center - Adaptieve besturingselementen voor toepassingen](https://youtu.be/wWWekI1Y9ck)
 

@@ -3,12 +3,12 @@ title: host.json-referentie voor Azure-functies 2.x
 description: Referentiedocumentatie voor het Azure Functions host.json-bestand met de v2-runtime.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3d98be2dcc351aa88b9e126c883865079e407c2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a861d500f0b8cc31b8312d6c955916ab741b649
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473367"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878240"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-verwijzing voor Azure-functies 2.x en hoger 
 
@@ -286,7 +286,7 @@ Hiermee bepaalt u het logginggedrag van de functie-app, inclusief Application In
 
 ```json
 "logging": {
-    "fileLoggingMode": "debugOnly"
+    "fileLoggingMode": "debugOnly",
     "logLevel": {
       "Function.MyFunction": "Information",
       "default": "None"

@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 555fb39836054be05102f4c28167d72016805639
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 241d90981ed9ba54d253e6c22c00f9e5a9197863
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481497"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884882"
 ---
 # <a name="how-provisioning-works"></a>Hoe inrichting werkt
 
@@ -67,7 +67,7 @@ Wanneer u de inrichting configureert voor een SaaS-toepassing, is een van de typ
 
 Voor uitgaande provisioning van Azure AD naar een SaaS-toepassing is vertrouwen op [gebruikers- of groepstoewijzingen](../manage-apps/assign-user-or-group-access-portal.md) de meest voorkomende manier om te bepalen welke gebruikers in het bereik van inrichting zijn. Omdat gebruikerstoewijzingen ook worden gebruikt voor het inschakelen van één aanmelding, kan dezelfde methode worden gebruikt voor het beheren van zowel toegang als inrichting. Op opdrachten gebaseerde scoping is niet van toepassing op binnenkomende provisioningscenario's zoals Workday en Successfactors.
 
-* **Groepen.** Met een Azure AD Premium-licentieplan u groepen gebruiken om toegang toe te wijzen aan een SaaS-toepassing. Wanneer het inrichtingsbereik is ingesteld op **Alleen toegewezen gebruikers en groepen synchroniseren,** wordt de Azure AD-inrichtingsservice vervolgens gebruikers voorzien of de-provisioneren op basis van de vraag of ze lid zijn van een groep die aan de toepassing is toegewezen. Het groepsobject zelf is niet ingericht, tenzij de toepassing groepsobjecten ondersteunt.
+* **Groepen.** Met een Azure AD Premium-licentieplan u groepen gebruiken om toegang toe te wijzen aan een SaaS-toepassing. Wanneer het inrichtingsbereik is ingesteld op **Alleen toegewezen gebruikers en groepen synchroniseren,** wordt de Azure AD-inrichtingsservice vervolgens gebruikers voorzien of de-provisioneren op basis van de vraag of ze lid zijn van een groep die aan de toepassing is toegewezen. Het groepsobject zelf is niet ingericht, tenzij de toepassing groepsobjecten ondersteunt. Controleer of groepen die aan uw toepassing zijn toegewezen, de eigenschap 'SecurityEnabled' hebben ingesteld op False.
 
 * **Dynamische groepen.** De Azure AD-service voor het inrichten van gebruikers kan gebruikers in [dynamische groepen](../users-groups-roles/groups-create-rule.md)lezen en inrichten. Houd deze kanttekeningen en aanbevelingen in gedachten:
 

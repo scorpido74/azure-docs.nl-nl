@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 7b71611d43bc2d4de4c3e609462906c44fba0443
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81d2209c4b76db685e5a8d2625c84469d5c3dc43
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919971"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985844"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Certificaatautoriteiten toestaan voor het inschakelen van aangepaste HTTPS op Azure CDN
 
-U moet voldoen aan specifieke certificaatvereisten wanneer u [de HTTPS-functie inschakelt met behulp van uw eigen certificaat](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates) voor een aangepast Azure Content Delivery Network (CDN) domein. De **Azure CDN-standaard van Microsoft-profiel** vereist een certificaat van een van de goedgekeurde certificaatautoriteiten (CA) in de volgende lijst. Als een certificaat van een niet-goedgekeurde CA of als een zelfondertekend certificaat wordt gebruikt, wordt de aanvraag afgewezen. **Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon-profielen** accepteren elk geldig certificaat van elke geldige CA.
+U moet voldoen aan specifieke certificaatvereisten wanneer u [de HTTPS-functie inschakelt met behulp van uw eigen certificaat](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) voor een aangepast Azure Content Delivery Network (CDN) domein. De **Azure CDN-standaard van Microsoft-profiel** vereist een certificaat van een van de goedgekeurde certificaatautoriteiten (CA) in de volgende lijst. Als een certificaat van een niet-goedgekeurde CA of als een zelfondertekend certificaat wordt gebruikt, wordt de aanvraag afgewezen. **Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon-profielen** accepteren elk geldig certificaat van elke geldige CA.
 
 > [!NOTE]
 > De optie om uw eigen certificaat te gebruiken om de aangepaste domein-HTTPS-functie in te schakelen, is *niet* beschikbaar voor **Azure CDN Standard van Akamai-profielen.** 

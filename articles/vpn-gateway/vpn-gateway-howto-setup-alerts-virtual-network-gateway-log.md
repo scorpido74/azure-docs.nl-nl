@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: b587fa31f1aa42e8dbd5a9d2430c0117891f2091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49510b26e0b2a9c69dd65faf0f343e86d1a068db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239789"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878898"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Waarschuwingen instellen voor diagnostische logboekgebeurtenissen van VPN Gateway
 
@@ -26,7 +26,7 @@ De volgende logboeken zijn beschikbaar in Azure:
 |TunnelDiagnosticLog | Bevat wijzigingsgebeurtenissen in de tunnelstatus. Gebeurtenissen tussen tunnelverbinding en verbinding maken hebben een samengevatte reden voor de statuswijziging indien van toepassing |
 |RouteDiagnoslog | Registreert wijzigingen in statische routes en BGP-gebeurtenissen die zich voordoen op de gateway |
 |IKEDiagnosticLog | Ike-controleberichten en gebeurtenissen op de gateway logboeken |
-|P2SDiagnosticLog | Logt point-to-site controleberichten en gebeurtenissen op de gateway |
+|P2SDiagnosticLog | Registreert point-to-site controleberichten en gebeurtenissen op de gateway. Verbindingsbroninfo wordt alleen beschikbaar voor IKEv2-verbindingen |
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a><a name="setup"></a>Waarschuwingen instellen in de Azure-portal
 

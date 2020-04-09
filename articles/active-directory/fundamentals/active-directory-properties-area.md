@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f1877ae630919ba7da5a851b5f8291ade2d165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 343671c1d9ee82950a9822648f9831588da7e9f8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76897577"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876181"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>De privacygegevens van uw organisatie toevoegen met Azure Active Directory
 In dit artikel wordt uitgelegd hoe een tenantbeheerder privacygerelateerde informatie kan toevoegen aan de Azure AD-tenant (Azure Directory) van een organisatie via de Azure-portal.
@@ -32,15 +32,15 @@ U voegt de privacygegevens van uw organisatie toe in het gebied **Eigenschappen*
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>Toegang krijgen tot het gebied Eigenschappen en uw privacygegevens toevoegen
 
-1.  Meld u aan bij de Azure-portal als tenantbeheerder.
+1.    Meld u aan bij de Azure-portal als tenantbeheerder.
 
-2.  Selecteer op de linker navigatiebalk **Azure Active Directory**en selecteer **Eigenschappen**.
+2.    Selecteer op de linker navigatiebalk **Azure Active Directory**en selecteer **Eigenschappen**.
 
     Het gebied **Eigenschappen** wordt weergegeven.
 
     ![Azure AD Properties-gebied met het gebied privacyinfo](media/active-directory-properties-area/properties-area.png)
 
-3.  Voeg uw privacygegevens toe voor uw medewerkers:
+3.    Voeg uw privacygegevens toe voor uw medewerkers:
 
     - **Technisch contact.** Typ het e-mailadres waar de persoon contact mee moet opnemen voor technische ondersteuning binnen uw organisatie.
     
@@ -53,8 +53,8 @@ U voegt de privacygegevens van uw organisatie toe in het gebied **Eigenschappen*
 
         ![Het vak Machtigingen voor B2B-samenwerkingcontroleren met bericht](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.  Selecteer **Opslaan**.
+4.    Selecteer **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Inwisseling van Azure Active Directory B2B-uitnodigingvoor samenwerkingsuitnodiging](https://aka.ms/b2bredemption)
+- [Inwisseling van Azure Active Directory B2B-uitnodigingvoor samenwerkingsuitnodiging](../b2b/redemption-experience.md)
 - [Profielgegevens voor een gebruiker toevoegen of wijzigen in Azure Active Directory](active-directory-users-profile-azure-portal.md)

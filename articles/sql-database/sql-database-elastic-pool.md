@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 3c476393153f6bc1d18d5c163bcd69484583eb15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8139ed8f4f4799a963a051eed96dd87c4ac38aec
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256274"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981423"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Met elastische pools kunt u meerdere Azure SQL-databases beheren en schalen
 
@@ -37,7 +37,7 @@ Elastische pools lossen dit probleem op door ervoor te zorgen dat databases de p
 > [!IMPORTANT]
 > Er zijn geen kosten per database voor elastische pools. Er worden kosten in rekening gebracht voor elk uur dat een pool bestaat bij de hoogste eDTU of vCores, ongeacht het gebruik of dat de groep minder dan een uur actief was.
 
-Elastische groepen stellen de ontwikkelaar in staat om resources te kopen voor een groep die wordt gedeeld door meerdere databases om rekening te houden met onvoorspelbare perioden van gebruik door afzonderlijke databases. U resources voor de groep configureren op basis van het [op DTU gebaseerde inkoopmodel](sql-database-service-tiers-dtu.md) of het [op vCore gebaseerde inkoopmodel.](sql-database-service-tiers-vcore.md) De resourcevereiste voor een groep wordt bepaald door het totale gebruik van de databases. De hoeveelheid resources die beschikbaar zijn voor de groep wordt beheerd door het ontwikkelaarsbudget. De ontwikkelaar voegt eenvoudig gegevensbestanden aan de pool toe, stelt de minimum en maximummiddelen voor de gegevensbestanden (of minimum en maximum DTU's of minimum of maximum vCores afhankelijk van uw keus van het resourcingmodel) in en stelt vervolgens de bronnen van de groep in op basis van hun Begroting. Met groepen kan een ontwikkelaar services naadloos met een alsmaar groeiende schaal uitbreiden van een kleine startende ondernemer tot een volwassen bedrijf.
+Elastische groepen stellen de ontwikkelaar in staat om resources te kopen voor een groep die wordt gedeeld door meerdere databases om rekening te houden met onvoorspelbare perioden van gebruik door afzonderlijke databases. U resources voor de groep configureren op basis van het [op DTU gebaseerde inkoopmodel](sql-database-service-tiers-dtu.md) of het [op vCore gebaseerde inkoopmodel.](sql-database-service-tiers-vcore.md) De resourcevereiste voor een groep wordt bepaald door het totale gebruik van de databases. De hoeveelheid resources die beschikbaar zijn voor de groep wordt beheerd door het ontwikkelaarsbudget. De ontwikkelaar voegt eenvoudig gegevensbestanden aan de pool toe, stelt de minimum en maximummiddelen voor de gegevensbestanden (of minimum en maximum DTU's of minimum of maximum vCores afhankelijk van uw keus van het resourcingmodel) in en stelt de middelen van de pool op basis van hun budget in. Met groepen kan een ontwikkelaar services naadloos met een alsmaar groeiende schaal uitbreiden van een kleine startende ondernemer tot een volwassen bedrijf.
 
 Binnen de pool hebben afzonderlijke databases de flexibiliteit om de schaal automatisch aan te passen binnen ingestelde parameters. Onder zware belasting kan een database meer resources verbruiken om aan de vraag te voldoen. Databases onder lichte belastingen verbruiken minder en databases onder geen belasting verbruiken geen resources. De inrichting van resources voor de hele pool in plaats van afzonderlijke databases vereenvoudigt uw beheertaken. Plus, je hebt een voorspelbaar budget voor het zwembad. Extra resources kunnen worden toegevoegd aan een bestaande groep zonder databasedowntime, behalve dat de databases mogelijk moeten worden verplaatst om de extra rekenbronnen voor de nieuwe eDTU-reservering te bieden. Als extra resources niet meer nodig zijn, kunnen ze op elk moment uit een bestaande groep worden verwijderd. Daarnaast kunt u databases aan de groep toevoegen of uit de groep verwijderen. Als een database naar verwachting minder resources nodig heeft, kunt u deze verwijderen.
 
@@ -147,7 +147,7 @@ Pooldatabases ondersteunen in het algemeen dezelfde [bedrijfscontinuïteitsfunct
 
   Geo-restore biedt de standaardhersteloptie wanneer een database niet beschikbaar is vanwege een incident in het gebied waar de database wordt gehost. Zie [Een Azure SQL-database of failover herstellen naar een secundaire](sql-database-disaster-recovery.md)
 
-- **Actieve georeplicatie**
+- **Actieve geo-replicatie**
 
   Voor toepassingen die agressievere herstelvereisten hebben dan geo-restore kan bieden, configureert u [Actieve georeplicatie](sql-database-active-geo-replication.md) of een [groep voor automatische failover.](sql-database-auto-failover-group.md)
 
@@ -224,7 +224,6 @@ Zie [SQL Database-waarschuwingen maken in Azure-portal](sql-database-insights-al
 
 - Zie [Elastische poolprijzen](https://azure.microsoft.com/pricing/details/sql-database/elastic)voor prijsinformatie .
 - Zie [Elastische pools schalen](sql-database-elastic-pool-scale.md) en [Een elastische groep](scripts/sql-database-monitor-and-scale-pool-powershell.md) schalen - voorbeeldcode
-- Zie [Microsoft Virtual Academy-videocursus over elastische mogelijkheden voor Azure SQL Database](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554) voor een video
 - Zie [Ontwerppatronen voor SaaS-toepassingen met meerdere tenants met behulp van Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) voor meer informatie over ontwerppatronen voor SaaS-toepassingen met elastische pools.
 - Zie [Inleiding tot de Wingtip SaaS-toepassing](sql-database-wtp-overview.md)voor een SaaS-zelfstudie met elastische pools.
 - Zie [Resourcebeheer in dichte elastische pools](sql-database-elastic-pool-resource-management.md)voor meer informatie over resourcebeheer in elastische pools.

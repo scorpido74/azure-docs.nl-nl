@@ -7,22 +7,22 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: b7385ef27cd17705f2c86b6f57d4780511b6935c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1b8c033a3ec230d60c30f6168de8ce013a80ac6
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246854"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877997"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Een voordeur maken met HTTP naar HTTPS-omleiding via de Azure-portal
 
-U de Azure-portal gebruiken om een [voordeur](front-door-overview.md) te maken met een certificaat voor SSL-beëindiging. Een routeringsregel wordt gebruikt om HTTP-verkeer om te leiden naar HTTPS.
+U de Azure-portal gebruiken om een [voordeur](front-door-overview.md) te maken met een certificaat voor TLS-beëindiging. Een routeringsregel wordt gebruikt om HTTP-verkeer om te leiden naar HTTPS.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * Een voordeur maken met een bestaande Web App-bron
-> * Een aangepast domein toevoegen met SSL-certificaat 
+> * Een aangepast domein toevoegen met TLS/SSL-certificaat 
 > * HTTPS-omleiding instellen op het aangepaste domein
 
 Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
@@ -87,7 +87,7 @@ Nadat u de CNAME toevoegt, lijkt de pagina DNS-records op het volgende voorbeeld
 ### <a name="enable-https-on-your-custom-domain"></a>HTTPS inschakelen op uw aangepaste domein
 
 1. Klik op het aangepaste domein dat is toegevoegd en wijzig onder de sectie **Aangepast domein HTTPS**de status in **Ingeschakeld**.
-2. U het **type certificaatbeheer** op _Front Door_ laten beheren voor het gratis certificaat dat door De voordeur wordt onderhouden, beheerd en automatisch wordt geroteerd. U er ook voor kiezen om uw eigen aangepaste SSL-certificaat te gebruiken dat is opgeslagen met Azure Key Vault. In deze zelfstudie wordt ervan uitgegaan dat het gebruik van door de voordeur beheerd certificaat.
+2. U het **type certificaatbeheer** op _Front Door_ laten beheren voor het gratis certificaat dat door De voordeur wordt onderhouden, beheerd en automatisch wordt geroteerd. U er ook voor kiezen om uw eigen aangepaste TLS/SSL-certificaat te gebruiken dat is opgeslagen met Azure Key Vault. In deze zelfstudie wordt ervan uitgegaan dat het gebruik van door de voordeur beheerd certificaat.
 ![HTTPS inschakelen voor aangepast domein](./media/front-door-url-redirect/front-door-custom-domain-https.png)
 
 3. Klik op **Bijwerken** om de selectie op te slaan en klik vervolgens op **Opslaan**.

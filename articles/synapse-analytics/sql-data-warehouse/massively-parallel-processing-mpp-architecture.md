@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 0d768581b8f1a177190da08986af8b60b4861432
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d204477818ce2733d9f6d1e3dcc7455018456bcb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744212"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884829"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (voorheen SQL DW)-architectuur
 
@@ -79,8 +79,6 @@ Een distributie is de basiseenheid voor opslag en verwerking van parallelle quer
 Elk van de 60 kleinere query's wordt uitgevoerd op een van de gegevensdistributies. Elk Compute-knooppunt beheert een of meer van de 60 distributies. Een SQL-groep met maximale compute resources heeft één verdeling per Compute-knooppunt. Een SQL-groep met minimale compute resources heeft alle distributies op één compute node.  
 
 ## <a name="hash-distributed-tables"></a>Met hash gedistribueerde tabellen
-
-Een met hash gedistribueerde tabel kan de hoogste queryprestaties leveren voor samenvoegingen en aggregaties in grotere tabellen.
 
 Een met hash gedistribueerde tabel kan de hoogste queryprestaties leveren voor samenvoegingen en aggregaties in grotere tabellen.
 

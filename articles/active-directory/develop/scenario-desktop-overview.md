@@ -2,24 +2,21 @@
 title: Een desktop-app bouwen die web-API's aanroept - Microsoft-identiteitsplatform | Azure
 description: Meer informatie over het maken van een bureaublad-app die web-API's aanroept (overzicht)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 196102769c1f5f68df316918a63079b09baad32d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09cc43dec2eff48754f5a6e693badd6bb1907cce
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702144"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882997"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenario: Bureaublad-app die web-API's aanroept
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 345fc329df1c57cab7dd66c609bf3701fa3a6124
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: c92f045f2c8d4443d596697596363bda3d0df975
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619133"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985283"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Beveiliging in Azure Cosmos DB - overzicht
 
@@ -23,7 +23,7 @@ Versleuteling in rust is nu beschikbaar voor documenten en back-ups die zijn opg
 
 ## <a name="how-do-i-secure-my-database"></a>Hoe beveilig ik mijn database
 
-Gegevensbeveiliging is een gedeelde verantwoordelijkheid tussen u, de klant en uw databaseprovider. Afhankelijk van de databaseprovider die u kiest, kan de mate van verantwoordelijkheid die u draagt variëren. Als u kiest voor een on-premises oplossing, moet u alles bieden, van end-point bescherming tot fysieke beveiliging van uw hardware - wat geen gemakkelijke taak is. Als u kiest voor een PaaS-clouddatabaseprovider zoals Azure Cosmos DB, krimpt uw zorggebied aanzienlijk. De volgende afbeelding, ontleend aan de [gedeelde verantwoordelijkheden](https://aka.ms/sharedresponsibility) van Microsoft voor cloud computing-whitepaper, laat zien hoe uw verantwoordelijkheid afneemt bij een PaaS-provider zoals Azure Cosmos DB.
+Gegevensbeveiliging is een gedeelde verantwoordelijkheid tussen u, de klant en uw databaseprovider. Afhankelijk van de databaseprovider die u kiest, kan de mate van verantwoordelijkheid die u draagt variëren. Als u kiest voor een on-premises oplossing, moet u alles bieden, van end-point bescherming tot fysieke beveiliging van uw hardware - wat geen gemakkelijke taak is. Als u kiest voor een PaaS-clouddatabaseprovider zoals Azure Cosmos DB, krimpt uw zorggebied aanzienlijk. De volgende afbeelding, ontleend aan de [gedeelde verantwoordelijkheden](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) van Microsoft voor cloud computing-whitepaper, laat zien hoe uw verantwoordelijkheid afneemt bij een PaaS-provider zoals Azure Cosmos DB.
 
 ![Verantwoordelijkheden voor klant- en databaseaanbieders](./media/database-security/nosql-database-security-responsibilities.png)
 
@@ -70,7 +70,7 @@ Laten we in detail ingaan op elk.
 |Verwijderde gegevens herstellen|De geautomatiseerde online back-ups kunnen worden gebruikt om gegevens te herstellen die u mogelijk per ongeluk tot ~ 30 dagen na de gebeurtenis hebt verwijderd. <br><br>Meer informatie over [automatische online back-up en herstel met Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)|
 |Gevoelige gegevens beschermen en isoleren|Alle gegevens in de regio's die worden vermeld in Wat is nieuw? is nu versleuteld in rust.<br><br>Persoonlijke gegevens en andere vertrouwelijke gegevens kunnen worden geïsoleerd tot specifieke containers en read-write, of alleen-lezen toegang kan worden beperkt tot specifieke gebruikers.|
 |Monitor voor aanvallen|Door het gebruik van [audit logging en activiteit logs](logging.md), u uw account te controleren op normale en abnormale activiteit. U bekijken welke bewerkingen zijn uitgevoerd op uw resources, wie de bewerking heeft geïnitieerd, wanneer de bewerking heeft plaatsgevonden, de status van de bewerking en nog veel meer, zoals weergegeven in de schermafbeelding na deze tabel.|
-|Reageren op aanvallen|Zodra u contact hebt opgenomen met Azure-ondersteuning om een potentiële aanval te melden, wordt een 5-stappenincidentresponsproces gestart. Het doel van het 5-stappenproces is om de normale servicebeveiliging en -bewerkingen zo snel mogelijk te herstellen nadat een probleem is gedetecteerd en een onderzoek wordt gestart.<br><br>Meer informatie in [Microsoft Azure Security Response in de cloud](https://aka.ms/securityresponsepaper).|
+|Reageren op aanvallen|Zodra u contact hebt opgenomen met Azure-ondersteuning om een potentiële aanval te melden, wordt een 5-stappenincidentresponsproces gestart. Het doel van het 5-stappenproces is om de normale servicebeveiliging en -bewerkingen zo snel mogelijk te herstellen nadat een probleem is gedetecteerd en een onderzoek wordt gestart.<br><br>Meer informatie in [Microsoft Azure Security Response in de cloud](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|
 |Geo-fencing|Azure Cosmos DB zorgt voor data governance voor soevereine regio's (bijvoorbeeld Duitsland, China, US Gov).|
 |Beschermde voorzieningen|Gegevens in Azure Cosmos DB worden opgeslagen op SSD's in de beveiligde datacenters van Azure.<br><br>Meer informatie in [microsoft-datacenters](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
 |HTTPS/SSL/TLS-versleuteling|Alle verbindingen met Azure Cosmos DB ondersteunen HTTPS. Azure Cosmos DB ondersteunt ook TLS 1.2.<br>Het is mogelijk om een minimale TLS-versie server-kant af te dwingen. Neem hiervoor contact [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)op met .|

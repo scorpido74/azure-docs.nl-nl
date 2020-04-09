@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ce88f9a61b8aa7c2588a6e077d694afa6fb8631
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823365"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878847"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Een virtueel netwerk maken voor Azure SQL Database Managed Instance
 
@@ -29,13 +29,13 @@ Azure SQL Database Managed Instance moet worden geïmplementeerd binnen een [vir
 - Een beheerde instantie verbinden met gekoppelde server of een ander on-premises gegevensarchief
 - Een beheerde instantie verbinden met Azure-bronnen  
 
-> [!Note]
+> [!NOTE]
 > U moet [de grootte van het subnet voor Beheerde instantie bepalen](sql-database-managed-instance-determine-size-vnet-subnet.md) voordat u de eerste instantie implementeert. U het formaat van het subnet niet wijzigen nadat u de resources erin hebt geplaatst.
 >
 > Als u van plan bent een bestaand virtueel netwerk te gebruiken, moet u die netwerkconfiguratie aanpassen aan uw beheerde instantie. Zie [Een bestaand virtueel netwerk wijzigen voor Beheerde instantie voor](sql-database-managed-instance-configure-vnet-subnet.md)meer informatie.
 >
-> Nadat een beheerde instantie is gemaakt, wordt het verplaatsen van de beheerde instantie of VNet naar een andere resourcegroep of abonnement niet ondersteund.
-
+> Nadat een beheerde instantie is gemaakt, wordt het verplaatsen van de beheerde instantie of VNet naar een andere resourcegroep of abonnement niet ondersteund.  Het verplaatsen van de beheerde instantie naar een ander subnet wordt ook niet ondersteund.
+>
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 

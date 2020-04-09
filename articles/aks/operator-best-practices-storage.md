@@ -5,12 +5,12 @@ description: Lees de aanbevolen procedures voor de clusteroperator voor opslag, 
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 90abf2e36fd46c707904d87f00362091fe931743
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668102"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877895"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor opslag en back-ups in Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,7 @@ In de volgende tabel worden de beschikbare opslagtypen en hun mogelijkheden besc
 
 De twee primaire typen opslag voor volumes in AKS worden ondersteund door Azure Disks of Azure Files. Om de beveiliging te verbeteren, gebruiken beide typen opslag standaard Azure Storage Service Encryption (SSE) die gegevens in rust versleutelt. Schijven kunnen momenteel niet worden versleuteld met Azure Disk Encryption op het AKS-knooppuntniveau.
 
-Azure-bestanden zijn momenteel beschikbaar in de standaardprestatielaag. Azure-schijven zijn beschikbaar in standaard- en Premium-prestatielagen:
+Zowel Azure Files als Azure Disks zijn beschikbaar in standaard- en Premium-prestatielagen:
 
 - *Premium* schijven worden ondersteund door krachtige solid-state schijven (SSD's). Premium schijven worden aanbevolen voor alle productieworkloads.
 - *Standaard* schijven worden ondersteund door gewone draaiende schijven (HDD's), en zijn goed voor archivering of zelden geopende gegevens.

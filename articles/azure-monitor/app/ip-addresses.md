@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: 74d696c19ac2a2d0d367f5a018fde8cd3a0eedb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 454138f8e0d92935126f446455810a444b0a053a
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535201"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984143"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP-adressen die worden gebruikt door Application Insights en Log Analytics
 De [Azure Application Insights-service](../../azure-monitor/app/app-insights-overview.md) gebruikt een aantal IP-adressen. Mogelijk moet u deze adressen weten als de app die u controleert, achter een firewall wordt gehost.
@@ -55,6 +55,8 @@ Status monitor configuratie - alleen nodig bij het aanbrengen van wijzigingen.
 ## <a name="availability-tests"></a>Beschikbaarheidstests
 Dit is de lijst met adressen van waaruit [webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md) worden uitgevoerd. Als u webtests op uw app wilt uitvoeren, maar uw webserver is beperkt tot het bedienen van specifieke clients, moet u binnenkomend verkeer van onze beschikbaarheidstestservers toestaan.
 
+### <a name="service-tag"></a>Servicetag
+
 Als u Azure Network Security Groups gebruikt, voegt u gewoon een **inkomende poortregel** toe om verkeer toe te staan uit beschikbaarheidstests van Application Insights door **Servicetag** te selecteren als **bron-** en **toepassingsbeschikbaarheidals** **bronservicetag.**
 
 >[!div class="mx-imgBorder"]
@@ -64,6 +66,11 @@ Als u Azure Network Security Groups gebruikt, voegt u gewoon een **inkomende poo
 >![Tabblad Binnenkomende beveiligingsregel toevoegen](./media/ip-addresses/add-inbound-security-rule2.png)
 
 Open poorten 80 (http) en 443 (https) voor binnenkomend verkeer vanaf deze adressen (IP-adressen worden gegroepeerd op locatie):
+
+### <a name="addresses-grouped-by-location"></a>Adressen gegroepeerd op locatie
+
+> [!NOTE]
+> Deze adressen worden vermeld met behulp van CIDR-notatie (Classless Inter-Domain Routing). Dit betekent dat `51.144.56.112/28` een item als gelijk is `51.144.56.112` aan `51.144.56.127`16 IP's vanaf en eindigend op .
 
 ```
 Australia East

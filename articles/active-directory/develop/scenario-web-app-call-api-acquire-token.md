@@ -2,24 +2,21 @@
 title: Ontvang een token in een web-app die web-API's aanroept - Microsoft-identiteitsplatform | Azure
 description: Meer informatie over het aanschaffen van een token voor een web-app die web-API's aanroept
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: abf7d800eda376c21dfdd672032ddb65e27355be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 196d941c5c3b18b737f7a11c25ebbb9eab91be1e
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76759071"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885035"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Een web-app die web-API's aanroept: een token voor de app aanschaffen
 

@@ -3,12 +3,12 @@ title: Gedelegeerde resources op schaal controleren
 description: Meer informatie over het effectief gebruiken van Azure Monitor Logs op een schaalbare manier voor de klanttenants die u beheert.
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 217df3c55ab54b6569bae8cacb338764ecb7125d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a600cec524c9f715ada9da09dea35f3baa98151
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77122894"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985198"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Gedelegeerde resources op schaal controleren
 
@@ -28,7 +28,7 @@ U een Log Analytics-werkruimte maken met behulp van de [Azure-portal,](../../azu
 
 Nadat u uw Log Analytics-werkruimten hebt gemaakt, u [Azure Policy](../../governance/policy/index.yml) implementeren in uw klanthiërarchieën, zodat diagnostische gegevens worden verzonden naar de juiste werkruimte in elke tenant. Het exacte beleid dat u implementeert, kan variëren afhankelijk van de resourcetypen die u wilt controleren.
 
-Zie [Zelfstudie: Beleid maken en beheren om naleving af te dwingen](../../governance/policy/tutorials/create-and-manage.md)voor meer informatie over het maken van beleid. Deze [communitytool](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/azure-diagnostics-policy-generator) biedt een script waarmee u beleid maken om de specifieke resourcetypen die u kiest, te controleren.
+Zie [Zelfstudie: Beleid maken en beheren om naleving af te dwingen](../../governance/policy/tutorials/create-and-manage.md)voor meer informatie over het maken van beleid. Deze [communitytool](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/azure-diagnostics-policy-generator) biedt een script waarmee u beleid maken om de specifieke resourcetypen die u kiest, te controleren.
 
 Wanneer u hebt bepaald welk beleid u wilt implementeren, u [deze op schaal implementeren op uw gedelegeerde abonnementen.](policy-at-scale.md)
 

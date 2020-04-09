@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 5d6ba2bd52d8f4af4244e8ce1babeb7bc9d37fe4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 326b79e1aca6fa82b3275249401c755428a8b71d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235676"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878558"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 aansluiten op Azure IoT Hub
 
@@ -82,7 +82,13 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
     ```
 
    > [!NOTE]
-   > Als er een `device-identity`fout wordt uitgevoerd, installeert u de [Azure IOT Extension voor Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) voor meer details.
+   > Als er een `device-identity`fout wordt uitgevoerd, installeert u de [Azure IoT-extensie voor Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md).
+   > Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. De IoT-extensie voegt opdrachten toe die specifiek zijn voor IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS) aan Azure CLI.
+   > 
+   > ```azurecli-interactive
+   > az extension add --name azure-iot
+   >  ```
+   >
   
 1. Voer de volgende opdrachten uit in Azure Cloud Shell om de _apparaatverbindingsreeks_ op te halen voor het apparaat dat u zojuist hebt geregistreerd:
 

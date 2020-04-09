@@ -1,10 +1,9 @@
 ---
-title: Ondersteunings- en helpopties voor Azure AD-app-ontwikkelaars | Microsoft Documenten
+title: Ondersteunings- en helpopties voor Azure AD-app-ontwikkelaars
 description: Weet hoe u hulp en ondersteuning krijgen voor ontwikkelingsgerelateerde vragen en problemen bij het maken van toepassingen die integreren met Microsoft-identiteiten (Azure Active Directory en Microsoft-account)
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -13,16 +12,16 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160964"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885528"
 ---
 # <a name="support-and-help-options-for-developers"></a>Ondersteunings- en Help-opties voor ontwikkelaars
 
-Als u net begint te integreren met Azure Active Directory (Azure AD), Microsoft-identiteiten of Microsoft Graph API, of wanneer u een nieuwe functie in uw toepassing implementeert, zijn er momenten waarop u hulp van de community moet krijgen of de ondersteuningsopties die u als ontwikkelaar hebt. In dit artikel u inzicht krijgen in deze opties, waaronder:
+Als u net begint te integreren met Azure Active Directory (Azure AD), Microsoft-identiteiten of Microsoft Graph API, of wanneer u een nieuwe functie voor uw toepassing implementeert, zijn er momenten waarop u hulp van de community moet krijgen of de ondersteuningsopties die u als ontwikkelaar hebt, moet begrijpen. In dit artikel u inzicht krijgen in deze opties, waaronder:
 
 > [!div class="checklist"]
 > * Hoe u zoeken of uw vraag niet is beantwoord door de community of dat er al een bestaande documentatie bestaat voor de functie die u probeert te implementeren

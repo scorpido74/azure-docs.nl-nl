@@ -1,28 +1,23 @@
 ---
-title: Verificatiebibliotheken van microsoft-identiteitsplatform | Microsoft Documenten
+title: Verificatiebibliotheken van microsoft-identiteitsplatform
 description: Compatibele clientbibliotheken en mediamiddlewarebibliotheken voor server, samen met gerelateerde bibliotheek-, bron- en voorbeeldkoppelingen, voor het eindpunt van het Microsoft-identiteitsplatform.
 services: active-directory
-documentationcenter: ''
 author: negoe
 manager: CelesteDG
-editor: ''
-ms.assetid: 19cec615-e51f-4141-9f8c-aaf38ff9f746
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c8f0d5d948ff54522e951b7b5d18c7018ae6d34a
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 22e2ee0e3596bc996482a090af7509db4c415e61
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419806"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883488"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Verificatiebibliotheken van microsoft-identiteitsplatform
 
@@ -55,7 +50,7 @@ Gebruik clientverificatiebibliotheken om een token te verkrijgen voor het aanroe
 
 | Platform | Bibliotheek | Download | Broncode | Voorbeeld | Naslaginformatie | Conceptueel document | Roadmap |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| ![Javascript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [App van één pagina](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Naslaginformatie](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [Conceptuele documenten](msal-overview.md)| [Roadmap](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
+| ![Javascript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [App met één pagina](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Naslaginformatie](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [Conceptuele documenten](msal-overview.md)| [Roadmap](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 ![Angular](media/sample-v2-code/logo_angular.png) | MSAL Hoekig | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Hoekige SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [Naslaginformatie](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [Conceptuele documenten](msal-overview.md) | [Roadmap](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 | ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet (NuGet)](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Desktop-app](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[Conceptuele documenten](msal-overview.md) | [Roadmap](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
 | ![Python](media/sample-v2-code/logo_python.png) | MSAL Python | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [Voorbeelden](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [Roadmap](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)

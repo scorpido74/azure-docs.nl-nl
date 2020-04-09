@@ -5,32 +5,28 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.openlocfilehash: 9498f2cf56f0bfe20d0806e5dc9872403dabb180
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/07/2020
+ms.openlocfilehash: 67d5481b82b7469c5ae55704768ce494dbc9dca5
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979095"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879136"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Apache Hadoop-clusters maken in HDInsight met behulp van Resource Manager-sjablonen
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-In dit artikel leert u verschillende manieren om Azure HDInsight-clusters te maken met Azure Resource Manager-sjablonen. Zie [Een toepassing implementeren met azure resource manager-sjabloon voor](../azure-resource-manager/templates/deploy-powershell.md)meer informatie. Als u meer wilt weten over andere hulpmiddelen en functies voor het maken van een cluster, klikt u op de tabkiezer boven aan deze pagina of ziet u [methoden voor het maken van clusteren](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
+In dit artikel leert u verschillende manieren om Azure HDInsight-clusters te maken met [Azure Resource Manager-sjablonen.](../azure-resource-manager/templates/deploy-powershell.md) Klik op de tabkiezer boven aan deze pagina voor meer informatie over andere hulpmiddelen en functies voor het maken van een cluster. Zie ook, [Methoden voor het maken van clusteren](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="prerequisites"></a>Vereisten
-
-* Een [Azure-abonnement](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Azure PowerShell en/of Azure CLI.
-
-### <a name="resource-manager-templates"></a>Resource Manager-sjablonen
+## <a name="resource-manager-templates"></a>Resource Manager-sjablonen
 
 Met een sjabloon Resourcemanager u eenvoudig de volgende bronnen voor uw toepassing maken in één gecoördineerde bewerking:
+
 * HDInsight-clusters en hun afhankelijke resources (zoals het standaardopslagaccount).
 * Andere bronnen (zoals Azure SQL Database om [Apache Sqoop](https://sqoop.apache.org/)te gebruiken).
 

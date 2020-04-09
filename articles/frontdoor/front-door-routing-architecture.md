@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: fd1f06bcb92ea97e0e9e9a6eefeac957031575a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a088e52f742f96a13ba61969c2d7a6697c96b145
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471554"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879289"
 ---
 # <a name="routing-architecture-overview"></a>Overzicht van routeringsarchitectuur
 
@@ -35,7 +35,7 @@ Routering naar de Azure Front Door-omgevingen maakt gebruik van [Anycast](https:
 [Split TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) is een techniek om latencies en TCP-problemen te verminderen door het breken van een verbinding die een hoge retourtijd in kleinere stukken zou oplopen.  Door de Front Door-omgevingen dichter bij eindgebruikers te plaatsen en TCP-verbindingen in de Front Door-omgeving te beëindigen, wordt één TCP-verbinding met een grote retourtijd (RTT) naar de backend van de toepassing opgesplitst in twee TCP-verbindingen. De korte verbinding tussen de eindgebruiker en de Front Door-omgeving betekent dat de verbinding wordt gelegd over drie korte retourvluchten in plaats van drie lange rondreizen, waardoor latentie wordt bespaard.  De lange verbinding tussen de Front Door-omgeving en de backend kan vooraf worden vastgesteld en hergebruikt voor meerdere gesprekken met eindgebruikers, waardoor de TCP-verbindingstijd opnieuw wordt bespaard.  Het effect wordt vermenigvuldigd bij het opzetten van een SSL/TLS -verbinding (Transport Layer Security) omdat er meer retouren zijn om de verbinding te beveiligen.
 
 ## <a name="processing-request-to-match-a-routing-rule"></a>Verwerkingsaanvraag om een routeringsregel te koppelen
-Na het tot stand brengen van een verbinding en het doen van een SSL-handshake, is het overeenkomen van een routeringsregel de eerste stap wanneer een aanvraag op een Front Door-omgeving terechtkomt. Deze overeenkomst bepaalt in principe uit alle configuraties in Front Door, welke specifieke routeregel moet overeenkomen met het verzoek. Lees hoe Front Door [routematching](front-door-route-matching.md) doet voor meer informatie.
+Na het tot stand brengen van een verbinding en het doen van een TLS-handshake, is het overeenkomen van een routeringsregel de eerste stap wanneer een aanvraag op een Front Door-omgeving terechtkomt. Deze overeenkomst bepaalt in principe uit alle configuraties in Front Door, welke specifieke routeregel moet overeenkomen met het verzoek. Lees hoe Front Door [routematching](front-door-route-matching.md) doet voor meer informatie.
 
 ## <a name="identifying-available-backends-in-the-backend-pool-for-the-routing-rule"></a>Beschikbare back-ends in de backendpool identificeren voor de routeringsregel
 Zodra Front Door een overeenkomst heeft voor een routeringsregel op basis van de binnenkomende aanvraag en als er geen caching is, is de volgende stap het trekken van de status van de status van de status van de status van de status van de status van de status van de backend die is gekoppeld aan de overeenkomende route. Lees hoe Front Door de backend-status controleert met behulp van [Health Probes](front-door-health-probes.md) voor meer informatie.

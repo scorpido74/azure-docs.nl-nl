@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 8b4ec003888d75a582d25feef8ed2ce010fa7996
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546235"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876289"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Naslaginformatieover zoeknaar naar beheerhandleiding voor Azure Active Directory Authentication-beheer
 
@@ -64,7 +64,7 @@ Gebruik de onderstaande tabel om de aanbevolen oplossing te vinden om het proble
 | Geen mechanisme om te beschermen tegen zwakke wachtwoorden | Azure AD [selfservice password reset (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) en [wachtwoordbeveiliging inschakelen](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) |
 | Geen mechanisme om gelekte wachtwoorden te detecteren | Password [hash sync](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) inschakelen om inzichten te verkrijgen |
 | AD FS gebruiken en kan niet naar beheerde verificatie gaan | [AD FS Extranet Smart Lockout](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) en/of [Azure AD Smart Lockout inschakelen](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout) |
-| Wachtwoordbeleid maakt gebruik van op complexiteit gebaseerde regels, zoals lengte, meerdere tekensets of vervaldatum | Heroverweeg ten gunste van [Microsoft Recommended Practices](https://aka.ms/passwordguidance) en schakel uw benadering over naar wachtwoordbeheer en implementeer [Azure AD-wachtwoordbeveiliging.](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) |
+| Wachtwoordbeleid maakt gebruik van op complexiteit gebaseerde regels, zoals lengte, meerdere tekensets of vervaldatum | Heroverweeg ten gunste van [Microsoft Recommended Practices](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf) en schakel uw benadering over naar wachtwoordbeheer en implementeer [Azure AD-wachtwoordbeveiliging.](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) |
 | Gebruikers zijn niet geregistreerd om multi-factor authenticatie (MFA) te gebruiken | [Registreer alle beveiligingsgegevens van de gebruiker,](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy) zodat deze kunnen worden gebruikt als een mechanisme om de identiteit van de gebruiker te verifiëren, samen met hun wachtwoord |
 | Er is geen intrekking van wachtwoorden op basis van gebruikersrisico | Gebruikersrisicobeleid voor Azure AD [Identity Protection implementeren](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy) om wachtwoordwijzigingen op gelekte referenties te forceren met SSPR |
 | Er is geen slim lock-outmechanisme om kwaadaardige verificatie te beschermen tegen slechte actoren die afkomstig zijn van geïdentificeerde IP-adressen | Cloudbeheerverificatie implementeren met wachtwoordhashsynchronisatie of [pass-through-verificatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) |
@@ -101,11 +101,11 @@ Als uw on-premises organisatie een onderbrekingstolerantiestrategie voor storing
 
 ![wachtwoordhashsynchronisatiestroom](./media/active-directory-ops-guide/active-directory-ops-img5.png)
 
-Zie [De juiste verificatiemethode kiezen voor uw hybride azure directory-identiteitsoplossing voor uw verificatieopties.](https://docs.microsoft.com/azure/active-directory/hybrid/choose-ad-authn)
+Zie [De juiste verificatiemethode kiezen voor uw hybride azure directory-identiteitsoplossing voor uw verificatieopties.](../hybrid/choose-ad-authn.md)
 
 ### <a name="programmatic-usage-of-credentials"></a>Programmatisch gebruik van referenties
 
-Azure AD-scripts die PowerShell of toepassingen gebruiken met de Microsoft Graph API vereisen veilige verificatie. Slecht referentiebeheer bij het uitvoeren van deze scripts en hulpprogramma's verhoogt het risico op diefstal van referenties. Als u scripts of toepassingen gebruikt die afhankelijk zijn van hardgecodeerde wachtwoorden of wachtwoordprompts, moet u eerst wachtwoorden in config-bestanden of broncode controleren, deze afhankelijkheden vervangen en azure managed identities, geïntegreerde Windows-verificatie of [certificaten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) gebruiken waar mogelijk. Voor toepassingen waar de vorige oplossingen niet mogelijk zijn, u Azure [Key Vault gebruiken.](https://azure.microsoft.com/services/key-vault/)
+Azure AD-scripts die PowerShell of toepassingen gebruiken met de Microsoft Graph API vereisen veilige verificatie. Slecht referentiebeheer bij het uitvoeren van deze scripts en hulpprogramma's verhoogt het risico op diefstal van referenties. Als u scripts of toepassingen gebruikt die afhankelijk zijn van hardgecodeerde wachtwoorden of wachtwoordprompts, moet u eerst wachtwoorden in config-bestanden of broncode controleren, deze afhankelijkheden vervangen en azure managed identities, geïntegreerde Windows-verificatie of [certificaten](../reports-monitoring/tutorial-access-api-with-certificates.md) gebruiken waar mogelijk. Voor toepassingen waar de vorige oplossingen niet mogelijk zijn, u Azure [Key Vault gebruiken.](https://azure.microsoft.com/services/key-vault/)
 
 Als u vaststelt dat er serviceprincipals zijn met wachtwoordreferenties en u niet zeker weet hoe deze wachtwoordreferenties worden beveiligd door scripts of toepassingen, neemt u contact op met de eigenaar van de toepassing om gebruikspatronen beter te begrijpen.
 
@@ -115,7 +115,7 @@ Microsoft raadt u ook aan contact op te nemen met toepassingseigenaren om gebrui
 
 ### <a name="on-premises-authentication"></a>On-premises verificatie
 
-Federatieve verificatie met geïntegreerde Windows-verificatie (IWA) of Naadloze Single Sign-On (SSO) beheerde verificatie met wachtwoordhashsynchronisatie of pass-through-verificatie is de beste gebruikerservaring wanneer u zich binnen het bedrijfsnetwerk bevindt met line-of-sight naar on-premises domeincontrollers. Het minimaliseert referentie prompt vermoeidheid en vermindert het risico van gebruikers ten prooi vallen aan phishing-aanvallen. Als u al cloudbeheerde verificatie met PHS of PTA gebruikt, maar gebruikers nog steeds hun wachtwoord moeten invoeren wanneer ze on-premises authenticeren, moet u [naadloze SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)onmiddellijk implementeren. Aan de andere kant, als u momenteel federatief met plannen om uiteindelijk te migreren naar cloud-managed authenticatie, dan moet u implementeren Seamless SSO als onderdeel van het migratieproject.
+Federatieve verificatie met geïntegreerde Windows-verificatie (IWA) of Naadloze Single Sign-On (SSO) beheerde verificatie met wachtwoordhashsynchronisatie of pass-through-verificatie is de beste gebruikerservaring wanneer u zich binnen het bedrijfsnetwerk bevindt met line-of-sight naar on-premises domeincontrollers. Het minimaliseert referentie prompt vermoeidheid en vermindert het risico van gebruikers ten prooi vallen aan phishing-aanvallen. Als u al cloudbeheerde verificatie met PHS of PTA gebruikt, maar gebruikers nog steeds hun wachtwoord moeten invoeren wanneer ze on-premises authenticeren, moet u [naadloze SSO](../hybrid/how-to-connect-sso.md)onmiddellijk implementeren. Aan de andere kant, als u momenteel federatief met plannen om uiteindelijk te migreren naar cloud-managed authenticatie, dan moet u implementeren Seamless SSO als onderdeel van het migratieproject.
 
 ### <a name="device-trust-access-policies"></a>Toegangsbeleid voor vertrouwensrelaties voor apparaten
 
@@ -123,66 +123,66 @@ Net als een gebruiker in uw organisatie is een apparaat een kernidentiteit die u
 
 - Het vermijden van frictie, bijvoorbeeld met MFA, wanneer het apparaat wordt vertrouwd
 - Toegang blokkeren vanaf niet-vertrouwde apparaten
-- Voor Windows 10-apparaten u on-premises resources naadloos aanmelden voor [on-premises resources.](https://docs.microsoft.com/azure/active-directory/devices/azuread-join-sso)
+- Voor Windows 10-apparaten u on-premises resources naadloos aanmelden voor [on-premises resources.](../devices/azuread-join-sso.md)
 
 U dit doel uitvoeren door apparaatidentiteiten te identiianden en te beheren in Azure AD met behulp van een van de volgende methoden:
 
 - Organisaties kunnen [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) gebruiken om het apparaat te beheren en nalevingsbeleid af te dwingen, de status van het apparaat te bevestigen en beleid voor voorwaardelijke toegang in te stellen op basis van de vraag of het apparaat compatibel is. Microsoft Intune kan iOS-apparaten, Mac-desktops (Via JAMF-integratie), Windows-desktops (native gebruik van Mobile Device Management voor Windows 10 en co-management met Microsoft Endpoint Configuration Manager) en mobiele Android-apparaten beheren.
-- [Hybride Azure AD join](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) biedt beheer met Groepsbeleid of Microsoft Endpoint Configuration Manager in een omgeving met Active Directory-computers die zijn verbonden met active directory-domeinen. Organisaties kunnen een beheerde omgeving implementeren via PHS of PTA met Seamless SSO. Als u uw apparaten naar Azure AD brengt, wordt de productiviteit van gebruikers via SSO in uw cloud en on-premises resources gemaximaliseerd, zodat u tegelijkertijd toegang krijgen tot uw cloud- en on-premises resources met [voorwaardelijke toegang.](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) 
+- [Hybride Azure AD join](../devices/hybrid-azuread-join-managed-domains.md) biedt beheer met Groepsbeleid of Microsoft Endpoint Configuration Manager in een omgeving met Active Directory-computers die zijn verbonden met active directory-domeinen. Organisaties kunnen een beheerde omgeving implementeren via PHS of PTA met Seamless SSO. Als u uw apparaten naar Azure AD brengt, wordt de productiviteit van gebruikers via SSO in uw cloud en on-premises resources gemaximaliseerd, zodat u tegelijkertijd toegang krijgen tot uw cloud- en on-premises resources met [voorwaardelijke toegang.](../conditional-access/overview.md) 
 
-Als u windows-apparaten met domeinverbonden hebt die niet zijn geregistreerd in de cloud of windows-apparaten met domeinverbonden die zijn geregistreerd in de cloud, maar zonder beleid voor voorwaardelijke toegang, moet u de niet-geregistreerde apparaten registreren en in beide gevallen [Hybride Azure AD-join gebruiken als besturingselement](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) in uw beleid voor voorwaardelijke toegang.
+Als u windows-apparaten met domeinverbonden hebt die niet zijn geregistreerd in de cloud of windows-apparaten met domeinverbonden die zijn geregistreerd in de cloud, maar zonder beleid voor voorwaardelijke toegang, moet u de niet-geregistreerde apparaten registreren en in beide gevallen [Hybride Azure AD-join gebruiken als besturingselement](../conditional-access/require-managed-devices.md) in uw beleid voor voorwaardelijke toegang.
 
 ![Een schermafbeelding van subsidie in het beleid voor voorwaardelijke toegang waarvoor hybride apparaat vereist is](./media/active-directory-ops-guide/active-directory-ops-img6.png)
 
-Als u apparaten beheert met MDM of Microsoft Intune, maar geen apparaatbesturingselementen gebruikt in uw beleid voor voorwaardelijke toegang, raden we u aan [het apparaat vereisen te](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices#require-device-to-be-marked-as-compliant) gebruiken dat als compatibel is gemarkeerd als besturingselement in dat beleid.
+Als u apparaten beheert met MDM of Microsoft Intune, maar geen apparaatbesturingselementen gebruikt in uw beleid voor voorwaardelijke toegang, raden we u aan [het apparaat vereisen te](../conditional-access/require-managed-devices.md#require-device-to-be-marked-as-compliant) gebruiken dat als compatibel is gemarkeerd als besturingselement in dat beleid.
 
 ![Een schermafbeelding van subsidie in het beleid voor voorwaardelijke toegang dat apparaatnaleving vereist](./media/active-directory-ops-guide/active-directory-ops-img7.png)
 
 #### <a name="device-trust-access-policies-recommended-reading"></a>Toegangsbeleid voor vertrouwde vertrouwensrelaties aanbevolen voor lezen
 
-- [How To: Uw hybride Azure Active Directory join-implementatie plannen](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
+- [How To: Uw hybride Azure Active Directory join-implementatie plannen](../devices/hybrid-azuread-join-plan.md)
 - [Configuraties voor identiteit en apparaattoegang](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello voor Bedrijven
 
 In Windows 10 vervangt [Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) wachtwoorden door sterke tweestapsverificatie op pc's. Windows Hello for Business maakt een meer gestroomlijnde MFA-ervaring mogelijk voor gebruikers en vermindert uw afhankelijkheid van wachtwoorden. Als u nog niet bent begonnen met de uitrol van Windows 10-apparaten of deze slechts gedeeltelijk hebt geïmplementeerd, raden we u aan te upgraden naar Windows 10 en Windows Hello voor Bedrijven op alle apparaten [in te schakelen.](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-manage-in-organization)
 
-Zie [Een wereld zonder wachtwoorden met Azure Active Directory](https://aka.ms/passwordlessdoc)als u meer wilt weten over verificatie zonder wachtwoord.
+Zie [Een wereld zonder wachtwoorden met Azure Active Directory](../authentication/concept-authentication-passwordless.md)als u meer wilt weten over verificatie zonder wachtwoord.
 
 ## <a name="application-authentication-and-assignment"></a>Toepassingsverificatie en -toewijzing
 
 ### <a name="single-sign-on-for-apps"></a>Eén aanmelding voor apps
 
-Het bieden van een gestandaardiseerd single sign-on mechanisme voor de hele onderneming is cruciaal voor de beste gebruikerservaring, vermindering van risico's, vermogen om te rapporteren en governance. Als u toepassingen gebruikt die SSO ondersteunen met Azure AD, maar momenteel zijn geconfigureerd om lokale accounts te gebruiken, moet u deze toepassingen opnieuw configureren om SSO te gebruiken met Azure AD. Als u toepassingen gebruikt die SSO ondersteunen met Azure AD, maar een andere identiteitsprovider gebruiken, moet u deze toepassingen ook opnieuw configureren om SSO met Azure AD te gebruiken. Voor toepassingen die federatieprotocollen niet ondersteunen, maar wel op formulieren gebaseerde verificatie ondersteunen, raden we u aan de toepassing te configureren om [wachtwoordkluising](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting) te gebruiken met Azure AD Application Proxy.
+Het bieden van een gestandaardiseerd single sign-on mechanisme voor de hele onderneming is cruciaal voor de beste gebruikerservaring, vermindering van risico's, vermogen om te rapporteren en governance. Als u toepassingen gebruikt die SSO ondersteunen met Azure AD, maar momenteel zijn geconfigureerd om lokale accounts te gebruiken, moet u deze toepassingen opnieuw configureren om SSO te gebruiken met Azure AD. Als u toepassingen gebruikt die SSO ondersteunen met Azure AD, maar een andere identiteitsprovider gebruiken, moet u deze toepassingen ook opnieuw configureren om SSO met Azure AD te gebruiken. Voor toepassingen die federatieprotocollen niet ondersteunen, maar wel op formulieren gebaseerde verificatie ondersteunen, raden we u aan de toepassing te configureren om [wachtwoordkluising](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md) te gebruiken met Azure AD Application Proxy.
 
 ![Aanmelding op basis van appProxy-wachtwoord](./media/active-directory-ops-guide/active-directory-ops-img8.png)
 
 > [!NOTE]
 > Als u geen mechanisme hebt om onbeheerde toepassingen in uw organisatie te ontdekken, raden we u aan een detectieproces te implementeren met behulp van een CASB (Cloud Access Security Broker-oplossing), zoals [Microsoft Cloud App Security.](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security)
 
-Als u ten slotte een Azure AD-app-galerie hebt en toepassingen gebruikt die SSO ondersteunen met Azure AD, raden we u aan [de toepassing in de app-galerie aan te geven.](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)
+Als u ten slotte een Azure AD-app-galerie hebt en toepassingen gebruikt die SSO ondersteunen met Azure AD, raden we u aan [de toepassing in de app-galerie aan te geven.](../azuread-dev/howto-app-gallery-listing.md)
 
 #### <a name="single-sign-on-recommended-reading"></a>Aanbevolen lezing voor eenmalig aanmelden
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
 ### <a name="migration-of-ad-fs-applications-to-azure-ad"></a>Migratie van AD FS-toepassingen naar Azure AD
 
-[Als u apps migreert van AD FS naar Azure AD,](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-apps-to-azure) u extra mogelijkheden bieden op het gebied van beveiliging, consistentere beheerbaarheid en een betere samenwerkingservaring. Als u toepassingen hebt geconfigureerd in AD FS die SSO ondersteunen met Azure AD, moet u deze toepassingen opnieuw configureren om SSO te gebruiken met Azure AD. Als u toepassingen hebt geconfigureerd in AD FS met ongebruikelijke configuraties die niet worden ondersteund door Azure AD, moet u contact opnemen met de app-eigenaren om te zien of de speciale configuratie een absolute vereiste van de toepassing is. Als dit niet nodig is, moet u de toepassing opnieuw configureren om SSO met Azure AD te gebruiken.
+[Als u apps migreert van AD FS naar Azure AD,](../manage-apps/migrate-adfs-apps-to-azure.md) u extra mogelijkheden bieden op het gebied van beveiliging, consistentere beheerbaarheid en een betere samenwerkingservaring. Als u toepassingen hebt geconfigureerd in AD FS die SSO ondersteunen met Azure AD, moet u deze toepassingen opnieuw configureren om SSO te gebruiken met Azure AD. Als u toepassingen hebt geconfigureerd in AD FS met ongebruikelijke configuraties die niet worden ondersteund door Azure AD, moet u contact opnemen met de app-eigenaren om te zien of de speciale configuratie een absolute vereiste van de toepassing is. Als dit niet nodig is, moet u de toepassing opnieuw configureren om SSO met Azure AD te gebruiken.
 
 ![Azure AD als primaire identiteitsprovider](./media/active-directory-ops-guide/active-directory-ops-img9.png)
 
 > [!NOTE]
-> [Azure AD Connect Health for ADFS](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs) kan worden gebruikt om configuratiegegevens te verzamelen over elke toepassing die mogelijk kan worden gemigreerd naar Azure AD.
+> [Azure AD Connect Health for ADFS](../hybrid/how-to-connect-health-adfs.md) kan worden gebruikt om configuratiegegevens te verzamelen over elke toepassing die mogelijk kan worden gemigreerd naar Azure AD.
 
 ### <a name="assign-users-to-applications"></a>Gebruikers toewijzen aan toepassingen
 
-[Het toewijzen van gebruikers aan toepassingen](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) kan het beste in kaart worden gebracht met behulp van groepen, omdat ze meer flexibiliteit en het vermogen om op schaal te beheren mogelijk maken. De voordelen van het gebruik van groepen zijn [op basis van een attribuut gebaseerd dynamisch groepslidmaatschap](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership) en delegatie naar [app-eigenaren.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners) Als u daarom al groepen gebruikt en beheert, raden we u aan de volgende acties te ondernemen om het beheer op schaal te verbeteren:
+[Het toewijzen van gebruikers aan toepassingen](../manage-apps/assign-user-or-group-access-portal.md) kan het beste in kaart worden gebracht met behulp van groepen, omdat ze meer flexibiliteit en het vermogen om op schaal te beheren mogelijk maken. De voordelen van het gebruik van groepen zijn [op basis van een attribuut gebaseerd dynamisch groepslidmaatschap](../users-groups-roles/groups-dynamic-membership.md) en delegatie naar [app-eigenaren.](../fundamentals/active-directory-accessmanagement-managing-group-owners.md) Als u daarom al groepen gebruikt en beheert, raden we u aan de volgende acties te ondernemen om het beheer op schaal te verbeteren:
 
 - Groepsbeheer en -beheer delegeren aan toepassingseigenaren.
 - Geef selfservicetoegang tot de toepassing.
 - Definieer dynamische groepen als gebruikerskenmerken consistent de toegang tot toepassingen kunnen bepalen.
-- Verating implementeren voor groepen die worden gebruikt voor toepassingstoegang met [Azure AD-toegangsbeoordelingen](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview).
+- Verating implementeren voor groepen die worden gebruikt voor toepassingstoegang met [Azure AD-toegangsbeoordelingen](../governance/access-reviews-overview.md).
 
 Aan de andere kant, als u toepassingen vindt die toewijzing hebben aan individuele gebruikers, moet u [beheer](https://docs.microsoft.com/azure/active-directory/governance/index) rond die toepassingen implementeren.
 
@@ -223,12 +223,12 @@ Als u al eigenaar bent van Azure AD Premium P2-licenties die ondersteuning biede
 
 #### <a name="risk-based-access-policies-recommended-reading"></a>Op risico's gebaseerd toegangsbeleid aanbevolen om te lezen
 
-- [How To: Het aanmeldingsrisicobeleid configureren](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)
-- [How To: Het gebruikersrisicobeleid configureren](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)
+- [How To: Het aanmeldingsrisicobeleid configureren](../identity-protection/howto-identity-protection-configure-risk-policies.md)
+- [How To: Het gebruikersrisicobeleid configureren](../identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 ### <a name="client-application-access-policies"></a>Toegangsbeleid voor clienttoepassingen
 
-Microsoft Intune Application Management (MAM) biedt de mogelijkheid om besturingselementen voor gegevensbeveiliging, zoals opslagversleuteling, pincode, opschonen van externe opslag, enz. Daarnaast kan beleid voor voorwaardelijke toegang worden gemaakt om [de toegang tot](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) cloudservices zoals Exchange Online te beperken van goedgekeurde of compatibele apps.
+Microsoft Intune Application Management (MAM) biedt de mogelijkheid om besturingselementen voor gegevensbeveiliging, zoals opslagversleuteling, pincode, opschonen van externe opslag, enz. Daarnaast kan beleid voor voorwaardelijke toegang worden gemaakt om [de toegang tot](../conditional-access/app-based-conditional-access.md) cloudservices zoals Exchange Online te beperken van goedgekeurde of compatibele apps.
 
 Als uw medewerkers MAM-toepassingen installeren, zoals mobiele Office-apps, om toegang te krijgen tot bedrijfsbronnen zoals Exchange Online of SharePoint Online, en u ook BYOD ondersteunt (breng uw eigen apparaat mee), raden we u aan om mam-beleid voor toepassingen te implementeren om de toepassingsconfiguratie te beheren in apparaten die persoonlijk eigendom zijn zonder MDM-inschrijving en vervolgens uw voorwaardelijke toegangsbeleid bij te werken om alleen toegang van MAM-compatibele clients mogelijk te maken.
 
@@ -245,10 +245,10 @@ Conditional Access is een essentieel hulpmiddel voor het verbeteren van de bevei
 - Vermijd het gebruik van de **Alle gebruikers** als een filter en per ongeluk het toevoegen van **gasten**
 - **Alle 'legacy'-beleidsregels migreren naar de Azure-portal**
 - Van alle criteria voor gebruikers, apparaten en toepassingen voldoen
-- Beleid voor voorwaardelijke toegang gebruiken om MFA te [implementeren,](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)in plaats van een **MFA per gebruiker te** gebruiken
+- Beleid voor voorwaardelijke toegang gebruiken om MFA te [implementeren,](../conditional-access/plan-conditional-access.md)in plaats van een **MFA per gebruiker te** gebruiken
 - Een kleine set kernbeleidsregels hebben die van toepassing kunnen zijn op meerdere toepassingen
 - Lege uitzonderingsgroepen definiëren en toevoegen aan het beleid voor een uitzonderingsstrategie
-- Plannen voor [break glass](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency) accounts zonder MFA controles
+- Plannen voor [break glass](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) accounts zonder MFA controles
 - Zorg voor een consistente ervaring in Office 365-clienttoepassingen, bijvoorbeeld Teams, OneDrive voor Bedrijven, Outlook, enz.) door dezelfde set besturingselementen voor services zoals Exchange Online en Sharepoint Online te implementeren
 - Toewijzing aan beleid moet worden uitgevoerd via groepen, niet individuen
 - Doe regelmatig beoordelingen van de uitzonderingsgroepen die in het beleid worden gebruikt om de tijd te beperken dat gebruikers uit de beveiligingshouding vallen. Als u eigenaar bent van Azure AD P2, u toegangsbeoordelingen gebruiken om het proces te automatiseren

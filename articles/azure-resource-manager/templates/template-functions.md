@@ -2,13 +2,13 @@
 title: Sjabloonfuncties
 description: Beschrijft de functies die u moet gebruiken in een Azure Resource Manager-sjabloon om waarden op te halen, met tekenreeksen en numerieke gegevens te werken en implementatiegegevens op te halen.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: fbd82f89ed9a97a3f376a9ed6eaa8ae3760759ff
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156256"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982375"
 ---
 # <a name="arm-template-functions"></a>ARM-sjabloonfuncties
 
@@ -78,13 +78,20 @@ Resource Manager biedt verschillende functies voor het maken van vergelijkingen 
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
 
+## <a name="date-functions"></a>Datumfuncties
+
+Resourcemanager biedt de volgende functies voor het werken met datums.
+
+* [dateTimeAdd dateTimeAdd dateTimeAdd dateTime](template-functions-date.md#datetimeadd)
+* [utcNu](template-functions-date.md#utcnow)
+
 ## <a name="deployment-value-functions"></a>Functies voor implementatiewaarde
 
 Resourcemanager biedt de volgende functies voor het ophalen van waarden uit secties van de sjabloon en waarden die verband houden met de implementatie:
 
-* [implementatie](template-functions-deployment.md#deployment)
+* [Implementatie](template-functions-deployment.md#deployment)
 * [Milieu](template-functions-deployment.md#environment)
-* [parameters](template-functions-deployment.md#parameters)
+* [Parameters](template-functions-deployment.md#parameters)
 * [Variabelen](template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
@@ -214,7 +221,7 @@ Resourcemanager biedt de volgende functies voor het werken met tekenreeksen:
 * [Overslaan](template-functions-string.md#skip)
 * [split](template-functions-string.md#split)
 * [startMet](template-functions-string.md#startswith)
-* [tekenreeks](template-functions-string.md#string)
+* [Tekenreeks](template-functions-string.md#string)
 * [Subtekenreeks](template-functions-string.md#substring)
 * [Nemen](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)
@@ -224,7 +231,6 @@ Resourcemanager biedt de volgende functies voor het werken met tekenreeksen:
 * [Uri](template-functions-string.md#uri)
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
-* [utcNu](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Volgende stappen
 

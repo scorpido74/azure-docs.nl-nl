@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 702df1bfaf0701a40e514f8a47151f96917adf38
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: cfec30e56b0fd523896cbc1a7e84e92f639075a8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811598"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879051"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft Teams gebruiken op Windows Virtual-bureaublad
 
@@ -40,7 +40,7 @@ Als u de installatie van Teams per machine wilt inschakelen, stelt u de volgende
 ```shell
   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams\IsWVDEnvironment]
   Type: REG_DWORD
-  Value: 0x1
+  Value: 1
 ```
 
 ### <a name="install-microsoft-teams"></a>Microsoft Teams installeren
@@ -66,4 +66,4 @@ U de Bureaublad-app Teams implementeren met een installatie per machine. Ga als 
       ```
 
       > [!NOTE]
-      > Als u Teams installeert met de MSI-instelling ALLUSERS=1, worden automatische updates uitgeschakeld. We raden je aan om Teams minstens één keer per maand bij te werken.
+      > Als u Teams installeert met de MSI-instelling ALLUSER=1, worden automatische updates uitgeschakeld. We raden je aan om Teams minstens één keer per maand bij te werken.

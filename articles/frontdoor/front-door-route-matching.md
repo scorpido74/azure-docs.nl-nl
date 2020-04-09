@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471588"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878592"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Hoe Voordeur aanvragen koppelt aan een routeringsregel
 
-Na het tot stand brengen van een verbinding en het doen van een SSL-handdruk, wanneer een aanvraag op een Front Door-omgeving landt, is een van de eerste dingen die Front Door doet, bepalen d.m.m.) de gedefinieerde actie. In het volgende document wordt uitgelegd hoe Voordeur bepaalt welke routeconfiguratie moet worden gebruikt bij het verwerken van een HTTP-aanvraag.
+Na het opzetten van een verbinding en het doen van een TLS-handshake, wanneer een aanvraag op een Front Door-omgeving landt, is een van de eerste dingen die Front Door doet, bepalen d.m.v. alle configuraties, welke specifieke routeregel moet overeenkomen met het verzoek en vervolgens de gedefinieerde actie. In het volgende document wordt uitgelegd hoe Voordeur bepaalt welke routeconfiguratie moet worden gebruikt bij het verwerken van een HTTP-aanvraag.
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Structuur van een voordeurrouteconfiguratie
 Een voordeurregelconfiguratie bestaat uit twee belangrijke delen: een "linkerkant" en een "rechterkant". We koppelen het binnenkomende verzoek aan de linkerkant van de route, terwijl de rechterkant bepaalt hoe we de aanvraag verwerken.

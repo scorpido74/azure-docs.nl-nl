@@ -1,24 +1,24 @@
 ---
 title: Azure HDInsight voor Visual Studio-code
-description: Meer informatie over het gebruik van de Spark & Hive Tools (Azure HDInsight) voor Visual Studio Code voor het maken en verzenden van query's en scripts.
+description: Meer informatie over het gebruik van de Spark & Hive Tools (Azure HDInsight) voor Visual Studio Code. Gebruik de hulpprogramma's om query's en scripts te maken en in te dienen.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: de433d85c2f04a7140fbcb918730218ac3a05e54
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435685"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878626"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Spark & Hive-hulpprogramma's gebruiken voor visual studiocode
 
-Meer informatie over het gebruik van Spark-& Hive-hulpprogramma's voor Visual Studio-code om Apache Hive-batchtaken, interactieve Hive-query's en PySpark-scripts voor Apache Spark te maken en in te dienen. Eerst beschrijven we hoe we Spark-& Hive Tools in Visual Studio Code kunnen installeren, en daarna doorlopen we hoe we vacatures kunnen indienen bij Spark & Hive Tools.  
+Meer informatie over het gebruik van Apache Spark & Hive Tools voor Visual Studio Code. Gebruik de hulpprogramma's voor het maken en verzenden van Apache Hive batchjobs, interactieve Hive-query's en PySpark-scripts voor Apache Spark. Eerst beschrijven we hoe we Spark & Hive Tools kunnen installeren in Visual Studio Code. Dan gaan we door hoe we vacatures kunnen indienen bij Spark & Hive Tools.  
 
-Spark & Hive Tools kunnen worden geïnstalleerd op platforms die worden ondersteund door Visual Studio Code, waaronder Windows, Linux en macOS. Let op de volgende voorwaarden voor verschillende platforms.
+Spark & Hive Tools kunnen worden geïnstalleerd op platforms die worden ondersteund door Visual Studio Code. Let op de volgende voorwaarden voor verschillende platforms.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -50,7 +50,7 @@ Nadat u aan de vereisten hebt voldoen, u Spark & Hive Tools voor Visual Studio C
 
 Voer de volgende stappen uit om een werkmap te openen en een bestand te maken in Visual Studio Code:
 
-1. Navigeer in de menubalk naar **Map Openen bestand...** > **Open Folder...**  >  **C:\HD\HDexample**en selecteer vervolgens de knop **Map selecteren.** De map wordt links in de **Explorer-weergave** weergegeven.
+1. Navigeer in de menubalk naar Map > **Openen** **bestand...**  >  **C:\HD\HDexample**en selecteer vervolgens de knop **Map selecteren.** De map wordt links in de **Explorer-weergave** weergegeven.
 
 2. Selecteer in de **Explorer-weergave** de map **HDexample** en selecteer vervolgens het pictogram **Nieuw bestand** naast de werkmap:
 
@@ -70,13 +70,13 @@ Voer voor een nationale cloudgebruiker de volgende stappen uit om eerst de Azure
 
 ## <a name="connect-to-an-azure-account"></a>Verbinding maken met een Azure-account
 
-Voordat u scripts indienen naar uw clusters vanuit Visual Studio Code, moet u verbinding maken met uw Azure-account of een cluster koppelen (met behulp van gebruikers- en wachtwoordreferenties van Apache Ambari of een account dat is verbonden met een domein). Volg de volgende stappen om verbinding te maken met Azure:
+Voordat u scripts vanuit Visual Studio Code naar uw clusters verzenden, moet u verbinding maken met uw Azure-account of een cluster koppelen. Gebruik de gebruikersnaam en wachtwoordreferenties van Apache Ambari of een account dat is verbonden met een domein. Volg de volgende stappen om verbinding te maken met Azure:
 
 1. Navigeer in de menubalk naar **Opdrachtpalet weergeven...** > **Command Palette...** en voer **Azure in: Aanmelden:**
 
     ![Spark & Hive-hulpprogramma's voor het inloggen met visual studiocode](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
-2. Volg de aanmeldingsinstructies om u aan te melden bij Azure. Nadat u bent verbonden, wordt uw Azure-accountnaam weergegeven op de statusbalk onder aan het venster Visual Studio Code.  
+2. Volg de aanmeldingsinstructies om u aan te melden bij Azure. Nadat u bent verbonden, wordt de naam van uw Azure-account weergegeven op de statusbalk onder aan het venster Visual Studio Code.  
 
 ## <a name="link-a-cluster"></a>Een cluster koppelen
 
@@ -114,7 +114,7 @@ U een normaal cluster koppelen met behulp van een [door Apache Ambari](https://a
 3. Voer het algemene Livy-eindpunt in. Bijvoorbeeld: http\:-10.172.41.42:18080.
 
 4. Selecteer autorisatietype **Basic** of **Geen**.  Als u **Basic**selecteert:  
-    &emsp;a. Voer uw Ambari-gebruikersnaam in; de standaardinstelling is **beheerder**.  
+    &emsp;A. Voer uw Ambari-gebruikersnaam in; de standaardinstelling is **beheerder**.  
     &emsp;B. Voer uw Ambari-wachtwoord in.
 
 5. **Uitvoerweergave** controleren voor verificatie.
@@ -260,7 +260,7 @@ Nadat u een Python-taak hebt verzonden, worden logboeken voor indiening weergege
 
 ## <a name="apache-livy-configuration"></a>Apache Livy-configuratie
 
-[Apache Livy](https://livy.incubator.apache.org/) configuratie wordt ondersteund. U het configureren in de **. VSCode\settings.json-bestand** in de werkruimtemap. Momenteel ondersteunt Livy-configuratie alleen Python-script. Zie [Livy README voor](https://github.com/cloudera/livy/blob/master/README.rst )meer informatie.
+[Apache Livy](https://livy.incubator.apache.org/) configuratie wordt ondersteund. U het configureren in de **. VSCode\settings.json-bestand** in de werkruimtemap. Momenteel ondersteunt Livy-configuratie alleen Python-script. Zie [Livy README](https://github.com/cloudera/livy/blob/master/README.rst )voor meer informatie.
 
 <a id="triggerlivyconf"></a>**Hoe livy-configuratie te activeren**
 
@@ -269,7 +269,7 @@ Methode 1
 2. Typ **HDInsight Job Submission: Livy Conf**in het vak **Zoekinstellingen.**  
 3. Selecteer **Bewerken in settings.json** voor het relevante zoekresultaat.
 
-Methode 2 Een bestand verzenden en u zien dat de map .vscode automatisch wordt toegevoegd aan de werkmap. U de Livy-configuratie bekijken door **.vscode\settings.json**te selecteren.
+Methode 2 Een bestand verzenden `.vscode` en er bij zorgen dat de map automatisch wordt toegevoegd aan de werkmap. U de Livy-configuratie bekijken door **.vscode\settings.json**te selecteren.
 
 + De projectinstellingen:
 
@@ -283,7 +283,7 @@ Methode 2 Een bestand verzenden en u zien dat de map .vscode automatisch wordt t
     **POST /batches** Aanvraaginstantie
 
     | name | description | type |
-    | :- | :- | :- |
+    | --- | --- | --- |
     | file | Bestand met de uit te voeren toepassing | Pad (vereist) |
     | proxyGebruiker | Gebruiker die zich voordoet bij het uitvoeren van de taak | Tekenreeks |
     | Classname | Toepassing Java/Spark hoofdklasse | Tekenreeks |
@@ -304,8 +304,8 @@ Methode 2 Een bestand verzenden en u zien dat de map .vscode automatisch wordt t
     Reactielichaam Het gemaakte batchobject.
 
     | name | description | type |
-    | :- | :- | :- |
-    | id | Sessie-id | Int |
+    | --- | ---| --- |
+    | Id | Sessie-id | Int |
     | appId | Toepassings-id van deze sessie | Tekenreeks |
     | appInfo | Gedetailleerde toepassingsgegevens | Kaart van key=val |
     | logboek | Logboekregels | Lijst met tekenreeksen |
@@ -340,8 +340,8 @@ U de Hive Table in uw clusters rechtstreeks bekijken via de **Azure HDInsight-ve
 
 - Deelvenster BERICHTEN
    1. Wanneer het aantal rijen in de tabel groter is dan 100, ziet u het volgende bericht: 'De eerste 100 rijen worden weergegeven voor de tabel Hive.'
-   2. Wanneer het aantal rijen in de tabel kleiner is dan of gelijk is aan 100, ziet u een bericht als volgt: '60 rijen worden weergegeven voor de tabel Hive'.
-   3. Als er geen inhoud in de tabel staat, ziet u het volgende bericht: '0 rijen worden weergegeven voor de tabel Hive'.
+   2. Wanneer het aantal rijen in de tabel kleiner is dan of gelijk is aan 100, ziet u het volgende bericht: '60 rijen worden weergegeven voor de tabel Hive'.
+   3. Als er geen inhoud in de tabel staat,`0 rows are displayed for Hive table.`ziet u het volgende bericht: "
 
         >[!NOTE]
         >
@@ -364,7 +364,7 @@ Spark & Hive for Visual Studio Code ondersteunt ook de volgende functies:
 
 ## <a name="reader-only-role"></a>Rol met alleen voor lezers
 
-Gebruikers die de rol met alleen-reader voor het cluster toegewezen krijgen, kunnen geen taken meer indienen bij het HDInsight-cluster en kunnen de Hive-database ook niet bekijken. Neem contact op met de clusterbeheerder om uw rol te upgraden naar [**HDInsight Cluster Operator**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) in de [Azure-portal.](https://ms.portal.azure.com/) Als u geldige Ambari-referenties hebt, u het cluster handmatig koppelen aan de hand van de volgende richtlijnen.
+Gebruikers die de rol met alleen-reader voor het cluster toegewezen krijgen, kunnen geen taken indienen bij het HDInsight-cluster en de Hive-database bekijken. Neem contact op met de clusterbeheerder om uw rol te upgraden naar [**HDInsight Cluster Operator**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) in de [Azure-portal.](https://ms.portal.azure.com/) Als u geldige Ambari-referenties hebt, u het cluster handmatig koppelen aan de hand van de volgende richtlijnen.
 
 ### <a name="browse-the-hdinsight-cluster"></a>Blader door het HDInsight-cluster  
 
@@ -393,11 +393,11 @@ Wanneer u taak indient bij een HDInsight-cluster, wordt u gevraagd het cluster t
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>Blader door een Data Lake Storage Gen2-account
 
-Wanneer u de Azure HDInsight explorer selecteert om een Data Lake Storage Gen2-account uit te breiden, wordt u gevraagd de opslagtoegangssleutel in te voeren als uw Azure-account geen toegang heeft tot Gen2-opslag. Nadat de toegangssleutel is gevalideerd, wordt het Data Lake Storage Gen2-account automatisch uitgebreid.
+Selecteer de Azure HDInsight-verkenner om een Data Lake Storage Gen2-account uit te breiden. U wordt gevraagd de opslagtoegangssleutel in te voeren als uw Azure-account geen toegang heeft tot Gen2-opslag. Nadat de toegangssleutel is gevalideerd, wordt het Data Lake Storage Gen2-account automatisch uitgebreid.
 
 ### <a name="submit-jobs-to-an-hdinsight-cluster-with-data-lake-storage-gen2"></a>Taken verzenden naar een HDInsight-cluster met Data Lake Storage Gen2
 
-Wanneer u een taak indient bij een HDInsight-cluster met Data Lake Storage Gen2, wordt u gevraagd de opslagtoegangssleutel in te voeren als uw Azure-account geen schrijftoegang heeft tot Gen2-opslag. Nadat de toegangssleutel is gevalideerd, wordt de taak met succes ingediend.
+Dien een taak in bij een HDInsight-cluster met Data Lake Storage Gen2. U wordt gevraagd de opslagtoegangssleutel in te voeren als uw Azure-account geen schrijftoegang heeft tot Gen2-opslag. Nadat de toegangssleutel is gevalideerd, wordt de taak met succes ingediend.
 
 ![Spark & Hive-hulpprogramma's voor AccessKey voor Visual Studio-code](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png)
 

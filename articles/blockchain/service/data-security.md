@@ -4,12 +4,12 @@ description: Azure Blockchain Service-concepten voor toegang tot gegevens en bev
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 989d9f2afad30517a85185878d694c0b6640e987
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982233"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879595"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure Blockchain-servicebeveiliging
 
@@ -25,9 +25,9 @@ Azure Blockchain Service-resources worden geïsoleerd in een privé virtueel net
 
 Gebruikersgegevens worden opgeslagen in Azure-opslag. Gebruikersgegevens worden versleuteld in beweging en in rust voor veiligheid en vertrouwelijkheid. Zie voor meer informatie: [Azure Storage security guide](../../storage/blobs/security-recommendations.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
-Transacties kunnen via een RPC-eindpunt naar blockchain-knooppunten worden verzonden. Clients communiceren met een transactieknooppunt met behulp van een reverse proxy-server die gebruikersverificatie verwerkt en gegevens versleutelt via SSL.
+Transacties kunnen via een RPC-eindpunt naar blockchain-knooppunten worden verzonden. Clients communiceren met een transactieknooppunt via een reverse proxy-server die gebruikersverificatie verwerkt en gegevens versleutelt via TLS.
 
 ![Verificatiediagram](./media/data-security/authentication.png)
 

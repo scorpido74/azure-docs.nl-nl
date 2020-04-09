@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 9d335bcf6daf0b38e7a68ca2d40894dd64c93e40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442158"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985589"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB: overzicht van BulkExecutor-bibliotheek
  
@@ -51,4 +51,4 @@ De bulk executor bibliotheek zorgt ervoor dat maximaal gebruik maken van de door
 * Meer informatie door de voorbeeldtoepassingen uit te proberen die de bibliotheek voor bulkuitvoerbestanden in [.NET](bulk-executor-dot-net.md) en [Java gebruiken](bulk-executor-java.md).  
 * Bekijk de bulk executor SDK informatie en release notes in [.NET](sql-api-sdk-bulk-executor-dot-net.md) en [Java](sql-api-sdk-bulk-executor-java.md).
 * De bulkexecutorbibliotheek is geïntegreerd in de Cosmos DB Spark-connector, zie het artikel [azure cosmos DB Spark-connector.](spark-connector.md)  
-* De bulkexecutorbibliotheek is ook geïntegreerd in een nieuwe versie van [azure cosmos DB-connector](https://aka.ms/bulkexecutor-adf-v2) voor Azure Data Factory om gegevens te kopiëren.
+* De bulkexecutorbibliotheek is ook geïntegreerd in een nieuwe versie van [azure cosmos DB-connector](../data-factory/connector-azure-cosmos-db.md) voor Azure Data Factory om gegevens te kopiëren.

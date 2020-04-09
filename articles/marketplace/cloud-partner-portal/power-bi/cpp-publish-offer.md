@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: d52270e623a713d7188ac5ff907ebb82ada13283
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: a5eb5b652f7a419c6c2d1b3e6880c3c3003fb679
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745600"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985521"
 ---
 # <a name="publish-a-power-bi-app-offer"></a>Een Power BI-app-aanbieding publiceren
 
 >[!Important]
->Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
 
 De laatste stap, nadat u een aanbieding in de Cloud Partner Portal hebt gedefinieerd en de bijbehorende technische elementen hebt gemaakt, is het indienen van de aanbieding voor publicatie. Als u dit proces wilt starten, selecteert u in het linkerdeelvenster van het venster **Nieuwe aanbieding** de optie **Publiceren**. Zie [Azure Marketplace- en AppSource-aanbiedingen publiceren](../manage-offers/cpp-publish-offer.md)voor meer informatie.
 

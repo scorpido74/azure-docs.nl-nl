@@ -2,26 +2,22 @@
 title: Azure AD-verificatie & foutcodes voor autorisatie
 description: Meer informatie over de AADSTS-foutcodes die worden geretourneerd van de Azure AD Security Token Service (STS).
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
-ms.date: 03/31/2020
+ms.date: 04/07/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 91d285e2a839a7d6266c5d58f52901a48a7a8c84
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 40a7406ea91c95daad2f180b9d0f4620cdbbf454
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473168"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875925"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Foutcodes azure AD-verificatie en autorisatie
 
@@ -133,6 +129,7 @@ Zoek op het numerieke deel van de geretourneerde foutcode.  Als u bijvoorbeeld d
 | AADSTS50180 | WindowsIntegratedAuthMissing - Geïntegreerde Windows-verificatie is nodig. Schakel de tenant in voor een naadloze eenmalige aanmelding (SSO). |
 | AADSTS50187 | DeviceInformationNotProvided - De service kan apparaatverificatie niet uitvoeren. |
 | AADSTS50196 | LoopDetected - Er is een clientlus gedetecteerd. Controleer de logica van de app om ervoor te zorgen dat tokencaching wordt geïmplementeerd en dat foutvoorwaarden correct worden verwerkt.  De app heeft te veel van hetzelfde verzoek in een te korte periode, wat aangeeft dat het in een defecte staat of is misbruik van het aanvragen van tokens. |
+| AADSTS50197 | ConflictingIdentities - De gebruiker kon niet worden gevonden. Probeer je opnieuw aan te melden. |
 | AADSTS50199 | CmsiInterrupt - Om veiligheidsredenen is bevestiging van de gebruiker vereist voor dit verzoek.  Omdat dit een "interaction_required" fout is, moet de client interactieve auth doen.  Dit gebeurt omdat een systeemwebview is gebruikt om een token voor een native toepassing aan te vragen - de gebruiker moet worden gevraagd om te vragen of dit eigenlijk de app was waarop ze zich wilden aanmelden.|
 | AADSTS51000 | RequiredFeatureNotEnabled - De functie is uitgeschakeld. |
 | AADSTS51001 | DomainHintMustbePresent - Domeinhint moet aanwezig zijn met on-premises beveiligings-id of on-premises UPN. |
