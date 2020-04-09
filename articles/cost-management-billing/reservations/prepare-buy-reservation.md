@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/07/2020
 ms.author: banders
-ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 1f44b0a0e2278bfcfbbf7cde1a3605fe334eaa3f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436971"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886514"
 ---
 # <a name="buy-a-reservation"></a>Een reservering kopen
 
@@ -43,8 +43,6 @@ Wanneer u reserveringskorting op uw gebruik toepast, wordt de reservering in dez
 1. Reserveringen die worden gekoppeld aan een resourcegroep
 2. Reserveringen met één bereik
 3. Reserveringen met gedeeld bereik
-
-Voor één resourcegroep is reserveringskorting vanuit meerdere reserveringen beschikbaar, afhankelijk van de manier waarop u uw reserveringen hebt gekoppeld.
 
 U kunt het bereik altijd bijwerken nadat u een reservering hebt gekocht. Ga hiervoor naar de reservering, klik op **Configuratie** en koppel de reservering opnieuw. Het opnieuw koppelen van een reservering wordt niet als commerciële transactie beschouwd. Uw reserveringstermijn blijft ongewijzigd. Zie [Het bereik bijwerken na aanschaf van een reservering](manage-reserved-vm-instance.md#change-the-reservation-scope) voor meer informatie over het bijwerken van het bereik.
 
