@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 084f32ec9c1574dfdaf29edc24a406444de9a91d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b1bf2c365229a418870250a78a733f9870fb5bb0
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679924"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892373"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Snelstart: een model converteren voor rendering
 
@@ -72,10 +72,10 @@ Vul het formulier als volgt in:
 * Maak een nieuwe resourcegroep via de link onder het vervolgkeuzevak en geef deze **ARR_Tutorial**
 * Voer hier een unieke naam in voor de **naam van het opslagaccount.** **Deze naam moet wereldwijd uniek zijn,** anders zal er een prompt zijn die u informeert dat de naam klaar is gegeven. In het toepassingsgebied van deze quickstart noemen we het **arrtutorialstorage.** Dienovereenkomstig moet u deze vervangen door uw naam voor elke gebeurtenis in deze quickstart.
 * Selecteer een **locatie** in uw buurt. Gebruik idealiter dezelfde locatie als gebruikt voor het instellen van de rendering in de andere quickstart.
-* **Prestaties** ingesteld op 'Standaard'
-* **Accountsoort** ingesteld op 'StorageV2 (general purpose v2)'
-* **Replicatie** ingesteld op 'Read-access geo-redundantstorage (RA-GRS)'
-* **Toegangslaag** ingesteld op 'Hot'
+* **Prestaties** ingesteld op Standaard
+* **Accountsoort** ingesteld op StorageV2 (algemeen doel v2)
+* **Replicatieingesteld** op Georedundant-opslag voor leestoegang (RA-GRS)
+* **Toegangslaag** ingesteld op Hot
 
 Geen van de eigenschappen in andere tabbladen hoeft te worden gewijzigd, dus u doorgaan met **'Controleren + maken'** en vervolgens de stappen volgen om de installatie te voltooien.
 
@@ -159,11 +159,14 @@ Zodra het model is geconverteerd, wordt het teruggeschreven naar de opslagcontai
 
 De **uitvoeroutput outputAssetFileName** van config bepaalt de naam van het geconverteerde element : de parameter is optioneel en de uitvoerbestandsnaam wordt afgeleid uit de invoerbestandsnaam anders. 
 
-Open een PowerShell, zorg ervoor dat u de *Azure PowerShell* hebt geïnstalleerd zoals vermeld in de [vereisten.](#prerequisites) Log dan in bij uw abonnement:
+Open een PowerShell, zorg ervoor dat u de *Azure PowerShell* hebt geïnstalleerd zoals vermeld in de [vereisten.](#prerequisites) Meld je dan aan bij je abonnement met de volgende opdracht en volg de aanwijzingen op het scherm:
 
 ```PowerShell
-Connect-AzAccount -Subscription "<your Azure subscription id>"
+Connect-AzAccount
 ```
+
+> [!NOTE]
+> Als uw organisatie meer dan één abonnement heeft, moet u mogelijk de argumenten SubscriptionId en Tenant opgeven. Meer informatie vindt u in de [connect-azaccount-documentatie.](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)
 
 Wijzig de `azure-remote-rendering\Scripts` map en voer het conversiescript uit:
 

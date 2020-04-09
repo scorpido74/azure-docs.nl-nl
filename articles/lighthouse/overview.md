@@ -3,12 +3,12 @@ title: Wat is Azure Lighthouse?
 description: Azure Lighthouse laat serviceproviders managed services leveren voor hun klanten met een hogere automatisering en efficiëntie op schaal.
 ms.date: 11/11/2019
 ms.topic: overview
-ms.openlocfilehash: 0bec1f5b727ca3ecd604d2654358ca9a5507abe4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1d4d33238f30c2a579c6a0da6a39238207db4f4a
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75646191"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982783"
 ---
 # <a name="what-is-azure-lighthouse"></a>Wat is Azure Lighthouse?
 
@@ -32,7 +32,7 @@ Azure Lighthouse bevat meerdere manieren om de betrokkenheid en het beheer van k
 
 - **Azure gedelegeerd resourcebeheer:** Beheer de Azure-bronnen van uw klanten veilig vanuit uw eigen tenant, zonder dat u van context hoeft te wisselen en vlakken hoeft te beheren. Zie [Azure delegated resource management](concepts/azure-delegated-resource-management.md)voor meer informatie .
 - **Nieuwe Azure-portalervaringen:** Informatie over meerdere tenantweeren in de nieuwe pagina **Mijn klanten** in de [Azure-portal](https://portal.azure.com). Met een bijbehorend **blade van serviceproviders** kunnen uw klanten de toegang tot serviceproviders bekijken en beheren. Zie [Klanten weergeven en beheren en](./how-to/view-manage-customers.md) [serviceproviders bekijken en beheren.](how-to/view-manage-service-providers.md)
-- **Azure Resource Manager-sjablonen:** voer beheertaken eenvoudiger uit, inclusief onboarding-klanten voor Azure-gedelegeerd bronbeheer. Zie voor meer informatie onze [voorbeelden repo](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates) en [Onboard een klant naar Azure gedelegeerd resourcebeheer](how-to/onboard-customer.md).
+- **Azure Resource Manager-sjablonen:** voer beheertaken eenvoudiger uit, inclusief onboarding-klanten voor Azure-gedelegeerd bronbeheer. Zie voor meer informatie onze [voorbeelden repo](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates) en [Onboard een klant naar Azure gedelegeerd resourcebeheer](how-to/onboard-customer.md).
 - **Managed Services-aanbiedingen in Azure Marketplace:** bied uw services aan klanten aan via privé- of openbare aanbiedingen en laat ze automatisch aan azure-gedelegeerd bronbeheer koppelen, als alternatief voor onboarding met Azure Resource Manager-sjablonen. Zie [Aanbiedingen voor beheerde services in Azure Marketplace](concepts/managed-services-offers.md)voor meer informatie.
 - **Azure-beheerde toepassingen:** pakket- en verzendtoepassingen die uw klanten eenvoudig kunnen implementeren en gebruiken in hun eigen abonnementen. De toepassing wordt geïmplementeerd in een resourcegroep die u vanuit uw tenant opent, zodat u de service beheren als onderdeel van de algehele Azure Lighthouse-ervaring. Zie [overzicht van Azure managed applications](../azure-resource-manager/managed-applications/overview.md)voor meer informatie.
 

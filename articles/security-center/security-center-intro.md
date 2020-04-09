@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 11201d6560319dd34ec829f1fb34bd13d45011d7
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: d2e7e157156a4049a5db37b1d5c0e02773adbcc3
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435826"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879544"
 ---
 # <a name="what-is-azure-security-center"></a>Wat is Azure Security Center?
 
@@ -29,7 +29,7 @@ Het beveiligen van uw resources wordt in een samenwerking tussen uw cloudprovide
 
 Azure Security Center biedt een oplossing voor de drie dringendste beveiligingsproblemen:
 
--   **Snel veranderende workloads**: dit is zowel een sterke kant als een uitdaging van de cloud. Enerzijds kunnen eindgebruikers zelf meer doen. Maar hoe zorgt u ervoor dat de voortdurend veranderende services die gebruikers gebruiken en maken, voldoen aan uw beveiligingsnormen en in overeenstemming zijn met de best practices voor beveiliging?
+-   **Snel veranderende workloads** – Het is zowel een kracht als een uitdaging van de cloud. Enerzijds kunnen eindgebruikers zelf meer doen. Maar hoe zorgt u ervoor dat de voortdurend veranderende services die gebruikers gebruiken en maken, voldoen aan uw beveiligingsnormen en in overeenstemming zijn met de best practices voor beveiliging?
 
 -   **Aanvallen die steeds geavanceerder worden**: overal waar u de workloads uitvoert, worden de aanvallen steeds geavanceerder. U moet uw workloads in de openbare cloud beveiligen. Dit zijn immers workloads die gebruikmaken van internet, zodat u nog kwetsbaarder bent als u zich niet houdt aan de best practices voor beveiliging.
 
@@ -146,5 +146,7 @@ Uitgebreide logboekverzameling: logboeken van Windows en Linux worden gebruikt d
 ## <a name="next-steps"></a>Volgende stappen
 
 - U moet over een Microsoft Azure-abonnement beschikken om met Security Center aan de slag te gaan. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/free/).
-- De gratis prijscategorie van Security Center is ingeschakeld met uw Azure-abonnement. Als u wilt profiteren van geavanceerde mogelijkheden voor beveiligingsbeheer en bedreigingsbeveiliging, moet u upgraden naar de standaardprijslaag. De standaardlaag kan 30 dagen gratis worden uitgeprobeerd. Zie de [prijspagina van het Beveiligingscentrum](https://azure.microsoft.com/pricing/details/security-center/)voor meer informatie.
+
+- De gratis prijscategorie van Security Center is ingeschakeld voor al uw huidige Azure-abonnementen zodra u het Azure Security Center-dashboard in de Azure Portal voor de eerste keer bezoekt of als u programmatisch via API is ingeschakeld. Om te profiteren van geavanceerde mogelijkheden voor beveiligingsbeheer en bedreigingsdetectie, moet u upgraden naar de standaardprijslaag. De standaardlaag kan 30 dagen gratis worden uitgeprobeerd. Zie de [pagina met prijzen van Security Center](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
+
 - Als u nu de Standard van het Beveiligingscentrum wilt inschakelen, leidt het [Quickstart: Aan boord van uw Azure-abonnement bij Security Center Standard](security-center-get-started.md) u door de stappen.

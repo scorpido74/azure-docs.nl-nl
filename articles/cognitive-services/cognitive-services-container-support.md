@@ -3,19 +3,19 @@ title: Ondersteuning voor containers
 titleSuffix: Azure Cognitive Services
 description: Ontdek hoe Docker-containers Cognitive Services dichter bij uw gegevens kunnen brengen.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: dapine
-ms.openlocfilehash: d75962b98543991a065f6b165279215614175925
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 7a38ec47d416027e8ea3fa772ae01e4f6264197a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219410"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876816"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Containerondersteuning in Azure Cognitive Services
 
@@ -23,7 +23,7 @@ Containerondersteuning in Azure Cognitive Services stelt ontwikkelaars in staat 
 
 > [!div class="checklist"]
 > * [Anomaly Detector][ad-containers]
-> * [Computer Visie][cv-containers]
+> * [Computer Vision][cv-containers]
 > * [Face][fa-containers]
 > * [Form Recognizer][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
@@ -52,7 +52,7 @@ Azure Cognitive Services-containers bieden de volgende set Docker-containers, di
 | Service | Ondersteunde prijscategorie | Container | Beschrijving |
 |---------|----------|----------|-------------|
 |[Anomaliedetector][ad-containers] |F0, S0|**Anomalie-detector** |Met de Anomaly Detector API u afwijkingen in uw tijdreeksgegevens met machine learning monitoren en detecteren.<br>[Toegang aanvragen](https://aka.ms/adcontainer)|
-|[Computer Visie][cv-containers] |F0, S1|**Lezen** |Hiermee haalt u afgedrukte tekst uit afbeeldingen van verschillende objecten met verschillende oppervlakken en achtergronden, zoals ontvangstbewijzen, posters en visitekaartjes. De leescontainer detecteert ook *handgeschreven tekst* in afbeeldingen en biedt ondersteuning voor PDF/TIFF/multi-page.<br/><br/>**Belangrijk:** De Lees-container werkt momenteel alleen met Engels.|
+|[Computer Vision][cv-containers] |F0, S1|**Lezen** |Hiermee haalt u afgedrukte tekst uit afbeeldingen van verschillende objecten met verschillende oppervlakken en achtergronden, zoals ontvangstbewijzen, posters en visitekaartjes. De leescontainer detecteert ook *handgeschreven tekst* in afbeeldingen en biedt ondersteuning voor PDF/TIFF/multi-page.<br/><br/>**Belangrijk:** De Lees-container werkt momenteel alleen met Engels.|
 |[Face][fa-containers] |F0, S0|**Face** |Detecteert menselijke gezichten in afbeeldingen en identificeert kenmerken, waaronder gezichtsoriëntatiepunten (zoals neuzen en ogen), geslacht, leeftijd en andere door de machine voorspelde gelaatstrekken. Naast detectie kan Face controleren of twee gezichten in dezelfde afbeelding of verschillende afbeeldingen hetzelfde zijn door een betrouwbaarheidsscore te gebruiken, of gezichten vergelijken met een database om te zien of er al een vergelijkbaar of identiek gezicht bestaat. Het kan ook vergelijkbare gezichten in groepen ordenen, met behulp van gedeelde visuele eigenschappen.<br>[Toegang aanvragen](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Formulierherkenning][fr-containers] |F0, S0|**Form Recognizer** |Form Understanding past machine learning-technologie toe om sleutelwaardeparen en tabellen uit formulieren te identificeren en te extraheren.<br>[Toegang aanvragen](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS][lu-containers] |F0, S0|**LUIS** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Laadt een getraind of gepubliceerd taalbegripsmodel, ook wel LUIS-app genoemd, in een dockercontainer en biedt toegang tot de queryvoorspellingen van de API-eindpunten van de container. U querylogboeken uit de container verzamelen en deze uploaden naar de [LUIS-portal](https://www.luis.ai) om de nauwkeurigheid van de voorspelling van de app te verbeteren.|

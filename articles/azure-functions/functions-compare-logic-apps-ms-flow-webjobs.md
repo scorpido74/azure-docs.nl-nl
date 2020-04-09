@@ -1,25 +1,21 @@
 ---
 title: Opties voor integratie- en automatiseringsplatform in Azure
-description: 'Vergelijk Microsoft-cloudservices die zijn geoptimaliseerd voor integratietaken: Microsoft Flow, Logic Apps, Functions en WebJobs.'
+description: 'Vergelijk Microsoft-cloudservices die zijn geoptimaliseerd voor integratietaken: Power Automate, Logic Apps, Functions en WebJobs.'
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: bd9f3bfe1578b632707382cfe422f19514e7ce48
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 40293056a73fd88e9ad6b3922aebfe0ba71f07dd
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241316"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878133"
 ---
-> [!NOTE]
-> Microsoft Flow heet nu Power Automate. Raadpleeg dit [blog](https://aka.ms/flow-now-pa) voor meer informatie.
-> 
-> Deze inhoud wordt de komende dagen bijgewerkt conform deze naamswijziging.
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Kies de juiste integratie- en automatiseringsservices in Azure
 
 In dit artikel worden de volgende Microsoft-cloudservices vergeleken:
 
-* [Microsoft Flow](https://flow.microsoft.com/)
+* [Microsoft Power automatiseren](https://flow.microsoft.com/) (was Microsoft Flow)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
 * [Azure App Service WebJobs](../app-service/webjobs-create.md)
@@ -28,23 +24,23 @@ Al deze services kunnen integratieproblemen oplossen en bedrijfsprocessen automa
 
 Zie [Criteria voor het kiezen van een Azure compute-service](/azure/architecture/guide/technology-choices/compute-comparison) en Het kiezen van een [Azure-rekenoptie voor microservices](/azure/architecture/microservices/design/compute-options)als u op zoek bent naar een meer algemene vergelijking tussen Azure-functies en andere Azure-rekenopties.
 
-## <a name="compare-microsoft-flow-and-azure-logic-apps"></a>Microsoft Flow en Azure Logic Apps vergelijken
+## <a name="compare-microsoft-power-automate-and-azure-logic-apps"></a>Microsoft Power Automate en Azure Logic Apps vergelijken
 
-Microsoft Flow en Azure Logic Apps zijn beide *designer-first* integratieservices waarmee werkstromen kunnen worden gemaakt. Beide services integreren met verschillende SaaS- en bedrijfstoepassingen. 
+Power Automate en Logic Apps zijn beide *designer-first* integratieservices die workflows kunnen maken. Beide services integreren met verschillende SaaS- en bedrijfstoepassingen. 
 
-Microsoft Flow is gebaseerd op Logic Apps. Ze delen dezelfde workflow ontwerper en dezelfde [connectoren.](../connectors/apis-list.md) 
+Power Automate is gebouwd op de top van Logic Apps. Ze delen dezelfde workflow ontwerper en dezelfde [connectoren.](../connectors/apis-list.md) 
 
-Microsoft Flow stelt kantoormedewerkers in staat om eenvoudige integraties tot stand te brengen (bijvoorbeeld een goedkeuringsproces voor een documentbibliotheek in SharePoint) zonder tussenkomst van ontwikkelaars of IT. Logic Apps maakt het ook mogelijk om geavanceerde integraties te realiseren (zoals B2B-processen) waarvoor Azure DevOps-beveiligingsprocessen op ondernemingsniveau zijn vereist. Het is normaal dat een werkstroom voor een bedrijfsproces na verloop van tijd toeneemt in complexiteit. U kunt daarom eerst met een stroom beginnen en deze later omzetten in een logische app als dat nodig is.
+Power Automate stelt elke kantoormedewerker in staat om eenvoudige integraties uit te voeren (bijvoorbeeld een goedkeuringsproces op een SharePoint-documentbibliotheek) zonder door ontwikkelaars of IT te gaan. Logic Apps maakt het ook mogelijk om geavanceerde integraties te realiseren (zoals B2B-processen) waarvoor Azure DevOps-beveiligingsprocessen op ondernemingsniveau zijn vereist. Het is normaal dat een werkstroom voor een bedrijfsproces na verloop van tijd toeneemt in complexiteit. U kunt daarom eerst met een stroom beginnen en deze later omzetten in een logische app als dat nodig is.
 
-Raadpleeg de volgende tabel om te bepalen of Microsoft Flow of Logic Apps het meest geschikt is voor een bepaalde integratie:
+In de volgende tabel u bepalen of Power Automate of Logic Apps het beste is voor een bepaalde integratie:
 
-|  | Microsoft Flow | Logic Apps |
+|  | Power Automate | Logic Apps |
 | --- | --- | --- |
 | **Gebruikers** |Kantoorpersoneel, zakelijke gebruikers, SharePoint-beheerders |Professionele integrators en ontwikkelaars, IT-professionals |
-| **Scenario 's** |Selfservice |Geavanceerde integraties |
+| **Scenario's** |Selfservice |Geavanceerde integraties |
 | **Ontwerpomgeving** |In browser en mobiele app, alleen UI |In browser en [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [codeweergave](../logic-apps/logic-apps-author-definitions.md) beschikbaar |
 | **Application lifecycle management (ALM)** |Ontwerpen en testen in niet-productieomgevingen, niveau verhogen naar productie wanneer u klaar bent |Azure DevOps: broncodebeheer, testen, ondersteuning, automatisering en beheersbaarheid in [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
-| **Beheerervaring** |Microsoft Flow-omgevingen en DLP-beleid (Data Loss Prevention) beheren, licenties bijhouden: [Microsoft Flow Admin Center](https://admin.flow.microsoft.com) |Brongroepen, verbindingen, toegangsbeheer en logboekregistratie beheren: [Azure-portal](https://portal.azure.com) |
+| **Beheerervaring** |Beheer Power Automatiseer omgevingen en DLP-beleid (Data Loss Prevention), volg licenties: [Beheercentrum](https://admin.flow.microsoft.com) |Brongroepen, verbindingen, toegangsbeheer en logboekregistratie beheren: [Azure-portal](https://portal.azure.com) |
 | **Beveiliging** |Office 365-beveiliging en auditlogboeken voor naleving, preventie van gegevensverlies, [inactieve versleuteling](https://wikipedia.org/wiki/Data_at_rest#Encryption) voor gevoelige gegevens |Beveiligingsbeveiliging van Azure: [Azure-beveiliging,](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity) [Azure Security Center](https://azure.microsoft.com/services/security-center/), [controlelogboeken](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Azure Functions en Azure Logic Apps vergelijken
@@ -60,7 +56,7 @@ U kunt services combineren en matchen als u een indeling bouwt, waarbij u functi
 | **Ontwikkeling** | Code-first (imperatief) | Designer-first (declaratief) |
 | **Connectiviteit** | [Circa 15 bindingstypen](functions-triggers-bindings.md#supported-bindings); code schrijven voor aangepaste bindingen | [Grote verzameling connectors](../connectors/apis-list.md), [Enterprise Library Integration Pack voor B2B-scenario's](../logic-apps/logic-apps-enterprise-integration-overview.md); [aangepaste bindingen ontwikkelen](../logic-apps/custom-connector-overview.md) |
 | **Acties** | Elke activiteit is een Azure-functie; code schrijven voor de activiteitsfuncties |[Grote verzameling kant-en-klare acties](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| **Monitoring** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure Monitor-Logboeken](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
+| **Bewaking** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure Monitor-Logboeken](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
 | **Beheer** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
 | **Context voor uitvoering** | Kan [lokaal](functions-runtime-overview.md) of in de cloud worden uitgevoerd | Wordt alleen in de cloud uitgevoerd|
 
@@ -87,7 +83,7 @@ Azure Functions is gebaseerd op de WebJobs SDK en deelt daarom veel triggers en 
 |[Betalen per gebruik](functions-scale.md#consumption-plan)|✔||
 |[Integratie met Logic Apps](functions-twitter-email.md)|✔||
 | Trigger-gebeurtenissen |[Timer](functions-bindings-timer.md)<br>[Azure Storage-wachtrijen en -blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-wachtrijen en -onderwerpen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Storage-wachtrijen en -blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-wachtrijen en -onderwerpen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Bestandssysteem](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| Ondersteunde talen  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
+| Ondersteunde talen  |C#<br>F#<br>Javascript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
 |Pakketbeheer|NPM en NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> WebJobs (zonder de WebJobs SDK) ondersteunt C#, Java, JavaScript, Bash, .cmd, .bat, PowerShell, PHP, TypeScript, Python en meer. Dit is geen allesomvattende lijst. Een WebJob kan elk programma of script uitvoeren dat in de App Service-sandbox kan worden uitgevoerd.
@@ -107,25 +103,25 @@ Voor andere scenario's waarin u codefragmenten wilt uitvoeren voor de integratie
 
 <a name="together"></a>
 
-## <a name="microsoft-flow-logic-apps-functions-and-webjobs-together"></a>Microsoft Flow, Logic Apps, Functions en WebJobs samen
+## <a name="power-automate-logic-apps-functions-and-webjobs-together"></a>Power Automatiseer, Logische Apps, Functies en WebJobs samen
 
 U hoeft niet slechts een van deze services te kiezen. Ze integreren net zo goed met elkaar als met externe services.
 
 Een stroom kan een logische app aanroepen. Een logische app kan een functie aanroepen en een functie kan een logische app aanroepen. Zie bijvoorbeeld [Een functie maken die kan worden geïntegreerd met Azure Logic Apps](functions-twitter-email.md).
 
-De integratie tussen Microsoft Flow, Logic Apps en Functions wordt alleen maar beter. U kunt iets bouwen in de ene service en gebruiken in de andere services.
+De integratie tussen Power Automate, Logic Apps en Functions blijft in de loop van de tijd verbeteren. U kunt iets bouwen in de ene service en gebruiken in de andere services.
 
 Gebruik deze koppelingen voor meer informatie over integratieservices:
 
 * [Leveraging Azure Functions & Azure App Service for integration scenarios door Christopher Anderson](https://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
 * [Integrations Made Simple door Charles Lamanna](https://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [Logic Apps Live webcast](https://aka.ms/logicappslive) (Live webcast van Logic Apps)
-* [Veelgestelde vragen over Microsoft Flow](/power-automate/frequently-asked-questions)
+* [Power Automatiseer veelgestelde vragen](/power-automate/frequently-asked-questions)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Begin met het maken van uw eerste stroom, logische app of functie-app. Selecteer een van de volgende koppelingen:
 
-* [Aan de slag met Microsoft Flow](/power-automate/getting-started)
+* [Aan de slag met Power Automate](/power-automate/getting-started)
 * [Een logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Uw eerste Azure-functie maken](functions-create-first-azure-function.md)

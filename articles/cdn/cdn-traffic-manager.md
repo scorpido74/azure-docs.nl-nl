@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: de91f61385942db077bc98721eabe9f3f0b8624c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d44e53520481e4ada5c2f16f0c56a4a6a724ec1
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083009"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892475"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Failover instellen voor meerdere Azure CDN-eindpunten met Azure Traffic Manager
 
@@ -82,7 +82,7 @@ Nadat u uw CDN- en Traffic Manager-profielen hebt ingesteld, voert u deze stappe
     Azure CDN gebruikt het *subdomein cdnverify* om de DNS-toewijzing te valideren om dit registratieproces te voltooien. Zie [Een DNS-record voor CNAME maken](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)voor meer informatie. Met deze stap kan Azure CDN het aangepaste domein herkennen, zodat het kan reageren op zijn verzoeken.
     
     > [!NOTE]
-    > Als u SSL op een **Azure CDN van Akamai-profielen** wilt inschakelen, moet u het aangepaste domein rechtstreeks aan uw eindpunt koppelen. cdnverify voor het inschakelen van SSL wordt nog niet ondersteund. 
+    > Als u TLS op een **Azure CDN van Akamai-profielen** wilt inschakelen, moet u het aangepaste domein rechtstreeks aan uw eindpunt koppelen. cdnverify voor het inschakelen van TLS wordt nog niet ondersteund. 
     >
 
 3.  Ga terug naar de website voor de domeinprovider van uw aangepaste domein en werk de eerste DNS-toewijzing bij waarin u hebt gemaakt, zodat het aangepaste domein wordt toegewezen aan uw tweede CDN-eindpunt.

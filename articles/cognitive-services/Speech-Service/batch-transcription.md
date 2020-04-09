@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1f88df186526c2f9903337bb3331940be0989c3d
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668841"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892458"
 ---
 # <a name="what-is-batch-transcription"></a>Wat is batchtranscriptie?
 
@@ -129,7 +129,7 @@ Gebruik deze optionele eigenschappen om transcriptie te configureren:
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      Hiermee geeft u op of sentimentanalyse moet worden toegepast op de utterance. Geaccepteerde `true` waarden moeten `false` deze inschakelen en (de standaardwaarde) uitschakelen.
+      Hiermee geeft u op of sentimentanalyse moet worden toegepast op de utterance. Geaccepteerde `true` waarden moeten `false` deze inschakelen en (de standaardwaarde) uitschakelen. Zie [Sentimentanalyse](#sentiment-analysis) voor meer details.
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -218,12 +218,41 @@ Voor mono-invoeraudio wordt één transcriptieresultaatbestand gemaakt. Voor ste
 
 Het resultaat bevat de volgende formulieren:
 
-| Formulier        | Inhoud                                                                                                                                                  |
-|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Lexical`   | De werkelijke woorden herkend.                                                                                                                             |
-| `ITN`       | Omgekeerde tekst-genormaliseerde vorm van de erkende tekst. Afkortingen ("dokter Smith" naar "dr Smith"), telefoonnummers en andere transformaties worden toegepast. |
-| `MaskedITN` | De ITN-vorm met godslastering maskeren toegepast.                                                                                                             |
-| `Display`   | De weergavevorm van de herkende tekst. Toegevoegde interpunctie en hoofdletters zijn inbegrepen.                                                             |
+:::row:::
+   :::column span="1":::
+      **Formulier**
+   :::column-end:::
+   :::column span="2":::
+      **Inhoud**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Lexical`
+   :::column-end:::
+   :::column span="2":::
+      De werkelijke woorden herkend.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ITN`
+   :::column-end:::
+   :::column span="2":::
+      Omgekeerde tekst-genormaliseerde vorm van de erkende tekst. Afkortingen ("dokter Smith" naar "dr Smith"), telefoonnummers en andere transformaties worden toegepast.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `MaskedITN`
+   :::column-end:::
+   :::column span="2":::
+      De ITN-vorm met godslastering maskeren toegepast.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Display`
+   :::column-end:::
+   :::column span="2":::
+      De weergavevorm van de herkende tekst. Toegevoegde interpunctie en hoofdletters zijn inbegrepen.
+:::row-end:::
 
 ## <a name="speaker-separation-diarization"></a>Luidsprekerscheiding (Diarisatie)
 
@@ -260,6 +289,10 @@ De sentimentfunctie schat het sentiment dat in de audio wordt uitgedrukt. Het se
 - Identificeren wat klanten leuk vinden en wat ze niet leuk vinden aan een product of een service
 
 Sentiment wordt gescoord per audiosegment op basis van de lexicale vorm. De volledige tekst binnen dat audiosegment wordt gebruikt om het sentiment te berekenen. Er wordt geen geaggregeerd sentiment berekend voor de volledige transcriptie. Momenteel is sentimentanalyse alleen beschikbaar voor de Engelse taal.
+
+> [!NOTE]
+> We raden u aan in plaats daarvan de Microsoft Text Analytics API te gebruiken. Het biedt meer geavanceerde functies dan sentiment analyse zoals key phrase extractie, automatische taaldetectie, en nog veel meer. U vindt informatie en voorbeelden in de [Text Analytics-documentatie.](https://azure.microsoft.com/services/cognitive-services/text-analytics/)
+>
 
 Een JSON-uitvoervoorbeeld ziet er hieronder uit:
 

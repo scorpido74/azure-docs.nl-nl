@@ -3,19 +3,19 @@ title: Container Formulierherkenning uitvoeren in Azure Container Instances
 titleSuffix: Azure Cognitive Services
 description: Implementeer de container Formulierherkenning in een Azure Container Instance en test deze in een webbrowser.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.author: dapine
-ms.openlocfilehash: 9a3456eb4d30aa8d163488f558b571dd97c73bf4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: acba4d9fab784181fda5728c30831c8c1838b91f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77605114"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879527"
 ---
 # <a name="deploy-the-form-recognizer-container-to-azure-container-instances"></a>De container Formulierherkenning implementeren in Azure Container Instances
 

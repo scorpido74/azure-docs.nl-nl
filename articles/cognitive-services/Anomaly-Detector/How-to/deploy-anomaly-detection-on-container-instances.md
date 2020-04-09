@@ -3,19 +3,19 @@ title: Anomaliedetectorcontainer uitvoeren in Azure Container Instances
 titleSuffix: Azure Cognitive Services
 description: Implementeer de container Anomaliedetector in een Azure Container Instance en test deze in een webbrowser.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: dapine
-ms.openlocfilehash: 2fba0a0d64502a30b6dfbc9f4f109bca65cca8b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: a4973254c8a53917d99daf38b0d11e5dbecbb731
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76716361"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875107"
 ---
 # <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Een anomaliedetectorcontainer implementeren in Azure Container Instances
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: a8ef0f172a8e9118eef2d2f8a11f3efbce665171
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 0affae56ef6998efe4bb370287ff3688f83f3878
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473533"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873953"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Snelstart: aanmelden met Microsoft toevoegen aan een Python-web-app
 
@@ -41,8 +41,7 @@ Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
 >
-> 1. Ga naar de [Azure-portal - App-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
-> 1. Selecteer **Nieuwe registratie**.
+> 1. Ga naar de [Azure-portal - App-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs).
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
 > 1. Volg de instructies om uw nieuwe toepassing te downloaden en automatisch te configureren.
 >
@@ -59,8 +58,11 @@ Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
 >      - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `python-webapp`.
 >      - Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
->      - Selecteer onder de sectie **URI omleiden** in de vervolgkeuzelijst het **webplatform** en stel de waarde in op `http://localhost:5000/getAToken`.
->      - Selecteer **Registreren**. Noteer op de pagina **Overzicht** van de app de waarde **van de id-toepassing (client)** voor later gebruik.
+>      - Selecteer **Registreren**.
+>      - Noteer op de pagina **Overzicht** van de app de waarde **van de id-toepassing (client)** voor later gebruik.
+> 1. Selecteer de **verificatie** in het menu en voeg de volgende gegevens toe:
+>    - Voeg de configuratie **van het webplatform** toe. Toevoegen `http://localhost:5000/getAToken` als **URI's omleiden**.
+>    - Selecteer **Opslaan**.
 > 1. Kies in het linkermenu **Certificaten & geheimen** en klik op Nieuw **clientgeheim** in de sectie **Clientgeheimen:**
 >
 >      - Typ een sleutelbeschrijving (van instantie-app-geheim).
@@ -105,11 +107,11 @@ Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-application"></a>Stap 3: De toepassing configureren
-> 
+>
 > 1. Pak het zip-bestand uit in een lokale map dichter bij de hoofdmap (bijvoorbeeld **C:\Azure-Samples**)
 > 1. Als u een geïntegreerde ontwikkelomgeving gebruikt, opent u het voorbeeld in uw favoriete IDE (optioneel).
 > 1. Open het **app_config.py-bestand,** dat in de hoofdmap te vinden is en vervang het volgende codefragment:
-> 
+>
 > ```python
 > CLIENT_ID = "Enter_the_Application_Id_here"
 > CLIENT_SECRET = "Enter_the_Client_Secret_Here"

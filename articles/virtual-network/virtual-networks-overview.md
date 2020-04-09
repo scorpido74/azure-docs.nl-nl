@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 967d391d4ac9a9704688dce9636d9a71b2002549
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241421"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879357"
 ---
 # <a name="what-is-azure-virtual-network"></a>Wat is Azure Virtual Network?
 
@@ -76,6 +76,15 @@ Azure routeert verkeer standaard tussen subnetten, verbonden virtuele netwerken,
 
 - **Routetabellen:** u kunt aangepaste routetabellen maken met routes die bepalen waar verkeer naartoe wordt doorgestuurd voor elk subnet. Meer informatie over [routetabellen](virtual-networks-udr-overview.md#user-defined).
 - **BGP-routes (Border Gateway Protocol):** als u uw virtuele netwerk verbindt met uw on-premises netwerk via een Azure VPN Gateway- of ExpressRoute-verbinding, kunt u uw lokale BGP-routes doorgegeven aan uw virtuele netwerken. Lees meer over het gebruik van BGP met [Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) en [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#dynamic-route-exchange).
+
+## <a name="virtual-network-integration-for-azure-services"></a>Integratie van virtuele netwerken voor Azure-services
+
+Als u Azure-services integreert in een virtueel Azure-netwerk, u privétoegang tot de service maken vanaf virtuele machines of rekenbronnen in het virtuele netwerk.
+U Azure-services in uw virtuele netwerk integreren met de volgende opties:
+- Het implementeren van [speciale exemplaren van de service](virtual-network-for-azure-services.md) in een virtueel netwerk. De diensten zijn dan privé toegankelijk binnen het virtuele netwerk en via on-premises netwerken.
+- Met Behulp van [Private Link](../private-link/private-link-overview.md) om privé toegang te krijgen tot een specifiek exemplaar van de service vanuit uw virtuele netwerk en vanaf on-premises netwerken.
+- U de service ook openen via openbare eindpunten door een virtueel netwerk uit te breiden naar de service, via [serviceeindpunten.](virtual-network-service-endpoints-overview.md) Met serviceeindpunten kunnen serviceresources worden beveiligd voor het virtuele netwerk.
+ 
 
 ## <a name="azure-vnet-limits"></a>Azure VNet-limieten
 

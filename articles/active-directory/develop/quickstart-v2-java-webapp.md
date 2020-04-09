@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 1d73f974e2452c225220bc6f610568a2cded9887
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 42b478b598fe3034f1a97fe41662a38bc265074d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473637"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875976"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Snelstart: aanmelden met Microsoft toevoegen aan een Java-web-app
 
@@ -36,27 +36,27 @@ Om dit voorbeeld uit te voeren heb je het volgende nodig:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
 >
-> 1. Ga naar de [Azure-portal - App-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
+> 1. Ga naar de [Azure-portal - App-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs) snelstart ervaring.
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
-> 1. Volg de instructies om uw nieuwe toepassing te downloaden en automatisch te configureren.
+> 1. Volg de instructies in de quickstart-ervaring van de portal om de automatisch geconfigureerde toepassingscode te downloaden.
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld
 >
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 >
-> Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
+> Voer de volgende stappen uit om uw aanvraag te registreren en handmatig de registratiegegevens van de app aan uw toepassing toe te voegen:
 >
 > 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 > 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
 >
-> 1. Navigeer naar de pagina Microsoft-identiteitsplatform voor ontwikkelaars [App-registraties.](/azure/active-directory/develop/)
+> 1. Navigeer naar de pagina Microsoft-identiteitsplatform voor ontwikkelaars [App-registraties.](https://go.microsoft.com/fwlink/?linkid=2083908)
 > 1. Selecteer **Nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
 >    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `java-webapp`.
->    - Laat Uri nu leeg **omleiden** en selecteer **Registreren**.
+>    - Selecteer **Registreren**.
 > 1. Zoek op de pagina **Overzicht** de id van toepassing **(client)** en de **id-waarden directory (tenant)** van de toepassing. Kopieer deze waarden voor later.
 > 1. Selecteer de **verificatie** in het menu en voeg de volgende gegevens toe:
->    - Voeg in **OMLEIDINGs-URI's**toe `https://localhost:8080/msal4jsample/secure/aad` en `https://localhost:8080/msal4jsample/graph/me`.
+>    - Voeg de configuratie **van het webplatform** toe.  Voeg `https://localhost:8080/msal4jsample/secure/aad` deze `https://localhost:8080/msal4jsample/graph/me` toe en als **Omleiding sano's**..
 >    - Selecteer **Opslaan**.
 > 1. Selecteer de **certificaten & geheimen** van het menu en klik in de sectie **Klantgeheimen** op **Nieuw klantgeheim:**
 >
@@ -84,7 +84,7 @@ Om dit voorbeeld uit te voeren heb je het volgende nodig:
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Download het project en haal het zip-bestand naar een lokale map dichter bij de hoofdmap - bijvoorbeeld **C:\Azure-Samples**
-> 
+>
 > Als u https wilt gebruiken met localhost, vult u de eigenschappen server.ssl.key in. Gebruik het hulpprogramma voor de sleuteltool (inbegrepen in JRE) om een zelfondertekend certificaat te genereren.
 >
 >  ```
@@ -97,7 +97,7 @@ Om dit voorbeeld uit te voeren heb je het volgende nodig:
 >   server.ssl.key-alias=testCert
 >   ```
 >   Plaats het gegenereerde keystore-bestand in de map 'bronnen'.
-   
+
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Het codevoorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
@@ -157,8 +157,56 @@ Als u de webtoepassing vanaf een IDE uitvoert, klikt u op uitvoeren en navigeert
     - *Afmelden:* hiermee wordt de huidige gebruiker uit de toepassing verwijderd en doorverwezen naar de startpagina.
     - *Gebruikersgegevens weergeven:* hiermee wordt een token voor Microsoft Graph aangenomen en wordt Microsoft Graph aanroept met een aanvraag met het token, waarmee basisinformatie over de aangemelde gebruiker wordt geretourneerd.
 
+##### <a name="running-from-tomcat"></a>Hardlopen vanaf Tomcat
 
-   
+Als u het webvoorbeeld wilt implementeren in Tomcat, moet u een aantal wijzigingen aanbrengen in de broncode.
+
+1. Ms-identity-java-webapp/pom.xml openen
+    - Onder `<name>msal-web-sample</name>` toevoegen`<packaging>war</packaging>`
+    - Afhankelijkheid toevoegen:
+
+         ```xml
+         <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+          <scope>provided</scope>
+         </dependency>
+         ```
+
+2. Ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication openen
+
+    - Verwijder alle broncode en vervang door het volgende:
+
+   ```Java
+    package com.microsoft.azure.msalwebsample;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.boot.builder.SpringApplicationBuilder;
+    import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+    @SpringBootApplication
+    public class MsalWebSampleApplication extends SpringBootServletInitializer {
+
+     public static void main(String[] args) {
+      SpringApplication.run(MsalWebSampleApplication.class, args);
+     }
+
+     @Override
+     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+      return builder.sources(MsalWebSampleApplication.class);
+     }
+    }
+   ```
+
+3. Een opdrachtprompt openen, naar de hoofdmap van het project gaan en uitvoeren`mvn package`
+    - Dit genereert `msal-web-sample-0.1.0.war` een bestand in uw /targets directory.
+    - De naam van dit bestand wijzigen in`ROOT.war`
+    - Implementeer dit oorlogsbestand met Tomcat of een andere J2EE-containeroplossing.
+        - Als u wilt implementeren op de Tomcat-container, kopieert u het .war-bestand naar de map Webapps onder uw Tomcat-installatie en start u de Tomcat-server.
+
+Deze WAR zal automatisch https://localhost:8080/worden gehost op .
+
 > [!IMPORTANT]
 > Deze quickstarttoepassing gebruikt een clientgeheim om zichzelf te identificeren als vertrouwelijke client. Omdat het clientgeheim wordt toegevoegd als een platte tekst aan uw projectbestanden, wordt het om veiligheidsredenen aanbevolen om een certificaat te gebruiken in plaats van een clientgeheim voordat u de toepassing als productietoepassing overweegt. Zie [Certificaatreferenties voor toepassingsverificatie voor](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)meer informatie over het gebruik van een certificaat.
 
@@ -173,6 +221,8 @@ MSAL for Java (MSAL4J) is de Java-bibliotheek die wordt gebruikt om gebruikers a
 
 Voeg MSAL4J toe aan uw toepassing door Maven of Gradle te gebruiken om uw afhankelijkheden te beheren door de volgende wijzigingen aan te brengen in het pom.xml (Maven) of build.gradle -bestand van de toepassing.
 
+In pom.xml:
+
 ```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
@@ -180,6 +230,8 @@ Voeg MSAL4J toe aan uw toepassing door Maven of Gradle te gebruiken om uw afhank
     <version>1.0.0</version>
 </dependency>
 ```
+
+In build.gradle:
 
 ```$xslt
 compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'

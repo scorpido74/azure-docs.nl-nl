@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 12e5dba0339b6092564e5d35c1a6250b0c47f50f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 94b65b4e7947bc02b1fdaae90c8f774ec216e7bb
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "72755004"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981882"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>De API van Azure Cosmos DB voor MongoDB (versie 3.2): ondersteunde functies en syntaxis
 
@@ -77,7 +77,7 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 
 ## <a name="aggregation-pipelinea"></a>Samenvoegingspijplijn</a>
 
-Cosmos DB ondersteunt aggregatiepijplijn voor MongoDB 3.2 in openbare preview. Lees het [Azure-blog](https://aka.ms/mongodb-aggregation) voor instructies over deelname aan de openbare preview-versie.
+Cosmos DB ondersteunt aggregatiepijplijn voor MongoDB 3.2 in openbare preview. Lees het [Azure-blog](https://azure.microsoft.com/blog/azure-cosmosdb-extends-support-for-mongodb-aggregation-pipeline-unique-indexes-and-more/) voor instructies over deelname aan de openbare preview-versie.
 
 ### <a name="aggregation-commands"></a>Samenvoegingsopdrachten
 

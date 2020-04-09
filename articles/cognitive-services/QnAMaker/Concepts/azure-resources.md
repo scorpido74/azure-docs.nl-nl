@@ -3,12 +3,12 @@ title: Azure-bronnen - QnA Maker
 description: QnA Maker gebruikt verschillende Azure-bronnen, elk met een ander doel. Als u begrijpt hoe ze afzonderlijk worden gebruikt, u de juiste prijscategorie plannen en selecteren of weten wanneer u uw prijscategorie moet wijzigen. Als u begrijpt hoe ze in combinatie worden gebruikt, u problemen vinden en oplossen wanneer ze zich voordoen.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 1bd491ecbd878cb7bb05a7eaa5712c75653f2cba
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804296"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873902"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-bronnen voor QnA Maker
 
@@ -49,6 +49,16 @@ De volgende tabel geeft u een aantal richtlijnen op hoog niveau.
 | Experiment        | Gratis SKU             | Gratis laag   | Gratis laag    | Tot 2 KB's publiceren, 50 MB groot  |
 | Dev/Testomgeving   | Standaard SKU         | Gedeeld      | Basic        | Tot 14 GB publiceren, 2 GB groot    |
 | Productieomgeving | Standaard SKU         | Basic       | Standard     | Tot 49 GB publiceren, 25 GB groot |
+
+## <a name="recommended-settings"></a>Aanbevolen instellingen
+
+|DoelQPS | App Service | Azure Cognitive Search |
+| -------------------- | ----------- | ------------ |
+| 3             | S1, 1 instantie   | S1, 1 instantie    |
+| 50         | S3, 10 exemplaren       | S1, 12 exemplaren         |
+| 80         | S3, 10 exemplaren      |  S3, 12 instanties  |
+| 100         | P3V2, 10 exemplaren  | S3, 12 instanties, 3 partities   |
+| 200 tot 250         | P3V2, 20 exemplaren | S3, 12 instanties, 3 partities    |
 
 ## <a name="when-to-change-a-pricing-tier"></a>Wanneer wijzigt u een prijscategorie?
 

@@ -3,19 +3,19 @@ title: Taaldetectiecontainer uitvoeren in Kubernetes-service
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: Implementeer de taaldetectiecontainer, met een lopend voorbeeld, naar de Azure Kubernetes-service en test deze in een webbrowser.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: dapine
-ms.openlocfilehash: 1968bc03bfddb9d6f6c8fe743a2a1a99722c074d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: cdd1cf255c943c8dc6d55a5b749b30357bdcd373
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399174"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876722"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>De taaldetectiecontainer text Analytics implementeren in Azure Kubernetes-service
 

@@ -3,20 +3,20 @@ title: Docker containers - LUIS
 titleSuffix: Azure Cognitive Services
 description: De LUIS-container laadt uw getrainde of gepubliceerde app in een dockercontainer en biedt toegang tot de queryvoorspellingen van de API-eindpunten van de container.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.author: dapine
-ms.openlocfilehash: 308a474970db54022e5351fdf349d9572fbafb0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: fec6b16eb7f80369904eefc407a9a9c8d6629c9a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219927"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879321"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Luis dockercontainers installeren en uitvoeren
  

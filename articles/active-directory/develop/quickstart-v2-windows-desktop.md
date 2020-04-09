@@ -1,5 +1,5 @@
 ---
-title: Microsoft-identiteitsplatform Windows desktop snelstart | Microsoft Documenten
+title: Microsoft-identiteitsplatform Windows-bureaublad snelaan de dag
 description: Meer informatie over hoe een XAML-toepassing (Windows Desktop Desktop.NET) een toegangstoken kan krijgen en een API kan aanroepen die is beschermd door een eindpunt van een Microsoft-identiteitsplatform
 services: active-directory
 author: jmprieur
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f7b6a682498bfce55107ba139600b6c9ab688542
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f202a6c06c2137501c2c6a1b47fbd086f80043a0
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473325"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883607"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Quickstart: Een token verkrijgen en Microsoft Graph API aanroepen vanuit een Windows-bureaublad-app
 

@@ -3,18 +3,18 @@ title: Cognitive Services containers veelgestelde vragen (FAQ)
 titleSuffix: Azure Cognitive Services
 description: Veelgestelde vragen en antwoorden.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.author: dapine
-ms.openlocfilehash: 33b99d50db4384c7de818a7dd0bb8492c86bef97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73961881"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876503"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Cognitive Services-containers (FAQ)
 
@@ -26,7 +26,7 @@ ms.locfileid: "73961881"
 
 > [!div class="checklist"]
 > * [Anomaly Detector][ad-containers]
-> * [Computer Visie][cv-containers]
+> * [Computer Vision][cv-containers]
 > * [Face][fa-containers]
 > * [Form Recognizer][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
@@ -108,7 +108,7 @@ Bekijk de volgende tags voor mogelijke vragen en antwoorden die aansluiten bij u
 **A:** Klanten worden in rekening gebracht op basis van het verbruik, vergelijkbaar met de Cognitive Services-cloud. De containers moeten worden geconfigureerd om meetgegevens naar Azure te verzenden en transacties worden dienovereenkomstig gefactureerd. Resources die worden gebruikt voor de gehoste en on-premises services, worden toegevoegd aan één quotum met gedifferentieerde prijzen, waarbij rekening wordt gehouden met beide toepassingen. Voor meer informatie verwijzen wij u naar de prijspagina van het bijbehorende aanbod.
 
 * [Anomaly Detector][ad-containers-billing]
-* [Computer Visie][cv-containers-billing]
+* [Computer Vision][cv-containers-billing]
 * [Face][fa-containers-billing]
 * [Form Recognizer][fr-containers-billing]
 * [Language Understanding (LUIS)][lu-containers-billing]
@@ -135,7 +135,7 @@ Bekijk de volgende tags voor mogelijke vragen en antwoorden die aansluiten bij u
 **A:** Cognitive Services-containers zijn op x64 gebaseerde containers waarmee elk compatibel Linux-knooppunt, VM en edge-apparaat dat x64 Linux Docker-containers ondersteunt, kan worden uitgevoerd. Ze vereisen allemaal CPU-processors. De minimale en aanbevolen configuraties voor elk containeraanbod zijn hieronder beschikbaar:
 
 * [Anomaly Detector][ad-containers-recommendations]
-* [Computer Visie][cv-containers-recommendations]
+* [Computer Vision][cv-containers-recommendations]
 * [Face][fa-containers-recommendations]
 * [Form Recognizer][fr-containers-recommendations]
 * [Language Understanding (LUIS)][lu-containers-recommendations]

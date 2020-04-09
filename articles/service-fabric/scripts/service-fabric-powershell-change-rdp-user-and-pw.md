@@ -1,5 +1,5 @@
 ---
-title: De RDP-gebruikersnaam en -wachtwoord bijwerken in Powershell
+title: De RDP-gebruikersnaam en -wachtwoord bijwerken in PowerShell
 description: Azure PowerShell-voorbeeldscript - RDP-gebruikersnaam en -wachtwoord bijwerken voor alle Service Fabric-clusterknooppunten van een bepaald knooppunttype.
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 0cf9f8362d3fa683084aef840cf35cd9a843608a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614805"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984926"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Gebruikersnaam en wachtwoord van de beheerder van de VM's in een cluster bijwerken
 
@@ -42,6 +42,10 @@ In dit script worden de volgende opdrachten gebruikt: Elke opdracht in de tabel 
 | [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | Hiermee worden de eigenschappen van een clusterknooppunttype (een virtuele-machineschaalset) opgehaald.   |
 | [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| Hiermee wordt een extensie toegevoegd aan de virtuele-machineschaalset.|
 | [Update-AzVmss](/powershell/module/az.compute/update-azvmss)|Hiermee wordt de status van een virtuele-machineschaalset ingesteld op de status van een lokaal VMSS-object.|
+
+## <a name="duration"></a>Duur
+
+Een enkel knooppunttype met bijvoorbeeld vijf knooppunten heeft een duur van 45 tot 60 minuten om de gebruikersnaam of het wachtwoord te wijzigen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

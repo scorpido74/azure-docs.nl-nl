@@ -3,19 +3,19 @@ title: Spraakcontainers installeren - Spraakservice
 titleSuffix: Azure Cognitive Services
 description: Spraakcontainers installeren en uitvoeren. Spraak-naar-tekst transcribeert audiostreams naar tekst in realtime die uw toepassingen, hulpprogramma's of apparaten kunnen gebruiken of weergeven. Tekst-naar-spraak zet invoertekst om in menselijke gesynthetiseerde spraak.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.author: dapine
-ms.openlocfilehash: 2beee81bc365d00e59a62cacabacc5f5d6b62a42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 2caae4fecdf13a1833f23cf9423cf3ded67f6f72
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474778"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879008"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Spraakservicecontainers installeren en uitvoeren (voorbeeld)
 

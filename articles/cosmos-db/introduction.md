@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6292c3c2d928581d0564fe457342ea7b1e17111c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240392"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983021"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Welkom bij Azure Cosmos DB
 
-Van toepassingen wordt tegenwoordig vereist dat ze zeer responsief en altijd online zijn. Voor het bereiken van lage latentie en hoge beschikbaarheid moeten de instanties van deze toepassingen worden geïmplementeerd in datacenters die zich dicht bij de gebruikers ervan bevinden. Toepassingen moeten in realtime reageren op grote fluctuaties in het gebruik tijdens piekuren, moeten steeds toenemende gegevensvolumes kunnen opslaan en deze gegevens in milliseconden beschikbaar kunnen maken voor gebruikers.
+De toepassingen van vandaag zijn vereist om zeer responsief en altijd online te zijn. Voor het bereiken van lage latentie en hoge beschikbaarheid moeten de instanties van deze toepassingen worden geïmplementeerd in datacenters die zich dicht bij de gebruikers ervan bevinden. Toepassingen moeten in realtime reageren op grote fluctuaties in het gebruik tijdens piekuren, moeten steeds toenemende gegevensvolumes kunnen opslaan en deze gegevens in milliseconden beschikbaar kunnen maken voor gebruikers.
 
-Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. Met een klik op de knop u met Cosmos DB de doorvoer en opslag in elk aantal Azure-regio's wereldwijd elastisch en onafhankelijk schalen. U de doorvoer en opslag elastisch schalen en profiteren van snelle gegevenstoegang met één cijfer met behulp van uw favoriete API, waaronder: SQL, MongoDB, Cassandra, Tables of Gremlin. Cosmos DB biedt uitgebreide [service level agreements](https://aka.ms/acdbsla) (SLA's) voor doorvoer, latentie, beschikbaarheid en consistentiegaranties, iets wat geen enkele andere databaseservice biedt.
+Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. Met een klik op de knop u met Cosmos DB de doorvoer en opslag in elk aantal Azure-regio's wereldwijd elastisch en onafhankelijk schalen. U de doorvoer en opslag elastisch schalen en profiteren van snelle gegevenstoegang met één cijfer met behulp van uw favoriete API, waaronder: SQL, MongoDB, Cassandra, Tables of Gremlin. Cosmos DB biedt uitgebreide [service level agreements](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) (SLA's) voor doorvoer, latentie, beschikbaarheid en consistentiegaranties, iets wat geen enkele andere databaseservice biedt.
 
 U [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, gratis en verplichtingen of de gratis azure cosmos [DB-laag](optimize-dev-test.md#azure-cosmos-db-free-tier) gebruiken om een account te krijgen met de eerste 400 RU/s en 5 GB opslag gratis.
 
@@ -52,15 +52,15 @@ Bij het bouwen van wereldwijd gedistribueerde toepassingen in Cosmos DB hoeft u 
 
 ### <a name="no-schema-or-index-management"></a>Geen schema- of indexbeheer
 
-Vooral voor wereldwijd gedistribueerde apps is het uiterst moeilijk om databaseschema's en indexen synchroon te houden met het schema van een toepassing. Met Cosmos DB hoeft u niet te maken te krijgen met schema- of indexbeheer. De database-engine is volledig schemaneutraal.  Omdat er geen schema- en indexbeheer is vereist, hoeft u zich ook geen zorgen te maken over downtime van toepassingen tijdens het migreren van schema's. Cosmos DB [indexeert automatisch alle gegevens](index-policy.md) en zorgt dat query's snel worden uitgevoerd.
+Het is vooral pijnlijk voor wereldwijd gedistribueerde apps om het databaseschema en indexen in sync te houden met het schema van een toepassing. Met Cosmos DB hoeft u niet te maken te krijgen met schema- of indexbeheer. De database-engine is volledig schemaneutraal.  Aangezien er geen schema- en indexbeheer vereist is, hoeft u zich ook geen zorgen te maken over de uitvaltijd van toepassingen tijdens het migreren van schema's. Cosmos DB [indexeert automatisch alle gegevens](index-policy.md) en zorgt dat query's snel worden uitgevoerd.
 
 ### <a name="battle-tested-database-service"></a>Intensief geteste databaseservice
 
-Cosmos DB is een fundamentele service in Azure. Cosmos DB wordt al bijna tien jaar gebruikt door veel van Microsoft-producten voor bedrijfskritieke toepassingen op wereldwijde schaal, waaronder Skype, Xbox, Office 365, Azure en vele anderen. Vandaag de dag is Cosmos DB een van de snelst groeiende services op Azure, die worden gebruikt door veel externe klanten en bedrijfskritische toepassingen die elastische schaal, kant-en-klare wereldwijde distributie, multi-master replicatie vereisen voor lage latentie en hoge beschikbaarheid van beide leest en schrijft.
+Cosmos DB is een fundamentele service in Azure. Cosmos DB wordt al bijna tien jaar gebruikt door veel van Microsoft-producten voor bedrijfskritieke toepassingen op wereldwijde schaal, waaronder Skype, Xbox, Office 365, Azure en vele anderen. Vandaag de dag is Cosmos DB een van de snelst groeiende services op Azure, die door veel externe klanten worden gebruikt en bedrijfskritieke toepassingen die elastische schaal, kant-en-klare wereldwijde distributie, multi-master replicatie vereisen voor lage latentie en hoge beschikbaarheid van zowel lees- als schrijfbewerkingen.
 
 ### <a name="ubiquitous-regional-presence"></a>Alomtegenwoordige regionale aanwezigheid
 
-Cosmos DB is beschikbaar in alle Azure-regio's wereldwijd, waaronder 54+ regio's in de openbare cloud, [Azure China 21Vianet,](https://www.azure.cn/en-us/)Azure Germany, Azure Government en Azure Government for Department of Defense (DoD). Zie [Regionale aanwezigheid van Cosmos DB](regional-presence.md).
+Cosmos DB is beschikbaar in alle Azure-regio's wereldwijd, waaronder 54+ regio's in de openbare cloud, [Azure China 21Vianet,](https://www.azure.cn/en-us/)Azure Germany, Azure Government en Azure Government for Department of Defense (DoD). Zie [de regionale aanwezigheid van Cosmos DB.](regional-presence.md)
 
 ### <a name="secure-by-default-and-enterprise-ready"></a>Standaard beveiligd en geschikt voor gebruik door bedrijven
 

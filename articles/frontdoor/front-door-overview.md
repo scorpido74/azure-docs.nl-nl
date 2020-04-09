@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: 0ee35f4f0b4bd8c46a0445e2905ae3b50d11f721
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471642"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879119"
 ---
 # <a name="what-is-azure-front-door"></a>Wat is Azure Front Door?
 Azure Front Door stelt u in staat om de globale routering voor uw webverkeer te definiëren, te beheren en te bewaken door te optimaliseren voor de beste prestaties en directe wereldwijde failover voor hoge beschikbaarheid. Met Front Door u uw wereldwijde (multi-regio) consumenten- en bedrijfstoepassingen transformeren in robuuste, krachtige gepersonaliseerde moderne toepassingen, API's en inhoud die een wereldwijd publiek bereikt met Azure.
@@ -51,12 +51,12 @@ U kunt ook twee verschillende domeinen `www.contoso.com` en `www.fabrikam.com` c
 ## <a name="session-affinity"></a>Sessieaffiniteit
 De functie Sessieaffiniteit op basis van cookies is handig als u een gebruikerssessie op hetzelfde toepassingsback-end wilt behouden. Met behulp van door Front Door beheerde cookies wordt het daarop volgende verkeer van een gebruikerssessie naar hetzelfde toepassingsback-end geleid voor verwerking. Deze functie is belangrijk wanneer de sessiestatus lokaal wordt opgeslagen op de back-end voor een gebruikerssessie.
 
-## <a name="secure-sockets-layer-ssl-termination"></a>SSL-beëindiging (Secure Sockets Layer)
-Front Door ondersteunt geavanceerd SSL-beëindigen, dat wil zeggen dat individuele gebruikers een SSL-verbinding kunnen opzetten met Front Door-omgevingen in plaats van verbinding te maken met het toepassingsback-end over langeafstandsverbindingen. Bovendien ondersteunt Front Door zowel HTTP- als HTTPS-connectiviteit tussen Front Door-omgevingen en uw back-ends. U kunt dus ook end-to-end SSL-versleuteling instellen. Als Front Door bijvoorbeeld voor de workload van uw toepassing meer dan 5000 aanvragen per minuut ontvangt voor actieve services als gevolg van hergebruik van warme verbindingen, worden er zeg maar ongeveer 500 verbindingen gemaakt met uw toepassingsback-end om zo de workload van uw back-ends aanmerkelijk te reduceren.
+## <a name="tls-termination"></a>TLS-beëindiging
+Front Door ondersteunt TLS-beëindiging aan de rand, dat wil zeggen dat individuele gebruikers een TLS-verbinding met Front Door-omgevingen kunnen instellen in plaats van deze vast te stellen via lange afstandsverbindingen met de backend van de toepassing. Bovendien ondersteunt Front Door zowel HTTP- als HTTPS-connectiviteit tussen Front Door-omgevingen en uw back-ends. U dus ook end-to-end TLS-versleuteling instellen. Als Front Door bijvoorbeeld voor de workload van uw toepassing meer dan 5000 aanvragen per minuut ontvangt voor actieve services als gevolg van hergebruik van warme verbindingen, worden er zeg maar ongeveer 500 verbindingen gemaakt met uw toepassingsback-end om zo de workload van uw back-ends aanmerkelijk te reduceren.
 
 ## <a name="custom-domains-and-certificate-management"></a>Aangepast domein- en certificaatbeheer
 Wanneer u Front Door gebruikt voor het leveren van inhoud, is een aangepast domein nodig als u wilt dat uw eigen domeinnaam zichtbaar is in de URL van Front Door. Een zichtbare domeinnaam kan handig zijn voor uw klanten en nuttig zijn voor branding-doelen.
-Front Door ondersteunt ook HTTPS voor aangepaste domeinnamen. Gebruik deze functie door te kiezen voor door Front Door beheerde certificaten voor uw verkeer of uw eigen SSL-certificaat te uploaden.
+Front Door ondersteunt ook HTTPS voor aangepaste domeinnamen. Gebruik deze functie door frontdoor beheerde certificaten voor uw verkeer te kiezen of uw eigen aangepaste TLS/SSL-certificaat te uploaden.
 
 ## <a name="application-layer-security"></a>Toepassingslaagbeveiliging
 Met Azure Front Door u aangepaste WAF-regels (Web Application Firewall) opstellen voor toegangscontrole om uw HTTP/HTTPS-workload te beschermen tegen uitbuiting op basis van CLIENT-IP-adressen, landcode en http-parameters. Bovendien kunt u met Front Door regels voor snelheidsbeperkingen maken om kwaadaardig botverkeer tegen te gaan. Zie Wat is Azure Web Application Firewall voor meer informatie over Web Application [Firewall?](../web-application-firewall/overview.md)
