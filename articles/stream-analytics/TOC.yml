@@ -39,6 +39,8 @@
       href: streaming-technologies.md
     - name: Een hulpprogramma voor taakontwikkeling kiezen
       href: feature-comparison.md
+    - name: Lokaal ontwikkelen
+      href: develop-locally.md
     - name: Invoertypen voor een taak
       items:
         - name: Overzicht van invoer

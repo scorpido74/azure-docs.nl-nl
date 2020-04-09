@@ -207,7 +207,7 @@
               href: add-output-binding-storage-queue-vs-code.md
             - name: Opslag - Visual Studio
               href: add-output-binding-storage-queue-vs.md
-            - name: Opslag - Java/Gradle
+            - name: Opslag - Java
               href: functions-add-output-binding-storage-queue-java.md
         - name: Fouten opsporen en testen
           items:
