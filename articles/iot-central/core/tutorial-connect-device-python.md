@@ -7,12 +7,12 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d9928a50f1f77cd59b83bd1af5a7a40715b6fa98
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 493dcd71905970434dd2ab2997cfebd17b8e47ff
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673948"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891591"
 ---
 # <a name="tutorial-create-and-connect-a-python-client-application-to-your-azure-iot-central-application-python"></a>Zelfstudie: Een Python-clienttoepassing maken en verbinden met uw Azure IoT Central-toepassing (Python)
 
@@ -214,7 +214,7 @@ In de volgende stappen ziet u hoe u een Python-clienttoepassing maakt die verbin
 1. Voeg de volgende `main` functies in de functie toe om eigenschapsupdates te verwerken die vanuit uw IoT Central-toepassing worden verzonden:
 
     ```python
-        sync def name_setting(value, version):
+        async def name_setting(value, version):
           await asyncio.sleep(1)
           print(f'Setting name value {value} - {version}')
           await device_client.patch_twin_reported_properties({'name' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})

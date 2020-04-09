@@ -17,12 +17,12 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 077671ab4e964d7641aa3a0f0b435b39117eb6aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b2a0d0b77b6db481b13785907a1359d2bbe3e9b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65139400"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984501"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Het wachtwoord van het ADSync-serviceaccount wijzigen
 Als u het wachtwoord van het ADSync-serviceaccount wijzigt, kan de synchronisatieservice niet correct worden gestart totdat u de versleutelingssleutel hebt verlaten en het wachtwoord van het ADSync-serviceaccount opnieuw hebt geïnitialiseerd. 
@@ -84,7 +84,7 @@ Verlaat de bestaande versleutelingssleutel zodat er nieuwe versleutelingssleutel
 
 2. Start een nieuwe PowerShell-sessie.
 
-3. Navigeer naar map:`$env:Program Files\Microsoft Azure AD Sync\bin\`
+3. Navigeer naar map:`'$env:ProgramFiles\Microsoft Azure AD Sync\bin\'`
 
 4. Voer de opdracht uit:`./miiskmu.exe /a`
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 04/07/2020
 ms.author: willzhan
-ms.openlocfilehash: 64cd93acc78f4cb5b7ebc4266e7359aec662890c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295426"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887194"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Offline Widevine-streaming voor Android met Media Services v3
 
@@ -153,65 +153,13 @@ De bovenstaande open-source PWA-app is geschreven in Node.js. Als u uw eigen ver
     - Het certificaat moet een vertrouwde CA hebben en een zelfondertekend ontwikkelingscertificaat werkt niet
     - Het certificaat moet een CN hebben die overeenkomt met de DNS-naam van de webserver of gateway
 
-## <a name="frequently-asked-questions"></a>Veelgestelde vragen
+## <a name="faqs"></a>Veelgestelde vragen
 
-### <a name="question"></a>Vraag
-
-Hoe kan ik permanente licenties (offline ingeschakeld) leveren voor sommige clients/gebruikers en niet-permanente licenties (offline uitgeschakeld) voor anderen? Moet ik de inhoud dupliceren en een aparte inhoudssleutel gebruiken?
-
-### <a name="answer"></a>Antwoord
-Sinds Media Services v3 kan een asset meerdere StreamingLocators hebben. Je.
-
-1.    Eén ContentKeyPolicy met license_type = "persistent", ContentKeyPolicyRestriction met claim op "persistent" en de StreamingLocator;
-2.    Een ander ContentKeyPolicy met license_type="niet-persistent", ContentKeyPolicyRestriction met claim op "niet-persistent", en de StreamingLocator.
-3.    De twee StreamingLocators hebben verschillende ContentKey.
-
-Afhankelijk van de bedrijfslogica van aangepaste STS worden verschillende claims uitgegeven in het JWT-token. Met het token kan alleen de bijbehorende licentie worden verkregen en kan alleen de bijbehorende URL worden afgespeeld.
-
-### <a name="question"></a>Vraag
-
-Voor Widevine-beveiligingsniveaus definieert het document 'Widevine DRM Architecture Overview' van Google drie verschillende beveiligingsniveaus. In [Azure Media Services-documentatie over widevine-licentiesjabloon](widevine-license-template-overview.md)worden echter vijf verschillende beveiligingsniveaus beschreven. Wat is de relatie of mapping tussen de twee verschillende sets van beveiligingsniveaus?
-
-### <a name="answer"></a>Antwoord
-
-In het document 'Widevine DRM Architecture Review' van Google worden de volgende drie beveiligingsniveaus gedefinieerd:
-
-1.  Beveiligingsniveau 1: Alle inhoudsverwerking, cryptografie en beheer worden uitgevoerd binnen de Trusted Execution Environment (TEE). In sommige implementatiemodellen kan beveiligingsverwerking worden uitgevoerd in verschillende chips.
-2.  Beveiligingsniveau 2: Voert cryptografie uit (maar geen videoverwerking) binnen de TEE: gedecodeerde buffers worden teruggestuurd naar het toepassingsdomein en verwerkt via afzonderlijke videohardware of -software. Op niveau 2 wordt cryptografische informatie echter nog steeds alleen binnen de TEE verwerkt.
-3.  Beveiligingsniveau 3 Heeft geen TEE op het apparaat. Er kunnen passende maatregelen worden genomen om de cryptografische informatie en gedecodeerde inhoud op het hostbesturingssysteem te beschermen. Een Level 3-implementatie kan ook een cryptografische hardware-engine bevatten, maar dat verbetert alleen de prestaties, niet de beveiliging.
-
-Tegelijkertijd kan in [Azure Media Services-documentatie over widevine-licentiesjabloon](widevine-license-template-overview.md)de security_level eigenschap van content_key_specs de volgende vijf verschillende waarden hebben (vereisten voor robuustheid van clients voor afspelen):
-
-1.  Software-gebaseerde white-box crypto is vereist.
-2.  Software crypto en een versluierde decoder is vereist.
-3.  Het belangrijkste materiaal en crypto-bewerkingen moeten worden uitgevoerd binnen een tee met hardwareondersteund.
-4.  De crypto en decodering van inhoud moeten worden uitgevoerd binnen een hardware ondersteund TEE.
-5.  De crypto, decodering en alle verwerking van de media (gecomprimeerd en ongecomprimeerd) moeten worden afgehandeld binnen een hardware backed TEE.
-
-Beide beveiligingsniveaus worden gedefinieerd door Google Widevine. Het verschil zit hem in het gebruiksniveau: architectuurniveau of API-niveau. De vijf beveiligingsniveaus worden gebruikt in de Widevine API. Het content_key_specs object, dat security_level bevat, wordt gedeserialiseerd en doorgegeven aan de widevine-wereldwijde leveringsservice door Azure Media Services Widevine-licentieservice. De onderstaande tabel toont de toewijzing tussen de twee sets beveiligingsniveaus.
-
-| **Beveiligingsniveaus gedefinieerd in Widevine-architectuur** |**Beveiligingsniveaus die worden gebruikt in Widevine API**|
-|---|---| 
-| **Beveiligingsniveau 1:** Alle inhoudsverwerking, cryptografie en beheer worden uitgevoerd binnen de Trusted Execution Environment (TEE). In sommige implementatiemodellen kan beveiligingsverwerking worden uitgevoerd in verschillende chips.|**security_level=5**: De crypto, decodering en alle verwerking van de media (gecomprimeerd en ongecomprimeerd) moeten worden afgehandeld binnen een door hardware gesteunde TEE.<br/><br/>**security_level=4**: De crypto en decodering van inhoud moeten worden uitgevoerd binnen een tee met hardwareondersteund.|
-**Beveiligingsniveau 2**: Voert cryptografie uit (maar geen videoverwerking) binnen de TEE: gedecodeerde buffers worden teruggestuurd naar het toepassingsdomein en verwerkt via afzonderlijke videohardware of -software. Op niveau 2 wordt cryptografische informatie echter nog steeds alleen binnen de TEE verwerkt.| **security_level=3**: Het belangrijkste materiaal en crypto-bewerkingen moeten worden uitgevoerd binnen een tee met hardwareondersteuning. |
-| **Beveiligingsniveau 3**: Heeft geen TEE op het apparaat. Er kunnen passende maatregelen worden genomen om de cryptografische informatie en gedecodeerde inhoud op het hostbesturingssysteem te beschermen. Een Level 3-implementatie kan ook een cryptografische hardware-engine bevatten, maar dat verbetert alleen de prestaties, niet de beveiliging. | **security_level=2**: Software crypto en een versluierde decoder zijn vereist.<br/><br/>**security_level=1**: Softwaregebaseerde whitebox crypto is vereist.|
-
-### <a name="question"></a>Vraag
-
-Waarom duurt het downloaden van inhoud zo lang?
-
-### <a name="answer"></a>Antwoord
-
-Er zijn twee manieren om de downloadsnelheid te verbeteren:
-
-1.  Schakel CDN in, zodat eindgebruikers eerder cdn raken in plaats van origin/streaming endpoint voor het downloaden van inhoud. Als de gebruiker streaming eindpunt raakt, wordt elk HLS-segment of DASH-fragment dynamisch verpakt en versleuteld. Hoewel deze latentie is in milliseconde schaal voor elk segment / fragment, wanneer u een uur lang video, de geaccumuleerde latentie kan groot zijn waardoor langere download.
-2.  Geef eindgebruikers de mogelijkheid om lagen en audiotracks van videokwaliteit selectief te downloaden in plaats van alle inhoud. Voor de offline modus heeft het geen zin om alle kwaliteitslagen te downloaden. Er zijn twee manieren om dit te bereiken:
-    1.  Client gecontroleerd: ofwel speler app automatisch selecteert of gebruiker selecteert video kwaliteit laag en audio tracks te downloaden;
-    2.  Servicegestuurd: men kan de Dynamic Manifest-functie in Azure Media Services gebruiken om een (globaal) filter te maken, dat HLS-afspeellijst of DASH MPD beperkt tot één laag met videokwaliteit en geselecteerde audiotracks. Dan is de download URL gepresenteerd aan eindgebruikers zal dit filter bevatten.
+Zie [Veelgestelde vragen van Widevine voor](frequently-asked-questions.md#widevine-streaming-for-android)meer informatie.
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
+Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="summary"></a>Samenvatting
 

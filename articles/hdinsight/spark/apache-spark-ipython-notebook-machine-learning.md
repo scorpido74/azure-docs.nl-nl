@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 06/26/2019
-ms.openlocfilehash: 6e46d7403e251bccd69467cfcdaa1d5073b4e454
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: hdinsightactive,mvc
+ms.date: 04/07/2020
+ms.openlocfilehash: 963f5bd4dfdd9dda78a437bdb1111c9eec2795dc
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494566"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878439"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Zelfstudie: Een Apache Spark-machine learning-toepassing bouwen in Azure HDInsight
 
-In deze zelfstudie leert u hoe u het [Jupyter-notebook](https://jupyter.org/) gebruikt voor het bouwen van een [Apache Spark](https://spark.apache.org/)-toepassing voor Machine Learning voor Azure HDInsight.
+In deze zelfstudie leert u hoe u het [Jupyter-notebook](https://jupyter.org/) gebruikt voor het bouwen van een [Apache Spark](./apache-spark-overview.md)-toepassing voor Machine Learning voor Azure HDInsight.
 
-[MLib](https://spark.apache.org/docs/latest/ml-guide.html) is de schaalbare bibliotheek voor machine learning van Spark die bestaat uit veelgebruikte leeralgoritmen en hulpprogramma's, zoals voor classificatie, regressie, clustering, gezamenlijke filterfuncties, dimensionaliteitsvermindering, evenals onderliggende optimalisatieprimitieven.
+[MLlib](https://spark.apache.org/docs/latest/ml-guide.html) is spark's aanpasbare machine learning bibliotheek bestaande uit gemeenschappelijke leeralgoritmen en hulpprogramma's. (Classificatie, regressie, clustering, collaboratieve filtering en dimensionaliteitsreductie. Ook onderliggende optimalisatie primitieven.)
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -33,13 +33,13 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="understand-the-data-set"></a>Informatie over de gegevensset
 
-De toepassing maakt gebruik van de **voorbeeldgegevens van HVAC.CSV** die standaard beschikbaar zijn op alle clusters. Het bestand bevindt zich op `\HdiSamples\HdiSamples\SensorSampleData\hvac`. De gegevens hebben betrekking op de gewenste temperatuur en de werkelijke temperatuur in enkele gebouwen waarin HVAC-systemen zijn geïnstalleerd. De kolom **System** bevat de id van het betreffende systeem en de kolom **SystemAge** geeft het aantal jaren aan dat het HVAC-systeem wordt gebruikt in het gebouw. Aan de hand van deze gegevens kunt u voorspellen of het in een gebouw warmer of kouder zal zijn gebaseerd op de richttemperatuur, een systeem-id en een leeftijd van het systeem.
+De toepassing maakt gebruik van de **voorbeeldgegevens van HVAC.CSV** die standaard beschikbaar zijn op alle clusters. Het bestand bevindt zich op `\HdiSamples\HdiSamples\SensorSampleData\hvac`. De gegevens hebben betrekking op de gewenste temperatuur en de werkelijke temperatuur in enkele gebouwen waarin HVAC-systemen zijn geïnstalleerd. De kolom **System** bevat de id van het betreffende systeem en de kolom **SystemAge** geeft het aantal jaren aan dat het HVAC-systeem wordt gebruikt in het gebouw. U voorspellen of een gebouw warmer of kouder zal zijn op basis van de doeltemperatuur, de opgegeven systeem-ID en de systeemleeftijd.
 
 ![Momentopname van gegevens die worden gebruikt voor het voorbeeld van Spark-machine learning](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Momentopname van gegevens die worden gebruikt voor het voorbeeld van Spark-machine learning")
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Een Spark-toepassing voor machine learning ontwikkelen met Spark MLib
 
-In deze toepassing gebruikt u een [ML-pijplijn](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) van Spark om een documentclassificatie uit te voeren. ML-pijplijnen bieden een uniforme set van algemene API's die zijn gebaseerd op DataFrames waarmee gebruikers praktische pijplijnen voor machine learning kunnen maken en afstemmen. In de pijplijn splitst u het document op in woorden, converteert u de woorden naar een numerieke functievector en bouwt u ten slotte een voorspellend model met behulp van de functievectoren en labels. Voer de volgende stappen uit om de toepassing te maken.
+Deze toepassing gebruikt een Spark [ML-pijplijn](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) om een documentclassificatie uit te leiden. ML-pijplijnen bieden een uniforme set API's op hoog niveau die bovenop DataFrames zijn gebouwd. De DataFrames helpen gebruikers bij het maken en afstemmen van praktische machine learning-pijplijnen. In de pijplijn splitst u het document op in woorden, converteert u de woorden naar een numerieke functievector en bouwt u ten slotte een voorspellend model met behulp van de functievectoren en labels. Volg de volgende stappen om de toepassing te maken.
 
 1. Maak een Jupyter-notebook met behulp van de PySpark-kernel. Zie [Een Jupyter-notebook maken](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook) voor de instructies.
 
@@ -143,9 +143,9 @@ In deze toepassing gebruikt u een [ML-pijplijn](https://spark.apache.org/docs/2.
 
     ![Momentopname van uitvoergegevens voor spark-machine learning-voorbeeld](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Momentopname van uitvoergegevens voor spark-machine learning-voorbeeld")
 
-    U ziet hoe de werkelijke temperatuur lager is dan de richttemperatuur, wat betekent dat het koud is in het gebouw. In de uitvoer van de training is de waarde voor **label** in de eerste rij daarom **0.0**, wat betekent dat het niet warm is in het gebouw.
+    U ziet hoe de werkelijke temperatuur lager is dan de richttemperatuur, wat betekent dat het koud is in het gebouw. De waarde voor **label** in de eerste rij is **0,0,** wat betekent dat het gebouw niet heet is.
 
-1. Bereid een gegevensset voor die kan worden uitgevoerd op het getrainde model. Hiervoor geeft u een systeem-id en leeftijd van het systeem door (aangeduid als **SystemInfo** in de trainingsuitvoer), waarna het model voorspelt of het in het gebouw met die systeem-id en die leeftijd warmer (aangeduid met 1.0) of koeler (aangeduid met 0.0) zal zijn.
+1. Bereid een gegevensset voor die kan worden uitgevoerd op het getrainde model. Hiervoor geeft u een systeem-ID en systeemleeftijd door (aangeduid als **SystemInfo** in de trainingsuitvoer). Het model voorspelt of het gebouw met die systeem-ID en systeemleeftijd warmer zal zijn (aangeduid met 1.0) of koeler (aangeduid met 0.0).
 
     ```PySpark
     # SystemInfo here is a combination of system ID followed by system age
@@ -180,7 +180,7 @@ In deze toepassing gebruikt u een [ML-pijplijn](https://spark.apache.org/docs/2.
     Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
     ```
 
-   In de eerste rij in de voorspelling kunt u zien dat voor een HVAC-systeem met de id 20 en een leeftijd van 25 jaar, het warm is in het gebouw (**prediction=1.0**). De eerste waarde voor DenseVector (0.49999) komt overeen met de voorspelling 0.0 en de tweede waarde (0.5001) komt overeen met de voorspelling 1.0. In de uitvoer toont het model **prediction=1.0**, ook al is de tweede waarde maar een fractie hoger.
+   Let op de eerste rij in de voorspelling. Voor een HVAC-systeem met ID 20 en systeemleeftijd van 25 jaar is het gebouw hot **(voorspelling=1.0).** De eerste waarde voor DenseVector (0.49999) komt overeen met de voorspelling 0.0 en de tweede waarde (0.5001) komt overeen met de voorspelling 1.0. In de uitvoer toont het model **prediction=1.0**, ook al is de tweede waarde maar een fractie hoger.
 
 1. Sluit het notebook om de resources vrij te geven. Selecteer hiervoor **Sluiten en stoppen** in het menu **Bestand** van het notebook. Met deze actie wordt het notebook afgesloten en gesloten.
 
@@ -192,7 +192,7 @@ Apache Spark-clusters in HDInsight bevatten Anaconda-bibliotheken, waaronder de 
 
 Als u deze toepassing niet meer wilt gebruiken, verwijdert u het cluster dat u met de volgende stappen hebt gemaakt:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Typ **HDInsight** in het **Zoekvak** bovenaan.
 

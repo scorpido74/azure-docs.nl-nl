@@ -2,13 +2,13 @@
 title: Overzicht van sjablonen
 description: Beschrijft de voordelen met Azure Resource Manager-sjablonen voor de implementatie van resources.
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 4570f5471ef6baf6f3f4a920be4d93c3f5a90438
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 02602b4d12ae4333c88b352e4c13923d67f2c591
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258121"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885732"
 ---
 # <a name="what-are-arm-templates"></a>Wat zijn ARM-sjablonen?
 
@@ -30,11 +30,17 @@ Als u probeert te kiezen tussen het gebruik van ARM-sjablonen en een van de ande
 
    ![Vergelijking van sjabloonimplementatie](./media/overview/template-processing.png)
 
-* **Ingebouwde validatie:** uw sjabloon wordt pas geïmplementeerd na het passeren van validatie. Resourcemanager controleert de sjabloon voordat de implementatie wordt gestart om te controleren of de implementatie slaagt. Uw implementatie is minder waarschijnlijk te stoppen in een half-afgewerkte staat.
-
 * **Modulaire bestanden:** U uw sjablonen opsplitsen in kleinere, herbruikbare componenten en ze koppelen tijdens de implementatie. U ook een sjabloon in een andere sjabloon nesten.
 
 * **Maak een Azure-bron:** u meteen nieuwe Azure-services en -functies gebruiken in sjablonen. Zodra een resourceprovider nieuwe bronnen introduceert, u deze bronnen implementeren via sjablonen. U hoeft niet te wachten tot gereedschappen of modules worden bijgewerkt voordat u de nieuwe services gebruikt.
+
+* **Uitbreidbaarheid:** met [implementatiescripts](deployment-script-template.md)u PowerShell- of Bash-scripts toevoegen aan uw sjablonen. De implementatiescripts vergroten uw mogelijkheid om resources in te stellen tijdens de implementatie. Een script kan worden opgenomen in de sjabloon, of worden opgeslagen in een externe bron en waarnaar wordt verwezen in de sjabloon. Implementatiescripts bieden u de mogelijkheid om uw end-to-end-omgevingsetup in één ARM-sjabloon te voltooien.
+
+* **Testen:** U ervoor zorgen dat uw sjabloon de aanbevolen richtlijnen volgt door deze te testen met de ARM-sjabloongereedschapsset (arm-ttk). Deze testkit is een PowerShell-script dat u downloaden van [GitHub.](https://github.com/Azure/arm-ttk) De toolkit maakt het makkelijker voor u om expertise te ontwikkelen met behulp van de sjabloontaal.
+
+* **Voorbeeldwijzigingen**: U de [wat-als-bewerking](template-deploy-what-if.md) gebruiken om een voorbeeld van wijzigingen te krijgen voordat u de sjabloon implementeert. Met wat-als ziet u welke resources worden gemaakt, bijgewerkt of verwijderd, en welke resourceeigenschappen worden gewijzigd. De wat-als-bewerking controleert de huidige status van uw omgeving en elimineert de noodzaak om de status te beheren.
+
+* **Ingebouwde validatie:** uw sjabloon wordt pas geïmplementeerd na het passeren van validatie. Resourcemanager controleert de sjabloon voordat de implementatie wordt gestart om te controleren of de implementatie slaagt. Uw implementatie is minder waarschijnlijk te stoppen in een half-afgewerkte staat.
 
 * **Bijgehouden implementaties**: In de Azure-portal u de implementatiegeschiedenis bekijken en informatie krijgen over de sjabloonimplementatie. U de sjabloon zien die is geïmplementeerd, de parameterwaarden die zijn doorgegeven en eventuele uitvoerwaarden. Andere infrastructuur als codeservices worden niet bijgehouden via de portal.
 

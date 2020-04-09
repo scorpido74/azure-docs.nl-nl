@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452088"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984534"
 ---
 # <a name="introduction-to-auto-scaling"></a>Inleiding tot automatisch schalen
 Automatisch schalen is een extra mogelijkheid van Service Fabric om uw services dynamisch te schalen op basis van de belasting die services rapporteren of op basis van hun gebruik van resources. Automatisch schalen geeft een grote elasticiteit en maakt het mogelijk om extra exemplaren of partities van uw service op aanvraag in te richten. Het volledige automatische schalingproces is geautomatiseerd en transparant en zodra u uw beleid voor een service hebt ingesteld, is er geen noodzaak voor handmatige schalingsbewerkingen op serviceniveau. Automatisch schalen kan worden ingeschakeld op het moment van het maken van service of op elk gewenst moment door de service bij te werken.
@@ -136,6 +136,9 @@ Hetzelfde als bij mechanisme dat schaling gebruikt door instanties toe te voegen
 
 ### <a name="using-application-manifest"></a>Toepassingsmanifest gebruiken
 ``` xml
+<NamedPartition>
+    <Partition Name="0" />
+</NamedPartition>
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>

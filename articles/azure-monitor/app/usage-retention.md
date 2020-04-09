@@ -1,17 +1,17 @@
 ---
-title: Analyse van gebruikersretentie voor webtoepassingen met Azure Application Insights | Microsoft-documenten
+title: Gebruikersretentie van web-apps analyseren met Azure Application Insights
 description: Hoeveel gebruikers keren terug naar uw app?
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 37ae97d5fbc62e507f726c452999a7f6e7c989c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6d9be6bc6d7f90153e2fb58aa404e281568dbdd
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670964"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892407"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Gebruikersbewaaranalyse voor webapplicaties met Application Insights
 
@@ -25,7 +25,7 @@ Als u nog geen gegevens ziet in de bewaartool in de Portal Application Insights,
 
 ![Retentie-informatie](./media/usage-retention/retention.png)
 
-1. Op de werkbalk kunnen gebruikers nieuwe bewaarrapporten maken, bestaande bewaarrapporten openen, het huidige bewaarrapport opslaan of opslaan als, wijzigingen in opgeslagen rapporten terugdraaien, gegevens over het rapport vernieuwen, rapport delen via e-mail of directe koppeling en toegang krijgen tot de documentatie Pagina. 
+1. Op de werkbalk kunnen gebruikers nieuwe bewaarrapporten maken, bestaande bewaarrapporten openen, het huidige bewaarrapport opslaan of opslaan als, wijzigingen in opgeslagen rapporten terugdraaien, gegevens over het rapport vernieuwen, rapport delen via e-mail of directe koppeling en toegang krijgen tot de documentatiepagina. 
 2. Standaard, retentie toont alle gebruikers die iets deed dan kwam terug en deed iets anders over een periode. U verschillende combinaties van gebeurtenissen selecteren om de focus op specifieke gebruikersactiviteiten te beperken.
 3. Voeg een of meer filters toe aan eigenschappen. U zich bijvoorbeeld richten op gebruikers in een bepaald land of regio. Klik **op Bijwerken** nadat u de filters hebt ingesteld. 
 4. Het algemene bewaardiagram toont een overzicht van gebruikersretentie over de geselecteerde periode. 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 22283833ebb414372de16cbe4ce7d3986cd400a9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 04c6ddf03f1c0433ad4e2d0808f118f42670ee08
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238704"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891268"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Zelfstudie: Een aangepast domein toevoegen aan uw Azure CDN-eindpunt
 Deze zelfstudie laat zien hoe u een aangepast domein toevoegt aan een Azure CDN-eindpunt (Content Delivery Network). Wanneer u een CDN-eindpunt gebruikt voor het leveren van inhoud, is een aangepast domein nodig als u wilt dat uw eigen domeinnaam zichtbaar is in de URL van uw CDN. Een zichtbare domeinnaam kan handig zijn voor uw klanten en nuttig zijn voor branding-doelen. 
@@ -50,7 +50,7 @@ Voordat u een aangepast domein met een Azure CDN-eindpunt gebruiken kunt, moet u
 Een aangepast domein en het subdomein kunnen worden slechts aan één eindpunt tegelijk worden gekoppeld. U kunt echter verschillende subdomeinen uit het aangepaste domein gebruiken voor andere Azure-service-eindpunten met behulp van meerdere CNAME-records. U kunt ook een aangepast domein met verschillende subdomeinen toewijzen aan hetzelfde CDN-eindpunt.
 
 > [!NOTE]
-> Elk aliasrecordtype kan worden gebruikt voor aangepaste domeinen als u Azure DNS als domeinprovider gebruikt. Deze walkthrough maakt gebruik van het CNAME-recordtype. Als u A- of AAAA-recordtypen gebruikt, volgt u dezelfde stappen hieronder en vervangt u CNAME door het recordtype van uw keuze. Als u een aliasrecord gebruikt om een hoofddomein toe te voegen als een aangepast domein en u SSL wilt inschakelen, moet u handmatige validatie gebruiken zoals beschreven in [dit artikel.](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint) Zie [Puntzone apex naar Azure CDN-eindpunten](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints)voor meer informatie.
+> Elk aliasrecordtype kan worden gebruikt voor aangepaste domeinen als u Azure DNS als domeinprovider gebruikt. Deze walkthrough maakt gebruik van het CNAME-recordtype. Als u A- of AAAA-recordtypen gebruikt, volgt u dezelfde stappen hieronder en vervangt u CNAME door het recordtype van uw keuze. Als u een aliasrecord gebruikt om een hoofddomein toe te voegen als een aangepast domein en u TLS wilt inschakelen, moet u handmatige validatie gebruiken zoals beschreven in [dit artikel.](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint) Zie [Puntzone apex naar Azure CDN-eindpunten](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints)voor meer informatie.
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>Tijdelijk cdnverify subdomein toewijzen
 

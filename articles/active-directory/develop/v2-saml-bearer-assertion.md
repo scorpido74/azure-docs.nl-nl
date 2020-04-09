@@ -2,27 +2,22 @@
 title: Microsoft-identiteitsplatform & saml-beweringsstroom aan toonder | Azure
 description: Meer informatie over het ophalen van gegevens uit Microsoft Graph zonder de gebruiker te vragen om referenties met behulp van de SAML-beweringsstroom voor dragers.
 services: active-directory
-documentationcenter: ''
 author: umeshbarapatre
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 16f30473ded5f1de5dc94c1cff9da96165b1a01c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76700206"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886174"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft-identiteitsplatform en OAuth 2.0 SAML-beweringsstroom
 Met de oauth 2.0 SAML-claimstroom voor dragers u een OAuth-toegangstoken aanvragen met behulp van een SAML-bewering wanneer een client een bestaande vertrouwensrelatie moet gebruiken. De handtekening die is toegepast op de SAML-bewering biedt verificatie van de geautoriseerde app. Een SAML-bewering is een XML-beveiligingstoken dat is uitgegeven door een identiteitsprovider en wordt verbruikt door een serviceprovider. De serviceprovider vertrouwt op de inhoud ervan om het onderwerp van de bewering te identificeren voor beveiligingsdoeleinden.

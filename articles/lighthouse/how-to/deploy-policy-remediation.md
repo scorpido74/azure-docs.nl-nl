@@ -3,12 +3,12 @@ title: Beleid implementeren dat kan worden hersteld
 description: Meer informatie over het aan boord van een klant naar Azure gedelegeerd resourcebeheer, zodat hun resources kunnen worden geopend en beheerd via uw eigen tenant.
 ms.date: 10/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: c06ed4ea597808aee18d4a848bcfea7152b9cf8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b625e9e3c96866cfbc655a55b770c9ac07a626bd
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270639"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985164"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Een beleid implementeren dat kan worden gesaneerd binnen een gedelegeerd abonnement
 
@@ -40,7 +40,7 @@ In het onderstaande voorbeeld ziet u een **principalId** met de functie Gebruike
 
 Zodra u de gebruiker hebt gemaakt met de nodige machtigingen zoals hierboven beschreven, kan die gebruiker beleidsregels implementeren in de klanttenant die hersteltaken gebruiken.
 
-Stel dat u diagnostische gegevens wilt inschakelen op Azure Key Vault-resources in de tenant van de klant, zoals geïllustreerd in dit [voorbeeld.](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring) Een gebruiker in de beheertenant met de juiste machtigingen (zoals hierboven beschreven) zou een [Azure Resource Manager-sjabloon](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) implementeren om dit scenario in te schakelen.
+Stel dat u diagnostische gegevens wilt inschakelen op Azure Key Vault-resources in de tenant van de klant, zoals geïllustreerd in dit [voorbeeld.](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring) Een gebruiker in de beheertenant met de juiste machtigingen (zoals hierboven beschreven) zou een [Azure Resource Manager-sjabloon](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) implementeren om dit scenario in te schakelen.
 
 Houd er rekening mee dat het maken van de beleidstoewijzing die moet worden gebruikt met een gedelegeerd abonnement, momenteel moet worden uitgevoerd via API's, niet in de Azure-portal. Daarbij moet de **apiVersion** zijn ingesteld op **2019-04-01-preview,** inclusief de eigenschap nieuwe **delegatedManagedIdentityResourceId.** Met deze eigenschap u een beheerde identiteit opnemen die zich in de tenant van de klant bevindt (in een abonnement of brongroep die is aangesloten bij azure-gedelegeerd bronbeheer).
 
@@ -62,7 +62,7 @@ In het volgende voorbeeld wordt een roltoewijzing met een **gedelegeerdManagedId
 ```
 
 > [!TIP]
-> Een [soortgelijk voorbeeld](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-add-or-replace-tag) is beschikbaar om aan te tonen hoe u een beleid implementeert of verwijdert dat een tag toevoegt of verwijdert (met het wijzigingseffect) naar een gedelegeerd abonnement.
+> Een [soortgelijk voorbeeld](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) is beschikbaar om aan te tonen hoe u een beleid implementeert of verwijdert dat een tag toevoegt of verwijdert (met het wijzigingseffect) naar een gedelegeerd abonnement.
 
 ## <a name="next-steps"></a>Volgende stappen
 

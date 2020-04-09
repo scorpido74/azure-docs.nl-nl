@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 456fc2a736b3213a14e5704f89a808c120c45b33
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1848610250e696807acef118384f43d2a51442ca
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158673"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984483"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>Zelfstudie: Bynder integreren met Azure Active Directory
 
@@ -84,13 +84,25 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
 1. Voer in de sectie **BasisSAML-configuratie** de waarden voor de volgende velden in als u de toepassing in de **idp-modus** wilt configureren:
 
-    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://<company name>.getbynder.com`
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: 
+    
+    Voor een standaarddomein:`https://<company name>.getbynder.com`
+    
+    Voor een aangepast domein:`https;//<subdomain>.<domain>.com`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<company name>.getbynder.com/sso/SAML/authenticate/`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: 
+    
+     Voor een standaarddomein:`https://<company name>.getbynder.com/sso/SAML/authenticate/`
+    
+    Voor een aangepast domein:`https://<subdomain>.<domain>.com/sso/SAML/authenticate/`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<company name>.getbynder.com/login/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: 
+    
+     Voor een standaarddomein:`https://<company name>.getbynder.com/login/`
+    
+     Voor een aangepast domein:` https://<subdomain>.<domain>.com/login/`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [het ondersteuningsteam van de Bynder-client](https://www.bynder.com/en/support/) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.

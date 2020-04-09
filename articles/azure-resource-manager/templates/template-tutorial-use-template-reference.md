@@ -6,14 +6,14 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b742982121a20a2b057eba4211584b0386dde411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80373426"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878485"
 ---
-# <a name="tutorial-utilize-the-arm-template-reference"></a>Zelfstudie: De verwijzing naar de ARM-sjabloon gebruiken
+# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Zelfstudie: De verwijzing naar de sjabloon resourcebeheer gebruiken
 
 Meer informatie over het zoeken naar de gegevens van het sjabloonschema en de informatie gebruiken om ARM-sjablonen (Azure Resource Manager) te maken.
 
@@ -65,9 +65,13 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
     * **resources**: geef de resourcetypen op die worden geïmplementeerd of bijgewerkt in een resourcegroep.
     * **outputs**: geef de waarden op die worden geretourneerd na de implementatie.
 
-1. Vouw **Resources** uit. Er is een `Microsoft.Storage/storageAccounts`-resource gedefinieerd.
+1. Vouw **Resources** uit. Er is een `Microsoft.Storage/storageAccounts`-resource gedefinieerd. De SKU-naam gebruikt een parameterwaarde.  De parameter heet **storageAccountType**.
 
     ![Definitie opslagaccount Resource Manager-sjabloon](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
+
+1. Vouw **parameters** uit om te zien hoe **storageAccountType** is gedefinieerd. De parameter heeft vier toegestane waarden. U vindt de andere toegestane waarden en herziet vervolgens de parameterdefinitie.
+
+    ![Resource Manager-sjabloonopslagaccountbronnen skus](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
 ## <a name="find-the-template-reference"></a>De sjabloonverwijzing zoeken
 
@@ -84,7 +88,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
     ![Versies van naslaggeheugens van resourcebeheer-sjablonen](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. Selecteer de nieuwste versie van het **brontype storageAccount.**  De nieuwste versie is **2019-06-01** wanneer dit artikel is geschreven.
+1. Selecteer de nieuwste versie van het **brontype storageAccount.** De nieuwste versie is **2019-06-01** wanneer dit artikel is geschreven. Controleer of deze versie overeenkomt met de versie die wordt gebruikt voor de bron van het opslagaccount in uw sjabloon. Als u de API-versie bijwerkt, controleert u of de resourcedefinitie overeenkomt met de verwijzing naar de sjabloon.
 
 1. Op deze pagina worden de details van het brontype storageAccount weergegeven.  Er worden bijvoorbeeld de toegestane waarden voor het **Sku-object** weergegeven. Er zijn meer skus dan wat wordt vermeld in de quickstart sjabloon die u eerder hebt geopend. U de snelstartsjabloon aanpassen om alle beschikbare opslagtypen op te nemen.
 
@@ -98,7 +102,21 @@ Voeg vanuit Visual Studio Code de extra opslagaccounttypen toe zoals in de volge
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Raadpleeg de sectie [De sjabloon implementeren](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) in de snelstartgids van Visual Studio Code voor de implementatieprocedure. Wanneer u de sjabloon implementeert, geeft u de parameter **storageAccountType** op met een nieuwe toegevoegde waarde, **bijvoorbeeld Premium_ZRS**. De deploy zou mislukken als u de oorspronkelijke snelstartsjabloon gebruikt omdat **Premium_ZRS** geen toegestane waarde was.
+Raadpleeg de sectie [De sjabloon implementeren](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) in de snelstartgids van Visual Studio Code voor de implementatieprocedure. Wanneer u de sjabloon implementeert, geeft u de parameter **storageAccountType** op met een nieuwe toegevoegde waarde, **bijvoorbeeld Premium_ZRS**. De deploy zou mislukken als u de oorspronkelijke snelstartsjabloon gebruikt omdat **Premium_ZRS** geen toegestane waarde was.  Als u de parameterwaarde wilt doorgeven, voegt u de volgende switch toe aan de opdracht Implementatie:
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli
+--parameters storageAccountType='Premium_ZRS'
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+-storageAccountType "Premium_ZRS"
+```
+
+---
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

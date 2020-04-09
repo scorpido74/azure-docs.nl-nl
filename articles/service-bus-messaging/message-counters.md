@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/08/2020
 ms.author: aschhab
-ms.openlocfilehash: 3a4fca0b3b60fcb76bcdc4f5f2d53df816c5053b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8020b12ca892fbf7dec6fed6259526d958fb110f
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756370"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891761"
 ---
 # <a name="message-counters"></a>Berichtentellers
 
@@ -43,6 +43,11 @@ Het kennen van het aantal actieve berichten is handig om te bepalen of een wacht
 -   [TransferMessageCount:](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount)Berichten in afwachting van overdracht naar een andere wachtrij of onderwerp.
 
 Als een toepassing resources wil schalen op basis van de lengte van de wachtrij, moet deze worden uitgevoerd met een gemeten tempo. De aankoop van de berichtentellers is een dure bewerking binnen de berichtenmakelaar en het uitvoeren ervan heeft vaak direct en negatief effect op de prestaties van de entiteit.
+
+> [!NOTE]
+> De berichten die naar een servicebusonderwerp worden verzonden, worden doorgestuurd naar abonnementen voor dat onderwerp. Het actieve berichtdat op het onderwerp zelf wordt geteld, is dus 0, omdat deze berichten met succes zijn doorgestuurd naar het abonnement. Haal het aantal berichten op bij het abonnement en controleer of het groter is dan 0. Hoewel u berichten bij het abonnement ziet, worden ze daadwerkelijk opgeslagen in een opslag die eigendom is van het onderwerp. 
+
+Als je kijkt naar de abonnementen, dan zouden ze niet-nul aantal berichten (die tot 323 MB ruimte voor deze hele entiteit) toevoegen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

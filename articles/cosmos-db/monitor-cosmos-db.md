@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: b9b66c379714c2f4fa2421876fda3bdb500ce6c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9e86706ecd4e5b2526e1d801dda45ed6b345c6
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250426"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887245"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB bewaken
 Wanneer u kritieke toepassingen en bedrijfsprocessen hebt die afhankelijk zijn van Azure-resources, wilt u deze resources controleren op hun beschikbaarheid, prestaties en werking. In dit artikel worden de bewakingsgegevens beschreven die zijn gegenereerd door Azure Cosmos-databases en hoe u de functies van Azure Monitor gebruiken om deze gegevens te analyseren en te waarschuwen.
@@ -38,7 +38,7 @@ In de volgende secties wordt op dit artikel voortgebouwd door de specifieke gege
 
 ## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Statistieken over bewerkingsniveau weergeven voor Azure Cosmos DB
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Selecteer **Monitor op** de navigatiebalk aan de linkerkant en selecteer **Statistieken**.
 
@@ -63,10 +63,6 @@ U ook statistieken en de grafiek filteren die wordt weergegeven door een specifi
 U statistieken groeperen met de optie **Splitsen toepassen.** U bijvoorbeeld de aanvraageenheden per bewerkingstype groeperen en de grafiek voor alle bewerkingen tegelijk bekijken, zoals in de volgende afbeelding wordt weergegeven:
 
 ![Add apply splitting filter Add apply splitting filter Add apply splitting filter Add apply](./media/monitor-cosmos-db/apply-metrics-splitting.png)
-
-Hier is nog een voorbeeld om de latentiestatistieken aan de serverzijde voor een specifieke database, container of een bewerking weer te geven:
-
-![Latentiestatistieken aan serverzijde](./media/monitor-cosmos-db/serverside-latency-metric.png)
 
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>Monitoring gegevens verzameld van Azure Cosmos DB
 

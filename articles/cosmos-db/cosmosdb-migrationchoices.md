@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 9111193bb441487b9e3c49bc9ee1a296d49f8a31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34698a215477abdd7d68c3dfe050657ecf049690
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72882392"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984892"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Opties om uw on-premises of cloudgegevens te migreren naar Azure Cosmos DB
 
@@ -34,18 +34,18 @@ De volgende factoren bepalen de keuze van het migratiehulpprogramma:
 |**Migratietype**|**Oplossing**|**Overwegingen**|
 |---------|---------|---------|
 |Offline|[Hulpprogramma voor gegevensmigratie](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Niet geschikt voor grote datasets|
-|Offline|[Azure-gegevensfabriek](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Maakt gebruik van de Azure Cosmos DB bulk executor library <br/>&bull;Geschikt voor grote datasets <br/>&bull;Gebrek aan controlepunten - Dit betekent dat als er een probleem optreedt tijdens de migratie, u het hele migratieproces opnieuw moet starten<br/>&bull;Gebrek aan een dode letter wachtrij - Het betekent dat een paar foutieve bestanden kan het hele migratieproces te stoppen.|
+|Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Maakt gebruik van de Azure Cosmos DB bulk executor library <br/>&bull;Geschikt voor grote datasets <br/>&bull;Gebrek aan controlepunten - Dit betekent dat als er een probleem optreedt tijdens de migratie, u het hele migratieproces opnieuw moet starten<br/>&bull;Gebrek aan een dode letter wachtrij - Het betekent dat een paar foutieve bestanden kan het hele migratieproces te stoppen.|
 |Offline|[Azure Cosmos DB Spark-connector](https://docs.microsoft.com/azure/cosmos-db/spark-connector)|&bull;Maakt gebruik van de Azure Cosmos DB bulk executor library <br/>&bull;Geschikt voor grote datasets <br/>&bull;Heeft een aangepaste Spark-installatie nodig <br/>&bull;Spark is gevoelig voor schema-inconsistenties en dit kan een probleem zijn tijdens migratie |
 |Offline|[Aangepast gereedschap met cosmos DB-bulkuitvoerderbibliotheek](https://docs.microsoft.com/azure/cosmos-db/migrate-cosmosdb-data)|&bull;Biedt controlepunten, dead-lettering mogelijkheden die migratie tolerantie verhoogt <br/>&bull;Geschikt voor zeer grote datasets (10 TB+)  <br/>&bull;Vereist aangepaste installatie van dit hulpprogramma dat als app-service wordt uitgevoerd |
 |Online|[Cosmos DB-functies + ChangeFeed-API](https://docs.microsoft.com/azure/cosmos-db/change-feed-functions)|&bull;Eenvoudig in te stellen <br/>&bull;Werkt alleen als de bron een Azure Cosmos DB-container is <br/>&bull;Niet geschikt voor grote datasets <br/>&bull;Verwijdert geen verwijderen uit de broncontainer |
-|Online|[Aangepaste migratieservice met ChangeFeed](https://aka.ms/CosmosDBMigrationSample)|&bull;Biedt voortgangstracking <br/>&bull;Werkt alleen als de bron een Azure Cosmos DB-container is <br/>&bull;Werkt ook voor grotere datasets <br/>&bull;De gebruiker moet een App-service instellen om de feedprocessor wijzigen te hosten <br/>&bull;Verwijdert geen verwijderen uit de broncontainer|
+|Online|[Aangepaste migratieservice met ChangeFeed](https://github.com/nomiero/CosmosDBLiveETLSample)|&bull;Biedt voortgangstracking <br/>&bull;Werkt alleen als de bron een Azure Cosmos DB-container is <br/>&bull;Werkt ook voor grotere datasets <br/>&bull;De gebruiker moet een App-service instellen om de feedprocessor wijzigen te hosten <br/>&bull;Verwijdert geen verwijderen uit de broncontainer|
 |Online|[Striim Striim](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-sql-api-migrate-data-striim)|&bull;Werkt met een grote verscheidenheid aan bronnen zoals Oracle, DB2, SQL Server <br/>&bull;Eenvoudig te bouwen ETL-pijpleidingen en biedt een dashboard voor bewaking <br/>&bull;Ondersteunt grotere gegevenssets <br/>&bull;Aangezien dit een tool van derden is, moet het worden gekocht van de markt en geïnstalleerd in de omgeving van de gebruiker|
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo API
 |**Migratietype**|**Oplossing**|**Overwegingen**|
 |---------|---------|---------|
 |Offline|[Hulpprogramma voor gegevensmigratie](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Niet geschikt voor grote datasets|
-|Offline|[Azure-gegevensfabriek](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Maakt gebruik van de Azure Cosmos DB bulk executor library <br/>&bull;Geschikt voor grote datasets <br/>&bull;Gebrek aan controlepunten betekent dat elk probleem tijdens de migratie een herstart van het hele migratieproces vereist<br/>&bull;Het ontbreken van een dode letter wachtrij zou betekenen dat een paar foutieve bestanden kan het hele migratieproces te stoppen <br/>&bull;Aangepaste code nodig om de leesdoorvoer voor bepaalde gegevensbronnen te verhogen|
+|Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Maakt gebruik van de Azure Cosmos DB bulk executor library <br/>&bull;Geschikt voor grote datasets <br/>&bull;Gebrek aan controlepunten betekent dat elk probleem tijdens de migratie een herstart van het hele migratieproces vereist<br/>&bull;Het ontbreken van een dode letter wachtrij zou betekenen dat een paar foutieve bestanden kan het hele migratieproces te stoppen <br/>&bull;Aangepaste code nodig om de leesdoorvoer voor bepaalde gegevensbronnen te verhogen|
 |Offline|[Bestaande Mongo Tools (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull;Eenvoudig in te stellen en te integreren <br/>&bull;Heeft aangepaste handling nodig voor gashendels|
 |Online|[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db-online)|&bull;Maakt gebruik van de Azure Cosmos DB bulk executor library <br/>&bull;Geschikt voor grote datasets en zorgt voor het repliceren van live changes <br/>&bull;Werkt alleen met andere MongoDB bronnen|
 

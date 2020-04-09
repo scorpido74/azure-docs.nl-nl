@@ -1,15 +1,16 @@
 ---
-title: Een statisch IP-adres en DNS-label gebruiken met de Laadbalans van Azure Kubernetes Service (AKS)
+title: Statische IP gebruiken met load balancer
+titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het maken en gebruiken van een statisch IP-adres met de Azure Kubernetes Service (AKS) load balancer.
 services: container-service
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: 6c219976db21fb05ea1ad313b4effdf95906f986
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5051232f29ad51d9fee893a4a660fc81f6e60d77
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047956"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886735"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Een statisch openbaar IP-adres en DNS-label gebruiken met de Laadbalans (Azure Kubernetes Service)
 

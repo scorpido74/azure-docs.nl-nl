@@ -2,13 +2,13 @@
 title: Sjabloonfuncties - tekenreeks
 description: Beschrijft de functies die u moet gebruiken in een Azure Resource Manager-sjabloon om met tekenreeksen te werken.
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: 070133c3db538e5df76644b62c25ced916adc4af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: c0517375b273384f263e8ba421995d4afb6c193b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156273"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982411"
 ---
 # <a name="string-functions-for-arm-templates"></a>Tekenreeksfuncties voor ARM-sjablonen
 
@@ -36,7 +36,7 @@ Resourcebeheer biedt de volgende functies voor het werken met tekenreeksen in uw
 * [Overslaan](#skip)
 * [split](#split)
 * [startMet](#startswith)
-* [tekenreeks](#string)
+* [Tekenreeks](#string)
 * [Subtekenreeks](#substring)
 * [Nemen](#take)
 * [toLower](#tolower)
@@ -46,7 +46,6 @@ Resourcebeheer biedt de volgende functies voor het werken met tekenreeksen in uw
 * [Uri](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
-* [utcNu](#utcnow)
 
 ## <a name="base64"></a>base64
 
@@ -1097,6 +1096,8 @@ U deze functie alleen gebruiken in een expressie voor de standaardwaarde van een
 
 De nieuweGuid-functie verschilt van de [guid-functie](#guid) omdat er geen parameters voor nodig zijn. Wanneer u guid aanroept met dezelfde parameter, wordt telkens dezelfde id geretourneerd. Gebruik guid wanneer u op betrouwbare wijze dezelfde GUID moet genereren voor een specifieke omgeving. Gebruik newGuid wanneer u telkens een andere id nodig hebt, zoals het implementeren van resources naar een testomgeving.
 
+De nieuweGuid-functie gebruikt de [Guid-structuur](/dotnet/api/system.guid) in het .NET Framework om de wereldwijd unieke id te genereren.
+
 Als u de optie gebruikt [om een eerdere succesvolle implementatie opnieuw te implementeren](rollback-on-error.md)en de eerdere implementatie een parameter bevat die newGuid gebruikt, wordt de parameter niet opnieuw geëvalueerd. In plaats daarvan wordt de parameterwaarde van de eerdere implementatie automatisch opnieuw gebruikt in de rollback-implementatie.
 
 In een testomgeving moet u mogelijk herhaaldelijk resources implementeren die slechts korte tijd leven. In plaats van het construeren van unieke namen, u newGuid met [uniqueString](#uniquestring) gebruiken om unieke namen te maken.
@@ -1876,7 +1877,7 @@ In het volgende voorbeeld ziet u hoe u een unieke naam maakt voor een opslagacco
     ...
 ```
 
-Als u elke keer dat u een sjabloon implementeert een nieuwe unieke naam moet maken en niet van plan bent de bron bij te werken, u de [utcNow-functie](#utcnow) met unieke Tekenreeks gebruiken. Je zou deze aanpak kunnen gebruiken in een testomgeving. Zie [utcNow](#utcnow)voor een voorbeeld .
+Als u elke keer dat u een sjabloon implementeert een nieuwe unieke naam moet maken en niet van plan bent de bron bij te werken, u de [utcNow-functie](template-functions-date.md#utcnow) met unieke Tekenreeks gebruiken. Je zou deze aanpak kunnen gebruiken in een testomgeving. Zie [utcNow](template-functions-date.md#utcnow)voor een voorbeeld .
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -2093,115 +2094,6 @@ De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 | uriOutput | Tekenreeks | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | Tekenreeks | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
 | toStringOutput | Tekenreeks | `http://contoso.com/resources/nested/azuredeploy.json` |
-
-## <a name="utcnow"></a>utcNu
-
-`utcNow(format)`
-
-Geeft als resultaat de huidige datumtijdwaarde (UTC) in de opgegeven notatie. Als er geen formaat wordt geleverd, wordt het ISO 8601 -formaat (yyyyMddTHHmmssZ) gebruikt. **Deze functie kan alleen worden gebruikt in de standaardwaarde voor een parameter.**
-
-### <a name="parameters"></a>Parameters
-
-| Parameter | Vereist | Type | Beschrijving |
-|:--- |:--- |:--- |:--- |
-| formaat |Nee |tekenreeks |De URI-gecodeerde waarde om te converteren naar een tekenreeks. Gebruik [tekenreeksen voor standaardindelingen](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) of [tekenreeksen voor aangepaste indelingen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
-
-### <a name="remarks"></a>Opmerkingen
-
-U deze functie alleen gebruiken in een expressie voor de standaardwaarde van een parameter. Als u deze functie ergens anders in een sjabloon gebruikt, wordt een fout geretourneerd. De functie is niet toegestaan in andere delen van de sjabloon omdat deze elke keer dat deze wordt aangeroepen een andere waarde retourneert. Het implementeren van dezelfde sjabloon met dezelfde parameters zou niet betrouwbaar dezelfde resultaten opleveren.
-
-Als u de optie gebruikt [om een eerdere succesvolle implementatie opnieuw te implementeren](rollback-on-error.md)en de eerdere implementatie een parameter bevat die utcNow gebruikt, wordt de parameter niet opnieuw geëvalueerd. In plaats daarvan wordt de parameterwaarde van de eerdere implementatie automatisch opnieuw gebruikt in de rollback-implementatie.
-
-Zorg ervoor dat u een sjabloon opnieuw implementeert die is gebaseerd op de utcNow-functie voor een standaardwaarde. Wanneer u de parameter opnieuw implementeert en geen waarde voor de parameter geeft, wordt de functie opnieuw geëvalueerd. Als u een bestaande resource wilt bijwerken in plaats van een nieuwe resource wilt maken, geeft u de parameterwaarde door van de eerdere implementatie.
-
-### <a name="return-value"></a>Retourwaarde
-
-De huidige UTC-datumwaarde.
-
-### <a name="examples"></a>Voorbeelden
-
-In de volgende voorbeeldsjabloon worden verschillende indelingen voor de datumtijdwaarde weergegeven.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcValue": {
-            "type": "string",
-            "defaultValue": "[utcNow()]"
-        },
-        "utcShortValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "utcCustomValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('M d')]"
-        }
-    },
-    "resources": [
-    ],
-    "outputs": {
-        "utcOutput": {
-            "type": "string",
-            "value": "[parameters('utcValue')]"
-        },
-        "utcShortOutput": {
-            "type": "string",
-            "value": "[parameters('utcShortValue')]"
-        },
-        "utcCustomOutput": {
-            "type": "string",
-            "value": "[parameters('utcCustomValue')]"
-        }
-    }
-}
-```
-
-De uitvoer van het voorgaande voorbeeld varieert voor elke implementatie, maar is vergelijkbaar met:
-
-| Name | Type | Waarde |
-| ---- | ---- | ----- |
-| utcOutput | tekenreeks | 20190305T175318Z |
-| utcShortOutput | tekenreeks | 03/05/2019 |
-| utcCustomOutput | tekenreeks | 3 5 |
-
-In het volgende voorbeeld ziet u hoe u een waarde van de functie gebruikt bij het instellen van een tagwaarde.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcShort": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "rgName": {
-            "type": "string"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "name": "[parameters('rgName')]",
-            "location": "westeurope",
-            "tags":{
-                "createdDate": "[parameters('utcShort')]"
-            },
-            "properties":{}
-        }
-    ],
-    "outputs": {
-        "utcShort": {
-            "type": "string",
-            "value": "[parameters('utcShort')]"
-        }
-    }
-}
-```
 
 ## <a name="next-steps"></a>Volgende stappen
 * Zie [Sjablonen voor Azure Resource Manager ontwerpen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager-sjabloon.

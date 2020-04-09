@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: efa498ba600a664beab4b9a49eae2b2c3f1c8397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2355cb7ab995cab3060c7a94c9e7ea344bd9e92b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298301"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984637"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Snelstart: Aan de slag met Application Insights in een Java webproject
 
@@ -25,7 +25,7 @@ Application Insights is een uitbreidbare analyseservice voor webontwikkelaars di
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Een Application Insights-instrumentatiesleutel ophalen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Maak in de Azure Portaleen Application Insights-resource. Stel het toepassingstype in op Java-webtoepassing.
 
 3. Zoek de instrumentatiesleutel van de nieuwe resource. U moet deze sleutel zo dadelijk in de code van uw project plakken.
@@ -223,7 +223,7 @@ En voor automatische operatienaamgeving.
 
 De Application Insights Java SDK ondersteunt nu [W3C distributed tracing.](https://w3c.github.io/trace-context/)
 
-De inkomende SDK-configuratie wordt verder uitgelegd in ons artikel over [correlatie.](correlation.md#telemetry-correlation-in-the-java-sdk)
+De inkomende SDK-configuratie wordt verder uitgelegd in ons artikel over [correlatie.](correlation.md)
 
 Uitgaande SDK-configuratie wordt gedefinieerd in het [AI-Agent.xml-bestand.](java-agent.md)
 
@@ -258,7 +258,7 @@ U kunt opgeven dat er aanvullende prestatiemeteritems moeten worden verzameld.
 * `displayName` - De naam die wordt weergegeven in de Application Insights-portal.
 * `objectName` - De JMX-objectnaam.
 * `attribute` - Het kenmerk van de JMX-objectnaam dat moet worden opgehaald
-* `type` (optioneel) - Het type kenmerk van het JMX-object:
+* `type`(optioneel) - Het type kenmerk van het JMX-object:
   * Standaard: een eenvoudig type, zoals int of long.
   * `composite`: de gegevens van de prestatiemeteritems hebben de indeling 'Attribute.Data'
   * `tabular`: de gegevens van de prestatiemeteritems hebben de vorm van een rij in een tabel

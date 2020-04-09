@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2376f039b93ca22d3d5a988818538419489d2456
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278408"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985606"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie: Een schaalset met virtuele machines automatisch schalen met Azure PowerShell
 
@@ -209,7 +209,7 @@ Het hulpprogramma **CPUStres** wordt uitgevoerd zolang u de beide Extern bureaub
 
 
 ## <a name="monitor-the-active-autoscale-rules"></a>De actieve regels voor automatisch schalen bewaken
-Gebruik **while** om het aantal VM-exemplaren in de schaalset te controleren. Het duurt vijf minuten voordat de regels voor automatisch schalen het proces van uitschalen starten in reactie op de CPU-belasting die met **CPUStres* wordt gegenereerd op elk van de VM-exemplaren:
+Gebruik **while** om het aantal VM-exemplaren in de schaalset te controleren. Het duurt 5 minuten voordat de automatische schaalschalen het scale-outproces beginnen als reactie op de CPU-belasting die door **CPUStress** wordt gegenereerd op elk van de VM-exemplaren:
 
 ```azurepowershell-interactive
 while (1) {Get-AzureRmVmssVM `

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: fae4206e555c85fe0555ce1c4366cd57dd386f1e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: efe2c96c619aaf92efc5b4abf76b6b89c96ebd37
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79471826"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878031"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Zelfstudie: HTTPS configureren in een aangepast Front Door-domein
 
@@ -37,7 +37,7 @@ In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 > - Het HTTPS-protocol inschakelen in uw aangepast domein
 > - Een met AFD beheerd certificaat gebruiken 
-> - Uw eigen certificaat gebruiken, dat wil zeggen, een aangepast SSL-certificaat
+> - Gebruik uw eigen certificaat, dat wil zeggen een aangepast TLS/SSL-certificaat
 > - Het domein valideren
 > - Het HTTPS-protocol uitschakelen in uw aangepast domein
 
@@ -48,9 +48,9 @@ In deze zelfstudie leert u het volgende:
 
 Voordat u de stappen in deze zelfstudie kunt voltooien, moet u een Front Door maken waaraan ten minste één aangepast domein is toegevoegd. Zie [Zelfstudie: Een aangepast domein toevoegen aan uw Front Door](front-door-custom-domain.md) voor meer informatie.
 
-## <a name="ssl-certificates"></a>SSL-certificaten
+## <a name="tlsssl-certificates"></a>TLS/SSL-certificaten
 
-Als u het HTTPS-protocol wilt inschakelen voor het veilig leveren van inhoud aan een aangepast Front Door-domein, moet u een SSL-certificaat gebruiken. U ervoor kiezen om een certificaat te gebruiken dat wordt beheerd door Azure Front Door of uw eigen certificaat te gebruiken.
+Als u het HTTPS-protocol wilt inschakelen voor het veilig leveren van inhoud op een aangepast frontdoordomein, moet u een TLS/SSL-certificaat gebruiken. U ervoor kiezen om een certificaat te gebruiken dat wordt beheerd door Azure Front Door of uw eigen certificaat te gebruiken.
 
 
 ### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Optie 1 (standaard): gebruik een certificaat dat wordt beheerd door Front Door
@@ -72,7 +72,7 @@ Volg deze stappen om HTTPS in te schakelen in een aangepast domein:
 
 ### <a name="option-2-use-your-own-certificate"></a>Optie 2: gebruik uw eigen certificaat
 
-U kunt uw eigen certificaat gebruiken voor het inschakelen van de HTTPS-functie. Dit proces verloopt via een integratie met Azure Key Vault, waarmee u uw certificaten veilig kunt opslaan. Azure Front Door maakt gebruik van dit beveiligde mechanisme om uw certificaat te krijgen en het vereist een paar extra stappen. Wanneer u uw SSL-certificaat maakt, moet u deze maken met een toegestane certificeringsinstantie (CA). Als u een niet-toegestane CA gebruikt, wordt uw aanvraag geweigerd. Zie [Toegestane certificaatautoriteiten voor](front-door-troubleshoot-allowed-ca.md)het inschakelen van aangepaste HTTPS op Azure Front Door voor een lijst met toegestane CV's.
+U kunt uw eigen certificaat gebruiken voor het inschakelen van de HTTPS-functie. Dit proces verloopt via een integratie met Azure Key Vault, waarmee u uw certificaten veilig kunt opslaan. Azure Front Door maakt gebruik van dit beveiligde mechanisme om uw certificaat te krijgen en het vereist een paar extra stappen. Wanneer u uw TLS/SSL-certificaat maakt, moet u het maken met een toegestane certificaatautoriteit (CA). Als u een niet-toegestane CA gebruikt, wordt uw aanvraag geweigerd. Zie [Toegestane certificaatautoriteiten voor](front-door-troubleshoot-allowed-ca.md)het inschakelen van aangepaste HTTPS op Azure Front Door voor een lijst met toegestane CV's.
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Voorbereiden van uw Azure Key Vault-account en -certificaat
  
@@ -84,7 +84,7 @@ U kunt uw eigen certificaat gebruiken voor het inschakelen van de HTTPS-functie.
 2. Azure Key Vault-certificaten: als u al in het bezit bent van een certificaat, kunt u dit rechtstreeks uploaden naar uw Azure Key Vault-account of u kunt via Azure Key Vault direct een certificaat maken bij een van de partnercertificeringsinstanties waarmee Azure Key Vault is geïntegreerd. Upload uw certificaat als **een certificaatobject,** in plaats van een **geheim.**
 
 > [!NOTE]
-> Voor uw eigen SSL-certificaat ondersteunt Front Door geen certificaten met EC-cryptografiealgoritmen.
+> Voor uw eigen TLS/SSL-certificaat ondersteunt Front Door geen certificaten met EC-cryptografiealgoritmen.
 
 #### <a name="register-azure-front-door"></a>Azure-voordeur registreren
 
@@ -260,7 +260,7 @@ In de volgende tabel wordt de bewerkingsvoortgang weergegeven die plaatsvindt na
 
 4. *Is het gebruik van een SAN-certificaat minder veilig dan wanneer ik een toegewezen certificaat gebruik?*
     
-    Voor een SAN-certificaat gelden dezelfde standaarden voor versleuteling en beveiliging als voor een toegewezen certificaat. Alle verleende SSL-certificaten maken gebruik van SHA-256 voor verbeterde serverbeveiliging.
+    Voor een SAN-certificaat gelden dezelfde standaarden voor versleuteling en beveiliging als voor een toegewezen certificaat. Alle uitgegeven TLS/SSL-certificaten gebruiken SHA-256 voor verbeterde serverbeveiliging.
 
 5. *Heb ik een CAA-record nodig bij mijn DNS-provider?*
 

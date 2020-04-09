@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77149929"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985436"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Zelfstudie: Een aliasrecord zo configureren dat deze naar een openbaar Azure-IP-adres verwijst 
 
@@ -20,8 +20,8 @@ In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een netwerkinfrastructuur maken.
-> * Een virtuele webserver maken.
-> * Een aliasrecord maken.
+> * Maak een virtuele webserver met een openbaar IP-adres.
+> * Maak een aliasrecord die verwijst naar het openbare IP-adres.
 > * De aliasrecord testen.
 
 
@@ -48,7 +48,7 @@ Maak eerst een virtueel netwerk en een subnet waaraan u de webservers gaat toevo
 4. Selecteer voor **Instellingen** het virtuele netwerk **VNet-Servers** en het subnet **SN-Web**. Selecteer **HTTP** > **HTTPS** > **RDP (3389)** en selecteer **OK**voor openbare binnenkomende poorten.
 5. Op de pagina**Overzicht** selecteert u **Maken**.
 
-Deze procedure duurt een paar minuten.
+Deze procedure duurt een paar minuten. De virtuele machine zal een bijgevoegde NIC, die een fundamentele dynamische openbare IP genaamd Web-01-ip zal hebben. Het openbare IP verandert elke keer dat de virtuele machine opnieuw wordt opgestart.
 
 ### <a name="install-iis"></a>IIS installeren
 

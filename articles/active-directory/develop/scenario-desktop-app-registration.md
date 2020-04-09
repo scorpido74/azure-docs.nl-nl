@@ -2,26 +2,21 @@
 title: Desktop-apps registreren die web-API's aanroepen - Microsoft-identiteitsplatform | Azure
 description: Meer informatie over het maken van een bureaublad-app die web-API's aanroept (app-registratie)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c55fc9eb94a88dba1ab9fc915fe84bc2dd7d4d40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702178"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885154"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Bureaublad-app die web-API's aanroept: app-registratie
 
@@ -52,7 +47,7 @@ De omleidings-URI's die u wilt gebruiken in een bureaubladtoepassing, zijn afhan
 
 - Als u een native Objective-C- of Swift-app voor macOS bouwt, registreert u de omleidings-URI op basis van de bundel-id van uw toepassing in de volgende indeling: msauth.<your.app.bundle.id>://auth. Vervang <your.app.bundle.id> met de bundel-id van uw toepassing.
 - Als uw app alleen geïntegreerde Windows-verificatie of een gebruikersnaam en een wachtwoord gebruikt, hoeft u geen omleidingsURI voor uw toepassing te registreren. Deze stromen doen een rondreis naar het Microsoft-identiteitsplatform v2.0-eindpunt. Uw aanvraag wordt niet teruggebeld op een specifieke URI.
-- Om de stroom van apparaatcodes, geïntegreerde Windows-verificatie en een gebruikersnaam en een wachtwoord te onderscheiden van een vertrouwelijke clienttoepassingsstroom die ook geen omleidings-URI's heeft (de clientreferentiestroom die wordt gebruikt in daemon-toepassingen), moet u dat uitdrukken uw aanvraag is een openbare clientapplicatie. Ga naar de sectie **Verificatie** voor uw toepassing om deze configuratie te bereiken. Selecteer in de onderafdeling **Geavanceerde instellingen** in de alinea **Standaardclienttype** de optie **Ja** voor behandeling als **openbare client**.
+- Als u de stroom van apparaatcodes, geïntegreerde Windows-verificatie en een gebruikersnaam en een wachtwoord wilt onderscheiden van een vertrouwelijke clienttoepassingsstroom die ook geen omleidings-URI's heeft (de clientreferentiestroom die wordt gebruikt in daemon-toepassingen), moet u uitdrukken dat uw toepassing een openbare clienttoepassing is. Ga naar de sectie **Verificatie** voor uw toepassing om deze configuratie te bereiken. Selecteer in de onderafdeling **Geavanceerde instellingen** in de alinea **Standaardclienttype** de optie **Ja** voor behandeling als **openbare client**.
 
   ![Openbare client toestaan](media/scenarios/default-client-type.png)
 

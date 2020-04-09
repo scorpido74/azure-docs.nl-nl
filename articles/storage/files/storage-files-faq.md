@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 093f4b11d10396199e9fac1e22fd82197f3a5e79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6062ec008a7a12c720cf28c2d79531e805ebba0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268182"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984432"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
 [Azure Files](storage-files-introduction.md) biedt volledig beheerde bestandsshares in de cloud die toegankelijk zijn via het industriestandaard [Server Message Block (SMB)-protocol.](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) U Azure-bestandsshares gelijktijdig monteren op cloud- of on-premises implementaties van Windows, Linux en macOS. U azure-bestandsshares ook cacheopslaan op Windows Server-machines door Azure File Sync te gebruiken voor snelle toegang in de buurt van waar de gegevens worden gebruikt.
@@ -45,7 +45,7 @@ In dit artikel worden veelgestelde vragen beantwoord over de functies en functio
 
     Azure Files is specifiek een bestandssysteem. Azure Files heeft alle bestandssamenvattingen die u kent en waar u van houdt uit jarenlange samenwerking met on-premises besturingssystemen. Net als Azure Blob-opslag biedt Azure Files een REST-interface en REST-gebaseerde clientbibliotheken. In tegenstelling tot Azure Blob-opslag biedt Azure Files SMB-toegang tot Azure-bestandsshares. Door SMB te gebruiken, u een Azure-bestandsshare rechtstreeks op Windows, Linux of macOS monteren, on-premises of in cloud-VM's, zonder code te schrijven of speciale stuurprogramma's aan het bestandssysteem te koppelen. U azure-bestandsshares ook cacheop on-premises bestandsservers met behulp van Azure File Sync voor snelle toegang, dicht bij waar de gegevens worden gebruikt. 
    
-    Zie Beslissen wanneer Azure [Blob-opslag, Azure Files of Azure Disks](../common/storage-decide-blobs-files-disks.md)moet worden gebruikt voor een uitgebreidere beschrijving van de verschillen tussen Azure Files en Azure Blob-opslag. Zie [Inleiding tot Blob-opslag voor](../blobs/storage-blobs-introduction.md)meer informatie over Azure Blob-opslag.
+    Zie [Inleiding tot de belangrijkste Azure Storage-services](../common/storage-introduction.md)voor een meer diepgaande beschrijving van de verschillen tussen Azure Files en Azure Blob-opslag. Zie [Inleiding tot Blob-opslag voor](../blobs/storage-blobs-introduction.md)meer informatie over Azure Blob-opslag.
 
 * <a id="files-versus-disks"></a>**Waarom zou ik een Azure-bestandsshare gebruiken in plaats van Azure Disks?**  
     Een schijf in Azure Disks is gewoon een schijf. Als u waarde wilt ophalen uit Azure Disks, moet u een schijf koppelen aan een virtuele machine die in Azure wordt uitgevoerd. Azure Disks kan worden gebruikt voor alles waarvoor u een schijf zou gebruiken op een on-premises server. U het gebruiken als een OS-systeemschijf, als ruilruimte voor een besturingssysteem of als speciale opslag voor een toepassing. Een interessant gebruik voor Azure Disks is het maken van een bestandsserver in de cloud om te gebruiken op dezelfde plaatsen waar u een Azure-bestandsshare gebruiken. Het implementeren van een bestandsserver in Azure Virtual Machines is een krachtige manier om bestandsopslag in Azure te krijgen wanneer u implementatieopties nodig hebt die momenteel niet worden ondersteund door Azure Files (zoals NFS-protocolondersteuning of premium opslag). 
@@ -54,7 +54,7 @@ In dit artikel worden veelgestelde vragen beantwoord over de functies en functio
 
     Een benadering om het beste uit zowel Azure Files als een bestandsserver te krijgen die wordt gehost in Azure Virtual Machines (naast het gebruik van Azure Disks als back-endopslag) is het installeren van Azure File Sync op een bestandsserver die wordt gehost op een cloud-vm. Als het Azure-bestandsaandeel zich in dezelfde regio bevindt als uw bestandsserver, u cloudlagen inschakelen en het percentage vrije ruimte instellen op maximaal (99%). Dit zorgt voor minimale duplicatie van gegevens. U ook alle toepassingen die u wilt gebruiken met uw bestandsservers, zoals toepassingen waarvoor NFS-protocolondersteuning vereist is.
 
-    Zie [IaaS VM-gastclusters implementeren in Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)voor informatie over een optie voor het instellen van een krachtige en zeer beschikbare bestandsserver in Azure. Zie Beslissen wanneer Azure [Blob-opslag, Azure Files of Azure Disks worden gebruikt](../common/storage-decide-blobs-files-disks.md)voor een meer diepgaande beschrijving van de verschillen tussen Azure Files en Azure Disks. Zie overzicht azure managed [disks](../../virtual-machines/windows/managed-disks-overview.md)voor meer informatie over Azure Disks.
+    Zie [IaaS VM-gastclusters implementeren in Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)voor informatie over een optie voor het instellen van een krachtige en zeer beschikbare bestandsserver in Azure. Zie [Inleiding tot de belangrijkste Azure Storage-services](../common/storage-introduction.md)voor een meer diepgaande beschrijving van de verschillen tussen Azure-bestanden en Azure-schijven. Zie overzicht azure managed [disks](../../virtual-machines/windows/managed-disks-overview.md)voor meer informatie over Azure Disks.
 
 * <a id="get-started"></a>
   **Hoe ga ik aan de slag met Azure Files?**  
@@ -261,7 +261,7 @@ In dit artikel worden veelgestelde vragen beantwoord over de functies en functio
 
     U het bestandsshare monteren met behulp van het SMB-protocol als poort 445 (TCP-uitgaande) is geopend en uw client het SMB 3.0-protocol ondersteunt (bijvoorbeeld als u Windows 10 of Windows Server 2016 gebruikt). Als poort 445 wordt geblokkeerd door het beleid van uw organisatie of door uw internetprovider, u Azure File Sync gebruiken om toegang te krijgen tot uw Azure-bestandsshare.
 
-## <a name="backup"></a>Back-up
+## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Hoe maak ik een back-up van mijn Azure-bestandsshare?**  
     U [momentopnamen voor](storage-snapshots-files.md) periodieke delen gebruiken ter bescherming tegen onbedoelde verwijderingen. U ook AzCopy, Robocopy of een back-uptool van derden gebruiken waarmee een back-up van een opgezetbestandkan worden gemaakt. Azure Backup biedt back-ups van Azure Files. Meer informatie over [back-ups van Azure-bestandsshares door Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-files).

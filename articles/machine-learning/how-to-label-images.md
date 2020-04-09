@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e14b669aadeec4c6a7245be8940051ec604059b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79409555"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879425"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Afbeeldingen taggen in een labelproject
 
-Nadat uw projectbeheerder [een labelproject heeft gemaakt](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) in Azure Machine Learning, u de etiketteringstool gebruiken om snel gegevens voor te bereiden op een Machine Learning-project. In dit artikel wordt beschreven:
+Nadat uw projectbeheerder [een labelproject heeft gemaakt](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) in Azure Machine Learning, u het labelen (openbare voorbeeld) gebruiken om snel gegevens voor te bereiden op een Machine Learning-project. In dit artikel wordt beschreven:
 
 > [!div class="checklist"]
 > * Toegang krijgen tot uw labelingprojecten
@@ -45,7 +45,9 @@ Ga naar **Gedetailleerde instructies weergeven**. Deze instructies zijn specifie
 
 In alle taken voor het labelen van afbeeldingen kiest u een geschikte tag of tags uit een set die is opgegeven door de projectbeheerder. U de eerste negen tags selecteren met behulp van de nummertoetsen op uw toetsenbord.  
 
-Bij taken voor beeldclassificatie u ervoor kiezen om meerdere afbeeldingen tegelijk weer te geven. Gebruik de pictogrammen boven het afbeeldingsgebied om de indeling te selecteren. Als u alle weergegeven afbeeldingen tegelijkertijd wilt selecteren, gebruikt u **Alle selecteren**. Als u afzonderlijke afbeeldingen wilt selecteren, gebruikt u de knop Cirkelselectie in de rechterbovenhoek van de afbeelding. U moet ten minste één afbeelding selecteren om een tag toe te passen. Als u meerdere afbeeldingen selecteert, wordt elke tag die u selecteert toegepast op alle geselecteerde afbeeldingen.
+Bij taken voor beeldclassificatie u ervoor kiezen om meerdere afbeeldingen tegelijk weer te geven. Gebruik de pictogrammen boven het afbeeldingsgebied om de indeling te selecteren. 
+
+Als u alle weergegeven afbeeldingen tegelijkertijd wilt selecteren, gebruikt u **Alle selecteren**. Als u afzonderlijke afbeeldingen wilt selecteren, gebruikt u de knop Cirkelselectie in de rechterbovenhoek van de afbeelding. U moet ten minste één afbeelding selecteren om een tag toe te passen. Als u meerdere afbeeldingen selecteert, wordt elke tag die u selecteert toegepast op alle geselecteerde afbeeldingen.
 
 Hier hebben we gekozen voor een twee-bij-twee lay-out en staan op het punt om de tag "Mammal" toe te passen op de beelden van de beer en orka. Het beeld van de haai was al gelabeld als "Kraakbeenvissen," en de leguaan is nog niet getagd.
 

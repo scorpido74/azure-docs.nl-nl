@@ -3,12 +3,12 @@ title: Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 description: Meer informatie over het aan boord van een klant naar Azure gedelegeerd resourcebeheer, zodat hun resources kunnen worden geopend en beheerd via uw eigen tenant.
 ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6a5f4ce03f762b5903e8b3d6f10810819e02e422
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9eef2e73de7812fc65104131dfd319bf8dfb014e
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246871"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984586"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 
@@ -48,7 +48,7 @@ Uw tenant-id kan worden gezien door boven uw accountnaam boven rechtsboven in de
 Select-AzSubscription <subscriptionId>
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -89,7 +89,7 @@ Als u autorisaties wilt definiëren, moet u de ID-waarden kennen voor elke gebru
 (Get-AzRoleDefinition -Name '<roleName>').id
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -126,17 +126,17 @@ De sjabloon die u kiest, is afhankelijk van of u een volledig abonnement, een re
 
 |Om aan boord van deze  |Deze sjabloon Azure Resource Manager gebruiken  |En wijzig dit parameterbestand |
 |---------|---------|---------|
-|Abonnement   |[gedelegeerdResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
-|Resourcegroep   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
-|Meerdere resourcegroepen binnen een abonnement   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
-|Abonnement (bij gebruik van een aanbieding die is gepubliceerd op Azure Marketplace)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
+|Abonnement   |[gedelegeerdResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Resourcegroep   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
+|Meerdere resourcegroepen binnen een abonnement   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
+|Abonnement (bij gebruik van een aanbieding die is gepubliceerd op Azure Marketplace)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
 > Het proces dat hier wordt beschreven, vereist een aparte implementatie op abonnementsniveau voor elk abonnement dat wordt aanboord, zelfs als u abonnementen in dezelfde klanttenant intouwt. Afzonderlijke implementaties zijn ook vereist als u meerdere resourcegroepen binnen verschillende abonnementen in dezelfde klanttenant inwerkt. Het onboardingen van meerdere resourcegroepen binnen één abonnement kan echter worden uitgevoerd in één implementatie op abonnementsniveau.
 >
 > Er zijn ook afzonderlijke implementaties vereist voor meerdere aanbiedingen die worden toegepast op hetzelfde abonnement (of brongroepen binnen een abonnement). Elke toepassing van de aanbieding moet een andere **mspOfferName**gebruiken.
 
-In het volgende voorbeeld wordt een gewijzigd **bestand gedelegeerd ResourceManagement.parameters.json** weergegeven dat kan worden gebruikt om een abonnement aan boord te nemen. De parameterbestanden van de brongroep (die zich in de map [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) bevinden) zijn vergelijkbaar, maar bevatten ook een **rgName-parameter** om de specifieke resourcegroep(s) te identificeren die aan boord moet worden genomen.
+In het volgende voorbeeld wordt een gewijzigd **bestand gedelegeerd ResourceManagement.parameters.json** weergegeven dat kan worden gebruikt om een abonnement aan boord te nemen. De parameterbestanden van de brongroep (die zich in de map [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) bevinden) zijn vergelijkbaar, maar bevatten ook een **rgName-parameter** om de specifieke resourcegroep(s) te identificeren die aan boord moet worden genomen.
 
 ```json
 {
@@ -220,7 +220,7 @@ New-AzDeployment -Name <deploymentName> `
                  -Verbose
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -242,7 +242,7 @@ az deployment create --name <deploymentName> \
 
 ## <a name="confirm-successful-onboarding"></a>Succesvolle onboarding bevestigen
 
-Wanneer een klantabonnement is aangesloten op azure gedelegeerd resourcebeheer, kunnen gebruikers in de tenant van de serviceprovider het abonnement en de bijbehorende bronnen zien (als ze toegang hebben gekregen tot het abonnement via het bovenstaande proces, afzonderlijk of als lid van een Azure AD-groep met de juiste machtigingen). Controleer om dit te bevestigen of het abonnement op een van de volgende manieren wordt weergegeven.  
+Wanneer een klantabonnement is gekoppeld aan azure gedelegeerd resourcebeheer, kunnen gebruikers in de tenant van de serviceprovider het abonnement en de bijbehorende bronnen zien (als ze toegang hebben gekregen tot het abonnement via het bovenstaande proces, afzonderlijk of als lid van een Azure AD-groep met de juiste machtigingen). Controleer om dit te bevestigen of het abonnement op een van de volgende manieren wordt weergegeven.  
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -272,7 +272,7 @@ In de huurder van de klant:
 Get-AzContext
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -328,7 +328,7 @@ Get-AzManagedServicesAssignment -Scope "/subscriptions/{delegatedSubscriptionId}
 Remove-AzManagedServicesAssignment -ResourceId "/subscriptions/{delegatedSubscriptionId}/providers/Microsoft.ManagedServices/registrationAssignments/{assignmentGuid}"
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell

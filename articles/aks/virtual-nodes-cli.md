@@ -1,15 +1,16 @@
 ---
-title: Virtuele knooppunten maken met de Azure CLI in Azure Kubernetes Services (AKS)
+title: Virtuele knooppunten maken met Azure CLI
+titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het gebruik van de Azure CLI om een AKS-cluster (Azure Kubernetes Services) te maken dat virtuele knooppunten gebruikt om pods uit te voeren.
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 05e32b6b0017e945044bc7593d4d6dbc543a5b64
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: b6d44ceb9b447d670c4e51c951b547e90dfce38f
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616469"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984671"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren om virtuele knooppunten te gebruiken met de Azure CLI
 
@@ -66,7 +67,7 @@ De functionaliteit voor virtuele knooppunten is sterk afhankelijk van de functie
 * [Hostaliassen](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * [Argumenten](../container-instances/container-instances-exec.md#restrictions) voor exec in ACI
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) zal geen pods implementeren op het virtuele knooppunt
-* [Windows Server-knooppunten (momenteel in preview in AKS)](windows-container-cli.md) worden niet ondersteund naast virtuele knooppunten. U virtuele knooppunten gebruiken om Windows Server-containers te plannen zonder dat u Windows Server-knooppunten in een AKS-cluster nodig hebt.
+* Virtuele knooppunten ondersteunen het plannen van Linux-pods. U de open source [Virtual Kubelet ACI-provider](https://github.com/virtual-kubelet/azure-aci) handmatig installeren om Windows Server-containers te plannen op ACI. 
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 

@@ -1,26 +1,26 @@
 ---
-title: SSL inschakelen met zijspancontainer
+title: TLS inschakelen met sidecar-container
 description: Een SSL- of TLS-eindpunt maken voor een containergroep die wordt uitgevoerd in Azure Container Instances door Nginx in een zijspancontainer uit te voeren
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 43b39c7c13d6d5e52aae2ce1706e4880ab27d225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294946"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984603"
 ---
-# <a name="enable-an-ssl-endpoint-in-a-sidecar-container"></a>Een SSL-eindpunt inschakelen in een zijspancontainer
+# <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>Een TLS-eindpunt inschakelen in een zijspancontainer
 
-In dit artikel ziet u hoe u een [containergroep maakt](container-instances-container-groups.md) met een toepassingscontainer en een zijspancontainer waarop een SSL-provider wordt uitgevoerd. Door een containergroep met een afzonderlijk SSL-eindpunt in te stellen, schakelt u SSL-verbindingen voor uw toepassing in zonder uw toepassingscode te wijzigen.
+In dit artikel ziet u hoe u een [containergroep maakt](container-instances-container-groups.md) met een toepassingscontainer en een zijspancontainer met een TLS/SSL-provider. Door een containergroep met een afzonderlijk TLS-eindpunt in te stellen, schakelt u TLS-verbindingen voor uw toepassing in zonder uw toepassingscode te wijzigen.
 
 U stelt een voorbeeldcontainergroep in bestaande uit twee containers:
 * Een toepassingscontainer die een eenvoudige web-app uitvoert met behulp van de openbare Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) afbeelding. 
-* Een zijspancontainer met de openbare [Nginx-afbeelding,](https://hub.docker.com/_/nginx) geconfigureerd om SSL te gebruiken. 
+* Een zijspancontainer met de openbare [Nginx-afbeelding,](https://hub.docker.com/_/nginx) geconfigureerd om TLS te gebruiken. 
 
 In dit voorbeeld stelt de containergroep poort 443 voor Nginx alleen bloot met zijn openbare IP-adres. Nginx stuurt HTTPS-verzoeken naar de bijbehorende web-app, die intern luistert op poort 80. U het voorbeeld aanpassen voor container-apps die op andere poorten luisteren. 
 
-Zie [Volgende stappen](#next-steps) voor andere benaderingen voor het inschakelen van SSL in een containergroep.
+Zie [Volgende stappen](#next-steps) voor andere benaderingen voor het inschakelen van TLS in een containergroep.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -28,9 +28,9 @@ U de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om d
 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
 
-Om Nginx in te stellen als SSL-provider, hebt u een SSL-certificaat nodig. In dit artikel ziet u hoe u een zelfondertekend SSL-certificaat maakt en instelt. Voor productiescenario's moet u een certificaat verkrijgen bij een certificaatautoriteit.
+Om Nginx in te stellen als TLS-provider, heb je een TLS/SSL-certificaat nodig. In dit artikel ziet u hoe u een zelfondertekend TLS/SSL-certificaat maakt en instelt. Voor productiescenario's moet u een certificaat verkrijgen bij een certificaatautoriteit.
 
-Als u een zelfondertekend SSL-certificaat wilt maken, gebruikt u de [OpenSSL-tool](https://www.openssl.org/) die beschikbaar is in Azure Cloud Shell en veel Linux-distributies, of gebruikt u een vergelijkbare clienttool in uw besturingssysteem.
+Als u een zelfondertekend TLS/SSL-certificaat wilt maken, gebruikt u de [OpenSSL-tool](https://www.openssl.org/) die beschikbaar is in Azure Cloud Shell en veel Linux-distributies, of gebruikt u een vergelijkbare clienttool in uw besturingssysteem.
 
 Maak eerst een certificaataanvraag (.csr-bestand) in een lokale werkmap:
 
@@ -48,11 +48,11 @@ openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 
 U ziet nu drie bestanden in de`ssl.csr`map: de`ssl.key`certificaataanvraag ( ), de`ssl.crt`privésleutel ( ) en het zelfondertekende certificaat ( ). U `ssl.key` gebruikt `ssl.crt` en in latere stappen.
 
-## <a name="configure-nginx-to-use-ssl"></a>Nginx configureren om SSL te gebruiken
+## <a name="configure-nginx-to-use-tls"></a>Nginx configureren om TLS te gebruiken
 
 ### <a name="create-nginx-configuration-file"></a>Nginx-configuratiebestand maken
 
-In deze sectie maakt u een configuratiebestand voor Nginx om SSL te gebruiken. Begin met het kopiëren van de `nginx.conf`volgende tekst naar een nieuw bestand met de naam . In Azure Cloud Shell u Visual Studio Code gebruiken om het bestand in uw werkmap te maken:
+In deze sectie maakt u een configuratiebestand voor Nginx om TLS te gebruiken. Begin met het kopiëren van de `nginx.conf`volgende tekst naar een nieuw bestand met de naam . In Azure Cloud Shell u Visual Studio Code gebruiken om het bestand in uw werkmap te maken:
 
 ```console
 code nginx.conf
@@ -93,7 +93,7 @@ http {
         ssl_ciphers                ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:AES128:AES256:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
         ssl_prefer_server_ciphers  on;
 
-        # Optimize SSL by caching session parameters for 10 minutes. This cuts down on the number of expensive SSL handshakes.
+        # Optimize TLS/SSL by caching session parameters for 10 minutes. This cuts down on the number of expensive TLS/SSL handshakes.
         # The handshake is the most CPU-intensive operation, and by default it is re-negotiated on every new/parallel connection.
         # By enabling a cache (of type "shared between all Nginx workers"), we tell the client to re-use the already negotiated state.
         # Further optimization can be achieved by raising keepalive_timeout, but that shouldn't be done unless you serve primarily HTTPS.
@@ -124,7 +124,7 @@ http {
 
 ### <a name="base64-encode-secrets-and-configuration-file"></a>Base64-coderen geheimen en configuratiebestand
 
-Base64-codeer het Nginx-configuratiebestand, het SSL-certificaat en de SSL-sleutel. In de volgende sectie voert u de gecodeerde inhoud in in een YAML-bestand dat wordt gebruikt om de containergroep te implementeren.
+Base64-codeer het Nginx-configuratiebestand, het TLS/SSL-certificaat en de TLS-sleutel. In de volgende sectie voert u de gecodeerde inhoud in in een YAML-bestand dat wordt gebruikt om de containergroep te implementeren.
 
 ```console
 cat nginx.conf | base64 > base64-nginx.conf
@@ -221,7 +221,7 @@ Name          ResourceGroup    Status    Image                                  
 app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
 ```
 
-## <a name="verify-ssl-connection"></a>SSL-verbinding verifiëren
+## <a name="verify-tls-connection"></a>TLS-verbinding verifiëren
 
 Gebruik uw browser om naar het openbare IP-adres van de containergroep te navigeren. Het IP-adres in `52.157.22.76`dit voorbeeld is, dus de URL is **https://52.157.22.76**. U moet HTTPS gebruiken om de lopende toepassing te bekijken, vanwege de Nginx-serverconfiguratie. Pogingen om verbinding te maken via HTTP mislukken.
 
@@ -234,11 +234,11 @@ Gebruik uw browser om naar het openbare IP-adres van de containergroep te navige
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel ziet u hoe u een Nginx-container instelt om SSL-verbindingen in te schakelen met een web-app die wordt uitgevoerd in de containergroep. U dit voorbeeld aanpassen voor apps die luisteren op andere poorten dan poort 80. U het Nginx-configuratiebestand ook bijwerken om serververbindingen op poort 80 (HTTP) automatisch om te leiden om HTTPS te gebruiken.
+In dit artikel ziet u hoe u een Nginx-container instelt om TLS-verbindingen in te schakelen met een web-app die wordt uitgevoerd in de containergroep. U dit voorbeeld aanpassen voor apps die luisteren op andere poorten dan poort 80. U het Nginx-configuratiebestand ook bijwerken om serververbindingen op poort 80 (HTTP) automatisch om te leiden om HTTPS te gebruiken.
 
-Terwijl dit artikel Nginx in de zijspan gebruikt, u een andere SSL-provider gebruiken, zoals [Caddy.](https://caddyserver.com/)
+Terwijl dit artikel Nginx in de zijspan gebruikt, u een andere LEVERANCIER TLS zoals [Caddy](https://caddyserver.com/)gebruiken.
 
-Als u uw containergroep implementeert in een [virtueel Azure-netwerk,](container-instances-vnet.md)u andere opties overwegen om een SSL-eindpunt in te schakelen voor een backendcontainerinstantie, waaronder:
+Als u uw containergroep implementeert in een [virtueel Azure-netwerk,](container-instances-vnet.md)u andere opties overwegen om een TLS-eindpunt in te schakelen voor een backendcontainerinstantie, waaronder:
 
 * [Azure-functies proxy's](../azure-functions/functions-proxies.md)
 * [Azure API Management](../api-management/api-management-key-concepts.md)

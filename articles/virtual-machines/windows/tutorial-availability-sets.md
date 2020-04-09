@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0f94f4d312cefec80a0f294e256ee1ad908b903c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 59bf06d2b279bad792bdc42a7c3b6acc2bc304b8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74068139"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985708"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Zelfstudie: Virtuele machines met hoge beschikbaarheid maken en implementeren met Azure PowerShell
 
@@ -113,7 +113,7 @@ Als u kijkt naar de beschikbaarheid in de portal door naar **Resourcegroepen** >
 
 ## <a name="check-for-available-vm-sizes"></a>Beschikbare VM-grootten controleren 
 
-U kunt later meer VM's toevoegen aan de beschikbaarheidsset, maar u moet weten welke VM-grootten beschikbaar zijn op de hardware. Gebruik [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) om een lijst weer te geven met alle beschikbare grootten op het hardwarecluster voor de beschikbaarheidsset.
+Wanneer u een vm maakt in een beschikbaarheidsset, moet u weten welke VM-formaten beschikbaar zijn op de hardware. Gebruik de opdracht [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) om alle beschikbare formaten voor virtuele machines te krijgen die u implementeren in de beschikbaarheidsset.
 
 ```azurepowershell-interactive
 Get-AzVMSize `

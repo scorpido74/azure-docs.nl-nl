@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 673c20355e9ad4abf2c8318b3eb2ebbcc36ed8fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ac3ee8d44d68f5c7929c2f93f1a1182c7f6083b
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128244"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891251"
 ---
 # <a name="connect-with-the-macos-client"></a>Verbinding maken met de macOS-client
 
@@ -31,11 +31,11 @@ Abonneer je op de feed die je beheerder je gaf om de lijst met beheerde bronnen 
 
 Je abonneren op een feed:
 
-1. Selecteer **Feed toevoegen** op de hoofdpagina om verbinding te maken met de service en uw resources op te halen.
+1. Selecteer **Werkruimte toevoegen** op de hoofdpagina om verbinding te maken met de service en uw resources op te halen.
 2. Voer de URL van de feed in. Dit kan een URL of e-mailadres zijn:
    - Als u een URL gebruikt, gebruikt u de URL die uw beheerder u heeft gegeven. Normaal gesproken is <https://rdweb.wvd.microsoft.com>de URL .
    - Als u e-mail wilt gebruiken, voert u uw e-mailadres in. Dit vertelt de client om te zoeken naar een URL die is gekoppeld aan uw e-mailadres als uw beheerder de server op die manier heeft geconfigureerd.
-3. Selecteer **Abonneren**.
+3. Selecteer **Toevoegen**.
 4. Meld u aan met uw gebruikersaccount wanneer u daarom wordt gevraagd.
 
 Nadat u zich hebt aangemeld, ziet u een lijst met beschikbare bronnen.

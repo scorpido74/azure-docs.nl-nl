@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 40f7de4b4feb2b312705238abd30402edb635ea9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8fbd2065ceae1aadf1dc57c78adb21b7c2848297
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720884"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985555"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Zelfstudie: Mobiele toepassingen bouwen met Xamarin en Azure Cosmos DB
 
@@ -37,7 +37,7 @@ Azure Cosmos DB biedt de volgende belangrijke mogelijkheden voor ontwikkelaars v
 * Snelle doorvoer. Het duurt slechts enkele milliseconden om documenten te lezen en te schrijven met Azure Cosmos DB. Ontwikkelaars kunnen de doorvoer selecteren die ze nodig hebben. Azure Cosmos DB biedt ze dan een SLA voor een beschikbaarheid van 99,99% voor alle accounts voor één regio en alle accounts voor meerdere regio's met soepele consistentie en leesbeschikbaarheid van 99,999% voor alle databaseaccounts voor meerdere regio's.
 * Schalen zonder enige beperking. Uw Azure Cosmos-containers [groeien naarmate uw app groeit.](partition-data.md) U kunt beginnen met een kleine gegevensgrootte en honderden aanvragen per seconde doorvoeren. Uw verzamelingen of databases kunnen uitgroeien tot vele petabytes aan gegevens en bijbehorende grote doorvoer met honderden miljoenen aanvragen per seconde.
 * Wereldwijd verspreid. Gebruikers van mobiele apps zijn onderweg, overal ter wereld. Azure Cosmos DB is een [wereldwijd gedistribueerde database](distribute-data-globally.md). Klik op de kaart om uw gegevens toegankelijk te maken voor uw gebruikers.
-* Ingebouwde uitgebreide autorisatie. Met Azure Cosmos DB kunt u eenvoudig populaire patronen implementeren zoals [gegevens per gebruiker](https://aka.ms/documentdb-xamarin-todouser) of gedeelde gegevens van meerdere gebruikers, zonder ingewikkelde aangepaste autorisatiecode.
+* Ingebouwde uitgebreide autorisatie. Met Azure Cosmos DB kunt u eenvoudig populaire patronen implementeren zoals [gegevens per gebruiker](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems) of gedeelde gegevens van meerdere gebruikers, zonder ingewikkelde aangepaste autorisatiecode.
 * Georuimtelijke query's. Veel mobiele apps bieden tegenwoordig ervaringen met geografische context. Met eersteklas ondersteuning voor [georuimtelijke typen](geospatial.md) kunt u met Azure Cosmos DB deze ervaringen heel eenvoudig tot stand brengen.
 * Binaire bijlagen. Uw app-gegevens bevatten vaak binaire blobs. Dankzij systeemeigen ondersteuning voor bijlagen kunt u Azure Cosmos DB eenvoudig gebruiken als allesaanbieder voor uw app-gegevens.
 
@@ -83,7 +83,7 @@ Volg deze stappen om de takenlijst-app aan te passen aan een takenlijst-app voor
 
   4. Pas de app aan om Resource Token Broker te verifiëren met Facebook en vraag de resourcetokens aan voor de aangemelde Facebook-gebruikers. U krijgt vervolgens toegang tot hun gegevens in de UserItems-verzameling.  
 
-U vindt een volledig codevoorbeeld van dit patroon op [Resource Token Broker op GitHub](https://aka.ms/documentdb-xamarin-todouser). In dit diagram wordt de oplossing weergegeven:
+U vindt een volledig codevoorbeeld van dit patroon op [Resource Token Broker op GitHub](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems). In dit diagram wordt de oplossing weergegeven:
 
 ![Azure Cosmos DB-gebruikers en machtigingenbroker](media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png)
 

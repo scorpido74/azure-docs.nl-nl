@@ -2,26 +2,21 @@
 title: Een multitenant daemon bouwen die gebruik maakt van het eindpunt van het Microsoft-identiteitsplatform
 description: Lees in deze zelfstudie hoe u een ASP.NET web-API aanroept die is beveiligd door Azure Active Directory vanaf een WPF-toepassing (Windows Desktop). De WPF-client verifieert een gebruiker, vraagt een toegangstoken aan en roept de web-API aan.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 635b12cc2ffc4d318eaaa74fffc17e4ce4d58c0b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a4d7030f7a58a6252c6e596fc2c248163694a1e8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129963"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880870"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Zelfstudie: Een daemon met meerdere tenant's bouwen die het eindpunt van het Microsoft-identiteitsplatform gebruikt
 
@@ -216,7 +211,7 @@ Dit project heeft web-app en web API projecten. Als u ze wilt implementeren op A
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Dotnet-web-daemon-v2 maken en publiceren naar een Azure-website
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **Een resource maken** in de linkerbovenhoek.
 1. Selecteer **Web** > **Web App**en geef uw website een naam. Noem het bijvoorbeeld **dotnet-web-daemon-v2-contoso.azurewebsites.net**.
 1. Selecteer de gegevens voor **abonnements-,** **resourcegroep-** en **app-serviceabonnement en -locatie**. **OS** is **Windows,** en **Publiceren** is **Code**.

@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: f84707adfa406011989c8f9bfdf1e8d9270698a6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743310"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984790"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatiescripts gebruiken in sjablonen (Voorbeeld)
 
@@ -313,7 +313,7 @@ De levenscyclus van deze resources wordt gecontroleerd door de volgende eigensch
 
 Implementatiescriptuitvoering is een idempotente bewerking. Als geen van de resources-eigenschappen van deploymentScripts (inclusief het inlinescript) wordt gewijzigd, wordt het script niet uitgevoerd wanneer u de sjabloon opnieuw implementeert. De implementatiescriptservice vergelijkt de resourcenamen in de sjabloon met de bestaande resources in dezelfde resourcegroep. Er zijn twee opties als u hetzelfde implementatiescript meerdere keren wilt uitvoeren:
 
-- Wijzig de naam van uw bron deploymentScripts. Gebruik bijvoorbeeld de [sjabloonfunctie utcNow](./template-functions-string.md#utcnow) als resourcenaam of als onderdeel van de resourcenaam. Als u de resourcenaam wijzigt, wordt een nieuwe bron voor deploymentScripts gemaakt. Het is goed voor het bijhouden van een geschiedenis van script uitvoering.
+- Wijzig de naam van uw bron deploymentScripts. Gebruik bijvoorbeeld de [sjabloonfunctie utcNow](./template-functions-date.md#utcnow) als resourcenaam of als onderdeel van de resourcenaam. Als u de resourcenaam wijzigt, wordt een nieuwe bron voor deploymentScripts gemaakt. Het is goed voor het bijhouden van een geschiedenis van script uitvoering.
 
     > [!NOTE]
     > De utcNow-functie kan alleen worden gebruikt in de standaardwaarde voor een parameter.

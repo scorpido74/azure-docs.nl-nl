@@ -3,25 +3,21 @@ title: Hoekige zelfstudie van apps met één pagina - Azure
 titleSuffix: Microsoft identity platform
 description: Ontdek hoe Angular SPA-toepassingen een API kunnen aanroepen waarvoor toegangstokens van het eindpunt van het Microsoft-identiteitsplatform vereist zijn
 services: active-directory
-documentationcenter: dev-center-name
 author: hahamil
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 81ade6f02b38a0a4d5ed04c8190b99216638c45d
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 63eda0c5d7b5ef4741e8244fbde290d13b54c5fb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637849"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880836"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application-spa"></a>Aanmelden voor gebruikers en de Microsoft Graph API aanroepen vanuit een Hoekige toepassing met één pagina (SPA)
 

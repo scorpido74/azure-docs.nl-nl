@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 12bde51222e1e648f97476d5dab039b4ad2adfe8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3accb1bb8c79d1842c4effe3b99fe2a904fa832
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067048"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878864"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Zelfstudie - Schijven maken en gebruiken met schaalset voor virtuele machines met Azure CLI
 Schaalsets voor virtuele machines maken gebruik van schijven voor het opslaan van het besturingssysteem, toepassingen en gegevens van het VM-exemplaar. Bij het maken en beheren van een schaalset is het belangrijk dat u een schijfgrootte en configuratie kiest die geschikt zijn voor de verwachte werkbelasting. Deze zelfstudie bevat informatie over het maken en beheren van VM-schijven. In deze zelfstudie leert u het volgende:
@@ -51,18 +51,7 @@ Op het moment dat u een schaalset maakt, worden er automatisch twee schijven aan
 
 
 ## <a name="azure-data-disks"></a>Azure-gegevensschijven
-Er kunnen extra gegevensschijven worden toegevoegd voor het installeren van toepassingen en het opslaan van gegevens. Gegevensschijven moeten worden gebruikt in situaties waarin duurzame en responsieve gegevensopslag gewenst is. Elke gegevensschijf heeft een maximale capaciteit van 4 TB. De grootte van het VM-exemplaar bepaalt hoeveel gegevensschijven er kunnen worden gekoppeld. Voor elke VM-vCPU kunnen twee schijven worden gekoppeld.
-
-### <a name="max-data-disks-per-vm"></a>Max. aantal gegevensschijven per VM
-| Type | Veelgebruikte grootten | Max. aantal gegevensschijven per VM |
-|----|----|----|
-| [Algemeen doel](../virtual-machines/linux/sizes-general.md) | A-, B- en D-serie | 64 |
-| [Geoptimaliseerde rekenkracht](../virtual-machines/linux/sizes-compute.md) | F-serie | 64 |
-| [Geoptimaliseerd geheugen](../virtual-machines/linux/sizes-memory.md) | D-, E-, G- en M-serie | 64 |
-| [Geoptimaliseerde opslag](../virtual-machines/linux/sizes-storage.md) | L-serie | 64 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N-serie | 64 |
-| [Hoge prestaties](../virtual-machines/linux/sizes-hpc.md) | A- en H-serie | 64 |
-
+Er kunnen extra gegevensschijven worden toegevoegd voor het installeren van toepassingen en het opslaan van gegevens. Gegevensschijven moeten worden gebruikt in situaties waarin duurzame en responsieve gegevensopslag gewenst is. Elke gegevensschijf heeft een maximale capaciteit van 4 TB. De grootte van het VM-exemplaar bepaalt hoeveel gegevensschijven er kunnen worden gekoppeld. Voor elke VM vCPU kunnen twee gegevensschijven worden gekoppeld tot een absoluut maximum van 64 schijven per virtuele machine.
 
 ## <a name="vm-disk-types"></a>Typen VM-schijven
 Azure biedt twee typen schijven.

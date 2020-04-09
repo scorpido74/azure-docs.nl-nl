@@ -5,27 +5,25 @@ services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: ''
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/30/2020
+ms.date: 04/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: 87309e20efd9d6f8bd1a659451e5a603e6b95bc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4da96df50e961f4291029a37e883fdcf88c6c87f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76908525"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885749"
 ---
 # <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
-Om een hoger beveiligingsniveau te garanderen, schakelt Notification Hubs de ondersteuning voor TLS-versies 1.0 en 1.1 op 30 april 2020 uit. Deze oudere protocollen leveren zwakke cryptografie, en zijn kwetsbaar voor BEAST en POODLE aanvallen. Toepassingen die worden geïmplementeerd op apparaten met Android-versie 5 of hoger, of iOS-versie 5 of meer, worden niet beïnvloed door deze wijziging, aangezien deze besturingssystemen TLS 1.2 ondersteunen en de client en server onderhandelen over de hoogste wederzijds ondersteunde versie van de protocol bij verbinding.
+Om een hoger beveiligingsniveau te garanderen, schakelt Notification Hubs de ondersteuning voor TLS-versies 1.0 en 1.1 op 31 mei 2020 uit (verlengd vanaf 30 april 2020). Deze oudere protocollen leveren zwakke cryptografie, en zijn kwetsbaar voor BEAST en POODLE aanvallen. Toepassingen die worden geïmplementeerd op apparaten met Android-versie 5 of hoger, of iOS-versie 5 of meer, worden niet beïnvloed door deze wijziging, omdat deze besturingssystemen TLS 1.2 ondersteunen en de client en server bij verbinding onderhandelen over de hoogste wederzijds ondersteunde versie van het protocol.
 
 We raden u aan al uw toepassingen te controleren die Azure Notification Hubs gebruiken, om ervoor te zorgen dat ze de meest toepasselijke bibliotheken en TLS-stacks gebruiken die TLS 1.2 ondersteunen.
 
