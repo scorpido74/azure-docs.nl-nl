@@ -3,12 +3,12 @@ title: Ondersteuning voor resources taggen
 description: Hiermee ziet u welke Azure-brontypen tags ondersteunen. Biedt details voor alle Azure-services.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: e012126995136bec15dc360be5e91007b6f69f09
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: b8b1c0b738bb8b94ee53433141f1ae3dbbb3f942
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80802489"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982324"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagondersteuning voor Azure-bronnen
 In dit artikel wordt beschreven of een resourcetype [tags](tag-resources.md)ondersteunt. De kolom met **de labels Ondersteunt geeft** aan of het resourcetype een eigenschap voor de tag heeft. De kolom met het label **Tag in het kostenrapport** geeft aan of dat resourcetype de tag doorgeeft aan het kostenrapport. U de kosten bekijken op tags in de [kostenanalyse van kostenbeheer](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) en de [Azure-factuur en gegevens over het dagelijks gebruik.](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)
@@ -1493,6 +1493,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | networkSecurityGroups | Ja | Ja |
 > | networkWatchers | Ja | Nee |
 > | networkWatchers / connectionMonitors | Ja | Nee |
+> | networkWatchers / flowLogs | Nee | Nee |
 > | networkWatchers / lenzen | Ja | Nee |
 > | networkWatchers / pingMeshes | Ja | Nee |
 > | p2sVpnGateways | Ja | Ja |

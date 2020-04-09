@@ -3,12 +3,12 @@ title: Fouten en uitzonderingen diagnosticeren met Azure Application Insights
 description: Maak uitzonderingen van ASP.NET-apps samen met aanvraagtelemetrie.
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ccfcb354e27d36f40810b114a1729cf6addf8fb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294691"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892339"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Uitzonderingen in web-apps diagnosticeren met Application Insights
 Uitzonderingen in uw live web-app worden gerapporteerd door [Application Insights](../../azure-monitor/app/app-insights-overview.md). U mislukte aanvragen correleren met uitzonderingen en andere gebeurtenissen op zowel de client als de server, zodat u snel de oorzaken diagnosticeren.
@@ -19,7 +19,7 @@ Uitzonderingen in uw live web-app worden gerapporteerd door [Application Insight
   * Azure VM- en Azure-apps voor virtuele machineschaal instellen IIS-gehoste apps: De [extensie Voor toepassingsbewaking](../../azure-monitor/app/azure-vm-vmss-apps.md) toevoegen
   * [Application Insights SDK](../../azure-monitor/app/asp-net.md) installeren in uw app-code, of
   * IIS-webservers: Application [Insights Agent uitvoeren;](../../azure-monitor/app/monitor-performance-live-website-now.md) Of
-  * Java-web-apps: installeer de [Java-agent](../../azure-monitor/app/java-agent.md)
+  * Java-web-apps: [Java-agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) inschakelen
 * Installeer het [JavaScript-fragment](../../azure-monitor/app/javascript.md) op uw webpagina's om uitzonderingen in de browser te maken.
 * In sommige toepassingskaders of met sommige instellingen moet u enkele extra stappen nemen om meer uitzonderingen te maken:
   * [Webformulieren](#web-forms)

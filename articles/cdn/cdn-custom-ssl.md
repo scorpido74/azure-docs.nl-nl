@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f27adb6098ac339ee188b3e84e1c225faa9f72a6
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238718"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892492"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Zelfstudie: HTTPS op een aangepast Azure CDN-domein configureren
 
@@ -58,8 +58,8 @@ Daarnaast moet u een aangepast Azure CDN-domein koppelen aan uw CDN-eindpunt. Zi
 
 ---
 
-## <a name="ssl-certificates"></a>SSL-certificaten
-Als u het HTTPS-protocol wilt inschakelen voor het veilig leveren van inhoud aan een aangepast Azure CDN-domein, moet u een SSL-certificaat gebruiken. U kunt ervoor kiezen om een certificaat te gebruiken dat wordt beheerd door Azure CDN of uw eigen certificaat gebruiken.
+## <a name="tlsssl-certificates"></a>TLS/SSL-certificaten
+Als u het HTTPS-protocol wilt inschakelen voor het veilig leveren van inhoud op een aangepast Azure CDN-domein, moet u een TLS/SSL-certificaat gebruiken. U kunt ervoor kiezen om een certificaat te gebruiken dat wordt beheerd door Azure CDN of uw eigen certificaat gebruiken.
 
 
 # <a name="option-1-default-enable-https-with-a-cdn-managed-certificate"></a>[Optie 1 (standaard): HTTPS met een door CDN beheerd certificaat inschakelen](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
@@ -99,7 +99,7 @@ Volg deze stappen om HTTPS in te schakelen in een aangepast domein:
 > Deze optie is alleen beschikbaar met **Azure CDN van Microsoft** en Azure **CDN van Verizon-profielen.** 
 >
  
-U kunt uw eigen certificaat gebruiken voor het inschakelen van de HTTPS-functie. Dit proces verloopt via een integratie met Azure Key Vault, waarmee u uw certificaten veilig kunt opslaan. Azure CDN maakt gebruik van dit beveiligde mechanisme om uw certificaat op te vragen en er zijn maar een paar extra stappen nodig. Wanneer u uw SSL-certificaat maakt, moet u deze maken met een toegestane certificeringsinstantie (CA). Als u een niet-toegestane CA gebruikt, wordt uw aanvraag geweigerd. Zie Toegestane certificaatautoriteiten voor het inschakelen van [aangepaste HTTPS op Azure CDN voor](cdn-troubleshoot-allowed-ca.md)een lijst met toegestane CV's. Voor **Azure CDN van Verizon**wordt elke geldige CA geaccepteerd. 
+U kunt uw eigen certificaat gebruiken voor het inschakelen van de HTTPS-functie. Dit proces verloopt via een integratie met Azure Key Vault, waarmee u uw certificaten veilig kunt opslaan. Azure CDN maakt gebruik van dit beveiligde mechanisme om uw certificaat op te vragen en er zijn maar een paar extra stappen nodig. Wanneer u uw TLS/SSL-certificaat maakt, moet u het maken met een toegestane certificaatautoriteit (CA). Als u een niet-toegestane CA gebruikt, wordt uw aanvraag geweigerd. Zie Toegestane certificaatautoriteiten voor het inschakelen van [aangepaste HTTPS op Azure CDN voor](cdn-troubleshoot-allowed-ca.md)een lijst met toegestane CV's. Voor **Azure CDN van Verizon**wordt elke geldige CA geaccepteerd. 
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Voorbereiden van uw Azure Key Vault-account en -certificaat
  
@@ -308,7 +308,7 @@ In de volgende tabel wordt de bewerkingsvoortgang weergegeven die plaatsvindt na
 
 4. *Is het gebruik van een SAN-certificaat minder veilig dan wanneer ik een toegewezen certificaat gebruik?*
     
-    Voor een SAN-certificaat gelden dezelfde standaarden voor versleuteling en beveiliging als voor een toegewezen certificaat. Alle verleende SSL-certificaten maken gebruik van SHA-256 voor verbeterde serverbeveiliging.
+    Voor een SAN-certificaat gelden dezelfde standaarden voor versleuteling en beveiliging als voor een toegewezen certificaat. Alle uitgegeven TLS/SSL-certificaten gebruiken SHA-256 voor verbeterde serverbeveiliging.
 
 5. *Heb ik een CAA-record nodig bij mijn DNS-provider?*
 
@@ -320,7 +320,7 @@ In de volgende tabel wordt de bewerkingsvoortgang weergegeven die plaatsvindt na
 
 7. *Hoe werken cert-verlengingen met Bring Your Own Certificate?*
 
-    Als u wilt zorgen dat een nieuwer certificaat wordt geïmplementeerd in de PoP-infrastructuur, uploadt u uw nieuwe certificaat naar Azure KeyVault en kiest u vervolgens in uw SSL-instellingen op Azure CDN de nieuwste certificaatversie en drukt u op Opslaan. Azure CDN zal vervolgens uw nieuwe bijgewerkte cert voortplanten. 
+    Als u wilt zorgen dat een nieuwer certificaat wordt geïmplementeerd in de PoP-infrastructuur, uploadt u uw nieuwe certificaat naar Azure KeyVault en kiest u vervolgens in uw TLS-instellingen op Azure CDN de nieuwste certificaatversie en drukt u op Opslaan. Azure CDN zal vervolgens uw nieuwe bijgewerkte cert voortplanten. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

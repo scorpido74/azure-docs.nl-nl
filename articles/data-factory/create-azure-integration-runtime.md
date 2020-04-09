@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 03/13/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 87633abaaae1f6034709c6e552be6647533115ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf3bb7e6733ef55a85d0b4ae26a4ce05059a8fb9
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260759"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887139"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Runtime voor Azure-integratie maken en configureren
 De Integration Runtime (IR) is de rekeninfrastructuur die wordt gebruikt door Azure Data Factory om gegevensintegratiemogelijkheden te bieden voor verschillende netwerkomgevingen. Zie [Runtime integratie voor](concepts-integration-runtime.md)meer informatie over IR.
@@ -30,7 +30,11 @@ In dit document wordt uitgelegd hoe u Azure Integration Runtime maken en configu
 Standaard heeft elke gegevensfabriek een Azure IR in de back-end die bewerkingen ondersteunt op cloudgegevensopslag en compute services in het openbare netwerk. De locatie van die Azure IR wordt automatisch opgelost. Als de eigenschap **connectVia** niet is opgegeven in de definitie van gekoppelde service, wordt de standaard Azure IR gebruikt. U hoeft alleen expliciet een Azure IR te maken wanneer u de locatie van de IR expliciet wilt definiëren of als u de activiteitsuitvoeringen op verschillende IRs voor beheerdoeleinden virtueel wilt groeperen. 
 
 ## <a name="create-azure-ir"></a>Azure IR maken
-Integratie Runtime kan worden gemaakt met behulp van de **Set-AzDataFactoryV2IntegrationRuntime** PowerShell cmdlet. Als u een Azure IR wilt maken, geeft u de naam, locatie en het type op aan de opdracht. Hier vindt u een voorbeeldopdracht voor het maken van een Azure IR met locatie ingesteld op 'West-Europa':
+
+Als u een Azure IR wilt maken en instellen, u de volgende procedures gebruiken.
+
+### <a name="create-an-azure-ir-via-azure-powershell"></a>Een Azure IR maken via Azure PowerShell
+Integratie Runtime kan worden gemaakt met behulp van de **Set-AzDataFactoryV2IntegrationRuntime** PowerShell cmdlet. Als u een Azure IR wilt maken, geeft u de naam, locatie en typt u de opdracht op. Hier vindt u een voorbeeldopdracht voor het maken van een Azure IR met locatie ingesteld op 'West-Europa':
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
@@ -39,9 +43,30 @@ Voor Azure IR moet het type worden ingesteld op **Beheerd**. U hoeft geen rekeng
 
 U een bestaande Azure IR configureren om de locatie te wijzigen met de cmdlet Set-AzDataFactoryV2IntegrationRuntime PowerShell. Zie [Inleiding tot de runtime van integratie voor](concepts-integration-runtime.md)meer informatie over de locatie van een Azure IR.
 
+### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Een Azure IR maken via de gebruikersinterface van Azure Data Factory
+Gebruik de volgende stappen om een Azure IR te maken met azure data factory-gebruikersinterface.
+
+1. Selecteer op de pagina **Laten beginnen** van de gebruikersinterface van Azure Data Factory het tabblad **Auteur** in het linkerdeelvenster.
+
+   ![De knop Auteur van startpagina](media/doc-common-process/get-started-page-author-button.png)
+
+1. Selecteer **Verbindingen** onder aan het linkerdeelvenster en selecteer **De werktijd Integratie** in het venster **Verbindingen.** Selecteer **+Nieuw**.
+
+   ![Een Integration Runtime maken](media/create-azure-integration-runtime/new-integration-runtime.png)
+
+1. Selecteer **azure, zelfgehoste**en selecteer **Doorgaan**op de pagina **Runtime-installatie van integratie** . 
+
+1. Selecteer op de volgende pagina **Azure** om een Azure IR te maken en selecteer **Doorgaan**.
+   ![Een Integration Runtime maken](media/create-azure-integration-runtime/new-azure-ir.png)
+
+1. Voer een naam in voor uw Azure IR en selecteer **Maken**.
+   ![Een Azure IR maken](media/create-azure-integration-runtime/create-azure-ir.png)
+
+1. Je ziet een pop-upmelding wanneer de creatie is voltooid. Controleer op de pagina **Runtimes integratie** of u de nieuw gemaakte IR in de lijst ziet.
+
 ## <a name="use-azure-ir"></a>Azure IR gebruiken
 
-Zodra een Azure IR is gemaakt, u ernaar verwijzen in uw Linked Service-definitie. Hieronder vindt u een voorbeeld van hoe u verwijzen naar de hierboven gemaakte Azure Integration Runtime van een Azure Storage Linked Service:  
+Zodra een Azure IR is gemaakt, u ernaar verwijzen in uw Linked Service-definitie. Hieronder vindt u een voorbeeld van hoe u verwijzen naar de hierboven gemaakte Azure Integration Runtime van een Azure Storage Linked Service:
 
 ```json
 {

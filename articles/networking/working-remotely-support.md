@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: bcdd938365e50da1f5ae0e830e86692f1b915123
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618916"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982851"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Op afstand werken met Azure-netwerkservices
 
@@ -80,16 +80,16 @@ Voor uw implementaties in andere openbare clouds kan Microsoft wereldwijde conne
 
 In de volgende artikelen wordt besproken hoe verschillende Azure-netwerkfuncties kunnen worden gebruikt om gebruikers te schalen om op afstand te werken:
 
-| **Artikel** | **Laatste update** |
+| **Artikel** | **Beschrijving** |
 | --- | --- |
-| [Gebruikers in staat stellen op afstand te werken](../vpn-gateway/work-remotely-support.md) | 23 maart 2020 |
-| [Moeite om tegemoet te komen aan het werk vanuit huis behoeften? Hier is waar Azure Virtual WAN kan helpen](../virtual-wan/work-remotely-support.md) | 23 maart 2020 |
-| [Ondersteuning voor intensief verkeer in Application Gateway](../application-gateway/high-traffic-support.md) | 23 maart 2020 |
-| [Network Virtual Appliance (NVA) overwegingen voor werk op afstand](../vpn-gateway/nva-work-remotely-support.md)| 23 maart 2020 |
-| [Overgang naar OpenVPN-protocol of IKEv2 van SSTP](https://go.microsoft.com/fwlink/?linkid=2124112) | 23 maart 2020 |
-| [Op afstand werken met Azure Bastion](../bastion/work-remotely-support.md) | 23 maart 2020 |
-| [Azure ExpressRoute gebruiken om hybride connectiviteit te maken om externe gebruikers te ondersteunen](../expressroute/work-remotely-support.md) | 23 maart 2020 |
-| [Ondersteuning voor extern werken op Azure Firewall](../firewall/remote-work-support.md)|25 maart 2020|
+| [Gebruikers in staat stellen op afstand te werken](../vpn-gateway/work-remotely-support.md) | Bekijk de beschikbare opties voor het instellen van externe toegang voor gebruikers of om hun bestaande oplossingen aan te vullen met extra capaciteit voor uw organisatie.|
+| [Moeite om tegemoet te komen aan het werk vanuit huis behoeften? Hier is waar Azure Virtual WAN kan helpen](../virtual-wan/work-remotely-support.md) | Gebruik Azure Virtual WAN om tegemoet te komen aan de externe connectiviteitsbehoeften van uw organisatie.|
+| [Ondersteuning voor intensief verkeer in Application Gateway](../application-gateway/high-traffic-support.md) | Gebruik Application Gateway with Web Application Firewall (WAF) voor een schaalbare en veilige manier om verkeer naar uw webtoepassingen te beheren. |
+| [Network Virtual Appliance (NVA) overwegingen voor werk op afstand](../vpn-gateway/nva-work-remotely-support.md)|Bekijk de richtlijnen voor het gebruik van NVA's in Azure om oplossingen voor externe toegang te bieden. |
+| [Overgang naar OpenVPN-protocol of IKEv2 van SSTP](https://go.microsoft.com/fwlink/?linkid=2124112) | Overwin de 128 gelijktijdige verbindingslimiet van SSTP door over te stappen op OpenVPN-protocol of IKEv2.|
+| [Op afstand werken met Azure Bastion](../bastion/work-remotely-support.md) | Bied veilige en naadloze RDP/SSH-connectiviteit met virtuele machines binnen het virtuele Azure-netwerk, rechtstreeks in de Azure-portal, zonder het gebruik van een openbaar IP-adres. |
+| [Azure ExpressRoute gebruiken om hybride connectiviteit te maken om externe gebruikers te ondersteunen](../expressroute/work-remotely-support.md) | Gebruik ExpressRoute voor hybride connectiviteit om gebruikers in uw organisatie in staat te stellen op afstand te werken.|
+| [Ondersteuning voor extern werken op Azure Firewall](../firewall/remote-work-support.md)|Bescherm uw virtuele Azure-netwerkbronnen met Azure Firewall. |
 
 <!--Link References-->
 [VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

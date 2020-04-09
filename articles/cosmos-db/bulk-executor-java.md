@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: bf2a2385b3129ddf24ede7f6d851701186b0e33c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445715"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985640"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Gebruik de BulkExecutor-bibliotheek voor Java om bulkbewerkingen uit te voeren in Azure Cosmos DB
 
@@ -28,7 +28,7 @@ Momenteel wordt de bulkexecutorbibliotheek alleen ondersteund door Azure Cosmos 
 
 * U [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement, gratis en verplichtingen. U ook de Azure Cosmos `https://localhost:8081` DB [Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) gebruiken met het eindpunt. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticating-requests).  
 
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)  
+* [Java Development Kit (JDK) 1.7+](/java/azure/jdk/?view=azure-java-stable)  
   - Voer op Ubuntu `apt-get install default-jdk` uit om de JDK te installeren.  
 
   - Zorg dat de omgevingsvariabele JAVA_HOME verwijst naar de map waarin de JDK is geïnstalleerd.
@@ -130,7 +130,7 @@ De gekloonde repository bevat twee voorbeelden "bulkimport" en "bulkupdate" ten 
 6. Nadat de doelafhankelijkheden zijn gegenereerd, u de toepassing van de bulkimporteur aanroepen met behulp van de volgende opdracht:  
 
    ```java
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB’s endpoint>*  -masterKey *<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
    De bulkimporteur maakt een nieuwe database en een verzameling met de databasenaam, verzamelingsnaam en doorvoerwaarden die zijn opgegeven in het bestand App.config. 
@@ -150,7 +150,7 @@ U bestaande documenten bijwerken met de BulkUpdateAsync API. In dit voorbeeld st
    updateOperations.add(descriptionUpdate);
 
    List<UpdateItem> updateItems = new ArrayList<>(cfg.getNumberOfDocumentsForEachCheckpoint());
-   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                      
+   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                        
     return new UpdateItem(Long.toString(prefix + j), Long.toString(prefix + j), updateOperations);
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
@@ -182,7 +182,7 @@ U bestaande documenten bijwerken met de BulkUpdateAsync API. In dit voorbeeld st
    |int getNumberOfDocumentsUpdated()  |   Het totale aantal documenten dat met succes is bijgewerkt uit de documenten die zijn geleverd aan de API-aanroep voor bulkupdates.      |
    |dubbele getTotalRequestUnitsConsumed() |  De total request units (RU) verbruikt door de bulk update API call.       |
    |Duur getTotalTimeTaken()  |   De totale tijd die wordt genomen door de bulk update API-aanroep om de uitvoering te voltooien.      |
-   |Lijst\<uitzondering> getErrors()   |    Hier wordt de lijst met fouten weergegeven als sommige documenten uit de batch die wordt geleverd aan de API-aanroep voor bulkupdates, niet kunnen worden ingevoegd.      |
+   |Lijst\<uitzondering> getErrors()   |       Hier wordt de lijst met fouten weergegeven als sommige documenten uit de batch die wordt geleverd aan de API-aanroep voor bulkupdates, niet kunnen worden ingevoegd.      |
 
 3. Nadat u de bulkupdatetoepassing gereed hebt, bouwt u het opdrachtregelgereedschap van bron met behulp van de opdracht 'mvn clean package'. Met deze opdracht genereert u een potbestand in de doelmap:  
 
@@ -193,7 +193,7 @@ U bestaande documenten bijwerken met de BulkUpdateAsync API. In dit voorbeeld st
 4. Nadat de doelafhankelijkheden zijn gegenereerd, u de toepassing voor bulkupdates aanroepen met behulp van de volgende opdracht:
 
    ```
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB’s endpoint>* -masterKey **<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
 ## <a name="performance-tips"></a>Tips voor prestaties 

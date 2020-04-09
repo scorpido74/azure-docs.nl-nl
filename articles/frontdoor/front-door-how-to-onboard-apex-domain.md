@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: bb1042e15d4366923174996388eeb2fb99aef429
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74184620"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878881"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Aan boord van een root- of apex-domein op je voordeur
 Azure Front Door gebruikt CNAME-records om domeineigendom te valideren voor onboarding van aangepaste domeinen. Front Door stelt ook niet het ip-adres van frontend bloot dat is gekoppeld aan uw frontdoor-profiel en u uw apex-domein dus niet toewijzen aan een IP-adres, als de bedoeling is om het aan boord te nemen naar Azure Front Door.
@@ -26,7 +26,7 @@ Het toewijzen van uw apex of root-domein aan uw Front Door-profiel vereist in pr
 > [!NOTE]
 > Er zijn ook andere DNS-providers die Ondersteuning bieden voor CNAME-afvlakking of DNS-achtervolging, maar Azure Front Door raadt aan Azure DNS te gebruiken voor zijn klanten voor het hosten van hun domeinen.
 
-U de Azure-portal gebruiken om een apex-domein op uw voordeur aan boord te nemen en HTTPS op uw front door het te koppelen aan een certificaat voor SSL-beëindiging. Apex domeinen worden ook wel root of naakte domeinen.
+U de Azure-portal gebruiken om een apex-domein op uw voordeur aan boord te nemen en HTTPS op uw front door het te koppelen aan een certificaat voor TLS-beëindiging. Apex domeinen worden ook wel root of naakte domeinen.
 
 In dit artikel leert u het volgende:
 
@@ -65,7 +65,7 @@ In dit artikel leert u het volgende:
 2. Selecteer het **type certificaatbeheer** om _'Mijn eigen certificaat gebruiken'_.
 
 > [!WARNING]
-> Front Door managed certificate management type wordt momenteel niet ondersteund voor apex of root domeinen. De enige optie die beschikbaar is voor het inschakelen van HTTPS op een apex- of hoofddomein voor Front Door, is het gebruik van uw eigen aangepaste SSL-certificaat dat wordt gehost op Azure Key Vault.
+> Front Door managed certificate management type wordt momenteel niet ondersteund voor apex of root domeinen. De enige optie die beschikbaar is voor het inschakelen van HTTPS op een apex- of hoofddomein voor Front Door, is het gebruik van uw eigen aangepaste TLS/SSL-certificaat dat wordt gehost op Azure Key Vault.
 
 3. Zorg ervoor dat u de juiste machtigingen voor Voordeur hebt ingesteld om toegang te krijgen tot uw sleutelkluis zoals aangegeven in de gebruikersinterface, voordat u doorgaat naar de volgende stap.
 4. Kies een **Key Vault-account** uit uw huidige abonnement en selecteer vervolgens de juiste **secret-** en **geheime versie** om naar het juiste certificaat te brengen.

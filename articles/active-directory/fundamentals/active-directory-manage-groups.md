@@ -13,19 +13,17 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89c4fa536994ecc8cecb50c907d43df2110be7df
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75768007"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982596"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Toegang tot apps en resources beheren met Azure Active Directory-groepen
 Met Azure Active Directory (Azure AD) u groepen gebruiken om toegang te beheren tot uw cloudgebaseerde apps, on-premises apps en uw resources. Uw resources kunnen deel uitmaken van de Azure AD-organisatie, zoals machtigingen voor het beheren van objecten via rollen in Azure AD of extern aan de organisatie, zoals voor SaaS-apps (Software as a Service), Azure-services, SharePoint-sites en on-premises bronnen.
 
 >[!NOTE]
->U hebt een Azure-account nodig voor het gebruik van Azure Active Directory. Als u nog geen account hebt, kunt u [zich registreren voor een gratis Azure-account](https://azure.microsoft.com/free/).
->
 > In de Azure-portal u enkele groepen zien waarvan u het lidmaatschap en de groepsgegevens niet beheren in de portal:
 >
 > - Groepen die worden gesynchroniseerd vanuit on-premises Active Directory, kunnen alleen worden beheerd in on-premises Active Directory.

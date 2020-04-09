@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a71c5328c6fa85f85db4bd7e6103f6470b86d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 723411191d0990583d039a0fc9651437480807b4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258325"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983259"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronisatie van Azure Active Directory Connect: gewenste gegevenslocatie configureren voor Office 365-bronnen
 Het doel van dit onderwerp is om u te laten doorlopen hoe u het kenmerk configureert voor de gewenste gegevenslocatie in Azure Active Directory (Azure AD) Connect-synchronisatie. Wanneer iemand multigeo-mogelijkheden gebruikt in Office 365, gebruikt u dit kenmerk om de geolocatie van de Office 365-gegevens van de gebruiker aan te wijzen. (De termen *regio* en *geo* worden door elkaar gebruikt.)
@@ -51,6 +51,7 @@ De geo's in Office 365 die beschikbaar zijn voor Multi-Geo zijn:
 | Japan | JPN |
 | Korea | KOR |
 | Zuid-Afrika | ZAF ZAF |
+| Zwitserland | Che |
 | Verenigde Arabische Emiraten | Zijn |
 | Verenigd Koninkrijk | Gbr |
 | Verenigde Staten | NAM |
@@ -154,7 +155,7 @@ Met de binnenkomende synchronisatieregel kan de kenmerkwaarde van het bronkenmer
 
     | Stroomtype | Kenmerk Target | Bron | Eén keer solliciteren | Tekst samenvoegen |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocatie | Het bronkenmerk kiezen | Niet ingeschakeld | Update |
+    |Direct | preferredDataLocatie | Het bronkenmerk kiezen | Niet ingeschakeld | Bijwerken |
 
 7. Als u de inkomende regel wilt maken, selecteert u **Toevoegen**.
 
@@ -191,7 +192,7 @@ Met de uitgaande synchronisatieregel kan de kenmerkwaarde van het metaverse naar
 
     | Stroomtype | Kenmerk Target | Bron | Eén keer solliciteren | Tekst samenvoegen |
     | --- | --- | --- | --- | --- |
-    | Direct | preferredDataLocatie | preferredDataLocatie | Niet ingeschakeld | Update |
+    | Direct | preferredDataLocatie | preferredDataLocatie | Niet ingeschakeld | Bijwerken |
 
 7. Sluit **Toevoegen** om de uitgaande regel te maken.
 

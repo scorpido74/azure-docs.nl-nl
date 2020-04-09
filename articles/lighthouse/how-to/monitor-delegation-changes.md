@@ -3,12 +3,12 @@ title: Wijzigingen in de delegatie in uw beheertenant controleren
 description: Meer informatie over het controleren van delegatieactiviteiten van klanthuurders naar uw beherende tenant.
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82c41c392210e088c85af510b9698e0140f660e5
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 322580cc3d0246f7a34e28cdae94da57fda070b5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421912"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985147"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Wijzigingen in de delegatie in uw beheertenant controleren
 
@@ -73,7 +73,7 @@ Nadat u uw serviceprincipal-account hebt gemaakt en de rol Monitoring Reader bij
 
 Zodra u een nieuw serviceprincipal-account hebt gemaakt met Monitoring Reader-toegang tot het hoofdbereik van uw beheertenant, u deze gebruiken om de activiteiten van de delegatie in uw tenant op te vragen en te rapporteren. 
 
-[Dit Azure PowerShell-script](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/monitor-delegation-changes) kan worden gebruikt om de afgelopen 1 dag van activiteit en rapporten op te vragen over toegevoegde of verwijderde delegaties (of pogingen die niet zijn gelukt). Het query's de [tenant activiteit log](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) gegevens, dan construeert de volgende waarden te rapporteren over delegaties die worden toegevoegd of verwijderd:
+[Dit Azure PowerShell-script](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) kan worden gebruikt om de afgelopen 1 dag van activiteit en rapporten op te vragen over toegevoegde of verwijderde delegaties (of pogingen die niet zijn gelukt). Het query's de [tenant activiteit log](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) gegevens, dan construeert de volgende waarden te rapporteren over delegaties die worden toegevoegd of verwijderd:
 
 - **Gedelegeerdresourceid:** de id van het gedelegeerde abonnement of de resourcegroep
 - **CustomerTenantId**: De klanttenant-id

@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 02f2f8ce523e9316b749a9639112176a74da66d2
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ee8f67a41d339e6e5f65548867c5458739857d50
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745545"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981253"
 ---
 # <a name="update-a-power-bi-app-offer"></a>Een Power BI-app-aanbieding bijwerken
 
 >[!Important]
->Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
 
 In dit artikel ziet u hoe u uw Microsoft Power BI-app-aanbieding bijwerken in de [Cloud Partner Portal](https://cloudpartner.azure.com/) en vervolgens de aanbieding opnieuw publiceren. Hier volgen enkele veelvoorkomende redenen om een aanbieding bij te werken:
 

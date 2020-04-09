@@ -3,12 +3,12 @@ title: Opslagoverwegingen voor Azure-functies
 description: Meer informatie over de opslagvereisten van Azure-functies en over het versleutelen van opgeslagen gegevens.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 3bacc93ad6c1851d9165e8efb7d27b427050e6f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48ff2dedd997cccb76b13acdadc895504f656ea3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276580"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984160"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Opslagoverwegingen voor Azure-functies
 
@@ -29,7 +29,7 @@ Azure Functions vereist een Azure Storage-account wanneer u een functie-app-exem
 
 Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemene doeleinden maken of koppelen dat blob-, wachtrij- en tabelopslag ondersteunt. Dit komt omdat Functions afhankelijk is van Azure Storage voor bewerkingen zoals het beheren van triggers en het uitvoeren van logboeken. Sommige opslagaccounts ondersteunen geen wachtrijen en tabellen. Deze accounts omvatten opslagaccounts met blob, alleen Azure Premium-opslag en opslagaccounts voor algemene doeleinden met ZRS-replicatie. Deze niet-ondersteunde accounts worden uit het blade van het opslagaccount gefilterd bij het maken van een functie-app.
 
-Zie [Introductie van de Azure Storage-services](../storage/common/storage-introduction.md#azure-storage-services) voor meer informatie over opslagaccounttypen. 
+Zie [Introductie van de Azure Storage-services](../storage/common/storage-introduction.md#core-storage-services) voor meer informatie over opslagaccounttypen. 
 
 Hoewel u een bestaand opslagaccount gebruiken met uw functie-app, moet u ervoor zorgen dat deze aan deze vereisten voldoet. Opslagaccounts die zijn gemaakt als onderdeel van de doormaakstroom van de functie-app, voldoen gegarandeerd aan deze vereisten voor opslagaccounts.  
 

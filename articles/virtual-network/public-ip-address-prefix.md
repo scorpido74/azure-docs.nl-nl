@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 04/08/2020
 ms.author: anavin
-ms.openlocfilehash: 12fb7e03062600745cd8511d37b439ce44f2ef78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9604d5567e74ef470c3e798b6a3df9e48d6fde5d
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75640717"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985300"
 ---
 # <a name="public-ip-address-prefix"></a>Voorvoegsel van openbaar IP-adres
 
@@ -56,7 +56,7 @@ U de volgende bronnen koppelen aan een statisch openbaar IP-adres van een voorvo
 ## <a name="constraints"></a>Beperkingen
 
 - U de IP-adressen voor het voorvoegsel niet opgeven. Azure wijst de IP-adressen voor het voorvoegsel toe op basis van de grootte die u opgeeft.
-- U een voorvoegsel van maximaal 16 IP-adressen of een /28 maken. Zie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie .
+- U standaard een voorvoegsel van maximaal 16 IP-adressen of een /28 maken. [Netwerklimieten controleren verhogen aanvragen](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) en [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) voor meer informatie.
 - U het bereik niet wijzigen nadat u het voorvoegsel hebt gemaakt.
 - Alleen statische openbare IP-adressen die met de Standaard SKU zijn gemaakt, kunnen worden toegewezen aan het bereik van het voorvoegsel. Zie openbaar IP-adres voor meer informatie over sKU's voor openbare [IP-adres.](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
 - Adressen uit het bereik kunnen alleen worden toegewezen aan Azure Resource Manager-resources. Adressen kunnen niet worden toegewezen aan resources in het klassieke implementatiemodel.

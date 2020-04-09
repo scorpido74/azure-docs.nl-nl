@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442169"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982700"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>De graph bulk executor .NET-bibliotheek gebruiken om bulkbewerkingen uit te voeren in Azure Cosmos DB Gremlin API
 
 Deze zelfstudie bevat instructies over het gebruik van de bulkexecutor .NET-bibliotheek van Azure CosmosDB om grafiekobjecten te importeren en bij te werken in een Azure Cosmos DB Gremlin-API-container. Dit proces maakt gebruik van de klasse Graph in de [bulkexecutor-bibliotheek](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) om Vertex- en Edge-objecten programmatisch te maken om er vervolgens meerdere per netwerkaanvraag in te voegen. Dit gedrag kan worden geconfigureerd via de bulkexecutorbibliotheek om optimaal gebruik te maken van zowel database- als lokale geheugenbronnen.
 
-In tegenstelling tot het verzenden van Gremlin-query's naar een database, waarbij de opdracht wordt geëvalueerd en vervolgens één voor één wordt uitgevoerd, moet de objecten lokaal worden gemaakt en gevalideerd met behulp van de bibliotheek voor bulkuitvoerfouten. Als de objecten zijn gemaakt, kunt u opeenvolgend grafen naar de databaseservice verzenden. Dankzij deze methode kunnen snelheden van gegevensopnames met een factor 100 worden verhoogd. Daardoor is het een ideale methode voor initiële gegevensmigraties of periodieke gegevensverplaatsingen. Ga naar de GitHub-pagina van de [voorbeeldtoepassing Azure Cosmos DB Graph voor bulkuitvoer.](https://aka.ms/graph-bulkexecutor-sample)
+In tegenstelling tot het verzenden van Gremlin-query's naar een database, waarbij de opdracht wordt geëvalueerd en vervolgens één voor één wordt uitgevoerd, moet de objecten lokaal worden gemaakt en gevalideerd met behulp van de bibliotheek voor bulkuitvoerfouten. Als de objecten zijn gemaakt, kunt u opeenvolgend grafen naar de databaseservice verzenden. Dankzij deze methode kunnen snelheden van gegevensopnames met een factor 100 worden verhoogd. Daardoor is het een ideale methode voor initiële gegevensmigraties of periodieke gegevensverplaatsingen. Ga naar de GitHub-pagina van de [voorbeeldtoepassing Azure Cosmos DB Graph voor bulkuitvoer.](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started)
 
 ## <a name="bulk-operations-with-graph-data"></a>Bulkbewerkingen met graafgegevens
 
@@ -120,7 +120,7 @@ e.AddProperty("customProperty", "value");
 * Git. Ga naar de [Git-pagina met downloads](https://git-scm.com/downloads) voor meer informatie.
 
 ### <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
-In deze zelfstudie volgen we de stappen om aan de slag te gaan met het [azure cosmos DB Graph bulk executor sample](https://aka.ms/graph-bulkexecutor-sample) gehost op GitHub. Deze toepassing bestaat uit een .NET-oplossing die willekeurig hoekpunt- en randobjecten maakt en ze vervolgens bulksgewijs invoegt voor het opgegeven grafendatabaseaccount. Voer de onderstaande opdracht `git clone` uit om de toepassing op te halen:
+In deze zelfstudie volgen we de stappen om aan de slag te gaan met het [azure cosmos DB Graph bulk executor sample](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started) gehost op GitHub. Deze toepassing bestaat uit een .NET-oplossing die willekeurig hoekpunt- en randobjecten maakt en ze vervolgens bulksgewijs invoegt voor het opgegeven grafendatabaseaccount. Voer de onderstaande opdracht `git clone` uit om de toepassing op te halen:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started.git

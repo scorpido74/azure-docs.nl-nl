@@ -5,14 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 064a7b8adaec6f47a153743b58f4e1caf50db723
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681504"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887041"
 ---
-# <a name="use-the-model-conversion-rest-api"></a>De REST-API voor modelconversie
+# <a name="use-the-model-conversion-rest-api"></a>De REST API voor modelconversie gebruiken
 
 De [modelconversieservice](model-conversion.md) wordt beheerd via een [REST API.](https://en.wikipedia.org/wiki/Representational_state_transfer) In dit artikel worden de API-gegevens van de conversieservice beschreven.
 
@@ -47,7 +47,7 @@ Uw Azure Remote Rendering Account moet toegang hebben tot het meegeleverde opsla
 
 | Eindpunt | Methode |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversie/maken | POST |
+| /v1/accounts/**accountID**/conversies/maken | POST |
 
 Retourneert de id van de lopende conversie, verpakt in een JSON-document. De veldnaam is "conversionId".
 
@@ -77,7 +77,7 @@ Als uw ARR-account niet is gekoppeld aan uw opslagaccount, u met deze REST-inter
 
 | Eindpunt | Methode |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversie/createWithSharedAccessSignature | POST |
+| /v1/accounts/**accountID**/conversies/createWithSharedAccessSignature | POST |
 
 Retourneert de id van de lopende conversie, verpakt in een JSON-document. De veldnaam is "conversionId".
 

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 04/07/2020
 ms.subservice: app-mgmt
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9ecd193282ed9b7333df44689530b4d057ad7f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f027fbce66a73306165a0ad35d1ba3faa7a5c0bc
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68693904"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983888"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD-toepassingsproxy: releasedatum versie
 In dit artikel worden de versies en functies van Azure Active Directory (Azure AD) Application Proxy weergegeven die zijn uitgebracht. Het Azure AD-team werkt application proxy regelmatig bij met nieuwe functies en functionaliteit. Application Proxy connectors worden automatisch bijgewerkt wanneer een nieuwe versie wordt uitgebracht. 
@@ -35,6 +35,22 @@ Resource |  Details
 Toepassingsproxy inschakelen | In deze [zelfstudie](application-proxy-add-on-premises-application.md)worden vereisten beschreven voor het inschakelen van Application Proxy en het installeren en registreren van een connector.
 Informatie over Azure AD-toepassingsproxyconnectors | Meer informatie over [connectorbeheer](application-proxy-connectors.md) en de automatische [upgrade van](application-proxy-connectors.md#automatic-updates)connectoren.
 Downloaden van Azure AD-toepassingsproxyconnector |  [Download de nieuwste connector.](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)
+
+## <a name="1515260"></a>1.5.1526.0
+
+### <a name="release-status"></a>Status van de release
+
+07 april 2020: Vrijgegeven voor download
+
+### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
+-   Connectors gebruiken ALLEEN TLS 1.2 voor alle verbindingen. Zie [de vereisten voor connector](application-proxy-add-on-premises-application.md#before-you-begin) voor meer details.
+- Verbeterde signalering tussen de Connector en Azure-services. Dit omvat het ondersteunen van betrouwbare sessies voor WCF-communicatie tussen de Connector- en Azure-services en DNS-caching-verbeteringen voor WebSocket-communicatie.
+- Ondersteuning voor het configureren van een proxy tussen de connector en de backend-toepassing. Zie Werken [met bestaande on-premises proxyservers](application-proxy-configure-connectors-with-proxy-servers.md)voor meer informatie.
+
+### <a name="fixed-issues"></a>Problemen opgelost
+- Verwijderd als u terugvalt naar poort 8080 voor communicatie van de Connector naar Azure-services.
+- Foutopsporingssporen toegevoegd voor WebSocket-communicatie. 
+- Resolved preserving the SameSite attribute when set on backend application cookies.
 
 ## <a name="156120"></a>1.5.612.0
 

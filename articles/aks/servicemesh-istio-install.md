@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: f0fe4ab46bfe5c0c0c2ea67aa2e2694321628be5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1d02cb42a86023e5c341daab678c39f22f75dda
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136360"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877691"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Istio installeren en gebruiken in Azure Kubernetes Service (AKS)
 
@@ -97,7 +97,10 @@ De [Helm][helm] installatieaanpak voor Istio zal in de toekomst worden afgeschaf
 > Istio moet momenteel worden gepland om te draaien op Linux-knooppunten. Als u Windows Server-knooppunten in uw cluster hebt, moet u ervoor zorgen dat de Istio-pods alleen op Linux-knooppunten worden uitgevoerd. We gebruiken [knooppuntselecties][kubernetes-node-selectors] om ervoor te zorgen dat pods zijn gepland op de juiste knooppunten.
 
 > [!CAUTION]
-> De [SDS (secret discovery service)][istio-feature-sds] en [Istio CNI][istio-feature-cni] Istio functies zijn momenteel in [Alpha,][istio-feature-stages]dus dacht moet worden gegeven alvorens deze in te schakelen. Bovendien is de functie [Service Account Token Volume Projection][kubernetes-feature-sa-projected-volume] Kubernetes (een vereiste voor SDS) niet ingeschakeld in de huidige AKS-versies.
+> De [SDS (secret discovery service)][istio-feature-sds] en [Istio CNI][istio-feature-cni] Istio functies zijn momenteel in [Alpha,][istio-feature-stages]dus dacht moet worden gegeven alvorens deze in te schakelen. 
+>
+> Houd er rekening mee dat de functie Kubernetes met volumeprojectie van [serviceaccounttoken][kubernetes-feature-sa-projected-volume] (een vereiste voor SDS) nu is **ingeschakeld** voor alle Kubernetes 1.13- en hogere versies op AKS.
+
 Maak een `istio.aks.yaml` bestand met de volgende inhoud. Dit bestand bevat de details van het [Istio-controlevlak][istio-control-plane] voor het configureren van Istio.
 
 ```yaml

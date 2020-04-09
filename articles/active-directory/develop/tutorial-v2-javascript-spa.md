@@ -2,25 +2,21 @@
 title: JavaScript-zelfstudie voor apps op één pagina - Microsoft-identiteitsplatform | Azure
 description: Hoe JavaScript SPA-toepassingen een API kunnen aanroepen waarvoor toegangstokens vereist zijn voor Azure Active Directory v2.0-eindpunt
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6eb144e648e8f5fa1682c353f14686d6f82c7328
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 307490837b2963b3a1272eaafde63431de6645aa
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79530441"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984347"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een JavaScript-toepassing met één pagina (SPA)
 
@@ -269,7 +265,7 @@ U hebt nu een eenvoudige server om uw SPA te bedienen. De beoogde mapstructuur a
 
 Voordat u verder gaat met verificatie, registreert u uw toepassing in **Azure Active Directory.**
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Als uw account u toegang geeft tot meer dan één tenant, selecteert u het account rechtsboven en stelt u uw portalsessie in op de Azure AD-tenant die u wilt gebruiken.
 1. Ga naar de pagina Microsoft-identiteitsplatform voor ontwikkelaars [App-registraties.](https://go.microsoft.com/fwlink/?linkid=2083908)
 1. Wanneer de pagina **Een toepassing registreren** wordt weergegeven, voert u een naam in voor de toepassing.
@@ -353,6 +349,18 @@ Maak een nieuw .js-bestand met de naam `authPopup.js`, dat uw verificatie- en to
 
    function signOut() {
      myMSALObj.logout();
+   }
+   
+   function callMSGraph(theUrl, accessToken, callback) {
+       var xmlHttp = new XMLHttpRequest();
+       xmlHttp.onreadystatechange = function () {
+           if (this.readyState == 4 && this.status == 200) {
+              callback(JSON.parse(this.responseText));
+           }
+       }
+       xmlHttp.open("GET", theUrl, true); // true for asynchronous
+       xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+       xmlHttp.send();
    }
 
    function getTokenPopup(request) {

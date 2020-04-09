@@ -2,25 +2,21 @@
 title: Microsoft identity platform UWP aan de slag | Azure
 description: Hoe Universal Windows Platform applications (UWP) een API kan aanroepen waarvoor toegangstokens vereist zijn van het eindpunt van het Microsoft-identiteitsplatform.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6e7ee1b03dda30bea15a837b6daf6469e00e46d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129894"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886395"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Microsoft Graph API aanroepen vanuit een Universele Windows Platform-toepassing (XAML)
 
@@ -346,7 +342,7 @@ Voeg de volgende nieuwe methode toe aan *MainPage.xaml.cs:*
 
 Nu moet u uw aanvraag registreren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **Azure Active Directory** > **App-registraties**.
 1. Selecteer **Nieuwe registratie**. Voer een zinvolle toepassingsnaam in die wordt weergegeven aan gebruikers van de app, bijvoorbeeld *UWP-App-calling-MSGraph.*
 1. Selecteer onder **Ondersteunde accounttypen** **accounts in een organisatiemap en persoonlijke Microsoft-accounts (bijvoorbeeld Skype, Xbox)** en selecteer **Vervolgens Registreren** om door te gaan.

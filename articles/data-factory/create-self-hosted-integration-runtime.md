@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 03/10/2020
-ms.openlocfilehash: 6302a7d6ffe7218d339121ec98a624f8e98356f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 3fe5a58046776d00ce68189cf724a995380869eb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065599"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887289"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime maken en configureren
 
@@ -62,11 +62,14 @@ Gebruik de volgende stappen om een zelf gehoste IR te maken met azure data facto
 
    ![Een Integration Runtime maken](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
 
-1. Selecteer in het **venster Runtime-instelling voor integratie** de optie **Gegevensverplaatsing uitvoeren en activiteiten verzenden naar externe gegevensberekening**en selecteer **Doorgaan**.
+1. Selecteer **azure, zelfgehoste**en selecteer **Doorgaan**op de pagina **Runtime-installatie van integratie** . 
+
+1. Selecteer op de volgende pagina **Zelf gehost** om een zelfgehoste IR te maken en selecteer **Doorgaan**.
+   ![Een zelfgehoste IR maken](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
 
 1. Voer een naam in voor uw IR en selecteer **Maken**.
 
-1. Selecteer de koppeling onder **optie 1** om de expresinstelling op uw computer te openen. Of volg de stappen onder **optie 2** om handmatig in te stellen. De volgende instructies zijn gebaseerd op handmatige installatie:
+1. Selecteer op de pagina **Runtime-instellingen voor integratie** de koppeling onder **optie 1** om de expresinstelling op uw computer te openen. Of volg de stappen onder **optie 2** om handmatig in te stellen. De volgende instructies zijn gebaseerd op handmatige installatie:
 
    ![Installatie van integratieruntime](media/create-self-hosted-integration-runtime/integration-runtime-setting-up.png)
 

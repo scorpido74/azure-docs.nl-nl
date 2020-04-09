@@ -4,12 +4,12 @@ description: Modules voor gegevensverzameling in- of uitschakelen en prestatieme
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: b2c407036277b17c0f8c08f3261c932a6dc66624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 460bd79e3a37c492301f7438112fef4487618fed
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276177"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982086"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>De Application Insights-SDK configureren met ApplicationInsights.config of ApplicationInsights.xml
 De Application Insights .NET SDK bestaat uit een aantal NuGet pakketten. Het [kernpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) biedt de API voor het verzenden van telemetrie naar de Application Insights. [Aanvullende pakketten](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) bieden telemetriemodules en *initialisators* voor het automatisch volgen van telemetrie vanuit uw toepassing en de context ervan. *modules* Door het configuratiebestand aan te passen, u telemetriemodules en initialisators in- of uitschakelen en parameters instellen voor sommige van deze bestanden.
@@ -165,65 +165,6 @@ Er is ook een standaard [sampling Telemetry Processor](../../azure-monitor/app/a
      </Add>
    </TelemetryProcessors>
 
-```
-
-
-
-## <a name="channel-parameters-java"></a>Kanaalparameters (Java)
-Deze parameters beïnvloeden hoe de Java SDK de telemetriegegevens die deze verzamelt moet opslaan en doorspoelen.
-
-#### <a name="maxtelemetrybuffercapacity"></a>MaxTelemetryBufferCapacity
-Het aantal telemetrie-items dat kan worden opgeslagen in de opslag in het geheugen van de SDK. Wanneer dit nummer is bereikt, wordt de telemetriebuffer doorgespoeld, dat wil zeggen dat de telemetrie-items naar de Application Insights-server worden verzonden.
-
-* Min: 1
-* Max: 1000
-* Standaard: 500
-
-```
-
-  <ApplicationInsights>
-      ...
-      <Channel>
-       <MaxTelemetryBufferCapacity>100</MaxTelemetryBufferCapacity>
-      </Channel>
-      ...
-  </ApplicationInsights>
-```
-
-#### <a name="flushintervalinseconds"></a>FlushIntervalInSeconds FlushIntervalInSeconds FlushIntervalInSeconds FlushInterval
-Hiermee bepaalt u hoe vaak de gegevens die in de opslag in het geheugen zijn opgeslagen, moeten worden doorgespoeld (verzonden naar Application Insights).
-
-* Min: 1
-* Max: 300
-* Standaard: 5
-
-```
-
-    <ApplicationInsights>
-      ...
-      <Channel>
-        <FlushIntervalInSeconds>100</FlushIntervalInSeconds>
-      </Channel>
-      ...
-    </ApplicationInsights>
-```
-
-#### <a name="maxtransmissionstoragecapacityinmb"></a>MaxTransmissionStorageCapacityInMB
-Hiermee bepaalt u de maximale grootte in MB die is toegewezen aan de permanente opslag op de lokale schijf. Deze opslag wordt gebruikt voor doorgaande telemetrie-items die niet kunnen worden verzonden naar het eindpunt Application Insights. Wanneer de opslaggrootte is bereikt, worden nieuwe telemetrie-items verwijderd.
-
-* Min: 1
-* Max: 100
-* Standaard: 10
-
-```
-
-   <ApplicationInsights>
-      ...
-      <Channel>
-        <MaxTransmissionStorageCapacityInMB>50</MaxTransmissionStorageCapacityInMB>
-      </Channel>
-      ...
-   </ApplicationInsights>
 ```
 
 ## <a name="instrumentationkey"></a>Instrumentatiesleutel

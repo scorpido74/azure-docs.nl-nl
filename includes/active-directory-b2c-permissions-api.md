@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 10/16/2019
+ms.date: 04/04/2020
 ms.author: mimart
-ms.openlocfilehash: 71a6654acd436c27bd2370646dede81778113860
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee63c1c0913baf3700d77e6fba1582fe7027ead7
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186135"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875665"
 ---
 #### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
@@ -28,8 +28,8 @@ ms.locfileid: "78186135"
 1. Selecteer het tabblad **Mijn API's.**
 1. Selecteer de API waarvoor de webtoepassing toegang moet krijgen. Bijvoorbeeld *webapi1*.
 1. Vouw **onder Machtiging**demo uit en selecteer vervolgens de scopes die u eerder hebt gedefinieerd. **demo** Bijvoorbeeld, *demo.read* en *demo.write*.
-1. Selecteer **Machtigingen toevoegen**. Zoals aangegeven, wacht een paar minuten voordat u doorgaat naar de volgende stap.
+1. Selecteer **Machtigingen toevoegen**.
 1. Selecteer **Toestemming voor beheerders verlenen voor (uw tenantnaam)**.
-1. Selecteer uw momenteel aangemelde beheerdersaccount of meld u aan met een account in uw Azure AD B2C-tenant die ten minste de functie *voor cloudtoepassingsbeheerder* is toegewezen.
-1. Selecteer **Accepteren**.
-1. Selecteer **Vernieuwen**en controleer vervolgens of 'Verleend voor ..." wordt weergegeven onder **Status** voor beide scopes. Het kan enkele minuten duren voordat de machtigingen worden doorgegeven.
+1. Als u wordt gevraagd een account te selecteren, selecteert u uw momenteel aangemelde beheerdersaccount of meldt u zich aan met een account in uw Azure AD B2C-tenant waaraan ten minste de functie *voor cloudtoepassingsbeheerder* is toegewezen.
+1. Selecteer **Ja**.
+1. Selecteer **Vernieuwen**en controleer vervolgens of 'Verleend voor ..." wordt weergegeven onder **Status** voor beide scopes.

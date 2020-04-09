@@ -11,18 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 415a89cbccd6b43d64ba1a553d44ac003df5806a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a3ae8065553b34a72528cb0f2681e327dc90097
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471622"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985181"
 ---
 # <a name="http2-support-in-azure-front-door"></a>HTTP/2-ondersteuning in Azure Front Door
 
-Momenteel is HTTP/2-ondersteuning actief voor alle frontdoorconfiguraties. Er is geen verdere actie vereist van klanten.
+Momenteel is HTTP/2-ondersteuning actief voor alle Azure Front Door-configuraties. Er is geen verdere actie vereist van klanten.
 
 HTTP/2 is een belangrijke herziening van HTTP/1.1. Het biedt snellere webprestaties, minder responstijd en verbeterde gebruikerservaring, terwijl de bekende HTTP-methoden, statuscodes en semantiek behouden blijven. Hoewel HTTP/2 is ontworpen om te werken met HTTP en HTTPS, ondersteunen veel clientwebbrowsers alleen HTTP/2 via Transport Layer Security (TLS).
+
+> [!NOTE]
+> HTTP/2-protocolondersteuning is alleen beschikbaar voor aanvragen van clients naar Front Door. De communicatie van Voordeur naar achterkant eindigt in de back-end pool gebeurt via HTTP/1.1. 
 
 ### <a name="http2-benefits"></a>HTTP/2 voordelen
 

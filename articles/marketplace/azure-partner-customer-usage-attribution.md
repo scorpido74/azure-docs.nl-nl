@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 9/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 348633ffc91bc25a226b05743a18d2c87533a01d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2895944dea6417949488076186135680523e19db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280640"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874940"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Gebruikskenmerken van klanten van Azure-partners
 
@@ -232,7 +232,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Rapport
 
-U het rapport voor toeschrijving van klantgebruik vinden in uw dashboard Analyseren van partnercentrum. ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Als u het rapport wilt zien, moet u uw partnercentrumreferenties gebruiken om u aan te melden. Als u problemen ondervindt bij het melden of aanmelden, maakt u een ondersteuningsverzoek naar aanleiding van de instructie in de sectie Ondersteuning krijgen.
+U het rapport voor toeschrijving van[https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)klantgebruik vinden in uw dashboard van het Partnercentrum ( ). Als u het rapport wilt zien, moet u uw partnercentrumreferenties gebruiken om u aan te melden. Als u problemen ondervindt bij het melden of aanmelden, maakt u een ondersteuningsverzoek naar aanleiding van de instructie in de sectie Ondersteuning krijgen.
 
 Kies Bijgehouden sjabloon in de vervolgkeuzelijst Partnerkoppelingstype om het rapport te bekijken.
 
@@ -267,7 +267,7 @@ Als u hulp nodig hebt voor Marketplace Onboarding en/of toeschrijving van het kl
 1. Kies de **rubriek** voor uw probleem:
 
    - Selecteer **Andere**voor problemen met de gebruikskoppeling .
-   - Selecteer **Access-probleem**voor toegangsproblemen met het Azure Marketplace CPP .
+   - Selecteer **Access-probleem**voor toegangsproblemen met de Azure Marketplace .
 
      ![De uitgiftecategorie kiezen](media/marketplace-publishers-guide/lu-article-incident.png)
 
@@ -315,7 +315,7 @@ Ja, een klant of implementatiepartner kan de sjabloon aanpassen en de GUID wijzi
 
 **Kan ik sjablonen bijhouden die zijn geïmplementeerd vanuit een niet-Microsoft-opslagplaats zoals GitHub?**
 
-Ja, zolang de GUID aanwezig is wanneer de sjabloon wordt geïmplementeerd, wordt het gebruik bijgehouden. Partners moeten een profiel in het CPP hebben om GUID's te registreren die worden gebruikt voor de implementatie buiten de Azure Marketplace.
+Ja, zolang de GUID aanwezig is wanneer de sjabloon wordt geïmplementeerd, wordt het gebruik bijgehouden. Partners moeten een profiel hebben in de inschrijving op de commerciële marktplaats in het Partnercentrum om GUID's te registreren die worden gebruikt voor de implementatie buiten de Azure Marketplace.
 
 **Ontvangt de klant ook rapportage?**
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 03/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1497b757d77d12cb5b963953224fa8929e987853
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 4af7dc5d55e451e4f6873df42e2b740fd1e5cd56
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385499"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891650"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Cisco AnyConnect
 
@@ -96,6 +96,9 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 1. Kopieer in de sectie **Cisco AnyConnect instellen** de juiste URL(s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
+
+> [!NOTE]
+> Als u meerdere TGT's van de server wilt aan boord, moet u meerdere exemplaren van de Cisco AnyConnect-toepassing vanuit de galerie toevoegen. U er ook voor kiezen om uw eigen certificaat te uploaden in Azure AD voor al deze toepassingsinstanties. Op die manier u hetzelfde certificaat voor de toepassingen hebben, maar u voor elke toepassing verschillende id- en antwoord-URL configureren.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 

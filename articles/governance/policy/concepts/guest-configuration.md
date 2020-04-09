@@ -3,12 +3,12 @@ title: Leer de inhoud van virtuele machines te controleren
 description: Lees hoe Azure Policy de gastconfiguratieagent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: cc2ba11f75da5f993b99c90e5d0cc1030003203e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 889e99e94b2c81a6654fcbe7851e93c40163a0c6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257253"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985317"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>De gastconfiguratie van Azure Policy begrijpen
 
@@ -18,7 +18,7 @@ Naast het controleren en [herstellen van](../how-to/remediate-resources.md) Azur
 - Configuratie of aanwezigheid van toepassingen
 - Omgevingsinstellingen
 
-Op dit moment worden met de functie voor gastconfiguratie van Azure Policy alleen instellingen van de machine gecontroleerd. Het is niet mogelijk om configuraties toe te passen.
+Op dit moment controleert het meeste Azure Policy Guest Configuration-beleid alleen de instellingen in de machine. Ze passen geen configuraties toe. De uitzondering is een ingebouwd beleid [waarnaar hieronder wordt verwezen](#applying-configurations-using-guest-configuration).
 
 ## <a name="extension-and-client"></a>Uitbreiding en client
 
@@ -62,11 +62,12 @@ In de volgende tabel ziet u een lijst met de lokale hulpprogramma's die op elk o
 |Besturingssysteem|Validatie, gereedschap|Opmerkingen|
 |-|-|-|
 |Windows|[Windows PowerShell gewenste statusconfiguratie](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef-kok Inspec](https://www.chef.io/inspec/)| Ruby en Python worden geïnstalleerd door de guest configuration extensie. |
+|Linux|[Chef-kok Inspec](https://www.chef.io/inspec/)| Als Ruby en Python niet op de machine staan, worden ze geïnstalleerd door de gastconfiguratie-extensie. |
 
 ### <a name="validation-frequency"></a>Validatiefrequentie
 
-De gastconfiguratieclient controleert elke 5 minuten op nieuwe inhoud. Zodra een gastopdracht is ontvangen, worden de instellingen gecontroleerd op een interval van 15 minuten. De resultaten worden verzonden naar de gastconfiguratiebronprovider zodra de controle is voltooid. Wanneer een [beleidsevaluatietrigger](../how-to/get-compliance-data.md#evaluation-triggers) optreedt, wordt de status van de machine geschreven naar de resourceprovider gastconfiguratie. Met deze update wordt azure-beleid de eigenschappen van Azure Resource Manager geëvalueerd. Met een evaluatie van het Azure-beleid op aanvraag wordt de meest recente waarde opgehaald bij de gastconfiguratiebronprovider. Het leidt echter niet tot een nieuwe audit van de configuratie binnen de machine.
+De gastconfiguratieclient controleert elke 5 minuten op nieuwe inhoud. Zodra een gasttoewijzing is ontvangen, worden de instellingen voor die configuratie opnieuw gecontroleerd op een interval van 15 minuten.
+Resultaten worden verzonden naar de gastconfiguratie resource provider wanneer de audit is voltooid. Wanneer een [beleidsevaluatietrigger](../how-to/get-compliance-data.md#evaluation-triggers) optreedt, wordt de status van de machine geschreven naar de resourceprovider gastconfiguratie. Met deze update wordt azure-beleid de eigenschappen van Azure Resource Manager geëvalueerd. Met een evaluatie van het Azure-beleid op aanvraag wordt de meest recente waarde opgehaald bij de gastconfiguratiebronprovider. Het leidt echter niet tot een nieuwe audit van de configuratie binnen de machine.
 
 ## <a name="supported-client-types"></a>Ondersteunde clienttypen
 
@@ -78,12 +79,9 @@ In de volgende tabel ziet u een lijst met ondersteunde besturingssysteems op Azu
 |Credativ Credativ|Debian|8, 9|
 |Microsoft|Windows Server|Datacenter 2012, 2012 R2 Datacenter, datacenter 2016, datacenter 2019|
 |Microsoft|Windows-client|Windows 10|
-|OpenLogic|CentOS|7.3, 7.4, 7.5|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6|
+|OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
+|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7|
 |Suse|SLES|12 SP3|
-
-> [!IMPORTANT]
-> Gastconfiguratie kan knooppunten met een ondersteund besturingssysteem controleren. Als u virtuele machines wilt controleren die een aangepaste afbeelding gebruiken, moet u de definitie **DeployIfNotExists** dupliceren en de sectie **Als** wijzigen om uw afbeeldingseigenschappen op te nemen.
 
 ### <a name="unsupported-client-types"></a>Niet-ondersteunde clienttypen
 
@@ -139,10 +137,6 @@ Het controlebeleid dat beschikbaar is voor gastconfiguratie omvat het resourcety
 ### <a name="multiple-assignments"></a>Meerdere opdrachten
 
 Gastconfiguratiebeleid ondersteunt momenteel alleen het toewijzen van dezelfde gasttoewijzing eenmaal per machine, zelfs als de beleidstoewijzing verschillende parameters gebruikt.
-
-## <a name="built-in-resource-modules"></a>Ingebouwde resourcemodules
-
-Bij het installeren van de gastconfiguratie-extensie wordt de PowerShell-module 'GuestConfiguration' meegeleverd met de nieuwste versie van DSC-bronmodules. Deze module kan worden gedownload van de PowerShell Gallery met behulp van de 'Manual Download' link van de module pagina [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/). De bestandsindeling '.nupkg' kan worden omgedoopt tot '.zip' om de gecomprimeerde en beoordeling ongedaan te maken.
 
 ## <a name="client-log-files"></a>Clientlogboekbestanden
 

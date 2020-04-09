@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: 71e1f8be2af5556d86996175e8a1ddbccc9c7de1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a16120194b1b8015466005f42336828c2b4ace6c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72001665"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983837"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Backend-statusproblemen in Application Gateway oplossen
 ==================================================
@@ -170,7 +170,7 @@ Controleer ook of een NSG/UDR/Firewall de toegang tot de Ip en de poort van deze
 
 **Bericht:** De statuscode van\'het HTTP-antwoord van de backend kwam niet overeen met de instelling van de sonde. Verwacht:{HTTPStatusCode0} Ontvangen:{HTTPStatusCode1}.
 
-**Oorzaak:** Nadat de TCP-verbinding is ingesteld en een SSL-handshake is uitgevoerd (als SSL is ingeschakeld), stuurt Application Gateway de sonde als een HTTP GET-verzoek naar de backendserver. Zoals eerder beschreven, de standaard \<sonde zal zijn om protocol\>\<://127.0.0.1: poort\>/, en het beschouwt reactie status codes in de rage 200 tot en met 399 als gezond. Als de server een andere statuscode retourneert, wordt deze gemarkeerd als Niet-inord met dit bericht.
+**Oorzaak:** Nadat de TCP-verbinding is ingesteld en een TLS-handshake is uitgevoerd (als TLS is ingeschakeld), stuurt Application Gateway de sonde als een HTTP GET-verzoek naar de backendserver. Zoals eerder beschreven, de standaard \<sonde zal zijn om protocol\>\<://127.0.0.1: poort\>/, en het beschouwt reactie status codes in de rage 200 tot en met 399 als gezond. Als de server een andere statuscode retourneert, wordt deze gemarkeerd als Niet-inord met dit bericht.
 
 **Oplossing:** Afhankelijk van de reactiecode van de backendserver u de volgende stappen uitvoeren. Een paar van de gemeenschappelijke statuscodes worden hier vermeld:
 
@@ -208,7 +208,7 @@ Meer informatie over [application gateway probe matching](https://docs.microsoft
 **Bericht:** Het servercertificaat dat door de backend wordt gebruikt, is niet ondertekend door een bekende Certificate Authority (CA). Whitelist de backend op de Application Gateway door het uploaden van het rootcertificaat van de server certificaat gebruikt door de backend.
 
 **Oorzaak:** End-to-end SSL met Application Gateway v2 vereist dat het certificaat van de backendserver wordt geverifieerd om de server als gezond te achten.
-Als u een SSL-certificaat wilt vertrouwen, moet dat certificaat van de backendserver worden uitgegeven door een CA die is opgenomen in de vertrouwde winkel van Application Gateway. Als het certificaat niet is uitgegeven door een vertrouwde CA (bijvoorbeeld als een zelfondertekend certificaat is gebruikt), moeten gebruikers het certificaat van de uitgever uploaden naar Application Gateway.
+Om een TLS/SSL-certificaat te kunnen vertrouwen, moet dat certificaat van de backendserver worden uitgegeven door een CA die is opgenomen in de vertrouwde winkel van Application Gateway. Als het certificaat niet is uitgegeven door een vertrouwde CA (bijvoorbeeld als een zelfondertekend certificaat is gebruikt), moeten gebruikers het certificaat van de uitgever uploaden naar Application Gateway.
 
 **Oplossing:** Volg deze stappen om het vertrouwde hoofdcertificaat te exporteren en te uploaden naar Application Gateway. (Deze stappen zijn voor Windows-clients.)
 
@@ -241,7 +241,7 @@ Zie [Vertrouwde basiscertificaat exporteren (voor v2 SKU) voor](https://docs.mic
 **Bericht:** Het hoofdcertificaat van het servercertificaat dat door de backend wordt gebruikt, komt niet overeen met het vertrouwde rootcertificaat dat aan de toepassingsgateway is toegevoegd. Zorg ervoor dat u het juiste basiscertificaat toevoegt om de backend op de witte lijst te zetten
 
 **Oorzaak:** End-to-end SSL met Application Gateway v2 vereist dat het certificaat van de backendserver wordt geverifieerd om de server als gezond te achten.
-Om een SSL-certificaat te kunnen vertrouwen, moet het backendservercertificaat worden uitgegeven door een CA die is opgenomen in de vertrouwde winkel van Application Gateway. Als het certificaat niet is uitgegeven door een vertrouwde CA (er is bijvoorbeeld een zelfondertekend certificaat gebruikt), moeten gebruikers het certificaat van de uitgever uploaden naar Application Gateway.
+Om een TLS/SSL-certificaat te kunnen vertrouwen, moet het backendservercertificaat worden uitgegeven door een CA die is opgenomen in de vertrouwde winkel van Application Gateway. Als het certificaat niet is uitgegeven door een vertrouwde CA (er is bijvoorbeeld een zelfondertekend certificaat gebruikt), moeten gebruikers het certificaat van de uitgever uploaden naar Application Gateway.
 
 Het certificaat dat is geüpload naar http-instellingen van de toepassingsgateway, moet overeenkomen met het basiscertificaat van het backendservercertificaat.
 
@@ -280,7 +280,7 @@ Als de uitvoer niet de volledige keten van het geretourneerde certificaat weerge
 
 **Bericht:** De algemene naam (CN) van het backend-certificaat komt niet overeen met de hostkopvan de sonde.
 
-**Oorzaak:** Application Gateway controleert of de hostnaam die is opgegeven in de backend HTTP-instellingen overeenkomt met die van de CN die wordt gepresenteerd door het SSL-certificaat van de backendserver. Dit is Standard_v2 en WAF_v2 SKU-gedrag. De Servername-aanduiding (SNI) van standard en WAF SKU is ingesteld als de FQDN in het adres van de backendpool.
+**Oorzaak:** Application Gateway controleert of de hostnaam die is opgegeven in de backend HTTP-instellingen overeenkomt met die van de CN die wordt gepresenteerd door het TLS/SSL-certificaat van de backendserver. Dit is Standard_v2 en WAF_v2 SKU-gedrag. De Servername-aanduiding (SNI) van standard en WAF SKU is ingesteld als de FQDN in het adres van de backendpool.
 
 Als er in de v2-SKU een standaardsonde is (er is geen aangepaste sonde geconfigureerd en gekoppeld), wordt SNI ingesteld op basis van de hostnaam die in de HTTP-instellingen wordt genoemd. Als 'Hostnaam kiezen uit backend-adres' wordt vermeld in de HTTP-instellingen, waar de backend-adresgroep een geldige FQDN bevat, wordt deze instelling toegepast.
 
@@ -321,9 +321,9 @@ Voor Linux met OpenSSL:
 
 **Bericht:** Het backendcertificaat is ongeldig. De huidige datum \"valt\" niet \"binnen\" het bereik Geldig van en Geldig tot op heden op het certificaat.
 
-**Oorzaak:** Elk certificaat wordt geleverd met een geldigheidsbereik en de HTTPS-verbinding is niet veilig, tenzij het SSL-certificaat van de server geldig is. De huidige gegevens moeten binnen het **geldige** en **geldig tot** het bereik zijn. Als dit niet het is, wordt het certificaat als ongeldig beschouwd en wordt er een beveiligingsprobleem ontstaan waarbij Application Gateway de backendserver markeert als Niet-inord.
+**Oorzaak:** Elk certificaat wordt geleverd met een geldigheidsbereik en de HTTPS-verbinding is niet veilig, tenzij het TLS/SSL-certificaat van de server geldig is. De huidige gegevens moeten binnen het **geldige** en **geldig tot** het bereik zijn. Als dit niet het is, wordt het certificaat als ongeldig beschouwd en wordt er een beveiligingsprobleem ontstaan waarbij Application Gateway de backendserver markeert als Niet-inord.
 
-**Oplossing:** Als uw SSL-certificaat is verlopen, verlengt u het certificaat met uw leverancier en werkt u de serverinstellingen bij met het nieuwe certificaat. Als het een zelfondertekend certificaat is, moet u een geldig certificaat genereren en het basiscertificaat uploaden naar de HTTP-instellingen van de toepassingsgateway. Voer hiervoor de volgende stappen uit:
+**Oplossing:** Als uw TLS/SSL-certificaat is verlopen, verlengt u het certificaat met uw leverancier en werkt u de serverinstellingen bij met het nieuwe certificaat. Als het een zelfondertekend certificaat is, moet u een geldig certificaat genereren en het basiscertificaat uploaden naar de HTTP-instellingen van de toepassingsgateway. Voer hiervoor de volgende stappen uit:
 
 1.  Open de HTTP-instellingen van de toepassingsgateway in de portal.
 
@@ -333,7 +333,7 @@ Voor Linux met OpenSSL:
 
 #### <a name="certificate-verification-failed"></a>Certificaatverificatie is mislukt
 
-**Bericht:** De geldigheid van het backendcertificaat kon niet worden geverifieerd. Als u de reden wilt achterhalen, schakelt u SSL-diagnose openen in voor het bericht dat is gekoppeld aan foutcode {errorCode}
+**Bericht:** De geldigheid van het backendcertificaat kon niet worden geverifieerd. Als u de reden wilt achterhalen, controleert u OpenSSL-diagnose voor het bericht dat is gekoppeld aan foutcode {errorCode}
 
 **Oorzaak:** Deze fout treedt op wanneer Application Gateway de geldigheid van het certificaat niet kan verifiëren.
 

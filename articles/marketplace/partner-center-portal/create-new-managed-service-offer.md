@@ -7,15 +7,18 @@ manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 3d7015d5e1c3b67b271e89b5653f56415bfb722e
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.date: 04/08/2020
+ms.openlocfilehash: de6e08534722deccb8be11248dd8af3ca2e66739
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674200"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983209"
 ---
 # <a name="create-a-new-managed-service-offer"></a>Een nieuwe Managed Service-aanbieding maken
+
+> [!IMPORTANT]
+> We verplaatsen het beheer van uw managed services-aanbiedingen van Cloud Partner Portal naar Partner Center. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [Een beheerde serviceaanbieding publiceren naar Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md) om uw aanbiedingen te beheren.
 
 Managed Service biedt hulp bij het inschakelen van [Azure Lighthouse-scenario's.](../../lighthouse/overview.md) Wanneer een klant een Managed Service-aanbieding accepteert, kunnen ze resources voor [azure-gedelegeerd resourcebeheer](../../lighthouse/concepts/azure-delegated-resource-management.md)aan boord nemen.
 

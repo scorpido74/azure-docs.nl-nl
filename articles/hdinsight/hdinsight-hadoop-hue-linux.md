@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/28/2019
-ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: dea7e8d5679c8c5a14d6a4253b8a4b36343e6ed8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934567"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887092"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Hue installeren en gebruiken op HDInsight Hadoop-clusters
 
@@ -51,7 +51,7 @@ Gebruik de informatie in de onderstaande tabel voor uw scriptactie. Zie [HDInsig
 
 ## <a name="use-hue-with-hdinsight-clusters"></a>Hue gebruiken met HDInsight-clusters
 
-SSH Tunneling is de enige manier om toegang te krijgen tot Hue op het cluster zodra deze wordt uitgevoerd. Tunneling via SSH maakt het verkeer direct naar de headnode van het cluster waar Hue draait. Nadat het cluster is ingericht, gebruikt u de volgende stappen om Hue te gebruiken op een HDInsight-cluster.
+U slechts één gebruikersaccount met Hue hebben op reguliere clusters. Schakel [Enterprise Security Package](./domain-joined/hdinsight-security-overview.md) in op het cluster voor toegang met meerdere gebruikers. SSH Tunneling is de enige manier om hue op het cluster te openen zodra deze wordt uitgevoerd. Tunneling via SSH maakt het verkeer direct naar de headnode van het cluster waar Hue draait. Nadat het cluster is ingericht, gebruikt u de volgende stappen om Hue te gebruiken op een HDInsight-cluster.
 
 > [!NOTE]  
 > We raden u aan de webbrowser Firefox te gebruiken om de onderstaande instructies te volgen.
@@ -113,9 +113,9 @@ SSH Tunneling is de enige manier om toegang te krijgen tot Hue op het cluster zo
 
 1. Tijdens de installatie worden meerdere Hadoop-services (HDFS, YARN, MR2, Oozie) opnieuw opgestart voor het bijwerken van de configuratie. Nadat het script is voltooid met het installeren van Hue, kan het enige tijd duren voordat andere Hadoop-services zijn gestart. Dit kan in eerste instantie van invloed zijn op de prestaties van Hue. Zodra alle services zijn gestart, is Hue volledig functioneel.
 
-1. Hue begrijpt apache Tez-taken niet, wat de huidige standaardwaarde is voor Hive. Als u MapReduce wilt gebruiken als uitvoeringsengine voor Hive, werkt u het script bij om de volgende opdracht in uw script te gebruiken:
+1. Hue begrijpt Apache Tez-taken niet, wat de huidige standaardis voor Hive is. Als u MapReduce wilt gebruiken als uitvoeringsengine voor Hive, werkt u het script bij om de volgende opdracht in uw script te gebruiken:
 
-        set hive.execution.engine=mr;
+         set hive.execution.engine=mr;
 
 1. Met Linux-clusters u een scenario hebben waarin uw services worden uitgevoerd op de primaire headnode terwijl de Resource Manager mogelijk op de secundaire kop wordt uitgevoerd. Een dergelijk scenario kan leiden tot fouten (zie hieronder) wanneer u Hue gebruikt om details van LOPENDE taken in het cluster weer te geven. U echter de taakgegevens bekijken wanneer de taak is voltooid.
 

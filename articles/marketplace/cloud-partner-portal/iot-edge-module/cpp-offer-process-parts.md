@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 73b1d93cc7f6325a5319b632aa7f827d9ee6303c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 20c76cec82944568c1b16694bef2838626b90b03
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745041"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983344"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge-module biedt publicatieoverzicht
 
 >[!Important]
->Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw IoT Edge-moduleaanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT) om uw gemigreerde aanbiedingen te beheren.
 
 <table> <tr> <td>In deze sectie wordt uitgelegd hoe u een nieuwe Azure IoT Edge-moduleaanbieding publiceert naar de Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace.</a> Een IoT Edge-module is een Docker-compatibele container die is gemaakt om op een IoT Edge-apparaat te draaien. Azure IoT Edge-modules zijn de kleinste rekeneenheid die wordt beheerd door IoT Edge en kunnen Azure-services of aangepaste oplossingscode bevatten. </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 
@@ -38,7 +38,7 @@ De stappen op hoog niveau voor het publiceren van een IoT Edge-moduleaanbieding 
 De volgende artikelen hebben betrekking op de belangrijkste onderdelen van een IoT Edge-moduleaanbieding.
 
 - [Vereisten](./cpp-prerequisites.md) <br>In dit artikel worden de technische en zakelijke vereisten weergegeven voordat u een IoT Edge-moduleaanbieding maken of publiceren.
-- [Technische activa van de IoT Edge-module voorbereiden](./cpp-create-technical-assets.md) <br>In dit artikel wordt beschreven hoe u de technische elementen voor een IoT Edge-module voorbereidt. Deze elementen moeten voldoen aan alle vereiste technische criteria voordat de IoT Edge-module kan worden gepubliceerd op de Azure Marketplace.
+- [Technische assets voor IoT Edge-module voorbereiden](./cpp-create-technical-assets.md) <br>In dit artikel wordt beschreven hoe u de technische elementen voor een IoT Edge-module voorbereidt. Deze elementen moeten voldoen aan alle vereiste technische criteria voordat de IoT Edge-module kan worden gepubliceerd op de Azure Marketplace.
 - [Aanbieding voor IoT Edge-module maken](./cpp-create-offer.md) <br>In dit artikel worden de stappen weergegeven die nodig zijn om een nieuwe IoT Edge-module te maken die toegang biedt met behulp van de [Cloud Partner Portal.](https://cloudpartner.azure.com)
 - [Aanbieding voor IoT Edge-module publiceren](./cpp-publish-offer.md)<br> In dit artikel wordt beschreven hoe u de publicatieaanbieding op de Azure Marketplace indienen.
 

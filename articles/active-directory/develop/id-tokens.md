@@ -1,5 +1,5 @@
 ---
-title: Referentie van Microsoft Identity Platform ID-token | Microsoft Documenten
+title: Referentie van Microsoft Identity Platform ID-token
 description: Meer informatie over het gebruik van id_tokens die worden uitgestoten door de eindpunten Azure AD v1.0 en Microsoft Identity Platform (v2.0).
 services: active-directory
 author: rwike77
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 1efd027edb85cabcfdc2a170771ef19182b5c9f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ede70719c124caebc541df8578ab2720fc68cd5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160947"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885511"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft identity platform ID-tokens
 

@@ -6,16 +6,16 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 84cd201cd758293082a61a87528332c7d8c58811
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef511c203caa11aad4dea1047c982158810c4038
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264302"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982120"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globale gegevensdistributie met Azure Cosmos DB - overzicht
 
-Van toepassingen wordt tegenwoordig vereist dat ze zeer responsief en altijd online zijn. Voor het bereiken van lage latentie en hoge beschikbaarheid moeten de instanties van deze toepassingen worden geïmplementeerd in datacenters die zich dicht bij de gebruikers ervan bevinden. Deze toepassingen worden meestal geïmplementeerd in meerdere datacenters en worden wereldwijd gedistribueerd genoemd. Globaal gedistribueerde toepassingen hebben een globaal gedistribueerde database nodig die overal ter wereld transparant gegevens kan repliceren om de toepassingen in staat te stellen te werken met een kopie van de gegevens die zich dicht bij de gebruikers bevindt. 
+De toepassingen van vandaag zijn vereist om zeer responsief en altijd online te zijn. Voor het bereiken van lage latentie en hoge beschikbaarheid moeten de instanties van deze toepassingen worden geïmplementeerd in datacenters die zich dicht bij de gebruikers ervan bevinden. Deze toepassingen worden meestal geïmplementeerd in meerdere datacenters en worden wereldwijd gedistribueerd genoemd. Globaal gedistribueerde toepassingen hebben een globaal gedistribueerde database nodig die overal ter wereld transparant gegevens kan repliceren om de toepassingen in staat te stellen te werken met een kopie van de gegevens die zich dicht bij de gebruikers bevindt. 
 
 Azure Cosmos DB is een wereldwijd gedistribueerde databaseservice die is ontworpen om lage latentie, elastische schaalbaarheid van doorvoer, goed gedefinieerde semantiek voor gegevensconsistentie en hoge beschikbaarheid te bieden. Kortom, als uw toepassing overal ter wereld gegarandeerde snelle responstijd nodig heeft, als deze altijd online moet zijn en onbeperkte en elastische schaalbaarheid van doorvoer en opslag nodig heeft, moet u uw toepassing bouwen op Azure Cosmos DB.
 
@@ -41,7 +41,7 @@ Door gebruik te maken van de Azure Cosmos DB multi-homing API's is uw toepassing
 
 **Zorg voor continuïteit van het bedrijf tijdens regionale uitval.** Azure Cosmos DB ondersteunt [automatische failover](how-to-manage-database-account.md#automatic-failover) tijdens een regionale storing. Tijdens een regionale storing blijft Azure Cosmos DB zijn latentie, beschikbaarheid, consistentie en doorvoerSLA's behouden. Om ervoor te zorgen dat uw hele toepassing zeer beschikbaar is, biedt Cosmos DB een handmatige failover-API om een regionale storing te simuleren. Door gebruik te maken van deze API u regelmatig bedrijfscontinuïteitsoefeningen uitvoeren.
 
-**Schaal lees- en schrijfdoorvoer wereldwijd.** U elke regio in staat stellen om schrijfbaar en elastisch schaal leest en schrijft over de hele wereld. De doorvoer die uw toepassing configureert op een Azure Cosmos-database of een container, wordt gegarandeerd geleverd in alle regio's die zijn gekoppeld aan uw Azure Cosmos-account. De ingerichte doorvoer wordt gegarandeerd door [financieel gesteunde SLA 's](https://aka.ms/acdbsla).
+**Schaal lees- en schrijfdoorvoer wereldwijd.** U elke regio in staat stellen om schrijfbaar en elastisch schaal leest en schrijft over de hele wereld. De doorvoer die uw toepassing configureert op een Azure Cosmos-database of een container, wordt gegarandeerd geleverd in alle regio's die zijn gekoppeld aan uw Azure Cosmos-account. De ingerichte doorvoer wordt gegarandeerd door [financieel gesteunde SLA 's](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/).
 
 **Kies uit verschillende goed gedefinieerde consistentiemodellen.** Het Azure Cosmos DB-replicatieprotocol biedt vijf goed gedefinieerde, praktische en intuïtieve consistentiemodellen. Elk model heeft een afweging tussen consistentie en prestaties. Gebruik deze consistentiemodellen om eenvoudig wereldwijd gedistribueerde toepassingen te bouwen.
 

@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/01/2020
-ms.openlocfilehash: d39cf8745c6f53cb11bb12561fd452325fe52ac6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6723992ac3335e6abdd78f2008130dfe136f7df
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79296945"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873885"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Een project voor het labelen van gegevens maken en labels exporteren 
 
@@ -20,14 +20,14 @@ ms.locfileid: "79296945"
 
 Het labelen van omvangrijke gegevens in machine learning-projecten is vaak een hoofdpijn. Projecten met een computerzichtcomponent, zoals beeldclassificatie of objectdetectie, vereisen over het algemeen labels voor duizenden afbeeldingen.
  
-[Azure Machine Learning](https://ml.azure.com/) biedt u een centrale plek om etiketteringsprojecten te maken, beheren en bewaken. Gebruik het om gegevens, labels en teamleden te coördineren om labeltaken efficiënt te beheren. Machine Learning ondersteunt beeldclassificatie, meerdere of meerdere klassen, en objectidentificatie met begrensde vakken.
+[Azure Machine Learning](https://ml.azure.com/) biedt u een centrale plek om labelprojecten te maken, te beheren en te controleren (openbare preview). Gebruik het om gegevens, labels en teamleden te coördineren om labeltaken efficiënt te beheren. Machine Learning ondersteunt beeldclassificatie, meerdere of meerdere klassen, en objectidentificatie met begrensde vakken.
 
 Machine Learning houdt de voortgang bij en onderhoudt de wachtrij met onvolledige labeltaken. Labelers hebben geen Azure-account nodig om deel te nemen. Nadat ze zijn geverifieerd met uw Microsoft-account of [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis), kunnen ze zoveel etikettering doen als hun tijd het toelaat.
 
 U start en stopt het project, voegt labelers en teams toe en verwijdert deze en bewaakt de voortgang van de etikettering. U gelabelde gegevens exporteren in coco-indeling of als Azure Machine Learning-gegevensset.
 
 > [!Important]
-> Alleen projecten voor beeldclassificatie en objectidentificatielabeling worden momenteel ondersteund. Bovendien moeten de gegevensafbeeldingen beschikbaar zijn in een Azure blob-gegevensarchief. (Als u geen bestaande gegevenswinkel hebt, u afbeeldingen uploaden tijdens het maken van projecten.) 
+> Alleen projecten voor beeldclassificatie en objectidentificatielabeling worden momenteel ondersteund. Bovendien moeten de gegevensafbeeldingen beschikbaar zijn in een Azure blob-gegevensarchief. (Als u geen bestaande gegevenswinkel hebt, u afbeeldingen uploaden tijdens het maken van projecten.)
 
 In dit artikel leer je hoe je:
 
@@ -41,6 +41,7 @@ In dit artikel leer je hoe je:
 
 ## <a name="prerequisites"></a>Vereisten
 
+
 * De gegevens die u wilt labelen, in lokale bestanden of in Azure blob-opslag.
 * De set labels die u wilt toepassen.
 * De instructies voor etikettering.
@@ -51,11 +52,12 @@ In dit artikel leer je hoe je:
 
 Labelingprojecten worden beheerd vanuit Azure Machine Learning. U gebruikt de pagina **Labelingprojecten** om uw projecten en mensen te beheren. Aan een project zijn een of meer teams toegewezen en een team heeft een of meer personen toegewezen.
 
-Als uw gegevens zich al in Azure Blob-opslag bevinden, moet u deze beschikbaar stellen als gegevensarchief voordat u het labelproject maakt. Zie [Gegevenswinkels maken en registreren](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)voor meer informatie.
+Als uw gegevens zich al in Azure Blob-opslag bevinden, moet u deze beschikbaar stellen als gegevensarchief voordat u het labelproject maakt. Zie [Zelfstudie: Uw eerste labelproject voor afbeeldingsclassificatie maken](tutorial-labeling.md)voor een voorbeeld van het gebruik van een gegevensarchief.
 
 Als u een project wilt maken, selecteert u **Project toevoegen**. Geef het project een passende naam en selecteer **Labeltaaktype**.
 
 ![Wizard Projectcreatie labelen](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
+
 
 * Kies **Afbeeldingsclassificatie Multiklasse** voor projecten wanneer u slechts *één klasse* wilt toepassen uit een reeks klassen op een afbeelding.
 * Kies **Multilabel Afbeeldingsclassificatie** voor projecten wanneer u *een of meer* labels uit een reeks klassen op een afbeelding wilt toepassen. Bijvoorbeeld, een foto van een hond kan worden gelabeld met zowel *hond* en *overdag*.
@@ -168,9 +170,9 @@ Nadat het etiketteringsproject is geïnitialiseerd, zijn sommige aspecten van he
 
 ## <a name="manage-teams-and-people"></a>Teams en mensen beheren
 
-Standaard krijgt elk labelproject dat u maakt een nieuw team met u als lid. Maar teams kunnen ook worden gedeeld tussen projecten. En projecten kunnen meer dan één team hebben. Als u een team wilt maken, selecteert u **Team toevoegen** op de pagina **Teams.**
+Standaard krijgt elk labelproject dat u maakt een nieuw team met u als lid. Maar teams kunnen ook worden gedeeld tussen projecten. En projecten kunnen meer dan één team hebben. Als u een team wilt maken, selecteert u **Team toevoegen** op de pagina **Teams.** 
 
-Je beheert mensen op de pagina **Personen.** Personen toevoegen en verwijderen via het e-mailadres. Elke labeler moet zich verifiëren via uw Microsoft-account of Azure Active Directory als u deze gebruikt.  
+Je beheert mensen op de **Labelers-pagina.** Personen toevoegen en verwijderen via het e-mailadres. Elke labeler moet zich verifiëren via uw Microsoft-account of Azure Active Directory als u deze gebruikt.  
 
 Nadat u een persoon hebt toegevoegd, u die persoon toewijzen aan een of meer teams: Ga naar de pagina **Teams,** selecteer het team en selecteer vervolgens **Personen toewijzen** of **Personen verwijderen.**
 
@@ -216,5 +218,6 @@ Het COCO-bestand wordt gemaakt in de standaardblobstore van de Azure Machine Lea
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* [Zelfstudie: Maak uw eerste image classificatie labeling project](tutorial-labeling.md).
 * Afbeeldingen labelen voor [beeldclassificatie of objectdetectie](how-to-label-images.md)
 * Meer informatie over [Azure Machine Learning en Machine Learning Studio (klassiek)](compare-azure-ml-to-studio-classic.md)

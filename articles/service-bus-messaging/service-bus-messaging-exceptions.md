@@ -1,5 +1,5 @@
 ---
-title: Handleiding voor probleemoplossing voor Azure Service Bus | Microsoft Documenten
+title: Azure Service Bus - messaging uitzonderingen | Microsoft Documenten
 description: In dit artikel vindt u een lijst met uitzonderingen op Azure Service Bus-berichten en worden acties voorgesteld die moeten worden uitgevoerd wanneer de uitzondering optreedt.
 services: service-bus-messaging
 documentationcenter: na
@@ -14,20 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: fb27befadcf8e6d201d020e758cfd1ef9b695f41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d04902a8d53397b7e7d9712a1c75ce44cc7aa7ad
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240806"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880785"
 ---
-# <a name="troubleshooting-guide-for-azure-service-bus"></a>Handleiding voor probleemoplossing voor Azure Service Bus
-In dit artikel worden enkele .NET-uitzonderingen die worden gegenereerd door Service Bus .NET Framework API's en andere tips voor het oplossen van problemen. 
+# <a name="service-bus-messaging-exceptions"></a>Uitzonderingen voor servicebusberichten
+In dit artikel worden de .NET-uitzonderingen weergegeven die worden gegenereerd door .NET Framework API's. 
 
-## <a name="service-bus-messaging-exceptions"></a>Uitzonderingen voor servicebusberichten
-In deze sectie worden de .NET-uitzonderingen weergegeven die worden gegenereerd door .NET Framework API's. 
-
-### <a name="exception-categories"></a>Uitzonderingscategorieën
+## <a name="exception-categories"></a>Uitzonderingscategorieën
 De messaging-API's genereren uitzonderingen die kunnen vallen in de volgende categorieën, samen met de bijbehorende actie die u ondernemen om te proberen ze op te lossen. De betekenis en oorzaken van een uitzondering kunnen variëren afhankelijk van het type berichtenentiteit:
 
 1. Gebruikerscoderingsfout ([System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)). Algemene actie: probeer de code vast te stellen voordat u verdergaat.
@@ -35,7 +32,7 @@ De messaging-API's genereren uitzonderingen die kunnen vallen in de volgende cat
 3. Tijdelijke uitzonderingen[(Microsoft.ServiceBus.messaging.messagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.servicebus.messaging.serverBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception), [Microsoft.servicebus.messaging.messagingcommunicationexception](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)). Algemene actie: probeer de bewerking opnieuw of stel gebruikers op de hoogte. De `RetryPolicy` klasse in de client-SDK kan worden geconfigureerd om opnieuw berichten automatisch te verwerken. Zie [Richtlijnen opnieuw proberen](/azure/architecture/best-practices/retry-service-specific#service-bus)voor meer informatie.
 4. Andere uitzonderingen ([System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx), [Microsoft.serviceBus.messaging.messagelocklostexception](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception), [Microsoft.servicebus.messaging.sessionlocklostexception](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception)). Algemene actie: specifiek voor het uitzonderingstype; zie de tabel in de volgende sectie: 
 
-### <a name="exception-types"></a>Uitzonderingstypen
+## <a name="exception-types"></a>Uitzonderingstypen
 In de volgende tabel worden berichtenuitzonderingtypen en de bijbehorende oorzaken weergegeven en worden de voorgestelde actie met notities weergegeven.
 
 | **Uitzonderingstype** | **Beschrijving/oorzaak/voorbeelden** | **Voorgestelde actie** | **Opmerking over automatische/onmiddellijke nieuwe poging** |
@@ -64,10 +61,10 @@ In de volgende tabel worden berichtenuitzonderingtypen en de bijbehorende oorzak
 | [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) |De omgevingstransactie (*Transaction.Current*) is ongeldig. Het kan zijn voltooid of afgebroken. Innerlijke uitzondering kan aanvullende informatie opleveren. | |Opnieuw proberen helpt niet. |
 | [TransactionindoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) |Een bewerking wordt geprobeerd op een transactie die in twijfel wordt getrokken, of er wordt een poging gedaan om de transactie te plegen en de transactie wordt in twijfel getrokken. |Uw aanvraag moet deze uitzondering (als een speciaal geval) afhandelen, omdat de transactie mogelijk al is vastgelegd. |- |
 
-### <a name="quotaexceededexception"></a>QuotaOverschreedException
+## <a name="quotaexceededexception"></a>QuotaOverschreedException
 [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) geeft aan dat een quotum voor een bepaalde entiteit is overschreden.
 
-#### <a name="queues-and-topics"></a>Wachtrijen en onderwerpen
+### <a name="queues-and-topics"></a>Wachtrijen en onderwerpen
 Voor wachtrijen en onderwerpen is dit vaak de grootte van de wachtrij. De eigenschap foutbericht bevat meer details, zoals in het volgende voorbeeld:
 
 ```Output
@@ -79,7 +76,7 @@ Message: The maximum entity size has been reached or exceeded for Topic: 'xxx-xx
 
 In het bericht staat dat het onderwerp de groottelimiet heeft overschreden, in dit geval 1 GB (de standaardgroottelimiet). 
 
-#### <a name="namespaces"></a>Naamruimten
+### <a name="namespaces"></a>Naamruimten
 
 Voor naamruimten kan [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) aangeven dat een toepassing het maximum aantal verbindingen met een naamruimte heeft overschreden. Bijvoorbeeld:
 
@@ -90,7 +87,7 @@ System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]:
 ConnectionsQuotaExceeded for namespace xxx.
 ```
 
-#### <a name="common-causes"></a>Veelvoorkomende oorzaken
+### <a name="common-causes"></a>Veelvoorkomende oorzaken
 Er zijn twee veelvoorkomende oorzaken voor deze fout: de wachtrij voor dode letters en niet-functionerende berichtontvangers.
 
 1. **[Dode-letter wachtrij](service-bus-dead-letter-queues.md)** Een lezer slaagt er niet in om berichten te voltooien en de berichten worden teruggestuurd naar de wachtrij/onderwerp wanneer het slot verloopt. Het kan gebeuren als de lezer een uitzondering tegenkomt die voorkomt dat deze [BrokeredMessage.Complete aanroept.](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.complete) Nadat een bericht 10 keer is gelezen, wordt het standaard naar de wachtrij voor dode letters verplaatst. Dit gedrag wordt beheerd door de eigenschap [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) en heeft een standaardwaarde van 10. Als berichten zich opstapelen in de wachtrij voor dode letters, nemen ze ruimte in beslag.
@@ -98,70 +95,14 @@ Er zijn twee veelvoorkomende oorzaken voor deze fout: de wachtrij voor dode lett
     Als u het probleem wilt oplossen, leest en voltooit u de berichten uit de wachtrij voor dode letters, zoals u dat in elke andere wachtrij zou doen. U de methode [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) gebruiken om het wachtrijpad voor dode letters op te maken.
 2. **Ontvanger gestopt**. Een ontvanger ontvangt geen berichten meer uit een wachtrij of abonnement. De manier om dit te identificeren is door te kijken naar de eigenschap [QueueDescription.MessageCountDetails,](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) die de volledige uitsplitsing van de berichten weergeeft. Als de eigenschap [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) hoog is of groeit, worden de berichten niet zo snel gelezen als ze worden geschreven.
 
-### <a name="timeoutexception"></a>Time-outUitzondering
+## <a name="timeoutexception"></a>Time-outUitzondering
 Een [time-outuitzondering](https://msdn.microsoft.com/library/system.timeoutexception.aspx) geeft aan dat een door de gebruiker geïnitieerde bewerking langer duurt dan de time-out van de bewerking. 
 
 U moet de waarde van de eigenschap [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) controleren, omdat het bereiken van deze limiet ook een [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx)kan veroorzaken.
 
-#### <a name="queues-and-topics"></a>Wachtrijen en onderwerpen
+### <a name="queues-and-topics"></a>Wachtrijen en onderwerpen
 Voor wachtrijen en onderwerpen wordt de time-out opgegeven in de eigenschap [MessagingFactorySettings.OperationTimeout,](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) als onderdeel van de verbindingstekenreeks, of via [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder). Het foutbericht zelf kan variëren, maar bevat altijd de time-outwaarde die is opgegeven voor de huidige bewerking. 
 
-## <a name="connectivity-certificate-or-timeout-issues"></a>Problemen met connectiviteit, certificaten of time-outs
-De volgende stappen kunnen u helpen bij het oplossen van problemen met connectiviteit/certificaat/time-out voor alle services onder *.servicebus.windows.net. 
-
-- Bladeren naar of [wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/`. Het helpt bij het controleren of u IP-filtering of virtuele netwerk- of certificaatketenproblemen hebt (het meest voorkomende bij het gebruik van java SDK).
-
-    Een voorbeeld van een geslaagd bericht:
-    
-    ```xml
-    <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
-    ```
-    
-    Een voorbeeld van foutfoutbericht:
-
-    ```json
-    <Error>
-        <Code>400</Code>
-        <Detail>
-            Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
-        </Detail>
-    </Error>
-    ```
-- Voer de volgende opdracht uit om te controleren of een poort op de firewall is geblokkeerd. Gebruikte poorten zijn 443 (HTTPS), 5671 (AMQP) en 9354 (Net Messaging/SBMP). Afhankelijk van de bibliotheek die u gebruikt, worden ook andere poorten gebruikt. Hier is de voorbeeldopdracht die controleert of de 5671-poort is geblokkeerd. 
-
-    ```powershell
-    tnc <yournamespacename>.servicebus.windows.net -port 5671
-    ```
-
-    Op Linux:
-
-    ```shell
-    telnet <yournamespacename>.servicebus.windows.net 5671
-    ```
-- Wanneer er met tussenpozen verbindingsproblemen zijn, voert u de volgende opdracht uit om te controleren of er gevallen pakketten zijn. Deze opdracht probeert om 25 verschillende TCP-verbindingen elke 1 seconde met de service tot stand te brengen. Vervolgens u controleren hoeveel van hen zijn geslaagd/mislukt en u ook de latentie van de TCP-verbinding zien. U `psping` de tool downloaden vanaf [hier.](/sysinternals/downloads/psping)
-
-    ```shell
-    .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.windows.net:5671 -nobanner     
-    ```
-    U gelijkwaardige opdrachten gebruiken als u andere `tnc` `ping`hulpprogramma's gebruikt, zoals, enzovoort. 
-- Verkrijg een netwerktracering als de vorige stappen niet helpen en analyseren met behulp van tools zoals [Wireshark.](https://www.wireshark.org/) Neem indien nodig contact op met [Microsoft Support.](https://support.microsoft.com/) 
-
-## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Problemen die zich kunnen voordoen bij service-upgrades/opnieuw opstarten
-Back-endservice-upgrades en opnieuw opstarten kunnen de volgende gevolgen hebben voor uw toepassingen:
-
-- Verzoeken kunnen tijdelijk worden beperkt.
-- Er kan een daling van de inkomende berichten / verzoeken.
-- Het logboekbestand kan foutmeldingen bevatten.
-- De toepassingen kunnen enkele seconden van de service worden losgekoppeld.
-
-Als de toepassingscode SDK gebruikt, is het beleid voor opnieuw proberen al ingebouwd en actief. De toepassing maakt opnieuw verbinding zonder noemenswaardige gevolgen voor de toepassing/workflow.
-
 ## <a name="next-steps"></a>Volgende stappen
-
 Zie de [azure .NET API-verwijzing](/dotnet/api/overview/azure/service-bus)voor de volledige referentie van de Service Bus .NET API .
-
-Zie de volgende artikelen voor meer informatie over [Service Bus:](https://azure.microsoft.com/services/service-bus/)
-
-* [Overzicht van servicebusberichten](service-bus-messaging-overview.md)
-* [Service Bus-architectuur](service-bus-architecture.md)
-
+Zie de handleiding [voor probleemoplossing](service-bus-troubleshooting-guide.md) voor tips voor probleemoplossing

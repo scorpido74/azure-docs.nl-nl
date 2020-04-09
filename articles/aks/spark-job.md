@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 8ebd8990a2fdd43b243f5dd6feb632d782fdeb0b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2e399c1a7b0f9bbc2aac375fe8af969a2b9e0e48
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632694"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877624"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Apache Spark-taken uitvoeren op AKS
 
@@ -293,7 +293,7 @@ Pi is roughly 3.152155760778804
 
 In het bovenstaande voorbeeld is het Spark-jar-bestand geüpload naar Azure-opslag. Een andere optie is om het jar-bestand te verpakken in op maat gemaakte Docker-afbeeldingen.
 
-Zoek hiervoor de `dockerfile` voor de Spark-afbeelding in `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` de map. Voeg `ADD` am-instructie toe `jar` voor `WORKDIR` `ENTRYPOINT` de Spark-taak ergens tussen en declaratie.
+Zoek hiervoor de `dockerfile` voor de Spark-afbeelding in `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` de map. Voeg `ADD` een instructie toe `jar` voor `WORKDIR` `ENTRYPOINT` de Spark-taak ergens tussen en declaratie.
 
 Werk het jarpad bij `SparkPi-assembly-0.1.0-SNAPSHOT.jar` naar de locatie van het bestand op uw ontwikkelingssysteem. U ook gebruik maken van uw eigen aangepaste pot bestand.
 

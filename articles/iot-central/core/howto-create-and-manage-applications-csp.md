@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 5d876d7db13ce73603f212ec11544cb2f680bf46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02481d5dcbaba15c9b17a27348207d9af64f3355
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158177"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982035"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Een Azure IoT Central-toepassing maken en beheren vanuit de CSP-portal
 
@@ -33,7 +33,7 @@ U komt terecht op de pagina Azure IoT Central Application Manager. Azure IoT Cen
 
 ![Manager maken voor CSP's](media/howto-create-and-manage-applications-csp/image3.png)
 
-Als u een Azure IoT Central-toepassing wilt maken, selecteert u **Bouwen** in het linkermenu. Kies een van de branchesjablonen of kies **Legacy-toepassing** om een toepassing helemaal opnieuw te maken. Hiermee wordt de pagina Het maken van toepassingen geladen. U moet alle velden op deze pagina invullen en vervolgens **Maken**kiezen. Meer informatie over elk van de onderstaande velden vindt u.
+Als u een Azure IoT Central-toepassing wilt maken, selecteert u **Bouwen** in het linkermenu. Kies een van de branchesjablonen of kies **Aangepaste app** om een toepassing helemaal opnieuw te maken. Hiermee wordt de pagina Het maken van toepassingen geladen. U moet alle velden op deze pagina invullen en vervolgens **Maken**kiezen. Meer informatie over elk van de onderstaande velden vindt u.
 
 ![Toepassingspagina maken voor CSP's](media/howto-create-and-manage-applications-csp/image4.png)
 

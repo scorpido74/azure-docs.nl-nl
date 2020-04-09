@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 55fa14f367dbf24e951fde8e9075a34499a510b1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f8f21405a79a6fcf70adef9815ba06a229d6954d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547079"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886973"
 ---
 # <a name="outbound-connections-in-azure"></a>Uitgaande verbindingen in Azure
 
@@ -193,11 +193,11 @@ SNAT-poorten toewijzingen zijn IP-transportprotocol specifiek (TCP en UDP worden
 Deze sectie is bedoeld om snat-uitputting te beperken en dat kan optreden met uitgaande verbindingen in Azure.
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>Beheer van SNAT (PAT) poortuitputting
-[Kortstondige poorten](#preallocatedports) die worden gebruikt voor [PAT](#pat) zijn een uitputtende bron, zoals beschreven in Standalone VM zonder een [openbaar IP-adres](#defaultsnat) en [load-balanced VM zonder een openbaar IP-adres](#lb).
+[Kortstondige poorten](#preallocatedports) die worden gebruikt voor [PAT](#pat) zijn een uitputtende bron, zoals beschreven in Standalone VM zonder een [openbaar IP-adres](#defaultsnat) en [load-balanced VM zonder een openbaar IP-adres](#lb). U uw gebruik van kortstondige poorten controleren en vergelijken met uw huidige toewijzing om het risico van of om SNAT exhuastion te bevestigen met behulp van [deze](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) gids te bepalen.
 
 Als u weet dat u veel uitgaande TCP- of UDP-verbindingen initieert naar hetzelfde doel-IP-adres en dezelfde poort, en u geen uitgaande verbindingen observeert of wordt geadviseerd door ondersteuning dat u SNAT-poorten uitvermoeiendt (vooraf toegewezen [efemere poorten](#preallocatedports) die door [PAT](#pat)worden gebruikt), hebt u verschillende algemene mitigatieopties. Bekijk deze opties en bepaal wat er beschikbaar en het beste is voor uw scenario. Het is mogelijk dat een of meer kan helpen bij het beheren van dit scenario.
 
-Als u problemen ondervindt bij het begrijpen van het uitgaande verbindingsgedrag, u IP-stackstatistieken (netstat) gebruiken. Of het kan handig zijn om verbindingsgedragingen te observeren met behulp van pakketopnames. U deze pakketopnames uitvoeren in het gastbesturingssysteem van uw instantie of Network Watcher gebruiken [voor het vastleggen van pakketten.](../network-watcher/network-watcher-packet-capture-manage-portal.md)
+Als u problemen ondervindt bij het begrijpen van het uitgaande verbindingsgedrag, u IP-stackstatistieken (netstat) gebruiken. Of het kan handig zijn om verbindingsgedragingen te observeren met behulp van pakketopnames. U deze pakketopnames uitvoeren in het gastbesturingssysteem van uw instantie of Network Watcher gebruiken [voor het vastleggen van pakketten.](../network-watcher/network-watcher-packet-capture-manage-portal.md) 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>De toepassing wijzigen om verbindingen opnieuw te gebruiken 
 U de vraag naar tijdelijke poorten die voor SNAT worden gebruikt, verminderen door verbindingen in uw toepassing opnieuw te gebruiken. Dit geldt met name voor protocollen zoals HTTP/1.1, waarbij hergebruik van verbindingen de standaardis. En andere protocollen die HTTP gebruiken als hun transport (bijvoorbeeld REST) kunnen op hun beurt profiteren. 

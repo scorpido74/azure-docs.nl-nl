@@ -3,29 +3,68 @@ title: Sjabloonimplementatie wat-als (voorbeeld)
 description: Bepaal welke wijzigingen er met uw resources gebeuren voordat u een Azure Resource Manager-sjabloon implementeert.
 author: mumian
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: bc42585204e5cc2c3ece5293a3934fd22fe8507b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e0d0d572e08961b585a93e66e400b8c2e54bf7f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156443"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886837"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-sjabloonimplementatie what-if-bewerking (Voorbeeld)
 
 Voordat u een ARM-sjabloon (Azure Resource Manager) implementeert, u een voorbeeld bekijken van de wijzigingen die zullen plaatsvinden. Azure Resource Manager biedt de wat-als-bewerking waarmee u zien hoe resources worden gewijzigd als u de sjabloon implementeert. De wat-als-bewerking brengt geen wijzigingen aan in bestaande resources. In plaats daarvan voorspelt het de wijzigingen als de opgegeven sjabloon wordt geïmplementeerd.
 
 > [!NOTE]
-> De wat-als-bewerking is momenteel in preview. Als u het wilt gebruiken, moet u [zich aanmelden voor het voorbeeld.](https://aka.ms/armtemplatepreviews) Als preview-release kunnen de resultaten soms aantonen dat een resource verandert wanneer er daadwerkelijk geen verandering plaatsvindt. We werken eraan om deze problemen te verminderen, maar we hebben uw hulp nodig. Meld deze problemen [https://aka.ms/whatifissues](https://aka.ms/whatifissues)op .
+> De wat-als-bewerking is momenteel in preview. Als preview-release kunnen de resultaten soms aantonen dat een resource verandert wanneer er daadwerkelijk geen verandering plaatsvindt. We werken eraan om deze problemen te verminderen, maar we hebben uw hulp nodig. Meld deze problemen [https://aka.ms/whatifissues](https://aka.ms/whatifissues)op .
 
 U de wat-als-bewerking gebruiken met de PowerShell-opdrachten of REST API-bewerkingen.
+
+## <a name="install-powershell-module"></a>PowerShell-module installeren
+
+Als u wat-als wilt gebruiken in PowerShell, installeert u een voorbeeldversie van de az.resources-module in de PowerShell-galerie.
+
+### <a name="uninstall-alpha-version"></a>Alfaversie verwijderen
+
+Als u eerder een alfaversie van de wat-als-module hebt geïnstalleerd, verwijdert u de module. De alpha-versie was alleen beschikbaar voor gebruikers die zich hebben aangemeld voor een vroege preview. Als u dat voorbeeld niet hebt geïnstalleerd, u deze sectie overslaan.
+
+1. Voer PowerShell uit als Administrator
+1. Controleer uw geïnstalleerde versies van de az.resources-module.
+
+   ```powershell
+   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
+   ```
+
+1. Als u een geïnstalleerde versie hebt met een versienummer in de indeling **2.x.x-alpha,** verwijdert u die versie.
+
+   ```powershell
+   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
+   ```
+
+1. Het registreren van de wat-als-opslagplaats die u hebt gebruikt om de preview te installeren.
+
+   ```powershell
+   Unregister-PSRepository -Name WhatIfRepository
+   ```
+
+### <a name="install-preview-version"></a>Preview-versie installeren
+
+Gebruik het als u de voorbeeldmodule wilt installeren:
+
+```powershell
+Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+```
+
+Je bent klaar om wat-als te gebruiken.
+
+## <a name="see-results"></a>Bekijk de resultaten
 
 In PowerShell bevat de uitvoer kleurgecodeerde resultaten waarmee u de verschillende soorten wijzigingen zien.
 
 ![Resource Manager-sjabloonimplementatie what-if-bewerking fullresourcepayload- en wijzigingstypen](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
-De tekst ouptput is:
+De tekstuitvoer is:
 
 ```powershell
 Resource and property changes are indicated with these symbols:
@@ -72,11 +111,8 @@ U de `-Confirm` parameter Switch ook gebruiken om een voorbeeld van de wijziging
 
 De voorgaande opdrachten retourneren een tekstoverzicht dat u handmatig inspecteren. Gebruik het als u een object wilt krijgen dat u programmatisch inspecteren op wijzigingen:
 
-* `$results = Get-AzResourceGroupDeploymentWhatIf`voor implementaties van resourcegroepen
-* `$results = Get-AzSubscriptionDeploymentWhatIf`of `$results = Get-AzDeploymentWhatIf` voor implementaties op abonnementsniveau
-
-> [!NOTE]
-> Voorafgaand aan de release van versie 2.0.1-alpha5 hebt u de `New-AzDeploymentWhatIf` opdracht gebruikt. Deze opdracht is vervangen `Get-AzDeploymentWhatIf` `Get-AzResourceGroupDeploymentWhatIf`door `Get-AzSubscriptionDeploymentWhatIf` de opdrachten , en opdrachten. Als u een eerdere versie hebt gebruikt, moet u die syntaxis bijwerken. De `-ScopeType` parameter is verwijderd.
+* `$results = Get-AzResourceGroupDeploymentWhatIfResult`voor implementaties van resourcegroepen
+* `$results = Get-AzSubscriptionDeploymentWhatIfResult`of `$results = Get-AzDeploymentWhatIfResult` voor implementaties op abonnementsniveau
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
@@ -170,7 +206,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="test-modification"></a>Testwijziging
 
-Nadat de implementatie is voltooid, u de wat-als-bewerking testen. Implementeer deze keer een [sjabloon die het virtuele netwerk wijzigt.](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json) Het ontbreekt een van de originele tags, een subnet is verwijderd, en het adres voorvoegsel is veranderd.
+Nadat de implementatie is voltooid, u de wat-als-bewerking testen. Implementeer deze keer een [sjabloon die het virtuele netwerk wijzigt.](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json) Het mist een van de originele tags, een subnet is verwijderd, en het adres voorvoegsel is veranderd.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -214,7 +250,7 @@ Resource changes: 1 to modify.
 
 Let bovenaan de uitvoer op dat kleuren zijn gedefinieerd om het type wijzigingen aan te geven.
 
-Onder aan de uitvoer ziet u dat de tag-eigenaar is verwijderd. Het adresvoorvoegsel is gewijzigd van 10.0.0.0/16 naar 10.0.0.0/15. Het subnet met de naam subnet001 is verwijderd. Onthoud dat deze wijzigingen niet daadwerkelijk zijn geïmplementeerd. U ziet een voorbeeld van de wijzigingen die plaatsvinden als u de sjabloon implementeert.
+Onder aan de uitvoer ziet u dat de tag-eigenaar is verwijderd. Het adresvoorvoegsel is gewijzigd van 10.0.0.0/16 naar 10.0.0.0/15. Het subnet met de naam subnet001 is verwijderd. Vergeet niet dat deze wijzigingen niet daadwerkelijk zijn geïmplementeerd. U ziet een voorbeeld van de wijzigingen die plaatsvinden als u de sjabloon implementeert.
 
 Sommige eigenschappen die worden vermeld als verwijderd, worden niet echt gewijzigd. Eigenschappen kunnen onjuist worden gerapporteerd als verwijderd wanneer ze niet in de sjabloon staan, maar worden tijdens de implementatie automatisch ingesteld als standaardwaarden. Dit resultaat wordt beschouwd als "ruis" in de wat-als-respons. De uiteindelijke geïmplementeerde resource heeft de waarden die zijn ingesteld voor de eigenschappen. Naarmate de wat-als-bewerking afloopt, worden deze eigenschappen uit het resultaat gefilterd.
 
@@ -223,7 +259,7 @@ Sommige eigenschappen die worden vermeld als verwijderd, worden niet echt gewijz
 Laten we nu de wat-als-resultaten programmatisch evalueren door de opdracht in te stellen op een variabele.
 
 ```azurepowershell
-$results = Get-AzResourceGroupDeploymentWhatIf `
+$results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```

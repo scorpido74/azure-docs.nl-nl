@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1bcf06056dd7fdaf22716409f53d86da7321b94d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: f4fb5fba78cdea7996d006d34b2f07f3ac5e58fa
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745583"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981287"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Tabblad Gegevens van De Power BI-app Storefront
 
 >[!Important]
->Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
 
 Gebruik op de pagina **Nieuwe aanbieding** het tabblad **Storefront Details** om marketing-, verkoop- en juridische informatie te verstrekken aan uw potentiële klanten. Op dit tabblad u ook beheer instellen voor leads die de Azure Marketplace genereert. Deze lange vorm is onderverdeeld in zes secties: **Aanbiedingsdetails**, **Aanbiedingsdetails,** **Marketingartefacten**, **Juridische**, **Klantenondersteuning**en **Leadmanagement**.  Een sterretje (*) aan het einde van een veldlabel betekent dat het veld vereist is.
 
@@ -114,7 +114,7 @@ Stel in de sectie **Leadmanagement** uw systeem in om de klantleads te verzamele
 |------------------------|--------------------------------------            |
 |  **Geen**              | Verzamel geen aanwijzingen. Dit is de standaardoptie.  |
 | **Azure Blob (afgeschaft)** | Azure [Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) opgeven met behulp van een containernaam en een verbindingstekenreeks.  Deze keuze is afgeschaft. Gebruik in plaats daarvan **Azure Table.**  |
-| **Azure-tabel**        | Azure [Table-opslag opgeven](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) met behulp van een verbindingstekenreeks.  |
+| **Azure Table**        | Azure [Table-opslag opgeven](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) met behulp van een verbindingstekenreeks.  |
 | **Dynamics CRM Online** | Dynamics [365](https://dynamics.microsoft.com/) opgeven met behulp van een URL en verificatiereferenties. |
 | **HTTPS-eindpunt**     | Geef het HTTPS-eindpunt op met een JSON-payload.   |
 | **Marketo**            | Geef een [Marketo-instantie](https://www.marketo.com/) op met behulp van een server-id, munchkin-id en formulier-ID.   |

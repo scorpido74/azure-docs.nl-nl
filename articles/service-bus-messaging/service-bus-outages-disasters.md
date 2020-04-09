@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 2a7f5d5eacb2d03e64ae95d34e1cf0bd37bbc7f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07b071b0e8efc5d664dada133a214d778c6531d0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259251"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984943"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Best practices voor de isolatie van toepassingen tegen Service Bus-uitval en -noodgevallen
 
@@ -33,7 +33,7 @@ Service Bus Premium ondersteunt Geo-disaster recovery, op naamruimteniveau. Zie 
 
 ### <a name="availability-zones"></a>Beschikbaarheidszones
 
-De Service Bus Premium SKU ondersteunt [beschikbaarheidszones](../availability-zones/az-overview.md)en biedt op foutgeïsoleerde locaties binnen dezelfde Azure-regio.
+De Service Bus Premium SKU ondersteunt [beschikbaarheidszones](../availability-zones/az-overview.md)en biedt op foutgeïsoleerde locaties binnen dezelfde Azure-regio. Service Bus beheert drie exemplaren van berichtenwinkel (1 primaire en 2 secundaire). Service Bus houdt alle drie de kopieën gesynchroniseerd voor gegevens en beheerbewerkingen. Als de primaire kopie mislukt, wordt een van de secundaire kopieën gepromoot naar primaire zonder waargenomen downtime. Als de toepassingen de tijdelijke verbinding met Service Bus zien, wordt de logica voor opnieuw proberen in de SDK automatisch opnieuw verbinding gemaakt met Service Bus. 
 
 > [!NOTE]
 > De ondersteuning voor beschikbaarheidszones voor Azure Service Bus Premium is alleen beschikbaar in [Azure-regio's](../availability-zones/az-overview.md#services-support-by-region) waar beschikbaarheidszones aanwezig zijn.

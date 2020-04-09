@@ -1,18 +1,18 @@
 ---
-title: Voorbeeld PowerShell-scripts
+title: PowerShell-voorbeeldscripts
 description: Voorbeelden die laten zien hoe je de front-end gebruiken via PowerShell-scripts
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: d7238c899301d76edde86d52c6db74468ffe18ad
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679476"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891489"
 ---
-# <a name="example-powershell-scripts"></a>Voorbeeld PowerShell-scripts
+# <a name="example-powershell-scripts"></a>PowerShell-voorbeeldscripts
 
 Azure Remote Rendering biedt de volgende twee REST-API's:
 
@@ -35,9 +35,12 @@ Als u de voorbeeldscripts wilt uitvoeren, hebt u een functionele installatie van
 
 1. [Een Azure Storage-account voorbereiden](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
-1. Meld u aan bij het abonnement dat uw Azure Remote Rendering-account bevat:
+1. Meld u aan bij uw abonnement met uw Azure Remote Rendering-account:
     1. Een PowerShell openen
-    1. Uitvoeren:`Connect-AzAccount -Subscription "<your Azure subscription id>"`
+    1. Uitvoeren: `Connect-AzAccount` en volg de aanwijzingen op het scherm.
+
+> [!NOTE]
+> Als uw organisatie meer dan één abonnement heeft, moet u mogelijk de argumenten SubscriptionId en Tenant opgeven. Meer informatie vindt u in de [connect-azaccount-documentatie.](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)
 
 1. Download de map *Scripts* in de [Azure Remote Rendering GithHub-repository.](https://github.com/Azure/azure-remote-rendering)
 

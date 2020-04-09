@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2019
+ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e50eb561bcbb924ea093722d6c61bbe51747b328
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811266"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981304"
 ---
 # <a name="security-management-in-azure"></a>Beveiligingsbeheer in Azure
 Azure-abonnees kunnen hun cloudomgevingen beheren vanaf meerdere apparaten, waaronder beheerwerkstations, de pc's van ontwikkelaars en zelfs apparaten van bevoegde eindgebruikers met taakspecifieke rechten. In sommige gevallen worden beheerfuncties uitgevoerd via op het web gebaseerde consoles, zoals de [Azure Portal](https://azure.microsoft.com/features/azure-portal/). In andere gevallen zijn er mogelijk rechtstreekse verbindingen naar Azure vanaf on-premises systemen via virtuele particuliere netwerken (VPN), Terminal Services, protocollen van clienttoepassingen of de Azure Service Management API (SMAPI) (via een programma). Clienteindpunten kunnen bovendien zowel in een domein zijn samengevoegd als op zichzelf staand en niet-beheerd zijn, zoals tablets en smartphones.
@@ -145,9 +145,6 @@ Voor beperkte werkstations raden we drie primaire configuraties aan. De verschil
 | - | Duidelijke scheiding van functies | - |
 | Zakelijke pc als virtuele machine |Lagere kosten voor hardware | - |
 | - | Scheiding van rollen en toepassingen | - |
-| Windows To Go met BitLocker-stationsversleuteling |Compatibiliteit met de meeste pc's |Bijhouden van assets |
-| - | Kosteneffectiviteit en draagbaarheid | - |
-| - | Geïsoleerde beheeromgeving |- |
 
 Het is belangrijk dat het beperkte werkstation de host is en niet de gast. Er mag zich niets bevinden tussen het hostbesturingssysteem en de hardware. Op basis van het principe van de 'schone bron' (ook wel 'veilige oorsprong' genoemd) moet de host de meeste beperkingen hebben. Anders wordt het beperkte werkstation (gast) blootgesteld aan aanvallen op het systeem waarop het wordt gehost.
 
@@ -170,15 +167,6 @@ In gevallen waarin een afzonderlijk zelfstandig, beperkt werkstation te duur is 
 Ter voorkoming van diverse beveiligingsrisico's die voortvloeien uit het gebruik van hetzelfde werkstation voor systeembeheer en voor andere dagelijkse taken, kunt u op het beperkte werkstation een virtuele machine met Windows Hyper-V implementeren. Deze virtuele machine kan vervolgens worden gebruikt als zakelijke pc. De omgeving van de zakelijke pc kan geïsoleerd blijven van de host, waardoor u de kwetsbaarheid voor aanvallen vermindert en de dagelijkse activiteiten van de gebruiker (zoals het verzenden van e-mail) niet meer op hetzelfde systeem worden uitgevoerd als gevoelige beheertaken.
 
 De virtuele machine die als zakelijke pc wordt gebruikt, wordt uitgevoerd in een beveiligde ruimte en biedt de benodigde gebruikerstoepassingen. De host blijft een 'schone bron' en past strikt netwerkbeleid toe op het basisbesturingssysteem (bijvoorbeeld het blokkeren van RDP-toegang tot de virtuele machine).
-
-### <a name="windows-to-go"></a>Windows To Go
-Een ander alternatief voor een zelfstandig, beperkt werkstation is gebruik van een [Windows To Go](https://technet.microsoft.com/library/hh831833.aspx)-station. Deze functie biedt ondersteuning voor opstarten vanaf USB aan clientzijde. Met Windows To Go kunnen gebruikers een compatibele pc opstarten naar een geïsoleerde installatiekopie die wordt uitgevoerd vanaf een versleuteld USB-flashstation. Windows To Go biedt extra gebruiksmogelijkheden voor eindpunten voor extern beheer, omdat de installatiekopie volledig kan worden beheerd door een zakelijke IT-afdeling en kan worden voorzien van strikt beveiligingsbeleid, een minimale build van het besturingssysteem en TPM-ondersteuning.
-
-De draagbare installatiekopie in de afbeelding hieronder is een systeem dat lid is van een domein en vooraf zodanig is geconfigureerd dat er alleen verbinding kan worden gemaakt met Azure. Het systeem vereist bovendien Multi-Factor Authentication en blokkeert al het verkeer dat niet aan beheer is gerelateerd. Als een gebruiker dezelfde pc opstart naar de zakelijke standaardinstallatiekopie en via de Extern bureaublad-gateway toegang probeert te krijgen tot de beheerhulpprogramma's van Azure, wordt de sessie geblokkeerd. Windows To Go wordt het basisbesturingssysteem en er zijn geen extra lagen vereist (hostbesturingssysteem, hypervisor, virtuele machine) die mogelijk kwetsbaarder zijn voor aanvallen van buitenaf.
-
-![](./media/management/hardened-workstation-using-windows-to-go-on-a-usb-flash-drive.png)
-
-Houd wel voor ogen dat een USB-flashstation sneller zoekraakt dan een gemiddelde desktop-pc. Gebruik van BitLocker voor het versleutelen van het gehele volume, samen met een sterk wachtwoord, zorgt ervoor dat een aanvaller minder snel de installatiekopie van het station kan gebruiken voor schadelijke doeleinden. Als het USB-flashstation zoekraakt, kan het risico bovendien worden beperkt door het wachtwoord direct opnieuw in te stellen en het beheercertificaat in te trekken. Hierna kan er [een nieuw beheercertificaat worden uitgegeven](https://technet.microsoft.com/library/hh831574.aspx). De logboeken voor controle van het beheer zijn opgeslagen in Azure, niet op de client. Dit zorgt voor verdere vermindering van mogelijk gegevensverlies.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 Houd rekening met de volgende aanvullende richtlijnen bij het beheren van toepassingen en gegevens in Azure.
@@ -215,7 +203,7 @@ Door het aantal taken te minimaliseren dat beheerders op een beperkt werkstation
 * Groepsbeleid. Maak een overkoepelend beheerbeleid dat wordt toegepast op alle domeinwerkstations die voor beheer worden gebruikt (en blokkeer de toegang vanaf alle overige werkstations), evenals op gebruikersaccounts die op die werkstations worden geverifieerd.
 * Inrichting met verbeterde beveiliging. Bescherm de installatiekopie van uw beperkte basiswerkstation om het risico op inbreuk te reduceren. Gebruik beveiligingsmaatregelen zoals versleuteling en isolatie voor het opslaan van installatiekopieën, virtuele machines en scripts, en beperk de toegang (gebruik bijvoorbeeld een controleerbaar in-/uitcheckproces).
 * Patchen. Waarborg een consistente build (of bewaar afzonderlijke installatiekopieën voor ontwikkeling, bewerkingen en andere beheertaken), scan regelmatig op wijzigingen en malware, houd de build up-to-date en activeer apparaten alleen als dat nodig is.
-* Versleuteling. Zorg ervoor dat beheerwerkstations een TMP hebben voor een veiligere inzet van [Encrypting File System](https://technet.microsoft.com/library/cc700811.aspx) (EFS) en BitLocker. Als u Windows To Go gebruikt, gebruik dan alleen versleutelde USB-sleutels in combinatie met BitLocker.
+* Versleuteling. Zorg ervoor dat beheerwerkstations een TMP hebben voor een veiligere inzet van [Encrypting File System](https://technet.microsoft.com/library/cc700811.aspx) (EFS) en BitLocker.
 * Beheer. Gebruik AD DS-groepsbeleidsobjecten voor het beheren van de Windows-interfaces van alle beheerders, zoals het delen van bestanden. Voer voor beheerwerkstations controle-, bewakings- en logboekregistratieprocessen uit. Houd toegang en gebruik van alle beheerders en ontwikkelaars bij.
 
 ## <a name="summary"></a>Samenvatting

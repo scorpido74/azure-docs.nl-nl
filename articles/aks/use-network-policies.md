@@ -1,15 +1,16 @@
 ---
-title: Beveiligde pods met netwerkbeleid in Azure Kubernetes Service (AKS)
+title: Veilig podverkeer met netwerkbeleid
+titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het beveiligen van verkeer dat in en uit pods stroomt met kubernetes-netwerkbeleid in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 37b6ebd1c8b147db0a9cead4678a0b2bb4ed234d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01ba9e7353b6783d1b4fd1649291a64405fd9382
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473605"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886701"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Verkeer tussen pods beveiligen met netwerkbeleid in Azure Kubernetes Service (AKS)
 
@@ -24,7 +25,7 @@ U moet de Azure CLI-versie 2.0.61 of hoger installeren en configureren. Voer  `
 > [!TIP]
 > Als u de functie netwerkbeleid tijdens de preview hebt gebruikt, raden we u aan [een nieuw cluster te maken.](#create-an-aks-cluster-and-enable-network-policy)
 > 
-> Als u bestaande testclusters wilt blijven gebruiken die het netwerkbeleid tijdens de preview hebben gebruikt, u uw cluster upgraden naar een nieuwe Kubernetes-versie voor de nieuwste GA-release en vervolgens het volgende YAML-manifest implementeren om de crashende metricsserver en Kubernetes op te lossen Dashboard. Deze oplossing is alleen vereist voor clusters die de Calico-netwerkbeleidsengine hebben gebruikt.
+> Als u bestaande testclusters wilt blijven gebruiken die het netwerkbeleid tijdens de preview hebben gebruikt, u uw cluster upgraden naar een nieuwe Kubernetes-versie voor de nieuwste GA-release en vervolgens het volgende YAML-manifest implementeren om de crashende metricsserver en het Kubernetes-dashboard op te lossen. Deze oplossing is alleen vereist voor clusters die de Calico-netwerkbeleidsengine hebben gebruikt.
 >
 > Als best practice voor beveiliging [bekijkt u de inhoud van dit YAML-manifest][calico-aks-cleanup] om te begrijpen wat er in het AKS-cluster wordt geïmplementeerd.
 >

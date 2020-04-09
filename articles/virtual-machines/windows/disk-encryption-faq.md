@@ -7,17 +7,23 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5cc6a3d8d736209f762959bca6f8ad379c14203f
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: a4ab59ab5b988b54333c419ced7fa852da531eaa
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582716"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984330"
 ---
-# <a name="azure-disk-encryption-for-windows-vms-faq"></a>Veelgestelde vragen over Azure Disk Encryption voor Windows VM's
+# <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Veelgestelde vragen over Azure Disk Encryption voor virtuele Windows-machines
 
 In dit artikel vindt u antwoorden op veelgestelde vragen (FAQ) over Azure Disk Encryption voor Windows VM's. Zie [overzicht azure disk-encryptie](disk-encryption-overview.md)voor meer informatie over deze service.
 
+## <a name="what-is-azure-disk-encryption-for-windows-vms"></a>Wat is Azure Disk Encryption voor Windows VM's?
+
+Azure Disk Encryption for Windows VM's maakt gebruik van de Bitlocker-functie van Windows om volledige schijfversleuteling van de os-schijf- en gegevensschijven te bieden. Bovendien biedt het versleuteling van de kortstondige resourceschijf wanneer de [parameter VolumeType Alles is.](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk)  De inhoud stroomt versleuteld van de VM naar de backend opslag. Hierdoor wordt end-to-end-encryptie voorzien van een door de klant beheerde sleutel.
+ 
+Zie [ondersteunde VM's en besturingssystemen](disk-encryption-overview.md#supported-vms-and-operating-systems).
+ 
 ## <a name="where-is-azure-disk-encryption-in-general-availability-ga"></a>Waar is Azure Disk Encryption in algemene beschikbaarheid (GA)?
 
 Azure Disk Encryption is in algemene beschikbaarheid in alle openbare Azure-regio's.
@@ -47,6 +53,19 @@ Nadat u het besturingssysteemvolume hebt versleuteld, wordt het uitschakelen van
 ## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Kan ik een niet-gemonteerd volume versleutelen met Azure Disk Encryption?
 
 Nee, Azure Disk Encryption versleutelt alleen gemonteerde volumes.
+
+## <a name="what-is-storage-server-side-encryption"></a>Wat is storage server-side encryptie?
+
+Versleuteling aan de opslagserver versleutelt azure-beheerde schijven in Azure Storage. Beheerde schijven worden standaard versleuteld met server-side encryptie met een platformbeheerde sleutel (vanaf 10 juni 2017). U versleuteling van beheerde schijven beheren met uw eigen sleutels door een door de klant beheerde sleutel op te geven. Zie [Server-side encryptie van door Azure beheerde schijven](disk-encryption.md)voor meer informatie.
+ 
+## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Waarin verschilt Azure Disk Encryption van Storage server-side encryptie met door de klant beheerde sleutel en wanneer moet ik elke oplossing gebruiken?
+
+Azure Disk Encryption biedt end-to-end encryptie voor de OS-schijf, gegevensschijven en de kortstondige resourceschijf met een door de klant beheerde sleutel.
+
+- Als uw vereisten het versleutelen van alle bovenstaande en end-to-end-versleuteling omvatten, gebruikt u Azure Disk Encryption. 
+- Als uw vereisten bestaan uit het versleutelen van alleen gegevens in rust met door de klant beheerde sleutel, gebruikt u [serverversleuteling met door de klant beheerde sleutels.](disk-encryption.md) U een schijf niet versleutelen met zowel Azure Disk Encryption als Storage server-side encryptie met door de klant beheerde sleutels.
+_ Als u een scenario gebruikt dat wordt genoemd in [niet-ondersteunde scenario's voor Windows,](disk-encryption-windows.md#unsupported-scenarios)overweeg dan [serverversleuteling met door de klant beheerde sleutels.](disk-encryption.md) 
+- Als het beleid van uw organisatie u toestaat om inhoud in rust te versleutelen met een door Azure beheerde sleutel, is er geen actie nodig - de inhoud wordt standaard versleuteld. Voor beheerde schijven wordt de inhoud in de opslag standaard versleuteld met server-side encryptie met platformbeheerde sleutel. De sleutel wordt beheerd door de Azure Storage-service. 
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Hoe draai ik geheimen of encryptiesleutels?
 

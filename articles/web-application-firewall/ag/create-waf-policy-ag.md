@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086977"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886922"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>WebapplicationFirewallbeleid maken voor toepassingsgateway
 
@@ -24,6 +24,8 @@ Als uw application gateway een beleid heeft toegepast en u vervolgens een ander 
 
    > [!NOTE]
    > Per site en per URI WAF-beleid staan in Public Preview. Dat betekent dat deze functie is onderworpen aan microsoft's aanvullende gebruiksvoorwaarden. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+   > [!NOTE]
+   > Zodra een firewallbeleid is gekoppeld aan een WAF, moet er altijd een beleid zijn gekoppeld aan die WAF. U dat beleid overschrijven, maar het volledig loskoppelen van een beleid van de WAF wordt niet ondersteund. 
 
 Alle nieuwe WAF-instellingen van Web Application Firewall (aangepaste regels, beheerde rulset-configuraties, uitsluitingen, enz.) leven binnen een WAF-beleid. Als u een bestaande WAF hebt, kunnen deze instellingen nog steeds bestaan in uw WAF-config. Zie Uw WAF Config later in dit artikel [migreren naar een WAF-beleid voor](#migrate) stappen over hoe u naar het nieuwe WAF-beleid gaan. 
 

@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c2f384370c3ceaf24164e4a27adc05b1a1e1ddf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294966"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892254"
 ---
 # <a name="what-is-distributed-tracing"></a>Wat is Distributed Tracing?
 
@@ -27,15 +27,15 @@ Azure Monitor biedt ook een [toepassingskaartweergave](https://docs.microsoft.co
 
 ## <a name="how-to-enable-distributed-tracing"></a>Gedistribueerde tracering inschakelen
 
-Het inschakelen van gedistribueerde tracering over de services in een toepassing is net zo eenvoudig als het toevoegen van de juiste SDK of bibliotheek aan elke service, op basis van de taal waarin de service is geïmplementeerd.
+Het inschakelen van gedistribueerde tracering over de services in een toepassing is net zo eenvoudig als het toevoegen van de juiste agent, SDK of bibliotheek aan elke service, op basis van de taal waarin de service is geïmplementeerd.
 
-## <a name="enabling-via-application-insights-sdks"></a>Inschakelen via Application Insights SDKs
+## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>Inschakelen via Application Insights via automatische instrumentatie of SDKs
 
-De Application Insights SDKs voor .NET, .NET Core, Java, Node.js en JavaScript ondersteunen alle native distributed tracing. Instructies voor het installeren en configureren van elke Application Insights SDK zijn hieronder beschikbaar:
+De Agents Application Insights en/of SDKs voor .NET, .NET Core, Java, Node.js en JavaScript ondersteunen alle native distributed tracing. Instructies voor het installeren en configureren van elke Application Insights SDK zijn hieronder beschikbaar:
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [Javascript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 * [Python](opencensus-python.md)

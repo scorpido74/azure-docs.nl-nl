@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b25409c63806e203bd841b0373543b7cc2b96d9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4877b136f197f226f142f5ad5eb4035c63c07d7a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79212941"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887007"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>De Azure-portal gebruiken om aandelen te beheren op uw Azure Data Box Edge
 
@@ -29,11 +29,11 @@ Als u gegevens wilt overbrengen naar Azure, moet u shares maken op uw Azure Data
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
+>
 > * Een share toevoegen
 > * Een share verwijderen
 > * Shares vernieuwen
 > * Opslagsleutel synchroniseren
-
 
 ## <a name="add-a-share"></a>Een share toevoegen
 
@@ -57,14 +57,14 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
    > Zorg ervoor dat het Azure Storage-account dat u gebruikt geen onveranderlijkbeleid heeft ingesteld als u het gebruikt met een Azure Stack Edge- of Data Box Gateway-apparaat. Zie [Onveranderlijk beleid voor blobopslag instellen en beheren voor](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)meer informatie.
 
 6. Deze stap hangt af van of u een SMB- of een NFS-share gaat maken.
-    - **Als u een SMB-share maakt**: maak in het veld **All privilege local user** (Lokale gebruiker met alle bevoegdheden) een keuze uit **Nieuwe maken** of **Bestaande gebruiken**. Als u een nieuwe lokale gebruiker maakt, geeft u de **gebruikersnaam** en het **wachtwoord** op en bevestigt u het wachtwoord. Hiermee worden de bevoegdheden aan de lokale gebruiker toegewezen. Als u de bevoegdheden hier hebt toegewezen, kunt u Verkenner gebruiken om de bevoegdheden te wijzigen.
+   - **Als u een SMB-share maakt**: maak in het veld **All privilege local user** (Lokale gebruiker met alle bevoegdheden) een keuze uit **Nieuwe maken** of **Bestaande gebruiken**. Als u een nieuwe lokale gebruiker maakt, geeft u de **gebruikersnaam** en het **wachtwoord** op en bevestigt u het wachtwoord. Hiermee worden de bevoegdheden aan de lokale gebruiker toegewezen. Als u de bevoegdheden hier hebt toegewezen, kunt u Verkenner gebruiken om de bevoegdheden te wijzigen.
 
-        ![SMB-share toevoegen](media/data-box-edge-manage-shares/add-smb-share.png)
+      ![SMB-share toevoegen](media/data-box-edge-manage-shares/add-smb-share.png)
 
         Als u ervoor kiest om alleen alleen-lezen bewerkingen toe te staan voor deze share-gegevens, kunt u gebruikers opgeven met alleen-lezen machtigingen.
-    - **Als u een NFS-share maakt**: geef de **IP-adressen op van de clients** die toegang hebben tot de share.
+   - **Als u een NFS-share maakt**: geef de **IP-adressen op van de clients** die toegang hebben tot de share.
 
-        ![NFS-share toevoegen](media/data-box-edge-manage-shares/add-nfs-share.png)
+      ![NFS-share toevoegen](media/data-box-edge-manage-shares/add-nfs-share.png)
 
 7. Als u eenvoudig toegang wilt krijgen tot de shares van Edge compute modules, gebruikt u het lokale bevestigingspunt. Selecteer **Het aandeel gebruiken met Edge compute,** zodat het aandeel automatisch wordt gemonteerd nadat het is gemaakt. Wanneer deze optie is geselecteerd, kan de Edge-module ook de compute gebruiken met het lokale bevestigingspunt.
 
@@ -74,7 +74,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 
 1. Ga in de Azure-portal naar uw Data Box Edge-bron en ga vervolgens naar **Gateway > Shares**. Selecteer **+ Voeg delen toe** op de opdrachtbalk.
 
-    ![Selecteer aandeel toevoegen](media/data-box-edge-manage-shares/add-local-share-1.png)
+   ![Selecteer aandeel toevoegen](media/data-box-edge-manage-shares/add-local-share-1.png)
 
 2. Geef in **Share toevoegen** de instellingen voor de share op. Geef een unieke naam voor de share op.
     
@@ -90,40 +90,39 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 
 7. Selecteer **Maken**. 
 
-    ![Lokaal delen maken](media/data-box-edge-manage-shares/add-local-share-2.png)
+   ![Lokaal delen maken](media/data-box-edge-manage-shares/add-local-share-2.png)
 
     U ziet een melding dat de creatie van het aandeel aan de gang is. Als de share met de opgegeven instellingen is gemaakt, wordt de blade **Shares** bijgewerkt in overeenstemming met de nieuwe share.
 
-    ![Updates bekijken Aandelenblad](media/data-box-edge-manage-shares/add-local-share-3.png)
+   ![Updates bekijken Aandelenblad](media/data-box-edge-manage-shares/add-local-share-3.png)
     
     Selecteer het aandeel om het lokale mountpoint voor de Edge-rekenmodules voor dit aandeel weer te geven.
 
-    ![Lokale share details bekijken](media/data-box-edge-manage-shares/add-local-share-4.png)
+   ![Lokale share details bekijken](media/data-box-edge-manage-shares/add-local-share-4.png)
 
 ## <a name="mount-a-share"></a>Een aandeel monteren
 
 Als u een aandeel hebt gemaakt voordat u compute configureerde op uw Data Box Edge-apparaat, moet u het aandeel monteren. Neem de volgende stappen om een aandeel te monteren.
 
-
 1. Ga in de Azure-portal naar uw Data Box Edge-bron en ga vervolgens naar **Gateway > Shares**. Selecteer in de lijst van de aandelen het aandeel dat u wilt monteren. In de kolom **Gebruikt voor rekenkracht** wordt de status als **uitgeschakeld** voor het geselecteerde aandeel weergegeven.
 
-    ![Share selecteren](media/data-box-edge-manage-shares/select-share-mount.png)
+   ![Share selecteren](media/data-box-edge-manage-shares/select-share-mount.png)
 
 2. Selecteer **Monteren**.
 
-    ![Mount selecteren](media/data-box-edge-manage-shares/select-mount.png)
+   ![Mount selecteren](media/data-box-edge-manage-shares/select-mount.png)
 
 3. Wanneer u om bevestiging wordt gevraagd, selecteert u **Ja**. Dit zal het aandeel monteren.
 
-    ![Mount bevestigen](media/data-box-edge-manage-shares/confirm-mount.png)
+   ![Mount bevestigen](media/data-box-edge-manage-shares/confirm-mount.png)
 
 4. Nadat het aandeel is gemonteerd, gaat u naar de lijst van aandelen. U ziet dat in de kolom **Gebruikt voor rekenkracht** de sharestatus als **Ingeschakeld wordt weergegeven.**
 
-    ![Gedeeld gemonteerd](media/data-box-edge-manage-shares/share-mounted.png)
+   ![Gedeeld gemonteerd](media/data-box-edge-manage-shares/share-mounted.png)
 
 5. Selecteer het aandeel opnieuw om het lokale mountpoint voor het aandeel weer te geven. Edge compute module maakt gebruik van deze lokale mountpoint voor het aandeel.
 
-    ![Lokaal mountpoint voor het aandeel](media/data-box-edge-manage-shares/share-mountpoint.png)
+   ![Lokaal mountpoint voor het aandeel](media/data-box-edge-manage-shares/share-mountpoint.png)
 
 ## <a name="unmount-a-share"></a>Een aandeel demonteren
 
@@ -131,19 +130,19 @@ Volg de volgende stappen in de Azure-portal om een share los te maken.
 
 1. Ga in de Azure-portal naar uw Data Box Edge-bron en ga vervolgens naar **Gateway > Shares**.
 
-    ![Share selecteren](media/data-box-edge-manage-shares/select-share-unmount.png)
+   ![Share selecteren](media/data-box-edge-manage-shares/select-share-unmount.png)
 
 2. Selecteer in de lijst van de aandelen het aandeel dat u wilt loskoppelen. U wilt ervoor zorgen dat het aandeel dat u loskoppelt, niet door modules wordt gebruikt. Als het aandeel wordt gebruikt door een module, dan ziet u problemen met de bijbehorende module. Selecteer **Het opheffen van de knop selecteren**.
 
-    ![De montage opheffen selecteren](media/data-box-edge-manage-shares/select-unmount.png)
+   ![De montage opheffen selecteren](media/data-box-edge-manage-shares/select-unmount.png)
 
 3. Wanneer u om bevestiging wordt gevraagd, selecteert u **Ja**. Dit zal het aandeel ontkoppelen.
 
-    ![De montage bevestigen](media/data-box-edge-manage-shares/confirm-unmount.png)
+   ![De montage bevestigen](media/data-box-edge-manage-shares/confirm-unmount.png)
 
 4. Nadat het aandeel is ontkoppeld, gaat u naar de lijst met aandelen. U ziet dat de kolom **Gebruikt voor rekenkolom** de sharestatus als **Uitgeschakeld**weergeeft.
 
-    ![Niet gemonteerd delen](media/data-box-edge-manage-shares/share-unmounted.png)
+   ![Niet gemonteerd delen](media/data-box-edge-manage-shares/share-unmounted.png)
 
 ## <a name="delete-a-share"></a>Een share verwijderen
 
@@ -151,49 +150,48 @@ Voer in de Azure Portal de volgende stappen uit om een share te verwijderen.
 
 1. Klik in de lijst met shares op de share die u wilt verwijderen.
 
-    ![Share selecteren](media/data-box-edge-manage-shares/delete-share-1.png)
+   ![Share selecteren](media/data-box-edge-manage-shares/delete-share-1.png)
 
 2. Klik **op Verwijderen**.
 
-    ![Op Verwijderen klikken](media/data-box-edge-manage-shares/delete-share-2.png)
+   ![Op Verwijderen klikken](media/data-box-edge-manage-shares/delete-share-2.png)
 
 3. Klik op **Ja** als u om bevestiging wordt gevraagd.
 
-    ![De verwijdering bevestigen](media/data-box-edge-manage-shares/delete-share-3.png)
+   ![De verwijdering bevestigen](media/data-box-edge-manage-shares/delete-share-3.png)
 
 De lijst met aandelen wordt bijgewerkt om de verwijdering weer te geven.
-
 
 ## <a name="refresh-shares"></a>Shares vernieuwen
 
 Met de vernieuwingsfunctie u de inhoud van een aandeel vernieuwen. Wanneer u een share vernieuwt, wordt er een zoekopdracht gestart om de Azure-objecten te zoeken, inclusief blobs en bestanden die aan de cloud zijn toegevoegd na de laatste vernieuwing. Deze extra bestanden worden vervolgens gedownload om de inhoud van het aandeel op het apparaat te vernieuwen.
 
 > [!IMPORTANT]
+>
 > - U lokale aandelen niet vernieuwen.
 > - Machtigingen en toegangscontrolelijsten (ACL's) blijven niet behouden voor een vernieuwingsbewerking. 
 
 Voer in de Azure Portal de volgende stappen uit om een share te vernieuwen.
 
-1.   Ga in de Azure Portal naar **Shares**. Klik op de share die u wilt vernieuwen.
+1. Ga in de Azure Portal naar **Shares**. Klik op de share die u wilt vernieuwen.
 
-    ![Share selecteren](media/data-box-edge-manage-shares/refresh-share-1.png)
+   ![Share selecteren](media/data-box-edge-manage-shares/refresh-share-1.png)
 
-2.   Klik op **Vernieuwen**. 
+2. Klik op **Vernieuwen**.
 
-    ![Op Vernieuwen klikken](media/data-box-edge-manage-shares/refresh-share-2.png)
+   ![Op Vernieuwen klikken](media/data-box-edge-manage-shares/refresh-share-2.png)
  
-3.   Klik op **Ja** als u om bevestiging wordt gevraagd. Er wordt een taak gestart om de inhoud van de on-premises share te vernieuwen.
+3. Klik op **Ja** als u om bevestiging wordt gevraagd. Er wordt een taak gestart om de inhoud van de on-premises share te vernieuwen.
 
-    ![Vernieuwen bevestigen](media/data-box-edge-manage-shares/refresh-share-3.png)
- 
-4.   Terwijl het vernieuwen wordt uitgevoerd, is de optie Vernieuwen niet beschikbaar in het contextmenu. Klik op de taakmelding om de status van de vernieuwingstaak weer te geven.
+   ![Vernieuwen bevestigen](media/data-box-edge-manage-shares/refresh-share-3.png)
 
-5.   Hoe lang de vernieuwing duurt is afhankelijk van het aantal bestanden in de Azure-container en van het aantal bestanden op het apparaat. Zodra het vernieuwen is voltooid, wordt het tijdstempel van de share bijgewerkt. Zelfs als de vernieuwing niet geheel zonder fouten is uitgevoerd, wordt de bewerking als voltooid beschouwd en wordt het tijdstempel bijgewerkt. De vernieuwingsfoutlogboeken worden ook bijgewerkt.
+4. Terwijl het vernieuwen wordt uitgevoerd, is de optie Vernieuwen niet beschikbaar in het contextmenu. Klik op de taakmelding om de status van de vernieuwingstaak weer te geven.
 
-    ![Bijgewerkt tijdstempel](media/data-box-edge-manage-shares/refresh-share-4.png)
+5. Hoe lang de vernieuwing duurt is afhankelijk van het aantal bestanden in de Azure-container en van het aantal bestanden op het apparaat. Zodra het vernieuwen is voltooid, wordt het tijdstempel van de share bijgewerkt. Zelfs als de vernieuwing niet geheel zonder fouten is uitgevoerd, wordt de bewerking als voltooid beschouwd en wordt het tijdstempel bijgewerkt. De vernieuwingsfoutlogboeken worden ook bijgewerkt.
+
+   ![Bijgewerkt tijdstempel](media/data-box-edge-manage-shares/refresh-share-4.png)
  
 Als er een fout optreedt, wordt er een waarschuwing gegenereerd. De waarschuwing bevat meer informatie over de oorzaak en een aanbeveling om het probleem te verhelpen. De waarschuwing bevat ook een koppeling naar een bestand dat een volledig overzicht bevat van de fouten en van de bestanden die niet zijn bijgewerkt of verwijderd.
-
 
 ## <a name="sync-storage-keys"></a>Opslagsleutels synchroniseren
 
@@ -213,7 +211,6 @@ Voer in de Azure Portal de volgende stappen uit om uw toegangssleutel voor opsla
 
 >[!NOTE]
 > U hoeft dit maar eenmaal te doen voor een gegeven opslagaccount. U hoeft deze actie niet te herhalen voor alle shares die zijn gekoppeld aan hetzelfde opslagaccount.
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

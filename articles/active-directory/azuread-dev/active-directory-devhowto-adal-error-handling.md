@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9fc45ead65a29f2e7567133b5af4667bdb7c79ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8973412b2d6575d524874ba05b34af7661655e19
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154981"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981066"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Aanbevolen procedures voor foutafhandeling voor ADAL-clients (Azure Active Directory Authentication Library)
 
@@ -543,7 +543,7 @@ Om specifieke ADAL-fouten te onderzoeken, is de broncode in de [azure-activedire
 
 #### <a name="operating-system-errors"></a>Fouten in het besturingssysteem
 
-iOS-fouten kunnen ontstaan tijdens het aanmelden wanneer gebruikers webweergaven gebruiken en de aard van verificatie. Dit kan worden veroorzaakt door omstandigheden zoals SSL-fouten, time-outs of netwerkfouten:
+iOS-fouten kunnen ontstaan tijdens het aanmelden wanneer gebruikers webweergaven gebruiken en de aard van verificatie. Dit kan worden veroorzaakt door omstandigheden zoals TLS-fouten, time-outs of netwerkfouten:
 
 - Voor Het delen van rechten zijn aanmeldingen niet blijvend en wordt de cache leeg weergegeven. U het oplossen door de volgende coderegel toe te voegen aan de sleutelhanger:`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
 - Voor de nsurldomeinset van fouten wordt de actie gewijzigd, afhankelijk van de app-logica. Zie de [referentiedocumentatie NSURLErrorDomain](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) voor specifieke exemplaren die kunnen worden verwerkt.

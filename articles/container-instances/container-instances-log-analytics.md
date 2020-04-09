@@ -2,20 +2,22 @@
 title: Bronlogboeken verzamelen & analyseren
 description: Informatie over het verzenden van bronlogboeken en gebeurtenisgegevens van containergroepen in Azure Container Instances naar Azure Monitor-logboeken
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 04/07/2020
 ms.author: danlep
-ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770540"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892390"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Logboekregistratie van containergroepen en instance met Azure Monitor-logboeken
 
 Log Analytics-werkruimten bieden een centrale locatie voor het opslaan en opvragen van logboekgegevens, niet alleen vanuit Azure-bronnen, maar ook on-premises resources en resources in andere clouds. Azure Container Instances bevat ingebouwde ondersteuning voor het verzenden van logboeken en gebeurtenisgegevens naar Azure Monitor-logboeken.
 
-Als u logboek- en gebeurtenisgegevens voor containergroepen naar Azure Monitor-logboeken wilt verzenden, geeft u een bestaande log Analytics-werkruimte-id en werkruimtesleutel op bij het maken van een containergroep. In de volgende secties wordt beschreven hoe u een containergroep met registratieingeschakeld maakt en hoe logboeken worden opgevraagd.
+Als u logboek- en gebeurtenisgegevens voor containergroepen naar Azure Monitor-logboeken wilt verzenden, geeft u een bestaande log Analytics-werkruimte-id en werkruimtesleutel op wanneer u een containergroep configureert. 
+
+In de volgende secties wordt beschreven hoe u een containergroep met registratieingeschakeld maakt en hoe logboeken worden opgevraagd. U ook [een containergroep bijwerken](container-instances-update.md) met een werkruimte-id en werkruimtesleutel om logboekregistratie in te schakelen.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

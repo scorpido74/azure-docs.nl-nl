@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e57029e53365fbf99054e2d926296ccca3360663
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77558925"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983599"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK voor SQL API: notities en bronnen vrijgeven
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "77558925"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Rest](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Bulkexecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -36,10 +36,10 @@ De SQL API Java SDK ondersteunt synchrone bewerkingen. Gebruik de [SQL API Async
 |---|---|
 |**SDK downloaden**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API-documentatie**|[Java API-referentiedocumentatie](/java/api/com.microsoft.azure.documentdb)|
-|**Bijdragen aan SDK**|[GitHub GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**Slag**|[Aan de slag met de Java SDK](sql-api-java-get-started.md)|
+|**Bijdragen aan SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**Aan de slag**|[Aan de slag met de Java SDK](sql-api-java-get-started.md)|
 |**Zelfstudie voor web-apps**|[Webtoepassingsontwikkeling met Azure Cosmos DB](sql-api-java-application.md)|
-|**Minimale ondersteunde runtime**|[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)|
+|**Minimale ondersteunde runtime**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
@@ -131,7 +131,7 @@ De SQL API Java SDK ondersteunt synchrone bewerkingen. Gebruik de [SQL API Async
 
 ### <a name="1150"></a><a name="1.15.0"/>1.15.0
 * Verbeterde Json Serialization prestaties.
-* Deze SDK-versie vereist de nieuwste versie van https://aka.ms/cosmosdb-emulatorAzure Cosmos DB Emulator beschikbaar voor download van .
+* Deze SDK-versie vereist de nieuwste versie van [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator).
 
 ### <a name="1140"></a><a name="1.14.0"/>1.14.0
 * Interne wijzigingen voor Microsoft-vriendenbibliotheken.

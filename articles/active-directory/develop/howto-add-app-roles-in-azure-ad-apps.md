@@ -3,7 +3,6 @@ title: App-rollen toevoegen en deze ophalen via een token | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het toevoegen van app-rollen in een toepassing die is geregistreerd `roles` in Azure Active Directory, gebruikers en groepen aan deze rollen toewijzen en deze ontvangen in de claim in het token.
 services: active-directory
-documentationcenter: ''
 author: kkrishna
 manager: CelesteDG
 ms.service: active-directory
@@ -14,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 144fad249011d547ac6a8cf2d404cb3f8fe74f96
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399085"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884253"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>How to: App-rollen toevoegen aan uw toepassing en deze ontvangen in het token
 
@@ -35,7 +34,7 @@ Deze toepassingsrollen worden gedefinieerd in de [Azure-portal](https://portal.a
 
 ### <a name="declare-app-roles-using-azure-portal"></a>App-rollen declareren met Azure-portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram **Directory + Abonnement** op de werkbalk van de portal.
 1. Kies **in** de lijst Favorieten of **Alle mappen** de Active Directory-tenant waar u uw aanvraag wilt registreren.
 1. Zoek en selecteer **Azure Active Directory**in de Azure-portal.

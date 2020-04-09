@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 9f8d1959549eaddfb4a2c9ea271094db0073c788
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44af14a01e7b045b7abb6a84db89a67f3dd22445
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471707"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875279"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Taakverdeling realiseren met de Azure-suite voor toepassingslevering
 
@@ -45,7 +45,7 @@ De client maakt rechtstreeks verbinding met die backend. Azure Traffic Manager d
 Front Door beëindigt HTTP-aanvragen aan de rand van het netwerk van Microsoft en sondes actief om wijzigingen in de status of latentie van toepassingen of infrastructuur te detecteren.  Front Door leidt dan altijd het verkeer naar de snelste en beschikbare (gezonde) backend. Raadpleeg de [routeringsarchitectuurdetails](front-door-routing-architecture.md) en [verkeersrouteringsmethoden](front-door-routing-methods.md) van Front Door voor meer informatie over de service.
 
 ## <a name="regional-load-balancing"></a>Regionale load balancing
-Application Gateway biedt application delivery controller (ADC) als een service, met verschillende Layer 7 load-balancing mogelijkheden voor uw toepassing. Het stelt klanten in staat om de productiviteit van webfarmen te optimaliseren door CPU-intensieve SSL-beëindiging te ontladen naar de toepassingsgateway. Andere Routeringsmogelijkheden van Layer 7 zijn round-robin-distributie van binnenkomend verkeer, sessieaffiniteit op basis van cookies, URL-padgebaseerde routering en de mogelijkheid om meerdere websites achter één toepassingsgateway te hosten. Application Gateway kan worden geconfigureerd als een naar internet gerichte gateway, een interne gateway of een combinatie van beide. Application Gateway is volledig azure beheerd, schaalbaar en zeer beschikbaar. Het biedt een uitgebreide verzameling diagnostische gegevens en functies voor logboekregistratie voor betere beheersbaarheid.
+Application Gateway biedt application delivery controller (ADC) als een service, met verschillende Layer 7 load-balancing mogelijkheden voor uw toepassing. Het stelt klanten in staat om de productiviteit van webfarmen te optimaliseren door CPU-intensieve TLS-beëindiging te ontladen naar de toepassingsgateway. Andere Routeringsmogelijkheden van Layer 7 zijn round-robin-distributie van binnenkomend verkeer, sessieaffiniteit op basis van cookies, URL-padgebaseerde routering en de mogelijkheid om meerdere websites achter één toepassingsgateway te hosten. Application Gateway kan worden geconfigureerd als een naar internet gerichte gateway, een interne gateway of een combinatie van beide. Application Gateway is volledig azure beheerd, schaalbaar en zeer beschikbaar. Het biedt een uitgebreide verzameling diagnostische gegevens en functies voor logboekregistratie voor betere beheersbaarheid.
 Load Balancer is een integraal onderdeel van de Azure SDN-stack en biedt krachtige, low-latency Layer 4 load-balancing services voor alle UDP- en TCP-protocollen. Het beheert inkomende en uitgaande verbindingen. U kunt openbare en interne load-balancedeindpunten configureren en regels definiëren om binnenkomende verbindingen toe te wijzen aan back-end-poolbestemmingen met behulp van TCP- en HTTP-opties voor statustesten om de beschikbaarheid van de service te beheren.
 
 
@@ -58,7 +58,7 @@ Wanneer u een globale load balancer kiest tussen Traffic Manager en Azure Front 
 
 | Traffic Manager | Azure Front Door |
 | --------------- | ------------------------ |
-|**Elk protocol:** Omdat Traffic Manager op de DNS-laag werkt, u elk type netwerkverkeer routeren. HTTP, TCP, UDP, etc. | **HTTP-versnelling:** Met Front Door verkeer is proxied aan de rand van het netwerk van Microsoft.  Hierdoor worden http(S-aanvragen als latentie- en doorvoerverbeteringen weergegeven, waardoor de latentie voor SSL-onderhandeling wordt verminderd en er warme verbindingen van AFD naar uw toepassing worden gebruikt.|
+|**Elk protocol:** Omdat Traffic Manager op de DNS-laag werkt, u elk type netwerkverkeer routeren. HTTP, TCP, UDP, etc. | **HTTP-versnelling:** Met Front Door verkeer is proxied aan de rand van het netwerk van Microsoft.  Hierdoor worden http(s)-aanvragen latentie- en doorvoerverbeteringen weergegeven die de latentie voor TLS-onderhandeling verminderen en het gebruik van hot-verbindingen van AFD naar uw toepassing.|
 |**On-premises routing:** Met routering op een DNS-laag gaat het verkeer altijd van punt naar punt.  Routering van uw filiaal naar uw on-premises datacenter kan een direct pad bewandelen; zelfs op uw eigen netwerk met behulp van Traffic Manager. | **Onafhankelijke schaalbaarheid:** Omdat Front Door werkt met de HTTP-aanvraag, kunnen aanvragen naar verschillende URL-paden worden doorgestuurd naar verschillende backend/ regionale servicepools (microservices) op basis van regels en de status van elke toepassingsmicroservice.|
 |**Factureringsindeling:** DNS-gebaseerde facturering schalen met uw gebruikers en voor diensten met meer gebruikers, plateaus om de kosten te verlagen tegen hoger gebruik. |**Inline beveiliging:** Front Door maakt regels zoals tariefbeperking en IP ACL-ing mogelijk om u uw backends te laten beschermen voordat het verkeer uw toepassing bereikt. 
 
@@ -78,7 +78,7 @@ In het volgende diagram ziet u de architectuur van dit scenario:
 ![Gedetailleerde architectuur voor toepassingsleveringssuite][2] 
 
 > [!NOTE]
-> Dit voorbeeld is slechts een van de vele mogelijke configuraties van de load-balancing services die Azure biedt. Traffic Manager, Front Door, Application Gateway en Load Balancer kunnen worden gemengd en afgestemd op uw behoeften op het gebied van taakverdeling. Als SSL-offload of Layer 7-verwerking bijvoorbeeld niet nodig is, kan Load Balancer worden gebruikt in plaats van Application Gateway.
+> Dit voorbeeld is slechts een van de vele mogelijke configuraties van de load-balancing services die Azure biedt. Traffic Manager, Front Door, Application Gateway en Load Balancer kunnen worden gemengd en afgestemd op uw behoeften op het gebied van taakverdeling. Als TLS/SSL-offload of Layer 7-verwerking bijvoorbeeld niet nodig is, kan Load Balancer worden gebruikt in plaats van Application Gateway.
 
 
 ## <a name="next-steps"></a>Volgende stappen

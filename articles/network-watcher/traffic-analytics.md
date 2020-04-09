@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 83164a615cacc067e5f1ea6a1dd6ce0f0fd9d540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adba282a96f9d250569e090e186859c04e89ebda
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298853"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981542"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -183,8 +183,8 @@ Selecteer de volgende opties, zoals in de afbeelding wordt weergegeven:
 
 1. Selecteren *Voor* **status**
 2. Selecteer *versie 2* voor de versie van **Stroomlogboeken**. Versie 2 bevat stroomsessiestatistieken (bytes en pakketten)
-3. Selecteer een bestaand opslagaccount om de stroomlogboeken op te slaan. Als u de gegevens voor altijd wilt opslaan, stelt u de waarde in op *0*. U brengt azure-opslagkosten in rekening voor het opslagaccount. Zorg ervoor dat uw opslag niet is ingesteld op true.
-4. **Stel Retentie** in op het aantal dagen waarvoor u gegevens wilt opslaan.
+3. Selecteer een bestaand opslagaccount om de stroomlogboeken op te slaan. Zorg ervoor dat uw opslag niet is ingesteld op true.
+4. **Stel Retentie** in op het aantal dagen waarvoor u gegevens wilt opslaan. Als u de gegevens voor altijd wilt opslaan, stelt u de waarde in op *0*. U brengt azure-opslagkosten in rekening voor het opslagaccount. 
 5. Selecteer *Aan* voor **traffic analytics-status**.
 6. Selecteer verwerkingsinterval. Op basis van uw keuze worden stroomlogboeken verzameld van het opslagaccount en verwerkt door Traffic Analytics. U kiezen voor verwerkingsinterval van elke 1 uur of elke 10 minuten. 
 7. Selecteer een bestaande Oms-werkruimte (Log Analytics) of selecteer **Nieuwe werkruimte maken** om een nieuwe werkruimte te maken. Een Log Analytics-werkruimte wordt door Traffic Analytics gebruikt om de geaggregeerde en geïndexeerde gegevens op te slaan die vervolgens worden gebruikt om de analyses te genereren. Als u een bestaande werkruimte selecteert, moet deze in een van de [ondersteunde regio's](#supported-regions-log-analytics-workspaces) bestaan en zijn deze geüpgraded naar de nieuwe querytaal. Als u een bestaande werkruimte niet wilt upgraden of geen werkruimte in een ondersteund gebied hebt, maakt u een nieuwe werkruimte. Zie [Azure Log Analytics-upgrade naar nieuwe logboekzoekopdrachten voor](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)meer informatie over querytalen.

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 35d185a625a81a259c366a45999769ecf76c6a7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 104311904b99cadbbc8c0267a98f2709443608ea
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77538155"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891455"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>NSG-stroomlogboeken configureren vanuit een azure resourcemanager-sjabloon
 
 > [!div class="op_single_selector"]
-> - [Azure-portal](network-watcher-nsg-flow-logging-portal.md)
-> - [Powershell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure-CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST-API](network-watcher-nsg-flow-logging-rest.md)
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
@@ -169,6 +169,8 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 
 Er zijn een paar manieren om te controleren of uw implementatie is geslaagd. Op uw PowerShell-console moet "ProvisioningState" worden weergegeven als 'Geslaagd'. Daarnaast u de [portalpagina van NSG Flow Logs](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) bezoeken om uw wijzigingen te bevestigen. Als er problemen zijn met de implementatie, bekijkt u [het oplossen van veelvoorkomende Azure-implementatiefouten met Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors).
 
+## <a name="deleting-your-resource"></a>Uw resource verwijderen
+Azure maakt het verwijderen van resources mogelijk via de implementatiemodus 'Voltooien'. Als u een bron voor stroomlogboeken wilt verwijderen, geeft u een implementatie op in de modus Voltooien zonder de bron op te nemen die u wilt verwijderen. Lees meer over de [implementatiemodus Voltooien](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes#complete-mode)
 
 ## <a name="next-steps"></a>Volgende stappen
 

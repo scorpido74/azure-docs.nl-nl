@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 43bb34a80d8d62cfa2bde445b94fb97da25ccda3
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: c396468bff0edef5cfceccd3d3c3394662111c10
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745476"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984841"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Een Power BI-app-aanbieding maken
 
 >[!Important]
->Vanaf 30 maart 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
+>Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Power BI-app-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [het overzicht van de Power BI-app](https://aka.ms/AzureCreatePBIServiceApp) om uw gemigreerde aanbiedingen te beheren.
 
 In dit artikel worden de stappen weergegeven die moeten worden gevolgd om een nieuwe Power BI-app-aanbieding voor [AppSource](https://appsource.microsoft.com)te maken. Elk aanbod wordt weergegeven als een eigen entiteit in AppSource. Wanneer u een nieuwe aanbieding maakt in de [Cloud Partner Portal,](https://cloudpartner.azure.com/)moet u vier groepen assets leveren voor uw aanbieding.
 

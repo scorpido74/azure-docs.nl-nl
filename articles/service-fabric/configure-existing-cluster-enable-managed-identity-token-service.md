@@ -4,12 +4,12 @@ description: Zo u ondersteuning voor beheerde identiteiten inschakelen in een be
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 396978546b301884087c4ea51e242258d64a6b0b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934949"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983803"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Ondersteuning voor beheerde identiteit configureren in een bestaand cluster van Servicefabric (voorbeeld)
 
@@ -40,7 +40,7 @@ Als u de Managed Identity Token Service in een bestaand cluster wilt inschakelen
 ]
 ```
 
-Als u wilt dat de wijzigingen van kracht worden, moet u ook het upgradebeleid wijzigen om een krachtige herstart van de runtime van de ServiceFabric op elk knooppunt op te geven naarmate de upgrade door het cluster vordert. Deze herstart zorgt ervoor dat de nieuw ingeschakelde systeemservice wordt gestart en op elk knooppunt wordt uitgevoerd. In het onderstaande fragment, `forceRestart` is de essentiële instelling; gebruik uw bestaande waarden voor de rest van de instellingen.  
+Als u wilt dat de wijzigingen van kracht worden, moet u ook het upgradebeleid wijzigen om een krachtige herstart van de runtime van de ServiceFabric op elk knooppunt op te geven naarmate de upgrade door het cluster vordert. Deze herstart zorgt ervoor dat de nieuw ingeschakelde systeemservice wordt gestart en op elk knooppunt wordt uitgevoerd. In het onderstaande fragment `forceRestart` is de essentiële instelling om opnieuw opstarten mogelijk te maken. Gebruik voor de overige parameters onderstaande waarden of gebruik bestaande aangepaste waarden die al zijn opgegeven voor de clusterbron. Aangepaste instellingen voor fabric-upgradebeleid ('upgradeBeschrijving') kunnen worden bekeken vanuit Azure Portal door de optie 'Fabric-upgrades' te selecteren op de bron van de ServiceFabric of resources.azure.com. Standaardopties voor het upgradebeleid ('upgradeBeschrijving') zijn niet zichtbaar vanaf powershell of resources.azure.com. Zie [ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) voor meer informatie.  
 
 ```json
 "upgradeDescription": {

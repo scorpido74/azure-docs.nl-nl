@@ -8,18 +8,19 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf6f53639cff23a9e709b44a1ddf1332df2164b7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d860b557c5c2d6b73fad53cdf84ee8b32182d1ee
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586051"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985453"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-scenario's voor Linux-VM's
 
-Azure Disk Encryption maakt gebruik van de DM-Crypt-functie van Linux om volumeversleuteling te bieden voor het besturingssysteem en de gegevensschijven van Virtuele Azure-machines (VM's) en is geïntegreerd met Azure Key Vault om u te helpen de schijfversleutelingssleutels en -geheimen te beheren en te beheren. Zie Azure Disk Encryption [for Linux VM's voor](disk-encryption-overview.md)een overzicht van de service.
 
-Er zijn veel scenario's voor schijfversleuteling en de stappen kunnen variëren afhankelijk van het scenario. De volgende secties behandelen de scenario's in meer detail voor Linux VM's.
+Azure Disk Encryption for Linux virtual machines (VM's) gebruikt de DM-Crypt-functie van Linux om volledige schijfversleuteling van de OS-schijf- en gegevensschijven te bieden. Bovendien biedt het versleuteling van de kortstondige resourceschijf bij gebruik van de functie EncryptFormatAll.
+
+Azure Disk Encryption is [geïntegreerd met Azure Key Vault](disk-encryption-key-vault.md) om u te helpen de schijfversleutelingssleutels en -geheimen te beheren en te beheren. Zie Azure Disk Encryption [for Windows VM's voor](disk-encryption-overview.md)een overzicht van de service.
 
 U schijfversleuteling alleen toepassen op virtuele machines met [ondersteunde VM-formaten en besturingssystemen.](disk-encryption-overview.md#supported-vms-and-operating-systems) U moet ook aan de volgende voorwaarden voldoen:
 

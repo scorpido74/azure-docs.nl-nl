@@ -1,15 +1,15 @@
 ---
-title: Een functie-app maken vanuit de Azure Portal
+title: Een functie-app maken vanuit Azure Portal
 description: Maak een nieuwe functie-app in Azure vanuit de portal.
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 6c17dc28d7eea4897759c1c832fdb1aba7f1e445
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 001b4e4f0ea7fbacd232b2a87abfe353f34919bd
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756542"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985011"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Een functie-app maken vanuit Azure Portal
 
@@ -36,7 +36,7 @@ Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemene 
 >[!NOTE]
 >Als u gebruikmaakt van het hostingabonnement Consumption worden uw functiecode en uw bindingsconfiguratiebestanden opgeslagen in het belangrijkste opslagaccount in Azure File Storage. Wanneer u het belangrijkste opslagaccount verwijdert, wordt de inhoud verwijderd en kan deze niet worden hersteld.
 
-Zie [Introductie van de Azure Storage-services](../storage/common/storage-introduction.md#azure-storage-services) voor meer informatie over opslagaccounttypen. 
+Zie [Introductie van de Azure Storage-services](../storage/common/storage-introduction.md#core-storage-services) voor meer informatie over opslagaccounttypen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

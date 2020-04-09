@@ -5,16 +5,19 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 2270ee7c850c528bd24fa2e58c2b1684acfc24d6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 74522502f5405b56a3a604f20a695de83ef3c3a5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585293"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886480"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
 In dit artikel vindt u oplossingen voor veelvoorkomende Azure FarmBeats-problemen. Neem voor extra hulp contact op farmbeatssupport@microsoft.commet ons [ondersteuningsforum](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) of mail ons op .
+
+> [!NOTE]
+  > Als u FarmBeats in april hebt geïnstalleerd en uw taken mislukken met een lege foutmelding, is het mogelijk dat uw installatie geen batchquotum heeft toegewezen omdat alle resources zijn toegewezen aan noodsituaties, gezondheidszorg en andere kritieke behoeften. U moet VM's aanvragen om te worden toegewezen aan het Batch-account.
 
 ## <a name="install-issues"></a>Problemen met installeren
 
@@ -280,7 +283,7 @@ Dit probleem kan optreden als er onderhoudswerkzaamheden worden uitgevoerd op de
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Azure Data Factory-taaklogboeken of App-servicelogboeken verzamelen in Datahub
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek **in het** vak Zoeken naar de brongroep FarmBeats Datahub.
 3. Zoek in het dashboard **van resourcegroep** naar het *opslagaccount van\* datahublogs.* Bijvoorbeeld, *datahublogsmvxmq*.  
 4. Selecteer **in** de kolom Naam het opslagaccount om het dashboard **van het opslagaccount** weer te geven.
@@ -292,7 +295,7 @@ Dit probleem kan optreden als er onderhoudswerkzaamheden worden uitgevoerd op de
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Azure Data Factory-taaklogboeken of App-servicelogboeken voor Accelerator verzamelen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek **in het** vak Zoeken naar de resourcegroep FarmBeats Accelerator.
 3. Zoek in het dashboard **Resourcegroep** naar het *\* opslagaccount.* Bijvoorbeeld *storagedop4k\**.
 4. Selecteer het opslagaccount in de kolom **Naam** om het dashboard **van het opslagaccount** weer te geven.

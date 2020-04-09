@@ -1,18 +1,18 @@
 ---
 title: 'Werken op afstand met P2S: Azure VPN-gateway'
-description: Op deze pagina wordt beschreven hoe u Azure Bastion gebruiken om werken op afstand mogelijk te maken vanwege de COVID-19-pandemie.
+description: Op deze pagina wordt beschreven hoe u VPN Gateway gebruiken om werken op afstand mogelijk te maken vanwege de COVID-19-pandemie.
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: b751817467bd263e8b7c64ccc95ec82ef1579836
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d07a13c654f30e48c37d2e8d3e801166e26f4f4
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337107"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886582"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Extern werk met Azure VPN Gateway Point-to-site
 
@@ -22,9 +22,9 @@ ms.locfileid: "80337107"
 
 In dit artikel worden de opties beschreven die beschikbaar zijn voor organisaties om externe toegang voor hun gebruikers in te stellen of om hun bestaande oplossingen aan te vullen met extra capaciteit tijdens de COVID-19-epidemie.
 
-De Azure point-to-site-oplossing is gebaseerd op de cloud en kan snel worden ingericht om tegemoet te komen aan de toegenomen vraag van gebruikers om thuis te werken. Het kan gemakkelijk opschalen en net zo gemakkelijk en snel worden uitgeschakeld wanneer de verhoogde capaciteit niet meer nodig is.
+De Azure point-to-site-oplossing is cloudgebaseerd en kan snel worden ingericht om tegemoet te komen aan de toegenomen vraag van gebruikers om thuis te werken. Het kan gemakkelijk opschalen en net zo gemakkelijk en snel worden uitgeschakeld wanneer de verhoogde capaciteit niet meer nodig is.
 
-## <a name="about-point-to-site-vpn"></a>Over Point-to-Site VPN
+## <a name="about-point-to-site-vpn"></a><a name="p2s"></a>Over Point-to-Site VPN
 
 Met een point-to-site-VPN-gatewayverbinding (P2S) kunt u vanaf een afzonderlijke clientcomputer een beveiligde verbinding maken met uw virtuele netwerk. Een P2S-verbinding wordt tot stand gebracht door deze te starten vanaf de clientcomputer. Deze oplossing is handig voor teleforenzen die vanaf een externe locatie verbinding willen maken met Azure VNets of on-premises datacenters, zoals thuis of een conferentie. In dit artikel wordt beschreven hoe u gebruikers in staat stelt op afstand te werken op basis van verschillende scenario's.
 
@@ -32,25 +32,26 @@ De onderstaande tabel toont de besturingssystemen van de client en de verificati
 
 ![point-to-site](./media/working-remotely-support/ostable.png "OS")
 
-## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a>Scenario 1 - Gebruikers hebben alleen toegang nodig tot bronnen in Azure
+## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>Scenario 1 - Gebruikers hebben alleen toegang nodig tot bronnen in Azure
 
 In dit scenario hoeven de externe gebruikers alleen toegang te hebben tot bronnen die zich in Azure bevinden.
 
-![point-to-site](./media/working-remotely-support/scenario1.png "Scanario 1")
+![point-to-site](./media/working-remotely-support/scenario1.png "Scenario 1")
 
 Op hoog niveau zijn de volgende stappen nodig om gebruikers in staat te stellen veilig verbinding te maken met Azure-bronnen:
 
-1. Een virtuele netwerkgateway maken (als deze niet bestaat)
-2. Point-to-site VPN configureren op de gateway
-    3. [Volg deze koppeling voor certificaatverificatie.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw)
-    2.  [Voor OpenVPN, volg deze link](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn).
-    3.  [Volg deze koppeling voor Azure AD-verificatie](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant).
-    4.  [Volg deze koppeling voor het oplossen van point-to-site-verbindingen.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems)
-3. De VPN-clientconfiguratie downloaden en distribueren
-4. De certificaten distribueren (als certificaatverificatie is geselecteerd) onder de clients
-5. Verbinding maken met Azure VPN
+1. Maak een virtuele netwerkgateway (als deze niet bestaat).
+2. Configureer point-to-site VPN op de gateway.
 
-## <a name="scenario-2---users-need-access-to-resources-in-azure-andor-on-prem-resources"></a>Scenario 2 - Gebruikers hebben toegang nodig tot bronnen in Azure en/of on-prem-bronnen
+   * Volg [deze koppeling](vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw)voor certificaatverificatie.
+   * Voor OpenVPN, volg [deze link](vpn-gateway-howto-openvpn.md).
+   * Volg [deze koppeling](openvpn-azure-ad-tenant.md)voor Azure AD-verificatie .
+   * Volg [deze koppeling](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)voor het oplossen van point-to-site-verbindingen.
+3. Download en distribueer de VPN-clientconfiguratie.
+4. Distribueer de certificaten (als certificaatverificatie is geselecteerd) naar de clients.
+5. Maak verbinding met Azure VPN.
+
+## <a name="scenario-2---users-need-access-to-resources-in-azure-andor-on-prem-resources"></a><a name="scenario2"></a>Scenario 2 - Gebruikers hebben toegang nodig tot bronnen in Azure en/of on-prem-bronnen
 
 In dit scenario moeten de externe gebruikers toegang hebben tot bronnen die zich in Azure en in het on-premises datacenter(s) bevinden.
 
@@ -58,13 +59,13 @@ In dit scenario moeten de externe gebruikers toegang hebben tot bronnen die zich
 
 Op hoog niveau zijn de volgende stappen nodig om gebruikers in staat te stellen veilig verbinding te maken met Azure-bronnen:
 
-1. Een virtuele netwerkgateway maken (als deze niet bestaat)
-2. Point-to-site VPN configureren op de gateway (zie scenario 1 hierboven)
-3. Site-to-site tunnel configureren op Azure Virtual Network Gateway met BGP ingeschakeld
-4. On-premises apparaat configureren om verbinding te maken met Azure Virtual Network Gateway
+1. Maak een virtuele netwerkgateway (als deze niet bestaat).
+2. Point-to-site VPN configureren op de gateway (zie [Scenario 1](#scenario1)).
+3. Configureer een site-to-site tunnel op de Azure virtual network gateway met BGP ingeschakeld.
+4. Configureer het on-premises apparaat om verbinding te maken met de virtuele netwerkgateway van Azure.
 5. Download het point-to-site-profiel van de Azure-portal en distribueer naar clients
 
-[Volg deze link om te leren hoe u een site-to-site VPN-tunnel in-](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
+Zie [deze link](vpn-gateway-howto-site-to-site-resource-manager-portal.md)voor meer informatie over het instellen van een vpn-tunnel van site-to-site.
 
 ## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>Veelgestelde vragen voor native Azure-certificaatverificatie
 

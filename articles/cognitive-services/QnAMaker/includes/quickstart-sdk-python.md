@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: a77041c0e53c2f0f8b6d0891a0f755e8ca474923
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03aa3919e1da982bb8a8c235bb598f5b94df1ebf
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75946346"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986752"
 ---
 
 Gebruik de QnA Maker-clientbibliotheek voor python om:
@@ -68,7 +68,7 @@ Maak variabelen voor het Azure-eindpunt en de sleutel van uw resource. Als u de 
 
 |Omgevingsvariabele|Variabele|Voorbeeld|
 |--|--|--|
-|`QNAMAKER_SUBSCRIPTION_KEY`|`subscription_key`|De sleutel is een tekenreeks met 32 tekens en is beschikbaar in de Azure-portal, op de QnA Maker-bron, op de quickstart-pagina. Dit is niet hetzelfde als de voorspellingeindpuntsleutel.|
+|`QNAMAKER_KEY`|`subscription_key`|De sleutel is een tekenreeks met 32 tekens en is beschikbaar in de Azure-portal, op de QnA Maker-bron, op de quickstart-pagina. Dit is niet hetzelfde als de voorspellingeindpuntsleutel.|
 |`QNAMAKER_HOST`|`host`| Het ontwerpeindpunt van uw ontwerp, in de opmaak van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`, bevat uw **bronnaam**. Dit is niet dezelfde URL die wordt gebruikt om het voorspellingseindpunt op te vragen.|
 
 [!code-python[Azure resource variables](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=resourcekeys)]

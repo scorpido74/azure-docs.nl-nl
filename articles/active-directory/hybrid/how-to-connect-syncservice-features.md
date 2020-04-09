@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300533"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983072"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Functies van de Azure AD Connect-synchronisatieservice
 
@@ -89,12 +89,14 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 ## <a name="synchronize-userprincipalname-updates"></a>UserPrincipalName-updates synchroniseren
 
-In het verleden zijn updates van het kenmerk UserPrincipalName met behulp van de synchronisatieservice van on-premises geblokkeerd, tenzij beide voorwaarden waar zijn:
+In het verleden zijn updates van het kenmerk UserPrincipalName met behulp van de synchronisatieservice van on-premises geblokkeerd, tenzij beide voorwaarden waar waren:
 
 * De gebruiker wordt beheerd (niet-gefedereerd).
 * Aan de gebruiker is geen licentie toegewezen.
 
-Zie [Gebruikersnamen in Office 365, Azure of Intune komen niet overeen met de on-premises UPN- of alternatieve aanmeldings-id](https://support.microsoft.com/kb/2523192)voor meer informatie.
+> [!NOTE]
+> Vanaf maart 2019 is het synchroniseren van UPN-wijzigingen voor federatieve gebruikersaccounts toegestaan.
+> 
 
 Als u deze functie inschakelt, kan de synchronisatieengine de userPrincipalName bijwerken wanneer deze on-premises wordt gewijzigd en u wachtwoordhashsynchronisatie of pass-through-verificatie gebruikt.
 

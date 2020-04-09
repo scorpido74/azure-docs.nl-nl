@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 03/04/2020
+ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8ca51e0ed33d2a5dfb484520335e32ac547deb72
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: aeaa95090dc40c6e161f0c336c43032a50e5aad0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633250"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983565"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Gegevens laden vanuit Azure Data Lake Storage voor SQL Analytics
 
@@ -93,7 +93,7 @@ WITH
 
 ## <a name="create-the-external-data-source"></a>De externe gegevensbron maken
 
-Gebruik deze opdracht [EXTERNE GEGEVENSBRON MAKEN](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de locatie van de gegevens op te slaan. Als u authenticeren met AAD-doorwerking, is de parameter CREDENTIAL niet vereist.
+Gebruik deze opdracht [EXTERNE GEGEVENSBRON MAKEN](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de locatie van de gegevens op te slaan. Als u authenticeren met AAD-doorwerking, is de parameter CREDENTIAL niet vereist. Als u Managed Identity voor serviceeindpunten authenticert, volgt u deze [documentatie](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#azure-sql-data-warehouse-polybase) om de externe gegevensbron in te stellen. 
 
 ```sql
 -- C (for Gen1): Create an external data source
