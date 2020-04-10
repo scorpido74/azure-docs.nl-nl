@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 66c3bd8650d1194d5d753c1dc967ec8e870c8748
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77169475"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998966"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Snelstart: regels en acties voor uw apparaat configureren in Azure IoT Central
 
@@ -24,7 +24,7 @@ In deze snelstart maakt u een regel die een e-mail verzendt&deg; wanneer de door
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, moet u de twee vorige quickstarts voltooien [Maak een Azure IoT Central-toepassing](./quick-deploy-iot-central.md) en [voeg een gesimuleerd apparaat toe aan uw IoT Central-toepassing](./quick-create-pnp-device.md) om de **MXChip IoT DevKit-apparaatsjabloon** te maken om mee te werken.
+Voordat u begint, moet u de twee vorige quickstarts voltooien [Maak een Azure IoT Central-toepassing](./quick-deploy-iot-central.md) en [voeg een gesimuleerd apparaat toe aan uw IoT Central-toepassing](./quick-create-simulated-device.md) om de **MXChip IoT DevKit-apparaatsjabloon** te maken om mee te werken.
 
 ## <a name="create-a-telemetry-based-rule"></a>Een regel op basis van telemetrie maken
 

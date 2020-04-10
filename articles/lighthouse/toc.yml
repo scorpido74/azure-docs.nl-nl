@@ -21,7 +21,7 @@
     - name: 'Tenants, rollen en gebruikers'
       displayName: 'Azure AD, Azure Active Directory'
       href: ./concepts/tenants-users-roles.md
-    - name: Aanbiedingen voor beheerde services in Azure Marketplace
+    - name: Aanbiedingen voor beheerde service in Azure Marketplace
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
     - name: Aanbevolen beveiligingsprocedures
@@ -38,7 +38,7 @@
     - name: Een klant in gedelegeerd Azure-resourcebeheer plaatsen
       displayName: resource management
       href: ./how-to/onboard-customer.md
-    - name: Een aanbieding voor beheerde services publiceren in Azure Marketplace
+    - name: Een aanbieding voor beheerde service publiceren in Azure Marketplace
       displayName: 'managed services offer, azure marketplace, publish, marketplace'
       href: ./how-to/publish-managed-services-offers.md
     - name: Klanten weergeven en beheren

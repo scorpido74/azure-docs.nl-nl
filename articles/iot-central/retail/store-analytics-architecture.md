@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f1f83fdd73816e6e30c5cac7d193719591bb8dc1
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77022117"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999027"
 ---
 # <a name="in-store-analytics-architecture"></a>In-store analytics-architectuur
 
@@ -48,10 +48,10 @@ De Azure IoT Central-toepassing neemt gegevens op van verschillende soorten IoT-
 Azure IoT Central biedt de winkeloperator ook een op maat gemaakte ervaring waarmee ze de infrastructuurapparaten op afstand kunnen bewaken en beheren.
 
 ## <a name="data-transform"></a>Gegevenstransformatie
-De Azure IoT Central-toepassing binnen een oplossing kan worden geconfigureerd om ruwe of geaggregeerde inzichten te exporteren naar een set Azure PaaS-services (Platform-as-a Service) die gegevensmanipulatie kunnen uitvoeren en deze inzichten kunnen verrijken voordat ze in een bedrijf worden geplaatst Toepassing. 
+De Azure IoT Central-toepassing binnen een oplossing kan worden geconfigureerd om ruwe of geaggregeerde inzichten te exporteren naar een set Azure PaaS-services (Platform-as-a Service) die gegevensmanipulatie kunnen uitvoeren en deze inzichten kunnen verrijken voordat ze in een bedrijfstoepassing worden geplaatst. 
 
 ## <a name="business-application"></a>Bedrijfstoepassing
-De IoT-gegevens kunnen worden gebruikt om verschillende soorten bedrijfstoepassingen van stroom te maken die binnen een retailomgeving worden geïmplementeerd. Een winkelmanager of medewerker kan deze toepassingen gebruiken om bedrijfsinzichten te visualiseren en zinvolle acties in realtime te ondernemen. Volg de [zelfstudie](./tutorial-in-store-analytics-create-app-pnp.md)voor meer informatie over het bouwen van een realtime Power BI-dashboard voor uw retailteam.
+De IoT-gegevens kunnen worden gebruikt om verschillende soorten bedrijfstoepassingen van stroom te maken die binnen een retailomgeving worden geïmplementeerd. Een winkelmanager of medewerker kan deze toepassingen gebruiken om bedrijfsinzichten te visualiseren en zinvolle acties in realtime te ondernemen. Volg de [zelfstudie](./tutorial-in-store-analytics-create-app.md)voor meer informatie over het bouwen van een realtime Power BI-dashboard voor uw retailteam.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Ga aan de slag met de toepassingssjablonen [In-Store Analytics Checkout](https://aka.ms/checkouttemplate) en [In-Store Analytics Condition Monitoring.](https://aka.ms/conditiontemplate) 

@@ -1,19 +1,19 @@
 ---
 title: Snelstart - Een computerschaalset voor Linux maken met een Azure Resource Manager-sjabloon
 description: Leer hoe u snel een virtuele-machineschaalset in Linux maakt met behulp van een Azure Resource Manager-sjabloon waarmee een voorbeeld-app wordt geïmplementeerd en regels voor automatisch schalen worden geconfigureerd
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 03/27/2020
-ms.author: cynthn
-ms.openlocfilehash: f3bdaa70650f82172707674a225d5a5b7750dfea
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.author: jushiman
+ms.openlocfilehash: 4c0bac943be996c02436824334bd79a270f9a2e2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411456"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010457"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Snelstart: een Linux-sjabloon voor virtuele machineschaal maken met een Azure Resource Manager-sjabloon
 

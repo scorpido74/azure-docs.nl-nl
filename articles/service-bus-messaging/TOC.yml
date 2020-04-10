@@ -213,6 +213,8 @@
     - name: Problemen oplossen
       items:
         - name: Handleiding voor het oplossen van problemen
+          href: service-bus-troubleshooting-guide.md
+        - name: Berichtuitzonderingen
           href: service-bus-messaging-exceptions.md
         - name: Uitzonderingen voor Resource Manager
           href: service-bus-resource-manager-exceptions.md

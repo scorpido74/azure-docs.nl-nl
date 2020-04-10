@@ -480,6 +480,8 @@
       items:
         - name: Overzicht wijzigingenfeed
           href: change-feed.md
+        - name: Ontwerppatronen voor de wijzigingenfeed
+          href: change-feed-design-patterns.md
         - name: Wijzigingenfeed lezen
           href: read-change-feed.md
         - name: Verwerker van wijzigingenfeed
@@ -1033,6 +1035,8 @@
       items:
         - name: Cosmos DB bewaken
           href: monitor-cosmos-db.md
+        - name: Latentie aan de serverzijde bewaken
+          href: monitor-server-side-latency.md
         - name: Diagnostische logboeken bewaken
           href: cosmosdb-monitor-resource-logs.md
         - name: Besturingsvlaklogboeken controleren
@@ -1155,7 +1159,7 @@
     - name: Query-cheatsheet
       href: query-cheat-sheet.md
     - name: SQL-testomgeving
-      href: 'https://aka.ms/cosmos-db-playground'
+      href: 'https://www.documentdb.com/sql/demo'
     - name: Veelgestelde vragen
       href: faq.md
     - name: Whitepapers

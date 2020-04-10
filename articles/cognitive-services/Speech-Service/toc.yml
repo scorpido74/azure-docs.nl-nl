@@ -113,6 +113,8 @@
       items:
         - name: Wat is tekst-naar-spraak?
           href: text-to-speech.md
+        - name: Basisbeginselen van tekst-naar-spraak
+          href: text-to-speech-basics.md
     - name: Snelstartgids
       items:
         - name: Spraaksynthese naar een luidspreker
@@ -545,6 +547,8 @@
       href: sovereign-clouds.md
     - name: Prijzen en beperkingen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: Prijscalculator
+      href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
     - name: Naleving
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Versleuteling

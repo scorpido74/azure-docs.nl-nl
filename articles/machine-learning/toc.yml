@@ -15,24 +15,27 @@
 - name: Zelfstudies
   expanded: true
   items:
-    - name: Studio & Designer
+    - name: Studio
       items:
         - name: Designer (slepen en neerzetten)
           items:
-            - name: 'Designer: 1. Een regressiemodel trainen'
+            - name: 1. Een regressiemodel trainen
               displayName: studio
               href: tutorial-designer-automobile-price-train-score.md
-            - name: 'Designer: 2. Dit model implementeren'
+            - name: 2. Dit model implementeren
               displayName: studio
               href: tutorial-designer-automobile-price-deploy.md
         - name: Geautomatiseerde machine learning (UI)
           items:
-            - name: Geautomatiseerd ML-experiment maken
+            - name: Geautomatiseerde ML-experimenten maken
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-first-experiment-automated-ml.md
-            - name: De vraag voorspellen met geautomatiseerde ML (gegevens over het gebruik van deelfietsen)
+            - name: Vraag voorspellen (fietsdeelgegevens)
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-automated-ml-forecast.md
+        - name: Afbeeldingsgegevens labelen
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
     - name: Python-SDK
       items:
         - name: Uw eerste ML-experiment maken
@@ -78,14 +81,14 @@
     - name: Jupyter Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Azure Open-gegevenssets
-      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
     - name: Designer-gegevenssets
       href: sample-designer-datasets.md
+    - name: Designer-voorbeeldpijplijnen
+      href: samples-designer.md
     - name: MLOps-voorbeelden van volledige scenario's
       href: 'https://github.com/microsoft/MLOps'
-    - name: Designer-pijplijnen
-      href: samples-designer.md
+    - name: Open gegevenssets (openbaar)
+      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Concepten
   items:
     - name: Werkruimte
@@ -115,10 +118,10 @@
       href: /azure/machine-learning/algorithm-cheat-sheet
     - name: Algoritmen selecteren
       href: /azure/machine-learning/how-to-select-algorithms
-    - name: Geautomatiseerde Machine Learning
+    - name: Geautomatiseerde machine learning
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
-    - name: Valkuilen van ML beheren
+    - name: Overfitting en ongebalanceerde gegevens
       displayName: 'automl, auto ml, risks'
       href: concept-manage-ml-pitfalls.md
     - name: Rekenproces
@@ -351,6 +354,8 @@
       items:
         - name: Machine Learning-pijplijnen maken (Python)
           href: how-to-create-your-first-pipeline.md
+        - name: Gegevens verplaatsen naar en tussen ML-pijplijnstappen (Python)
+          href: how-to-move-data-in-out-of-pipelines.md
         - name: Een pijplijn plannen (Python)
           href: how-to-schedule-pipelines.md
         - name: Een pijplijn activeren

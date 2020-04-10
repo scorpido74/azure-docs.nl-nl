@@ -26,10 +26,8 @@
           href: quickstarts/ruby.md
     - name: Clientbibliotheek
       items:
-        - name: 'C#'
-          href: quickstarts/csharp-sdk.md
-        - name: Aan de slag
-          href: quickstarts/go-sdk.md
+        - name: Clientbibliotheken voor Bing Automatische suggesties
+          href: ./quickstarts/client-libraries.md
 - name: Zelfstudies
   items:
     - name: Web-app van één pagina

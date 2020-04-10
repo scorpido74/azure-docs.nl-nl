@@ -114,12 +114,6 @@
               href: index-add-language-analyzers.md
             - name: Een aangepaste analyse toevoegen
               href: index-add-custom-analyzers.md
-        - name: Typeahead
-          items:
-            - name: Een suggester maken
-              href: index-add-suggesters.md
-            - name: Suggesties of automatisch aanvullen toevoegen
-              href: search-autocomplete-tutorial.md
         - name: Synoniemen
           items:
             - name: Synoniemen toevoegen
@@ -230,6 +224,14 @@
           href: search-query-lucene-examples.md
         - name: Gedeeltelijk uitgevoerde coderegels en speciale tekens
           href: search-query-partial-matching.md
+        - name: Fuzzy zoekopdracht
+          href: search-query-fuzzy.md
+        - name: Automatisch aanvullen 'Zoeken terwijl u typt'
+          items:
+            - name: Een suggester maken
+              href: index-add-suggesters.md
+            - name: Suggesties of automatisch aanvullen toevoegen
+              href: search-autocomplete-tutorial.md
         - name: Query uitvoeren vanuit Power Apps
           href: search-howto-powerapps.md
         - name: Naslaginformatie over syntaxis

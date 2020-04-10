@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/31/2020
+ms.date: 04/09/2020
 ms.author: allensu
-ms.openlocfilehash: 405d9bc09462f2940567080ec86775baf066d70d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 4095b0b48e86b0aafcc86d74ca1fa25bacddf0ec
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584573"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011715"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuele netwerken ontwerpen met NAT-gatewaybronnen
 
@@ -326,8 +326,8 @@ We willen weten hoe we de service kunnen verbeteren. Ontbreekt er een mogelijkhe
 * Meer informatie over [het oplossen van PROBLEMEN met NAT-gatewaybronnen](troubleshoot-nat.md).
 * Zelfstudie voor het valideren van NAT Gateway
   - [Azure-CLI](tutorial-create-validate-nat-gateway-cli.md)
-  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
-  - [Portal](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
+  - [Portal](tutorial-create-validate-nat-gateway-portal.md)
 * Snel aan de slag voor het implementeren van een NAT-gatewaybron
   - [Azure-CLI](./quickstart-create-nat-gateway-cli.md)
   - [PowerShell](./quickstart-create-nat-gateway-powershell.md)

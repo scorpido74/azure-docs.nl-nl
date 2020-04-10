@@ -278,18 +278,15 @@
         - name: Servers configureren in een gewenste status en afwijkingen beheren met State Configuration
           href: tutorial-configure-servers-desired-state.md
           displayName: 'DSC, compliance'
-        - name: Onboarding van machines voor beheer
-          href: automation-dsc-onboarding.md
-          displayName: 'DSC, state configuration'
         - name: DSC-configuraties compileren
           href: automation-dsc-compile.md
           displayName: 'state configuration, composite resources, configurationData'
         - name: Niet-compatibele DSC-servers herstellen
           href: automation-dsc-remediate.md
           displayName: 'state configuration, DSC, remediate'
-        - name: DSC-configuraties compileren met behulp van samengestelde resources
+        - name: DSC-configuraties samenstellen met behulp van samengestelde resources
           href: compose-configurationwithcompositeresources.md
-        - name: Doorlopende implementatie met Chocolatey
+        - name: Continue implementatie bieden met Chocolatey
           href: automation-dsc-cd-chocolatey.md
           displayName: 'dsc, state configuration'
         - name: Rapportagegegevens van State Configuration doorsturen naar Azure Monitor-logboeken
@@ -297,12 +294,12 @@
           displayName: DSC
     - name: Problemen oplossen
       items:
-        - name: Onboarding
+        - name: Problemen met onboarding oplossen
           href: troubleshoot/onboarding.md
           displayName: troubleshoot
         - name: Problemen met Desired State Configuration (DSC) oplossen
           href: troubleshoot/desired-state-configuration.md
-          displayName: 'Desired State Configuration, troubleshoot'
+          displayName: 'state configuration, DSC, troubleshoot'
     - name: Naslaginformatie
       items:
         - name: Oplossingen uit de community

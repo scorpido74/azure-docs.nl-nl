@@ -1,141 +1,149 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie bij Azure Storage
+### YamlMime:Hub
+title: Documentatie voor Azure Storage
+summary: Azure Storage omvat opslag van objecten, bestanden, schijven, wachtrijen en tabellen. Er zijn ook services voor hybride opslagoplossingen en services om gegevens over te dragen, te delen en er een back-up van te maken.
+brand: azure
 metadata:
-  title: 'Documentatie voor Azure Storage - zelfstudies, API-verwijzing | Microsoft Docs'
-  description: 'Azure Storage is een door Microsoft beheerde cloudservice waarmee u toegang krijgt tot opslag met een zeer hoge beschikbaarheid, die bovendien veilig, duurzaam, schaalbaar en redundant is. Azure Storage omvat Azure Blobs, Azure Data Lake Storage Gen2, Azure Files, Azure Queues en Azure Tables.'
-  services: storage
-  author: tamram
-  manager: twooley
+  title: Documentatie voor Azure Storage
+  description: Documentatiehub voor Azure Storage. Verwijst naar servicedocumentatie voor hybride en cloudopslagoplossingen en services om gegevens over te dragen, te delen en er een back-up van te maken.
   ms.service: storage
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 06/27/2018
-  ms.author: tamram
-abstract:
-  description: 'Azure Storage is een door Microsoft beheerde service waarmee u toegang krijgt tot cloudopslag met een zeer hoge beschikbaarheid, die bovendien veilig, duurzaam, schaalbaar en redundant is. Azure Storage omvat Azure Blobs (objecten), Azure Data Lake Storage Gen2, Azure Files, Azure Queues en Azure Tables. Ontdek met onze snelstartgidsen en zelfstudies hoe u Azure-opslag gebruikt in uw toepassingen.'
-sections:
-  - title: QuickStarts van vijf minuten
+  ms.topic: hub-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 04/07/2020
+  ms.openlocfilehash: 5f599c7cc608a5e6a6246ed82c8f7b48e427dd66
+  ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 04/09/2020
+  ms.locfileid: "80985334"
+highlightedContent:
+  items:
+  - title: Inleiding in de belangrijkste opslagservices
+    itemType: concept
+    url: /azure/storage/common/storage-introduction?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: Meer informatie over typen opslagaccounts
+    itemType: concept
+    url: /azure/storage/common/storage-account-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: Create a storage account
+    itemType: how-to-guide
+    url: /azure/storage/common/storage-account-create?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: Meer informatie over gegevensredundantie
+    itemType: concept
+    url: /azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: Gegevens overdragen naar Azure
+    itemType: concept
+    url: /azure/storage/common/storage-choose-data-transfer-solution?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+additionalContent:
+  sections:
+  - title: Cloudopslagoplossingen
     items:
-      - type: paragraph
-        text: Leer met Azure Storage te werken aan de hand van deze QuickStarts.
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/portal.svg
-              text: Portal
-          - image:
-              src: media/index/logo_powershell.svg
-              text: PowerShell
-          - image:
-              src: media/index/cli.svg
-              text: Azure CLI
-          - image:
-              src: media/index/logo_net.svg
-          - image:
-              src: media/index/logo_java.svg
-          - image:
-              src: media/index/logo_python.svg
-          - image:
-              src: media/index/logo_nodejs.svg
-        rows:
-          - title: Een opslagaccount maken
-            values:
-              - href: /azure/storage/common/storage-quickstart-create-account?tabs=portal
-              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-powershell
-              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-cli
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: QuickStarts over blobs
-            values:
-              - href: /azure/storage/blobs/storage-quickstart-blobs-portal
-              - href: /azure/storage/blobs/storage-quickstart-blobs-powershell
-              - href: /azure/storage/blobs/storage-quickstart-blobs-cli
-              - href: /azure/storage/blobs/storage-quickstart-blobs-dotnet
-              - href: /azure/storage/blobs/storage-quickstart-blobs-java
-              - href: /azure/storage/blobs/storage-quickstart-blobs-python
-              - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
-          - title: Data Lake Storage Gen2
-            values:
-              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-  - title: Stapsgewijze zelfstudies
+    - title: Objectopslag voor uw apps
+      links:
+      - url: /azure/storage/blobs/storage-blobs-introduction
+        text: Meer informatie over opslag voor ongestructureerde gegevens (Blob-opslag)
+      - url: /rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
+        text: Blok-, toevoeg- en paginablobs begrijpen
+      - url: /azure/storage/blobs/
+        text: Meer informatie >
+    - title: Opslag voor big data-analyses
+      links:
+      - url: /azure/storage/blobs/data-lake-storage-introduction
+        text: Meer informatie over opslag voor Enterprise Data Lakes (Data Lake Storage)
+      - url: /azure/storage/blobs/data-lake-storage-data-scenarios
+        text: Opties en hulpprogramma's begrijpen voor het verwerken van big data
+    - title: In de cloud gehoste bestandsshares
+      links:
+      - url: /azure/storage/files/storage-files-introduction
+        text: Bestandsshares gebruiken die worden verstrekt door de Azure Storage Platform-kern (Azure Files)
+      - url: /azure/azure-netapp-files/azure-netapp-files-introduction
+        text: Volumes gebruiken die worden verstrekt door NetApp ONTAP (Azure NetApp Files)
+    - title: Schijfopslag voor IaaS-workloads
+      links:
+      - url: /azure/virtual-machines/windows/managed-disks-overview
+        text: Meer informatie over opslagvolumes op blokniveau voor Azure-VM's
+      - url: /azure/virtual-machines/windows/disks-types
+        text: Inzicht in de beschikbare schijftypen
+      - url: /azure/virtual-machines/windows/attach-managed-disk-portal
+        text: Een nieuwe schijf aan een VM toevoegen - Windows
+      - url: /azure/virtual-machines/linux/attach-disk-portal
+        text: Een gegevensschijf aan een VM koppelen - Linux
+    - title: Opslag voor asynchrone berichtwachtrijen
+      links:
+      - url: /azure/storage/queues/storage-queues-introduction
+        text: Meer informatie over de Azure Storage-oplossing voor wachtrijen (Queue Storage)
+      - url: /azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted
+        text: Queue Storage- en Service Bus-wachtrijen vergelijken
+      - url: /azure/storage/queues/
+        text: Meer informatie >
+    - title: Opslag voor gestructureerde NoSQL-gegevens
+      links:
+      - url: /azure/storage/tables/table-storage-overview
+        text: Gestructureerde NoSQL-gegevens opslaan in de cloud (Tabelopslag en Cosmos DB)
+      - url: /azure/cosmos-db/table-support
+        text: Tabelopslag en Cosmos DB Table-API vergelijken
+      - url: /azure/storage/tables/
+        text: Meer informatie >
+  - title: Hybride opslagoplossingen
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Blobs
-            html: <p>Installatiekopiegegevens in de cloud uploaden en verwerken</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">Installatiekopiegegevens uploaden en ophalen in de cloud</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Azure Functions activeren om blobs te verwerken</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">Toepassingsgegevens beveiligen</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Opslag controleren en problemen oplossen</a></li></ul><p>Een toepassing voor hoge beschikbaarheid ontwerpen</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Uw toepassingsgegevens maximaal beschikbaar maken</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Een fout simuleren bij het lezen van gegevens uit de primaire regio</a></li></ul>
-          - title: Data Lake Storage Gen2
-            html: '<p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">Gegevens uitpakken, transformeren en laden met Azure Databricks</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Toegang tot Azure Data Lake Storage Gen2-gegevens met DataBricks met behulp van Spark</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Gegevens uitpakken, transformeren en laden met Apache Hive in Azure HDInsight</a></p>'
-  - title: Voorbeelden
+    - title: On-premises bestandsshares uitbreiden in de cloud
+      links:
+      - url: /azure/storage/files/storage-sync-files-planning
+        text: Azure-bestandsshares synchroniseren met Windows-bestandsserver (Azure FileSync)
+      - url: /azure/storage/files/storage-sync-files-deployment-guide
+        text: Azure Files SYNC implementeren
+      - url: /azure/storage/files/
+        text: Meer informatie >
+    - title: Online gegevensoverdracht (on-premises naar Azure)
+      links:
+      - url: /azure/databox-online/data-box-gateway-overview
+        text: Probleemloze gegevensoverdracht naar Azure (Data Box Gateway)
+      - url: /azure/databox-online/data-box-edge-overview
+        text: Gegevens lokaal verwerken voor overdracht naar Azure (Azure Stack Edge)
+      - url: /azure/databox-online/
+        text: Meer informatie >
+    - title: Caching voor workloads in high performance computing (HPC)
+      links:
+      - url: /azure/hpc-cache/hpc-cache-overview
+        text: Een volledig beheerde service voor bestandscaching gebruiken (Azure HPC Cache)
+      - url: /azure/avere-vfxt/avere-vfxt-overview
+        text: On-premises NAS cachen in Azure (Avere vFXT for Azure)
+      - url: /azure/fxt-edge-filer/fxt-overview
+        text: Een on-premises cachingtoepassing implementeren (Azure FXT Edge Filer)
+  - title: Gegevensbewerkingen
     items:
-      - type: paragraph
-        text: Zoek scripts voor veelvoorkomende beheertaken.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '.NET &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=dotnet">Blobs</a> | <a     href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=dotnet">Files</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=dotnet">Queues</a>'
-          - html: 'Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">Blobs</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">Files</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">Queues</a>'
-          - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
-          - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
-  - title: Ontwikkel uw vaardigheden met Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Inleiding tot gegevens in Azure
-            href: /learn/modules/intro-to-data-in-azure/
-            image:
-              src: /learn/achievements/intro-to-data-in-azure.svg
-              href: //learn/modules/intro-to-data-in-azure/
-          - title: "\_Kies een gegevensopslagmethode in Azure"
-            href: /learn/modules/choose-storage-approach-in-azure/
-            image:
-              src: /learn/achievements/choose-storage-approach-in-azure.svg
-              href: /learn/modules/choose-storage-approach-in-azure/
-          - title: Een Azure-opslagaccount maken
-            href: /learn/modules/create-azure-storage-account/
-            image:
-              src: /learn/achievements/create-azure-storage-account.svg
-              href: /learn/modules/create-azure-storage-account/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-storage">Meer interactief leren...</a>
-  - title: Gratis Pluralsight-videotraining
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Ontwikkelen met .NET op Azure
-            href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
-          - title: Ontwikkelen met Node.js op Azure
-            href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
-          - title: REST
-            html: '<p><a href="/rest/api/storageservices">API voor blobs, wachtrijen, tabellen en bestanden</a></p><p><a href="/rest/api/storagerp">Opslagresourceprovider-API</a></p><p><a href="/rest/api/storageimportexport">Import-/export-service-API</a></p>'
+    - title: Offline bulkoverdracht naar Azure
+      links:
+      - url: /azure/databox/data-box-disk-overview
+        text: < 40 TB aan gegevens overdragen (Data Box Disk)
+      - url: /azure/databox/data-box-overview
+        text: 40 tot 500 TB aan gegevens overdragen (Data Box)
+      - url: /azure/databox/data-box-heavy-overview
+        text: '> 500 TB aan gegevens overdragen (Data Box Heavy)'
+      - url: /azure/databox/
+        text: Meer informatie >
+    - title: Kleine gegevenssets overdragen (online)
+      links:
+      - url: /azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        text: Het opdrachtregelhulpprogramma AzCopy gebruiken
+      - url: /azure/storage/blobs/storage-quickstart-blobs-storage-explorer
+        text: Het in Azure Storage Explorer GUI gebaseerde hulpprogramma gebruiken
+    - title: Beheerkosten
+      links:
+      - url: /azure/storage/blobs/storage-blob-storage-tiers
+        text: Blobgegevens op een kosteneffectieve manier in lagen indelen (hot, cool, archief)
+    - title: Uw gegevens delen
+      links:
+      - url: /azure/data-share/
+        text: Gegevens delen met klanten en partners (Azure Data Share)
+      - url: /azure/data-share/supported-data-stores
+        text: Ondersteunde gegevensopslag om te delen
+      - url: /azure/data-share/
+        text: Meer informatie >
+    - title: Een back-up maken van gegevens
+      links:
+      - url: /azure/backup/quick-backup-vm-portal
+        text: Een back-up maken van VM's (Azure Backup)
+      - url: /azure/backup/tutorial-backup-azure-files
+        text: Een back-up maken van Azure-bestandsshares (preview)
+      - url: /azure/backup/
+        text: Meer informatie >

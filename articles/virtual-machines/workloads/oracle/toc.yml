@@ -4,7 +4,7 @@
       href: oracle-overview.md
     - name: Oplossingen in Azure-VM's
       href: oracle-vm-solutions.md
-    - name: Oplossingen met OCI - preview
+    - name: Oplossingen met OCI
       href: oracle-oci-overview.md
 - name: Snelstartgidsen
   items:
@@ -32,9 +32,9 @@
       href: oracle-disaster-recovery.md
 - name: Instructiegidsen
   items:
-    - name: Interconnect voor Azure en OCI - Preview
+    - name: Interconnect voor Azure en OCI
       href: configure-azure-oci-networking.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

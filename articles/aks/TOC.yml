@@ -140,10 +140,14 @@
           href: cluster-autoscaler.md
         - name: Beschikbaarheidszones gebruiken
           href: availability-zones.md
-        - name: Meerdere knooppuntgroepen gebruiken
-          href: use-multiple-node-pools.md
-        - name: Spotknooppuntpools gebruiken (preview-versie)
-          href: spot-node-pool.md
+        - name: Knooppuntpools gebruiken
+          items:
+            - name: Meerdere knooppuntgroepen gebruiken
+              href: use-multiple-node-pools.md
+            - name: Spotknooppuntpools gebruiken (preview-versie)
+              href: spot-node-pool.md
+            - name: Systeemknooppuntpools gebruiken
+              href: use-system-pools.md
         - name: AKS met Terraform implementeren
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true

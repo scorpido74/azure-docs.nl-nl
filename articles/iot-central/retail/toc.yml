@@ -3,45 +3,45 @@
 - name: Overzicht
   items:
     - name: Oplossingen voor de detailhandel bouwen met Azure IoT Central
-      href: overview-iot-central-retail-pnp.md
+      href: overview-iot-central-retail.md
 - name: Zelfstudies
   items:
     - name: In-Store Analytics-betaling
       items:
         - name: 1 - Een retailtoepassing maken
-          href: tutorial-in-store-analytics-create-app-pnp.md
+          href: tutorial-in-store-analytics-create-app.md
         - name: 2 - Het dashboard van de operator aanpassen
-          href: tutorial-in-store-analytics-customize-dashboard-pnp.md
+          href: tutorial-in-store-analytics-customize-dashboard.md
         - name: 3 - Gegevens exporteren en inzichten virtualiseren
-          href: tutorial-in-store-analytics-export-data-visualize-insights-pnp.md
+          href: tutorial-in-store-analytics-export-data-visualize-insights.md
     - name: Slim voorraadbeheer
       items:
         - name: Een toepassing voor slim voorraadbeheer maken
-          href: tutorial-iot-central-smart-inventory-management-pnp.md
+          href: tutorial-iot-central-smart-inventory-management.md
     - name: Verbonden logistiek
       items:
         - name: Een verbonden logistieke app maken
-          href: tutorial-iot-central-connected-logistics-pnp.md
+          href: tutorial-iot-central-connected-logistics.md
     - name: Digitaal distributiecentrum
       items:
         - name: Een toepassing voor een digitaal distributiecentrum maken
-          href: tutorial-iot-central-digital-distribution-center-pnp.md
+          href: tutorial-iot-central-digital-distribution-center.md
     - name: Micro-uitvoeringscentrum
       items:
         - name: Een micro-uitvoeringscentrumtoepassing maken
-          href: tutorial-micro-fulfillment-center-pnp.md
+          href: tutorial-micro-fulfillment-center.md
 - name: Concepten
   items:
     - name: Sjabloonarchitectuur voor verbonden logistieke apps
-      href: architecture-connected-logistics-pnp.md
+      href: architecture-connected-logistics.md
     - name: Sjabloonarchitectuur voor apps als digitaal distributiecentrum
-      href: architecture-digital-distribution-center-pnp.md
+      href: architecture-digital-distribution-center.md
     - name: Sjabloonarchitectuur voor apps voor slim inventarisbeheer
-      href: architecture-smart-inventory-management-pnp.md
+      href: architecture-smart-inventory-management.md
     - name: Analytics-architectuur voor de Store
       href: store-analytics-architecture.md
     - name: Sjabloonarchitectuur voor micro-uitvoeringscentrum-apps
-      href: architecture-micro-fulfillment-center-pnp.md
+      href: architecture-micro-fulfillment-center.md
     - name: Connectiviteit
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Wat zijn toepassingssjablonen?
@@ -110,7 +110,7 @@
           href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: Live chat in-/uitschakelen
           href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
-- name: Bronnen
+- name: Resources
   items:
     - name: Opties voor ondersteuning en hulp
       href: /azure/iot-fundamentals/iot-support-help
@@ -127,7 +127,7 @@
         - name: IoT-oplossingsversnellers
           href: /azure/iot-accelerators
         - name: IoT Plug en Play
-          href: /azure/iot-pnp
+          href: /azure/iot
         - name: Azure Maps
           href: /azure/azure-maps
         - name: Time Series Insights
@@ -142,5 +142,5 @@
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Ondersteunde browsers
       href: ../core/iot-central-supported-browsers.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
-    - name: Azure-IoT Central (verouderde sjablonen)
+    - name: Azure IoT Central (verouderde sjablonen)
       href: 'https://docs.microsoft.com/previous-versions/azure/iot-central/core/overview-iot-central'
