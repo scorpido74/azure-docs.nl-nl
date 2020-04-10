@@ -1,5 +1,5 @@
 ---
-title: Overzicht van configuratie van Azure Automation State
+title: Overzicht van State Configuration
 description: Een overzicht van Azure Automation State Configuration (DSC), de voorwaarden en bekende problemen
 keywords: powershell dsc, gewenste statusconfiguratie, powershell dsc azure
 services: automation
@@ -10,14 +10,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 46cf0d6a12ffbc836db7bd79c0f2738a94e23085
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02e540c9ac2654be97ff247749d1ed18573cfc24
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283188"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010253"
 ---
-# <a name="azure-automation-state-configuration-overview"></a>Overzicht van configuratie van Azure Automation State
+# <a name="state-configuration-overview"></a>Overzicht van State Configuration
 
 Azure Automation State Configuration is een Azure-service waarmee u PowerShell Desired State Configuration (DSC)-configuraties schrijven, beheren en [compileren.](/powershell/scripting/dsc/configurations/configurations) De service importeert ook [DSC Resources](/powershell/scripting/dsc/resources/resources)en wijst configuraties toe voor doelknooppunten, allemaal in de cloud.
 

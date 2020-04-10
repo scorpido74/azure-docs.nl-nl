@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: jingwang
-ms.openlocfilehash: b215531fdc1a1bb07b33c427623d5cd4f5f8219a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc81e66e609400c6558f00ee957ccaee715bd7fa
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252483"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991634"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Gegevens van FTP-server kopiëren met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
@@ -62,7 +62,7 @@ De volgende eigenschappen worden ondersteund voor FTP-gekoppelde service:
 | host | Geef de naam of het IP-adres van de FTP-server op. | Ja |
 | poort | Geef de poort op waarop de FTP-server luistert.<br/>Toegestane waarden zijn: geheel getal, standaardwaarde is **21**. | Nee |
 | inschakelenSsl | Geef op of FTP via een SSL/TLS-kanaal moet worden gebruikt.<br/>Toegestane waarden zijn: **true** (default), **false**. | Nee |
-| enableServerCertificateValidation | Geef op of u serverSSL-certificaatvalidatie wilt inschakelen wanneer u FTP via SSL/TLS-kanaal gebruikt.<br/>Toegestane waarden zijn: **true** (default), **false**. | Nee |
+| enableServerCertificateValidation | Geef op of u serverTLS/SSL-certificaatvalidatie wilt inschakelen wanneer u FTP via SSL/TLS-kanaal gebruikt.<br/>Toegestane waarden zijn: **true** (default), **false**. | Nee |
 | authenticationType | Geef het verificatietype op.<br/>Toegestane waarden zijn: **Basic,** **Anonymous** | Ja |
 | userName | Geef de gebruiker op die toegang heeft tot de FTP-server. | Nee |
 | wachtwoord | Geef het wachtwoord voor de gebruiker op (userName). Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Nee |

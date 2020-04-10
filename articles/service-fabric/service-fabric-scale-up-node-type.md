@@ -3,12 +3,12 @@ title: Een Azure Service Fabric-knooppunttype opschalen
 description: Meer informatie over het schalen van een cluster van Servicefabric door een virtuele machineschaalset toe te voegen.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 33d535cb093eeb95e0ce95bdd5722bfd21150a40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dbb9e4fbfeb27c5b8b13f70207888cf37bbb0e0
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464223"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998927"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Een primair knooppunttype voor Service Fabric-clusters omhoog schalen
 In dit artikel wordt beschreven hoe u een primaire knooppunttype servicestructuur opschalen door de bronnen voor virtuele machines te vergroten. Een Service Fabric-cluster is een met het netwerk verbonden set virtuele of fysieke machines waarin uw microservices worden geïmplementeerd en beheerd. Een machine of VM die deel uitmaakt van een cluster wordt een knooppunt genoemd. Virtuele machineschaalsets zijn een Azure-compute resource die u gebruikt om een verzameling virtuele machines als set te implementeren en te beheren. Elk knooppunttype dat is gedefinieerd in een Azure-cluster, is [ingesteld als een afzonderlijke schaalset.](service-fabric-cluster-nodetypes.md) Elk knooppunttype kan vervolgens afzonderlijk worden beheerd. Nadat u een cluster servicestructuur hebt gemaakt, u een clusterknooppunttype verticaal schalen (de bronnen van de knooppunten wijzigen) of het besturingssysteem van het knooppunttype VM's upgraden.  U het cluster op elk gewenst moment schalen, zelfs wanneer workloads op het cluster worden uitgevoerd.  Naarmate het cluster schaalt, schalen uw toepassingen ook automatisch.
@@ -34,7 +34,7 @@ Hier is het proces voor het bijwerken van de VM-grootte en het besturingssysteem
     Als u de nieuwe schaalset in de sjabloon wilt vinden, zoekt u naar de bron 'Microsoft.Compute/virtualMachineScaleSets' die is benoemd door de parameter *vmNodeType2Name.*  De nieuwe schaalset wordt toegevoegd aan het primaire knooppunttype met behulp van de instelling properties->virtualMachineProfile->extensieProfiel->->eigenschappen->-instellingen->-nodeTypeRef.
 4. Controleer de clusterstatus en controleer of alle knooppunten in orde zijn.
 5. Schakel de knooppunten in de oude schaalset van het primaire knooppunttype uit met de bedoeling om knooppunt te verwijderen. U alles tegelijk uitschakelen en de bewerkingen staan in de wachtrij. Wacht tot alle knooppunten zijn uitgeschakeld, wat enige tijd kan duren.  Als de oudere knooppunten in het knooppunttype zijn uitgeschakeld, migreren de systeemservices en seedknooppunten naar de VM's van de nieuwe schaaldie is ingesteld in het primaire knooppunttype.
-6. Verwijder de oudere schaalset uit het primaire knooppunttype.
+6. Verwijder de oudere schaalset uit het primaire knooppunttype. (Nadat de knooppunten zijn uitgeschakeld als in stap 5, wordt in het setblad voor virtuele machineschaal in de Azure-portal de knooppunten van het oude knooppunttype één voor één toegewezen.)
 7. Verwijder de load balancer die is gekoppeld aan de oude schaalset. Het cluster is niet beschikbaar, terwijl het nieuwe openbare IP-adres en de load balancer zijn geconfigureerd voor de nieuwe schaalset.  
 8. Sla DNS-instellingen op van het openbare IP-adres dat is gekoppeld aan de oude primaire knooppunttypeschaal die is ingesteld in een variabele en verwijder dat openbare IP-adres.
 9. Vervang de DNS-instellingen van het openbare IP-adres dat is gekoppeld aan de nieuwe primaire nodetypeschaalset door de DNS-instellingen van het verwijderde openbare IP-adres.  Het cluster is nu weer bereikbaar.

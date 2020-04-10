@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f465fe4bb69bc5ae81db6c78df51bf5133de1b60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c7690390936a05dd472796eb6f50f582f652e35
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929310"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990837"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Gegevens uit Impala kopiëren met Azure Data Factory
 
@@ -55,10 +55,10 @@ De volgende eigenschappen worden ondersteund voor impala gekoppelde service.
 | authenticationType | Het te gebruiken verificatietype. <br/>Toegestane waarden zijn **Anoniem,** **SASLUsername**en **GebruikersnaamEnPassword**. | Ja |
 | gebruikersnaam | De gebruikersnaam die wordt gebruikt om toegang te krijgen tot de Impala-server. De standaardwaarde is anoniem wanneer u SASLUsername gebruikt.  | Nee |
 | wachtwoord | Het wachtwoord dat overeenkomt met de gebruikersnaam wanneer u Gebruikersnaam EnWachtwoord gebruikt. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Nee |
-| inschakelenSsl | Hiermee geeft u op of de verbindingen met de server zijn versleuteld met SSL. De standaardwaarde is **onwaar**.  | Nee |
-| trustedCertPath | Het volledige pad van het .pem-bestand dat vertrouwde CA-certificaten bevat die worden gebruikt om de server te verifiëren wanneer u verbinding maakt via SSL. Deze eigenschap kan alleen worden ingesteld wanneer u SSL gebruikt op Zelf gehoste integratieruntime. De standaardwaarde is het cacerts.pem-bestand dat is geïnstalleerd met de inburgeringsruntime.  | Nee |
+| inschakelenSsl | Hiermee geeft u op of de verbindingen met de server zijn versleuteld met TLS. De standaardwaarde is **onwaar**.  | Nee |
+| trustedCertPath | Het volledige pad van het .pem-bestand dat vertrouwde CA-certificaten bevat die worden gebruikt om de server te verifiëren wanneer u verbinding maakt via TLS. Deze eigenschap kan alleen worden ingesteld wanneer u TLS gebruikt op Self-hosted Integration Runtime. De standaardwaarde is het cacerts.pem-bestand dat is geïnstalleerd met de inburgeringsruntime.  | Nee |
 | gebruik vanSystemTrustStore | Hiermee geeft u op of u een CA-certificaat wilt gebruiken in het systeemvertrouwensarchief of uit een opgegeven PEM-bestand. De standaardwaarde is **onwaar**.  | Nee |
-| allowHostNameCNMismatch | Hiermee geeft u op of een door CA uitgegeven SSL-certificaatnaam moet overeenkomen met de hostnaam van de server wanneer u verbinding maakt via SSL. De standaardwaarde is **onwaar**.  | Nee |
+| allowHostNameCNMismatch | Hiermee geeft u op of een door CA uitgegeven TLS/SSL-certificaatnaam moet overeenkomen met de hostnaam van de server wanneer u verbinding maakt via TLS. De standaardwaarde is **onwaar**.  | Nee |
 | allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server moeten worden toegestaan. De standaardwaarde is **onwaar**.  | Nee |
 | connectVia | De [inburgeringsruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Meer informatie van de sectie [Voorwaarden.](#prerequisites) Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
 

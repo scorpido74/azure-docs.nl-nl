@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ca439d1a82e3cdbe2cc0274cf63653d39048057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a05d955be88f68b3c0db1f4a29b3f6e1155aa0d
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532549"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992178"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Gegevens uit een HTTP-eindpunt kopiëren met Azure Data Factory
 
@@ -68,7 +68,7 @@ De volgende eigenschappen worden ondersteund voor de http-gekoppelde service:
 |:--- |:--- |:--- |
 | type | De eigenschap **type** moet zijn ingesteld op **HttpServer**. | Ja |
 | url | De basis-URL naar de webserver. | Ja |
-| enableServerCertificateValidation | Geef op of u serverSSL-certificaatvalidatie moet inschakelen wanneer u verbinding maakt met een HTTP-eindpunt. Als uw HTTPS-server een zelfondertekend certificaat gebruikt, stelt u deze eigenschap in op **false**. | Nee<br /> (de standaardinstelling is **waar)** |
+| enableServerCertificateValidation | Geef op of u serverTLS/SSL-certificaatvalidatie moet inschakelen wanneer u verbinding maakt met een HTTP-eindpunt. Als uw HTTPS-server een zelfondertekend certificaat gebruikt, stelt u deze eigenschap in op **false**. | Nee<br /> (de standaardinstelling is **waar)** |
 | authenticationType | Hiermee geeft u het verificatietype op. Toegestane waarden zijn **Anoniem,** **Basis,** **Samenvatting,** **Windows**en **ClientCertificate**. <br><br> Bekijk de secties die deze tabel volgen voor meer eigenschappen en JSON-voorbeelden voor deze verificatietypen. | Ja |
 | connectVia | De [runtime integratie](concepts-integration-runtime.md) om verbinding te maken met het gegevensarchief. Meer informatie van de sectie [Voorwaarden.](#prerequisites) Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
 

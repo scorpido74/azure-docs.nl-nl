@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/09/2020
 ms.author: sstein
-ms.openlocfilehash: 9fa93af72c2869efd7b6d2f1e8b96b0e667f8b16
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607540"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011443"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database release notes SQL Database release notes SQL Database release notes SQL Database
 
@@ -22,12 +22,11 @@ In dit artikel worden SQL Database-functies weergegeven die momenteel in openbar
 
 ## <a name="features-in-public-preview"></a>Functies in openbare preview
 
-### <a name="single-database"></a>[Individuele database](#tab/single-database)
+### <a name="single-database"></a>[Eén database](#tab/single-database)
 
 | Functie | Details |
 | ---| --- |
 | Nieuwe Fsv2-serie en M-serie hardware generaties| Zie [Hardwaregeneraties voor](sql-database-service-tiers-vcore.md#hardware-generations)meer informatie.|
-| [Azure-privékoppeling](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Private Link vereenvoudigt de netwerkarchitectuur en beveiligt de verbinding tussen eindpunten in Azure door gegevens op het Azure-netwerk te bewaren, waardoor blootstelling aan internet wordt geëlimineerd. Met Private Link u ook uw eigen services maken en renderen op Azure. |
 | Versneld databaseherstel met afzonderlijke databases en elastische pools | Zie Versneld [databaseherstel](sql-database-accelerated-database-recovery.md)voor meer informatie .|
 |Geschatte telling onderscheiden|Zie Geschatte [telling distinct voor](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)informatie.|
 |Batchmodus op Rowstore (onder compatibiliteitsniveau 150)|Zie [Batchmodus in Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)voor meer informatie.|

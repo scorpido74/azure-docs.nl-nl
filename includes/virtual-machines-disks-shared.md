@@ -5,25 +5,25 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/18/2020
+ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a14ae76e15c1adb59917e61fbcbdaa34a7efa2d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3e5beaef7fcc9d407103834e2040957ff32984c
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77472010"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008518"
 ---
-Azure shared disks (preview) is een nieuwe functie voor Azure managed disks waarmee een Azure managed disk tegelijkertijd aan meerdere virtuele machines (VM's) kan worden gekoppeld. Als u een beheerde schijf aan meerdere VM's koppelt, u nieuwe nieuwe toepassingen implementeren of bestaande geclusterde toepassingen migreren naar Azure.
+Azure shared disks (preview) is een nieuwe functie voor Azure managed disks waarmee een beheerde schijf tegelijkertijd aan meerdere virtuele machines (VM's) kan worden gekoppeld. Als u een beheerde schijf aan meerdere VM's koppelt, u nieuwe nieuwe toepassingen implementeren of bestaande geclusterde toepassingen migreren naar Azure.
 
 ## <a name="how-it-works"></a>Hoe werkt het?
 
-VM's in het cluster kunnen lezen of schrijven naar uw bijgevoegde schijf op basis van de reservering die is gekozen door de geclusterde toepassing met Behulp van [SCSI Persistent Reservations](https://www.t10.org/members/w_spc3.htm) (SCSI PR). SCSI PR is een bekende industriestandaard die wordt gebruikt door applicaties die on-premises worden uitgevoerd op Storage Area Network (SAN). Als u SCSI PR op een beheerde schijf inschakelt, u deze toepassingen naar Azure migreren.
+VM's in het cluster kunnen lezen of schrijven naar uw bijgevoegde schijf op basis van de reservering die is gekozen door de geclusterde toepassing met Behulp van [SCSI Persistent Reservations](https://www.t10.org/members/w_spc3.htm) (SCSI PR). SCSI PR is een industriestandaard die wordt gebruikt door toepassingen die on-premises worden uitgevoerd op Storage Area Network (SAN). Als u SCSI PR op een beheerde schijf inschakelt, u deze toepassingen naar Azure migreren.
 
-Beheerde schijven met gedeelde schijven ingeschakeld bieden gedeelde blokopslag die toegankelijk is voor meerdere VM's, dit wordt weergegeven als logische eenheidsnummers (LUN's). LUN's worden vervolgens vanaf een doel (schijf) aan een initiator (VM) gepresenteerd. Deze Lunsen zien eruit als direct-attached-storage (DAS) of een lokaal station naar de VM.
+Het delen van beheerde schijven bieden gedeelde blokopslag die toegankelijk is vanuit meerdere VM's, deze worden weergegeven als logische eenheidsnummers (LUN's). LUN's worden vervolgens vanaf een doel (schijf) aan een initiator (VM) gepresenteerd. Deze Lunsen zien eruit als direct-attached-storage (DAS) of een lokaal station naar de VM.
 
-Beheerde schijven met ingeschakelde gedeelde schijven bieden niet native een volledig beheerd bestandssysteem dat toegankelijk is met Behulp van SMB/NFS. U moet een clusterbeheer gebruiken, zoals Het Failovercluster (Windows Server Failover cluster) of pacemaker, dat clusterknooppuntcommunicatie en schrijfvergrendeling verwerkt.
+Gedeelde beheerde schijven bieden in eigen land geen volledig beheerd bestandssysteem dat toegankelijk is met SMB/NFS. U moet een clusterbeheer gebruiken, zoals Het Failovercluster (Windows Server Failovercluster) of pacemaker, dat clusterknooppuntcommunicatie en schrijfvergrendeling verwerkt.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -76,3 +76,61 @@ De stroom is als volgt:
 1. De toepassingsinstantie op VM1 neemt een exclusieve reservering om naar de schijf te schrijven terwijl het openen van leest naar de schijf van andere VM's.
 1. Deze reservering wordt afgedwongen op uw Azure-schijf.
 1. Alle knooppunten in het cluster kunnen nu vanaf de schijf worden gelezen. Slechts één knooppunt schrijft resultaten terug naar de schijf, namens alle knooppunten in het cluster.
+
+### <a name="ultra-disks-reservation-flow"></a>Reservestroom voor ultraschijven
+
+Ultra schijven bieden een extra gaspedaal, voor een totaal van twee gashendels. Hierdoor kan de reserveringsstroom van ultraschijven werken zoals beschreven in de eerdere sectie, of kan het de prestaties gedetailleerder beperken en distribueren.
+
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text=" ":::
+
+## <a name="ultra-disk-performance-throttles"></a>Korte schijfprestaties gashendels
+
+Ultra schijven hebben de unieke mogelijkheid om u in staat te stellen uw prestaties door het blootstellen van aanpasbare attributen en zodat u ze te wijzigen. Standaard zijn er slechts twee aanpasbare kenmerken, maar gedeelde ultraschijven hebben twee extra kenmerken.
+
+
+|Kenmerk  |Beschrijving  |
+|---------|---------|
+|DiskiOPSReadWrite     |Het totale aantal IOPS toegestaan in alle VM's montage van de share disk met schrijftoegang.         |
+|DiskMBpsReadWrite     |De totale doorvoer (MB/s) die is toegestaan voor alle VM's die de gedeelde schijf met schrijftoegang monteren.         |
+|DiskiOPSReadOnly*     |Het totale aantal IOPS toegestaan in alle VM's montage van de gedeelde schijf als ReadOnly.         |
+|DiskMBpsReadOnly*     |De totale doorvoer (MB/s) is toegestaan voor alle VM's die de gedeelde schijf als ReadOnly monteren.         |
+
+\*Alleen op gedeelde ultraschijven van toepassing
+
+In de volgende formules wordt uitgelegd hoe de prestatiekenmerken kunnen worden ingesteld, omdat ze gebruikersaanpasbaar zijn:
+
+- DiskiOPSReadWrite/DiskIOPSReadOnly: 
+    - IOPS-limieten van 300 IOPS/GiB, tot maximaal 160K IOPS per schijf
+    - Minimaal 100 IOPS
+    - DiskIOPSReadWrite + DiskIOPSReadOnly is ten minste 2 IOPS/GiB
+- DiskMBpsRead Write/DiskMBpsReadOnly:
+    - De doorvoerlimiet van een enkele schijf is 256 KiB/s voor elke ingerichte IOPS, tot een maximum van 2000 MBps per schijf
+    - De minimale gegarandeerde doorvoer per schijf is 4KiB/s voor elke ingerichte IOPS, met een totaal basisminimum van 1 MBps
+
+### <a name="examples"></a>Voorbeelden
+
+In de volgende voorbeelden worden een aantal scenario's weergegeven die laten zien hoe de beperking kan werken met gedeelde ultraschijven.
+
+#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Cluster met twee knooppunten met gedeelde clustervolumes
+
+Het volgende is een voorbeeld van een WSFC met 2 node met geclusterde gedeelde volumes. Met deze configuratie hebben beide VM's gelijktijdige schrijftoegang tot de schijf, waardoor het Volggaspedaal wordt gesplitst over de twee VM's en het ReadOnly-gaspedaal dat niet wordt gebruikt.
+
+:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV twee knooppunt ultra voorbeeld":::
+
+:::image-end:::
+
+#### <a name="two-node-cluster-without-cluster-share-volumes"></a>Twee knooppuntcluster zonder clusterdelen
+
+Het volgende is een voorbeeld van een WSFC met twee nodes die geen geclusterde gedeelde volumes gebruikt. Met deze configuratie heeft slechts één VM schrijftoegang tot de schijf. Dit resulteert in de ReadWrite gaspedaal wordt uitsluitend gebruikt voor de primaire VM en de ReadOnly gaspedaal alleen wordt gebruikt door de secundaire.
+
+:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV twee knooppunten geen csv ultra disk voorbeeld":::
+
+:::image-end:::
+
+#### <a name="four-node-linux-cluster"></a>Vier knooppunt Linux-cluster
+
+Het volgende is een voorbeeld van een 4-node Linux cluster met een enkele schrijver en drie scale-out lezers. Met deze configuratie heeft slechts één VM schrijftoegang tot de schijf. Dit resulteert in de ReadWrite gaspedaal wordt uitsluitend gebruikt voor de primaire VM en de ReadOnly gaspedaal wordt gesplitst door de secundaire VM's.
+
+:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Voorbeeld van ultrabeperking met vier node":::
+
+:::image-end:::

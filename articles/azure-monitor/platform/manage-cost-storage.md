@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/08/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 5b532908df4b8dd58177b7e128f4e55aa96458e6
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: d03b053f2aa5de4a6f7874dbf4e6ccb3a305a964
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409956"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992076"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken
 
@@ -88,6 +88,9 @@ U [de prijscategorie](https://docs.microsoft.com/azure/azure-monitor/platform/te
 Abonnementen die vóór 2 april 2018 een Log Analytics-werkruimte of Application Insights-bron hadden of die zijn gekoppeld aan een Enterprise Agreement die vóór 1 februari 2019 is gestart, blijven toegang hebben tot de oudere prijsniveaus: **Gratis**, **Standalone (Per GB)** en **Per knooppunt (OMS).**  Werkruimten in de prijscategorie Gratis hebben de dagelijkse gegevensopname beperkt tot 500 MB (met uitzondering van beveiligingsgegevensdie zijn verzameld door Azure Security Center) en de gegevensbewaring is beperkt tot 7 dagen. De prijscategorie Gratis is alleen bedoeld voor evaluatiedoeleinden. Werkruimten in de prijzenvan zelfstandige of per knooppunt hebben een gebruikersconfigureerbare retentie van 30 tot 730 dagen.
 
 De prijstarieftarieftarieven per knooppunt per bewaakte VM (knooppunt) op een uur granulariteit. Voor elk bewaakt knooppunt krijgt de werkruimte 500 MB aan gegevens per dag die niet worden gefactureerd. Deze toewijzing wordt geaggregeerd op werkruimteniveau. Gegevens die boven de geaggregeerde dagelijkse gegevenstoewijzing worden ingenomen, worden per GB gefactureerd als gegevensoverschrijding. Houd er rekening mee dat de service op uw factuur **inzicht en analyse** voor het gebruik van Logboekanalyse is als de werkruimte zich in de prijslaag Per knooppunt bevindt. 
+
+> [!TIP]
+> Als uw werkruimte toegang heeft tot de prijslaag **per knooppunt,** maar u zich afvraagt of deze minder kosten zou kosten in een pay-as-you-go-laag, u [de onderstaande query gebruiken](#evaluating-the-legacy-per-node-pricing-tier) om gemakkelijk een aanbeveling te krijgen. 
 
 Werkruimten die vóór april 2016 zijn gemaakt, hebben ook toegang tot de oorspronkelijke **standaard-** en **Premium-prijsniveaus** met vaste gegevensbewaring van respectievelijk 30 en 365 dagen. Nieuwe werkruimten kunnen niet worden gemaakt in de prijzenlagen **Standaard** of **Premium** en als een werkruimte uit deze lagen wordt verplaatst, kan deze niet worden verplaatst. 
 
@@ -434,6 +437,49 @@ Als u het aantal verschillende automatiseringsknooppunten wilt zien, gebruikt u 
        | extend lowComputer = tolower(Computer) | summarize by lowComputer, ComputerEnvironment
  ) on lowComputer
  | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc
+```
+
+## <a name="evaluating-the-legacy-per-node-pricing-tier"></a>De prijscategorie legacy Per Node evalueren
+
+De beslissing of werkruimten met toegang tot de oudere prijscategorie **Per knooppunt** beter af zijn in die laag of in een huidige laag betalen **per gebruik** of **capaciteitsreservering,** is vaak moeilijk te beoordelen voor klanten.  Dit houdt in dat u inzicht heeft in de afweging tussen de vaste kosten per bewaakt knooppunt in de prijscategorie Per knooppunt en de inbegrepen gegevenstoewijzing van 500 MB/node/dag en de kosten van het betalen voor ingenomen gegevens in de laag Pay-As-You-Go (Per GB). 
+
+Om deze beoordeling te vergemakkelijken, kan de volgende query worden gebruikt om een aanbeveling te doen voor de optimale prijscategorie op basis van de gebruikspatronen van een werkruimte.  In deze query wordt gekeken naar de bewaakte knooppunten en gegevens die in de afgelopen 7 dagen in een werkruimte zijn opgenomen en wordt voor elke dag geëvalueerd welke prijscategorie optimaal zou zijn geweest. Als u de query wilt gebruiken, moet u opgeven `workspaceHasSecurityCenter` of `true` `false`de werkruimte Azure Security Center gebruikt door de prijzen Per knooppunt en per GB die uw organizaiton ontvangt, in te stellen of vervolgens (optioneel) bij te werken. 
+
+```kusto
+// Set these paramaters before running query
+let workspaceHasSecurityCenter = true;  // Specify if the workspace has Azure Security Center
+let PerNodePrice = 15.; // Enter your price per node / month 
+let PerGBPrice = 2.30; // Enter your price per GB 
+// ---------------------------------------
+let SecurityDataTypes=dynamic(["SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent", "Update", "UpdateSummary"]);
+union withsource = tt * 
+| where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
+| summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
+| join (
+    Usage 
+    | where TimeGenerated > ago(8d)
+    | where StartTime >= startofday(now(-7d)) and EndTime < startofday(now())
+    | where IsBillable == true
+    | extend NonSecurityData = iff(DataType !in (SecurityDataTypes), Quantity, 0.)
+    | extend SecurityData = iff(DataType in (SecurityDataTypes), Quantity, 0.)
+    | summarize DataGB=sum(Quantity)/1000., NonSecurityDataGB=sum(NonSecurityData)/1000., SecurityDataGB=sum(SecurityData)/1000. by day=bin(StartTime, 1d)  
+) on day
+| extend AvgGbPerNode =  NonSecurityDataGB / nodesPerDay
+| extend PerGBDailyCost = iff(workspaceHasSecurityCenter,
+             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*nodesPerDay, 0.)) * PerGBPrice,
+             DataGB * PerGBPrice)
+| extend OverageGB = iff(workspaceHasSecurityCenter, 
+             max_of(DataGB - 1.0*nodesPerDay, 0.), 
+             max_of(DataGB - 0.5*nodesPerDay, 0.))
+| extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerGBPrice
+| extend Recommendation = iff(PerNodeDailyCost < PerGBDailyCost, "Per Node tier", 
+             iff(NonSecurityDataGB > 85., "Capacity Reservation tier", "Pay-as-you-go (Per GB) tier"))
+| project day, nodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
+| project day, Recommendation // Comment this line to see details
+| sort by day asc
 ```
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Een waarschuwing maken wanneer de gegevensverzameling hoog is

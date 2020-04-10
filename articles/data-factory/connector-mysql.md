@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 0bfae10d3b3b491c3662385055b23cc585a6e24d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcd8e400b978b2139de7a9f53b87cf6ec04e7484
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471156"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991991"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Gegevens uit MySQL kopiëren met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
@@ -65,7 +65,7 @@ Een typische verbindingstekenreeks is `Server=<server>;Port=<port>;Database=<dat
 
 | Eigenschap | Beschrijving | Opties | Vereist |
 |:--- |:--- |:--- |:--- |
-| SSLMode | Deze optie geeft aan of het stuurprogramma SSL-versleuteling en -verificatie gebruikt bij het maken van verbinding met MySQL. Bijvoorbeeld.`SSLMode=<0/1/2/3/4>`| UITGESCHAKELD (0) / VOORKEUR (1) **(Standaard)** / VEREIST (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nee |
+| SSLMode | Deze optie geeft aan of het stuurprogramma TLS-versleuteling en -verificatie gebruikt bij het maken van verbinding met MySQL. Bijvoorbeeld.`SSLMode=<0/1/2/3/4>`| UITGESCHAKELD (0) / VOORKEUR (1) **(Standaard)** / VEREIST (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nee |
 | GebruikSystemTrustStore | Met deze optie geeft u aan of u een CA-certificaat wilt gebruiken in het systeemvertrouwensarchief of uit een opgegeven PEM-bestand. Bijvoorbeeld `UseSystemTrustStore=<0/1>;`| Ingeschakeld (1) / Uitgeschakeld (0) **(standaard)** | Nee |
 
 **Voorbeeld:**

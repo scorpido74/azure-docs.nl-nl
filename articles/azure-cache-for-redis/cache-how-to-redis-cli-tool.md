@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: a48e69f19db88c7823365964c2fe9c0629a078bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75412672"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010763"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Het gereedschap Opdrachtregel van Redis gebruiken met Azure Cache voor Redis
 
@@ -38,9 +38,9 @@ In deze sectie haalt u de sleutels op uit de Azure-portal.
 
 ## <a name="enable-access-for-redis-cliexe"></a>Toegang inschakelen voor redis-cli.exe
 
-Met Azure Cache voor Redis is alleen de SSL-poort (6380) standaard ingeschakeld. Het `redis-cli.exe` opdrachtregelgereedschap biedt geen ondersteuning voor SSL. U hebt twee configuratieopties om het te gebruiken:
+Met Azure Cache voor Redis is alleen de TLS-poort (6380) standaard ingeschakeld. Het `redis-cli.exe` opdrachtregelgereedschap ondersteunt TLS niet. U hebt twee configuratieopties om het te gebruiken:
 
-1. [Schakel de niet-SSL-poort in (6379)](cache-configure.md#access-ports) - **Deze configuratie wordt niet aanbevolen** omdat in deze configuratie de toegangssleutels in duidelijke tekst via TCP worden verzonden. Deze wijziging kan de toegang tot uw cache in gevaar brengen. Het enige scenario waarin u deze configuratie overwegen, is wanneer u alleen toegang hebt tot een testcache.
+1. [Schakel de niet-TLS-poort in (6379)](cache-configure.md#access-ports) - **Deze configuratie wordt niet aanbevolen** omdat in deze configuratie de toegangssleutels in duidelijke tekst via TCP worden verzonden. Deze wijziging kan de toegang tot uw cache in gevaar brengen. Het enige scenario waarin u deze configuratie overwegen, is wanneer u alleen toegang hebt tot een testcache.
 
 2. Stunnel [stunnel](https://www.stunnel.org/downloads.html)downloaden en installeren.
 
@@ -74,7 +74,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![stunnel met redis-cli](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-Als u een testcache met de **onveilige** niet-SSL-poort gebruikt, voert u `redis-cli.exe` uw *hostnaam,* *poort*en *toegangssleutel* (primair of secundair) uit om verbinding te maken met de testcache.
+Als u een testcache met de **onveilige** niet-TLS-poort gebruikt, voert u `redis-cli.exe` uw *hostnaam,* *poort*en *toegangssleutel* (primair of secundair) uit om verbinding te maken met de testcache.
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey

@@ -1,20 +1,20 @@
 ---
 title: Een Azure-schaalset maken die beschikbaarheidszones gebruikt
 description: Meer informatie over het maken van Azure-schaalsets voor virtuele machines die beschikbaarheidszones gebruiken voor meer redundantie tegen uitval
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.author: cynthn
-ms.openlocfilehash: 11695eb889a10dc689b00399a37382a3b9772eae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: c8795f46e47b2ab43898f6f436b9ee6026a22fa7
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76274410"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011562"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Een virtuele machineschaalset maken die beschikbaarheidszones gebruikt
 
@@ -58,12 +58,12 @@ Wanneer u een schaalset in één zone maakt, bepaalt u in welke zone al die VM-e
 
 Als u beschikbaarheidszones wilt gebruiken, moet uw schaalset worden gemaakt in een [ondersteunde Azure-regio.](../availability-zones/az-overview.md#services-support-by-region) U een schaalset maken die beschikbaarheidszones gebruikt met een van de volgende methoden:
 
-- [Azure-portal](#use-the-azure-portal)
-- Azure-CLI
+- [Azure Portal](#use-the-azure-portal)
+- Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure Resource Manager-sjablonen](#use-azure-resource-manager-templates)
 
-## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 Het proces voor het maken van een schaalset die een beschikbaarheidszone gebruikt, is hetzelfde als beschreven in het [beginartikel.](quick-create-portal.md) Wanneer u een ondersteund Azure-gebied selecteert, u een schaalset maken in een of meer beschikbare zones, zoals in het volgende voorbeeld wordt weergegeven:
 

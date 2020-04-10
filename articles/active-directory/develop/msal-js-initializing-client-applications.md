@@ -13,12 +13,12 @@ ms.date: 04/12/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbd700c787a844fa7538ed198f76ed5c06af2c28
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084038"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010151"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Clienttoepassingen initialiseren met MSAL.js
 In dit artikel wordt beschreven dat microsoft-verificatiebibliotheek voor JavaScript (MSAL.js) wordt geïnitialiseren met een instantie van een gebruikersagenttoepassing. De user-agent applicatie is een vorm van openbare client applicatie waarin de client code wordt uitgevoerd in een user-agent, zoals een webbrowser. Deze clients slaan geen geheimen op, omdat de browsercontext openlijk toegankelijk is. Lees het [overzicht](msal-client-applications.md)voor meer informatie over de typen clienttoepassingen en toepassingsconfiguratie.
@@ -35,7 +35,7 @@ Voordat u een toepassing initialiseert, moet u deze eerst [registreren bij de Az
 
 U MSAL.js als volgt gebruiken in een eenvoudige JavaScript/Typescript-toepassing. De context van MSAL-verificatie initialiseren door te instantiën `UserAgentApplication` met een configuratieobject. De minimaal vereiste config om MSAL.js te initialiseren is de clientID van uw applicatie die u moet krijgen van de applicatie registratie portal.
 
-Voor verificatiemethoden met omleidingsstromen (en)`loginRedirect` `acquireTokenRedirect`moet u een callback expliciet `handleRedirectCallback()` registreren voor succes of fout via de methode. Dit is nodig omdat omleidingsstromen geen beloftes retourneren zoals de methoden met een pop-upervaring dat doen.
+Voor verificatiemethoden met omleidingsstromen (en)`loginRedirect` `acquireTokenRedirect`in MSAL.js 1.2.x of eerder moet u een callback expliciet registreren voor succes of fout via `handleRedirectCallback()` de methode. Dit is nodig omdat omleidingsstromen geen beloftes retourneren zoals de methoden met een pop-upervaring dat doen. Dit werd optioneel in MSAL.js versie 1.3.0.
 
 ```javascript
 // Configuration object constructed

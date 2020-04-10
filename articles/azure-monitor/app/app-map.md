@@ -4,12 +4,12 @@ description: Complexe toepassingstopologieën bewaken met de toepassingskaart
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0823dd5d880c778f9b7a231ac14f1cbba1940927
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657397"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989524"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Toepassingskaart: Triage Distributed Applications
 
@@ -155,7 +155,25 @@ Voor [ASP.NET Core-toepassingen](asp-net-core.md#adding-telemetryinitializers) `
 
 # <a name="java"></a>[Java](#tab/java)
 
-Vanaf Application Insights Java SDK 2.5.0 u de `<RoleName>` naam `ApplicationInsights.xml` van de cloudrol opgeven door bijvoorbeeld aan uw bestand toe te voegen.
+**Java-agent**
+
+Voor [Java-agent 3.0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) wordt de naam van de cloudrol als volgt ingesteld:
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "roleName": "my cloud role name"
+    }
+  }
+}
+```
+
+U ook de naam van ```APPLICATIONINSIGHTS_ROLE_NAME```de cloudrol instellen met behulp van de omgevingsvariabele.
+
+**Java-SDK**
+
+Als u de SDK gebruikt, te beginnen met Application Insights Java SDK 2.5.0, u de naam van de cloudrol opgeven door bijvoorbeeld aan uw `<RoleName>` `ApplicationInsights.xml` bestand toe te voegen.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>

@@ -5,24 +5,24 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: c8968eb72b29b004d94e25433da65d3262287147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1907eb7cde482927ee8e6b0a2522158f05c1808f
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367139"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010933"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook-uitvoering in Azure Automation
 
 Runbooks worden uitgevoerd op basis van de logica die erin is gedefinieerd. Als een runbook wordt onderbroken, wordt het runbook aan het begin opnieuw opgestart. Dit gedrag vereist dat u runbooks schrijft die ondersteunen bij het opnieuw starten als er tijdelijke problemen optreden.
 
-Als u een runbook start in Azure Automation, wordt een taak gestart. Een taak is één uitvoeringsinstantie van het runbook. Elke taak heeft toegang tot Azure-bronnen door een verbinding te maken met uw Azure-abonnement. De taak heeft alleen toegang tot resources in uw datacenter als deze bronnen toegankelijk zijn vanuit de openbare cloud.
+Als u een runbook start in Azure Automation, wordt een taak uitgevoerd, een enkele uitvoeringsinstantie van de runbook. Elke taak heeft toegang tot Azure-bronnen door een verbinding te maken met uw Azure-abonnement. De taak heeft alleen toegang tot resources in uw datacenter als deze bronnen toegankelijk zijn vanuit de openbare cloud.
 
 Azure Automation wijst een werknemer toe om elke taak uit te voeren tijdens de uitvoering van de runbook. Hoewel werknemers door veel Azure-accounts worden gedeeld, worden taken van verschillende Automatiseringsaccounts van elkaar geïsoleerd. U hebt geen controle over welke werknemer uw taakaanvraag bedient.
 
 Wanneer u de lijst met runbooks in de Azure-portal bekijkt, wordt de status weergegeven van elke taak die voor elke runbook is gestart. Azure Automation slaat taaklogboeken op voor maximaal 30 dagen. 
 
-In het volgende diagram wordt de levenscyclus van een runbook-taak voor [PowerShell-runbooks,](automation-runbook-types.md#powershell-runbooks) [grafische runbooks](automation-runbook-types.md#graphical-runbooks)en [PowerShell-werkstroomboeken](automation-runbook-types.md#powershell-workflow-runbooks)weergegeven .
+In het volgende diagram wordt de levenscyclus van een runbook-taak voor [PowerShell-runbooks,](automation-runbook-types.md#powershell-runbooks) [grafische runbooks](automation-runbook-types.md#graphical-runbooks)en [PowerShell Workflow-runbooks weergegeven.](automation-runbook-types.md#powershell-workflow-runbooks)
 
 ![Taakstatussen - PowerShell-werkstroom](./media/automation-runbook-execution/job-statuses.png)
 

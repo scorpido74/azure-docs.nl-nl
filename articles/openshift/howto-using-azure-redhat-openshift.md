@@ -7,17 +7,17 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro, openshift, az aro, rode hoed, cli
-ms.openlocfilehash: 423f09c135da51b8401c1933a4a271d0becd2c8f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9488ef593cf4ec8600dcb42ea4a2cefa4fcb1446
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349439"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998801"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Een Azure Red Hat OpenShift 4.3-cluster maken, openen en beheren
 
 > [!IMPORTANT]
-> Houd er rekening mee dat Azure Red Hat OpenShift 4.3 momenteel alleen beschikbaar is in een privépreview in Oost-VS. Private preview-acceptatie is alleen op uitnodiging. Zorg ervoor dat u uw abonnement registreert voordat u deze functie probeert in te schakelen: [Azure Red Hat OpenShift Private Preview-registratie](https://aka.ms/aro-preview-register)
+> Houd er rekening mee dat Azure Red Hat OpenShift 4.3 momenteel alleen beschikbaar is in een privépreview in Oost-VS en Oost-VS 2. Private preview-acceptatie is alleen op uitnodiging. Zorg ervoor dat u uw abonnement registreert voordat u deze functie probeert in te schakelen: [Azure Red Hat OpenShift Private Preview-registratie](https://aka.ms/aro-preview-register)
 
 > [!NOTE]
 > Preview-functies zijn selfservice en worden geleverd zoals het is en zoals beschikbaar en zijn uitgesloten van de service-level agreement (SLA) en beperkte garantie. Daarom zijn de functies niet bedoeld voor productiegebruik.
@@ -65,7 +65,7 @@ Met `az aro` de extensie u Azure Red Hat OpenShift-clusters rechtstreeks vanuit 
    az -v
    ...
    Extensions:
-   aro                                0.1.0
+   aro                                0.3.0
    ...
    ```
   
@@ -108,7 +108,7 @@ Volg deze stappen om een virtueel netwerk te maken met twee lege subnetten.
 4. Voeg twee lege subnetten toe aan uw virtuele netwerk.
 
    ```console
-    for subnet in "$CLUSTER-master" "$CLUSTER-worker"; do
+   for subnet in "$CLUSTER-master" "$CLUSTER-worker"; do
      az network vnet subnet create \
        -g "$RESOURCEGROUP" \
        --vnet-name vnet \
@@ -141,6 +141,8 @@ az aro create \
   --vnet vnet \
   --master-subnet "$CLUSTER-master" \
   --worker-subnet "$CLUSTER-worker" \
+  --cluster-resource-group "aro-$CLUSTER" \
+  --domain "$CLUSTER" \
   --pull-secret "$PULL_SECRET"
 ```
 

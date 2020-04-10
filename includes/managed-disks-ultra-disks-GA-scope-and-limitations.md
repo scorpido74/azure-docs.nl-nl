@@ -5,27 +5,36 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/18/2019
+ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b819264895e35c6ef4fe9dc5263444dcac17eaa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5e0e459800e7cb57672518597f3d04a74f53118
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74935849"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008627"
 ---
 Voor nu, ultra schijven hebben extra beperkingen, ze zijn als volgt:
 
-- Worden ondersteund in de volgende regio's, met een wisselend aantal beschikbaarheidszones per regio:
-    - VS - oost 2
-    - VS - oost
-    - VS - west 2
-    - Zuidoost-Azië
-    - Europa - noord
-    - Europa -west
-    - Verenigd Koninkrijk Zuid 
-- Kan alleen worden gebruikt met beschikbaarheidszones (beschikbaarheidssets en afzonderlijke VM-implementaties buiten zones hebben niet de mogelijkheid om een ultraschijf te koppelen)
+De enige redundantieopties voor de infrastructuur die momenteel beschikbaar zijn voor ultraschijven, zijn beschikbaarheidszones. VM's die andere redundantieopties gebruiken, kunnen geen ultraschijf bevestigen.
+
+In de volgende tabel worden de ultra-schijven in de regio's beschreven en de bijbehorende beschikbaarheidsopties:
+
+> [!NOTE]
+> Sommige beschikbaarheidszone binnen deze regio's bieden geen ultraschijven.
+
+|Regio's  |Geen redundantie van de infrastructuur  |Beschikbaarheidszones  |
+|---------|---------|---------|
+|VS - west     |Ja         |Nee         |
+|VS - west 2    |Nee         |Ja         |
+|VS - oost     |Nee         |Ja         |
+|VS - oost 2     |Nee         |Ja         |
+|Zuidoost-Azië     |Nee         |Ja         |
+|Europa - noord     |Nee         |Ja         |
+|Europa -west     |Nee         |Ja         |
+|Verenigd Koninkrijk Zuid     |Nee         |Ja         |
+
 - Worden alleen ondersteund in de volgende VM-reeks:
     - [ESv3 (ESv3)](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
     - [DSv3 (DSv3)](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
@@ -35,7 +44,8 @@ Voor nu, ultra schijven hebben extra beperkingen, ze zijn als volgt:
 - Niet elke VM-grootte is beschikbaar in elke ondersteunde regio met ultraschijven
 - Zijn alleen beschikbaar als dataschijven en ondersteunen alleen 4k fysieke sectorgrootte. Vanwege de 4K native sector grootte van Ultra Disk, zijn er een aantal toepassingen die niet compatibel zijn met ultra schijven. Een voorbeeld hiervan is Oracle Database, waarvoor release 12.2 of hoger nodig is om ultraschijven te ondersteunen.  
 - Kan alleen worden gemaakt als lege schijven  
-- Geen ondersteuning voor schijfmomentopnamen, VM-afbeeldingen, beschikbaarheidssets en Azure-schijfversleuteling
-- Ondersteuning voor integratie met Azure Backup of Azure Site Recovery
+- Ondersteunt momenteel geen schijfmomentopnamen, VM-afbeeldingen, beschikbaarheidssets, Azure Dedicated Hosts of Azure-schijfversleuteling
+- Ondersteunt momenteel geen integratie met Azure Backup of Azure Site Recovery
 - De huidige maximumlimiet voor IOPS op GA VM's is 80.000.
-- Als u wilt deelnemen aan een beperkte preview van een VM die 160.000 UltraDiskFeedback@microsoft IOPS met ultra schijven kan bereiken, u een e-mail sturen naar .com
+
+Azure ultra disks bieden standaard maximaal 16 TiB per regio per abonnement, maar ultraschijven ondersteunen op verzoek een hogere capaciteit. Neem contact op met Azure Support om een capaciteitsverhoging aan te vragen.

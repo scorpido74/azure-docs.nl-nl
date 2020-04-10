@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 03/11/2020
+ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 85457b62c905cb30ca22264eff1b6c677473f9b9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ce2fe66888893d82debcc412bb16752914d8a190
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745301"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011103"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Beheer van resource- en queryactiviteit in Azure Synapse Analytics controleren
 
@@ -33,8 +33,8 @@ De volgende statistieken zijn beschikbaar in de Azure-portal voor SQL Analytics.
 | Geheugenpercentage       | Geheugengebruik (SQL Server) voor alle knooppunten voor het gegevensmagazijn | Avg, Min, Max   |
 | Actieve query's          | Aantal actieve query's dat op het systeem wordt uitgevoerd             | Sum              |
 | Query's in de wachtrij          | Aantal query's in de wachtrij dat wacht om te beginnen met uitvoeren          | Sum              |
-| Succesvolle verbindingen  | Aantal succesvolle verbindingen met de gegevens                 | Som, Aantal       |
-| Mislukte verbindingen      | Aantal mislukte verbindingen met het gegevensmagazijn           | Som, Aantal       |
+| Succesvolle verbindingen  | Aantal succesvolle verbindingen (aanmeldingen) ten opzichte van de database | Som, Aantal       |
+| Mislukte verbindingen      | Aantal mislukte verbindingen (aanmeldingen) ten opzichte van de database | Som, Aantal       |
 | Geblokkeerd door firewall     | Aantal aanmeldingen in het datawarehouse dat is geblokkeerd     | Som, Aantal       |
 | DWU-limiet               | Doelstelling op serviceniveau van het datawarehouse                | Avg, Min, Max    |
 | DWU-percentage          | Maximum tussen CPU-percentage en Data IO-percentage        | Avg, Min, Max    |
@@ -42,7 +42,7 @@ De volgende statistieken zijn beschikbaar in de Azure-portal voor SQL Analytics.
 | Percentage cachehit    | (cache hits / cache miss) * 100 waar cache hits is de som van alle columnstore segmenten hits in de lokale SSD cache en cache missen is de columnstore segmenten mist in de lokale SSD cache samengevat over alle knooppunten | Avg, Min, Max    |
 | Door cache gebruikt percentage   | (gebruikte cache / cachecapaciteit) * 100 waar cache wordt gebruikt is de som van alle bytes in de lokale SSD-cache op alle knooppunten en cachecapaciteit is de som van de opslagcapaciteit van de lokale SSD-cache op alle knooppunten | Avg, Min, Max    |
 | Lokaal tempdb percentage | Lokaal tempdb-gebruik voor alle compute nodes - waarden worden elke vijf minuten uitgestoten | Avg, Min, Max    |
-| Grootte van de gegevensopslag (GB) | Totale grootte van de gegevens die in de database zijn geladen. Dit omvat gegevens die zich in CCI- en niet-CCI-tabellen bevinden, waarbij de grootte van niet-CCI-tabellen wordt gemeten aan de basis van de totale bestandsgrootte van de database | Sum |
+| Grootte van de gegevensopslag (GB) | Totale grootte van de database. Dit omvat gebruikte, gereserveerde en niet-toegewezen ruimte. Niet-toegewezen ruimte wordt bewaard voor de database om query- en laadprestaties te optimaliseren. | Sum |
 | Grootte van noodherstel (GB) | Totale grootte van de geo-back-up genomen om de 24 uur | Sum |
 | Grootte van momentopnameopslag (GB) | Totale grootte van momentopnamen die zijn gemaakt om databaseherstelpunten te bieden. Dit omvat geautomatiseerde en door de gebruiker gedefinieerde momentopnamen. | Sum |
 

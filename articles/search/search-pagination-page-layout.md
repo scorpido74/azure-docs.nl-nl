@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: df80668f5e4a31d6247e9e9806e3de0667fd9036
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 451e83fa6ab547536a4cfd85304930e749a8247f
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656018"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998395"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Werken met zoekresultaten in Azure Cognitive Search
 
@@ -94,7 +94,11 @@ Een andere optie is het gebruik van een [aangepast scoreprofiel](index-add-scori
 
 Hithighlighting verwijst naar tekstopmaak (zoals vetgedrukte of gele hooglichten) die is toegepast op overeenkomende termen in een resultaat, waardoor de overeenkomst gemakkelijk kan worden gevonden. Instructies voor het markeren van treffers worden op de [queryaanvraag](https://docs.microsoft.com/rest/api/searchservice/search-documents)gegeven. De zoekmachine omsluit de overeenkomende `highlightPreTag` `highlightPostTag`term in tags en , en uw code verwerkt het antwoord (bijvoorbeeld het toepassen van een vet lettertype).
 
-Opmaak wordt toegepast op hele term query's. In het volgende voorbeeld worden de termen "zanderig", "zand", "stranden", "strand" gevonden in het veld Beschrijving, gemarkeerd voor markeringen. Query's op gedeeltelijke voorwaarden, zoals fuzzy search of wildcard search die resulteren in query uitbreiding in de engine, kan geen gebruik maken van hit highlighting.
+Opmaak wordt toegepast op hele term query's. In het volgende voorbeeld worden de termen "zanderig", "zand", "stranden", "strand" gevonden in het veld Beschrijving, gemarkeerd voor markeringen. Query's die query-uitbreiding in de engine activeren, zoals fuzzy en wildcard search, hebben beperkte ondersteuning voor hithighlighting.
+
+```http
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+```
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 

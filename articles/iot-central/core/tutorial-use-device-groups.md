@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 758ac037fcd224d02f62239b3408b41b50390147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58fc71ab05c34e8acd252e7a1984c55996d1b3a7
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77167244"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999043"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>Zelfstudie: Apparaatgroepen gebruiken om apparaattelemetrie te analyseren
 
@@ -29,7 +29,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, moet u de [toepassing Een Azure IoT Central maken](./quick-deploy-iot-central.md) en een gesimuleerd apparaat toevoegen aan uw [IoT Central-toepassing](./quick-create-pnp-device.md) snel start om de **MXChip IoT DevKit-apparaatsjabloon** te maken om mee te werken.
+Voordat u begint, moet u de [toepassing Een Azure IoT Central maken](./quick-deploy-iot-central.md) en een gesimuleerd apparaat toevoegen aan uw [IoT Central-toepassing](./quick-create-simulated-device.md) snel start om de **MXChip IoT DevKit-apparaatsjabloon** te maken om mee te werken.
 
 ## <a name="create-simulated-devices"></a>Gesimuleerde apparaten maken
 

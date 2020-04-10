@@ -3,12 +3,12 @@ title: Leer de inhoud van virtuele machines te controleren
 description: Lees hoe Azure Policy de gastconfiguratieagent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 889e99e94b2c81a6654fcbe7851e93c40163a0c6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9e8486af2a9b7ab9e18b8c16f08e51759d1123d7
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985317"
+ms.locfileid: "80998845"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>De gastconfiguratie van Azure Policy begrijpen
 
@@ -91,6 +91,13 @@ Windows Server Nano Server wordt in geen enkele versie ondersteund.
 
 Om te communiceren met de gastconfiguratiebronprovider in Azure, hebben machines uitgaande toegang tot Azure-datacenters op poort **443**nodig. Als u een virtueel privénetwerk in Azure gebruikt dat uitgaand verkeer niet toestaat, configureert u uitzonderingen met regels [voor netwerkbeveiliging.](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)
 De [servicetag](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" kan worden gebruikt om naar de gastconfiguratieservice te verwijzen.
+
+## <a name="azure-managed-identity-requirements"></a>Azure beheerde identiteitsvereisten
+
+Met het beleid **DeployIfNotExists** dat de extensie toevoegt aan virtuele machines, u ook een beheerde identiteit met systeemtoegewezen inschakelen als deze niet bestaat.
+
+> [!WARNING]
+> Vermijd het inschakelen van door de gebruiker toegewezen beheerde identiteit aan virtuele machines in het bereik voor beleidsregels die beheerde identiteit met systeemtoegewezen status inschakelen. De door de gebruiker toegewezen identiteit wordt vervangen en kan niet meer reageren.
 
 ## <a name="guest-configuration-definition-requirements"></a>Vereisten voor de definitie van gastconfiguratie
 

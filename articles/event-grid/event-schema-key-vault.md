@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 17404388b2b6c3fee1c6ab666f7233a66817f642
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe186e2ba8f3cafeb4d186066ba65ae036302f70
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082869"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010508"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Event Grid-gebeurtenisschema voor Azure Key Vault (voorbeeld)
 
@@ -25,13 +25,13 @@ Een Azure Key Vault-account genereert de volgende gebeurtenistypen:
 | Volledige naam van gebeurtenis | Naam van de weergave van gebeurtenissen | Beschrijving |
 | ---------- | ----------- |---|
 | Microsoft.keyvault.CertificateNewVersionGemaakt | Nieuwe versie certificaat gemaakt | Geactiveerd wanneer een nieuw certificaat of nieuwe certificaatversie wordt gemaakt. |
-| Microsoft.KeyVault.CertificateNearExpiry | Certificaat bijna verlopen | Geactiveerd wanneer de huidige versie van het certificaat bijna verloopt. (De standaardinstelling is 30 dagen voor de vervaldatum.) |
+| Microsoft.KeyVault.CertificateNearExpiry | Certificaat bijna verlopen | Geactiveerd wanneer de huidige versie van het certificaat bijna verloopt. (De gebeurtenis wordt 30 dagen voor de vervaldatum geactiveerd.) |
 | Microsoft.KeyVault.CertificateVerlopen | Certificaat is verlopen | Geactiveerd wanneer het certificaat is verlopen. |
 | Microsoft.KeyVault.KeyNewVersionGemaakt | Belangrijkste nieuwe versie gemaakt | Geactiveerd wanneer een nieuwe sleutel of nieuwe sleutelversie wordt gemaakt. |
-| Microsoft.KeyVault.KeyNearExpiry | Sleutel bijna verlopen | Geactiveerd wanneer de huidige versie van een sleutel bijna verloopt. (De standaardinstelling is 30 dagen voor de vervaldatum.) |
+| Microsoft.KeyVault.KeyNearExpiry | Sleutel bijna verlopen | Geactiveerd wanneer de huidige versie van een sleutel bijna verloopt. (De gebeurtenis wordt 30 dagen voor de vervaldatum geactiveerd.) |
 | Microsoft.KeyVault.KeyVerlopened | Sleutel verlopen | Geactiveerd wanneer een sleutel is verlopen. |
 | Microsoft.KeyVault.SecretNewVersionGemaakt | Geheime nieuwe versie gemaakt | Geactiveerd wanneer een nieuwe geheime of nieuwe geheime versie wordt gemaakt. |
-| Microsoft.KeyVault.SecretNearExpiry | Geheim bijna verlopen | Geactiveerd wanneer de huidige versie van een geheim bijna verloopt. (De standaardinstelling is 30 dagen voor de vervaldatum.) |
+| Microsoft.KeyVault.SecretNearExpiry | Geheim bijna verlopen | Geactiveerd wanneer de huidige versie van een geheim bijna verloopt. (De gebeurtenis wordt 30 dagen voor de vervaldatum geactiveerd.) |
 | Microsoft.KeyVault.SecretVerlopen | Geheim verlopen | Geactiveerd wanneer een geheim is verlopen. |
 
 ## <a name="event-examples"></a>Voorbeelden van gebeurtenissen

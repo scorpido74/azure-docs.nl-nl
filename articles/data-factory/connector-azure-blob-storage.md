@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 214b2868f9733dfc6790c492543fb86a832f18b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.openlocfilehash: dd13a08b3c2f63baf509efbb730032edd4eba61a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065513"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011545"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Gegevens kopiëren en transformeren in Azure Blob-opslag met Azure Data Factory
 
@@ -25,7 +25,8 @@ ms.locfileid: "80065513"
 
 In dit artikel wordt beschreven hoe u Activiteit kopiëren in Azure Data Factory gebruikt om gegevens van en naar Azure Blob-opslag te kopiëren en gegevensstroom te gebruiken om gegevens te transformeren in Azure Blob-opslag. Lees het [inleidende artikel](introduction.md)voor meer informatie over Azure Data Factory.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+>[!TIP]
+>Voor het migratiescenario voor gegevensbestanden of gegevensmagazijnen vindt u meer informatie uit [Azure Data Factory gebruiken om gegevens uit uw gegevensmeer of gegevensmagazijn naar Azure te migreren.](data-migration-guidance-overview.md)
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
@@ -136,11 +137,6 @@ Een handtekening voor gedeelde toegang biedt gedelegeerde toegang tot bronnen in
 > [!NOTE]
 >- Data Factory ondersteunt nu zowel **handtekeningen voor gedeelde toegang voor services** als handtekeningen voor gedeelde **accounttoegang.** Zie Beperkte toegang tot Azure [Storage-bronnen verlenen met behulp van gedeelde toegangshandtekeningen (SAS)](../storage/common/storage-sas-overview.md)voor meer informatie over handtekeningen voor gedeelde toegang.
 >- In latere gegevenssetconfiguratie is het mappad het absolute pad dat begint vanaf containerniveau. U moet er een configureren die is afgestemd op het pad in uw SAS URI.
-
-> [!TIP]
-> Als u een handtekening voor gedeelde servicewilt genereren voor uw opslagaccount, u de volgende PowerShell-opdrachten uitvoeren. Vervang de tijdelijke aanduidingen en geef de benodigde toestemming.
-> `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
-> `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Als u verificatie van gedeelde toegangshandtekeningen wilt gebruiken, worden de volgende eigenschappen ondersteund:
 

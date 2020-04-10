@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
-ms.openlocfilehash: 1ce91aede9328237aef8e5d5b7d74a3b72f10d50
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: cbf43f60a438c740c087ddd2344c982da09da634
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887448"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007854"
 ---
 In de volgende tabel ziet u de gebruikslimiet voor de prijslaag Azure Maps S0. De gebruikslimiet is afhankelijk van de prijscategorie. 
 
@@ -26,6 +26,7 @@ In de volgende tabel ziet u de limiet voor de gegevensgrootte voor Azure Maps. D
 
 | Resource                              | Limiet |
 |---------------------------------------|:---------------------:|
-| Maximale grootte van gegevens |   1 GB  |
+| Maximale grootte van gegevens |   50 MB  |
+
 
 Zie [Azure Maps-prijzen](https://azure.microsoft.com/pricing/details/azure-maps/)voor meer informatie over de prijsniveaus van Azure Maps.

@@ -6,16 +6,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: e2b1ed693ea57e3414d465a57a5ba2b1203f67c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f71476d7d41ae45d2f1014ed1b257870622487e6
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277984"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010831"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure-cache voor Redis maken en beheren met de klassieke CLI van Azure
 > [!div class="op_single_selector"]
-> * [Powershell](cache-how-to-manage-redis-cache-powershell.md)
+> * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
 > * [Klassieke versie van Azure CLI](cache-manage-cli.md)
 >
 
@@ -43,7 +43,7 @@ De volgende eigenschappen worden gebruikt bij het maken en bijwerken van Azure C
 | location |-l, --locatie |Locatie om cache te maken. |
 | grootte |-z, --size |Grootte van de Azure-cache voor Redis. Geldige waarden: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
 | sku |-x, --sku |Redis-SKU. Moet een van : [Basic, Standaard, Premium] |
-| EnableNonSslPort |-e, --enable-non-ssl-port |De eigenschap NonSslPort van de Azure-cache voor Redis inschakelen. Deze vlag toevoegen als u de niet-SSL-poort voor uw cache wilt inschakelen |
+| EnableNonSslPort |-e, --enable-non-ssl-port |De eigenschap NonSslPort van de Azure-cache voor Redis inschakelen. Voeg deze vlag toe als u de niet-TLS/SSL-poort voor uw cache wilt inschakelen |
 | Redis-configuratie |-c, --redis-configuratie |Redis-configuratie. Voer hier een json-opgemaakte reeks configuratiesleutels en -waarden in. Opmaak:"{":""""":":"""}" |
 | Redis-configuratie |-f, --redis-configuratie-bestand |Redis-configuratie. Voer hier het pad in van een bestand met configuratiesleutels en -waarden. Opmaak voor de bestandsinvoer: {"":""""":""""} |
 | Shard telling |-r, --shard-telling |Aantal shards dat moet worden gemaakt op een Premium-clustercache met clustering. |
@@ -108,7 +108,7 @@ Voer de `azure rediscache create -h` opdracht uit voor meer informatie over deze
     help:      -l, --location <location>                                Location to create cache.
     help:      -z, --size <size>                                        Size of the Azure Cache for Redis. Valid values: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4]
     help:      -x, --sku <sku>                                          Redis SKU. Should be one of : [Basic, Standard, Premium]
-    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the Non SSL Port for your cache
+    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the non-TLS/SSL Port for your cache
     help:      -c, --redis-configuration <redis-configuration>          Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:"{"<key1>":"<value1>","<key2>":"<value2>"}"
     help:      -f, --redis-configuration-file <redisConfigurationFile>  Redis Configuration. Enter the path of a file containing configuration keys and values here. Format for the file entry: {"<key1>":"<value1>","<key2>":"<value2>"}
     help:      -r, --shard-count <shard-count>                          Number of Shards to create on a Premium Cluster Cache

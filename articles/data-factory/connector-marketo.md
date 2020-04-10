@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 74d56d553c4049a98b4401c66b27ae33e31da5c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40a16d559a96c88a864ef809d40d798b99746230
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927120"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992093"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Gegevens van Marketo kopiëren met Azure Data Factory (Voorbeeld)
 
@@ -37,7 +37,7 @@ U gegevens van Marketo kopiëren naar elk ondersteund sink data store. Zie de ta
 Azure Data Factory biedt een ingebouwd stuurprogramma om connectiviteit mogelijk te maken, daarom hoeft u geen stuurprogramma handmatig te installeren met deze connector.
 
 >[!NOTE]
->Deze Marketo connector is gebouwd bovenop de Marketo REST API. Houd er rekening mee dat de Marketo [gelijktijdige aanvraaglimiet](https://developers.marketo.com/rest-api/) heeft aan de servicezijde. Als u fouten maakt met de tekst "Error while trying to use REST API: Max rate limit '100' exceedd with in in '20' secs (606)" of "Error while trying to use REST API: Concurrent access limit '10' reached (615)", overweeg dan om de gelijktijdige kopieeractiviteit te verminderen tot het aantal aanvragen voor de service te verminderen.
+>Deze Marketo connector is gebouwd bovenop de Marketo REST API. Houd er rekening mee dat de Marketo [gelijktijdige aanvraaglimiet](https://developers.marketo.com/rest-api/) heeft aan de servicezijde. Als u fouten maakt met de tekst "Error while trying to use REST API: Max rate limit '100' exceeded with in '20' secs (606)" or "Error while trying to use REST API: Concurrent access limit '10' reached (615)", overweeg dan om de gelijktijdige kopieeractiviteit te verminderen om het aantal aanvragen voor de service te verminderen.
 
 ## <a name="getting-started"></a>Aan de slag
 
@@ -56,8 +56,8 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service van Mark
 | clientId | De klant-id van uw Marketo-service.  | Ja |
 | clientGeheim | Het klantgeheim van uw Marketo-service. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Ja |
 | gebruikVersleutelde eindpunten | Hiermee geeft u op of de eindpunten van de gegevensbron zijn versleuteld met HTTPS. De standaardwaarde is waar.  | Nee |
-| useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server wanneer deze verbinding maakt via SSL. De standaardwaarde is waar.  | Nee |
-| usePeerVerification | Hiermee geeft u op of u de identiteit van de server moet verifiëren wanneer u verbinding maakt via SSL. De standaardwaarde is waar.  | Nee |
+| useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server wanneer u verbinding maakt via TLS. De standaardwaarde is waar.  | Nee |
+| usePeerVerification | Hiermee geeft u op of u de identiteit van de server moet verifiëren wanneer u verbinding maakt via TLS. De standaardwaarde is waar.  | Nee |
 
 **Voorbeeld:**
 

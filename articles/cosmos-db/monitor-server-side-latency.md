@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 38f5778e363a16117bab482a758666ec81352afd
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 62c10a2ada9ff7d3bf7090028dd9684192517d02
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887565"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991390"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>De latentie aan serverzijde controleren op bewerkingen in een Azure Cosmos DB-container of -account
 
@@ -35,11 +35,11 @@ U het diagnostisch logboek opzoeken om de grootte van de geretourneerde gegevens
 
 1. Selecteer in het deelvenster **Statistieken** > **Selecteer een resource** > kies het vereiste **abonnement**en **de resourcegroep**. Selecteer **voor**het type Resource **Azure Cosmos DB-accounts**een van uw bestaande Azure Cosmos-accounts en selecteer **Toepassen**.
    
-   ![Kies een Cosmos DB-account om statistieken weer te geven](./media/monitor-server-side-latency/select-cosmosdb-account.png)
+   ![Kies een Cosmos DB-account om statistieken weer te geven](./media/monitor-server-side-latency/select-cosmos-db-account.png)
 
 1. Selecteer vervolgens de **metriek serverzijde latentie** in de lijst met beschikbare statistieken. Zie het artikel [Statistieken per rubriek](monitor-cosmos-db-reference.md) voor meer informatie over alle beschikbare statistieken in deze lijst. In dit voorbeeld selecteren we **Serverzijdelatentie** en **Avg** als aggregatiewaarde. Naast deze details u ook de **granulariteit** **tijdenen en** tijd van de statistieken selecteren. Bij max u statistieken van de afgelopen 30 dagen bekijken.  Nadat u het filter hebt toegepast, wordt een grafiek weergegeven op basis van uw filter. U het gemiddelde aantal verbruikte aanvraageenheden per minuut voor de geselecteerde periode bekijken.  
 
-   ![Kies de latentiestatistiek serverzijde in de Azure-portal](./media/monitor-server-side-latency/serverside-latency-metric.png)
+   ![Kies de latentiestatistiek serverzijde in de Azure-portal](./media/monitor-server-side-latency/server-side-latency-metric.png)
 
 ## <a name="filters-for-server-side-latency"></a>Filters voor latentie aan serverzijde
 
@@ -49,7 +49,7 @@ Als u de statistieken wilt filteren, selecteert u **Filter toevoegen** en kiest 
 
 De **latentiestatistieken aan serverzijde** voor elke bewerking worden weergegeven zoals weergegeven in de volgende afbeelding:
 
-![Filters voor latentiestatistieken aan serverzijde](./media/monitor-server-side-latency/serverside-latency-filters.png)
+![Filters voor latentiestatistieken aan serverzijde](./media/monitor-server-side-latency/server-side-latency-filters.png)
 
 U de statistieken ook groeperen met de optie **Splitsen toepassen.**  
 

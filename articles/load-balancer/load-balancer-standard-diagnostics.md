@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 1d6fa75beabdc36750525310008add9594562228
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 951f24ad06014f6d95f10c91e1bad8e99bbbc736
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887109"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991770"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnose van Standard Load Balancer met metrische gegevens, meldingen en status van resources
 
@@ -86,6 +86,7 @@ Waarschuwingen configureren:
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Veelvoorkomende diagnostische scenario's en aanbevolen weergaven
 
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Is het gegevenspad omhoog en beschikbaar voor mijn load balancer VIP?
+<details><summary>Uitvouwen</summary>
 
 De statistiek VIP-beschikbaarheid beschrijft de status van het gegevenspad in de regio naar de compute host waar uw VM's zich bevinden. De statistiek is een weerspiegeling van de status van de Azure-infrastructuur. U de statistiek gebruiken om:
 - Bewaken van de externe beschikbaarheid van uw service
@@ -113,9 +114,11 @@ Vip beschikbaarheid mislukt om de volgende redenen:
 Voor diagnostische doeleinden u de [statistiek Beschikbaarheid van gegevenspad gebruiken samen met de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status .](#vipavailabilityandhealthprobes)
 
 Gebruik **Gemiddeld** als aggregatie voor de meeste scenario's.
+</details>
 
 #### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>Reageren de back-end exemplaren voor mijn VIP op sondes?
-
+<details>
+  <summary>Uitvouwen</summary>
 De statusstatistiek status status van de status van de status van de status van de status van de status beschrijft de statusstatus van uw toepassing zoals die door u is geconfigureerd wanneer u de statussonde van uw load balancer configureert. De load balancer gebruikt de status van de statussonde om te bepalen waar nieuwe stromen moeten worden verzonden. Statussen zijn afkomstig van een Azure-infrastructuuradres en zijn zichtbaar in het gastbesturingssysteem van de VM.
 
 Ga als u op zoek naar de status van de status van de status van de status van de status van de sonde voor uw standaardloadbalancer:To get the health probe status for your Standard Load Balancer
@@ -127,9 +130,11 @@ Health probes mislukken om de volgende redenen:
 - Uw sonde is niet toegestaan door de Network Security Group, de vm's guest OS firewall of de application layer filters.
 
 Gebruik **Gemiddeld** als aggregatie voor de meeste scenario's.
+</details>
 
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>Hoe controleer ik mijn uitgaande verbindingsstatistieken? 
-
+<details>
+  <summary>Uitvouwen</summary>
 De statistiek SNAT-verbindingen beschrijft het volume van geslaagde en mislukte verbindingen voor [uitgaande stromen](https://aka.ms/lboutbound).
 
 Een mislukt verbindingsvolume van meer dan nul duidt op snat-poortuitputting. U moet verder onderzoeken om te bepalen wat deze fouten kan veroorzaken. SNAT-poortuitputting manifesteert zich als een verzuim om een [uitgaande stroom](https://aka.ms/lboutbound)vast te stellen . Bekijk het artikel over uitgaande verbindingen om inzicht te krijgen in de scenario's en mechanismen op het werk en om te leren hoe u de SNAT-poortuitputting beperken en ontwerpen. 
@@ -141,10 +146,12 @@ Ga als u snat-verbindingsstatistieken op de eerste plaats zet:
 ![SNAT-verbinding](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
 *Afbeelding: aantal SNAT-verbindingspunten van Load Balancer*
+</details>
 
 
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>Hoe controleer ik het gebruik en de toewijzing van mijn SNAT-poort?
-
+<details>
+  <summary>Uitvouwen</summary>
 De snat-gebruiksstatistiek geeft aan hoeveel unieke stromen er zijn ingesteld tussen een internetbron en een backend VM- of virtuele machineschaalset die zich achter een load balancer bevindt en geen openbaar IP-adres heeft. Door dit te vergelijken met de SNAT-toewijzingsstatistiek, u bepalen of uw service last heeft van of het risico loopt op SNAT-uitputting en resulterende uitgaande stroomuitval. 
 
 Als uw statistieken het risico van [een outstroomfout](https://aka.ms/lboutbound) aangeven, raadpleegt u het artikel en neemt u stappen om dit te beperken om de servicestatus te waarborgen.
@@ -166,9 +173,11 @@ Ga als u snat-poortgebruik en -toewijzing bekijken:
 ![SNAT-gebruik per backend-instantie](./media/load-balancer-standard-diagnostics/snat-usage-split.png)
 
 *Figuur: TCP SNAT-poortgebruik per backend-instantie*
+</details>
 
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Hoe controleer ik inkomende/uitgaande verbindingspogingen voor mijn service?
-
+<details>
+  <summary>Uitvouwen</summary>
 Een statistiek met een SYN-pakketten beschrijft het volume van TCP SYN-pakketten, die zijn aangekomen of verzonden (voor [uitgaande stromen)](https://aka.ms/lboutbound)die zijn gekoppeld aan een specifieke front-end. U deze statistiek gebruiken om inzicht te krijgen in TCP-verbindingspogingen voor uw service.
 
 Gebruik **Total** als aggregatie voor de meeste scenario's.
@@ -176,10 +185,12 @@ Gebruik **Total** als aggregatie voor de meeste scenario's.
 ![SYN-verbinding](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
 *Figuur: AANTAL LOAD Balancer SYN*
+</details>
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>Hoe controleer ik het verbruik van mijn netwerkbandbreedte? 
-
+<details>
+  <summary>Uitvouwen</summary>
 De statistiek bytes en pakkettellers beschrijft het volume van bytes en pakketten die per front-end worden verzonden of ontvangen door uw service.
 
 Gebruik **Total** als aggregatie voor de meeste scenario's.
@@ -193,9 +204,11 @@ Ga als u de statistieken over het aantal pere of het aantal pakketten wilt krijg
 ![Aantal Byte](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
 *Figuur: Aantal lastenbalansen per saldo*
+</details>
 
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>Hoe diagnosticeer ik de implementatie van mijn load balancer?
-
+<details>
+  <summary>Uitvouwen</summary>
 Door een combinatie van de VIP-beschikbaarheid en health probe metrics op een enkele grafiek u identificeren waar te zoeken naar het probleem en het probleem op te lossen. U de zekerheid krijgen dat Azure correct werkt en deze kennis gebruiken om definitief te bepalen dat de configuratie of toepassing de hoofdoorzaak is.
 
 U statussen van sondestatistieken gebruiken om te begrijpen hoe Azure de status van uw implementatie bekijkt volgens de configuratie die u hebt opgegeven. Kijken naar de gezondheid sondes is altijd een grote eerste stap in het toezicht of het bepalen van een oorzaak.
@@ -211,6 +224,7 @@ In de grafiek worden de volgende gegevens weergegeven:
 - De status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de gezondheid (DIP), aangegeven door het paarse spoor, bevindt zich op 0 procent aan het begin van de grafiek. Het omcirkelde gebied in groene hoogtepunten waar de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de ziekte werd en op welk punt de implementatie van de klant nieuwe stromen kon accepteren.
 
 De grafiek stelt klanten in staat om de implementatie zelf op te lossen zonder te hoeven raden of ondersteuning te vragen of er andere problemen optreden. De service was niet beschikbaar omdat de statussondes niet beschikbaar waren vanwege een verkeerde configuratie of een mislukte toepassing.
+</details>
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Status van resourcestatus
 

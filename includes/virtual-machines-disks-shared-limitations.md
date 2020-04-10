@@ -5,19 +5,30 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/18/2020
+ms.date: 04/09/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 77fc6070010791bf96c944114929eba95842c9d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e53dda2c6cb293a9204f344d152daa1937aa38b
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77471680"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008330"
 ---
-In preview zijn beheerde schijven die gedeelde schijven hebben ingeschakeld, onderworpen aan de volgende beperkingen:
+In preview is het inschakelen van gedeelde schijven alleen beschikbaar voor een subset van schijftypen. Momenteel kunnen alleen ultraschijven en premium SSD's gedeelde schijven inschakelen. Voor elke beheerde schijf die gedeelde schijven heeft ingeschakeld, gelden de volgende beperkingen, georganiseerd op schijftype:
 
-- Momenteel alleen beschikbaar met premium SSD's.
+### <a name="ultra-disks"></a>Ultraschijven
+
+Ultra schijven hebben hun eigen aparte lijst van beperkingen, los van gedeelde schijven. Raadpleeg Azure [ultradisks](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md)gebruiken voor ultraschijfbeperkingen.
+
+Bij het delen van ultraschijven hebben ze de volgende extra beperkingen:
+
+- Momenteel alleen ondersteund in West US.
+- Momenteel beperkt tot Azure Resource Manager- of SDK-ondersteuning.
+- Alleen basisschijven kunnen worden gebruikt met sommige versies van windows server failovercluster, voor meer informatie zie [Failover-hardwarevereisten en opslagopties](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
+
+### <a name="premium-ssds"></a>Premium-SSD's
+
 - Momenteel alleen ondersteund in de Regio West Central US.
 - Alle virtuele machines die een schijf delen, moeten in dezelfde [plaatsingsgroepen](../articles/virtual-machines/windows/proximity-placement-groups.md)in de nabijheid worden geïmplementeerd.
 - Kan alleen worden ingeschakeld op gegevensschijven, niet op os-schijven.

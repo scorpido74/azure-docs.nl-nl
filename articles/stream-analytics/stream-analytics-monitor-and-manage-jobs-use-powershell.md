@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 7781f35fe7c17e4a0f307f559945caf648b23f6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 295141dfd9b84428e2ee69354ab0c249fa46d1b6
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75431704"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998890"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Stream Analytics-taken bewaken en beheren met Azure PowerShell-cmdlets
 Meer informatie over het bewaken en beheren van Stream Analytics-bronnen met Azure PowerShell-cmdlets en powershell-scripting waarmee basistaken van Stream Analytics worden uitgevoerd.
@@ -41,7 +41,7 @@ Azure PowerShell 1.0:
 # Log in to your Azure account
 Connect-AzAccount
 # Select the Azure subscription you want to use to create the resource group.
-Get-AzSubscription �SubscriptionName "your sub" | Select-AzSubscription
+Get-AzSubscription -SubscriptionName "your sub" | Select-AzSubscription
 # If Stream Analytics has not been registered to the subscription, remove remark symbol below (#)to run the Register-AzureProvider cmdlet to register the provider namespace.
 #Register-AzResourceProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
 # Create an Azure resource group
@@ -50,7 +50,7 @@ New-AzResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
 > [!NOTE]
-> Stream Analytics-taken die programmatisch zijn gemaakt, hebben geen standaard bewaking ingeschakeld.  U de bewaking in de Azure Portal handmatig inschakelen door naar de pagina Monitor van de taak te navigeren en op de knop Inschakelen te klikken of u dit programmatisch doen door de stappen te volgen die zich in [Azure Stream Analytics bevinden - Taken van Stream Analytics programmatisch controleren.](stream-analytics-monitor-jobs.md)
+> Stream Analytics-taken die programmatisch zijn gemaakt, hebben geen standaard bewaking ingeschakeld.  U de bewaking in de Azure Portal handmatig inschakelen door naar de monitorpagina van de taak te navigeren en op de knop Inschakelen te klikken of u dit programmatisch doen door de stappen te volgen die zich bij [Azure Stream Analytics bevinden - Stream Analytics-taken programmatisch controleren.](stream-analytics-monitor-jobs.md)
 > 
 > 
 
@@ -133,13 +133,13 @@ Met deze Opdracht PowerShell retourneert u informatie over alle ingangen die zij
 Azure PowerShell 0.9.8:  
 
 ```powershell
-Get-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name EntryStream
+Get-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EntryStream
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-Get-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name EntryStream
+Get-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EntryStream
 ```
 
 Met deze opdracht PowerShell retourneert u informatie over de invoer met de naam EntryStream die is gedefinieerd in de taak StreamingJob.
@@ -168,13 +168,13 @@ Met deze PowerShell-opdracht retourneert u informatie over de uitvoer die is ged
 Azure PowerShell 0.9.8:  
 
 ```powershell
-Get-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name Output
+Get-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name Output
+Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 Met deze opdracht PowerShell retourneert u informatie over de uitvoer met de naam Uitvoer die is gedefinieerd in de taak StreamingJob.
@@ -187,13 +187,13 @@ Hier vindt u informatie over het quotum van streaming-eenheden in een bepaald ge
 Azure PowerShell 0.9.8:  
 
 ```powershell
-Get-AzureStreamAnalyticsQuota �Location "Central US" 
+Get-AzureStreamAnalyticsQuota -Location "Central US" 
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-Get-AzStreamAnalyticsQuota �Location "Central US" 
+Get-AzStreamAnalyticsQuota -Location "Central US" 
 ```
 
 Met deze PowerShell-opdracht wordt informatie geretourneerd over het quotum en het gebruik van streaming-eenheden in de regio Centraal-VS.
@@ -206,13 +206,13 @@ Hier vindt u informatie over een specifieke transformatie die is gedefinieerd in
 Azure PowerShell 0.9.8:  
 
 ```powershell
-Get-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name StreamingJob
+Get-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name StreamingJob
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name StreamingJob
+Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name StreamingJob
 ```
 
 Met deze opdracht PowerShell retourneert u informatie over de transformatie met de naam StreamingJob in de taak StreamingJob.
@@ -222,9 +222,9 @@ Hiermee maakt u een nieuwe invoer binnen een Stream Analytics-taak of wordt een 
 
 De naam van de invoer kan worden opgegeven in het .json-bestand of op de opdrachtregel. Als beide zijn opgegeven, moet de naam op de opdrachtregel dezelfde zijn als die in het bestand.
 
-Als u een invoer opgeeft die al bestaat en de parameter Force niet opgeeft, vraagt de cmdlet of de bestaande invoer al dan niet moet worden vervangen.
+Als u een invoer opgeeft die al bestaat en de parameter -Force niet opgeeft, vraagt de cmdlet of de bestaande invoer al dan niet moet worden vervangen.
 
-Als u de parameter Force opgeeft en een bestaande invoernaam opgeeft, wordt de invoer zonder bevestiging vervangen.
+Als u de parameter -Force opgeeft en een bestaande invoernaam opgeeft, wordt de invoer zonder bevestiging vervangen.
 
 Raadpleeg de sectie [Input (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] van de STREAM [Analytics Management REST API-naslagbibliotheek][stream.analytics.rest.api.reference]voor gedetailleerde informatie over de JSON-bestandsstructuur en -inhoud.
 
@@ -233,13 +233,13 @@ Raadpleeg de sectie [Input (Azure Stream Analytics)][msdn-rest-api-create-stream
 Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" 
+New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" 
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" 
+New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" 
 ```
 
 Met deze powershell-opdracht wordt een nieuwe invoer gemaakt van het bestand Input.json. Als een bestaande invoer met de naam die is opgegeven in het invoerdefinitiebestand al is gedefinieerd, vraagt de cmdlet of deze al dan niet moet worden vervangen.
@@ -249,13 +249,13 @@ Met deze powershell-opdracht wordt een nieuwe invoer gemaakt van het bestand Inp
 Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" �Name EntryStream
+New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" -Name EntryStream
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" �Name EntryStream
+New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" -Name EntryStream
 ```
 
 Met deze powershell-opdracht wordt een nieuwe invoer gemaakt in de taak EntryStream. Als een bestaande invoer met deze naam al is gedefinieerd, zal de cmdlet vragen of deze al dan niet moet worden vervangen.
@@ -265,13 +265,13 @@ Met deze powershell-opdracht wordt een nieuwe invoer gemaakt in de taak EntryStr
 Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" �Name EntryStream -Force
+New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" -Name EntryStream -Force
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" �Name EntryStream -Force
+New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" -Name EntryStream -Force
 ```
 
 Met deze opdracht PowerShell wordt de definitie van de bestaande invoerbron genaamd EntryStream vervangen door de definitie uit het bestand.
@@ -281,9 +281,9 @@ Hiermee maakt u een nieuwe Stream Analytics-taak in Microsoft Azure of wordt de 
 
 De naam van de taak kan worden opgegeven in het .json-bestand of op de opdrachtregel. Als beide zijn opgegeven, moet de naam op de opdrachtregel dezelfde zijn als die in het bestand.
 
-Als u een taaknaam opgeeft die al bestaat en de parameter Force niet opgeeft, vraagt de cmdlet of de bestaande taak al dan niet moet worden vervangen.
+Als u een taaknaam opgeeft die al bestaat en de parameter -Force niet opgeeft, vraagt de cmdlet of de bestaande taak al dan niet moet worden vervangen.
 
-Als u de parameter Force opgeeft en een bestaande taaknaam opgeeft, wordt de taakdefinitie zonder bevestiging vervangen.
+Als u de parameter -Force opgeeft en een bestaande taaknaam opgeeft, wordt de taakdefinitie zonder bevestiging vervangen.
 
 Raadpleeg de sectie [Stream Analytics-taak maken][msdn-rest-api-create-stream-analytics-job] van de [API-naslagbibliotheek voor Stream Analytics-beheer.][stream.analytics.rest.api.reference]
 
@@ -292,13 +292,13 @@ Raadpleeg de sectie [Stream Analytics-taak maken][msdn-rest-api-create-stream-an
 Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\JobDefinition.json" 
+New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" 
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\JobDefinition.json" 
+New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" 
 ```
 
 Met deze opdracht PowerShell wordt een nieuwe taak gemaakt vanuit de definitie in JobDefinition.json. Als een bestaande taak met de naam die is opgegeven in het taakdefinitiebestand al is gedefinieerd, wordt in de cmdlet gevraagd of deze al dan niet moet worden vervangen.
@@ -308,13 +308,13 @@ Met deze opdracht PowerShell wordt een nieuwe taak gemaakt vanuit de definitie i
 Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\JobDefinition.json" �Name StreamingJob -Force
+New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" -Name StreamingJob -Force
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\JobDefinition.json" �Name StreamingJob -Force
+New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" -Name StreamingJob -Force
 ```
 
 Deze PowerShell-opdracht vervangt de taakdefinitie voor StreamingJob.
@@ -324,9 +324,9 @@ Hiermee maakt u een nieuwe uitvoer binnen een Stream Analytics-taak of wordt een
 
 De naam van de uitvoer kan worden opgegeven in het .json-bestand of op de opdrachtregel. Als beide zijn opgegeven, moet de naam op de opdrachtregel dezelfde zijn als die in het bestand.
 
-Als u een uitvoer opgeeft die al bestaat en de parameter Force niet opgeeft, vraagt de cmdlet of de bestaande uitvoer al dan niet moet worden vervangen.
+Als u een uitvoer opgeeft die al bestaat en de parameter -Force niet opgeeft, vraagt de cmdlet of de bestaande uitvoer al dan niet moet worden vervangen.
 
-Als u de parameter Force opgeeft en een bestaande uitvoernaam opgeeft, wordt de uitvoer zonder bevestiging vervangen.
+Als u de parameter -Force opgeeft en een bestaande uitvoernaam opgeeft, wordt de uitvoer zonder bevestiging vervangen.
 
 Raadpleeg de sectie [Uitvoer (Azure Stream Analytics) maken][msdn-rest-api-create-stream-analytics-output] van de [API-naslagbibliotheek voor Stream Analytics Management.][stream.analytics.rest.api.reference]
 
@@ -335,13 +335,13 @@ Raadpleeg de sectie [Uitvoer (Azure Stream Analytics) maken][msdn-rest-api-creat
 Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Output.json" �JobName StreamingJob �Name output
+New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Output.json" -JobName StreamingJob -Name output
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Output.json" �JobName StreamingJob �Name output
+New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Output.json" -JobName StreamingJob -Name output
 ```
 
 Met deze PowerShell-opdracht wordt een nieuwe uitvoer gemaakt met de naam 'uitvoer' in de taak StreamingJob. Als een bestaande uitvoer met deze naam al is gedefinieerd, zal de cmdlet vragen of deze al dan niet moet worden vervangen.
@@ -351,13 +351,13 @@ Met deze PowerShell-opdracht wordt een nieuwe uitvoer gemaakt met de naam 'uitvo
 Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Output.json" �JobName StreamingJob �Name output -Force
+New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Output.json" -JobName StreamingJob -Name output -Force
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Output.json" �JobName StreamingJob �Name output -Force
+New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Output.json" -JobName StreamingJob -Name output -Force
 ```
 
 Deze PowerShell-opdracht vervangt de definitie voor 'uitvoer' in de taak StreamingJob.
@@ -367,9 +367,9 @@ Hiermee maakt u een nieuwe transformatie binnen een Stream Analytics-taak of wor
 
 De naam van de transformatie kan worden opgegeven in het .json-bestand of op de opdrachtregel. Als beide zijn opgegeven, moet de naam op de opdrachtregel dezelfde zijn als die in het bestand.
 
-Als u een transformatie opgeeft die al bestaat en de parameter Force niet opgeeft, vraagt de cmdlet of de bestaande transformatie al dan niet moet worden vervangen.
+Als u een transformatie opgeeft die al bestaat en de parameter -Force niet opgeeft, vraagt de cmdlet of de bestaande transformatie al dan niet moet worden vervangen.
 
-Als u de parameter Force opgeeft en een bestaande transformatienaam opgeeft, wordt de transformatie zonder bevestiging vervangen.
+Als u de parameter -Force opgeeft en een bestaande transformatienaam opgeeft, wordt de transformatie zonder bevestiging vervangen.
 
 Raadpleeg de sectie [Transformatie (Azure Stream Analytics) maken][msdn-rest-api-create-stream-analytics-transformation] van de [API-naslagbibliotheek voor Stream Analytics Management.][stream.analytics.rest.api.reference]
 
@@ -378,13 +378,13 @@ Raadpleeg de sectie [Transformatie (Azure Stream Analytics) maken][msdn-rest-api
 Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Transformation.json" �JobName StreamingJob �Name StreamingJobTransform
+New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Transformation.json" -JobName StreamingJob -Name StreamingJobTransform
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Transformation.json" �JobName StreamingJob �Name StreamingJobTransform
+New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Transformation.json" -JobName StreamingJob -Name StreamingJobTransform
 ```
 
 Met deze Opdracht PowerShell wordt een nieuwe transformatie gemaakt genaamd StreamingJobTransform in de taak StreamingJob. Als een bestaande transformatie al met deze naam is gedefinieerd, zal de cmdlet vragen of deze al dan niet moet worden vervangen.
@@ -394,73 +394,73 @@ Met deze Opdracht PowerShell wordt een nieuwe transformatie gemaakt genaamd Stre
 Azure PowerShell 0.9.8:  
 
 ```powershell
-New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Transformation.json" �JobName StreamingJob �Name StreamingJobTransform -Force
+New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Transformation.json" -JobName StreamingJob -Name StreamingJobTransform -Force
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Transformation.json" �JobName StreamingJob �Name StreamingJobTransform -Force
+New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Transformation.json" -JobName StreamingJob -Name StreamingJobTransform -Force
 ```
 
  Deze PowerShell-opdracht vervangt de definitie van StreamingJobTransform in de taak StreamingJob.
 
 ### <a name="remove-azurestreamanalyticsinput--remove-azstreamanalyticsinput"></a>Verwijderen-AzureStreamAnalyticsInput | Bron van azstreamanalyticsverwijderen
 Asynchroon verwijdert een specifieke invoer uit een Stream Analytics-taak in Microsoft Azure.  
-Als u de parameter Force opgeeft, wordt de invoer zonder bevestiging verwijderd.
+Als u de parameter -Force opgeeft, wordt de invoer zonder bevestiging verwijderd.
 
 **Voorbeeld 1**
 
 Azure PowerShell 0.9.8:  
 
 ```powershell
-Remove-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name EventStream
+Remove-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EventStream
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-Remove-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name EventStream
+Remove-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EventStream
 ```
 
 Met deze PowerShell-opdracht wordt de invoer EventStream in de taak StreamingJob verwijderd.  
 
 ### <a name="remove-azurestreamanalyticsjob--remove-azstreamanalyticsjob"></a>Verwijderen-AzureStreamAnalyticsJob | Verwijderen-azstreamAnalyticsJob
 Asynchroon verwijdert een specifieke Stream Analytics-taak in Microsoft Azure.  
-Als u de parameter Force opgeeft, wordt de taak zonder bevestiging verwijderd.
+Als u de parameter -Force opgeeft, wordt de taak zonder bevestiging verwijderd.
 
 **Voorbeeld 1**
 
 Azure PowerShell 0.9.8:  
 
 ```powershell
-Remove-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �Name StreamingJob 
+Remove-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob 
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-Remove-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �Name StreamingJob 
+Remove-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob 
 ```
 
 Met deze PowerShell-opdracht wordt de taak StreamingJob verwijderd.  
 
 ### <a name="remove-azurestreamanalyticsoutput--remove-azstreamanalyticsoutput"></a>Verwijderen-AzureStreamAnalyticsOutput | Verwijderen-azstreamAnalyticsoutput
 Asynchroon verwijdert een specifieke uitvoer uit een Stream Analytics-taak in Microsoft Azure.  
-Als u de parameter Force opgeeft, wordt de uitvoer zonder bevestiging verwijderd.
+Als u de parameter -Force opgeeft, wordt de uitvoer zonder bevestiging verwijderd.
 
 **Voorbeeld 1**
 
 Azure PowerShell 0.9.8:  
 
 ```powershell
-Remove-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name Output
+Remove-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-Remove-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name Output
+Remove-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 Met deze PowerShell-opdracht wordt de uitvoeruitvoer in de taak StreamingJob verwijderd.  
@@ -492,13 +492,13 @@ Asynchrone stopt een Stream Analytics-taak in Microsoft Azure en de-wijst resour
 Azure PowerShell 0.9.8:  
 
 ```powershell
-Stop-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �Name StreamingJob 
+Stop-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob 
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-Stop-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �Name StreamingJob 
+Stop-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob 
 ```
 
 Met deze PowerShell-opdracht wordt de taak StreamingJob gestopt.  
@@ -511,13 +511,13 @@ Test de mogelijkheid van Stream Analytics om verbinding te maken met een bepaald
 Azure PowerShell 0.9.8:  
 
 ```powershell
-Test-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name EntryStream
+Test-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EntryStream
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-Test-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name EntryStream
+Test-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EntryStream
 ```
 
 Met deze PowerShell-opdracht wordt de verbindingsstatus van de invoerEntryStream in StreamingJob getest.  
@@ -530,13 +530,13 @@ Test de mogelijkheid van Stream Analytics om verbinding te maken met een bepaald
 Azure PowerShell 0.9.8:  
 
 ```powershell
-Test-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name Output
+Test-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 Azure PowerShell 1.0:  
 
 ```powershell
-Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name Output
+Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 Met deze PowerShell-opdracht wordt de verbindingsstatus van de uitvoeruitvoer in StreamingJob getest.  

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 9339fff820c0a0d915258ce3a0bc5371242ad50d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6aac3f1bb29ccfab0de4cb0a807ca0831a62af7e
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892833"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991549"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Gegevens van Cassandra kopiëren met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
@@ -69,7 +69,7 @@ De volgende eigenschappen worden ondersteund voor Cassandra linked service:
 | connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Meer informatie van de sectie [Voorwaarden.](#prerequisites) Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
 
 >[!NOTE]
->Momenteel wordt de verbinding met Cassandra via SSL niet ondersteund.
+>Momenteel wordt de verbinding met Cassandra via TLS niet ondersteund.
 
 **Voorbeeld:**
 

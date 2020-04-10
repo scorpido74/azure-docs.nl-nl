@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79281403"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992042"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Gegevens van een FTP-server verplaatsen met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
@@ -73,7 +73,7 @@ In de volgende tabel worden JSON-elementen beschreven die specifiek zijn voor ee
 | gatewayNaam |Geef de naam op van de gateway in Data Management Gateway om verbinding te maken met een on-premises FTP-server. |Nee |&nbsp; |
 | poort |Geef de poort op waarop de FTP-server luistert. |Nee |21 |
 | inschakelenSsl |Geef op of FTP via een SSL/TLS-kanaal moet worden gebruikt. |Nee |waar |
-| enableServerCertificateValidation |Geef op of u serverSSL-certificaatvalidatie wilt inschakelen wanneer u FTP via SSL/TLS-kanaal gebruikt. |Nee |waar |
+| enableServerCertificateValidation |Geef op of u serverTLS/SSL-certificaatvalidatie wilt inschakelen wanneer u FTP via SSL/TLS-kanaal gebruikt. |Nee |waar |
 
 >[!NOTE]
 >De FTP-connector ondersteunt toegang tot FTP-server zonder versleuteling of expliciete SSL/TLS-versleuteling. het ondersteunt geen impliciete SSL / TLS-versleuteling.

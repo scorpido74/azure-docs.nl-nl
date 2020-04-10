@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: c68b83726371d346019d18d0b066173f93196e6d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6ceace1ee93fab8c0a46ed4a67850fc87a5cdad2
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982052"
+ms.locfileid: "80991225"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriecorrelatie in Application Insights
 
@@ -129,6 +129,11 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>W3C distributed tracing-ondersteuning inschakelen voor Java-apps
 
+#### <a name="java-30-agent"></a>Java 3.0-agent
+
+  Java 3.0-agent ondersteunt W3C out of the box en er is geen extra configuratie nodig. 
+
+#### <a name="java-sdk"></a>Java-SDK
 - **Binnenkomende configuratie**
 
   - Voeg voor Java EE-apps `<TelemetryModules>` het volgende toe aan de tag in ApplicationInsights.xml:
@@ -320,17 +325,32 @@ Er is een nieuwe HTTP-module, [Microsoft.AspNet.TelemetryCorrelation](https://ww
 De Application Insights SDK, te beginnen met versie 2.4.0-beta1, gebruikt `DiagnosticSource` en `Activity` verzamelt telemetrie en koppelt deze aan de huidige activiteit.
 
 <a name="java-correlation"></a>
-## <a name="telemetry-correlation-in-the-java"></a>Telemetriecorrelatie in Java
+## <a name="telemetry-correlation-in-java"></a>Telemetriecorrelatie in Java
 
-[Application Insights Java-agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) en [Java SDK-versie](../../azure-monitor/app/java-get-started.md) 2.0.0 of hoger ondersteunt automatische correlatie van telemetrie. Het wordt automatisch `operation_id` ingevuld voor alle telemetrie (zoals traces, uitzonderingen en aangepaste gebeurtenissen) die worden uitgegeven binnen het bereik van een aanvraag. Het verspreidt ook de correlatieheaders (eerder beschreven) voor service-to-service-aanroepen via HTTP, als de [Java SDK-agent](../../azure-monitor/app/java-agent.md) is geconfigureerd.
+[Java-agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) en [Java SDK](../../azure-monitor/app/java-get-started.md) versie 2.0.0 of hoger ondersteunt automatische correlatie van telemetrie. Het wordt automatisch `operation_id` ingevuld voor alle telemetrie (zoals traces, uitzonderingen en aangepaste gebeurtenissen) die worden uitgegeven binnen het bereik van een aanvraag. Het verspreidt ook de correlatieheaders (eerder beschreven) voor service-to-service-aanroepen via HTTP, als de [Java SDK-agent](../../azure-monitor/app/java-agent.md) is geconfigureerd.
 
 > [!NOTE]
 > Application Insights Java-agent verzamelt automatisch aanvragen en afhankelijkheden voor JMS, Kafka, Netty/Webflux en meer. Voor Java SDK worden alleen oproepen via Apache HttpClient ondersteund voor de correlatiefunctie. Automatische contextpropagatie over messaging-technologieën (zoals Kafka, RabbitMQ en Azure Service Bus) wordt niet ondersteund in de SDK. 
 
-<a name="java-role-name"></a>
-## <a name="role-name"></a>Rolnaam
+> [!NOTE]
+> Om aangepaste telemetrie te verzamelen moet je de applicatie instrument met Java 2.6 SDK. 
+
+### <a name="role-names"></a>Rolnamen
 
 U de manier aanpassen waarop componentnamen worden weergegeven in de [toepassingskaart](../../azure-monitor/app/app-map.md). Om dit te doen, kunt `cloud_RoleName` u handmatig instellen door een van de volgende acties uit te voeren:
+
+- Voor Application Insights Java-agent 3.0 stelt u de naam van de cloudrol als volgt in:
+
+    ```json
+    {
+      "instrumentationSettings": {
+        "preview": {
+          "roleName": "my cloud role name"
+        }
+      }
+    }
+    ```
+    U ook de naam van `APPLICATIONINSIGHTS_ROLE_NAME`de cloudrol instellen met behulp van de omgevingsvariabele.
 
 - Met Application Insights Java SDK 2.5.0 en `cloud_RoleName` hoger `<RoleName>` u het toevoegen aan uw ApplicationInsights.xml-bestand opgeven:
 

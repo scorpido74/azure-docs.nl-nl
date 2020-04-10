@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77123134"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007820"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Het aanvraagbestand voor certificaatondertekening genereren
 
@@ -74,11 +74,21 @@ Als u pushmeldingen naar een iOS-app wilt verzenden, registreert u uw toepassing
 
 4. Zoek in de pagina **Certificaten, Id-& profielen** onder **Id,,** het app-id-regelitem dat u zojuist hebt gemaakt en selecteer de rij om het scherm **Configuratie van uw app-id-configuratie** weer te geven.
 
-5. Schuif omlaag naar de optie Getoetste **pushmeldingen** en selecteer **Configureren** om het certificaat te maken.
+## <a name="creating-a-certificate-for-notification-hubs"></a>Een certificaat maken voor meldingshubs
+Er is een certificaat vereist om de meldingshub te laten werken met **APNS**. Dit kan op twee manieren:
+
+1. Maak een **.p12** die rechtstreeks kan worden geüpload naar Notification Hub.  
+2. Maak een **.p8** die kan worden gebruikt voor [tokengebaseerde verificatie](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification) *(de nieuwere aanpak).*
+
+De nieuwere aanpak heeft een aantal voordelen (in vergelijking met het gebruik van certificaten) zoals gedocumenteerd in [Token-gebaseerde (HTTP/2) authenticatie voor APNS.](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification) Er zijn echter stappen voorzien voor beide benaderingen. 
+
+### <a name="option-1-creating-a-p12-push-certificate-that-can-be-uploaded-directly-to-notification-hub"></a>OPTIE 1: Een .p12-pushcertificaat maken dat rechtstreeks kan worden geüpload naar de meldingshub
+
+1. Schuif omlaag naar de optie Getoetste **pushmeldingen** en selecteer **Configureren** om het certificaat te maken.
 
     ![Pagina app-id bewerken](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-6. Het venster **SSL-certificaten van de Apple Push Notification-service** wordt weergegeven. Selecteer de knop **Certificaat maken** onder de sectie **Ontwikkel SSL-certificaat.**
+2. Het venster **SSL-certificaten van de Apple Push Notification-service** wordt weergegeven. Selecteer de knop **Certificaat maken** onder de sectie **Ontwikkel SSL-certificaat.**
 
     ![Certificaat voor app-id-knop maken](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
@@ -87,9 +97,9 @@ Als u pushmeldingen naar een iOS-app wilt verzenden, registreert u uw toepassing
     > [!NOTE]
     > In deze zelfstudie wordt een ontwikkelingscertificaat gebruikt. Hetzelfde proces wordt gebruikt bij het registreren van een productiecertificaat. Zorg er wel voor dat u hetzelfde certificaattype gebruikt als u meldingen verzendt.
 
-1. Selecteer **Bestand kiezen,** blader naar de locatie waar u het CSR-bestand van de eerste taak hebt opgeslagen en dubbelklik op de certificaatnaam om het te laden. Selecteer vervolgens **Doorgaan**.
+3. Selecteer **Bestand kiezen,** blader naar de locatie waar u het CSR-bestand van de eerste taak hebt opgeslagen en dubbelklik op de certificaatnaam om het te laden. Selecteer vervolgens **Doorgaan**.
 
-1. Nadat de portal het certificaat hebt gemaakt, selecteert u de knop **Downloaden.** Sla het certificaat op en onthoud de locatie waarop het is opgeslagen.
+4. Nadat de portal het certificaat hebt gemaakt, selecteert u de knop **Downloaden.** Sla het certificaat op en onthoud de locatie waarop het is opgeslagen.
 
     ![Download-pagina voor gemaakte certificaat](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
@@ -100,14 +110,14 @@ Als u pushmeldingen naar een iOS-app wilt verzenden, registreert u uw toepassing
     > [!NOTE]
     > Standaard heeft het gedownloade ontwikkelingscertificaat de naam **aps_development.cer**.
 
-1. Dubbelklik op het gedownloade pushcertificaat **aps_development.cer**. Nu wordt het nieuwe certificaat in de sleutelhanger geïnstalleerd, zoals op de volgende afbeelding wordt weergegeven:
+5. Dubbelklik op het gedownloade pushcertificaat **aps_development.cer**. Nu wordt het nieuwe certificaat in de sleutelhanger geïnstalleerd, zoals op de volgende afbeelding wordt weergegeven:
 
     ![Certificatenlijst in Sleutelhangertoegang geeft nieuw certificaat weer](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
     > [!NOTE]
     > Hoewel de naam in uw certificaat mogelijk anders is, wordt de naam vooraf vastgelegd met **Apple Development iOS Push Services.**
 
-1. In Sleutelhangertoegang klikt u met de rechtermuisknop op het nieuwe pushcertificaat dat u hebt gemaakt in de categorie **Certificaten**. Selecteer **Exporteren,** geef het bestand een naam, selecteer de **.p12-notatie** en selecteer **Opslaan**.
+6. In Sleutelhangertoegang klikt u met de rechtermuisknop op het nieuwe pushcertificaat dat u hebt gemaakt in de categorie **Certificaten**. Selecteer **Exporteren,** geef het bestand een naam, selecteer de **.p12-notatie** en selecteer **Opslaan**.
 
     ![Certificaat exporteren in p12-indeling](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
@@ -115,6 +125,45 @@ Als u pushmeldingen naar een iOS-app wilt verzenden, registreert u uw toepassing
 
     > [!NOTE]
     > Uw .p12-bestandsnaam en -locatie kunnen anders zijn dan wat in deze zelfstudie wordt afgebeeld.
+
+### <a name="option-2-creating-a-p8-certificate-that-can-be-used-for-token-based-authentication"></a>OPTION 2: Een .p8-certificaat maken dat kan worden gebruikt voor tokenverificatie
+
+1. Noteer de volgende details:
+
+    - **App ID-voorvoegsel** (dit is een **team-id)**
+    - **Bundel-id**
+    
+2. Terug in **certificaten, id's & profielen**, klik op **Sleutels**.
+
+   > [!NOTE]
+   > Als u al een sleutel hebt geconfigureerd voor **APNS,** u het .p8-certificaat dat u direct na het maken hebt gedownload, opnieuw gebruiken. Als dat het zo is, u de stappen **3** tot **en met 5**negeren.
+
+3. Klik **+** op de knop (of de knop **Een toets maken)** om een nieuwe sleutel te maken.
+4. Geef een geschikte **waarde voor sleutelnaam** op, controleer vervolgens de optie **Apple Push Notifications-service (APNs)** en klik vervolgens op **Doorgaan,** gevolgd door **Registreren** op het volgende scherm.
+5. Klik **op Downloaden** en verplaats het **.p8-bestand** (vooraf vastmet *AuthKey_)* naar een beveiligde lokale map en klik vervolgens op **Gereed**.
+
+   > [!NOTE] 
+   > Zorg ervoor dat u uw .p8-bestand op een veilige plaats bewaart (en een back-up opslaat). Na het downloaden van uw sleutel kan deze niet opnieuw worden gedownload omdat de serverkopie wordt verwijderd.
+  
+6. Klik op **Toetsen**op de sleutel die u zojuist hebt gemaakt (of een bestaande sleutel als u ervoor hebt gekozen om die in plaats daarvan te gebruiken).
+7. Noteer de waarde van de **sleutel-id.**
+8. Open uw .p8-certificaat in een geschikte toepassing naar keuze, zoals [**Visual Studio Code,**](https://code.visualstudio.com) noteer vervolgens de belangrijkste waarde. Dit is de waarde tussen **-----BEGIN PRIVATE KEY-----** en **-----END PRIVATE KEY-----** .
+
+    ```
+    -----BEGIN PRIVATE KEY-----
+    <key_value>
+    -----END PRIVATE KEY-----
+    ```
+
+    > [!NOTE]
+    > Dit is de **tokenwaarde** die later wordt gebruikt om **de meldingshub**te configureren. 
+
+Aan het einde van deze stappen moet u de volgende informatie hebben voor gebruik later in [Uw meldingshub configureren met APNs-informatie:](#configure-your-notification-hub-with-apns-information)
+
+- **Team-id** (zie stap 1)
+- **Bundel-id** (zie stap 1)
+- **Sleutel-id** (zie stap 7)
+- **Tokenwaarde** d.w.z. de .p8-waarde (zie stap 8)
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Een inrichtingsprofiel voor de app maken
 
@@ -153,13 +202,18 @@ Als u pushmeldingen naar een iOS-app wilt verzenden, registreert u uw toepassing
 
 ## <a name="create-a-notification-hub"></a>Een Notification Hub maken
 
-In deze sectie maakt u een meldingshub en configureert u verificatie met APN's met behulp van het .p12-pushcertificaat dat u eerder hebt gemaakt. Als u een meldingshub wilt gebruiken die u al hebt gemaakt, u doorgaan naar stap 5.
+In deze sectie maakt u een meldingshub en configureert u verificatie met APN's met behulp van het .p12-pushcertificaat of verificatie op basis van tokens. Als u een meldingshub wilt gebruiken die u al hebt gemaakt, u doorgaan naar stap 5.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
 
 ## <a name="configure-your-notification-hub-with-apns-information"></a>Uw meldingshub configureren met APN-gegevens
 
-1. Selecteer **Apple (APNS)** onder **Meldingsservices**.
+Selecteer **onder Meldingsservices**de optie **Apple (APNS)** en volg vervolgens de juiste stappen op basis van de aanpak die u eerder hebt gekozen in de sectie Een certificaat maken voor [meldingshubs.](#creating-a-certificate-for-notification-hubs)  
+
+> [!NOTE]
+> Gebruik de **modus** **Productie** voor toepassingen alleen als u pushmeldingen wilt verzenden naar gebruikers die uw app in de Store hebben gekocht.
+
+### <a name="option-1-using-a-p12-push-certificate"></a>OPTIE 1: Een .p12-pushcertificaat gebruiken
 
 1. Selecteer **Certificaat**.
 
@@ -169,10 +223,23 @@ In deze sectie maakt u een meldingshub en configureert u verificatie met APN's m
 
 1. Geef indien nodig het juiste wachtwoord op.
 
-1. Selecteer de modus **Sandbox**. Gebruik de modus **Productie** alleen als u pushmeldingen wilt verzenden naar gebruikers die uw app in de Store hebben gekocht.
+1. Selecteer de modus **Sandbox**.
 
     ![APNs-certificering in Azure Portal configureren](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
 1. Selecteer **Opslaan**.
+
+### <a name="option-2-using-token-based-authentication"></a>OPTIE 2: Verificatie op basis van tokens gebruiken
+
+1. Selecteer **Token**.
+1. Voer de volgende waarden in die u eerder hebt verkregen:
+
+    - **Sleutel-id**
+    - **Bundel-id**
+    - **Team-id**
+    - **Token** 
+
+1. **Sandbox kiezen**
+1. Selecteer **Opslaan**. 
 
 U hebt nu uw meldingshub geconfigureerd met APN's. Je hebt ook de verbindingstekenreeksen om je app te registreren en pushmeldingen te verzenden.

@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 745be21c2a7a09a09fdbbfd57a305d09a4fac3ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c54f864b5bd562fdc0a84b2903198704032b360
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72793432"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998487"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>De syntaxis van de zoekopdracht "volledig" Lucene gebruiken (geavanceerde query's in Azure Cognitive Search)
 
@@ -86,7 +86,7 @@ Dit eerste voorbeeld is niet Lucene-specifiek, maar we leiden ermee om het eerst
 
 Voor beknoptheid richt de query zich alleen op het *business_title* veld en geeft alleen bedrijfstitels worden geretourneerd. De parameter **searchFields** beperkt query-uitvoering tot alleen het veld business_title en **selecteert** welke velden in het antwoord zijn opgenomen.
 
-### <a name="partial-query-string"></a>Tekenreeks gedeeltelijke query
+### <a name="search-expression"></a>Zoekexpressie
 
 ```http
 &search=*&searchFields=business_title&$select=business_title
@@ -119,7 +119,7 @@ Je hebt misschien de zoekscore in de reactie opgemerkt. Uniforme scores van 1 op
 
 Volledige Lucene syntaxis ondersteunt het scoping individuele zoekexpressies naar een specifiek veld. In dit voorbeeld wordt gezocht naar bedrijfstitels met de term senior erin, maar niet junior.
 
-### <a name="partial-query-string"></a>Tekenreeks gedeeltelijke query
+### <a name="search-expression"></a>Zoekexpressie
 
 ```http
 $select=business_title&search=business_title:(senior NOT junior)
@@ -156,7 +156,7 @@ Het veld dat is opgegeven in **veldNaam:zoekexpressie** moet een doorzoekbaar ve
 
 Volledige Lucene syntax is ondersteunt ook fuzzy zoeken, matching op termen die een soortgelijke constructie hebben. Als u een vage zoekopdracht wilt `~` doen, wordt het tildesymbool aan het einde van een enkel woord toegevoegd met een optionele parameter, een waarde tussen 0 en 2, die de bewerkingsafstand aangeeft. Bijvoorbeeld, `blue~` of `blue~1` zou terugkeren blauw, blauw, en lijm.
 
-### <a name="partial-query-string"></a>Tekenreeks gedeeltelijke query
+### <a name="search-expression"></a>Zoekexpressie
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:asosiate~
@@ -186,7 +186,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-4-proximity-search"></a>Voorbeeld 4: Zoeken in nabijheid
 Nabijheidszoekopdrachten worden gebruikt om termen te vinden die dicht bij elkaar in een document liggen. Plaats een tilde "~" symbool aan het einde van een zin, gevolgd door het aantal woorden dat de nabijheidsgrens maakt. Bijvoorbeeld, "hotel luchthaven"~ 5 vindt de voorwaarden hotel en luchthaven binnen 5 woorden van elkaar in een document.
 
-### <a name="partial-query-string"></a>Tekenreeks gedeeltelijke query
+### <a name="search-expression"></a>Zoekexpressie
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
@@ -239,7 +239,7 @@ Bij het instellen van het factorniveau, hoe hoger de boostfactor, hoe relevanter
 
 Bij een zoekopdracht met reguliere expressievindt u een overeenkomst op basis van de inhoud tussen voorwaartse slashes "/", zoals gedocumenteerd in de [klasse RegExp.](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)
 
-### <a name="partial-query-string"></a>Tekenreeks gedeeltelijke query
+### <a name="search-expression"></a>Zoekexpressie
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
@@ -262,7 +262,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-7-wildcard-search"></a>Voorbeeld 7: Zoeken naar jokertekens
 U algemeen erkende syntaxis\*gebruiken voor meerdere ( ) of enkele (?) tekenwildcardzoekopdrachten. Let op de Lucene query parser ondersteunt het gebruik van deze symbolen met een enkele term, en niet een zin.
 
-### <a name="partial-query-string"></a>Tekenreeks gedeeltelijke query
+### <a name="search-expression"></a>Zoekexpressie
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:prog*

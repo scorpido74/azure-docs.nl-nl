@@ -1,27 +1,38 @@
 ---
 title: Door de gebruiker gedefinieerde functies (UDF's) in Azure Cosmos DB
 description: Meer informatie over door de gebruiker gedefinieerde functies in Azure Cosmos DB.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.author: tisande
+ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69614333"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011120"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Door de gebruiker gedefinieerde functies (UDF's) in Azure Cosmos DB
 
 De SQL API biedt ondersteuning voor door gebruikers gedefinieerde functies (UDF's). Met scalaire UDF's u nul of veel argumenten doorgeven en een enkel argumentresultaat retourneren. De API controleert elk argument op het zijn wettelijke JSON-waarden.  
 
-De API breidt de SQL-syntaxis uit om aangepaste toepassingslogica te ondersteunen met behulp van UDF's. U UDF's registreren met de SQL-API en ernaar verwijzen in SQL-query's. De UDFs zijn speciaal ontworpen voor aanroepen vanuit query's. Als gevolg hiervan hebben UDF's geen toegang tot het contextobject zoals andere JavaScript-typen, zoals opgeslagen procedures en triggers. Query's zijn alleen-lezen en kunnen worden uitgevoerd op primaire of secundaire replica's. UDF's zijn, in tegenstelling tot andere JavaScript-typen, ontworpen om op secundaire replica's te worden uitgevoerd.
+## <a name="udf-use-cases"></a>UDF-gebruiksaanvragen
 
-In het volgende voorbeeld wordt een UDF geregistreerd onder een artikelcontainer in de Cosmos-database. In het voorbeeld wordt een `REGEX_MATCH`UDF met de naam . Het accepteert twee JSON-tekenreekswaarden `input` en `pattern`controleert of het eerste overeenkomt met het `string.match()` patroon dat in de tweede is opgegeven met de functie javascript.
+De API breidt de SQL-syntaxis uit om aangepaste toepassingslogica te ondersteunen met behulp van UDF's. U UDF's registreren met de SQL-API en ernaar verwijzen in SQL-query's. In tegenstelling tot opgeslagen procedures en triggers zijn UDF's alleen-lezen.
+
+Met UDF's u de querytaal van Azure Cosmos DB uitbreiden. UDF's zijn een geweldige manier om complexe bedrijfslogica uit te drukken in de projectie van een query.
+
+We raden echter aan om UDF's te vermijden wanneer:
+
+- Er bestaat al een gelijkwaardige [systeemfunctie](sql-query-system-functions.md) in Azure Cosmos DB. Systeemfuncties gebruiken altijd minder RU's dan de gelijkwaardige UDF.
+- De UDF is het `WHERE` enige filter in de clausule van uw query. UDF's maken geen gebruik van de index, dus de evaluatie van de UDF vereist het laden van documenten. Door extra filterpredicaten te combineren die de index gebruiken, `WHERE` in combinatie met een UDF, in de clausule, wordt het aantal documenten dat door de UDF wordt verwerkt, verminderd.
+
+Als u dezelfde UDF meerdere keren in een query moet gebruiken, moet u in een [subquery](sql-query-subquery.md#evaluate-once-and-reference-many-times)naar de UDF verwijzen, zodat u een JOIN-expressie gebruiken om de UDF één keer te evalueren, maar er vaak naar te verwijzen.
 
 ## <a name="examples"></a>Voorbeelden
+
+In het volgende voorbeeld wordt een UDF geregistreerd onder een artikelcontainer in de Cosmos-database. In het voorbeeld wordt een `REGEX_MATCH`UDF met de naam . Het accepteert twee JSON-tekenreekswaarden `input` en `pattern`controleert of het eerste overeenkomt met het `string.match()` patroon dat in de tweede is opgegeven met de functie javascript.
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2020
+ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 42b83963dc4996a7347d57be712451086fa79b26
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: c3491a54682e8f2b244c0400480a69e083335f5c
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548629"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008386"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-gegevensversleuteling-at-rest
 
@@ -263,16 +263,24 @@ Client-side encryptie van Azure SQL Database-gegevens wordt ondersteund via de [
 |                                  | **Serverzijde met servicebeheerde sleutel**     | **Serverzijde met door de klant beheerde sleutel**             | **Clientzijde met clientbeheerde sleutel**      |
 | **AI en Machine Learning**      |                    |                    |                    |
 | Azure Cognitive Search           | Ja                | Ja                | -                  |
+| Azure Cognitive Services         | Ja                | Ja                | -                  |
 | Azure Machine Learning           | Ja                | Ja                | -                  |
 | Azure Machine Learning Studio    | Ja                | Preview, RSA 2048-bit | -               |
+| Content Moderator                | Ja                | Ja                | -                  |
+| Face                             | Ja                | Ja                | -                  |
+| Taal begrijpen           | Ja                | Ja                | -                  |
+| Personalizer                     | Ja                | Ja                | -                  |
+| QnA Maker                        | Ja                | Ja                | -                  |
+| Spraakservices                  | Ja                | Ja                | -                  |
+| Translator Text                  | Ja                | Ja                | -                  |
 | Power BI                         | Ja                | Preview, RSA 2048-bit | -                  |
 | **Analytics**                    |                    |                    |                    |
-| Azure Stream Analytics           | Ja                | -                  | -                  |
+| Azure Stream Analytics           | Ja                | N.v.t.\*            | -                  |
 | Event Hubs                       | Ja                | Ja, alle RSA Lengtes. | -                  |
 | Functions                        | Ja                | Ja, alle RSA Lengtes. | -                  |
 | Azure Analysis Services          | Ja                | -                  | -                  |
 | Azure Data Catalog               | Ja                | -                  | -                  |
-| Apache Kafka op Azure HDInsight  | Ja                | Alle RSA lengtes.   | -                  |
+| Azure HDInsight                  | Ja                | Alle                | -                  |
 | Inzichten in Azure-monitortoepassingen | Ja                | Ja                | -                  |
 | Azure Monitor Log Analytics | Ja                | Ja                | -                  |
 | Azure Data Explorer              | Ja                | Ja                | -                  |
@@ -305,7 +313,7 @@ Client-side encryptie van Azure SQL Database-gegevens wordt ondersteund via de [
 | Azure Cosmos DB                  | Ja                | Ja                | -                  |
 | Azure Databricks                 | Ja                | Ja                | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps                     | Ja                | -                  | Ja                |
+| Azure DevOps Services            | Ja                | -                  | Ja                |
 | Azure-opslagplaatsen                      | Ja                | -                  | Ja                |
 | **Identiteit**                     |                    |                    |                    |
 | Azure Active Directory           | Ja                | -                  | -                  |
@@ -316,24 +324,35 @@ Client-side encryptie van Azure SQL Database-gegevens wordt ondersteund via de [
 | API Management                   | Ja                | -                  | -                  |
 | **IoT-services**                 |                    |                    |                    |
 | IoT Hub                          | Ja                | Ja                | Ja                |
+| Inrichting van IoT-hub-apparaten      | Ja                | Ja                | -                  |
 | **Beheer en governance**    |                    |                    |                    |
 | Azure Site Recovery              | Ja                | -                  | -                  |
+| Azure Migrate                    | Ja                | Ja                | -                  |
 | **Media**                        |                    |                    |                    |
 | Media Services                   | Ja                | -                  | Ja                |
-| **Opslag**                      |                    |                    |                    |
+| **Beveiliging**                     |                    |                    |                    |
+| Azure Security Center voor IoT    | Ja                | Ja                | -                  |
+| Azure Sentinel                   | Ja                | Ja                | -                  |
+| **Storage**                      |                    |                    |                    |
 | Blob Storage                     | Ja                | Ja, RSA 2048-bit  | Ja                |
+| Premium Blob-opslag             | Ja                | Ja, RSA 2048-bit  | Ja                |
 | Disk Storage                     | Ja                | Ja                | -                  |
+| Ultraschijfopslag               | Ja                | Ja                | -                  |
 | Beheerde schijfopslag             | Ja                | Ja                | -                  |
 | File Storage                     | Ja                | Ja, RSA 2048-bit  | -                  |
+| Opslag van Bestand Premium             | Ja                | Ja, RSA 2048-bit  | -                  |
+| File Sync                        | Ja                | Ja, RSA 2048-bit  | -                  |
 | Queue Storage                    | Ja                | Ja                | Ja                |
 | Avere vFXT                       | Ja                | -                  | -                  |
-| Azure NetApp Files               | Ja                | -                  | -                  |
+| Azure NetApp Files               | Ja                | Ja                | -                  |
 | Archive Storage                  | Ja                | Ja, RSA 2048-bit  | -                  |
 | StorSimple                       | Ja                | Ja, RSA 2048-bit  | Ja                |
 | Azure Backup                     | Ja                | Ja                | Ja                |
 | Data Box                         | Ja                | -                  | Ja                |
 | Data Box Edge                    | Ja                | Ja                | -                  |
 
+\*Deze service blijft niet bestaan in gegevens. Eventuele tijdelijke caches worden versleuteld met een Microsoft-sleutel.
+
 ## <a name="conclusion"></a>Conclusie
 
-Bescherming van klantgegevens die zijn opgeslagen in Azure Services is van het grootste belang voor Microsoft. Alle azure-gehoste services zijn toegewijd aan het bieden van opties voor versleuteling bij rust. Fundamentele services zoals Azure Storage, Azure SQL Database en key analytics en intelligence services bieden al opties voor Versleuteling bij rust. Sommige van deze services ondersteunen zowel door de klant gecontroleerde sleutels en client-side encryptie, evenals service-managed sleutels en encryptie. Microsoft Azure-services verbeteren de beschikbaarheid van versleuteling bij rust in grote lijnen en er zijn nieuwe opties gepland voor preview en algemene beschikbaarheid in de komende maanden.
+Bescherming van klantgegevens die zijn opgeslagen in Azure Services is van het grootste belang voor Microsoft. Alle azure-gehoste services zijn toegewijd aan het bieden van opties voor versleuteling bij rust. Azure-services ondersteunen door services beheerde sleutels, door de klant beheerde sleutels of versleuteling aan de clientzijde. Azure-services verbeteren de beschikbaarheid van versleuteling bij rust in grote lijnen en er zijn nieuwe opties gepland voor preview en algemene beschikbaarheid in de komende maanden.

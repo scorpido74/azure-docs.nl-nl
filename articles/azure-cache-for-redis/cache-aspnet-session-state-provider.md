@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 25cef95e2d01012506148f03be45104e455e1fcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530271"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010899"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>ASP.NET-sessiestatusprovider voor Azure Cache voor Redis
 
@@ -82,10 +82,10 @@ De commentaarsectie geeft een voorbeeld van de kenmerken en voorbeeldinstellinge
 Configureer de kenmerken met de waarden uit uw cacheblad in de Microsoft Azure-portal en configureer de andere waarden naar wens. Zie Azure Cache configureren voor [Redis-instellingen voor](cache-configure.md#configure-azure-cache-for-redis-settings)instructies voor instructies voor toegang tot uw cache.
 
 * **host** – geef het eindpunt van de cache op.
-* **poort** : gebruik uw niet-SSL-poort of uw SSL-poort, afhankelijk van de ssl-instellingen.
+* **poort** : gebruik uw niet-TLS/SSL-poort of uw TLS/SSL-poort, afhankelijk van de TLS-instellingen.
 * **accessKey** – gebruik de primaire of secundaire sleutel voor uw cache.
-* **ssl** - waar als u cache/clientcommunicatie met ssl wilt beveiligen; anders vals. Zorg ervoor dat u de juiste poort opgeeft.
-  * De poort zonder SSL-beveiliging is standaard uitgeschakeld voor nieuwe caches. Geef op dat deze instelling de SSL-poort wilt gebruiken. Zie de sectie [Access-poorten](cache-configure.md#access-ports) in het onderwerp Een [cache](cache-configure.md) configureren voor meer informatie over het inschakelen van de niet-SSL-poort.
+* **ssl** – true als u cache-/clientcommunicatie met TLS wilt beveiligen; anders vals. Zorg ervoor dat u de juiste poort opgeeft.
+  * De niet-TLS-poort is standaard uitgeschakeld voor nieuwe caches. Geef op dat deze instelling de TLS-poort wilt gebruiken. Zie de sectie [Access-poorten](cache-configure.md#access-ports) in het onderwerp Een [cache](cache-configure.md) configureren voor meer informatie over het inschakelen van de niet-TLS-poort.
 * **throwOnError** - waar als u wilt dat een uitzondering wordt gegooid als er een fout is, of als u wilt dat de bewerking in stilte mislukt. U controleren op een fout door de statische eigenschap Microsoft.Web.Redis.RedisSessionStateProvider.LastException te controleren. De standaardinstelling is waar.
 * **retryTimeoutInMilliseconds** – Bewerkingen die mislukken worden opnieuw geprobeerd tijdens dit interval, opgegeven in milliseconden. De eerste poging vindt plaats na 20 milliseconden en vervolgens treden elke seconde opnieuw pogingen op totdat het interval retryTimeoutInMilliseconds verloopt. Onmiddellijk na dit interval wordt de bewerking nog een laatste keer opnieuw geprobeerd. Als de bewerking nog steeds mislukt, wordt de uitzondering teruggeworpen naar de beller, afhankelijk van de instelling throwOnError. De standaardwaarde is 0, wat betekent dat er geen nieuwe pogingen worden ingesteld.
 * **databaseId** – Geeft op welke database moet worden gebruikt voor cacheuitvoergegevens. Als dit niet is opgegeven, wordt de standaardwaarde van 0 gebruikt.

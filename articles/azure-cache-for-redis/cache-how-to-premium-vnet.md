@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 6c7c041565f6376e7f8b8b84f5076b30c1eec7bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2821ee637b2562b5287dd3d59cf943b3dcb7ef97
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278114"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010882"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Ondersteuning voor virtueel netwerk configureren voor een Premium Azure-cache voor Redis
 Azure Cache voor Redis heeft verschillende cache-aanbiedingen, die flexibiliteit bieden in de keuze van cachegrootte en functies, waaronder premium-laagfuncties zoals clustering, persistentie en ondersteuning voor virtueel netwerk. Een VNet is een privénetwerk in de cloud. Wanneer een Azure-cache voor Redis-instantie is geconfigureerd met een VNet, is deze niet openbaar adresseerbaar en alleen toegankelijk vanaf virtuele machines en toepassingen binnen het VNet. In dit artikel wordt beschreven hoe u ondersteuning voor virtueel netwerk configureert voor een premium Azure-cache voor bijvoorbeeld Redis.
@@ -118,7 +118,7 @@ Er zijn negen uitgaande havenvereisten. Uitgaande aanvragen in deze bereiken zij
 
 #### <a name="geo-replication-peer-port-requirements"></a>Vereisten voor geo-replicatie peer-poort
 
-Als u georeplicatie tussen caches in Azure Virtual Networks gebruikt, moet u er rekening mee houden dat de aanbevolen configuratie is om poorten 15000-15999 voor het hele subnet te deblokkeren in zowel inkomende als uitgaande richtingen naar beide caches, zodat alle replicacomponenten in het subnet kan rechtstreeks met elkaar communiceren, zelfs in het geval van een toekomstige geo-failover.
+Als u georeplicatie tussen caches in Azure Virtual Networks gebruikt, moet u er rekening mee houden dat de aanbevolen configuratie is om poorten 15000-15999 voor het hele subnet te deblokkeren voor het hele subnet in zowel inkomende als uitgaande richtingen naar beide caches, zodat alle replicacomponenten in het subnet rechtstreeks met elkaar kunnen communiceren, zelfs in het geval van een toekomstige geo-failover.
 
 #### <a name="inbound-port-requirements"></a>Vereisten voor inkomende poort
 
@@ -142,9 +142,9 @@ Er zijn acht vereisten voor inkomende havenbereik. Binnenkomende aanvragen in de
 Er zijn vereisten voor netwerkconnectiviteit voor Azure Cache voor Redis die in eerste instantie mogelijk niet in een virtueel netwerk worden gehaald. Azure Cache voor Redis vereist dat alle volgende items goed functioneren wanneer ze worden gebruikt in een virtueel netwerk.
 
 * Uitgaande netwerkconnectiviteit met Azure Storage-eindpunten wereldwijd. Dit omvat eindpunten in dezelfde regio als de Azure-cache voor redis-instantie, evenals opslageindpunten in **andere** Azure-regio's. Azure Storage-eindpunten worden opgelost onder de volgende DNS-domeinen: *table.core.windows.net,* *blob.core.windows.net,* *queue.core.windows.net*en *file.core.windows.net*. 
-* Uitgaande netwerkconnectiviteit met *ocsp.msocsp.com,* *mscrl.microsoft.com*en *crl.microsoft.com*. Deze connectiviteit is nodig om SSL-functionaliteit te ondersteunen.
+* Uitgaande netwerkconnectiviteit met *ocsp.msocsp.com,* *mscrl.microsoft.com*en *crl.microsoft.com*. Deze connectiviteit is nodig om TLS/SSL-functionaliteit te ondersteunen.
 * De DNS-configuratie voor het virtuele netwerk moet in staat zijn om alle eindpunten en domeinen op te lossen die in de eerdere punten worden genoemd. Aan deze DNS-vereisten kan worden voldaan door ervoor te zorgen dat een geldige DNS-infrastructuur is geconfigureerd en onderhouden voor het virtuele netwerk.
-* Uitgaande netwerkconnectiviteit met de volgende Azure Monitoring-eindpunten, die worden opgelost onder de volgende DNS-domeinen: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net , shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
+* Uitgaande netwerkconnectiviteit met de volgende Azure Monitoring-eindpunten, die worden opgelost onder de volgende DNS-domeinen: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net, shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Hoe kan ik controleren of mijn cache werkt in een VNET?
 
@@ -220,13 +220,13 @@ Indien mogelijk wordt aanbevolen om de volgende configuratie te gebruiken:
 
 Het gecombineerde effect van deze stappen is dat het subnetniveau UDR voorrang heeft op de Gedwongen tunneling van ExpressRoute, waardoor uitgaande internettoegang vanuit de Azure-cache voor Redis wordt gewaarborgd.
 
-Verbinding maken met een Azure-cache voor Redis-instantie vanuit een on-premises toepassing met ExpressRoute is geen typisch gebruiksscenario vanwege prestatieredenen (voor de beste prestaties moet Azure Cache voor Redis-clients zich in dezelfde regio bevinden als de Azure-cache voor Redis) .
+Verbinding maken met een Azure-cache voor Redis-instantie via een on-premises toepassing met ExpressRoute is geen typisch gebruiksscenario vanwege prestatieredenen (voor de beste prestaties moet Azure Cache voor Redis-clients zich in dezelfde regio bevinden als de Azure-cache voor Redis).
 
 >[!IMPORTANT] 
 >De routes die in een UDR zijn **gedefinieerd, moeten** specifiek genoeg zijn om voorrang te krijgen op routes die worden geadverteerd door de ExpressRoute-configuratie. In het volgende voorbeeld wordt het brede adresbereik 0.0.0/0/0 gebruikt en als zodanig kan deze mogelijk per ongeluk worden overschreven door routeadvertenties met specifiekere adresbereiken.
 
 >[!WARNING]  
->Azure Cache voor Redis wordt niet ondersteund met ExpressRoute-configuraties die **ten onrechte routes cross-advertiseeren van het openbare peeringpad naar het privé-peeringpad.** ExpressRoute-configuraties met openbare peering geconfigureerd, ontvangen routeadvertenties van Microsoft voor een grote set Microsoft Azure IP-adresbereiken. Als deze adresbereiken onjuist worden geadverteerd op het privé-peeringpad, is het resultaat dat alle uitgaande netwerkpakketten uit de Azure Cache voor het subnet van het exemplaar Redis ten onrechte worden getunneld naar het on-premises netwerk van een klant Infrastructuur. Deze netwerkstroom maakt een stuk breekt met Azure Cache voor Redis. De oplossing voor dit probleem is om cross-advertising routes te stoppen van de openbare peering pad naar de prive-peering pad.
+>Azure Cache voor Redis wordt niet ondersteund met ExpressRoute-configuraties die **ten onrechte routes cross-advertiseeren van het openbare peeringpad naar het privé-peeringpad.** ExpressRoute-configuraties met openbare peering geconfigureerd, ontvangen routeadvertenties van Microsoft voor een grote set Microsoft Azure IP-adresbereiken. Als deze adresbereiken onjuist worden geadverteerd op het privé-peeringpad, is het resultaat dat alle uitgaande netwerkpakketten uit het subnet van de Azure-cache voor het subnet van Het voorbeeld van Redis ten onrechte worden getunneld naar de on-premises netwerkinfrastructuur van een klant. Deze netwerkstroom maakt een stuk breekt met Azure Cache voor Redis. De oplossing voor dit probleem is om cross-advertising routes te stoppen van de openbare peering pad naar de prive-peering pad.
 
 
 Achtergrondinformatie over door de gebruiker gedefinieerde routes is beschikbaar in dit [overzicht](../virtual-network/virtual-networks-udr-overview.md).

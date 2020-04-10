@@ -2,13 +2,13 @@
 title: Clusterknooppunten upgraden om azure-beheerde schijven te gebruiken
 description: U als u een bestaand cluster van ServiceFabric upgraden om door Azure beheerde schijven te gebruiken met weinig of geen downtime van uw cluster.
 ms.topic: how-to
-ms.date: 3/01/2020
-ms.openlocfilehash: 2bda5572eda5579bb31c3613b220885f27220d99
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 4/07/2020
+ms.openlocfilehash: 5f4698718a35970e47de2a0ee6d053802c8ef919
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80758051"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991208"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Clusterknooppunten upgraden om azure-beheerde schijven te gebruiken
 
@@ -27,11 +27,11 @@ In dit artikel vindt u de stappen doorlopen om het primaire knooppunttype van ee
 > [!CAUTION]
 > U krijgt alleen last van een storing in deze procedure als u afhankelijk bent van de cluster-DNS (bijvoorbeeld bij het openen van [Service Fabric Explorer).](service-fabric-visualizing-your-cluster.md) Architecturale [best practice voor front-end services](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) is om een soort van load [balancer](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) voor uw knooppunt types om knooppunt swapping mogelijk te maken zonder een storing.
 
-Hier volgen de [sjablonen en cmdlets](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage) voor Azure Resource Manager die we gebruiken om het upgradescenario te voltooien. De sjabloonwijzigingen worden uitgelegd in [Een aangepaste schaalset implementeren voor het primaire knooppunttype](#deploy-an-upgraded-scale-set-for-the-primary-node-type) hieronder.
+Hier volgen de [sjablonen en cmdlets](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) voor Azure Resource Manager die we gebruiken om het upgradescenario te voltooien. De sjabloonwijzigingen worden uitgelegd in [Een aangepaste schaalset implementeren voor het primaire knooppunttype](#deploy-an-upgraded-scale-set-for-the-primary-node-type) hieronder.
 
 ## <a name="set-up-the-test-cluster"></a>Het testcluster instellen
 
-Laten we het eerste testcluster van Service Fabric instellen. [Download](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage) eerst de voorbeeldsjablonen voor Azure-bronbeheer die we gebruiken om dit scenario te voltooien.
+Laten we het eerste testcluster van Service Fabric instellen. [Download](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) eerst de voorbeeldsjablonen voor Azure-bronbeheer die we gebruiken om dit scenario te voltooien.
 
 Meld u vervolgens aan bij uw Azure-account.
 
@@ -370,6 +370,6 @@ Leer hoe u het volgende doet:
 
 Zie ook:
 
-* [Voorbeeld: Clusterknooppunten upgraden om azure-beheerde schijven te gebruiken](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage)
+* [Voorbeeld: Clusterknooppunten upgraden om azure-beheerde schijven te gebruiken](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
 
 * [Overwegingen voor verticale schaling](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)

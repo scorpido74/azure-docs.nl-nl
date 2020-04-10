@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a916645f153f73a98e7fc5d4046bdf557e8acf2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5ea0fd252d1792d4c40cc6d7869f4ba57edc1ad
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823519"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011358"
 ---
 # <a name="split-merge-security-configuration"></a>Beveiligingsconfiguratie splitsen
 
@@ -26,7 +26,7 @@ Als u de split/merge-service wilt gebruiken, moet u de beveiliging correct confi
 
 Certificaten worden op twee manieren geconfigureerd. 
 
-1. [Het SSL-certificaat configureren](#to-configure-the-ssl-certificate)
+1. [Het TLS/SSL-certificaat configureren](#to-configure-the-tlsssl-certificate)
 2. [Clientcertificaten configureren](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>Om certificaten te verkrijgen
@@ -49,26 +49,26 @@ Als deze opties niet beschikbaar zijn, u **zelfondertekende certificaten**genere
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
 * Haal de WDK uit [Windows 8.1: Download kits en tools](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
-## <a name="to-configure-the-ssl-certificate"></a>Het SSL-certificaat configureren
+## <a name="to-configure-the-tlsssl-certificate"></a>Het TLS/SSL-certificaat configureren
 
-Er is een SSL-certificaat vereist om de communicatie te versleutelen en de server te verifiëren. Kies de meest toepasselijke van de drie onderstaande scenario's en voer al zijn stappen uit:
+Een TLS/SSL-certificaat is vereist om de communicatie te versleutelen en de server te verifiëren. Kies de meest toepasselijke van de drie onderstaande scenario's en voer al zijn stappen uit:
 
 ### <a name="create-a-new-self-signed-certificate"></a>Een nieuw zelfondertekend certificaat maken
 
 1. [Een zelfondertekend certificaat maken](#create-a-self-signed-certificate)
-2. [PFX-bestand maken voor zelfondertekend SSL-certificaat](#create-pfx-file-for-self-signed-ssl-certificate)
-3. [SSL-certificaat uploaden naar cloudservice](#upload-ssl-certificate-to-cloud-service)
-4. [SSL-certificaat bijwerken in serviceconfiguratiebestand](#update-ssl-certificate-in-service-configuration-file)
-5. [SSL-certificeringsinstantie importeren](#import-ssl-certification-authority)
+2. [PFX-bestand maken voor zelfondertekend TLS/SSL-certificaat](#create-pfx-file-for-self-signed-tlsssl-certificate)
+3. [TLS/SSL-certificaat uploaden naar cloudservice](#upload-tlsssl-certificate-to-cloud-service)
+4. [TLS/SSL-certificaat bijwerken in serviceconfiguratiebestand](#update-tlsssl-certificate-in-service-configuration-file)
+5. [TLS/SSL-certificeringsinstantie importeren](#import-tlsssl-certification-authority)
 
 ### <a name="to-use-an-existing-certificate-from-the-certificate-store"></a>Een bestaand certificaat gebruiken in het certificaatarchief
-1. [SSL-certificaat exporteren uit certificaatarchief](#export-ssl-certificate-from-certificate-store)
-2. [SSL-certificaat uploaden naar cloudservice](#upload-ssl-certificate-to-cloud-service)
-3. [SSL-certificaat bijwerken in serviceconfiguratiebestand](#update-ssl-certificate-in-service-configuration-file)
+1. [TLS/SSL-certificaat exporteren vanuit certificate store](#export-tlsssl-certificate-from-certificate-store)
+2. [TLS/SSL-certificaat uploaden naar cloudservice](#upload-tlsssl-certificate-to-cloud-service)
+3. [TLS/SSL-certificaat bijwerken in serviceconfiguratiebestand](#update-tlsssl-certificate-in-service-configuration-file)
 
 ### <a name="to-use-an-existing-certificate-in-a-pfx-file"></a>Een bestaand certificaat in een PFX-bestand gebruiken
-1. [SSL-certificaat uploaden naar cloudservice](#upload-ssl-certificate-to-cloud-service)
-2. [SSL-certificaat bijwerken in serviceconfiguratiebestand](#update-ssl-certificate-in-service-configuration-file)
+1. [TLS/SSL-certificaat uploaden naar cloudservice](#upload-tlsssl-certificate-to-cloud-service)
+2. [TLS/SSL-certificaat bijwerken in serviceconfiguratiebestand](#update-tlsssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>Clientcertificaten configureren
 Clientcertificaten zijn vereist om aanvragen voor de service te verifiëren. Kies de meest toepasselijke van de drie onderstaande scenario's en voer al zijn stappen uit:
@@ -102,7 +102,7 @@ Er is een certificaat vereist om de referenties te versleutelen die zijn opgesla
 
 ### <a name="use-a-new-self-signed-certificate"></a>Een nieuw zelfondertekend certificaat gebruiken
 1. [Een zelfondertekend certificaat maken](#create-a-self-signed-certificate)
-2. [PFX-bestand maken voor zelfondertekend versleutelingscertificaat](#create-pfx-file-for-self-signed-ssl-certificate)
+2. [PFX-bestand maken voor zelfondertekend versleutelingscertificaat](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [Versleutelingscertificaat uploaden naar cloudservice](#upload-encryption-certificate-to-cloud-service)
 4. [Versleutelingscertificaat bijwerken in serviceconfiguratiebestand](#update-encryption-certificate-in-service-configuration-file)
 
@@ -186,7 +186,7 @@ Raadpleeg de documentatie voor Dynamische IP-beveiliging in IIS voor andere onde
 ## <a name="operations-for-configuring-service-certificates"></a>Bewerkingen voor het configureren van servicecertificaten
 Dit onderwerp is alleen ter referentie. Volg de configuratiestappen die zijn beschreven in:
 
-* Het SSL-certificaat configureren
+* Het TLS/SSL-certificaat configureren
 * Clientcertificaten configureren
 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
@@ -204,7 +204,7 @@ Aanpassen:
 * -n met de service-URL. Jokertekens ("CN=*.cloudapp.net") en alternatieve namen ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net") worden ondersteund.
 * -e met de vervaldatum van het certificaat Maak een sterk wachtwoord en geef dit op wanneer dit wordt gevraagd.
 
-## <a name="create-pfx-file-for-self-signed-ssl-certificate"></a>PFX-bestand maken voor zelfondertekend SSL-certificaat
+## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>PFX-bestand maken voor zelfondertekend TLS/SSL-certificaat
 Uitvoeren:
 
         pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
@@ -214,24 +214,24 @@ Voer het wachtwoord in en exporteer vervolgens het certificaat met de volgende o
 * Ja, exporteer de privésleutel
 * Alle uitgebreide eigenschappen exporteren
 
-## <a name="export-ssl-certificate-from-certificate-store"></a>SSL-certificaat exporteren uit certificaatarchief
+## <a name="export-tlsssl-certificate-from-certificate-store"></a>TLS/SSL-certificaat exporteren vanuit certificaatarchief
 * Certificaat zoeken
 * Klik op Acties -> Alle taken -> exporteren...
 * Uitvoercertificaat in een . PFX-bestand met de volgende opties:
   * Ja, exporteer de privésleutel
   * Alle certificaten opnemen in het certificeringspad indien mogelijk *Alle uitgebreide eigenschappen exporteren
 
-## <a name="upload-ssl-certificate-to-cloud-service"></a>SSL-certificaat uploaden naar cloudservice
-Uploadcertificaat met het bestaande of gegenereerde . PFX-bestand met het SSL-sleutelpaar:
+## <a name="upload-tlsssl-certificate-to-cloud-service"></a>TLS/SSL-certificaat uploaden naar cloudservice
+Uploadcertificaat met het bestaande of gegenereerde . PFX-bestand met het TLS-sleutelpaar:
 
 * Voer het wachtwoord in dat de persoonlijke sleutelgegevens beschermt
 
-## <a name="update-ssl-certificate-in-service-configuration-file"></a>SSL-certificaat bijwerken in serviceconfiguratiebestand
+## <a name="update-tlsssl-certificate-in-service-configuration-file"></a>TLS/SSL-certificaat bijwerken in serviceconfiguratiebestand
 Werk de duimafdrukwaarde van de volgende instelling in het serviceconfiguratiebestand bij met de duimafdruk van het certificaat dat naar de cloudservice is geüpload:
 
     <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
 
-## <a name="import-ssl-certification-authority"></a>SSL-certificeringsinstantie importeren
+## <a name="import-tlsssl-certification-authority"></a>TLS/SSL-certificeringsinstantie importeren
 Volg deze stappen in alle account/machine die met de service communiceert:
 
 * Dubbelklik op de . CER-bestand in Windows Verkenner
@@ -248,7 +248,7 @@ Wijzig deze instellingen in false in het serviceconfiguratiebestand om de functi
 <Setting name="SetupWebserverForClientCertificates" value="false" />
 ```
 
-Kopieer vervolgens dezelfde duimafdruk als het SSL-certificaat in de instelling CA-certificaat:
+Kopieer vervolgens dezelfde duimafdruk als het TLS/SSL-certificaat in de CA-certificaatinstelling:
 
 ```xml
 <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
@@ -411,7 +411,7 @@ Werk de duimafdrukwaarde van de volgende instellingen in het serviceconfiguratie
 ```
 
 ## <a name="common-certificate-operations"></a>Algemene certificaatbewerkingen
-* Het SSL-certificaat configureren
+* Het TLS/SSL-certificaat configureren
 * Clientcertificaten configureren
 
 ## <a name="find-certificate"></a>Certificaat zoeken
@@ -477,7 +477,7 @@ In [Azure Portal](https://portal.azure.com/)
 7. Zodra u klaar bent, kopieert u de duimafdruk van het certificaat uit het nieuwe item in de lijst.
 
 ## <a name="other-security-considerations"></a>Andere veiligheidsoverwegingen
-De SSL-instellingen die in dit document worden beschreven, versleutelen de communicatie tussen de service en haar clients wanneer het HTTPS-eindpunt wordt gebruikt. Dit is belangrijk omdat referenties voor databasetoegang en mogelijk andere gevoelige informatie in de communicatie zijn opgenomen. Houd er echter rekening mee dat de service de interne status, inclusief referenties, behoudt in de interne tabellen in de Microsoft Azure SQL-database die u hebt opgegeven voor metagegevensopslag in uw Microsoft Azure-abonnement. Die database is gedefinieerd als onderdeel van de volgende instelling in uw serviceconfiguratiebestand (. CSCFG-bestand): 
+De TLS-instellingen die in dit document worden beschreven, versleutelen de communicatie tussen de service en haar clients wanneer het HTTPS-eindpunt wordt gebruikt. Dit is belangrijk omdat referenties voor databasetoegang en mogelijk andere gevoelige informatie in de communicatie zijn opgenomen. Houd er echter rekening mee dat de service de interne status, inclusief referenties, behoudt in de interne tabellen in de Microsoft Azure SQL-database die u hebt opgegeven voor metagegevensopslag in uw Microsoft Azure-abonnement. Die database is gedefinieerd als onderdeel van de volgende instelling in uw serviceconfiguratiebestand (. CSCFG-bestand): 
 
 ```xml
 <Setting name="ElasticScaleMetadata" value="Server=…" />

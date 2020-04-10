@@ -7,19 +7,25 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 846e8da889e3913c4a8eaab7808495bbd8afad29
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 80e38893d764f35511793d8b31f596dcbf16dd42
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754659"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991889"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Ondersteunde statistieken met Azure Monitor
 
 > [!NOTE]
 > Deze lijst wordt grotendeels automatisch gegenereerd uit de AZURE Monitor Metrics REST API. Elke wijziging in deze lijst via Github kan zonder waarschuwing worden overgeschreven. Neem contact op met de auteur van dit artikel voor meer informatie over het maken van permanente updates.
 
-Azure Monitor biedt verschillende manieren om te communiceren met statistieken, waaronder het in kaart brengen ervan in de portal, toegang tot deze gegevens via de REST API of het opvragen ervan met PowerShell of CLI. Hieronder vindt u een volledige lijst met alle statistieken die momenteel beschikbaar zijn met de metrische pijplijn van Azure Monitor. Andere statistieken kunnen beschikbaar zijn in de portal of met behulp van oudere API's. Deze lijst hieronder bevat alleen statistieken die beschikbaar zijn via de geconsolideerde Azure Monitor-metrische pijplijn. De statistieken worden georganiseerd op naamruimte. Zie [Resourceproviders voor Azure-services voor](../../azure-resource-manager/management/azure-services-resource-providers.md)een lijst met services en de naamruimten die ertoe behoren. Gebruik de [api-versie 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) voor en toegang tot deze statistieken om deze statistieken programmatisch te zoeken en te openen
+Azure Monitor biedt verschillende manieren om te communiceren met statistieken, waaronder het in kaart brengen ervan in de portal, toegang tot deze gegevens via de REST API of het opvragen ervan met PowerShell of CLI. 
+
+Dit artikel is een volledige lijst met alle platformstatistieken (dat wil zeggen automatisch verzameld) met statistieken die momenteel beschikbaar zijn met de geconsolideerde metrische pijplijn van Azure Monitor. De lijst is voor het laatst bijgewerkt op 27 maart 2020. Statistieken die na deze datum zijn gewijzigd of toegevoegd, worden mogelijk niet hieronder weergegeven. Gebruik de [api-versie 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) voor en toegang tot de lijst met statistieken om de lijst met statistieken programmatisch te zoeken en te openen
+
+Andere statistieken kunnen beschikbaar zijn in de portal of met behulp van oudere API's. Statistieken voor het gastbesturingssysteem (gastbesturingssysteem) dat wordt uitgevoerd in Azure Virtual Machines, Service Fabric en Cloud Services worden HIER **NIET** vermeld. Deze moeten worden verzameld via een of meer agenten die op of als onderdeel van het besturingssysteem draaien. U de agentstatistieken naar de database met platformstatistieken verzenden met behulp van de [aangepaste api voor metrische gegevens,](metrics-custom-overview.md) die momenteel in openbare preview zijn. Vervolgens u statistieken van gastbesturingssysteems in kaart brengen, waarschuwen en anderszins gebruiken, zoals platformstatistieken. Zie [Overzicht van bewakingsagenten](agents-overview.md)voor meer informatie.    
+
+De statistieken worden georganiseerd op naamruimte. Zie [Resourceproviders voor Azure-services voor](../../azure-resource-manager/management/azure-services-resource-providers.md)een lijst met services en de naamruimten die ertoe behoren. 
 
 > [!NOTE]
 > Het verzenden van multidimensionale metrische gegevens via diagnostische instellingen wordt momenteel niet ondersteund. Metrische gegevens met dimensies worden geëxporteerd als platte eendimensionale metrische gegevens, als totaal van alle dimensiewaarden.
@@ -1844,7 +1850,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met statistieken, 
 |Average_Bytes Totaal/sec|Totaal aantal bytes per seconde|Count|Average|Average_Bytes Totaal/sec|Computer, objectnaam, instancename, contrapath, sourcesystem|
 |Average_Processor wachtrijlengte|Processorwachtrijlengte|Count|Average|Average_Processor wachtrijlengte|Computer, objectnaam, instancename, contrapath, sourcesystem|
 |Hartslag|Hartslag|Count|Totaal|Hartslag|Computer, OSType, Versie, SourceComputerId|
-|Update|Update|Count|Average|Update|Computer, Product, Classificatie, UpdateState, optioneel, goedgekeurd|
+|Bijwerken|Bijwerken|Count|Average|Bijwerken|Computer, Product, Classificatie, UpdateState, optioneel, goedgekeurd|
 |Gebeurtenis|Gebeurtenis|Count|Average|Gebeurtenis|Bron,EventLog,Computer,EventCategory,EventLevel,EventLevelName, EventID|
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft.Peering/peeringServices

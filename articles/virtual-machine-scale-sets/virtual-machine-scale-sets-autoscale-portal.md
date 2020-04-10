@@ -1,19 +1,19 @@
 ---
 title: Virtuele machineschaalsets automatisch schalen in de Azure-portal
 description: Regels voor automatische schaal maken voor virtuele machineschaalsets in de Azure-portal
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: ecd80f49f0161c8bbc6ab7309f2af89e2ded1fe9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: 1915b144aec5a5447504c70d18dbf420d255a08e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278187"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010287"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatisch een virtuele machineschaalschalen schalen in de Azure-portal
 Wanneer u een schaalset maakt, definieert u het aantal VM-exemplaren dat u wilt uitvoeren. Wanneer de vraag van de toepassing verandert, kunt u het aantal VM-exemplaren automatisch vergroten of verkleinen. De mogelijkheid van automatisch schalen stelt u in staat om altijd te voldoen aan de vraag van klanten houden of om gedurende de levenscyclus van uw app te reageren op wijzigingen in de prestaties van de toepassing.
@@ -96,7 +96,7 @@ Als u het aantal en de status van VM-exemplaren wilt zien, selecteert u **Instan
 
 
 ## <a name="autoscale-based-on-a-schedule"></a>Autoschaal op basis van een planning
-In de vorige voorbeelden werd automatisch een schaal in- of uitgeschaald met basishoststatistieken zoals CPU-gebruik. U ook regels voor autoschaal maken op basis van schema's. Met deze planningsregels u het aantal VM-exemplaren automatisch uitschalen voordat de verwachte toename van de toepassingsvraag, zoals de kernwerkuren, wordt uitgevoerd en vervolgens automatisch schalen naar het aantal exemplaren op een tijdstip waarop u minder verwacht vraag, zoals het weekend.
+In de vorige voorbeelden werd automatisch een schaal in- of uitgeschaald met basishoststatistieken zoals CPU-gebruik. U ook regels voor autoschaal maken op basis van schema's. Met deze regels op basis van schema's u het aantal VM-exemplaren automatisch uitschalen voordat de verwachte toename van de toepassingsvraag, zoals de kernwerkuren, wordt uitgevoerd en vervolgens automatisch schalen naar het aantal exemplaren op een tijdstip dat u verwacht dat er minder vraag is, zoals het weekend.
 
 1. Kies **Schalen** in het menu aan de linkerkant van het venster met de schaalset. Als u de bestaande regels voor automatisch schalen wilt verwijderen die in de vorige voorbeelden zijn gemaakt, kiest u het pictogram prullenbak.
 

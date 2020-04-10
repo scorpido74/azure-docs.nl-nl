@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4301a55e3f5ea5b445ef1540ee59d1b5c28ca0ed
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278244"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010814"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Problemen met time-outs voor Azure Cache voor Redis oplossen
 
@@ -82,7 +82,7 @@ U de volgende stappen gebruiken om mogelijke oorzaken te onderzoeken.
    - Controleer of de CPU-binding met de server wordt uitgevoerd door de functievan de [CPU-cache-prestatiestatistiek te](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)controleren. Aanvragen die binnenkomen terwijl Redis CPU-gebonden is, kunnen ervoor zorgen dat deze aanvragen een time-out krijgen. Als u aan deze voorwaarde wilt reageren, u de belasting over meerdere shards in een premiumcache verdelen of upgraden naar een groter formaat of prijsniveau. Zie [Bandbreedtebeperking aan de serverzijde](cache-troubleshoot-server.md#server-side-bandwidth-limitation)voor meer informatie.
 1. Duurt het lang duren voordat opdrachten op de server worden verwerkt? Langlopende opdrachten die lang duren om te verwerken op de redis-server kunnen time-outs veroorzaken. Zie Langlopende [opdrachten](cache-troubleshoot-server.md#long-running-commands)voor meer informatie over langlopende opdrachten. U verbinding maken met uw Azure-cache voor bijvoorbeeld Redis met de redis-cli-client of de [Redis-console.](cache-configure.md#redis-console) Voer vervolgens de opdracht [SLOWLOG](https://redis.io/commands/slowlog) uit om te zien of er aanvragen langzamer zijn dan verwacht. Redis Server en StackExchange.Redis zijn geoptimaliseerd voor veel kleine aanvragen in plaats van minder grote aanvragen. Het splitsen van uw gegevens in kleinere brokken kan hier dingen verbeteren.
 
-    Zie het blogbericht [ASP.NET Session State Provider voor Redis Preview Release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)voor informatie over het maken van verbinding met het SSL-eindpunt van uw cache met behulp van redis-cli en stunnel.
+    Zie het blogbericht [ASP.NET Session State Provider voor Redis Preview Release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)voor informatie over het maken van verbinding met het TLS/SSL-eindpunt van uw cache met behulp van redis-cli en stunnel.
 1. Hoge Redis-serverbelasting kan time-outs veroorzaken. U de serverbelasting `Redis Server Load` controleren door de [statistiek cacheprestaties te bewaken.](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) Een serverbelasting van 100 (maximale waarde) betekent dat de redis-server bezig is geweest, zonder inactieve tijd, het verwerken van aanvragen. Voer de opdracht SlowLog uit, zoals beschreven in de vorige alinea, om te zien of bepaalde aanvragen alle servermogelijkheden in gebruik nemen. Zie Hoog CPU-gebruik / Serverbelasting voor meer informatie.
 1. Was er een andere gebeurtenis aan de client kant die kan hebben veroorzaakt een netwerk blip? Veelvoorkomende gebeurtenissen zijn: het aantal clientexemplaren omhoog of omlaag schalen, een nieuwe versie van de client implementeren of automatisch schalen ingeschakeld. In onze tests hebben we vastgesteld dat automatisch schalen of opschalen/omlaag kan leiden tot uitgaande netwerkconnectiviteit die enkele seconden verloren gaat. StackExchange.Redis code is bestand tegen dergelijke gebeurtenissen en maakt opnieuw verbinding. Tijdens het opnieuw verbinden kunnen aanvragen in de wachtrij een time-out krijgen.
 1. Was er een grote aanvraag voorafgaand aan een aantal kleine aanvragen voor de cache die een time-out? De `qs` parameter in het foutbericht geeft aan hoeveel aanvragen van de client naar de server zijn verzonden, maar dat er geen antwoord is verwerkt. Deze waarde kan blijven groeien omdat StackExchange.Redis één TCP-verbinding gebruikt en slechts één reactie tegelijk kan lezen. Hoewel de eerste bewerking een time-out heeft, weerhoudt het niet dat meer gegevens naar of van de server worden verzonden. Andere aanvragen worden geblokkeerd totdat de grote aanvraag is voltooid en kan leiden tot time-outs. Een oplossing is om de kans op time-outs te minimaliseren door ervoor te zorgen dat uw cache groot genoeg is voor uw werkbelasting en grote waarden in kleinere segmenten opsplitst. Een andere mogelijke oplossing is `ConnectionMultiplexer` om een pool van objecten `ConnectionMultiplexer` in uw client te gebruiken en de minst geladen te kiezen bij het verzenden van een nieuwe aanvraag. Het laden van meerdere verbindingsobjecten moet voorkomen dat een enkele time-out ervoor zorgt dat andere aanvragen ook een time-out krijgen.

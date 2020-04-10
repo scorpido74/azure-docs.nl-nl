@@ -3,12 +3,12 @@ title: Azure Service Fabric-apps debuggen in Linux
 description: Meer informatie over het monitoren en diagnosticeren van uw Service Fabric-services op een lokale Linux-ontwikkelingsmachine.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75526291"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991327"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Services controleren en diagnosticeren in een lokale Linux-machine-installatie
 
@@ -59,7 +59,7 @@ Zie voor meer informatie de [codevoorbeelden in GitHub](https://github.com/Azure
 ## <a name="debugging-service-fabric-c-applications"></a>Foutopsporingsservicefabric C#-toepassingen
 
 
-Er zijn meerdere frameworks beschikbaar voor het traceren van CoreCLR-toepassingen op Linux. Zie [GitHub: logboekregistratie](http:/github.com/aspnet/logging)voor meer informatie.  Aangezien EventSource bekend is bij C# ontwikkelaars,'gebruikt dit artikel EventSource voor tracering in CoreCLR-samples op Linux.
+Er zijn meerdere frameworks beschikbaar voor het traceren van CoreCLR-toepassingen op Linux. Zie [.NET-extensies voor logboekregistratie voor](https://github.com/dotnet/extensions/tree/master/src/Logging)meer informatie.  Aangezien EventSource bekend is bij C# ontwikkelaars,'gebruikt dit artikel EventSource voor tracering in CoreCLR-samples op Linux.
 
 De eerste stap is om System.Diagnostics.Tracing op te nemen, zodat u uw logboeken schrijven naar geheugen-, uitvoerstromen of consolebestanden.  Als u logboekregistratie met EventSource wilt gebruiken, voegt u het volgende project toe aan uw project.json:
 

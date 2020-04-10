@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 192e46fd7f86b6053eaf658fa65e3c6cdfa3a4e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528605"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992212"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Toegangsbeheer in Data Lake Storage Gen2
 
@@ -54,7 +54,7 @@ SAS-tokens bevatten toegestane machtigingen als onderdeel van het token. De mach
 U een beveiligingsprincipal koppelen aan een toegangsniveau voor bestanden en mappen. Deze associaties worden vastgelegd in een *toegangscontrolelijst (ACL).* Elk bestand en elke map in uw opslagaccount heeft een lijst met toegangsbeheer.
 
 > [!NOTE]
-> ACL's zijn alleen van toepassing op beveiligingsprincipals in dezelfde tenant. U een gastgebruiker niet koppelen aan een toegangsniveau.  
+> ACL's zijn alleen van toepassing op beveiligingsprincipals in dezelfde tenant. 
 
 Als u een rol hebt toegewezen aan een beveiligingsprincipal op opslagaccountniveau, u toegangscontrolelijsten gebruiken om die beveiligingsprincipal verhoogde toegang te verlenen tot specifieke bestanden en mappen.
 
@@ -72,8 +72,8 @@ Zie een van de volgende artikelen om machtigingen voor bestands- en directoryniv
 |Java|[Java gebruiken om mappen, bestanden en ACL's te beheren in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md)|
 |Python|[Python gebruiken om mappen, bestanden en ACL's te beheren in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|
 |PowerShell|[PowerShell gebruiken om mappen, bestanden en ACL's te beheren in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md)|
-|Azure-CLI|[Azure CLI gebruiken om mappen, bestanden en ACL's te beheren in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
-|REST API |[Pad - Bijwerken](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|Azure CLI|[Azure CLI gebruiken om mappen, bestanden en ACL's te beheren in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
+|REST-API |[Pad - Bijwerken](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > Als de beveiligingsprincipal een *serviceprincipal* is, is het belangrijk om de object-id van de serviceprincipal te gebruiken en niet de object-id van de gerelateerde app-registratie. Als u de object-id van de serviceprincipal wilt ophalen, opent u de Azure CLI en gebruikt u deze opdracht: `az ad sp show --id <Your App ID> --query objectId`. zorg ervoor dat `<Your App ID>` u de tijdelijke aanduiding vervangt door de app-id van uw app-registratie.

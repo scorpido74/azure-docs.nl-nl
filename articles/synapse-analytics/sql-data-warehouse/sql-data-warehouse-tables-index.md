@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0d63f2c29bfdbdf320185647bd33ec30500ed874
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 8cb4af8faccb68c455928c0d3c5405ef2d3e70df
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742704"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011018"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Indexeren van tabellen in Synapse SQL-groep
 
@@ -52,9 +52,9 @@ Er zijn een paar scenario's waarin geclusterde kolomarchief mogelijk geen goede 
 
 ## <a name="heap-tables"></a>Heaptabellen
 
-Wanneer u tijdelijk gegevens in synapsen-SQL-groep landt, u merken dat het gebruik van een heaptabel het algehele proces sneller maakt. Dit komt omdat ladingen op heaps sneller zijn dan het indexeren van tabellen en in sommige gevallen kan het volgende lezen vanuit de cache worden gedaan.  Als u gegevens alleen laadt om deze te faseren voordat u meer transformaties uitvoert, is het laden van de tabel naar heaptabel veel sneller dan het laden van de gegevens naar een geclusterde kolomarchieftabel. Bovendien laadt het laden van gegevens naar een [tijdelijke tabel](sql-data-warehouse-tables-temporary.md) sneller dan het laden van een tabel naar permanente opslag.  
+Wanneer u tijdelijk gegevens in synapsen-SQL-groep landt, u merken dat het gebruik van een heaptabel het algehele proces sneller maakt. Dit komt omdat ladingen op heaps sneller zijn dan het indexeren van tabellen en in sommige gevallen kan het volgende lezen vanuit de cache worden gedaan.  Als u gegevens alleen laadt om deze te faseren voordat u meer transformaties uitvoert, is het laden van de tabel naar heaptabel veel sneller dan het laden van de gegevens naar een geclusterde kolomarchieftabel. Bovendien laadt het laden van gegevens naar een [tijdelijke tabel](sql-data-warehouse-tables-temporary.md) sneller dan het laden van een tabel naar permanente opslag.  Na het laden van gegevens u indexen in de tabel maken voor snellere queryprestaties.  
 
-Voor kleine opzoektabellen, minder dan 60 miljoen rijen, zijn heaptabellen vaak zinvol.  Clusterkolomarchieftabellen beginnen optimale compressie te bereiken zodra er meer dan 60 miljoen rijen zijn.
+Clusterkolomarchieftabellen beginnen optimale compressie te bereiken zodra er meer dan 60 miljoen rijen zijn.  Voor kleine opzoektabellen, minder dan 60 miljoen rijen, u HEAP of geclusterde index gebruiken voor snellere queryprestaties. 
 
 Als u een heaptabel wilt maken, geeft u HEAP op in de MET-component:
 

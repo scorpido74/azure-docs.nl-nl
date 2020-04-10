@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: c0eb043ce040f154050ef4c3675f165dad326e32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fe6b494398337dd49bd8f0fe53b24666412a1b0
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929428"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991583"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Gegevens van Google BigQuery kopiëren met Azure Data Factory
 
@@ -99,7 +99,7 @@ Stel de eigenschap 'authenticationType' in op **ServiceAuthentication**en geef d
 |:--- |:--- |:--- |
 | e-mail | De e-mail-id van het serviceaccount die wordt gebruikt voor ServiceAuthentication. Het kan alleen worden gebruikt op Self-hosted Integration Runtime.  | Nee |
 | keyFilePath | Het volledige pad naar het .p12-sleutelbestand dat wordt gebruikt om het e-mailadres van het serviceaccount te verifiëren. | Nee |
-| trustedCertPath | Het volledige pad van het .pem-bestand dat vertrouwde CA-certificaten bevat die worden gebruikt om de server te verifiëren wanneer u verbinding maakt via SSL. Deze eigenschap kan alleen worden ingesteld wanneer u SSL gebruikt op Zelf gehoste integratieruntime. De standaardwaarde is het cacerts.pem-bestand dat is geïnstalleerd met de inburgeringsruntime.  | Nee |
+| trustedCertPath | Het volledige pad van het .pem-bestand dat vertrouwde CA-certificaten bevat die worden gebruikt om de server te verifiëren wanneer u verbinding maakt via TLS. Deze eigenschap kan alleen worden ingesteld wanneer u TLS gebruikt op Self-hosted Integration Runtime. De standaardwaarde is het cacerts.pem-bestand dat is geïnstalleerd met de inburgeringsruntime.  | Nee |
 | gebruik vanSystemTrustStore | Hiermee geeft u op of u een CA-certificaat wilt gebruiken in het systeemvertrouwensarchief of uit een opgegeven .pem-bestand. De standaardwaarde is **onwaar**.  | Nee |
 
 **Voorbeeld:**

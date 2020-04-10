@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 7dac8d21e3b45307284ece15ca5ddbcc69db909b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b63dcfd6ed293cab9d0107a8b6a35c7ce358d429
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260642"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011681"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON-indeling in Azure Data Factory
 
@@ -30,9 +30,10 @@ Zie het artikel [Gegevenssets](concepts-datasets-linked-services.md) voor een vo
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | De eigenschap type van de gegevensset moet worden ingesteld op **Json**. | Ja      |
 | location         | Locatie-instellingen van het bestand(en). Elke op bestanden gebaseerde connector heeft zijn `location`eigen locatietype en ondersteunde eigenschappen onder . **Zie details in de sectie -> gegevensseteigenschappen**van de connector . | Ja      |
-| encodingName     | Het coderingstype dat wordt gebruikt om testbestanden te lezen/schrijven. <br>Toegestane waarden zijn als volgt: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-JP", "EUCF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-JP", "EUCF-32 -KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", " IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM870", "IBM863", "IBM863", "IBM865", "IBM869", "IBM870", "IBM863 01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859 -6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| Nee       |
-| compressieCodec | De compressiecodec die wordt gebruikt voor het lezen/schrijven van tekstbestanden. <br>Toegestane waarden zijn **bzip2,** **gzip,** **leeglopen,** **ZipDeflate**, **pittig**of **lz4**. te gebruiken bij het opslaan van het bestand. <br>Opmerking momenteel Kopieeractiviteit ondersteunt geen "pittige" & "lz4".<br>Wanneer u kopieeractiviteit gebruikt om zipdeflate-bestand(en) te decomprimeren en naar het opslagarchief `<path specified in dataset>/<folder named as source zip file>/`voor bestanden te schrijven, worden bestanden naar de map geëxtraheerd: . | Nee       |
-| compressieNiveau | De compressieverhouding. <br>Toegestane waarden zijn **optimaal** of **snelst.**<br>- **Snelste:** De compressiebewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **Optimaal**: De compressiebewerking moet optimaal worden gecomprimeerd, zelfs als de bewerking langer duurt. Zie Onderwerp [compressieniveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie. | Nee       |
+| encodingName     | Het coderingstype dat wordt gebruikt om testbestanden te lezen/schrijven. <br>Allowed values are as follows: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13" , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| Nee       |
+| compressie | Groep eigenschappen om bestandscompressie te configureren. Configureer deze sectie wanneer u compressie/decompressie wilt uitvoeren tijdens de uitvoering van de activiteit. | Nee |
+| type | De compressiecodec die wordt gebruikt voor het lezen/schrijven van JSON-bestanden. <br>Toegestane waarden zijn **bzip2,** **gzip,** **leeglopen,** **ZipDeflate**, **pittig**of **lz4**. te gebruiken bij het opslaan van het bestand. Standaard wordt niet gecomprimeerd.<br>**Opmerking** op dit moment Kopieeractiviteit ondersteunt geen "pittige" & "lz4", en het toewijzen van gegevensstroom ondersteunt geen "ZipDeflate".<br>**Wanneer u** kopieeractiviteit gebruikt om zipdeflate-bestand(en) te decomprimeren en naar het opslagarchief `<path specified in dataset>/<folder named as source zip file>/`voor bestanden te schrijven, worden bestanden naar de map geëxtraheerd: . | Nee.  |
+| niveau | De compressieverhouding. <br>Toegestane waarden zijn **optimaal** of **snelst.**<br>- **Snelste:** De compressiebewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **Optimaal**: De compressiebewerking moet optimaal worden gecomprimeerd, zelfs als de bewerking langer duurt. Zie Onderwerp [compressieniveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie. | Nee       |
 
 Hieronder vindt u een voorbeeld van de JSON-gegevensset over Azure Blob Storage:
 
@@ -54,6 +55,7 @@ Hieronder vindt u een voorbeeld van de JSON-gegevensset over Azure Blob Storage:
             },
             "compression": {
                 "type": "gzip"
+            }
         }
     }
 }

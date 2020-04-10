@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: f2e70a7b900ad918cda05ce34204e2de1e6e67ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47d26ad452b8494e591ee919076e5ade8bf19cd7
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75830187"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011392"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Afgebakende tekstnotatie in Azure Data Factory
 
@@ -30,14 +30,14 @@ Zie het artikel [Gegevenssets](concepts-datasets-linked-services.md) voor een vo
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | De eigenschap type van de gegevensset moet worden ingesteld op **DelimitedText**. | Ja      |
 | location         | Locatie-instellingen van het bestand(en). Elke op bestanden gebaseerde connector heeft zijn `location`eigen locatietype en ondersteunde eigenschappen onder .  | Ja      |
-| columnDelimiter  | Het teken(en) dat wordt gebruikt om kolommen in een bestand te scheiden. Momenteel wordt multi-char delimiter alleen ondersteund voor het toewijzen van gegevensstroom, maar niet voor kopieeractiviteit. <br>De standaardwaarde is **komma `,` **, Wanneer de kolomscheidingsteken wordt gedefinieerd als lege tekenreeks, wat betekent dat er geen scheidingsteken is, wordt de hele regel als één kolom genomen. | Nee       |
-| rowDelimiter     | Het enige teken of '\r\n' dat wordt gebruikt om rijen in een bestand te scheiden.<br>De standaardwaarde is een van de volgende waarden **op gelezen waarden: ["\r\n", "\r", "\n"]** en **"\n" of "\r\n" bij schrijven** door respectievelijk gegevensstroom en Kopieeractiviteit. <br>Wanneer `rowDelimiter` is ingesteld op geen scheidingsteken `columnDelimiter` (lege tekenreeks), moet de moet worden ingesteld als geen scheidingsteken (lege tekenreeks) ook, wat betekent dat de hele inhoud te behandelen als een enkele waarde. | Nee       |
+| columnDelimiter  | Het teken(en) dat wordt gebruikt om kolommen in een bestand te scheiden. <br>De standaardwaarde is **komma `,` **. Wanneer de kolomscheidingwordt gedefinieerd als lege tekenreeks, wat betekent dat er geen scheidingsteken is, wordt de hele regel als één kolom genomen.<br>Momenteel wordt kolomscheiding als lege tekenreeks of multi-char alleen ondersteund voor het toewijzen van gegevensstroom, maar niet voor kopieeractiviteit.  | Nee       |
+| rowDelimiter     | Het enige teken of '\r\n' dat wordt gebruikt om rijen in een bestand te scheiden. <br>De standaardwaarde is een van de volgende waarden **op gelezen waarden: ["\r\n", "\r", "\n"]** en **"\n" of "\r\n" bij schrijven** door respectievelijk gegevensstroom en Kopieeractiviteit. <br>Wanneer de scheidingsteken van de rij is ingesteld op geen scheidingsteken (lege tekenreeks), moet de kolomscheidinger ook worden ingesteld als geen scheidingsteken (lege tekenreeks), wat betekent dat de volledige inhoud als één waarde moet worden behandeld.<br>Momenteel wordt rijscheiding als lege tekenreeks alleen ondersteund voor het toewijzen van gegevensstroom, maar niet voor kopieeractiviteit. | Nee       |
 | quoteChar        | Het enige teken dat kolomwaarden moet citeren als het kolomscheidingstekens bevat. <br>De standaardwaarde is **dubbele aanhalingstekens** `"`. <br>Voor het toewijzen `quoteChar` van gegevensstroom kan geen lege tekenreeks zijn. <br>Voor Kopieeractiviteit, `quoteChar` wanneer deze wordt gedefinieerd als lege tekenreeks, betekent dit dat er `escapeChar` geen koerschar is en dat kolomwaarde niet wordt geciteerd en wordt gebruikt om te ontsnappen aan de kolomscheidingsteken en zichzelf. | Nee       |
 | escapeChar       | Het enige teken om aan aan citaten in een geciteerde waarde te ontsnappen.<br>De standaardwaarde is **backslash `\` **. <br>Voor het toewijzen `escapeChar` van gegevensstroom kan geen lege tekenreeks zijn. <br/>Bij Activiteit kopiëren `escapeChar` moet de `quoteChar` tekenreeks ook worden ingesteld als lege tekenreeks, in welk geval ervoor moet worden gezorgd dat alle kolomwaarden geen scheidingstekens bevatten. | Nee       |
 | firstRowAsHeader | Hiermee geeft u op of u de eerste rij moet behandelen/maken als een kopregel met namen van kolommen.<br>Toegestane waarden zijn **waar** en **onwaar** (standaard). | Nee       |
 | nullValue        | Hiermee geeft u de tekenreeksweergave van null-waarde op. <br>De standaardwaarde is **een lege tekenreeks**. | Nee       |
-| encodingName     | Het coderingstype dat wordt gebruikt om testbestanden te lezen/schrijven. <br>Toegestane waarden zijn als volgt: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-JP", "EUCF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-JP", "EUCF-32 -KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", " IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM870", "IBM863", "IBM863", "IBM865", "IBM869", "IBM870", "IBM863 01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859 -6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>De gegevensstroom van notities biedt geen ondersteuning voor UTF-7-codering. | Nee       |
-| compressieCodec | De compressiecodec die wordt gebruikt voor het lezen/schrijven van tekstbestanden. <br>Toegestane waarden zijn **bzip2,** **gzip,** **leeglopen,** **ZipDeflate**, **pittig**of **lz4**. te gebruiken bij het opslaan van het bestand. <br>Opmerking op dit moment Kopieeractiviteit ondersteunt geen "pittige" & "lz4", en het toewijzen van gegevensstroom ondersteunt geen "ZipDeflate". <br>Wanneer u kopieeractiviteit gebruikt om zipdeflate-bestand(en) te decomprimeren en naar het opslagarchief `<path specified in dataset>/<folder named as source zip file>/`voor bestanden te schrijven, worden bestanden naar de map geëxtraheerd: . | Nee       |
+| encodingName     | Het coderingstype dat wordt gebruikt om testbestanden te lezen/schrijven. <br>Allowed values are as follows: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13" , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>De gegevensstroom van notities biedt geen ondersteuning voor UTF-7-codering. | Nee       |
+| compressieCodec | De compressiecodec die wordt gebruikt voor het lezen/schrijven van tekstbestanden. <br>Toegestane waarden zijn **bzip2,** **gzip,** **leeglopen,** **ZipDeflate**, **pittig**of **lz4**. Standaard wordt niet gecomprimeerd. <br>**Opmerking** op dit moment Kopieeractiviteit ondersteunt geen "pittige" & "lz4", en het toewijzen van gegevensstroom ondersteunt geen "ZipDeflate". <br>**Wanneer u** kopieeractiviteit gebruikt om zipdeflate-bestand(en) te decomprimeren en naar het opslagarchief `<path specified in dataset>/<folder named as source zip file>/`voor bestanden te schrijven, worden bestanden naar de map geëxtraheerd: . | Nee       |
 | compressieNiveau | De compressieverhouding. <br>Toegestane waarden zijn **optimaal** of **snelst.**<br>- **Snelste:** De compressiebewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **Optimaal**: De compressiebewerking moet optimaal worden gecomprimeerd, zelfs als de bewerking langer duurt. Zie Onderwerp [compressieniveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie. | Nee       |
 
 Hieronder vindt u een voorbeeld van de beperkte tekstgegevensset op Azure Blob Storage:
@@ -60,6 +60,7 @@ Hieronder vindt u een voorbeeld van de beperkte tekstgegevensset op Azure Blob S
             },
             "columnDelimiter": ",",
             "quoteChar": "\"",
+            "escapeChar": "\"",
             "firstRowAsHeader": true,
             "compressionCodec": "gzip"
         }

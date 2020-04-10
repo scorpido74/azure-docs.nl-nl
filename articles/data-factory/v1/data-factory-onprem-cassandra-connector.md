@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 05cee60fb1f4d43d1b4ce371aa9f22650b4782da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f96680f1ea91434c84d6606e3637c68c1cb5a84
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79281299"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991498"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Gegevens verplaatsen uit een on-premises Cassandra-database met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
@@ -75,7 +75,7 @@ In de volgende tabel vindt u een beschrijving voor JSON-elementen die specifiek 
 | versleuteldCredential |Referentie versleuteld door de gateway. |Nee |
 
 >[!NOTE]
->Momenteel wordt de verbinding met Cassandra via SSL niet ondersteund.
+>Momenteel wordt de verbinding met Cassandra via TLS niet ondersteund.
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 Zie het artikel [Gegevenssets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. Secties zoals structuur, beschikbaarheid en beleid van een gegevensset JSON zijn vergelijkbaar voor alle gegevenssettypen (Azure SQL, Azure blob, Azure table, etc.).

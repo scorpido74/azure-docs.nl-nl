@@ -5,12 +5,12 @@ author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
-ms.openlocfilehash: 876980bd6a59bace9ab4e490358964d19fa52c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56df6e28940eb15597a3d6bccca3f85e5f690f89
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586084"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991651"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Aanbevolen procedures voor het ontwerpen van Azure Service Fabric-toepassingen
 
@@ -58,8 +58,8 @@ Bespaar kosten en verbeter de beschikbaarheid:
 ## <a name="how-to-work-with-reliable-services"></a>Werken met betrouwbare services
 Service Fabric Reliable Services stelt u in staatsloze en stateful services te creëren. Zie voor meer informatie de [inleiding tot Betrouwbare Diensten](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction).
 - Houd u altijd aan het [annuleringstoken](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) in `RunAsync()` de `ChangeRole()` methode voor stateloze en statelijke services en de methode voor stateful services. Als u dit niet doet, weet Service Fabric niet of uw service kan worden gesloten. Als u bijvoorbeeld het annuleringstoken niet nakomt, kunnen er veel langere upgradetijden voor toepassingen optreden.
--   Open en sluit [communicatieluisteraars](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) tijdig en eer de annuleringstokens.
--   Meng nooit synchronisatiecode met async-code. Gebruik bijvoorbeeld niet `.GetAwaiter().GetResult()` in uw async-gesprekken. Gebruik async *helemaal* door de callstack.
+-    Open en sluit [communicatieluisteraars](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) tijdig en eer de annuleringstokens.
+-    Meng nooit synchronisatiecode met async-code. Gebruik bijvoorbeeld niet `.GetAwaiter().GetResult()` in uw async-gesprekken. Gebruik async *helemaal* door de callstack.
 
 ## <a name="how-to-work-with-reliable-actors"></a>Hoe te werken met betrouwbare actoren
 Service Fabric Reliable Actors stelt u in staat om eenvoudig stateful, virtuele acteurs te maken. Zie voor meer informatie de [inleiding tot betrouwbare actoren.](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction)
@@ -77,7 +77,7 @@ Service Fabric Reliable Actors stelt u in staat om eenvoudig stateful, virtuele 
 Wees grondig over het toevoegen van [applicatie logging](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) in service calls. Het zal u helpen bij het diagnosticeren van scenario's waarin services elkaar bellen. Wanneer A-gesprekken B bijvoorbeeld C-aanroept, kan het gesprek overal mislukken. Als u niet genoeg logboekregistratie hebt, zijn fouten moeilijk te diagnosticeren. Als de services te veel registreren vanwege oproepvolumes, moet u op zijn minst fouten en waarschuwingen registreren.
 
 ## <a name="iot-and-messaging-applications"></a>IoT- en berichtentoepassingen
-Wanneer u berichten leest vanuit [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) of [Azure Event Hubs,](https://docs.microsoft.com/azure/event-hubs/)gebruikt u [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor). ServiceFabricProcessor integreert met Service Fabric Reliable Services om de staat van lezen van de gebeurtenishubpartities te behouden en stuurt nieuwe berichten naar uw services via de `IEventProcessor::ProcessEventsAsync()` methode.
+Wanneer u berichten leest vanuit [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) of [Azure Event Hubs,](https://docs.microsoft.com/azure/event-hubs/)gebruikt u [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor). ServiceFabricProcessor integreert met Service Fabric Reliable Services om de staat van lezen van de gebeurtenishubpartities te behouden en stuurt nieuwe berichten naar uw services via de `IEventProcessor::ProcessEventsAsync()` methode.
 
 
 ## <a name="design-guidance-on-azure"></a>Ontwerprichtlijnen voor Azure

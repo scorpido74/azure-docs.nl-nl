@@ -1,21 +1,21 @@
 ---
 title: Overzicht van automatische schaalaanpassing met virtuele-machineschaalsets van Azure
 description: Meer informatie over de verschillende manieren waarop u een Azure-schaalset voor virtuele machines automatisch schalen op basis van prestaties of een vast schema
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb96be187502afcccfd3fb2c88f709facfbc3b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b3af40de107fd9273ec50425c58afc9772ea426
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278145"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010338"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Overzicht van automatische schaalaanpassing met virtuele-machineschaalsets van Azure
 Een Azure-set voor virtuele machines kan automatisch het aantal VM-exemplaren verhogen of verkleinen waarop uw toepassing wordt uitgevoerd. Dit geautomatiseerde en elastische gedrag vermindert de beheeroverhead om de prestaties van uw toepassing te bewaken en te optimaliseren. U maakt regels die de acceptabele prestaties definiëren voor een positieve klantervaring. Wanneer aan deze gedefinieerde drempelwaarden is voldaan, worden autoscale-regels actie ondernomen om de capaciteit van uw schaalset aan te passen. U ook gebeurtenissen plannen om de capaciteit van uw schaaldie op vaste tijdstippen is ingesteld, automatisch te vergroten of te verlagen. In dit artikel vindt u een overzicht van welke prestatiestatistieken beschikbaar zijn en welke acties automatisch schalen kan uitvoeren.
@@ -34,7 +34,7 @@ U regels voor automatische schaal maken die ingebouwde hoststatistieken beschikb
 
 Regels voor automatisch schalen die gebruikmaken van hostgebaseerde metrische gegevens, kunnen worden gemaakt met een van de volgende hulpprogramma's:
 
-- [Azure-portal](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Azure-CLI](tutorial-autoscale-cli.md)
 - [Azure-sjabloon](tutorial-autoscale-template.md)

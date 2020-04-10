@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a0e5b0c18264e1f7a98e81bcdfd56a7159235da
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278036"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010916"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redis-clustering configureren voor een Premium Azure-cache voor Redis
 Azure Cache voor Redis heeft verschillende cache-aanbiedingen, die flexibiliteit bieden in de keuze van cachegrootte en functies, waaronder premium-laagfuncties zoals clustering, persistentie en ondersteuning voor virtueel netwerk. In dit artikel wordt beschreven hoe u clustering configureert in een premium Azure-cache voor redis-instantie.
@@ -125,7 +125,7 @@ U verbinding maken met uw cache via dezelfde [eindpunten,](cache-configure.md#pr
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Kan ik rechtstreeks verbinding maken met de afzonderlijke scherven van mijn cache?
 Het clusterprotocol vereist dat de client de juiste shardverbindingen maakt. Dus de klant moet dit goed doen voor je. Met dat gezegd, elke scherf bestaat uit een primaire / replica cache paar, gezamenlijk bekend als een cache-instantie. U verbinding maken met deze cache-exemplaren met behulp van het hulpprogramma redis-cli in de [onstabiele](https://redis.io/download) tak van de Redis-opslagplaats op GitHub. Deze versie implementeert basisondersteuning `-c` wanneer deze met de switch wordt gestart. Zie [Spelen met het cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) [https://redis.io](https://redis.io) op in de zelfstudie van het [Redis-cluster](https://redis.io/topics/cluster-tutorial)voor meer informatie.
 
-Voor niet-ssl gebruikt u de volgende opdrachten.
+Voor niet-TLS gebruikt u de volgende opdrachten.
 
     Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
     Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
@@ -133,7 +133,7 @@ Voor niet-ssl gebruikt u de volgende opdrachten.
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-Voor ssl, `1300N` `1500N`vervangen door .
+Voor TLS, `1300N` `1500N`vervangen door .
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Kan ik clustering configureren voor een eerder gemaakte cache?
 Ja. Zorg er eerst voor dat uw cache premium is, door te schalen als dat niet het is. Vervolgens moet u de clusterconfiguratieopties kunnen zien, inclusief een optie om het cluster in te schakelen. U de clustergrootte wijzigen nadat de cache is gemaakt of nadat u voor het eerst clustering hebt ingeschakeld.

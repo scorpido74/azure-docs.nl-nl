@@ -12,12 +12,12 @@ ms.date: 04/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60dca30496aa17ad7add00ca4eca914cb58fddd7
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 5d2e3f8da4a05feedb8c1ab585fabcc74edbc71a
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655985"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998750"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: releasegeschiedenis versie
 Het Azure Active Directory-team (Azure AD) werkt Azure AD Connect regelmatig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doelgroepen.
@@ -48,6 +48,13 @@ Niet alle releases van Azure AD Connect worden beschikbaar gesteld voor een auto
 >
 >Raadpleeg [dit artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) voor meer informatie over het upgraden van Azure AD Connect naar de nieuwste versie.
 
+## <a name="15200"></a>1.5.20.0
+
+### <a name="release-status"></a>Status van de release
+04/09/2020: Vrijgegeven voor download
+
+### <a name="fixed-issues"></a>Problemen opgelost
+Deze hotfix-build lost een probleem op met build 1.5.18.0 als u de functie Groepsfiltering hebt ingeschakeld en mS-DS-ConsistencyGuid als bronanker hebt gebruikt.
 
 ## <a name="15180"></a>1.5.18.0
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 08/06/2019
-ms.openlocfilehash: 8139ed8f4f4799a963a051eed96dd87c4ac38aec
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/09/2020
+ms.openlocfilehash: 3252ecb030234e4c5543c07dfb4fc702f850a73e
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981423"
+ms.locfileid: "80998978"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Met elastische pools kunt u meerdere Azure SQL-databases beheren en schalen
 
@@ -110,9 +110,9 @@ De beste grootte voor een groep is afhankelijk van de totale resources die nodig
 - Maximale resources die worden gebruikt door alle databases in de groep (maximale DTU's of maximale vCores, afhankelijk van uw keuze van het resourcingmodel).
 - De maximum opslag in bytes die door alle databases in de groep wordt gebruikt.
 
-Zie voor beschikbare servicelagen voor elk resourcemodel het [op DTU gebaseerde inkoopmodel](sql-database-service-tiers-dtu.md) of het [op vCore gebaseerde inkoopmodel](sql-database-service-tiers-vcore.md).
+Zie het [op DTU gebaseerde inkoopmodel](sql-database-service-tiers-dtu.md) of het [op vCore gebaseerde inkoopmodel](sql-database-service-tiers-vcore.md)voor beschikbare servicelagen en -limieten voor elk resourcemodel.
 
-Als u het hulpprogramma niet kunt gebruiken, kunnen de volgende stappen u helpen om te schatten of een groep rendabeler is dan individuele databases:
+Met de volgende stappen u schatten of een groep kosteneffectiever is dan afzonderlijke databases:
 
 1. Schat de eDTU's of vCores die nodig zijn voor de groep als volgt:
 
@@ -126,6 +126,10 @@ Als u het hulpprogramma niet kunt gebruiken, kunnen de volgende stappen u helpen
 3. Neem voor het Op DTU gebaseerde inkoopmodel de grotere van de eDTU-schattingen van stap 1 en stap 2. Voor het vCore-gebaseerde inkoopmodel, neem de vCore-schatting van stap 1.
 4. Bekijk de [prijspagina van SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) en zoek de kleinste poolgrootte die groter is dan de schatting van stap 3.
 5. Vergelijk de poolprijs van stap 5 met de prijs van het gebruik van de juiste rekengroottes voor afzonderlijke databases.
+
+> [!IMPORTANT]
+> Als het aantal databases in een groep het maximaal ondersteunde niveau benadert, moet u [resourcebeheer in dichte elastische pools](sql-database-elastic-pool-resource-management.md)overwegen.
+> 
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>Andere SQL Database-functies gebruiken met elastische pools
 
@@ -218,7 +222,7 @@ Zie [SQL Database-waarschuwingen maken in Azure-portal](sql-database-insights-al
 
 - [Daxko/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-   Daxko/CSI gebruikt elastische pools met Azure SQL Database om de ontwikkelingscyclus te versnellen en de klantenservice en prestaties ervan te verbeteren.   
+   Daxko/CSI gebruikt elastische pools met Azure SQL Database om de ontwikkelingscyclus te versnellen en de klantenservice en prestaties ervan te verbeteren.    
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
-ms.openlocfilehash: 20a5c4befaa30383c54ac9536a3fd26dce3db4d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: d7d0699718642a7eb9f85b2e8a86623092c34365
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80059972"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010559"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Naamomzetting voor resources in virtuele Azure-netwerken
 
@@ -185,8 +186,7 @@ Als het doorsturen van query's naar Azure niet aan uw behoeften voldoet, moet u 
 * Worden beveiligd tegen toegang vanaf het internet, om bedreigingen van externe agenten te beperken.
 
 > [!NOTE]
-> Voor de beste prestaties moet IPv6 worden uitgeschakeld wanneer u Azure VM's als DNS-servers gebruikt. Aan elke VM van de DNS-server moet een [openbaar IP-adres](virtual-network-public-ip-address.md) worden toegewezen. 
-> 
+> Voor de beste prestaties moet IPv6 worden uitgeschakeld wanneer u Azure VM's als DNS-servers gebruikt.
 
 ### <a name="web-apps"></a>Web-apps
 Stel dat u naamresolutie moet uitvoeren vanuit uw web-app die is gebouwd met behulp van App Service, gekoppeld aan een virtueel netwerk, naar VM's in hetzelfde virtuele netwerk. Voer naast het instellen van een aangepaste DNS-server met een DNS-expediteer die query's doorstuurt naar Azure (virtueel IP 168.63.129.16), de volgende stappen uit:

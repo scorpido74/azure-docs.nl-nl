@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 128b4203d34b99df8363ef19783baa4a7b608aa5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 654aeddbb305124ea00a883dbef9d8b5ad585a36
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631314"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990783"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>Ontwerprichtlijnen voor het gebruik van gerepliceerde tabellen in SQL Analytics
 
@@ -124,7 +124,7 @@ We hebben `DimDate` opnieuw `DimSalesTerritory` gemaakt en als gerepliceerde tab
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Prestatieoverwegingen voor het wijzigen van gerepliceerde tabellen
 
-SQL Analytics implementeert een gerepliceerde tabel door een hoofdversie van de tabel te behouden. Het kopieert de hoofdversie naar één distributiedatabase op elk Compute-knooppunt. Wanneer er een wijziging is, werkt SQL Analytics eerst de hoofdtabel bij. Vervolgens worden de tabellen op elk Compute-knooppunt opnieuw opgebouwd. Een reconstructie van een gerepliceerde tabel omvat het kopiëren van de tabel naar elk Compute-knooppunt en vervolgens het bouwen van de indexen.  Een gerepliceerde tabel op een DW400 bevat bijvoorbeeld 5 kopieën van de gegevens.  Een stramienkopie en een volledige kopie op elk Compute-knooppunt.  Alle gegevens worden opgeslagen in distributiedatabases. SQL Analytics gebruikt dit model om snellere gegevenswijzigingsinstructies en flexibele schalingsbewerkingen te ondersteunen.
+SQL Analytics implementeert een gerepliceerde tabel door een hoofdversie van de tabel te behouden. Het kopieert de hoofdversie naar de eerste distributiedatabase op elk Compute-knooppunt. Wanneer er een wijziging is, werkt SQL Analytics eerst de hoofdversie bij en wordt de tabellen op elk Compute-knooppunt opnieuw opgebouwd. Een reconstructie van een gerepliceerde tabel omvat het kopiëren van de tabel naar elk Compute-knooppunt en vervolgens het bouwen van de indexen.  Een gerepliceerde tabel op een DW2000c bevat bijvoorbeeld 5 kopieën van de gegevens.  Een stramienkopie en een volledige kopie op elk Compute-knooppunt.  Alle gegevens worden opgeslagen in distributiedatabases. SQL Analytics gebruikt dit model om snellere gegevenswijzigingsinstructies en flexibele schalingsbewerkingen te ondersteunen.
 
 Reconstructies zijn nodig na:
 

@@ -1,18 +1,18 @@
 ---
 title: Virtuele machineschaalsets beheren met de Azure CLI
 description: Algemene Azure CLI-opdrachten voor het beheren van virtuele machineschaalsets, zoals het starten en stoppen van een instantie of het wijzigen van de schaalsetcapaciteit.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: d8f40708cf5a9989146a72e2093de7bad47ffde9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: ad07a237dd40d836705b332c6c10356720901481
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275739"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011579"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Een virtuele machineschaalset beheren met de Azure CLI
 Gedurende de levenscyclus van een schaalset voor virtuele machines moet u mogelijk een of meer beheertaken uitvoeren. Bovendien wilt u misschien scripts maken die verschillende levenscyclustaken automatiseren. In dit artikel worden enkele van de algemene Azure CLI-opdrachten beschreven waarmee u deze taken uitvoeren.

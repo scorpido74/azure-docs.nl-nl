@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 883dbc95ee77d03aee4c3231c6ab8c03f9f7f6e4
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 02213feb507e9a032a50241fddf31714b9dfd7ee
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387832"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011060"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Installeer AMD GPU-stuurprogramma's op VM's uit de N-serie met Windows
 
@@ -40,7 +40,7 @@ Zie [GPU Windows VM-formaten](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwin
 
 2. Als u een NVv4 preview-klant bent, stopt u de VM en wacht tot deze wordt verplaatst naar de status Gestopt (Deallocated).
 
-3. Start de VM en download de nieuwste [AMD Cleanup Utility](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Verwijder het bestaande stuurprogramma door "amdcleanuputility-x64.exe" uit te voeren. Gebruik geen exisitng cleanup utility dat is geïnstalleerd met de vorige driver.  
+3. Start de VM en download de nieuwste [AMD Cleanup Utility](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Verwijder het bestaande stuurprogramma door "amdcleanuputility-x64.exe" uit te voeren. Gebruik geen bestaand opruimprogramma dat bij het vorige stuurprogramma is geïnstalleerd.  
 
 4. Download en installeer het nieuwste stuurprogramma.
 
@@ -52,6 +52,12 @@ U de installatie van stuurprogramma's verifiëren in Apparaatbeheer. In het volg
 <br />
 ![GPU-stuurprogramma-eigenschappen](./media/n-series-amd-driver-setup/device-manager.png)
 
-U dxdiag gebruiken om de gpu-weergave-eigenschappen te verifiëren, waaronder het video-RAM-geheugen. In het volgende voorbeeld wordt een 1/8e partitie van de Radeon Instinct MI25-kaart op een Azure NVv4 VM weergegeven.
+U dxdiag gebruiken om de gpu-weergave-eigenschappen te verifiëren, waaronder het video-RAM-geheugen. In het volgende voorbeeld ziet u een 1/2 partitie van de Radeon Instinct MI25-kaart op een Azure NVv4 VM.
 <br />
-![GPU-stuurprogramma-eigenschappen](./media/n-series-amd-driver-setup/dxdiag.png)
+![GPU-stuurprogramma-eigenschappen](./media/n-series-amd-driver-setup/dxdiag-output.png)
+
+Als u Windows 10 build 1903 of hoger uitvoert, wordt er geen informatie weergegeven op het tabblad 'Weergeven'. Gebruik de optie 'Alle informatie opslaan' onderaan en het uitvoerbestand toont de informatie met betrekking tot AMD MI25 GPU.
+
+![GPU-stuurprogramma-eigenschappen](./media/n-series-amd-driver-setup/dxdiag-details.png)
+
+

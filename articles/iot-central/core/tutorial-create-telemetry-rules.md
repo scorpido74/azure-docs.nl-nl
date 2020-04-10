@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0d55bafc513ef7553952ee2096ea32db65d6205d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 555da74da65f3b1897a276cf819a263334cfa053
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673774"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999047"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Zelfstudie: Een regel maken en meldingen instellen in uw Azure IoT Central-toepassing
 
@@ -34,11 +34,11 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, voltooit u de [toepassing Een Azure IoT Central maken](./quick-deploy-iot-central.md) en Voegt u snel een gesimuleerd apparaat toe aan uw [IoT Central-toepassing](./quick-create-pnp-device.md) om de **MXChip IoT DevKit-apparaatsjabloon** te maken om mee te werken.
+Voordat u begint, voltooit u de [toepassing Een Azure IoT Central maken](./quick-deploy-iot-central.md) en Voegt u snel een gesimuleerd apparaat toe aan uw [IoT Central-toepassing](./quick-create-simulated-device.md) om de **MXChip IoT DevKit-apparaatsjabloon** te maken om mee te werken.
 
 ## <a name="create-a-rule"></a>Een regel maken
 
-Als u een telemetrieregel wilt maken, moet de apparaatsjabloon ten minste één telemetriewaarde bevatten. Deze zelfstudie maakt gebruik van een gesimuleerd **mxchip IoT DevKit-apparaat** dat telemetrie over temperatuur en vochtigheid verzendt. U hebt deze apparaatsjabloon toegevoegd en een gesimuleerd apparaat gemaakt in het snel [startmaken van een gesimuleerd apparaat toevoegen aan uw IoT Central-toepassing.](./quick-create-pnp-device.md) De regel controleert de temperatuur gerapporteerd door het apparaat en stuurt een e-mail wanneer het gaat boven de 70 graden.
+Als u een telemetrieregel wilt maken, moet de apparaatsjabloon ten minste één telemetriewaarde bevatten. Deze zelfstudie maakt gebruik van een gesimuleerd **mxchip IoT DevKit-apparaat** dat telemetrie over temperatuur en vochtigheid verzendt. U hebt deze apparaatsjabloon toegevoegd en een gesimuleerd apparaat gemaakt in het snel [startmaken van een gesimuleerd apparaat toevoegen aan uw IoT Central-toepassing.](./quick-create-simulated-device.md) De regel controleert de temperatuur gerapporteerd door het apparaat en stuurt een e-mail wanneer het gaat boven de 70 graden.
 
 1. Selecteer **Regels**in het linkerdeelvenster .
 

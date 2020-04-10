@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 58548c5cb1aa6aba6dda09d5d420b36bb8154726
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 9b0e0b39b7ac7d7834c9cdcbd79ba45b024c823a
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656395"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992008"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>PowerShell gebruiken om mappen, bestanden en ACL's te beheren in Azure Data Lake Storage Gen2 (voorbeeld)
 
@@ -151,7 +151,7 @@ Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 > [!NOTE]
 > Gebruik `-Force` de parameter als u zonder aanwijzingen wilt overschrijven.
 
-In dit voorbeeld `my-directory` wordt een map `my-directory-2` `my-subdirectory`met de naam verplaatst naar een submap met de naam . In dit voorbeeld wordt ook een umask op de submap gebruikt.
+In dit voorbeeld `my-directory` wordt een map `my-directory-2` `my-subdirectory`met de naam verplaatst naar een submap met de naam . 
 
 ```powershell
 $filesystemName = "my-file-system"

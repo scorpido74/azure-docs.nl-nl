@@ -1,6 +1,6 @@
 ---
 title: Video's van microsoft-identiteitsplatform | Azure
-description: Een lijst met video's over het Microsoft-identiteitsplatform
+description: Een lijst met video's over moderne authenticatie en het Microsoft-identiteitsplatform
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -8,24 +8,73 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/29/2020
+ms.date: 04/08/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: 22149ccfa258852b36da61ffbabde5e1856df9de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8c7ec6cf1d15e414a6db54d5bc2ad7e4994cd82
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085189"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991293"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft Identity Platform-video's
 
-Meer informatie over het Microsoft-identiteitsplatform en de Microsoft Authentication-bibliotheken (MSAL). Ze zijn meestal 1-2 minuten lang.
+Leer de basisprincipes van moderne verificatie, het Microsoft-identiteitsplatform en de Microsoft Authentication Libraries (MSAL).
+
+## <a name="authentication-fundamentals"></a>Basisbeginselen voor verificatie
+
+Als je nieuw bent in concepten zoals identiteitsproviders, beveiligingstokens, claims en publiek, is deze videoserie een goede plek om te beginnen.
+___
+
+:::row:::
+    :::column:::
+        1 - Basics: De concepten van moderne authenticatie (4:33)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+     :::column:::
+        2 - Moderne verificatie voor webtoepassingen (6:02)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/tCNcG1lcCHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        3 - Web single sign-on (4:13)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/51B-jSOBF8U?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+    :::column:::
+        4 - Federatieve webverificatie (6:19)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        5 - Native client applicaties - Deel 1 (8:12)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/OGMDnuDrAcQ?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+    :::column:::
+        6 - Native client applicaties - Deel 2 (5:33)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/2RE6IhXfmHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
 
 ## <a name="microsoft-identity-platform-basics"></a>Basisbeginselen van het Microsoft-identiteitsplatform
 
-**Meer informatie over basisconcepten van microsoft-identiteitsplatformen**
+Meer informatie over de onderdelen van het Microsoft-identiteitsplatform, de Microsoft-verificatiebibliotheken (MSAL) en hoe deze componenten met Azure Active Directory werken. De One Dev Question video's zijn 1-2 minuten lang.
+___
 
 :::row:::
     :::column:::
@@ -112,7 +161,8 @@ Meer informatie over het Microsoft-identiteitsplatform en de Microsoft Authentic
 
 ## <a name="migrate-from-v10-to-v20"></a>Migreren van v1.0 naar v2.0
 
-**Meer informatie over migreren naar de nieuwste versie van het Microsoft-identiteitsplatform**
+Meer informatie over migreren naar de nieuwste versie van het Microsoft-identiteitsplatform, inclusief de overstap van de Active Directory Authentication Library (ADAL) naar MSAL.
+___
 
 :::row:::
     :::column:::

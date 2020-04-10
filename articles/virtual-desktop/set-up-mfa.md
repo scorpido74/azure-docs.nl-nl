@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0b3c47e1bbe5efdc5ee303305e52a785a49d0c00
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b470f9278bdca94d1fe98c64b11b070fb36cb075
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586871"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998478"
 ---
-# <a name="set-up-azure-multi-factor-authentication"></a>Azure-multifactorverificatie instellen
+# <a name="set-up-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication instellen
 
 De Windows-client voor Windows Virtual Desktop is een uitstekende optie voor het integreren van Windows Virtual Desktop met uw lokale machine. Wanneer u uw Windows Virtual Desktop-account echter configureert in de Windows-client, zijn er bepaalde maatregelen die u moet nemen om uzelf en uw gebruikers veilig te houden.
 
@@ -32,7 +32,7 @@ Dit is wat je nodig hebt om aan de slag te gaan:
   - Azure Active Directory Premium P1 of P2
   - Enterprise Mobility + Beveiliging E3 of E5
 - Een Azure Active Directory-groep met uw gebruikers toegewezen als groepsleden.
-- Azure MFA inschakelen voor al uw gebruikers. Zie Hoe u verificatie in [twee stappen voor een gebruiker nodig hebt,](/active-directory/authentication/howto-mfa-userstates)voor meer informatie over hoe u dat doen.
+- Azure MFA inschakelen voor al uw gebruikers. Zie Hoe u verificatie in [twee stappen voor een gebruiker nodig hebt,](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user)voor meer informatie over hoe u dat doen.
 
 >[!NOTE]
 >De volgende instelling is ook van toepassing op de [Windows Virtual Desktop-webclient.](https://rdweb.wvd.microsoft.com/webclient/index.html)

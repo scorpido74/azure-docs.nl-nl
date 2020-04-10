@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell-voorbeelden - Een eenvoudige set voor virtuele machineschaal maken
 description: Met dit script wordt een Azure-schaalset voor virtuele machines gemaakt met Windows Server 2016, die u via RDP openen.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 123ba8ef931113b2c822fb1d02fa51e1d085c90e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 380b3d25bdcd5df5f095b2d87e832bf73422759e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76276580"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011477"
 ---
 # <a name="create-a-basic-virtual-machine-scale-set-with-powershell"></a>Een virtuele-machineschaalset maken met PowerShell
 Met dit script maakt u een virtuele-machineschaalset waarop Windows Server 2016 wordt uitgevoerd. Nadat het script is uitgevoerd, hebt u via RDP toegang tot de virtuele machine.

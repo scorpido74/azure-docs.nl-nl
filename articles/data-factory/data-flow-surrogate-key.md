@@ -1,55 +1,83 @@
 ---
-title: Gegevensstroom in kaart brengen Surrogaatsleuteltransformatie
+title: Surrogaatsleuteltransformatie in kaartbrengen gegevensstroom
 description: De mapping dataflow surrogate key transformation van Azure Data Factory gebruiken om sequentiële sleutelwaarden te genereren
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: bab48aa9079c1b8020bb828a6bb91bd244a78cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: e5ac25c002da121be3adadf0eed978dd60ba26d9
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930206"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010613"
 ---
-# <a name="mapping-data-flow-surrogate-key-transformation"></a>Gegevensstroom in kaart brengen Surrogaatsleuteltransformatie
+# <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Surrogaatsleuteltransformatie in kaartbrengen gegevensstroom 
 
+Gebruik de surrogaatsleuteltransformatie om een verhogingssleutelwaarde toe te voegen aan elke rij gegevens. Dit is handig bij het ontwerpen van dimensietabellen in een analytisch gegevensmodel voor een sterschema. In een sterschema vereist elk lid in uw dimensietabellen een unieke sleutel die een niet-zakelijke sleutel is.
 
-
-Gebruik de surrogaatsleuteltransformatie om een willekeurige waarde van niet-zakelijke sleutels toe te voegen aan uw rijset gegevensstroom. Dit is handig bij het ontwerpen van dimensietabellen in een analytisch gegevensmodel voor een sterschema waarbij elk lid in uw dimensietabellen een unieke sleutel moet hebben die een niet-zakelijke sleutel is, onderdeel van de Kimball DW-methodologie.
+## <a name="configuration"></a>Configuratie
 
 ![Surrogaat sleutel transformeren](media/data-flow/surrogate.png "Surrogaat sleutel transformatie")
 
-"Key Column" is de naam die u zal geven aan uw nieuwe surrogaat sleutel kolom.
+**Sleutelkolom:** De naam van de gegenereerde surrogaatsleutelkolom.
 
-'Startwaarde' is het beginpunt van de incrementele waarde.
+**Beginwaarde:** De laagste sleutelwaarde die wordt gegenereerd.
 
 ## <a name="increment-keys-from-existing-sources"></a>Toetsen uit bestaande bronnen verhogen
 
-Als u uw reeks wilt starten vanaf een waarde die in een bron bestaat, u een afgeleide kolomtransformatie gebruiken onmiddellijk na de transformatie van uw Surrogaatsleutel en de twee waarden bij elkaar voegen:
+Als u uw reeks wilt starten vanaf een waarde die in een bron bestaat, gebruikt u een afgeleide kolomtransformatie na de transformatie van de surrogaatsleutel om de twee waarden samen toe te voegen:
 
 ![SK voeg Max toe](media/data-flow/sk006.png "Surrogaat sleutel transformatie voeg Max")
 
-Om de belangrijkste waarde met de vorige max te zaaien, zijn er twee technieken die u gebruiken:
+### <a name="increment-from-existing-maximum-value"></a>Verhoging van de bestaande maximumwaarde
 
-### <a name="database-sources"></a>Databasebronnen
+Om de belangrijkste waarde met de vorige max te zaaien, zijn er twee technieken die u gebruiken op basis van waar uw brongegevens zich bevinden.
 
-Gebruik de optie 'Query' om MAX() uit uw bron te selecteren met de brontransformatie:
+#### <a name="database-sources"></a>Databasebronnen
+
+Gebruik een SQL-queryoptie om MAX() uit uw bron te selecteren. Bijvoorbeeld,`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
 
 ![Surrogaatsleutelquery](media/data-flow/sk002.png "Surrogaatsleuteltransformatiequery")
 
-### <a name="file-sources"></a>Bestandsbronnen
+#### <a name="file-sources"></a>Bestandsbronnen
 
-Als uw vorige maximumwaarde zich in een bestand bevindt, u de brontransformatie samen met een gesplitste transformatie gebruiken en de expressiefunctie MAX() gebruiken om de vorige maximale waarde te krijgen:
+Als uw vorige maximumwaarde zich in `max()` een bestand bevindt, gebruikt u de functie in de samengevoegde transformatie om de vorige maximale waarde te krijgen:
 
 ![Surrogaatsleutelbestand](media/data-flow/sk008.png "Surrogaatsleutelbestand")
 
-In beide gevallen moet u deelnemen aan uw binnenkomende nieuwe gegevens samen met uw bron die de vorige maximale waarde bevat:
+In beide gevallen moet u deelnemen aan uw binnenkomende nieuwe gegevens samen met uw bron die de vorige maximale waarde bevat.
 
 ![Surrogaatsleutel Join](media/data-flow/sk004.png "Surrogaatsleutel Join")
+
+## <a name="data-flow-script"></a>Script voor gegevensstroom
+
+### <a name="syntax"></a>Syntaxis
+
+```
+<incomingStream> 
+    keyGenerate(
+        output(<surrogateColumnName> as long),
+        startAt: <number>L
+    ) ~> <surrogateKeyTransformationName>
+```
+
+### <a name="example"></a>Voorbeeld
+
+![Surrogaat sleutel transformeren](media/data-flow/surrogate.png "Surrogaat sleutel transformatie")
+
+Het script voor de gegevensstroom voor de bovenstaande surrogaatsleutelconfiguratie bevindt zich in het onderstaande codefragment.
+
+```
+AggregateDayStats
+    keyGenerate(
+        output(key as long),
+        startAt: 1L
+    ) ~> SurrogateKey1
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

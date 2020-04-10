@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: 8a00f7c0ec76510cc521966acf98b7250e723697
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985895"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010576"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Live-evenementen en live-uitgangen in mediaservices
 
@@ -111,7 +111,7 @@ U kunt niet-vanity-URL's en vanity-URL's gebruiken.
 
 * Url van ijdelheid
 
-    De vanity-modus heeft de voorkeur van grote media-omroepen die gebruik maken van hardware-broadcast-encoders en hun encoders niet opnieuw willen configureren wanneer ze het Live Event starten. Ze willen een voorspellende URL, die in de loop van de tijd niet verandert.
+    De vanity-modus heeft de voorkeur van grote media-omroepen die gebruik maken van hardware-broadcast-encoders en hun encoders niet opnieuw willen configureren wanneer ze het Live Event starten. Deze omroepen willen een voorspellende URL die in de loop van de tijd niet verandert.
     
     > [!NOTE]
     > In de Azure-portal wordt de ijdelheids-URL "*Persistent input URL*" genoemd.

@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399297"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991259"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Vereisten voor toegang tot de Azure Active Directory-rapportage-API
 
@@ -33,9 +33,10 @@ De rapportage-API maakt gebruik van [OAuth](https://docs.microsoft.com/azure/api
 Als u uw toegang tot de rapportage-API wilt voorbereiden, moet u:
 
 1. [Rollen toewijzen](#assign-roles)
-2. [Een aanvraag registreren](#register-an-application)
-3. [Machtigingen verlenen](#grant-permissions)
-4. [Configuratie-instellingen verzamelen](#gather-configuration-settings)
+2. [Licentievereisten](#license-requirements)
+3. [Een toepassing registreren](#register-an-application)
+4. [Machtigingen verlenen](#grant-permissions)
+5. [Configuratie-instellingen verzamelen](#gather-configuration-settings)
 
 ## <a name="assign-roles"></a>Rollen toewijzen
 
@@ -46,6 +47,10 @@ Als u toegang wilt krijgen tot de rapportagegegevens via de API, moet u een van 
 - Beveiligingsbeheer
 
 - Globale beheerder
+
+## <a name="license-requirements"></a>Licentievereisten
+
+Als u toegang wilt krijgen tot de aanmeldingsrapporten voor een tenant, moet een Azure AD-tenant een Azure AD Premium-licentie hebben gekoppeld. Azure AD Premium P1 -licentie (of hoger) is vereist voor toegang tot aanmeldingsrapporten voor elke Azure AD-tenant. Als het maptype Azure AD B2C is, zijn de aanmeldingsrapporten ook toegankelijk via de API zonder extra licentievereiste. 
 
 
 ## <a name="register-an-application"></a>Een toepassing registreren

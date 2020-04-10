@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: faafc1e12f0703c38b4e602700b1e775bf13a061
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666790"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998331"
 ---
-# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>Zoeken naar gedeeltelijke termen en patronen met speciale tekens - Azure Cognitive Search (wildcard, regex, patronen)
+# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Gedeeltelijke term zoeken en patronen met speciale tekens (wildcard, regex, patronen)
 
 Een *gedeeltelijke term zoekopdracht* verwijst naar query's die bestaan uit termfragmenten, zoals de eerste, laatste of binnendelen van een tekenreeks. Een *patroon* kan een combinatie zijn van fragmenten, soms met speciale tekens zoals streepjes of schuine strepen die deel uitmaken van de query. Veelgebruikte use-cases omvatten query's voor delen van een telefoonnummer, URL, personen of productcodes of samengestelde woorden.
 
 Gedeeltelijke zoekopdracht kan problematisch zijn als de index geen termen heeft in de indeling die nodig is voor patroonmatching. Tijdens de tekstanalysefase van de indexering, met behulp van de standaardstandaardanalyzer, worden speciale tekens verwijderd, samengestelde en samengestelde tekenreeksen opgesplitst, waardoor patroonquery's mislukken wanneer er geen overeenkomst wordt gevonden. Een telefoonnummer zoals `+1 (425) 703-6214`(tokenized als `"1"` `"425"`, `"703"` `"6214"`, , ) wordt `"3-62"` bijvoorbeeld niet weergegeven in een query omdat die inhoud niet echt in de index bestaat. 
 
-De oplossing is om een analyzer aan te roepen die een volledige tekenreeks behoudt, inclusief spaties en speciale tekens indien nodig, zodat u gedeeltelijke termen en patronen ondersteunen. Het maken van een extra veld voor een intacte tekenreeks, plus het gebruik van een content-preserving analyzer, is de basis van de oplossing.
+De oplossing is om een analyzer aan te roepen die een volledige tekenreeks behoudt, inclusief spaties en speciale tekens indien nodig, zodat u matchen op gedeeltelijke voorwaarden en patronen. Het maken van een extra veld voor een intacte tekenreeks, plus het gebruik van een content-preserving analyzer, is de basis van de oplossing.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Wat is gedeeltelijke zoekopdracht in Azure Cognitive Search
 
@@ -64,7 +64,7 @@ Analysers worden per veld toegewezen, wat betekent dat u velden in uw index make
   "type": "Edm.String",
   "retrievable": true,
   "searchable": true,
-  "analyzer": "my_customanalyzer"
+  "analyzer": "my_custom_analyzer"
 },
 ```
 

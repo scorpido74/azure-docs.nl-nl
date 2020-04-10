@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c7e17f7c4493560bd6118b8d4837fd795a6ab0c8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 69e2a0fe63be65a2b5d51f7bd2e0885fcbfc5bbb
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422867"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991668"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Gegevens uit Netezza kopiëren met Azure Data Factory
 
@@ -63,8 +63,8 @@ Een typische verbindingstekenreeks is `Server=<server>;Port=<port>;Database=<dat
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| SecurityLevel | Het beveiligingsniveau (SSL/TLS) dat het stuurprogramma gebruikt voor de verbinding met het gegevensarchief. Bijvoorbeeld: `SecurityLevel=preferredSecured`. Ondersteunde waarden zijn:<br/>- **Alleen onbeveiligd** **(alleenOnbeveiligd):** Het stuurprogramma maakt geen gebruik van SSL.<br/>- **Voorkeur onbeveiligd (voorkeurOnbeveiligd) (standaard)**: Als de server een keuze biedt, gebruikt het stuurprogramma geen SSL. <br/>- **Preferred secured (preferredSecured)**: Als de server een keuze biedt, gebruikt het stuurprogramma SSL. <br/>- **Alleen beveiligd (alleenBeveiligd)**: Het stuurprogramma maakt geen verbinding tenzij er een SSL-verbinding beschikbaar is. | Nee |
-| CaCertFile CaCertFile | Het volledige pad naar het SSL-certificaat dat door de server wordt gebruikt. Voorbeeld: `CaCertFile=<cert path>;`| Ja, als SSL is ingeschakeld |
+| SecurityLevel | Het beveiligingsniveau (SSL/TLS) dat het stuurprogramma gebruikt voor de verbinding met het gegevensarchief. Bijvoorbeeld: `SecurityLevel=preferredSecured`. Ondersteunde waarden zijn:<br/>- **Alleen onbeveiligd** (**alleenOnbeveiligd):** Het stuurprogramma maakt geen gebruik van TLS.<br/>- **Voorkeur onbeveiligd (voorkeurOnbeveiligd) (standaard)**: Als de server een keuze biedt, gebruikt het stuurprogramma geen TLS. <br/>- **Preferred secured (preferredSecured)**: Als de server een keuze biedt, gebruikt het stuurprogramma TLS. <br/>- **Alleen beveiligd (alleenBeveiligd)**: Het stuurprogramma maakt geen verbinding tenzij er een TLS-verbinding beschikbaar is. | Nee |
+| CaCertFile CaCertFile | Het volledige pad naar het TLS/SSL-certificaat dat door de server wordt gebruikt. Voorbeeld: `CaCertFile=<cert path>;`| Ja, als TLS is ingeschakeld |
 
 **Voorbeeld**
 

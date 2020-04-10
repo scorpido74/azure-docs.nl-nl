@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 8f5065a0f4a2a96a747a45f64e00e86f7990bfb8
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 3a16a8263c80852127ca61db3c666ebf0f7f1e4c
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437801"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011698"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Gegevens kopiëren en transformeren in Azure SQL Database met Azure Data Factory
 
@@ -493,7 +493,7 @@ BEGIN
 END
 ```
 
-**Optie 2:** U er ook voor kiezen om [een opgeslagen procedure in de kopieeractiviteit aan](#invoke-a-stored-procedure-from-a-sql-sink)te roepen. Met deze benadering wordt elke rij in de brontabel uitgevoerd in plaats van bulkinsertals standaardbenadering in de kopieeractiviteit te gebruiken, wat niet geschikt is voor grootschalige upsert.
+**Optie 2:** U er ook voor kiezen om [een opgeslagen procedure in de kopieeractiviteit aan](#invoke-a-stored-procedure-from-a-sql-sink)te roepen. Met deze benadering wordt elke batch `writeBatchSize` (zoals geregeld door de eigenschap) uitgevoerd in de brontabel in plaats van bulkinvoeging te gebruiken als de standaardbenadering in de kopieeractiviteit.
 
 ### <a name="overwrite-the-entire-table"></a>De hele tabel overschrijven
 
@@ -508,10 +508,7 @@ De stappen om gegevens met aangepaste logica te schrijven zijn vergelijkbaar met
 
 ## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a><a name="invoke-a-stored-procedure-from-a-sql-sink"></a>Een opgeslagen procedure aanroepen vanuit een SQL-sink
 
-Wanneer u gegevens kopieert naar Azure SQL Database, u ook een door de gebruiker opgegeven opgeslagen procedure configureren en aanroepen met aanvullende parameters. De functie opgeslagen procedure maakt gebruik van [parameters met tabelwaarde.](https://msdn.microsoft.com/library/bb675163.aspx)
-
-> [!TIP]
-> Een beroep doen op een opgeslagen procedure verwerkt de gegevensrij voor rij in plaats van met behulp van een bulkbewerking, die we niet aanbevelen voor grootschalige kopiëren. Meer informatie over [De beste praktijk voor het laden van gegevens in Azure SQL Database](#best-practice-for-loading-data-into-azure-sql-database).
+Wanneer u gegevens kopieert naar Azure SQL Database, u ook een door de gebruiker opgegeven opgeslagen procedure configureren en aanroepen met extra parameters op elke batch van de brontabel. De functie opgeslagen procedure maakt gebruik van [parameters met tabelwaarde.](https://msdn.microsoft.com/library/bb675163.aspx)
 
 U een opgeslagen procedure gebruiken wanneer ingebouwde kopieermechanismen het doel niet dienen. Een voorbeeld hiervan is wanneer u extra verwerking wilt toepassen voordat brongegevens definitief worden ingevoegd in de doeltabel. Enkele extra voorbeelden van verwerking zijn wanneer u kolommen wilt samenvoegen, extra waarden wilt opzoeken en in meer dan één tabel wilt invoegen.
 

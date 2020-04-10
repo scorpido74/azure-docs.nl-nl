@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 534e5c913685eeac92022f6694ea31b24816da5d
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422507"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011647"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Gegevens van en naar Oracle kopiëren met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
@@ -37,6 +37,7 @@ U gegevens uit een Oracle-database kopiëren naar elk ondersteund sinkdataarchie
 Met name deze Oracle-connector ondersteunt:
 
 - De volgende versies van een Oracle-database:
+    - Oracle 19c R1 (19.1) en hoger
     - Oracle 18c R1 (18,1) en hoger
     - Oracle 12c R1 (12.1) en hoger
     - Oracle 11g R1 (11.1) en hoger
@@ -84,9 +85,9 @@ Als u versleuteling op de Verbinding van Oracle wilt inschakelen, hebt u twee op
 
 -   Als u **Triple-DES Encryption (3DES) en Advanced Encryption Standard (AES)** wilt gebruiken, gaat u aan de kant van de Oracle-server naar Oracle Advanced Security (OAS) en configureert u de versleutelingsinstellingen. Zie deze [Oracle-documentatie](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)voor meer informatie. De ADF-connector (Oracle Application Development Framework) onderhandelt automatisch over de versleutelingsmethode om de connector te gebruiken die u in OAS configureert bij het tot stand brengen van een verbinding met Oracle.
 
--   Ssl **gebruiken:**
+-   Tls **gebruiken:**
 
-    1.  Download de informatie over het SSL-certificaat. Download de door u zelf onderscheiden coderingsregels (DER)-gecodeerde certificaatgegevens van uw SSL-certificaat en sla de uitvoer op (----- Begincertificaat ... Certificaat -----) beëindigen als tekstbestand.
+    1.  Download de TLS/SSL-certificaatgegevens. Download de certificaatgegevens van je TLS/SSL-certificaat (Distinguished Encoding Rules) en sla de uitvoer op (----- Start Certificaat ... Certificaat -----) beëindigen als tekstbestand.
 
         ```
         openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text

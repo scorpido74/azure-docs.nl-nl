@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4129f1a89575c9a0e7cd6a0090168df659356c1b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 38e319efb100d326d55f6f821e7c903306a7c7d0
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885103"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991004"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Een web-API die web-API's aanroept: codeconfiguratie
 
@@ -214,7 +214,7 @@ class MsalAuthHelper {
 
 De OBO-stroom (Namens-rekening) wordt gebruikt om een token te verkrijgen om de downstream web-API aan te roepen. In deze stroom ontvangt uw web-API een token aan toonder met door de gebruiker gedelegeerde machtigingen van de clienttoepassing en wisselt dit token vervolgens om voor een ander toegangstoken om de downstream web-API aan te roepen.
 
-Een Python-web-API moet een aantal middleware gebruiken om het token aan toonder dat van de client is ontvangen, te valideren. De web-API kan vervolgens het toegangstoken voor downstream-API [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) verkrijgen met behulp van MSAL Python-bibliotheek door de methode aan te roepen. Een voorbeeld dat deze stroom met MSAL Python aantoont, is nog niet beschikbaar.
+Een Python-web-API moet een aantal middleware gebruiken om het token aan toonder dat van de client is ontvangen, te valideren. De web-API kan vervolgens het toegangstoken voor downstream-API [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) verkrijgen met behulp van MSAL Python-bibliotheek door de methode aan te roepen. Zie de [testcode voor de microsoft-authentication-library-for-python op GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472)voor een voorbeeld van het gebruik van deze API. Zie ook de bespreking van [kwestie 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53) in diezelfde opslagplaats voor een aanpak die de behoefte aan een toepassing op het middenniveau omzeilt.
 
 ---
 

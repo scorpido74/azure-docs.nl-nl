@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 8f71c039aa6666cec1b871a158d84a6f5a2a107c
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c88f5a4dd4f2997ce01b1f6a3ae192c62f530e76
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666819"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011414"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Toegangsmachtigingen toewijzen aan een identiteit
 
-Om toegang te krijgen tot Azure Files-bronnen met verificatie op basis van identiteit, moet een identiteit (een gebruiker, groep of serviceprincipal) over de vereiste machtigingen op shareniveau beschikken. Dit proces is vergelijkbaar met het opgeven van machtigingen voor delen van Windows, waarbij u het type toegang opgeeft dat een bepaalde gebruiker heeft om een bestandsshare te delen. De algemene aanbeveling is om toestemming op aandelenniveau te gebruiken voor toegangsbeheer op hoog niveau voor een team of groep en vervolgens NTFS-machtigingen te gebruiken voor gedetailleerd toegangscontroleop directory-/bestandsniveau. De richtlijnen in deze sectie laten zien hoe u lees-, schrijf- of verwijdermachtigingen voor een bestandsshare aan een identiteit toewijzen. 
+Om toegang te krijgen tot Azure Files-bronnen met verificatie op basis van identiteit, moet een identiteit (een gebruiker, groep of serviceprincipal) over de vereiste machtigingen op shareniveau beschikken. Dit proces is vergelijkbaar met het opgeven van machtigingen voor delen van Windows, waarbij u het type toegang opgeeft dat een bepaalde gebruiker heeft om een bestandsshare te delen. De richtlijnen in deze sectie laten zien hoe u lees-, schrijf- of verwijdermachtigingen voor een bestandsshare aan een identiteit toewijzen. 
 
 We hebben drie azure-ingebouwde rollen geïntroduceerd voor het verlenen van machtigingen op share-level aan gebruikers:
 
@@ -32,6 +32,8 @@ U de Azure-portal, PowerShell of Azure CLI gebruiken om de ingebouwde rollen toe
 
 > [!NOTE]
 > Vergeet niet uw AD-referenties te synchroniseren met Azure AD als u van plan bent uw AD te gebruiken voor verificatie. Wachtwoordhashsynchronisatie van AD naar Azure AD is optioneel. Toestemming op sharelevel wordt verleend voor de Azure AD-identiteit die vanuit AD wordt gesynchroniseerd.
+
+De algemene aanbeveling is om toestemming op shareniveau te gebruiken voor toegangsbeheer op hoog niveau voor een AD-groep die een groep gebruikers en identiteiten vertegenwoordigt, en vervolgens NTFS-machtigingen te gebruiken voor gedetailleerd toegangsbeheer op map-/bestandsniveau. 
 
 #### <a name="azure-portal"></a>Azure Portal
 Als u een RBAC-rol wilt toewijzen aan een Azure AD-identiteit, voert u [de](https://portal.azure.com)volgende stappen uit:

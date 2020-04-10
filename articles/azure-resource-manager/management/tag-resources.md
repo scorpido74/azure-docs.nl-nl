@@ -3,18 +3,21 @@ title: Resources, resourcegroepen en abonnementen voor logische organisatie tagg
 description: Hier ziet u hoe u tags toepast om Azure-resources te ordenen voor facturering en beheer.
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 76f9f61b3fe7002508bbd884f427efcfee698579
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 44759db59ef7e7556c8fbfca3bbc58ef84796198
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548482"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010797"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Tags gebruiken om uw Azure-resources en beheerhiërarchie te ordenen
 
 U past tags toe op uw Azure-bronnen, resourcegroepen en abonnementen om ze logisch te ordenen in een taxonomie. Elke tag bestaat uit een naam en een waardepaar. U kunt de naam Omgeving en de waarde Productie bijvoorbeeld toepassen op alle resources in de productie.
 
 Zie Handleiding voor het benoemen en [taggen](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)van resources voor aanbevelingen over het implementeren van een strategie voor het implementeren van tags.
+
+> [!IMPORTANT]
+> Tagnamen zijn case-ongevoelig. Tagwaarden zijn hoofdlettergevoelig.
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 

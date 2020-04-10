@@ -1,21 +1,21 @@
 ---
-title: Een beheerde serviceaanbieding publiceren op Azure Marketplace
-description: Meer informatie over het publiceren van een beheerde serviceaanbieding die klanten aanbiedt aan azure gedelegeerd resourcebeheer.
+title: Een Managed Service-aanbieding publiceren naar Azure Marketplace
+description: Meer informatie over het publiceren van een Managed Service-aanbieding die klanten aanbiedt aan Azure-gedelegeerd bronbeheer.
 ms.date: 04/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4791b1d2ae233b0cc7aad33dd5b15b6ea94b2018
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 247f711188fa10de19cece27f164fdfa71612d1b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984551"
+ms.locfileid: "80991906"
 ---
-# <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Een beheerde serviceaanbieding publiceren op Azure Marketplace
+# <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Een Managed Service-aanbieding publiceren naar Azure Marketplace
 
 > [!IMPORTANT]
-> Vanaf 14 april 2020 beginnen we met het verplaatsen van het beheer van uw Managed Service-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Nieuwe beheerde serviceaanbiedingen maken](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) om uw gemigreerde aanbiedingen te beheren.
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Managed Service-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een nieuwe Managed Service-aanbieding maken](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) om uw gemigreerde aanbiedingen te beheren.
 
-In dit artikel leert u hoe u een openbare of private managed service-aanbieding publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com) met behulp van Cloud [Partner Portal.](https://cloudpartner.azure.com/) Klanten die de aanbieding kopen, kunnen vervolgens abonnementen en resourcegroepen aan boord nemen voor [azure-gedelegeerd resourcebeheer.](../concepts/azure-delegated-resource-management.md)
+In dit artikel leert u hoe u een openbare of private Managed Service-aanbieding publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com) met behulp van Cloud [Partner Portal.](https://cloudpartner.azure.com/) Klanten die de aanbieding kopen, kunnen vervolgens abonnementen en resourcegroepen aan boord nemen voor [azure-gedelegeerd resourcebeheer.](../concepts/azure-delegated-resource-management.md)
 
 ## <a name="publishing-requirements"></a>Publicatievereisten
 
@@ -28,7 +28,7 @@ Uw MPN-id (Microsoft Partner Network) wordt [automatisch gekoppeld aan](../../bi
 > [!NOTE]
 > Als u een aanbieding niet wilt publiceren naar Azure Marketplace, u klanten handmatig ingebruiknemen met Azure Resource Manager-sjablonen. Zie [Een klant aan boord van Azure-gedelegeerd resourcebeheer](onboard-customer.md)voor meer informatie.
 
-Het publiceren van een Managed Services-aanbieding is vergelijkbaar met het publiceren van een ander type aanbieding naar Azure Marketplace. Zie [Azure Marketplace en AppSource Publishing Guide](../../marketplace/marketplace-publishers-guide.md)voor meer informatie over het algemene publicatieproces. U moet ook het [certificeringsbeleid voor commerciële marktplaatsen](https://docs.microsoft.com/legal/marketplace/certification-policies)bekijken, met name de sectie [Managed Services.](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)
+Het publiceren van een Managed Service-aanbieding is vergelijkbaar met het publiceren van een ander type aanbieding naar Azure Marketplace. Zie [Azure Marketplace en AppSource Publishing Guide](../../marketplace/marketplace-publishers-guide.md)voor meer informatie over het algemene publicatieproces. U moet ook het [certificeringsbeleid voor commerciële marktplaatsen](https://docs.microsoft.com/legal/marketplace/certification-policies)bekijken, met name de sectie [Managed Services.](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)
 
 Zodra een klant uw aanbieding toevoegt, kan deze een of meer abonnementen of resourcegroepen delegeren, die vervolgens worden [ingeschakeld voor azure-gedelegeerd bronbeheer.](#the-customer-onboarding-process)
 

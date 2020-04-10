@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36592151385a08d75b9b34e85bfa9d62342fc8cd
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260421"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991566"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Gegevens uit een HTTP-bron verplaatsen met Azure Data Factory
 
@@ -55,7 +55,7 @@ In de volgende tabel worden JSON-elementen beschreven die specifiek zijn voor de
 | type | De eigenschap **type** moet zijn ingesteld op **Http**. | Ja |
 | url | De basis-URL naar de webserver. | Ja |
 | authenticationType | Hiermee geeft u het verificatietype op. Toegestane waarden zijn **Anoniem,** **Basis,** **Samenvatting,** **Windows**en **ClientCertificate**. <br><br> Raadpleeg latere secties in dit artikel voor meer eigenschappen en JSON-voorbeelden voor deze verificatietypen. | Ja |
-| enableServerCertificateValidation | Hiermee geeft u op of server SSL-certificaatvalidatie moet worden ingeschakeld als de bron een HTTPS-webserver is. Wanneer uw HTTPS-server een zelfondertekend certificaat gebruikt, stelt u dit in op **false**. | Nee<br /> (de standaardinstelling is **waar)** |
+| enableServerCertificateValidation | Hiermee geeft u op of serverTLS/SSL-certificaatvalidatie moet worden ingeschakeld als de bron een HTTPS-webserver is. Wanneer uw HTTPS-server een zelfondertekend certificaat gebruikt, stelt u dit in op **false**. | Nee<br /> (de standaardinstelling is **waar)** |
 | gatewayNaam | De naam van de instantie Data Management Gateway die moet worden gebruikt om verbinding te maken met een on-premises HTTP-bron. | Ja, als u gegevens kopieert van een on-premises HTTP-bron |
 | versleuteldCredential | De versleutelde referenties voor toegang tot het HTTP-eindpunt. De waarde wordt automatisch gegenereerd wanneer u de verificatiegegevens configureert in de wizard Kopiëren of met het dialoogvenster **ClickOnce.** | Nee<br /> (alleen van toepassing wanneer u gegevens kopieert van een on-premises HTTP-server) |
 

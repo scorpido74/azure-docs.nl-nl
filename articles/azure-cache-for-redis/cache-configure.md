@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278738"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010304"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure-cache configureren voor Redis
 In dit onderwerp worden de configuraties beschreven die beschikbaar zijn voor uw Azure-cache voor Redis-exemplaren. Dit onderwerp behandelt ook de standaardconfiguratie van de Redis-server voor Azure Cache voor Redis-exemplaren.
@@ -39,12 +39,12 @@ U de volgende instellingen weergeven en configureren met behulp van het **resour
     * [Toegangssleutels](#access-keys)
     * [Geavanceerde instellingen](#advanced-settings)
     * [Azure-cache voor Redis Advisor](#azure-cache-for-redis-advisor)
-    * [Schaal](#scale)
+    * [Schalen](#scale)
     * [Clustergrootte](#cluster-size)
     * [Gegevenspersistentie](#redis-data-persistence)
     * [Updates plannen](#schedule-updates)
     * [Geo-replicatie](#geo-replication)
-    * [Virtueel netwerk](#virtual-network)
+    * [Virtual Network](#virtual-network)
     * [Firewall](#firewall)
     * [Eigenschappen](#properties)
     * [Sloten](#locks)
@@ -53,7 +53,7 @@ U de volgende instellingen weergeven en configureren met behulp van het **resour
     * [Gegevens importeren](#importexport)
     * [Gegevens exporteren](#importexport)
     * [Opnieuw opstarten](#reboot)
-* [Monitoring](#monitoring)
+* [Bewaking](#monitoring)
     * [Redis-statistieken](#redis-metrics)
     * [Waarschuwingsregels](#alert-rules)
     * [Diagnostiek](#diagnostics)
@@ -91,12 +91,12 @@ Met de sectie **Instellingen** u de volgende instellingen voor uw cache openen e
 * [Toegangssleutels](#access-keys)
 * [Geavanceerde instellingen](#advanced-settings)
 * [Azure-cache voor Redis Advisor](#azure-cache-for-redis-advisor)
-* [Schaal](#scale)
+* [Schalen](#scale)
 * [Clustergrootte](#cluster-size)
 * [Gegevenspersistentie](#redis-data-persistence)
 * [Updates plannen](#schedule-updates)
 * [Geo-replicatie](#geo-replication)
-* [Virtueel netwerk](#virtual-network)
+* [Virtual Network](#virtual-network)
 * [Firewall](#firewall)
 * [Eigenschappen](#properties)
 * [Sloten](#locks)
@@ -117,10 +117,10 @@ De volgende instellingen zijn geconfigureerd op het geavanceerde **instellingenb
 * [Keyspace-meldingen (geavanceerde instellingen)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Toegangspoorten
-Voor nieuwe caches is niet-SSL-toegang standaard uitgeschakeld. Als u de niet-SSL-poort wilt inschakelen, klikt u op **Nee** voor **Toegang alleen toestaan via SSL** op het geavanceerde **instellingenblad** en klikt u vervolgens op **Opslaan**.
+Standaard is niet-TLS/SSL-toegang uitgeschakeld voor nieuwe caches. Als u de niet-TLS-poort wilt inschakelen, klikt u op **Nee** voor **Toegang alleen toestaan via SSL** op het geavanceerde **instellingenblad** en klikt u vervolgens op **Opslaan**.
 
 > [!NOTE]
-> SSL-toegang tot Azure Cache voor Redis ondersteunt tls 1.0, 1.1 en 1.2 op dit moment, maar versies 1.0 en 1.1 worden binnenkort buiten gebruik gesteld.  Lees onze [Remove TLS 1.0 en 1.1 pagina](cache-remove-tls-10-11.md) voor meer informatie.
+> TLS-toegang tot Azure Cache voor Redis ondersteunt TLS 1.0, 1.1 en 1.2 op dit moment, maar versies 1.0 en 1.1 worden binnenkort buiten gebruik gesteld.  Lees onze [Remove TLS 1.0 en 1.1 pagina](cache-remove-tls-10-11.md) voor meer informatie.
 
 ![Azure-cache voor Redis Access-poorten](./media/cache-configure/redis-cache-access-ports.png)
 

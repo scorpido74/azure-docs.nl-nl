@@ -3,27 +3,23 @@ title: Annotaties vrijgeven voor toepassingsinzichten | Microsoft Documenten
 description: Voeg implementatie- of buildmarkeertekens toe aan de grafieken van de statistiekenverkenners in Application Insights.
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: e0e2a106b276110e13b3c68889e4d1d349ba73a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666510"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010707"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Annotaties op metrische grafieken in Application Insights
 
-Annotaties in [grafieken van Metrics Explorer](../../azure-monitor/app/metrics-explorer.md) geven aan waar u een nieuwe build of andere belangrijke gebeurtenissen hebt geïmplementeerd. Annotaties maken het gemakkelijk om te zien of uw wijzigingen enig effect hebben gehad op de prestaties van uw toepassing. Ze kunnen automatisch worden gemaakt door het [Azure Pipelines-buildsysteem.](https://docs.microsoft.com/azure/devops/pipelines/tasks/) U ook aantekeningen maken om elke gebeurtenis die u wilt te markeren door ze te maken via PowerShell.
-
-> [!NOTE]
-> Dit artikel weerspiegelt de afgeschafte **klassieke metrische gegevens ervaring**. Annotaties zijn momenteel alleen beschikbaar in de klassieke ervaring en in **[werkmappen.](../../azure-monitor/app/usage-workbooks.md)** Zie Geavanceerde functies van Azure [Metrics Explorer](../../azure-monitor/platform/metrics-charts.md)voor meer informatie over de huidige ervaring met statistieken.
-
-![Voorbeeld van annotaties](./media/annotations/0-example.png)
+Annotaties laten zien waar u een nieuwe build of andere belangrijke gebeurtenissen hebt geïmplementeerd. Annotaties maken het gemakkelijk om te zien of uw wijzigingen enig effect hebben gehad op de prestaties van uw toepassing. Ze kunnen automatisch worden gemaakt door het [Azure Pipelines-buildsysteem.](https://docs.microsoft.com/azure/devops/pipelines/tasks/) U ook aantekeningen maken om elke gebeurtenis die u wilt te markeren door ze te maken via PowerShell.
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Annotaties vrijgeven met Azure Pipelines-build
 
 Releaseannotaties zijn een functie van de cloudgebaseerde Azure Pipelines-service van Azure DevOps.
 
 ### <a name="install-the-annotations-extension-one-time"></a>De annotatiesextensie installeren (eenmalig)
+
 Als u release-annotaties wilt maken, moet u een van de vele Azure DevOps-extensies installeren die beschikbaar zijn in de Visual Studio Marketplace.
 
 1. Meld u aan bij uw [Azure DevOps-project.](https://azure.microsoft.com/services/devops/)
@@ -74,11 +70,26 @@ Maak een afzonderlijke API-sleutel voor elk van uw Azure Pipelines release sjabl
 1. Selecteer **Opslaan** in het venster sjabloon voor de hoofdontgrendeling om de sjabloon op te slaan.
 
 ## <a name="view-annotations"></a>Annotaties weergeven
-Wanneer u de releasesjabloon nu gebruikt om een nieuwe release te implementeren, wordt er een annotatie naar Application Insights verzonden. De annotaties worden weergegeven in grafieken in **Metrics Explorer**.
 
-Selecteer een annotatiemarkering (lichtgrijze pijl) om details over de release te openen, inclusief aanvrager, bronbeheerbranch, releasepijplijn en omgeving.
 
-![Selecteer een markering voor de release-annotatie.](./media/annotations/8-release.png)
+   > [!NOTE]
+   > Releaseannotaties zijn momenteel niet beschikbaar in het deelvenster Statistieken van Toepassingsinzichten
+
+Wanneer u de releasesjabloon nu gebruikt om een nieuwe release te implementeren, wordt er een annotatie naar Application Insights verzonden. De annotaties kunnen worden bekeken op de volgende locaties:
+
+Het gebruiksvenster waarin u ook handmatig release-annotaties maken:
+
+![Schermafbeelding van het staafdiagram met het aantal gebruikersbezoeken dat gedurende een periode van uren wordt weergegeven. Release annotaties worden weergegeven als groene vinkjes boven de grafiek die het moment aangeven waarop een release heeft plaatsgevonden](./media/annotations/usage-pane.png)
+
+In elke werkmapquery op basis van logboeken wordt de tijd langs de x-as weergegeven.
+
+![Schermafbeelding van het deelvenster Werkmappen met op tijdreeksenlogboeken gebaseerde query met weergegeven annotaties](./media/annotations/workbooks-annotations.png)
+
+Als u annotaties in uw werkmap wilt inschakelen, gaat u naar **Geavanceerde instellingen** en selecteert u **Aantekeningen weergeven**.
+
+![Schermafbeelding van het menu Geavanceerde instellingen met de woorden toont aantekeningen die zijn gemarkeerd met een vinkje naast de instelling om het in te schakelen.](./media/annotations/workbook-show-annotations.png)
+
+Selecteer een annotatiemarkering om details over de release te openen, inclusief requestor, source control branch, release pipeline en omgeving.
 
 ## <a name="create-custom-annotations-from-powershell"></a>Aangepaste annotaties maken vanuit PowerShell
 U het [CreateReleaseAnnotation PowerShell-script](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) van GitHub gebruiken om aantekeningen te maken van elk proces dat u wilt, zonder Azure DevOps te gebruiken. 

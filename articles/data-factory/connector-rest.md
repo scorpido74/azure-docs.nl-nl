@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca913a4c197e04e20c962c4a4a7a1e479a3cdf92
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867373"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990885"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Gegevens van een REST-eindpunt kopiëren met Azure Data Factory
 
@@ -60,7 +60,7 @@ De volgende eigenschappen worden ondersteund voor de rest-gekoppelde service:
 |:--- |:--- |:--- |
 | type | De **eigenschap type** moet zijn ingesteld op **RestService**. | Ja |
 | url | De basis-URL van de REST-service. | Ja |
-| enableServerCertificateValidation | Of u ssl-certificaat aan de serverzijde moet valideren wanneer u verbinding maakt met het eindpunt. | Nee<br /> (de standaardinstelling is **waar)** |
+| enableServerCertificateValidation | Of u tls/SSL-certificaat aan de serverzijde moet valideren wanneer u verbinding maakt met het eindpunt. | Nee<br /> (de standaardinstelling is **waar)** |
 | authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de REST-service. Toegestane waarden zijn **Anoniem,** **Basic,** **AadServicePrincipal** en **ManagedServiceIdentity**. Raadpleeg de bijbehorende secties hieronder over respectievelijk meer eigenschappen en voorbeelden. | Ja |
 | connectVia | De [runtime integratie](concepts-integration-runtime.md) om verbinding te maken met het gegevensarchief. Meer informatie van de sectie [Voorwaarden.](#prerequisites) Als deze eigenschap niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
 

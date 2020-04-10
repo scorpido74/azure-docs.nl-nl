@@ -7,12 +7,12 @@ ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: a4c9188c8f1315a3af452cd0c1fb5cf45ab82081
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77486114"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010491"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Azure Storage-voorbeelden met v12 .NET-clientbibliotheken
 
@@ -23,7 +23,7 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
 
 ## <a name="blob-samples"></a>Blob-voorbeelden
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 :::row:::
    :::column span="":::
@@ -51,18 +51,18 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
 
 :::row:::
    :::column span="":::
-      [Meerdere blobs in één aanvraag verwijderen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L22)
+      [Meerdere blobs in één aanvraag verwijderen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L22)
    :::column-end:::
    :::column span="":::
-      [Meerdere blobtoegangslagen in één aanvraag instellen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L56)
+      [Meerdere blobtoegangslagen in één aanvraag instellen](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Fijnkorrelige controle in een batchaanvraag](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L90)
+      [Fijnkorrelige controle in een batchaanvraag](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L90)
    :::column-end:::
    :::column span="":::
-      [Fouten vangen van een mislukte subbewerking](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L136)
+      [Fouten vangen van een mislukte subbewerking](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L136)
    :::column-end:::
 :::row-end:::
 
@@ -94,7 +94,7 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
 
 ## <a name="data-lake-storage-gen2-samples"></a>Gegevens Lake Storage Gen2-monsters
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 :::row:::
    :::column span="":::
@@ -180,7 +180,7 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
 
 ## <a name="azure-files-samples"></a>Voorbeelden van Azure-bestanden
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 :::row:::
    :::column span="":::
@@ -222,7 +222,7 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
 
 ## <a name="queue-samples"></a>Wachtrijvoorbeelden
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 :::row:::
    :::column span="":::

@@ -1,18 +1,18 @@
 ---
 title: Werken met opgeslagen procedures, triggers en UDF's in Azure Cosmos DB
 description: In dit artikel worden de concepten zoals opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies in Azure Cosmos DB geïntroduceerd.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: mjbrown
+ms.date: 04/09/2020
+ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 23a14e7590eca6f63c92acdf6336ffaef8b54381
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13256377b8a8aaebf59196df57eef67d3b960cb8
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065894"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010542"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
 
@@ -69,7 +69,7 @@ Opgeslagen procedures en triggers worden altijd uitgevoerd op de primaire replic
 
 Alle Azure Cosmos DB-bewerkingen moeten binnen de opgegeven time-outduur zijn voltooid. Deze beperking is van toepassing op JavaScript-functies - opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies. Als een bewerking niet binnen die termijn is voltooid, wordt de transactie teruggedraaid.
 
-U ervoor zorgen dat uw JavaScript-functies binnen de tijdslimiet zijn voltooid of een op voortzetting gebaseerd model implementeren om de uitvoering van batch/hervatten te implementeren. Om de ontwikkeling van opgeslagen procedures en triggers te vereenvoudigen om tijdslimieten te verwerken, retourneren alle functies onder de Azure Cosmos-container (bijvoorbeeld items maken, lezen, bijwerken en verwijderen) een booleaanse waarde die aangeeft of die bewerking Volledige. Als deze waarde onjuist is, is dit een indicatie dat de procedure de uitvoering moet afronden omdat het script meer tijd of ingerichte doorvoer verbruikt dan de geconfigureerde waarde. Bewerkingen die in de wachtrij staan vóór de eerste niet-geaccepteerde winkelbewerking, zijn gegarandeerd voltooid als de opgeslagen procedure op tijd is voltooid en geen aanvragen meer in de wachtrij staan. Bewerkingen moeten dus één voor één in de wachtrij worden geplaatst met behulp van de terugbelconventie van JavaScript om de controlestroom van het script te beheren. Omdat scripts worden uitgevoerd in een server-side omgeving, worden ze strikt geregeld. Scripts die herhaaldelijk de uitvoeringsgrenzen schenden, kunnen inactief zijn gemarkeerd en kunnen niet worden uitgevoerd en moeten opnieuw worden gemaakt om de uitvoeringsgrenzen te eren.
+U ervoor zorgen dat uw JavaScript-functies binnen de tijdslimiet zijn voltooid of een op voortzetting gebaseerd model implementeren om de uitvoering van batch/hervatten te implementeren. Om de ontwikkeling van opgeslagen procedures en triggers te vereenvoudigen om tijdslimieten te verwerken, retourneren alle functies onder de Azure Cosmos-container (bijvoorbeeld items maken, lezen, bijwerken en verwijderen) een booleaanse waarde die aangeeft of die bewerking wordt voltooid. Als deze waarde onjuist is, is dit een indicatie dat de procedure de uitvoering moet afronden omdat het script meer tijd of ingerichte doorvoer verbruikt dan de geconfigureerde waarde. Bewerkingen die in de wachtrij staan vóór de eerste niet-geaccepteerde winkelbewerking, zijn gegarandeerd voltooid als de opgeslagen procedure op tijd is voltooid en geen aanvragen meer in de wachtrij staan. Bewerkingen moeten dus één voor één in de wachtrij worden geplaatst met behulp van de terugbelconventie van JavaScript om de controlestroom van het script te beheren. Omdat scripts worden uitgevoerd in een server-side omgeving, worden ze strikt geregeld. Scripts die herhaaldelijk de uitvoeringsgrenzen schenden, kunnen inactief zijn gemarkeerd en kunnen niet worden uitgevoerd en moeten opnieuw worden gemaakt om de uitvoeringsgrenzen te eren.
 
 JavaScript-functies zijn ook onderworpen aan [de ingerichte doorvoercapaciteit.](request-units.md) JavaScript-functies kunnen binnen korte tijd een groot aantal aanvraageenheden gebruiken en kunnen tariefbeperkt zijn als de ingerichte doorvoercapaciteitlimiet is bereikt. Het is belangrijk op te merken dat scripts extra doorvoer verbruiken naast de doorvoer die wordt besteed aan het uitvoeren van databasebewerkingen, hoewel deze databasebewerkingen iets goedkoper zijn dan het uitvoeren van dezelfde bewerkingen van de client.
 
@@ -90,7 +90,7 @@ Net als bij pre-triggers zijn post-triggers ook gekoppeld aan een bewerking op e
 
 ## <a name="user-defined-functions"></a><a id="udfs"></a>Door de gebruiker gedefinieerde functies
 
-Door de gebruiker gedefinieerde functies (UDF's) worden gebruikt om de syntaxis van SQL API-querytaal uit te breiden en aangepaste bedrijfslogica eenvoudig te implementeren. Ze kunnen alleen worden aangeroepen binnen query's. UDF's hebben geen toegang tot het contextobject en zijn bedoeld om te worden gebruikt als alleen JavaScript berekenen. Daarom kunnen UDF's worden uitgevoerd op secundaire replica's. Zie Bijvoorbeeld het artikel [Hoe u door de gebruiker gedefinieerde functies schrijft.](how-to-write-stored-procedures-triggers-udfs.md#udfs)
+[Door de gebruiker gedefinieerde functies](sql-query-udfs.md) (UDF's) worden gebruikt om de syntaxis van SQL API-querytaal uit te breiden en aangepaste bedrijfslogica eenvoudig te implementeren. Ze kunnen alleen worden aangeroepen binnen query's. UDF's hebben geen toegang tot het contextobject en zijn bedoeld om te worden gebruikt als alleen JavaScript berekenen. Daarom kunnen UDF's worden uitgevoerd op secundaire replica's. Zie Bijvoorbeeld het artikel [Hoe u door de gebruiker gedefinieerde functies schrijft.](how-to-write-stored-procedures-triggers-udfs.md#udfs)
 
 ## <a name="javascript-language-integrated-query-api"></a><a id="jsqueryapi"></a>JavaScript-taalgeïntegreerde query-API
 

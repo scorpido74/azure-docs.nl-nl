@@ -11,13 +11,13 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/14/2018
-ms.openlocfilehash: 92f7d25a9c19409b220b6a71fba87da91e51a415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.openlocfilehash: 532258cecd823e10057ddc3536cd24071e444581
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74928505"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992059"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>De runtime azure-SSIS-integratie configureren met geo-replicatie en failover van Azure SQL Database
 
@@ -112,9 +112,11 @@ Wanneer een ADF- of Azure-SSIS IR-ramp zich voordoet in de huidige regio, u ervo
 
 ### <a name="steps"></a>Stappen
 
-Volg deze stappen om uw Azure-SSIS IR te stoppen, de IR over te schakelen naar een nieuwe regio en opnieuw te starten.
+Volg deze stappen om uw Azure-SSIS IR naar een nieuwe regio te verplaatsen.
+> [!NOTE]
+> Stap 3 (creatie van IR) moet worden gedaan via PowerShell. Azure-portal rapporteert een fout waarin staat dat SSISDB al bestaat.
 
-1. Voer opgeslagen procedures uit om SSISDB aan ** \<new_data_factory_name\> ** of ** \<new_integration_runtime_name\>** te koppelen.
+1. De opgeslagen procedure uitvoeren om metagegevens in SSISDB bij te werken om verbindingen van ** \<new_data_factory_name\> ** en ** \<new_integration_runtime_name\>** te accepteren.
    
   ```SQL
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
