@@ -145,8 +145,6 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose (preview)
               href: service-fabric-docker-compose.md
-            - name: Resourcebeheer
-              href: service-fabric-resource-governance.md
         - name: Reliable Services
           items:
             - name: Overzicht van Reliable Services
@@ -193,6 +191,8 @@
               href: service-fabric-reliable-actors-notes-on-actor-type-serialization.md
         - name: Uitvoerbare gastbestanden
           href: service-fabric-guest-executables-introduction.md
+        - name: Resourcebeheer
+          href: service-fabric-resource-governance.md
     - name: Toepassingen en services
       items:
         - name: Toepassingsmodel
@@ -408,8 +408,6 @@
           items:
             - name: Docker Compose (preview)
               href: service-fabric-docker-compose.md
-            - name: Resourcebeheer voor containers en services
-              href: service-fabric-resource-governance.md
             - name: Volume en stuurprogramma's voor logboekregistratie
               href: service-fabric-containers-volume-logging-drivers.md
             - name: Containerlogboeken ophalen
