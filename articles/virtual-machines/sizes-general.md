@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 4b36f456f70eb79cff1f615c7c136b8fe4b1b3d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22826c32dc2aee0e580ec0b2a05c7eb8f08b7570
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78226707"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115312"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Grootte van virtuele machines voor algemeen gebruik
 
@@ -32,7 +32,7 @@ VM-formaten voor algemeen gebruik bieden een gebalanceerde CPU-geheugenverhoudin
 
 - [B-serie burstable](sizes-b-series-burstable.md) VM's zijn ideaal voor workloads die niet continu de volledige prestaties van de CPU nodig hebben, zoals webservers, kleine databases en ontwikkel- en testomgevingen. Deze workloads hebben doorgaans burstable prestatievereisten. De B-serie biedt deze klanten de mogelijkheid om een VM-formaat te kopen met een prijsbewuste basislijnprestaties waarmee de VM-instantie credits kan opbouwen wanneer de VM minder gebruikt dan zijn basisprestaties. Wanneer de VM krediet heeft verzameld, kan de VM boven de basislijn van de VM barsten met maximaal 100% van de CPU wanneer uw toepassing de hogere CPU-prestaties vereist.
 
-- [Dav4- en Dasv4-serie](dav4-dasv4-series.md) zijn nieuwe formaten die gebruikmaken van AMD's 2,35 Ghz EPYC<sup>TM</sup> 7452-processor in een multithread-configuratie met maximaal 256 MB L3-cache die 8 GB van die L3-cache wijdt aan elke 8 cores die de klantopties vergroten voor het uitvoeren van hun workloads voor algemeen gebruik. De Dav4-serie en Dasv4-serie hebben dezelfde geheugen- en schijfconfiguraties als de D-& Dsv3-serie.
+- [Dav4- en Dasv4-serie](dav4-dasv4-series.md) zijn nieuwe formaten met gebruikmakende AMD's 2,35 Ghz EPYC<sup>TM</sup> 7452-processor in een multithread-configuratie met maximaal 256 MB L3-cache die 8 MB van die L3-cache wijdt aan elke 8 cores die de klantopties vergroten voor het uitvoeren van hun workloads voor algemeen gebruik. De Dav4-serie en Dasv4-serie hebben dezelfde geheugen- en schijfconfiguraties als de D-& Dsv3-serie.
 
 - De [DCv2-serie](dcv2-series.md) kan helpen de vertrouwelijkheid en integriteit van uw gegevens en code te beschermen terwijl deze in de openbare cloud worden verwerkt. Deze machines worden ondersteund door de nieuwste generatie Intel XEON E-2288G Processor met SGX-technologie. Met de Intel Turbo Boost Technology kunnen deze machines tot 5,0 GHz gaan. Met dcv2-serie-exemplaren kunnen klanten veilige toepassingen op basis van enclaves bouwen om hun code en gegevens te beschermen terwijl deze worden gebruikt.
 

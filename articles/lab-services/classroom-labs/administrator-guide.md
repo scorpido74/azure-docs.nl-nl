@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8608aaab7bb8b6d10e67f27678c17f20a6c243da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ce7ef15f0bf13182e4799fb640e83136d0d4695
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370864"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115030"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services - Beheerdershandleiding
 It-beheerders (Information Technology) die de cloudresources van een universiteit beheren, zijn doorgaans verantwoordelijk voor het opzetten van het labaccount voor hun school. Zodra een labaccount is ingesteld, maken beheerders of docenten klaslokalen die zich in het labaccount bevinden. Dit artikel biedt een overzicht op hoog niveau van de betrokken Azure-resources en de richtlijnen voor het maken ervan.
@@ -156,6 +156,9 @@ De locatie waarin een klassikale lab bestaat, is afhankelijk van de volgende fac
        
     Wanneer er **geen** VNet peered is en [labmakers de lablocatie mogen kiezen,](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)zijn de locaties die door de maker van het lab kunnen worden geselecteerd, gebaseerd op de beschikbare capaciteit.
 
+> [!NOTE]
+> Om ervoor te zorgen dat er voldoende VM-capaciteit is voor een regio, is het belangrijk dat u eerst capaciteit opvraagt via het labaccount of bij het maken van het lab.
+
 Een algemene regel is om de regio van een resource in te stellen op een regio die het dichtst bij de gebruikers staat. Voor klaslokalen betekent dit het creëren van het klaslokaallab dat het dichtst bij uw leerlingen staat. Voor online cursussen waar studenten zich over de hele wereld bevinden, moet u uw beste oordeel gebruiken om een klaslokaallab te maken dat centraal is gelegen. Of splits een klas op in meerdere klaslokalen op basis van de regio van uw leerlingen.
 
 ### <a name="shared-image-gallery"></a>Gedeelde afbeeldingsgalerie
@@ -169,7 +172,7 @@ Wanneer beheerders of labmakers een klaslokaallab maken, kunnen ze kiezen uit de
 | ---- | ----- | ------ | ------------- |
 | Klein| <ul><li>2 kernen</li><li>3,5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor opdrachtregel, het openen van webbrowser, low traffic webservers, kleine tot middelgrote databases. |
 | Middelgroot | <ul><li>4 Kernen</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor relationele databases, in-memory caching en analytics. |
-| Medium (Geneste virtualisatie) | <ul><li>4 Kernen</li><li>16 GB RAM</li></ul> | [Standard_DC4s_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor relationele databases, in-memory caching en analytics.  Deze grootte ondersteunt ook geneste virtualisatie. |
+| Medium (Geneste virtualisatie) | <ul><li>4 Kernen</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Deze grootte is het meest geschikt voor relationele databases, in-memory caching en analytics.  Deze grootte ondersteunt ook geneste virtualisatie. |
 | Groot | <ul><li>8 kernen</li><li>32 GB RAM</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Dit formaat is het meest geschikt voor toepassingen die snellere CPU's nodig hebben, betere lokale schijfprestaties, grote databases, grote geheugencaches.  Deze grootte ondersteunt ook geneste virtualisatie. |
 | Kleine GPU (visualisatie) | <ul><li>6 Kernen</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Dit formaat is het meest geschikt voor externe visualisatie, streaming, gaming, codering met behulp van frameworks zoals OpenGL en DirectX. |
 | Kleine GPU (Berekenen) | <ul><li>6 Kernen</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Dit formaat is het meest geschikt voor computerintensieve toepassingen zoals Kunstmatige Intelligentie en Deep Learning. |

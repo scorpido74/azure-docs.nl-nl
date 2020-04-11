@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4ab59ab5b988b54333c419ced7fa852da531eaa
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8ef791759a33d08aaff068b0dd2634e5f21bb1b6
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984330"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114998"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Veelgestelde vragen over Azure Disk Encryption voor virtuele Windows-machines
 
@@ -64,7 +64,7 @@ Azure Disk Encryption biedt end-to-end encryptie voor de OS-schijf, gegevensschi
 
 - Als uw vereisten het versleutelen van alle bovenstaande en end-to-end-versleuteling omvatten, gebruikt u Azure Disk Encryption. 
 - Als uw vereisten bestaan uit het versleutelen van alleen gegevens in rust met door de klant beheerde sleutel, gebruikt u [serverversleuteling met door de klant beheerde sleutels.](disk-encryption.md) U een schijf niet versleutelen met zowel Azure Disk Encryption als Storage server-side encryptie met door de klant beheerde sleutels.
-_ Als u een scenario gebruikt dat wordt genoemd in [niet-ondersteunde scenario's voor Windows,](disk-encryption-windows.md#unsupported-scenarios)overweeg dan [serverversleuteling met door de klant beheerde sleutels.](disk-encryption.md) 
+- Als u een scenario gebruikt dat wordt genoemd in [niet-ondersteunde scenario's voor Windows,](disk-encryption-windows.md#unsupported-scenarios)u [serverversleuteling met door de klant beheerde sleutels](disk-encryption.md)overwegen. 
 - Als het beleid van uw organisatie u toestaat om inhoud in rust te versleutelen met een door Azure beheerde sleutel, is er geen actie nodig - de inhoud wordt standaard versleuteld. Voor beheerde schijven wordt de inhoud in de opslag standaard versleuteld met server-side encryptie met platformbeheerde sleutel. De sleutel wordt beheerd door de Azure Storage-service. 
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Hoe draai ik geheimen of encryptiesleutels?

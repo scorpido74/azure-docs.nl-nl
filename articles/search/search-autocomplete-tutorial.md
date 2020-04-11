@@ -1,27 +1,27 @@
 ---
-title: Suggesties toevoegen en automatisch aanvullen in een zoekvak
+title: Automatisch aanvullen en suggesties toevoegen in een zoekvak
 titleSuffix: Azure Cognitive Search
-description: Schakel typeahead queryacties in Azure Cognitive Search in door suggesties te maken en aanvragen te formuleren die een zoekvak vullen met voltooide termen of zinnen.
+description: Schakel queryacties in Azure Cognitive Search in door suggesties te maken en aanvragen te formuleren die een zoekvak automatisch aanvullen met voltooide termen of woordgroepen. U ook voorgestelde overeenkomsten retourneren.
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 64c4e65ca7b69c7d61c706b48591ac19be3bfcf5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.topic: conceptual
+ms.date: 04/10/2020
+ms.openlocfilehash: d6c1819366fede0b1e81e43bc92ed56af93b39fd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72792526"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114950"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>Suggesties toevoegen of automatisch aanvullen aan uw Azure Cognitive Search-toepassing
 
 In dit artikel leert u hoe u [suggesties](https://docs.microsoft.com/rest/api/searchservice/suggestions) en [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) gebruikt om een krachtig zoekvak te bouwen dat zoek-as-you-type gedrag ondersteunt.
 
-+ *Suggesties* worden voorgestelde resultaten gegenereerd tijdens het typen, waarbij elke suggestie één resultaat is van de index die overeenkomt met wat u tot nu toe hebt getypt. 
++ *Suggesties* genereren zoekresultaten terwijl u typt, waarbij elke suggestie één resultaat of zoekdocument is uit de index dat overeenkomt met wat u tot nu toe hebt getypt. 
 
-+ *Automatisch aanvullen* "eindigt" het woord of de zin die een gebruiker momenteel typt. In plaats van resultaten terug te sturen, wordt een query voltooid, die u vervolgens uitvoeren om resultaten te retourneren. Net als bij suggesties is een voltooid woord of woordgroep in een query gebaseerd op een overeenkomst in de index. De service biedt geen query's die nul resultaten in de index retourneren.
++ *Automatisch aanvullen* genereert query's door het woord of de woordgroep "af te maken". In plaats van resultaten terug te sturen, wordt een query voltooid, die u vervolgens uitvoeren om resultaten te retourneren. Net als bij suggesties is een voltooid woord of woordgroep in een query gebaseerd op een overeenkomst in de index. De service biedt geen query's die nul resultaten in de index retourneren.
 
 U de voorbeeldcode downloaden en uitvoeren in **DotNetHowToAutocomplete** om deze functies te evalueren. De voorbeeldcode is gericht op een vooraf gebouwde index die is gevuld met [DEMOgegevens van NYCJobs.](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) De NYCJobs-index bevat een [Suggester-constructie,](index-add-suggesters.md)wat een vereiste is voor het gebruik van suggesties of automatisch aanvullen. U de voorbereide index gebruiken die wordt gehost in een sandbox-service of [uw eigen index vullen](#configure-app) met behulp van een gegevenslader in de NYCJobs-voorbeeldoplossing. 
 

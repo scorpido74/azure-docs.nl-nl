@@ -1,22 +1,22 @@
 ---
-title: Maak een nieuw Dynamics 365 Business Central-aanbod op de commerciële marktplaats
-description: Een nieuwe Dynamics 365 Business Central-aanbieding maken voor vermelding of verkoop in het Azure Marketplace-, AppSource- of via het CSP-programma (Cloud Solution Provider) met behulp van de Commercial Marketplace-portal in Microsoft Partner Center.
+title: Maak een nieuwe Dynamics 365 Business Central-aanbieding in de commerciële marktplaats van Microsoft
+description: Een nieuwe Dynamics 365 Business Central-aanbieding maken voor vermelding of verkoop in de Azure Marketplace, Microsoft AppSource of via het CSP-programma (Cloud Solution Provider) met behulp van de commerciële marktplaatsportal in Microsoft Partner Center.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 908d0fb9d494ec048e6b254f91ec1faf56b47c90
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.date: 04/09/2020
+ms.openlocfilehash: 9bb1059087bdf8fc4eb852be7a995febc3336713
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529401"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115286"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Maak een nieuwe Dynamics 365 Business Central-aanbieding
 
-In dit onderwerp wordt uitgelegd hoe u een nieuw Dynamics 365 Business Central-aanbod maken. [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) is een ERP-systeem (enterprise resource planning) dat een breed scala aan bedrijfsprocessen verwerkt, waaronder financiën, operaties, supply chain, CRM en projectmanagement en elektronische handel. Premium-pakketten ondersteunen ook het klassieke implementatiemodel en de productie. Alle aanbiedingen voor Dynamics 365 Business Central moeten ons certificeringsproces doorlopen.
+In dit artikel wordt uitgelegd hoe u een nieuw Dynamics 365 Business Central-aanbod maken. [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) is een ERP-systeem (enterprise resource planning) dat een breed scala aan bedrijfsprocessen verwerkt, waaronder financiën, operaties, supply chain, CRM en projectmanagement en elektronische handel. Premium-pakketten ondersteunen ook het klassieke implementatiemodel en de productie. Alle aanbiedingen voor Dynamics 365 Business Central moeten ons certificeringsproces doorlopen.
 
 Als u wilt beginnen met het maken van Dynamics 365 Business Central-aanbiedingen, moet u ervoor zorgen dat u eerst [een Partnercenter-account maakt](./create-account.md) en het [dashboard Commercial Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)opent, waarbij de **pagina Overzicht** is geselecteerd.
 
@@ -113,12 +113,10 @@ Geef uw eigen wettelijke voorwaarden op het gebied **van Algemene Voorwaarden.**
 
 ## <a name="offer-listing"></a>Aanbieding aanbieden
 
-Op de pagina Aanbiedingsaanbieding worden de talen weergegeven waarin uw aanbieding wordt weergegeven. Momenteel is **Engels (Verenigde Staten)** de enige beschikbare optie.
-
-U moet marktplaatsdetails (aanbiedingsnaam, beschrijving, afbeeldingen, enz.) voor elke taal/markt definiëren. Selecteer de taal/marktnaam om deze informatie te verstrekken.
+Op de pagina Aanbiedingsaanbieding bepaalt u details voor uw aanbieding (zoals naam, beschrijving, afbeeldingen, enz.).
 
 > [!NOTE]
-> Aanbieding sominhoud (zoals de beschrijving, documenten, screenshots, gebruiksvoorwaarden, enz.) is niet verplicht om in het Engels te zijn, zolang de aanbiedingsbeschrijving begint met de zinsnede: "Deze toepassing is alleen beschikbaar in [niet-Engelse taal]." Het is ook aanvaardbaar om een *URL voor nuttige koppelingen* op te geven om inhoud aan te bieden in een andere taal dan die welke wordt gebruikt in de inhoud van de aanbiedingsvermelding.
+> U aanbiedingsgegevens slechts in één taal opgeven. Het is niet verplicht om in het Engels, zolang de aanbieding beschrijving begint met de zinsnede, "Deze toepassing is alleen beschikbaar in [niet-Engels talig]." Het is ook acceptabel om een URL van de *Help-koppeling* te verstrekken om inhoud aan te bieden in een andere taal dan die welke wordt gebruikt in de inhoud van de aanbiedingsvermelding.
 
 ### <a name="name"></a>Name
 
@@ -169,23 +167,23 @@ U optioneel maximaal drie zoekzoekwoorden invoeren om klanten te helpen uw aanbi
 
 Als u klanten wilt laten weten dat uw app werkt met specifieke producten, voert u hier maximaal drie productnamen in.
 
-### <a name="support-urls"></a>URL's ondersteunen
+### <a name="helpprivacy-urls"></a>Help/privacy-URL's
 
 In deze sectie u koppelingen aanbieden om klanten meer inzicht te geven in uw aanbieding.
 
 #### <a name="help-link"></a>Help-koppeling
 
-Voer de URL in waar klanten meer te weten kunnen komen over uw aanbieding.
+Voer de URL in waar klanten meer te weten kunnen komen over uw aanbieding. Uw **Help-koppeling** kan niet hetzelfde zijn als uw **ondersteunings-URL** (hieronder uitgelegd).
 
-#### <a name="privacy-policy-url"></a>URL van het privacybeleid
+#### <a name="privacy-policy-link"></a>Koppeling Privacybeleid
 
 Voer de URL in voor het privacybeleid van uw organisatie. U bent verantwoordelijk voor het waarborgen dat uw app voldoet aan de privacywet- en regelgeving en voor het verstrekken van een geldig privacybeleid.
 
-### <a name="contacts"></a>Contactpersonen
+### <a name="contact-information"></a>Contactgegevens
 
 In deze sectie moet u de naam, e-mail en het telefoonnummer opgeven voor een **contactpersoon voor ondersteuning** en een contactpersoon voor **engineering.** Deze informatie wordt niet aan klanten weergegeven, maar is beschikbaar voor Microsoft en kan worden verstrekt aan CSP-partners.
 
-In de sectie **Contactpersoon voor ondersteuning** moet u ook de URL voor **ondersteuning** opgeven waar CSP-partners ondersteuning voor uw aanbieding kunnen vinden.
+In de sectie **Contactpersoon voor ondersteuning** moet u ook de URL voor **ondersteuning** opgeven waar CSP-partners ondersteuning voor uw aanbieding kunnen vinden. De URL van uw ondersteuningsondersteuning kan niet hetzelfde zijn als de **Koppeling Help.**
 
 ### <a name="supporting-documents"></a>Bewijsstukken
 
@@ -193,15 +191,7 @@ Geef hier ten minste één (en maximaal drie) gerelateerde marketingdocumenten, 
 
 ### <a name="marketplace-images"></a>Marketplace-afbeeldingen
 
-In deze sectie u logo's en afbeeldingen verstrekken die worden gebruikt bij het weergeven van uw aanbieding aan de klant. Alle afbeeldingen moeten in .png-indeling zijn.
-
-#### <a name="store-logos"></a>Winkellogo's
-
-Geef het logo van uw aanbieding op in twee maten: **Klein (48 x 48)** en **Large (216 x 216).**
-
-#### <a name="hero"></a>Held
-
-De hero afbeelding is optioneel. Als u er een opgeeft, moet deze 815 x 290 pixels meten.
+In deze sectie u logo's en afbeeldingen verstrekken die worden gebruikt bij het weergeven van uw aanbieding aan de klant. Alle afbeeldingen moeten in .png-indeling zijn. Upload uw aanbiedingslogo in twee maten: **klein (48 x 48)** en **Groot (216 x 216).**
 
 #### <a name="screenshots"></a>Schermopnamen
 
@@ -350,7 +340,11 @@ Vergeet niet om op te **slaan** voordat je doorgaat naar de volgende sectie!
 
 ### <a name="test-drive-marketplace-listings"></a>Marktplaatsvermeldingen voor teststations
 
-In de optie **Marketplace-vermelding** onder het tabblad **Teststation** worden de talen weergegeven waarin uw teststation beschikbaar is. Momenteel **is Engels (Verenigde Staten)** de enige beschikbare locatie. Selecteer de taalnaam die u wilt invoeren van informatie die de testritervaring beschrijft.
+De optie **Marketplace-vermelding** onder het tabblad **Teststation** is de plaats waar u details definieert voor de testritervaring.
+
+> [!NOTE]
+> U gegevens over een testrit in één taal opgeven. Het is niet verplicht om in het Engels, zolang de aanbieding beschrijving begint met de zinsnede, "Deze toepassing is alleen beschikbaar in [niet-Engels talig]." Het is ook aanvaardbaar om een URL van de *Help-koppeling* te verstrekken om inhoud aan te bieden in een andere taal dan die welke wordt gebruikt in de inhoud van de testritvermelding.
+
 
 - **Beschrijving** (vereist): Beschrijf uw testrit, wat wordt aangetoond, doelstellingen voor de gebruiker om mee te experimenteren, functies om te verkennen en alle relevante informatie om de gebruiker te helpen bepalen of hij uw aanbieding wil verwerven. In dit veld kunnen maximaal 3.000 tekens tekst worden ingevoerd. 
 

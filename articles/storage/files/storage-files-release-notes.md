@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 765decb8c65254d63ef5267cbc496d2320f58f6e
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: c6455930f88d02e11cb0c45d29594ae40eaad9e3
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991923"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113295"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Releaseopmerkingen voor de Azure File Sync-agent
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Uw installaties van Windows Server worden getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als u waar ook ter wereld nodig hebt.
@@ -25,7 +25,7 @@ De volgende versies worden ondersteund voor de Azure File Sync-agent:
 
 | Mijlpaal | Versienummer agent | Releasedatum | Status |
 |----|----------------------|--------------|------------------|
-| V10 Release - [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 9 april 2020 | Ondersteund |
+| V10 Release - [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 9 april 2020 | Tijdens de vlucht |
 | Update-rollup van december 2019 - [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12 december 2019 | Ondersteund |
 | V9 Release - [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2 december 2019 | Ondersteund |
 | V8 Release - [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8 oktober 2019 | Ondersteund |
@@ -68,7 +68,6 @@ De volgende releasenotes zijn voor versie 10.0.0.0 van de Azure File Sync-agent 
  
 - Diverse verbeteringen in prestaties en betrouwbaarheid
     - Wijzigingsdetectie in het Azure-bestandsaandeel kan mislukken als virtuele netwerk- en firewallregels zijn geconfigureerd op het opslagaccount.
-    - Niet langer 2KB security descriptor limiet voor het synchroniseren van discretionaire toegangscontrole lijsten (DACLs).  
     - Minder geheugenverbruik in verband met terugroepen. 
     - Verbeterde prestaties bij gebruik van de cmdlet [Invoke-AzStorageSyncChangeDetection.](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection)
     - Andere diverse verbeteringen in de betrouwbaarheid. 

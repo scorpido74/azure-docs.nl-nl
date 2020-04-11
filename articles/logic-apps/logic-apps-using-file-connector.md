@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab17137f162b893b54942d870b07a36f87d1b71d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651403"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115076"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Verbinding maken met on-premises bestandssystemen met Azure Logic Apps
 
@@ -69,7 +69,7 @@ In dit artikel ziet u hoe u verbinding maken met een on-premises bestandssysteem
    | -------- | -------- | ----- | ----------- |
    | **Verbindingsnaam** | Ja | <*verbindingsnaam*> | De naam die u wilt voor uw verbinding |
    | **Hoofdmap** | Ja | <*rootmap-naam*> | De hoofdmap voor uw bestandssysteem, bijvoorbeeld als u uw on-premises gegevensgateway hebt geïnstalleerd, zoals een lokale map op de computer waar de on-premises gegevensgateway is geïnstalleerd, of de map voor een netwerkshare waartoe de computer toegang heeft. <p>Bijvoorbeeld: `\\PublicShare\\DropboxFiles` <p>De hoofdmap is de hoofdmap van de bovenliggende map, die wordt gebruikt voor relatieve paden voor alle bestandsgerelateerde acties. |
-   | **Verificatietype** | Nee | <*auth-type*> | Het type verificatie dat uw bestandssysteem gebruikt, bijvoorbeeld **Windows** |
+   | **Verificatietype** | Nee | <*auth-type*> | Het type verificatie dat uw bestandssysteem gebruikt: **Windows** |
    | **Gebruikersnaam** | Ja | <*domain*>\\domeingebruikersnaam<*username*> | De gebruikersnaam voor de computer waar u uw bestandssysteem hebt |
    | **Wachtwoord** | Ja | <*uw wachtwoord*> | Het wachtwoord voor de computer waar u uw bestandssysteem hebt |
    | **Gateway** | Ja | <*installed-gateway-name*> | De naam voor uw eerder geïnstalleerde gateway |

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55537fb923b26de4e02be35fdb817dee147584d7
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75354648"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115126"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Inzicht in time handling in Azure Stream Analytics
 
@@ -96,7 +96,7 @@ U een ander concept genoemd vroege aankomstvenster opgemerkt hebben, dat als het
 
 Omdat Azure Stream Analytics garandeert dat het altijd volledige resultaten genereert, u alleen de **begintijd** van de taak opgeven als de eerste uitvoertijd van de taak, niet als de invoertijd. De begintijd van de taak is vereist, zodat het volledige venster wordt verwerkt, niet alleen vanuit het midden van het venster.
 
-Stream Analytics ontleent vervolgens de begintijd aan de queryspecificatie. Omdat de broker voor invoergebeurtenissen echter alleen wordt geïndexeerd aan de aankomsttijd, moet het systeem de begingebeurtenistijd vertalen naar de aankomsttijd. Het systeem kan vanaf dat moment beginnen met het verwerken van gebeurtenissen in de broker voor invoergebeurtenissen. Met de vroege vensterlimiet is de vertaling eenvoudig. Het is het begin van de evenementtijd minus de 5 minuten voor aankomst venster. Deze berekening betekent ook dat het systeem alle gebeurtenissen laat vallen die worden gezien met een gebeurtenistijd 5 minuten groter dan de aankomsttijd.
+Stream Analytics ontleent vervolgens de begintijd aan de queryspecificatie. Omdat de broker voor invoergebeurtenissen echter alleen wordt geïndexeerd aan de aankomsttijd, moet het systeem de begingebeurtenistijd vertalen naar de aankomsttijd. Het systeem kan vanaf dat moment beginnen met het verwerken van gebeurtenissen in de broker voor invoergebeurtenissen. Met de vroege vensterlimiet is de vertaling eenvoudig. Het is de starttijd minus het 5 minuten vooraankomst venster. Deze berekening betekent ook dat het systeem alle gebeurtenissen laat vallen die worden gezien als een gebeurtenistijd 5 minuten ealier dan de aankomsttijd.
 
 Dit concept wordt gebruikt om ervoor te zorgen dat de verwerking herhaalbaar is, ongeacht waar u begint met de uitvoer van. Zonder een dergelijk mechanisme zou het niet mogelijk zijn om herhaalbaarheid te garanderen, zoals veel andere streamingsystemen beweren dat ze doen.
 

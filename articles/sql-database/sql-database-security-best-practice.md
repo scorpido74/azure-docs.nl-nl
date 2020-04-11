@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 39747ac0a7133562bed526f44e30bf4a656127c0
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 7b3a223ca504bff380afad54afda73880717814f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673610"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115373"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Playbook voor het aanpakken van algemene beveiligingsvereisten met Azure SQL Database
 
@@ -89,14 +89,14 @@ Centraal identiteitsbeheer biedt de volgende voordelen:
 
 - Maak een Azure AD-tenant en [maak gebruikers](../active-directory/fundamentals/add-users-azure-active-directory.md) om menselijke gebruikers te vertegenwoordigen en [maak serviceprincipals](../active-directory/develop/app-objects-and-service-principals.md) om apps, services en automatiseringshulpprogramma's weer te geven. Serviceprincipals zijn gelijk aan serviceaccounts in Windows en Linux. 
 
-- Toegangsrechten toewijzen aan Azure AD-principals via groepstoewijzing: Azure AD-groepen maken, toegang verlenen tot groepen en afzonderlijke leden toevoegen aan de groepen. Maak in uw database opgenomen databasegebruikers die uw Azure AD-groepen toewijzen. Als u machtigingen in de database wilt toewijzen, plaatst u gebruikers in databaserollen met de juiste machtigingen.
+- Toegangsrechten toewijzen aan Azure AD-principals via groepstoewijzing: Azure AD-groepen maken, toegang verlenen tot groepen en afzonderlijke leden toevoegen aan de groepen. Maak in uw database opgenomen databasegebruikers die uw Azure AD-groepen toewijzen. Als u machtigingen in de database wilt toewijzen, plaatst u de gebruikers die zijn gekoppeld aan uw Azure AD-groepen in databaserollen met de juiste machtigingen.
   - Zie de [artikelen, Configureer en beheer Azure Active Directory-verificatie met SQL](sql-database-aad-authentication-configure.md) en [Gebruik Azure AD voor verificatie met SQL.](sql-database-aad-authentication.md)
   > [!NOTE]
   > In een beheerde instantie u ook aanmeldingen maken die worden toegewezen aan Azure AD-principals in de hoofddatabase. Zie [LOGIN MAKEN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
 
 - Het gebruik van Azure AD-groepen vereenvoudigt het machtigingsbeheer en zowel de groepseigenaar als de eigenaar van de bron kan leden toevoegen/verwijderen aan/uit de groep. 
 
-- Maak een aparte groep voor Azure AD-beheerder voor SQL DB-servers.
+- Maak een aparte groep voor Azure AD-beheerders voor elke SQL DB-server.
 
   - Zie het artikel, [Een Azure Active Directory-beheerder inrichten voor uw Azure SQL Database-server](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
 
@@ -213,7 +213,7 @@ SQL-verificatie verwijst naar de verificatie van een gebruiker wanneer hij verbi
 
 ## <a name="access-management"></a>Toegangsbeheer
 
-Toegangsbeheer is het proces voor het beheren en beheren van de toegang en bevoegdheden van geautoriseerde gebruikers tot Azure SQL Database.
+Access management (ook wel Autorisatie genoemd) is het proces van het beheren en beheren van de toegang en bevoegdheden van geautoriseerde gebruikers tot Azure SQL Database.
 
 ### <a name="implement-principle-of-least-privilege"></a>Implementeren principe van minste bevoegdheden
 
@@ -225,7 +225,7 @@ Het principe van de minste bevoegdheden stelt dat gebruikers niet meer bevoegdhe
 
 Alleen de benodigde [machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) toewijzen om de vereiste taken te voltooien:
 
-- In SQL-gegevensvlak: 
+- In SQL-databases: 
     - Gedetailleerde machtigingen en door de gebruiker gedefinieerde databaserollen (of serverrollen in MI) gebruiken: 
         1. De vereiste rollen maken
             - [ROL MAKEN](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
@@ -294,7 +294,7 @@ Scheiding van taken, ook wel Segregatie van Taken genoemd, beschrijft de vereist
   - Serverrollen maken voor serverbrede taken (het maken van nieuwe aanmeldingen, databases) in een beheerde instantie. 
   - Databaserollen maken voor taken op databaseniveau.
 
-- Voor bepaalde gevoelige taken u overwegen speciale opgeslagen procedures te maken die door een certificaat zijn ondertekend om de taken namens de gebruikers uit te voeren. 
+- Voor bepaalde gevoelige taken u overwegen speciale opgeslagen procedures te maken die door een certificaat zijn ondertekend om de taken namens de gebruikers uit te voeren. Een belangrijk voordeel van digitaal ondertekende opgeslagen procedures is dat als de procedure wordt gewijzigd, de machtigingen die zijn verleend aan de vorige versie van de procedure onmiddellijk worden verwijderd.
   - Voorbeeld: [zelfstudie: opgeslagen procedures ondertekenen met een certificaat](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate) 
 
 - Implementeer Transparent Data Encryption (TDE) met door de klant beheerde sleutels in Azure Key Vault om scheiding van taken tussen de eigenaar van gegevens en de eigenaar van de beveiliging mogelijk te maken. 
@@ -303,7 +303,7 @@ Scheiding van taken, ook wel Segregatie van Taken genoemd, beschrijft de vereist
 - Om ervoor te zorgen dat een DBA geen gegevens kan zien die als zeer gevoelig worden beschouwd en nog steeds DBA-taken kunnen uitvoeren, u Always Encrypted gebruiken met rolscheiding. 
   - Zie de artikelen, [Overzicht van Sleutelbeheer voor altijd versleuteld,](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) [sleutelinrichting met rolscheiding](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles)en [kolommastersleutelrotatie met rolscheiding](https://docs.microsoft.com/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation). 
 
-- In gevallen waarin het niet haalbaar is, althans niet zonder grote kosten en inspanningen die het systeem in de buurt onbruikbaar kunnen maken, kunnen compromissen worden gemaakt en beperkt door het gebruik van compenserende controles zoals: 
+- In gevallen waarin het gebruik van Always Encrypted niet haalbaar is, of in ieder geval niet zonder grote kosten en inspanningen die het systeem zelfs bijna onbruikbaar kunnen maken, kunnen compromissen worden gesloten en beperkt door het gebruik van compenserende controles zoals: 
   - Menselijke interventie in processen. 
   - Audittrails – voor meer informatie over controle, zie [kritieke beveiligingsgebeurtenissen controleren](#audit-critical-security-events).
 
@@ -315,17 +315,17 @@ Scheiding van taken, ook wel Segregatie van Taken genoemd, beschrijft de vereist
 
 - Gebruik ingebouwde rollen wanneer de machtigingen exact overeenkomen met de benodigde machtigingen: als de samenvoeging van alle machtigingen van meerdere ingebouwde rollen leidt tot een 100%-overeenkomst, u ook meerdere rollen tegelijk toewijzen. 
 
-- Aangepaste rollen maken en gebruiken wanneer ingebouwde rollen te veel machtigingen of onvoldoende machtigingen verlenen. 
+- Gebruikersgedefinieerde rollen maken en gebruiken wanneer ingebouwde rollen te veel machtigingen of onvoldoende machtigingen verlenen. 
 
 - Roltoewijzingen kunnen ook tijdelijk worden uitgevoerd, ook wel bekend als Dynamic Separation of Duties (DSD), hetzij binnen SQL Agent Job-stappen in T-SQL of met Behulp van Azure PIM voor RBAC-rollen. 
 
-- Zorg ervoor dat DBA's geen toegang hebben tot de encryptiesleutels of sleutelopslag en beveiligingsbeheerders met toegang tot de sleutels hebben op hun beurt geen toegang tot de database. 
+- Zorg ervoor dat DBA's geen toegang hebben tot de encryptiesleutels of sleutelopslag en dat beveiligingsbeheerders met toegang tot de sleutels op hun beurt geen toegang hebben tot de database. Het gebruik van [Extensible Key Management (EKM)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) kan deze scheiding gemakkelijker te realiseren. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) kan worden gebruikt om EKM te implementeren. 
 
 - Zorg er altijd voor dat u een audittrail hebt voor beveiligingsgerelateerde acties. 
 
 - U de definitie van de ingebouwde RBAC-rollen ophalen om de gebruikte machtigingen te zien en een aangepaste rol maken op basis van fragmenten en cumulaties hiervan via PowerShell.
 
-- Aangezien elk lid van de db_owner databaserol beveiligingsinstellingen zoals Transparent Data Encryption (TDE) kan wijzigen of de SLO kan wijzigen, moet dit lidmaatschap met zorg worden verleend. Er zijn echter veel taken waarvoor db_owner bevoegdheden nodig zijn. Taak zoals het wijzigen van een database-instelling, zoals het wijzigen van DB-opties. Auditing speelt een belangrijke rol in elke oplossing.
+- Omdat elk lid van de db_owner databaserol beveiligingsinstellingen zoals Transparent Data Encryption (TDE) kan wijzigen of de SLO kan wijzigen, moet dit lidmaatschap met zorg worden verleend. Er zijn echter veel taken waarvoor db_owner bevoegdheden nodig zijn. Taak zoals het wijzigen van een database-instelling, zoals het wijzigen van DB-opties. Auditing speelt een belangrijke rol in elke oplossing.
 
 - Het is niet mogelijk om machtigingen voor een db_owner te beperken en zo te voorkomen dat een administratief account gebruikersgegevens bekijkt. Als er zeer gevoelige gegevens in een database zijn, kan Always Encrypted worden gebruikt om te voorkomen dat db_owners of een andere DBA deze niet kan bekijken.
 
@@ -402,7 +402,7 @@ Versleuteling in rust is de cryptografische bescherming van gegevens wanneer dez
 
 **Aanbevolen procedures**:
 
-- Sla geen gegevens op die versleuteling vereisen in de hoofddatabase. De hoofddatabase kan niet worden versleuteld met TDE.
+- Sla geen gegevens op waarvoor versleuteling vereist is in de hoofddatabase. De hoofddatabase kan niet worden versleuteld met TDE.
 
 - Gebruik door de klant beheerde sleutels in Azure Key Vault als u meer transparantie en gedetailleerde controle over de TDE-beveiliging nodig hebt. Azure Key Vault biedt de mogelijkheid om op elk gewenst moment machtigingen in te trekken om de database ontoegankelijk te maken. U TDE-beveiligingen centraal beheren samen met andere sleutels of de TDE-beveiliging volgens uw eigen schema roteren met Azure Key Vault.
 
@@ -436,11 +436,11 @@ Het beleid dat bepaalt welke gegevens gevoelig zijn en of de gevoelige gegevens 
 
 - Gebruik deterministische versleuteling als berekeningen (gelijkheid) op gegevens moeten worden ondersteund. Gebruik anders gerandomiseerde versleuteling. Vermijd het gebruik van deterministische versleuteling voor gegevenssets met lage entropie of gegevenssets met een algemeen bekende distributie. 
 
-- Als u zich zorgen maakt over de toegang van derden tot uw gegevens zonder uw toestemming, moet u ervoor zorgen dat alle toepassingen en hulpprogramma's die toegang hebben tot de sleutels en gegevens in plaintext buiten Microsoft Azure Cloud worden uitgevoerd. Zonder toegang tot de sleutels, zal de derde partij geen manier hebben om de gegevens te decoderen, tenzij ze de versleuteling omzeilen.
+- Als u zich zorgen maakt over derden die uw gegevens legaal openen zonder uw toestemming, moet u ervoor zorgen dat alle toepassingen en hulpprogramma's die toegang hebben tot de sleutels en gegevens in plaintext buiten Microsoft Azure Cloud worden uitgevoerd. Zonder toegang tot de sleutels, zal de derde partij geen manier hebben om de gegevens te decoderen, tenzij ze de versleuteling omzeilen.
 
 - Always Encrypted ondersteunt niet gemakkelijk het verlenen van tijdelijke toegang tot de sleutels (en de beveiligde gegevens). Als u bijvoorbeeld de sleutels met een DBA moet delen om de DBA in staat te stellen bepaalde reinigingsbewerkingen uit te voeren op gevoelige en versleutelde gegevens. De enige manier om de toegang tot de gegevens van de DBA in te trekken, is door zowel de kolomversleutelingssleutels als de kolommastersleutels te roteren die de gegevens beschermen, wat een dure bewerking is. 
 
-- Om toegang te krijgen tot de plaintext-waarden in versleutelde kolommen, moet een gebruiker toegang hebben tot de CMK die kolommen beschermt, die is geconfigureerd in het sleutelarchief met de CMK. De gebruiker moet ook de **definitie van een kolommastersleutel bekijken** en eventuele machtigingen voor de **kolomversleutelingssleuteldefinitie bekijken.**
+- Als u toegang wilt krijgen tot de plaintext-waarden in versleutelde kolommen, moet een gebruiker toegang hebben tot de Kolomhoofdsleutel (CMK) die kolommen beschermt, die is geconfigureerd in het sleutelarchief met de CMK. De gebruiker moet ook de **definitie van een kolommastersleutel bekijken** en eventuele machtigingen voor de **kolomversleutelingssleuteldefinitie bekijken.**
 
 ### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>Controle over de toegang van gebruikers van toepassingen tot gevoelige gegevens via versleuteling
 

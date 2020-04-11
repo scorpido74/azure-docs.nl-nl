@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79453643"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115063"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Servers beoordelen met behulp van geïmporteerde gegevens
 
@@ -126,22 +126,8 @@ In de volgende tabel worden de bestandsvelden samengevat die moeten worden ingev
 **Netwerk in doorvoer** | Nee | Gegevens die door de server worden ontvangen, in MB per seconde.
 **Netwerkuitdoorvoer** | Nee | Gegevens die door de server worden verzonden, in MB per seconde.
 **Firmwaretype** | Nee | Serverfirmware. Waarden kunnen "BIOS" of "UEFI" zijn.
-**Servertype** | Nee | Waarden kunnen "Fysiek" of "Virtueel" zijn.
-**Hypervisor** | Nee | Hypervisor waarop een machine draait. <br/> Waarden kunnen "VMware", "Hyper-V", "Xen", "AWS", "GCP" of "Andere" zijn.
-**Hypervisor-versienummer** | Nee | Hypervisor versie.
-**Virtuele machine-ID** | Nee | VM-id. Dit is de **InstanceUUid-waarde** voor een VMware vCenter VM of de **Hyper-V VM ID** voor Hyper-V.
-**Id voor virtuele machinebeheer** | Nee | Dit is de **InstanceUUid-waarde** voor VMWare vCenter. Het is niet nodig voor Hyper-V.
 **MAC-adres**| Nee | Server MAC-adres.
-**BIOS-ID** | Nee | Bios-id van server.
-**Aangepaste server-id** | Nee | Lokale, unieke server-ID on-premises. <br/> Handig voor het bijhouden van de geïmporteerde server op lokale ID.
-**Naam van toepassing 1** | Nee | Naam van de werkbelasting die op de server wordt uitgevoerd.<br/>U details toevoegen voor meer apps door [kolommen toe](#add-multiple-applications) te voegen aan de sjabloon. U maximaal vijf toepassingen toevoegen.
-**Type Toepassing 1** | Nee | Type werkbelasting dat op de server wordt uitgevoerd
-**Versie van toepassing 1** | Nee | Versie van de werkbelasting die op de server wordt uitgevoerd.
-**Aanvraag 1 licentie verloopt** | Nee | Het verlopen van de werkbelasting (indien van toepassing) verloopt met een licentie.
-**Bedrijfseenheid** | Nee | Business unit waartoe de server behoort.
-**Bedrijfseigenaar** | Nee | Business unit eigenaar.
-**Naam van zakelijke toepassing** | Nee | Naam van de toepassing waartoe de app behoort.
-**Locatie** | Nee | Datacenter waarin de server zich bevindt.
+
 
 ### <a name="add-operating-systems"></a>Besturingssystemen toevoegen
 
@@ -159,19 +145,6 @@ Als u bijvoorbeeld alle velden voor een tweede schijf wilt opgeven, voegt u de v
 - Schijf 2 leesdoorvoer
 - Schrijfdoorvoer van schijf 2
 
-### <a name="add-multiple-applications"></a>Meerdere toepassingen toevoegen
-
-De sjabloon bevat velden voor één toepassing. U vergelijkbare kolommen toevoegen voor maximaal vijf apps.  
-
-Als u bijvoorbeeld alle velden voor een tweede app wilt opgeven, voegt u de volgende kolommen toe:
-
-- Naam van toepassing 2
-- Type Toepassing 2
-- Toepassing 2-versie
-- Aanvraag 2-licentie verloopt
-
-> [!NOTE]
-> App-informatie is handig bij het evalueren van uw on-premises omgeving voor migratie. Azure Migrate Server Assessment voert momenteel echter geen beoordeling op app-niveau uit of houdt geen rekening met apps bij het maken van een beoordeling.
 
 ## <a name="import-the-server-information"></a>De servergegevens importeren
 

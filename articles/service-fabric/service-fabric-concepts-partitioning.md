@@ -3,12 +3,12 @@ title: Services voor partitioneringsservice
 description: Beschrijft hoe u servicefabric-stateful services verdelen. Partities maken gegevensopslag op de lokale machines mogelijk, zodat gegevens en rekenkracht samen kunnen worden geschaald.
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258614"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115168"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partitioneren van Service Fabric-betrouwbare services
 Dit artikel geeft een inleiding tot de basisconcepten van het partitioneren van betrouwbare services voor Azure Service Fabric. De broncode die in het artikel wordt gebruikt, is ook beschikbaar op [GitHub.](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)
@@ -25,7 +25,7 @@ Er zijn echt twee soorten stateless service oplossingen. De eerste is een servic
 
 In beide gevallen is het partitioneren van een stateless service een zeer zeldzaam scenario - schaalbaarheid en beschikbaarheid wordt normaal gesproken bereikt door meer exemplaren toe te voegen. De enige keer dat u meerdere partities voor stateless service-exemplaren wilt overwegen, is wanneer u aan speciale routeringsaanvragen moet voldoen.
 
-Neem bijvoorbeeld een geval waarin gebruikers met id's in een bepaald bereik alleen door een bepaalde service-instantie mogen worden bediend. Een ander voorbeeld van wanneer u een stateless service partitioneren, is wanneer u een echt verdeelde backend hebt (bijvoorbeeld een geshard SQL-database) en u wilt bepalen welke serviceinstantie naar de database moet schrijven of ander voorbereidingswerk binnen de stateloze service waarvoor dezelfde partitioneringsgegevens nodig zijn als in de backend. Dit soort scenario's kan ook worden opgelost op verschillende manieren en vereisen niet noodzakelijkerwijs service partitionering.
+Neem bijvoorbeeld een geval waarin gebruikers met id's in een bepaald bereik alleen door een bepaalde service-instantie mogen worden bediend. Een ander voorbeeld van wanneer u een stateless service partitioneren, is wanneer u een echt verdeelde backend hebt (bijvoorbeeld een geshard SQL-database) en u wilt bepalen welke service-instantie naar de databasemoet schrijven - of ander voorbereidingswerk binnen de stateless-service uitvoeren waarvoor dezelfde partitioneringsinformatie vereist is als in de backend wordt gebruikt. Dit soort scenario's kan ook worden opgelost op verschillende manieren en vereisen niet noodzakelijkerwijs service partitionering.
 
 De rest van deze walkthrough richt zich op stateful services.
 
@@ -348,9 +348,6 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 gebruik
     ![Schermafbeelding van browser](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
 De volledige broncode van het voorbeeld is beschikbaar op [GitHub.](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)
-
-## <a name="reliable-services-and-actor-forking-subprocesses"></a>Betrouwbare services en actor forking subprocessen
-Service Fabric ondersteunt geen betrouwbare services en vervolgens betrouwbare actoren die subprocessen forking. Een voorbeeld van waarom het niet wordt ondersteund is [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) kan niet worden gebruikt om een niet-ondersteunde subproces te registreren, en annuleringstokens worden alleen verzonden naar geregistreerde processen; wat resulteert in allerlei problemen, zoals upgradefouten, wanneer subprocessen niet sluiten nadat het bovenliggende proces een annuleringstoken heeft ontvangen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie het volgende voor informatie over servicefabric-concepten:

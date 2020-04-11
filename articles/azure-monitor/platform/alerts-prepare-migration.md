@@ -1,17 +1,17 @@
 ---
-title: Voorbereiden op migratie van klassieke waarschuwingen voor Azure Monitor door uw logische apps en runbooks bij te werken
+title: Logische apps bijwerken & runbooks voor waarschuwingen migratie
 description: Meer informatie over het wijzigen van uw webhooks, logische apps en runbooks ter voorbereiding op vrijwillige migratie.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665589"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114412"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Uw logische apps en runbooks voorbereiden voor de migratie van klassieke waarschuwingsregels
 
@@ -30,8 +30,8 @@ De volgende tabel is een verwijzing naar de programmatische interfaces voor zowe
 
 |         |Klassieke waarschuwingen  |Nieuwe metrische waarschuwingen |
 |---------|---------|---------|
-|REST API     | [microsoft.insights/waarschuwingsregels](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metrische waarschuwingen](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure-CLI     | [az monitor alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [waarschuwing az-monitorstatistieken](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|REST-API     | [microsoft.insights/waarschuwingsregels](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metrische waarschuwingen](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
+|Azure CLI     | [az monitor alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [waarschuwing az-monitorstatistieken](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
 |PowerShell      | [Naslaginformatie](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Naslaginformatie](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager-sjabloon | [Voor klassieke waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Voor nieuwe metrische waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
@@ -43,7 +43,7 @@ Gebruik de volgende tabel om de laadlaadvelden van de webhook van de klassieke i
 
 |  |Klassieke waarschuwingen  |Nieuwe metrische waarschuwingen |
 |---------|---------|---------|
-|Is de waarschuwing geactiveerd of opgelost?    | **status**       | **data.status** |
+|Is de waarschuwing geactiveerd of opgelost?    | **Status**       | **data.status** |
 |Contextuele informatie over de waarschuwing     | **Context**        | **data.context**        |
 |Tijdstempel waarop de waarschuwing is geactiveerd of opgelost     | **context.tijdstempel**       | **data.context.timestamp**        |
 | Waarschuwingsregel-ID | **context.id** | **data.context.id** |

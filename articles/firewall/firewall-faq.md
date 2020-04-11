@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 5ddbb58837fbda0f14a07186d5a3053055954454
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: af66da115e228efe39e4cd5dda3c494b71428676
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677449"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113555"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -172,17 +172,11 @@ Nee. Azure Firewall heeft geen subnet nodig dat groter is dan /26.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Hoe kan ik de doorvoer van mijn firewall verhogen?
 
-De initiële doorvoercapaciteit van Azure Firewall is 2,5 - 3 Gbps en wordt geschaald naar 30 Gbps. Het schaalt uit op basis van CPU-gebruik en doorvoer. Neem contact op met ondersteuning om de doorvoercapaciteit van uw firewall te vergroten.
+De initiële doorvoercapaciteit van Azure Firewall is 2,5 - 3 Gbps en wordt geschaald naar 30 Gbps. Het schaalt automatisch uit op basis van CPU-gebruik en doorvoer.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Hoe lang duurt het voordat Azure Firewall is uitgeschaald?
 
-Het duurt vijf tot zeven minuten voordat Azure Firewall is uitgeschaald. Neem contact op met ondersteuning om de initiële doorvoercapaciteit van uw firewall te vergroten als u uitbarstingen hebt die een snellere automatische schaal vereisen.
-
-Bij het testen van de automatische firewall moet rekening worden gehouden met de volgende punten:
-
-- De single TCP-stroomprestaties zijn beperkt tot 1,4 Gbps. Een prestatietest moet dus meerdere TCP-stromen vaststellen.
-- Prestatietools moeten voortdurend nieuwe verbindingen voor hen tot stand brengen om verbinding te maken met de opgeschaalde backend firewall-exemplaren. Als de test eenmaal bij het begin verbindingen tot verbindingen maakt, worden deze alleen verbonden met de oorspronkelijke backend-exemplaren. Hoewel de firewall wordt geschaald, ziet u geen hogere prestaties omdat de verbindingen zijn gekoppeld aan de eerste exemplaren.
-
+Azure Firewall schaalt geleidelijk wanneer het gemiddelde doorvoer- of CPU-verbruik op 60% ligt. Scale out duurt vijf tot zeven minuten. Controleer bij het testen van de prestaties minstens 10 tot 15 minuten en start nieuwe verbindingen om te profiteren van nieuw gemaakte Firewall-knooppunten.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Biedt Azure Firewall standaard toegang tot Active Directory?
 

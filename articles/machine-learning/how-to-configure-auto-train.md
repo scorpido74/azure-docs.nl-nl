@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 18de50473e3dd6ca8ddda9575a247e00530032e8
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618539"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115420"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Geautomatiseerde ML-experimenten configureren in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,24 +43,27 @@ Voordat u begint met uw experiment, moet u bepalen wat voor soort machine learni
 
 Geautomatiseerde machine learning ondersteunt de volgende algoritmen tijdens het automatiserings- en tuningproces. Als gebruiker hoeft u het algoritme niet op te geven.
 
+> [!NOTE]
+> Als u van plan bent om uw door automatische ML gemaakte modellen te exporteren naar een [ONNX-model,](concept-onnx.md)kunnen alleen de algoritmen die met een * zijn aangegeven, worden geconverteerd naar de ONNX-indeling. Meer informatie over [het converteren van modellen naar ONNX](concept-automated-ml.md#use-with-onnx). <br> <br> Let ook op, ONNX ondersteunt op dit moment alleen classificatie- en regressietaken. 
+
 Classificatie | Regressie | Tijdreeksvoorspelling
 |-- |-- |--
-[Logistic Regression](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Lichte GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Lichte GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Lichte GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[Verloopboosting](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Verloopboosting](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Verloopboosting](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[Beslissingsboom](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Beslissingsboom](https://scikit-learn.org/stable/modules/tree.html#regression)|[Beslissingsboom](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K Dichtstbijzijnde buren](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K Dichtstbijzijnde buren](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K Dichtstbijzijnde buren](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Lineaire SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[Ondersteuningsvectorclassificatie (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Stochastische gradiënt (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Stochastische gradiënt (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Extreem gerandomiseerde bomen](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Extreem gerandomiseerde bomen](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Extreem gerandomiseerde bomen](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN Classifier](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN Lineaire classificatie](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineaire regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Lineaire regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Snelle lineaire regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Stochastische gradiënt (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Online verloopafdaling regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Profeet](https://facebook.github.io/prophet/docs/quick_start.html)
+[Logistieke regressie](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastisch net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Lichte GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Lichte GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Lichte GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Verloopboosting](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[Verloopboosting](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[Verloopboosting](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Beslissingsboom](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[Beslissingsboom](https://scikit-learn.org/stable/modules/tree.html#regression)* |[Beslissingsboom](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K Dichtstbijzijnde buren](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K Dichtstbijzijnde buren](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K Dichtstbijzijnde buren](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Lineaire SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Ondersteuningsvectorclassificatie (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[Stochastische gradiënt (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[Stochastische gradiënt (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Willekeurig bos](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Willekeurig bos](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[Extreem gerandomiseerde bomen](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extreem gerandomiseerde bomen](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extreem gerandomiseerde bomen](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Xgboost Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[DNN Classifier](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[DNN Lineaire classificatie](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineaire regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[Lineaire regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[Naïeve bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Snelle lineaire regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Stochastische gradiënt (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[Online verloopafdaling regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Profeet](https://facebook.github.io/prophet/docs/quick_start.html)
 |[Gemiddelde Perceptron Classifier](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||PrognoseTCN
-|[Lineaire SVM-classificatie](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
+|[Lineaire SVM-classificatie](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
 
 Gebruik `task` de parameter `AutoMLConfig` in de constructor om het experimenttype op te geven.
 

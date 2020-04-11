@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: b8f55b0693b7ffdf10516cfb19b67ccc5a94dc5a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d10b6c52310da3d799a7fe78c83284960318f82e
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742910"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115246"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is Azure Private Endpoint?
 
@@ -55,7 +55,7 @@ Een private link resource is het doeldoel van een bepaald privéeindpunt. Hieron
 |**Private Link Service** (Uw eigen service)   |  Microsoft.Network/privateLinkServices       | leeg |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        | 
-|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tabel (tabel, table_secondary)<BR> Wachtrij (wachtrij, queue_secondary)<BR> Bestand (bestand, file_secondary)<BR> Web (web, web_secondary)        |
+|**Azure-opslag**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tabel (tabel, table_secondary)<BR> Wachtrij (wachtrij, queue_secondary)<BR> Bestand (bestand, file_secondary)<BR> Web (web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Gegevensmeerbestandssysteem Gen2 (dfs, dfs_secondary)       |
 |**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | Sql, MongoDB, Cassandra, Gremlin, Tafel|
 |**Azure Database voor PostgreSQL -Single server** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
@@ -113,7 +113,7 @@ U de volgende opties gebruiken om uw DNS-instellingen voor privéeindpunten te c
 > [!IMPORTANT]
 > Het wordt afgeraden om een zone te overschrijven die actief wordt gebruikt om openbare eindpunten op te lossen. Verbindingen met resources kunnen niet correct worden opgelost zonder DNS door te sturen naar de openbare DNS. Maak een andere domeinnaam om problemen te voorkomen of volg de voorgestelde naam voor elke service hieronder. 
  
-Gebruik voor Azure-services de aanbevolen zonenamen zoals beschreven in de volgende tabel:
+Voor Azure-services gebruikt u de zonenamen zoals beschreven in de volgende tabel:
 
 |Resourcetype Private Link   |Subbron  |Zonenaam  |
 |---------|---------|---------|

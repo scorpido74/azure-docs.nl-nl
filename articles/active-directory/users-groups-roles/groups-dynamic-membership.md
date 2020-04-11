@@ -1,5 +1,5 @@
 ---
-title: Regels voor dynamisch groepslidmaatschap - Azure AD | Microsoft Documenten
+title: Regels voor dynamisch dichtbevolkte groepen lidmaatschap - Azure AD | Microsoft Documenten
 description: Lidmaatschapsregels maken om groepen automatisch te vullen en een regelverwijzing.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6f8237ac13744e56baa8551f8cced12b2785a48
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79253076"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114727"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschapsregels voor groepen in Azure Active Directory
 
@@ -326,7 +326,7 @@ user.objectId -ne null
 Als u wilt dat uw groep gastgebruikers uitsluit en alleen leden van uw tenant opneemt, u de volgende syntaxis gebruiken:
 
 ```
-(user.objectId -ne null) -and (user.userType -eq “Member”)
+(user.objectId -ne null) -and (user.userType -eq "Member")
 ```
 
 ### <a name="create-an-all-devices-rule"></a>Een regel 'Alle apparaten' maken

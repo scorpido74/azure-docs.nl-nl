@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 17d0e678008c76da32f20562aa795e83e49c80e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9515058bc78a2d56dc1734c046dac5d5b04f68d9
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064968"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113164"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Wereldwijde transitnetwerkarchitectuur en Virtual WAN
 
@@ -47,7 +47,7 @@ In de Azure Virtual WAN-architectuur worden virtuele WAN-hubs ingericht in Azure
 
 U een virtueel WAN instellen door één virtuele WAN-hub in de regio te maken met het grootste aantal spaken (branches, VNets, gebruikers) en vervolgens de spaken in andere regio's met de hub te verbinden. Dit is een goede optie wanneer een enterprise footprint is meestal in een regio met een paar remote spaken.  
   
-## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>Hub-to-hub-connectiviteit
+## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>Hub-to-hub-connectiviteit (Voorbeeld)
 
 Een Enterprise-cloudfootprint kan meerdere cloudregio's bestrijken en het is optimaal (latentie-gewijs) om toegang te krijgen tot de cloud vanuit een regio die het dichtst bij hun fysieke site en gebruikers staat. Een van de belangrijkste principes van de wereldwijde transitnetwerkarchitectuur is het mogelijk maken van cross-region connectiviteit tussen alle cloud- en on-premises netwerkeindpunten. Dit betekent dat verkeer van een filiaal dat is verbonden met de cloud in een regio een andere branch of een VNet in een andere regio kan bereiken met behulp van hub-to-hub-connectiviteit die is ingeschakeld door [Azure Global Network.](https://azure.microsoft.com/global-infrastructure/global-network/)
 

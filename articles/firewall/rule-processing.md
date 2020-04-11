@@ -5,28 +5,30 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 03/10/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264776"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113423"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Regels voor de logicaverwerking in Azure Firewall
-U NAT-regels, netwerkregels en toepassingenregels configureren op Azure Firewall. De regels worden verwerkt op basis van het regeltype. 
+U NAT-regels, netwerkregels en toepassingenregels configureren op Azure Firewall. Regelverzamelingen worden verwerkt volgens het regeltype in prioriteitsvolgorde, lagere getallen tot hogere getallen van 100 tot 65.000. Een regelverzamelingsnaam kan alleen letters, cijfers, onderscores, perioden of koppeltekens hebben. Het moet beginnen met een letter of nummer, en eindigen met een letter, nummer of underscore. De maximale naamlengte is 80 tekens.
+
+Het is het beste om in eerste instantie de prioriteitsnummers van uw regelverzameling in 100 stappen te plaatsen (100, 200, 300, enzovoort), zodat u ruimte hebt om indien nodig meer regelverzamelingen toe te voegen.
 
 > [!NOTE]
 > Als u filtering op basis van bedreigingsinformatie inschakelt, hebben deze regels de hoogste prioriteit en worden ze altijd eerst verwerkt. Filtering op bedreigingsinformatie kan verkeer weigeren voordat geconfigureerde regels worden verwerkt. Zie [Azure Firewall threat intelligence-gebaseerde filtering](threat-intel.md)voor meer informatie.
 
-## <a name="outbound"></a>Uitgaand
+## <a name="outbound-connectivity"></a>Uitgaande connectiviteit
 
 ### <a name="network-rules-and-applications-rules"></a>Regels voor netwerkregels en toepassingen
 
 Als u netwerkregels en toepassingsregels configureert, worden netwerkregels toegepast in prioriteitsvolgorde vóór toepassingsregels. De regels lopen af. Dus als een overeenkomst wordt gevonden in een netwerkregel, worden er geen andere regels verwerkt.  Als er geen netwerkregelovereenkomst is en als het protocol HTTP, HTTPS of MSSQL is, wordt het pakket vervolgens geëvalueerd door de toepassingsregels in prioriteitsvolgorde. Als er nog steeds geen overeenkomst wordt gevonden, wordt het pakket geëvalueerd aan de hand van de [verzameling infrastructuurregels.](infrastructure-fqdns.md) Als er dan nog steeds geen overeenkomende regel is, wordt het pakket standaard afgewezen.
 
-## <a name="inbound"></a>Inkomend
+## <a name="inbound-connectivity"></a>Binnenkomende connectiviteit
 
 ### <a name="nat-rules"></a>NAT-regels
 

@@ -3,12 +3,12 @@ title: Resourcebeheer voor containers en services
 description: Met Azure Service Fabric u resourcelimieten opgeven voor services die binnen of buiten containers worden uitgevoerd.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772377"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115150"
 ---
 # <a name="resource-governance"></a>Resourcebeheer
 
@@ -31,7 +31,8 @@ Voor deze twee statistieken houdt [Cluster Resource Manager](service-fabric-clus
 * Het cluster kan worden [gedefragmenteerd](service-fabric-cluster-resource-manager-defragmentation-metrics.md) op basis van deze twee statistieken.
 * Bij [het beschrijven van een cluster](service-fabric-cluster-resource-manager-cluster-description.md)kan gebufferde capaciteit worden ingesteld voor deze twee statistieken.
 
-[Dynamische belastingrapportage](service-fabric-cluster-resource-manager-metrics.md) wordt niet ondersteund voor deze statistieken en ladingen voor deze statistieken worden gedefinieerd op het moment van creatie.
+> [!NOTE]
+> [Dynamische belastingrapportage](service-fabric-cluster-resource-manager-metrics.md) wordt niet ondersteund voor deze statistieken; belastingen voor deze statistieken worden gedefinieerd op het moment van creatie.
 
 ## <a name="resource-governance-mechanism"></a>Mechanisme voor resourcebeheer
 

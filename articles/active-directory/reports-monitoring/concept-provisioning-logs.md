@@ -17,12 +17,12 @@ ms.date: 11/04/2019
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73612799"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113323"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Rapporten inrichten in de Azure Active Directory-portal (voorbeeld)
 
@@ -90,38 +90,19 @@ Selecteer een item in de lijstweergave voor meer gedetailleerde informatie.
 
 ## <a name="filter-provisioning-activities"></a>Filterinrichtingsactiviteiten
 
-Als u de gerapporteerde gegevens wilt beperken tot een niveau dat voor u werkt, u de inrichtingsgegevens filteren met behulp van de volgende standaardvelden. Houd er rekening mee dat de waarden in de filters dynamisch worden ingevuld op basis van uw tenant. Als u bijvoorbeeld geen afspraken maakt in uw tenant, is er geen filteroptie voor maken.
+U uw inrichtingsgegevens filteren. Sommige filterwaarden worden dynamisch ingevuld op basis van uw tenant. Als u bijvoorbeeld geen afspraken maakt in uw tenant, is er geen filteroptie voor maken.
+In de standaardweergave u de volgende filters selecteren:
 
 - Identiteit
-- Actie
-- Bronsysteem
-- Doelsysteem
-- Status
 - Date
+- Status
+- Actie
 
 
-![Filter](./media/concept-provisioning-logs/filter.png "Filteren")
+![Filter](./media/concept-provisioning-logs/default-filter.png "Filteren")
 
 Met het filter **Identiteit** u de naam of de identiteit opgeven waar u om geeft. Deze identiteit kan een gebruiker, groep, rol of ander object zijn. U zoeken op de naam of id van het object. De ID verschilt per scenario. Wanneer u bijvoorbeeld een object instelt van Azure AD naar SalesForce, is de bron-id de object-id van de gebruiker in Azure AD, terwijl de TargetID de id van de gebruiker in Salesforce is. Bij het inrichten van Workday naar Active Directory is de bron-id de werknemer-id van de werknemer Workday.When provisioning from Workday to Active Directory, the Source ID is the Workday worker worker ID. Houd er rekening mee dat de naam van de gebruiker mogelijk niet altijd aanwezig is in de kolom Identiteit. Er zal altijd één ID zijn. 
 
-Met het filter **Bronsysteem** u opgeven waar de identiteit vandaan komt. Wanneer u bijvoorbeeld een object instelt van Azure AD naar ServiceNow, is het bronsysteem Azure AD. 
-
-Met het filter **Doelsysteem** u opgeven waar de identiteit wordt ingericht. Wanneer u bijvoorbeeld een object instelt van Azure AD naar ServiceNow, is het doelsysteem ServiceNow. 
-
-Met het filter **Status** u het:
-
-- Alle
-- Geslaagd
-- Fout
-- Overgeslagen
-
-Met het filter **Actie** u het:
-
-- Maken 
-- Update
-- Verwijderen
-- Uitschakelen
-- Overige
 
 Met het filter **Datum** kunt u een tijdsbestek opgeven voor de geretourneerde gegevens.  
 Mogelijke waarden zijn:
@@ -135,7 +116,35 @@ Mogelijke waarden zijn:
 Wanneer u een aangepast tijdsbestek selecteert, u een begindatum en een einddatum configureren.
 
 
-Naast de standaardvelden u bij de selectie ook de volgende velden in het filter opnemen:
+Met het filter **Status** u het:
+
+- Alle
+- Geslaagd
+- Fout
+- Overgeslagen
+
+
+
+Met het filter **Actie** u het:
+
+- Maken 
+- Bijwerken
+- Verwijderen
+- Uitschakelen
+- Overige
+
+Bovendien u bij de filters van de standaardweergave ook de volgende filters instellen:
+
+- Taak-ID
+- Cyclus-id
+- ID wijzigen
+- Bron-id
+- Doel-ID
+- Toepassing
+
+
+![Een veld kiezen](./media/concept-provisioning-logs/add-filter.png "Een veld kiezen")
+
 
 - **Functie-ID** - Een unieke functie-ID is gekoppeld aan elke toepassing waarvoor u provisioning hebt ingeschakeld.   
 
@@ -144,8 +153,13 @@ Naast de standaardvelden u bij de selectie ook de volgende velden in het filter 
 - **ID wijzigen** - Unieke id voor de inrichtingsgebeurtenis. U deze id delen om de inrichtingsgebeurtenis op te zoeken.   
 
 
+- **Bronsysteem** - Hiermee u opgeven waar de identiteit vandaan komt. Wanneer u bijvoorbeeld een object instelt van Azure AD naar ServiceNow, is het bronsysteem Azure AD. 
 
-  
+- **Doelsysteem** - Hiermee u opgeven waar de identiteit wordt ingericht. Wanneer u bijvoorbeeld een object instelt van Azure AD naar ServiceNow, is het doelsysteem ServiceNow. 
+
+- **Toepassing** - Hiermee u alleen records van toepassingen weergeven met een weergavenaam die een specifieke tekenreeks bevat.
+
+ 
 
 ## <a name="provisioning-details"></a>Nadere bijzonderheden 
 

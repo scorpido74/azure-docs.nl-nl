@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: 4d845514965a8d60c636902660ce838926cbf3c9
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: ca4bf1b0043a2c73851eab48ff8b9b6b7a987b72
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607619"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115301"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten en inference-taken beveiligen binnen een Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,6 +43,11 @@ Dit artikel bevat ook gedetailleerde informatie over *geavanceerde beveiligingsi
 + Een reeds bestaand virtueel netwerk en subnet om te gebruiken met uw compute resources.
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>Een opslagaccount gebruiken voor uw werkruimte
+
+> [!WARNING]
+> Als u gegevenswetenschappers hebt die de Azure Machine Learning-ontwerper gebruiken, ontvangt deze een foutmelding bij het visualiseren van gegevens van een opslagaccount binnen een virtueel netwerk. De volgende tekst is de fout die ze ontvangen:
+>
+> __Fout: kan deze gegevensset niet profileren. Dit kan zijn omdat uw gegevens achter een virtueel netwerk zijn opgeslagen of omdat uw gegevens geen profiel ondersteunen.__
 
 Als u een Azure-opslagaccount wilt gebruiken voor de werkruimte in een virtueel netwerk, gebruikt u de volgende stappen:
 

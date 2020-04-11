@@ -3,12 +3,12 @@ title: Leer de inhoud van virtuele machines te controleren
 description: Lees hoe Azure Policy de gastconfiguratieagent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9e8486af2a9b7ab9e18b8c16f08e51759d1123d7
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 4a2989badc099a199bf21f7e020ca8e6256ddaf0
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998845"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113419"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>De gastconfiguratie van Azure Policy begrijpen
 
@@ -26,32 +26,11 @@ Als u instellingen in een machine wilt controleren, is een [extensie voor virtue
 
 ### <a name="limits-set-on-the-extension"></a>Limieten voor de extensie
 
-Om de extensie te beperken voor het beïnvloeden van toepassingen die in de machine worden uitgevoerd, mag de gastconfiguratie niet meer dan 5% van het CPU-gebruik bedragen. Deze beperking bestaat voor zowel ingebouwde als aangepaste definities.
+Om de extensie te beperken voor het beïnvloeden van toepassingen die in de machine worden uitgevoerd, mag de gastconfiguratie niet meer dan 5% van de CPU bedragen. Deze beperking bestaat voor zowel ingebouwde als aangepaste definities.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Gastconfiguratieresourceprovider registreren
 
-Voordat u Gastconfiguratie gebruiken, moet u de resourceprovider registreren. U zich registreren via de portal of via PowerShell. De resourceprovider wordt automatisch geregistreerd als toewijzing van een gastconfiguratiebeleid via de portal wordt uitgevoerd.
-
-### <a name="registration---portal"></a>Registratie - Portal
-
-Voer de volgende stappen uit om de bronprovider voor gastconfiguratie te registreren via de Azure-portal:
-
-1. Start de Azure-portal en klik op **Alle services**. Zoeken naar en selecteer **Abonnementen**.
-
-1. Zoek en klik op het abonnement waarvoor u gastconfiguratie wilt inschakelen.
-
-1. Klik in het linkermenu van de pagina **Abonnement** op **Resourceproviders**.
-
-1. Filter voor of scrol totdat u **Microsoft.GuestConfiguration**hebt gevonden en klik op **Registreren** op dezelfde rij.
-
-### <a name="registration---powershell"></a>Registratie - PowerShell
-
-Voer de volgende opdracht uit om de resourceprovider voor gastconfiguratie via PowerShell te registreren:
-
-```azurepowershell-interactive
-# Login first with Connect-AzAccount if not using Cloud Shell
-Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
-```
+Voordat u Gastconfiguratie gebruiken, moet u de resourceprovider registreren. U zich registreren via de [portal,](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)of [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli). De resourceprovider wordt automatisch geregistreerd als toewijzing van een gastconfiguratiebeleid via de portal wordt uitgevoerd.
 
 ## <a name="validation-tools"></a>Validatiegereedschappen
 
@@ -89,7 +68,7 @@ Windows Server Nano Server wordt in geen enkele versie ondersteund.
 
 ## <a name="guest-configuration-extension-network-requirements"></a>Netwerkvereisten voor gastconfiguratie-extensie
 
-Om te communiceren met de gastconfiguratiebronprovider in Azure, hebben machines uitgaande toegang tot Azure-datacenters op poort **443**nodig. Als u een virtueel privénetwerk in Azure gebruikt dat uitgaand verkeer niet toestaat, configureert u uitzonderingen met regels [voor netwerkbeveiliging.](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)
+Om te communiceren met de gastconfiguratiebronprovider in Azure, hebben machines uitgaande toegang tot Azure-datacenters op poort **443**nodig. Als een netwerk in Azure geen uitgaand verkeer toestaat, configureert u uitzonderingen met regels [voor netwerkbeveiligingsgroepen.](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)
 De [servicetag](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" kan worden gebruikt om naar de gastconfiguratieservice te verwijzen.
 
 ## <a name="azure-managed-identity-requirements"></a>Azure beheerde identiteitsvereisten
@@ -101,7 +80,7 @@ Met het beleid **DeployIfNotExists** dat de extensie toevoegt aan virtuele machi
 
 ## <a name="guest-configuration-definition-requirements"></a>Vereisten voor de definitie van gastconfiguratie
 
-Voor elke audit die wordt uitgevoerd op gastconfiguratie zijn twee beleidsdefinities vereist, een definitie **van DeployIfNotExists** en een **definitie van AuditIfNotExists.** De definitie **DeployIfNotExists** wordt gebruikt om de machine voor te bereiden met de gastconfiguratieagent en andere componenten om de [validatiegereedschappen](#validation-tools)te ondersteunen.
+Voor elke audit die wordt uitgevoerd op gastconfiguratie zijn twee beleidsdefinities vereist, een definitie **van DeployIfNotExists** en een **definitie van AuditIfNotExists.** 
 
 De beleidsdefinitie **DeployIfNotExists** valideert en corrigeert de volgende items:
 
@@ -112,24 +91,24 @@ De beleidsdefinitie **DeployIfNotExists** valideert en corrigeert de volgende it
 
 Als de toewijzing **DeployIfNotExists** niet-compatibel is, kan een [hersteltaak](../how-to/remediate-resources.md#create-a-remediation-task) worden gebruikt.
 
-Zodra de toewijzing **DeployIfNotExists** voldoet, gebruikt de beleidstoewijzing **AuditIfNotExists** de lokale validatietools om te bepalen of de configuratietoewijzing compatibel of niet-compatibel is. Het validatieprogramma geeft de resultaten aan de gastconfiguratieclient. De client stuurt de resultaten door naar de gastextensie, waardoor ze beschikbaar zijn via de gastconfiguratiebronprovider.
+Zodra de toewijzing **DeployIfNotExists** voldoet, bepaalt de beleidstoewijzing **AuditIfNotExists** of de gasttoewijzing voldoet of niet-compatibel is. Het validatieprogramma geeft de resultaten aan de gastconfiguratieclient. De client stuurt de resultaten door naar de gastextensie, waardoor ze beschikbaar zijn via de gastconfiguratiebronprovider.
 
 Azure Policy gebruikt de **eigenschap ComplianceStatus** van de gastconfiguratiebronproviders om naleving te melden in het **nalevingsknooppunt.** Zie Voor meer informatie [nalevingsgegevens](../how-to/get-compliance-data.md).
 
 > [!NOTE]
 > Het beleid **DeployIfNotExists** is vereist om het beleid **AuditIfNotExists** resultaten te kunnen retourneren. Zonder de **DeployIfNotExists**geeft het beleid **AuditIfNotExists** '0 van 0' als status weer.
 
-Alle ingebouwde beleidsregels voor gastconfiguratie zijn opgenomen in een initiatief om de definities voor gebruik in toewijzingen te groeperen. Het ingebouwde initiatief met de naam _ \[Preview:\]Audit Password security settings inside Linux and Windows machines_ contains 18 policies. Er zijn zes **DeployIfNotExists** en **AuditIfNotExists** paren voor Windows en drie paren voor Linux. De [beleidsdefinitielogica](definition-structure.md#policy-rule) valideert dat alleen het doelbesturingssysteem wordt geëvalueerd.
+Alle ingebouwde beleidsregels voor gastconfiguratie zijn opgenomen in een initiatief om de definities voor gebruik in toewijzingen te groeperen. Het ingebouwde initiatief met de naam _ \[Preview:\]Audit Password security inside Linux and Windows machines_ bevat 18 beleidsregels. Er zijn zes **DeployIfNotExists** en **AuditIfNotExists** paren voor Windows en drie paren voor Linux. De [beleidsdefinitielogica](definition-structure.md#policy-rule) valideert dat alleen het doelbesturingssysteem wordt geëvalueerd.
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Controle van de instellingen van het besturingssysteem volgens de basislijnen van de branche
 
-Een van de initiatieven die beschikbaar zijn in Azure Policy biedt de mogelijkheid om de instellingen van het besturingssysteem in virtuele machines te controleren na een 'basislijn' van Microsoft. De _ \[definitie,\]Voorbeeld: Controleer Windows VM's die niet overeenkomen met azure-beveiligingsbasislijninstellingen_ bevat een volledige set controleregels op basis van instellingen uit Active Directory-groepsbeleid.
+Eén initiatief in Azure Policy biedt de mogelijkheid om de instellingen van het besturingssysteem te controleren na een 'basislijn'. De _ \[definitie,\]Voorbeeld: Controleer Windows VM's die niet overeenkomen met de basislijninstellingen van Azure-beveiliging_ bevat een set regels op basis van Active Directory Group Policy.
 
-De meeste instellingen zijn beschikbaar als parameters. Met deze functionaliteit u aanpassen wat wordt gecontroleerd om het beleid af te stemmen op uw organisatievereisten of om het beleid in kaart te brengen op informatie van derden, zoals regelgevingsnormen in de branche.
+De meeste instellingen zijn beschikbaar als parameters. Met parameters u aanpassen wat wordt gecontroleerd. Stem het beleid af op uw vereisten of wijs het beleid in kaart met informatie van derden, zoals regelgevingsstandaarden voor de industrie.
 
-Sommige parameters ondersteunen een getalwaardebereik. De parameter Maximum Password Age kan bijvoorbeeld worden ingesteld met behulp van een bereikoperator om machine-eigenaren flexibiliteit te bieden. U controleren of de effectieve groepsbeleidsinstelling die gebruikers verplicht hun wachtwoorden te wijzigen niet langer dan 70 dagen mag zijn, maar niet minder dan één dag mag zijn. Zoals beschreven in de info-bubble voor de parameter, om dit bedrijfsbeleid de effectieve auditwaarde te maken, stelt u de waarde in op "1,70".
+Sommige parameters ondersteunen een getalwaardebereik. De instelling Maximumwachtwoordleeftijd kan bijvoorbeeld de effectieve groepsbeleidsinstelling controleren. Een "1,70" bereik zou bevestigen dat gebruikers verplicht zijn om hun wachtwoorden te wijzigen ten minste om de 70 dagen, maar niet minder dan een dag.
 
-Als u het beleid toewijst met behulp van een Azure Resource Manager-implementatiesjabloon, u een parametersbestand gebruiken om deze instellingen te beheren vanuit bronbeheer. Met behulp van een tool zoals Git om wijzigingen in controlebeleid te beheren met opmerkingen bij elke incheckdocumenten, wordt aangetoond waarom een toewijzing een uitzondering moet zijn op de verwachte waarde.
+Als u het beleid toewijst met een Azure Resource Manager-implementatiesjabloon, gebruikt u een parametersbestand om uitzonderingen te beheren. Controleer de bestanden op een versiebeheersysteem zoals Git. Opmerkingen over bestandswijzigingen leveren aan waarom een toewijzing een uitzondering is op de verwachte waarde.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Configuraties toepassen met gastconfiguratie
 
@@ -162,7 +141,7 @@ Als dat niet lukt, kan het verzamelen van clientlogboeken helpen bij het diagnos
 
 #### <a name="windows"></a>Windows
 
-Als u de Azure VM Run Command-mogelijkheid wilt gebruiken om informatie uit logboekbestanden in Windows-machines vast te leggen, kan het volgende voorbeeld PowerShell-script nuttig zijn. Zie [PowerShell-scripts uitvoeren in uw Windows VM met Opdracht Uitvoeren voor](../../../virtual-machines/windows/run-command.md)meer informatie.
+Vastleggen van informatie uit logboekbestanden met [Azure VM Run Command](../../../virtual-machines/windows/run-command.md), het volgende voorbeeld PowerShell-script kan nuttig zijn.
 
 ```powershell
 $linesToIncludeBeforeMatch = 0
@@ -173,7 +152,7 @@ Select-String -Path $logPath -pattern 'DSCEngine','DSCManagedEngine' -CaseSensit
 
 #### <a name="linux"></a>Linux
 
-Als u de Azure VM Run Command-mogelijkheid wilt gebruiken om informatie uit logbestanden in Linux-machines vast te leggen, kan het volgende voorbeeld Bash-script nuttig zijn. Zie [Shell-scripts uitvoeren in uw Linux VM met Opdracht Uitvoeren voor](../../../virtual-machines/linux/run-command.md) meer informatie
+Vastleggen van informatie uit logboekbestanden met [Azure VM Run Command](../../../virtual-machines/linux/run-command.md), het volgende voorbeeld Bash script kan nuttig zijn.
 
 ```Bash
 linesToIncludeBeforeMatch=0
@@ -184,7 +163,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 ## <a name="guest-configuration-samples"></a>Gastconfiguratievoorbeelden
 
-Bron voor de ingebouwde beleidsgastconfiguratie-initiatieven zijn beschikbaar op de volgende locaties:
+Ingebouwde beleidsvoorbeelden voor gastconfiguratie zijn beschikbaar op de volgende locaties:
 
 - [Ingebouwde beleidsdefinities - Gastconfiguratie](../samples/built-in-policies.md#guest-configuration)
 - [Ingebouwde initiatieven - Gastconfiguratie](../samples/built-in-initiatives.md#guest-configuration)
@@ -192,6 +171,7 @@ Bron voor de ingebouwde beleidsgastconfiguratie-initiatieven zijn beschikbaar op
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- Meer informatie over het weergeven van de details van elke instelling in de [nalevingsweergave gastconfiguratie](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)
 - Voorbeelden bekijken bij [Azure Policy-voorbeelden](../samples/index.md).
 - Lees over de [structuur van Azure Policy-definities](definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](effects.md).

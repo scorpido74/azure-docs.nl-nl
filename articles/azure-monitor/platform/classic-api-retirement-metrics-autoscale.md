@@ -1,15 +1,15 @@
 ---
-title: Azure Monitor met pensioen gaan van klassieke implementatiemodel API's voor statistieken en autoscale
+title: Deployment API's voor Azure Monitor-statistieken en autoscale
 description: Statistieken en automatische schaal klassieke API's, ook wel Azure Service Management (ASM) of RDFE-implementatiemodel genoemd, worden buiten gebruik gesteld
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 9dfa6b278587f4ed79b1c3cd9eff1defd09ec0bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294659"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114218"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor met pensioen gaan van klassieke implementatiemodel API's voor statistieken en autoscale
 

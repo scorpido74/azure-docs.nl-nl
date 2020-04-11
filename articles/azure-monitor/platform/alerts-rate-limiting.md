@@ -1,17 +1,17 @@
 ---
-title: Beperking van de snelheid voor sms, e-mails, pushmeldingen van Azure App en webhooks
+title: Tariefbeperking voor sms, e-mails, pushmeldingen
 description: Begrijpen hoe Azure het aantal mogelijke sms-, e-mail-, Azure-app-push- of webhookmeldingen van een actiegroep beperkt.
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
 ms.subservice: alerts
-ms.openlocfilehash: 066fcac24571c8e982784a3845a010525ff9088a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61e6cc22171815b15b865dd6ed5670bd9c446ead
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665524"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114334"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Beperking van de snelheid voor spraak-, sms-berichten, e-mails, pushmeldingen van Azure-apps en webhook-berichten
 Tariefbeperking is een opschorting van meldingen die optreedt wanneer er te veel naar een bepaald telefoonnummer, e-mailadres of apparaat worden verzonden. Tariefbeperking zorgt ervoor dat waarschuwingen beheersbaar en bruikbaar zijn.

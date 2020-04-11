@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 554508b1bf784e306cd12a4a601f908e06320933
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a644e211cc933ca686f0bd6a13b0d2ba8ae20162
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71154979"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114098"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Algemene problemen waardoor rollen worden herhaald
 In dit artikel worden enkele van de veelvoorkomende oorzaken van implementatieproblemen besproken en worden tips voor het oplossen van problemen gegeven om u te helpen deze problemen op te lossen. Een indicatie dat er een probleem bestaat met een toepassing is wanneer de rolinstantie niet wordt gestart of wanneer deze wordt gecycled tussen de initialiserende, drukke en stoppende statussen.
@@ -58,7 +58,7 @@ Controleer het `DiagnosticsConnectionString` volgende om ervoor te zorgen dat uw
   Als u uw toepassing ontwikkelt met Azure Tools voor Microsoft Visual Studio, u de eigenschapspagina's gebruiken om deze waarde in te stellen.
 
 ## <a name="exported-certificate-does-not-include-private-key"></a>Geëxporteerd certificaat bevat geen privésleutel
-Als u een webrol onder SSL wilt uitvoeren, moet u ervoor zorgen dat uw geëxporteerde beheercertificaat de privésleutel bevat. Als u Windows *Certificate Manager* gebruikt om het certificaat te exporteren, selecteert u **Ja** voor de optie **Privésleutel exporteren.** Het certificaat moet worden geëxporteerd in de PFX-indeling, het enige formaat dat momenteel wordt ondersteund.
+Als u een webrol onder TLS wilt uitvoeren, moet u ervoor zorgen dat uw geëxporteerde beheercertificaat de privésleutel bevat. Als u Windows *Certificate Manager* gebruikt om het certificaat te exporteren, selecteert u **Ja** voor de optie **Privésleutel exporteren.** Het certificaat moet worden geëxporteerd in de PFX-indeling, het enige formaat dat momenteel wordt ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 Bekijk meer [artikelen over probleemoplossing](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) voor cloudservices.

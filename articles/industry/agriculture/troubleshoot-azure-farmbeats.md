@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 74522502f5405b56a3a604f20a695de83ef3c3a5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a40c64910260a2d63a529d25e1089fb618fcec1b
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886480"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113491"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
 In dit artikel vindt u oplossingen voor veelvoorkomende Azure FarmBeats-problemen. Neem voor extra hulp contact op farmbeatssupport@microsoft.commet ons [ondersteuningsforum](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) of mail ons op .
 
 > [!NOTE]
-  > Als u FarmBeats in april hebt geïnstalleerd en uw taken mislukken met een lege foutmelding, is het mogelijk dat uw installatie geen batchquotum heeft toegewezen omdat alle resources zijn toegewezen aan noodsituaties, gezondheidszorg en andere kritieke behoeften. U moet VM's aanvragen om te worden toegewezen aan het Batch-account.
+  > Als u FarmBeats in april hebt geïnstalleerd en uw taken mislukken met een leeg foutmelding, is het mogelijk dat uw installatie geen batchquotum heeft gekregen om prioriteit te geven aan ondersteuning voor kritieke gezondheids- en veiligheidsorganisaties. Zie [hier](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) voor meer informatie. U moet VM's aanvragen om te worden toegewezen aan het Batch-account om taken uit te voeren.
 
 ## <a name="install-issues"></a>Problemen met installeren
 
@@ -45,7 +45,9 @@ Neem contact met ons op met de volgende gegevens:
 - Volg de onderstaande stappen om het logboekbestand voor de implementatiefout toe te voegen:
 
     1. Navigeer naar de **resourcegroep** in de Azure-portal.
+
     2. Selecteer **Implementaties** onder sectie **Instellingen** aan de linkerkant.
+
     3. Voor elke implementatie die **mislukt**wordt weergegeven, selecteert u door naar de details en downloadt u de implementatiegegevens. Voeg dit bestand toe aan de e-mail.
 
 ## <a name="sensor-telemetry"></a>Sensortelemetrie

@@ -4,17 +4,17 @@ description: Azure Storage beschermt uw gegevens door deze automatisch te versle
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f8f6f40f8ce8297b3cbfe6b3afcbf10df4db6572
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f112a4523bc5af9ecae57e93dfb90795d3fe9c50
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409827"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113279"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-versleuteling voor gegevens in rust
 
@@ -34,7 +34,7 @@ Zie [Cryptografie API: Next Generation](https://docs.microsoft.com/windows/deskt
 
 ## <a name="about-encryption-key-management"></a>Over beheer van versleutelingssleutels
 
-Standaard worden gegevens in een opslagaccount versleuteld met door Microsoft beheerde sleutels. U vertrouwen op door Microsoft beheerde sleutels voor de versleuteling van uw gegevens, of u versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling met uw eigen sleutels te beheren, hebt u twee opties:
+Gegevens in een nieuw opslagaccount worden versleuteld met door Microsoft beheerde sleutels. U vertrouwen op door Microsoft beheerde sleutels voor de versleuteling van uw gegevens, of u versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling met uw eigen sleutels te beheren, hebt u twee opties:
 
 - U een door de klant beheerde sleutel opgeven met Azure Key Vault die u wilt gebruiken voor het versleutelen en decoderen van gegevens in *Blob-opslag* en in Azure-bestanden. <sup>1,2</sup> Zie [Sleutels met beheerde sleutels van klanten gebruiken met Azure Key Vault om Azure Storage-versleuteling te beheren](encryption-customer-managed-keys.md)voor meer informatie over door klanten beheerde sleutels.
 - U een *door de klant geleverde sleutel* opgeven voor Blob-opslagbewerkingen. Een client die een lees- of schrijfverzoek indient tegen Blob-opslag, kan een versleutelingssleutel bevatten op het verzoek om gedetailleerde controle over hoe blobgegevens worden versleuteld en gedecodeerd. Zie [Een versleutelingssleutel geven op een verzoek om blobopslag (preview) voor](encryption-customer-provided-keys.md)meer informatie over door de klant verstrekte sleutels.
@@ -47,8 +47,7 @@ In de volgende tabel worden sleutelbeheeropties voor Azure Storage-versleuteling
 |    Ondersteuning voor Azure Storage-services    |    Alle                                                |    Blob-opslag, Azure Files<sup>1,2</sup>                                                                                                               |    Blob Storage                                                                  |
 |    Sleutelopslag                         |    Microsoft-sleutelarchief    |    Azure Key Vault                                                                                                                              |    Azure Key Vault of een andere sleutelwinkel                                                                 |
 |    Belangrijkste rotatieverantwoordelijkheid         |    Microsoft                                          |    Klant                                                                                                                                     |    Klant                                                                      |
-|    Sleutelgebruik                           |    Microsoft                                          |    Azure-portal, REST API voor Storage Resource Provider, Azure Storage Management-bibliotheken, PowerShell, CLI        |    Azure Storage REST API (Blob-opslag), Azure Storage-clientbibliotheken    |
-|    Toegang tot sleutels                          |    Alleen Microsoft                                     |    Microsoft, Klant                                                                                                                    |    Alleen voor de klant                                                                 |
+|    Sleutelbesturingselement                          |    Microsoft                                     |    Klant                                                                                                                    |    Klant                                                                 |
 
 <sup>1</sup> Zie Een account maken dat door klanten beheerde sleutels ondersteunt voor informatie over het maken van een account dat door klanten [beheerde sleutels voor wachtrijen ondersteunt.](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)<br />
 <sup>2</sup> Zie Een account maken dat door klanten beheerde sleutels ondersteunt voor informatie over het maken van een account dat door klanten [beheerde sleutels voor tabellen ondersteunt.](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)

@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 77ad8579f31ce900a67e2ba3ddc53a5b034b6d42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7120ba2cf71c9af5373b830d04d0b67952922887
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454666"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113512"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-firewalls en virtuele netwerken configureren
 
@@ -252,7 +252,7 @@ IP-netwerkregels zijn alleen toegestaan voor **openbare ip-adressen op internet.
    > IP-netwerkregels hebben geen effect op aanvragen die afkomstig zijn uit hetzelfde Azure-gebied als het opslagaccount. Gebruik [virtuele netwerkregels](#grant-access-from-a-virtual-network) om aanvragen in dezelfde regio toe te staan.
 
   > [!NOTE]
-  > Services die zijn geïmplementeerd in dezelfde regio als het opslagaccount, gebruiken privé-Azure-IP-adressen voor communicatie. U de toegang tot specifieke Azure-services dus niet beperken op basis van hun openbare inkomende IP-adresbereik.
+  > Services die zijn geïmplementeerd in dezelfde regio als het opslagaccount, gebruiken privé-Azure-IP-adressen voor communicatie. U de toegang tot specifieke Azure-services dus niet beperken op basis van hun openbare uitgaande IP-adresbereik.
 
 Alleen IPV4-adressen worden ondersteund voor het configureren van opslagfirewallregels.
 

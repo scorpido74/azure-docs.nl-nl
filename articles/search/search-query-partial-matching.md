@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: faafc1e12f0703c38b4e602700b1e775bf13a061
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.date: 04/09/2020
+ms.openlocfilehash: db60a864ff29ff9eccdcfbdc0bd63587375d4bbd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998331"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114970"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Gedeeltelijke term zoeken en patronen met speciale tekens (wildcard, regex, patronen)
 
-Een *gedeeltelijke term zoekopdracht* verwijst naar query's die bestaan uit termfragmenten, zoals de eerste, laatste of binnendelen van een tekenreeks. Een *patroon* kan een combinatie zijn van fragmenten, soms met speciale tekens zoals streepjes of schuine strepen die deel uitmaken van de query. Veelgebruikte use-cases omvatten query's voor delen van een telefoonnummer, URL, personen of productcodes of samengestelde woorden.
+Een *gedeeltelijke term zoekopdracht* verwijst naar query's die bestaan uit term fragmenten, waar in plaats van een hele term, u slechts het begin, midden of einde van de termijn (soms aangeduid als voorvoegsel, infix, of achtervoegsel query's). Een *patroon* kan een combinatie zijn van fragmenten, vaak met speciale tekens zoals streepjes of schuine strepen die deel uitmaken van de querytekenreeks. Veelgebruikte use-cases omvatten query's voor delen van een telefoonnummer, URL, personen of productcodes of samengestelde woorden.
 
-Gedeeltelijke zoekopdracht kan problematisch zijn als de index geen termen heeft in de indeling die nodig is voor patroonmatching. Tijdens de tekstanalysefase van de indexering, met behulp van de standaardstandaardanalyzer, worden speciale tekens verwijderd, samengestelde en samengestelde tekenreeksen opgesplitst, waardoor patroonquery's mislukken wanneer er geen overeenkomst wordt gevonden. Een telefoonnummer zoals `+1 (425) 703-6214`(tokenized als `"1"` `"425"`, `"703"` `"6214"`, , ) wordt `"3-62"` bijvoorbeeld niet weergegeven in een query omdat die inhoud niet echt in de index bestaat. 
+Gedeeltelijke en patroonzoekopdrachten kunnen problematisch zijn als de index geen termen in de verwachte indeling heeft. Tijdens de [lexicale analysefase](search-lucene-query-architecture.md#stage-2-lexical-analysis) van indexering (uitgaande van de standaardstandaardanalyzer), worden speciale tekens verwijderd, samengestelde en samengestelde tekenreeksen opgesplitst en witruimte verwijderd; die allemaal patroonquery's kunnen veroorzaken als er geen overeenkomst wordt gevonden. Een telefoonnummer zoals `+1 (425) 703-6214` (tokenized als `"1"` `"425"`, `"703"` `"6214"`, , ) wordt `"3-62"` bijvoorbeeld niet weergegeven in een query omdat die inhoud niet echt in de index bestaat. 
 
 De oplossing is om een analyzer aan te roepen die een volledige tekenreeks behoudt, inclusief spaties en speciale tekens indien nodig, zodat u matchen op gedeeltelijke voorwaarden en patronen. Het maken van een extra veld voor een intacte tekenreeks, plus het gebruik van een content-preserving analyzer, is de basis van de oplossing.
 
@@ -27,21 +27,21 @@ De oplossing is om een analyzer aan te roepen die een volledige tekenreeks behou
 
 In Azure Cognitive Search is gedeeltelijk zoeken en patroon beschikbaar in deze formulieren:
 
-+ [Prefix zoeken,](query-simple-syntax.md#prefix-search) `search=cap*`zoals , matching op "Cap'n Jack's Waterfront Inn" of "Gacc Capital". U de syntaxis van de query gebruiken voor zoeken naar voorvoegsel.
++ [Prefix zoeken,](query-simple-syntax.md#prefix-search) `search=cap*`zoals , matching op "Cap'n Jack's Waterfront Inn" of "Gacc Capital". U de syntaxis van eenvoudige query's of de volledige syntaxis van Lucene query gebruiken voor voorvoegselzoeken.
 
-+ [Zoeken met jokertekens](query-lucene-syntax.md#bkmk_wildcard) of [reguliere expressies](query-lucene-syntax.md#bkmk_regex) die zoeken naar een patroon of delen van een ingesloten tekenreeks, inclusief het achtervoegsel. Wildcard en reguliere expressies vereisen de volledige Lucene-syntaxis. 
++ [Zoeken met jokertekens](query-lucene-syntax.md#bkmk_wildcard) of [reguliere expressies](query-lucene-syntax.md#bkmk_regex) die zoeken naar een patroon of delen van een ingesloten tekenreeks. Wildcard en reguliere expressies vereisen de volledige Lucene-syntaxis. Achtervoegsel- en indexquery's worden geformuleerd als een reguliere expressie.
 
-  Enkele voorbeelden van zoeken in gedeeltelijke termen zijn het volgende. Voor een achtervoegselquery, gezien de term 'alfanumeriek', gebruikt u een wildcardzoekopdracht (`search=/.*numeric.*/`) om een overeenkomst te vinden. Voor een gedeeltelijke term die tekens bevat, zoals een URL-fragment, moet u mogelijk vluchttekens toevoegen. In JSON, een `/` voorwaartse slash `\`is ontsnapt met een achterwaartse slash . Als zodanig `search=/.*microsoft.com\/azure\/.*/` is de syntaxis voor het URL-fragment "microsoft.com/azure/".
+  Enkele voorbeelden van zoeken in gedeeltelijke termen zijn het volgende. Voor een achtervoegselquery, gezien de term 'alfanumeriek', gebruikt u een wildcardzoekopdracht (`search=/.*numeric.*/`) om een overeenkomst te vinden. Voor een gedeeltelijke term die interieurtekens bevat, zoals een URL-fragment, moet u mogelijk vluchttekens toevoegen. In JSON, een `/` voorwaartse slash `\`is ontsnapt met een achterwaartse slash . Als zodanig `search=/.*microsoft.com\/azure\/.*/` is de syntaxis voor het URL-fragment "microsoft.com/azure/".
 
 Zoals opgemerkt, al het bovenstaande vereisen dat de index bevat strings in een formaat dat bevorderlijk is voor patroon matching, die de standaard analyzer niet biedt. Door de stappen in dit artikel te volgen, u ervoor zorgen dat de benodigde inhoud aanwezig is om deze scenario's te ondersteunen.
 
-## <a name="solving-partial-search-problems"></a>Problemen met gedeeltelijke zoekopdrachtoplossen
+## <a name="solving-partialpattern-search-problems"></a>Problemen met gedeeltelijk/patroonzoeken oplossen
 
-Wanneer u op patronen of speciale tekens moet zoeken, u de standaardanalyzer overschrijven met een aangepaste analyzer die werkt onder eenvoudigere tokenisatieregels, waarbij de hele tekenreeks behouden blijft. Een stap terug, de aanpak ziet er als volgt uit:
+Wanneer u moet zoeken op fragmenten of patronen of speciale tekens, u de standaardanalyzer overschrijven met een aangepaste analyzer die werkt onder eenvoudigere tokenisatieregels, waarbij de hele tekenreeks behouden blijft. Een stap terug, de aanpak ziet er als volgt uit:
 
 + Een veld definiëren om een intacte versie van de tekenreeks op te slaan (ervan uitgaande dat u geanalyseerde en niet-geanalyseerde tekst wilt)
-+ Kies een vooraf gedefinieerde analyzer of definieer een aangepaste analyzer om een intacte tekenreeks uit te geven
-+ De analyzer toewijzen aan het veld
++ Kies een vooraf gedefinieerde analyzer of definieer een aangepaste analyzer om een niet-geanalyseerde intacte tekenreeks uit te geven
++ De aangepaste analyzer toewijzen aan het veld
 + De index bouwen en testen
 
 > [!TIP]
@@ -222,6 +222,10 @@ De vorige delen legden de logica uit. In deze sectie wordt elke API doorlopen di
 + [Test Analyzer](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) werd geïntroduceerd in [Kies een analyzer](#choose-an-analyzer). Test enkele tekenreeksen in uw index met behulp van verschillende analysers om te begrijpen hoe termen worden tokenized.
 
 + [In zoekdocumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents) wordt uitgelegd hoe u een queryaanvraag maken, met behulp van [eenvoudige syntaxis](query-simple-syntax.md) of [volledige lucene-syntaxis](query-lucene-syntax.md) voor wildcard en reguliere expressies.
+
+  Voor query's met gedeeltelijke termen, zoals het opvragen van 3-6214 om een overeenkomst te vinden op +1 `search=3-6214&queryType=simple`(425) 703-6214, u de eenvoudige syntaxis gebruiken:.
+
+  Voor infix- en achtervoegselquery's, zoals het opvragen van 'getal' of 'numeriek om een overeenkomst te vinden op 'alfanumeriek', gebruikt u de volledige syntaxis van Lucene en een reguliere expressie:`search=/.*num.*/&queryType=full`
 
 ## <a name="tips-and-best-practices"></a>Tips en best practices
 

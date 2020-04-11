@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 3/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 39ff4f42457451dfa4aae90b281d6b163c56b4cd
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 7b839df5940ab26e5c1a99a1bda1fbd2545f8cc4
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80522236"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113126"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Handleiding voor het beheren van het afsluiten van Windows-gedrag
 
@@ -58,7 +58,7 @@ Als u de inactieve tijdslimiet voor RDP-sessies wilt instellen, u verbinding mak
 
 ```powershell
 # The MaxIdleTime is in milliseconds; by default, this script sets MaxIdleTime to 15 minutes.
-$maxIdleTime = 15 * 60 * 90
+$maxIdleTime = 15 * 60 * 1000
 
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name "MaxIdleTime" -Value $maxIdleTime -Force
 ```
@@ -79,6 +79,9 @@ U er ook voor kiezen om deze handmatige stappen te volgen met de sjabloon-VM:
     ![Inactieve sessielimiet](../media/how-to-windows-shutdown/edit-idle-time-limit.png)
 
 1. Ten slotte moet u stappen volgen in het artikel: Automatische uitschakeling van [VM's inschakelen bij het verbreken](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)van de **verbinding.**
+
+> [!WARNING]
+> Nadat u deze instelling hebt geconfigureerd met PowerShell om de registerinstelling rechtstreeks of handmatig te wijzigen met de groepsbeleidseditor, moet u eerst de VM opnieuw starten om de instellingen van kracht te laten worden.  Als u de instelling configureert met behulp van het register, wordt de groepsbeleidseditor niet altijd vernieuwd om wijzigingen in de registerinstelling weer te geven. De registerinstelling wordt echter nog steeds van kracht zoals verwacht en u ziet de RDP-sessie verbroken wanneer deze niet actief is voor de tijd die u hebt opgegeven.
 
 ## <a name="remove-windows-shutdown-command-from-start-menu"></a>Opdracht Windows afsluiten verwijderen uit menu Start
 

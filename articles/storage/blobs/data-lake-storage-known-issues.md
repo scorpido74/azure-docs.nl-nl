@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f69f17dc9d0cab2491a2c7f37b5bd082cc96b2d6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 204b5dd4661b34aae8b76d65505a65e20f293f0f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985419"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115329"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -112,8 +112,8 @@ Toepassingen van derden die REST API's gebruiken om te werken, blijven werken al
 
 Als [anonieme leestoegang](storage-manage-access-to-resources.md) is verleend aan een container, hebben ACL's geen effect op die container of de bestanden in die container.
 
-## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-adls-gen2"></a>Wasb-stuurprogramma (Windows Azure Storage Blob) (niet ondersteund met ADLS Gen2)
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Wasb-stuurprogramma (Windows Azure Storage Blob) (niet ondersteund met Data Lake Storage Gen2)
 
-Momenteel stuit het WASB-stuurprogramma - dat is ontworpen om alleen met de Blob API te werken - problemen op in een paar veelvoorkomende scenario's, dat wil zeggen wanneer het een client is voor een opslagaccount met naamruimte. Houd er rekening mee dat Multi-Protocol Access (MPA) deze problemen ook NIET zal beperken. 
+Momenteel stuit het WASB-stuurprogramma, dat is ontworpen om alleen met de Blob-API te werken, problemen op in een paar veelvoorkomende scenario's. Specifiek wanneer het een client is voor een hiërarchisch opslagaccount met naamruimte. Toegang met meerdere protocollen op Data Lake Storage zal deze problemen niet beperken. 
 
-Op dit moment (en waarschijnlijk de nabije toekomst), zullen we klanten niet ondersteunen met behulp van de WASB-driver als klant naar een naamruimte-enabled storage account. We raden u in plaats daarvan aan om het [ABFS-stuurprogramma (Azure Blob File System)](data-lake-storage-abfs-driver.md) te gebruiken in uw Hadoop-omgeving. Als u probeert te migreren off van een on-premise Hadoop-omgeving met een versie eerder dan Hadoop branch-3, open dan een Azure Support-ticket, zodat we contact met u kunnen opnemen op het juiste pad voorwaarts voor u en uw organisatie.
+Op dit moment (en waarschijnlijk de nabije toekomst) ondersteunen we klanten die het WASB-stuurprogramma als client gebruiken voor een hiërarchischopslagaccount met namespace. In plaats daarvan raden we u aan ervoor te kiezen om het [ABFS-stuurprogramma (Azure Blob File System)](data-lake-storage-abfs-driver.md) te gebruiken in uw Hadoop-omgeving. Als u probeert te migreren off van een on-premise Hadoop-omgeving met een versie eerder dan Hadoop branch-3, open dan een Azure Support-ticket, zodat we contact met u kunnen opnemen op het juiste pad voorwaarts voor u en uw organisatie.

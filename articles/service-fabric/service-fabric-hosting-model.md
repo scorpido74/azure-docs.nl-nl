@@ -5,12 +5,12 @@ author: harahma
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82bc5068be651b05eb24efa3b05e46c1e7c1e24d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282391"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115044"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric-hostingmodel
 In dit artikel vindt u een overzicht van toepassingshostingmodellen van Azure Service Fabric en worden de verschillen beschreven tussen de **modellen Gedeeld proces** en exclusief **proces.** Hierin wordt beschreven hoe een geïmplementeerde toepassing eruitziet op een servicefabricknooppunt en de relatie tussen replica's (of instanties) van de service en het servicehostproces.
@@ -168,6 +168,10 @@ In de activering van 'MultiTypeServicePackage' voor de replica van partitie **P1
 
 
 In het voorgaande voorbeeld zou je kunnen denken dat als 'MyCodePackageA' zowel 'MyServiceTypeA' als 'MyServiceTypeB' registreert, en er geen 'MyCodePackageB' is, er geen redundante *CodePackage* wordt uitgevoerd. Hoewel dit juist is, sluit dit toepassingsmodel niet aan bij het exclusieve proceshostingmodel. Als het doel is om elke replica in zijn eigen specifieke proces te plaatsen, hoeft u niet beide *ServiceTypes* van hetzelfde *CodePackage*te registreren. In plaats daarvan plaatst u gewoon elk *ServiceType* in zijn eigen *ServicePackage.*
+
+### <a name="reliable-services-and-actor-forking-subprocesses"></a>Betrouwbare services en actor forking subprocessen
+
+Service Fabric ondersteunt geen betrouwbare services en vervolgens betrouwbare actoren die subprocessen forking. Een voorbeeld van waarom het niet wordt ondersteund is [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) kan niet worden gebruikt om een niet-ondersteunde subproces te registreren, en annuleringstokens worden alleen verzonden naar geregistreerde processen; wat resulteert in allerlei problemen, zoals upgradefouten, wanneer subprocessen niet sluiten nadat het bovenliggende proces een annuleringstoken heeft ontvangen.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Pakket een applicatie][a4] en maak deze klaar om te implementeren.

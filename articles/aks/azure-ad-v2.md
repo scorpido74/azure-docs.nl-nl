@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 03/24/2020
-ms.openlocfilehash: 27abdfe28e2594c98778b51532fbd22f95bfa3ac
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b121830192a2b88185bbbbc9a92934e51b32a61c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984705"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114648"
 ---
 # <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>Azure AD integreren in Azure Kubernetes-service (voorbeeld)
 
@@ -98,12 +98,12 @@ Met de bovenstaande opdracht wordt een AKS-cluster met drie nodes gemaakt, maar 
 Zodra u een groep hebt gemaakt en uzelf (en anderen) als lid hebt toegevoegd, u het cluster bijwerken met de Azure AD-groep met behulp van de volgende opdracht
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 Als u eerst een groep maakt en leden toevoegt, u de Azure AD-groep op het moment van het maken inschakelen met de volgende opdracht.
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
 Een succesvolle creatie van een Azure AD v2-cluster heeft de volgende sectie in de antwoordgroep

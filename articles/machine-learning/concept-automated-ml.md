@@ -10,21 +10,18 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: c8864e00be9f491d87478c253286070b9334a26e
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 095561f02fdeff6688b78d69cc1becc4ee0f8901
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383188"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115213"
 ---
 # <a name="what-is-automated-machine-learning"></a>Wat is geautomatiseerde machine learning?
 
 Geautomatiseerde machine learning, ook wel geautomatiseerde ML genoemd, is het proces van het automatiseren van de tijdrovende, iteratieve taken van machine learning-modelontwikkeling. Het stelt gegevenswetenschappers, analisten en ontwikkelaars in staat om ML-modellen te bouwen met een hoge schaal, efficiëntie en productiviteit, terwijl de modelkwaliteit behouden blijft. Automated ML is gebaseerd op een doorbraak van onze [Microsoft Research-divisie.](https://arxiv.org/abs/1705.05355)
 
 Traditionele machine learning model ontwikkeling is resource-intensief, die aanzienlijke domeinkennis en tijd om te produceren en te vergelijken tientallen modellen. Met geautomatiseerde machine learning versnelt u de tijd die nodig is om ml-modellen met veel gemak en efficiëntie op productieniveau te krijgen.
-
- 
-
 
 ## <a name="when-to-use-automated-ml"></a>Wanneer gebruik je geautomatiseerde ML?
 
@@ -139,9 +136,13 @@ Het [Caruana ensemble selectie algoritme](http://www.niculescu-mizil.org/papers/
 
 Bekijk de [how-to](how-to-configure-auto-train.md#ensemble) voor het wijzigen van standaardinstellingen voor ensemble's in geautomatiseerde machine learning.
 
-## <a name="use-with-onnx-in-c-apps"></a>Gebruiken met ONNX in C#-apps
+## <a name="use-with-onnx"></a>Gebruiken met ONNX
 
-Met Azure Machine Learning u geautomatiseerde ML gebruiken om een Python-model te bouwen en te laten converteren naar de ONNX-indeling. De ONNX-runtime ondersteunt C#, zodat u het model gebruiken dat automatisch is gebouwd in uw C#-apps zonder dat u opnieuw hoeft te coderen of een van de netwerklatencies die REST-eindpunten introduceren. Probeer een voorbeeld van deze stroom [in deze Jupyter notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb).
+Met Azure Machine Learning u geautomatiseerde ML gebruiken om een Python-model te bouwen en te laten converteren naar de ONNX-indeling. Zodra de modellen in het ONNX-formaat zijn, kunnen ze op verschillende platforms en apparaten worden uitgevoerd. Meer informatie over [het versnellen van ML-modellen met ONNX](concept-onnx.md).
+
+Zie hoe u converteren naar ONNX-indeling [in dit voorbeeld van Jupyter-notitieblok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb). Ontdek welke [algoritmen worden ondersteund in ONNX](how-to-configure-auto-train.md#select-your-experiment-type).
+
+De ONNX-runtime ondersteunt ook C#, zodat u het model dat automatisch in uw C#-apps is gebouwd, gebruiken zonder dat u opnieuw hoeft te coderen of een van de netwerklatencies die REST-eindpunten introduceren. Meer informatie over [het inferencen van ONNX-modellen met de ONNX runtime C#API](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md). 
 
 ## <a name="automated-ml-in-azure-machine-learning"></a>Geautomatiseerde ML in Azure Machine Learning
 
@@ -159,7 +160,7 @@ Het volgende geeft een overzicht van de geautomatiseerde ML-mogelijkheden op hoo
 
 Met de volgende instellingen u uw geautomatiseerde ML-experiment configureren. 
 
-| | Python SDK| Studio
+| | Python-SDK| Studio
 ----|:----:|:----:
 Gegevens splitsen in trein-/validatiesets| ✓|✓
 Ondersteunt ML-taken: classificatie, regressie en prognoses| ✓| ✓
@@ -181,7 +182,7 @@ Verbosity-niveau voor logbestanden| ✓|
 
 Deze instellingen kunnen worden toegepast op het beste model als gevolg van uw geautomatiseerde ML-experiment.
 
-||Python SDK|Studio
+||Python-SDK|Studio
 ----|:----:|:----:
 Beste modelregistratie| ✓|✓
 Beste modelimplementatie| ✓| ✓
@@ -195,7 +196,7 @@ Het model testen | ✓| |
 
 Met deze instellingen u uw experiment uitvoeren en het onderliggende experiment controleren en beheren. 
 
-||Python SDK| Studio
+||Python-SDK| Studio
 ----|:----:|:----:
 Overzichtstabel uitvoeren| ✓|✓
 Run annuleren| ✓|✓

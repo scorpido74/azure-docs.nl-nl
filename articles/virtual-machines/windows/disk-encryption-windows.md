@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b51f7a8b62d7131b7bbfc77101e60fab22e1f148
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f7b6e667df95d9279ad5c44caa4ba33a17909935
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985793"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113148"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-scenario's voor Windows-VM's
 
-Azure Disk Encryption for Windows virtual machines (VM's) maakt gebruik van de Bitlocker-functie van Windows om volledige schijfversleuteling van de WindOS-schijf en gegevensschijf te bieden. Bovendien biedt het versleuteling van de kortstondige resourceschijf wanneer de parameter VolumeType Alles is.
+Azure Disk Encryption for Windows virtual machines (VM's) maakt gebruik van de Bitlocker-functie van Windows om volledige schijfversleuteling van de OS-schijf en gegevensschijf te bieden. Bovendien biedt het versleuteling van de kortstondige resourceschijf wanneer de parameter VolumeType Alles is.
 
 Azure Disk Encryption is [geïntegreerd met Azure Key Vault](disk-encryption-key-vault.md) om u te helpen de schijfversleutelingssleutels en -geheimen te beheren en te beheren. Zie Azure Disk Encryption [for Windows VM's voor](disk-encryption-overview.md)een overzicht van de service.
 

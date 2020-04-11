@@ -8,12 +8,12 @@ ms.date: 4/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dd24631f8e6b4f3f87438bf22654016dd7699950
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 6bc74e82dd04e5845e95bdec5c841d0264dd1d3e
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618306"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115086"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Bereid u voor om uw IoT Edge-oplossing in productie te implementeren
 
@@ -134,25 +134,28 @@ Wanneer u van testscenario's naar productiescenario's gaat, moet u defoutfoutcon
   * Toegang tot uw containerregister beheren
   * Tags gebruiken om versies te beheren
 
-### <a name="manage-access-to-your-container-registry-with-a-service-principal"></a>Toegang tot uw containerregister beheren met een serviceprincipal
+### <a name="manage-access-to-your-container-registry"></a>Toegang tot uw containerregister beheren
 
 Voordat u modules implementeert voor de productie van IoT Edge-apparaten, moet u ervoor zorgen dat u de toegang tot uw containerregister beheert, zodat buitenstaanders geen toegang hebben tot uw containerafbeeldingen of deze niet kunnen aanbrengen. Gebruik een privé- en niet-openbaar containerregister om containerafbeeldingen te beheren.
 
-In de zelfstudies en andere documentatie instrueren we u om dezelfde containerregisterreferenties te gebruiken op uw IoT Edge-apparaat als u op uw ontwikkelingsmachine gebruikt. Deze instructies zijn alleen bedoeld om u te helpen bij het eenvoudiger instellen van test- en ontwikkelingsomgevingen en mogen niet worden gevolgd in een productiescenario. Azure Container Registry raadt [aan om met serviceprincipals te authenticeren](../container-registry/container-registry-auth-service-principal.md) wanneer toepassingen of services containerafbeeldingen op een geautomatiseerde of anderszins onbeheerde manier (headless) optrekken, zoals IoT Edge-apparaten doen.
+In de zelfstudies en andere documentatie instrueren we u om dezelfde containerregisterreferenties te gebruiken op uw IoT Edge-apparaat als u op uw ontwikkelingsmachine gebruikt. Deze instructies zijn alleen bedoeld om u te helpen bij het eenvoudiger instellen van test- en ontwikkelingsomgevingen en mogen niet worden gevolgd in een productiescenario.
 
-Als u een serviceprincipal wilt maken, voert u de twee scripts uit zoals beschreven in [het maken van een serviceprincipal](../container-registry/container-registry-auth-aci.md#create-a-service-principal). Deze scripts voeren de volgende taken uit:
+Voor een meer beveiligde toegang tot uw register, hebt u een keuze uit [authenticatieopties.](../container-registry/container-registry-authentication.md) Een populaire en aanbevolen verificatie is het gebruik van een Active Directory-serviceprincipal die zeer geschikt is voor toepassingen of services om containerafbeeldingen op een geautomatiseerde of anderszins onbeheerbare (headless) manier te trekken, zoals IoT Edge-apparaten doen.
+
+Als u een serviceprincipal wilt maken, voert u de twee scripts uit zoals beschreven in [het maken van een serviceprincipal](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal). Deze scripts voeren de volgende taken uit:
 
 * In het eerste script wordt de serviceprincipal gemaakt. Hiermee wordt de servicehoofd-id en het hoofdwachtwoord van de service uitgevoerd. Bewaar deze waarden veilig in uw administratie.
 
-* Het tweede script maakt roltoewijzingen die u aan de serviceprincipal verlenen, die vervolgens kan worden uitgevoerd indien nodig. We raden u aan de **acrPull-gebruikersrol** toe te passen voor de `role` parameter. Zie [Azure Container Registry-rollen en machtigingen](../container-registry/container-registry-roles.md) voor een lijst met rollen
+* Het tweede script maakt roltoewijzingen die u aan de serviceprincipal verlenen, die vervolgens kan worden uitgevoerd indien nodig. We raden u aan de **acrPull-gebruikersrol** toe te passen voor de `role` parameter. Zie [Azure Container Registry-rollen en machtigingen](../container-registry/container-registry-roles.md)voor een lijst met rollen.
 
-Als u wilt verifiëren met behulp van een serviceprincipal, geeft u de servicehoofds-id en het wachtwoord op dat u hebt verkregen uit het eerste script.
+Als u wilt verifiëren met behulp van een serviceprincipal, geeft u de servicehoofds-id en het wachtwoord op dat u hebt verkregen uit het eerste script. Geef deze referenties op in het implementatiemanifest.
 
 * Geef voor de gebruikersnaam of client-id de servicehoofd-id op.
 
 * Geef voor het wachtwoord- of clientgeheim het hoofdwachtwoord van de service op.
 
-Zie [Verifiëren met de serviceprincipal](../container-registry/container-registry-auth-aci.md#authenticate-using-the-service-principal)voor een voorbeeld van het starten van een containerinstantie met Azure CLI.
+> [!NOTE]
+> Schakel na het implementeren van een verbeterde beveiligingsverificatie de instelling **voor beheerdersgebruikers** uit, zodat de standaardgebruikers-/wachtwoordtoegang niet meer beschikbaar is. Selecteer **Access Keys**in uw containerregister in de Azure-portal in het menu van het linkerdeelvenster onder **Instellingen**.
 
 ### <a name="use-tags-to-manage-versions"></a>Tags gebruiken om versies te beheren
 

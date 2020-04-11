@@ -7,20 +7,17 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8c76333d5a2be8a2c589dbe54389b023fef34854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 111e6e2f80c3460f363c496b7b32befdca16250d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252534"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115112"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Privé verbinding maken met een opslagaccount met behulp van een privé-eindpunt in Azure
 Azure Private Endpoint is de fundamentele bouwsteen voor Private Link in Azure. Hiermee kunnen Azure-resources, zoals virtuele machines (VM's), privé communiceren met Private Link-bronnen.
 
 In deze Quickstart leert u hoe u een VM maakt op een virtueel Azure-netwerk, een opslagaccount met een privéeindpunt met behulp van de Azure-portal. Vervolgens u veilig toegang krijgen tot het opslagaccount van de VM.
-
-> [!NOTE]
-> Privé eindpunten zijn niet toegestaan in combinatie met serviceeindpunten in hetzelfde subnet!
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

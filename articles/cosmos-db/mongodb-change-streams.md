@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
-ms.openlocfilehash: ecfa98241f74aac43a827b645a6ed877624d643d
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437809"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114151"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Streams wijzigen in de API van Azure Cosmos DB voor MongoDB
 
@@ -26,7 +26,8 @@ ms.locfileid: "80437809"
 De volgende beperkingen zijn van toepassing bij het gebruik van wijzigingsstromen:
 
 * De `operationType` `updateDescription` eigenschappen en eigenschappen worden nog niet ondersteund in het uitvoerdocument.
-* De `insert` `update`typen `replace` , en bewerkingen worden momenteel ondersteund. Verwijderbewerking of andere gebeurtenissen worden nog niet ondersteund.
+* De `insert` `update`typen `replace` , en bewerkingen worden momenteel ondersteund. 
+* Verwijderbewerking of andere gebeurtenissen worden nog niet ondersteund.
 
 Vanwege deze beperkingen zijn de $match fase, $project fase en volledigeDocument-opties vereist, zoals in de vorige voorbeelden wordt weergegeven.
 

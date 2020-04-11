@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 02/17/2020
-ms.openlocfilehash: 44df35957dfbd3aa4856d256dc1a7d9e6527fde0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/11/2020
+ms.openlocfilehash: e8f79512e132ff4632c067b23ad6e80a76b8d4cf
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240673"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113891"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Zelfstudie: Migreren Naar Azure DB naar Azure DB voor PostgreSQL online met DMS via de Azure CLI
 
@@ -44,7 +44,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 * Download en installeer [PostgreSQL Community Edition](https://www.postgresql.org/download/) 9.5, 9.6 of 10. De bronversie van PostgreSQL Server moet versie 9.5.11, 9.6.7, 10 of hoger zijn. Zie voor meer informatie het artikel [Supported PostgreSQL Database Versions](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions) (Ondersteunde versies van de PostgreSQL-database).
 
-    Bovendien moet de on-premises versie van PostgreSQL overeenkomen met de versie van Azure Database for PostgreSQL. PostgreSQL 9.5.11.5 kan bijvoorbeeld alleen migreren naar Azure Database for PostgreSQL 9.5.11 en niet naar versie 9.6.7.
+    Houd er ook rekening mee dat de doel-Azure Database voor PostgreSQL-versie gelijk moet zijn aan of later dan de on-premises PostgreSQL-versie. PostgreSQL 9.6 kan bijvoorbeeld alleen migreren naar Azure Database voor PostgreSQL 9.6, 10 of 11, maar niet naar Azure Database voor PostgreSQL 9.5.
 
 * [Een instantie maken in Azure Database voor PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) of [Een Azure Database maken voor PostgreSQL - Hyperscale (Citus) server](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal).
 * Maak een Microsoft Azure Virtual Network for Azure Database Migration Service met behulp van het Azure Resource Manager-implementatiemodel, dat site-to-site-connectiviteit biedt met uw on-premises bronservers met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Zie de [virtual network documentation](https://docs.microsoft.com/azure/virtual-network/)en vooral de quickstart-artikelen met stapsgewijze details voor meer informatie over het maken van een virtueel netwerk.

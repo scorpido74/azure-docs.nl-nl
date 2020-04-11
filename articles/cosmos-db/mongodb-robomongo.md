@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: 68b880957754439b3b88a0cccff2218a5942f967
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 627849acb902a721c80b98adbd16103b4729591b
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548819"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114194"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Robo 3T gebruiken met de Azure Cosmos DB-API voor MongoDB
 
@@ -31,7 +31,7 @@ Voer de volgende stappen uit om uw Cosmos-account toe te voegen aan de Robo 3T-v
 1. Haal de verbindingsgegevens op voor uw Cosmos-account die is geconfigureerd met de API MongoDB van Azure Cosmos DB met behulp van de [instructies hier](connect-mongodb-account.md).
 
     ![Schermafbeelding van het verbindingstekenreeksblad](./media/mongodb-robomongo/connectionstringblade.png)
-2. Run *Robomongo.exe*
+2. Voer de *Robomongo* applicatie uit.
 
 3. Klik op de verbindingsknop onder **Bestand** om uw verbindingen te beheren. Klik vervolgens op **Maken** in het venster **MongoDB-verbindingen,** waarmee het venster **Verbindingsinstellingen** wordt geopend.
 
