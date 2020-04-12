@@ -4,16 +4,20 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: 256510f855256e648ae9203f46eb9f66c9ffaed6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8665b4cec3357baee5d6c1b77b5719645575419
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77029151"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112878"
 ---
 ## <a name="publish-the-project-to-azure"></a>Het project naar Azure publiceren
 
 In deze sectie maakt u een functie-app en gerelateerde resources in uw Azure-abonnement en implementeert u uw code. 
+
+> [!IMPORTANT]
+> Als u in een bestaande functie-app publiceert, wordt de inhoud van die app in Azure overschreven. 
+
 
 1. Kies het Azure-pictogram in de activiteitsbalk en kies vervolgens in het gebied **Azure: Functions** de **knop Implementeren naar functie-app...**
 
@@ -23,11 +27,8 @@ In deze sectie maakt u een functie-app en gerelateerde resources in uw Azure-abo
 
     + **Abonnement selecteren**: Kies het te gebruiken abonnement. Dit zie je niet als je maar één abonnement hebt.
 
-    + **Functie-app selecteren**in `+ Create new Function App` Azure `Advanced`: Kiezen (niet). Dit artikel biedt geen ondersteuning voor de [geavanceerde publicatiestroom](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options). 
-    
-    >[!IMPORTANT]
-    > Als u in een bestaande functie-app publiceert, wordt de inhoud van die app in Azure overschreven. 
-    
+    + **Functie-app selecteren in Azure:** Kies `+ Create new Function App`. (Kies niet de `Advanced` optie, die niet in dit artikel wordt behandeld.)
+      
     + **Voer een wereldwijd unieke naam in voor de functie-app:** Typ een naam die geldig is in een URL-pad. De naam die u typt, wordt gevalideerd om ervoor te zorgen dat deze uniek is in Azure-functies. 
     
     ::: zone pivot="programming-language-python"
@@ -40,13 +41,13 @@ In deze sectie maakt u een functie-app en gerelateerde resources in uw Azure-abo
 
     + **Selecteer een locatie voor nieuwe resources:** kies voor betere prestaties een [regio](https://azure.microsoft.com/regions/) bij u in de buurt. 
     
-1.  Wanneer deze zijn voltooid, worden de volgende Azure-resources in uw abonnement gemaakt:
-
-    + **[Resourcegroep:](../articles/azure-resource-manager/management/overview.md)** bevat alle gemaakte Azure-resources. De naam is gebaseerd op de naam van uw functie-app.
-    + **[Opslagaccount](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)**: Er wordt een standaardopslagaccount gemaakt met een unieke naam die is gebaseerd op de naam van uw functie-app.
-    + **[Hostingplan](../articles/azure-functions/functions-scale.md)**: er wordt een verbruiksplan gemaakt in de regio West-VS om uw serverloze functie-app te hosten.
-    + **Functie-app**: Uw project wordt geïmplementeerd in deze nieuwe functie-app.
-    + **Toepassingsinzichten**: Een instantie die is verbonden met uw functie-app, wordt gemaakt op basis van uw functienaam.
+1.  Wanneer u klaar bent, worden de volgende Azure-resources in uw abonnement gemaakt met namen op basis van de naam van uw functie-app:
+    
+    + Een resourcegroep, een logische container voor gerelateerde resources.
+    + Een standaard Azure Storage-account, dat status- en andere informatie over uw projecten bijhoudt.
+    + Een verbruiksplan dat de onderliggende host voor uw serverloze functie-app definieert. 
+    + Een functie-app, die de omgeving biedt voor het uitvoeren van uw functiecode. Met een functie-app u functies groeperen als een logische eenheid voor eenvoudiger beheer, implementatie en delen van resources binnen hetzelfde hostingplan.
+    + Een instantie Application Insights die is verbonden met de functie-app, die het gebruik van uw serverloze functie bijhoudt.
 
     Nadat de functie-app is gemaakt en het implementatiepakket is toegepast, wordt er een melding weergegeven. 
     

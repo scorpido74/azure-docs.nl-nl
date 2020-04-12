@@ -11,12 +11,12 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d03c7d72a0adf02959badac758f94e47fd81de5c
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: d39b3085a802ca0ff745ab1f63f4a8fba966ea48
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992226"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115002"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Snelstart: bulkbelastingsgegevens met de instructie KOPIËREN
 
@@ -38,7 +38,7 @@ Deze quickstart gaat ervan uit dat u al een SQL-pool hebt. Als er geen SQL-pool 
 
 ## <a name="create-the-target-table"></a>De doeltabel maken
 
-In dit voorbeeld laden we gegevens uit de new yorktaxidataset. we laden een tafel genaamd Trip die taxireizen binnen een jaar vertegenwoordigt. Voer het volgende uit om de tabel te maken:
+In dit voorbeeld laden we gegevens uit de new yorktaxidataset. We laden een tafel met de naam Trip die taxiritten vertegenwoordigt die binnen een jaar zijn gemaakt. Voer het volgende uit om de tabel te maken:
 
 ```sql
 CREATE TABLE [dbo].[Trip]

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 98345e8585a3f6653659e0d41eb5c3308a0a6634
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b7fa447e8564fcbf77702f1d3d474cceb48705c5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057421"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114641"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Een interne serviceomgeving voor load balancer maken en gebruiken 
 
@@ -60,6 +60,9 @@ Ga als volgt te werk om een ILB AS-omgeving te maken:
 
     ![ASE maken](media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase.png)
 
+> [!NOTE]
+> De naam van de app-serviceomgeving mag niet meer dan 37 tekens bevatten.
+
 6. Netwerken selecteren
 
 7. Selecteer of maak een virtueel netwerk. Als u hier een nieuwe VNet maakt, wordt deze gedefinieerd met een adresbereik van 192.168.250.0/23. Als u een VNet wilt maken met een ander adresbereik of in een andere brongroep dan de ASE, gebruikt u de portal voor het maken van Azure Virtual Network. 
@@ -69,6 +72,7 @@ Ga als volgt te werk om een ILB AS-omgeving te maken:
     ![ASE-netwerken][1]
 
 7. Selecteer **Controleren en maken** en selecteer Vervolgens **Maken**.
+
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>Een app maken in een ILB AS-omgeving ##
 

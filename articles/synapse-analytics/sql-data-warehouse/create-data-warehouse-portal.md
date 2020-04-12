@@ -2,21 +2,21 @@
 title: Een Synapse SQL-groep maken en opvragen (Azure-portal)
 description: Een Synapsische SQL-groep maken en opvragen met de Azure-portal
 services: synapse-analytics
-author: XiaoyuMSFT
+author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
 ms.date: 05/28/2019
-ms.author: xiaoyul
+ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 685d6970b0e88032fe503bf97a139c0b8c0f8a73
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 9605d20fa6a1480b24d7b64963aa9579ed3b5a11
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631355"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115183"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Snelstart: een Synapsische SQL-groep maken en opvragen met behulp van de Azure-portal
 
@@ -33,7 +33,7 @@ Maak en query er snel een Synapse SQL-groep (datawarehouse) in Azure Synapse Ana
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-a-sql-pool"></a>Een SQL-groep maken
 
@@ -114,7 +114,7 @@ U nu verbinding maken met de SQL-server en de SQL-pools met behulp van dit IP-ad
 
 Haal de volledig gekwalificeerde servernaam van uw SQL-server op uit Azure Portal. Later gebruikt u de volledig gekwalificeerde servernaam bij het verbinding maken met de server.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Selecteer **Azure Synapse Analytics** in het linkermenu en selecteer uw op de pagina Azure **Synapse Analytics.**
 
