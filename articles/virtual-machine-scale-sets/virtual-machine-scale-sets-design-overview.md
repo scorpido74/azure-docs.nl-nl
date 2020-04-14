@@ -2,20 +2,20 @@
 title: Ontwerpoverwegingen voor Azure Virtual Machine Scale Sets
 description: Meer informatie over de ontwerpoverwegingen voor uw Azure Virtual Machine Scale Sets. Vergelijk schaalsets functies met VM-functies.
 keywords: linux virtuele machine, virtuele machine schaal sets
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
 ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 06/01/2017
-ms.author: manayar
-ms.openlocfilehash: b427319fdba634ea3c61681baa30547450709dc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 20f6cb08781c7c6aca7a4022e75a7be8640ef18a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250775"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273763"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Ontwerpoverwegingen voor schaalsets
 In dit artikel worden ontwerpoverwegingen voor virtuele machineschaalsets besproken. Raadpleeg overzicht van [virtuele machineschaalsets](virtual-machine-scale-sets-overview.md)voor informatie over wat virtuele machineschaalsets zijn.

@@ -7,17 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: b0ed430098203c5c1a0d00eb7bf17da1be0000cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f20beced7d977668d12c06375ceb8a2554c6d335
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278089"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273423"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>De door Azure gehoste VM configureren
 
-In dit artikel wordt uitgelegd hoe u een virtuele machine (VM) vergroten, bijwerken en generaliseren die op Azure wordt gehost.  Deze stappen zijn nodig om uw VM voor te bereiden om te worden geïmplementeerd vanuit de Azure Marketplace.
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Uw technische assets van Azure Virtual Machine maken](https://aka.ms/AzureVMTechAsset) om uw gemigreerde aanbiedingen te beheren.
 
+In dit artikel wordt uitgelegd hoe u een virtuele machine (VM) vergroten, bijwerken en generaliseren die op Azure wordt gehost.  Deze stappen zijn nodig om uw VM voor te bereiden om te worden geïmplementeerd vanuit de Azure Marketplace.
 
 ## <a name="sizing-the-vhds"></a>Grootte van de VHD's
 

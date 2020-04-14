@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 09569be88daa6295834e58da6b51656d0438bed4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74976975"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270924"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Zelfstudie: Video's en transcripties beoordelen
 
@@ -82,7 +82,7 @@ De uitvoering begint bij `Main()`, dus is dit het punt vanaf waar het belangrijk
 Als er geen opdrachtregelargumenten zijn opgegeven, wordt `GetUserInputs()` aangeroepen met `Main()`. Deze methode vraagt de gebruiker om het pad naar één videobestand in te voeren en om aan te geven of er een transcriptie moet worden gegenereerd.
 
 > [!NOTE]
-> De consoletoepassing gebruikt de [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) om transcripties te genereren van het audiospoor van de geüploade video. De resultaten worden geleverd in WebVTT-formaat. Zie de Engelstalige site [Web Video Text Tracks Format (WebVTT)](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) voor meer informatie over deze indeling.
+> De consoletoepassing gebruikt de [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) om transcripties te genereren van het audiospoor van de geüploade video. De resultaten worden geleverd in WebVTT-formaat. Zie de Engelstalige site [Web Video Text Tracks Format (WebVTT)](https://developer.mozilla.org/docs/Web/API/WebVTT_API) voor meer informatie over deze indeling.
 
 ### <a name="initialize-and-processvideo-methods"></a>De methoden Initialize en ProcessVideo
 
@@ -223,7 +223,7 @@ Het resultaat van de videobeoordelingstaak (zie de [snelstartgids over videobeoo
 Er wordt ook een transcriptie van de audio van de video gemaakt wanneer de vlag `GenerateVTT` is ingesteld.
 
 > [!NOTE]
-> De consoletoepassing gebruikt de [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) om transcripties te genereren van het audiospoor van de geüploade video. De resultaten worden geleverd in WebVTT-formaat. Zie de Engelstalige site [Web Video Text Tracks Format (WebVTT)](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) voor meer informatie over deze indeling.
+> De consoletoepassing gebruikt de [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) om transcripties te genereren van het audiospoor van de geüploade video. De resultaten worden geleverd in WebVTT-formaat. Zie de Engelstalige site [Web Video Text Tracks Format (WebVTT)](https://developer.mozilla.org/docs/Web/API/WebVTT_API) voor meer informatie over deze indeling.
 
 ## <a name="create-a-human-review"></a>Een menselijke beoordeling maken
 

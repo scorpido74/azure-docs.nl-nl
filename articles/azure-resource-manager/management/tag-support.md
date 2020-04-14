@@ -3,12 +3,12 @@ title: Ondersteuning voor resources taggen
 description: Hiermee ziet u welke Azure-brontypen tags ondersteunen. Biedt details voor alle Azure-services.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: b8b1c0b738bb8b94ee53433141f1ae3dbbb3f942
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c971d3af102faf99f97aac261882797460d71f37
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982324"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255023"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagondersteuning voor Azure-bronnen
 In dit artikel wordt beschreven of een resourcetype [tags](tag-resources.md)ondersteunt. De kolom met **de labels Ondersteunt geeft** aan of het resourcetype een eigenschap voor de tag heeft. De kolom met het label **Tag in het kostenrapport** geeft aan of dat resourcetype de tag doorgeeft aan het kostenrapport. U de kosten bekijken op tags in de [kostenanalyse van kostenbeheer](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) en de [Azure-factuur en gegevens over het dagelijks gebruik.](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)
@@ -96,6 +96,7 @@ Ga naar de naamruimte van een resourceprovider:
 > - [Microsoft.HybridData](#microsofthybriddata)
 > - [Microsoft.Hydra (Microsoft.Hydra)](#microsofthydra)
 > - [Microsoft.ImportExport](#microsoftimportexport)
+> - [Microsoft.Insights](#microsoftinsights)
 > - [Microsoft.Intune](#microsoftintune)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.ioTSpaces](#microsoftiotspaces)
@@ -1201,6 +1202,33 @@ Ga naar de naamruimte van een resourceprovider:
 > | ------------- | ----------- | ----------- |
 > | Banen | Ja | Ja |
 
+## <a name="microsoftinsights"></a>Microsoft.Insights
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Ondersteunt tags | Tag in kostenrapport |
+> | ------------- | ----------- | ----------- |
+> | actiegroepen | Ja | Ja |
+> | activiteitLogAlerts | Ja | Ja |
+> | waarschuwingsregels | Ja | Ja |
+> | instellingen voor automatisch schalen | Ja | Ja |
+> | Onderdelen | Ja | Ja |
+> | componenten / linkedStorageAccounts | Nee | Nee |
+> | componenten / ProactiveDetectionConfigs | Nee | Nee |
+> | diagnostische instellingen | Nee | Nee |
+> | gastDiagnosticSettings | Ja | Ja |
+> | guestDiagnosticSettingsAssociation | Ja | Ja |
+> | logprofielen | Ja | Ja |
+> | metrische waarschuwingen | Ja | Ja |
+> | privateLinkScopes | Ja | Ja |
+> | privateLinkScopes / privateEndpointConnections | Nee | Nee |
+> | privateLinkScopes / scopedResources | Nee | Nee |
+> | queryPacks | Ja | Ja |
+> | queryPacks / query's | Nee | Nee |
+> | geplandQueryregels | Ja | Ja |
+> | webtests | Ja | Ja |
+> | werkmappen | Ja | Ja |
+> | werkmapsjablonen | Ja | Ja |
+
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
 > [!div class="mx-tableFixed"]
@@ -1454,7 +1482,7 @@ Ga naar de naamruimte van een resourceprovider:
 > | applicationSecurityGroups | Ja | Ja |
 > | azureFirewallFqdnTags | Nee | Nee |
 > | azureFirewalls | Ja | Nee |
-> | bastionHosts | Ja | Ja |
+> | bastionHosts | Ja | Nee |
 > | bgpServiceCommunities | Nee | Nee |
 > | Verbindingen | Ja | Ja |
 > | ddosCustomPolicies | Ja | Ja |
@@ -1484,14 +1512,14 @@ Ga naar de naamruimte van een resourceprovider:
 > | frontdoorWebApplicationFirewallBeleid | Ja, maar beperkt (zie [noot hieronder)](#frontdoor) | Ja |
 > | getDnsResourceReference | Nee | Nee |
 > | internNotify | Nee | Nee |
-> | loadBalancers | Ja | Nee |
+> | loadBalancers | Ja | Ja |
 > | localNetworkGateways | Ja | Ja |
 > | natGateways | Ja | Ja |
 > | netwerkIntentPolicies | Ja | Ja |
 > | netwerkInterfaces | Ja | Ja |
 > | netwerkProfielen | Ja | Ja |
 > | networkSecurityGroups | Ja | Ja |
-> | networkWatchers | Ja | Nee |
+> | networkWatchers | Ja | Ja |
 > | networkWatchers / connectionMonitors | Ja | Nee |
 > | networkWatchers / flowLogs | Nee | Nee |
 > | networkWatchers / lenzen | Ja | Nee |
@@ -1524,8 +1552,8 @@ Ga naar de naamruimte van een resourceprovider:
 > | virtualNetworkGateways | Ja | Ja |
 > | virtuelenetwerken | Ja | Ja |
 > | virtualNetworkTaps | Ja | Ja |
-> | virtualWans virtualWans | Ja | Ja |
-> | vpnGateways | Ja | Nee |
+> | virtualWans virtualWans | Ja | Nee |
+> | vpnGateways | Ja | Ja |
 > | vpnSites | Ja | Ja |
 > | webApplicationFirewallBeleid | Ja | Ja |
 
@@ -1821,7 +1849,7 @@ Ga naar de naamruimte van een resourceprovider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt tags | Tag in kostenrapport |
 > | ------------- | ----------- | ----------- |
-> | Naamruimten | Ja | Nee |
+> | Naamruimten | Ja | Ja |
 > | naamruimten / autorisatieregels | Nee | Nee |
 > | naamruimten / disasterrecoveryconfigs | Nee | Nee |
 > | naamruimten / eventgridfilters | Nee | Nee |

@@ -1,22 +1,22 @@
 ---
 title: Geografische beschikbaarheid en valutaondersteuning | Azure
-description: Geografische beschikbaarheid in Azure Marketplace en AppSource
+description: Geografische beschikbaarheid in de commerciële markt
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 79965180d897b91afc1fb1a27e777e385108d2c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82c3ed79bbcc566a91f9f249ec2df747bbc01cac
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288424"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262006"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Geografische beschikbaarheid en valutaondersteuning
 
-Azure Marketplace- en AppSource-aanbiedingen kunnen worden gekocht in 141 regio's zoals gedefinieerd door het factureringsadres van de klant en transacties kunnen worden voltooid in 17 valuta's. In de onderstaande tabel vindt u elke ondersteunde geografische locatie, de [ISO 3166-alfacode met twee cijfers](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)en de toegewezen valuta.
+Commerciële marktplaatsaanbiedingen kunnen worden gekocht in 141 regio's zoals gedefinieerd door het factureringsadres van de klant en transacties kunnen worden voltooid in 17 valuta's. In de onderstaande tabel vindt u elke ondersteunde geografische locatie, de [ISO 3166-alfacode met twee cijfers](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)en de toegewezen valuta.
 
 |   Naam land/regio               |   ISO-2   |   Valuta   |
 |-------------------------------------|-----------|--------------|

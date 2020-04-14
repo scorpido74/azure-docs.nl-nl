@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 04/08/2019
 ms.custom: include file
-ms.openlocfilehash: bfce10b0c9c55012c3ba2fb25121b28157f203b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c6ce482a4f6464008f4be0ecd94455f0239ede2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672093"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81275116"
 ---
 1. Ga naar de [Azure-portal](https://portal.azure.com/) om een Azure Cosmos DB-account te maken. Zoek en selecteer **Azure Cosmos DB**.
 
@@ -32,9 +32,8 @@ ms.locfileid: "78672093"
     |Locatie|De regio het dichtst bij uw gebruikers|Selecteer een geografische locatie waar u het Azure Cosmos DB-account wilt hosten. Gebruik de locatie die het dichtst bij uw gebruikers staat om hen de snelste toegang tot de gegevens te geven.|
     |Accounttype|Productie of niet-productie|Selecteer **Productie** als het account wordt gebruikt voor een productiewerkbelasting. Selecteer **Niet-productie** als het account wordt gebruikt voor niet-productie, bijvoorbeeld ontwikkeling, testen, QA of fasering. Dit is een Azure-brontaginstelling die de Portal-ervaring afstemt, maar geen invloed heeft op het onderliggende Azure Cosmos DB-account. U deze waarde op elk gewenst moment wijzigen.|
 
-
-> [!NOTE]
-> U maximaal één gratis Azure Cosmos DB-account per Azure-abonnement hebben en u moet zich aanmelden bij het maken van het account. Als u de optie om de gratis laagkorting toe te passen niet ziet, betekent dit dat een ander account in het abonnement al is ingeschakeld met een gratis laag.
+    > [!NOTE]
+    > U maximaal één gratis Azure Cosmos DB-account per Azure-abonnement hebben en u moet zich aanmelden bij het maken van het account. Als u de optie om de gratis laagkorting toe te passen niet ziet, betekent dit dat een ander account in het abonnement al is ingeschakeld met een gratis laag.
    
    ![De pagina Nieuw account voor Azure Cosmos DB](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account-detail.png)
 

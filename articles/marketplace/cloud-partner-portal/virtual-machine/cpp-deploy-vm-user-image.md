@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 957bc187b0123338947f62333c913cf82a6c66a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79754b4ce7c3dfe2a5c549f4a39ef3160be423d8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277953"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273882"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Een Azure VM implementeren van een vhd-gebruiker
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Azure VM-afbeeldingscertificering](https://aks.ms/CertifyVMimage) om uw gemigreerde aanbiedingen te beheren.
 
 In dit artikel wordt uitgelegd hoe u een gegeneraliseerde VHD-afbeelding implementeert om een nieuwe Azure VM-bron te maken, met behulp van de meegeleverde Azure Resource Manager-sjabloon en Azure PowerShell-script.
 

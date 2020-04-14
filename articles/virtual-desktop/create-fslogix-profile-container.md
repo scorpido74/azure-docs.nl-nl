@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 272188b50fe59435031a4a2fb9c252f3f358bb6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535728"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270890"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Een FSLogix-profielcontainer maken voor een hostgroep met Azure NetApp-bestanden
 
@@ -45,7 +45,7 @@ Voordat u een FSLogix-profielcontainer voor een hostgroep maken, moet u het:
 
 Om aan de slag te gaan, moet u een Azure NetApp Files-account instellen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Controleer of uw account machtigingen voor inzender of beheerders heeft.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Controleer of uw account machtigingen voor inzender of beheerders heeft.
 
 2. Selecteer het **Azure Cloud Shell-pictogram** rechts van de zoekbalk om Azure Cloud Shell te openen.
 
@@ -117,9 +117,6 @@ Daarna moet u lid worden van een Active Directory-verbinding.
     - Voer voor **voorvoegsel SMB Server (Computer Account)** de tekenreeks in die u aan de naam van het computeraccount wilt toevoegen.
     - Voer **voor Gebruikersnaam**de naam van het account in met machtigingen om lid te worden van het domein.
     - Voer **voor wachtwoord**het wachtwoord van het account in.
-
-  >[!NOTE]
-  >Het is de beste manier om te bevestigen dat het computeraccount dat u hebt gemaakt in [Lid worden van een Active Directory-verbinding](create-fslogix-profile-container.md#join-an-active-directory-connection) is weergegeven in uw domeincontroller onder **Computers** of de **relevante organisatieorganisatie van uw onderneming.**
 
 ## <a name="create-a-new-volume"></a>Een nieuw volume maken
 

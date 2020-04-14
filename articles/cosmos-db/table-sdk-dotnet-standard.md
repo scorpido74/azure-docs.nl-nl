@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 48fd85e27feb3d0c7f7f722dbbd502be55684385
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7c6829d858e36b55f079f8ee03e431f67995e66
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76771592"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272573"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: Notities downloaden en vrijgeven
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "76771592"
 |---|---|
 |**SDK downloaden**|[NuGet (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
 |**Monster**|[Voorbeeld van Cosmos DB Table API .NET](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
-|**Quickstart**|[Quickstart](create-table-dotnet.md)|
+|**Snelstartgids**|[Snelstartgids](create-table-dotnet.md)|
 |**Zelfstudie**|[Zelfstudie](tutorial-develop-table-dotnet.md)|
 |**Huidig ondersteund kader**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Rapportprobleem**|[Rapportprobleem](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
@@ -41,6 +41,9 @@ ms.locfileid: "76771592"
 
 ## <a name="release-notes-for-100-series"></a>Release notes voor 1.0.0-serie
 1.0.0-serie is afhankelijk van [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
+
+### <a name="107"></a><a name="1.0.7"/>1.0.7
+* Prestatieverbetering door het standaardtraceringsniveau van Tabel SDK in te stellen op SourceLevels.Off, waarvoor u zich via app.config aanmelden
 
 ### <a name="105"></a><a name="1.0.5"/>1.0.5
 * Nieuwe config introduceren onder TableClientConfiguration om Rest Executor te gebruiken om te communiceren met Cosmos DB Table API

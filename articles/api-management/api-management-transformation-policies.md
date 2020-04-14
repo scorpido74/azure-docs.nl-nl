@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 81b7fb687bb6ef88d1ed436923d0e5ff7561c22b
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 27bb6abb7ae8eae46bc4dea3708270ecb4b731a6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803242"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260901"
 ---
 # <a name="api-management-transformation-policies"></a>Transformatiebeleid API Management
 In dit onderwerp wordt een verwijzing naar het volgende API-beheerbeleid bevat. Zie [Beleid in API-beheer](https://go.microsoft.com/fwlink/?LinkID=398186)voor informatie over het toevoegen en configureren van beleidsregels.
@@ -214,7 +214,7 @@ of
 ```
 
 > [!NOTE]
-> Backend-entiteiten kunnen worden beheerd via [beheer-API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) en [PowerShell.](https://www.powershellgallery.com/packages?q=apimanagement)
+> Backend-entiteiten kunnen worden beheerd via [beheer-API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) en [PowerShell.](https://www.powershellgallery.com/packages?q=apimanagement)
 
 ### <a name="example"></a>Voorbeeld
 
@@ -269,7 +269,7 @@ In dit voorbeeld leidt het beleid de aanvraag naar een backend van de servicefab
 |Name|Beschrijving|Vereist|Standaard|
 |----------|-----------------|--------------|-------------|
 |base-url|Nieuwe URL van backendservicebasis.|Een `base-url` van `backend-id` of moet aanwezig zijn.|N.v.t.|
-|backend-id|Id van de backend naar route naar. (Backend-entiteiten worden beheerd via [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) en [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Een `base-url` van `backend-id` of moet aanwezig zijn.|N.v.t.|
+|backend-id|Id van de backend naar route naar. (Backend-entiteiten worden beheerd via [API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) en [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Een `base-url` van `backend-id` of moet aanwezig zijn.|N.v.t.|
 |sf-partitie-toets|Alleen van toepassing wanneer de backend een Service Fabric-service is en is opgegeven met 'backend-id'. Wordt gebruikt om een specifieke partitie op te lossen vanuit de naamomzettingsservice.|Nee|N.v.t.|
 |sf-replica-type|Alleen van toepassing wanneer de backend een Service Fabric-service is en is opgegeven met 'backend-id'. Hiermee bepaalt u of de aanvraag naar de primaire of secundaire replica van een partitie moet gaan. |Nee|N.v.t.|
 |sf-resolve-voorwaarde|Alleen van toepassing wanneer de backend een Service Fabric-service is. Voorwaarde die identificeert of de call to Service Fabric backend moet worden herhaald met een nieuwe resolutie.|Nee|N.v.t.|

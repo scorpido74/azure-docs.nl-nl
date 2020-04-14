@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: dsindona
-ms.openlocfilehash: 5263d24c411ef8de4187c2fd750013374d779f04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f13e4066137e0d76612040d9f6e5ff3d0aa399c8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277936"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273899"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Een VM implementeren van uw VHD's
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Uw technische assets van Azure Virtual Machine maken](https://aka.ms/AzureVMTechAsset) om uw gemigreerde aanbiedingen te beheren.
 
 In dit gedeelte wordt uitgelegd hoe u een virtuele machine (VM) implementeert vanaf een door Azure geïmplementeerde virtuele harde schijf (VHD).  Het bevat de benodigde hulpprogramma's en hoe u deze gebruiken om een vm-afbeelding van de gebruiker te maken en deze vervolgens te implementeren in Azure met PowerShell-scripts.
 

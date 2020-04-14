@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 64eb19e43223c1953a7244f8fd29c48d085f1e96
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2fa2e40ba2a7fe84b6df57bfb711d01332b8f523
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80116918"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275429"
 ---
 <a name="HOLTop"></a>
 
@@ -44,7 +44,7 @@ Maak met de Visual Studio IDE een nieuwe .NET Core-console-app. Hierdoor wordt e
 
 #### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
-Installeer de clientbibliotheek door met de rechtermuisknop op de oplossing in de **Solution Explorer** te klikken en **NuGet-pakketten beheren**te selecteren. Selecteer **Bladeren,** schakel **Prerelease opnemen**en zoeken `Azure.AI.TextAnalytics`naar . Selecteer `1.0.0-preview.3`versie en **installeer**. U ook de [Package Manager Console gebruiken.](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)
+Installeer de clientbibliotheek door met de rechtermuisknop op de oplossing in de **Solution Explorer** te klikken en **NuGet-pakketten beheren**te selecteren. Selecteer **Bladeren,** schakel **Prerelease opnemen**en zoeken `Azure.AI.TextAnalytics`naar . Selecteer `1.0.0-preview.4`versie en **installeer**. U ook de [Package Manager Console gebruiken.](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)
 
 > [!TIP]
 > Wilt u het hele quickstart-codebestand in één keer bekijken? U het [vinden op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs), die de code voorbeelden in deze quickstart bevat. 
@@ -63,6 +63,7 @@ Installeer de clientbibliotheek door met de rechtermuisknop op de oplossing in d
 Open het *program.cs* bestand `using` en voeg de volgende richtlijnen toe:
 
 ```csharp
+using Azure;
 using System;
 using System.Globalization;
 using Azure.AI.TextAnalytics;
@@ -73,7 +74,7 @@ Maak in de `Program` klasse van de toepassing variabelen voor het sleutel- en ei
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
 ```csharp
-private static readonly TextAnalyticsApiKeyCredential credentials = new TextAnalyticsApiKeyCredential("<replace-with-your-text-analytics-key-here>");
+private static readonly AzureKeyCredential credentials = new AzureKeyCredential("<replace-with-your-text-analytics-key-here>");
 private static readonly Uri endpoint = new Uri("<replace-with-your-text-analytics-endpoint-here>");
 ```
 
@@ -87,7 +88,6 @@ static void Main(string[] args)
     SentimentAnalysisExample(client);
     LanguageDetectionExample(client);
     EntityRecognitionExample(client);
-    EntityPIIExample(client);
     EntityLinkingExample(client);
     KeyPhraseExtractionExample(client);
 
@@ -121,14 +121,13 @@ Vervang de methode `Main` van de toepassing. U definieert de hier later aangeroe
 
 De Text Analytics-client is een `TextAnalyticsClient` object dat met uw sleutel naar Azure wordt geverifieerd en functies biedt om tekst als afzonderlijke tekenreeksen of als batch te accepteren. U tekst synchroon of asynchroon naar de API verzenden. Het antwoordobject bevat de analysegegevens voor elk document dat u verzendt. 
 
-Als u de `3.0-preview`versie gebruikt, kunt `TextAnalyticsClientOptions` u een optionele instantie gebruiken om de client te initialiseren met verschillende standaardinstellingen (bijvoorbeeld standaardtaal of landhint). U ook verifiëren met een Azure Active Directory-token. 
+Als u de `3.0-preview` versie van de service gebruikt, u een optionele `TextAnalyticsClientOptions` instantie gebruiken om de client te initialiseren met verschillende standaardinstellingen (bijvoorbeeld standaardtaal of landhint). U ook verifiëren met een Azure Active Directory-token. 
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
 * [Sentimentanalyse](#sentiment-analysis)
 * [Taaldetectie](#language-detection)
-* [Benoemde entiteitsherkenning](#named-entity-recognition-ner)
-* [Persoonlijke gegevens detecteren](#detect-personal-information)
+* [Herkenning van benoemde entiteiten](#named-entity-recognition-ner)
 * [Koppeling van entiteiten](#entity-linking)
 * [Trefwoordextractie](#key-phrase-extraction)
 
@@ -264,7 +263,6 @@ Language: English
 
 > [!NOTE]
 > Nieuw in `3.0-preview`versie :
-> * Entiteitsherkenning omvat nu de mogelijkheid om persoonlijke gegevens in tekst te detecteren.
 > * Entiteitkoppelen is nu een gescheiden entiteitsherkenning.
 
 
@@ -293,33 +291,6 @@ Named Entities:
         Text: last week,        Category: DateTime,     Sub-Category: DateRange
                 Length: 9,      Score: 0.80
 ```
-
-## <a name="detect-personal-information"></a>Persoonlijke gegevens detecteren
-
-Maak een nieuwe `EntityPIIExample()` functie genaamd die de client die `RecognizePiiEntities()` u eerder hebt gemaakt, de functie ervan aanroepen en herhalen door de resultaten neemt. Net als bij de `Response<IReadOnlyCollection<CategorizedEntity>>` vorige functie bevat het geretourneerde object de lijst met gedetecteerde entiteiten. Als er een fout was, `RequestFailedException`zal het gooien een .
-
-```csharp
-static void EntityPIIExample(TextAnalyticsClient client)
-{
-    string inputText = "Insurance policy for SSN on file 123-12-1234 is here by approved.";
-    var response = client.RecognizePiiEntities(inputText);
-    Console.WriteLine("Personally Identifiable Information Entities:");
-    foreach (var entity in response.Value)
-    {
-        Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
-    }
-}
-```
-
-### <a name="output"></a>Uitvoer
-
-```console
-Personally Identifiable Information Entities:
-        Text: 123-12-1234,      Category: U.S. Social Security Number (SSN),    Sub-Category:
-                Length: 11,     Score: 0.85
-```
-
 
 ## <a name="entity-linking"></a>Koppeling van entiteiten
 

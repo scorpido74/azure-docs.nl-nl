@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: robinsh
-ms.openlocfilehash: dd12f974b9b02d919752dcb932c9ce1709d7315b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71193523a83987de2440d8c70c133c29dde4fe91
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70813787"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257875"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Azure IoT-apparaat SDK voor C
 
@@ -41,9 +41,9 @@ De nieuwste versie van de bibliotheken is te vinden in de **hoofdvestiging** van
 
 * De kernimplementatie van de SDK bevindt zich in de **iothub-clientmap\_** die de implementatie van de laagste API-laag in de SDK bevat: de **IoTHubClient-bibliotheek.** De **IoTHubClient-bibliotheek** bevat API's die raw messaging implementeren voor het verzenden van berichten naar IoT Hub en het ontvangen van berichten van IoT Hub. Wanneer u deze bibliotheek gebruikt, bent u verantwoordelijk voor het implementeren van berichtserialisatie, maar andere details over het communiceren met IoT Hub worden voor u behandeld.
 
-* De **serialisatormap** bevat helperfuncties en voorbeelden die u laten zien hoe u gegevens serialiseren voordat u deze met de clientbibliotheek naar Azure IoT Hub verzendt. Het gebruik van de serialisator is niet verplicht en wordt verstrekt als een gemak. Als u de **serializer-bibliotheek wilt** gebruiken, definieert u een model dat de gegevens opgeeft die naar IoT Hub moeten worden verzonden en welke berichten u ervan verwacht te ontvangen. Zodra het model is gedefinieerd, biedt de SDK u een API-oppervlak waarmee u eenvoudig werken met berichten van apparaat tot cloud en cloud-to-device zonder u zorgen te hoeven maken over de serialisatiedetails. De bibliotheek is afhankelijk van andere open source-bibliotheken die transport implementeren met behulp van protocollen zoals MQTT en AMQP.
+* De **serialisatormap** bevat helperfuncties en voorbeelden die u laten zien hoe u gegevens serialiseren voordat u deze met de clientbibliotheek naar Azure IoT Hub verzendt. Het gebruik van de serialisator is niet verplicht en wordt verstrekt als een gemak. Als u de **serializer-bibliotheek wilt** gebruiken, definieert u een model dat de gegevens opgeeft die naar IoT Hub moeten worden verzonden en welke berichten u ervan verwacht te ontvangen. Zodra het model is gedefinieerd, biedt de SDK u een API-oppervlak waarmee u eenvoudig werken met berichten van apparaat tot cloud en cloud-to-device zonder u zorgen te hoeven maken over de serialisatiedetails. De bibliotheek is afhankelijk van andere open-source bibliotheken die transport implementeren met behulp van protocollen zoals MQTT en AMQP.
 
-* De **IoTHubClient-bibliotheek** is afhankelijk van andere open source-bibliotheken:
+* De **IoTHubClient-bibliotheek** is afhankelijk van andere open-sourcebibliotheken:
 
   * De [azure C-gesynchroniseerde hulpprogrammabibliotheek,](https://github.com/Azure/azure-c-shared-utility) die algemene functionaliteit biedt voor basistaken (zoals tekenreeksen, lijstmanipulatie en IO) die nodig zijn voor verschillende Azure-gerelateerde Cd-s.Co
 
@@ -71,9 +71,9 @@ Download een kopie van de SDK van GitHub om de voorbeeldcode van de toepassing t
 
 Nu u de broncode van het voorbeeld hebt, moet u vervolgens een set apparaatreferenties krijgen. Als u een apparaat toegang wilt geven tot een IoT-hub, moet u het apparaat eerst toevoegen aan het identiteitsregister van de IoT Hub. Wanneer u uw apparaat toevoegt, krijgt u een set apparaatreferenties die u nodig hebt om het apparaat verbinding te kunnen maken met de IoT-hub. De voorbeeldtoepassingen die in de volgende sectie worden besproken, verwachten deze referenties in de vorm van een **tekenreeks voor apparaatverbinding.**
 
-Er zijn verschillende open source-tools om u te helpen uw IoT-hub te beheren.
+Er zijn verschillende open-source tools om u te helpen uw IoT-hub te beheren.
 
-* Een Windows-toepassing genaamd [device explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
+* Een Windows-toepassing genaamd [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer).
 
 * Een cross-platform Visual Studio Code extensie genaamd [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
@@ -245,7 +245,7 @@ De laatste parameter is een nietige aanwijzer naar wat je wilt. In het voorbeeld
 
 Wanneer het apparaat een bericht ontvangt, wordt de geregistreerde terugroepfunctie aangeroepen. Met deze terugbelfunctie wordt het als volgt opgehaald:
 
-* De bericht-id en correlatie-id van het bericht.
+* De bericht-id en correlatie-ID van het bericht.
 * De inhoud van het bericht.
 * Alle aangepaste eigenschappen van het bericht.
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 02/24/2020
-ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/13/2020
+ms.openlocfilehash: 731ab18346ac9f100862174312c2c9950026f1eb
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77604857"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272905"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Azure Machine Learning Visual Studio Code-extensie instellen
 
@@ -70,36 +70,36 @@ Nu u zich met uw accountgegevens bij Azure hebt aangemeld, gebruikt u de stappen
 1. Wanneer het opdrachtpalet wordt uitgebreid, volgt u de aanwijzingen.
 
     1. Selecteer uw Azure-abonnement.
-    1. Een **nieuwe Azure ML-werkruimte maken selecteren**
-    1. Selecteer het taaktype **TensorFlow Single-Node Training.**
-    1. Voer `train.py` in als het script om te trainen. Dit is het bestand dat code bevat voor een machine learning-model dat afbeeldingen van handgeschreven cijfers categoriseert.
-    1. Geef de volgende pakketten op als vereisten die moeten worden uitgevoerd.
-
-        ```text
-        pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
-        ```
+    1. Selecteer in de lijst met omgevingen **het bestand met afhankelijkheids van Conda**.
+    1. Druk op **Enter** om door het Conda-afhankelijkheidsbestand te bladeren. Dit bestand bevat de afhankelijkheden die nodig zijn om uw script uit te voeren. In dit geval is het `env.yml` afhankelijkheidsbestand `mnist-vscode-docs-sample` het bestand in de map.
+    1. Druk op **Enter** om door het trainingsscriptbestand te bladeren. Dit is het bestand dat code bevat voor een machine learning-model dat afbeeldingen van handgeschreven cijfers categoriseert. In dit geval is het script `train.py` om het `mnist-vscode-docs-sample` model te trainen het bestand in de map.
 
 1. Op dit punt verschijnt een configuratiebestand dat vergelijkbaar is met het onderstaande bestand in de teksteditor. De configuratie bevat de informatie die nodig is om de trainingstaak uit te voeren, zoals het bestand dat de code bevat om het model te trainen en eventuele Python-afhankelijkheden die in de vorige stap zijn opgegeven.
 
     ```json
     {
-        "workspace": "WS01311608",
-        "resourceGroup": "WS01311608-rg1",
+        "workspace": "WS04131142",
+        "resourceGroup": "WS04131142-rg1",
         "location": "South Central US",
-        "experiment": "WS01311608-exp1",
+        "experiment": "WS04131142-exp1",
         "compute": {
-            "name": "WS01311608-com1",
+            "name": "WS04131142-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS01311608-com1-rc1",
-            "condaDependencies": [
-                "python=3.6.2",
-                "tensorflow=1.15.0"
-            ],
-            "pipDependencies": [
-                "azureml-defaults"
-            ]
+            "filename": "WS04131142-com1-rc1",
+            "environment": {
+                "name": "WS04131142-env1",
+                "conda_dependencies": [
+                    "python=3.6.2",
+                    "tensorflow=1.15.0",
+                    "pip"
+                ],
+                "pip_dependencies": [
+                    "azureml-defaults"
+                ],
+                "environment_variables": {}
+            }
         }
     }
     ```

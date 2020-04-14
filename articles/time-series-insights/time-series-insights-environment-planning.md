@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 972bb2a804057037deedb448674abafcc175b21f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85910ee5467ecc9f4fe3c1a8bc13110b6f218e5c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314807"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272709"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Uw GA-omgeving met Inzichten in Azure Time Series plannen
 
@@ -79,9 +79,7 @@ U het bewaren en schakelen tussen de twee modi op de configuratiepagina van de o
 
 ### <a name="environment-planning"></a>Ruimtelijke ordening
 
-Het tweede gebied waarop u zich concentreren voor het plannen van uw Time Series Insights-omgeving, is de invallende capaciteit. Invallen de capaciteit is een afgeleide van de toewijzing per minuut.
-
-Vanuit een beperkingsperspectief wordt een ingevallen gegevenspakket met een pakketgrootte van 32 KB behandeld als 32 gebeurtenissen, elk 1 KB groot. De maximaal toegestane gebeurtenisgrootte is 32 KB. Gegevenspakketten groter dan 32 KB worden afgekapt.
+Het tweede gebied waarop u zich concentreren voor het plannen van uw Time Series Insights-omgeving, is de invallende capaciteit. De dagelijkse invallende opslag- en gebeurteniscapaciteit wordt gemeten per minuut, in blokken van 1 KB. De maximaal toegestane pakketgrootte is 32 KB. Gegevenspakketten groter dan 32 KB worden afgekapt.
 
 U de capaciteit van een S1- of S2 SKU verhogen tot 10 eenheden in één omgeving. U niet migreren van een S1-omgeving naar een S2. U niet migreren van een S2-omgeving naar een S1.
 

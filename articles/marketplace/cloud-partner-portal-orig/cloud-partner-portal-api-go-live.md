@@ -5,23 +5,25 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: bf7bebf6e72e373811879a311d70255c29988ed6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef22f7720a4af2239c55d1a01f9d3f11c878d66e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288577"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256311"
 ---
-<a name="go-live"></a>Ga live
-=======
+# <a name="go-live"></a>Ga live
+
+> [!NOTE]
+> De API's van cloudpartnerportalen zijn geïntegreerd met het Partner Center en blijven werken nadat uw aanbiedingen zijn gemigreerd naar partnercentrum. De integratie brengt kleine veranderingen met zich mee. Bekijk de wijzigingen in [Cloud Partner Portal API Reference](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar partnercentrum.
 
 Deze API start het proces voor het pushen van een app naar productie. Deze bewerking is meestal langlopend. Deze aanroep maakt gebruik van de e-maillijst van meldingen van de [bewerking Publish](./cloud-partner-portal-api-publish-offer.md) API.
 
  `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/golive?api-version=2017-10-31` 
 
-<a name="uri-parameters"></a>URI-parameters
+## <a name="uri-parameters"></a>URI-parameters
 --------------
 
 |  **Naam**      |   **Beschrijving**                                                           | **Gegevenstype** |
@@ -31,8 +33,7 @@ Deze API start het proces voor het pushen van een app naar productie. Deze bewer
 | api-versie    | Nieuwste versie van de API                                                   |  Date         |
 |  |  |  |
 
-
-<a name="header"></a>Header
+## <a name="header"></a>Header
 ------
 
 |  **Naam**       |     **Waarde**       |
@@ -41,22 +42,24 @@ Deze API start het proces voor het pushen van een app naar productie. Deze bewer
 | Autorisatie   | `Bearer YOUR_TOKEN` |
 |  |  |
 
-
-<a name="body-example"></a>Voorbeeld van het lichaam
-------------
+## <a name="body-example"></a>Voorbeeld van het lichaam
 
 ### <a name="response"></a>Antwoord
 
-`Operation-Location: https://cloudpartner.azure.com/api/publishers/contoso/offers/contoso-virtualmachineoffer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8`
+#### <a name="migrated-offers"></a>Gemigreerde aanbiedingen
 
+`Location: /api/publishers/contoso/offers/contoso-offer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8?api-version=2017-10-31`
+
+#### <a name="non-migrated-offers"></a>Niet-gemigreerde aanbiedingen
+
+`Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
 ### <a name="response-header"></a>Reactieheader
 
 |  **Naam**             |      **Waarde**                                                            |
 |  --------             |      ----------                                                           |
-| Operatielocatie    |  URL naar query om de huidige status van de bewerking te bepalen            |
+| Locatie    |  Het relatieve pad om de status van deze bewerking op te halen            |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Statuscodes voor antwoord
 

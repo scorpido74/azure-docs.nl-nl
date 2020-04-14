@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 4eef8a3a83456a9f2066311b9339b26b83afa009
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 42f8f51545f643e1ed9e1a23c9445f6e216fdabe
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633809"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273406"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Prestaties afstemmen door resultatensets op te slaan in de cache
 
@@ -71,10 +71,10 @@ Resultatenset in cache wordt opnieuw gebruikt voor een query als aan alle volgen
 - Er is een exacte overeenkomst tussen de nieuwe query en de vorige query die de cache van de resultaatset heeft gegenereerd.
 - Er zijn geen gegevens- of schemawijzigingen in de tabellen waaruit de resultaatset in de cache is gegenereerd.
 
-Voer deze opdracht uit om te controleren of een query is uitgevoerd met een hit or miss-hit of misser van de resultaatcache. De kolom result_set_cache retourneert 1 voor cachehit, 0 voor cachemissen en negatieve waarden om redenen waarom resultaatsetcache niet is gebruikt. Kijk [op sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
+Voer deze opdracht uit om te controleren of een query is uitgevoerd met een hit or miss-hit of misser van de resultaatcache. De result_cache_hit kolom retourneert 1 voor cachehit, 0 voor cachemissen en negatieve waarden om redenen waarom resultaatsetcache niet is gebruikt. Kijk [op sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
 
 ```sql
-SELECT request_id, command, result_set_cache FROM sys.dm_pdw_exec_requests
+SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests
 WHERE request_id = <'Your_Query_Request_ID'>
 ```
 

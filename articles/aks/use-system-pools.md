@@ -4,16 +4,19 @@ description: Meer informatie over het maken en beheren van systeemknooppuntgroep
 services: container-service
 ms.topic: article
 ms.date: 04/06/2020
-ms.openlocfilehash: ef5400f19f68fd2da45776d220e17777f58e46e6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986315"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259065"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Systeemknooppuntgroepen beheren in Azure Kubernetes Service (AKS)
 
-In Azure Kubernetes Service (AKS) worden knooppunten van dezelfde configuratie gegroepeerd in *knooppuntgroepen.* Knooppuntgroepen bevatten de onderliggende VM's waarop uw toepassingen worden uitgevoerd. Systeemknooppuntgroepen en gebruikersknooppuntgroepen zijn twee verschillende knooppuntgroepen voor uw AKS-clusters. Systeemknooppuntpools hosten essentiële systeemservices zoals CoreDNS. Gebruikersknooppuntgroepen zijn de plaats waar u uw toepassingsspecifieke pods plaatst. Elk AKS-cluster moet ten minste één systeemknooppuntpool bevatten met ten minste één knooppunt. Als u één systeemknooppuntgroep uitvoert voor uw AKS-cluster, raden we u aan ten minste drie knooppunten te gebruiken voor de knooppuntgroep. 
+In Azure Kubernetes Service (AKS) worden knooppunten van dezelfde configuratie gegroepeerd in *knooppuntgroepen.* Knooppuntgroepen bevatten de onderliggende VM's waarop uw toepassingen worden uitgevoerd. Systeemknooppuntgroepen en gebruikersknooppuntgroepen zijn twee verschillende knooppuntgroepen voor uw AKS-clusters. Systeemknooppuntpools dienen het primaire doel van het hosten van kritieke systeempods zoals CoreDNS en tunnelfront. Groepen gebruikersknooppunts dienen het primaire doel van het hosten van uw toepassingspods. Toepassingspods kunnen echter worden gepland op groepen met systeemknooppunts als u slechts één groep in uw AKS-cluster wilt hebben. Elk AKS-cluster moet ten minste één systeemknooppuntpool bevatten met ten minste één knooppunt. 
+
+> [!Important]
+> Als u één systeemknooppuntgroep voor uw AKS-cluster uitvoert in een productieomgeving, raden we u aan ten minste drie knooppunten te gebruiken voor de knooppuntgroep.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 

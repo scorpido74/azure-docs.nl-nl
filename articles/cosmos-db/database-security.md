@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: c92f045f2c8d4443d596697596363bda3d0df975
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985283"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273508"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Beveiliging in Azure Cosmos DB - overzicht
 
@@ -66,8 +66,8 @@ Laten we in detail ingaan op elk.
 |Globale replicatie|Azure Cosmos DB biedt kant-en-klare wereldwijde distributie, waarmee u uw gegevens met één klik op de knop repliceren naar een van de wereldwijde datacenters van Azure. Met globale replicatie u wereldwijd schalen en toegang tot uw gegevens met een lage latentie over de hele wereld bieden.<br><br>In het kader van beveiliging zorgt wereldwijde replicatie voor gegevensbescherming tegen regionale storingen.<br><br>Zie [Gegevens wereldwijd distribueren](distribute-data-globally.md) voor meer informatie.|
 |Regionale failovers|Als u uw gegevens in meer dan één datacenter hebt gerepliceerd, rolt Azure Cosmos DB automatisch over uw bewerkingen als een regionaal datacenter offline gaat. U een geprioriteerd overzicht maken van failoverregio's met behulp van de regio's waarin uw gegevens worden gerepliceerd. <br><br>Meer informatie in [Regionale failovers in Azure Cosmos DB](high-availability.md).|
 |Lokale replicatie|Zelfs binnen één datacenter repliceert Azure Cosmos DB automatisch gegevens voor hoge beschikbaarheid, zodat u de keuze hebt uit [consistentieniveaus.](consistency-levels.md) Deze replicatie garandeert een SLA [van](https://azure.microsoft.com/support/legal/sla/cosmos-db) 99,99% beschikbaarheid voor alle accounts met één regio en alle accounts met meerdere regio's met ontspannen consistentie en 99,999% leesbeschikbaarheid op alle databaseaccounts met meerdere regio's.|
-|Geautomatiseerde online back-ups|Azure Cosmos-databases worden regelmatig geback-upt en opgeslagen in een georedundante winkel. <br><br>Meer informatie over [automatische online back-up en herstel met Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md).|
-|Verwijderde gegevens herstellen|De geautomatiseerde online back-ups kunnen worden gebruikt om gegevens te herstellen die u mogelijk per ongeluk tot ~ 30 dagen na de gebeurtenis hebt verwijderd. <br><br>Meer informatie over [automatische online back-up en herstel met Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)|
+|Geautomatiseerde online back-ups|Azure Cosmos-databases worden regelmatig geback-upt en opgeslagen in een georedundante winkel. <br><br>Meer informatie over [automatische online back-up en herstel met Azure Cosmos DB](online-backup-and-restore.md).|
+|Verwijderde gegevens herstellen|De geautomatiseerde online back-ups kunnen worden gebruikt om gegevens te herstellen die u mogelijk per ongeluk tot ~ 30 dagen na de gebeurtenis hebt verwijderd. <br><br>Meer informatie over [automatische online back-up en herstel met Azure Cosmos DB](online-backup-and-restore.md)|
 |Gevoelige gegevens beschermen en isoleren|Alle gegevens in de regio's die worden vermeld in Wat is nieuw? is nu versleuteld in rust.<br><br>Persoonlijke gegevens en andere vertrouwelijke gegevens kunnen worden geïsoleerd tot specifieke containers en read-write, of alleen-lezen toegang kan worden beperkt tot specifieke gebruikers.|
 |Monitor voor aanvallen|Door het gebruik van [audit logging en activiteit logs](logging.md), u uw account te controleren op normale en abnormale activiteit. U bekijken welke bewerkingen zijn uitgevoerd op uw resources, wie de bewerking heeft geïnitieerd, wanneer de bewerking heeft plaatsgevonden, de status van de bewerking en nog veel meer, zoals weergegeven in de schermafbeelding na deze tabel.|
 |Reageren op aanvallen|Zodra u contact hebt opgenomen met Azure-ondersteuning om een potentiële aanval te melden, wordt een 5-stappenincidentresponsproces gestart. Het doel van het 5-stappenproces is om de normale servicebeveiliging en -bewerkingen zo snel mogelijk te herstellen nadat een probleem is gedetecteerd en een onderzoek wordt gestart.<br><br>Meer informatie in [Microsoft Azure Security Response in de cloud](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|

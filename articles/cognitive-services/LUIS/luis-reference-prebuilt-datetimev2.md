@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 04/13/2020
 ms.author: diberry
-ms.openlocfilehash: 30132983f37323e798efd330f5cc8f15c0a9d2b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33f8b787119e1c5d6d1a1bb28c94d9791a1c048e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270739"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272607"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2-voorgebouwde entiteit voor een LUIS-app
 
@@ -145,7 +145,7 @@ Elk element `values` van de array kan de volgende velden hebben:
 
 |Naam van eigenschap|Beschrijving van de eigenschap|
 |--|--|
-|Timex|tijd, datum of datumbereik, uitgedrukt in TIMEX-indeling dat de [ISO 8601-standaard](https://en.wikipedia.org/wiki/ISO_8601) en de TIMEX3-kenmerken voor annotatie volgt met behulp van de TimeML-taal. Deze annotatie wordt beschreven in de [TIMEX-richtlijnen](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf).|
+|Timex|tijd, datum of datumbereik, uitgedrukt in TIMEX-indeling dat de [ISO 8601-standaard](https://en.wikipedia.org/wiki/ISO_8601) en de TIMEX3-kenmerken voor annotatie volgt met behulp van de TimeML-taal.|
 |Mod|term die wordt gebruikt om te `before` `after`beschrijven hoe de waarde moet worden gebruikt, zoals , .|
 |type|Het subtype, dat een van de `datetime` `date`volgende `time` `daterange`punten `timerange` `datetimerange`kan `duration` `set`zijn: , , , , , , .|
 |waarde|**Optionele.** Een object met datumtijd in de indeling yyyy-MM-dd (datum), HH:mm:ss (tijd) yyyy-MM-dd HH:mm:ss (datum). Als `type` `duration`dat zo is, is de waarde het aantal seconden (duur) <br/> Alleen gebruikt `type` `datetime` als `date` `time`is of , , of 'duur.|

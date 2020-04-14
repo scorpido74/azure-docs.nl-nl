@@ -12,19 +12,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/21/2020
+ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 007e8d87c670376ad334c1c4e58fd93995930b78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616240"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273202"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor SAP ASE
 
-In dit document bestrijkt u verschillende gebieden waar u rekening mee moet houden bij de implementatie van SAP ASE in Azure IaaS. Als voorwaarde voor dit document moet u de [DBMS-implementatie van document Overwegingen voor Azure Virtual Machines DBMS voor SAP-workload](dbms_guide_general.md) en andere hulplijnen in de [SAP-werkbelasting op Azure-documentatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)hebben gelezen. Dit document heeft betrekking op SAP ASE dat draait op Linux en op Windows-besturingssystemen. De minimaal ondersteunde release op Azure is SAP ASE 16.0 Patch Level 2.  Het wordt aanbevolen om de nieuwste versie van SAP en het nieuwste patchniveau te implementeren.  Als minimum wordt SAP ASE 16.3 Patch Level 7 aanbevolen.  De meest recente versie van SAP is te vinden in [Targeted ASE 16.0 Release Schedule en CR lijst Informatie](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information).
+In dit document bestrijkt u verschillende gebieden waar u rekening mee moet houden bij de implementatie van SAP ASE in Azure IaaS. Als voorwaarde voor dit document moet u de [DBMS-implementatie van document Overwegingen voor Azure Virtual Machines DBMS voor SAP-workload](dbms_guide_general.md) en andere hulplijnen in de [SAP-werkbelasting op Azure-documentatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)hebben gelezen. Dit document heeft betrekking op SAP ASE dat draait op Linux en op Windows-besturingssystemen. De minimaal ondersteunde release op Azure is SAP ASE 16.0.02 (Release 16 Support Pack 2). Het wordt aanbevolen om de nieuwste versie van SAP en het nieuwste patchniveau te implementeren.  Als minimum wordt SAP ASE 16.0.03.07 (Release 16 Support Pack 3 Patch Level 7) aanbevolen.  De meest recente versie van SAP is te vinden in [Targeted ASE 16.0 Release Schedule en CR lijst Informatie](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information).
 
 Aanvullende informatie over releaseondersteuning met SAP-toepassingen of locatie van installatiemedia vindt u, naast in de SAP Product Availability Matrix op deze locaties:
 
@@ -84,7 +84,7 @@ Een voorbeeld van een configuratie voor een kleine SAP ASE DB Server met een dat
 | --- | --- | --- | --- |
 | VM-type | E4s_v3 (4 vCPU/32 GB RAM) | E4s_v3 (4 vCPU/32 GB RAM) | --- |
 | Versneld netwerken | Inschakelen | Inschakelen | ---|
-| SAP ASE-versie | 16,3 PL 7 of hoger | 16,3 PL 7 of hoger | --- |
+| SAP ASE-versie | 16.0.03.07 of hoger | 16.0.03.07 of hoger | --- |
 | Aantal gegevensapparaten | 4 | 4 | ---|
 | # van logapparaten | 1 | 1 | --- |
 | # van temp apparaten | 1 | 1 | meer voor SAP BW-workload |
@@ -105,7 +105,7 @@ Een voorbeeld van een configuratie voor een middelgrote SAP ASE DB Server met ee
 | --- | --- | --- | --- |
 | VM-type | E16s_v3 (16 vCPU/128 GB RAM) | E16s_v3 (16 vCPU/128 GB RAM) | --- |
 | Versneld netwerken | Inschakelen | Inschakelen | ---|
-| SAP ASE-versie | 16,3 PL 7 of hoger | 16,3 PL 7 of hoger | --- |
+| SAP ASE-versie | 16.0.03.07 of hoger | 16.0.03.07 of hoger | --- |
 | Aantal gegevensapparaten | 8 | 8 | ---|
 | # van logapparaten | 1 | 1 | --- |
 | # van temp apparaten | 1 | 1 | meer voor SAP BW-workload |
@@ -125,7 +125,7 @@ Een voorbeeld van een configuratie voor een kleine SAP ASE DB Server met een dat
 | --- | --- | --- | --- |
 | VM-type | E64s_v3 (64 vCPU/432 GB RAM) | E64s_v3 (64 vCPU/432 GB RAM) | --- |
 | Versneld netwerken | Inschakelen | Inschakelen | ---|
-| SAP ASE-versie | 16,3 PL 7 of hoger | 16,3 PL 7 of hoger | --- |
+| SAP ASE-versie | 16.0.03.07 of hoger | 16.0.03.07 of hoger | --- |
 | Aantal gegevensapparaten | 16 | 16 | ---|
 | # van logapparaten | 1 | 1 | --- |
 | # van temp apparaten | 1 | 1 | meer voor SAP BW-workload |
@@ -146,7 +146,7 @@ Een voorbeeld van een configuratie voor een kleine SAP ASE DB Server met een dat
 | --- | --- | --- | --- |
 | VM-type | M-serie (1,0 tot 4,0 TB RAM)  | M-serie (1,0 tot 4,0 TB RAM) | --- |
 | Versneld netwerken | Inschakelen | Inschakelen | ---|
-| SAP ASE-versie | 16,3 PL 7 of hoger | 16,3 PL 7 of hoger | --- |
+| SAP ASE-versie | 16.0.03.07 of hoger | 16.0.03.07 of hoger | --- |
 | Aantal gegevensapparaten | 32 | 32 | ---|
 | # van logapparaten | 1 | 1 | --- |
 | # van temp apparaten | 1 | 1 | meer voor SAP BW-workload |
@@ -203,7 +203,7 @@ SAP Software provisioning Manager (SWPM) geeft een optie om de database te versl
 
 ## <a name="sap-ase-on-azure-deployment-checklist"></a>CHECKLIST SAP ASE voor Azure-implementatie
  
-- SAP ASE 16.3 PL7 of hoger implementeren
+- SAP ASE 16.0.03.07 of hoger implementeren
 - Update naar de nieuwste versie en patches van FaultManager en SAPHostAgent
 - Implementeren op de nieuwste gecertificeerde besturingssysteem beschikbaar, zoals Windows 2019, Suse 15.1 of Redhat 7.6 of hoger
 - Sap-gecertificeerde VM's gebruiken – Azure VM SKU's met hoog geheugen, zoals Es_v3 of voor x-grote vm-skuisten van de M-serie m-serie, worden aanbevolen
@@ -277,7 +277,7 @@ Meer informatie over DBA Cockpit voor SAP ASE is te vinden in de volgende SAP No
 
 
 ## <a name="useful-links-notes--whitepapers-for-sap-ase"></a>Nuttige links, notities & whitepapers voor SAP ASE
-De startpagina voor [Sybase ASE 16.3 PL7 Documentatie](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US) geeft links naar verschillende documenten waarvan de documenten van:
+De startpagina voor [SAP ASE 16.0.03.07 Documentatie](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US) bevat links naar verschillende documenten waarvan de documenten van:
 
 - SAP ASE Learning Journey - Beheer & Monitoring
 - SAP ASE Learning Journey - Upgrade & installatie
@@ -303,11 +303,11 @@ Andere handige SAP-ondersteuningsnotities zijn:
 Andere informatie wordt gepubliceerd op 
 
 - [SAP-toepassingen op SAP Adaptive Server Enterprise](https://community.sap.com/topics/applications-on-ase)
-- [Sybase infocenter](http://infocenter.sybase.com/help/index.jsp) 
+- [SAP ASE infocenter](http://infocenter.sybase.com/help/index.jsp) 
+- [SAP ASE Always-on met 3e DR Node Setup](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)
 
 Een maandelijkse nieuwsbrief wordt gepubliceerd via [SAP support note #2381575](https://launchpad.support.sap.com/#/notes/2381575) 
 
-[Sybase ASE Always-on met 3e DR Node Setup](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199) 
 
 ## <a name="next-steps"></a>Volgende stappen
 Het artikel [SAP-workloads op Azure: checklist voor planning en implementatie controleren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)

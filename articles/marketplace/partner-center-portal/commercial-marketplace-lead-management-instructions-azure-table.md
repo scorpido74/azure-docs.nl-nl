@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: f511a60b533d6d1e0b1ae8847d0ee0fb6be3500c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a36c411b9ababc42adb51d82a316df4252c01e24
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288832"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251977"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Leadbeheer configureren met behulp van een Azure-tabel
 
@@ -66,12 +66,12 @@ Gebruik dit voorbeeld als een handleiding om een eenvoudige stroom te maken die 
 
    ![Mijn stromen **+ Gepland - van leeg**](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-5.  Selecteer op *het venster Een geplande stroom bouwen* onder *Elke* selectie "1" voor interval en "uur" voor frequentie. Geef de stroom ook een naam als je wilt. Selecteer **Maken**.
+5.    Selecteer op *het venster Een geplande stroom bouwen* onder *Elke* selectie "1" voor interval en "uur" voor frequentie. Geef de stroom ook een naam als je wilt. Selecteer **Maken**.
 
-    >[!Note]
-    >Hoewel in dit voorbeeld een interval van 1 uur wordt gebruikt, u het interval en de frequentie selecteren die het beste is voor uw bedrijfsbehoeften.
+>[!Note]
+>Hoewel in dit voorbeeld een interval van 1 uur wordt gebruikt, u het interval en de frequentie selecteren die het beste is voor uw bedrijfsbehoeften.
 
-    ![Bouw een geplande stroom.](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
+![Bouw een geplande stroom.](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
 
 6. Selecteer **+ Nieuwe stap**.
 7. Selecteer in het *zoekvenster Kiezen een actievenster* naar 'verleden tijd' en selecteer **Verleden tijd** onder Acties.
@@ -92,23 +92,17 @@ In de volgende reeks stappen maakt u verbinding met uw Azure-tabel en stelt u de
 
 9. **Selecteer**na de stap Verleden tijd en zoek naar 'Entiteiten opvragen' in het *actievenster Kiezen voor een actie.*
 10. Selecteer **onder Acties**de optie **Entiteiten opdoen (Azure Table Storage)**.
-11. Geef in het venster **Azure Table Storage** informatie op voor de volgende velden en selecteer **Maken:**
+11.    Geef in het venster **Azure Table Storage** informatie op voor de volgende velden en selecteer **Maken:**
+* *Verbindingsnaam* - geef een betekenisvolle naam voor de verbinding die u tot stand legt tussen deze stroom en de Azure Table.
+* *Naam van het opslagaccount* : geef de naam op van het opslagaccount voor uw Azure-tabel. U dit vinden op de pagina **Toegangssleutels van** het opslagaccount.
+* *Gedeelde opslagsleutel* : geef de sleutelwaarde voor uw winkelaccount voor uw Azure-tabel. U dit vinden op de pagina **Toegangssleutels van** het opslagaccount.
+    ![Azure-tabelopslag.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
-    * *Verbindingsnaam* - geef een betekenisvolle naam voor de verbinding die u tot stand legt tussen deze stroom en de Azure Table.
-    * *Naam van het opslagaccount* : geef de naam op van het opslagaccount voor uw Azure-tabel. U dit vinden op de pagina **Toegangssleutels van** het opslagaccount.
-    * *Gedeelde opslagsleutel* : geef de sleutelwaarde voor uw winkelaccount voor uw Azure-tabel. U dit vinden op de pagina **Toegangssleutels van** het opslagaccount.
+Nadat u op Maken hebt geklikt, ziet u een venster *Entiteiten opdoen.* Selecteer hier **Geavanceerde opties weergeven** en informatie geven voor de volgende velden:
+* *Tabel* : selecteer de naam van uw Azure Table Storage (uit stap 6 van instructies voor het configureren van een Azure-tabel). De volgende schermopname toont de prompt wanneer de tabel 'marketplaceleads' voor dit voorbeeld is geselecteerd.
+    ![Azure Table krijgt entiteiten.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        ![Azure-tabelopslag.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
-
-    Nadat u op Maken hebt geklikt, ziet u een venster *Entiteiten opdoen.* Selecteer hier **Geavanceerde opties weergeven** en informatie geven voor de volgende velden:
-
-       * *Tabel* : selecteer de naam van uw Azure Table Storage (uit stap 6 van instructies voor het configureren van een Azure-tabel). De volgende schermopname toont de prompt wanneer de tabel 'marketplaceleads' voor dit voorbeeld is geselecteerd.
-
-            ![Azure Table krijgt entiteiten.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
-
-        * *Filterquery* - Selecteer dit veld en plak deze functie in het veld:`Timestamp gt datetime'@{body('Get_past_time')}'`
-
-            ![Azure Table get tities - Filter Querry.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
+* *Filterquery* - Selecteer dit veld en plak `Timestamp gt datetime'@{body('Get_past_time')}'` ![deze functie in het veld: Azure Table get tities - Filter Query.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
 12. Nu u de verbinding met de Azure-tabel hebt ingesteld, selecteert u **Nieuwe stap** om een voorwaarde toe te voegen om de Azure-tabel te scannen op nieuwe leads. 
 
@@ -178,7 +172,10 @@ Wanneer u klaar bent om de leadmanagementgegevens voor uw aanbieding in de publi
 1. Navigeer naar de pagina **Installatie van aanbieding** voor uw aanbieding.
 2. Selecteer **Verbinding maken** onder de sectie Leadbeheer.
 3. Selecteer in het pop-upvenster Verbindingsdetails de optie **Azure Table** voor de **leadbestemming**en plak in de verbindingstekenreeks van het Azure-opslagaccount dat u hebt gemaakt door eerdere stappen te volgen in het **veld Tekenreeks voor accountverbinding voor opslag.**
-4. Selecteer **Opslaan**. 
+4. **E-mail contact** opnemen : e-mails verstrekken aan mensen in uw bedrijf die e-mailmeldingen moeten ontvangen wanneer een nieuwe lead wordt ontvangen. U meerdere e-mails verstrekken door ze te scheiden met puntkomma.
+5. Selecteer **Ok**.
+
+Klik op de knop Valideren om ervoor te zorgen dat u met succes verbinding hebt gemaakt met een leadbestemming. Als dit lukt, heb je een testlead in de hoofdbestemming.
 
 >[!Note]
 >U moet de rest van de aanbieding voltooien en publiceren voordat u leads voor de aanbieding ontvangen.

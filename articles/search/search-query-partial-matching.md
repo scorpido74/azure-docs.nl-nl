@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: db60a864ff29ff9eccdcfbdc0bd63587375d4bbd
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114970"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262873"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Gedeeltelijke term zoeken en patronen met speciale tekens (wildcard, regex, patronen)
 
@@ -22,6 +22,9 @@ Een *gedeeltelijke term zoekopdracht* verwijst naar query's die bestaan uit term
 Gedeeltelijke en patroonzoekopdrachten kunnen problematisch zijn als de index geen termen in de verwachte indeling heeft. Tijdens de [lexicale analysefase](search-lucene-query-architecture.md#stage-2-lexical-analysis) van indexering (uitgaande van de standaardstandaardanalyzer), worden speciale tekens verwijderd, samengestelde en samengestelde tekenreeksen opgesplitst en witruimte verwijderd; die allemaal patroonquery's kunnen veroorzaken als er geen overeenkomst wordt gevonden. Een telefoonnummer zoals `+1 (425) 703-6214` (tokenized als `"1"` `"425"`, `"703"` `"6214"`, , ) wordt `"3-62"` bijvoorbeeld niet weergegeven in een query omdat die inhoud niet echt in de index bestaat. 
 
 De oplossing is om een analyzer aan te roepen die een volledige tekenreeks behoudt, inclusief spaties en speciale tekens indien nodig, zodat u matchen op gedeeltelijke voorwaarden en patronen. Het maken van een extra veld voor een intacte tekenreeks, plus het gebruik van een content-preserving analyzer, is de basis van de oplossing.
+
+> [!TIP]
+> Bekend met postbode en REST API's? [Download de verzameling queryvoorbeelden](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples) om gedeeltelijke termen en speciale tekens op te vragen die in dit artikel worden beschreven.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Wat is gedeeltelijke zoekopdracht in Azure Cognitive Search
 
@@ -74,6 +77,7 @@ Bij het kiezen van een analyzer die langetermijntokens produceert, zijn de volge
 
 | Analyzer | Gedrag |
 |----------|-----------|
+| [taalanalysers](index-add-language-analyzers.md) | Behoudt koppeltekens in samengestelde woorden of tekenreeksen, klinkermutaties en werkwoordvormen. Als querypatronen streepjes bevatten, kan het gebruik van een taalanalyzer voldoende zijn. |
 | [Trefwoord](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | Inhoud van het hele veld wordt tokenized als één term. |
 | [Whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Scheidt alleen op witte ruimten. Termen met streepjes of andere tekens worden behandeld als één token. |
 | [aangepaste analyzer](index-add-custom-analyzers.md) | (aanbevolen) Met het maken van een aangepaste analyzer u zowel de tokenizer als het tokenfilter opgeven. De vorige analysesystemen moeten worden gebruikt zoals het is. Met een aangepaste analyzer u kiezen welke tokenizers en tokenfilters u wilt gebruiken. <br><br>Een aanbevolen combinatie is de [keyword tokenizer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) met een [kleintokenfilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Op zichzelf heeft de vooraf gedefinieerde [trefwoordanalyzer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) geen hoofdletters, waardoor query's kunnen mislukken. Een aangepaste analyzer geeft u een mechanisme voor het toevoegen van het kleine tokenfilter. |
@@ -151,7 +155,9 @@ Of u nu analysers evalueert of verder gaat met een specifieke configuratie, u mo
 
 ### <a name="use-built-in-analyzers"></a>Ingebouwde analysers gebruiken
 
-Ingebouwde of vooraf gedefinieerde analysatoren kunnen op `analyzer` naam worden opgegeven op een eigenschap van een velddefinitie, zonder dat er extra configuratie in de index vereist is. In het volgende voorbeeld wordt `whitespace` uitgelegd hoe u de analyzer op een veld zou instellen. Zie Lijst met vooraf gedefinieerde analysers voor meer informatie over beschikbare ingebouwde [analysers.](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference) 
+Ingebouwde of vooraf gedefinieerde analysatoren kunnen op `analyzer` naam worden opgegeven op een eigenschap van een velddefinitie, zonder dat er extra configuratie in de index vereist is. In het volgende voorbeeld wordt `whitespace` uitgelegd hoe u de analyzer op een veld zou instellen. 
+
+Zie Lijst met vooraf gedefinieerde analysers voor andere scenario's en voor meer informatie over andere ingebouwde [analysers.](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference) 
 
 ```json
     {

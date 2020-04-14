@@ -1,18 +1,18 @@
 ---
-title: Accountmigratie van Cloud Partner Portal naar Partner Center - Commerciële Marketplace voor Azure
-description: Uw account migreren van CPP naar Partnercenter. - Commerciële marktplaats voor Azure
+title: Accountmigratie van Cloud Partner Portal naar Partner Center - commerciële marktplaats voor Azure
+description: Uw account migreren van CPP naar Partnercenter. - commerciële marktplaats voor Azure
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 4aa336183d25a524246a2036fb95e0a7657b84f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e17a76d5a017400287644ad2da46caa5b6636654
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279807"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262295"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Accountmigratie van Cloud Partner-portal naar het Partnercentrum
 
@@ -79,4 +79,4 @@ Als u hulp nodig hebt bij het publiceren, certificeren of beheren van uw marktpl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw Commerciële Marketplace-account beheren in partnercentrum](./manage-account.md)
+- [Uw commerciële marktplaatsaccount beheren in partnercentrum](./manage-account.md)

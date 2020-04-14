@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: c64d87b2430cc1d733a67bbc1e803590a37b1714
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9d25e2e32f09cc681d85d5adffe53f1237d7200c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78190769"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255495"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Zelfstudie: Machine learning-modellen toepassen in Azure-functies met Python en TensorFlow
 
@@ -153,8 +153,10 @@ In Azure Functions is een functieproject een container voor een of meer afzonder
 
 Als u `classify` de functie wilt wijzigen om een afbeelding te classificeren op basis van de inhoud, gebruikt u een vooraf gebouwd TensorFlow-model dat is getraind met en geëxporteerd vanuit Azure Custom Vision Service. Het model, dat is opgenomen in de *map resources* van het monster dat u eerder hebt gekloond, classificeerde een afbeelding op basis van de vraag of het een hond of een kat bevat. Vervolgens voegt u enkele helpercode en afhankelijkheden toe aan uw project.
 
+Als u uw eigen model wilt bouwen met de gratis laag van de Custom Vision-service, volgt u de instructies in de [voorbeeldprojectopslagplaats.](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)
+
 > [!TIP]
-> Als u uw eigen model wilt bouwen met de gratis laag van de Custom Vision-service, volgt u de instructies in de [voorbeeldprojectopslagplaats.](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)
+> Als u uw TensorFlow-model onafhankelijk van de functie-app wilt hosten, u in plaats daarvan een bestandsshare met uw model aan uw Linux-functie-app monteren. Zie [Een bestandsshare voor een Python-functie-app monteren met Azure CLI](./scripts/functions-cli-mount-files-storage-linux.md)voor meer informatie.
 
 1. Voer in de *beginmap* de volgende opdracht uit om de modelbestanden naar de *map classificeren* te kopiëren. Zorg ervoor `\*` dat u in de opdracht. 
 
@@ -315,3 +317,4 @@ Zie ook:
 
 - [Implementeer de functie naar Azure met behulp van Visual Studio Code](https://code.visualstudio.com/docs/python/tutorial-azure-functions).
 - [Handleiding azure-functies Python-ontwikkelaar](./functions-reference-python.md)
+- [Een bestandsshare weergeven op een Python-functie-app met Azure CLI](./scripts/functions-cli-mount-files-storage-linux.md)

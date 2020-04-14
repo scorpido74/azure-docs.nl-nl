@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: ad56041f853d030e3a286610fe4872bffecaee12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a64dee6da521764a38fc60bee06545f6a561c297
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444665"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257692"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>Microsoft Azure Marketplace-installatiekopieën opgeven die beschikbaar zijn voor labmakers
 Als eigenaar van een labaccount kunt u de Marketplace-installatiekopieën opgeven die labmakers kunnen gebruiken in het labaccount. 
@@ -50,6 +50,19 @@ Als u meerdere afbeeldingen tegelijk wilt uitschakelen, schakelt u selectievakje
 Als u een uitgeschakelde afbeelding wilt inschakelen, selecteert u **... (ellips)** in de laatste kolom en selecteer **Afbeelding inschakelen**. U ook het selectievakje voor de naam van de afbeelding inschakelen en geselecteerde afbeeldingen op de werkbalk **inschakelen.** 
 
 Als u meerdere afbeeldingen tegelijk wilt uitschakelen, schakelt u selectievakjes in vóór de afbeeldingsnamen en selecteert u Geselecteerde afbeeldingen op de werkbalk **inschakelen.** 
+
+## <a name="enable-images-at-the-time-of-lab-creation"></a>Afbeeldingen inschakelen op het moment van het maken van het lab
+U meer afbeeldingen inschakelen op het moment dat het lab wordt gemaakt: 
+
+1. Aanmelden bij de [Azure Lab Services-website](https://labs.azure.com) met behulp van referenties van de eigenaar van **het labaccount**
+2. Selecteer de standaardafbeelding van de virtuele machine of de pijl-omlaag. 
+3. Selecteer **Meer afbeeldingsopties inschakelen**. 
+
+    ![Meer afbeeldingsopties inschakelen](../media/specify-marketplace-images/enable-more-images-menu.png)
+4. Volg instructies uit de vorige sectie om de afbeeldingen die u selecteert in te schakelen. 
+5. Mogelijk moet u het **venster Nieuw lab** sluiten en het opnieuw openen om de afbeeldingen te zien die u in de vorige stap hebt geselecteerd. 
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:

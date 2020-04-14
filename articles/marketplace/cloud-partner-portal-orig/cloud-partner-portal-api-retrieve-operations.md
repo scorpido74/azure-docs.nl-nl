@@ -5,17 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/14/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 4fc77407ae1c5854d3fe977da5a81f4226bf5305
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93b2ca700a987b86aedfdae55d58540c8ffe84ed
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280470"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255869"
 ---
-<a name="retrieve-operations"></a>Bewerkingen ophalen
-===================
+# <a name="retrieve-operations"></a>Bewerkingen ophalen
+
+> [!NOTE]
+> De API's van cloudpartnerportalen zijn geïntegreerd met het Partner Center en blijven werken nadat uw aanbiedingen zijn gemigreerd naar partnercentrum. De integratie brengt kleine veranderingen met zich mee. Bekijk de wijzigingen in [Cloud Partner Portal API Reference](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar partnercentrum.
 
 Hiermee haalt u alle bewerkingen op de aanbieding op of om een bepaalde bewerking voor de opgegeven operationId te krijgen. De client kan queryparameters gebruiken om te filteren op bewerkingen.
 
@@ -28,21 +30,18 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of om een bepaalde bewerkin
 ```
 
 
-<a name="uri-parameters"></a>URI-parameters
---------------
+## <a name="uri-parameters"></a>URI-parameters
 
 |  **Naam**          |      **Beschrijving**                                                                                           | **Gegevenstype** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  uitgeverId       |  Publisher-id, bijvoorbeeld`Contoso`                                                                   |  Tekenreeks       |
 |  aanbiedingId           |  Aanbiedings-id                                                                                              |  Tekenreeks       |
 |  operationId       |  GUID die de bewerking op het aanbod op een unieke basis identificeert. De operationId kan worden opgehaald met behulp van deze API en wordt ook geretourneerd in de HTTP-header van het antwoord voor een langdurige bewerking, zoals de [API voor publicatieaanbieding.](./cloud-partner-portal-api-publish-offer.md)  |   GUID   |
-|  gefilterdestatus    | Optionele queryparameter die wordt gebruikt `running`om te filteren op status (bijvoorbeeld) op de verzameling die door deze API wordt geretourneerd.  |   Tekenreeks |
-|  api-versie       | Nieuwste versie van API                                                                                           |    Date      |
+|  api-versie       | Nieuwste versie van API |    Date      |
 |  |  |  |
 
+## <a name="header"></a>Header
 
-<a name="header"></a>Header
-------
 
 |  **Naam**          |  **Waarde**           |
 |  ---------------   | -------------------- |
@@ -51,8 +50,7 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of om een bepaalde bewerkin
 |  |  |
 
 
-<a name="body-example"></a>Voorbeeld van het lichaam
-------------
+## <a name="body-example"></a>Voorbeeld van het lichaam
 
 ### <a name="response"></a>Antwoord
 
@@ -167,25 +165,35 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of om een bepaalde bewerkin
                     ],
                 "previewLinks": [],
                 "liveLinks": [],
-                "notificationEmails": "jondoe@contoso.com"
-            } 
+            }
         }
     ]
 ```
-
 
 ### <a name="response-body-properties"></a>Eigenschappen van antwoordlichaam
 
 |  **Naam**                    |  **Beschrijving**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | GUID die de bewerking op unieke wijze identificeert                                                       |
-|  submissionType              | Hiermee wordt aangegeven welk type bewerking wordt gerapporteerd voor de aanbieding, bijvoorbeeld`Publish/GGoLive`      |
+|  submissionType              | Hiermee wordt aangegeven welk type bewerking wordt gerapporteerd voor de aanbieding, bijvoorbeeld`Publish/GoLive`      |
 |  createdDateTime             | UTC-datum tijd toen de bewerking werd gemaakt                                                       |
 |  laatsteActionDateTime          | UTC-datum waarop de laatste update op de bewerking is uitgevoerd                                       |
 |  status                      | Status van de `not started` \| `running` \| `failed` \| `completed`bewerking, ofwel . Slechts één bewerking `running` kan status tegelijk hebben. |
 |  error                       | Foutbericht voor mislukte bewerkingen                                                               |
 |  |  |
 
+### <a name="response-step-properties"></a>Eigenschappen van reactiestap
+
+|  **Naam**                    |  **Beschrijving**                                                                                  |
+|  --------------------        |  ------------------------------------------------------------------------------------------------ |
+| geschatTijdsbestek | De geschatte duur van deze operatie |
+| id | De unieke id voor het stapproces |
+| description | Beschrijving van de stap |
+| stepName | De vriendelijke naam voor de stap |
+| status | De status van de `notStarted` \| `running` \| `failed` \| stap, ofwel`completed` |
+| berichten | Meldingen of waarschuwingen die tijdens de stap zijn aangetroffen. Matrix van tekenreeksen |
+| voortgangPercentage | Een geheel getal van 0 tot 100 dat de progressie van de stap aangeeft |
+| | |
 
 ### <a name="response-status-codes"></a>Statuscodes voor antwoord
 

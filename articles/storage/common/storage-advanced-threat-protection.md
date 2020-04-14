@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 195f4b5057c0e2d644ab44cc4c32e97c8662d36d
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4219bb471b92e7ddae72c50403f635498c90080d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422784"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251687"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Geavanceerde bedreigingsbeveiliging configureren voor Azure Storage
 
@@ -23,10 +23,16 @@ Geavanceerde bedreigingsbeveiliging voor Azure Storage biedt een extra laag beve
 
 Beveiligingswaarschuwingen worden geactiveerd wanneer er afwijkingen in de activiteit optreden. Deze beveiligingswaarschuwingen zijn geïntegreerd met [Azure Security Center](https://azure.microsoft.com/services/security-center/)en worden ook via e-mail verzonden naar abonnementsbeheerders, met details over verdachte activiteiten en aanbevelingen over het onderzoeken en oplossen van bedreigingen.
 
-> [!NOTE]
-> Geavanceerde bedreigingsbeveiliging voor Azure Storage is momenteel alleen beschikbaar voor Blob-opslag. Deze service is beschikbaar in amerikaanse overheidsclouds, maar geen andere soevereine of Azure-overheidscloudregio's. Zie de [prijspagina](https://azure.microsoft.com/pricing/details/security-center/)van azure security center voor prijsgegevens, waaronder een gratis proefperiode van 30 dagen.
+De service neemt diagnostische logboeken van lezen, schrijven en verwijderen van aanvragen naar Blob Storage voor bedreigingsdetectie. Als u de waarschuwingen van geavanceerde bedreigingsbeveiliging wilt onderzoeken, u gerelateerde opslagactiviteiten bekijken met Storage Analytics Logging. Zie **Logboekregistratie configureren** in [Monitor een opslagaccount in de Azure-portal](storage-monitor-storage-account.md#configure-logging)configureren voor meer informatie.
 
-Geavanceerde bedreigingsbeveiliging voor Azure Storage neemt diagnostische logboeken van lezen, schrijven en verwijderen van aanvragen voor Blob-opslag voor bedreigingsdetectie in. Als u de waarschuwingen van geavanceerde bedreigingsbeveiliging wilt onderzoeken, u gerelateerde opslagactiviteiten bekijken met Storage Analytics Logging. Zie **Logboekregistratie configureren** in [Monitor een opslagaccount in de Azure-portal](storage-monitor-storage-account.md#configure-logging)configureren voor meer informatie.
+## <a name="availability"></a>Beschikbaarheid
+
+Geavanceerde bedreigingsbeveiliging voor Azure Storage is momenteel alleen beschikbaar voor [Blob Storage.](https://azure.microsoft.com/services/storage/blobs/) 
+
+Deze service is beschikbaar in alle openbare clouds en amerikaanse overheidsclouds, maar geen andere soevereine of Azure-overheidscloudregio's.
+
+Zie de [prijspagina](https://azure.microsoft.com/pricing/details/security-center/)van azure security center voor prijsgegevens, waaronder een gratis proefperiode van 30 dagen.
+
 
 ## <a name="set-up-advanced-threat-protection"></a>Geavanceerde bescherming tegen bedreigingen instellen
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 951f24ad06014f6d95f10c91e1bad8e99bbbc736
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991770"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272692"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnose van Standard Load Balancer met metrische gegevens, meldingen en status van resources
 
@@ -37,8 +37,8 @@ De verschillende Standard Load Balancer-configuraties bieden de volgende statist
 
 | Gegevens | Resourcetype | Beschrijving | Aanbevolen aggregatie |
 | --- | --- | --- | --- |
-| Beschikbaarheid van gegevenspad (VIP-beschikbaarheid)| Openbare en interne load balancer | Standard Load Balancer oefent continu het gegevenspad uit vanuit een regio naar de front-end van de load balancer, helemaal tot aan de SDN-stack die uw VM ondersteunt. Zolang er gezonde exemplaren blijven, volgt de meting hetzelfde pad als het load-balanced verkeer van uw toepassing. Het gegevenspad dat uw klanten gebruiken, wordt ook gevalideerd. De meting is onzichtbaar voor uw toepassing en verstoort geen andere bewerkingen.| Average |
-| Status van status van status (BESCHIKBAARHEID VAN DIP) | Openbare en interne load balancer | Standard Load Balancer maakt gebruik van een gedistribueerde health-probing service die de status van uw toepassingseindpunt controleert op basis van uw configuratie-instellingen. Deze statistiek biedt een geaggregeerde of gefilterde weergave per eindpunt van elk instantieeindpunt in de groep load balancer. U zien hoe Load Balancer de status van uw toepassing bekijkt, zoals aangegeven door uw configuratie van de statussonde. |  Average |
+| Beschikbaarheid van gegevenspad | Openbare en interne load balancer | Standard Load Balancer oefent continu het gegevenspad uit vanuit een regio naar de front-end van de load balancer, helemaal tot aan de SDN-stack die uw VM ondersteunt. Zolang er gezonde exemplaren blijven, volgt de meting hetzelfde pad als het load-balanced verkeer van uw toepassing. Het gegevenspad dat uw klanten gebruiken, wordt ook gevalideerd. De meting is onzichtbaar voor uw toepassing en verstoort geen andere bewerkingen.| Average |
+| Status van status status van status van status van status van | Openbare en interne load balancer | Standard Load Balancer maakt gebruik van een gedistribueerde health-probing service die de status van uw toepassingseindpunt controleert op basis van uw configuratie-instellingen. Deze statistiek biedt een geaggregeerde of gefilterde weergave per eindpunt van elk instantieeindpunt in de groep load balancer. U zien hoe Load Balancer de status van uw toepassing bekijkt, zoals aangegeven door uw configuratie van de statussonde. |  Average |
 | SYN-pakketten (synchroniseren) | Openbare en interne load balancer | Standard Load Balancer beëindigt geen TCP-verbindingen (Transmission Control Protocol) of werkt niet samen met TCP- of UDP-pakketstromen. Stromen en hun handdrukken bevinden zich altijd tussen de bron en de VM-instantie. Om uw TCP-protocolscenario's beter op te lossen, u gebruik maken van SYN-pakkettentellers om te begrijpen hoeveel TCP-verbindingspogingen worden uitgevoerd. De statistiek rapporteert het aantal TCP SYN-pakketten dat is ontvangen.| Average |
 | SNAT-verbindingen | Public load balancer |Standard Load Balancer rapporteert het aantal uitgaande stromen dat is vermomd naar de front-end van het ip-adres van het publiek. SNAT-poorten (Source Network Address Translation) zijn een uitputtende bron. Deze statistiek kan een indicatie geven van hoe zwaar uw toepassing is die afhankelijk is van SNAT voor uitgaande afkomstige stromen. Tellers voor geslaagde en mislukte uitgaande SNAT-stromen worden gerapporteerd en kunnen worden gebruikt om de status van uw uitgaande stromen op te lossen en te begrijpen.| Average |
 | Toegewezen SNAT-poorten | Public load balancer | Standard Load Balancer rapporteert het aantal SNAT-poorten dat per backend-instantie is toegewezen | Gemiddelde. |
@@ -85,13 +85,13 @@ Waarschuwingen configureren:
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Veelvoorkomende diagnostische scenario's en aanbevolen weergaven
 
-#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Is het gegevenspad omhoog en beschikbaar voor mijn load balancer VIP?
+#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-frontend"></a>Is het gegevenspad beschikbaar en beschikbaar voor mijn Load Balancer Frontend?
 <details><summary>Uitvouwen</summary>
 
-De statistiek VIP-beschikbaarheid beschrijft de status van het gegevenspad in de regio naar de compute host waar uw VM's zich bevinden. De statistiek is een weerspiegeling van de status van de Azure-infrastructuur. U de statistiek gebruiken om:
+De beschikbaarheidsstatistiek voor gegevenspad beschrijft de status van het gegevenspad in het gebied naar de compute host waar uw VM's zich bevinden. De statistiek is een weerspiegeling van de status van de Azure-infrastructuur. U de statistiek gebruiken om:
 - Bewaken van de externe beschikbaarheid van uw service
 - Graaf dieper en begrijp of het platform waarop uw service wordt geïmplementeerd, gezond is of dat uw gast-besturingssysteem of toepassingsinstantie in orde is.
-- Isoleer of een gebeurtenis gerelateerd is aan uw service of het onderliggende gegevensvlak. Verwar deze statistiek niet met de status van de status van de status van de status van de status van de status van de status van de sonde ('DIP-beschikbaarheid').
+- Isoleer of een gebeurtenis gerelateerd is aan uw service of het onderliggende gegevensvlak. Verwar deze statistiek niet met de status van de status van de status van de status van de status van de status van de status van de status van de sonde ('Beschikbaarheid van backend-instantie').
 
 Ga als volgt te werk om de beschikbaarheid van gegevenspad voor uw resources voor standaardlastbalansen op te halen:
 1. Controleer of de juiste resource voor de load balancer is geselecteerd. 
@@ -107,7 +107,7 @@ De statistiek wordt gegenereerd door een actieve in-band meting. Een indringende
 
 Een pakket dat overeenkomt met de front-end en regel van uw implementatie wordt periodiek gegenereerd. Het doorkruist de regio van de bron naar de host waar een VM in de back-end pool zich bevindt. De infrastructuur van de load balancer voert dezelfde taakverdelings- en vertaalbewerkingen uit als voor al het andere verkeer. Deze sonde is in-band op uw load-balanced endpoint. Nadat de sonde op de compute host is aangekomen, waar een gezonde VM in de back-endpool zich bevindt, genereert de compute host een antwoord op de indringende service. Uw VM ziet dit verkeer niet.
 
-Vip beschikbaarheid mislukt om de volgende redenen:
+Beschikbaarheid van gegevenspad mislukt om de volgende redenen:
 - Uw implementatie heeft geen gezonde VM's meer in de back-endpool. 
 - Er is een storing in de infrastructuur opgetreden.
 
@@ -116,7 +116,7 @@ Voor diagnostische doeleinden u de [statistiek Beschikbaarheid van gegevenspad g
 Gebruik **Gemiddeld** als aggregatie voor de meeste scenario's.
 </details>
 
-#### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>Reageren de back-end exemplaren voor mijn VIP op sondes?
+#### <a name="are-the-backend-instances-for-my-load-balancer-responding-to-probes"></a>Reageren de backend-exemplaren voor mijn load balancer op sondes?
 <details>
   <summary>Uitvouwen</summary>
 De statusstatistiek status status van de status van de status van de status van de status van de status beschrijft de statusstatus van uw toepassing zoals die door u is geconfigureerd wanneer u de statussonde van uw load balancer configureert. De load balancer gebruikt de status van de statussonde om te bepalen waar nieuwe stromen moeten worden verzonden. Statussen zijn afkomstig van een Azure-infrastructuuradres en zijn zichtbaar in het gastbesturingssysteem van de VM.
@@ -209,19 +209,19 @@ Ga als u de statistieken over het aantal pere of het aantal pakketten wilt krijg
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>Hoe diagnosticeer ik de implementatie van mijn load balancer?
 <details>
   <summary>Uitvouwen</summary>
-Door een combinatie van de VIP-beschikbaarheid en health probe metrics op een enkele grafiek u identificeren waar te zoeken naar het probleem en het probleem op te lossen. U de zekerheid krijgen dat Azure correct werkt en deze kennis gebruiken om definitief te bepalen dat de configuratie of toepassing de hoofdoorzaak is.
+Door een combinatie van de statistieken Gegevenspadbeschikbaarheid en statusstatus van gegevenspad in één grafiek te gebruiken, u bepalen waar u het probleem moet zoeken en het probleem oplossen. U de zekerheid krijgen dat Azure correct werkt en deze kennis gebruiken om definitief te bepalen dat de configuratie of toepassing de hoofdoorzaak is.
 
 U statussen van sondestatistieken gebruiken om te begrijpen hoe Azure de status van uw implementatie bekijkt volgens de configuratie die u hebt opgegeven. Kijken naar de gezondheid sondes is altijd een grote eerste stap in het toezicht of het bepalen van een oorzaak.
 
-U een stap verder gaan en VIP-beschikbaarheidsstatistieken gebruiken om inzicht te krijgen in hoe Azure de status van het onderliggende gegevensvlak bekijkt dat verantwoordelijk is voor uw specifieke implementatie. Wanneer u beide statistieken combineert, u isoleren waar de fout zich kan begeven, zoals in dit voorbeeld wordt geïllustreerd:
+U een stap verder gaan en de beschikbaarheidsstatistiek van gegevenspad gebruiken om inzicht te krijgen in hoe Azure de status van het onderliggende gegevensvlak bekijkt dat verantwoordelijk is voor uw specifieke implementatie. Wanneer u beide statistieken combineert, u isoleren waar de fout zich kan begeven, zoals in dit voorbeeld wordt geïllustreerd:
 
 ![Gegevenspadbeschikbaarheid en statusstatistieken van statussen van gegevenstypen combineren](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
 
 *Afbeelding: Gegevenspadbeschikbaarheid combineren en statusstatistieken van statussen van status van status van status*
 
 In de grafiek worden de volgende gegevens weergegeven:
-- De infrastructuur voor het hosten van uw VM's was niet beschikbaar en op 0 procent aan het begin van de grafiek. Later was de infrastructuur gezond en waren de VM's bereikbaar en werd meer dan één VM in de back-end geplaatst. Deze informatie wordt aangegeven door de blauwe tracering voor beschikbaarheid van gegevenspad (VIP beschikbaarheid), die later op 100 procent. 
-- De status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de gezondheid (DIP), aangegeven door het paarse spoor, bevindt zich op 0 procent aan het begin van de grafiek. Het omcirkelde gebied in groene hoogtepunten waar de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de ziekte werd en op welk punt de implementatie van de klant nieuwe stromen kon accepteren.
+- De infrastructuur voor het hosten van uw VM's was niet beschikbaar en op 0 procent aan het begin van de grafiek. Later was de infrastructuur gezond en waren de VM's bereikbaar en werd meer dan één VM in de back-end geplaatst. Deze informatie wordt aangegeven door het blauwe spoor voor de beschikbaarheid van gegevenspad, die later op 100 procent. 
+- De status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de sonde is op 0 procent aan het begin van de grafiek. Het omcirkelde gebied in groene hoogtepunten waar de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status is gezond geworden en op welk punt de implementatie van de klant nieuwe stromen kon accepteren.
 
 De grafiek stelt klanten in staat om de implementatie zelf op te lossen zonder te hoeven raden of ondersteuning te vragen of er andere problemen optreden. De service was niet beschikbaar omdat de statussondes niet beschikbaar waren vanwege een verkeerde configuratie of een mislukte toepassing.
 </details>

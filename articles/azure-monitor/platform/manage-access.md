@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 1e559309b8e8d9768ca2f79dabfb01ec6086a961
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/10/2019
+ms.openlocfilehash: b8d7f995997b828c2323b3e6934b97354c2f8c8b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348725"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255240"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Toegang tot logboekgegevens en werkruimten beheren in Azure Monitor
 
@@ -91,7 +91,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 }
 ```
 
-### <a name="using-a-resource-manager-template"></a>Een resourcemanagersjabloon gebruiken
+### <a name="using-a-resource-manager-template"></a>Een Resource Manager-sjabloon gebruiken
 
 Als u de toegangsmodus wilt configureren in een Azure Resource Manager-sjabloon, stelt u de functievlag **van EnableLogAccessUsingOnlyResourcePermissions** in op de werkruimte op een van de volgende waarden.
 
@@ -273,7 +273,7 @@ Als u een rol wilt maken met alleen toegang tot de tabel _SecurityBaseline,_ maa
 
  Aangepaste logboeken worden gemaakt op basis van gegevensbronnen zoals aangepaste logboeken en HTTP Data Collector API. De eenvoudigste manier om het type logboek te identificeren, is door de tabellen te controleren die worden vermeld onder [Aangepaste logboeken in het logboekschema](../log-query/get-started-portal.md#understand-the-schema).
 
- U momenteel geen toegang verlenen tot afzonderlijke aangepaste logboeken, maar u wel toegang verlenen tot alle aangepaste logboeken. Als u een rol wilt maken met toegang tot alle aangepaste logboeken, maakt u een aangepaste rol met de volgende acties:
+ U geen toegang verlenen tot afzonderlijke aangepaste logboeken, maar u wel toegang verlenen tot alle aangepaste logboeken. Als u een rol wilt maken met toegang tot alle aangepaste logboeken, maakt u een aangepaste rol met de volgende acties:
 
 ```
 "Actions":  [
@@ -282,6 +282,9 @@ Als u een rol wilt maken met alleen toegang tot de tabel _SecurityBaseline,_ maa
     "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
 ],
 ```
+Een alternatieve benadering voor het beheren van toegang tot aangepaste logboeken is om ze toe te wijzen aan een Azure-bron en toegang te beheren met behulp van het resource-contextparadigma. Als u deze methode wilt gebruiken, moet u de bron-id opnemen door deze op te geven in de [x-ms-AzureResourceId-header](data-collector-api.md#request-headers) wanneer gegevens worden ingenomen om Analytics te loggen via de [HTTP Data Collector API.](data-collector-api.md) De resource-id moet geldig zijn en er toegangsregels op zijn toegepast. Nadat de logs zijn ingenomen, zijn ze toegankelijk voor mensen met leestoegang tot de bron, zoals hier uitgelegd.
+
+Soms zijn aangepaste logboeken afkomstig van bronnen die niet rechtstreeks zijn gekoppeld aan een specifieke bron. Maak in dit geval een resourcegroep om de toegang tot deze logboeken te beheren. De resourcegroep brengt geen kosten met zich mee, maar geeft u wel een geldige bron-id om de toegang tot de aangepaste logboeken te beheren. Als een specifieke firewall bijvoorbeeld aangepaste logboeken verzendt, maakt u een resourcegroep met de naam 'MyFireWallLogs' en controleert u of de API-aanvragen de bron-id van 'MyFireWallLogs' bevatten. De firewalllogboekrecords zijn dan alleen toegankelijk voor gebruikers die toegang hebben gekregen tot MyFireWallLogs of gebruikers met volledige werkruimtetoegang.          
 
 ### <a name="considerations"></a>Overwegingen
 

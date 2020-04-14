@@ -2,17 +2,17 @@
 title: Azure CDN van Verizon Premium-regels enginefuncties | Microsoft Documenten
 description: Referentiedocumentatie voor Azure CDN van de enginefuncties van Verizon Premium-regels.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 373e7838327d11b1b54278ee0c16c6e6ae554b0b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247577"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253489"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN van Verizon Premium regels engine functies
 
@@ -846,7 +846,7 @@ Normaal gesproken, wanneer de maximale leeftijd van een asset verstrijkt, stuurt
 
 Als de POP niet in staat is om een verbinding met de oorsprongsserver tot stand te brengen tijdens een dergelijke revalidatie, bepaalt deze interne Max-Stale-functie of en hoe lang de POP het nu verouderde actief kan blijven bedienen.
 
-Houd er rekening mee dat dit tijdsinterval begint wanneer de maximumleeftijd van het asset verloopt, niet wanneer de mislukte revalidatie plaatsvindt. Daarom is de maximale periode waarin een actief kan worden geserveerd zonder succesvolle revalidatie de hoeveelheid tijd die is opgegeven door de combinatie van max-age plus max-muf. Als een asset bijvoorbeeld om 9:00 in de cache is opgeslagen met een maximale leeftijd van 30 minuten en een maximale verouderde van 15 minuten, zou een mislukte revalidatiepoging om 9:44 ertoe leiden dat een eindgebruiker het verouderde in cache opgeslagen actief ontvangt, terwijl een mislukte revalidatiepoging van 9:46 zou resulteren in de eindgebruiker die een time-out van 504 Gateway ontvangt.
+Houd er rekening mee dat dit tijdsinterval begint wanneer de maximumleeftijd van het asset verloopt, niet wanneer de mislukte revalidatie plaatsvindt. Daarom is de maximale periode waarin een actief kan worden geserveerd zonder succesvolle revalidatie de hoeveelheid tijd die is opgegeven door de combinatie van max-age plus max-muf. Als een asset bijvoorbeeld om 9:00 in de cache is opgeslagen met een maximale leeftijd van 30 minuten en een maximale verouderde van 15 minuten, zou een mislukte revalidatiepoging om 9:44 ertoe leiden dat een eindgebruiker het verouderde item in de cache ontvangt, terwijl een mislukte validatiepoging van 9:46 ertoe zou leiden dat de eindgebruiker een time-out van 504 gateway ontvangt.
 
 Elke waarde die voor deze functie `Cache-Control: must-revalidate` `Cache-Control: proxy-revalidate` is geconfigureerd, wordt vervangen door of kopteksten die van de oorspronkelijke server zijn ontvangen. Als een van deze headers wordt ontvangen van de oorsprongsserver wanneer een asset in eerste instantie in de cache wordt opgeslagen, wordt er geen verouderd item in de cache weergegeven. In een dergelijk geval, als de POP niet in staat is om opnieuw te valideren met de oorsprong wanneer het interval van de maximale leeftijd van het actief is verstreken, geeft de POP een time-outfout van 504 Gateway als resultaat.
 
@@ -1240,7 +1240,7 @@ URL-omleiding is alleen van toepassing op 3xx-antwoordcodes.
 
 De optie Optionele koptekstwaarde ondersteunt alfanumerieke tekens, aanhalingstekens en spaties.
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Verificatie
 
 Deze functie ondersteunt de mogelijkheid om de HEADER WWW-Authenticate op te nemen wanneer u reageert op een ongeautoriseerd verzoek om inhoud die is beschermd door verificatie op basis van tokens. Als de HEADER WWW-Authenticate is ingesteld op 'basic' in uw configuratie, wordt de onbevoegde gebruiker om accountgegevens gevraagd.
 

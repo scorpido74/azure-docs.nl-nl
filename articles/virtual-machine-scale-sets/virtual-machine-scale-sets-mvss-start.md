@@ -1,19 +1,19 @@
 ---
 title: Meer informatie over sjablonen voor het schalen van virtuele machines
 description: Meer informatie over het maken van een sjabloon voor basisschaalsets voor virtuele machines in Azure via verschillende eenvoudige stappen.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 04/26/2019
-ms.author: manayar
-ms.openlocfilehash: 24db9b2d39771c481a8c43e2b55f12cef381b4d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 9c6a30a5f08b33adfa515973962236516f34fbf3
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76271893"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273389"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Meer informatie over sjablonen voor het schalen van virtuele machines
 [Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) zijn bijzonder handig om groepen gerelateerde resources te implementeren. In deze zelfstudiereeks ziet u hoe u een sjabloon voor basisschaalsets maakt en hoe u deze sjabloon aanpassen aan verschillende scenario's. Alle voorbeelden komen uit deze [GitHub repository.](https://github.com/gatneil/mvss)

@@ -1,20 +1,20 @@
 ---
-title: Veelgestelde vragen en terminologie voor de Commercial Marketplace analytics in Partner Center
-description: Meer informatie over het beantwoorden van veelgestelde vragen over Commerciële Marketplace-analyses. Bevat een gegevenswoordenboek voor analyseterminologie.
+title: Veelgestelde vragen en terminologie voor de commerciële marktplaatsanalyse in Partner Center
+description: Meer informatie over het beantwoorden van veelgestelde vragen over commerciële marktplaatsanalyses. Bevat een gegevenswoordenboek voor analyseterminologie.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: d53ae01fb302382ca5bc2d31e729e153aea6c838
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7367e58de818c20723c02a6763b1bf1e3b18f24
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286078"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251823"
 ---
-# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Veelgestelde vragen en terminologie voor Commercial Marketplace analytics
+# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Veelgestelde vragen en terminologie voor commerciële marktplaatsanalyse
 
 In dit artikel worden veelgestelde vragen over analyseberichten in partnercentrum beantwoord en wordt ook een woordenboek met terminologie voor analyses weergegeven.
 
@@ -29,14 +29,14 @@ In deze sectie vindt u antwoorden op veelgestelde vragen over nog **geen** besch
 Waarom u dit bericht krijgt:
 
 - Er bestaan momenteel geen acquisities voor uw gepubliceerde aanbiedingen in marketplace. Dit kan betekenen dat uw aanbiedingen live zijn in de markt en het verkrijgen van weergaven van klanten in de productdisplaypagina's, maar klanten hebben nog geen actie ondernomen om ze te kopen en te implementeren.
-- Het publiceren van uw aanbieding is mogelijk in behandeling en is nog niet live. Alleen live aanbiedingen kunnen worden overgenomen door klanten. Zie Overzicht in het [dashboard Analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)om de status van uw aanbiedingen te controleren. Zie [Overzichtsdashboard in Commercial Marketplace-analyses](./summary-dashboard.md)voor meer informatie.
+- Het publiceren van uw aanbieding is mogelijk in behandeling en is nog niet live. Alleen live aanbiedingen kunnen worden overgenomen door klanten. Zie Overzicht in het [dashboard Analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)om de status van uw aanbiedingen te controleren. Zie [Overzichtsdashboard in commerciële marktplaatsanalyses](./summary-dashboard.md)voor meer informatie.
 - Uw aanbiedingen kunnen worden vermeld als **Contact mij,** die zijn alleen op de lijst aanbiedingen en kan niet worden gekocht door klanten in de markt. Hoewel deze aanbiedingen leads genereren en met u worden gedeeld, worden bestellingen niet gemaakt voor deze aanbiedingen omdat ze niet kunnen worden gekocht. Als u het type aanbiedingsvermelding wilt controleren, gaat u naar de installatiepagina.
 
 **Ik weet dat ik analysegegevens heb, maar het onderstaande bericht verschijnt:**
 
 ![Geen gegevens voor een bepaald datumbereik](./media/analytics-faq-data-range.png)
 
-Als u dit bericht ontvangt, betekent dit dat u analysegegevens hebt, maar dat er geen gegevens zijn voor het datumbereik dat u hebt geselecteerd. Selecteer een ander datumbereik of aangepast datumbereik om gegevens sinds 2010 weer te geven. Zie voor meer informatie het gedeelte Datumbereik van [Overzichtsdashboard in Commerciële Marketplace-analyses](./summary-dashboard.md).
+Als u dit bericht ontvangt, betekent dit dat u analysegegevens hebt, maar dat er geen gegevens zijn voor het datumbereik dat u hebt geselecteerd. Selecteer een ander datumbereik of aangepast datumbereik om gegevens sinds 2010 weer te geven. Zie voor meer informatie het gedeelte Datumbereik van [Overzichtsdashboard in commerciële marktplaatsanalyses](./summary-dashboard.md).
 
 ## <a name="dictionary-of-data-terms"></a>Woordenboek van gegevenstermen
 
@@ -96,10 +96,10 @@ Als u dit bericht ontvangt, betekent dit dat u analysegegevens hebt, maar dat er
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Analytics voor de commerciële marktplaats voor](./analytics.md)een overzicht van analyserapporten die beschikbaar zijn in het Partnercenter Commercial Marketplace.
-- Zie [Overzichtsdashboard in Commercial Marketplace-analyses](./summary-dashboard.md)voor grafieken, trends en waarden van geaggregeerde gegevens die de activiteit op de markt voor uw aanbieding samenvatten.
-- Zie [Orders Dashboard in Commercial Marketplace analytics](./orders-dashboard.md)voor informatie over uw bestellingen in een grafische en downloadbare indeling.
-- Zie [Gebruiksdashboard in Commercial Marketplace-analyses](./usage-dashboard.md)voor virtuele machine (VM) voor gebruiks- en factureringsstatistieken met een datameter.
-- Zie Customer Dashboard in Commercial Marketplace [analytics](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, inclusief groeitrends.
-- Zie [Downloads Dashboard in Commercial Marketplace analytics](./downloads-dashboard.md)voor een lijst met uw downloadaanvragen van de afgelopen 30 dagen.
-- Zie [Dashboard Beoordelingen en beoordelingen in Commercial Marketplace-analyses](./ratings-reviews.md)voor ziet u in een geconsolideerde weergave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource.
+- Zie [Analytics voor de commerciële marktplaats voor](./analytics.md)de commerciële marktplaats voor een overzicht van analyserapporten die beschikbaar zijn in de commerciële marktplaats voor het Partnercentrum.
+- Zie [Overzichtsdashboard in commerciële marktplaatsanalyses](./summary-dashboard.md)voor grafieken, trends en waarden van geaggregeerde gegevens die de activiteit op de markt voor uw aanbieding samenvatten.
+- Zie [Orders Dashboard in commerciële marktplaatsanalyses](./orders-dashboard.md)voor informatie over uw bestellingen in een grafische en downloadbare indeling.
+- Zie [Gebruiksdashboard in commerciële marktplaatsanalyses](./usage-dashboard.md)voor virtuele machine (VM) voor gebruiks- en factureringsstatistieken met een datameter.
+- Zie [Customer Dashboard in commerciële marktplaatsanalyses](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, inclusief groeitrends.
+- Zie [Downloads Dashboard in commerciële marktplaatsanalyses](./downloads-dashboard.md)voor een lijst met uw downloadaanvragen van de afgelopen 30 dagen.
+- Zie [Dashboard Beoordelingen en beoordelingen in commerciële marktplaatsanalyses](./ratings-reviews.md)voor ziet een geconsolideerde weergave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource.

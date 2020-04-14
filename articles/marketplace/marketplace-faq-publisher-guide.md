@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen over Microsoft Commercial Marketplace
+title: Veelgestelde vragen over microsoft-marktplaats
 description: Antwoorden op veelgestelde vragen over de Azure Marketplace en Microsoft AppSource
 author: qianw211
 ms.service: marketplace
@@ -7,20 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/4/2019
 ms.author: dsindona
-ms.openlocfilehash: ae5c691375d52bc7da7a877f5b2e0c2ca52cc87e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a142ce3c082f6f9a53287885ba347fc78f77718
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288458"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262023"
 ---
-# <a name="microsoft-commercial-marketplace-faqs"></a>Veelgestelde vragen over Microsoft Commercial Marketplace
+# <a name="microsoft-commercial-marketplace-faqs"></a>Veelgestelde vragen over de commerciële marketplace van Microsoft
 
-Antwoorden op veelgestelde vragen over de Azure Marketplace en Microsoft AppSource.
+Antwoorden op veelgestelde vragen over de commerciële markt.
 
 ## <a name="faq-for-customers"></a>Veelgestelde vragen voor klanten
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Wat u moet weten over Azure Marketplace en Microsoft AppSource
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Wat u moet weten over de commerciële marktplaats
 
 **Wat is Azure Marketplace?**
 
@@ -168,11 +168,11 @@ Ja, voor EA-klanten (Enterprise Agreement) kan de inschrijvingsbeheerder aankoop
 
 **Welke betaalmethoden worden ondersteund voor commerciële marktplaatsaankopen?**
 
-Klanten kunnen aanbiedingen kopen via Azure Marketplace en Microsoft AppSource met creditcards. Als u een bestaand Azure-abonnement hebt, worden aankopen van Azure Marketplace gebruikt de betalingsmethode die is geconfigureerd voor het account en worden ze weergegeven op dezelfde factuur als een afzonderlijk regelitem. Sommige aanbiedingen verbruiken Azure monetary commitment, maar de meeste commerciële marktplaatsaankopen trekken geen toezeggingen voor enterprise-overeenkomsten, hoewel het verbruik van Azure-infrastructuur wel het hele leven wordt bepaald.
+Klanten kunnen aanbiedingen kopen op de commerciële marktplaats met behulp van creditcards. Als u een bestaand Azure-abonnement hebt, worden aankopen van Azure Marketplace gebruikt de betalingsmethode die is geconfigureerd voor het account en worden ze weergegeven op dezelfde factuur als een afzonderlijk regelitem. Sommige aanbiedingen verbruiken Azure monetary commitment, maar de meeste commerciële marktplaatsaankopen trekken geen toezeggingen voor enterprise-overeenkomsten, hoewel het verbruik van Azure-infrastructuur wel het hele leven wordt bepaald.
 
 **Kan ik Azure-abonnementstegoeden of geldtoezeggingen in mijn account toepassen op Azure Marketplace-aanbiedingen?**
 
-Specifieke Azure Marketplace-aanbiedingen kunnen gebruik maken van Azure-abonnementskredieten of geldtoezeggingen. Zie dit [Financiële toezegging Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) voor een volledige lijst van producten die in dit programma zijn opgenomen. Deze aanbiedingen bevatten geen BYOL- of BYOS-opties. Alle andere Azure Marketplace-aanbiedingen kunnen geen gebruik maken van Azure-abonnementskredieten of monetaire toezeggingen: zoals het gratis proefabonnement van één maand, maandelijkse MSDN-tegoeden, credits van Azure-promoties, geldtoezeggingsaldi en andere gratis credits die worden verstrekt uit Azure.
+Specifieke Azure Marketplace-aanbiedingen kunnen gebruik maken van Azure-abonnementskredieten of geldtoezeggingen. Zie dit [Financiële toezegging Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) voor een volledige lijst van producten die in dit programma zijn opgenomen. Deze aanbiedingen bevatten geen BYOL- of BYOS-opties. Alle andere Azure Marketplace-aanbiedingen kunnen geen gebruik maken van Azure-abonnementskredieten of monetaire toezeggingen: zoals het gratis proefabonnement van één maand, maandelijkse MSDN-tegoeden, credits van Azure-promoties, monetaire toezeggingssaldi en andere gratis credits die van Azure worden verstrekt.
 
 **Zijn volumelicentiekortingen van toepassing op Azure Marketplace-aankopen?**
 
@@ -258,12 +258,12 @@ Ja, het is mogelijk voor een klant om twee abonnementen van hetzelfde aanbod teg
 
 **Verschillen het beleid voor terugbetaling en wijziging van het plan per winkel?**
 
-Nee, het bedrijfsbeleid is consistent in Azure Marketplace en Microsoft AppSource. Als de partner dooreen partner in het Cloud Solution Provide-programma wordt doorverkocht, kan hij een ander beleid voor zijn klanten afdwingen.
+Nee, het bedrijfsbeleid is consistent op de commerciële markt. Als de partner dooreen partner in het Cloud Solution Provide-programma wordt doorverkocht, kan hij een ander beleid voor zijn klanten afdwingen.
 
 
 ## <a name="faq-for-publishers"></a>Veelgestelde vragen voor uitgevers
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Wat u moet weten over Azure Marketplace en Microsoft AppSource
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Wat u moet weten over de commerciële marktplaats
 
 **Wat is Azure Marketplace?**
 
@@ -347,7 +347,7 @@ Na het voltooien van de aanbieding en het instellen van een hoofdbestemming, kan
 
 **In welke landen/regio's is Azure Marketplace beschikbaar voor uitgevers om uit te verkopen?**
 
-Uitgevers die zijn gevestigd in de volgende landen/regio's, kunnen momenteel worden verkocht in de Azure Marketplace: Afghanistan, Albanië, Algerije, Angola, Antigua en Barbuda, Argentinië, Armenië, Australië, Oostenrijk, Azerbeidzjan, Bahrein, Bangladesh, Wit-Rusland, België, Benin, Bolivia, Bosnië en Herzegovina, Botswana, Brazilië, Bulgarije, Burkina Faso, Burundi, Cambodja, Kameroen, Canada, Centraal-Afrikaanse Republiek, Tsjaad, Chili, Colombia, Comoren, Congo, Congo (DRC), Costa Rica, Ivoorkust, Kroatië, Cyprus, Tsjechië, Denemarken, Dominica, Dominicaanse Republiek, Ecuador, Egypte, El Salvador, Eritrea, Estland, Ethiopië, Fiji-eilanden, Finland, Frankrijk, Georgië, Duitsland, Ghana, Griekenland, Guatemala, Guinee, Haïti, Honduras, Hong Kong SAR, Hongarije, IJsland, India, Indonesië, Irak, Ierland, Israël, Italië, Jamaica, Japan, Jordanië, Kazachstan, Kenia, Korea (Zuid), Koeweit, Laos, Letland, Libanon, Liberia, Liechtenstein, Litouwen, Luxemburg, Madagaskar, Malawi, Maleisië, Mali, Malta, Mauritius, Mexico, Monaco, Marokko, Mozambique, Nepal, Nederland, Nieuw-Zeeland, Nicaragua, Niger, Nigeria, Noorwegen, Oman, Pakistan, Panama, Paraguay, Peru, Filippijnen, Polen, Portugal, Qatar, Roemenië, Rusland, Rwanda, Saoedi-Arabië, Senegal, Servië, Sierra Leone, Singapore, Slowakije, Slovenië, Somalië, Zuid-Afrika, Spanje, Sri Lanka, Zweden, Zwitserland, Tadzjikistan, Tanzania, Thailand, Timor-Leste, Togo, Tonga, Trinidad en Tobago, Tunesië, Turkije, Turkmenistan, Oeganda, Oekraïne, Verenigde Arabische Emiraten, Verenigd Koninkrijk, Verenigd Koninkrijk Staten, Uruguay, Oezbekistan, Venezuela, Vietnam, Zambia en Zimbabwe.
+Uitgevers die zijn gevestigd in de volgende landen/regio's kunnen momenteel verkopen op de Azure Marketplace: Afghanistan, Albanië, Algerije, Angola, Antigua en Barbuda, Argentinië, Armenië, Australië, Oostenrijk, Azerbeidzjan, Bahrein, Bangladesh, Wit-Rusland, België, Benin, Bolivia, Bosnië en Herzegovina, Botswana, Brazilië, Bulgarije, Burkina Faso, Burundi, Cambodja, Kameroen, Canada, Centraal-Afrikaanse Republiek, Tsjaad, Chili, Colombia, Comoren, Congo, Congo (DRC), Costa Rica, Ivoorkust, Kroatië, Cyprus, Tsjechië, Denemarken, Dominica, Dominicaanse Republiek, Ecuador, Egypte, El Salvador, Ethiopië, Fiji-eilanden, Finland, Frankrijk, Georgië, Duitsland, Ghana, Griekenland, Guatemala, Guinee, Haïti, Honduras, Hong Kong SAR, Hongarije, IJsland, India, Indonesië, Irak, Ierland, Israël, Italië, Jamaica, Japan, Jordanië, Kazachstan, Kenia, Korea (Zuid), Koeweit, Laos, Letland, Libanon, Liberia, Liechtenstein, Litouwen, Luxemburg, Madagaskar, Malawi, Maleisië, Mali, Malta, Malta, Mauritius, Monaco, Mongolië, Montenegro , Marokko, Mozambique, Nepal, Nederland, Nieuw-Zeeland, Nicaragua, Niger, Nigeria, Noorwegen, Oman, Pakistan, Panama, Paraguay, Peru, Filippijnen, Polen, Portugal, Qatar, Roemenië, Rusland, Rwanda, Saoedi-Arabië, Senegal, Servië, Sierra Leone, Singapore, Slowakije, Slovenië, Somalië, Zuid-Afrika, Spanje, Sri Lanka, Zweden, Zwitserland, Tadzjikistan, Tanzania, Thailand, Timor-Leste, Togo, Tonga, Trinidad en Tobago, Tunesië, Turkije, Turkmenistan, Oeganda, Oekraïne, Verenigde Arabische Emiraten, Verenigd Koninkrijk, Verenigde Staten, Uruguay, Oezbekistan, Venezuela, Vietnam, Zambia, Zambia, Zimbabwe.
 
 **Hoe verwijder ik een vermelding uit de Azure Marketplace?**
 
@@ -372,8 +372,8 @@ Zie [Een aanbieding verwijderen](./cloud-partner-portal/manage-offers/cpp-delete
 
 *O365-apps:*
 
-1.  Meld je <https://sellerdashboard.microsoft.com> aan met je Dev-account.
-1.  Trek de invoegtoepassing in.
+1.    Meld je <https://sellerdashboard.microsoft.com> aan met je Dev-account.
+1.    Trek de invoegtoepassing in.
 
     > [!NOTE]
     > Apps verdwijnen na 90 dagen uit een bestaande vermelding.
@@ -422,7 +422,7 @@ Neem contact op met [Azure Support](https://portal.azure.com/#blade/Microsoft_Az
 
 **Met wie kan ik contact opnemen met het publiceren of managementvragen aanbieden?**
 
-Ga naar de [Azure Marketplace Publisher Guide](marketplace-publishers-guide.md) voor actuele bronnen en documentatie over veelgestelde vragen. Bovendien u een ticket aanmelden bij [Microsoft Support in het Partnercentrum.](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)
+Ga naar de uitgevergids voor [commerciële marktplaatsen](marketplace-publishers-guide.md) voor actuele bronnen en documentatie over veelgestelde vragen. Bovendien u een ticket aanmelden bij [Microsoft Support in het Partnercentrum.](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)
 
 ### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace voor uitgevers
 
@@ -473,7 +473,7 @@ Ja, op uw verzoek via een ondersteuningsticket verwerkt Microsoft credits aan uw
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de [gidspagina azure Marketplace en AppSource Publisher.](/azure/marketplace/marketplace-publishers-guide)
+Ga naar de pagina [gidsgids voor commerciële marktplaatsen.](/azure/marketplace/marketplace-publishers-guide)
 
 
-[Azure-portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

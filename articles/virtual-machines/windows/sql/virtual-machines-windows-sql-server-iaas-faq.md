@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d6d69b82e80ff9bc33e49302cf59766b9c2e8d4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249735"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270822"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Veelgestelde vragen over SQL Server op virtuele Windows-machines in Azure
 
@@ -53,9 +53,17 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
    Ja, met PowerShell. Zie [SQL Server-virtuele machines inrichten met Azure PowerShell](virtual-machines-windows-ps-sql-create.md)voor meer informatie over het implementeren van SQL Server VM's met PowerShell.
 
-1. **Kan ik een gegeneraliseerde Azure SQL Server Marketplace-afbeelding van mijn SQL Server VM maken en deze gebruiken om VM's te implementeren?**
+1. **Hoe kan ik SQL Server op Azure VM generaliseren en gebruiken om nieuwe VM's te implementeren?**
 
-   Ja, maar u moet vervolgens [elke SQL Server VM registreren bij de SQL Server VM-resourceprovider](virtual-machines-windows-sql-register-with-resource-provider.md) om uw SQL Server VM in de portal te beheren en functies zoals geautomatiseerde patching en automatische back-ups gebruiken. Wanneer u zich registreert bij de resourceprovider, moet u ook het licentietype voor elke SQL Server VM opgeven. 
+   U een Windows Server VM implementeren (zonder dat er SQL Server op is geïnstalleerd) en het [SQL sysprep-proces](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) gebruiken om SQL Server op Azure VM (Windows) te generaliseren met de SQL Server-installatiemedia. Klanten die [softwarezekerheid](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) hebben, kunnen hun installatiemedia verkrijgen bij het [Volume Licensing Center.](https://www.microsoft.com/Licensing/servicecenter/default.aspx) Klanten die geen softwarezekerheid hebben, kunnen de installatiemedia gebruiken van een Marketplace SQL Server VM-afbeelding met de gewenste editie.
+
+   U ook een van de SQL Server-afbeeldingen gebruiken die Azure-marktplaats vormen om SQL Server op Azure VM te generaliseren. Houd er rekening mee dat u de volgende registersleutel in de bronafbeelding moet verwijderen voordat u uw eigen afbeelding maakt. Als u dit niet doet, kan dit ertoe leiden dat de map bootstrap en/of SQL IaaS-extensie in mislukte staat worden opgeblazen.
+
+   Pad registersleutel:  
+   `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
+
+   > [!NOTE]
+   > We raden u aan alle SQL Server Azure VM's, inclusief die die welke zijn geïmplementeerd op basis van aangepaste gegeneraliseerde afbeeldingen, te [registreren bij een SQL VM-redoprovider](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash) om te voldoen aan de nalevingsvereisten en optionele functies te gebruiken, zoals geautomatiseerde patching en automatische back-ups. Hiermee u ook [het licentietype](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal) voor elke SQL Server VM opgeven.
 
 1. **Kan ik mijn eigen VHD gebruiken om een SQL Server VM te implementeren?**
 
@@ -117,13 +125,13 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
    De passieve SQL Server-instantie levert geen SQL Server-gegevens aan clients of voert actieve SQL Server-workloads uit. Het wordt alleen gebruikt om te synchroniseren met de primaire server en anders de passieve database in een warme stand-by status te onderhouden. Als er gegevens worden weergegeven, zoals rapporten aan clients met actieve SQL Server-workloads of andere werkzaamheden uitvoeren dan wat in de productvoorwaarden is opgegeven, moet het een exemplaar met een betaalde licentie SQL Server zijn. De volgende activiteit is toegestaan in de secundaire instantie: databaseconsistentiecontroles of CheckDB, volledige back-ups, back-ups van transactielogboeken en monitoring van gegevens over resourcegebruik. U de primaire en bijbehorende instantie voor noodherstel ook gelijktijdig uitvoeren voor korte perioden van noodhersteltests om de 90 dagen.
    
 
-1. **Welke scenario's kunnen gebruik maken van de Distaster Recovery (DR) voordeel?**
+1. **Welke scenario's kunnen gebruik maken van het VOORDEEL Disaster Recovery (DR).**
 
    De [licentiegids](https://aka.ms/sql2019licenseguide) biedt scenario's waarin het disaster recovery benefit kan worden gebruikt. Raadpleeg uw productvoorwaarden en praat met uw licentiecontactpersonen of accountmanager voor meer informatie.
 
 1. **Welke abonnementen ondersteunen het Disaster Recovery (DR)-voordeel?**
 
-   Uitgebreide programma's die Software Assurance gelijkwaardige abonnementsrechten bieden als vast voordeel ondersteunen het DR-voordeel. Dit omvat. maar is niet beperkt tot, de Open Value (OV), Open Value Subscription (OVS), Enterprise Agreement (EA), Enterprise Subscription Agreement (EAS) en de Server and Cloud Enrollment (SCE). Raadpleeg de [productvoorwaarden](https://www.microsoft.com/licensing/product-licensing/products) en praat met uw licentiecontactpersonen of acocunt manager voor meer informatie. 
+   Uitgebreide programma's die Software Assurance gelijkwaardige abonnementsrechten bieden als vast voordeel ondersteunen het DR-voordeel. Dit omvat. maar is niet beperkt tot, de Open Value (OV), Open Value Subscription (OVS), Enterprise Agreement (EA), Enterprise Subscription Agreement (EAS) en de Server and Cloud Enrollment (SCE). Raadpleeg de [productvoorwaarden](https://www.microsoft.com/licensing/product-licensing/products) en praat met uw licentiecontactpersonen of accountmanager voor meer informatie. 
 
    
  ## <a name="resource-provider"></a>Resourceprovider

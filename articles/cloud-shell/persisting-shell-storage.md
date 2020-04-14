@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: d4d59642f638e7b1221c35a4bb281923571d5066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297588"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273287"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Bestanden in Azure Cloud Shell blijven gebruiken
 Cloud Shell maakt gebruik van Azure File-opslag om bestanden voor verschillende sessies te blijven gebruiken. Bij de eerste start vraagt Cloud Shell u om een nieuwe of bestaande bestandsshare te koppelen aan het blijven van bestanden in verschillende sessies.
@@ -50,7 +50,7 @@ Door de geavanceerde optie te gebruiken, u bestaande bronnen koppelen. Wanneer u
 Wanneer de opslaginstellingsprompt wordt weergegeven, selecteert u **Geavanceerde instellingen weergeven** om extra opties weer te geven. Het filter voor de bewoonde opslagopties voor LRS (localredundante opslag), georedundante opslag (GRS) en ZRS-accounts (Zoneredundant storage). 
 
 > [!NOTE]
-> Het gebruik van GRS- of ZRS-opslagaccounts wordt aanbevolen voor extra tolerantie voor het delen van back-upbestanden. Welk type redundantie is afhankelijk van uw doelen en prijsvoorkeur. [Meer informatie over replicatieopties voor Azure Storage-accounts](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
+> Het gebruik van GRS- of ZRS-opslagaccounts wordt aanbevolen voor extra tolerantie voor het delen van back-upbestanden. Welk type redundantie is afhankelijk van uw doelen en prijsvoorkeur. [Meer informatie over replicatieopties voor Azure Storage-accounts](../storage/common/storage-redundancy.md).
 
 ![De instelling resourcegroep](media/persisting-shell-storage/advanced-storage.png)
 
@@ -169,5 +169,5 @@ Opmerking: Als u een functie in een bestand moet definiëren en deze moet aanroe
 
 ## <a name="next-steps"></a>Volgende stappen
 [Cloud Shell Snelstart](quickstart.md) <br>
-[Meer informatie over Microsoft Azure Files-opslag](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
+[Meer informatie over Microsoft Azure Files-opslag](../storage/files/storage-files-introduction.md) <br>
 [Meer informatie over opslagtags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

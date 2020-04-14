@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 04/10/2020
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 53f1b9a2fde20cacccd0730213695f26c1200fa7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 902486f7e19f2dfd7cc64e27589e192c57ef64e8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132543"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255512"
 ---
 # <a name="what-is-azure-databricks"></a>Wat is Azure Databricks?
 
@@ -85,6 +85,11 @@ Azure Databricks biedt Azure-beveiliging op bedrijfsniveau, waaronder een integr
 * Door de integratie met Azure Active Directory kunt u volledige Azure-oplossingen uitvoeren met behulp van Azure Databricks.
 * De op rollen gebaseerde toegang van Azure Databricks maakt het mogelijk om uiterst gedetailleerde gebruikersmachtigingen voor notitieblokken, clusters, taken en gegevens te gebruiken.
 * Hoogwaardige SLA's. 
+
+> [!IMPORTANT]
+>
+> Azure Databricks is een Microsoft Azure first-party service die wordt geïmplementeerd op de Global Azure Public Cloud-infrastructuur. Alle communicatie tussen onderdelen van de service, ook tussen de openbare IP's in het besturingsvlak en het gegevensvlak van de klant, blijft binnen de Microsoft Azure-netwerkbackbone. Zie ook [het wereldwijde netwerk van Microsoft](https://docs.microsoft.com/azure/networking/microsoft-global-network).
+
 
 ## <a name="integration-with-azure-services"></a>Integratie met Azure-services
 

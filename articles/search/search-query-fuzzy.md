@@ -1,5 +1,5 @@
 ---
-title: Fuzzy zoeken
+title: Fuzzy zoekopdracht
 titleSuffix: Azure Cognitive Search
 description: Implementeer een zoekervaring 'bedoelde' om een verkeerd gespelde term of typfout automatisch te corrigeren.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 95f6befa7e97984ad64a3ffb2a9b91d343945cbb
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81000659"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262431"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Fuzzy zoeken om spelfouten en typefouten te corrigeren
 
@@ -71,7 +71,7 @@ In Azure Cognitive Search zijn er naast de term en afstand (maximaal 2) geen ext
 > [!NOTE]
 > Tijdens queryverwerking ondergaan vage query's geen [lexicale analyse.](search-lucene-query-architecture.md#stage-2-lexical-analysis) De queryinvoer wordt rechtstreeks aan de querystructuur toegevoegd en uitgevouwen om een grafiek met termen te maken. De enige transformatie uitgevoerd is lagere behuizing.
 
-## <a name="how-to-test-fuzzy-search"></a>Fuzzy search testen
+## <a name="testing-fuzzy-search"></a>Fuzzy zoeken testen
 
 Voor eenvoudige tests raden we [Zoekverkenner](search-explorer.md) of [Postman](search-get-started-postman.md) aan om een queryexpressie te herhalen. Beide tools zijn interactief, wat betekent dat u snel meerdere varianten van een term doorlopen en de reacties evalueren die terugkomen.
 

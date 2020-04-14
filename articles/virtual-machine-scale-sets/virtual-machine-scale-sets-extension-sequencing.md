@@ -1,18 +1,18 @@
 ---
 title: Extensiesequencing gebruiken met Azure-setschaalsets voor virtuele machines
 description: Meer informatie over het inrichten van extensies bij het implementeren van meerdere extensies op virtuele machineschaalsets.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 737040699dd62d722b9a9ad4d8915ccb270c2d06
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278056"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273746"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Sequentieuitbreiding in virtuele machineschaalsets
 Azure virtual machine extensions bieden mogelijkheden zoals configuratie en beheer na implementatie, bewaking, beveiliging en meer. Productie-implementaties gebruiken doorgaans een combinatie van meerdere extensies die zijn geconfigureerd voor de VM-exemplaren om de gewenste resultaten te bereiken.
@@ -143,7 +143,7 @@ Aangezien de eigenschap "provisionAfterExtensions" een reeks extensienamen accep
 }
 ```
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST-API
 In het volgende voorbeeld wordt een nieuwe extensie met de naam ExtensionC toegevoegd aan een schaalsetmodel. ExtensionC heeft afhankelijkheden van ExtensionA en ExtensionB, die al zijn gedefinieerd in het schaalmodel.
 
 ```

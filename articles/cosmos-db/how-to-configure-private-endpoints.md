@@ -4,14 +4,14 @@ description: Meer informatie over het instellen van Azure Private Link om toegan
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 9a6a1560e169c51256c198868dc7293a020189f4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4b49d2aa61587d0156755bdd5c47b3eeb90090a5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421423"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270686"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Private Link configureren voor een Azure Cosmos-account
 
@@ -624,6 +624,10 @@ De volgende situaties en resultaten zijn mogelijk wanneer u Private Link gebruik
 * Als u openbaar verkeer of een serviceeindpunt configureert en privéeindpunten maakt, worden verschillende typen binnenkomend verkeer geautoriseerd door het bijbehorende type firewallregel.
 
 * Als u geen eindpunt voor openbaar verkeer of service configureert en privéeindpunten maakt, is het Azure Cosmos-account alleen toegankelijk via de privéeindpunten. Als u geen openbaar verkeer of een serviceeindpunt configureert, nadat alle goedgekeurde privéeindpunten zijn geweigerd of verwijderd, staat het account open voor het hele netwerk.
+
+## <a name="blocking-public-network-access-during-account-creation"></a>Toegang tot openbare netwerken blokkeren tijdens het aanmaken van een account
+
+Zoals beschreven in de vorige sectie en tenzij specifieke firewallregels zijn ingesteld, maakt het toevoegen van een privéeindpunt uw Azure Cosmos-account alleen toegankelijk via privéeindpunten. Dit betekent dat het Azure Cosmos-account kan worden bereikt vanuit het openbare verkeer nadat het is gemaakt en voordat een privéeindpunt wordt toegevoegd. Als u ervoor wilt zorgen dat de toegang tot het openbare netwerk `publicNetworkAccess` al `Disabled` vóór het maken van privéeindpunten wordt uitgeschakeld, u de vlag instellen bij het maken van een account. Zie [deze sjabloon Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) voor een voorbeeld dat laat zien hoe u deze vlag gebruikt.
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Een privéeindpunt bijwerken wanneer u een regio toevoegt of verwijdert
 

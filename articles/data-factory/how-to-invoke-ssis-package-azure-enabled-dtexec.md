@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/21/2019
+ms.date: 04/12/2020
 author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: a5540eea91937319a6ac947b50698ccaa8b25847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 006d4fa9ed09170a423e796e893b817e079e861b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931703"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261925"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>SQL Server Integration Services-pakketten uitvoeren met het Azure-hulpprogramma dtexec
 In dit artikel wordt het azure-enabled dtexec -functie (AzureDTExec) beschreven. Het wordt gebruikt om SQL Server Integration Services (SSIS)-pakketten uit te voeren op de Azure-SSIS Integration Runtime (IR) in Azure Data Factory.
@@ -46,19 +46,19 @@ Voer in het venster **AzureDTExecConfig** de volgende configuratie-instellingen 
 - **ApplicationId:** voer de unieke id in van de Azure AD-app die u maakt met de juiste machtigingen om pijplijnen in uw gegevensfabriek te genereren. Zie [Een Azure AD-app en serviceprincipal maken via Azure-portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)voor meer informatie.
 - **Verificatiesleutel:** voer de verificatiesleutel in voor uw Azure AD-app.
 - **TenantId:** voer de unieke id in van de Azure AD-tenant, waaronder uw Azure AD-app is gemaakt.
-- **SubscriptionId**: Voer de unieke id van het Azure-abonnement in, waaronder uw gegevensfabriek is gemaakt.
-- **ResourceGroup:** voer de naam in van de Azure-brongroep waarin uw gegevensfabriek is gemaakt.
 - **DataFactory:** Voer de naam in van uw gegevensfabriek waarin unieke pijplijnen met SSIS-pakketactiviteit uitvoeren worden gegenereerd op basis van de waarden van de geboden opties wanneer u AzureDTExec aanroept.
 - **IRName**: Voer de naam in van de Azure-SSIS IR in uw gegevensfabriek, waarop de pakketten die zijn opgegeven in hun UNC-pad (Universal Naming Convention) worden uitgevoerd wanneer u AzureDTExec aanroept.
-- **PackageAccessDomain:** Voer de domeinreferenties in om toegang te krijgen tot uw pakketten in hun UNC-pad dat is opgegeven wanneer u AzureDTExec aanroept.
-- **PackageAccessUserName:** Voer de gebruikersnaam in om toegang te krijgen tot uw pakketten in hun UNC-pad dat is opgegeven wanneer u AzureDTExec aanroept.
-- **PackageAccessPassword:** voer de wachtwoordreferenties in om toegang te krijgen tot uw pakketten in hun UNC-pad dat is opgegeven wanneer u AzureDTExec aanroept.
-- **LogPath:** Voer het UNC-pad van de logboekmap in, waarin logboekbestanden van uw pakketuitvoeringen op de Azure-SSIS IR zijn geschreven.
-- **LogLevel:** Voer het geselecteerde bereik van logboekregistratie in van vooraf gedefinieerde **null-,** **Basis-,** **Verbose-** of **Prestatieopties** voor uw pakketuitvoeringen op azure-SSIS IR.
-- **LogAccessDomain:** Voer de domeinreferenties in om toegang te krijgen tot uw logboekmap in het UNC-pad wanneer u logboekbestanden schrijft, wat vereist is wanneer **LogPath** is opgegeven en **LogLevel** niet **null**is.
-- **LogAccessUserName:** Voer de gebruikersnaam in om toegang te krijgen tot uw logmap in het UNC-pad wanneer u logboekbestanden schrijft, wat vereist is wanneer **LogPath** is opgegeven en **LogLevel** niet **null**is.
-- **LogAccessPassword:** Voer de wachtwoordreferenties in om toegang te krijgen tot uw logboekmap in het UNC-pad wanneer u logboekbestanden schrijft, wat vereist is wanneer **LogPath** is opgegeven en **LogLevel** niet **null**is.
 - **PipelineNameHashStrLen:** Voer de lengte in van hashstrings die moeten worden gegenereerd op basis van de waarden van de opties die u opgeeft wanneer u AzureDTExec aanroept. De tekenreeksen worden gebruikt om unieke namen te vormen voor Data Factory-pijplijnen die uw pakketten uitvoeren op de Azure-SSIS IR. Meestal volstaat een lengte van 32 tekens.
+- **ResourceGroup:** voer de naam in van de Azure-brongroep waarin uw gegevensfabriek is gemaakt.
+- **SubscriptionId**: Voer de unieke id van het Azure-abonnement in, waaronder uw gegevensfabriek is gemaakt.
+- **LogAccessDomain:** Voer de domeinreferenties in om toegang te krijgen tot uw logboekmap in het UNC-pad wanneer u logboekbestanden schrijft, wat vereist is wanneer **LogPath** is opgegeven en **LogLevel** niet **null**is.
+- **LogAccessPassword:** Voer de wachtwoordreferenties in om toegang te krijgen tot uw logboekmap in het UNC-pad wanneer u logboekbestanden schrijft, wat vereist is wanneer **LogPath** is opgegeven en **LogLevel** niet **null**is.
+- **LogAccessUserName:** Voer de gebruikersnaam in om toegang te krijgen tot uw logmap in het UNC-pad wanneer u logboekbestanden schrijft, wat vereist is wanneer **LogPath** is opgegeven en **LogLevel** niet **null**is.
+- **LogLevel:** Voer het geselecteerde bereik van logboekregistratie in van vooraf gedefinieerde **null-,** **Basis-,** **Verbose-** of **Prestatieopties** voor uw pakketuitvoeringen op azure-SSIS IR.
+- **LogPath:** Voer het UNC-pad van de logboekmap in, waarin logboekbestanden van uw pakketuitvoeringen op de Azure-SSIS IR zijn geschreven.
+- **PackageAccessDomain:** Voer de domeinreferenties in om toegang te krijgen tot uw pakketten in hun UNC-pad dat is opgegeven wanneer u AzureDTExec aanroept.
+- **PackageAccessPassword:** voer de wachtwoordreferenties in om toegang te krijgen tot uw pakketten in hun UNC-pad dat is opgegeven wanneer u AzureDTExec aanroept.
+- **PackageAccessUserName:** Voer de gebruikersnaam in om toegang te krijgen tot uw pakketten in hun UNC-pad dat is opgegeven wanneer u AzureDTExec aanroept.
 
 Als u uw pakketten en logboekbestanden wilt opslaan in bestandssystemen of on-premises bestandsshares, sluit u uw Azure-SSIS IR aan bij een virtueel netwerk dat is aangesloten op uw on-premises netwerk, zodat u uw pakketten kan ophalen en uw logboekbestanden kan schrijven. Zie [Een Azure-SSIS IR deelnemen aan een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)voor meer informatie.
 
@@ -92,7 +92,7 @@ Een beroep doen op AzureDTExec biedt vergelijkbare opties als een beroep doen op
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat unieke pijplijnen met de activiteit SSIS-pakket uitvoeren erin zijn gegenereerd en uitgevoerd nadat u AzureDTExec hebt aangenomen, kunnen ze worden gecontroleerd op de Portal Gegevensfabriek. Zie [SSIS-pakketten uitvoeren als Data Factory-activiteiten voor](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)meer informatie.
+Nadat unieke pijplijnen met de activiteit SSIS-pakket uitvoeren erin worden gegenereerd en uitgevoerd wanneer u AzureDTExec aanroept, kunnen ze worden gecontroleerd op de Portal Gegevensfabriek. U er ook Data Factory-triggers aan toewijzen als u ze wilt orkestreren/plannen met Data Factory. Zie [SSIS-pakketten uitvoeren als Data Factory-activiteiten voor](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)meer informatie.
 
 > [!WARNING]
 > De gegenereerde pijplijn wordt naar verwachting alleen gebruikt door AzureDTExec. De eigenschappen of parameters kunnen in de toekomst veranderen, dus wijzig of gebruik ze niet voor andere doeleinden. Wijzigingen kunnen AzureDTExec verbreken. Als dit gebeurt, verwijdert u de pijplijn. AzureDTExec genereert een nieuwe pijplijn de volgende keer dat deze wordt aangeroepen.

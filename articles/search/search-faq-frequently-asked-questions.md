@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fee74cb6ec5acd5fa0f171eab9769a833f04ad66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: d7ba62c795e23e41a1947def77300ffe5d2cc010
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792916"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262448"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Cognitive Search - veelgestelde vragen (FAQ)
 
@@ -24,16 +24,6 @@ ms.locfileid: "72792916"
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Waarin verschilt Azure Cognitive Search van zoeken in volledige tekst in mijn DBMS?
 
 Azure Cognitive Search ondersteunt meerdere gegevensbronnen, [taalkundige analyse voor veel talen,](https://docs.microsoft.com/rest/api/searchservice/language-support)aangepaste analyse voor interessante en ongebruikelijke [gegevensinvoer,](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)besturingselementen voor zoekrangen via [scoreprofielen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)en functies voor gebruikerservaring, zoals typeahead, hithighlighting en gefacetteerde navigatie. Het bevat ook andere functies, zoals synoniemen en syntaxis voor uitgebreide query's, maar die zijn over het algemeen geen onderscheidende functies.
-
-### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Wat is het verschil tussen Azure Cognitive Search en Elasticsearch?
-
-Bij het vergelijken van zoektechnologieën vragen klanten vaak om details over hoe Azure Cognitive Search zich verhoudt tot Elasticsearch. Klanten die Azure Cognitive Search verkiezen boven Elasticsearch voor hun zoektoepassingsprojecten doen dit doorgaans omdat we een belangrijke taak eenvoudiger hebben gemaakt of omdat ze de ingebouwde integratie met andere Microsoft-technologieën nodig hebben:
-
-+ Azure Cognitive Search is een volledig beheerde cloudservice met 99,9% service level agreements (SLA) wanneer deze zijn uitgerust met voldoende redundantie (2 replica's voor leestoegang, drie replica's voor read-write).
-+ Microsoft's [Natural language processors](https://docs.microsoft.com/rest/api/searchservice/language-support) bieden toonaangevende taalkundige analyse.  
-+ [Azure Cognitive Search-indexeerders](search-indexer-overview.md) kunnen verschillende Azure-gegevensbronnen crawlen voor initiële en incrementele indexering.
-+ Als u snel wilt reageren op schommelingen in query- of indexeringsvolumes, u [schuifregelaarbesturingselementen](search-manage.md#scale-up-or-down) gebruiken in de Azure-portal of een [PowerShell-script](search-manage-powershell.md)uitvoeren, waarbij shardbeheer rechtstreeks wordt omzeild.  
-+ [Score- en tuningfuncties](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) bieden de middelen om de score van de zoekpositie te beïnvloeden die verder gaat dan wat de zoekmachine alleen kan bieden.
 
 ### <a name="can-i-pause-azure-cognitive-search-service-and-stop-billing"></a>Kan ik de Azure Cognitive Search-service onderbreken en de facturering stoppen?
 

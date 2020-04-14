@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 18de50473e3dd6ca8ddda9575a247e00530032e8
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 11f52df683b7a85a8ad5163bbede33d786897452
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115420"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257263"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Geautomatiseerde ML-experimenten configureren in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -197,7 +197,7 @@ Meer informatie over de specifieke definities van deze statistieken in [Geautoma
 
 In elk geautomatiseerd machine learning-experiment worden uw gegevens [automatisch geschaald en genormaliseerd](concept-automated-ml.md#preprocess) om *bepaalde* algoritmen te helpen die gevoelig zijn voor functies die zich op verschillende schalen bevinden.  U echter ook extra prestatieverbeteringen inschakelen, zoals toerekening ontbrekende waarden, codering en transformaties. [Meer informatie over wat featurization is opgenomen.](how-to-use-automated-ml-for-ml-models.md#featurization)
 
-Wanneer u uw experimenten configureert, `featurization`u de geavanceerde instelling inschakelen. In de volgende tabel worden de geaccepteerde instellingen voor featurisatie in de [ `AutoMLConfig` klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)weergegeven.
+Wanneer u uw experimenten configureert, `featurization`u de geavanceerde instelling inschakelen. In de volgende tabel worden de geaccepteerde instellingen voor featurisatie weergegeven in de [klasse AutoMLConfig.](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)
 
 |Featurisatieconfiguratie | Beschrijving |
 | ------------- | ------------- |

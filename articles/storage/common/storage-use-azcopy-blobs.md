@@ -4,20 +4,23 @@ description: Dit artikel bevat een verzameling azcopy-voorbeeldopdrachten waarme
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73685f124f93bb541f33b3b70727d90ce22b3cdd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933579"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263434"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Gegevens overbrengen met AzCopy- en Blob-opslag
 
 AzCopy is een command-line hulpprogramma dat u gebruiken om gegevens te kopiëren naar, van of tussen opslagaccounts. Dit artikel bevat voorbeeldopdrachten die werken met Blob-opslag.
+
+> [!TIP]
+> De voorbeelden in dit artikel omsluiten padargumenten met enkele aanhalingstekens (''). Gebruik enkele aanhalingstekens in alle opdrachtshells, behalve de Windows Command Shell (cmd.exe). Als u een Windows Command Shell (cmd.exe) gebruikt, sluit u padargumenten om met dubbele aanhalingstekens ("") in plaats van enkele aanhalingstekens ('').
 
 ## <a name="get-started"></a>Aan de slag
 
@@ -31,9 +34,6 @@ Bekijk het artikel Aan de [slag met AzCopy](storage-use-azcopy-v10.md) om AzCopy
 > Bijvoorbeeld: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="create-a-container"></a>Een container maken
-
-> [!TIP]
-> De voorbeelden in deze sectie omsluiten padargumenten met enkele aanhalingstekens (''). Gebruik enkele aanhalingstekens in alle opdrachtshells, behalve de Windows Command Shell (cmd.exe). Als u een Windows Command Shell (cmd.exe) gebruikt, sluit u padargumenten om met dubbele aanhalingstekens ("") in plaats van enkele aanhalingstekens ('').
 
 U de [opdracht azcopy make](storage-ref-azcopy-make.md) gebruiken om een container te maken. De voorbeelden in deze sectie `mycontainer`maken een container met de naam .
 
@@ -57,10 +57,16 @@ Deze sectie bevat de volgende voorbeelden:
 > * De inhoud van een map uploaden 
 > * Specifieke bestanden uploaden
 
-Zie [azcopy copy](storage-ref-azcopy-copy.md)voor gedetailleerde referentiedocumenten.
-
 > [!TIP]
-> De voorbeelden in deze sectie omsluiten padargumenten met enkele aanhalingstekens (''). Gebruik enkele aanhalingstekens in alle opdrachtshells, behalve de Windows Command Shell (cmd.exe). Als u een Windows Command Shell (cmd.exe) gebruikt, sluit u padargumenten om met dubbele aanhalingstekens ("") in plaats van enkele aanhalingstekens ('').
+> U uw uploadbewerking aanpassen met behulp van optionele vlaggen. Hier zijn een paar voorbeelden.
+>
+> |Scenario|Markering|
+> |---|---|
+> |Upload bestanden als Blobs toevoegen of Paginablobs.|**--blob-type**=\[BlockBlob\|\|PageBlob AppendBlob\]|
+> |Upload naar een specifieke toegangslaag (zoals de archieflaag).|**--block-blob-tier**=\[\|Geen\|\|Hot Cool Archive\]|
+> |Bestanden automatisch decomprimeeren.|**--decomprimeren**=\[gzip\|leeglopen\]|
+> 
+> Zie [opties](storage-ref-azcopy-copy.md#options)voor een volledige lijst.
 
 ### <a name="upload-a-file"></a>Bestand uploaden
 
@@ -71,10 +77,6 @@ Zie [azcopy copy](storage-ref-azcopy-copy.md)voor gedetailleerde referentiedocum
 | **Voorbeeld** (hiërarchische naamruimte) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
 U een bestand ook uploaden met een wildcardsymbool (*) overal in het bestandspad of de bestandsnaam. Bijvoorbeeld: `'C:\myDirectory\*.txt'`, `C:\my*\*.txt`of .
-
-> [!NOTE]
-> AzCopy uploadt standaard gegevens als blokblobs. Als u bestanden wilt uploaden als Blobs `--blob-type=[BlockBlob|PageBlob|AppendBlob]`of Paginablobs toevoegen, gebruikt u de vlag .
-> AzCopy uploadt standaard uw gegevens om de accounttoegangslaag over te nemen. Als u bestanden wilt uploaden naar `--block-blob-tier=[Hot|Cool|Archive]`een specifieke [toegangslaag,](../blobs/storage-blob-storage-tiers.md)gebruikt u de vlag .
 
 ### <a name="upload-a-directory"></a>Een map uploaden
 
@@ -152,13 +154,19 @@ Deze sectie bevat de volgende voorbeelden:
 > * De inhoud van een map downloaden
 > * Specifieke bestanden downloaden
 
+> [!TIP]
+> U uw downloadbewerking aanpassen met behulp van optionele vlaggen. Hier zijn een paar voorbeelden.
+>
+> |Scenario|Markering|
+> |---|---|
+> |Bestanden automatisch decomprimeeren.|**--decomprimeren**=\[gzip\|leeglopen\]|
+> |Geef op hoe gedetailleerd u wilt dat uw logboekvermeldingen met betrekking tot kopieën zijn.|**--log-level**=\[\|WARNING\|\|ERROR INFO NONE --log-level WARNING\]|
+> |Geef op of en hoe u de conflicterende bestanden en blobs op de bestemming overschrijven.|**--overschrijven**=\[\|true\|false ifSourceNewer prompt --overschrijven true false ifSourceNewer prompt --overschrijven true false ifSourceNewer\|prompt --\]|
+> 
+> Zie [opties](storage-ref-azcopy-copy.md#options)voor een volledige lijst.
+
 > [!NOTE]
 > Als `Content-md5` de eigenschapswaarde van een blob een hash bevat, berekent AzCopy een MD5-hash voor gedownloade `Content-md5` gegevens en controleert of de MD5-hash die is opgeslagen in de eigenschap van de blob overeenkomt met de berekende hash. Als deze waarden niet overeenkomen, mislukt de download, tenzij `--check-md5=NoCheck` `--check-md5=LogOnly` u dit gedrag overschrijft door een append of de kopieeropdracht toe te passen.
-
-Zie [azcopy copy](storage-ref-azcopy-copy.md)voor gedetailleerde referentiedocumenten.
-
-> [!TIP]
-> De voorbeelden in deze sectie omsluiten padargumenten met enkele aanhalingstekens (''). Gebruik enkele aanhalingstekens in alle opdrachtshells, behalve de Windows Command Shell (cmd.exe). Als u een Windows Command Shell (cmd.exe) gebruikt, sluit u padargumenten om met dubbele aanhalingstekens ("") in plaats van enkele aanhalingstekens ('').
 
 ### <a name="download-a-file"></a>Bestand downloaden
 
@@ -245,12 +253,18 @@ Deze sectie bevat de volgende voorbeelden:
 > * Een container naar een ander opslagaccount kopiëren
 > * Alle containers, mappen en bestanden naar een ander opslagaccount kopiëren
 
-Zie [azcopy copy](storage-ref-azcopy-copy.md)voor gedetailleerde referentiedocumenten.
+Deze voorbeelden werken ook met accounts met een hiërarchische naamruimte. [Met toegang met meerdere protocollen op Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) u dezelfde URL-syntaxis ()`blob.core.windows.net`gebruiken voor die accounts.
 
 > [!TIP]
-> De voorbeelden in deze sectie omsluiten padargumenten met enkele aanhalingstekens (''). Gebruik enkele aanhalingstekens in alle opdrachtshells, behalve de Windows Command Shell (cmd.exe). Als u een Windows Command Shell (cmd.exe) gebruikt, sluit u padargumenten om met dubbele aanhalingstekens ("") in plaats van enkele aanhalingstekens ('').
-
- Deze voorbeelden werken ook met accounts met een hiërarchische naamruimte. [Met toegang met meerdere protocollen op Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) u dezelfde URL-syntaxis ()`blob.core.windows.net`gebruiken voor die accounts. 
+> U uw kopieerbewerking aanpassen met behulp van optionele vlaggen. Hier zijn een paar voorbeelden.
+>
+> |Scenario|Markering|
+> |---|---|
+> |Bestanden kopiëren als Blobs toevoegen of Paginablobs.|**--blob-type**=\[BlockBlob\|\|PageBlob AppendBlob\]|
+> |Kopiëren naar een specifieke toegangslaag (zoals de archieflaag).|**--block-blob-tier**=\[\|Geen\|\|Hot Cool Archive\]|
+> |Bestanden automatisch decomprimeeren.|**--decomprimeren**=\[gzip\|leeglopen\]|
+> 
+> Zie [opties](storage-ref-azcopy-copy.md#options)voor een volledige lijst.
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>Een blob naar een ander opslagaccount kopiëren
 
@@ -306,10 +320,16 @@ Als u `--delete-destination` de `true` vlag instelt op AzCopy, worden bestanden 
 > [!NOTE]
 > Als u onbedoelde verwijderingen wilt voorkomen, moet u `--delete-destination=prompt|true` de functie soft [delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) inschakelen voordat u de vlag gebruikt.
 
-Zie [azcopy-synchronisatie](storage-ref-azcopy-sync.md)voor gedetailleerde referentiedocumenten .
-
 > [!TIP]
-> De voorbeelden in deze sectie omsluiten padargumenten met enkele aanhalingstekens (''). Gebruik enkele aanhalingstekens in alle opdrachtshells, behalve de Windows Command Shell (cmd.exe). Als u een Windows Command Shell (cmd.exe) gebruikt, sluit u padargumenten om met dubbele aanhalingstekens ("") in plaats van enkele aanhalingstekens ('').
+> U uw synchronisatiebewerking aanpassen met behulp van optionele vlaggen. Hier zijn een paar voorbeelden.
+>
+> |Scenario|Markering|
+> |---|---|
+> |Geef aan hoe strikt MD5 hashes moeten worden gevalideerd bij het downloaden.|**--check-md5**=\[NoCheck\|\|LogOnly\|FailIfDifferent FailIfDifferentOrMissing\]|
+> |Bestanden uitsluiten op basis van een patroon.|**--exclude-pad**|
+> |Geef op hoe gedetailleerd u wilt dat uw logboekvermeldingen met betrekking tot synchronisatie worden.|**--log-level**=\[\|WARNING\|\|ERROR INFO NONE --log-level WARNING\]|
+> 
+> Zie [opties](storage-ref-azcopy-sync.md#options)voor een volledige lijst.
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Een container bijwerken met wijzigingen in een lokaal bestandssysteem
 

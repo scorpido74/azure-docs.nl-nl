@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: d4fc8762e25825b21637b16b751d57a0dcbf369e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22538047adc17a40438359e11bff7fd20e43bcc6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288798"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273083"
 ---
 # <a name="virtual-machine-test-drive-tab"></a>Tabblad Teststation voor virtuele machine
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een Azure Virtual Machine-aanbieding maken](https://aka.ms/CreateAzureVMoffer) om uw gemigreerde aanbiedingen te beheren.
 
 Met het tabblad **Testdrive** van de pagina **Nieuwe aanbieding** u uw potentiële klanten een hands-on, self-guided demonstratie geven van de belangrijkste functies en voordelen van uw product, gedemonstreerd in een gestandaardiseerd scenario.  Testdrive is een optionele functie voor de aanbiedingstypen die teststation ondersteunen.  Test Drive vereist dat ondersteunende assets correct worden geïmplementeerd.  Zie het artikel [Azure Marketplace Test Drive](https://azure.microsoft.com/blog/azure-marketplace-test-drive/)voor meer informatie .  <!--TD: Replace with migrated version of Test Drive article! -->
 

@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 9b59181f7c1b24a7bc00ab579bbe67a70f499c92
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 087cdafe8b819e4929e1608ed7e00be2c1169414
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755377"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263004"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Leadmanagement configureren voor Salesforce
 
@@ -64,11 +64,15 @@ Wanneer u klaar bent om de leadmanagementgegevens voor uw aanbieding in de publi
 
 1. Selecteer **Salesforce** in het pop-upvenster Verbindingsdetails voor de `oid` **leadbestemming** en plak in het formulier van web-naar-lead dat u hebt gemaakt door eerdere stappen in het veld **Organisatie-id** te volgen.
 
-1. Selecteer **Opslaan**. 
+1. **E-mail contact** opnemen : e-mails verstrekken aan mensen in uw bedrijf die e-mailmeldingen moeten ontvangen wanneer een nieuwe lead wordt ontvangen. U meerdere e-mails verstrekken door ze te scheiden met puntkomma.
 
-    >[!Note]
-    >U moet de rest van de aanbieding voltooien en publiceren voordat u leads voor de aanbieding ontvangen.
+1. Selecteer **Ok**.
 
-    ![Verbindingsgegevens - Kies een leadbestemming](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+Klik op de knop Valideren om ervoor te zorgen dat u met succes verbinding hebt gemaakt met een leadbestemming. Als dit lukt, heb je een testlead in de hoofdbestemming.
 
-    ![Verbindingsgegevens - Kies een leadbestemming](./media/commercial-marketplace-lead-management-instructions-salesforce/connection-details.png)
+>[!Note]
+>U moet de rest van de aanbieding voltooien en publiceren voordat u leads voor de aanbieding ontvangen.
+
+![Verbindingsgegevens - Kies een leadbestemming](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+
+![Verbindingsgegevens - Kies een leadbestemming](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)

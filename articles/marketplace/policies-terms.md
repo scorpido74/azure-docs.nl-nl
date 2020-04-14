@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 04/10/2020
 ms.author: dsindona
-ms.openlocfilehash: a370b7b21d25f117e44d613d060dd8cdd060c062
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2fdf40dde287a65548f1db04d34ed3cf67d0374
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336264"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262159"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Beleid en voorwaarden op commerciële marktplaats
 
@@ -21,9 +21,9 @@ ms.locfileid: "80336264"
 
 Bedankt voor uw interesse in het publiceren van aanbiedingen op de commerciële marktplaats. We streven ernaar om samen met u een rijke bron van cloudoplossingen en een reeks zakelijke aanbiedingen te bouwen, die klanten wereldwijd verrassen en u helpen uw bedrijf op te bouwen.
 
-Aanbiedingen op de markt moeten voldoen aan ons beleid en onze voorwaarden. We werken dit beleid en deze voorwaarden van tijd tot tijd bij om een goede klantervaring te garanderen en partners de kans te geven om te slagen. Als je feedback hebt over ons beleid of onze voorwaarden, laat het ons dan weten door te reageren op het [Azure Marketplace- en AppSource-forum.](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)
+Aanbiedingen op de markt moeten voldoen aan ons beleid en onze voorwaarden. We werken dit beleid en deze voorwaarden van tijd tot tijd bij om een goede klantervaring te garanderen en partners de kans te geven om te slagen. Als je feedback hebt over ons beleid of onze voorwaarden, laat het ons dan weten door te reageren op het [Azure Marketplace- en Microsoft AppSource-forum.](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)
 
-## <a name="policies-and-terms"></a>Beleid en voorwaarden
+## <a name="policies-and-terms"></a>Beleidsregels en voorwaarden
 
 * [Commercial marketplace certification policies](https://docs.microsoft.com/legal/marketplace/certification-policies) (Beleid voor certificering van Commerciële Marketplace)
 
@@ -35,6 +35,6 @@ Aanbiedingen op de markt moeten voldoen aan ons beleid en onze voorwaarden. We w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de [publicatiegidspagina voor Azure Marketplace en AppSource.](./marketplace-publishers-guide.md)
+Ga naar de pagina [met de publicatiegids voor commerciële marktplaatsen.](./marketplace-publishers-guide.md)
 
 ---

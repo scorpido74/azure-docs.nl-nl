@@ -1,20 +1,20 @@
 ---
 title: Problemen met automatisch schalen oplossen met virtuele machineschaalsets
 description: Problemen met automatisch schalen oplossen met virtuele machineschaalsets. Begrijp typische problemen die zich voordoen en hoe u deze oplossen.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
 ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: windows
 ms.topic: conceptual
 ms.date: 11/16/2017
-ms.author: manayar
-ms.openlocfilehash: 923967a902f611ce845fbdc096fd2c02e681bb6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 4bc5e66f5b0759bdb5fe34276369161200bd5442
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76272435"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273372"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Problemen met automatisch schalen met schaalsets voor virtuele machines oplossen
 **Probleem** : u hebt een infrastructuur voor automatisch schalen gemaakt in Azure Resource Manager met behulp https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale van virtuele machineschaalsets , bijvoorbeeld door een sjabloon als deze te implementeren: - u hebt uw schaalregels gedefinieerd en het werkt geweldig, behalve hoeveel belasting u op de VM's plaatst, het wordt niet automatisch geschaald.

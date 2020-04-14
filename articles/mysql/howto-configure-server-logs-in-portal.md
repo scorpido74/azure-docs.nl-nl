@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 0261ff7ca8a60dc5fd986a64b9944f9cb9f101e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 59faf63312bd7cc657f8b96ca3110707ea997c02
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062503"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273598"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Langzame querylogboeken configureren en openen vanuit de Azure-portal
 
@@ -23,7 +23,7 @@ De stappen in dit artikel vereisen dat u [Azure Database voor MySQL-server hebt.
 ## <a name="configure-logging"></a>Logboekregistratie configureren
 Configureer de toegang tot het Slow Query-logboek van MySQL. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Selecteer uw Azure Database voor MySQL-server.
 
@@ -32,11 +32,15 @@ Configureer de toegang tot het Slow Query-logboek van MySQL.
 
 4. Als u de serverparameters wilt bekijken, selecteert u **Klik hier om logboeken in te schakelen en logboekparameters te configureren.**
 
-5. Wijzig de parameters die u moet aanpassen. Alle wijzigingen die u in deze sessie aanbrengt, worden in het paars gemarkeerd. 
+5. Zet **slow_query_log** **in op AAN**.
 
-   Nadat u de parameters hebt gewijzigd, selecteert u **Opslaan**. U ook uw wijzigingen verwijderen.
+6. Selecteer waar u de logboeken wilt uitvoeren naar het gebruik van **log_output**. Als u logboeken wilt verzenden naar zowel lokale opslag als diagnostische logboeken voor Azure-monitor, selecteert u **Bestand**. 
 
-   ![Schermafbeelding van opties voor serverparameters](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+7. Wijzig alle andere parameters die nodig zijn. 
+
+8. Selecteer **Opslaan**. 
+
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Schermafbeelding van parameters voor langzaam querylogboek en opslaan.":::
 
 Op de pagina **Serverparameters** u terugkeren naar de lijst met logboeken door de pagina te sluiten.
 

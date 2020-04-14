@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 7f527d3c57f086e7941505a9ca4396885c746762
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 682c35e1510834d8958b2ed6765d6fe530432ebd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75440082"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262142"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Snelstart: een Azure-gegevensfabriek maken met PowerShell
 
@@ -111,6 +111,10 @@ Houd rekening met de volgende punten:
 ## <a name="create-a-linked-service"></a>Een gekoppelde service maken
 
 Maak gekoppelde services in een data factory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze QuickStart gaat u een gekoppelde Azure Storage-service maken die als bron- en als sinkopslag wordt gebruikt. De gekoppelde service beschikt over de verbindingsgegevens die de Data Factory-service tijdens runtime gebruikt om er een verbinding mee tot stand te brengen.
+
+>[!TIP]
+>In deze quickstart gebruikt u *accountsleutel* als verificatietype voor uw gegevensarchief, maar u indien nodig andere ondersteunde verificatiemethoden kiezen: *SAS URI,**Service Principal* en *Managed Identity.* Raadpleeg de bijbehorende secties in [dit artikel](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties) voor meer informatie.
+>Als u geheimen voor gegevensopslag veilig wilt opslaan, wordt het ook aanbevolen om een Azure Key Vault te gebruiken. Raadpleeg [dit artikel](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) voor gedetailleerde illustraties.
 
 1. Maak een JSON-bestand met de naam **AzureStorageLinkedService.json** in de map **C:\ADFv2QuickStartPSH** met de volgende inhoud (maak de map ADFv2QuickStartPSH als deze nog niet bestaat):
 

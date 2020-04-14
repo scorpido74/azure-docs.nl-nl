@@ -8,14 +8,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 6fe07da1e658efa8150c8cafb95bc5719c780aff
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: b2a621a23a81e4fb4f47e7c99d780211973e30a0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879010"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81275520"
 ---
-De container biedt [REST-gebaseerde eindpuntAPI's](../rest-text-to-speech.md). Er zijn veel [voorbeeldbroncodeprojecten](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/) beschikbaar voor platform-, framework- en taalvariaties.
+De container biedt [REST-gebaseerde eindpuntAPI's](../rest-text-to-speech.md). Er zijn veel [voorbeeldbroncodeprojecten](https://github.com/Azure-Samples/Cognitive-Speech-TTS) beschikbaar voor platform-, framework- en taalvariaties.
 
 Met de *standaardtekst-naar-spraak-container* moet u vertrouwen op de land- en stem van de afbeeldingstag die u hebt gedownload. Als u bijvoorbeeld de `latest` tag hebt gedownload, `en-US` is `JessaRUS` de standaardlandinstelling en de stem. Het `{VOICE_NAME}` argument zou [`en-US-JessaRUS`](../language-support.md#standard-voices)dan zijn . Zie hieronder het voorbeeld SSML:
 

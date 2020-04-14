@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 8af6b3a451d20bcc9cab3fa4adb9643f82b85e49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3e35b6d19905e3c5262dfea3e52511510c9ffe
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288815"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252778"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Leadmanagement configureren voor Dynamics 365 voor klantbetrokkenheid
 
@@ -180,6 +180,7 @@ Wanneer u klaar bent om de leadmanagementgegevens voor uw aanbieding in de publi
     ![Verbindingsgegevens - hoofdbestemming](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
 4. Geef de **URL van dynamics 365 Instance** op, zoals `https://contoso.crm4.dynamics.com`.
+
 5. Selecteer de **verificatiemethode**, Azure Active Directory of Office 365. 
 6. Als u Azure Active Directory hebt geselecteerd, moet `23456052-aaaa-bbbb-8662-1234df56788f`u de **toepassings-id (client) (voorbeeld:** ), **Directory-id** (voorbeeld: `12345678-8af1-4asf-1234-12234d01db47`) en **Clientgeheim** (voorbeeld: ) opvragen. `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`
 
@@ -188,6 +189,13 @@ Wanneer u klaar bent om de leadmanagementgegevens voor uw aanbieding in de publi
 7. Als u Office 365 hebt geselecteerd, `contoso@contoso.onmicrosoft.com`geeft u de `P@ssw0rd` **gebruikersnaam** op (voorbeeld: ) en Wachtwoord (voorbeeld: ).
 
     ![Verbindingsgegevens - Gebruikersnaam](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
+
+8. **E-mail contact** opnemen : e-mails verstrekken aan mensen in uw bedrijf die e-mailmeldingen moeten ontvangen wanneer een nieuwe lead wordt ontvangen. U meerdere e-mails verstrekken door ze te scheiden met puntkomma.
+9. Selecteer **OK**.
+
+Klik op de knop Valideren om ervoor te zorgen dat u met succes verbinding hebt gemaakt met een leadbestemming. Als dit lukt, heb je een testlead in de hoofdbestemming.
+
+![Leadbeheer - opslagaccount voor verbindingsgegevens](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
 
 >[!Note]
 >U moet de rest van de aanbieding voltooien en publiceren voordat u leads voor de aanbieding ontvangen.

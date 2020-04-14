@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 49ef78ac5a7d58d86583d91bf072f0f3131796fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 889d0d1e98f5c9947588011774d02e54f05edca1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80109392"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257756"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Een lab opzetten dat zich richt op deep learning in natuurlijke taalverwerking met Azure Lab Services
 In dit artikel ziet u hoe u een lab instelt dat is gericht op deep learning in natural language processing (NLP) met Azure Lab Services. Natural language processing (NLP) is een vorm van kunstmatige intelligentie (AI) waarmee computers met vertaal-, spraakherkennings- en andere mogelijkheden voor taalbegrip kunnen worden gebruikt.  
@@ -39,7 +39,7 @@ Volg [deze zelfstudie](tutorial-setup-classroom-lab.md) om een nieuw lab te make
 | Lab-instellingen | Waarde/instructies | 
 | ------------ | ------------------ |
 | Virtuele machine (VM) grootte | Kleine GPU (Compute). Deze grootte is het meest geschikt voor rekenintensieve en netwerkintensieve toepassingen zoals Artificial Intelligence en Deep Learning. |
-| VM-afbeelding | [Data Science Virtual Machine voor Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu). Dit beeld biedt deep learning frameworks en tools voor machine learning en data science. Zie het volgende artikel: Wat staat er op [de DSVM?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm) |
+| VM-afbeelding | [Data Science Virtual Machine voor Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Dit beeld biedt deep learning frameworks en tools voor machine learning en data science. Zie het volgende artikel: Wat staat er op [de DSVM?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm) |
 | Verbinding met extern bureaublad inschakelen | Inschakelen. <p>Als u deze instelling inschakelt, kunnen docenten en studenten verbinding maken met hun virtuele machines (VM) via Extern bureaublad (RDP).</p><p>**Belangrijk:** RDP is al geïnstalleerd en geconfigureerd op de Data Science Virtual Machine voor Linux image. Hierdoor kunnen docenten/studenten zonder extra stappen verbinding maken met VM's via RDP. Als u verbinding wilt maken met het grafische bureaublad, heeft deze afbeelding [x2Go-server](https://wiki.x2go.org/doku.php/doc:newtox2go) al geïnstalleerd op de virtuele machine. Studenten moeten X2Go-client installeren op hun lokale machines en de client gebruiken voor verbinding. Zie de volgende hulplijnen voor meer informatie: <ul><li>[Toegang krijgen tot de Data Science Virtual Machine voor Linux](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[Verbinding maken met de sjabloon-VM om RDP- en GUI-pakketten te installeren](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
 
 De Data Science Virtual Machine voor Linux-afbeelding biedt de nodige deep learning frameworks en tools die nodig zijn voor dit type klasse. Als gevolg hiervan hoeft u deze na het maken van de sjabloonmachine niet verder aan te passen. Het kan worden gepubliceerd voor studenten om te gebruiken. Selecteer de knop **Publiceren** op de sjabloonpagina om de sjabloon naar het lab te publiceren.  

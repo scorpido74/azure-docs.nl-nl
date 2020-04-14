@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b782477fd29b34eda70813fc2aff29157f02acb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ecd0ffd76650efff3a4c9f877522cba6f28d080
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275943"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271111"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Gebruik en kosten van Application Insights beheren
 
@@ -28,6 +28,8 @@ De prijzen voor [Azure Application Insights][start] zijn een **Pay-As-You-Go-mod
 
 [Multi-step webtests](../../azure-monitor/app/availability-multistep.md) brengen extra kosten met zich mee. Webtests met meerdere stappen zijn webtests die een reeks acties uitvoeren. Er zijn geen afzonderlijke kosten voor *ping-tests* van één pagina. Telemetrie van ping-tests en multi-step tests wordt in rekening gebracht hetzelfde als andere telemetrie van uw app.
 
+De optie Toepassingsinzichten om [waarschuwingen voor aangepaste metrische dimensies in](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) te schakelen, kan ook extra kosten genereren, omdat dit kan leiden tot het maken van extra pre-aggregatiestatistieken. [Meer informatie] over op logboeken gebaseerde en vooraf geaggregeerde statistieken in Application Insights en over [de prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor aangepaste azure-statistieken van Azure Monitor.
+
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Het schatten van de kosten voor het beheren van uw aanvraag
 
 Als u Application Insights nog niet gebruikt, u de [prijscalculator azure monitor](https://azure.microsoft.com/pricing/calculator/?service=monitor) gebruiken om de kosten van het gebruik van Application Insights te schatten. Begin met het invoeren van 'Azure Monitor' in het vak Zoeken en klik op de resulterende Azure Monitor-tegel. Schuif omlaag naar Azure Monitor en selecteer Toepassingsinzichten in de vervolgkeuzelijst Type.  Hier u het aantal GB gegevens invoeren dat u per maand verwacht te verzamelen, dus de vraag is hoeveel gegevens Application Insights zal verzamelen monitoring van uw toepassing.
@@ -42,7 +44,7 @@ Voor SDK's die geen adaptieve sampling ondersteunen, u gebruikmaken van [innames
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Leer van wat vergelijkbare klanten verzamelen
 
-Als u in de azure monitoring pricing calculator voor Application Insights de functionaliteit 'Gegevensvolume schatten op basis van toepassingsactiviteit' inschakelt, u invoer over uw toepassing (aanvragen per maand en paginaweergaven per maand, voor het geval u verzamelen client-side telemetrie), en vervolgens de rekenmachine zal u vertellen de mediaan en 90e percentiel hoeveelheid gegevens verzameld door soortgelijke toepassingen. Deze toepassingen omvatten het bereik van Application Insights-configuratie (bijvoorbeeld sommige hebben standaard [sampling,](../../azure-monitor/app/sampling.md)sommige hebben geen bemonstering, enz.), dus je hebt nog steeds de controle om het volume van de gegevens die u inneemt ver onder het mediaanniveau met behulp van steekproeven te verminderen. Maar dit is een uitgangspunt om te begrijpen wat andere, soortgelijke klanten zien.
+Als u in de azure monitoring pricing calculator voor Application Insights de functionaliteit 'Schatting van gegevensvolume op basis van toepassingsactiviteit' inschakelt, u invoer over uw toepassing (aanvragen per maand en paginaweergaven per maand, in het geval u telemetrie aan de clientzijde verzamelt) en vervolgens vertelt de rekenmachine u de mediane en 90e percentielhoeveelheid gegevens die door vergelijkbare toepassingen worden verzameld. Deze toepassingen omvatten het bereik van Application Insights-configuratie (bijvoorbeeld sommige hebben standaard [sampling,](../../azure-monitor/app/sampling.md)sommige hebben geen bemonstering, enz.), dus je hebt nog steeds de controle om het volume van de gegevens die u inneemt ver onder het mediaanniveau met behulp van steekproeven te verminderen. Maar dit is een uitgangspunt om te begrijpen wat andere, soortgelijke klanten zien.
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Inzicht in uw gebruik en raming van de kosten
 
@@ -176,7 +178,7 @@ Als [u de dagelijkse dop via Azure Resource Manager](../../azure-monitor/app/pow
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Waarschuwingen maken voor de dagelijkse limiet
 
-De Dagelijkse cap voor toepassingsinzichten maakt een gebeurtenis in de activiteitskog van Azure wanneer de ingenomen gegevensvolumes het waarschuwingsniveau of het dagelijkse limietniveau bereiken.  U [een waarschuwing maken op basis van deze gebeurtenissen in het activiteitenlogboek.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal) De signaalnamen voor deze gebeurtenissen zijn:
+De Dagelijkse cap voor toepassingsinzichten maakt een gebeurtenis in het Azure-activiteitenlogboek wanneer de ingenomen gegevensvolumes het waarschuwingsniveau of het dagelijkse limietniveau bereiken.  U [een waarschuwing maken op basis van deze gebeurtenissen in het activiteitenlogboek.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal) De signaalnamen voor deze gebeurtenissen zijn:
 
 * Waarschuwingdrempel voor dagelijkse limietvan application Insights-component bereikt
 
@@ -216,7 +218,7 @@ Als u de bewaarstand wilt wijzigen, gaat u vanuit uw bron Voor Toepassingsstatis
 
 ![De dagelijkse telemetrievolumed aanpassen](./media/pricing/pricing-005.png)
 
-De retentie kan ook programmatisch worden ingesteld `retentionInDays` met behulp van [PowerShell](powershell.md#set-the-data-retention) met behulp van de parameter. Als u de gegevensbewaring instelt op 30 dagen, u bovendien `immediatePurgeDataOn30Days` een onmiddellijke zuivering van oudere gegevens activeren met behulp van de parameter, wat handig kan zijn voor nalevingsgerelateerde scenario's. Deze zuiveringsfunctionaliteit wordt alleen zichtbaar via Azure Resource Manager en moet met uiterste zorg worden gebruikt. De dagelijkse resettijd voor de gegevensvolumedop kan worden `dailyQuotaResetTime` geconfigureerd met Azure Resource Manager om de parameter in te stellen.
+De retentie kan ook programmatisch worden ingesteld `retentionInDays` met behulp van [PowerShell](powershell.md#set-the-data-retention) met behulp van de parameter. Wanneer de retentie wordt verlaagd, is er een respijtperiode van meerdere dagen voordat de oudste gegevens worden verwijderd. Als u de gegevensbewaring instelt op 30 dagen, `immediatePurgeDataOn30Days` u een onmiddellijke zuivering van oudere gegevens activeren met behulp van de parameter, wat handig kan zijn voor nalevingsscenario's. Deze zuiveringsfunctionaliteit wordt alleen zichtbaar via Azure Resource Manager en moet met uiterste zorg worden gebruikt. De dagelijkse resettijd voor de gegevensvolumedop kan worden `dailyQuotaResetTime` geconfigureerd met Azure Resource Manager om de parameter in te stellen.
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Kosten voor gegevensoverdracht met Application Insights
 
@@ -228,7 +230,7 @@ Het verzenden van gegevens naar Application Insights kan leiden tot kosten voor 
 
 ## <a name="disable-daily-cap-e-mails"></a>Dagelijkse cap e-mails uitschakelen
 
-Als u de dagelijkse volumed-e-mails wilt uitschakelen, selecteert u onder het gedeelte **Configureren** van uw toepassingsstatistieken in het deelvenster **Gebruik en geschatte kosten** de dagelijkse **limiet**. Er zijn instellingen om e-mail te verzenden wanneer de dop is bereikt, evenals wanneer een verstelbaar waarschuwingsniveau is bereikt. Als u alle dagelijkse e-mails met het totale opstelvolume wilt uitschakelen, schakelt u beide selectievakjes uit.
+Als u de dagelijkse volumed-e-mails wilt uitschakelen, selecteert u onder het gedeelte **Configureren** van uw toepassingsstatistieken in het deelvenster **Gebruik en geschatte kosten** de dagelijkse **limiet**. Er zijn instellingen om e-mail te verzenden wanneer de dop is bereikt, evenals wanneer een verstelbaar waarschuwingsniveau is bereikt. Als u alle dagelijkse e-mails over het totale opstelvolume wilt uitschakelen, schakelt u beide selectievakjes uit.
 
 ## <a name="legacy-enterprise-per-node-pricing-tier"></a>Prijscategorie Legacy Enterprise (Per Node)
 

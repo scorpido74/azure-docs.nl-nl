@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f112a4523bc5af9ecae57e93dfb90795d3fe9c50
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ff9191c0994d4e26da69e1c4ceaf7ef6c93e9960
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113279"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253149"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-versleuteling voor gegevens in rust
 
@@ -45,7 +45,7 @@ In de volgende tabel worden sleutelbeheeropties voor Azure Storage-versleuteling
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    Versleutelings-/decryptiebewerkingen    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
 |    Ondersteuning voor Azure Storage-services    |    Alle                                                |    Blob-opslag, Azure Files<sup>1,2</sup>                                                                                                               |    Blob Storage                                                                  |
-|    Sleutelopslag                         |    Microsoft-sleutelarchief    |    Azure Key Vault                                                                                                                              |    Azure Key Vault of een andere sleutelwinkel                                                                 |
+|    Sleutelopslag                         |    Microsoft-sleutelarchief    |    Azure Key Vault                                                                                                                              |    De eigen sleutelwinkel van de klant                                                                 |
 |    Belangrijkste rotatieverantwoordelijkheid         |    Microsoft                                          |    Klant                                                                                                                                     |    Klant                                                                      |
 |    Sleutelbesturingselement                          |    Microsoft                                     |    Klant                                                                                                                    |    Klant                                                                 |
 

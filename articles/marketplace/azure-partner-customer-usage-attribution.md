@@ -1,53 +1,95 @@
 ---
-title: Toewijzing van Azure-partners en klantgebruik | Azure Marketplace
-description: Overzicht van het bijhouden van klantgebruik voor Azure Marketplace-oplossingen
+title: Commerciële Marketplace-partner en toeschrijving van klantgebruik
+description: Krijg een overzicht van het bijhouden van klantgebruik voor Azure Marketplace-oplossingen.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 9/23/2019
+ms.date: 04/13/2020
 ms.author: dsindona
-ms.openlocfilehash: 2895944dea6417949488076186135680523e19db
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 5fec72ce5f86c1bee9ec0e978e458f5be454c8e3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874940"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256583"
 ---
-# <a name="azure-partner-customer-usage-attribution"></a>Gebruikskenmerken van klanten van Azure-partners
+# <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Commerciële Marketplace-partner en toeschrijving van klantgebruik
 
-Als softwarepartner voor Azure vereisen uw oplossingen Azure-componenten of moeten ze rechtstreeks op de Azure-infrastructuur worden geïmplementeerd. Klanten die een partneroplossing implementeren en hun eigen Azure-resources inrichten, kunnen het moeilijk vinden om inzicht te krijgen in de status van de implementatie en optica te krijgen in de impact op azure-groei. Wanneer u een hoger zichtbaarheidsniveau toevoegt, sluit u zich aan bij de Microsoft-verkoopteams en krijgt u krediet voor Microsoft-partnerprogramma's.
+Toeschrijving van klantgebruik is een methode om Azure-resources die worden uitgevoerd in klantabonnementen, die zijn geïmplementeerd om uw oplossing uit te voeren, te koppelen aan u als partner. Het vormen van deze associaties in interne Microsoft-systemen geeft meer zichtbaarheid aan de Azure-footprint waarop uw software wordt uitgevoerd. Wanneer u deze trackingmogelijkheid overneemt, sluit u zich aan bij microsoft-verkoopteams en krijgt u krediet voor Microsoft-partnerprogramma's.
 
-Microsoft biedt nu een methode om partners te helpen het Azure-gebruik van klantimplementaties van hun software op Azure beter te volgen. De nieuwe methode maakt gebruik van Azure Resource Manager om de implementatie van Azure-services te orkestreren.
+U de koppeling vormen via Azure Marketplace, de Quickstart-repository, private GitHub-repositories en 1:1 klantinteracties die duurzame IP maken (zoals de ontwikkeling van een app).
 
-Als Microsoft-partner u Azure-gebruik koppelen aan azure-resources die u namens een klant indient. U de koppeling vormen via de Azure Marketplace, de Quickstart-opslagplaats, privé-GitHub-repositories en één-op-één klantbetrokkenheid. Toeschrijving van klantgebruik ondersteunt drie implementatieopties:
+Toeschrijving van klantgebruik ondersteunt drie implementatieopties:
 
 - Azure Resource Manager-sjablonen: Partners kunnen Resource Manager-sjablonen gebruiken om de Azure-services te implementeren om de software van de partner uit te voeren. Partners kunnen een Resource Manager-sjabloon maken om de infrastructuur en configuratie van hun Azure-oplossing te definiëren. Met een Resource Manager-sjabloon kunnen u en uw klanten uw oplossing gedurende de gehele levenscyclus implementeren. U erop vertrouwen dat uw resources consistent zijn geïmplementeerd.
 - Azure Resource Manager API's: Partners kunnen de API's voor Resource Beheer rechtstreeks aanroepen om een Resource Manager-sjabloon te implementeren of om de API-aanroepen te genereren om Azure-services rechtstreeks in te richten.
-- Terraform: Partners kunnen cloudorchestrator zoals Terraform gebruiken om een Resource Manager-sjabloon te implementeren of Azure-services rechtstreeks te implementeren.
+- Terraform: Partners kunnen Terraform gebruiken om een Resource Manager-sjabloon te implementeren of Azure-services rechtstreeks te implementeren.
 
-Toeschrijving van klantgebruik is voor nieuwe implementatie en ondersteunt GEEN het taggen van bestaande resources die al zijn geïmplementeerd.
-
-Toeschrijving van klantgebruik is vereist voor [Azure Application:](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)oplossingssjabloonaanbieding gepubliceerd op Azure Marketplace.
-
+>[!IMPORTANT]
+>- Toeschrijving van klantgebruik is niet bedoeld om het werk bij te houden van systeemintegratoren, beheerde serviceproviders of hulpprogramma's die zijn ontworpen om software te implementeren en te beheren die op Azure wordt uitgevoerd.
+>
+>- Toeschrijving van klantgebruik is voor nieuwe implementaties en biedt geen ondersteuning voor het taggen van bestaande resources die al zijn geïmplementeerd.
+>
+>- Toeschrijving van klantgebruik is vereist voor [Azure Application-aanbiedingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer) die zijn gepubliceerd op Azure Marketplace.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+## <a name="create-guids"></a>GUID's maken
+
+Een GUID is een unieke referentie-id met 32 hexadecimale cijfers. Als u GUID's wilt maken voor tracking, moet u een GUID-generator gebruiken. Het Azure Storage-team heeft een [GUID-generatorformulier](https://aka.ms/StoragePartners) gemaakt waarmee u een GUID van de juiste indeling wordt gemaild en kan worden hergebruikt voor de verschillende trackingsystemen.
+
+> [!NOTE]
+> Het wordt ten zeerste aanbevolen om het [GUID-generatorformulier van Azure Storage](https://aka.ms/StoragePartners) te gebruiken om uw GUID te maken. Zie voor meer informatie onze [FAQ.](#faq)
+
+Wij raden u aan voor elk aanbiedings- en distributiekanaal voor elk product een unieke GUID te maken. U ervoor kiezen om één GUID te gebruiken voor de meerdere distributiekanalen van het product als u niet wilt dat de rapportage wordt gesplitst.
+
+Als u een product implementeert met behulp van een sjabloon en het is beschikbaar op zowel de Azure Marketplace als op GitHub, u twee verschillende GUIDS maken en registreren:
+
+- Product A in Azure Marketplace
+- Product A op GitHub
+
+Rapportage wordt gedaan door Microsoft Partner Network ID en GUID.
+
+U het gebruik ook op een gedetailleerder niveau bijhouden door extra GUID's te registreren en GUID's tussen plannen te wijzigen, waarbij plannen varianten van een aanbieding zijn.
+
+## <a name="register-guids"></a>GUID's registreren
+
+De GUID's moeten zijn geregistreerd in het Partnercentrum om toeschrijving van klantgebruik mogelijk te maken.
+
+Nadat u een GUID hebt toegevoegd aan uw sjabloon of in de gebruikersagent en de GUID hebt geregistreerd in partnercentrum, worden toekomstige implementaties bijgehouden.
+
+1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard).
+
+1. Meld u aan als [uitgever van een commerciële marktplaats.](https://aka.ms/JoinMarketplace)
+
+   * Partners zijn verplicht om een profiel te [hebben in partnercentrum.](https://docs.microsoft.com/azure/marketplace/become-publisher) U wordt aangemoedigd om de aanbieding in Azure Marketplace of AppSource aan te bieden.
+   * Partners kunnen meerdere GUID's registreren.
+   * Partners kunnen GUID's registreren voor niet-marketplace-oplossingssjablonen en -aanbiedingen.
+
+1. Selecteer in de rechterbovenhoek het pictogram versnelling instellingen en selecteer **Vervolgens Ontwikkelaarsinstellingen**.
+
+1. Selecteer op de **pagina Accountinstellingen**de optie **Tracking GUID toevoegen.**
+
+1. Voer in het **vak GUID** uw tracking-GUID in. Voer alleen de GUID in zonder het **pid-voorvoegsel.** Voer **in het** vak Beschrijving de naam of beschrijving van uw aanbieding in.
+
+1. Als u meer dan één GUID wilt registreren, selecteert u **GUID toevoegen** opnieuw. Er worden extra vakken op de pagina weergegeven.
+
+1. Selecteer **Opslaan**.
+
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sjablonen gebruiken
-Veel partneroplossingen worden geïmplementeerd op het abonnement van een klant met behulp van Resource Manager-sjablonen. Als u een Resource Manager-sjabloon hebt die beschikbaar is in de Azure Marketplace, op GitHub of als Quickstart, moet het proces om uw sjabloon te wijzigen om toeschrijving van klantgebruik in te schakelen, eenvoudig zijn.
+Veel partneroplossingen worden geïmplementeerd met Azure Resource Manager-sjablonen. Als u een Resource Manager-sjabloon hebt die beschikbaar is in de Azure Marketplace, op GitHub of als Quickstart, is het proces om uw sjabloon te wijzigen om toeschrijving van klantgebruik in te schakelen, eenvoudig.
 
-Zie voor meer informatie over het maken en publiceren van oplossingssjablonen
+> [!NOTE]
+> Zie voor meer informatie over het maken en publiceren van oplossingssjablonen
+> * [Maak en implementeer uw eerste Resource Manager-sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+>* [Azure Application-aanbieding](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer).
+>* Video: [Oplossingssjablonen en beheerde toepassingen voor de Azure Marketplace bouwen.](https://channel9.msdn.com/Events/Build/2018/BRK3603)
 
-* [Maak en implementeer uw eerste Resource Manager-sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
-* [Azure Application-aanbieding](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer).
-* Video: [Oplossingssjablonen en beheerde toepassingen voor de Azure Marketplace bouwen.](https://channel9.msdn.com/Events/Build/2018/BRK3603)
-
-
-## <a name="add-a-guid-to-your-template"></a>Een GUID toevoegen aan uw sjabloon
 
 Als u een guid (globally unique identifier) wilt toevoegen, brengt u één wijziging aan in het hoofdsjabloonbestand:
 
-1. [Maak een GUID](#create-guids) met de voorgestelde methode en [registreer de GUID](#register-guids-and-offers).
+1. [Maak een GUID](#create-guids) met de voorgestelde methode en [registreer de GUID](#register-guids).
 
 1. Open de sjabloon Resourcemanager.
 
@@ -96,7 +138,7 @@ Als u toeschrijving van klantgebruik wilt inschakelen, neemt u bij het ontwerpen
 
 ![Voorbeeld-GUID-indeling](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
-> [!Note]
+> [!NOTE]
 > Het formaat van de tekenreeks is belangrijk. Als het **pid-voorvoegsel** niet is opgenomen, is het niet mogelijk om de gegevens op te vragen. Verschillende SDK's volgen anders. Als u deze methode wilt implementeren, controleert u de ondersteunings- en trackingbenadering voor uw favoriete Azure SDK.
 
 #### <a name="example-the-python-sdk"></a>Voorbeeld: De Python SDK
@@ -105,7 +147,7 @@ Gebruik voor Python het **kenmerk config.** U het kenmerk alleen toevoegen aan e
 
 ![Het kenmerk toevoegen aan een gebruikersagent](media/marketplace-publishers-guide/python-for-lu.PNG)
 
-> [!Note]
+> [!NOTE]
 > Voeg het kenmerk voor elke client toe. Er is geen globale statische configuratie. U een clientfabriek taggen om er zeker van te zijn dat elke client wordt gevolgd. Zie voor meer informatie dit [voorbeeld van de clientfabriek op GitHub.](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)
 
 #### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>Een implementatie taggen met de Azure PowerShell
@@ -143,50 +185,6 @@ Partners die hun implementatie via Terraform willen laten bijhouden op naamvan k
 
 * Een GUID maken (de GUID moet worden toegevoegd voor elke aanbieding of SKU)
 * Werk hun Azure Provider bij om de waarde van *partner_id* in te stellen op de GUID (FIX ER NIET vooraf de GUID met "pid-", stel deze gewoon in op de werkelijke GUID)
-
-## <a name="create-guids"></a>GUID's maken
-
-Een GUID is een uniek referentienummer met 32 hexadecimale cijfers. Als u GUID's wilt maken voor tracking, moet u een GUID-generator gebruiken. Het Azure Storage-team heeft een [GUID-generatorformulier](https://aka.ms/StoragePartners) gemaakt waarmee u een GUID van de juiste indeling wordt gemaild en kan worden hergebruikt voor de verschillende trackingsystemen.
-
-> [!Note]
-> Het wordt ten zeerste aanbevolen om het [GUID-generatorformulier van Azure Storage](https://aka.ms/StoragePartners) te gebruiken om uw GUID te maken. Zie voor meer informatie onze [FAQ.](#faq)
-
-Wij raden u aan voor elk aanbiedings- en distributiekanaal voor elk product een unieke GUID te maken. U ervoor kiezen om één GUID te gebruiken voor de meerdere distributiekanalen van het product als u niet wilt dat de rapportage wordt gesplitst.
-
-Als u een product implementeert met behulp van een sjabloon en het is beschikbaar op zowel de Azure Marketplace als op GitHub, u 2 verschillende GUIDS maken en registreren:
-
-*   Product A in Azure Marketplace
-*   Product A op GitHub
-
-Rapportage gebeurt op basis van de partnerwaarde (Microsoft Partner ID) en de GUIDs.
-
-U GUID's ook volgen op een gedetailleerder niveau, zoals de SKU, waar SKU's varianten van een aanbieding zijn.
-
-## <a name="register-guids-and-offers"></a>GUID's en aanbiedingen registreren
-
-De GUID's moeten worden geregistreerd om toeschrijving van klantgebruik mogelijk te maken.
-
-Alle registraties voor sjabloon-GUIDs worden uitgevoerd in het Partnercentrum.
-
-Nadat u de GUID hebt toegevoegd aan uw sjabloon of in de gebruikersagent en de GUID hebt geregistreerd in het partnercentrum, worden alle implementaties bijgehouden.
-
-1. Meld u aan als [uitgever van een commerciële marktplaats.](https://aka.ms/JoinMarketplace)
-
-   * Partners zijn verplicht om een profiel te [hebben in partnercentrum.](https://docs.microsoft.com/azure/marketplace/become-publisher) U wordt aangemoedigd om de aanbieding in Azure Marketplace of AppSource aan te bieden.
-   * Partners kunnen meerdere GUID's registreren.
-   * Partners kunnen een GUID registreren voor de niet-Marketplace-oplossingssjablonen en -aanbiedingen.
-
-1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard).
-
-1. Selecteer in de rechterbovenhoek het pictogram versnelling instellingen en selecteer **Vervolgens Ontwikkelaarsinstellingen**.
-
-1. Selecteer op de **pagina Accountinstellingen**de optie **Tracking GUID toevoegen.**
-
-1. Voer in het **vak GUID** uw tracking-GUID in. Voer alleen de GUID in zonder het **pid-voorvoegsel.** Voer **in het** vak Beschrijving de naam of beschrijving van uw aanbieding in.
-
-1. Als u meer dan één GUID wilt registreren, selecteert u **GUID toevoegen** opnieuw. Er worden extra vakken op de pagina weergegeven.
-
-1. Selecteer **Opslaan**.
 
 
 ## <a name="verify-the-guid-deployment"></a>De GUID-implementatie verifiëren
@@ -277,7 +275,7 @@ Als u hulp nodig hebt voor Marketplace Onboarding en/of toeschrijving van het kl
 
 1. Voer op de volgende pagina de vereiste waarden in.
 
-   > [!Important]
+   > [!IMPORTANT]
    > Voer in het vak **Incidenttitel** **ISV Usage Tracking in**. Beschrijf uw probleem in detail.
 
    ![Voer ISV-gebruikstracking in voor de incidenttitel](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
@@ -315,11 +313,11 @@ Ja, een klant of implementatiepartner kan de sjabloon aanpassen en de GUID wijzi
 
 **Kan ik sjablonen bijhouden die zijn geïmplementeerd vanuit een niet-Microsoft-opslagplaats zoals GitHub?**
 
-Ja, zolang de GUID aanwezig is wanneer de sjabloon wordt geïmplementeerd, wordt het gebruik bijgehouden. Partners moeten een profiel hebben in de inschrijving op de commerciële marktplaats in het Partnercentrum om GUID's te registreren die worden gebruikt voor de implementatie buiten de Azure Marketplace.
+Ja, zolang de GUID aanwezig is wanneer de sjabloon wordt geïmplementeerd, wordt het gebruik bijgehouden. Partners moeten hun GUIDs nog steeds registreren.
 
 **Ontvangt de klant ook rapportage?**
 
-Klanten kunnen hun gebruik van afzonderlijke resources of door de klant gedefinieerde brongroepen binnen de Azure-portal bijhouden.
+Klanten kunnen hun gebruik van afzonderlijke resources of door de klant gedefinieerde brongroepen binnen de Azure-portal bijhouden. Klanten zien geen gebruik uitgebroken door GUID.
 
 **Is deze methodologie vergelijkbaar met de Digital Partner of Record (DPOR)?**
 

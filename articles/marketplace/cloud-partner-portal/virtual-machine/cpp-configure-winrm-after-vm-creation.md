@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 673fe1f31f6a8602225e7cde3bf1eb4c3b28b8a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b80325594eedb87293c31de3236bb4690eb89e05
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278141"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273015"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>WinRM configureren na het maken van virtuele machines
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een Azure Virtual Machine-aanbieding maken](https://aka.ms/CreateAzureVMoffer) om uw gemigreerde aanbiedingen te beheren.
 
 In dit artikel wordt uitgelegd hoe u een bestaande virtuele machine (VM) met Azure configureren om WinRM via HTTPS in te schakelen.  Deze configuratie is alleen van toepassing op vm's in Windows en vereist het volgende proces in twee stappen:
 
@@ -26,8 +29,8 @@ In dit artikel wordt uitgelegd hoe u een bestaande virtuele machine (VM) met Azu
 
 Het WinRM-over-HTTPS-protocol maakt gebruik van poort 5986, die standaard niet is ingeschakeld op vooraf geconfigureerde Windows VM's die op de Azure Marketplace worden aangeboden. Als u dit protocol wilt inschakelen, gebruikt u de volgende stappen om een nieuwe regel toe te voegen aan de netwerkbeveiligingsgroep (NSG) met de [Azure-portal.](https://portal.azure.com)  Zie [Beveiligingsgroepen voor](https://docs.microsoft.com/azure/virtual-network/security-overview)meer informatie over NSG's .
 
-1.  Navigeer naar de **virtuele machines van **   <het blad >*vm-naam* >   **> Instellingen/Netwerken**.
-2.  Klik op de NSG-naam (in dit voorbeeld **testvm1002)** om de eigenschappen ervan weer te geven:
+1. Navigeer naar de **virtuele machines van **   <het blad >*vm-naam* >   **> Instellingen/Netwerken**.
+2. Klik op de NSG-naam (in dit voorbeeld **testvm1002)** om de eigenschappen ervan weer te geven:
 
     ![Eigenschappen van netwerkbeveiligingsgroepen](./media/nsg-properties.png)
  

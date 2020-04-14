@@ -1,5 +1,5 @@
 ---
-title: Bescherming tegen bedreigingen in Azure Security Center
+title: Bescherming tegen bedreiging in Azure Security Center
 description: In dit onderwerp worden de bronnen beschreven die worden beschermd door de functies voor bedreigingsbeveiliging van Azure Security Center
 services: security-center
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 395f4b5481fcf2028d6bfe736e58c3174a0c80b2
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fdf22e4d981549b876a14aed2b0a1d7e0c76e40e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435352"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263451"
 ---
-# <a name="threat-protection-in-azure-security-center"></a>Bescherming tegen bedreigingen in Azure Security Center
+# <a name="threat-protection-in-azure-security-center"></a>Bescherming tegen bedreiging in Azure Security Center
 
 Wanneer Security Center een bedreiging detecteert in een gebied van uw omgeving, genereert het een waarschuwing. Deze waarschuwingen beschrijven details van de getroffen resources, voorgestelde herstelstappen en in sommige gevallen een optie om een logische app als antwoord te activeren.
 
@@ -159,19 +159,20 @@ Zie voor meer informatie:
 
 
 
-
 ## <a name="threat-protection-for-azure-storage"></a>Bescherming tegen bedreigingen voor Azure Storage<a name="azure-storage"></a>
 
-> [!NOTE]
-> Deze service is beschikbaar in amerikaanse overheidsclouds, maar geen andere soevereine of Azure-overheidscloudregio's.
+Geavanceerde bedreigingsbeveiliging voor opslag detecteert ongebruikelijke en mogelijk schadelijke pogingen om opslagaccounts te openen of te exploiteren. Met deze beveiligingslaag u bedreigingen aanpakken zonder dat u een beveiligingsexpert hoeft te zijn en u uw beveiligingsbewakingssystemen beheren.
 
-Geavanceerde bedreigingsbeveiliging voor opslag (momenteel alleen beschikbaar voor Blob-opslag) detecteert ongebruikelijke en mogelijk schadelijke pogingen om opslagaccounts te openen of te exploiteren. Met deze beveiligingslaag u bedreigingen aanpakken zonder dat u een beveiligingsexpert hoeft te zijn en u uw beveiligingsbewakingssystemen beheren.
+Geavanceerde bedreigingsbeveiliging voor Azure Storage is momenteel alleen beschikbaar voor [Blob Storage.](https://azure.microsoft.com/services/storage/blobs/) 
+
+Deze service is beschikbaar in alle openbare clouds en amerikaanse overheidsclouds, maar geen andere soevereine of Azure-overheidscloudregio's.
+
+Zie de [prijspagina](https://azure.microsoft.com/pricing/details/security-center/)van azure security center voor prijsgegevens, waaronder een gratis proefperiode van 30 dagen.
 
 Zie voor meer informatie:
 
 * [Geavanceerde bedreigingsbeveiliging inschakelen voor Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [De lijst met waarschuwingen voor bedreigingsbeveiliging voor Azure Storage](alerts-reference.md#alerts-azurestorage)
-
 
 > [!TIP]
 > U Azure Storage-waarschuwingen simuleren door de instructies in [dit blogbericht te volgen.](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)

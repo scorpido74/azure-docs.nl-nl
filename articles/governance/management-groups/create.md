@@ -3,12 +3,12 @@ title: Beheergroepen maken om resources te ordenen - Azure Governance
 description: Meer informatie over het maken van Azure-beheergroepen om meerdere resources te beheren met behulp van de portal, Azure PowerShell en Azure CLI.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: d9bb2e82404c0188094298f40da3346ee132eec3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a06679432d795b5b7854af8dc66b468841978e9c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436532"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273185"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Beheergroepen maken voor het organiseren en beheren van resources
 
@@ -20,7 +20,7 @@ De eerste beheergroep die in de map is gemaakt, kan tot 15 minuten in beslag nem
 
 Elke Azure AD-gebruiker in de tenant kan een beheergroep maken zonder dat de schrijfmachtiging voor de beheergroep aan die gebruiker is toegewezen.  Deze nieuwe beheergroep wordt een kind van de Root Management Group en de maker krijgt een "Eigenaar" rolopdracht. Beheergroep service maakt dit mogelijk, zodat roltoewijzingen niet nodig zijn op het basisniveau. Geen gebruikers hebben toegang tot de Root Management Group wanneer deze wordt gemaakt.  Om te voorkomen dat de Azure AD Global Administrators worden gevonden om beheergroepen te gaan gebruiken, staan we de creatie van de eerste beheergroepen op het hoofdniveau toe.      
 
-U de beheergroep maken met behulp van de portal, PowerShell of Azure CLI. Momenteel u resourcebeheersjablonen niet gebruiken om beheergroepen te maken.
+U de beheergroep maken met behulp van de portal, een [Resource Manager-sjabloon,](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)PowerShell of Azure CLI.
 
 ### <a name="create-in-portal"></a>Maken in portal
 

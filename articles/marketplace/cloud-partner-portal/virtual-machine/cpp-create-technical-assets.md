@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: dsindona
-ms.openlocfilehash: 57f56a341cfc3db6a5f0664503809e6ab6cf3d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a62af1d8d751d36150c236280077cde8f6547385
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278021"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273967"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Technische assets maken voor een virtuele machineaanbieding
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Uw technische assets van Azure Virtual Machine maken](https://aka.ms/AzureVMTechAsset) om uw gemigreerde aanbiedingen te beheren.
 
 In deze sectie u de technische elementen voor een virtuele machine (VM) voor de Azure Marketplace maken en configureren.  Een VM bevat twee componenten: de oplossing virtuele harde schijf (VHD) en optionele gekoppelde gegevensschijven.  
 
@@ -35,26 +38,26 @@ U moet het VM-besturingssysteem, de VM-grootte, poorten die u wilt openen en max
 ## <a name="fundamental-technical-knowledge"></a>Fundamentele technische kennis
 
 Het ontwerpen, bouwen en testen van deze assets kost tijd en vereist technische kennis van zowel het Azure-platform als de technologieën die worden gebruikt om het aanbod te bouwen. Naast uw oplossingsdomein moet uw engineeringteam kennis hebben van de volgende Microsoft-technologieën: 
--   Basiskennis van [Azure Services](https://azure.microsoft.com/services/) 
--   [Azure-toepassingen ontwerpen en ontwerpen](https://azure.microsoft.com/solutions/architecture/)
--   Werkkennis van [Azure Virtual Machines,](https://azure.microsoft.com/services/virtual-machines/) [Azure Storage](https://azure.microsoft.com/services/?filter=storage) en Azure [Networking](https://azure.microsoft.com/services/?filter=networking)
--   Werkkennis van [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
--   Werkkennis van [JSON](https://www.json.org/)
+-    Basiskennis van [Azure Services](https://azure.microsoft.com/services/) 
+-    [Azure-toepassingen ontwerpen en ontwerpen](https://azure.microsoft.com/solutions/architecture/)
+-    Werkkennis van [Azure Virtual Machines,](https://azure.microsoft.com/services/virtual-machines/) [Azure Storage](https://azure.microsoft.com/services/?filter=storage) en Azure [Networking](https://azure.microsoft.com/services/?filter=networking)
+-    Werkkennis van [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
+-    Werkkennis van [JSON](https://www.json.org/)
 
 
 ## <a name="suggested-tools"></a>Voorgestelde hulpprogramma's 
 
 Kies een of beide van de volgende scriptomgevingen om VHD's en VM's te beheren:
--   [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
--   [Azure-CLI](https://docs.microsoft.com/cli/azure)
+-    [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+-    [Azure-CLI](https://docs.microsoft.com/cli/azure)
 
 Daarnaast raden we aan om de volgende tools toe te voegen aan je ontwikkelomgeving: 
 
--   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Extensie: [Azure Resource Manager-hulpprogramma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Uitbreiding: [Verfraaien](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Uitbreiding: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+-    [Azure Opslagverkenner](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-    [Visual Studio Code](https://code.visualstudio.com/)
+    *    Extensie: [Azure Resource Manager-hulpprogramma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *    Uitbreiding: [Verfraaien](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *    Uitbreiding: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 We raden ook aan om de beschikbare hulpprogramma's op de pagina [Azure Developer Tools](https://azure.microsoft.com/tools/) te bekijken en, als u Visual Studio gebruikt, de Visual Studio [Marketplace](https://marketplace.visualstudio.com/).
 

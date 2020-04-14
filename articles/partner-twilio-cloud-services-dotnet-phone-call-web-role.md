@@ -3,7 +3,7 @@ title: Bellen met Twilio (.NET) | Microsoft Documenten
 description: Meer informatie over het voeren van een telefoongesprek en het verzenden van een sms-bericht met de Twilio API-service op Azure. Codevoorbeelden geschreven in .NET.
 services: ''
 documentationcenter: .net
-author: georgewallace
+author: mimckitt
 editor: ''
 ms.assetid: 789185ad-69dc-4e9e-a936-42e0a25315c8
 ms.service: cloud-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
-ms.author: gwallace
-ms.openlocfilehash: 27b4f3cdd8f622a97cfc0853f79bb77d76673dcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: df1f5e1c21c28fa8c1fcdef6b2278fb92014a3b1
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69636141"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272556"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Bellen met Twilio in een webrol op Azure
 In deze handleiding wordt uitgelegd hoe u Twilio gebruiken om te bellen vanaf een webpagina die wordt gehost in Azure. De resulterende toepassing vraagt de gebruiker om een gesprek te voeren met het opgegeven nummer en bericht, zoals weergegeven in de volgende screenshot.

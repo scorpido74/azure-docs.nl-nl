@@ -3,12 +3,12 @@ title: Back-ups maken van bestanden en mappen - veelgestelde vragen
 description: Hiermee worden veelvoorkomende vragen over het maken van back-ups van bestanden en mappen met Azure Backup beantwoord.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 55819ce7ec5196812d935a21c096c132144d78af
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421310"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254747"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Veelgestelde vragen over het maken van back-ups van bestanden en mappen
 
@@ -22,7 +22,7 @@ De nieuwste MARS-agent die wordt gebruikt bij het maken van een back-up van Wind
 
 ### <a name="how-long-are-vault-credentials-valid"></a>Hoe lang zijn kluisreferenties geldig?
 
-De kluisreferenties verlopen na 48 uur. Als het bestand met referenties verloopt, downloadt u het bestand opnieuw van de Azure-portal.
+Vault-referenties verlopen na 10 dagen. Als het bestand met referenties verloopt, downloadt u het bestand opnieuw van de Azure-portal.
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Van welke stations kan ik een back-up maken van bestanden en mappen?
 
@@ -185,7 +185,6 @@ Als u dezelfde wachtwoordzin (die u tijdens de registratie) van de oorspronkelij
 | --- | --- | --- |
 | Verloren |Beschikbaar |U de MARS-agent installeren en registreren op een andere machine met dezelfde wachtwoordzin die u tijdens de registratie van de originele machine hebt opgegeven. Hersteloptie **kiezen Een** > **andere locatie** om uw herstel uit te voeren. Zie voor meer informatie dit [artikel.](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)
 | Verloren |Verloren |Niet mogelijk om de gegevens of gegevens te herstellen is niet beschikbaar |
-
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Wat gebeurt er als ik een doorlopende hersteltaak annuleer?
 

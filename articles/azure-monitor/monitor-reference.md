@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e0e98b87cf3612bf01f90f806ea64ef06d08c60a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408492"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255325"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt gecontroleerd door Azure Monitor?
 In dit artikel worden de verschillende toepassingen en services beschreven die worden gecontroleerd door Azure Monitor. 
@@ -31,7 +31,7 @@ Inzichten bieden een op maat gemaakte monitoringervaring voor bepaalde toepassin
 | [Azure Monitor voor netwerken (voorbeeld)](insights/network-insights-overview.md) | Biedt een uitgebreid overzicht van de status en statistieken voor al uw netwerkbronnen. De geavanceerde zoekmogelijkheid helpt u bij het identificeren van resourceafhankelijkheden, waardoor scenario's zoals het identificeren van bronnen die uw website hosten, worden geïdentificeerd door simpelweg naar de naam van uw website te zoeken. |
 [Azure-monitor voor resourcegroepen (voorbeeld)](insights/resource-group-insights.md) |  Triage en diagnose van eventuele problemen van uw individuele resources tegenkomen, terwijl het aanbieden van context met betrekking tot de gezondheid en prestaties van de resource groep als geheel. |
 | [Azure Monitor voor opslag (voorbeeld)](insights/storage-insights-overview.md) | Biedt uitgebreide bewaking van uw Azure Storage-accounts door een uniforme weergave te bieden van de prestaties, capaciteit en beschikbaarheid van uw Azure Storage Services. |
-| [Azure-monitor voor VM's (voorbeeld)](insights/container-insights-overview.md) | Controleert uw Virtuele Azure-machines (VM) en virtuele machineschaalsets op schaal. De service analyseert de prestaties en status van uw Windows- en Linux-VM's en bewaakt hun processen en afhankelijkheden van andere resources en externe processen. |
+| [Azure-monitor voor VM's](insights/container-insights-overview.md) | Controleert uw Virtuele Azure-machines (VM) en virtuele machineschaalsets op schaal. De service analyseert de prestaties en status van uw Windows- en Linux-VM's en bewaakt hun processen en afhankelijkheden van andere resources en externe processen. |
 
 ### <a name="core-solutions"></a>Kernoplossingen
 

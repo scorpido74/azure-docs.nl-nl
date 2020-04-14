@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 35d57d117f6308863965ffd789c0e28bedd0f301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04eae529efcf9509d8cd43a7629bb0b76b593cd0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281507"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252435"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Leadmanagement configureren in Marketo
 
@@ -76,3 +76,9 @@ Wanneer u klaar bent om de leadmanagementgegevens voor uw aanbieding in de publi
     >[!Note]
     >U moet de rest van de aanbieding voltooien en publiceren voordat u leads voor de aanbieding ontvangen. 
 
+5. **E-mail contact** opnemen : e-mails verstrekken aan mensen in uw bedrijf die e-mailmeldingen moeten ontvangen wanneer een nieuwe lead wordt ontvangen. U meerdere e-mails verstrekken door ze te scheiden met een puntkomma.
+6. Selecteer **OK**.
+
+Klik op de knop Valideren om ervoor te zorgen dat u met succes verbinding hebt gemaakt met een leadbestemming. Als dit lukt, heb je een testlead in de hoofdbestemming.
+
+![Verbindingsdetails](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

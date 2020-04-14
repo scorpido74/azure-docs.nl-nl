@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b469c098db4f8d90147b491bcb54bd55d326b03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4e8b544ea3daeb23b22f3864beb21ba9d3f342f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080305"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255614"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
@@ -72,7 +72,7 @@ Het accumuleren van een aantal Azure VHD's onder een RAID, wordt cumulatief van 
 Houd ook de algehele VM I/O-doorvoer in gedachten bij het dimensioneren of beslissen voor een VM. De totale VM-opslagdoorvoer wordt gedocumenteerd in het artikel [Geheugengeoptimaliseerde virtuele machineformaten.](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
 
 ## <a name="linux-io-scheduler-mode"></a>Linux I/O Scheduler-modus
-Linux heeft verschillende I/O-planningsmodi. Algemene aanbeveling via Linux-leveranciers en SAP is het opnieuw configureren van de I/O scheduler-modus voor schijfvolumes van de **cfq-modus** naar de **noop** (niet-multiqueue) of **geen** voor (multiqueue)modus. Details worden verwezen in [SAP Note #1984787](https://launchpad.support.sap.com/#/notes/1984787). 
+Linux heeft verschillende I/O-planningsmodi. Algemene aanbeveling via Linux-leveranciers en SAP is het opnieuw configureren van de I/O scheduler-modus voor schijfvolumes van de **mq-deadline** of **kyber-modus** naar de **noop** (niet-multiqueue) of **geen** voor (multiqueue) modus. Details worden verwezen in [SAP Note #1984787](https://launchpad.support.sap.com/#/notes/1984787). 
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Oplossingen met Premium Storage en Azure Write Accelerator voor virtuele azure m-serie virtuele machines

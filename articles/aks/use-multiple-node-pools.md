@@ -4,16 +4,16 @@ description: Meer informatie over het maken en beheren van meerdere knooppuntgro
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 26fd541552ee203216af5a08d948644d82061191
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984909"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259082"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppuntgroepen voor een cluster maken en beheren in Azure Kubernetes Service (AKS)
 
-In Azure Kubernetes Service (AKS) worden knooppunten van dezelfde configuratie gegroepeerd in *knooppuntgroepen.* Deze knooppuntgroepen bevatten de onderliggende VM's waarop uw toepassingen worden uitgevoerd. Het beginaantal knooppunten en de grootte (SKU) worden gedefinieerd wanneer u een AKS-cluster maakt, waardoor een *standaardknooppuntgroep wordt gemaakt.* Als u toepassingen met verschillende reken- of opslagvereisten wilt ondersteunen, u extra knooppuntgroepen maken. Gebruik deze extra knooppuntgroepen bijvoorbeeld om GPU's te leveren voor computerintensieve toepassingen of toegang tot krachtige SSD-opslag.
+In Azure Kubernetes Service (AKS) worden knooppunten van dezelfde configuratie gegroepeerd in *knooppuntgroepen.* Deze knooppuntgroepen bevatten de onderliggende VM's waarop uw toepassingen worden uitgevoerd. Het beginaantal knooppunten en de grootte (SKU) worden gedefinieerd wanneer u een AKS-cluster maakt, waarmee een [systeemknooppuntgroep wordt gemaakt.][use-system-pool] Als u toepassingen met verschillende reken- of opslagvereisten wilt ondersteunen, u extra *gebruikersknooppuntgroepen maken.* Systeemknooppuntpools dienen het primaire doel van het hosten van kritieke systeempods zoals CoreDNS en tunnelfront. Groepen gebruikersknooppunts dienen het primaire doel van het hosten van uw toepassingspods. Toepassingspods kunnen echter worden gepland op groepen met systeemknooppunts als u slechts één groep in uw AKS-cluster wilt hebben. Gebruikersknooppuntgroepen zijn de plaats waar u uw toepassingsspecifieke pods plaatst. Gebruik deze extra gebruikersknooppuntgroepen bijvoorbeeld om GPU's te leveren voor computerintensieve toepassingen of toegang tot krachtige SSD-opslag.
 
 > [!NOTE]
 > Deze functie biedt meer controle over het maken en beheren van meerdere knooppuntgroepen. Als gevolg hiervan zijn afzonderlijke opdrachten vereist voor het maken/bijwerken/verwijderen. Voorheen clusterbewerkingen via `az aks create` of `az aks update` gebruikt en gebruikten de managedCluster API en waren de enige optie om uw besturingsvlak en één knooppuntgroep te wijzigen. Deze functie legt een afzonderlijke bewerkingsset voor agentgroepen bloot via `az aks nodepool` de agentPool-API en vereist het gebruik van de opdrachtset om bewerkingen uit te voeren op een afzonderlijke knooppuntgroep.
@@ -29,7 +29,8 @@ U moet de Azure CLI-versie 2.2.0 of hoger installeren en configureren. Voer `az 
 De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en beheert die meerdere knooppuntgroepen ondersteunen:
 
 * Zie [Quota, beperkingen voor de grootte van virtuele machines en regiobeschikbaarheid in Azure Kubernetes Service (AKS)][quotas-skus-regions].
-* U de groep systeemknooppuntsniet verwijderen, standaard de eerste knooppuntgroep.
+* U systeemknooppuntgroepen verwijderen, mits u een andere systeemknooppuntgroep hebt om zijn plaats in het AKS-cluster in te nemen.
+* Systeemgroepen moeten ten minste één knooppunt bevatten en gebruikersknooppuntgroepen kunnen nul of meer knooppunten bevatten.
 * Het AKS-cluster moet de Standaard SKU-loadbalancer gebruiken om meerdere knooppuntgroepen te gebruiken, de functie wordt niet ondersteund met Basis-SKU-loadbalancers.
 * Het AKS-cluster moet virtuele machineschaalsets voor de knooppunten gebruiken.
 * De naam van een knooppuntgroep mag alleen alfanumerieke tekens voor kleine letters bevatten en moet beginnen met een kleine letter. Voor Linux-knooppuntpools moet de lengte tussen 1 en 12 tekens liggen, voor Windows-knooppuntgroepen moet de lengte tussen 1 en 6 tekens liggen.
@@ -37,6 +38,9 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 * Bij het maken van meerdere knooppuntgroepen in clustermaaktijd moeten alle Kubernetes-versies die door knooppuntgroepen worden gebruikt, overeenkomen met de versie die is ingesteld voor het beheervlak. Dit kan worden bijgewerkt nadat het cluster is ingericht met behulp van bewerkingen per knooppuntgroep.
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
+
+> [!Important]
+> Als u één systeemknooppuntgroep voor uw AKS-cluster uitvoert in een productieomgeving, raden we u aan ten minste drie knooppunten te gebruiken voor de knooppuntgroep.
 
 Maak een AKS-cluster met één knooppuntgroep om aan de slag te gaan. In het volgende voorbeeld wordt de opdracht [Az-groep maken][az-group-create] gebruikt om een resourcegroep met de naam *myResourceGroup* in het *eastus-gebied* te maken. Vervolgens wordt een AKS-cluster met de naam *myAKSCluster* gemaakt met de opdracht [az aks create.][az-aks-create] Een *--kubernetes-versie* van *1.15.7* wordt gebruikt om te laten zien hoe u een knooppuntpool in een volgende stap bijwerken. U elke [ondersteunde Kubernetes-versie][supported-versions]opgeven.
 
@@ -753,6 +757,8 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Volgende stappen
 
+Meer informatie over [systeemknooppuntzwembaden][use-system-pool].
+
 In dit artikel hebt u geleerd hoe u meerdere knooppuntgroepen in een AKS-cluster maken en beheren. Zie [Aanbevolen procedures voor geavanceerde plannerfuncties in AKS][operator-best-practices-advanced-scheduler]voor meer informatie over het beheren van pods in knooppuntgroepen.
 
 Zie [Een Windows Server-container maken in AKS][aks-windows]als u containerknooppuntgroepen van Windows Server wilt maken en gebruiken.
@@ -788,3 +794,4 @@ Zie [Een Windows Server-container maken in AKS][aks-windows]als u containerknoop
 [tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
+[use-system-pool]: use-system-pools.md

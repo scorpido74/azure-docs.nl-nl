@@ -481,7 +481,7 @@
           href: control-flow-validation-activity.md
         - name: Wachtactiviteit
           href: control-flow-wait-activity.md
-        - name: Webactiviteit
+        - name: Web Activity
           href: control-flow-web-activity.md
         - name: Webhook-activiteit
           href: control-flow-webhook-activity.md
@@ -607,6 +607,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: SSISDB-logboeken opschonen met taken voor Elastic Database
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: SSIS-taken migreren met SSMS
+          href: how-to-migrate-ssis-job-ssms.md
     - name: Triggers maken
       items:
         - name: Een trigger op basis van gebeurtenissen maken
@@ -651,7 +653,7 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Pakketten uitvoeren in Azure-SSIS IR
           href: ssis-integration-runtime-ssis-activity-faq.md
-- name: Scenario 's
+- name: Scenario's
   items:
     - name: Gegevensmigratie voor data lake en EDW
       items:
@@ -689,7 +691,7 @@
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
       href: /python/api/overview/azure/datafactory?view=azure-python
-- name: Bronnen
+- name: Resources
   items:
     - name: Whitepapers
       href: whitepapers.md

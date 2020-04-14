@@ -5,35 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: 9a3a58cab2d9673a4660967e3a11d7f88900e718
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269430"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271978"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Logboeken van langzame query's in Azure Database voor MySQL
 In Azure Database voor MySQL is het logboek voor trage query beschikbaar voor gebruikers. Toegang tot het transactielogboek wordt niet ondersteund. Het logboek voor trage query's kan worden gebruikt om prestatieknelpunten voor het oplossen van problemen te identificeren.
 
 Zie de [sectie slow query log](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)van de MySQL-naquery voor meer informatie over het slow query-logboek van MySQL.
 
-## <a name="access-slow-query-logs"></a>Toegang tot logboeken voor langzame query's
-U Azure Database voor MySQL-slow querylogs aanbieden en downloaden met behulp van de Azure-portal en de Azure CLI.
-
-Selecteer in de Azure-portal uw Azure-database voor MySQL-server. Selecteer onder de kop **Controle** de pagina **Serverlogboeken.**
-
-Zie [Logboeken voor langzame query's configureren en openen met Azure CLI](howto-configure-server-logs-in-cli.md)voor meer informatie over Azure CLI.
-
-Op dezelfde manier u de logboeken naar Azure Monitor verzenden met diagnostische logboeken. Zie [hieronder](concepts-server-logs.md#diagnostic-logs) voor meer informatie.
-
-## <a name="log-retention"></a>Logboekbehoud
-Logs zijn beschikbaar voor maximaal zeven dagen na hun creatie. Als de totale grootte van de beschikbare logboeken meer dan 7 GB bedraagt, worden de oudste bestanden verwijderd totdat er ruimte beschikbaar is. 
-
-Logs worden gedraaid om de 24 uur of 7 GB, wat het eerst komt.
-
 ## <a name="configure-slow-query-logging"></a>Logboekregistratie voor langzame query's configureren 
-Standaard is het logboek van de langzame query uitgeschakeld. Als u deze wilt inschakelen, stelt u slow_query_log in op AAN.
+Standaard is het logboek van de langzame query uitgeschakeld. Als u deze `slow_query_log` wilt inschakelen, stelt u in op AAN. Dit kan worden ingeschakeld met behulp van de Azure-portal of Azure CLI. 
 
 Andere parameters die u aanpassen zijn:
 
@@ -48,6 +34,21 @@ Andere parameters die u aanpassen zijn:
 > Als u van plan bent om voor een langere periode langzame `log_output` query's te registreren, wordt het aanbevolen om in te stellen op 'Geen'. Als deze is ingesteld op 'Bestand', worden deze logboeken naar de lokale serveropslag geschreven en kunnen ze de prestaties van MySQL beïnvloeden. 
 
 Zie de documentatie van het [Slow Query-logboek](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) van MySQL voor volledige beschrijvingen van de parameters voor het logboek van langzame query's.
+
+## <a name="access-slow-query-logs"></a>Toegang tot logboeken voor langzame query's
+Er zijn twee opties voor toegang tot slow querylogs in Azure Database voor MySQL: lokale serveropslag of Azure Monitor Diagnostic Logs. Dit wordt ingesteld `log_output` met behulp van de parameter.
+
+Voor lokale serveropslag u slow querylogboeken aanbieden en downloaden met behulp van de Azure-portal of de Azure CLI. Navigeer in de Azure-portal naar uw server in de Azure-portal. Selecteer onder de kop **Controle** de pagina **Serverlogboeken.** Zie [Logboeken voor langzame query's configureren en openen met Azure CLI](howto-configure-server-logs-in-cli.md)voor meer informatie over Azure CLI. 
+
+Met diagnostische logboeken voor Azure Monitor u slow querylogs doorgeven naar Azure Monitor Logs (Log Analytics), Azure Storage of Event Hubs. Zie [hieronder](concepts-server-logs.md#diagnostic-logs) voor meer informatie.
+
+## <a name="local-server-storage-log-retention"></a>Behoud van lokale serveropslaglogboeken
+Wanneer u zich aanmeldt bij de lokale opslag van de server, zijn logboeken maximaal zeven dagen na het maken ervan beschikbaar. Als de totale grootte van de beschikbare logboeken meer dan 7 GB bedraagt, worden de oudste bestanden verwijderd totdat er ruimte beschikbaar is.
+
+Logs worden gedraaid om de 24 uur of 7 GB, wat het eerst komt.
+
+> [!Note]
+> De bovenstaande logboekretentie is niet van toepassing op logboeken die worden gepipeteerd met Azure Monitor Diagnostic Logs. U de bewaartermijn wijzigen voor de gegevenssinks die worden uitgestoten naar (bijvoorbeeld. Azure Storage).
 
 ## <a name="diagnostic-logs"></a>Diagnostische logboeken
 Azure Database voor MySQL is geïntegreerd met Azure Monitor Diagnostic Logs. Zodra u slow querylogboeken op uw MySQL-server hebt ingeschakeld, u ervoor kiezen deze uit te laten voeren naar Azure Monitor-logboeken, gebeurtenishubs of Azure Storage. Zie de sectie hoe u diagnostische logboeken inschakelen voor meer informatie over het inschakelen van diagnostische [logboeken.](../azure-monitor/platform/platform-logs-overview.md)

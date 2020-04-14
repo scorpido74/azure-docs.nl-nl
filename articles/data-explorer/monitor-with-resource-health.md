@@ -7,12 +7,12 @@ ms.reviewer: prvavill
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 9b8b1b40e972d7719ef2cf495ed12cb4ed3478fd
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ee42f45d8c96e908061142b5a8e6b2e5cee21993
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479368"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262057"
 ---
 # <a name="monitor-azure-data-explorer-using-resource-health-preview"></a>Azure Data Explorer bewaken met resourcestatus (voorbeeld)
 
@@ -44,7 +44,7 @@ Een status van **Beschikbaar** geeft aan dat uw Azure Data Explorer-bron in orde
 
 ### <a name="unavailable"></a>Niet beschikbaar
 
-Een status van **Niet beschikbaar** geeft aan dat er een doorlopend probleem is met uw Azure Data Explorer-bron waardoor deze niet beschikbaar is voor query's en inname. Knooppunten in uw Azure Data Explorer-bron zijn bijvoorbeeld onverwacht opnieuw opgestart. Neem contact op met [ondersteuning]()als uw Azure Data Explorer-bron gedurende een langere periode in deze status blijft staan.
+Een status van **Niet beschikbaar** geeft aan dat er een doorlopend probleem is met uw Azure Data Explorer-bron waardoor deze niet beschikbaar is voor query's en inname. Knooppunten in uw Azure Data Explorer-bron zijn bijvoorbeeld onverwacht opnieuw opgestart. Neem contact op met ondersteuning als uw Azure Data Explorer-bron gedurende een langere periode in deze status blijft staan.
 
 ![Niet beschikbaar](media/monitor-with-resource-health/unavailable.png)
 

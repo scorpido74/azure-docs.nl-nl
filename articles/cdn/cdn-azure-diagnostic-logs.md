@@ -3,7 +3,7 @@ title: Azure diagnostische logboeken | Microsoft Documenten
 description: Klant kan logboekanalyse inschakelen voor Azure CDN.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
-ms.author: magattus
-ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67594214"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254798"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostische logboeken in Azure
 
@@ -51,7 +51,7 @@ Zie [Diagnostische logboeken voor](https://docs.microsoft.com/azure/monitoring-a
 
 Volg deze stappen om logboekregistratie met CDN-kernanalyses mogelijk te maken:
 
-Meld u aan bij [Azure Portal](https://portal.azure.com). Als u CDN nog niet hebt ingeschakeld voor uw werkstroom, [maakt u een Azure CDN-profiel en eindpunt](cdn-create-new-endpoint.md) voordat u verdergaat.
+Meld u aan bij de [Azure-portal](https://portal.azure.com). Als u CDN nog niet hebt ingeschakeld voor uw werkstroom, [maakt u een Azure CDN-profiel en eindpunt](cdn-create-new-endpoint.md) voordat u verdergaat.
 
 1. Navigeer in de Azure-portal naar **cdn-profiel.**
 

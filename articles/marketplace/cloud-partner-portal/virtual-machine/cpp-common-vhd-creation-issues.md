@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: dsindona
-ms.openlocfilehash: 8ae1dcbeff6e14e6f1f7cd44ae3a0a68bd379b56
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 988121effb35949cce442ba9458789105e88feec
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387339"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273440"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Veelvoorkomende problemen tijdens VHD-creatie (FAQ)
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [VHD-veelgestelde vragen maken](https://aka.ms/VHDcreationIssues) om uw gemigreerde aanbiedingen te beheren.
 
 De volgende veelgestelde vragen (FAQ) hebben betrekking op veelvoorkomende problemen die zich voordoen tijdens virtual hard disk (VHD) en virtual machine (VM) creatie voor VM-aanbiedingen. 
 

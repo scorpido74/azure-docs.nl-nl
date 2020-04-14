@@ -14,19 +14,19 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a71dbd1b38ff58ccf1eb7a4d50daad5b24922e2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e42917237f3b114881655d88a017c2c4366612b3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022746"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254560"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Projectsjablonen voor Visual Studio gebruiken om batchoplossingen een vliegende start te geven
 
 De **Job Manager-** en **Taakprocessor Visual Studio-sjablonen** voor Batch bieden code waarmee u uw computerintensieve workloads op Batch met de minste inspanning implementeren en uitvoeren. Dit document beschrijft deze sjablonen en biedt richtlijnen voor het gebruik ervan.
 
 > [!IMPORTANT]
-> In dit artikel wordt alleen informatie besproken die van toepassing is op deze twee sjablonen en wordt ervan uitgegaan dat u bekend bent met de Batch-service en de bijbehorende sleutelconcepten: pools, compute nodes, taken en taken, taken voor taakbeheer, omgevingsvariabelen en andere relevante Informatie. Meer informatie vindt u in het overzicht [van de basisbeginselen van azure batch-](batch-technical-overview.md) en [batchfuncties voor ontwikkelaars.](batch-api-basics.md)
+> In dit artikel worden alleen informatie besproken die van toepassing is op deze twee sjablonen en wordt ervan uitgegaan dat u bekend bent met de Batch-service en de bijbehorende sleutelconcepten: pools, compute nodes, taken en taken, taken voor taakbeheer, omgevingsvariabelen en andere relevante informatie. Meer informatie vindt u in het overzicht [van de basisbeginselen van azure batch-](batch-technical-overview.md) en [batchfuncties voor ontwikkelaars.](batch-api-basics.md)
 > 
 > 
 
@@ -215,7 +215,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 ```
 **Opslagreferenties**
 
-Doorgaans hoeft de client de gekoppelde opslagaccountreferenties niet aan de taak voor taak voor taak taak voor taak taak voor taak taken te verstrekken, omdat (a) de meeste taakmanagers niet expliciet toegang hoeven te krijgen tot het gekoppelde opslagaccount en (b) het gekoppelde opslagaccount vaak wordt verstrekt aan alle taken als een gemeenschappelijke omgeving instelling voor de taak. Als u het gekoppelde opslagaccount niet verstrekt via de algemene omgevingsinstellingen en de taakbeheerbeheerder toegang tot gekoppelde opslag vereist, moet u de gekoppelde opslagreferenties als volgt leveren:
+Doorgaans hoeft de client de gekoppelde opslagaccountreferenties niet aan de taak voor taak taak voor taak taak taak voor taak te verstrekken, omdat (a) de meeste taakmanagers niet expliciet toegang hoeven te krijgen tot het gekoppelde opslagaccount en (b) het gekoppelde opslagaccount vaak wordt verstrekt aan alle taken als gemeenschappelijke omgevinginstelling voor de taak. Als u het gekoppelde opslagaccount niet verstrekt via de algemene omgevingsinstellingen en de taakbeheerbeheerder toegang tot gekoppelde opslag vereist, moet u de gekoppelde opslagreferenties als volgt leveren:
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -361,7 +361,7 @@ Uw Run()-implementatie heeft toegang tot:
 
 **Taakfout**
 
-In het geval van een storing u de methode Run() afsluiten door een uitzondering te maken, maar dit laat de uitzonderingshandler op het hoogste niveau de controle over de taakexitcode. Als u de exitcode moet beheren, zodat u verschillende soorten fouten onderscheiden, bijvoorbeeld voor diagnostische doeleinden of omdat sommige foutmodi de taak moeten beëindigen en andere niet, dan moet u de methode Run() afsluiten door een niet-nul exitcode. Dit wordt de taakexitcode.
+In het geval van een storing u de methode Run() afsluiten door een uitzondering te maken, maar dit laat de uitzonderingshandler op het hoogste niveau de controle over de taakexitcode. Als u de exitcode moet beheren, zodat u verschillende soorten fouten onderscheiden, bijvoorbeeld voor diagnostische doeleinden of omdat sommige foutmodi de taak moeten beëindigen en andere niet, moet u de methode Run() afsluiten door een niet-nulexitcode terug te sturen. Dit wordt de taakexitcode.
 
 ### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Codes en uitzonderingen afsluiten in de sjabloon Taakprocessor
 Exit codes en uitzonderingen bieden een mechanisme om de uitkomst van het uitvoeren van een programma te bepalen, en ze kunnen helpen bij het identificeren van eventuele problemen met de uitvoering van het programma. De sjabloon Taakprocessor implementeert de exitcodes en uitzonderingen die in deze sectie worden beschreven.
@@ -444,7 +444,7 @@ Een ander handig hulpmiddel bij batchoplossingsontwikkeling is [Azure Batch File
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
-[vs_gallery_templates]: https://go.microsoft.com/fwlink/?linkid=820714
+[vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
 [vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png

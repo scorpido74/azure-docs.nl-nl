@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 6fe15fb18d8865911363a4696e44dd7fe1d90c09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fdbc2a11bd963057b465a629757f2be51ae4061
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277800"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273848"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Uri voor gedeelde toegangshandtekeningen voor uw VM-afbeelding
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Uri voor gedeelde toegangmet handtekening voor uw VM-afbeelding](https://aka.ms/GetSASURI) om uw gemigreerde aanbiedingen te beheren.
 
 Tijdens het publicatieproces moet u een uniforme resource-id (URI) opgeven voor elke virtuele harde schijf (VHD) die aan uw SKU's is gekoppeld. Microsoft heeft toegang nodig tot deze VHD's tijdens het certificeringsproces. In dit artikel wordt uitgelegd hoe u een SAS-uri (Shared Access Signature) genereert voor elke VHD. U voert deze URI in op het tabblad **SKU's** in de Cloud Partner Portal.
 
@@ -32,7 +35,7 @@ De SAS-URL kan op twee veelvoorkomende manieren worden gegenereerd met behulp va
 - Microsoft Storage Explorer - Grafisch hulpprogramma beschikbaar voor Windows, macOS en Linux
 - Microsoft Azure CLI - Aanbevolen voor niet-Windows-bess en geautomatiseerde of continue integratieomgevingen
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Gebruik de volgende stappen om een SAS URI te genereren met Azure CLI.
 

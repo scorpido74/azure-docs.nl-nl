@@ -4,15 +4,15 @@ description: Meer informatie over Azure Analysis Services, een volledig beheerd 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 03/30/2020
+ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7eb46e0eda1cd702f26829fac49ffe0e7916626f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 350fd9c7057df96a4ad1abc0d9c8b5ec3871ef38
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410382"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271655"
 ---
 # <a name="what-is-azure-analysis-services"></a>Wat is Azure Analysis Services?
 
@@ -64,12 +64,14 @@ Deze laag is de meest geschikte voor essentiële productietoepassingen waarvoor 
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8*    |    320     |    200     |
-|S9*    |    640    |    400     |
-|S8v2*    |    640     |    200     |
-|S9v2*    |    1280    |    400     |
+|S8 <sup>[1](#depr)</sup>, <sup>[2.](#rec)</sup>    |    320    |    200     |
+|S9 <sup>[1](#depr)</sup>, <sup>[2.](#rec)</sup>    |    640    |    400     |
+|S8v2 <sup> [1](#depr)</sup>   |    640     |    200     |
+|S9v2 <sup> [1](#depr)</sup>    |    1280    |    400     |
 
-\* Niet beschikbaar in alle regio’s.  
+<a name="depr">1</a> - Niet beschikbaar in alle regio's.   
+<a name="rec">2</a> - Dit plan is afgeschaft. v2 wordt aanbevolen.
+
 
 ## <a name="availability-by-region"></a>Beschikbaarheid per regio
 
@@ -83,15 +85,15 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |Canada - midden    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |VS - oost     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |VS - oost 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|VS - oost 2     |     S8, S9, S8v2, S9v2   |    1    |
+|VS - oost 2     |     S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    1    |
 |VS - noord-centraal     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |VS - centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |VS - zuid-centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |VS - west-centraal   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |VS - west     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|VS - west     |    S8, S9, S8v2, S9v2   |    2  |
+|VS - west     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    2  |
 |VS - west 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|VS - west 2    |    S8, S9, S8v2, S9v2  |    1     |
+|VS - west 2    |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Europa
 
@@ -101,17 +103,17 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |Europa - noord     |    S8v2, S9v2      |    3     |
 |Verenigd Koninkrijk Zuid     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Europa -west     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Europa -west    |   S8, S9, S8v2, S9v2  |  1  |
+|Europa -west    |   S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Azië en Stille Oceaan 
 
 |Regio  | Ondersteunde abonnementen | Queryreplica's (alleen Standard-abonnementen) |
 |---------|---------|:---------:|
 |Australië - oost     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Australië - oost     |    S8, S9, S8v2, S9v2    |    1     |
+|Australië - oost     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2    |    1     |
 |Australië - zuidoost     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japan - oost     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Azië - zuidoost     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
+|Azië - zuidoost     |     B1, B2, S0, S1, S2, S4, S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2, D1     |   1      |
 |India - west     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Schalen naar uw behoeften

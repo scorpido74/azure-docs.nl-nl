@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van de Azure-portal om een AKS-clu
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 696821e12e963292107cad5b22f00a9816a94b25
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 7b9127c016fff78a8867dcecbe3260becdf02c65
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616409"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259116"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren om virtuele knooppunten in de Azure-portal te gebruiken
 
@@ -66,7 +66,7 @@ De functionaliteit voor virtuele knooppunten is sterk afhankelijk van de functie
 * [Hostaliassen](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * [Argumenten](../container-instances/container-instances-exec.md#restrictions) voor exec in ACI
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) zal geen pods implementeren op het virtuele knooppunt
-* [Windows Server-knooppunten (momenteel in preview in AKS)](windows-container-cli.md) worden niet ondersteund naast virtuele knooppunten. U virtuele knooppunten gebruiken om Windows Server-containers te plannen zonder dat u Windows Server-knooppunten in een AKS-cluster nodig hebt.
+* Virtuele knooppunten ondersteunen het plannen van Linux-pods. U de open source [Virtual Kubelet ACI-provider](https://github.com/virtual-kubelet/azure-aci) handmatig installeren om Windows Server-containers te plannen op ACI. 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

@@ -1,18 +1,18 @@
 ---
 title: Toepassingsstatusextensie gebruiken met Azure-schaalsets voor virtuele machines
 description: Meer informatie over het gebruik van de extensie Toepassingsstatus om de status van uw toepassingen die zijn geïmplementeerd op virtuele machineschaalsets te controleren.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: 37d93b04e6755512eac6c2a168bd2a04f8ac298f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275877"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273729"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>De toepassingsstatusextensie gebruiken met virtuele-machineschaalsets
 Het bewaken van de status van uw toepassing is een belangrijk signaal voor het beheren en upgraden van uw implementatie. Azure virtuele machineschaalsets bieden ondersteuning voor [rolling upgrades,](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) waaronder [automatische os-image upgrades,](virtual-machine-scale-sets-automatic-upgrade.md)die afhankelijk zijn van statusbewaking van de afzonderlijke exemplaren om uw implementatie te upgraden.
@@ -73,7 +73,7 @@ In de volgende JSON wordt het schema voor de extensie Toepassingsstatus weergege
 ## <a name="deploy-the-application-health-extension"></a>De extensie Toepassingsstatus implementeren
 Er zijn meerdere manieren om de extensie Toepassingsstatus in te zetten voor uw schaalsets, zoals beschreven in de onderstaande voorbeelden.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST-API
 
 In het volgende voorbeeld wordt de extensie Toepassingsstatus (met naam myHealthExtension) toegevoegd aan de extensieProfiel in het schaalsetmodel van een Schaalset op Basis van Windows.
 

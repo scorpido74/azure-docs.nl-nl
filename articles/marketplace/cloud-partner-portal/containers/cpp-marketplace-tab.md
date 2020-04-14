@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: e272a95c5eb7d00b7c2169acb820ec8e4e8d9614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb879a9578a550e972ed7874a42cf389271abf47
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280045"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270295"
 ---
 # <a name="container-marketplace-tab"></a>Tabblad ContainerMarktplaats
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Container-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een Azure Container-aanbieding maken](https://aka.ms/CreateContainerOffer) om uw gemigreerde aanbiedingen te beheren.
 
 Op het tabblad **Marketplace** van de pagina **Nieuwe aanbieding** u uw potentiële klanten marketing- en verkoop- en juridische informatie en overeenkomsten bieden en leads beheren die vanuit de markt worden gegenereerd. Voeg uw marketingspecifieke inhoud toe aan de sectie **Overzicht.**
 

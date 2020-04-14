@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b9184808b71cce03882022fd37967fe421e64062
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f948d813ddb4d493b455a4922818e38ac3fd6eaa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548989"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259167"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Configuratie van API Management-service opslaan en configureren met behulp van Git
 
@@ -56,7 +56,7 @@ Als u uw Git-configuratie-instellingen wilt weergeven en configureren, u op het 
 >
 >
 
-Zie [Git-toegang](/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit)inschakelen of uitschakelen met behulp van de REST API voor informatie over het in- of uitschakelen van Git-toegang met de REST API.
+Zie [Git-toegang](/rest/api/apimanagement/2019-12-01/tenantaccess?EnableGit)inschakelen of uitschakelen met behulp van de REST API voor informatie over het in- of uitschakelen van Git-toegang met de REST API.
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>De serviceconfiguratie opslaan in de Git-repository
 
@@ -68,7 +68,7 @@ Na enkele ogenblikken wordt de configuratie opgeslagen en wordt de configuraties
 
 Zodra de configuratie is opgeslagen in de repository, kan deze worden gekloond.
 
-Zie [Configuratiemomentopname vastleggen met de REST API](/rest/api/apimanagement/2019-01-01/tenantaccess?CommitSnapshot)voor informatie over het uitvoeren van deze bewerking met de REST API.
+Zie [Configuratiemomentopname vastleggen met de REST API](/rest/api/apimanagement/2019-12-01/tenantaccess?CommitSnapshot)voor informatie over het uitvoeren van deze bewerking met de REST API.
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>De opslagplaats klonen naar uw lokale machine
 
@@ -142,7 +142,7 @@ git push
 
 Zodra uw lokale wijzigingen zijn vastgelegd en naar de serverrepository zijn gepusht, u deze implementeren in uw API Management-serviceinstantie.
 
-Zie [Git-wijzigingen implementeren in de configuratiedatabase met behulp van de REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantconfiguration)voor informatie over het uitvoeren van deze bewerking met de REST API.
+Zie [Git-wijzigingen implementeren in de configuratiedatabase met behulp van de REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/tenantconfiguration)voor informatie over het uitvoeren van deze bewerking met de REST API.
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Verwijzing naar bestands- en mapstructuur van de lokale Git-opslagplaats
 
@@ -172,9 +172,9 @@ Deze bestanden kunnen worden gemaakt, verwijderd, bewerkt en beheerd op uw lokal
 > [!NOTE]
 > De volgende entiteiten zijn niet opgenomen in de Git-repository en kunnen niet worden geconfigureerd met Git.
 >
-> * [Gebruikers](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)
-> * [Abonnementen](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription)
-> * [Benoemde waarden](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/property)
+> * [Gebruikers](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
+> * [Abonnementen](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
+> * [Benoemde waarden](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/property)
 > * Andere entiteiten voor ontwikkelaarsportalen dan stijlen
 >
 
@@ -222,14 +222,14 @@ De uiteindelijke `$ref-policy`instelling wordt toegewezen aan het bestand met gl
 ### <a name="apis-folder"></a>apismap
 De `apis` map bevat een map voor elke API in de service-instantie, die de volgende items bevat.
 
-* `apis\<api name>\configuration.json`- dit is de configuratie voor de API en bevat informatie over de URL van de backendservice en de bewerkingen. Dit is dezelfde informatie die zou worden geretourneerd als u `export=true` `application/json` een [specifieke API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) met in formaat zou aanroepen.
+* `apis\<api name>\configuration.json`- dit is de configuratie voor de API en bevat informatie over de URL van de backendservice en de bewerkingen. Dit is dezelfde informatie die zou worden geretourneerd als u `export=true` `application/json` een [specifieke API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) met in formaat zou aanroepen.
 * `apis\<api name>\api.description.html`- dit is de beschrijving van de `description` API en komt overeen met de eigenschap van de [API-entiteit](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty).
 * `apis\<api name>\operations\`- deze `<operation name>.description.html` map bevat bestanden die worden toegewezen aan de bewerkingen in de API. Elk bestand bevat de beschrijving van één bewerking in `description` de API, die wordt toegewezen aan de eigenschap van de [bewerkingsentiteit](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) in de REST-API.
 
 ### <a name="groups-folder"></a>groepenmap
 De `groups` map bevat een map voor elke groep die is gedefinieerd in de serviceinstantie.
 
-* `groups\<group name>\configuration.json`- dit is de configuratie voor de groep. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [Een specifieke groepsbewerking bellen.](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get)
+* `groups\<group name>\configuration.json`- dit is de configuratie voor de groep. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [Een specifieke groepsbewerking bellen.](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/group/get)
 * `groups\<group name>\description.html`- dit is de beschrijving van de `description` groep en komt overeen met het eigendom van de [groepsentiteit](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>beleidsmap
@@ -249,7 +249,7 @@ De `portalStyles` map bevat configuratie- en stijlbladen voor aanpassing van ont
 ### <a name="products-folder"></a>productmap
 De `products` map bevat een map voor elk product dat is gedefinieerd in de serviceinstantie.
 
-* `products\<product name>\configuration.json`- dit is de configuratie voor het product. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking Een specifiek product gebruiken voor [het uitvoeren van een specifiek product](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get) zou bellen.
+* `products\<product name>\configuration.json`- dit is de configuratie voor het product. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking Een specifiek product gebruiken voor [het uitvoeren van een specifiek product](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/product/get) zou bellen.
 * `products\<product name>\product.description.html`- dit is de beschrijving van het `description` product en komt overeen met de eigenschap van de [productentiteit](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) in de REST API.
 
 ### <a name="templates"></a>sjablonen

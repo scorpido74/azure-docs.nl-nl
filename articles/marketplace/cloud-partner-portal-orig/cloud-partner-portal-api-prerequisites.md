@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2a1022c6d041bf645b43dfed391a489de30b2fce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df94cba1f77ae3ea8cf595e7c651af7a69108bb6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288560"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255971"
 ---
 <a name="api-prerequisites"></a>API-vereisten
 ================
+
+> [!NOTE]
+> De API's van cloudpartnerportalen zijn geïntegreerd met het Partner Center en blijven werken nadat uw aanbiedingen zijn gemigreerd naar partnercentrum. De integratie brengt kleine veranderingen met zich mee. Bekijk de wijzigingen in [Cloud Partner Portal API Reference](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar partnercentrum.
 
 Er zijn twee vereiste programmatische elementen die u nodig hebt om de API's van cloudpartnerportalen te gebruiken: een serviceprincipal en een Azure AD-toegangstoken (Azure Active Directory).
 
@@ -41,7 +44,7 @@ Gebruik de volgende stappen om de serviceprincipal toe te voegen:
 3. Selecteer **serviceprincipal** in de vervolgkeuzelijst **Type** en voeg de volgende details toe:
 
 -   Een **vriendelijke naam** voor de `spAccount`service principal, bijvoorbeeld .
--   De **toepassings-id**. Als u deze id wilt vinden, gaat u naar de [Azure Portal,](https://portal.azure.com)klikt u op **Azure Active Directory,** kiest **u App-registraties**en klikt u op uw app.
+-   De **toepassings-id**. Als u deze id wilt vinden, gaat u naar de [Azure-portal,](https://portal.azure.com)klikt u op **Azure Active Directory,** kiest **u App-registraties**en klikt u op uw app.
 -   De **tenant-id**, ook wel **directory-id**genoemd, voor uw Azure AD-tenant. U deze id vinden in de Azure Active Directory-pagina in de [Azure-portal](https://portal.azure.com)onder **Eigenschappen**.
 -   De **object-id** voor uw servicehoofdobject. U deze id ophalen via de Azure-portal. Ga naar **Azure Active Directory,** kies **App-registraties,** klik op uw app en klik op de app-naam onder **Beheerde toepassing in de lokale map**. Ga vervolgens naar de pagina **Eigenschappen** om de object-id te zoeken. Zorg ervoor dat u niet de eerste object-id in uw app pakt, maar in plaats daarvan de object-id in de beheerde toepassing.
 -   De **rol** die aan het account is gekoppeld, die wordt gebruikt voor RBAC.

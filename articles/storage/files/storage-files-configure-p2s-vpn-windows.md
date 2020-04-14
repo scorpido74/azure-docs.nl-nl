@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5f12b77f5baa1a3b06a093aac7267c65a038881e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 95386af4522adca1d65e04b01c2a349a80e9ab8a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061020"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273474"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Een Point-to-Site (P2S) VPN op Windows configureren voor gebruik met Azure Files
 U een Point-to-Site (P2S) VPN-verbinding gebruiken om uw Azure-bestandsshares vanaf buiten Azure over SMB te monteren, zonder poort 445 te openen. Een Point-to-Site VPN-verbinding is een VPN-verbinding tussen Azure en een individuele client. Als u een P2S VPN-verbinding met Azure Files wilt gebruiken, moet een P2S VPN-verbinding worden geconfigureerd voor elke client die verbinding wil maken. Als u veel clients hebt die verbinding moeten maken met uw Azure-bestandsshares vanuit uw on-premises netwerk, u een Site-to-Site (S2S) VPN-verbinding gebruiken in plaats van een Point-to-Site-verbinding voor elke client. Zie [Een site-to-site VPN configureren voor gebruik met Azure Files voor](storage-files-configure-s2s-vpn.md)meer informatie.
@@ -31,7 +31,7 @@ In het artikel worden de stappen beschreven om een Point-to-Site VPN op Windows 
 ## <a name="deploy-a-virtual-network"></a>Een virtueel netwerk implementeren
 Als u uw Azure-bestandsshare en andere Azure-bronnen via een Point-to-Site VPN on-premises wilt openen, moet u een virtueel netwerk of VNet maken. De P2S VPN-verbinding die u automatisch maakt, is een brug tussen uw on-premises Windows-machine en dit virtuele Azure-netwerk.
 
-Met de volgende PowerShell wordt een Virtueel Azure-netwerk gemaakt met drie subnetten: een voor het serviceeindpunt van uw opslagaccount, een voor het privéeindpunt van uw opslagaccount, dat vereist is om on-premises toegang te krijgen tot het opslagaccount zonder dat dit wordt gemaakt aangepaste routering voor het openbare IP van het opslagaccount dat kan veranderen, en een voor uw virtuele netwerkgateway die de VPN-service biedt. 
+Met de volgende PowerShell wordt een Virtueel Azure-netwerk gemaakt met drie subnetten: een voor het serviceeindpunt van uw opslagaccount, een voor het privéeindpunt van uw opslagaccount, dat vereist is om toegang te krijgen tot het opslagaccount on-premises zonder aangepaste routering te maken voor het openbare IP-adres van het opslagaccount dat kan veranderen, en een voor het privé-netwerkgateway van uw virtuele netwerk die de VPN-service biedt. 
 
 Vergeet niet `<region>` `<resource-group>`om `<desired-vnet-name>` te vervangen, , en met de juiste waarden voor uw omgeving.
 
@@ -79,7 +79,7 @@ $gatewaySubnet = $virtualNetwork.Subnets | `
 ```
 
 ## <a name="create-root-certificate-for-vpn-authentication"></a>Rootcertificaat maken voor VPN-verificatie
-Om vpn-verbindingen van uw on-premises Windows-machines te verifiëren om toegang te krijgen tot uw virtuele netwerk, moet u twee certificaten maken: een rootcertificaat, dat wordt verstrekt aan de gateway van de virtuele machine, en een clientcertificaat, dat worden ondertekend met het basiscertificaat. Met de volgende PowerShell wordt het basiscertificaat gemaakt. het clientcertificaat wordt gemaakt nadat de azure virtual network gateway is gemaakt met informatie van de gateway. 
+Om vpn-verbindingen van uw on-premises Windows-machines te verifiëren om toegang te krijgen tot uw virtuele netwerk, moet u twee certificaten maken: een rootcertificaat, dat wordt verstrekt aan de gateway voor virtuele machines, en een clientcertificaat, dat wordt ondertekend met het rootcertificaat. Met de volgende PowerShell wordt het basiscertificaat gemaakt. het clientcertificaat wordt gemaakt nadat de azure virtual network gateway is gemaakt met informatie van de gateway. 
 
 ```PowerShell
 $rootcertname = "CN=P2SRootCert"
@@ -138,7 +138,7 @@ $vpnName = "<desired-vpn-name-here>"
 $publicIpAddressName = "$vpnName-PublicIP"
 
 $publicIPAddress = New-AzPublicIpAddress `
-    -ResourceGroupName $resourceGroupName ` 
+    -ResourceGroupName $resourceGroupName `
     -Name $publicIpAddressName `
     -Location $region `
     -Sku Basic `
@@ -242,7 +242,7 @@ foreach ($session in $sessions) {
         -ArgumentList `
             $mypwd, `
             $vpnTemp, `
-            $virtualNetworkName
+            $virtualNetworkName `
         -ScriptBlock { 
             $mypwd = $args[0] 
             $vpnTemp = $args[1]
@@ -267,7 +267,7 @@ foreach ($session in $sessions) {
 
             Add-VpnConnection `
                 -Name $virtualNetworkName `
-                -ServerAddress $vpnProfile.VpnServer ` 
+                -ServerAddress $vpnProfile.VpnServer `
                 -TunnelType Ikev2 `
                 -EncryptionLevel Required `
                 -AuthenticationMethod MachineCertificate `

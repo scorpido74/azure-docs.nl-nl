@@ -3,7 +3,7 @@ title: HTTP-variabelen voor Azure CDN-regels engine | Microsoft Documenten
 description: Met HTTP-variabelen u metagegevens voor HTTP-aanvragen en antwoorden ophalen.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: magattus
-ms.openlocfilehash: 53ad0c516547e17801bd57c2fd6b0d1704383797
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: b9ced5d4a81effcd73e0243d09bb83ed0fe7667c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593821"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253693"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-variabelen voor Azure CDN-regelsengine
 HTTP-variabelen bieden de middelen waarmee u metagegevens voor HTTP-aanvragen en antwoorden ophalen. Deze metagegevens kunnen vervolgens worden gebruikt om een aanvraag of een antwoord dynamisch te wijzigen. Het gebruik van HTTP-variabelen is beperkt tot de volgende kenmerken van de rules engine:

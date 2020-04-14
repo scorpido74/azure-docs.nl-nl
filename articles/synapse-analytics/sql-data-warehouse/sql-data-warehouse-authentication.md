@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: fcd9607cd630f41c67c655c2e8016254600b52e2
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ed8dd902ac490b4e6a0f172029bf3ffa1d44acee
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745392"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251840"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Verifiëren naar Azure Synapse Analytics
 
@@ -76,7 +76,7 @@ Voer deze stappen uit om Azure Active Directory-verificatie te configureren.
 5. Opgenomen databasegebruikers maken in uw database die zijn toegewezen aan Azure AD-identiteiten
 6. Verbinding maken met uw SQL-groep met Azure AD-identiteiten
 
-Momenteel worden Azure Active Directory-gebruikers niet weergegeven in SSDT Object Explorer. Bekijk de gebruikers in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#azure-ad-features-and-limitations)als tijdelijke oplossing.
+Momenteel worden Azure Active Directory-gebruikers niet weergegeven in SSDT Object Explorer. Bekijk de gebruikers in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)als tijdelijke oplossing.
 
 ### <a name="find-the-details"></a>Zoek de details
 

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d37320ad6e8caf3300756466eabe8de29a339c4a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272056"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258283"
 ---
 # <a name="control-access-to-iot-hub"></a>Toegang tot IoT Hub regelen
 
@@ -57,7 +57,7 @@ Bijvoorbeeld in een typische IoT-oplossing:
 > [!NOTE]
 > Zie [machtigingen](#iot-hub-permissions) voor gedetailleerde informatie.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 In Azure IoT Hub wordt toegang verleend aan eindpunten door een token te verifiëren op basis van de gedeelde toegangsbeleidsregels en beveiligingsreferenties van het identiteitsregister.
 
@@ -91,7 +91,7 @@ HTTPS implementeert verificatie door een geldig token op te nemen in de **koptek
 
 Gebruikersnaam (DeviceId is hoofdlettergevoelig):`iothubname.azure-devices.net/DeviceId`
 
-Wachtwoord (U een SAS-token genereren met het [apparaatexplorer-hulpprogramma,](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) de opdracht [AZ Iot-hub generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)of de [Azure IoT-hulpprogramma's voor Visual Studio-code:](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+Wachtwoord (U een SAS-token genereren met de opdracht [AZ Iot-hub generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)of de [Azure IoT-hulpprogramma's voor Visuele Studiocode:](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -277,7 +277,7 @@ Het resultaat, dat toegang verleent tot alle functionaliteit voor apparaat1, zou
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Het is mogelijk om een SAS-token te genereren met het [device explorer-hulpprogramma,](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) de CLI-extensie [az iot-hub generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)of de [Azure IoT-tools voor Visual Studio Code.](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+> Het is mogelijk om een SAS-token te genereren met de OPDRACHT [AZ Iot-hub generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)of de [Azure IoT-tools voor Visual Studio Code.](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
 ### <a name="use-a-shared-access-policy"></a>Een beleid voor gedeelde toegang gebruiken
 

@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70067472"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258742"
 ---
 # <a name="transform-and-protect-your-api"></a>Uw API transformeren en beveiligen
 
@@ -112,7 +112,7 @@ Het oorspronkelijke antwoord zien:
 2.  Selecteer **Alle bewerkingen**.
 3.  Selecteer boven in het scherm het tabblad **Ontwerp**.
 4.  Klik in de sectie **Uitgaande verwerking** op het pictogram **</>**.
-5.  Plaats de cursor ** &lt;&gt; ** in het uitgaande element.
+5.  Plaats de cursor ** &lt;&gt; ** in het uitgaande element en klik op **De beleidsknop Invoegen** in de rechterbovenhoek.
 6.  Klik in het rechtervenster onder **Transformatiebeleid** twee keer op **+ Tekenreeks in hoofdtekst zoeken en vervangen**.
 7.  Wijzig de **find-and-replace**-code (in het **\<uitgaande element\>**) om de URL te vervangen zodat deze overeenkomt met de APIM-gateway. Bijvoorbeeld:
 

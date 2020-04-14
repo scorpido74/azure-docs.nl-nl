@@ -5,16 +5,16 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: ce576d9825819770486197a6c39425adf6ac3208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05b166b2ec46900d9e3972025efb581d9619ec6a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275897"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252608"
 ---
-# <a name="customer-leads-from-your-marketplace-offer"></a>Leads van klanten van uw Marketplace-aanbieding
+# <a name="customer-leads-from-your-marketplace-offer"></a>Leads van klanten van uw marketplace-aanbieding
 
 Leads zijn klanten die geïnteresseerd zijn in of het implementeren van uw aanbiedingen via de [Azure Marketplace](https://azuremarketplace.microsoft.com) of van [AppSource.](https://appsource.microsoft.com) U ontvangt klantleads zodra uw aanbieding op de marktplaats is gepubliceerd. In dit artikel wordt uitgelegd:
 
@@ -133,11 +133,11 @@ De Azure Blob-leadbestemming wordt niet langer ondersteund, zodat u klantleads m
 
 ### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Ik heb een e-mail ontvangen van Marketplace, waarom kan ik de lead niet vinden in mijn CRM?
 
-Het is mogelijk dat het e-maildomein van de eindgebruiker van .edu is. Om privacyredenen geven we geen PII-gegevens door van het .edu-domein. Stuur een supportticket in via aka.ms/marketplacepublishersupport.
+Het is mogelijk dat het e-maildomein van de eindgebruiker van .edu is. Om privacyredenen geven we geen persoonlijke identificeerbare informatie van .edu-domein door. Stuur een supportticket in via aka.ms/marketplacepublishersupport.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Ik heb Azure Table geconfigureerd als mijn hoofdbestemming, hoe kan ik de leads bekijken?
 
-U hebt toegang tot de leadgegevens die zijn opgeslagen in de Azure-tabel vanuit de Azure Portal, of u [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gratis downloaden en installeren om de tabellengegevens van uw Azure-opslagaccount weer te geven.
+U hebt toegang tot de leadgegevens die zijn opgeslagen in de Azure-tabel vanuit de Azure-portal of u [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gratis downloaden en installeren om de tabellengegevens van uw Azure-opslagaccount weer te geven.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>Ik heb Azure Table geconfigureerd als mijn hoofdbestemming, kan ik een melding krijgen wanneer een nieuwe lead wordt verzonden door Marketplace?
 
@@ -149,13 +149,17 @@ Controleer of het formulier 'web to lead' een verplicht veld is op basis van een
 
 ### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Er was een probleem met mijn hoofdbestemming, en ik miste enkele aanwijzingen. Kan ik ze in een e-mail naar mij laten sturen?
 
-Vanwege het BELEID van PII (Private Identificeerbare Informatie) kunnen we geen leadgegevens delen via onbeveiligde e-mail.
+Vanwege het beleid voor identificeerbare gegevens van privé-identificeerbaar informatie kunnen we geen leadgegevens delen via onbeveiligde e-mail.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Ik heb Azure Table geconfigureerd als mijn hoofdbestemming, hoeveel kost dit?
 
 Lead gen-gegevens zijn laag (<1 GB voor bijna alle uitgevers). De kosten zijn afhankelijk van het aantal ontvangen leads, als 1.000 leads worden ontvangen in een maand, kost het ongeveer 50 cent. Zie [opslagprijzen](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over opslagprijzen.
 
 Als uw vraag nog steeds niet wordt beantwoord, neemt u contact op met ondersteuning via aka.ms/marketplacepublishersupport en selecteert u **'aanmaken aanbieden'** → **uw type aanbieding** → **'leadmanagementconfiguratie'.** 
+
+### <a name="i-am-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-who-to-receive-these-emails"></a>Ik ontvang e-mailmeldingen wanneer nieuwe klantleads worden ontvangen. Hoe kan ik configureren wie deze e-mails kan ontvangen?
+
+Krijg toegang tot uw aanbieding in partnercentrum en navigeer naar de pagina **Installatie van aanbiedingen** -> Lead **Management** -> **Bewerken**. Werk de e-mailadressen bij onder het **e-mailadres contact.**
 
 ## <a name="next-steps"></a>Volgende stappen
 
