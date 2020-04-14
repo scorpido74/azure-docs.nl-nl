@@ -12,23 +12,23 @@
       href: automation-quickstart-create-account.md
     - name: Een zelfstandig Automation-account maken
       href: automation-create-standalone-account.md
-    - name: Uitvoeren als-account van Automation beheren
+    - name: Een Uitvoeren als-account van Automation beheren
       href: manage-runas-account.md
       displayName: certificate renewal
     - name: Op rollen gebaseerd toegangsbeheer beheren
       href: automation-role-based-access-control.md
       displayName: RBAC
-    - name: Azure AD instellen in Azure Automation om bij Azure te verifiëren
+    - name: Azure AD gebruiken voor verificatie bij Azure
       href: automation-use-azure-ad.md
-    - name: Office 365-services beheren met Azure Automation
+    - name: Office 365-services beheren
       href: manage-office-365.md
     - name: Verificatie configureren met AWS
       href: automation-config-aws-account.md
     - name: Versleuteling van beveiligde activa in Azure Automation
       href: automation-secure-asset-encryption.md
-    - name: Uw Automation Account verplaatsen naar een ander abonnement
+    - name: Uw Automation-account verplaatsen naar een ander abonnement
       href: how-to/move-account.md
-    - name: Onboarden van Automation Services automatiseren
+    - name: Onboarden van Automation-services automatiseren
       href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
     - name: Azure Automation-gegevens beheren
       href: automation-managing-data.md
@@ -42,6 +42,9 @@
           displayName: troubleshoot
 - name: Procesautomatisering
   items:
+    - name: Uitvoering van runbooks in Azure Automation
+      href: automation-runbook-execution.md
+      displayName: 'fair share, activity log'
     - name: Overzicht van Hybrid Runbook Worker
       href: automation-hybrid-runbook-worker.md
     - name: Runbook-galerie
@@ -111,9 +114,6 @@
             - name: Runbook-uitvoer
               href: automation-runbook-output-and-messages.md
               displayName: 'message streams, progress records, preference'
-            - name: Een runbook-taak volgen
-              href: automation-runbook-execution.md
-              displayName: 'fair share, activity log'
             - name: Foutafhandeling in grafische runbooks
               href: automation-runbook-graphical-error-handling.md
         - name: Hybrid Runbook Worker

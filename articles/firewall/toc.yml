@@ -20,6 +20,9 @@
     - name: Implementeren met IP-groepen
       displayName: Resource Manager
       href: quick-create-ipgroup-template.md
+    - name: Implementeren met meerdere adressen
+      displayName: Resource Manager
+      href: quick-create-multiple-ip-template.md
 - name: Voorbeelden
   items:
     - name: Azure PowerShell

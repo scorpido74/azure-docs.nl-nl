@@ -63,6 +63,8 @@
               href: add-users-administrator.md
             - name: Informatiewerkers die B2B-gebruikers toevoegen
               href: add-users-information-worker.md
+            - name: Interne gebruikers uitnodigen voor B2B
+              href: invite-internal-users.md
             - name: Google-federatie
               href: google-federation.md
             - name: Verificatie met eenmalige wachtwoordcode
@@ -103,7 +105,7 @@
       items:
         - name: API voor uitnodigingenbeheer
           href: customize-invitation-api.md
-    - name: Bronnen
+    - name: Resources
       items:
         - name: Veelgestelde vragen
           href: faq.md

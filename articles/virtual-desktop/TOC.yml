@@ -50,6 +50,8 @@
           href: create-host-pools-user-profile.md
         - name: Azure NetApp Files gebruiken
           href: create-fslogix-profile-container.md
+        - name: Azure Files en Azure AD DS gebruiken
+          href: create-profile-container-adds.md
     - name: Poolinstellingen van de host configureren
       items:
         - name: RDP-eigenschappen

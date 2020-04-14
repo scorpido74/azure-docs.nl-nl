@@ -264,13 +264,13 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
-    - name: Modellen interpreteren
+    - name: Modellen uitleggen
       displayName: interpretability
       items:
-        - name: Lokale en externe modellen interpreteren
+        - name: ML-modellen uitleggen
           displayName: 'SDK, interpret'
           href: how-to-machine-learning-interpretability-aml.md
-        - name: Geautomatiseerde machine learning-modellen interpreteren
+        - name: Geautomatiseerde machine learning-modellen uitleggen
           displayName: 'SDK, interpret, automl'
           href: how-to-machine-learning-interpretability-automl.md
     - name: Machine learning automatiseren

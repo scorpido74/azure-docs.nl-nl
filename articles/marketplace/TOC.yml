@@ -1,11 +1,11 @@
-- name: Documentatie voor Azure Marketplace en AppSource
+- name: Documentatie voor de commerciële marketplace
   href: index.yml
   items:
-    - name: Roadmap voor Azure Marketplace en AppSource
+    - name: Roadmap voor de commerciële marketplace
       href: ./marketplace-roadmap.md
-    - name: Beleidsregels en voorwaarden voor Azure Marketplace
+    - name: Beleidsregels en voorwaarden voor de commerciële marketplace
       href: ./policies-terms.md
-    - name: Overzicht en voordelen van Azure Marketplace en AppSource
+    - name: Overzicht en voordelen van de commerciële marketplace
       href: ./marketplace-publishers-guide.md
       items:
         - name: 'Een marketplace, twee webwinkels'
@@ -15,7 +15,7 @@
           items:
             - name: Leadbeheer
               href: ./lead-management-for-cloud-marketplace.md
-            - name: Transacties in Azure Marketplace
+            - name: Transacties in de commerciële marketplace
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
             - name: Persoonlijke aanbiedingen
               href: ./private-offers.md
@@ -66,7 +66,7 @@
               href: ./preferred-solutions.md
             - name: Geïntegreerde oplossingen
               href: ./integrated-solutions.md
-        - name: Ondersteuning voor Azure Marketplace en AppSource
+        - name: Support voor de commerciële marketplace
           href: ./support-azure-marketplace.md
           items:
             - name: Veelgestelde vragen over Marketplace
@@ -78,6 +78,8 @@
   items:
     - name: Migratie van Cloud Partner-portal naar Partnercentrum
       href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
+    - name: Veelgestelde vragen over migratie
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
     - name: Rondleiding door de portal
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -427,12 +429,10 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Ondersteuning zoeken
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
-- name: Commerciële Marketplace-portal in Partnercentrum
+- name: Commerciële marketplace in Partner Center
   items:
-    - name: Overzicht
-      items:
-        - name: Wat is de commerciële Marketplace?
-          href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: Overzicht van de commerciële marketplace
+      href: ./partner-center-portal/commercial-marketplace-overview.md
     - name: Accountbeheer
       items:
         - name: Een nieuw account voor het partnercentrum maken
@@ -453,6 +453,30 @@
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: API voor onboarding
               href: ./partner-center-portal/azure-app-apis.md
+        - name: Azure Container-aanbiedingen
+          items:
+            - name: Technische assets voorbereiden
+              href: ./partner-center-portal/create-azure-container-technical-assets.md
+            - name: Een Azure Container-aanbieding maken
+              href: ./partner-center-portal/create-azure-container-offer.md
+        - name: Virtuele-machineaanbieding
+          items:
+            - name: Een Azure Virtual Machine-aanbieding maken
+              href: ./partner-center-portal/azure-vm-create-offer.md
+            - name: Technische assets voor Azure-VM maken
+              items:
+                - name: Technische assets voor Azure-VM maken
+                  href: ./partner-center-portal/create-azure-vm-technical-asset.md
+                - name: Veelgestelde vragen over technische assets van Azure-VM
+                  href: ./partner-center-portal/common-issues-during-vhd-creation.md
+                - name: Azure-VM-installatiekopie certificeren
+                  href: ./partner-center-portal/azure-vm-image-certification.md
+                - name: SAS-URI
+                  items:
+                    - name: SAS-URI ophalen
+                      href: ./partner-center-portal/get-sas-uri.md
+                    - name: Veelgestelde vragen over SAS-URI
+                      href: ./partner-center-portal/common-sas-uri-issues.md
         - name: Adviesservices
           items:
             - name: Vereisten

@@ -17,7 +17,11 @@
 - name: Concepten
   items:
     - name: Op afstand werken
-      href: work-remotely-support.md
+      items:
+        - name: Ondersteuning voor op afstand werken
+          href: ../networking/working-remotely-support.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: Hybride connectiviteit voor externe gebruikers
+          href: work-remotely-support.md
     - name: Connectiviteitsmodellen
       href: expressroute-connectivity-models.md
     - name: Circuits en peering
