@@ -85,9 +85,9 @@
     - name: Databasebeveiliging
       items:
         - name: Overzicht
-          href: database-security-overview.md
+          href: ../../sql-database/sql-database-security-overview.md
         - name: Aanbevolen procedures
-          href: database-best-practices.md
+          href: ../../sql-database/sql-database-security-best-practice.md
         - name: Controlelijst voor beveiliging
           href: database-security-checklist.md
     - name: Gids voor opslagbeveiliging
@@ -115,6 +115,8 @@
       href: log-audit.md
     - name: Beveiligingsbeheer en -controle
       href: management-monitoring-overview.md
+    - name: Extern beheer verbeteren
+      href: management.md
     - name: Operationele beveiliging
       items:
         - name: Overzicht

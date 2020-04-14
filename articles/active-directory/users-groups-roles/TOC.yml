@@ -124,6 +124,8 @@
               href: groups-create-rule.md
             - name: Regelsyntaxis voor dynamische groepen
               href: groups-dynamic-membership.md
+            - name: Een lidmaatschapsregel valideren
+              href: groups-dynamic-rule-validation.md
             - name: Type groepslidmaatschap wijzigen
               href: groups-change-type.md
     - name: Licenties toewijzen

@@ -1007,6 +1007,40 @@
         - name: Beveiligingsoverzicht
           href: /azure/databricks/security/index
           maintainContext: true
+        - name: Toegangsbeheer
+          items:
+            - name: Overzicht van toegangsbeheer
+              href: /azure/databricks/security/access-control/index
+              maintainContext: true
+            - name: Toegangsbeheer voor werkruimten
+              href: /azure/databricks/security/access-control/workspace-acl
+              maintainContext: true
+            - name: Toegangsbeheer voor clusters
+              href: /azure/databricks/security/access-control/cluster-acl
+              maintainContext: true
+            - name: Toegangsbeheer voor groepen
+              href: /azure/databricks/security/access-control/pool-acl
+              maintainContext: true
+            - name: Toegangsbeheer voor taken
+              href: /azure/databricks/security/access-control/job-acl
+              maintainContext: true
+            - name: Toegangsbeheer voor tabellen
+              items:
+                - name: Overzicht van toegangsbeheer voor tabellen
+                  href: /azure/databricks/security/access-control/table-acls/index
+                  maintainContext: true
+                - name: Toegangsbeheer voor tabellen voor een cluster inschakelen
+                  href: /azure/databricks/security/access-control/table-acls/table-acl
+                  maintainContext: true
+                - name: Gegevensobjectmachtigingen
+                  href: /azure/databricks/security/access-control/table-acls/object-privileges
+                  maintainContext: true
+            - name: Toegangsbeheer voor geheimen
+              href: /azure/databricks/security/access-control/secret-acl
+              maintainContext: true
+        - name: Verifiëren bij Azure Data Lake Storage met Azure Active Directory-referenties
+          href: /azure/databricks/security/credential-passthrough/adls-passthrough
+          maintainContext: true
         - name: Geheimen
           items:
             - name: Gegevens beveiligen met geheimen
@@ -1018,9 +1052,6 @@
             - name: Geheimen
               href: /azure/databricks/security/secrets/secrets
               maintainContext: true
-            - name: Toegangsbeheer voor geheimen
-              href: /azure/databricks/security/secrets/secret-acl
-              maintainContext: true
             - name: Geheime redactie
               href: /azure/databricks/security/secrets/redaction
               maintainContext: true
@@ -1028,11 +1059,11 @@
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
         - name: Verkeer tussen clusterwerkknooppunten versleutelen
-          href: /azure/databricks/security/encrypt-otw
+          href: /azure/databricks/security/encryption/encrypt-otw
         - name: Door de klant beheerde sleutels inschakelen voor notebooks
-          href: /azure/databricks/security/customer-managed-key-notebook
+          href: /azure/databricks/security/keys/customer-managed-key-notebook
         - name: Door de klant beheerde sleutels inschakelen voor DBFS
-          href: /azure/databricks/security/customer-managed-keys-dbfs
+          href: /azure/databricks/security/keys/customer-managed-keys-dbfs
     - name: Beheer
       items:
         - name: Beheeroverzicht
@@ -1080,28 +1111,20 @@
             - name: Overzicht van toegangsbeheer
               href: /azure/databricks/administration-guide/access-control/index
               maintainContext: true
-            - name: Toegangsbeheer voor clusters
+            - name: Toegangsbeheer voor werkruimten inschakelen
+              href: /azure/databricks/administration-guide/access-control/workspace-acl
+              maintainContext: true
+            - name: Toegangsbeheer voor clusters inschakelen
               href: /azure/databricks/administration-guide/access-control/cluster-acl
               maintainContext: true
-            - name: Toegangsbeheer voor groepen
+            - name: Toegangsbeheer voor pools inschakelen
               href: /azure/databricks/administration-guide/access-control/pool-acl
               maintainContext: true
-            - name: Toegangsbeheer voor taken
+            - name: Toegangsbeheer voor taken inschakelen
               href: /azure/databricks/administration-guide/access-control/jobs-acl
               maintainContext: true
-            - name: Toegangsbeheer voor tabellen
-              items:
-                - name: Overzicht van toegangsbeheer voor tabellen
-                  href: /azure/databricks/administration-guide/access-control/table-acls/index
-                  maintainContext: true
-                - name: Toegangsbeheer voor tabellen inschakelen
-                  href: /azure/databricks/administration-guide/access-control/table-acls/table-acl
-                  maintainContext: true
-                - name: Bevoegdheden instellen op een gegevensobject
-                  href: /azure/databricks/administration-guide/access-control/table-acls/object-privileges
-                  maintainContext: true
-            - name: Toegangsbeheer voor werkruimten
-              href: /azure/databricks/administration-guide/access-control/workspace-acl
+            - name: Toegangsbeheer voor tabellen inschakelen
+              href: /azure/databricks/administration-guide/access-control/table-acl
               maintainContext: true
             - name: Op tokens gebaseerde verificatie inschakelen
               href: /azure/databricks/administration-guide/access-control/tokens
@@ -1688,6 +1711,9 @@
           items:
             - name: Opmerkingen bij de release van het platform
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: April 2020
+              href: /azure/databricks/release-notes/product/2020/april
               maintainContext: true
             - name: Maart 2020
               href: /azure/databricks/release-notes/product/2020/march

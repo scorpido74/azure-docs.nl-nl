@@ -214,6 +214,8 @@
       items:
         - name: Wat is spraakomzetting?
           href: speech-translation.md
+        - name: Basisbeginselen van spraakomzetting
+          href: speech-translation-basics.md
     - name: Snelstartgids
       items:
         - name: Spraak naar tekst omzetten

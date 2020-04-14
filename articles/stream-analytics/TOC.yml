@@ -61,14 +61,18 @@
           href: stream-analytics-sql-output-perf.md
         - name: Aangepaste Blob-padpatronen
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
-    - name: Door de gebruiker gedefinieerde functies
+    - name: Query's uitbreiden met functies
       items:
-        - name: UDF van Machine Learning
-          href: machine-learning-udf.md
-        - name: 'C#-UDF'
-          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: Overzicht van functies
+          href: functions-overview.md
         - name: JavaScript UDF
           href: stream-analytics-javascript-user-defined-functions.md
+        - name: JavaScript UDA
+          href: stream-analytics-javascript-user-defined-aggregates.md
+        - name: 'C#-UDF'
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: UDF van Machine Learning
+          href: machine-learning-udf.md
     - name: Uw Stream Analytics-taak optimaliseren
       items:
         - name: Streaming-eenheden begrijpen en aanpassen
@@ -140,8 +144,6 @@
           href: stream-analytics-edge.md
         - name: Analyse van de sensorgegevens van een tolloket
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
-        - name: Een JavaScript-UDA uitvoeren
-          href: stream-analytics-javascript-user-defined-aggregates.md
         - name: High-frequency trading
           href: stream-analytics-high-frequency-trading.md
         - name: IoT-gegevensstromen verwerken

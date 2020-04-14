@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: dapine
-  ms.openlocfilehash: 43bd0afd1f3d40c144003b2c2cadfdcb885989a9
-  ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+  ms.openlocfilehash: ea3090a518721c7b85880675b943726217067fbe
+  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80991310"
+  ms.lasthandoff: 04/13/2020
+  ms.locfileid: "81259036"
 highlightedContent:
   items:
   - title: Wat is de Speech-service?
@@ -51,7 +51,7 @@ conceptualContent:
       url: index-speech-to-text.yml
   - title: Tekst naar spraak
     links:
-    - itemType: quickstart
+    - itemType: how-to-guide
       text: Basisbeginselen van spraaksynthese
       url: text-to-speech-basics.md
     - itemType: quickstart
@@ -65,15 +65,15 @@ conceptualContent:
       url: index-text-to-speech.yml
   - title: Spraakomzetting
     links:
+    - itemType: how-to-guide
+      text: Basisbeginselen van spraakomzetting
+      url: speech-translation-basics.md
     - itemType: quickstart
       text: Spraak naar tekst omzetten
       url: quickstarts/translate-speech-to-text.md
     - itemType: quickstart
       text: Spraak omzetten naar meerdere doeltalen
       url: quickstarts/translate-speech-to-text-multiple-languages.md
-    - itemType: quickstart
-      text: Spraak naar spraak omzetten
-      url: quickstarts/translate-speech-to-speech.md
     footerLink:
       text: Meer informatie
       url: index-speech-translation.yml
