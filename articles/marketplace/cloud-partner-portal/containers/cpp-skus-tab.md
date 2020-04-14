@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: adbe3d4c498c8f4e4968ca903f78c34aedca9a4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c5cf218632c720fd042cc5f5d4ed95d5096b5b5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279994"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270193"
 ---
 # <a name="container-skus-tab"></a>Tabblad SKU's voor containers
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Container-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een Azure Container-aanbieding maken](https://aka.ms/CreateContainerOffer) om uw gemigreerde aanbiedingen te beheren.
 
 Op het tabblad **SKU's** van de pagina **Nieuwe aanbieding** u een of meer SKU's maken en deze koppelen aan uw nieuwe aanbieding.  U verschillende SKU's gebruiken om een oplossing te onderscheiden op functiesets, factureringsmodellen of andere kenmerken.
 
