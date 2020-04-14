@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Beschrijft de netwerkvereisten voor het uitvoeren van Azure Dev Spaces in Azure Kubernetes Services
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, CNI, kubenet, SDN, netwerk
-ms.openlocfilehash: 82d046aa36fe9caf6337aa7f58ca0db525062283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e344576caf276ae7cb5fe00395c84810a4e7d32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240576"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262040"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Netwerken configureren voor Azure Dev Spaces in verschillende netwerktopologieën
 
@@ -20,9 +20,9 @@ Azure Dev Spaces draait op AKS-clusters (Azure Kubernetes Service) met de standa
 
 ## <a name="virtual-network-or-subnet-configurations"></a>Virtuele netwerk- of subnetconfiguraties
 
-Uw AKS-cluster heeft mogelijk een andere virtuele netwerk- of subnetconfiguratie om het binnendringende of uitgaande verkeer voor uw AKS-cluster te beperken. Het cluster bevindt zich bijvoorbeeld achter een firewall, zoals Azure Firewall, of u netwerkbeveiligingsgroepen of aangepaste rollen gebruiken om het netwerkverkeer te beperken.
+Uw AKS-cluster heeft mogelijk een andere virtuele netwerk- of subnetconfiguratie om het binnendringende of uitgaande verkeer voor uw AKS-cluster te beperken. Het cluster bevindt zich bijvoorbeeld achter een firewall, zoals Azure Firewall, of u netwerkbeveiligingsgroepen of aangepaste rollen gebruiken om het netwerkverkeer te beperken. U een voorbeeldnetwerkconfiguratie vinden in de [voorbeeldopslagplaats Azure Dev Spaces op GitHub.][sample-repo]
 
-Azure Dev Spaces heeft bepaalde vereisten voor *Ingress- en Egress-netwerkverkeer* en alleen verkeer *in Ingress.* Als u Azure Dev Spaces gebruikt op een AKS-cluster met een virtuele netwerk- of subnetconfiguratie die het verkeer voor uw AKS-cluster beperkt, moet u alleen de volgende insgress volgen en verkeersvereisten binnendringen en binnendringen om Azure Dev Spaces Functioneren.
+Azure Dev Spaces heeft bepaalde vereisten voor *Ingress- en Egress-netwerkverkeer* en alleen verkeer *in Ingress.* Als u Azure Dev Spaces gebruikt op een AKS-cluster met een virtuele netwerk- of subnetconfiguratie die het verkeer voor uw AKS-cluster beperkt, moet u alleen de volgende in- en ingevallen en verkeersvereisten volgen om Azure Dev Spaces goed te laten functioneren.
 
 ### <a name="ingress-and-egress-network-traffic-requirements"></a>Vereisten voor invallenen en uitwijken van netwerkverkeer
 
@@ -109,4 +109,5 @@ Ontdek hoe Azure Dev Spaces u helpt complexere toepassingen te ontwikkelen voor 
 [endpoint-options]: #using-different-endpoint-options
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
+[sample-repo]: https://github.com/Azure/dev-spaces/tree/master/advanced%20networking
 [team-quickstart]: quickstart-team-development.md

@@ -4,12 +4,12 @@ description: Meer informatie over het continu bouwen, testen en implementeren va
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 303edac9221b2a58986129388e33c84c3817d96e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ce6f176a52a742a3216a5b761b34254027a1c5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369365"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255070"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Zelfstudie: Continue integratie van Azure Resource Manager-sjablonen met Azure Pipelines
 
@@ -44,7 +44,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="prepare-a-github-repository"></a>Een GitHub-opslagplaats voorbereiden
 
-GitHub wordt gebruikt om uw projectbroncode op te slaan, inclusief Resource Manager-sjablonen. Zie [repositories die worden ondersteund door Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types)voor andere ondersteunde repositories.
+GitHub wordt gebruikt om uw projectbroncode op te slaan, inclusief Resource Manager-sjablonen. Zie [repositories die worden ondersteund door Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops)voor andere ondersteunde repositories.
 
 ### <a name="create-a-github-repository"></a>Een GitHub-repository maken
 
@@ -202,7 +202,7 @@ Ga als lid van het volgende over een pijplijn met een stap om een sjabloon te im
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Open de resourcegroep. De naam is wat u hebt opgegeven in het YAML-bestand van de pijplijn.  Er wordt één opslagaccount aangemaakt.  De naam van het opslagaccount begint met **het opslaan**.
 1. Selecteer de naam van het opslagaccount om deze te openen.
 1. Selecteer **Eigenschappen**. De replicatie is **lrs (Localredundant storage)** op de **hoogte.**

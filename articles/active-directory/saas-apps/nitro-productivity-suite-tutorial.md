@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249710aa34ff99e7c4755e7df7228d3006f15e31
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 05aed032eeb3a3cd925a718516ba9c8ffb87f65e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668970"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261093"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Nitro Productivity Suite
 
@@ -37,7 +37,7 @@ Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Director
 Om aan de slag te gaan, heb je de volgende items nodig:
 
 * Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-* Nitro Productivity Suite single sign-on (SSO) ingeschakeld abonnement.
+* Een Nitro Productivity Suite [Enterprise-abonnement.](https://www.gonitro.com/pricing)
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
@@ -78,40 +78,56 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
 1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **Nitro Productivity Suite-toepassingsintegratie** de sectie **Beheren** en selecteer **eenmalige aanmelding**.
 1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
-1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
+1. Ga als het gaat om het **SAML-ondertekeningscertificaat:**
+
+    a. Zoek **certificaat (Base64)** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
+
+    ![De link om het certificaat te downloaden](common/certificatebase64.png)
+    
+1. Ga als onderdeel van de sectie **Nitro Productivity Suite instellen:**
+
+    a. Klik op het kopieerpictogram naast **aanmeldings-URL**
+    
+    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
+    
+1. Zoek op de pagina **Ondernemingsinstellingen** de sectie Eén aanmelding en klik op de knop **SAML SSO instellen** op de pagina [Met](https://admin.gonitro.com/)eenmalige **aanmelding.**
+
+    a. Plak de **URL van aanmelding** van de bovenstaande stap in het veld **AanmeldingsURL.**
+    
+    a. Upload het **certificaat (Base64)** vanaf de eerdere stap hierboven in het veld **Tekencertificaat X509.**
+    
+    a. Klik op **Verzenden**
+    
+    a. Klik **op Eenmalig aanmelden inschakelen**
+
+
+1. Ga terug naar de [Azure-portal](https://portal.azure.com/), klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
 1. Voer in de sectie **BasisSAML-configuratie** de waarden voor de volgende velden in als u de toepassing in de **idp-modus** wilt configureren:
 
-    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`urn:auth0:gonitro-prod:<ENVIRONMENT>`
+    a. Kopieer en plak in het tekstvak **Id** het veld **SAML-entiteits-id** uit de [Nitro Admin-portal](https://admin.gonitro.com/). Het moet het volgende patroon hebben:`urn:auth0:gonitro-prod:<ENVIRONMENT>`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>`
+    b. Kopieer en plak in het tekstvak **URL beantwoorden** het **veld ACS-URL** uit de [Nitro Admin-portal](https://admin.gonitro.com/). Het moet het volgende patroon hebben:`https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
     Typ de URL in het tekstvak **AANmeldings-URL:**`https://sso.gonitro.com/login`
 
-    > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met [het ondersteuningsteam van Nitro Productivity Suite Client](https://www.gonitro.com/support) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+1. Klik op Opslaan.
 
 1. Nitro Productivity Suite-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     ![installatiekopie](common/default-attributes.png)
 
-1. Naast bovenstaande, Nitro Productivity Suite applicatie verwacht weinig meer attributen worden teruggegeven in SAML reactie die hieronder worden weergegeven. Deze kenmerken zijn ook vooraf ingevuld, maar u ze bekijken volgens uw vereisten.
+1. Bovendien verwacht de Nitro Productivity Suite-toepassing dat er nog een paar kenmerken worden teruggegeven in de SAML-respons, zoals in de volgende tabel wordt weergegeven. Deze kenmerken zijn vooraf ingevuld, maar u ze bekijken volgens uw vereisten.
     
     | Name  |  Bronkenmerk|
-    | ---------------| --------------- | --------- |
+    | ---------------| --------------- |
     | werknemerAantal |  user.objectid |
 
-1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** **certificaat** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
-    ![De link om het certificaat te downloaden](common/certificatebase64.png)
-
-1. Kopieer in de sectie **Nitro Productivity Suite instellen** de juiste URL(s) op basis van uw vereiste.
-
-    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.

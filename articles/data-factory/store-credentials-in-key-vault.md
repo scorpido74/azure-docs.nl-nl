@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6720a018cdc3fff95192b0956b3d1040be263ab2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76122607"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261850"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Referenties opslaan in Azure Key Vault
 
@@ -32,7 +32,7 @@ Deze functie is afhankelijk van de door de gegevensfabriek beheerde identiteit. 
 Als u wilt verwijzen naar een referentie die is opgeslagen in Azure Key Vault, moet u het:
 
 1. **Haal de beheerde identiteit** van de gegevensfabriek op door de waarde van 'Managed Identity Object ID' te kopiëren die samen met uw fabriek is gegenereerd. Als u de gebruikersinterface voor ADF-auteurs gebruikt, wordt de id van beheerde identiteitsobject weergegeven in het venster voor het maken van gekoppelde servicemet azure Key Vault. u het ook ophalen uit azure portal, verwijzen naar [Gegevens fabriek beheerde identiteit ophalen](data-factory-service-identity.md#retrieve-managed-identity).
-2. **Geef de beheerde identiteit toegang tot uw Azure Key Vault.** In uw sleutelkluis -> Toegangsbeleid -> Nieuwe > zoeken in deze beheerde identiteit deze beheerde identiteit doorzoeken om **vervolgkeuzestop Met** machtigingen voor het krijgen in geheime machtigingen te verlenen. Het maakt het mogelijk deze aangewezen fabriek om toegang te krijgen tot geheim in de sleutel kluis.
+2. **Geef de beheerde identiteit toegang tot uw Azure Key Vault.** Zoek in uw sleutelkluis -> Toegangsbeleid -> Toegangsbeleid toevoegen in deze beheerde identiteit om **vervolgkeuzestop Toegang krijgen** in de vervolgkeuzelijst Geheime machtigingen te verlenen. Het maakt het mogelijk deze aangewezen fabriek om toegang te krijgen tot geheim in de sleutel kluis.
 3. **Maak een gekoppelde service die naar uw Azure Key Vault wijst.** Raadpleeg [de gekoppelde Azure Key Vault-service](#azure-key-vault-linked-service).
 4. **Maak data store linked service, waarin wordt verwezen naar het bijbehorende geheim dat is opgeslagen in key vault.** Raadpleeg [het referentiegeheim dat is opgeslagen in de sleutelkluis.](#reference-secret-stored-in-key-vault)
 
@@ -47,13 +47,13 @@ De volgende eigenschappen worden ondersteund voor azure key vault-gekoppelde ser
 
 **UI van het ontwerpen van het ontwerp:**
 
-Klik **op Verbindingen** -> **Gekoppelde Services** -> **+Nieuw->** zoeken naar "Azure Key Vault":
+Selecteer **Nieuwe verbindingen** -> **gekoppelde services** -> **.** Zoek en selecteer in Nieuwe gekoppelde service 'Azure Key Vault':
 
-![AKV zoeken](media/store-credentials-in-key-vault/search-akv.png)
+![Zoeken in Azure Key Vault](media/store-credentials-in-key-vault/search-akv.png)
 
 Selecteer de ingerichte Azure Key Vault waar uw referenties zijn opgeslagen. U **TestConnection** doen om te zorgen dat uw AKV-verbinding geldig is. 
 
-![AKV configureren](media/store-credentials-in-key-vault/configure-akv.png)
+![Azure Key Vault configureren](media/store-credentials-in-key-vault/configure-akv.png)
 
 **Json voorbeeld:**
 
@@ -87,7 +87,7 @@ Selecteer **Azure Key Vault** voor geheime velden terwijl u de verbinding maakt 
 >[!TIP]
 >Voor connectors die verbindingstekenreeks in gekoppelde service gebruiken, zoals SQL Server, Blob-opslag, enz., u ervoor kiezen om alleen het geheime veld op te slaan, bijvoorbeeld wachtwoord in AKV, of om de volledige verbindingstekenreeks in AKV op te slaan. U beide opties vinden op de gebruikersinterface.
 
-![AKV-geheim configureren](media/store-credentials-in-key-vault/configure-akv-secret.png)
+![Azure Key Vault-geheim configureren](media/store-credentials-in-key-vault/configure-akv-secret.png)
 
 **JSON voorbeeld: (zie de sectie "wachtwoord")**
 

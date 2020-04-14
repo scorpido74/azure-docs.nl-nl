@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/20/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: cc937589b2fc4f394b44cf6890a352d770751d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46c53c99c12ade986ab913bf013b652a931a4d22
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502031"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257739"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Klaslabs beheren in Azure Lab Services 
 In dit artikel wordt beschreven hoe u een klaslokaallab maakt en verwijdert. Het laat je ook zien hoe je alle klaslokalen in een labaccount bekijken. 
@@ -37,6 +37,8 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
     1. Geef een **naam** voor uw lab op. 
     2. Selecteer de **grootte van de virtuele machines die** u nodig hebt voor de klasse. Zie de sectie [VM-formaten voor](#vm-sizes) de beschikbare lijst met formaten. 
     3. Selecteer de **virtuele machineafbeelding** die u wilt gebruiken voor het klaslokaallab. Als u een Linux-afbeelding selecteert, ziet u een optie om verbinding met extern bureaublad hiervoor in te schakelen. Zie Externe [bureaubladverbinding inschakelen voor Linux voor](how-to-enable-remote-desktop-linux.md)meer informatie.
+
+        Als u zich hebt aangemeld met referenties van de eigenaar van het labaccount, ziet u een optie om meer afbeeldingen voor het lab in te schakelen. Zie [Afbeeldingen inschakelen op het moment van het maken van het lab](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation)voor meer informatie.
     4. Bekijk de **totale prijs per uur** die op de pagina wordt weergegeven. 
     6. Selecteer **Opslaan**.
 

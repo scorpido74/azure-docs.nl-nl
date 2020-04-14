@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: c612d2234e6c3c4e93c3c984242bb283ed85c27f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8003bf1cb7905d5decf8a6267ea397f1b2c01222
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279977"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270159"
 ---
 # <a name="publish-container-offer"></a>Aanbieding voor containers publiceren
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Container-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een Azure Container-aanbieding maken](https://aka.ms/CreateContainerOffer) om uw gemigreerde aanbiedingen te beheren.
 
  Nadat u een nieuwe aanbieding hebt gemaakt via de pagina **Nieuwe aanbieding,** u de aanbieding publiceren. Selecteer **Publiceren** om het publicatieproces te starten.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f83cee2fb1435252f34d1a64f531b5befef66ffb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4034759dc4f20649c15236b057e348966d72409e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289691"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261157"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure Security Baseline voor Azure Database voor PostgreSQL Single Server
 
@@ -134,7 +134,7 @@ Inzicht in het gebruik van servicetags voor Azure Database voor PostgreSQL:https
 
 Azure-beleid configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Voorbeelden van Azure-beleid voor netwerken:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Voorbeelden van Azure-beleid voor netwerken:https://docs.microsoft.com/azure/governance/policy/samples/
 
 Een Azure Blueprint maken:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -908,7 +908,7 @@ Key Vault-verificatie voorzien van een beheerde identiteit:https://docs.microsof
 
 **Richtlijnen:** Azure Database voor PostgreSQL-server ondersteunt Azure Active Directory-verificatie (in preview) om toegang te krijgen tot databases.  Tijdens het maken van de Azure Database voor PostgreSQL-server geeft u referenties op voor een beheerdersgebruiker. Deze beheerder kan worden gebruikt om extra databasegebruikers te maken.  
 
-Voor Azure Virtual Machines of webtoepassingen die worden uitgevoerd op Azure App Service die wordt gebruikt om toegang te krijgen tot uw Azure Database voor PostgreSQL-server, gebruikt u Managed Service Identity in combinatie met Azure Key Vault om referenties voor Azure Database op te slaan en op te halen voor PostgreSQL-server. Zorg ervoor dat Key Vault Soft Delete is ingeschakeld.
+Gebruik Managed Service Identity in combinatie met Azure Key Vault om referenties voor Azure Database voor PostgreSQL-server op te slaan en op te halen voor Azure App Service. Zorg ervoor dat Key Vault Soft Delete is ingeschakeld.
 
 Beheerde identiteiten gebruiken om Azure-services een automatisch beheerde identiteit te bieden in Azure Active Directory (AD). Met Managed Identities u zich verifiëren voor elke service die Azure AD-verificatie ondersteunt, inclusief Key Vault, zonder referenties in uw code.
 

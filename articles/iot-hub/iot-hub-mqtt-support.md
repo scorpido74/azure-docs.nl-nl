@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ccfaa57b8e8fdea325bed908ffe8815b09d0d15
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271159"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257790"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Communiceren met uw IoT-hub met het MQTT-protocol
 
@@ -49,7 +49,7 @@ De volgende tabel bevat koppelingen naar codevoorbeelden voor elke ondersteunde 
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-device-mqtt. Mqtt Mqtt Mqtt | azure-iot-device-mqtt. MqttWs |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT MQTT | iotHubClientProtocol.MQTT_WS |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C #](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). Mqtt Mqtt Mqtt | TransportType.Mqtt valt terug naar MQTT via Web Sockets als MQTT uitvalt. Als u MQTT alleen via Web Sockets wilt opgeven, gebruikt u TransportType.Mqtt_WebSocket_Only |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). Mqtt Mqtt Mqtt | TransportType.Mqtt valt terug naar MQTT via Web Sockets als MQTT uitvalt. Als u MQTT alleen via Web Sockets wilt opgeven, gebruikt u TransportType.Mqtt_WebSocket_Only |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Ondersteunt MQTT standaard | Voeg `websockets=True` de aanroep toe om de client te maken |
 
 In het volgende fragment ziet u hoe u het MQTT-protocol opgeeft via websockets bij het gebruik van de Azure IoT Node.js SDK:
@@ -118,7 +118,7 @@ Als een apparaat de sdk's van het apparaat niet kan gebruiken, kan het nog steed
 
   Zie het apparaatgedeelte van Het gebruik van [IoT Hub-beveiligingstokens](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)voor meer informatie over het genereren van SAS-tokens.
 
-  Bij het testen u ook de cross-platform [Azure IoT-hulpprogramma's voor Visual Studio-code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) of het hulpprogramma [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) gebruiken om snel een SAS-token te genereren dat u in uw eigen code kopiëren en plakken:
+  Bij het testen u ook de cross-platform [Azure IoT Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) of de CLI-extensie az iot hub [generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) gebruiken om snel een SAS-token te genereren dat u in uw eigen code kopiëren en plakken:
 
 ### <a name="for-azure-iot-tools"></a>Voor Azure IoT-hulpprogramma's
 
@@ -129,16 +129,6 @@ Als een apparaat de sdk's van het apparaat niet kan gebruiken, kan het nog steed
 3. Stel **de vervaldatum** in en druk op 'Enter'.
   
 4. Het SAS-token wordt gemaakt en gekopieerd naar het klembord.
-
-### <a name="for-device-explorer"></a>Voor Device Explorer
-
-1. Ga naar het tabblad **Beheer** in **Apparaatverkenner**.
-
-2. Klik op **SAS Token** (rechtsboven).
-
-3. Selecteer op **SASTokenForm**de vervolgkeuzelijst **voor apparaatID.** Stel uw **TTL**in.
-
-4. Klik **op Genereren** om uw token te maken.
 
    Het SAS-token dat wordt gegenereerd, heeft de volgende structuur:
 

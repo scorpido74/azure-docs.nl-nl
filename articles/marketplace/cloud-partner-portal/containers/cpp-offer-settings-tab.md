@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: e7e56f3562965a0a49082024c905d90ed989ccdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfdc588ffe3ca8c0f21e4111b6f4c66de162299d
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280028"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270176"
 ---
 # <a name="container-offer-settings-tab"></a>Tabblad Instellingen voor containeraanbieding
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Container-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een Azure Container-aanbieding maken](https://aka.ms/CreateContainerOffer) om uw gemigreerde aanbiedingen te beheren.
 
 De pagina **Containers > Nieuwe aanbieding** wordt geopend met de focus op het tabblad **Aanbiedingsinstellingen.** 
 

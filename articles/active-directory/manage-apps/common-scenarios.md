@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21ff820470765b82e397e56a2458603b8e5a7c7
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 21caec50bf9c20ec60194976b1bfbf16e4815914
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657947"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261037"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Toepassingsbeheer centraliseren met Azure AD
 
@@ -88,7 +88,7 @@ Identiteit kan alleen uw controlevlak zijn als het alles kan verbinden via cloud
 
 - [Toepassingsbeheer](https://docs.microsoft.com/azure/active-directory/manage-apps/index)
 - [Toepassingsinrichting](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)
-- [Hybride beveiligde toegang]()
-- [Identiteitsbeheer](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
+- [Hybride beveiligde toegang](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
+- [Identiteitsbestuur](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
 - [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
 - [Identiteitsbeveiliging](https://docs.microsoft.com/azure/active-directory/conditional-access/index)

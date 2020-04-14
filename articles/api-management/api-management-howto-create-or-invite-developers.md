@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 9de75b5537b3e267116882e7f151d893de575071
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 672f145b638fa6b85f7139f2edb4fc41bb2855d9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70072472"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260969"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Gebruikersaccounts in Azure API Management beheren
 
-In API Management zijn ontwikkelaars de gebruikers van de API's die u blootstelt met API Management. In deze handleiding ziet u hoe u ontwikkelaars maken en uitnodigen om de API's en producten die u voor hen beschikbaar stelt met uw API-beheerexemplaar te gebruiken. Zie de documentatie van de [gebruikersentiteit](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user) in de API [Management REST-verwijzing](/rest/api/apimanagement/) voor informatie over het programmatisch beheren van gebruikersaccounts.
+In API Management zijn ontwikkelaars de gebruikers van de API's die u blootstelt met API Management. In deze handleiding ziet u hoe u ontwikkelaars maken en uitnodigen om de API's en producten die u voor hen beschikbaar stelt met uw API-beheerexemplaar te gebruiken. Zie de documentatie van de [gebruikersentiteit](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user) in de API [Management REST-verwijzing](/rest/api/apimanagement/) voor informatie over het programmatisch beheren van gebruikersaccounts.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 

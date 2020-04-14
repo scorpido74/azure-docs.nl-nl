@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4362d0875ac2c20fc6963d404f86898a12387dad
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834299"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260918"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Benoemde waarden gebruiken in Azure API Management-beleid
 
@@ -59,7 +59,7 @@ Benoemde waarden kunnen letterlijke tekenreeksen en [beleidsexpressies](/azure/a
 
 Zodra de benoemde waarde is gemaakt, u deze bewerken door erop te klikken. Als u de benoemde waardenaam wijzigt, worden alle beleidsregels die verwijzen naar de benoemde waarde automatisch bijgewerkt om de nieuwe naam te gebruiken.
 
-Zie Een benoemde waarde bewerken met de REST API voor informatie over het bewerken van een benoemde waarde met [behulp van de REST-API.](/rest/api/apimanagement/2019-01-01/property?patch)
+Zie Een benoemde waarde bewerken met de REST API voor informatie over het bewerken van een benoemde waarde met [behulp van de REST-API.](/rest/api/apimanagement/2019-12-01/property?patch)
 
 ## <a name="to-delete-a-named-value"></a>Een benoemde waarde verwijderen
 
@@ -68,7 +68,7 @@ Als u een benoemde waarde wilt verwijderen, klikt u op **Verwijderen** naast de 
 > [!IMPORTANT]
 > Als de benoemde waarde wordt verwezen door een beleid, u deze niet verwijderen totdat u de benoemde waarde verwijdert uit alle beleidsregels die deze gebruiken.
 
-Zie Een benoemde waarde verwijderen met behulp van de REST API voor informatie over het verwijderen van een benoemde waarde met [behulp van de REST-API.](/rest/api/apimanagement/2019-01-01/property/delete)
+Zie Een benoemde waarde verwijderen met behulp van de REST API voor informatie over het verwijderen van een benoemde waarde met [behulp van de REST-API.](/rest/api/apimanagement/2019-12-01/property/delete)
 
 ## <a name="to-search-and-filter-named-values"></a>Benoemde waarden zoeken en filteren
 

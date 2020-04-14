@@ -4,12 +4,12 @@ description: Maak en beheer Blockchain Data Manager voor Azure Blockchain Servic
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
-ms.openlocfilehash: beacef0660a253c90afb507618e8a1742f0c9d2d
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529603"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260595"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Blockchain Data Manager configureren met behulp van Azure Portal
 
@@ -28,11 +28,11 @@ Als u een blockchain-gegevensbeheerexemplaar wilt configureren, gaat u als:
 
 ## <a name="create-instance"></a>Instantie maken
 
-Een instantie voor Blockchain Data Manager verbindt en bewaakt een Azure Blockchain Service-transactieknooppunt. Alleen gebruikers met toegang tot het transactieknooppunt kunnen een verbinding maken. Een instantie legt alle ruwe blok- en ruwe transactiegegevens uit het transactieknooppunt vast.
+Een instantie voor Blockchain Data Manager verbindt en bewaakt een Azure Blockchain Service-transactieknooppunt. Alleen gebruikers met toegang tot het transactieknooppunt kunnen een verbinding maken. Een instantie legt alle ruwe blok- en ruwe transactiegegevens uit het transactieknooppunt vast. Blockchain Data Manager publiceert een **RawBlockAndTransactionMsg-bericht** dat een superset van informatie is die is geretourneerd van web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) en getTransaction-query's. [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction)
 
 Een uitgaande verbinding verzendt blockchain-gegevens naar Azure Event Grid. U configureert één uitgaande verbinding wanneer u de instantie maakt. Blockchain Data Manager ondersteunt meerdere uitgaande netwerkverbindingen voor een evenementraster voor een bepaald Blockchain Data Manager-exemplaar. U blockchain-gegevens naar één bestemming verzenden of blockchain-gegevens naar meerdere bestemmingen verzenden. Als u een andere bestemming wilt toevoegen, voegt u alleen extra uitgaande verbindingen toe aan de instantie.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar het Azure Blockchain Service-lid dat u wilt verbinden met Blockchain Data Manager. Selecteer **Blockchain Data Manager**.
 1. Selecteer **Toevoegen**.
 

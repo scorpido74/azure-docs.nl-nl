@@ -1,5 +1,5 @@
 ---
-title: Marketplace Insights-dashboard in Commercial Marketplace-analyses in partnercentrum
+title: Marketplace Insights-dashboard in commerciële marktplaatsanalyses in partnercentrum
 description: Krijg toegang tot een overzicht van webanalytics op Marketplace, waarmee uitgevers de betrokkenheid van klanten in AppSource en Azure Marketplace-winkelpuien kunnen meten.
 author: dsindona
 ms.author: dsindona
@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: a547ced9df98298361360ecab88036599cd86027
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275846"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251704"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Marketplace Insights-dashboard in Commercial Marketplace-analyses
+# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Marketplace Insights-dashboard in commerciële marktplaatsanalyses
 
 In dit artikel vindt u informatie over het Marketplace Insights-dashboard in het Partnercentrum. Dit dashboard bevat een overzicht van webanalyses op Marktplaats, waarmee uitgevers de betrokkenheid van klanten kunnen meten voor hun respectieve productdetailpagina's die worden vermeld op de marketplace-winkelpuien: AppSource en Azure Marketplace.
 
@@ -34,7 +34,7 @@ U grafische weergaven van de volgende items bekijken:
 - [Tabel met details van Marketplace Insights](#marketplace-insights-details-table)
 
 >[!NOTE]
-> Zie [Veelgestelde vragen en terminologie voor commerciële marketplace-analyses voor](./faq-terminology.md)gedetailleerde definities van analytics-terminologie.
+> Zie [Veelgestelde vragen en terminologie voor commerciële marktplaatsanalyses voor](./faq-terminology.md)gedetailleerde definities van analytics-terminologie.
 
 ### <a name="insights-dashboard-layout"></a>Indeling van het Dashboard Insights
 
@@ -134,11 +134,11 @@ In deze tabel vindt u een lijstweergave van de paginabezoeken en de aanzet tot a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Analytics voor de commerciële marktplaats voor](./analytics.md)een overzicht van analyserapporten die beschikbaar zijn in het Partnercenter Commercial Marketplace.
-- Zie [Overzichtsdashboard in Commercial Marketplace-analyses](./summary-dashboard.md)voor grafieken, trends en waarden van geaggregeerde gegevens die de activiteit op de markt voor uw aanbieding samenvatten.
-- Zie [Orders Dashboard in Commercial Marketplace analytics](./orders-dashboard.md)voor informatie over uw bestellingen in een grafische en downloadbare indeling.
-- Zie [Gebruiksdashboard in Commercial Marketplace-analyses](./usage-dashboard.md)voor virtuele machine (VM) voor gebruiks- en factureringsstatistieken met een datameter.
-- Zie Customer Dashboard in Commercial Marketplace [analytics](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, inclusief groeitrends.
-- Zie [Downloads Dashboard in Commercial Marketplace analytics](./downloads-dashboard.md)voor een lijst met uw downloadaanvragen van de afgelopen 30 dagen.
-- Zie [Dashboard Beoordelingen en beoordelingen in Commercial Marketplace-analyses](./ratings-reviews.md)voor ziet u in een geconsolideerde weergave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource.
-- Voor veelgestelde vragen over Commercial Marketplace analytics en voor een uitgebreid woordenboek van gegevenstermen, zie [veelgestelde vragen en terminologie voor Commercial Marketplace analytics.](./faq-terminology.md)
+- Zie [Analytics voor de commerciële marktplaats voor](./analytics.md)de commerciële marktplaats voor een overzicht van analyserapporten die beschikbaar zijn in de commerciële marktplaats voor het Partnercentrum.
+- Zie [Overzichtsdashboard in commerciële marktplaatsanalyses](./summary-dashboard.md)voor grafieken, trends en waarden van geaggregeerde gegevens die de activiteit op de markt voor uw aanbieding samenvatten.
+- Zie [Orders Dashboard in commerciële marktplaatsanalyses](./orders-dashboard.md)voor informatie over uw bestellingen in een grafische en downloadbare indeling.
+- Zie [Gebruiksdashboard in commerciële marktplaatsanalyses](./usage-dashboard.md)voor virtuele machine (VM) voor gebruiks- en factureringsstatistieken met een datameter.
+- Zie [Customer Dashboard in commerciële marktplaatsanalyses](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, inclusief groeitrends.
+- Zie [Downloads Dashboard in commerciële marktplaatsanalyses](./downloads-dashboard.md)voor een lijst met uw downloadaanvragen van de afgelopen 30 dagen.
+- Zie [Dashboard Beoordelingen en beoordelingen in commerciële marktplaatsanalyses](./ratings-reviews.md)voor ziet een geconsolideerde weergave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource.
+- Voor veelgestelde vragen over commerciële marktplaatsanalyse en voor een uitgebreid woordenboek van gegevenstermen, zie [veelgestelde vragen en terminologie voor commerciële marktplaatsanalyses.](./faq-terminology.md)

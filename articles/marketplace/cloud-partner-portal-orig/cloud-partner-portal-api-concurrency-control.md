@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 6d0f035d77e74f157b793b9edf3ab5d3494096d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 302ba8d550f5e91efe12c620d766550958d3bf68
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288645"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256396"
 ---
 # <a name="concurrency-control"></a>Gelijktijdigheidscontrole
+
+> [!NOTE]
+> De API's van cloudpartnerportalen zijn geïntegreerd met het Partner Center en blijven werken nadat uw aanbiedingen zijn gemigreerd naar partnercentrum. De integratie brengt kleine veranderingen met zich mee. Bekijk de wijzigingen in [Cloud Partner Portal API Reference](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar partnercentrum.
 
 In elk gesprek naar de API's voor het publiceren van de Cloud Partner Portal moet expliciet worden opgegeven welke strategie voor gelijktijdigheidscontrole moet worden gebruikt. Als u de **kop-Inhoud niet** geeft, wordt een HTTP 400-foutreactie weergegeven. Wij bieden twee strategieën voor gelijktijdigheidscontrole.
 

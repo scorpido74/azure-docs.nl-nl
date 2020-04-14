@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: bcacf4ff66e114f65ac75f0aadd1564875f15f62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a83f47942e986e882d99528be3f03f616c2a7e04
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501366"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257046"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Deep learning versus machine learning
 
@@ -52,7 +52,7 @@ In de volgende tabel worden de twee technieken nader vergeleken:
 |  **Featurisatieproces** | Vereist dat functies nauwkeurig worden geïdentificeerd en gemaakt door gebruikers. | Leert functies op hoog niveau uit gegevens en creëert zelf nieuwe functies. |
 |  **Leeraanpak** | Verdeelt het leerproces in kleinere stappen. Het combineert vervolgens de resultaten van elke stap in een output. | Beweegt door het leerproces door het oplossen van het probleem op een end-to-end basis. |
 |  **Uitvoeringstijd** | Duurt relatief weinig tijd om te trainen, variërend van een paar seconden tot een paar uur. | Meestal duurt het lang om te trainen omdat een deep learning-algoritme veel lagen omvat. |
-|  **Output** | De uitvoer is meestal een numerieke waarde, zoals een score of een classificatie. | De uitvoer kan meerdere indelingen hebben, zoals een tekst, een score of een geluid. |
+|  **Uitvoer** | De uitvoer is meestal een numerieke waarde, zoals een score of een classificatie. | De uitvoer kan meerdere indelingen hebben, zoals een tekst, een score of een geluid. |
 
 ## <a name="deep-learning-use-cases"></a>Gebruikscases voor deep learning
 
@@ -118,6 +118,6 @@ In de volgende artikelen ziet u hoe u deep learning-technologie gebruiken in [Az
 
 - [Afbeeldingen classificeren met behulp van een Pytorch-model](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
-- [Handgeschreven cijfers classificeren met behulp van een Chainer-model](https://docs.microsoft.com/azure/machine-learning/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [Handgeschreven cijfers classificeren met behulp van een Chainer-model](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
 
 Gebruik ook de [Machine Learning Algorithm Cheat Sheet](../synapse-analytics/sql-data-warehouse/cheat-sheet.md) om algoritmen voor uw model te kiezen.

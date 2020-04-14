@@ -1,16 +1,16 @@
 ---
 title: 'Snelstart: gebruik cURL & REST om kennisbank te beheren - QnA Maker'
 description: Deze quickstart laat u zien hoe u uw kennisbank maken, publiceren en opvragen met behulp van de REST API's.
-ms.date: 02/27/2020
+ms.date: 04/13/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: 00ec52fe20fb0e6a976f3e7142386e835713c98c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: facc45ab8f916181f7eeceb65c5102a60ae7d7e9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78851204"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261700"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Snelstart: gebruik cURL en REST om kennisbank te beheren
 
@@ -21,9 +21,9 @@ Deze quickstart leidt u door het maken, publiceren en opvragen van uw kennisbank
 ## <a name="prerequisites"></a>Vereisten
 
 * De huidige versie van [cURL](https://curl.haxx.se/). Verschillende command-line switches worden gebruikt in de quickstarts, die worden opgemerkt in de [cURL documentatie](https://curl.haxx.se/docs/manpage.html).
-* U moet een [QnA Maker-bron](../How-To/set-up-qnamaker-service-azure.md)hebben. Als u de naam van uw sleutel en bron wilt ophalen, selecteert u **Quickstart** voor uw resource in de Azure-portal. De naam van de resource is het eerste deel van de URL van het eindpunt:
+* U moet een [QnA Maker-bron](../How-To/set-up-qnamaker-service-azure.md)hebben om de naam van de sleutel en resource te gebruiken. U hebt de **resourcenaam** ingevoerd tijdens het maken van resources en vervolgens is de sleutel voor u gemaakt. De bronnaam wordt gebruikt als subdomein voor uw eindpunt. Als u de naam van uw sleutel en bron wilt ophalen, selecteert u **Quickstart** voor uw resource in de Azure-portal. De bronnaam is het eerste subdomein van de URL van het eindpunt:
 
-    `https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
+    `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
 > [!CAUTION]
 > In de volgende BASH-voorbeelden wordt het teken van de `\` lijnvoortzetting gebruikt. Als u een ander regelvervolgteken gebruikt, gebruikt u dit teken.

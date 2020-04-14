@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 681e71fae161100c8804f95980b9e9567dcf1863
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66e640ab199a884ebfab69cbe7db7f562d848720
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288611"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256345"
 ---
-<a name="create-or-modify-an-offer"></a>Een aanbieding maken of wijzigen
+<a name="create-or-modify-an-offer"></a>Een aanbieding toevoegen of veranderen
 =========================
+
+> [!NOTE]
+> De API's van cloudpartnerportalen zijn geïntegreerd met het Partner Center en blijven werken nadat uw aanbiedingen zijn gemigreerd naar partnercentrum. De integratie brengt kleine veranderingen met zich mee. Bekijk de wijzigingen in [Cloud Partner Portal API Reference](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar partnercentrum.
 
 Met deze oproep wordt een specifieke aanbieding binnen de naamruimte van de uitgever bijgewerkt of wordt een nieuwe aanbieding gemaakt.
 

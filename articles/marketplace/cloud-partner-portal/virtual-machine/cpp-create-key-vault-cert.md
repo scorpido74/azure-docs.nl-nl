@@ -7,20 +7,23 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: dc106ecf40367172f28c0f339bbcce8bddb50a34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09e82b9905104df9b1902b0f64f6cfdf812aabb8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278072"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274001"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Certificaten maken voor Azure Key Vault
 
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Azure VM-afbeeldingscertificering](https://aks.ms/CertifyVMimage) om uw gemigreerde aanbiedingen te beheren.
+
 In dit artikel wordt uitgelegd hoe u de zelfondertekende certificaten indient die nodig zijn om een WinRM-verbinding (Windows Remote Management) tot stand te brengen met een door Azure gehoste virtuele machine (VM). Dit proces bestaat uit drie stappen:
 
-1.  Maak het beveiligingscertificaat. 
-2.  Maak de Azure Key Vault om dit certificaat op te slaan. 
-3.  Bewaar de certificaten in deze sleutelkluis. 
+1.    Maak het beveiligingscertificaat. 
+2.    Maak de Azure Key Vault om dit certificaat op te slaan. 
+3.    Bewaar de certificaten in deze sleutelkluis. 
 
 U hiervoor een nieuwe of een bestaande Azure-brongroep gebruiken.  De eerste benadering wordt gebruikt in de volgende verklaring.
 

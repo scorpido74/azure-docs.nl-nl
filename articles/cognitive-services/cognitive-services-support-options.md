@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 5f9ad827fa947e645f7eb4850f90a73c61a45cd3
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637109"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258422"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Ondersteuning en feedback van Azure Cognitive Services
 
@@ -59,10 +59,7 @@ Waar `{search keywords}` is de context van uw zoekopdracht. Overweeg om deze sco
 
 Als u geen antwoord op uw probleem vinden met het zoekvak op Stack Overflow, dient u een nieuwe vraag in. Stack Overflow is het voorkeurskanaal voor ontwikkelingsgerelateerde vragen. Het is waar leden van de Stack Overflow-community en Microsoft-teamleden direct betrokken zijn bij het oplossen van uw problemen.
 
- Gebruik een van de volgende tags wanneer u de vraag formuleert:
-
- - [Microsoft Cognitief](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
- - [Azure Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
+Post een vraag [hier](https://go.microsoft.com/fwlink/?linkid=2126464). Gebruik de juiste tag voor uw vraag, zodat we zeker de vraag te zien.
 
 > [!TIP]
 > De volgende berichten van Stack Overflow bevatten tips over het vormen van vragen en het toevoegen van broncode. Het volgen van deze richtlijnen kan helpen om de kans te vergroten dat communityleden uw vraag snel beoordelen en beantwoorden:

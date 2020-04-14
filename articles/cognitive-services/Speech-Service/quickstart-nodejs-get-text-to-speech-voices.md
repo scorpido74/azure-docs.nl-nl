@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 7a929794ffaea4f863ffaef7227e58c7ccf901f0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9fe8bc06aafd17518d37c35034fac9b566e079ce
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74976567"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261547"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>Snelstart: de lijst met tekst-naar-spraakstemmen gebruiken Node.js
 
@@ -27,8 +27,8 @@ Voor deze quickstart is een [Azure Cognitive Services-account](https://docs.micr
 
 Voor deze snelstart zijn de volgende zaken vereist:
 
-* [Node 8.12.x of hoger](https://nodejs.org/en/)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) of uw favoriete teksteditor
+* <a href="https://nodejs.org/en/" target="_blank">Knooppunt 8.12.x of hoger<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual <span class="docon docon-navigate-external x-hidden-focus"> </span>Studio </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>of uw favoriete teksteditor
 * Een Azure-abonnementssleutel voor de Spraakservice. [Ontvang er een gratis!](get-started.md).
 
 ## <a name="create-a-project-and-require-dependencies"></a>Een project maken en afhankelijkheden vereisen

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: dsindona
-ms.openlocfilehash: fb568400cb60f108303909353bfa703e98ab6157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af42476f9d04f7f2bfc275c731b02aa5a9b8ecf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286418"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273151"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Een zelftestclient maken om een azure-afbeelding voor virtuele machines vooraf te valideren
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Azure VM-afbeeldingscertificering](https://aks.ms/CertifyVMimage) om uw gemigreerde aanbiedingen te beheren.
 
 Gebruik dit artikel als een handleiding voor het maken van een clientservice die de zelftest-API verbruikt. U de zelftest-API gebruiken om een virtuele machine (VM) vooraf te valideren om ervoor te zorgen dat deze voldoet aan de nieuwste publicatievereisten voor Azure Marketplace. Met deze clientservice u een virtuele machine testen voordat u uw aanbieding voor Microsoft-certificering indient.
 
@@ -219,7 +222,7 @@ De volgende schermopname toont de JSON-resultaten van de kruloproep.
 
 Gebruik de volgende stappen om de Azure AD-tenant te kiezen waar u uw toepassing wilt maken.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Selecteer op de bovenste menubalk uw account en kies onder de lijst Directory de Active Directory-tenant waar u uw toepassing wilt registreren. Of selecteer het pictogram **Directory + Abonnement** om het filter Globaal abonnement weer te geven. De volgende schermopname toont een voorbeeld van dit filter.
 
    ![Het abonnementsfilter selecteren](./media/stclient-subscription-filter.png)

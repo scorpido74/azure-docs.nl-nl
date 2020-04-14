@@ -1,5 +1,5 @@
 ---
-title: Een nieuwe Azure Apps-aanbieding maken in de commerciële marketplace
+title: Een nieuwe Azure Apps-aanbieding maken op de commerciële marktplaats
 description: Een nieuwe Azure Apps-aanbieding maken voor vermelding of verkoop in het Azure Marketplace-, AppSource- of Via het CSP-programma (Cloud Solution Provider) met behulp van de Commercial Marketplace-portal in Microsoft Partner Center.
 author: dsindona
 ms.author: dsindona
@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 0ff1bbd976273a7d0cbfb22effebdf45c84d2f41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 260193b3c71e29a32e0589f50864ffcca2e9a67c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277236"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262261"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -66,7 +66,7 @@ Bekijk de volgende Azure-toepassingsdocumentatie, die Quickstarts, Tutorials en 
     * [Definitiebestanden maken](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Een Marketplace-toepassing publiceren](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
 
-* Voorbeelden:
+* Monsters:
 
     * [Azure-CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
     * [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
@@ -93,7 +93,7 @@ Kies een of beide van de volgende scriptomgevingen om uw Azure-toepassing te beh
 
 We raden u aan de volgende tools toe te voegen aan uw ontwikkelomgeving:
 
-* [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Azure Opslagverkenner](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * [Visual Studio Code](https://code.visualstudio.com/) met de volgende extensies:
     * Extensie: [Azure Resource Manager-hulpprogramma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * Uitbreiding: [Verfraaien](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -103,7 +103,7 @@ U de beschikbare hulpprogramma's bekijken op de pagina [Azure Developer Tools.](
 
 ## <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
-Voordat u een Azure-toepassingsaanbieding maken, moet u eerst [een Partnercenter-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) en het [dashboard Commercial Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)openen, waarbij het tabblad **Overzicht** is geselecteerd.
+Voordat u een Azure-toepassingsaanbieding maken, moet u eerst [een Partnercenter-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) en het [dashboard voor commerciële marktplaatsopenen](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), waarbij het tabblad **Overzicht** is geselecteerd.
 
 >[!Note]
 >Zodra een aanbieding is gepubliceerd, worden bewerkingen van de aanbieding in het Partnercenter alleen bijgewerkt in het systeem en de etalages na het opnieuw publiceren.  Zorg ervoor dat u de aanbieding voor publicatie indient nadat u wijzigingen hebt aangebracht.

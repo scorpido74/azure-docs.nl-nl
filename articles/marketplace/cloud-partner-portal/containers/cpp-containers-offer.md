@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: dsindona
-ms.openlocfilehash: 9c0b4ca6e9a26f13d1539845ca9fb43f31a1a9dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd9f98d42efcb35dbab4f3c0a06c5a11360e36b6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281711"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270346"
 ---
 # <a name="containers"></a>Containers
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Container-aanbiedingen naar partnercentrum. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Een Azure Container-aanbieding maken](https://aka.ms/CreateContainerOffer) om uw gemigreerde aanbiedingen te beheren.
 
 <table> <tr> <td>In deze sectie wordt uitgelegd hoe u een containerafbeelding publiceert naar de <a href="https://azuremarketplace.microsoft.com">Azure Marketplace.</a>  
 Het type containeraanbieding ondersteunt Docker-containerafbeeldingen die zijn ingericht als <a href="https://docs.microsoft.com/azure/aks/index">Azure Kubernetes Service-exemplaren</a> of <a href="https://docs.microsoft.com/azure/container-instances/container-instances-overview">Azure Container Instances</a> en worden gehost in een Azure Container <a href="https://docs.microsoft.com/azure/container-registry">Registry-opslagplaats.</a> </td> <td><img src="./media/container-icon.png"  alt="Azure container icon" /></td> </tr> </table>

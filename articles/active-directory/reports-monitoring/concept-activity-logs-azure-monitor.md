@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 595c87d2b8182c9044baeb2662e34871d9e52c52
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991242"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261020"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-activiteitslogboeken in Azure Monitor
 
@@ -98,12 +98,13 @@ Gebeurtenissen worden ongeveer vijf minuten lang gebatched en vervolgens als é�
 
 Zo vinden er voor een grote tenant met meer dan 100.000 gebruikers bijvoorbeeld doorgaans 18 gebeurtenissen per seconde plaats, een aantal dat overeenkomt met 5400 gebeurtenissen per vijf minuten. Omdat auditlogboeken ongeveer 2 kB per gebeurtenis groot zijn, komt dit overeen met 10,8 MB aan gegevens. Dat is de reden waarom er met die interval van 5 minuten 43 berichten naar de Event Hub worden gestuurd. 
 
-De volgende tabel bevat een raming van de maandelijkse kosten voor een eenvoudige Event Hub in VS - west, afhankelijk van het volume van de gebeurtenisgegevens. Gebruik de [Event Hubs-prijscalculator](https://azure.microsoft.com/pricing/details/event-hubs/) om een nauwkeurige inschatting te berekenen voor het gegevensvolume dat u voor uw toepassing verwacht.
+De volgende tabel bevat geschatte kosten per maand voor een basisgebeurtenishub in West-VS, afhankelijk van het volume van gebeurtenisgegevens die kunnen variëren van tenant tot tenant, zoals per veel factoren, zoals aanmeldingsgedrag van gebruikers, enz. Als u een nauwkeurige schatting wilt maken van het gegevensvolume dat u voor uw toepassing verwacht, gebruikt u de [prijscalculator van Gebeurtenishubs.](https://azure.microsoft.com/pricing/details/event-hubs/)
 
 | Logboekcategorie | Aantal gebruikers | Gebeurtenissen per seconde | Gebeurtenissen met een interval van vijf minuten | Volume per interval | Berichten per interval | Berichten per maand | Kosten per maand (geschat) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Controleren | 100.000 | 18 | 5400 | 10,8 MB | 43 | 371.520 | $ 10,83 |
 | Controleren | 1000 | 0.1 | 52 | 104 kB | 1 | 8640 | $ 10,80 |
+| Aanmeldingen | 100.000 | 18000 | 5,400,000 | 10,8 GB | 42188 | 364,504,320 | $ 23,9 |  
 | Aanmeldingen | 1000 | 178 | 53.400 | 106,8&nbsp;MB | 418 | 3.611.520 | $ 11,06 |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Azure Monitor registreert kostenoverwegingen

@@ -1,22 +1,22 @@
 ---
-title: Een Commercieel Marketplace-account maken in partnercentrum
-description: Meer informatie over het maken van een Commercieel Marktplaats-account in het Partnercentrum.
+title: Een account op de commerciële marktplaats maken in partnercentrum
+description: Meer informatie over het maken van een commercieel marktplaatsaccount in Partner Center.
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 03/10/2020
-ms.openlocfilehash: 82caf46905c0b76deae524d8b172d70b436361d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c635d285f83e8e9c4c5547a9ee983686c507819
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281354"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261734"
 ---
-# <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Een Commercieel Marketplace-account maken in partnercentrum
+# <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Een account op de commerciële marktplaats maken in partnercentrum
 
-Als u uw aanbiedingen wilt publiceren op [Azure Marketplace](https://azuremarketplace.microsoft.com/) of [AppSource,](https://appsource.microsoft.com/)moet u een account maken in het Commercial Marketplace-programma in het Partnercentrum. In dit artikel behandelen we hoe je een Partner Center-account maakt en hoe je nieuwe uitgevers toevoegt aan het Commercial Marketplace-programma.
+Als u uw aanbiedingen wilt publiceren op [Azure Marketplace](https://azuremarketplace.microsoft.com/) of [Microsoft AppSource,](https://appsource.microsoft.com/)moet u een account maken in het commerciële marktplaatsprogramma in Partnercenter. In dit artikel behandelen we hoe je een Partner Center-account maakt en hoe je nieuwe uitgevers toevoegt aan het Commercial Marketplace-programma.
 
 >[!IMPORTANT]
 >Als u een account hebt in de [Cloud Partner Portal (CPP)](https://cloudpartner.azure.com) die is verplaatst naar Partner Center, hoeft u geen nieuw account aan te maken. Zie [Uitgevers die van CPP overstappen](#publishers-moving-from-cpp) voor meer informatie.
@@ -75,7 +75,7 @@ Nadat je profielgegevens van je uitgever hebt bevestigd, ga je akkoord met de al
 
 Eenmaal ingeschreven, wordt u naar de pagina Overzicht van commerciële marktplaatsen geleid. **Commerciële Marktplaats** wordt weergegeven in de linker navigatiebalk. Als u**Programma's voor****instellingenpartnerinstellingen** >  **Settings** > selecteert, ziet u dat Commerciële Marktplaats wordt vermeld als geregistreerd.
 
-Bedankt voor het maken van een Commercial Marketplace-account op Partner Center! Zie Overzicht [van commerciële marktplaatsen](./commercial-marketplace-overview.md)voor hulp. Zie Nieuwe uitgevers toevoegen [aan het Commercial Marketplace-programma](#add-new-publishers-to-the-commercial-marketplace-program)voor hulp bij het toevoegen van uitgevers.
+Bedankt voor het maken van een Commercial Marketplace-account op Partner Center! Voor hulp, zie [commerciële marktplaats overzicht](./commercial-marketplace-overview.md). Zie Nieuwe uitgevers toevoegen [aan de commerciële marktplaats voor](#add-new-publishers-to-the-commercial-marketplace-program)hulp bij het toevoegen van uitgevers.
 
 ## <a name="create-an-account-using-existing-microsoft-partner-center-enrollments"></a>Een account maken met bestaande inschrijvingen in het Microsoft Partner Center
 
@@ -119,7 +119,7 @@ Nadat u zich hebt aangemeld, gebruikt u de volgende stappen om het instellen van
 
 Eenmaal ingeschreven, wordt u naar de pagina Overzicht van commerciële marktplaatsen geleid. **Commerciële Marktplaats** wordt weergegeven in de linker navigatiebalk. Als u**Programma's voor****instellingenpartnerinstellingen** >  **Settings** > selecteert, ziet u dat Commerciële Marktplaats wordt vermeld als geregistreerd.
 
-Bedankt voor het aanmaken van een account op Partner Center! Zie Overzicht [van commerciële marktplaatsen](./commercial-marketplace-overview.md)voor hulp. Zie Nieuwe uitgevers toevoegen [aan het Commercial Marketplace-programma](#add-new-publishers-to-the-commercial-marketplace-program)voor hulp bij het toevoegen van uitgevers.
+Bedankt voor het aanmaken van een account op Partner Center! Voor hulp, zie [commerciële marktplaats overzicht](./commercial-marketplace-overview.md). Zie Nieuwe uitgevers toevoegen [aan de commerciële marktplaats voor](#add-new-publishers-to-the-commercial-marketplace-program)hulp bij het toevoegen van uitgevers.
 
 ### <a name="enrolled-in-a-developer-program"></a>Ingeschreven voor een ontwikkelaarsprogramma
 
@@ -143,13 +143,13 @@ Nadat u zich hebt aangemeld, gebruikt u de volgende stappen om het instellen van
 
 Eenmaal ingeschreven, wordt u naar de pagina Overzicht van commerciële marktplaatsen geleid. **Commerciële Marktplaats** wordt weergegeven in de linker navigatiebalk. If you select **Settings** > **Developer Settings** > **Programs**, you'll see that Commercial Marketplace is listed as registered.
 
-Bedankt voor het aanmaken van een account op Partner Center! Zie Overzicht [van commerciële marktplaatsen](./commercial-marketplace-overview.md)voor hulp. Zie Nieuwe uitgevers toevoegen [aan het Commercial Marketplace-programma](#add-new-publishers-to-the-commercial-marketplace-program)voor hulp bij het toevoegen van uitgevers.
+Bedankt voor het aanmaken van een account op Partner Center! Voor hulp, zie [commerciële marktplaats overzicht](./commercial-marketplace-overview.md). Zie Nieuwe uitgevers toevoegen [aan de commerciële marktplaats voor](#add-new-publishers-to-the-commercial-marketplace-program)hulp bij het toevoegen van uitgevers.
 
 ## <a name="publishers-moving-from-cpp"></a>Uitgevers die van CPP overstappen
 
 Als uw account is gemigreerd vanuit de [Cloud Partner Portal (CPP),](https://cloudpartner.azure.com)hoeft u geen nieuw PartnerCenter-account aan te maken. U had een aangepaste koppeling naar uw nieuwe Partner Center-account per e-mail en in een bannermelding moeten hebben ontvangen nadat u zich hebt aangemeld bij uw bestaande CPP-account.
 
-Zodra je je nieuwe Partner Center-account hebt ingeschakeld door deze aangepaste link te bezoeken, kun je terugkeren naar je account door het [dashboard Van Commerciële Marktplaats](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) in partnercentrum te bezoeken.
+Zodra je je nieuwe Partner Center-account hebt ingeschakeld door deze aangepaste link te bezoeken, kun je terugkeren naar je account door het dashboard van de [commerciële marktplaats](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) in partnercentrum te bezoeken.
 
 De publicatieovereenkomst en bedrijfsprofielgegevens worden gemigreerd naar uw nieuwe Partner Center-account, samen met alle eerder ingestelde profielgegevens van accounts, gebruikersaccounts en machtigingen en actieve aanbiedingen die zijn gekoppeld aan uw CPP-account.
 
@@ -170,7 +170,7 @@ Een andere gebruiker van dezelfde Azure Active Directory-tenant kan een nieuwe u
 4. Kies de MPN-id die u aan de uitgever wilt koppelen.
 5. Werk de **details van** de uitgever op het formulier bij.
 
-   1. **Naam uitgever:** de naam die wordt weergegeven in Azure Marketplace of AppSource met de aanbieding.
+   1. **Naam uitgever:** de naam die wordt weergegeven in de commerciële marktplaats met de aanbieding.
    1. **PublisherID:** een id die door Partner Center wordt gebruikt om uw uitgever op unieke wijze te identificeren. De standaardwaarde voor dit veld `PublisherID` wordt toegewezen aan een bestaand en uniek in het systeem, die niet opnieuw kan worden gebruikt, en daarom moet dit veld worden bijgewerkt.
    1. **Contactgegevens**: Werk de contactgegevens zo nodig bij.
 
@@ -178,4 +178,4 @@ Nadat u het proces hebt voltooid, u uw nieuw gemaakte uitgever beheren door naar
 
 ## <a name="next-step"></a>Volgende stap
 
-- [Uw Commerciële Marketplace-account beheren in partnercentrum](./manage-account.md)
+- [Uw commerciële marktplaatsaccount beheren in partnercentrum](./manage-account.md)

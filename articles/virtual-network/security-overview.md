@@ -13,21 +13,20 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 8f3497f113981ae563023750ad8979c88c640f5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123339"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269870"
 ---
 # <a name="network-security-groups"></a>Netwerkbeveiligingsgroepen
 <a name="network-security-groups"></a>
 
-U kunt netwerkverkeer naar en van Azure-resources in een virtueel Azure-netwerk filteren met een netwerkbeveiligingsgroep. Een netwerkbeveiligingsgroep bevat beveiligingsregels waarmee binnenkomend netwerkverkeer naar, of uitgaand netwerkverkeer van, diverse typen Azure-resources kan worden toegestaan of geweigerd. Zie [Integratie van virtuele netwerken voor Azure-services](virtual-network-for-azure-services.md) voor meer informatie over de Azure-resources die in een virtueel netwerk kunnen worden geïmplementeerd en waaraan netwerkbeveiligingsgroepen kunnen worden gekoppeld. Voor elke regel kunt u de bron en het doel, de poort en het protocol opgeven.
+U azure-netwerkbeveiligingsgroep gebruiken om netwerkverkeer van en naar Azure-bronnen in een virtueel Azure-netwerk te filteren. Een netwerkbeveiligingsgroep bevat [beveiligingsregels](#security-rules) die binnenkomend netwerkverkeer toestaan of weigeren naar of uitgaand netwerkverkeer van verschillende typen Azure-bronnen. Voor elke regel kunt u de bron en het doel, de poort en het protocol opgeven.
+In dit artikel worden de eigenschappen van een regel voor netwerkbeveiligingsgroepen, de [standaardbeveiligingsregels](#default-security-rules) die worden toegepast en de regeleigenschappen die u wijzigen om een [uitgebreide beveiligingsregel](#augmented-security-rules)te maken, beschreven.
 
-In dit artikel worden de concepten van netwerkbeveiligingsgroepen uitgelegd, zodat u ze effectief kunt gebruiken. Als u nog nooit een netwerkbeveiligingsgroep hebt gemaakt, kunt u een snelle [zelfstudie](tutorial-filter-network-traffic.md) uitvoeren om enige ervaring met het maken van een netwerkbeveiligingsgroep op te doen. Zie [Een netwerkbeveiligingsgroep maken, wijzigen of verwijderen](manage-network-security-group.md) als u bekend bent met het netwerkbeveiligingsgroepen en u ze wilt beheren. Zie [Een probleem met een netwerkverkeersfilter in een virtuele machine vaststellen](diagnose-network-traffic-filter-problem.md) als u communicatieproblemen hebt en problemen met netwerkbeveiligingsgroepen wilt oplossen. U kunt [logboekregistratie van stromen in netwerkbeveiligingsgroepen](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) inschakelen voor het analyseren van netwerkverkeer naar en van resources waaraan een netwerkbeveiligingsgroep is gekoppeld.
-
-## <a name="security-rules"></a>Beveiligingsregels
+## <a name="security-rules"></a><a name="security-rules"></a>Beveiligingsregels
 
 Een netwerkbeveiligingsgroep bevat nul regels of zoveel regels als u wilt binnen de [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) van uw Azure-abonnement. Elke regel geeft de volgende eigenschappen aan:
 
@@ -46,7 +45,7 @@ Bestaande verbindingen kunnen niet worden onderbroken wanneer u een beveiligings
 
 Er gelden beperkingen voor het aantal beveiligingsregels dat u in een netwerkbeveiligingsgroep kunt maken. Zie [Netwerkenlimieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) voor meer informatie.
 
-### <a name="default-security-rules"></a>Standaardbeveiligingsregels
+### <a name="default-security-rules"></a><a name="default-security-rules"></a>Standaardbeveiligingsregels
 
 Azure maakt de volgende standaardregels in elke netwerkbeveiligingsgroep die u maakt:
 
@@ -94,7 +93,7 @@ In de kolommen **Bron** en **Doel** zijn *VirtualNetwork*, *AzureLoadBalancer* e
  
 U kunt de standaardregels niet verwijderen, maar u kunt ze negeren door regels te maken met een hogere prioriteit.
 
-### <a name="augmented-security-rules"></a>Uitgebreide beveiligingsregels
+### <a name="augmented-security-rules"></a><a name="augmented-security-rules"></a>Regels voor verbeterde beveiliging
 
 Uitgebreide beveiligingsregels vereenvoudigen de beveiligingsdefinitie voor virtuele netwerken, zodat u een uitgebreider en complexer netwerkbeveiligingsbeleid kunt definiëren met minder regels. U kunt meerdere poorten en meerdere expliciete IP-adressen en -bereiken combineren tot één gemakkelijk te begrijpen beveiligingsregel. U kunt uitgebreide regels gebruiken in de velden voor bron, doel en poort van een regel. Om het onderhoud van de definitie van uw beveiligingsregel te vereenvoudigen, kunt u uitgebreide beveiligingsregels combineren met [servicetags](service-tags-overview.md) of [toepassingsbeveiligingsgroepen](#application-security-groups). Er zijn beperkingen voor het aantal adressen, bereiken en poorten dat u in een regel opgeven. Zie [Netwerkenlimieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) voor meer informatie.
 
@@ -170,4 +169,8 @@ U kunt eenvoudig de cumulatieve regels bekijken die op een netwerkinterface word
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Een netwerkbeveiligingsgroep maken](tutorial-filter-network-traffic.md).
+* Zie [Virtuele netwerkintegratie voor Azure-services voor](virtual-network-for-azure-services.md) meer informatie over welke Azure-resources kunnen worden geïmplementeerd in een virtueel netwerk en welke netwerkbeveiligingsgroepen eraan zijn gekoppeld
+* Als u nog nooit een netwerkbeveiligingsgroep hebt gemaakt, kunt u een snelle [zelfstudie](tutorial-filter-network-traffic.md) uitvoeren om enige ervaring met het maken van een netwerkbeveiligingsgroep op te doen. 
+* Zie [Een netwerkbeveiligingsgroep maken, wijzigen of verwijderen](manage-network-security-group.md) als u bekend bent met het netwerkbeveiligingsgroepen en u ze wilt beheren. 
+* Zie [Een probleem met een netwerkverkeersfilter in een virtuele machine vaststellen](diagnose-network-traffic-filter-problem.md) als u communicatieproblemen hebt en problemen met netwerkbeveiligingsgroepen wilt oplossen. 
+* Meer informatie over het inschakelen van [netwerkbeveiligingsgroepstroomlogboeken](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) om netwerkverkeer van en naar bronnen met een bijbehorende netwerkbeveiligingsgroep te analyseren.

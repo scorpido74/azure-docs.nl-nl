@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 76ab92285cace284c187109ca48c6634777ebbc0
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ea4bfadd55935712a292355dc25fb778b1523c75
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398323"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261870"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Functies en terminologie in Azure Event Hubs
 
@@ -45,7 +45,7 @@ Elke entiteit die gegevens naar een gebeurtenishub verzendt, is een gebeurtenisp
 
 U een evenement publiceren via AMQP 1.0, Kafka 1.0 (en hoger) of HTTPS. Event Hubs biedt [clientbibliotheken en -klassen](event-hubs-dotnet-framework-api-overview.md) voor het publiceren van gebeurtenissen naar een gebeurtenishub van .NET-clients. Voor andere runtimes en platforms kunt u een AMQP 1.0-client gebruiken, zoals [Apache Qpid](https://qpid.apache.org/). U kunt gebeurtenissen afzonderlijk of batchgewijs publiceren. Eén publicatie (instantie gebeurtenisgegevens) heeft een limiet van 1 MB, ongeacht of het een enkele gebeurtenis of een batch is. Het publiceren van gebeurtenissen die groter zijn dan deze drempelwaarde, resulteert in een fout. Het is een aanbevolen praktijk voor uitgevers om zich niet bewust te zijn van partities binnen de gebeurtenishub en alleen een *partitiesleutel* op te geven (geïntroduceerd in de volgende sectie), of hun identiteit via hun SAS-token.
 
-De keuze om AMQP of HTTPS te gebruiken, geldt specifiek voor het gebruiksscenario. AMQP vereist de inrichting van een permanente bidirectionele socket naast Transport Layer Security (TLS) of SSL/TLS. AMQP gaat gepaard met hogere netwerkkosten tijdens de initialisatie van de sessie. Voor HTTPS is echter extra SSL-overhead vereist voor elke aanvraag. AMQP biedt betere prestaties voor regelmatige uitgevers.
+De keuze om AMQP of HTTPS te gebruiken, geldt specifiek voor het gebruiksscenario. AMQP vereist de inrichting van een permanente bidirectionele socket naast Transport Layer Security (TLS) of SSL/TLS. AMQP heeft hogere netwerkkosten bij het initialiseren van de sessie, maar HTTPS vereist extra TLS-overhead voor elke aanvraag. AMQP biedt betere prestaties voor regelmatige uitgevers.
 
 ![Event Hubs](./media/event-hubs-features/partition_keys.png)
 

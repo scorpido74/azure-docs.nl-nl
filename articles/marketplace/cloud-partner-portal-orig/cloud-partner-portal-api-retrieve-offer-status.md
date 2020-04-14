@@ -5,24 +5,25 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cf6ca27101a08ff58f32dcd31413256762490a2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280504"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255908"
 ---
-<a name="retrieve-offer-status"></a>Aanbiedingsstatus ophalen 
-=====================
+# <a name="retrieve-offer-status"></a>Aanbiedingsstatus ophalen
+
+> [!NOTE]
+> De API's van cloudpartnerportalen zijn geïntegreerd met het Partner Center en blijven werken nadat uw aanbiedingen zijn gemigreerd naar partnercentrum. De integratie brengt kleine veranderingen met zich mee. Bekijk de wijzigingen in [Cloud Partner Portal API Reference](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar partnercentrum.
 
 Hiermee haalt u de huidige status van de aanbieding op.
 
   `GET  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/status?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI-parameters
---------------
+## <a name="uri-parameters"></a>URI-parameters
 
 |  **Naam**       |   **Beschrijving**                            |  **Gegevenstype** |
 |  -------------  |  ------------------------------------------  |  ------------  |
@@ -32,8 +33,8 @@ Hiermee haalt u de huidige status van de aanbieding op.
 |  |  |
 
 
-<a name="header"></a>Header
-------
+## <a name="header"></a>Header
+
 
 |  Name           |  Waarde               |
 |  -------------  | -------------------  |
@@ -41,9 +42,8 @@ Hiermee haalt u de huidige status van de aanbieding op.
 |  Autorisatie  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
+## <a name="body-example"></a>Voorbeeld van het lichaam
 
-<a name="body-example"></a>Voorbeeld van het lichaam
-------------
 
 ### <a name="response"></a>Antwoord
 
@@ -115,8 +115,7 @@ Hiermee haalt u de huidige status van de aanbieding op.
       ],
       "previewLinks": [],
       liveLinks": [],
-      "notificationEmails": "jdoe@contoso.com"
-  } 
+  }
 ```
 
 
@@ -136,9 +135,8 @@ Hiermee haalt u de huidige status van de aanbieding op.
 |  procesPercentage    | Percentage voltooiing van de stap                                                              |
 |  voorbeeldLinks         | *Momenteel niet geïmplementeerd*                                                                    |
 |  liveLinks            | *Momenteel niet geïmplementeerd*                                                                    |
-|  meldingE-mails   | Door komma's gescheiden lijst met e-mailadressen die op de hoogte moeten worden gebracht van de voortgang van de bewerking        |
+|  meldingE-mails   | Afgeschaft voor aanbiedingen die zijn gemigreerd naar partnercentrum. Meldingen voor gemigreerde aanbiedingen worden verzonden naar de e-mail die is opgegeven onder de contactgegevens van de verkoper in accountinstellingen.<br><br>Voor niet-gemigreerde aanbiedingen, door komma's gescheiden lijst met e-mailadressen die op de hoogte moeten worden gebracht van de voortgang van de bewerking        |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Statuscodes voor antwoord
 
@@ -148,7 +146,6 @@ Hiermee haalt u de huidige status van de aanbieding op.
 |  400     | `Bad/Malformed request`- De foutreactieinstantie kan meer informatie bevatten.                 |
 |  404     | `Not found`- De opgegeven entiteit bestaat niet.                                                |
 |  |  |
-
 
 ### <a name="offer-status"></a>Aanbiedingsstatus
 
@@ -162,7 +159,6 @@ Hiermee haalt u de huidige status van de aanbieding op.
 |  Geannuleerd                    | Indiening van de aanbieding is geannuleerd.                           |
 |  Mislukt                      | Indiening van aanbiedingen is mislukt.                                 |
 |  |  |
-
 
 ### <a name="step-status"></a>Stapstatus
 

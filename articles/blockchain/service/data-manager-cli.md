@@ -4,12 +4,12 @@ description: Een Blockchain-gegevensbeheer voor Azure Blockchain-service maken e
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
-ms.openlocfilehash: 5ceca96f760ab62ca7f3df9ad26139b9b4a3e5be
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: e490803fabeed7d6234bd6984acbfb9f5270e0c0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529596"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254407"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Blockchain Data Manager configureren met behulp van Azure CLI
 
@@ -48,7 +48,7 @@ az group create --name myRG --location eastus
 
 ## <a name="create-instance"></a>Instantie maken
 
-Een instantie Voor Blockchain Data Manager bewaakt een Azure Blockchain Service-transactieknooppunt. Een instantie legt alle ruwe blok- en ruwe transactiegegevens uit het transactieknooppunt vast.
+Een instantie Voor Blockchain Data Manager bewaakt een Azure Blockchain Service-transactieknooppunt. Een instantie legt alle ruwe blok- en ruwe transactiegegevens uit het transactieknooppunt vast. Blockchain Data Manager publiceert een **RawBlockAndTransactionMsg-bericht** dat een superset van informatie is die is geretourneerd van web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) en getTransaction-query's. [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction)
 
 ``` azurecli
 az resource create \

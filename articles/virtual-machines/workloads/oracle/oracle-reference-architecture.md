@@ -2,7 +2,7 @@
 title: Referentiearchitecturen voor Oracle-databases op Azure | Microsoft Documenten
 description: Verwijzingen naar architecturen voor het uitvoeren van Oracle Database Enterprise Edition-databases op Microsoft Azure Virtual Machines.
 services: virtual-machines-linux
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: ''
 ms.service: virtual-machines
@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2019
-ms.author: rogirdh
+ms.author: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 235482f5d44877e5c4e47aed4d7eaf2baea5c3fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dc677ded1e13a64c082d49140fa0de69c0ed9d4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75560331"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263264"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referentiearchitecturen voor Oracle Database Enterprise Edition op Azure
 
@@ -177,7 +177,7 @@ Het volgende diagram is een referentiearchitectuur voor Oracle Sharding met Orac
 
 ![Oracle Database Sharding met beschikbaarheidszones met Data Guard Broker - FSFO](./media/oracle-reference-architecture/oracledb_dg_sh_az.png)
 
-Hoewel systeembeheer door het systeem het gemakkelijkst te configureren en te beheren is, is door de gebruiker gedefinieerde sharding of samengestelde sharding zeer geschikt voor scenario's waarin uw gegevens en toepassing geogedistribueerd zijn of in scenario's waarin u controle moet hebben over de replicatie van elke scherf. 
+Hoewel systeembeheer het gemakkelijkst te configureren en te beheren is, is door de gebruiker gedefinieerde sharding of samengestelde sharding zeer geschikt voor scenario's waarin uw gegevens en toepassing geogedistribueerd zijn of in scenario's waarin u controle moet hebben over de replicatie van elke shard. 
 
 In de voorgaande architectuur wordt composietsharding gebruikt om de gegevens te geodistribueren en uw toepassingslagen horizontaal uit te schalen. Composietsharding is een combinatie van systeembeheer en door de gebruiker gedefinieerde sharding en biedt zo het voordeel van beide methoden. In het vorige scenario worden gegevens eerst geshard over meerdere shardruimten gescheiden per regio. Vervolgens worden de gegevens verder verdeeld door consistente hash over meerdere scherven in de shardruimte. Elke shardruimte bevat meerdere shardgroepen. Elke shardgroep heeft meerdere scherven en is een "eenheid" van replicatie, in dit geval. Elke shardgroep bevat alle gegevens in de shardruimte. Shardgroepen A1 en B1 zijn primaire shardgroepen, terwijl shardgroepen A2 en B2 standbys zijn. U ervoor kiezen om afzonderlijke scherven de eenheid van replicatie te hebben, in plaats van een shardgroep.
 

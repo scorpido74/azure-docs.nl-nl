@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8cb6cf49e302122849dc2402bcff008e72e15608
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 870f7b0ab0f1d7b247435cdbb74e21801b3b052a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472355"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257178"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Wat zijn veldprogrammeerbare gate arrays (FPGA) en hoe te implementeren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ Microsoft Azure is 's werelds grootste cloudinvestering in FPGA's. Met behulp va
 FPGA's op Azure ondersteunt:
 
 + Scenario's voor beeldclassificatie en -herkenning
-+ TensorFlow-implementatie
++ TensorFlow-implementatie (vereist Tensorflow 1.x)
 + Intel FPGA-hardware
 
 Deze DNN-modellen zijn momenteel beschikbaar:
@@ -115,9 +115,8 @@ U een model als webservice implementeren op FPGA's met Azure Machine Learning Ha
 - De Python SDK voor hardware-versnelde modellen:
 
     ```bash
-    pip install --upgrade azureml-accel-models
+    pip install --upgrade azureml-accel-models[cpu]
     ```
-
 
 ## <a name="1-create-and-containerize-models"></a>1. Modellen maken en containeriseren
 
@@ -364,7 +363,7 @@ aks_service.wait_for_deployment(show_output=True)
 #### <a name="test-the-cloud-service"></a>De cloudservice testen
 De Docker-afbeelding ondersteunt gRPC en de TensorFlow Serving -API.  Gebruik de voorbeeldclient om de Docker-afbeelding aan te roepen om voorspellingen van het model te krijgen.  Voorbeeldclientcode is beschikbaar:
 - [Python](https://github.com/Azure/aml-real-time-ai/blob/master/pythonlib/amlrealtimeai/client.py)
-- [C #](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
+- [C#](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
 
 Als u TensorFlow Serving wilt gebruiken, u [een voorbeeldclient downloaden.](https://www.tensorflow.org/serving/setup)
 

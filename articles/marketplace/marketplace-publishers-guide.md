@@ -1,20 +1,20 @@
 ---
-title: Publicatiehandleiding voor Azure Marketplace en AppSource
-description: Een overzicht van de Azure Marketplace en Microsoft AppSource voor app- en service-uitgevers.
+title: Gids voor het publiceren van commerciële marktplaatsen
+description: Een overzicht van de commerciële marktplaats voor app- en service-uitgevers.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/05/2018
+ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: 368cb4fdce23e695c074b4893dcdc314c974dd54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c41a24ecb3e12618ac8cfcdfb756a33114f0f8a2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288390"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261989"
 ---
-# <a name="azure-marketplace-and-appsource-publishing-guide"></a>Publicatiehandleiding voor Azure Marketplace en AppSource
+# <a name="commercial-marketplace-publishing-guide"></a>Gids voor het publiceren van commerciële marktplaatsen
 
 De publicatiegids Marketplace is ontworpen om nieuwe en bestaande uitgevers te helpen leren hoe ze storefronts in de [Azure Marketplace](https://azuremarketplace.microsoft.com) en [Microsoft AppSource](https://appsource.microsoft.com) kunnen gebruiken om hun bedrijf in samenwerking met Microsoft te laten groeien door toepassingen en services aan te bieden.
 
@@ -62,7 +62,7 @@ Nieuwe aanbiedingen op de Marketplace komen in aanmerking voor een breed scala a
 
 *   Co-selling: begin of versnel uw reis naar verkopen met Microsoft via de Marketplace. Toegang tot programma's en ondersteuning om gezamenlijke verkoop met Microsoft-teams te stimuleren.
 
-Nadat u uw oplossing hebt [ingediend bij](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) marketplace, neemt ons onboarding-team contact met u op om uw publicatie-ervaring te ondersteunen.  Bekijk [hoe u een Partner Center-account maakt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) voor meer informatie.
+Nadat u uw oplossing hebt [ingediend bij](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) marketplace, neemt ons onboarding-team contact met u op om uw publicatie-ervaring te ondersteunen.  Bekijk [hoe u een Partner Center-account maakt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) voor meer informatie.
 
 Meer informatie over uw [commerciële marktplaatsvoordelen.](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)
 

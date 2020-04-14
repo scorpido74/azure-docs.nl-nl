@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een functie vanaf de opdrachtreg
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c1e1b9912109ae8a7361c9d0d776ca1810a90d5c
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 1e3ce26894e9e89d196c068bd32245c8c891b2e2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886633"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255546"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Snelstart: een functie in Azure maken die reageert op HTTP-aanvragen
 
@@ -97,7 +97,7 @@ Navigeer naar de projectmap:
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
 ```
-cd LocalFunctionsProject
+cd LocalFunctionProj
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-java"  

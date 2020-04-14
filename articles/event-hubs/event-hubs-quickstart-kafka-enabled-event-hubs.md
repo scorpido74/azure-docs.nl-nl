@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 89d2c16e3f54d3170b4f0d23590294be13dd8caa
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 67ee882acab22d977f08124591289e9cfc7cded1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632754"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261819"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Snelstart: streaming van gegevens met gebeurtenishubs met behulp van het Kafka-protocol
 Deze quickstart laat zien hoe je streamen naar Event Hubs zonder je protocolclients te wijzigen of je eigen clusters uit te voeren. U leert hoe u uw producenten en consumenten gebruiken om met Event Hubs te praten met slechts een configuratiewijziging in uw toepassingen. Azure Event Hubs ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html)
@@ -46,7 +46,7 @@ Wanneer u een naamruimte voor **standaardgebeurtenishubs** maakt, wordt het Kafk
 
 3. Werk de configuratiegegevens voor de producent in `src/main/resources/producer.config` als volgt bij:
 
-    **Ssl:**
+    **TLS/SSL:**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -76,7 +76,7 @@ Wanneer u een naamruimte voor **standaardgebeurtenishubs** maakt, wordt het Kafk
 
 6. Werk de configuratiegegevens voor de consument in `src/main/resources/consumer.config` als volgt bij:
    
-    **Ssl:**
+    **TLS/SSL:**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093

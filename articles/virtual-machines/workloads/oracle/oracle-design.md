@@ -3,7 +3,7 @@ title: Een Oracle-database ontwerpen en implementeren op Azure | Microsoft Docum
 description: Een Oracle-database ontwerpen en implementeren in uw Azure-omgeving.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: c2c2d1a9affe13d485bfeef52c781ed259b53bc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 41e1720dfeaa98a9d0bc2227c58083ce769b06e0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70100118"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263400"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Een Oracle-database ontwerpen en implementeren in Azure
 
@@ -46,14 +46,14 @@ In de volgende tabel worden enkele verschillen weergegeven tussen een on-premise
 > 
 > |  | **Lokale implementatie** | **Azure-implementatie** |
 > | --- | --- | --- |
-> | **Networking** |LAN/WAN  |SDN (software-defined networking)|
+> | **Netwerken** |LAN/WAN  |SDN (software-defined networking)|
 > | **Beveiligingsgroep** |Hulpprogramma's voor IP/poortbeperking |[Netwerkbeveiligingsgroep (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 > | **Veerkracht** |MTBF (gemiddelde tijd tussen storingen) |MTTR (gemiddelde tijd tot herstel)|
 > | **Gepland onderhoud** |Patchen/upgraden|[Beschikbaarheidssets](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (patching/upgrades beheerd door Azure) |
 > | **Resource** |Toegewezen  |Gedeeld met andere klanten|
 > | **Regio's** |Datacenters |[Regioparen](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Opslag** |SAN/fysieke schijven |[Azure-beheerde opslag](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **Schaal** |Verticale schaal |Horizontaal schalen|
+> | **Storage** |SAN/fysieke schijven |[Azure-beheerde opslag](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **Schalen** |Verticale schaal |Horizontaal schalen|
 
 
 ### <a name="requirements"></a>Vereisten

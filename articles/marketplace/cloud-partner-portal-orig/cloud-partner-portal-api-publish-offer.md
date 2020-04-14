@@ -5,23 +5,25 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 4163bf5727c327d559b81db42f99684aa0cc8d5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 960d5facb53f20719045c5fdbe2179f549aca3f2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280521"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255937"
 ---
-<a name="publish-an-offer"></a>Een aanbieding publiceren
-================
+# <a name="publish-an-offer"></a>Een aanbieding publiceren
+
+> [!NOTE]
+> De API's van cloudpartnerportalen zijn geïntegreerd met het Partner Center en blijven werken nadat uw aanbiedingen zijn gemigreerd naar partnercentrum. De integratie brengt kleine veranderingen met zich mee. Bekijk de wijzigingen in [Cloud Partner Portal API Reference](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar partnercentrum.
 
 Hiermee wordt het publicatieproces voor de opgegeven aanbieding gestart. Deze oproep is een langlopende bewerking.
 
   `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/publish?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI-parameters
+## <a name="uri-parameters"></a>URI-parameters
 --------------
 
 |  **Naam**      |    **Beschrijving**                               |  **Gegevenstype** |
@@ -31,8 +33,7 @@ Hiermee wordt het publicatieproces voor de opgegeven aanbieding gestart. Deze op
 |  api-versie   | Nieuwste versie van de API                        |   Date         |
 |  |  |
 
-
-<a name="header"></a>Header
+## <a name="header"></a>Header
 ------
 
 |  **Naam**        |    **Waarde**          |
@@ -42,7 +43,7 @@ Hiermee wordt het publicatieproces voor de opgegeven aanbieding gestart. Deze op
 |  |  |
 
 
-<a name="body-example"></a>Voorbeeld van het lichaam
+## <a name="body-example"></a>Voorbeeld van het lichaam
 ------------
 
 ### <a name="request"></a>Aanvraag
@@ -66,14 +67,20 @@ Hiermee wordt het publicatieproces voor de opgegeven aanbieding gestart. Deze op
 
 ### <a name="response"></a>Antwoord
 
-   `Operation-Location: /api/operations/contoso$56615b67-2185-49fe-80d2-c4ddf77bb2e8$2$preview?api-version=2017-10-31`
+#### <a name="migrated-offers"></a>Gemigreerde aanbiedingen
+
+`Location: /api/publishers/contoso/offers/contoso-offer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8?api-version=2017-10-31`
+
+#### <a name="non-migrated-offers"></a>Niet-gemigreerde aanbiedingen
+
+`Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
 
 ### <a name="response-header"></a>Reactieheader
 
 |  **Naam**             |    **Waarde**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
-| Operatielocatie    | URL die kan worden opgevraagd om de huidige status van de bewerking te bepalen.    |
+| Locatie    | Het relatieve pad om de status van deze bewerking op te halen     |
 |  |  |
 
 

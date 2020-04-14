@@ -8,18 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1521581316d559eb4e67bafba0061c31cc666b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513878"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272947"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Identificeer de gesproken taal automatisch met taalidentificatiemodel
 
-Video Indexer ondersteunt automatische taalidentificatie (LID), het proces van het automatisch identificeren van de gesproken taalinhoud van audio en het verzenden van het mediabestand dat moet worden getranscribeerd in de dominante geïdentificeerde taal. Momenteel ondersteunt LID Engels, Spaans, Frans, Duits, Italiaans, Chinees (Vereenvoudigd), Japans, Russisch en Portugees (Braziliaans). 
+Video Indexer ondersteunt automatische taalidentificatie (LID), het proces van het automatisch identificeren van de gesproken taalinhoud van audio en het verzenden van het mediabestand dat moet worden getranscribeerd in de dominante geïdentificeerde taal. 
+
+Momenteel ondersteunt LID: Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chines, Japans, Russisch en Portugees (Braziliaans). 
+
+Bekijk hieronder de [sectie Richtlijnen en beperkingen.](#guidelines-and-limitations)
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Automatische taalidentificatie kiezen bij indexering
 
@@ -49,7 +53,10 @@ Model dominante taal is beschikbaar in `sourceLanguage` de inzichten JSON als he
 
 ## <a name="guidelines-and-limitations"></a>Richtlijnen en beperkingen
 
-* Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Chinees (Vereenvoudigd), Japans, Russisch en Braziliaans Portugees.
+* Automatische taalidentificatie (LID) ondersteunt de volgende talen: 
+
+    Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chines, Japans, Russisch en Portugees (Braziliaans).
+* Hoewel Video Indexer Arabisch (Modern Standard en Levantine), Hindi en Koreaans ondersteunt, worden deze talen niet ondersteund in LID.
 * Als de audio andere talen bevat dan de bovenstaande ondersteunde lijst, is het resultaat onverwacht.
 * Als Video Indexer de taal niet kan`>0.6`identificeren met een voldoende hoog vertrouwen ( ), is de terugvaltaal Engels.
 * Er is momenteel geen ondersteuning voor bestand met audio in gemengde talen. Als de audio gemengde talen bevat, is het resultaat onverwacht. 

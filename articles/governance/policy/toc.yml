@@ -31,9 +31,6 @@
     - name: Tag governance beheren
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
-    - name: Praktijklab - Azure-beleid verkennen
-      displayName: 'create, policy, training, learn'
-      href: 'https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy'
 - name: Voorbeelden
   items:
     - name: Index

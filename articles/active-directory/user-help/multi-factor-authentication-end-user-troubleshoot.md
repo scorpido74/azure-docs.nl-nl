@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 1703853f42b52dccc80fdfadaa09b67e18a19db8
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632901"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271689"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Veelvoorkomende problemen met tweefactorverificatie en uw werk- of schoolaccount
 
@@ -65,6 +65,7 @@ Zorg ervoor dat u een apparaatsignaal en internetverbinding hebt | Zorg ervoor d
 Niet storen uitschakelen | Zorg ervoor dat u de functie **Niet storen voor** uw mobiele apparaat niet hebt ingeschakeld. Wanneer deze functie is ingeschakeld, mogen meldingen u niet waarschuwen op uw mobiele apparaat. Raadpleeg de handleiding van uw mobiele apparaat voor instructies over het uitschakelen van deze functie.
 Telefoonnummers deblokkeren | In de Verenigde Staten komen spraakoproepen van Microsoft uit de volgende nummers: +1 (866) 539 4191, +1 (855) 330 8653 en +1 (877) 668 6536.
 Uw instellingen voor de batterij controleren | Deze lijkt een beetje vreemd op het oppervlak, maar als je hebt ingesteld uw batterij optimalisatie om minder gebruikte apps te stoppen van actief blijven op de achtergrond, uw melding systeem is waarschijnlijk getroffen. Als u wilt proberen dit probleem op te lossen, schakelt u batterijoptimalisatie voor uw verificatie-app en uw berichten-app uit en probeert u zich opnieuw aan te melden bij uw account.
+Beveiligingsapps van derden uitschakelen | Als u een app hebt die sms-berichten of telefoongesprekken beschermt om onbekende bellers tot een minimum te beperken, kan deze voorkomen dat de verificatiecode wordt ontvangen. Probeer beveiligingsapps van derden op uw telefoon uit te schakelen en vraag vervolgens om een andere verificatiecode te sturen.
 
 ## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>Ik word niet gevraagd om mijn tweede verificatiegegevens
 

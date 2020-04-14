@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f88f141257e8e614f62c7441c313002b5735116d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 8f51c65489efeed1fa18e70bd75e7370a9e59903
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239196"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260625"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Zelfstudie: Voorwaarde gebruiken in ARM-sjablonen
 
@@ -55,23 +55,25 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 Azure QuickStart-sjablonen is een opslagplaats voor ARM-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De sjabloon die in deze zelfstudie wordt gebruikt, heet [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Een eenvoudige Windows-VM implementeren).
 
 1. Selecteer **Bestand**>**openen bestand**in Visual Studio-code .
-2. Plak de volgende URL in **Bestandsnaam**:
+1. Plak de volgende URL in **Bestandsnaam**:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-3. Selecteer **Openen** om het bestand te openen.
-4. Er worden vijf resources gedefinieerd door de sjabloon:
+1. Selecteer **Openen** om het bestand te openen.
+1. De sjabloon heeft zes bronnen gedefinieerd:
 
-   * `Microsoft.Storage/storageAccounts`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-     Het is handig om enige basiskennis te hebben van de sjabloon voordat u deze gaat aanpassen.
-5. Selecteer **Bestand**>**opslaan als** u een kopie van het bestand op uw lokale computer wilt opslaan met de naam **azuredeploy.json**.
+    Het is handig om de sjabloonverwijzing te bekijken voordat u een sjabloon aanwerkt.
+
+1. Selecteer **Bestand**>**opslaan als** u een kopie van het bestand op uw lokale computer wilt opslaan met de naam **azuredeploy.json**.
 
 ## <a name="modify-the-template"></a>De sjabloon aanpassen
 
@@ -83,12 +85,12 @@ Breng de volgende twee wijzigingen aan in de bestaande sjabloon:
 Hier volgt de procedure waarmee de wijzigingen kunnen worden aangebracht:
 
 1. Open **azuredeploy.json** in Visual Studio Code.
-2. Vervang de drie **variabelen('storageAccountName')** door **parameters('storageAccountName')** in de hele sjabloon.
-3. Verwijder de volgende variabeledefinitie:
+1. Vervang de drie **variabelen('storageAccountName')** door **parameters('storageAccountName')** in de hele sjabloon.
+1. Verwijder de volgende variabeledefinitie:
 
     ![Voorwaardediagram resourcebeheersjabloon](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
-4. Voeg de volgende twee parameters toe aan de sjabloon:
+1. Voeg de volgende twee parameters toe aan het begin van de sectie parameters:
 
     ```json
     "storageAccountName": {
@@ -103,11 +105,13 @@ Hier volgt de procedure waarmee de wijzigingen kunnen worden aangebracht:
     },
     ```
 
+    Druk op **[ALT]+[SHIFT]+F** om de sjabloon op te maken in Visual Studio Code.
+
     De bijgewerkte parameterdefinitie ziet er als volgt uit:
 
     ![Voorwaarde gebruiken in Resource Manager](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-parameters.png)
 
-5. Voeg de volgende regel toe aan het begin van de definitie van het opslagaccount.
+1. Voeg de volgende regel toe aan het begin van de definitie van het opslagaccount.
 
     ```json
     "condition": "[equals(parameters('newOrExisting'),'new')]",
@@ -118,7 +122,7 @@ Hier volgt de procedure waarmee de wijzigingen kunnen worden aangebracht:
     De bijgewerkte definitie van het opslagaccount ziet er als volgt uit:
 
     ![Voorwaarde gebruiken in Resource Manager](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. Werk de eigenschap **storageUri** van de definitie van virtuele machinebronnen bij met de volgende waarde:
+1. Werk de eigenschap **storageUri** van de definitie van virtuele machinebronnen bij met de volgende waarde:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -126,20 +130,25 @@ Hier volgt de procedure waarmee de wijzigingen kunnen worden aangebracht:
 
     Deze wijziging is nodig als u een bestaand opslagaccount gebruikt onder een andere resourcegroep.
 
-7. Sla de wijzigingen op.
+1. Sla de wijzigingen op.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Volg de instructies in [De sjabloon implementeren](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) om de cloudshell te openen en de herziene sjabloon te uploaden en voer vervolgens het volgende PowerShell-script uit om de sjabloon te implementeren.
+Volg de instructies in [De sjabloon implementeren](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) om de Cloud Shell te openen en de herziene sjabloon te uploaden en voer vervolgens het volgende PowerShell-script uit om de sjabloon te implementeren.
+
+> [!IMPORTANT]
+> De naam van het opslagaccount moet uniek zijn in Azure. De naam mag alleen kleine letters of cijfers hebben. Het kan niet langer zijn dan 24 tekens. De naam van het opslagaccount is de projectnaam met 'store' toegevoegd. Zorg ervoor dat de naam van het project en de naam van het gegenereerde opslagaccount voldoen aan de vereisten voor de naam van het opslagaccount.
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
-$storageAccountName = Read-Host -Prompt "Enter the storage account name"
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
 $newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
 $location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
 $vmAdmin = Read-Host -Prompt "Enter the admin username"
 $vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
+
+$resourceGroupName = "${projectName}rg"
+$storageAccountName = "${projectName}store"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
@@ -150,6 +159,8 @@ New-AzResourceGroupDeployment `
     -storageAccountName $storageAccountName `
     -newOrExisting $newOrExisting `
     -TemplateFile "$HOME/azuredeploy.json"
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!NOTE]
@@ -159,11 +170,15 @@ Probeer een andere implementatie te maken met **de nieuweOrExisting** ingesteld 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen. Als u de brongroep wilt verwijderen, selecteert **u Proberen** om de cloudshell te openen. Als u het PowerShell-script wilt plakken, klikt u met de rechtermuisknop op het deelvenster shell en selecteert u **Plakken**.
+Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen. Als u de brongroep wilt verwijderen, selecteert **u Proberen** om de Cloud Shell te openen. Als u het PowerShell-script wilt plakken, klikt u met de rechtermuisknop op het deelvenster shell en selecteert u **Plakken**.
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"
+$projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
+
 Remove-AzResourceGroup -Name $resourceGroupName
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

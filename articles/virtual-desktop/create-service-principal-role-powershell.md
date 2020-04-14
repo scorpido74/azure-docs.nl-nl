@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61b5017609d99f2f0074c67d3838cf351ea38bea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 322ff2be4b90a945305915432a8191db9f4efee2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79365420"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252554"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Zelfstudie: Serviceprincipals en roltoewijzingen maken met PowerShell
 
@@ -77,7 +77,7 @@ Hier zijn de drie referenties die u moet opschrijven en de cmdlets die u moet ui
     $svcPrincipal.AppId
     ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Een roltoewijzing maken in Windows Virtual Desktop Preview
+## <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Een roltoewijzing maken in Windows Virtual Desktop
 
 Vervolgens moet u een roltoewijzing maken, zodat de serviceprincipal zich kan aanmelden bij Windows Virtual Desktop. Zorg ervoor dat u zich aanmeldt met een account met machtigingen voor het maken van roltoewijzingen.
 

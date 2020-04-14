@@ -9,21 +9,21 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3c54f864b5bd562fdc0a84b2903198704032b360
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: bc691299f38d562aee5c08a89e10372331663f8e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998487"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262805"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>De syntaxis van de zoekopdracht "volledig" Lucene gebruiken (geavanceerde query's in Azure Cognitive Search)
 
 Bij het maken van query's voor Azure Cognitive Search u de [standaardeenvoudige queryparser](query-simple-syntax.md) vervangen door de uitgebreidere [Lucene Query Parser in Azure Cognitive Search](query-lucene-syntax.md) om gespecialiseerde en geavanceerde querydefinities te formuleren. 
 
-De Lucene parser ondersteunt complexe queryconstructies, zoals zoekopdrachten met een veldbereik, zoeken naar een vast speelveld, zoeken naar nabijheid, termboosting en zoeken naar reguliere expressies. De extra kracht wordt geleverd met extra verwerkingsvereisten, dus u moet een iets langere uitvoeringstijd verwachten. In dit artikel u voorbeelden doorlopen waarin querybewerkingen worden weergegeven die beschikbaar zijn bij het gebruik van de volledige syntaxis.
+De Lucene parser ondersteunt complexe queryconstructies, zoals zoekopdrachten met een veldbereik, fuzzy search, infix en achtervoegsel wildcard zoeken, zoeken in de nabijheid, term boosting en reguliere expressie zoeken. De extra kracht wordt geleverd met extra verwerkingsvereisten, dus u moet een iets langere uitvoeringstijd verwachten. In dit artikel u voorbeelden doorlopen waarin querybewerkingen worden weergegeven die beschikbaar zijn bij het gebruik van de volledige syntaxis.
 
 > [!Note]
-> Veel van de gespecialiseerde queryconstructies die zijn ingeschakeld via de volledige syntaxis van Lucene query, worden niet [door de tekst geanalyseerd,](search-lucene-query-architecture.md#stage-2-lexical-analysis)wat verrassend kan zijn als u stemming of lemmatisatie verwacht. Lexicale analyse wordt alleen uitgevoerd onder volledige voorwaarden (een term query of woordgroep query). Querytypen met onvolledige termen (voorvoegselquery, wildcardquery, regexquery, fuzzy query) worden rechtstreeks aan de querystructuur toegevoegd, waarbij de analysefase wordt omzeild. De enige transformatie die wordt uitgevoerd op onvolledige querytermen, is een lagere behuizing. 
+> Veel van de gespecialiseerde queryconstructies die zijn ingeschakeld via de volledige syntaxis van Lucene query, worden niet [door de tekst geanalyseerd,](search-lucene-query-architecture.md#stage-2-lexical-analysis)wat verrassend kan zijn als u stemming of lemmatisatie verwacht. Lexicale analyse wordt alleen uitgevoerd onder volledige voorwaarden (een term query of woordgroep query). Querytypen met onvolledige termen (voorvoegselquery, wildcardquery, regexquery, fuzzy query) worden rechtstreeks aan de querystructuur toegevoegd, waarbij de analysefase wordt omzeild. De enige transformatie die wordt uitgevoerd op termen van gedeeltelijke query' s, is een lagere behuizing. 
 >
 
 ## <a name="formulate-requests-in-postman"></a>Verzoeken formuleren in Postbode

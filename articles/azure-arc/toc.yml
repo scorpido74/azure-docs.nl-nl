@@ -1,21 +1,23 @@
 - name: Documentatie voor Azure Arc
   href: index.yml
 - name: Overzicht
-  expanded: true
   items:
     - name: Wat is Azure Arc voor servers?
       href: ./servers/overview.md
-- name: Verbinding maken met Azure Arc
-  expanded: true
+- name: Instructiegidsen
   items:
-    - name: Machines verbinden met Azure Arc vanuit de Azure-portal
-      href: ./servers/onboard-portal.md
-    - name: Machines op schaal verbinden met een service-principal
-      href: ./servers/onboard-service-principal.md
-    - name: Machines verbinden met Azure Arc met PowerShell DSC
-      href: ./servers/onboard-dsc.md
-- name: Agent beheren
-  href: ./servers/manage-agent.md
+    - name: Verbinding maken met Azure Arc
+      items:
+        - name: Machines verbinden met Azure Arc vanuit de Azure-portal
+          href: ./servers/onboard-portal.md
+        - name: Machines op schaal verbinden met een service-principal
+          href: ./servers/onboard-service-principal.md
+        - name: Machines verbinden met Azure Arc met PowerShell DSC
+          href: ./servers/onboard-dsc.md
+    - name: Beheren
+      items:
+        - name: Agent beheren
+          href: ./servers/manage-agent.md
 - name: Naslaginformatie
   items:
     - name: CLI-interface van met Azure verbonden machineagent

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: f9758678708338a284a35b45f7f9dd43b9a9017c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335963"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260986"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Noodherstel implementeren met back-up en herstellen van services in Azure API Management
 
@@ -55,7 +55,7 @@ Alle taken die u uitvoert op resources met Azure Resource Manager, moeten met De
 
 ### <a name="create-an-azure-active-directory-application"></a>Een Azure Active Directory-toepassing maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Navigeer met het abonnement dat uw API Management-serviceinstantie bevat naar het tabblad **App-registraties** in **Azure Active Directory** (Azure Active Directory > Beheer/App-registraties).
 
     > [!NOTE]
@@ -131,7 +131,7 @@ Vervangen `{tenant id}` `{application id}`, `{redirect uri}` en met behulp van d
 
 ## <a name="calling-the-backup-and-restore-operations"></a>De back-up- en herstelbewerkingen aanroepen
 
-De REST API's zijn [Api Management Service - Backup](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup) en Api Management Service - [Restore](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore).
+De REST API's zijn [Api Management Service - Backup](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup) en Api Management Service - [Restore](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore).
 
 Voordat u de bewerkingen 'back-up en herstel' aanroept die in de volgende secties zijn beschreven, stelt u de koptekst voor autorisatieaanvragen in voor uw REST-aanroep.
 

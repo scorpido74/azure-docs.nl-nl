@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 26c309eeebd7226c6777ec41ae674587da796dd4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 52feeb67681bacb64cd20601e00f00109a4b810f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78199662"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257909"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>De Key Vault-functie voor voorlopig verwijderen gebruiken met PowerShell
 
@@ -202,6 +202,34 @@ Net als sleutels worden geheimen beheerd met hun eigen opdrachten:
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
 
+#### <a name="certificates"></a>Certificaten
+
+U certificaten beheren met onderstaande opdrachten:
+
+- Een certificaat met de naam SQLPassword verwijderen: 
+  ```powershell
+  Remove-AzKeyVaultCertificate -VaultName ContosoVault -Name 'MyCert'
+  ```
+
+- Alle verwijderde certificaten in een sleutelkluis weergeven: 
+  ```powershell
+  Get-AzKeyVaultCertificate -VaultName ContosoVault -InRemovedState
+  ```
+
+- Een certificaat herstellen in de verwijderde status: 
+  ```powershell
+  Undo-AzKeyVaultCertificateRemoval -VaultName ContosoVault -Name 'MyCert'
+  ```
+
+- Een certificaat in verwijderde status wissen: 
+
+  > [!IMPORTANT]
+  > Het zuiveren van een certificaat zal het permanent verwijderen en het zal niet kunnen worden hersteld!
+
+  ```powershell
+  Remove-AzKeyVaultcertificate -VaultName ContosoVault -Name 'MyCert' -InRemovedState 
+  ```
+  
 ## <a name="purging-a-soft-delete-protected-key-vault"></a>Een beveiligde sleutelkluis met softdelete verwijderen
 
 > [!IMPORTANT]

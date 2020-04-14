@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f07f6a27e78ee4df8c64a09918758d02c28c6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76898784"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260935"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Gebeurtenissen aanmelden bij Azure Event Hubs in Azure API-beheer
 Azure Event Hubs is een zeer schaalbare service voor inkomende gegevens die miljoenen gebeurtenissen per seconde kan opnemen, voor verwerking en analyse van de enorme hoeveelheden gegevens die worden geproduceerd door verbonden apparaten en toepassingen. Event Hubs fungeert als de "voordeur" voor een gebeurtenispijplijn en zodra gegevens worden verzameld in een gebeurtenishub, kan deze worden getransformeerd en opgeslagen met behulp van realtime analyseprovider of batching/storage-adapters. Event Hubs koppelt de productie van een gebeurtenissenstroom los van het gebruik van deze gebeurtenissen, zodat de consumenten ervan toegang hebben tot de gebeurtenissen op basis van hun eigen planning.
@@ -30,9 +30,9 @@ Dit artikel is een aanvulling op de video [Azure API Management integreren met E
 Zie Een naamruimte voor gebeurtenishubs maken [en een gebeurtenishub maken met de Azure-portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)voor gedetailleerde stappen over het maken van een gebeurtenishub en het ophalen van verbindingstekenreeksen die u moet verzenden en ontvangen van gebeurtenissen van en naar de gebeurtenishub.
 
 ## <a name="create-an-api-management-logger"></a>Een API-beheerlogger maken
-Nu u een Event Hub hebt, is de volgende stap het configureren van een [Logger](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger) in uw API Management-service, zodat gebeurtenissen kunnen worden aangemeld bij de Gebeurtenishub.
+Nu u een Event Hub hebt, is de volgende stap het configureren van een [Logger](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger) in uw API Management-service, zodat gebeurtenissen kunnen worden aangemeld bij de Gebeurtenishub.
 
-API Management loggers zijn geconfigureerd met behulp van de [API Management REST API](https://aka.ms/apimapi). Voor gedetailleerde aanvraagvoorbeelden u zien [hoe u Loggers maakt.](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate)
+API Management loggers zijn geconfigureerd met behulp van de [API Management REST API](https://aka.ms/apimapi). Voor gedetailleerde aanvraagvoorbeelden u zien [hoe u Loggers maakt.](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate)
 
 ## <a name="configure-log-to-eventhubs-policies"></a>Beleid voor log-to-eventhubs configureren
 
@@ -65,7 +65,7 @@ Klik **op Opslaan** om de bijgewerkte beleidsconfiguratie op te slaan. Zodra het
   * [Berichten ontvangen met EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [Programmeerhandleiding voor gebeurtenishubs](../event-hubs/event-hubs-programming-guide.md)
 * Meer informatie over API-beheer en eventhubs-integratie
-  * [Referentie van loggerentiteit](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger)
+  * [Referentie van loggerentiteit](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger)
   * [log-to-eventhub-beleidsverwijzing](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
   * [Uw API's controleren met Azure API-beheer, gebeurtenishubs en Moesif](api-management-log-to-eventhub-sample.md)  
 * Meer informatie over [integratie met Azure Application Insights](api-management-howto-app-insights.md)

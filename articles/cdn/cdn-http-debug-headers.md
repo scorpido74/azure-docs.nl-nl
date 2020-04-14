@@ -3,7 +3,7 @@ title: Http-headers X-EC-Debugn voor Azure CDN-regels | Microsoft Documenten
 description: De header Foutopsporing van X-EC-Debug bevat aanvullende informatie over het cachebeleid dat wordt toegepast op het gevraagde element. Deze headers zijn specifiek voor Verizon.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
-ms.author: magattus
-ms.openlocfilehash: dec753d7c891d226aa2e6d3efa993d8d24adfbaa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 52aae3bdd2fe82eea6cbd500723192c88c293a1e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593827"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260493"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Http-headers x-EC-Debugn voor Azure CDN-regels
 De foutopsporingscache-aanvraagkop `X-EC-Debug`bevat aanvullende informatie over het cachebeleid dat wordt toegepast op het aangevraagde element. Deze headers zijn specifiek voor **Azure CDN Premium van** Verizon-producten.

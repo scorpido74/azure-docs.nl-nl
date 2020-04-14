@@ -4,12 +4,12 @@ description: Een virtuele Azure-machine herstellen vanaf een herstelpunt met beh
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 3c3c8a7bd47ae03a013ddfadffabaa16fd04412b
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b9cdb187aa3b8750bead8e81ad6d0ee50dcb3d6c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677553"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254917"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure VM-gegevens herstellen in Azure-portal
 
@@ -28,8 +28,6 @@ Azure Backup biedt een aantal manieren om een VM te herstellen.
 
 > [!NOTE]
 > U ook specifieke bestanden en mappen herstellen op een Azure VM. [Meer informatie](backup-azure-restore-files-from-vm.md).
->
-> Als u de [nieuwste versie](backup-instant-restore-capability.md) van Azure Backup voor Azure VM's uitvoert (instant restore genoemd), worden momentopnamen maximaal zeven dagen bewaard en u een VM herstellen van momentopnamen voordat de back-upgegevens naar de kluis worden verzonden. Als u een VM wilt herstellen van een back-up van de afgelopen zeven dagen, is deze sneller te herstellen vanaf de momentopname en niet vanuit de kluis.
 
 ## <a name="storage-accounts"></a>Opslagaccounts
 

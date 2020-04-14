@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9706f28e6ca442543f566a574f437a0ec68c4e0
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d608eb8caf9e4183d14d5a0ac416b7ba9107b977
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583736"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261123"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-icims"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met ICIMS
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u hoe u ICIMS integreert met Azure Active Directory (Az
 * Stel uw gebruikers in staat om automatisch te worden aangemeld bij ICIMS met hun Azure AD-accounts.
 * Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)voor meer informatie over de integratie van de SaaS-app met Azure AD.
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -147,7 +147,7 @@ Wanneer u in het toegangsvenster op de tegel ICIMS klikt, wordt u automatisch aa
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

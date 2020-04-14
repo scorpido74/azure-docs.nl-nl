@@ -2,19 +2,19 @@
 title: Sjabloon met afhankelijke resources
 description: Leer hoe u een Azure Resource Manager-sjabloon maakt met meerdere resources en hoe u deze via Azure Portal implementeert
 author: mumian
-ms.date: 03/04/2019
+ms.date: 04/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5db2fb34a6d9330e745a9b4d1f5fed538e96c557
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: bbe973f5c701f55705fe197f56f5f8ab1d9e8c68
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239303"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260734"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Zelfstudie: ARM-sjablonen maken met afhankelijke bronnen
 
-Meer informatie over het maken van een ARM-sjabloon (Azure Resource Manager) om meerdere resources te implementeren en de implementatieorder te configureren. Nadat u de sjabloon hebt gemaakt, kunt u de sjabloon implementeren met behulp van de Cloud Shell van Azure Portal.
+Meer informatie over het maken van een ARM-sjabloon (Azure Resource Manager) om meerdere resources te implementeren en de implementatieorder te configureren. Nadat u de sjabloon hebt gemaakt, implementeert u de sjabloon met behulp van de Cloud Shell vanuit de Azure-portal.
 
 In deze zelfstudie hebt u een opslagaccount, een virtuele machine, een virtueel netwerk en enkele andere afhankelijke resources gemaakt. Sommige resources kunnen niet worden geïmplementeerd totdat er een andere resource bestaat. U kunt bijvoorbeeld niet een virtuele machine maken totdat het bijbehorende opslagaccount en de bijbehorende netwerkinterface bestaan. U definieert deze relatie door een resource afhankelijk van de andere resources te maken. Resource Manager evalueert de afhankelijkheden tussen resources en implementeert ze in de volgorde van afhankelijkheid. Als resources niet van elkaar afhankelijk zijn, worden deze door Resource Manager parallel geïmplementeerd. Zie [De volgorde definiëren voor het implementeren van resources in ARM-sjablonen](./define-resource-dependency.md)voor meer informatie.
 
@@ -39,6 +39,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
     ```console
     openssl rand -base64 32
     ```
+
     Azure Key Vault is ontworpen om cryptografische sleutels en andere geheimen te beveiligen. Zie [Zelfstudie: Azure Key Vault integreren in ARM-sjabloonimplementatie](./template-tutorial-use-key-vault.md). We raden u ook aan om uw wachtwoord elke drie maanden te wijzigen.
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
@@ -51,6 +52,7 @@ Azure QuickStart-sjablonen is een opslagplaats voor ARM-sjablonen. In plaats van
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
+
 3. Selecteer **Openen** om het bestand te openen.
 4. Selecteer **Bestand**>**opslaan als** u een kopie van het bestand op uw lokale computer wilt opslaan met de naam **azuredeploy.json**.
 
@@ -67,33 +69,43 @@ Wanneer u de sjabloon in deze sectie verkent, probeert u om deze vragen te beant
 
     ![Azure Resource Manager-sjablonen in Visual Studio Code](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
-    Er worden vijf resources gedefinieerd door de sjabloon:
+    De sjabloon heeft zes bronnen gedefinieerd:
 
-   * `Microsoft.Storage/storageAccounts`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-     Het is handig om enige basiskennis te hebben van de sjabloon voordat u deze gaat aanpassen.
+     Het is handig om de sjabloonverwijzing te bekijken voordat u een sjabloon aanwerkt.
 
-2. Vouw de eerste resource uit. Dit is een opslagaccount. Vergelijk de resourcedefinitie met de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+1. Vouw de eerste resource uit. Dit is een opslagaccount. Vergelijk de resourcedefinitie met de [sjabloonverwijzing](/azure/templates/Microsoft.Storage/storageAccounts).
 
     ![Azure Resource Manager-sjablonen in Visual Studio Code: definitie van opslagaccount](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
-3. Vouw de tweede resource uit. Het resourcetype is `Microsoft.Network/publicIPAddresses`. Vergelijk de resourcedefinitie met de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+1. Vouw de tweede resource uit. Het resourcetype is `Microsoft.Network/publicIPAddresses`. Vergelijk de resourcedefinitie met de [sjabloonverwijzing](/azure/templates/microsoft.network/publicipaddresses).
 
     ![Azure Resource Manager-sjablonen in Visual Studio Code: definitie van openbaar IP-adres](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
-4. Vouw de vierde resource uit. Het resourcetype is `Microsoft.Network/networkInterfaces`:
 
-    ![Visual Studio Code Azure Resource Manager-sjablonen zijn afhankelijk](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
+1. De derde resource uitbreiden. Het resourcetype is `Microsoft.Network/networkSecurityGroups`. Vergelijk de resourcedefinitie met de [sjabloonverwijzing](/azure/templates/microsoft.network/networksecuritygroups).
 
-    Met het element dependsOn kunt u één resource als afhankelijk van een of meer resources definiëren. De resource is afhankelijk van twee andere resources:
+    ![Definitie van de netwerkbeveiligingsgroep van Visual Studio Code Azure Resource Manager-sjablonen](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
+
+1. Vouw de vierde resource uit. Het resourcetype is `Microsoft.Network/virtualNetworks`:
+
+    ![Visual Studio Code Azure Resource Manager-sjablonen virtueel netwerk afhankelijk](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
+
+    Met het element dependsOn kunt u één resource als afhankelijk van een of meer resources definiëren. Met het element dependsOn kunt u één resource als afhankelijk van een of meer resources definiëren.  Deze bron is afhankelijk van een andere bron:
+
+    * `Microsoft.Network/networkSecurityGroups`
+
+1. Breid de vijftig bronnen uit. Het resourcetype is `Microsoft.Network/networkInterfaces`. De resource is afhankelijk van twee andere resources:
 
     * `Microsoft.Network/publicIPAddresses`
     * `Microsoft.Network/virtualNetworks`
 
-5. Vouw de vijfde resource uit. Deze resource is een virtuele machine. Deze is afhankelijk van twee andere resources:
+1. Breid de zesde resource uit. Deze resource is een virtuele machine. Deze is afhankelijk van twee andere resources:
 
     * `Microsoft.Storage/storageAccounts`
     * `Microsoft.Network/networkInterfaces`
@@ -106,27 +118,17 @@ Door de afhankelijkheden op te geven, kan Resource Manager de oplossing efficië
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+1. Volg de instructies in [De sjabloon implementeren](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) om de Cloud Shell te openen en de herziene sjabloon te uploaden.
 
-Er bestaan meerdere methoden voor het implementeren van sjablonen.  In deze zelfstudie gebruikt u Cloud Shell van Azure Portal.
-
-1. Meld u aan bij [Cloud Shell](https://shell.azure.com).
-1. Selecteer **PowerShell** in de linkerbovenhoek van Cloud Shell en selecteer **Bevestigen**.  In deze zelfstudie gebruikt u PowerShell.
-1. Selecteer **Bestand uploaden** vanuit Cloud Shell:
-
-    ![Bestand uploaden in Cloud Shell in Azure Portal](./media/template-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
-1. Selecteer de sjabloon die u eerder in de zelfstudie hebt opgeslagen. De standaardnaam is **azuredeploy.json**.  Als u een bestand met dezelfde bestandsnaam hebt, wordt het oude bestand zonder melding overschreven.
-
-    U optioneel de opdracht **ls $HOME** en de opdracht **cat $HOME/azuredeploy.json** gebruiken om te controleren of de bestanden zijn geüpload.
-
-1. Voer vanuit Cloud Shell de volgende PowerShell-opdrachten uit. Voor een verbeterde beveiliging gebruikt u een gegenereerd wachtwoord voor het beheerdersaccount van de virtuele machine. Zie [Voorwaarden](#prerequisites).
+1. Voer het volgende PowerShell-script uit om de sjabloon te implementeren.
 
     ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
     $adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
     $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
     $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS label prefix"
+    $resourceGroupName = "${projectName}rg"
 
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment `
@@ -135,14 +137,19 @@ Er bestaan meerdere methoden voor het implementeren van sjablonen.  In deze zelf
         -adminPassword $adminPassword `
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile "$HOME/azuredeploy.json"
+
     Write-Host "Press [ENTER] to continue ..."
     ```
 
 1. Voer de volgende PowerShell-opdracht uit om de nieuwe virtuele machine weer te geven:
 
     ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-    Get-AzVM -Name SimpleWinVM -ResourceGroupName $resourceGroupName
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
+    $resourceGroupName = "${projectName}rg"
+    $vmName = "SimpleWinVM"
+
+    Get-AzVM -Name $vmName -ResourceGroupName $resourceGroupName
+    
     Write-Host "Press [ENTER] to continue ..."
     ```
 

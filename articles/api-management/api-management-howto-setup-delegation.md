@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: a69babdf2fffb4cb9d963f1806f3c85755e50294
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c28872e6cffa973f01b3f5a87c423d9dd93a2aa5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74454353"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259099"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Gebruikersregistratie en productabonnement delegeren
 
@@ -186,9 +186,9 @@ Zie de volgende video voor meer informatie over dedelegatie:
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[een SSO-token (single-sign-on) aanvragen]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/User/GenerateSsoUrl
-[een gebruiker maken]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user/createorupdate
-[de REST-API voor abonnementen aanroepen]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate
+[een SSO-token (single-sign-on) aanvragen]: https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/User/GenerateSsoUrl
+[een gebruiker maken]: https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user/createorupdate
+[de REST-API voor abonnementen aanroepen]: https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription/createorupdate
 [Next steps]: #next-steps
 [voorbeeldcode hieronder]: #delegate-example-code
 

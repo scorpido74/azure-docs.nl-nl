@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: b55c351927a56afce697d07f41bfbe668144d68d
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ce9919a0b0f614e427c12ee3e3fbda0be46470ea
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475515"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273304"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning release notes Azure Machine Learning release notes Azure Machine Learning release notes Azure Machine
 
@@ -22,11 +22,59 @@ Lees in dit artikel meer over Azure Machine Learning-releases.  Ga voor de volle
 
 Bekijk [de lijst met bekende problemen](resource-known-issues.md) om meer te weten te komen over bekende bugs en tijdelijke oplossingen.
 
+## <a name="2020-04-13"></a>2020-04-13
+
+### <a name="azure-machine-learning-sdk-for-python-v130"></a>Azure Machine Learning SDK voor Python v1.3.0
+
++ **Bug fixes en verbeteringen**
+  + **azureml-automl-core**
+    + Extra telemetrie toegevoegd rond operaties na de training.
+    + Versnelt de automatische ARIMA-training met behulp van voorwaardelijke som van vierkanten (CSS) training voor series van lengte langer dan 100. Houd er rekening mee dat de gebruikte lengte wordt opgeslagen als de constante ARIMA_TRIGGER_CSS_TRAINING_LENGTH w/in de klasse TimeSeriesInternal bij /src/azureml-automl-core/azureml/automl/core/shared/constants.py
+    + De gebruikersregistratie van prognoseruns is verbeterd, nu wordt meer informatie weergegeven over welke fase momenteel wordt uitgevoerd in het logboek
+    + Niet toegestaan target_rolling_window_size ingesteld op waarden van minder dan 2
+  + **azureml-automl-runtime**
+    + Verbeterde het foutbericht dat wordt weergegeven wanneer dubbele tijdstempels worden gevonden.
+    + Niet toegestaan target_rolling_window_size ingesteld op waarden minder dan 2.
+    + Fixed the lag imputation failure. Het probleem werd veroorzaakt door het ontoereikende aantal waarnemingen dat nodig was om een reeks seizoengebonden te ontleden. De "gede-seizoensgebonden" gegevens worden gebruikt om een gedeeltelijke autocorrelatiefunctie (PACF) te berekenen om de vertragingslengte te bepalen.
+    + Ingeschakeld kolom doel featurization aanpassing voor het voorspellen van taken door featurization config. Nu worden numerieke en categorische als kolomdoel voor het voorspellen van taken ondersteund.
+    + Ingeschakeld drop kolom featurization aanpassing voor het voorspellen van taken door featurization config.
+    + Ingeschakelde imputatie aanpassing voor het voorspellen van taken door featurization config. Constante waardetoerekening voor doelkolom en gemiddelde, mediaan, most_frequent en constante waardetoerekening voor trainingsgegevens worden nu ondersteund.
+  + **azureml-contrib-pipeline-steps**
+    + Tekenreeksgegevens accepteren die moeten worden doorgegeven aan ParallelRunConfig
+  + **azureml-core**
+    +  Api Toegevoegd aan Environment.clone(new_name) om een kopie van het object Omgeving te maken
+    +  Environment.docker.base_dockerfile accepteert bestandspad. Als u een bestand oplossen, wordt de inhoud in base_dockerfile eigenschap omgeving gelezen
+    + Automatisch wederzijds exclusieve waarden opnieuw instellen voor base_image en base_dockerfile wanneer de gebruiker handmatig een waarde inEnvironment.docker instelt
+    +  Gegevensset: fout bij downloaden van vaste gegevenssets als gegevenspad met unicode-tekens
+    +  Gegevensset: verbeterde cachingmechanisme voor het monteren van gegevenssets om te voldoen aan de minimale vereiste schijfruimte in Azure Machine Learning Compute, waardoor het knooppunt onbruikbaar wordt en de taak wordt geannuleerd
+    + Added user_managed flag in RSection die aangeeft of de omgeving wordt beheerd door gebruiker of door AzureML.
+    + Gegevensset: we voegen een index toe voor de tijdreekskolom wanneer u een tijdreeksgegevensset gebruikt als een pandas-dataframes, die wordt gebruikt om de toegang tot op tijdreeksen gebaseerde gegevenstoegang te versnellen.  Voorheen kreeg de index dezelfde naam als de tijdstempelkolom, waardoor gebruikers verwarring kregen over welke de werkelijke tijdstempelkolom is en welke de index is. We geven nu geen specifieke naam aan de index, omdat deze niet als kolom mag worden gebruikt. 
+  + **azureml-dataprep**
+    + Probleem met probleem voor vaste gegevenssetverificatie in soevereine cloud
+    + Fixed `Dataset.to_spark_dataframe` failure for datasets created from Azure PostgreSQL datastores Fixed failure for datasets created from Azure PostgreSQL datastores Fixed failure for datasets created from Azure PostgreSQL datastores Fixed failure
+  + **azureml-interpret**
+    + Globale scores toegevoegd aan visualisatie als waarden voor lokaal belang schaars zijn
+    + Bijgewerkt azureml-interpret om interpreteer-gemeenschap 0.9.* te gebruiken
+    + Probleem opgelost met het downloaden van uitleg die schaarse evaluatiegegevens had
+    + Ondersteuning toegevoegd voor het schaarse formaat van het uitlegobject in AutoML
+  + **azureml-pipeline-core**
+    + ComputeInstance ondersteunen als rekendoel in pijplijnen
+  + **azureml-train-automl-client**
+    + Extra telemetrie toegevoegd rond operaties na de training.
+    + Fixed the regression in early stop Fixed the regression in early stopping Fixed the regression in early stopping Fixed the
+    + Afgeschaft azureml.dprep.Dataflow als geldig type voor invoergegevens.
+    +  Een time-out van het standaard-AutomatischeML-experiment wijzigen in 6 dagen.
+  + **azureml-train-automl-runtime**
+    + Extra telemetrie toegevoegd rond operaties na de training.
+    + extra automl e2e-ondersteuning toegevoegd
+  + **azureml-opendatasets**
+    + Extra telemetrie toegevoegd voor servicemonitor.
+    + Frontdoor voor blob inschakelen om de stabiliteit te vergroten 
 ## <a name="2020-03-23"></a>2020-03-23
 
 ### <a name="azure-machine-learning-sdk-for-python-v120"></a>Azure Machine Learning SDK voor Python v1.2.0
 
-+ **Wijzigingen doorbreken**
++ **Wijzigingen die fouten veroorzaken**
   + Drop ondersteuning voor python 2.7
 
 + **Bug fixes en verbeteringen**
@@ -61,7 +109,7 @@ Bekijk [de lijst met bekende problemen](resource-known-issues.md) om meer te wet
   + **Python 2.7**
     + Laatste versie ter ondersteuning van python 2.7
 
-+ **Wijzigingen doorbreken**
++ **Wijzigingen die fouten veroorzaken**
   + **Semantische versie2.0.0**
     + Beginnend met versie 1.1 Azure ML Python SDK neemt Semantische Versioning 2.0.0. [Hier vindt u meer informatie](https://semver.org/). Alle volgende versies volgen een nieuw nummeringsschema en een semantisch versiecontract. 
 
@@ -224,7 +272,7 @@ Bekijk [de lijst met bekende problemen](resource-known-issues.md) om meer te wet
 
 ### <a name="azure-machine-learning-sdk-for-python-v110rc0-pre-release"></a>Azure Machine Learning SDK voor Python v1.1.0rc0 (Pre-release)
 
-+ **Wijzigingen doorbreken**
++ **Wijzigingen die fouten veroorzaken**
   + **Semantische versie2.0.0**
     + Beginnend met versie 1.1 Azure ML Python SDK neemt Semantische Versioning 2.0.0. [Hier vindt u meer informatie](https://semver.org/). Alle volgende versies volgen een nieuw nummeringsschema en een semantisch versiecontract. 
   
@@ -354,7 +402,7 @@ Bekijk [de lijst met bekende problemen](resource-known-issues.md) om meer te wet
 
 ### <a name="azure-machine-learning-sdk-for-python-v1076"></a>Azure Machine Learning SDK voor Python v1.0.76
 
-+ **Wijzigingen doorbreken**
++ **Wijzigingen die fouten veroorzaken**
   + Azureml-Train-AutoML upgrade problemen
     + Upgraden naar azureml-train-automl>=1.0.76 van azureml-train-automl<1.0.76 kan leiden tot gedeeltelijke installaties, waardoor sommige automl-importen mislukken. Om dit op te lossen, kunt https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/automl_setup.cmdu het installatiescript uitvoeren dat is gevonden op . Of als u pip direct gebruikt, u:
       + "pip installeren --upgrade azureml-train-automl"
@@ -1293,7 +1341,7 @@ We hebben een wijziging teruggedraaid die de prestaties verbeterde, omdat deze p
     + Dien Jupyter notebook als een run. [API-naslagdocumentatie](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
     + Openbare preview van [Data Drift Detector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) via azureml-contrib-datadrift pakket[(voorbeeld notebooks).](https://aka.ms/azureml-datadrift-example) Data Drift is een van de belangrijkste redenen waarom modelnauwkeurigheid na verloop van tijd degradeert. Het gebeurt wanneer gegevens die worden aangeboden om te modelleren in de productie is anders dan de gegevens die het model is opgeleid. AML Data Drift detector helpt de klant om gegevens drift te controleren en stuurt waarschuwing wanneer drift wordt gedetecteerd.
 
-+ **Wijzigingen doorbreken**
++ **Wijzigingen die fouten veroorzaken**
 
 + **Bug fixes en verbeteringen**
   + RunConfiguration load and save ondersteunt het opgeven van een volledig bestandspad met volledige back-compat voor eerder gedrag.
@@ -1521,7 +1569,7 @@ Opmerking: Data Prep Python SDK `numpy` `pandas` wordt niet meer geïnstalleerd 
 
 ### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Azure Machine Learning Data Prep SDK v1.1.0
 
-+ **Wijzigingen doorbreken**
++ **Wijzigingen die fouten veroorzaken**
   + Het concept van het Data Prep Pakket is afgeschaft en wordt niet langer ondersteund. In plaats van meerdere gegevensstromen in één pakket voort te houden, u gegevensstromen afzonderlijk blijven bestaan.
     + Handleiding: Notitieblok [gegevensstromen openen en opslaan](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
 
@@ -1706,7 +1754,7 @@ Azure Machine Learning Compute kan worden gemaakt in Python, met azure portal of
 > We raden u aan een nieuwe werkruimte te maken voor het gebruik van Azure Machine Learning Compute. Er is een externe kans dat gebruikers die Azure Machine Learning Compute proberen te maken vanuit een bestaande werkruimte een fout kunnen zien. Bestaande rekenkracht in uw werkruimte moet onaangetast blijven werken.
 
 ### <a name="azure-machine-learning-sdk-for-python-v102"></a>Azure Machine Learning SDK voor Python v1.0.2
-+ **Wijzigingen doorbreken**
++ **Wijzigingen die fouten veroorzaken**
   + Met deze release verwijderen we ondersteuning voor het maken van een VM van Azure Machine Learning. U nog steeds een bestaande cloud-VM of een externe on-premises server toevoegen.
   + We verwijderen ook de ondersteuning voor BatchAI, die nu allemaal moeten worden ondersteund via Azure Machine Learning Compute.
 
@@ -1726,7 +1774,7 @@ Azure Machine Learning Compute kan worden gemaakt in Python, met azure portal of
 <!--+ **Bugs fixed**-->
 
 ### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Azure Machine Learning Data Prep SDK v0.5.2
-+ **Wijzigingen doorbreken**
++ **Wijzigingen die fouten veroorzaken**
   * `SummaryFunction.N`werd omgedoopt `SummaryFunction.Count`tot .
 
 + **Insectenmoeilijke**
@@ -1764,7 +1812,7 @@ Azure Machine Learning Compute kan worden gemaakt in Python, met azure portal of
 
 ### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Azure Machine Learning SDK voor Python v0.1.80
 
-+ **Wijzigingen doorbreken**
++ **Wijzigingen die fouten veroorzaken**
   * *azureml.train.widgets* namespace is verplaatst naar *azureml.widgets*.
   * *azureml.core.compute.AmlCompute* deprecates the following classes - *azureml.core.compute.BatchAICompute* and *azureml.core.dSVMCompute*. De laatste klasse wordt verwijderd in latere releases. De klasse AmlCompute heeft nu een eenvoudigere definitie en heeft gewoon een vm_size en de max_nodes nodig en schaalt uw cluster automatisch van 0 naar de max_nodes wanneer een taak wordt ingediend. Onze [voorbeeldnotitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) zijn bijgewerkt met deze informatie en moeten u voorbeelden van gebruik geven. We hopen dat je deze vereenvoudiging en nog veel meer spannende functies te komen in een latere release!
 
@@ -1805,7 +1853,7 @@ De Azure-portal voor Azure Machine Learning heeft de volgende updates:
 
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Azure Machine Learning SDK voor Python v0.1.74
 
-+ **Wijzigingen doorbreken**
++ **Wijzigingen die fouten veroorzaken**
   * *Workspace.compute_targets, datastores, experimenten, afbeeldingen, modellen en *webservices* zijn eigenschappen in plaats van methoden. Vervang *workspace.compute_targets()* bijvoorbeeld door *Workspace.compute_targets*.
   * *Run.get_context* deprecates *Run.get_submitted_run*. De laatste methode zal worden verwijderd in de volgende releases.
   * *PipelineData-klasse* verwacht nu een datastore-object als parameter in plaats van datastore_name. Op dezelfde manier accepteert *Pipeline* default_datastore in plaats van default_datastore_name.
@@ -1855,7 +1903,7 @@ De Azure-portal voor Azure Machine Learning heeft de volgende updates:
 
 Bekijk [de lijst met bekende problemen](resource-known-issues.md) om meer te weten te komen over bekende bugs en tijdelijke oplossingen.
 
-+ **Wijzigingen doorbreken**
++ **Wijzigingen die fouten veroorzaken**
   * Workspace.experiments, Workspace.models, Workspace.compute_targets, Workspace.images, Workspace.web_services return dictionary, eerder geretourneerde lijst. Zie [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API-documentatie.
 
   * Geautomatiseerde Machine Learning verwijderd genormaliseerde gemiddelde vierkante fout van de primaire statistieken.

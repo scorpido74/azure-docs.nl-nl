@@ -1,5 +1,5 @@
 ---
-title: Model interpreteerbaarheid voor lokale en externe uitvoeringen
+title: Leg machine learning-modellen en -voorspellingen uit
 titleSuffix: Azure Machine Learning
 description: Meer informatie over hoe u uitleg krijgt over hoe uw machine learning-model het belang van de functie bepaalt en voorspellingen doet bij het gebruik van de Azure Machine Learning SDK.
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/02/2020
-ms.openlocfilehash: 1ff42149ccb629a0a7094e6dfede422d4dd7f61f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.date: 04/12/2020
+ms.openlocfilehash: c1282ed16c9e3b92e7d5ec3f9969bee6fc3d917f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632031"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257196"
 ---
-# <a name="model-interpretability-for-local-and-remote-runs"></a>Model interpreteerbaarheid voor lokale en externe uitvoeringen
+# <a name="explain-machine-learning-models-and-predictions"></a>Leg machine learning-modellen en -voorspellingen uit
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -30,7 +30,6 @@ In deze handleiding leert u het interpreteerbaarheidspakket van de Azure Machine
 
 * Leg het gedrag voor het hele model en individuele voorspellingen in Azure uit.
 
- 
 * Gebruik een visualisatiedashboard om te communiceren met de uitleg van uw model.
 
 * Implementeer een scoreuitleg naast uw model om uitleg te observeren tijdens het volgen.

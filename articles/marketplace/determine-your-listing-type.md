@@ -1,6 +1,6 @@
 ---
-title: Uw publicatieoptie bepalen in Microsoft AppSource en Azure Marketplace
-description: In dit artikel worden de geschiktheidscriteria en publicatievereisten beschreven die partners proberen te begrijpen hoe ze apps kunnen publiceren naar Microsoft AppSource en Azure Marketplace.
+title: Uw publicatieoptie bepalen in de commerciële marktplaats
+description: In dit artikel worden de geschiktheidscriteria en publicatievereisten beschreven die partners proberen te begrijpen hoe ze apps op de commerciële marktplaats kunnen publiceren.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: dsindona
 ms.service: marketplace
@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: dsindona
-ms.openlocfilehash: 4c41fcbb8766feb68db7d60d591e914a6ba0aea2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 84d5c351f3997fe5430ea1ce517c2dca13203c03
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349526"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261683"
 ---
 # <a name="determine-your-publishing-option"></a>Uw publicatieoptie bepalen
 
 De publicatieoptie die u voor uw aanbieding kiest, heeft rechtstreeks betrekking op zowel de geschiktheidsvereisten als de GTM-voordelen voor commerciële markten. Wat nog belangrijker is, de selectie van publicatie optie en aanbieding type definieert hoe gebruikers zullen omgaan met uw commerciële marktplaats te bieden.
 
-Om uw aanbieding te configureren, moet u de volgende belangrijke commerciële marktconcepten begrijpen: de publicatieopties, aanbiedingstypen en -configuratie en call-to-action die bepalen hoe en waar uw aanbieding wordt gepresenteerd in de commerciële marktplaats Storefronts.
+Om uw aanbieding te configureren, moet u de volgende belangrijke commerciële marktconcepten begrijpen: de publicatieopties, aanbiedingstypen en -configuratie en call-to-action die bepalen hoe en waar uw aanbieding wordt gepresenteerd in de winkelpuien voor commerciële markten.
 
 ![Microsoft commerciële marktplaats storefronts en publicatie-opties](./media/marketplace-publishers-guide/storefronts_options_table.png)
 

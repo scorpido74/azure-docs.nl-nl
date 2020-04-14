@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 04/10/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 9b0e0b39b7ac7d7834c9cdcbd79ba45b024c823a
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: b59c68e3f2edc0fbe5eee3c3861a3e5116d4fac6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992008"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262380"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>PowerShell gebruiken om mappen, bestanden en ACL's te beheren in Azure Data Lake Storage Gen2 (voorbeeld)
 
@@ -270,15 +270,14 @@ U `-Force` de parameter gebruiken om het bestand te verwijderen zonder een promp
 
 ## <a name="manage-access-permissions"></a>Toegangsmachtigingen beheren
 
-U toegangsmachtigingen voor bestandssystemen, mappen en bestanden ontvangen, instellen en bijwerken.
+U toegangsmachtigingen voor bestandssystemen, mappen en bestanden ontvangen, instellen en bijwerken. Deze machtigingen worden vastgelegd in toegangscontrolelijsten (ACL's).
 
 > [!NOTE]
 > Als u Azure Active Directory (Azure AD) gebruikt om opdrachten te autoriseren, controleert u of uw beveiligingsprincipal de [rol Opslagblob-gegevenseigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)heeft toegewezen . Zie [Toegangsbeheer in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)voor meer informatie over hoe ACL-machtigingen worden toegepast en de effecten van het wijzigen ervan.
 
-### <a name="get-permissions"></a>Machtigingen aanvragen
+### <a name="get-an-acl"></a>Ontvang een ACL
 
 Haal de ACL van een map `Get-AzDataLakeGen2Item`of bestand met behulp van de cmdlet.
-
 
 In dit voorbeeld wordt de ACL van een **bestandssysteem** en wordt de ACL op de console afgedrukt.
 
@@ -311,7 +310,7 @@ De volgende afbeelding toont de uitvoer na het verkrijgen van de ACL van een dir
 
 In dit voorbeeld heeft de eigenaar van de gebruiker machtigingen gelezen, geschreven en uitgevoerd. De eigenaargroep heeft alleen lees- en uitvoermachtigingen. Zie [Toegangsbeheer in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)voor meer informatie over toegangscontrolelijsten.
 
-### <a name="set-or-update-permissions"></a>Machtigingen instellen of bijwerken
+### <a name="set-an-acl"></a>Een ACL instellen
 
 Gebruik `set-AzDataLakeGen2ItemAclObject` de cmdlet om een ACL te maken voor de eigenaar, eigenaar van de groep of andere gebruikers. Gebruik vervolgens `Update-AzDataLakeGen2Item` de cmdlet om de ACL te plegen.
 
@@ -359,7 +358,7 @@ De volgende afbeelding toont de uitvoer na het instellen van de ACL van een best
 In dit voorbeeld hebben de eigenaarsgebruiker en de eigenaarsgroep alleen lees- en schrijfmachtigingen. Alle andere gebruikers hebben schrijf- en uitvoermachtigingen. Zie [Toegangsbeheer in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)voor meer informatie over toegangscontrolelijsten.
 
 
-### <a name="set-permissions-on-all-items-in-a-file-system"></a>Machtigingen instellen voor alle items in een bestandssysteem
+### <a name="set-acls-on-all-items-in-a-file-system"></a>ACL's instellen voor alle items in een bestandssysteem
 
 U `Get-AzDataLakeGen2Item` de `-Recurse` parameter en `Update-AzDataLakeGen2Item` de parameter samen met de cmdlet gebruiken om de ACL van alle mappen en bestanden in een bestandssysteem in te stellen. 
 
@@ -370,6 +369,41 @@ $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
 ```
+### <a name="add-or-update-an-acl-entry"></a>Een ACL-vermelding toevoegen of bijwerken
+
+Haal eerst de ACL. Gebruik vervolgens `set-AzDataLakeGen2ItemAclObject` de cmdlet om een ACL-vermelding toe te voegen of bij te werken. Gebruik `Update-AzDataLakeGen2Item` de cmdlet om de ACL te committeren.
+
+In dit voorbeeld wordt de ACL voor een **gebruiker** gemaakt of bijgewerkt.
+
+```powershell
+$filesystemName = "my-file-system"
+$dirname = "my-directory/"
+$acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname).ACL
+$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -InputObject $acl 
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
+```
+
+### <a name="remove-an-acl-entry"></a>Een ACL-vermelding verwijderen
+
+In dit voorbeeld wordt een vermelding uit een bestaande ACL verwijderd.
+
+```powershell
+$id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Create the new ACL object.
+[Collections.Generic.List[System.Object]]$aclnew =$acl
+
+foreach ($a in $aclnew)
+{
+    if ($a.AccessControlType -eq "User"-and $a.DefaultScope -eq $false -and $a.EntityId -eq $id)
+    {
+        $aclnew.Remove($a);
+        break;
+    }
+}
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew
+```
+
 <a id="gen1-gen2-map" />
 
 ## <a name="gen1-to-gen2-mapping"></a>Gen1 naar Gen2 Mapping

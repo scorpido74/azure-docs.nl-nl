@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 04/13/2020
 ms.author: dapine
-ms.openlocfilehash: 51fe6cea80e097f34432ab8dc7293c758bd8d720
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e55030144bcabbf192b4095a5a2e6ed565cedf83
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77119807"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258598"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>Download de lijst met tekst-naar-spraakstemmen met Python
 
@@ -26,7 +26,7 @@ Voor dit artikel is een [Azure Cognitive Services-account](https://docs.microsof
 ## <a name="prerequisites"></a>Vereisten
 
 * Python 2.7.x of 3.x
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) of uw favoriete teksteditor
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual <span class="docon docon-navigate-external x-hidden-focus"> </span>Studio </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>of uw favoriete teksteditor
 * Een Azure-abonnementssleutel voor de spraakservice
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren

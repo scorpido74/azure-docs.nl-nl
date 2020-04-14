@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: f7177a95bdd585ff2822c9ac8c94a85d12f9259b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cfe450972acda3affbea6cbe3d262bc4b1956dc9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69900370"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262856"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Gegevensoverdracht voor grote gegevenssets met gemiddelde tot grote netwerkbandbreedte
  
@@ -73,7 +73,7 @@ Als u offline gegevensoverdracht gebruikt, gebruikt u de volgende tabel om inzic
 |    Versleuteling                       |    AES 128-bits                  |    AES 256-bits                                   |    AES 256-bits                           |    AES 128-bits                         |
 |    Hardware                         |     Microsoft geleverd          |    Microsoft geleverd                            |    Microsoft geleverd                    |    Geleverde klant                   |
 |    Netwerkinterface                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
-|    Partnerintegratie              |    Sommige                         |    [Hoge](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Hoge](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Sommige                                |
+|    Partnerintegratie              |    Sommige                         |    [Hoge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [Hoge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    Sommige                                |
 |    Verzenden                         |    Microsoft beheerd            |    Microsoft beheerd                             |    Microsoft beheerd                     |    Klant beheerd                    |
 | Gebruiken wanneer gegevens worden verplaatst         |Binnen een handelsgrens|Binnen een handelsgrens|Binnen een handelsgrens|Over geografische grenzen heen, bijvoorbeeld tussen de VS en de EU|
 |    Prijzen                          |    [Prijzen](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Prijzen](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
@@ -83,7 +83,7 @@ Als u online gegevensoverdracht gebruikt, gebruikt u de tabel in de volgende sec
 
 ### <a name="high-network-bandwidth"></a>Hoge netwerkbandbreedte
 
-|                                     |    Tools AzCopy, <br>Azure PowerShell, <br>Azure-CLI             |    Azure Storage REST API's, SDKs                   |    Data Box Gateway of Data Box Edge          |    Azure Data Factory                                            |
+|                                     |    Tools AzCopy, <br>Azure PowerShell, <br>Azure CLI             |    Azure Storage REST API's, SDKs                   |    Data Box Gateway of Data Box Edge          |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    Gegevenstype                  |    Azure Blobs, Azure Files, Azure-tabellen    |    Azure Blobs, Azure Files, Azure-tabellen    |    Azure Blobs, Azure-bestanden                           |   Ondersteunt meer dan 70-gegevensconnectoren voor gegevensarchieven en -indelingen    |
 |    Vormfactor                |    Opdrachtregelprogramma's                        |    Programmatische interface                    |    Microsoft levert een virtuele <br>of fysiek apparaat     |    Service in Azure-portal                                            |

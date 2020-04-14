@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 02/04/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1e4f72300752c93659db4edd4610464dbebf2503
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77014416"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271060"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Wat is Azure Time Series Insights preview?
 
@@ -49,22 +49,22 @@ De volgende afbeelding toont een typische IoT-gegevensstroom.
 
 Het IoT-landschap is divers met klanten verspreid over verschillende industriesegmenten, waaronder productie, automotive, energie, nutsbedrijven, slimme gebouwen en consulting. In dit brede scala aan industriële IoT-markt zijn cloud-native oplossingen die uitgebreide analyses bieden die gericht zijn op grootschalige IoT-gegevens nog steeds in ontwikkeling. 
 
-Azure Time Series Insights speelt in op deze marktbehoefte door een kant-en-klare IoT-analyseoplossing te bieden met rijke semantische modellering voor contextualisatie van tijdreeksgegevens, op activa gebaseerde inzichten en de beste gebruikerservaring voor detectie, trending, anomaliedetectie en operationele intelligentie. 
+Azure Time Series Insights speelt in op deze marktbehoefte door een kant-en-klare IoT-analyseoplossing te bieden met rijke semantische modellering voor contextualisatie van tijdreeksgegevens, op activa gebaseerde inzichten en de beste gebruikerservaring voor ontdekking, trending, anomaliedetectie en operationele intelligentie. 
 
 Een rijk operationeel analyseplatform in combinatie met onze interactieve mogelijkheden voor gegevensverkenning, u Time Series Insights gebruiken om meer waarde te halen uit gegevens die zijn verzameld uit IoT-assets. De preview-versie biedt ondersteuning voor: 
 
 * Multi-layered storage oplossing met warme en koude analytics ondersteuning die klanten de mogelijkheid biedt om gegevens te routeren tussen warm en koud voor interactieve analyses via warme data en operationele intelligentie gedurende tientallen jaren historische gegevens. 
 
-    *   Een zeer interactieve oplossing voor warme analyses om frequente en grote hoeveelheden query's uit te voeren over kortere tijdspannegegevens 
-    *   Een schaalbaar, performant en kostengeoptimaliseerd e-outdatalake op basis van Azure Storage, zodat klanten in enkele seconden tijdreeksgegevens kunnen trendjaren. 
+    *    Een zeer interactieve oplossing voor warme analyses om frequente en grote hoeveelheden query's uit te voeren over kortere tijdspannegegevens 
+    *    Een schaalbaar, performant en kostengeoptimaliseerd e-outdatalake op basis van Azure Storage, zodat klanten in enkele seconden tijdreeksgegevens kunnen trendjaren. 
 
 * Ondersteuning voor het semantische model dat het domein en de metagegevens beschrijft die zijn gekoppeld aan de afgeleide en ruwe signalen van assets en apparaten.
 
-* Flexibel analyseplatform om historische tijdreeksgegevens op te slaan in het Azure Storage-account dat eigendom is van klanten, waardoor klanten eigenaar kunnen worden van hun IoT-gegevens. Gegevens worden opgeslagen in open source Apache Parket-indeling die connectiviteit en interop mogelijk maakt in een verscheidenheid van datascenario's, waaronder voorspellende analyses, machine learning en andere aangepaste berekeningen gedaan met behulp van bekende technologieën, waaronder Spark, Databricks en Jupyter.
+* Flexibel analyseplatform om historische tijdreeksgegevens op te slaan in het Azure Storage-account dat eigendom is van klanten, waardoor klanten eigenaar kunnen worden van hun IoT-gegevens. Gegevens worden opgeslagen in open source Apache Parket-indeling die connectiviteit en interop mogelijk maakt in een verscheidenheid aan datascenario's, waaronder voorspellende analyses, machine learning en andere aangepaste berekeningen die worden uitgevoerd met behulp van bekende technologieën zoals Spark, Databricks en Jupyter.
 
-* Uitgebreide analyses met verbeterde query-API's en gebruikerservaring die op activa gebaseerde gegevensinzichten combineert met uitgebreide, ad hoc gegevensanalyses met ondersteuning voor interpolatie, scalaire en geaggregeerde functies, categorische variabelen, spreidingsplots en tijdsverschuivende tijd seriesignalen voor diepgaande analyse.
+* Uitgebreide analyses met verbeterde query-API's en gebruikerservaring die op activa gebaseerde gegevensinzichten combineert met uitgebreide, ad hoc gegevensanalyses met ondersteuning voor interpolatie, scalaire en geaggregeerde functies, categorische variabelen, spreidingsplots en tijdverschuivende tijdreekssignalen voor diepgaande analyse.
 
-*   Enterprise grade-platform ter ondersteuning van de behoeften op het gebied van schaal, prestaties, beveiliging en betrouwbaarheid van onze zakelijke IoT-klanten.
+*    Enterprise grade-platform ter ondersteuning van de behoeften op het gebied van schaal, prestaties, beveiliging en betrouwbaarheid van onze zakelijke IoT-klanten.
 
 * Extensibility en integratie ondersteuning voor end-to-end analytics. Time Series Insights biedt een uitbreidbaar analyseplatform voor verschillende datascenario's. Met De Power BI-connector van Time Series Insights kunnen klanten de query's die ze in Time Series Insights uitvoeren, rechtstreeks naar Power BI brengen om een uniform overzicht te krijgen van hun BI- en tijdreeksanalyses in één ruit.
 

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 419a71acbca59c00bd0ffecf39d5d1ff38833b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be5fae45ee513dddf002995ce9c37c6b6565f50c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284588"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258385"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDKs begrijpen en gebruiken
 
@@ -45,7 +45,7 @@ De SDK's van het Microsoft Azure IoT-apparaat bevatten code die het bouwen van t
 
 Azure IoT Hub-apparaat SDK voor .NET: 
 
-* Download van [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/).  De naamruimte is Microsoft.Azure.Devices.Clients, dat IoT Hub Device Clients (DeviceClient, ModuleClient) bevat.
+* Download van [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/).  De naamruimte is Microsoft.Azure.Devices.Clients, dat IoT Hub Device Clients (DeviceClient, ModuleClient) bevat.
 * [Broncode](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API-verwijzing](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
 * [Moduleverwijzing](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
@@ -84,7 +84,7 @@ Azure IoT Hub-apparaat SDK voor Python:
 Azure IoT Hub-apparaat SDK voor iOS: 
 
 * Installeren vanaf [CocoaPod](https://cocoapods.org/pods/AzureIoTHubClient)
-* [Monsters](https://github.com/Azure-Samples/azure-iot-samples-ios)
+* [Voorbeelden](https://github.com/Azure-Samples/azure-iot-samples-ios)
 * API-verwijzing: zie [C API-verwijzing](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
 ## <a name="azure-iot-hub-service-sdks"></a>Azure IoT Hub Service SDKs
@@ -93,7 +93,7 @@ De Azure IoT-service SDK's bevatten code om het bouwen van toepassingen te verge
 
 Azure IoT Hub-service SDK voor .NET:
 
-* Download van [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices/).  De naamruimte is Microsoft.Azure.Devices, dat IoT Hub Service Clients (RegistryManager, ServiceClients) bevat.
+* Download van [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices/).  De naamruimte is Microsoft.Azure.Devices, dat IoT Hub Service Clients (RegistryManager, ServiceClients) bevat.
 * [Broncode](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API-verwijzing](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices)
 
@@ -116,13 +116,13 @@ Azure IoT Hub-service SDK voor Python:
 
 Azure IoT Hub-service SDK voor C: 
 
-* Download van [apt-get, MBED, Arduino IDE of Nuget](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
+* Download van [apt-get, MBED, Arduino IDE of NuGet](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
 * [Broncode](https://github.com/Azure/azure-iot-sdk-c)
 
 Azure IoT Hub-service SDK voor iOS: 
 
 * Installeren vanaf [CocoaPod](https://cocoapods.org/pods/AzureIoTHubServiceClient)
-* [Monsters](https://github.com/Azure-Samples/azure-iot-samples-ios)
+* [Voorbeelden](https://github.com/Azure-Samples/azure-iot-samples-ios)
 
 > [!NOTE]
 > Zie de leesmijbestanden in de GitHub-repositories voor informatie over het gebruik van taal- en platformspecifieke pakketbeheerders om binaire bestanden en afhankelijkheden van uw ontwikkelmachine te installeren.
@@ -157,7 +157,7 @@ Azure Provisioning device and service SDKs for Node.js:
 
 Azure Provisioning device and service SDKs for Python:
 
-* [Broncode](https://github.com/Azure/azure-iot-device)
+* [Broncode](https://github.com/Azure/azure-iot-sdk-python)
 * [Device SDK](https://pypi.org/project/azure-iot-device/) en [Service SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/) downloaden van pip
 
 ## <a name="next-steps"></a>Volgende stappen

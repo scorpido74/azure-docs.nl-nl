@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 245a0b18187ff1c1b226e94b03374f2c071e51c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314824"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263383"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Beperking controleren en beperken om de latentie in Azure Time Series Insights te verminderen
 
@@ -30,7 +30,7 @@ De kans is groot dat u latentie en beperking ervaart wanneer u:
 - Voeg een gebeurtenisbron toe die oude gegevens bevat die uw toegewezen ingressrate kunnen overschrijden (Time Series Insights moet een inhaalslag maken).
 - Voeg meer gebeurtenisbronnen toe aan een omgeving, wat resulteert in een piek van extra gebeurtenissen (die de capaciteit van uw omgeving kunnen overschrijden).
 - Duw grote hoeveelheden historische gebeurtenissen naar een gebeurtenisbron, wat resulteert in een vertraging (Time Series Insights moet een inhaalslag maken).
-- Deel referentiegegevens met telemetrie, wat resulteert in een grotere gebeurtenisgrootte. Vanuit een beperkingsperspectief wordt een ingevallen gegevenspakket met een pakketgrootte van 32 KB behandeld als 32 gebeurtenissen, elk formaat 1 KB. De maximaal toegestane gebeurtenisgrootte is 32 KB; gegevenspakketten groter dan 32 KB worden afgekapt.
+- Deel referentiegegevens met telemetrie, wat resulteert in een grotere gebeurtenisgrootte. De maximaal toegestane pakketgrootte is 32 KB; gegevenspakketten groter dan 32 KB worden afgekapt.
 
 ## <a name="video"></a>Video
 

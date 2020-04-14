@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: tutorial
-ms.openlocfilehash: 332d7e4cae3b65d794d48d208b54db3809b78a8f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f12b5c158025db89dcc64a3be03b263f95a3a64c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632367"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261355"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Zelfstudie: Een e-mail verzenden vanuit een Azure Automation-runbook
 
@@ -81,7 +81,7 @@ Als u Azure KeyVault in een runbook wilt gebruiken, heeft uw automatiseringsacco
 
 Klik <kbd>op Implementeren voor Azure Automation</kbd> op het tabblad Azure Automation onder Installatieopties. Met deze actie wordt de Azure-portal geopend. Selecteer op de pagina Importeren uw automatiseringsaccount en klik op <kbd>OK</kbd>.
 
-Zie [Modules importeren](/azure/automation/shared-resources/modules#import-modules)voor aanvullende methoden voor het toevoegen van de vereiste modules.
+Zie [Modules importeren](/azure/automation/shared-resources/modules#importing-modules)voor aanvullende methoden voor het toevoegen van de vereiste modules.
 
 ## <a name="create-the-runbook-to-send-an-email"></a>Het runbook maken om een e-mail te verzenden
 

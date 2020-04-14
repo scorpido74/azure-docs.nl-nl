@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e888e0606b7a9bcd9a7a94c28455d705c5f1bec
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275826"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255478"
 ---
 # <a name="sampling-in-application-insights"></a>Steekproeven in Application Insights
 
@@ -22,7 +22,7 @@ Wanneer metrische tellingen in het portaal worden weergegeven, worden ze opnieuw
 
 * Er zijn drie verschillende soorten steekproeven: adaptieve bemonstering, bemonstering met vaste snelheid en innamebemonstering.
 * Adaptieve sampling is standaard ingeschakeld in alle nieuwste versies van de Application Insights ASP.NET en ASP.NET Core Software Development Kits (SDKs). Het wordt ook gebruikt door [Azure-functies.](https://docs.microsoft.com/azure/azure-functions/functions-overview)
-* Fixed-rate sampling is beschikbaar in recente versies van de Application Insights SDKs voor ASP.NET, ASP.NET Core, Java en Python.
+* Fixed-rate sampling is beschikbaar in recente versies van de Application Insights SDK's voor ASP.NET, ASP.NET Core, Java (zowel de agent als de SDK) en Python.
 * Innamesampling werkt op het eindpunt van de Application Insights-service. Het is alleen van toepassing wanneer er geen andere bemonstering van kracht is. Als de SDK uw telemetrie bemonstert, wordt de innamebemonstering uitgeschakeld.
 * Als u aangepaste gebeurtenissen registreert en ervoor moet zorgen dat een reeks gebeurtenissen samen wordt bewaard `OperationId` of verwijderd, moeten de gebeurtenissen dezelfde waarde hebben.
 * Als u Analytics-query's schrijft, moet u [rekening houden met steekproeven.](../../azure-monitor/log-query/aggregations.md) In het bijzonder, in plaats van `summarize sum(itemCount)`gewoon tellen records, moet u gebruik maken van .
@@ -306,7 +306,29 @@ In Metrics Explorer worden tarieven zoals aanvraag- en uitzonderingstellingen ve
 
 ### <a name="configuring-fixed-rate-sampling-for-java-applications"></a>Fixed-rate sampling configureren voor Java-toepassingen
 
-Standaard is er geen bemonstering ingeschakeld in de Java SDK. Momenteel ondersteunt het alleen bemonstering met een vaste snelheid. Adaptieve sampling wordt niet ondersteund in de Java SDK.
+Standaard is er geen sampling ingeschakeld in de Java-agent en SDK. Momenteel ondersteunt het alleen bemonstering met een vaste snelheid. Adaptieve sampling wordt niet ondersteund in Java.
+
+#### <a name="configuring-java-agent"></a>Java-agent configureren
+
+1. Download [applicationinsights-agent-3.0.0-PREVIEW.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.2/applicationinsights-agent-3.0.0-PREVIEW.2.jar)
+
+1. Als u de bemonstering `ApplicationInsights.json` wilt inschakelen, voegt u het volgende toe aan uw bestand:
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
+        }
+      }
+    }
+  }
+}
+```
+
+#### <a name="configuring-java-sdk"></a>Java SDK configureren
 
 1. Download en configureer uw webapplicatie met de nieuwste [Application Insights Java SDK.](../../azure-monitor/app/java-get-started.md)
 
@@ -534,7 +556,7 @@ De nauwkeurigheid van de benadering hangt grotendeels af van het geconfigureerde
 
 * Innamebemonstering kan automatisch plaatsvinden voor telemetrie boven een bepaald volume, als de SDK geen bemonstering uitvoert. Deze configuratie zou bijvoorbeeld werken als u een oudere versie van de ASP.NET SDK of Java SDK gebruikt.
 * Als u de huidige ASP.NET of ASP.NET Core-SDK's gebruikt (gehost in Azure of op uw eigen server), krijgt u standaard adaptieve bemonstering, maar u overschakelen naar vaste snelheid zoals hierboven beschreven. Met fixed-rate sampling synchroniseert de browser SDK automatisch met voorbeeldgerelateerde gebeurtenissen. 
-* Als u de huidige Java SDK gebruikt, u configureren `ApplicationInsights.xml` om steekproeven met een vaste snelheid in te schakelen. De bemonstering is standaard uitgeschakeld. Met fixed-rate sampling synchroniseren de browser SDK en de server automatisch met voorbeeldgerelateerde gebeurtenissen.
+* Als u de huidige Java-agent gebruikt, u `ApplicationInsights.json` `ApplicationInsights.xml`configureren (voor Java SDK, configureren) om fixed-rate sampling in te schakelen. De bemonstering is standaard uitgeschakeld. Met fixed-rate sampling synchroniseren de browser SDK en de server automatisch met voorbeeldgerelateerde gebeurtenissen.
 
 *Er zijn bepaalde zeldzame gebeurtenissen die ik altijd wil zien. Hoe kan ik ze voorbij de bemonsteringsmodule krijgen?*
 

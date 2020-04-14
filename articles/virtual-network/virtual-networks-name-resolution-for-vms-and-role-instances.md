@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d7d0699718642a7eb9f85b2e8a86623092c34365
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 9ea63192732184ff7a13ff1465a5b393a282f9d2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010559"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262193"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Naamomzetting voor resources in virtuele Azure-netwerken
 
@@ -88,6 +88,7 @@ Reverse DNS wordt ondersteund in alle arm gebaseerde virtuele netwerken. U omgek
 * Forward lookup on FQDNs of form \[vmname\].internal.cloudapp.net will resolve to IP address assigned to the virtual machine.
 * Als het virtuele netwerk is gekoppeld aan een [Azure DNS-privézones](../dns/private-dns-overview.md) als een virtueel registratienetwerk, worden twee records met de omgekeerde DNS-query's teruggekeerd. Een record zal de \[van\]het formulier vmname . [priatednszonename] en andere zou \[van\]het formulier vmname zijn .internal.cloudapp.net
 * Reverse DNS lookup is scoped naar een bepaald virtueel netwerk, zelfs als het is peered naar andere virtuele netwerken. Reverse DNS queries (PTR queries) voor IP-adressen van virtuele machines in peered virtuele netwerken retourneert NXDOMAIN.
+* Als u de omgekeerde DNS-functie in een virtueel netwerk wilt uitschakelen, u dit doen door een omgekeerde opzoekzone te maken met [Azure DNS-privézones](../dns/private-dns-overview.md) en deze zone aan uw virtuele netwerk te koppelen. Als de IP-adresruimte van uw virtuele netwerk bijvoorbeeld 10.20.0.0/16 is, u een lege privé-DNS-zone 20.10.in-addr.arpa maken en koppelen aan het virtuele netwerk. Terwijl u de zone koppelt aan uw virtuele netwerk, moet u de automatische registratie op de koppeling uitschakelen. Deze zone overschrijft de standaard omgekeerde opzoekzones voor het virtuele netwerk en omdat deze zone leeg is, krijgt u NXDOMAIN voor uw omgekeerde DNS-query's. Zie onze [Quickstart-handleiding](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal) voor meer informatie over het maken van een privé-DNS-zone en deze koppelen aan een virtueel netwerk.
 
 > [!NOTE]
 > Als u wilt dat reverse DNS lookup over virtueel netwerk heen gaat, u een reverse lookup zone (in-addr.arpa) [Azure DNS private zones](../dns/private-dns-overview.md) maken en deze aan meerdere virtuele netwerken verbinden. U moet echter wel handmatig de omgekeerde DNS-records voor de virtuele machines beheren.

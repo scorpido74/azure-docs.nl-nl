@@ -1,14 +1,14 @@
 ---
 title: 'Patroon: Logische operatoren in een beleidsdefinitie'
 description: Dit Azure-beleidspatroon bevat voorbeelden van het gebruik van de logische operatoren in een beleidsdefinitie.
-ms.date: 01/31/2020
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 8e57efaea81848c6b2d0188dbf3f91e06ed74c67
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 691383b1f8ae34bbd51ce7f4f9310980e3c66537
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77172847"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272505"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure-beleidspatroon: logische operatoren
 
@@ -38,6 +38,18 @@ Met deze beleidsdefinitie worden resources voor een naamgevingspatroon geëvalue
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-2.json" range="7-21" highlight="2,3,9":::
 
 Deze **policyRule.if** block bevat ook een **allOf,** maar elke voorwaarde is verpakt met de **niet** logische operator. De voorwaardelijke binnen de **niet** logische operator evalueert eerst en evalueert vervolgens de **niet** om te bepalen of de hele clausule waar of onwaar is. Als beide **niet** logische operatoren naar true worden geëvalueerd, wordt het beleidseffect geactiveerd.
+
+## <a name="sample-3-combining-logical-operators"></a>Voorbeeld 3: Logische operatoren combineren
+
+Met deze beleidsdefinitie worden Java Spring-accounts geëvalueerd om te zien of een van beide traceringsgegevens niet is ingeschakeld of dat traceerniet in een geslaagde status is.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json":::
+
+### <a name="sample-3-explanation"></a>Voorbeeld 3: Uitleg
+
+:::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json" range="6-28" highlight="3,8":::
+
+Dit **beleidRegel.als** blok omvat zowel de **allOf** en **anyOf** logische operators. De **anyOf** logische operator evalueert waar zolang een opgenomen voorwaarde waar is. Aangezien het _type_ is de kern van de **allOf**, moet het altijd evalueren waar. Als het _type_ en een van de voorwaarden in de **anyOf** waar zijn, wordt het beleidseffect geactiveerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

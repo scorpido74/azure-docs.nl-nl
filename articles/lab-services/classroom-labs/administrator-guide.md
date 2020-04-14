@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 7ce7ef15f0bf13182e4799fb640e83136d0d4695
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 55e319ba8aecb9205c00dda4a400e37f7c010649
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115030"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257773"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services - Beheerdershandleiding
 It-beheerders (Information Technology) die de cloudresources van een universiteit beheren, zijn doorgaans verantwoordelijk voor het opzetten van het labaccount voor hun school. Zodra een labaccount is ingesteld, maken beheerders of docenten klaslokalen die zich in het labaccount bevinden. Dit artikel biedt een overzicht op hoog niveau van de betrokken Azure-resources en de richtlijnen voor het maken ervan.
@@ -59,7 +59,7 @@ In de volgende lijst worden scenario's weergegeven waarin meer dan één labacco
     
     Wanneer u een labaccount instelt, stelt u beleid in dat van toepassing is op *alle* klaslokalen onder het labaccount, zoals:
     - Het virtuele Azure-netwerk met gedeelde bronnen waartoe het klaslab toegang heeft. U bijvoorbeeld een reeks klaslokalen hebben die toegang nodig hebben tot een gedeelde gegevensset binnen een virtueel netwerk.
-    - De virtuele machine (VM) beelden die de klas labs kunnen gebruiken om VM's te maken. U bijvoorbeeld een reeks klaslokalen hebben die toegang nodig hebben tot de [afbeelding van de Data Science VM voor Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) Marketplace. 
+    - De virtuele machine (VM) beelden die de klas labs kunnen gebruiken om VM's te maken. U bijvoorbeeld een reeks klaslokalen hebben die toegang nodig hebben tot de [afbeelding van de Data Science VM voor Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) Marketplace. 
     
     Als u klaslokalen hebt met unieke beleidsvereisten van elkaar, kan het nuttig zijn om afzonderlijke labaccounts te maken om deze klaslokalen afzonderlijk te beheren.
 

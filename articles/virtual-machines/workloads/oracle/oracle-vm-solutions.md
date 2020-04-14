@@ -3,7 +3,7 @@ title: Oracle-oplossingen op virtuele Azure-machines | Microsoft Documenten
 description: Meer informatie over ondersteunde configuraties en beperkingen van oracle-afbeeldingen voor virtuele machines op Microsoft Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: azure-resource-management
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/23/2019
-ms.author: rogirdh
-ms.custom: seodec18
-ms.openlocfilehash: 3abc09f8c82442e3b24a9edf6ef4fb42f19dfde8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 0a2374a4c3526b77a25f9fa8faa94c9cb0d4c4ea
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74806946"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263230"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM-afbeeldingen en hun implementatie op Microsoft Azure
 
@@ -128,13 +128,13 @@ Volgens Oracle Support note [Doc ID 2178595.1](https://support.oracle.com/epmos/
 
 Zie KB-artikel **860340.1** op <https://support.oracle.com>.
 
-* **Dynamische clustering- en taakverdelingsbeperkingen.** Stel dat u een dynamisch cluster in Oracle WebLogic Server wilt gebruiken en deze wilt blootleggen via één openbaar eindpunt voor de belasting in Azure. Dit kan worden gedaan zolang u een vast poortnummer gebruikt voor elk van de beheerde servers (niet dynamisch toegewezen vanuit een bereik) en niet meer beheerde servers start dan er machines zijn die de beheerder bijhoudt. Dat wil zeggen, er is niet meer dan een beheerde server per virtuele machine). Als uw configuratie resulteert in meer Oracle WebLogic-servers die worden gestart dan virtuele machines (dat wil zeggen, waarbij meerdere Oracle WebLogic Server-exemplaren dezelfde virtuele machine delen), is het niet mogelijk voor meer dan één van die gevallen van Oracle WebLogic Servers te binden aan een bepaald poortnummer. De anderen op die virtuele machine falen.
+* **Dynamische clustering- en taakverdelingsbeperkingen.** Stel dat u een dynamisch cluster in Oracle WebLogic Server wilt gebruiken en deze wilt blootleggen via één openbaar eindpunt voor de belasting in Azure. Dit kan worden gedaan zolang u een vast poortnummer gebruikt voor elk van de beheerde servers (niet dynamisch toegewezen vanuit een bereik) en niet meer beheerde servers start dan er machines zijn die de beheerder bijhoudt. Dat wil zeggen, er is niet meer dan een beheerde server per virtuele machine). Als uw configuratie ertoe leidt dat meer Oracle WebLogic-servers worden gestart dan virtuele machines (dat wil zeggen, wanneer meerdere Oracle WebLogic Server-exemplaren dezelfde virtuele machine delen), is het niet mogelijk dat meer dan één van die exemplaren van Oracle WebLogic-servers aan een bepaald poortnummer wordt gebonden. De anderen op die virtuele machine falen.
 
-   Als u de beheerserver configureert om automatisch unieke poortnummers toe te wijzen aan de beheerde servers, is taakverdeling niet mogelijk omdat Azure geen ondersteuning biedt voor toewijzing van één openbare poort naar meerdere privépoorten, zoals hiervoor nodig zou zijn Configuratie.
+   Als u de beheerserver configureert om automatisch unieke poortnummers toe te wijzen aan de beheerde servers, is taakverdeling niet mogelijk omdat Azure geen ondersteuning biedt voor toewijzing van één openbare poort naar meerdere privépoorten, zoals vereist is voor deze configuratie.
 * **Meerdere exemplaren van Oracle WebLogic Server op een virtuele machine.** Afhankelijk van de vereisten van uw implementatie u overwegen meerdere exemplaren van Oracle WebLogic Server op dezelfde virtuele machine uit te voeren als de virtuele machine groot genoeg is. Op een virtuele machine van middelgrote grootte, die twee kernen bevat, u er bijvoorbeeld voor kiezen om twee exemplaren van Oracle WebLogic Server uit te voeren. We raden u echter nog steeds aan om geen enkele storingspunten in uw architectuur in te voeren, wat het geval zou zijn als u slechts één virtuele machine gebruikt die meerdere exemplaren van Oracle WebLogic Server uitvoert. Het gebruik van ten minste twee virtuele machines kan een betere aanpak zijn en elke virtuele machine kan vervolgens meerdere exemplaren van Oracle WebLogic Server uitvoeren. Elk exemplaar van Oracle WebLogic Server kan nog steeds deel uitmaken van hetzelfde cluster. Het is momenteel echter niet mogelijk om Azure te gebruiken voor load-balance endpoints die worden blootgesteld door dergelijke Oracle WebLogic Server-implementaties binnen dezelfde virtuele machine, omdat Azure load balancer vereist dat de load-balanced servers worden verdeeld over unieke virtuele machines.
 
 ## <a name="oracle-jdk-virtual-machine-images"></a>Oracle JDK virtuele machine beelden
-* **JDK 6 en 7 laatste updates.** Hoewel we het gebruik van de nieuwste openbare, ondersteunde versie van Java (momenteel Java 8) aanbevelen, maakt Azure ook JDK 6- en 7-afbeeldingen beschikbaar. Dit is bedoeld voor oudere toepassingen die nog niet klaar zijn om te worden geüpgraded naar JDK 8. Hoewel updates van eerdere JDK-afbeeldingen mogelijk niet meer beschikbaar zijn voor het grote publiek, zijn de JDK 6- en 7-afbeeldingen van Azure, gezien de Microsoft-samenwerking met Oracle, bedoeld om een recentere niet-openbare update te bevatten die normaal gesproken door Oracle wordt aangeboden aan slechts een selecte groep van de ondersteunde klanten van Oracle. Nieuwe versies van de JDK-afbeeldingen zullen na verloop van tijd beschikbaar worden gesteld met bijgewerkte versies van JDK 6 en 7.
+* **JDK 6 en 7 laatste updates.** Hoewel we het gebruik van de nieuwste openbare, ondersteunde versie van Java (momenteel Java 8) aanbevelen, maakt Azure ook JDK 6- en 7-afbeeldingen beschikbaar. Dit is bedoeld voor oudere toepassingen die nog niet klaar zijn om te worden geüpgraded naar JDK 8. Hoewel updates voor eerdere JDK-afbeeldingen mogelijk niet meer beschikbaar zijn voor het grote publiek, zijn de JDK 6- en 7-afbeeldingen van Azure, gezien de Microsoft-samenwerking met Oracle, bedoeld om een recentere niet-openbare update te bevatten die normaal gesproken door Oracle wordt aangeboden aan slechts een selecte groep ondersteunde klanten van Oracle. Nieuwe versies van de JDK-afbeeldingen zullen na verloop van tijd beschikbaar worden gesteld met bijgewerkte versies van JDK 6 en 7.
 
    De JDK beschikbaar in de JDK 6 en 7 beelden, en de virtuele machines en afbeeldingen afgeleid van hen, kan alleen worden gebruikt binnen Azure.
 * **64-bits JDK.** De virtuele machineafbeeldingen van Oracle WebLogic Server en de oracle JDK-afbeeldingen van de virtuele machine die door Azure worden geleverd, bevatten de 64-bits versies van zowel Windows Server als de JDK.

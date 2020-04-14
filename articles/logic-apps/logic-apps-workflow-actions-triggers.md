@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e14cc00d1bd716b3e4880e585b05447d2e55e2b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270366"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257433"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Schema-naslaggids voor trigger- en actietypen in Azure Logic Apps
 
@@ -73,10 +73,10 @@ Elk triggertype heeft een andere interface en ingangen die het gedrag van de tri
 
 | Type trigger | Beschrijving | 
 |--------------|-------------| 
-| [**HTTP (HTTP)**](#http-trigger) | Controleert of *peilt* elk eindpunt. Dit eindpunt moet voldoen aan een specifiek triggercontract met behulp van een asynchrone patroon van 202 of door een array terug te sturen. | 
+| [**HTTP**](#http-trigger) | Controleert of *peilt* elk eindpunt. Dit eindpunt moet voldoen aan een specifiek triggercontract met behulp van een asynchrone patroon van 202 of door een array terug te sturen. | 
 | [**HTTPWebhook HTTPWebhook**](#http-webhook-trigger) | Hiermee maakt u een aanroepbaar eindpunt voor uw logische app, maar roept u de opgegeven URL aan om u te registreren of uit te schrijven. |
-| [**Herhaling**](#recurrence-trigger) | Branden op basis van een gedefinieerd schema. U een toekomstige datum en tijd instellen voor het afvuren van deze trigger. Op basis van de frequentie u ook tijden en dagen opgeven voor het uitvoeren van uw werkstroom. | 
-| [**Verzoek**](#request-trigger)  | Hiermee maakt u een aanroepbaar eindpunt voor uw logische app en wordt het ook wel een 'handmatige' trigger genoemd. Zie bijvoorbeeld [Werkstromen bellen, activeren of nesten met HTTP-eindpunten](../logic-apps/logic-apps-http-endpoint.md). | 
+| [**Terugkeerpatroon**](#recurrence-trigger) | Branden op basis van een gedefinieerd schema. U een toekomstige datum en tijd instellen voor het afvuren van deze trigger. Op basis van de frequentie u ook tijden en dagen opgeven voor het uitvoeren van uw werkstroom. | 
+| [**Aanvraag**](#request-trigger)  | Hiermee maakt u een aanroepbaar eindpunt voor uw logische app en wordt het ook wel een 'handmatige' trigger genoemd. Zie bijvoorbeeld [Werkstromen bellen, activeren of nesten met HTTP-eindpunten](../logic-apps/logic-apps-http-endpoint.md). | 
 ||| 
 
 ### <a name="managed-api-triggers"></a>Beheerde API-triggers
@@ -821,10 +821,10 @@ Hier volgen enkele veelgebruikte actietypen:
 | [**Opstellen**](#compose-action) | Hiermee maakt u één uitvoer van ingangen, die verschillende typen kunnen hebben. | 
 | [**JavaScript-code uitvoeren**](#run-javascript-code) | JavaScript-codefragmenten uitvoeren die binnen specifieke criteria passen. Zie [Codefragmenten toevoegen en uitvoeren met inlinecode](../logic-apps/logic-apps-add-run-inline-code.md)voor codevereisten en meer informatie. |
 | [**Functie**](#function-action) | Roept een Azure-functie aan. | 
-| [**HTTP (HTTP)**](#http-action) | Roept een HTTP-eindpunt aan. | 
+| [**HTTP**](#http-action) | Roept een HTTP-eindpunt aan. | 
 | [**Join**](#join-action) | Hiermee maakt u een tekenreeks van alle items in een array en worden deze items gescheiden met een opgegeven scheidingstekenteken. | 
 | [**Parse JSON**](#parse-json-action) | Hiermee maakt u gebruiksvriendelijke tokens van eigenschappen in JSON-inhoud. U deze eigenschappen vervolgens verwijzen door de tokens op te nemen in uw logische app. | 
-| [**Query**](#query-action) | Hiermee maakt u een array van items in een andere array op basis van een voorwaarde of filter. | 
+| [**Query’s uitvoeren**](#query-action) | Hiermee maakt u een array van items in een andere array op basis van een voorwaarde of filter. | 
 | [**Reactie**](#response-action) | Hiermee maakt u een antwoord op een binnenkomend gesprek of verzoek. | 
 | [**Selecteer**](#select-action) | Hiermee maakt u een array met JSON-objecten door items uit een andere array te transformeren op basis van de opgegeven kaart. | 
 | [**Tabel**](#table-action) | Hiermee maakt u een CSV- of HTML-tabel op basis van een array. | 
@@ -2407,11 +2407,17 @@ U het standaardgedrag voor triggers `operationOptions` en acties wijzigen met de
 
 Standaard worden logische app-werkstroominstanties op hetzelfde moment uitgevoerd (gelijktijdig of parallel). Dit gedrag betekent dat elke triggerinstantie wordt geactiveerd voordat de eerder actieve werkstroominstantie is uitgevoerd. Het aantal gelijktijdig lopende exemplaren heeft echter een [standaardlimiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Wanneer het aantal gelijktijdig lopende werkstroomexemplaren deze limiet bereikt, moeten alle andere nieuwe exemplaren wachten met uitvoeren. Deze limiet helpt bij het bepalen van het aantal aanvragen dat backendsystemen ontvangen.
 
-Als u de standaardlimiet wilt wijzigen, u de codeweergaveeditor of Logic Apps Designer `runtimeConfiguration.concurrency.runs` gebruiken, omdat het wijzigen van de gelijktijdigheidsinstelling via de ontwerper de eigenschap in de onderliggende triggerdefinitie toevoegt of bijwerkt en vice versa. Deze eigenschap bepaalt het maximum aantal werkstroomexemplaren dat parallel kan worden uitgevoerd. Hier volgen enkele overwegingen voor wanneer u het gelijktijdigheidscontrole wilt inschakelen:
+Wanneer u het gelijktijdigheidsbesturingselement van de trigger inschakelt, worden triggerexemplaren parallel uitgevoerd tot aan de [standaardlimiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze standaardgelijktijdigvalutalimiet wilt wijzigen, u de codeweergaveeditor of Logic Apps Designer `runtimeConfiguration.concurrency.runs` gebruiken omdat het wijzigen van de gelijktijdigheidsinstelling via de ontwerper de eigenschap in de onderliggende triggerdefinitie toevoegt of bijwerkt en vice versa. Deze eigenschap bepaalt het maximum aantal nieuwe werkstroomexemplaren dat parallel kan worden uitgevoerd.
+
+Hier volgen enkele overwegingen voor wanneer u gelijktijdigheid op een trigger wilt inschakelen:
 
 * Wanneer gelijktijdigheid is ingeschakeld, wordt de [SplitOn-limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) aanzienlijk verlaagd voor [debatchingarrays](#split-on-debatch). Als het aantal items deze limiet overschrijdt, wordt de spliton-mogelijkheid uitgeschakeld.
 
-* Hoewel gelijktijdigheid is ingeschakeld, kan een langlopende logische app-instantie ervoor zorgen dat nieuwe logische app-exemplaren een wachtstatus invoeren. Met deze status voorkomt u dat Azure Logic Apps nieuwe exemplaren maakt en zelfs wanneer het aantal gelijktijdige uitvoeringen kleiner is dan het opgegeven maximumaantal gelijktijdige uitvoeringen.
+* U gelijktijdigheid niet uitschakelen nadat u het gelijktijdigheidscontrole hebt ingeschakeld.
+
+* Wanneer gelijktijdigheid is ingeschakeld, wordt de [SplitOn-limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) aanzienlijk verlaagd voor [debatchingarrays](#split-on-debatch). Als het aantal items deze limiet overschrijdt, wordt de spliton-mogelijkheid uitgeschakeld.
+
+* Wanneer gelijktijdigheid is ingeschakeld, kan een langlopende logische app-instantie ervoor zorgen dat nieuwe logische app-exemplaren een wachtstatus invoeren. Met deze status voorkomt u dat Azure Logic Apps nieuwe exemplaren maakt en zelfs wanneer het aantal gelijktijdige uitvoeringen kleiner is dan het opgegeven maximumaantal gelijktijdige uitvoeringen.
 
   * Als u deze status wilt onderbreken, annuleert u de vroegste exemplaren die *nog steeds worden uitgevoerd.*
 

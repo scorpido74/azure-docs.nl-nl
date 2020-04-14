@@ -3,7 +3,7 @@ title: Een Azure CDN-eindpunt wissen | Microsoft Documenten
 description: Meer informatie over het verwijderen van alle inhoud in de cache van een Azure CDN-eindpunt.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: sohamnchatterjee
 ms.assetid: 0b50230b-fe82-4740-90aa-95d4dde8bd4f
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2019
-ms.author: magattus
-ms.openlocfilehash: 1bfbc1b730811e1111a08a957db3a747f90fb587
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: ebbb0dd059ce2bcf4a3bc260ed6d426d5be09dfe
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74546201"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260255"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Een Azure CDN-eindpunt verwijderen
 ## <a name="overview"></a>Overzicht
@@ -34,7 +34,7 @@ De beste manier om ervoor te zorgen dat uw gebruikers altijd de nieuwste kopie v
 
 Deze zelfstudie leidt u door het zuiveren van activa van alle randknooppunten van een eindpunt.
 
-## <a name="walkthrough"></a>Kennismaking
+## <a name="walkthrough"></a>Walkthrough
 1. Blader in de [Azure Portal](https://portal.azure.com)naar het CDN-profiel met het eindpunt dat u wilt verwijderen.
 2. Klik in het CDN-profielblad op de zuiveringsknop.
    

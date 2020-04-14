@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 03/19/2020
+ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 01767e88714bfb4e134957298505edd218d462d3
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 927696d029bf1b8742dc0001e03799322f368191
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546928"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261717"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -99,10 +99,8 @@ De virtuele Azure-machines die u voor Windows Virtual Desktop maakt, moeten toeg
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows-activering|Internet|
 
-
-
 >[!IMPORTANT]
->Het openen van deze URL's is essentieel voor een betrouwbare Windows Virtual Desktop-implementatie. Het blokkeren van de toegang tot deze URL's wordt niet ondersteund en heeft invloed op de servicefunctionaliteit. Deze URL's komen alleen overeen met Windows Virtual Desktop-sites en -bronnen en bevatten geen URL's voor andere services zoals Azure Active Directory.
+>We raden u aan de servicetags in de meeste gevallen te gebruiken in plaats van URL's om serviceproblemen te voorkomen. Het deblokkeren van deze URL's is essentieel voor een betrouwbare Windows Virtual Desktop-implementatie. Het blokkeren van de toegang tot deze URL's wordt niet ondersteund en heeft invloed op de servicefunctionaliteit. Deze URL's komen alleen overeen met Windows Virtual Desktop-sites en -bronnen en bevatten geen URL's voor andere services zoals Azure Active Directory.
 
 In de volgende tabel worden optionele URL's weergegeven waartoe uw virtuele Azure-machines toegang kunnen hebben:
 
@@ -142,7 +140,7 @@ De volgende Extern bureaublad-clients ondersteunen Windows Virtual Desktop:
 
 * [Windows-bureaublad](connect-windows-7-and-10.md)
 * [Web](connect-web.md)
-* [Macos](connect-macos.md)
+* [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android (Preview)](connect-android.md)
 

@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31a5195038ef25acadc08e2acbedf8471b25833c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086323"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261411"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren naar Power BI
 
@@ -160,7 +160,7 @@ Nu de functie Stream Analytics is gemaakt, kan deze toegang krijgen tot een Powe
 ### <a name="use-the-power-bi-ui"></a>De Power BI-gebruikersinterface gebruiken
 
    > [!Note]
-   > Als u de taak Stream Analytics wilt toevoegen aan uw Power BI-werkruimte met behulp van de gebruikersinterface, moet u ook serviceprincipal-toegang inschakelen in de **ontwikkelaarsinstellingen** in de Power BI-beheerportal. Zie [Aan de slag met een serviceprincipal](https://docs.microsoft.com/power-bi/developer/embed-service-principal#get-started-with-a-service-principal) voor meer informatie.
+   > Als u de taak Stream Analytics wilt toevoegen aan uw Power BI-werkruimte met behulp van de gebruikersinterface, moet u ook serviceprincipal-toegang inschakelen in de **ontwikkelaarsinstellingen** in de Power BI-beheerportal. Zie [Aan de slag met een serviceprincipal](https://docs.microsoft.com/power-bi/developer/embed-service-principal) voor meer informatie.
 
 1. Navigeer naar de toegangsinstellingen van de werkruimte. Zie dit artikel voor meer informatie: [Geef toegang tot uw werkruimte.](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c393ba081b480408373ed6867624ac6278c1674e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77209185"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260952"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Een Azure-functie-app als API importeren in Azure API Management
 
@@ -118,7 +118,7 @@ Bij het importeren van een Azure-functie-app wordt automatisch het volgende gege
 * Hostsleutel in de functie-app met de naam apim-{ de naam van*uw Azure API Management-serviceinstantie*},
 * Benoemde waarde in de instantie Azure API Management met de naam {*uw Azure Function App-instantienaam*}-toets, die de gemaakte hostsleutel bevat.
 
-Voor API's die na 4 april 2019 zijn gemaakt, wordt de hostsleutel doorgegeven in HTTP-aanvragen van API-beheer naar de functie-app in een koptekst. Oudere API's geven de hostsleutel door als [queryparameter](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). Dit gedrag kan worden `PATCH Backend` gewijzigd via de [REST API-aanroep](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) op de *backend-entiteit* die is gekoppeld aan de functie-app.
+Voor API's die na 4 april 2019 zijn gemaakt, wordt de hostsleutel doorgegeven in HTTP-aanvragen van API-beheer naar de functie-app in een koptekst. Oudere API's geven de hostsleutel door als [queryparameter](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). Dit gedrag kan worden `PATCH Backend` gewijzigd via de [REST API-aanroep](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) op de *backend-entiteit* die is gekoppeld aan de functie-app.
 
 > [!WARNING]
 > Als de waarde van de hostsleutel van de Azure-functie-app of de benoemde waarde van Azure API Management wordt verwijderd of gewijzigd, wordt de communicatie tussen de services verbroken. De waarden worden niet automatisch gesynchroniseerd.

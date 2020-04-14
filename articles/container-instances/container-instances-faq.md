@@ -3,13 +3,13 @@ title: Veelgestelde vragen
 description: Antwoorden op veelgestelde vragen met betrekking tot de Azure Container Instances-service
 author: dkkapur
 ms.topic: article
-ms.date: 01/07/2020
-ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: 8730dcb24af61730d7f93ea37a53cf87435eb9f9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247174"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261615"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Veelgestelde vragen over Azure Container Instances
 
@@ -43,9 +43,9 @@ Zie meer [gedetailleerde richtlijnen](container-instances-troubleshooting.md#con
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Afbeeldingen van Windows Server 2019 en clientbase (voorbeeld)
 
-* [Nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver) `1809`: ,`10.0.17763.x`
-* [Windows Server](https://hub.docker.com/_/microsoft-windows-servercore) `ltsc2019`Core `1809`: ,`10.0.17763.x`
-* [Windows](https://hub.docker.com/_/microsoft-windows) `1809`: ,`10.0.17763.x` 
+* [Nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver) `1809`: `10.0.17763.914` , of eerder
+* [Windows Server](https://hub.docker.com/_/microsoft-windows-servercore) `ltsc2019`Core `1809` `10.0.17763.914` : , of eerder
+* [Windows](https://hub.docker.com/_/microsoft-windows) `1809`: `10.0.17763.914` , of eerder
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Welke .NET- of .NET Core-afbeeldingslaag moet ik in mijn container gebruiken? 
 

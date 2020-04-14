@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3a801af7b97954510139a009a6d1344b281cf056
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656427"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261802"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Een eenvoudige query maken in Azure Cognitive Search
 
 In Azure Cognitive Search roept de [eenvoudige querysyntaxis](query-simple-syntax.md) de standaardqueryparser aan voor het uitvoeren van zoekopdrachten met volledige tekst op basis van een index. Deze parser is snel en behandelt veelvoorkomende scenario's, waaronder zoeken in volledige tekst, gefilterd en gefacetteerd zoeken en geo-search. 
 
-In dit artikel gebruiken we voorbeelden om de eenvoudige syntaxis te illustreren.
+In dit artikel gebruiken we voorbeelden om de eenvoudige `search=` syntaxis te illustreren, waarbij de parameter van een bewerking [Zoekdocumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents) wordt groepert.
 
 Een alternatieve querysyntaxis is [Full Lucene](query-lucene-syntax.md), dat complexere querystructuren ondersteunt, zoals fuzzy en wildcard search, wat extra tijd kan kosten om te verwerken. Zie De volledige syntaxis van [Lucene gebruiken](search-query-lucene-examples.md)voor meer informatie en voorbeelden die de volledige syntaxis van Lucene weergeven.
 

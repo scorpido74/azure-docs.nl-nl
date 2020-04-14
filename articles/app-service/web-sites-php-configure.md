@@ -5,27 +5,29 @@ author: msangapu-msft
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.devlang: php
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c73fb55e485d0c92d27eac2ac197a81337b9d5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77016796"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272471"
 ---
 # <a name="configure-php-in-azure-app-service"></a>PHP configureren in Azure App Service
 
 ## <a name="introduction"></a>Inleiding
 
-In deze handleiding ziet u hoe u de ingebouwde PHP-runtime configureert voor web-apps, mobiele back-ends en API-apps in [Azure App Service,](https://go.microsoft.com/fwlink/?LinkId=529714)een aangepaste PHP-runtime bieden en extensies inschakelen. Als u App Service wilt gebruiken, meldt u zich aan voor de [gratis proefversie.] Om het meeste uit deze handleiding te halen, moet u eerst een PHP-app maken in App Service.
+In deze handleiding ziet u hoe u de ingebouwde PHP-runtime configureert voor web-apps en API-apps in [Azure App Service,](https://go.microsoft.com/fwlink/?LinkId=529714)een aangepaste PHP-runtime bieden en extensies inschakelen. Als u App Service wilt gebruiken, meldt u zich aan voor de [gratis proefversie.] Om het meeste uit deze handleiding te halen, moet u eerst een PHP-app maken in App Service.
 
 ## <a name="how-to-change-the-built-in-php-version"></a>How to: De ingebouwde PHP-versie wijzigen
 
-Standaard is PHP 5.6 geïnstalleerd en direct beschikbaar voor gebruik bij het maken van een App Service-app. De beste manier om de beschikbare releaserevisie, de standaardconfiguratie en de ingeschakelde extensies te bekijken, is door een script te implementeren dat de functie [phpinfo()] aanroept.
+Wanneer u een web-app maakt, u de versie van PHP kiezen die wordt geconfigureerd. Zie [PHP on App Service](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md) voor actuele informatie over momenteel ondersteunde versies.
 
-PHP 7.0- en PHP 7.2-versies zijn ook beschikbaar, maar niet standaard ingeschakeld. Als u de PHP-versie wilt bijwerken, volgt u een van de volgende methoden:
+Als u de bestaande runtime-versie van uw app wilt controleren, u een script implementeren dat de functie [phpinfo()] aanroept.
+
+Als u de PHP-versie wilt bijwerken, volgt u een van de volgende methoden:
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -35,7 +37,7 @@ PHP 7.0- en PHP 7.2-versies zijn ook beschikbaar, maar niet standaard ingeschake
 
 3. Klik op de knop **Opslaan** boven aan het blad **Algemene instellingen.**
 
-### <a name="azure-cli"></a>Azure-CLI 
+### <a name="azure-cli"></a>Azure CLI 
 
 Als u de Azure Command Line-interface wilt gebruiken, moet u de Azure CLI op uw computer [installeren.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
@@ -49,7 +51,7 @@ Als u de Azure Command Line-interface wilt gebruiken, moet u de Azure CLI op uw 
 
 2. Stel de PHP-versie in voor de app.
 
-        az webapp config set --php-version {5.6 | 7.0 | 7.1 | 7.2} --name {app-name} --resource-group {resource-group-name}
+        az webapp config set --php-version {5.6 | 7.2 | 7.3} --name {app-name} --resource-group {resource-group-name}
 
 3. De PHP-versie is nu ingesteld. U deze instellingen bevestigen:
 
@@ -79,7 +81,7 @@ Als alternatief voor `.user.ini` het gebruik van een bestand u de functie [ini_s
 
 1. Een app-instelling toevoegen aan `PHP_INI_SCAN_DIR` uw app met de sleutel en waarde`d:\home\site\ini`
 1. Maak `settings.ini` een bestand met Kudu Console (http://&lt;sitenaam&gt;.scm.azurewebsite.net) in de `d:\home\site\ini` map.
-1. Voeg configuratie-instellingen `settings.ini` toe aan het bestand met `php.ini` dezelfde syntaxis die u in een bestand zou gebruiken. Als u bijvoorbeeld de `curl.cainfo` instelling naar `*.crt` een bestand wilt richten en de instelling 'wincache.maxfilesize' op 512K wilt instellen, bevat uw `settings.ini` bestand de tekst:
+1. Voeg configuratie-instellingen `settings.ini` toe aan het bestand met `php.ini` dezelfde syntaxis die u in een bestand zou gebruiken. Als u bijvoorbeeld de `curl.cainfo` instelling naar `*.crt` een bestand wilt richten en de instelling 'wincache.maxfilesize' op 512 K wilt instellen, bevat uw `settings.ini` bestand de tekst:
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"

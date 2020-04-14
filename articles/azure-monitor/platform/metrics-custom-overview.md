@@ -7,34 +7,51 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e104877ef641a87eac4ba19bb3342c6e029bf80c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 099ab150cde763551c2ad10a4e9159909ccff4dd
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294584"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270703"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Aangepaste statistieken in Azure Monitor
 
-Terwijl u resources en toepassingen implementeert in Azure, wilt u telemetrie verzamelen om inzicht te krijgen in hun prestaties en status. Azure maakt sommige statistieken uit de doos voor u beschikbaar. Deze statistieken worden standaard of platform genoemd. Echter, ze zijn beperkt in de natuur. Misschien wilt u een aantal aangepaste prestatie-indicatoren of bedrijfsspecifieke statistieken verzamelen om diepere inzichten te bieden.
+Terwijl u resources en toepassingen implementeert in Azure, wilt u telemetrie verzamelen om inzicht te krijgen in hun prestaties en status. Azure maakt sommige statistieken uit de doos voor u beschikbaar. Deze statistieken worden [standaard of platform](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)genoemd. Echter, ze zijn beperkt in de natuur. Misschien wilt u een aantal aangepaste prestatie-indicatoren of bedrijfsspecifieke statistieken verzamelen om diepere inzichten te bieden.
 Deze **aangepaste** statistieken kunnen worden verzameld via de telemetrie van uw toepassing, een agent die wordt uitgevoerd op uw Azure-bronnen of zelfs een externe bewakingssysteem en rechtstreeks wordt verzonden naar Azure Monitor. Nadat ze zijn gepubliceerd in Azure Monitor, u bladeren, query's en waarschuwingen over aangepaste statistieken voor uw Azure-bronnen en -toepassingen naast de standaardstatistieken die door Azure worden uitgestraald.
 
-## <a name="send-custom-metrics"></a>Aangepaste statistieken verzenden
+## <a name="methods-to-send-custom-metrics"></a>Methoden voor het verzenden van aangepaste statistieken
+
 Aangepaste statistieken kunnen via verschillende methoden naar Azure Monitor worden verzonden:
 - Instrumenter uw toepassing met behulp van de Azure Application Insights SDK en stuur aangepaste telemetrie naar Azure Monitor. 
 - Installeer de WINDOWS Azure Diagnostics (WAD)-extensie op uw [Azure VM,](collect-custom-metrics-guestos-resource-manager-vm.md) [virtuele machineschaalset,](collect-custom-metrics-guestos-resource-manager-vmss.md) [klassieke VM](collect-custom-metrics-guestos-vm-classic.md)of klassieke [Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) en stuur prestatiemeteritems naar Azure Monitor. 
 - Installeer de [InfluxData Telegraf-agent](collect-custom-metrics-linux-telegraf.md) op uw Azure Linux VM en verzend statistieken met behulp van de Azure Monitor-uitvoerplug-in.
 - Stuur aangepaste statistieken [rechtstreeks naar de Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
 
+## <a name="pricing-model"></a>Prijsmodel
+
+Er zijn geen kosten verbonden aan het opnemen van standaardstatistieken (platformstatistieken) in Azure Monitor-statistieken. Aangepaste statistieken die zijn opgenomen in het Azure Monitor-statistiekenarchief worden per MByte gefactureerd met elk aangepast gegevenspunt van metrische gegevens dat wordt beschouwd als 8 bytes in grootte. Alle ingenomen statistieken worden 90 dagen bewaard.
+
+Metrische query's worden in rekening gebracht op basis van het aantal standaard API-aanroepen. Een standaard API-aanroep is een aanroep die 1.440 gegevenspunten analyseert (1.440 is ook het totale aantal gegevenspunten dat per statistiek per dag kan worden opgeslagen). Als een API-aanroep meer dan 1.440 gegevenspunten analyseert, telt deze als meerdere standaard API-aanroepen. Als een API-aanroep minder dan 1.440 gegevenspunten analyseert, telt deze als minder dan één API-aanroep. Het aantal standaard API-aanroepen wordt elke dag berekend als het totale aantal gegevenspunten dat per dag wordt geanalyseerd, gedeeld door 1.440.
+
+Specifieke prijsdetails voor aangepaste metrische gegevens en metrische query's zijn beschikbaar op de [prijspagina van Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
+
+> [!NOTE]  
+> Statistieken die via de Application Insights SDK naar Azure Monitor worden verzonden, worden gefactureerd als ingenomen logboekgegevens en kosten alleen voor extra metrische gegevens als de functie Toepassingsinzichten [inschakelen Waarschuwingen op aangepaste metrische dimensies](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) is geselecteerd. Meer informatie over het [prijsmodel](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) en de prijzen van Application Insights [in uw regio](https://azure.microsoft.com/pricing/details/monitor/).
+
+> [!NOTE]  
+> Controleer de [prijspagina azure monitor](https://azure.microsoft.com/pricing/details/monitor/) voor meer informatie over wanneer facturering is ingeschakeld voor aangepaste metrische gegevens en metrische gegevens. 
+
+## <a name="how-to-send-custom-metrics"></a>Aangepaste statistieken verzenden
+
 Wanneer u aangepaste statistieken naar Azure Monitor verzendt, moet elk gegevenspunt of elke gerapporteerde waarde de volgende gegevens bevatten.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 Als u aangepaste statistieken wilt verzenden naar Azure Monitor, heeft de entiteit die de statistiek verzendt, een geldig Azure Active Directory-token (Azure AD) nodig in de kop van de aanvraag **drager.** Er zijn een paar ondersteunde manieren om een geldig token aan toonder te verkrijgen:
 1. [Beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Geeft een identiteit aan een Azure-bron zelf, zoals een VM. Managed Service Identity (MSI) is ontworpen om resources machtigingen te geven voor het uitvoeren van bepaalde bewerkingen. Een voorbeeld is dat een resource statistieken over zichzelf kan uitzenden. Een resource of msi kan machtigingen voor **Monitoring Metrics Publisher** op een andere bron krijgen. Met deze toestemming kan de MSI ook statistieken voor andere bronnen uitzenden.
 2. [Azure AD-serviceprincipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). In dit scenario kan een Azure AD-toepassing of -service machtigingen krijgen om statistieken over een Azure-bron uit te zenden.
 Als u de aanvraag wilt verifiëren, valideert Azure Monitor het toepassingstoken met behulp van openbare Azure AD-sleutels. De bestaande functie **Publisher-statistieken** voor monitoringstatistieken heeft deze machtiging al. Het is beschikbaar in de Azure-portal. De serviceprincipal kan, afhankelijk van de resources waarvoor het aangepaste statistieken uitzendt, de rol **Publisher-statistieken controleren** op het vereiste bereik. Voorbeelden hiervan zijn een abonnement, resourcegroep of specifieke resource.
 
-> [!NOTE]  
+> [!TIP]  
 > Wanneer u een Azure AD-token aanvraagt om aangepaste statistieken uit te `https://monitoring.azure.com/`zenden, moet u ervoor zorgen dat de doelgroep of bron waarvoor het token wordt aangevraagd. Zorg ervoor dat u de trailing '/' opneemt.
 
 ### <a name="subject"></a>Onderwerp
@@ -42,8 +59,7 @@ Met deze eigenschap wordt vastgelegd voor welke Azure-resource-id de aangepaste 
 
 > [!NOTE]  
 > U geen aangepaste statistieken uitzenden tegen de resource-id van een resourcegroep of -abonnement.
->
->
+
 
 ### <a name="region"></a>Regio
 Deze eigenschap legt vast in welke Azure-regio de resource waarvoor u statistieken uitzendt, wordt geïmplementeerd. Metrische gegevens moeten worden uitgezonden naar hetzelfde regionale eindpunt azure monitor als de regio waarin de bron is geïmplementeerd. Aangepaste statistieken voor een VM die in West-US is geïmplementeerd, moeten bijvoorbeeld worden verzonden naar het westus-regionale Azure Monitor-eindpunt. De regio-informatie is ook gecodeerd in de URL van de API-aanroep.
@@ -84,7 +100,7 @@ Azure Monitor slaat alle metrische gegevens op met granulaire intervallen van é
 * **Som**: De optelling van alle waargenomen waarden uit alle monsters en metingen gedurende de minuut.
 * **Aantal**: Het aantal monsters en metingen dat gedurende de minuut is genomen.
 
-Als er bijvoorbeeld gedurende een minuut 4 aanmeldingstransacties voor uw app zijn geweest, kunnen de resulterende gemeten latencies voor elk van deze minuten als volgt zijn:
+Als er bijvoorbeeld vier aanmeldingstransacties voor uw app gedurende een bepaalde minuut zijn geweest, kunnen de resulterende gemeten latencies voor elk van deze minuten als volgt zijn:
 
 |Transactie 1|Transactie 2|Transactie 3|Transactie 4|
 |---|---|---|---|

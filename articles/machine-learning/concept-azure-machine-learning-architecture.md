@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f779781eee81bf85f6420e5bae6b0feb62680b8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f1d23f11cf73680a8861c9f1ac6cbd40ad497a4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064172"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257331"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -27,7 +27,7 @@ Meer informatie over de architectuur, concepten en werkstroom voor Azure Machine
 
 De machine learning-modelworkflow volgt over het algemeen deze reeks:
 
-1. **Trein**
+1. **Trainen**
     + Ontwikkel machine learning trainingsscripts in **Python,** **R**of met de visual designer.
     + Een **rekendoel**maken en configureren .
     + **Verzend de scripts** naar een geconfigureerd compute-doel dat in die omgeving moet worden uitgevoerd. Tijdens de training kunnen de scripts lezen of schrijven naar **datastores.** De logboeken en uitvoer die tijdens de training worden geproduceerd, worden opgeslagen als **wordt opgeslagen** in de **werkruimte** en gegroepeerd onder **experimenten**.
@@ -187,7 +187,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 * [Train ML-modellen met schatters.](how-to-train-ml-models.md)
 * [Train Pytorch deep learning-modellen op schaal met Azure Machine Learning.](how-to-train-pytorch.md)
 * [Train en registreer TensorFlow-modellen op schaal met Azure Machine Learning](how-to-train-tensorflow.md).
-* [Chainer-modellen op schaal trainen en registreren met Azure Machine Learning](how-to-train-chainer.md).
+* [Chainer-modellen op schaal trainen en registreren met Azure Machine Learning](how-to-train-ml-models.md).
 
 ### <a name="endpoints"></a>Eindpunten
 

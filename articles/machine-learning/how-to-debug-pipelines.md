@@ -1,7 +1,7 @@
 ---
-title: Fouten in Machine Learning-pijplijnen opsporen en oplossen
+title: Foutopsporing & problemen met ML-pijplijnen oplossen
 titleSuffix: Azure Machine Learning
-description: Foutopsporing en problemen oplossen van machine learning-pijplijnen in de Azure Machine Learning SDK voor Python. Leer veelvoorkomende valkuilen voor het ontwikkelen van pijplijnen en tips om u te helpen uw scripts te debuggen voor en tijdens uitvoering op afstand. Meer informatie over het gebruik van Visual Studio Code om uw machine learning-pijplijnen interactief te debuggen.
+description: Debuging van uw Azure Machine Learning-pijplijnen in Python. Leer veelvoorkomende valkuilen voor het ontwikkelen van pijplijnen en tips om u te helpen uw scripts te debuggen voor en tijdens uitvoering op afstand. Meer informatie over het gebruik van Visual Studio Code om uw machine learning-pijplijnen interactief te debuggen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80388981"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257206"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Fouten in Machine Learning-pijplijnen opsporen en oplossen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ De volgende secties geven een overzicht van de veelvoorkomende valkuilen bij het
 
 ### <a name="testing-scripts-locally"></a>Scripts lokaal testen
 
-Een van de meest voorkomende fouten in een pijplijn is dat een bijgevoegd script (script voor gegevensreiniging, scorescript, enz.) niet wordt uitgevoerd zoals bedoeld, of runtimefouten bevat in de externe rekencontext die moeilijk te detecteren zijn in uw werkruimte in de Azure Machine Leerstudio. 
+Een van de meest voorkomende fouten in een pijplijn is dat een bijgevoegd script (gegevensreinigingsscript, scorescript, enz.) niet wordt uitgevoerd zoals bedoeld, of runtimefouten bevat in de externe rekencontext die moeilijk te debuggen zijn in uw werkruimte in de Azure Machine Learning-studio. 
 
 Pijplijnen zelf kunnen niet lokaal worden uitgevoerd, maar door de scripts afzonderlijk op uw lokale machine uit te voeren, u sneller debuggen omdat u niet hoeft te wachten op het proces voor het opbouwen van de gegevens en de omgeving. Hiervoor is enige ontwikkelingswerk nodig:
 
@@ -50,7 +50,7 @@ Zodra u een script-instelling hebt om op uw lokale omgeving uit te voeren, is he
 
 ### <a name="debugging-scripts-from-remote-context"></a>Scripts debuggen vanuit externe context
 
-Het testen van scripts lokaal is een geweldige manier om grote codefragmenten en complexe logica te debuggen voordat u begint met het bouwen van een pijplijn, maar op een gegeven moment zult u waarschijnlijk scripts moeten debuggen tijdens de eigenlijke pijplijnrun zelf, vooral bij het diagnosticeren van gedrag dat optreedt tijdens de interactie tussen pijplijnstappen. We raden u `print()` aan om uitlatingen in uw stapscripts te royeren, zodat u de objectstatus en verwachte waarden tijdens uitvoering op afstand zien, vergelijkbaar met hoe u JavaScript-code zou debuggen.
+Het lokaal testen van scripts is een geweldige manier om belangrijke codefragmenten en complexe logica te debuggen voordat u begint met het bouwen van een pijplijn, maar op een gegeven moment zult u waarschijnlijk scripts moeten debuggen tijdens de eigenlijke pijplijnuitvoering zelf, vooral bij het diagnosticeren van gedrag dat optreedt tijdens de interactie tussen pijplijnstappen. We raden u `print()` aan om uitlatingen in uw stapscripts te royeren, zodat u de objectstatus en verwachte waarden tijdens uitvoering op afstand zien, vergelijkbaar met hoe u JavaScript-code zou debuggen.
 
 Het logboekbestand `70_driver_log.txt` bevat: 
 

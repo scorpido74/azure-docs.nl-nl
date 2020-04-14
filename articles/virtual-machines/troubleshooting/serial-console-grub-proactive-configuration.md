@@ -3,8 +3,8 @@ title: Proactieve GRUB-configuratie van Azure Serial Console| Microsoft Document
 description: Configureer GRUB voor verschillende distributies die toegang tot één gebruiker en herstelmodus mogelijk maken in virtuele Azure-machines.
 services: virtual-machines-linux
 documentationcenter: ''
-author: vilibert
-manager: spogge
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
-ms.author: vilibert
-ms.openlocfilehash: a154ab4742f0d0d7acae0376bcf894bc2b62b4cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 573bd0797e63fc512e59b0e0882c718e4569111c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74186927"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262890"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proactief zorgen dat u toegang hebt tot GRUB en sysrq kan u veel down time besparen
 
@@ -98,7 +98,7 @@ In dit artikel bekijken we verschillende Linux-distributies en documentconfigura
 De sysrq-toets is standaard ingeschakeld op sommige nieuwere Linux-distro's, hoewel deze op andere apparaten alleen kan worden geconfigureerd voor het accepteren van waarden voor bepaalde SysRq-functies.
 Op oudere distro's, kan het volledig worden uitgeschakeld.
 
-De SysRq-functie is handig voor het opnieuw opstarten van een vastgelopen of opgehangen VM rechtstreeks vanuit de Azure Serial Console, ook handig bij het verkrijgen van toegang tot het GRUB-menu, als alternatief het opnieuw opstarten van een VM vanuit een ander portalvenster of ssh-sessie kan uw huidige consoleverbinding laten vallen dus verlopen GRUB Timeouts waaraan wordt gebruikt om het GRUB-menu weer te geven.
+De SysRq-functie is handig voor het opnieuw opstarten van een gecrashte of opgehangen VM rechtstreeks van de Azure Serial Console, ook handig bij het verkrijgen van toegang tot het GRUB-menu, als alternatief het opnieuw opstarten van een VM vanuit een ander portalvenster of ssh-sessie kan uw huidige consoleverbinding laten vallen, waardoor GRUB Timeouts verlopen die worden gebruikt om het GRUB-menu weer te geven.
 De VM moet zijn geconfigureerd om een waarde van 1 voor de kernelparameter te accepteren, waardoor alle functies van sysrq of 128 kunnen worden geactiveerd, waardoor opnieuw opstarten/uitschakelen mogelijk is
 
 

@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 373fc2829e599d0989b59c6386757c8f5f3e1d66
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76984540"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251721"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Verificatie en autorisatie voor Azure Time Series Insights-API
 
@@ -102,9 +102,9 @@ In deze sectie worden veelvoorkomende HTTP-aanvraagkoppen en -parameters beschre
 > [!TIP]
 > Lees de [Azure REST API-referentie](https://docs.microsoft.com/rest/api/azure/) voor meer informatie over het gebruik van REST-API's, het indienen van HTTP-verzoeken en het verwerken van HTTP-antwoorden.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
-Als u geverifieerde query's wilt uitvoeren tegen de [TIME Series Insights REST API's,](https://docs.microsoft.com/rest/api/time-series-insights/)moet een geldig OAuth 2.0-token aan toonder worden doorgegeven in de header [Autorisatie](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) met behulp van een REST-client naar keuze (Postbode, JavaScript, C#). 
+Als u geverifieerde query's wilt uitvoeren tegen de [TIME Series Insights REST API's,](https://docs.microsoft.com/rest/api/time-series-insights/)moet een geldig OAuth 2.0-token aan toonder worden doorgegeven in de header [Autorisatie](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) met behulp van een REST-client naar keuze (Postbode, JavaScript, C#). 
 
 > [!TIP]
 > Lees de gehoste [SDK-voorbeeldvisualisatie van](https://tsiclientsample.azurewebsites.net/) Azure Time Series Insights-client om te leren hoe u deze verifiëren met de Time Series Insights-API's die programmatisch worden gebruikt met behulp van de [JavaScript Client SDK,](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) samen met grafieken en grafieken.

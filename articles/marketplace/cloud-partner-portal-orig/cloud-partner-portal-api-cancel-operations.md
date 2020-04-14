@@ -5,24 +5,26 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 6d4c1f52f0f3b1e05ec06f5a66a36323f346d4eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f9e55ff2c581f9392a125f6dc3ec8d903e9876a4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280538"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256430"
 ---
-# <a name="cancel-operation"></a>Bewerking annuleren 
+# <a name="cancel-operation"></a>Bewerking annuleren
+
+> [!NOTE]
+> De API's van cloudpartnerportalen zijn geïntegreerd met het Partner Center en blijven werken nadat uw aanbiedingen zijn gemigreerd naar partnercentrum. De integratie brengt kleine veranderingen met zich mee. Bekijk de wijzigingen in [Cloud Partner Portal API Reference](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar partnercentrum.
 
 Deze API annuleert een bewerking die momenteel in uitvoering is op de aanbieding. Gebruik de [API Operations](./cloud-partner-portal-api-retrieve-operations.md) `operationId` ophalen om een informatie-informatie over te brengen aan deze API. Annulering is meestal een synchrone bewerking, maar in sommige complexe scenario's kan een nieuwe bewerking nodig zijn om een bestaande bewerking te annuleren. In dit geval bevat de HTTP-antwoordinstantie de locatie van de bewerking die moet worden gebruikt om de status op te vragen.
 
-U een door komma's gescheiden lijst met e-mailadressen bij de aanvraag opnemen en de API zal deze adressen op de hoogte brengen van de voortgang van de bewerking.
-
   `POST https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/cancel?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI-parameters
+## <a name="uri-parameters"></a>URI-parameters
+
 --------------
 
 |  **Naam**    |      **Beschrijving**                                  |    **Gegevenstype**  |
@@ -32,8 +34,7 @@ U een door komma's gescheiden lijst met e-mailadressen bij de aanvraag opnemen e
 | api-versie  |  Huidige versie van API                               |    Date           |
 |  |  |  |
 
-
-<a name="header"></a>Header
+## <a name="header"></a>Header
 ------
 
 |  **Naam**              |  **Waarde**         |
@@ -42,8 +43,7 @@ U een door komma's gescheiden lijst met e-mailadressen bij de aanvraag opnemen e
 |  Autorisatie         |  Toon UW TOKEN |
 |  |  |
 
-
-<a name="body-example"></a>Voorbeeld van het lichaam
+## <a name="body-example"></a>Voorbeeld van het lichaam
 ------------
 
 ### <a name="request"></a>Aanvraag
@@ -63,19 +63,22 @@ U een door komma's gescheiden lijst met e-mailadressen bij de aanvraag opnemen e
 |  melding-e-mails     | Komma gescheiden lijst van e-id's op de hoogte te worden gesteld van de voortgang van de publicatiebewerking. |
 |  |  |
 
-
 ### <a name="response"></a>Antwoord
 
-  `Operation-Location: https://cloudpartner.azure.com/api/publishers/contoso/offers/contoso-virtualmachineoffer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8`
+#### <a name="migrated-offers"></a>Gemigreerde aanbiedingen
 
+`Location: /api/publishers/contoso/offers/contoso-offer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8?api-version=2017-10-31`
+
+#### <a name="non-migrated-offers"></a>Niet-gemigreerde aanbiedingen
+
+`Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
 ### <a name="response-header"></a>Reactieheader
 
 |  **Naam**             |    **Waarde**                       |
 |  ---------            |    ----------                      |
-| Operatielocatie    | URL, die kan worden opgevraagd om de huidige status van de bewerking te bepalen. |
+| Locatie    | Het relatieve pad om de status van deze bewerking op te halen. |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Statuscodes voor antwoord
 

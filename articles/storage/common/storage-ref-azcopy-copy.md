@@ -4,16 +4,16 @@ description: Dit artikel bevat referentie-informatie voor de opdracht azcopy-kop
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 431372b930269c3dfa6bdc6e8b2fe4d291a8162e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0325a71fb069f3d96f05d106afac1639fc38fe42
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933783"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253336"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -169,6 +169,8 @@ Kopieer een subset van buckets met een wildcardsymbool (*) in de bucketnaam. Net
 
 ## <a name="options"></a>Opties
 
+**--back-up**                               Hiermee activeert u Windows SeBackupPrivilege voor uploads of SeRestorePrivilege voor downloads, zodat AzCopy alle bestanden kan zien lezen, ongeacht de machtigingen van het bestandssysteem, en om alle machtigingen te herstellen. Vereist dat het account waarop AzCopy wordt uitgevoerd deze machtigingen al heeft (bijvoorbeeld beheerdersrechten heeft of lid is van de groep 'Back-upoperators'). Het enige wat deze vlag doet, is bevoegdheden activeren die het account al heeft.
+
 **--blob-type** tekenreeks Definieert het type blob op de bestemming. Dit wordt gebruikt voor het uploaden van blobs en bij het kopiëren tussen accounts (standaard 'Detecteren'). Geldige waarden zijn 'Detect', 'BlockBlob', 'PageBlob' en 'AppendBlob'. Bij het kopiëren tussen accounts zorgt een waarde van 'Detecteren' ervoor dat AzCopy het type bronblob gebruikt om het type doelblob te bepalen. Bij het uploaden van een bestand bepaalt 'Detecteren' of het bestand een VHD- of een VHDX-bestand is op basis van de bestandsextensie. Als het bestand ether is van een VHD- of VHDX-bestand, behandelt AzCopy het bestand als een paginablob. (standaard 'Detecteren')
 
 **--block-blob-tier** string Upload block blobs rechtstreeks naar de [toegangslaag](../blobs/storage-blob-storage-tiers.md) van uw keuze. (standaard 'Geen'). Geldige waarden zijn 'None', 'Hot', 'Cool' en 'Archive'. Als 'Geen' of geen laag wordt doorgegeven, neemt de blob de laag van het opslagaccount over.
@@ -223,6 +225,12 @@ Kopieer een subset van buckets met een wildcardsymbool (*) in de bucketnaam. Net
 
 **--preserve-last-modified-time**          Alleen beschikbaar wanneer de bestemming is bestandssysteem.
 
+**--preserve-smb-permissions** string False by default. Behoudt SMB-ACL's tussen bewuste bronnen (Windows- en Azure-bestanden). Voor downloads moet u de `--backup` vlag ook gebruiken om machtigingen te herstellen waarbij de nieuwe eigenaar niet de gebruiker is die AzCopy uitvoert. Deze vlag is van toepassing op zowel bestanden als mappen, tenzij `include-pattern`een filter met alleen-bestand is opgegeven (bijv. ).
+
+**--smb-infotekenreeks** False standaard. Hiermee behoudt u informatie over de smb-eigenschap (laatste schrijftijd, aanmaaktijd, kenmerkbits) tussen smb-bewuste resources (Windows- en Azure-bestanden). Alleen de attribuutbits die door Azure-bestanden worden ondersteund, worden overgedragen. alle anderen zullen worden genegeerd. Deze vlag is van toepassing op zowel bestanden als mappen, tenzij een filter met alleen bestanden is opgegeven (bijvoorbeeld include-patroon). De informatie die wordt overgedragen voor mappen is dezelfde als die voor bestanden, met uitzondering van Last Write Time die nooit wordt bewaard voor mappen.
+
+**--conserven-eigenaar**                       Heeft alleen een effect bij het downloaden `--preserve-smb-permissions` van gegevens, en alleen wanneer de wordt gebruikt. Als dit waar is (de standaardwaarde), blijven de eigenaar en groep van het bestand behouden in downloads. Als deze vlag is `--preserve-smb-permissions` ingesteld op false, worden acl.n.a.v. behouden, maar eigenaar en groep zijn gebaseerd op de gebruiker die AzCopy uitvoert.
+
 **--put-md5**                             Maak een MD5-hash van elk bestand en sla de hash op als de eigenschap Content-MD5 van de doelblob of -bestand. (Standaard wordt de hash NIET gemaakt.) Alleen beschikbaar bij het uploaden.
 
 **--recursieve**                            Kijk in sub-directories recursief bij het uploaden van lokale bestandssysteem.
@@ -243,4 +251,4 @@ Kopieer een subset van buckets met een wildcardsymbool (*) in de bucketnaam. Net
 
 ## <a name="see-also"></a>Zie ook
 
-- [azcopie](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

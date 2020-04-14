@@ -7,21 +7,21 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d0db6553a774a69bb8a55538cbd2b4a333be9316
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 148b80a6843168b11e4feb3558f6bf08eaeb3ace
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281405"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261258"
 ---
-# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Het dashboard voor bestellingen in Commercial Marketplace-analyses
+# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Orders dashboard in commerciële marktplaats analytics
 
 In dit artikel vindt u informatie over het **dashboard Orders** in partnercentrum. Dit dashboard geeft informatie over uw bestellingen weer in een grafische en downloadbare indeling.
 
 Als u toegang wilt krijgen tot het **dashboard Orders** in de analysetools van het Partnercenter, opent u het **[dashboard Analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder Commerciële Marktplaats.
 
 >[!NOTE]
-> Zie [Veelgestelde vragen en terminologie voor commerciële marketplace-analyses voor](./faq-terminology.md)gedetailleerde definities van analytics-terminologie.
+> Zie [Veelgestelde vragen en terminologie voor commerciële marktplaatsanalyses voor](./faq-terminology.md)gedetailleerde definities van analytics-terminologie.
 
 ## <a name="orders-dashboard"></a>Dashboard voor orders
 
@@ -36,7 +36,7 @@ In **het dashboard Orders** van het menu **Analyseren** worden de huidige orders
 - [Tabel Met ordergegevens](#order-details-table)
 
 > [!NOTE]
-> Er zijn verschillen tussen de weergave van analyserapporten in het Cloud Partner Portal (CPP) en het nieuwe Commercial Marketplace-programma in partnercentrum. Een specifieke manier is dat de **Seller Insights** in CPP een tabblad Orders **& gebruik** heeft, dat gegevens weergeeft voor op gebruik gebaseerde aanbiedingen en aanbiedingen op basis van niet-gebruik. In Partnercentrum heeft de pagina **Orders** een apart tabblad voor SaaS-aanbiedingen.
+> Er zijn verschillen tussen de weergave van analyserapporten in het Cloud Partner Portal (CPP) en het nieuwe commerciële marktplaatsprogramma in Partner Center. Een specifieke manier is dat de **Seller Insights** in CPP een tabblad Orders **& gebruik** heeft, dat gegevens weergeeft voor op gebruik gebaseerde aanbiedingen en aanbiedingen op basis van niet-gebruik. In Partnercentrum heeft de pagina **Orders** een apart tabblad voor SaaS-aanbiedingen.
 
 ## <a name="order-dashboard-details"></a>Details van het besteldashboard
 
@@ -124,10 +124,10 @@ U meerdere filters selecteren om de grafiek weer te geven voor de criteria die u
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Analytics voor de commerciële marktplaats voor](./analytics.md)een overzicht van analyserapporten die beschikbaar zijn in het Partnercenter Commercial Marketplace.
-- Zie [Overzichtsdashboard in Commercial Marketplace-analyses](./summary-dashboard.md)voor grafieken, trends en waarden van geaggregeerde gegevens die de activiteit op de markt voor uw aanbieding samenvatten.
-- Zie [Gebruiksdashboard in Commercial Marketplace-analyses](./usage-dashboard.md)voor virtuele machine (VM) voor gebruiks- en factureringsstatistieken met een datameter.
-- Zie Customer dashboard in Commercial Marketplace [analytics](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, inclusief groeitrends.
-- Zie [Dashboard Downloads in Commercial Marketplace analytics](./downloads-dashboard.md)voor een lijst met uw downloadaanvragen van de afgelopen 30 dagen.
-- Zie [Dashboard Beoordelingen en beoordelingen in Commercial Marketplace-analyses](./ratings-reviews.md)voor ziet u in een geconsolideerde weergave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource.
-- Voor veelgestelde vragen over Commercial Marketplace analytics en voor een uitgebreid woordenboek van gegevenstermen, zie [veelgestelde vragen en terminologie voor Commercial Marketplace analytics.](./faq-terminology.md)
+- Zie [Analytics voor de commerciële marktplaats voor](./analytics.md)de commerciële marktplaats voor een overzicht van analyserapporten die beschikbaar zijn in de commerciële marktplaats voor het Partnercentrum.
+- Zie [Overzichtsdashboard in commerciële marktplaatsanalyses](./summary-dashboard.md)voor grafieken, trends en waarden van geaggregeerde gegevens die de activiteit op de markt voor uw aanbieding samenvatten.
+- Zie [Gebruiksdashboard in commerciële marktplaatsanalyses](./usage-dashboard.md)voor virtuele machine (VM) voor gebruiks- en factureringsstatistieken met een datameter.
+- Zie Customer dashboard in commercial marketplace [analytics](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, inclusief groeitrends.
+- Zie [Dashboard Downloads in commerciële marktplaatsanalyses](./downloads-dashboard.md)voor een lijst met uw downloadaanvragen van de afgelopen 30 dagen.
+- Zie [Dashboard Beoordelingen en beoordelingen in commerciële marktplaatsanalyses](./ratings-reviews.md)voor ziet een geconsolideerde weergave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource.
+- Voor veelgestelde vragen over commerciële marktplaatsanalyse en voor een uitgebreid woordenboek van gegevenstermen, zie [veelgestelde vragen en terminologie voor commerciële marktplaatsanalyses.](./faq-terminology.md)

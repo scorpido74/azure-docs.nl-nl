@@ -3,12 +3,12 @@ title: Een cluster bijwerken om de algemene naam van het certificaat te gebruike
 description: Meer informatie over het overschakelen van een cluster van Servicefabric van het gebruik van certificaatduimafdrukken naar het gebruik van de algemene naam van het certificaat.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 66c49ccb7b7633d0eff392b676bb381118eb64a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610196"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272624"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Cluster van vingerafdruk van certificaat wijzigen in algemene naam
 Geen twee certificaten kunnen dezelfde duimafdruk hebben, wat clustercertificaatrollover of beheer moeilijk maakt. Meerdere certificaten kunnen echter dezelfde algemene naam of onderwerp hebben.  Schakelen tussen een geïmplementeerd cluster vanuit vingerafdrukken voor certificaten naar het gebruik van gewone namen voor certificaten maakt het beheer van certificaten veel eenvoudiger. In dit artikel wordt beschreven hoe u een uitgevoerd servicestructuurcluster bijwerkt om de algemene naam van het certificaat te gebruiken in plaats van de duimafdruk van het certificaat.
@@ -20,12 +20,12 @@ Geen twee certificaten kunnen dezelfde duimafdruk hebben, wat clustercertificaat
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>Een certificaat aanvragen
-Ontvang eerst een certificaat van een [certificeringsinstantie (CA).](https://wikipedia.org/wiki/Certificate_authority)  De algemene naam van het certificaat moet de hostnaam van het cluster zijn.  Bijvoorbeeld 'myclustername.southcentralus.cloudapp.azure.com'.  
+Ontvang eerst een certificaat van een [certificeringsinstantie (CA).](https://wikipedia.org/wiki/Certificate_authority)  De algemene naam van het certificaat moet zijn voor het aangepaste domein dat u bezit en gekocht bij een domeinregistrar. Bijvoorbeeld "azureservicefabricbestpractices.com"; degenen die geen Microsoft-werknemers zijn, kunnen geen certs voor MS-domeinen inrichten, dus u de DNS-namen van uw LB of Traffic Manager niet gebruiken als algemene namen voor uw certificaat, en u moet een [Azure DNS-zone inrichten](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) als uw aangepaste domein in Azure oplosbaar moet zijn. U wilt ook uw aangepaste domein dat u bezit als het 'managementEndpoint' van uw cluster declareren als u wilt dat portal de aangepaste domeinalias voor uw cluster weergeeft.
 
 Voor testdoeleinden u een CA-ondertekend certificaat krijgen van een gratis of open certificaatautoriteit.
 
 > [!NOTE]
-> Zelfondertekende certificaten, inclusief certificaten die worden gegenereerd bij het implementeren van een Service Fabric-cluster in de Azure-portal, worden niet ondersteund.
+> Zelfondertekende certificaten, inclusief certificaten die worden gegenereerd bij het implementeren van een Service Fabric-cluster in de Azure-portal, worden niet ondersteund. 
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>Het certificaat uploaden en installeren in de schaalset
 In Azure wordt een cluster van Servicefabric geïmplementeerd op een virtuele machineschaalset.  Upload het certificaat naar een sleutelkluis en installeer het vervolgens op de virtuele machineschaalset waarop het cluster wordt uitgevoerd.

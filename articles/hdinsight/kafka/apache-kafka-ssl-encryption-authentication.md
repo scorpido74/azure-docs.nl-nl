@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: b0154401a9233a6ea85a8e8c06ee14fcc918b2b6
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 02b64d77a4fb1af25e1022de3ac8e4775f916d9e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657092"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261768"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>TLS-versleuteling en -verificatie instellen voor Apache Kafka in Azure HDInsight
 
@@ -22,8 +22,9 @@ In dit artikel ziet u hoe u TLS-versleuteling (Transport Layer Security), voorhe
 > [!Important]
 > Er zijn twee clients die u gebruiken voor Kafka-toepassingen: een Java-client en een consoleclient. Alleen de `ProducerConsumer.java` Java-client kan TLS gebruiken voor zowel produceren als consumeren. De consoleproducerclient `console-producer.sh` werkt niet met TLS.
 
-> [!Note] 
+> [!Note]
 > HDInsight Kafka console producent met versie 1.1 ondersteunt geen SSL.
+
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka makelaar setup
 
 De instelling voor Kafka TLS-broker gebruikt vier HDInsight-clusterVM's op de volgende manier:
@@ -136,7 +137,7 @@ Ga als volgt te werk om de configuratiewijziging te voltooien:
 
     ![Kafka ssl-configuratie-eigenschappen bewerken in Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. Voeg nieuwe configuratie-eigenschappen toe aan het bestand server.properties.
+1. Ga voor HDI-versie 3.6 naar Ambari UI en voeg de volgende configuraties toe onder **Advanced kafka-env** en de eigenschap **kafka-env-sjabloon.**
 
     ```bash
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -151,7 +152,7 @@ Ga als volgt te werk om de configuratiewijziging te voltooien:
     echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-1. Ga naar de gebruikersinterface van de Ambari-configuratie en controleer of de nieuwe eigenschappen worden weergegeven onder **Advanced kafka-env** en de eigenschap **kafka-env-sjabloon.**
+1. Hier is de screenshot die Ambari configuratie UI met deze wijzigingen toont.
 
     Voor HDI-versie 3.6:
 
@@ -159,10 +160,9 @@ Ga als volgt te werk om de configuratiewijziging te voltooien:
 
     Voor HDI-versie 4.0:
 
-     ![Kafka-env-sjabloon bewerken, eigenschap in Ambari vier](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)   
+     ![Kafka-env-sjabloon bewerken, eigenschap in Ambari vier](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
 
 1. Herstart alle Kafka-makelaars.
-1. Start de admin client met producent en consument opties om te controleren of zowel producenten als consumenten werken aan poort 9093.
 
 ## <a name="client-setup-without-authentication"></a>Clientinstelling (zonder verificatie)
 
@@ -208,13 +208,15 @@ Deze stappen worden beschreven in de volgende codefragmenten.
     keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. Maak het `client-ssl-auth.properties`bestand . Zij moet de volgende regels hebben:
+1. Maak het `client-ssl-auth.properties` bestand op clientmachine (hn1) . Zij moet de volgende regels hebben:
 
     ```config
     security.protocol=SSL
     ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
     ssl.truststore.password=MyClientPassword123
     ```
+
+1. Start de admin client met producent en consument opties om te controleren of zowel producenten als consumenten werken aan poort 9093. Raadpleeg hieronder [de sectie Verificatie](apache-kafka-ssl-encryption-authentication.md#verification) voor de stappen die nodig zijn om de installatie te verifiëren met behulp van consoleproducent/consument.
 
 ## <a name="client-setup-with-authentication"></a>Clientinstelling (met verificatie)
 
@@ -278,17 +280,24 @@ De details van elke stap worden hieronder gegeven.
     scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
     ```
 
-1. Maak clientwinkel met ondertekend cert en importeer ca-cert in de keystore en truststore:
+    1. Meld u aan bij de clientmachine (stand-by hoofdknooppunt) en navigeer naar de SSL-map.
 
     ```bash
-    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
+    ssh sshuser@HeadNode1_Name
+    cd ssl
     ```
 
-1. Een bestand `client-ssl-auth.properties`maken . Zij moet de volgende regels hebben:
+1. Maak clientwinkel met ondertekend cert en importeer ca-cert in de keystore en truststore op clientmachine (hn1):
+
+    ```bash
+    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```
+
+1. Een bestand `client-ssl-auth.properties` maken op clientmachine (hn1) . Zij moet de volgende regels hebben:
 
     ```bash
     security.protocol=SSL
@@ -300,6 +309,8 @@ De details van elke stap worden hieronder gegeven.
     ```
 
 ## <a name="verification"></a>Verificatie
+
+Voer deze stappen uit op de clientmachine.
 
 > [!Note]
 > Als HDInsight 4.0 en Kafka 2.1 zijn geïnstalleerd, u de consoleproducent/consumenten gebruiken om uw installatie te verifiëren. Zo niet, voer dan de Kafka-producent uit op poort 9092 en stuur berichten naar het onderwerp en gebruik vervolgens de Kafka-consument op poort 9093 die TLS gebruikt.

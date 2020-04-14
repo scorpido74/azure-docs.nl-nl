@@ -1,22 +1,22 @@
 ---
-title: Een Commercieel Marketplace-account beheren in partnercentrum
-description: Meer informatie over het beheren van een Commercieel Marketplace-account in het Partnercentrum.
+title: Een commercieel marktplaatsaccount beheren in Partner Center
+description: Meer informatie over het beheren van een commercieel marktplaatsaccount in Partner Center.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 6d3952c38703d8102a45c4117e3c59e3fa464957
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50ea56a8c743636f9fdd9105e5b07a868e71d3d0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275812"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262924"
 ---
-# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Uw account van Commerciële Marketplace beheren in het Partnercentrum
+# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Uw commerciële marktplaatsaccount beheren in Partner Center
 
-Zodra u [een Partner Center-account](./create-account.md)hebt gemaakt, u uw account en aanbiedingen beheren met behulp van het [dashboard Commercial Marketplace.](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)
+Zodra u [een Partner Center-account](./create-account.md)hebt gemaakt, u uw account en aanbiedingen beheren met behulp van het [dashboard commerciële marktplaats.](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)
 
 In dit artikel gaan we dieper in op het beheren van je Partner Center-account, inclusief hoe je:
 
@@ -40,7 +40,7 @@ Als u dit nog niet hebt gedaan, moet u (of de beheerder van uw organisatie) toeg
 
 ### <a name="open-developer-settings"></a>Ontwikkelaarsinstellingen openen
 
-Accountinstellingen bevinden zich in de rechterbovenhoek van uw [dashboard op commerciële marktplaats](https://partner.microsoft.com/dashboard/commercial-marketplace) in het Partnercentrum. Selecteer het tandwielpictogram (rechtsboven in het dashboard) en selecteer **Vervolgens Ontwikkelaarsinstellingen**.
+Accountinstellingen bevinden zich in de rechterbovenhoek van uw [commerciële marktplaatsdashboard](https://partner.microsoft.com/dashboard/commercial-marketplace) in Partner Center. Selecteer het tandwielpictogram (rechtsboven in het dashboard) en selecteer **Vervolgens Ontwikkelaarsinstellingen**.
 
 ![Menu Accountinstellingen in Partnercentrum](./media/dashboard-developer-settings.png)
 
@@ -67,7 +67,7 @@ In de sectie Contactgegevens ziet u de **weergavenaam van**uw uitgever, **de con
 Een uitbetalingsrekening is de bankrekening waarnaar de opbrengst van uw verkoop wordt verzonden. Deze bankrekening moet zich in hetzelfde land bevindt waar u uw Partner Center-account hebt geregistreerd.
 
 Als u uw uitbetalingsaccount wilt instellen, moet u **uw Microsoft-account koppelen:**
-1. Ga naar de [overzichtspagina Commerciële Marktplaats](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) in Partnercenter.
+1. Ga naar de [overzichtspagina voor commerciële marktplaatsen](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) in Partnercenter.
 2. Selecteer onder de sectie Profiel de optie **Uw Microsoft-account koppelen**.
 3. Meld je aan met je Microsoft-account (MSA). Dit account kan niet al worden gekoppeld aan een ander Partner Center-account.
 4. Als u de installatie van uw uitbetalingsaccount wilt voltooien, meldt u zich volledig af bij Partner Center en meldt u zich vervolgens weer aan met uw Microsoft-account (in plaats van uw werkaccount).
@@ -126,8 +126,8 @@ Wij raden u aan voor elk aanbiedings- en distributiekanaal voor elk product een 
 
 Als u een product implementeert met behulp van een sjabloon en het is beschikbaar op zowel de Azure Marketplace als op GitHub, u 2 verschillende GUIDS maken en registreren:
 
-*   Product A in Azure Marketplace
-*   Product A op GitHub
+*    Product A in Azure Marketplace
+*    Product A op GitHub
 
 Rapportage gebeurt op basis van de partnerwaarde (Microsoft Partner ID) en de GUIDs. U GUID's ook op een gedetailleerder niveau bijhouden dat is afgestemd op elk plan binnen uw aanbieding.
 
@@ -308,7 +308,7 @@ Zie [Gebruikersrollen en machtigingen toewijzen in Partnercentrum](https://docs.
 
 ## <a name="manage-tenants"></a>Huurders beheren
 
-Een Azure Active Directory (AD)-tenant, ook wel uw 'werkaccount' genoemd in deze documentatie, is een weergave van uw organisatie die is ingesteld in de Azure-portal en helpt u een specifiek exemplaar van Microsoft-cloudservices voor uw interne en externe gebruikers. Als uw organisatie zich heeft geabonneerd op een Microsoft-cloudservice, zoals Azure, Microsoft Intune of Office 365, is er een Azure AD-tenant voor u ingesteld.
+Een Azure Active Directory (AD)-tenant, ook wel uw 'werkaccount' genoemd in deze documentatie, is een weergave van uw organisatie die is ingesteld in de Azure-portal en helpt u een specifiek exemplaar van Microsoft-cloudservices voor uw interne en externe gebruikers te beheren. Als uw organisatie zich heeft geabonneerd op een Microsoft-cloudservice, zoals Azure, Microsoft Intune of Office 365, is er een Azure AD-tenant voor u ingesteld.
 
 U meerdere tenants instellen om te gebruiken met Partner Center. Elke gebruiker met de **Manager-rol** in het Partnercenter-account heeft de mogelijkheid om Azure AD-tenants uit het account toe te voegen en te verwijderen.  
 

@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen2 Python SDK voor bestanden & ACL's
 description: Gebruik Python manage directories en file and directory access control lists (ACL) in opslagaccounts waar hiërarchische naamruimte (HNS) is ingeschakeld.
 author: normesta
 ms.service: storage
-ms.date: 03/20/2020
+ms.date: 04/10/2020
 ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a00713df2cdda626a76cc648826f7e56df214232
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: a79f3110206a01b9b974952f0ec0d299644be11f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668712"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262346"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Python gebruiken om mappen, bestanden en ACL's te beheren in Azure Data Lake Storage Gen2
 
@@ -32,7 +32,7 @@ In dit artikel ziet u hoe u Python gebruiken om mappen, bestanden en machtiginge
 Installeer de Azure Data Lake Storage-clientbibliotheek voor Python met [pip](https://pypi.org/project/pip/).
 
 ```
-pip install azure-storage-file-datalake --pre
+pip install azure-storage-file-datalake
 ```
 
 Voeg deze importinstructies toe aan de bovenkant van uw codebestand.

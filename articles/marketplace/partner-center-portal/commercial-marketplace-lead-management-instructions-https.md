@@ -5,20 +5,23 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a0131cf94759fc529a52ea33d5392a60c5ef30c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33359883df86091120295b93618a13476e428d2f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281592"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262547"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Leadbeheer configureren met behulp van een HTTPS-eindpunt
 
-Als uw CRM-systeem (Customer Relationship Management) niet expliciet wordt ondersteund in het Partnercentrum voor het ontvangen van Azure Marketplace- en AppSource-leads, u een HTTPS-eindpunt in MS Flow gebruiken om deze leads te verwerken. Met een HTTPS-eindpunt kunnen deze leads worden verzonden als een e-mailmelding of kunnen worden geschreven naar een CRM-systeem (Customer Relationship Management) dat wordt ondersteund door MS Flow. De instructies in dit artikel leiden u door het basisproces om een nieuwe stroom te maken met behulp van Microsoft Flow, die de HTTP-POST-URL genereert die u invoert in de publicatieportal voor het veld Leadbeheer > **HTTPS-eindpunt.** Ook inbegrepen zijn instructies over hoe u uw stroom testen met behulp van een tool genaamd [Postman](https://www.getpostman.com/downloads/) die online kan worden gevonden.
+>[!Note]
+>De Power Automate-connector die in deze instructies wordt gebruikt, vereist een betaald abonnement op Power Automate. Houd hier rekening mee voordat u de instructies in dit document volgt.
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Een stroom maken met Microsoft Flow
+Als uw CRM-systeem (Customer Relationship Management) niet expliciet wordt ondersteund in het Partnercentrum voor het ontvangen van Azure Marketplace- en AppSource-leads, u een HTTPS-eindpunt in Power Automate gebruiken om deze leads te verwerken. Met een HTTPS-eindpunt kunnen deze leads worden verzonden als een e-mailmelding of kunnen ze worden geschreven naar een CRM-systeem (Customer Relationship Management) dat wordt ondersteund door Power Automate. De instructies in dit artikel leiden u door het basisproces om een nieuwe stroom te maken met Behulp van Power Automate, die de HTTP POST-URL genereert die u invoert in de publicatieportal voor het **>-url-veld voor eindpunthttps.** Ook inbegrepen zijn instructies over hoe u uw stroom testen met behulp van een tool genaamd [Postman](https://www.getpostman.com/downloads/) die online kan worden gevonden.
+
+## <a name="create-a-flow-using-power-automate"></a>Een stroom maken met Power Automate
 
 1. Open de webpagina [Flow.](https://flow.microsoft.com/) Selecteer **Aanmelden**of als u nog geen account hebt, selecteert **u Aanmelden gratis** om een gratis Flow-account aan te maken.
 
@@ -168,7 +171,7 @@ U testen of alles werkt zoals verwacht met behulp van de volgende stappen met be
 
    ![Mijn flow testen](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
 
-4. Plak de HTTP-POST-URL uit de stroom die u hebt gemaakt in MS Flow, waar de *tekst URL van aanvraag invoeren*.
+4. Plak de HTTP-POST-URL uit de stroom die u hebt gemaakt in Power Automatiseer waar de *url van aanvraag invoeren*staat .
 
    ![De HTTP-POST-URL plakken](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
@@ -202,7 +205,10 @@ Wanneer u klaar bent om de leadmanagementgegevens voor uw aanbieding in de publi
 1. Navigeer naar de pagina **Installatie van aanbieding** voor uw aanbieding.
 2. Selecteer **Verbinding maken** onder de sectie Leadbeheer.
 3. Selecteer in het pop-upvenster **Verbindingsdetails https-eindpunt** voor de **leadbestemming** en plak in de HTTP-POST-URL van de stroom die u hebt gemaakt door eerdere stappen in het **URL-veld HTTPS-eindpunt te** volgen.
-4. Selecteer **Opslaan**. 
+4. **E-mail contact** opnemen : e-mails verstrekken aan mensen in uw bedrijf die e-mailmeldingen moeten ontvangen wanneer een nieuwe lead wordt ontvangen. U meerdere e-mails verstrekken door ze te scheiden met een puntkomma.
+5. Selecteer **OK**.
+
+Klik op de knop Valideren om ervoor te zorgen dat u met succes verbinding hebt gemaakt met een leadbestemming. Als dit lukt, heb je een testlead in de hoofdbestemming.
 
 >[!Note] 
 >U moet de rest van de aanbieding voltooien en publiceren voordat u leads voor de aanbieding ontvangen.
@@ -213,5 +219,5 @@ Wanneer leads worden gegenereerd, stuurt Microsoft leads naar de stroom, die wor
 
 ![Verbindingsdetails](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
 
-![Verbindingsdetails](./media/commercial-marketplace-lead-management-instructions-https/connection-details-1.png)
+![Verbindingsdetails](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 

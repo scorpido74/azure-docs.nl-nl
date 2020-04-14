@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
-ms.openlocfilehash: bd6c375231facc3d7afb35df74210d26b5f50ba8
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 9d2f4b02dd2b009e96abb65d4c42ef3a281e6ce1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387781"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262822"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>AppSource en Azure Marketplace vergelijken
 Storefronts in de [Azure Marketplace](https://azuremarketplace.microsoft.com) en [Microsoft AppSource](https://appsource.microsoft.com) bieden unieke klantvereisten. Gebruik winkelpuien om klanten te targeten op rol. U de juiste oplossing of service bieden op basis van uw klant.
@@ -30,10 +30,10 @@ In de volgende tabel worden de voordelen beschreven van het gebruik van een etal
 |:--- |:--- | :--- |
 | **Flexibiliteit bij facturering** | Azure Marketplace ondersteunt gratis, proefversies, BYOL- en transactiesbare aanbiedingstypen. Transactiesbare aanbiedingen zijn op basis van consumptie of op basis van een abonnement. Op verbruik gebaseerde aanbiedingen worden gefactureerd op basis van elk uurgebruik en kunnen een eerste vrije periode bieden. Diensten op basis van een abonnement worden maandelijks of jaarlijks gefactureerd tegen een tarief per stoel of vast tarief.| AppSource ondersteunt gratis, trial, BYOL en transactiesbare aanbiedingstypen. Transactiesbare aanbiedingen zijn op abonnementen gebaseerde SaaS-producten die maandelijks of jaarlijks kunnen worden facturering op een per stoel of vast tarief. |
 |**Verbindingen met andere partners**  | Op dit moment u een serviceprovider of bezorgpartners niet aan uw aanbieding koppelen. | Koppelt onafhankelijke softwareleveranciers, systeemintegratoren en managed serviceproviders aan specifieke implementatiescenario's. U gezamenlijk verkopen aan nieuwe klanten. |
-| **Automatisering** | Op dit moment u een serviceprovider of bezorgpartners niet aan uw aanbieding koppelen. Profiteer van geautomatiseerde software as a service (SaaS) met add-on provisioning. Gebruik de azure-apps: oplossingssjabloonpublicatieoptie om op SaaS gebaseerde scenario's voor het verzamelen en implementeren van gegevens te automatiseren. | Koppelt onafhankelijke softwareleveranciers, systeemintegratoren en managed serviceproviders aan specifieke implementatiescenario's. U gezamenlijk verkopen aan nieuwe klanten. |
+| **Automation** | Op dit moment u een serviceprovider of bezorgpartners niet aan uw aanbieding koppelen. Profiteer van geautomatiseerde software as a service (SaaS) met add-on provisioning. Gebruik de azure-apps: oplossingssjabloonpublicatieoptie om op SaaS gebaseerde scenario's voor het verzamelen en implementeren van gegevens te automatiseren. | Koppelt onafhankelijke softwareleveranciers, systeemintegratoren en managed serviceproviders aan specifieke implementatiescenario's. U gezamenlijk verkopen aan nieuwe klanten. |
 | **Meerdere cloudtypen** | Publiceer oplossingen voor zowel de public cloud als on-premises met behulp van de volgende typen:<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>Regionale wolken, waaronder China en Duitsland</li></ul> | Momenteel worden azure stack-, Azure-overheids- of regionale clouds niet ondersteund. |
 | **In-context presentatie aan klanten** | Maak uw oplossing beschikbaar in de Azure in-portal-ervaring voor contextueel zoeken. Gebruik de virtuele machine en Azure-apps: opties voor het publiceren van sjabloonvoor oplossingen. | Bereik meer klanten via de in-app-ervaring voor Microsoft-producten zoals Dynamics 365, Power BI en Office 365. |
 
 ## <a name="next-steps"></a>Volgende stappen
-*   Bekijk de [publicatiehandleiding azure marketplace en appsource](./marketplace-publishers-guide.md).
+*   Bekijk de [commerciële marktpublicatiegids](./marketplace-publishers-guide.md).
 

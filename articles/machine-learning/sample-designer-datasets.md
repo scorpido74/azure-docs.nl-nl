@@ -1,7 +1,7 @@
 ---
-title: Voorbeeldgegevenssets gebruiken in Azure Machine Learning-ontwerper
+title: Voorbeeldgegevens voor ontwerper
 titleSuffix: Azure Machine Learning
-description: Meer informatie over de voorbeeldgegevenssets die zijn opgenomen in Azure Machine Learning designer.
+description: Meer informatie over voorbeeldgegevenssets die beschikbaar zijn bij Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.date: 03/03/2020
-ms.openlocfilehash: 943e23aa9d83df33bbe636ce7aee62e6e5a2950e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b19c1ed5aa556a2cfb633ac6fbc0cf9f95d0337f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037310"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256974"
 ---
-# <a name="use-the-sample-datasets-in-azure-machine-learning-designer-preview"></a>De voorbeeldgegevenssets gebruiken in Azure Machine Learning designer (voorbeeld)
+# <a name="sample-datasets-in-azure-machine-learning-designer-preview"></a>Voorbeeldgegevenssets in Azure Machine Learning-ontwerper (voorbeeld)
 
 Wanneer u een nieuwe pijplijn maakt in Azure Machine Learning-ontwerper (voorbeeld), worden standaard een aantal voorbeeldgegevenssets opgenomen. Deze voorbeeldgegevenssets worden gebruikt door de voorbeeldpijplijnen in de startpagina van de ontwerper. 
 
@@ -37,7 +37,7 @@ De voorbeeldgegevenssets zijn beschikbaar onder de categorie **Gegevenssets**-**
 |Duitse credit card UCI-gegevensset|De UCI Statlog (German Credit Card) dataset ([Statlog+German+Credit+Data),](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data))met behulp van het duitse.data bestand.<br/>De gegevensset classificeert mensen, beschreven door een reeks kenmerken, als lage of hoge kredietrisico's. Elk voorbeeld vertegenwoordigt een persoon. Er zijn 20 functies, zowel numeriek als categorisch, en een binair label (de kredietrisicowaarde). De inschrijvingen met een hoog kredietrisico hebben label = 2, lage kredietrisicoposten hebben label = 1. De kosten van het verkeerd classificeren van een voorbeeld met een laag risico als hoog is 1, terwijl de kosten van het verkeerd classificeren van een hoog risico voorbeeld als laag is 5.|
 |IMDB-filmtitels|De gegevensset bevat informatie over films die zijn beoordeeld in Twitter-tweets: IMDB-film-ID, filmnaam, genre en productiejaar. Er zijn 17K films in de dataset. De dataset werd geïntroduceerd in de paper "S. Dooms, T. De Pessemier en L. Martens. MovieTweetings: een Movie Rating Dataset verzameld van Twitter. Workshop over Crowdsourcing en Human Computation for Recommender Systems, CrowdRec op RecSys 2013."|
 |Filmbeoordelingen|De gegevensset is een uitgebreide versie van de gegevensset FilmTweetings. De dataset heeft 170K ratings voor films, gewonnen uit goed gestructureerde tweets op Twitter. Elke instantie vertegenwoordigt een tweet en is een tuple: user ID, IMDB movie ID, rating, timestamp, aantal favorieten voor deze tweet, en het aantal retweets van deze tweet. De dataset werd beschikbaar gesteld door A. Said, S. Dooms, B. Loni en D. Tikk voor Recommender Systems Challenge 2014.|
-|Weergegevensset|Uurgebonden weerwaarnemingen van NOAA[(samengevoegde gegevens van 201304 tot 201310).](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)<br/>De weersgegevens hebben betrekking op waarnemingen van weerstations op luchthavens, die betrekking hebben op de periode april-oktober 2013. Voordat u naar de ontwerper wordt geüpload, werd de gegevensset als volgt verwerkt:    <br/> - Weerstation-iD's werden in kaart gebracht aan overeenkomstige luchthaven-geïdentificeerden    <br/> - Weerstations die niet zijn gekoppeld aan de 70 drukste luchthavens werden uitgefilterd    <br/> - De kolom Datum is opgesplitst in afzonderlijke kolommen voor jaar, maand en dag    <br/> - De volgende kolommen werden geselecteerd: AirportID, Jaar, Maand, Dag, Tijd, Tijdzone, SkyCondition, Zichtbaarheid, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DauwpuntCelsius, RelativeHumidity, Windsnelheid, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter|
+|Weergegevensset|Uurgebonden weerwaarnemingen van NOAA[(samengevoegde gegevens van 201304 tot 201310).](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)<br/>De weersgegevens hebben betrekking op waarnemingen van weerstations op luchthavens, die betrekking hebben op de periode april-oktober 2013. Voordat u naar de ontwerper wordt geüpload, werd de gegevensset als volgt verwerkt:    <br/> - Weerstation-iD's werden in kaart gebracht aan overeenkomstige luchthaven-geïdentificeerden    <br/> - Weerstations die niet zijn gekoppeld aan de 70 drukste luchthavens werden uitgefilterd    <br/> - De kolom Datum is opgesplitst in afzonderlijke kolommen voor jaar, maand en dag    <br/> - De volgende kolommen zijn geselecteerd: AirportID, Jaar, Maand, Dag, Tijd, Tijdzone, SkyCondition, Zichtbaarheid, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter|
 |Wikipedia SP 500-gegevensset|Gegevens zijn afgeleidhttps://www.wikipedia.org/) van Wikipedia ( gebaseerd op artikelen van elk S&P 500 bedrijf, opgeslagen als XML-gegevens.    <br/>Voordat u naar de ontwerper wordt geüpload, werd de gegevensset als volgt verwerkt:    <br/> - Tekstinhoud extraheren voor elk specifiek bedrijf    <br/> - Wikiopmaak verwijderen    <br/> - Niet-alfanumerieke tekens verwijderen    <br/> - Alle tekst converteren naar kleine letters    <br/> - Bekende bedrijfscategorieën zijn toegevoegd    <br/>Houd er rekening mee dat voor sommige bedrijven een artikel niet kon worden gevonden, dus het aantal records is minder dan 500.|
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: f38b0895b0d6eddcf63c082d3df205f4d9de9d50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b4b64bcca57e1dc98cdba10626597532ae1461c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297063"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269722"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werkruimten maken en beheren in de Azure-portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ In dit artikel maakt, bekijkt en verwijdert u [**Azure Machine Learning-werkruim
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Als u een werkruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning.](https://aka.ms/AMLFree)
+Als u een werkruimte wilt maken, hebt u een Azure-abonnement nodig. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning.](https://aka.ms/AMLFree)
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met behulp van de referenties voor uw Azure-abonnement. 
 
@@ -51,7 +51,7 @@ Als u een werkruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog ge
     ![Uw werkruimte configureren](./media/how-to-manage-workspace/select-edition.png)
 
 1. Wanneer u klaar bent met het configureren van de werkruimte, selecteert u **Controleren + Maken**.
-2. Bekijk de instellingen en breng eventuele aanvullende wijzigingen of correcties aan. Wanneer u tevreden bent met de instellingen, selecteert u **Maken**.
+2. Bekijk de instellingen en breng eventuele aanvullende wijzigingen of correcties aan. Als u tevreden bent met de instellingen, selecteert u **Maken**.
 
    > [!Warning] 
    > Het kan enkele minuten duren voordat uw werkruimte in de cloud is gemaakt.
@@ -90,6 +90,8 @@ U uw werkruimte upgraden van Basic edition naar Enterprise-editie om te profiter
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Een werkruimte zoeken
 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+
 1. Typ **Machine learning**in het bovenste zoekveld .  
 
 1. Selecteer **Machine learning**.
@@ -102,9 +104,9 @@ U uw werkruimte upgraden van Basic edition naar Enterprise-editie om te profiter
 
 ## <a name="delete-a-workspace"></a>Een werkruimte verwijderen
 
-Gebruik de knop Verwijderen boven aan de werkruimte die u wilt verwijderen.
+Selecteer **Verwijderen** boven aan de werkruimte die u wilt verwijderen in de [Azure-portal.](https://portal.azure.com/)
 
-  ![De knop Verwijderen](./media/how-to-manage-workspace/delete-workspace.png)
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Werkruimte verwijderen":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

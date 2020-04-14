@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 2014a775edd4e24f5d302d863d0b69d83009b8a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99d2bc95c1dd837bfc3bcabcead28777b7e6f746
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277987"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273933"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Een VHD met Azure-compatibel maken
+
+> [!IMPORTANT]
+> Vanaf 13 april 2020 beginnen we met het verplaatsen van het beheer van uw Azure Virtual Machine-aanbiedingen naar Partner Center. Na de migratie maak en beheer je je aanbiedingen in partnercentrum. Volg de instructies in [Uw technische assets van Azure Virtual Machine maken](https://aka.ms/AzureVMTechAsset) om uw gemigreerde aanbiedingen te beheren.
 
 In dit artikel worden de stappen beschreven die nodig zijn om een virtuele harde schijf (VHD) te maken voor een virtuele machine (VM) in de Azure Marketplace.  Het bevat ook aanbevolen procedures voor verschillende aspecten, zoals het gebruik van het Remote Desktop Protocol (RDP), het selecteren van een grootte voor de VM, het installeren van de nieuwste Windows-updates en het generaliseren van de VHD-afbeelding.  De volgende secties richten zich voornamelijk op windows-gebaseerde VHD's; Zie Linux voor meer informatie over het maken van Op Linux gebaseerde VHD's [op distributies die zijn goedgekeurd door Azure.](../../../virtual-machines/linux/endorsed-distros.md) 
 
@@ -26,9 +29,9 @@ In dit artikel worden de stappen beschreven die nodig zijn om een virtuele harde
 Het besturingssysteem VHD voor uw VM-afbeelding moet gebaseerd zijn op een door Azure goedgekeurde basisafbeelding die Windows Server of SQL Server bevat.
 Maak om te beginnen een VM op basis van een van de volgende afbeeldingen die zich op de Microsoft Azure-portal bevinden:
 
--   Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [Datacenter 2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
--   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
--   [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
+-    Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [Datacenter 2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
+-    [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
+-    [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
 
 > [!TIP]
 > Als u de huidige Azure-portal of PowerShell gebruikt, worden Windows Server-afbeeldingen die op 8 september 2014 en hoger zijn gepubliceerd, goedgekeurd.

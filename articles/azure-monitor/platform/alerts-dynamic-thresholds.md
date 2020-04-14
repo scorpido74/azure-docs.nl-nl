@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 9345138e948d84e0ea3c804dbd7a4b3c21daca2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668142"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261071"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrische waarschuwingen met dynamische drempelwaarden in Azure-monitor
 
@@ -93,7 +93,8 @@ Wanneer een waarschuwingsregel voor het eerst wordt gemaakt, worden de drempelwa
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Hoeveel gegevens zijn er nodig om een waarschuwing te activeren?
 
-Als u een nieuwe bron of ontbrekende metrische gegevens hebt, worden er geen waarschuwingen geactiveerd voordat drie dagen of 30 monsters met metrische gegevens beschikbaar zijn om nauwkeurige drempelwaarden te garanderen.
+Als u een nieuwe bron of ontbrekende metrische gegevens hebt, worden er geen waarschuwingen geactiveerd voordat er drie dagen waarschuwingen worden geactiveerd en zijn er ten minste 30 voorbeelden met metrische gegevens beschikbaar om nauwkeurige drempelwaarden te garanderen.
+Voor bestaande resources met voldoende metrische gegevens kunnen dynamische drempels onmiddellijk waarschuwingen activeren.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Aanbevolen procedures voor dynamische drempels
 

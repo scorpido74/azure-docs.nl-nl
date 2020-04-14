@@ -1,23 +1,23 @@
 ---
-title: C# zelfstudie over automatisch aanvullen en suggesties
+title: Automatisch aanvullen en suggesties
 titleSuffix: Azure Cognitive Search
-description: Deze zelfstudie toont automatische voltooiing en suggesties als een manier om invoer van zoektermen van gebruikers te verzamelen met behulp van vervolgkeuzelijst. Het bouwt voort op een bestaand hotelsproject.
+description: Deze zelfstudie toont automatisch aanvullen en suggesties als een manier om invoer van zoektermen van gebruikers te verzamelen met behulp van vervolgkeuzelijst. Het bouwt voort op een bestaand hotelsproject.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 8f244d64fe33a1529cf66314515bbe16e05ccffb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/12/2020
+ms.openlocfilehash: 4391b565b684b74258b9c71da88600d4628b5c6f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121529"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259762"
 ---
-# <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C# zelfstudie: automatisch aanvullen en suggesties toevoegen - Azure Cognitive Search
+# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# zelfstudie: Automatisch aanvullen en suggesties toevoegen - Azure Cognitive Search
 
-Meer informatie over het implementeren van automatische aanvulling (vooraf typen en suggesties) wanneer een gebruiker begint te typen in uw zoekvak. In deze zelfstudie tonen we vooraf gewenste resultaten en suggestieresultaten afzonderlijk en tonen we vervolgens een methode om ze te combineren om een rijkere gebruikerservaring te creëren. Een gebruiker hoeft mogelijk slechts twee of drie toetsen te typen om alle beschikbare resultaten te vinden. Deze zelfstudie bouwt voort op het paging-project dat is gemaakt in de [zelfstudie C# Zelfstudie: Zoekresultaten - Azure Cognitive Search.](tutorial-csharp-paging.md)
+Meer informatie over het implementeren van automatisch aanvullen (voortypen en voorgestelde documenten) wanneer een gebruiker begint te typen in een zoekvak. In deze zelfstudie tonen we automatisch voltooide query's en suggestieresultaten afzonderlijk en tonen we vervolgens een methode om ze te combineren om een rijkere gebruikerservaring te creëren. Een gebruiker hoeft mogelijk slechts twee of drie tekens te typen om alle beschikbare resultaten te vinden.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -28,9 +28,9 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
+Deze zelfstudie maakt deel uit van een reeks en bouwt voort op het paging-project dat is gemaakt in de [C# Tutorial: Search results pagetion - Azure Cognitive Search](tutorial-csharp-paging.md).
 
-Laat de [C# Tutorial: Search results pagination - Azure Cognitive Search](tutorial-csharp-paging.md) project up and running. Dit project kan uw eigen versie zijn, die u in de vorige zelfstudie hebt voltooid, of het installeren vanuit GitHub: [Eerste app maken.](https://github.com/Azure-Samples/azure-search-dotnet-samples)
+U ook de oplossing voor deze specifieke zelfstudie downloaden en uitvoeren: [3-add-typeahead.](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)
 
 ## <a name="add-suggestions"></a>Suggesties toevoegen
 

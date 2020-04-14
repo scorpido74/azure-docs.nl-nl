@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 04/08/2020
-ms.openlocfilehash: 5b99e2f31d82630e2adc138c11485201a617af81
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.date: 04/12/2020
+ms.openlocfilehash: dbd217c7135172c52a5ec7459930977960c452aa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892322"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260855"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor door de klant beheerde sleutelconfiguratie 
 
@@ -95,8 +95,7 @@ De procedure wordt momenteel niet ondersteund in de gebruikersinterface en het i
 Bijvoorbeeld:
 
 ```rst
-GET
-https://management.azure.com/subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 Authorization: Bearer eyJ0eXAiO....
 ```
 
@@ -106,8 +105,8 @@ U het token verkrijgen met een van de volgende methoden:
 
 1. De methode [App-registraties](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens) gebruiken.
 2. In de Azure Portal
-    1. Navigeren naar Azure-portal in 'hulpprogramma voor ontwikkelaars (F12)
-    1. Zoek naar autorisatietekenreeks onder 'Kopteksten aanvragen' in een van de exemplaren 'batch?api-version'. Het kijkt als: "vergunning: Het teken \<\>van de drager ". 
+    1. Navigeren naar Azure-portal terwijl u in 'hulpprogramma voor ontwikkelaars' (F12)
+    1. Zoek naar autorisatietekenreeks onder 'Kopteksten aanvragen' in een van de exemplaren 'batch?api-version'. Het lijkt erop: "autorisatie: Drager eyJ0eXAiO....". 
     1. Kopieer en voeg deze toe aan uw API-aanroep volgens de onderstaande voorbeelden.
 3. Navigeer naar de documentatiesite van Azure REST. Druk op 'Probeer het' op een API en kopieer het Bearer-token.
 
@@ -115,29 +114,52 @@ U het token verkrijgen met een van de volgende methoden:
 
 Sommige bewerkingen in deze configuratieprocedure worden asynchroon uitgevoerd omdat ze niet snel kunnen worden voltooid. Het antwoord voor asynchrone bewerking retourneert in eerste instantie een HTTP-statuscode 200 (OK) en koptekst met de eigenschap *Azure-AsyncOperation* wanneer deze wordt geaccepteerd:
 ```json
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview"
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
 
 U de status van de asynchrone bewerking controleren door een GET-aanvraag te verzenden naar de *azure-AsyncOperation-headerwaarde:*
 ```rst
-GET "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
-De hoofdtekst van het antwoord van de bewerking bevat informatie over de bewerking en de eigenschap *Status* geeft de status aan. De asynchrone bewerkingen in deze configuratieprocedure en hun statussen zijn:
+Het antwoord bevat informatie over de bewerking en de *status*ervan . Het kan een van de volgende zijn:
 
-**Een *clusterbron* maken**
-* ProvisioningAccount -- ADX-cluster is in provisioning 
-* Geslaagd - ADX-clusterprovisioning is voltooid
+De bewerking is in volle gang
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "InProgress", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+}
+```
 
-**Machtigingen verlenen aan uw Key Vault**
-* Bijwerken - De update van sleutel-id-details is in volle gang
-* Geslaagd - Update voltooid
+Bewerking is voltooid
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Succeeded", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+}
+```
 
-**Log Analytics-werkruimten koppelen**
-* Koppeling -- De koppeling werkruimte aan het cluster is in uitvoering
-* Geslaagd -- Vereniging voltooid
-
+Bewerking is mislukt
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Failed", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+    "error" : { 
+        "code": "error-code",  
+        "message": "error-message" 
+    }
+}
+```
 
 ### <a name="subscription-whitelisting"></a>Whitelisting van abonnementen
 
@@ -149,6 +171,8 @@ CMK-mogelijkheden zijn een early access-functie. De abonnementen waarbij u *clus
 ### <a name="storing-encryption-key-kek"></a>Versleutelingssleutel opslaan (KEK)
 
 Maak of gebruik een Azure Key Vault die u al moet genereren of importeer een sleutel die moet worden gebruikt voor gegevensversleuteling. De Azure Key Vault moet zijn geconfigureerd als herstelbaar om uw sleutel en de toegang tot uw gegevens in Azure Monitor te beschermen. U deze configuratie verifiëren onder eigenschappen in uw Key Vault, zowel *Soft delete-* als *Purge-beveiliging* moeten zijn ingeschakeld.
+
+![Instellingen voor zachte verwijdering en zuivering](media/customer-managed-keys/soft-purge-protection.png)
 
 Deze instellingen zijn beschikbaar via CLI en PowerShell:
 - [Voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
@@ -189,11 +213,10 @@ De identiteit wordt toegewezen aan de *clusterbron* tijdens het maken.
 
 **Reactie**
 
-200 OK en header wanneer geaccepteerd.
->[!Important]
-> Tijdens de vroege toegangsperiode van de functie wordt het ADX-cluster handmatig ingericht. Hoewel het de inrichting van het adx-cluster onder de tijd duurt om te voltooien, u de inrichtingsstatus op twee manieren controleren:
-> 1. Kopieer de *URL-waarde van Azure-AsyncOperation* uit het antwoord en gebruik deze voor de controle van de bedrijfsstatus in [asynchrone bewerkingen](#asynchronous-operations-and-status-check)
-> 2. Stuur een GET-aanvraag op de *clusterbron* en bekijk de *provisioningState-waarde.* Het is *ProvisioningAccount* tijdens het inrichten en *geslaagd* wanneer voltooid.
+200 OK en header.
+Tijdens de vroege toegangsperiode van de functie wordt het ADX-cluster handmatig ingericht. Hoewel het de inrichting van het adx-cluster onder de tijd duurt om te voltooien, u de inrichtingsstatus op twee manieren controleren:
+1. Kopieer de URL-waarde van Azure-AsyncOperation uit het antwoord en volg de [statuscontrole asynchrone bewerkingen](#asynchronous-operations-and-status-check).
+2. Stuur een GET-aanvraag op de *clusterbron* en bekijk de *provisioningState-waarde.* Het is *ProvisioningAccount* tijdens het inrichten en *geslaagd* wanneer voltooid.
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure Monitor-gegevensopslag (ADX-cluster) inrichten
 
@@ -205,7 +228,7 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> Het antwoord kopiëren en opslaan, omdat u de details in latere stappen nodig hebt
+> Kopieer en sla het antwoord op, omdat u de details in de volgende stappen nodig hebt.
 
 **Reactie**
 
@@ -260,11 +283,11 @@ Werk de *Clusterbron* KeyVaultProperties bij met sleutel-id-details.
 
 Deze resourcemanager-aanvraag is een asynchrone bewerking.
 
->[!Warning]
+> [!Warning]
 > U moet een volledige hoofdtekst opgeven in *clusterbronupdate* met *identiteit,* *sku,* *KeyVaultProperties* en *locatie.* Als u de details *KeyVaultProperties* mist, wordt de sleutel-id uit de *clusterbron* verwijderd en [wordt de sleutel intrekking veroorzaakt.](#cmk-kek-revocation)
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -290,11 +313,10 @@ Content-type: application/json
 
 **Reactie**
 
-200 OK en header wanneer geaccepteerd.
->[!Important]
-> Het duurt de propagatie van de Sleutel-id een paar minuten te voltooien. U de inrichtingsstatus op twee manieren controleren:
-> 1. Kopieer de *URL-waarde van Azure-AsyncOperation* uit het antwoord en gebruik deze voor de controle van de bedrijfsstatus in [asynchrone bewerkingen](#asynchronous-operations-and-status-check)
-> 2. Stuur een GET-aanvraag op de *clusterbron* en bekijk de eigenschappen *KeyVaultProperties.* Uw onlangs bijgewerkte sleutel-id-gegevens moeten worden teruggegeven in het antwoord.
+200 OK en header.
+Het duurt de propagatie van de Sleutel-id een paar minuten te voltooien. U de inrichtingsstatus op twee manieren controleren:
+1. Kopieer de URL-waarde van Azure-AsyncOperation uit het antwoord en volg de [statuscontrole asynchrone bewerkingen](#asynchronous-operations-and-status-check).
+2. Stuur een GET-aanvraag op de *clusterbron* en bekijk de eigenschappen *KeyVaultProperties.* Uw onlangs bijgewerkte sleutel-id-gegevens moeten worden teruggegeven in het antwoord.
 
 Een antwoord op GET-aanvraag op de *clusterbron* moet er als volgt uitzien wanneer de update van de sleutel-id is voltooid:
 
@@ -330,8 +352,6 @@ Een antwoord op GET-aanvraag op de *clusterbron* moet er als volgt uitzien wanne
 ### <a name="workspace-association-to-cluster-resource"></a>Werkruimtekoppeling naar *clusterbron*
 Volg voor de CMK-configuratie van Application Insights de inhoud van de bijlage voor deze stap.
 
-Deze resourcemanager-aanvraag is een asynchrone bewerking.
-
 U moet machtigingen voor 'schrijven' hebben voor zowel uw werkruimte als *clusterbron* om deze bewerking uit te voeren, waaronder de volgende acties:
 
 - In werkruimte: Microsoft.OperationalInsights/workspaces/write
@@ -345,7 +365,7 @@ U moet machtigingen voor 'schrijven' hebben voor zowel uw werkruimte als *cluste
 Deze resourcemanager-aanvraag is een asynchrone bewerking.
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -358,15 +378,13 @@ Content-type: application/json
 
 **Reactie**
 
-200 OK en header wanneer geaccepteerd.
->[!Important]
-> Het kan tot 90 minuten werken om te voltooien. Gegevens die worden ingenomen in uw werkruimten, worden pas versleuteld opgeslagen met uw beheerde sleutel na een succesvolle koppeling naar werkruimten.
-> Als u de status van de koppeling van de werkruimte wilt controleren, kopieert u de *URL-waarde azure-AsyncOperation* vanuit het antwoord en gebruikt u deze voor de controle van de bedrijfsstatus in [asynchrone bewerkingen](# asynchronous-operations-and-status-check)
-
-U de *clusterbron* die aan uw werkruimte is gekoppeld controleren door een GET-aanvraag naar [werkruimten](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) te verzenden : het antwoord opvragen en observeren. De *clusterResourceId* geeft aan op de clusterbron-id. *Cluster*
+200 OK en header.
+Ingenomen gegevens worden versleuteld opgeslagen met uw beheerde sleutel na associatiebewerking, wat tot 90 minuten kan duren. U de status van de werkruimtekoppeling op twee manieren controleren:
+1. Kopieer de URL-waarde van Azure-AsyncOperation uit het antwoord en volg de [statuscontrole asynchrone bewerkingen](#asynchronous-operations-and-status-check).
+2. Een [werkruimte](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) verzenden : vraag u en observeer het antwoord, de bijbehorende werkruimte heeft een clusterResourceId onder 'functies'.
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 ```
 
 **Reactie**
@@ -455,7 +473,7 @@ Al uw gegevens zijn toegankelijk na de sleutelrotatiebewerking, inclusief gegeve
 - Alle *clusterbronnen* voor een resourcegroep opvragen:
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
@@ -492,7 +510,7 @@ Al uw gegevens zijn toegankelijk na de sleutelrotatiebewerking, inclusief gegeve
 - Download alle *clusterbronnen* voor een abonnement:
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
@@ -503,8 +521,7 @@ Al uw gegevens zijn toegankelijk na de sleutelrotatiebewerking, inclusief gegeve
 - Verwijder uw *clusterbron:* er wordt een bewerking voor soft-delete uitgevoerd om het herstel van uw clusterbron, uw gegevens en bijbehorende werkruimten binnen 14 dagen mogelijk te maken, ongeacht of de verwijdering per ongeluk of opzettelijk was. De naam *van de clusterbron* blijft behouden tijdens de periode voor het verwijderen van soft-delete en u geen nieuw cluster met die naam maken. Na de periode voor het verwijderen van soft delete zijn uw *clusterbron* en -gegevens niet-herstelbaar. Gekoppelde werkruimten worden losgekoppeld van de *clusterbron* en er worden nieuwe gegevens ingenomen met gedeelde opslag en versleuteld met Microsoft-sleutel.
 
   ```rst
-  DELETE
-  https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
 
@@ -540,8 +557,10 @@ Deze bron wordt gebruikt als tussenliggende identiteitsverbinding tussen uw Key 
 
 **Maken**
 
+Deze resourcemanager-aanvraag is een asynchrone bewerking.
+
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -562,10 +581,10 @@ Content-type: application/json
 
 **Reactie**
 
-202 Geaccepteerd. Dit is een standaard Resource Manager-antwoord voor asynchrone bewerkingen.
-
->[!Important]
-> Het duurt de inrichting van de underly ADX cluster een paar minuten te voltooien. U de inrichtingsstatus verifiëren bij het uitvoeren van GET REST API-aanroep op de *clusterbron* en kijken naar de *waarde provisioningState.* Het is *ProvisioningAccount* tijdens het inrichten en "Geslaagd" wanneer voltooid.
+200 OK en header.
+Tijdens de vroege toegangsperiode van de functie wordt het ADX-cluster handmatig ingericht. Hoewel het de inrichting van het adx-cluster onder de tijd duurt om te voltooien, u de inrichtingsstatus op twee manieren controleren:
+1. Kopieer de URL-waarde van Azure-AsyncOperation uit het antwoord en volg de [statuscontrole asynchrone bewerkingen](#asynchronous-operations-and-status-check).
+2. Stuur een GET-aanvraag op de *clusterbron* en bekijk de *provisioningState-waarde.* Het is *ProvisioningAccount* tijdens het inrichten en *geslaagd* wanneer voltooid.
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Een component koppelen aan een *clusterbron* met [componenten - API maken of bijwerken](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
 
@@ -579,7 +598,7 @@ U moet machtigingen voor 'schrijven' hebben op zowel uw component als *clusterbr
 > Als u wilt controleren of het ADX-cluster is ingericht, voert u *de API Voor clusterbron* Get REST uit en controleert u of de *provisioningstatewaarde* *is geslaagd*.
 
 ```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
@@ -614,7 +633,7 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> Kopieer en bewaar de "principe-id" waarde, omdat je het nodig hebt in de volgende stappen.
+> Kopieer en bewaar het antwoord omdat u het nodig hebt in de volgende stappen.
 
 **Een component koppelen**
 

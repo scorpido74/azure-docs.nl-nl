@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: c6062ec008a7a12c720cf28c2d79531e805ebba0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9398820c88120400d97fbaf8cb0da100c2bdbf81
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984432"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261751"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
 [Azure Files](storage-files-introduction.md) biedt volledig beheerde bestandsshares in de cloud die toegankelijk zijn via het industriestandaard [Server Message Block (SMB)-protocol.](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) U Azure-bestandsshares gelijktijdig monteren op cloud- of on-premises implementaties van Windows, Linux en macOS. U azure-bestandsshares ook cacheopslaan op Windows Server-machines door Azure File Sync te gebruiken voor snelle toegang in de buurt van waar de gegevens worden gebruikt.
@@ -217,7 +217,7 @@ In dit artikel worden veelgestelde vragen beantwoord over de functies en functio
 * <a id="ad-aad-smb-files"></a>
 **Hoe kan ik controleren of ik AD-verificatie heb ingeschakeld voor mijn opslagaccount en de AD-domeingegevens?**
 
-    U verwijzen naar de instructies [die hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) worden aangeboden om te valideren of Azure Files AD-verificatie is ingeschakeld in uw opslagaccount en de AD-domeingegevens op te halen.
+    U verwijzen naar de instructies [die hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account) worden aangeboden om te valideren of Azure Files AD-verificatie is ingeschakeld in uw opslagaccount en de AD-domeingegevens op te halen.
     
 * <a id="encryption-at-rest"></a>
 **Hoe kan ik ervoor zorgen dat mijn Azure-bestandsshare in rust wordt versleuteld?**  

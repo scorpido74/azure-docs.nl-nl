@@ -3,7 +3,7 @@ title: HTTP-headers voor Azure CDN van Microsoft debuggen | Microsoft Documenten
 description: Foutopsporingscacheaanvragen bevat aanvullende informatie over het cachebeleid dat is toegepast op het aangevraagde element. Deze headers zijn specifiek voor Azure CDN van Microsoft.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2019
-ms.author: magattus
-ms.openlocfilehash: 297c65c1cd89163b8663819f844dc6c2a83fd1bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 2475bdce3ab8f153cc837601964bf4a2e90a470c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68814068"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260408"
 ---
 # <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>Foutopsporing HTTP-header voor Azure CDN van Microsoft
 De foutopsporingsantwoordkop `X-Cache`geeft details over welke laag van de CDN-stack de inhoud is aangeboden. Deze header is specifiek voor Azure CDN van Microsoft.

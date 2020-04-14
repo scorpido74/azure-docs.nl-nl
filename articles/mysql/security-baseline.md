@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 362b35af191c1caebeb30149ce060a5366182ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cffefb294aaeeb4d66358ceae72c98becd04cc58
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289418"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261955"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure Security Baseline voor Azure Database voor MySQL
 
@@ -134,7 +134,7 @@ Servicetaggebruik voor Azure Database voor MySQL begrijpen:https://docs.microsof
 
 Azure-beleid configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Voorbeelden van Azure-beleid voor netwerken:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Voorbeelden van Azure-beleid voor netwerken:https://docs.microsoft.com/azure/governance/policy/samples/
 
 Een Azure Blueprint maken:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -904,7 +904,7 @@ Key Vault-verificatie voorzien van een beheerde identiteit:https://docs.microsof
 
 **Richtlijnen**: Azure Database voor MySQL-instantie ondersteunt Azure Active Directory-verificatie (in preview) om toegang te krijgen tot databases.  Tijdens het maken van de Azure Database voor MySQL-instantie geeft u referenties op voor een beheerdersgebruiker. Deze beheerder kan worden gebruikt om extra databasegebruikers te maken.  
 
-Voor Azure Virtual Machines of webtoepassingen die worden uitgevoerd op Azure App Service die wordt gebruikt om toegang te krijgen tot uw Azure Database voor MySQL-instanties, gebruikt u Managed Service Identity in combinatie met Azure Key Vault om referenties voor Azure Database voor MySQL op te slaan en op te halen Exemplaar. Zorg ervoor dat Key Vault Soft Delete is ingeschakeld.
+Gebruik Managed Service Identity in combinatie met Azure Key Vault om referenties voor Azure Database voor MySQL-instantie op te slaan en op te halen voor Azure App Service. Zorg ervoor dat Key Vault Soft Delete is ingeschakeld.
 
 Beheerde identiteiten gebruiken om Azure-services een automatisch beheerde identiteit te bieden in Azure Active Directory (AD). Met Managed Identities u zich verifiëren voor elke service die Azure AD-verificatie ondersteunt, inclusief Key Vault, zonder referenties in uw code.
 

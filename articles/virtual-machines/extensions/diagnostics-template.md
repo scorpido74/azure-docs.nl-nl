@@ -3,7 +3,7 @@ title: Monitoring & diagnose toevoegen aan een virtuele Azure-machine
 description: Gebruik een Azure Resource Manager-sjabloon om een nieuwe virtuele Windows-machine te maken met Azure-diagnostische extensie.
 services: virtual-machines-windows
 documentationcenter: ''
-author: sbtron
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/31/2017
-ms.author: saurabh
+ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2490c3de60e0deac6a1a4ddc5abc95cb46e240b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d100f054da5f82bc4dea51e054a28cca07f5de7b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073848"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258827"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Controle en diagnose gebruiken met een Windows VM- en Azure Resource Manager-sjablonen
 De Azure Diagnostics Extension biedt de bewakings- en diagnostische mogelijkheden op een windows-gebaseerde Virtuele Machine op Azure. U deze mogelijkheden op de virtuele machine inschakelen door de extensie op te nemen als onderdeel van de sjabloon Azure Resource Manager. Zie [Azure Resource Manager-sjablonen ontwerpen met VM-extensies](../windows/template-description.md#extensions) voor meer informatie over het opnemen van een extensie als onderdeel van een sjabloon voor virtuele machines. In dit artikel wordt beschreven hoe u de Azure Diagnostics-extensie toevoegen aan een sjabloon voor virtuele windows-machines.  
@@ -84,7 +84,7 @@ Het *instellingen-element* bevat configuratieseigenschappen voor de extensie die
 De eigenschappen in *protectedSettings* (ook wel privéconfiguratie genoemd) kunnen worden ingesteld, maar kunnen niet worden teruggelezen nadat ze zijn ingesteld. Het alleen-schrijven-karakter van *protectedSettings* maakt het handig voor het opslaan van geheimen, zoals de opslagaccountsleutel waar de diagnostische gegevens worden geschreven.    
 
 ## <a name="specifying-diagnostics-storage-account-as-parameters"></a>Het opslagaccount voor diagnostische gegevens opgeven als parameters
-De diagnostische extensie json fragment hierboven gaat uit van twee parameters *bestaandediagnosticsStorageAccountName* en *bestaandediagnosticsStorageResourceGroup* om de diagnostische opslag account waar diagnostische gegevens worden opgeslagen op te geven. Als u het diagnoseopslagaccount als parameter opgeeft, u het diagnoseopslagaccount eenvoudig wijzigen in verschillende omgevingen, bijvoorbeeld voor het testen van een ander diagnostisch opslagaccount en een ander account voor uw productie-implementatie.  
+De diagnostische extensie json fragment hierboven gaat uit van twee parameters *bestaandediagnosticsStorageAccountName* en *bestaandediagnosticsStorageResourceGroup* om de diagnostische opslag account waar diagnostische gegevens worden opgeslagen op te geven. Als u het diagnostischopslagaccount als parameter opgeeft, u het opslagaccount voor diagnostiek eenvoudig wijzigen in verschillende omgevingen, bijvoorbeeld voor het gebruik van een ander diagnostisch opslagaccount voor tests en een ander account voor uw productie-implementatie.  
 
 ```json
 "existingdiagnosticsStorageAccountName": {
@@ -101,7 +101,7 @@ De diagnostische extensie json fragment hierboven gaat uit van twee parameters *
 }
 ```
 
-Het is de beste gewoonte om een diagnostisch opslagaccount op te geven in een andere resourcegroep dan de resourcegroep voor de virtuele machine. Een resourcegroep kan worden beschouwd als een implementatie-eenheid met een eigen levensduur, een virtuele machine kan worden geïmplementeerd en opnieuw worden geïmplementeerd als nieuwe configuraties updates worden gemaakt om het, maar u doorgaan met het opslaan van de diagnostische gegevens in dezelfde opslag account over die virtuele machine-implementaties. Als het opslagaccount in een andere resource is, kan het opslagaccount gegevens van verschillende implementaties van virtuele machines accepteren, zodat problemen in de verschillende versies eenvoudig kunnen worden opgelost.
+Het is de beste gewoonte om een diagnostisch opslagaccount op te geven in een andere resourcegroep dan de resourcegroep voor de virtuele machine. Een resourcegroep kan worden beschouwd als een implementatie-eenheid met een eigen levensduur, een virtuele machine kan worden geïmplementeerd en opnieuw worden geïmplementeerd als nieuwe configuraties worden uitgevoerd, maar u wilt misschien doorgaan met het opslaan van de diagnostische gegevens in dezelfde opslagaccount voor die virtuele machine-implementaties. Als het opslagaccount in een andere resource is, kan het opslagaccount gegevens van verschillende implementaties van virtuele machines accepteren, zodat problemen in de verschillende versies eenvoudig kunnen worden opgelost.
 
 > [!NOTE]
 > Als u een sjabloon voor de virtuele machine van Windows maakt vanuit Visual Studio, wordt het standaardopslagaccount mogelijk ingesteld op hetzelfde opslagaccount waarop de virtuele machine VHD wordt geüpload. Dit is om de initiële installatie van de VM te vereenvoudigen. Houd de sjabloon opnieuw in om een ander opslagaccount te gebruiken dat als parameter kan worden doorgegeven. 

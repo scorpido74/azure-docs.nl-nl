@@ -3,7 +3,7 @@ title: Wat is een netwerk voor contentlevering (CDN)? - Azure | Microsoft Docs
 description: Leer wat een netwerk voor contentlevering (CDN) is en hoe u het kunt gebruiken voor het leveren van inhoud met hoge bandbreedte.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 05/09/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4158df06b4eea175a4225e478325f8f151795850
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 262e5b7bbcbf6c463ef97d5acc72248d37195124
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75660627"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260434"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Wat is een netwerk voor contentlevering in Azure?
 Een netwerk voor contentlevering (CDN) is een gedistribueerd netwerk van servers dat webinhoud efficiënt aan gebruikers kan leveren. In CDN's wordt gecachede inhoud opgeslagen op randservers in aanwezigheidspunt (POP)-locaties in de buurt van eindgebruikers om de latentie zo klein mogelijk te maken. 
@@ -69,7 +69,7 @@ Azure CDN biedt de volgende belangrijke functies:
 - [Ondersteuning voor aangepaste HTTPS-domeinen](cdn-custom-ssl.md)
 - [Azure-diagnostische logboeken](cdn-azure-diagnostic-logs.md)
 - [Bestandscompressie](cdn-improve-performance.md)
-- [Geofilters](cdn-restrict-access-by-country.md)
+- [Geo-filteren](cdn-restrict-access-by-country.md)
 
 Zie [Azure CDN-producteigenschappen vergelijken](cdn-features.md) voor een complete lijst met eigenschappen waarvoor elk Azure CDN-product ondersteuning biedt.
 

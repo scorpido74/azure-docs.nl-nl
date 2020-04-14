@@ -9,38 +9,38 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: f097479b67a7b48eca4a2710db3bd7eed6ddc982
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11469d992e0f5669cd3fc1e3864627dd0b8ae23d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77013938"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263337"
 ---
 Het volgende geeft een overzicht van de belangrijkste limieten in algemene beschikbaarheid.
 
 ### <a name="sku-ingress-rates-and-capacities"></a>SKU-invallen de tarieven en capaciteiten
 
-S1- en S2 SKU-invallen bieden flexibiliteit bij het configureren van een nieuwe Time Series Insights-omgeving.
+S1- en S2 SKU-invallen bieden flexibiliteit bij het configureren van een nieuwe Time Series Insights-omgeving. Uw SKU-capaciteit geeft uw dagelijkse ingressrate aan op basis van het aantal opgeslagen gebeurtenissen of bytes, afhankelijk van wat het eerst komt. Houd er rekening mee dat invallen *per minuut*worden gemeten en **dat throttling** wordt toegepast met behulp van het tokenbucket-algoritme. Binnendringen wordt gemeten in blokken van 1 KB. Een werkelijke gebeurtenis van 0,8 KB wordt bijvoorbeeld gemeten als één gebeurtenis en een gebeurtenis van 2,6 KB wordt als drie gebeurtenissen geteld.
 
 | S1 SKU-capaciteit | Invallend tarief | Maximale opslagcapaciteit
 | --- | --- | --- |
-| 1 | 1 GB (1 miljoen evenementen) | 30 GB (30 miljoen evenementen) per maand |
-| 10 | 10 GB (10 miljoen evenementen) | 300 GB (300 miljoen evenementen) per maand |
+| 1 | 1 GB (1 miljoen evenementen) per dag | 30 GB (30 miljoen evenementen) per maand |
+| 10 | 10 GB (10 miljoen evenementen) per dag | 300 GB (300 miljoen evenementen) per maand |
 
 | S2 SKU-capaciteit | Invallend tarief | Maximale opslagcapaciteit
 | --- | --- | --- |
-| 1 | 10 GB (10 miljoen evenementen) | 300 GB (300 miljoen evenementen) per maand |
-| 10 | 100 GB (100 miljoen evenementen) | 3 TB (3 miljard evenementen) per maand |
+| 1 | 10 GB (10 miljoen evenementen) per dag | 300 GB (300 miljoen evenementen) per maand |
+| 10 | 100 GB (100 miljoen evenementen) per dag | 3 TB (3 miljard evenementen) per maand |
 
 > [!NOTE]
 > Capaciteiten schalen lineair, dus een S1 SKU met capaciteit 2 ondersteunt 2 GB (2 miljoen) gebeurtenissen per dag ingress rate en 60 GB (60 miljoen gebeurtenissen) per maand.
 
 S2 SKU-omgevingen ondersteunen aanzienlijk meer gebeurtenissen per maand en hebben een aanzienlijk hogere invallende capaciteit.
 
-| SKU  | Aantal gebeurtenissen per maand  | Gebeurtenisgrootte per maand  | Aantal gebeurtenissen per minuut | Gebeurtenisgrootte per minuut  |
+| SKU  | Aantal gebeurtenissen per maand  | Aantal gebeurtenissen per minuut | Gebeurtenisgrootte per minuut  |
 |---------|---------|---------|---------|---------|
-| S1     |   30 miljoen     |  30 GB     |  720    |  720 KB   |
- |S2     |   300 miljoen    |   300 GB   | 7,200   | 7.200 KB  |
+| S1     |   30 miljoen   |  720    |  720 KB   |
+ |S2     |   300 miljoen   | 7,200   | 7.200 KB  |
 
 ### <a name="property-limits"></a>Eigenschappenlimieten
 

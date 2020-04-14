@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: a2d0b9bdfba1b96ad42e45d54faf106b2361e29d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cdc9f9a4503c786065b6d514f61fe17eae4ce5e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264781"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270907"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Autoshutdown configureren voor lab- en compute-virtuele machines in Azure DevTest Labs
 
@@ -28,7 +28,7 @@ In dit artikel wordt uitgelegd hoe u instellingen voor automatische afsluiting c
 ## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>Automatische uitschakeling configureren voor laboratoriumVM's (DevTest Labs)
 Azure DevTest Labs stelt u in staat om kosten te beheersen en afval in uw labs te minimaliseren door beleid (instellingen) voor elk lab te beheren. In dit artikel ziet u hoe u het beleid voor automatische afsluiting voor een labaccount configureert en instellingen voor automatische afsluiting configureert voor een lab in het labaccount. Zie [Labbeleid definiëren in Azure DevTest Labs](devtest-lab-set-lab-policy.md)als u wilt zien hoe u elk labbeleid instelt.  
 
-### <a name="set-auto-shut-down-policy-for-a-lab"></a>Automatisch afsluiten-beleid instellen voor een lab
+### <a name="set-auto-shutdown-policy-for-a-lab"></a>Beleid voor automatische afsluiting instellen voor een lab
 Als eigenaar van een lab u een afsluitschema configureren voor alle VM's in uw lab. Door dit te doen, u kosten besparen door machines die niet worden gebruikt (idle). U een afsluitbeleid voor al uw lab-VM's centraal afdwingen, maar ook uw labgebruikers de moeite besparen om een schema voor hun afzonderlijke machines in te stellen. Met deze functie u het beleid op uw labschema instellen, vanaf het bieden van geen controle tot volledige controle, voor uw labgebruikers. Als eigenaar van een lab u dit beleid configureren door de volgende stappen te nemen:
 
 1. Selecteer op de startpagina van uw lab de optie **Configuratie en beleid**.
@@ -42,7 +42,7 @@ Het autoshutdown-beleid helpt om labverspilling te minimaliseren doordat u de ti
 
 Voer de volgende stappen uit om het beleid voor een lab weer te geven (en te wijzigen):
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Alle services**en selecteer Vervolgens **DevTest Labs** in de lijst.
 3. Selecteer in de lijst met laboratoria het gewenste lab.   
 4. Selecteer **Configuratie en beleid**.
@@ -191,13 +191,34 @@ Maak om aan de slag te gaan een logische app in uw Azure-abonnement met de volge
 
 ## <a name="configure-autoshutdown-for-compute-vms"></a>Automatisch afsluiten configureren voor compute VM's
 
-1. Selecteer **op** de pagina Virtuele machine de optie **Automatisch afsluiten** in het linkermenu. 
+1. Selecteer **op** de pagina Virtuele machine de optie **Automatisch afsluiten** in het linkermenu in de sectie **Bewerkingen.** 
 2. Selecteer op de pagina **Automatisch afsluiten** de optie **Aan** om dit beleid in te schakelen en **Schakel het** uit om het uit te schakelen.
 3. Als u dit beleid inschakelt, geeft u de **tijd** (en **tijdzone)** op waarop de vm moet worden afgesloten.
 4. Geef **Ja** of **Nee** op voor de optie om een melding 30 minuten voor de opgegeven automatische afsluittijd te verzenden. Als u **Ja**kiest, voert u een webhook URL-eindpunt of e-mailadres in waarin wordt aangegeven waar u de melding wilt plaatsen of verzenden. De gebruiker ontvangt een melding en krijgt de mogelijkheid om de shutdown uit te stellen. Zie de sectie [Meldingen](#notifications) voor meer informatie. 
 9. Selecteer **Opslaan**.
 
     ![Automatische afsluiting configureren voor een compute-vm](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
+
+### <a name="view-activity-logs-for-auto-shutdown-updates"></a>Activiteitslogboeken weergeven voor updates voor automatisch afsluiten
+Wanneer u de instelling voor automatisch afsluiten bijwerkt, ziet u de activiteit die is aangemeld in het activiteitenlogboek voor de vm. 
+
+1. Navigeer in de [Azure-portal](https://portal.azure.com)naar de startpagina voor uw vm.
+2. Selecteer **Activiteitslogboek** in het linkermenu. 
+3. **Resource verwijderen: mycomputevm** uit filters.
+3. Controleer of u de bewerking **Schema's toevoegen of wijzigen** in het activiteitenlogboek ziet. Als u het niet ziet, wacht u eens op en vernieuwt u het activiteitenlogboek.
+
+    ![Vermelding van activiteitenlogboeken](./media/devtest-lab-auto-shutdown/activity-log-entry.png)
+4. Selecteer de bewerking **Planningen toevoegen of wijzigen** om de volgende informatie op de pagina **Overzicht** weer te geven:
+
+    - Bedrijfsnaam (schema's toevoegen of wijzigen)
+    - De datum en het tijdstip waarop de instelling voor automatisch afsluiten is bijgewerkt.
+    - Het e-mailadres van de gebruiker die de instelling heeft bijgewerkt. 
+
+        ![Overzicht van de vermelding van het activiteitenlogboek](./media/devtest-lab-auto-shutdown/activity-log-entry-summary.png)
+5. Ga naar het tabblad **Geschiedenis wijzigen** op de pagina **Schema's toevoegen of wijzigen,** zie de wijzigingsgeschiedenis voor de instelling. In het volgende voorbeeld is de uitschakeltijd gewijzigd van 19.00 uur naar 18.00 uur op 10 april 2020 om 15:18:47 EST. En, de instelling was uitgeschakeld om 15:25:09 EST. 
+
+    ![Activiteitenlogboek - geschiedenis wijzigen](./media/devtest-lab-auto-shutdown/activity-log-entry-change-history.png)
+6. Als u meer informatie over de bewerking wilt zien, schakelt u over naar het tabblad **JSON** op de pagina **Schema's toevoegen of wijzigen.**
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [Labbeleid definiëren in Azure DevTest Labs](devtest-lab-set-lab-policy.md)voor meer informatie over het instellen van alle beleidsregels.

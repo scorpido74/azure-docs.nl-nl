@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 03/12/2020
-ms.openlocfilehash: 418be090e7ff78ec0089c115c9884ffeffdda871
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4359c5581d14f4a918a49cf2b91ac58561ea93d3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284016"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257450"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informatie over limieten en configuratie voor Azure Logic Apps
 
@@ -84,7 +84,7 @@ Dit zijn de limieten voor één logische app:Here are the limits for a single lo
 
 | Name | Limiet | Opmerkingen |
 | ---- | ----- | ----- |
-| Gelijktijdigheid activeren | - Onbeperkt wanneer de gelijktijdigheidscontrole is uitgeschakeld <p><p>- 25 is de standaardlimiet wanneer het gelijktijdigheidsbesturingselement is ingeschakeld, die niet ongedaan kan worden gemaakt nadat u het besturingselement hebt ingeschakeld. U de standaardwaarde wijzigen in een waarde tussen 1 en 50. | Deze limiet beschrijft het hoogste aantal logische app-exemplaren dat tegelijkertijd of parallel kan worden uitgevoerd. <p><p>**Opmerking**: Wanneer gelijktijdigheid is ingeschakeld, wordt de SplitOn-limiet verlaagd tot 100 artikelen voor [het debatcheren van arrays](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Zie [Trigger gelijktijdigheidslimiet](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) wijzigen of [Exemplaren opeenvolgend activeren](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)als u de standaardlimiet wilt wijzigen in een waarde tussen 1 en 50. |
+| Gelijktijdigheid activeren | - Onbeperkt wanneer de gelijktijdigheidscontrole is uitgeschakeld <p><p>- 25 is de standaardlimiet wanneer het gelijktijdigheidsbesturingselement is ingeschakeld, die u niet ongedaan maken nadat u gelijktijdigheid hebt ingeschakeld. U de standaardwaarde wijzigen in een waarde tussen 1 en 50. | Deze limiet beschrijft het hoogste aantal logische app-exemplaren dat tegelijkertijd of parallel kan worden uitgevoerd. <p><p>**Opmerking**: Wanneer gelijktijdigheid is ingeschakeld, wordt de SplitOn-limiet verlaagd tot 100 artikelen voor [het debatcheren van arrays](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Zie [Trigger gelijktijdigheidslimiet](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) wijzigen of [Exemplaren opeenvolgend activeren](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)als u de standaardlimiet wilt wijzigen in een waarde tussen 1 en 50. |
 | Maximale wachttijden | - Zonder gelijktijdigheid is het minimum aantal wachtritten 1, terwijl het maximumaantal 50 is. <p><p>- Bij gelijktijdigheid is het minimum aantal wachtruns 10 plus het aantal gelijktijdige runs (trigger gelijktijdigheid). U het maximumaantal tot 100 inclusief wijzigen. | Deze limiet beschrijft het hoogste aantal logische app-exemplaren dat kan wachten om uit te voeren wanneer uw logische app al de maximale gelijktijdige exemplaren uitvoert. <p><p>Zie [Wachttijdrunslimiet wijzigen](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)als u de standaardlimiet wilt wijzigen. |
 | Voor elk array-items | 100.000 | Deze limiet beschrijft het hoogste aantal matrixitems dat een lus 'voor elke' kan verwerken. <p><p>Als u grotere arrays wilt filteren, u de [queryactie](logic-apps-perform-data-operations.md#filter-array-action)gebruiken. |
 | Voorelke gelijktijdigheid | 20 is de standaardlimiet wanneer het gelijktijdigheidsbesturingselement is uitgeschakeld. U de standaardwaarde wijzigen in een waarde tussen 1 en 50. | Deze limiet is het hoogste aantal "voor elke" lus iteraties die kunnen worden uitgevoerd op hetzelfde moment, of in parallel. <p><p>Zie ['Voor elke' gelijktijdigheidslimiet wijzigen](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) of [Loop 'voor elke' lussen achtereenvolgens](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)wijzigen in een waarde tussen 1 en 50. |
@@ -166,6 +166,8 @@ Sommige connectorbewerkingen voeren asynchrone aanroepen of luisteren naar webho
 | Limiet voor evaluatie van expressie | 131.072 tekens | De `@concat()` `@base64()` `@string()` expressies kunnen niet langer zijn dan deze limiet. |
 | URL-tekenlimiet aanvragen | 16.384 tekens |
 |||
+
+<a name="retry-policy-limits"></a>
 
 #### <a name="retry-policy"></a>Beleid voor opnieuw proberen
 

@@ -1,17 +1,17 @@
 ---
 title: SQL-trefwoorden voor Azure Cosmos DB
 description: Meer informatie over SQL-zoekwoorden voor Azure Cosmos DB.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.author: mjbrown
-ms.openlocfilehash: f2da2695ec20eac9dd2636104d3314427e60d541
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.author: tisande
+ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498551"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261564"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Trefwoorden in Azure Cosmos DB
 
@@ -166,6 +166,6 @@ U ziet deze uitvoer:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Slag](sql-query-getting-started.md)
-- [Joins](sql-query-join.md)
+- [Aan de slag](sql-query-getting-started.md)
+- [Samenvoegingen](sql-query-join.md)
 - [Subquery's](sql-query-subquery.md)
