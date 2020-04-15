@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 1a4ae0701174278203023c156a86aad8feb1ca4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: d68f7dc6368c2b3de7f26f2946c5fb47237a820d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240627"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313936"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage Shared Access Signatures gebruiken om de toegang tot gegevens in HDInsight te beperken
 
@@ -27,8 +27,6 @@ HDInsight heeft volledige toegang tot gegevens in de Azure Storage-accounts die 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement.
-
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Een bestaande [opslagcontainer](../storage/blobs/storage-quickstart-blobs-portal.md).  
@@ -41,7 +39,7 @@ HDInsight heeft volledige toegang tot gegevens in de Azure Storage-accounts die 
 
 * Als u C#gebruikt, moet Visual Studio versie 2013 of hoger zijn.
 
-* Het [URI-schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) voor uw opslagaccount. Dit geldt `wasb://` voor Azure `abfs://` Storage, Azure Data `adl://` Lake Storage Gen2 of voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure `wasbs://`Storage, is de URI . Zie ook, [veilige overdracht](../storage/common/storage-require-secure-transfer.md).
+* Het [URI-schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) voor uw opslagaccount. Dit schema `wasb://` is bedoeld `abfs://` voor Azure Storage, Azure `adl://` Data Lake Storage Gen2 of voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure `wasbs://`Storage, is de URI . Zie ook, [veilige overdracht](../storage/common/storage-require-secure-transfer.md).
 
 * Een bestaand HDInsight-cluster om een gedeelde toegangshandtekening aan toe te voegen. Als dit niet het zo is, u Azure PowerShell gebruiken om een cluster te maken en een gedeelde toegangshandtekening toe te voegen tijdens het maken van een cluster.
 
@@ -56,11 +54,11 @@ HDInsight heeft volledige toegang tot gegevens in de Azure Storage-accounts die 
 
 Er zijn twee vormen van gedeelde toegangshandtekeningen:
 
-* Ad hoc: de begintijd, vervaldatum en machtigingen voor de SAS zijn allemaal opgegeven op de SAS URI.
+* `Ad hoc`: De begintijd, vervaldatum en machtigingen voor de SAS zijn allemaal opgegeven op de SAS URI.
 
-* Beleid voor opgeslagen toegang: een beleid voor opgeslagen toegang wordt gedefinieerd op een resourcecontainer, zoals een blobcontainer. Een beleid kan worden gebruikt om beperkingen voor een of meer gedeelde toegangshandtekeningen te beheren. Wanneer u een SAS koppelt aan een opgeslagen toegangsbeleid, neemt de SAS de beperkingen over - de begintijd, vervaldatum en machtigingen - die zijn gedefinieerd voor het beleid voor opgeslagen toegang.
+* `Stored access policy`: Een opgeslagen toegangsbeleid wordt gedefinieerd op een resourcecontainer, zoals een blobcontainer. Een beleid kan worden gebruikt om beperkingen voor een of meer gedeelde toegangshandtekeningen te beheren. Wanneer u een SAS koppelt aan een opgeslagen toegangsbeleid, neemt de SAS de beperkingen over - de begintijd, vervaldatum en machtigingen - die zijn gedefinieerd voor het beleid voor opgeslagen toegang.
 
-Het verschil tussen de twee formulieren is belangrijk voor één belangrijk scenario: intrekking. Een SAS is een URL, dus iedereen die de SAS verkrijgt, kan deze gebruiken, ongeacht wie er om heeft gevraagd. Als een SAS openbaar wordt gepubliceerd, kan deze door iedereen in de wereld worden gebruikt. Een SAS die wordt gedistribueerd is geldig totdat een van de vier dingen gebeurt:
+Het verschil tussen de twee formulieren is belangrijk voor één belangrijk scenario: intrekking. Een SAS is een URL, dus iedereen die de SAS verkrijgt, kan deze gebruiken. Het maakt niet uit wie er om vroeg. Als een SAS openbaar wordt gepubliceerd, kan deze door iedereen in de wereld worden gebruikt. Een SAS die wordt gedistribueerd is geldig totdat een van de vier dingen gebeurt:
 
 1. De vervaldatum die op de SAS is opgegeven, is bereikt.
 
@@ -82,7 +80,7 @@ Zie Het [SAS-model begrijpen](../storage/common/storage-dotnet-shared-access-sig
 
 ## <a name="create-a-stored-policy-and-sas"></a>Een opgeslagen beleid en SAS maken
 
-Sla het SAS-token op dat aan het einde van elke methode wordt geproduceerd. Het token ziet er het volgende uit:
+Sla het SAS-token op dat aan het einde van elke methode wordt geproduceerd. Het token lijkt op de volgende uitvoer:
 
 ```output
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
@@ -205,7 +203,7 @@ Open `SASToken.py` het bestand `storage_account_name` `storage_account_key`en `s
 
 Mogelijk moet u `pip install --upgrade azure-storage` dit uitvoeren als `ImportError: No module named azure.storage`u het foutbericht ontvangt.
 
-### <a name="using-c"></a>C# gebruiken
+### <a name="using-c"></a>C gebruiken\#
 
 1. Open de oplossing in Visual Studio.
 
@@ -213,21 +211,20 @@ Mogelijk moet u `pip install --upgrade azure-storage` dit uitvoeren als `ImportE
 
 3. Selecteer **Instellingen** en voeg waarden toe voor de volgende vermeldingen:
 
-   * StorageConnectionString: de verbindingstekenreeks voor het opslagaccount waarvoor u een opgeslagen beleid en SAS wilt maken. Het formaat `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` moet `myaccount` zijn waar is de `mykey` naam van uw opslagaccount en is de sleutel voor de opslag account.
-
-   * ContainerName: de container in het opslagaccount waartoe u de toegang wilt beperken.
-
-   * SASPolicyName: de naam die moet worden gebruikt voor het opgeslagen beleid om te maken.
-
-   * FileToUpload: het pad naar een bestand dat naar de container wordt geüpload.
+    |Item |Beschrijving |
+    |---|---|
+    |StorageConnectionString|De verbindingstekenreeks voor het opslagaccount waarvoor u een opgeslagen beleid en SAS wilt maken. Het formaat `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` moet `myaccount` zijn waar is de `mykey` naam van uw opslagaccount en is de sleutel voor de opslag account.|
+    |ContainerName|De container in het opslagaccount waartoe u de toegang wilt beperken.|
+    |SASPolicyName|De naam die u wilt gebruiken voor het opgeslagen beleid om te maken.|
+    |BestandToUpload|Het pad naar een bestand dat naar de container wordt geüpload.|
 
 4. Voer het project uit. Sla het SAS-beleidstoken, de naam van het opslagaccount en de naam van de container op. Deze waarden worden gebruikt bij het koppelen van het opslagaccount aan uw HDInsight-cluster.
 
 ## <a name="use-the-sas-with-hdinsight"></a>Gebruik de SAS met HDInsight
 
-Wanneer u een HDInsight-cluster maakt, moet u een primaire opslagaccount opgeven en u optioneel extra opslagaccounts opgeven. Beide methoden voor het toevoegen van opslag vereisen volledige toegang tot de opslagaccounts en containers die worden gebruikt.
+Wanneer u een HDInsight-cluster maakt, moet u een primair opslagaccount opgeven. U ook extra opslagaccounts opgeven. Beide methoden voor het toevoegen van opslag vereisen volledige toegang tot de opslagaccounts en containers die worden gebruikt.
 
-Als u een gedeelde toegangshandtekening wilt gebruiken om de toegang tot een container te beperken, voegt u een aangepaste vermelding toe aan de **kernsiteconfiguratie** voor het cluster. U de vermelding toevoegen tijdens het maken van het cluster met PowerShell of na het maken van een cluster met Ambari.
+Gebruik een gedeelde toegangshandtekening om containertoegang te beperken. Voeg een aangepaste vermelding toe aan de **kernsiteconfiguratie** voor het cluster. U de vermelding toevoegen tijdens het maken van het cluster met PowerShell of na het maken van een cluster met Ambari.
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>Een cluster maken dat de SAS gebruikt
 

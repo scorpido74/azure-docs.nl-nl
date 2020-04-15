@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 46ffe61028e40b17d31ceba34ee58b8f25c0c471
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b1dfbe026b7f30344d49cc2d49881c885227019d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80501831"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314190"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -83,7 +83,7 @@ using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 
 ## <a name="recognize-speech"></a>Spraak herkennen
 
-De [klasse Recognizeer](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotne) voor de SpraakSDK voor C# legt een aantal methoden bloot die u gebruiken voor spraakherkenning.
+De [klasse Recognizeer](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) voor de SpraakSDK voor C# legt een aantal methoden bloot die u gebruiken voor spraakherkenning.
 
 * Single-shot herkenning (async) - Voert herkenning uit in een niet-blokkerende (asynchrone) modus. Dit herkent één utterance. Het einde van een enkele utterance wordt bepaald door te luisteren naar stilte aan het einde of tot een maximum van 15 seconden audio wordt verwerkt.
 * Continue herkenning (async) - Asynchroon initieert continue herkenningsbewerking. De gebruiker registreert zich bij gebeurtenissen en verwerkt verschillende toepassingsstatus. Als u asynchrone [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?view=azure-dotnet)continue herkenning wilt stoppen, roept u .

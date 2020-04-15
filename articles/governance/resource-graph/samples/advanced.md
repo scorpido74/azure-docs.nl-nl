@@ -3,16 +3,16 @@ title: Voorbeelden van geavanceerde query's
 description: Gebruik Azure Resource Graph om enkele geavanceerde query's uit te voeren, waaronder het werken met kolommen, gebruikte vermeldingstags en het afstemmen van resources op reguliere expressies.
 ms.date: 03/20/2020
 ms.topic: sample
-ms.openlocfilehash: 98e80d0977ec23cba8b8c497373b6e89b52d430e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3d0e7a9be37f9baf471584ee3fe26c52d13b3084
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80130510"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381507"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Geavanceerde resourcegrafiekqueryvoorbeelden
 
-Om inzicht te krijgen in query's met Azure Resource Graph moet u eerst enige basiskennis hebben van de [querytaal](../concepts/query-language.md). Als u nog geen ervaring hebt met [Azure Data Explorer](../../../data-explorer/data-explorer-overview.md), is het raadzaam om eerst de basisbeginselen door te nemen, zodat u weet hoe u aanvragen opstelt voor de resources die u zoekt.
+Om inzicht te krijgen in query's met Azure Resource Graph moet u eerst enige basiskennis hebben van de [querytaal](../concepts/query-language.md). Als u nog geen ervaring hebt met [Azure Data Explorer](/azure/data-explorer/data-explorer-overview), is het raadzaam om eerst de basisbeginselen door te nemen, zodat u weet hoe u aanvragen opstelt voor de resources die u zoekt.
 
 We nemen de volgende geavanceerde query's door:
 

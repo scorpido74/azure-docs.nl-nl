@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: f2133524f57576c4646de9d4bf7f37b573a77e6d
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 6f7f319d2ebb4cd39933addf04f249df02d7819f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80813824"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314092"
 ---
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -40,7 +40,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 Maak een sleutelkluis met de sjabloon [AZ KeyVault maak](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Azure CLI, de opdracht [Nieuw-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell, de [Azure-portal](https://portal.azure.com)of een [Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
 >[!WARNING]
-> Om ervoor te zorgen dat versleutelingsgeheimen de regionale grenzen niet overschrijden, vereist Azure Disk Encryption dat de Key Vault en de VM's in dezelfde regio en hetzelfde abonnement worden geplaatst. Maak en gebruik een Key Vault die zich in dezelfde regio bevindt als de VM's die moeten worden versleuteld. 
+> Uw sleutelkluis en VM's moeten in hetzelfde abonnement zitten. Om ervoor te zorgen dat versleutelingsgeheimen de regionale grenzen niet overschrijden, vereist Azure Disk Encryption dat de Key Vault en de VM's in dezelfde regio worden geplaatst. Maak en gebruik een Key Vault die zich in hetzelfde abonnement en dezelfde regio bevindt als de VM's die moeten worden versleuteld. 
 
 Elke Key Vault moet een unieke naam hebben. Vervang <uw-unieke-keyvault-naam> met de naam van uw sleutelkluis in de volgende voorbeelden.
 

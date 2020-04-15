@@ -3,12 +3,12 @@ title: Gastconfiguratiebeleid voor Windows maken
 description: Meer informatie over het maken van een Azure Policy Guest Configuration policy voor Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 24069ff6518c4244026378e48216d4568fffeb8a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: deb51cf502d26dc994bf74ef3cb0c728f624afde
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365464"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313984"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Gastconfiguratiebeleid voor Windows maken
 
@@ -73,7 +73,11 @@ Zie [PowerShell DSC Overview](/powershell/scripting/dsc/overview/overview)voor e
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>Hoe gastconfiguratiemodules verschillen van Windows PowerShell DSC-modules
 
-Wanneer gastconfiguratie een machine controleert, wordt deze eerst uitgevoerd `Test-TargetResource` om te bepalen of deze in de juiste staat is. De booleaanse waarde die door de functie wordt geretourneerd, bepaalt of de Azure Resource Manager-status voor de gasttoewijzing compatibel/niet-compatibel moet zijn. Vervolgens wordt `Get-TargetResource` de provider uitgevoerd om de huidige status van elke instelling terug te geven, zodat er details beschikbaar zijn over de reden waarom een machine niet voldoet, of om te bevestigen dat de huidige status voldoet.
+Wanneer gastconfiguratie een machine controleert:
+
+1. De agent `Test-TargetResource` voert eerst uit om te bepalen of de configuratie in de juiste staat is.
+1. De booleaanse waarde die door de functie wordt geretourneerd, bepaalt of de Azure Resource Manager-status voor de gasttoewijzing compatibel/niet-compatibel moet zijn.
+1. De provider `Get-TargetResource` voert uit om de huidige status van elke instelling terug te geven, zodat er details beschikbaar zijn over de reden waarom een machine niet voldoet en om te bevestigen dat de huidige status voldoet.
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource-vereisten
 
@@ -102,6 +106,25 @@ return @{
     reasons = $reasons
 }
 ```
+
+De eigenschap Redenen moet ook worden toegevoegd aan het schema MOF voor de resource als ingesloten klasse.
+
+```mof
+[ClassVersion("1.0.0.0")] 
+class Reason
+{
+    [Read] String Phrase;
+    [Read] String Code;
+};
+
+[ClassVersion("1.0.0.0"), FriendlyName("ResourceName")]
+class ResourceName : OMI_BaseResource
+{
+    [Key, Description("Example description")] String Example;
+    [Read, EmbeddedInstance("Reason")] String Reasons[];
+};
+```
+
 ### <a name="configuration-requirements"></a>Configuratievereisten
 
 De naam van de aangepaste configuratie moet overal consistent zijn. De naam van het .zip-bestand voor het inhoudspakket, de configuratienaam in het MOF-bestand en de naam van de gasttoewijzing in de sjabloon Resourcebeheer moeten hetzelfde zijn.
@@ -134,7 +157,7 @@ U [serviceeindpunt](../../../storage/common/storage-network-security.md#grant-ac
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Stap voor stap een aangepast gastconfiguratiecontrolebeleid voor Windows maken
 
-Maak een DSC-configuratie. In het volgende voorbeeld van PowerShell-script wordt een configuratie met de naam `Service` **AuditBitLocker**gemaakt, wordt de **bronmodule PsDscResources** geïmporteerd en wordt de resource gebruikt om te controleren op een lopende service. Het configuratiescript kan worden uitgevoerd vanaf een Windows- of macOS-machine.
+Maak een DSC-configuratie voor controle-instellingen. In het volgende voorbeeld van PowerShell-script wordt een configuratie met de naam `Service` **AuditBitLocker**gemaakt, wordt de **bronmodule PsDscResources** geïmporteerd en wordt de resource gebruikt om te controleren op een lopende service. Het configuratiescript kan worden uitgevoerd vanaf een Windows- of macOS-machine.
 
 ```powershell
 # Define the DSC configuration and import GuestConfiguration
@@ -160,7 +183,7 @@ De `Node AuditBitlocker` opdracht is technisch niet vereist, maar `AuditBitlocke
 
 Zodra de MOF is samengesteld, moeten de ondersteunende bestanden samen worden verpakt. Het voltooide pakket wordt gebruikt door Gastconfiguratie om de Azure Policy-definities te maken.
 
-De `New-GuestConfigurationPackage` cmdlet maakt het pakket. Parameters van `New-GuestConfigurationPackage` de cmdlet bij het maken van Windows-inhoud:
+De `New-GuestConfigurationPackage` cmdlet maakt het pakket. Modules die nodig zijn door de `$Env:PSModulePath`configuratie moeten beschikbaar zijn in . Parameters van `New-GuestConfigurationPackage` de cmdlet bij het maken van Windows-inhoud:
 
 - **Naam**: Naam gastconfiguratiepakket.
 - **Configuratie**: Gecompileerd DSC-configuratiedocument volledig pad.
@@ -176,7 +199,7 @@ New-GuestConfigurationPackage `
 
 Nadat u het configuratiepakket hebt gemaakt, maar het vervolgens hebt gepubliceerd in Azure, u het pakket testen vanuit uw werkstation of CI/CD-omgeving. De guestconfiguration-cmdlet `Test-GuestConfigurationPackage` bevat dezelfde agent in uw ontwikkelomgeving als in Azure-machines. Met deze oplossing u lokaal integratietests uitvoeren voordat u deze vrijgeeft aan gefactureerde cloudomgevingen.
 
-Aangezien de agent de lokale omgeving daadwerkelijk evalueert, moet u in de meeste gevallen de test-cmdlet uitvoeren op hetzelfde OS-platform als u van plan bent te controleren.
+Aangezien de agent de lokale omgeving daadwerkelijk evalueert, moet u in de meeste gevallen de test-cmdlet uitvoeren op hetzelfde OS-platform als u van plan bent te controleren. De test maakt alleen gebruik van modules die zijn opgenomen in het inhoudspakket.
 
 Parameters van `Test-GuestConfigurationPackage` de cmdlet:
 

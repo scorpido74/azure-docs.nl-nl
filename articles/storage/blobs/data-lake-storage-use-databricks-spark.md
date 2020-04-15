@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: be5a2f76a99149fde378d29f2ef7748ebe60b038
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5889afa033b30606f8981ddb826aa192f24efa10
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78303236"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312915"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Zelfstudie: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -47,7 +47,7 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
   > [!IMPORTANT]
   > Zorg ervoor dat u de rol toewijst in het bereik van het Data Lake Storage Gen2-opslagaccount. U kunt een rol toewijzen aan de bovenliggende resourcegroep of het bovenliggende abonnement, maar u ontvangt machtigingsgerelateerde fouten tot die roltoewijzingen zijn doorgegeven aan het opslagaccount.
 
-  :heavy_check_mark: Wanneer u de stappen uitvoert in het gedeelte [Waarden opvragen voor aanmelden in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) het artikel, plakt u de tenant-id, app-id en wachtwoordwaarden in een tekstbestand. U hebt deze binnenkort nodig.
+  :heavy_check_mark: Wanneer u de stappen uitvoert in het gedeelte [Waarden downloaden voor aanmelden in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) het artikel, plakt u de tenant-id, app-id en clientgeheime waarden in een tekstbestand. U hebt deze binnenkort nodig.
 
 ### <a name="download-the-flight-data"></a>De vluchtgegevens downloaden
 
@@ -151,7 +151,7 @@ In deze sectie maakt u een container en een map in uw opslagaccount.
     configs = {"fs.azure.account.auth.type": "OAuth",
            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
            "fs.azure.account.oauth2.client.id": "<appId>",
-           "fs.azure.account.oauth2.client.secret": "<password>",
+           "fs.azure.account.oauth2.client.secret": "<clientSecret>",
            "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant>/oauth2/token",
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
@@ -161,7 +161,7 @@ In deze sectie maakt u een container en een map in uw opslagaccount.
     extra_configs = configs)
     ```
 
-18. In dit codeblok vervangt u de tijdelijke aanduidingen `appId`, `password`, `tenant` en `storage-account-name` door de waarden die u hebt verzameld bij het uitvoeren van de vereiste stappen voor deze zelfstudie. Vervang `container-name` de tijdelijke aanduidingswaarde door de naam van de container.
+18. In dit codeblok vervangt u de tijdelijke aanduidingen `appId`, `clientSecret`, `tenant` en `storage-account-name` door de waarden die u hebt verzameld bij het uitvoeren van de vereiste stappen voor deze zelfstudie. Vervang `container-name` de tijdelijke aanduidingswaarde door de naam van de container.
 
 19. Druk op de toetsen **Shift + Enter** om de code in dit blok uit te voeren.
 

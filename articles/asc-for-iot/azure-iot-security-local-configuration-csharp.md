@@ -1,5 +1,5 @@
 ---
-title: Informatie over het lokale configuratiebestand van Azure Security Center voor IoT-beveiligingsagent voor C# | Microsoft Documenten
+title: Lokale configuratie van beveiligingsagent (C#)
 description: Meer informatie over de Azure Security Center for IoT-beveiligingsservice, het lokale configuratiebestand van beveiligingsagenten voor C#.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74664187"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311663"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Inzicht in het lokale configuratiebestand (C#-agent)
-
 
 De Azure Security Center for IoT-beveiligingsagent gebruikt configuraties van een lokaal configuratiebestand.
 
@@ -35,18 +34,21 @@ De C#-beveiligingsagent gebruikt meerdere configuratiebestanden:
 - **Authentication.config** - Verificatiegerelateerde configuratie (inclusief verificatiegegevens).
 - **SecurityIotInterface.config** - IoT gerelateerde configuraties.
 
-De configuratiebestanden bevatten de standaardconfiguratie. Verificatieconfiguratie wordt ingevuld tijdens de installatie van de agent en wijzigingen in het configuratiebestand worden aangebracht wanneer de agent opnieuw wordt opgestart. 
+De configuratiebestanden bevatten de standaardconfiguratie. Verificatieconfiguratie wordt ingevuld tijdens de installatie van de agent en wijzigingen in het configuratiebestand worden aangebracht wanneer de agent opnieuw wordt opgestart.
 
 ## <a name="configuration-file-location"></a>Locatie van configuratiebestand
+
 Voor Linux:
+
 - Configuratiebestanden van het `/var/ASCIoTAgent`besturingssysteem bevinden zich in .
 
 Voor Windows:
-- Configuratiebestanden van het besturingssysteem bevinden zich in de map van de beveiligingsagent. 
+
+- Configuratiebestanden van het besturingssysteem bevinden zich in de map van de beveiligingsagent.
 
 ### <a name="generalconfig-configurations"></a>Algemene configuraties van config
 
-| Configuratienaam | Mogelijke waarden | Details | 
+| Configuratienaam | Mogelijke waarden | Details |
 |:-----------|:---------------|:--------|
 | agentId | GUID | Unieke agent-id |
 | readRemoteConfigurationTimeout lezen | TimeSpan | Tijdsperiode voor het ophalen van externe configuratie van IoT Hub. Als de agent de configuratie niet binnen de opgegeven tijd kan ophalen, wordt er een time-out van de bewerking.|
@@ -61,6 +63,7 @@ Voor Windows:
 | defaultEventPriority defaultEventPriority defaultEventPriority defaultEvent | "Hoog", "Laag", "Uit" | Standaardgebeurtenisprioriteit. |
 
 ### <a name="generalconfig-example"></a>Voorbeeld van General.config
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <General>
@@ -80,7 +83,7 @@ Voor Windows:
 
 ### <a name="authenticationconfig"></a>Authentication.config
 
-| Configuratienaam | Mogelijke waarden | Details | 
+| Configuratienaam | Mogelijke waarden | Details |
 |:-----------|:---------------|:--------|
 | moduleNaam | tekenreeks | Naam van de identiteit van de beveiligingsmodule. Deze naam moet overeenkomen met de naam van de moduleidentiteit in het apparaat. |
 | deviceId | tekenreeks | ID van het apparaat (zoals geregistreerd in Azure IoT Hub). || schedulerInterval | Tijdspantekenreeks | Interval van interne planner. |
@@ -94,6 +97,7 @@ Voor Windows:
 |
 
 ### <a name="authenticationconfig-example"></a>Voorbeeld van Authentication.config
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
@@ -108,14 +112,16 @@ Voor Windows:
   <add key="registrationId" value="d1"/>
 </Authentication>
 ```
+
 ### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
 
-| Configuratienaam | Mogelijke waarden | Details | 
+| Configuratienaam | Mogelijke waarden | Details |
 |:-----------|:---------------|:--------|
 | transportType | "Ampq" "Mqtt" | IoT Hub-transporttype. |
 |
 
 ### <a name="securityiotinterfaceconfig-example"></a>Voorbeeld van SecurityIotInterface.config
+
 ```XML
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
@@ -124,6 +130,7 @@ Voor Windows:
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
+
 - Lees het [overzicht](overview.md) van de Azure Security Center for IoT-service
 - Meer informatie over Azure Security Center voor [IoT-architectuur](architecture.md)
 - De Azure Security Center for IoT-service [inschakelen](quickstart-onboard-iot-hub.md)

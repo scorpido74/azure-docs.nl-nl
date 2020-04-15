@@ -8,17 +8,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075264"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312593"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Een aangepaste sonde voor Azure Application Gateway maken met PowerShell voor Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -91,7 +91,7 @@ U stelt alle configuratie-items in voordat u de toepassingsgateway maakt. In het
 |---|---|
 | **Gateway-IP-configuratie** | Een IP-configuratie voor een toepassingsgateway.|
 | **Backend pool** | Een pool van IP-adressen, FQDN's of NIC's die zich bevinden bij de toepassingsservers die de webtoepassing hosten|
-| **Gezondheidssonde** | Een aangepaste sonde die wordt gebruikt om de status van de backendpoolleden te controleren|
+| **Statustest** | Een aangepaste sonde die wordt gebruikt om de status van de backendpoolleden te controleren|
 | **HTTP-instellingen** | Een verzameling instellingen, waaronder poort, protocol, cookie-gebaseerde affiniteit, sonde en time-out.  Deze instellingen bepalen hoe verkeer wordt doorgestuurd naar de backend pool-leden|
 | **Frontend-poort** | De poort waarop de toepassingsgateway luistert naar verkeer|
 | **Luisteraar** | Een combinatie van een protocol, ip-configuratie aan de frontend en frontend-poort. Dit is wat luistert naar inkomende verzoeken.
@@ -197,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Leren ssl-offloading te configureren door te bezoeken: [SSL-offload configureren](application-gateway-ssl-arm.md)
+Leren tls-ontlading te configureren door te gaan naar: [TLS Offload configureren](application-gateway-ssl-arm.md)
 

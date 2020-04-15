@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 8d43851a6a546bd23881c4d0a72185ca03e63092
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983616"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314361"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Web Application Firewall op Azure Application Gateway
 
@@ -28,9 +28,9 @@ Alle waf-functies die hieronder worden vermeld, bestaan binnen een WAF-beleid. U
 
 ![WAF-diagram application gateway](../media/ag-overview/waf1.png)
 
-Application Gateway werkt als een application delivery controller (ADC). Het biedt Ssl-beëindiging (Secure Sockets Layer), sessieaffiniteit op basis van cookies, round-robin-belastingdistributie, op inhoud gebaseerde routering, de mogelijkheid om meerdere websites te hosten en beveiligingsverbeteringen.
+Application Gateway werkt als een application delivery controller (ADC). Het biedt Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL), beëindiging, cookie-gebaseerde sessieaffiniteit, round-robin load distributie, content-based routing, mogelijkheid om meerdere websites te hosten en beveiligingsverbeteringen.
 
-Beveiligingsverbeteringen van de toepassingsgateway omvatten SSL-beleidsbeheer en end-to-end SSL-ondersteuning. Applicatiebeveiliging wordt versterkt door waf-integratie in Application Gateway. De combinatie beschermt uw webapplicaties tegen veelvoorkomende kwetsbaarheden. En het biedt een eenvoudig te configureren centrale locatie om te beheren.
+Verbeteringen in de beveiliging van de toepassingsgateway omvatten TLS-beleidsbeheer en end-to-end TLS-ondersteuning. Applicatiebeveiliging wordt versterkt door waf-integratie in Application Gateway. De combinatie beschermt uw webapplicaties tegen veelvoorkomende kwetsbaarheden. En het biedt een eenvoudig te configureren centrale locatie om te beheren.
 
 ## <a name="benefits"></a>Voordelen
 

@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 809274aba35e9607aeacf7c6483ec3d10f899667
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198595"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312371"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Een toepassingsgateway configureren met een ILB-eindpunt (Internal Load Balancer)
 
 Azure Application Gateway kan worden geconfigureerd met een VIP op internet of met een intern eindpunt dat niet is blootgesteld aan internet. Een intern eindpunt gebruikt een privé-IP-adres voor de frontend, dat ook wel bekend staat als een *ip-eindpunt (internal load balancer).*
 
-Het configureren van de gateway met behulp van een frontend privé IP-adres is handig voor interne line-of-business-toepassingen die niet zijn blootgesteld aan internet. Het is ook handig voor services en lagen binnen een multi-tier applicatie die zich in een beveiligingsgrens bevindt die niet is blootgesteld aan het internet, maar nog steeds round-robin-belastingdistributie, sessiestickiness of SSL-beëindiging (Secure Sockets Layer) vereist.
+Het configureren van de gateway met behulp van een frontend privé IP-adres is handig voor interne line-of-business-toepassingen die niet zijn blootgesteld aan internet. Het is ook handig voor services en lagen binnen een multi-tier applicatie die zich in een beveiligingsgrens bevindt die niet is blootgesteld aan het internet, maar nog steeds round-robin-belastingdistributie, sessiestickiness of Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL), beëindiging vereist.
 
 In dit artikel u een toepassingsgateway configureren met een privé-IP-adres met frontend met behulp van de Azure-portal.
 

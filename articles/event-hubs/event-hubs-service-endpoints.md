@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 11/26/2019
 ms.author: shvija
-ms.openlocfilehash: 6de51c23bd6358a6f54fe3baf9e9b256047d4ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abd7940551f7a8182364475b0cf50b60afb5e1b7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064899"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313800"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Eindpunten van virtuele netwerkservices gebruiken met Azure Event Hubs
 
@@ -25,6 +25,22 @@ De integratie van Event Hubs met [Virtual Network (VNet) Service Endpoints][vnet
 Eenmaal geconfigureerd om gebonden te zijn aan ten minste één eindpunt van de virtuele netwerksubnetservice, accepteert de respectievelijke naamruimte van Gebeurtenishubs niet langer verkeer van overal, maar geautoriseerde subnetten in virtuele netwerken. Vanuit het perspectief van het virtuele netwerk configureert het binden van een naamruimte van Gebeurtenishubs aan een serviceeindpunt een geïsoleerde netwerktunnel van het virtuele netwerksubnet naar de berichtenservice. 
 
 Het resultaat is een privé- en geïsoleerde relatie tussen de workloads die aan het subnet zijn gebonden en de respectievelijke naamruimte van Gebeurtenishubs, ondanks het waarneembare netwerkadres van het eindpunt van de berichtenservice dat zich in een openbaar IP-bereik bevindt. Er is een uitzondering op dit gedrag. Als u standaard een serviceeindpunt `denyall` inschakelt, wordt de regel in de [IP-firewall](event-hubs-ip-filtering.md) die aan het virtuele netwerk is gekoppeld, ingeschakeld. U specifieke IP-adressen toevoegen in de IP-firewall om toegang tot het openbare eindpunt van de Gebeurtenishub mogelijk te maken. 
+
+>[!WARNING]
+> De implementatie van de integratie van virtuele netwerken kan voorkomen dat andere Azure-services interactie hebben met Event Hubs.
+>
+> Vertrouwde Microsoft-services worden niet ondersteund wanneer virtuele netwerken worden geïmplementeerd.
+>
+> Veelvoorkomende Azure-scenario's die niet werken met virtuele netwerken (houd er rekening mee dat de lijst **NIET** volledig is) -
+> - Azure Stream Analytics
+> - Integratie met Azure Event Grid
+> - Azure IoT-hubroutes
+> - Azure IoT Device Explorer
+>
+> De volgende Microsoft-services moeten zich in een virtueel netwerk bevinden
+> - Azure Web Apps
+> - Azure Functions
+
 
 > [!IMPORTANT]
 > Virtuele netwerken worden ondersteund in de lagen **Standard** en **Dedicated** van Event Hubs. Het wordt niet ondersteund in de **basislaag.**
@@ -35,7 +51,7 @@ Oplossingen die strakke en gecompartimenteerde beveiliging vereisen en waar virt
 
 Elke directe IP-route tussen de compartimenten, inclusief die met HTTPS via TCP/IP, brengt het risico met zich mee dat kwetsbaarheden vanaf de netwerklaag worden gebruikt. Messaging-diensten bieden geïsoleerde communicatiepaden, waar berichten zelfs naar de schijf worden geschreven terwijl ze tussen partijen overstappen. Workloads in twee afzonderlijke virtuele netwerken die beide gebonden zijn aan dezelfde instantie Event Hubs, kunnen efficiënt en betrouwbaar communiceren via berichten, terwijl de respectieve integriteit van de netwerkisolatiegrens behouden blijft.
  
-Dat betekent dat uw beveiligingsgevoelige cloudoplossingen niet alleen toegang krijgen tot azure toonaangevende betrouwbare en schaalbare asynchrone messaging-mogelijkheden, maar ze kunnen nu messaging gebruiken om communicatiepaden te maken tussen beveiligde oplossingscompartimenten die zijn inherent veiliger dan wat haalbaar is met een peer-to-peer communicatiemodus, inclusief HTTPS en andere TLS-beveiligde socketprotocollen.
+Dat betekent dat uw beveiligingsgevoelige cloudoplossingen niet alleen toegang krijgen tot azure toonaangevende betrouwbare en schaalbare asynchrone berichtenmogelijkheden, maar ze kunnen nu messaging gebruiken om communicatiepaden te maken tussen beveiligde oplossingscompartimenten die inherent veiliger zijn dan wat haalbaar is met elke peer-to-peer communicatiemodus, inclusief HTTPS en andere TLS-beveiligde socketprotocollen.
 
 ## <a name="bind-event-hubs-to-virtual-networks"></a>Gebeurtenishubs binden aan virtuele netwerken
 

@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 7e05458214732a1835dd73b85dad871683ef5bbe
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: acfca3f41cc8bf69572843c3f035a67e8df9e0fe
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743116"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313612"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics release notes Azure Synapse Analytics release notes Azure Synapse Analytics release notes Azure Syn
 
@@ -40,18 +40,13 @@ Gebruik de geïdentificeerde versie om te bevestigen welke release is toegepast 
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
-## <a name="march-2020"></a>Maart 2020
-
-| Serviceverbeteringen                                         | Details                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[Visual Studio 16.6 Preview 2](/visualstudio/releases/2019/release-notes-preview) - SQL Server Data Tools (SSDT)** | Deze release bevat de volgende verbeteringen en oplossingen: </br> </br> - Een probleem opgelost waarbij het wijzigen van een tabel waarnaar wordt verwezen door een gematerialiseerde weergave (MV) ervoor zorgt dat Alter View-instructies worden gegenereerd die niet worden ondersteund voor MVs<br/><br/> - Een wijziging doorgevoerd om ervoor te zorgen dat de bewerking Schemavergelijken niet mislukt wanneer beveiligingsobjecten op rijniveau aanwezig zijn in de database of het project. Beveiligingsobjecten op rijniveau worden momenteel niet ondersteund voor SSDT.  <br/><br/> - De time-outdrempel van SQL Server Object Explorer is verhoogd om time-outs te voorkomen wanneer u een groot aantal objecten in de database vermeldt<br/><br/> - Geoptimaliseerd op de manier waarop SQL Server Object Explorer de lijst met databaseobjecten ophaalt om instabiliteit te verminderen en de prestaties te verhogen bij het vullen van de objectverkenner |
-
-## <a name="february-2020"></a>Februari 2020
+## <a name="april-2020"></a>April 2020
 
 | Serviceverbeteringen | Details |
 | --- | --- |
 |**Databasecompatibiliteitsniveau (voorbeeld)**| Met deze release kunnen gebruikers nu het compatibiliteitsniveau van een database instellen om het transact-SQL-taal- en queryverwerkingsgedrag van een specifieke versie van de Synapse SQL-engine te krijgen. Zie [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) en [Wijziging databasescopedconfiguratie](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie.|
 |**Sp_describe_undeclared_parameters**| Gebruikers toestaan om de metagegevens over niet-aangegeven parameters in een Transact-SQL-batch te zien. Zie [sp_describe_undeclared_parameters voor](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)meer informatie.|
+|**[Visual Studio 16.6 Preview 2](/visualstudio/releases/2019/release-notes-preview) - SQL Server Data Tools (SSDT)** | Deze release bevat de volgende verbeteringen en oplossingen voor SSDT: </br> </br> - Een probleem opgelost waarbij het wijzigen van een tabel waarnaar wordt verwezen door een gematerialiseerde weergave (MV) ervoor zorgt dat Alter View-instructies worden gegenereerd die niet worden ondersteund voor MVs<br/><br/> - Een wijziging doorgevoerd om ervoor te zorgen dat de bewerking Schemavergelijken niet mislukt wanneer beveiligingsobjecten op rijniveau aanwezig zijn in de database of het project. Beveiligingsobjecten op rijniveau worden momenteel niet ondersteund voor SSDT.  <br/><br/> - De time-outdrempel van SQL Server Object Explorer is verhoogd om time-outs te voorkomen wanneer u een groot aantal objecten in de database vermeldt<br/><br/> - Geoptimaliseerd op de manier waarop SQL Server Object Explorer de lijst met databaseobjecten ophaalt om instabiliteit te verminderen en de prestaties te verhogen bij het vullen van de objectverkenner |
 
 ## <a name="january-2020"></a>Januari 2020
 

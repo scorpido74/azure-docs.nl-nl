@@ -1,5 +1,5 @@
 ---
-title: Overzicht van State Configuration
+title: Overzicht van configuratie van Azure Automation State
 description: Een overzicht van Azure Automation State Configuration (DSC), de voorwaarden en bekende problemen
 keywords: powershell dsc, gewenste statusconfiguratie, powershell dsc azure
 services: automation
@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 02e540c9ac2654be97ff247749d1ed18573cfc24
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: afceb11180662416aa4953b8b58ef03ffaa70eec
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010253"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383192"
 ---
 # <a name="state-configuration-overview"></a>Overzicht van State Configuration
 
@@ -123,6 +123,7 @@ Azure ExpressRoute-gebruikers moeten er rekening mee houden dat dit bestand word
 - Zie Aan de slag met Azure Automation State Configuration voor aan de slag met DSC in Azure Automation [State.](automation-dsc-getting-started.md)
 - Zie [Onboarding-machines voor beheer door Azure Automation State Configuration voor](automation-dsc-onboarding.md)meer informatie over het inschepen van knooppunten.
 - Zie [Configuraties compileren in Azure Automation State Configuration](automation-dsc-compile.md)voor meer informatie over het samenstellen van DSC-configuraties, zodat u ze toewijzen aan doelknooppunten.
-- Zie Cmdlets azure [automation state configuration](/powershell/module/azurerm.automation/#automation)voor PowerShell-cmdlet .
+- Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)voor een PowerShell-cmdletreferentie.
 - Zie Azure Automation State Configuration Pricing voor prijsinformatie voor [prijsinformatie.](https://azure.microsoft.com/pricing/details/automation/)
 - Zie [Continue implementatie met Azure Automation State Configuration en Chocolatey](automation-dsc-cd-chocolatey.md)voor een voorbeeld van het gebruik van Azure Automation State Configuration in a continuous deployment pipeline.

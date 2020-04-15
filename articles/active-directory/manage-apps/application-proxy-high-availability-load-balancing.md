@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3202c2fbfedfce0b0b52be94b1e0d165a6e72546
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 992075378737552e890bd2d6fed3c519e6c62aa7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481310"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312938"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Hoge beschikbaarheid en taakverdeling van uw Application Proxy-connectors en -toepassingen
 
@@ -40,16 +40,12 @@ Connectoren leggen hun verbindingen op basis van principes voor hoge beschikbaar
 1. Een gebruiker op een clientapparaat probeert toegang te krijgen tot een on-premises toepassing die is gepubliceerd via Application Proxy.
 2. De aanvraag gaat via een Azure Load Balancer om te bepalen welke application proxy-serviceinstantie de aanvraag moet aannemen. Per regio zijn er tientallen exemplaren beschikbaar om de aanvraag te accepteren. Deze methode helpt om het verkeer gelijkmatig te verdelen over de service-exemplaren.
 3. Het verzoek wordt verzonden naar [Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/).
-4. Servicebus controleert of de verbinding eerder een bestaande connector in de verbindingsgroep heeft gebruikt. Als dat zo is, wordt de verbinding opnieuw gebruikt. Als er nog geen connector is gekoppeld aan de verbinding, kiest deze willekeurig een beschikbare connector om naar te signaleren. De connector neemt vervolgens het verzoek op bij Service Bus.
-
+4. Service Bus signalen naar een beschikbare connector. De connector neemt vervolgens het verzoek op bij Service Bus.
    - In stap 2 gaan aanvragen naar verschillende toepassingsproxyservice-exemplaren, zodat verbindingen waarschijnlijk worden gemaakt met verschillende connectors. Hierdoor worden connectoren bijna gelijkmatig gebruikt binnen de groep.
-
-   - Een verbinding wordt alleen hersteld als de verbinding is verbroken of een niet-actieve periode van 10 minuten optreedt. De verbinding kan bijvoorbeeld worden verbroken wanneer een machine- of connectorservice opnieuw wordt opgestart of er een netwerkstoring optreedt.
-
 5. De connector geeft het verzoek door aan de back-endserver van de toepassing. Vervolgens stuurt de toepassing het antwoord terug naar de connector.
 6. De connector voltooit het antwoord door een uitgaande verbinding met de service-instantie te openen van waaruit de aanvraag is gekomen. Dan wordt deze verbinding onmiddellijk gesloten. Standaard is elke connector beperkt tot 200 gelijktijdige uitgaande verbindingen.
 7. Het antwoord wordt vervolgens teruggegeven aan de client van de service-instantie.
-8. Volgende aanvragen van dezelfde verbinding herhalen de bovenstaande stappen totdat deze verbinding is verbroken of gedurende 10 minuten niet actief is.
+8. Latere aanvragen van dezelfde verbinding herhalen de bovenstaande stappen.
 
 Een toepassing heeft vaak veel resources en opent meerdere verbindingen wanneer deze wordt geladen. Elke verbinding gaat door de bovenstaande stappen om te worden toegewezen aan een service-instantie, selecteert u een nieuwe beschikbare connector als de verbinding nog niet eerder is gekoppeld aan een connector.
 

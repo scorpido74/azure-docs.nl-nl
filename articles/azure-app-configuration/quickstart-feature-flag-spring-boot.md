@@ -4,14 +4,14 @@ description: Functievlaggen toevoegen aan apps voor springboot en beheren met Az
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 04/13/2020
 ms.author: lcozzens
-ms.openlocfilehash: 489bc0234580e8df8dcc85c1d3cc0add547818b1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 398005b37660cfa68936a0c8b3a3d90da8160e49
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78944343"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309078"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Snelstart: functievlaggen toevoegen aan een app voor springboot
 
@@ -103,7 +103,7 @@ Gebruik de [Spring Initializr](https://start.spring.io/) om een nieuw Spring Boo
 1. Navigeer naar `resources` de map van `bootstrap.properties`uw app en open .  Als het bestand niet bestaat, maakt u het bestand. Voeg de volgende regel toe aan het bestand.
 
     ```properties
-    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
 1. Selecteer in de app-configuratieportal voor `Access keys` uw config-winkel de keuze op de zijbalk. Selecteer het tabblad Alleen-lezentoetsen. Kopieer de waarde van de primaire verbindingstekenreeks.
@@ -283,7 +283,7 @@ Gebruik de [Spring Initializr](https://start.spring.io/) om een nieuw Spring Boo
     mvn spring-boot:run
     ```
 
-1. Open een browservenster en ga naar de standaard-URL `https://localhost:8080`voor een lokaal gehoste web-app: .
+1. Open een browservenster en ga `http://localhost:8080/welcome`naar de URL: .
 
     ![Quickstart voor het lokaal starten van een app](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 

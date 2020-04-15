@@ -2,13 +2,13 @@
 title: 'Zelfstudie: Patronen - LUIS'
 description: Gebruik patronen om de intentie en entiteitsvoorspelling te vergroten en tegelijkertijd minder voorbeelduitingen in deze zelfstudie te geven. Het patroon wordt geleverd als een voorbeeld van een sjabloonutterance, dat syntaxis bevat om entiteiten en negeerbare tekst te identificeren.
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.openlocfilehash: 10f0ade45dedb3413887cc4b4dea89e857c1bde7
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/14/2020
+ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545995"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380775"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Zelfstudie: Algemene indelingen voor patroonsjabloon-uitingen toevoegen om voorspellingen te verbeteren
 
@@ -214,7 +214,7 @@ Dit zijn voorbeelden van sjabloon-utterances voor deze intent:
 |`Who does {Employee} report to[?]`|Verwisselbare`{Employee}`<br>Negeren`[?]`|
 |`Who reports to {Employee}[?]`|Verwisselbare`{Employee}`<br>Negeren`[?]`|
 
-De syntaxis `{Employee}` markeert de locatie van de entiteit in de sjabloon-utterance en geeft aan om welke entiteit het gaat. De optionele `[?]`syntaxis, markeert woorden of interpunctie die optioneel is. LUIS kijkt naar de utterance, waarbij de optionele tekst tussen de haakjes wordt genegeerd.
+De syntaxis `{Employee}` markeert de locatie van de entiteit in de sjabloon-utterance en geeft aan om welke entiteit het gaat. De optionele `[?]`syntaxis, markeert woorden of [interpunctie](luis-reference-application-settings.md#punctuation-normalization) die optioneel is. LUIS kijkt naar de utterance, waarbij de optionele tekst tussen de haakjes wordt genegeerd.
 
 Hoewel de syntaxis eruit ziet als een gewone expressie, is het geen gewone expressie. Alleen de accolades, `{}`, en de vierkant haakjes, `[]`, worden als syntaxis ondersteund. Ze kunnen tot maximaal twee niveaus worden genest.
 

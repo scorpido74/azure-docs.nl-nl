@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a026cc241eb372e15f2600e52ec53a46efb1024
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 75020b0dd58a80f989bd03eb92031d904ebf4c82
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256005"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313688"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure Synapse Analytics business intelligence-partners
 
@@ -38,6 +38,7 @@ Als u uw complete datawarehouse-oplossing wilt maken met Synapse SQL-pool binnen
 | ![SiSense (SiSense)](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense (SiSense)**<br>SiSense is een full-stack Business Intelligence-software die wordt geleverd met tools die een bedrijf nodig heeft om gegevens te analyseren en te visualiseren: een krachtige analytische database, de mogelijkheid om meerdere bronnen aan te sluiten, eenvoudige gegevensextractie (ETL) en webgebaseerde gegevensvisualisatie. Begin vandaag nog met het analyseren en visualiseren van grote datasets met SiSense BI en Analytics. |[Productpagina](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>De selfservice-analyses van Tableau helpen iedereen zijn gegevens te zien en te begrijpen, in vele soorten gegevens, van platte bestanden tot databases. Tableau heeft een native, geoptimaliseerde connector voor Synapse SQL-pool die zowel live data als in-memory analytics ondersteunt. |[Productpagina](https://www.tableau.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (Decision Suite)**<br>Targit Decision Suite biedt bi- en analytics-platform dat realtime dashboards, selfservice-analyses, gebruiksvriendelijke rapportage, verbluffende mobiele mogelijkheden en eenvoudige technologie voor het ontdekken van gegevens levert in één samenhangende oplossing. Targit geeft bedrijven de moed om te handelen. |[Productpagina](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
+| ![GedachteSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**GedachteSpot**<br>'s Werelds meest innovatieve ondernemingen gebruiken ThoughtSpot om elke persoon in hun organisatie te machtigen, van C-suite executive tot front-line werknemer, met de mogelijkheid om snel datagestuurde inzichten te ontdekken. Met ThoughtSpot kunnen zakenmensen een eenvoudige zoekopdracht typen om onmiddellijk miljarden rijen gegevens te analyseren en kunstmatige intelligentie gebruiken om betrouwbare, relevante inzichten te krijgen die naar hen worden gepusht als antwoord op duizenden vragen waarvan ze misschien niet dachten dat ze ze zouden hebben gevraagd. ThoughtSpot is eenvoudig genoeg voor elke ondernemer om te gebruiken, maar krachtig genoeg om zelfs de grootste, meest complexe bedrijfsgegevens te verwerken zonder in te boeten aan snelheid, beveiliging of governance. Daarom hebben klanten als Walmart, 7-11, BT, Daimler, Exxon, Hulu, Royal Bank of Canada, Bank of the West en Nationwide Building Society zich tot ThoughtSpot gewend om hun besluitvormingsculturen te transformeren en analistenbureau Gartner genaamd ThoughtSpot a Leader in the 2020 Magic Quadrant. Door inzichten onderdeel te maken van elk gesprek en elke beslissing, herbeeldt ThoughtSpot de rol van data in het creëren van een meer feitengedreven wereld. |[Productpagina](https://www.thoughtspot.com)<br>|
 | ![Geelvintonijn](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Geelvintonijn**<br>Yellowfin is een best beoordeelde Cloud BI-leverancier voor ad hoc rapportage en dashboards van BARC; De BI-enquête. Maak verbinding met Synapse SQL-pool en maak en deel vervolgens prachtige rapporten en dashboards met bekroonde samenwerkingsfuncties VOOR BI en locatie-intelligentie. |[Productpagina](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->

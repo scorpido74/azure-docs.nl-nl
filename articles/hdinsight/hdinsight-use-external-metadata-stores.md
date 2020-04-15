@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/03/2020
-ms.openlocfilehash: 0cadf3930008868fe223e6e1024a2d14d17d8131
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e53164d1e25f8a8d0a14d21c0544d95cf912fe9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657111"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313942"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Externe metagegevensopslag gebruiken in Azure HDInsight
 
@@ -63,7 +63,7 @@ HDInsight ondersteunt ook aangepaste metastores, die worden aanbevolen voor prod
 
 Maak of heb een bestaande Azure SQL Database voordat u een aangepaste Hive-metastore instelt voor een HDInsight-cluster.  Zie [Snelstart: Maak één database in Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)voor meer informatie.
 
-Configureer Azure SQL Database firewallregels zodat Azure-services en -bronnen toegang krijgen tot de server. Schakel deze optie in de Azure-portal in door **Serverfirewall instellen te**selecteren. Selecteer **vervolgens ON** onder **Azure-services en -bronnen toestaan om toegang te krijgen tot deze server** voor de Azure SQL Database-server of -database. Zie [IP-firewallregels maken en beheren](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) voor meer informatie
+Tijdens het maken van het cluster moet de HDInsight-service verbinding maken met de externe metastore en uw referenties verifiëren. Configureer Azure SQL Database firewallregels zodat Azure-services en -bronnen toegang krijgen tot de server. Schakel deze optie in de Azure-portal in door **Serverfirewall instellen te**selecteren. Selecteer vervolgens **Nee** onder **Toegang tot openbare netwerken weigeren**en **Ja** onder **Azure-services en -bronnen toestaan toegang te krijgen tot deze server** voor de Azure SQL Database-server of -database. Zie [IP-firewallregels maken en beheren](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) voor meer informatie
 
 ![knop serverfirewall instellen](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 

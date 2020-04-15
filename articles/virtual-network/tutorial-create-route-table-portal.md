@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: a565aba12f1b10f215d8f6cc7fc0b7247a0441d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 854bf2d1ed2155290c2ecebd17695049fdd0c8bb
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066263"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314292"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Zelfstudie: Netwerkverkeer routeren met een routetabel met behulp van Azure Portal
 
@@ -208,7 +208,7 @@ Voordat u **Maken** selecteert om de openbare of private VM te maken, gaat u naa
 | Basisbeginselen | Resourcegroep | **myResourceGroup** |
 | | Naam van de virtuele machine | *myVmPublic* |
 | | Openbare poorten voor inkomend verkeer | **Geselecteerde poorten toestaan** |
-| | Binnenkomende poorten selecteren | **HTTP** en **RDP** |
+| | Binnenkomende poorten selecteren | **RDP** |
 | Netwerken | Virtueel netwerk | **myVirtualNetwork** |
 | | Subnet | **Openbaar (10.0.0.0/24)** |
 | | Openbaar IP-adres | De standaardinstelling |
@@ -221,7 +221,7 @@ Voordat u **Maken** selecteert om de openbare of private VM te maken, gaat u naa
 | Basisbeginselen | Resourcegroep | **myResourceGroup** |
 | | Naam van de virtuele machine | *myVmPrivate* |
 | | Openbare poorten voor inkomend verkeer | **Geselecteerde poorten toestaan** |
-| | Binnenkomende poorten selecteren | **HTTP** en **RDP** |
+| | Binnenkomende poorten selecteren | **RDP** |
 | Netwerken | Virtueel netwerk | **myVirtualNetwork** |
 | | Subnet | **Privé (10.0.1.0/24)** |
 | | Openbaar IP-adres | De standaardinstelling |

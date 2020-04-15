@@ -4,12 +4,12 @@ description: Voorbeelden van het gebruik van de Azure Application Insights ILogg
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0f40c1c1a8ee7f20c769a62e9746da43face4cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33effe9cfec6d766d573617ff03b58564e5b34d1
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276373"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313662"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider voor .NET Core ILogger logs
 
@@ -213,7 +213,7 @@ U nog steeds gebruik maken van de oude provider. (Het zal alleen worden verwijde
 - In ASP.NET Core (2.0 en hoger) is de aanbevolen manier om [loggingproviders in](https://github.com/aspnet/Announcements/issues/255) te schakelen door extensiemethoden op ILoggingBuilder in **Program.cs** zelf te gebruiken.
 
 > [!Note]
-> De nieuwe provider is beschikbaar voor toepassingen die zich richten op NETSTANDARD2.0 of hoger. Als uw toepassing zich richt op oudere .NET Core-versies, zoals .NET Core 1.1 of als deze zich richt op het .NET Framework, blijft u de oude provider gebruiken.
+> De nieuwe provider is beschikbaar voor toepassingen die zich richten op NETSTANDARD2.0 of hoger. Vanaf [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) versie 2.14.0 is er vanaf nu ook een nieuwe provider beschikbaar voor toepassingen die zich richten op .NET Framework NET461 of hoger. Als uw toepassing zich richt op oudere .NET Core-versies, zoals .NET Core 1.1 of als deze zich richt op het .NET Framework minder dan NET46, blijft u de oude provider gebruiken.
 
 ## <a name="console-application"></a>Consoletoepassing
 

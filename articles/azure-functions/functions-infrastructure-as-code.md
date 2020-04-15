@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276892"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382529"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Resourceimplementatie voor uw functie-app automatiseren in Azure-functies
 
@@ -33,7 +33,7 @@ Een Azure-functie-implementatie bestaat meestal uit deze bronnen:
 | Een [component Application Insights](../azure-monitor/app/app-insights-overview.md) | Optioneel    | [Microsoft.Insights/componenten](/azure/templates/microsoft.insights/components)         |   |
 | Een [hostingplan](./functions-scale.md)                                             | Optioneel<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
-<sup>1.</sup> Een hostingplan is alleen vereist wanneer u ervoor kiest om uw functie-app uit te voeren op een [Premium-abonnement](./functions-premium-plan.md) (in preview) of op een [App Service-abonnement.](../app-service/overview-hosting-plans.md)
+<sup>1.</sup> Een hostingplan is alleen vereist wanneer u ervoor kiest om uw functie-app uit te voeren op een [Premium-abonnement](./functions-premium-plan.md) of op een [App Service-abonnement.](../app-service/overview-hosting-plans.md)
 
 > [!TIP]
 > Hoewel dit niet nodig is, wordt het ten zeerste aanbevolen om Application Insights voor uw app te configureren.
@@ -111,7 +111,7 @@ Daarnaast moet de instrumentatiesleutel worden verstrekt aan `APPINSIGHTS_INSTRU
 
 De definitie van het hostingplan varieert en kan een van de volgende zijn:
 * [Verbruiksplan](#consumption) (standaard)
-* [Premium-abonnement](#premium) (in preview)
+* [Premium-abonnement](#premium)
 * [App-serviceplan](#app-service-plan)
 
 ### <a name="function-app"></a>Function App
@@ -475,7 +475,7 @@ Linux-apps moeten `linuxFxVersion` ook `siteConfig`een eigenschap bevatten onder
 | Stack            | Voorbeeldwaarde                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
-| JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
+| Javascript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
 | .NET             | `DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0` |
 
 ```json
@@ -647,9 +647,9 @@ Een functie-app heeft veel onderliggende bronnen die u gebruiken in uw implement
 
 U een van de volgende manieren gebruiken om uw sjabloon te implementeren:
 
-* [Powershell](../azure-resource-manager/templates/deploy-powershell.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure-CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure-portal](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 * [REST-API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>De knop Implementeren in Azure

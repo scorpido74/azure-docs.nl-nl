@@ -1,14 +1,14 @@
 ---
 title: Een bestaande toewijzing vanuit de portal bijwerken
 description: Meer informatie over het mechanisme voor het bijwerken van een bestaande blauwdruktoewijzing vanuit de portal in Azure Blueprints.
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264659"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381792"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Een bestaande blauwdruktoewijzing bijwerken
 
@@ -26,18 +26,18 @@ Wanneer een blauwdruk is toegewezen, kan de toewijzing worden bijgewerkt. Er zij
 
 1. Klik in de lijst met blauwdrukken met de linkerzijde op de blauwdruktoewijzing. Klik vervolgens op de knop **Toewijzing bijwerken** OF klik met de rechtermuisknop op de blauwdruktoewijzing en selecteer **Toewijzing bijwerken**.
 
-   ![Een bestaande blauwdruktoewijzing bijwerken](../media/update-existing-assignments/update-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Een bestaande blauwdruktoewijzing bijwerken" border="false":::
 
 1. Op **de blauwdrukpagina toewijzen** wordt vooraf gevuld met alle waarden uit de oorspronkelijke toewijzing geladen.
    U de versie van de **blauwdrukdefinitie,** de status **Toewijzing vergrendelen** en een van de dynamische parameters die op de blauwdrukdefinitie bestaan, wijzigen. Klik **op Toewijzen** wanneer u klaar bent met het aanbrengen van wijzigingen.
 
 1. Zie op de pagina bijgewerkte toewijzingsdetails de nieuwe status. In dit voorbeeld hebben we **Vergrendeling** aan de toewijzing toegevoegd.
 
-   ![Een bestaande blauwdruktoewijzing bijgewerkt - de vergrendelingsmodus is gewijzigd](../media/update-existing-assignments/updated-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Een bestaande blauwdruktoewijzing bijgewerkt - de vergrendelingsmodus is gewijzigd" border="false":::
 
 1. Meer informatie over andere **toewijzingsbewerkingen** vindt u in de vervolgkeuzelijst. De tabel **met beheerde resources** wordt bijgewerkt op geselecteerde toewijzingsbewerking.
 
-   ![Toewijzingsbewerkingen van een blauwdruktoewijzing](../media/update-existing-assignments/assignment-operations.png)
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Toewijzingsbewerkingen van een blauwdruktoewijzing" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>Regels voor het bijwerken van toewijzingen
 

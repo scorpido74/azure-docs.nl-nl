@@ -2,31 +2,31 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 02/27/2020
+ms.date: 04/15/2020
 ms.author: ccompy
-ms.openlocfilehash: e0db3ce7d31b838ca6f7d566083a33ee215d3399
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7f2b011b2de5af0e4ace9cbeb4399911d8e83b7f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419523"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312818"
 ---
 Met behulp van regionale VNet-integratie heeft uw app toegang tot:
 
-* Bronnen in het virtuele netwerk in dezelfde regio waarmee u integreert.
-* Bronnen in virtuele netwerken die zijn gekeken naar uw virtuele netwerk die zich in dezelfde regio bevinden.
+* Bronnen in een VNet in dezelfde regio als uw app.
+* Resources in VNets die naar de VNet zijn gekeken, waarmee uw app is geïntegreerd.
 * Serviceendpoint beveiligde services.
 * Bronnen voor Azure ExpressRoute-verbindingen.
-* Bronnen in het virtuele netwerk waarop u bent verbonden.
+* Bronnen in het VNet waarmee u bent geïntegreerd.
 * Bronnen voor peered-verbindingen, waaronder Azure ExpressRoute-verbindingen.
-* Privé eindpunten.
+* Privéeindpunten - Opmerking: DNS moet afzonderlijk worden beheerd in plaats van Azure DNS-privézones te gebruiken.
 
-Wanneer u VNet-integratie met virtuele netwerken in dezelfde regio gebruikt, u de volgende Azure-netwerkfuncties gebruiken:
+Wanneer u VNet-integratie met VNets in dezelfde regio gebruikt, u de volgende Azure-netwerkfuncties gebruiken:
 
 * **Netwerkbeveiligingsgroepen (NSGs)**: U uitgaand verkeer blokkeren met een NSG die op uw integratiesubnet is geplaatst. De binnenkomende regels zijn niet van toepassing omdat u VNet-integratie niet gebruiken om inkomende toegang tot uw app te bieden.
 * **Routetabellen (UDR's)**: U een routetabel op het integratiesubnet plaatsen om uitgaand verkeer te verzenden waar u dat wilt.
 
-Standaard leidt uw app alleen RFC1918-verkeer naar uw virtuele netwerk. Als u al uw uitgaande verkeer naar uw virtuele netwerk wilt leiden, past u de app-instelling WEBSITE_VNET_ROUTE_ALL toe op uw app. Ga als u de app-instelling configureren:
+Standaard leidt uw app alleen RFC1918-verkeer naar uw VNet. Als u al uw uitgaande verkeer naar uw VNet wilt leiden, past u de app-instelling WEBSITE_VNET_ROUTE_ALL toe op uw app. Ga als u de app-instelling configureren:
 
 1. Ga naar **Configuration** de configuratie-gebruikersinterface in uw app-portal. Selecteer **Nieuwe toepassingsinstelling**selecteren .
 1. Voer **WEBSITE_VNET_ROUTE_ALL** in het vak **Naam** in en voer **1** in het vak **Waarde** in.
@@ -36,24 +36,25 @@ Standaard leidt uw app alleen RFC1918-verkeer naar uw virtuele netwerk. Als u al
 1. Selecteer **OK**.
 1. Selecteer **Opslaan**.
 
-Als u al uw uitgaande verkeer naar uw virtuele netwerk routeert, is dit onderworpen aan de NSG's en UDR's die worden toegepast op uw integratiesubnet. Wanneer u al uw uitgaande verkeer naar uw virtuele netwerk leidt, zijn uw uitgaande adressen nog steeds de uitgaande adressen die in uw app-eigenschappen worden vermeld, tenzij u routes opgeeft om het verkeer elders te verzenden.
+Als u al uw uitgaande verkeer naar uw VNet route, het is onderworpen aan de NSGs en UDR's die worden toegepast op uw integratie subnet. Wanneer u al uw uitgaande verkeer naar uw VNet leidt, zijn uw uitgaande adressen nog steeds de uitgaande adressen die in uw app-eigenschappen worden vermeld, tenzij u routes opgeeft om het verkeer elders te verzenden.
 
-Er zijn enkele beperkingen met het gebruik van VNet-integratie met virtuele netwerken in dezelfde regio:
+Er zijn enkele beperkingen met het gebruik van VNet-integratie met VNets in dezelfde regio:
 
 * U geen bronnen bereiken via wereldwijde peering-verbindingen.
 * De functie is alleen beschikbaar via nieuwere Azure App Service-schaaleenheden die PremiumV2 App Service-abonnementen ondersteunen.
 * Het integratiesubnet kan slechts door één App Service-abonnement worden gebruikt.
 * De functie kan niet worden gebruikt door apps voor geïsoleerde apps die zich in een App-serviceomgeving bevinden.
-* De functie vereist een ongebruikt subnet dat een /27 is met 32 adressen of groter in een virtueel Azure Resource Manager-netwerk.
-* De app en het virtuele netwerk moeten zich in dezelfde regio bevinden.
-* U een virtueel netwerk niet verwijderen met een geïntegreerde app. Verwijder de integratie voordat u het virtuele netwerk verwijdert.
-* U alleen integreren met virtuele netwerken in hetzelfde abonnement als de app.
-* U slechts één regionaal VNet-integratie-abonnement per App-serviceabonnement hebben. Meerdere apps in hetzelfde App Service-abonnement kunnen hetzelfde virtuele netwerk gebruiken.
+* De functie vereist een ongebruikt subnet dat een /27 is met 32 adressen of groter in een Azure Resource Manager VNet.
+* De app en het VNet moeten zich in dezelfde regio bevinden.
+* U een VNet niet verwijderen met een geïntegreerde app. Verwijder de integratie voordat u het VNet verwijdert.
+* U alleen integreren met VNets in hetzelfde abonnement als de app.
+* U slechts één regionaal VNet-integratie-abonnement per App-serviceabonnement hebben. Meerdere apps in hetzelfde App Service-abonnement kunnen hetzelfde VNet gebruiken.
 * U het abonnement van een app of abonnement niet wijzigen terwijl er een app is die regionale VNet-integratie gebruikt.
+* Uw app kan geen adressen oplossen in Azure DNS Private Zones.
 
 Voor elk exemplaar van het abonnement wordt één adres gebruikt. Als u uw app schaalt naar vijf exemplaren, worden vijf adressen gebruikt. Aangezien de subnetgrootte na toewijzing niet kan worden gewijzigd, moet u een subnet gebruiken dat groot genoeg is om aan te passen aan de schaal die uw app kan bereiken. Een /26 met 64 adressen is de aanbevolen grootte. Een /26 met 64 adressen biedt plaats aan een Premium-abonnement met 30 exemplaren. Wanneer u een abonnement omhoog of omlaag schaalt, hebt u twee keer zoveel adressen nodig voor een korte periode.
 
-Als u wilt dat uw apps in een ander plan een virtueel netwerk bereiken waarmee apps al zijn verbonden in een ander abonnement, selecteert u een ander subnet dan het subnet dat wordt gebruikt door de reeds bestaande VNet-integratie.
+Als u wilt dat uw apps in een ander plan een VNet bereiken waarmee apps al zijn verbonden in een ander abonnement, selecteert u een ander subnet dan het subnet dat wordt gebruikt door de reeds bestaande VNet-integratie.
 
 De functie is in preview voor Linux. De Linux-vorm van de functie ondersteunt alleen bellen naar RFC 1918-adressen (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
 
@@ -63,11 +64,14 @@ Als u uw app op Linux host met de ingebouwde afbeeldingen, werkt regionale VNet-
 
 ### <a name="service-endpoints"></a>Service-eindpunten
 
-Met regionale VNet-integratie u serviceeindpunten gebruiken. Als u serviceeindpunten wilt gebruiken met uw app, gebruikt u regionale VNet-integratie om verbinding te maken met een geselecteerd virtueel netwerk. Configureer vervolgens serviceeindpunten op het subnet dat u voor de integratie hebt gebruikt.
+Met regionale VNet-integratie u serviceeindpunten gebruiken. Als u serviceeindpunten wilt gebruiken met uw app, gebruikt u regionale VNet-integratie om verbinding te maken met een geselecteerde VNet en configureert u serviceeindpunten met de doelservice op het subnet dat u voor de integratie hebt gebruikt. Als u vervolgens toegang wilt krijgen tot een service via serviceeindpunten:
+
+1. regionale VNet-integratie configureren met uw web-app
+1. ga naar de doelservice en configureer serviceeindpunten op het subnet dat wordt gebruikt voor integratie
 
 ### <a name="network-security-groups"></a>Netwerkbeveiligingsgroepen
 
-U netwerkbeveiligingsgroepen gebruiken om binnenkomend en uitgaand verkeer naar bronnen in een virtueel netwerk te blokkeren. Een app die regionale VNet-integratie gebruikt, kan een [netwerkbeveiligingsgroep][VNETnsg] gebruiken om uitgaand verkeer naar bronnen in uw virtuele netwerk of internet te blokkeren. Als u verkeer naar openbare adressen wilt blokkeren, moet u de instelling van de toepassing hebben WEBSITE_VNET_ROUTE_ALL ingesteld op 1. De binnenkomende regels in een NSG zijn niet van toepassing op uw app omdat VNet-integratie alleen van invloed is op uitgaand verkeer vanuit uw app.
+U netwerkbeveiligingsgroepen gebruiken om binnenkomend en uitgaand verkeer naar bronnen in een VNet te blokkeren. Een app die regionale VNet-integratie gebruikt, kan een [netwerkbeveiligingsgroep][VNETnsg] gebruiken om uitgaand verkeer naar bronnen in uw VNet of internet te blokkeren. Als u verkeer naar openbare adressen wilt blokkeren, moet u de instelling van de toepassing hebben WEBSITE_VNET_ROUTE_ALL ingesteld op 1. De binnenkomende regels in een NSG zijn niet van toepassing op uw app omdat VNet-integratie alleen van invloed is op uitgaand verkeer vanuit uw app.
 
 Als u binnenkomend verkeer naar uw app wilt beheren, gebruikt u de functie Toegangsbeperkingen. Een NSG die is toegepast op uw integratiesubnet is van kracht, ongeacht de routes die op uw integratiesubnet worden toegepast. Als WEBSITE_VNET_ROUTE_ALL is ingesteld op 1 en u geen routes hebt die van invloed zijn op het openbare adresverkeer op uw integratiesubnet, is al uw uitgaande verkeer nog steeds onderworpen aan NSG's die zijn toegewezen aan uw integratiesubnet. Als WEBSITE_VNET_ROUTE_ALL niet is ingesteld, worden NSG's alleen toegepast op RFC1918-verkeer.
 

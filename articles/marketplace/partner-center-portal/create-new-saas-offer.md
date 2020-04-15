@@ -1,22 +1,22 @@
 ---
-title: Maak een nieuw SaaS-aanbod op de commerciële marktplaats
-description: Een nieuwe Software as a Service-aanbieding (SaaS) maken voor vermelding of verkoop in het Azure Marketplace-, AppSource- of via het CSP-programma (Cloud Solution Provider) via de Commercial Marketplace-portal in microsoft-partnercentrum.
+title: Maak een nieuwe SaaS-aanbieding voor de commerciële marktplaats van Microsoft
+description: Een nieuwe Software as a Service-aanbieding (SaaS) maken voor vermelding of verkoop in Microsoft AppSource, Azure Marketplace of via het CSP-programma (Cloud Solution Provider) met behulp van het Microsoft-commerciële marktplaatsprogramma in Microsoft Partner Center.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/28/2020
-ms.openlocfilehash: 3f2201db4b78ba61ba15608a676a8b9f8f5e612a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: 45559978f710549088d75d0f0706b798ebad3821
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286197"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314077"
 ---
 # <a name="create-a-new-saas-offer"></a>Een nieuwe SaaS-aanbieding maken
 
-Als u wilt beginnen met het maken van Software as a Service (SaaS) aanbiedingen, moet u ervoor zorgen dat u eerst [een PartnerCenter-account maakt](./create-account.md) en het [dashboard Commercial Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)opent, met het tabblad **Overzicht** geselecteerd.
+Als u wilt beginnen met het maken van Software as a Service (SaaS) aanbiedingen, moet u ervoor zorgen dat u eerst [een Partner Center-account maakt](./create-account.md) en het dashboard Commercial [Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)opent, met het tabblad **Overzicht** geselecteerd.
 
 ![Commercieel Marketplace-dashboard in partnercentrum](./media/new-offer-overview.png)
 
@@ -82,6 +82,7 @@ Om Software as a Service (SaaS) aanbiedingen met Commercial Marketplace op Partn
 - Voor uitgebreidere vereisten, zie de [SaaS Offer Publishing Guide](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
 #### <a name="saas-pricing-and-billing-options"></a>SaaS-prijs- en factureringsopties
+
 Met SaaS-oplossingen die worden uitgevoerd in het Azure-abonnement van de uitgever, omvatten licentiekosten die door klanten worden betaald, de kosten van de infrastructuur waarop de software wordt geïmplementeerd. Het gebruik van azure-infrastructuur wordt rechtstreeks beheerd en gefactureerd aan u, de partner. Werkelijke gebruikskosten voor infrastructuur worden niet gezien door de klant. Uitgevers moeten gebruikskosten voor Azure-infrastructuur bundelen in hun softwarelicentieprijzen. 
 
 SaaS biedt ondersteuning voor maandelijkse of jaarlijkse facturering op basis van een vast bedrag per gebruiker of verbruikskosten met behulp van de factureringsservice met datameter. De commerciële marktplaats van Microsoft werkt volgens een bureaumodel, waarbij uitgevers prijzen vaststellen, Microsoft klanten factureert en Microsoft inkomsten aan de uitgever betaalt terwijl ze een bemiddelingskosten inhouden.
@@ -109,16 +110,19 @@ Promoot uw bedrijf met Microsoft door een marktplaatsvermelding te maken. Als u 
 
 - **Hoe wilt u dat potentiële klanten interactie hebben met deze aanbiedingsaanbieding?**
 
-##### <a name="get-it-now-free"></a>Krijg het nu (gratis)
+#### <a name="get-it-now-free"></a>Krijg het nu (gratis)
+
 Bied uw aanbieding gratis aan klanten aan door een geldige URL (te beginnen met *http* of *https)* op te geven waar ze een proefversie kunnen krijgen via [verificatie met één klik met Azure AD](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials).  Bijvoorbeeld: `https://contoso.com/saas-app`
 
-##### <a name="free-trial-listing"></a>Gratis proefperiode (aanbieding)
+#### <a name="free-trial-listing"></a>Gratis proefperiode (aanbieding)
+
 Bied uw aanbieding aan klanten met een koppeling naar een gratis proefperiode door een geldige URL op te geven (te beginnen met *http* of *https),* waar ze een proefversie kunnen krijgen via [verificatie met één klik met behulp van Azure Active Directory (Azure AD).](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)  Bijvoorbeeld: `https://contoso.com/trial/saas-app`. Aanbiedingsvrije proefversies worden gemaakt, beheerd en geconfigureerd door uw service en hebben geen abonnementen die door Microsoft worden beheerd.
 
 > [!NOTE]
 > De tokens die uw toepassing ontvangt via uw testkoppeling, kunnen alleen worden gebruikt om gebruikersgegevens te verkrijgen via Azure AD om het maken van accounts in uw app te automatiseren. Microsoft-accounts (MSA) worden niet ondersteund voor verificatie met behulp van dit token.
 
-##### <a name="contact-me"></a>Neem contact met mij op
+#### <a name="contact-me"></a>Neem contact met mij op
+
 Verzamel klantcontactgegevens door uw CRM-systeem (Customer Relationship Management) met elkaar te verbinden. De klant wordt om toestemming gevraagd om zijn informatie te delen. Deze klantgegevens, samen met de naam van de aanbieding, id en marktplaatsbron waar ze uw aanbieding hebben gevonden, worden verzonden naar het CRM-systeem dat u hebt geconfigureerd. Zie [Leadmanagement](#connect-lead-management)verbinden voor meer informatie over het configureren van uw CRM.
 
 ## <a name="example-marketplace-offer-listing"></a>Voorbeeld van een lijst met Marketplace-aanbiedingen
@@ -127,16 +131,16 @@ Verzamel klantcontactgegevens door uw CRM-systeem (Customer Relationship Managem
 
 ## <a name="enable-a-test-drive"></a>Een proefrit inschakelen
 
-Een testrit is een geweldige manier om uw aanbod aan potentiële klanten te presenteren door hen de mogelijkheid te geven om 'proberen voordat u koopt', wat resulteert in een verhoogde conversie en het genereren van hooggekwalificeerde leads. [Meer informatie over testritten.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+Een testrit is een geweldige manier om uw aanbod aan potentiële klanten te presenteren door hen de mogelijkheid te geven om 'proberen voordat u koopt', wat resulteert in een verhoogde conversie en het genereren van hooggekwalificeerde leads. Zie [Uw klanten een proefrit laten maken in uw aanbieding](./test-drive.md)voor meer informatie.
 
 - **Een teststation inschakelen** (selectievakje)
 
 Door een proefrit in te schakelen, wordt u gevraagd een demonstratieomgeving te configureren voor klanten om uw aanbieding voor een bepaalde periode uit te proberen. 
 
-#### <a name="test-drive-resources"></a>Bronnen voor teststations
-- [Technische best practices voor testdrive](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Best practices voor testdrive marketing](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [Overzicht van teststation Één pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+### <a name="test-drive-resources"></a>Bronnen voor teststations
+
+- [Test Drive marketing best practices](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)- [Test Drive technische best practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Overzicht van teststation (PDF-download)](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
 ## <a name="connect-lead-management"></a>Leadbeheer verbinden
 
@@ -299,7 +303,7 @@ Op het tabblad **Voorbeeld** u een beperkte **preview-doelgroep** definiëren vo
 
 - **Een voorbeelddoelgroep definiëren: voeg één AAD/MSA-accounte-mail per regel toe, samen met een optionele beschrijving.**
 
-Voeg maximaal tien (10) e-mailadressen handmatig of twintig (20) toe als u een CSV-bestand uploadt voor bestaande Microsoft-account-accounts (MSA) of Azure Active Directory-accounts om uw aanbieding te valideren voordat u live wordt gepubliceerd. Door deze accounts toe te voegen, definieert u een doelgroep die toegang krijgt tot uw aanbieding voordat deze wordt gepubliceerd op de marktplaats(en). Als je aanbieding al live is, kun je nog steeds een preview-doelgroep definiëren voor het testen van wijzigingen of updates van je aanbieding.
+Voeg maximaal 10 e-mailadressen handmatig toe, of 20 als u een CSV-bestand uploadt voor bestaande Microsoft-account (MSA) of Azure Active Directory-accounts om uw aanbieding te valideren voordat u live publiceert. Door deze accounts toe te voegen, definieert u een doelgroep die toegang krijgt tot uw aanbieding voordat deze wordt gepubliceerd op de marktplaats(en). Als je aanbieding al live is, kun je nog steeds een preview-doelgroep definiëren voor het testen van wijzigingen of updates van je aanbieding.
 
 > [!NOTE]
 > De preview-doelgroep verschilt van een privépubliek. Een preview-doelgroep krijgt toegang tot uw aanbieding _voordat_ deze live in de marketplaces wordt gepubliceerd. U er ook voor kiezen om een plan te maken en het alleen beschikbaar te maken voor een privépubliek. Op het tabblad **Lijst met abonnement** u een privédoelgroep definiëren met het selectievakje Dit is een **privéabonnement.** U vervolgens een privédoelgroep van maximaal 20.000 klanten definiëren met azure tenant-id's.
@@ -359,12 +363,12 @@ SaaS biedt via de commerciële marktplaats u een gratis proefperiode van een maa
 >[!Note]
 >Als de klant ervoor kiest om te converteren naar een abonnement zonder gratis proefversies, zal de conversie plaatsvinden, maar de gratis proefperiode gaat onmiddellijk verloren.  Ook, zodra een klant begint te betalen voor een abonnement, kunnen ze niet langer gratis proefperiode op hetzelfde abonnement weer, zelfs als ze converteren naar een SKU die gratis proeven ondersteunt.
 
-De mogelijkheid om een gratis proefversie te configureren is beschikbaar voor elk abonnement in uw aanbieding. Navigeer eenvoudig naar de prijzen en beschikbaarheid voor elke aanbieding en schakel het selectievakje in om een proefperiode van één maand toe te staan.
+De mogelijkheid om een gratis proefversie te configureren is beschikbaar voor elk abonnement in uw aanbieding. Navigeer naar de prijzen en beschikbaarheid voor elke aanbieding en schakel het selectievakje in om een proefperiode van één maand toe te staan.
 
 ![Een maand gratis proefcontrolebox](./media/free-trial-enable.png)
 
 >[!Note]
->Zodra uw transactable aanbieding met een vrije proef is gepubliceerd kan het niet voor dat plan worden onbruikbaar gemaakt. Zorg ervoor dat deze instelling correct is voor de eerste publicatie om te voorkomen dat u het plan opnieuw moet maken.
+>Zodra uw transactable aanbieding met een vrije proef is gepubliceerd, kan het niet voor dat plan worden onbruikbaar gemaakt. Zorg ervoor dat deze instelling correct is voor de eerste publicatie om te voorkomen dat u het plan opnieuw moet maken.
 
 Als u informatie wilt verkrijgen over klantabonnementen die momenteel `isFreeTrial`deelnemen aan een gratis proefperiode, gebruikt u de nieuwe API-eigenschap , die wordt gemarkeerd als waar of onwaar. Zie de [SaaS Get Subscription API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription)voor meer informatie.
 
@@ -377,7 +381,7 @@ Als u informatie wilt verkrijgen over klantabonnementen die momenteel `isFreeTri
 
 Elk plan moet beschikbaar zijn in ten minste één markt. Schakel het selectievakje in voor elke marktlocatie waar u dit abonnement beschikbaar wilt maken. Een zoekvak en knop voor het selecteren van 'Tax Remitted'-landen, waarin Microsoft namens u btw overdraagt, zijn opgenomen om u te helpen.
 
-Als u al prijzen voor uw abonnement in Amerikaanse dollars (USD) hebt ingesteld en een andere marktlocatie toevoegt, wordt de prijs voor de nieuwe markt berekend op basis van de huidige wisselkoersen. U moet altijd de prijs voor elke markt bekijken voordat u publiceert. Prijzen kunnen worden beoordeeld met behulp van de link 'Exportprijzen (xlsx)' na het opslaan van uw wijzigingen.
+Als u al prijzen voor uw abonnement in Amerikaanse dollars (USD) hebt ingesteld en een andere marktlocatie toevoegt, wordt de prijs voor de nieuwe markt berekend op basis van de huidige wisselkoersen. Bekijk de prijs voor elke markt voordat u publiceert. Prijzen kunnen worden beoordeeld met behulp van de link 'Exportprijzen (xlsx)' na het opslaan van uw wijzigingen.
 
 #### <a name="pricing"></a>Prijzen
 
@@ -418,7 +422,7 @@ Schakel dit selectievakje in om uw abonnement privé en alleen zichtbaar te make
 
 Wijs de doelgroep toe die toegang heeft tot dit privéplan. Toegang wordt toegewezen met behulp van tenant-id's met de optie om een beschrijving van elke toegewezen tenant-id op te nemen. Er kunnen maximaal 10 tenant-id's worden toegevoegd of 20.000 tenant-id's als u een CSV-spreadsheetbestand importeert.
 
-Een tenant is een weergave van een organisatie, met een ID die wordt weergegeven als een GUID (Globally Unique Identifier, een 128-bits geheel getal dat wordt gebruikt om resources te identificeren). Een tenant is een toegewezen exemplaar van Azure AD dat een organisatie of app-ontwikkelaar ontvangt wanneer deze een relatie start met Microsoft, door zich bijvoorbeeld aan te melden voor Azure, Microsoft Intune of Microsoft 365. Elke Azure AD-tenant is uniek en werkt afzonderlijk van andere Azure AD-tenants. Om te controleren of u al een tenant hebt, meld u zich aan bij Azure Portal met het account dat u wilt gebruiken voor het beheren van uw toepassing. Als u een tenant hebt, wordt u automatisch aangemeld en ziet u de naam van de tenant direct onder de accountnaam. Houd de muisaanwijzer op uw accountnaam rechtsboven in Azure Portal om uw naam, e-mailadres, directory en tenant-id (een GUID), en uw domein te zien. Als uw account is gekoppeld aan meerdere tenants, kunt u de accountnaam selecteren om een menu te openen waarmee u kunt schakelen tussen de tenants. Elke tenant heeft zijn eigen tenant-id. U ook de tenant-id van uw organisatie [https://www.whatismytenantid.com](https://www.whatismytenantid.com)opzoeken met behulp van een URL van de domeinnaam op:.
+Een tenant is een weergave van een organisatie, met een ID die wordt weergegeven als een GUID (Globally Unique Identifier, een 128-bits geheel getal dat wordt gebruikt om resources te identificeren). Het is een speciaal exemplaar van Azure AD dat een organisatie of app-ontwikkelaar ontvangt wanneer de organisatie of app-ontwikkelaar een relatie met Microsoft maakt, bijvoorbeeld wanneer hij zich aanmeldt voor Azure, Microsoft Intune of Microsoft 365. Elke Azure AD-tenant is uniek en werkt afzonderlijk van andere Azure AD-tenants. Om te controleren of u al een tenant hebt, meld u zich aan bij Azure Portal met het account dat u wilt gebruiken voor het beheren van uw toepassing. Als u een tenant hebt, wordt u automatisch aangemeld en ziet u de naam van de tenant direct onder de accountnaam. Houd de muisaanwijzer op uw accountnaam rechtsboven in Azure Portal om uw naam, e-mailadres, directory en tenant-id (een GUID), en uw domein te zien. Als uw account is gekoppeld aan meerdere tenants, kunt u de accountnaam selecteren om een menu te openen waarmee u kunt schakelen tussen de tenants. Elke tenant heeft zijn eigen tenant-id. U ook de tenant-id van uw organisatie [https://www.whatismytenantid.com](https://www.whatismytenantid.com)opzoeken met behulp van een URL van de domeinnaam op:.
 
 Hoewel SaaS-aanbiedingen tenant--cd's gebruiken om een privédoelgroep te definiëren, kunnen andere aanbiedingstypen azure-abonnements-iD's gebruiken (die ook worden weergegeven als GUID's).
 
@@ -429,19 +433,15 @@ Hoewel SaaS-aanbiedingen tenant--cd's gebruiken om een privédoelgroep te defini
 
 ![Voorbeeld aanbieding van marktplaatsplan met notities](./media/marketplace-plan.svg)
 
-## <a name="test-drive"></a>Proefrit
-
-[!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
-
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>Cloud Solution Provider (CSP) Reseller Audience
 
 Door ervoor te kiezen om uw aanbod beschikbaar te maken in het CSP-programma kunnen Cloud Solution Providers uw product verkopen als onderdeel van een gebundelde oplossing aan hun klanten. Zie [Cloud Solution Providers](https://go.microsoft.com/fwlink/?linkid=2111109)voor meer informatie.
 
 ## <a name="publish"></a>Publiceren
 
-Zodra u alle vereiste gedeelten van de aanbieding hebt voltooid, selecteert u **publiceren** in de rechterbovenhoek van de portal. U wordt omgeleid naar de **pagina Beoordeling en publicatie.**
+Zodra u alle vereiste gedeelten van de aanbieding hebt voltooid, selecteert u **publiceren** in de rechterbovenhoek van de portal. U wordt doorgestuurd naar de **pagina Beoordeling en publicatie.**
 
-#### <a name="submit-offer-to-preview"></a>Voorstel indienen om een voorbeeld te bekijken
+### <a name="submit-offer-to-preview"></a>Voorstel indienen om een voorbeeld te bekijken
 
 Als dit de eerste keer is dat u deze aanbieding publiceert, u het als volgt doen:
 

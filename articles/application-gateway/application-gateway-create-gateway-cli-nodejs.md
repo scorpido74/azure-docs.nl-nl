@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed7bbbf55956d655115b94c8ac46432b3e36c49b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62095979"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312634"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Een toepassingsgateway maken met de Azure CLI
 
-Azure Application Gateway is een load balancer in laag 7. De gateway biedt opties voor failovers en het routeren van HTTP-aanvragen tussen servers (on-premises en in de cloud). Application gateway heeft de volgende functies voor het leveren van toepassingen: HTTP load balancing, cookie-based session affinity, en Secure Sockets Layer (SSL) offload, custom health probes en ondersteuning voor multi-site.
+Azure Application Gateway is een load balancer in laag 7. De gateway biedt opties voor failovers en het routeren van HTTP-aanvragen tussen servers (on-premises en in de cloud). Application gateway heeft de volgende functies voor het leveren van toepassingen: HTTP load balancing, cookie-based session affinity en Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL), offload, custom health probes en ondersteuning voor multi-site.
 
 ## <a name="prerequisite-install-the-azure-cli"></a>Voorwaarde: De Azure CLI installeren
 
@@ -135,7 +135,7 @@ Als u uw webtoepassing al hebt gedefinieerd met de backendpool in de voorgaande 
 
 Meer informatie over het maken van aangepaste statussondes door [een aangepaste statussonde te](application-gateway-create-probe-portal.md) maken
 
-Meer informatie over het configureren van SSL Offloading en het uitschakelen van de kostbare SSL-decryptie van uw webservers door [SSL-offload configureren](application-gateway-ssl-arm.md) te bezoeken
+Meer informatie over het configureren van TLS Offloading en het weghalen van de kostbare TLS-decryptie van uw webservers door [TLS-offload configureren](application-gateway-ssl-arm.md) te bezoeken
 
 <!--Image references-->
 

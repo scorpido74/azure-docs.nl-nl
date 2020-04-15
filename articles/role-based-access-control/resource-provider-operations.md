@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c56e6729307a1cad998a060202f51cb8f29bf94a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 16fa33999a38b21fd2016c986dd2db81f7d84051
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548325"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383754"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager-resourceproviderbewerkingen
 
@@ -2392,7 +2392,7 @@ Azure-service: [kostenbeheer](../cost-management-billing/index.yml)
 > | Actie | Microsoft.Verbruik/reserveringSamenvattingen/gelezen | Vermeld het gebruiksoverzicht voor gereserveerde instanties op reserveringsvolgorde of beheergroepen. De overzichtsgegevens zijn maandelijks of dagelijks. |
 > |  | **reserveringTransacties** |  |
 > | Actie | Microsoft.Verbruik/reserveringTransacties/gelezen | Vermeld de transactiegeschiedenis voor gereserveerde instanties door beheergroepen. |
-> |  | **tags** |  |
+> |  | **Tags** |  |
 > | Actie | Microsoft.Consumption/tags/lezen | Lijsttags voor EA en abonnementen. |
 > |  | **Huurders** |  |
 > | Actie | Microsoft.Consumption/tenants/register/action | Actie registreren voor het bereik van Microsoft.Consumption door een tenant. |
@@ -5180,7 +5180,7 @@ Azure-service: [Key Vault](../key-vault/index.yml)
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
-Azure-service: [Azure Data Explorer](../data-explorer/index.yml)
+Azure-service: [Azure Data Explorer](/azure/data-explorer/)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Actietype | Bewerking | Beschrijving |
@@ -7744,7 +7744,7 @@ Azure-service: [Azure Monitor](../azure-monitor/index.yml)
 > | Actie | Microsoft.OperationsManagement/beheerConfiguraties/schrijven | Een nieuwe beheerconfiguratie maken |
 > | Actie | Microsoft.OperationsManagement/beheerConfiguraties/lezen | Bestaande beheerconfiguratie opdoen |
 > | Actie | Microsoft.OperationsManagement/beheerConfiguraties/verwijderen | Bestaande beheerconfiguratie verwijderen |
-> |  | **oplossingen** |  |
+> |  | **Oplossingen** |  |
 > | Actie | Microsoft.OperationsManagement/oplossingen/schrijven | Nieuwe OMS-oplossing maken |
 > | Actie | Microsoft.OperationsManagement/oplossingen/lezen | Download spannende OMS-oplossing |
 > | Actie | Microsoft.OperationsManagement/oplossingen/verwijderen | Bestaande OMS-oplossing verwijderen |
@@ -8324,7 +8324,7 @@ Azure-service: [Azure Resource Manager](../azure-resource-manager/index.yml)
 > | Actie | Microsoft.Resources/abonnementen/tagNames/tagWaarden/gelezen | Hiermee worden abonnementstagwaarden opkentekens of vermeld. |
 > | Actie | Microsoft.Resources/abonnementen/tagNames/tagWaarden/schrijven | Hiermee voegt u een waarde van een abonnementstag toe. |
 > | Actie | Microsoft.Resources/abonnementen/tagNames/tagWaarden/verwijderen | Hiermee verwijdert u de waarde van een abonnementstag. |
-> |  | **tags** |  |
+> |  | **Tags** |  |
 > | Actie | Microsoft.Resources/tags/lezen | Hiermee worden alle tags op een resource opkenteken. |
 > | Actie | Microsoft.Resources/tags/write | Werkt de tags op een resource bij door bestaande tags te vervangen of samen te voegen met een nieuwe set tags of bestaande tags te verwijderen. |
 > | Actie | Microsoft.Resources/tags/delete | Hiermee verwijdert u alle tags op een resource. |

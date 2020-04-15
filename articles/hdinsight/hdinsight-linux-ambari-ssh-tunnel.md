@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 6f4efd9a316b92f17f89cea66a7c81e84ac3cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 9bdf7360ce00637b0eed3de7a3349da8656a3ed0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72991352"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314165"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>SSH-tunneling gebruiken om toegang te krijgen tot apache Ambari web ui, jobgeschiedenis, namenode, Apache Oozie en andere UI's
 
-HDInsight-clusters bieden toegang tot de Apache Ambari-webgebruikersinterface via internet, maar sommige functies vereisen een SSH-tunnel. De web-gebruikersinterface voor de Apache Oozie-service is bijvoorbeeld niet toegankelijk via internet zonder een SSh-tunnel.
+HDInsight-clusters bieden toegang tot de Apache Ambari-webgebruikersinterface via internet. Voor sommige functies is een SSH-tunnel vereist. De Apache Oozie web UI is bijvoorbeeld niet toegankelijk via internet zonder een SSH-tunnel.
 
 ## <a name="why-use-an-ssh-tunnel"></a>Waarom een SSH-tunnel gebruiken
 
@@ -31,7 +31,7 @@ De volgende Web-UI's vereisen een SSH-tunnel:
 * Oozie web Gebruikersinterface
 * HBase Master en Logs UI
 
-Als u Script-acties gebruikt om uw cluster aan te passen, vereisen services of hulpprogramma's die u installeert die een webservice blootleggen, een SSH-tunnel. Als u Hue bijvoorbeeld installeert met een Scriptactie, moet u een SSH-tunnel gebruiken om toegang te krijgen tot de Hue-webgebruikersinterface.
+Services die zijn geïnstalleerd met Scriptacties die een webservice blootleggen, vereisen een SSH-tunnel. Hue die is geïnstalleerd met Script Action vereist een SSH-tunnel om toegang te krijgen tot de web-gebruikersinterface.
 
 > [!IMPORTANT]  
 > Als u rechtstreeks toegang hebt tot HDInsight via een virtueel netwerk, hoeft u geen SSH-tunnels te gebruiken. Zie voor een voorbeeld van rechtstreeks toegang tot HDInsight via een virtueel netwerk het [Connect HDInsight naar uw on-premises netwerkdocument.](connect-on-premises-network.md)
@@ -64,14 +64,16 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 Met deze opdracht wordt een verbinding gemaakt die verkeer naar lokale poort 9876 naar het cluster over SSH leidt. De opties zijn:
 
-* **D 9876** - De lokale haven die het verkeer door de tunnel leidt.
-* **C** - Alle gegevens comprimeren, omdat webverkeer meestal tekst is.
-* **2** - Forceer SSH om alleen protocolversie 2 te proberen.
-* **q** - Stille modus.
-* **T** - Schakel pseudo-tty toewijzing, omdat je gewoon het doorsturen van een poort.
-* **n** - Voorkom het lezen van SOIN, omdat je gewoon een poort doorstuurt.
-* **N** - Voer geen opdracht op afstand uit, omdat u alleen een poort doorstuurt.
-* **f** - Ren op de achtergrond.
+    |Optie |Beschrijving |
+    |---|---|
+    |D 9876|De lokale haven die het verkeer door de tunnel leidt.|
+    |C|Comprimeer alle gegevens, omdat webverkeer meestal tekst is.|
+    |2|Dwing SSH om alleen protocolversie 2 uit te proberen.|
+    |q|Stille modus.|
+    |T|Schakel pseudo-tty toewijzing, omdat je gewoon het doorsturen van een poort.|
+    |n|Voorkom het lezen van SODIN, omdat u gewoon een poort doorstuurt.|
+    |N|Voer geen opdracht op afstand uit, omdat u alleen een poort doorstuurt.|
+    |v|Ren op de achtergrond.|
 
 Zodra de opdracht is voltooid, wordt het verkeer dat naar poort 9876 op de lokale computer wordt verzonden, doorgestuurd naar het clusterhoofdknooppunt.
 

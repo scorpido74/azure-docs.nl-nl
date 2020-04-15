@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 9d32b66b7e3ab27012ee671ba8d70735dce73884
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274274"
+ms.locfileid: "81313671"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>Synchronisatieproblemen met ServiceNow handmatig oplossen
 
-Azure Monitor kan verbinding maken met ITSM-providers (ITM) van derden. ServiceNow is een van die aanbieders. 
+Azure Monitor kan verbinding maken met ITSM-providers (ITM) van derden. ServiceNow is een van die aanbieders.
 
 Om veiligheidsredenen moet u mogelijk het verificatietoken vernieuwen dat wordt gebruikt voor uw verbinding met ServiceNow.
-Gebruik het volgende synchronisatieproces om de verbinding opnieuw te activeren en het token te vernieuwen: 
+Gebruik het volgende synchronisatieproces om de verbinding opnieuw te activeren en het token te vernieuwen:
 
 
 1. Zoek naar de oplossing in de bovenste zoekbanner en selecteer vervolgens de relevante oplossingen

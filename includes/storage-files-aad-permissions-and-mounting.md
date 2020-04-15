@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 12/12/2019
+ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: c88f5a4dd4f2997ce01b1f6a3ae192c62f530e76
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: b6a8bc083b589463b67f2e25e262b15456355d05
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011414"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383842"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Toegangsmachtigingen toewijzen aan een identiteit
 
@@ -98,7 +98,7 @@ Zie [de command-line referentie voor icacls voor](https://docs.microsoft.com/win
 
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>Een bestandsshare monteren vanuit de opdrachtprompt
 
-Gebruik de opdracht **Windows-net om** de Azure-bestandsshare te monteeren. Vergeet niet om de tijdelijke aanduidingswaarden in het volgende voorbeeld te vervangen door uw eigen waarden. Zie [Een Azure-bestandsshare gebruiken met Windows](../articles/storage/files/storage-how-to-use-files-windows.md)voor meer informatie over het maken van bestandsshares.
+Gebruik de opdracht **Windows-net om** de Azure-bestandsshare te monteeren. Vergeet niet om de tijdelijke aanduidingswaarden in het volgende voorbeeld te vervangen door uw eigen waarden. Zie [Een Azure-bestandsshare gebruiken met Windows](../articles/storage/files/storage-how-to-use-files-windows.md)voor meer informatie over het maken van bestandsshares. 
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
@@ -123,7 +123,7 @@ Meld u aan bij de VM met de Azure AD-identiteit waaraan u machtigingen hebt verl
 
 ![Schermafbeelding van het aanmeldingsscherm van Azure AD voor gebruikersverificatie](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-Gebruik de volgende opdracht om de Azure-bestandsshare te monteren. Vergeet niet om de tijdelijke aanduidingwaarden te vervangen door uw eigen waarden. Omdat u bent geverifieerd, hoeft u de opslagaccountsleutel, de AD-referenties of de Azure AD-referenties niet op te geven. Eenmalige aanmeldingservaring wordt ondersteund voor verificatie met AD of Azure AD DS.
+Gebruik de volgende opdracht om de Azure-bestandsshare te monteren. Vergeet niet om de tijdelijke aanduidingwaarden te vervangen door uw eigen waarden. Omdat u bent geverifieerd, hoeft u de opslagaccountsleutel, de AD-referenties of de Azure AD-referenties niet op te geven. Eenmalige aanmeldingservaring wordt ondersteund voor verificatie met AD of Azure AD DS. Als u problemen ondervindt bij het monteren met AD-referenties, schakelt u [Problemen met Azure-bestanden in Windows op](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) om zelfdiagnostische richtlijnen op te lossen.
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>

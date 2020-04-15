@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a275e5ab394b54960a2340848152741762b28f8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269388"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309906"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Wanneer een Azure Multi-Factor Authentication Provider gebruiken
+
+> [!IMPORTANT]
+> Vanaf 1 september 2018 kunnen nieuwe auth providers niet meer worden gemaakt. Bestaande auth-providers kunnen nog steeds worden gebruikt en bijgewerkt, maar migratie is niet langer mogelijk. Meervoudige verificatie blijft beschikbaar als functie in Azure AD Premium-licenties.
 
 Verificatie in twee stappen is standaard beschikbaar voor globale beheerders van Azure Active Directory- en Office 365-gebruikers. Als u echter wilt profiteren van [geavanceerde functies](howto-mfa-mfasettings.md), moet u de volledige versie van Azure Multi-Factor Authentication (MFA) aanschaffen.
 
 Een Azure Multi-Factor Auth-provider wordt gebruikt om te profiteren van functies die worden geleverd door Azure Multi-Factor Authentication voor gebruikers die **geen licenties hebben.**
-
-> [!NOTE]
-> Vanaf 1 september 2018 kunnen nieuwe auth providers niet meer worden gemaakt. Bestaande auth-providers kunnen nog steeds worden gebruikt en bijgewerkt, maar migratie is niet langer mogelijk. Meervoudige verificatie blijft beschikbaar als functie in Azure AD Premium-licenties.
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Kanttekeningen met betrekking tot de Azure MFA SDK
 

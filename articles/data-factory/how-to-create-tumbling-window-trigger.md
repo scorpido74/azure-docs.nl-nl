@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f9e31b8f0fce1af8408b80afb1049dae8c8ecf1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a634c81273c26722d53610a13e362e5e453f7e9
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73673715"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380116"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Een trigger maken die een pijplijn uitvoert op een tumblingvenster
 In dit artikel vindt u stappen om een tuimelende venstertrigger te maken, te starten en te controleren. Zie [Pijplijnuitvoering en triggers](concepts-pipeline-execution-triggers.md)voor algemene informatie over triggers en de ondersteunde typen.
@@ -97,7 +97,7 @@ De volgende tabel geeft een overzicht op hoog niveau van de belangrijkste JSON-e
 | **Type** | Het type van de trekker. Het type is de vaste waarde "TumblingWindowTrigger". | Tekenreeks | "TumblingWindowTrigger" | Ja |
 | **runtimeState** | De huidige status van de triggerruntijd.<br/>**Opmerking:** Dit \<element wordt gelezenAlleen>. | Tekenreeks | 'Gestart', 'Gestopt', 'Uitgeschakeld' | Ja |
 | **frequency** | Een tekenreeks die de frequentie-eenheid (minuten of uren) vertegenwoordigt waarop de trigger terugkeert. Als de **waarden van de begindatum** gedetailleerder zijn dan de **frequentiewaarde,** worden de **begindatums** in aanmerking genomen wanneer de venstergrenzen worden berekend. Als de **frequentiewaarde** bijvoorbeeld per uur is en de **waarde startTime** 2017-09-01T10:10:10Z, is het eerste venster (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Tekenreeks | "minuut," "uur"  | Ja |
-| **Interval** | Een positief geheel getal dat het interval voor de waarde **frequency** aangeeft. Het bepaalt hoe vaak de trigger wordt uitgevoerd. Als het **interval** bijvoorbeeld 3 is en de **frequentie** 'uur' is, komt de trigger elke 3 uur terug. <br/>**Opmerking:** Het minimale vensterinterval is 15 minuten. | Geheel getal | Een positief geheel getal. | Ja |
+| **Interval** | Een positief geheel getal dat het interval voor de waarde **frequency** aangeeft. Het bepaalt hoe vaak de trigger wordt uitgevoerd. Als het **interval** bijvoorbeeld 3 is en de **frequentie** 'uur' is, komt de trigger elke 3 uur terug. <br/>**Opmerking:** Het minimale vensterinterval is 5 minuten. | Geheel getal | Een positief geheel getal. | Ja |
 | **startTime**| Het eerste voorkomen, dat in het verleden kan zijn. Het eerste triggerinterval is (**startTime**, **startTime** + **interval**). | DateTime | Een datumtijdwaarde. | Ja |
 | **endTime**| Het laatste voorval, dat in het verleden kan zijn. | DateTime | Een datumtijdwaarde. | Ja |
 | **Vertraging** | De hoeveelheid tijd om de start van de gegevensverwerking voor het venster uit te stellen. De pijplijnrun wordt gestart na de verwachte uitvoeringstijd plus de hoeveelheid **vertraging**. De **vertraging** bepaalt hoe lang de trigger voorbij de vervaldatum wacht voordat een nieuwe run wordt geactiveerd. De **vertraging** verandert niets aan de **starttijd van**het venster . Een **vertragingswaarde** van 00:10:00 betekent bijvoorbeeld een vertraging van 10 minuten. | Periode<br/>(hh:mm:ss)  | Een tijdspannewaarde waarbij de standaardwaarde 00:00:00 is. | Nee |

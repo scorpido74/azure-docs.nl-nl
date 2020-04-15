@@ -85,8 +85,6 @@
   items:
     - name: TLS-ondersteuning
       href: iot-hub-tls-support.md
-    - name: Afschaffing van TLS 1.0 en 1.1
-      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: Ondersteuning voor virtuele netwerken
       href: virtual-network-support.md
     - name: Overzicht van berichtverrijkingen
@@ -444,6 +442,8 @@
           href: iot-hub-operations-monitoring.md
         - name: Migreren naar diagnostische instellingen
           href: iot-hub-migrate-to-diagnostics-settings.md
+        - name: Afschaffing van TLS 1.0 en 1.1
+          href: iot-hub-tls-deprecating-1-0-and-1-1.md
 - name: Resources
   items:
     - name: Opties voor ondersteuning en hulp

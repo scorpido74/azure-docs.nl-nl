@@ -1,22 +1,26 @@
 ---
-title: TLS 1.0 en 1.1 in De Voorzieningsservice voor apparaten (DPS) uitdeprecating | Microsoft Documenten
-description: Richtlijnen met betrekking tot deafschaffing van TLS 1.0 en 1.1 en ondersteunde cijfers in IoT Hub en DPS.
-author: rezasherafat
-ms.author: rezas
+title: TLS 1.0 en 1.1 in IoT-hub uitdeprecating | Microsoft Documenten
+description: Richtlijnen met betrekking tot deafschaffing van TLS 1.0 en 1.1 en ondersteunde cijfers in IoT Hub.
+author: jlian
+ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: d61ca8fe7c6f5e7cc400714d7c31a0a7e50b8a88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: a887dd4df44ba58b0e6646ffb1c10eb21edf3e69
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402787"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381299"
 ---
-# <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>Afschrijving van TLS 1.0 en 1.1 in IoT Hub en Device Provisioning Service
+# <a name="deprecation-of-tls-10-and-11-in-iot-hub"></a>Afschrijving van TLS 1.0 en 1.1 in IoT Hub
 
-Om de beste versleuteling te bieden, stappen IoT Hub en Device Provisioning Service (DPS) over naar Transport Layer Security (TLS) 1.2 als het versleutelingsmechanisme bij uitstek voor IoT-apparaten en -services. 
+Om de beste versleuteling te bieden, gaat IoT Hub over op Tls(Transport Layer Security) 1.2 als het versleutelingsmechanisme naar keuze voor IoT-apparaten en -services. 
+
+## <a name="timeline"></a>Tijdlijn
+
+IoT Hub blijft TLS 1.0/1.1 tot nader order ondersteunen. We raden echter aan dat alle klanten zo snel mogelijk migreren naar TLS 1.2.
 
 ## <a name="supported-ciphers"></a>Ondersteunde cijfers
 
@@ -26,7 +30,6 @@ De tijdlijn voor de beschikbaarheid van verschillende cijfers die worden gebruik
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (zal worden ondersteund in de tweede helft van 2020)
 * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (zal worden ondersteund in de tweede helft van 2020)
 * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (zal worden ondersteund in de tweede helft van 2020)
-
 
 ## <a name="customer-feedback"></a>Feedback
 
