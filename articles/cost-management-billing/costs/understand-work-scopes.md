@@ -3,17 +3,17 @@ title: Azure Cost Management-bereiken begrijpen en ermee werken
 description: Dit artikel helpt u inzicht te krijgen in de bereiken voor facturering- en resourcebeheer die beschikbaar zijn in Azure en hoe u de bereiken gebruikt in Cost Management en API's.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: bbed4209d26fe32f95b93b2c7411e1ab74f03ede
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ebae9d1c66a721926ca07b21059ec57b05b99a0f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80131358"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877929"
 ---
 # <a name="understand-and-work-with-scopes"></a>Bereiken begrijpen en gebruiken
 
@@ -26,6 +26,10 @@ Een _Bereik_ is een knooppunt in de Azure-resourcehiërarchie waar Azure Active 
 - Cloud Services, zoals kosten en beleidsbeheer
 
 Bereiken zijn de plekken waar u factureringsgegevens beheert, over rollen beschikt die specifiek zijn voor betalingen, facturen beheert en algemeen accountbeheer uitvoert. Facturerings- en accountrollen worden afzonderlijk beheerd vanaf bereiken die worden gebruikt voor resourcebeheer, en die gebruik maken van [Azure RBAC](../../role-based-access-control/overview.md). Om de intentie van de afzonderlijke bereiken duidelijk te onderscheiden, met inbegrip van de verschillen in toegangsbeheer, worden ze respectievelijk _factureringsbereiken_ en _RBAC-bereiken_ genoemd.
+
+Bekijk de video [Hiërarchieën instellen met Cost Management](https://www.youtube.com/watch?v=n3TLRaYJ1NY) voor meer informatie over bereiken. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
 
 ## <a name="how-cost-management-uses-scopes"></a>Hoe Cost Management bereiken gebruikt
 
@@ -71,7 +75,7 @@ Cost Management Inzender is de aanbevolen rol met minimale bevoegdheden. Deze ro
 
 Enterprise Agreement (EA)-factureringsrekeningen, ook wel inschrijvingen genoemd, hebben de volgende bereiken:
 
-- [**Factureringsrekening**](../manage/view-all-accounts.md)- Vertegenwoordigt een EA-inschrijving. Facturen worden in dit bereik gegenereerd. Aankopen die niet op basis van gebruik zijn, zoals Marketplace en reserveringen, zijn alleen beschikbaar in dit bereik. Ze worden niet weergegeven in afdelingen of inschrijvingsaccounts.
+- [**Factureringsrekening**](../manage/view-all-accounts.md)- Vertegenwoordigt een EA-inschrijving. Facturen worden in dit bereik gegenereerd. Aankopen die niet op basis van gebruik zijn, zoals Marketplace en reserveringen, zijn alleen beschikbaar in dit bereik. Ze worden niet weergegeven in afdelingen of inschrijvingsaccounts. Het gebruik van reserveringen, samen met alle andere gebruik, wordt toegepast op afzonderlijke resources. Gebruik wordt doorgevoerd op abonnementen binnen het factureringsaccount. Als u de reserveringskosten uitgesplitst wilt weergeven voor elke resource, schakelt u over naar de weergave **Afgeschreven kosten** in de kostenanalyse.
 
     Resourcetype: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
 - **Afdeling** - Optionele groepering van inschrijvingsaccounts.

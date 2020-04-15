@@ -3,16 +3,16 @@ title: Azure EA-overeenkomsten en -aanpassingen
 description: In dit wordt uitleg gegeven over hoe de Azure EA-overeenkomsten en -aanpassingen van invloed zijn op uw gebruik van Azure EA Portal.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/04/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5198bd240f0c4e23910504fd039d64a73ddb41c9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b007e98f37246d17679761fd601ed76fd9fb875
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78301417"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586229"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA-overeenkomsten en -aanpassingen
 
@@ -164,17 +164,17 @@ Het vooraf gekochte abonnement voor Azure Compute (CPP of Compute Pre-Purchase P
 
 Als u een CPP-SKU hebt besteld, is deze bestemd voor een specifiek type VM in een specifiek datacentrum. In de huidige vorm wordt voor deze functie geen lijst weergegeven met alle CPP-aankopen die een klant heeft gedaan en er is dus geen lijst met tegoed dat de klant ontvangt. Wanneer u echter de aangeschafte VM-typen configureert in het datacentrum waar ze zijn gekocht, wordt de maandelijkse toewijzing weergegeven in het rapport Gebruiksoverzicht in EA Portal.
 
-De vooraf aangeschafte hoeveelheid wordt weergegeven als een tegoed in de kolom 'Inbegrepen eenheden' en voor het gebruik hiervan worden geen kosten in rekening gebracht totdat de 'Inbegrepen eenheden' zijn verbruikt. Wanneer deze zijn verbruikt, worden de kosten voor aanvullend gebruik berekend volgens de overeengekomen tarieven in het normale prijzenoverzicht voor EA-klanten.
+De vooraf aangeschafte hoeveelheid wordt weergegeven als een tegoed in de kolom Inbegrepen eenheden. Voor het gebruik hiervan worden geen kosten in rekening gebracht totdat de Inbegrepen eenheden zijn verbruikt. Wanneer deze zijn verbruikt, worden de kosten voor aanvullend gebruik berekend volgens de overeengekomen tarieven in het normale prijzenoverzicht voor EA-klanten.
 
 Het tegoed wordt gekocht op basis van het aantal VM's van een bepaalde klasse per maand. Als u bijvoorbeeld 70 A2-VM's per jaar in US - oost 2 hebt aangeschaft, wordt dat in EA Portal anders weergegeven dan dat u deze hebt aangeschaft.
 
-Maandelijkse VM's zijn naar berekening 744 uur per maand actief. Als dat wordt omgezet in uren is dat 70 keer 744 oftewel 52.080 gekochte uren van A2-VM's per maand. Omdat in het gebruiksoverzicht van EA Portal de A2-VM's worden vermeld in eenheden van 100 uur, wordt er een tegoed van 520,8 (52.080/100) 'Inbegrepen eenheden' per maand weergegeven en worden de tot dan toe verbruikte eenheden in de maand vermeld. Voor de gebruikskosten moet nul zijn weergegeven totdat de maandelijkse verbruikte eenheden de maandelijkse inbegrepen eenheden overschrijden.
+Maandelijkse VM's zijn naar berekening 744 uur per maand actief. Als dat wordt omgezet in uren is dat 70 keer 744 oftewel 52.080 gekochte uren van A2-VM's per maand. Omdat in het gebruiksoverzicht van EA Portal de A2-VM's worden vermeld in eenheden van 100 uur, wordt er een tegoed van 520,8 (52.080/100) Inbegrepen eenheden per maand weergegeven en worden de tot dan toe verbruikte eenheden in de maand vermeld. Voor de gebruikskosten moet nul zijn weergegeven totdat de maandelijkse verbruikte eenheden de maandelijkse inbegrepen eenheden overschrijden.
 
 Voor de verschillende soorten VM's worden verschillende eenheden gebruikt. Zo wordt voor de D3- en D4-VM's een eenheid van 10 uur gebruikt in het rapport Gebruiksoverzicht, zodat een aankoop van 70 van die VM's wordt vermeld als 5208 inbegrepen eenheden per maand (52.080/10).
 
 Over het algemeen biedt de onderstaande formule uitkomst over het aantal aangeschafte VM's op basis van de betreffende eenheden:
 
-<center><b> ('Inbegrepen hoeveelheid' * 'Meeteenheden) / 744 </b></center>
+<center><b> (Inbegrepen hoeveelheid * Meeteenheden) / 744 </b></center>
 
 ## <a name="plan-skus"></a>Abonnements-SKU's
 
@@ -190,7 +190,7 @@ Ondernemingsbeheerders kunnen accounteigenaren toewijzen om eerder gekochte abon
 1. Klik in het linkernavigatievenster op **Rapporten**.
 1. Klik op het tabblad **Prijzenoverzicht**.
 1. Klik op het downloadpictogram in de rechterbovenhoek.
-1. Zoek de betreffende abonnements-SKU-onderdeelnummers met het filter in de kolom 'Inbegrepen hoeveelheid' en selecteer waarden die groter zijn dan 0.
+1. Zoek de betreffende SKU-onderdeelnummers voor het abonnement met het filter in de kolom Inbegrepen hoeveelheid, en selecteer waarden die groter zijn dan 0.
 
 ### <a name="provision-the-plan-skus"></a>De abonnements-SKU's inrichten
 
@@ -219,7 +219,7 @@ Ondernemingsbeheerders kunnen nieuwe accounteigenaren toevoegen, een bestaande a
 1. Geef een naam op die u wilt gebruiken om dit account te identificeren in de rapportfunctie.
 1. Klik op **Add**.
 1. U kunt nog een account toevoegen door nogmaals de optie **+ Een account toevoegen** te selecteren, of u kunt terugkeren naar de startpagina door de knop **Beheerder** te selecteren.  
-1. Als u klikt om de pagina Account te openen, wordt het zojuist toegevoegde account weergegeven met de status In behandeling. Het krijgt de status 'Actief' nadat de accounteigenaar zich voor de eerste keer heeft aangemeld bij EA Portal.
+1. Als u klikt om de pagina Account te openen, wordt het zojuist toegevoegde account weergegeven met de status In behandeling. Het krijgt de status Actief nadat de accounteigenaar zich de eerste keer heeft aangemeld bij EA Portal.
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Bestaande/nieuwe accounteigenaars die nieuwe abonnementen maken
 
@@ -235,7 +235,7 @@ De eerste keer dat u een abonnement aan uw account toevoegt, wordt u gevraagd de
 
 **Tweede stap: abonnementsnaam bijwerken**
 
-Alle nieuwe abonnementen worden toegevoegd met de standaardabonnementsnaam 'Microsoft Azure Enterprise'. Het is belangrijk dat u de abonnementsnaam bijwerkt zodat u deze kunt onderscheiden van de andere abonnementen in uw Enterprise-inschrijving en zodat deze kan worden herkend in rapporten op ondernemingsniveau.
+Alle nieuwe abonnementen worden toegevoegd met de standaardabonnementsnaam Microsoft Azure Enterprise. Het is belangrijk dat u de abonnementsnaam bijwerkt zodat u deze kunt onderscheiden van de andere abonnementen in uw Enterprise-inschrijving en zodat deze kan worden herkend in rapporten op ondernemingsniveau.
 
 Klik achtereenvolgens op **Abonnementen**, het abonnement dat u hebt gemaakt en **Abonnementsgegevens bewerken**.
 
@@ -248,13 +248,13 @@ Alleen accounteigenaren kunnen abonnementen bekijken en beheren.
 
 **Accounteigenaar wordt aangegeven met de status In behandeling**
 
-Wanneer nieuwe accounteigenaren (AO) voor de eerste keer worden toegevoegd aan de inschrijving, krijgen ze altijd de status 'In behandeling'. Wanneer de accounteigenaar de welkomstmail voor de activering ontvangt, kan deze zich aanmelden om het account te activeren. Met deze activering wordt de accountstatus bijgewerkt van 'In behandeling' naar 'Actief '.
+Wanneer nieuwe accounteigenaren (AO) de eerste keer worden toegevoegd aan de inschrijving, krijgen ze altijd de status In behandeling. Wanneer de accounteigenaar de welkomstmail voor de activering ontvangt, kan deze zich aanmelden om het account te activeren. Met deze activering wordt de accountstatus bijgewerkt van In behandeling naar Actief.
 
 **Gebruik waarvoor kosten in rekening wordt gebracht na aanschaf van de abonnements-SKU's**
 
 Dit scenario vindt plaats wanneer de klant services heeft geïmplementeerd onder het verkeerde inschrijvingsnummer of als deze de verkeerde services heeft geselecteerd.
 
-Als u wilt controleren of u services implementeert voor de juiste inschrijving, kunt u de gegevens voor de inbegrepen eenheden controleren via het prijzenoverzicht. Meld u aan als Enterprise-beheerder, klik op **Rapporten** in het linkernavigatievenster en selecteer het tabblad **Prijzenoverzicht**. Klik op het downloadpictogram in de rechterbovenhoek, zoek de betreffende abonnements-SKU-onderdeelnummers met het filter in de kolom 'Inbegrepen hoeveelheid' en selecteer waarden die groter zijn dan 0.
+Als u wilt controleren of u services implementeert voor de juiste inschrijving, kunt u de gegevens voor de inbegrepen eenheden controleren via het prijzenoverzicht. Meld u aan als Enterprise-beheerder, klik op **Rapporten** in het linkernavigatievenster en selecteer het tabblad **Prijzenoverzicht**. Klik op het downloadpictogram in de rechterbovenhoek, zoek de betreffende SKU-onderdeelnummers voor het abonnement met het filter in de kolom Inbegrepen hoeveelheid en selecteer waarden die groter zijn dan 0.
 
 Controleer of uw OMS-abonnement wordt weergegeven in het prijzenoverzicht onder Inbegrepen eenheden. Als er geen inbegrepen eenheden voor het OMS-abonnement worden weergegeven voor uw inschrijving, is uw OMS-abonnement mogelijk opgenomen in een andere inschrijving. Neem contact op met Azure Enterprise Portal Support via [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).
 

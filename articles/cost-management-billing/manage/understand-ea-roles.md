@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.author: banders
-ms.openlocfilehash: f31d8638e8672feafc1ab822acecb78ec0a48b11
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 28fff2a24f703e0cff967bdde29a7b1238e197ee
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202770"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586152"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Inzicht in Azure Enterprise Agreement-beheerdersrollen in Azure
 
@@ -46,18 +46,18 @@ In de volgende secties worden de beperkingen en mogelijkheden van elke rol besch
 
 ## <a name="organization-structure-and-permissions-by-role"></a>De organisatiestructuur en machtigingen per rol
 
-|Taken| Zakelijke beheerder|Zakelijke beheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen)|Accounteigenaar|
-|---|---|---|---|---|---|
-|Zakelijke beheerders weergeven|✔|✔|✘|✘|✘|
-|Zakelijke beheerders toevoegen of verwijderen|✔|✘|✘|✘|✘|
-|Contactpersonen voor meldingen weergeven<sup>4</sup> |✔|✔|✘|✘|✘|
-|Contactpersonen voor meldingen toevoegen of verwijderen<sup>4</sup> |✔|✘|✘|✘|✘|
-|Afdelingen maken en beheren |✔|✘|✘|✘|✘|
-|Afdelingsbeheerders weergeven|✔|✔|✔|✔|✘|
-|Afdelingsbeheerders toevoegen of verwijderen|✔|✘|✔|✘|✘|
-|Accounts in de inschrijving weergeven |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|
-|Accounts aan de inschrijving toevoegen en de accounteigenaar wijzigen|✔|✘|✔<sup>5</sup>|✘|✘|
-|Abonnementen en abonnementsmachtigingen maken en beheren|✘|✘|✘|✘|✔|
+|Taken| Zakelijke beheerder|Zakelijke beheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen)|Accounteigenaar| Partner|
+|---|---|---|---|---|---|---|
+|Zakelijke beheerders weergeven|✔|✔|✘|✘|✘|✔|
+|Zakelijke beheerders toevoegen of verwijderen|✔|✘|✘|✘|✘|✘|
+|Contactpersonen voor meldingen weergeven<sup>4</sup> |✔|✔|✘|✘|✘|✔|
+|Contactpersonen voor meldingen toevoegen of verwijderen<sup>4</sup> |✔|✘|✘|✘|✘|✘|
+|Afdelingen maken en beheren |✔|✘|✘|✘|✘|✘|
+|Afdelingsbeheerders weergeven|✔|✔|✔|✔|✘|✔|
+|Afdelingsbeheerders toevoegen of verwijderen|✔|✘|✔|✘|✘|✘|
+|Accounts in de inschrijving weergeven |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
+|Accounts aan de inschrijving toevoegen en de accounteigenaar wijzigen|✔|✘|✔<sup>5</sup>|✘|✘|✘|
+|Abonnementen en abonnementsmachtigingen maken en beheren|✘|✘|✘|✘|✔|✘|
 
 - <sup>4</sup> Contactpersonen voor meldingen ontvangen e-mailberichten over de Azure Enterprise Agreement.
 - <sup>5</sup> Taak is beperkt tot accounts in uw afdeling.
@@ -65,14 +65,14 @@ In de volgende secties worden de beperkingen en mogelijkheden van elke rol besch
 
 ## <a name="usage-and-costs-access-by-role"></a>Toegang tot gebruik en kosten per rol
 
-|Taken| Zakelijke beheerder|Zakelijke beheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen) |Accounteigenaar|
-|---|---|---|---|---|---|
-|Tegoedsaldo weergeven, inclusief financiële toezegging|✔|✔|✘|✘|✘|
-|Bestedingsquotum van afdeling weergeven|✔|✔|✘|✘|✘|
-|Bestedingsquotum van afdeling instellen|✔|✘|✘|✘|✘|
-|Het EA-prijzenoverzicht van de organisatie weergeven|✔|✔|✘|✘|✘|
-|Details over gebruik en kosten weergeven|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|
-|Resources beheren in Azure Portal|✘|✘|✘|✘|✔|
+|Taken| Zakelijke beheerder|Zakelijke beheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen) |Accounteigenaar| Partner|
+|---|---|---|---|---|---|---|
+|Tegoedsaldo weergeven, inclusief financiële toezegging|✔|✔|✘|✘|✘|✔|
+|Bestedingsquotum van afdeling weergeven|✔|✔|✘|✘|✘|✔|
+|Bestedingsquotum van afdeling instellen|✔|✘|✘|✘|✘|✘|
+|Het EA-prijzenoverzicht van de organisatie weergeven|✔|✔|✘|✘|✘|✔|
+|Details over gebruik en kosten weergeven|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
+|Resources beheren in Azure Portal|✘|✘|✘|✘|✔|✘|
 
 - <sup>6</sup> Hiervoor is vereist dat de ondernemingsbeheerder het beleid **DA-weergavekosten** inschakelt in de Enterprise Portal. De afdelingsbeheerder kan vervolgens gedetailleerde kosten voor de afdeling bekijken.
 - <sup>7</sup> Hiervoor is vereist dat de ondernemingsbeheerder het beleid **AO-weergavekosten** inschakelt in de Enterprise Portal. De accounteigenaar kan vervolgens gedetailleerde kosten voor het account zien.

@@ -3,16 +3,16 @@ title: Problemen met toegang tot Azure EA Portal oplossen
 description: In dit artikel worden enkele veelvoorkomende problemen beschreven die zich kunnen voordoen met een Azure Enterprise Agreement (EA) in Azure EA Portal.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3bf1c10e28ef9e3e4008968c9dbaef576bccdb5f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: ee8363a76db93f0c2bd4734151e3d250de5402fc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411552"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586189"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Problemen met toegang tot Azure EA Portal oplossen
 
@@ -108,11 +108,11 @@ Als er sprake is van andere EA-beheerders bij de inschrijving, zullen we contact
 
 ### <a name="my-enrollment-is-showing-in-pending-status-how-do-i-activate-my-enrollment"></a>De status van mijn inschrijving geeft weer dat deze in behandeling is. Hoe kan ik mijn inschrijving activeren?
 
-Inschrijvingen hebben de status ‘in behandeling’ als de eerste EA-beheerder niet eerder is aangemeld bij de registratie. Als u de EA-beheerder bent, moet u zich aanmelden bij de Azure EA Portal. Op de landingspagina met al uw inschrijvingsnummers ziet u mogelijk niet de inschrijving die in behandeling is. Schakel het selectie vakje 'actief' in de rechter bovenhoek van de EA Portal uit. met deze actie wordt de inschrijving die in behandeling is weergegeven. Klik op de inschrijving om de informatie te zien. Zodra u de pagina Beheren van de inschrijving hebt bereikt, wordt de status bijgewerkt van in behandeling naar actief.
+Inschrijvingen hebben de status ‘in behandeling’ als de eerste EA-beheerder niet eerder is aangemeld bij de registratie. Als u de EA-beheerder bent, moet u zich aanmelden bij de Azure EA Portal. Op de landingspagina met al uw inschrijvingsnummers ziet u mogelijk niet de inschrijving die in behandeling is. Schakel het selectievakje ‘actief' in de rechterbovenhoek van EA Portal uit. Met deze actie wordt de inschrijving weergegeven die in behandeling is. Klik op de inschrijving om de informatie te zien. Zodra u de pagina Beheren van de inschrijving hebt bereikt, wordt de status bijgewerkt van in behandeling naar actief.
 
 ### <a name="why-is-my-account-stuck-in-pending-status"></a>Waarom blijft mijn account vaststaan op de status in behandeling?
 
-Wanneer nieuwe accounteigenaren voor de eerste keer worden toegevoegd aan de inschrijving, krijgen ze altijd de status 'In behandeling'. De accounteigenaar kan zich aanmelden om het account te activeren zodra hij de welkomstmail voor de activering ontvangt. Met deze aanmelding wordt de accountstatus bijgewerkt van 'In behandeling' naar 'Actief'.
+Wanneer nieuwe accounteigenaren de eerste keer worden toegevoegd aan de inschrijving, krijgen ze altijd de status In behandeling. De accounteigenaar kan zich aanmelden om het account te activeren zodra hij de welkomstmail voor de activering ontvangt. Met deze aanmelding wordt de accountstatus bijgewerkt van In behandeling naar Actief.
 
 ### <a name="i-received-an-error-when-signing-in-to-azure-ea-portal"></a>Ik krijg een foutmelding bij het aanmelden bij de Azure EA Portal
 
@@ -122,10 +122,10 @@ Er zijn een aantal mogelijke redenen voor een foutmelding in de Azure EA Portal 
  1. Bepaal of u met een werk- of schoolaccount of met een Microsoft Live ID toegang hebt tot Azure EA Portal. Als u uw werkaccount gebruikt, voert u uw zakelijke e-mailadres en het bijbehorende wachtwoord in. Als u Microsoft Live ID gebruikt, voert u uw e-mailadres is van Live ID en wachtwoord voor Microsoft Live ID in. Als u uw wachtwoord voor Microsoft Live ID bent vergeten, moet u het opnieuw instellen op [https://account.live.com/password/reset](https://account.live.com/password/reset).
  1. We raden u aan om een privé-browser te gebruiken om u aan te melden, zodat er geen cookies of cache van eerdere/bestaande sessies worden bewaard. Wis cache en gebruik de modus voor privé browsen/incognitomodus om [https://ea.azure.com](https://ea.azure.com) te openen.
  1. Als u een foutmelding voor ongeldige gebruiker krijgt wanneer u een Microsoft-account gebruikt, kan het zijn dat u meerdere Microsoft-accounts hebt en het account waarmee u zich probeert aan te melden, niet de primaire alias is. Om de primaire alias te controleren, gaat u naar account.live.com:
-    - Ga naar 'Uw gegevens' > 'Uw e-mailadres of telefoonnummer voor aanmelden beheren'.
+    - Ga naar Uw gegevens > Uw e-mailadres of telefoonnummer voor aanmelden beheren.
     - Volg de aanwijzingen op het scherm voor het verifiëren van een alternatief e-mailadres en het verkrijgen van een code voor toegang tot gevoelige informatie.
     - Voer de beveiligingscode in.
-    - Als u later tweestapsverificatie wilt instellen, selecteert u 'Later instellen'.
+    - Als u later tweestapsverificatie wilt instellen, selecteert u Later instellen.
     - U belandt op de pagina 'Uw accountaliassen beheren', waar u de accountaliassen ziet die u hebt. Controleer of u de primaire alias gebruikt om u aan te melden bij de Azure EA Portal. Als dat niet het geval is, kunt u dit instellen als uw primaire alias of kunt u in plaats daarvan de primaire alias voor de EA Portal gebruiken.
 
 Als de bovenstaande stappen niet helpen om de probleem op te lossen, moet u een aanvraag indienen bij [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) met informatie zoals:
@@ -161,7 +161,7 @@ Neem contact op met de IT-beheerder van uw bedrijf als u uw wachtwoord bent verg
 
 ### <a name="i-have-a-valid-work-or-school-account-but-i-cant-add-it-to-the-ea-portal"></a>Ik heb een geldig werk- of schoolaccount, maar ik kan het niet toevoegen aan de EA Portal
 
-Als u een werk -of schoolaccount hebt onder een andere tenant, wijzigt u het autorisatieniveau onder de pagina Inschrijvingsdetails in een werk -of schoolaccount voor verschillende tenants, zodat u het account ook kunt toevoegen.
+Als u een werk- of schoolaccount hebt onder een andere tenant, wijzigt u het autorisatieniveau op de pagina Inschrijvingsdetails in een werk- of schoolaccount voor verschillende tenants, zodat u het account ook kunt toevoegen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,22 +3,26 @@ title: AWS-integratie met Azure Cost Management instellen
 description: Dit artikel begeleidt u bij het instellen en configureren van AWS voor de integratie van kosten- en gebruiksrapporten met Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3b1efabbf5f05c05ef939ee8713829fbd49f483
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203080"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878983"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS-integratie van kosten- en gebruiksrapporten instellen en configureren
 
 Met Amazon Web Services (AWS)-integratie voor kosten- en gebruiksrapporten (CUR) kunt u uw AWS-uitgaven in Azure Cost Management bewaken en beheren. De integratie staat één locatie in de Azure-portal toe waar u de bestedingen kunt bewaken en beheren voor Azure en AWS. In dit artikel wordt uitgelegd hoe u de integratie instelt en configureert zodat u Azure Cost Management functies kunt gebruiken om kosten te analyseren en budgetten te controleren.
 
 Cost Management verwerkt het AWS-kosten- en gebruiksrapport dat is opgeslagen in een S3-bucket door gebruik te maken van uw AWS-toegangsreferenties om rapportdefinities op te halen en rapport-GZIP CSV-bestanden te downloaden.
+
+Bekijk de video [Connectors voor AWS instellen in Cost Management](https://www.youtube.com/watch?v=Jg5KC1cx5cA) voor meer informatie over het instellen van AWS-rapportintegratie. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/Jg5KC1cx5cA]
 
 ## <a name="create-a-cost-and-usage-report-in-aws"></a>Een kosten- en gebruiksrapport maken in AWS
 

@@ -3,17 +3,17 @@ title: Toegang tot gegevens van Azure Cost Management toewijzen
 description: In dit artikel vindt u informatie over het toewijzen van machtigingen voor gegevens van Azure Cost Management voor verschillende toegangsbereiken.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/19/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 56090798defd9209c3587aa701c88db6958d1b97
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b3ede4dcc4df8bf10ce24b3d74dc5af0424de5a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065844"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879102"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Toegang tot gegevens van Cost Management toewijzen
 
@@ -21,9 +21,9 @@ Voor gebruikers met Azure Enterprise-overeenkomsten wordt het toegangsniveau van
 
 Het bereik dat een gebruiker selecteert wordt door Cost Management gebruikt om gegevens te bundelen en toegang tot de kostengegevens te beheren. Wanneer u bereiken gebruikt, kunnen gebruikers er niet meerdere selecteren. In plaats daarvan selecteren gebruikers een groter bereik waarin onderliggende bereiken worden getotaliseerd en filteren ze het bereik op wat ze willen weergeven. Het is belangrijk om te begrijpen hoe gegevens worden gebundeld, omdat bepaalde personen geen toegang mogen hebben tot een bovenliggend bereik waartoe een onderliggend bereik behoort.
 
-Bekijk de video [How to assign access with Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8) voor meer informatie over het toewijzen van toegang voor het weergeven van kosten met op rollen gebaseerd toegangsbeheer van Azure.
+Bekijk de video [Toegangsbeheer met Cost Management ](https://www.youtube.com/watch?v=_uQzQ9puPyM) voor meer informatie over het toewijzen van toegang voor het weergeven van kosten met op rollen gebaseerd toegangsbeheer van Azure. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
->[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
+>[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
 ## <a name="cost-management-scopes"></a>Bereiken in Cost Management
 

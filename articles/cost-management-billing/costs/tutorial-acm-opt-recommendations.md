@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 030ae5dcac85a88309b317be1edfab11d0da051a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155916"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878456"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Zelfstudie: Kosten optimaliseren op basis van aanbevelingen
 
 Azure Cost Management werkt met Azure Advisor voor aanbevelingen om kosten te optimaliseren. Azure Advisor helpt u om de efficiëntie te optimaliseren en te verbeteren door inactieve en onderbenutte resources te identificeren. In deze zelfstudie identificeert u onderbenutte Azure-resources waarna u actie onderneemt om de bijbehorende kosten te verlagen.
 
-Bekijk de video [Optimizing cloud investments in Azure Cost Management](https://www.youtube.com/watch?v=cSNPoAb-TNc) (Investeringen in de cloud optimaliseren in Azure Cost Management) voor meer informatie over het gebruik van Advisor om uw kosten te optimaliseren.
+Bekijk de video [Optimizing cloud investments in Azure Cost Management](https://www.youtube.com/watch?v=cSNPoAb-TNc) (Investeringen in de cloud optimaliseren in Azure Cost Management) voor meer informatie over het gebruik van Advisor om uw kosten te optimaliseren. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 

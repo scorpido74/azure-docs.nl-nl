@@ -3,17 +3,17 @@ title: Uw investeringen in de cloud optimaliseren met Azure Cost Management
 description: Dit artikel helpt u de meeste waarde uit uw investeringen in de cloud te halen, uw kosten te verlagen en te evalueren waar uw geld wordt uitgegeven.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8df98514545a2670ea18a2b4b131a097244d7b46
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80157208"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874582"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Uw investeringen in de cloud optimaliseren met Azure Cost Management
 
@@ -36,6 +36,10 @@ Er moeten drie sleutelgroepen worden uitgelijnd in uw organisatie, zodat u zeker
 ### <a name="key-principles"></a>Belangrijkste principes
 
 Gebruik de onderstaande principes om uw organisatie te positioneren voor succes in het beheer van cloudkosten.
+
+Bekijk de video [Cost Management instellen voor succes](https://www.youtube.com/watch?v=dVuwITdSAZ4) voor meer informatie. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/dVuwITdSAZ4]
 
 #### <a name="planning"></a>Planning
 
@@ -125,7 +129,7 @@ Blijf op de hoogte van de ontwikkeling van de kosten voor uw organisatie in de l
 
 Organiseer uw resources met de kosten in gedachte. Wanneer u abonnementen en resourcegroepen maakt, moet u nadenken over de teams die verantwoordelijk zijn voor de gekoppelde kosten. Zorg ervoor dat uw bij uw rapportage uw organisatie in het oog houdt. Abonnementen en resourcegroepen bieden goede buckets om de uitgaven voor uw organisatie in te delen en te kenmerken. Tags bieden een goede manier om de kosten te berekenen. U kunt tags gebruiken als filter. En u kunt ze groeperen op het analyseren van gegevens en het onderzoeken van de kosten. Enterprise Agreement-klanten kunnen ook afdelingen maken en hier abonnementen onder plaatsen. Op kosten gebaseerde organisatie in Azure zorgt ervoor dat de relevante personen in uw organisatie het account kunnen blijven gebruiken om de uitgaven van hun team te verminderen.
 
-Bekijk de video [How to review tag policies with Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) (Tagbeleid controleren met Azure Cost Management) voor inzicht in de beschikbare hulpprogramma’s waarmee u schaalbare resourcetags kunt afdwingen in uw organisatie.
+Bekijk de video [How to review tag policies with Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) (Tagbeleid controleren met Azure Cost Management) voor inzicht in de beschikbare hulpprogramma’s waarmee u schaalbare resourcetags kunt afdwingen in uw organisatie. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
 

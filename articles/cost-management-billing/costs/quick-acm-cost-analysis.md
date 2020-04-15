@@ -3,17 +3,17 @@ title: 'Quickstart: Azure-kosten verkennen met kostenanalyse'
 description: Deze snelstart helpt u kostenanalyse te gebruiken om de kosten van Azure voor uw bedrijf te verkennen en te analyseren.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e63e3ef999db7053609fb098cd2b7583143a2937
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155950"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874497"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Quickstart: Kosten verkennen en analyseren met kostenanalyse
 
@@ -45,7 +45,7 @@ Als u de kosten in kostenanalyse wilt controleren, opent u het bereik in de Azur
 
 Het bereik dat u selecteert wordt door Cost Management gebruikt om gegevens te bundelen en toegang tot de kostengegevens te beheren. Wanneer u gebruikmaakt van bereiken, moet u geen meervoudige selectie maken. In plaats daarvan selecteert u een groter bereik dat de andere bereiken omvat en filtert u vervolgens zodat alleen de geneste bereiken die u nodig hebt, overblijven. Het is belangrijk dat u deze aanpak begrijpt omdat mogelijk niet iedereen toegang heeft tot één enkel bovenliggend bereik, waarin meerdere bereiken zijn genest.
 
-Bekijk de video [Cost Management gebruiken in de Azure-portal](https://www.youtube.com/watch?v=mfxysF-kTFA) voor meer informatie over het gebruik van Kostenanalyse.
+Bekijk de video [Cost Management gebruiken in de Azure-portal](https://www.youtube.com/watch?v=mfxysF-kTFA) voor meer informatie over het gebruik van Kostenanalyse. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
@@ -145,6 +145,10 @@ U kunt de volledige gegevensset voor elke weergave bekijken. Selecties of filter
 
 ## <a name="understanding-grouping-and-filtering-options"></a>Over groeperings- en filteropties
 
+Kostenanalyse heeft veel opties voor groeperen en filteren. Als u een video wilt bekijken over de opties voor groeperen en filteren, bekijkt u de video [Cost Management-rapportage per dimensie en tag](https://www.youtube.com/watch?v=2Vx7V17zbmk). Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/2Vx7V17zbmk]
+
 De volgende tabel bevat een aantal van de meest gebruikte groeperings- en filteropties en informatie over wanneer u deze kunt gebruiken.
 
 | Eigenschap | Wanneer gebruikt u dit? | Opmerkingen |
@@ -178,7 +182,7 @@ Zie [Meer informatie over de gebruiksvoorwaarden in uw bestand voor Azure-gebrui
 
 Sla aangepaste weergaven op en deel ze met anderen door een kostenanalyses vast te maken aan het dashboard in de Azure-portal of door een koppeling naar een kostenanalyse te kopiëren.
 
-Bekijk de video [Sharing and saving views in Azure Cost Management](https://www.youtube.com/watch?v=kQkXXj-SmvQ) (Weergaven delen en opslaan in Azure Cost Management) voor meer informatie over het gebruik van de portal om kennis over kosten te delen in uw organisatie.
+Bekijk de video [Sharing and saving views in Azure Cost Management](https://www.youtube.com/watch?v=kQkXXj-SmvQ) (Weergaven delen en opslaan in Azure Cost Management) voor meer informatie over het gebruik van de portal om kennis over kosten te delen in uw organisatie. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 

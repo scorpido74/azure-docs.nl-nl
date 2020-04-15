@@ -5,81 +5,57 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0635c21ee30a40344281f31c8f9aedf9d74a1284
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199242"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633857"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>Azure-reserveringen weergeven in de Azure-portal
+# <a name="view-azure-reservations"></a>Azure-reserveringen weergeven
 
-Afhankelijk van het type abonnement en machtigingen, zijn er verschillende manieren om reserveringen voor Azure weer te geven.
+U kunt de aangeschafte reservering in de Azure-portal weergeven en beheren.   
 
-## <a name="view-purchased-reservations"></a>Aangeschafte reserveringen weer geven
+## <a name="permissions-to-view-a-reservation"></a>Machtigingen voor het weergeven van een reservering
 
-Wanneer u een reservering koopt, is het standaard zo dat u en de accountbeheerder toegang hebben tot de reservering. U en de accountbeheerder krijgen namelijk automatisch de rol Eigenaar voor de reserveringsorder en de reservering zelf. Als u wilt dat andere personen de reservering kunnen bekijken, moet u hen toevoegen als **Eigenaar** of **Lezer** van de reserveringsorder of de reservering.
+Als u een reservering wilt weergeven of beheren, moet u hiervoor de benodigde machtigingen van een lezer of eigenaar hebben. Als u een reservering koopt, krijgen u en de accountbeheerder standaard automatisch de rol van eigenaar voor de reserveringsorder en de reservering zelf. Als u wilt dat andere personen de reservering kunnen bekijken, moet u hen toevoegen als **Eigenaar** of **Lezer** van de reserveringsorder of de reservering. Als u iemand toevoegt aan het abonnement dat wordt gebruikt voor facturering van de reservering, wordt deze persoon niet automatisch toegevoegd aan de reservering. 
 
 Zie [Gebruikers toevoegen of wijzigen die een reservering kunnen beheren](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation) voor meer informatie.
 
-Een reservering weergeven als eigenaar of lezer:
+## <a name="view-reservation-and-utilization-in-azure-portal"></a>Reservering en gebruik bekijken in de Azure-portal
+
+Een reservering weergeven als eigenaar of lezer
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Zoek naar **Reserveringen**.
-    ![Schermopname met zoekfunctie in de Azure-portal](./media/view-reservations/portal-reservation-search.png)  
-3. De lijst bevat alle reserveringen waarvoor u de rol Eigenaar of Lezer hebt. Voor elke reservering ziet u het laatst bekende gebruikspercentage.  
-    ![Voorbeeld van lijst met reserveringen](./media/view-reservations/view-reservations.png)
-4. Selecteer een reservering en bekijk de gebruikstrend voor de afgelopen vijf dagen.  
-    ![Voorbeeld van gebruikstrend van een reservering](./media/view-reservations/reservation-utilization.png)
-5. U kunt [het gebruik van een reservering](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) ook ophalen met behulp van de API voor het gebruik van gereserveerde instanties, evenals met [het inhoudspakket Microsoft Azure Consumption Insights voor Power BI](/power-bi/service-connect-to-azure-consumption-insights).
+2. Ga naar [Reserveringen](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+3. De lijst bevat alle reserveringen waarvoor u de rol van eigenaar of lezer hebt. Voor elke reservering ziet u het laatst bekende gebruikspercentage.
+4. Klik op het gebruikspercentage om de geschiedenis en de details van het gebruik te bekijken. Zie de onderstaande video voor meer informatie.
+   > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4sYwk] 
 
-Als u het bereik van een reservering moet wijzigen, een reservering wilt splitsen of wilt wijzigen wie een reservering kan beheren, raadpleegt u [Reserveringen voor Azure-resources beheren](manage-reserved-vm-instance.md).
+## <a name="get-reservations-and-utilization-using-apis-powershell-cli"></a>Reserveringen en gebruik opvragen met behulp van API's, PowerShell, CLI
 
-## <a name="view-reservation-transactions-for-enterprise-enrollments"></a>Reserveringstransacties voor Enterprise-inschrijvingen weergeven
+Een lijst met alle reserveringen opvragen met behulp van de volgende resources
+- [API: Reserveringsorder: lijst](/rest/api/reserved-vm-instances/reservationorder/list)
+- [PowerShell: Reserveringsorder: lijst](/powershell/module/azurerm.reservations/get-azurermreservationorder)
+- [CLI: Reserveringsorder: lijst](/cli/azure/reservations/reservation-order#az-reservations-reservation-order-list)
 
- Als u een Enterprise-inschrijving hebt die door een partner wordt beheerd, kunt u reserveringen weergeven via **Reports** in de EA-portal. Voor andere Enterprise-inschrijvingen kunt u reserveringen bekijken in de EA-portal en in de Azure-portal. U moet een EA-beheerder zijn om reserveringstransacties te kunnen inzien.
+U kunt het [reserveringsgebruik](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) opvragen met behulp van de API voor het gebruik van gereserveerde instanties. 
 
-Reserveringstransacties weergeven in de Azure-portal:
+## <a name="see-reservations-and-utilization-in-power-bi"></a>Reserveringen en gebruik weergeven in Power BI
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Zoek naar **Cost Management en facturering**.
-
-    ![Schermopname van de zoekopdracht in de Azure-portal](./media/view-reservations/portal-cm-billing-search.png)
-
-1. Selecteer **Reserveringstransacties**.
-1. Als u de resultaten wilt filteren , selecteert u **Duur**, **Type** of **Beschrijving**.
-1. Selecteer **Toepassen**.
-
-    ![Schermopname van resultaten voor reserveringstransacties](./media/view-reservations/portal-billing-reservation-transaction-results.png)
-
-Als u de gegevens wilt opvragen met een API, raadpleegt u [Get Reserved Instance transaction charges for enterprise customers](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) (Transactiekosten voor gereserveerde instanties opvragen voor Enterprise-klanten).
+Er zijn twee opties voor Power BI-gebruikers
+- Inhoudspakket: Reserveringsaankopen en gebruiksgegevens zijn beschikbaar in het [inhoudspakket Microsoft Azure Consumption Insights voor Power BI](/power-bi/desktop-connect-azure-cost-management). Maak de gewenste rapporten met dit inhoudspakket. 
+- Kostenbeheer-app: Gebruik de [Kostenbeheer-app](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp) voor vooraf gemaakte rapporten die u verder kunt aanpassen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
-
-- [Wat zijn reserveringen voor Azure?](save-compute-costs-reservations.md)
-- [Reserveringen voor Azure beheren](manage-reserved-vm-instance.md)
-
-Een serviceabonnement kopen:
-
-- [Vooruitbetalen voor gereserveerde Cosmos DB-capaciteit](../../cosmos-db/cosmos-db-reserved-capacity.md)
-- [Vooruitbetalen voor compute-resources van SQL Database met gereserveerde capaciteit voor Azure SQL Database](../../sql-database/sql-database-reserved-capacity.md)
-- [Vooruitbetalen voor Virtual Machines met Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-
-Een softwareabonnement kopen:
-
-- [Vooruitbetalen voor Red Hat-software-abonnementen vanuit Azure Reservations](../../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Vooruitbetalen voor SUSE-software-abonnementen vanuit Azure Reservations](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-Inzicht in het gebruik:
-
+- [Azure-reserveringen beheren](manage-reserved-vm-instance.md).
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](understand-reserved-instance-usage.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)
 - [Inzicht in het gebruik van reserveringen voor CSP-abonnementen](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

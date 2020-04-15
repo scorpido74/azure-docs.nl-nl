@@ -1,58 +1,55 @@
 ---
-title: Claims toevoegen en gebruikersinvoer aanpassen in aangepast beleid
+title: Claims toevoegen en gebruikers invoer aanpassen in aangepast beleid
 titleSuffix: Azure AD B2C
-description: Meer informatie over het aanpassen van gebruikersinvoer en het toevoegen van claims aan de aanmeldings- of aanmeldingsreis in Azure Active Directory B2C.
+description: Meer informatie over het aanpassen van de gebruikers invoer en het toevoegen van claims aan de traject voor registreren of aanmelden in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85f2ab6f8c3e5edda027e44eeda13a3279a88321
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.openlocfilehash: 56a3478f1c0dbc05eba07a5109f5bb6ba89b79d0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473673"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079886"
 ---
-#  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Claims toevoegen en gebruikersinvoer aanpassen met behulp van aangepast beleid in Azure Active Directory B2C
+#  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Claims toevoegen en gebruikers invoer aanpassen met aangepaste beleids regels in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel verzamelt u een nieuw kenmerk tijdens uw aanmeldingstraject in Azure Active Directory B2C (Azure AD B2C). U verkrijgt de plaats van de gebruikers, configureert deze als een vervolgkeuzelijst en bepaalt of deze moet worden verstrekt.
+In dit artikel verzamelt u een nieuw kenmerk tijdens het registreren van de Azure Active Directory B2C (Azure AD B2C). U krijgt de plaats van de gebruiker, configureert deze als een vervolg keuzelijst en definieert of het moet worden opgegeven.
 
-> [!NOTE]
-> Dit voorbeeld maakt gebruik van de ingebouwde claim 'stad'. In plaats daarvan u een van de ondersteunde [ingebouwde Azure AD B2C-ingebouwde kenmerken](user-profile-attributes.md) of een aangepast kenmerk kiezen. Als u een aangepast kenmerk wilt gebruiken, [schakelt u aangepaste kenmerken in uw beleid in.](custom-policy-custom-attributes.md) Als u een ander ingebouwd of aangepast kenmerk wilt gebruiken, vervangt u 'plaats' door het kenmerk van uw keuze, bijvoorbeeld de ingebouwde *attribuutfunctieTitle* of een aangepast kenmerk zoals *extension_loyaltyId*.  
+U kunt initiële gegevens van uw gebruikers verzamelen door gebruik te maken van de traject registratie of aanmeldings gebruiker. Aanvullende claims kunnen later worden verzameld met behulp van een gebruikers traject voor het bewerken van profielen. Elke keer dat Azure AD B2C informatie rechtstreeks van de gebruiker verzamelt, gebruikt het Framework voor identiteits ervaring het [zelfondertekende technische profiel](self-asserted-technical-profile.md). In dit voor beeld hebt u het volgende:
 
-U de eerste gegevens van uw gebruikers verzamelen met behulp van de aanmeldings- of aanmeldingsreis. Aanvullende claims kunnen later worden verzameld met behulp van een gebruikersreis voor profielbewerking. Wanneer Azure AD B2C informatie rechtstreeks van de gebruiker verzamelt, gebruikt het Identity Experience Framework zijn [zelfverklaarde technische profiel.](self-asserted-technical-profile.md) In dit voorbeeld ziet u het volgende:
-
-1. Definieer een "stad" claim. 
-1. Vraag de gebruiker naar hun stad.
-1. Blijf vasthouden aan de plaats tot het gebruikersprofiel in de Azure AD B2C-map.
-1. Lees de stadsclaim in de Azure AD B2C-map bij elke aanmelding.
-1. Breng de stad terug naar uw aanvraag voor een relying party na aanmelding of aanmelding.  
+1. Definieer een ' City ' claim.
+1. Vraag de gebruiker om een plaats.
+1. Behoud de plaats voor het gebruikers profiel in de map Azure AD B2C.
+1. Lees de plaats claim uit de Azure AD B2C Directory op elke aanmelding.
+1. Ga terug naar de plaats van uw Relying Party-toepassing nadat u zich hebt aangemeld of zich hebt aangemeld.  
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de stappen uit in [Aan de slag met aangepast beleid](custom-policy-get-started.md). U moet een werkend aangepast beleid hebben voor aanmelden en aanmelden met sociale en lokale accounts.
+Voer de stappen in aan de [slag met aangepast beleid](custom-policy-get-started.md). U moet beschikken over een werkend aangepast beleid voor aanmelden en aanmelden met sociale en lokale accounts.
 
 ## <a name="define-a-claim"></a>Een claim definiëren
 
-Een claim biedt een tijdelijke opslag van gegevens tijdens een Azure AD B2C-beleidsuitvoering. Het [schadeschema](claimsschema.md) is de plaats waar u uw claims declareert. De volgende elementen worden gebruikt om de claim te definiëren:
+Een claim biedt een tijdelijke opslag van gegevens tijdens het uitvoeren van een Azure AD B2C beleid. Het [claim schema](claimsschema.md) is de plaats waar u uw claims declareert. De volgende elementen worden gebruikt voor het definiëren van de claim:
 
-- **DisplayName** - Een tekenreeks die het label dat door de gebruiker wordt aangericht definieert.
-- [DataType](claimsschema.md#datatype) - Het type claim.
-- **UserHelpText** - Helpt de gebruiker te begrijpen wat er nodig is.
-- [UserInputType](claimsschema.md#userinputtype) - Het type invoerbesturingselement, zoals tekstvak, radioselectie, vervolgkeuzelijst of meerdere selecties.
+- **DisplayName** : een teken reeks die het op de gebruiker gerichte label definieert.
+- [Data type](claimsschema.md#datatype) : het type claim.
+- **UserHelpText** : helpt de gebruiker te begrijpen wat er nodig is.
+- [UserInputType](claimsschema.md#userinputtype) : het type besturings element voor invoer, zoals tekstvak, keuze rondje, vervolg keuzelijst of meerdere selecties.
 
-Open het extensiesbestand van uw beleid. Bijvoorbeeld. <em> `SocialAndLocalAccounts/` </em>
+Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>.
 
-1. Zoek naar het element [Bouwstenen.](buildingblocks.md) Als het element niet bestaat, voeg je het toe.
-1. Zoek het element [ClaimSchema.](claimsschema.md) Als het element niet bestaat, voeg je het toe.
-1. Voeg de claim van de plaats toe aan het element **Claimschema.**  
+1. Zoek het element [BuildingBlocks](buildingblocks.md) . Als het element niet bestaat, voegt u het toe.
+1. Zoek het element [ClaimsSchema](claimsschema.md) . Als het element niet bestaat, voegt u het toe.
+1. Voeg de stads claim toe aan het **ClaimsSchema** -element.  
 
 ```xml
 <ClaimType Id="city">
@@ -67,15 +64,15 @@ Open het extensiesbestand van uw beleid. Bijvoorbeeld. <em> `SocialAndLocalAccou
 </ClaimType>
 ```
 
-## <a name="add-a-claim-to-the-user-interface"></a>Een claim toevoegen aan de gebruikersinterface
+## <a name="add-a-claim-to-the-user-interface"></a>Een claim toevoegen aan de gebruikers interface
 
-De volgende technische profielen worden [zelf geclaimd,](self-asserted-technical-profile.md)ingeroepen wanneer van een gebruiker wordt verwacht dat hij invoer levert:
+De volgende technische profielen worden [automatisch bevestigd](self-asserted-technical-profile.md), die worden aangeroepen wanneer een gebruiker naar verwachting invoer levert:
 
-- **LocalAccountSignUpWithLogonEmail** - Lokale accountaanmeldingsstroom.
-- **SelfAsserted-Social** - Federated account first-time user sign-in.
-- **SelfAsserted-ProfileUpdate** - Profielstroom bewerken.
+- **LocalAccountSignUpWithLogonEmail** : de aanmeldings stroom voor het lokale account.
+- **SelfAsserted-** account voor de eerste keer dat gebruikers zich aanmelden met sociale Federatie.
+- **SelfAsserted-ProfileUpdate** -profiel stroom bewerken.
 
-Om de claim van de stad tijdens het aanmelden te `LocalAccountSignUpWithLogonEmail` verzamelen, moet deze worden toegevoegd als uitvoerclaim aan het technische profiel. Overschrijf dit technische profiel in het extensiebestand. Geef de volledige lijst met uitvoerclaims op om de volgorde te bepalen waarin de claims op het scherm worden weergegeven. Zoek het element **Claimproviders.** Voeg als volgt een nieuwe ClaimProviders toe:
+Als u de stads claim tijdens het aanmelden wilt verzamelen, moet deze worden toegevoegd als een uitvoer claim aan het technische profiel van `LocalAccountSignUpWithLogonEmail`. Negeer dit technische profiel in het extensie bestand. Geef de volledige lijst met uitvoer claims op om de volg orde te bepalen waarin de claims worden weer gegeven op het scherm. Zoek het element **ClaimsProviders** . Voeg als volgt een nieuwe ClaimsProviders toe:
 
 ```xml
 <ClaimsProvider>
@@ -98,7 +95,7 @@ Om de claim van de stad tijdens het aanmelden te `LocalAccountSignUpWithLogonEma
 <ClaimsProvider>
 ```
 
-Om de claim van de stad te verzamelen na de eerste aanmelding met `SelfAsserted-Social` een federatieve account, moet deze worden toegevoegd als een uitvoerclaim voor het technische profiel. Als gebruikers van lokale en federatieve accounts hun profielgegevens later kunnen `SelfAsserted-ProfileUpdate` bewerken, voegt u de uitvoerclaim toe aan het technische profiel. Overschrijf deze technische profielen in het extensiebestand. Geef de volledige lijst op met de uitvoerclaims die de volgorde van de claims op het scherm beheren. Zoek het element **Claimproviders.** Voeg als volgt een nieuwe ClaimProviders toe:
+Als u de stads claim wilt verzamelen na de eerste aanmelding met een federatief account, moet deze worden toegevoegd als een uitvoer claim aan het technische profiel van `SelfAsserted-Social`. Als gebruikers van lokale en federatieve accounts hun profiel gegevens later kunnen bewerken, moet u de uitvoer claim toevoegen aan het technische profiel van `SelfAsserted-ProfileUpdate`. Vervang deze technische profielen in het extensie bestand. Geef de volledige lijst van de uitvoer claims op om de volg orde te bepalen waarin de claims op het scherm worden weer gegeven. Zoek het element **ClaimsProviders** . Voeg als volgt een nieuwe ClaimsProviders toe:
 
 ```xml
   <DisplayName>Self Asserted</DisplayName>
@@ -127,10 +124,10 @@ Om de claim van de stad te verzamelen na de eerste aanmelding met `SelfAsserted-
 
 ## <a name="read-and-write-a-claim"></a>Een claim lezen en schrijven
 
-De volgende technische profielen zijn [technische profielen van Active Directory,](active-directory-technical-profile.md)die gegevens lezen en schrijven naar Azure Active Directory.  
-Gebruiken `PersistedClaims` om gegevens naar het `OutputClaims` gebruikersprofiel te schrijven en gegevens uit het gebruikersprofiel te lezen binnen de respectievelijke technische profielen van Active Directory.
+De volgende technische profielen zijn [Active Directory technische profielen](active-directory-technical-profile.md), waarmee gegevens worden gelezen en geschreven naar Azure Active Directory.  
+Gebruik `PersistedClaims` om gegevens te schrijven naar het gebruikers profiel en `OutputClaims` om gegevens te lezen uit het gebruikers profiel binnen de respectievelijke technische profielen van Active Directory.
 
-Overschrijf deze technische profielen in het extensiebestand. Zoek het element **Claimproviders.**  Voeg als volgt een nieuwe ClaimProviders toe:
+Vervang deze technische profielen in het extensie bestand. Zoek het element **ClaimsProviders** .  Voeg als volgt een nieuwe ClaimsProviders toe:
 
 ```xml
 <ClaimsProvider>
@@ -170,9 +167,9 @@ Overschrijf deze technische profielen in het extensiebestand. Zoek het element *
 </ClaimsProvider>
 ```
 
-## <a name="include-a-claim-in-the-token"></a>Een claim opnemen in het token 
+## <a name="include-a-claim-in-the-token"></a>Een claim in het token toevoegen 
 
-Als u de claim van de stad wilt terugsturen <em> `SocialAndLocalAccounts/` </em> naar de aanvraag van de relying party, voegt u een uitvoerclaim toe aan het bestand. De uitvoerclaim wordt na een geslaagde gebruikersreis aan het token toegevoegd en wordt naar de toepassing verzonden. Wijzig het technische profielelement binnen de sectie relying party om de stad toe te voegen als uitvoerclaim.
+Als u de plaats claim terug naar de Relying Party-toepassing wilt retour neren, voegt u een uitvoer claim toe aan het <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em>-bestand. De uitvoer claim wordt toegevoegd aan het token na een geslaagde gebruikers reis en wordt naar de toepassing verzonden. Wijzig het technische profiel element in het gedeelte Relying Party om de plaats toe te voegen als een uitvoer claim.
  
 ```xml
 <RelyingParty>
@@ -197,19 +194,19 @@ Als u de claim van de stad wilt terugsturen <em> `SocialAndLocalAccounts/` </em>
 
 ## <a name="test-the-custom-policy"></a>Het aangepaste beleid testen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zorg ervoor dat u de map met uw Azure AD-tenant gebruikt door het **filter Directory + abonnement** in het bovenste menu te selecteren en de map te kiezen die uw Azure AD-tenant bevat.
-3. Kies **Alle services** in de linkerbovenhoek van de Azure-portal en zoek en selecteer **app-registraties**.
-4. Selecteer **Identity Experience Framework**.
-5. Selecteer **Aangepast beleid uploaden**en upload de twee beleidsbestanden die u hebt gewijzigd.
-2. Selecteer het aanmeldings- of aanmeldingsbeleid dat u hebt geüpload en klik op **nu uitvoeren.**
-3. Je moet je kunnen aanmelden met een e-mailadres.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+2. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
+3. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
+4. Selecteer een **Framework voor identiteits ervaring**.
+5. Selecteer **aangepast beleid uploaden**en upload vervolgens de twee beleids bestanden die u hebt gewijzigd.
+2. Selecteer het registratie-of aanmeldings beleid dat u hebt geüpload en klik op de knop **nu uitvoeren** .
+3. U moet zich kunnen aanmelden met een e-mail adres.
 
-Het aanmeldingsscherm moet er hetzelfde uitzien als de volgende schermafbeelding:
+Het aanmeldings scherm moet er ongeveer uitzien als in de volgende scherm afbeelding:
 
-![Schermafbeelding van gewijzigde aanmeldingsoptie](./media/custom-policy-configure-user-input/signup-with-city-claim-dropdown-example.png)
+![Scherm afbeelding van gewijzigde registratie optie](./media/custom-policy-configure-user-input/signup-with-city-claim-dropdown-example.png)
 
-Het token dat naar uw `city` aanvraag wordt teruggestuurd, bevat de claim.
+Het token dat teruggestuurd naar uw toepassing bevat de `city` claim.
 
 ```json
 {
@@ -237,5 +234,5 @@ Het token dat naar uw `city` aanvraag wordt teruggestuurd, bevat de claim.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [element ClaimsSchema](claimsschema.md) vindt u in de IEF-verwijzing.
-- Meer informatie over het gebruik van [aangepaste kenmerken in een aangepast profielbewerkingsbeleid](custom-policy-custom-attributes.md).
+- Meer informatie over het element [ClaimsSchema](claimsschema.md) vindt u in de IEF-verwijzing.
+- Meer informatie over het [gebruik van aangepaste kenmerken in een aangepast profiel bewerkings beleid](custom-policy-custom-attributes.md).

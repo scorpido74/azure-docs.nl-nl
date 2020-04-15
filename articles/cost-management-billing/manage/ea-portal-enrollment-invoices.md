@@ -3,16 +3,16 @@ title: Facturen voor Azure Enterprise-inschrijvingen
 description: In dit artikel wordt uitgelegd hoe u uw Azure Enterprise-factuur kunt beheren en erop kunt reageren.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d8d189d2ee67e3f98fec5d7d4cd295879e8689c9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037254"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743886"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Facturen voor Azure Enterprise-inschrijvingen
 
@@ -494,6 +494,12 @@ De volgende services worden afzonderlijk gefactureerd:
 - Visual Studio Enterprise (jaarlijks)
 - Visual Studio Professional (maandelijks)
 - Visual Studio Professional (jaarlijks)
+
+## <a name="what-to-expect-after-change-of-channel-partner"></a>Wat u kunt verwachten na een wijziging van kanaalpartner
+
+Als de wijziging van kanaalpartner (COCP) midden in de maand plaatsvindt, ontvangt een klant een factuur voor gebruik onder de vorige gekoppelde partner en een tweede factuur voor het gebruik onder de nieuwe partner.
+
+De facturen worden opgemaakt in de maand die volgt op de beëindiging van de factureringsperiode. Bij maandelijkse facturering wordt de factuur van september voor beide partners in oktober opgemaakt. Bij een factureringsperiode van een kwartaal of een jaar ontvangt de klant een factuur voor de eerder gekoppelde partner voor het gebruik in de bijbehorende periode, en is de rest voor de nieuwe partner op basis van het factureringsinterval.
 
 ## <a name="azure-marketplace-for-ea-customers"></a>Azure Marketplace voor EA-klanten
 

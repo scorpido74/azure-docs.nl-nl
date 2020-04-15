@@ -8,12 +8,12 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 3314d00651fc5e0473d84710803671f2ad45f005
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2f96208ff3f9664d82bfc1d9ddf9bc5b9aec37c3
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474523"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879085"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>Wat is Azure Kostenbeheer en facturering?
 
@@ -67,7 +67,7 @@ Een bereik is een knooppunt in een factureringsaccount waar u facturen kunt weer
 ## <a name="understand-azure-cost-management"></a>Inzicht in het werken met Azure Kostenbeheer
 Kostenbeheer is het proces waarmee u effectief de kosten voor uw bedrijf kunt plannen en beheren. Kostenbeheertaken worden normaal gesproken uitgevoerd door de financiële, management- en app-teams. Azure Kostenbeheer en facturering helpt organisaties bij het plannen door rekening te houden met kosten. Het helpt ook effectief kosten te analyseren en actie te ondernemen om clouduitgaven te optimaliseren. Lees het artikel [Azure Cost Management best practices](./costs/cost-mgt-best-practices.md) voor meer informatie over kostenbeheer in een bedrijf.
 
-Bekijk de video [met een overzicht van Azure Cost Management](https://www.youtube.com/watch?v=el4yN5cHsJ0) voor een beknopt overzicht van hoe Azure Cost Management u kan helpen geld te besparen in Azure.
+Bekijk de video [met een overzicht van Azure Cost Management](https://www.youtube.com/watch?v=el4yN5cHsJ0) voor een beknopt overzicht van hoe Azure Cost Management u kan helpen geld te besparen in Azure. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
@@ -93,7 +93,7 @@ Als u externe systemen gebruikt om kostenbeheergegevens te zien of te controlere
 
 [Cloudyn](./cloudyn/overview.md) is een Azure-service met betrekking tot Cost Management, die eind 2020 wordt afgeschaft. Waar mogelijk worden bestaande Cloudyn-functies rechtstreeks geïntegreerd in de Azure-portal. Er wordt op dit moment geen onboarding uitgevoerd voor nieuwe klanten, maar de ondersteuning voor het product blijft bestaan totdat dit volledig is afgeschaft.
  
-Bekijk de [video over Azure Cost Management en Cloudyn](https://www.youtube.com/watch?v=15DzKPMBRxM) voor meer informatie over het gebruik van Azure Cost Management of Cloudyn, op basis van uw bedrijfsbehoeften.
+Bekijk de [video over Azure Cost Management en Cloudyn](https://www.youtube.com/watch?v=15DzKPMBRxM) voor meer informatie over het gebruik van Azure Cost Management of Cloudyn, op basis van uw bedrijfsbehoeften. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
  
 >[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 

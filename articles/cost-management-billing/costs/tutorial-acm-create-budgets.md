@@ -3,17 +3,17 @@ title: 'Zelfstudie: Azure-budgetten maken en beheren'
 description: Deze zelfstudie helpt u bij het plannen en verantwoorden van de kosten van Azure-Services die u gebruikt.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f7c1ac65026fd366be1003842ff70a78b9082339
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 82094fadf7b11d97b0e9e74d9ba897baed16ee01
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155933"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874276"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Zelfstudie: Azure-budgetten maken en beheren
 
@@ -25,7 +25,7 @@ Wanneer u een vervaldatum in de toekomst selecteert, worden budgetten bovendien 
 
 In de voorbeelden in deze zelfstudie leert u hoe u een budget voor een Azure EA-abonnement (Enterprise Agreement) kunt maken en bewerken.
 
-Bekijk de video [Apply budgets to subscriptions using the Azure portal](https://www.youtube.com/watch?v=UrkHiUx19Po) om te zien hoe u in Azure budgetten kunt maken om uitgaven te bewaken.
+Bekijk de video [Apply budgets to subscriptions using the Azure portal](https://www.youtube.com/watch?v=UrkHiUx19Po) om te zien hoe u in Azure budgetten kunt maken om uitgaven te bewaken. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/UrkHiUx19Po]
 
@@ -38,11 +38,32 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Budgetten worden ondersteund voor verschillende typen Azure-accounts. Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](understand-cost-mgt-data.md). Als u budgetten wilt weergeven, hebt u minimaal leestoegang voor uw Azure-account nodig.
+Budgetten worden ondersteund voor de volgende Azure-accounttypen en -bereiken:
+
+- Bereiken voor toegangsbeheer op basis van rollen in Azure
+    - Beheergroepen
+    - Abonnement
+- Enterprise Agreement-bereiken
+    - Factureringsaccount
+    - Afdeling
+    - Inschrijvingsaccount
+- Afzonderlijke overeenkomsten
+    - Factureringsaccount
+- Microsoft-klantovereenkomst-bereiken
+    - Factureringsaccount
+    - Factureringsprofiel
+    - Factuursectie
+    - Klant
+- AWS-bereiken
+    - Extern account
+    - Extern abonnement
+
+
+Als u budgetten wilt weergeven, hebt u minimaal leestoegang voor uw Azure-account nodig.
 
 Als u een nieuw abonnement hebt, kunt u niet direct een budget maken of andere Cost Management-functies gebruiken. Het kan tot 48 uur duren voordat u alle Cost Management-functies kunt gebruiken.
 
-Voor Azure EA-abonnementen moet u leestoegang hebben om budgetten weer te geven. Als u budgetten wilt maken en beheren, moet u de machtiging Inzender hebben. U kunt afzonderlijke budgetten voor EA-abonnementen en resourcegroepen maken. U kunt echter geen budgetten voor EA-factureringsrekeningen maken.
+Voor Azure EA-abonnementen moet u leestoegang hebben om budgetten weer te geven. Als u budgetten wilt maken en beheren, moet u de machtiging Inzender hebben.
 
 In abonnementen worden de volgende Azure-machtigingen, of bereiken, ondersteund voor budgetten voor gebruikers en groepen. Zie [Understand and work with scopes](understand-work-scopes.md) (Engelstalig) voor meer informatie over bereiken.
 
@@ -58,7 +79,7 @@ Zie [Toegang tot gegevens van Cost Management toewijzen](../../cost-management/a
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Een budget maken in de Azure-portal
 
-U kunt een budget voor een Azure-abonnement maken voor een periode van een maand, kwartaal of jaar. Uw navigatie-inhoud in de Azure-portal bepaalt of u een budget maakt voor een abonnement of voor een beheergroep.
+U kunt een budget voor een Azure-abonnement maken voor een periode van een maand, kwartaal of jaar.
 
 Als u een budget wilt maken of bekijken, opent u het gewenste bereik in de Azure-portal en selecteert u **Budgetten** in het menu. Ga bijvoorbeeld naar **Abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens **Budgetten** in het menu. Gebruik het besturingselement **Bereik** om in Budgetten over te schakelen naar een ander bereik, zoals een beheergroep. Zie [Understand and work with scopes](understand-work-scopes.md) (Engelstalig) voor meer informatie over bereiken.
 
@@ -110,15 +131,11 @@ Evaluaties van budgetkosten zijn gebaseerd op de werkelijke kosten. Ze bevatten 
 
 Wanneer u een budget voor het bereik van een abonnement of resourcegroep maakt of bewerkt, kunt u dit configureren voor het aanroepen van een actiegroep. Met de actiegroep kunnen verschillende acties worden uitgevoerd wanneer de budgetdrempel is bereikt. Actiegroepen worden momenteel alleen ondersteund voor bereiken van abonnementen en resourcegroepen. Zie [Actiegroepen maken en beheren in de Azure-portal](../../azure-monitor/platform/action-groups.md) voor meer informatie over actiegroepen. Zie [Kosten beheren met Azure-budgetten](../manage/cost-management-budget-scenario.md) voor meer informatie over het gebruik van automatisering op basis van budgetten met actiegroepen.
 
-
-
 Als u actiegroepen wilt maken of bijwerken, selecteert u **Actiegroepen beheren** tijdens het maken of bewerken van een budget.
 
 ![Voorbeeld van het maken van een budget voor het weergeven van Actiegroepen beheren](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
-
 Selecteer vervolgens **Actiegroep toevoegen** en maak de actiegroep.
-
 
 ![Afbeelding van het vak Actiegroep toevoegen](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
 
