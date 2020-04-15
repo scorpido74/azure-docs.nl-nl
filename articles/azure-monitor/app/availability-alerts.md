@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: e0c1a93ef663762bec199abc5aa7eabbc821168d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654950"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382885"
 ---
 # <a name="availability-alerts"></a>Beschikbaarheidswaarschuwingen
 
@@ -33,6 +33,9 @@ Waarschuwingen worden nu standaard automatisch ingeschakeld, maar om de waarschu
 2. Stel het gewenste ernstniveau, regelbeschrijving en vooral in - de actiegroep die de meldingsvoorkeuren heeft die u wilt gebruiken voor deze waarschuwingsregel.
 
    ![Bewerken na opslaan](./media/availability-alerts/set-action-group.png)
+
+> [!NOTE]
+> Beschikbaarheidswaarschuwingen die via deze ervaring zijn gemaakt, zijn op basis van de status. Dit betekent dat wanneer aan de waarschuwingscriteria wordt voldaan, één waarschuwing wordt gegenereerd wanneer de site wordt gedetecteerd als niet beschikbaar. Als de site de volgende keer dat de waarschuwingscriteria wordt geëvalueerd nog steeds is uitgeschakeld, genereert dit geen nieuwe waarschuwing. Dus als uw site een uur uit viel en u een e-mailwaarschuwing had ingesteld, ontvangt u alleen een e-mail wanneer de site uitviel en een volgende e-mail wanneer de site een back-up maakte. U ontvangt geen doorlopende waarschuwingen om u eraan te herinneren dat de site nog steeds niet beschikbaar was.
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Waarschuwing op X van Y-locaties die fouten melden
 

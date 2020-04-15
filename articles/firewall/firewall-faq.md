@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: af66da115e228efe39e4cd5dda3c494b71428676
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113555"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383075"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -72,9 +72,9 @@ De Web Application Firewall (WAF) is een functie van Application Gateway die gec
 
 De Azure Firewall-service is een aanvulling op de functionaliteit van de netwerkbeveiligingsgroep. Samen zorgen ze voor een betere "defensie-diepgaande" netwerkbeveiliging. Netwerkbeveiligingsgroepen bieden gedistribueerde netwerklaagverkeersfiltering om verkeer te beperken tot bronnen binnen virtuele netwerken in elk abonnement. Azure Firewall is een volledig stateful, gecentraliseerde netwerkfirewall as-a-service, die bescherming op netwerk- en toepassingsniveau biedt voor verschillende abonnementen en virtuele netwerken.
 
-## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>Worden Network Security Groups (NSG's) ondersteund op het Subnet Azure Firewall?
+## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>Worden Network Security Groups (NSGs) ondersteund op het AzureFirewallSubnet?
 
-Azure Firewall is een beheerde service met meerdere beveiligingslagen, waaronder platformbeveiliging met NIC-niveau NSG's (niet zichtbaar).  NSG's op subnetniveau zijn niet vereist op het subnet Azure Firewall en zijn uitgeschakeld om ervoor te zorgen dat de service niet wordt onderbroken.
+Azure Firewall is een beheerde service met meerdere beveiligingslagen, waaronder platformbeveiliging met NIC-niveau NSG's (niet zichtbaar).  NSG's op subnetniveau zijn niet vereist op het AzureFirewallSubnet en zijn uitgeschakeld om ervoor te zorgen dat de service niet wordt onderbroken.
 
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Hoe stel ik Azure Firewall in met mijn serviceeindpunten?
 

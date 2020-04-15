@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 04/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63271567e70955f6dfb0b10a5c882b6dce9545ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55ce0233fdefb8360376e94c0baafabe4c62ced7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74932487"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309198"
 ---
 # <a name="blocking-legacy-authentication"></a>Verouderde verificatie blokkeren
  
@@ -31,11 +31,11 @@ Vandaag de dag is het merendeel van alle compromitterende aanmeldingspogingen af
 
 Voordat u oudere verificatie in uw directory blokkeren, moet u eerst begrijpen of uw gebruikers apps hebben die verouderde verificatie gebruiken en hoe deze van invloed is op uw algemene directory. Azure AD-aanmeldingslogboeken kunnen worden gebruikt om te begrijpen of u verouderde verificatie gebruikt.
 
-1. Navigeer naar de Azure-portal > Azure Active Directory > aanmeldingen.
-1. Voeg de kolom Client-app toe als deze niet wordt weergegeven door op Kolommen > Client App te klikken.
-1. Filter op clientapp > controleert alle andere clientopties die worden weergegeven en klik op Toepassen.
-1. Filter op Status > Succes en klik op Toepassen. 
-1. Vouw uw datumbereik indien nodig uit met het filter Datum.
+1. Navigeer naar de **Azure portal** >Azure Active **Directory-aanmeldingen** **Azure Active Directory** >.
+1. Voeg de kolom **Client-app** toe als deze niet wordt weergegeven door op de > **kolom** **Kolommenclientapp**te klikken .
+1. Filter op **client-app**  > controleert alle opties **voor verouderde verificatieclients.**
+1. Filteren op > **statussucces**. **Status** 
+1. Vouw uw datumbereik indien nodig uit met het filter **Datum.**
 
 Filteren toont alleen succesvolle aanmeldingspogingen die zijn uitgevoerd door de geselecteerde verouderde verificatieprotocollen. Als u op elke afzonderlijke aanmeldingspoging klikt, ziet u meer details. In de kolom Client-app of het veld Client-app onder het tabblad Basisgegevens na het selecteren van een afzonderlijke rij gegevens wordt aangegeven welk verouderd verificatieprotocol is gebruikt. Deze logboeken geven aan welke gebruikers nog afhankelijk zijn van verouderde verificatie en welke toepassingen verouderde protocollen gebruiken om verificatieverzoeken in te dienen. Voor gebruikers die niet in deze logboeken worden weergegeven en waarvan is bevestigd dat ze geen verouderde verificatie gebruiken, implementeert u een beleid voor voorwaardelijke toegang of schakelt u het beleid basislijn in: blokkeer alleen verouderde verificatie voor deze gebruikers.
 
@@ -62,7 +62,7 @@ Als u Office 2013 Windows-clients of ouder gebruikt, raden we u aan te upgraden 
 
 Office 2010 biedt geen ondersteuning voor moderne verificatie. U moet alle gebruikers met Office 2010 upgraden naar een recentere versie van Office. We raden u aan een upgrade naar Office 2016 of hoger te maken, omdat deze standaard verouderde verificatie blokkeert.
 
-Als u MacOS gebruikt, raden we u aan een upgrade naar Office voor Mac 2016 of hoger te maken. Als u de native mailclient gebruikt, moet u MacOS-versie 10.14 of hoger op alle apparaten hebben.
+Als u macOS gebruikt, raden we u aan een upgrade naar Office voor Mac 2016 of hoger te maken. Als u de native mailclient gebruikt, moet u macOS-versie 10.14 of hoger op alle apparaten hebben.
 
 ### <a name="step-3-exchange-and-sharepoint"></a>Stap 3: Exchange en SharePoint
 

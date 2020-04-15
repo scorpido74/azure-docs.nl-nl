@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0f024bac535ed792d8480c991e470cf5d85932b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2afeae937d56a84c39167ad55a57c86f2623e52d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247421"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382711"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hoge beschikbaarheid met Azure Cosmos DB
 
@@ -50,18 +50,25 @@ Regionale storingen zijn niet ongewoon. Met Azure Cosmos DB is uw database altij
 
 - Accounts met één regio kunnen hun beschikbaarheid verliezen als gevolg van een regionale storing. Het wordt altijd aanbevolen om **ten minste twee regio's** (bij voorkeur ten minste twee schrijfregio's) in te stellen met uw Cosmos-account om te allen tijde een hoge beschikbaarheid te garanderen.
 
-- **Accounts met meerdere regio's met één schrijfgebied (uitval van de regio):**
-  - Tijdens een uitval van het schrijfgebied wordt een secundaire regio automatisch gepromoot als het nieuwe primaire schrijfgebied wanneer **automatische failover wordt** ingeschakeld op het Azure Cosmos-account. Wanneer deze is ingeschakeld, vindt de failover plaats in een andere regio in de volgorde van de regioprioriteit die u hebt opgegeven.
-  - Klanten kunnen er ook voor kiezen om **handmatige failover** te gebruiken en hun Cosmos-schrijfeindpunt-URL's zelf te controleren met behulp van een agent die zichzelf is gebouwd. Voor klanten met complexe en geavanceerde behoeften aan gezondheidsmonitoring kan dit een verminderde RTO opleveren als er een storing optreedt in het schrijfgebied.
-  - Wanneer het eerder getroffen gebied weer online is, worden alle schrijfgegevens die niet zijn gerepliceerd toen de regio is mislukt, beschikbaar gesteld via de [conflictfeed](how-to-manage-conflicts.md#read-from-conflict-feed). Toepassingen kunnen de conflictfeed lezen, de conflicten oplossen op basis van de toepassingsspecifieke logica en de bijgewerkte gegevens zo nodig terugschrijven naar de Azure Cosmos-container.
-  - Zodra het eerder getroffen schrijfgebied herstelt, wordt het automatisch beschikbaar als leesregio. U terugschakelen naar het herstelde gebied als het schrijfgebied. U de regio's wisselen met [Azure CLI of Azure-portal.](how-to-manage-database-account.md#manual-failover) Er is **geen gegevens of beschikbaarheidsverlies** voor, tijdens of na het wisselen van schrijfgebied en uw toepassing blijft zeer beschikbaar.
+### <a name="multi-region-accounts-with-a-single-write-region-write-region-outage"></a>Accounts met meerdere regio's met één schrijfgebied (uitval van het schrijfgebied)
 
-- **Accounts met meerdere regio's met één schrijfgebied (lees regiostoring):**
-  - Tijdens een leesregio-storing blijven deze accounts zeer beschikbaar voor lezen en schrijven.
-  - Het getroffen gebied wordt automatisch losgekoppeld en wordt offline gemarkeerd. De [Azure Cosmos DB SDKs](sql-api-sdk-dotnet.md) leiden leesoproepen om naar het volgende beschikbare gebied in de lijst met voorkeursregio's.
-  - Als geen van de regio's in de lijst met voorkeursregio's beschikbaar is, vallen aanroepen automatisch terug naar de huidige schrijfregio.
-  - Er zijn geen wijzigingen vereist in uw toepassingscode om de uitval van de leesregio af te handelen. Uiteindelijk, wanneer de getroffen regio weer online is, wordt het eerder getroffen leesgebied automatisch gesynchroniseerd met het huidige schrijfgebied en is het weer beschikbaar om leesverzoeken weer te serveren.
-  - Latere leesbewerkingen worden omgeleid naar de herstelde regio zonder dat er wijzigingen in uw toepassingscode nodig zijn. Tijdens zowel failover als het opnieuw samenvoegen van een eerder mislukte regio, lees consistentie garanties blijven worden gerespecteerd door Cosmos DB.
+- Tijdens een uitval van het schrijfgebied wordt een secundaire regio automatisch gepromoot als het nieuwe primaire schrijfgebied wanneer **automatische failover wordt** ingeschakeld op het Azure Cosmos-account. Wanneer deze is ingeschakeld, vindt de failover plaats in een andere regio in de volgorde van de regioprioriteit die u hebt opgegeven.
+- Wanneer het eerder getroffen gebied weer online is, worden alle schrijfgegevens die niet zijn gerepliceerd toen de regio is mislukt, beschikbaar gesteld via de [conflictfeed](how-to-manage-conflicts.md#read-from-conflict-feed). Toepassingen kunnen de conflictfeed lezen, de conflicten oplossen op basis van de toepassingsspecifieke logica en de bijgewerkte gegevens zo nodig terugschrijven naar de Azure Cosmos-container.
+- Zodra het eerder getroffen schrijfgebied herstelt, wordt het automatisch beschikbaar als leesregio. U terugschakelen naar het herstelde gebied als het schrijfgebied. U de regio's schakelen met [PowerShell, Azure CLI of Azure-portal.](how-to-manage-database-account.md#manual-failover) Er is **geen gegevens of beschikbaarheidsverlies** voor, tijdens of na het wisselen van schrijfgebied en uw toepassing blijft zeer beschikbaar.
+
+> [!IMPORTANT]
+> Het wordt ten zeerste aanbevolen om de Azure Cosmos-accounts te configureren die worden gebruikt voor productieworkloads om **automatische failover mogelijk**te maken. Handmatige failover vereist connectiviteit tussen secundair en primair schrijfgebied om een consistentiecontrole uit te vullen om ervoor te zorgen dat er geen gegevensverlies is tijdens de failover. Als het primaire gebied niet beschikbaar is, kan deze consistentiecontrole niet worden voltooid en wordt de handmatige failover niet geslaagd, waardoor de schrijfbeschikbaarheid verloren gaat.
+
+### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Accounts met meerdere regio's met één schrijfgebied (regiostoring lezen)
+
+- Tijdens een leesregio-uitval blijven Cosmos-accounts met behulp van een consistentieniveau of een sterke consistentie met drie of meer gelezen regio's zeer beschikbaar voor lezen en schrijven.
+- Het getroffen gebied wordt automatisch losgekoppeld en wordt offline gemarkeerd. De [Azure Cosmos DB SDKs](sql-api-sdk-dotnet.md) leiden leesoproepen om naar het volgende beschikbare gebied in de lijst met voorkeursregio's.
+- Als geen van de regio's in de lijst met voorkeursregio's beschikbaar is, vallen aanroepen automatisch terug naar de huidige schrijfregio.
+- Er zijn geen wijzigingen vereist in uw toepassingscode om de uitval van de leesregio af te handelen. Wanneer de in beïnvloede leesregio weer online is, wordt deze automatisch gesynchroniseerd met het huidige schrijfgebied en is het weer beschikbaar om leesverzoeken weer te geven.
+- Latere leesbewerkingen worden omgeleid naar de herstelde regio zonder dat er wijzigingen in uw toepassingscode nodig zijn. Tijdens zowel failover als het opnieuw samenvoegen van een eerder mislukte regio, lees consistentie garanties blijven worden gerespecteerd door Cosmos DB.
+
+> [!IMPORTANT]
+> Azure Cosmos-accounts met een sterke consistentie met twee of minder leesregio's verliezen de schrijfbeschikbaarheid tijdens een leesregio-storing, maar behouden de leesbeschikbaarheid voor resterende regio's.
 
 - Zelfs in een zeldzame en ongelukkige gebeurtenis wanneer de Azure-regio permanent onherstelbaar is, is er geen gegevensverlies als uw Cosmos-account met meerdere regio's is geconfigureerd met *sterke* consistentie. In het geval van een permanent onherstelbaar schrijfgebied, een cosmos-account met meerdere regio's, geconfigureerd met consistentie van begrensde staleness, is het venster voor potentiële gegevensverlies beperkt tot het venster *(K* of *T)* waarin K=100.000 updates en T=5 minuten zijn. Voor sessie-, consistent-voorvoegsel en uiteindelijke consistentieniveaus is het venster voor potentiële gegevensverlies beperkt tot maximaal 15 minuten. Zie [Consistentieniveaus en gegevensduurzaamheid](consistency-levels-tradeoffs.md#rto) voor meer informatie over RTO- en RPO-doelen voor Azure Cosmos DB
 
@@ -112,12 +119,12 @@ In de volgende tabel wordt een overzicht van de hoge beschikbaarheidsmogelijkhed
 > [!NOTE]
 > Als u ondersteuning voor beschikbaarheidszone wilt inschakelen voor een Azure Cosmos-account met meerdere regio's, moet het account multi-master schrijfbewerkingen hebben ingeschakeld.
 
-U zoneredundantie inschakelen wanneer u een regio toevoegt aan nieuwe of bestaande Azure Cosmos-accounts. Als u zoneredundantie op uw Azure `isZoneRedundant` Cosmos-account wilt inschakelen, moet u de vlag instellen op `true` een specifieke locatie. U deze vlag instellen in de eigenschap locaties. Met het volgende powershell-fragment u bijvoorbeeld zoneredundantie voor de regio 'Zuidoost-Azië' gebruiken:
+U zoneredundantie inschakelen wanneer u een regio toevoegt aan nieuwe of bestaande Azure Cosmos-accounts. Als u zoneredundantie op uw Azure `isZoneRedundant` Cosmos-account wilt inschakelen, moet u de vlag instellen op `true` een specifieke locatie. U deze vlag instellen in de eigenschap locaties. Met het volgende PowerShell-fragment wordt bijvoorbeeld zoneredundantie voor de regio 'Zuidoost-Azië' mogelijk gemaakt:
 
 ```powershell
 $locations = @(
     @{ "locationName"="Southeast Asia"; "failoverPriority"=0; "isZoneRedundant"= "true" },
-    @{ "locationName"="East US"; "failoverPriority"=1 }
+    @{ "locationName"="East US"; "failoverPriority"=1; "isZoneRedundant"= "true" }
 )
 ```
 
@@ -143,7 +150,7 @@ U beschikbaarheidszones inschakelen door azure-portal te gebruiken bij het maken
 
 - Voor cosmos-accounts met meerdere regio's die zijn geconfigureerd met één schrijfgebied, [schakelt u automatische failover in met Azure CLI of Azure-portal.](how-to-manage-database-account.md#automatic-failover) Nadat u automatische failover hebt ingeschakeld, wanneer er een regionale ramp is, mislukt Cosmos DB automatisch over uw account.  
 
-- Zelfs als uw Cosmos-account zeer beschikbaar is, is uw toepassing mogelijk niet correct ontworpen om zeer beschikbaar te blijven. Als u de end-to-end hoge beschikbaarheid van uw toepassing wilt testen, u als onderdeel van uw drills voor het testen van toepassingen of DR-oefeningen (Disaster-recovery) automatisch failoveren voor het account tijdelijk uitschakelen, de handmatige failover aanroepen [door Azure CLI of Azure-portal](how-to-manage-database-account.md#manual-failover)te gebruiken en vervolgens de failover van uw toepassing te controleren. Eenmaal voltooid, u niet terug naar de primaire regio en herstellen automatisch failover voor het account.
+- Zelfs als uw Azure Cosmos-account zeer beschikbaar is, is uw toepassing mogelijk niet correct ontworpen om zeer beschikbaar te blijven. Als u de end-to-end hoge beschikbaarheid van uw toepassing wilt testen, u als onderdeel van uw drills voor het testen van toepassingen of disaster recovery (DR) de automatische failover voor het account tijdelijk uitschakelen, de handmatige failover aanroepen [door PowerShell, Azure CLI of Azure-portal](how-to-manage-database-account.md#manual-failover)te gebruiken en vervolgens de failover van uw toepassing te controleren. Eenmaal voltooid, u niet terug naar de primaire regio en herstellen automatisch failover voor het account.
 
 - Binnen een wereldwijd gedistribueerde databaseomgeving is er een direct verband tussen het consistentieniveau en de duurzaamheid van gegevens in aanwezigheid van een regio-brede uitval. Terwijl u uw bedrijfscontinuïteitsplan ontwikkelt, moet u de maximaal aanvaardbare tijd begrijpen voordat de toepassing volledig herstelt na een storende gebeurtenis. De tijd die nodig is voor een aanvraag om volledig te herstellen staat bekend als recovery time objective (RTO). U moet ook de maximale periode van recente gegevensupdates begrijpen die de toepassing kan tolereren wanneer deze herstelt na een storende gebeurtenis. Deze periode wordt het beoogde herstelpunt (RPO) genoemd. Zie [Consistentieniveaus en gegevensduurzaamheid](consistency-levels-tradeoffs.md#rto) voor de RPO en RTO voor Azure Cosmos DB
 

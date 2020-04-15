@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: c7b38ad40977e1042032210d3a82a73ff6169adc
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: b458537c7cf8a254cd188c565ab1925afa202369
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411065"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312656"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-endstatus- en diagnostische logboeken voor application gateway
 
@@ -172,7 +172,7 @@ Het toegangslogboek wordt alleen gegenereerd als u het hebt ingeschakeld op elke
 |receivedBytes     | Grootte van het ontvangen pakket, in bytes.        |
 |verzonden Bytes| Grootte van verzonden pakket, in bytes.|
 |timeTaken| Tijdsduur (in milliseconden) die nodig zijn om een aanvraag te verwerken en het antwoord ervan te worden verzonden. Dit wordt berekend als het interval vanaf het moment dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt tot het moment waarop de bewerking voor antwoordverzenden is voltooid. Het is belangrijk op te merken dat het veld Time-Taken meestal de tijd bevat dat de aanvraag- en antwoordpakketten via het netwerk worden uitgevoerd. |
-|sslEnabled| Of communicatie met de back-end pools SSL heeft gebruikt. Geldige waarden zijn aan en uit.|
+|sslEnabled| Of communicatie naar de back-end pools TLS/SSL heeft gebruikt. Geldige waarden zijn aan en uit.|
 |host| De hostnaam waarmee de aanvraag naar de backendserver is verzonden. Als backendhostnaam wordt overschreven, wordt deze naam die weergegeven.|
 |origineleHost| De hostnaam waarmee de aanvraag is ontvangen door de Application Gateway van de client.|
 ```json
@@ -215,9 +215,9 @@ Voor Application Gateway en WAF v2, de logs tonen een beetje meer informatie:
 |receivedBytes     | Grootte van het ontvangen pakket, in bytes.        |
 |verzonden Bytes| Grootte van verzonden pakket, in bytes.|
 |timeTaken| Tijdsduur (in **seconden)** die nodig zijn om een aanvraag te verwerken en het antwoord ervan te worden verzonden. Dit wordt berekend als het interval vanaf het moment dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt tot het moment waarop de bewerking voor antwoordverzenden is voltooid. Het is belangrijk op te merken dat het veld Time-Taken meestal de tijd bevat dat de aanvraag- en antwoordpakketten via het netwerk worden uitgevoerd. |
-|sslEnabled| Of communicatie met de back-end pools SSL heeft gebruikt. Geldige waarden zijn aan en uit.|
-|sslCipher sslCipher| Cipher suite wordt gebruikt voor SSL-communicatie (als SSL is ingeschakeld).|
-|sslProtocol| SSL/TLS-protocol dat wordt gebruikt (als SSL is ingeschakeld).|
+|sslEnabled| Of communicatie naar de back-end pools TLS gebruikt. Geldige waarden zijn aan en uit.|
+|sslCipher sslCipher| Cipher suite wordt gebruikt voor TLS-communicatie (als TLS is ingeschakeld).|
+|sslProtocol| SSL/TLS-protocol dat wordt gebruikt (als TLS is ingeschakeld).|
 |serverRouted| De backendserver waar de toepassingsgateway naar toe leidt, leidt het verzoek naar.|
 |serverStatus| HTTP-statuscode van de backendserver.|
 |serverResponseLatentie| Latentie van het antwoord vanaf de backendserver.|

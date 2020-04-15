@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3237fe7d87ad058f255d1c77cb6d814bcd1c292e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b4e1ef4fbc3ade38b55fc06f8e4e9a119938581b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262244"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383906"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files in Windows oplossen
 
@@ -324,6 +324,30 @@ Fout 'Systeemfout 1359 is opgetreden. Er treedt een interne fout op wanneer u pr
 Momenteel u overwegen uw AAD DS opnieuw te implementeren met behulp van een nieuwe dns-domeinnaam die van toepassing is met de onderstaande regels:
 - Namen kunnen niet beginnen met een numeriek teken.
 - Namen moeten 3 tot 63 tekens lang zijn.
+
+## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Kan Azure-bestanden niet monteren met AD-referenties 
+
+### <a name="self-diagnostics-steps"></a>Stappen voor zelfdiagnostiek
+Controleer eerst of u alle vier de stappen hebt doorlopen om [AD-verificatie voor Azure-bestanden in](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)te schakelen.
+
+Ten tweede, probeer [Azure-bestandsshare te monteren met opslagaccountsleutel](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Als u niet monteren, downloadt u [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) om u te helpen de clientbeheeromgeving te valideren, de incompatibele clientconfiguratie op te sporen die toegangsfouten voor Azure Files zou veroorzaken, geeft u prescriptieve richtlijnen voor zelffix en verzamelt u de diagnostische sporen.
+
+Ten derde u de cmdlet Debug-AzStorageAccountAuth uitvoeren om een reeks basiscontroles op uw AD-configuratie uit te voeren met de aangemelde AD-gebruiker. Deze cmdlet wordt ondersteund op [AzFilesHybrid v0.1.2+ versie.](https://github.com/Azure-Samples/azure-files-samples/releases) U moet deze cmdlet uitvoeren met een AD-gebruiker die toestemming heeft voor de eigenaar op het doelopslagaccount.  
+```PowerShell
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
+```
+De cmdlet voert deze controles hieronder achter elkaar uit en geeft richtlijnen voor storingen:
+1. CheckPort445Connectivity: controleer of poort 445 is geopend voor smb-verbinding
+2. CheckDomainJoined: valideren of de clientmachine domein is dat is samengevoegd met AD
+3. CheckADObject: controleer of de aangemelde gebruiker een geldige weergave heeft in het AD-domein waar het opslagaccount aan is gekoppeld
+4. CheckGetKerberosTicket: probeer een Kerberos-ticket te krijgen om verbinding te maken met het opslagaccount 
+5. CheckADObjectPasswordIsCorrect: controleer of het wachtwoord dat is geconfigureerd op de AD-identiteit dat het opslagaccount vertegenwoordigt, overeenkomt met dat van de kerb-sleutel van het opslagaccount
+6. CheckSidHasAadUser: controleer of de aangemelde AD-gebruiker is gesynchroniseerd met Azure AD
+
+We zijn actief bezig met het uitbreiden van deze diagnostische cmdlet om betere richtlijnen voor het oplossen van problemen te bieden.
 
 ## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
 Als u nog steeds hulp nodig hebt, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

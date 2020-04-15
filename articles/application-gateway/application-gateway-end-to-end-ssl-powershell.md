@@ -1,26 +1,26 @@
 ---
-title: End-to-end SSL configureren met Azure Application Gateway
-description: In dit artikel wordt beschreven hoe u end-to-end SSL configureert met Azure Application Gateway met PowerShell
+title: End-to-end TLS configureren met Azure Application Gateway
+description: In dit artikel wordt beschreven hoe u end-to-end TLS configureert met Azure Application Gateway met PowerShell
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 7ba273cddb6cf41872c4db1c34560c104b992787
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72286465"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312502"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>End-to-end-SSL configureren door Application Gateway met PowerShell te gebruiken
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>End-to-end TLS configureren met Behulp van Application Gateway met PowerShell
 
 ## <a name="overview"></a>Overzicht
 
-Azure Application Gateway ondersteunt end-to-end versleuteling van verkeer. Application Gateway beëindigt de SSL-verbinding op de toepassingsgateway. De gateway past vervolgens de routeringsregels toe op het verkeer, versleutelt het pakket opnieuw en stuurt het pakket door naar de juiste back-endserver op basis van de gedefinieerde routeringsregels. Reacties van de webserver ondergaan hetzelfde proces terug naar de eindgebruiker.
+Azure Application Gateway ondersteunt end-to-end versleuteling van verkeer. Application Gateway beëindigt de TLS/SSL-verbinding op de toepassingsgateway. De gateway past vervolgens de routeringsregels toe op het verkeer, versleutelt het pakket opnieuw en stuurt het pakket door naar de juiste back-endserver op basis van de gedefinieerde routeringsregels. Reacties van de webserver ondergaan hetzelfde proces terug naar de eindgebruiker.
 
-Application Gateway ondersteunt het definiëren van aangepaste SSL-opties. Het ondersteunt ook het uitschakelen van de volgende protocolversies: **TLSv1.0**, **TLSv1.1**en **TLSv1.2**, evenals het definiëren van welke cipher suites te gebruiken en de volgorde van voorkeur. Zie het overzicht van het [SSL-beleid](application-gateway-SSL-policy-overview.md)voor meer informatie over configureerbare SSL-opties.
+Application Gateway ondersteunt het definiëren van aangepaste TLS-opties. Het ondersteunt ook het uitschakelen van de volgende protocolversies: **TLSv1.0**, **TLSv1.1**en **TLSv1.2**, evenals het definiëren van welke cipher suites te gebruiken en de volgorde van voorkeur. Zie het [TLS-beleidsoverzicht](application-gateway-SSL-policy-overview.md)voor meer informatie over configureerbare TLS-opties.
 
 > [!NOTE]
 > SSL 2.0 en SSL 3.0 zijn standaard uitgeschakeld en kunnen niet worden ingeschakeld. Ze worden als onveilig beschouwd en kunnen niet worden gebruikt met Application Gateway.
@@ -29,22 +29,22 @@ Application Gateway ondersteunt het definiëren van aangepaste SSL-opties. Het o
 
 ## <a name="scenario"></a>Scenario
 
-In dit scenario leert u hoe u een toepassingsgateway maakt met end-to-end SSL met PowerShell.
+In dit scenario leert u hoe u een toepassingsgateway maakt met end-to-end TLS met PowerShell.
 
 Dit scenario zal:
 
 * Maak een resourcegroep met de naam **appgw-rg**.
 * Maak een virtueel netwerk met de naam **appgwvnet** met een adresruimte van **10.0.0.0/16**.
 * Maak twee subnetten genaamd **appgwsubnet** en **appsubnet**.
-* Maak een kleine toepassingsgateway die end-to-end SSL-versleuteling ondersteunt die ssl-protocolversies en ciphersuites beperkt.
+* Maak een kleine toepassingsgateway die end-to-end TLS-versleuteling ondersteunt die tls-protocolversies en ciphersuites beperkt.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Om end-to-end SSL te configureren met een toepassingsgateway, is een certificaat vereist voor de gateway en zijn certificaten vereist voor de back-endservers. Het gatewaycertificaat wordt gebruikt om een symmetrische sleutel af te leiden volgens ssl-protocolspecificatie. De symmetrische sleutel wordt vervolgens gebruikt versleutelen en decoderen van het verkeer naar de gateway. Het gatewaycertificaat moet in PFX-formaat (Personal Information Exchange) zijn. Met deze bestandsindeling u de privésleutel exporteren die vereist is door de toepassingsgateway om de versleuteling en decryptie van het verkeer uit te voeren.
+Om end-to-end TLS te configureren met een toepassingsgateway, is een certificaat vereist voor de gateway en zijn certificaten vereist voor de back-endservers. Het gatewaycertificaat wordt gebruikt om een symmetrische sleutel af te leiden volgens de TLS-protocolspecificatie. De symmetrische sleutel wordt vervolgens gebruikt versleutelen en decoderen van het verkeer naar de gateway. Het gatewaycertificaat moet in PFX-formaat (Personal Information Exchange) zijn. Met deze bestandsindeling u de privésleutel exporteren die vereist is door de toepassingsgateway om de versleuteling en decryptie van het verkeer uit te voeren.
 
-Voor end-to-end SSL-versleuteling moet de back-end expliciet worden toegestaan door de toepassingsgateway. Upload het openbare certificaat van de back-endservers naar de toepassingsgateway. Het toevoegen van het certificaat zorgt ervoor dat de toepassingsgateway alleen communiceert met bekende back-end-exemplaren. Dit zorgt verder voor de end-to-end communicatie.
+Voor end-to-end TLS-versleuteling moet de back-end expliciet worden toegestaan door de toepassingsgateway. Upload het openbare certificaat van de back-endservers naar de toepassingsgateway. Het toevoegen van het certificaat zorgt ervoor dat de toepassingsgateway alleen communiceert met bekende back-end-exemplaren. Dit zorgt verder voor de end-to-end communicatie.
 
 Het configuratieproces wordt beschreven in de volgende secties.
 
@@ -154,20 +154,20 @@ Alle configuratie-items zijn ingesteld voordat u de toepassingsgateway maakt. Vo
    ```
 
    > [!NOTE]
-   > In dit voorbeeld wordt het certificaat geconfigureerd dat wordt gebruikt voor de SSL-verbinding. Het certificaat moet in .pfx-formaat zijn en het wachtwoord moet 4 tot 12 tekens zijn.
+   > In dit voorbeeld wordt het certificaat geconfigureerd dat wordt gebruikt voor de TLS-verbinding. Het certificaat moet in .pfx-formaat zijn en het wachtwoord moet 4 tot 12 tekens zijn.
 
-6. Maak de HTTP-listener voor de toepassingsgateway. Wijs de front-end IP-configuratie, poort en SSL-certificaat toe om te gebruiken.
+6. Maak de HTTP-listener voor de toepassingsgateway. Wijs de front-end IP-configuratie, poort en TLS/SSL-certificaat toe om te gebruiken.
 
    ```powershell
    $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-7. Upload het certificaat dat moet worden gebruikt op de back-endpoolbronnen met SSL.Upload the certificate to be used on the SSL-enabled back-end pool resources.
+7. Upload het certificaat dat moet worden gebruikt op de back-endpoolbronnen met TLS.Upload the certificate to be used on the TLS-enabled back-end pool resources.
 
    > [!NOTE]
-   > De standaardsonde krijgt de openbare sleutel van de *standaard* SSL-binding op het IP-adres van de back-end en vergelijkt de waarde van de openbare sleutel die deze ontvangt met de openbare sleutelwaarde die u hier verstrekt. 
+   > De standaardsonde krijgt de openbare sleutel van de *standaard* TLS-binding op het IP-adres van de back-end en vergelijkt de waarde van de openbare sleutel die deze ontvangt met de openbare sleutelwaarde die u hier verstrekt. 
    > 
-   > Als u hostheaders en Server name Indication (SNI) op de back-end gebruikt, is de opgehaalde openbare sleutel mogelijk niet de beoogde site waarnaar verkeer stroomt. Als u twijfelt, gaat https://127.0.0.1/ u naar de back-endservers om te bevestigen welk certificaat wordt gebruikt voor de *standaard* SSL-binding. Gebruik de openbare sleutel van dat verzoek in deze sectie. Als u host-headers en SNI op HTTPS-bindingen gebruikt en u geen antwoord https://127.0.0.1/ en certificaat ontvangt van een handmatig browserverzoek tot op de back-endservers, moet u een standaard SSL-binding instellen op de servers. Als u dit niet doet, mislukken sondes en wordt de back-end niet op de witte lijst gewhitelist.
+   > Als u hostheaders en Server name Indication (SNI) op de back-end gebruikt, is de opgehaalde openbare sleutel mogelijk niet de beoogde site waarnaar verkeer stroomt. Ga bij twijfel naar https://127.0.0.1/ de back-endservers om te bevestigen welk certificaat wordt gebruikt voor de *standaard* TLS-binding. Gebruik de openbare sleutel van dat verzoek in deze sectie. Als u host-headers en SNI op HTTPS-bindingen gebruikt en u geen antwoord https://127.0.0.1/ en certificaat ontvangt van een handmatig browserverzoek tot op de back-endservers, moet u een standaard TLS-binding instellen. Als u dit niet doet, mislukken sondes en wordt de back-end niet op de witte lijst gewhitelist.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -176,7 +176,7 @@ Alle configuratie-items zijn ingesteld voordat u de toepassingsgateway maakt. Vo
    > [!NOTE]
    > Het certificaat in de vorige stap moet de openbare sleutel zijn van het .pfx-certificaat dat op de back-end aanwezig is. Exporteer het certificaat (niet het rootcertificaat) dat is geïnstalleerd op de back-endserver in de CER-indeling claim, bewijs en redeneren en gebruik het in deze stap. Met deze stap wordt de back-end met de toepassingsgateway op de witte lijst gezet.
 
-   Als u de Application Gateway v2 SKU gebruikt, maakt u een vertrouwd rootcertificaat in plaats van een verificatiecertificaat. Zie [Overzicht van ssl met toepassinggateway:](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)
+   Als u de Application Gateway v2 SKU gebruikt, maakt u een vertrouwd rootcertificaat in plaats van een verificatiecertificaat. Zie [Overzicht van end-to-end TLS met Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku)voor meer informatie:
 
    ```powershell
    $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
@@ -209,7 +209,7 @@ Alle configuratie-items zijn ingesteld voordat u de toepassingsgateway maakt. Vo
     > [!NOTE]
     > Een instantietelling van 1 kan worden gekozen voor testdoeleinden. Het is belangrijk om te weten dat het aantal exemplaren onder twee instanties niet onder de SLA valt en daarom niet wordt aanbevolen. Kleine gateways moeten worden gebruikt voor dev-test en niet voor productiedoeleinden.
 
-11. Configureer het SSL-beleid dat moet worden gebruikt op de toepassingsgateway. Application Gateway ondersteunt de mogelijkheid om een minimale versie in te stellen voor SSL-protocolversies.
+11. Configureer het TLS-beleid dat moet worden gebruikt op de toepassingsgateway. Application Gateway ondersteunt de mogelijkheid om een minimale versie in te stellen voor TLS-protocolversies.
 
     De volgende waarden zijn een lijst met protocolversies die kunnen worden gedefinieerd:
 
@@ -247,7 +247,7 @@ Gebruik deze procedure om een nieuw certificaat toe te passen als het back-endce
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. Voeg de nieuwe certificaatbron toe uit het .cer-bestand, dat de openbare sleutel van het certificaat bevat en kan ook hetzelfde certificaat zijn dat aan de listener is toegevoegd voor SSL-beëindiging bij de toepassingsgateway.
+2. Voeg de nieuwe certificaatbron toe uit het .cer-bestand, dat de openbare sleutel van het certificaat bevat en kan ook hetzelfde certificaat zijn dat aan de listener is toegevoegd voor TLS-beëindiging bij de toepassingsgateway.
 
    ```powershell
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
@@ -300,9 +300,9 @@ Gebruik deze procedure om een ongebruikt verlopen certificaat uit HTTP-instellin
    ```
 
    
-## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>SSL-protocolversies beperken op een bestaande toepassingsgateway
+## <a name="limit-tls-protocol-versions-on-an-existing-application-gateway"></a>TLS-protocolversies beperken op een bestaande toepassingsgateway
 
-De voorgaande stappen hebben u ertoe verbonden een toepassing te maken met end-to-end SSL en bepaalde SSL-protocolversies uit te schakelen. In het volgende voorbeeld wordt bepaalde SSL-beleidsregels op een bestaande toepassingsgateway uitgeschakeld.
+De voorgaande stappen hebben u ertoe verbonden een toepassing te maken met end-to-end TLS en bepaalde TLS-protocolversies uit te schakelen. In het volgende voorbeeld worden bepaalde TLS-beleidsregels op een bestaande toepassingsgateway uitgeschakeld.
 
 1. Haal de toepassingsgateway op om bij te werken.
 
@@ -310,14 +310,14 @@ De voorgaande stappen hebben u ertoe verbonden een toepassing te maken met end-t
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Definieer een SSL-beleid. In het volgende voorbeeld zijn **TLSv1.0** en **TLSv1.1** uitgeschakeld en zijn de ciphersuites **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, TLS **\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, en **\_TLSA\_WITH\_AES\_128\_GCM\_SHA256** de enige toegestaan.
+2. Definieer een TLS-beleid. In het volgende voorbeeld zijn **TLSv1.0** en **TLSv1.1** uitgeschakeld en zijn de ciphersuites **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, TLS **\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, en **\_TLSA\_WITH\_AES\_128\_GCM\_SHA256** de enige toegestaan.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-3. Werk ten slotte de gateway bij. Deze laatste stap is een langlopende taak. Wanneer dit is gedaan, wordt end-to-end SSL geconfigureerd op de toepassingsgateway.
+3. Werk ten slotte de gateway bij. Deze laatste stap is een langlopende taak. Wanneer dit is gedaan, wordt end-to-end TLS geconfigureerd op de toepassingsgateway.
 
    ```powershell
    $gw | Set-AzApplicationGateway

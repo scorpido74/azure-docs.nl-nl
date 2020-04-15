@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/07/2020
+ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e097173712693754baab99912301c98ee336f64f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: bfe8aa088538663ac3e64f5913ff031e6160b045
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877912"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382642"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -228,12 +228,11 @@ Gebruikers met deze rol hebben toegang tot alle beheerfuncties in Azure Active D
 
 ### <a name="global-reader"></a>[Algemene lezer](#global-reader-permissions)
 
-Gebruikers in deze rol kunnen instellingen en administratieve gegevens lezen in Microsoft 365-services, maar kunnen geen beheeracties uitvoeren. Wereldwijde lezer is de alleen-lezen tegenhanger van Global administrator. Globale lezer toewijzen in plaats van globale beheerder voor planning, audits of onderzoeken. Gebruik Globale lezer in combinatie met andere beperkte beheerdersrollen zoals Exchange Administrator om het gemakkelijker te maken om werk gedaan te krijgen zonder de toewijzing van de rol Globale beheerder. Global reader werkt met Microsoft 365-beheercentrum, Exchange-beheercentrum, Teams-beheercentrum, Beveiligingscentrum, Compliance Center, Azure AD-beheercentrum en beheercentrum voor apparaatbeheer.
+Gebruikers in deze rol kunnen instellingen en administratieve gegevens lezen in Microsoft 365-services, maar kunnen geen beheeracties uitvoeren. Wereldwijde lezer is de alleen-lezen tegenhanger van Global administrator. Globale lezer toewijzen in plaats van globale beheerder voor planning, audits of onderzoeken. Gebruik Globale lezer in combinatie met andere beperkte beheerdersrollen zoals Exchange Administrator om het gemakkelijker te maken om werk gedaan te krijgen zonder de toewijzing van de rol Globale beheerder. Global reader werkt met Microsoft 365-beheercentrum, Exchange-beheercentrum, SharePoint-beheercentrum, Teams-beheercentrum, Beveiligingscentrum, Compliance Center, Azure AD-beheercentrum en beheercentrum voor apparaatbeheer.
 
 > [!NOTE]
 > Wereldwijde lezer rol heeft een paar beperkingen op dit moment -
 >
->- SharePoint-beheercentrum - SharePoint-beheercentrum biedt geen ondersteuning voor de rol Globale lezer. U ziet 'SharePoint' niet in het linkerdeelvenster onder Beheercentra in [microsoft 365-beheercentrum](https://admin.microsoft.com/Adminportal/Home#/homepage).
 >- [OneDrive-beheercentrum](https://admin.onedrive.com/) - OneDrive-beheercentrum biedt geen ondersteuning voor de rol Globale lezer.
 >- [Azure AD-portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) - Globale lezer kan de inrichtingsmodus van een bedrijfsapp niet lezen.
 >- [M365-beheercentrum](https://admin.microsoft.com/Adminportal/Home#/homepage) - Wereldwijde lezer kan aanvragen voor klantlockboxniet lezen. U vindt het tabblad Aanvragen van de **vergrendelingsbox van** de klant niet onder **Ondersteuning** in het linkerdeelvenster van het M365-beheercentrum.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 96f3825288846e86771ef3907eb4da4e58630df3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475175"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312039"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway en Web Application Firewall migreren van v1 naar v2
 
@@ -36,7 +36,7 @@ Er is een Azure PowerShell-script beschikbaar dat het volgende doet:
 
 * De nieuwe v2-gateway heeft nieuwe openbare en private IP-adressen. Het is niet mogelijk om de IP-adressen die zijn gekoppeld aan de bestaande v1-gateway naadloos naar v2 te verplaatsen. U echter een bestaand (niet-toegewezen) openbaar of privé IP-adres toewijzen aan de nieuwe v2-gateway.
 * U moet een IP-adresruimte opgeven voor een ander subnet binnen uw virtuele netwerk waar uw v1-gateway zich bevindt. Het script kan de v2-gateway niet maken in bestaande subnetten die al een v1-gateway hebben. Als het bestaande subnet echter al een v2-gateway heeft, kan dat nog steeds werken op voorwaarde dat er voldoende IP-adresruimte is.
-* Als u een SSL-configuratie wilt migreren, moet u alle SSL-cert's opgeven die in uw v1-gateway worden gebruikt.
+* Als u een TLS/SSL-configuratie wilt migreren, moet u alle TLS/SSL-certs opgeven die in uw v1-gateway worden gebruikt.
 * Als u de FIPS-modus hebt ingeschakeld voor uw V1-gateway, wordt deze niet gemigreerd naar uw nieuwe v2-gateway. FIPS-modus wordt niet ondersteund in v2.
 * v2 ondersteunt geen IPv6, dus V1-gateways met IPv6 zijn niet gemigreerd. Als u het script uitvoert, kan het niet worden voltooid.
 * Als de v1-gateway alleen een privé-IP-adres heeft, wordt in het script een openbaar IP-adres en een privé-IP-adres voor de nieuwe v2-gateway gemaakt. v2-gateways ondersteunen momenteel niet alleen privé-IP-adressen.
@@ -101,7 +101,7 @@ Het script uitvoeren:
 
    * **subnetAddressRange: [Tekenreeks]: vereist** - Dit is de IP-adresruimte die u hebt toegewezen (of wilt toewijzen) voor een nieuw subnet dat uw nieuwe v2-gateway bevat. Dit moet worden gespecificeerd in de CIDR-notatie. Bijvoorbeeld: 10.0.0.0/24. U hoeft dit subnet niet van tevoren te maken. Het script maakt het voor u als het niet bestaat.
    * **appgwName: [Tekenreeks]: optioneel**. Dit is een tekenreeks die u wilt gebruiken als de naam voor de nieuwe Standard_v2 of WAF_v2 gateway. Als deze parameter niet wordt geleverd, wordt de naam van uw bestaande v1-gateway gebruikt met het achtervoegsel *_v2* toegevoegd.
-   * **sslCertificaten: [PSApplicationGatewaySslCertificate]: optioneel**.  Een door komma's gescheiden lijst met PSApplicationGatewaySslCertificate-objecten die u maakt om de SSL-cert's van uw v1-gateway weer te geven, moet worden geüpload naar de nieuwe v2-gateway. Voor elk van uw SSL-certs die zijn geconfigureerd voor uw Standaard v1- of WAF `New-AzApplicationGatewaySslCertificate` v1-gateway, u een nieuw PSApplicationGatewaySslCertificate-object maken via de opdracht die hier wordt weergegeven. U hebt het pad naar uw SSL-cert-bestand en het wachtwoord nodig.
+   * **sslCertificaten: [PSApplicationGatewaySslCertificate]: optioneel**.  Een door komma's gescheiden lijst met PSApplicationGatewaySslCertificate-objecten die u maakt om de TLS/SSL-certs van uw v1-gateway weer te geven, moet worden geüpload naar de nieuwe v2-gateway. Voor elk van uw TLS/SSL-certs die zijn geconfigureerd voor uw Standaard v1- of WAF `New-AzApplicationGatewaySslCertificate` v1-gateway, u een nieuw PSApplicationGatewaySslCertificate-object maken via de opdracht die hier wordt weergegeven. U hebt het pad naar uw TLS/SSL Cert-bestand en het wachtwoord nodig.
 
      Deze parameter is alleen optioneel als u geen HTTPS-listeners hebt geconfigureerd voor uw v1-gateway of WAF. Als u ten minste één HTTPS-listener hebt ingesteld, moet u deze parameter opgeven.
 

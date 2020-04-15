@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: ea65956a73874b717ecab25d83ed25b59f2ada55
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f70c24c91e048270696b244bb9775cb24f0ef30d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257246"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383480"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten en inference-taken beveiligen binnen een Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -484,6 +484,21 @@ De inhoud `body.json` van het bestand waarnaar de opdracht verwijst, is vergelij
 > Momenteel u de load balancer niet configureren wanneer u een __gekoppelde__ bewerking uitvoert op een bestaand cluster. U moet eerst het cluster koppelen en vervolgens een updatebewerking uitvoeren om de load balancer te wijzigen.
 
 Zie [Interne load balancer gebruiken met Azure Kubernetes Service](/azure/aks/internal-lb)voor meer informatie over het gebruik van de interne load balancer met AKS.
+
+## <a name="use-azure-container-instances-aci"></a>Azure Container Instances (ACI) gebruiken
+
+Azure Container Instances worden dynamisch gemaakt bij het implementeren van een model. Als u Azure Machine Learning wilt inschakelen om ACI binnen het virtuele netwerk te maken, moet u __subnetdelegatie__ inschakelen voor het subnet dat door de implementatie wordt gebruikt.
+
+Als u ACI in een virtueel netwerk wilt gebruiken voor uw werkruimte, gebruikt u de volgende stappen:
+
+1. Als u subnetdelegatie op uw virtuele netwerk wilt inschakelen, gebruikt u de informatie in het artikel [Een subnetdelegatie toevoegen of verwijderen.](../virtual-network/manage-subnet-delegation.md) U delegeren inschakelen bij het maken van een virtueel netwerk of toevoegen aan een bestaand netwerk.
+
+    > [!IMPORTANT]
+    > Wanneer u delegatie `Microsoft.ContainerInstance/containerGroups` inschakelt, gebruikt u als __subnet de gemachtigde servicewaarde.__
+
+2. Implementeer het model met [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-), gebruik de `vnet_name` parameters en `subnet_name` parameters. Stel deze parameters in op de naam en het virtuele netwerk, waar u dedelegatie hebt ingeschakeld.
+
+
 
 ## <a name="use-azure-firewall"></a>Azure Firewall gebruiken
 

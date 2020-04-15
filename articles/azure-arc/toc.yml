@@ -18,7 +18,3 @@
       items:
         - name: Agent beheren
           href: ./servers/manage-agent.md
-- name: Naslaginformatie
-  items:
-    - name: CLI-interface van met Azure verbonden machineagent
-      href: ./servers/azcmagent-reference.md

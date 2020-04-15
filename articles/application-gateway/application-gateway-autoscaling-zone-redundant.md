@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 4cd2969f9a56c96af2b2c6db216f6829a080260c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7feb0f00c5431048d19d4ad6cb3860f6eb8ed052
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371277"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312708"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisch schalen en zone-redundantie in Application Gateway v2 
 
@@ -26,16 +26,16 @@ De nieuwe v2 SKU bevat de volgende verbeteringen:
   Zoneredundantie is alleen beschikbaar wanneer Azure-zones beschikbaar zijn. In andere regio's worden alle andere functies ondersteund. Zie [Wat zijn beschikbaarheidszones in Azure voor](../availability-zones/az-overview.md#services-support-by-region) meer informatie?
 - **Static VIP**: Application Gateway v2 SKU ondersteunt het statische VIP-type uitsluitend. Dit zorgt ervoor dat de VIP die is gekoppeld aan de toepassingsgateway niet verandert voor de levenscyclus van de implementatie, zelfs niet na een herstart.  Er is geen statische VIP in v1, dus u moet de URL van de toepassingsgateway gebruiken in plaats van het IP-adres voor het routeren van domeinnamen naar App Services via de toepassingsgateway.
 - **Header Herschrijven:** Met Application Gateway u HTTP-aanvraag- en antwoordkoppen toevoegen, verwijderen of bijwerken met v2 SKU. Zie [HTTP-headers opnieuw schrijven met Application Gateway voor](rewrite-http-headers.md) meer informatie
-- **Key Vault Integration**: Application Gateway v2 ondersteunt integratie met Key Vault voor servercertificaten die zijn gekoppeld aan https-ingeschakelde luisteraars. Zie [SSL-beëindiging met Key Vault-certificaten voor](key-vault-certs.md)meer informatie.
+- **Key Vault Integration**: Application Gateway v2 ondersteunt integratie met Key Vault voor servercertificaten die zijn gekoppeld aan https-ingeschakelde luisteraars. Zie [TLS-beëindiging met Key Vault-certificaten](key-vault-certs.md)voor meer informatie.
 - **Azure Kubernetes Service Ingress Controller**: Met de Application Gateway v2 Ingress Controller kan de Azure Application Gateway worden gebruikt als de ingress voor een Azure Kubernetes Service (AKS) dat bekend staat als AKS-cluster. Zie [Wat is Application Gateway Ingress Controller voor](ingress-controller-overview.md)meer informatie? .
-- **Prestatieverbeteringen**: De v2 SKU biedt tot 5x betere SSL-offloadprestaties in vergelijking met de Standard/WAF SKU.
+- **Prestatieverbeteringen**: De v2 SKU biedt tot 5x betere TLS offload prestaties in vergelijking met de Standard/WAF SKU.
 - **Snellere implementatie- en updatetijd** De v2 SKU biedt snellere implementatie- en updatetijd in vergelijking met Standard/WAF SKU. Dit omvat ook WAF-configuratiewijzigingen.
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 
-De Standard_v2 en WAF_v2 SKU is beschikbaar in de volgende regio's: Noord-Centraal VS, Zuid-Centraal VS, West-VS, West-VS, Oost-VS 2, Centraal-VS, Noord-Europa, West-Europa, Zuidoost-Azië, Frankrijk Centraal, Verenigd Koninkrijk, Japan-West, Japan West, Australië Oost , Australië Zuidoost, Brazilië Zuid, Canada Centraal, Canada Oost-Azië, Korea Centraal, Korea Zuid, Verenigd Koninkrijk Zuid, Centraal-India, West-India, Zuid-India.
+De Standard_v2 en WAF_v2 SKU is beschikbaar in de volgende regio's: Noord-Centraal VS, Zuid-Centraal VS, West-VS, West-VS 2, Oost-VS 2, Centraal-VS, Noord-Europa, West-Europa, Zuidoost-Azië, Frankrijk Centraal, Verenigd Koninkrijk, Japan-West, Japan West- en Zuid-Amerika, Australië Zuidoost, Brazilië Zuid-, Canada Centraal, Canada-Oost, Oost-Azië, Korea Centraal, Korea-Zuid , Uk South, Central India, West-India, Zuid-India.
 
 ## <a name="pricing"></a>Prijzen
 
@@ -77,7 +77,7 @@ Totale prijs = $148.8 + $297.6 = $446.4
 
 **Voorbeeld 2**
 
-Een Application Gateway-standard_v2 is ingericht voor een maand, met nul minimale exemplaren, en gedurende deze tijd ontvangt het 25 nieuwe SSL-verbindingen per seconde, gemiddeld 8,88 Mbps gegevensoverdracht. Ervan uitgaande dat verbindingen van korte duur zijn, zou uw prijs zijn:
+Een Application Gateway-standard_v2 is ingericht voor een maand, met nul minimale exemplaren, en gedurende deze tijd ontvangt het 25 nieuwe TLS-verbindingen per seconde, gemiddeld 8,88 Mbps gegevensoverdracht. Ervan uitgaande dat verbindingen van korte duur zijn, zou uw prijs zijn:
 
 Vaste prijs = 744(uren) * $0,20 = $148,8
 
@@ -105,7 +105,7 @@ In dit geval wordt u gefactureerd voor het geheel van de vijf instanties, ook al
 
 **Voorbeeld 4**
 
-Een Application Gateway-standard_v2 is ingericht voor een maand, met een minimum van vijf exemplaren, maar deze keer is er een gemiddelde van 125-mbps gegevensoverdracht, en 25 SSL-verbindingen per seconde. Ervan uitgaande dat er geen verkeer en verbindingen zijn van korte duur, zou uw prijs zijn:
+Een Application Gateway-standard_v2 is ingericht voor een maand, met een minimum van vijf exemplaren, maar deze keer is er een gemiddelde van 125-mbps gegevensoverdracht, en 25 TLS-verbindingen per seconde. Ervan uitgaande dat er geen verkeer en verbindingen zijn van korte duur, zou uw prijs zijn:
 
 Vaste prijs = 744(uren) * $0,20 = $148,8
 
@@ -117,7 +117,7 @@ In dit geval wordt u gefactureerd voor de volledige vijf exemplaren, plus zeven 
 
 **Voorbeeld 5**
 
-Een application gateway-WAF_v2 is ingericht voor een maand. Gedurende deze tijd ontvangt het 25 nieuwe SSL-verbindingen per seconde, gemiddeld 8,88 Mbps gegevensoverdracht en doet 80 aanvragen per seconde. Ervan uitgaande dat verbindingen van korte duur zijn en dat compute unit-berekening voor de toepassing 10 RPS per rekeneenheid ondersteunt, zou uw prijs zijn:
+Een application gateway-WAF_v2 is ingericht voor een maand. Gedurende deze tijd ontvangt het 25 nieuwe TLS-verbindingen per seconde, gemiddeld 8,88 Mbps gegevensoverdracht en doet 80 aanvragen per seconde. Ervan uitgaande dat verbindingen van korte duur zijn en dat compute unit-berekening voor de toepassing 10 RPS per rekeneenheid ondersteunt, zou uw prijs zijn:
 
 Vaste prijs = 744(uren) * $0,36 = $267,84
 
@@ -152,10 +152,10 @@ In de volgende tabel worden de beschikbare functies vergeleken met elke SKU.
 | Omleiding verkeer                               | &#x2713; | &#x2713; |
 | Web Application Firewall (WAF)                    | &#x2713; | &#x2713; |
 | Aangepaste WAF-regels                                  |          | &#x2713; |
-| SSL-beëindiging (Secure Sockets Layer)            | &#x2713; | &#x2713; |
-| End-to-end SSL-versleuteling                         | &#x2713; | &#x2713; |
+| TLS (Transport Layer Security)/Secure Sockets Layer (SSL) beëindiging            | &#x2713; | &#x2713; |
+| End-to-end TLS-versleuteling                         | &#x2713; | &#x2713; |
 | Sessieaffiniteit                                  | &#x2713; | &#x2713; |
-| Aangepaste foutenpagina's                                | &#x2713; | &#x2713; |
+| Aangepaste foutpagina's                                | &#x2713; | &#x2713; |
 | Ondersteuning voor WebSocket                                 | &#x2713; | &#x2713; |
 | Ondersteuning voor HTTP/2                                    | &#x2713; | &#x2713; |
 | Verwerkingsstop voor verbindingen                               | &#x2713; | &#x2713; |
@@ -167,7 +167,7 @@ In de volgende tabel worden de beschikbare functies vergeleken met elke SKU.
 
 |Verschil|Details|
 |--|--|
-|Verificatiecertificaat|Wordt niet ondersteund.<br>Zie [Overzicht van ssl van einde tot einde met Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)voor meer informatie.|
+|Verificatiecertificaat|Wordt niet ondersteund.<br>Zie [Overzicht van tls van end-to-end met Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku)voor meer informatie.|
 |Mixen Standard_v2 en Standard Application Gateway op hetzelfde subnet|Niet ondersteund|
 |UDR (User-Defined Route) op subnet Application Gateway|Ondersteund (specifieke scenario's). In preview.<br> Zie [Configuratieoverzicht Application Gateway](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)voor meer informatie over ondersteunde scenario's.|
 |NSG voor inkomende poortbereik| - 65200 tot 65535 voor Standard_v2 SKU<br>- 65503 tot 65534 voor standaard SKU.<br>Zie voor meer informatie de [FAQ](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|

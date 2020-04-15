@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 51c191a7815bb64243e2324e150c00c2dcb7ec4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd33d23a506bd86b9651af3d4c3bbca01673a7a4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705323"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312102"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Een toepassingsgateway maken met HTTP naar HTTPS-omleiding met behulp van de Azure-portal
 
-U de Azure-portal gebruiken om een [toepassingsgateway](overview.md) te maken met een certificaat voor SSL-beëindiging. Er wordt een routeringsregel gebruikt om HTTP-verkeer om te leiden naar de HTTPS-poort in uw toepassingsgateway. In dit voorbeeld maakt u ook een [virtuele machineschaalset](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor de backendpool van de toepassingsgateway die twee virtuele machine-exemplaren bevat.
+U de Azure-portal gebruiken om een [toepassingsgateway](overview.md) te maken met een certificaat voor TLS-beëindiging. Er wordt een routeringsregel gebruikt om HTTP-verkeer om te leiden naar de HTTPS-poort in uw toepassingsgateway. In dit voorbeeld maakt u ook een [virtuele machineschaalset](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor de backendpool van de toepassingsgateway die twee virtuele machine-exemplaren bevat.
 
 In dit artikel leert u het volgende:
 

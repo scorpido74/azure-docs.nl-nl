@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: d31b7531e00199ea63c7b057dacff1b67d7cedc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 506bf076c955beb5c5e57811bbdb42bfedb8cbe3
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528928"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382973"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Controlelogboeken configureren en openen in de Azure-portal
 
@@ -30,7 +30,7 @@ Om deze handleiding door te nemen, hebt u het volgende nodig:
 
 Controlelogboekregistratie inschakelen en configureren.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Selecteer uw Azure-database voor MariaDB-server.
 
@@ -69,4 +69,5 @@ Controlelogboekregistratie inschakelen en configureren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [controlelogboeken](concepts-audit-logs.md) in Azure Database voor MariaDB.
+- Meer informatie over [controlelogboeken](concepts-audit-logs.md) in Azure Database voor MariaDB
+- Meer informatie over het configureren van controlelogboeken in de [Azure CLI](howto-configure-audit-logs-cli.md)

@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
-ms.openlocfilehash: 7e6b8ea702d28fcd2747115710a8b1a8ec2bb1b2
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f048c7d89da0ab75c321cd8e3932ea97c7ed09c
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270516"
+ms.locfileid: "81310012"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netwerken voor virtuele-machineschaalsets in Azure
 
@@ -69,6 +69,14 @@ az vmss create \
 
 >[!NOTE]
 > Nadat de schaalset is gemaakt, kan de backendpoort niet worden gewijzigd voor een regel voor het balanceren van de last die wordt gebruikt door een statussonde van de load balancer. Als u de poort wilt wijzigen, u de statussonde verwijderen door de azure-virtuele machineschaalset bij te werken, de poort bij te werken en vervolgens de statussonde opnieuw te configureren. 
+
+Zie Virtuele netwerken en virtuele machines in [Azure](../../articles/virtual-machines/windows/network-overview.md)voor meer informatie over load balancer en virtuele machineschaalsets.
+
+De volgende methoden kunnen worden gebruikt om een virtuele machineschaalset te implementeren met een bestaande Azure-load balancer.
+
+* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met behulp van de Azure-portal.](../../articles/load-balancer/configure-vm-scale-set-portal.md)
+* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met Azure PowerShell](../../articles/load-balancer/configure-vm-scale-set-powershell.md).
+* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met behulp van azure CLI](../../articles/load-balancer/configure-vm-scale-set-cli.md).
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Een schaalset maken die verwijst naar een toepassingsgateway
 Om een schaalset te maken die gebruikmaakt van een toepassingsgateway, verwijst u naar de back-endadresgroep van de toepassingsgateway in de sectie ipConfigurations van uw schaalset zoals in deze ARM-sjabloonconfiguratie:

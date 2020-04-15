@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/24/2020
-ms.openlocfilehash: 4265f6050b237cb40afeddfc228ade9be06be039
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.date: 04/14/2020
+ms.openlocfilehash: 098aeaa06a26c57744402722aa3eacc51ea85fb7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396790"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382858"
 ---
 # <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>Azure Activity-logboek verzamelen en analyseren in Azure Monitor
 Het [Azure Activity-logboek](platform-logs-overview.md) is een [platformlogboek](platform-logs-overview.md) dat inzicht biedt in gebeurtenissen op abonnementsniveau die zich in Azure hebben voorgedaan. Hoewel u het activiteitenlogboek in de Azure-portal bekijken, moet u het configureren om naar een werkruimte voor Log Analytics te verzenden om extra functies van Azure Monitor in te schakelen. In dit artikel wordt beschreven hoe u deze configuratie uitvoert en hoe u het activiteitenlogboek naar Azure-opslag- en gebeurtenishubs verzendt.
@@ -25,7 +25,8 @@ Het verzamelen van het activiteitenlogboek in een werkruimte loganalytics biedt 
 - Winkel activiteit logboekvermeldingen voor langer dan 90 dagen.
 - Consolideer logboekitems van meerdere Azure-abonnementen en tenants in één locatie voor analyse samen.
 
-
+> [!IMPORTANT]
+> Voor het verzamelen van logboeken over tenants is [Azure Lighthouse](/azure/lighthouse)vereist.
 
 ## <a name="collecting-activity-log"></a>Logboek activiteit verzamelen
 Het activiteitenlogboek wordt automatisch verzameld voor [weergave in de Azure-portal.](activity-log-view.md) Als u deze wilt verzamelen in een Log Analytics-werkruimte of azure-opslag- of gebeurtenishubs wilt verzenden, maakt u een [diagnostische instelling](diagnostic-settings.md). Dit is dezelfde methode die wordt gebruikt door resource logs waardoor het consistent is voor alle [platformlogs.](platform-logs-overview.md)  

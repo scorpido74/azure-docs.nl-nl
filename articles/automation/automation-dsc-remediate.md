@@ -9,27 +9,25 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: f4ca76f4be9d00e185f8774fc33296d1af1aeece
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: dfe62c54bfb10d70f1dbf19daec90eec68e66431
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585504"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383156"
 ---
-# <a name="remediate-non-compliant-dsc-servers"></a>Niet-compatibele DSC-servers herstellen
+# <a name="remediate-noncompliant-dsc-servers"></a>Niet-compatibele DSC-servers herstellen
 
-Wanneer servers zijn geregistreerd bij Azure Automation State Configuration, is de 'Configuratiemodus' ingesteld op ApplyOnly, ApplyandMonitor of ApplyAndAutoCorrect.
-Als de modus niet is ingesteld op AutoCorrectie, blijven servers die om welke reden dan ook van een compatibele status afglijden niet-compatibel totdat ze handmatig zijn gecorrigeerd.
+Wanneer servers zijn geregistreerd bij Azure Automation State `ApplyOnly`Configuration, is de configuratiemodus ingesteld op , `ApplyandMonitor`of `ApplyAndAutoCorrect`. Als de modus niet `ApplyAndAutoCorrect`is ingesteld op , blijven servers die om welke reden dan ook van een compatibele status afglijden niet-compatibel totdat ze handmatig zijn gecorrigeerd.
 
 Azure compute biedt een functie met de naam Run Command waarmee klanten scripts in virtuele machines kunnen uitvoeren.
 Dit document biedt voorbeeldscripts voor deze functie wanneer de configuratiedrift handmatig wordt gecorrigeerd.
 
 ## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>Drift van Virtuele Windows-machines corrigeren met PowerShell
 
-Zie de documentatiepagina [PowerShell-scripts uitvoeren in uw Windows VM met Opdracht](/azure/virtual-machines/windows/run-command)uitvoeren voor stapsgewijze instructies met de functie Opdracht uitvoeren op virtuele Windows-machines.
+Zie de documentatiepagina [PowerShell-scripts uitvoeren in uw Windows VM met Opdracht](/azure/virtual-machines/windows/run-command)Uitvoeren voor stapsgewijze instructies met de functie Opdracht uitvoeren op virtuele Windows-machines.
 
-Als u een configuratieknooppunt azure automation state forceert om `Update-DscConfiguration` de nieuwste configuratie te downloaden en toe te passen, gebruikt u de cmdlet.
-Zie voor meer informatie de cmdlet-documentatie [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration).
+Als u een configuratieknooppunt azure automation state forceert om de nieuwste configuratie te downloaden en toe te passen, gebruikt u de cmdlet [Update-DscConfiguration.](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration)
 
 ```powershell
 Update-DscConfiguration -Wait -Verbose
@@ -39,12 +37,12 @@ Update-DscConfiguration -Wait -Verbose
 
 Vergelijkbare functionaliteit is momenteel niet beschikbaar voor Linux-servers.
 De enige optie is om het registratieproces te herhalen.
-Voor Azure-knooppunten kan driftcorrectie worden uitgevoerd vanaf de portal of met az-automatisering-cmdlets.
-Details over dit proces worden gedocumenteerd in de pagina [Onboarding-machines voor beheer door Azure Automation State Configuration](/azure/automation/automation-dsc-onboarding#onboard-a-vm-using-azure-portal).
-Voor hybride knooppunten kan driftcorrectie worden uitgevoerd met behulp van de meegeleverde Python-scripts.
-Zie de documentatie in [PowerShell DSC voor Linux repo](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
+Voor Azure-knooppunten u drift vanaf de Azure-portal of met cmdlets van de Az-module corrigeren. Details over dit proces worden gedocumenteerd in [Onboarding-machines voor beheer door Azure Automation State Configuration](automation-dsc-onboarding.md#onboard-a-vm-using-azure-portal).
+Voor hybride knooppunten u drift corrigeren met behulp van de meegeleverde Python-scripts.
+Zie [PowerShell DSC voor Linux repo](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Cmdlets Azure Automation State Configuration cmdlets](/powershell/module/azurerm.automation/#automation) voor PowerShell-cmdlet
-- Zie [Continue implementatie met Azure Automation State Configuration en Chocolatey](automation-dsc-cd-chocolatey.md) voor een voorbeeld van het gebruik van Azure Automation State Configuration in a continuous deployment pipeline.
+- Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)voor een PowerShell-cmdletreferentie.
+- Zie [Continue implementatie met Azure Automation State Configuration en Chocolatey](automation-dsc-cd-chocolatey.md)voor een voorbeeld van het gebruik van Azure Automation State Configuration in a continuous deployment pipeline.

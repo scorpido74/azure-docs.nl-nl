@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/07/2019
-ms.openlocfilehash: 1d684957939c5cb83aae05962c1694f7a8d8da23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 317d12f6d5dee92d998266d4e9b6d52e6ef9c7a5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272394"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381383"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-clusters beheren met behulp van de Apache Ambari REST API
 
@@ -21,25 +21,25 @@ ms.locfileid: "79272394"
 
 Meer informatie over het gebruik van de Apache Ambari REST API voor het beheren en bewaken van Apache Hadoop-clusters in Azure HDInsight.
 
-## <a name="what-is-apache-ambari"></a><a id="whatis"></a>Wat is Apache Ambari
+## <a name="what-is-apache-ambari"></a>Wat is Apache Ambari
 
 [Apache Ambari](https://ambari.apache.org) vereenvoudigt het beheer en de monitoring van Hadoop-clusters door een eenvoudig te gebruiken web-gebruikersinterface te bieden, ondersteund door zijn [REST API's.](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)  Ambari wordt standaard geleverd met HdInsight-clusters op basis van Linux.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Een Hadoop cluster op HDInsight**. Zie [Aan de slag met HDInsight op Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* Een Hadoop cluster op HDInsight. Zie [Aan de slag met HDInsight op Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* **Bash op Ubuntu op Windows 10**.  De voorbeelden in dit artikel gebruiken de Bash-shell op Windows 10. Zie [Windows Subsystem for Linux Installation Guide voor Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) voor installatiestappen.  Andere [Unix schelpen](https://www.gnu.org/software/bash/) zal ook werken.  De voorbeelden, met enkele kleine wijzigingen, kunnen werken op een Windows Command prompt.  U ook Windows PowerShell gebruiken.
+* Bash op Ubuntu op Windows 10.  De voorbeelden in dit artikel gebruiken de Bash-shell op Windows 10. Zie [Windows Subsystem for Linux Installation Guide voor Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) voor installatiestappen.  Andere [Unix schelpen](https://www.gnu.org/software/bash/) zal ook werken.  De voorbeelden, met enkele kleine wijzigingen, kunnen werken op een Windows Command prompt.  Of u Windows PowerShell gebruiken.
 
-* **jq**, een command-line JSON processor.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* jq, een command-line JSON processor.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
-* **Windows PowerShell**.  U ook [Bash](https://www.gnu.org/software/bash/)gebruiken.
+* Windows PowerShell.  Of je [Bash](https://www.gnu.org/software/bash/)gebruiken.
 
-## <a name="base-uri-for-ambari-rest-api"></a>Uri baseren voor Ambari Rest API
+## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Uniforme resource-id baseren voor Ambari Rest-API
 
  De basis Uniform Resource Identifier (URI) voor de Ambari REST API op HDInsight is `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, waar `CLUSTERNAME` is de naam van uw cluster.  Clusternamen in URI's zijn **hoofdlettergevoelig**.  Hoewel de clusternaam in het volledig gekwalificeerde domeinnaam (FQDN) deel van de URI (`CLUSTERNAME.azurehdinsight.net`) case-ongevoelig is, zijn andere gebeurtenissen in de URI hoofdlettergevoelig.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Verbinding maken met Ambari op HDInsight vereist HTTPS. Gebruik de naam van het beheerdersaccount (de **standaardbeheerder)** en het wachtwoord dat u tijdens het maken van het cluster hebt opgegeven.
 
@@ -48,6 +48,7 @@ Gebruik voor clusters van `admin`enterprisesecuritypakketten in plaats `username
 ## <a name="examples"></a>Voorbeelden
 
 ### <a name="setup-preserve-credentials"></a>Instellen (Referenties behouden)
+
 Bewaar uw referenties om te voorkomen dat ze opnieuw worden ingevoerd voor elk voorbeeld.  De clusternaam blijft in een afzonderlijke stap behouden.
 
 **A. Bash**  
@@ -64,7 +65,8 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
 ### <a name="identify-correctly-cased-cluster-name"></a>De juiste clusternaam van de hoofdletters identificeren
-De werkelijke behuizing van de clusternaam kan anders zijn dan u verwacht, afhankelijk van hoe het cluster is gemaakt.  De stappen hier tonen de werkelijke behuizing en slaan deze vervolgens op in een variabele voor alle volgende voorbeelden.
+
+De werkelijke behuizing van de clusternaam kan anders zijn dan u verwacht.  De stappen hier tonen de werkelijke behuizing en slaan deze vervolgens op in een variabele voor alle latere voorbeelden.
 
 Bewerk de onderstaande `CLUSTERNAME` scripts om uw clusternaam te vervangen. Voer vervolgens de opdracht in. (De clusternaam voor de FQDN is niet hoofdlettergevoelig.)
 
@@ -99,9 +101,9 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.Clusters.health_report
 ```
 
-### <a name="get-the-fqdn-of-cluster-nodes"></a><a name="example-get-the-fqdn-of-cluster-nodes"></a>De FQDN van clusterknooppunten opvragen
+### <a name="get-the-fqdn-of-cluster-nodes"></a>De FQDN van clusterknooppunten opvragen
 
-Wanneer u met HDInsight werkt, moet u mogelijk de volledig gekwalificeerde domeinnaam (FQDN) van een clusterknooppunt kennen. U de FQDN eenvoudig ophalen voor de verschillende knooppunten in het cluster met behulp van de volgende voorbeelden:
+Mogelijk moet u de volledig gekwalificeerde domeinnaam (FQDN) van een clusterknooppunt kennen. U de FQDN eenvoudig ophalen voor de verschillende knooppunten in het cluster met behulp van de volgende voorbeelden:
 
 **Alle knooppunten**  
 
@@ -159,13 +161,13 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.host_components.HostRoles.host_name
 ```
 
-### <a name="get-the-internal-ip-address-of-cluster-nodes"></a><a name="example-get-the-internal-ip-address-of-cluster-nodes"></a>Het interne IP-adres van clusterknooppunten opvragen
+### <a name="get-the-internal-ip-address-of-cluster-nodes"></a>Het interne IP-adres van clusterknooppunten opvragen
 
-De IP-adressen die door de voorbeelden in deze sectie worden geretourneerd, zijn niet rechtstreeks toegankelijk via internet. Ze zijn alleen toegankelijk binnen het Azure Virtual Network dat het HDInsight-cluster bevat.
+De IP-adressen die worden geretourneerd door de voorbeelden in deze sectie zijn niet direct toegankelijk via het internet. Ze zijn alleen toegankelijk binnen het Azure Virtual Network dat het HDInsight-cluster bevat.
 
 Zie [Een virtueel netwerk voor HDInsight plannen voor](hdinsight-plan-virtual-network-deployment.md)meer informatie over het werken met HDInsight en virtuele netwerken.
 
-Als u het IP-adres wilt vinden, moet u de interne volledig gekwalificeerde domeinnaam (FQDN) van de clusterknooppunten kennen. Zodra u de FQDN hebt, u vervolgens het IP-adres van de host krijgen. In de volgende voorbeelden wordt eerst Ambari voor de FQDN van alle hostknooppunten opgevraagd en vervolgens Ambari opgevraagd voor het IP-adres van elke host.
+Als u het IP-adres wilt vinden, moet u de interne volledig gekwalificeerde domeinnaam (FQDN) van de clusterknooppunten kennen. Zodra u de FQDN hebt, u vervolgens het IP-adres van de host krijgen. In de volgende voorbeelden wordt ambari voor de FQDN van alle hostknooppunten eerst opgevraagd. Vervolgens vraagt Ambari voor het IP-adres van elke host.
 
 ```bash
 for HOSTNAME in $(curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts" | jq -r '.items[].Hosts.host_name')
@@ -183,7 +185,7 @@ foreach($item in $respObj.items) {
     $hostName = [string]$item.Hosts.host_name
     $hostInfoResp = Invoke-WebRequest -Uri "$uri/$hostName" `
         -Credential $creds -UseBasicParsing
-    $hostInfoObj = ConvertFrom-Json $hostInfoResp 
+    $hostInfoObj = ConvertFrom-Json $hostInfoResp
     $hostIp = $hostInfoObj.Hosts.ip
     "$hostName <--> $hostIp"
 }
@@ -191,7 +193,7 @@ foreach($item in $respObj.items) {
 
 ### <a name="get-the-default-storage"></a>De standaardopslag aanschaffen
 
-Wanneer u een HDInsight-cluster maakt, moet u een Azure Storage-account of Data Lake Storage gebruiken als de standaardopslag voor het cluster. U Ambari gebruiken om deze informatie op te halen nadat het cluster is gemaakt. Bijvoorbeeld als u gegevens wilt lezen/schrijven naar de container buiten HDInsight.
+HDInsight-clusters moeten een Azure Storage-account of Data Lake Storage gebruiken als standaardopslag. U Ambari gebruiken om deze informatie op te halen nadat het cluster is gemaakt. Bijvoorbeeld als u gegevens wilt lezen/schrijven naar de container buiten HDInsight.
 
 In de volgende voorbeelden wordt de standaardopslagconfiguratie uit het cluster opgehaald:
 
@@ -253,7 +255,7 @@ De retourwaarde is vergelijkbaar met een van de volgende voorbeelden:
 > [!NOTE]  
 > De [Get-AzHDInsightCluster-cmdlet](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) van [Azure PowerShell](/powershell/azure/overview) retourneert ook de opslaggegevens voor het cluster.
 
-### <a name="get-all-configurations"></a><a name="get-all-configurations"></a>Alle configuraties opgebruiken
+### <a name="get-all-configurations"></a>Alle configuraties opgebruiken
 
 Download de configuraties die beschikbaar zijn voor uw cluster.
 
@@ -267,7 +269,7 @@ $respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v
 $respObj.Content
 ```
 
-In dit voorbeeld wordt een JSON-document geretourneerd met de huidige configuratie (die wordt aangeduid met de *tagwaarde)* voor de onderdelen die op het cluster zijn geïnstalleerd. Het volgende voorbeeld is een fragment uit de gegevens die zijn geretourneerd van een Spark-clustertype.
+In dit voorbeeld wordt een JSON-document geretourneerd met de huidige configuratie voor geïnstalleerde onderdelen. Zie de *tagwaarde.* Het volgende voorbeeld is een fragment uit de gegevens die zijn geretourneerd van een Spark-clustertype.
 
 ```json
 "jupyter-site" : {
@@ -305,10 +307,11 @@ In dit voorbeeld wordt een JSON-document `livy2-conf` geretourneerd met de huidi
 1. Maak `newconfig.json`.  
    Wijzig en voer de onderstaande opdrachten in:
 
-   * Vervang `livy2-conf` door het gewenste onderdeel.
+   * Vervang `livy2-conf` door het nieuwe onderdeel.
    * Vervang `INITIAL` door de werkelijke `tag` waarde die is opgehaald voor [alle configuraties ophalen.](#get-all-configurations)
 
-     **A. Bash**  
+     **A. Bash**
+
      ```bash
      curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" \
      | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
@@ -326,11 +329,11 @@ In dit voorbeeld wordt een JSON-document `livy2-conf` geretourneerd met de huidi
      $resp.Content | C:\HD\jq\jq-win64 --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
      ```
 
-     Jq wordt gebruikt om de gegevens die van HDInsight zijn opgehaald om te zetten in een nieuwe configuratiesjabloon. In het bijzonder voeren deze voorbeelden de volgende acties uit:
+     Jq wordt gebruikt om de gegevens die van HDInsight zijn opgehaald om te zetten in een nieuwe configuratiesjabloon. In het bijzonder doen deze voorbeelden de volgende acties:
 
    * Hiermee wordt een unieke waarde gemaakt die de tekenreeks "versie" en de datum bevat, die is opgeslagen in `newtag`.
 
-   * Hiermee maakt u een hoofddocument voor de nieuwe gewenste configuratie.
+   * Hiermee maakt u een hoofddocument voor de nieuwe configuratie.
 
    * Hiermee wordt de `.items[]` inhoud van de array opgeten en wordt deze toegevoegd onder het **desired_config** element.
 
@@ -382,11 +385,11 @@ In dit voorbeeld wordt een JSON-document `livy2-conf` geretourneerd met de huidi
     $resp.Content
     ```  
 
-    Deze opdrachten dienen de inhoud van het **bestand newconfig.json** in bij het cluster als de nieuwe gewenste configuratie. De aanvraag retourneert een JSON-document. Het **element versionTag** in dit document moet overeenkomen met de versie die u hebt ingediend en het **object configs** bevat de configuratiewijzigingen die u hebt aangevraagd.
+    Deze opdrachten dienen de inhoud van het **bestand newconfig.json** in bij het cluster als de nieuwe configuratie. De aanvraag retourneert een JSON-document. Het **element versionTag** in dit document moet overeenkomen met de versie die u hebt ingediend en het **object configs** bevat de configuratiewijzigingen die u hebt aangevraagd.
 
 ### <a name="restart-a-service-component"></a>Een servicecomponent opnieuw starten
 
-Als u op dit moment de gebruikersinterface van het Ambari-web bekijkt, geeft de Spark-service aan dat deze opnieuw moet worden gestart voordat de nieuwe configuratie van kracht kan worden. Gebruik de volgende stappen om de service opnieuw te starten.
+Op dit punt geeft de Ambari-webgebruikersinterface aan dat de Spark-service opnieuw moet worden gestart voordat de nieuwe configuratie van kracht kan worden. Gebruik de volgende stappen om de service opnieuw te starten.
 
 1. Gebruik het volgende om de onderhoudsmodus voor de Spark2-service in te schakelen:
 

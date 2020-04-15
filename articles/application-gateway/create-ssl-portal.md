@@ -1,22 +1,22 @@
 ---
-title: 'Zelfstudie: SSL-beëindiging configureren in portal - Azure Application Gateway'
-description: In deze zelfstudie leert u hoe u een toepassingsgateway configureert en een certificaat voor SSL-beëindiging toevoegt met behulp van de Azure-portal.
+title: 'Zelfstudie: TLS-beëindiging configureren in portal - Azure Application Gateway'
+description: In deze zelfstudie leert u hoe u een toepassingsgateway configureert en een certificaat voor TLS-beëindiging toevoegt met behulp van de Azure-portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74012311"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312377"
 ---
-# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Zelfstudie: Een toepassingsgateway configureren met SSL-beëindiging met behulp van de Azure-portal
+# <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Zelfstudie: Een toepassingsgateway configureren met TLS-beëindiging met behulp van de Azure-portal
 
-U de Azure-portal gebruiken om een [toepassingsgateway](overview.md) te configureren met een certificaat voor SSL-beëindiging dat virtuele machines voor backendservers gebruikt.
+U de Azure-portal gebruiken om een [toepassingsgateway](overview.md) te configureren met een certificaat voor TLS-beëindiging dat virtuele machines voor backendservers gebruikt.
 
 In deze zelfstudie leert u het volgende:
 
@@ -265,4 +265,4 @@ In dit voorbeeld installeert u IIS alleen op de virtuele machines om te controle
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over SSL-ondersteuning voor Application Gateway](ssl-overview.md)
+> [Meer informatie over TLS-ondersteuning voor Application Gateway](ssl-overview.md)

@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/14/2020
 ms.author: sstein
-ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 7d922aa0727ad28054d050a29039951d3f04985f
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011443"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383375"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database release notes SQL Database release notes SQL Database release notes SQL Database
 
@@ -49,6 +49,7 @@ In dit artikel worden SQL Database-functies weergegeven die momenteel in openbar
 | <a href="https://aka.ms/managed-instance-aadlogins">Azure AD-serverprincipals op instantieniveau (aanmeldingen)</a> | Aanmeldingen op serverniveau maken met <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">de instructie LOGIN MAKEN van externe provider.</a> |
 | [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) | Repliceer de wijzigingen van uw tabellen in andere databases die zijn geplaatst in beheerde exemplaren, afzonderlijke databases of SQL Server-instanties of werk uw tabellen bij wanneer sommige rijen worden gewijzigd in andere beheerde instanties of SQL Server-exemplaren. Zie Replicatie [configureren in een azure SQL Database managed instance database](replication-with-sql-database-managed-instance.md)voor informatie. |
 | Detectie van bedreigingen |Zie [Bedreigingsdetectie configureren in azure SQL Database managed instance](sql-database-managed-instance-threat-detection.md)voor informatie.|
+| Langetermijnretentie van back-ups | Zie [Langetermijnback-upretentie configureren in azure SQL Database managed instance](sql-database-managed-instance-long-term-backup-retention-configure.md)voor informatie. | 
 
 ---
 
@@ -167,7 +168,7 @@ Dialogen met servicebroker met meerdere databases stoppen met het leveren van de
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Impersonificatie van Azure AD-aanmeldingstypen wordt niet ondersteund
 
 Imitatie met `EXECUTE AS USER` of `EXECUTE AS LOGIN` van het volgen van AAD-principals wordt niet ondersteund:
--   Aad-gebruikers met aliassen. De volgende fout wordt `15517`in dit geval geretourneerd .
+-    Aad-gebruikers met aliassen. De volgende fout wordt `15517`in dit geval geretourneerd .
 - AAD logins en gebruikers op basis van AAD applicaties of service principals. De volgende fouten worden `15517` in `15406`dit geval geretourneerd en .
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryparameter die niet wordt ondersteund in sp_send_db_mail

@@ -1,5 +1,5 @@
 ---
-title: Informatie over azure security center voor IoT-beveiligingsaanbevelingen| Microsoft Documenten
+title: Aanbevelingen voor beveiliging
 description: Meer informatie over het concept van beveiligingsaanbevelingen en hoe deze worden gebruikt in Azure Security Center voor IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,22 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: a8de821abcedf6bb9a331852a2c0af9b6439667a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 213595ac69efc90ec855b2891641e1f00bd1ba92
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303576"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311549"
 ---
 # <a name="security-recommendations"></a>Aanbevelingen voor beveiliging
 
-Azure Security Center for IoT scant uw Azure-bronnen en IoT-apparaten en biedt beveiligingsaanbevelingen om uw aanvalsoppervlak te verminderen. Beveiligingsaanbevelingen zijn uitvoerbaar en zijn bedoeld om klanten te helpen bij het naleven van best practices op het gebied van beveiliging.
+Azure Security Center for IoT scant uw Azure-bronnen en IoT-apparaten en biedt beveiligingsaanbevelingen om uw aanvalsoppervlak te verminderen.
+Beveiligingsaanbevelingen zijn uitvoerbaar en zijn bedoeld om klanten te helpen bij het naleven van best practices op het gebied van beveiliging.
 
 In dit artikel vindt u een lijst met aanbevelingen die kunnen worden geactiveerd op uw IoT Hub en/of IoT-apparaten.
 
 ## <a name="recommendations-for-iot-devices"></a>Aanbevelingen voor IoT-apparaten
 
-Apparaataanbevelingen bieden inzichten en suggesties om de beveiligingshouding van apparaten te verbeteren. 
+Apparaataanbevelingen bieden inzichten en suggesties om de beveiligingshouding van apparaten te verbeteren.
 
 | Severity | Name                                                      | Gegevensbron | Beschrijving                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -53,7 +54,7 @@ Operationele aanbevelingen bieden inzichten en suggesties om de configuratie van
 
 ## <a name="recommendations-for-iot-hub"></a>Aanbevelingen voor IoT Hub
 
-Aanbevelingswaarschuwingen bieden inzicht en suggesties voor acties om de beveiligingshouding van uw omgeving te verbeteren.  
+Aanbevelingswaarschuwingen bieden inzicht en suggesties voor acties om de beveiligingshouding van uw omgeving te verbeteren.
 
 | Severity | Name                                                     | Gegevensbron | Beschrijving                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

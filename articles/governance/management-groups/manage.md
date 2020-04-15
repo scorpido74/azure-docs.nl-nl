@@ -1,28 +1,25 @@
 ---
 title: Werken met uw beheergroepen - Azure Governance
 description: Meer informatie over het weergeven, onderhouden, bijwerken en verwijderen van de hiërarchie van uw beheergroep.
-ms.date: 12/18/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 94df67888c0ed0ea532844a92a362a181621d3d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 423d1837c3d5710e24abb94f5411200319e8a8aa
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78267945"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381669"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Uw resources beheren met beheergroepen
 
 Als uw organisatie veel abonnementen heeft, moet u de toegang, beleidsregels en naleving voor deze abonnementen op een efficiënte manier kunnen beheren. Azure-beheergroepen bieden een scopeniveau boven abonnementen. U ordent abonnementen in containers, zogenaamde 'beheergroepen', en past uw governancevoorwaarden hierop toe. Alle abonnementen in een beheergroep nemen automatisch de voorwaarden over die op de beheergroep zijn toegepast.
 
-Beheergroepen bieden u beheer van bedrijfskwaliteit op grote schaal, ongeacht de typen abonnementen die u hebt.  Zie Uw [resources ordenen met Azure-beheergroepen](overview.md)voor meer informatie over beheergroepen.
+Beheergroepen bieden u beheer van bedrijfskwaliteit op grote schaal, ongeacht de typen abonnementen die u hebt. Zie Uw [resources ordenen met Azure-beheergroepen](./overview.md)voor meer informatie over beheergroepen.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
->[!IMPORTANT]
->Azure Resource Manager-gebruikerstokens en beheergroepcache duurt 30 minuten voordat ze worden vernieuwd.  Nadat u een actie hebt gedaan, zoals het verplaatsen van een beheergroep of een abonnement, kan het tot 30 minuten duren voordat deze worden weergegeven.  
->Als u de updates sneller wilt bekijken, moet u uw token bijwerken door de browser te vernieuwen, in- en uit te melden of een nieuw token aan te vragen.  
-
-
+> [!IMPORTANT]
+> Azure Resource Manager-gebruikerstokens en beheergroepcache duurt 30 minuten voordat ze worden vernieuwd. Nadat u een actie hebt gedaan, zoals het verplaatsen van een beheergroep of een abonnement, kan het tot 30 minuten duren voordat deze worden weergegeven. Als u de updates sneller wilt bekijken, moet u uw token bijwerken door de browser te vernieuwen, in- en uit te melden of een nieuw token aan te vragen.  
 
 ## <a name="change-the-name-of-a-management-group"></a>De naam van een beheergroep wijzigen
 
@@ -40,11 +37,11 @@ U de naam van de beheergroep wijzigen met behulp van de portal, PowerShell of Az
 
 1. Selecteer de optie **Naam wijzigen** boven aan de pagina.
 
-   ![De optie Groep wijzigen op de pagina beheergroep](./media/detail_action_small.png)
+   :::image type="content" source="./media/detail_action_small.png" alt-text="De optie Groep wijzigen op de pagina beheergroep" border="false":::
 
 1. Wanneer het menu wordt geopend, voert u de nieuwe naam in die u wilt weergeven.
 
-   ![De naam van het deelvenster Groep wijzigen om de naam van beheergroep te wijzigen](./media/rename_context.png)
+   :::image type="content" source="./media/rename_context.png" alt-text="De naam van het deelvenster Groep wijzigen om de naam van beheergroep te wijzigen" border="false":::
 
 1. Selecteer **Opslaan**.
 
@@ -72,7 +69,8 @@ Om een beheergroep te verwijderen, moet aan de volgende vereisten worden voldaan
 
    - Als u een abonnements- of beheergroep naar een andere beheergroep wilt verplaatsen, ziet [U beheergroepen en abonnementen verplaatsen in de hiërarchie](#moving-management-groups-and-subscriptions).
 
-1. U hebt schrijfmachtigingen nodig voor de beheergroep ('Eigenaar', 'Bijdrager' of 'Bijdrager van de beheergroep'). Als u wilt zien welke machtigingen u hebt, selecteert u de beheergroep en selecteert u **IAM**. Zie [Toegang en machtigingen beheren met RBAC voor](../../role-based-access-control/overview.md)meer informatie over RBAC-rollen.  
+1. U hebt schrijfmachtigingen nodig voor de beheergroep ('Eigenaar', 'Bijdrager' of 'Bijdrager van de beheergroep'). Als u wilt zien welke machtigingen u hebt, selecteert u de beheergroep en selecteert u **IAM**. Zie voor meer informatie over RBAC-rollen  
+   [Beheer toegang en machtigingen met RBAC](../../role-based-access-control/overview.md).
 
 ### <a name="delete-in-the-portal"></a>Verwijderen in de portal
 
@@ -86,14 +84,14 @@ Om een beheergroep te verwijderen, moet aan de volgende vereisten worden voldaan
 
 1. Selecteren **Verwijderen**
 
-    > [!TIP]
-    > Als het pictogram is uitgeschakeld, geeft u de reden van de muiskiezer boven het pictogram.
+   :::image type="content" source="./media/delete.png" alt-text="Groepsoptie verwijderen" border="false":::
 
-   ![Groepsoptie verwijderen](./media/delete.png)
+   > [!TIP]
+   > Als het pictogram is uitgeschakeld, geeft u de reden van de muiskiezer boven het pictogram.
 
 1. Er wordt een venster geopend waarin wordt bevestigd dat u de beheergroep wilt verwijderen.
 
-   ![Venster groepsbevestiging verwijderen](./media/delete_confirm.png)
+   :::image type="content" source="./media/delete_confirm.png" alt-text="Venster groepsbevestiging verwijderen" border="false":::
 
 1. Selecteer **Ja**.
 
@@ -127,11 +125,11 @@ U elke beheergroep bekijken waarop u een directe of overgeërfde RBAC-rol hebt.
 
 1. Als u de details van de beheergroep wilt zien, selecteert u de koppeling **(details)** naast de titel van de beheergroep. Als deze koppeling niet beschikbaar is, hebt u geen machtigingen om die beheergroep te bekijken.
 
-   ![Hoofdformulier](./media/main.png)
+   :::image type="content" source="./media/main.png" alt-text="Hoofdformulier" border="false":::
 
 ### <a name="view-in-powershell"></a>Bekijk in PowerShell
 
-U gebruikt de opdracht Get-AzManagementGroup om alle groepen op te halen.  Zie [Az.Resources-modules](/powershell/module/az.resources/Get-AzManagementGroup) voor de volledige lijst met beheergroep GET PowerShell-opdrachten.  
+U gebruikt de opdracht Get-AzManagementGroup om alle groepen op te halen. Zie [Az.Resources-modules](/powershell/module/az.resources/Get-AzManagementGroup) voor de volledige lijst met beheergroep GET PowerShell-opdrachten.  
 
 ```azurepowershell-interactive
 Get-AzManagementGroup
@@ -206,23 +204,22 @@ Bij het verplaatsen van een beheergroep of abonnement om een kind van een andere
 
 Als u de verhuisactie doet, moet u het zelfde 
 
--  Managementgroep schrijven en Roltoewijzing schrijven machtigingen voor het onderliggende abonnement of beheergroep.
-    - **Voorbeeld-eigenaar** van een ingebouwde rol
+- Managementgroep schrijven en Roltoewijzing schrijven machtigingen voor het onderliggende abonnement of beheergroep.
+  - **Voorbeeld-eigenaar** van een ingebouwde rol
 - Managementgroep schrijft toegang op de doelgroep management groep.
-    - Voorbeeld van ingebouwde rollen: **eigenaar**, **bijdrager**, **managementteambijdrager**
+  - Voorbeeld van ingebouwde rollen: **eigenaar**, **bijdrager**, **managementteambijdrager**
 - Beheergroep schrijft toegang op de bestaande bovenliggende beheergroep.
-    - Voorbeeld van ingebouwde rollen: **eigenaar**, **bijdrager**, **managementteambijdrager**
+  - Voorbeeld van ingebouwde rollen: **eigenaar**, **bijdrager**, **managementteambijdrager**
 
 **Uitzondering:** Als de doelgroep of de bestaande bovenliggende beheergroep de hoofdbeheergroep is, zijn de machtigingenvereisten niet van toepassing. Aangezien de hoofdbeheergroep de standaardbestemmingsplek is voor alle nieuwe beheergroepen en abonnementen, hebt u geen machtigingen nodig om een item te verplaatsen.
 
-Als de rol Eigenaar van het abonnement is overgenomen van de huidige beheergroep, zijn uw verplaatsingsdoelen beperkt. U het abonnement alleen verplaatsen naar een andere beheergroep waar u de rol Eigenaar hebt. U het niet verplaatsen naar een beheergroep waar u een bijdrager levert omdat u het eigendom van het abonnement verliest. Als u rechtstreeks bent toegewezen aan de rol Eigenaar voor het abonnement (niet overgenomen van de beheergroep), u deze verplaatsen naar een beheergroep waar u een bijdrager levert. 
+Als de rol Eigenaar van het abonnement is overgenomen van de huidige beheergroep, zijn uw verplaatsingsdoelen beperkt. U het abonnement alleen verplaatsen naar een andere beheergroep waar u de rol Eigenaar hebt. U het niet verplaatsen naar een beheergroep waar u een bijdrager levert omdat u het eigendom van het abonnement verliest. Als u rechtstreeks bent toegewezen aan de rol Eigenaar voor het abonnement (niet overgenomen van de beheergroep), u deze verplaatsen naar een beheergroep waar u een bijdrager levert.
 
 Als u wilt zien welke machtigingen u in de Azure-portal hebt, selecteert u de beheergroep en selecteert u **IAM**. Zie [Toegang en machtigingen beheren met RBAC voor](../../role-based-access-control/overview.md)meer informatie over RBAC-rollen.
 
-
 ## <a name="move-subscriptions"></a>Abonnementen verplaatsen 
 
-#### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>Een bestaand abonnement toevoegen aan een beheergroep in de portal
+### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>Een bestaand abonnement toevoegen aan een beheergroep in de portal
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
@@ -234,11 +231,11 @@ Als u wilt zien welke machtigingen u in de Azure-portal hebt, selecteert u de be
 
 1. Selecteer het abonnement in de lijst met de juiste id.
 
-   ![Beschikbare abonnementen om toe te voegen aan een beheergroep](./media/add_context_sub.png)
+   :::image type="content" source="./media/add_context_sub.png" alt-text="Beschikbare abonnementen om toe te voegen aan een beheergroep" border="false":::
 
 1. Selecteer 'Opslaan'.
 
-#### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>Een abonnement verwijderen uit een beheergroep in de portal
+### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>Een abonnement verwijderen uit een beheergroep in de portal
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
@@ -248,13 +245,13 @@ Als u wilt zien welke machtigingen u in de Azure-portal hebt, selecteert u de be
 
 1. Selecteer de ellips aan het einde van de rij voor het abonnement in de lijst die u wilt verplaatsen.
 
-   ![Optie Verplaatsen op een beheergroep](./media/move_small.png)
+   :::image type="content" source="./media/move_small.png" alt-text="Optie Verplaatsen op een beheergroep" border="false":::
 
 1. Selecteer **Verplaatsen**selecteren .
 
 1. Selecteer in het menu dat wordt geopend de **bovenliggende beheergroep**.
 
-   ![Deelvenster verplaatsen om bovenliggende groep te wijzigen](./media/move_small_context.png)
+   :::image type="content" source="./media/move_small_context.png" alt-text="Deelvenster verplaatsen om bovenliggende groep te wijzigen" border="false":::
 
 1. Selecteer **Opslaan**.
 
@@ -303,7 +300,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
    - Als u nieuw selecteert, wordt een nieuwe beheergroep gemaakt.
    - Als u een bestaande bestaande groep selecteert, krijgt u een vervolgkeuzelijst van alle beheergroepen die u naar deze beheergroep verplaatsen.  
 
-   ![Een beheergroep verplaatsen naar een nieuwe of bestaande groep](./media/add_context_MG.png)
+   :::image type="content" source="./media/add_context_MG.png" alt-text="Een beheergroep verplaatsen naar een nieuwe of bestaande groep" border="false":::
 
 1. Selecteer **Opslaan**.
 
@@ -326,9 +323,9 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Beheergroepen controleren met behulp van activiteitenlogboeken
 
-Beheergroepen worden ondersteund door het [Azure-activiteitenlogboek](../../azure-monitor/platform/platform-logs-overview.md). U alle gebeurtenissen opvragen die gebeuren met een beheergroep op dezelfde centrale locatie als andere Azure-resources.  Zo kunt u alle gewijzigde rol- of beleidstoewijzingen binnen een bepaalde beheergroep bekijken.
+Beheergroepen worden ondersteund door het [Azure-activiteitenlogboek](../../azure-monitor/platform/platform-logs-overview.md). U alle gebeurtenissen opvragen die gebeuren met een beheergroep op dezelfde centrale locatie als andere Azure-resources. Zo kunt u alle gewijzigde rol- of beleidstoewijzingen binnen een bepaalde beheergroep bekijken.
 
-![Activiteitslogboeken met beheergroepen](media/al-mg.png)
+:::image type="content" source="./media/al-mg.png" alt-text="Activiteitslogboeken met beheergroepen" border="false":::
 
 Bij het uitvoeren van query's op beheergroepen buiten de Azure-portal, ziet het doelbereik voor beheergroepen er als volgt uit: **/ providers/Microsoft.Management/managementGroups/{yourMgID}**.
 
@@ -336,9 +333,9 @@ Bij het uitvoeren van query's op beheergroepen buiten de Azure-portal, ziet het 
 
 Wanneer u beheergroepen verwijst uit de acties van andere Resource Provider, gebruikt u het volgende pad als bereik. Dit pad wordt gebruikt bij het gebruik van PowerShell-, Azure CLI- en REST-API's.  
 
->"/providers/Microsoft.Management/managementGroups/{yourMgID}"
+`/providers/Microsoft.Management/managementGroups/{yourMgID}`
 
-Een voorbeeld van het gebruik van dit pad is bij het toewijzen van een nieuwe roltoewijzing aan een beheergroep in PowerShell
+Een voorbeeld van het gebruik van dit pad is bij het toewijzen van een nieuwe roltoewijzing aan een beheergroep in PowerShell:
 
 ```azurepowershell-interactive
 New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
@@ -354,8 +351,8 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 
 Voor meer informatie over beheergroepen gaat u naar:
 
-- [Beheergroepen maken om Azure-resources te ordenen](create.md)
-- [Uw beheergroepen wijzigen, verwijderen of beheren](manage.md)
+- [Beheergroepen maken om Azure-resources te ordenen](./create.md)
+- [Uw beheergroepen wijzigen, verwijderen of beheren](./manage.md)
 - [Beheergroepen bekijken via de module voor Azure PowerShell-resources](/powershell/module/az.resources#resources)
 - [Beheergroepen bekijken via de REST-API](/rest/api/resources/managementgroups)
 - [Beheergroepen bekijken via de Azure-CLI](/cli/azure/account/management-group)

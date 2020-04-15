@@ -1,5 +1,5 @@
 ---
-title: Uw technische assets van Azure Container voorbereiden
+title: Een technische azure VM-asset maken
 description: In dit artikel worden de stappen en vereisten beschreven voor het configureren van een containeraanbieding op Azure Marketplace.
 author: anbene
 ms.author: mingshen
@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 62c77681accb19183b5e8aa3ae8d80c225b2d284
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 262129084be5c6a68bfd8d8708c9a10fbb606144
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266017"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383729"
 ---
-# <a name="prepare-your-azure-container-technical-assets"></a>Uw technische assets van Azure Container voorbereiden
+# <a name="create-an-azure-vm-technical-asset"></a>Een technische azure VM-asset maken
 
 > [!IMPORTANT]
 > We verplaatsen het beheer van uw Azure Container-aanbiedingen van Cloud Partner Portal naar Partner Center. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [Uw containertechnische assets voorbereiden](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets) voor Cloud Partner Portal om uw aanbiedingen te beheren.

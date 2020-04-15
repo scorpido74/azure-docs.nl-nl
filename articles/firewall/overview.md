@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 04/08/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 60d936d9c2785e4723cdc09e55927fe13af8d8a1
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: bb4b654bd0b3591ebaa1bd217020095319a4938c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892305"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381917"
 ---
 # <a name="what-is-azure-firewall"></a>Wat is Azure Firewall?
 
@@ -53,7 +53,7 @@ U kunt Azure Firewall omhoog schalen zoveel als nodig is om te voldoen aan veran
 
 ## <a name="application-fqdn-filtering-rules"></a>Regels voor het filteren van de FQDN van toepassingen
 
-U uitgaand HTTP/S-verkeer of Azure SQL-verkeer (voorbeeld) beperken tot een opgegeven lijst met volledig gekwalificeerde domeinnamen (FQDN) inclusief wildcards. Deze functie vereist geen SSL-beëindiging.
+U uitgaand HTTP/S-verkeer of Azure SQL-verkeer (voorbeeld) beperken tot een opgegeven lijst met volledig gekwalificeerde domeinnamen (FQDN) inclusief wildcards. Deze functie vereist geen TLS-beëindiging.
 
 ## <a name="network-traffic-filtering-rules"></a>Regels voor het filteren van netwerkverkeer
 
@@ -116,7 +116,7 @@ Netwerkfilterregels voor niet-TCP/UDP-protocollen (bijvoorbeeld ICMP) werken nie
 |Beschikbaarheidszones kunnen alleen worden geconfigureerd tijdens de implementatie.|Beschikbaarheidszones kunnen alleen worden geconfigureerd tijdens de implementatie. U beschikbaarheidszones niet configureren nadat een firewall is geïmplementeerd.|Dit is standaard.|
 |SNAT op binnenkomende verbindingen|Naast DNAT zijn verbindingen via het openbare IP-adres van de firewall (binnenkomend) gekoppeld aan een van de firewall private IP's. Deze eis vandaag (ook voor Actieve/Actieve NVA's) om symmetrische routing te garanderen.|Als u de oorspronkelijke bron voor HTTP/S wilt behouden, u [XFF-headers](https://en.wikipedia.org/wiki/X-Forwarded-For) gebruiken. Gebruik bijvoorbeeld een service zoals [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) of Azure Application [Gateway](../application-gateway/rewrite-http-headers.md) voor de firewall. U WAF ook toevoegen als onderdeel van Azure Front Door en chain aan de firewall.
 |ONDERSTEUNING voor SQL FQDN-filtering alleen in de proxymodus (poort 1433)|Voor Azure SQL Database, Azure SQL Data Warehouse en Azure SQL Managed Instance:<br><br>Tijdens de preview wordt SQL FQDN-filtering alleen in proxy-modus ondersteund (poort 1433).<br><br>Voor Azure SQL IaaS:<br><br>Als u niet-standaardpoorten gebruikt, u deze poorten opgeven in de toepassingsregels.|Voor SQL in omleidingsmodus (de standaardverbinding als verbinding vanuit Azure) u in plaats daarvan toegang filteren met behulp van de SQL-servicetag als onderdeel van Azure Firewall-netwerkregels.
-|Uitgaand verkeer op TCP-poort 25 is niet toegestaan| Uitgaande SMTP-verbindingen die TCP-poort 25 gebruiken, worden geblokkeerd. Poort 25 wordt voornamelijk gebruikt voor niet-geverifieerde e-mailbezorging. Dit is het standaardplatformgedrag voor virtuele machines. Zie meer problemen [met uitgaande SMTP-connectiviteit in Azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)voor meer informatie. In tegenstelling tot virtuele machines is het momenteel echter niet mogelijk om deze functionaliteit in te schakelen op Azure Firewall.|Volg de aanbevolen methode om e-mail te verzenden zoals gedocumenteerd in het artikel over probleemoplossing voor SMTP. Of sluit de virtuele machine uit die uitgaande SMTP-toegang nodig heeft van uw standaardroute naar de firewall. Configureer in plaats daarvan uitgaande toegang rechtstreeks naar het internet.
+|Uitgaand verkeer op TCP-poort 25 is niet toegestaan| Uitgaande SMTP-verbindingen die TCP-poort 25 gebruiken, worden geblokkeerd. Poort 25 wordt voornamelijk gebruikt voor niet-geverifieerde e-mailbezorging. Dit is het standaardplatformgedrag voor virtuele machines. Zie meer problemen [met uitgaande SMTP-connectiviteit in Azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)voor meer informatie. In tegenstelling tot virtuele machines is het momenteel echter niet mogelijk om deze functionaliteit in te schakelen op Azure Firewall. Opmerking: als u geverifieerde SMTP (poort 587) of SMTP toestaat via een andere poort dan 25, moet u ervoor zorgen dat u een netwerkregel configureert en geen toepassingsregel omdat smtp-inspectie op dit moment niet wordt ondersteund.|Volg de aanbevolen methode om e-mail te verzenden, zoals gedocumenteerd in het artikel over probleemoplossing voor smtp.Volg the recommended method to send email, as documented in the SMTP troubleshooting article. Of sluit de virtuele machine uit die uitgaande SMTP-toegang nodig heeft van uw standaardroute naar de firewall. Configureer in plaats daarvan uitgaande toegang rechtstreeks naar het internet.
 |Actieve FTP wordt niet ondersteund|Active FTP is uitgeschakeld op Azure Firewall om te beschermen tegen FTP-bounceaanvallen met de opdracht FTP-poort.|U in plaats daarvan Passieve FTP gebruiken. U moet nog steeds expliciet TCP-poorten 20 en 21 op de firewall openen.
 |SNAT-poortgebruiksstatistiek toont 0%|De azure firewall SNAT-poortgebruiksstatistiek kan het gebruik van 0% weergeven, zelfs wanneer SNAT-poorten worden gebruikt. In dit geval geeft het gebruik van de statistiek als onderdeel van de statistiek firewallstatus een onjuist resultaat.|Dit probleem is opgelost en de uitrol naar de productie is gericht voor mei 2020. In sommige gevallen lost firewall-herschikking het probleem op, maar het is niet consistent. Als tussenoplossing gebruikt u alleen de status van de firewall om te zoeken naar *status=gedegradeerd*, niet voor *status=ongezond*. Port uitputting zal worden weergegeven als *gedegradeerd*. *Niet gezond* is gereserveerd voor toekomstig gebruik wanneer de meer statistieken zijn die van invloed zijn op de firewallstatus.
 |DNAT wordt niet ondersteund met Forced Tunneling ingeschakeld|Firewalls die zijn geïmplementeerd met Geforceerde tunneling ingeschakeld, kunnen geen inkomende toegang vanaf het internet ondersteunen vanwege asymmetrische routering.|Dit is door het ontwerp vanwege asymmetrische routing. Het retourpad voor binnenkomende verbindingen gaat via de on-premises firewall, die de verbinding niet heeft zien tot stand zijn gebracht.

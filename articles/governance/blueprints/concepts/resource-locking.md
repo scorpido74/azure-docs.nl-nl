@@ -3,12 +3,12 @@ title: Inzicht in resourcevergrendeling
 description: Meer informatie over de vergrendelingsopties in Azure Blueprints om resources te beschermen bij het toewijzen van een blauwdruk.
 ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9c4e2f4c6fd8f5fb574002217ca71d1e7d130ff7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676755"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383598"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Inzicht in bronvergrendeling in Azure Blueprints
 
@@ -103,7 +103,7 @@ Wanneer de toewijzing wordt verwijderd, worden de vergrendelingen die zijn gemaa
 
 Een [weigeringsactie voor RBAC-toewijzingen](../../../role-based-access-control/deny-assignments.md) wordt toegepast op artefactbronnen tijdens de toewijzing van een blauwdruk als de toewijzing de optie **Alleen lezen** of niet **verwijderen heeft** geselecteerd. De weigeringsactie wordt toegevoegd door de beheerde identiteit van de blauwdruktoewijzing en kan alleen met dezelfde beheerde identiteit uit de artefactbronnen worden verwijderd. Deze beveiligingsmaatregel dwingt het vergrendelingsmechanisme af en voorkomt het verwijderen van het blauwdrukslot buiten Azure Blueprints.
 
-![Toewijzing voor blueprint weigeren op resourcegroep](../media/resource-locking/blueprint-deny-assignment.png)
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Toewijzing voor blueprint weigeren op resourcegroep" border="false":::
 
 De [eigenschappen van de toewijzing weigeren](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) van elke modus zijn als volgt:
 

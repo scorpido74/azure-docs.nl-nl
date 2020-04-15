@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: cff1b3b79b34d3f0bed27a2ea50799185958a8ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc360bbe4dd58200993b9377317ccb608b3529d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477848"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383653"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Azure-gebeurtenishubs integreren met Azure Private Link (voorbeeld)
 Azure Private Link Service stelt u in staat om toegang te krijgen tot Azure Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en Azure hosted customer/partner services via een **privé eindpunt** in uw virtuele netwerk.
@@ -45,7 +45,7 @@ Uw privéeindpunt gebruikt een privé-IP-adres in uw virtuele netwerk.
 ### <a name="steps"></a>Stappen
 Als u al een naamruimte voor gebeurtenishubs hebt, u een privékoppelingsverbinding maken door de volgende stappen te volgen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Typ in de zoekbalk **gebeurtenishubs**.
 3. Selecteer de **naamruimte** in de lijst waaraan u een privéeindpunt wilt toevoegen.
 4. Selecteer het tabblad **Netwerken** onder **Instellingen**.
@@ -151,6 +151,32 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 (Get-AzResource -ResourceId $namespaceResource.ResourceId -ExpandProperties).Properties
 
 
+```
+
+### <a name="configure-the-private-dns-zone"></a>De privé-DNS-zone configureren
+Maak een privé-DNS-zone voor het domein Gebeurtenishubs en maak een koppeling met het virtuele netwerk:
+
+```azurepowershell-interactive
+$zone = New-AzPrivateDnsZone -ResourceGroupName $rgName `
+                            -Name "privatelink.servicebus.windows.net" 
+ 
+$link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName $rgName `
+                                            -ZoneName "privatelink.servicebus.windows.net" `
+                                            -Name "mylink" `
+                                            -VirtualNetworkId $virtualNetwork.Id  
+ 
+$networkInterface = Get-AzResource -ResourceId $privateEndpoint.NetworkInterfaces[0].Id -ApiVersion "2019-04-01" 
+ 
+foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
+    foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
+        Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
+        $recordName = $fqdn.split('.',2)[0] 
+        $dnsZone = $fqdn.split('.',2)[1] 
+        New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink.servicebus.windows.net"  `
+                                -ResourceGroupName $rgName -Ttl 600 `
+                                -PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address $ipconfig.properties.privateIPAddress)  
+    } 
+}
 ```
 
 ## <a name="manage-private-endpoints-using-azure-portal"></a>Privéeindpunten beheren met Azure-portal

@@ -1,5 +1,5 @@
 ---
-title: Aanpasbare beveiligingswaarschuwingshandleiding voor Azure Security Center voor IoT| Microsoft Documenten
+title: Aanpasbare beveiligingswaarschuwingen
 description: Meer informatie over aanpasbare beveiligingswaarschuwingen en aanbevolen herstel met Azure Security Center voor IoT-functies en -service.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 32d79267559480de8ec91e5e66196bfd57e01cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299570"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311639"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Beveiligingswaarschuwingen in Azure Security Center for IoT
 
 Azure Security Center for IoT analyseert uw IoT-oplossing voortdurend met behulp van geavanceerde analyses en bedreigingsinformatie om u te waarschuwen voor schadelijke activiteiten.
 
-We raden u aan om aangepaste waarschuwingen te maken op basis van uw kennis van het verwachte apparaatgedrag om ervoor te zorgen dat waarschuwingen fungeren als de meest efficiënte indicatoren van potentieel compromis in uw unieke organisatie-implementatie en -landschap. 
+We raden u aan om aangepaste waarschuwingen te maken op basis van uw kennis van het verwachte apparaatgedrag om ervoor te zorgen dat waarschuwingen fungeren als de meest efficiënte indicatoren van potentieel compromis in uw unieke organisatie-implementatie en -landschap.
 
 De volgende lijst met Azure Security Center voor IoT-waarschuwingen is door u definieerbaar op basis van uw verwachte IoT-hub en/of apparaatgedrag. Zie [Aangepaste waarschuwingen maken voor](quickstart-create-custom-alerts.md)meer informatie over het aanpassen van elke waarschuwing.
 
-## <a name="iot-hub-alerts-available-for-customization"></a>IoT Hub-waarschuwingen beschikbaar voor aanpassing 
-
-
+## <a name="iot-hub-alerts-available-for-customization"></a>IoT Hub-waarschuwingen beschikbaar voor aanpassing
 
 | Severity | Naam van waarschuwing | Gegevensbron | Beschrijving | Voorgestelde herstel|
 |---|---|---|---|---|
@@ -51,7 +49,7 @@ De volgende lijst met Azure Security Center voor IoT-waarschuwingen is door u de
 | Laag      | Aangepaste waarschuwing - aantal ongeautoriseerde bewerkingen ligt buiten het toegestane bereik  | IoT Hub     | De hoeveelheid ongeautoriseerde bewerkingen binnen een specifiek tijdvenster bevindt zich buiten het momenteel geconfigureerde en toegestane bereik.|
 |
 
-## <a name="agent-alerts-available-for-customization"></a>Agentwaarschuwingen beschikbaar voor aanpassing 
+## <a name="agent-alerts-available-for-customization"></a>Agentwaarschuwingen beschikbaar voor aanpassing
 
 | Severity | Naam van waarschuwing | Gegevensbron | Beschrijving | Voorgestelde herstel|
 |---|---|---|---|---|

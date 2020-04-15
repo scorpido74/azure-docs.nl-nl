@@ -1,23 +1,23 @@
 ---
 title: 'Zelfstudie: ETL-bewerkingen met interactieve query - Azure HDInsight'
-description: Zelfstudie - Leer hoe u gegevens uit een ruwe CSV-gegevensset extraheren, deze transformeren met Interactieve Query op HDInsight en de getransformeerde gegevens vervolgens laden in Azure SQL-database met Behulp van Apache Sqoop.
+description: Zelfstudie - Meer informatie over het extraheren van gegevens uit een ruwe CSV-gegevensset. Transformeer het met interactieve query op HDInsight. Laad de getransformeerde gegevens vervolgens in Azure SQL-database met Apache Sqoop.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 07/02/2019
-ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/02/2019
+ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494148"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313747"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Zelfstudie: Gegevens extraheren, transformeren en laden met interactieve query in Azure HDInsight
 
-In deze zelfstudie neemt u een ruw CSV-gegevensbestand met openbaar beschikbare vluchtgegevens, importeert u deze in HDInsight-clusteropslag en transformeert u de gegevens met interactieve query in Azure HDInsight. Als de gegevens zijn getransformeerd, laadt u die gegevens met behulp van [Apache Sqoop](https://sqoop.apache.org/) in een Azure SQL-database.
+In deze zelfstudie downloadt u een ruw CSV-gegevensbestand met openbaar beschikbare vluchtgegevens. Importeer deze in HDInsight-clusteropslag en transformeer de gegevens met interactieve query in Azure HDInsight. Als de gegevens zijn getransformeerd, laadt u die gegevens met behulp van [Apache Sqoop](https://sqoop.apache.org/) in een Azure SQL-database.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -46,7 +46,7 @@ Deze zelfstudie bestaat uit de volgende taken:
    | --- | --- |
    | Filterjaar |2019 |
    | Filterperiode |Januari |
-   | Velden |Jaar, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Velden |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
 3. Selecteer **Download**. U krijgt een ZIP-bestand met de gegevensvelden die u hebt geselecteerd.
 
@@ -60,7 +60,7 @@ Er zijn veel manieren om gegevens te uploaden naar de opslag die is gekoppeld aa
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    Als u wordt gevraagd om ja of nee in te voeren om door te gaan, typt u ja bij de opdrachtprompt en drukt u op Enter. De tekst is niet zichtbaar in het venster terwijl u typt.
+    Voer ja of nee in om door te gaan als daarom wordt gevraagd. De tekst is niet zichtbaar in het venster terwijl u typt.
 
 2. Nadat het uploaden is voltooid, maakt u via SSH verbinding met het cluster. Bewerk de onderstaande `CLUSTERNAME` opdracht door te vervangen door de naam van het HDInsight-cluster. Voer vervolgens de volgende opdracht in:
 
@@ -283,13 +283,13 @@ In de vorige gedeelten hebt u de getransformeerde gegevens op `/tutorials/flight
     GO
     ```
 
-    U ziet als het goed is een lijst met gegevens in de tabel. De tabel bevat de plaatsnaam en de gemiddelde vertragingstijd voor vluchten van en naar die plaats. 
+    U ziet als het goed is een lijst met gegevens in de tabel. De tabel bevat de plaatsnaam en de gemiddelde vertragingstijd voor vluchten van en naar die plaats.
 
     Typ `exit` om het hulpprogramma tsql af te sluiten.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u de zelfstudie hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
+Nadat u de zelfstudie hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage, zodat u een cluster veilig verwijderen wanneer het niet in gebruik is. Er worden ook kosten in rekening gebracht voor een HDInsight-cluster, zelfs als het niet in gebruik is. Aangezien de kosten voor het cluster vele malen meer zijn dan de kosten voor opslag, is het economisch zinvol om clusters te verwijderen wanneer ze niet in gebruik zijn.
 
 Zie [Een HDInsight-cluster verwijderen met uw browser, PowerShell of Azure CLI](../hdinsight-delete-cluster.md)als u een cluster wilt verwijderen.
 
@@ -298,4 +298,4 @@ Zie [Een HDInsight-cluster verwijderen met uw browser, PowerShell of Azure CLI](
 In deze zelfstudie hebt u een ruw CSV-gegevensbestand gebruikt, geïmporteerd in een HDInsight-clusteropslag en vervolgens de gegevens omgezet met interactieve query in Azure HDInsight.  Ga naar de volgende zelfstudie om meer te weten te komen over de Apache Hive Warehouse Connector.
 
 > [!div class="nextstepaction"]
->[Integreer Apache Spark en Apache Hive met de Hive Warehouse Connector](./apache-hive-warehouse-connector.md)
+> [Integreer Apache Spark en Apache Hive met de Hive Warehouse Connector](./apache-hive-warehouse-connector.md)

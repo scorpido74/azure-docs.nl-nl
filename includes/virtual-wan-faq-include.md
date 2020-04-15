@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ad821036047dcf46821b2b2722e3dd17f8e318c2
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: cb2302637efb16fc31bd420bf8c4ead19d7f598d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80386096"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81384958"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker hub hebben en met SD-WAN/VPN-apparaten gesproken om Azure Virtual WAN te gebruiken?
 
@@ -131,6 +131,8 @@ Ja. Zie de [prijzenpagina](https://azure.microsoft.com/pricing/details/virtual-w
 
 * Als u ExpressRoute gateway als gevolg van ExpressRoute circuits verbinding met een virtuele hub, dan zou je betalen voor de schaal eenheid prijs. Elke schaaleenheid in ER is 2 Gbps en elke verbindingseenheid wordt in rekening gebracht tegen hetzelfde tarief als de VPN Connection-eenheid.
 
+* Als u Spoke VNET's had aangesloten op de hub, zijn peering kosten bij de Spoke VNETs nog steeds van toepassing. 
+
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Hoe worden nieuwe partners die nog niet zijn vermeld in de startlijst van partners, opgenomen?
 
 Alle virtuele WAN API's zijn open API. U de documentatie doornemen om de technische haalbaarheid te beoordelen. Als je een vraag hebt, azurevirtualwan@microsoft.comstuur dan een e-mail naar . Een ideale partner is iemand die een apparaat heeft dat kan worden ingericht voor een IKEv1 of IKEv2 IPSec-verbinding.
@@ -149,7 +151,7 @@ U een VNet aansluiten in een andere regio dan uw virtuele WAN.
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Kunnen spaakvnets die zijn aangesloten op een virtuele hub met elkaar communiceren (V2V Transit)?
 
-Ja. Standard Virtual WAN ondersteunt Vnet naar Vnet transitive connectiviteit via de Virtual WAN hub waarmee de Vnets zijn aangesloten. In de virtuele WAN-terminologie verwijzen we naar deze paden als "lokale Virtual WAN VNet-doorvoer" voor VNets die zijn aangesloten op een Virtuele Wan-hub binnen één regio, en "global Virtual WAN VNet-transit" voor VNets die zijn verbonden via meerdere Virtuele WAN-hubs in twee of meer Regio 's. VNet-transit ondersteunt tot 3 Gbps doorvoer tijdens openbare preview. De doorvoer zal worden uitgebreid wanneer de wereldwijde doorvoer ga gaat.
+Ja. Standard Virtual WAN ondersteunt Vnet naar Vnet transitive connectiviteit via de Virtual WAN hub waarmee de Vnets zijn aangesloten. In de virtuele WAN-terminologie verwijzen we naar deze paden als "lokale Virtual WAN VNet-doorvoer" voor VNets die zijn aangesloten op een Virtuele Wan-hub binnen één regio en "global Virtual WAN VNet-transit" voor VNets die zijn verbonden via meerdere Virtuele WAN-hubs in twee of meer regio's. VNet-transit ondersteunt tot 3 Gbps doorvoer tijdens openbare preview. De doorvoer zal worden uitgebreid wanneer de wereldwijde doorvoer ga gaat.
 
 OPMERKING: Momenteel vereist V2V transit preview een VPN GW worden geïmplementeerd in een Virtual Hub om de routing-elementen te activeren die moeten worden gestart. Deze VPN GW wordt niet gebruikt voor het V2V-transitpad. Dit is een bekende beperking en zal worden verwijderd op het moment van V2V GA. U de VPN-gateway in de hub(s) verwijderen nadat deze volledig is gestart, omdat deze niet nodig is voor v2V-transitfunctionaliteit. 
 

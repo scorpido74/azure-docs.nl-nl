@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: 4c265cb0cdc665ef52f4dc6e69440e83c22db449
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f0eada5184f2c8e36b0deb5a9d27a8a9230776d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77460972"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382768"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Gegevens kopiëren naar of vanuit Azure Data Explorer met Azure Data Factory
 
-In dit artikel wordt beschreven hoe u de kopieeractiviteit in Azure Data Factory gebruiken om gegevens naar of vanuit [Azure Data Explorer](../data-explorer/data-explorer-overview.md)te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel, dat een algemeen overzicht van kopieeractiviteit biedt.
+In dit artikel wordt beschreven hoe u de kopieeractiviteit in Azure Data Factory gebruiken om gegevens naar of vanuit [Azure Data Explorer](/azure/data-explorer/data-explorer-overview)te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel, dat een algemeen overzicht van kopieeractiviteit biedt.
 
 >[!TIP]
->Voor Azure Data Factory- en Azure Data Explorer-integratie in het algemeen, leest u meer over [Azure Data Explorer integreren met Azure Data Factory](../data-explorer/data-factory-integration.md).
+>Voor Azure Data Factory- en Azure Data Explorer-integratie in het algemeen, leest u meer over [Azure Data Explorer integreren met Azure Data Factory](/azure/data-explorer/data-factory-integration).
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
@@ -47,7 +47,7 @@ Met de Azure Data Explorer-connector u het volgende doen:
 ## <a name="getting-started"></a>Aan de slag
 
 >[!TIP]
->Zie [Gegevens kopiëren van/naar Azure Data Explorer met Azure Data Factory](../data-explorer/data-factory-load-data.md) en Bulk kopiëren vanuit een database naar Azure Data [Explorer](../data-explorer/data-factory-template.md)voor een walkthrough van azure data explorer.
+>Zie [Gegevens kopiëren van/naar Azure Data Explorer met Azure Data Factory](/azure/data-explorer/data-factory-load-data) en Bulk kopiëren vanuit een database naar Azure Data [Explorer](/azure/data-explorer/data-factory-template)voor een walkthrough van azure data explorer.
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -63,7 +63,7 @@ De Azure Data Explorer-connector maakt gebruik van serviceprincipal-verificatie.
     - Toepassingssleutel
     - Tenant-id
 
-2. Geef de serviceprincipal de juiste machtigingen in Azure Data Explorer. Zie [Machtigingen voor Azure Data Explorer-database beheren](../data-explorer/manage-database-permissions.md) voor gedetailleerde informatie over rollen en machtigingen en over het beheren van machtigingen. In het algemeen moet u:
+2. Geef de serviceprincipal de juiste machtigingen in Azure Data Explorer. Zie [Machtigingen voor Azure Data Explorer-database beheren](/azure/data-explorer/manage-database-permissions) voor gedetailleerde informatie over rollen en machtigingen en over het beheren van machtigingen. In het algemeen moet u:
 
     - **Als bron,** ten minste de rol van de **databaseviewer** toekennen aan uw database
     - **Als sink,** verlenen ten minste de **Database innameor** rol aan uw database

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 49b41715d95a5f210e6e70faf09aa016d1478728
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f75e5a28f7ec56750432e74ee48ba68491a5e481
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158734"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310286"
 ---
 # <a name="configure-the-application-dashboard"></a>Het toepassingsdashboard configureren
 
@@ -74,7 +74,7 @@ In de volgende tabel wordt een overzicht van het gebruik van tegels in Azure IoT
 | Inhoud | Dashboards voor toepassing en apparaatinstellen |Door Markdown ondersteunde tegels zijn klikbare tegels die koptekst en beschrijvingstekst weergeven. U deze tegel ook gebruiken als koppelingstegel om een gebruiker in staat te stellen naar een URL met betrekking tot uw toepassing te navigeren.|
 | Installatiekopie | Dashboards voor toepassing en apparaatinstellen |Afbeeldingstegels geven een aangepaste afbeelding weer en kunnen klikbaar zijn. Gebruik een afbeeldingstegel om afbeeldingen aan een dashboard toe te voegen en laat een gebruiker optioneel navigeren naar een URL die relevant is voor uw toepassing.|
 | Label | Toepassingsdashboards |Labeltegels geven aangepaste tekst weer op een dashboard. U de grootte van de tekst kiezen. Gebruik een labeltegel om relevante informatie toe te voegen aan het dashboard, zoals beschrijvingen, contactgegevens of help.|
-| Kaart | Dashboards voor toepassing en apparaatinstellen |Kaarttegels geven de locatie en status van een apparaat weer op een kaart. U bijvoorbeeld weergeven waar een apparaat zich bevindt en of de ventilator is ingeschakeld.|
+| Kaart | Dashboards voor toepassingen en apparaten |Kaarttegels geven de locatie van een apparaat weer op een kaart. U ook maximaal 100 punten van de locatiegeschiedenis van een apparaat weergeven. U bijvoorbeeld een voorbeeldroute weergeven van waar een apparaat zich de afgelopen week heeft bevindt.|
 | Lijndiagram | Dashboards voor toepassingen en apparaten |Lijndiagramtegels geven een grafiek met geaggregeerde meting voor een apparaat voor een bepaalde periode weer. U bijvoorbeeld een lijndiagram weergeven dat de gemiddelde temperatuur en druk van een apparaat voor het laatste uur weergeeft.|
 | Staafdiagram | Dashboards voor toepassingen en apparaten |Staafdiagramtegels geven een grafiek weer met geaggregeerde metingen voor een apparaat voor een periode. U bijvoorbeeld een staafdiagram weergeven met de gemiddelde temperatuur en druk van een apparaat van het afgelopen uur.|
 | Cirkeldiagram | Dashboards voor toepassing en apparaatinstellen |Cirkeldiagramtegels geven een grafiek met geaggregeerde metingen voor een apparaat voor een periode weer.|

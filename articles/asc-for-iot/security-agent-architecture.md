@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center voor IoT-beveiligingsagentarchitectuur| Microsoft Documenten
+title: Architectuur van beveiligingsagenten
 description: Inzicht in de architectuur van beveiligingsagents voor de agents die worden gebruikt in de Azure Security Center for IoT-service.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 998aeab197931a75579fc39b28e3a248b85fc57b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9029ece923b7cda09c7a57d07736791e241c9e70
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68596904"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310687"
 ---
 # <a name="security-agent-reference-architecture"></a>Referentiearchitectuur voor beveiligingsagenten
 
@@ -38,9 +38,9 @@ Beveiligingsagenten ondersteunen de volgende functies:
 
 - Configureer op afstand door gebruik te maken van de **azureiotsecurity** module twin. Zie [Een Azure Security Center voor IoT-agent configureren voor](how-to-agent-configuration.md)meer informatie.
 
-Azure Security Center voor IoT-beveiligingsagents zijn ontwikkeld als open-sourceprojecten en zijn beschikbaar via GitHub: 
+Azure Security Center voor IoT-beveiligingsagents zijn ontwikkeld als open-sourceprojecten en zijn beschikbaar via GitHub:
 
-- [Azure Security Center voor IoT C-gebaseerde agent](https://github.com/Azure/Azure-IoT-Security-Agent-C) 
+- [Azure Security Center voor IoT C-gebaseerde agent](https://github.com/Azure/Azure-IoT-Security-Agent-C)
 - [Azure Security Center voor IoT C#-gebaseerde agent](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
 ## <a name="agent-supported-platforms"></a>Door de agent ondersteunde platforms

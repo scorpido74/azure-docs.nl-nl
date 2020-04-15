@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2c33fbed6c547897847c79cc1260d2bdc9ec6b17
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: eb285d15814f1105462c414541657d43b5371d98
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010321"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383239"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Aan de slag met Azure Automation State Configuration
 
@@ -59,7 +59,7 @@ U maakt een eenvoudige [DSC-configuratie](/powershell/scripting/dsc/configuratio
         }
     }
     ```
-1. Sla het bestand op als `TestConfig.ps1`.
+1. Sla het bestand op als **TestConfig.ps1**.
 
 Deze configuratie roept één bron aan in elk knooppuntblok, de [WindowsFeature-bron,](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource)die de aanwezigheid of afwezigheid van de **webserverfunctie** garandeert.
 
@@ -105,7 +105,7 @@ Zie [DSC-configuraties](/powershell/scripting/dsc/configurations/configurations)
    ![Schermafbeelding van de knop TestConfig-configuratiepagina met compilering](./media/automation-dsc-getting-started/CompileConfig.png)
 
 > [!NOTE]
-> Wanneer u een configuratie in Azure Automation compileert, worden alle gemaakte knooppuntconfiguratie-MOF's automatisch geïmplementeerd naar de pull-server.
+> Wanneer u een configuratie in Azure Automation compileert, worden alle gemaakte nodeconfiguratie-MOF-bestanden automatisch geïmplementeerd op de pull-server.
 
 ## <a name="viewing-a-compilation-job"></a>Een compilatietaak weergeven
 
@@ -123,7 +123,7 @@ Nadat u een compilatie hebt gestart, u deze weergeven in de tegel **Compilatieta
 
 ## <a name="viewing-node-configurations"></a>Knooppuntconfiguraties weergeven
 
-Als een compilatietaak succesvol is voltooid, worden een of meer nieuwe knooppuntconfiguraties gemaakt. Een knooppuntconfiguratie is een MOF-document dat wordt geïmplementeerd op de pull-server en klaar is om te worden getrokken en toegepast door een of meer knooppunten. U de knooppuntconfiguraties in uw Automatiseringsaccount bekijken op de pagina **Statusconfiguratie (DSC).** Een knooppuntconfiguratie heeft een naam met het formulier *ConfigurationName*. *NodeName*.
+Als een compilatietaak succesvol is voltooid, worden een of meer nieuwe knooppuntconfiguraties gemaakt. Een knooppuntconfiguratie is een MOF-document dat wordt geïmplementeerd op de pull-server en klaar is om te worden getrokken en toegepast door een of meer knooppunten. U de knooppuntconfiguraties in uw Automatiseringsaccount bekijken op de pagina **Statusconfiguratie (DSC).** Een knooppuntconfiguratie heeft een naam `ConfigurationName.NodeName`met het formulier .
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **Alle bronnen** en vervolgens op de naam van uw automatiseringsaccount.
@@ -134,7 +134,7 @@ Als een compilatietaak succesvol is voltooid, worden een of meer nieuwe knooppun
 
 ## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration"></a>Onboarding van een Azure VM voor beheer met Azure Automation State Configuration
 
-U Azure Automation State Configuration gebruiken om Azure VM's (zowel Classic als Resource Manager), on-premises VM's, Linux-machines, AWS VM's en on-premises fysieke machines te beheren. In dit artikel leert u hoe u alleen in Azure Resource Manager VM's worden gebruikt. Zie [Onboarding-machines voor beheer door Azure Automation State Configuration voor](automation-dsc-onboarding.md)informatie over het inwerken van andere typen machines.
+U Azure Automation State Configuration gebruiken om Azure VM's (zowel klassiek als Resource Manager), on-premises VM's, Linux-machines, AWS VM's en on-premises fysieke machines te beheren. In dit artikel leert u hoe u alleen in Azure Resource Manager VM's worden gebruikt. Zie [Onboarding-machines voor beheer door Azure Automation State Configuration voor](automation-dsc-onboarding.md)informatie over het inwerken van andere typen machines.
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>Een Azure Resource Manager VM voor beheer door Azure Automation State Configuration aan boord nemen
 

@@ -1,25 +1,19 @@
 ---
 title: Verwijzing naar de syntaxis van patroon - LUIS
-titleSuffix: Azure Cognitive Services
 description: Maak entiteiten om belangrijke gegevens uit gebruikersuitingen te extraheren in LUIS-apps (Language Understanding). Geëxtraheerde gegevens worden gebruikt door de clienttoepassing.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/09/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219729"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382150"
 ---
 # <a name="pattern-syntax"></a>Patroonsyntaxis
 
-Patroonsyntaxis is een sjabloon voor een utterance. De sjabloon moet woorden en entiteiten bevatten die u wilt overeenkomen, evenals woorden en interpunctie die u wilt negeren. Het is **geen** gewone uitdrukking.
+Patroonsyntaxis is een sjabloon voor een utterance. De sjabloon moet woorden en entiteiten bevatten die u wilt overeenkomen, evenals woorden en [interpunctie](luis-reference-application-settings.md#punctuation-normalization) die u wilt negeren. Het is **geen** gewone uitdrukking.
 
 > [!CAUTION]
 > Patronen omvatten alleen machine-geleerde entiteit ouders, niet subcomponenten.

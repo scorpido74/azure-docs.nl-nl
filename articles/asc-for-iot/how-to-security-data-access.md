@@ -1,5 +1,5 @@
 ---
-title: Toegang tot gegevens met Azure Security Center for IoT| Microsoft Documenten
+title: Toegang tot beveiligingsgegevens & aanbevelingsgegevens
 description: Meer informatie over hoe u toegang krijgt tot uw beveiligingswaarschuwing en aanbevelingsgegevens wanneer u Azure Security Center voor IoT gebruikt.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 3ddd9b2c8373746a65cd78f0a81b60d097cd9f38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbea0accc79cafb6fea3f1438a71250dc02f4d62
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68597176"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311010"
 ---
-# <a name="access-your-security-data"></a>Toegang tot uw beveiligingsgegevens 
+# <a name="access-your-security-data"></a>Toegang tot uw beveiligingsgegevens
 
 Azure Security Center for IoT slaat beveiligingswaarschuwingen, aanbevelingen en onbewerkte beveiligingsgegevens (als u ervoor kiest deze op te slaan) op in uw Log Analytics-werkruimte.
 
@@ -32,12 +32,12 @@ Ga als u configureren welke Log Analytics-werkruimte wordt gebruikt:
 
 1. Open je IoT-hub.
 1. Klik op het **blad Overzicht** onder de sectie **Beveiliging**
-2. Klik **op Instellingen**en wijzig de configuratie van de Log Analytics-werkruimte.
+1. Klik **op Instellingen**en wijzig de configuratie van de Log Analytics-werkruimte.
 
 Ga als volgt te werk om na configuratie toegang te krijgen tot uw waarschuwingen en aanbevelingen in uw Log Analytics-werkruimte:
 
-1. Kies een waarschuwing of aanbeveling in Azure Security Center for IoT. 
-2. Klik **op verder onderzoek**en klik vervolgens op Om te zien welke apparaten deze waarschuwing **hebben, klik hier en bekijk de kolom DeviceId**.
+1. Kies een waarschuwing of aanbeveling in Azure Security Center for IoT.
+1. Klik **op verder onderzoek**en klik vervolgens op Om te zien welke apparaten deze waarschuwing **hebben, klik hier en bekijk de kolom DeviceId**.
 
 Zie [Aan de slag met query's in Log Analytics](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries)voor meer informatie over het opvragen van gegevens uit Log Analytics.
 
@@ -55,11 +55,11 @@ Selecteer een paar willekeurige records
 // Select a few random records
 //
 SecurityAlert
-| project 
-    TimeGenerated, 
-    IoTHubId=ResourceId, 
+| project
+    TimeGenerated,
+    IoTHubId=ResourceId,
     DeviceId=tostring(parse_json(ExtendedProperties)["DeviceId"]),
-    AlertSeverity, 
+    AlertSeverity,
     DisplayName,
     Description,
     ExtendedProperties
@@ -70,20 +70,20 @@ SecurityAlert
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-11-18T18:10:29.000 | /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Hoog          | Brute kracht aanval geslaagd           | Een brute kracht aanval op het apparaat was succesvol        |    { "Full Source\"Address": "[ 10.165.12.18:\"]",\"\""Gebruikersnamen": "[ ]", "DeviceId": "IoT-Device-Linux" }                                                                       |
 | 2018-11-19T12:40:31.000 | /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Hoog          | Succesvol lokaal inloggen op apparaat      | Een succesvolle lokale aanmelding op het apparaat is gedetecteerd     | { "Remote Address": "?", "Remote Port": "", "Local Port": "", "Login Shell": "/bin/su", "Login Process Id": "28207", "Gebruikersnaam": "aanvaller", "DeviceId": "IoT-Device-Linux" } |
-| 2018-11-19T12:40:31.000 | /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Hoog          | Mislukte lokale aanmeldingspoging op apparaat  | Er is een mislukte lokale aanmeldingspoging bij het apparaat gedetecteerd |  { "Remote Address": "?", "Remote Port": "", "Local Port": "", "Login Shell": "/bin/su", "Login Process Id": "22644", "Gebruikersnaam": "aanvaller", "DeviceId": "IoT-Device-Linux" } |
+| 2018-11-19T12:40:31.000 | /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Hoog          | Mislukte lokale aanmeldingspoging op apparaat  | Er is een mislukte lokale aanmeldingspoging bij het apparaat gedetecteerd |    { "Remote Address": "?", "Remote Port": "", "Local Port": "", "Login Shell": "/bin/su", "Login Process Id": "22644", "Gebruikersnaam": "aanvaller", "DeviceId": "IoT-Device-Linux" } |
 
 ### <a name="device-summary"></a>Apparaatoverzicht
 
 Ontvang het aantal afzonderlijke beveiligingswaarschuwingen dat in de afgelopen week is gedetecteerd, gegroepeerd op IoT Hub, apparaat, waarschuwingsernst, waarschuwingstype.
 
 ```
-// Get the number of distinct security alerts detected in the last week, grouped by 
+// Get the number of distinct security alerts detected in the last week, grouped by
 //   IoT hub, device, alert severity, alert type
 //
 SecurityAlert
 | where TimeGenerated > ago(7d)
 | summarize Cnt=dcount(SystemAlertId) by
-    IoTHubId=ResourceId, 
+    IoTHubId=ResourceId,
     DeviceId=tostring(parse_json(ExtendedProperties)["DeviceId"]),
     AlertSeverity,
     DisplayName
@@ -91,8 +91,8 @@ SecurityAlert
 
 | IotHubId                                                                                                       | DeviceId      | WaarschuwingErnst | DisplayName                           | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
-| /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Hoog          | Brute kracht aanval geslaagd           | 9   |   
-| /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Middelgroot        | Mislukte lokale aanmeldingspoging op apparaat  | 242 |    
+| /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Hoog          | Brute kracht aanval geslaagd           | 9   |
+| /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Middelgroot        | Mislukte lokale aanmeldingspoging op apparaat  | 242 |
 | /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Hoog          | Succesvol lokaal inloggen op apparaat      | 31  |
 | /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Middelgroot        | Crypto Munt Mijnwerker                     | 4   |
 
@@ -101,22 +101,22 @@ SecurityAlert
 Selecteer een aantal verschillende apparaten die in de afgelopen week waarschuwingen hebben gehad, op IoT Hub, waarschuwingsernst, waarschuwingstype
 
 ```
-// Select number of distinct devices which had alerts in the last week, by 
+// Select number of distinct devices which had alerts in the last week, by
 //   IoT hub, alert severity, alert type
 //
 SecurityAlert
 | where TimeGenerated > ago(7d)
 | extend DeviceId=tostring(parse_json(ExtendedProperties)["DeviceId"])
 | summarize CntDevices=dcount(DeviceId) by
-    IoTHubId=ResourceId, 
+    IoTHubId=ResourceId,
     AlertSeverity,
     DisplayName
 ```
 
 | IotHubId                                                                                                       | WaarschuwingErnst | DisplayName                           | CntDevices CntDevices |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------------------------------|------------|
-| /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Hoog          | Brute kracht aanval geslaagd           | 1          |    
-| /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Middelgroot        | Mislukte lokale aanmeldingspoging op apparaat  | 1          | 
+| /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Hoog          | Brute kracht aanval geslaagd           | 1          |
+| /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Middelgroot        | Mislukte lokale aanmeldingspoging op apparaat  | 1          |
 | /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Hoog          | Succesvol lokaal inloggen op apparaat      | 1          |
 | /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Middelgroot        | Crypto Munt Mijnwerker                     | 1          |
 
@@ -134,9 +134,9 @@ Selecteer een paar willekeurige records
 // Select a few random records
 //
 SecurityRecommendation
-| project 
-    TimeGenerated, 
-    IoTHubId=AssessedResourceId, 
+| project
+    TimeGenerated,
+    IoTHubId=AssessedResourceId,
     DeviceId,
     RecommendationSeverity,
     RecommendationState,
@@ -145,10 +145,10 @@ SecurityRecommendation
     RecommendationAdditionalData
 | take 2
 ```
-    
+
 | TimeGenerated | IotHubId | DeviceId | AanbevelingErnst | AanbevelingStaat | AanbevelingDisplayName | Beschrijving | AanbevelingAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
-| 2019-03-22T10:21:06.060 | /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Middelgroot | Actief | Tolerante firewallregel in de invoerketen is gevonden | Er is een regel in de firewall gevonden die een tolerant patroon bevat voor een breed scala aan IP-adressen of poorten | {"Regels":"[{\"\"SourceAddress\"\"\":\",\"\"\"SourcePort\"\"\":\",\"\"DestinationAddress :\", DestinationPort : 1337 }]"} |
+| 2019-03-22T10:21:06.060 |    /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Middelgroot | Actief | Tolerante firewallregel in de invoerketen is gevonden | Er is een regel in de firewall gevonden die een tolerant patroon bevat voor een breed scala aan IP-adressen of poorten | {"Regels":"[{\"\"SourceAddress\"\"\":\",\"\"\"SourcePort\"\"\":\",\"\"DestinationAddress :\", DestinationPort : 1337 }]"} |
 | 2019-03-22T10:50:27.237 | /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Middelgroot | Actief | Tolerante firewallregel in de invoerketen is gevonden | Er is een regel in de firewall gevonden die een tolerant patroon bevat voor een breed scala aan IP-adressen of poorten | {"Regels":"[{\"\"SourceAddress\"\"\":\",\"\"\"SourcePort\"\"\":\",\"\"DestinationAddress :\", DestinationPort : 1337 }]"} |
 
 ### <a name="device-summary"></a>Apparaatoverzicht
@@ -156,7 +156,7 @@ SecurityRecommendation
 Krijg het aantal verschillende actieve beveiligingsaanbevelingen, gegroepeerd op IoT Hub, apparaat, aanbevelingsernst en type.
 
 ```
-// Get the number of distinct active security recommendations, grouped by by 
+// Get the number of distinct active security recommendations, grouped by by
 //   IoT hub, device, recommendation severity and type
 //
 SecurityRecommendation
@@ -168,11 +168,10 @@ SecurityRecommendation
 
 | IotHubId                                                                                                       | DeviceId      | AanbevelingErnst | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
-| /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Hoog          | 2   |    
-| /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Middelgroot        | 1 |  
+| /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Hoog          | 2   |
+| /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Middelgroot        | 1 |
 | /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Hoog          | 1  |
 | /abonnementen/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Middelgroot        | 4   |
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

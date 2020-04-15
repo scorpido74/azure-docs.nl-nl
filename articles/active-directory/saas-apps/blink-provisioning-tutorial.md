@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: b19052b8a71b582b47308c41d170f50352d643e2
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 314445275f99898913bd91eb8abc2a5acdab098a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618360"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381026"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Zelfstudie: Blink configureren voor automatische gebruikersinrichting
 
@@ -89,7 +89,7 @@ In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers in Bl
 
 ### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>Ga als een automatisch beheer van de gebruiker voor Blink in Azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -121,7 +121,7 @@ In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers in Bl
 
 9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Blink in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **Eigenschappen matching** worden gebruikt om de gebruikersaccounts in Blink te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![Gebruikerskenmerken knipperen](media/blink-provisioning-tutorial/User_attributes.png)
+    ![Gebruikerskenmerken knipperen](media/blink-provisioning-tutorial/user-attributes.png)
 
 10. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
 

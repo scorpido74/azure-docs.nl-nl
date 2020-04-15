@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198936"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381398"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Beschikbaarheid en betrouwbaarheid van Apache Hadoop clusters in HDInsight
 
@@ -33,7 +33,7 @@ Knooppunten in een HDInsight-cluster worden geïmplementeerd met Azure Virtual M
 
 Om een hoge beschikbaarheid van Hadoop-services te garanderen, biedt HDInsight twee hoofdknooppunten. Beide hoofdknooppunten zijn actief en worden tegelijkertijd uitgevoerd binnen het HDInsight-cluster. Sommige services, zoals Apache HDFS of Apache Hadoop YARN, zijn slechts 'actief' op één hoofdknooppunt op een bepaald moment. Andere services zoals HiveServer2 of Hive MetaStore zijn tegelijkertijd actief op beide hoofdknooppunten.
 
-Als u de hostnamen voor verschillende knooppunttypen in uw cluster wilt verkrijgen, gebruikt u de [Ambari REST API.](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)
+Als u de hostnamen voor verschillende knooppunttypen in uw cluster wilt verkrijgen, gebruikt u de [Ambari REST API.](hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes)
 
 > [!IMPORTANT]  
 > Koppel de numerieke waarde niet aan de vraag of een knooppunt primair of secundair is. De numerieke waarde is alleen aanwezig om een unieke naam voor elk knooppunt op te geven.

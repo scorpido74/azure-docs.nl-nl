@@ -1,5 +1,5 @@
 ---
-title: Handleiding voor beveiligingswaarschuwingen voor Azure Security Center voor IoT| Microsoft Documenten
+title: Ingebouwde lijst met & aangepaste waarschuwingen
 description: Meer informatie over beveiligingswaarschuwingen en aanbevolen herstel met Azure Security Center voor IoT-functies en -service.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 7a319baeba3d34f3d3056ce9b42f2e733b5a874f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74a6adbd2415cfcf7d5d48cff01d189cfd8b73a5
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78296130"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311490"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Beveiligingswaarschuwingen in Azure Security Center for IoT
 
@@ -32,11 +32,9 @@ In dit artikel vindt u een lijst met ingebouwde waarschuwingen die kunnen worden
 Naast ingebouwde waarschuwingen u met Azure Security Center for IoT aangepaste waarschuwingen definiëren op basis van het verwachte IoT-hub- en/of apparaatgedrag.
 Zie [aanpasbare waarschuwingen voor](concept-customizable-security-alerts.md)meer informatie.
 
-
-
 ## <a name="built-in-alerts-for-iot-devices"></a>Ingebouwde waarschuwingen voor IoT-apparaten
 
-| Name | Severity | Gegevensbron | Beschrijving | Voorgestelde herstelstappen|                  
+| Name | Severity | Gegevensbron | Beschrijving | Voorgestelde herstelstappen|
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |**Hoge** ernst|  |  |  |
 |   Binaire opdrachtregel   | Hoog | Agent | LA Linux binaire wordt aangeroepen / uitgevoerd vanaf de command line werd gedetecteerd. Dit proces kan legitieme activiteit zijn of een indicatie dat uw apparaat is aangetast.|   Controleer de opdracht met de gebruiker die het heeft uitgevoerd en controleer of dit iets is waarvan wordt verwacht dat deze op het apparaat wordt uitgevoerd. Zo niet, escaleer t.a.v. de waarschuwing naar uw informatiebeveiligingsteam. |
@@ -52,7 +50,7 @@ Zie [aanpasbare waarschuwingen voor](concept-customizable-security-alerts.md)mee
 |  Gedrag vergelijkbaar met Fairware ransomware gedetecteerd  | Middelgroot | Agent       | Uitvoering van rm -rf commando's toegepast op verdachte locaties gedetecteerd met behulp van analyse van hostgegevens. Omdat rm -rf recursief bestanden verwijdert, wordt het normaal gesproken alleen gebruikt op discrete mappen. In dit geval wordt het gebruikt op een locatie die een grote hoeveelheid gegevens kan verwijderen. Fairware ransomware is bekend om rm -rf commando's uit te voeren in deze map. |Controleer met de gebruiker die de opdracht heeft uitgevoerd, dit was legitieme activiteit die u verwacht te zien op het apparaat. Zo niet, escaleer t.a.v. de waarschuwing naar het informatiebeveiligingsteam.
 |  Gedrag vergelijkbaar met ransomware gedetecteerd  | Middelgroot | Agent       | Uitvoering van bestanden vergelijkbaar met bekende ransomware die kunnen voorkomen dat gebruikers toegang tot hun systeem, of persoonlijke bestanden, en kan losgeld betalen om toegang te herwinnen.|Controleer met de gebruiker die de opdracht heeft uitgevoerd als dit legitieme activiteit was die u op het apparaat verwacht te zien. Zo niet, escaleer t.a.v. de waarschuwing naar het informatiebeveiligingsteam.
 |   Crypto munt mijnwerker container afbeelding gedetecteerd | Middelgroot                   | Agent       | Container die lopende bekende digitale muntmijnbouwbeelden opvoert. |  1. Als dit gedrag niet is bedoeld, verwijdert u de relevante containerafbeelding.<br> 2. Zorg ervoor dat de Docker daemon niet toegankelijk is via een onveilige TCP-socket.<br> 3. Escaleer de waarschuwing naar het informatiebeveiligingsteam.|
-|  Afbeelding van cryptomuntmijnwerker  | Middelgroot| Agent       | Uitvoering van een proces dat normaal gesproken is gekoppeld aan digitale valutamining gedetecteerd.| Controleer met de gebruiker die de opdracht heeft uitgevoerd als dit legitieme activiteit op het apparaat was. Zo niet, escaleer t.a.v. de waarschuwing naar het informatiebeveiligingsteam.| 
+|  Afbeelding van cryptomuntmijnwerker  | Middelgroot| Agent       | Uitvoering van een proces dat normaal gesproken is gekoppeld aan digitale valutamining gedetecteerd.| Controleer met de gebruiker die de opdracht heeft uitgevoerd als dit legitieme activiteit op het apparaat was. Zo niet, escaleer t.a.v. de waarschuwing naar het informatiebeveiligingsteam.|
 |   Gedetecteerd verdacht gebruik van de nohup-opdracht | Middelgroot | Agent       | Verdacht gebruik van de nohup-opdracht op de host gedetecteerd. Kwaadwillende actoren voeren vaak de nohup opdracht uit een tijdelijke directory, effectief waardoor hun executables uit te voeren op de achtergrond. Als u deze opdracht uitvoert op bestanden in een tijdelijke map, wordt dit niet verwacht of wordt het gebruikelijke gedrag niet verwacht. |Controleer met de gebruiker die de opdracht heeft uitgevoerd als dit legitieme activiteit was die u op het apparaat verwacht te zien. Zo niet, escaleer t.a.v. de waarschuwing naar het informatiebeveiligingsteam.
 |   Gedetecteerd verdacht gebruik van de opdracht Useradd  | Middelgroot      | Agent       | Verdacht gebruik van de useradd-opdracht die op het apparaat is gedetecteerd. |Controleer met de gebruiker die de opdracht heeft uitgevoerd als dit legitieme activiteit was die u op het apparaat verwacht te zien. Zo niet, escaleer t.a.v. de waarschuwing naar het informatiebeveiligingsteam.
 |  Blootgestelde Docker daemon door TCP-socket  | Middelgroot | Agent | Machinelogboeken geven aan dat uw Docker daemon (dockerd) een TCP-socket blootlegt. Standaard maakt dockerconfiguratie geen gebruik van versleuteling of verificatie wanneer een TCP-socket is ingeschakeld. Standaard Docker-configuratie maakt volledige toegang tot de Docker-daemon mogelijk, door iedereen die toegang heeft tot de desbetreffende poort.|Controleer met de gebruiker die de opdracht heeft uitgevoerd als dit legitieme activiteit was die u op het apparaat verwacht te zien. Zo niet, escaleer t.a.v. de waarschuwing naar het informatiebeveiligingsteam.
@@ -60,7 +58,7 @@ Zie [aanpasbare waarschuwingen voor](concept-customizable-security-alerts.md)mee
 |  Bestandsdownloads van een bekende schadelijke bron gedetecteerd   | Middelgroot  | Agent       |  Download van een bestand van een bekende malwarebron gedetecteerd.|Controleer met de gebruiker die de opdracht heeft uitgevoerd als dit legitieme activiteit was die u op het apparaat verwacht te zien. Zo niet, escaleer t.a.v. de waarschuwing naar het informatiebeveiligingsteam.
 |   htaccess-bestandstoegang gedetecteerd | Middelgroot                       | Agent       | Analyse van hostgegevens detecteerde mogelijke manipulatie van een htaccess-bestand. Htaccess is een krachtig configuratiebestand waarmee u meerdere wijzigingen aanbrengen in een webserver met Apache Web-software, inclusief basisomleidingsfunctionaliteit en meer geavanceerde functies, zoals basiswachtwoordbeveiliging. Kwaadwillende actoren wijzigen vaak htaccess-bestanden op gecompromitteerde machines om persistentie te krijgen. |Bevestig dat dit legitieme verwachte activiteit op de host is. Zo niet, escaleer t.a.v. de waarschuwing naar uw informatiebeveiligingsteam.|
 |  Bekende aanvalstool  | Middelgroot                                   | Agent       | Een tool vaak geassocieerd met kwaadwillende gebruikers aanvallen van andere machines op een bepaalde manier werd gedetecteerd. |Controleer met de gebruiker die de opdracht heeft uitgevoerd als dit legitieme activiteit was die u op het apparaat verwacht te zien. Zo niet, escaleer t.a.v. de waarschuwing naar het informatiebeveiligingsteam.|
-|  IoT-agent heeft geprobeerd en kan de dubbele configuratie van de module niet ontleeden | Middelgroot  | Agent       | De Azure Security Center for IoT-beveiligingsagent kan de dubbele configuratie van de module niet ontschepen vanwege foutmatches van het type in het configuratieobject|Valideer uw moduledubbele configuratie op basis van het Configuratieschema van de IoT-agent en los alle mismatches op. 
+|  IoT-agent heeft geprobeerd en kan de dubbele configuratie van de module niet ontleeden | Middelgroot  | Agent       | De Azure Security Center for IoT-beveiligingsagent kan de dubbele configuratie van de module niet ontschepen vanwege foutmatches van het type in het configuratieobject|Valideer uw moduledubbele configuratie op basis van het Configuratieschema van de IoT-agent en los alle mismatches op.
 |  Lokale gastheer verkenning gedetecteerd  | Middelgroot | Agent       | Uitvoering van een opdracht normaal geassocieerd met gemeenschappelijke Linux bot verkenning gedetecteerd. |Controleer de verdachte opdrachtregel om te controleren of deze is uitgevoerd door een legitieme gebruiker. Zo niet, escaleer t.a.v. de waarschuwing naar uw informatiebeveiligingsteam.
 |  Mismatch tussen scripttolk en bestandsextensie  | Middelgroot | Agent       | Mismatch tussen de scripttolk en de uitbreiding van het scriptbestand als gedetecteerde invoer. Dit type mismatch wordt vaak geassocieerd met uitvoeringen van het aanvallersscript. |Controleer met de gebruiker die de opdracht heeft uitgevoerd als dit legitieme activiteit was die u op het apparaat verwacht te zien. Zo niet, escaleer t.a.v. de waarschuwing naar het informatiebeveiligingsteam.
 |  Mogelijke achterdeur gedetecteerd  | Middelgroot | Agent |Er is een verdacht bestand gedownload en vervolgens uitgevoerd op een host in uw abonnement. Dit type activiteit wordt vaak geassocieerd met de installatie van een achterdeur. |Controleer met de gebruiker die de opdracht heeft uitgevoerd als dit legitieme activiteit was die u op het apparaat verwacht te zien. Zo niet, escaleer t.a.v. de waarschuwing naar het informatiebeveiligingsteam.

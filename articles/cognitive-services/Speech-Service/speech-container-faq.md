@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/14/2020
 ms.author: aahi
-ms.openlocfilehash: 4d597b872cf31a823f314d9f3c67c9f45201c542
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258470"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383084"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Spraakservicecontainers veelgestelde vragen (FAQ)
 
@@ -379,7 +379,7 @@ De dokter zegt om een andere poort bloot te leggen, wat ik doe, maar de LUIS con
 <b>Hoe kan ik niet-batch API's om audio &lt;te behandelen 15 seconden lang?</b>
 </summary>
 
-**Antwoord:** Dit is in interactieve modus. Als u dicteren of gesprek dat is geen probleem.
+**Antwoord:** `RecognizeOnce()` in de interactieve modus verwerkt u slechts tot 15 seconden audio, omdat de modus is bedoeld voor spraakopdrachten waarbij uitingen naar verwachting kort zijn. Als u `StartContinuousRecognition()` voor dicteren of gesprek gebruikt, is er geen limiet van 15 seconden.
 
 
 <br>

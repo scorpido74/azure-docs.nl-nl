@@ -1,19 +1,19 @@
 ---
 title: Apache Hadoop-clusters maken met behulp van webbrowser Azure HDInsight
-description: Meer informatie over het maken van Apache Hadoop-, Apache HBase-, Apache Storm- of Apache Spark-clusters op Linux voor HDInsight met behulp van een webbrowser en de Azure-portal.
+description: Leer Apache Hadoop, Apache HBase, Apache Storm of Apache Spark clusters maken op HDInsight. Gebruik de webbrowser en de Azure-portal.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/19/2020
-ms.openlocfilehash: bcc71b7244ba3498b2fcde023d372e67f41d6117
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: a5f6ac76d509a0a63c2d641f91cd91cdb2e0d19d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623187"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313813"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Linux-gebaseerde clusters maken in HDInsight met behulp van de Azure-portal
 
@@ -31,7 +31,7 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer in het bovenste menu **+ Een resource maken.**
 
@@ -51,7 +51,7 @@ Geef op het tabblad **Basisbeginselen** de volgende informatie op:
 |Resourcegroep|Selecteer in de vervolgkeuzelijst uw bestaande resourcegroep of selecteer **Nieuw maken**.|
 |Clusternaam|Voer een wereldwijd unieke naam in.|
 |Regio|Selecteer in de vervolgkeuzelijst een gebied waar het cluster wordt gemaakt.|
-|Clustertype|Selecteer **Clustertype selecteren** om een lijst te openen. Selecteer in de lijst het gewenste clustertype. HDInsight clusters zijn er in verschillende soorten. Ze komen overeen met de werkbelasting of technologie waarop het cluster is afgestemd. Er is geen ondersteunde methode om een cluster te maken dat meerdere typen combineert.|
+|Clustertype|Klik **op Clustertype selecteren** om een lijst te openen. Selecteer in de lijst het gewenste clustertype. HDInsight clusters zijn er in verschillende soorten. Ze komen overeen met de werkbelasting of technologie waarop het cluster is afgestemd. Er is geen ondersteunde methode om een cluster te maken dat meerdere typen combineert.|
 |Versie|Selecteer in de vervolgkeuzelijst een **versie**. Gebruik de standaardversie als u niet weet wat u moet kiezen. Zie [HDInsight-clusterversies](hdinsight-component-versioning.md) voor meer informatie.|
 |Gebruikersnaam voor clusteraanmeldgegevens|Geef de gebruikersnaam op, standaard is **beheerder**.|
 |Wachtwoord voor clusteraanmeldgegevens|Geef het wachtwoord op.|
@@ -67,7 +67,7 @@ Selecteer **Volgende: Opslag >>** om door te gaan naar het volgende tabblad.
 
 ### <a name="primary-storage"></a>Primaire opslag
 
-Selecteer in de vervolgkeuzelijst voor **primaire opslagtype**het standaardopslagtype. De volgende velden die moeten worden voltooid, variëren afhankelijk van uw selectie. Voor **Azure Storage:**
+Selecteer in de vervolgkeuzelijst voor **primaire opslagtype**het standaardopslagtype. De latere velden die moeten worden voltooid, zijn afhankelijk van uw selectie. Voor **Azure Storage:**
 
 1. Kies **voor selectiemethode** **Selecteren in lijst**of **Toegangssleutel gebruiken**.
     * Selecteer uw **primaire opslagaccount** in de vervolgkeuzelijst selecteren **voor Selecteren uit lijst**of selecteer Nieuw **maken**.
@@ -81,7 +81,7 @@ Optioneel: selecteer **Azure Storage toevoegen** voor extra clusteropslag. Het g
 
 ### <a name="metastore-settings"></a>Metastore-instellingen
 
-Optioneel: Geef een bestaande SQL-database op om Apache Hive, Apache Oozie en/of Apache Ambari-metagegevens buiten het cluster op te slaan. De Azure SQL-database die wordt gebruikt voor de metastore moet connectiviteit met andere Azure-services mogelijk maken, waaronder Azure HDInsight. Wanneer u een metastore maakt, geeft u geen naam aan een database met streepjes of koppeltekens. Deze tekens kunnen ervoor zorgen dat het proces voor het maken van het clusterproces mislukt.
+Optioneel: geef een bestaande SQL-database op om Apache Hive, Apache Oozie en of Apache Ambari-metagegevens buiten het cluster op te slaan. De Azure SQL-database die wordt gebruikt voor de metastore moet connectiviteit met andere Azure-services mogelijk maken, waaronder Azure HDInsight. Wanneer u een metastore maakt, geeft u geen naam aan een database met streepjes of koppeltekens. Deze tekens kunnen ervoor zorgen dat het proces voor het maken van het clusterproces mislukt.
 
 Selecteer **Volgende: Beveiliging + netwerk >>** om door te gaan naar het volgende tabblad.
 
@@ -158,25 +158,7 @@ Zie [Vereisten voor toegangsbeheer](./hdinsight-hadoop-customize-cluster-linux.m
 
 U hebt een HDInsight-cluster gemaakt. Lees nu hoe u met uw cluster werken.
 
-### <a name="apache-hadoop-clusters"></a>Apache Hadoop clusters
-
 * [Apache Hive gebruiken met HDInsight](hadoop/hdinsight-use-hive.md)
-* [MapReduce gebruiken met HDInsight](hadoop/hdinsight-use-mapreduce.md)
-
-### <a name="apache-hbase-clusters"></a>Apache HBase clusters
-
 * [Aan de slag met Apache HBase op HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Java-toepassingen ontwikkelen voor Apache HBase op HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
-
-### <a name="apache-storm-clusters"></a>Apache Storm clusters
-
 * [Ontwikkel Java-topologieën voor Apache Storm op HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Python-componenten gebruiken in Apache Storm op HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Topologieën implementeren en monitoren met Apache Storm op HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
-
-### <a name="apache-spark-clusters"></a>Apache Spark clusters
-
 * [Een zelfstandige toepassing maken met Scala](spark/apache-spark-create-standalone-application.md)
-* [Taken op afstand uitvoeren op een Apache Spark-cluster met Apache Livy](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark met BI: interactieve gegevensanalyse uitvoeren met Spark in HDInsight met BI-tools](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark met Machine Learning: Gebruik Spark in HDInsight om de resultaten van voedselinspectie te voorspellen](spark/apache-spark-machine-learning-mllib-ipython.md)

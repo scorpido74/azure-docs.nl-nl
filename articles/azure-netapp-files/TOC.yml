@@ -65,8 +65,6 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: Ontwikkelen
       items:
-        - name: REST
-          href: azure-netapp-files-develop-with-rest-api.md
         - name: SDK's en CLI-hulpprogramma's voor Azure NetApp Files
           href: azure-netapp-files-sdk-cli.md
         - name: Problemen met Azure NetApp Files-resourceproviders oplossen
@@ -77,7 +75,7 @@
       href: 'https://docs.microsoft.com/rest/api/netapp/'
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.netapp/allversions
-- name: Bronnen
+- name: Resources
   items:
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/netapp/'

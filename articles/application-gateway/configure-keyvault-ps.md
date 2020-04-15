@@ -1,5 +1,5 @@
 ---
-title: SSL-beëindiging configureren met Key Vault-certificaten - PowerShell
+title: TLS-beëindiging configureren met Key Vault-certificaten - PowerShell
 titleSuffix: Azure Application Gateway
 description: Meer informatie over hoe u Azure Application Gateway integreren met Key Vault voor servercertificaten die zijn gekoppeld aan luisteraars met HTTPS-functie.
 services: application-gateway
@@ -8,20 +8,20 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 15e10d34120ab5475f241235bbebeb0c7689ca14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1979f759f5a1b037adfd7b67a7be50cbba0f596f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371232"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312214"
 ---
-# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>SSL-beëindiging configureren met Key Vault-certificaten met Azure PowerShell
+# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>TLS-beëindiging configureren met Key Vault-certificaten met Azure PowerShell
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) is een door een platform beheerde geheime winkel die u gebruiken om geheimen, sleutels en SSL-certificaten te beveiligen. Azure Application Gateway ondersteunt integratie met Key Vault voor servercertificaten die zijn gekoppeld aan luisteraars met HTTPS-functie. Deze ondersteuning is beperkt tot de Application Gateway v2 SKU.
+[Azure Key Vault](../key-vault/key-vault-overview.md) is een geheim archief dat door een platform wordt beheerd en die u gebruiken om geheimen, sleutels en TLS/SSL-certificaten te beveiligen. Azure Application Gateway ondersteunt integratie met Key Vault voor servercertificaten die zijn gekoppeld aan luisteraars met HTTPS-functie. Deze ondersteuning is beperkt tot de Application Gateway v2 SKU.
 
-Zie [SSL-beëindiging met Key Vault-certificaten voor](key-vault-certs.md)meer informatie.
+Zie [TLS-beëindiging met Key Vault-certificaten](key-vault-certs.md)voor meer informatie.
 
-In dit artikel ziet u hoe u een Azure PowerShell-script gebruiken om uw sleutelkluis te integreren met uw toepassingsgateway voor SSL-beëindigingscertificaten.
+In dit artikel ziet u hoe u een Azure PowerShell-script gebruikt om uw sleutelkluis te integreren met uw toepassingsgateway voor TLS/SSL-beëindigingscertificaten.
 
 Dit artikel vereist Azure PowerShell-moduleversie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u de opdrachten in dit artikel wilt uitvoeren, moet `Connect-AzAccount`u ook een verbinding met Azure maken door .
 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> De vlag -EnableSoftDelete moet worden gebruikt om SSL-beëindiging goed te laten functioneren. Als u Key [Vault soft-delete](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior)configureert via de Portal, moet de bewaartermijn worden bewaard op 90 dagen, de standaardwaarde. Application Gateway biedt nog geen andere bewaarperiode. 
+> De vlag -EnableSoftDelete moet worden gebruikt om TLS-beëindiging goed te laten functioneren. Als u Key [Vault soft-delete](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior)configureert via de Portal, moet de bewaartermijn worden bewaard op 90 dagen, de standaardwaarde. Application Gateway biedt nog geen andere bewaarperiode. 
 
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
@@ -102,7 +102,7 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-the-ssl-certificate-to-your-key-vault"></a>Het SSL-certificaat naar uw sleutelkluis wijzen
+### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>Het TLS/SSL-certificaat naar uw sleutelkluis wijzen
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
@@ -144,4 +144,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over SSL-beëindiging](ssl-overview.md)
+[Meer informatie over TLS-beëindiging](ssl-overview.md)

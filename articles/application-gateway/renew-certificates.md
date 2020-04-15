@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: c7c27f00b9f8b4fdcd8f735f842edb8f66803c6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c0c0ab84e60335f58ac075459b95cfabb9135ac
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278006"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311952"
 ---
 # <a name="renew-application-gateway-certificates"></a>Toepassingsgatewaycertificaten vernieuwen
 
-Op een gegeven moment moet u uw certificaten vernieuwen als u de toepassingsgateway voor SSL-versleuteling hebt geconfigureerd.
+Op een gegeven moment moet u uw certificaten vernieuwen als u de toepassingsgateway voor TLS/SSL-versleuteling hebt geconfigureerd.
 
 U een certificaat verlengen dat is gekoppeld aan een listener met behulp van de Azure-portal, Azure PowerShell of Azure CLI:
 
@@ -49,7 +49,7 @@ set-AzApplicationGatewaySSLCertificate -Name <oldcertname> `
 
 Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 az network application-gateway ssl-cert update \
@@ -62,4 +62,4 @@ az network application-gateway ssl-cert update \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie SSL-offload configureren voor meer informatie over het configureren [van SSL-offloading](application-gateway-ssl-portal.md) met Azure Application Gateway
+Zie TLS Offload configureren voor meer informatie over het configureren van [TLS-offloading](application-gateway-ssl-portal.md) met Azure Application Gateway

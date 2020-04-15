@@ -1,7 +1,7 @@
 ---
 title: Client maken voor model dat is geïmplementeerd als webservice
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van een webservice die is gegenereerd toen een model werd geïmplementeerd met Azure Machine Learning-model. De webservice onthult een REST API. Maak clients voor deze API met behulp van de programmeertaal van uw keuze.
+description: Meer informatie over het aanroepen van een eindpunt van webservices dat is gegenereerd toen een model werd geïmplementeerd vanuit Azure Machine Learning. Het eindpunt onthult een REST API, die u aanroepen om gevolgtrekking met het model uit te voeren. Maak clients voor deze API met behulp van de programmeertaal van uw keuze.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 01/07/2020
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: a86b8ddb59719db9bdaffea44aecd5428ad16834
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0222b63323c4e546628d790fabb881eba006494e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282661"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383398"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning-model gebruiken dat is geïmplementeerd als webservice
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Als u een Azure Machine Learning-model als webservice implementeert, wordt een REST-API gemaakt. U gegevens naar deze API verzenden en de voorspelling ontvangen die door het model wordt geretourneerd. In dit document leert u hoe u clients voor de webservice maakt met C#, Go, Java en Python.
+Als u een Azure Machine Learning-model als webservice implementeert, wordt een REST API-eindpunt gemaakt. U gegevens naar dit eindpunt verzenden en de voorspelling ontvangen die door het model wordt geretourneerd. In dit document leert u hoe u clients voor de webservice maakt met C#, Go, Java en Python.
 
-U maakt een webservice wanneer u een afbeelding implementeert voor Azure Container Instances, Azure Kubernetes Service of field-programmeerbare gatearrays (FPGA). U maakt afbeeldingen van geregistreerde modellen en scorebestanden. U haalt de URI op die wordt gebruikt om toegang te krijgen tot een webservice met behulp van de [Azure Machine Learning SDK.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) Als verificatie is ingeschakeld, u de SDK ook gebruiken om de verificatiesleutels of tokens te krijgen.
+U maakt een webservice wanneer u een model implementeert naar uw lokale omgeving, Azure Container Instances, Azure Kubernetes Service of field-programmeerbare gate arrays (FPGA). U haalt de URI op die wordt gebruikt om toegang te krijgen tot de webservice met behulp van de [Azure Machine Learning SDK.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) Als verificatie is ingeschakeld, u de SDK ook gebruiken om de verificatiesleutels of tokens te krijgen.
 
 De algemene werkstroom voor het maken van een client die een webservice voor machine learning gebruikt, is:
 
@@ -174,6 +174,17 @@ De webservice kan meerdere sets gegevens in één aanvraag accepteren. Hiermee w
 ### <a name="binary-data"></a>Binaire gegevens
 
 Zie [Binaire gegevens](how-to-deploy-and-where.md#binary)voor informatie over het inschakelen van ondersteuning voor binaire gegevens in uw service.
+
+> [!TIP]
+> Ondersteuning inschakelen voor binaire gegevens gebeurt in het score.py bestand dat wordt gebruikt door het geïmplementeerde model. Gebruik bij de client de HTTP-functionaliteit van uw programmeertaal. In het volgende fragment wordt bijvoorbeeld de inhoud van een JPG-bestand naar een webservice verzendt:
+>
+> ```python
+> import requests
+> # Load image data
+> data = open('example.jpg', 'rb').read()
+> # Post raw data to scoring URI
+> res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/> octet-stream'})
+> ```
 
 ### <a name="cross-origin-resource-sharing-cors"></a>Cross-origin resource sharing (CORS)
 

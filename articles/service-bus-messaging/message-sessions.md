@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 4df6396d156c3fe1b75e3cac3d3f4aad7f23553a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e22641e9d4f9959c26cd2043ea2acd7e260e0f0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77660662"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314043"
 ---
 # <a name="message-sessions"></a>Berichtsessies
 Microsoft Azure Service Bus-sessies maken gezamenlijke en geordende afhandeling van niet-begrensde reeksen gerelateerde berichten mogelijk. Sessies kunnen worden gebruikt in first in, first out (FIFO) en request-response patronen. In dit artikel ziet u hoe u sessies gebruikt om deze patronen te implementeren bij het gebruik van Service Bus. 
@@ -68,7 +68,7 @@ Het sessieslot dat door de sessieontvanger wordt vastgehouden, is een paraplu vo
 
 ### <a name="message-session-state"></a>Status van berichtsessie
 
-Wanneer werkstromen worden verwerkt in cloudsystemen met grote beschikbaarheid, moet de workflowhandler die aan een bepaalde sessie is gekoppeld, kunnen herstellen van onverwachte fouten en kan hij gedeeltelijk voltooide werkzaamheden hervatten op een ander proces of machine dan waar het werk begon.
+Wanneer werkstromen worden verwerkt in cloudsystemen met grote beschikbaarheid, moet de werkstroomhandler die aan een bepaalde sessie is gekoppeld, kunnen herstellen van onverwachte fouten en kan de gedeeltelijk voltooide werkzaamheden op een ander proces of een andere machine worden hervat dan waar het werk is begonnen.
 
 De sessiestatusfaciliteit maakt een door de toepassing gedefinieerde annotatie van een berichtsessie binnen de broker mogelijk, zodat de opgenomen verwerkingsstatus ten opzichte van die sessie direct beschikbaar wordt wanneer de sessie wordt overgenomen door een nieuwe processor.
 
@@ -78,7 +78,7 @@ De API's voor het beheren van de sessiestatus, [SetState](/dotnet/api/microsoft.
 
 De sessiestatus blijft zolang deze niet is gewist **(null retourneren),** zelfs als alle berichten in een sessie worden verbruikt.
 
-Alle bestaande sessies in een wachtrij of abonnement kunnen worden opgesomd met de **SessionBrowser-methode** in de Java-API en met [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) op de [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) en [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) in de .NET-client.
+Alle bestaande sessies in een wachtrij of abonnement kunnen worden opgesomd met de **SessionBrowser-methode** in de Java-API en met [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) op de [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) en [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) in de .NET Framework-client.
 
 De sessiestatus die in een wachtrij of in een abonnement wordt gehouden, telt mee voor het opslagquotum van die entiteit. Wanneer de toepassing is voltooid met een sessie, is het daarom raadzaam voor de toepassing om de bewaarde status op te schonen om externe beheerkosten te voorkomen.
 

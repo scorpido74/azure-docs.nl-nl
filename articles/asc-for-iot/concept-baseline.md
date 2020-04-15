@@ -1,5 +1,5 @@
 ---
-title: Inzicht in Azure Security Center for IoT-basislijn| Microsoft Documenten
+title: Basislijn- en aangepaste controles
 description: Meer informatie over het concept van Azure Security Center for IoT-basislijn.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c52a3e55e3801eaaac885b9a3c364283f74906ba
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72176620"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311647"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Azure Security Center voor IoT-basislijn- en aangepaste controles
 
@@ -28,11 +28,11 @@ In dit artikel wordt uitgelegd in azure security center voor IoT-basislijn en wo
 
 ## <a name="baseline"></a>Basislijn
 
-Een basislijn stelt standaardgedrag vast voor elk apparaat en maakt het gemakkelijker om ongewoon gedrag of afwijking van verwachte normen vast te stellen.  
+Een basislijn stelt standaardgedrag vast voor elk apparaat en maakt het gemakkelijker om ongewoon gedrag of afwijking van verwachte normen vast te stellen.
 
 ## <a name="baseline-custom-checks"></a>Aangepaste controles basislijn
 
-Aangepaste controles basislijn stellen een aangepaste lijst met controles samen voor elke basislijn met behulp van de **moduleidentiteitstweeling** van het apparaat. 
+Aangepaste controles basislijn stellen een aangepaste lijst met controles samen voor elke basislijn met behulp van de **moduleidentiteitstweeling** van het apparaat.
 
 ## <a name="setting-baseline-properties"></a>Basislijneigenschappen instellen
 

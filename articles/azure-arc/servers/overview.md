@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: a441b80e4d7dd9604aa2ca69da320e462859a486
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 5fa39028f1041a063bab295adabf8145a8b46ae4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261213"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308772"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Wat is Azure Arc voor servers (voorbeeld)
 
@@ -143,7 +143,7 @@ U het Azure Connected Machine-agentpakket voor Windows en Linux downloaden van d
 >[!NOTE]
 >Tijdens deze preview is er slechts één pakket uitgebracht, dat geschikt is voor Ubuntu 16.04 of 18.04.
 
-De Azure Connected Machine-agent voor Windows en Linux kan handmatig of automatisch worden geüpgraded naar de nieuwste release, afhankelijk van uw vereisten. Zie [hier](manage-agent.md) voor meer informatie
+De Azure Connected Machine-agent voor Windows en Linux kan handmatig of automatisch worden geüpgraded naar de nieuwste release, afhankelijk van uw vereisten. Voor meer informatie, zie [hier](manage-agent.md).
 
 ### <a name="agent-status"></a>Agentstatus
 

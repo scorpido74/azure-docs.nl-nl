@@ -2,13 +2,13 @@
 title: 'Snelstart: een nieuwe app maken in de LUIS-portal'
 description: In deze quickstart maakt u de basisonderdelen van een app, intenties en entiteiten en test u met voorbeeldutterance in de LUIS-portal.
 ms.topic: quickstart
-ms.date: 03/24/2020
-ms.openlocfilehash: f0c8f0c77f832e049dfc494f82e90edb61a8cb2a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.openlocfilehash: 2d601646c43c0f0d99dc6934cf1f1c960e0b0f79
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244611"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382569"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Snelstart: een nieuwe app maken in de LUIS-portal
 
@@ -88,11 +88,10 @@ Voeg de volgende 15 voorbeelduitingen toe aan de `FindForm` intentie.
 Volgens het ontwerp variëren deze voorbeelduitingen op de volgende manieren:
 
 * utterancelengte
-* Interpunctie
+* [Interpunctie](luis-reference-application-settings.md#punctuation-normalization)
 * woordkeuze
 * werkwoord gespannen (is, was, zal zijn)
 * woordvolgorde
-
 
 
 ## <a name="create-a-regular-expression-entity"></a>Een entiteit met reguliere expressiemaken

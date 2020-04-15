@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280532"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382918"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory-integratie voor Azure Red Hat OpenShift
 
@@ -25,13 +25,13 @@ Controleer in de [Azure-portal](https://portal.azure.com)of uw tenant rechtsbove
 
 ![Schermafbeelding van portal met tenant](./media/howto-create-tenant/tenant-callout.png) rechtsboven Als de verkeerde tenant wordt weergegeven, klikt u rechtsboven op uw gebruikersnaam, klikt u op **Switch Directory**en selecteert u de juiste tenant in de lijst **Alle mappen.**
 
-Maak een nieuwe Azure Active Directory globale beheerder gebruiker aan te melden bij uw Azure Red Hat OpenShift cluster.
+Maak een nieuwe Azure Active Directory 'Owner'-gebruiker om u aan te melden bij uw Azure Red Hat OpenShift-cluster.
 
 1. Ga naar het gebruikersblad [van gebruikers.](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)
 2. Klik **op +Nieuwe gebruiker** om het deelvenster Gebruiker **te** openen.
 3. Voer een **naam** in voor deze gebruiker.
 4. Maak een **gebruikersnaam** op basis van de naam `.onmicrosoft.com` van de tenant die u hebt gemaakt, met aan het einde toegevoegd. Bijvoorbeeld `yourUserName@yourTenantName.onmicrosoft.com`. Noteer deze gebruikersnaam. Je hebt het nodig om je aan te melden bij je cluster.
-5. Klik op **Maprol** om het maprolvenster te openen en selecteer **Globale beheerder** en klik vervolgens op **Ok** onder aan het deelvenster.
+5. Klik op **Maprol** om het maprolvenster te openen en selecteer **Eigenaar** en klik vervolgens op **Ok** onder aan het deelvenster.
 6. Klik **in** het deelvenster Gebruiker op **Wachtwoord weergeven** en neem het tijdelijke wachtwoord op. Nadat je je de eerste keer hebt aangemeld, wordt je gevraagd deze opnieuw in te stellen.
 7. Klik onder aan het deelvenster op **Maken** om de gebruiker te maken.
 

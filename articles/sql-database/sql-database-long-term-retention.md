@@ -1,6 +1,6 @@
 ---
-title: Back-ups tot 10 jaar opslaan
-description: Ontdek hoe Azure SQL Database het opslaan van volledige databaseback-ups tot 10 jaar ondersteunt.
+title: Langetermijnretentie van back-ups
+description: Ontdek hoe Azure SQL Database het opslaan van volledige databaseback-ups voor maximaal 10 jaar ondersteunt via het langetermijnbewaarbeleid.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,20 +11,22 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 15a2d58d2fc14c370c41d5454d62c74a5b66ad42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d015eea21bcfa499d6751e024a882a7316b7f1a5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77499977"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380763"
 ---
-# <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL Database-back-ups tot tien jaar bewaren
+# <a name="azure-sql-database-long-term-retention"></a>Azure SQL Database langetermijnretentie
 
-Veel toepassingen hebben wettelijke, nalevings- of andere zakelijke doeleinden waarvoor u databaseback-ups moet behouden na de automatische [back-ups](sql-database-automated-backups.md)van De ASQL Database. Door de LTR-functie (Long-Term Retention) te gebruiken, u bepaalde SQL-databasevolledige back-ups maximaal 10 jaar opslaan in Azure Blob-opslag met georedundante opslag met leestoegang. U vervolgens elke back-up herstellen als een nieuwe database. Zie [Redundantie azure storage](../storage/common/storage-redundancy.md)voor meer informatie over redundantie voor Azure Storage.
+Veel toepassingen hebben wettelijke, nalevings- of andere zakelijke doeleinden waarvoor u databaseback-ups moet behouden na de automatische [back-ups](sql-database-automated-backups.md)van De ASQL Database. Door de LTR-functie (Long-Term Retention) te gebruiken, u bepaalde SQL-databasevolledige back-ups maximaal 10 jaar opslaan in Azure Blob-opslag met georedundante opslag met leestoegang. U vervolgens elke back-up herstellen als een nieuwe database. Zie [Redundantie azure storage](../storage/common/storage-redundancy.md)voor meer informatie over redundantie voor Azure Storage. 
+
+Lange tijd bewaren kan worden ingeschakeld voor afzonderlijke en gepoolde databases en is in beperkte openbare preview voor Azure SQL Database beheerde exemplaren. 
 
 > [!NOTE]
-> LTR kan worden ingeschakeld voor afzonderlijke en gepoolde databases. Het is nog niet beschikbaar voor bijvoorbeeld databases in Beheerde instanties. U SQL Agent-taken gebruiken om [alleen-kopiëren-databaseback-ups](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) te plannen als alternatief voor LTR na 35 dagen.
-> 
+> U SQL Agent-taken gebruiken om [alleen-kopiëren-databaseback-ups](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) te plannen als alternatief voor LTR na 35 dagen.
+
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Hoe langetermijnretentie van SQL Database werkt
 
@@ -74,6 +76,16 @@ Als u actieve georeplicatie- of failovergroepen gebruikt als uw bedrijfscontinu�
 
 > [!NOTE]
 > Wanneer de oorspronkelijke primaire database herstelt van een storing die de failover heeft veroorzaakt, wordt deze een nieuwe secundaire. Daarom wordt de back-up niet hervat en wordt het bestaande LTR-beleid pas van kracht als het de primaire wordt. 
+
+## <a name="managed-instance-support"></a>Ondersteuning voor beheerde instantie
+
+Het gebruik van lange termijn back-upretentie met een Azure SQL Database beheerde exemplaren heeft de volgende beperkingen:
+
+- **Beperkte openbare preview** - Deze preview is alleen beschikbaar voor EA- en CSP-abonnementen en is onderhevig aan beperkte beschikbaarheid.  
+- [**PowerShell alleen**](sql-database-managed-instance-long-term-backup-retention-configure.md) - Er is momenteel geen Azure-portalondersteuning. LTR moet zijn ingeschakeld met PowerShell. 
+
+Als u inschrijving wilt aanvragen, maakt u een [Azure-ondersteuningsticket](https://azure.microsoft.com/support/create-ticket/) onder het ondersteuningsonderwerp **Back-up, Herstel en Bedrijfscontinuïteit / Behoud van back-ups op lange termijn.**
+
 
 ## <a name="configure-long-term-backup-retention"></a>Langetermijnretentie van back-ups configureren
 

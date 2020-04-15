@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 4/3/2020
-ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 6a1d2f6079280002c868702a6547c8fd359a7c21
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657064"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310128"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverless
 
@@ -138,6 +138,8 @@ Autoresuming wordt geactiveerd als een van de volgende voorwaarden op enig momen
 |SQL-gegevenssynchronisatie|Synchronisatie tussen hub- en liddatabases die volgens een configureerbaar schema worden uitgevoerd of handmatig worden uitgevoerd|
 |Bepaalde databasemetagegevens wijzigen|Nieuwe databasetags toevoegen.<br>Het wijzigen van max vCores, min vCores of autopause vertraging.|
 |SQL Server Management Studio (SSMS)|Als u SSMS-versies eerder dan 18.1 gebruikt en een nieuw queryvenster opent voor een database in de server, wordt elke automatisch onderbroken database in dezelfde server hervat. Dit gedrag treedt niet op als u SSMS-versie 18.1 of hoger gebruikt.|
+
+Monitoring, beheer of andere oplossingen die een van de hierboven genoemde bewerkingen uitvoeren, leiden tot automatisch hervatten.
 
 Autoresuming wordt ook geactiveerd tijdens de implementatie van een aantal service-updates waarvoor de database online moet zijn.
 

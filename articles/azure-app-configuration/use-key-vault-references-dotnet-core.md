@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 01/21/2020
+ms.date: 04/08/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: eceb4a9d4e0cc84166280f30b094b82088f53a4a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4641c50f0579e2a8db514df58c0401eb2173d793
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79475303"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309051"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Zelfstudie: Key Vault-verwijzingen gebruiken in een ASP.NET Core-app
 
@@ -82,7 +82,7 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Een Key Vault-verwijzing toevoegen aan app-configuratie
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Alle resources**en selecteer vervolgens de instantie app-configuratiearchief die u in de snelstart hebt gemaakt.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Alle resources**en selecteer vervolgens de instantie app-configuratiearchief die u in de snelstart hebt gemaakt.
 
 1. Selecteer **Configuratieverkenner**.
 
@@ -132,7 +132,7 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
     setx AZURE_TENANT_ID <tenantId-of-your-service-principal>
     ```
 
-    #### <a name="powershell"></a>[Powershell](#tab/powershell)
+    #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```PowerShell
     $Env:AZURE_CLIENT_ID = <clientId-of-your-service-principal>
@@ -160,14 +160,12 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
 1. Voeg een verwijzing toe naar de vereiste NuGet-pakketten door de volgende opdracht uit te voeren:
 
     ```dotnetcli
-    dotnet add package Microsoft.Azure.KeyVault
     dotnet add package Azure.Identity
     ```
 
 1. Open *Program.cs*en voeg verwijzingen toe naar de volgende vereiste pakketten:
 
     ```csharp
-    using Microsoft.Azure.KeyVault;
     using Azure.Identity;
     ```
 

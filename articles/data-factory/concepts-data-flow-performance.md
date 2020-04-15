@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.date: 04/14/2020
+ms.openlocfilehash: 18f8b0732e4af0229ff225d9c3b423e27bf342a8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409846"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382803"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Prestaties en tuninggids voor gegevensstromen in kaart brengen
 
@@ -37,7 +37,7 @@ Tijdens het ontwerpen van toewijzingsgegevensstromen u elke transformatie testen
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Compute-grootte vergroten in Azure Integration Runtime
 
-Een Integratieruntijd met meer kernen verhoogt het aantal knooppunten in de Spark-compute-omgevingen en biedt meer verwerkingskracht om uw gegevens te lezen, schrijven en transformeren.
+Een Integratieruntijd met meer kernen verhoogt het aantal knooppunten in de Spark-compute-omgevingen en biedt meer verwerkingskracht om uw gegevens te lezen, schrijven en transformeren. ADF Data Flows maakt gebruik van Spark voor de compute engine. De Spark-omgeving werkt zeer goed op geheugengeoptimaliseerde bronnen.
 * Probeer een **compute optimized** cluster als u wilt dat de verwerkingssnelheid hoger is dan de invoersnelheid.
 * Probeer een **cluster met geheugengeoptimaliseerde** cluster als u meer gegevens in het geheugen wilt opslaan. Geheugen geoptimaliseerd heeft een hogere prijs-punt per core dan Compute Optimized, maar zal waarschijnlijk resulteren in hogere transformatie snelheden.
 
@@ -49,7 +49,11 @@ Zie [Runtime integratie in Azure Data Factory](concepts-integration-runtime.md)v
 
 Als u foutopsporing inschakelt, wordt standaard de runtime van Azure Integration gebruikt die automatisch wordt gemaakt voor elke gegevensfabriek. Deze standaard Azure IR is ingesteld voor acht cores, vier voor een stuurprogrammaknooppunt en vier voor een werknemersknooppunt, met behulp van algemene compute-eigenschappen. Terwijl u test met grotere gegevens, u de grootte van uw foutopsporingscluster vergroten door een Azure IR met grotere configuraties te maken en deze nieuwe Azure IR te kiezen wanneer u foutopsporingsinschakelt. Hierdoor wordt ADF geïnstrueerd om deze Azure IR te gebruiken voor gegevensvoorbeeld en pijplijnfoutbug met gegevensstromen.
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optimaliseren voor Azure SQL Database en Azure SQL Data Warehouse
+### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>Opstarttijd voor clustergegevens verlagen met TTL
+
+Er is een eigenschap in de Azure IR onder Gegevensstroomeigenschappen waarmee u een groep clustercomputeresources voor uw fabriek staan. Met deze groep u achtereenvolgens gegevensstroomactiviteiten indienen voor uitvoering. Zodra de pool is ingesteld, duurt elke volgende taak 1-2 minuten voordat het on-demand Spark-cluster uw taak uitvoert. De initiële set-up van de resourcepool duurt ongeveer 6 minuten. Geef de hoeveelheid tijd op die u de resourcegroep wilt behouden in de time-to-live (TTL)-instelling.
+
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Optimaliseren voor Azure SQL Database en Azure SQL Data Warehouse Synapse
 
 ### <a name="partitioning-on-source"></a>Partitioneren op bron
 

@@ -1,5 +1,5 @@
 ---
-title: SSL-beëindiging met Azure Key Vault-certificaten
+title: TLS-beëindiging met Azure Key Vault-certificaten
 description: Meer informatie over hoe u Azure Application Gateway integreren met Key Vault voor servercertificaten die zijn gekoppeld aan luisteraars met HTTPS-functie.
 services: application-gateway
 author: vhorne
@@ -7,32 +7,32 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 5633dd7b72f4de22cd34b7d093e8ec4d9cb411f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26093d051da8f2182a40f80837acbd9ef7dd008f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77137706"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312078"
 ---
-# <a name="ssl-termination-with-key-vault-certificates"></a>SSL-beëindiging met Key Vault-certificaten
+# <a name="tls-termination-with-key-vault-certificates"></a>TLS-beëindiging met Key Vault-certificaten
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) is een door een platform beheerde geheime winkel die u gebruiken om geheimen, sleutels en SSL-certificaten te beveiligen. Azure Application Gateway ondersteunt integratie met Key Vault voor servercertificaten die zijn gekoppeld aan luisteraars met HTTPS-functie. Deze ondersteuning is beperkt tot de v2 SKU of Application Gateway.
+[Azure Key Vault](../key-vault/key-vault-overview.md) is een geheim archief dat door een platform wordt beheerd en die u gebruiken om geheimen, sleutels en TLS/SSL-certificaten te beveiligen. Azure Application Gateway ondersteunt integratie met Key Vault voor servercertificaten die zijn gekoppeld aan luisteraars met HTTPS-functie. Deze ondersteuning is beperkt tot de v2 SKU of Application Gateway.
 
-Key Vault-integratie biedt twee modellen voor SSL-beëindiging:
+Key Vault-integratie biedt twee modellen voor TLS-beëindiging:
 
-- U expliciet SSL-certificaten aan de listener verstrekken. Dit model is de traditionele manier om SSL-certificaten door te geven aan Application Gateway voor SSL-beëindiging.
+- U tls/SSL-certificaten expliciet aan de listener koppelen. Dit model is de traditionele manier om TLS/SSL-certificaten door te geven aan Application Gateway voor TLS-beëindiging.
 - U optioneel een verwijzing naar een bestaand Key Vault-certificaat of geheim geven wanneer u een naar HTTPS-enabled listener maakt.
 
 Application Gateway-integratie met Key Vault biedt vele voordelen, waaronder:
 
-- Betere beveiliging, omdat SSL-certificaten niet direct worden afgehandeld door het toepassingsontwikkelingsteam. Integratie maakt het mogelijk om een apart beveiligingsteam te laten:
+- Betere beveiliging, omdat TLS/SSL-certificaten niet direct worden afgehandeld door het ontwikkelteam van de toepassing. Integratie maakt het mogelijk om een apart beveiligingsteam te laten:
   * Toepassingsgateways instellen.
   * Levenscyclus van toepassingsgateways beheren.
   * Geef machtigingen aan geselecteerde toepassingsgateways om toegang te krijgen tot certificaten die zijn opgeslagen in uw sleutelkluis.
 - Ondersteuning voor het importeren van bestaande certificaten in uw sleutelkluis. Of gebruik Key Vault API's om nieuwe certificaten te maken en te beheren met een van de vertrouwde Key Vault-partners.
 - Ondersteuning voor automatische verlenging van certificaten die zijn opgeslagen in uw sleutelkluis.
 
-Application Gateway ondersteunt momenteel alleen softwaregevalideerde certificaten. Certificaten die door hardwarebeveiligingsmodule (HSM) zijn gevalideerd, worden niet ondersteund. Nadat Application Gateway is geconfigureerd om Key Vault-certificaten te gebruiken, halen de exemplaren het certificaat op uit Key Vault en installeren ze lokaal voor SSL-beëindiging. De instanties peilen Key Vault ook met intervallen van 24 uur om een vernieuwde versie van het certificaat op te halen, als deze bestaat. Als er een bijgewerkt certificaat wordt gevonden, wordt het SSL-certificaat dat momenteel is gekoppeld aan de HTTPS-listener automatisch geroteerd.
+Application Gateway ondersteunt momenteel alleen softwaregevalideerde certificaten. Certificaten die door hardwarebeveiligingsmodule (HSM) zijn gevalideerd, worden niet ondersteund. Nadat Application Gateway is geconfigureerd om Key Vault-certificaten te gebruiken, halen de exemplaren het certificaat op uit Key Vault en installeren ze lokaal voor TLS-beëindiging. De instanties peilen Key Vault ook met intervallen van 24 uur om een vernieuwde versie van het certificaat op te halen, als deze bestaat. Als er een bijgewerkt certificaat wordt gevonden, wordt het TLS/SSL-certificaat dat momenteel is gekoppeld aan de HTTPS-listener automatisch geroteerd.
 
 > [!NOTE]
 > De Azure-portal ondersteunt alleen KeyVault-certificaten, geen geheimen. Application Gateway ondersteunt nog steeds verwijzingen naar geheimen van KeyVault, maar alleen via niet-Portal-bronnen zoals PowerShell, CLI, API, ARM-sjablonen, enz. 
@@ -51,10 +51,10 @@ Application Gateway-integratie met Key Vault vereist een configuratieproces in d
 
 1. **De toepassingsgateway configureren**
 
-   Nadat u de twee voorgaande stappen hebt voltooid, u een bestaande toepassingsgateway instellen of wijzigen om de door de gebruiker toegewezen beheerde identiteit te gebruiken. U ook het SSL-certificaat van de HTTP-listener configureren om te wijzen op de volledige URI van het Key Vault-certificaat of de geheime ID.
+   Nadat u de twee voorgaande stappen hebt voltooid, u een bestaande toepassingsgateway instellen of wijzigen om de door de gebruiker toegewezen beheerde identiteit te gebruiken. U ook het TLS/SSL-certificaat van de HTTP-listener configureren om naar de volledige URI van het Key Vault-certificaat of geheime ID te wijzen.
 
    ![Key vault certificaten](media/key-vault-certs/ag-kv.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[SSL-beëindiging configureren met Key Vault-certificaten met Azure PowerShell](configure-keyvault-ps.md)
+[TLS-beëindiging configureren met Key Vault-certificaten met Azure PowerShell](configure-keyvault-ps.md)

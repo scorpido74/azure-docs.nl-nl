@@ -1,24 +1,25 @@
 ---
 title: Beheergroepen maken om resources te ordenen - Azure Governance
 description: Meer informatie over het maken van Azure-beheergroepen om meerdere resources te beheren met behulp van de portal, Azure PowerShell en Azure CLI.
-ms.date: 12/18/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: a06679432d795b5b7854af8dc66b468841978e9c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 34815089367512c4aa54f148c118a669625d0ea3
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273185"
+ms.locfileid: "81381585"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Beheergroepen maken voor het organiseren en beheren van resources
 
 Beheergroepen zijn containers waarmee u toegang, beleid en naleving voor meerdere abonnementen beheren. Maak deze containers om een effectieve en efficiënte hiërarchie op te bouwen die kan worden gebruikt met [Azure Policy](../policy/overview.md) en Azure Role Based [Access Controls](../../role-based-access-control/overview.md). Zie [Uw resources ordenen met Azure-beheergroepen](overview.md)voor meer informatie over beheergroepen.
 
-De eerste beheergroep die in de map is gemaakt, kan tot 15 minuten in beslag nemen. Er zijn processen die de eerste keer worden uitgevoerd om de beheergroepenservice binnen Azure voor uw directory in te stellen. U ontvangt een melding wanneer het proces is voltooid. Zie [de eerste installatie van beheergroepen](./overview.md#initial-setup-of-management-groups)voor meer informatie . 
+De eerste beheergroep die in de map is gemaakt, kan tot 15 minuten in beslag nemen. Er zijn processen die de eerste keer worden uitgevoerd om de beheergroepenservice binnen Azure voor uw directory in te stellen. U ontvangt een melding wanneer het proces is voltooid. Zie [de eerste installatie van beheergroepen](./overview.md#initial-setup-of-management-groups)voor meer informatie .
 
 ## <a name="create-a-management-group"></a>Een beheergroep maken
 
-Elke Azure AD-gebruiker in de tenant kan een beheergroep maken zonder dat de schrijfmachtiging voor de beheergroep aan die gebruiker is toegewezen.  Deze nieuwe beheergroep wordt een kind van de Root Management Group en de maker krijgt een "Eigenaar" rolopdracht. Beheergroep service maakt dit mogelijk, zodat roltoewijzingen niet nodig zijn op het basisniveau. Geen gebruikers hebben toegang tot de Root Management Group wanneer deze wordt gemaakt.  Om te voorkomen dat de Azure AD Global Administrators worden gevonden om beheergroepen te gaan gebruiken, staan we de creatie van de eerste beheergroepen op het hoofdniveau toe.      
+Elke Azure AD-gebruiker in de tenant kan een beheergroep maken zonder dat de schrijfmachtiging voor de beheergroep aan die gebruiker is toegewezen. Deze nieuwe beheergroep wordt een kind van de Root Management Group en de maker krijgt een "Eigenaar" rolopdracht. Beheergroep service maakt dit mogelijk, zodat roltoewijzingen niet nodig zijn op het basisniveau. Geen gebruikers hebben toegang tot de Root Management Group wanneer deze wordt gemaakt. Om te voorkomen dat de Azure AD Global Admins worden gevonden om beheergroepen te gaan gebruiken, staan we de creatie toe van de eerste beheergroepen aan de basis  
+Niveau.
 
 U de beheergroep maken met behulp van de portal, een [Resource Manager-sjabloon,](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)PowerShell of Azure CLI.
 
@@ -34,14 +35,15 @@ U de beheergroep maken met behulp van de portal, een [Resource Manager-sjabloon,
 
 1. Selecteer **+ Beheergroep toevoegen**.
 
-   ![Pagina voor het werken met beheergroepen](./media/main.png)
+   :::image type="content" source="./media/main.png" alt-text="Pagina voor het werken met beheergroepen" border="false":::
 
 1. Vul het veld beheergroep-id in.
 
    - De **managementgroep-id** is de unieke id van de map die wordt gebruikt om opdrachten in te dienen voor deze beheergroep. Deze id is niet bewerkbaar na het maken, omdat deze in het hele Azure-systeem wordt gebruikt om deze groep te identificeren. De [hoofdbeheergroep](overview.md#root-management-group-for-each-directory) wordt automatisch gemaakt met een id die de Azure Active Directory ID is. Wijs voor alle andere beheergroepen een unieke ID toe.
-   - Het veld weergavenaam is de naam die wordt weergegeven in de Azure-portal. Een aparte weergavenaam is een optioneel veld bij het maken van de beheergroep en kan op elk gewenst moment worden gewijzigd.  
+   - Het veld weergavenaam is de naam die wordt weergegeven in de Azure-portal. Een aparte weergavenaam is een optioneel veld bij het maken van de beheergroep en kan  
+     Tijd.
 
-   ![Deelvenster Opties voor het maken van een nieuwe beheergroep](./media/create_context_menu.png)  
+   :::image type="content" source="./media/create_context_menu.png" alt-text="Deelvenster Opties voor het maken van een nieuwe beheergroep" border="false":::
 
 1. Selecteer **Opslaan**.
 
@@ -94,8 +96,8 @@ az account management-group create --name ContosoSubGroup --parent Contoso
 
 Voor meer informatie over beheergroepen gaat u naar:
 
-- [Beheergroepen maken om Azure-resources te ordenen](create.md)
-- [Uw beheergroepen wijzigen, verwijderen of beheren](manage.md)
+- [Beheergroepen maken om Azure-resources te ordenen](./create.md)
+- [Uw beheergroepen wijzigen, verwijderen of beheren](./manage.md)
 - [Beheergroepen bekijken via de module voor Azure PowerShell-resources](/powershell/module/az.resources#resources)
 - [Beheergroepen bekijken via de REST-API](/rest/api/resources/managementgroups)
 - [Beheergroepen bekijken via de Azure-CLI](/cli/azure/account/management-group)

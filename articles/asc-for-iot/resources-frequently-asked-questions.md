@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen voor Azure Security Center voor IoT| Microsoft Documenten
+title: Veelgestelde vragen
 description: Vind antwoorden op de meest gestelde vragen over Azure Security Center voor IoT-functies en -service.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 639a3f89e470a832279add8d2ed7cf49441611f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02736b63b900600c51eda8666aff0117b9307824
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73571788"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310770"
 ---
-# <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Veelgestelde vragen over Azure Security Center for IoT  
+# <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Veelgestelde vragen over Azure Security Center for IoT
 
-In dit artikel vindt u een lijst met veelgestelde vragen en antwoorden over Azure Security Center for IoT. 
+In dit artikel vindt u een lijst met veelgestelde vragen en antwoorden over Azure Security Center for IoT.
 
 ## <a name="does-azure-provide-support-for-iot-security"></a>Biedt Azure ondersteuning voor IoT-beveiliging?
 
@@ -34,17 +34,17 @@ Azure biedt een geïntegreerde weergave voor het bewaken en beheren van uw IoT-b
 
 Azure Security Center for IoT stelt bedrijven in staat om hun bestaande cyberbeveiligingsweergave uit te breiden naar hun volledige IoT-oplossing. Azure biedt een end-to-end-weergave van uw bedrijfsoplossing, zodat u zakelijke acties en beslissingen nemen op basis van uw bedrijfsbeveiligingshouding en verzamelde gegevens. Dankzij de gecombineerde beveiliging met Azure IoT, Azure IoT Edge en Azure Security Center u de gewenste oplossing maken met de beveiliging die u nodig hebt.
 
-## <a name="who-is-azure-security-center-for-iot-made-for"></a>Voor wie is Azure Security Center for IoT gemaakt? 
+## <a name="who-is-azure-security-center-for-iot-made-for"></a>Voor wie is Azure Security Center for IoT gemaakt?
 
 Azure Security Center for IoT is geïntegreerd in Azure IoT Hub Security en biedt beheer voor de dagelijkse beveiligingsbewerkingen voor bedrijfsoplossingen. Azure Security Center for IoT is ook geïntegreerd in azure security center-mogelijkheden en biedt een geïntegreerde weergave voor het bewaken en beheren van uw IoT-beveiliging als onderdeel van uw algehele beveiligingsoplossing.
 
 ## <a name="how-does-azure-security-center-for-iot-compare-to-the-competition"></a>Hoe verhoudt Azure Security Center for IoT zich tot de concurrentie?
 
-Terwijl andere oplossingen een reeks mogelijkheden bieden waarmee klanten hun eigen oplossingen kunnen maken, biedt Azure Security Center for IoT een unieke end-to-end IoT-beveiligingsoplossing die een breed overzicht biedt van de beveiliging van al uw gerelateerde Azure Middelen. Azure maakt snelle implementatie en volledige integratie met IoT Hub-module twins mogelijk voor eenvoudige integratie met bestaande tools voor apparaatbeheer.
+Terwijl andere oplossingen een reeks mogelijkheden bieden waarmee klanten hun eigen oplossingen kunnen maken, biedt Azure Security Center for IoT een unieke end-to-end IoT-beveiligingsoplossing die een breed overzicht biedt van de beveiliging van al uw gerelateerde Azure-bronnen. Azure maakt snelle implementatie en volledige integratie met IoT Hub-module twins mogelijk voor eenvoudige integratie met bestaande tools voor apparaatbeheer.
 
 ## <a name="do-i-have-to-be-an-azure-security-center-customer-to-use-this-service"></a>Moet ik klant zijn van het Azure Security Center om deze service te kunnen gebruiken?
 
-Nee, maar het wordt aanbevolen. Zonder Azure Security Center ontvangt Azure Security Center voor IoT beperkte verbonden brongegevens en biedt het een beperkte analyse van uw potentiële aanvalsoppervlak, bedreigingen en potentiële aanvallen. 
+Nee, maar het wordt aanbevolen. Zonder Azure Security Center ontvangt Azure Security Center voor IoT beperkte verbonden brongegevens en biedt het een beperkte analyse van uw potentiële aanvalsoppervlak, bedreigingen en potentiële aanvallen.
 
 ## <a name="do-i-have-to-be-an-azure-iot-customer"></a>Moet ik een Azure IoT-klant zijn?
 
@@ -56,9 +56,9 @@ Installatie van agenten op uw IoT-apparaten is niet verplicht om het Microsoft A
 
 1. Installeer de Azure Security Center voor IoT-beveiligingsagent met of zonder wijzigingen. Deze optie biedt het hoogste niveau van verbeterde beveiligingsinzichten in het gedrag en de toegang tot apparaten.
 
-2. Maak uw eigen agent en implementeer het microsoft Azure Security Center for IoT-beveiligingsberichtschema. Met deze optie u gebruik maken van Microsoft Azure Security Center voor IoT-analysetools bovenop uw apparaatbeveiligingsagent.
+1. Maak uw eigen agent en implementeer het microsoft Azure Security Center for IoT-beveiligingsberichtschema. Met deze optie u gebruik maken van Microsoft Azure Security Center voor IoT-analysetools bovenop uw apparaatbeveiligingsagent.
 
-3. Er is geen installatie van beveiligingsagenten op uw IoT-apparaten. Deze optie maakt IoT Hub-communicatiebewaking mogelijk, met minder beveiligingsbewaking en beheermogelijkheden. 
+1. Er is geen installatie van beveiligingsagenten op uw IoT-apparaten. Deze optie maakt IoT Hub-communicatiebewaking mogelijk, met minder beveiligingsbewaking en beheermogelijkheden.
 
 ## <a name="what-does-the-azure-security-center-for-iot-agent-do"></a>Wat doet de Azure Security Center for IoT-agent?
 
@@ -68,13 +68,13 @@ Azure Security Center voor IoT-agent biedt dekking op apparaatniveau voor appara
 
 Het Azure Security Center voor IoT-beveiligingsagent is open source en beschikbaar op GitHub https://github.com/Azure/Azure-Security-IoTin 32-bits en 64-bits Windows- en Linux-versies: .
 
-## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>Waar wordt de Azure Security Center for IoT-agent geïnstalleerd? 
+## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>Waar wordt de Azure Security Center for IoT-agent geïnstalleerd?
 
 Gedetailleerde informatie over installatie- en agentimplementatie https://github.com/Azure/Azure-IoT-Securityis te vinden in GitHub: .
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Wat zijn de afhankelijkheden en voorwaarden van de agent?
 
-Azure Security Center for IoT ondersteunt een breed scala aan platforms. Zie [Ondersteunde apparaatplatforms](how-to-deploy-agent.md) om de ondersteuning voor uw specifieke apparaten te verifiëren. 
+Azure Security Center for IoT ondersteunt een breed scala aan platforms. Zie [Ondersteunde apparaatplatforms](how-to-deploy-agent.md) om de ondersteuning voor uw specifieke apparaten te verifiëren.
 
 ## <a name="which-data-is-collected-by-the-agent"></a>Welke gegevens worden verzameld door de agent?
 
@@ -90,7 +90,7 @@ Azure Security Center for IoT biedt configureerbare agentscans, gegevensbuffers 
 
 ## <a name="do-agent-messages-use-up-quota-from-iot-hub"></a>Gebruiken agentberichten quota van IoT Hub?
 
-Ja. Agent verzonden gegevens wordt meegeteld in uw IoT Hub-quotum. 
+Ja. Agent verzonden gegevens wordt meegeteld in uw IoT Hub-quotum.
 
 ## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Wat nu? Ik heb een agent geïnstalleerd en zie geen activiteiten of logboeken ...
 
@@ -98,15 +98,15 @@ Ja. Agent verzonden gegevens wordt meegeteld in uw IoT Hub-quotum.
 
 1. Controleer of de [agent op het apparaat wordt uitgevoerd.](how-to-agent-configuration.md)
 
-2. Controleer of de [service is ingeschakeld voor](quickstart-onboard-iot-hub.md) **beveiliging** in uw IoT-hub. 
+1. Controleer of de [service is ingeschakeld voor](quickstart-onboard-iot-hub.md) **beveiliging** in uw IoT-hub.
 
-3. Controleer of het apparaat is [geconfigureerd in IoT Hub met de Azure Security Center for IoT-module.](quickstart-create-security-twin.md)  
+1. Controleer of het apparaat is [geconfigureerd in IoT Hub met de Azure Security Center for IoT-module.](quickstart-create-security-twin.md)
 
 Als de activiteiten of logboeken nog steeds niet beschikbaar zijn, neemt u contact op met uw Azure Security Center voor IoT-partner voor extra hulp.
 
 ## <a name="what-happens-when-the-internet-connection-stops-working"></a>Wat gebeurt er als de internetverbinding niet meer werkt?
 
-De agent blijft gegevens uitvoeren en opslaan zolang het apparaat wordt uitgevoerd. Gegevens worden opgeslagen in de cache van beveiligingsberichten op basis van de grootteconfiguratie. Wanneer het apparaat de verbinding weer opneemt, worden beveiligingsberichten weer verzonden. 
+De agent blijft gegevens uitvoeren en opslaan zolang het apparaat wordt uitgevoerd. Gegevens worden opgeslagen in de cache van beveiligingsberichten op basis van de grootteconfiguratie. Wanneer het apparaat de verbinding weer opneemt, worden beveiligingsberichten weer verzonden.
 
 ## <a name="if-the-device-is-restarted-will-the-security-agent-self-recover"></a>Als het apparaat opnieuw wordt opgestart, herstelt de beveiligingsagent dan zichzelf?
 
@@ -120,32 +120,29 @@ De agent verbruikt machineresources als elke andere toepassing/proces en mag de 
 
 De agent kan niet worden uitgeschakeld.
 
-## <a name="is-there-a-way-to-test-if-the-agent-is-working-correctly"></a>Is er een manier om te testen of de agent goed werkt? 
+## <a name="is-there-a-way-to-test-if-the-agent-is-working-correctly"></a>Is er een manier om te testen of de agent goed werkt?
 
 Als de agent stopt met communiceren of geen beveiligingsberichten verzendt, wordt een **waarschuwing voor een apparaat stil** gegenereerd.
 
 ## <a name="can-i-create-my-own-alerts"></a>Kan ik mijn eigen waarschuwingen maken?
 
-Ja. U een aangepaste waarschuwing instellen op vooraf bepaalde reeks gedragingen, zoals IP-adres en geopende poorten. Zie [Aangepaste waarschuwingen maken](quickstart-create-custom-alerts.md) voor meer informatie over aangepaste waarschuwingen en hoe u deze maken. 
+Ja. U een aangepaste waarschuwing instellen op vooraf bepaalde reeks gedragingen, zoals IP-adres en geopende poorten. Zie [Aangepaste waarschuwingen maken](quickstart-create-custom-alerts.md) voor meer informatie over aangepaste waarschuwingen en hoe u deze maken.
 
 ## <a name="where-can-i-see-logs-can-i-customize-logs"></a>Waar kan ik logboeken zien? Kan ik logboeken aanpassen?
 
 - Bekijk waarschuwingen en aanbevelingen met uw verbonden Log Analytics-werkruimte. Configureer de opslaggrootte en -duur in de werkruimte.
 
-- Ruwe gegevens van uw beveiligingsagent kunnen ook worden opgeslagen in uw Log Analytics-account. Houd rekening met grootte, duur, opslagvereisten en bijbehorende kosten voordat u de configuratie van deze optie wijzigt. 
+- Ruwe gegevens van uw beveiligingsagent kunnen ook worden opgeslagen in uw Log Analytics-account. Houd rekening met grootte, duur, opslagvereisten en bijbehorende kosten voordat u de configuratie van deze optie wijzigt.
 
 ## <a name="why-should-i-add-azure-security-center-for-iot-to-the-module-identity-what-is-it-used-for"></a>Waarom zou ik Azure Security Center voor IoT toevoegen aan de module-identiteit? Waar wordt het voor gebruikt?
 
 De Azure Security Center for IoT-module wordt gebruikt voor het configureren en beheren van agenten.
 
-
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie de volgende artikelen voor meer informatie over hoe u aan de slag met Azure Security Center for IoT:
-
 
 - Lees het [overzicht](overview.md) van Azure Security Center for IoT
 - De [servicevereisten verifiëren](service-prerequisites.md)
 - Meer informatie over aan [de slag](getting-started.md)
 - Inzicht in [Azure Security Center voor IoT-beveiligingswaarschuwingen](concept-security-alerts.md)
-

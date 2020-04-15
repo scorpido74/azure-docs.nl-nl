@@ -3,12 +3,12 @@ title: Ondersteuning voor VMware-migratie in Azure-migreren
 description: Meer informatie over ondersteuning voor VMware VM-migratie in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 9d8dc4dadc975a0fb69ea207f6062b72231460ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf9cc471eef31edd513358a97d2ece17015ba781
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269508"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313997"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Ondersteuningsmatrix voor VMware-migratie
 
@@ -47,7 +47,7 @@ Bekijk [dit artikel](server-migrate-overview.md) om erachter te komen welke meth
 **Vereiste wijzigingen voor Azure** | Sommige VM's vereisen mogelijk wijzigingen, zodat ze in Azure kunnen worden uitgevoerd. Azure Migrate voert deze wijzigingen automatisch aan voor de volgende besturingssystemen:<br/> - Red Hat Enterprise Linux 6.5+, 7.0+<br/> - CentOS 6.5+, 7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS, 16.04LTS, 18.04LTS<br/> - Debian 7, 8<br/><br/> Voor andere besturingssystemen moet u handmatig aanpassingen maken voordat u overstapt. De relevante artikelen bevatten instructies over hoe dit te doen.
 **Linux opstarten** | Als /boot zich op een speciale partitie bevindt, moet deze zich op de osschijf bevinden en niet over meerdere schijven worden verspreid.<br/> Als /boot deel uitmaakt van de hoofdpartitie (/), moet de '/' partitie op de OS-schijf staan en geen andere schijven overspannen.
 **UEFI-opstart** | VM's met UEFI-boot worden niet ondersteund voor migratie.
-**Schijfgrootte** | 2 TB OS schijf; 4 TB voor dataschijven.
+**Schijfgrootte** | 2 TB OS schijf; 8 TB voor dataschijven.
 **Schijflimieten** |  Maximaal 60 schijven per vm.
 **Versleutelde schijven/volumes** | VM's met versleutelde schijven/volumes worden niet ondersteund voor migratie.
 **Gedeelde schijfcluster** | Wordt niet ondersteund.

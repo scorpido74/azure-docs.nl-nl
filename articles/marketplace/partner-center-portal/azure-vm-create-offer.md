@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 706a8c554dafbf792471729929d6e6484dfa35ae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 12dd17045715a24d1e5151b30a5e7706b0e58717
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266082"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383805"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Een Azure-aanbieding voor virtuele machines maken
 
@@ -116,9 +116,9 @@ Selecteer **Concept opslaan** voordat u verdergaat.
 
 Op deze pagina u de categorieën en bedrijfstakken definiëren die worden gebruikt om uw aanbieding op de marktplaats, uw app-versie en de juridische contracten die uw aanbieding ondersteunen, te groeperen.
 
-### <a name="category"></a>Categorie
+### <a name="categories"></a>Categorieën
 
-Selecteer minimaal één en maximaal drie categorieën. Deze categorieën worden gebruikt om uw aanbieding in de juiste zoekgebieden op marktplaats te plaatsen. Leg in de aanbiedingsbeschrijving uit hoe uw aanbieding deze categorieën ondersteunt. Aanbiedingen voor virtuele machines worden weergegeven onder de categorie **Compute** in Azure Marketplace.
+Selecteer minimaal één en maximaal vijf categorieën. Deze categorieën worden gebruikt om uw aanbieding in de juiste zoekgebieden op marktplaats te plaatsen. Leg in de aanbiedingsbeschrijving uit hoe uw aanbieding deze categorieën ondersteunt. Aanbiedingen voor virtuele machines worden weergegeven onder de categorie **Compute** in Azure Marketplace.
 
 ### <a name="legal"></a>Juridisch
 
@@ -234,7 +234,6 @@ Zorg voor de ondersteuningswebsite waar klanten uw ondersteuningsteam kunnen ber
 
 - Ondersteuningswebsite van Azure Global
 - Ondersteuningswebsite van Azure Government
-- enzovoort
 
 ### <a name="partner-support-contact"></a>Contactpersoon voor partnerondersteuning
 
@@ -389,6 +388,8 @@ Elk plan moet beschikbaar zijn in ten minste één markt. Schakel het selectieva
 
 Als u al prijzen voor uw abonnement in Amerikaanse dollars (USD) hebt ingesteld en een andere marktlocatie hebt toegevoegd, wordt de prijs voor de nieuwe markt berekend op basis van de huidige wisselkoersen. Controleer altijd de prijs voor elke markt voordat u publiceert. Bekijk de prijzen via de link **Exportprijzen (xlsx)** na het opslaan van uw wijzigingen.
 
+Wanneer u een markt verwijdert, kunnen klanten uit die markt geen actieve implementaties maken of hun bestaande implementaties opschalen. Bestaande implementaties worden niet beïnvloed.
+
 #### <a name="pricing"></a>Prijzen
 
 **Licentiemodel** : selecteer **maandelijks gefactureerd abonnement op basis van gebruik** om de prijzen voor dit abonnement te configureren of Breng uw eigen **licentie** mee om klanten dit abonnement te laten gebruiken met hun bestaande licentie.
@@ -421,7 +422,7 @@ Je elk plan ontwerpen om zichtbaar te zijn voor iedereen of voor alleen een voor
 
 #### <a name="hide-plan"></a>Plan verbergen
 
-Als het de bedoeling is dat uw virtuele machine alleen indirect wordt gebruikt wanneer u naar een andere oplossingssjabloon of beheerde toepassing verwijst, selecteert u dit vak om uw virtuele machine of aanbieding te publiceren, maar verbergt u deze rechtstreeks voor klanten die ernaar zoeken en browsen.
+Als het de bedoeling is dat uw virtuele machine alleen indirect wordt gebruikt wanneer u naar een andere oplossingssjabloon of beheerde toepassing verwijst, selecteert u dit vakom uw virtuele machine te publiceren, maar verbergt u deze voor klanten die er rechtstreeks naar zoeken en browsen.
 
 > [!NOTE]
 > Verborgen plannen bieden geen ondersteuning voor voorbeeldkoppelingen.
@@ -430,7 +431,7 @@ Selecteer **Concept opslaan** voordat u verdergaat.
 
 ### <a name="technical-configuration"></a>Technische configuratie
 
-Geef de afbeeldingen en andere technische eigenschappen die aan dit plan zijn gekoppeld.
+Geef de afbeeldingen en andere technische eigenschappen die aan dit plan zijn gekoppeld. Zie Een [technische asset van Azure VM maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)voor meer informatie.
 
 > [!NOTE]
 > Dit tabblad wordt niet weergegeven als u dit plan hebt geconfigureerd om pakketten van een ander plan op het tabblad **Plan-installatie** opnieuw te gebruiken.
@@ -459,7 +460,7 @@ Open openbare of private poorten op een geïmplementeerde virtuele machine.
 
 #### <a name="vm-images"></a>VM-installatiekopieën
 
-Geef een schijfversie en de SAS URI voor de afbeeldingen van de virtuele machine. Voeg maximaal 16 gegevensschijven toe voor elke VM-afbeelding. Geef slechts één nieuwe afbeeldingsversie per abonnement in een bepaalde inzending. Nadat een afbeelding is gepubliceerd, u deze niet bewerken, maar wel verwijderen. Als u een versie schrapt, kunnen uw gebruikers geen nieuwe instantie van de verwijderde versie implementeren.
+Geef een schijfversie en de SAS URI voor de afbeeldingen van de virtuele machine. Voeg maximaal 16 gegevensschijven toe voor elke VM-afbeelding. Geef slechts één nieuwe afbeeldingsversie per abonnement in een bepaalde inzending. Nadat een afbeelding is gepubliceerd, u deze niet bewerken, maar wel verwijderen. Als u een versie schrapt, kunnen zowel nieuwe als bestaande gebruikers een nieuwe instantie van de verwijderde versie implementeren.
 
 - **Disc versie** is de versie van de afbeelding die u verstrekt.
 - **SAS URI** is de locatie in Azure Storage waar u het besturingssysteem VHD hebt opgeslagen.

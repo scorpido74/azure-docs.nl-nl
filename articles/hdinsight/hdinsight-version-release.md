@@ -6,39 +6,39 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.openlocfilehash: 0463e3297bbb2fda50adfeefaa89f0a7a3ef8b0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: d0fd9999abc4a67ded0f66977e1a3ba5310c87be
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72901531"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383033"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Overzicht van Azure HDInsight 4.0
 
-Azure HDInsight is onder zakelijke klanten een van de meest populaire services voor open source Apache Hadoop- en Apache Spark-analyses in Azure. HDInsight 4.0 is een clouddistributie van Apache Hadoop componenten. Dit artikel bevat informatie over de meest recente Azure HDInsight-release en over hoe u moet upgraden.
+Azure HDInsight is een van de meest populaire services onder zakelijke klanten voor Apache Hadoop en Apache Spark. HDInsight 4.0 is een clouddistributie van Apache Hadoop componenten. Dit artikel bevat informatie over de meest recente Azure HDInsight-release en over hoe u moet upgraden.
 
 ## <a name="whats-new-in-hdinsight-40"></a>Wat is er nieuw in HDInsight 4.0?
 
-### <a name="apache-hive-30-and-llap"></a>Apache Hive 3.0 en LLAP
+### <a name="apache-hive-30-and-low-latency-analytical-processing"></a>Apache Hive 3.0 en low-latency analytische verwerking
 
-Voor analytische verwerking met lage latentie (LLAP) in Apache Hive wordt gebruikgemaakt van permanente query-servers en caching in geheugen om snel resultaten van een SQL-query op gegevens in een externe cloudopslag te leveren. LLAP in Hive maakt gebruikt van een set permanente daemons die fragmenten van Hive-query's uitvoeren. Query's uitvoeren in LLAP is vergelijkbaar met Hive zonder LLAP, maar werkroltaken worden in LLAP-daemons uitgevoerd in plaats van in containers.
+Apache Hive low-latency analytical processing (LLAP) maakt gebruik van permanente queryservers en in-memory caching. Dit proces levert snelle SQL-queryresultaten op gegevens in externe cloudopslag. Hive LLAP maakt gebruik van een set van persistente daemons die fragmenten van Hive-query's uitvoeren. Query's uitvoeren in LLAP is vergelijkbaar met Hive zonder LLAP, maar werkroltaken worden in LLAP-daemons uitgevoerd in plaats van in containers.
 
 Voordelen van LLAP in Hive zijn:
 
-* De mogelijkheid om uitgebreide SQL-analyses uit te voeren, bijvoorbeeld complexe samenvoegingen, subquery's, vensterfuncties, sorteren, door de gebruiker gedefinieerde functies en complexe aggregaties, zonder verlies van de prestaties en schaalbaarheid.
+* Mogelijkheid om diepgaande SQL-analyses uit te brengen zonder in te boeten aan prestaties en aanpassingsvermogen. Zoals complexe joins, subquery's, vensterfuncties, sorteren, door de gebruiker gedefinieerde functies en complexe aggregaties.
 
 * Interactieve query's op gegevens in dezelfde opslag waar de gegevens worden voorbereid, zodat u voor analytische verwerking geen gegevens hoeft te verplaatsen van een opslag naar een andere engine.
 
-* De queryresultaten kunnen in de cache worden opgeslagen, zodat eerder berekende queryresultaten opnieuw kunnen worden gebruikt, wat tijd en middelen bespaart die anders zouden worden gebruikt om voor de query vereiste clustertaken uit te voeren.
+* Met queryresultaten in caching kunnen eerder berekende queryresultaten opnieuw worden gebruikt. Met deze cache bespaart u tijd en resources die zijn besteed aan het uitvoeren van de clustertaken die nodig zijn voor de query.
 
 ### <a name="hive-dynamic-materialized-views"></a>Dynamisch gerealiseerde weergaven in Hive
 
-Hive ondersteunt nu dynamisch gerealiseerde weergaven of een berekening vooraf van relevante samenvattingen die worden gebruikt om de queryverwerking in datawarehouses te versnellen. Gerealiseerde weergaven worden in Hive op het systeem bewaard en gebruiken naadloos LLAP-versnelling.
+Hive ondersteunt nu dynamische gematerialiseerde weergaven of pre-berekening van relevante samenvattingen. De weergaven versnellen de verwerking van query's in gegevensmagazijnen. Gerealiseerde weergaven worden in Hive op het systeem bewaard en gebruiken naadloos LLAP-versnelling.
 
 ### <a name="hive-transactional-tables"></a>Transactionele Hive-tabellen
 
-HDI 4.0 bevat Apache Hive 3, dat ACID-naleving (atoomvorm, consistentie, isolatie en duurzaamheid) vereist voor transactionele tabellen die in het Hive-warehouse worden bewaard. ACID-compatibele tabellen en tabelgegevens worden via Hive geopend en beheerd. Gegevens in CRUD-tabellen (maken, ophalen, bijwerken en verwijderen) moeten de ORC-bestandsindeling (geoptimaliseerde rijkolom) hebben, maar tabellen waarin alleen gegevens worden ingevoerd, ondersteunen alle bestandsindelingen.
+HDI 4.0 bevat Apache Hive 3. Hive 3 vereist atomiciteit, consistentie, isolatie en duurzaamheidsnaleving voor transactionele tabellen die in het Hive-magazijn leven. ACID-compatibele tabellen en tabelgegevens worden via Hive geopend en beheerd. Gegevens in crud-tabellen maken, ophalen, bijwerken en verwijderen (CRUD) moeten in de bestandsindeling Geoptimaliseerde rijkolom (ORC) zijn opgenomen. Alleen invoegen tabellen ondersteunen alle bestandsindelingen.
 
 * ACID v2 heeft prestatieverbeteringen in zowel het opslagformaat als de engine voor uitvoerbewerkingen.
 
@@ -56,7 +56,7 @@ Meer informatie over [Apache Hive 3](https://docs.hortonworks.com/HDPDocuments/H
 
 ### <a name="apache-spark"></a>Apache Spark
 
-Apache Spark ontvang bij te werken tabellen en ACID-transacties via de Hive Warehouse Connector. Met Hive Warehouse Connector registreert u transactionele Hive-tabellen als externe tabellen in Spark voor volledige transactionele functionaliteit. Eerdere versies ondersteunden alleen manipulatie van partitietabellen. Hive Warehouse Connector ondersteunt ook Streaming DataFrames om vanuit Spark lees- en schrijfbewerkingen te streamen naar transactionele en streaming Hive-tabellen.
+Apache Spark ontvang bij te werken tabellen en ACID-transacties via de Hive Warehouse Connector. Met Hive Warehouse Connector registreert u transactionele Hive-tabellen als externe tabellen in Spark voor volledige transactionele functionaliteit. Eerdere versies ondersteunden alleen manipulatie van partitietabellen. Hive Warehouse Connector ondersteunt ook Streaming DataFrames.  Dit proces streamt leest en schrijft in transactionele en streaming Hive tabellen van Spark.
 
 Spark-executors maken rechtstreeks verbinding met LLAP-daemons van Hive om gegevens op een transactionele manier op te halen en bij te werken, waardoor Hive de controle houdt over de gegevens.
 
@@ -67,7 +67,7 @@ Apache Spark in HDInsight 4.0 ondersteunt de volgende scenario's:
 * Een Spark-streamingtaak uitvoeren in de wijzigingsfeed van een streaming Hive-tabel.
 * ORC-bestanden rechtstreeks vanuit een Spark Structured Streaming-taak maken.
 
-U hoeft u geen zorgen te maken dat u per ongeluk rechtstreeks vanuit Spark transactionele Hive-tabellen opent, wat zou leiden tot inconsistente resultaten, dubbele gegevens of de beschadiging van gegevens. In HDInsight 4.0 worden Spark-tafels en Hive-tafels bewaard in afzonderlijke Metastores. Gebruik de Hive Data Warehouse Connector om transactionele Hive-tabellen expliciet te registreren als externe Spark-tabellen.
+U hoeft zich niet langer zorgen te maken dat u per ongeluk rechtstreeks vanuit Spark toegang wilt krijgen tot hive-transactietabellen. Dit resulteert in inconsistente resultaten, dubbele gegevens of gegevensbeschadiging. In HDInsight 4.0 worden Spark-tafels en Hive-tafels bewaard in afzonderlijke Metastores. Gebruik de Hive Data Warehouse Connector om transactionele Hive-tabellen expliciet te registreren als externe Spark-tabellen.
 
 Meer informatie over [Apache Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html).
 
@@ -83,9 +83,9 @@ Meer informatie over [Apache Oozie](https://docs.hortonworks.com/HDPDocuments/HD
 
 ## <a name="how-to-upgrade-to-hdinsight-40"></a>Upgraden naar HDInsight 4.0
 
-Zoals bij elke grote release is het belangrijk om uw onderdelen uitgebreid te testen voordat u de nieuwste versie in een productieomgeving implementeert. HDInsight 4.0 is beschikbaar voor u om het upgradeproces te starten, maar HDInsight 3.6 is de standaardoptie om onbedoelde ongelukken te voorkomen.
+Test uw componenten grondig voordat u de nieuwste versie implementeert in een productieomgeving. HDInsight 4.0 is beschikbaar voor u om het upgradeproces te starten. HDInsight 3.6 is de standaardoptie om ongelukken per ongeluk te voorkomen.
 
-Er is geen ondersteund upgradepad van eerdere versies van HDInsight naar HDInsight 4.0. Omdat metastore- en blobgegevensindelingen zijn gewijzigd, is HDInsight 4.0 niet compatibel met eerdere versies. Het is belangrijk dat u uw nieuwe HDInsight 4.0-omgeving gescheiden houdt van uw huidige productieomgeving. Als u HDInsight 4.0 implementeert in uw huidige omgeving, wordt uw Metastore geüpgraded en kan deze niet worden teruggedraaid.  
+Er is geen ondersteund upgradepad van eerdere versies van HDInsight naar HDInsight 4.0. Omdat metastore- en blobgegevensindelingen zijn gewijzigd, is 4.0 niet compatibel met eerdere versies. Het is belangrijk dat u uw nieuwe HDInsight 4.0-omgeving gescheiden houdt van uw huidige productieomgeving. Als u HDInsight 4.0 implementeert in uw huidige omgeving, wordt uw Metastore permanent geüpgraded.  
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -93,10 +93,10 @@ Er is geen ondersteund upgradepad van eerdere versies van HDInsight naar HDInsig
 * HDInsight 4.0 ondersteunt Apache Storm niet.
 * Hive View is niet meer beschikbaar in HDInsight 4.0.
 * Shell-interpreter in Apache Zeppelin wordt niet ondersteund in spark- en interactieve queryclusters.
-* U kunt LLAP in een Apache Spark-LLAP-cluster niet *uitschakelen*. U kunt alleen LLAP uitschakelen.
-* Azure Data Lake Storage Gen2 kan Juypter-notitieblokken niet opslaan in een Apache Spark-cluster.
+* U kunt LLAP in een Apache Spark-LLAP-cluster niet *uitschakelen*. U LLAP alleen uitschakelen.
+* Azure Data Lake Storage Gen2 kan Jupyter-notitieblokken niet opslaan in een Spark-cluster.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Azure HDInsight-documentatie](index.yml)
-* [Releaseopmerkingen](hdinsight-release-notes.md)
+* [Opmerkingen vrijgeven](hdinsight-release-notes.md)

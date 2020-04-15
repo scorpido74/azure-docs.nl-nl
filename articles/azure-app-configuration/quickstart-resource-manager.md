@@ -3,18 +3,18 @@ title: Geautomatiseerde VM-implementatie met Azure App-configuratie snel gestart
 description: Deze quickstart laat zien hoe u de Azure PowerShell-module en Azure Resource Manager-sjablonen gebruiken om een Azure App Configuration Store te implementeren. Gebruik vervolgens de waarden in de winkel om een VM te implementeren.
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 03/05/2020
+ms.date: 04/14/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 02afa2cb36323e0c3c38c2451b1924b636f7faed
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79126380"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309098"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Snelstart: geautomatiseerde VM-implementatie met sjabloon App-configuratie en resourcebeheer
 
@@ -152,6 +152,9 @@ U een App Configuration Store maken met behulp van een Azure Resource Manager-sj
 ## <a name="deploy-vm-using-stored-key-values"></a>VM implementeren met opgeslagen sleutelwaarden
 
 Nu u belangrijke waarden aan de winkel hebt toegevoegd, bent u klaar om een VM te implementeren met behulp van een Azure Resource Manager-sjabloon. De sjabloon verwijst naar de **windowsOsVersion-** en **diskSizeGB-toetsen** die u hebt gemaakt.
+
+> [!WARNING]
+> ARM-sjablonen kunnen geen verwijzing smaken in een App Configuration Store waar Private Link is ingeschakeld.
 
 1. Kopieer en plak de volgende json-code in een nieuw bestand met de naam *azuredeploy.json*of download het bestand van [Azure Quickstart-sjablonen](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json).
 
@@ -423,13 +426,13 @@ Nu u belangrijke waarden aan de winkel hebt toegevoegd, bent u klaar om een VM t
    |storageAccountName|Een unieke naam voor een opslagaccount dat is gekoppeld aan de vm.|
    |domainNameLabel|Een unieke domeinnaam.|
 
-1. Voer in het PowerShell-venster de volgende opdracht uit om het Azure App Configuration Store te implementeren. Vergeet niet de naam van de brongroep, het pad met het sjabloonbestand en het bestandspad van de sjabloonparameter te vervangen.
+1. Voer in het PowerShell-venster de volgende opdracht uit om de VM te implementeren. Vergeet niet de naam van de brongroep, het pad met het sjabloonbestand en het bestandspad van de sjabloonparameter te vervangen.
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" 
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
+       -ResourceGroupName "<your resource group>"
+       -TemplateFile "<path to azuredeploy.json>" `
+       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
    ```
 
 Gefeliciteerd! U hebt een VM geïmplementeerd met configuraties die zijn opgeslagen in Azure App-configuratie.

@@ -4,12 +4,12 @@ description: Inzicht in het programma voor ondersteunde services en gebeurteniss
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8abd8767d9bb7e3c4336f6600b94f6b3f4ea48f1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248812"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380524"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Ondersteunde services, schema's en categorieën voor Azure Resource Logs
 
@@ -54,7 +54,7 @@ Het schema voor diagnostische logboeken voor bronnen is afhankelijk van de resou
 | Azure Batch |[Azure Batch-logboekregistratie](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database voor Diagnostische logboeken van MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database voor PostgreSQL-logboeken](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Data Explorer | [Azure Data Explorer-logboeken](../../data-explorer/using-diagnostic-logs.md) |
+| Azure Data Explorer | [Azure Data Explorer-logboeken](/azure/data-explorer/using-diagnostic-logs) |
 | Cognitive Services | [Logboekregistratie voor Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
 | Container Registry | [Logboekregistratie voor Azure Container Registry](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | CDN (Content Delivery Network) | [Azure-logboeken voor CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
@@ -68,7 +68,7 @@ Het schema voor diagnostische logboeken voor bronnen is afhankelijk van de resou
 | IoT Hub | [IoT Hub-bewerkingen](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Logboekregistratie van Azure Key Vault](../../key-vault/key-vault-logging.md) |
 | Kubernetes Service |[Azure Kubernetes-logboekregistratie](../../aks/view-master-logs.md#log-event-schema) |
-| Load balancer |[Logboekanalyse voor Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
+| Load Balancer |[Logboekanalyse voor Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Aangepast Logic Apps B2B-volgschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netwerkbeveiligingsgroepen |[Logboekanalyses voor netwerkbeveiligingsgroepen (NSG's)](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDoS Protection | [Azure DDoS-beveiligingsstandaard beheren](../../virtual-network/manage-ddos-protection.md) |

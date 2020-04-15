@@ -1,6 +1,6 @@
 ---
 title: Zelfstudie - ETL-bewerkingen uitvoeren met Azure Databricks
-description: In deze zelfstudie leert u hoe u gegevens uit Data Lake Storage Gen2 extraheren in Azure Databricks, de gegevens transformeren en de gegevens vervolgens laden in Azure SQL Data Warehouse.
+description: In deze zelfstudie leert u hoe u gegevens uit Data Lake Storage Gen2 extraheren in Azure Databricks, de gegevens transformeren en de gegevens vervolgens laden in Azure Synapse Analytics.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,22 +8,22 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 8819b79a105b7a654a34e47c5ba9b3d351a1d926
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239417"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382726"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Zelfstudie: Gegevens extraheren, transformeren en laden met Azure Databricks
 
-In deze zelfstudie voert u een ETL-bewerking (Extraction, Transformation, and Loading) uit met behulp van Azure Databricks. U haalt gegevens uit Azure Data Lake Storage Gen2 uit in Azure Databricks, voert transformaties uit op de gegevens in Azure Databricks en laadt de getransformeerde gegevens in Azure SQL Data Warehouse.
+In deze zelfstudie voert u een ETL-bewerking (Extraction, Transformation, and Loading) uit met behulp van Azure Databricks. U haalt gegevens uit Azure Data Lake Storage Gen2 uit in Azure Databricks, voert transformaties uit op de gegevens in Azure Databricks en laadt de getransformeerde gegevens in Azure Synapse Analytics.
 
-Voor de stappen in deze zelfstudie wordt gebruik gemaakt van de SQL Data Warehouse-connector voor Azure Databricks om gegevens over te dragen naar Azure Databricks. Op zijn beurt gebruikt deze connector Azure Blob Storage als tijdelijke opslag voor de gegevens die worden overgebracht tussen een Azure Databricks-cluster en Azure SQL Data Warehouse.
+De stappen in deze zelfstudie gebruiken de Azure Synapse-connector voor Azure Databricks om gegevens over te zetten naar Azure Databricks. Deze connector gebruikt op zijn beurt Azure Blob Storage als tijdelijke opslag voor de gegevens die worden overgedragen tussen een Azure Databricks-cluster en Azure Synapse.
 
 In de volgende afbeelding wordt de stroom van de toepassing weergegeven:
 
-![Azure Databricks met Data Lake Store en SQL Data Warehouse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks met Data Lake Store en SQL Data Warehouse")
+![Azure Databricks met Data Lake Store en Azure Synapse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks met Data Lake Store en Azure Synapse")
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -35,7 +35,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Een service-principal maken.
 > * Gegevens uit het Azure Data Lake Storage Gen2-account extraheren.
 > * Gegevens transformeren in Azure Databricks.
-> * Gegevens laden in Azure SQL Data Warehouse.
+> * Gegevens laden in Azure Synapse.
 
 Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
@@ -47,9 +47,9 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 Voltooi deze taken voordat u aan deze zelfstudie begint:
 
-* Maak een Azure SQL-gegevensmagazijn, maak een firewallregel op serverniveau en maak verbinding met de server als serverbeheerder. Zie [Snelstart: een Azure SQL-gegevensmagazijn maken en opvragen in de Azure-portal.](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)
+* Maak een Azure Synapse, maak een firewallregel op serverniveau en maak verbinding met de server als serverbeheerder. Zie [Snelstart: Een Synapse SQL-groep maken en opvragen met de Azure-portal.](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)
 
-* Maak een hoofdsleutel voor het Azure SQL-gegevensmagazijn. Zie [Een databasehoofdsleutel maken](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
+* Maak een hoofdsleutel voor de Azure Synapse. Zie [Een databasehoofdsleutel maken](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
 * Maak een Azure Blob-opslagaccount met daarin een container. Haal ook de toegangssleutel op voor toegang tot het opslagaccount. Zie [Snelstart: blobs uploaden, downloaden en weergeven met de Azure-portal.](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -63,9 +63,9 @@ Voltooi deze taken voordat u aan deze zelfstudie begint:
 
       Als u liever een toegangscontrolelijst (ACL) gebruikt om de serviceprincipal te koppelen aan een specifiek bestand of een specifieke map, raadpleegt u [toegangsbeheer in Azure Data Lake Storage Gen2.](../storage/blobs/data-lake-storage-access-control.md)
 
-   * Wanneer u de stappen uitvoert in het gedeelte [Waarden downloaden voor aanmelden in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) het artikel, plakt u de tenant-id, app-id en geheime waarden in een tekstbestand. U hebt deze binnenkort nodig.
+   * Wanneer u de stappen uitvoert in het gedeelte [Waarden downloaden voor aanmelden in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) het artikel, plakt u de tenant-id, app-id en geheime waarden in een tekstbestand.
 
-* Meld u aan bij [Azure Portal](https://portal.azure.com/).
+* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Verzamel de benodigde informatie
 
@@ -73,7 +73,7 @@ Zorg dat u over alle vereisten voor deze zelfstudie beschikt.
 
    Voor u begint, moet u de volgende gegevens hebben:
 
-   :heavy_check_mark: de databasenaam, de naam van de databaseserver, de gebruikersnaam en het wachtwoord van uw Azure SQL Data-magazijn.
+   :heavy_check_mark: de naam van de databaseserver, de gebruikersnaam en het wachtwoord van uw Azure Synapse.
 
    :heavy_check_mark: de toegangssleutel van uw blob-opslagaccount.
 
@@ -316,11 +316,11 @@ Het bestand **small_radio_json.json** met de onbewerkte voorbeeldgegevensset leg
    +---------+----------+------+--------------------+-----------------+
    ```
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>Gegevens laden in Azure SQL Data Warehouse
+## <a name="load-data-into-azure-synapse"></a>Gegevens laden in Azure Synapse
 
-In deze sectie uploadt u de getransformeerde gegevens naar Azure SQL Data Warehouse. Gebruik de Azure SQL Data Warehouse-connector voor Azure Databricks om een dataframe rechtstreeks als een tabel in een SQL-datawarehouse te uploaden.
+In deze sectie uploadt u de getransformeerde gegevens naar Azure Synapse. U gebruikt de Azure Synapse-connector voor Azure Databricks om een gegevensframe rechtstreeks als tabel te uploaden in een Synapse Spark-groep.
 
-Zoals eerder vermeld, maakt de SQL Data Warehouse-connector gebruik van Azure Blob Storage als tijdelijke opslag voor het uploaden van gegevens tussen Azure Databricks en Azure SQL Data Warehouse. U begint met het opgeven van de configuratie om verbinding te maken met het opslagaccount. U moet het account al hebben gemaakt als onderdeel van de vereisten voor dit artikel.
+Zoals eerder vermeld, gebruikt de Azure Synapse-connector Azure Blob-opslag als tijdelijke opslag om gegevens te uploaden tussen Azure Databricks en Azure Synapse. U begint met het opgeven van de configuratie om verbinding te maken met het opslagaccount. U moet het account al hebben gemaakt als onderdeel van de vereisten voor dit artikel.
 
 1. Geef de configuratie op voor toegang tot het Azure Storage-account vanuit Azure Databricks.
 
@@ -330,7 +330,7 @@ Zoals eerder vermeld, maakt de SQL Data Warehouse-connector gebruik van Azure Bl
    val blobAccessKey =  "<access-key>"
    ```
 
-2. Geef een tijdelijke map op die wordt gebruikt tijdens het verplaatsen van gegevens tussen Azure Databricks en Azure SQL Data Warehouse.
+2. Geef een tijdelijke map op die u wilt gebruiken tijdens het verplaatsen van gegevens tussen Azure Databricks en Azure Synapse.
 
    ```scala
    val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
@@ -343,10 +343,10 @@ Zoals eerder vermeld, maakt de SQL Data Warehouse-connector gebruik van Azure Bl
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Geef de waarden op om verbinding te maken met de Azure SQL Data Warehouse-instantie. U moet als vereiste een SQL-datawarehouse hebben gemaakt. Gebruik de volledig gekwalificeerde servernaam voor **dwServer.** Bijvoorbeeld `<servername>.database.windows.net`.
+4. Geef de waarden op om verbinding te maken met de instantie Azure Synapse. U moet als voorwaarde een Azure Synapse Analytics-service hebben gemaakt. Gebruik de volledig gekwalificeerde servernaam voor **dwServer.** Bijvoorbeeld `<servername>.database.windows.net`.
 
    ```scala
-   //SQL Data Warehouse related settings
+   //Azure Synapse related settings
    val dwDatabase = "<database-name>"
    val dwServer = "<database-server-name>"
    val dwUser = "<user-name>"
@@ -357,7 +357,7 @@ Zoals eerder vermeld, maakt de SQL Data Warehouse-connector gebruik van Azure Bl
    val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
    ```
 
-5. Voer het volgende codefragment uit om het getransformeerde dataframe, **renamedColumnsDF**, als een tabel te laden in een SQL-datawarehouse. Met dit fragment wordt een tabel met de naam **SampleTable** gemaakt in de SQL-database.
+5. Voer het volgende fragment uit om het getransformeerde gegevensframe te laden, **omgedoopt tot ColumnsDF**, als een tabel in Azure Synapse. Met dit fragment wordt een tabel met de naam **SampleTable** gemaakt in de SQL-database.
 
    ```scala
    spark.conf.set(
@@ -368,9 +368,9 @@ Zoals eerder vermeld, maakt de SQL Data Warehouse-connector gebruik van Azure Bl
    ```
 
    > [!NOTE]
-   > In dit `forward_spark_azure_storage_credentials` voorbeeld wordt de vlag gebruikt, waardoor SQL Data Warehouse toegang krijgt tot gegevens uit blobopslag met behulp van een Access-sleutel. Dit is de enige ondersteunde verificatiemethode.
+   > In dit `forward_spark_azure_storage_credentials` voorbeeld wordt de vlag gebruikt, waardoor Azure Synapse toegang krijgt tot gegevens uit blobopslag met behulp van een Toegangssleutel. Dit is de enige ondersteunde verificatiemethode.
    >
-   > Als uw Azure Blob Storage is beperkt tot het selecteren van virtuele netwerken, vereist SQL Data Warehouse [Managed Service Identity in plaats van Access Keys.](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) Dit zal de fout veroorzaken "Deze aanvraag is niet gemachtigd om deze bewerking uit te voeren."
+   > Als uw Azure Blob Storage is beperkt tot het selecteren van virtuele netwerken, vereist Azure Synapse [Managed Service Identity in plaats van Access Keys](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Dit zal de fout veroorzaken "Deze aanvraag is niet gemachtigd om deze bewerking uit te voeren."
 
 6. Maak verbinding met de SQL-database en controleer of u de database **SampleTable** ziet.
 
@@ -398,7 +398,7 @@ In deze zelfstudie hebt u het volgende geleerd:
 > * Een notitieblok maken in Azure Databricks
 > * Gegevens extraheren uit een Data Lake Storage Gen2-account
 > * Gegevens transformeren in Azure Databricks
-> * Gegevens laden in Azure SQL Data Warehouse
+> * Gegevens laden in Azure Synapse
 
 Ga naar de volgende zelfstudie voor informatie over het streamen van realtime gegevens naar Azure Databricks met behulp van Azure Event Hubs.
 

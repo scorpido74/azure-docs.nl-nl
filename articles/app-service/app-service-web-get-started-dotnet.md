@@ -5,12 +5,12 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 03/17/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 7fb76a3189e7650183b3000fe2e1b4e7614312bb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: be7c4a2fb65f913bc97617af1a0f21ee8fcca714
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79532907"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313281"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Snelstart: een ASP.NET Core-web-app maken in Azure
 
@@ -20,7 +20,7 @@ Wanneer u klaar bent, beschikt u over een Azure-brongroep die bestaat uit een Ap
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/dotnet/)
 - Met deze quickstart wordt een app geïmplementeerd voor App Service op Windows. Zie [Een .NET Core-web-app maken en implementeren in App Service onder Linux ](./containers/quickstart-dotnetcore.md) om een app te implementeren in App Service onder _Linux_.
 - Installeer <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> met de **ASP.NET en webdevelopment** workload.
 

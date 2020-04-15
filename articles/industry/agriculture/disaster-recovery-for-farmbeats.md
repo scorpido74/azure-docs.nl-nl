@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: fbda28ce588aad5f6bc0d89de60069c4220fa523
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d64735e683ba1133e7d381a68611d204c4068026
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266173"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313066"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>Noodherstel voor FarmBeats
 
@@ -34,7 +34,7 @@ FarmBeats slaat gegevens op in drie Azure first party-services, die **Azure-opsl
 
 ## <a name="restore-service-from-online-backup"></a>Service herstellen vanuit online back-up
 
-U failover starten en gegevens herstellen waarvoor elk van de bovengenoemde gegevens wordt opgeslagen voor uw FarmBeats-implementatie. Zodra u de gegevens voor Azure-opslag en Cosmos DB hebt hersteld, maakt u een andere FarmBeats-implementatie in het gekoppelde Azure-gebied en configureert u de nieuwe implementatie om gegevens uit herstelde gegevensopslag (d.w.z. Azure Storage en Cosmos DB) te gebruiken met de onderstaande stappen:
+U failover starten en gegevens herstellen waarvoor elk van de bovengenoemde gegevensopslag voor uw FarmBeats-implementatie wordt opgeslagen. Zodra u de gegevens voor Azure-opslag en Cosmos DB hebt hersteld, maakt u een andere FarmBeats-implementatie in het gekoppelde Azure-gebied en configureert u de nieuwe implementatie om gegevens uit herstelde gegevensopslag (d.w.z. Azure Storage en Cosmos DB) te gebruiken met de onderstaande stappen:
 
 1. [Cosmos DB configureren](#configure-cosmos-db)
 2. [Opslagaccount configureren](#configure-storage-account)
@@ -45,18 +45,18 @@ U failover starten en gegevens herstellen waarvoor elk van de bovengenoemde gege
 Kopieer de toegangssleutel van de herstelde Cosmos DB en werk de nieuwe FarmBeats Datahub Key Vault bij.
 
 
-  ![Herstel na noodgevallen](./media/disaster-recovery-for-farmbeats/keyvault-secrets.png)
+  ![Herstel na noodgevallen](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
 > Kopieer de URL van herstelde Cosmos DB en werk deze bij in de nieuwe FarmBeats Datahub App Service Configuration. U nu cosmos DB-account verwijderen in de nieuwe FarmBeats-implementatie.
 
-  ![Herstel na noodgevallen](./media/disaster-recovery-for-farmbeats/northeu-ehub-api-configuration.png)
+  ![Herstel na noodgevallen](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>Opslagaccount configureren
 
 Kopieer de toegangssleutel van het herstelde opslagaccount en werk deze bij in de nieuwe FarmBeats Datahub Key Vault.
 
-![Herstel na noodgevallen](./media/disaster-recovery-for-farmbeats/keyvault-7udqm-secrets.png)
+![Herstel na noodgevallen](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
 > Zorg ervoor dat de naam van het opslagaccount wordt bijgewerkt in het nieuwe VM-config-bestand farmBeats Batch.

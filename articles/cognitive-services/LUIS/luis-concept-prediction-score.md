@@ -1,28 +1,20 @@
 ---
 title: Voorspelling scores - LUIS
-titleSuffix: Azure Cognitive Services
 description: Een voorspellingsscore geeft de mate van vertrouwen aan die de LUIS API-service heeft voor voorspellingsresultaten, op basis van een uiting van een gebruiker.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74280824"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382367"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Voorspellingsscores geven voorspellingsnauwkeurigheid voor intentie en entiteiten aan
 
 Een voorspellingsscore geeft de mate van vertrouwen aan die LUIS heeft voor voorspellingsresultaten van een uiting van een gebruiker.
 
-Een voorspellingsscore ligt tussen nul (0) en één (1). Een voorbeeld van een zeer zelfverzekerde LUIS-score is 0,99. Een voorbeeld van een score van laag vertrouwen is 0,01. 
+Een voorspellingsscore ligt tussen nul (0) en één (1). Een voorbeeld van een zeer zelfverzekerde LUIS-score is 0,99. Een voorbeeld van een score van laag vertrouwen is 0,01.
 
 |Scorewaarde|Betrouwbaarheid|
 |--|--|
@@ -33,11 +25,11 @@ Een voorspellingsscore ligt tussen nul (0) en één (1). Een voorbeeld van een z
 
 ## <a name="top-scoring-intent"></a>Intentie met hoogste score
 
-Elke utterancevoorspelling retourneert een intentie die topscorer wordt. Deze voorspelling is een numerieke vergelijking van voorspellingsscores. 
+Elke utterancevoorspelling retourneert een intentie die topscorer wordt. Deze voorspelling is een numerieke vergelijking van voorspellingsscores.
 
 ## <a name="proximity-of-scores-to-each-other"></a>Nabijheid van scores aan elkaar
 
-De top 2 scores kunnen een zeer klein verschil tussen hen hebben. LUIS geeft niet aan dat deze nabijheid anders is dan het retourneren van de hoogste score.  
+De top 2 scores kunnen een zeer klein verschil tussen hen hebben. LUIS geeft niet aan dat deze nabijheid anders is dan het retourneren van de hoogste score.
 
 ## <a name="return-prediction-score-for-all-intents"></a>Return voorspelling score voor alle doeleinden
 
@@ -74,9 +66,11 @@ Voorspellingscores kunnen exponentnotatie gebruiken, die boven het `9.910309E-07
 |--|--|
 |9.910309E-07|.0000009910309|
 
-## <a name="punctuation"></a>Interpunctie
+<a name="punctuation"></a>
 
-[Meer informatie](luis-concept-utterance.md#punctuation-marks) over het gebruik of negeren van interpunctie. 
+## <a name="application-settings"></a>Toepassingsinstellingen
+
+Gebruik [toepassingsinstellingen](luis-reference-application-settings.md) om te bepalen hoe diacritics en interpunctie van invloed zijn op voorspellingsscores.
 
 ## <a name="next-steps"></a>Volgende stappen
 

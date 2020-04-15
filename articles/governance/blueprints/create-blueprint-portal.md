@@ -3,12 +3,12 @@ title: 'Snelstart: een blauwdruk maken in de portal'
 description: In deze quickstart gebruikt u Azure Blueprints om artefacten te maken, te definiëren en te implementeren via de Azure-portal.
 ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: 457f4f9c53f45077129b291c904bc1580b6d965e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd50b1833f16d364a4494483fcccfee017bb982b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282049"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381896"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Snelstart: een blauwdruk definiëren en toewijzen in de portal
 
@@ -28,7 +28,7 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaa
 
    Of selecteer **Maken** op de pagina **Aan de slag** om direct naar het maken van een blauwdruk te gaan.
 
-   ![Een blauwdruk maken op de pagina Blueprint-definities](./media/create-blueprint-portal/create-blueprint-button.png)
+   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="Een blauwdruk maken op de pagina Blueprint-definities" border="false":::
 
 1. Selecteer **Begin met een lege blauwdruk** op de kaart boven aan de lijst met ingebouwde blauwdrukken.
 
@@ -48,10 +48,10 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaa
 
    1. Selecteer **Toevoegen** om dit artefact aan de blauwdruk toe te voegen.
 
-   ![Roltoewijzing voor een blauwdrukartefact](./media/create-blueprint-portal/add-role-assignment.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Roltoewijzing voor een blauwdrukartefact" border="false":::
 
    > [!NOTE]
-   > De meeste artefacten ondersteunen parameters. Een parameter die een waarde heeft toegewezen tijdens het maken van blauwdrukken, is een *statische parameter.* Als de parameter is toegewezen tijdens de blauwdruktoewijzing, is dit een *dynamische parameter.* Zie [Blauwdrukparameters](./concepts/parameters.md)voor meer informatie .
+   > De meeste artefacten ondersteunen parameters. Een parameter die een waarde heeft toegewezen tijdens het maken van blauwdrukken, is een _statische parameter._ Als de parameter is toegewezen tijdens de blauwdruktoewijzing, is dit een _dynamische parameter._ Zie [Blauwdrukparameters](./concepts/parameters.md)voor meer informatie .
 
 1. Een beleidstoewijzing toevoegen op abonnementsniveau:
 
@@ -144,11 +144,11 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaa
 
    1. Selecteer **Toevoegen** om dit artefact aan de blauwdruk toe te voegen.
 
-   ![Resourcemanager-sjabloon voor het blauwdrukartefact](./media/create-blueprint-portal/add-resource-manager-template.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Resourcemanager-sjabloon voor het blauwdrukartefact" border="false":::
 
 1. De voltooide blauwdruk moet er nu ongeveer als volgt uitzien. Elk artefact heeft ** _x_ van _y-parameters_ die zijn ingevuld** in de kolom **Parameters.** De dynamische parameters worden ingesteld tijdens elke toewijzing van de blauwdruk.
 
-   ![Voltooide blauwdrukdefinitie](./media/create-blueprint-portal/completed-blueprint.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Voltooide blauwdrukdefinitie" border="false":::
 
 1. Nu alle geplande artefacten zijn toegevoegd, selecteert u **Concept opslaan** onder aan de pagina.
 
@@ -174,13 +174,13 @@ In [Een blauwdruk maken](#create-a-blueprint)hebt u geen beschrijving gegeven of
 
    1. Zoek naar en selecteer een gebruiker, app of groep die u wilt toevoegen. Dit artefact maakt gebruik van een statische parameter die in elke toewijzing van deze blauwdruk is ingesteld.
 
-   e. Selecteer **Toevoegen** om dit artefact aan de blauwdruk toe te voegen.
+   1. Selecteer **Toevoegen** om dit artefact aan de blauwdruk toe te voegen.
 
-   ![Tweede roltoewijzing voor het blauwdrukartefact](./media/create-blueprint-portal/add-role-assignment-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Tweede roltoewijzing voor het blauwdrukartefact" border="false":::
 
 1. De voltooide blauwdruk moet er nu ongeveer als volgt uitzien. De nieuw toegevoegde roltoewijzing toont **1 van de 1 parameters die zijn ingevuld.** Dat betekent dat het een statische parameter is.
 
-   ![Tweede definitie voor de voltooide blauwdruk](./media/create-blueprint-portal/completed-blueprint-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="Tweede definitie voor de voltooide blauwdruk" border="false":::
 
 1. Selecteer **Concept opslaan** nu het is bijgewerkt.
 
@@ -219,10 +219,10 @@ Nadat een blauwdruk is gepubliceerd, kan deze worden toegewezen aan een abonneme
 
    1. Selecteer **Maken** onderaan de pagina.
 
-   ![Een abonnement maken voor een abonnement op een blauwdruktoewijzing](./media/create-blueprint-portal/assignment-create-subscription.png)
+      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Een abonnement maken voor een abonnement op een blauwdruktoewijzing" border="false":::
 
-   > [!IMPORTANT]
-   > Het nieuwe abonnement wordt direct gemaakt nadat u Maken hebt **geselecteerd.**
+      > [!IMPORTANT]
+      > Het nieuwe abonnement wordt direct gemaakt nadat u Maken hebt **geselecteerd.**
 
    > [!NOTE]
    > Er wordt een toewijzing gemaakt voor elk abonnement dat u selecteert. U op een later tijdstip wijzigingen aanbrengen in één abonnementstoewijzing zonder wijzigingen op de rest van de geselecteerde abonnementen te forceren.
@@ -235,7 +235,7 @@ Nadat een blauwdruk is gepubliceerd, kan deze worden toegewezen aan een abonneme
 
 1. Laat **Toewijzing vergrendelen** staan op de standaardwaarde **Niet vergrendelen**. Zie [Blauwdrukken bronvergrendeling](./concepts/resource-locking.md)voor meer informatie.
 
-   ![Identiteiten vergrendelen en beheren voor de opdracht](./media/create-blueprint-portal/assignment-locking-mi.png)
+   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="Identiteiten vergrendelen en beheren voor de opdracht" border="false":::
 
 1. Laat **onder Beheerde identiteit**de standaardinstelling van systeem toegewezen **.**
 
@@ -266,7 +266,7 @@ Controleer nu de blauwdruk is toegewezen aan een abonnement, of de voortgang van
 
 1. Klik in de lijst met blauwdrukken met de rechtermuisknop op de lijst die u eerder hebt toegewezen en selecteer **Toewijzingsdetails weergeven.**
 
-   ![Toewijzingsdetails weergeven op de pagina Toegewezen blauwdrukken](./media/create-blueprint-portal/view-assignment-details.png)
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Toewijzingsdetails weergeven op de pagina Toegewezen blauwdrukken" border="false":::
 
 1. Valideer op de pagina **Blueprint-toewijzing** of alle artefacten zijn geïmplementeerd en dat er geen fouten zijn gemaakt tijdens de implementatie. Zie [Blauwdrukken oplossen](./troubleshoot/general.md) voor stappen om te bepalen wat er fout is gegaan als er fouten zijn gemaakt.
 

@@ -7,20 +7,23 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 11/4/2019
+ms.date: 04/14/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8cee874106598c7d81b923d7dd32ba91902d9326
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 5d73ba8f21fe7731fb751d42a8497ff8e1ebba7d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745189"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383628"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Resourceklassen converteren naar werkbelastinggroepen
 
 Werkbelastinggroepen bieden een mechanisme om systeembronnen te isoleren en te bevatten.  Bovendien u met werkbelastinggroepen uitvoeringsregels instellen voor de aanvragen die in deze aanvragen worden uitgevoerd.  Met een uitvoeringsregel voor het uitvoeren van een time-out voor query's kunnen op hol geslagen queryquery's worden geannuleerd zonder tussenkomst van de gebruiker.  In dit artikel wordt uitgelegd hoe u een bestaande resourceklasse gebruiken en een werkbelastinggroep met een vergelijkbare configuratie maken.  Daarnaast wordt een optionele time-outregel voor query's toegevoegd.
+
+> [!NOTE]
+> Zie de [sectie Toewijzingen van resourceklassen mengen met classificaties](sql-data-warehouse-workload-classification.md#mixing-resource-class-assignments-with-classifiers) in het [conceptdocument Workloadclassification](sql-data-warehouse-workload-classification.md) voor richtlijnen voor het tegelijkertijd gebruiken van werkbelastinggroepen en resourceklassen.
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>Inzicht in de bestaande configuratie van resourceklasse
 
@@ -86,4 +89,6 @@ SELECT request_id, [label], classifier_name, group_name, command
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Werkbelastingisolatie](sql-data-warehouse-workload-isolation.md)
-- [Een groep-koppeling van workloadgroep maken](quickstart-configure-workload-isolation-tsql.md)
+- [Een workloadgroep maken](quickstart-configure-workload-isolation-tsql.md)
+- [WORKLOADKLASSEIFIER MAKEN (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
+- [WORKLOADGROEP MAKEN (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)

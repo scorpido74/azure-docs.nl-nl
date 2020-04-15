@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT-beveiligingsmodule voor IoT Edge| Microsoft Documenten
+title: Beveiligingsmodule voor IoT Edge
 description: Inzicht in de architectuur en mogelijkheden van azure security center voor IoT-beveiligingsmodule voor IoT Edge.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 148c68234a937efde554ef00a6014cdc1a350f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0eb68f517c4c5b04dd4f92dd1a804dcf5ad24362
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71315896"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310631"
 ---
 # <a name="azure-iot-edge-security-module"></a>Azure IoT Edge-beveiligingsmodule
 
@@ -36,7 +36,7 @@ Zie [Uw agent configureren](how-to-agent-configuration.md) voor meer informatie.
 Azure Security Center for IoT-beveiligingsmodule voor IoT Edge biedt de volgende functies:
 
 - Verzamelt onbewerkte beveiligingsgebeurtenissen van het onderliggende besturingssysteem (Linux) en de IoT Edge Container-systemen.
-  
+
   Zie [azure security center voor iot-agentconfiguratie](how-to-agent-configuration.md) voor meer informatie over beschikbare beveiligingsgegevensverzamelaars.
 
 - Analyse van IoT Edge-implementatiemanifesten.
@@ -52,7 +52,7 @@ De bevoorrechte modus is vereist om de module in staat te stellen het besturings
 
 ## <a name="module-supported-platforms"></a>Door de module ondersteunde platforms
 
-Azure Security Center for IoT-beveiligingsmodule voor IoT Edge is momenteel alleen beschikbaar voor Linux. 
+Azure Security Center for IoT-beveiligingsmodule voor IoT Edge is momenteel alleen beschikbaar voor Linux.
 
 ## <a name="next-steps"></a>Volgende stappen
 

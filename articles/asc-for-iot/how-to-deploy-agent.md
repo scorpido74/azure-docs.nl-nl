@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center voor IoT-agent selecteren en implementeren| Microsoft Documenten
+title: Beveiligingsagents selecteren en implementeren
 description: Meer informatie over hoe u Azure Security Center voor IoT-beveiligingsagents selecteert en implementeert op IoT-apparaten.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3b514c79be87cd136375b4853226426965f4185
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770013"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311205"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Een beveiligingsagent selecteren en implementeren op uw IoT-apparaat
 
@@ -29,7 +29,8 @@ Zie [Referentiearchitectuur voor beveiligingsagent .](security-agent-architectur
 
 Agenten zijn ontwikkeld als open-source projecten, en zijn beschikbaar in twee smaken: <br> [C](https://aka.ms/iot-security-github-c), en [C#](https://aka.ms/iot-security-github-cs).
 
-In dit artikel leert u het volgende: 
+In dit artikel leert u het volgende:
+
 > [!div class="checklist"]
 > * Vergelijk smaken van beveiligingsagenten
 > * Ontdek ondersteunde agentplatforms
@@ -37,9 +38,9 @@ In dit artikel leert u het volgende:
 
 ## <a name="understand-security-agent-options"></a>Inzicht in de opties van beveiligingsagent
 
-Elk Azure Security Center voor IoT-beveiligingsagentsmaak biedt dezelfde set functies en ondersteunt vergelijkbare configuratieopties. 
+Elk Azure Security Center voor IoT-beveiligingsagentsmaak biedt dezelfde set functies en ondersteunt vergelijkbare configuratieopties.
 
-De C-gebaseerde beveiligingsagent heeft een lagere geheugenvoetafdruk en is de ideale keuze voor apparaten met minder beschikbare resources. 
+De C-gebaseerde beveiligingsagent heeft een lagere geheugenvoetafdruk en is de ideale keuze voor apparaten met minder beschikbare resources.
 
 |     | C-gebaseerde beveiligingsagent | C#-gebaseerde beveiligingsagent |
 | --- | ----------- | --------- |
@@ -59,20 +60,19 @@ De C-gebaseerde beveiligingsagent heeft een lagere geheugenvoetafdruk en is de i
 
 ## <a name="security-agent-installation-guidelines"></a>Richtlijnen voor de installatie van beveiligingsagenten
 
-Voor **Windows:** Het script Install SecurityAgent.ps1 moet worden uitgevoerd vanuit een PowerShell-venster van de beheerder. 
+Voor **Windows:** Het script Install SecurityAgent.ps1 moet worden uitgevoerd vanuit een PowerShell-venster van de beheerder.
 
 Voor **Linux**: De InstallSecurityAgent.sh moet worden uitgevoerd als superuser. Wij raden u aan de installatieopdracht vooraf te bevestigen met "sudo".
 
-
-## <a name="choose-an-agent-flavor"></a>Kies een agent smaak 
+## <a name="choose-an-agent-flavor"></a>Kies een agent smaak
 
 Beantwoord de volgende vragen over uw IoT-apparaten om de juiste agent te selecteren:
 
-- Gebruikt u _Windows Server_ of Windows _IoT Core?_ 
+- Gebruikt u _Windows Server_ of Windows _IoT Core?_
 
     [Een c#-gebaseerde beveiligingsagent voor Windows implementeren.](how-to-deploy-windows-cs.md)
 
-- Gebruik je een Linux distributie met x86 architectuur? 
+- Gebruik je een Linux distributie met x86 architectuur?
 
     [Implementeer een C-gebaseerde beveiligingsagent voor Linux.](how-to-deploy-linux-c.md)
 
@@ -90,10 +90,10 @@ De volgende lijst bevat alle momenteel ondersteunde platforms.
 
 |Azure Security Center voor IoT-agent |Besturingssysteem |Architectuur |
 |--------------|------------|--------------|
-|C|Ubuntu 16.04 |   x64|
-|C|Ubuntu 18.04 |   x64, ARMv7|
-|C|Debian 9 |   x64, x86|
-|C#|Ubuntu 16.04    |x64|
+|C|Ubuntu 16.04 |    x64|
+|C|Ubuntu 18.04 |    x64, ARMv7|
+|C|Debian 9 |    x64, x86|
+|C#|Ubuntu 16.04     |x64|
 |C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
@@ -102,6 +102,6 @@ De volgende lijst bevat alle momenteel ondersteunde platforms.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga voor meer informatie over configuratieopties verder naar de handleiding voor agentconfiguratie. 
+Ga voor meer informatie over configuratieopties verder naar de handleiding voor agentconfiguratie.
 > [!div class="nextstepaction"]
 > [Agentconfiguratie hoe te begeleiden](./how-to-agent-configuration.md)

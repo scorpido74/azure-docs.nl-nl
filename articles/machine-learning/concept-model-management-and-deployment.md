@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: f5aaf8adf33d27f8ebb99c8ca3a873d958632a4f
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616837"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314299"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: modelbeheer, implementatie en bewaking met Azure Machine Learning
 
@@ -124,6 +124,16 @@ Als u het model als webservice wilt implementeren, moet u de volgende items opge
 
 Zie [Modellen implementeren voor](how-to-deploy-and-where.md)meer informatie.
 
+#### <a name="controlled-rollout"></a>Gecontroleerde implementatie
+
+Wanneer u wordt geïmplementeerd in Azure Kubernetes Service, u gecontroleerde implementatie gebruiken om de volgende scenario's in te schakelen:
+
+* Meerdere versies van een eindpunt voor een implementatie maken
+* Voer A/B-tests uit door verkeer naar verschillende versies van het eindpunt te routeren.
+* Schakel tussen eindpuntversies door het verkeerspercentage in eindpuntconfiguratie bij te werken.
+
+Zie [Gecontroleerde uitrol van ML-modellen](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)voor meer informatie.
+
 #### <a name="iot-edge-devices"></a>IoT Edge-apparaten
 
 U modellen met IoT-apparaten gebruiken via **Azure IoT Edge-modules.** IoT Edge-modules worden geïmplementeerd op een hardwareapparaat, waardoor gevolgtrekking of modelscore op het apparaat mogelijk is.
@@ -136,12 +146,20 @@ Microsoft Power BI ondersteunt het gebruik van machine learning-modellen voor ge
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Leg de governancegegevens vast die nodig zijn voor het vastleggen van de end-to-end ML-levenscyclus
 
-Azure ML biedt u de mogelijkheid om het end-to-end controlespoor van al uw ML-assets bij te houden. Met name:
+Azure ML biedt u de mogelijkheid om het end-to-end controlespoor van al uw ML-assets bij te houden met behulp van metagegevens.
 
 - Azure ML [integreert met Git](how-to-set-up-training-targets.md#gitintegration) om informatie bij te houden over welke repository / branch / commit uw code vandaan komt.
-- [Azure ML-gegevenssets](how-to-create-register-datasets.md) helpen u bij het bijhouden, profileren en versiegegevens. 
+- [Azure ML-gegevenssets](how-to-create-register-datasets.md) helpen u bij het bijhouden, profileren en versiegegevens.
+- [Met de interpreteerbaarheid](how-to-machine-learning-interpretability.md) u uw modellen uitleggen, voldoen aan de naleving van de regelgeving en begrijpen hoe modellen tot een resultaat voor bepaalde input komen.
 - Azure ML Run-geschiedenis slaat een momentopname op van de code, gegevens en gegevens die worden gebruikt om een model te trainen.
 - Het Azure ML-modelregister legt alle metagegevens vast die aan uw model zijn gekoppeld (welk experiment het heeft getraind, waar het wordt geïmplementeerd, als de implementaties in orde zijn).
+- [Met integratie met Azure Event Grid](concept-event-grid-integration.md) u reageren op gebeurtenissen in de ML-levenscyclus. Modelregistratie, implementatie, datadrift en trainingsgebeurtenissen (run).For example, model registration, deployment, data drift, and training (run) events.
+
+> [!TIP]
+> Hoewel bepaalde informatie over modellen en gegevenssets automatisch wordt vastgelegd, u aanvullende informatie toevoegen met behulp van __tags.__ Wanneer u op zoek bent naar geregistreerde modellen en gegevenssets in uw werkruimte, u tags als filter gebruiken.
+>
+> Het koppelen van een gegevensset aan een geregistreerd model is een optionele stap. Zie [de](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py) referentie modelklasse voor informatie over het verwijzen naar een gegevensset bij het registreren van een gegevensset.
+
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Meldingen, automatiseren en waarschuwen voor gebeurtenissen in de ML-levenscyclus
 Azure ML publiceert belangrijke gebeurtenissen op Azure EventGrid, die kunnen worden gebruikt om gebeurtenissen in de ML-levenscyclus te melden en te automatiseren. Zie [dit document](how-to-use-event-grid.md)voor meer informatie.
@@ -157,7 +175,7 @@ Zie [Modelgegevensverzameling inschakelen](how-to-enable-data-collection.md)voor
 
 ## <a name="retrain-your-model-on-new-data"></a>Uw model omscholen op nieuwe gegevens
 
-Vaak wilt u uw model bijwerken of zelfs helemaal opnieuw trainen, terwijl u nieuwe informatie ontvangt. Soms is het ontvangen van nieuwe gegevens een verwacht onderdeel van het domein. Andere keren, zoals besproken in [Detect data drift (preview) op datasets,](how-to-monitor-datasets.md)kunnen modelprestaties verslechteren in het licht van zaken als wijzigingen in een bepaalde sensor, wijzigingen in natuurlijke gegevens, zoals seizoenseffecten of functies die verschuiven in hun relatie tot andere functies. 
+Vaak wilt u uw model valideren, bijwerken of zelfs helemaal opnieuw trainen, terwijl u nieuwe informatie ontvangt. Soms is het ontvangen van nieuwe gegevens een verwacht onderdeel van het domein. Andere keren, zoals besproken in [Detect data drift (preview) op datasets,](how-to-monitor-datasets.md)kunnen modelprestaties verslechteren in het licht van zaken als wijzigingen in een bepaalde sensor, wijzigingen in natuurlijke gegevens, zoals seizoenseffecten of functies die verschuiven in hun relatie tot andere functies. 
 
 Er is geen universeel antwoord op "Hoe weet ik of ik me moet omscholen?" maar Azure ML-gebeurtenis- en bewakingstools die eerder zijn besproken, zijn goede uitgangspunten voor automatisering. Zodra u hebt besloten om te scholen, moet u: 
 

@@ -3,12 +3,12 @@ title: Stel uw ontwikkelomgeving in op Linux
 description: Installeer de runtime en SDK en maak een lokaal ontwikkelcluster in Linux. Zodra u dit hebt gedaan, kunt u toepassingen bouwen.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 572b1509f45a7f5bf2c63619809f01d17c3493d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258432"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309120"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Uw ontwikkelomgeving voorbereiden in Linux
 > [!div class="op_single_selector"]
@@ -20,7 +20,7 @@ ms.locfileid: "79258432"
 
 Als u [Azure Service Fabric-toepassingen](service-fabric-application-model.md) op uw Linux-ontwikkelmachine wilt implementeren en uitvoeren, moet u de runtime en algemene SDK installeren. U kunt ook optionele SDK's voor Java en .NET Core-ontwikkeling installeren. 
 
-Bij de stappen in dit artikel wordt ervan uitgegaan dat u in het eigen systeem installeert op Linux of gebruikmaakt van de Service Fabric OneBox-containerinstallatiekopie, `microsoft/service-fabric-onebox`.
+Bij de stappen in dit artikel wordt ervan uitgegaan dat u in het eigen systeem installeert op Linux of gebruikmaakt van de Service Fabric OneBox-containerinstallatiekopie, `mcr.microsoft.com/service-fabric/onebox:latest`.
 
 Het installeren van de Service Fabric-runtime en -SDK op Windows Subsystem voor Linux wordt niet ondersteund. U kunt Service Fabric-entiteiten beheren die elders in de cloud of on-premises worden gehost met de Azure Service Fabric-opdrachtregelinterface (CLI), die wordt ondersteund. Zie [De Service Fabric-CLI instellen](./service-fabric-cli.md) voor meer informatie over het installeren van de CLI.
 

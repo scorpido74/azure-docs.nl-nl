@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 03/10/2020
-ms.openlocfilehash: 4c635d285f83e8e9c4c5547a9ee983686c507819
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/14/2020
+ms.openlocfilehash: d62d05cdbda86af3c3a38757877624e87f6d1719
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261734"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383761"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Een account op de commerciële marktplaats maken in partnercentrum
 
@@ -100,7 +100,7 @@ Zorg ervoor dat je accountgegevens bij de hand hebben.
 
 Als u al bent ingeschreven in het Microsoft Partner Netwerk, gebruikt u deze sectie om uw account rechtstreeks vanuit het Partnercentrum te maken.
 
-Meld u aan bij [Partner Center](https://partner.microsoft.com/) met uw Microsoft Partner Network-account, zodat u het domein van uw bedrijfswerkmailaccount koppelt aan uw nieuwe Partner Center-account. Door deze accounts te koppelen, kunnen uw medewerkers van het bedrijf zich aanmelden bij Partner Center met gebruikersnamen en wachtwoorden voor hun werkaccount.
+Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) met uw Microsoft Partner Network-account, zodat u het domein van uw bedrijfswerkmailaccount koppelt aan uw nieuwe Partner Center-account. Door deze accounts te koppelen, kunnen uw medewerkers van het bedrijf zich aanmelden bij Partner Center met gebruikersnamen en wachtwoorden voor hun werkaccount.
 
 >[!NOTE]
 >Als u wilt controleren of uw bedrijf al een Partner Center-werkaccount heeft, hoe u een nieuw werkaccount maakt of hoe u meerdere werkaccounts instelt om te gebruiken met Partner Center, gaat u naar [uw bedrijfswerkaccount en partnercentrum.](./company-work-accounts.md)
@@ -130,7 +130,7 @@ Als je al bent ingeschreven voor een partnercentrum-ontwikkelaarsprogramma, gebr
 >
 >Individuele accounts zijn voor afzonderlijke ontwikkelaars die op zichzelf werken. Bedrijfsaccounts zijn voor organisaties en bedrijven. Bedrijfsaccounts geven u toegang tot het indienen van apps met extra functionaliteit. We hebben meer verificatie nodig voor bedrijfsaccounts nadat u zich registreert om te bevestigen dat u gemachtigd bent om het account voor uw bedrijf in te stellen. Deze verificatie kan enkele dagen tot een paar weken duren en bevat vaak een telefoontje naar uw bedrijf. Met beide typen accounts u apps, invoegingen en services indienen. Zie [Accounttypen, locaties en kosten voor](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)meer informatie.
 
-Meld u aan bij [Partner Center](https://partner.microsoft.com/) met uw Microsoft Partner Center-account om u in te schrijven voor het Commercial Marketplace-programma onder hetzelfde account. Als u zich met hetzelfde account aanmeldt voor Commerciële Marketplace, u zowel uw bestaande programmainschrijvingen als Commerciële Marktplaats zien in het linkernavigatiemenu van Partner Center.
+Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) met uw Microsoft Partner Center-account om u in te schrijven voor het Commercial Marketplace-programma onder hetzelfde account. Als u zich met hetzelfde account aanmeldt voor Commerciële Marketplace, u zowel uw bestaande programmainschrijvingen als Commerciële Marktplaats zien in het linkernavigatiemenu van Partner Center.
 
 Nadat u zich hebt aangemeld, gebruikt u de volgende stappen om het instellen van uw account af te ronden:
 

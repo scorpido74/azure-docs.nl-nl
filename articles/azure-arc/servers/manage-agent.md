@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/01/2020
+ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8bcf59ee863bb2fd2a3213480372ad215c2fc00d
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 5ad2127b4cb9da3ca83aa04bd1885908a88dba62
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528593"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308962"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Het beheren en onderhouden van de Connected Machine-agent
 
@@ -112,6 +112,78 @@ Acties van de [opdracht yum,](https://access.redhat.com/articles/yum-cheat-sheet
     ```
 
 Acties van de [zypper](https://en.opensuse.org/Portal:Zypper) opdracht, zoals de installatie en `/var/log/zypper.log` verwijdering van pakketten, worden geregistreerd in het logbestand. 
+
+## <a name="about-the-azcmagent-tool"></a>Over de azcmagent tool
+
+De azcmagent-tool (Azcmagent.exe) wordt gebruikt om de Azure Arc voor servers (preview) Connected Machine-agent tijdens de installatie te configureren of om de oorspronkelijke configuratie van de agent na de installatie te wijzigen. Azcmagent.exe biedt opdrachtregelparameters om de agent aan te passen en de status ervan te bekijken:
+
+* **Verbinding maken** - De machine verbinden met Azure Arc
+
+* **Loskoppelen** - De machine loskoppelen van Azure Arc
+
+* **Opnieuw verbinding maken** - Een losgekoppelde machine opnieuw verbinden met Azure Arc
+
+* **Weergeven** - De status van de agent weergeven en de configuratie-eigenschappen (naam van de brongroep, abonnements-id, versie, enz.), die u kunnen helpen bij het oplossen van een probleem met de agent.
+
+* **-h of --help** - Toont beschikbare opdrachtregelparameters
+
+    Als u bijvoorbeeld gedetailleerde hulp wilt zien `azcmagent reconnect -h`voor de parameter **Opnieuw verbinden,** typt u . 
+
+* **-v of --verbose** - Verbose logging inschakelen
+
+U een **Verbinding**maken, **Verbreken**en opnieuw handmatig **verbinden** terwijl u interactief bent aangemeld, of automatiseren met dezelfde serviceprincipal die u hebt gebruikt om meerdere agents aan boord te nemen of met een [microsoft-identiteitsplatformtoegangstoken](../../active-directory/develop/access-tokens.md). Als u geen serviceprincipal hebt gebruikt om de machine te registreren bij Azure Arc voor servers (voorbeeld), raadpleegt u het volgende [artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) om een serviceprincipal te maken.
+
+### <a name="connect"></a>Verbinding maken
+
+Met deze parameter wordt een resource in Azure Resource Manager die de machine vertegenwoordigt, gemaakt in Azure. De bron bevindt zich in de opgegeven abonnementsgroep en resourcegroep en `--location` gegevens over de machine worden opgeslagen in het Azure-gebied dat door de instelling is opgegeven. De standaardresourcenaam is de hostnaam van deze machine als deze niet is opgegeven.
+
+Een certificaat dat overeenkomt met de door het systeem toegewezen identiteit van de machine wordt vervolgens lokaal gedownload en opgeslagen. Zodra deze stap is voltooid, beginnen de Azure Connected Machine Metadata Service en Guest Configuration Agent te synchroniseren met Azure Arc voor servers (preview).
+
+Voer de volgende opdracht uit om verbinding te maken met een serviceprincipal:
+
+`azcmagent connect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+Voer de volgende opdracht uit om verbinding te maken met een toegangstoken:
+
+`azcmagent connect --access-token <> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+Voer de volgende opdracht uit om verbinding te maken met uw verhoogde ingelogde referenties (interactief):
+
+`azcmagent connect --tenant-id <TenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+### <a name="disconnect"></a>Verbinding verbreken
+
+Met deze parameter wordt een resource in Azure Resource Manager die de machine vertegenwoordigt, verwijderd in Azure. Het verwijdert de agent niet uit de machine, dit moet als een afzonderlijke stap worden gedaan. Als de machine is losgekoppeld, als u deze opnieuw wilt registreren `azcmagent connect` bij Azure Arc voor servers (voorbeeld), gebruikt u zo dat er een nieuwe bron voor wordt gemaakt in Azure.
+
+Voer de volgende opdracht uit om de verbinding met een serviceprincipal te verbreken:
+
+`azcmagent disconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
+
+Voer de volgende opdracht uit om de verbinding met een toegangstoken te verbreken:
+
+`azcmagent disconnect --access-token <accessToken>`
+
+Voer de volgende opdracht uit om verbinding te maken met uw verhoogde ingelogde referenties (interactief):
+
+`azcmagent disconnect --tenant-id <tenantID>`
+
+### <a name="reconnect"></a>Opnieuw verbinden
+
+Deze parameter verbindt de reeds geregistreerde of verbonden machine opnieuw met Azure Arc voor servers (voorbeeld). Dit kan nodig zijn als de machine ten minste 45 dagen is uitgeschakeld om het certificaat te laten verlopen. Deze parameter gebruikt de meegeleverde verificatieopties om nieuwe referenties op te halen die overeenkomen met de Azure Resource Manager-bron die deze machine vertegenwoordigt.
+
+Deze opdracht vereist hogere bevoegdheden dan de Azure [Connected Machine Onboarding-rol.](overview.md#required-permissions)
+
+Voer de volgende opdracht uit om opnieuw verbinding te maken met een serviceprincipal:
+
+`azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
+
+Voer de volgende opdracht uit om opnieuw verbinding te maken met een access token:
+
+`azcmagent reconnect --access-token <accessToken>`
+
+Voer de volgende opdracht uit om opnieuw verbinding te maken met uw verhoogde ingelogde referenties (interactief):
+
+`azcmagent reconnect --tenant-id <tenantID>`
 
 ## <a name="remove-the-agent"></a>De agent verwijderen
 

@@ -1,14 +1,14 @@
 ---
 title: Parameters gebruiken om dynamische blauwdrukken te maken
 description: Leer meer over statische en dynamische parameters en hoe u deze gebruiken om veilige en dynamische blauwdrukken te maken.
-ms.date: 03/12/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 36735d71b746301819e5079aba1697b55fe5e183
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ed596db2050ac788c2d98c63cb7314de473b5f4e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677589"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383615"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dynamische blauwdrukken maken door middel van parameters
 
@@ -28,8 +28,7 @@ Via de REST API kunnen parameters worden gemaakt op de blauwdruk zelf. Deze para
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>SecureString- en secureObject-parameters gebruiken
 
-Terwijl een Resource _artifact_ Manager-sjabloonartefact parameters van de **secureString-** en **secureObject-typen** ondersteunt, vereist Azure Blueprints dat elk van deze typen is verbonden met een Azure Key Vault.
-Deze veiligheidsmaatregel voorkomt de onveilige praktijk van het opslaan van geheimen samen met de Blauwdruk en moedigt de werkgelegenheid van veilige patronen. Azure Blueprints ondersteunt deze beveiligingsmaatregel en detecteert de opname van een beveiligde parameter in een _resourcemanager-sjabloonartefact._ De service vraagt vervolgens tijdens toewijzing naar de volgende Key Vault-eigenschappen per gedetecteerde beveiligde parameter:
+Terwijl een Resource _artifact_ Manager-sjabloonartefact parameters van de **secureString-** en **secureObject-typen** ondersteunt, vereist Azure Blueprints dat elk van deze typen is verbonden met een Azure Key Vault. Deze veiligheidsmaatregel voorkomt de onveilige praktijk van het opslaan van geheimen samen met de Blauwdruk en moedigt de werkgelegenheid van veilige patronen. Azure Blueprints ondersteunt deze beveiligingsmaatregel en detecteert de opname van een beveiligde parameter in een _resourcemanager-sjabloonartefact._ De service vraagt vervolgens tijdens toewijzing naar de volgende Key Vault-eigenschappen per gedetecteerde beveiligde parameter:
 
 - Key Vault-bron-id
 - Geheime naam Key Vault
@@ -62,11 +61,11 @@ Een parameterwaarde die is gedefinieerd in de definitie van een blauwdruk wordt 
 
 1. Artefacten die aan de blauwdruk zijn toegevoegd en met parameteropties, geven **X van Y-parameters weer die zijn ingevuld** in de kolom **Parameters.** Klik op de artefactrij om de artefactparameters te bewerken.
 
-   ![Blauwdrukparameters voor een blauwdrukdefinitie](../media/parameters/parameter-column.png)
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Blauwdrukparameters voor een blauwdrukdefinitie" border="false":::
 
 1. Op de pagina **Artefact bewerken** worden waardeopties weergegeven die geschikt zijn voor het artefact waarop is geklikt. Elke parameter op het artefact heeft een titel, een waardevak en een selectievakje. Stel het vak in op onaangevinkt om er een **statische parameter**van te maken. In het onderstaande voorbeeld is alleen _locatie_ een **statische parameter** omdat deze niet is aangevinkt en de naam van _de resourcegroep_ is ingeschakeld.
 
-   ![Statische parameters voor blauwdruk op een blauwdrukartefact](../media/parameters/static-parameter.png)
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Statische parameters voor blauwdruk op een blauwdrukartefact" border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>Statische parameters instellen vanuit REST API
 
@@ -177,7 +176,7 @@ Het tegenovergestelde van een statische parameter is een **dynamische parameter*
 
 1. Zoek op de pagina **Blauwdruk toewijzen** de sectie **Artefact-parameters.** Elk artefact met ten minste één **dynamische parameter** geeft het artefact en de configuratieopties weer. Geef de vereiste waarden op aan de parameters voordat u de blauwdruk toewijs. In het onderstaande voorbeeld is _Naam_ een **dynamische parameter** die moet worden gedefinieerd om de blauwdruktoewijzing te voltooien.
 
-   ![Dynamische parameter Blauwdruk tijdens blauwdruktoewijzing](../media/parameters/dynamic-parameter.png)
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Dynamische parameter Blauwdruk tijdens blauwdruktoewijzing" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Dynamische parameters instellen vanuit REST API
 

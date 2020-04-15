@@ -12,12 +12,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 309e1278959a917f0cef2f419aec1f4f3afcef60
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: b899e1d651f41c9c1e1e54af1b5ec19162dfc28d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991021"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380061"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Zelfstudie: Meld u aan voor gebruikers en bel de Microsoft Graph vanuit een Android-toepassing 
 
@@ -91,7 +91,7 @@ Als u nog geen Android-toepassing hebt, volgt u deze stappen om een nieuw projec
 
 1. Navigeer in het projectvenster van Android Studio naar **app\src\main\res.**
 2. Klik met de rechtermuisknop op **res** en kies **Nieuwe** > **map**. Voer `raw` de nieuwe mapnaam in en klik op **OK**.
-3. Maak in **app** > **src** > **main** > **res** > **raw** `auth_configbn_single_account.json` een nieuw JSON-bestand genaamd en plak de MSAL-configuratie die u eerder hebt opgeslagen. 
+3. Maak in **app** > **src** > **main** > **res** > **raw** `auth_config_single_account.json` een nieuw JSON-bestand genaamd en plak de MSAL-configuratie die u eerder hebt opgeslagen. 
 
     Onder de omleiding URI, plakken: 
     ```json
@@ -190,7 +190,7 @@ import com.microsoft.identity.client.exception.*;
 ## <a name="instantiate-publicclientapplication"></a>Instantiate PublicClientApplication
 #### <a name="initialize-variables"></a>Variabelen initialiseren 
 ```java
-private final static String[] SCOPES = {"File.Read"};
+private final static String[] SCOPES = {"Files.Read"};
 /* Azure AD v2 Configs */
 final static String AUTHORITY = "https://login.microsoftonline.com/common";
 private ISingleAccountPublicClientApplication mSingleAccountApp;

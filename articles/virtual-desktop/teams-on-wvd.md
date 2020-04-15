@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cfec30e56b0fd523896cbc1a7e84e92f639075a8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 15a4c9b16b102310fd02f8db3a4fb93cff84882b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879051"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314071"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft Teams gebruiken op Windows Virtual-bureaublad
 
@@ -67,3 +67,7 @@ U de Bureaublad-app Teams implementeren met een installatie per machine. Ga als 
 
       > [!NOTE]
       > Als u Teams installeert met de MSI-instelling ALLUSER=1, worden automatische updates uitgeschakeld. We raden je aan om Teams minstens één keer per maand bij te werken.
+      
+### <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Eigenschappen van Extern bureaublad-protocol aanpassen voor een hostgroep
+Door de RDP-eigenschappen (Remote Desktop Protocol) van een hostpool (remote desktop protocol) aan te pas, zoals multi-monitor-ervaring, microfoon- en audioomleiding mogelijk te maken, u uw gebruikers een optimale ervaring bieden op basis van hun behoeften. U RDP-eigenschappen in Windows Virtual Desktop aanpassen met de parameter **-CustomRdpProperty** in de cmdlet **Set-RdsHostPool.**
+Zie [ondersteunde RDP-bestandsinstellingen](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) voor een volledige lijst met ondersteunde eigenschappen en de standaardwaarden ervan.

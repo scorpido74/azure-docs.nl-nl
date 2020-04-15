@@ -1,5 +1,5 @@
 ---
-title: Azure AD-pasverificatie - Snel starten | Microsoft Documenten
+title: Azure AD-pasverificatie - Snelstart | Microsoft Documenten
 description: In dit artikel wordt beschreven hoe u aan de slag met Azure Active Directory (Azure AD) Pass-through Authentication.
 services: active-directory
 keywords: Azure AD Connect Pass-Through Authentication, installeer Active Directory, vereiste onderdelen voor Azure AD, SSO, Single Sign-on
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc45033cdf1bdaa6d4ecd6ab58cc7f90ff9c1ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b84e972584562be741919c7dccb6bdfe1bdea628
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331419"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312858"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory Pass-Through-verificatie: snel aan de slag
+# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory Pass-Through-verificatie: snel aande slag
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>Azure AD-pass-through-verificatie implementeren
 
@@ -66,9 +66,14 @@ Zorg ervoor dat de volgende voorwaarden zijn ingevoerd.
      | **8080** (optioneel) | Verificatieagents melden hun status elke tien minuten via poort 8080, als poort 443 niet beschikbaar is. Deze status wordt weergegeven op de Azure AD-portal. Poort 8080 wordt _niet_ gebruikt voor aanmeldingen van gebruikers. |
      
      Als uw firewall regels afdwingt volgens de oorspronkelijke gebruikers, opent u deze poorten voor verkeer van Windows-services die als netwerkservice worden uitgevoerd.
-   - Als uw firewall of proxy DNS-whitelisting toestaat, worden op de witte lijst verbindingen met ** \*.msappproxy.net** en ** \*.servicebus.windows.net .** Zo niet, geef dan toegang tot de [IP-bereiken van Azure-datacenters,](https://www.microsoft.com/download/details.aspx?id=41653)die wekelijks worden bijgewerkt.
+   - Als uw firewall of proxy DNS-whitelisting toestaat, voegt u verbindingen toe aan ** \*.msappproxy.net** en ** \*.servicebus.windows.net**. Zo niet, geef dan toegang tot de [IP-bereiken van Azure-datacenters,](https://www.microsoft.com/download/details.aspx?id=41653)die wekelijks worden bijgewerkt.
    - Uw verificatiemedewerkers hebben toegang nodig tot **login.windows.net** en **login.microsoftonline.com** voor de eerste registratie. Open uw firewall ook voor die URL's.
    - Voor certificaatvalidatie deblokkeren van de volgende URL's: **mscrl.microsoft.com:80,** **crl.microsoft.com:80,** **ocsp.msocsp.com:80**en **\.www microsoft.com:80**. Aangezien deze URL's worden gebruikt voor certificaatvalidatie met andere Microsoft-producten, u deze URL's al laten deblokkeren.
+
+### <a name="azure-government-cloud-prerequisite"></a>Vereiste Azure Government-cloud
+Download de nieuwste versie van de PTA-agent van de Azure-portal voordat u pass-through-verificatie via Azure AD Connect met stap 2 inschakelt.  U moet ervoor zorgen dat uw agent versies **x.x.xxx.x** of hoger is.  Als u wilt controleren of uw agent [verificatieagents bijwerken ziet](how-to-connect-pta-upgrade-preview-authentication-agents.md)
+
+Na het downloaden van de nieuwste versie van de agent gaat u verder met de onderstaande instructies om Pass-Through-verificatie te configureren via Azure AD Connect.
 
 ## <a name="step-2-enable-the-feature"></a>Stap 2: De functie inschakelen
 
@@ -114,8 +119,8 @@ Als u pass-through-verificatie wilt implementeren in een productieomgeving, moet
 Het installeren van meerdere Pass-through Authentication Agents zorgt voor een hoge beschikbaarheid, maar niet voor deterministische load balancing tussen de Verificatieagents. Als u wilt bepalen hoeveel verificatieagents u nodig hebt voor uw tenant, moet u rekening houden met de piek en de gemiddelde belasting van aanmeldingsaanvragen die u op uw tenant verwacht te zien. Als benchmark kan één verificatieagent 300 tot 400 verificaties per seconde verwerken op een standaard 4-core CPU, 16 GB RAM-server.
 
 Als u het netwerkverkeer wilt schatten, gebruikt u de volgende richtlijnen voor het formaat:
-- Elk verzoek heeft een laadvermogen grootte van (0,5K + 1K * num_of_agents) bytes; d.w.z., gegevens van Azure AD naar de verificatieagent. Hier geeft 'num_of_agents' het aantal verificatieagents aan dat op uw tenant is geregistreerd.
-- Elke respons heeft een laadvermogen van 1K bytes; d.w.z., gegevens van de verificatieagent naar Azure AD.
+- Elk verzoek heeft een payload-grootte van (0,5 K + 1K * num_of_agents) bytes, dat wil zeggen gegevens van Azure AD naar de verificatieagent. Hier geeft 'num_of_agents' het aantal verificatieagents aan dat op uw tenant is geregistreerd.
+- Elk antwoord heeft een payloadgrootte van 1K bytes, dat wil zeggen gegevens van de verificatieagent naar Azure AD.
 
 Voor de meeste klanten zijn drie verificatiemedewerkers in totaal voldoende voor hoge beschikbaarheid en capaciteit. Installeer verificatieagents dicht bij uw domeincontrollers om de aanmeldingslatentie te verbeteren.
 

@@ -1,28 +1,28 @@
 ---
-title: SSL-offload met PowerShell - Azure Application Gateway
-description: In dit artikel vindt u instructies voor het maken van een toepassingsgateway met SSL-offload met behulp van het klassieke Azure-implementatiemodel
+title: TLS-uitladen met PowerShell - Azure Application Gateway
+description: In dit artikel vindt u instructies voor het maken van een toepassingsgateway met TLS-offload met behulp van het klassieke Azure-implementatiemodel
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: c456a0856adb0d36349b5f96ba0ab8bab3eec5c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ead16b61784b8073d50b7e0e6079805a1e48e9b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74047921"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312326"
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Een toepassingsgateway configureren voor SSL-offload met behulp van het klassieke implementatiemodel
+# <a name="configure-an-application-gateway-for-tls-offload-by-using-the-classic-deployment-model"></a>Een toepassingsgateway configureren voor TLS-offload met behulp van het klassieke implementatiemodel
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](application-gateway-ssl-portal.md)
+> * [Azure Portal](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 > * [Azure-klassieker PowerShell](application-gateway-ssl.md)
 > * [Azure-CLI](application-gateway-ssl-cli.md)
 
-Azure Application Gateway kan zodanig worden geconfigureerd dat de Secure Sockets Layer-sessie (SSL) wordt beëindigd bij de gateway om kostbare SSL-ontsleutelingstaken te voorkomen die worden uitgevoerd in de webfarm. Met SSL-offload worden ook het instellen van de front-endserver en het beheer van de webtoepassing eenvoudiger.
+Azure Application Gateway kan worden geconfigureerd om de TLS (Transport Layer Security), voorheen bekend als Secure Sockets Layer (SSL), sessie op de gateway te beëindigen om te voorkomen dat kostbare TLS-decryptietaken op de webfarm plaatsvinden. TLS offload vereenvoudigt ook de front-end server setup en het beheer van de webapplicatie.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -30,10 +30,10 @@ Azure Application Gateway kan zodanig worden geconfigureerd dat de Secure Socket
 2. Controleer of u een werkend virtueel netwerk hebt met een geldig subnet. Zorg ervoor dat er geen virtuele machines en cloudimplementaties zijn die gebruikmaken van het subnet. De toepassingsgateway moet afzonderlijk in een subnet van een virtueel netwerk staan.
 3. De servers die u configureert om de toepassingsgateway te gebruiken, moeten bestaan of hun eindpunten hebben die zijn gemaakt in het virtuele netwerk of met een openbaar IP-adres of een vip-adres (Virtual IP-adres).
 
-Voer de volgende stappen in de vermelde volgorde uit om SSL-offload op een toepassingsgateway te configureren:
+Voer de volgende stappen in de vermelde volgorde uit om TLS-offload op een toepassingsgateway te configureren:
 
 1. [Een toepassingsgateway maken](#create-an-application-gateway)
-2. [SSL-certificaten uploaden](#upload-ssl-certificates)
+2. [TLS/SSL-certificaten uploaden](#upload-tlsssl-certificates)
 3. [De gateway configureren](#configure-the-gateway)
 4. [De gatewayconfiguratie instellen](#set-the-gateway-configuration)
 5. [De gateway openen](#start-the-gateway)
@@ -55,7 +55,7 @@ In het voorbeeld zijn **Beschrijving**, **InstanceCount**en **GatewaySize** opti
 Get-AzureApplicationGateway AppGwTest
 ```
 
-## <a name="upload-ssl-certificates"></a>SSL-certificaten uploaden
+## <a name="upload-tlsssl-certificates"></a>TLS/SSL-certificaten uploaden
 
 Voer `Add-AzureApplicationGatewaySslCertificate` deze in om het servercertificaat in PFX-indeling te uploaden naar de toepassingsgateway. De certificaatnaam is een door de gebruiker gekozen naam en moet uniek zijn binnen de toepassingsgateway. Dit certificaat wordt met deze naam aangeduid in alle certificaatbeheerbewerkingen op de toepassingsgateway.
 
@@ -95,12 +95,12 @@ De waarden zijn:
 * **Back-end serverpool:** de lijst met IP-adressen van de back-endservers. De vermelde IP-adressen moeten deel uitmaken van het virtuele netwerksubnet of een openbaar IP- of VIP-adres zijn.
 * **Back-end serverpoolinstellingen:** elke groep heeft instellingen zoals poort-, protocol- en cookiegebaseerde affiniteit. Deze instellingen zijn gekoppeld aan een pool en worden toegepast op alle servers in de pool.
 * **Front-end poort**: Deze poort is de openbare poort die wordt geopend op de toepassingsgateway. Het verkeer komt binnen via deze poort en wordt vervolgens omgeleid naar een van de back-endservers.
-* **Listener**: De listener heeft een front-endpoort, een protocol (Http of Https; deze waarden zijn hoofdlettergevoelig) en de naam van het SSL-certificaat (als u een SSL-offload configureert).
+* **Listener**: De listener heeft een front-endpoort, een protocol (Http of Https; deze waarden zijn hoofdlettergevoelig) en de naam TLS/SSL-certificaat (als u een TLS-offload configureert).
 * **Regel:** De regel bindt de listener en de back-end servergroep en definieert naar welke back-endservergroep het verkeer moet worden gericht wanneer het een bepaalde listener raakt. Momenteel wordt alleen de regel *basic* ondersteund. De regel *basic* is een vorm van round-robinbelastingverdeling.
 
 **Aanvullende configuratieopmerkingen**
 
-Voor het configureren van SSL-certificaten moet het protocol in **HttpListener** worden gewijzigd in **Https** (hoofdlettergevoelig). Voeg het element **SslCert** toe aan **HttpListener** met de waarde die is ingesteld op dezelfde naam die wordt gebruikt in de sectie [SSL-certificaten uploaden.](#upload-ssl-certificates) De front-end poort moet worden bijgewerkt tot **443**.
+Voor de configuratie van TLS/SSL-certificaten moet het protocol in **HttpListener** worden gewijzigd in **Https** (hoofdlettergevoelig). Voeg het **element SslCert** toe aan **HttpListener** met de waarde die is ingesteld op dezelfde naam die wordt gebruikt in de sectie [TLS/SSL-certificaten uploaden.](#upload-tlsssl-certificates) De front-end poort moet worden bijgewerkt tot **443**.
 
 **Affiniteit op basis van cookies inschakelen:** U een toepassingsgateway configureren om ervoor te zorgen dat een aanvraag van een clientsessie altijd naar dezelfde VM in de webfarm wordt geleid. Om dit te bereiken, voegt u een sessiecookie in waarmee de gateway verkeer op de juiste manier kan leiden. Als u op cookies gebaseerde affiniteit wilt inschakelen, stelt u **CookieBasedAffinity** in op **Enabled** in het element **BackendHttpSettings**.
 

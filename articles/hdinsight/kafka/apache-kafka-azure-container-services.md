@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 6abb4f632535f1bda7e9f337f111ba372a624f2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55373f71c78b6d45b9c78c52dea61a37b89b4a00
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239621"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383044"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes-service gebruiken met Apache Kafka op HDInsight
 
@@ -163,7 +163,7 @@ Op dit moment zijn Kafka en Azure Kubernetes Service in communicatie via de peer
     * `var topic = 'mytopic'`: `mytopic` Vervang door de naam van het Kafka-onderwerp dat door deze toepassing wordt gebruikt.
     * `var brokerHost = '176.16.0.13:9092`: `176.16.0.13` Vervang door het interne IP-adres van een van de brokerhosts voor uw cluster.
 
-        Zie het [API-document Apache Ambari REST](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) als u het interne IP-adres van de brokerhosts (workernodes) in het cluster wilt vinden. Kies IP-adres van een van de vermeldingen `wn`waar de domeinnaam begint met .
+        Zie het [API-document Apache Ambari REST](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-internal-ip-address-of-cluster-nodes) als u het interne IP-adres van de brokerhosts (workernodes) in het cluster wilt vinden. Kies IP-adres van een van de vermeldingen `wn`waar de domeinnaam begint met .
 
 4. Installeer vanuit een `src` opdrachtregel in de map afhankelijkheden en gebruik Docker om een afbeelding te maken voor implementatie:
 

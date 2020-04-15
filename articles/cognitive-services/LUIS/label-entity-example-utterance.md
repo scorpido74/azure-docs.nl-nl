@@ -1,21 +1,14 @@
 ---
 title: Voorbeeldutterance van de labelentiteit
-titleSuffix: Azure Cognitive Services
 description: Meer informatie over het labelen van een door machines geleerde entiteit met subcomponenten in een voorbeeldutterance op een pagina met intentiedetails van de LUIS-portal.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.author: diberry
-ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ea5fbea902c9694d9a8a6a8a5bffcf5e7234bbbd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898380"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382403"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Door de machine geleerde entiteit labelen in een voorbeeldutterance
 
@@ -72,7 +65,7 @@ Het entiteitspalet biedt een alternatief voor de vorige labelervaring. Hiermee u
 
 ## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Subcomponenten van een door de machine geleerde entiteit labelen
 
-Subcomponenten in entiteiten worden op precies dezelfde manier gelabeld als entiteiten op het hoogste niveau. Bij het selecteren van tekst zijn de entiteiten die beschikbaar zijn in het pop-upvenster relatief ten opzichte van de context waarin de tekst wordt weergegeven. Als u bijvoorbeeld een door de 5-niveau machine geleerde entiteit hebt en u tekst selecteert die is gelabeld met de 1e en 2e niveaus (aangegeven door een gelabelde entiteitsnaam onder de voorbeeldutterance), zijn de entiteiten die beschikbaar zijn in het pop-upvenster beperkt tot de context van componenten van het 3e niveau. Als u de tekst wilt labelen met andere entiteiten, selecteert u **Label als een andere entiteitsoptie.**
+Subcomponenten in entiteiten worden op precies dezelfde manier gelabeld als entiteiten op het hoogste niveau. Bij het selecteren van tekst zijn de entiteiten die beschikbaar zijn in het pop-upvenster relatief ten opzichte van de context waarin de tekst wordt weergegeven. Als u bijvoorbeeld een door de 5-niveau machine geleerde entiteit hebt en u tekst selecteert die is gelabeld met de 1e en 2e niveaus (aangegeven door een gelabelde entiteitsnaam onder de voorbeeldutterance), zijn de entiteiten die beschikbaar zijn in het pop-upvenster beperkt tot de context van onderdelen van het derde niveau. Als u de tekst wilt labelen met andere entiteiten, selecteert u **Label als een andere entiteitsoptie.**
 
 > [!div class="mx-imgBorder"]
 > ![Entiteitspalet voor door machines geleerde entiteit](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
@@ -87,6 +80,10 @@ Entiteitsrollen worden gelabeld met behulp van het entiteitspalet.
 1. Nadat het palet Entiteit is geopend, selecteert u de entiteit in de lijst met entiteiten.
 1. Ga naar de **entiteitscontrole**en selecteer een bestaande rol of maak een nieuwe rol.
 1. Label de tekst in het voorbeeld utterance met de entiteitsrol.
+
+## <a name="labeling-for-punctuation"></a>Labelen voor interpunctie
+
+U hoeft niet te etiketteren voor interpunctie. Gebruik [toepassingsinstellingen](luis-reference-application-settings.md) om te bepalen of interpunctie van invloed is op utterancevoorspellingen.
 
 ## <a name="unlabel-entities"></a>Entiteiten zonder label
 

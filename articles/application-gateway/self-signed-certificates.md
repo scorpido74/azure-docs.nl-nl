@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0547f254a64cecc7072ee9ff79eb50204b34bc17
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548866"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311946"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Een zelfondertekend certificaat van Azure Application Gateway genereren met een aangepaste basis-CA
 
-De Application Gateway v2 SKU introduceert het gebruik van Trusted Root Certificates om backend servers toe te staan. Hiermee worden verificatiecertificaten verwijderd die vereist waren in de v1 SKU. Het *rootcertificaat* is een Basis-64 gecodeerde X.509(. CER) het rootcertificaat opmaken vanaf de backendcertificaatserver. Het identificeert de root certificaat autoriteit (CA) die het servercertificaat heeft uitgegeven en het servercertificaat wordt vervolgens gebruikt voor de SSL-communicatie.
+De Application Gateway v2 SKU introduceert het gebruik van Trusted Root Certificates om backend servers toe te staan. Hiermee worden verificatiecertificaten verwijderd die vereist waren in de v1 SKU. Het *rootcertificaat* is een Basis-64 gecodeerde X.509(. CER) het rootcertificaat opmaken vanaf de backendcertificaatserver. Het identificeert de root certificaat autoriteit (CA) die het servercertificaat heeft uitgegeven en het servercertificaat wordt vervolgens gebruikt voor de TLS / SSL-communicatie.
 
-Application Gateway vertrouwt standaard op het certificaat van uw website als deze is ondertekend door een bekende CA (bijvoorbeeld GoDaddy of DigiCert). U hoeft het basiscertificaat in dat geval niet expliciet te uploaden. Zie [Overzicht van SSL-beëindiging en end-to-end SSL met Application Gateway](ssl-overview.md)voor meer informatie. Als u echter een dev/testomgeving hebt en geen geverifieerd CA-ondertekend certificaat wilt kopen, u uw eigen aangepaste CA maken en er een zelfondertekend certificaat mee maken. 
+Application Gateway vertrouwt standaard op het certificaat van uw website als deze is ondertekend door een bekende CA (bijvoorbeeld GoDaddy of DigiCert). U hoeft het basiscertificaat in dat geval niet expliciet te uploaden. Zie [Overzicht van TLS-beëindiging en end-to-end TLS met Application Gateway](ssl-overview.md)voor meer informatie. Als u echter een dev/testomgeving hebt en geen geverifieerd CA-ondertekend certificaat wilt kopen, u uw eigen aangepaste CA maken en er een zelfondertekend certificaat mee maken. 
 
 > [!NOTE]
 > Zelfondertekende certificaten worden standaard niet vertrouwd en kunnen moeilijk te onderhouden zijn. Ook kunnen ze gebruik maken van verouderde hash en cipher suites die misschien niet sterk zijn. Voor een betere beveiliging, de aankoop van een certificaat ondertekend door een bekende certificaat autoriteit.
@@ -125,15 +125,15 @@ De CSR is een openbare sleutel die aan een CA wordt gegeven bij het aanvragen va
    - fabrikam.crt
    - fabrikam.key
 
-## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>Het certificaat configureren in de SSL-instellingen van uw webserver
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>Het certificaat configureren in de TLS-instellingen van uw webserver
 
-Configureer SSL op uw webserver met de fabrikam.crt- en fabrikam.key-bestanden. Als uw webserver geen twee bestanden kan verwerken, u deze combineren tot één .pem- of .pfx-bestand met OpenSSL-opdrachten.
+Configureer TLS op uw webserver met de fabrikam.crt- en fabrikam.key-bestanden. Als uw webserver geen twee bestanden kan verwerken, u deze combineren tot één .pem- of .pfx-bestand met OpenSSL-opdrachten.
 
 ### <a name="iis"></a>IIS
 
 Zie [Hoe u geïmporteerde certificaten op een webserver in Windows Server 2003 installeert](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)voor instructies over het importeren van certificaten en het uploaden als servercertificaat op IIS.
 
-Zie SSL instellen [op IIS 7 voor](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)SSL-bindende instructies.
+Zie SSL instellen [op IIS 7 voor](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)tls-bindende instructies.
 
 ### <a name="apache"></a>Apache
 
@@ -151,9 +151,9 @@ De volgende configuratie is een voorbeeld [van virtuele host die is geconfiguree
 
 ### <a name="nginx"></a>NGINX
 
-De volgende configuratie is een voorbeeld [NGINX-serverblok](https://nginx.org/docs/http/configuring_https_servers.html) met SSL-configuratie:
+De volgende configuratie is een voorbeeld [VAN NGINX-serverblokkering](https://nginx.org/docs/http/configuring_https_servers.html) met TLS-configuratie:
 
-![NGINX met SSL](media/self-signed-certificates/nginx-ssl.png)
+![NGINX met TLS](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>Toegang tot de server om de configuratie te verifiëren
 
@@ -232,7 +232,7 @@ $probe = Get-AzApplicationGatewayProbeConfig `
 
 ## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server's certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that TLS handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -272,5 +272,5 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Overzicht van SSL-beëindiging en end-to-end SSL met Application Gateway](ssl-overview.md)voor meer informatie over SSL\TLS in Application Gateway.
+Zie [Overzicht van TLS-beëindiging en end-to-end TLS met Application Gateway](ssl-overview.md)voor meer informatie over SSL\TLS in Application Gateway.
 

@@ -5,22 +5,24 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
-ms.date: 04/13/2020
+ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: b14ff2e94e9df25186a13ae8fbd63d8d4044b538
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 76211014f96aee864412fd19686d58d0338ec5c2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274240"
+ms.locfileid: "81310243"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>Snelstart: een Azure Firewall maken met meerdere openbare IP-adressen - Sjabloon Resourcebeheer
 
 In deze quickstart gebruikt u een resourcebeheersjabloon om een Azure Firewall met meerdere openbare IP-adressen te implementeren.
 
-Nat-regelverzamelingsregels staan RDP-verbindingen toe tot twee virtuele Windows Server 2019-machines.
+De geïmplementeerde firewall heeft NAT-regels voor het verzamelen van regels waarmee RDP-verbindingen met twee virtuele Windows Server 2019-machines mogelijk zijn.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Zie Een Azure Firewall implementeren met meerdere [openbare IP-adressen met Azure PowerShell](deploy-multi-public-ip-powershell.md)voor meer informatie over Azure Firewall met meerdere openbare IP-adressen.
 
 ## <a name="prerequisites"></a>Vereisten
 

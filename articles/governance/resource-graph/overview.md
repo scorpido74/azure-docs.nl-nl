@@ -3,16 +3,16 @@ title: Overzicht van Azure Resource Graph
 description: Ontdek hoe de Azure Resource Graph-service complexe query's van resources op schaal mogelijk maakt voor abonnementen en tenants.
 ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240056"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381522"
 ---
 # <a name="what-is-azure-resource-graph"></a>Wat is Azure Resource Graph?
 
-Azure Resource Graph is een service in Azure die is ontworpen om Azure Resource Management uit te breiden door efficiënte en performante bronverkenning te bieden met de mogelijkheid om op schaal te zoeken in een bepaalde set abonnementen, zodat u uw Milieu. Deze query's bieden de volgende mogelijkheden:
+Azure Resource Graph is een service in Azure die is ontworpen om Azure Resource Management uit te breiden door efficiënte en performante bronverkenning te bieden met de mogelijkheid om op schaal te zoeken in een bepaalde set abonnementen, zodat u uw omgeving effectief beheren. Deze query's bieden de volgende mogelijkheden:
 
 - De mogelijkheid om resources op te vragen met geavanceerde opties voor filteren, groeperen en sorteren op resource-eigenschappen.
 - Vermogen om iteratief resources te verkennen op basis van governancevereisten.
@@ -50,7 +50,7 @@ Resource Graph werkt vervolgens de database bij. Resource Graph doet ook een reg
 
 Nu u een beter begrip hebt van wat Azure Resource Graph is, gaan we eens kijken naar hoe u query's construeren.
 
-Het is belangrijk te weten dat de querytaal van Azure Resource Graph is gebaseerd op de [querytaal van Kusto](../../data-explorer/data-explorer-overview.md) die wordt gebruikt door Azure Data Explorer.
+Het is belangrijk te weten dat de querytaal van Azure Resource Graph is gebaseerd op de [querytaal van Kusto](/azure/data-explorer/data-explorer-overview) die wordt gebruikt door Azure Data Explorer.
 
 Voor meer informatie over bewerkingen en functies die kunnen worden gebruikt met Azure Resource Graph raadpleegt u eerst [De querytaal van Resource Graph](./concepts/query-language.md).
 Zie [Resources verkennen](./concepts/explore-resources.md) als u de resources wilt bekijken.

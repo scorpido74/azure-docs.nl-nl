@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: e64b0a8602a4a0806ada15546972856743c38161
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544508"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312474"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -28,11 +28,11 @@ Azure Application Gateway biedt een ADC (Application Delivery Controller) als se
 
 ### <a name="what-features-does-application-gateway-support"></a>Welke functies ondersteunt Application Gateway?
 
-Application Gateway ondersteunt automatisch schalen, SSL-offloading en end-to-end SSL, een webtoepassingsfirewall (WAF), sessieaffiniteit op basis van cookies, URL-padgebaseerde routering, multisitehosting en andere functies. Zie [Inleiding tot toepassingsgateway](application-gateway-introduction.md)voor een volledige lijst met ondersteunde functies.
+Application Gateway ondersteunt automatisch schalen, TLS-offloading en end-to-end TLS, een webtoepassingsfirewall (WAF), sessieaffiniteit op basis van cookies, URL-padgebaseerde routering, multisitehosting en andere functies. Zie [Inleiding tot toepassingsgateway](application-gateway-introduction.md)voor een volledige lijst met ondersteunde functies.
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>Hoe verschillen Application Gateway en Azure Load Balancer?
 
-Application Gateway is een layer 7 load balancer, wat betekent dat deze alleen werkt met webverkeer (HTTP, HTTPS, WebSocket en HTTP/2). Het ondersteunt mogelijkheden zoals SSL-beëindiging, cookie-gebaseerde sessieaffiniteit en round robin voor load-balancing verkeer. Load Balancer load-balances verkeer op laag 4 (TCP of UDP).
+Application Gateway is een layer 7 load balancer, wat betekent dat deze alleen werkt met webverkeer (HTTP, HTTPS, WebSocket en HTTP/2). Het ondersteunt mogelijkheden zoals TLS-beëindiging, sessieaffiniteit op basis van cookies en round robin voor load-balancing traffic. Load Balancer load-balances verkeer op laag 4 (TCP of UDP).
 
 ### <a name="what-protocols-does-application-gateway-support"></a>Welke protocollen ondersteunt Application Gateway?
 
@@ -216,7 +216,7 @@ Nee.
 
 Application Gateway v2 ondersteunt momenteel geen IPv6. Het kan werken in een dual stack VNet met alleen IPv4, maar de gateway subnet moet IPv4-only. Application Gateway v1 ondersteunt geen dual stack VNets. 
 
-## <a name="configuration---ssl"></a>Configuratie - SSL
+## <a name="configuration---tls"></a>Configuratie - TLS
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Welke certificaten ondersteunt Application Gateway?
 
@@ -255,13 +255,13 @@ Application Gateway ondersteunt de volgende cipher suites.
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
-Zie [SSL-beleidsversies en cijfersuites configureren op Application Gateway](application-gateway-configure-ssl-policy-powershell.md)voor informatie over het aanpassen van SSL-opties.
+Zie [TLS-beleidsversies configureren en ciphersuites configureren op Application Gateway](application-gateway-configure-ssl-policy-powershell.md)voor informatie over het aanpassen van TLS-opties.
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>Ondersteunt Application Gateway herversleuteling van verkeer naar de backend?
 
-Ja. Application Gateway ondersteunt SSL-offload en end-to-end SSL, die verkeer opnieuw versleutelen naar de backend.
+Ja. Application Gateway ondersteunt TLS offload en end-to-end TLS, die verkeer opnieuw versleutelen naar de backend.
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Kan ik SSL-beleid configureren om SSL-protocolversies te beheren?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Kan ik tls-beleid configureren om TLS-protocolversies te beheren?
 
 Ja. U Application Gateway configureren om TLS1.0, TLS1.1 en TLS1.2 te weigeren. SSL 2.0 en 3.0 zijn standaard al uitgeschakeld en kunnen niet worden geconfigureerd.
 
@@ -278,9 +278,9 @@ Ja. In Application Gateway u [cijfersuites configureren.](application-gateway-ss
 
 Application Gateway maakt gebruik van SHA256 voor backendbeheer.
 
-### <a name="how-many-ssl-certificates-does-application-gateway-support"></a>Hoeveel SSL-certificaten ondersteunt Application Gateway?
+### <a name="how-many-tlsssl-certificates-does-application-gateway-support"></a>Hoeveel TLS/SSL-certificaten ondersteunt Application Gateway?
 
-Application Gateway ondersteunt maximaal 100 SSL-certificaten.
+Application Gateway ondersteunt maximaal 100 TLS/SSL-certificaten.
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Hoeveel verificatiecertificaten voor backendrecodering ondersteunt Application Gateway?
 
@@ -288,7 +288,7 @@ Application Gateway ondersteunt maximaal 100 verificatiecertificaten.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Integreert Application Gateway native met Azure Key Vault?
 
-Ja, de Application Gateway v2 SKU ondersteunt Key Vault. Zie [SSL-beëindiging met Key Vault-certificaten voor](key-vault-certs.md)meer informatie.
+Ja, de Application Gateway v2 SKU ondersteunt Key Vault. Zie [TLS-beëindiging met Key Vault-certificaten](key-vault-certs.md)voor meer informatie.
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Hoe configureer ik HTTPS-listeners voor .com- en .net-sites? 
 
@@ -338,7 +338,7 @@ Ja. U DDoS-beveiliging inschakelen op het virtuele netwerk waar de toepassingsga
 
 ### <a name="what-is-an-ingress-controller"></a>Wat is een Ingress Controller?
 
-Kubernetes maakt `deployment` het `service` mogelijk om een groep pods intern in het cluster te maken en te gebruiken. Om dezelfde service extern bloot [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) te stellen, wordt een resource gedefinieerd die load balancing, SSL-beëindiging en op naam gebaseerde virtuele hosting biedt.
+Kubernetes maakt `deployment` het `service` mogelijk om een groep pods intern in het cluster te maken en te gebruiken. Om dezelfde service extern bloot [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) te stellen, wordt een resource gedefinieerd die load balancing, TLS-beëindiging en op naam gebaseerde virtuele hosting biedt.
 Om aan `Ingress` deze resource te voldoen, is een Ingress-controller vereist die luistert naar eventuele wijzigingen in `Ingress` resources en het beleid voor de load balancer configureert.
 
 Met de Application Gateway Ingress Controller kan [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) worden gebruikt als de ingress voor een Azure Kubernetes [Service](https://azure.microsoft.com/services/kubernetes-service/) die ook wel een AKS-cluster wordt genoemd.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 9e6eafc4e2f6ae4a0cf1d99cb63bfed53db77f69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5d46caa80f3f0aaeeb18bd919dafccf628c5faf
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77029185"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81384885"
 ---
 Wanneer u een virtuele Azure-machine maakt, moet u een [virtueel netwerk](../articles/virtual-network/virtual-networks-overview.md) (VNet) maken of een bestaand VNet gebruiken. U moet ook bepalen hoe uw virtuele machines kunnen worden geopend via de VNet. Het is belangrijk om [een planning te maken voordat u resources maakt](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) en ervoor te zorgen dat u op de hoogte bent van de [limieten van netwerkresources](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
@@ -38,7 +38,7 @@ Een [netwerkinterface (NIC)](../articles/virtual-network/virtual-network-network
 
 U een VM maken met meerdere NIC's en NIC's toevoegen of verwijderen gedurende de levenscyclus van een vm. Met meerdere NIC's kan een VM verbinding maken met verschillende subnetten en verkeer verzenden of ontvangen via de meest geschikte interface. VM's met een willekeurig aantal netwerkinterfaces kunnen in dezelfde beschikbaarheidsset bestaan, tot het aantal dat wordt ondersteund door de VM-grootte. 
 
-Elke NIC die is gekoppeld aan een virtuele machine moet bestaan op dezelfde locatie en in hetzelfde abonnement als de virtuele machine. Elke NIC moet zijn verbonden met een VNet die bestaat op dezelfde Azure-locatie en in hetzelfde abonnement als de NIC. U het subnet wijzigen waaraan een VIRTUELE V.D. is verbonden nadat deze is gemaakt, maar u het VNet niet wijzigen. Aan elke NIC die is gekoppeld aan een virtuele machine wordt een MAC-adres toegewezen dat niet wordt gewijzigd totdat de virtuele machine wordt verwijderd.
+Elke NIC die is gekoppeld aan een virtuele machine moet bestaan op dezelfde locatie en in hetzelfde abonnement als de virtuele machine. Elke NIC moet zijn verbonden met een VNet die bestaat op dezelfde Azure-locatie en in hetzelfde abonnement als de NIC. U het subnet wijzigen waaraan een VIRTUELE V.D. is verbonden nadat deze is gemaakt, maar u het VNet niet wijzigen. Aan elke NIC die aan een vm is gekoppeld, wordt een MAC-adres toegewezen dat niet wordt gewijzigd totdat de virtuele machine is verwijderd.
 
 Deze tabel bevat de methoden die u kunt gebruiken voor het maken van een netwerkinterface.
 
@@ -66,7 +66,7 @@ Deze tabel bevat de methoden die u kunt gebruiken voor het maken van een IP-adre
 
 | Methode | Beschrijving |
 | ------ | ----------- |
-| [Azure-portal](../articles/virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | Standaard zijn openbare IP-adressen dynamisch, en het adres dat eraan is gekoppeld kan worden gewijzigd wanneer de virtuele machine wordt gestopt of verwijderd. Om ervoor te zorgen dat de virtuele machine altijd hetzelfde openbare IP-adres gebruikt, maakt u een statisch openbaar IP-adres. De portal wijst standaard een dynamisch privé IP-adres toe aan een NIC bij het maken van een virtuele machine. U dit IP-adres wijzigen in statisch nadat de vm is gemaakt.|
+| [Azure Portal](../articles/virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | Standaard zijn openbare IP-adressen dynamisch, en het adres dat eraan is gekoppeld kan worden gewijzigd wanneer de virtuele machine wordt gestopt of verwijderd. Om ervoor te zorgen dat de virtuele machine altijd hetzelfde openbare IP-adres gebruikt, maakt u een statisch openbaar IP-adres. De portal wijst standaard een dynamisch privé IP-adres toe aan een NIC bij het maken van een virtuele machine. U dit IP-adres wijzigen in statisch nadat de vm is gemaakt.|
 | [Azure PowerShell](../articles/virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | U gebruikt [Nieuw-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) met de parameter **-AllocationMethod** als Dynamisch of Statisch. |
 | [Azure-CLI](../articles/virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | U gebruikt [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) met de parameter **--allocation-method** als dynamisch of statisch. |
 | [Sjabloon](../articles/virtual-network/template-samples.md) | Gebruik [Netwerkinterface in een virtueel netwerk met openbaar IP-adres](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet) als richtlijn voor het implementeren van een openbaar IP-adres met behulp van een sjabloon. |
@@ -79,15 +79,15 @@ Een subnet is een bereik met IP-adressen in de VNet. U kunt u een VNET onderverd
 
 Wanneer u een VNet instelt, geeft u de topologie op, met inbegrip van de beschikbare adresruimten en subnetten. Als de VNet moet worden verbonden met andere VNets of on-premises netwerken, moet u adresbereiken selecteren die elkaar niet overlappen. De IP-adressen zijn privé en zijn niet toegankelijk via internet, wat alleen geldt voor de niet-routeerbare IP-adressen zoals 10.0.0.0/8, 172.16.0.0/12 of 192.168.0.0/16. Azure behandelt elk adresbereik nu als onderdeel van de privé VNet IP-adresruimte die alleen bereikbaar is binnen de VNet, binnen onderling verbonden VNets en vanaf uw on-premises locatie. 
 
-Als u binnen een organisatie werkt waarin iemand anders verantwoordelijk is voor de interne netwerken, moet u voordat u uw adresruimte selecteert met die persoon overleggen. Zorg ervoor dat er geen overlap is en laat deze persoon weten welke ruimte u wilt gebruiken, zodat deze niet probeert hetzelfde bereik met IP-adressen te gebruiken. 
+Als u binnen een organisatie werkt waarin iemand anders verantwoordelijk is voor de interne netwerken, moet u voordat u uw adresruimte selecteert met die persoon overleggen. Zorg ervoor dat er geen overlap is en laat ze weten welke ruimte u wilt gebruiken, zodat ze niet proberen om hetzelfde bereik van IP-adressen te gebruiken. 
 
 Standaard zijn er geen beveiligingsgrenzen tussen subnetten, zodat virtuele machines in elk van deze subnetten met elkaar kunnen communiceren. U kunt echter netwerkbeveiligingsgroepen (NSG's) instellen, waarmee u het netwerkverkeer naar en van subnetten en naar en van virtuele machines kunt beheren. 
 
-Deze tabel bevat de methoden die u kunt gebruiken voor het maken van een VNet en subnetten. 
+Deze tabel bevat de methoden die u kunt gebruiken voor het maken van een VNet en subnetten.    
 
 | Methode | Beschrijving |
 | ------ | ----------- |
-| [Azure-portal](../articles/virtual-network/quick-create-portal.md) | Als u een VNet laat maken door Azure wanneer u een virtuele machine maakt, is de naam een combinatie van de naam van de resourcegroep die de VNet bevat en **-vnet**. De adresruimte is 10.0.0.0/24, de vereiste subnetnaam is **default** en het adresbereik van het subnet is 10.0.0.0/24. |
+| [Azure Portal](../articles/virtual-network/quick-create-portal.md) | Als u een VNet laat maken door Azure wanneer u een virtuele machine maakt, is de naam een combinatie van de naam van de resourcegroep die de VNet bevat en **-vnet**. De adresruimte is 10.0.0.0/24, de vereiste subnetnaam is **default** en het adresbereik van het subnet is 10.0.0.0/24. |
 | [Azure PowerShell](../articles/virtual-network/quick-create-powershell.md) | U gebruikt [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkSubnetConfig) en [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) om een subnet en een VNet te maken. U [add-azvirtualnetworksubnetconfig](https://docs.microsoft.com/powershell/module/Az.Network/Add-AzVirtualNetworkSubnetConfig) ook gebruiken om een subnet toe te voegen aan een bestaand VNet. |
 | [Azure-CLI](../articles/virtual-network/quick-create-cli.md) | Het subnet en de VNet worden op hetzelfde moment gemaakt. Geef een **--subnet-name**-parameter op voor [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) met de subnetnaam. |
 | Template | De eenvoudigste manier om een VNet en subnetten te maken, is door een bestaande sjabloon te downloaden, zoals [Virtueel netwerk met twee subnetten,](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)en deze aan te passen voor uw behoeften. |
@@ -108,7 +108,7 @@ Deze tabel bevat de methoden die u kunt gebruiken voor het maken van een netwerk
 
 | Methode | Beschrijving |
 | ------ | ----------- |
-| [Azure-portal](../articles/virtual-network/tutorial-filter-network-traffic.md) | Wanneer u een virtuele machine in Azure Portal maakt, wordt een NSG automatisch gemaakt en gekoppeld aan de NIC die door de Portal wordt gemaakt. De naam van de NSG is een combinatie van de naam van de virtuele machine en **-nsg**. Deze NSG bevat een regel voor inkomende verbindingen met een prioriteit van 1000, de service ingesteld op RDP, het protocol ingesteld op TCP, de poort ingesteld op 3389 en de actie ingesteld op Toestaan. Als u ander inkomend verkeer op de virtuele machine wilt toestaan, moet u extra regels toevoegen aan de NSG. |
+| [Azure Portal](../articles/virtual-network/tutorial-filter-network-traffic.md) | Wanneer u een virtuele machine in Azure Portal maakt, wordt een NSG automatisch gemaakt en gekoppeld aan de NIC die door de Portal wordt gemaakt. De naam van de NSG is een combinatie van de naam van de virtuele machine en **-nsg**. Deze NSG bevat een regel voor inkomende verbindingen met een prioriteit van 1000, de service ingesteld op RDP, het protocol ingesteld op TCP, de poort ingesteld op 3389 en de actie ingesteld op Toestaan. Als u ander inkomend verkeer op de virtuele machine wilt toestaan, moet u extra regels toevoegen aan de NSG. |
 | [Azure PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md) | Gebruik [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) en geef de vereiste regelinformatie. Gebruik [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) om de NSG te maken. Gebruik [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig) om de NSG voor het subnet te configureren. Gebruik [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) om de NSG toe te voegen aan het VNet. |
 | [Azure-CLI](../articles/virtual-network/tutorial-filter-network-traffic-cli.md) | Gebruik [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg) om de NSG te maken. Gebruik [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule) om regels toe te voegen aan de NSG. Gebruik [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet) om de NSG toe te voegen aan het subnet. |
 | [Sjabloon](../articles/virtual-network/template-samples.md) | Gebruik [Een netwerkbeveiligingsgroep maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create) als richtlijn voor het implementeren van een netwerkbeveiligingsgroep met behulp van een sjabloon. |
@@ -121,11 +121,12 @@ De load balancer wijst inkomend en uitgaand verkeer toe tussen het openbare IP-a
 
 Wanneer u een load balancer maakt, moet u ook rekening houden met deze configuratie-elementen:
 
-- **Front-end IP-adresconfiguratie**: een load balancer kan een of meer front-end IP-adressen bevatten, ook wel bekend als virtuele IP-adressen (VIP's). Deze IP-adressen fungeren als ingang voor het verkeer.
+- **Front-end IP-configuratie** – Een load balancer kan een of meer front-end IP-adressen bevatten. Deze IP-adressen fungeren als ingang voor het verkeer.
 - **Back-end-adrespool**: IP-adressen die zijn gekoppeld aan de NIC waarop de taakverdeling wordt gedistribueerd.
-- **NAT-regels**: definieert hoe inkomend verkeer via de front-end IP gaat en naar het back-end IP-adres wordt gedistribueerd.
+- **[Port Forwarding](../articles/load-balancer/tutorial-load-balancer-port-forwarding-portal.md)** - Definieert hoe binnenkomend verkeer door het front-end IP stroomt en wordt gedistribueerd naar het back-end IP met behulp van binnenkomende NAT-regels.
 - **Load balancer-regels**: wijst een bepaalde combinatie van front-end IP en poort toe aan een combinatie van een set van back-end IP-adressen en poort. Een enkele load balancer kan meerdere regels voor taakverdeling bevatten. Elke regel is een combinatie van een front-end IP en poort en back-end IP en poort die is gekoppeld aan virtuele machines.
 - **[Tests](../articles/load-balancer/load-balancer-custom-probe-overview.md)**: controleert de status van virtuele machines. Wanneer een test niet reageert, stopt de load balancer met het verzenden van nieuwe verbindingen naar de slechte virtuele machine. De bestaande verbindingen worden hierdoor niet beïnvloed en nieuwe verbindingen worden naar goede virtuele machines verzonden.
+- **[Uitgaande regels](../articles/load-balancer/load-balancer-outbound-rules-overview.md)** - Een uitgaande regel configureert uitgaande Netwerkadresvertaling (NAT) voor alle virtuele machines of exemplaren die zijn geïdentificeerd door de backendpool van uw standaardloadbalansr die naar de frontend moet worden vertaald.
 
 Deze tabel bevat de methoden die u kunt gebruiken voor het maken van een internetgerichte load balancer.
 
@@ -140,10 +141,31 @@ Deze tabel bevat de methoden die u kunt gebruiken voor het maken van een interne
 
 | Methode | Beschrijving |
 | ------ | ----------- |
-| Azure Portal | U [de interne verkeersbelasting in evenwicht brengen met een Basislastbalansin de Azure-portal.](../articles/load-balancer/tutorial-load-balancer-basic-internal-portal.md) |
+| Azure Portal | U [de interne verkeersbelasting in evenwicht brengen met een load balancer in de Azure-portal.](../articles/load-balancer/tutorial-load-balancer-standard-internal-portal.md) |
 | [Azure PowerShell](../articles/load-balancer/load-balancer-get-started-ilb-arm-ps.md) | Als u een privé-IP-adres in het subnet van het netwerk wilt opgeven, gebruikt u [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) met de parameter **-PrivateIpAddress.** Gebruik [New-AzLoadBalancerBackendAddressConConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) om de configuratie van de back-end adresgroep te maken. Gebruik [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) om inkomende NAT-regels te maken die zijn gekoppeld aan de front-end IP-configuratie die u hebt gemaakt. Gebruik [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) om de sondes te maken die u nodig hebt. Gebruik [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) om de configuratie van de load balancer te maken. Gebruik [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) om de load balancer te maken.|
 | [Azure-CLI](../articles/load-balancer/load-balancer-get-started-ilb-arm-cli.md) | Gebruik de opdracht [az network lb create](https://docs.microsoft.com/cli/azure/network/lb) voor het maken van de eerste load balancer-configuratie. Gebruik [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip) met de parameter **--private-ip-address** voor het definiëren van het privé IP-adres. Gebruik [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool) om de configuratie van de back-end-adrespool toe te voegen. Gebruik [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule) om NAT-regels toe te voegen. Gebruik [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) om de load balancer-regels toe te voegen. Gebruik [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe) om de tests toe te voegen.|
 | [Sjabloon](../articles/load-balancer/load-balancer-get-started-ilb-arm-template.md) | Gebruik [2 virtuele machines in een load balancer en NAT-regels configureren op de LB](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer) als richtlijn voor het implementeren van een load balancer met behulp van een sjabloon. |
+
+### <a name="virtual-machine-scale-sets"></a>Virtuele-machineschaalsets
+
+Bij het werken met virtuele machineschaalsets en load balancer moet rekening worden gehouden met:
+
+* **Meerdere virtuele machineschaalsets kunnen niet dezelfde load balancer gebruiken.**
+* **Port Forwarding en inkomende NAT-regels:**
+  * Elke virtuele machineschaalset moet een binnenkomende NAT-regel hebben.
+  * Wanneer u de virtuele machineschaal gebruikt die is ingesteld in de backendpool van de load balancer, worden de standaard inkomende NAT-regels automatisch gemaakt, dit is door het ontwerp.
+* **Regels voor taakverdeling:**
+  * Wanneer u de virtuele machineschaal in de backendpool van de load balancer gebruikt, wordt de standaard regel voor taakverdeling automatisch gemaakt, dit is door het ontwerp.
+* **Uitgaande regels:**
+  *  Als u uitgaande regel wilt maken voor een backendpool waarnaar al wordt verwezen door een regel voor het balanceren van de last, moet u **eerst 'Impliciete uitgaande regels maken'** als **Nee** in de portal markeren wanneer de inkomende regel voor het balanceren van de lastwordt gemaakt.
+
+  :::image type="content" source="./media/virtual-machines-common-network-overview/vmsslb.png" alt-text="Het maken van taakverdelingsregels" border="true":::
+
+De volgende methoden kunnen worden gebruikt om een virtuele machineschaalset te implementeren met een bestaande Azure-load balancer.
+
+* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met behulp van de Azure-portal.](../articles/load-balancer/configure-vm-scale-set-portal.md)
+* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met Azure PowerShell](../articles/load-balancer/configure-vm-scale-set-powershell.md).
+* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met behulp van azure CLI](../articles/load-balancer/configure-vm-scale-set-cli.md).
 
 ## <a name="vms"></a>VM's
 
@@ -157,7 +179,7 @@ Deze tabel bevat de methoden die u kunt gebruiken voor het maken van een virtuel
 
 | Methode | Beschrijving |
 | ------ | ----------- |
-| [Azure-portal](../articles/virtual-machines/windows/quick-create-portal.md) | Gebruikt de standaardinstellingen van het netwerk die eerder zijn genoemd om een virtuele machine te maken met een enkele NIC. Voor het maken van een virtuele machine met meerdere NIC's, moet u een andere methode gebruiken. |
+| [Azure Portal](../articles/virtual-machines/windows/quick-create-portal.md) | Gebruikt de standaardinstellingen van het netwerk die eerder zijn genoemd om een virtuele machine te maken met een enkele NIC. Voor het maken van een virtuele machine met meerdere NIC's, moet u een andere methode gebruiken. |
 | [Azure PowerShell](../articles/virtual-machines/windows/tutorial-manage-vm.md) | Inclusief het gebruik van [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) om de NIC toe te voegen die u eerder hebt gemaakt aan de VM-configuratie. |
 | [Azure-CLI](../articles/virtual-machines/linux/create-cli-complete.md) | Maak en verbind een VM met een Vnet, subnet en NIC die als afzonderlijke stappen worden gebouwd. |
 | [Sjabloon](../articles/virtual-machines/windows/ps-template.md) | Gebruik [Zeer eenvoudige implementatie van een virtuele Windows-machine](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) als richtlijn voor het implementeren van een virtuele machine met behulp van een sjabloon. |

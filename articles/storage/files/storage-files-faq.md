@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 9398820c88120400d97fbaf8cb0da100c2bdbf81
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 82c516eeac6d3e88ca7b6ac1c97ebb638ba27979
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261751"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383919"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
 [Azure Files](storage-files-introduction.md) biedt volledig beheerde bestandsshares in de cloud die toegankelijk zijn via het industriestandaard [Server Message Block (SMB)-protocol.](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) U Azure-bestandsshares gelijktijdig monteren op cloud- of on-premises implementaties van Windows, Linux en macOS. U azure-bestandsshares ook cacheopslaan op Windows Server-machines door Azure File Sync te gebruiken voor snelle toegang in de buurt van waar de gegevens worden gebruikt.
@@ -199,16 +199,6 @@ In dit artikel worden veelgestelde vragen beantwoord over de functies en functio
 
     Nee, verificatie van Linux VM's wordt niet ondersteund.
 
-* <a id="ad-multiple-forest"></a>
-**Ondersteunt Azure Files AD-verificatie integratie met een AD-omgeving met meerdere forests?**    
-
-    Azure Files AD-verificatie integreert alleen met het forest van de AD-domeinservice waaraan het opslagaccount is geregistreerd. Als u verificatie vanuit een ander AD-forest wilt ondersteunen, moet de forestvertrouwensrelatie op de juiste manier zijn geconfigureerd als u verificatie vanuit een ander AD-forest wilt ondersteunen. De manier waarop Azure Files zich registreert bij een AD-domeinservice is meestal hetzelfde als een gewone bestandsserver, waar het een identiteit (computer- of serviceaanmeldingsaccount) in AD maakt voor verificatie. Het enige verschil is dat de geregistreerde SPN van het opslagaccount eindigt met "file.core.windows.net" die niet overeenkomt met het domeinachtervoegsel. Raadpleeg uw domeinbeheerder om te zien of er een update van uw DNS-routeringsbeleid nodig is om meerdere forestverificatie in te schakelen vanwege het verschillende domeinachtervoegsel.
-
-* <a id=""></a>
-**Welke regio's zijn beschikbaar voor AD-verificatie van Azure Files (voorbeeld)?**
-
-    Raadpleeg [de regionale beschikbaarheid van het AD](storage-files-identity-auth-active-directory-enable.md#regional-availability) voor meer informatie.
-
 * <a id="ad-aad-smb-afs"></a>
 **Kan ik gebruikmaken van Azure Files Azure AD DS-verificatie of AD-verificatie (preview) (Active Directory) op bestandsshares die worden beheerd door Azure File Sync?**
 
@@ -218,7 +208,7 @@ In dit artikel worden veelgestelde vragen beantwoord over de functies en functio
 **Hoe kan ik controleren of ik AD-verificatie heb ingeschakeld voor mijn opslagaccount en de AD-domeingegevens?**
 
     U verwijzen naar de instructies [die hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account) worden aangeboden om te valideren of Azure Files AD-verificatie is ingeschakeld in uw opslagaccount en de AD-domeingegevens op te halen.
-    
+
 * <a id="encryption-at-rest"></a>
 **Hoe kan ik ervoor zorgen dat mijn Azure-bestandsshare in rust wordt versleuteld?**  
 
@@ -243,6 +233,37 @@ In dit artikel worden veelgestelde vragen beantwoord over de functies en functio
 **Welk beleid voor gegevensnaleving biedt ondersteuning voor Azure Files?**  
 
    Azure Files wordt uitgevoerd bovenop dezelfde opslagarchitectuur die wordt gebruikt in andere opslagservices in Azure Storage. Azure Files past hetzelfde beleid voor gegevensnaleving toe als in andere Azure-opslagservices. Voor meer informatie over de naleving van Azure Storage-gegevens u verwijzen naar [azure storage-nalevingsaanbiedingen](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)en naar het [Microsoft Trust Center](https://microsoft.com/trustcenter/default.aspx)gaan.
+   
+### <a name="ad-authentication"></a>AD-verificatie
+* <a id=""></a>
+**Ondersteunt Azure Files Azure AD-verificatie Linux VM's?**
+
+    Nee, verificatie van Linux VM's wordt niet ondersteund.
+
+* <a id="ad-multiple-forest"></a>
+**Ondersteunt Azure Files AD-verificatie integratie met een AD-omgeving met meerdere forests?**    
+
+    Azure Files AD-verificatie integreert alleen met het forest van de AD-domeinservice waaraan het opslagaccount is geregistreerd. Als u verificatie vanuit een ander AD-forest wilt ondersteunen, moet de forestvertrouwensrelatie op de juiste manier zijn geconfigureerd als u verificatie vanuit een ander AD-forest wilt ondersteunen. De manier waarop Azure Files zich registreert bij een AD-domeinservice is meestal hetzelfde als een gewone bestandsserver, waar het een identiteit (computer- of serviceaanmeldingsaccount) in AD maakt voor verificatie. Het enige verschil is dat de geregistreerde SPN van het opslagaccount eindigt met "file.core.windows.net" die niet overeenkomt met het domeinachtervoegsel. Raadpleeg uw domeinbeheerder om te zien of er een update van uw DNS-routeringsbeleid nodig is om meerdere forestverificatie in te schakelen vanwege het verschillende domeinachtervoegsel.
+
+* <a id=""></a>
+**Welke regio's zijn beschikbaar voor AD-verificatie van Azure Files (voorbeeld)?**
+
+    Raadpleeg [de regionale beschikbaarheid van het AD](storage-files-identity-auth-active-directory-enable.md#regional-availability) voor meer informatie.
+
+* <a id="ad-aad-smb-afs"></a>
+**Kan ik gebruikmaken van Azure Files Active Directory (AD)-verificatie (preview) op bestandsshares die worden beheerd door Azure File Sync?**
+
+    Ja, u AD-verificatie inschakelen op een bestandsshare die wordt beheerd door Azure-bestandssynchronisatie. Wijzigingen in de Directory/file NTFS ACL's op lokale bestandsservers worden gelaagd naar Azure-bestanden en vice versa.
+
+* <a id="ad-aad-smb-files"></a>
+**Hoe kan ik controleren of ik AD-verificatie heb ingeschakeld voor mijn opslagaccount en de AD-domeingegevens?**
+
+    U verwijzen naar de instructies [die hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) worden aangeboden om te valideren of Azure Files AD-verificatie is ingeschakeld in uw opslagaccount en de AD-domeingegevens op te halen.
+
+* <a id="ad-aad-smb-files"></a>
+**Is er een verschil in het maken van een computeraccount of serviceaanmeldingsaccount om mijn opslagaccount in AD weer te geven?**
+
+    Als u een [computeraccount](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standaard) of een [serviceaanmeldingsaccount](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) maakt, heeft dit geen verschil met de manier waarop de verificatie zou werken met Azure Files. U uw eigen keuze maken over het weergeven van een opslagaccount als een identiteit in uw AD-omgeving. De standaard-DomainAccountType-set in Join-AzStorageAccountForAuth-cmdlet is een computeraccount. De wachtwoordverloopleeftijd die is geconfigureerd in uw AD-omgeving kan echter verschillen voor een computer- of serviceaanmeldingsaccount en u moet daar rekening mee houden voor [Het wachtwoord van uw opslagaccountin AD bijwerken.](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)
 
 ## <a name="on-premises-access"></a>Lokale toegang
 

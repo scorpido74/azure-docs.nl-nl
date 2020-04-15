@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: b8c2ba54fcc69ba126bf5f68aed99b25f8156155
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b564373780da5bba71bc46ddbac3dc69a0c94a4a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76046175"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382784"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Insights explorer voor Azure Time Series
 
@@ -88,7 +88,7 @@ Binnen enkele minuten nadat u uw gebeurtenisbron hebt aangesloten op uw Time Ser
 
 1. Selecteer het pictogram **Opslaan** om uw huidige query op te slaan en deze te delen met andere gebruikers van de omgeving. Wanneer u het pictogram **Openen** selecteert, u alle opgeslagen query's en gedeelde query's van andere gebruikers bekijken in omgevingen waartoe u toegang hebt.
 
-   [![Query 's](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png)](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png#lightbox)
+   [![Query's](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png)](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png#lightbox)
 
 ## <a name="visualize-data"></a>Gegevens visualiseren
 

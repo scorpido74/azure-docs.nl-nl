@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 97aa446636ea3131246a06f69f74b5868abff608
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: ca892b5f360f523ee2b5ff875dfb0707136a5ab5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668645"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383444"
 ---
 # <a name="connect-to-azure-storage-services"></a>Verbinding maken met Azure-opslagservices
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -73,7 +73,7 @@ We raden u aan een gegevensarchief te maken voor een [Azure Blob-container.](htt
 Wanneer u een werkruimte maakt, worden een Azure blob-container en een Azure-bestandsshare automatisch geregistreerd in de werkruimte. Ze zijn `workspaceblobstore` genoemd `workspacefilestore`en , respectievelijk. `workspaceblobstore`wordt gebruikt om artefacten voor werkruimtes en uw machine learning-experimentlogboeken op te slaan. `workspacefilestore`wordt gebruikt om notitieblokken en R-scripts op te slaan die zijn geautoriseerd via [compute instance.](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files) De `workspaceblobstore` container is ingesteld als het standaardgegevensarchief.
 
 > [!IMPORTANT]
-> Azure Machine Learning designer (preview) maakt automatisch een datastore met de naam **azureml_globaldatasets** wanneer u een voorbeeld opent op de startpagina van de ontwerper. Deze datastore bevat alleen voorbeeldgegevenssets. Gebruik deze datastore **niet** voor vertrouwelijke toegang tot gegevens!
+> Azure Machine Learning designer (preview) maakt automatisch een datastore met de naam **azureml_globaldatasets** wanneer u een voorbeeld opent op de startpagina van de ontwerper. Deze datastore bevat alleen voorbeeldgegevenssets. Gebruik deze datastore **niet** voor vertrouwelijke toegang tot gegevens.
 > ![Automatisch gemaakt gegevensarchief voor gegevenssets voor designervoorbeelden](media/how-to-access-data/datastore-designer-sample.png)
 
 <a name="access"></a>
@@ -94,7 +94,7 @@ Alle register methoden zijn [`Datastore`](https://docs.microsoft.com/python/api/
 U de informatie vinden die `register()` u nodig hebt om de methode in te vullen op de [Azure-portal.](https://portal.azure.com)
 Selecteer **Opslagaccounts** in het linkerdeelvenster en kies het opslagaccount dat u wilt registreren. De pagina **Overzicht** bevat informatie zoals de accountnaam, de container en de naam van bestandsdelen. 
 
-* Ga voor verificatieitems, zoals accountsleutel of SAS-token, naar **Accountsleutels** in het deelvenster **Instellingen.** 
+* Ga voor verificatieitems, zoals accountsleutel of SAS-token, naar **Toegangssleutels** in het deelvenster **Instellingen.** 
 
 * Ga voor servicehoofditems zoals tenant-id en client-id naar uw **app-registraties** en selecteer welke app u wilt gebruiken. De bijbehorende **overzichtspagina** bevat deze items.
 
@@ -107,13 +107,13 @@ In de volgende voorbeelden ziet u hoe u een Azure blob-container, een Azure-best
 
 Als u een Azure blob-container [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)als gegevensarchief wilt registreren, gebruikt u .
 
-Met de volgende code `blob_datastore_name` wordt het `ws` gegevensarchief aan de werkruimte aangetrokken en geregistreerd. Deze datastore heeft `my-container-name` toegang tot `my-account-name` de blobcontainer op het opslagaccount met behulp van de opgegeven accountsleutel.
+Met de volgende code `blob_datastore_name` wordt het `ws` gegevensarchief aan de werkruimte aangetrokken en geregistreerd. Deze datastore heeft `my-container-name` toegang tot `my-account-name` de blobcontainer op het opslagaccount met behulp van de meegeleverde accounttoegangssleutel.
 
 ```Python
 blob_datastore_name='azblobsdk' # Name of the datastore to workspace
 container_name=os.getenv("BLOB_CONTAINER", "<my-container-name>") # Name of Azure blob container
 account_name=os.getenv("BLOB_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 blob_datastore = Datastore.register_azure_blob_container(workspace=ws, 
                                                          datastore_name=blob_datastore_name, 
@@ -126,13 +126,13 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 Als u een Azure-bestandsshare als [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)gegevensarchief wilt registreren, gebruikt u . 
 
-Met de volgende code `file_datastore_name` wordt het `ws` gegevensarchief aan de werkruimte aangetrokken en geregistreerd. Deze datastore heeft `my-fileshare-name` toegang tot `my-account-name` de bestandsshare op het opslagaccount met behulp van de opgegeven accountsleutel.
+Met de volgende code `file_datastore_name` wordt het `ws` gegevensarchief aan de werkruimte aangetrokken en geregistreerd. Deze datastore heeft `my-fileshare-name` toegang tot `my-account-name` de bestandsshare op het opslagaccount met behulp van de meegeleverde accounttoegangssleutel.
 
 ```Python
 file_datastore_name='azfilesharesdk' # Name of the datastore to workspace
 file_share_name=os.getenv("FILE_SHARE_CONTAINER", "<my-fileshare-name>") # Name of Azure file share container
 account_name=os.getenv("FILE_SHARE_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 file_datastore = Datastore.register_azure_file_share(workspace=ws,
                                                      datastore_name=file_datastore_name, 
@@ -181,7 +181,7 @@ Maak een nieuwe datastore in een paar stappen in Azure Machine Learning-studio:
   
 U de informatie vinden die u nodig hebt om het formulier in te vullen op de [Azure-portal.](https://portal.azure.com) Selecteer **Opslagaccounts** in het linkerdeelvenster en kies het opslagaccount dat u wilt registreren. De pagina **Overzicht** bevat informatie zoals de accountnaam, de container en de naam van bestandsdelen. 
 
-* Ga voor verificatieitems, zoals accountsleutel of SAS-token, naar **Accountsleutels** in het deelvenster **Instellingen.** 
+* Ga voor verificatieitems, zoals accountsleutel of SAS-token, naar **Toegangssleutels** in het deelvenster **Instellingen.** 
 
 * Ga voor servicehoofditems zoals tenant-id en client-id naar uw **app-registraties** en selecteer welke app u wilt gebruiken. De bijbehorende **overzichtspagina** bevat deze items. 
 

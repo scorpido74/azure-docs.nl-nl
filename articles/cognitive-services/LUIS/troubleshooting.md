@@ -1,22 +1,15 @@
 ---
 title: Veelgestelde vragen (FAQ) - LUIS
-titleSuffix: Azure Cognitive Services
 description: Dit artikel bevat antwoorden op veelgestelde vragen over Taalbegrip (LUIS).
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 235eba7f80778b8a60ba880616cf80f2c14ccba1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219707"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382190"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Veelgestelde vragen over het begrijpen van veelgestelde vragen (taalverstaan)
 
@@ -59,7 +52,10 @@ De vorige **patroonfunctie** is momenteel afgeschaft en vervangen door **[Patron
 Zie [entiteiten](luis-concept-entity-types.md) en [gegevensextractie](luis-concept-data-extraction.md).
 
 ### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Moeten variaties van een voorbeelduiting interpunctie bevatten?
-Voeg de verschillende variaties als voorbeelduitingen toe aan de intentie of voeg het patroon van de voorbeeldutterance toe aan de syntaxis om de interpunctie [te negeren.](luis-concept-patterns.md#pattern-syntax)
+Gebruik een van de volgende oplossingen:
+* [Interpunctie negeren](luis-reference-application-settings.md#punctuation-normalization)
+* De verschillende variaties toevoegen als voorbeelduitingen aan de intentie
+* Voeg het patroon van de voorbeeldutterance toe aan de syntaxis om de interpunctie [te negeren.](luis-concept-patterns.md#pattern-syntax)
 
 ### <a name="does-luis-currently-support-cortana"></a>Ondersteunt LUIS momenteel Cortana?
 
@@ -68,11 +64,11 @@ Cortana vooraf gebouwde apps werden afgeschaft in 2017. Ze worden niet langer on
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Hoe draag ik het eigendom van een LUIS-app over?
 Als u een LUIS-app wilt overzetten naar een ander Azure-abonnement, exporteert u de LUIS-app en importeert u deze met een nieuw account. Werk de LUIS-app-id bij in de clienttoepassing die deze aanroept. De nieuwe app kan iets andere LUIS-scores van de oorspronkelijke app retourneren.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Een vooraf gebouwde entiteit wordt getagd in een voorbeeldutterance in plaats van mijn aangepaste entiteit. Hoe los ik dit op? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Een vooraf gebouwde entiteit wordt getagd in een voorbeeldutterance in plaats van mijn aangepaste entiteit. Hoe los ik dit op?
 
-In de LUIS-portal u tekst labelen voor de exacte entiteit die u wilt extraheren. Als de LUIS-portal niet de juiste entiteitsvoorspelling weergeeft, moet u mogelijk meer uitingen toevoegen en de entiteit in de tekst labelen of een beschrijving toevoegen (zoals een functie). 
+In de LUIS-portal u tekst labelen voor de exacte entiteit die u wilt extraheren. Als de LUIS-portal niet de juiste entiteitsvoorspelling weergeeft, moet u mogelijk meer uitingen toevoegen en de entiteit in de tekst labelen of een beschrijving toevoegen (zoals een functie).
 
-### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Ik heb geprobeerd om een app of versie bestand importeren, maar ik kreeg een foutmelding, wat is er gebeurd? 
+### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Ik heb geprobeerd om een app of versie bestand importeren, maar ik kreeg een foutmelding, wat is er gebeurd?
 
 Lees meer over [fouten bij het importeren van versies](luis-how-to-manage-versions.md#import-errors).
 
@@ -82,7 +78,7 @@ Lees meer over [fouten bij het importeren van versies](luis-how-to-manage-versio
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Hoe geef ik medewerkers toegang tot LUIS met Azure AD (Azure AD) of RBAC (Role-based access control)?
 
-Zie [Azure Active Directory-resources](luis-how-to-collaborate.md#azure-active-directory-resources) en [Azure Active Directory-tenantgebruiker](luis-how-to-collaborate.md#azure-active-directory-tenant-user) voor meer informatie over het geven van toegang aan bijdragers. 
+Zie [Azure Active Directory-resources](luis-how-to-collaborate.md#azure-active-directory-resources) en [Azure Active Directory-tenantgebruiker](luis-how-to-collaborate.md#azure-active-directory-tenant-user) voor meer informatie over het geven van toegang aan bijdragers.
 
 <a name="luis-endpoint"></a>
 
@@ -92,7 +88,7 @@ Zie [Azure Active Directory-resources](luis-how-to-collaborate.md#azure-active-d
 
 U krijgt 403 en 429 foutstatuscodes wanneer u de transacties per seconde of transacties per maand voor uw prijscategorie overschrijdt. Verhoog uw prijscategorie of gebruik [containers](luis-container-howto.md)voor taalbegrip.
 
-Wanneer u al die gratis 1000 eindpuntquery's gebruikt of het maandelijkse transactiequotum van uw prijscategorie overschrijdt, ontvangt u een FOUTstatuscode van HTTP 403. 
+Wanneer u al die gratis 1000 eindpuntquery's gebruikt of het maandelijkse transactiequotum van uw prijscategorie overschrijdt, ontvangt u een FOUTstatuscode van HTTP 403.
 
 Als u deze fout wilt oplossen, moet u [uw prijslaag wijzigen](luis-how-to-azure-subscription.md#change-pricing-tier) in een hogere laag of [een nieuwe bron maken](get-started-portal-deploy-app.md#create-the-endpoint-resource) en deze toewijzen aan uw [app.](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)
 
@@ -105,23 +101,23 @@ Oplossingen voor deze fout zijn onder andere:
 
 U krijgt 403 en 429 foutstatuscodes wanneer u de transacties per seconde of transacties per maand voor uw prijscategorie overschrijdt. Verhoog uw prijscategorie of gebruik [containers](luis-container-howto.md)voor taalbegrip.
 
-Deze statuscode wordt geretourneerd wanneer uw transacties per seconde uw prijsniveau overschrijden.  
+Deze statuscode wordt geretourneerd wanneer uw transacties per seconde uw prijsniveau overschrijden.
 
 Oplossingen zijn onder andere:
 
 * U [uw prijscategorie verhogen](luis-how-to-azure-subscription.md#change-pricing-tier)als u niet op het hoogste niveau bent.
 * Als uw gebruik de hoogste prijscategorie overschrijdt, voegt u meer bronnen voor taalbegrip toe met een load balancer ervoor. De [taalbegrijpende container](luis-container-howto.md) met Kubernetes of Docker Compose kan hierbij helpen.
-* U uw aanvraagaanvragen voor klanten gateen met een [hernieuwingsbeleid dat](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) u zelf implementeert wanneer u deze statuscode krijgt. 
+* U uw aanvraagaanvragen voor klanten gateen met een [hernieuwingsbeleid dat](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) u zelf implementeert wanneer u deze statuscode krijgt.
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Mijn eindpuntquery heeft onverwachte resultaten opgeleverd. Wat moet ik doen?
 
-Onverwachte queryvoorspellingsresultaten zijn gebaseerd op de status van het gepubliceerde model. Als u het model wilt corrigeren, moet u mogelijk het model wijzigen, trainen en opnieuw publiceren. 
+Onverwachte queryvoorspellingsresultaten zijn gebaseerd op de status van het gepubliceerde model. Als u het model wilt corrigeren, moet u mogelijk het model wijzigen, trainen en opnieuw publiceren.
 
 Het corrigeren van het model begint met [actief leren.](luis-how-to-review-endpoint-utterances.md)
 
 U niet-deterministische training verwijderen door de [API voor toepassingsversie-instellingen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) bij te werken om alle trainingsgegevens te gebruiken.
 
-Bekijk de [aanbevolen procedures](luis-concept-best-practices.md) voor andere tips. 
+Bekijk de [aanbevolen procedures](luis-concept-best-practices.md) voor andere tips.
 
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Waarom voegt LUIS spaties toe aan de query rond of in het midden van woorden?
 LUIS [tokenizes](luis-glossary.md#token) de uiting op basis van de [cultuur](luis-language-support.md#tokenization). Zowel de oorspronkelijke waarde als de tokenized waarde zijn beschikbaar voor [gegevensextractie.](luis-concept-data-extraction.md#tokenized-entity-returned)
@@ -145,7 +141,7 @@ U een PowerShell-opdracht gebruiken om het eindpuntquotum te bekijken:
 
 ```powershell
 Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
-``` 
+```
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Mijn LUIS app werkte gisteren, maar vandaag krijg ik 403 fouten. Ik heb de app niet gewijzigd. Hoe kan ik dit probleem oplossen?
 Volg deze [instructies](#how-do-i-create-and-assign-a-luis-endpoint-key) om een LUIS-eindpuntsleutel te maken en deze aan de app toe te wijzen. Vervolgens moet u het HTTP-verzoek van de clienttoepassing wijzigen in het eindpunt om [de nieuwe eindpuntsleutel](luis-concept-keys.md)te gebruiken. Als u een nieuwe resource in een andere regio hebt gemaakt, wijzigt u ook de regio van de HTTP-clientaanvraag.
@@ -186,7 +182,7 @@ Zie de [zelfstudie voor batchtesten.](luis-tutorial-batch-testing.md)
 
 Zie [Voorspellingsverschillen tussen kopieën van dezelfde app](luis-concept-prediction-score.md#review-intents-with-similar-scores).
 
-### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Sommige uitingen gaan naar de verkeerde intentie nadat ik wijzigingen heb aangebracht in mijn app. Het probleem lijkt willekeurig te verdwijnen. Hoe kan ik dit probleem oplossen? 
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Sommige uitingen gaan naar de verkeerde intentie nadat ik wijzigingen heb aangebracht in mijn app. Het probleem lijkt willekeurig te verdwijnen. Hoe kan ik dit probleem oplossen?
 
 Zie [Trainen met alle gegevens](luis-how-to-train.md#train-with-all-data).
 
@@ -202,27 +198,27 @@ In Azure vertegenwoordigt een tenant de client of organisatie die is gekoppeld a
 
 
 ### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>Waarom zijn er meer eindpuntsleutels toegewezen aan mijn app dan ik heb toegewezen?
-Elke LUIS-app heeft de ontwerp-/startersleutel in de eindpuntlijst als een gemak. Deze toets maakt slechts een paar endpoint hits mogelijk, zodat u LUIS uitproberen.  
+Elke LUIS-app heeft de ontwerp-/startersleutel in de eindpuntlijst als een gemak. Deze toets maakt slechts een paar endpoint hits mogelijk, zodat u LUIS uitproberen.
 
 Als uw app bestond voordat LUIS algemeen beschikbaar was (GA), worden LUIS-eindpuntsleutels in uw abonnement automatisch toegewezen. Dit werd gedaan om GA-migratie gemakkelijker te maken. Nieuwe LUIS-eindpuntsleutels in de Azure-portal worden _niet_ automatisch aan LUIS toegewezen.
 
 ## <a name="key-management"></a>Sleutelbeheer
 
-### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Hoe weet ik welke sleutel ik nodig heb, waar ik het vandaan haal en wat ik ermee doe? 
+### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Hoe weet ik welke sleutel ik nodig heb, waar ik het vandaan haal en wat ik ermee doe?
 
-Zie [Eindpuntsleutels voor authoring en queryvoorspelling in LUIS](luis-concept-keys.md) voor meer informatie over de verschillen tussen de ontwerpsleutel en de uitvoeringstijdsleutel voor voorspellingen. 
+Zie [Eindpuntsleutels voor authoring en queryvoorspelling in LUIS](luis-concept-keys.md) voor meer informatie over de verschillen tussen de ontwerpsleutel en de uitvoeringstijdsleutel voor voorspellingen.
 
-### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Ik heb een fout over het feit dat uit het quotum. Hoe kan ik dit probleem oplossen? 
+### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Ik heb een fout over het feit dat uit het quotum. Hoe kan ik dit probleem oplossen?
 
 Zie HTTP-statuscode [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) en [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) voor meer informatie.
 
-### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Ik moet meer eindpuntquery's afhandelen. Hoe doe ik dat? 
+### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Ik moet meer eindpuntquery's afhandelen. Hoe doe ik dat?
 
 Zie HTTP-statuscode [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) en [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) voor meer informatie.
 
 ### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>Ik heb een ontwerpsleutel gemaakt, maar deze wordt niet weergegeven in de LUIS-portal. Wat is er gebeurd?
 
-Ontwerpsleutels zijn beschikbaar in de LUIS-portal nadat u [naar de ontwerpsleutelervaring is gemigreerd.](luis-migration-authoring.md)  
+Ontwerpsleutels zijn beschikbaar in de LUIS-portal nadat u [naar de ontwerpsleutelervaring is gemigreerd.](luis-migration-authoring.md)
 
 ## <a name="app-management"></a>Appbeheer
 
@@ -266,28 +262,28 @@ Uw ontwerp-/startsleutel is slechts 1000 eindpuntquery's per maand toegestaan. M
 
 ### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>Mijn LUIS-bot werkt niet. Wat moet ik doen?
 
-Het eerste probleem is te isoleren als het probleem is gerelateerd aan LUIS of gebeurt buiten de LUIS middleware. 
+Het eerste probleem is te isoleren als het probleem is gerelateerd aan LUIS of gebeurt buiten de LUIS middleware.
 
 #### <a name="resolve-issue-in-luis"></a>Probleem oplossen in LUIS
 Geef dezelfde utterance door aan LUIS vanaf het [LUIS-eindpunt](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Als u een fout ontvangt, lost u het probleem op in LUIS totdat de fout niet meer is geretourneerd. Veelvoorkomende fouten zijn:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`- Dit probleem geeft aan dat u moet overschakelen van een ontwerpsleutel naar een [eindpuntsleutel](luis-how-to-azure-subscription.md) of dat u [servicelagen](luis-how-to-azure-subscription.md#change-pricing-tier)moet wijzigen. 
+* `Out of call volume quota. Quota will be replenished in <time>.`- Dit probleem geeft aan dat u moet overschakelen van een ontwerpsleutel naar een [eindpuntsleutel](luis-how-to-azure-subscription.md) of dat u [servicelagen](luis-how-to-azure-subscription.md#change-pricing-tier)moet wijzigen.
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Probleem oplossen in Azure Bot-service
 
 Als u de Azure Bot-service gebruikt en het probleem `Sorry, my bot code is having an issue`is dat de test in **webchat** terugkeert, controleert u uw logboeken:
 
 1. Selecteer in de Azure-portal voor uw bot in de sectie **Botbeheer** de optie **Bouwen**.
-1. Open de online codeeditor. 
+1. Open de online codeeditor.
 1. Selecteer in de bovenste, blauwe navigatiebalk de botnaam (het tweede item rechts).
 1. Selecteer **Kudu-console openen**in de afsluitende vervolgkeuzelijst .
-1. Selecteer **LogFiles**en selecteer **Vervolgens Toepassing**. Bekijk alle logbestanden. Als u de fout niet ziet in de toepassingsmap, controleert u alle logboekbestanden onder **LogFiles**. 
+1. Selecteer **LogFiles**en selecteer **Vervolgens Toepassing**. Bekijk alle logbestanden. Als u de fout niet ziet in de toepassingsmap, controleert u alle logboekbestanden onder **LogFiles**.
 1. Vergeet niet om uw project opnieuw op te bouwen als u een gecompileerde taal zoals C#gebruikt.
 
-> [!Tip] 
-> De console kan ook pakketten installeren. 
+> [!Tip]
+> De console kan ook pakketten installeren.
 
-#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Probleem oplossen tijdens het debuggen op lokale machines met Bot Framework. 
+#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Probleem oplossen tijdens het debuggen op lokale machines met Bot Framework.
 
 Zie [Een bot debuggen voor](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)meer informatie over lokale foutopsporing van een bot.
 
@@ -303,19 +299,19 @@ Als u een LUIS-sjabloon selecteert en de knop **Selecteren** selecteert in het s
 
 ## <a name="api-programming-strategies"></a>API-programmeerstrategieën
 
-### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Hoe krijg ik programmatisch het LUIS-gebied van een resource? 
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Hoe krijg ik programmatisch het LUIS-gebied van een resource?
 
-Gebruik het LUIS-voorbeeld om regio programmatisch te [vinden](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) met Behulp van C# of Node.Js. 
+Gebruik het LUIS-voorbeeld om regio programmatisch te [vinden](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) met Behulp van C# of Node.Js.
 
 ## <a name="luis-service"></a>LUIS-service
 
 ### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>Is Language Understanding (LUIS) on-premises of in private cloud beschikbaar?
 
-Ja, u de [LUIS-container](luis-container-howto.md) voor deze scenario's gebruiken als u over de nodige connectiviteit met het gebruik van de meter beschikt. 
+Ja, u de [LUIS-container](luis-container-howto.md) voor deze scenario's gebruiken als u over de nodige connectiviteit met het gebruik van de meter beschikt.
 
 ## <a name="migrating-to-the-next-version"></a>Migreren naar de volgende versie
 
-### <a name="how-do-i-migrate-to-preview-v3-api"></a>Hoe migreer ik naar een voorbeeld van V3 API? 
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>Hoe migreer ik naar een voorbeeld van V3 API?
 
 Zie [API v2 naar v3 Migratiegids voor LUIS-apps](luis-migration-api-v3.md)
 
@@ -325,7 +321,7 @@ De volgende functies zijn uitgebracht op de Build 2019-conferentie:
 
 * [Voorbeeld van V3 API-migratiehandleiding](luis-migration-api-v3.md)
 * [Verbeterd analysedashboard](luis-how-to-use-dashboard.md)
-* [Verbeterde vooraf gebouwde domeinen](luis-reference-prebuilt-domains.md) 
+* [Verbeterde vooraf gebouwde domeinen](luis-reference-prebuilt-domains.md)
 * [Dynamische lijstentiteiten](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Externe entiteiten](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 

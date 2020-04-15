@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 04/14/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 070b7c5e0fef7d50f84271190432a65d29699bdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d59a508d03730a51e793a5e30e2c99a91af77ce8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128627"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380195"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archieflogboeken en rapportage over Azure AD-rechtenbeheer in Azure Monitor
 
@@ -49,6 +49,38 @@ Voor het archiveren van Azure AD-controlelogboeken moet u Azure Monitor in een A
 1. Selecteer **Gebruiks- en geschatte kosten** en klik op **Gegevensbehoud**. Wijzig de schuifregelaar in het aantal dagen dat u de gegevens wilt bewaren om aan uw controlevereisten te voldoen.
 
     ![Deelvenster Logboekanalysewerkruimtes](./media/entitlement-management-logs-and-reporting/log-analytics-workspaces.png)
+
+1. Later u de werkmap *Gearchiveerde logboekdatumbereik* gebruiken om het bereik met datums in uw werkruimte te bekijken:  
+    
+    1. Selecteer **Azure Active Directory** en klik op **Werkmappen**. 
+    
+    1. Vouw de sectie **Azure Active Directory Troubleshooting uit**en klik op Gearchiveerd **logboekdatumbereik**. 
+
+
+## <a name="view-events-for-an-access-package"></a>Gebeurtenissen voor een toegangspakket weergeven  
+
+Als u gebeurtenissen voor een toegangspakket wilt weergeven, moet u toegang hebben tot de onderliggende Azure-monitorwerkruimte (zie [Toegang beheren tot logboekgegevens en werkruimten in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) voor informatie) en in een van de volgende rollen: 
+
+- Globale beheerder  
+- Beveiligingsbeheerder  
+- Beveiligingslezer  
+- Rapportlezer  
+- Toepassingsbeheerder  
+
+Gebruik de volgende procedure om gebeurtenissen weer te geven: 
+
+1. Selecteer azure active **directory** in de Azure Active Directory en klik vervolgens op **Werkmappen**. Als u slechts één abonnement hebt, gaat u verder met stap 3. 
+
+1. Als u meerdere abonnementen hebt, selecteert u het abonnement dat de werkruimte bevat.  
+
+1. Selecteer de werkmap met de naam *Access Package Activity*. 
+
+1. Selecteer in die werkmap een tijdsbereik (wijzigen in **Alles** als dit niet zeker is) en selecteer een toegangspakket-id in de vervolgkeuzelijst van alle toegangspakketten die in dat tijdsbereik activiteit hadden. De gebeurtenissen met betrekking tot het toegangspakket die tijdens het geselecteerde tijdsbereik zijn opgetreden, worden weergegeven.  
+
+    ![Access-pakketgebeurtenissen weergeven](./media/entitlement-management-logs-and-reporting/view-events-access-package.png) 
+
+    Elke rij bevat de tijd, toegangspakket-id, de naam van de bewerking, de object-id, UPN en de weergavenaam van de gebruiker die de bewerking heeft gestart.  Aanvullende details zijn opgenomen in JSON.   
+
 
 ## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>Aangepaste Azure Monitor-query's maken met de Azure-portal
 U uw eigen query's maken voor Azure AD-controlegebeurtenissen, waaronder beheergebeurtenissen voor rechten.  
@@ -86,6 +118,7 @@ U hebt toegang tot logboeken via PowerShell nadat u Azure AD hebt geconfigureerd
 Zorg ervoor dat u, de gebruiker of serviceprincipal die zich verifieert bij Azure AD, zich in de juiste Azure-rol bevindt in de werkruimte Log Analytics. De rolopties zijn Log Analytics Reader of de Log Analytics Contributor. Als u zich al in een van deze rollen bevindt, gaat u vervolgens naar [Logboekanalyse-id ophalen met één Azure-abonnement.](#retrieve-log-analytics-id-with-one-azure-subscription)
 
 Ga als volgt te werk om de roltoewijzing in te stellen en een query te maken:
+
 1. Zoek in de Azure-portal de [werkruimte Log Analytics](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces
 ).
 
@@ -128,7 +161,7 @@ $subs | ft
 U uw PowerShell-sessie opnieuw verifiëren en aan `Connect-AzAccount –Subscription $subs[0].id`dat abonnement koppelen met een opdracht zoals. Zie [Aanmelden bij Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
 )voor meer informatie over hoe u zich verifiëren voor Azure vanuit PowerShell, inclusief niet-interactief.
 
-Als u meerdere Log Analytics-werkruimten in dat abonnement hebt, retourneert de cmdlet [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) de lijst met werkruimten. Vervolgens u degene vinden met de Azure AD-logboeken. Het `CustomerId` veld dat door deze cmdlet wordt geretourneerd, is hetzelfde als de waarde van de 'Werkruimte-id' die wordt weergegeven in de Azure-portal in het overzicht van de werkruimte log-analyse.
+Als u meerdere Log Analytics-werkruimten in dat abonnement hebt, retourneert de cmdlet [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) de lijst met werkruimten. Vervolgens u degene vinden met de Azure AD-logboeken. Het `CustomerId` veld dat door deze cmdlet wordt geretourneerd, is hetzelfde als de waarde van de werkruimte-id die wordt weergegeven in de Azure-portal in het overzicht van de werkruimte log-analyse.
  
 ```powershell
 $wks = Get-AzOperationalInsightsWorkspace
@@ -150,7 +183,7 @@ $aResponse.Results |ft
 U ook beheergebeurtenissen voor rechten ophalen met een query zoals:
 
 ```azurepowershell
-$bQuery = = 'AuditLogs | where Category == "EntitlementManagement"'
+$bQuery = 'AuditLogs | where Category == "EntitlementManagement"'
 $bResponse = Invoke-AzOperationalInsightsQuery -WorkspaceId $wks[0].CustomerId -Query $Query
 $bResponse.Results |ft 
 ```

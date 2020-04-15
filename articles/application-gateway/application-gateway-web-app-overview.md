@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: efa2885ce0534c5d78bb08bbf24da59850f6ea22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a171dc795e685655b5a3c73d088d3963c2aaa4ae
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075180"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312307"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Application Gateway-ondersteuning voor back-ends met meerdere tenant's, zoals app-service
 
@@ -30,9 +30,9 @@ Application Gateway biedt een functie waarmee gebruikers de HTTP host-header in 
 
 De mogelijkheid om een hostoverschrijving op te geven, wordt gedefinieerd in de [HTTP-instellingen](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) en kan worden toegepast op elke back-endpool tijdens het maken van de regel. De volgende twee manieren om hostheader en SNI-extensie voor back-ends met meerdere tenant's te overschrijven, worden ondersteund:
 
-- De mogelijkheid om de hostnaam in te stellen op een vaste waarde die expliciet is ingevoerd in de HTTP-instellingen. Deze mogelijkheid zorgt ervoor dat de hostheader wordt overschreven op deze waarde voor al het verkeer naar de back-endpool waar de specifieke HTTP-instellingen worden toegepast. Als u end-to-end SSL gebruikt, wordt de overschreven hostnaam gebruikt in de SNI-extensie. Met deze mogelijkheid kunnen scenario's worden mogelijk waarin een back-endpoolfarm een hostheader verwacht die verschilt van de inkomende header voor klantenhost.
+- De mogelijkheid om de hostnaam in te stellen op een vaste waarde die expliciet is ingevoerd in de HTTP-instellingen. Deze mogelijkheid zorgt ervoor dat de hostheader wordt overschreven op deze waarde voor al het verkeer naar de back-endpool waar de specifieke HTTP-instellingen worden toegepast. Bij het gebruik van end-to-end TLS wordt deze overschreven hostnaam gebruikt in de SNI-extensie. Met deze mogelijkheid kunnen scenario's worden mogelijk waarin een back-endpoolfarm een hostheader verwacht die verschilt van de inkomende header voor klantenhost.
 
-- De mogelijkheid om de hostnaam af te leiden van het IP of FQDN van de back-end poolleden. HTTP-instellingen bieden ook een optie om dynamisch de hostnaam te kiezen uit de FQDN van een back-endpoollid als deze is geconfigureerd met de optie om de hostnaam af te leiden van een afzonderlijk back-endpoollid. Als u end-to-end SSL gebruikt, wordt de hostnaam afgeleid van de FQDN en gebruikt in de SNI-extensie. Met deze mogelijkheid kunnen scenario's worden gemaakt waarin een back-endpool twee of meer multi-tenant PaaS-services zoals Azure-webapps kan hebben en de hostheader van het verzoek voor elk lid de hostnaam bevat die is afgeleid van de FQDN. Voor het implementeren van dit scenario gebruiken we een schakelaar in de HTTP-instellingen met de naam [Pick hostname van backend-adres,](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) waarmee de hostheader in het oorspronkelijke verzoek dynamisch wordt overschreven aan de kop tekst die in de backendpool wordt vermeld.  Als uw backendpool FQDN bijvoorbeeld 'contoso11.azurewebsites.net' en 'contoso22.azurewebsites.net' bevat, wordt de hostheader van het oorspronkelijke verzoek, die wordt contoso.com, overschreven naar contoso11.azurewebsites.net of contoso22.azurewebsites.net wanneer het verzoek naar de juiste backendserver wordt verzonden. 
+- De mogelijkheid om de hostnaam af te leiden van het IP of FQDN van de back-end poolleden. HTTP-instellingen bieden ook een optie om dynamisch de hostnaam te kiezen uit de FQDN van een back-endpoollid als deze is geconfigureerd met de optie om de hostnaam af te leiden van een afzonderlijk back-endpoollid. Bij het gebruik van end-to-end TLS wordt deze hostnaam afgeleid van de FQDN en wordt deze gebruikt in de SNI-extensie. Met deze mogelijkheid kunnen scenario's worden gemaakt waarin een back-endpool twee of meer multi-tenant PaaS-services zoals Azure-webapps kan hebben en de hostheader van het verzoek voor elk lid de hostnaam bevat die is afgeleid van de FQDN. Voor het implementeren van dit scenario gebruiken we een schakelaar in de HTTP-instellingen met de naam [Pick hostname van backend-adres,](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) waarmee de hostheader in het oorspronkelijke verzoek dynamisch wordt overschreven aan de kop tekst die in de backendpool wordt vermeld.  Als uw backendpool FQDN bijvoorbeeld 'contoso11.azurewebsites.net' en 'contoso22.azurewebsites.net' bevat, wordt de hostheader van het oorspronkelijke verzoek, die wordt contoso.com, overschreven aan contoso11.azurewebsites.net of contoso22.azurewebsites.net wanneer het verzoek naar de juiste backendserver wordt verzonden. 
 
   ![web-app-scenario](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -40,11 +40,11 @@ Met deze functie kunnen klanten opties opgeven in de HTTP-instellingen en kunnen
 
 ## <a name="special-considerations"></a>Bijzondere overwegingen
 
-### <a name="ssl-termination-and-end-to-end-ssl-with-multi-tenant-services"></a>SSL-beëindiging en end-to-end SSL met multi-tenantservices
+### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>TLS beëindigt tls en beëindigt TLS met multi-tenant services
 
-Zowel SSL-beëindiging als end-to-end SSL-versleuteling worden ondersteund met multi-tenantservices. Voor SSL-beëindiging bij de toepassingsgateway moet ssl-certificaat nog steeds worden toegevoegd aan de serverlistener van de toepassingsgateway. In het geval van ssl van end-to-end hoeven vertrouwde Azure-services, zoals Web-apps voor Azure App-services, de backends in de toepassingsgateway echter niet op de witte lijst te zetten. Daarom is het niet nodig om verificatiecertificaten toe te voegen. 
+Zowel TLS-beëindiging als end-to-end TLS-versleuteling worden ondersteund met multi-tenantservices. Voor TLS-beëindiging bij de toepassingsgateway moet tls-certificaat nog steeds worden toegevoegd aan de serverlistener van de toepassingsgateway. In het geval van tls van begin tot eind hoeven vertrouwde Azure-services, zoals Web-apps voor Azure App-services, de backends in de toepassingsgateway niet op de witte lijst te zetten. Daarom is het niet nodig om verificatiecertificaten toe te voegen. 
 
-![end-to-end SSL](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
+![van end-to-end TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 
 In de bovenstaande afbeelding is het niet nodig om verificatiecertificaten toe te voegen wanneer de app-service is geselecteerd als backend.
 
