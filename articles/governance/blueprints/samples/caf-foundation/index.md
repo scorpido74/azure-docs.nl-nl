@@ -1,14 +1,14 @@
 ---
 title: Overzicht van het CAF Foundation-blauwdrukvoorbeeld
 description: Overzicht en architectuur van het Cloud Adoption Framework (CAF) voor Azure Foundation-blauwdrukvoorbeeld
-ms.date: 08/20/2019
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 79b47127b81caf148054f4223e5fa7ad9fbf86fe
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: a5616667ae909b63f406e399a23bdf568089bf52
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75562558"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383576"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Overzicht van Microsoft Cloud Adoption Framework voor het Azure Foundation-blauwdrukvoorbeeld
 
@@ -18,7 +18,7 @@ Met Microsoft CAF (Cloud Adoption Framework) voor de Azure Foundation-blauwdruk 
 
 Met het CAF Foundation-blauwdrukvoorbeeld worden aanbevolen infrastructuurresources geïmplementeerd in Azure. Deze kunnen in organisaties worden gebruikt om de basisbesturingselementen werkend te krijgen die nodig zijn om de cloudomgeving te beheren. Met dit voorbeeld worden resources, beleid en sjablonen geïmplementeerd en afgedwongen die een organisatie helpen om zorgeloos aan de slag te gaan met Azure.
 
-![CAF Foundation, afbeelding geeft aan wat wordt geïnstalleerd als onderdeel van CAF-richtlijnen voor het maken van een basis om aan de slag te gaan met Azure](../../media/caf-blueprints/caf-foundation-architecture.png)
+:::image type="content" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="CAF Foundation, afbeelding geeft aan wat wordt geïnstalleerd als onderdeel van CAF-richtlijnen voor het maken van een basis om aan de slag te gaan met Azure" border="false":::
 
 Deze implementatie omvat verschillende Azure-services die worden gebruikt om een veilige, volledig bewaakte basis op bedrijfsniveau te bieden. De omgeving bestaat uit de volgende elementen:
 

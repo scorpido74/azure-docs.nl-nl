@@ -1,14 +1,14 @@
 ---
 title: Overzicht van het CAF-blauwdrukvoorbeeld voor de migratielandingszone
 description: Overzicht en architectuur van het Cloud Adoption Framework (CAF) voor blauwdrukvoorbeeld van Azure Migration-landingszone.
-ms.date: 08/20/2019
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 08171a39c83ea6822243d7239882a19b053f213e
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: d0328a590d86677e098504a7498a696697fc38c8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "74545499"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383550"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Overzicht van het Microsoft Cloud Adoption Framework-blauwdrukvoorbeeld voor de Azure-migratielandingszone
 
@@ -20,7 +20,7 @@ Het [CAF Foundation](../caf-foundation/index.md)-blauwdrukvoorbeeld is een uitbr
 
 Het CAF-blauwdrukvoorbeeld voor de migratielandingszone implementeert fundamentele infrastructuurresources in Azure, die door organisaties kunnen worden gebruikt om hun abonnement voor te bereiden op de migratie van virtuele machines. Het biedt ook ondersteuning bij het instellen van governance-controles die noodzakelijk zijn voor het beheren van de cloudresources. Met dit voorbeeld worden resources, beleid en sjablonen geïmplementeerd en afgedwongen die een organisatie helpen om zorgeloos aan de slag te gaan met Azure.
 
-![De afbeelding van de CAF-migratielandingszone laat zien wat er wordt geïnstalleerd als onderdeel van CAF-richtlijnen voor de initiële landingszone ](../../media/caf-blueprints/caf-migration-landing-zone-architecture.png)
+:::image type="content" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="De afbeelding van de CAF-migratielandingszone laat zien wat er wordt geïnstalleerd als onderdeel van CAF-richtlijnen voor de initiële landingszone" border="false":::
 
 Deze omgeving bestaat uit diverse Azure-services die een veilige, volledig bewaakte en direct inzetbare governance bieden. De omgeving bestaat uit de volgende elementen:
 

@@ -38,21 +38,17 @@
           href: concept-sspr-licensing.md
         - name: On-premises integratie
           href: concept-sspr-writeback.md
-    - name: Meervoudige verificatie
+    - name: Multi-Factor Authentication
       items:
         - name: Hoe MFA werkt
           href: concept-mfa-howitworks.md
-        - name: Uw gebruikers een licentie geven
-          href: concept-mfa-licensing.md
-        - name: Een verificatieprovider beheren
-          href: concept-mfa-authprovider.md
-        - name: Beveiligingsrichtlijnen
-          href: multi-factor-authentication-security-best-practices.md
         - name: Gegevenslocatie
           href: concept-mfa-data-residency.md
+        - name: Licenties
+          href: concept-mfa-licensing.md
         - name: MFA voor Office 365
           href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
-        - name: Veelgestelde vragen over MFA
+        - name: Veelgestelde vragen
           href: multi-factor-authentication-faq.md
     - name: Wachtwoordbeveiliging in Azure AD
       items:
@@ -72,16 +68,18 @@
           href: howto-sspr-authenticationdata.md
         - name: Self-service voor wachtwoordherstel voor Windows-clients
           href: howto-sspr-windows.md
-    - name: MFA in de cloud
+    - name: Azure Multi-Factor Authentication
       items:
         - name: Implementatiehandleiding
           href: howto-mfa-getstarted.md
-        - name: MFA per gebruiker
-          href: howto-mfa-userstates.md
-        - name: Gebruikers-en apparaatinstellingen
-          href: howto-mfa-userdevicesettings.md
         - name: Instellingen configureren
           href: howto-mfa-mfasettings.md
+        - name: Gebruikers configureren
+          href: howto-mfa-userdevicesettings.md
+        - name: MFA per gebruiker inschakelen
+          href: howto-mfa-userstates.md
+        - name: verificatieproviders configureren
+          href: concept-mfa-authprovider.md
         - name: Directory Federation
           items:
             - name: Windows Server 2016 AD FS Adapter
@@ -140,6 +138,8 @@
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello voor Bedrijven
           href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+    - name: Verificatie op basis van SMS gebruiken (preview)
+      href: howto-authentication-sms-signin.md
     - name: Verificatie op basis van certificaat
       items:
         - name: Aan de slag met certificaatverificatie
@@ -179,7 +179,7 @@
           href: howto-mfaserver-iis.md
         - name: Adreslijstintegratie
           items:
-            - name: LDAP-authenticatie
+            - name: LDAP-verificatie
               href: howto-mfaserver-dir-ldap.md
             - name: RADIUS-verificatie
               href: howto-mfaserver-dir-radius.md
@@ -219,7 +219,7 @@
       href: /powershell/azure/overview
     - name: Servicelimieten en -beperkingen
       href: ../users-groups-roles/directory-service-limits-restrictions.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-feedbackforum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'

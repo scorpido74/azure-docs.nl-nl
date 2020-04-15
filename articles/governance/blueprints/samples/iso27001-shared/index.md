@@ -1,14 +1,14 @@
 ---
 title: Overzicht van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services
 description: Overzicht en architectuur van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services. Met dit blauwdrukvoorbeeld kunnen klanten specifieke beheeropties van ISO 27001 bekijken.
-ms.date: 01/13/2020
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 0b6a250ebac2744adca813219225388841f1776f
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9b0b49582023ee5c68fea0f21b70290a102a038a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75922548"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381578"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Overzicht van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services
 
@@ -21,7 +21,7 @@ Het blauwdrukvoorbeeld [ISO 27001 conforme App Service Environment-/SQL Database
 Met de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services wordt in Azure een infrastructureel fundament geïmplementeerd waarmee organisaties meerdere workloads kunnen hosten op basis van de VDC-benadering (Virtual Datacenter).
 VDC is een in de praktijk bewezen set referentiearchitecturen, automatiseringshulpmiddelen en interactiemodellen die door Microsoft worden gebruikt voor de grootste enterprise-klanten. Het blauwdrukvoorbeeld voor gedeelde services is gebaseerd op de volledig systeemeigen Azure-VDC-omgeving die hieronder wordt weergegeven.
 
-![Ontwerp van blauwdrukvoorbeeld voor ISO 27001 conforme gedeelde services](../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png" alt-text="Ontwerp van blauwdrukvoorbeeld voor ISO 27001 conforme gedeelde services" border="false":::
 
 Deze omgeving bestaat uit diverse Azure-services die samen een veilige, volledig bewaakte en direct inzetbare infrastructuur voor gedeelde services bieden op basis van de ISO 27001-standaarden. De omgeving bestaat uit de volgende elementen:
 

@@ -10,6 +10,9 @@
       href: analysis-services-create-server.md
     - name: Een server maken - PowerShell
       href: analysis-services-create-powershell.md
+    - name: Een server maken - ARM-sjabloon
+      displayName: Resource Manager
+      href: analysis-services-create-template.md
     - name: Een serverfirewall configureren - Portal
       href: analysis-services-qs-firewall.md
 - name: Zelfstudies
@@ -40,7 +43,7 @@
       href: analysis-services-datasource.md
 - name: Uitleg
   items:
-    - name: Server
+    - name: server
       items:
         - name: Back-ups en herstellen
           href: analysis-services-backup.md
@@ -108,7 +111,7 @@
       href: 'https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo'
     - name: Bronnen en objectlimieten
       href: analysis-services-capacity-limits.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Voorbeelden
       href: analysis-services-samples.md

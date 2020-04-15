@@ -74,6 +74,8 @@
           href: security-info-setup-text-msg.md
         - name: Telefoongesprekken instellen
           href: security-info-setup-phone-number.md
+        - name: SMS-aanmelding instellen
+          href: sms-sign-in-explainer.md
         - name: Een beveiligingssleutel instellen
           href: security-info-setup-security-key.md
         - name: E-mail instellen

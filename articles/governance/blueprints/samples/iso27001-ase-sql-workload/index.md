@@ -3,12 +3,12 @@ title: Overzicht van het blauwdrukvoorbeeld voor ISO 27001 conforme ASE-/SQL-wor
 description: Overzicht en architectuur van het blauwdrukvoorbeeld voor ISO 27001 conforme App Service Environment-/SQL Database-workloads.
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: d77029b93b1e77bdba85c5dd5608cbdc5d6543a5
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9957ab1bef5b65fc90b5a357bd56d6f0013ea690
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75920778"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381737"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Overzicht van het blauwdrukvoorbeeld voor ISO 27001 conforme App Service Environment-/SQL Database-workloads
 
@@ -24,7 +24,7 @@ Er zijn twee ISO 27001 conforme blauwdrukvoorbeelden: dit voorbeeld en het voorb
 
 Het blauwdrukvoorbeeld voor ISO 27001 conforme App Service Environment-/SQL Database-workloads implementeert een webomgeving op basis van een Platform-as-a-Service. De omgeving kan worden gebruikt voor het hosten van meerdere webtoepassingen, web-API's en SQL Database-exemplaren die voldoen aan de ISO 27001-standaarden. Dit blauwdrukvoorbeeld is afhankelijk van het blauwdrukvoorbeeld [ISO 27001 conforme gedeelde services](../iso27001-shared/index.md).
 
-![Ontwerp van het blauwdrukvoorbeeld voor ISO 27001 conforme ASE-/SQL-workloads](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png" alt-text="Ontwerp van het blauwdrukvoorbeeld voor ISO 27001 conforme ASE-/SQL-workloads" border="false":::
 
 Deze omgeving bestaat uit diverse Azure-services die samen een veilige, volledig bewaakte en direct inzetbare workloadinfrastructuur bieden op basis van de ISO 27001-standaarden. De omgeving bestaat uit de volgende elementen:
 

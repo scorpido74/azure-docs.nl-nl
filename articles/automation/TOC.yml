@@ -22,7 +22,7 @@
       href: automation-use-azure-ad.md
     - name: Office 365-services beheren
       href: manage-office-365.md
-    - name: Verificatie configureren met AWS
+    - name: Azure Automation-runbooks verifiëren met Amazon Web Services
       href: automation-config-aws-account.md
     - name: Versleuteling van beveiligde activa in Azure Automation
       href: automation-secure-asset-encryption.md

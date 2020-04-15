@@ -310,34 +310,36 @@
         - name: Waar en hoe u implementeert
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Azure Kubernetes Service
-          displayName: 'aks, aad, authentication, azure active directory'
-          href: how-to-deploy-azure-kubernetes-service.md
-        - name: Azure Container Instances
-          displayName: aci
-          href: how-to-deploy-azure-container-instance.md
-        - name: IoT Edge
-          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: FPGA-interferentie
-          href: how-to-deploy-fpga-web-service.md
-        - name: Inferentie van GPU
-          href: how-to-deploy-inferencing-gpus.md
-        - name: Azure App Service
-          displayName: web app
-          href: how-to-deploy-app-service.md
-        - name: Azure Functions
-          displayName: functions app
-          href: how-to-deploy-functions.md
-        - name: Rekenprocessen
-          href: how-to-deploy-local-container-notebook-vm.md
-        - name: Aangepaste Docker-afbeelding gebruiken
-          href: how-to-deploy-custom-docker-image.md
-        - name: Bestaande modellen gebruiken
-          displayName: publish existing model
-          href: how-to-deploy-existing-model.md
+        - name: Implementatiescenario's
+          items:
+            - name: Azure ML-rekeninstanties
+              href: how-to-deploy-local-container-notebook-vm.md
+            - name: Azure Kubernetes Service
+              displayName: 'aks, aad, authentication, azure active directory'
+              href: how-to-deploy-azure-kubernetes-service.md
+            - name: Azure Container Instances
+              displayName: aci
+              href: how-to-deploy-azure-container-instance.md
+            - name: Inferentie van GPU
+              href: how-to-deploy-inferencing-gpus.md
+            - name: Azure App Service
+              displayName: web app
+              href: how-to-deploy-app-service.md
+            - name: Azure Functions
+              displayName: functions app
+              href: how-to-deploy-functions.md
+            - name: Azure IoT Edge-apparaten
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+            - name: FPGA-interferentie
+              href: how-to-deploy-fpga-web-service.md
+            - name: Aangepaste Docker-installatiekopieën
+              href: how-to-deploy-custom-docker-image.md
+            - name: Niet-Azure ML-modellen
+              displayName: publish existing model
+              href: how-to-deploy-existing-model.md
         - name: Problemen oplossen en fouten opsporen
           href: how-to-troubleshoot-deployment.md
-        - name: Clients maken
+        - name: Service-eindpunt van aanroep
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: Modellen bewaken

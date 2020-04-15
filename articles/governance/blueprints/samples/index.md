@@ -3,12 +3,12 @@ title: Index van blauwdrukvoorbeelden
 description: Index van compatibiliteits- en standaardvoorbeelden voor het implementeren van omgevingen, beleidsregels en grondbeginselen voor Cloud Adoptions Framework met Azure Blueprints.
 ms.date: 02/26/2020
 ms.topic: sample
-ms.openlocfilehash: 703c383f41cd833fb47ca489682258158f9fe179
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 745b16f8aff8fe003ec65449cdf3dc0d629ba6ff
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "78196821"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383528"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-voorbeelden
 
@@ -38,7 +38,7 @@ De volgende tabel bevat links naar voorbeelden voor Azure Blueprints. Elk voorbe
 
 ## <a name="samples-strategy"></a>Voorbeeldstrategie
 
-![Strategie voor blauwdrukvoorbeelden](../media/blueprint-samples-strategy.png)
+:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="Strategie voor blauwdrukvoorbeelden" border="false":::
 
 Bij de CAF Foundation- en CAF Migrate- blauwdrukken voor landingszones wordt ervan uitgegaan dat de klant één bestaand leeg abonnement voorbereidt voor het migreren van on-premises activa en workloads naar Azure.
 (Regio A en B in de afbeelding).  
