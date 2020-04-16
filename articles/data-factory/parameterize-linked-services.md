@@ -10,14 +10,15 @@ ms.date: 12/18/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: acc7284eb607d20ca1d62b478d802be56048bc6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa8603f2bee7e42db0f085d78117d61bd14ce5c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440098"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419388"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Gekoppelde services parameteriseren in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 U nu een gekoppelde service parameteriseren en dynamische waarden doorgeven tijdens de looptijd. Als u bijvoorbeeld verbinding wilt maken met verschillende databases op dezelfde Azure SQL Database-server, u nu de databasenaam parameteriseren in de definitie van de gekoppelde service. Dit voorkomt dat u voor elke database op de Azure SQL-databaseserver een gekoppelde service hoeft te maken. U ook andere eigenschappen in de gekoppelde servicedefinitie parameteriseren, bijvoorbeeld *gebruikersnaam.*
 

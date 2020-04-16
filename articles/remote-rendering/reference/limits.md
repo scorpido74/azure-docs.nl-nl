@@ -1,20 +1,20 @@
 ---
-title: Limieten
+title: Beperkingen
 description: Codebeperkingen voor SDK-functies
 author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 6e23c716a965cdf178c9f847900e66c141d5d7eb
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b6e501cdc1d5091a27d86406c6919587bedb261a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680334"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417688"
 ---
-# <a name="limits"></a>Limieten
+# <a name="limitations"></a>Beperkingen
 
-Een aantal functies hebben grootte- of aantalbeperkingen vanwege interne details van het lopende systeem.
+Een aantal functies hebben grootte, telling of andere beperkingen.
 
 ## <a name="azure-frontend"></a>Azure Frontend
 
@@ -40,4 +40,13 @@ Het toegestane aantal veelhoeken voor alle geladen modellen is afhankelijk van d
 |Premium| geen limiet |
 
 
+## <a name="platform-limitations"></a>Platformbeperkingen
 
+**Windows 10-bureaublad**
+
+* De implementatie van "PC Standalone" van Unity wordt niet ondersteund. Gebruik in plaats daarvan UWP.
+* UWP/x86 is het enige ondersteunde UWP-platform. UWP/x64 wordt niet ondersteund.
+
+**Hololens 2**
+
+* De [render van PV-camera](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) functie wordt niet ondersteund.

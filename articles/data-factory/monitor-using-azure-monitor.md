@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 8325b4ef6b89a76eeec418386cec4922cb5916b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5753336eeef115038de4eb0b5ade0651b1fa293e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979154"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419456"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Gegevensfabrieken waarschuwen en bewaken met Azure Monitor
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Cloudapplicaties zijn complex en hebben veel bewegende onderdelen. Monitoren bieden gegevens om ervoor te zorgen dat uw toepassingen in een gezonde staat aan de gang blijven. Monitoren helpen u ook potentiële problemen te voorkomen en problemen op te lossen in het verleden.
 
@@ -117,8 +119,8 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **storageAccountId** |Tekenreeks | De bron-id van het opslagaccount waarnaar u diagnostische logboeken wilt verzenden. |
 | **serviceBusRuleId** |Tekenreeks | De service-busregel-ID van de service-busnaamruimte waarin u gebeurtenishubs wilt laten maken voor het streamen van diagnostische logboeken. De regel-ID `{service bus resource ID}/authorizationrules/{key name}`heeft de indeling .|
 | **workspaceId** | Complex Type | Een reeks metrische tijdkorrels en hun bewaarbeleid. De waarde van deze accommodatie is leeg. |
-|**metrics**| Parameterwaarden van de pijplijnrun die moeten worden doorgegeven aan de aangeroepen pijplijn| Een JSON-object dat parameternamen inkaart aan argumentwaarden. |
-| **logboeken**| Complex Type| De naam van een categorie diagnostische logboeken voor een resourcetype. Als u de lijst met diagnostische logboekcategorieën voor een resource wilt krijgen, voert u een bewerking voor diagnostische instellingen van GET uit. |
+|**Statistieken**| Parameterwaarden van de pijplijnrun die moeten worden doorgegeven aan de aangeroepen pijplijn| Een JSON-object dat parameternamen inkaart aan argumentwaarden. |
+| **Logs**| Complex Type| De naam van een categorie diagnostische logboeken voor een resourcetype. Als u de lijst met diagnostische logboekcategorieën voor een resource wilt krijgen, voert u een bewerking voor diagnostische instellingen van GET uit. |
 | **Categorie**| Tekenreeks| Een reeks logboekcategorieën en hun bewaarbeleid. |
 | **timeGrain** | Tekenreeks | De granulariteit van metrische gegevens, die worden vastgelegd in de duurnotatie ISO 8601. De eigenschapswaarde `PT1M`moet zijn , die één minuut specificeert. |
 | **Ingeschakeld**| Booleaans | Hiermee geeft u op of verzameling van de metrische of logboekcategorie is ingeschakeld voor deze resource. |
@@ -346,7 +348,7 @@ Zie [Diagnostische instellingen voor](https://docs.microsoft.com/rest/api/monito
 |**pipelineName**| Tekenreeks | De naam van de pijpleiding. | `MyPipeline` |
 |**Start**| Tekenreeks | De begintijd van de activiteit wordt uitgevoerd in de UTC-indeling tijdspanne. | `2017-06-26T20:55:29.5007959Z`. |
 |**Einde**| Tekenreeks | De eindtijd van de activiteit wordt uitgevoerd in de UTC-indeling tijdspanne. Als in het diagnoselogboek wordt weergegeven dat een activiteit `1601-01-01T00:00:00Z`is gestart maar nog niet is beëindigd, is de eigenschapswaarde .  | `2017-06-26T20:55:29.5007959Z` |
-|**status**| Tekenreeks | De uiteindelijke status van de pijplijn wordt uitgevoerd. Mogelijke eigenschapswaarden zijn `Succeeded` en `Failed`. | `Succeeded`|
+|**Status**| Tekenreeks | De uiteindelijke status van de pijplijn wordt uitgevoerd. Mogelijke eigenschapswaarden zijn `Succeeded` en `Failed`. | `Succeeded`|
 
 #### <a name="trigger-run-log-attributes"></a>Logboekkenmerken voor trigger-run
 
@@ -391,7 +393,7 @@ Zie [Diagnostische instellingen voor](https://docs.microsoft.com/rest/api/monito
 |**triggerType**| Tekenreeks | Het type van de trekker. Mogelijke eigenschapswaarden zijn `Manual Trigger` en `Schedule Trigger`. | `ScheduleTrigger` |
 |**triggerEvent**| Tekenreeks | Het geval van de trekker. | `ScheduleTime - 2017-07-06T01:50:25Z` |
 |**Start**| Tekenreeks | De begintijd van de trigger wordt geactiveerd in de UTC-indeling tijdspanne. | `2017-06-26T20:55:29.5007959Z`|
-|**status**| Tekenreeks | De uiteindelijke status die aangeeft of de trigger is geactiveerd. Mogelijke eigenschapswaarden zijn `Succeeded` en `Failed`. | `Succeeded`|
+|**Status**| Tekenreeks | De uiteindelijke status die aangeeft of de trigger is geactiveerd. Mogelijke eigenschapswaarden zijn `Succeeded` en `Failed`. | `Succeeded`|
 
 ### <a name="log-analytics-schema"></a>Log Analytics-schema
 

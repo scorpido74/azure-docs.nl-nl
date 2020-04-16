@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: fa34def67d91332a00bf0ee92b365957a47f9616
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67e966e3b3dd274e993797ed37e17c5490d632c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931484"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416488"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Transformatie van azure-gegevensfabrieksvenster
 
-
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Met de venstertransformatie definieert u op venster gebaseerde aggregaties van kolommen in uw gegevensstromen. In de Opbouwfunctie voor expressies u verschillende typen aggregaties definiëren die zijn gebaseerd op gegevens of tijdvensters (SQL OVER-clausule), zoals LEAD, LAG, NTILE, CUMEDIST, RANK, enz.). Er wordt een nieuw veld gegenereerd in uw uitvoer met deze aggregaties. U ook optionele groeps-door-velden opnemen.
 

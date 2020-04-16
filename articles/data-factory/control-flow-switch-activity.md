@@ -9,14 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440387"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418011"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Schakelactiviteit in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 De Switch-activiteit biedt dezelfde functionaliteit als een switchinstructie in programmeertalen. Het evalueert een reeks activiteiten die overeenkomen met een zaak die overeenkomt met de conditie-evaluatie.
 
@@ -332,8 +334,8 @@ $result.Error -join "`r`n"
 Bekijk andere controlestroomactiviteiten die worden ondersteund door Data Factory: 
 
 - [If Condition Activity](control-flow-if-condition-activity.md)
-- [Execute Pipeline Activity](control-flow-execute-pipeline-activity.md)
+- [Activiteit uitvoeren van pijplijn](control-flow-execute-pipeline-activity.md)
 - [Voor elke activiteit](control-flow-for-each-activity.md)
-- [Get Metadata Activity](control-flow-get-metadata-activity.md)
-- [Lookup Activity](control-flow-lookup-activity.md)
-- [Webactiviteit](control-flow-web-activity.md)
+- [Activiteit ophalen van metagegevens](control-flow-get-metadata-activity.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Web Activity](control-flow-web-activity.md)

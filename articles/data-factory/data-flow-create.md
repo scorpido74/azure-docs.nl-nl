@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/12/2019
-ms.openlocfilehash: 2eb455ba6fa40538bfa03018be47232066036c23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd1342ae5912a9a91f1bd8d1bdacecdb5a2bbdb0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930432"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416513"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Gegevensstroom voor Azure Data Factory maken
 
-
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Het toewijzen van gegevensstromen in ADF biedt een manier om gegevens op schaal te transformeren zonder dat er codering nodig is. U een taak voor gegevenstransformatie in de gegevensstroomontwerper ontwerpen door een reeks transformaties te maken. Begin met een willekeurig aantal brontransformaties, gevolgd door stappen voor gegevenstransformatie. Vul vervolgens uw gegevensstroom in met gootsteen om uw resultaten in een bestemming te landen.
 

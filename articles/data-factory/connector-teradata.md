@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 1e1d7cc4bb7762d3ebd29e349467f3e33c0887f9
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4eed79210e3e39f82b892ac0681e161ebb59597e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421221"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418028"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Gegevens van Teradata Vantage kopiëren met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 >
 > * [Versie 1](v1/data-factory-onprem-teradata-connector.md)
 > * [Huidige versie](connector-teradata.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel wordt beschreven hoe u de kopieeractiviteit in Azure Data Factory gebruiken om gegevens van Teradata Vantage te kopiëren. Het bouwt voort op het [overzicht van de kopieeractiviteit](copy-activity-overview.md).
 
@@ -256,7 +258,7 @@ U wordt voorgesteld om parallelle kopiëren met gegevenspartitionering in te sch
 
 | Scenario                                                     | Aanbevolen instellingen                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Volledige lading van grote tafel.                                   | **Partitieoptie**: Hash. <br><br/>Tijdens de uitvoering detecteert Data Factory automatisch de PK-kolom, past een hash tegen deze code toe en kopieert gegevens door partities. |
+| Volledige lading van grote tafel.                                   | **Partitieoptie**: Hash. <br><br/>Tijdens de uitvoering detecteert Data Factory automatisch de primaire indexkolom, past een hash tegen aan en kopieert gegevens door partities. |
 | Laad grote hoeveelheid gegevens met behulp van een aangepaste query.                 | **Partitieoptie**: Hash.<br>**Query** `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`: .<br>**Partitiekolom**: Geef de kolom op die wordt gebruikt voor het toepassen van hashpartitie. Als dit niet is opgegeven, detecteert Data Factory automatisch de PK-kolom van de tabel die u hebt opgegeven in de gegevensset Teradata.<br><br>Tijdens de uitvoering `?AdfHashPartitionCondition` vervangt Data Factory de hashpartitielogica en verzendt naar Teradata. |
 | Laad grote hoeveelheid gegevens met behulp van een aangepaste query, met een gehele kolom met gelijkmatig verdeelde waarde voor bereikverdeling. | **Partitieopties**: Dynamische bereikpartitie.<br>**Query** `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`: .<br>**Partitiekolom**: Geef de kolom op die wordt gebruikt om gegevens te partitioneren. U partitioneren tegen de kolom met integer gegevenstype.<br>**Hoofdgrens** en **partitie ondergrens**: Geef op als u wilt filteren op de partitiekolom om alleen gegevens op te halen tussen het onderste en bovenste bereik.<br><br>Tijdens de uitvoering `?AdfRangePartitionColumnName`vervangt `?AdfRangePartitionUpbound`Data `?AdfRangePartitionLowbound` Factory , en met de werkelijke kolomnaam en waardebereiken voor elke partitie, en verzendt naar Teradata. <br>Als uw partitiekolom 'ID' bijvoorbeeld is ingesteld met de ondergrens als 1 en de bovengrens als 80, met parallelle kopie ingesteld als 4, haalt Data Factory gegevens op met 4 partities. Hun ID's liggen tussen [1,20], [21, 40], [41, 60] en [61, 80], respectievelijk. |
 

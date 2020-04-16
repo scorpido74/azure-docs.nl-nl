@@ -3,19 +3,23 @@ title: Eindpunten van servicefabric-service opgeven
 description: Eindpuntbronnen beschrijven in een servicemanifest, inclusief het instellen van HTTPS-eindpunten
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: cc4eedf5e5fee0bbfa0a763e9b9ec0dd25409afa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88e71d15829e68bde635f5b4d40224b8fa914f40
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282157"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417595"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Resources opgeven in een servicemanifest
 ## <a name="overview"></a>Overzicht
-Met het servicemanifest kunnen resources die door de service worden gebruikt, worden gedeclareerd/gewijzigd zonder de gecompileerde code te wijzigen. Azure Service Fabric ondersteunt de configuratie van eindpuntresources voor de service. De toegang tot de resources die zijn opgegeven in het servicemanifest kan worden beheerd via de SecurityGroup in het toepassingsmanifest. Met de verklaring van resources kunnen deze resources worden gewijzigd tijdens de implementatie, wat betekent dat de service geen nieuw configuratiemechanisme hoeft in te voeren. De schemadefinitie voor het bestand ServiceManifest.xml is geïnstalleerd met de Service Fabric SDK en de hulpprogramma's voor *C:\Program Files\Microsoft SDKs\Service Fabric\schema's\ServiceFabricServiceModel.xsd*.
+Met het servicemanifest kunnen resources die door de service worden gebruikt, worden gedeclareerd of gewijzigd zonder de gecompileerde code te wijzigen. Service Fabric ondersteunt de configuratie van eindpuntresources voor de service. De toegang tot de resources die zijn opgegeven in het servicemanifest kan worden beheerd via de SecurityGroup in het toepassingsmanifest. Met de verklaring van resources kunnen deze resources worden gewijzigd tijdens de implementatie, wat betekent dat de service geen nieuw configuratiemechanisme hoeft in te voeren. De schemadefinitie voor het bestand ServiceManifest.xml is geïnstalleerd met de Service Fabric SDK en de hulpprogramma's voor *C:\Program Files\Microsoft SDKs\Service Fabric\schema's\ServiceFabricServiceModel.xsd*.
 
 ## <a name="endpoints"></a>Eindpunten
 Wanneer een eindpuntbron is gedefinieerd in het servicemanifest, wijst Service Fabric poorten toe uit het gereserveerde toepassingspoortbereik wanneer een poort niet expliciet is opgegeven. Kijk bijvoorbeeld naar het eindpunt *ServiceEndpoint1* dat is opgegeven in het manifestfragment dat na deze alinea wordt verstrekt. Bovendien kunnen services ook een specifieke poort in een resource aanvragen. Servicereplica's die op verschillende clusterknooppunten worden uitgevoerd, kunnen verschillende poortnummers toegewezen krijgen, terwijl replica's van een service die op hetzelfde knooppunt wordt uitgevoerd, de poort delen. De servicereplica's kunnen deze poorten vervolgens gebruiken als dat nodig is voor replicatie en het luisteren naar clientaanvragen.
+
+Bij het activeren van een service die een https-eindpunt opgeeft, stelt Service Fabric de toegangscontrole invoer voor de poort in, bindt het opgegeven servercertificaat aan de poort en verleent het ook de identiteit die de service uitvoert als machtigingen voor de privésleutel van het certificaat. De activeringsstroom wordt aangeroepen telkens wanneer Service Fabric wordt gestart of wanneer de certificaatverklaring van de toepassing wordt gewijzigd via een upgrade. Het eindpuntcertificaat wordt ook gecontroleerd op wijzigingen/verlengingen en machtigingen worden indien nodig periodiek opnieuw toegepast.
+
+Na beëindiging van de service zal Service Fabric de toegangscontrole-vermelding voor eindpunten opschonen en de certificaatbinding verwijderen. Alle machtigingen die worden toegepast op de privésleutel van het certificaat worden echter niet opgeschoond.
 
 > [!WARNING] 
 > Statische poorten mogen volgens het ontwerp niet overlappen met het bereik van de toepassingspoort dat is opgegeven in het clustermanifest. Als u een statische poort opgeeft, wijst u deze toe buiten het bereik van de toepassingspoort, anders leidt dit tot poortconflicten. Met release 6.5CU2 geven we een **gezondheidswaarschuwing** wanneer we een dergelijk conflict detecteren, maar laten we de implementatie synchroon laten doorgaan met het verzonden 6.5-gedrag. We kunnen echter voorkomen dat de implementatie van de toepassing wordt verwijderd van de volgende grote releases.
@@ -85,6 +89,7 @@ HTTP-eindpunten worden automatisch ACL'd van Service Fabric.
       <Endpoint Name="ServiceEndpoint1" Protocol="http"/>
       <Endpoint Name="ServiceEndpoint2" Protocol="http" Port="80"/>
       <Endpoint Name="ServiceEndpoint3" Protocol="https"/>
+      <Endpoint Name="ServiceEndpoint4" Protocol="https" Port="14023"/>
 
       <!-- This endpoint is used by the replicator for replicating the state of your service.
            This endpoint is configured through the ReplicatorSettings config section in the Settings.xml
@@ -106,7 +111,7 @@ Het HTTPS-protocol biedt serververificatie en wordt ook gebruikt voor het versle
 > Gebruik bij het gebruik van HTTPS niet dezelfde poort en hetzelfde certificaat voor verschillende service-exemplaren (onafhankelijk van de toepassing) die naar hetzelfde knooppunt worden geïmplementeerd. Als u twee verschillende services met dezelfde poort in verschillende toepassingsinstanties upgradet, wordt een upgradefout uitgevoerd. Zie [Meerdere toepassingen upgraden met HTTPS-eindpunten ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)voor meer informatie.
 >
 
-Hier is een voorbeeld ApplicationManifest dat u moet instellen voor HTTPS. De duimafdruk voor uw certificaat moet worden verstrekt. De EndpointRef is een verwijzing naar EndpointResource in ServiceManifest, waarvoor u het HTTPS-protocol instelt. U meer dan één EndpointCertificate toevoegen.  
+Hier is een voorbeeld ApplicationManifest dat de configuratie aantoont die nodig is voor een HTTPS-eindpunt. Het server/eindpuntcertificaat kan worden aangegeven met duimafdruk of algemene naam en er moet een waarde worden opgegeven. De EndpointRef is een verwijzing naar EndpointResource in ServiceManifest en waarvan het protocol moet zijn ingesteld op het 'https'-protocol. U meer dan één EndpointCertificate toevoegen.  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -127,7 +132,8 @@ Hier is een voorbeeld ApplicationManifest dat u moet instellen voor HTTPS. De du
     <ServiceManifestRef ServiceManifestName="Stateful1Pkg" ServiceManifestVersion="1.0.0" />
     <ConfigOverrides />
     <Policies>
-      <EndpointBindingPolicy CertificateRef="TestCert1" EndpointRef="ServiceEndpoint3"/>
+      <EndpointBindingPolicy CertificateRef="SslCertByTP" EndpointRef="ServiceEndpoint3"/>
+      <EndpointBindingPolicy CertificateRef="SslCertByCN" EndpointRef="ServiceEndpoint4"/>
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
@@ -143,7 +149,8 @@ Hier is een voorbeeld ApplicationManifest dat u moet instellen voor HTTPS. De du
     </Service>
   </DefaultServices>
   <Certificates>
-    <EndpointCertificate Name="TestCert1" X509FindValue="FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF F0" X509StoreName="MY" />  
+    <EndpointCertificate Name="SslCertByTP" X509FindValue="FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF F0" X509StoreName="MY" />  
+    <EndpointCertificate Name="SslCertByCN" X509FindType="FindBySubjectName" X509FindValue="ServiceFabric-EndpointCertificateBinding-Test" X509StoreName="MY" />  
   </Certificates>
 </ApplicationManifest>
 ```
@@ -170,7 +177,7 @@ Voeg in de sectie ServiceManifestImport een nieuwe sectie 'ResourceOverrides' to
       </Endpoints>
     </ResourceOverrides>
         <Policies>
-           <EndpointBindingPolicy CertificateRef="TestCert1" EndpointRef="ServiceEndpoint"/>
+           <EndpointBindingPolicy CertificateRef="SslCertByTP" EndpointRef="ServiceEndpoint"/>
         </Policies>
   </ServiceManifestImport>
 ```

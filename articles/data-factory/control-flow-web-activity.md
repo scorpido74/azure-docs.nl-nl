@@ -11,14 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: c700c9786f3bec4c79cae904a95deb5fd1c670b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5cdb24a80dcbd95e4ccc59dd55f4acb9ae18060
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260863"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417892"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webactiviteit in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+
 De WebActivity kan worden gebruikt om een aangepast REST-eindpunt aan te roepen vanaf een Data Factory-pijplijn. U kunt gegevenssets en gekoppelde services doorgeven die moten worden verbruikt door en die toegankelijk zijn voor de activiteit.
 
 > [!NOTE]
@@ -88,7 +91,7 @@ In de volgende tabel worden de vereisten voor JSON-inhoud weergegeven:
 | Niet-JSON-type | Niet ondersteund | Niet ondersteund |
 ||||
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Hieronder vindt u de ondersteunde verificatietypen in de webactiviteit.
 
@@ -254,7 +257,7 @@ public HttpResponseMessage Execute(JObject payload)
 ## <a name="next-steps"></a>Volgende stappen
 Bekijk andere controlestroomactiviteiten die worden ondersteund door Data Factory:
 
-- [Execute Pipeline Activity](control-flow-execute-pipeline-activity.md)
+- [Activiteit uitvoeren van pijplijn](control-flow-execute-pipeline-activity.md)
 - [Voor elke activiteit](control-flow-for-each-activity.md)
-- [Get Metadata Activity](control-flow-get-metadata-activity.md)
-- [Lookup Activity](control-flow-lookup-activity.md)
+- [Activiteit ophalen van metagegevens](control-flow-get-metadata-activity.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)

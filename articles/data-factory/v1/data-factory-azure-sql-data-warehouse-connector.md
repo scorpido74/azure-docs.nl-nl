@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2df49e65603573e4a3adcdda0635982252e70b18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4335763269f4a39b4893d9022f4789296b178e92
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130820"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419320"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Gegevens van en naar Azure SQL Data Warehouse kopiëren met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
@@ -227,7 +227,7 @@ Als niet aan de vereisten wordt voldaan, controleert Azure Data Factory de inste
 Wanneer uw brongegevens niet voldoen aan de criteria die in de vorige sectie zijn geïntroduceerd, u het kopiëren van gegevens inschakelen via een tijdelijke tijdelijke azure blob-opslag (kan geen Premium-opslag zijn). In dit geval voert Azure Data Factory automatisch transformaties uit op de gegevens om te voldoen aan de vereisten voor gegevensindeling van PolyBase, vervolgens PolyBase te gebruiken om gegevens in SQL Data Warehouse te laden en eindelijk uw tijdelijke gegevens op te schonen uit de Blob-opslag. Zie [Gefaseerde kopie](data-factory-copy-activity-performance.md#staged-copy) voor meer informatie over hoe het kopiëren van gegevens via een Azure Blob in het algemeen werkt.
 
 > [!NOTE]
-> Wanneer u gegevens kopieert van een on-premises gegevensarchief naar Azure SQL Data Warehouse met PolyBase en staging, als uw Data Management Gateway-versie lager is dan 2.4, is JRE (Java Runtime Environment) vereist op uw gatewaymachine die wordt gebruikt om uw bron te transformeren gegevens in de juiste indeling. Stel voor dat u uw gateway upgradet naar de laatste om dergelijke afhankelijkheid te voorkomen.
+> Wanneer u gegevens kopieert van een on-premises gegevensarchief naar Azure SQL Data Warehouse met PolyBase en staging, is JRE (Java Runtime Environment) vereist als uw Data Management Gateway-versie lager is dan 2,4, op uw gatewaymachine die wordt gebruikt om uw brongegevens om te zetten in de juiste indeling. Stel voor dat u uw gateway upgradet naar de laatste om dergelijke afhankelijkheid te voorkomen.
 >
 
 Als u deze functie wilt gebruiken, maakt u een [gekoppelde Azure Storage-service](data-factory-azure-blob-connector.md#azure-storage-linked-service) `enableStaging` die `stagingSettings` verwijst naar het Azure Storage-account met de tussentijdse blobopslag en geeft u de eigenschappen en eigenschappen op voor de kopieeractiviteit zoals weergegeven in de volgende code:
@@ -295,7 +295,7 @@ All columns of the table must be specified in the INSERT BULK statement.
 NULL-waarde is een speciale vorm van standaardwaarde. Als de kolom nietig kan worden verklaard, kunnen de invoergegevens (in blob) voor die kolom leeg zijn (mag niet ontbreken in de invoergegevensset). PolyBase voegt NULL voor deze in het Azure SQL Data Warehouse.
 
 ## <a name="auto-table-creation"></a>Autotabelcreatie
-Als u wizard Kopiëren gebruikt om gegevens van SQL Server of Azure SQL Database naar Azure SQL Data Warehouse te kopiëren en de tabel die overeenkomt met de brontabel niet bestaat in het doelarchief, kan Data Factory de tabel in het gegevensmagazijn automatisch maken door met behulp van het schema van de brontabel.
+Als u wizard Kopiëren gebruikt om gegevens uit SQL Server of Azure SQL Database naar Azure SQL Data Warehouse te kopiëren en de tabel die overeenkomt met de brontabel niet in het doelarchief, kan Data Factory de tabel in het gegevensmagazijn automatisch maken met behulp van het schema van de brontabel.
 
 Data Factory maakt de tabel in het doelarchief met dezelfde tabelnaam in het brongegevensarchief. De gegevenstypen voor kolommen worden gekozen op basis van de volgende typetoewijzing. Indien nodig voert het typeconversies uit om eventuele onverenigbaarheden tussen bron- en bestemmingsopslag op te lossen. Het maakt ook gebruik van Round Robin tafeldistributie.
 

@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: bfa308e2cc67bd14a248f3edc7b182f9a772ed98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b491c4f0cc99395c44d989bf19fa2a7b03da696
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238702"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417170"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Als activiteit Voorwaarde in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 De If Condition Activity biedt dezelfde functionaliteit als een If-instructie in een programmeertaal. Er wordt een reeks activiteiten mee geëvalueerd als de voorwaarde resulteert in `true` en een andere reeks activiteiten als de voorwaarde resulteert in `false`. 
 
 ## <a name="syntax"></a>Syntaxis
@@ -288,8 +290,8 @@ $result.Error -join "`r`n"
 ## <a name="next-steps"></a>Volgende stappen
 Bekijk andere controlestroomactiviteiten die worden ondersteund door Data Factory: 
 
-- [Execute Pipeline Activity](control-flow-execute-pipeline-activity.md)
+- [Activiteit uitvoeren van pijplijn](control-flow-execute-pipeline-activity.md)
 - [Voor elke activiteit](control-flow-for-each-activity.md)
-- [Get Metadata Activity](control-flow-get-metadata-activity.md)
-- [Lookup Activity](control-flow-lookup-activity.md)
-- [Webactiviteit](control-flow-web-activity.md)
+- [Activiteit ophalen van metagegevens](control-flow-get-metadata-activity.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Web Activity](control-flow-web-activity.md)

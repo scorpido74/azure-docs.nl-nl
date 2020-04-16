@@ -10,18 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 9ef4b569fd8413d2825374c963fb272dd450cf0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c456e486217886510a1fd2ef1aeabae47d35b53c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74533137"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417195"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Expressies en functies in Azure Data Factory
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](v1/data-factory-functions-variables.md)
 > * [Huidige versie](control-flow-expression-language-functions.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel vindt u informatie over expressies en functies die worden ondersteund door Azure Data Factory. 
 
@@ -176,7 +177,7 @@ Als u wilt werken met verzamelingen, over het algemeen arrays, tekenreeksen en s
 | [Lege](control-flow-expression-language-functions.md#empty) | Controleer of een verzameling leeg is. |
 | [Eerste](control-flow-expression-language-functions.md#first) | Retourneer het eerste item uit een verzameling. |
 | [Snijpunt](control-flow-expression-language-functions.md#intersection) | Retourneer een verzameling met *alleen* de algemene items in de opgegeven verzamelingen. |
-| [join](control-flow-expression-language-functions.md#join) | Retourneer een tekenreeks met *alle* items uit een array, gescheiden door het opgegeven teken. |
+| [Join](control-flow-expression-language-functions.md#join) | Retourneer een tekenreeks met *alle* items uit een array, gescheiden door het opgegeven teken. |
 | [Laatste](control-flow-expression-language-functions.md#last) | Retourneer het laatste item uit een verzameling. |
 | [Lengte](control-flow-expression-language-functions.md#length) | Het aantal items in een tekenreeks of array retourneren. |
 | [Overslaan](control-flow-expression-language-functions.md#skip) | Verwijder items uit de voorkant van een verzameling en retourneer *alle andere* items. |
@@ -229,7 +230,7 @@ Deze functies zijn nuttig binnen voorwaarden, ze kunnen worden gebruikt om elk t
 | [float](control-flow-expression-language-functions.md#float) | Een zwevend puntnummer voor een invoerwaarde retourneren. |
 | [Int](control-flow-expression-language-functions.md#int) | Retourneer de gehele versie voor een tekenreeks. |
 | [Json](control-flow-expression-language-functions.md#json) | De Json-typewaarde of object (JavaScript Object Notatie) voor een tekenreeks of XML retourneren. |
-| [tekenreeks](control-flow-expression-language-functions.md#string) | Retourneer de tekenreeksversie voor een invoerwaarde. |
+| [Tekenreeks](control-flow-expression-language-functions.md#string) | Retourneer de tekenreeksversie voor een invoerwaarde. |
 | [uriComponent](control-flow-expression-language-functions.md#uriComponent) | Retourneer de URI-gecodeerde versie voor een invoerwaarde door URL-onveilige tekens te vervangen door escape-tekens. |
 | [uriComponentToBinary](control-flow-expression-language-functions.md#uriComponentToBinary) | Retourneer de binaire versie voor een uri-gecodeerde tekenreeks. |
 | [uriComponentToString](control-flow-expression-language-functions.md#uriComponentToString) | Retourneer de tekenreeksversie voor een uri-gecodeerde tekenreeks. |

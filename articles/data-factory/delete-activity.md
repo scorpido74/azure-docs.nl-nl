@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: f265cdc955becd53ae7ba61ad827b2be69b92907
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: d90f38f83bd4d2d5311f277fcc928e442d7ea793
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618270"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416382"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Verwijderactiviteit in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 U de activiteit verwijderen in Azure Data Factory gebruiken om bestanden of mappen te verwijderen uit on-premises opslagopslag of cloudopslag. Gebruik deze activiteit om bestanden op te schonen of te archiveren wanneer ze niet meer nodig zijn.
 
@@ -40,14 +42,14 @@ Hier volgen enkele aanbevelingen voor het gebruik van de activiteit Verwijderen:
 
 ## <a name="supported-data-stores"></a>Ondersteunde gegevensarchieven
 
--   [Azure Blob Storage](connector-azure-blob-storage.md)
+-   [Azure Blob-opslag](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 -   [Azure File Storage](connector-azure-file-storage.md)
 
 ### <a name="file-system-data-stores"></a>Bestandssysteemgegevensopslag
 
--   [File System](connector-file-system.md)
+-   [Bestandssysteem](connector-file-system.md)
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
@@ -116,7 +118,7 @@ Er zijn twee plaatsen waar u de resultaten van de activiteit Verwijderen zien en
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Voorbeeldlogboekbestand van de activiteit Verwijderen
 
-| Name | Categorie | Status | Fout |
+| Naam | Categorie | Status | Fout |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | File | Verwijderen |  |
 | test2/hello789.txt | File | Verwijderen |  |

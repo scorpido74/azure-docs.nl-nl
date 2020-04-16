@@ -10,18 +10,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260577"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418946"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Use custom activities in an Azure Data Factory pipeline (Aangepaste activiteiten gebruiken in een Azure Data Factory-pijplijn)
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](v1/data-factory-use-custom-activities.md)
 > * [Huidige versie](transform-data-using-dotnet-custom-activity.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Er zijn twee soorten activiteiten die u gebruiken in een Azure Data Factory-pijplijn.
 
@@ -115,7 +116,7 @@ In de volgende tabel worden namen en beschrijvingen beschreven van eigenschappen
 &#42; De `resourceLinkedService` `folderPath` eigenschappen en moeten beide worden opgegeven of beide worden weggelaten.
 
 > [!NOTE]
-> Als u gekoppelde services als referentieobjecten in aangepaste activiteit doorgeeft, is het een goede beveiligingspraktijk om een gekoppelde service met Azure Key Vault (omdat deze geen beveiligde tekenreeksen bevat) door te geven en de referenties rechtstreeks uit Key te halen en de referenties op te halen met behulp van een geheime naam Kluis van de code. U [hier](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) een voorbeeld vinden dat verwijst naar de gekoppelde service met AKV, de referenties uit Key Vault ophaalt en vervolgens toegang krijgt tot de opslag in de code.
+> Als u gekoppelde services als referentieobjecten in aangepaste activiteit doorgeeft, is het een goede beveiligingspraktijk om een gekoppelde service met Azure Key Vault (omdat deze geen beveiligde tekenreeksen bevat) door te geven en de referenties met behulp van geheime naam rechtstreeks uit Key Vault uit de code op te halen. U [hier](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) een voorbeeld vinden dat verwijst naar de gekoppelde service met AKV, de referenties uit Key Vault ophaalt en vervolgens toegang krijgt tot de opslag in de code.
 
 ## <a name="custom-activity-permissions"></a>Aangepaste activiteitsmachtigingen
 

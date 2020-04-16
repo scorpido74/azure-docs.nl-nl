@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 02/25/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ee463f573fcc1c8affe3966d58ca2bb1f6636495
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2cc2085df8db80e1212364195cdb55131fe5e002
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334845"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81421826"
 ---
 De volgende limieten zijn alleen van toepassing wanneer u beheerbewerkingen uitvoert met Azure Resource Manager met Azure Storage.
 
 | Resource | Limiet |
 | --- | --- |
 | Beheer van opslagaccount (lees) |800 per 5 minuten |
-| Beheer van opslagaccount (schrijven) |1200 per uur |
+| Beheer van opslagaccount (schrijven) |10 per seconde |
 | Beheer van opslagaccount (lijst) |100 per 5 minuten |

@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d56964b7415e4ca5903950cd46c02b3c27f62d5e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4063751a71cd9cecc424dfe3daddaecfd9ea4071
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547414"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81421910"
 ---
 Met behulp van Spot VM's u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kostenbesparing. Op elk moment waarop Azure de capaciteit terug nodig heeft, wordt spotvm's van Spot v.s. Daarom zijn Spot VM's ideaal voor workloads die onderbrekingen kunnen verwerken, zoals batchverwerkingstaken, dev/testomgevingen, grote compute workloads en meer.
 
@@ -88,6 +88,7 @@ Met variabele prijzen hebt u de optie om een maximale prijs in te stellen, in Am
 | Enterprise Agreement         | Ja                               |
 | Betalen naar gebruik                | Ja                               |
 | Cloud Service Provider (CSP) | [Neem contact op met uw partner](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Microsoft-klantovereenkomst | Ja                               |
 | Voordelen                     | Niet beschikbaar                     |
 | Gesponsorde                    | Niet beschikbaar                     |
 | Gratis proefversie                   | Niet beschikbaar                     |

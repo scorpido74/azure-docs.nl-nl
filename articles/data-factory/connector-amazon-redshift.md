@@ -11,17 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 4d729a0117c7c409d1a3e0c3fd440aed96153203
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce63da745fb84ebccd57b246fc934f595dd7cda1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243586"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418249"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Gegevens van Amazon Redshift kopiëren met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](v1/data-factory-amazon-redshift-connector.md)
 > * [Huidige versie](connector-amazon-redshift.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
 In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens van een Amazon Redshift te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
@@ -164,7 +166,7 @@ Meer informatie over het efficiënt kopiëren van gegevens van Amazon Redshift u
 
 **Voorbeeld: kopieer gegevens van Amazon Redshift naar Azure SQL Data Warehouse met UNLOAD, gefaseerde kopie en PolyBase**
 
-Voor deze voorbeeldgebruikscase worden gegevens van Amazon Redshift naar Amazon S3 gelost zoals geconfigureerd in 'redshiftUnloadSettings' en vervolgens gegevens kopiëren van Amazon S3 naar Azure Blob zoals opgegeven in 'stagingSettings', ten slotte gebruikt u PolyBase om gegevens in SQL-gegevens te laden Magazijn. Alle tussentijdse nota wordt behandeld door kopie activiteit goed.
+Voor deze voorbeeldgebruikscase worden gegevens van Amazon Redshift naar Amazon S3 gelost zoals geconfigureerd in 'redshiftUnloadSettings' en worden gegevens van Amazon S3 naar Azure Blob gekopieerd, zoals gespecificeerd in 'stagingSettings', ten slotte gebruikt u PolyBase om gegevens in SQL Data Warehouse te laden. Alle tussentijdse nota wordt behandeld door kopie activiteit goed.
 
 ![Werktu shift naar SQL DW-kopieerwerk](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 

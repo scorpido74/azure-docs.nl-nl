@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2028aac9c01aedc4baa568d370c9f7d21c920647
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256417"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419260"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Connectiviteitsarchitectuur van Azure SQL
 > [!NOTE]
@@ -45,7 +45,7 @@ In de volgende stappen wordt beschreven hoe een verbinding tot stand wordt gebra
 Azure SQL Database ondersteunt de volgende drie opties voor de instelling van het verbindingsbeleid van een SQL Database-server:
 
 - **Omleiden (aanbevolen):** Clients leggen rechtstreeks verbindingen met het knooppunt dat de database host, wat leidt tot verminderde latentie en verbeterde doorvoer. Voor verbindingen om deze modus te gebruiken, moeten clients:
-   - Gebruik uitgaande communicatie van de client naar alle Azure IP-adressen in de regio op poorten in het bereik van 11000 11999. Gebruik de Service Tags voor SQL om dit eenvoudiger te beheren.  
+   - Gebruik uitgaande communicatie van de client naar alle Azure SQL IP-adressen in de regio op poorten in het bereik van 11000 11999. Gebruik de Service Tags voor SQL om dit eenvoudiger te beheren.  
    - Gebruik uitgaande communicatie van de client naar AZURE SQL Database-gateway-IP-adressen op poort 1433.
 
 - **Proxy:** In deze modus worden alle verbindingen geproxied via de Azure SQL Database-gateways, wat leidt tot verhoogde latentie en verminderde doorvoer. Voor verbindingen die deze modus gebruiken, moeten clients uitgaande communicatie van de client naar AZURE SQL Database-gateway-IP-adressen op poort 1433 toestaan.

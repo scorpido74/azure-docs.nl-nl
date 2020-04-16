@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: ced2279878ee2eb361ec7338647418658e411513
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79213007"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417875"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-activiteit in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Een webhook-activiteit kan de uitvoering van pijplijnen regelen via uw aangepaste code. Met de webhook-activiteit kan de code van klanten een eindpunt aanroepen en een terugbel-URL doorgeven. De pijplijnrun wacht op de aanroep van de callback voordat deze overgaat tot de volgende activiteit.
 
@@ -59,11 +61,11 @@ Eigenschap | Beschrijving | Toegestane waarden | Vereist
 **Url** | Het doeleindpunt en -pad. | Een tekenreeks of een expressie met de **resultaattekstTypewaarde** van een tekenreeks. | Ja |
 **Headers** | Kopteksten die naar de aanvraag worden verzonden. Hier is een voorbeeld dat de taal en `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`het type op een verzoek instelt: . | Een tekenreeks of een expressie met de **resultaattekstTypewaarde** van een tekenreeks. | Ja. Een `Content-Type` header `"headers":{ "Content-Type":"application/json"}` zoals is vereist. |
 **Lichaam** | Vertegenwoordigt de payload die naar het eindpunt wordt verzonden. | Geldige JSON of een expressie met de **resultaatTypewaarde** van JSON. Zie [Payload-schema aanvragen](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) voor het schema van de payload van de aanvraag. | Ja |
-**verificatie** | De verificatiemethode die wordt gebruikt om het eindpunt aan te roepen. Ondersteunde typen zijn "Basic" en "ClientCertificate". Zie [Verificatie](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication) voor meer informatie. Als verificatie niet vereist is, sluit u deze eigenschap uit. | Een tekenreeks of een expressie met de **resultaattekstTypewaarde** van een tekenreeks. | Nee |
+**Verificatie** | De verificatiemethode die wordt gebruikt om het eindpunt aan te roepen. Ondersteunde typen zijn "Basic" en "ClientCertificate". Zie [Verificatie](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication) voor meer informatie. Als verificatie niet vereist is, sluit u deze eigenschap uit. | Een tekenreeks of een expressie met de **resultaattekstTypewaarde** van een tekenreeks. | Nee |
 **timeout** | Hoe lang de activiteit wacht tot de callback is opgegeven door **callBackUri.** De standaardwaarde is 10 minuten ("00:10:00"). Waarden hebben de TimeSpan-indeling *d*. *hh*:*mm*:*ss*. | Tekenreeks | Nee |
 **Status rapporteren bij terugbellen** | Hiermee kan een gebruiker de mislukte status van een webhook-activiteit melden. | Booleaans | Nee |
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Een webhookactiviteit ondersteunt de volgende verificatietypen.
 
@@ -143,9 +145,9 @@ Wanneer u de **eigenschap Rapportstatus op de eigenschap Callback** gebruikt, mo
 Bekijk de volgende control flow-activiteiten die worden ondersteund door Data Factory:
 
 - [If Condition Activity](control-flow-if-condition-activity.md)
-- [Execute Pipeline Activity](control-flow-execute-pipeline-activity.md)
+- [Activiteit uitvoeren van pijplijn](control-flow-execute-pipeline-activity.md)
 - [Voor elke activiteit](control-flow-for-each-activity.md)
-- [Get Metadata Activity](control-flow-get-metadata-activity.md)
-- [Lookup Activity](control-flow-lookup-activity.md)
-- [Webactiviteit](control-flow-web-activity.md)
-- [Until Activity](control-flow-until-activity.md)
+- [Activiteit ophalen van metagegevens](control-flow-get-metadata-activity.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Web Activity](control-flow-web-activity.md)
+- [Until-activiteit](control-flow-until-activity.md)

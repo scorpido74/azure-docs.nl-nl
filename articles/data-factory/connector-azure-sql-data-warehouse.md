@@ -11,18 +11,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 822a981b84919670aa476567625cdf914206eaa8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7fb1560fb9be809d816dde7dd69f1ec8afe5649f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422188"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417567"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens kopiëren en transformeren in Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) met Azure Data Factory 
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [Huidige versie](connector-azure-sql-data-warehouse.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+In dit artikel wordt beschreven hoe u Activiteit kopiëren in Azure Data Factory gebruikt om gegevens van en naar Azure Synapse Analytics te kopiëren en gegevensstroom te gebruiken om gegevens te transformeren in Azure Data Lake Storage Gen2. Lees het [inleidende artikel](introduction.md)voor meer informatie over Azure Data Factory.
+
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+In dit artikel wordt beschreven hoe u Activiteit kopiëren in Azure Data Factory gebruikt om gegevens van en naar Azure SQL Data Warehouse te kopiëren en gegevensstroom te gebruiken om gegevens te transformeren in Azure Data Lake Storage Gen2. Lees het [inleidende artikel](introduction.md)voor meer informatie over Azure Data Factory.
 
 In dit artikel wordt beschreven hoe u Activiteit kopiëren in Azure Data Factory gebruikt om gegevens van en naar Azure Synapse Analytics te kopiëren en gegevensstroom te gebruiken om gegevens te transformeren in Azure Data Lake Storage Gen2. Lees het [inleidende artikel](introduction.md)voor meer informatie over Azure Data Factory.
 
@@ -531,7 +540,7 @@ Als u deze functie wilt gebruiken, maakt u een [gekoppelde Azure Blob Storage-se
 
 ### <a name="best-practices-for-using-polybase"></a>Aanbevolen procedures voor het gebruik van PolyBase
 
-De volgende secties bieden best practices naast de aanbevolen procedures die worden genoemd in [Best practices voor Azure Synapse Analytics.](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)
+De volgende secties bieden best practices naast de aanbevolen procedures die worden genoemd in [Best practices voor Azure Synapse Analytics.](../synapse-analytics/sql/best-practices-sql-pool.md)
 
 #### <a name="required-database-permission"></a>Vereiste databasemachtigingen
 
@@ -740,7 +749,7 @@ Instellingen die specifiek zijn voor Azure Synapse Analytics zijn beschikbaar op
 Wanneer u gegevens van of naar Azure Synapse Analytics kopieert, worden de volgende toewijzingen gebruikt van Azure Synapse Analytics-gegevenstypen naar tijdelijke gegevenstypen van Azure Data Factory. Zie [schema- en gegevenstypetoewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe Activiteit kopiëren het bronschema en het gegevenstype naar de gootsteen brengt.
 
 >[!TIP]
->Raadpleeg [tabelgegevenstypen in het Azure Synapse Analytics-artikel](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md) over SQL DW-ondersteunde gegevenstypen en de tijdelijke oplossingen voor niet-ondersteunde typen.
+>Raadpleeg [tabelgegevenstypen in het Azure Synapse Analytics-artikel](../synapse-analytics/sql/develop-tables-data-types.md) over SQL DW-ondersteunde gegevenstypen en de tijdelijke oplossingen voor niet-ondersteunde typen.
 
 | Azure Synapse Analytics-gegevenstype    | Tussentijds gegevenstype Data Factory |
 | :------------------------------------ | :----------------------------- |

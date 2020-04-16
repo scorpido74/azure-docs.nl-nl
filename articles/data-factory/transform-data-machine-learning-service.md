@@ -10,14 +10,16 @@ ms.author: daperlov
 author: djpmsft
 manager: anandsub
 ms.date: 10/10/2019
-ms.openlocfilehash: b54504cf8ca7b32bf14bd4b7e0c561ffd56d4098
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f033651eb7e52ba60cce9b74941a4ef0eb376d2b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76155160"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418997"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning-pijplijnen uitvoeren in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Voer uw Azure Machine Learning-pijplijnen uit als een stap in uw Azure Data Factory-pijplijnen. Met de machine learning-uitvoerpijplijnactiviteit kunnen batchvoorspellingsscenario's worden ingeschakeld, zoals het identificeren van mogelijke leenstandaardinstellingen, het bepalen van het sentiment en het analyseren van gedragspatronen van klanten.
 

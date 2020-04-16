@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 2113e5ac3563a22c5f2c6b755230b05fb9a2cb35
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 088a0d10b96a30ef830b4e8a8dc12c19127141db
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583860"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417047"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Prestaties afstemmen met geordende en geclusterde columnstore-index  
 
@@ -28,7 +28,7 @@ Standaard maakt een interne component (indexbouwer) voor elke tabel die zonder i
 
 Bij het maken van een geordende CCI sorteert de Synapse SQL-engine de bestaande gegevens in het geheugen door de ordersleutel(s) voordat de indexbouwer ze comprimeert in indexsegmenten.  Met gesorteerde gegevens wordt segmentoverlapping verminderd, waardoor query's een efficiëntere segmenteliminatie en dus snellere prestaties kunnen hebben omdat het aantal segmenten dat van de schijf moet worden gelezen kleiner is.  Als alle gegevens in één keer in het geheugen kunnen worden gesorteerd, kan segmentoverlapping worden vermeden.  Vanwege grote tabellen in datawarehouses gebeurt dit scenario niet vaak.  
 
-Als u de segmentbereiken voor een kolom wilt controleren, voert u deze opdracht uit met de tabelnaam en de kolomnaam:
+Als u de segmentbereiken voor een kolom wilt controleren, voert u de volgende opdracht uit met de tabelnaam en de kolomnaam:
 
 ```sql
 SELECT o.name, pnp.index_id, 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 96d0a5b2fb59e4612107d8ccbf7285fff7576585
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c4c1cfdb927cfd2ee607bfe2a951e06c80f9bfb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128395"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418538"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Het Team Data Science-proces in actie: Azure Synapse Analytics gebruiken
 In deze zelfstudie nemen we je mee door het bouwen en implementeren van een machine learning-model met Azure Synapse Analytics voor een openbaar beschikbare gegevensset- de [NYC Taxi Trips-gegevensset.](https://www.andresmh.com/nyctaxitrips/) Het binaire classificatiemodel dat is geconstrueerd, voorspelt of een fooi wordt betaald voor een reis.  Modellen omvatten meerklassenclassificatie (al dan niet een tip) en regressie (de verdeling voor de betaalde tipbedragen).
@@ -84,7 +84,7 @@ Volg de documentatie bij [Maken en query een Azure SQL Data Warehouse in de Azur
 
 **Installeer Visual Studio en SQL Server Data Tools.** Zie Aan [de slag met Visual Studio 2019 voor SQL Data Warehouse voor](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)instructies.
 
-**Maak verbinding met uw Azure Synapse Analytics met Visual Studio.** Zie stappen 1 & 2 in [Connect to Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-connect-overview.md)voor instructies.
+**Maak verbinding met uw Azure Synapse Analytics met Visual Studio.** Zie stappen 1 & 2 in [Verbinding maken met SQL Analytics in Azure Synapse Analytics](../../synapse-analytics/sql/connect-overview.md)voor instructies.
 
 > [!NOTE]
 > Voer de volgende SQL-query uit op de database die u hebt gemaakt in uw Azure Synapse Analytics (in plaats van de query die in stap 3 van het verbindingsonderwerp wordt geleverd) om **een hoofdsleutel**te maken.
@@ -126,7 +126,7 @@ Voer in *uw -DestDir*het volgende PowerShell-script uit in de beheerdersmodus:
 Wanneer het PowerShell-script voor de eerste keer wordt uitgevoerd, wordt u gevraagd de gegevens van uw Azure Synapse Analytics en uw Azure blob-opslagaccount in te voeren. Wanneer dit PowerShell-script voor de eerste keer is voltooid, worden de referenties die u invoert, naar een configuratiebestand SQLDW.conf in de huidige werkmap geschreven. De toekomstige uitvoering van dit PowerShell-scriptbestand heeft de mogelijkheid om alle benodigde parameters uit dit configuratiebestand te lezen. Als u bepaalde parameters moet wijzigen, u ervoor kiezen om de parameters op het scherm op te vragen in te voeren door dit configuratiebestand te verwijderen en de parameterswaarden in te voeren zoals gevraagd of om de parameterwaarden te wijzigen door het SQLDW.conf-bestand in uw *map -DestDir* te bewerken.
 
 > [!NOTE]
-> Om schemanaamconflicten te voorkomen met die in uw Azure Synapse Analytics in Azure, wordt bij het rechtstreeks lezen van parameters rechtstreeks uit het SQLDW.conf-bestand een willekeurig getal van 3 cijfers toegevoegd aan de schemanaam van het SQLDW.conf-bestand als het standaardschema naam voor elke run. Het PowerShell-script kan u om een schemanaam vragen: de naam kan naar eigen inzicht van de gebruiker worden opgegeven.
+> Om schemanaamconflicten te voorkomen met die in uw Azure Synapse Analytics in Azure, wordt bij het rechtstreeks lezen van parameters rechtstreeks uit het SQLDW.conf-bestand een willekeurig getal van 3 cijfers toegevoegd aan de schemanaam van het SQLDW.conf-bestand als standaardschemanaam voor elke run. Het PowerShell-script kan u om een schemanaam vragen: de naam kan naar eigen inzicht van de gebruiker worden opgegeven.
 >
 >
 
@@ -310,7 +310,7 @@ Met dit **PowerShell-scriptbestand** worden de volgende taken voltooid:
 De geografische locatie van uw opslagaccounts is van invloed op de laadtijden.
 
 > [!NOTE]
-> Afhankelijk van de geografische locatie van uw privéblobopslagaccount, kan het kopiëren van gegevens van een openbare blob naar uw privé-opslagaccount ongeveer 15 minuten of zelfs langer duren en het proces van het laden van gegevens van uw opslagaccount naar uw Azure Azure Synapse Analytics kan 20 minuten of langer duren.
+> Afhankelijk van de geografische locatie van uw privéblobopslagaccount kan het kopiëren van gegevens van een openbare blob naar uw privé-opslagaccount ongeveer 15 minuten of zelfs langer duren en kan het laden van gegevens van uw opslagaccount naar uw Azure Azure Synapse Analytics 20 minuten of langer duren.
 >
 >
 
@@ -330,7 +330,7 @@ U uw eigen gegevens gebruiken. Als uw gegevens zich in uw on-premises machine be
 >
 >
 
-Dit PowerShell-script sluit ook de Azure Synapse Analytics-informatie aan op de voorbeeldbestanden voor gegevensverkenning SQLDW_Explorations.sql, SQLDW_Explorations.ipynb en SQLDW_Explorations_Scripts.py, zodat deze drie bestanden klaar zijn om uit te proberen direct nadat het PowerShell-script is voltooid.
+Dit PowerShell-script sluit ook de Azure Synapse Analytics-informatie aan op de voorbeeldbestanden voor gegevensverkenning SQLDW_Explorations.sql, SQLDW_Explorations.ipynb en SQLDW_Explorations_Scripts.py, zodat deze drie bestanden direct kunnen worden uitgeprobeerd nadat het PowerShell-script is voltooid.
 
 Na een succesvolle uitvoering ziet u het scherm zoals hieronder:
 
@@ -839,7 +839,7 @@ In deze oefening hebben we de gegevens in Azure Synapse Analytics al onderzocht 
 5. Voer de *SQL-gebruikersnaam* in de naam van het **serveraccount**en het *wachtwoord* in het wachtwoord van het **serveraccount in**.
 7. Plak in het tekstgebied **Databasequery** bewerken de query waarmee de benodigde databasevelden worden geëxtraheerd (inclusief berekende velden zoals de labels) en de gegevens naar beneden naar de gewenste steekproefgrootte.
 
-Een voorbeeld van een experiment met binaire classificatie dat rechtstreeks uit de Azure Synapse Analytics-database wordt gelezen, vindt u in de onderstaande afbeelding (vergeet niet de tabelnamen te vervangen nyctaxi_trip en nyctaxi_fare door de schemanaam en de tabelnamen die u in uw walkthrough). Vergelijkbare experimenten kunnen worden gebouwd voor multiclass classificatie- en regressieproblemen.
+Een voorbeeld van een experiment met binaire classificatie waarmee gegevens rechtstreeks uit de Azure Synapse Analytics-database worden gelezen, vindt u in de onderstaande afbeelding (vergeet niet de tabelnamen nyctaxi_trip en nyctaxi_fare te vervangen door de schemanaam en de tabelnamen die u in uw walkthrough hebt gebruikt). Vergelijkbare experimenten kunnen worden gebouwd voor multiclass classificatie- en regressieproblemen.
 
 ![Azure ML-trein][10]
 
@@ -875,7 +875,7 @@ Een voorbeeld score experiment is voorzien in de onderstaande figuur. Wanneer u 
 ![Azure ML publiceren][11]
 
 ## <a name="summary"></a>Samenvatting
-Om samen te vatten wat we hebben gedaan in deze walkthrough-zelfstudie, hebt u een Azure-gegevenswetenschapsomgeving gemaakt, gewerkt met een grote openbare gegevensset, deze door het Team Data Science-proces geleid, van gegevensverwerving tot modeltraining en vervolgens naar de implementatie van een Azure Machine Learning-webservice.
+Om samen te vatten wat we hebben gedaan in deze walkthrough-zelfstudie, hebt u een Azure-gegevenswetenschapsomgeving gemaakt, gewerkt met een grote openbare gegevensset, deze uitgevoerd via het Team Data Science-proces, helemaal van gegevensverwerving tot modeltraining en vervolgens tot de implementatie van een Azure Machine Learning-webservice.
 
 ### <a name="license-information"></a>Licentiegegevens
 Deze voorbeeld-walkthrough en de bijbehorende scripts en IPython-notitieblokken worden door Microsoft gedeeld onder de MIT-licentie. Controleer het bestand LICENSE.txt in de map van de voorbeeldcode op GitHub voor meer informatie.

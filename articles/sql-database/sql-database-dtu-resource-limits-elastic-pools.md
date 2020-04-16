@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 7b7ef3b6f2d400dafb28cfb7a15cf95cbbe2c457
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 76085dc29d40944cf704dbc5efc578b3314f499a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351013"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419235"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Resourceslimieten voor elastische pools met behulp van het DTU-inkoopmodel
 
@@ -32,6 +32,9 @@ Voor elastische groepen van SQL Database worden in de volgende tabellen de resou
 > Zie [Een elastische pool schalen](sql-database-elastic-pool-scale.md) voor schaalrichtlijnen en overwegingen
 > [!NOTE]
 > De resourcelimieten van afzonderlijke databases in elastische pools zijn over het algemeen hetzelfde als voor afzonderlijke databases buiten groepen op basis van DT's en de servicelaag. De maximale gelijktijdige werknemers voor een S2-database zijn bijvoorbeeld 120 werknemers. Dus, de maximale gelijktijdige werknemers voor een database in een standaard groep is ook 120 werknemers als de maximale DTU per database in de groep is 50 DTU's (wat overeenkomt met S2).
+
+> [!NOTE]
+> De limiet voor opslag per groep resource in elk van de volgende tabellen omvat geen tempdb- en logboekopslag.
 
 ### <a name="basic-elastic-pool-limits"></a>Basisbeperkingen voor elastische groepen
 

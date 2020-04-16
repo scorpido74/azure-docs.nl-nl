@@ -7,19 +7,21 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 01/28/2020
+ms.openlocfilehash: 39d1f15b771168b618bfbc4951f2036a8b95b027
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243794"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418453"
 ---
 # <a name="what-are-mapping-data-flows"></a>Wat zijn toewijzingsgegevensstromen?
 
-Gegevensstromen in kaart brengen zijn visueel ontworpen gegevenstransformaties in Azure Data Factory. Gegevensstromen stellen dataengineers in staat om grafische logica voor gegevenstransformatie te ontwikkelen zonder code te schrijven. De resulterende gegevensstromen worden uitgevoerd als activiteiten binnen Azure Data Factory-pijplijnen die geschaalde Spark-clusters gebruiken. Gegevensstroomactiviteiten kunnen worden geoperationaliseerd via bestaande plannings-, controle-, stroom- en bewakingsmogelijkheden van Data Factory.
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Het in kaart brengen van gegevensstromen biedt een volledig visuele ervaring zonder codering vereist. Uw gegevensstromen worden uitgevoerd op uw eigen uitvoeringscluster voor geschaalde gegevensverwerking. Azure Data Factory verwerkt alle codevertaling, padoptimalisatie en uitvoering van uw gegevensstroomtaken.
+Gegevensstromen in kaart brengen zijn visueel ontworpen gegevenstransformaties in Azure Data Factory. Gegevensstromen stellen dataengineers in staat om grafische logica voor gegevenstransformatie te ontwikkelen zonder code te schrijven. De resulterende gegevensstromen worden uitgevoerd als activiteiten binnen Azure Data Factory-pijplijnen die geschaalde Apache Spark-clusters gebruiken. Gegevensstroomactiviteiten kunnen worden ingeschakeld via bestaande plannings-, controle-, stroom- en bewakingsmogelijkheden van Data Factory.
+
+Het in kaart brengen van gegevensstromen biedt een volledig visuele ervaring zonder codering vereist. Uw gegevensstromen worden uitgevoerd op uw uitvoeringscluster voor geschaalde gegevensverwerking. Azure Data Factory verwerkt alle codevertaling, padoptimalisatie en uitvoering van uw gegevensstroomtaken.
 
 ## <a name="getting-started"></a>Aan de slag
 
@@ -27,7 +29,7 @@ Als u een gegevensstroom wilt maken, selecteert u het plusteken onder **Fabrieks
 
 ![Nieuwe gegevensstroom](media/data-flow/newdataflow2.png "nieuwe gegevensstroom")
 
-Dit brengt u naar het canvas van de gegevensstroom waar u uw transformatielogica maken. Selecteer **Bron toevoegen** om te beginnen met het configureren van uw brontransformatie. Zie [Brontransformatie](data-flow-source.md)voor meer informatie.
+Met deze actie brengt u het canvas voor gegevensstromen, waar u uw transformatielogica maken. Selecteer **Bron toevoegen** om te beginnen met het configureren van uw brontransformatie. Zie [Brontransformatie](data-flow-source.md)voor meer informatie.
 
 ## <a name="data-flow-canvas"></a>Gegevensstroomcanvas
 
@@ -45,41 +47,41 @@ De grafiek toont de transformatiestroom. Het toont de afstamming van brongegeven
 
 ![Foutopsporingsknop](media/data-flow/debugbutton.png "Foutopsporingsknop")
 
-Wanneer u begint te werken met gegevensstromen in ADF, wilt u de schakelaar Foutopsporing inschakelen voor gegevensstromen boven aan de gebruikersinterface van de browser. Hiermee wordt een Azure Databricks-cluster uitgevoerd voor interactieve foutopsporing, gegevensvoorbeelden en pijplijnfoutfouten. U de grootte instellen van het cluster dat wordt gebruikt door een aangepaste [Azure Integration Runtime te](concepts-integration-runtime.md)kiezen. De foutopsporingssessie blijft tot 60 minuten in leven na uw laatste gegevensvoorbeeld of de laatste uitvoering van de foutopsporingspijplijn.
+Wanneer u begint te werken met gegevensstromen in ADF, wilt u de schakelaar Foutopsporing inschakelen voor gegevensstromen boven aan de gebruikersinterface van de browser. Hiermee wordt een Spark-cluster uitgevoerd om te gebruiken voor interactieve foutopsporing, gegevensvoorbeelden en foutopsporingsuitvoeringen voor pijplijnen. U de grootte instellen van het cluster dat wordt gebruikt door een aangepaste [Azure Integration Runtime te](concepts-integration-runtime.md)kiezen. De foutopsporingssessie blijft tot 60 minuten in leven na uw laatste gegevensvoorbeeld of de laatste uitvoering van de foutopsporingspijplijn.
 
 Wanneer u uw pijplijnen met gegevensstroomactiviteiten operationaliseert, gebruikt ADF de Azure Integration Runtime die is gekoppeld aan de [activiteit](control-flow-execute-data-flow-activity.md) in de eigenschap 'Uitvoeren op'.
 
 De standaard Azure Integration Runtime is een klein 4-core single worker node-cluster waarmee u gegevens bekijken en snel foutopsporingspijplijnen uitvoeren tegen minimale kosten. Stel een grotere Azure IR-configuratie in als u bewerkingen uitvoert op grote gegevenssets.
 
-U ADF instrueren om een pool van clusterresources (VM's) te onderhouden door een TTL in te stellen in de azure IR-gegevensstroomeigenschappen. Dit zal resulteren in een snellere uitvoering van de taak bij de volgende activiteiten.
+U ADF instrueren om een pool van clusterresources (VM's) te onderhouden door een TTL in te stellen in de azure IR-gegevensstroomeigenschappen. Deze actie resulteert in een snellere uitvoering van de taak bij volgende activiteiten.
 
 #### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Runtime en dataflowstrategieën voor Azure-integratie
 
 ##### <a name="execute-data-flows-in-parallel"></a>Gegevensstromen parallel uitvoeren
 
-Als u gegevensstromen parallel in een pijplijn uitvoert, draait ADF afzonderlijke Azure Databricks-clusters op voor elke activiteitsuitvoering op basis van de instellingen in uw Azure Integration Runtime die aan elke activiteit zijn gekoppeld. Als u parallelle uitvoeringen in ADF-pijplijnen wilt ontwerpen, voegt u uw gegevensstroomactiviteiten toe zonder voorrangsbeperkingen in de gebruikersinterface.
+Als u gegevensstromen parallel in een pijplijn uitvoert, draait ADF afzonderlijke Spark-clusters op voor elke activiteitsuitvoering op basis van de instellingen in uw Azure Integration Runtime die aan elke activiteit zijn gekoppeld. Als u parallelle uitvoeringen in ADF-pijplijnen wilt ontwerpen, voegt u uw gegevensstroomactiviteiten toe zonder voorrangsbeperkingen in de gebruikersinterface.
 
-Van deze drie opties zal deze optie waarschijnlijk in de kortste tijd worden uitgevoerd. Elke parallelle gegevensstroom wordt echter tegelijkertijd uitgevoerd op afzonderlijke clusters, zodat het ordenen van gebeurtenissen niet-deterministisch is.
+Van deze drie opties wordt deze optie waarschijnlijk in de kortste tijd uitgevoerd. Elke parallelle gegevensstroom wordt echter tegelijkertijd uitgevoerd op afzonderlijke clusters, zodat het ordenen van gebeurtenissen niet-deterministisch is.
 
-Als u uw gegevensstroomactiviteiten parallel binnen uw pijplijnen uitvoert, wordt aanbevolen om TTL niet te gebruiken. Dit komt omdat parallelle uitvoeringen van gegevensstromen tegelijkertijd met dezelfde Azure Integration Runtime resulteren in meerdere warme poolexemplaren voor uw gegevensfabriek.
+Als u uw gegevensstroomactiviteiten parallel binnen uw pijplijnen uitvoert, wordt aanbevolen om TTL niet te gebruiken. Deze actie komt omdat parallelle uitvoeringen van uw gegevensstroom tegelijkertijd met dezelfde Azure Integration Runtime resulteren in meerdere warme poolexemplaren voor uw gegevensfabriek.
 
 ##### <a name="overload-single-data-flow"></a>Eén gegevensstroom overbelasten
 
-Als u al uw logica in één gegevensstroom plaatst, wordt ADF uitgevoerd in dezelfde taakuitvoeringscontext op één Spark-clusterexemplaar.
+Als u al uw logica in één gegevensstroom plaatst, voert ADF dezelfde taakuitvoeringscontext uit op één Spark-clusterexemplaar.
 
-Deze optie kan mogelijk moeilijker te volgen en problemen op te lossen, omdat uw zakelijke regels en zakelijke logica zullen worden door elkaar gegooid. Deze optie biedt ook niet veel herbruikbaarheid.
+Deze optie kan uitdagender zijn om te volgen en problemen op te lossen, omdat uw bedrijfsregels en bedrijfslogica door elkaar kunnen worden gegooid. Deze optie biedt ook niet veel herbruikbaarheid.
 
 ##### <a name="execute-data-flows-serially"></a>Gegevensstromen serieel uitvoeren
 
 Als u uw gegevensstroomactiviteiten in seriein de pijplijn uitvoert en u een TTL hebt ingesteld op de Azure IR-configuratie, gebruikt ADF de compute resources (VM's) opnieuw, wat resulteert in snellere latere uitvoeringstijden. U ontvangt nog steeds een nieuwe Spark-context voor elke uitvoering.
 
-Van deze drie opties zal dit waarschijnlijk de langste tijd in beslag nemen om end-to-end uit te voeren. Maar het biedt wel een schone scheiding van logische bewerkingen in elke datastroomstap.
+Van deze drie opties duurt deze actie waarschijnlijk het langst om end-to-end uit te voeren. Maar het biedt wel een schone scheiding van logische bewerkingen in elke datastroomstap.
 
 ### <a name="configuration-panel"></a>Configuratiepaneel
 
 In het configuratiepaneel worden de instellingen weergegeven die specifiek zijn voor de geselecteerde transformatie. Als er geen transformatie is geselecteerd, wordt de gegevensstroom weergegeven. In de algemene configuratie van de gegevensstroom u de naam en beschrijving bewerken onder het tabblad **Algemeen** of parameters toevoegen via het tabblad **Parameters.** Zie [Parameters gegevensstroom toewijzen](parameters-data-flow.md)voor meer informatie .
 
-Elke transformatie heeft ten minste vier configuratietabbladen.
+Elke transformatie bevat ten minste vier configuratietabbladen.
 
 #### <a name="transformation-settings"></a>Transformatie-instellingen
 
@@ -99,7 +101,7 @@ Er zijn instanties waarin u de partitionering wilt aanpassen. Als u bijvoorbeeld
 
 Een ander geval waarin u de partitioneringsschema's wilt beheren, is het optimaliseren van de prestaties. Het aanpassen van de partitionering biedt controle over de verdeling van uw gegevens over compute nodes en data lokalisaties die zowel positieve als negatieve effecten kunnen hebben op uw algehele gegevensstroomprestaties. Zie de [prestatiegids Gegevensstroom](concepts-data-flow-performance.md)voor meer informatie .
 
-Als u de partitionering bij elke transformatie wilt wijzigen, selecteert u het tabblad **Optimaliseren** en selecteert u de knop **Partitioneren instellen.** U krijgt dan een reeks opties voor partitionering. De beste methode voor partitionering verschilt op basis van uw gegevensvolumes, kandidaatsleutels, null-waarden en kardinaliteit. 
+Als u de partitionering bij elke transformatie wilt wijzigen, selecteert u het tabblad **Optimaliseren** en selecteert u de knop **Partitioneren instellen.** U krijgt een reeks opties voor partitionering. De beste methode voor partitionering verschilt op basis van uw gegevensvolumes, kandidaatsleutels, null-waarden en kardinaliteit. 
 
 Een aanbevolen toepassing is om te beginnen met standaard partitionering en vervolgens verschillende partitieopties uit te proberen. U testen met behulp van foutopsporingsuitvoeringen van pijplijnen en het uitvoerings- en partitiegebruik bekijken in elke transformatiegroepering vanuit de bewakingsweergave. Zie [Gegevensstromen controleren](concepts-data-flow-monitoring.md)voor meer informatie .
 
@@ -107,7 +109,7 @@ De volgende partitieopties zijn beschikbaar.
 
 ##### <a name="round-robin"></a>Ronde roodborstje 
 
-Round robin is een eenvoudige partitie die automatisch gegevens gelijkmatig verdeelt over partities. Gebruik round robin als je geen goede key candidates hebt om een solide, slimme partitioneringstrategie te implementeren. U het aantal fysieke partities instellen.
+Round robin is een eenvoudige partitie die automatisch gegevens gelijkmatig verdeelt over partities. Gebruik round-robin als je geen goede key candidates hebt om een solide, slimme partitioneringstrategie te implementeren. U het aantal fysieke partities instellen.
 
 ##### <a name="hash"></a>Hash
 
@@ -115,7 +117,7 @@ Azure Data Factory produceert een hash van kolommen om uniforme partities te pro
 
 ##### <a name="dynamic-range"></a>Dynamisch bereik
 
-Dynamisch bereik gebruikt dynamische bereiken van Spark op basis van de kolommen of expressies die u opgeeft. U het aantal fysieke partities instellen. 
+Het dynamisch bereik maakt gebruik van Spark dynamische bereiken op basis van de kolommen of expressies die u opgeeft. U het aantal fysieke partities instellen. 
 
 ##### <a name="fixed-range"></a>Vast bereik
 
@@ -123,11 +125,11 @@ Maak een expressie die een vast bereik biedt voor waarden in de kolommen met par
 
 ##### <a name="key"></a>Sleutel
 
-Als u een goed begrip van de kardinaliteit van uw gegevens, sleutel verdeling zou een goede strategie. Sleutelpartitionering maakt partities voor elke unieke waarde in uw kolom. U het aantal partities niet instellen omdat het aantal is gebaseerd op unieke waarden in de gegevens.
+Als u een goed begrip van de kardinaliteit van uw gegevens, sleutel verdeling zou een goede strategie. Sleutelpartitionering maakt partities voor elke unieke waarde in uw kolom. U het aantal partities niet instellen omdat het getal is gebaseerd op unieke waarden in de gegevens.
 
 #### <a name="inspect"></a>Inspecteren
 
-Het tabblad **Inspecteren** biedt een weergave van de metagegevens van de gegevensstroom die u transformeert. U de kolomtellingen, kolommen gewijzigd, toegevoegde kolommen, gegevenstypen, kolomvolgorde en kolomverwijzingen bekijken. **Inspect** is een alleen-lezen weergave van uw metagegevens. U hoeft de foutopsporingsmodus niet te hebben ingeschakeld om metagegevens in het deelvenster **Inspecteren** te zien.
+Het tabblad **Inspecteren** biedt een weergave van de metagegevens van de gegevensstroom die u transformeert. U kolomtellingen, de kolommen die zijn gewijzigd, de toegevoegde kolommen, gegevenstypen, de kolomvolgorde en kolomverwijzingen zien. **Inspect** is een alleen-lezen weergave van uw metagegevens. U hoeft de foutopsporingsmodus niet te hebben ingeschakeld om metagegevens in het deelvenster **Inspecteren** te zien.
 
 ![Inspecteren](media/data-flow/inspect1.png "Inspecteren")
 

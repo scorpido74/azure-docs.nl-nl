@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: f63c78c59d7d6be3c66ea0785389eff73e3bff60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 764b41d1823e8edce134c5099e066486f4f08acc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73678371"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417926"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Validatieactiviteit in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 U een validatie in een pijplijn gebruiken om ervoor te zorgen dat de pijplijn alleen wordt uitgevoerd nadat de gekoppelde gegevenssetverwijzing is gevalideerd, dat deze voldoet aan de opgegeven criteria of dat een time-out is bereikt.
 
 
@@ -73,9 +75,9 @@ minimumGrootte | Minimale grootte van een bestand in bytes. Als er geen waarde i
 Bekijk andere controlestroomactiviteiten die worden ondersteund door Data Factory:
 
 - [If Condition Activity](control-flow-if-condition-activity.md)
-- [Execute Pipeline Activity](control-flow-execute-pipeline-activity.md)
+- [Activiteit uitvoeren van pijplijn](control-flow-execute-pipeline-activity.md)
 - [Voor elke activiteit](control-flow-for-each-activity.md)
-- [Get Metadata Activity](control-flow-get-metadata-activity.md)
-- [Lookup Activity](control-flow-lookup-activity.md)
-- [Webactiviteit](control-flow-web-activity.md)
-- [Until Activity](control-flow-until-activity.md)
+- [Activiteit ophalen van metagegevens](control-flow-get-metadata-activity.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Web Activity](control-flow-web-activity.md)
+- [Until-activiteit](control-flow-until-activity.md)

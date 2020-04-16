@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/22/2019
-ms.openlocfilehash: 025b5c5c1e3b8543111e112202906ef6f1fdb482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 7a299ce16f6e9c7292cebf198c9c3077f8e05fcb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74561807"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417612"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>C# gebruiken met MapReduce streaming op Apache Hadoop in HDInsight
 
 Meer informatie over het gebruik van C# om een MapReduce-oplossing te maken op HDInsight.
 
-Apache Hadoop streaming is een hulpprogramma waarmee u MapReduce taken uitvoeren met behulp van een script of uitvoerbaar. In dit voorbeeld wordt .NET gebruikt om de mapper en reducer voor een oplossing voor het tellen van woorden te implementeren.
+Met Apache Hadoop-streaming u MapReduce-taken uitvoeren met behulp van een script of uitvoerbaar. Hier wordt .NET gebruikt om de mapper en reducer te implementeren voor een oplossing voor het tellen van woorden.
 
 ## <a name="net-on-hdinsight"></a>.NET op HDInsight
 
@@ -49,12 +49,9 @@ Zie [Hadoop Streaming](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/Ha
 
 * Als u PowerShell gebruikt, hebt u de [Az-module](https://docs.microsoft.com/powershell/azure/overview)nodig.
 
-* Een SSH-client (optioneel). Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
-
 * Een Apache Hadoop cluster op HDInsight. Zie [Aan de slag met HDInsight op Linux](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit geldt `wasb://` voor Azure `abfs://` Storage, Azure Data `adl://` Lake Storage Gen2 of voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage of Data `wasbs://` Lake `abfss://`Storage Gen2, is de URI respectievelijk secure transfer of , respectievelijk Zie ook, [secure transfer](../../storage/common/storage-require-secure-transfer.md).
-
+* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit schema `wasb://` is bedoeld `abfs://` voor Azure Storage, Azure `adl://` Data Lake Storage Gen2 of voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage of Data `wasbs://` Lake `abfss://`Storage Gen2, is de URI respectievelijk secure transfer of , respectievelijk Zie ook, [secure transfer](../../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="create-the-mapper"></a>De mapper maken
 
@@ -221,14 +218,16 @@ In de volgende procedure wordt beschreven hoe u een map uitvoertReduce-taak met 
 
    In de volgende lijst wordt beschreven wat elke parameter en optie vertegenwoordigt:
 
-   * *hadoop-streaming.jar*: Hiermee geeft u het potbestand op dat de streaming MapReduce-functionaliteit bevat.
-   * `-files`: Hiermee geeft u de *mapper.exe-* en *reducer.exe-bestanden* voor deze taak op. De `wasbs:///` `adl:///`, `abfs:///` of protocoldeclaratie voor elk bestand is het pad naar de hoofdmap van standaardopslag voor het cluster.
-   * `-mapper`: Hiermee geeft u het bestand op dat de mapper implementeert.
-   * `-reducer`: Hiermee geeft u het bestand op dat de reducer implementeert.
-   * `-input`: Hiermee geeft u de invoergegevens op.
-   * `-output`: Hiermee geeft u de uitvoermap op.
+   |Parameter | Beschrijving |
+   |---|---|
+   |hadoop-streaming.jar|Hiermee geeft u het potbestand op dat de functionaliteit voor streaming MapReduce bevat.|
+   |-bestanden|Hiermee geeft u de *mapper.exe-* en *reducer.exe-bestanden* voor deze taak op. De `wasbs:///` `adl:///`, `abfs:///` of protocoldeclaratie voor elk bestand is het pad naar de hoofdmap van standaardopslag voor het cluster.|
+   |-mapper|Hiermee geeft u het bestand op dat de mapper implementeert.|
+   |-reducer|Hiermee geeft u het bestand op dat de reducer implementeert.|
+   |-invoer|Hiermee geeft u de invoergegevens op.|
+   |-output|Hiermee geeft u de uitvoermap op.|
 
-3. Zodra de taak MapReduce is voltooid, gebruikt u de volgende opdracht om de resultaten weer te geven:
+1. Zodra de taak MapReduce is voltooid, gebruikt u de volgende opdracht om de resultaten weer te geven:
 
    ```bash
    hdfs dfs -text /example/wordcountout/part-00000

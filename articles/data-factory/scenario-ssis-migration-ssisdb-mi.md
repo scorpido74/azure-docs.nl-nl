@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 38010e3aaa2d0544dfbfe19135d25250d2b021a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e35e4eb750aa2244df920111b201d886599eaf6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929785"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419048"
 ---
 # <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>SSIS-migratie met Azure SQL Database-beheerde instantie als doel van de databasewerkbelasting
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Wanneer u databaseworkloads migreert van SQL Server on premises naar de door Azure SQL Database beheerde instantie, moet u bekend zijn met [Azure Data Migration Service](https://docs.microsoft.com/azure/dms/dms-overview)(DMS) en de [netwerktopologieën voor Azure SQL Database beheerde instantiemigraties met DMS](https://docs.microsoft.com/azure/dms/resource-network-topologies).
 
@@ -34,7 +36,7 @@ Azure SQL Database managed instance has a native, first-class scheduler just lik
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Azure-gegevensfabriek](https://docs.microsoft.com/azure/data-factory/introduction)
+- [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
 - [Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
 - [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview)
 - [Netwerktopologieën voor Azure SQL Database beheerde instantiemigraties met DMS](https://docs.microsoft.com/azure/dms/resource-network-topologies)

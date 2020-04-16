@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 90573f77c77d614923f882053145d2f84598953d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96674f059e9cbc21c5c8c64eff8c94c810c4aa32
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440239"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417773"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Gegevens laden in Azure Data Lake Storage Gen2 met Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Lake Storage Gen2 is een reeks mogelijkheden die zijn toegelegd op big data-analyses, ingebouwd in [Azure Blob-opslag.](../storage/blobs/storage-blobs-introduction.md) Hiermee u communiceren met uw gegevens met behulp van zowel bestandssysteem en object opslag paradigma's.
 
@@ -82,7 +84,7 @@ In dit artikel ziet u hoe u het hulpprogramma Gegevensfabriekskopiegegevens gebr
    1. Geef de waarde **van de toegangssleutel-id** op.
    2. Geef de waarde **van de geheime toegangssleutel** op.
    3. Klik op **Verbinding testen** om de instellingen te valideren en selecteer vervolgens **Voltooien**.
-   4. U ziet dat er een nieuwe verbinding wordt gemaakt. Selecteer **Volgende**.
+   4. U ziet dat er een nieuwe verbinding wordt gemaakt. Selecteer **Next**.
    
       ![Amazon S3-account opgeven](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
       

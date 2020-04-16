@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 0798a3f9ab45ce68086681e7aea96deeb9639f94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2923e087426ee04c74da629f4e2d2d49a06eb1ef
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834541"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416535"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Rijtransformatie wijzigen in de toewijzingsgegevensstroom
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Gebruik de transformatie Rij wijzigen om het beleid voor invoegen, verwijderen, bijwerken en upsert in te stellen op rijen. U één op vele voorwaarden toevoegen als expressie. Deze voorwaarden moeten worden opgegeven in volgorde van prioriteit, omdat elke rij wordt gemarkeerd met het beleid dat overeenkomt met de eerste overeenkomende expressie. Elk van deze voorwaarden kan ertoe leiden dat een rij (of rijen) wordt ingevoegd, bijgewerkt, verwijderd of upserted. Alter Row kan beide DDL-& DML-acties tegen uw database produceren.
 

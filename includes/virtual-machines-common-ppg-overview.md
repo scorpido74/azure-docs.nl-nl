@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: 3215f5952daef053c94432bc8fdef15e1775047a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73171095"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81422022"
 ---
 Als u VM's in één regio plaatst, vermindert u de fysieke afstand tussen de instanties. Door ze binnen één beschikbaarheidszone te plaatsen, komen ze ook fysiek dichter bij elkaar. Naarmate de Azure-voetafdruk echter toeneemt, kan één beschikbaarheidszone meerdere fysieke datacenters omvatten, wat kan leiden tot een netwerklatentie die van invloed is op uw toepassing. 
 
@@ -39,6 +39,13 @@ U een bestaande resource ook verplaatsen naar een groep voor plaatsing in de nab
 In het geval van beschikbaarheidssets en virtuele machineschaalsets moet u de groep voor nabijheidsplaatsing instellen op resourceniveau in plaats van op de afzonderlijke virtuele machines. 
 
 Een plaatsingsgroep voor nabijheid is een colocatiebeperking in plaats van een vastkoppelingsmechanisme. Het is vastgemaakt aan een specifiek datacenter met de implementatie van de eerste bron om het te gebruiken. Zodra alle resources met behulp van de groep nabijheidsplaatsing zijn gestopt (deallocated) of verwijderd, wordt deze niet meer vastgemaakt. Daarom is het belangrijk om bij het gebruik van een plaatsingsgroep voor de nabijheid met meerdere VM-series, waar mogelijk alle vereiste typen vooraf in een sjabloon op te geven of een implementatiereeks te volgen die uw kansen op een succesvolle implementatie zal verbeteren. Als uw implementatie mislukt, start u de implementatie opnieuw met de VM-grootte die is mislukt als de eerste grootte die moet worden geïmplementeerd.
+
+## <a name="what-to-expect-when-using-proximity-placement-groups"></a>Wat u verwachten bij het gebruik van plaatsingsgroepen voor nabijheid 
+Nabijheidsplaatsingsgroepen bieden colocatie in hetzelfde datacenter. Omdat plaatsingsgroepen voor nabijheidechter een extra implementatiebeperking vertegenwoordigen, kunnen toewijzingsfouten optreden. Er zijn weinig gebruiksvoorbeelden waarin u toewijzingsfouten zien bij het gebruik van nabijheidsplaatsingsgroepen:
+
+- Wanneer u om de eerste virtuele machine in de plaatsingsgroep voor nabijheid vraagt, wordt het datacenter automatisch geselecteerd. In sommige gevallen kan een tweede aanvraag voor een andere virtuele machine SKU mislukken als deze niet in dat datacenter bestaat. In dit geval wordt een fout **overconstrainedAllocationRequest** geretourneerd. Om dit te voorkomen, probeert u de volgorde te wijzigen waarin u uw SKU's implementeert of beide resources te laten implementeren met één ARM-sjabloon.
+-   In het geval van elastische workloads kan het hebben van een beperking van de plaatsing van de nabijheid suur op uw implementatie leiden tot een gebrek aan naleving van de aanvraag met als resultaat **fout toewijzingmislukt.** 
+- Stoppen (deallocate) en het starten van uw VM's als dat nodig is een andere manier om elasticiteit te bereiken. Aangezien de capaciteit niet wordt bewaard zodra u een VM stopt (deallocateren), kan het opnieuw starten van een vm resulteren in een fout **als toewijzingmislukt.**
 
 
 ## <a name="best-practices"></a>Aanbevolen procedures 

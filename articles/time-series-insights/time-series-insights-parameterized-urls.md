@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 02/04/2020
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9dfe499a7d6084a23fd71ab98db472befe71fc04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024361"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416999"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Een aangepaste weergave delen via een geparameteriseerde URL
 
@@ -29,7 +29,7 @@ De Time Series Insights Explorer ondersteunt URL-queryparameters om weergaven in
 
 ## <a name="environment-id"></a>Omgevings-id
 
-De parameter `environmentId=<guid>` geeft de id van de doelomgeving op. Het is een onderdeel van de FQDN voor gegevenstoegang en u het vinden in de rechterbovenhoek van het omgevingsoverzicht in de Azure-portal. Dit is alles wat voorafgaat aan `env.timeseries.azure.com`.
+De parameter `environmentId=<guid>` geeft de id van de doelomgeving op. Het is een onderdeel van de FQDN voor gegevenstoegang en u het vinden in de rechterbovenhoek van het omgevingsoverzicht in de Azure-portal. Het is alles wat `env.timeseries.azure.com`voorafgaat.
 
 Een voorbeeld van de parameter voor omgevings-id is `?environmentId=10000000-0000-0000-0000-100000000108`.
 

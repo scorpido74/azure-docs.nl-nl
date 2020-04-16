@@ -1,19 +1,18 @@
 ---
 title: Azure-beveiligingsbeheer - beveiligde configuratie
-description: Beveiligde configuratie met beveiligingsbeheer
+description: Beveiligde configuratie van Azure Security Control
 author: msmbaldwin
-manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 04/14/2020
 ms.author: mbaldwin
-ms.custom: security-recommendations
-ms.openlocfilehash: 03564effeee36ddb3316d48329ccab8ccfce75b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: security-benchmark
+ms.openlocfilehash: 981e13e772ee21e0e4a680e6d07b4ad4892a7cee
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934296"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417057"
 ---
 # <a name="security-control-secure-configuration"></a>Beveiligingscontrole: beveiligde configuratie
 
@@ -25,11 +24,19 @@ Stel de beveiligingsconfiguratie van Azure-resources vast, implementeer en behee
 |--|--|--|
 | 7.1 | 5.1 | Klant |
 
-Gebruik Azure Policy of Azure Security Center om beveiligingsconfiguraties voor alle Azure-bronnen te onderhouden.
+Gebruik Azure Policy-aliassen om aangepaste beleidsregels te maken om de configuratie van uw Azure-bronnen te controleren of af te dwingen. U ook ingebouwde Azure-beleidsdefinities gebruiken.
 
-Azure-beleid configureren en beheren:
+Azure Resource Manager heeft ook de mogelijkheid om de sjabloon te exporteren in JavaScript Object Notatie (JSON), die moet worden gecontroleerd om ervoor te zorgen dat de configuraties voldoen aan / hoger zijn dan de beveiligingsvereisten voor uw organisatie.
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+U ook aanbevelingen van Azure Security Center gebruiken als een veilige configuratiebasislijn voor uw Azure-bronnen.
+
+- [Beschikbare Azure-beleidsaliassen weergeven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+
+- [Zelfstudie: Beleid maken en beheren om naleving af te dwingen](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+
+- [Export met één en meerdere resources naar een sjabloon in Azure-portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+
+- [Beveiligingsaanbevelingen - een naslaggids](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
 ## <a name="72-establish-secure-operating-system-configurations"></a>7.2: Veilige configuratie van het besturingssysteem instellen
 
@@ -37,15 +44,17 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 |--|--|--|
 | 7.2 | 5.1 | Klant |
 
-Gebruik azure security &quot;center-aanbeveling Verwerk kwetsbaarheden in beveiligingsconfiguraties op uw virtuele machines&quot; om beveiligingsconfiguraties op alle rekenbronnen te behouden.
+Gebruik aanbevelingen voor Azure Security Center om beveiligingsconfiguraties op alle compute resources te behouden.  Bovendien u aangepaste besturingssysteemafbeeldingen of Azure Automation State-configuratie gebruiken om de beveiligingsconfiguratie vast te stellen van het besturingssysteem dat door uw organisatie wordt vereist.
 
-Aanbevelingen voor Azure Security Center controleren:
+- [Azure Security Center-aanbevelingen controleren](https://docs.microsoft.com/azure/security-center/security-center-recommendations)
 
-https://docs.microsoft.com/azure/security-center/security-center-recommendations
+- [Beveiligingsaanbevelingen - een naslaggids](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
-Aanbevelingen voor Azure Security Center herstellen:
+- [Overzicht van configuratie van Azure Automation State](https://docs.microsoft.com/azure/automation/automation-dsc-overview)
 
-https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
+- [Upload een VHD en gebruik deze om nieuwe Windows VM's in Azure te maken](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)
+
+- [Een Linux-vm maken op basis van een aangepaste schijf met de Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd)
 
 ## <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Veilige Azure-bronconfiguraties behouden
 
@@ -53,15 +62,13 @@ https://docs.microsoft.com/azure/security-center/security-center-remediate-recom
 |--|--|--|
 | 7.3 | 5.2 | Klant |
 
-Gebruik Azure-beleid [weigeren] en [implementeren als deze niet bestaan] om beveiligde instellingen voor uw Azure-bronnen af te dwingen.
+Gebruik Azure-beleid [weigeren] en [implementeren als deze niet bestaan] om beveiligde instellingen voor uw Azure-bronnen af te dwingen.  Bovendien u Azure Resource Manager-sjablonen gebruiken om de beveiligingsconfiguratie te behouden van uw Azure-resources die vereist zijn voor uw organisatie. 
 
-Azure-beleid configureren en beheren:
+- [Azure-beleidseffecten begrijpen](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Beleidsregels voor het afdwingen van naleving maken en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-Inzicht in Azure-beleidseffecten:
-
-https://docs.microsoft.com/azure/governance/policy/concepts/effects
+- [Overzicht van Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
 
 ## <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Veilige configuratie van het besturingssysteem behouden
 
@@ -69,17 +76,21 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 |--|--|--|
 | 7.4 | 5.2 | Gedeeld |
 
-Afbeeldingen van het basisbesturingssysteem worden beheerd en onderhouden door Microsoft.
+Volg aanbevelingen van Azure Security Center voor het uitvoeren van kwetsbaarheidsbeoordelingen op uw Azure-rekenbronnen.  Bovendien u Azure Resource Manager-sjablonen, aangepaste besturingssysteemafbeeldingen of Azure Automation State-configuratie gebruiken om de beveiligingsconfiguratie te behouden van het besturingssysteem dat door uw organisatie wordt vereist.   De virtuele machinesjablonen van Microsoft in combinatie met de gewenste azure-configuratie van automatisering kunnen helpen bij het voldoen aan en onderhouden van de beveiligingsvereisten. 
 
-U echter beveiligingsinstellingen toepassen die door uw organisatie vereist zijn met Azure Resource Manager-sjablonen en/of gewenste statusconfiguratie.
+Houd er ook rekening mee dat Azure Marketplace Virtual Machine Images gepubliceerd door Microsoft worden beheerd en onderhouden door Microsoft. 
 
-Een Azure Virtual Machine maken op basis van een Azure Resource Manager-sjabloon:
+- [Aanbevelingen voor azure security center-kwetsbaarheidsbeoordeling implementeren](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
 
-https://docs.microsoft.com/azure/virtual-machines/windows/ps-template
+- [Een Azure Virtual Machine maken op basis van een Azure Resource Manager-sjabloon](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
 
-Inzicht in de gewenste statusconfiguratie voor virtuele azure-machines:
+- [Overzicht van configuratie van Azure Automation State](https://docs.microsoft.com/azure/automation/automation-dsc-overview)
 
-https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-overview
+- [Een virtuele Windows-machine maken in de Azure-portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
+
+- [Informatie over het downloaden van de VM-sjabloon](https://docs.microsoft.com/azure/virtual-machines/windows/download-template)
+
+- [Voorbeeld van een script voor het uploaden van een VHD naar Azure om een nieuwe VM te maken](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 ## <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Configuratie van Azure-bronnen veilig opslaan
 
@@ -87,15 +98,11 @@ https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-overview
 |--|--|--|
 | 7,5 | 5.3 | Klant |
 
-Als u aangepaste Azure-beleidsdefinities gebruikt, gebruikt u Azure DevOps of Azure Repos om uw code veilig op te slaan en te beheren.
+Gebruik Azure DevOps om uw code veilig op te slaan en te beheren, zoals aangepaste Azure-beleidsregels, Azure Resource Manager-sjablonen en gewenste statusconfiguratiescripts. Als u toegang wilt krijgen tot de resources die u beheert in Azure DevOps, u machtigingen verlenen of weigeren aan specifieke gebruikers, ingebouwde beveiligingsgroepen of groepen die zijn gedefinieerd in Azure Active Directory (Azure AD) als deze zijn geïntegreerd met Azure DevOps of Active Directory als deze zijn geïntegreerd met TFS.
 
-Code opslaan in Azure DevOps:
+- [Code opslaan in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
-
-Azure Repos-documentatie:
-
-https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+- [Informatie over machtigingen en groepen in Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
 
 ## <a name="76-securely-store-custom-operating-system-images"></a>7.6: Afbeeldingen van aangepaste besturingssysteemen veilig opslaan
 
@@ -103,69 +110,59 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 |--|--|--|
 | 7.6 | 5.3 | Klant |
 
-Als u aangepaste afbeeldingen gebruikt, gebruikt u RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de afbeeldingen. Sla ze voor containerafbeeldingen op in Azure Container Registry en maak gebruik van RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de afbeeldingen.
+Als u aangepaste afbeeldingen gebruikt, gebruikt u op rollen gebaseerd toegangscontrolebeheer (RBAC) om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de afbeeldingen. Met behulp van een gedeelde afbeeldingsgalerie u uw afbeeldingen delen met verschillende gebruikers, serviceprincipals of AD-groepen binnen uw organisatie.  Sla ze voor containerafbeeldingen op in Azure Container Registry en maak gebruik van RBAC om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de afbeeldingen.  
 
-RBAC in Azure begrijpen:
+- [RBAC begrijpen in Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+- [Begrijpen RBAC voor Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-Begrijpen RBAC voor Container Registry:
+- [RBAC configureren in Azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
-https://docs.microsoft.com/azure/container-registry/container-registry-roles
+- [Overzicht van gedeelde afbeeldingengalerij](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)
 
-RBAC configureren in Azure:
-
-https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
-
-## <a name="77-deploy-system-configuration-management-tools"></a>7.7: Hulpprogramma's voor systeemconfiguratiebeheer implementeren
+## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7: Hulpprogramma's voor configuratiebeheer implementeren voor Azure-resources
 
 | Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
 | 7.7 | 5.4 | Klant |
 
-Gebruik Azure Policy om systeemconfiguraties te waarschuwen, te controleren en af te dwingen. Bovendien ontwikkelt u een proces en pijplijn voor het beheren van beleidsuitzonderingen.
+Standaardbeveiligingsconfiguraties voor Azure-resources definiëren en implementeren met Azure Policy. Gebruik Azure Policy-aliassen om aangepaste beleidsregels te maken om de netwerkconfiguratie van uw Azure-bronnen te controleren of af te dwingen. U ook gebruik maken van ingebouwde beleidsdefinities met betrekking tot uw specifieke resources.  Bovendien u Azure Automation gebruiken om configuratiewijzigingen te implementeren.
 
-Azure-beleid configureren en beheren:
+- [Azure-beleid configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Aliassen gebruiken](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
-## <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Systeemconfiguratiebeheertools implementeren voor besturingssystemen
+## <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8: Configuratiebeheertools implementeren voor besturingssystemen
 
 | Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
 | 7.8 | 5.4 | Klant |
 
-Gebruik Azure compute extensions zoals PowerShell Desired State Configuration for Windows compute or Linux Chef Extension for Linux.
+Azure Automation State Configuration is a configuration management service for Desired State Configuration (DSC) nodes in any cloud or on-premises datacenter. U eenvoudig machines aan boord nemen, ze declaratieve configuraties toewijzen en rapporten weergeven die de naleving van de gewenste status van elke machine weergeven. 
 
-Virtuele machine-extensies installeren in Azure:
+- [Onboarding-machines voor beheer door Azure Automation State Configuration](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
 
-https://docs.microsoft.com/azure/virtual-machines/extensions/overview#how-can-i-install-an-extension
-
-## <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Geautomatiseerde configuratiebewaking implementeren voor Azure-services
+## <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9: Geautomatiseerde configuratiebewaking implementeren voor Azure-resources
 
 | Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
 | 7.9 | 5.5 | Klant |
 
-Azure Security Center gebruiken om basislijnscans uit te voeren voor uw Azure Resources
+Gebruik Azure Security Center om basislijnscans uit te voeren voor uw Azure Resources.  Gebruik bovendien Azure Policy om Azure-bronconfiguraties te waarschuwen en te controleren.
 
-Aanbevelingen herstellen in Azure Security Center:
-
-https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
+- [Aanbevelingen herstellen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
 
 ## <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Geautomatiseerde configuratiebewaking voor besturingssystemen implementeren
 
 | Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
-| 7.1 | 5.5 | Klant |
+| 7.10 | 5.5 | Klant |
 
 Gebruik Azure Security Center om basislijnscans uit te voeren voor OS- en Docker-instellingen voor containers.
 
-Informatie over containeraanbevelingen van Azure Security Center:
+- [Aanbevelingen van Azure Security Center voor containers](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
 
-https://docs.microsoft.com/azure/security-center/security-center-container-recommendations
-
-## <a name="711-manage-azure-secrets-securely"></a>7.11: Azure-geheimen veilig beheren 
+## <a name="711-manage-azure-secrets-securely"></a>7.11: Azure-geheimen veilig beheren
 
 | Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
@@ -173,17 +170,11 @@ https://docs.microsoft.com/azure/security-center/security-center-container-recom
 
 Gebruik Managed Service Identity in combinatie met Azure Key Vault om geheim beheer voor uw cloudtoepassingen te vereenvoudigen en te beveiligen.
 
-Hoe te integreren met Azure Managed Identities:
+- [Integreren met Azure Managed Identities](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
 
-https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+- [Een key vault maken](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-Een key vault maken:
-
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
-
-Key Vault-verificatie voorzien van een beheerde identiteit:
-
-https://docs.microsoft.com/azure/key-vault/managed-identity
+- [Key Vault-verificatie voorzien van een beheerde identiteit](https://docs.microsoft.com/azure/key-vault/managed-identity)
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7.12: Identiteiten veilig en automatisch beheren
 
@@ -193,22 +184,19 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 Gebruik Beheerde identiteiten om Azure-services een automatisch beheerde identiteit te bieden in Azure AD. Met Managed Identities u zich verifiëren voor elke service die Azure AD-verificatie ondersteunt, inclusief Key Vault, zonder referenties in uw code.
 
-Beheerde identiteiten configureren:
-
-https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+- [Beheerde identiteiten configureren](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
 
 ## <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Onbedoelde blootstelling aan referenties elimineren
 
 | Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
-| 7.13 | 13.3 | Klant |
+| 7.13 | 18.1, 18.7 | Klant |
 
 Implementeer Credential Scanner om referenties binnen code te identificeren. Credential Scanner stimuleert ook het verplaatsen van ontdekte referenties naar veiligere locaties zoals Azure Key Vault. 
 
-Credential Scanner instellen:
+- [Referentiescanner instellen](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-https://secdevtools.azurewebsites.net/helpcredscan.html
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de volgende beveiligingscontrole: [Malware Defense](security-control-malware-defense.md)
+- Bekijk de volgende beveiligingscontrole: [Malware Defense](security-control-malware-defense.md)

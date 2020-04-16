@@ -11,21 +11,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: d97b3caccc92f0fdfeb229d94e30ee6499c26181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea68fa8d9326e6d9ebb4f475d16ac83959cae6e5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912402"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416877"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Gegevens uit Office 365 kopiëren naar Azure met Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory integreert met [Microsoft Graph data connect,](https://docs.microsoft.com/graph/data-connect-concept-overview)zodat u de rijke organisatiegegevens in uw Office 365-tenant op een schaalbare manier in Azure brengen en analytics-toepassingen bouwen en inzichten extraheren op basis van deze waardevolle gegevenselementen. Integratie met Privileged Access Management biedt beveiligde toegangscontrole voor de waardevolle samengestelde gegevens in Office 365.  Raadpleeg [deze link](https://docs.microsoft.com/graph/data-connect-concept-overview) voor een overzicht over Microsoft Graph data connect en raadpleeg [deze link](https://docs.microsoft.com/graph/data-connect-policies#licensing) voor licentiegegevens.
 
 In dit artikel wordt beschreven hoe u activiteit kopiëren in Azure Data Factory gebruikt om gegevens uit Office 365 te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
-ADF Office 365-connector en Microsoft Graph-gegevensverbinding maken het mogelijk om op schaal verschillende typen gegevenssets uit exchange-e-mailboxen te gebruiken, waaronder adresboekcontactpersonen, agenda-afspraken, e-mailberichten, gebruikersgegevens, postvakinstellingen en ga zo maar door.  Raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-datasets) de volledige lijst met beschikbare gegevenssets.
+ADF Office 365-connector en Microsoft Graph-gegevensverbinding maken het mogelijk om op schaal verschillende typen gegevenssets uit Exchange E-mail-mailboxen in te nemen, waaronder adresboekcontactpersonen, agenda-afspraken, e-mailberichten, gebruikersgegevens, postvakinstellingen, enzovoort.  Raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-datasets) de volledige lijst met beschikbare gegevenssets.
 
 Vooralsnog u binnen één kopieeractiviteit alleen **gegevens uit Office 365 kopiëren naar [Azure Blob Storage,](connector-azure-blob-storage.md) [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)en [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) in JSON-indeling** (typesetOfObjects). Als u Office 365 wilt laden in andere typen gegevensarchieven of in andere indelingen, u de eerste kopieeractiviteit met een volgende kopieeractiviteit ketenen om gegevens verder te laden in een van de [ondersteunde ADF-doelopslag](copy-activity-overview.md#supported-data-stores-and-formats) (verwijzen naar de kolom 'ondersteund als een sink' in de tabel 'Ondersteunde gegevensopslag en -indelingen').
 
@@ -63,9 +64,9 @@ Als ADF is gemaakt als onderdeel van een beheerde app en Azure-beleidstoewijzing
 
 U een pijplijn maken met de kopieeractiviteit met behulp van een van de volgende hulpprogramma's of SDK's. Selecteer een koppeling om naar een zelfstudie te gaan met stapsgewijze instructies om een pijplijn met een kopieeractiviteit te maken. 
 
-- [Azure-portal](quickstart-create-data-factory-portal.md)
+- [Azure Portal](quickstart-create-data-factory-portal.md)
 - [.NET SDK](quickstart-create-data-factory-dot-net.md)
-- [Python SDK](quickstart-create-data-factory-python.md)
+- [Python-SDK](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
 - [REST-API](quickstart-create-data-factory-rest-api.md)
 - [Azure Resource Manager-sjabloon](quickstart-create-data-factory-resource-manager-template.md). 

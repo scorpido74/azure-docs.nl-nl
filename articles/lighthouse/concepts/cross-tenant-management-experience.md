@@ -3,12 +3,12 @@ title: Beheerervaring in meerdere tenants
 description: Azure gedelegeerd resourcebeheer maakt een cross-tenant beheerervaring mogelijk.
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0ac5d62fbf6b6ee418cd4b2f2b00dfc12e05f809
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 66e2b2f7fbbae5940b576ead22a416625af3c058
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754144"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418508"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -25,11 +25,7 @@ Om Azure-resources voor een klant te beheren, moeten serviceproviders zich doorg
 
 Met Azure gedelegeerd resourcebeheer geeft het onboardingproces gebruikers binnen de tenant van de serviceprovider op die abonnementen, brongroepen en resources in de tenant van de klant kunnen openen en beheren. Deze gebruikers kunnen zich vervolgens aanmelden bij de Azure-portal met hun eigen referenties. Binnen de Azure-portal kunnen ze resources beheren die behoren tot alle klanten waartoe ze toegang hebben. Dit kan door de pagina [Mijn klanten](../how-to/view-manage-customers.md) in de Azure-portal te bezoeken of door rechtstreeks te werken binnen de context van het abonnement van die klant, in de Azure-portal of via API's.
 
-Azure gedelegeerd resourcebeheer biedt meer flexibiliteit om resources voor meerdere klanten te beheren zonder zich aan te melden bij verschillende accounts in verschillende tenants. Een serviceprovider kan bijvoorbeeld drie klanten hebben, met verschillende verantwoordelijkheden en toegangsniveaus, zoals hier wordt weergegeven:
-
-![Drie klantenhuurders die de verantwoordelijkheden van de dienstverlener tonen](../media/azure-delegated-resource-management-customer-tenants.jpg)
-
-Met Azure delegated resource management kunnen geautoriseerde gebruikers zich aanmelden bij de tenant van de serviceprovider om toegang te krijgen tot deze bronnen, zoals hier wordt weergegeven:
+Azure gedelegeerd resourcebeheer biedt meer flexibiliteit om resources voor meerdere klanten te beheren zonder zich aan te melden bij verschillende accounts in verschillende tenants. Een serviceprovider kan bijvoorbeeld twee klanten hebben met verschillende verantwoordelijkheden en toegangsniveaus. Met Azure delegated resource management kunnen geautoriseerde gebruikers zich aanmelden bij de tenant van de serviceprovider om toegang te krijgen tot deze bronnen.
 
 ![Klantbronnen die worden beheerd via één serviceprovidertenant](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cb2302637efb16fc31bd420bf8c4ead19d7f598d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a2d79391832bbb5424c6d4096eb5c1a597623367
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81384958"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81421807"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker hub hebben en met SD-WAN/VPN-apparaten gesproken om Azure Virtual WAN te gebruiken?
 
@@ -208,6 +208,13 @@ Ja. Een internetverbinding en een fysiek apparaat dat IPsec ondersteunt, bij voo
 ### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Hoe schakel ik standaardroute (0.0.0.0/0) in een verbinding in (VPN, ExpressRoute of Virtueel netwerk):
 
 Een virtuele hub kan een geleerde standaardroute naar een vpn/ExpressRoute-verbinding van virtueel netwerk/site-naar-site verspreiden als de vlag 'Ingeschakeld' is op de verbinding. Deze vlag is zichtbaar wanneer de gebruiker een virtuele netwerkverbinding, een VPN-verbinding of een ExpressRoute-verbinding bewerkt. Standaard wordt deze vlag uitgeschakeld wanneer een site of een ExpressRoute-circuit is verbonden met een hub. Het is standaard ingeschakeld wanneer een virtuele netwerkverbinding wordt toegevoegd om een VNet aan te sluiten op een virtuele hub. De standaardroute is niet afkomstig van de Virtuele WAN-hub. de standaardroute wordt gepropageerd als deze al is geleerd door de Virtuele WAN-hub als gevolg van het implementeren van een firewall in de hub of als een andere verbonden site gedwongen tunneling heeft ingeschakeld.
+
+### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Hoe selecteert de virtuele hub in een virtueel WAN het beste pad voor een route van meerdere hubs
+
+Als een virtuele hub dezelfde route leert van meerdere externe hubs, is de volgorde waarin deze beslist als volgt
+1) Route origin a) Netwerkroutes – VNET-voorvoegsels die rechtstreeks zijn geleerd door de Virtual Hub-gateways b) BGP c) Hub RouteTable (statisch geconfigureerde routes) d) InterHub-routes
+2)  Routestatistiek: Virtual WAN verkiest ExpressRoute boven VPN. ExpressRoute peer hebben een hoger gewicht in vergelijking met de VPN-peer
+3)  AS-padlengte
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Wat zijn de verschillen tussen de Virtuele WAN-typen (Basic en Standard)?
 

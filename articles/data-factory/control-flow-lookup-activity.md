@@ -11,14 +11,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 08cc7ce8f306095a66bc0f8cf74dff8c8b551ecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02abdaf46ca2af6c96d3b5e8d4ce5876831bd415
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440485"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417995"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Opzoekactiviteit in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Zoekactiviteit kan een gegevensset ophalen uit een van de door Azure Data Factory ondersteunde gegevensbronnen. Gebruik het in het volgende scenario:
 - Bepaal dynamisch welke objecten moeten worden gebruikt in een volgende activiteit, in plaats van de objectnaam hard te coderen. Sommige objectvoorbeelden zijn bestanden en tabellen.
@@ -53,7 +54,7 @@ De volgende gegevensbronnen worden ondersteund voor opzoekactiviteit. Het groots
 
 ## <a name="type-properties"></a>Eigenschappen typen
 
-Name | Beschrijving | Type | Vereist?
+Naam | Beschrijving | Type | Vereist?
 ---- | ----------- | ---- | --------
 Dataset | Bevat de gegevenssetverwijzing voor de opzoeking. Informatie in de sectie **Gegevensseteigenschappen** in elk corresponderend verbindingsartikel. | Sleutel-/waardepaar | Ja
 source | Bevat gegevenssetspecifieke broneigenschappen, hetzelfde als de bron Activiteit kopiëren. Informatie in de sectie **Activiteitseigenschappen kopiëren** in elk corresponderend verbindingsartikel. | Sleutel-/waardepaar | Ja
@@ -306,4 +307,4 @@ Bekijk andere controlestroomactiviteiten die worden ondersteund door Data Factor
 - [Pijplijnactiviteit uitvoeren](control-flow-execute-pipeline-activity.md)
 - [Activiteit ForEach](control-flow-for-each-activity.md)
 - [Activiteit Metagegevens](control-flow-get-metadata-activity.md)
-- [Activiteit Web](control-flow-web-activity.md)
+- [Webactiviteit](control-flow-web-activity.md)

@@ -10,16 +10,17 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: a0c07aaf27825254f776a03b9b9ca2cbeddca02d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 344ad8e106c119c1de59570d1ec4e3df5e1cc8af
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250263"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417111"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Metagegevensactiviteit opslaan in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 U de activiteit Metagegevens ophalen gebruiken om de metagegevens van alle gegevens in Azure Data Factory op te halen. U deze activiteit gebruiken in de volgende scenario's:
 
@@ -54,6 +55,7 @@ De activiteit Metagegevens opvragen neemt een gegevensset als invoer en retourne
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
+- Wanneer u activiteit Metagegevens opvoert tegen een map, controleert u of u de machtiging LIST/EXECUTE hebt voor de opgegeven map.
 - Voor Amazon S3 en `lastModified` Google Cloud Storage geldt dit voor de bucket `exists` en de sleutel, maar niet voor de virtuele map, en is van toepassing op de bucket en de sleutel, maar niet op het voorvoegsel of virtuele map.
 - Voor Azure Blob-opslag geldt dit voor de container en de blob, `lastModified` maar niet op de virtuele map.
 - `lastModified`filter is momenteel van toepassing op onderliggende items filteren, maar niet op de opgegeven map/bestand zelf.
@@ -199,4 +201,4 @@ Meer informatie over andere controlestroomactiviteiten die worden ondersteund do
 - [Pijplijnactiviteit uitvoeren](control-flow-execute-pipeline-activity.md)
 - [Activiteit ForEach](control-flow-for-each-activity.md)
 - [Opzoekactiviteit](control-flow-lookup-activity.md)
-- [Activiteit Web](control-flow-web-activity.md)
+- [Webactiviteit](control-flow-web-activity.md)

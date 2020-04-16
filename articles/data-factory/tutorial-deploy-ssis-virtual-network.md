@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 065610a9de4898d012cef8a16849c09a81f0774c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7470af23059ccd07e48050e6dc34521e299a986f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76841094"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418606"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Een SSIS-integratierun (Azure-SQL Server Integration Services) (IR) configureren om lid te worden van een virtueel netwerk
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Deze zelfstudie bevat basisstappen voor het gebruik van de Azure-portal om een SSIS-runtime (Azure-SQL Server Integration Services) (SSIS) te configureren om lid te worden van een virtueel netwerk.
 
@@ -70,7 +72,7 @@ Gebruik de Azure-portal om een virtueel netwerk te configureren voordat u probee
 
 1. Microsoft Edge of Google Chrome starten. Momenteel ondersteunen alleen deze webbrowsers de Gebruikersinterface van Data Factory.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **Meer services**. Filter voor en selecteer **Virtuele netwerken**.
 

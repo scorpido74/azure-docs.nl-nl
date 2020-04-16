@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: 80c9929f37b4890387a7625f04db6ce3e37f0cdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74922121"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416445"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Azure Data Factory gebruiken om gegevens van een on-premises Netezza-server naar Azure te migreren 
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory biedt een performant, robuust en kosteneffectief mechanisme om gegevens op schaal te migreren van een on-premises Netezza-server naar uw Azure-opslagaccount of Azure SQL Data Warehouse-database. 
 
@@ -139,7 +141,7 @@ Elke tabel kan een andere watermerkkolom gebruiken om de nieuwe of bijgewerkte r
 
 ### <a name="configure-a-self-hosted-integration-runtime"></a>Een zelf gehoste runtime voor integratie configureren
 
-Als u gegevens migreert van de Netezza-server naar Azure, ongeacht of de server zich achter uw bedrijfsfirewall of binnen een virtuele netwerkomgeving bevindt, moet u een zelf gehoste IR installeren op een Windows-machine of VM, de engine die wordt gebruikt om gegevens verplaatsen. Terwijl u de zelfgehoste IR installeert, raden we u de volgende aanpak aan:
+Als u gegevens migreert van de Netezza-server naar Azure, of de server nu on-premises achter uw bedrijfsfirewall of binnen een virtuele netwerkomgeving staat, moet u een zelf gehoste IR installeren op een Windows-machine of VM, de engine die wordt gebruikt om gegevens te verplaatsen. Terwijl u de zelfgehoste IR installeert, raden we u de volgende aanpak aan:
 
 - Voor elke Windows-machine of -vm begint u met een configuratie van 32 vCPU- en 128 GB geheugen. U de CPU en het geheugengebruik van de IR-machine tijdens de gegevensmigratie blijven volgen om te zien of u de machine verder moet opschalen voor betere prestaties of de machine moet verkleinen om kosten te besparen.
 
@@ -151,7 +153,7 @@ Voer als best practice een performance proof of concept (POC) uit met een repres
 
 Als u een tabel wilt kopiëren, begint u met één exemplaaractiviteit met één, zelf gehoste IR-machine. Verhoog de `parallelCopies` instelling geleidelijk op basis van het aantal gegevenssegmentpartities in uw tabel. Bekijk of de hele tabel binnen twee uur op Azure kan worden geladen, afhankelijk van de doorvoer die voortvloeit uit de kopieertaak. 
 
-Als het niet binnen twee uur op Azure kan worden geladen en de capaciteit van het zelf gehoste IR-knooppunt en het gegevensarchief niet volledig worden gebruikt, neemt u het aantal gelijktijdige kopieeractiviteiten geleidelijk toe totdat u de limiet van uw netwerk of de bandbreedtelimiet van de gegevens hebt bereikt Winkels. 
+Als het niet binnen twee uur op Azure kan worden geladen en de capaciteit van het zelf gehoste IR-knooppunt en het gegevensarchief niet volledig worden gebruikt, neemt u het aantal gelijktijdige kopieeractiviteiten geleidelijk toe totdat u de limiet van uw netwerk of de bandbreedtelimiet van de gegevensopslag hebt bereikt. 
 
 Houd het CPU- en geheugengebruik op de zelf gehoste IR-machine in de gaten en wees klaar om de machine op te schalen of uit te schalen naar meerdere machines wanneer u ziet dat de CPU en het geheugen volledig worden gebruikt. 
 

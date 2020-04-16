@@ -11,14 +11,16 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 03/13/2020
-ms.openlocfilehash: 3fe5a58046776d00ce68189cf724a995380869eb
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 6bc0f002c6927cfd9a314797663e1dabbac392b6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887289"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416643"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime maken en configureren
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 De integratieruntime (IR) is de rekeninfrastructuur die Azure Data Factory gebruikt om gegevensintegratiemogelijkheden te bieden voor verschillende netwerkomgevingen. Zie Overzicht van [de runtime van integratie](concepts-integration-runtime.md)voor meer informatie over IR.
 
@@ -360,7 +362,7 @@ Nadat u de zelf gehoste runtime voor integratie hebt geregistreerd, gebruikt u M
 1. Open **Microsoft Integration Runtime Configuration Manager**.
 1. Selecteer het tabblad **Instellingen**.
 1. Selecteer **onder HTTP-proxy**de koppeling **Wijzigen** om het dialoogvenster **HTTP-proxy instellen** te openen.
-1. Selecteer **Volgende**. U ziet dan een waarschuwing waarin om uw toestemming wordt gevraagd om de proxy-instelling op te slaan en de integratieruntime-hostservice opnieuw te starten.
+1. Selecteer **Next**. U ziet dan een waarschuwing waarin om uw toestemming wordt gevraagd om de proxy-instelling op te slaan en de integratieruntime-hostservice opnieuw te starten.
 
 U het hulpprogramma voor configuratiebeheer gebruiken om de HTTP-proxy weer te geven en bij te werken.
 

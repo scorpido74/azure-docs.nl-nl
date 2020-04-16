@@ -10,19 +10,18 @@ ms.subservice: ''
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6a3235d5edc5249bbbdc2e79dac8575ad26fd5e1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743168"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417028"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weergaven
 
 De gematerialiseerde weergaven in synapssql-pool bieden een onderhoudsarme methode voor complexe analytische query's om snelle prestaties te krijgen zonder dat query's worden gewijzigd. Dit artikel bespreekt de algemene richtlijnen voor het gebruik van gematerialiseerde weergaven.
 
-De gematerialiseerde weergaven in Azure SQL Data Warehouse bieden een onderhoudsarme methode voor complexe analytische query's om snelle prestaties te krijgen zonder dat query's worden gewijzigd. Dit artikel bespreekt de algemene richtlijnen voor het gebruik van gematerialiseerde weergaven.
+De gematerialiseerde weergaven in SQL-pool bieden een onderhoudsarme methode voor complexe analytische query's om snelle prestaties te krijgen zonder dat query's worden gewijzigd. Dit artikel bespreekt de algemene richtlijnen voor het gebruik van gematerialiseerde weergaven.
 
 ## <a name="materialized-views-vs-standard-views"></a>Gematerialiseerde weergaven versus standaardweergaven
 
@@ -45,7 +44,7 @@ De meeste vereisten voor een standaardweergave zijn nog steeds van toepassing op
 
 ## <a name="benefits-of-using-materialized-views"></a>Voordelen van het gebruik van gematerialiseerde weergaven
 
-Een goed ontworpen gematerialiseerde weergave kan de volgende voordelen bieden:
+Een goed ontworpen gematerialiseerde weergave biedt de volgende voordelen:
 
 - Verkort de uitvoeringstijd voor complexe query's met JOIN's en samengevoegde functies. Hoe complexer de query, hoe groter het potentieel voor uitvoeringstijdbesparing. Het meeste voordeel wordt behaald wanneer de berekeningskosten van een query hoog zijn en de resulterende gegevensset klein is.  
 - De optimizer in SQL-groep kan geïmplementeerde gematerialiseerde weergaven automatisch gebruiken om de uitvoeringsplannen voor query's te verbeteren.  Dit proces is transparant voor gebruikers die snellere queryprestaties leveren en vereist geen query's om direct te verwijzen naar de gematerialiseerde weergaven.
@@ -118,7 +117,7 @@ Opties om het aantal gematerialiseerde weergaven te verminderen:
 
 - Laat de gematerialiseerde weergaven vallen die weinig of niet meer nodig zijn.  Een uitgeschakelde gematerialiseerde weergave wordt niet onderhouden, maar brengt nog steeds opslagkosten met zich mee.  
 
-- Combineer gematerialiseerde weergaven die zijn gemaakt op dezelfde of vergelijkbare basistabellen, zelfs als hun gegevens elkaar niet overlappen.  Het uitkammen van gematerialiseerde weergaven kan resulteren in een grotere weergave in grootte dan de som van de afzonderlijke weergaven, maar de onderhoudskosten van de weergave moeten worden verminderd.  Bijvoorbeeld:
+- Combineer gematerialiseerde weergaven die zijn gemaakt op dezelfde of vergelijkbare basistabellen, zelfs als hun gegevens elkaar niet overlappen.  Het combineren van gematerialiseerde weergaven kan resulteren in een grotere weergave in grootte dan de som van de afzonderlijke weergaven, maar de onderhoudskosten van de weergave moeten worden verminderd.  Bijvoorbeeld:
 
 ```sql
 

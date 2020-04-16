@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 079d29c241cfbbdcc991f024c07b07b378670c10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130893"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419303"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB laden in Azure SQL Data Warehouse binnen 15 minuten met Data Factory
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "80130893"
 
 [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) is een cloudgebaseerde, scale-out database die enorme hoeveelheden gegevens kan verwerken, zowel relationeel als niet-relationeel.  SQL Data Warehouse is gebaseerd op een enorm parallelle verwerkingsarchitectuur (MPP) en is geoptimaliseerd voor enterprise data warehouse workloads.  Het biedt cloudelasticiteit met de flexibiliteit om opslag en rekenkracht onafhankelijk te schalen.
 
-Aan de slag met Azure SQL Data Warehouse is nu eenvoudiger dan ooit met **Azure Data Factory.**  Azure Data Factory is een volledig beheerde cloudgebaseerde data-integratieservice, die kan worden gebruikt om een SQL Data Warehouse te vullen met de gegevens van uw bestaande systeem, en u kostbare tijd bespaart bij het evalueren van SQL Data Warehouse en het bouwen van uw analytics Oplossingen. Dit zijn de belangrijkste voordelen van het laden van gegevens in Azure SQL Data Warehouse met Azure Data Factory:
+Aan de slag met Azure SQL Data Warehouse is nu eenvoudiger dan ooit met **Azure Data Factory.**  Azure Data Factory is een volledig beheerde cloudgebaseerde data-integratieservice, die kan worden gebruikt om een SQL Data Warehouse te vullen met de gegevens van uw bestaande systeem, en u kostbare tijd bespaart bij het evalueren van SQL Data Warehouse en het bouwen van uw analyseoplossingen. Dit zijn de belangrijkste voordelen van het laden van gegevens in Azure SQL Data Warehouse met Azure Data Factory:
 
 * **Eenvoudig in te stellen:** 5-staps intuïtieve wizard zonder scripting vereist.
 * **Uitgebreide ondersteuning voor gegevensopslag:** ingebouwde ondersteuning voor een uitgebreide reeks on-premises en cloudgebaseerde gegevensopslag.
