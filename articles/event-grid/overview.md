@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 65fd9d06c8b25e0aff94429f8eb95bb922da330c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b6f987eb283edea7f2d8e6b207b5b4e5b14f9120
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77505921"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393189"
 ---
 # <a name="what-is-azure-event-grid"></a>Wat is Azure Event Grid?
 
@@ -32,22 +32,21 @@ Deze afbeelding toont hoe Event Grid bronnen en handlers verbindt, maar biedt ge
 
 ## <a name="event-sources"></a>Gebeurtenisbronnen
 
-Zie [gebeurtenisbronnen](event-sources.md) voor meer informatie over de mogelijkheden van elke bron, evenals de gerelateerde artikelen. Op dit moment ondersteunen de volgende Azure-services het verzenden van gebeurtenissen naar Event Grid:
+Op dit moment ondersteunen de volgende Azure-services het verzenden van gebeurtenissen naar Event Grid:
 
-* [Azure-abonnementen (beheerbewerkingen)](event-sources.md#azure-subscriptions)
-* [Containerregister](event-sources.md#container-registry)
-* [Aangepaste onderwerpen](event-sources.md#custom-topics)
-* [Gebeurtenishubs](event-sources.md#event-hubs)
-* [IoT-hub](event-sources.md#iot-hub)
-* [Key Vault (voorbeeld)](event-sources.md#key-vault-preview)
-* [Media Services](event-sources.md#media-services)
-* [Resourcegroepen (beheerbewerkingen)](event-sources.md#resource-groups)
-* [Servicebus](event-sources.md#service-bus)
-* [Opslagblob](event-sources.md#storage)
-* [Azure Maps](event-sources.md#maps)
-* [App Configuration](event-sources.md#app-configuration)
-* [Signaal R](event-sources.md#azure-signalr)
-* [Machine Learning](event-sources.md#azure-machine-learning)
+- [Azure App Configuration](event-schema-app-configuration.md)
+- [Azure Blob Storage](event-schema-blob-storage.md)
+- [Azure-containerregister](event-schema-container-registry.md)
+- [Azure Event Hubs](event-schema-event-hubs.md)
+- [Azure IoT Hub](event-schema-iot-hub.md)
+- [Azure Key Vault](event-schema-key-vault.md)
+- [Azure Machine Learning](event-schema-machine-learning.md)
+- [Azure Maps](event-schema-azure-maps.md)
+- [Azure Media Services](event-schema-media-services.md)
+- [Azure-brongroepen](event-schema-resource-groups.md)
+- [Azure Service Bus](event-schema-service-bus.md)
+- [Azure SignalR](event-schema-azure-signalr.md)
+- [Azure-abonnementen](event-schema-subscriptions.md)
 
 ## <a name="event-handlers"></a>Event Handlers
 
@@ -55,11 +54,11 @@ Zie [gebeurtenis-handlers](event-handlers.md) voor meer informatie over de mogel
 
 * [Azure Automation](event-handlers.md#azure-automation)
 * [Azure Functions](event-handlers.md#azure-functions)
-* [Gebeurtenishubs](event-handlers.md#event-hubs)
+* [Event Hubs](event-handlers.md#event-hubs)
 * [Hybride verbindingen](event-handlers.md#hybrid-connections)
 * [Logic Apps](event-handlers.md#logic-apps)
 * [Power Automate (voorheen bekend als Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [Servicebus](event-handlers.md#service-bus)
+* [Service Bus](event-handlers.md#service-bus)
 * [Queue Storage](event-handlers.md#queue-storage)
 * [WebHooks](event-handlers.md#webhooks)
 

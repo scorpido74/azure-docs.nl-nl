@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b9db9daf06b59e1a26a9b03a93aff63984841862
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8d05f5ad07f9b3affba9442d6caa6e63162b813c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118364"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399411"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Snelstart: clientbibliotheek formulierherkenning voor .NET
 
@@ -42,7 +42,7 @@ Gebruik de clientbibliotheek Formulierherkenning voor .NET om:
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-Nadat u een sleutel uit uw proefabonnement of resource hebt opgehaald, maakt `FORM_RECOGNIZER_KEY` `FORM_RECOGNIZER_ENDPOINT` [u omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor respectievelijk de sleutel en het eindpunt, met de naam en ,
+Nadat u een sleutel en eindpunt hebt gekregen, [maakt u omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor respectievelijk de sleutel en het eindpunt, met de naam `FORM_RECOGNIZER_KEY` en `FORM_RECOGNIZER_ENDPOINT`,
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
@@ -90,7 +90,7 @@ Als u de Visual Studio IDE gebruikt, is de clientbibliotheek beschikbaar als dow
 
 De volgende klassen behandelen de belangrijkste functionaliteit van de Form Recognizer SDK.
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Deze klasse is nodig voor alle Form Recognizer-functionaliteit. U wilt deze met uw abonnementsgegevens en u gebruikt deze om exemplaren van andere klassen te produceren.|
 |[TrainRequest TrainRequest TrainRequest TrainRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| U gebruikt deze klasse om een aangepast Formulierherkenningsmodel te trainen met uw eigen trainingsinvoergegevens. |
@@ -99,12 +99,6 @@ De volgende klassen behandelen de belangrijkste functionaliteit van de Form Reco
 |[Geëxtraheerd pagina](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.extractedpage?view=azure-dotnet-preview)| Deze klasse vertegenwoordigt alle gegevens die uit één formulierdocument zijn geëxtraheerd.|
 
 ## <a name="code-examples"></a>Codevoorbeelden
-
-<!--
-    Include code snippets and short descriptions for each task you list in the the bulleted list. Briefly explain each operation, but include enough clarity to explain complex or otherwise tricky operations.
-
-    Include links to the service's reference content when introducing a class for the first time
--->
 
 In deze codefragmenten ziet u hoe u de volgende taken uitvoeren met de clientbibliotheek Formulierherkenning voor .NET:
 
@@ -193,7 +187,7 @@ Als u bovendien een aangepast model hebt getraind dat u uit uw account wilt verw
 In deze quickstart hebt u de clientbibliotheek Formulierherkenning .NET gebruikt om een aangepast model te trainen en formulieren te analyseren. Leer vervolgens tips om een betere trainingsgegevensset te maken en nauwkeurigere modellen te produceren.
 
 > [!div class="nextstepaction"]
->[Een set met trainingsgegevens samenstellen](../build-training-data-set.md)
+> [Een set met trainingsgegevens samenstellen](../build-training-data-set.md)
 
 * [Wat is Form Recognizer?](../overview.md)
 * De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer)

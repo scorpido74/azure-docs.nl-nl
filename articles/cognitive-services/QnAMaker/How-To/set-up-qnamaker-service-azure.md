@@ -3,12 +3,12 @@ title: Een QnA Maker-service instellen - QnA Maker
 description: Voordat u kennisbases van QnA Maker maken, moet u eerst een QnA Maker-service in Azure instellen. Iedereen met toestemming om nieuwe bronnen in een abonnement te maken, kan een QnA Maker-service instellen.
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 8ec57f441ba58227e45398c35c7931dc75fa658f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563a56fdb288568e7fe667fa54658400064a560f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131715"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402988"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-bronnen beheren
 
@@ -89,7 +89,7 @@ Eindpunttoetsen kunnen worden beheerd vanuit de [QnA Maker-portal.](https://qnam
     >[!NOTE]
     >Ververs je sleutels als je denkt dat ze zijn gecompromitteerd. Hiervoor zijn mogelijk overeenkomstige wijzigingen in uw clienttoepassing of botcode nodig.
 
-### <a name="upgrade-qna-maker-sku"></a>Upgrade QnA Maker SKU
+## <a name="upgrade-qna-maker-sku"></a>Upgrade QnA Maker SKU
 
 Wanneer u meer vragen en antwoorden in uw kennisbank wilt hebben, u uw prijscategorie voor QnA Maker-service upgraden.
 
@@ -103,7 +103,7 @@ Ga als lid van het Management SKU van QnA Maker:
 
     ![QnA Maker prijzen](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-### <a name="upgrade-app-service"></a>App-service bijwerken
+## <a name="upgrade-app-service"></a>App-service bijwerken
 
  Wanneer uw kennisbank meer aanvragen van uw client-app moet indienen, upgradet u de prijscategorie App Service.
 
@@ -113,7 +113,7 @@ Ga naar de App Service-bron in de Azure-portal en selecteer de optie **Opschalen
 
 ![QnA Maker App Service-schaal](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-### <a name="upgrade-the-azure-cognitive-search-service"></a>De Azure Cognitive Search-service upgraden
+## <a name="upgrade-the-azure-cognitive-search-service"></a>De Azure Cognitive Search-service upgraden
 
 Als u van plan bent veel kennisbases te hebben, u de prijscategorie Azure Cognitive Search upgraden.
 
@@ -197,7 +197,7 @@ De app-service, die de QnA Maker-voorspellingsruntime voor een gepubliceerde ken
 
 Om de voorspellingendpunt-app te laden, zelfs als er geen verkeer is, stelt u de idle in op altijd ingeschakeld.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek naar en selecteer de app-service van uw QnA Maker-bron. Het zal dezelfde naam hebben als de QnA Maker bron, maar het zal een ander **type** app-service hebben.
 1. Selecteer **Instellingen** en selecteer **Configuratie**.
 1. Selecteer in het deelvenster Configuratie de optie **Algemene instellingen**, zoek **vervolgens Altijd aan**en selecteer **Aan** als waarde.

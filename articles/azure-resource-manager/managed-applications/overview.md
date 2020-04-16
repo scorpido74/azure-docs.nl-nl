@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: b4aa5dfd288819930da2f7af36b7d70df709e638
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79473027"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391569"
 ---
 # <a name="azure-managed-applications-overview"></a>Overzicht van Azure Managed Applications
 
@@ -84,4 +84,4 @@ U kunt een [Azure Policy](../../governance/policy/overview.md) toepassen op uw b
 In dit artikel hebt u geleerd over de voordelen van het gebruik van beheerde toepassingen. Ga naar het volgende artikel om een definitie van een ​​beheerde toepassing te maken.
 
 > [!div class="nextstepaction"]
-> [Snelstart: Een definitie van een door Azure beheerde toepassing publiceren](publish-managed-app-definition-quickstart.md)
+> [Snelstart: Een definitie van een door Azure beheerde toepassing publiceren](publish-service-catalog-app.md)

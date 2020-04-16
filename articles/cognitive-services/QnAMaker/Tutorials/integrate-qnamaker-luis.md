@@ -1,7 +1,7 @@
 ---
-title: LUIS en QnAMaker - Bot integratie
+title: LUIS en QnAMaker - botintegratie
 titleSuffix: Azure Cognitive Services
-description: Naarmate uw QnA Maker-kennisbank groot wordt, wordt het moeilijk om deze te onderhouden als een enkele monolithische set en is er een noodzaak om de kennisbasis in kleinere logische brokken te splitsen.
+description: Naarmate uw QnA Maker-kennisbank groter wordt, wordt het moeilijk om deze als één monolithische set te onderhouden. Splits de kennisbasis op in kleinere, logische brokken.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,57 +11,57 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: c01f5f41e61cd65855789bb753a7a297fe475885
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: b0d28c77966668f919cdf1265f8cc63b4931d5fd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396347"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402708"
 ---
-# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Gebruik bot met QnA Maker en LUIS om uw kennisbank te distribueren
-Naarmate uw QnA Maker-kennisbank groot wordt, wordt het moeilijk om deze te onderhouden als een enkele monolithische set en is er een noodzaak om de kennisbasis in kleinere logische brokken te splitsen.
+# <a name="use-a-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Gebruik een bot met QnA Maker en LUIS om uw kennisbank te distribueren
+Naarmate uw QnA Maker-kennisbank groter wordt, wordt het moeilijk om deze als één monolithische set te onderhouden. Splits de kennisbasis op in kleinere, logische brokken.
 
 Hoewel het eenvoudig is om meerdere kennisbases in QnA Maker te maken, heb je wat logica nodig om de binnenkomende vraag naar de juiste kennisbank te leiden. U dit doen met LUIS.
 
-In dit artikel wordt gebruik gebruikt van Bot Framework v3 SDK. Zie dit [Bot Framework artikel,](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csharp)als u geïnteresseerd bent in Bot Framework v4 SDK versie van deze informatie.
+In dit artikel wordt gebruik gebruikt van de Bot Framework v3 SDK. Zie [Meerdere LUIS- en QnA-modellen gebruiken](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csharp)als u geïnteresseerd bent in de Bot Framework v4 SDK-versie van deze informatie.
 
 ## <a name="architecture"></a>Architectuur
 
-![QnA Maker met taalverstaanarchitectuur](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![Afbeelding met architectuur van QnA Maker met taalbegrip](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
-In het bovenstaande scenario krijgt QnA Maker eerst de bedoeling van de binnenkomende vraag van een LUIS-model en gebruikt deze vervolgens om deze door te sturen naar de juiste Kennisbank QnA Maker.
+De voorgaande afbeelding laat zien dat QnA Maker eerst de bedoeling van de binnenkomende vraag krijgt van een LUIS-model. QnA Maker gebruikt die intentie vervolgens om de vraag naar de juiste QnA Maker-kennisbank te leiden.
 
 ## <a name="create-a-luis-app"></a>Een LUIS-app maken
 
 1. Meld u aan bij het [LUIS-portaal.](https://www.luis.ai/)
 1. [Een app maken](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app).
 1. [Voeg een intentie toe](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) voor elke QnA Maker-kennisbank. De voorbeelduitingen moeten overeenkomen met vragen in de kennisbanken van QnA Maker.
-1. [Train de LUIS-app](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) en [publiceer de LUIS-app](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp) uw LUIS-app.
+1. [Train de LUIS-app](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) en [publiceer de LUIS-app](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp).
 1. Noteer in de sectie **Beheren** uw LUIS-app-id, LUIS-eindpuntsleutel en [aangepaste domeinnaam](../../cognitive-services-custom-subdomains.md). U zult deze waarden later nodig hebben.
 
 ## <a name="create-qna-maker-knowledge-bases"></a>Maak kennisbanken van QnA Maker
 
 1. Meld u aan bij [QnA Maker](https://qnamaker.ai).
-1. [Maak](https://www.qnamaker.ai/Create) een kennisbasis voor elke intentie in de LUIS-app.
-1. Test en publiceer de kennisbanken. Wanneer u elke KB publiceert, noteer dan de KB-id, de bronnaam (aangepast subdomein vóór _azurewebsites.net/qnamaker)_ en de eindpuntsleutel voor autorisatie. U zult deze waarden later nodig hebben.
+1. [Maak](https://www.qnamaker.ai/Create) een kennisbank voor elke intentie in de LUIS-app.
+1. Test en publiceer de kennisbanken. Wanneer u elk onderdeel publiceert, noteer dan de id, de naam van de resource (het aangepaste subdomein vóór _.azurewebsites.net/qnamaker)_ en de eindpuntsleutel voor autorisatie. U zult deze waarden later nodig hebben.
 
-    In dit artikel wordt ervan uitgegaan dat de KB's allemaal zijn gemaakt in hetzelfde Azure QnA Maker-abonnement.
+    In dit artikel wordt ervan uitgegaan dat de kennisbases allemaal zijn gemaakt in hetzelfde Azure QnA Maker-abonnement.
 
-    ![Http-aanvraag voor QnA Maker](../media/qnamaker-tutorials-qna-luis/qnamaker-http-request.png)
+    ![Schermafbeelding van http-aanvraag voor QnA Maker](../media/qnamaker-tutorials-qna-luis/qnamaker-http-request.png)
 
-## <a name="web-app-bot"></a>Web-app Bot
+## <a name="web-app-bot"></a>Web-app-bot
 
-1. [Maak een "Basic" Web App-bot](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) die automatisch een LUIS-app bevat. Selecteer C#-programmeertaal.
+1. [Maak een 'Basic'-bot met Azure Bot-service,](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0)die automatisch een LUIS-app bevat. Selecteer de programmeertaal C#.
 
-1. Zodra de web-app bot is gemaakt, selecteert u in de Azure-portal de web-app bot.
-1. Selecteer **Toepassingsinstellingen** in de navigatie van de web-app-botservice en blader omlaag naar de sectie **Toepassingsinstellingen** met beschikbare instellingen.
-1. Wijzig de **LuisAppId** in de waarde van de LUIS-app die in de vorige sectie is gemaakt en selecteer **Opslaan**.
+1. Nadat u de web-app bot hebt gemaakt, selecteert u in de Azure-portal de web-app-bot.
+1. Selecteer **toepassingsinstellingen**in de navigatie van de web-app botservice . Blader vervolgens omlaag naar het gedeelte **Toepassingsinstellingen** met beschikbare instellingen.
+1. Wijzig de **LuisAppId** in de waarde van de LUIS-app die in de vorige sectie is gemaakt. Selecteer vervolgens **Opslaan**.
 
 
-## <a name="change-code-in-basicluisdialogcs"></a>Code wijzigen in BasicLuisDialog.cs
+## <a name="change-the-code-in-the-basicluisdialogcs-file"></a>De code in het BasicLuisDialog.cs-bestand wijzigen
 1. Selecteer **Build** in de sectie Bot Beheer van de **Build**navigatie met de web-app bot in de Azure-portal.
 2. Selecteer **Online codeeditor openen**. Er wordt een nieuw browsertabblad geopend met de online bewerkingsomgeving.
-3. Selecteer in de sectie **WWWROOT** de map **Dialogen** en open **BasicLuisDialog.cs**.
+3. Selecteer in de sectie **WWWROOT** de map **Dialoogvensters** en open **BasicLuisDialog.cs**.
 4. Afhankelijkheden toevoegen aan de **BasicLuisDialog.cs** bovenkant van het BasicLuisDialog.cs-bestand:
 
     ```csharp
@@ -76,7 +76,7 @@ In het bovenstaande scenario krijgt QnA Maker eerst de bedoeling van de binnenko
     using System.Text;
     ```
 
-5. Voeg de onderstaande klassen toe om het antwoord van QnA Maker te deserialiseren:
+5. Voeg de volgende klassen toe om het antwoord van QnA Maker te deserialiseren:
 
     ```csharp
     public class Metadata
@@ -103,7 +103,7 @@ In het bovenstaande scenario krijgt QnA Maker eerst de bedoeling van de binnenko
     ```
 
 
-6. Voeg de volgende klasse toe om een HTTP-aanvraag in te dienen bij de QnA Maker-service. De waarde van de **kopautorisatie** bevat `EndpointKey` het woord, waarbij een spatie het woord volgt. Het JSON-resultaat wordt gedeserialiseerd in de voorgaande klassen en het eerste antwoord wordt geretourneerd.
+6. Voeg de volgende klasse toe om een HTTP-aanvraag in te dienen bij de QnA Maker-service. De waarde van de **kopautorisatie** bevat `EndpointKey`het woord , met een spatie die het woord volgt. Het JSON-resultaat wordt gedeserialiseerd in de voorgaande klassen en het eerste antwoord wordt geretourneerd.
 
     ```csharp
     [Serializable]
@@ -155,7 +155,7 @@ In het bovenstaande scenario krijgt QnA Maker eerst de bedoeling van de binnenko
     ```
 
 
-7. Wijzig de klasse BasicLuisDialog. Elke LUIS-intentie moet een methode hebben die is versierd met **LuisIntent.** De parameter voor de decoratie is de werkelijke LUIS-intentienaam. De methodenaam die is _ingericht, moet_ de luis-intentienaam zijn voor leesbaarheid en onderhoud, maar hoeft niet hetzelfde te zijn bij het ontwerp of de looptijd.
+7. Wijzig `BasicLuisDialog` de klasse. Elke LUIS-intentie moet een methode hebben die is versierd met **LuisIntent.** De parameter voor de decoratie is de werkelijke LUIS-intentienaam. De methodenaam die is _versierd, moet_ de luis-intentienaam zijn voor leesbaarheid en onderhoud, maar hoeft niet hetzelfde te zijn bij ontwerp of runtime.
 
     ```csharp
     [Serializable]
@@ -167,7 +167,7 @@ In het bovenstaande scenario krijgt QnA Maker eerst de bedoeling van de binnenko
         static string LUIS_hostRegion = "westus.api.cognitive.microsoft.com";
 
         // QnA Maker global settings
-        // assumes all KBs are created with same Azure service
+        // assumes all knowledge bases are created with same Azure service
         static string qnamaker_endpointKey = "<QnA Maker endpoint KEY>";
         static string qnamaker_resourceName = "my-qnamaker-s0-s";
 
@@ -224,20 +224,20 @@ In het bovenstaande scenario krijgt QnA Maker eerst de bedoeling van de binnenko
 
 
 ## <a name="build-the-bot"></a>Bouw de bot
-1. Klik in de codeeditor `build.cmd` met de rechtermuisknop en selecteer **Uitvoeren vanaf console**.
+1. Klik in de codeeditor met de rechtermuisknop op **build.cmd**en selecteer **Uitvoeren vanuit Console**.
 
-    ![uitvoeren vanaf console](../media/qnamaker-tutorials-qna-luis/run-from-console.png)
+    ![Schermafbeelding van de optie Uitvoeren van console in de codeeditor](../media/qnamaker-tutorials-qna-luis/run-from-console.png)
 
-2. De codeweergave wordt vervangen door een terminalvenster met de voortgang en resultaten van de build.
+2. De codeweergave wordt vervangen door een terminalvenster dat de voortgang en resultaten van de build weergeeft.
 
-    ![console build](../media/qnamaker-tutorials-qna-luis/console-build.png)
+    ![Schermafbeelding van de consolebuild](../media/qnamaker-tutorials-qna-luis/console-build.png)
 
 ## <a name="test-the-bot"></a>Test de bot
 Selecteer in de Azure-portal **Testen in webchat** om de bot te testen. Typ berichten uit verschillende intenties om het antwoord te krijgen van de bijbehorende kennisbank.
 
-![webchattest](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
+![Schermafbeelding van webchattest](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Integreer uw kennisbank met een Power Virtual Agent](integrate-with-power-virtual-assistant-fallback-topic.md)
+> [Integreer uw kennisbank met een agent in Power Virtual Agents](integrate-with-power-virtual-assistant-fallback-topic.md)

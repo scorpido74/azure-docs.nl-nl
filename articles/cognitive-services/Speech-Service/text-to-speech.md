@@ -3,19 +3,19 @@ title: Tekst-naar-spraak - Spraakservice
 titleSuffix: Azure Cognitive Services
 description: De tekst-naar-spraak-functie in de Spraakservice stelt uw toepassingen, hulpprogramma's of apparaten in staat om tekst om te zetten in natuurlijke menselijke gesynthetiseerde spraak. Kies vooraf ingestelde stemmen of maak uw eigen aangepaste stem.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 7c7574ee4e9f75b9b650ff63a10666c5e379fca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131566"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399506"
 ---
 # <a name="what-is-text-to-speech"></a>Wat is tekst-naar-spraak?
 

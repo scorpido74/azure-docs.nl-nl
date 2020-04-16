@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: dapine
-ms.openlocfilehash: dea6a1afaa2348fc5054bee20c534936dcafe5b5
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.author: trbye
+ms.openlocfilehash: 138a9ef9d483ca0d460bab7185d646669650f83e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656586"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399883"
 ---
 :::row:::
     :::column span="3":::
@@ -39,7 +39,7 @@ Voor microfooninvoer moeten de bibliotheken van de Media Foundation worden geïn
 
 De vereiste Speech SDK-bestanden kunnen worden geïmplementeerd in dezelfde map als uw toepassing. Op deze manier heeft uw toepassing rechtstreeks toegang tot de bibliotheken. Zorg ervoor dat u de juiste versie (x86/x64) selecteert die overeenkomt met uw toepassing.
 
-| Name                                            | Functie                                             |
+| Naam                                            | Functie                                             |
 |-------------------------------------------------|------------------------------------------------------|
 | `Microsoft.CognitiveServices.Speech.core.dll`   | Core SDK, vereist voor native en beheerde implementatie |
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | Vereist voor beheerde implementatie                      |

@@ -740,6 +740,8 @@
           href: insights/containers.md
     - name: Andere resources bewaken
       items:
+        - name: Key Vault
+          href: insights/key-vault-insights-overview.md
         - name: Storage
           items:
             - name: Azure Monitor voor Storage

@@ -3,19 +3,19 @@ title: Verbeter de synthese met Aangepaste Spraak - Spraakservice
 titleSuffix: Azure Cognitive Services
 description: Custom Voice is een set van online tools waarmee u een herkenbare, unieke stem voor uw merk maken. Alles wat nodig is om te beginnen zijn een handvol audiobestanden en de bijbehorende transcripties. Volg de onderstaande links om een aangepaste spraak-naar-tekst-ervaring te maken.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.author: dapine
-ms.openlocfilehash: 786cf687e569af172eabfaa9068ae61ffd6b2988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 2aacf8881a57f0677177cd341a0ddc63224b26b6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220477"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402059"
 ---
 # <a name="get-started-with-custom-voice"></a>Aan de slag met Custom Voice
 

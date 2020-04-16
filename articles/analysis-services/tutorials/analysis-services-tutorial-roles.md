@@ -4,15 +4,15 @@ description: Meer informatie over het configureren van Azure Analysis Services-b
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fa3a6fefce808e51c2ad1d9d18bf4766cdf689c3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78273681"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406229"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Zelfstudie: Serverbeheerder- en gebruikersrollen configureren
 
@@ -67,7 +67,7 @@ Voor de resterende taken gebruikt u SSMS voor het maken van verbinding met en he
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Een gebruikersaccount toevoegen aan de rol van serverbeheerder
 
-In deze taak voegt u een gebruikers- of groepsaccount uit uw Azure AD toe aan de serverbeheerderrol. Als u een beveiligingsgroep toevoegt, moet de eigenschap `MailEnabled` zijn ingesteld op `True`.
+In deze taak voegt u een gebruikers- of groepsaccount uit uw Azure AD toe aan de serverbeheerderrol. Als u een beveiligingsgroep toevoegt, moet de eigenschap `MailEnabled` zijn ingesteld op `True`. Bij het opgeven van een `obj:groupid@tenantid`groep per e-mailadres gebruik .
 
 1. Klik in **Objectverkenner** met de rechtermuisknop op de naam van uw server en klik vervolgens op **Eigenschappen**. 
 2. In het **eigenschappenvenster van de analyseserver** klikt u op **Beveiliging** > **Toevoegen**.

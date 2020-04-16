@@ -3,19 +3,19 @@ title: 'Zelfstudie: Voices schakelen uw bot in met spraak-SDK - Spraakservice'
 titleSuffix: Azure Cognitive Services
 description: In deze zelfstudie maakt u een Echo Bot met Microsoft Bot-Framework, implementeert u deze naar Azure en registreert u deze met het Bot-Framework Direct Line Speech-kanaal. Vervolgens configureert u een voorbeeldclient-app voor Windows waarmee u met uw bot spreken en deze op u horen reageren.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: dapine
-ms.openlocfilehash: 3c2d74eb7e46d9909d87a7ccadadd6129a3d48d8
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: b2c119f6552773bce7bb93a503c22324278ac0bc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397884"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399462"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelfstudie: Maak uw bot in schakelen met de Spraak-SDK
 
@@ -56,7 +56,7 @@ Dit is wat je nodig hebt om deze zelfstudie te voltooien:
 
 - Een Windows 10-pc met een werkende microfoon en luidsprekers (of hoofdtelefoon)
 - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) of hoger
-- [.NET Core SDK](https://dotnet.microsoft.com/download) versie 2.1 of hoger
+- [.NET Framework Runtime 4.6.1](https://dotnet.microsoft.com/download) of hoger
 - Een Azure-account. [Schrijf je hier gratis in.](https://azure.microsoft.com/free/ai/)
 - Een [GitHub-account](https://github.com/)
 - [Git voor Windows](https://git-scm.com/download/win)
@@ -104,7 +104,7 @@ Volg deze instructies om een spraakbron te maken:
 
 Controleer op dit punt of uw resourcegroep (**SpeechEchoBotTutorial-ResourceGroup**) een spraakbron heeft:
 
-| Name | Type  | Locatie |
+| Naam | Type  | Locatie |
 |------|-------|----------|
 | SpeechechoBotTutorial-Speech | Cognitive Services | VS - west |
 
@@ -125,7 +125,7 @@ De volgende stap is het maken van een App Service Plan. Een App Service-plan def
 
 Controleer op dit punt of uw resourcegroep (**SpeechEchoBotTutorial-ResourceGroup**) twee bronnen heeft:
 
-| Name | Type  | Locatie |
+| Naam | Type  | Locatie |
 |------|-------|----------|
 | SpeechechoBotTutorial-AppServicePlan | App Service-plan | VS - west |
 | SpeechechoBotTutorial-Speech | Cognitive Services | VS - west |
@@ -207,7 +207,7 @@ De volgende stap is het implementeren van de Echo Bot naar Azure. Er zijn een pa
 1. Uw standaardbrowser moet een pagina openen en weergeven met de tekst: "Uw bot is klaar!".
 1. Controleer op dit punt uw Resourcegroep **SpeechEchoBotTutorial-ResourceGroup** in de Azure-portal en controleer of er drie bronnen zijn:
 
-| Name | Type  | Locatie |
+| Naam | Type  | Locatie |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | VS - west |
 | SpeechechoBotTutorial-AppServicePlan | App Service-plan | VS - west |
@@ -248,7 +248,7 @@ Nu u een Azure App-service hebt gemaakt om uw bot te hosten, is de volgende stap
 
 Controleer op dit moment uw Resourcegroep **SpeechEchoBotTutorial-ResourceGroup** in de Azure-portal. Het moet nu vier bronnen laten zien:
 
-| Name | Type  | Locatie |
+| Naam | Type  | Locatie |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | VS - west |
 | SpeechechoBotTutorial-AppServicePlan | App Service-plan | VS - west |
@@ -276,19 +276,23 @@ Nu is het tijd om je bot te registreren met het Direct Line Speech kanaal. Dit k
 > [!TIP]
 > Zie Een bot verbinden met [Direct Line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)als u meer wilt weten. Deze pagina bevat aanvullende informatie en bekende problemen.
 
-## <a name="build-the-windows-voice-assistant-client"></a>De Windows Voice Assistant-client bouwen
+## <a name="run-the-windows-voice-assistant-client"></a>De Windows Voice Assistant-client uitvoeren
 
-In deze stap gaat u de Windows Voice Assistant-client bouwen. De client is een WpF-app (Windows Presentation Foundation) in C# die de [Spraak-SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) gebruikt om de communicatie met uw bot te beheren met behulp van het Direct Line Speech-kanaal. Gebruik het om te communiceren met en test uw bot voordat u een aangepaste client-app schrijft.
+In deze stap gaat u de Windows Voice Assistant-client uitvoeren. De client is een WpF-app (Windows Presentation Foundation) in C# die de [Spraak-SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) gebruikt om de communicatie met uw bot te beheren met behulp van het Direct Line Speech-kanaal. Gebruik het om te communiceren met en test uw bot voordat u een aangepaste client-app schrijft. Het is open source, dus je het uitvoerbare downloaden en uitvoeren, of het zelf bouwen.
 
 De Windows Voice Assistant-client heeft een eenvoudige gebruikersinterface waarmee u de verbinding met uw bot configureren, het tekstgesprek bekijken, Bot-Framework-activiteiten in JSON-indeling bekijken en adaptieve kaarten weergeven. Het ondersteunt ook het gebruik van aangepaste zoekwoorden. U gebruikt deze client om met uw bot te spreken en een spraakreactie te ontvangen.
 
 Voordat we verder gaan, moet u ervoor zorgen dat uw microfoon en luidsprekers zijn ingeschakeld en werken.
 
 1. Navigeer naar de GitHub-opslagplaats voor de [Windows Voice Assistant-client](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/README.md).
-2. Volg de instructies die zijn gegeven om de repository te klonen, het project te bouwen, de client te configureren en de client te starten.
-3. Klik **op Opnieuw verbinding maken** en zorg ervoor dat u het bericht ziet Druk op de **microfoonknop of typ om met uw bot te gaan praten.**
-4. Laten we het testen. Klik op de microfoonknop en spreek een paar woorden in het Engels. De herkende tekst wordt op dit moment weergegeven. Als je klaar bent met spreken, zal de bot antwoorden in zijn eigen stem, zeggen "echo" gevolgd door de erkende woorden.
-5. U ook tekst gebruiken om met de bot te communiceren. Typ gewoon de tekst op de onderste balk. 
+1. Volg de instructies die daar zijn gegeven om
+   * een ZIP-pakket downloaden met het uitvoerbare om uit te voeren, of
+   * bouw zelf de uitvoerbare, door de repository te klonen en het project te bouwen.
+
+1. Start de clienttoepassing en configureer deze.
+1. Klik **op Opnieuw verbinding maken** en zorg ervoor dat u het bericht ziet Druk op de **microfoonknop of typ om met uw bot te gaan praten.**
+1. Laten we het testen. Klik op de microfoonknop en spreek een paar woorden in het Engels. De herkende tekst wordt op dit moment weergegeven. Als je klaar bent met spreken, zal de bot antwoorden in zijn eigen stem, zeggen "echo" gevolgd door de erkende woorden.
+1. U ook tekst gebruiken om met de bot te communiceren. Typ gewoon de tekst op de onderste balk. 
 
 ### <a name="troubleshooting-errors-in-windows-voice-assistant-client"></a>Fouten oplossen in Windows Voice Assistant-client
 
@@ -425,7 +429,7 @@ Nu u de benodigde wijziging in de bot hebt aangebracht, is de volgende stap om d
 2. Uw vorige implementatieconfiguratie is al als standaardgeladen. Klik op **Publiceren** naast **EchoBot20190805125647 - Webdeploy**.
 3. Het bericht **Dat is gestart met publiceren** wordt weergegeven in het uitvoervenster van Visual Studio en er wordt een webpagina gestart met het bericht 'Uw bot is gereed!'.
 4. Open de Windows Voice Assistant Client-app, klik op de instellingenknop (pictogram `de-de` rechtsboven) en zorg ervoor dat u nog steeds in het veld Taal hebt.
-5. Volg de instructies in [Build the Windows Voice Assistant Client](#build-the-windows-voice-assistant-client) om opnieuw verbinding te maken met uw nieuw geïmplementeerde bot, spreek in de nieuwe taal en hoor u in die taal antwoorden met de nieuwe stem.
+5. Volg de instructies in [Run the Windows Voice Assistant Client](#run-the-windows-voice-assistant-client) to reconnect with your newly ployed bot, speak in the new language and hear you bot reply in that language with the new voice.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -10,19 +10,25 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 6f8f892e7ca81881b0cc00e1708e3f05052c573c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a72e5055a3b0f858a732ec28eeab511b09dd450c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76264200"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400150"
 ---
 # <a name="scenario-availability"></a>Beschikbaarheid van scenario's
 
 De Speech SDK bevat vele scenario's in een breed scala aan programmeertalen en omgevingen. Nog niet alle scenario's zijn beschikbaar in alle programmeertalen of alle omgevingen. Hieronder vindt u de beschikbaarheid van elk scenario.
 
 - **Spraakherkenning (SR), woordgroeplijst, intentie, vertaling en on-premises containers**
-  - Alle programmeertalen/omgevingen waar een pijlkoppeling is <img src="media/index/link.jpg" height="15" width="15"></img> in de quickstart tafel [hier](https://aka.ms/csspeech).
+  - C++/Windows & Linux & macOS
+  - C# (Framework & .NET Core)/Windows & UWP & Unity & Xamarin & Linux & macOS
+  - Java (Jre en Android)
+  - JavaScript (Brower en NodeJS)
+  - Python
+  - Swift
+  - Objective-C  
 - **Tekst-naar-spraak (TTS)**
   - C++/Windows & Linux
   - C#/Windows & UWP & Unity

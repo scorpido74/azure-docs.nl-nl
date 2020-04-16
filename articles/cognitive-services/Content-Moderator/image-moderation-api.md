@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73044100"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404267"
 ---
 # <a name="learn-image-moderation-concepts"></a>Concepten voor beeldbeheer leren
 
@@ -139,9 +139,9 @@ Voorbeelduittreksel:
     ....
     }
 
-## <a name="human-review-tool"></a>Programma voor menselijke beoordeling
+## <a name="review-tool"></a>Beoordelingsprogramma
 
-Voor meer genuanceerde gevallen gebruikt u de [beoordelingstool](Review-Tool-User-Guide/human-in-the-loop.md) Voor inhoudsmoderator en de API om de moderatieresultaten en -inhoud in de beoordeling voor uw menselijke moderators weer te geven. Ze bekijken de door machines toegewezen tags en bevestigen hun definitieve beslissingen.
+Voor meer genuanceerde gevallen gebruikt u de tool Content Moderator [Review](Review-Tool-User-Guide/human-in-the-loop.md) en de API om de moderatieresultaten en -inhoud in de beoordeling voor uw menselijke moderators weer te geven. Ze bekijken de door machines toegewezen tags en bevestigen hun definitieve beslissingen.
 
 ![Beoordeling van afbeelding voor menselijke beoordelaars](images/moderation-reviews-quickstart-dotnet.PNG)
 

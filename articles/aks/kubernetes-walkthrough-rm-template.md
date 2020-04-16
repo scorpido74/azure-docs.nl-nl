@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: e8117eb1b521dc2e3fa9eaca1316e0b9c14f0e98
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c5ea54a33ee027de0b11c59c53085b9d20ca6a3a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80129458"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392838"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Snelstart: een AKS-cluster (Azure Kubernetes Service) implementeren met behulp van een Azure Resource Manager-sjabloon
 
@@ -30,7 +30,7 @@ Als u ervoor kiest de CLI lokaal te installeren en te gebruiken, moet u met deze
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u een AKS-cluster wilt maken met behulp van een resourcemanagersjabloon, biedt u een SSH-public key en de principal van azure Active Directory-service. Als u een van deze bronnen nodig hebt, raadpleegt u de volgende sectie; ga anders naar de sectie [Een AKS-cluster maken.](#create-an-aks-cluster)
+Als u een AKS-cluster wilt maken met behulp van een resourcemanagersjabloon, biedt u een SSH-public key en de principal van azure Active Directory-service.  U ook een [beheerde identiteit](use-managed-identity.md) gebruiken in plaats van een serviceprincipal voor machtigingen. Als u een van deze bronnen nodig hebt, raadpleegt u de volgende sectie; ga anders naar de sectie [Een AKS-cluster maken.](#create-an-aks-cluster)
 
 ### <a name="create-an-ssh-key-pair"></a>Een SSH-sleutelpaar maken
 
@@ -48,7 +48,7 @@ Zie [SSH-sleutels maken en beheren voor verificatie in Azure voor][ssh-keys]meer
 
 ### <a name="create-a-service-principal"></a>Een service-principal maken
 
-Een AKS-cluster heeft een service-principal van Azure Active Directory nodig om met andere Azure-resources te kunnen communiceren. Maak een service-principal met behulp van de opdracht [az ad sp create-for-rbac][az-ad-sp-create-for-rbac]. De parameter `--skip-assignment` zorgt ervoor dat eventuele extra machtigingen beperkt kunnen worden toegewezen. Standaard is de service-principal geldig voor één jaar.
+Een AKS-cluster heeft een service-principal van Azure Active Directory nodig om met andere Azure-resources te kunnen communiceren. Maak een service-principal met behulp van de opdracht [az ad sp create-for-rbac][az-ad-sp-create-for-rbac]. De parameter `--skip-assignment` zorgt ervoor dat eventuele extra machtigingen beperkt kunnen worden toegewezen. Standaard is de service-principal geldig voor één jaar. Houd er rekening mee dat u een beheerde identiteit gebruiken in plaats van een serviceprincipal. Zie [Beheerde identiteiten gebruiken voor](use-managed-identity.md)meer informatie .
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -281,7 +281,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Wanneer u het cluster verwijdert, wordt de Azure Active Directory-service-principal die door het AKS-cluster wordt gebruikt niet verwijderd. Zie [Overwegingen voor en verwijdering van AKS service-principal][sp-delete] voor stappen voor het verwijderen van de service-principal.
+> Wanneer u het cluster verwijdert, wordt de Azure Active Directory-service-principal die door het AKS-cluster wordt gebruikt niet verwijderd. Zie [Overwegingen voor en verwijdering van AKS service-principal][sp-delete] voor stappen voor het verwijderen van de service-principal. Als u een beheerde identiteit hebt gebruikt, wordt de identiteit beheerd door het platform en hoeft deze niet te worden verwijderd.
 
 ## <a name="get-the-code"></a>Code ophalen
 

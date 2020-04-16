@@ -5,18 +5,18 @@ metadata:
   title: Hostingdocumentatie - Zelfstudies, API-referentie - Azure Cognitive Services | Microsoft Documenten
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: IEvangelist
+  author: trevorbye
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/23/2020
-  ms.author: dapine
-  ms.openlocfilehash: c342b797dfe21fe4ffbd1bb9bc112e9726cdec42
-  ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+  ms.author: trbye
+  ms.openlocfilehash: 640c1b8e9c51059bc4c296ef93a4e6dd54ea7a42
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/01/2020
-  ms.locfileid: "80529463"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81401502"
 landingContent:
 - title: Over hosting
   linkLists:
@@ -26,7 +26,7 @@ landingContent:
       url: speech-container-howto.md
     - text: Spraakcontainers met Kubernetes en Helm
       url: speech-container-howto-on-premises.md
-    - text: Spraakcontainers op Azure-containerexemplaren
+    - text: Spraakcontainers in Azure-containerinstanties
       url: deploy-speech-on-container-instances.md
 - title: Maken en configureren
   linkLists:

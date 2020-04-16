@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: fe80b7343f67b06981707081931e35142985688e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 5df21b2c1926803a65eca911c66b059f36ee18aa
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668782"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393619"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>De API van Azure Cosmos DB voor MongoDB (versie 3.6): ondersteunde functies en syntaxis
 
@@ -95,8 +95,8 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 |gegevensGrootte     |   Nee      |
 |dbHash (dbHash)    |    Nee     |
 |dbStats     |   Ja      |
-|Uitleggen     | Nee        |
-|uitleggen: executionStats     |     Nee    |
+|Uitleggen     |   Ja      |
+|uitleggen: executionStats     |   Ja      |
 |functies     |    Nee     |
 |hostInfo     |   Nee      |
 |listDatabases         |   Ja      |

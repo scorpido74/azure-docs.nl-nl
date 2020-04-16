@@ -3,19 +3,19 @@ title: Spraaksynthese-opmaaktaal (SSML) - Spraakservice
 titleSuffix: Azure Cognitive Services
 description: Met behulp van de Speech Synthesis Markup Language om uitspraak en prosodie in tekst-naar-spraak te controleren.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 7d5dd79399b15ade90173a55aeb71dacbc61fa78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: dc11d26c73c52b5e6c4d8e05cc27dd6ebce0c5d8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80365804"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399824"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Synthese verbeteren met Speech Synthesis Markup Language (SSML)
 
@@ -109,7 +109,7 @@ Binnen `speak` het element u meerdere stemmen opgeven voor tekst-naar-spraak-uit
 
 Afhankelijk van de Spraak-SDK-taal stelt `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` u `false` de eigenschap `SpeechConfig` in op een instantie van het object.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Zie voor meer <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>informatie .
 
@@ -154,7 +154,7 @@ speechConfig.setProperty(
     "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
 ```
 
-# <a name="objective-c"></a>[Doelstelling-C](#tab/objectivec)
+# <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
 Zie voor meer <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>informatie .
 
@@ -196,7 +196,6 @@ Standaard synthetiseert de tekst-naar-spraakservice tekst met behulp van een neu
 Momenteel worden gesproken stijlaanpassingen ondersteund voor deze neurale stemmen:
 * `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
-* `pt-BR-FranciscaNeural`
 
 Wijzigingen worden toegepast op zinsniveau en de stijl verschilt per stem. Als een stijl niet wordt ondersteund, retourneert de service spraak in de standaardneutrale spreekstijl.
 
@@ -214,18 +213,17 @@ Wijzigingen worden toegepast op zinsniveau en de stijl verschilt per stem. Als e
 
 Gebruik deze tabel om te bepalen welke spreekstijlen worden ondersteund voor elke neurale stem.
 
-| Spraak | Stijl | Beschrijving |
-|-------|------|-------------|
-| `en-US-AriaNeural` | `style="newscast"` | Drukt een formele en professionele toon uit voor het vertellen van nieuws |
-| | `style="customerservice"` | Drukt een vriendelijke en behulpzame toon uit voor klantenondersteuning |
-| | `style="chat"` | Drukt een ongedwongen en ontspannen toon uit |
-| | `style="cheerful"` | Drukt een positieve en vrolijke toon uit |
-| | `style="empathetic"` | Drukt een gevoel van zorg en begrip uit |
-| `zh-CN-XiaoxiaoNeural` | `style="newscast"` | Drukt een formele en professionele toon uit voor het vertellen van nieuws |
-| | `style="customerservice"` | Drukt een vriendelijke en behulpzame toon uit voor klantenondersteuning |
-| | `style="assistant"` | Drukt een warme en ontspannen toon uit voor digitale assistenten  |
-| | `style="lyrical"` | Drukt emoties uit op een melodische en sentimentele manier |
-| `pt-BR-FranciscaNeural` | `style="cheerful"` | Drukt een positieve en vrolijke toon uit |
+| Spraak                   | Stijl                     | Beschrijving                                                 |
+|-------------------------|---------------------------|-------------------------------------------------------------|
+| `en-US-AriaNeural`      | `style="newscast"`        | Drukt een formele en professionele toon uit voor het vertellen van nieuws |
+|                         | `style="customerservice"` | Drukt een vriendelijke en behulpzame toon uit voor klantenondersteuning  |
+|                         | `style="chat"`            | Drukt een ongedwongen en ontspannen toon uit                         |
+|                         | `style="cheerful"`        | Drukt een positieve en vrolijke toon uit                         |
+|                         | `style="empathetic"`      | Drukt een gevoel van zorg en begrip uit               |
+| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Drukt een formele en professionele toon uit voor het vertellen van nieuws |
+|                         | `style="customerservice"` | Drukt een vriendelijke en behulpzame toon uit voor klantenondersteuning  |
+|                         | `style="assistant"`       | Drukt een warme en ontspannen toon uit voor digitale assistenten    |
+|                         | `style="lyrical"`         | Drukt emoties uit op een melodische en sentimentele manier         |
 
 **Voorbeeld**
 
@@ -263,15 +261,14 @@ Gebruik `break` het element om pauzes (of pauzes) tussen woorden in te voegen of
 | `strength` | Hiermee geeft u de relatieve duur van een pauze op met een van de volgende waarden:<ul><li>geen</li><li>x-zwak</li><li>Zwakke</li><li>medium (standaard)</li><li>Sterke</li><li>x-sterk</li></ul> | Optioneel |
 | `time` | Hiermee geeft u de absolute duur van een pauze in seconden of milliseconden op. Voorbeelden van geldige `2s` waarden zijn en`500` | Optioneel |
 
-| Kracht | Beschrijving |
-|----------|-------------|
-| Geen, of als er geen waarde is opgegeven | 0 ms |
-| x-zwak | 250 ms |
-| Zwakke | 500 ms |
-| gemiddeld | 750 ms |
-| Sterke | 1000 ms |
-| x-sterk | 1250 ms |
-
+| Kracht                      | Beschrijving |
+|-------------------------------|-------------|
+| Geen, of als er geen waarde is opgegeven | 0 ms        |
+| x-zwak                        | 250 ms      |
+| Zwakke                          | 500 ms      |
+| gemiddeld                        | 750 ms      |
+| Sterke                        | 1000 ms     |
+| x-sterk                      | 1250 ms     |
 
 **Voorbeeld**
 
@@ -372,9 +369,9 @@ Soms kan TTS een woord niet nauwkeurig uitspreken, bijvoorbeeld een bedrijfsnaam
 
 **Kenmerken**
 
-| Kenmerk | Beschrijving | Vereist / Optioneel |
-|-----------|-------------|---------------------|
-| `uri` | Het adres van het externe PLS-document. | Vereist. |
+| Kenmerk | Beschrijving                               | Vereist / Optioneel |
+|-----------|-------------------------------------------|---------------------|
+| `uri`     | Het adres van het externe PLS-document. | Vereist.           |
 
 **Gebruik**
 
@@ -571,7 +568,7 @@ Hieronder volgen de ondersteunde inhoudstypen voor de `interpret-as` en `format`
 | `digits`, `number_digit` | | De tekst wordt gesproken als een opeenvolging van afzonderlijke cijfers. De spraaksynthese-engine spreekt uit:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />Zoals "1 2 3 4 5 6 7 8 9." |
 | `fraction` | | De tekst wordt gesproken als een fractioneel getal. De spraaksynthese-engine spreekt uit:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />Als 'drie achtste van een centimeter'. |
 | `ordinal` | | De tekst wordt gesproken als een ordinaal getal. De spraaksynthese-engine spreekt uit:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />Als "Selecteer de derde optie". |
-| `telephone` | | De tekst wordt gesproken als telefoonnummer. Het `format` kenmerk kan cijfers bevatten die een landcode vertegenwoordigen. Bijvoorbeeld "1" voor de Verenigde Staten of "39" voor Italië. De spraaksynthese-engine kan deze informatie gebruiken om de uitspraak van een telefoonnummer te begeleiden. Het telefoonnummer kan ook de landcode bevatten, en zo ja, `format`heeft voorrang op de landcode in de . De spraaksynthese-engine spreekt uit:<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />As "My number is area code eight eight eight five five five one two one two." |
+| `telephone` | | De tekst wordt gesproken als telefoonnummer. Het `format` kenmerk kan cijfers bevatten die een landcode vertegenwoordigen. Bijvoorbeeld "1" voor de Verenigde Staten of "39" voor Italië. De spraaksynthese-engine kan deze informatie gebruiken om de uitspraak van een telefoonnummer te begeleiden. Het telefoonnummer kan ook de landcode bevatten, en zo ja, `format`heeft voorrang op de landcode in de . De spraaksynthese-engine spreekt uit:<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />Zoals "Mijn nummer is netnummer acht acht acht vijf vijf vijf vijf een twee een twee een twee." |
 | `time` | hms12, hms24 | De tekst wordt gesproken als een tijd. Het `format` kenmerk geeft aan of de tijd is opgegeven met een klok van 12 uur (hms12) of een 24-uursklok (hms24). Gebruik een dubbele punt om getallen te scheiden die uren, minuten en seconden vertegenwoordigen. De volgende voorbeelden zijn geldige tijdvoorbeelden: 12:35, 1:14:32, 08:15 en 02:50:45. De spraaksynthese-engine spreekt uit:<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />Zoals "De trein vertrekt om vier A M." |
 
 **Gebruik**
@@ -614,9 +611,9 @@ Alle audio die in het SSML-document is opgenomen, moet aan deze vereisten voldoe
 
 **Kenmerken**
 
-| Kenmerk | Beschrijving | Vereist / Optioneel |
-|-----------|-------------|---------------------|
-| `src` | Hiermee geeft u de locatie/URL van het audiobestand op. | Vereist als u het audio-element in uw SSML-document gebruikt. |
+| Kenmerk | Beschrijving                                   | Vereist / Optioneel                                        |
+|-----------|-----------------------------------------------|------------------------------------------------------------|
+| `src`     | Hiermee geeft u de locatie/URL van het audiobestand op. | Vereist als u het audio-element in uw SSML-document gebruikt. |
 
 **Voorbeeld**
 

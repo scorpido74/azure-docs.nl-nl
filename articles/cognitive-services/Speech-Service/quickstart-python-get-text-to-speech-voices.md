@@ -3,19 +3,19 @@ title: Tekst-naar-spraakstemmen, Python - Spraakservice weergeven
 titleSuffix: Azure Cognitive Services
 description: In dit artikel leert u hoe u de volledige lijst met standaard- en neurale stemmen voor een regio/eindpunt krijgen met Python. De lijst wordt geretourneerd als JSON en de beschikbaarheid van spraak verschilt per regio.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 04/13/2020
-ms.author: dapine
-ms.openlocfilehash: e55030144bcabbf192b4095a5a2e6ed565cedf83
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: trbye
+ms.openlocfilehash: b388c8d8b61e2fc638ae2bce5bc6d9eeb25ee0d4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258598"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81401019"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>Download de lijst met tekst-naar-spraakstemmen met Python
 

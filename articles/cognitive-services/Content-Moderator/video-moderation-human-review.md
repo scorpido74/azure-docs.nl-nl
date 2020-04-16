@@ -1,25 +1,25 @@
 ---
 title: Videomoderatie met menselijke beoordeling - Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Gebruik machineondersteunde videomoderatie en tools voor menselijke beoordeling om ongepaste inhoud te matigen
+description: Gebruik machineondersteunde videomoderatie en het gereedschap Controleren om ongepaste inhoud te beheren
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c031a890efc7fad7e5d9caefce3b0e66c515d90
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72754157"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404239"
 ---
 # <a name="video-moderation-with-human-review"></a>Videomoderatie met menselijke beoordeling
 
-Gebruik de machine-ondersteunde [videomoderatie](video-moderation-api.md) en [human review](Review-Tool-User-Guide/human-in-the-loop.md) tool van Content Moderator om video's en transcripties te modereren voor inhoud voor volwassenen (expliciete) en pikante (suggestieve) inhoud om de beste resultaten voor je bedrijf te krijgen.
+Gebruik de machine-ondersteunde [videomoderatie-](video-moderation-api.md) en [beoordelingstool van](Review-Tool-User-Guide/human-in-the-loop.md) Content Moderator om video's en transcripties voor inhoud voor volwassenen (expliciete) en pikante (suggestieve) inhoud te modereren om de beste resultaten voor je bedrijf te krijgen.
 
 ## <a name="video-trained-classifier-preview"></a>Door video getrainde classifier (preview)
 

@@ -3,21 +3,21 @@ title: Gegevens voorbereiden op aangepaste spraak - Spraakservice
 titleSuffix: Azure Cognitive Services
 description: Wanneer u de nauwkeurigheid van microsoft-spraakherkenning en training van uw aangepaste modellen test, hebt u audio- en tekstgegevens nodig. Op deze pagina behandelen we de soorten gegevens, hoe ze moeten worden gebruikt en beheren we ze.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.author: dapine
-ms.openlocfilehash: d6e377ca4f33c0160267b23daaaaef5e07c271bb
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: 78857709447f99895c36f23d8760f44f8468ba7c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398687"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402130"
 ---
-# <a name="prepare-data-for-custom-speech"></a>Gegevens voorbereiden op aangepaste spraak
+# <a name="prepare-data-for-custom-speech"></a>Gegevens voorbereiden voor Custom Speech
 
 Wanneer u de nauwkeurigheid van microsoft-spraakherkenning en training van uw aangepaste modellen test, hebt u audio- en tekstgegevens nodig. Op deze pagina behandelen we de soorten gegevens, hoe ze moeten worden gebruikt en beheren we ze.
 

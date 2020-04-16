@@ -3,20 +3,20 @@ title: 'Snelstart: de spraakapparaten SDK uitvoeren op Windows, Linux of Android
 titleSuffix: Azure Cognitive Services
 description: Voorwaarden en instructies om aan de slag te gaan met een Windows, Linux of Android Speech Devices SDK.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/20/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: platforms-set-of-three
-ms.openlocfilehash: 598a40e0a76606a0fec8f8a029ac08c0d6e9696e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9303661efc65eb660093c01643073650f360f564
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77563225"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400112"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows-linux-or-android"></a>Snelstart: de SDK-voorbeeld-app voor spraakapparaten uitvoeren op Windows, Linux of Android
 

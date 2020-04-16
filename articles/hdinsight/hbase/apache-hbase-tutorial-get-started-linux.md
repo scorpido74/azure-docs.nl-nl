@@ -1,20 +1,19 @@
 ---
 title: Zelfstudie - Apache HBase gebruiken in Azure HDInsight
 description: Volg deze Apache HBase tutorial om te beginnen met het gebruik van hadoop op HDInsight. Maak tabellen vanuit de HBase-shell en gebruik Hive om query's uit te voeren op de tabellen.
-keywords: hbase-opdracht, hbase-voorbeeld
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: tutorial
-ms.date: 06/25/2019
-ms.author: hrasheed
-ms.openlocfilehash: e43d2d64535085a9b22d2febc761fc7026498ba8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 04/14/2020
+ms.openlocfilehash: a601d54ebda074a25a988ac2a115f6418dd5c7ee
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71077139"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390265"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Zelfstudie: Apache HBase gebruiken in Azure HDInsight
 
@@ -33,17 +32,17 @@ In deze zelfstudie leert u het volgende:
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Bash. De voorbeelden in dit artikel gebruiken de Bash-shell op Windows 10 voor de krulopdrachten. Zie [Windows Subsystem for Linux Installation Guide voor Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) voor installatiestappen.  Andere [Unix schelpen](https://www.gnu.org/software/bash/) zal ook werken.  De krul voorbeelden, met enkele kleine wijzigingen, kan werken op een Windows Command prompt.  U ook de Windows PowerShell-cmdlet [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod)gebruiken.
+* Bash. De voorbeelden in dit artikel gebruiken de Bash-shell op Windows 10 voor de krulopdrachten. Zie [Windows Subsystem for Linux Installation Guide voor Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) voor installatiestappen.  Andere [Unix schelpen](https://www.gnu.org/software/bash/) zal ook werken.  De krul voorbeelden, met enkele kleine wijzigingen, kan werken op een Windows Command prompt.  Of u de Windows PowerShell-cmdlet [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod)gebruiken.
 
 ## <a name="create-apache-hbase-cluster"></a>Apache HBase-cluster maken
 
-In de volgende procedure wordt een Azure Resource Manager-sjabloon gebruikt om een HBase-cluster en het afhankelijke standaard Azure Storage-account te maken. Zie [Op Linux gebaseerde Hadoop-clusters maken in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) voor meer inzicht in de parameters die voor deze procedure worden gebruikt en andere methoden voor het maken van clusters.
+De volgende procedure maakt gebruik van een Azure Resource Manager-sjabloon om een HBase-cluster te maken. De sjabloon maakt ook het afhankelijke standaard Azure Storage-account. Zie [Op Linux gebaseerde Hadoop-clusters maken in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) voor meer inzicht in de parameters die voor deze procedure worden gebruikt en andere methoden voor het maken van clusters.
 
 1. Selecteer de volgende afbeelding om de sjabloon in de Azure-portal te openen. De sjabloon bevindt zich in [Azure quickstart-sjablonen.](https://azure.microsoft.com/resources/templates/)
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-2. Voer op de blade **Aangepaste implementatie** de volgende waarden in:
+2. Voer in het dialoogvenster **Aangepaste implementatie** de volgende waarden in:
 
     |Eigenschap |Beschrijving |
     |---|---|
@@ -56,7 +55,7 @@ In de volgende procedure wordt een Azure Resource Manager-sjabloon gebruikt om e
 
     Andere parameters zijn optioneel.  
 
-    Elk cluster is afhankelijk van een Azure Storage-account. Nadat u een cluster hebt verwijderd, blijven de gegevens in het opslagaccount staan. De naam van het standaardopslagaccount voor het cluster is de naam waaraan 'store' is toegevoegd. Deze is vastgelegd in de sectie met sjabloonvariabelen.
+    Elk cluster is afhankelijk van een Azure Storage-account. Nadat u een cluster hebt verwijderd, blijven de gegevens in het opslagaccount. De naam van het standaardopslagaccount voor het cluster is de naam waaraan 'store' is toegevoegd. Het is hardcoded in de sectie sjabloonvariabelen.
 
 3. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** en selecteer vervolgens **Kopen**. Het duurt ongeveer 20 minuten om een cluster te maken.
 
@@ -180,7 +179,7 @@ U gegevens in HBase-tabellen opvragen met [Apache Hive](https://hive.apache.org/
 
     Zie voor meer informatie over Beeline [Hive gebruiken met Hadoop in HDInsight met Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
 
-1. Voer het volgende [HiveQL-script](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) uit om een Hive-tabel te maken die wordt toegewezen aan de HBase-tabel. Zorg ervoor dat u de voorbeeldtabel hebt gemaakt waarnaar eerder in dit artikel is verwezen met behulp van de hbase-shell voordat u deze instructie uitvoert.
+1. Voer het volgende [HiveQL-script](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) uit om een Hive-tabel te maken die wordt toegewezen aan de HBase-tabel. Zorg ervoor dat u de voorbeeldtabel hebt gemaakt waarnaar eerder in dit artikel is verwezen met de shell HBase voordat u deze instructie uitvoert.
 
     ```hiveql
     CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -203,7 +202,7 @@ U gegevens in HBase-tabellen opvragen met [Apache Hive](https://hive.apache.org/
 
 De REST API is beveiligd via [basisverificatie](https://en.wikipedia.org/wiki/Basic_access_authentication). U moet aanvragen altijd uitvoeren via een beveiligde HTTP-verbinding (HTTPS). Zo zorgt u ervoor dat uw referenties veilig worden verzonden naar de server.
 
-1. Initiëren omgevingsvariabele voor gebruiksgemak. Bewerk de onderstaande opdrachten `MYPASSWORD` door te vervangen door het wachtwoord voor het inloggen van het cluster. Vervang `MYCLUSTERNAME` door de naam van uw HBase-cluster. Voer vervolgens de opdrachten in.
+1. Stel omgevingsvariabele in voor gebruiksgemak. Bewerk de onderstaande opdrachten `MYPASSWORD` door te vervangen door het wachtwoord voor het inloggen van het cluster. Vervang `MYCLUSTERNAME` door de naam van uw HBase-cluster. Voer vervolgens de opdrachten in.
 
     ```bash
     export password='MYPASSWORD'
@@ -240,10 +239,10 @@ De REST API is beveiligd via [basisverificatie](https://en.wikipedia.org/wiki/Ba
     -v
     ```
 
-    U moet de waarden die in de schakeloptie -d zijn opgegeven, met Base64 coderen. In het voorbeeld:
+    Base64 codeert de waarden die zijn opgegeven in de -d-schakelaar. In het voorbeeld:
 
    * MTAwMA==: 1000
-   * UGVyc29uYWw6TmFtZQ==: Persoonlijk:Naam
+   * UGVyc29uYWw6TmFtZQ==: Persoonlijk: Naam
    * Sm9obiBEb2xl: Joep Davids
 
      [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) maakt het mogelijk om meerdere waarden (in batch) in te voegen.
@@ -298,7 +297,7 @@ HBase in HDInsight wordt geleverd met een webgebruikersinterface voor het bewake
 
 Om inconsistenties te voorkomen, wordt u aangeraden de HBase-tabellen uit te schakelen voordat u het cluster verwijdert. U de opdracht `disable 'Contacts'`HBase gebruiken. Als u deze toepassing verder niet meer gebruikt, verwijdert u het HBase-cluster dat u hebt gemaakt, via de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Typ **HDInsight** in het **Zoekvak** bovenaan.
 1. Selecteer onder **Services** de optie **HDInsight-clusters**.
 1. Klik in de lijst met HDInsight-clusters die wordt weergegeven, op de **...** naast het cluster dat u voor deze zelfstudie hebt gemaakt.
@@ -306,7 +305,7 @@ Om inconsistenties te voorkomen, wordt u aangeraden de HBase-tabellen uit te sch
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u een Apache HBase-cluster maakt en hoe u tabellen maakt en de gegevens in die tabellen bekijkt vanuit de HBase-shell. U hebt ook geleerd hoe u een Hive-query op gegevens in HBase-tabellen uitvoert en hoe u de HBase C# REST API's gebruikt om een HBase-tabel te maken en gegevens op te halen uit de tabel. Voor meer informatie zie:
+In deze zelfstudie hebt u geleerd hoe u een Apache HBase-cluster maken. En hoe u tabellen maakt en de gegevens in die tabellen bekijkt vanuit de HBase-shell. U hebt ook geleerd hoe u een Hive-query op gegevens in HBase-tabellen gebruiken. En hoe u de HBase C# REST API's gebruiken om een HBase-tabel te maken en gegevens uit de tabel op te halen. Voor meer informatie zie:
 
 > [!div class="nextstepaction"]
 > [HDInsight HBase overzicht](./apache-hbase-overview.md)

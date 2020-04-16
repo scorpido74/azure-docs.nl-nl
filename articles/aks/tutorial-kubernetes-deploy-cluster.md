@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 72d7d3b8a4dc2831f397326d54560358c19b9b92
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 609ac66ca27d5cad7dd2fb295c3a2a721a1cda16
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616813"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392699"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Zelfstudie: Een AKS-cluster (Azure Kubernetes Service) implementeren
 
@@ -33,7 +33,7 @@ Voor deze zelfstudie moet u Azure CLI versie 2.0.53 of hoger uitvoeren. Voer `az
 
 AKS-clusters kunnen gebruikmaken van op rollen gebaseerd toegangsbeheer (RBAC) van Kubernetes. Met deze vorm van toegangsbeheer kunt u de toegang tot resources definiëren op basis van rollen die zijn toegewezen aan gebruikers. Machtigingen worden gecombineerd als aan een gebruiker meerdere rollen zijn toegewezen, en machtigingen kunnen gelden voor één enkele naamruimte of voor een heel cluster. Standaard schakelt de Azure CLI automatisch RBAC in wanneer u een AKS-cluster maakt.
 
-Maak een AKS-cluster met behulp van [az aks create][]. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluste* gemaakt in de resourcegroep met de naam *myResourceGroup*. Deze resourcegroep is gemaakt in de [vorige zelfstudie][aks-tutorial-prepare-acr]. Als u wilt dat een AKS-cluster kan communiceren met andere Azure-bronnen, wordt automatisch een Azure Active Directory-serviceprincipal gemaakt, omdat u er geen hebt opgegeven. Deze serviceprincipal [krijgt hier het recht om afbeeldingen op te halen][container-registry-integration] uit het ACR-exemplaar (Azure Container Registry) dat u in de vorige zelfstudie hebt gemaakt.
+Maak een AKS-cluster met behulp van [az aks create][]. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluste* gemaakt in de resourcegroep met de naam *myResourceGroup*. Deze resourcegroep is gemaakt in de [vorige zelfstudie][aks-tutorial-prepare-acr]. Als u wilt dat een AKS-cluster kan communiceren met andere Azure-bronnen, wordt automatisch een Azure Active Directory-serviceprincipal gemaakt, omdat u er geen hebt opgegeven. Deze serviceprincipal [krijgt hier het recht om afbeeldingen op te halen][container-registry-integration] uit het ACR-exemplaar (Azure Container Registry) dat u in de vorige zelfstudie hebt gemaakt. Houd er rekening mee dat u een [beheerde identiteit](use-managed-identity.md) gebruiken in plaats van een serviceprincipal voor eenvoudiger beheer.
 
 ```azurecli
 az aks create \

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: b0204673c0706403c8c5a7367be19e590d9cb134
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 46dd89694857138d28255d5b1a86a8c947680520
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "65604084"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398672"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Zelfstudie: Azure Data Box bestellen
 
@@ -33,30 +33,22 @@ Zorg dat u aan de volgende configuratievereisten voor de Data Box-service en het
 
 ### <a name="for-service"></a>Voor de service
 
-Zorg voordat u begint voor het volgende:
-- U hebt een Microsoft Azure Storage-account met toegangsreferenties.
-- Zorg ervoor dat het abonnement dat u voor de Data Box-service gebruikt, een van de volgende typen is:
-    - Microsoft Enterprise Agreement (EA). Meer informatie over [EA-abonnementen](https://azure.microsoft.com/pricing/enterprise-agreement/).
-    - Cloud Solution Provider (CSP). Meer informatie over het [Azure CSP-programma](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
-    - Microsoft Azure Sponsorship. Meer informatie over het [Azure Sponsorship-programma](https://azure.microsoft.com/offers/ms-azr-0036p/).
-
-- U hebt eigenaars- of inzenderstoegang tot het abonnement nodig om een Data Box-order te kunnen maken.
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>Voor het apparaat
 
 Zorg voordat u begint voor het volgende:
 - Er is een hostcomputer verbonden met het datacenternetwerk. Data Box kopieert de gegevens vanaf deze computer. Uw hostcomputer moet een ondersteund besturingssysteem hebben, zoals beschreven in [Systeemvereisten voor Azure Data Box](data-box-system-requirements.md).
-- Uw datacenter moet een netwerk met hoge snelheid hebben. Het wordt aangeraden dat u ten minste één 10 GbE-verbinding hebt. Als er geen 10 GbE-verbinding beschikbaar is, kan een 1 GbE-gegevenskoppeling worden gebruikt. Dit heeft echter wel invloed op de kopieersnelheid.
-
+- Uw datacenter moet een netwerk met hoge snelheid hebben. Het wordt aangeraden dat u beschikt over minstens één 10 GbE-verbinding. Als er geen 10 GbE-verbinding beschikbaar is, kan een 1 GbE-gegevenskoppeling worden gebruikt. Dit heeft echter wel invloed op de kopieersnelheid.
 
 ## <a name="order-data-box"></a>Data Box bestellen
 
 Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
 
-1. Gebruik uw Microsoft Azure-referenties om u [https://portal.azure.com](https://portal.azure.com)aan te melden op deze URL: .
+1. Gebruik uw Microsoft Azure-referenties om u aan te melden op deze URL: [https://portal.azure.com](https://portal.azure.com).
 2. Klik op **+ Een resource maken** en zoek naar *Azure Data Box*. Klik op **Azure Data Box**.
     
-   [![Zoeken in Azure-gegevensvak 1](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
+   [![Zoek naar Azure Data Box 1](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
 
 3. Klik **op Maken**.
 
@@ -77,9 +69,9 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
     
     |Instelling  |Waarde  |
     |---------|---------|
-    |Name     |  Geef een beschrijvende naam op om de bestelling te volgen. <br> De naam kan tussen 3 en 24 tekens bevatten (letters, cijfers en afbreekstreepjes). <br> De naam moet beginnen en eindigen met een letter of cijfer.      |
+    |Naam     |  Geef een beschrijvende naam op om de bestelling te volgen. <br> De naam kan tussen 3 en 24 tekens bevatten (letters, cijfers en afbreekstreepjes). <br> De naam moet beginnen en eindigen met een letter of cijfer.      |
     |Resourcegroep     |   Gebruik een bestaande of maak een nieuwe. <br> Een resourcegroep is een logische container voor resources die samen kunnen worden beheerd of geïmplementeerd.         |
-    |Doel-Azure-regio     | Selecteer een regio voor uw opslagaccount. <br> Ga voor meer informatie naar [de beschikbaarheid van de regio.](data-box-overview.md#region-availability)        |
+    |Doel-Azure-regio     | Selecteer een regio voor uw opslagaccount. <br> Ga naar [Beschikbaarheid in de regio](data-box-overview.md#region-availability) voor meer informatie.        |
     |Opslaglocatie     | Kies een opslagaccount, beheerde schijven of beide. <br> Selecteer een of meer opslagaccounts in de gefilterde lijst van een bestaand opslagaccount, gebaseerd op de opgegeven Azure-regio. Data Box kan worden gekoppeld aan maximaal 10 opslagaccounts. <br> U kunt ook een nieuw account van het type **Algemeen gebruik v1**, **Algemeen gebruik v2** of **Blob-opslag** maken. <br>Opslagaccounts met virtuele netwerken worden ondersteund. Als u wilt dat de Data Box-service kan werken met beveiligde opslagaccounts, schakelt u in de firewallinstellingen van het opslagaccount de vertrouwde services in. Zie voor meer informatie hoe u [Azure Data Box toevoegt als een vertrouwde service](../storage/common/storage-network-security.md#exceptions).|
 
     Als u een opslagaccount selecteert als de opslaglocatie, ziet u het volgende scherm:

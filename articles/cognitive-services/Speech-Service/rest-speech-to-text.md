@@ -3,21 +3,21 @@ title: Spraak-naar-tekst API-verwijzing (REST) - Spraakservice
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het gebruik van de REST-API voor spraak naar tekst. In dit artikel leert u over autorisatieopties, queryopties, hoe u een aanvraag structureert en een antwoord ontvangt.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.author: dapine
-ms.openlocfilehash: 759ea697e4093da5bfc1c082c886c6dfda636f42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: fbb4d114d1fee21d7950e53b06fc16c96b5c930b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474795"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400186"
 ---
-# <a name="speech-to-text-rest-api"></a>REST API's voor spraak-naar-tekst
+# <a name="speech-to-text-rest-api"></a>REST API voor spraak-naar-tekst
 
 Als alternatief voor de [Speech SDK](speech-sdk.md)u met de Spraakservice spraak naar tekst converteren met behulp van een REST API. Elk toegankelijk eindpunt is gekoppeld aan een regio. Voor uw toepassing is een abonnementssleutel vereist voor het eindpunt dat u wilt gebruiken. De REST API is zeer beperkt, en het mag alleen worden gebruikt in gevallen waar de [Speech SDK](speech-sdk.md) niet kan.
 

@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/14/2020
-ms.author: dapine
-ms.openlocfilehash: 668cf9e831191a5d649f7dd82af03eb637bb0d3a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.date: 04/15/2020
+ms.author: trbye
+ms.openlocfilehash: b11194640c4d049c90f85974022908dce6b4fd79
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314224"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399804"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,7 +28,15 @@ Bovendien, afhankelijk van de doelomgeving gebruik maken van een van de volgende
 # <a name="import"></a>[Importeren](#tab/import)
 
 ```javascript
-import * as sdk from "microsoft-cognitiveservices-speech-sdk";
+import {
+    AudioConfig,
+    CancellationDetails,
+    CancellationReason,
+    PhraseListGrammar,
+    ResultReason,
+    SpeechConfig,
+    SpeechRecognizer
+} from "microsoft-cognitiveservices-speech-sdk";
 ```
 
 Zie export `import`en import voor meer informatie over , zie <a href="https://javascript.info/import-export" target="_blank">export en import <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
@@ -44,14 +52,14 @@ Voor meer `require`informatie over , zie <a href="https://nodejs.org/en/knowledg
 
 # <a name="script"></a>[uit](#tab/script)
 
-Download en win het <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span> </a> *microsoft.cognitiveservices.speech.sdk.bundle.js-bestand* en plaats deze in een map die toegankelijk is voor uw HTML-bestand.
+Download en win het <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span> </a> *microsoft.cognitiveservices.speech.bundle.js-bestand* en plaats deze in een map die toegankelijk is voor uw HTML-bestand.
 
 ```html
-<script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
+<script src="microsoft.cognitiveservices.speech.bundle.js"></script>;
 ```
 
 > [!TIP]
-> Als u een webbrowser target en `<script>` de tag gebruikt. het `sdk` voorvoegsel is niet nodig. Het `sdk` voorvoegsel is een alias `import` `require` die we gebruiken om onze of module een naam te geven.
+> Als u een webbrowser target en `<script>` de tag gebruikt. het `sdk` voorvoegsel is niet nodig. Het `sdk` voorvoegsel is een `require` alias die wordt gebruikt om de module een naam te geven.
 
 ---
 
@@ -72,7 +80,7 @@ Er zijn een paar manieren waarop [`SpeechConfig`](https://docs.microsoft.com/jav
 Laten we eens kijken [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) hoe een wordt gemaakt met behulp van een sleutel en regio. Zie de [pagina regioondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden.
 
 ```javascript
-const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
 ## <a name="initialize-a-recognizer"></a>Initialiseren van een herkenningspunt
@@ -82,7 +90,7 @@ Nadat u een [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft
 Als u spraak herkent met de standaardmicrofoon van uw apparaat, ziet deze [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) er als volgt uit:
 
 ```javascript
-const recognizer = new sdk.SpeechRecognizer(speechConfig);
+const recognizer = new SpeechRecognizer(speechConfig);
 ```
 
 Als u het audio-invoerapparaat wilt opgeven, moet [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) u een `audioConfig` parameter maken [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)en de parameter opgeven bij het initialiseren van uw .
@@ -93,15 +101,15 @@ Als u het audio-invoerapparaat wilt opgeven, moet [`AudioConfig`](https://docs.m
 Als `AudioConfig` volgt naar het object verwijzen:
 
 ```javascript
-const audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
-const speechConfig = sdk.SpeechConfig.fromSubscription(speechConfig, audioConfig);
+const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
+const speechConfig = SpeechConfig.fromSubscription(speechConfig, audioConfig);
 ```
 
 Als u een audiobestand wilt verstrekken in plaats van een microfoon `audioConfig`te gebruiken, moet u nog steeds een . Dit kan echter alleen bij het targeten van **Node.js** en wanneer u [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest)een - in plaats van aanteroepen `fromDefaultMicrophoneInput`- maakt, belt `fromWavFileOutput` u en geeft u de `filename` parameter door.
 
 ```javascript
-const audioConfig = sdk.AudioConfig.fromWavFileInput("YourAudioFile.wav");
-const speechConfig = sdk.SpeechConfig.fromSubscription(speechConfig, audioConfig);
+const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
+const speechConfig = SpeechConfig.fromSubscription(speechConfig, audioConfig);
 ```
 
 ## <a name="recognize-speech"></a>Spraak herkennen
@@ -132,20 +140,20 @@ Je moet wat code schrijven om het resultaat te verwerken. In dit voorbeeld [`res
 
 ```javascript
 switch (result.reason) {
-    case sdk.ResultReason.RecognizedSpeech:
-        console.log(`RECOGNIZED: Text=${result.Text}`);
+    case ResultReason.RecognizedSpeech:
+        console.log(`RECOGNIZED: Text=${result.text}`);
         console.log("    Intent not recognized.");
         break;
-    case sdk.ResultReason.NoMatch:
+    case ResultReason.NoMatch:
         console.log("NOMATCH: Speech could not be recognized.");
         break;
-    case sdk.ResultReason.Canceled:
-        const cancellation = sdk.CancellationDetails.fromResult(result);
-        console.log(`CANCELED: Reason=${cancellation.Reason}`);
+    case ResultReason.Canceled:
+        const cancellation = CancellationDetails.fromResult(result);
+        console.log(`CANCELED: Reason=${cancellation.reason}`);
 
-        if (cancellation.Reason == sdk.CancellationReason.Error) {
+        if (cancellation.reason == CancellationReason.Error) {
             console.log(`CANCELED: ErrorCode=${cancellation.ErrorCode}`);
-            console.log(`CANCELED: ErrorDetails=${cancellation.ErrorDetails}`);
+            console.log(`CANCELED: ErrorDetails=${cancellation.errorDetails}`);
             console.log("CANCELED: Did you update the subscription info?");
         }
         break;
@@ -160,7 +168,7 @@ Continue herkenning is een beetje meer betrokken dan single-shot erkenning. U mo
 Laten we beginnen met het definiëren van [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)de input en het initialiseren van een:
 
 ```javascript
-const recognizer = new sdk.SpeechRecognizer(speechConfig);
+const recognizer = new SpeechRecognizer(speechConfig);
 ```
 
 We abonneren ons op de [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)evenementen die vanuit de .
@@ -171,32 +179,32 @@ We abonneren ons op de [`SpeechRecognizer`](https://docs.microsoft.com/javascrip
 * [`canceled`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#canceled): Signaal voor gebeurtenissen die geannuleerde herkenningsresultaten bevatten (met vermelding van een herkenningspoging die als gevolg is geannuleerd of een directe annuleringsaanvraag of, als alternatief, een transport- of protocolfout).
 
 ```javascript
-recognizer.Recognizing = (s, e) => {
-    console.log(`RECOGNIZING: Text=${e.Result.Text}`);
+recognizer.recognizing = (s, e) => {
+    console.log(`RECOGNIZING: Text=${e.result.text}`);
 };
 
 recognizer.recognized = (s, e) => {
-    if (e.Result.Reason == sdk.ResultReason.RecognizedSpeech) {
-        console.log(`RECOGNIZED: Text=${e.Result.Text}`);
+    if (e.result.reason == ResultReason.RecognizedSpeech) {
+        console.log(`RECOGNIZED: Text=${e.result.text}`);
     }
-    else if (e.Result.Reason == sdk.ResultReason.NoMatch) {
+    else if (e.result.reason == ResultReason.NoMatch) {
         console.log("NOMATCH: Speech could not be recognized.");
     }
 };
 
-recognizer.Canceled = (s, e) => {
-    console.log(`CANCELED: Reason=${e.Reason}`);
+recognizer.canceled = (s, e) => {
+    console.log(`CANCELED: Reason=${e.reason}`);
 
-    if (e.Reason == sdk.CancellationReason.Error) {
-        console.log(`"CANCELED: ErrorCode=${e.ErrorCode}`);
-        console.log(`"CANCELED: ErrorDetails=${e.ErrorDetails}`);
+    if (e.reason == CancellationReason.Error) {
+        console.log(`"CANCELED: ErrorCode=${e.errorCode}`);
+        console.log(`"CANCELED: ErrorDetails=${e.errorDetails}`);
         console.log("CANCELED: Did you update the subscription info?");
     }
 
     recognizer.stopContinuousRecognitionAsync();
 };
 
-recognizer.SessionStopped = (s, e) => {
+recognizer.sessionStopped = (s, e) => {
     console.log("\n    Session stopped event.");
     recognizer.stopContinuousRecognitionAsync();
 };
@@ -234,7 +242,7 @@ De [`speechRecognitionLanguage`](https://docs.microsoft.com/javascript/api/micro
 
 ## <a name="improve-recognition-accuracy"></a>De herkenningsnauwkeurigheid verbeteren
 
-Er zijn een paar manieren om de herkenningsnauwkeurigheid met de Speech SDK te verbeteren. Laten we eens kijken naar phrase lists. Woordgroeplijsten worden gebruikt om bekende zinnen in audiogegevens te identificeren, zoals de naam van een persoon of een specifieke locatie. Enkele woorden of volledige woordgroepen kunnen worden toegevoegd aan een woordgroeplijst. Tijdens de herkenning wordt een vermelding in een woordenlijst gebruikt als een exacte overeenkomst voor de hele woordgroep in de audio is opgenomen. Als er geen exacte overeenkomst wordt gevonden met de woordgroep, wordt de herkenning niet ondersteund.
+Er zijn een paar manieren om de herkenningsnauwkeurigheid te verbeteren met de spraaklijsten Laten we eens kijken naar Woordlijsten. Woordgroeplijsten worden gebruikt om bekende zinnen in audiogegevens te identificeren, zoals de naam van een persoon of een specifieke locatie. Enkele woorden of volledige woordgroepen kunnen worden toegevoegd aan een woordgroeplijst. Tijdens de herkenning wordt een vermelding in een woordenlijst gebruikt als een exacte overeenkomst voor de hele woordgroep in de audio is opgenomen. Als er geen exacte overeenkomst wordt gevonden met de woordgroep, wordt de herkenning niet ondersteund.
 
 > [!IMPORTANT]
 > De functie Lijst met zinnen is alleen beschikbaar in het Engels.
@@ -244,7 +252,7 @@ Als u een woordgroeplijst [`PhraseListGrammar`](https://docs.microsoft.com/javas
 Wijzigingen die [`PhraseListGrammar`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest) van kracht worden op de volgende herkenning of na een heraansluiting met de spraakservice.
 
 ```javascript
-const phraseList = sdk.PhraseListGrammar.fromRecognizer(recognizer);
+const phraseList = PhraseListGrammar.fromRecognizer(recognizer);
 phraseList.addPhrase("Supercalifragilisticexpialidocious");
 ```
 

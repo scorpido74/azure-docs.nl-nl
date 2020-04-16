@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: 49078d2f374203a9fab4fe0f5e3881f6b1b22959
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e2ee959fb6fc7e8454919c71cfa20e2bb9055dfb
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79130327"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393851"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Zelfstudie: Afbeeldingsgegevens uploaden in de cloud met Azure Storage
 
@@ -30,7 +30,7 @@ Deze zelfstudie is deel één van een serie. In deze zelfstudie leert u hoe u ee
 In deel 1 van de reeks leert u het volgende:
 
 > [!div class="checklist"]
-> * Een opslagaccount maken
+> * Create a storage account
 > * Een container maken en machtigingen instellen
 > * Een toegangssleutel ophalen
 > * Een web-app implementeren in Azure
@@ -55,7 +55,7 @@ In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` 
 az group create --name myResourceGroup --location southeastasia
 ```
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Create a storage account
 
 In het voorbeeld worden afbeeldingen geüpload naar een blobcontainer in een Azure-opslagaccount. Een opslagaccount biedt een unieke naamruimte voor het opslaan en openen van uw Azure Storage-gegevensobjecten. Maak een opslagaccount in de resourcegroep die u hebt gemaakt met behulp van de opdracht [az storage account create](/cli/azure/storage/account).
 
@@ -134,12 +134,12 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 ```
 
 # <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
-App Service ondersteunt diverse manieren om inhoud in een web-app te implementeren. In deze zelfstudie implementeert u de web-app vanaf een [openbare GitHub-voorbeeldopslagplaats](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node) (Engelstalig). Configureer GitHub-implementatie naar de webtoepassing met de opdracht [az webapp deployment source config](/cli/azure/webapp/deployment/source).
+App Service ondersteunt diverse manieren om inhoud in een web-app te implementeren. In deze zelfstudie implementeert u de web-app vanaf een [openbare GitHub-voorbeeldopslagplaats](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10) (Engelstalig). Configureer GitHub-implementatie naar de webtoepassing met de opdracht [az webapp deployment source config](/cli/azure/webapp/deployment/source).
 
 ```azurecli-interactive
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
-  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node
+  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
 ```
 
 ---
@@ -300,7 +300,7 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>Controleren of de afbeelding in het opslagaccount wordt weergegeven
 
-Meld u aan bij [Azure Portal](https://portal.azure.com). In het linkermenu selecteert u **opslagaccounts** en vervolgens de naam van uw opslagaccount. Selecteer **Containers**en selecteer vervolgens de **afbeeldingencontainer.**
+Meld u aan bij de [Azure-portal](https://portal.azure.com). In het linkermenu selecteert u **opslagaccounts** en vervolgens de naam van uw opslagaccount. Selecteer **Containers**en selecteer vervolgens de **afbeeldingencontainer.**
 
 Controleer of de afbeelding in de container wordt weergegeven.
 
@@ -310,7 +310,7 @@ Controleer of de afbeelding in de container wordt weergegeven.
 
 Als u de weergave van miniaturen wilt testen, uploadt u een afbeelding naar de container **thumbnails** om te controleren of de app de container **thumbnails** kan lezen.
 
-Meld u aan bij [Azure Portal](https://portal.azure.com). In het linkermenu selecteert u **opslagaccounts** en vervolgens de naam van uw opslagaccount. Selecteer **Containers**en selecteer vervolgens de **miniaturencontainer.** Selecteer **Uploaden** om het deelvenster **Blob uploaden** te openen.
+Meld u aan bij de [Azure-portal](https://portal.azure.com). In het linkermenu selecteert u **opslagaccounts** en vervolgens de naam van uw opslagaccount. Selecteer **Containers**en selecteer vervolgens de **miniaturencontainer.** Selecteer **Uploaden** om het deelvenster **Blob uploaden** te openen.
 
 Kies een bestand met de bestandenkiezer en selecteer **Uploaden**.
 

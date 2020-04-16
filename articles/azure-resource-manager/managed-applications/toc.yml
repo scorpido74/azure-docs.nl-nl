@@ -8,13 +8,11 @@
   expanded: true
   items:
     - name: Toepassingsdefinitie publiceren
-      href: publish-managed-app-definition-quickstart.md
+      href: publish-service-catalog-app.md
     - name: Servicecatalogus-app implementeren
       href: deploy-service-catalog-quickstart.md
 - name: Zelfstudies
   items:
-    - name: Definitiebestanden maken
-      href: publish-service-catalog-app.md
     - name: Marketplace-toepassing publiceren
       href: publish-marketplace-app.md
     - name: Een beheerde toepassing met aangepaste provider maken
@@ -120,13 +118,13 @@
               href: microsoft-network-publicipaddresscombo.md
             - name: VirtueelNetwerkCombo
               href: microsoft-network-virtualnetworkcombo.md
-        - name: Opslag
+        - name: Storage
           items:
             - name: MultiStorageAccountCombo
               href: microsoft-storage-multistorageaccountcombo.md
             - name: StorageAccountSelector
               href: microsoft-storage-storageaccountselector.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

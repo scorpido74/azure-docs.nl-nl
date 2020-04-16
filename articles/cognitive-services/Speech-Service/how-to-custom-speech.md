@@ -3,19 +3,19 @@ title: Aan de slag met Aangepaste spraak - Spraakservice
 titleSuffix: Azure Cognitive Services
 description: Custom Speech is een set online tools waarmee u onze spraak-naar-tekst nauwkeurigheid voor uw toepassingen, tools en producten evalueren en verbeteren. Alles wat nodig is om te beginnen zijn een handvol test audiobestanden. Volg de onderstaande links om een aangepaste spraak-naar-tekst-ervaring te maken.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.author: dapine
-ms.openlocfilehash: e30587ed4d09ba792516ebc7b16529a6ee5ac57c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: a52735ee62f564a5dc536fd2b7d3539406388341
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918951"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402071"
 ---
 # <a name="what-is-custom-speech"></a>Wat is aangepaste spraak?
 

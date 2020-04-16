@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6b19dc11438274ecf6218d5c0bd8c9ef3dafbf01
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6919849d28573ad7388a7f2e317d2b8433f35559
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80052436"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399454"
 ---
 # <a name="what-is-form-recognizer"></a>Wat is Form Recognizer?
 
@@ -74,7 +74,7 @@ Volg een snelle start om aan de slag te gaan met het extraheren van gegevens uit
 
 U gebruikt de volgende API's om modellen te trainen en gestructureerde gegevens uit formulieren te extraheren.
 
-|Name |Beschrijving |
+|Naam |Beschrijving |
 |---|---|
 | **Aangepaste treinmodel**| Train een nieuw model om uw formulieren te analyseren met behulp van vijf vormen van hetzelfde type. Stel de parameter _useLabelFile_ in om `true` te trainen met handmatig gelabelde gegevens. |
 | **Formulier analyseren** |Analyseer één document dat als stroom wordt doorgegeven om tekst, sleutel/waardeparen en tabellen uit het formulier met uw aangepaste model te extraheren.  |
