@@ -2,18 +2,18 @@
 title: Ondersteuning voor containers
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/5/2019
-ms.author: dapine
-ms.openlocfilehash: 3c42bf2b2acc2472741bd603ea9d653a314ecc40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 8abd520a7bb80f1f9a2d8ebcbe46b90fe59a96ec
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73522731"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81422071"
 ---
 ## <a name="create-a-speech-resource"></a>Een spraakbron maken
 
@@ -23,7 +23,7 @@ ms.locfileid: "73522731"
 
     |Instelling|Waarde|
     |--|--|
-    |Name|Gewenste naam (2-64 tekens)|
+    |Naam|Gewenste naam (2-64 tekens)|
     |Abonnement|Passend abonnement selecteren|
     |Locatie|Selecteer een nabijgelegen en beschikbare locatie|
     |Prijscategorie|`F0`- de minimale prijscategorie|

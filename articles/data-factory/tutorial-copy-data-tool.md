@@ -12,18 +12,20 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
-ms.openlocfilehash: 52ed43277eef84de826d2f4fa41ba860211a1531
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: be9395b908461b54b607fff32747ca0d9f20f45c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78969908"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418657"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Gegevens uit Azure Blob-opslag kopiëren naar een SQL-database met het gereedschap Gegevens kopiëren
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
 > * [Versie 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](tutorial-copy-data-tool.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In deze zelfstudie gebruikt u Azure Portal om een gegevensfactory te maken. Vervolgens gebruikt u het gereedschap Gegevens kopiëren om een pijplijn te maken die gegevens uit Azure Blob-opslag kopieert naar een SQL-database.
 
@@ -132,7 +134,7 @@ Bereid uw Blob-opslag en uw SQL-database voor op de zelfstudie door deze stappen
 
     b. Klik op **Volgende** om verder te gaan met de volgende stap.
 
-1. Schakel op de pagina **Instellingen voor bestandsindeling** het selectievakje voor *eerste rij in als koptekst*. Het hulpprogramma detecteert automatisch de kolom- en rijscheidingstekens. Selecteer **Volgende**. U ook een voorbeeld van gegevens bekijken en het schema van de invoergegevens op deze pagina bekijken.
+1. Schakel op de pagina **Instellingen voor bestandsindeling** het selectievakje voor *eerste rij in als koptekst*. Het hulpprogramma detecteert automatisch de kolom- en rijscheidingstekens. Selecteer **Next**. U ook een voorbeeld van gegevens bekijken en het schema van de invoergegevens op deze pagina bekijken.
 
     ![Pagina Instellingen bestandsindelingen](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. Voltooi op de pagina **Doelgegevensarchief** de volgende stappen:

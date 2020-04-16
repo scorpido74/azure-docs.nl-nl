@@ -14,14 +14,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 0eb3a3d6c988746c1174398005463d25911c11e1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ada3762b6daae86033903f72ad9865ca66904ead
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336150"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418640"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>Een Azure-SSIS IR instellen in Azure Data Factory met PowerShell
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In deze zelfstudie ziet u hoe u een Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) maken in Azure Data Factory. Een Azure-SSIS IR ondersteunt lopende pakketten die zijn geïmplementeerd op:
 * Een SSIS-catalogus (SSISDB) die wordt gehost door een Azure SQL Database-serverinstantie of een beheerde instantie (het projectimplementatiemodel).
@@ -550,7 +552,7 @@ Zie voor meer SSIS-documentatie:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd: 
+In deze zelfstudie heeft u het volgende geleerd: 
 
 > [!div class="checklist"]
 > * Een gegevensfactory maken.

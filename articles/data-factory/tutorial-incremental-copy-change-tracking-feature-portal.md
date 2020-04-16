@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: a1f76987580bc4235a290c8aa18110f8257e74a7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 40e4fed9755edc2204c7b6b24a003995a14212d0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75982665"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415431"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Incrementeel gegevens kopiëren van Azure SQL Database naar Azure Blob Storage met behulp van technologie voor bijhouden van wijzigingen
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In deze zelfstudie maakt u een Azure data factory met een pijplijn die gewijzigde gegevens laadt op basis van informatie over **wijzigingen** in de Azure SQL-brondatabase naar een Azure blob storage.  
 
@@ -414,7 +416,7 @@ In deze stap maakt u een pijplijn met de volgende activiteiten en laat deze peri
     2. Selecteer **Importparameter**.
     3. In de sectie **Opgeslagen-procedureparameters** geeft u de volgende waarden voor de parameters op:
 
-        | Name | Type | Waarde |
+        | Naam | Type | Waarde |
         | ---- | ---- | ----- |
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} |
         | TableName | Tekenreeks | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |

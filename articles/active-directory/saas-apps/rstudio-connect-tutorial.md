@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9a9b49f75ad377a9377a2311ed16c17ca3d749e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2bb5dd845b03bd94f0a94db50c01b804cf6f55c2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67092580"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407102"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Zelfstudie: Azure Active Directory-integratie met RStudio Connect
 
@@ -158,9 +158,9 @@ IdPAttributeProfile = azure
 SSOInitiated = IdPAndSP
 ```
 
-Sla uw **serveradres** op in de `Server.Address` waarde en de url van de **appfederatie metagegevens** in de `SAML.IdPMetaData` waarde.
+Sla uw **serveradres** op in de `Server.Address` waarde en de url van de **appfederatie metagegevens** in de `SAML.IdPMetaData` waarde. Houd er rekening mee dat deze voorbeeldconfiguratie een niet-versleutelde HTTP-verbinding gebruikt, terwijl Azure AD het gebruik van een versleutelde HTTPS-verbinding vereist. U een [omgekeerde proxy](https://docs.rstudio.com/connect/admin/proxy/) gebruiken voor RStudio Connect of RStudio Connect configureren om HTTPS rechtstreeks te [gebruiken.](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS) 
 
-Als u problemen hebt met de configuratie, u de [RStudio Connect-beheergids](https://docs.rstudio.com/connect/admin/authentication.html#authentication-saml) lezen of het [RStudio-ondersteuningsteam](mailto:support@rstudio.com) e-mailen voor hulp.
+Als u problemen hebt met de configuratie, u de [RStudio Connect-beheergids](https://docs.rstudio.com/connect/admin/authentication/saml/) lezen of het [RStudio-ondersteuningsteam](mailto:support@rstudio.com) e-mailen voor hulp.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 

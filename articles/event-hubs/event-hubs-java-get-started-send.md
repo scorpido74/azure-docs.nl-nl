@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 5a34ac2d1b7401d31ae518334aedc15c626b66a3
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 379739533e15e60bc47bfc883a67037d4a58d0e0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529491"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417627"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Java gebruiken om gebeurtenissen naar Azure Event Hubs te verzenden of te ontvangen (azure-eventhubs)
 
@@ -176,7 +176,7 @@ De code in deze zelfstudie is gebaseerd op de [EventProcessorSample-code op GitH
 
 **EventProcessorHost** is een Java-klasse die het ontvangen van gebeurtenissen van eventhubs vereenvoudigt door permanente controlepunten en parallelle ontvangsts van deze Gebeurtenishubs te beheren. Met EventProcessorHost kunt u gebeurtenissen splitsen over meerdere ontvangers, zelfs als deze worden gehost in verschillende knooppunten. In dit voorbeeld wordt het gebruik van EventProcessorHost gedemonstreerd voor één ontvanger.
 
-### <a name="create-a-storage-account"></a>Een opslagaccount maken
+### <a name="create-a-storage-account"></a>Create a storage account
 
 Als u EventProcessorHost wilt gebruiken, moet u een [Azure Storage-account][Azure Storage-account]:
 
@@ -314,7 +314,8 @@ Voor verschillende typen buildomgevingen u expliciet de nieuwste uitgebrachte JA
         
            System.out.println("End of sample");
        }
-    ```
+   }
+   ```
 3. Maak nog een `EventProcessor`klasse met de volgende code:
    
     ```java

@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/27/2020
-ms.openlocfilehash: 5108335c0b5d0a51559653d51bfe6154237731f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 04469fa1bd0473710d9fa0bf0190c6459f1f8a07
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78162547"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418776"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Meerdere tabellen bulksgewijs kopiëren met behulp van Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In deze zelfstudie wordt het **kopiëren van een aantal tabellen van Azure SQL Database naar Azure Synapse Analytics (voorheen SQL DW)** weergegeven. U kunt hetzelfde patroon toepassen in andere kopieerscenario's. Bijvoorbeeld tabellen kopiëren van SQL Server/Oracle naar Azure SQL Database/Azure Synapse Analytics (voorheen SQL DW)/Azure Blob, waarbij verschillende paden worden gekopieerd van Blob naar Azure SQL Database-tabellen.
 
@@ -79,7 +81,7 @@ Als u deze instelling wilt verifiëren en inschakelen, gaat u naar uw Azure SQL-
  
    De naam van de Azure-gegevensfabriek moet **wereldwijd uniek**zijn. Als u het volgende foutbericht krijgt, wijzigt u de naam van de gegevensfactory (bijvoorbeeld uwnaamADFTutorialBulkCopyDF) en probeert u het opnieuw. Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
   
-       `Data factory name “ADFTutorialBulkCopyDF” is not available`
+       `Data factory name "ADFTutorialBulkCopyDF" is not available`
 1. Selecteer het Azure-**abonnement** waarin u de gegevensfactory wilt maken. 
 1. Voer een van de volgende stappen uit voor de **Resourcegroep**:
      

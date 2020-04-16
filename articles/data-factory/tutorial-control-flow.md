@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 7ba921656d0dad059b1d15f443bcefeff03ade50
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 77fa8f72d4d4d929d15859fde71f112de1ddd14e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977389"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418725"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Activiteiten vertakken en koppelen in een Data Factory-pijplijn
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In deze zelfstudie maakt u een Data Factory-pijplijn met enkele functies voor controlestromen. Deze pijplijn kopieert van een container in Azure Blob Storage naar een andere container in hetzelfde opslagaccount. Als de kopieeractiviteit slaagt, stuurt de pijplijn details van de geslaagde kopieerbewerking in een e-mail. Deze informatie kan de hoeveelheid geschreven gegevens omvatten. Als de kopieeractiviteit mislukt, worden details van de kopiefout, zoals het foutbericht, in een e-mail verzonden. In de zelfstudie ziet u hoe u parameters kunt doorgeven.
 
@@ -365,7 +367,7 @@ Ga terug naar uw project in Visual Studio. We voegen nu de code toe waarmee een 
 In deze pijpelijn gebruikt u de volgende functies:
 
 * Parameters
-* Activiteit Web
+* Webactiviteit
 * Afhankelijkheid van activiteiten
 * Uitvoer van een activiteit gebruiken als input voor een andere activiteit
 
@@ -466,7 +468,7 @@ Parameters = new Dictionary<string, ParameterSpecification>
     },
 ```
 
-### <a name="web-activity"></a>Activiteit Web
+### <a name="web-activity"></a>Webactiviteit
 
 Met de webactiviteit kan een aanroep naar een REST-eindpunt worden aangenomen. Zie [Webactiviteit in Azure Data Factory](control-flow-web-activity.md)voor meer informatie over de activiteit. Deze pijplijn gebruikt een webactiviteit om de e-mailwerkstroom van Logic Apps aan te roepen. U maakt twee webactiviteiten: een `CopySuccessEmail` die naar de `CopyFailWorkFlow`werkstroom roept en een die de .
 

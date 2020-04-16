@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1a73894e2003ae742f329adcda51cf21ceeacb31
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
+ms.openlocfilehash: ac53a6cf6953255f51a6b586703147c5ce2338b6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991157"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407156"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Snelstart: aanmelden bij Microsoft toevoegen aan een web-app van ASP.NET Core
 In deze snelstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core-webapp persoonlijke accounts (hotmail.com, outlook.com, anderen) en werk- en schoolaccounts uit een Azure AD-exemplaar (Azure AD) kan aanmelden. (Zie [hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.)

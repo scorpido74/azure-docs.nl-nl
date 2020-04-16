@@ -10,14 +10,17 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: e964be548a2f82ecc268a147dd20817b232f51a6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ea625fbe28dad08ec2c3e2a64bada96460a04225
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74924808"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415574"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory vergelijken met Data Factory-versie 1
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 In dit artikel wordt Data Factory vergeleken met Data Factory-versie 1. Zie [Inleiding tot Data Factory](introduction.md) voor een inleiding tot Data Factory. Zie [Inleiding tot Azure Data Factory](v1/data-factory-introduction.md) voor een inleiding tot Data Factory-versie 1. 
 
 ## <a name="feature-comparison"></a>Vergelijking van functies
@@ -25,7 +28,7 @@ In de volgende tabel worden de functies van Data Factory vergeleken met de funct
 
 | Functie | Versie 1 | Huidige versie | 
 | ------- | --------- | --------- | 
-| Gegevenssets | Een benoemde weergave van gegevens met een verwijzing naar de gegevens die u als in- en uitvoer wilt gebruiken in uw activiteiten. Met gegevenssets worden gegevens binnen andere gegevensarchieven geïdentificeerd, waaronder tabellen, bestanden, mappen en documenten. Een Azure Blob-gegevensset benoemt bijvoorbeeld de blobcontainer en -map in de Azure Blob-opslag van waaruit de activiteit de gegevens moet lezen.<br/><br/>**Beschikbaarheid** definieert het segmenteringsmodel voor het verwerkingsvenster voor de gegevensset (bijvoorbeeld elk uur, dagelijks, enzovoort). | De gegevenssets in de huidige versie zijn hetzelfde. U hoeft echter geen **beschikbaarheidsschema's** voor gegevenssets te definiëren. U kunt een triggerbron definiëren waarmee pijplijnen kunnen worden gepland op basis van een klokplannermodel. Zie [Triggers](concepts-pipeline-execution-triggers.md#triggers) en [Gegevenssets](concepts-datasets-linked-services.md) voor meer informatie. | 
+| Gegevenssets | Een benoemde weergave van gegevens met een verwijzing naar de gegevens die u als in- en uitvoer wilt gebruiken in uw activiteiten. Met gegevenssets worden gegevens binnen andere gegevensarchieven geïdentificeerd, waaronder tabellen, bestanden, mappen en documenten. Een Azure Blob-gegevensset benoemt bijvoorbeeld de blobcontainer en -map in de Azure Blob-opslag van waaruit de activiteit de gegevens moet lezen.<br/><br/>**Beschikbaarheid** definieert het segmenteringsmodel voor het verwerkingsvenster voor de gegevensset (bijvoorbeeld elk uur, dagelijks, enzovoort). | De gegevenssets in de huidige versie zijn hetzelfde. U hoeft echter geen **beschikbaarheidsschema's** voor gegevenssets te definiëren. U kunt een triggerbron definiëren waarmee pijplijnen kunnen worden gepland op basis van een klokplannermodel. Zie [Triggers](concepts-pipeline-execution-triggers.md#trigger-execution) en [Gegevenssets](concepts-datasets-linked-services.md) voor meer informatie. | 
 | Gekoppelde services | Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindingsinformatie bevatten die Data Factory nodig heeft om verbinding te maken met externe bronnen. | Gekoppelde services zijn hetzelfde als in Data Factory V1, maar met een nieuwe eigenschap **connectVia** voor het gebruik van de Integration Runtime-rekenomgeving van de huidige versie van Data Factory. Zie [Integration Runtime in Azure Data Factory](concepts-integration-runtime.md) en [Eigenschappen van de gekoppelde service voor Azure Blob-opslag](connector-azure-blob-storage.md#linked-service-properties) voor meer informatie. |
 | Pijplijnen | Een gegevensfactory kan één of meer pijplijnen hebben. Een pijplijn is een logische groep activiteiten die samen een taak uitvoeren. U gebruikt startTime, endTime en isPaused voor het plannen en uitvoeren van pijplijnen. | Pijplijnen zijn groepen met activiteiten die op gegevens moeten worden uitgevoerd. Het plannen van activiteiten in de pijplijn is echter gescheiden in nieuwe triggerbronnen. In de huidige versie van Data Factory fungeren pijplijnen als werkstroomeenheden die u afzonderlijk plant met behulp van triggers. <br/><br/>In de huidige versie van Data Factory hebben pijplijnen geen tijdvensters voor uitvoerbewerkingen. De concepten startTime, endTime en isPaused van Data Factory V1 zijn niet meer aanwezig in de huidige versie van Data Factory. Zie [Pijplijnuitvoering en triggers](concepts-pipeline-execution-triggers.md) en [Pijplijnen en activiteiten](concepts-pipelines-activities.md) voor meer informatie. |
 | Activiteiten | Activiteiten definiëren welke acties binnen een pijplijn moeten worden uitgevoerd op uw gegevens. Activiteiten als het verplaatsen van gegevens (kopieeractiviteit) en het transformeren van gegevens (zoals Hive, Pig en MapReduce) worden ondersteund. | In de huidige versie van Data Factory worden activiteiten nog steeds gedefinieerd in een pijplijn. De huidige versie van Data Factory introduceert nieuwe [besturingsstroomactiviteiten.](concepts-pipelines-activities.md#control-flow-activities) U gebruikt deze activiteiten in een controlestroom (lussen en vertakkingen). Gegevensverplaatsing en gegevenstransformatie worden, net zoals in V1, ook ondersteund in de huidige versie. In de huidige versie kunt u transformatieactiviteiten definiëren zonder gegevenssets te gebruiken. |
@@ -74,7 +77,7 @@ Hier volgen nog enkele controlestroomactiviteiten die worden ondersteund in de h
 Controleactiviteit | Beschrijving
 ---------------- | -----------
 [Activiteit ForEach](control-flow-for-each-activity.md) | Deze activiteit definieert een herhalende controlestroom in de pijplijn. Deze activiteit wordt gebruikt om een verzameling te herhalen en voert opgegeven activiteiten uit in een lus. De lusimplementatie van deze activiteit is vergelijkbaar met Foreach-lusstructuur in computertalen.
-[Activiteit Web](control-flow-web-activity.md) | Deze roept een aangepast REST-eindpunt aan vanaf een Data Factory-pijplijn. U kunt gegevenssets en gekoppelde services doorgeven die moten worden verbruikt door en die toegankelijk zijn voor de activiteit. 
+[Webactiviteit](control-flow-web-activity.md) | Deze roept een aangepast REST-eindpunt aan vanaf een Data Factory-pijplijn. U kunt gegevenssets en gekoppelde services doorgeven die moten worden verbruikt door en die toegankelijk zijn voor de activiteit. 
 [Opzoekactiviteit](control-flow-lookup-activity.md) | Deze activiteit leest of zoekt de waarde op van een record op tabelnaamwaarde in een externe bron. Er kan naar deze uitvoer worden verwezen door volgende activiteiten. 
 [Metagegevensactiviteit opdoen](control-flow-get-metadata-activity.md) | Haalt de metagegevens op van de gegevens in Azure Data Factory. 
 [Wachtactiviteit](control-flow-wait-activity.md) | Onderbreekt de pijplijn voor een opgegeven periode.
@@ -132,8 +135,8 @@ De SDK's die zijn bijgewerkt in de huidige versie, zijn niet compatibel met eerd
 | Azure Portal | [Ja](quickstart-create-data-factory-portal.md) | Nee |
 | Azure PowerShell | [Ja](quickstart-create-data-factory-powershell.md) | [Ja](data-factory-build-your-first-pipeline-using-powershell.md) |
 | .NET SDK | [Ja](quickstart-create-data-factory-dot-net.md) | [Ja](data-factory-build-your-first-pipeline-using-vs.md) |
-| REST API | [Ja](quickstart-create-data-factory-rest-api.md) | [Ja](data-factory-build-your-first-pipeline-using-rest-api.md) |
-| Python SDK | [Ja](quickstart-create-data-factory-python.md) | Nee |
+| REST-API | [Ja](quickstart-create-data-factory-rest-api.md) | [Ja](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| Python-SDK | [Ja](quickstart-create-data-factory-python.md) | Nee |
 | Resource Manager-sjabloon | [Ja](quickstart-create-data-factory-resource-manager-template.md) | [Ja](data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>Rollen en machtigingen

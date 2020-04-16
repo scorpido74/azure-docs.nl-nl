@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 397eb6fbfea88b0eab0648275fc59764505f7d42
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: a9506d45350a567e3643b6edd6afc7668662f6e5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633111"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416027"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Wat is Azure Synapse Analytics (voorheen SQL DW)?
 
-Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big data-analyses combineert. Deze geeft u de vrijheid om op schaal gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte resources. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens in te nemen, voor te bereiden, te beheren en te leveren voor onmiddellijke BI- en machine learning-behoeften
+Azure Synapse is een analyseservice die enterprise data warehousing en Big Data analytics samenbrengt. Deze geeft u de vrijheid om op schaal gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte resources. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens in te nemen, voor te bereiden, te beheren en te leveren voor onmiddellijke BI- en machine learning-behoeften.
 
 Azure Synapse heeft vier componenten:
 
@@ -27,11 +27,13 @@ Azure Synapse heeft vier componenten:
   - SQL-pool (pay per DWU-voorziening)
   - SQL on-demand (pay per TB processed) – (Preview)
 - Spark: Diep geïntegreerde Apache Spark (Preview)
-- Gegevensintegratie: hybride gegevensintegratie (Preview)
+- Synapsenpipelines: hybride gegevensintegratie (Preview)
 - Studio: Uniforme gebruikerservaring.  (Preview)
 
 > [!NOTE]
 > Als u toegang wilt krijgen tot de preview-functies van Azure Synapse, vraagt u [hier](https://aka.ms/synapsepreview)toegang aan. Microsoft zal alle verzoeken triage en zo snel mogelijk reageren.
+>
+> Bekijk de [previewdocumentatie van Azure Synapse](../overview-what-is.md).
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Synapse SQL-pool in Azure Synapse
 

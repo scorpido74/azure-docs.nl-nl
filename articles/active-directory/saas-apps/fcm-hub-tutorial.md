@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/25/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee1ea7d2623d6315007257218ddfc4e6ce445e65
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 5abc1e093dc7d4e8da823227dc3e3caa556e37e4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668907"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406850"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fcm-hub"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met FCM HUB
 
@@ -92,7 +92,16 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
     > [!NOTE]
     > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met accountmanager die aan u is toegewezen of neem contact op met [het ONDERSTEUNINGSteam van FCM HUB-client](mailto:fcmssoadmin@us.fcm.travel) om de waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Klik op **Opslaan**.
+1. Selecteer **Opslaan**.
+
+1. Voeg op de pagina **Claim beheren** in de sectie **Gebruikerskenmerken & claims** de volgende aangepaste kenmerken toe:
+   - **Naam**: PortalID
+   - **Bron**: Kenmerk
+   - **Bronkenmerk**: PortalID, waarde van FCM
+
+1. Gebruik in de sectie **SAML-ondertekeningscertificaat** de optie Bewerken om de volgende instellingen te selecteren of in te voeren en selecteer **Opslaan:**
+   - **Ondertekeningsoptie:** SAML-antwoord ondertekenen
+   - **Ondertekeningalgoritme:** SHA-256
 
 1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** **certificaat** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 

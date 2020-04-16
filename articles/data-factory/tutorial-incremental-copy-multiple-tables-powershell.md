@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/30/2020
-ms.openlocfilehash: 5654e1f8b8a55c705798368df70ce300241c9dff
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aa4dbfbaff620c25042d2603dab543661ec2cd14
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76989077"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410013"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Gegevens van meerdere tabellen in SQL Server stapsgewijs laden in een Azure SQL-database
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In deze zelfstudie maakt u een Azure-gegevensfabriek met een pijplijn die deltagegevens van meerdere tabellen in on-premises SQL Server naar een Azure SQL-database laadt.    
 
@@ -810,7 +812,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De **Act
 
 ## <a name="monitor-the-pipeline"></a>De pijplijn bewaken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **Alle services**, zoek met het trefwoord *gegevensfactory's* en selecteer **Gegevensfactory's**. 
 
@@ -837,7 +839,7 @@ Voer in SQL Server Management Studio de volgende query's uit op de SQL-doeldatab
 select * from customer_table
 ```
 
-**Output**
+**Uitvoer**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -855,7 +857,7 @@ PersonID    Name    LastModifytime
 select * from project_table
 ```
 
-**Output**
+**Uitvoer**
 
 ```
 ===================================
@@ -872,7 +874,7 @@ project3    2017-03-04 05:16:00.000
 select * from watermarktable
 ```
 
-**Output**
+**Uitvoer**
 
 ```
 ======================================
@@ -920,7 +922,7 @@ Voer in SQL Server Management Studio de volgende query's uit op de doeldatabase 
 select * from customer_table
 ```
 
-**Output**
+**Uitvoer**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -940,7 +942,7 @@ Let op de nieuwe waarden van **Name** en **LastModifytime** voor de **PersonID**
 select * from project_table
 ```
 
-**Output**
+**Uitvoer**
 
 ```
 ===================================
@@ -960,7 +962,7 @@ Let erop dat de invoer van **NewProject** toegevoegd is aan project_table.
 select * from watermarktable
 ```
 
-**Output**
+**Uitvoer**
 
 ```
 ======================================

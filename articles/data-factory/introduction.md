@@ -9,14 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: e23268d21b01435aa71d4f471afc6d37ee9e9c1d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 327aadbc2996e91ef0f7639da86a647ddd42247c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73672711"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410948"
 ---
 # <a name="what-is-azure-data-factory"></a>Wat is Azure Data Factory?
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In de wereld van big data worden onbewerkte, ongeordende gegevens vaak opgeslagen in relationele, niet-relationele en andere opslagsystemen. Op zichzelf staande, onbewerkte gegevens hebben echter niet de juiste context of betekenis om nuttige inzichten te kunnen bieden aan analisten, gegevenswetenschappers en besluitvormers. 
 
@@ -109,13 +111,13 @@ Hier zijn belangrijke volgende stap documenten om te verkennen:
 
 - [Gegevenssets en gekoppelde services](concepts-datasets-linked-services.md)
 - [Pijplijnen en activiteiten](concepts-pipelines-activities.md)
-- [Integration Runtime](concepts-integration-runtime.md)
+- [Integratie-runtime](concepts-integration-runtime.md)
 - [Toewijzing gegevensstromen](concepts-data-flow-overview.md)
 - [Data Factory-gebruikersinterface in Azure Portal](quickstart-create-data-factory-portal.md)
 - [Hulpprogramma voor het kopiëren van gegevens in Azure Portal](quickstart-create-data-factory-copy-data-tool.md)
-- [Powershell](quickstart-create-data-factory-powershell.md)
+- [PowerShell](quickstart-create-data-factory-powershell.md)
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
-- [Rest](quickstart-create-data-factory-rest-api.md)
+- [REST](quickstart-create-data-factory-rest-api.md)
 - [Azure Resource Manager-sjabloon](quickstart-create-data-factory-resource-manager-template.md)
  

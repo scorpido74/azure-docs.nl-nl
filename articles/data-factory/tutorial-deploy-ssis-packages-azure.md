@@ -14,14 +14,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: c41efc1cbccf546d803e1131405907bf37dcf00c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 91962b578f9620384af86d25a33ba35830abb285
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75496567"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418623"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>De runtime voor Azure-SSIS-integratie inAzure Data Factory inrichten
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Deze zelfstudie bevat stappen voor het gebruik van de Azure-portal voor het inrichten van een SSIS-runtime (Azure-SQL Server Integration Services) (IR) in Azure Data Factory. Een Azure-SSIS IR ondersteunt:
 
@@ -117,7 +119,7 @@ Nadat uw gegevensfabriek is gemaakt, opent u de overzichtspagina in de Azure-por
 
    1. Selecteer voor **geld besparen**de azure hybrid benefit-optie voor uw ingebruiksruntime voor integratie: **ja** of **nee.** Selecteer **Ja** als u uw eigen SQL Server-licentie met Software Assurance wilt meenemen om te profiteren van kostenbesparingen bij hybride gebruik. 
 
-   1. Selecteer **Volgende**. 
+   1. Selecteer **Next**. 
 
 1. Voer in de sectie **SQL-instellingen** de volgende stappen uit. 
 

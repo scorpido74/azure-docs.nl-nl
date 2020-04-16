@@ -7,16 +7,20 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7d453b2724c308e48366d653a51d9e6aa8e82c96
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76156723"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415926"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Gegevensintegratie met Azure Data Factory en Azure Data Share
 
-Als klanten beginnen aan hun moderne data warehouse en analytics projecten, ze vereisen niet alleen meer gegevens, maar ook meer inzicht in hun gegevens in hun data-domein. In deze workshop wordt ingegaan op hoe verbeteringen aan Azure Data Factory en Azure Data Share de gegevensintegratie en -beheer in Azure vereenvoudigen. Van het inschakelen van codevrije ETL/ELT tot het creëren van een uitgebreid overzicht van uw gegevens, verbeteringen in Azure Data Factory stellen uw gegevenstechnici in staat om met vertrouwen meer gegevens en dus meer waarde aan uw onderneming te toevoegen. Azure Data Share stelt u in staat om op een beheerste manier zaken te doen met het delen van bedrijven.
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Als klanten beginnen aan hun moderne data warehouse en analytics projecten, ze vereisen niet alleen meer gegevens, maar ook meer inzicht in hun gegevens in hun data-domein. In deze workshop wordt ingegaan op hoe verbeteringen aan Azure Data Factory en Azure Data Share de gegevensintegratie en -beheer in Azure vereenvoudigen. 
+
+Van het inschakelen van codevrije ETL/ELT tot het creëren van een uitgebreid overzicht van uw gegevens, verbeteringen in Azure Data Factory stellen uw gegevenstechnici in staat om met vertrouwen meer gegevens en dus meer waarde aan uw onderneming te toevoegen. Azure Data Share stelt u in staat om op een beheerste manier zaken te doen met het delen van bedrijven.
 
 In deze workshop gebruikt u Azure Data Factory (ADF) om gegevens uit een Azure SQL-database (SQL DB) in te nemen in Azure Data Lake Storage gen2 (ADLS gen2). Zodra u de gegevens in het meer landt, transformeert u deze via kaartgegevensstromen, de native transformatieservice van de gegevensfabriek, en laat u deze in Azure Synapse Analytics (voorheen SQL DW) zinken. Vervolgens deelt u de tabel met getransformeerde gegevens, samen met enkele extra gegevens met Azure Data Share. 
 
