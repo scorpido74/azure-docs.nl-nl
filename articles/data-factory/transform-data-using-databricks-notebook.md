@@ -11,14 +11,16 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
-ms.openlocfilehash: 39b8745b65eccd8e4d1b5986490e30be443ad656
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e63180a3c4b8de06ab9e26afc8fff322188291cc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74913503"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418980"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>De Databricks Notebook-activiteit uitvoeren in Azure Data Factory op een Databricks-notebook
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In deze zelfstudie gebruikt u Azure Portal om een Azure Data Factory-pijplijn te maken die een Databricks-notebook uitvoert op basis van het Databricks-takencluster. Bovendien worden tijdens de uitvoering Azure Data Factory-parameters doorgestuurd naar de Databricks-notebook.
 

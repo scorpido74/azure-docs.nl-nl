@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.openlocfilehash: 2c89b53d66b93ff38a7cff07b2889faf8eda24ce
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 290ddf9a99d421bbf6303675fd544e81b637d070
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75439298"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419252"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Incrementeel gegevens uit meerdere tabellen in SQL Server naar een Azure SQL-database kopiëren
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In deze zelfstudie maakt u een Azure Data Factory met een pijplijn waarmee wijzigingsgegevens uit meerdere tabellen van een lokale SQL-server naar een Azure SWL-database worden gekopieerd.    
 
@@ -467,7 +469,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
     1. Selecteer **Importparameter**. 
     1. Geef de volgende waarden op voor de parameters: 
 
-        | Name | Type | Waarde | 
+        | Naam | Type | Waarde | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Tekenreeks | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
@@ -518,7 +520,7 @@ Voer in SQL Server Management Studio de volgende query's uit op de SQL-doeldatab
 select * from customer_table
 ```
 
-**Output**
+**Uitvoer**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -536,7 +538,7 @@ PersonID    Name    LastModifytime
 select * from project_table
 ```
 
-**Output**
+**Uitvoer**
 
 ```
 ===================================
@@ -553,7 +555,7 @@ project3    2017-03-04 05:16:00.000
 select * from watermarktable
 ```
 
-**Output**
+**Uitvoer**
 
 ```
 ======================================
@@ -615,7 +617,7 @@ Voer in SQL Server Management Studio de volgende query's uit tegen de doelSQL-da
 select * from customer_table
 ```
 
-**Output**
+**Uitvoer**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -635,7 +637,7 @@ Let op de nieuwe waarden van **Name** en **LastModifytime** voor de **PersonID**
 select * from project_table
 ```
 
-**Output**
+**Uitvoer**
 
 ```
 ===================================
@@ -655,7 +657,7 @@ Let erop dat de invoer van **NewProject** toegevoegd is aan project_table.
 select * from watermarktable
 ```
 
-**Output**
+**Uitvoer**
 
 ```
 ======================================

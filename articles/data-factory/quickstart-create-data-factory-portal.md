@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 0afb0ddb65a4f27463e2bb5c1b9441d248c34415
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f7a70454e395f5f9d39266e0777749e1fcbef68e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240756"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419354"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Snelstart: een gegevensfabriek maken met de gebruikersinterface van Azure Data Factory
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de service Data Factory die u gebruikt:"]
 > * [Versie 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](quickstart-create-data-factory-portal.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In deze quickstart wordt beschreven hoe u de Azure Data Factory-UI kunt gebruiken om een Azure-gegevensfactory te maken en te controleren. Met de pijplijn die u in deze data factory maakt, worden gegevens *gekopieerd* van één map naar een andere map in een Azure Blob-opslag. Zie [Zelfstudie: Gegevens transformeren met Spark](tutorial-transform-data-spark-portal.md) voor meer informatie over het *transformeren* van gegevens met Azure Data Factory.
 

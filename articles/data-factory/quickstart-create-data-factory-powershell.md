@@ -13,18 +13,20 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 682c35e1510834d8958b2ed6765d6fe530432ebd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: ad757e3d65d3094ca6883d747404906a871ed850
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262142"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419337"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Snelstart: een Azure-gegevensfabriek maken met PowerShell
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](quickstart-create-data-factory-powershell.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In deze snelstartgids wordt beschreven hoe u PowerShell kunt gebruiken om een Azure data factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie [Zelfstudie: Gegevens transformeren met Spark](transform-data-using-spark.md)voor een zelfstudie over het transformeren **van** gegevens met Azure Data Factory.
 

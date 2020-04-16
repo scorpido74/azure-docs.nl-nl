@@ -10,18 +10,20 @@ ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 7ad0367a89730c3aba37c5f75158cb42ae4ae668
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5ea45346de5ea841867dd13dd4c9a0ed26647448
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240742"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419116"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Zelfstudie: een Azure Data Factory maken op basis van een Azure Resource Manager-sjabloon
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Huidige versie](quickstart-create-data-factory-resource-manager-template.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In deze QuickStart wordt beschreven hoe u een Azure Resource Manager-sjabloon gebruikt om een Azure Data Factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie [Zelfstudie: Gegevens transformeren met Spark](transform-data-using-spark.md)voor een zelfstudie over het transformeren **van** gegevens met Azure Data Factory.
 
@@ -636,7 +638,7 @@ U definieert een pijplijn die gegevens kopieert van de ene binaire gegevensset n
 
 #### <a name="trigger"></a>Trigger
 
-U definieert een trigger die de pijplijn eenmaal per uur uitvoert. De geïmplementeerde trigger is gestopt. Start de trigger met de **cmdlet Start-AzDataFactoryV2Trigger.** Zie het artikel [Pijplijnen uitvoeren en triggers](concepts-pipeline-execution-triggers.md#triggers) voor meer informatie over triggers.
+U definieert een trigger die de pijplijn eenmaal per uur uitvoert. De geïmplementeerde trigger is gestopt. Start de trigger met de **cmdlet Start-AzDataFactoryV2Trigger.** Zie het artikel [Pijplijnen uitvoeren en triggers](concepts-pipeline-execution-triggers.md#trigger-execution) voor meer informatie over triggers.
 
 ```json
 {  
