@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 7ea00d663264e902c1818f7a4684e90eccd97b28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73118823aec9b8d4bd872986b13f19496240c0b9
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265049"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393445"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Gebeurtenishandlers in Azure Event Grid
 
@@ -52,8 +52,6 @@ Gebeurtenishubs kunnen fungeren als gebeurtenisbron of gebeurtenishandler. In he
 |---------|---------|
 | [Snelstart: aangepaste gebeurtenissen routeren naar Azure Event Hubs met Azure CLI en Event Grid](custom-event-to-eventhub.md) | Hiermee verzendt u een aangepaste gebeurtenis naar een gebeurtenishub voor verwerking door een toepassing. |
 | [Resource Manager-sjabloon: aangepast onderwerp en eindpunt van gebeurtenishubs](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Een resourcemanagersjabloon waarmee een abonnement wordt gemaakt voor een aangepast onderwerp. Het verzendt gebeurtenissen naar een Azure Event Hubs. |
-
-Zie [Gebeurtenishubsbron](event-sources.md#event-hubs)voor voorbeelden van gebeurtenishubs als bron .
 
 ## <a name="hybrid-connections"></a>Hybride verbindingen
 

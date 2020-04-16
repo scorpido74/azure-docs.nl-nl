@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: d0c60f5738bf634f9d43d6d4f0d78c1239b7ff3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a3d2234a140d1fb2eede50e3fe2eef5575da648
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75650693"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391699"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Definitieartefact weergeven in Azure Managed Applications
 
@@ -20,7 +20,7 @@ Dit artikel geeft een overzicht van het artefact met de weergavedefinitie en de 
 
 ## <a name="view-definition-artifact"></a>Definitie-artefact weergeven
 
-Het artefact voor weergavedefinitie moet **viewDefinition.json** worden genoemd en op hetzelfde niveau worden geplaatst als **createUiDefinition.json** en **mainTemplate.json** in het .zip-pakket dat een beheerde toepassingsdefinitie maakt. Zie [Een Azure Managed Application-definitie publiceren](publish-managed-app-definition-quickstart.md) voor meer informatie over het maken van het .zip-pakket en het publiceren van een beheerde toepassingsdefinitie
+Het artefact voor weergavedefinitie moet **viewDefinition.json** worden genoemd en op hetzelfde niveau worden geplaatst als **createUiDefinition.json** en **mainTemplate.json** in het .zip-pakket dat een beheerde toepassingsdefinitie maakt. Zie [Een Azure Managed Application-definitie publiceren](publish-service-catalog-app.md) voor meer informatie over het maken van het .zip-pakket en het publiceren van een beheerde toepassingsdefinitie
 
 ## <a name="view-definition-schema"></a>Definitieschema weergeven
 

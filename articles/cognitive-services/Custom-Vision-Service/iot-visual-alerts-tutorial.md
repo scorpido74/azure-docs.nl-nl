@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f66347727ad3c1b8eaf1f0e023abe1f2eeefcacb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978029"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403723"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Zelfstudie: Aangepaste visie gebruiken met een IoT-apparaat om visuele statussen te rapporteren
 
-Deze voorbeeld-app illustreert hoe u Custom Vision gebruiken om een apparaat met een camera te trainen om visuele toestanden te detecteren. U dit detectiescenario uitvoeren op een IoT-apparaat met behulp van een ONNX-model dat is geëxporteerd vanuit de Custom Vision-service.
+Deze voorbeeld-app illustreert hoe u Custom Vision gebruiken om een apparaat met een camera te trainen om visuele toestanden te detecteren. U dit detectiescenario uitvoeren op een IoT-apparaat met behulp van een geëxporteerd ONNX-model.
 
-Een visuele toestand beschrijft de inhoud van een afbeelding: een lege kamer of een kamer met mensen, een lege oprit of een oprit met een vrachtwagen, enzovoort. In de afbeelding hieronder zie je de app detecteren wanneer een banaan of een appel voor de camera wordt geplaatst.
+Een visuele toestand beschrijft de inhoud van een afbeelding: een lege kamer of een kamer met mensen, een lege oprit met een vrachtwagen, enzovoort. In de afbeelding hieronder zie je de app detecteren wanneer een banaan of een appel voor de camera wordt geplaatst.
 
 ![Animatie van een UI die fruit voor de camera etikettaand t.o.v.](./media/iot-visual-alerts-tutorial/scoring.gif)
 
@@ -41,7 +41,7 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 * U moet ook [een IoT Hub-bron maken](https://ms.portal.azure.com/#create/Microsoft.IotHub) op Azure.
 * [Visual Studio 2015 of hoger](https://www.visualstudio.com/downloads/)
 * Optioneel een IoT-apparaat met Windows 10 IoT Core-versie 17763 of hoger. U de app ook rechtstreeks vanaf uw pc uitvoeren.
-   * Voor Raspberry Pi 2 en 3 u Windows 10 rechtstreeks instellen vanuit de IoT Dashboard-app. Voor andere apparaten, zoals DrangonBoard, moet u het flashen met behulp van de [eMMC-methode.](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices) Zie [Uw apparaat instellen](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup) in de Windows IoT-documentatie als u hulp nodig hebt bij het instellen van een nieuw apparaat.
+   * Voor Raspberry Pi 2 en 3 u Windows 10 rechtstreeks instellen vanuit de IoT Dashboard-app. Voor andere apparaten, zoals DrangonBoard, moet u het flashen met behulp van de [eMMC-methode.](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices) Zie Uw [apparaat instellen](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup) in de Windows IoT-documentatie als u hulp nodig hebt bij het instellen van een nieuw apparaat.
 
 ## <a name="about-the-visual-alerts-app"></a>Informatie over de app Visuele waarschuwingen
 
@@ -92,7 +92,7 @@ Als u een model wilt instellen, moet u de app in de status **Trainingsafbeelding
 * Als u de app op de pc gebruikt, gebruikt u de knop in de rechterbovenhoek van de gebruikersinterface.
 * Als u de app op een IoT-apparaat uitvoert, belt u de `EnterLearningMode` methode op het apparaat via de IoT-hub. U het aanroepen via de apparaatinvoer in het menu IoT Hub op de Azure-portal of met een hulpprogramma zoals [IoT Hub Device Explorer.](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
  
-Wanneer de app de status **Trainingsafbeeldingen vastleggen** invoert, worden ongeveer twee afbeeldingen per seconde vastgelegd totdat het doelaantal afbeeldingen is bereikt. Standaard gaat het om 30 afbeeldingen, maar u deze parameter instellen `EnterLearningMode` door het gewenste getal door te geven als argument voor de IoT Hub-methode. 
+Wanneer de app de status **Trainingsafbeeldingen vastleggen** invoert, worden ongeveer twee afbeeldingen per seconde vastgelegd totdat het doelaantal afbeeldingen is bereikt. Standaard is het doel 30 afbeeldingen, maar u deze parameter instellen `EnterLearningMode` door het gewenste getal door te geven als argument voor de IoT Hub-methode. 
 
 Terwijl de app beelden vastlegt, moet u de camera blootstellen aan de typen visuele toestanden die u wilt detecteren (bijvoorbeeld een lege kamer, een kamer met mensen, een leeg bureau, een bureau met een speelgoedtruck, enzovoort).
 

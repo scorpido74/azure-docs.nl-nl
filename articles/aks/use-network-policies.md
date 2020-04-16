@@ -5,12 +5,12 @@ description: Meer informatie over het beveiligen van verkeer dat in en uit pods 
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 01ba9e7353b6783d1b4fd1649291a64405fd9382
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a2794f53407be3ce3d7e69caa8039c13217a0356
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886701"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392616"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Verkeer tussen pods beveiligen met netwerkbeleid in Azure Kubernetes Service (AKS)
 
@@ -82,6 +82,8 @@ Het volgende voorbeeldscript:
 * Wijst *inzendermachtigingen* toe voor de AKS-clusterserviceprincipal op het virtuele netwerk.
 * Hiermee maakt u een AKS-cluster in het gedefinieerde virtuele netwerk en wordt netwerkbeleid mogelijk.
     * De *azure* optie azure-netwerkbeleid wordt gebruikt. Als u Calico als optie voor `--network-policy calico` netwerkbeleid wilt gebruiken, gebruikt u de parameter. Opmerking: Calico kan worden `--network-plugin azure` `--network-plugin kubenet`gebruikt met een van beide of .
+
+Houd er rekening mee dat u in plaats van een serviceprincipal een beheerde identiteit gebruiken voor machtigingen. Zie [Beheerde identiteiten gebruiken voor](use-managed-identity.md)meer informatie .
 
 Zorg voor uw eigen veilige *SP_PASSWORD.* U de *RESOURCE_GROUP_NAME-* en *CLUSTER_NAME* variabelen vervangen:
 

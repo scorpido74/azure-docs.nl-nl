@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62cf1f369cbde372e82e7c3ffe26473f09668bc7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742554"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408052"
 ---
 # <a name="data-warehouse-units-dwus"></a>Gegevensmagazijneenheden (DOM)
 
@@ -32,7 +32,7 @@ Een wijziging in uw serviceniveau wijzigt het aantal DBO's dat beschikbaar is vo
 
 Voor hogere prestaties u het aantal gegevensmagazijneenheden verhogen. Voor minder prestaties u de eenheden van het gegevensmagazijn verlagen. Opslagkosten en rekenkosten worden afzonderlijk gefactureerd, waardoor het wijzigen van het aantal DWU's niet van invloed is op de opslagkosten.
 
-De prestaties voor gegevensmagazijnen zijn gebaseerd op deze werkbelastingsstatistieken:
+De prestaties voor gegevensmagazijnen zijn gebaseerd op deze workloadmetrics voor gegevensmagazijnen:
 
 - Hoe snel een standaard SQL-poolquery een groot aantal rijen kan scannen en vervolgens een complexe aggregatie kan uitvoeren. Deze bewerking is I/O en CPU intensief.
 - Hoe snel de SQL-groep gegevens kan opnemen uit Azure Storage Blobs of Azure Data Lake. Deze bewerking is netwerk- en CPU-intensief.
@@ -46,21 +46,37 @@ Toenemende dOM:
 
 ## <a name="service-level-objective"></a>Service Level Objective
 
+De Service Level Objective (SLO) is de schaalbaarheidsinstelling die het kosten- en prestatieniveau van uw datawarehouse bepaalt. De serviceniveaus voor Gen2 worden gemeten in compute data warehouse units (cDWU), bijvoorbeeld DW2000c. Gen1-serviceniveaus worden gemeten in DDC's, bijvoorbeeld DW2000.
+
 De Service Level Objective (SLO) is de schaalbaarheidsinstelling die het kosten- en prestatieniveau van uw SQL-groep bepaalt. De serviceniveaus voor Gen2 SQL-pool worden gemeten in data warehouse units (DWU), bijvoorbeeld DW2000c.
 
-In T-SQL bepaalt de SERVICE_OBJECTIVE instelling het serviceniveau voor uw SQL-groep.
+> [!NOTE]
+> Azure SQL Data Warehouse Gen2 heeft onlangs extra schaalmogelijkheden toegevoegd om rekenlagen te ondersteunen met een kracht van maar 100 cDWU. Bestaande gegevensmagazijnen die momenteel op Gen1 zijn die de lagere rekenlagen vereisen, kunnen nu upgraden naar Gen2 in de regio's die momenteel zonder extra kosten beschikbaar zijn.  Als uw regio nog niet wordt ondersteund, u nog steeds upgraden naar een ondersteunde regio. Zie [Upgraden naar Gen2 voor](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)meer informatie.
+
+In T-SQL bepaalt de instelling SERVICE_OBJECTIVE het serviceniveau en de prestatielaag voor uw SQL-groep.
 
 ```sql
 CREATE DATABASE mySQLDW
-( EDITION = 'Datawarehouse'
+(Edition = 'Datawarehouse'
  ,SERVICE_OBJECTIVE = 'DW1000c'
 )
 ;
 ```
 
-## <a name="capacity-limits"></a>Capaciteitslimieten
+## <a name="performance-tiers-and-data-warehouse-units"></a>Prestatielagen en gegevensmagazijneenheden
+
+Elke prestatielaag maakt gebruik van een iets andere maateenheid voor hun gegevensmagazijneenheden. Dit verschil wordt weerspiegeld op de factuur als de schaaleenheid zich rechtstreeks vertaalt naar facturering.
+
+- Gen1-datawarehouses worden gemeten in Data Warehouse Units (DBO's).
+- Gen2-datawarehouses worden gemeten in compute Data Warehouse Units (cDWU's).
+
+Zowel DFC's als cDWU's ondersteunen het op- of neerschalen van compute en het onderbreken van compute wanneer u het gegevensmagazijn niet hoeft te gebruiken. Deze operaties zijn allemaal on-demand. Gen2 gebruikt een lokale schijfgebaseerde cache op de compute nodes om de prestaties te verbeteren. Wanneer u het systeem schaalt of pauzeert, wordt de cache ongeldig gemaakt en is er dus een periode van cacheopwarming vereist voordat optimale prestaties worden bereikt.  
 
 Elke SQL-server (myserver.database.windows.net) heeft bijvoorbeeld een [DTU-quotum (Database Transaction Unit)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) waarmee een specifiek aantal gegevensmagazijneenheden mogelijk is. Zie voor meer informatie de [capaciteitslimieten voor werkbelastingbeheer](sql-data-warehouse-service-capacity-limits.md#workload-management).
+
+## <a name="capacity-limits"></a>Capaciteitslimieten
+
+Elke SQL-server (myserver.database.windows.net) heeft bijvoorbeeld een [DTU-quotum (Database Transaction Unit)](../../sql-database/sql-database-what-is-a-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) waarmee een specifiek aantal gegevensmagazijneenheden mogelijk is. Zie voor meer informatie de [capaciteitslimieten voor werkbelastingbeheer](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>Hoeveel datawarehouse-eenheden heb ik nodig
 
@@ -115,17 +131,17 @@ DOM wijzigen:
 
 3. Klik op **Opslaan**. Er verschijnt een bevestigingsbericht. Klik op **Ja** om te bevestigen of **Nee** om te annuleren.
 
-### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Als u de DDU's wilt wijzigen, gebruikt u de cmdlet [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell. In het volgende voorbeeld wordt de doelstelling serviceniveau ingesteld op DW1000c voor de database MySQLDW die wordt gehost op server MyServer.
+Als u de DDU's wilt wijzigen, gebruikt u de cmdlet [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell. In het volgende voorbeeld wordt de doelstelling serviceniveau ingesteld op DW1000 voor de database MySQLDW die wordt gehost op server MyServer.
 
 ```Powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-Zie [PowerShell-cmdlets voor SQL Data Warehouse voor](sql-data-warehouse-reference-powershell-cmdlets.md) meer informatie
+Zie [PowerShell-cmdlets voor SQL Data Warehouse voor](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) meer informatie
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -152,12 +168,12 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "properties": {
-        "requestedServiceObjectiveName": DW1000c
+        "requestedServiceObjectiveName": DW1000
     }
 }
 ```
 
-Zie REST API's voor SQL Data Warehouse voor meer VOORBEELDEN van REST [API's.](sql-data-warehouse-manage-compute-rest-api.md)
+Zie REST API's voor SQL Data Warehouse voor meer VOORBEELDEN van REST [API's.](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ## <a name="check-status-of-dwu-changes"></a>Status van DWU-wijzigingen controleren
 
@@ -170,14 +186,13 @@ U de databasestatus niet controleren op scale-outbewerkingen met de Azure-portal
 Ga als het gaat om de status van DWU-wijzigingen:
 
 1. Maak verbinding met de hoofddatabase die is gekoppeld aan uw logische SQL Database-server.
+2. Verzend de volgende query om de databasestatus te controleren.
 
-1. Verzend de volgende query om de databasestatus te controleren.
-
-    ```sql
-    SELECT    *
-    FROM      sys.databases
-    ;
-    ```
+```sql
+SELECT    *
+FROM      sys.databases
+;
+```
 
 1. De volgende query indienen om de status van de bewerking te controleren
 

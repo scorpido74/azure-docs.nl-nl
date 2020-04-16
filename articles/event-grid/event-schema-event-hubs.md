@@ -1,30 +1,30 @@
 ---
-title: Gebeurtenisschema azure-gebeurtenisrasterhubs
+title: Azure Event Hubs als gebeurtenisrasterbron
 description: Beschrijft de eigenschappen die worden geleverd voor gebeurtenishubs met Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561825"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393345"
 ---
-# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Azure Event Grid-gebeurtenisschema voor gebeurtenishubs
+# <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure Event Hubs als gebeurtenisrasterbron
 
 In dit artikel worden de eigenschappen en het schema voor gebeurtenishubs-gebeurtenissen weergeven.Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
 
-Zie [Gebeurtenishubs-gebeurtenisbron](event-sources.md#event-hubs)voor een lijst met voorbeeldscripts en -zelfstudies .
+## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
 
 ### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
 Event Hubs zendt het gebeurtenistype **Microsoft.EventHub.CaptureFileCreated** uit wanneer een opnamebestand wordt gemaakt.
 
-## <a name="example-event"></a>Voorbeeldgebeurtenis
+### <a name="example-event"></a>Voorbeeldgebeurtenis
 
 In deze voorbeeldgebeurtenis wordt het schema weergegeven van een gebeurtenisgebeurtenis die wordt verhoogd wanneer de opnamefunctie een bestand opslaat: 
 
@@ -53,7 +53,7 @@ In deze voorbeeldgebeurtenis wordt het schema weergegeven van een gebeurtenisgeb
 ]
 ```
 
-## <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
@@ -81,6 +81,12 @@ Het gegevensobject heeft de volgende eigenschappen:
 | lastSequenceNumber | geheel getal | Het laatste volgnummer uit de wachtrij. |
 | firstEnqueueTime | tekenreeks | De eerste keer vanuit de wachtrij. |
 | lastEnqueueTime | tekenreeks | De laatste keer uit de wachtrij. |
+
+## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
+
+|Titel  |Beschrijving  |
+|---------|---------|
+| [Zelfstudie: big data streamen naar een datawarehouse](event-grid-event-hubs-integration.md) | Wanneer Gebeurtenishubs een Capture-bestand maakt, stuurt gebeurtenisraster een gebeurtenis naar een functie-app. De app haalt het capture-bestand op en migreert gegevens naar een gegevensmagazijn. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

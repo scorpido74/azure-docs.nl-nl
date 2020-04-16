@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b097ce3781a77a8c5e8a94b9c2bf0977f3efcfd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f1b8b9af8f90629d087246edf0cb3426bd9b66c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481327"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406834"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Informatie over Azure AD-toepassingsproxyconnectors
 
@@ -153,12 +153,17 @@ Om een veilige service te bieden, moeten connectors zich verifiëren in de richt
 
 De gebruikte certificaten zijn specifiek voor de application proxy-service. Ze worden gemaakt tijdens de eerste registratie en worden automatisch vernieuwd door de connectoren om de paar maanden.
 
+Na de eerste succesvolle certificaatvernieuwing heeft de Azure AD Application Proxy Connector-service (Network Service) geen toestemming om het oude certificaat uit het lokale machinearchief te verwijderen. Als het certificaat is verlopen of als het niet meer door de service wordt gebruikt, u het veilig verwijderen.
+
+Om problemen met de certificaatvernieuwing te voorkomen, moet u ervoor zorgen dat de netwerkcommunicatie van de connector naar de [gedocumenteerde bestemmingen](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) is ingeschakeld.
+
 Als een connector gedurende enkele maanden niet op de service is aangesloten, zijn de certificaten mogelijk verouderd. Verwijder in dit geval de connector en installeer deze opnieuw om de registratie te activeren. U de volgende PowerShell-opdrachten uitvoeren:
 
 ```
 Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
+Zie [Ondersteuning voor machine- en backendcomponenten verifiëren voor het vertrouwenscertificaat voor toepassingsproxy voor](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)meer informatie over het verifiëren van het certificaat en het oplossen van problemen.
 
 ## <a name="under-the-hood"></a>Onderhuids
 

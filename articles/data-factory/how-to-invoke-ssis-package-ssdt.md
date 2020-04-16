@@ -12,14 +12,17 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
-ms.openlocfilehash: 5f21623af9b89bbb020063dfb72f7b60e65a6ebe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11e76fea87c60ae2b56cc15d5827be6e1b2b5a01
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927712"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399429"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSIS-pakketten uitvoeren in Azure vanuit SSDT
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 In dit artikel wordt de functie beschreven van SQL Server Integration Services(SSIS)-projecten (Azure-enabled) op SQL Server Data Tools (SSDT), waarmee u pakketten uitvoeren op Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF).  U deze functie gebruiken om uw bestaande SSIS-pakketten te testen voordat u ze & shift/migreren naar Azure optilt of om nieuwe SSIS-pakketten te ontwikkelen die in Azure worden uitgevoerd.
 
 Met deze functie u een nieuwe Azure-SSIS IR maken of een bestaande koppelen aan SSIS-projecten en vervolgens uw pakketten erop uitvoeren.  We ondersteunen het uitvoeren van pakketten die moeten worden geïmplementeerd in de SSIS-catalogus (SSISDB) in projectimplementatiemodel en pakketten die moeten worden geïmplementeerd in bestandssystemen/bestandsshares/Azure-bestanden in het implementatiemodel voor pakketten. 

@@ -4,12 +4,12 @@ description: Beschikbaarheid van reken- en geheugenbronnen voor de Azure Contain
 ms.topic: article
 ms.date: 02/19/2020
 ms.author: danlep
-ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c84ab7833f7c90d5d4b3c340c268fd9f75e20da9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247135"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399403"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Beschikbaarheid van resources voor Azure Container Instances in Azure-gebieden
 
@@ -18,7 +18,7 @@ In dit artikel wordt de beschikbaarheid van gegevensgegevens, geheugen- en opsla
 De gepresenteerde waarden zijn de maximaal beschikbare resources per implementatie van een [containergroep](container-instances-container-groups.md). Waarden zijn actueel op het moment van publicatie. 
 
 > [!NOTE]
-> Containergroepen die binnen deze resourcelimieten zijn gemaakt, zijn afhankelijk van beschikbaarheid binnen het implementatiegebied. Wanneer een regio zwaar wordt belast, kan er een fout optreden bij het implementeren van instanties. Als u een dergelijke implementatiefout wilt voorkomen, probeert u instanties met lagere resourceinstellingen te implementeren of probeert u uw implementatie op een later tijdstip.
+> Containergroepen die binnen deze resourcelimieten zijn gemaakt, zijn afhankelijk van beschikbaarheid binnen het implementatiegebied. Wanneer een regio zwaar wordt belast, kan er een fout optreden bij het implementeren van instanties. Als u een dergelijke implementatiefout wilt voorkomen, probeert u instanties met lagere resourceinstellingen te implementeren of probeert u uw implementatie op een later tijdstip of in een andere regio met beschikbare resources.
 
 Zie [Quota en limieten voor Azure Container Instances voor](container-instances-quotas.md)informatie over quota en andere limieten in uw implementaties.
 

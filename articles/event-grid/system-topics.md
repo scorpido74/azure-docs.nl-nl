@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 35025bf1592f1293b9326d643f76322b4af590c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501192"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393157"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systeemonderwerpen in Azure Event Grid
 De Azure Event Grid-service maakt systeemonderwerpen wanneer u een eerste gebeurtenisabonnement maakt voor een Azure-gebeurtenisbron. Momenteel maakt Event Grid geen systeemonderwerpen voor onderwerpbronnen die zijn gemaakt vóór 15 maart 2020. Voor alle onderwerpbronnen die u op of na deze datum hebt gemaakt, maakt Gebeurtenisraster automatisch systeemonderwerpen. In dit artikel worden **systeemonderwerpen** beschreven in Azure Event Grid.
@@ -38,5 +38,5 @@ Wanneer u de brongroep met het opslagaccount probeert te verwijderen, ziet u het
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen: 
 
-- [Aangepaste onderwerpen](event-sources.md#custom-topics)
+- [Aangepaste onderwerpen](custom-topics.md)
 - [Domeinen](event-domains.md)

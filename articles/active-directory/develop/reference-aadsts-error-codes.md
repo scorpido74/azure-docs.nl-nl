@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 40a7406ea91c95daad2f180b9d0f4620cdbbf454
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 87a962709638391887eaa275f059bf4ceae9218b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875925"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406979"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Foutcodes azure AD-verificatie en autorisatie
 
@@ -27,6 +27,49 @@ Op zoek naar informatie over de AADSTS-foutcodes die worden geretourneerd uit de
 > Deze informatie is voorlopig en kan worden gewijzigd. Heb je een vraag of kun je niet vinden wat je zoekt? Maak een GitHub-probleem of zie [ondersteunings- en helpopties voor ontwikkelaars](active-directory-develop-help-support.md) om meer te weten te komen over andere manieren waarop u hulp en ondersteuning krijgen.
 >
 > Deze documentatie is bedoeld voor richtlijnen voor ontwikkelaars en beheerders, maar mag nooit door de client zelf worden gebruikt. Foutcodes kunnen op elk moment worden gewijzigd om meer gedetailleerde foutmeldingen te kunnen geven die bedoeld zijn om de ontwikkelaar te helpen bij het bouwen van de toepassing. Apps die afhankelijk zijn van tekst- of foutcodenummers worden na verloop van tijd verbroken.
+
+## <a name="handling-error-codes-in-your-application"></a>Foutcodes in uw toepassing verwerken
+
+De [OAuth2.0-specificatie](https://tools.ietf.org/html/rfc6749#section-5.2) biedt richtlijnen voor het `error` afhandelen van fouten tijdens verificatie met behulp van het gedeelte van de foutreactie. 
+
+Hier is een voorbeeld foutreactie:
+
+```json
+{
+  "error": "invalid_scope",
+  "error_description": "AADSTS70011: The provided value for the input parameter 'scope' is not valid. The scope https://example.contoso.com/activity.read is not valid.\r\nTrace ID: 255d1aef-8c98-452f-ac51-23d051240864\r\nCorrelation ID: fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7\r\nTimestamp: 2016-01-09 02:02:12Z",
+  "error_codes": [
+    70011
+  ],
+  "timestamp": "2016-01-09 02:02:12Z",
+  "trace_id": "255d1aef-8c98-452f-ac51-23d051240864",
+  "correlation_id": "fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7", 
+  "error_uri":"https://login.microsoftonline.com/error?code=70011"
+}
+```
+
+| Parameter         | Beschrijving    |
+|-------------------|----------------|
+| `error`       | Een foutcodetekenreeks die kan worden gebruikt om typen fouten die zich voordoen te classificeren en moet worden gebruikt om te reageren op fouten. |
+| `error_description` | Een specifiek foutbericht waarmee een ontwikkelaar de hoofdoorzaak van een verificatiefout kan identificeren. Gebruik dit veld nooit om te reageren op een fout in uw code. |
+| `error_codes` | Een lijst met STS-specifieke foutcodes die kunnen helpen bij diagnostiek.  |
+| `timestamp`   | Het tijdstip waarop de fout is opgetreden. |
+| `trace_id`    | Een unieke id voor de aanvraag die kan helpen bij diagnostische gegevens. |
+| `correlation_id` | Een unieke id voor de aanvraag die kan helpen bij diagnostische gegevens over onderdelen. |
+| `error_uri` |  Een koppeling naar de pagina met foutopzoeking met aanvullende informatie over de fout.  Dit is alleen voor het gebruik van ontwikkelaars, niet presenteren aan gebruikers.  Alleen aanwezig wanneer de fout opzoeken systeem heeft aanvullende informatie over de fout - niet alle fouten hebben aanvullende informatie verstrekt.|
+
+Het `error` veld heeft verschillende mogelijke waarden - bekijk de protocoldocumentatiekoppelingen en OAuth 2.0-specificaties om meer te weten te komen over specifieke fouten (bijvoorbeeld `authorization_pending` in de stroom van [apparaatcodes)](v2-oauth2-device-code.md)en hoe erop te reageren.  Enkele veelvoorkomende zijn hier vermeld:
+
+| Foutcode         | Beschrijving        | Clientactie    |
+|--------------------|--------------------|------------------|
+| `invalid_request`  | Protocolfout, zoals een ontbrekende vereiste parameter. | De aanvraag herstellen en opnieuw indienen.|
+| `invalid_grant`    | Een deel van het verificatiemateriaal (auth-code, refresh token, access token, PKCE challenge) was ongeldig, niet te pareren, te missen of anderszins onbruikbaar | Probeer een nieuw `/authorize` verzoek naar het eindpunt om een nieuwe autorisatiecode te krijgen.  Overweeg het gebruik van de protocollen door die app te controleren en te valideren. |
+| `unauthorized_client` | De geverifieerde client is niet bevoegd om dit type autorisatieverlening te gebruiken. | Dit gebeurt meestal wanneer de clienttoepassing niet is geregistreerd in Azure AD of niet wordt toegevoegd aan de Azure AD-tenant van de gebruiker. De toepassing kan de gebruiker instructies geven voor het installeren van de toepassing en het toevoegen aan Azure AD. |
+| `invalid_client` | Clientverificatie is mislukt.  | De clientreferenties zijn niet geldig. Om het probleem op te lossen, werkt de toepassingsbeheerder de referenties bij.   |
+| `unsupported_grant_type` | De autorisatieserver ondersteunt het type autorisatieverlening niet. | Wijzig het subsidietype in de aanvraag. Dit type fout mag alleen optreden tijdens de ontwikkeling en worden gedetecteerd tijdens de eerste tests. |
+| `invalid_resource` | De doelbron is ongeldig omdat deze niet bestaat, Azure AD deze niet kan vinden of niet correct is geconfigureerd. | Dit geeft aan dat de resource, als deze bestaat, niet is geconfigureerd in de tenant. De toepassing kan de gebruiker instructies geven voor het installeren van de toepassing en het toevoegen aan Azure AD.  Tijdens de ontwikkeling duidt dit meestal op een foutieve installatietesttenant of een typfout in de naam van het gezochte bereik. |
+| `interaction_required` | De aanvraag vereist interactie van de gebruiker. Er is bijvoorbeeld een extra verificatiestap vereist. | Probeer de aanvraag opnieuw met dezelfde resource, zodat de gebruiker alle vereiste uitdagingen kan voltooien.  |
+| `temporarily_unavailable` | De server is tijdelijk te druk om de aanvraag af te handelen. | Probeer het verzoek opnieuw. De clienttoepassing kan de gebruiker uitleggen dat de reactie is vertraagd vanwege een tijdelijke aandoening. |
 
 ## <a name="lookup-current-error-code-information"></a>Huidige foutcode-informatie opzoeken
 Foutcodes en berichten kunnen worden gewijzigd.  Bekijk de `https://login.microsoftonline.com/error` pagina voor de meest recente informatie om aadsts-foutbeschrijvingen, oplossingen en enkele voorgestelde tijdelijke oplossingen te vinden.  

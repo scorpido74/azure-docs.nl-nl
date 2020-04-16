@@ -11,25 +11,16 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8aaca40961b1294336b236305ecdffcc92c5a4d9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d69c8dd28b946df3fff500c31c7cdefa4767c0c4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742575"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408122"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Connectiviteitsproblemen oplossen
 
 In dit artikel worden veelvoorkomende probleemoplossingstechnieken weergegeven rond verbinding maken met uw SQL Analytics-database.
-
-- [Beschikbaarheid van de service controleren](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
-- [Controleren op onderbroken of schaalbewerking](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
-- [Uw firewallinstellingen controleren](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
-- [De instellingen van uw VNet/service-eindpunt controleren](sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
-- [Controleren op de meest recente stuurprogramma's](sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
-- [Uw verbindingsreeks controleren](sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
-- [Onregelmatige verbindingsproblemen](sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
-- [Veelvoorkomende foutberichten](sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
 ## <a name="check-service-availability"></a>Beschikbaarheid van de service controleren
 

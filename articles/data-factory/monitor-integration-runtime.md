@@ -10,14 +10,17 @@ ms.date: 07/25/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d2ea5c0b7354867086fc0cce43732f2d73c53ab
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79261136"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398953"
 ---
-# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Een IR bewaken in Azure Data Factory  
+# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Een IR bewaken in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+  
 **Integratieruntime** is de rekeninfrastructuur die wordt gebruikt door Azure Data Factory om verschillende mogelijkheden voor gegevensintegratie te bieden in verschillende netwerkomgevingen. Er zijn drie soorten integratie-runtimes aangeboden door Data Factory:
 
 - Azure Integration Runtime
@@ -42,7 +45,7 @@ In de volgende tabel vindt u beschrijvingen van eigenschappen die door de cmdlet
 
 | Eigenschap | Beschrijving |
 -------- | ------------- | 
-| Name | Naam van de runtime van Azure-integratie. |  
+| Naam | Naam van de runtime van Azure-integratie. |  
 | Status | Status van de runtime van Azure-integratie. | 
 | Locatie | Locatie van de runtime van azure-integratie. Zie [Inleiding tot de runtime van integratie voor](concepts-integration-runtime.md)meer informatie over de locatie van een runtime voor Azure-integratie. |
 | DataFactoryName | Naam van de gegevensfabriek waartoe de runtime van azure-integratie behoort. | 
@@ -69,7 +72,7 @@ In de volgende tabel vindt u beschrijvingen van bewakingseigenschappen voor **el
 
 | Eigenschap | Beschrijving | 
 | -------- | ----------- | 
-| Name | Naam van de zelf gehoste runtime voor integratie en knooppunten die eraan zijn gekoppeld. Node is een on-premises Windows-machine die de zelf gehoste integratieruntime heeft geïnstalleerd. |  
+| Naam | Naam van de zelf gehoste runtime voor integratie en knooppunten die eraan zijn gekoppeld. Node is een on-premises Windows-machine die de zelf gehoste integratieruntime heeft geïnstalleerd. |  
 | Status | De status van de algehele zelfgehoste runtime voor integratie en elk knooppunt. Voorbeeld: Online/Offline/Limited/etc. Zie de volgende sectie voor informatie over deze statussen. | 
 | Versie | De versie van zelf gehoste ingebruikloop van integratie en elk knooppunt. De versie van de zelfgehoste runtime voor integratie wordt bepaald op basis van de versie van de meeste knooppunten in de groep. Als er knooppunten zijn met verschillende versies in de zelfgehoste instelling voor de runtime van de integratie, werken alleen de knooppunten met hetzelfde versienummer als de logische zelfgehoste runtime voor integratie naar behoren. Anderen bevinden zich in de beperkte modus en moeten handmatig worden bijgewerkt (alleen voor het geval de automatische update mislukt). | 
 | Beschikbaar geheugen | Beschikbaar geheugen op een zelf gehoste runtime-knooppunt voor integratie. Deze waarde is een bijna realtime momentopname. | 
@@ -177,7 +180,7 @@ Runtime azure-SSIS-integratie is een volledig beheerde cluster van Virtuele Azur
 | Type | Het type (Managed/Self-Hosted) van de runtime van uw Azure-SSIS-integratie. |
 | ResourceGroupName | De naam van uw Azure Resource Group, waarin de runtime van uw gegevensfabriek en Azure-SSIS-integratie zijn gemaakt. |
 | DataFactoryName | De naam van uw Azure-gegevensfabriek. |
-| Name | De naam van de runtime van uw Azure-SSIS-integratie. |
+| Naam | De naam van de runtime van uw Azure-SSIS-integratie. |
 | Beschrijving | De beschrijving van de runtime van uw Azure-SSIS-integratie. |
 
   

@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9ecd0ffd76650efff3a4c9f877522cba6f28d080
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 0225484de06ae4e595f1dcbcdd520f4e0e4d53f5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271111"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405379"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Gebruik en kosten van Application Insights beheren
 
@@ -28,7 +28,7 @@ De prijzen voor [Azure Application Insights][start] zijn een **Pay-As-You-Go-mod
 
 [Multi-step webtests](../../azure-monitor/app/availability-multistep.md) brengen extra kosten met zich mee. Webtests met meerdere stappen zijn webtests die een reeks acties uitvoeren. Er zijn geen afzonderlijke kosten voor *ping-tests* van één pagina. Telemetrie van ping-tests en multi-step tests wordt in rekening gebracht hetzelfde als andere telemetrie van uw app.
 
-De optie Toepassingsinzichten om [waarschuwingen voor aangepaste metrische dimensies in](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) te schakelen, kan ook extra kosten genereren, omdat dit kan leiden tot het maken van extra pre-aggregatiestatistieken. [Meer informatie] over op logboeken gebaseerde en vooraf geaggregeerde statistieken in Application Insights en over [de prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor aangepaste azure-statistieken van Azure Monitor.
+De optie Toepassingsinzichten om [waarschuwingen voor aangepaste metrische dimensies in](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) te schakelen, kan ook extra kosten genereren, omdat dit kan leiden tot het maken van extra pre-aggregatiestatistieken. [Meer informatie](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics) over op logboeken gebaseerde en vooraf geaggregeerde statistieken in Toepassingsstatistieken en over [de prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor aangepaste azure-statistieken van Azure Monitor.
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Het schatten van de kosten voor het beheren van uw aanvraag
 
@@ -218,7 +218,9 @@ Als u de bewaarstand wilt wijzigen, gaat u vanuit uw bron Voor Toepassingsstatis
 
 ![De dagelijkse telemetrievolumed aanpassen](./media/pricing/pricing-005.png)
 
-De retentie kan ook programmatisch worden ingesteld `retentionInDays` met behulp van [PowerShell](powershell.md#set-the-data-retention) met behulp van de parameter. Wanneer de retentie wordt verlaagd, is er een respijtperiode van meerdere dagen voordat de oudste gegevens worden verwijderd. Als u de gegevensbewaring instelt op 30 dagen, `immediatePurgeDataOn30Days` u een onmiddellijke zuivering van oudere gegevens activeren met behulp van de parameter, wat handig kan zijn voor nalevingsscenario's. Deze zuiveringsfunctionaliteit wordt alleen zichtbaar via Azure Resource Manager en moet met uiterste zorg worden gebruikt. De dagelijkse resettijd voor de gegevensvolumedop kan worden `dailyQuotaResetTime` geconfigureerd met Azure Resource Manager om de parameter in te stellen.
+Wanneer de retentie wordt verlaagd, is er een respijtperiode van meerdere dagen voordat de oudste gegevens worden verwijderd.
+
+De retentie kan ook programmatisch worden ingesteld `retentionInDays` met behulp van [PowerShell](powershell.md#set-the-data-retention) met behulp van de parameter. Als u de gegevensbewaring instelt op 30 dagen, `immediatePurgeDataOn30Days` u een onmiddellijke zuivering van oudere gegevens activeren met behulp van de parameter, wat handig kan zijn voor nalevingsscenario's. Deze zuiveringsfunctionaliteit wordt alleen zichtbaar via Azure Resource Manager en moet met uiterste zorg worden gebruikt. De dagelijkse resettijd voor de gegevensvolumedop kan worden `dailyQuotaResetTime` geconfigureerd met Azure Resource Manager om de parameter in te stellen.
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Kosten voor gegevensoverdracht met Application Insights
 

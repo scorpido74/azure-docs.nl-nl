@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van de Azure-portal om een AKS-clu
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7b9127c016fff78a8867dcecbe3260becdf02c65
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 62d8fec4c5c3ff35fb46826cb7118946f66948b2
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259116"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392577"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren om virtuele knooppunten in de Azure-portal te gebruiken
 
@@ -89,7 +89,7 @@ Selecteer **op** de pagina Schalen de optie *Ingeschakeld* onder **Virtuele knoo
 
 ![AKS-cluster maken en de virtuele knooppunten inschakelen](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-Standaard wordt een Azure Active Directory-serviceprincipal gemaakt. Deze serviceprincipal wordt gebruikt voor clustercommunicatie en -integratie met andere Azure-services.
+Standaard wordt een Azure Active Directory-serviceprincipal gemaakt. Deze serviceprincipal wordt gebruikt voor clustercommunicatie en -integratie met andere Azure-services. U ook een beheerde identiteit gebruiken voor machtigingen in plaats van een serviceprincipal. Zie [Beheerde identiteiten gebruiken voor](use-managed-identity.md)meer informatie .
 
 Het cluster is ook geconfigureerd voor geavanceerde netwerken. De virtuele knooppunten zijn geconfigureerd om hun eigen Azure virtual network subnet te gebruiken. Dit subnet heeft machtigingen gedelegeerd om Azure-bronnen te verbinden tussen het AKS-cluster. Als u nog geen gedelegeerd subnet hebt, maakt en configureert de Azure-portal het virtuele Azure-netwerk en subnet voor gebruik met de virtuele knooppunten.
 

@@ -7,22 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c433d99fd96e99d418fd5500c1075e68dfb1742c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6714a0c4b967d80ad683ef023b5811423bdcb022
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053582"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403455"
 ---
 # <a name="what-is-the-azure-face-service"></a>Wat is de Azure Face-service?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-De Azure Cognitive Services Face-service biedt algoritmen die worden gebruikt om menselijke gezichten in afbeeldingen te detecteren, herkennen en analyseren. De mogelijkheid om menselijke gezichtsinformatie te verwerken is belangrijk in veel verschillende softwarescenario's. Voorbeeldenscenario's zijn beveiliging, natuurlijke gebruikersinterface, analyse en beheer van beeldinhoud, mobiele apps en robotica.
+De Azure Cognitive Services Face-service biedt algoritmen die menselijke gezichten in afbeeldingen detecteren, herkennen en analyseren. De mogelijkheid om menselijke gezichtsinformatie te verwerken is belangrijk in veel verschillende softwarescenario's. Voorbeelden scenario's zijn beveiliging, natuurlijke gebruikersinterface, beeldinhoud analyse en beheer, mobiele apps en robotica.
 
-De Face-service biedt verschillende functies. Elke functie wordt in de volgende secties beschreven. Lees verder om meer over hen te leren.
+De Face-service biedt verschillende functies die elk in de volgende secties worden beschreven.
 
 ## <a name="face-detection"></a>Gezichtsdetectie
 
@@ -69,7 +69,7 @@ Nadat u een database hebt gemaakt en getraind, u identificatie doen ten opzichte
 
 Zie de handleiding [voor gezichtsherkenningsconcepten](concepts/face-recognition.md) of de referentiedocumentatie [voor API identificeren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) voor meer informatie over persoonsidentificatie.
 
-## <a name="use-containers"></a>Containers gebruiken
+## <a name="containers"></a>Containers
 
 [Gebruik de Face-container](face-how-to-install-containers.md) om gezichten te detecteren, herkennen en identificeren door een gestandaardiseerde Docker-container dichter bij uw gegevens te installeren.
 

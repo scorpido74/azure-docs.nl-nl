@@ -1,26 +1,25 @@
 ---
-title: Azure Event Grid Azure App Configuration Event event schema
-description: Beschrijft de eigenschappen die worden geleverd voor Azure App Configuration-gebeurtenissen met Azure Event Grid
+title: Azure-app-configuratie als gebeurtenisrasterbron
+description: In dit artikel wordt beschreven hoe u Azure App Configuration gebruiken als gebeurtenisbron voor gebeurtenisnetwerken. Het biedt het schema en links naar tutorial en how-to artikelen.
 services: event-grid
-author: jimmyca
+author: banisadr
 ms.service: event-grid
-ms.topic: reference
-ms.date: 05/30/2019
-ms.author: jimmyca
-ms.openlocfilehash: fe0274f723692eea3cfd25cc0e9e146b35dce2ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: babanisa
+ms.openlocfilehash: adb548ef8531698a2cb075fbc742bb20a02a434b
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66735779"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393435"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Azure Event Grid-gebeurtenisschema voor Azure App-configuratie
+# <a name="azure-app-configuration-as-an-event-grid-source"></a>Azure-app-configuratie als gebeurtenisrasterbron
+In dit artikel vindt u de eigenschappen en het schema voor Azure App Configuration-gebeurtenissen. Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md) Het geeft u ook een lijst met snelle starts en zelfstudies om Azure App Configuration te gebruiken als een gebeurtenisbron.
 
-In dit artikel vindt u de eigenschappen en het schema voor Azure App Configuration-gebeurtenissen. Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
+## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
 
-Zie [gebeurtenisbron Azure App Configuration voor](event-sources.md#app-configuration)een lijst met voorbeeldscripts en -zelfstudies .
-
-## <a name="available-event-types"></a>Beschikbare gebeurtenistypen
+### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
 Azure App Configuration zendt de volgende gebeurtenistypen uit:
 
@@ -29,7 +28,7 @@ Azure App Configuration zendt de volgende gebeurtenistypen uit:
 | Microsoft.appConfiguration.KeyValueGewijzigd | Verhoogd wanneer een sleutelwaarde wordt gemaakt of vervangen. |
 | Microsoft.AppConfiguration.KeyValueDeleted | Verhoogd wanneer een sleutelwaarde wordt verwijderd. |
 
-## <a name="example-event"></a>Voorbeeldgebeurtenis
+### <a name="example-event"></a>Voorbeeldgebeurtenis
 
 In het volgende voorbeeld wordt het schema van een gewijzigde gebeurtenis met sleutelwaarde weergegeven: 
 
@@ -69,7 +68,7 @@ Het schema voor een verwijderde gebeurtenis met sleutelwaarde is vergelijkbaar:
 }]
 ```
  
-## <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
@@ -79,7 +78,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 | Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
 | eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | De tijd dat de gebeurtenis wordt gegenereerd op basis van de UTC-tijd van de provider. |
-| id | tekenreeks | Unieke id voor de gebeurtenis. |
+| Id | tekenreeks | Unieke id voor de gebeurtenis. |
 | data | object | Gebeurtenisgegevens voor app-configuratie. |
 | dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
 | metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
@@ -91,7 +90,14 @@ Het gegevensobject heeft de volgende eigenschappen:
 | sleutel | tekenreeks | De sleutel van de sleutelwaarde die is gewijzigd of verwijderd. |
 | label | tekenreeks | Het label, indien aanwezig, van de sleutelwaarde die is gewijzigd of verwijderd. |
 | etag etag | tekenreeks | Voor `KeyValueModified` de etag van de nieuwe sleutelwaarde. Voor `KeyValueDeleted` de etag van de sleutelwaarde die is verwijderd. |
- 
+
+## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
+
+|Titel | Beschrijving |
+|---------|---------|
+| [Reageren op gebeurtenissen voor Azure App-configuratie met gebeurtenisraster](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Overzicht van de integratie van Azure App Configuration met Event Grid. |
+| [Snelstart: azure-app-configuratiegebeurtenissen routeren naar een aangepast webeindpunt met Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Hier ziet u hoe u Azure CLI gebruikt om Azure App Configuration-gebeurtenissen naar een WebHook te verzenden. |
+
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Wat is gebeurtenisraster voor](overview.md) een inleiding tot Azure Event Grid?

@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3b06289ba6ce98d4307a8255981ecdba069fdfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 021ac5fccf4d694895ab9941bd46dd2388f49af9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76905407"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407462"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Een gebeurtenisbron voor gebeurtenishubs toevoegen aan uw Time Series Insights-omgeving
 
@@ -54,7 +54,7 @@ Ga als volgende over een nieuwe consumentengroep in uw eventhub:
 
 ## <a name="add-a-new-event-source"></a>Een nieuwe gebeurtenisbron toevoegen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek uw bestaande Time Series Insights-omgeving. Selecteer in het linkermenu **Alle bronnen**en selecteer vervolgens de omgeving Time Series Insights.
 

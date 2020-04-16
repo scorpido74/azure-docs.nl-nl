@@ -3,14 +3,14 @@ title: Azure AD-verificatie configureren
 description: Meer informatie over het configureren van Azure Active Directory-verificatie als identiteitsprovider voor uw App Service- of Azure-functie-app.
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: dbbe58df4f1cfe93555b494e525fad18f5b02664
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6f4dbedad56f6867558a8b70575ad906c8796612
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632573"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392565"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Uw App-service- of Azure-functie-app configureren om Azure AD-aanmelding te gebruiken
 
@@ -19,8 +19,7 @@ ms.locfileid: "80632573"
 In dit artikel ziet u hoe u Azure App Service of Azure-functies configureert om Azure Active Directory (Azure AD) als verificatieprovider te gebruiken.
 
 > [!NOTE]
-> Op dit moment wordt [Azure Active Directory v2.0](../active-directory/develop/v2-overview.md) (inclusief [MSAL)](../active-directory/develop/msal-overview.md)niet ondersteund voor Azure App Service en Azure Functions. Kijk terug voor updates.
->
+> De express instellingen flow stelt een AAD V1 applicatie registratie in. Als u [Azure Active Directory v2.0](../active-directory/develop/v2-overview.md) (inclusief [MSAL)](../active-directory/develop/msal-overview.md)wilt gebruiken, volgt u de [geavanceerde configuratie-instructies.](#advanced)
 
 Volg deze aanbevolen procedures bij het instellen van uw app en verificatie:
 
@@ -101,7 +100,7 @@ Voer de volgende stappen uit:
     |Veld|Beschrijving|
     |-|-|
     |Client-id| Gebruik de **toepassings-id (client)** van de app-registratie. |
-    |Url van uitgever| * \<Tenant-id-id* `https://login.microsoftonline.com/<tenant-id>`>gebruiken en vervangen door de **directory -id (tenant)** van de app-registratie. Deze waarde wordt gebruikt om gebruikers om te leiden naar de juiste Azure AD-tenant en om de juiste metagegevens te downloaden om bijvoorbeeld de juiste tokenondertekeningssleutels en claimwaarde voor tokenuitgevende instellingen te bepalen. |
+    |Url van uitgever| * \<Tenant-id-id* `https://login.microsoftonline.com/<tenant-id>/v2.0`>gebruiken en vervangen door de **directory -id (tenant)** van de app-registratie. Deze waarde wordt gebruikt om gebruikers om te leiden naar de juiste Azure AD-tenant en om de juiste metagegevens te downloaden om bijvoorbeeld de juiste tokenondertekeningssleutels en claimwaarde voor tokenuitgevende instellingen te bepalen. De `/v2.0` sectie kan worden weggelaten voor toepassingen met AAD v1. |
     |Clientgeheim (optioneel)| Gebruik het clientgeheim dat u hebt gegenereerd in de app-registratie.|
     |Toegestane tokendoelgroepen| Als dit een cloud- of server-app is en u verificatietokens van een web-app wilt toestaan, voegt u hier de **Toepassings-ID URI** van de web-app toe. De geconfigureerde **client-id** wordt *altijd* impliciet beschouwd als een toegestane doelgroep. |
 

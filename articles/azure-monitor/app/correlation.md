@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 6ceace1ee93fab8c0a46ed4a67850fc87a5cdad2
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 2e862410e2bf12e09e1a6388bbb6f7105b5b2edf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991225"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405272"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriecorrelatie in Application Insights
 
@@ -314,7 +314,7 @@ In de loop van de tijd heeft .NET verschillende manieren gedefinieerd om telemet
 
 Maar die methoden maakten geen automatische ondersteuning voor gedistribueerde tracering mogelijk. `DiagnosticSource`ondersteunt automatische cross-machine correlatie. .NET-bibliotheken `DiagnosticSource` ondersteunen en maken automatische cross-machine propagatie van de correlatiecontext via het transport mogelijk, zoals HTTP.
 
-In [de gebruikershandleiding voor activiteiten](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) wordt `DiagnosticSource` de basis beginselen van het bijhouden van activiteiten uitgelegd.
+In [de gebruikershandleiding voor activiteiten](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) wordt `DiagnosticSource` de basis beginselen van het bijhouden van activiteiten uitgelegd.
 
 ASP.NET Core 2.0 ondersteunt het extraheren van HTTP-headers en het starten van nieuwe activiteiten.
 

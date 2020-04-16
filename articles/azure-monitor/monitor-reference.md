@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: e0e98b87cf3612bf01f90f806ea64ef06d08c60a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 27503defa23b2a35e767156139228aa2e177652f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255325"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405181"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt gecontroleerd door Azure Monitor?
 In dit artikel worden de verschillende toepassingen en services beschreven die worden gecontroleerd door Azure Monitor. 
@@ -205,7 +205,6 @@ Er zijn andere oplossingen beschikbaar voor het bewaken van verschillende toepas
 | [On-demand beoordelingen](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Beoordeel en optimaliseer de beschikbaarheid, beveiliging en prestaties van uw on-premises, hybride en cloud Microsoft-technologieomgevingen. |
 | [SQL-statuscontrole](insights/sql-assessment.md) | Beoordeel het risico en de status van uw SQL Server-omgevingen.  |
 | [Bedradingsgegevens](insights/wire-data.md) | Geconsolideerde netwerk- en prestatiegegevens die worden verzameld vanaf met Windows verbonden en met Linux verbonden computers met de Log Analytics-agent. |
-
 
 ## <a name="third-party-integration"></a>Integratie door derden
 

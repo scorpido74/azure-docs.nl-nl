@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Envoy configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
-description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen aan Envoy.
+description: Meer informatie over het automatisch inrichten en de-inrichten van gebruikersaccounts van Azure AD naar Envoy.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -14,77 +14,79 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
-ms.author: jeedes
-ms.openlocfilehash: 30faae80f1af4ff63924a76b26a03b8fe354a7df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: Zhchia
+ms.openlocfilehash: 68e17ba1dd5981e565e56d6c8137f77d33ad755b
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77058022"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393489"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Zelfstudie: Envoy configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in Envoy en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch te voorzien en te de-provisionen aan Envoy.
+In deze zelfstudie worden de stappen beschreven die u moet uitvoeren in zowel Envoy als Azure Active Directory (Azure AD) om automatische gebruikersinrichting te configureren. Wanneer azure AD is geconfigureerd, worden gebruikers en groepen automatisch voorzien en de-bepalingen aan [Envoy](https://envoy.com/pricing/) met behulp van de Azure AD Provisioning-service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md). 
 
-> [!NOTE]
-> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
->
-> Deze connector bevindt zich momenteel in Public Preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
+
+## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
+> [!div class="checklist"]
+> * Gebruikers maken in Envoy
+> * Verwijder gebruikers in Envoy wanneer ze geen toegang meer nodig hebben
+> * Gebruikerskenmerken gesynchroniseerd houden tussen Azure AD en Envoy
+> * Voorzieningsgroepen en groepslidmaatschappen in gezant
+> * [Single sign-on](https://docs.microsoft.com/azure/active-directory/saas-apps/envoy-tutorial) to Envoy (aanbevolen)
 
 ## <a name="prerequisites"></a>Vereisten
 
 Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
 
-* Een Azure AD-tenant
-* [Een huurder van de Gezant](https://envoy.com/pricing/)
+* [Een Azure AD-tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Een gebruikersaccount in Azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) om provisioning te configureren (bijvoorbeeld toepassingsbeheerder, cloudtoepassingsbeheerder, toepassingseigenaar of globale beheerder). 
+* [Een gezant huurder](https://envoy.com/pricing/).
 * Een gebruikersaccount in Envoy met beheerdersmachtigingen.
 
-## <a name="add-envoy-from-the-gallery"></a>Gezant toevoegen van de galerij
+## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtingsimplementatie plannen
+1. Meer informatie over [hoe de inprovisioningservice werkt.](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
+2. Bepaal wie in de ruimte voor [de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)zal zijn .
+3. Bepaal welke gegevens [u wilt toewijzen tussen Azure AD en Envoy](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Voordat u Envoy configureert voor automatische gebruikersvoorziening met Azure AD, moet u Envoy uit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+## <a name="step-2-configure-envoy-to-support-provisioning-with-azure-ad"></a>Stap 2. Envoy configureren om de inrichting met Azure AD te ondersteunen
 
-**Voer de volgende stappen uit om gezant toe te voegen vanuit de Azure AD-toepassingsgalerie:**
+1. Meld u aan bij uw [envoy admin console](https://dashboard.envoy.com/login). Klik op **Integraties**.
 
-1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
+    ![Gezant Integraties](media/envoy-provisioning-tutorial/envoy01.png)
 
-    ![De knop Azure Active Directory](common/select-azuread.png)
+2. Klik op **Installeren** voor de **Microsoft Azure SCIM-integratie.**
 
-2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+    ![Envoy installeren](media/envoy-provisioning-tutorial/envoy02.png)
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+3. Klik op **Opslaan** voor **synchronisatie van alle gebruikers.** 
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
+    ![Gezant Opslaan](media/envoy-provisioning-tutorial/envoy03.png)
 
-    ![De knop Nieuwe toepassing](common/add-new-app.png)
+4. Kopieer het **Token OAUTH-DRAGER**. Deze waarde wordt ingevoerd in het veld **Geheim token** op het tabblad Provisioning van uw Envoy-toepassing in de Azure-portal.
+    
+    ![Gezant OAUTH](media/envoy-provisioning-tutorial/envoy04.png)
 
-4. Voer in het zoekvak **Envoy**in, selecteer **Envoy** in het deelvenster Resultaten en klik op de knop **Toevoegen** om de toepassing toe te voegen.
+## <a name="step-3-add-envoy-from-the-azure-ad-application-gallery"></a>Stap 3. Gezant toevoegen vanuit de azure AD-toepassingsgalerie
 
-    ![Envoy in de lijst met resultaten](common/search-new-app.png)
+Voeg envoy toe uit de Azure AD-toepassingsgalerie om de inrichting aan Envoy te beheren. Als u eerder envoy voor SSO hebt ingesteld, u dezelfde toepassing gebruiken. Het wordt echter aanbevolen om een aparte app te maken bij het testen van de integratie in eerste instantie. Meer informatie over het toevoegen van een toepassing uit de galerie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
-## <a name="assigning-users-to-envoy"></a>Gebruikers toewijzen aan gezant
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Bepalen wie in het vermogen van de inrichting 
 
-Azure Active Directory gebruikt een concept genaamd *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
+Met de Azure AD-inrichtingsservice u scopen die worden ingericht op basis van toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker /groep. Als u ervoor kiest om het bereik te bepalen wie op basis van toewijzing aan uw app wordt toegewezen, u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen aan de toepassing toe te wijzen. Als u ervoor kiest om scope die zal worden ingericht uitsluitend op basis van attributen van de gebruiker of groep, u gebruik maken van een scoping filter zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)beschreven. 
 
-Voordat u automatische gebruikersvoorzieningen configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang tot Envoy nodig hebben. Eenmaal besloten, u deze gebruikers en / of groepen toewijzen aan Envoy door het volgen van de instructies hier:
+* Wanneer u gebruikers en groepen aan Envoy toewijst, moet u een andere rol dan **Standaardtoegang**selecteren. Gebruikers met de functie Standaardtoegang zijn uitgesloten van inrichten en worden gemarkeerd als niet effectief gerechtigd in de inrichtingslogboeken. Als de enige rol die beschikbaar is in de toepassing de standaardtoegangsrol is, u [het toepassingsmanifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
 
-* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
+* Begin klein. Test met een kleine set gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer de inrichtingsruimte is ingesteld op toegewezen gebruikers en groepen, u dit beheren door een of twee gebruikers of groepen aan de app toe te wijzen. Wanneer het bereik is ingesteld op alle gebruikers en groepen, u een [op kenmerken gebaseerd scopingfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
 
-### <a name="important-tips-for-assigning-users-to-envoy"></a>Belangrijke tips voor het toewijzen van gebruikers aan Envoy
 
-* Het wordt aanbevolen dat één Azure AD-gebruiker aan Envoy wordt toegewezen om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
+## <a name="step-5-configure-automatic-user-provisioning-to-envoy"></a>Stap 5. Automatische gebruikersvoorziening configureren voor Envoy 
 
-* Wanneer u een gebruiker aan Envoy toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
-
-## <a name="configuring-automatic-user-provisioning-to-envoy"></a>Automatische gebruikersvoorziening configureren voor Envoy 
-
-In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen in Envoy te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
-
-> [!TIP]
-> U er ook voor kiezen om SAML-gebaseerde single sign-on voor Envoy in te schakelen, volgens de instructies in de [Envoy single sign-on tutorial](envoy-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikersinrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren.
+In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen in TestApp te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
 
 ### <a name="to-configure-automatic-user-provisioning-for-envoy-in-azure-ad"></a>Ga als een te meer met de automatische gebruikersvoorziening voor Envoy in Azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -100,74 +102,80 @@ In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of
 
     ![Tabblad Inrichten](common/provisioning-automatic.png)
 
-5. Voer onder de sectie `https://app.envoy.com/scim/v2` **Beheerdersreferenties** invoer in **Tenant-URL**in . Volg de walkthrough zoals beschreven in stap 6 om het **geheime token** van je Envoy-account op te halen.
+5. Voer onder de sectie `https://app.envoy.com/scim/v2` **Beheerdersreferenties** invoer in **Tenant-URL**in . Voer de tokenwaarde **OAUTH BEARER** in die eerder in **Secret Token**is opgehaald. Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Envoy. Als de verbinding mislukt, moet u ervoor zorgen dat uw Envoy-account beheerdersmachtigingen heeft en het opnieuw proberen.
 
-6. Meld u aan bij uw [envoy admin console](https://dashboard.envoy.com/login). Klik op **Integraties**.
+   ![Provisioning](./media/envoy-tutorial/provisioning.png)
 
-    ![Gezant Integraties](media/envoy-provisioning-tutorial/envoy01.png)
-
-    Klik op **Installeren** voor de **Microsoft Azure SCIM-integratie.**
-
-    ![Envoy installeren](media/envoy-provisioning-tutorial/envoy02.png)
-
-    Klik op **Opslaan** voor **synchronisatie van alle gebruikers.** 
-
-    ![Gezant Opslaan](media/envoy-provisioning-tutorial/envoy03.png)
-
-    Haal het geheime token gevuld op.
-    
-    ![Gezant OAUTH](media/envoy-provisioning-tutorial/envoy04.png)
-
-7. Klik op **Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Envoy wanneer u de velden in stap 5 bevolken. Als de verbinding mislukt, moet u ervoor zorgen dat uw Envoy-account beheerdersmachtigingen heeft en het opnieuw proberen.
-
-    ![Token](common/provisioning-testconnection-tenanturltoken.png)
-
-8. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
+6. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fout moet ontvangen en schakel het selectievakje **Een e-mailmelding verzenden in wanneer er een fout optreedt.**
 
     ![E-mail met meldingen](common/provisioning-notification-email.png)
 
-9. Klik op **Opslaan**.
+7. Selecteer **Opslaan**.
 
-10. Selecteer Azure **Active Directory-gebruikers synchroniseren met Envoy**in de sectie **Toewijzingen.**
-    
-    ![Envoy Gebruikerskenmerken](media/envoy-provisioning-tutorial/envoy-user-mappings.png)
-    
-11. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Envoy in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Envoy voor updatebewerkingen te matchen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
+8. Selecteer Azure **Active Directory-gebruikers synchroniseren met Envoy**in de sectie **Toewijzingen.**
 
-    ![Envoy Gebruikerskenmerken](media/envoy-provisioning-tutorial/envoy-user-attribute.png)
+9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Envoy in de sectie **Attribute-Mapping.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Envoy voor updatebewerkingen te matchen. Als u ervoor kiest het [overeenkomende doelkenmerk](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)te wijzigen, moet u ervoor zorgen dat de Envoy API filteringgebruikers ondersteunt op basis van dat kenmerk. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-12. Selecteer Azure **Active Directory-groepen synchroniseren met Envoy**onder de sectie **Toewijzingen** .
+   |Kenmerk|Type|
+   |---|---|
+   |userName|Tekenreeks|
+   |extern id|Tekenreeks|
+   |displayName|Tekenreeks|
+   |titel|Tekenreeks|
+   |e-mails[type eq "werk"].waarde|Tekenreeks|
+   |voorkeurTaal|Tekenreeks|
+   |department|Tekenreeks|
+   |adressen[type eq "werk"].land|Tekenreeks|
+   |adressen[type eq "werk"].plaats|Tekenreeks|
+   |adressen[type eq "werk"].regio|Tekenreeks|
+   |adressen[type eq "werk"].postcode|Tekenreeks|
+   |adressen[type eq "werk"].opgemaakt|Tekenreeks|
+   |adressen[type eq "werk"].streetAddress|Tekenreeks|
+   |name.givenName|Tekenreeks|
+   |name.familyName|Tekenreeks|
+   |name.opgemaakt|Tekenreeks|
+   |phoneNumbers[type eq "mobile"].value|Tekenreeks|
+   |phoneNumbers[type eq "werk"].waarde|Tekenreeks|
+   |landinstellingen|Tekenreeks|
 
-    ![Envoy User Mappings](media/envoy-provisioning-tutorial/envoy-group-mapping.png)
+10. Selecteer Azure **Active Directory-groepen synchroniseren met Envoy**onder de sectie **Toewijzingen** .
 
-13. Bekijk de groepskenmerken die zijn gesynchroniseerd van Azure AD naar Envoy in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **Eigenschappen matching** worden gebruikt om de groepen in Envoy voor updatebewerkingen te matchen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
+11. Bekijk de groepskenmerken die zijn gesynchroniseerd van Azure AD naar Envoy in de sectie **Attribute-Mapping.** De kenmerken die zijn geselecteerd als **Eigenschappen matching** worden gebruikt om de groepen in Envoy voor updatebewerkingen te matchen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![Envoy User Mappings](media/envoy-provisioning-tutorial/envoy-group-attributes.png)
-    
-14. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+      |Kenmerk|Type|
+      |---|---|
+      |displayName|Tekenreeks|
+      |extern id|Tekenreeks|
+      |leden|Naslaginformatie|
 
-15. Als u de Azure AD-inrichtingsservice voor Envoy wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie **Instellingen.**
+12. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)
+
+13. Als u de Azure AD-inrichtingsservice voor Envoy wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie **Instellingen.**
 
     ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
 
-16. Definieer de gebruikers en/of groepen die u aan Envoy wilt inrichten door de gewenste waarden in **Scope** te kiezen in de sectie **Instellingen.**
+14. Definieer de gebruikers en/of groepen die u aan Envoy wilt inrichten door de gewenste waarden in **Scope** te kiezen in de sectie **Instellingen.**
 
     ![Inrichtingskader](common/provisioning-scope.png)
 
-17. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
+15. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
 
     ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitenrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op Envoy.
+Met deze bewerking wordt de eerste synchronisatiecyclus gestart van alle gebruikers en groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste cyclus duurt langer om uit te voeren dan de volgende cycli, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. 
 
-Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
+## <a name="step-6-monitor-your-deployment"></a>Stap 6. Uw implementatie bewaken
+Zodra u de inrichting hebt geconfigureerd, gebruikt u de volgende resources om uw implementatie te controleren:
+
+* Gebruik de [inrichtingslogboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) om te bepalen welke gebruikers met succes of zonder succes zijn ingericht
+* Controleer de [voortgangsbalk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtingscyclus te bekijken en hoe dicht deze bij voltooiing is
+* Als de inrichtingsconfiguratie in een ongezonde status lijkt te zijn, wordt de toepassing in quarantaine geplaatst. Meer informatie over quarantainestaten [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)
-
+* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../manage-apps/check-status-user-account-provisioning.md)

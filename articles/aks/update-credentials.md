@@ -5,18 +5,20 @@ description: Informatie over hoe de serviceprincipal- of AAD-toepassingsreferent
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 0203321af32bcc2ae70b726737b85870d08be86f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 8420771e32aa792aa79a07fdf4362ad0d9b45d48
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886752"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392636"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>De referenties voor Azure Kubernetes Service (AKS) bijwerken of roteren
 
 Standaard worden AKS-clusters gemaakt met een serviceprincipal met een vervaldatum van één jaar. Als u in de buurt van de vervaldatum bent, u de referenties opnieuw instellen om de serviceprincipal voor een extra periode te verlengen. U de referenties ook bijwerken of roteren als onderdeel van een gedefinieerd beveiligingsbeleid. In dit artikel wordt beschreven hoe u deze referenties voor een AKS-cluster bijwerken.
 
-Mogelijk hebt u [uw AKS-cluster][aad-integration]ook geïntegreerd met Azure Active Directory en gebruikt u het als verificatieprovider voor uw cluster. In dat geval hebt u nog 2 identiteiten gemaakt voor uw cluster, de AAD Server App en de AAD Client App, u deze referenties ook opnieuw instellen. 
+Mogelijk hebt u [uw AKS-cluster][aad-integration]ook geïntegreerd met Azure Active Directory en gebruikt u het als verificatieprovider voor uw cluster. In dat geval hebt u nog 2 identiteiten gemaakt voor uw cluster, de AAD Server App en de AAD Client App, u deze referenties ook opnieuw instellen.
+
+U ook een beheerde identiteit gebruiken voor machtigingen in plaats van een serviceprincipal. Beheerde identiteiten zijn eenvoudiger te beheren dan serviceprincipals en vereisen geen updates of rotaties. Zie [Beheerde identiteiten gebruiken voor](use-managed-identity.md)meer informatie .
 
 ## <a name="before-you-begin"></a>Voordat u begint
 

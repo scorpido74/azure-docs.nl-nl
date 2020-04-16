@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 3a59f137240eff2a3a68fa5547be8c6c25d3e5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772224"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408627"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Virtuele machines met Azure-schijfversleuteling repliceren naar een andere Azure-regio
 
 In dit artikel wordt beschreven hoe u Azure VM's repliceren met ADE-schijfversleuteling (Azure Disk Encryption) ingeschakeld, van de ene Azure-regio naar de andere.
 
 >[!NOTE]
-> Site recovery ondersteunt momenteel ADE, met en zonder Azure Active Directory (AAD) voor VM's met Windows- en Linux-besturingssystemen.  Voor machines met ADE 1.1 (zonder AAD) moeten de VM's beheerde schijven gebruiken. VM's met onbeheerde schijven worden niet ondersteund. Als u overschakelt van ADE 0.1 (met AAD) naar 1.1, moet u replicatie uitschakelen en replicatie voor een virtuele machine inschakelen nadat u 1.1 hebt ingeschakeld.
+> Siteherstel ondersteunt momenteel ADE, met en zonder Azure Active Directory (AAD) voor VM's met Windows-besturingssystemen. Voor Linux-besturingssystemen ondersteunen we Alleen ADE zonder AAD. Bovendien moeten de VM's voor machines met ADE 1.1 (zonder AAD) beheerde schijven gebruiken. VM's met onbeheerde schijven worden niet ondersteund. Als u overschakelt van ADE 0.1 (met AAD) naar 1.1, moet u replicatie uitschakelen en replicatie voor een virtuele machine inschakelen nadat u 1.1 hebt ingeschakeld.
 
 
 ## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>Vereiste gebruikersmachtigingen

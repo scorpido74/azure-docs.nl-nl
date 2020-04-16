@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: kevindaw
-ms.date: 03/06/2020
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b4d247f151240da8c3f0d38bbd22e43e230a1b95
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: d5e968e578428a16a0005149a409986015a1fc5c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668620"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393760"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Een IoT Edge-apparaat maken en inrichten met X.509-certificaten
 
@@ -44,6 +44,12 @@ Het apparaatidentiteitscertificaat is een bladcertificaat dat via een vertrouwen
 Apparaatidentiteitscertificaten worden alleen gebruikt voor het inrichten van het IoT Edge-apparaat en het verifiëren van het apparaat met Azure IoT Hub. Ze ondertekenen geen certificaten, in tegenstelling tot de CA-certificaten die het IoT Edge-apparaat aan modules of leaf-apparaten presenteert voor verificatie. Zie de [gebruiksdetails van Azure IoT Edge-certificaat voor](iot-edge-certs.md)meer informatie .
 
 Nadat u het apparaatidentiteitscertificaat hebt gemaakt, moet u twee bestanden hebben: een .cer- of .pem-bestand dat het openbare gedeelte van het certificaat bevat, en een .cer- of .pem-bestand met de privésleutel van het certificaat. Als u groepsinschrijving in DPS wilt gebruiken, hebt u ook het openbare gedeelte van een tussen- of basis-CA-certificaat nodig in dezelfde vertrouwensketen.
+
+U hebt de volgende bestanden nodig om automatische inrichting in te stellen met X.509:
+
+* Het apparaat-identiteitscertificaat en het privésleutelcertificaat. Het apparaatidentiteitscertificaat wordt geüpload naar DPS als u een individuele inschrijving maakt. De privésleutel wordt doorgegeven aan de Runtime van IoT Edge.
+* Een volledig kettingcertificaat, dat minstens de apparaatidentiteit en de middencertificaten daarin zou moeten hebben. Het volledige ketencertificaat wordt doorgegeven aan de Runtime van IoT Edge.
+* Een intermediair of root CA-certificaat uit de vertrouwensketen van het certificaat. Dit certificaat wordt geüpload naar DPS als u een groepsinschrijving maakt.
 
 ### <a name="use-test-certificates"></a>Testcertificaten gebruiken
 
@@ -86,7 +92,7 @@ Zie [Apparaatinschrijvingen beheren](../iot-dps/how-to-manage-enrollments.md)voo
 
    * **Primair certificaat .pem- of .cer-bestand**: Upload het openbare bestand vanaf het apparaatidentiteitscertificaat. Als u de scripts hebt gebruikt om een testcertificaat te genereren, kiest u het volgende bestand:
 
-      `<WRKDIR>/certs/iot-edge-device-identity-<name>-full-chain.cert.pem`
+      `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 
    * **IoT Hub Device ID:** Geef een ID voor uw apparaat als u wilt. U apparaat-id's gebruiken om een individueel apparaat te targeten voor de implementatie van modules. Als u geen apparaat-id verstrekt, wordt de algemene naam (CN) in het X.509-certificaat gebruikt.
 
@@ -205,7 +211,7 @@ X.509-inrichting met DPS wordt alleen ondersteund in IoT Edge-versie 1.0.9 of ni
 U hebt de volgende informatie nodig bij het inrichten van uw apparaat:
 
 * De waarde van de DPS **ID-scope.** U deze waarde ophalen op de overzichtspagina van uw DPS-exemplaar in de Azure-portal.
-* Het apparaat-identiteitscertificaatbestand op het apparaat.
+* Het apparaat-certificaatkettingbestand op het apparaat.
 * Het apparaat-identiteitssleutelbestand op het apparaat.
 * Een optionele registratie-ID (getrokken uit de algemene naam in het apparaat identiteitsbewijs als niet geleverd).
 
@@ -217,7 +223,7 @@ Gebruik de volgende koppeling om de Azure IoT Edge-runtime op uw apparaat te ins
 
 Wanneer u het X.509-certificaat en de belangrijkste informatie toevoegt aan het config.yaml-bestand, moeten de paden worden opgegeven als bestands-URI's. Bijvoorbeeld:
 
-* `file:///<path>/identity_certificate.pem`
+* `file:///<path>/identity_certificate_chain.pem`
 * `file:///<path>/identity_key.pem`
 
 De sectie in het configuratiebestand voor X.509 automatische inrichting ziet er als volgt uit:
@@ -235,7 +241,7 @@ provisioning:
     identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
 ```
 
-Vervang de tijdelijke `scope_id`aanduidingswaarden voor , `identity_cert`door `identity_pk` de scope-id van uw DPS-exemplaar en de URI's naar de cert- en sleutelbestandslocaties op uw apparaat. Geef `registration_id` een voor het apparaat als u wilt, of laat deze regel commentaar uit om het apparaat te registreren met de CN-naam van het identiteitscertificaat.
+Vervang de tijdelijke `scope_id`aanduidingswaarden voor , `identity_cert`door `identity_pk` de scope-id van uw DPS-exemplaar en de URI's naar de cert-keten en sleutelbestandslocaties op uw apparaat. Geef `registration_id` een voor het apparaat als u wilt, of laat deze regel commentaar uit om het apparaat te registreren met de CN-naam van het identiteitscertificaat.
 
 Start de beveiligingsdaemon altijd opnieuw na het bijwerken van het config.yaml-bestand.
 
@@ -245,7 +251,7 @@ sudo systemctl restart iotedge
 
 ### <a name="windows-device"></a>Windows-apparaat
 
-Installeer de IoT Edge-runtime op het apparaat waarvoor u het identiteitscertificaat en de identiteitssleutel hebt gegenereerd. U configureert de 3T Edge-runtime voor automatische, niet handmatige inprovisioning.
+Installeer de IoT Edge-runtime op het apparaat waarvoor u de identiteitscertificaatketen en identiteitssleutel hebt gegenereerd. U configureert de 3T Edge-runtime voor automatische, niet handmatige inprovisioning.
 
 Zie De runtime van [Azure IoT Edge installeren op Windows](how-to-install-iot-edge-windows.md)voor meer gedetailleerde informatie over het installeren van IoT Edge op Windows, inclusief vereisten en instructies voor taken zoals het beheren van containers en het bijwerken van IoT Edge.
 
@@ -262,11 +268,11 @@ Zie De runtime van [Azure IoT Edge installeren op Windows](how-to-install-iot-ed
 
 1. Met de opdracht **Initialize-IoTEdge** configureert u de runtime van IoT Edge op uw machine. De opdracht is standaard ingesteld op `-Dps` handmatige inprovisioning, tenzij u de vlag gebruikt om automatische inrichting te gebruiken.
 
-   Vervang de tijdelijke `{scope_id}`aanduidingswaarden voor , `{identity cert path}`en `{identity key path}` door de juiste waarden uit uw DPS-exemplaar en de bestandspaden op uw apparaat. Als u de registratie-ID `-RegistrationId {registration_id}` wilt opgeven, moet u ook de tijdelijke aanduiding vervangen.
+   Vervang de tijdelijke `{scope_id}`aanduidingswaarden voor , `{identity cert chain path}`en `{identity key path}` door de juiste waarden uit uw DPS-exemplaar en de bestandspaden op uw apparaat. Als u de registratie-ID `-RegistrationId {registration_id}` wilt opgeven, moet u ook de tijdelijke aanduiding vervangen.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert path} -X509IdentityPrivateKey {identity key path}
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
    ```
 
    >[!TIP]

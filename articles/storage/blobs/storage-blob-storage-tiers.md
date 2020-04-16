@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: f2f6be1022a7100a23f49534f2c18fc951d56284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c803d489b70cda6910865f6096d21c2021c4ae3a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255507"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393709"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag
 
@@ -141,7 +141,7 @@ In deze sectie worden de volgende scenario's gedemonstreerd met behulp van de Az
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>De toegangslaag van het standaardaccount van een GPv2- of Blob Storage-account wijzigen
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek en selecteer **alle bronnen**in de Azure-portal.
 
@@ -169,7 +169,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>De laag van een blob in een GPv2- of Blob-opslagaccount wijzigen
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek en selecteer **alle bronnen**in de Azure-portal.
 
@@ -199,7 +199,7 @@ $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountN
 $ctx = $storageAccount.Context
 
 #Select the blob from a container
-$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+$blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
 
 #Change the blob’s access tier to archive
 $blob.ICloudBlob.SetStandardBlobTier("Archive")
@@ -234,7 +234,7 @@ Ja. Het kenmerk **Access Tier** dat op accountniveau is ingesteld, is de standaa
 
 **Kan ik de standaardtoegangslaag van mijn Blob- of GPv2-opslagaccount wijzigen?**
 
-Ja, u de standaardaccountlaag wijzigen door het kenmerk **Access-laag** in te stellen op het opslagaccount. Het wijzigen van de accountlaag is van toepassing op alle objecten die zijn opgeslagen in het account en die geen expliciete laagset hebben (bijvoorbeeld **Hot (afgeleid)** of **Cool (afgeleid).** Het omdraaien van de accountlaag van hot naar cool maakt schrijfbewerkingen (per 10.000) voor alle blobs zonder een ingestelde laag in Alleen GPv2-accounts en toggling van koel naar heet maakt zowel leesbewerkingen (per 10.000) als kosten voor het ophalen van gegevens (per GB) voor alle blobs in Blob-opslag en GPv2-accounts.
+Ja, u de standaardaccountlaag wijzigen door het kenmerk **Access-laag** in te stellen op het opslagaccount. Het wijzigen van de accountlaag is van toepassing op alle objecten die zijn opgeslagen in het account en die geen expliciete laagset hebben (bijvoorbeeld **Hot (afgeleid)** of **Cool (afgeleid).** Het omdelen van de accountlaag van hot naar cool maakt schrijfbewerkingen (per 10.000) voor alle blobs zonder alleen een ingestelde laag in GPv2-accounts en toggling van koel naar heet maakt zowel leesbewerkingen (per 10.000) als kosten voor het ophalen van gegevens (per GB) voor alle blobs in Blob-opslag- en GPv2-accounts.
 
 **Kan ik de toegangslaag van mijn standaardaccount instellen op Archive?**
 

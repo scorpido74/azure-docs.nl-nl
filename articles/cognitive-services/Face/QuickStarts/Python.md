@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c4d136eaf0f6c4ac64093f417f144e422e2da52f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c88a60fdc6d064fba91f4b6d79e1637f45bf2716
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74977910"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403223"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Snelstart: Gezichten in een afbeelding detecteren met de Face-REST API en Python
 
-In deze snelstart gebruikt u de Azure Face REST API met Python om menselijke gezichten in een afbeelding te detecteren. Er worden kaders rond de gezichten getekend en informatie over geslacht en leeftijd over de afbeelding heen weergegeven.
+In deze quickstart gebruikt u de Azure Face REST API met Python om menselijke gezichten in een afbeelding te detecteren. Er worden kaders rond de gezichten getekend en informatie over geslacht en leeftijd over de afbeelding heen weergegeven.
 
 ![Een vrouw en een man, elk met rechthoeken getekend rond de gezichten, en met de leeftijd en het geslacht op de afbeelding weergegeven](../images/labelled-faces-python.png)
 

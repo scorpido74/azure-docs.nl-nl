@@ -3,12 +3,12 @@ title: host.json-referentie voor Azure-functies 2.x
 description: Referentiedocumentatie voor het Azure Functions host.json-bestand met de v2-runtime.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 1a861d500f0b8cc31b8312d6c955916ab741b649
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 7b3c9d15fc8cf3a1651c44a5656f731a7820e344
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878240"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405489"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-verwijzing voor Azure-functies 2.x en hoger 
 
@@ -141,7 +141,7 @@ Besturingselementen voor Toepassingsinzichten, inclusief [bemonsteringsopties.](
 Zie het eerdere [voorbeeldhost.json-bestand](#sample-hostjson-file)voor de volledige JSON-structuur .
 
 > [!NOTE]
-> Logboekbemonstering kan ertoe leiden dat sommige uitvoeringen niet worden weergegeven in het monitorblad Van Application Insights. Om logboekbemonstering te `samplingExcludedTypes: "Request"` voorkomen, voegt u de `applicationInsights` waarde toe.
+> Logboekbemonstering kan ertoe leiden dat sommige uitvoeringen niet worden weergegeven in het monitorblad Van Application Insights. Om logboekbemonstering te `excludedTypes: "Request"` voorkomen, voegt u de `samplingSettings` waarde toe.
 
 | Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
@@ -166,8 +166,8 @@ Zie het eerdere [voorbeeldhost.json-bestand](#sample-hostjson-file)voor de volle
 | minSamplingPercentage | 0.1 | Aangezien het bemonsteringspercentage varieert, bepaalt deze eigenschap het minimaal toegestane bemonsteringspercentage. |
 | maxSamplingPercentage | 0.1 | Aangezien het bemonsteringspercentage varieert, bepaalt deze eigenschap het maximaal toegestane bemonsteringspercentage. |
 | movingAverageRatio | 1.0 | Bij de berekening van het voortschrijdend gemiddelde wordt het gewicht toegewezen aan de meest recente waarde. Gebruik een waarde die gelijk is aan of lager is dan 1. Kleinere waarden maken het algoritme minder reactief voor plotselinge veranderingen. |
-| uitgeslotenTypen | null | Een lijst met typen met een dubbele punt die u niet wilt bemonsteren. Herkende typen zijn: Afhankelijkheid, Gebeurtenis, Uitzondering, PageView, Aanvraag, Tracering. Alle exemplaren van de opgegeven typen worden verzonden; de typen die niet zijn opgegeven, worden bemonsterd. |
-| includedTypes | null | Een lijst met typen met een dubbele punt die u wilt bemonsteren. een lege lijst impliceert alle soorten. Type dat `excludedTypes` wordt vermeld in de typen overschrijven die hier worden vermeld. Herkende typen zijn: Afhankelijkheid, Gebeurtenis, Uitzondering, PageView, Aanvraag, Tracering. Alle exemplaren van de opgegeven typen worden verzonden; de typen die niet zijn opgegeven, worden bemonsterd. |
+| uitgeslotenTypen | null | Een lijst met typen met een dubbele punt die u niet wilt bemonsteren. Erkende `Dependency`typen zijn: `Event`, `PageView` `Request`, `Exception` `Trace`, , en . Alle exemplaren van de opgegeven typen worden verzonden; de typen die niet zijn opgegeven, worden bemonsterd. |
+| includedTypes | null | Een lijst met typen met een dubbele punt die u wilt bemonsteren. een lege lijst impliceert alle soorten. Type dat `excludedTypes` wordt vermeld in de typen overschrijven die hier worden vermeld. Erkende `Dependency`typen zijn: `Event`, `PageView` `Request`, `Exception` `Trace`, , en . Exemplaren van de opgegeven typen worden bemonsterd; de typen die niet zijn opgegeven of geïmpliceerd, worden zonder bemonstering verzonden. |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights.httpAutoCollectionOptions
 

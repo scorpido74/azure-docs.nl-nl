@@ -1,20 +1,20 @@
 ---
-title: Gebeurtenisschema azure-gebeurtenisraster
+title: Azure-abonnement als gebeurtenisrasterbron
 description: Beschrijft de eigenschappen die worden geleverd voor abonnementsgebeurtenissen met Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/12/2019
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa88fe4e05ac968588a65d67a2f075bcae48ba7a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561673"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393231"
 ---
-# <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid-gebeurtenisschema voor abonnementen
+# <a name="azure-subscription-as-an-event-grid-source"></a>Azure-abonnement als gebeurtenisrasterbron
 
 In dit artikel worden de eigenschappen en het schema voor Azure-abonnementsgebeurtenissen weergeven.Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
 
@@ -28,9 +28,10 @@ Als u gebeurtenissen programmatisch wilt afhandelen, `operationName` kunt u gebe
 
 Het gebeurtenisonderwerp is de resource-id van de resource die het doel van de bewerking is. Als u gebeurtenissen voor een resource wilt filteren, geeft u die resource-id op bij het maken van het gebeurtenisabonnement. Als u wilt filteren op een resourcetype, gebruikt u een waarde in de volgende indeling:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-Zie bron van [Azure-abonnementen voor](event-sources.md#azure-subscriptions)een lijst met voorbeeldscripts en -zelfstudies.
 
-## <a name="available-event-types"></a>Beschikbare gebeurtenistypen
+## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
+
+### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
 Azure-abonnementen zenden beheergebeurtenissen uit vanuit Azure Resource Manager, zoals wanneer een VM wordt gemaakt of een opslagaccount wordt verwijderd.
 
@@ -46,7 +47,7 @@ Azure-abonnementen zenden beheergebeurtenissen uit vanuit Azure Resource Manager
 | Microsoft.Resources.ResourceWriteFailure | Verhoogd wanneer de bewerking voor maken of bijwerken mislukt. |
 | Microsoft.Resources.ResourceWriteSuccess | Verhoogd wanneer de bewerking voor maken of bijwerken slaagt. |
 
-## <a name="example-event"></a>Voorbeeldgebeurtenis
+### <a name="example-event"></a>Voorbeeldgebeurtenis
 
 In het volgende voorbeeld wordt het schema voor een **gebeurtenis ResourceWriteSuccess** weergegeven. Hetzelfde schema wordt gebruikt voor **ResourceWriteFailure** en **ResourceWriteCancel** gebeurtenissen met verschillende waarden voor `eventType`.
 
@@ -230,7 +231,7 @@ In het volgende voorbeeld wordt het schema voor een **gebeurtenis ResourceAction
 }]
 ```
 
-## <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
@@ -259,6 +260,14 @@ Het gegevensobject heeft de volgende eigenschappen:
 | status | tekenreeks | De status van de bewerking. |
 | subscriptionId | tekenreeks | De abonnements-ID van de resource. |
 | tenantId | tekenreeks | De tenant-id van de resource. |
+
+## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
+|Titel |Beschrijving  |
+|---------|---------|
+| [Zelfstudie: Azure Automation with Event Grid en Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Maak een virtuele machine, die een gebeurtenis verzendt. De gebeurtenis activeert een automation-runbook die de virtuele machine tagt en activeert een bericht dat naar een Microsoft Teams-kanaal wordt verzonden. |
+| [How to: abonneren op evenementen via portal](subscribe-through-portal.md) | Gebruik de portal om u te abonneren op gebeurtenissen voor een Azure-abonnement. |
+| [Azure CLI: u abonneren op gebeurtenissen voor een Azure-abonnement](./scripts/event-grid-cli-azure-subscription.md) |Voorbeeldscript waarmee een Event Grid-abonnement op een Azure-abonnement wordt gemaakt en gebeurtenissen naar een WebHook worden verzendt. |
+| [PowerShell: u abonneren op gebeurtenissen voor een Azure-abonnement](./scripts/event-grid-powershell-azure-subscription.md)| Voorbeeldscript waarmee een Event Grid-abonnement op een Azure-abonnement wordt gemaakt en gebeurtenissen naar een WebHook worden verzendt. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

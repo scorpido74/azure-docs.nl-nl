@@ -4,15 +4,15 @@ description: Beschrijft hoe u de AZURE Analysis Services REST API gebruiken om a
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6457f062a40e60a491220fcf977585e8b07445b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273722"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406290"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchroon vernieuwen met de REST API
 
@@ -56,7 +56,7 @@ U bijvoorbeeld het werkwoord POST in de collectie Vernieuwen gebruiken om een ve
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory -token (OAuth 2) in de kopautorisatie en moeten voldoen aan de volgende vereisten:
 
@@ -97,7 +97,7 @@ Het lichaam kan op het volgende lijken:
 
 Het opgeven van parameters is niet vereist. De standaardinstelling wordt toegepast.
 
-| Name             | Type  | Beschrijving  |Standaard  |
+| Naam             | Type  | Beschrijving  |Standaard  |
 |------------------|-------|--------------|---------|
 | `Type`           | Enum  | Het type verwerking dat moet worden uitgevoerd. De typen zijn uitgelijnd met de [vernieuwingstypen van](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) TMSL: volledig, clearValues, calculate, dataOnly, automatisch en defragment. Type toevoegen wordt niet ondersteund.      |   automatisch      |
 | `CommitMode`     | Enum  | Hiermee bepaalt u of objecten in batches worden vastgelegd of alleen wanneer deze zijn voltooid. Modi zijn: standaard, transactioneel, gedeeltelijkBatch.  |  Transactionele       |
@@ -208,8 +208,8 @@ Hier is een C# code voorbeeld om u op weg te helpen, [RestApiSample op GitHub](h
 
 ### <a name="to-use-the-code-sample"></a>Het codevoorbeeld gebruiken
 
-1.  Kloon of download de repo. Open de RestApiSample-oplossing.
-2.  Zoek de **lijnclient. BaseAddress = ...** en geef uw [basis-URL](#base-url).
+1.    Kloon of download de repo. Open de RestApiSample-oplossing.
+2.    Zoek de **lijnclient. BaseAddress = ...** en geef uw [basis-URL](#base-url).
 
 Het codevoorbeeld maakt gebruik van [servicehoofdverificatie.](#service-principal)
 
@@ -217,9 +217,9 @@ Het codevoorbeeld maakt gebruik van [servicehoofdverificatie.](#service-principa
 
 Zie [Serviceprincipal maken - Azure-portal](../active-directory/develop/howto-create-service-principal-portal.md) en [Voeg een serviceprincipal toe aan de serverbeheerderrol](analysis-services-addservprinc-admins.md) voor meer informatie over het instellen van een serviceprincipal en het toewijzen van de benodigde machtigingen in Azure AS. Voer de volgende extra stappen uit nadat u de stappen hebt voltooid:
 
-1.  Zoek in het codevoorbeeld **tekenreeksautoriteit = ...**, vervang **gewoons** met de tenant-id van uw organisatie.
-2.  Opmerking/uncomment, zodat de klasse ClientCredential wordt gebruikt om het cred-object te instantiëren. Zorg \<ervoor dat \<de>-waarden van de app-id-> id en app-sleutel op een veilige manier worden geopend of gebruik verificatie op basis van certificaten voor serviceprincipals.
-3.  Voet het voorbeeld uit.
+1.    Zoek in het codevoorbeeld **tekenreeksautoriteit = ...**, vervang **gewoons** met de tenant-id van uw organisatie.
+2.    Opmerking/uncomment, zodat de klasse ClientCredential wordt gebruikt om het cred-object te instantiëren. Zorg \<ervoor dat \<de>-waarden van de app-id-> id en app-sleutel op een veilige manier worden geopend of gebruik verificatie op basis van certificaten voor serviceprincipals.
+3.    Voet het voorbeeld uit.
 
 
 ## <a name="see-also"></a>Zie ook

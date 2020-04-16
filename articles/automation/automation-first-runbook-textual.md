@@ -6,18 +6,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/24/2018
 ms.topic: conceptual
-ms.openlocfilehash: a5a1cad3179063f75a5d9a19567624180b5793a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b103437ab30c05ddab88b7a8a723cd2b4b1d5f6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367258"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405895"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Mijn eerste PowerShell Workflow-runbook
 
 > [!div class="op_single_selector"]
 > * [Grafisch](automation-first-runbook-graphical.md)
-> * [Powershell](automation-first-runbook-textual-powershell.md)
+> * [PowerShell](automation-first-runbook-textual-powershell.md)
 > * [PowerShell-werkstroom](automation-first-runbook-textual.md)
 > * [Python](automation-first-runbook-textual-python2.md)
 
@@ -79,7 +79,7 @@ Voordat u het runbook publiceert om het beschikbaar te maken in productie, moet 
 1. Klik **op Start** om de test te starten, waarbij de enige ingeschakelde optie wordt getest.
 1. Houd er rekening mee dat een [runbook-taak](automation-runbook-execution.md) wordt gemaakt en de status ervan wordt weergegeven in het deelvenster.
 
-   De taakstatus `Queued`begint als , wat aangeeft dat de taak wacht tot een runbook-werknemer in de cloud beschikbaar is. De status `Starting` verandert in wanneer een werknemer de taak claimt. Ten slotte wordt `Running` de status wanneer het runbook daadwerkelijk begint uit te voeren.
+   De taakstatus begint als Queued, wat aangeeft dat de taak wacht tot een runbook-werknemer in de cloud beschikbaar is. De status wordt gewijzigd in Starten wanneer een werknemer de taak claimt. Ten slotte wordt de status Actief wanneer het runbook daadwerkelijk begint uit te voeren.
 
 1. Wanneer de taak runbook is voltooid, wordt in het deelvenster Test de uitvoer weergegeven. In dit geval `Hello World`zie je.
 
@@ -107,7 +107,7 @@ Het runbook dat u hebt gemaakt, bevindt zich nog steeds in de conceptmodus. U mo
 
    ![Taakoverzicht](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)
 
-1. Zodra de status `Completed`van het runbook wordt weergegeven, klikt u op **Uitvoer**. De pagina Uitvoer wordt geopend, `Hello World` waar u uw bericht zien.
+1. Zodra de status van het runbook voltooid wordt weergegeven, klikt u op **Uitvoer**. De pagina Uitvoer wordt geopend, `Hello World` waar u uw bericht zien.
 
    ![Taakoverzicht](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)
 
@@ -117,7 +117,7 @@ Het runbook dat u hebt gemaakt, bevindt zich nog steeds in de conceptmodus. U mo
 
    ![Taakoverzicht](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 
-1. Sluit het deelvenster Streams en het deelvenster Taak om terug te keren naar de pagina **MyFirstRunbook.**
+1. Sluit het deelvenster Streams en het deelvenster Taak om terug te keren naar de pagina MyFirstRunbook.
 1. Klik op **Vacatures** onder **Resources** om de pagina Vacatures voor dit runbook te openen. Op deze pagina worden alle vacatures weergegeven die door uw runbook zijn gemaakt. U mag slechts één taak zien die wordt vermeld, omdat u de taak slechts één keer hebt uitgevoerd.
 
    ![Taken](media/automation-first-runbook-textual/runbook-control-job-tile.png)
@@ -126,12 +126,12 @@ Het runbook dat u hebt gemaakt, bevindt zich nog steeds in de conceptmodus. U mo
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>Stap 5: verificatie toevoegen voor het beheren van Azure-resources
 
-U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nuttigs. U wilt dat er Azure-resources mee worden beheerd. Het kan dat niet doen, tenzij het verifieert met behulp van de referenties voor het abonnement. Verificatie maakt `Connect-AzAccount` gebruik van de cmdlet.
+U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nuttigs. U wilt dat er Azure-resources mee worden beheerd. Het kan dat niet doen, tenzij het verifieert met behulp van de referenties voor het abonnement. Verificatie maakt gebruik van de [cmdlet Connect-AzAccount.](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0)
 
 >[!NOTE]
 >Voor `Add-AzAccount` PowerShell-runbooks `Add-AzureRMAccount` en zijn `Connect-AzAccount`aliassen voor . U deze cmdlets gebruiken of u [uw modules](automation-update-azure-modules.md) in uw Automation-account updaten naar de nieuwste versies. Mogelijk moet u uw modules bijwerken, zelfs als u zojuist een nieuw Automation-account hebt gemaakt.
 
-1. Navigeer naar de pagina **MyFirstRunbook-Workflow** en open de tekstuele editor door op **Bewerken te**klikken.
+1. Navigeer naar de pagina MyFirstRunbook-Workflow en open de tekstuele editor door op **Bewerken te**klikken.
 2. Verwijder `Write-Output` de regel.
 3. Plaats de cursor op een lege regel tussen de accolades.
 4. Typ of kopieer en plak de volgende code, waarmee de verificatie wordt verwerkt met uw Automation Run As-account.
@@ -213,6 +213,8 @@ Uw runbook start momenteel de VM die u hardcoded hebt in het runbook. Het is han
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie voor meer informatie over PowerShell, inclusief taalverwijzingen en leermodules, de [PowerShell-documenten](https://docs.microsoft.com/powershell/scripting/overview).
+* Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)voor een PowerShell-cmdletreferentie.
 * Zie Mijn eerste grafische runbook om aan de slag te gaan met grafische [runbooks.](automation-first-runbook-graphical.md)
 * Zie [Mijn eerste PowerShell-runbook](automation-first-runbook-textual-powershell.md)om aan de slag te gaan met PowerShell-runbooks.
 * Zie [Azure Automation runbook-typen](automation-runbook-types.md)voor meer informatie over runbook-typen en hun voordelen en beperkingen.

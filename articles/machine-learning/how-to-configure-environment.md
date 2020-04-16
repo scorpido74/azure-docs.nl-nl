@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5f46f5af723e1245afbc6bca90d25ae9036d646
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10ea0002b2e99c4675f56e48a638f3c1cb87e6c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472423"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399011"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkelomgeving configureren voor Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -201,7 +201,7 @@ Wanneer u een lokale computer gebruikt (wat ook een externe virtuele machine kan
     pip install <new package>
     ```
 
-### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter-notitieblokken
+### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter Notebooks
 
 Jupyter Notebooks maken deel uit van het [Jupyter Project.](https://jupyter.org/) Ze bieden een interactieve coderingservaring waarbij u documenten maakt die live code combineren met verhalende tekst en afbeeldingen. Jupyter-notitieblokken zijn ook een geweldige manier om uw resultaten met anderen te delen, omdat u de uitvoer van uw codesecties in het document opslaan. U Jupyter-laptops op verschillende platforms installeren.
 
@@ -243,7 +243,7 @@ Ga als volgende over de volgende onderdelen in uw Jupyter-laptopomgeving:
 
 1. Als u het Jupyter-notitieblok wilt configureren om uw Azure Machine Learning-werkruimte te gebruiken, gaat u naar de sectie [Een werkruimteconfiguratiebestand maken.](#workspace)
 
-### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio-code
+### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
 
 Visual Studio Code is een zeer populaire cross-platform code editor die een uitgebreide set programmeertalen en tools ondersteunt door middel van extensies beschikbaar in de [Visual Studio marktplaats.](https://marketplace.visualstudio.com/vscode) De [Azure Machine Learning-extensie](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) installeert de [Python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python) voor codering in alle typen Python-omgevingen (virtueel, Anaconda, enz.). Bovendien biedt het handige functies voor het werken met Azure Machine Learning-resources en het uitvoeren van Azure Machine Learning-experimenten zonder Visual Studio Code te verlaten.
 
@@ -288,7 +288,7 @@ Gebruik deze instellingen:
 | Instelling |Van toepassing op| Waarde |
 |----|---|---|
 | Clusternaam |altijd| yourclusternaam |
-| Databricks Runtime |altijd|Niet-ML Runtime 6.0 (scala 2.11, vonk 2.4.3) |
+| Databricks Runtime |altijd|Niet-ML Runtime 6.5 (scala 2.11, vonk 2.4.3) |
 | Python-versie |altijd| 3 |
 | Werknemers |altijd| 2 of hoger |
 | VM-typen werkknooppunt <br>(bepaalt het maximumaantal gelijktijdige iteraties) |Geautomatiseerde machine learning<br>Alleen| Geheugengeoptimaliseerde VM-voorkeur |

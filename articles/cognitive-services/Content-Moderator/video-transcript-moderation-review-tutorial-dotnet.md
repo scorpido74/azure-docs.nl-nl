@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 09569be88daa6295834e58da6b51656d0438bed4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 2171bbaea065ce1ab3a8d90f32e6ea6dc1f1e821
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270924"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404227"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Zelfstudie: Video's en transcripties beoordelen
 
@@ -227,7 +227,7 @@ Er wordt ook een transcriptie van de audio van de video gemaakt wanneer de vlag 
 
 ## <a name="create-a-human-review"></a>Een menselijke beoordeling maken
 
-Het beoordelingsproces retourneert een lijst met sleutelframes uit de video, samen met een transcriptie van de audiotracks. De volgende stap is het maken van een beoordeling in Content Moderator voor menselijke beoordelaars. Als we teruggaan naar de methode `ProcessVideo()` in `Program.cs`, ziet u de aanroep van de methode `CreateVideoReviewInContentModerator()`. Deze methode maakt deel uit van de klasse `videoReviewApi`, in `VideoReviewAPI.cs`, en wordt hier weergegeven.
+Het beoordelingsproces retourneert een lijst met sleutelframes uit de video, samen met een transcriptie van de audiotracks. De volgende stap is het maken van een beoordeling in de Content Moderator Review tool voor menselijke moderators. Als we teruggaan naar de methode `ProcessVideo()` in `Program.cs`, ziet u de aanroep van de methode `CreateVideoReviewInContentModerator()`. Deze methode maakt deel uit van de klasse `videoReviewApi`, in `VideoReviewAPI.cs`, en wordt hier weergegeven.
 
 [!code-csharp[CreateVideoReviewInContentModerator](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=42-69)]
 
@@ -299,7 +299,7 @@ Eerst worden alle variabelen en verzamelingen geïnitialiseerd.
 
 ### <a name="parse-the-transcript-for-captions"></a>Transcriptie parseren op ondertiteling
 
-Vervolgens wordt de transcriptie met VTT-indeling geparseerd op ondertiteling en tijdstempels. Het beoordelingsprogramma geeft deze ondertitels weer op het tabblad Transcript van het scherm voor videobeoordeling. De tijdstempels worden gebruikt om de ondertitels te synchroniseren met de bijbehorende videoframes.
+Vervolgens wordt de transcriptie met VTT-indeling geparseerd op ondertiteling en tijdstempels. Met het gereedschap Controleren worden deze bijschriften weergegeven op het tabblad Transcript op het scherm videobeoordeling. De tijdstempels worden gebruikt om de ondertitels te synchroniseren met de bijbehorende videoframes.
 
 [!code-csharp[TextScreen2](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=528-567)]
 

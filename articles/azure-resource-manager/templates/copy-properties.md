@@ -2,13 +2,13 @@
 title: Meerdere exemplaren van een eigenschap definiëren
 description: Gebruik de kopieerbewerking in een Azure Resource Manager-sjabloon om meerdere keren te herhalen bij het maken van een eigenschap op een resource.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: e86d38b0e5d2e39d54b3c419b6eebdcda74022db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 831ae1af202a1cdf52bdd2bdf0d9a042a97ba52f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258104"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391336"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Eigenschapiteratie in ARM-sjablonen
 
@@ -30,7 +30,9 @@ Het kopieerelement heeft de volgende algemene indeling:
 ]
 ```
 
-Geef voor **naam**de naam op van de resourceeigenschap die u wilt maken. De eigenschap **aantal** geeft het aantal iteraties op dat u voor de eigenschap wilt hebben.
+Geef voor **naam**de naam op van de resourceeigenschap die u wilt maken.
+
+De eigenschap **aantal** geeft het aantal iteraties op dat u voor de eigenschap wilt hebben.
 
 De **eigenschap invoer** geeft de eigenschappen op die u wilt herhalen. U maakt een array met elementen die zijn opgebouwd uit de waarde in de **eigenschap invoer.**
 
@@ -78,11 +80,7 @@ In het volgende voorbeeld `copy` ziet u hoe u deze toepast op de eigenschap data
 }
 ```
 
-Wanneer u `copyIndex` binnen een eigenschapsiteratie gebruikt, moet u de naam van de iteratie opgeven.
-
-> [!NOTE]
-> Eigenschapiteratie ondersteunt ook een offsetargument. De verschuiving moet na de naam van de iteratie komen, zoals copyIndex('dataDisks', 1).
->
+Wanneer u `copyIndex` binnen een eigenschapsiteratie gebruikt, moet u de naam van de iteratie opgeven. Eigenschapiteratie ondersteunt ook een offsetargument. De verschuiving moet na de naam van de iteratie komen, zoals copyIndex('dataDisks', 1).
 
 Resource Manager `copy` breidt de array uit tijdens de implementatie. De naam van de array wordt de naam van de eigenschap. De invoerwaarden worden de objecteigenschappen. De geïmplementeerde sjabloon wordt:
 
@@ -111,6 +109,66 @@ Resource Manager `copy` breidt de array uit tijdens de implementatie. De naam va
         }
       ],
       ...
+```
+
+De kopieerbewerking is handig bij het werken met arrays, omdat u elk element in de array herhalen. Gebruik `length` de functie op de array om het `copyIndex` aantal iteraties op te geven en de huidige index in de array op te halen.
+
+Met de volgende voorbeeldsjabloon wordt een failovergroep gemaakt voor databases die als array worden doorgegeven.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "primaryServerName": {
+            "type": "string"
+        },
+        "secondaryServerName": {
+            "type": "string"
+        },
+        "databaseNames": {
+            "type": "array",
+            "defaultValue": [
+                "mydb1",
+                "mydb2",
+                "mydb3"
+            ]
+        }
+    },
+    "variables": {
+        "failoverName": "[concat(parameters('primaryServerName'),'/', parameters('primaryServerName'),'failovergroups')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Sql/servers/failoverGroups",
+            "apiVersion": "2015-05-01-preview",
+            "name": "[variables('failoverName')]",
+            "properties": {
+                "readWriteEndpoint": {
+                    "failoverPolicy": "Automatic",
+                    "failoverWithDataLossGracePeriodMinutes": 60
+                },
+                "readOnlyEndpoint": {
+                    "failoverPolicy": "Disabled"
+                },
+                "partnerServers": [
+                    {
+                        "id": "[resourceId('Microsoft.Sql/servers', parameters('secondaryServerName'))]"
+                    }
+                ],
+                "copy": [
+                    {
+                        "name": "databases",
+                        "count": "[length(parameters('databaseNames'))]",
+                        "input": "[resourceId('Microsoft.Sql/servers/databases', parameters('primaryServerName'), parameters('databaseNames')[copyIndex('databases')])]"
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {
+    }
+}
 ```
 
 Het kopieerelement is een array, zodat u meer dan één eigenschap voor de resource opgeven.

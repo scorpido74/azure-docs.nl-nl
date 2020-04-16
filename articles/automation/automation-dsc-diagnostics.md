@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a75b71d43b072d366ef2fcb15bf4c901680d48fb
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: badd8ba676ef25c33a5034bb04d616faeb4ef1b0
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383220"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392102"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Automation State Configuration reporting data doorsturen naar Azure Monitor-logboeken
 
@@ -87,6 +87,7 @@ Het deelvenster Logboekzoeken wordt geopend met een querygebied dat is afgestemd
 | where OperationName contains 'DSCNodeStatusData'
 | where ResultType != 'Compliant'
 ```
+
 Filterdetails:
 
 * Filter `DscNodeStatusData` op om bewerkingen voor elk statusconfiguratieknooppunt terug te sturen.
@@ -104,7 +105,7 @@ Als u een waarschuwingsregel wilt maken, maakt u eerst een logboekzoekopdracht v
 1. Klik op de pagina Overzicht van de werkruimte Log Analytics op **Logboeken**.
 1. Maak een logboekzoekopdracht voor uw waarschuwing door de volgende zoekopdracht in het queryveld te typen:`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
-   Als u logboeken hebt ingesteld van meer dan één Automatiseringsaccount of een abonnement op uw werkruimte, u uw waarschuwingen groeperen op abonnements- en automatiseringsaccount. De naam van het `Resource` automatiseringsaccount ontlenen aan het veld bij het zoeken naar de **DscNodeStatusData-records.**
+   Als u logboeken hebt ingesteld van meer dan één Automatiseringsaccount of een abonnement op uw werkruimte, u uw waarschuwingen groeperen op abonnements- en automatiseringsaccount. De naam van het `Resource` automatiseringsaccount afleiden `DscNodeStatusData` van het veld bij het zoeken naar de records.
 1. Als u het scherm **Regel maken wilt** openen, klikt u boven aan de pagina op Nieuwe **waarschuwingsregel.** 
 
 Zie [Een waarschuwingsregel maken](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)voor meer informatie over de opties om de waarschuwing te configureren.
@@ -128,46 +129,46 @@ Met deze query wordt een grafiek met de status van het knooppunt in de loop van 
 
 Azure Automation-diagnostiek maakt twee categorieën records in Azure Monitor-logboeken:
 
-* Gegevens over de status van knooppunt **(DscNodeStatusData**)
-* Resourcestatusgegevens (**DscResourceStatusData**)
+* Gegevens over de`DscNodeStatusData`status van knooppunt ( )
+* Bronstatusgegevens`DscResourceStatusData`( )
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
 | Eigenschap | Beschrijving |
 | --- | --- |
 | TimeGenerated |Datum en tijd waarop de nalevingscontrole is uitgevoerd. |
-| OperationName |DscNodeStatusData. |
-| ResultType |Of het knooppunt voldoet. |
+| OperationName |`DscNodeStatusData`. |
+| ResultType |Waarde die aangeeft of het knooppunt voldoet. |
 | NodeName_s |De naam van het beheerde knooppunt. |
-| NodeComplianceStatus_s |Of het knooppunt voldoet. |
-| DscReportStatus |Of de nalevingscontrole is uitgevoerd. |
-| Configuratiemodus | Hoe de configuratie wordt toegepast op het knooppunt. Mogelijke waarden zijn: <ul><li>`ApplyOnly`: DSC past de configuratie toe en doet niets verder tenzij een nieuwe configuratie naar het doelknooppunt wordt geduwd of wanneer een nieuwe configuratie van een server wordt getrokken. Na de eerste toepassing van een nieuwe configuratie controleert DSC niet op afwijking van een eerder geconfigureerde status. DSC probeert de configuratie toe te `ApplyOnly` passen totdat deze succesvol is voordat de waarde van kracht wordt. </li><li>`ApplyAndMonitor`: Dit is de standaardwaarde. De LCM past nieuwe configuraties toe. Na de eerste toepassing van een nieuwe configuratie, als het doelknooppunt afdrijft van de gewenste status, rapporteert DSC de discrepantie in logboeken. DSC probeert de configuratie toe te `ApplyAndMonitor` passen totdat deze succesvol is voordat de waarde van kracht wordt.</li><li>`ApplyAndAutoCorrect`: DSC past nieuwe configuraties toe. Na de eerste toepassing van een nieuwe configuratie, als het doelknooppunt afdrijft van de gewenste status, rapporteert DSC de discrepantie in logboeken en past de huidige configuratie opnieuw toe.</li></ul> |
+| NodeComplianceStatus_s |Statuswaarde die aangeeft of het knooppunt voldoet. |
+| DscReportStatus |Statuswaarde die aangeeft of de nalevingscontrole is uitgevoerd. |
+| Configuratiemodus | De modus die wordt gebruikt om de configuratie op het knooppunt toe te passen. Mogelijke waarden zijn: <ul><li>`ApplyOnly`: DSC past de configuratie toe en doet niets verder tenzij een nieuwe configuratie naar het doelknooppunt wordt geduwd of wanneer een nieuwe configuratie van een server wordt getrokken. Na de eerste toepassing van een nieuwe configuratie controleert DSC niet op afwijking van een eerder geconfigureerde status. DSC probeert de configuratie toe te `ApplyOnly` passen totdat deze succesvol is voordat de waarde van kracht wordt. </li><li>`ApplyAndMonitor`: Dit is de standaardwaarde. De LCM past nieuwe configuraties toe. Na de eerste toepassing van een nieuwe configuratie, als het doelknooppunt afdrijft van de gewenste status, rapporteert DSC de discrepantie in logboeken. DSC probeert de configuratie toe te `ApplyAndMonitor` passen totdat deze succesvol is voordat de waarde van kracht wordt.</li><li>`ApplyAndAutoCorrect`: DSC past nieuwe configuraties toe. Na de eerste toepassing van een nieuwe configuratie, als het doelknooppunt afdrijft van de gewenste status, rapporteert DSC de discrepantie in logboeken en past de huidige configuratie opnieuw toe.</li></ul> |
 | HostName_s | De naam van het beheerde knooppunt. |
 | IPAddress | Het IPv4-adres van het beheerde knooppunt. |
-| Categorie | DscNodeStatus. |
+| Categorie | `DscNodeStatus`. |
 | Resource | De naam van het Azure Automation-account. |
 | Tenant_g | GUID die de tenant voor de beller identificeert. |
-| NodeId_g |GUID die het beheerde knooppunt identificeert. |
-| DscReportId_g |GUID die het rapport identificeert. |
-| LastSeenTime_t |Datum en tijd waarop het rapport voor het laatst is bekeken. |
-| ReportStartTime_t |Datum en tijd waarop het rapport is gestart. |
-| ReportEndTime_t |Datum en tijd waarop het rapport is voltooid. |
-| NumberOfResources_d |Het aantal DSC-resources dat is aangeroepen in de configuratie die op het knooppunt wordt toegepast. |
-| SourceSystem | Hoe Azure Monitor-logboeken de gegevens verzamelden. Altijd "Azure" voor Azure-diagnostiek. |
-| ResourceId |Id van het Azure Automation-account. |
-| ResultaatBeschrijving | De beschrijving voor deze bewerking. |
+| NodeId_g | GUID die het beheerde knooppunt identificeert. |
+| DscReportId_g | GUID die het rapport identificeert. |
+| LastSeenTime_t | Datum en tijd waarop het rapport voor het laatst is bekeken. |
+| ReportStartTime_t | Datum en tijd waarop het rapport is gestart. |
+| ReportEndTime_t | Datum en tijd waarop het rapport is voltooid. |
+| NumberOfResources_d | Het aantal DSC-resources dat is aangeroepen in de configuratie die op het knooppunt wordt toegepast. |
+| SourceSystem | Het bronsysteem dat identificeert hoe Azure Monitor de gegevens heeft verzameld. Altijd `Azure` voor Azure-diagnostiek. |
+| ResourceId |De resource-id van het Azure Automation-account. |
+| ResultaatBeschrijving | De resourcebeschrijving voor deze bewerking. |
 | SubscriptionId | De Azure-abonnements-ID (GUID) voor het automatiseringsaccount. |
-| ResourceGroup | Naam van de resourcegroep voor het account Automatisering. |
+| ResourceGroup | De naam van de resourcegroep voor het account Automatisering. |
 | ResourceProvider | Microsoft. Automatisering. |
 | ResourceType | AUTOMATISERINGSREKENINGEN. |
-| CorrelationId |GUID is de correlatie-id van het nalevingsrapport. |
+| CorrelationId | Een GUID die de correlatie-id is van het nalevingsrapport. |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
 | Eigenschap | Beschrijving |
 | --- | --- |
 | TimeGenerated |Datum en tijd waarop de nalevingscontrole is uitgevoerd. |
-| OperationName |DscResourceStatusData.|
+| OperationName |`DscResourceStatusData`.|
 | ResultType |Of de resource voldoet. |
 | NodeName_s |De naam van het beheerde knooppunt. |
 | Categorie | DscNodeStatus. |
@@ -185,10 +186,10 @@ Azure Automation-diagnostiek maakt twee categorieën records in Azure Monitor-lo
 | ErrorMessage_s |Het foutbericht als de resource is mislukt. |
 | DscResourceDuration_d |De tijd, in seconden, dat de DSC bron liep. |
 | SourceSystem | Hoe Azure Monitor-logboeken de gegevens verzamelden. Altijd `Azure` voor Azure-diagnostiek. |
-| ResourceId |Hiermee geeft u het Azure Automation-account op. |
+| ResourceId |De id van het Azure Automation-account. |
 | ResultaatBeschrijving | De beschrijving voor deze bewerking. |
 | SubscriptionId | De Azure-abonnements-ID (GUID) voor het automatiseringsaccount. |
-| ResourceGroup | Naam van de resourcegroep voor het account Automatisering. |
+| ResourceGroup | De naam van de resourcegroep voor het account Automatisering. |
 | ResourceProvider | Microsoft. Automatisering. |
 | ResourceType | AUTOMATISERINGSREKENINGEN. |
 | CorrelationId |GUID dat is de correlatie-ID van het nalevingsrapport. |

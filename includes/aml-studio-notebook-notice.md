@@ -7,14 +7,14 @@ ms.custom: include file
 ms.topic: include
 author: peterclu
 ms.author: peterclu
-ms.date: 03/12/2020
-ms.openlocfilehash: 900eea5b7807b718274690bc34a32213bfe7ea7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 1ae0b4bda584e86bc3a25f6cd5181175fc7fa282
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204053"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411904"
 ---
 > [!NOTE]
-> De functie Notebooks (preview) in Studio (klassiek) wordt op 13 april 2020 afgesloten. Na 13 april wordt het tabblad Notitieblokken verwijderd, samen met opgeslagen notitieblokken. Zie [dit artikel](../articles/machine-learning/studio/download-notebooks-data.md)voor instructies over hoe u uw notitieblokken downloaden.
+> De functie Notebooks (preview) is op *13 april 2020*verwijderd. Het verwijderen van het tabblad Notitieblokken en gebruikersnotitieblokbestanden wordt momenteel wereldwijd uitgerold naar Azure-regio's.
       

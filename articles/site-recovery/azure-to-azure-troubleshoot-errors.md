@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 243fea8fae071368a91bf482190442f15c372fc1
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f95677211a89c1bb2a18076741dec08e76c5d70
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271298"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390395"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Problemen met Azure-to-Azure VM-replicatiefouten oplossen
 
@@ -404,21 +404,20 @@ Als u replicatie op de vm wilt inschakelen, moet de instelstatus worden **uitgev
 
 ### <a name="issue-1-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>Probleem 1: VM is gekoppeld aan een netwerk dat al is toegewezen aan een doelnetwerk
 
-Als de bron-VM deel uitmaakt van een virtueel netwerk en een andere VM van hetzelfde virtuele netwerk al is toegewezen met een netwerk in de doelgroep, is de vervolgkeuzelijst voor netwerkselectie standaard niet beschikbaar (lijkt gedimd).
+Als de bron-VM deel uitmaakt van een virtueel netwerk en een andere VM uit hetzelfde virtuele netwerk tijdens de configuratie van noodherstel al is toegewezen aan een netwerk in de doelgroep, is de vervolgkeuzelijst voor netwerkselectie standaard niet beschikbaar (lijkt gedimd).
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="Lijst met netwerkselectie is niet beschikbaar.":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>Probleem 2: U hebt de vm eerder beveiligd en vervolgens de replicatie uitgeschakeld
 
-Als u de replicatie van een virtuele machine uitschakelt, wordt de netwerktoewijzing niet verwijderd. De toewijzing moet worden verwijderd uit de kluis Van Herstelservices waar de VM is beveiligd. Ga naar **Recovery Services vault** > **Site Recovery Infrastructure** > **Network Mapping**.
+Als u de replicatie van een virtuele machine uitschakelt, wordt de netwerktoewijzing niet verwijderd. De toewijzing moet worden verwijderd uit de kluis Van Herstelservices waar de VM is beveiligd. Selecteer de **kluis Recovery Services** en ga naar Site Recovery**Infrastructure** >  **For** > **Azure virtual machines** > **Network Mapping**.
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="Netwerktoewijzing verwijderen.":::
 
-Het doelnetwerk dat is geconfigureerd tijdens de instelling voor noodherstel kan worden gewijzigd na de eerste installatie en nadat de VM is beveiligd:
+Het doelnetwerk dat is geconfigureerd tijdens de noodherstelinstelling, kan na de eerste installatie en nadat de VM is beveiligd, worden gewijzigd. Als **u de netwerktoewijzing wilt wijzigen,** selecteert u de netwerknaam:
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="Netwerktoewijzing wijzigen.":::
 
-Het wijzigen van netwerktoewijzing is van invloed op alle beveiligde VM's die dezelfde netwerktoewijzing gebruiken.
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ of VSS (foutcode 151025)
 

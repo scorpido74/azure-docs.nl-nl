@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99e04c95156e40eed8c2b9aa88a2bee6f39e90c9
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78190055"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392878"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C bewaken met Azure-monitor
 
@@ -84,8 +84,8 @@ Als u aan boord wilt gaan van uw Azure AD-tenant (de **klant),** maakt u een [Az
 
 Download de sjabloon en parameterbestanden van Azure Resource Manager:
 
-- [rgDelegatedResourceManagement.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement.parameters.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
 Werk vervolgens het parametersbestand bij met de waarden die u eerder hebt geregistreerd. In het volgende JSON-fragment wordt een voorbeeld weergegeven van een sjabloonparametersbestand van Azure Resource Manager. Voor `authorizations.value.roleDefinitionId`, gebruik maken van de [ingebouwde rol](../role-based-access-control/built-in-roles.md) waarde voor de *rol inzender*, `b24988ac-6180-42a0-ab88-20f7382dd24c`.
 
@@ -223,7 +223,7 @@ U bent klaar voor [het maken van diagnostische instellingen](../active-directory
 
 Ga als volgt te werk om bewakingsinstellingen voor Azure AD B2C-activiteitslogboeken te configureren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Selecteer het pictogram **Directory + Abonnement** op de werkbalk van de portal en selecteer vervolgens de map met uw Azure AD B2C-tenant.
 1. **Azure Active Directory selecteren**
 1. Selecteer **Diagnostische instellingen** onder **Controle**.

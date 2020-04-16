@@ -1,183 +1,189 @@
 ---
-title: 'Zelfstudie: Integreren met Power Virtual Agent - QnA Maker'
-description: In deze tutorial, het verbeteren van de kwaliteit van uw kennisbank met actief leren. Bestaande vragen controleren, accepteren of weigeren, toevoegen zonder bestaande vragen te verwijderen of te wijzigen.
+title: 'Zelfstudie: Integreren met Power Virtual Agents - QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: In deze tutorial, het verbeteren van de kwaliteit van uw kennisbank met actief leren. Bestaande vragen controleren, accepteren of weigeren of toevoegen zonder bestaande vragen te verwijderen of te wijzigen.
+services: cognitive-services
+author: diberry
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 03/11/2020
-ms.openlocfilehash: 283667c587e395a1d712f82f3385582b4c5c3227
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: diberry
+ms.openlocfilehash: 4557dee995c8a01067f7e6ad0e79bb7115b6ecdb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398875"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402816"
 ---
-# <a name="tutorial-add-knowledge-base-to-power-virtual-agent"></a>Zelfstudie: Knowledge Base toevoegen aan Power Virtual Agent
-Maak en breid een [Power Virtual Agent-bot](https://powervirtualagents.microsoft.com/) uit om antwoorden te geven vanuit je kennisbank.
+# <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Zelfstudie: Voeg uw kennisbasis toe aan Power Virtual Agents
+Maak en breid een [Power Virtual Agents-bot](https://powervirtualagents.microsoft.com/) uit om antwoorden te geven vanuit je kennisbank.
 
-**In deze zelfstudie leert u het volgende:**
+In deze zelfstudie leert u het volgende:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Power Virtual Agent maken
-> * Onderwerp van het terugdraaien van het systeem maken
-> * QnA Maker toevoegen als actie aan onderwerp als Power Automate flow
-> * Power Automate-oplossing maken
-> * Power Automate flow toevoegen aan oplossing
-> * Power Virtual Agent publiceren
-> * Test Power Virtual Agent, ontvang antwoord van QnA Maker knowledge base
+> * Een Power Virtual Agents-bot maken
+> * Een terugvalonderwerp van het systeem maken
+> * QnA Maker toevoegen als een actie aan een onderwerp als een stroom voor het automatiseren van stroom
+> * Een Oplossing voor Het automatiseren van energie maken
+> * Een power automate flow toevoegen aan uw oplossing
+> * Power Virtual Agents publiceren
+> * Test Power Virtual Agents en ontvang een antwoord van uw QnA Maker-kennisbank
 
-## <a name="integrate-a-power-virtual-agent-with-a-knowledge-base"></a>Integreer een Power Virtual Agent met een kennisbank
+## <a name="integrate-an-agent-with-a-knowledge-base"></a>Integreer een agent met een kennisbank
 
-[Power Virtual Agents](https://powervirtualagents.microsoft.com/) stelt teams in staat om eenvoudig krachtige bots te maken met behulp van een begeleide, no-code grafische interface zonder dat gegevenswetenschappers of ontwikkelaars nodig zijn.
+[Power Virtual Agents](https://powervirtualagents.microsoft.com/) stelt teams in staat om krachtige bots te maken met behulp van een begeleide, no-code grafische interface. U hebt geen gegevenswetenschappers of ontwikkelaars nodig.
 
-Een Power Virtual Agent wordt gemaakt met een reeks onderwerpen (onderwerpgebieden), om vragen van gebruikers te beantwoorden door acties uit te voeren. Als een antwoord niet kan worden gevonden, kan een terugval van het systeem een antwoord retourneren.
+In Power Virtual Agents maakt u een agent met een reeks onderwerpen (onderwerpgebieden), om gebruikersvragen te beantwoorden door acties uit te voeren. Als een antwoord niet kan worden gevonden, kan een terugval van het systeem een antwoord retourneren.
 
-Configureer de agent om de vraag naar uw kennisbank te sturen als onderdeel van de actie van een onderwerp of als onderdeel van het **onderwerppad Van de Valback** van het systeem. Ze gebruiken allebei hetzelfde mechanisme van een actie om verbinding te maken met je kennisbank en een antwoord terug te geven.
+Configureer de agent om de vraag naar uw kennisbank te sturen als onderdeel van de actie van een onderwerp of als onderdeel van het *onderwerppad Van de Valback* van het systeem. Beiden gebruiken een actie om verbinding te maken met uw kennisbank en een antwoord terug te geven.
 
-## <a name="power-automate-connects-to-generateanswer-action"></a>Power Automate maakt verbinding met generateanswer-actie
+## <a name="power-automate-connects-to-generateanswer-action"></a>Power Automate `GenerateAnswer` maakt verbinding met actie
 
-Als u uw agent wilt verbinden met uw kennisbank, gebruikt u Power Automate om de actie te maken. Power Automate biedt een **processtroom,** die verbinding maakt met de GenerateAnswer API van QnA Maker.
+Als u uw agent wilt verbinden met uw kennisbank, gebruikt u Power Automate om de actie te maken. Power Automate biedt een processtroom, die verbinding `GenerateAnswer` maakt met de API van QnA Maker.
 
-Zodra de **stroom** is ontworpen en opgeslagen, is deze beschikbaar via een Power **Automate-oplossing.**  Zodra de GenerateAnswer-stroom aan een oplossing is toegevoegd, gebruikt u die oplossing als een actie in uw agent.
+Nadat u de stroom hebt ontworpen en opgeslagen, is deze beschikbaar via een Power Automate-oplossing. Gebruik die oplossing als een actie in uw agent.
 
-## <a name="process-steps-to-connect-an-agent-to-your-knowledge-base"></a>Processtappen om een agent te verbinden met uw kennisbank
+## <a name="connect-an-agent-to-your-knowledge-base"></a>Verbind een agent met uw kennisbank
 
-De volgende stappen worden gepresenteerd als een overzicht om u te helpen begrijpen hoe de stappen zich verhouden tot het doel van het aansluiten van een Power Virtual Agent op een QnA Maker-kennisbank.
+Hier volgt een overzicht van de stappen om een agent in Power Virtual Agents te verbinden met een kennisbank in QnA Maker.
 
-Stappen om een Power Virtual-agent te gebruiken met QnA Maker:
-* In [QnA Maker](https://www.qnamaker.ai/) portal
-    * Kennisbank bouwen en publiceren
-    * Kopieer kennisbasisdetails, waaronder knowledge base-id, runtime endpoint-toets en runtime endpointhost.
-* In [Power Virtual Agent-portal](https://powerva.microsoft.com/)
-    * Agentonderwerp bouwen
-    * Een actie aanroepen (naar Power Automate Flow)
-* In [Power Automate](https://us.flow.microsoft.com/) portal
-    * Bouw een stroom met connector naar [QnA Maker's GenerateAnswer](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)
-        * QnA Maker publiceert kennisbankinformatie
+* In de [QnA Maker](https://www.qnamaker.ai/) portal:
+    * Bouw en publiceer je kennisbank.
+    * Kopieer uw kennisbasisgegevens, waaronder de ID, runtime endpoint-toets en runtime endpointhost.
+* In de [Power Virtual Agents](https://powerva.microsoft.com/) portal:
+    * Bouw een agent onderwerp.
+    * Een actie aanroepen (naar Power Automate flow).
+* In de [Power Automate](https://us.flow.microsoft.com/) portal:
+    * Bouw een flow met een connector naar [QnA Maker's GenerateAnswer.](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)
+        * QnA Maker publiceerde kennisbankinformatie:
             * Knowledge base ID
             * QnA Maker resource endpoint host
             * Eindpuntsvan QnA Maker-resource
         * Invoer - gebruikersquery
         * Output - knowledge base antwoord
-    * Oplossing maken en flow toevoegen
-* Terug naar Power Virtual Agent
-    * De uitvoer van de oplossing selecteren als bericht voor onderwerp
+    * Maak een oplossing en voeg de stroom toe.
+* Terug naar Power Virtual Agents:
+    * Selecteer de uitvoer van de oplossing als een bericht voor een onderwerp.
 
 ## <a name="create-and-publish-a-knowledge-base"></a>Een knowledge base maken
 
-1. Volg de [quickstart](../Quickstarts/create-publish-knowledge-base.md) om een kennisbank te creëren. Voltooi de laatste sectie niet om een bot te maken. Deze zelfstudie is een vervanging voor het laatste deel van de quickstart, omdat deze zelfstudie de Power Virtual Agent gebruikt om een bot te maken, in plaats van de Bot Framework-bot in de quickstart.
+1. Volg de [quickstart](../Quickstarts/create-publish-knowledge-base.md) om een kennisbank te creëren. Voltooi de laatste sectie niet over het maken van een bot. Gebruik deze zelfstudie in plaats daarvan om een bot te maken met Power Virtual Agents.
 
     > [!div class="mx-imgBorder"]
-    > ![Voer uw gepubliceerde knowledge base-instellingen in op de pagina **Instellingen** in dehttps://www.qnamaker.ai/) portal [QnA Maker].](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
+    > ![Schermafbeelding van gepubliceerde instellingen voor kennisbasis](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
 
-    U hebt deze informatie nodig voor de [stap Power Automate](#create-power-automate-flow-to-connect-to-your-knowledge-base) om uw QnA Maker GenerateAnswer-verbinding te configureren.
+    Voer uw gepubliceerde kennisbasisinstellingen in op de pagina **Instellingen** in de [QnA](https://www.qnamaker.ai/) Maker-portal. U hebt deze informatie nodig voor de stap Power `GenerateAnswer` [Automate](#create-a-power-automate-flow-to-connect-to-your-knowledge-base) om uw QnA Maker-verbinding te configureren.
 
-1. Zoek de eindpuntsleutel, eindpunthost en knowledge base-id op de pagina **Instellingen** in de QnA Maker-portal.
+1. Zoek in de QnA Maker-portal op de pagina **Instellingen** de eindpuntsleutel, eindpunthost en knowledge base-id.
 
-## <a name="create-power-virtual-agent"></a>Power Virtual Agent maken
+## <a name="create-an-agent-in-power-virtual-agents"></a>Een agent maken in Power Virtual Agents
 
-1. [Meld u aan bij](https://go.microsoft.com/fwlink/?LinkId=2108000&clcid=0x409) de Power Virtual Agent met uw school of werk e-mailaccount.
-1. Als dit uw eerste bot is, moet u op de **startpagina** van de agent staan. Als dit niet uw eerste Power Virtual Agent is, selecteert u de bot in de navigatie rechtsboven en selecteert **u + Nieuwe bot**.
+1. [Meld u aan bij Power Virtual Agents](https://go.microsoft.com/fwlink/?LinkId=2108000&clcid=0x409). Gebruik je school- of werk-e-mailaccount.
+1. Als dit je eerste bot is, sta je op de **startpagina** van de agent. Als dit niet de eerste bot is, selecteert u de bot in het rechterbovengedeelte van de pagina en selecteert **u + Nieuwe bot**.
 
     > [!div class="mx-imgBorder"]
-    > ![Voer uw gepubliceerde knowledge base-instellingen in op de pagina **Instellingen** in dehttps://www.qnamaker.ai/) portal [QnA Maker].](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-home.png)
+    > ![Schermafbeelding van de startpagina van Power Virtual Agents](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-home.png)
 
-## <a name="several-topics-are-provided-in-the-bot"></a>Verschillende onderwerpen zijn opgenomen in de bot
+1. Voer uw gepubliceerde kennisbasisinstellingen in, te vinden op de pagina **Instellingen** in de [QnA](https://www.qnamaker.ai/) Maker-portal.
 
-De agent gebruikt de onderwerpverzameling om vragen in uw vakgebied te beantwoorden. In deze tutorial, de agent heeft veel onderwerpen voor u, verdeeld in **user topics** en **systeem onderwerpen**.
+## <a name="topics-provided-in-the-bot"></a>Onderwerpen in de bot
+
+De agent gebruikt de onderwerpverzameling om vragen in uw vakgebied te beantwoorden. In deze zelfstudie heeft de agent veel onderwerpen voor u beschikbaar, verdeeld in gebruikersonderwerpen en systeemonderwerpen.
 
 > [!div class="mx-imgBorder"]
-> ![De agent gebruikt de onderwerpverzameling om vragen in uw vakgebied te beantwoorden. In deze zelfstudie heeft de agent veel onderwerpen voorzien in **Gebruikersonderwerpen** en **Systeemonderwerpen**.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topics-provided.png)
+> ![Schermafbeelding van onderwerpen in de agent](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topics-provided.png)
 
 
-## <a name="create-power-virtual-agents-system-fallback-topic"></a>Het terugvalonderwerp van Power Virtual Agent's System maken
+## <a name="create-the-system-fallback-topic"></a>Het terugvalonderwerp van het systeem maken
 
-Terwijl de agent kan verbinding maken met uw kennisbank van elk onderwerp, deze tutorial maakt gebruik van het System **Fallback** onderwerp. Het terugvalonderwerp wordt gebruikt wanneer de agent geen antwoord kan vinden. De agent geeft de tekst van de gebruiker door aan de GenerateAnswer API van QnA Maker, ontvangt het antwoord van uw kennisbank en geeft deze weer als bericht weer aan de gebruiker.
+Hoewel de agent kan verbinding maken met uw kennisbank van elk onderwerp, deze tutorial maakt gebruik van het *systeem fallback* onderwerp. Het terugvalonderwerp wordt gebruikt wanneer de agent geen antwoord kan vinden. De agent geeft de tekst van de gebruiker `GenerateAnswer` door aan de API van QnA Maker, ontvangt het antwoord van uw kennisbank en geeft deze als bericht aan de gebruiker weer.
 
-1. Selecteer in de portal [Power Virtual Agents](https://powerva.microsoft.com/#/) in de rechterbovenhoek van de navigatie de pagina **Instellingen.** Het pictogram voor deze pagina is de versnelling. Selecteer **Systeemterugval**.
-
-    > [!div class="mx-imgBorder"]
-    > ![Power Virtual-agentmenu-item voor System Fallback](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-system-fallback.png)
-
-1. Selecteer in het **Settings** venster Pop-upinstellingen de optie **+ Toevoegen** om een Systeemterugvalonderwerp toe te voegen.
+1. Selecteer in de [power virtual agents-portal](https://powerva.microsoft.com/#/) in de rechterbovenhoek de optie **Instellingen** (het tandwielpictogram). Selecteer vervolgens **System Fallback**.
 
     > [!div class="mx-imgBorder"]
-    > ![Voeg in het venster Instellingen het terugvalonderwerp toe.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-add-fallback-topic.png)
+    > ![Schermafbeelding van het menu-item Power Virtual Agents voor System Fallback](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-system-fallback.png)
 
-1. Nadat het onderwerp is toegevoegd, selecteert u **Ga naar Fallback-onderwerp** om het Fallback-onderwerp op het ontwerpcanvas te schrijven.
+1. Selecteer **+ Toevoegen** om een terugvalonderwerp van het systeem toe te voegen.
+
+    > [!div class="mx-imgBorder"]
+    > ![Schermafbeelding van het toevoegen van een terugvalonderwerp.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-add-fallback-topic.png)
+
+1. Nadat het onderwerp is toegevoegd, selecteert u **Ga naar Fallback-onderwerp** om het terugvalonderwerp op het ontwerpcanvas te schrijven.
 
     > [!TIP]
-    > Als u wilt terugkeren naar het Fallback-onderwerp, is het beschikbaar in de sectie **Onderwerpen,** als onderdeel van de **systeemonderwerpen.**
+    > Als u terug wilt naar het terugvalonderwerp, is het beschikbaar in de sectie **Onderwerpen,** als onderdeel van de **systeemonderwerpen.**
 
-## <a name="use-authoring-canvas-to-add-an-action"></a>Ontwerpcanvas gebruiken om een actie toe te voegen
+## <a name="use-the-authoring-canvas-to-add-an-action"></a>Het ontwerpcanvas gebruiken om een actie toe te voegen
 
-Gebruik het canvas voor het ontwerpen van Power Virtual Agents om het Fallback-onderwerp aan te sluiten op uw kennisbank. Het onderwerp begint met de **niet-herkende gebruikerstekst.** Voeg een actie toe die die tekst doorgeeft aan QnA Maker en het antwoord vervolgens als een bericht weergeeft. De laatste stap van het weergeven van een antwoord wordt behandeld als een [aparte stap](#add-solutions-flow-to-power-virtual-agent) later in deze tutorial.
+Gebruik het canvas voor het ontwerpen van Power Virtual Agents om het terugvalonderwerp aan te sluiten op uw kennisbank. Het onderwerp begint met de niet-herkende gebruikerstekst. Voeg een actie toe die die tekst doorgeeft aan QnA Maker en het antwoord vervolgens als een bericht weergeeft. De laatste stap van het weergeven van een antwoord wordt behandeld als een [aparte stap,](#add-your-solutions-flow-to-power-virtual-agents)later in deze tutorial.
 
 In deze sectie wordt de gespreksstroom van het terugvalonderwerp geopperd.
 
-1. De nieuwe Fallback-actie kan al gespreksstroomelementen bevatten. Verwijder het item **Escaleren** door het menu Opties te selecteren.
+1. De nieuwe terugvalactie heeft mogelijk al gespreksstroomelementen. Verwijder het item **Escaleren** door het menu **Opties te** selecteren.
 
     > [!div class="mx-imgBorder"]
-    > ![Fallback-actie starten met triggerzinnen](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fallback-topic-delete-escalate.png)
+    > ![Schermafbeelding van het terugvalonderwerp van Power Virtual Agents](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fallback-topic-delete-escalate.png)
 
 1. Selecteer **+** de connector die uit het vak **Bericht** stroomt en selecteer **Een actie aanroepen**.
 
     > [!div class="mx-imgBorder"]
-    > ![Een actie aanroepen](../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png)
+    > ![Schermafbeelding van Actie aanroepen](../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png)
 
-1. Selecteer **Een stroom maken**. Het proces brengt u naar **Power Automate,** een andere browser-gebaseerde portal.
+1. Selecteer **Een stroom maken**. Het proces brengt u naar de Power Automate portal.
 
     > [!div class="mx-imgBorder"]
-    > ![Een actie aanroepen](../media/how-to-integrate-power-virtual-agent/create-a-flow.png)
+    > ![Schermafbeelding van Een stroom maken](../media/how-to-integrate-power-virtual-agent/create-a-flow.png)
 
-## <a name="create-power-automate-flow-to-connect-to-your-knowledge-base"></a>Maak Power Automate Flow om verbinding te maken met uw kennisbank
+## <a name="create-a-power-automate-flow-to-connect-to-your-knowledge-base"></a>Creëer een Power Automate flow om verbinding te maken met je kennisbank
 
-Met de volgende procedure wordt een **power automate-stroom gezoen** die:
-* neemt de binnenkomende gebruikerstekst
-* stuurt het naar QnA Maker
-* wijst het topantwoord van QnA Maker toe op een variabele
-* stuurt de variabele (bovenste antwoord) als het antwoord terug naar uw agent
+Met de volgende procedure wordt een power automate-stroom gezoen die:
+* Neemt de binnenkomende gebruikerstekst en stuurt deze naar QnA Maker.
+* Wijst het topantwoord van QnA Maker toe aan een variabele en stuurt de variabele (bovenaan antwoord) als antwoord terug naar uw agent.
 
 1. In **Power Automate**wordt de **stroomsjabloon** voor u gestart. Selecteer **bewerken** om de invoervariabele van de agent naar uw kennisbank te configureren in het **stroomitem Power Virtual Agents.** De op tekst gebaseerde invoervariabele is de door de gebruiker ingediende tekstvraag van uw agent.
 
     > [!div class="mx-imgBorder"]
-    > ![De invoervariabele configureren als teksttekenreeks](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable.png)
+    > ![Schermafbeelding van de optie Power Automate om de invoervariabele als teksttekenreeks te configureren](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable.png)
 
-1. Voeg een tekstinvoer toe `InputText` en geef `IncomingUserQuestion`de variabele een naam met een beschrijving van . Met deze naamgeving u de invoertekst onderscheiden van de uitvoertekst die u later maakt.
+1. Voeg een tekstinvoer toe `InputText`en geef de `IncomingUserQuestion`variabele een naam met een beschrijving van . Met deze naamgeving u de invoertekst onderscheiden van de uitvoertekst die u later maakt.
 
     > [!div class="mx-imgBorder"]
-    > ![Voeg een tekstinvoer toe en geef de variabele 'InputText' een naam met een beschrijving van 'UserQuestion'](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable-name-and-description.png)
+    > ![Schermafbeelding van de optie Power Automate om de naam en beschrijving van de invoervariabele te configureren](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable-name-and-description.png)
 
-1. Selecteer **+** de connector die uit het vak **Virtuele energiegemachtigden** stroomt om een nieuwe stap in de stroom in te voegen (vóór de **waarde retourneren naar Power Virtual Agent)** en selecteer **Vervolgens Een actie toevoegen**.
+1. Selecteer **+** de connector die uit het vak **Virtuele energieagents** stroomt om een nieuwe stap in de stroom in te voegen (vóór de **waarde retourneren naar De virtuele agent van Power).** Selecteer vervolgens **Een actie toevoegen**.
 
 1. Zoek `Qna` naar de **qnA maker-acties** en selecteer **Antwoord genereren**.
 
     > [!div class="mx-imgBorder"]
-    > ![Zoek naar 'Qna' om de **QnA Maker** acties te vinden en selecteer vervolgens **Antwoord genereren**](../media/how-to-integrate-power-virtual-agent/generate-answer-action-selected.png)
+    > ![Schermafbeelding van Antwoord genereren](../media/how-to-integrate-power-virtual-agent/generate-answer-action-selected.png)
 
-    De drie (3) vereiste verbindingsinstellingen voor QnA Maker worden weergegeven in de actie en de vraaginstellingen van de Power Virtual Agent.
+    De vereiste verbindingsinstellingen voor QnA Maker worden weergegeven in de actie en de vraaginstellingen van de agent.
 
     > [!div class="mx-imgBorder"]
-    > ![De verbindingsinstellingen voor QnA Maker worden in de actie weergegeven.](../media/how-to-integrate-power-virtual-agent/generate-answer-knowledge-base-settings.png)
+    > ![Schermafbeelding van de vereiste verbindingsinstellingen](../media/how-to-integrate-power-virtual-agent/generate-answer-knowledge-base-settings.png)
 
 1. Configureer de actie met uw knowledge base-id, eindpunthost en eindpunttoets. Deze zijn te vinden op de **instellingen** pagina van uw kennisbank, in de QnA Maker portal.
 
     > [!div class="mx-imgBorder"]
-    > ![Voer uw gepubliceerde knowledge base-instellingen in op de pagina **Instellingen** in dehttps://www.qnamaker.ai/) portal [QnA Maker].](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
+    > ![Schermafbeelding van gepubliceerde instellingen voor kennisbasis](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
 
-1. Als u de **vraag wilt**configureren, `InputText` selecteert u het tekstvak en selecteert u het in de lijst.
+1. Als u de **vraag wilt**configureren, selecteert `InputText` u het tekstvak en selecteert u het in de lijst.
 
-1. Als u een nieuwe stap in **+** de stroom wilt invoegen, selecteert u de connector die uit het actievak **Antwoord genereren** stroomt en selecteert u **Een actie toevoegen**.
+1. Als u een nieuwe stap in **+** de stroom wilt invoegen, selecteert u de connector die uit het actievak **Antwoord genereren** stroomt. Selecteer vervolgens **Een actie toevoegen**.
 
-1. Als u een variabele wilt toevoegen om de antwoordtekst `Initialize variable` vast te leggen die is geretourneerd vanuit GenerateAnswer, zoekt en selecteert u de actie.
+1. Als u een variabele wilt toevoegen `GenerateAnswer`om de antwoordtekst vast te leggen die is geretourneerd, zoekt en selecteert u de `Initialize variable` actie.
 
     Stel de naam van `OutgoingQnAAnswer`de variabele in op , en selecteer het type als **Tekenreeks**. Stel de **waarde**niet in.
 
     > [!div class="mx-imgBorder"]
-    > ![Stel de naam van de variabele in op 'QnAAnswer' en selecteer het type als **Tekenreeks**](../media/how-to-integrate-power-virtual-agent/initialize-output-variable-for-qna-answer.png)
+    > ![Schermafbeelding van het initialiseren van de uitvoervariabele](../media/how-to-integrate-power-virtual-agent/initialize-output-variable-for-qna-answer.png)
 
-1. Als u een nieuwe stap in **+** de stroom wilt invoegen, selecteert u de connector die uit het vak Variabele actie **Initialize** stroomt en selecteert u **Een actie toevoegen**.
+1. Als u een nieuwe stap in **+** de stroom wilt invoegen, selecteert u de connector die uit het vak **Initialiseren van variabele** actie stroomt. Selecteer vervolgens **Een actie toevoegen**.
 
-1. Als u de volledige knowledge base JSON-respons op`Apply to each` de variabele wilt instellen, zoekt en selecteert u de actie. Selecteer het `answers`antwoord genereren .
+1. Als u de volledige knowledge base JSON-respons op`Apply to each` de variabele wilt instellen, zoekt en selecteert u de actie. Selecteer `GenerateAnswer` `answers`de .
 
 1. Als u alleen het bovenste antwoord wilt retourneren, selecteert u in hetzelfde **vak Toepassen op elk** vak de optie Een actie **toevoegen**. Zoeken naar en selecteer **Variabele instellen**.
 
@@ -186,24 +192,24 @@ Met de volgende procedure wordt een **power automate-stroom gezoen** die:
     Selecteer het tekstvak voor **Waarde**en selecteer **Antwoord antwoord** in de lijst.
 
     > [!div class="mx-imgBorder"]
-    > ![De naam en waarde voor de variabele instellen](../media/how-to-integrate-power-virtual-agent/power-automate-flow-apply-to-each-set-variable.png)
+    > ![Schermafbeelding van het instellen van de naam en waarde voor de variabele](../media/how-to-integrate-power-virtual-agent/power-automate-flow-apply-to-each-set-variable.png)
 
-1. Als u de variabele (en de waarde ervan) wilt retourneren, selecteert u de **waarde retourneren naar het stroomitem van De Virtuele Agent** van Power en selecteert u **Bewerken**en voegt u vervolgens een **uitvoer toe**. Selecteer een **tekstuitvoertype** en `FinalAnswer`voer de titel **van** . Selecteer het tekstvak **Value**voor de `OutgoingQnAAnswer` waarde en selecteer vervolgens de variabele.
+1. Als u de variabele (en de waarde ervan) wilt retourneren, selecteert u de **waarde(en) retourneren naar het stroomitem van De Virtuele Agent van Power.** **Selecteer** > vervolgens**Een uitvoer bewerken**. Selecteer een **tekstuitvoertype** en voer `FinalAnswer`de titel **van** . Selecteer het tekstvak **Value**voor de waarde `OutgoingQnAAnswer` en selecteer de variabele.
 
     > [!div class="mx-imgBorder"]
-    > ![De retourwaarde instellen](../media/how-to-integrate-power-virtual-agent/power-automate-flow-return-value.png)
+    > ![Schermafbeelding van het instellen van de retourwaarde](../media/how-to-integrate-power-virtual-agent/power-automate-flow-return-value.png)
 
 1. Selecteer **Opslaan** om de stroom op te slaan.
 
-## <a name="create-solution-and-add-flow"></a>Oplossing maken en flow toevoegen
+## <a name="create-a-solution-and-add-the-flow"></a>Een oplossing maken en de stroom toevoegen
 
-Om de Power Virtual Agent te laten vinden en verbinding te maken met de stroom, moet de stroom worden opgenomen in een Power Automate-oplossing.
+Om de agent te kunnen vinden en verbinding te maken met de stroom, moet de stroom worden opgenomen in een Power Automate-oplossing.
 
 1. Terwijl u nog steeds in de Power Automate-portal zit, selecteert u **Oplossingen** in de navigatie aan de linkerkant.
 
 1. Selecteer **+ Nieuwe oplossing**
 
-1. Voer een weergavenaam in. De lijst met oplossingen bevat elke oplossing in uw organisatie of school. Kies een naamgevingsconventie die u helpt te filteren op alleen uw `jondoe-power-virtual-agent-qnamaker-fallback`oplossingen, zoals het vooraf herstellen van uw e-mail naar uw oplossingsnaam: .
+1. Voer een weergavenaam in. De lijst met oplossingen bevat elke oplossing in uw organisatie of school. Kies een naamgevingsconventie die u helpt te filteren op alleen uw oplossingen. U uw e-mail bijvoorbeeld vooraf `jondoe-power-virtual-agent-qnamaker-fallback`fixeren op de naam van uw oplossing:.
 
 1. Selecteer uw uitgever in de lijst met keuzes.
 
@@ -211,75 +217,75 @@ Om de Power Virtual Agent te laten vinden en verbinding te maken met de stroom, 
 
 1. Selecteer **Maken** om het proces te voltooien.
 
-## <a name="add-flow-to-solution"></a>Stroom toevoegen aan oplossing
+## <a name="add-your-flow-to-the-solution"></a>Voeg uw stroom toe aan de oplossing
 
 1. Selecteer in de lijst met oplossingen de oplossing die u zojuist hebt gemaakt. Het zou bovenaan de lijst moeten staan. Als dit niet het is, zoekt u op uw e-mailnaam, die deel uitmaakt van de naam van de oplossing.
 
-1. Selecteer in de oplossing **+ Bestaande toevoegen**en selecteer **Stroom** in de lijst.
+1. Selecteer in de oplossing **+ Bestaande toevoegen**en selecteer Vervolgens **Vloeiend** in de lijst.
 
 1. Zoek uw stroom en selecteer **Toevoegen** om het proces te voltooien. Als er veel stromen zijn, kijkt u naar de **kolom Gewijzigd** om de meest recente stroom te vinden.
 
-## <a name="add-solutions-flow-to-power-virtual-agent"></a>De stroom van de oplossing toevoegen aan Power Virtual Agent
+## <a name="add-your-solutions-flow-to-power-virtual-agents"></a>De stroom van uw oplossing toevoegen aan Power Virtual Agents
 
-1. Ga terug naar het tabblad browser met uw Power Virtual Agent. Het ontwerpcanvas moet nog steeds geopend zijn.
+1. Ga terug naar het tabblad browser met uw agent in Power Virtual Agents. Het ontwerpcanvas moet nog steeds geopend zijn.
 
-1. Selecteer **+** de connector onder het **actievak Bericht** om een nieuwe stap in de stroom in te voegen en selecteer **Een actie aanroepen**.
+1. Als u een nieuwe stap in de stroom wilt **+** invoegen, selecteert u onder het **actievak Bericht** de connector. Selecteer vervolgens **Een actie aanroepen**.
 
 1. Selecteer in de nieuwe actie de invoerwaarde van **Niet-herkende TriggerPhrase**. Hiermee wordt de tekst van de agent doorgegeven aan de stroom.
 
     > [!div class="mx-imgBorder"]
-    > ![Selecteer in de nieuwe actie de invoerwaarde van **Niet-herkende TriggerPhrase**.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-select-unrecognized-trigger-phrase.png)
+    > ![Schermafbeelding van de optie Virtuele energiegemachtigden om niet-herkende triggerzin te selecteren](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-select-unrecognized-trigger-phrase.png)
 
-1. Selecteer **+** de connector onder het vak **Actie** om een nieuwe stap in de stroom in te voegen en selecteer **Een bericht weergeven**.
+1. Als u een nieuwe stap in **Action** de stroom **+** wilt invoegen, selecteert u onder het vak Actie de connector. Selecteer vervolgens **Een bericht weergeven**.
 
-1. Voer de berichttekst `Your answer is:`in `FinalAnswer` en selecteer als contextvariabele met behulp van de functie van de werkbalk ter plaatse.
+1. Voer de berichttekst in. `Your answer is:` Selecteer `FinalAnswer` als contextvariabele met behulp van de functie van de werkbalk ter plaatse.
 
     > [!div class="mx-imgBorder"]
-    > ![Voer de berichttekst en het 'FinalAnswer' van de Power Automate Flow in.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-show-message-final-answer.png)
+    > ![Schermafbeelding van de optie Virtuele energiegemachtigden om de berichttekst in te voeren](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-show-message-final-answer.png)
 
-1. Selecteer **Opslaan op** de contextwerkbalk om de details van het ontwerpcanvas voor het onderwerp op te slaan.
+1. Selecteer op de contextwerkbalk **Opslaan**om de details van het ontwerpcanvas voor het onderwerp op te slaan.
 
-Het laatste doek wordt hieronder weergegeven.
-
-> [!div class="mx-imgBorder"]
-> ![Laatste agentcanvas](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
-
-## <a name="test-power-virtual-agent"></a>Test Power Virtual Agent
-
-1. Schakel in het testvenster **Track tussen onderwerpen**in. Hiermee u de voortgang tussen onderwerpen en in één onderwerp bekijken.
-
-1. Test de agent door de gebruikerstekst in de onderstaande volgorde in te voeren. Het ontwerpcanvas rapporteert de geslaagde stappen met een groen vinkje.
-
-|Vraagvolgorde|Testvragen|Doel|
-|--|--|--|
-|1|Hello|Gesprek beginnen|
-|2|Winkeluren|Voorbeeldonderwerp - geconfigureerd voor u zonder extra werk van uw kant.|
-|3|Ja|In antwoord op`Did that answer your question?`|
-|4|Uitstekend|In antwoord op`Please rate your experience.`|
-|5|Ja|In antwoord op`Can I help with anything else?`|
-|6|Wat is een kennisbank?|Deze vraag activeert de terugvalactie, die de tekst naar uw kennisbank stuurt om te beantwoorden, waarna het antwoord wordt weergegeven. |
+Zo ziet het laatste agentdoek eruit.
 
 > [!div class="mx-imgBorder"]
-> ![Laatste agentcanvas](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png)
+> ![Schermafbeelding van het canvas van de uiteindelijke agent](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
+
+## <a name="test-the-agent"></a>Test de agent
+
+1. Schakel in het testvenster **Track tussen onderwerpen**in. Hiermee u de voortgang tussen onderwerpen bekijken, evenals binnen één onderwerp.
+
+1. Test de agent door de gebruikerstekst in de volgende volgorde in te voeren. Het ontwerpcanvas rapporteert de geslaagde stappen met een groen vinkje.
+
+    |Vraagvolgorde|Testvragen|Doel|
+    |--|--|--|
+    |1|Hello|Gesprek beginnen|
+    |2|Winkeluren|Voorbeeldonderwerp. Dit is voor u geconfigureerd zonder extra werk van uw kant.|
+    |3|Ja|In antwoord op`Did that answer your question?`|
+    |4|Uitstekend|In antwoord op`Please rate your experience.`|
+    |5|Ja|In antwoord op`Can I help with anything else?`|
+    |6|Wat is een kennisbank?|Deze vraag activeert de terugvalactie, die de tekst naar uw kennisbank stuurt om te beantwoorden. Dan wordt het antwoord getoond. |
+
+> [!div class="mx-imgBorder"]
+> ![Schermafbeelding van het canvas van de uiteindelijke agent](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png)
 
 ## <a name="publish-your-bot"></a>Uw bot publiceren
 
-Om de agent beschikbaar te maken voor alle leden van uw school of organisatie, moet u deze publiceren.
+Als u de agent beschikbaar wilt maken voor alle leden van uw school of organisatie, moet u deze publiceren.
 
-1. Selecteer **Publiceren** in de linkernavigatie en selecteer **Publiceren** op de pagina.
+1. Selecteer **Publiceren**in de navigatie aan de linkerkant . Selecteer vervolgens **Publiceren** op de pagina.
 
-1. Probeer je bot op de demo website, die als een link onder de **knop Publiceren** .
+1. Probeer je bot op de demo website (kijk voor de link onder **Publiceren).**
 
     Er wordt een nieuwe webpagina geopend met uw bot. Stel de bot dezelfde testvraag:`What is a knowledge base?`
 
     > [!div class="mx-imgBorder"]
-    > ![Laatste agentcanvas](../media/how-to-integrate-power-virtual-agent/demo-chat-bot.png)
+    > ![Schermafbeelding van het canvas van de uiteindelijke agent](../media/how-to-integrate-power-virtual-agent/demo-chat-bot.png)
 
 ## <a name="share-your-bot"></a>Deel je bot
 
-Om de demowebsite te delen, configureer je deze als een kanaal.
+Als u de demowebsite wilt delen, configureert u deze als een kanaal.
 
-1. Selecteer Vervolgens **Kanalen** **beheren** in de linkernavigatie.
+1. Selecteer**Kanalen** **beheren** > in de navigatie aan de linkerkant .
 
 1. Selecteer **Demo-website** in de kanalenlijst.
 

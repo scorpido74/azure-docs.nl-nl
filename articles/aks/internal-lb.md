@@ -5,12 +5,12 @@ description: Meer informatie over het maken en gebruiken van een interne load ba
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 4decd66a558b031f1aaaf9c64556dae545ed05d3
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 9c2966215d07c4ddf052d30a5757a2deee2e0b5c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668417"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392778"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Een interne load balancer gebruiken met Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,7 @@ In dit artikel wordt ervan uitgegaan dat u een bestaand AKS-cluster hebt. Als u 
 
 U hebt ook de Azure CLI-versie 2.0.59 of hoger geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
 
-De principal van de AKS-clusterservice heeft toestemming nodig om netwerkbronnen te beheren als u een bestaand subnet of resourcegroep gebruikt. Wijs de rol *Netwerkbijdrager toe* aan uw serviceprincipal aan de gedelegeerde resources. Zie [AKS-toegang tot andere Azure-bronnen voor][aks-sp]meer informatie over machtigingen.
+De principal van de AKS-clusterservice heeft toestemming nodig om netwerkbronnen te beheren als u een bestaand subnet of resourcegroep gebruikt. Wijs de rol *Netwerkbijdrager toe* aan uw serviceprincipal aan de gedelegeerde resources. In plaats van een serviceprincipal u de beheerde identiteit met het systeem gebruiken voor machtigingen. Zie [Beheerde identiteiten gebruiken voor](use-managed-identity.md)meer informatie . Zie [AKS-toegang tot andere Azure-bronnen voor][aks-sp]meer informatie over machtigingen.
 
 ## <a name="create-an-internal-load-balancer"></a>Een interne load balancer maken
 

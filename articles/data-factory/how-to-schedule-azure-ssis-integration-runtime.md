@@ -13,14 +13,17 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f758b779e7c4935feab2424be16b829db8e46b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440319"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399519"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime gepland starten en stoppen
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 In dit artikel wordt beschreven hoe u de start en het stoppen van Azure-SSIS Integration Runtime (IR) inplant met behulp van Azure Data Factory (ADF). Azure-SSIS IR is ADF compute resource die is gebruikt voor het uitvoeren van SQL Server Integration Services (SSIS)-pakketten. Het uitvoeren van Azure-SSIS IR heeft een kosten verbonden aan het. Daarom wilt u uw IR meestal alleen uitvoeren wanneer u SSIS-pakketten in Azure moet uitvoeren en uw IR moet stoppen wanneer u deze niet meer nodig hebt. U de ADF-gebruikersinterface (UI)/app of Azure PowerShell gebruiken om uw IR handmatig te [starten of te stoppen).](manage-azure-ssis-integration-runtime.md)
 
 U ook webactiviteiten maken in ADF-pijplijnen om uw IR op schema te starten/te stoppen, bijvoorbeeld om deze 's ochtends te starten voordat u uw dagelijkse ETL-workloads uitvoert en deze 's middags stopt nadat ze zijn voltooid.  U ook een SSIS-pakketactiviteit uitvoeren tussen twee webactiviteiten die uw IR starten en stoppen, zodat uw IR op aanvraag start/stopt, net op tijd voor/na uw pakketuitvoering. Zie [Een SSIS-pakket uitvoeren met ssis-pakketactiviteit uitvoeren in het ADF-pijplijnartikel](how-to-invoke-ssis-package-ssis-activity.md) voor meer informatie over activiteiten in het SSIS-pakket uitvoeren.
@@ -41,7 +44,7 @@ Nadat u deze pijplijnen hebt gemaakt en getest, u een planningstrigger maken en 
 
 U bijvoorbeeld twee triggers maken, de eerste wordt dagelijks om 6 uur 's 6 uur uitgevoerd en gekoppeld aan de eerste pijplijn, terwijl de tweede wordt uitgevoerd om dagelijks om 18.00 uur en gekoppeld aan de tweede pijplijn.  Op deze manier heeft u elke dag een periode tussen 6.00 en 18.00 uur wanneer uw IR wordt uitgevoerd, klaar om uw dagelijkse ETL-workloads uit te voeren.  
 
-Als u een derde trigger maakt die dagelijks om middernacht wordt uitgevoerd en gekoppeld aan de derde pijplijn, wordt die pijplijn elke dag om middernacht uitgevoerd, begint u uw IR vlak voor de uitvoering van het pakket, voert u uw pakket vervolgens uit en onmiddellijk het stoppen van uw IR net na pakket uitvoering, zodat uw IR zal niet worden uitgevoerd werkeloos.
+Als u een derde trigger maakt die dagelijks om middernacht wordt uitgevoerd en die is gekoppeld aan de derde pijplijn, wordt die pijplijn elke dag om middernacht uitgevoerd, wordt uw IR gestart vlak voor de uitvoering van het pakket, vervolgens het uitvoeren van uw pakket en onmiddellijk stoppen van uw IR net na de uitvoering van het pakket, zodat uw IR niet werkeloos wordt uitgevoerd.
 
 ### <a name="create-your-adf"></a>Uw ADF maken
 
@@ -160,7 +163,7 @@ Nu uw pijplijnen werken zoals u had verwacht, u triggers maken om ze uit te voer
     4. Voer voor **Herhaling**een cadans in voor de trigger. In het volgende voorbeeld is het **eenmaal Dagelijks.** 
     5. Selecteer Voor **Einde** **Geen einde** of voer een einddatum en -tijd in nadat u Op **datum hebt**geselecteerd . 
     6. Selecteer **Geactiveerd** om de trigger direct nadat u de hele ADF-instellingen hebt gepubliceerd, te activeren. 
-    7. Selecteer **Volgende**.
+    7. Selecteer **Next**.
 
    ![Trigger -> Nieuw/Bewerken](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     

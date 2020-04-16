@@ -1,26 +1,26 @@
 ---
-title: Gebeurtenisraster Machine Learning-gebeurtenisschema azure-gebeurtenisraster
+title: Azure Machine Learning als gebeurtenisrasterbron
 description: Beschrijft de eigenschappen die worden geleverd voor Machine Learning Workspace-gebeurtenissen met Azure Event Grid
 services: event-grid
-author: jenns
+author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 10/18/2019
-ms.author: jenns
-ms.openlocfilehash: 4051598a9abd787f6707e67a8c4dab12fc6d626a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: 7d9af420c7e2b47d2aeb4a8bf42ee138a605b305
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79202141"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393283"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Event Grid-gebeurtenisschema voor Azure Machine Learning
+# <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning als gebeurtenisrasterbron
 
 In dit artikel vindt u de eigenschappen en het schema voor gebeurtenissen in de werkruimte voor machine learning. Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
 
-Zie [AzureML-gebeurtenisbron](event-sources.md#azure-machine-learning)voor een lijst met voorbeeldscripts en -zelfstudies.
+## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
 
-## <a name="available-event-types"></a>Beschikbare gebeurtenistypen
+### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
 Azure Machine Learning zendt de volgende gebeurtenistypen uit:
 
@@ -32,7 +32,7 @@ Azure Machine Learning zendt de volgende gebeurtenistypen uit:
 | Microsoft.MachineLearningServices.DatasetDriftdetected | Verhoogd wanneer een driftmonitor van de gegevensset drift detecteert. |
 | Microsoft.MachineLearningServices.RunStatusChanged | Verhoogd wanneer een run status verandert in 'mislukt'. |
 
-## <a name="the-contents-of-an-event-response"></a>De inhoud van een gebeurtenisantwoord
+### <a name="the-contents-of-an-event-response"></a>De inhoud van een gebeurtenisantwoord
 
 Wanneer een gebeurtenis wordt geactiveerd, verzendt de gebeurtenisrasterservice gegevens over die gebeurtenis naar een endpoint van een abonnement.
 
@@ -186,10 +186,7 @@ Deze sectie bevat een voorbeeld van hoe die gegevens er voor elke gebeurtenis ui
 }]
 ```
 
-
-
-
-## <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
@@ -260,6 +257,11 @@ Het gegevensobject heeft de volgende eigenschappen voor elk gebeurtenistype:
 | RunTags | object | De tags van de voltooide run. |
 | RunEigenschappen | object | De eigenschappen van de voltooide run. |
 | RunStatus | tekenreeks | De status van de Run. |
+
+## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
+| Titel | Beschrijving |
+| ----- | ----- |
+| [Azure Machine Learning-gebeurtenissen gebruiken](../machine-learning/concept-event-grid-integration.md) | Overzicht van de integratie van Azure Machine Learning met Event Grid. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

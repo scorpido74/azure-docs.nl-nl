@@ -5,12 +5,12 @@ description: Lees de aanbevolen procedures voor de clusteroperator voor virtuele
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: c8aee9967e09d2ae8bec3ee170756d8d22de0fe4
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1eed6f1f82a8a91b2335760e99ea6b895d15547e
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668212"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392718"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best practices voor netwerkverbinding en -beveiliging in Azure Kubernetes Service (AKS)
 
@@ -43,7 +43,7 @@ Wanneer u Azure CNI-netwerken gebruikt, bevindt de virtuele netwerkbron zich in 
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-Zie [Toegang tot andere Azure-bronnen delegeren voor][sp-delegation]meer informatie over de belangrijkste delegatie van AKS-service.
+Zie [Toegang tot andere Azure-bronnen delegeren voor][sp-delegation]meer informatie over de belangrijkste delegatie van AKS-service. In plaats van een serviceprincipal u ook de beheerde identiteit met het systeem gebruiken voor machtigingen. Zie [Beheerde identiteiten gebruiken voor](use-managed-identity.md)meer informatie .
 
 Als elk knooppunt en pod zijn eigen IP-adres ontvangen, plant u de adresbereiken voor de AKS-subnetten. Het subnet moet groot genoeg zijn om IP-adressen te bieden voor elk knooppunt, pods en netwerkbronnen die u implementeert. Elk AKS-cluster moet in zijn eigen subnet worden geplaatst. Als u connectiviteit met on-premises of peered-netwerken in Azure wilt toestaan, gebruikt u geen IP-adresbereiken die overlappen met bestaande netwerkbronnen. Er zijn standaardlimieten voor het aantal pods dat elk knooppunt uitvoert met zowel kubenet- als Azure CNI-netwerken. Als u scale-outgebeurtenissen of clusterupgrades wilt verwerken, hebt u ook extra IP-adressen nodig die beschikbaar zijn voor gebruik in het toegewezen subnet. Deze extra adresruimte is vooral belangrijk als u Windows Server-containers gebruikt (momenteel in preview in AKS), omdat deze knooppuntgroepen een upgrade vereisen om de nieuwste beveiligingspatches toe te passen. Zie [Een knooppuntgroep in AKS upgraden][nodepool-upgrade]voor meer informatie over Windows Server-knooppunten.
 

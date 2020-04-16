@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 11/26/2019
 ms.author: shvija
-ms.openlocfilehash: abd7940551f7a8182364475b0cf50b60afb5e1b7
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 91b08d6130da640adc28a3b7d85bd33f0e876caf
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313800"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390289"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Eindpunten van virtuele netwerkservices gebruiken met Azure Event Hubs
 
@@ -32,6 +32,7 @@ Het resultaat is een privé- en geïsoleerde relatie tussen de workloads die aan
 > Vertrouwde Microsoft-services worden niet ondersteund wanneer virtuele netwerken worden geïmplementeerd.
 >
 > Veelvoorkomende Azure-scenario's die niet werken met virtuele netwerken (houd er rekening mee dat de lijst **NIET** volledig is) -
+> - Azure Monitor (diagnostische instelling)
 > - Azure Stream Analytics
 > - Integratie met Azure Event Grid
 > - Azure IoT-hubroutes

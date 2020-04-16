@@ -3,24 +3,25 @@ title: Beheerde identiteiten
 description: Meer informatie over hoe beheerde identiteiten werken in Azure App Service en Azure Functions, hoe u een beheerde identiteit configureert en een token genereert voor een back-endbron.
 author: mattchenderson
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/14/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 6e3169f2bfcba0a02af1490f875cbab8a14d02f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 875d2bbebdfa95c6d180979399d876eb2afc01b4
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280025"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392528"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure-functies
 
 > [!Important] 
 > Beheerde identiteiten voor App Service en Azure-functies gedragen zich niet zoals verwacht als uw app is gemigreerd tussen abonnementen/tenants. De app moet een nieuwe identiteit verkrijgen, wat kan worden gedaan door de functie uit te schakelen en opnieuw in te schakelen. Zie [Hieronder een identiteit verwijderen.](#remove) Downstreambronnen moeten ook het toegangsbeleid hebben bijgewerkt om de nieuwe identiteit te gebruiken.
 
-In dit onderwerp ziet u hoe u een beheerde identiteit maakt voor toepassingen voor App-service en Azure-functies en hoe u deze gebruiken om toegang te krijgen tot andere bronnen. Met een beheerde identiteit van Azure Active Directory (AAD) heeft uw app eenvoudig toegang tot andere door AAD beveiligde bronnen, zoals Azure Key Vault. De identiteit wordt beheerd door het Azure-platform en vereist niet dat u geheimen indient of roteert. Zie [Beheerde identiteiten voor Azure-resources voor](../active-directory/managed-identities-azure-resources/overview.md)meer informatie over beheerde identiteiten in AAD.
+In dit onderwerp ziet u hoe u een beheerde identiteit maakt voor toepassingen voor App-service en Azure-functies en hoe u deze gebruiken om toegang te krijgen tot andere bronnen. Met een beheerde identiteit van Azure Active Directory (Azure AD) heeft uw app eenvoudig toegang tot andere door Azure AD beveiligde bronnen, zoals Azure Key Vault. De identiteit wordt beheerd door het Azure-platform en vereist niet dat u geheimen indient of roteert. Zie [Beheerde identiteiten voor Azure-resources voor](../active-directory/managed-identities-azure-resources/overview.md)meer informatie over beheerde identiteiten in Azure AD.
 
-Uw aanvraag kan worden toegekend twee soorten identiteiten: 
+Uw aanvraag kan worden toegekend twee soorten identiteiten:
+
 - Een **door het systeem toegewezen identiteit** is gekoppeld aan uw toepassing en wordt verwijderd als uw app wordt verwijderd. Een app kan slechts één door het systeem toegewezen identiteit hebben.
 - Een door de gebruiker toegewezen identiteit is een zelfstandige **Azure-bron** die aan uw app kan worden toegewezen. Een app kan meerdere door de gebruiker toegewezen identiteiten hebben.
 
@@ -57,6 +58,7 @@ Met de volgende stappen u een web-app maken en een identiteit toewijzen met de C
     ```azurecli-interactive
     az login
     ```
+
 2. Een webtoepassing maken met de CLI. Zie [App Service CLI-voorbeelden](../app-service/samples-cli.md)voor meer voorbeelden van het gebruik van de CLI met App Service:
 
     ```azurecli-interactive
@@ -84,10 +86,10 @@ Met de volgende stappen u een web-app maken en een identiteit toewijzen met Azur
     ```azurepowershell-interactive
     # Create a resource group.
     New-AzResourceGroup -Name myResourceGroup -Location $location
-    
+
     # Create an App Service plan in Free tier.
     New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
-    
+
     # Create a web app.
     New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
     ```
@@ -103,18 +105,20 @@ Met de volgende stappen u een web-app maken en een identiteit toewijzen met Azur
 Een Azure Resource Manager-sjabloon kan worden gebruikt om de implementatie van uw Azure-resources te automatiseren. Zie Het implementeren van [resources in App-service](../app-service/deploy-complex-application-predictably.md) en [het automatiseren van resourceimplementatie in Azure-functies](../azure-functions/functions-infrastructure-as-code.md)voor meer informatie over het implementeren naar app-service en -functies.
 
 Elke resource `Microsoft.Web/sites` van het type kan worden gemaakt met een identiteit door de volgende eigenschap op te geven in de resourcedefinitie:
+
 ```json
 "identity": {
     "type": "SystemAssigned"
-}    
+}
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Een toepassing kan zowel door het systeem toegewezen als door de gebruiker toegewezen identiteiten tegelijkertijd hebben. In dit geval `type` zou het pand`SystemAssigned,UserAssigned`
 
 Als u het systeemtoegewezen type toevoegt, moet Azure de identiteit van uw toepassing maken en beheren.
 
 Een web-app kan er bijvoorbeeld als volgt uitzien:
+
 ```json
 {
     "apiVersion": "2016-08-01",
@@ -138,6 +142,7 @@ Een web-app kan er bijvoorbeeld als volgt uitzien:
 ```
 
 Wanneer de site wordt gemaakt, heeft deze de volgende aanvullende eigenschappen:
+
 ```json
 "identity": {
     "type": "SystemAssigned",
@@ -146,8 +151,7 @@ Wanneer de site wordt gemaakt, heeft deze de volgende aanvullende eigenschappen:
 }
 ```
 
-De tenantId-eigenschap identificeert tot welke AAD-huurder de identiteit behoort. De principalId is een unieke id voor de nieuwe identiteit van de toepassing. Binnen AAD heeft de serviceprincipal dezelfde naam die u aan uw appservice of Azure-functieinstantie hebt gegeven.
-
+De eigenschap tenantId identificeert tot welke Azure AD-tenant de identiteit behoort. De principalId is een unieke id voor de nieuwe identiteit van de toepassing. Binnen Azure AD heeft de serviceprincipal dezelfde naam die u aan uw appservice of Azure-functieinstantie hebt gegeven.
 
 ## <a name="add-a-user-assigned-identity"></a>Een door de gebruiker toegewezen identiteit toevoegen
 
@@ -167,7 +171,7 @@ Eerst moet u een door de gebruiker toegewezen identiteitsbron maken.
 
 5. Klik op het **tabblad Toegewezen gebruiker** op **Toevoegen**.
 
-6. Zoek naar de identiteit die u eerder hebt gemaakt en selecteer deze. Klik op**toevoegen**.
+6. Zoek naar de identiteit die u eerder hebt gemaakt en selecteer deze. Klik op **Add**.
 
     ![Beheerde identiteit in App-service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
@@ -176,21 +180,23 @@ Eerst moet u een door de gebruiker toegewezen identiteitsbron maken.
 Een Azure Resource Manager-sjabloon kan worden gebruikt om de implementatie van uw Azure-resources te automatiseren. Zie Het implementeren van [resources in App-service](../app-service/deploy-complex-application-predictably.md) en [het automatiseren van resourceimplementatie in Azure-functies](../azure-functions/functions-infrastructure-as-code.md)voor meer informatie over het implementeren naar app-service en -functies.
 
 Elke bron `Microsoft.Web/sites` van het type kan worden gemaakt met een identiteit `<RESOURCEID>` door het volgende blok op te nemen in de resourcedefinitie, te vervangen door de resource-id van de gewenste identiteit:
+
 ```json
 "identity": {
     "type": "UserAssigned",
     "userAssignedIdentities": {
         "<RESOURCEID>": {}
     }
-}    
+}
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Een toepassing kan zowel door het systeem toegewezen als door de gebruiker toegewezen identiteiten tegelijkertijd hebben. In dit geval `type` zou het pand`SystemAssigned,UserAssigned`
 
 Als u het door de gebruiker toegewezen type toevoegt, moet Azure de door de gebruiker toegewezen identiteit gebruiken die voor uw toepassing is opgegeven.
 
 Een web-app kan er bijvoorbeeld als volgt uitzien:
+
 ```json
 {
     "apiVersion": "2016-08-01",
@@ -218,6 +224,7 @@ Een web-app kan er bijvoorbeeld als volgt uitzien:
 ```
 
 Wanneer de site wordt gemaakt, heeft deze de volgende aanvullende eigenschappen:
+
 ```json
 "identity": {
     "type": "UserAssigned",
@@ -230,12 +237,11 @@ Wanneer de site wordt gemaakt, heeft deze de volgende aanvullende eigenschappen:
 }
 ```
 
-De principalId is een unieke id voor de identiteit die wordt gebruikt voor AAD-administratie. De clientId is een unieke id voor de nieuwe identiteit van de toepassing die wordt gebruikt voor het opgeven van welke identiteit moet worden gebruikt tijdens runtime-oproepen.
-
+De principalId is een unieke id voor de identiteit die wordt gebruikt voor Azure AD-beheer. De clientId is een unieke id voor de nieuwe identiteit van de toepassing die wordt gebruikt voor het opgeven van welke identiteit moet worden gebruikt tijdens runtime-oproepen.
 
 ## <a name="obtain-tokens-for-azure-resources"></a>Tokens voor Azure-bronnen verkrijgen
 
-Een app kan de beheerde identiteit gebruiken om tokens toegang te geven tot andere bronnen die door AAD worden beschermd, zoals Azure Key Vault. Deze tokens vertegenwoordigen de toepassing die toegang heeft tot de bron en geen specifieke gebruiker van de toepassing. 
+Een app kan de beheerde identiteit gebruiken om tokens toegang te geven tot andere bronnen die worden beschermd door Azure AD, zoals Azure Key Vault. Deze tokens vertegenwoordigen de toepassing die toegang heeft tot de bron en geen specifieke gebruiker van de toepassing. 
 
 Mogelijk moet u de doelbron configureren om toegang te krijgen vanuit uw toepassing. Als u bijvoorbeeld een token aanvraagt om toegang te krijgen tot Key Vault, moet u ervoor zorgen dat u een toegangsbeleid hebt toegevoegd dat de identiteit van uw toepassing bevat. Anders worden uw oproepen naar Key Vault geweigerd, zelfs als ze het token bevatten. Zie [Azure-services die Azure AD-verificatie ondersteunen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)voor meer informatie over welke resources Azure Active Directory-tokens ondersteunen.
 
@@ -248,56 +254,61 @@ Er is een eenvoudig REST-protocol voor het verkrijgen van een token in App Servi
 
 Een app met een beheerde identiteit heeft twee omgevingsvariabelen gedefinieerd:
 
-- MSI_ENDPOINT - de URL naar de lokale tokenservice.
-- MSI_SECRET - een header die wordt gebruikt om te helpen server-side request forgery (SSRF) aanvallen te beperken. De waarde wordt geroteerd door het platform.
+- IDENTITY_ENDPOINT - de URL naar de lokale tokenservice.
+- IDENTITY_HEADER - een header die wordt gebruikt om te helpen server-side request forgery (SSRF) aanvallen te beperken. De waarde wordt geroteerd door het platform.
 
-De **MSI_ENDPOINT** is een lokale URL waaruit uw app tokens kan aanvragen. Als u een token voor een resource wilt krijgen, dient u een HTTP GET-verzoek in voor dit eindpunt, inclusief de volgende parameters:
+De **IDENTITY_ENDPOINT** is een lokale URL waaruit uw app tokens kan aanvragen. Als u een token voor een resource wilt krijgen, dient u een HTTP GET-verzoek in voor dit eindpunt, inclusief de volgende parameters:
 
-> |Parameternaam|In|Beschrijving|
-> |-----|-----|-----|
-> |resource|Query’s uitvoeren|De AAD-bron URI van de resource waarvoor een token moet worden verkregen. Dit kan een van de [Azure-services zijn die Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) of een andere bron-URI ondersteunen.|
-> |api-versie|Query’s uitvoeren|De versie van de token-API die moet worden gebruikt. "2017-09-01" is momenteel de enige versie die wordt ondersteund.|
-> |geheim|Header|De waarde van de MSI_SECRET omgevingsvariabele. Deze header wordt gebruikt om te helpen server-side request forgery (SSRF) aanvallen te beperken.|
-> |clientid|Query’s uitvoeren|(Optioneel, tenzij voor door de gebruiker toegewezen) De id van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Als deze wordt weggelaten, wordt de door het systeem toegewezen identiteit gebruikt.|
+> | Parameternaam    | In     | Beschrijving                                                                                                                                                                                                                                                                                                                                |
+> |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+> | resource          | Query’s uitvoeren  | De Azure AD-bron URI van de bron waarvoor een token moet worden verkregen. Dit kan een van de [Azure-services zijn die Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) of een andere bron-URI ondersteunen.    |
+> | api-versie       | Query’s uitvoeren  | De versie van de token-API die moet worden gebruikt. Gebruik "2019-08-01" of hoger.                                                                                                                                                                                                                                                                 |
+> | X-IDENTITEIT-HEADER | Header | De waarde van de IDENTITY_HEADER omgevingsvariabele. Deze header wordt gebruikt om te helpen server-side request forgery (SSRF) aanvallen te beperken.                                                                                                                                                                                                    |
+> | client_id         | Query’s uitvoeren  | (Optioneel) De client-ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Kan niet worden gebruikt `principal_id`op `mi_res_id`een `object_id`verzoek dat omvat , , of . Als alle ID-parameters `object_id`( `mi_res_id``client_id`, `principal_id`, en ) worden weggelaten, wordt de door het systeem toegewezen identiteit gebruikt.                                             |
+> | principal_id      | Query’s uitvoeren  | (Optioneel) De hoofd-ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. `object_id`is een alias die in plaats daarvan kan worden gebruikt. Kan niet worden gebruikt op een verzoek dat client_id, mi_res_id of object_id bevat. Als alle ID-parameters `object_id`( `mi_res_id``client_id`, `principal_id`, en ) worden weggelaten, wordt de door het systeem toegewezen identiteit gebruikt. |
+> | mi_res_id         | Query’s uitvoeren  | (Optioneel) De Azure-bron-id van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Kan niet worden gebruikt `principal_id`op `client_id`een `object_id`verzoek dat omvat , , of . Als alle ID-parameters `object_id`( `mi_res_id``client_id`, `principal_id`, en ) worden weggelaten, wordt de door het systeem toegewezen identiteit gebruikt.                                      |
 
 > [!IMPORTANT]
-> Als u tokens probeert te verkrijgen voor door gebruikers `clientid` toegewezen identiteiten, moet u de eigenschap opnemen. Anders probeert de tokenservice een token te verkrijgen voor een door het systeem toegewezen identiteit, die al dan niet bestaat.
+> Als u tokens probeert te verkrijgen voor door gebruikers toegewezen identiteiten, moet u een van de optionele eigenschappen opnemen. Anders probeert de tokenservice een token te verkrijgen voor een door het systeem toegewezen identiteit, die al dan niet bestaat.
 
 Een succesvolle 200 OK-respons bevat een JSON-body met de volgende eigenschappen:
 
-> |Naam van eigenschap|Beschrijving|
-> |-------------|----------|
-> |access_token|Het gevraagde toegangstoken. De bellende webservice kan dit token gebruiken om te verifiëren bij de ontvangende webservice.|
-> |expires_on|Het tijdstip waarop het toegangstoken verloopt. De datum wordt weergegeven als het aantal seconden van 1970-01-01T0:0:0Z UTC tot de vervaldatum. Deze waarde wordt gebruikt om de levensduur van tokens in de cache te bepalen.|
-> |resource|De App ID URI van de ontvangende webservice.|
-> |token_type|Geeft de waarde van het tokentype aan. Het enige type dat Azure AD ondersteunt, is Drager. Zie [Het OAuth 2.0 Authorization Framework: Toondertokengebruik (RFC 6750) voor](https://www.rfc-editor.org/rfc/rfc6750.txt)meer informatie over tokens aan toonder.|
+> | Naam van eigenschap | Beschrijving                                                                                                                                                                                                                                        |
+> |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+> | access_token  | Het gevraagde toegangstoken. De bellende webservice kan dit token gebruiken om te verifiëren bij de ontvangende webservice.                                                                                                                               |
+> | client_id     | De client-ID van de identiteit die werd gebruikt.                                                                                                                                                                                                       |
+> | expires_on    | De tijdspanne wanneer het toegangstoken verloopt. De datum wordt weergegeven als het aantal seconden van "1970-01-01T0:0:0Z UTC" `exp` (komt overeen met de claim van het token).                                                                                |
+> | not_before    | De tijdspanne waarin het toegangstoken van kracht wordt en kan worden geaccepteerd. De datum wordt weergegeven als het aantal seconden van "1970-01-01T0:0:0Z UTC" `nbf` (komt overeen met de claim van het token).                                                      |
+> | resource      | De bron waarvoor het toegangstoken is `resource` aangevraagd, komt overeen met de parameter querytekenreeks van de aanvraag.                                                                                                                               |
+> | token_type    | Geeft de waarde van het tokentype aan. Het enige type dat Azure AD ondersteunt, is FBearer. Zie [Het OAuth 2.0 Authorization Framework: Toondertokengebruik (RFC 6750) voor](https://www.rfc-editor.org/rfc/rfc6750.txt)meer informatie over tokens aan toonder. |
 
-Dit antwoord is hetzelfde als het [antwoord voor de AAD service-to-service access token aanvraag](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token).
+Dit antwoord is hetzelfde als het [antwoord voor de Azure AD-service-to-service-tokenaanvraag](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)voor toegangstoegang .
 
 > [!NOTE]
-> Omgevingsvariabelen worden ingesteld wanneer het proces voor het eerst wordt gestart, dus nadat u een beheerde identiteit `MSI_ENDPOINT` voor `MSI_SECRET` uw toepassing hebt ingemaakt, moet u uw toepassing mogelijk opnieuw starten of de code opnieuw implementeren voordat u deze code beschikbaar hebt voor uw code.
+> Een oudere versie van dit protocol, met behulp van de API-versie "2017-09-01", gebruikte de `secret` header in plaats van `X-IDENTITY-HEADER` en accepteerde alleen de eigenschap voor door de `clientid` gebruiker toegewezen. Het keerde `expires_on` ook de in een timestamp formaat. MSI_ENDPOINT kan worden gebruikt als alias voor IDENTITY_ENDPOINT en MSI_SECRET kan worden gebruikt als alias voor IDENTITY_HEADER.
 
 ### <a name="rest-protocol-examples"></a>Voorbeelden van REST-protocol
 
 Een voorbeeldaanvraag kan er als volgt uitzien:
 
-```
-GET /MSI/token?resource=https://vault.azure.net&api-version=2017-09-01 HTTP/1.1
+```http
+GET /MSI/token?resource=https://vault.azure.net&api-version=2019-08-01 HTTP/1.1
 Host: localhost:4141
-Secret: 853b9a84-5bfa-4b22-a3f3-0b9a43d9ad8a
+X-IDENTITY-HEADER: 853b9a84-5bfa-4b22-a3f3-0b9a43d9ad8a
 ```
 
 En een voorbeeldreactie kan er als volgt uitzien:
 
-```
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
     "access_token": "eyJ0eXAi…",
-    "expires_on": "09/14/2017 00:00:00 PM +00:00",
+    "expires_on": "1586984735",
     "resource": "https://vault.azure.net",
-    "token_type": "Bearer"
+    "token_type": "Bearer",
+    "client_id": "5E29463D-71DA-4FE0-8E69-999B57DB23B0"
 }
 ```
 
@@ -313,8 +324,8 @@ private readonly HttpClient _client;
 // ...
 public async Task<HttpResponseMessage> GetToken(string resource)  {
     var request = new HttpRequestMessage(HttpMethod.Get, 
-        String.Format("{0}/?resource={1}&api-version=2017-09-01", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource));
-    request.Headers.Add("Secret", Environment.GetEnvironmentVariable("MSI_SECRET"));
+        String.Format("{0}/?resource={1}&api-version=2019-08-01", Environment.GetEnvironmentVariable("IDENTITY_ENDPOINT"), resource));
+    request.Headers.Add("X-IDENTITY-HEADER", Environment.GetEnvironmentVariable("IDENTITY_HEADER"));
     return await _client.SendAsync(request);
 }
 ```
@@ -325,9 +336,9 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 const rp = require('request-promise');
 const getToken = function(resource, cb) {
     let options = {
-        uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=2017-09-01`,
+        uri: `${process.env["IDENTITY_ENDPOINT"]}/?resource=${resource}&api-version=2019-08-01`,
         headers: {
-            'Secret': process.env["MSI_SECRET"]
+            'X-IDENTITY-HEADER': process.env["IDENTITY_HEADER"]
         }
     };
     rp(options)
@@ -341,12 +352,12 @@ const getToken = function(resource, cb) {
 import os
 import requests
 
-msi_endpoint = os.environ["MSI_ENDPOINT"]
-msi_secret = os.environ["MSI_SECRET"]
+identity_endpoint = os.environ["IDENTITY_ENDPOINT"]
+identity_header = os.environ["IDENTITY_HEADER"]
 
 def get_bearer_token(resource_uri):
-    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version=2017-09-01"
-    head_msi = {'Secret':msi_secret}
+    token_auth_uri = f"{identity_endpoint}?resource={resource_uri}&api-version=2019-08-01"
+    head_msi = {'X-IDENTITY-HEADER':identity_header}
 
     resp = requests.get(token_auth_uri, headers=head_msi)
     access_token = resp.json()['access_token']
@@ -354,12 +365,12 @@ def get_bearer_token(resource_uri):
     return access_token
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
-$tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=2017-09-01"
-$tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
+$tokenAuthURI = $env:IDENTITY_ENDPOINT + "?resource=$resourceURI&api-version=2019-08-01"
+$tokenResponse = Invoke-RestMethod -Method Get -Headers @{"X-IDENTITY-HEADER"="$env:IDENTITY_HEADER"} -Uri $tokenAuthURI
 $accessToken = $tokenResponse.access_token
 ```
 
@@ -423,7 +434,7 @@ Een door het systeem toegewezen identiteit kan worden verwijderd door de functie
 }
 ```
 
-Als u een door het systeem toegewezen identiteit op deze manier verwijdert, wordt deze ook uit AAD verwijderd. Door het systeem toegewezen identiteiten worden ook automatisch uit AAD verwijderd wanneer de app-bron wordt verwijderd.
+Als u een door het systeem toegewezen identiteit op deze manier verwijdert, wordt deze ook verwijderd uit Azure AD. Door het systeem toegewezen identiteiten worden ook automatisch uit Azure AD verwijderd wanneer de app-bron wordt verwijderd.
 
 > [!NOTE]
 > Er is ook een toepassingsinstelling die kan worden ingesteld, WEBSITE_DISABLE_MSI, die alleen de lokale tokenservice uitschakelt. Het laat de identiteit echter op zijn plaats en tooling toont nog steeds de beheerde identiteit als 'aan' of 'ingeschakeld'. Als gevolg hiervan wordt het gebruik van deze instelling niet aanbevolen.

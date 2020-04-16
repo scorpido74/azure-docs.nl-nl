@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 706ab128af4379a56223ff65fb12f29d37b524f7
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 0c61a431b985e494148500ed0a7aeb106534ed2c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383264"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392125"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Continue implementatie naar virtuele machines bieden met configuratie van automatiseringsstatus en chocolatey
 
@@ -95,7 +95,7 @@ Navigeer naar de gewenste resource en klik op de knop 'Implementeren naar Azure-
 
 Een andere techniek die onlangs aan de Azure-portal is toegevoegd, stelt u in staat om nieuwe modules binnen te halen of bestaande modules bij te werken. Klik door de bron van het automatiseringsaccount, de tegel Activa en ten slotte de tegel Modules. Met het pictogram Bladeren in de galerie u de lijst met modules in de galerie bekijken, inzoomen op details en uiteindelijk importeren in uw Automatiseringsaccount. Dit is een geweldige manier om uw modules van tijd tot tijd up-to-date te houden. En de importfunctie controleert afhankelijkheden met andere modules om ervoor te zorgen dat niets uit de pas loopt.
 
-Of, er is de handmatige aanpak. Deze benadering wordt slechts één keer per resource gebruikt, tenzij u deze later wilt upgraden. Zie [Integratiemodules voor Azure Automation voor](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)meer informatie over het ontwerpen van PowerShell-integratiemodules.
+Er is ook een handmatige aanpak, die slechts één keer per resource wordt gebruikt, tenzij u deze later wilt upgraden. Zie [Integratiemodules voor Azure Automation voor](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)meer informatie over het ontwerpen van PowerShell-integratiemodules.
 
 >[!NOTE]
 >De mapstructuur van een PowerShell-integratiemodule voor een Windows-computer is iets anders dan de mapstructuur die wordt verwacht door de Azure Automation. 
@@ -121,7 +121,7 @@ Of, er is de handmatige aanpak. Deze benadering wordt slechts één keer per res
     ```azurepowershell-interactive
     New-AzAutomationModule `
       -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
-      -Name MODULE-NAME –ContentLink 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
+      -Name MODULE-NAME –ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
     ```
 
 Het meegeleverde voorbeeld implementeert deze stappen voor cChoco en xNetworking. 
@@ -196,18 +196,18 @@ Deze stappen resulteren in een nieuwe node configuratie genaamd **ISVBoxConfig.i
 
 ## <a name="step-5-create-and-maintain-package-metadata"></a>Stap 5: Metagegevens van pakketten maken en onderhouden
 
-Voor elk pakket dat u in de pakketopslagplaats plaatst, hebt u een nuspec nodig die het beschrijft.
-Die nuspec moet worden gecompileerd en opgeslagen in je NuGet-server. Dit proces wordt [hier](https://docs.nuget.org/create/creating-and-publishing-a-package)beschreven. Je MyGet.org gebruiken als NuGet-server. Ze verkopen deze dienst, maar hebben een starter SKU die gratis is. Bij NuGet.org vindt u instructies voor het installeren van uw eigen NuGet-server voor uw privépakketten.
+Voor elk pakket dat je in de pakketrepository stopt, heb je een Nuspec nodig die het beschrijft. Het moet worden gecompileerd en opgeslagen op uw NuGet-server. Dit proces wordt [hier](https://docs.nuget.org/create/creating-and-publishing-a-package)beschreven. 
+
+Je **MyGet.org** gebruiken als NuGet-server. U deze dienst kopen, maar u is een gratis starter SKU. Bij [NuGet](https://www.nuget.org/)vind je instructies voor het installeren van je eigen NuGet-server voor je privépakketten.
 
 ## <a name="step-6-tie-it-all-together"></a>Stap 6: Bind alles bij elkaar
 
-Elke keer dat een versie QA passeert en is goedgekeurd voor implementatie, wordt het pakket gemaakt en worden nuspec en nupkg bijgewerkt en geïmplementeerd op de NuGet-server. De configuratie (stap 4 hierboven) moet ook worden bijgewerkt om akkoord te gaan met het nieuwe versienummer. Het moet vervolgens worden verzonden naar de pull-server en gecompileerd.
+Elke keer dat een versie QA passeert en is goedgekeurd voor implementatie, wordt het pakket gemaakt en worden nuspec en nupkg bijgewerkt en geïmplementeerd op de NuGet-server. De configuratie (stap 4) moet ook worden bijgewerkt om akkoord te gaan met het nieuwe versienummer. Het moet vervolgens worden verzonden naar de pull-server en gecompileerd.
 
 Vanaf dat moment is het aan de VM's die afhankelijk zijn van die configuratie om de update te trekken en te installeren. Elk van deze updates is eenvoudig - slechts een lijn of twee van PowerShell. Voor Azure DevOps zijn sommige van deze ingebouwde buildtaken die kunnen worden geketend in een build. Dit [artikel](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) geeft meer details. Deze [GitHub repo](https://github.com/Microsoft/vso-agent-tasks) beschrijft de beschikbare buildtaken.
 
 ## <a name="related-articles"></a>Verwante artikelen:
-* [Overzicht van Azure Automation DSC](automation-dsc-overview.md)
-* [Azure Automation DSC-cmdlets](https://docs.microsoft.com/powershell/module/azurerm.automation#automation)
+* [Overzicht azure automation DSC](automation-dsc-overview.md)
 * [Onboarding machines voor beheer door Azure Automation DSC](automation-dsc-onboarding.md)
 
 ## <a name="next-steps"></a>Volgende stappen

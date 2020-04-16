@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f8f21405a79a6fcf70adef9815ba06a229d6954d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886973"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393111"
 ---
 # <a name="outbound-connections-in-azure"></a>Uitgaande verbindingen in Azure
 
@@ -168,7 +168,7 @@ In de volgende tabel worden de voortoewijzingen van de SNAT-poort voor lagen van
 | 801-1,000 | 32 |
 
 >[!NOTE]
-> Bij het gebruik van Standard Load Balancer met [meerdere frontends](load-balancer-multivip-overview.md)vermenigvuldigt elk IP-adres aan de frontend het aantal beschikbare SNAT-poorten in de vorige tabel. Een backendpool van 50 VM's met 2 load balancing rules, elk met een apart frontend IP-adres, gebruikt bijvoorbeeld 2048 (2x 1024) SNAT-poorten per IP-configuratie. Zie details voor [meerdere frontends](#multife).
+> Bij het gebruik van Standard Load Balancer met [meerdere frontends](load-balancer-multivip-overview.md)vermenigvuldigt elk IP-adres aan de frontend het aantal beschikbare SNAT-poorten in de vorige tabel. Een backendpool van 50 VM's met 2 load balancing rules, elk met een apart frontend IP-adres, gebruikt bijvoorbeeld 2048 (2x 1024) SNAT-poorten per regel. Zie details voor [meerdere frontends](#multife).
 
 Houd er rekening mee dat het aantal beschikbare SNAT-poorten niet direct wordt vertaald naar het aantal stromen. Eén SNAT-poort kan worden hergebruikt voor meerdere unieke bestemmingen. Poorten worden alleen verbruikt als het nodig is om stromen uniek te maken. Raadpleeg voor ontwerp- en mitigatierichtlijnen het gedeelte over [het beheren van deze uitputtende bron](#snatexhaust) en de sectie waarin [PAT](#pat)wordt beschreven.
 

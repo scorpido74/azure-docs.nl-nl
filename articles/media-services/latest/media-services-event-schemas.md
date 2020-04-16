@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: d4a206bbddedfe9f23a943df27c6ac4b5fe17e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3733a641bc116b57556c5ad4f5750bec69e10e9b
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251347"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393736"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid-schema's voor gebeurtenissen in Media Services
 
 In dit artikel vindt u de schema's en eigenschappen van gebeurtenissen in Media Services.
 
-Zie [Gebeurtenisbron Media Services](../../event-grid/event-sources.md#azure-subscriptions)voor een lijst met voorbeeldscripts en -zelfstudies .
+Zie [Gebeurtenisbron Media Services](../../event-grid/event-schema-subscriptions.md)voor een lijst met voorbeeldscripts en -zelfstudies .
 
 ## <a name="job-related-event-types"></a>Functiegerelateerde gebeurtenistypen
 
@@ -674,4 +674,4 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 - [EventGrid .NET SDK met gebeurtenissen in Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definities van gebeurtenissen in Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Foutcodes live-gebeurtenis](live-event-error-codes.md)
+- [Foutcodes voor Live-gebeurtenissen](live-event-error-codes.md)

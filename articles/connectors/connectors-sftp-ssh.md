@@ -4,16 +4,16 @@ description: Automatiseer taken die bestanden voor een SFTP-server bewaken, make
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: estfan, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 03/7/2020
+ms.date: 04/13/2020
 tags: connectors
-ms.openlocfilehash: d4ab7425c967d3a176c0a576d0be38ece1701b8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128407"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393638"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met SSH en Azure Logic Apps
 
@@ -147,6 +147,16 @@ Als uw privésleutel in putty-indeling is, waarbij gebruik wordt gemaakt van de 
 
 1. Sla het privésleutelbestand `.pem` op met de bestandsnaamextensie.
 
+## <a name="considerations"></a>Overwegingen
+
+In deze sectie worden overwegingen beschreven die moeten worden gecontroleerd op de triggers en acties van deze connector.
+
+<a name="create-file"></a>
+
+### <a name="create-file"></a>Bestand maken
+
+Als u een bestand op uw SFTP-server wilt maken, u de **bestandsactie** SFTP-SSH Maken gebruiken. Wanneer met deze actie het bestand wordt gestart, roept de Logic Apps-service ook automatisch uw SFTP-server aan om de metagegevens van het bestand te krijgen. Als u het nieuw gemaakte bestand echter verplaatst voordat de Logic Apps-service `404` kan bellen `'A reference was made to a file or folder which does not exist'`om de metagegevens op te halen, krijgt u een foutmelding, . Als u het lezen van de metagegevens van het bestand na het maken van bestanden wilt overslaan, voert u de stappen uit om [de eigenschap **Alle bestandsmetagegevens downloaden** in te stellen op **Nee**](#file-does-not-exist).
+
 <a name="connect"></a>
 
 ## <a name="connect-to-sftp-with-ssh"></a>Verbinding maken met SFTP met SSH
@@ -211,9 +221,27 @@ Met deze trigger wordt een werkstroom voor logische apps gestart wanneer een bes
 
 <a name="get-content"></a>
 
-### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - SSH-actie: inhoud op pad krijgen
+### <a name="sftp---ssh-action-get-file-content-using-path"></a>SFTP - SSH-actie: bestandsinhoud downloaden via pad
 
-Met deze actie wordt de inhoud van een bestand op een SFTP-server opgehaald. U bijvoorbeeld de trigger uit het vorige voorbeeld toevoegen en een voorwaarde waaraan de inhoud van het bestand moet voldoen. Als de voorwaarde waar is, kan de actie waarin de inhoud wordt uitgevoerd.
+Met deze actie wordt de inhoud uit een bestand op een SFTP-server opgehaald door het bestandspad op te geven. U bijvoorbeeld de trigger uit het vorige voorbeeld toevoegen en een voorwaarde waaraan de inhoud van het bestand moet voldoen. Als de voorwaarde waar is, kan de actie waarin de inhoud wordt uitgevoerd.
+
+<a name="troubleshooting-errors"></a>
+
+## <a name="troubleshoot-errors"></a>Problemen oplossen
+
+In deze sectie worden mogelijke oplossingen voor veelvoorkomende fouten of problemen beschreven.
+
+<a name="file-does-not-exist"></a>
+
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404-fout: "Er is verwezen naar een bestand of map die niet bestaat"
+
+Deze fout kan optreden wanneer uw logica-app een nieuw bestand op uw SFTP-server maakt via de bestandsactie SFTP-SSH **Maken,** maar het nieuw gemaakte bestand wordt vervolgens onmiddellijk verplaatst voordat de Logic Apps-service de metagegevens van het bestand kan krijgen. Wanneer uw logische app de **actie Bestand maken** uitvoert, roept de Logic Apps-service ook automatisch uw SFTP-server op om de metagegevens van het bestand op te halen. Als het bestand echter wordt verplaatst, kan de Logic Apps-service `404` het bestand niet meer vinden, zodat u het foutbericht ontvangt.
+
+Als u het verplaatsen van het bestand niet voorkomen of vertragen, u het lezen van de metagegevens van het bestand na het maken van bestanden overslaan door de volgende stappen te volgen:
+
+1. Open in de actie **Bestand maken** de lijst Nieuwe **parameter toevoegen,** selecteer de eigenschap **Alle bestandsmetagegevens downloaden** en stel de waarde in op **Nee**.
+
+1. Als u deze bestandsmetagegevens later nodig hebt, u de actie **Metagegevens voor bestanden downloaden** gebruiken.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 

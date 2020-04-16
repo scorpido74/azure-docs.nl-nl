@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 348d82f704b89b97e11a09b8f88e92831901b3bf
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265062"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393464"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Concepten in Azure-gebeurtenisraster
 
@@ -35,7 +35,7 @@ Een uitgever is de gebruiker of organisatie die besluit gebeurtenissen naar gebe
 
 Een gebeurtenisbron is waar de gebeurtenis plaatsvindt. Elke gebeurtenisbron is gerelateerd aan één of meer gebeurtenistypen. Azure Storage is bijvoorbeeld de gebeurtenisbron bij door een blob gemaakte gebeurtenissen. IoT Hub is de gebeurtenisbron bij door een apparaat gemaakte gebeurtenissen. Uw toepassing is de gebeurtenisbron bij aangepaste gebeurtenissen die u definieert. Gebeurtenisbronnen zijn verantwoordelijk voor het verzenden van gebeurtenissen naar Event Grid.
 
-Zie [Gebeurtenisbronnen in Azure Event Grid](event-sources.md)voor informatie over het implementeren van een van de ondersteunde gebeurtenisrasterbronnen.
+Zie [Gebeurtenisbronnen in Azure Event Grid](overview.md#event-sources)voor informatie over het implementeren van een van de ondersteunde gebeurtenisrasterbronnen.
 
 ## <a name="topics"></a>Onderwerpen
 

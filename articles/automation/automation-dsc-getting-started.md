@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eb285d15814f1105462c414541657d43b5371d98
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 43268d5b48b44fffefa222f566c40151c85a5895
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383239"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392175"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Aan de slag met Azure Automation State Configuration
 
@@ -61,7 +61,7 @@ U maakt een eenvoudige [DSC-configuratie](/powershell/scripting/dsc/configuratio
     ```
 1. Sla het bestand op als **TestConfig.ps1**.
 
-Deze configuratie roept één bron aan in elk knooppuntblok, de [WindowsFeature-bron,](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource)die de aanwezigheid of afwezigheid van de **webserverfunctie** garandeert.
+Met deze configuratie wordt één resource aanroept in elk knooppuntblok, de [WindowsFeature-bron.](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource) Deze bron zorgt voor de aanwezigheid of afwezigheid van de **webserverfunctie.**
 
 ## <a name="importing-a-configuration-into-azure-automation"></a>Een configuratie importeren in Azure Automation
 
@@ -69,9 +69,9 @@ Vervolgens importeert u de configuratie in het automatiseringsaccount.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **Alle bronnen** en vervolgens op de naam van uw automatiseringsaccount.
-1. Selecteer op de pagina **Automatiseringsaccount** de optie **Statusconfiguratie (DSC)** onder **Configuratiebeheer**.
-1. Klik op de pagina **Statusconfiguratie (DSC)** op het tabblad **Configuraties** en klik vervolgens op **+ Toevoegen**.
-1. Blader op de pagina Configuratie `TestConfig.ps1` **importeren** naar het bestand op uw computer.
+1. Selecteer op de pagina Automatiseringsaccount de optie **Statusconfiguratie (DSC)** onder **Configuratiebeheer**.
+1. Klik op de pagina Statusconfiguratie (DSC) op het tabblad **Configuraties** en klik vervolgens op **Toevoegen**.
+1. Blader in het deelvenster Configuratie `TestConfig.ps1` importeren naar het bestand op uw computer.
 
    ![Schermafbeelding van het blad **ImportConfiguration**](./media/automation-dsc-getting-started/AddConfig.png)
 
@@ -83,13 +83,13 @@ Nadat u een configuratie hebt geïmporteerd, u deze bekijken in de Azure-portal.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **Alle bronnen** en vervolgens op de naam van uw automatiseringsaccount.
-1. Selecteer op de pagina **Automatiseringsaccount** de optie **Statusconfiguratie (DSC)** onder **Configuratiebeheer**.
-1. Klik op de pagina **Statusconfiguratie (DSC)** op het tabblad **Configuraties** en klik vervolgens op **TestConfig** (dit is de naam van de configuratie die u in de vorige procedure hebt geïmporteerd).
-1. Klik op de pagina **TestConfig Configuration** op **Configuratiebron weergeven**.
+1. Selecteer op de pagina Automatiseringsaccount de optie **Statusconfiguratie (DSC)** onder **Configuratiebeheer**.
+1. Klik op de pagina Statusconfiguratie (DSC) op het tabblad **Configuraties** en klik vervolgens op **TestConfig**. Dit is de naam van de configuratie die u in de vorige procedure hebt geïmporteerd.
+1. Klik in het deelvenster Configuratie van TestConfig op **Configuratiebron weergeven**.
 
    ![Schermafbeelding van het configuratieblad TestConfig](./media/automation-dsc-getting-started/ViewConfigSource.png)
 
-   Er wordt een **bronpagina voor testconfig-configuratie** geopend, waarop de PowerShell-code voor de configuratie wordt weergegeven.
+   Er wordt een bronvenster voor testconfig-configuratie geopend, waarbij de PowerShell-code voor de configuratie wordt weergegeven.
 
 ## <a name="compiling-a-configuration-in-azure-automation"></a>Een configuratie samenstellen in Azure Automation
 
@@ -98,9 +98,9 @@ Zie [DSC-configuraties](/powershell/scripting/dsc/configurations/configurations)
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **Alle bronnen** en vervolgens op de naam van uw automatiseringsaccount.
-1. Klik op de pagina **Automatiseringsaccount** op **Configuratie (DSC)** onder **Configuratiebeheer**.
-1. Klik op de pagina **Statusconfiguratie (DSC)** op het tabblad **Configuraties** en klik vervolgens op **TestConfig** (de naam van de eerder geïmporteerde configuratie).
-1. Klik op de pagina **TestConfig Configuration** op **Compileren**en klik vervolgens op **Ja**. Hiermee begint een compilatietaak.
+1. Klik op de pagina Automatiseringsaccount op **Configuratie (DSC)** onder **Configuratiebeheer**.
+1. Klik op de pagina Statusconfiguratie (DSC) op het tabblad **Configuraties** en klik vervolgens op **TestConfig**. Dit is de naam van de eerder geïmporteerde configuratie.
+1. Klik in het deelvenster Configuratie van TestConfig op **Compileren**en klik vervolgens op **Ja**. Hiermee begint een compilatietaak.
 
    ![Schermafbeelding van de knop TestConfig-configuratiepagina met compilering](./media/automation-dsc-getting-started/CompileConfig.png)
 
@@ -109,26 +109,26 @@ Zie [DSC-configuraties](/powershell/scripting/dsc/configurations/configurations)
 
 ## <a name="viewing-a-compilation-job"></a>Een compilatietaak weergeven
 
-Nadat u een compilatie hebt gestart, u deze weergeven in de tegel **Compilatietaken** op de pagina **Configuratie.** De tegel **Compilatietaken** toont momenteel lopende, voltooide en mislukte taken. Wanneer u een taakpagina voor compilaties opent, wordt informatie over die taak weergegeven, inclusief eventuele fouten of waarschuwingen, invoerparameters die in de configuratie worden gebruikt en compilatielogboeken.
+Nadat u een compilatie hebt gestart, u deze weergeven in de tegel **Compilatietaken** op de pagina **Configuratie.** De tegel **Compilatietaken** toont momenteel lopende, voltooide en mislukte taken. Wanneer u een compilatietaakvenster opent, worden informatie over die taak weergegeven, inclusief eventuele fouten of waarschuwingen, invoerparameters die in de configuratie worden gebruikt en compilatielogboeken.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **Alle bronnen** en vervolgens op de naam van uw automatiseringsaccount.
-1. Klik op de pagina **Automatiseringsaccount** op **Configuratie (DSC)** onder **Configuratiebeheer**.
-1. Klik op de pagina **Statusconfiguratie (DSC)** op het tabblad **Configuraties** en klik vervolgens op **TestConfig** (de naam van de eerder geïmporteerde configuratie).
-1. Selecteer **onder Compilatietaken**de compilatietaak die u wilt weergeven. Er wordt een **pagina Compilatietaak** geopend met de datum waarop de compilatietaak is gestart.
+1. Klik op de pagina Automatiseringsaccount op **Configuratie (DSC)** onder **Configuratiebeheer**.
+1. Klik op de pagina Statusconfiguratie (DSC) op het tabblad **Configuraties** en klik vervolgens op **TestConfig**. Dit is de naam van de eerder geïmporteerde configuratie.
+1. Selecteer **onder Compilatietaken**de compilatietaak die u wilt weergeven. Er wordt een deelvenster Compilatietaak geopend, gelabeld met de datum waarop de compilatietaak is gestart.
 
    ![Schermafbeelding van de pagina Compilatietaak](./media/automation-dsc-getting-started/CompilationJob.png)
 
-1. Klik op een tegel op de pagina **Compilatietaak** voor meer informatie over de taak.
+1. Klik op een tegel in het deelvenster Compilatietaak om meer informatie over de taak te bekijken.
 
 ## <a name="viewing-node-configurations"></a>Knooppuntconfiguraties weergeven
 
-Als een compilatietaak succesvol is voltooid, worden een of meer nieuwe knooppuntconfiguraties gemaakt. Een knooppuntconfiguratie is een MOF-document dat wordt geïmplementeerd op de pull-server en klaar is om te worden getrokken en toegepast door een of meer knooppunten. U de knooppuntconfiguraties in uw Automatiseringsaccount bekijken op de pagina **Statusconfiguratie (DSC).** Een knooppuntconfiguratie heeft een naam `ConfigurationName.NodeName`met het formulier .
+Als een compilatietaak succesvol is voltooid, worden een of meer nieuwe knooppuntconfiguraties gemaakt. Een knooppuntconfiguratie is een MOF-document dat wordt geïmplementeerd op de pull-server en klaar is om te worden getrokken en toegepast door een of meer knooppunten. U de knooppuntconfiguraties in uw Automatiseringsaccount bekijken op de pagina Statusconfiguratie (DSC). Een knooppuntconfiguratie heeft een naam `ConfigurationName.NodeName`met het formulier .
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **Alle bronnen** en vervolgens op de naam van uw automatiseringsaccount.
-1. Klik op het beheer van het **automatiseringsaccount** op **Configuratie (DSC)** onder **Configuratiebeheer**.
-1. Klik op de pagina **Statusconfiguratie (DSC)** op het tabblad **Gecompileerde configuraties.**
+1. Klik op de pagina Automatiseringsaccount op **Configuratie (DSC)** onder **Configuratiebeheer**.
+1. Klik op de pagina Statusconfiguratie (DSC) op het tabblad **Gecompileerde configuraties.**
 
    ![Schermafbeelding van het tabblad Gecompileerde configuraties](./media/automation-dsc-getting-started/NodeConfigs.png)
 
@@ -140,34 +140,35 @@ U Azure Automation State Configuration gebruiken om Azure VM's (zowel klassiek a
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **Alle bronnen** en vervolgens op de naam van uw automatiseringsaccount.
-1. Klik op het beheer van het **automatiseringsaccount** op **Configuratie (DSC)** onder **Configuratiebeheer**.
-1. Klik op de pagina **Statusconfiguratie (DSC)** terwijl u op het tabblad **Knooppunten** klikt op **+ Toevoegen**.
+1. Klik op de pagina Automatiseringsaccount op **Configuratie (DSC)** onder **Configuratiebeheer**.
+1. Selecteer op de pagina Statusconfiguratie (DSC) het tabblad **Knooppunten** en klik op **+ Toevoegen**.
 
    ![Schermafbeelding van de pagina DSC-knooppunten met de knop Azure VM toevoegen](./media/automation-dsc-getting-started/OnboardVM.png)
 
-1. Selecteer **op** de pagina Virtuele machines uw VM.
-1. Klik op de detailpagina **Virtuele machine** op **+ Verbinden**.
+1. Selecteer in het deelvenster Virtuele machines de virtuele machine.
+1. Klik in het detailvenster Virtuele machine op **+ Verbinden**.
 
    > [!IMPORTANT]
-   > Dit moet een Azure Resource Manager VM zijn met een [ondersteund besturingssysteem](automation-dsc-overview.md#operating-system-requirements).
+   > De VM moet een Azure Resource Manager VM zijn waarop een [ondersteund besturingssysteem wordt uitgevoerd.](automation-dsc-overview.md#operating-system-requirements)
 
-2. Selecteer **op** de pagina Registratie de naam van de knooppuntconfiguratie die u op de vm wilt toepassen in het vak **Knooppuntconfiguratie.** Het opgeven van een naam op dit punt is optioneel. U de toegewezen knooppuntconfiguratie wijzigen nadat u het knooppunt hebt ingetnen.
-   Schakel **indien nodig knooppunt opnieuw opstarten in**en klik op **OK**.
+2. Selecteer op de pagina Registratie de naam van de knooppuntconfiguratie die u op de vm moet toepassen in het veld **Knooppuntconfiguratie.** Het opgeven van een naam op dit punt is optioneel. U de toegewezen knooppuntconfiguratie wijzigen nadat u het knooppunt hebt ingetnen.
+
+3. Schakel **indien nodig knooppunt opnieuw opstarten in**en klik op **OK**.
 
    ![Schermafbeelding van het registratieblad](./media/automation-dsc-getting-started/RegisterVM.png)
 
-   De door u opgegeven knooppuntconfiguratie wordt toegepast op de VM met intervallen die zijn opgegeven door de frequentie van de **configuratiemodus**en de VM controleert op updates van de knooppuntconfiguratie met intervallen die zijn opgegeven door de **verversingsfrequentie**. Zie [Lokaal configuratiebeheer configureren](/powershell/scripting/dsc/managing-nodes/metaConfig)voor meer informatie over hoe deze waarden worden gebruikt.
+   De door u opgegeven knooppuntconfiguratie wordt toegepast op de VM met intervallen die zijn opgegeven door de waarde die is opgegeven voor **de frequentie van de configuratiemodus.** De VM controleert op updates van de knooppuntconfiguratie met intervallen die zijn opgegeven met de waarde **Frequentie vernieuwen.** Zie [Lokaal configuratiebeheer configureren](/powershell/scripting/dsc/managing-nodes/metaConfig)voor meer informatie over hoe deze waarden worden gebruikt.
 
-Azure start het proces voor het onboardingen van de VM. Wanneer deze is voltooid, wordt de vm weergegeven op het tabblad **Knooppunten** van de pagina **Statusconfiguratie (DSC)** in het automatiseringsaccount.
+Azure start het proces voor het onboardingen van de VM. Wanneer deze is voltooid, wordt de vm weergegeven op het tabblad **Knooppunten** van de pagina Statusconfiguratie (DSC) in het automatiseringsaccount.
 
 ## <a name="viewing-the-list-of-managed-nodes"></a>De lijst met beheerde knooppunten weergeven
 
-U de lijst met alle machines die zijn ingeschakeld voor beheer bekijken in uw Automatiseringsaccount op het tabblad Knooppunten van de pagina DSC.You can view the list of all machines that have been onboarded for management in your Automation account in the **Nodes** tab of the **State configuration (DSC)** page.
+U de lijst met alle machines die zijn ingeschakeld voor beheer bekijken in uw Automatiseringsaccount op het tabblad Knooppunten van de pagina DSC.You can view the list of all machines that have been onboarded for management in your Automation account in the **Nodes** tab of the State configuration (DSC) page.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **Alle bronnen** en vervolgens op de naam van uw automatiseringsaccount.
-1. Klik op het beheer van het **automatiseringsaccount** op **Configuratie (DSC)** onder **Configuratiebeheer**.
-1. Klik op de pagina **Statusconfiguratie (DSC)** op het tabblad **Knooppunten.**
+1. Klik op de pagina Automatiseringsaccount op **Configuratie (DSC)** onder **Configuratiebeheer**.
+1. Klik op de pagina Statusconfiguratie (DSC) op het tabblad **Knooppunten.**
 
 ## <a name="viewing-reports-for-managed-nodes"></a>Rapporten weergeven voor beheerde knooppunten
 
@@ -175,8 +176,8 @@ Elke keer dat azure automation state configuration een consistentiecontrole uitv
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **Alle bronnen** en vervolgens op de naam van uw automatiseringsaccount.
-1. Klik op het beheer van het **automatiseringsaccount** op **Configuratie (DSC)** onder **Configuratiebeheer**.
-1. Klik op de pagina **Statusconfiguratie (DSC)** op het tabblad **Knooppunten.** Hier ziet u het overzicht van de configuratiestatus en de details voor elk knooppunt.
+1. Klik op de pagina Automatiseringsaccount op **Configuratie (DSC)** onder **Configuratiebeheer**.
+1. Klik op de pagina Statusconfiguratie (DSC) op het tabblad **Knooppunten.** Hier ziet u het overzicht van de configuratiestatus en de details voor elk knooppunt.
 
    ![Schermafbeelding van knooppuntpagina](./media/automation-dsc-getting-started/NodesTab.png)
 
@@ -186,12 +187,15 @@ Elke keer dat azure automation state configuration een consistentiecontrole uitv
 
 Op het blad voor een afzonderlijk rapport ziet u de volgende statusgegevens voor de bijbehorende consistentiecontrole:
 
-- De rapportstatus : of het knooppunt nu 'Compatibel' is, de configuratie 'Mislukt' of het knooppunt is 'Niet compatibel' (wanneer het knooppunt in de **ApplyandMonitor-modus** staat en de machine zich niet in de gewenste staat bevindt).
+- De status van het rapport. Mogelijke waarden zijn:
+    * Compatibel - het knooppunt voldoet aan de controle.
+   * Mislukt - de configuratie is mislukt bij de controle.
+   * Niet compliant - het `ApplyandMonitor` knooppunt is in de modus en de machine is niet in de gewenste staat.
 - De begintijd voor de consistentiecontrole.
 - De totale runtime voor de consistentiecontrole.
 - Het type consistentiecontrole.
 - Eventuele fouten, waaronder de foutcode en foutmelding.
-- Alle DSC-resources die in de configuratie worden gebruikt en de status van elke resource (of het knooppunt zich in de gewenste status voor die resource bevindt) - u op elke resource klikken om meer gedetailleerde informatie voor die resource te krijgen.
+- Alle DSC-resources die in de configuratie worden gebruikt en de status van elke resource (of het knooppunt zich in de gewenste status voor die resource bevindt). U op elke resource klikken om meer gedetailleerde informatie voor die bron te krijgen.
 - De naam, het IP-adres en de configuratiemodus van het knooppunt.
 
 U ook op **Onbewerkt rapport weergeven** klikken om de werkelijke gegevens te zien die het knooppunt naar de server verzendt.
@@ -205,14 +209,14 @@ U een knooppunt toewijzen om een andere knooppuntconfiguratie te gebruiken dan d
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **Alle bronnen** en vervolgens op de naam van uw automatiseringsaccount.
-1. Klik op het beheer van het **automatiseringsaccount** op **Configuratie (DSC)** onder **Configuratiebeheer**.
-1. Klik op de pagina **Statusconfiguratie (DSC)** op het tabblad **Knooppunten.**
+1. Klik op de pagina Automatiseringsaccount op **Configuratie (DSC)** onder **Configuratiebeheer**.
+1. Klik op de pagina Statusconfiguratie (DSC) op het tabblad **Knooppunten.**
 1. Klik op het tabblad **Knooppunten** op de naam van het knooppunt dat u opnieuw wilt toewijzen.
 1. Klik op de pagina voor dat knooppunt op **Knooppuntconfiguratie toewijzen**.
 
     ![Schermafbeelding van de pagina Knooppuntdetails met de knop Knooppuntconfiguratie toewijzen](./media/automation-dsc-getting-started/AssignNode.png)
 
-1. Selecteer op de pagina **Knooppuntconfiguratie toewijzen** de knooppuntconfiguratie waaraan u het knooppunt wilt toewijzen en klik op **OK**.
+1. Selecteer op de pagina Knooppuntconfiguratie toewijzen de knooppuntconfiguratie waaraan u het knooppunt wilt toewijzen en klik op **OK**.
 
     ![Schermafbeelding van de pagina Knooppuntconfiguratie toewijzen](./media/automation-dsc-getting-started/AssignNodeConfig.png)
 
@@ -222,17 +226,17 @@ Als u niet langer wilt dat een knooppunt wordt beheerd door Azure Automation DSC
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **Alle bronnen** en vervolgens op de naam van uw automatiseringsaccount.
-1. Klik op het beheer van het **automatiseringsaccount** op **Configuratie (DSC)** onder **Configuratiebeheer**.
-1. Klik op de pagina **Statusconfiguratie (DSC)** op het tabblad **Knooppunten.**
+1. Klik op de pagina Automatiseringsaccount op **Configuratie (DSC)** onder **Configuratiebeheer**.
+1. Klik op de pagina Statusconfiguratie (DSC) op het tabblad **Knooppunten.**
 1. Klik op het tabblad **Knooppunten** op de naam van het knooppunt dat u wilt uitschrijven.
-1. Klik op de pagina voor dat knooppunt op **Uitschrijven**.
+1. Klik in het deelvenster voor dat knooppunt op **Uitschrijven.**
 
     ![Schermafbeelding van de pagina Knooppuntdetails met de knop Uitschrijven markeren](./media/automation-dsc-getting-started/UnregisterNode.png)
 
-## <a name="related-articles"></a>Verwante artikelen
+## <a name="related-articles"></a>Verwante artikelen:
 
 - [Overzicht van configuratie van Azure Automation State](automation-dsc-overview.md)
 - [Onboarding-machines voor beheer door Azure Automation State Configuration](automation-dsc-onboarding.md)
 - [Overzicht van de gewenste configuratie van Windows PowerShell](/powershell/scripting/dsc/overview/overview)
-- [CmdLets azure automation state configuration](/powershell/module/azurerm.automation/#automation)
 - [Azure Automation State Configuration Pricing Azure Automation State Configuration Pricing](https://azure.microsoft.com/pricing/details/automation/)
+- [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)

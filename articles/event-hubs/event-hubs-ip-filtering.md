@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: e0116c1cfe61b49f2d5aff46fab9cadc0e423ecc
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 18212726f0ab921a05a3b640a32754c62958d047
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310181"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393145"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>IP-firewallregels configureren voor een naamruimte van Azure Event Hubs
 Standaard zijn naamruimten van Event Hubs toegankelijk vanaf internet, zolang de aanvraag wordt geleverd met geldige verificatie en autorisatie. Met IP-firewall u deze verder beperken tot alleen een set IPv4-adressen of IPv4-adresbereiken in [CIDR-notatie (Classless Inter-Domain Routing).](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -29,6 +29,7 @@ Deze functie is handig in scenario's waarin Azure Event Hubs alleen toegankelijk
 > Vertrouwde Microsoft-services worden niet ondersteund wanneer virtuele netwerken worden geïmplementeerd.
 >
 > Veelvoorkomende Azure-scenario's die niet werken met virtuele netwerken (houd er rekening mee dat de lijst **NIET** volledig is) -
+> - Azure Monitor (diagnostische instelling)
 > - Azure Stream Analytics
 > - Integratie met Azure Event Grid
 > - Azure IoT-hubroutes

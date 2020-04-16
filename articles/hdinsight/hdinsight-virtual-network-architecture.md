@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272147"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390210"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight virtuele netwerkarchitectuur
 
@@ -30,11 +30,11 @@ Azure HDInsight-clusters hebben verschillende typen virtuele machines of knooppu
 | R Server edge-knooppunt | Het randknooppunt van R Server vertegenwoordigt het knooppunt dat u SSH in en voert toepassingen uit die vervolgens worden gecoördineerd om over de clusterbronnen te worden uitgevoerd. Een randknooppunt neemt niet deel aan gegevensanalyse binnen het cluster. Dit knooppunt host ook R Studio Server, zodat u de R-toepassing uitvoeren met een browser. |
 | Regioknooppunt | Voor het clustertype HBase wordt op het gebiedsknooppunt (ook wel gegevensknooppunt genoemd) de regioserver uitgevoerd. Regioservers serveren en beheren een deel van de gegevens die door HBase worden beheerd. Regioknooppunten kunnen worden toegevoegd of verwijderd uit het cluster om de computercapaciteit te schalen en kosten te beheren.|
 | Nimbus knooppunt | Voor het clustertype Storm biedt het Nimbus-knooppunt functionaliteit die vergelijkbaar is met het hoofdknooppunt. Het Nimbus-knooppunt wijst taken toe aan andere knooppunten in een cluster via Zookeeper, die de werking van Stormtopologieën coördineert. |
-| Supervisor knooppunt | Voor het clustertype Storm voert het supervisorknooppunt de instructies uit die door het Nimbus-knooppunt worden gegeven om de gewenste verwerking uit te voeren. |
+| Supervisor knooppunt | Voor het clustertype Storm voert het supervisorknooppunt de instructies uit die door het Nimbus-knooppunt worden gegeven om de verwerking uit te voeren. |
 
 ## <a name="resource-naming-conventions"></a>Conventies voor het benoemen van resources
 
-Gebruik volledig gekwalificeerde domeinnamen (FQDN's) bij het aanpakken van knooppunten in uw cluster. U de FQDN's voor verschillende knooppunttypen in uw cluster krijgen met behulp van de [Ambari API.](hdinsight-hadoop-manage-ambari-rest-api.md) 
+Gebruik volledig gekwalificeerde domeinnamen (FQDN's) bij het aanpakken van knooppunten in uw cluster. U de FQDN's voor verschillende knooppunttypen in uw cluster krijgen met behulp van de [Ambari API.](hdinsight-hadoop-manage-ambari-rest-api.md)
 
 Deze FQDN's zijn `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`van het formulier.
 
@@ -48,9 +48,9 @@ In het volgende diagram ziet u de plaatsing van HDInsight-knooppunten en netwerk
 
 ![Diagram van HDInsight-entiteiten die zijn gemaakt in het aangepaste VNET voor Azure](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
-De standaardresources die aanwezig zijn wanneer HDInsight wordt geïmplementeerd in een Azure Virtual Network, bevatten de clusterknooppunttypen die in de vorige tabel worden genoemd, evenals netwerkapparaten die communicatie tussen het virtuele netwerk en externe netwerken ondersteunen.
+De standaardresources in een Azure Virtual Network bevatten de clusterknooppunttypen die in de vorige tabel worden genoemd. En netwerkapparaten die de communicatie tussen het virtuele netwerk en externe netwerken ondersteunen.
 
-In de volgende tabel worden de negen clusterknooppunten samengevat die worden gemaakt wanneer HDInsight wordt geïmplementeerd in een aangepast Azure Virtual Network.
+In de volgende tabel worden de negen clusterknooppunten samengevat die zijn gemaakt wanneer HDInsight wordt geïmplementeerd in een aangepast Azure Virtual Network.
 
 | Resourcetype | Aantal aanwezig | Details |
 | --- | --- | --- |
@@ -64,7 +64,7 @@ De volgende aanwezige netwerkbronnen worden automatisch gemaakt binnen het virtu
 | Netwerkbron | Aantal aanwezig | Details |
 | --- | --- | --- |
 |Load balancer | drie | |
-|Netwerkinterfaces | Negen | Deze waarde is gebaseerd op een normaal cluster, waarbij elk knooppunt zijn eigen netwerkinterface heeft. De negen interfaces zijn voor de twee hoofdknooppunten, drie zookeeperknooppunten, twee werkknooppunten en twee gatewayknooppunten die in de vorige tabel worden genoemd. |
+|Netwerkinterfaces | Negen | Deze waarde is gebaseerd op een normaal cluster, waarbij elk knooppunt zijn eigen netwerkinterface heeft. De negen interfaces zijn voor: twee hoofdknooppunten, drie zookeeperknooppunten, twee werkknooppunten en twee gatewayknooppunten die in de vorige tabel worden genoemd. |
 |Openbare IP-adressen | twee |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>Eindpunten voor verbinding met HDInsight
@@ -73,7 +73,7 @@ U uw HDInsight-cluster op drie manieren openen:
 
 - Een HTTPS-eindpunt buiten het `CLUSTERNAME.azurehdinsight.net`virtuele netwerk bij .
 - Een SSH-eindpunt voor het direct aansluiten `CLUSTERNAME-ssh.azurehdinsight.net`op de headnode op .
-- Een HTTPS-eindpunt binnen `CLUSTERNAME-int.azurehdinsight.net`het virtuele netwerk . Let op de "-int" in deze URL. Dit eindpunt wordt opgelost tot een privé-IP in dat virtuele netwerk en is niet toegankelijk vanaf het openbare internet.
+- Een HTTPS-eindpunt binnen `CLUSTERNAME-int.azurehdinsight.net`het virtuele netwerk . Let op`-int`de " " in deze URL. Dit eindpunt wordt opgelost tot een privé-IP in dat virtuele netwerk en is niet toegankelijk vanaf het openbare internet.
 
 Deze drie eindpunten krijgen elk een load balancer toegewezen.
 

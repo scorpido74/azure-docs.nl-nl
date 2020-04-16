@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6cb9dadc107c6907f1ccb28a876270e577f10395
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d60f1101fc858e9dcaa22162be97417544e13693
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74977298"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405049"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Snelstart: een miniatuur genereren met de Computer Vision REST API en cURL
 
@@ -28,23 +28,6 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 - U moet [cURL](https://curl.haxx.se/windows) hebben.
 - U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen.
-
-## <a name="get-thumbnail-request"></a>Get Thumbnail-aanvraag
-
-Met de [methode Miniatuur genereren](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)u een miniatuur van een afbeelding genereren.
-
-U kunt het voorbeeld uitvoeren aan de hand van de volgende stappen:
-
-1. Kopieer de volgende code in een editor.
-1. Vervang `<Subscription Key>` door uw geldige abonnementssleutel.
-1. Vervang `<File>` door het pad en de bestandsnaam waar de miniatuur moet worden opgeslagen.
-1. Wijzig zo nodig aanvraag-URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.1`) in de locatie waar u de abonnementssleutels hebt verkregen.
-1. Wijzig eventueel de te analyseren afbeelding (`{\"url\":\"...`).
-1. Open een opdrachtvenster op een computer waarop cURL is geïnstalleerd.
-1. Plak de code in het venster en voer de opdracht uit.
-
->[!NOTE]
->U moet in uw REST-aanroep dezelfde locatie gebruiken waar u uw abonnementssleutels hebt verkregen. Als u bijvoorbeeld uw abonnementssleutels van 'westus' hebt verkregen, vervangt u 'westcentralus' in de onderstaande URL door 'westus'.
 
 ## <a name="create-and-run-the-sample-command"></a>Een voorbeeldopdracht maken en uitvoeren
 

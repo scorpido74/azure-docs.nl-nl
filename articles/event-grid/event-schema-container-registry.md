@@ -1,25 +1,27 @@
 ---
-title: Gebeurtenisregistergebeurtenisschema azure-gebeurtenisrastercontainer
+title: Azure Container Registry als gebeurtenisrasterbron
 description: Beschrijft de eigenschappen die worden geleverd voor containerregistergebeurtenissen met Azure Event Grid
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
-ms.topic: reference
-ms.date: 03/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60345461"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393363"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Azure Event Grid-gebeurtenisschema voor containerregister
+# <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry als gebeurtenisrasterbron
 
 In dit artikel worden de eigenschappen en het schema voor containerregistergebeurtenissen opgenomen.Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
 
-## <a name="available-event-types"></a>Beschikbare gebeurtenistypen
+## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
+
+### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
 Azure Container Registry zendt de volgende gebeurtenistypen uit:
 
@@ -30,7 +32,7 @@ Azure Container Registry zendt de volgende gebeurtenistypen uit:
 | Microsoft.ContainerRegistry.ChartGeduwd | Verhoogd wanneer een Helm-kaart wordt geduwd. |
 | Microsoft.ContainerRegistry.ChartVerwijderd | Verhoogd wanneer een Helm-diagram wordt verwijderd. |
 
-## <a name="example-event"></a>Voorbeeldgebeurtenis
+### <a name="example-event"></a>Voorbeeldgebeurtenis
 
 In het volgende voorbeeld wordt het schema van een afbeeldingsgebeurtenis weergegeven: 
 
@@ -151,7 +153,7 @@ Het schema voor een verwijderde gebeurtenis in een grafiek is vergelijkbaar met 
 }]
 ```
 
-## <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
@@ -198,6 +200,12 @@ Het aanvraagobject heeft de volgende eigenschappen:
 | host | tekenreeks | De extern toegankelijke hostnaam van de registerinstantie, zoals opgegeven door de http-hostheader bij binnenkomende aanvragen. |
 | method | tekenreeks | De aanvraagmethode die de gebeurtenis heeft gegenereerd. |
 | Useragent | tekenreeks | De header van de gebruikersagent van de aanvraag. |
+
+## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
+|Titel |Beschrijving  |
+|---------|---------|
+| [Snelstart: containerregistergebeurtenissen verzenden](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Hier ziet u hoe u Azure CLI gebruikt om containerregistergebeurtenissen te verzenden. |
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

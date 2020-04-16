@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4840b135587ae776cfb80258ce513a48a79efa43
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 7a6fc2bd5cb6f5c7ae5bef9e9741fae92518d885
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383333"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392398"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Verbindingsassets in Azure Automation
 
@@ -89,7 +89,7 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
 ```
 
-U het script gebruiken om het verbindingsitem te maken, omdat het automatisch meerdere globale modules `AzureServicePrincipal` bevat, `AzureRunAsConnection` samen met het verbindingstype om het verbindingsitem te maken. Dit is belangrijk om in gedachten te houden, want als u probeert een nieuw verbindingsitem te maken om verbinding te maken met een service of toepassing met een andere verificatiemethode, mislukt dit omdat het verbindingstype nog niet is gedefinieerd in uw Automatiseringsaccount. Zie [Integratiemodules](automation-integration-modules.md) voor meer informatie over het maken van uw eigen verbindingstype voor uw aangepaste of module in de [PowerShell-galerie](https://www.powershellgallery.com)
+U het script gebruiken om het verbindingsitem te maken, omdat het automatisch meerdere globale modules `AzureServicePrincipal` bevat, `AzureRunAsConnection` samen met het verbindingstype om het verbindingsitem te maken. Dit is belangrijk om in gedachten te houden, want als u probeert een nieuw verbindingsitem te maken om verbinding te maken met een service of toepassing met een andere verificatiemethode, mislukt dit omdat het verbindingstype nog niet is gedefinieerd in uw Automatiseringsaccount. Zie [Integratiemodules](automation-integration-modules.md)voor meer informatie over het maken van uw eigen verbindingstype voor uw aangepaste of module in de [PowerShell-galerie.](https://www.powershellgallery.com)
 
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Een verbinding gebruiken in een runbook- of DSC-configuratie
 
@@ -113,7 +113,7 @@ U voegt `Get-AutomationConnection` een activiteit toe aan een grafisch runbook d
 
 ![toevoegen aan canvas](media/automation-connections/connection-add-canvas.png)
 
-In de volgende afbeelding ziet u een voorbeeld van het gebruik van een verbinding in een grafisch runbook. Dit is hetzelfde voorbeeld hierboven voor het verifiëren van het run As-account uitvoeren met een tekstueel runbook. In dit `Constant value` voorbeeld wordt `Get RunAs Connection` de gegevensset gebruikt voor de activiteit die een verbindingsobject gebruikt voor verificatie. Hier wordt een [pijplijnkoppeling](automation-graphical-authoring-intro.md#links-and-workflow) gebruikt omdat de `ServicePrincipalCertificate` parameterset één object verwacht.
+In de volgende afbeelding ziet u een voorbeeld van het gebruik van een verbinding in een grafisch runbook. Dit is hetzelfde voorbeeld als hierboven voor het verifiëren van het run As-account met een tekstueel runbook. In dit `Constant value` voorbeeld wordt `Get RunAs Connection` de gegevensset gebruikt voor de activiteit die een verbindingsobject gebruikt voor verificatie. Hier wordt een [pijplijnkoppeling](automation-graphical-authoring-intro.md#links-and-workflow) gebruikt omdat de `ServicePrincipalCertificate` parameterset één object verwacht.
 
 ![verbindingen krijgen](media/automation-connections/automation-get-connection-object.png)
 

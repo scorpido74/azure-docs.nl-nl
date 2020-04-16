@@ -3,12 +3,12 @@ title: Veelgestelde vragen over migratie van Azure Migrate Server
 description: Antwoorden op veelgestelde vragen over het gebruik van Azure Migrate Server Migration om machines te migreren.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 507cc8088bf54b1a4f4483673ec5332efcdd36c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc78d2087dcaad2922ca6b6d9c090a8decdb6e84
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127807"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393797"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migratie van Azure Migrate Server: veelgestelde vragen
 
@@ -92,6 +92,10 @@ Het migreren van machines door ze als fysieke servers te behandelen is nuttig in
 - Als u Hyper-V- of VMware-VM's wilt migreren, u het standaardmigratieproces niet gebruiken voor [Hyper-V-](tutorial-migrate-hyper-v.md)of [VMware-migratie.](server-migrate-overview.md) Als u bijvoorbeeld geen VMware vCenter uitvoert en alleen ESXi-hosts gebruikt.
 - VM's migreren die momenteel in privéclouds worden uitgevoerd naar Azure
 - Als u VM's die worden uitgevoerd in openbare clouds zoals Amazon Web Services (AWS) of Google Cloud Platform (GCP), wilt migreren naar Azure.
+
+## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>Ik heb twee (of meer) apparaten geïmplementeerd om VM's in mijn vCenter Server te ontdekken. Wanneer ik echter de VM's probeer te migreren, zie ik alleen VM's die overeenkomen met een van de apparaten.
+
+Hoewel dit een goede use case kan zijn, ondersteunen we het momenteel niet. Het implementeren van twee (of meer) apparaten om dezelfde set VM's te ontdekken, veroorzaakt een serviceprobleem waarbij vm-eigendom tussen de twee apparaten blijft schakelen. Dit is de reden waarom u VM's ziet verschijnen en verdwijnen. In dergelijke gevallen moet u één toestel verwijderen en een harde vernieuwing doen om het probleem op te lossen.
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Heb ik VMware vCenter nodig om VMware VM's te migreren?
 Als [u VMware VM's wilt migreren](server-migrate-overview.md) met VMware-agentgebaseerde of agentloze migratie, moeten ESXi-hosts waarop VM's zich bevinden, worden beheerd door vCenter Server. Als u geen vCenterServer hebt, u VMware VM's migreren door ze te migreren als fysieke servers. [Meer informatie](migrate-support-matrix-physical-migration.md).

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7ac1b85ee44627990931cfc7b3a65f6f7a661b3f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5ac36e47efd2e121126cd740dba0818feb39f5fb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76165820"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402886"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Snelstart: Face-clientbibliotheek voor Python
 
@@ -40,12 +40,9 @@ Gebruik de Face-clientbibliotheek voor Python om:
 
 ### <a name="create-a-face-azure-resource"></a>Een Face Azure-bron maken
 
-Azure Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een bron voor Face met de [Azure-portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
+Azure Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een bron voor Face met de [Azure-portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U ook een [proefsleutel](https://azure.microsoft.com/try/cognitive-services/#decision) gratis krijgen die zeven dagen geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website.](https://azure.microsoft.com/try/cognitive-services/my-apis/)  
 
-* Ontvang een [proefsleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website.](https://azure.microsoft.com/try/cognitive-services/my-apis/)  
-* Uw bron weergeven op de [Azure-portal](https://portal.azure.com/)
-
-Nadat u een sleutel uit uw proefabonnement of resource hebt opgehaald, [maakt u een omgevingsvariabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel met de naam `FACE_SUBSCRIPTION_KEY`.
+Nadat u een sleutel uit uw proefabonnement of resource hebt opgehaald, maakt `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` [u omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor respectievelijk de sleutel en het eindpunt, met de naam en ,
  
 ### <a name="create-a-new-python-application"></a>Een nieuwe Python-toepassing maken
 
@@ -53,7 +50,7 @@ Maak bijvoorbeeld een&mdash;nieuw Python-script*quickstart-file.py.* Open deze v
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 
-Maak vervolgens variabelen voor het Azure-eindpunt en de sleutel van uw resource. Mogelijk moet u het eerste deel van`westus`het eindpunt () aanpassen aan uw abonnement.
+Maak vervolgens variabelen voor het Azure-eindpunt en de sleutel van uw resource.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_subvars)]
 
@@ -72,7 +69,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 De volgende klassen en interfaces behandelen enkele van de belangrijkste functies van de Face Python SDK.
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |[FaceClient (FaceClient)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Deze klasse vertegenwoordigt uw autorisatie om de Face-service te gebruiken en u hebt deze nodig voor alle Face-functionaliteit. U wilt deze met uw abonnementsgegevens en u gebruikt deze om exemplaren van andere klassen te produceren. |
 |[FaceOperations (FaceOperations)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Deze klasse behandelt de basisdetectie- en herkenningstaken die u uitvoeren met menselijke gezichten. |

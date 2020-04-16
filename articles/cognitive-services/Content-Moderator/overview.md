@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 570d55c8523e1c1deca3242a8841b0cc34322786
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f28f2bcf5d04c9a6354b8135bd39546b9d8b9bf3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053879"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404303"
 ---
 # <a name="what-is-azure-content-moderator"></a>Wat is Azure Content Moderator?
 
@@ -38,7 +38,7 @@ Hieronder vindt u enkele scenario's waarin een softwareontwikkelaar of -team Con
 
 ## <a name="what-it-includes"></a>Samenstelling van Content Moderator
 
-De Content Moderator-service bestaat uit verschillende webservice-API's die beschikbaar zijn via zowel REST-aanroepen als een SDK voor .NET. Hiertoe behoort ook het hulpprogramma voor menselijke beoordeling, waarmee menselijke revisoren de service kunnen verbeteren of de toezichtfunctie kunnen aanpassen.
+De Content Moderator-service bestaat uit verschillende webservice-API's die beschikbaar zijn via zowel REST-aanroepen als een SDK voor .NET. Het bevat ook de Review-tool, waarmee menselijke beoordelaars de service kunnen helpen en de moderatiefunctie kunnen verbeteren of verfijnen.
 
 ## <a name="moderation-apis"></a>Beheer-API's
 
@@ -58,18 +58,18 @@ In de volgende tabel worden de verschillende typen moderatie-API's beschreven.
 
 ## <a name="review-apis"></a>Beoordelings-API's
 
-Met de beoordelings-API's u uw moderatiepijplijn integreren met menselijke beoordelaars. Gebruik de [bewerkingen Taken,](review-api.md#jobs) [Beoordelingen](review-api.md#reviews)en [Werkstroom](review-api.md#workflows) om workflows voor mensen in de loop te maken en te automatiseren met het [hulpprogramma Controleren](#the-review-tool) (hieronder).
+Met de beoordelings-API's u uw moderatiepijplijn integreren met menselijke beoordelaars. Gebruik de [bewerkingen Taken,](review-api.md#jobs) [Beoordelingen](review-api.md#reviews)en [Werkstroom](review-api.md#workflows) om workflows voor mensen in de loop te maken en te automatiseren met het [hulpprogramma Controleren](#review-tool) (hieronder).
 
 > [!NOTE]
 > De Workflow API is nog niet beschikbaar in de .NET SDK, maar kan worden gebruikt met het REST-eindpunt.
 
 ![blokdiagram voor API's voor inhoudsmoderator](images/content-moderator-rev-api.png)
 
-## <a name="the-review-tool"></a>Het gereedschap Controleren
+## <a name="review-tool"></a>Beoordelingsprogramma
 
 De Content Moderator-service bevat ook de webgebaseerde [beoordelingstool,](Review-Tool-User-Guide/human-in-the-loop.md)die de inhoudsbeoordelingen host die menselijke moderators kunnen verwerken. De menselijke input traint de service niet, maar het gecombineerde werk van de service- en human reviewteams stelt ontwikkelaars in staat om de juiste balans te vinden tussen efficiëntie en nauwkeurigheid. De review tool biedt ook een gebruiksvriendelijke front-end voor verschillende Content Moderator bronnen.
 
-![Startpagina van het hulpprogramma voor menselijke beoordeling van Content Moderator](images/homepage.PNG)
+![Startpagina van het hulpprogramma Inhoudsmoderator](images/homepage.PNG)
 
 ## <a name="data-privacy-and-security"></a>Gegevensprivacy en -beveiliging
 

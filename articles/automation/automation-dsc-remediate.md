@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: dfe62c54bfb10d70f1dbf19daec90eec68e66431
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: cc5884e1f70bdccee4e7a113e6e3ee2d6604b50a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383156"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406088"
 ---
 # <a name="remediate-noncompliant-dsc-servers"></a>Niet-compatibele DSC-servers herstellen
 
@@ -37,7 +37,8 @@ Update-DscConfiguration -Wait -Verbose
 
 Vergelijkbare functionaliteit is momenteel niet beschikbaar voor Linux-servers.
 De enige optie is om het registratieproces te herhalen.
-Voor Azure-knooppunten u drift vanaf de Azure-portal of met cmdlets van de Az-module corrigeren. Details over dit proces worden gedocumenteerd in [Onboarding-machines voor beheer door Azure Automation State Configuration](automation-dsc-onboarding.md#onboard-a-vm-using-azure-portal).
+
+Voor Azure-knooppunten u drift vanaf de Azure-portal of met cmdlets van de Az-module corrigeren. Details over dit proces worden gedocumenteerd in [Onboarding-machines voor beheer door Azure Automation State Configuration](automation-dsc-onboarding.md#onboard-vms-by-using-the-azure-portal).
 Voor hybride knooppunten u drift corrigeren met behulp van de meegeleverde Python-scripts.
 Zie [PowerShell DSC voor Linux repo](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
 

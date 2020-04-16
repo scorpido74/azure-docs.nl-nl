@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fba4dae66b5adcea6cc33e61d8cf88946e29546e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f5987bee82dc22d3742cb5d87040930e5d2c52d
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051171"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393037"
 ---
 # <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Beleid en beperkingen voor het opnieuw instellen van selfservicewachtwoorden in Azure Active Directory
 
@@ -160,16 +160,6 @@ Download en [installeer de Azure AD PowerShell-module](https://docs.microsoft.co
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende artikelen vindt u aanvullende informatie over het opnieuw instellen van wachtwoorden via Azure AD:
+Zie [Zelfstudie: Gebruikers in staat stellen hun account te ontgrendelen of wachtwoorden opnieuw in te stellen met azure Active Directory selfservicewachtwoord opnieuw instellen.](tutorial-enable-sspr.md)
 
-* [Hoe kan ik een geslaagde implementatie van SSPR voltooien?](howto-sspr-deployment.md)
-* [Uw wachtwoord opnieuw instellen of wijzigen](../user-help/active-directory-passwords-update-your-own-password.md).
-* [Registreer voor self-service wachtwoord reset](../user-help/active-directory-passwords-reset-register.md).
-* [Hebt u een vraag over licenties?](concept-sspr-licensing.md)
-* [Welke gegevens worden gebruikt door selfservice voor wachtwoordherstel en welke gegevens moet u voor uw gebruikers invullen?](howto-sspr-authenticationdata.md)
-* [Welke verificatiemethoden zijn beschikbaar voor gebruikers?](concept-sspr-howitworks.md#authentication-methods)
-* [Wat is Wachtwoord terugschrijven en waarom is dit van belang?](howto-sspr-writeback.md)
-* [Hoe maak ik rapporten van activiteit in selfservice voor wachtwoordherstel?](howto-sspr-reporting.md)
-* [Wat zijn alle opties in selfservice voor wachtwoordherstel en wat houden ze in?](concept-sspr-howitworks.md)
-* [Ik denk dat er iets kapot is. Hoe los ik SSPR op?](active-directory-passwords-troubleshoot.md)
-* [Ik heb een vraag die nog niet is beantwoord](active-directory-passwords-faq.md)
+Als u of gebruikers problemen hebben met SSPR, [raadpleegt u Het oplossen van selfservicewachtwoordreset](active-directory-passwords-troubleshoot.md)

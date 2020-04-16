@@ -1,29 +1,27 @@
 ---
-title: Azure Event Grid-schema voor IoT-hub | Microsoft Documenten
+title: Azure IoT Hub als gebeurtenisrasterbron
 description: In dit artikel vindt u de eigenschappen en het schema voor Azure IoT Hub-gebeurtenissen. Hierworden de beschikbare gebeurtenistypen, een voorbeeldgebeurtenis en gebeurtenis-eigenschappen weergegeven.
 services: iot-hub
 documentationcenter: ''
-author: kgremban
-manager: timlt
+author: spelluru
 editor: ''
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/21/2020
-ms.author: kgremban
-ms.openlocfilehash: cfbd46ad961bd1dc914bae98e761cd83d445ff88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513028"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393328"
 ---
-# <a name="azure-event-grid-event-schema-for-iot-hub"></a>Azure Event Grid-gebeurtenisschema voor IoT-hub
-
+# <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT-hub als gebeurtenisrasterbron
 In dit artikel vindt u de eigenschappen en het schema voor Azure IoT Hub-gebeurtenissen. Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md) 
 
-Zie [IoT Hub-gebeurtenisbron](event-sources.md#iot-hub)voor een lijst met voorbeeldscripts en -zelfstudies.
+## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
 
-## <a name="available-event-types"></a>Beschikbare gebeurtenistypen
+### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
 Azure IoT Hub zendt de volgende gebeurtenistypen uit:
 
@@ -37,7 +35,7 @@ Azure IoT Hub zendt de volgende gebeurtenistypen uit:
 
 Alle apparaatgebeurtenissen, behalve telemetriegebeurtenissen van het apparaat, zijn over het algemeen beschikbaar in alle regio's die worden ondersteund door gebeurtenisraster. De gebeurtenis Telemetrie van het apparaat is in openbare preview en is beschikbaar in alle regio's behalve Oost-VS, West-VS, West-Europa, [Azure Government](../azure-government/documentation-government-welcome.md), Azure [China 21Vianet](/azure/china/china-welcome)en [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
 
-## <a name="example-event"></a>Voorbeeldgebeurtenis
+### <a name="example-event"></a>Voorbeeldgebeurtenis
 
 Het schema voor deviceconnected- en devicedisconnected-gebeurtenissen hebben dezelfde structuur. In deze voorbeeldgebeurtenis wordt het schema weergegeven van een gebeurtenis die wordt verhoogd wanneer een apparaat is verbonden met een IoT-hub:
 
@@ -205,6 +203,13 @@ Voor **door apparaten gemaakte** en door apparaten **verwijderde** IoT-hubgebeur
 | Gewenste | object | Een deel van de eigenschappen dat alleen kan worden geschreven door de back-end van de toepassing en door het apparaat kan worden gelezen. | 
 | Gemeld | object | Een deel van de eigenschappen die alleen door het apparaat kunnen worden geschreven en gelezen door de back-end van de toepassing. |
 | lastUpdated | tekenreeks | De ISO8601-tijdstempel van de laatste apparaattwin-propertyupdate. | 
+
+## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
+|Titel  |Beschrijving  |
+|---------|---------|
+| [E-mailmeldingen over gebeurtenissen van Azure IoT Hub verzenden met Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Een logische app stuurt een meldingsmail telkens wanneer een apparaat aan uw IoT-hub wordt toegevoegd. |
+| [Reageren op IoT Hub-gebeurtenissen door gebeurtenisraster te gebruiken om acties te activeren](../iot-hub/iot-hub-event-grid.md) | Overzicht van de integratie van IoT Hub met Event Grid. |
+| [Aangesloten bestelapparaat en verbinding tussen apparaten](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | Hier ziet u hoe u statusgebeurtenissen voor apparaatverbindingen ordenen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

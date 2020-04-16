@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3bbfe26f336a25ee85f2223226d6eb513ae21736
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2ef7db244057bc8b3b2e4d938b9f3bdd11c7940a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632142"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406032"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Tekstuele runbooks bewerken in Azure Automation
 
@@ -106,4 +106,4 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [Referenties](automation-credentials.md)
 * [Planningen](automation-schedules.md)
 * [Variabelen](automation-variables.md)
-
+* [Naslagdocumentatie voor PowerShell-cmdlet](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)

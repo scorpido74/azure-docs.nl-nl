@@ -1,17 +1,17 @@
 ---
 title: Azure Resource Manager-sjablonen voor Azure Cosmos DB
 description: Gebruik Azure Resource Manager-sjablonen om Azure Cosmos DB te maken en te configureren.
-author: TheovanKraay
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.author: thvankra
-ms.openlocfilehash: 7b08ca98f25b079d831033b9393effd4ee4b65e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.author: mjbrown
+ms.openlocfilehash: 1c4f1a1920d98052231eaa3a7d5c0454441c88ee
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73961858"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390881"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Resource Manager-sjablonen voor Azure Cosmos DB
 
@@ -23,6 +23,7 @@ De volgende tabellen bevatten koppelingen naar Azure Resource Manager-sjablonen 
 |---|---|
 |[Een Azure Cosmos-account, database, container maken](manage-sql-with-resource-manager.md#create-resource) | Deze sjabloon maakt een SQL (Core) API-account in twee regio's met twee containers met gedeelde databasedoorvoer en een container met speciale doorvoer. Doorvoer kan worden bijgewerkt door de sjabloon opnieuw in te dienen met een bijgewerkte waarde van de doorvoereigenschap. |
 |[Een Azure Cosmos-account, database en container maken met een opgeslagen procedure, trigger en UDF](manage-sql-with-resource-manager.md#create-sproc) | Met deze sjabloon wordt een SQL (Core) API-account gemaakt in twee regio's met een opgeslagen procedure, trigger en UDF voor een container. |
+|[Een privéeindpunt maken voor een bestaand Azure Cosmos-account](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template) |  Met deze sjabloon wordt een privéeindpunt gemaakt voor een bestaand Azure Cosmos SQL API-account in een bestaand virtueel netwerk. |
 
 ## <a name="mongodb-api"></a>MongoDB-API
 

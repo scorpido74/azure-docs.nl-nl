@@ -1,29 +1,30 @@
 ---
-title: Azure Event Grid blob storage event schema
+title: Azure Blob Storage als gebeurtenisrasterbron
 description: Beschrijft de eigenschappen die zijn geleverd voor blobopslaggebeurtenissen met Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 71aa937536f35c9af44adb5822ce7a2bb8f3a9eb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: cfc6e4790b67137b423cc90d93874d4914f81251
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755999"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393377"
 ---
-# <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid-gebeurtenisschema voor Blob-opslag
+# <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure Blob Storage als gebeurtenisrasterbron
 
-In dit artikel worden de eigenschappen en het schema voor blobopslaggebeurtenissen weergeven.Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
+In dit artikel worden de eigenschappen en het schema voor blobopslaggebeurtenissen weergeven.Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md) Het geeft u ook een lijst met snelle starts en zelfstudies om Azure Blob Storage als gebeurtenisbron te gebruiken.
 
-Zie Bron van de gebeurtenis [Opslag](event-sources.md#storage)voor een lijst met voorbeeldscripts en -zelfstudies .
 
 >[!NOTE]
 > Alleen opslagaccounts van natura **StorageV2 (v2 voor algemeen gebruik),** **BlockBlobStorage**en **BlobStorage** ondersteunen gebeurtenis-integratie. **Opslag (genral ei v1)** biedt *geen* ondersteuning voor integratie met Event Grid.
 
-## <a name="list-of-events-for-blob-rest-apis"></a>Lijst met gebeurtenissen voor Blob REST API's
+## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
+
+### <a name="list-of-events-for-blob-rest-apis"></a>Lijst met gebeurtenissen voor Blob REST API's
 
 Deze gebeurtenissen worden geactiveerd wanneer een client een blob maakt, vervangt of verwijdert door Blob REST API's aan te roepen.
 
@@ -35,7 +36,7 @@ Deze gebeurtenissen worden geactiveerd wanneer een client een blob maakt, vervan
 > [!NOTE]
 > Als u ervoor wilt zorgen dat de gebeurtenis **Microsoft.Storage.BlobCreated** alleen wordt geactiveerd wanneer `CopyBlob` `PutBlob`een `PutBlockList` Block Blob volledig is vastgelegd, filtert u de gebeurtenis voor de API-aanroepen en REST. Deze API-aanroepen activeren de gebeurtenis **Microsoft.Storage.BlobCreated** pas nadat gegevens volledig zijn toegewezen aan een Block Blob. Zie [Gebeurtenissen filteren voor gebeurtenisraster](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)voor meer informatie over het maken van een filter.
 
-## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Lijst met de gebeurtenissen voor Azure Data Lake Storage Gen 2 REST API's
+### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Lijst met de gebeurtenissen voor Azure Data Lake Storage Gen 2 REST API's
 
 Deze gebeurtenissen worden geactiveerd als u een hiërarchische naamruimte inschakelt op het opslagaccount en clients Azure Data Lake Storage Gen2 REST API's aanroepen. Zie Inleiding tot Azure Data Lake Storage Gen2 voor meer informatie over Azure Data Lake Storage [Gen2.](../storage/blobs/data-lake-storage-introduction.md)
 
@@ -53,7 +54,7 @@ Deze gebeurtenissen worden geactiveerd als u een hiërarchische naamruimte insch
 
 <a id="example-event" />
 
-## <a name="the-contents-of-an-event-response"></a>De inhoud van een gebeurtenisantwoord
+### <a name="the-contents-of-an-event-response"></a>De inhoud van een gebeurtenisantwoord
 
 Wanneer een gebeurtenis wordt geactiveerd, verzendt de gebeurtenisrasterservice gegevens over die gebeurtenis naar een endpoint van een abonnement.
 
@@ -288,7 +289,7 @@ Als het blob-opslagaccount een hiërarchische naamruimte heeft, lijken de gegeve
 }]
 ```
 
-## <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
@@ -321,6 +322,17 @@ Het gegevensobject heeft de volgende eigenschappen:
 | Recursieve | tekenreeks | `True`de verrichting op alle kindermappen uit te voeren; anders `False`. <br>Wordt alleen weergegeven voor gebeurtenissen die zijn geactiveerd op blobopslagaccounts met een hiërarchische naamruimte. |
 | Sequencer | tekenreeks | Een ondoorzichtige tekenreekswaarde die de logische volgorde van gebeurtenissen voor een bepaalde blobnaam vertegenwoordigt.  Gebruikers kunnen standaardtekenreeksvergelijking gebruiken om de relatieve volgorde van twee gebeurtenissen op dezelfde blobnaam te begrijpen. |
 | storageDiagnostics | object | Diagnostische gegevens die af en toe zijn opgenomen door de Azure Storage-service. Wanneer aanwezig, moet worden genegeerd door event consumenten. |
+
+## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
+|Titel  |Beschrijving  |
+|---------|---------|
+| [Snelstart: blob-opslaggebeurtenissen routeren naar een aangepast webeindpunt met Azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Hier ziet u hoe u Azure CLI gebruikt om blob-opslaggebeurtenissen naar een WebHook te verzenden. |
+| [Snelstart: blob-opslaggebeurtenissen routeren naar een aangepast webeindpunt met PowerShell](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Hier ziet u hoe u Azure PowerShell gebruiken om blob-opslaggebeurtenissen naar een WebHook te verzenden. |
+| [Snelstart: Blob-opslaggebeurtenissen maken en routeren met de Azure-portal](blob-event-quickstart-portal.md) | Laat zien hoe u de portal gebruikt om blob-opslaggebeurtenissen naar een WebHook te verzenden. |
+| [Azure CLI: u abonneren op gebeurtenissen voor een Blob-opslagaccount](./scripts/event-grid-cli-blob.md) | Voorbeeldscript dat zich abonneert op een gebeurtenis voor een Blob-opslagaccount. Het stuurt de gebeurtenis naar een WebHook. |
+| [PowerShell: abonneer u op gebeurtenissen voor een Blob-opslagaccount](./scripts/event-grid-powershell-blob.md) | Voorbeeldscript dat zich abonneert op een gebeurtenis voor een Blob-opslagaccount. Het stuurt de gebeurtenis naar een WebHook. |
+| [Resourcemanager-sjabloon: Blob-opslag en -abonnement maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Hiermee implementeert u een Azure Blob-opslagaccount en abonneert u zich op gebeurtenissen van die opslagaccount. Het stuurt gebeurtenissen naar een WebHook. |
+| [Overzicht: reageren op blob-opslaggebeurtenissen](../storage/blobs/storage-blob-event-overview.md) | Overzicht van de integratie van Blob-opslag met gebeurtenisraster. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

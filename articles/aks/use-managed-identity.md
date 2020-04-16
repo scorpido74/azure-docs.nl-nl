@@ -5,18 +5,18 @@ services: container-service
 author: saudas
 manager: saudas
 ms.topic: article
-ms.date: 03/10/2019
+ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 85efc6d9d203ca06c5f7566376993b4c13950788
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a150e2f197f24db5da331195290d11ad925c47e
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369970"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392641"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Beheerde identiteiten gebruiken in Azure Kubernetes Service
 
-Op dit moment vereist een AKS-cluster (Azure Kubernetes Service) (met name de Kubernetes-cloudprovider) een *serviceprincipal* om extra resources te maken, zoals load balancers en beheerde schijven in Azure. Of u moet een serviceprincipal opgeven of AKS maakt er een namens u. Serviceprincipals hebben meestal een vervaldatum. Clusters bereiken uiteindelijk een status waarin de serviceprincipal moet worden vernieuwd om het cluster te laten werken. Het beheren van serviceprincipals voegt complexiteit toe.
+Momenteel vereist een AZURE Kubernetes Service (AKS)-cluster (met name de Kubernetes-cloudprovider) en identiteit om extra bronnen te maken, zoals load balancers en beheerde schijven in Azure, deze identiteit kan een *beheerde identiteit* of een *serviceprincipal*zijn. Als u een [serviceprincipal](kubernetes-service-principal.md)gebruikt, moet u er een opgeven of maakt AKS er een namens u. Als u beheerde identiteit gebruikt, wordt dit automatisch voor u gemaakt door AKS. Clusters met serviceprincipals bereiken uiteindelijk een status waarin de serviceprincipal moet worden vernieuwd om het cluster te laten werken. Het beheren van serviceprincipals voegt complexiteit toe, daarom is het eenvoudiger om beheerde identiteiten te gebruiken. Voor zowel serviceprincipals als beheerde identiteiten gelden dezelfde machtigingsvereisten.
 
 *Beheerde identiteiten* zijn in wezen een wrapper rond service principals, en maken hun beheer eenvoudiger. Lees voor meer informatie over [beheerde identiteiten voor Azure-bronnen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 

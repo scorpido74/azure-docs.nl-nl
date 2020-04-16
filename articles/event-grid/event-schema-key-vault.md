@@ -1,24 +1,26 @@
 ---
-title: Azure Event Grid-gebeurtenisschema voor Azure Key Vault
+title: Azure Key Vault als gebeurtenisrasterbron
 description: Beschrijft de eigenschappen en het schema die zijn opgegeven voor Azure Key Vault-gebeurtenissen met Azure Event Grid
 services: event-grid
-author: msmbaldwin
+author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 10/25/2019
-ms.author: mbaldwin
-ms.openlocfilehash: fe186e2ba8f3cafeb4d186066ba65ae036302f70
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: 36b7b81a18c8725929ab5676b844e1ee319e287f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010508"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393313"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Event Grid-gebeurtenisschema voor Azure Key Vault (voorbeeld)
+# <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault als gebeurtenisrasterbron
 
 In dit artikel worden de eigenschappen en het schema voor gebeurtenissen in [Azure Key Vault](../key-vault/index.yml), momenteel in preview, weergeven. Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
 
-## <a name="available-event-types"></a>Beschikbare gebeurtenistypen
+## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
+
+### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
 Een Azure Key Vault-account genereert de volgende gebeurtenistypen:
 
@@ -34,7 +36,7 @@ Een Azure Key Vault-account genereert de volgende gebeurtenistypen:
 | Microsoft.KeyVault.SecretNearExpiry | Geheim bijna verlopen | Geactiveerd wanneer de huidige versie van een geheim bijna verloopt. (De gebeurtenis wordt 30 dagen voor de vervaldatum geactiveerd.) |
 | Microsoft.KeyVault.SecretVerlopen | Geheim verlopen | Geactiveerd wanneer een geheim is verlopen. |
 
-## <a name="event-examples"></a>Voorbeelden van gebeurtenissen
+### <a name="event-examples"></a>Voorbeelden van gebeurtenissen
 
 In het volgende voorbeeld wordt het schema voor **Microsoft.KeyVault.SecretNewVersionCreated weergegeven:**
 
@@ -61,7 +63,7 @@ In het volgende voorbeeld wordt het schema voor **Microsoft.KeyVault.SecretNewVe
 ]
 ```
 
-## <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
@@ -75,6 +77,12 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 | nbf (nbf) | getal | De niet-voordatum in seconden sinds 1970-01-01T00:00:00Z van het object dat deze gebeurtenis heeft geactiveerd |
 | Exp | getal | De vervaldatum in seconden sinds 1970-01-01T00:00:00Z van het object dat deze gebeurtenis heeft geactiveerd |
 
+## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
+|Titel  |Beschrijving  |
+|---------|---------|
+| [Key Vault-gebeurtenissen bewaken met Azure Event Grid](../key-vault/event-grid-overview.md) | Overzicht van de integratie van Key Vault met Event Grid. |
+| [Zelfstudie: Key Vault-gebeurtenissen maken en bewaken met gebeurtenisraster](../key-vault/event-grid-tutorial.md) | Meer informatie over het instellen van Event Grid-meldingen voor Key Vault. |
+
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -83,7 +91,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 * Zie Key Vault met Azure Event [Grid (preview)](../key-vault/event-grid-overview.md)voor meer informatie over key vault-integratie met gebeurtenisraster.
 * Zie [Belangrijke vaultmeldingen ontvangen en beantwoorden met Azure Event Grid (preview)](../key-vault/event-grid-tutorial.md)voor een zelfstudie over key vault-integratie met gebeurtenisraster.
 * Zie het belangrijkste voor Key Vault en Azure Automation:
-    - [Wat is Azure Key Vault?](../key-vault/key-vault-overview.md)
+    - [Wat is Azure Sleutelkluis?](../key-vault/key-vault-overview.md)
     - [Key Vault bewaken met Azure Event Grid (voorbeeld)](../key-vault/event-grid-overview.md)
     - [Meldingen van belangrijke kluizen ontvangen en beantwoorden met Azure Event Grid (voorbeeld)](../key-vault/event-grid-tutorial.md)
     - [Overzicht van Azure Automation](../automation/index.yml)

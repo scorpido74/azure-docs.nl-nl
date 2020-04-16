@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 09afca7eaf385795baf9c4a3c94232622527e357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf8ced05066923c94e80628651d8983560601d69
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501063"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406051"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafische ontwerpen in Azure Automation
 
@@ -263,7 +263,7 @@ Elke invoerparameter wordt gedefinieerd door de eigenschappen in de volgende tab
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| Name | Vereist. De naam van de parameter. De naam moet uniek zijn in het runbook. Het moet beginnen met een brief en kan alleen letters, cijfers en underscores bevatten. De naam mag geen spatie bevatten. |
+| Naam | Vereist. De naam van de parameter. De naam moet uniek zijn in het runbook. Het moet beginnen met een brief en kan alleen letters, cijfers en underscores bevatten. De naam mag geen spatie bevatten. |
 | Beschrijving |Optioneel. Beschrijving van het doel voor de invoerparameter. |
 | Type | Optioneel. Gegevenstype dat wordt verwacht voor de parameterwaarde. De Azure-portal biedt een geschikt besturingselement voor het gegevenstype voor elke parameter wanneer u om invoer vraagt. Ondersteunde parametertypen zijn String, Int32, Int64, Decimal, Boolean, DateTime en Object. Als een gegevenstype niet is geselecteerd, wordt dit standaard ingesteld op Tekenreeks.|
 | Verplicht | Optioneel. Als u aangeeft of er een waarde moet worden opgegeven voor de parameter. Als u `yes`kiest, moet een waarde worden opgegeven wanneer het runbook wordt gestart. Als u `no`kiest, is een waarde niet vereist wanneer de runbook wordt gestart en kan een standaardwaarde worden gebruikt. De runbook kan niet worden gestart als u geen waarde opgeeft voor elke verplichte parameter waarvoor geen standaardwaarde is gedefinieerd. |
@@ -441,3 +441,5 @@ U terugkeren naar de gepubliceerde versie van een runbook. Deze bewerking gooit 
 * Zie Mijn eerste grafische runbook om aan de slag te gaan met grafische [runbooks.](automation-first-runbook-graphical.md)
 * Zie [Azure Automation runbook-typen](automation-runbook-types.md)voor meer informatie over runbook-typen en hun voordelen en beperkingen.
 * Zie [Azure Run As-account configureren](automation-sec-configure-azure-runas-account.md)als u wilt weten hoe u verifiëren met het account Automation Run As.
+* Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)voor een PowerShell-cmdletreferentie.

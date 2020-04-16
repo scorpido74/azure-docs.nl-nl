@@ -10,13 +10,12 @@ ms.subservice: ''
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 64490bbd44066389186a59e851045b6becbe7acc
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632471"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408032"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Tijdelijke tabellen in de Synapsische SQL-groep
 Dit artikel bevat essentiële richtlijnen voor het gebruik van tijdelijke tabellen en belicht de principes van tijdelijke tabellen op sessieniveau. 
@@ -30,7 +29,14 @@ Tijdelijke tabellen zijn alleen zichtbaar voor de sessie waarin ze zijn gemaakt 
 
 Tijdelijke tabellen bieden een prestatievoordeel omdat hun resultaten worden geschreven naar lokale in plaats van externe opslag.
 
-## <a name="create-a-temporary-table"></a>Een tijdelijke tabel maken
+Tijdelijke tabellen zijn handig bij het verwerken van gegevens, vooral tijdens transformatie waarbij de tussenliggende resultaten van voorbijgaande aard zijn. Met SQL Analytics bestaan er tijdelijke tabellen op sessieniveau.  Ze zijn alleen zichtbaar voor de sessie waarin ze zijn gemaakt. Als zodanig worden ze automatisch gedropt wanneer die sessie zich afmeldt. 
+
+## <a name="temporary-tables-in-sql-pool"></a>Tijdelijke tabellen in SQL-groep
+
+In de SQL-poolbron bieden tijdelijke tabellen een prestatievoordeel omdat de resultaten ervan worden geschreven naar lokale in plaats van externe opslag.
+
+### <a name="create-a-temporary-table"></a>Een tijdelijke tabel maken
+
 Tijdelijke tabellen worden gemaakt door uw `#`tabelnaam vooraf te bevestigen met een .  Bijvoorbeeld:
 
 ```sql
@@ -89,7 +95,7 @@ GROUP BY
 ,        st.[has_filter]
 )
 ;
-``` 
+```
 
 > [!NOTE]
 > `CTAS`is een krachtige opdracht en heeft het extra voordeel van efficiënt in het gebruik van transactielogboekruimte. 
@@ -226,5 +232,6 @@ SQL-pool legt wel een paar beperkingen op bij het implementeren van tijdelijke t
 Ook kunnen weergaven niet worden gemaakt op tijdelijke tabellen.  Tijdelijke tabellen kunnen alleen worden gemaakt met hash of round robin distributie.  Gerepliceerde tijdelijke tabeldistributie wordt niet ondersteund. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het [tabeloverzicht](sql-data-warehouse-tables-overview.md)voor meer informatie over het ontwikkelen van tabellen.
+
+Zie de tabellen ontwerpen voor meer informatie over het ontwikkelen van tabellen in het artikel [SQL Analytics resources.](sql-data-warehouse-tables-overview.md)
 

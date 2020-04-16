@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d5eb330cd6e5d02432298a5b58e84ae7d24ee7e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e8ddcaf6a5c9ab51147e540e2426ef8c4a1fdd3a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383326"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392377"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Een waarschuwing gebruiken om een Azure Automation-runbook te activeren
 
@@ -35,8 +35,8 @@ Wanneer een waarschuwing een runbook aanroept, is de werkelijke oproep een HTTP 
 |Waarschuwing  |Beschrijving|Payload-schema  |
 |---------|---------|---------|
 |[Algemene waarschuwing](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|Het algemene waarschuwingsschema dat de verbruikservaring voor waarschuwingsmeldingen in Azure vandaag standaardiseert.|Algemeen waarschuwingslaadschema|
-|[Waarschuwing voor activiteitenlogboek](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Hiermee verzendt u een melding wanneer een nieuwe gebeurtenis in het Azure-activiteitenlogboek overeenkomt met specifieke voorwaarden. Wanneer er bijvoorbeeld `Delete VM` een bewerking plaatsvindt in **myProductionResourceGroup** of wanneer een nieuwe Azure Service Health-gebeurtenis met een **Actieve** status wordt weergegeven.| [Laadschema voor waarschuwingsgegevens van het logboek voor activiteit](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[Bijna realtime metrische waarschuwing](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Hiermee verzendt u sneller een melding dan metrische waarschuwingen wanneer een of meer statistieken op platformniveau aan bepaalde voorwaarden voldoen. Wanneer de waarde voor **CPU-percentage** op een VM bijvoorbeeld groter is dan **90**en de waarde voor **Network In** groter is dan **500 MB** gedurende de afgelopen 5 minuten.| [Bijna realtime metrische waarschuwingslaadschema](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
+|[Waarschuwing voor activiteitenlogboek](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Hiermee verzendt u een melding wanneer een nieuwe gebeurtenis in het Azure-activiteitenlogboek overeenkomt met specifieke voorwaarden. Wanneer er bijvoorbeeld `Delete VM` een bewerking plaatsvindt in **myProductionResourceGroup** of wanneer een nieuwe Azure Service Health-gebeurtenis met een Actieve status wordt weergegeven.| [Laadschema voor waarschuwingsgegevens van het logboek voor activiteit](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
+|[Bijna realtime metrische waarschuwing](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Hiermee verzendt u sneller een melding dan metrische waarschuwingen wanneer een of meer statistieken op platformniveau aan bepaalde voorwaarden voldoen. Bijvoorbeeld wanneer de waarde voor **CPU%-** op een VM groter is dan 90 en de waarde voor **Network In** groter is dan 500 MB voor de afgelopen 5 minuten.| [Bijna realtime metrische waarschuwingslaadschema](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
 Omdat de gegevens die door elk type waarschuwing worden geleverd, verschillend zijn, wordt elk waarschuwingstype anders behandeld. In de volgende sectie leert u hoe u een runbook maakt om verschillende soorten waarschuwingen te verwerken.
 
@@ -44,11 +44,11 @@ Omdat de gegevens die door elk type waarschuwing worden geleverd, verschillend z
 
 Als u Automatisering wilt gebruiken met waarschuwingen, hebt u een runbook nodig met logica die de waarschuwingJSON-payload beheert die is doorgegeven aan het runbook. Het volgende voorbeeld runbook moet worden aangeroepen vanuit een Azure-waarschuwing.
 
-Zoals beschreven in de vorige sectie, heeft elk type waarschuwing een ander schema. Het script neemt de webhook-gegevens in de `WebhookData` parameter runbook-invoer op van een waarschuwing. Vervolgens evalueert het script de JSON-payload om te bepalen welk waarschuwingstype is gebruikt.
+Zoals beschreven in de vorige sectie, heeft elk type waarschuwing een ander schema. Het script neemt de webhook-gegevens `WebhookData` over van een waarschuwing in de parameter runbook-invoer. Vervolgens evalueert het script de JSON-payload om te bepalen welk waarschuwingstype wordt gebruikt.
 
-In dit voorbeeld wordt een waarschuwing van een vm gebruikt. Het haalt de VM-gegevens uit de payload, en vervolgens gebruikt die informatie om de VM te stoppen. De verbinding moet worden ingesteld in het automatiseringsaccount waar het runbook wordt uitgevoerd. Wanneer u waarschuwingen gebruikt om runbooks te activeren, is het belangrijk om de status van de waarschuwing in het runbook dat wordt geactiveerd, te controleren. Het runbook wordt geactiveerd telkens wanneer de waarschuwing wordt weergegeven. Waarschuwingen hebben meerdere toestanden, `Activated` de `Resolved`twee meest voorkomende staten zijn en . Controleer deze status in de logica van uw runbook om ervoor te zorgen dat uw runbook niet meer dan één keer wordt uitgevoerd. Het voorbeeld in dit artikel `Activated` laat zien hoe u alleen naar waarschuwingen zoeken.
+In dit voorbeeld wordt een waarschuwing van een vm gebruikt. Het haalt de VM-gegevens uit de payload, en vervolgens gebruikt die informatie om de VM te stoppen. De verbinding moet worden ingesteld in het automatiseringsaccount waar het runbook wordt uitgevoerd. Wanneer u waarschuwingen gebruikt om runbooks te activeren, is het belangrijk om de waarschuwingsstatus in het runbook dat wordt geactiveerd te controleren. Het runbook wordt geactiveerd telkens wanneer de waarschuwing wordt gewijzigd. Waarschuwingen hebben meerdere statussen, waarbij de twee meest voorkomende worden geactiveerd en opgelost. Controleer op status in de logica van uw runbook om ervoor te zorgen dat het runbook niet meer dan één keer wordt uitgevoerd. In het voorbeeld in dit artikel ziet u hoe u naar waarschuwingen zoeken met alleen geactiveerde status.
 
-De runbook `AzureRunAsConnection` gebruikt het [Run As-account](automation-create-runas-account.md) om te verifiëren met Azure om de beheeractie tegen de VM uit te voeren.
+De runbook gebruikt `AzureRunAsConnection` het verbindingsitem [Run As-account](automation-create-runas-account.md) om te verifiëren met Azure om de beheeractie tegen de VM uit te voeren.
 
 Gebruik dit voorbeeld om een runbook te maken met de naam **Stop-AzureVmInResponsetoVMAlert**. U het PowerShell-script wijzigen en het met veel verschillende bronnen gebruiken.
 

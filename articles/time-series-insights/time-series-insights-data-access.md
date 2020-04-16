@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1c8f14bb1bca082a9d887e5d6d88aec213448c3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1735daf66483df496141a642ac6633973aa0abf0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79254350"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407549"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Gegevenstoegang verlenen tot een omgeving
 
@@ -27,8 +27,8 @@ In dit artikel worden de twee typen toegangsbeleid voor Azure Time Series Insigh
 
 ## <a name="sign-in-to-time-series-insights"></a>Aanmelden bij Inzichten in de time-serie
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-1. Zoek uw Time Series Insights-omgeving. Voer `Time Series` het **vak Zoeken** in. Selecteer **Tijdreeksomgeving** in de zoekresultaten.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Zoek uw Time Series Insights-omgeving. Voer `Time Series` het **vak Zoeken** in. Selecteer **Tijdreeksomgevingen** in de zoekresultaten.
 1. Selecteer uw Time Series Insights-omgeving in de lijst.
 
 ## <a name="grant-data-access"></a>Gegevenstoegang verlenen

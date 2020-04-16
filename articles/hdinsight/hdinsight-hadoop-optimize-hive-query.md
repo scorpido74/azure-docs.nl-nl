@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272329"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390299"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive-query's in Azure HDInsight optimaliseren
 
-In Azure HDInsight zijn er verschillende clustertypen en -technologieën waarmee Apache Hive-query's kunnen worden uitgevoerd. Wanneer u uw HDInsight-cluster maakt, kiest u het juiste clustertype om de prestaties voor uw werkbelastingbehoeften te optimaliseren.
+In Azure HDInsight zijn er verschillende clustertypen en -technologieën waarmee Apache Hive-query's kunnen worden uitgevoerd. Kies het juiste clustertype om de prestaties voor uw werkbelastingbehoeften te optimaliseren.
 
-Kies bijvoorbeeld **het** clustertype Interactieve query om te optimaliseren voor ad hoc, interactieve query's. Kies het clustertype Apache **Hadoop** om te optimaliseren voor Hive-query's die als batchproces worden gebruikt. **Spark-** en **HBase-clustertypen** kunnen ook Hive-query's uitvoeren. Zie [Wat is Apache Hive en HiveQL op Azure HDInsight voor](hadoop/hdinsight-use-hive.md)meer informatie over het uitvoeren van Hive-query's op verschillende HDInsight-clustertypen.
+Kies bijvoorbeeld **het** clustertype Interactieve `ad hoc`query om te optimaliseren voor interactieve query's. Kies het clustertype Apache **Hadoop** om te optimaliseren voor Hive-query's die als batchproces worden gebruikt. **Spark-** en **HBase-clustertypen** kunnen ook Hive-query's uitvoeren. Zie [Wat is Apache Hive en HiveQL op Azure HDInsight voor](hadoop/hdinsight-use-hive.md)meer informatie over het uitvoeren van Hive-query's op verschillende HDInsight-clustertypen.
 
 HDInsight-clusters van het Hadoop-clustertype zijn standaard niet geoptimaliseerd voor prestaties. In dit artikel worden enkele van de meest voorkomende methoden voor prestatieoptimalisatie van Hive beschreven die u op uw query's toepassen.
 
@@ -27,7 +27,7 @@ HDInsight-clusters van het Hadoop-clustertype zijn standaard niet geoptimaliseer
 
 Door het aantal werknemersknooppunten in een HDInsight-cluster te verhogen, kan het werk meer mappers en reducers gebruiken om parallel te worden uitgevoerd. Er zijn twee manieren waarop u de schaal vergroten in HDInsight:
 
-* Op het moment dat u een cluster maakt, u het aantal werknemersknooppunten opgeven met behulp van de Azure-portal, Azure PowerShell of de commandline-interface.  Zie [HDInsight-clusters maken](hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie. In de volgende schermafbeelding wordt de configuratie van het werknemersknooppunt op de Azure-portal weergegeven:
+* Wanneer u een cluster maakt, u het aantal werknemersknooppunten opgeven met behulp van de Azure-portal, Azure PowerShell of de opdrachtregelinterface.  Zie [HDInsight-clusters maken](hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie. In de volgende schermafbeelding wordt de configuratie van het werknemersknooppunt op de Azure-portal weergegeven:
   
     ![Knooppunten voor azure-portalclustergrootte](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
@@ -45,10 +45,10 @@ Zie [Scale HDInsight clusters](hdinsight-scaling-best-practices.md) voor meer in
 
 Tez is sneller omdat:
 
-* **Gerichte Acyclische grafiek (DAG) uitvoeren als één taak in de MapReduce-engine**. De DAG vereist dat elke set mappers wordt gevolgd door één set reducers. Dit zorgt ervoor dat meerdere MapReduce-taken worden afgesponnen voor elke Hive-query. Tez heeft niet zo'n beperking en kan complexe DAG verwerken als één taak waardoor de overhead voor het opstarten van banen wordt geminimaliseerd.
+* **Gerichte Acyclische grafiek (DAG) uitvoeren als één taak in de MapReduce-engine**. De DAG vereist dat elke set mappers wordt gevolgd door één set reducers. Deze vereiste zorgt ervoor dat meerdere MapReduce-taken worden afgesponnen voor elke Hive-query. Tez heeft niet zo'n beperking en kan complexe DAG verwerken als één taak die de overhead voor het opstarten van een taak minimaliseert.
 * **Vermijdt onnodige schrijfbewerkingen.** Meerdere taken worden gebruikt om dezelfde Hive-query te verwerken in de MapReduce-engine. De uitvoer van elke mapReduce-taak wordt naar HDFS geschreven voor tussenliggende gegevens. Omdat Tez het aantal taken voor elke Hive-query minimaliseert, kan het onnodige schrijfbewerkingen voorkomen.
 * **Minimaliseert opstartvertragingen.** Tez is beter in staat om opstartvertraging te minimaliseren door het aantal mappers dat het moet starten te verminderen en ook de optimalisatie te verbeteren.
-* **Hergebruikt containers.** Waar mogelijk kan Tez containers hergebruiken om ervoor te zorgen dat de latentie door het opstarten van containers wordt verminderd.
+* **Hergebruikt containers.** Waar mogelijk zal Tez containers hergebruiken om ervoor te zorgen dat de latentie van het opstarten van containers wordt verminderd.
 * **Continue optimalisatie technieken**. Traditioneel optimalisatie werd gedaan tijdens de compilatie fase. Er is echter meer informatie over de ingangen beschikbaar die een betere optimalisatie tijdens runtime mogelijk maken. Tez maakt gebruik van continue optimalisatietechnieken waarmee het plan verder in de runtimefase kan worden geoptimaliseerd.
 
 Zie [Apache TEZ](https://tez.apache.org/)voor meer informatie over deze concepten.
@@ -69,7 +69,7 @@ Hive partitionering wordt geïmplementeerd door de ruwe gegevens te reorganisere
 
 Enkele overwegingen voor het partitioneren:
 
-* **Niet onder partitie** - Partitioneren op kolommen met slechts een paar waarden kan leiden tot weinig partities. Als u bijvoorbeeld slechts twee partities op geslacht maakt die moeten worden gemaakt (mannelijk en vrouwelijk), waardoor de latentie slechts met maximaal de helft wordt verminderd.
+* **Niet onder partitie** - Partitioneren op kolommen met slechts een paar waarden kan leiden tot weinig partities. Als u bijvoorbeeld op geslacht partitioneert, worden er slechts twee partities gemaakt (mannelijk en vrouwelijk), waardoor de latentie met maximaal de helft wordt verminderd.
 * **Niet over partitie -** Aan de andere kant veroorzaakt het maken van een partitie op een kolom met een unieke waarde (bijvoorbeeld userid) meerdere partities. Over partitie veroorzaakt veel stress op het cluster naamknooppunt als het heeft om het grote aantal mappen te behandelen.
 * **Vermijd gegevensscheefheid** - Kies uw partitioneringssleutel verstandig, zodat alle partities gelijkmatig groot zijn. Partitionering in *de kolom Status* kan bijvoorbeeld de verdeling van gegevens scheeftrekken. Aangezien de staat Californië heeft een bevolking bijna 30x die van Vermont, de partitie grootte is potentieel scheef en de prestaties kunnen enorm variëren.
 
@@ -198,5 +198,5 @@ Er zijn meer optimalisatiemethoden die u overwegen, bijvoorbeeld:
 In dit artikel hebt u verschillende algemene methoden voor het optimaliseren van hivequery's geleerd. Zie voor meer informatie de volgende artikelen:
 
 * [Apache Hive gebruiken in HDInsight](hadoop/hdinsight-use-hive.md)
-* [Gegevens over vluchtvertraging analyseren met behulp van Interactieve Query in HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [Gegevens over vluchtvertraging analyseren met behulp van Interactieve Query in HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Twitter-gegevens analyseren met Apache Hive in HDInsight](hdinsight-analyze-twitter-data-linux.md)

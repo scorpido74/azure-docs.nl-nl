@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
-ms.openlocfilehash: 88e42fd9626276f6c77b46b33c138407f91d06ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b7fff913c177703f959bfa103c8e310d01059e2
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75650758"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391828"
 ---
 # <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Aangepast artefact voor roldefinitie in Azure Managed Applications
 
@@ -20,7 +20,7 @@ In dit artikel vindt u een overzicht van het aangepaste artefact voor roldefinit
 
 ## <a name="custom-role-definition-artifact"></a>Aangepast artefact voor roldefinitie
 
-U moet de aangepaste roldefinitieartefact customRoleDefinition.json een naam geven. Plaats het op hetzelfde niveau als createUiDefinition.json en mainTemplate.json in het .zip-pakket dat een beheerde toepassingsdefinitie maakt. Zie [Een beheerde toepassingsdefinitie publiceren](publish-managed-app-definition-quickstart.md) voor meer informatie over het maken van het .zip-pakket en het publiceren van een beheerde toepassingsdefinitie.
+U moet de aangepaste roldefinitieartefact customRoleDefinition.json een naam geven. Plaats het op hetzelfde niveau als createUiDefinition.json en mainTemplate.json in het .zip-pakket dat een beheerde toepassingsdefinitie maakt. Zie [Een beheerde toepassingsdefinitie publiceren](publish-service-catalog-app.md) voor meer informatie over het maken van het .zip-pakket en het publiceren van een beheerde toepassingsdefinitie.
 
 ## <a name="custom-role-definition-schema"></a>Schema voor aangepaste roldefinitie
 

@@ -3,19 +3,19 @@ title: Wat is de Speech-service?
 titleSuffix: Azure Cognitive Services
 description: De spraakservice is de eenwording van spraak-naar-tekst- en tekst-naar-spraak- en spraakvertaling in één Azure-abonnement. Voeg spraak toe aan uw toepassingen, hulpprogramma's en apparaten met de SpraakSDK, Spraakapparaten SDK of REST API's.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
 ms.date: 03/12/2020
-ms.author: dapine
-ms.openlocfilehash: 353e66c2d4ebb288244866b12a32e9acb7c765e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 464e21caf3105b12f0fbf44dc2aa3674a252d3c6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371558"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81401028"
 ---
 # <a name="what-is-the-speech-service"></a>Wat is de Speech-service?
 
@@ -35,7 +35,7 @@ Deze functies vormen de Spraakservice. Gebruik de koppelingen in deze tabel voor
 | | [Aangepaste spraakmodellen maken](#customize-your-speech-experience) | Als u spraak-naar-tekst gebruikt voor herkenning en transcriptie in een unieke omgeving, u aangepaste akoestische, taal- en uitspraakmodellen maken en trainen om omgevingsgeluid of branchespecifieke woordenschat aan te pakken. | Nee | [Ja](https://westus.cris.ai/swagger/ui/index) |
 | [Text-to-speech](text-to-speech.md) | Tekst naar spraak | Tekst-naar-spraak zet invoertekst om in menselijke gesynthetiseerde spraak met behulp van [Speech Synthesis Markup Language (SSML).](speech-synthesis-markup.md) Kies uit standaardstemmen en neurale stemmen (zie [Taalondersteuning).](language-support.md) | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Aangepaste stemmen maken](#customize-your-speech-experience) | Maak aangepaste spraaklettertypen die uniek zijn voor uw merk of product. | Nee | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Spraakomzetting](speech-translation.md) | Spraakomzetting | Spraakvertaling maakt real-time, meertalige vertaling van spraak naar uw toepassingen, hulpprogramma's en apparaten mogelijk. Gebruik deze service voor spraak-naar-spraak en spraak-naar-tekst vertaling. | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Nee |
+| [Spraakvertaling](speech-translation.md) | Spraakomzetting | Spraakvertaling maakt real-time, meertalige vertaling van spraak naar uw toepassingen, hulpprogramma's en apparaten mogelijk. Gebruik deze service voor spraak-naar-spraak en spraak-naar-tekst vertaling. | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Nee |
 | [Spraakassistenten](voice-assistants.md) | Spraakassistenten | Spraakassistenten die de Spraakservice gebruiken, stellen ontwikkelaars in staat om natuurlijke, mensachtige conversationele interfaces te maken voor hun toepassingen en ervaringen. De spraakassistentservice biedt een snelle, betrouwbare interactie tussen een apparaat en een assistent-implementatie die gebruikmaakt van het Direct Line Speech-kanaal van het Bot Framework of de geïntegreerde aangepaste opdrachtenservice (Preview) voor het voltooien van taken. | [Ja](voice-assistants.md) | Nee |
 
 

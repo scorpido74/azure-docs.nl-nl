@@ -6,18 +6,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6bd360b2075c337e3ed3d69d84368d16571a9335
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcef0574e16e0b4d28755716c32670b00c65af14
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536051"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406094"
 ---
 # <a name="my-first-graphical-runbook"></a>Mijn eerste grafische runbook
 
 > [!div class="op_single_selector"]
 > * [Grafisch](automation-first-runbook-graphical.md)
-> * [Powershell](automation-first-runbook-textual-powershell.md)
+> * [PowerShell](automation-first-runbook-textual-powershell.md)
 > * [PowerShell-werkstroom](automation-first-runbook-textual.md)
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
@@ -100,7 +100,7 @@ Het runbook dat u hebt gemaakt, bevindt zich nog steeds in de conceptmodus. Het 
 1. Klik op **Alle logboeken** om het deelvenster Streams voor de runbooktaak te openen. U moet `Hello World` alleen zien in de uitvoerstroom. 
 
     Houd er rekening mee dat in het deelvenster Streams andere streams voor een runbook-taak kunnen worden weergegeven, zoals Verbose- en Foutstreams, als de runbook naar deze streams schrijft.
-1. Sluit het deelvenster Streams en het deelvenster Taak om terug te keren naar de pagina **MyFirstRunbook-Graphical.**
+1. Sluit het deelvenster Streams en het deelvenster Taak om terug te keren naar de pagina MyFirstRunbook-Graphical.
 1. Als u alle taken voor het runbook wilt weergeven, selecteert u **Taken** onder **Resources**. Op de pagina Vacatures worden alle taken weergegeven die door uw runbook zijn gemaakt. U zou slechts één taak moeten zien vermeld, aangezien u de baan slechts eenmaal hebt uitgevoerd.
 1. Klik op de taaknaam om hetzelfde taakvenster te openen dat u hebt bekeken toen u het runbook begon. Gebruik dit deelvenster om de details weer te geven van een taak die voor het runbook is gemaakt.
 
@@ -126,7 +126,7 @@ Nu u een variabele hebt om de abonnements-ID vast te houden, u de runbook config
 >[!NOTE]
 >Voor `Add-AzAccount` PowerShell-runbooks `Add-AzureRMAccount` en zijn `Connect-AzAccount`aliassen voor . Houd er rekening mee dat deze aliassen niet beschikbaar zijn voor uw grafische runbooks. Een grafisch runbook `Connect-AzAccount`kan alleen zichzelf gebruiken.
 
-1. Navigeer naar uw runbook en selecteer **Bewerken** op de pagina **MyFirstRunbook-Graphical.**
+1. Navigeer naar uw runbook en selecteer **Bewerken** op de pagina MyFirstRunbook-Graphical.
 1. Je hebt de `Write Hello World to output` ingang niet meer nodig. Klik op de ellips en selecteer **Verwijderen**.
 1. Vouw in het besturingselement Bibliotheek **ASSETS**uit , vervolgens **Verbindingen**. Toevoegen `AzureRunAsConnection` aan het canvas door **Toevoegen aan canvas te**selecteren .
 1. Hernoem `AzureRunAsConnection` `Get Run As Connection`de naam naar .
@@ -185,7 +185,7 @@ Nu moet u `Start-AzVM` een activiteit toevoegen om een virtuele machine te start
 
 Uw runbook start momenteel de VM in de `Start-AzVM` resourcegroep die u voor de cmdlet hebt opgegeven. Het runbook is handiger als u zowel de naam als de resourcegroep opgeeft wanneer het runbook wordt gestart. Laten we invoerparameters toevoegen aan het runbook om die functionaliteit te bieden.
 
-1. Open de grafische editor door te klikken op **Bewerken** in het deelvenster **MyFirstRunbook-Grafisch.**
+1. Open de grafische editor door op **Bewerken** te klikken op de pagina MyFirstRunbook-Graphical.
 1. Selecteer **Invoer en uitvoer** en voeg vervolgens invoer **toe** om het deelvenster Parameter van runbook-invoer te openen.
 1. Voer de volgende instellingen in de opgegeven velden uit en klik op **OK**.
    * **Naam** -- `VMName`opgeven .
@@ -243,7 +243,7 @@ U nu het runbook wijzigen, zodat deze alleen probeert de VM te starten als deze 
 1. Klik voor `Write-Output` het eerste besturingselement op **Parameters** en wijzig de **labelwaarde** **in VM Gestart melden**.
 1. Wijzig **voor InputObject** **gegevensbron** in **PowerShell-expressie** `$VMName successfully started.`en typ de expressie .
 1. Klik op `Write-Output` het tweede besturingselement op **Parameters** en wijzig de **labelwaarde** **om VM Start melden mislukt**.
-1. Wijzig **voor InputObject** **gegevensbron** in **PowerShell-expressie** `$VMName could not start.`en typ de expressie .
+1. Wijzig **voor InputObject** **gegevensbron** in **PowerShell-expressie** `$VMName could not start`en typ de expressie .
 1. Koppelingen maken `Start-AzVM` `Notify VM Started` van `Notify VM Start Failed`en .
 1. Selecteer de `Notify VM Started` koppeling naar en wijzig **De voorwaarde Toepassen** in true.
 1. Typ **voor**de `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true`expressie Voorwaarde . Dit `Write-Output` besturingselement wordt nu alleen uitgevoerd als de VM wordt gestart.
@@ -259,3 +259,5 @@ U nu het runbook wijzigen, zodat deze alleen probeert de VM te starten als deze 
 * Zie [Grafische ontwerpen in Azure Automation](automation-graphical-authoring-intro.md)voor meer informatie over grafisch ontwerpen.
 * Zie [Mijn eerste PowerShell-runbook](automation-first-runbook-textual-powershell.md)om aan de slag te gaan met PowerShell-runbooks.
 * Zie [Mijn eerste PowerShell-werkstroomrunboek](automation-first-runbook-textual.md)om aan de slag te gaan met PowerShell-werkstroomboeken.
+* Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)voor een PowerShell-cmdletreferentie.

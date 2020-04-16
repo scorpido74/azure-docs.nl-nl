@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/26/2020
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cca5680d307874a565dec47f643bf9320192c270
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 35988f10703967bd5986015ccb0fb480679b94e9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656103"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404751"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-javascript"></a>Snelstart: gedrukte en handgeschreven tekst extraheren met de Computer Vision 2.0 en 2.1 REST API en JavaScript
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Snelstart: gedrukte en handgeschreven tekst extraheren met behulp van de Computer Vision REST API en JavaScript
 
 In deze quickstart haalt u gedrukte en/of handgeschreven tekst uit een afbeelding met behulp van de Computer Vision REST API. Met de methoden [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) and Read [Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) u tekst in een afbeelding detecteren en herkende tekens extraheren in een machineleesbare tekenstroom. De API bepaalt welk herkenningsmodel voor elke regel tekst moet worden gebruikt, zodat deze afbeeldingen ondersteunt met zowel afgedrukte als handgeschreven tekst.
 
-In vergelijking met Computer Vision 2.0 en 2.1 biedt de Computer Vision 3.0 Public Preview:
+Deze functionaliteit is beschikbaar in zowel een v2.1 API als een v3.0 Public Preview API. Vergeleken met v2.1 heeft de 3.0 API:
 
-* nog nauwkeuriger
-* een gewijzigde uitvoerindeling
-* betrouwbaarheidsscore voor woorden
-* ondersteuning van zowel de Spaanse als de Engelse taal met de aanvullende taalparameter
+* Verbeterde nauwkeurigheid
+* Betrouwbaarheidsscores voor woorden
+* Ondersteuning voor zowel Spaans als `language` Engels met de extra parameter
+* Een andere uitvoerindeling
+
+Selecteer het tabblad hieronder voor de versie die u gebruikt.
 
 #### <a name="version-2"></a>[Versie 2](#tab/version-2)
 
@@ -784,7 +786,9 @@ Een geslaagd antwoord wordt geretourneerd in JSON-indeling. De voorbeeldwebpagin
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Een JavaScript-toepassing verkennen die Computer Vision gebruikt om optische tekenherkenning (OCR) uit te voeren; slim bijgesneden miniaturen maken; plus visuele kenmerken, inclusief gezichten, in een afbeelding detecteren, categoriseren, labelen en beschrijven. Als u snel wilt experimenteren met de Computer Vision-API, gebruikt u de [Open API-testconsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Verken een JavaScript-toepassing die Computer Vision gebruikt om ocr (optical character recognition) uit te voeren; slim bijgesneden miniaturen maken; en visuele functies in afbeeldingen detecteren, categoriseren, taggen en beschrijven. 
 
 > [!div class="nextstepaction"]
 > [Zelfstudie voor de Computer Vision-API met JavaScript](../Tutorials/javascript-tutorial.md)
+
+* Als u snel wilt experimenteren met de Computer Vision-API, gebruikt u de [Open API-testconsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).

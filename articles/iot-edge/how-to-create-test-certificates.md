@@ -4,16 +4,16 @@ description: Maak testcertificaten en leer hoe u ze installeren op een Azure IoT
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/26/2020
+ms.date: 04/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5afb9b7a6ba1ffb99df064c9f92780dc820b2e8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 364846f6cef196f6cefa7872af48f262b387db4f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535983"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393823"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Democertificaten maken om de functies van IoT Edge-apparaten te testen
 
@@ -247,8 +247,9 @@ New-CACertsEdgeDeviceIdentity "<name>"
 
 De naam die u aan deze opdracht doorgeeft, is de apparaat-id voor het IoT Edge-apparaat in IoT Hub.
 
-Met de opdracht Nieuwe apparaatidentiteit worden verschillende certificaat- en sleutelbestanden gemaakt, waaronder twee die u gebruikt bij het maken van een afzonderlijke inschrijving in DPS en het installeren van de runtime van IoT Edge:
+Met de opdracht Nieuwe apparaatidentiteit worden verschillende certificaat- en sleutelbestanden gemaakt, waaronder drie die u gebruikt bij het maken van een afzonderlijke inschrijving in DPS en het installeren van de runtime van IoT Edge:
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
 
@@ -262,8 +263,9 @@ Maak het iE-identiteitscertificaat en privésleutel van het IoT Edge-apparaat me
 
 De naam die u aan deze opdracht doorgeeft, is de apparaat-id voor het IoT Edge-apparaat in IoT Hub.
 
-Het script maakt verschillende certificaat- en sleutelbestanden, waaronder twee die u gebruikt bij het maken van een afzonderlijke inschrijving in DPS en het installeren van de Runtime van IoT Edge:
+Het script maakt verschillende certificaat- en sleutelbestanden, waaronder drie die u gebruikt bij het maken van een afzonderlijke inschrijving in DPS en het installeren van de Runtime van IoT Edge:
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>/private/iot-edge-device-identity-<name>.key.pem`
 

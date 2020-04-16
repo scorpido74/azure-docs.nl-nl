@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3145c7db064432e443aae5dcd503905b865ffe46
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: f7558745442ac26fc33a063ff66fe170d08487ac
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383253"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392088"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>DSC-configuraties compileren in Azure-automatiseringsstatusconfiguratie
 
@@ -36,7 +36,7 @@ U azure resource beheersjablonen ook gebruiken met Azure Desired State Configura
 
 ### <a name="portal"></a>Portal
 
-1. Klik in uw Automatiseringsaccount op **Configuratie (DSC)** op Statusconfiguratie .
+1. Klik in uw automatiseringsaccount op **Configuratie (DSC)** op Statusconfiguratie .
 1. Klik op het tabblad **Configuraties** en klik vervolgens op de configuratienaam die u wilt compileren.
 1. Klik **op Compileren**.
 1. Als de configuratie geen parameters heeft, wordt u gevraagd om te bevestigen of u deze wilt compileren. Als de configuratie parameters heeft, wordt het blad **Configuratie compileren** geopend, zodat u parameterwaarden opgeven.
@@ -130,12 +130,12 @@ Met de functie **Samengestelde resources** u DSC-configuraties gebruiken als gen
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>ConfigurationData beheren bij het samenstellen van configuraties in Azure Automation
 
-**ConfigurationData** stelt u in staat om structurele configuratie te scheiden van elke omgevingsspecifieke configuratie tijdens het gebruik van PowerShell DSC. Zie ["Wat" scheiden van "Waar" in PowerShell DSC voor](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)meer informatie.
+`ConfigurationData`is een ingebouwde DSC-parameter waarmee u structurele configuratie scheiden van elke omgevingsspecifieke configuratie tijdens het gebruik van PowerShell DSC. Zie ["Wat" scheiden van "Waar" in PowerShell DSC voor](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)meer informatie.
 
 > [!NOTE]
-> Bij het opstellen in Azure Automation State Configuration u **ConfigurationData** gebruiken in Azure PowerShell, maar niet in de Azure-portal.
+> Bij het opstellen in Azure Automation `ConfigurationData` State Configuration u gebruik maken in Azure PowerShell, maar niet in de Azure-portal.
 
-In het volgende voorbeeld maakt DSC-configuratie gebruik **van ConfigurationData** via de `$ConfigurationData` trefwoorden en `$AllNodes` trefwoorden. Hiervoor heb je ook de [xWebAdministration module](https://www.powershellgallery.com/packages/xWebAdministration/) nodig.
+Het volgende voorbeeld dat `ConfigurationData` DSC-configuratie wordt gebruikt via de `$ConfigurationData` trefwoorden en `$AllNodes` trefwoorden. Hiervoor heb je ook de [xWebAdministration module](https://www.powershellgallery.com/packages/xWebAdministration/) nodig.
 
 ```powershell
 Configuration ConfigurationDataSample
@@ -198,7 +198,7 @@ DSC-configuraties in Azure Automation kunnen verwijzen `Get-AutomationPSCredenti
 
 Om referenties veilig te houden in knooppuntconfiguraties (MOF-configuratiedocumenten) moet de referenties in het MOF-bestand voor knooppuntconfiguratie worden versleuteld. Momenteel moet u PowerShell DSC toestemming geven om referenties uit te geven in platte tekst tijdens de MOF-generatie van knooppuntconfiguratie. PowerShell DSC is zich er niet van bewust dat Azure Automation het hele MOF-bestand na de productie versleutelt via een compilatietaak.
 
-U PowerShell DSC vertellen dat het goed is dat referenties in platte tekst worden uitgevoerd in de gegenereerde knooppuntconfiguratie-MOFs met behulp van configuratiegegevens. U moet `PSDscAllowPlainTextPassword = $true` via **ConfigurationData** voor elke knooppuntbloknaam die in de DSC-configuratie wordt weergegeven en referenties gebruikt, doorgeven.
+U PowerShell DSC vertellen dat het goed is dat referenties in platte tekst worden uitgevoerd in de gegenereerde knooppuntconfiguratie-MOFs met behulp van configuratiegegevens. U moet `PSDscAllowPlainTextPassword = $true` `ConfigurationData` doorgeven voor elke knooppuntbloknaam die in de DSC-configuratie wordt weergegeven en referenties gebruikt.
 
 In het volgende voorbeeld wordt een DSC-configuratie weergegeven die gebruikmaakt van een automatiseringsreferentie-asset.
 
@@ -262,9 +262,9 @@ U dit proces uitvoeren vanaf een werkstation voor ontwikkelaars of binnen een bu
 
 ### <a name="import-a-node-configuration-in-the-azure-portal"></a>Een knooppuntconfiguratie importeren in de Azure-portal
 
-1. Klik in uw Automatiseringsaccount op **Configuratie (DSC)** onder **Configuratiebeheer**.
+1. Klik in uw automatiseringsaccount op **Configuratie (DSC)** onder **Configuratiebeheer**.
 1. Klik op de pagina Statusconfiguratie (DSC) op het tabblad **Configuraties** en klik vervolgens op **Toevoegen**.
-1. Klik op de pagina Importeren op het mappictogram naast het tekstvak **Knooppuntconfiguratiebestand** om te zoeken naar een knooppuntconfiguratiebestand (MOF) op uw lokale computer.
+1. Klik op de pagina Importeren op het mappictogram naast het veld **Knooppuntconfiguratiebestand** om te zoeken naar een MOF-bestand voor knooppuntconfiguratie op uw lokale computer.
 
    ![Zoeken naar lokaal bestand](./media/automation-dsc-compile/import-browse.png)
 

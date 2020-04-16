@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dc87628d8b47435012c3d20ec2e72ac186983555
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 856bd6c2a3546a438293e89a0b576e1392d9c6a5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189324"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407281"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Aan de slag met aangepaste beleidsregels in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ ms.locfileid: "78189324"
 
 ## <a name="add-signing-and-encryption-keys"></a>Ondertekenings- en versleutelingssleutels toevoegen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram **Directory + Abonnement** op de werkbalk van de portal en selecteer vervolgens de map met uw Azure AD B2C-tenant.
 1. Zoek en selecteer **Azure AD B2C**in de Azure-portal .
 1. Selecteer op de overzichtspagina onder **Beleid**de optie **Identity Experience Framework**.
@@ -78,7 +78,7 @@ Als u een toepassing wilt registreren in uw Azure AD B2C-tenant, u de ervaring *
 
 #### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek en selecteer **Azure Active Directory**in de Azure-portal.
 1. Selecteer in het menu **overzicht van Azure Active Directory** onder **Beheren**de optie **App-registraties (Legacy)**.
 1. Selecteer **Nieuwe toepassing registreren**.
@@ -116,7 +116,7 @@ Stel vervolgens de API bloot door een bereik toe te voegen:
 1. Selecteer Nieuwe **toepassingsregistratie**selecteren in **App-registratie (Legacy).**
 1. Voer **Name**voor `ProxyIdentityExperienceFramework`Naam .
 1. Kies **Voor Toepassingstype** **Native**.
-1. Voer voor **Omleiding URI** `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, waar `your-tenant-name` is uw Azure AD B2C-tenant.
+1. Voer voor Omleiding `myapp://auth` **URI**.
 1. Selecteer **Maken**. Nadat deze is gemaakt, kopieert u de toepassings-id en slaat u deze op om deze later te gebruiken.
 1. Selecteer **Instellingen**, selecteer vervolgens **Vereiste machtigingen**en selecteer Vervolgens **Toevoegen**.
 1. Kies **Selecteer Een API**selecteren, zoek naar en selecteer **IdentityExperienceFramework**en klik op **Selecteren**.
@@ -129,7 +129,7 @@ Stel vervolgens de API bloot door een bereik toe te voegen:
 1. Voer **Name**voor `ProxyIdentityExperienceFramework`Naam .
 1. Selecteer onder **Ondersteunde accounttypen** **alleen Accounts in deze organisatiemap**.
 1. Gebruik onder **Uri omleiden**de vervolgkeuzelijst om **Openbare client/native (mobile & desktop)** te selecteren.
-1. Voer voor **Omleiding URI** `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, waar `your-tenant-name` is uw Azure AD B2C-tenant.
+1. Voer voor Omleiding `myapp://auth` **URI**.
 1. Schakel **onder Machtigingen**het selectievakje *Beheerderstoestemming verlenen voor openid en offline_access machtigingen* in.
 1. Selecteer **Registreren**.
 1. Neem de **toepassings-id (client) op** voor gebruik in een latere stap.

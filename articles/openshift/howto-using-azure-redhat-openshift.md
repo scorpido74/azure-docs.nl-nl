@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro, openshift, az aro, rode hoed, cli
-ms.openlocfilehash: 9488ef593cf4ec8600dcb42ea4a2cefa4fcb1446
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: f909c5870be6e394e457ad8f44ea5a253054ffe6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998801"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398897"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Een Azure Red Hat OpenShift 4.3-cluster maken, openen en beheren
 
@@ -68,7 +68,19 @@ Met `az aro` de extensie u Azure Red Hat OpenShift-clusters rechtstreeks vanuit 
    aro                                0.3.0
    ...
    ```
-  
+
+### <a name="get-a-red-hat-pull-secret-optional"></a>Krijg een Red Hat pull geheim (optioneel)
+
+Een Red Hat pull geheim stelt uw cluster in staat om toegang te krijgen tot Red Hat container registers en extra inhoud. Het gebruik van een pull secret is optioneel, maar aanbevolen.
+
+Om je pull geheim te krijgen:
+
+1. Ga naar https://cloud.redhat.com/openshift/install/azure/aro-provisioned.
+1. Meld u aan bij uw Red Hat-account of maak een nieuw Red Hat-account met behulp van uw zakelijke e-mail; de algemene voorwaarden te accepteren.
+1. Selecteer **Pull-geheim downloaden**.
+
+Sla het *pull-secret.txt-bestand* ergens veilig op; u gebruikt het bestand telkens wanneer u een cluster maakt.
+
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Een virtueel netwerk maken met twee lege subnetten
 
 Volg deze stappen om een virtueel netwerk te maken met twee lege subnetten.
@@ -79,15 +91,7 @@ Volg deze stappen om een virtueel netwerk te maken met twee lege subnetten.
    LOCATION=eastus        #the location of your cluster
    RESOURCEGROUP="v4-$LOCATION"    #the name of the resource group where you want to create your cluster
    CLUSTER=cluster        #the name of your cluster
-   PULL_SECRET="<optional-pull-secret>"
    ```
-   >[!NOTE]
-   > Met het optionele pull-geheim heeft uw cluster toegang tot red hat-containerregisters, samen met extra inhoud.
-   >
-   > Krijg toegang tot je https://cloud.redhat.com/openshift/install/azure/installer-provisioned pull-geheim door naar en op *Copy Pull Secret*te klikken.
-   >
-   > Je moet inloggen op je Red Hat-account, of een nieuw Red Hat-account aanmaken met je zakelijke e-mail en de algemene voorwaarden accepteren.
- 
 
 2. Maak een resourcegroep voor uw cluster.
 
@@ -143,7 +147,7 @@ az aro create \
   --worker-subnet "$CLUSTER-worker" \
   --cluster-resource-group "aro-$CLUSTER" \
   --domain "$CLUSTER" \
-  --pull-secret "$PULL_SECRET"
+  --pull-secret @pull-secret.txt
 ```
 
 >[!NOTE]

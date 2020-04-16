@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 17e474de9c221126d67cc2982ba11c6ff75e7aa3
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c1d2c0e48394fbde1b595ae4b405d84f437dc5e4
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668498"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392816"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Een Standaard SKU-loadbalancer gebruiken in Azure Kubernetes Service (AKS)
 
@@ -32,7 +32,7 @@ Als u ervoor kiest de CLI lokaal te installeren en te gebruiken, moet u in dit a
 
 In dit artikel wordt ervan uitgegaan dat u een AKS-cluster hebt met de *Standaard* SKU Azure Load Balancer. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS snelstart [met de Azure CLI][aks-quickstart-cli] of met behulp van de [Azure-portal][aks-quickstart-portal].
 
-De AKS-clusterserviceprincipal heeft ook toestemming nodig om netwerkbronnen te beheren als u een bestaand subnet of resourcegroep gebruikt. Wijs de rol *Netwerkbijdrager toe* aan uw serviceprincipal aan de gedelegeerde resources. Zie [AKS-toegang tot andere Azure-bronnen voor][aks-sp]meer informatie over machtigingen.
+De AKS-clusterserviceprincipal heeft ook toestemming nodig om netwerkbronnen te beheren als u een bestaand subnet of resourcegroep gebruikt. Wijs de rol *Netwerkbijdrager toe* aan uw serviceprincipal aan de gedelegeerde resources. In plaats van een serviceprincipal u ook de beheerde identiteit met het systeem gebruiken voor machtigingen. Zie [Beheerde identiteiten gebruiken voor](use-managed-identity.md)meer informatie . Zie [AKS-toegang tot andere Azure-bronnen voor][aks-sp]meer informatie over machtigingen.
 
 ### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Overstappen van een Basic SKU Load Balancer naar Standard SKU
 

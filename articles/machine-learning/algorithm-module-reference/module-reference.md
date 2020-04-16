@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 02/22/2020
-ms.openlocfilehash: c24c7ce1d47a4734d79d7e17e9fb4b3a2d4d70e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fcfc7c15f94d7b569629e53534d731126172260
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064146"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399064"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Algoritme & moduleverwijzing voor Azure Machine Learning-ontwerper (voorbeeld)
 
@@ -24,7 +24,7 @@ Elke module vertegenwoordigt een set code die onafhankelijk kan worden uitgevoer
 
 Zie voor hulp bij het kiezen van algoritmen 
 * [Algoritmen selecteren](../how-to-select-algorithms.md)
-* [Cheat Sheet azure machine learning-algoritme](../../synapse-analytics/sql-data-warehouse/cheat-sheet.md)
+* [Cheat Sheet azure machine learning-algoritme](../algorithm-cheat-sheet.md)
 
 > [!TIP]
 > In elke pijplijn in de ontwerper u informatie krijgen over een specifieke module. Selecteer de module en selecteer de **koppeling Meer help** in het deelvenster Snelle **Help.**

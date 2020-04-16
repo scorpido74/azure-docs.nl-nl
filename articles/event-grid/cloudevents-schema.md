@@ -7,15 +7,14 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 0efccd2851885dad209d5548a76737c25777b891
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 404052984cb99e37f7404a47f3ac374088d32d6c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372452"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393479"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>CloudEvents v1.0-schema gebruiken met gebeurtenisraster
-
 Naast het [standaardgebeurtenisschema](event-schema.md)ondersteunt Azure Event Grid native gebeurtenissen in de [JSON-implementatie van CloudEvents v1.0-](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) en [HTTP-protocolbinding](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) is een [open specificatie](https://github.com/cloudevents/spec/blob/v1.0/spec.md) voor het beschrijven van gebeurtenisgegevens.
 
 CloudEvents vereenvoudigt de interoperabiliteit door een algemeen gebeurtenisschema te bieden voor het publiceren en consumeren van cloudgebaseerde gebeurtenissen. Dit schema maakt uniforme tooling, standaardmanieren van routering & het afhandelen van gebeurtenissen en universele manieren om het externe gebeurtenisschema te deserialiseren. Met een gemeenschappelijk schema u werk gemakkelijker integreren op verschillende platforms.

@@ -1,5 +1,5 @@
 ---
-title: Cheat Sheet voor machine learning-algoritmen
+title: Machine Learning Algorithm Cheat Sheet - ontwerper
 titleSuffix: Azure Machine Learning
 description: Met een afdrukbare Machine Learning Algorithm Cheat Sheet u het juiste algoritme kiezen voor uw voorspellende model in Azure Machine Learning designer.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: 85fbb1c1d26f71903adab2eb96b0c1dd3bf74c33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: accc4766f25f5d58ba2f31c153fe1c5d23413170
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78328609"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399070"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Opspeelpagina voor machine learning-algoritmes voor Azure Machine Learning-ontwerper
 
-Met de **Azure Machine Learning Algorithm Cheat Sheet** u het juiste algoritme kiezen voor een voorspellend analysemodel.
+Met de **Azure Machine Learning Algorithm Cheat Sheet** u het juiste algoritme van de ontwerper kiezen voor een voorspellend analysemodel.
 
 Azure Machine Learning heeft een grote bibliotheek met algoritmen uit de ***classificatie,*** ***recommender-systemen,*** ***clustering,*** ***anomaliedetectie,*** ***regressie***en ***tekstanalysefamilies.*** Elk is ontworpen om een ander type machine learning-probleem aan te pakken.
 
@@ -38,7 +38,7 @@ De suggesties aangeboden in dit algoritme cheat sheet zijn bij benadering vuistr
 
 Elk machine learning algoritme heeft zijn eigen stijl of inductieve bias. Voor een specifiek probleem kunnen verschillende algoritmen geschikt zijn en kan het ene algoritme beter passen dan andere. Maar het is niet altijd mogelijk om van tevoren te weten wat de beste pasvorm is. In gevallen als deze worden verschillende algoritmen samen in het spiekbriefje weergegeven. Een geschikte strategie zou zijn om een algoritme te proberen, en als de resultaten nog niet bevredigend zijn, probeer de anderen. 
 
-Ga voor meer informatie over de algoritmen in Azure Machine Learning naar [de referentie algoritme en module.](algorithm-module-reference/module-reference.md)
+Ga voor meer informatie over de algoritmen in Azure Machine Learning designer naar de [referentie algoritme en module.](algorithm-module-reference/module-reference.md)
 
 ## <a name="kinds-of-machine-learning"></a>Soorten machine learning
 

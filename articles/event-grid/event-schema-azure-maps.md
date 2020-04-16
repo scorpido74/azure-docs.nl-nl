@@ -1,24 +1,26 @@
 ---
-title: Azure Event Grid Azure Maps-gebeurtenisschema
+title: Azure Maps als gebeurtenisrasterbron
 description: Beschrijft de eigenschappen en het schema die zijn opgegeven voor Azure Maps-gebeurtenissen met Azure Event Grid
 services: event-grid
-author: femila
+author: banisadr
 ms.service: event-grid
-ms.topic: reference
-ms.date: 02/08/2019
-ms.author: femila
-ms.openlocfilehash: 9acef524521e8fac6ce6f8f61e5ff3fbbb81d18d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: babanisa
+ms.openlocfilehash: e879ec3442f2e7912acb450a97079d80d7d95a01
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77486356"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393406"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure Event Grid-gebeurtenisschema voor Azure Maps
+# <a name="azure-maps-as-an-event-grid-source"></a>Azure Maps als gebeurtenisrasterbron
 
-In dit artikel vindt u de eigenschappen en het schema voor Azure Maps-gebeurtenissen. Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](https://docs.microsoft.com/azure/event-grid/event-schema)
+In dit artikel vindt u de eigenschappen en het schema voor Azure Maps-gebeurtenissen. Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](https://docs.microsoft.com/azure/event-grid/event-schema) Het geeft u ook een lijst met snelle starts en zelfstudies om Azure Maps als gebeurtenisbron te gebruiken.
 
-## <a name="available-event-types"></a>Beschikbare gebeurtenistypen
+## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
+
+### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
 Een Azure Maps-account zendt de volgende gebeurtenistypen uit:
 
@@ -28,7 +30,7 @@ Een Azure Maps-account zendt de volgende gebeurtenistypen uit:
 | Microsoft.Maps.GeofenceExited | Verhoogd wanneer de ontvangen coördinaten zijn verplaatst van binnen een bepaalde geofence naar buiten |
 | Microsoft.Maps.GeofenceResultaat | Elke keer dat een geofencingquery een resultaat retourneert, ongeacht de status |
 
-## <a name="event-examples"></a>Voorbeelden van gebeurtenissen
+### <a name="event-examples"></a>Voorbeelden van gebeurtenissen
 
 In het volgende voorbeeld wordt het schema van een **gebeurtenis GeofenceEntered weergegeven**
 
@@ -98,7 +100,7 @@ In het volgende voorbeeld wordt het schema voor **GeofenceResult weergegeven**
 }
 ```
 
-## <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
@@ -162,6 +164,12 @@ Het gegevensobject heeft de volgende eigenschappen:
 | Geometrieën | geometrieën[] |Hiermee worden de afrasteringsgeometrieën weergegeven die de coördinatenpositie bevatten of de zoekbuffer rond de positie overlappen. |
 | ongeldigPeriodGeofenceGeometryId | tekenreeks[]  | Lijsten met de geometrie-id van de geofence die zich in een ongeldige periode bevindt ten opzichte van de gebruikerstijd in de aanvraag. |
 | isEventGepubliceerd | booleaans | True als ten minste één gebeurtenis wordt gepubliceerd op de azure maps-gebeurtenisabonnee, is false als er geen gebeurtenis wordt gepubliceerd voor de azure maps-gebeurtenisabonnee. |
+
+## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
+|Titel  |Beschrijving  |
+|---------|---------|
+| [Reageren op Azure Maps-gebeurtenissen met gebeurtenisraster](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Overzicht van de integratie van Azure Maps met Event Grid. |
+| [Zelfstudie: Een geofence instellen](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | In deze zelfstudie doorloopt u de basisstappen voor het instellen van geofence met behulp van Azure Maps. U gebruikt Azure Event Grid om de geofence-resultaten te streamen en een melding in te stellen op basis van de geofence-resultaten. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

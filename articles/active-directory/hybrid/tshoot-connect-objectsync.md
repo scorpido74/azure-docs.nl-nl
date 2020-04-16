@@ -15,12 +15,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e56d4d94e38e5095ef2223d0cc2875cbf1dcd46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64919126"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407023"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Problemen met objectsynchronisatie oplossen met Azure AD Connect-synchronisatie
 In dit artikel worden stappen gezet voor het oplossen van problemen met objectsynchronisatie door de taak voor het oplossen van problemen te gebruiken. Bekijk [deze korte video](https://aka.ms/AADCTSVideo)om te zien hoe probleemoplossing werkt in Azure Active Directory (Azure AD) Connect.
@@ -61,11 +61,6 @@ De rest van deze sectie beschrijft specifieke resultaten die door de taak worden
 Wanneer het upn-achtervoegsel (UserPrincipalName)/Alternate Login ID niet is geverifieerd met de Azure AD-tenant, vervangt Azure Active Directory de UPN-achtervoegsels door de standaarddomeinnaam 'onmicrosoft.com'.
 
 ![Azure AD vervangt UPN](media/tshoot-connect-objectsync/objsynch2.png)
-
-### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>UPN-achtervoegsel wijzigen van het ene federatieve domein naar een ander federatief domein
-Azure Active Directory staat de synchronisatie van UPN-naam (UserPrincipalName)/Alternate Login ID-achtervoegsel van het ene federatieve domein naar een ander federatief domein niet toe. Dit geldt voor domeinen die zijn geverifieerd met de Azure AD-tenant en het verificatietype als Federatief hebben.
-
-![Geen UPN-synchronisatie van het ene gefedereerde domein naar het andere](media/tshoot-connect-objectsync/objsynch3.png) 
 
 ### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Azure AD-tenant DirSync-functie 'SynchronizeUpnForManagedUsers' is uitgeschakeld
 Wanneer de Azure AD-tenant DirSync-functie 'SynchronizeUpnForManagedUsers' is uitgeschakeld, staat Azure Active Directory synchronisatie-updates voor UserPrincipalName/Alternate Login ID voor gelicentieerde gebruikersaccounts met beheerde verificatie niet toe.

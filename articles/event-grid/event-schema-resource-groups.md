@@ -1,20 +1,20 @@
 ---
-title: Gebeurtenisbeheer van Azure Event Grid-brongroep
+title: Azure-brongroep als gebeurtenisrasterbron
 description: Beschrijft de eigenschappen die worden geleverd voor resourcegroepgebeurtenissen met Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb52b54eb32a119a463b59e4d4f2ab30096886fa
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561690"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393253"
 ---
-# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Azure Event Grid-gebeurtenisschema voor resourcegroepen
+# <a name="azure-resource-group-as-an-event-grid-source"></a>Azure-brongroep als gebeurtenisrasterbron
 
 In dit artikel worden de eigenschappen en het schema voor resourcegroepgebeurtenissen weergeven.Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
 
@@ -28,9 +28,10 @@ Als u gebeurtenissen programmatisch wilt afhandelen, `operationName` kunt u gebe
 
 Het gebeurtenisonderwerp is de resource-id van de resource die het doel van de bewerking is. Als u gebeurtenissen voor een resource wilt filteren, geeft u die resource-id op bij het maken van het gebeurtenisabonnement.  Als u wilt filteren op een resourcetype, gebruikt u een waarde in de volgende indeling:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-Zie [Brongroepgebeurtenisbron](event-sources.md#resource-groups)voor een lijst met voorbeeldscripts en -zelfstudies .
 
-## <a name="available-event-types"></a>Beschikbare gebeurtenistypen
+## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
+
+### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
 Resourcegroepen zenden beheergebeurtenissen uit vanuit Azure Resource Manager, zoals wanneer een VM wordt gemaakt of een opslagaccount wordt verwijderd.
 
@@ -46,7 +47,7 @@ Resourcegroepen zenden beheergebeurtenissen uit vanuit Azure Resource Manager, z
 | Microsoft.Resources.ResourceWriteFailure | Verhoogd wanneer de bewerking voor maken of bijwerken mislukt. |
 | Microsoft.Resources.ResourceWriteSuccess | Verhoogd wanneer de bewerking voor maken of bijwerken slaagt. |
 
-## <a name="example-event"></a>Voorbeeldgebeurtenis
+### <a name="example-event"></a>Voorbeeldgebeurtenis
 
 In het volgende voorbeeld wordt het schema voor een **gebeurtenis ResourceWriteSuccess** weergegeven. Hetzelfde schema wordt gebruikt voor **ResourceWriteFailure** en **ResourceWriteCancel** gebeurtenissen met verschillende waarden voor `eventType`.
 
@@ -230,7 +231,7 @@ In het volgende voorbeeld wordt het schema voor een **gebeurtenis ResourceAction
 }]
 ```
 
-## <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
@@ -259,6 +260,16 @@ Het gegevensobject heeft de volgende eigenschappen:
 | status | tekenreeks | De status van de bewerking. |
 | subscriptionId | tekenreeks | De abonnements-ID van de resource. |
 | tenantId | tekenreeks | De tenant-id van de resource. |
+
+## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
+|Titel  |Beschrijving  |
+|---------|---------|
+| [Zelfstudie: wijzigingen in virtuele machines controleren met Azure Event Grid en Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md) | Een logische app controleert wijzigingen in een virtuele machine en stuurt e-mails over deze wijzigingen. |
+| [Azure CLI: u abonneren op gebeurtenissen voor een resourcegroep](./scripts/event-grid-cli-resource-group.md)| Voorbeeldscript dat zich abonneert op gebeurtenissen voor een resourcegroep. Het stuurt gebeurtenissen naar een WebHook. |
+| [Azure CLI: u abonneren op gebeurtenissen voor een resourcegroep en filteren op een resource](./scripts/event-grid-cli-resource-group-filter.md) | Voorbeeldscript dat zich abonneert op gebeurtenissen voor een resourcegroep en gebeurtenissen filtert voor één resource. |
+| [PowerShell: abonneer u op gebeurtenissen voor een resourcegroep](./scripts/event-grid-powershell-resource-group.md) | Voorbeeldscript dat zich abonneert op gebeurtenissen voor een resourcegroep. Het stuurt gebeurtenissen naar een WebHook. |
+| [PowerShell: abonneer u op gebeurtenissen voor een resourcegroep en filter voor een resource](./scripts/event-grid-powershell-resource-group-filter.md) | Voorbeeldscript dat zich abonneert op gebeurtenissen voor een resourcegroep en gebeurtenissen filtert voor één resource. |
+| [Resource Manager-sjabloon: resourceabonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | U abonneert zich op gebeurtenissen voor een Azure-abonnement of resourcegroep. Het stuurt gebeurtenissen naar een WebHook. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

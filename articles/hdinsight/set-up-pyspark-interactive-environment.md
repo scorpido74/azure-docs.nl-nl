@@ -2,18 +2,18 @@
 title: Interactieve PySpark-omgeving met Azure HDInsight-hulpprogramma's
 description: Meer informatie over het gebruik van de Azure HDInsight-hulpprogramma's voor Visual Studio-code om query's en scripts te maken en in te dienen.
 keywords: VScode,Azure HDInsight Tools,Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, Interactive Hive, Interactieve query
-author: jejiang
-ms.author: jejiang
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.openlocfilehash: db2336fb79207ada24b71e0e64f0aaaab543e4da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 2a725f3c5c9e1428079807b5b76dbe72d416a9c7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73241554"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393662"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>De interactieve PySpark-omgeving instellen voor Visual Studio Code
 
@@ -34,7 +34,7 @@ We gebruiken **python/pip** commando om virtuele omgeving te bouwen in uw Home p
 
 2. Installeer **virtualenv** door onderstaande opdracht uit te voeren.
 
-   ```
+   ```bash
    pip install virtualenv
    ```
 
@@ -44,11 +44,11 @@ Als u een foutbericht tegenkomt, installeert u de vereiste pakketten door de vol
 
    ![Installeer libkrb5 pakket voor python](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
 
-```
+```bash
 sudo apt-get install libkrb5-dev
 ```
 
-```
+```bash
 sudo apt-get install python-dev
 ```
 
@@ -57,9 +57,11 @@ Start VS-code opnieuw op en ga terug naar de scripteditor waarop **HDInsight: Py
 ## <a name="next-steps"></a>Volgende stappen
 
 ### <a name="demo"></a>Demo
+
 * HDInsight voor VS-code: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Tools en uitbreidingen
+
 * [Azure HDInsight-tool gebruiken voor visual studiocode](hdinsight-for-vscode.md)
 * [Azure Toolkit voor IntelliJ gebruiken om Apache Spark Scala-toepassingen te maken en in te dienen](spark/apache-spark-intellij-tool-plugin.md)
 * [Azure Toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen op afstand te debuggen via SSH](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)

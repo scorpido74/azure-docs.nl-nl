@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 3172c92ecae094ab5d978803d2ccac7e6404a5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599f48ed241010d8551bd110c7f778c9ef508eac
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721503"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393179"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Abonneer u op evenementen via portal
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u eventgrid-abonnementen maakt via de portal
 
 ## <a name="create-event-subscriptions"></a>Gebeurtenisabonnementen maken
 
-Als u een abonnement op eventgrid wilt maken voor een van de ondersteunde [gebeurtenisbronnen,](event-sources.md)gebruikt u de volgende stappen. In dit artikel ziet u hoe u een Event Grid-abonnement maakt voor een Azure-abonnement.
+Als u een abonnement op eventgrid wilt maken voor een van de ondersteunde [gebeurtenisbronnen,](overview.md#event-sources)gebruikt u de volgende stappen. In dit artikel ziet u hoe u een Event Grid-abonnement maakt voor een Azure-abonnement.
 
 1. Selecteer **Alle services**.
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: e51937dfe2afa0e92ce98b4c305555b53896e5f1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5e0073bd14744338ff28c9c45193f126a1bba717
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78401780"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403039"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Snelstart: Face-clientbibliotheek voor .NET
 
@@ -39,12 +39,9 @@ Gebruik de Face-clientbibliotheek voor .NET om:
 
 ### <a name="create-a-face-azure-resource"></a>Een Face Azure-bron maken
 
-Azure Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een bron voor Face met de [Azure-portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
+Azure Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een bron voor Face met de [Azure-portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U ook een [proefsleutel](https://azure.microsoft.com/try/cognitive-services/#decision) gratis krijgen die zeven dagen geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website.](https://azure.microsoft.com/try/cognitive-services/my-apis/)  
 
-* Ontvang een [proefsleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website.](https://azure.microsoft.com/try/cognitive-services/my-apis/)  
-* Uw bron weergeven op de [Azure-portal.](https://portal.azure.com/)
-
-Nadat u een sleutel uit uw proefabonnement of resource hebt opgehaald, maakt `FACE_SUBSCRIPTION_KEY` u `FACE_ENDPOINT` [een omgevingsvariabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor respectievelijk de naam van de sleutel- en eindpunt-URL.
+Nadat u een sleutel uit uw proefabonnement of resource hebt opgehaald, maakt `FACE_SUBSCRIPTION_KEY` u `FACE_ENDPOINT` [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor respectievelijk de naam van de sleutel- en eindpunt-URL.
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
@@ -94,7 +91,7 @@ Als u de Visual Studio IDE gebruikt, is de clientbibliotheek beschikbaar als dow
 
 De volgende klassen en interfaces behandelen enkele van de belangrijkste functies van de Face .NET SDK:
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |[FaceClient (FaceClient)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | Deze klasse vertegenwoordigt uw autorisatie om de Face-service te gebruiken en u hebt deze nodig voor alle Face-functionaliteit. U wilt deze met uw abonnementsgegevens en u gebruikt deze om exemplaren van andere klassen te produceren. |
 |[FaceOperations (FaceOperations)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|Deze klasse behandelt de basisdetectie- en herkenningstaken die u uitvoeren met menselijke gezichten. |

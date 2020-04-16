@@ -3,17 +3,17 @@ title: Service-principals voor AKS (Azure Kubernetes Services)
 description: Een Azure Active Directory-service-principal maken en beheren voor een cluster in AKS (Azure Kubernetes Service)
 services: container-service
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: 523f08ddbf22e175af5b0604b04d4a2460ffd634
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 2c792eb4dc060e3f5d7fa2d8f2176bdd51538c43
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259420"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392725"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Service-principals met AKS (Azure Kubernetes Service)
 
-Voor de interactie met Azure API's heeft een AKS-cluster een [Azure AD-service-principal (Active Directory)][aad-service-principal] nodig. De service-principal is nodig voor het dynamisch maken en beheren van andere Azure-resources zoals een Azure Load Balancer of een Azure Container Registry (ACR).
+Om te communiceren met Azure API's, vereist een AKS-cluster een [AD-serviceprincipal (Azure Active Directory)][aad-service-principal] of een [beheerde identiteit](use-managed-identity.md). Er is een serviceprincipal of beheerde identiteit nodig om andere Azure-resources, zoals een Azure load balancer of containerregistry (ACR), dynamisch te maken en te beheren.
 
 In dit artikel ziet u hoe u een service-principal voor uw AKS-clusters maakt en gebruikt.
 

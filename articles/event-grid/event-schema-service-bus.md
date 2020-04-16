@@ -1,27 +1,26 @@
 ---
-title: Gebeurtenisschema Azure Event Grid Service Bus
+title: Azure Service Bus als gebeurtenisrasterbron
 description: Beschrijft de eigenschappen die worden geleverd voor ServiceBus-gebeurtenissen met Azure Event Grid
 services: event-grid
 author: banisadr
-manager: darosa
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: babanisa
-ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 141a0e96071014dc3705d30f72b1a9257737298a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561758"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393247"
 ---
-# <a name="azure-event-grid-event-schema-for-service-bus"></a>Azure Event Grid-gebeurtenisschema voor servicebus
+# <a name="azure-service-bus-as-an-event-grid-source"></a>Azure Service Bus als gebeurtenisrasterbron
 
 In dit artikel vindt u de eigenschappen en het schema voor servicebusgebeurtenissen.Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
 
-Zie [Gebeurtenisbron servicebus](event-sources.md#service-bus)voor een lijst met voorbeeldscripts en -zelfstudies .
+## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
 
-## <a name="available-event-types"></a>Beschikbare gebeurtenistypen
+### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
 Service Bus zendt de volgende gebeurtenistypen uit:
 
@@ -30,7 +29,7 @@ Service Bus zendt de volgende gebeurtenistypen uit:
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | Verhoogd wanneer er actieve berichten in een wachtrij of abonnement staan en er geen ontvangers luisteren. |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | Verhoogd wanneer er actieve berichten in een wachtrij voor dode letters staan en geen actieve listeners. |
 
-## <a name="example-event"></a>Voorbeeldgebeurtenis
+### <a name="example-event"></a>Voorbeeldgebeurtenis
 
 In het volgende voorbeeld wordt het schema van actieve berichten weergegeven zonder listenersgebeurtenis:
 
@@ -76,7 +75,7 @@ Het schema voor een wachtrijgebeurtenis met dode letter is vergelijkbaar:
 }]
 ```
 
-## <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
@@ -101,6 +100,12 @@ Het gegevensobject heeft de volgende eigenschappen:
 | queueName | tekenreeks | De wachtrij met actieve berichten als u zich abonneert op een wachtrij. Waarde null als het gebruik van onderwerpen / abonnementen. |
 | topicNaam | tekenreeks | Het onderwerp waarhet Service Bus-abonnement met actieve berichten toe behoort. Waarde null als u een wachtrij gebruikt. |
 | subscriptionName | tekenreeks | Het Service Bus-abonnement met actieve berichten. Waarde null als u een wachtrij gebruikt. |
+
+## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
+|Titel  |Beschrijving  |
+|---------|---------|
+| [Zelfstudie: voorbeelden van azure servicebus naar Azure Event Grid-integratie](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid stuurt berichten vanuit het onderwerp Service Bus naar de functie-app en logische app. |
+| [Azure Service Bus to Event Grid-integratie](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Overzicht van de integratie van Service Bus met Event Grid. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

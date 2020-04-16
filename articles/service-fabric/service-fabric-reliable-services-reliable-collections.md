@@ -2,13 +2,13 @@
 title: Inleiding tot betrouwbare collecties
 description: Service Fabric stateful services bieden betrouwbare collecties waarmee u zeer beschikbare, schaalbare en low-latency cloudtoepassingen schrijven.
 ms.topic: conceptual
-ms.date: 1/3/2019
-ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 3/10/2020
+ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609720"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398434"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Inleiding tot betrouwbare verzamelingen in stateful services van Azure Service Fabric
 
@@ -24,10 +24,9 @@ Het belangrijkste verschil tussen betrouwbare verzamelingen en andere technologi
 Betrouwbare collecties kunnen worden gezien als de natuurlijke evolutie van de **System.Collections-klassen:** een nieuwe reeks collecties die zijn ontworpen voor de cloud- en multicomputertoepassingen zonder de complexiteit voor de ontwikkelaar te vergroten. Als zodanig zijn betrouwbare collecties:
 
 * Gerepliceerd: statuswijzigingen worden gerepliceerd voor hoge beschikbaarheid.
-* Volhard: gegevens blijven bestaan op schijf voor duurzaamheid tegen grootschalige uitval (bijvoorbeeld een stroomuitval in datacenters).
-* Omdat schrijft wordt volgehouden en gerepliceerd, u geen vluchtige ReliableDictionary, ReliableQueue of andere betrouwbare verzameling maken die alleen gegevens in het geheugen blijft bestaan.
 * Asynchroon: API's zijn asynchroon om ervoor te zorgen dat threads niet worden geblokkeerd bij het oplopen van IO.
 * Transactioneel: API's maken gebruik van de abstractie van transacties, zodat u meerdere betrouwbare verzamelingen binnen een service eenvoudig beheren.
+* Volhard of vluchtig: gegevens kunnen worden gehandhaafd op schijf voor duurzaamheid tegen grootschalige uitval (bijvoorbeeld een datacenter stroomuitval). Sommige betrouwbare verzamelingen ondersteunen ook een vluchtige modus (met [kanttekeningen)](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)waarin alle gegevens in het geheugen worden bewaard, zoals een gerepliceerde cache in het geheugen.
 
 Betrouwbare collecties bieden sterke consistentiegaranties uit de doos om het redeneren over toepassingsstatus gemakkelijker te maken.
 Sterke consistentie wordt bereikt door ervoor te zorgen dat transactiecommits pas worden voltooid nadat de hele transactie is aangemeld op een meerderheidsquorum van replica's, inclusief de primaire.
@@ -51,7 +50,7 @@ Vandaag bevat **Microsoft.ServiceFabric.Data.Collections** drie verzamelingen:
 * [Werken met betrouwbare verzamelingen](service-fabric-work-with-reliable-collections.md)
 * [Transacties en vergrendelingen](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Gegevens beheren
-  * [Back-up en herstel](service-fabric-reliable-services-backup-restore.md)
+  * [Back-up maken en herstellen](service-fabric-reliable-services-backup-restore.md)
   * [Meldingen](service-fabric-reliable-services-notifications.md)
   * [Betrouwbare verzamelingserialisatie](service-fabric-reliable-services-reliable-collections-serialization.md)
   * [Serialisatie en upgrade](service-fabric-application-upgrade-data-serialization.md)

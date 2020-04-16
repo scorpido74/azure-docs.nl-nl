@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe8aa088538663ac3e64f5913ff031e6160b045
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: b3f284efd6a9a2fd83c8e2a8f9fb7a962c1cacc1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382642"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406462"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
-Met Azure Ad (Azure AD) u beperkte beheerders aanwijzen voor het beheren van identiteitstaken in minder bevoorrechte rollen. Beheerders kunnen worden toegewezen voor doeleinden zoals het toevoegen of wijzigen van gebruikers, het toewijzen van beheerdersrollen, het opnieuw instellen van gebruikerswachtwoorden, het beheren van gebruikerslicenties en het beheren van domeinnamen. De standaardgebruikersmachtigingen kunnen alleen worden gewijzigd in gebruikersinstellingen in Azure AD.
+Met Azure Ad (Azure AD) u beperkte beheerders aanwijzen voor het beheren van identiteitstaken in minder bevoorrechte rollen. Beheerders kunnen worden toegewezen voor doeleinden zoals het toevoegen of wijzigen van gebruikers, het toewijzen van beheerdersrollen, het opnieuw instellen van gebruikerswachtwoorden, het beheren van gebruikerslicenties en het beheren van domeinnamen. De [standaardgebruikersmachtigingen](../fundamentals/users-default-permissions.md) kunnen alleen worden gewijzigd in gebruikersinstellingen in Azure AD.
 
 ## <a name="limit-use-of-global-administrator"></a>Het gebruik van globale beheerder beperken
 
@@ -276,6 +276,10 @@ Het delegeren van administratieve machtigingen voor subsets van gebruikers en he
 
 Deze rol werd voorheen 'Wachtwoordbeheerder' genoemd in de [Azure-portal.](https://portal.azure.com/) De naam 'Helpdeskbeheerder' in Azure AD komt nu overeen met de naam in Azure AD PowerShell en de Microsoft Graph API.
 
+### <a name="hybrid-identity-administrator"></a>[Hybride identiteitsbeheerder](#hybrid-identity-administrator-permissions)
+
+Gebruikers in deze rol kunnen services en instellingen met betrekking tot het inschakelen van hybride identiteit in Azure AD inschakelen, configureren en beheren. Met deze rol Azure AD worden geconfigureerd voor een van de drie ondersteunde verificatiemethoden, Password hash synchronization (PHS), Pass-through authentication (PTA) of Federation (AD FS of 3rd party federation provider) en gerelateerde on-premises infrastructuur implementeren om deze infrastructuur mogelijk te maken. On-prem infrastructuur omvat Provisioning en PTA agenten. Deze rol biedt de mogelijkheid om Seamless Single Sign-On (S-SSO) in te schakelen om naadloze verificatie in te schakelen op niet-Windows 10-apparaten of niet-Windows Server 2016-computers. Bovendien biedt deze rol de mogelijkheid om aanmeldingslogboeken en toegang tot gezondheids- en analyseprogramma's te bekijken voor het bewaken en oplossen van problemen. 
+
 ### <a name="intune-administrator"></a>[Intune-beheerder](#intune-service-administrator-permissions)
 
 Gebruikers met deze rol hebben algemene machtigingen binnen Microsoft Intune Online, wanneer de service aanwezig is. Bovendien bevat deze rol de mogelijkheid om gebruikers en apparaten te beheren om beleid te koppelen en groepen te maken en te beheren. Meer informatie bij [Role-based administration control (RBAC) met Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control).
@@ -300,6 +304,10 @@ Gebruikers in deze rol kunnen alle meldingen in het Berichtencentrum controleren
 ### <a name="message-center-reader"></a>[Berichtcentrumlezer](#message-center-reader-permissions)
 
 Gebruikers in deze rol kunnen meldingen en adviesstatusupdates controleren in [het Office 365 Message Center](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) voor hun organisatie op geconfigureerde services zoals Exchange, Intune en Microsoft Teams. BerichtencentrumLezers ontvangen wekelijkse e-mailsamenvattingen van berichten, updates en kunnen berichten in het berichtencentrum delen in Office 365. In Azure AD hebben gebruikers die aan deze rol zijn toegewezen alleen-lezen toegang op Azure AD-services, zoals gebruikers en groepen. Deze rol heeft geen toegang tot het bekijken, maken of beheren van ondersteuningstickets.
+
+### <a name="network-administrator"></a>[Netwerkbeheerder](#network-administrator-permissions)
+
+Gebruikers in deze rol kunnen aanbevelingen voor netwerkperimeterarchitectuur van Microsoft bekijken die zijn gebaseerd op netwerktelemetrie vanaf hun gebruikerslocaties. Netwerkprestaties voor Office 365 zijn gebaseerd op een zorgvuldige perimeterarchitectuur voor bedrijfsklanten, die over het algemeen specifiek is voor de locatie van de gebruiker. Deze rol maakt het mogelijk om ontdekte gebruikerslocaties en de configuratie van netwerkparameters voor die locaties te bewerken om verbeterde telemetriemetingen en ontwerpaanbevelingen te vergemakkelijken. 
 
 ### <a name="office-apps-administrator"></a>[Beheerder van Office Apps](#office-apps-administrator-permissions)
 
@@ -331,6 +339,14 @@ Gebruikers met deze rol hebben algemene machtigingen binnen Microsoft Power BI, 
 ### <a name="power-platform-administrator"></a>[Beheerder van het Power-platform](#power-platform-administrator-permissions)
 
 Gebruikers in deze rol kunnen alle aspecten van omgevingen, PowerApps, Flows, Data Loss Prevention policies creëren en beheren. Bovendien hebben gebruikers met deze rol de mogelijkheid om ondersteuningstickets te beheren en de servicestatus te controleren.
+
+### <a name="printer-administrator"></a>[Printerbeheerder](#printer-administrator-permissions)
+
+Gebruikers in deze rol kunnen printers registreren en alle aspecten van alle printerconfiguraties beheren in de Microsoft Universal Print-oplossing, inclusief de instellingen voor universele afdrukconnector. Ze kunnen instemmen met alle gedelegeerde aanvragen voor afdruktoestemming. Printerbeheerders hebben ook toegang tot afdrukrapporten.
+
+### <a name="printer-technician"></a>[Printertechnicus](#printer-technician-permissions)
+
+Gebruikers met deze rol kunnen printers registreren en de printerstatus beheren in de Microsoft Universal Print-oplossing. Ze kunnen ook alle connectorinformatie lezen. Belangrijke taak die een printertechnicus niet kan uitvoeren, is gebruikersmachtigingen instellen voor printers en printers delen.
 
 ### <a name="privileged-authentication-administrator"></a>[Beheerder van geprivilegieerde verificatie](#privileged-authentication-administrator-permissions)
 
@@ -998,6 +1014,7 @@ Kan alle aspecten van het Exchange-product beheren.
 | microsoft.directory/groups/unified/members/update | Het lidmaatschap van Office 365-groepen bijwerken. |
 | microsoft.directory/groups/unified/owners/update | Het eigendom van Office 365-groepen bijwerken. |
 | microsoft.office365.exchange/allEntiteiten/allTasks | Beheer alle aspecten van Exchange Online. |
+| microsoft.office365.network/performance/allProperties/read | Lees netwerkprestatiepagina's in het M365-beheercentrum. |
 | microsoft.office365.serviceHealth/allEntiteiten/allTasks | Office 365-servicestatus lezen en configureren. |
 | microsoft.office365.supportTickets/allEntiteiten/allTasks | Office 365-ondersteuningstickets maken en beheren. |
 | microsoft.office365.usageReports/allEntiteiten/gelezen | Lees de gebruiksrapporten van Office 365. |
@@ -1076,6 +1093,7 @@ Kan alles lezen wat een globale beheerder kan, maar niet om het even wat bewerk.
 | microsoft.office365.exchange/allEntiteiten/lezen    | Lees alle aspecten van Exchange Online. |
 | microsoft.office365.messageCenter/berichten/gelezen    | Lees berichten in microsoft.office365.messageCenter. |
 | microsoft.office365.messageCenter/securityBerichten/gelezen    | Lees securityBerichten in microsoft.office365.messageCenter. |
+| microsoft.office365.network/performance/allProperties/read | Lees netwerkprestatiepagina's in het M365-beheercentrum. |
 | microsoft.office365.protectionCenter/allEntities/read    | Lees alle aspecten van Office 365 Protection Center. |
 | microsoft.office365.securityComplianceCenter/allEntiteiten/gelezen    | Lees alle standaardeigenschappen in microsoft.office365.securityComplianceCenter. |
 | microsoft.office365.usageReports/allEntiteiten/gelezen    | Lees de gebruiksrapporten van Office 365. |
@@ -1132,6 +1150,50 @@ Kan wachtwoorden opnieuw instellen voor niet-beheerders en helpdeskbeheerders.
 | microsoft.office365.webPortal/allEntiteiten/basic/read | Lees basiseigenschappen op alle bronnen in microsoft.office365.webPortal. |
 | microsoft.office365.serviceHealth/allEntiteiten/allTasks | Office 365-servicestatus lezen en configureren. |
 | microsoft.office365.supportTickets/allEntiteiten/allTasks | Office 365-ondersteuningstickets maken en beheren. |
+
+### <a name="hybrid-identity-administrator-permissions"></a>Machtigingen voor hybride identiteitsbeheerder
+
+Cloudprovisioning- en authenticatieservices inschakelen, implementeren, configureren, beheren, bewaken en oplossen. 
+
+| **Acties** | **Beschrijving** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntiteiten/allTasks | Azure Service Status lezen en configureren. |
+| microsoft.azure.supportTickets/allEntiteiten/allTasks | Azure-ondersteuningstickets maken en beheren. |
+| microsoft.directory/applications/audience/update  | Eigenschap applications.audience bijwerken in Azure Active Directory. |
+| microsoft.directory/applications/authentication/update | Eigenschap applications.authentication bijwerken in Azure Active Directory.  |
+| microsoft.directory/applications/basic/update | Basiseigenschappen bijwerken voor toepassingen in Azure Active Directory. |
+| microsoft.directory/applications/create | Toepassingen maken in Azure Active Directory. |
+| microsoft.directory/applications/credentials/update | Eigenschap applications.credentials bijwerken in Azure Active Directory. |
+| microsoft.directory/applications/delete | Toepassingen verwijderen in Azure Active Directory. |
+| microsoft.directory/applications/owners/update | Eigenschap applications.owners bijwerken in Azure Active Directory. |
+| microsoft.directory/applications/permissions/update | Eigenschap applications.permissions bijwerken in Azure Active Directory. |
+| microsoft.directory/applications/policies/update | Eigenschap applications.policies bijwerken in Azure Active Directory. |
+| microsoft.directory/applicationSjablonen/instantiate | Instantiate galerijtoepassingen van toepassingssjablonen. |
+| microsoft.directory/auditLogs/allProperties/read | Lees alle eigenschappen (inclusief bevoorrechte eigenschappen) op auditLogs in Azure Active Directory. |
+| microsoft.directory/cloudProvisioning/allProperties/allTasks | Lees en configureer alle eigenschappen van de Azure AD Cloud Provisioning-service. |
+| microsoft.directory/federatedAuthentication/allProperties/allTasks | Beheer alle aspecten van Active Directory Federated Services (ADFS) of federatieprovider van derden in Azure AD. |
+| microsoft.directory/organisatie/dirSync/update | Organization.dirSync bijwerken, eigenschap in Azure Active Directory. |
+| microsoft.directory/passwordHashSync/allProperties/allTasks | Beheer alle aspecten van Password Hash Sync (PHS) in Azure AD. |
+| microsoft.directory/passThroughAuthentication/allProperties/allTasks | Beheer alle aspecten van Pass-through Authentication (PTA) in Azure AD. |
+| microsoft.directory/seamlessSSO/allProperties/allTasks | Beheer alle aspecten van naadloze single sign-on (SSO) in Azure AD. |
+| microsoft.directory/servicePrincipals/audience/update | Eigenschap servicePrincipals.audience bijwerken in Azure Active Directory. |
+| microsoft.directory/servicePrincipals/authentication/update | Eigenschap servicePrincipals.authentication bijwerken in Azure Active Directory. |
+| microsoft.directory/servicePrincipals/basic/update | Basiseigenschappen bijwerken op servicePrincipals in Azure Active Directory. |
+| microsoft.directory/servicePrincipals/create | ServicePrincipals maken in Azure Active Directory. |
+| microsoft.directory/servicePrincipals/credentials/update | Eigenschap servicePrincipals.credentials bijwerken in Azure Active Directory. |
+| microsoft.directory/servicePrincipals/delete | ServicePrincipals verwijderen in Azure Active Directory. |
+| microsoft.directory/servicePrincipals/owners/update | Eigenschap servicePrincipals.owners bijwerken in Azure Active Directory. |
+| microsoft.directory/servicePrincipals/permissions/update | Eigenschap servicePrincipals.permissions bijwerken in Azure Active Directory. |
+| microsoft.directory/servicePrincipals/policies/update | Eigenschap servicePrincipals.policies bijwerken in Azure Active Directory. |
+| microsoft.directory/servicePrincipals/synchronizationJobs/manage | Beheer alle aspecten van synchronisatietaken in Azure AD. |
+| microsoft.directory/servicePrincipals/synchronizationSchema/manage | Beheer alle aspecten van het synchronisatieschema in Azure AD. |
+| microsoft.directory/servicePrincipals/synchronizationCredentials/manage | Beheer alle aspecten van synchronisatiereferenties in Azure AD. |
+| microsoft.directory/servicePrincipals/tag/update | Eigenschap servicePrincipals.tag bijwerken in Azure Active Directory. |
+| microsoft.directory/signInReports/allProperties/read | Lees alle eigenschappen (inclusief bevoorrechte eigenschappen) op signInReports in Azure Active Directory. |
+| microsoft.office365.messageCenter/berichten/gelezen | Lees berichten in microsoft.office365.messageCenter. |
+| microsoft.office365.serviceHealth/allEntiteiten/allTasks | Office 365-servicestatus lezen en configureren. |
+| microsoft.office365.supportTickets/allEntiteiten/allTasks | Office 365-ondersteuningstickets maken en beheren. |
+
 
 ### <a name="intune-service-administrator-permissions"></a>Machtigingen voor intune-servicebeheerders
 
@@ -1246,6 +1308,19 @@ Kan alleen berichten en updates voor hun organisatie lezen in Office 365 Message
 | microsoft.office365.webPortal/allEntiteiten/basic/read | Lees basiseigenschappen op alle bronnen in microsoft.office365.webPortal. |
 | microsoft.office365.messageCenter/berichten/gelezen | Lees berichten in microsoft.office365.messageCenter. |
 
+### <a name="network-administrator-permissions"></a>Machtigingen voor netwerkbeheerder
+Kan netwerklocaties beheren en de inzichten in het ontwerp van bedrijfsnetwerken voor Microsoft 365 Software as a Service-toepassingen bekijken.
+
+> [!NOTE]
+> Deze rol heeft extra machtigingen buiten Azure Active Directory. Zie bovenstaande rolbeschrijving voor meer informatie.
+>
+>
+
+| **Acties** | **Beschrijving** |
+| --- | --- |
+| microsoft.office365.network/performance/allProperties/read | Lees netwerkprestatiepagina's in het M365-beheercentrum.  |
+| microsoft.office365.network/locaties/allProperties/allTasks | Lees en configureer netwerklocaties eigenschappen voor elke locatie. |
+
 ### <a name="office-apps-administrator-permissions"></a>Beheerdersmachtigingen voor Office Apps
 Kan de cloudservices van Office-apps beheren, inclusief beheer van beleid en instellingen, en de mogelijkheid beheren om 'wat is er nieuw' functie-inhoud te selecteren, de selectie uit te voeren en te publiceren op apparaten van de eindgebruiker.
 
@@ -1261,6 +1336,7 @@ Kan de cloudservices van Office-apps beheren, inclusief beheer van beleid en ins
 | microsoft.office365.messageCenter/berichten/gelezen | Lees berichten in microsoft.office365.messageCenter. |
 | microsoft.office365.serviceHealth/allEntiteiten/allTasks | Office 365-servicestatus lezen en configureren. |
 | microsoft.office365.supportTickets/allEntiteiten/allTasks | Office 365-ondersteuningstickets maken en beheren. |
+| microsoft.office365.usageReports/allEntiteiten/gelezen | Lees de gebruiksrapporten van Office 365. |
 | microsoft.office365.userCommunicatie/alleEntiteiten/alleTaken | Lees en werk de zichtbaarheid van nieuwe berichten uit. |
 | microsoft.office365.webPortal/allEntiteiten/basic/read | Lees basiseigenschappen op alle bronnen in microsoft.office365.webPortal. |
 
@@ -1377,6 +1453,34 @@ Kan alle aspecten van Microsoft Dynamics 365, PowerApps en Microsoft Flow maken 
 | microsoft.office365.webPortal/allEntiteiten/basic/read | Lees basiseigenschappen op alle bronnen in microsoft.office365.webPortal. |
 | microsoft.office365.serviceHealth/allEntiteiten/allTasks | Office 365-servicestatus lezen en configureren. |
 | microsoft.office365.supportTickets/allEntiteiten/allTasks | Office 365-ondersteuningstickets maken en beheren. |
+
+### <a name="printer-administrator-permissions"></a>Machtigingen voor printerbeheerder
+
+Kan alle aspecten van printers en printerconnectoren beheren.
+
+> [!NOTE]
+> Deze rol heeft extra machtigingen buiten Azure Active Directory. Zie bovenstaande rolbeschrijving voor meer informatie.
+>
+>
+| **Acties** | **Beschrijving** |
+| --- | --- |
+| microsoft.azure.print/allEntiteiten/allProperties/allTasks | Maak en verwijder printers en connectoren en lees en werk alle eigenschappen in Microsoft Print. |
+
+### <a name="printer-technician-permissions"></a>Machtigingen printertechnicus
+
+Kan printers registreren en uitschrijven en de status van de printer bijwerken.
+
+> [!NOTE]
+> Deze rol heeft extra machtigingen buiten Azure Active Directory. Zie bovenstaande rolbeschrijving voor meer informatie.
+>
+>
+| **Acties** | **Beschrijving** |
+| --- | --- |
+| microsoft.azure.print/connectors/allProperties/read | Lees alle eigenschappen van connectors in Microsoft Print. |
+| microsoft.azure.print/printers/allProperties/read | Lees alle eigenschappen van printers in Microsoft Print. |
+| microsoft.azure.print/printers/basic/update | Basiseigenschappen van printers in Microsoft Print bijwerken. |
+| microsoft.azure.print/printers/register | Printers registreren in Microsoft Print. |
+| microsoft.azure.print/printers/uitschrijven | Het registreren van printers in Microsoft Print. |
 
 ### <a name="privileged-authentication-administrator-permissions"></a>Machtigingen voor bevoegde verificatiebeheerders
 
@@ -1565,6 +1669,7 @@ Kan alle aspecten van de SharePoint-service beheren.
 | microsoft.directory/groups/unified/delete | Office 365-groepen verwijderen. |
 | microsoft.directory/groups/unified/members/update | Het lidmaatschap van Office 365-groepen bijwerken. |
 | microsoft.directory/groups/unified/owners/update | Het eigendom van Office 365-groepen bijwerken. |
+| microsoft.office365.network/performance/allProperties/read | Lees netwerkprestatiepagina's in het M365-beheercentrum. |
 | microsoft.office365.serviceHealth/allEntiteiten/allTasks | Office 365-servicestatus lezen en configureren. |
 | microsoft.office365.sharepoint/allEntiteiten/allTasks | Alle resources maken en verwijderen en standaardeigenschappen lezen en bijwerken in microsoft.office365.sharepoint. |
 | microsoft.office365.supportTickets/allEntiteiten/allTasks | Office 365-ondersteuningstickets maken en beheren. |
@@ -1630,6 +1735,8 @@ Kan de Microsoft Teams-service beheren.
 
 | **Acties** | **Beschrijving** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntiteiten/allTasks | Azure Service Status lezen en configureren. |
+| microsoft.azure.supportTickets/allEntiteiten/allTasks | Azure-ondersteuningstickets maken en beheren. |
 | microsoft.directory/groups/hiddenMembers/read | Groep.hiddenMembers lezen, eigenschap in Azure Active Directory. |
 | microsoft.directory/groups/unified/appRoleAssignments/update | Eigenschap groepen.unified bijwerken in Azure Active Directory. |
 | microsoft.directory/groups/unified/basic/update | Basiseigenschappen van Office 365-groepen bijwerken. |
@@ -1637,12 +1744,11 @@ Kan de Microsoft Teams-service beheren.
 | microsoft.directory/groups/unified/delete | Office 365-groepen verwijderen. |
 | microsoft.directory/groups/unified/members/update | Het lidmaatschap van Office 365-groepen bijwerken. |
 | microsoft.directory/groups/unified/owners/update | Het eigendom van Office 365-groepen bijwerken. |
-| microsoft.azure.serviceHealth/allEntiteiten/allTasks | Azure Service Status lezen en configureren. |
-| microsoft.azure.supportTickets/allEntiteiten/allTasks | Azure-ondersteuningstickets maken en beheren. |
-| microsoft.office365.webPortal/allEntiteiten/basic/read | Lees basiseigenschappen op alle bronnen in microsoft.office365.webPortal. |
+| microsoft.office365.network/performance/allProperties/read | Lees netwerkprestatiepagina's in het M365-beheercentrum. |
 | microsoft.office365.serviceHealth/allEntiteiten/allTasks | Office 365-servicestatus lezen en configureren. |
 | microsoft.office365.supportTickets/allEntiteiten/allTasks | Office 365-ondersteuningstickets maken en beheren. |
 | microsoft.office365.usageReports/allEntiteiten/gelezen | Lees de gebruiksrapporten van Office 365. |
+| microsoft.office365.webPortal/allEntiteiten/basic/read | Lees basiseigenschappen op alle bronnen in microsoft.office365.webPortal. |
 
 ### <a name="user-administrator-permissions"></a>Machtigingen voor gebruikersbeheerders
 Kan alle aspecten van gebruikers en groepen beheren, inclusief het opnieuw instellen van wachtwoorden voor beperkte beheerders.
@@ -1719,18 +1825,22 @@ Algemene lezer | Globale lezer | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Groepsbeheerder | Beheerders van groepen | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Gast genodigden | Gast genodigden | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Helpdeskbeheerder | Helpdeskbeheerder | 729827e3-9c14-49f7-bb1b-9608f156bbb8
+Hybride identiteitsbeheerder | Hybride identiteitsbeheerder | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
 Intune-servicebeheerder | Intune-beheerder | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala-beheerder | Kaizala beheerder | 74ef975b-6605-40af-a5d2-b9539d836353
 Licentiebeheerder | Licentiebeheerder | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync-servicebeheerder | Skype voor Bedrijven-beheerder | 75941009-915a-4869-abe7-691bff18279e
 Privacylezer van het Berichtencentrum | Privacylezer van het Berichtencentrum | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Berichtcentrumlezer | Berichtcentrumlezer | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+Netwerkbeheerder | Netwerkbeheerder | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Beheerder van Office Apps | Beheerder van Office-apps | 2b745bdf-0803-4d80-aa65-822c4493daac
 Ondersteuning voor Partner Tier1 | Ondersteuning voor partnertier1 | 4ba39ca4-527c-499a-b93d-d9b492c50246
 Ondersteuning voor Partner Tier2 | Ondersteuning voor partnertier2 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Wachtwoordbeheerder | Wachtwoordbeheerder | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI-servicebeheerder | Power BI-beheerder | a9ea8996-122f-4c74-9520-8edcd192826c
 Beheerder van het Power-platform | Beheerder van het Energieplatform | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
+Printerbeheerder | Printerbeheerder | 644ef478-e28f-4e28-b9dc-3fdde9aa0b1f
+Printertechnicus | Printertechnicus | e8cef6f1-e4bd-4ea8-bc07-4b8d950f4477
 Beheerder van geprivilegieerde verificatie | Bevoegde verificatiebeheerder | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 Beheerder van een bevoorrechte rol | Bevoegde rolbeheerder | e8611ab8-c189-46e8-94e1-60213ab1f814
 Rapporten Reader | Rapporten lezer | 4a5d8f65-41da-4de4-8968-e035b65339cf

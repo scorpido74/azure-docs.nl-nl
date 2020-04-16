@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 260193b3c71e29a32e0589f50864ffcca2e9a67c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6b7ca1f10744bf38137c57d94d796655946c31b3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262261"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390347"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -58,7 +58,7 @@ Bekijk de volgende Azure-toepassingsdocumentatie, die Quickstarts, Tutorials en 
 
     * [Azure Quickstart-sjablonen](https://azure.microsoft.com/documentation/templates/)
     * [GitHub Azure Quickstart-sjablonen](https://github.com/azure/azure-quickstart-templates)
-    * [Toepassingsdefinitie publiceren](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+    * [Toepassingsdefinitie publiceren](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Servicecatalogus-app implementeren](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
 * Zelfstudies:
@@ -168,7 +168,7 @@ U moet marktplaatsdetails (aanbiedingsnaam, beschrijving, afbeeldingen, enz.) vo
 > [!NOTE]
 > Aanbieding sominhoud (zoals de beschrijving, documenten, screenshots, gebruiksvoorwaarden, enz.) is niet verplicht om in het Engels te zijn, zolang de aanbiedingsbeschrijving begint met de zinsnede: "Deze toepassing is alleen beschikbaar in [niet-Engelse taal]." Het is ook aanvaardbaar om een *URL voor nuttige koppelingen* op te geven om inhoud aan te bieden in een andere taal dan die welke wordt gebruikt in de inhoud van de aanbiedingsvermelding.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weergegeven als de titel van uw aanbiedingsvermelding. Dit veld wordt vooraf ingevuld met de tekst die u hebt ingevoerd voor **Alias Aanbieding** toen u de aanbieding maakte, maar u deze waarde wijzigen. Deze naam kan een handelsmerk hebben (en u handelsmerk- of auteursrechtsymbolen bevatten). De naam mag niet meer dan 50 tekens bevatten en kan geen emoji's bevatten.
 
@@ -308,7 +308,7 @@ Azure Government-services verwerken gegevens die onderworpen zijn aan bepaalde o
 
 Op het tabblad **lijstmetjes** met abonnementen worden de planspecifieke aanbiedingsgegevens weergegeven die kunnen verschillen tussen verschillende abonnementen voor dezelfde aanbieding.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 Vooraf ingevuld op basis van uw naam die u uw plan hebt toegewezen toen u het hebt gemaakt.  Deze naam wordt weergegeven als de titel van dit "Software-plan" dat in de markt wordt weergegeven.  Kan maximaal 100 tekens bevatten.
 

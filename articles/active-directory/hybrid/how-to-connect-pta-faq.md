@@ -16,12 +16,12 @@ ms.date: 03/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59bf7ae5914f5cc886d95f25b36abccfdf09c4a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 661d4f622dce45aeca1d41ead60f05ccdcfbc9c9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331286"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406885"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory Pass-Through-verificatie: veelgestelde vragen
 
@@ -121,7 +121,7 @@ Als u migreert van AD FS (of andere federatietechnologieën) naar Pass-through A
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>Kan ik Pass-through Authentication gebruiken in een Active Directory-omgeving met meerdere forest's?
 
-Ja. Multiforest-omgevingen worden ondersteund als er forestvertrouwensrelaties zijn tussen uw Active Directory-forests en als de routeringsplaats voor naamachtervoegsel correct is geconfigureerd.
+Ja. Omgevingen met meerdere foresten worden ondersteund als er forestvertrouwensrelaties (tweerichtingsrelaties) zijn tussen uw Active Directory-forests en als de routeringsplaats voor naamachtervoegsel correct is geconfigureerd.
 
 ## <a name="does-pass-through-authentication-provide-load-balancing-across-multiple-authentication-agents"></a>Biedt Pass-through Authentication taakverdeling voor meerdere verificatieagents?
 

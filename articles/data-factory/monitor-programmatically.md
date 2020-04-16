@@ -10,14 +10,17 @@ ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 43a31d588ff6616d7200d9773883ce5da570b100
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d416a4a2bace2aeced6961d4959b0478feb0e650
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927364"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398793"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Een Azure-gegevensfabriek programmatisch controleren
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 In dit artikel wordt beschreven hoe u een pijplijn in een gegevensfabriek controleren met behulp van verschillende softwaredevelopmentkits (SDK's). 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -84,7 +87,7 @@ print_activity_run_details(activity_runs_paged[0])
 
 Zie [Gegevensfabriek Python SDK-verwijzing](/python/api/overview/azure/datafactory?view=azure-python)voor volledige documentatie over Python SDK.
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 Zie [Een gegevensfabriek en -pijplijn maken met REST API](quickstart-create-data-factory-rest-api.md)voor een volledige walkthrough van het maken en bewaken van een pijplijn met REST API.
  
 1. Voer het volgende script uit om continu de status van de pijplijnuitvoering te controleren totdat het kopiëren van de gegevens is voltooid.

@@ -1,25 +1,26 @@
 ---
-title: Azure Event Grid Azure SignalR-gebeurtenisschema
+title: Azure SingnalR als gebeurtenisrasterbron
 description: Beschrijft de eigenschappen die worden geleverd voor Azure SignalR-gebeurtenissen met Azure Event Grid
 services: event-grid
-author: chenyl
+author: banisadr
 ms.service: event-grid
-ms.topic: reference
-ms.date: 06/11/2019
-ms.author: chenyl
-ms.openlocfilehash: 3b072ff2b680ad6d144c7441190ab2df9870f5d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: babanisa
+ms.openlocfilehash: 730d1a7a053ab636c45313dd0c35a537434eb782
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67789070"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393395"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure Event Grid-gebeurtenisschema voor SignalR-service
 
-In dit artikel worden de eigenschappen en het schema voor gebeurtenissen van de SignalR-service weergegeven.Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
+In dit artikel worden de eigenschappen en het schema voor gebeurtenissen van de SignalR-service weergegeven.Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md) Het geeft u ook een lijst met snelle starts en zelfstudies om Azure SignalR als gebeurtenisbron te gebruiken.
 
+## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
 
-## <a name="available-event-types"></a>Beschikbare gebeurtenistypen
+### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
 SignalR Service zendt de volgende gebeurtenistypen uit:
 
@@ -28,7 +29,7 @@ SignalR Service zendt de volgende gebeurtenistypen uit:
 | Microsoft.signalrService.ClientConnectionConnected | Verhoogd wanneer een clientverbinding is verbonden. |
 | Microsoft.signalrservice.clientConnectionDisconnected | Verhoogd wanneer een clientverbinding is verbroken. |
 
-## <a name="example-event"></a>Voorbeeldgebeurtenis
+### <a name="example-event"></a>Voorbeeldgebeurtenis
 
 In het volgende voorbeeld wordt het schema van een clientverbinding weergegeven die is verbonden: 
 
@@ -71,7 +72,7 @@ Het schema voor een verbroken gebeurtenis met de clientverbinding is vergelijkba
 }]
 ```
 
-## <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
@@ -95,6 +96,12 @@ Het gegevensobject heeft de volgende eigenschappen:
 | verbindingId | tekenreeks | De unieke id voor de clientverbinding. |
 | userId | tekenreeks | De gebruikers-id gedefinieerd in claim. |
 | Errormessage | tekenreeks | De fout die ervoor zorgt dat de verbinding wordt verbroken. |
+
+## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
+|Titel | Beschrijving |
+|---------|---------|
+| [Reageren op Azure SignalR Service-gebeurtenissen met gebeurtenisraster](../azure-signalr/signalr-concept-event-grid-integration.md) | Overzicht van de integratie van Azure SignalR Service met Event Grid. |
+| [Azure SignalR Service-gebeurtenissen verzenden naar gebeurtenisraster](../azure-signalr/signalr-howto-event-grid-integration.md) | Hier ziet u hoe u Azure SignalR Service-gebeurtenissen naar een toepassing verzendt via gebeurtenisraster. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

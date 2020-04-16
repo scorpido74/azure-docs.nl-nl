@@ -4,14 +4,14 @@ description: Leer de concepten en technieken azure functions die u nodig hebt om
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6af3d7ab1fdd35391c9a189162c57dfb259f2d4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276619"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405342"
 ---
-# <a name="azure-functions-developers-guide"></a>Handleiding azure functions-ontwikkelaars
+# <a name="azure-functions-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions
 In Azure-functies delen specifieke functies een aantal belangrijke technische concepten en componenten, ongeacht de taal of binding die u gebruikt. Voordat u in het leren van details die specifiek zijn voor een bepaalde taal of binding, moet u lezen door middel van dit overzicht dat van toepassing is op alle van hen.
 
 In dit artikel wordt ervan uitgegaan dat u het [overzicht Azure-functies](functions-overview.md)al hebt gelezen.

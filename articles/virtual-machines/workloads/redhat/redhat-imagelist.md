@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: e6109a87750e588b12bfc9836c5db3db55420ec2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40a715ea27be161f09dea59e57799b08406e8ca7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133804"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393764"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>RHEL-afbeeldingen (Red Hat Enterprise Linux) beschikbaar in Azure
 Azure biedt een verscheidenheid aan RHEL-afbeeldingen voor verschillende use cases.
@@ -76,6 +76,9 @@ rhel-byos     |rhel-lvm74| Lvm    | Linux-agent | RHEL 7.4 BYOS-afbeeldingen, di
 |             |rhel-lvm76| Lvm    | Linux-agent | RHEL 7.6 BYOS-afbeeldingen, die niet zijn gekoppeld aan een bron van updates, brengen geen RHEL-premie in rekening.
 |             |rhel-lvm77| Lvm    | Linux-agent | RHEL 7.7 BYOS-afbeeldingen, die niet zijn gekoppeld aan een bron van updates, brengen geen RHEL-premie in rekening.
 |             |rhel-lvm8 | Lvm    | Linux-agent | RHEL 8 BYOS-afbeeldingen (RHEL-secundaire versie wordt weergegeven in de waarde van de afbeeldingsversie), die niet is gekoppeld aan een bron van updates, brengt geen RHEL-premie in rekening.
+
+> [!NOTE]
+> Het RHEL-SAP-HANA productaanbod wordt door Red Hat als end of life beschouwd. Bestaande implementaties blijven normaal werken, maar Red Hat raadt klanten aan om van de RHEL-SAP-HANA-afbeeldingen naar de RHEL-SAP-HA-afbeeldingen te migreren, waaronder de SAP HANA-repositories en de HA-add-on. Meer details over het SAP-cloudaanbod van Red Hat zijn [hier](https://access.redhat.com/articles/3751271)beschikbaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over de [Red Hat-afbeeldingen in Azure](./redhat-images.md).

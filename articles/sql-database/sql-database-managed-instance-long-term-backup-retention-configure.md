@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 0af322d589efd48cc224c69cef8e96fb887d9868
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: c9edbbf54696a817d0495f6890e0d796e482231f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81384218"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393723"
 ---
 # <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL Database beheerde instantie voor langdurige back-upretentie (PowerShell)
 
@@ -34,7 +34,7 @@ In de volgende secties ziet u hoe u PowerShell gebruiken om de langetermijnback-
 Voor **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** en **Restore-AzSqlInstanceDatabase**moet u een van de volgende rollen hebben:
 
 - Rol van abonnement-eigenaar of
-- SManaged Instance Contributor rol of
+- Rol van beheerde instantieinzender of
 - Aangepaste rol met de volgende machtigingen:
 
    ```Microsoft.Sql/locations/longTermRetentionManagedInstanceBackups/read``` ```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read```
@@ -48,7 +48,7 @@ Voor **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup**moet u een van de vo
    ```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete```
 
 > [!NOTE]
-> De rol SManaged Instance Contributor heeft geen toestemming om LTR-back-ups te verwijderen.
+> De rol Inzender van beheerde instantie heeft geen toestemming om LTR-back-ups te verwijderen.
 
 RBAC-machtigingen kunnen worden verleend in het bereik van *een abonnement* of *resourcegroep.* Om toegang te krijgen tot LTR-back-ups die behoren tot een gevallen exemplaar, moet de toestemming echter worden verleend in het *abonnementsbereik* van die instantie.
 
