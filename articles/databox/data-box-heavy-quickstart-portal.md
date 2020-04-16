@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 70d5481c37777150927914042133286a77f53b89
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 15140ef392d8108b59bf50c396e529dc15951232
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76514405"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410917"
 ---
 ::: zone target = "docs"
 
@@ -39,11 +39,7 @@ Zorg voordat u begint voor het volgende:
 
 ### <a name="for-service"></a>Voor de service
 
-Zorg voordat u begint voor het volgende:
-
-- U hebt een Microsoft Azure Storage-account met toegangsreferenties.
-- Het abonnement dat u gebruikt voor Data Box-service is [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) of [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
-- U hebt als eigenaar of inzender toegang tot het abonnement om een Data Box Heavy-order te kunnen maken.
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>Voor het apparaat
 
@@ -57,7 +53,6 @@ Zorg voordat u begint voor het volgende:
     - Voor de kabel van 40 Gbps moet het apparaatuiteinde van de kabel QSFP+ zijn.
     - Voor de kabel van 10 Gbps hebt u een SFP+-kabel nodig die op één kant van een 10-G-switch wordt aangesloten, met een QSFP+-naar-SFP+-adapter (of de QSA-adapter) voor het uiteinde dat op het apparaat wordt aangesloten.
 - De voedingskabels bevinden zich in een lade aan de achterkant van het apparaat.
-
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

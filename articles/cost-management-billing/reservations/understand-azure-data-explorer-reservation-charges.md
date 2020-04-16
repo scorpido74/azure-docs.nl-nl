@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a418841d91ab6b8fe5457f3fd64d91306fe08dfe
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199327"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383111"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Reserveringskorting toepassen op Azure Data Explorer
 
@@ -65,7 +65,7 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
-* [Vooruitbetalen voor Azure Data Explorer-rekenresources met gereserveerde capaciteit voor Azure Data Explorer](../../data-explorer/pricing-reserved-capacity.md)  
+* [Vooruitbetalen voor Azure Data Explorer-rekenresources met gereserveerde capaciteit voor Azure Data Explorer](/azure/data-explorer/pricing-reserved-capacity)  
 * [Wat zijn reserveringen voor Azure](save-compute-costs-reservations.md)  
 * [Azure-reserveringen beheren](manage-reserved-vm-instance.md)  
 * [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](understand-reserved-instance-usage.md)
