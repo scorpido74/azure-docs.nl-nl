@@ -8,13 +8,13 @@ ms.author: ladolan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/06/2020
-ms.openlocfilehash: a35f34ed27299077dca78630511ea3c291caff60
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 04/13/2020
+ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804973"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415988"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Logische apps beheren in de Azure-portal
 
@@ -177,6 +177,46 @@ Het verwijderen van uw logische app is van invloed op uw werkstroominstanties op
    ![Bevestigen om uw logische apps te verwijderen](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 
    De Azure-portal toont een melding op de belangrijkste Azure-werkbalk die bevestigt of uw bewerking is geslaagd of mislukt.
+
+<a name="manage-logic-app-versions"></a>
+
+## <a name="manage-logic-app-versions"></a>Logische app-versies beheren
+
+U de Azure-portal gebruiken voor versiebeheer van uw logische apps. U de versiegeschiedenis van uw logica-app vinden en eerdere versies promoten.
+
+<a name="find-version-history"></a>
+
+### <a name="find-and-view-previous-versions"></a>Vorige versies zoeken en bekijken
+
+1. Zoek in de Azure-portal [de logische app die u wilt beheren.](#find-logic-app)
+
+1. Selecteer in het menu van uw logica-app onder **Hulpmiddelen voor ontwikkeling**de optie **Versies**.
+
+   ![Selecteer in het menu van uw logische app de optie 'Versies' onder 'Ontwikkelhulpmiddelen'.](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
+
+1. Selecteer de **versie** van uw logische app die u wilt beheren in de lijst. U de **versie-id** invoeren in de zoekbalk om de lijst te filteren.
+
+1. Op de pagina **Geschiedenis ziet** u de details van de vorige versie in de alleen-lezen modus. U kiezen tussen de modi Logic Apps **Designer** en **Code view.**
+
+   ![Pagina geschiedenisversie voor logische app met codeweergave en logische apps-ontwerpweergave](./media/manage-logic-apps-with-azure-portal/history-version.png)
+
+<a name="promote-previous-versions"></a>
+
+### <a name="promote-previous-versions"></a>Eerdere versies promoten
+
+1. [Zoek en selecteer de versie die u wilt promoten](#find-version-history)in de versiegeschiedenis van uw logica-app.
+
+1. Selecteer **op** de pagina Geschiedenis de optie **Promoten**.
+
+   ![Knop Promoten in de versiegeschiedenis van de logische app](./media/manage-logic-apps-with-azure-portal/promote-button.png)
+
+1. Bewerk op de pagina **Logic Apps Designer** die wordt geopend de versie die u wilt promoten als dat nodig is. U schakelen tussen **modi voor de weergave van ontwerpers** en **code.** U ook **parameters,** **sjablonen**en **connectoren bijwerken.**
+
+   ![Logische Apps-pagina voor het promoten van een vorige versie](./media/manage-logic-apps-with-azure-portal/promote-page.png)
+
+1. Als u eventuele updates wilt opslaan en de vorige versie wilt promoten, selecteert u **Opslaan**. (Of als u uw wijzigingen wilt annuleren, selecteert u **Verwijderen**.) 
+
+   Wanneer u de [versiegeschiedenis van uw logische app](#find-version-history) opnieuw bekijkt, wordt de gepromote versie boven aan de lijst weergegeven en heeft deze een nieuwe id.
 
 ## <a name="next-steps"></a>Volgende stappen
 

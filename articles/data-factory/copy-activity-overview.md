@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: edb80c604951a140d21e3775eec3f1dc6d55af73
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 2557ce7be44f0505b96df06cd2b44a2fa3ce3fdb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421415"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414221"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Activiteit kopiëren in Azure Data Factory
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory die u gebruikt:"]
 > * [Versie 1](v1/data-factory-data-movement-activities.md)
 > * [Huidige versie](copy-activity-overview.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In Azure Data Factory u de activiteit Kopiëren gebruiken om gegevens te kopiëren tussen gegevensarchieven die zich on-premises en in de cloud bevinden. Nadat u de gegevens hebt gekopieerd, u andere activiteiten gebruiken om deze verder te transformeren en te analyseren. U de activiteit Kopiëren ook gebruiken om transformatie- en analyseresultaten te publiceren voor business intelligence (BI) en toepassingsverbruik.
 

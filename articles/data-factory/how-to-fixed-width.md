@@ -8,14 +8,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: d6885e9b30cc71bda822a29574c4d574f2b020a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d629a9031f032a77efc953311a45b55996568191
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72387055"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414377"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Tekstbestanden met een vaste lengte verwerken met gegevensstromen in kaartbrengen
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Door gegevensstromen in Microsoft Azure Data Factory te toewijzen, u gegevens transformeren uit tekstbestanden met een vaste breedte. In de volgende taak definiëren we een gegevensset voor een tekstbestand zonder scheidingsteken en stellen we subtekenreekssplitsingen in op basis van een ordinale positie.
 

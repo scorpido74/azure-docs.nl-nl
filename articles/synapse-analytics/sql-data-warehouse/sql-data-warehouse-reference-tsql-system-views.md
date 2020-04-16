@@ -11,12 +11,12 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 104b377d9a1318a7320ea382580aaeedf9ac25f9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d673c5afcaece9b1cfe50d800ea9eeca96532ae8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745152"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411618"
 ---
 # <a name="system-views-supported-in-synapse-sql-pool"></a>Systeemweergaven ondersteund in Synapse SQL-pool
 
@@ -150,16 +150,16 @@ De volgende DMVs zijn van toepassing op synapsische SQL-pool, maar moeten worden
 * [sys.types](/sql/relational-databases/system-catalog-views/sys-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.views](/sql/relational-databases/system-catalog-views/sys-views-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-available-in-synapse-sql-pool"></a>SQL Server DMVs beschikbaar in Synapse SQL-groep
+## <a name="sql-server-dmvs-available-in-sql-pool"></a>SQL Server DMVs beschikbaar in SQL-groep
 
-Synapse SQL-pool onthult veel van de SQL Server dynamic management views (DMVs). Deze weergaven, wanneer deze worden opgevraagd in de Synapse SQL-groep, rapporteren de status van SQL-databases die op de distributies worden uitgevoerd.
+SQL-pool legt veel van de SQL Server dynamic management views (DMVs) bloot. Deze weergaven, wanneer deze worden opgevraagd in SQL-groep, rapporteren de status van SQL-databases die op de distributies worden uitgevoerd.
 
 Synapse SQL pool en Parallel Data Warehouse (PDW) gebruiken dezelfde systeemweergaven. Elke DMV heeft een kolom met de naam pdw_node_id, de id voor het Compute-knooppunt.
 
 > [!NOTE]
 > Als u deze weergaven wilt gebruiken, voegt u 'pdw_nodes_' in de naam in, zoals in de volgende tabel wordt weergegeven:
 
-| DMV-naam in Synapse SQL-pool | SQL Server Transact-SQL-artikel|
+| DMV-naam in SQL-groep | SQL Server Transact-SQL-artikel|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
@@ -221,9 +221,9 @@ Synapse SQL pool en Parallel Data Warehouse (PDW) gebruiken dezelfde systeemweer
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-top-version-generators-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-synapse-sql-pool"></a>SQL Server 2016 PolyBase DMVs beschikbaar in Synapse SQL-pool
+## <a name="sql-server-2016-polybase-dmvs-available-in-sql-pool"></a>SQL Server 2016 PolyBase DMVs beschikbaar in SQL-groep
 
-De volgende DMVs zijn van toepassing op synapsische SQL-pool, maar moeten worden uitgevoerd door verbinding te maken met de **hoofddatabase.**
+De volgende DMVs zijn van toepassing op SQL-pool, maar moeten worden uitgevoerd door verbinding te maken met de **hoofddatabase.**
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

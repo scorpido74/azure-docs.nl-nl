@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/09/2020
-ms.openlocfilehash: d37b4648c0a37f16fe5c9d8794bd78417c5780ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd7844340553809e1429097a9dda70f6bdb3e075
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257883"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414195"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Functies voor optimalisatie van activiteitsprestaties kopiëren
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel worden de optimalisatiefuncties voor kopieeractiviteiten beschreven die u gebruiken in Azure Data Factory.
 
@@ -134,7 +136,7 @@ Wanneer u de faseringsfunctie activeert, worden de gegevens eerst gekopieerd van
 
 ![Gefaseerde kopie](media/copy-activity-performance/staged-copy.png)
 
-Wanneer u gegevensverplaatsing activeert met behulp van een faseringsarchief, u opgeven of u wilt dat de gegevens worden gecomprimeerd voordat u gegevens van het brongegevensarchief naar een gegevensarchief verplaatst en vervolgens wordt gedecomprimeerd voordat u gegevens van een tijdelijke of tijdelijke fase verplaatst gegevens archief naar de gootsteen data store.
+Wanneer u gegevensverplaatsing activeert met behulp van een faseringsarchief, u opgeven of u wilt dat de gegevens worden gecomprimeerd voordat u gegevens van het brongegevensarchief naar een gegevensarchief verplaatst naar een gegevensarchief en vervolgens decomprimeert voordat u gegevens verplaatst van een tussentijds of faseringsgegevensarchief naar het gegevensarchief van de gootsteen.
 
 Momenteel u geen gegevens kopiëren tussen twee gegevensopslag die zijn verbonden via verschillende zelfgehoste IRs, noch met noch zonder gefaseerde kopie. Voor een dergelijk scenario u twee expliciet geketende kopieeractiviteit configureren om van bron naar fasering te kopiëren en vervolgens van staging naar sink.
 
@@ -187,7 +189,7 @@ Hier vindt u een voorbeelddefinitie van een kopieeractiviteit met de eigenschapp
 Er worden kosten in rekening gebracht op basis van twee stappen: kopieerduur en kopieertype.
 
 * Wanneer u staging gebruikt tijdens een cloudkopie, die gegevens kopieert van een cloudgegevensarchief naar een ander cloudgegevensarchief, beide fasen die worden ondersteund door de runtime van Azure-integratie, wordt de [som van de kopieerduur voor stap 1 en stap 2] x [prijs voor cloudkopieëen/ eenheidsopslagruimte) in rekening gebracht.
-* Wanneer u staging gebruikt tijdens een hybride kopie, die gegevens kopieert van een on-premises gegevensarchief naar een cloudgegevensarchief, een fase die wordt ondersteund door een zelfgehoste runtime voor integratie, worden kosten in rekening gebracht voor [hybride kopieerduur] x [prijs voor hybride kopieereenheden] + [duur van cloudkopieëen] x [prijs voor kopieën per eenheid in de cloud).
+* Wanneer u staging gebruikt tijdens een hybride kopie, die gegevens kopieert van een on-premises gegevensarchief naar een cloudgegevensarchief, een fase die wordt ondersteund door een zelfgehoste runtime voor integratie, worden kosten in rekening gebracht voor [hybride kopieerduur] x [prijs voor hybride kopieën eenheid] + [duur van cloudkopieëen] x [prijs voor cloudkopieëe eenheden].
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de andere artikelen van de exemplaaractiviteit:

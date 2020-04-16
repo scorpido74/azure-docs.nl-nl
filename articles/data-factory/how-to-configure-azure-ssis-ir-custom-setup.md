@@ -11,15 +11,17 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: d6252b7a0ecce553bc3a1519055375fd4cd034f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 3aabf68b6763e5815a03021cb02683d509c26190
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336187"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415057"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>De installatie aanpassen voor een runtime voor Azure-SSIS-integratie
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 De aangepaste installatie voor een Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) biedt een interface voor het toevoegen van uw eigen stappen tijdens het instellen of opnieuw configureren van uw Azure-SSIS IR. 
 
@@ -32,7 +34,7 @@ U op twee manieren aangepaste instellingen op uw Azure-SSIS IR doen:
 U zowel gratis, niet-gelicentieerde componenten als betaalde, gelicentieerde componenten installeren met express en standaard aangepaste opstellingen. Zie Betaalde [of gelicentieerde onderdelen ontwikkelen voor een Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md)als u een onafhankelijke softwareleverancier (ISV) bent.
 
 > [!IMPORTANT]
-> Omdat v2-serie knooppunten van een Azure-SSIS IR niet geschikt zijn voor aangepaste installatie, gebruikt u in plaats daarvan v3-serieknooppunten. Als u al knooppunten uit de V2-serie gebruikt, schakelt u zo snel mogelijk over naar knooppunten uit de V3-serie.
+> Om te profiteren van toekomstige verbeteringen, raden we u aan v3 of hoger reeks knooppunten te gebruiken voor uw Azure-SSIS IR met aangepaste installatie.
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 

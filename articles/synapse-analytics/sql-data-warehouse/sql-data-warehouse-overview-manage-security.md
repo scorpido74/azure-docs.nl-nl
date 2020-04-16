@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 0c30294f2ca139a602074a980810e7c6737c4e2d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 27d3a242d91a79ea00974748f4a8b5460d2dd247
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742982"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416061"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Een database beveiligen in Azure Synapse
 
@@ -104,4 +104,4 @@ U uw database versleutelen met de [Azure-portal](sql-data-warehouse-encryption-t
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Verbinding maken met [SQL-pool](sql-data-warehouse-connect-overview.md)voor meer informatie en voorbeelden over verbinding maken met uw magazijn met verschillende protocollen.
+Zie Verbinding maken met [SQL-pool](../sql/connect-overview.md)voor meer informatie en voorbeelden over verbinding maken met uw magazijn met verschillende protocollen.

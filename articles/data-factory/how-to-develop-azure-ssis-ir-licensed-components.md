@@ -11,14 +11,16 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: 599b54f8a5d97ee5ed29ce4df16980f456ffb919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a4c1f8b95c66c26944d455a2ab6163d1da72731
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74914583"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414344"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Betaalde of gelicentieerde aangepaste onderdelen installeren voor Azure-SSIS Integration Runtime
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In dit artikel wordt beschreven hoe een ISV betaalde of gelicentieerde aangepaste componenten kan ontwikkelen en installeren voor SQL Server Integration Services (SSIS)-pakketten die in Azure worden uitgevoerd in de runtime van Azure-SSIS-integratie.
 

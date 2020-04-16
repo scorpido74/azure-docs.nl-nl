@@ -9,14 +9,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 8941c097fbb2d05c3a28be87d216b7a2679ebc68
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: a728ec6f261b82d563aeb4a8f5c98bbd546f4400
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804891"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413214"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Sinktransformatie in kaartgegevensstroom
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Nadat u uw gegevens hebt getransformeerd, u de gegevens in een doelgegevensset laten zinken. Elke gegevensstroom vereist ten minste één sinktransformatie, maar u naar zoveel putten schrijven als nodig is om uw transformatiestroom te voltooien. Als u naar extra putten wilt schrijven, maakt u nieuwe streams via nieuwe branches en voorwaardelijke splitsingen.
 

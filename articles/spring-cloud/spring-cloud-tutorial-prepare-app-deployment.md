@@ -1,21 +1,21 @@
 ---
-title: Zelfstudie - Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud
-description: In deze zelfstudie bereidt u een Java Spring-toepassing voor voor op implementatie naar Azure Spring Cloud.
+title: How-to - Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud
+description: In dit onderwerp bereidt u een Java Spring-toepassing voor voor op implementatie naar Azure Spring Cloud.
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 49ebfec131c8b9fa7b8535163c03eb7cb692790d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 025dbc56fb46ef5b6225d35564b8e4ac3c82e6e3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78200019"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414466"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud
 
-Deze quickstart laat zien hoe u een bestaande Java Spring-toepassing voorbereidt voor implementatie naar Azure Spring Cloud. Als azure spring cloud goed is geconfigureerd, biedt het robuuste services om uw Java Spring Cloud-toepassing te bewaken, te schalen en bij te werken.
+In dit onderwerp wordt uitgelegd hoe u een bestaande Java Spring-toepassing voorbereidt voor implementatie naar Azure Spring Cloud. Als azure spring cloud goed is geconfigureerd, biedt het robuuste services om uw Java Spring Cloud-toepassing te bewaken, te schalen en bij te werken.
 
 In andere voorbeelden wordt uitgelegd hoe u een toepassing implementeert naar Azure Spring Cloud wanneer het POM-bestand is geconfigureerd. 
 * [App starten met de Azure-portal](spring-cloud-quickstart-launch-app-portal.md)
@@ -225,7 +225,7 @@ Neem de `spring-cloud-starter-sleuth` `spring-cloud-starter-zipkin` volgende en 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u uw Java Spring-toepassing configureert voor implementatie naar Azure Spring Cloud. Ga verder naar de volgende zelfstudie voor meer informatie over het instellen van een Config Server-exemplaar.
+In dit onderwerp hebt u geleerd hoe u uw Java Spring-toepassing configureert voor implementatie naar Azure Spring Cloud. Zie het volgende artikel voor meer informatie over het instellen van een Config Server-exemplaar.
 
 > [!div class="nextstepaction"]
 > [Meer informatie over het instellen van een Config Server-exemplaar](spring-cloud-tutorial-config-server.md)

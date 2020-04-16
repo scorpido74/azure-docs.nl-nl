@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/22/2018
-ms.openlocfilehash: dc6d8c9da749e7ee60713f4357dc6d46051d89f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1943c16c678d0783b99a0f16c25fa72137defc8a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131279"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415895"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in Azure SQL Data Warehouse laden met behulp van Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 [Azure SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) is een cloudgebaseerde, scale-out database die in staat is om enorme hoeveelheden gegevens te verwerken, zowel relationeel als niet-relationeel. SQL Data Warehouse is gebouwd op de enorm parallelle processing (MPP)-architectuur die is geoptimaliseerd voor enterprise data warehouse workloads. Het biedt cloudelasticiteit met de flexibiliteit om opslag en rekenkracht onafhankelijk te schalen.
 

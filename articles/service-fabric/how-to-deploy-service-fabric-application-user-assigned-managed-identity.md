@@ -3,14 +3,14 @@ title: App implementeren met een door de gebruiker toegewezen beheerde identitei
 description: In dit artikel ziet u hoe u servicefabric-toepassing implementeert met een door de gebruiker toegewezen beheerde identiteit
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610332"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415631"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Servicefabric-toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit (voorbeeld)
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Servicefabric-toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit
 
 Als u een Service Fabric-toepassing met beheerde identiteit wilt implementeren, moet de toepassing worden geïmplementeerd via Azure Resource Manager, meestal met een Azure Resource Manager-sjabloon. Zie Toepassingen en services beheren als Azure Resource [Manager-bronnen](service-fabric-application-arm-resource.md)voor meer informatie over het implementeren van Service Fabric-toepassingen via Azure Resource Manager.
 

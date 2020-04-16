@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 6e0c98cffef06fb6d6345fc2b23bbc22715909b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3432f981df3f666d6276eee4564ef33000faa6b1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370182"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410898"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Uitgaand netwerkverkeer configureren voor Azure HDInsight-clusters met Firewall
 
@@ -62,19 +62,19 @@ Maak een verzameling van toepassingsregels waarmee het cluster belangrijke commu
 
     | Eigenschap|  Waarde|
     |---|---|
-    |Name| FwAppRule|
+    |Naam| FwAppRule|
     |Prioriteit|200|
     |Actie|Toestaan|
 
     **Sectie FQDN-tags**
 
-    | Name | Bronadres | FQDN-tag | Opmerkingen |
+    | Naam | Bronadres | FQDN-tag | Opmerkingen |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate en HDInsight | Vereist voor HDI-services |
 
     **FQDN's target**
 
-    | Name | Bronadressen | Protocol:Poort | Doel FQDNS | Opmerkingen |
+    | Naam | Bronadressen | Protocol:Poort | Doel FQDNS | Opmerkingen |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Hiermee u Windows-aanmeldingsactiviteit |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Hiermee u Windows-aanmeldingsactiviteit |
@@ -96,13 +96,13 @@ Maak de netwerkregels om uw HDInsight-cluster correct te configureren.
 
     | Eigenschap|  Waarde|
     |---|---|
-    |Name| FwnetRule|
+    |Naam| FwnetRule|
     |Prioriteit|200|
     |Actie|Toestaan|
 
     **Sectie IP-adressen**
 
-    | Name | Protocol | Bronadressen | Bestemmingsadressen | Doelpoorten | Opmerkingen |
+    | Naam | Protocol | Bronadressen | Bestemmingsadressen | Doelpoorten | Opmerkingen |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Tijdservice |
     | Rule_2 | Alle | * | DC_IP_Address_1, DC_IP_Address_2 | * | Als u het Enterprise Security Package (ESP) gebruikt, voegt u een netwerkregel toe in de sectie IP-adressen waarmee u met AAD-DS voor ESP-clusters communiceren. U vindt de IP-adressen van de domeincontrollers op de AAD-DS sectie in de portal |
@@ -111,7 +111,7 @@ Maak de netwerkregels om uw HDInsight-cluster correct te configureren.
 
     **Sectie Servicetags**
 
-    | Name | Protocol | Bronadressen | Servicetags | Bestemmingspoorten | Opmerkingen |
+    | Naam | Protocol | Bronadressen | Servicetags | Bestemmingspoorten | Opmerkingen |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Configureer een netwerkregel in de sectie Servicetags voor SQL waarmee u SQL-verkeer registreren en controleren, tenzij u Service-eindpunten voor SQL Server hebt geconfigureerd op het HDInsight-subnet, waardoor de firewall wordt omzeild. |
 
@@ -221,7 +221,7 @@ Met de vorige instructies u Azure Firewall configureren voor het beperken van ui
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS-afhankelijkheden
 
 > [!Important]
-> De onderstaande lijst geeft slechts een paar van de belangrijkste FQDNs. U de volledige lijst met FQDN's voor het configureren van uw NVA [in dit bestand](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)krijgen.
+> De onderstaande lijst geeft slechts een paar van de belangrijkste FQDNs. U extra FQDN's (voornamelijk Azure Storage en Azure Service Bus) krijgen voor het configureren van uw NVA [in dit bestand.](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)
 
 | **Eindpunt**                                                          |
 |---|

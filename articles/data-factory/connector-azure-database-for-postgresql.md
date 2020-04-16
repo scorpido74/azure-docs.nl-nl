@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/16/2019
-ms.openlocfilehash: 67d59e3f733efe5a248e6763f46402302496d437
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b85e72ae6698cd9fa018c940e158bfcf25279ed5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444376"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410468"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Gegevens van en naar Azure Database voor PostgreSQL kopiëren met Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel wordt beschreven hoe u de functie kopieeractiviteit in Azure Data Factory gebruiken om gegevens uit Azure Database voor PostgreSQL te kopiëren. Het bouwt voort op het artikel [Kopieeractiviteit in Azure Data Factory,](copy-activity-overview.md) dat een algemeen overzicht van kopieeractiviteit weergeeft.
 

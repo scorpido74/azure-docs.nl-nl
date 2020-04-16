@@ -11,15 +11,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 26dd7c4f33360030b13ddbfc1516396436724c40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440446"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415279"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Pijplijnactiviteit uitvoeren in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 De activiteit Execute Pipeline stelt een Data Factory-pijplijn in staat om een andere pijplijn aan te roepen.
+
+
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -255,6 +260,6 @@ De hoofdpijplijn stuurt deze waarden door naar de aangeroepen pijplijn, zoals in
 Bekijk andere controlestroomactiviteiten die worden ondersteund door Data Factory: 
 
 - [Voor elke activiteit](control-flow-for-each-activity.md)
-- [Get Metadata Activity](control-flow-get-metadata-activity.md)
-- [Lookup Activity](control-flow-lookup-activity.md)
-- [Webactiviteit](control-flow-web-activity.md)
+- [Activiteit ophalen van metagegevens](control-flow-get-metadata-activity.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Web Activity](control-flow-web-activity.md)

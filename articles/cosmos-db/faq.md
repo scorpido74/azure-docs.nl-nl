@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 114c632d43dbb254222def2437fbffc22ec84688
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 4c76bcbf945c63588f8471c10deca0b5982d3562
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672467"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414233"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Veelgestelde vragen over verschillende API's in Azure Cosmos DB
 
@@ -236,7 +236,7 @@ Samen met de algemene MongoDB-foutcodes heeft de API van Azure Cosmos DB voor Mo
 
 Ja, u Simba's Mongo ODBC-stuurprogramma gebruiken met azure cosmos DB's API voor MongoDB
 
-## <a name="table-api"></a><a id="table"></a>Table-API
+## <a name="table-api"></a><a id="table"></a>Tabel-API
 
 ### <a name="how-can-i-use-the-table-api-offering"></a>Hoe kan ik het Table API-aanbod gebruiken?
 
@@ -404,7 +404,7 @@ U zoveel regio's toevoegen als u wilt voor het account en bepalen waar het niet 
 
 ### <a name="is-the-table-api-enabled-for-backups"></a>Is de Tabel-API ingeschakeld voor back-ups?
 
-Ja, de Tabel-API maakt gebruik van het platform van Azure Cosmos DB voor back-ups. Back-ups worden automatisch gemaakt. Zie [Online back-up en herstel met Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)voor meer informatie.
+Ja, de Tabel-API maakt gebruik van het platform van Azure Cosmos DB voor back-ups. Back-ups worden automatisch gemaakt. Zie [Online back-up en herstel met Azure Cosmos DB](online-backup-and-restore.md)voor meer informatie.
 
 ### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>Indexeert de Tabel-API standaard alle kenmerken van een entiteit?
 
@@ -761,7 +761,7 @@ Op dit moment heeft Azure Cosmos DB een geoptimaliseerde ervaring voor cloudomge
 ### <a name="does-cassandra-api-provide-full-backups"></a>Biedt Cassandra API volledige back-ups?
 
 Azure Cosmos DB biedt twee gratis volledige back-ups die vandaag met een interval van vier uur zijn gemaakt voor alle API's. Dit zorgt ervoor dat u geen back-upschema en andere dingen hoeft in te stellen.
-Als u de retentie en frequentie wilt [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) wijzigen, stuurt u een e-mail naar of verhoogt u een ondersteuningsaanvraag. U vindt informatie over back-upmogelijkheden in het artikel [Automatische online back-up en herstel met het](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) azure cosmos DB-artikel.
+Als u de retentie en frequentie wilt [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) wijzigen, stuurt u een e-mail naar of verhoogt u een ondersteuningsaanvraag. U vindt informatie over back-upmogelijkheden in het artikel [Automatische online back-up en herstel met het](online-backup-and-restore.md) azure cosmos DB-artikel.
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Hoe verwerkt de Cassandra API-account failover als een regio uitvalt?
 

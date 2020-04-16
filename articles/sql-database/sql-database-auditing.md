@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 682735e1189333c2455863b8fde8e57d815111ba
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 4e20129502e7538bd2f3354b75b33095970e1595
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387696"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411869"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL-controle
 
@@ -81,7 +81,7 @@ In de volgende sectie wordt de configuratie van controle beschreven met behulp v
 2. Navigeer naar **Controle onder** de kop Beveiliging in het sql-database/servervenster.
 3. Als u liever een servercontrolebeleid instelt, u de koppeling **Serverinstellingen weergeven** selecteren op de pagina databasecontrole. U vervolgens de controle-instellingen van de server weergeven of wijzigen. Servercontrolebeleid is van toepassing op alle bestaande en nieuw gemaakte databases op deze server.
 
-    ![Navigatievenster][2]
+    ![Navigatievenster](./media/sql-database-auditing-get-started/2_auditing_get_started_server_inherit.png)
 
 4. Als u de controle op databaseniveau liever inschakelt, schakelt u **Controle** over op **AAN**. Als servercontrole is ingeschakeld, bestaat de door de database geconfigureerde audit naast de servercontrole.
 
@@ -94,7 +94,7 @@ In de volgende sectie wordt de configuratie van controle beschreven met behulp v
 Als u het schrijven van controlelogboeken wilt configureren voor een opslagaccount, selecteert u **Opslaggegevens** en **opent u Opslaggegevens**. Selecteer het Azure-opslagaccount waar logboeken worden opgeslagen en selecteer vervolgens de bewaarperiode. Klik vervolgens op **OK**. Logboeken die ouder zijn dan de bewaartermijn worden verwijderd.
 
 - De standaardwaarde voor bewaartermijn is 0 (onbeperkte retentie). U deze waarde wijzigen door de schuifregelaar **Retentie (Dagen)** in **Opslaginstellingen** te verplaatsen wanneer u het opslagaccount configureert voor controle.
-  - Als u de bewaartermijn wijzigt van 0 (onbeperkte retentie) naar een andere waarde, moet u er rekening mee houden dat bewaarwaarde alleen van toepassing is op logboeken die zijn geschreven nadat de bewaarwaarde is gewijzigd (logboeken die zijn geschreven tijdens de periode waarin de bewaartermijn is ingesteld op onbeperkt, behouden blijven, zelfs na retentie is ingeschakeld).
+  - Als u de bewaartermijn wijzigt van 0 (onbeperkte retentie) naar een andere waarde, moet u er rekening mee houden dat bewaartijd alleen van toepassing is op logboeken die zijn geschreven nadat de bewaarwaarde is gewijzigd (logboeken die zijn geschreven tijdens de periode waarin de bewaartermijn is ingesteld op onbeperkt, behouden blijven, zelfs nadat retentie is ingeschakeld).
 
   ![opslagaccount](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
@@ -164,7 +164,7 @@ Als u ervoor hebt gekozen om controlelogboeken naar een Azure-opslagaccount te s
 
 - Gebruik de [Azure-portal](https://portal.azure.com).  Open de relevante database. Klik boven aan de **controlepagina** van de database op **Controlelogboeken weergeven**.
 
-    ![Navigatievenster][7]
+    ![Navigatievenster](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
 
     Er worden **controlerecords** geopend, waarvan u de logboeken bekijken.
 
@@ -172,14 +172,14 @@ Als u ervoor hebt gekozen om controlelogboeken naar een Azure-opslagaccount te s
   - U schakelen tussen controlerecords die zijn gemaakt door het *servercontrolebeleid* en het *controlebeleid van* de database door **de controlebron te**schakelen.
   - U alleen SQL-injectiegerelateerde controlerecords weergeven door **het selectievakje Alleen controlerecords voor SQL-injecties weergeven.**
 
-       ![Navigatievenster][8]
+       ![Navigatievenster]( ./media/sql-database-auditing-get-started/8_auditing_get_started_blob_audit_records.png)
 
 - Gebruik de systeemfunctie **sys.fn_get_audit_file** (T-SQL) om de controleloggegevens in tabelindeling te retourneren. Zie [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)voor meer informatie over het gebruik van deze functie.
 
 - Gebruik **Controlebestanden samenvoegen** in SQL Server Management Studio (te beginnen met SSMS 17):
     1. Selecteer in het menu SSMS de optie Controlebestanden**voor samenvoegen** > **invoegen** **.** > 
 
-        ![Navigatievenster][9]
+        ![Navigatievenster](./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png)
     2. Het dialoogvenster **Controlebestanden toevoegen** wordt geopend. Selecteer een van de **opties Toevoegen** om te kiezen of u controlebestanden wilt samenvoegen vanaf een lokale schijf of deze wilt importeren uit Azure Storage. U moet uw Azure Storage-gegevens en accountsleutel opgeven.
 
     3. Nadat alle bestanden zijn toegevoegd, klikt u op **OK** om de samenvoegbewerking te voltooien.
@@ -220,10 +220,10 @@ In de productie zult u uw opslagsleutels waarschijnlijk periodiek vernieuwen. Wa
 
 1. Opslaggegevens **openen**. Selecteer secundair en klik in het vak **Opslagtoegangssleutel** op **Secundair**en klik op **OK**. Klik vervolgens boven aan de controleconfiguratiepagina op **Opslaan.**
 
-    ![Navigatievenster][5]
+    ![Navigatievenster](./media/sql-database-auditing-get-started/5_auditing_get_started_storage_key_regeneration.png)
 2. Ga naar de pagina opslagconfiguratie en regenereerde de primaire toegangssleutel.
 
-    ![Navigatievenster][6]
+    ![Navigatievenster](./media/sql-database-auditing-get-started/6_auditing_get_started_regenerate_key.png)
 3. Ga terug naar de controleconfiguratiepagina, schakel de opslagtoegangssleutel over van secundair naar primair en klik op **OK.** Klik vervolgens boven aan de controleconfiguratiepagina op **Opslaan.**
 4. Ga terug naar de pagina opslagconfiguratie en regenereerde de secundaire toegangssleutel (ter voorbereiding van de vernieuwingscyclus van de volgende toets).
 
@@ -268,15 +268,3 @@ U Azure SQL-databasecontrole beheren met [Azure Resource Manager-sjablonen,](../
 
 > [!NOTE]
 > De gekoppelde monsters bevinden zich op een externe openbare opslagplaats en worden 'as is' geleverd, zonder garantie, en worden niet ondersteund onder een Microsoft-ondersteuningsprogramma/-service.
-
-<!--Image references-->
-[1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png
-[2]: ./media/sql-database-auditing-get-started/2_auditing_get_started_server_inherit.png
-[3]: ./media/sql-database-auditing-get-started/3_auditing_get_started_turn_on.png
-[4]: ./media/sql-database-auditing-get-started/4_auditing_get_started_storage_details.png
-[5]: ./media/sql-database-auditing-get-started/5_auditing_get_started_storage_key_regeneration.png
-[6]: ./media/sql-database-auditing-get-started/6_auditing_get_started_regenerate_key.png
-[7]: ./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png
-[8]: ./media/sql-database-auditing-get-started/8_auditing_get_started_blob_audit_records.png
-[9]: ./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png
-[10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png 

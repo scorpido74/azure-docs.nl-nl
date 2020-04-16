@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 2a634c81273c26722d53610a13e362e5e453f7e9
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 97c8f8a5bb2111264e9459a7d2128c1ab7c2503d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380116"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414433"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Een trigger maken die een pijplijn uitvoert op een tumblingvenster
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 In dit artikel vindt u stappen om een tuimelende venstertrigger te maken, te starten en te controleren. Zie [Pijplijnuitvoering en triggers](concepts-pipeline-execution-triggers.md)voor algemene informatie over triggers en de ondersteunde typen.
 
 Tumblingvenstertriggers zijn triggers die vanaf een opgegeven begintijd worden geactiveerd met een periodiek tijdsinterval en die hun status behouden. Tumblingvensters bestaan uit een reeks niet-overlappende en aaneengesloten tijdsintervallen van vaste duur. Een tuimelende venstertrigger heeft een één-op-één relatie met een pijplijn en kan alleen verwijzen naar een enkelvoudpijplijn.
@@ -96,7 +98,7 @@ De volgende tabel geeft een overzicht op hoog niveau van de belangrijkste JSON-e
 |:--- |:--- |:--- |:--- |:--- |
 | **Type** | Het type van de trekker. Het type is de vaste waarde "TumblingWindowTrigger". | Tekenreeks | "TumblingWindowTrigger" | Ja |
 | **runtimeState** | De huidige status van de triggerruntijd.<br/>**Opmerking:** Dit \<element wordt gelezenAlleen>. | Tekenreeks | 'Gestart', 'Gestopt', 'Uitgeschakeld' | Ja |
-| **frequency** | Een tekenreeks die de frequentie-eenheid (minuten of uren) vertegenwoordigt waarop de trigger terugkeert. Als de **waarden van de begindatum** gedetailleerder zijn dan de **frequentiewaarde,** worden de **begindatums** in aanmerking genomen wanneer de venstergrenzen worden berekend. Als de **frequentiewaarde** bijvoorbeeld per uur is en de **waarde startTime** 2017-09-01T10:10:10Z, is het eerste venster (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Tekenreeks | "minuut," "uur"  | Ja |
+| **Frequentie** | Een tekenreeks die de frequentie-eenheid (minuten of uren) vertegenwoordigt waarop de trigger terugkeert. Als de **waarden van de begindatum** gedetailleerder zijn dan de **frequentiewaarde,** worden de **begindatums** in aanmerking genomen wanneer de venstergrenzen worden berekend. Als de **frequentiewaarde** bijvoorbeeld per uur is en de **waarde startTime** 2017-09-01T10:10:10Z, is het eerste venster (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Tekenreeks | "minuut," "uur"  | Ja |
 | **Interval** | Een positief geheel getal dat het interval voor de waarde **frequency** aangeeft. Het bepaalt hoe vaak de trigger wordt uitgevoerd. Als het **interval** bijvoorbeeld 3 is en de **frequentie** 'uur' is, komt de trigger elke 3 uur terug. <br/>**Opmerking:** Het minimale vensterinterval is 5 minuten. | Geheel getal | Een positief geheel getal. | Ja |
 | **startTime**| Het eerste voorkomen, dat in het verleden kan zijn. Het eerste triggerinterval is (**startTime**, **startTime** + **interval**). | DateTime | Een datumtijdwaarde. | Ja |
 | **endTime**| Het laatste voorval, dat in het verleden kan zijn. | DateTime | Een datumtijdwaarde. | Ja |
@@ -229,5 +231,5 @@ Zie [Monitorpijplijn wordt uitgevoerd](quickstart-create-data-factory-resource-m
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Pijplijnuitvoering en triggers](concepts-pipeline-execution-triggers.md#triggers)voor gedetailleerde informatie over triggers.
+* Zie [Pijplijnuitvoering en triggers](concepts-pipeline-execution-triggers.md#trigger-execution)voor gedetailleerde informatie over triggers.
 * [Een afhankelijkheid voor een tumblingvenstertrigger maken](tumbling-window-trigger-dependency.md)

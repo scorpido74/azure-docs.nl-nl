@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 4a489993f982993d5703a9b46d42fffaa6134038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d2138935122b9e08b21963519fce3f72466ab1f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259056"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414517"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Versleutelde geheimen beheren in Service Fabric-toepassingen
 Deze gids leidt u door de stappen van het beheren van geheimen in een Service Fabric-toepassing. Geheimen kunnen gevoelige informatie zijn, zoals tekenreeksen voor opslagverbindingen, wachtwoorden of andere waarden die niet in platte tekst mogen worden verwerkt.
@@ -57,6 +57,11 @@ De geheimen moeten ook worden opgenomen in uw Service Fabric-toepassing door een
   </Certificates>
 </ApplicationManifest>
 ```
+> [!NOTE]
+> Bij het activeren van een toepassing die een SecretsCertificate opgeeft, vindt Service Fabric het overeenkomende certificaat en verleent de identiteit die de toepassing onder volledige machtigingen voor de privésleutel van het certificaat uitvoert. Service Fabric controleert ook het certificaat op wijzigingen en past de machtigingen dienovereenkomstig toe. Als u wijzigingen wilt detecteren voor certificaten die op algemene naam zijn gedeclareerd, voert Service Fabric een periodieke taak uit waarin alle overeenkomende certificaten worden gevonden en deze worden vergeleken met een lijst met duimafdrukken in de cache. Wanneer een nieuwe duimafdruk wordt gedetecteerd, betekent dit dat een certificaat van dat onderwerp is vernieuwd. De taak wordt eenmaal per minuut uitgevoerd op elk knooppunt van het cluster.
+>
+> Hoewel het SecretsCertificate op basis van onderwerpen verklaringen toestaat, moet u er rekening mee houden dat de versleutelde instellingen zijn gekoppeld aan het sleutelpaar dat is gebruikt om de instelling op de client te versleutelen. U moet ervoor zorgen dat het oorspronkelijke versleutelingscertificaat (of een gelijkwaardig) overeenkomt met de op het onderwerp gebaseerde aangifte en dat het is geïnstalleerd, inclusief de bijbehorende privésleutel, op elk knooppunt van het cluster dat de toepassing kan hosten. Alle certificaten die geldig zijn op tijd die overeenkomen met de op het onderwerp gebaseerde declaratie en die zijn opgebouwd uit hetzelfde sleutelpaar als het oorspronkelijke versleutelingscertificaat, worden als equivalenten beschouwd.
+>
 
 ### <a name="inject-application-secrets-into-application-instances"></a>Toepassingsgeheimen in toepassingsinstanties injecteren
 Idealiter moet de implementatie naar verschillende omgevingen zo geautomatiseerd mogelijk zijn. Dit kan worden bereikt door het uitvoeren van geheime encryptie in een build-omgeving en het verstrekken van de versleutelde geheimen als parameters bij het maken van toepassingsinstanties.

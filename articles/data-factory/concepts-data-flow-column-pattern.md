@@ -7,14 +7,16 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: bfb4eeef482c4944e75b7805642bc93c23195208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e1c0eb1c4f1fc74e56db8f83f1bab6406ec5306
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065522"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415552"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Kolompatronen gebruiken in de gegevensstroom van toewijzingen
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Met verschillende transformaties van de toewijzingsgegevensstroom u sjabloonkolommen verwijzen op basis van patronen in plaats van hardgecodeerde kolomnamen. Deze matching staat bekend als *kolompatronen.* U patronen definiëren die overeenkomen met kolommen op basis van naam, gegevenstype, stream of positie in plaats van exacte veldnamen te vereisen. Er zijn twee scenario's waarin kolompatronen nuttig zijn:
 

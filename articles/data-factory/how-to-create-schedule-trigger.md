@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: 127db8a484b9624586dea70c44af3bc84b3fc84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 100f95c20743f70bb4a9f2ac7e74853eab80f3e9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73673775"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414472"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Een trigger maken waarop een pijplijn volgens een planning wordt uitgevoerd
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 In dit artikel vindt u informatie over de trigger van de planning en de stappen die een planningstrigger moeten maken, starten en controleren. Zie [Pijplijnuitvoering en triggers voor](concepts-pipeline-execution-triggers.md)andere typen triggers.
 
 Bij het maken van een planningstrigger geeft u een planning op (begindatum, herhaling, einddatum enz.) voor de trigger en associeert u met een pijplijn. Pijplijnen en triggers hebben een veel-op-veel-relatie. Meerdere triggers kunnen één pijplijn activeren. Eén trigger kan meerdere pijplijnen activeren.
@@ -223,7 +225,7 @@ Als u een triggerrun wilt controleren, `Console.WriteLine` voegt u de volgende c
 Zie [Monitorpijplijn wordt uitgevoerd](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)als u de triggerruns en pijplijnuitvoeringen in de Azure-portal wilt controleren.
 
 
-## <a name="python-sdk"></a>Python SDK
+## <a name="python-sdk"></a>Python-SDK
 In deze sectie ziet u hoe u de Python SDK gebruiken om een trigger te maken, te starten en te controleren. Als u dit voorbeeld wilt zien werken, gaat u eerst door de [Quickstart: Maak een gegevensfabriek met behulp van de Python SDK](quickstart-create-data-factory-python.md). Voeg vervolgens het volgende codeblok toe nadat het codeblok 'monitor de pijplijnrun' in het Python-script is uitgevoerd. Met deze code wordt een planningstrigger gemaakt die elke 15 minuten wordt uitgevoerd tussen de opgegeven begin- en eindtijden. Werk de **start_time** variabele bij naar de huidige UTC-tijd en de **end_time** variabele tot een uur voorbij de huidige UTC-tijd.
 
 ```python
@@ -314,8 +316,8 @@ De volgende tabel bevat een overzicht van de belangrijkste schema-elementen die 
 | **startTime** | Een datum/tijdwaarde. Voor eenvoudige schema's is de waarde **startTime** van toepassing op de eerste gebeurtenis. In complexe schema's begint de trigger niet eerder dan de opgegeven waarde voor **startTime**. |
 | **endTime** | De einddatum en -tijd voor de trigger. De trigger wordt na de opgegeven einddatum en -tijd niet uitgevoerd. De waarde voor de eigenschap kan niet in het verleden liggen. Deze eigenschap is optioneel. |
 | **timeZone** | De tijdzone. Momenteel wordt alleen de tijdzone UTC ondersteund. |
-| **recurrence** | Een recurrence-object bepaalt de regels voor het terugkeerpatroon van de trigger. Het recurrence-object ondersteunt de elementen **frequency**, **interval**, **endTime**, **count** en **schedule**. Als een recurrence-object wordt gedefinieerd, is het element **frequency** vereist. De overige elementen van het recurrence-object zijn optioneel. |
-| **frequency** | Hiermee geeft u de frequentie aan waarmee de trigger wordt uitgevoerd. De ondersteunde waarden omvatten 'minuut', 'uur', 'dag', 'week' en 'maand'. |
+| **Herhaling** | Een recurrence-object bepaalt de regels voor het terugkeerpatroon van de trigger. Het recurrence-object ondersteunt de elementen **frequency**, **interval**, **endTime**, **count** en **schedule**. Als een recurrence-object wordt gedefinieerd, is het element **frequency** vereist. De overige elementen van het recurrence-object zijn optioneel. |
+| **Frequentie** | Hiermee geeft u de frequentie aan waarmee de trigger wordt uitgevoerd. De ondersteunde waarden omvatten 'minuut', 'uur', 'dag', 'week' en 'maand'. |
 | **Interval** | Een positief geheel getal dat het interval voor de waarde **frequency** aangeeft. Het bepaalt hoe vaak de trigger wordt uitgevoerd. Als **interval** bijvoorbeeld 3 is en **frequency** 'week', dan wordt de trigger elke 3 weken uitgevoerd. |
 | **Schema** | Het terugkeerschema voor de trigger. Een trigger met een opgegeven waarde voor **frequency** wijzigt het terugkeerpatroon op basis van een terugkeerschema. De eigenschap **property** bevat wijzigingen voor het terugkeerpatroon en zijn gebaseerd op minuten, uren, weekdagen, maanddagen en weeknummer.
 
@@ -325,7 +327,7 @@ De volgende tabel bevat een overzicht van de belangrijkste schema-elementen die 
 | JSON-eigenschap | Type | Vereist | Standaardwaarde | Geldige waarden | Voorbeeld |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | Tekenreeks | Ja | Geen | Datums en tijden volgens ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | Object | Ja | Geen | Recurrence-object | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **Herhaling** | Object | Ja | Geen | Recurrence-object | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **Interval** | Aantal | Nee | 1 | 1 tot 1000 | `"interval":10` |
 | **endTime** | Tekenreeks | Ja | Geen | Een datum/tijdwaarde die een toekomstig tijdstip voorstelt. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **Schema** | Object | Nee | Geen | Schedule-object | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
@@ -359,7 +361,7 @@ In de volgende tabel worden de **schedule**-elementen in detail beschreven:
 | JSON-element | Beschrijving | Geldige waarden |
 |:--- |:--- |:--- |
 | **minutes** | Minuten van het uur waarop de trigger wordt uitgevoerd. | <ul><li>Geheel getal</li><li>Matrix van gehele getallen</li></ul>
-| **hours** | Uren van de dag waarop de trigger wordt uitgevoerd. | <ul><li>Geheel getal</li><li>Matrix van gehele getallen</li></ul> |
+| **Uur** | Uren van de dag waarop de trigger wordt uitgevoerd. | <ul><li>Geheel getal</li><li>Matrix van gehele getallen</li></ul> |
 | **weekDays** | Dagen van de week waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een weekfrequentie. | <ul><li>Maandag, dinsdag, woensdag, donderdag, vrijdag, zaterdag, zondag</li><li>Array met dagwaarden (maximale grootte van de array is 7)</li><li>Dagwaarden zijn niet hoofdlettergevoelig</li></ul> |
 | **monthlyOccurrences** | Dagen van de maand waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een maandfrequentie. | <ul><li>Array van **maandelijksVoorkomen** `{ "day": day,  "occurrence": occurrence }`objecten: .</li><li>Het attribuut **day** is de dag van de week waarop de trigger wordt uitgevoerd. Zo betekent de eigenschap **monthlyOccurrences** met een waarde **day** van `{Sunday}` dat er elke zondag van de maand een uitvoering is. Het attribuut **day** is verplicht.</li><li>Het attribuut **occurrence** slaat op het uitvoeren van de trigger op de opgegeven dag, **day**, tijdens de maand. Zo betekent de eigenschap **monthlyOccurrences** met de waarden **day** en **occurrence** van `{Sunday, -1}` dat er elke laatste zondag van de maand een uitvoering is. Het attribuut **occurrence** is optioneel.</li></ul> |
 | **monthDays** | Dagen van de maand waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een maandfrequentie. | <ul><li>Alle waarden < = -1 en > =-31</li><li>Alle waarden > = -1 en < =-31</li><li>Array met waarden</li></ul> |
@@ -401,4 +403,4 @@ In het voorbeeld wordt ervan uitgegaan dat de waarde **interval** 1 is en de waa
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Pijplijnuitvoering en triggers](concepts-pipeline-execution-triggers.md#triggers)voor gedetailleerde informatie over triggers.
+Zie [Pijplijnuitvoering en triggers](concepts-pipeline-execution-triggers.md#trigger-execution)voor gedetailleerde informatie over triggers.

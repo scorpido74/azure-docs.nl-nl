@@ -11,14 +11,16 @@ ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
-ms.openlocfilehash: 70367a38fbf7b59486e2eaaf6c05634aa7575869
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2359b378b1f54cf6e03218f819b3a7c5740ba596
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260707"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416392"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure Active Directory-verificatie inschakelen voor Azure-SSIS Integration Runtime
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In dit artikel ziet u hoe u Azure Active Directory -verificatie (Azure AD) inschakelt met de beheerde identiteit voor uw Azure Data Factory (ADF) en deze gebruiken in plaats van conventionele verificatiemethoden (zoals SQL-verificatie) om:
 
@@ -26,7 +28,7 @@ In dit artikel ziet u hoe u Azure Active Directory -verificatie (Azure AD) insch
 
 - Maak verbinding met verschillende Azure-bronnen wanneer u SSIS-pakketten uitvoert op Azure-SSIS IR.
 
-Zie [Beheerde identiy voor Gegevensfabriek voor](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)meer informatie over de beheerde identiteit van uw ADF.
+Zie [Beheerde identiteit voor Gegevensfabriek voor](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)meer informatie over de beheerde identiteit van uw ADF.
 
 > [!NOTE]
 >-  In dit scenario wordt Azure AD-verificatie met de beheerde identiteit voor uw ADF alleen gebruikt bij het maken en aansluiten van de volgende startbewerkingen van uw SSIS IR, die op zijn beurt worden in- en geprocedeert en verbinding maakt met SSISDB. Voor SSIS-pakketuitvoeringen maakt uw SSIS IR nog steeds verbinding met SSISDB met SQL-verificatie met volledig beheerde accounts die zijn gemaakt tijdens de inrichting van SSISDB.
@@ -63,7 +65,7 @@ U een bestaande Azure AD-groep gebruiken of een nieuwe groep maken met Azure AD 
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Voeg de beheerde identiteit voor uw ADF toe aan de groep. U het artikel [Managed identiy for Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) volgen om de belangrijkste Managed Identity Object ID te krijgen (bijvoorbeeld 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, maar gebruik hiervoor geen Managed Identity Application ID).
+3.  Voeg de beheerde identiteit voor uw ADF toe aan de groep. U het artikel [Beheerde identiteit voor Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) volgen om de belangrijkste Managed Identity Object ID te krijgen (bijvoorbeeld 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, maar gebruik hiervoor geen Managed Identity Application ID).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc

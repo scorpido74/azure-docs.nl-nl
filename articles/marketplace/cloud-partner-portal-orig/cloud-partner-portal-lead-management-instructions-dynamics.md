@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dsindona
-ms.openlocfilehash: 524ae203a311d538431205bf8c6498de45aeb4d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d64c8460f5653f28b96396025f29ea13af15c8c3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280300"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416311"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Leadmanagement configureren voor Dynamics CRM online
 
@@ -142,4 +142,4 @@ De laatste stap is om de gebruiker die u hebt gemaakt in staat te stellen de lea
 Voltooi het configureren van Dynamics CRM voor leadbeheer door de gegenereerde accountgegevens toe te voegen aan de Cloud Partner Portal. Bijvoorbeeld:
 
 -   **Azure Active Directory** - **Application Id** (voorbeeld: *23456052-aaaa-bbbb-8662-1234df56788f),* **Directory Id** (voorbeeld: *12345678-8af1-4 asf-1234-12234d01db47*), en **Application Key** (voorbeeld: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=*).
--   **Office 365** - **Url** *https://contoso.crm4.dynamics.com*(voorbeeld: ), **Gebruikersnaam** (voorbeeld: *contoso\@contoso.onmicrosoft.com)* en **Wachtwoord** (voorbeeld: *P\@ssw0rd*).
+-   **Office 365** - **Url** **`https://contoso.crm4.dynamics.com`**(voorbeeld: ), **`contoso\@contoso.onmicrosoft.com`** **Gebruikersnaam** (voorbeeld: ) en **Wachtwoord** (voorbeeld: *P\@ssw0rd*).

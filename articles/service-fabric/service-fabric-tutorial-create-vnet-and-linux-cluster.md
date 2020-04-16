@@ -4,12 +4,12 @@ description: Informatie over hoe u een Linux Service Fabric-cluster implementeer
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: f5788f07dd4a4f03a95efaea4b741cd64c930ac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251787"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411010"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Een Linux Service Fabric-cluster implementeren in een virtueel Azure-netwerk
 
@@ -31,8 +31,17 @@ Met de volgende procedures wordt er een Service Fabric-cluster met zeven knooppu
 
 Download de volgende Resource Manager-sjabloonbestanden:
 
+Voor Ubuntu 16.04 LTS:
+
 * [AzureDeploy.json][template]
 * [AzureDeploy.Parameters.json][parameters]
+
+Voor Ubuntu 18.04 LTS:
+
+* [AzureDeploy.json][template2]
+* [AzureDeploy.Parameters.json][parameters2]
+
+Het verschil tussen de twee sjablonen is het **kenmerk vmImageSku** dat is ingesteld op "18,04-LTS" en de **typeHandlerVersion** van elk knooppunt wordt ingesteld op 1.1.
 
 Deze sjabloon implementeert een beveiligd cluster van zeven virtuele machines en drie knooppunttypen in een virtueel netwerk.  Andere voorbeeldsjablonen zijn te vinden op [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). Met [AzureDeploy.json][template] wordt een aantal resources geïmplementeerd, waaronder de volgende.
 
@@ -42,7 +51,7 @@ In de resource **Microsoft.ServiceFabric/clusters** wordt een Linux-cluster geï
 
 * drie knooppunttypen
 * vijf knooppunten in het primaire knooppunttype (configureerbaar in de sjabloonparameters), één knooppunt in elk van de andere knooppunttypen
-* een besturingssysteem: Ubuntu 16.04 LTS (configureerbaar in de sjabloonparameters)
+* OS: (Ubuntu 16.04 LTS / Ubuntu 18.04 LTS) (configureerbaar in de sjabloonparameters)
 * beveiligd met een certificaat (configureerbaar in de sjabloonparameters)
 * een ingeschakelde [DNS-service](service-fabric-dnsservice.md)
 * een bronzen [duurzaamheidsniveau](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (configureerbaar in de sjabloonparameters)
@@ -70,7 +79,7 @@ Als er andere toepassingspoorten nodig zijn, moet u de resource Microsoft.Networ
 
 ## <a name="set-template-parameters"></a>De sjabloonparameters instellen
 
-In het parameterbestand [AzureDeploy.Parameters][parameters] worden veel waarden gedeclareerd die worden gebruikt om het cluster en bijbehorende resources te implementeren. Enkele van de parameters die u mogelijk moet wijzigen voor uw implementatie:
+Het bestand **AzureDeploy.Parameters** verklaart veel waarden die worden gebruikt om het cluster en de bijbehorende resources te implementeren. Enkele van de parameters die u mogelijk moet wijzigen voor uw implementatie:
 
 |Parameter|Voorbeeldwaarde|Opmerkingen|
 |---|---||
@@ -86,7 +95,7 @@ In het parameterbestand [AzureDeploy.Parameters][parameters] worden veel waarden
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Het virtuele netwerk en het cluster implementeren
 
-Stel vervolgens de netwerktopologie in en implementeer het Service Fabric-cluster. De Resource Manager-sjabloon [AzureDeploy.json][template] maakt een virtueel netwerk (VNET) en een subnet voor Service Fabric. De sjabloon implementeert ook een cluster met certificaatbeveiliging ingeschakeld.  Gebruik voor productieclusters een certificaat van een certificeringsinstantie (CA) als clustercertificaat. Een zelfondertekend certificaat kan worden gebruikt om testclusters te beveiligen.
+Stel vervolgens de netwerktopologie in en implementeer het Service Fabric-cluster. De Resource Manager-sjabloon **AzureDeploy.json** maakt een virtueel netwerk (VNET) en een subnet voor Service Fabric. De sjabloon implementeert ook een cluster met certificaatbeveiliging ingeschakeld.  Gebruik voor productieclusters een certificaat van een certificeringsinstantie (CA) als clustercertificaat. Een zelfondertekend certificaat kan worden gebruikt om testclusters te beveiligen.
 
 De sjabloon in dit artikel implementeert een cluster dat de duimafdruk van het certificaat gebruikt om het clustercertificaat te identificeren.  Geen twee certificaten kunnen dezelfde vingerafdruk hebben, waardoor certificaatbeheer moeilijker wordt. Schakelen tussen een geïmplementeerd cluster vanuit vingerafdrukken voor certificaten naar het gebruik van gewone namen voor certificaten maakt het beheer van certificaten veel eenvoudiger.  Lees [Cluster wijzigen naar certificaatbeheer met gewone namen](service-fabric-cluster-change-cert-thumbprint-to-cn.md) voor informatie over het bijwerken van het cluster voor het gebruik van gewone namen voor certificaten voor het beheren van certificaten.
 
@@ -163,3 +172,5 @@ De sjabloon in dit artikel implementeert een cluster dat de duimafdruk van het c
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json
+[template2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.json
+[parameters2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.Parameters.json

@@ -6,17 +6,17 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 03/10/2020
-ms.openlocfilehash: 34ec05a8362f5947cb61924b19c6b1a52e5d91a4
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/15/2020
+ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437679"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410859"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>NSG-servicetags voor Azure HDInsight
 
-Azure HDInsight-servicetags voor netwerkbeveiligingsgroepen (NSG's) zijn groepen IP-adressen voor status- en beheerservices. Deze groepen helpen de complexiteit voor het maken van beveiligingsregels te minimaliseren. [Servicetags](../virtual-network/security-overview.md#service-tags) bieden een alternatieve methode voor het toestaan van binnenkomend verkeer vanaf specifieke IP-adressen zonder elk van de [beheer-IP-adressen](hdinsight-management-ip-addresses.md) in uw NGB's in te voeren.
+Azure HDInsight-servicetags voor netwerkbeveiligingsgroepen (NSG's) zijn groepen IP-adressen voor status- en beheerservices. Deze groepen helpen de complexiteit voor het maken van beveiligingsregels te minimaliseren. [Servicetags](../virtual-network/security-overview.md#service-tags) staan binnenkomend verkeer van specifieke IP's toe zonder elk van de [beheer-IP-adressen](hdinsight-management-ip-addresses.md) in uw NSG's in te voeren.
 
 De HDInsight-service beheert deze servicetags. U uw eigen servicetag niet maken of een bestaande tag wijzigen. Microsoft beheert de adresvoorvoegsels die overeenkomen met de servicetag en werkt de servicetag automatisch bij wanneer adressen worden gewijzigd.
 
@@ -46,13 +46,13 @@ Deze tag bevat de IP-adressen van gezondheids- en beheerservices voor alle regio
 
 ## <a name="use-regional-hdinsight-service-tags"></a>Regionale HDInsight-servicetags gebruiken
 
-Als de globale tagoptie niet werkt omdat u meer beperkende machtigingen nodig hebt, u alleen de servicetags toestaan die van toepassing zijn op uw regio. Er kunnen één, twee of drie toepasselijke servicetags zijn, afhankelijk van het gebied waar uw cluster wordt gemaakt.
+Als de globale tagoptie niet werkt omdat u meer beperkende machtigingen nodig hebt, u alleen de servicetags toestaan die van toepassing zijn op uw regio. Er kunnen meerdere servicetags zijn, afhankelijk van het gebied waar uw cluster wordt gemaakt.
 
 Lees de volgende gedeelten van het artikel om erachter te komen welke servicetags u voor uw regio wilt toevoegen.
 
 ### <a name="use-a-single-regional-service-tag"></a>Eén regionale servicetag gebruiken
 
-Als u liever regionale servicetags gebruikt en uw cluster zich in een van de regio's in deze tabel bevindt, hoeft u slechts één regionale servicetag toe te voegen aan uw netwerkbeveiligingsgroep.
+Als uw cluster zich in een regio in deze tabel bevindt, hoeft u slechts één regionale servicetag toe te voegen aan uw NSG.
 
 | Land | Regio | Servicetag |
 | ---- | ---- | ---- |
@@ -80,13 +80,13 @@ Als u liever regionale servicetags gebruikt en uw cluster zich in een van de reg
 
 ### <a name="use-multiple-regional-service-tags"></a>Meerdere regionale servicetags gebruiken
 
-Als u liever regionale servicetags gebruikt, maar het gebied waar uw cluster wordt gemaakt, is niet in de vorige tabel opgenomen, moet u meerdere regionale servicetags toestaan. De noodzaak om meer dan één te gebruiken is te wijten aan verschillen in de regeling van resource providers voor de verschillende regio's.
+Als het gebied waar uw cluster is gemaakt niet in de vorige tabel wordt vermeld, moet u meerdere regionale servicetags toestaan. De noodzaak om meer dan één te gebruiken is vanwege verschillen in de inrichting van middelenleveranciers voor de verschillende regio's.
 
 De overige regio's zijn onderverdeeld in groepen op basis van welke regionale servicetags ze gebruiken.
 
 #### <a name="group-1"></a>Groep 1
 
-Als uw cluster is gemaakt in een van de regio's in de volgende tabel, u de servicetags `HDInsight.WestUS` en `HDInsight.EastUS` de lijst met regionale servicetags toestaan. Voor regio's in deze sectie zijn drie servicetags vereist.
+Als uw cluster is gemaakt in een van de regio's in de volgende tabel, moet u de servicetags `HDInsight.WestUS` en `HDInsight.EastUS`. Ook de regionale service tag vermeld. Voor regio's in deze sectie zijn drie servicetags vereist.
 
 Als uw cluster bijvoorbeeld in `East US 2` de regio is gemaakt, moet u de volgende servicetags toevoegen aan uw netwerkbeveiligingsgroep:
 

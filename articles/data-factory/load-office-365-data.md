@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: cd2b530375beb3e8fa1f79e004f4f1ac7fd4d0bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443912"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415801"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Gegevens uit Office 365 laden met Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In dit artikel ziet u hoe u de _gegevensverzamelingsgegevens van Office 365 gebruiken in Azure Blob-opslag._ U vergelijkbare stappen uitvoeren om gegevens naar Azure Data Lake Gen1 of Gen2 te kopiëren. Raadpleeg het artikel over [de Office 365-connector](connector-office-365.md) over het kopiëren van gegevens uit Office 365 in het algemeen.
 
@@ -97,7 +99,7 @@ In dit artikel ziet u hoe u de _gegevensverzamelingsgegevens van Office 365 gebr
 
 5. Ga naar het **tabblad Verbinding** van het venster Eigenschappen. Klik naast het tekstvak Gekoppelde service op **+Nieuw**.
 
-6. Typ in het venster Nieuwe gekoppelde service 'AzureStorageLinkedService' als naam, selecteer 'Serviceprincipal' in de vervolgkeuzelijst met verificatiemethoden, vul het serviceeindpunt, tenant, servicehoofd-id en servicehoofdsleutel in en selecteer Opslaan in de gekoppelde service implementeren.  Raadpleeg [hier](connector-azure-blob-storage.md#service-principal-authentication) voor het instellen van serviceprincipal-verificatie voor Azure Blob Storage.
+6. Typ in het venster Nieuwe gekoppelde service 'AzureStorageLinkedService' als naam, selecteer 'Serviceprincipal' in de vervolgkeuzelijst met verificatiemethoden, vul het serviceeindpunt, tenant, serviceprincipal-id en servicehoofdsleutel in en selecteer Vervolgens Opslaan om de gekoppelde service te implementeren.  Raadpleeg [hier](connector-azure-blob-storage.md#service-principal-authentication) voor het instellen van serviceprincipal-verificatie voor Azure Blob Storage.
 
     ![Nieuwe Blob-gekoppelde service](./media/load-office-365-data/configure-blob-linked-service.png)
 

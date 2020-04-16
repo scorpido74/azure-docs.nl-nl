@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 81f8577592f1d53627bc09a2f9ace8c060ad4660
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 6655510a4cfdb88e98319c7fc26c7ae83255bb6f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668855"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415829"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Gegevens uit Azure Data Lake Storage Gen1 kopiëren naar Gen2 met Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Lake Storage Gen2 is een reeks mogelijkheden die zijn toegedeeld aan big data-analyses die zijn ingebouwd in [Azure Blob-opslag.](../storage/blobs/storage-blobs-introduction.md) U het gebruiken om te communiceren met uw gegevens met behulp van zowel bestandssysteem en object opslag paradigma's.
 
@@ -65,7 +67,7 @@ In dit artikel ziet u hoe u het hulpprogramma Gegevensfabriek kopieergegevens ge
 1. Selecteer **op de** pagina Aan de slag de tegel **Gegevens kopiëren** om het hulpprogramma voor kopieergegevens te starten. 
 
    ![Tegel gegevensgereedschap kopiëren](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-tile.png)
-2. Geef op de pagina **Eigenschappen** **CopyFromADLSGen1ToGen2** op voor het veld **Taaknaam.** Selecteer **Volgende**.
+2. Geef op de pagina **Eigenschappen** **CopyFromADLSGen1ToGen2** op voor het veld **Taaknaam.** Selecteer **Next**.
 
     ![De pagina Eigenschappen](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-properties-page.png)
 3. Selecteer op de pagina **Brongegevensarchief** de optie **+ Nieuwe verbinding maken**.
@@ -82,7 +84,7 @@ In dit artikel ziet u hoe u het hulpprogramma Gegevensfabriek kopieergegevens ge
   
    b. Selecteer **Testverbinding** om de instellingen te valideren. Selecteer vervolgens **Voltooien**.
   
-   c. U ziet dat er een nieuwe verbinding is gemaakt. Selecteer **Volgende**.
+   c. U ziet dat er een nieuwe verbinding is gemaakt. Selecteer **Next**.
    
    > [!IMPORTANT]
    > In deze doorloop gebruikt u een beheerde identiteit voor Azure-bronnen om uw Azure Data Lake Storage Gen1 te verifiëren. Volg [de](connector-azure-data-lake-store.md#managed-identity)instructies om de beheerde identiteit de juiste machtigingen in Azure Data Lake Storage Gen1 te geven.
@@ -93,7 +95,7 @@ In dit artikel ziet u hoe u het hulpprogramma Gegevensfabriek kopieergegevens ge
 
     ![Het invoerbestand of de invoermap kiezen](./media/load-azure-data-lake-storage-gen2-from-gen1/choose-input-folder.png)
 
-7. Geef het kopieergedrag op door de **opties Bestanden opnieuw kopiëren** en Binaire **kopieeropties** te selecteren. Selecteer **Volgende**.
+7. Geef het kopieergedrag op door de **opties Bestanden opnieuw kopiëren** en Binaire **kopieeropties** te selecteren. Selecteer **Next**.
 
     ![Uitvoermap opgeven](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     

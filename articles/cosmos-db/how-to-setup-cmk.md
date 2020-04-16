@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 6e2a90b8f81b9b945905ee98beb1686c54a62e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 733a85e492185e7e83922a3cc91d53c848b939a1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063770"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411152"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Door de klant beheerde sleutels configureren voor uw Azure Cosmos-account met Azure Key Vault
 
@@ -231,7 +231,7 @@ Momenteel niet, maar sleutels op containerniveau worden overwogen.
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Welke invloed hebben door de klant beheerde sleutels op een back-up?
 
-Azure Cosmos DB maakt [regelmatig en automatisch back-ups](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) van de gegevens die in uw account zijn opgeslagen. Met deze bewerking wordt een back-up van de versleutelde gegevens. Om de herstelde back-up te gebruiken, is de versleutelingssleutel vereist die u hebt gebruikt op het moment van de back-up. Dit betekent dat er geen intrekking is gemaakt en dat de versie van de sleutel die werd gebruikt op het moment van de back-up nog steeds is ingeschakeld.
+Azure Cosmos DB maakt [regelmatig en automatisch back-ups](./online-backup-and-restore.md) van de gegevens die in uw account zijn opgeslagen. Met deze bewerking wordt een back-up van de versleutelde gegevens. Om de herstelde back-up te gebruiken, is de versleutelingssleutel vereist die u hebt gebruikt op het moment van de back-up. Dit betekent dat er geen intrekking is gemaakt en dat de versie van de sleutel die werd gebruikt op het moment van de back-up nog steeds is ingeschakeld.
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Hoe trek ik een encryptiesleutel in?
 

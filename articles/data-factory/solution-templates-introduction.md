@@ -11,14 +11,15 @@ author: djpmsft
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: f150234ecd3446858e8a6aa7d224eb3ad3d0efd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14f1d3b58996d438279bfa2a234c754a6d840c79
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927347"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414738"
 ---
 # <a name="templates"></a>Sjablonen
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Sjablonen zijn vooraf gedefinieerde Azure Data Factory-pijplijnen waarmee u snel aan de slag met Data Factory. Sjablonen zijn handig als u nieuw bent in Data Factory en snel aan de slag wilt. Deze sjablonen verkorten de ontwikkeltijd voor het bouwen van data-integratieprojecten en verbeteren zo de productiviteit van ontwikkelaars.
 

@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f35a5da15ca1a672046844282626a6cb7b8ecbdf
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: fbdf0fda51ae35fac4f3f8ae45bfcd788fc406ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583536"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414009"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Capaciteitslimieten azure Synapse Analytics (voorheen SQL DW)
 
@@ -42,7 +42,7 @@ Maximaal toegestane waarden voor verschillende onderdelen van Azure Synapse.
 | Tabel |Maximale grootte |Onbeperkte grootte voor kolomarchieftabellen. <br>60 TB voor rowstore-tabellen die op schijf zijn gecomprimeerd. |
 | Tabel |Tabellen per database | 100.000 |
 | Tabel |Kolommen per tabel |1024 kolommen |
-| Tabel |Bytes per kolom |Afhankelijk van [kolomgegevenstype](sql-data-warehouse-tables-data-types.md). Voor tekengegevenstypen kan MAX Limit maximaal 2 GB opslaan in opslag buiten pagina (row-overflow).  Niet-Unicode-tekens, zoals char- of varchar-limiet, is 8000 op een gegevenspagina, Unicode-tekens zoals nchar- of nvarchar-limiet is 4000 op een gegevenspagina.  Gebruik opslagformaten voor gegevenspagina's om de prestaties te verbeteren. |
+| Tabel |Bytes per kolom |Afhankelijk van [kolomgegevenstype](sql-data-warehouse-tables-data-types.md). Limit is 8000 voor char-gegevenstypen, 4000 voor nvarchar of 2 GB voor MAX-gegevenstypen. |
 | Tabel |Bytes per rij, gedefinieerde grootte |8060 bytes<br/><br/>Het aantal bytes per rij wordt op dezelfde manier berekend als voor SQL Server met paginacompressie. Net als SQL Server wordt row-overflow-opslag ondersteund, waardoor **kolommen met variabele lengte** buiten de rij kunnen worden geduwd. Wanneer rijen met variabele lengte buiten de rij worden geduwd, wordt slechts 24-byteroot opgeslagen in de hoofdrecord. Zie [Row-Overflow Data van meer dan 8 KB](https://msdn.microsoft.com/library/ms186981.aspx)voor meer informatie. |
 | Tabel |Partities per tabel |15.000<br/><br/>Voor hoge prestaties raden we u aan het aantal partities dat u nodig hebt te minimaliseren terwijl u toch uw bedrijfsvereisten ondersteunt. Naarmate het aantal partities toeneemt, neemt de overhead voor DDL-bewerkingen (Data Definition Language) en Data Manipulation Language (DML) toe en zorgt deze voor tragere prestaties. |
 | Tabel |Tekens per grenswaarde van partitie. |4000 |

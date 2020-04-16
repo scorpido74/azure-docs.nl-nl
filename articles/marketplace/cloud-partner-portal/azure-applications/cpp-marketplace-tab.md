@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 94bbfb16a967a97b1ee6f6d51a5f55bc8ba13227
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6113759cc68d07af4c22edf03b3274d92dcbe780
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281762"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416301"
 ---
 # <a name="azure-application-marketplace-tab"></a>Tabblad Marketplace voor Azure-toepassingen
 
@@ -32,7 +32,7 @@ In de volgende tabel worden de instellingen beschreven die u wilt gebruiken voor
 | **Samenvatting\***      | Korte samenvatting van het aanbod. De maximale lengte is 100 tekens.           |
 | **Lange samenvatting\*** | Langere samenvatting van de aanbieding (hoewel het hetzelfde zou kunnen zijn als de samenvatting). De maximale lengte is 256 tekens.           |
 | **Beschrijving\***  | Beschrijving van het aanbod. De maximale lengte is 3000 tekens. Eenvoudige HTML-opmaak is &lt;&gt;toegestaan, inclusief&gt; &lt;p&gt; &lt;,&gt; &lt;em,&gt; &lt;ul, li, ol en header tags.  |
-| **Marketing-id\*** | Een unieke URL om aan deze aanbieding te koppelen, bevat meestal uw organisatie en oplossingsnaam, maximale lengte 50 tekens. Kies een korte, vriendelijke marketing-id voor uw service. Dit wordt gebruikt in marktplaats-URL's voor deze aanbieding. Als uw uitgever-id bijvoorbeeld 'contoso' is en uw marketing-id 'voorbeeldapp' is, wordt de URL voor uw aanbieding in Azure Marketplacehttps://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
+| **Marketing-id\*** | Een unieke URL om aan deze aanbieding te koppelen, bevat meestal uw organisatie en oplossingsnaam, maximale lengte 50 tekens. Kies een korte, vriendelijke marketing-id voor uw service. Dit wordt gebruikt in marktplaats-URL's voor deze aanbieding. Als uw uitgever-id bijvoorbeeld 'contoso' is en uw marketing-id 'voorbeeldapp' is, wordt de URL voor uw aanbieding in Azure Marketplace`https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  
 | **Voorbeeld van abonnements-iD's bekijken\*** | Voeg van één tot 100 abonnements-id's van previewers toe. Deze abonnementen op de witte lijst hebben toegang tot uw aanbieding terwijl deze beschikbaar is in preview nadat deze is gepubliceerd, voordat deze live gaat.          |
 | **Nuttige links**    | Optioneel u links naar verschillende bronnen voor gebruikers van uw aanbieding, zoals ondersteuning, documentatie, forums, enz.  Het wordt aanbevolen om ten minste één koppeling aan uw documentatie toe te voegen.            |
 | **Voorgestelde categorieën (Max 5)\*** | Selecteer één tot vijf categorieën. De geselecteerde categorieën worden gebruikt om uw aanbieding toe te stellen aan de productcategorieën die beschikbaar zijn in Azure Marketplace en Azure Portal. Ze worden weergegeven op browsepagina's en op uw productdetailspagina. |

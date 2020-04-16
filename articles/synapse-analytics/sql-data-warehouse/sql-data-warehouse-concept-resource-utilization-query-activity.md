@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ce2fe66888893d82debcc412bb16752914d8a190
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: d38c0df45da3a751a456846813543a4ce5de98eb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011103"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416221"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Beheer van resource- en queryactiviteit in Azure Synapse Analytics controleren
 
@@ -56,14 +56,14 @@ Dingen om rekening mee te houden bij het bekijken van statistieken en het instel
 
 Voor een programmatische ervaring bij het monitoren van SQL Analytics via T-SQL, biedt de service een set Dynamic Management Views (DMVs). Deze weergaven zijn handig bij het actief oplossen van problemen en het identificeren van prestatieknelpunten met uw werkbelasting.
 
-Als u de lijst met DMVs wilt bekijken die SQL Analytics biedt, raadpleegt u deze [documentatie.](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs)
+Als u de lijst met DMVs wilt bekijken die van toepassing zijn op Synapse SQL, raadpleegt u deze [documentatie.](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs) 
 
-## <a name="metrics-and-diagnostics-logging"></a>Metrische gegevens en diagnoselogboeken
+## <a name="metrics-and-diagnostics-logging"></a>Metrische gegevens en diagnoselogboeken 
 
 Zowel statistieken als logboeken kunnen worden geëxporteerd naar Azure Monitor, met name de azure [monitor-logboekencomponent](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en kunnen programmatisch worden geopend via [logboekquery's.](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) De loglatentie voor SQL Analytics is ongeveer 10-15 minuten. Ga voor meer informatie over de factoren die van invloed zijn op de latentie naar de volgende documentatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende handleidingen worden veelvoorkomende scenario's en use cases beschreven bij het bewaken en beheren van uw gegevensmagazijn:
+In de volgende handleiding worden veelvoorkomende scenario's en use cases beschreven bij het bewaken en beheren van uw gegevensmagazijn:
 
 - [Uw werkbelasting voor gegevensmagazijnen bewaken met DMVs](sql-data-warehouse-manage-monitor.md)

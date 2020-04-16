@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
-ms.openlocfilehash: 1325910877d1e030b3bf4114e16d0f81ecea8cf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443982"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415851"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Gegevens laden in Azure Data Lake Storage Gen1 met Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) (voorheen bekend als Azure Data Lake Store) is een bedrijfsbrede hyper-scale repository voor big data analytische workloads. Met Data Lake Storage Gen1 u gegevens vastleggen van elke grootte, type en innamesnelheid. De gegevens worden op één plaats vastgelegd voor operationele en verkennende analyses.
 
@@ -88,7 +90,7 @@ In dit artikel ziet u hoe u de tool Gegevenskopiëren gegevens in de gegevensfab
    
       ![Amazon S3-account opgeven](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. U ziet een nieuwe verbinding. Selecteer **Volgende**.
+   4. U ziet een nieuwe verbinding. Selecteer **Next**.
    
    ![Amazon S3-account opgeven](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
@@ -108,7 +110,7 @@ In dit artikel ziet u hoe u de tool Gegevenskopiëren gegevens in de gegevensfab
 
    1. Selecteer uw Data Lake Storage Gen1-account voor de naam van het **Data Lake Store-account.**
    2. Geef de **tenant**op en selecteer Voltooien.
-   3. Selecteer **Volgende**.
+   3. Selecteer **Next**.
    
    > [!IMPORTANT]
    > In deze walkthrough gebruikt u een beheerde identiteit voor Azure-bronnen om uw Data Lake Storage Gen1-account te verifiëren. Zorg ervoor dat u de MSI de juiste machtigingen in Data Lake Storage Gen1 verleent door deze instructies op te [volgen.](connector-azure-data-lake-store.md#managed-identity)

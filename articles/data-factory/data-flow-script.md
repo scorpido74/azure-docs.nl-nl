@@ -7,14 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
-ms.openlocfilehash: 251507c5740af69bd0818391dd2e8f857338b6cf
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313917"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413447"
 ---
 # <a name="data-flow-script-dfs"></a>Gegevensstroomscript (DFS)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Data flow script (DFS) is de onderliggende metagegevens, vergelijkbaar met een codeertaal, die wordt gebruikt om de transformaties uit te voeren die zijn opgenomen in een mapping data flow. Elke transformatie wordt vertegenwoordigd door een reeks eigenschappen die de nodige informatie bieden om de taak goed uit te voeren. Het script is zichtbaar en bewerkbaar vanuit ADF door te klikken op de knop 'script' op het bovenste lint van de gebruikersinterface van de browser.
 

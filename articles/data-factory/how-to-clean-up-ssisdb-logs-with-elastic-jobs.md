@@ -10,14 +10,16 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: 331a2317f11fbb6f0dd1437a0b41f7ad110a63c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d509a40c129cab0f5d2f614c6989f81a928a254
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74928026"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81412920"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>SSISDB-logboeken opschonen met Azure Elastic Database-taken
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In dit artikel wordt beschreven hoe u Azure Elastic Database Jobs gebruiken om de `SSISDB`opgeslagen procedure te activeren waarmee logboeken voor de SQL Server Integration Services-catalogusdatabase worden opgeschoond.
 

@@ -4,14 +4,14 @@ description: Meer informatie over het gebruik van beheerde identiteiten voor Azu
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 06ebcfdf3d6a3815908752153acb09437d745d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6f3736bed4d3d59bce08d4df3ee0aa164a0a764
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76986747"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415103"
 ---
-# <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>Beheerde identiteiten voor Azure gebruiken met servicefabric (voorbeeld)
+# <a name="using-managed-identities-for-azure-with-service-fabric"></a>Beheerde identiteiten voor Azure gebruiken met ServiceFabric
 
 Een veelvoorkomende uitdaging bij het bouwen van cloudtoepassingen is het veilig beheren van de referenties in uw code voor het verifiëren van verschillende services zonder ze lokaal op te slaan op een ontwikkelaarswerkstation of in bronbeheer. *Beheerde identiteiten voor Azure* lossen dit probleem op voor al uw resources in Azure Active Directory (Azure AD) door ze automatisch beheerde identiteiten binnen Azure AD te bieden. U de identiteit van een service gebruiken om te verifiëren voor elke service die Azure AD-verificatie ondersteunt, inclusief Key Vault, zonder dat er referenties zijn opgeslagen in uw code.
 
@@ -47,7 +47,7 @@ Beheerde identiteiten voor Service Fabric worden alleen ondersteund in azure-ge�
 
 De door het systeem toegewezen identiteit van een toepassing is uniek voor die toepassing; een door de gebruiker toegewezen identiteit is een zelfstandige bron, die kan worden toegewezen aan meerdere toepassingen. Binnen een toepassing kan één identiteit (toegewezen systeem of door de gebruiker toegewezen) worden toegewezen aan meerdere services van de toepassing, maar aan elke afzonderlijke service kan slechts één identiteit worden toegewezen. Ten slotte moet aan een service expliciet een identiteit worden toegewezen om toegang te hebben tot deze functie. In feite maakt het in kaart brengen van de identiteit van een toepassing aan de samenstellende services in-application het mogelijk om in-application isolatie te gebruiken : een service mag alleen de identiteit gebruiken die eraan is toegewezen.  
 
-Momenteel worden de volgende scenario's ondersteund voor deze voorbeeldfunctie:
+Momenteel worden de volgende scenario's ondersteund voor deze functie:
 
 - Een nieuwe toepassing implementeren met een of meer services en een of meer toegewezen identiteiten
 
@@ -57,12 +57,7 @@ De volgende scenario's worden niet ondersteund of niet aanbevolen; houd er reken
 
 - De identiteiten die aan een toepassing zijn toegewezen, verwijderen of wijzigen; Als u wijzigingen moet aanbrengen, dient u afzonderlijke implementaties in om eerst een nieuwe identiteitstoewijzing toe te voegen en vervolgens een eerder toegewezen implementatie te verwijderen. Het verwijderen van een identiteit uit een bestaande toepassing kan ongewenste effecten hebben, waaronder het verlaten van uw toepassing in een staat die niet kan worden geüderd. Het is veilig om de toepassing helemaal te verwijderen als het verwijderen van een identiteit noodzakelijk is; Let op: hiermee wordt de aan het systeem toegewezen identiteit (indien gedefinieerd) die aan de toepassing is gekoppeld, verwijderd en worden eventuele koppelingen met de door de gebruiker toegewezen identiteiten die aan de toepassing zijn toegewezen, verwijderd.
 
-- Service Fabric-ondersteuning voor beheerde identiteiten is op dit moment niet geïntegreerd in de [AzureServiceTokenProvider;](../key-vault/service-to-service-authentication.md) de integratie zal worden bereikt tegen het einde van de preview-periode voor de beheerde identiteitsfunctie.
-
->
-> [!NOTE]
->
-> Deze functie is beschikbaar als preview-versie. Het kan onderhevig zijn aan frequente wijzigingen en niet geschikt zijn voor productie-implementaties.
+- Service Fabric-ondersteuning voor beheerde identiteiten is op dit moment niet geïntegreerd in de [AzureServiceTokenProvider.](../key-vault/service-to-service-authentication.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

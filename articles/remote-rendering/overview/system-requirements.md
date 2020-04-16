@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: c239f7062dc39492a0cf63ac3aadbaf94acbf032
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8573a88d5371bbde07a541c789f52e6c44f1e279
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680438"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411133"
 ---
 # <a name="system-requirements"></a>Systeemvereisten
 
@@ -45,7 +45,7 @@ Hoewel de juiste H265-codec kan worden geïnstalleerd, kunnen beveiligingseigens
 
 ## <a name="devices"></a>Apparaten
 
-Azure Remote Rendering ondersteunt momenteel alleen **HoloLens 2** en Windows desktop UWP als doelapparaat.
+Azure Remote Rendering ondersteunt momenteel alleen **HoloLens 2** en Windows-bureaublad als doelapparaat. Zie de sectie [platformbeperkingen.](../reference/limits.md#platform-limitations)
 
 Het is belangrijk om de nieuwste HEVC-codec te gebruiken, omdat nieuwere versies aanzienlijke verbeteringen in latentie hebben. Ga als u controleren welke versie op uw apparaat is geïnstalleerd:
 

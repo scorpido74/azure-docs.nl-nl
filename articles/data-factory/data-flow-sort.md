@@ -1,38 +1,66 @@
 ---
-title: Sorteertransformatie van gegevensstroom toewijzen
+title: Transformatie sorteren in de toewijzingsgegevensstroom
 description: Sorteertransformatie voor het sorteren van azure-gegevensfabriek
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/08/2018
-ms.openlocfilehash: c09439c5f54ae4b0884e9e25ae9a5a488f935bac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 381c6573dff1b3f1638af9090a535d9a1e59b2b5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930228"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413176"
 ---
-# <a name="azure-data-factory-data-flow-sort-transformations"></a>Azure Data Factory Data Flow Sorteertransformaties
+# <a name="sort-transformation-in-mapping-data-flow"></a>Transformatie sorteren in de toewijzingsgegevensstroom
 
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
+Met de sorteertransformatie u de binnenkomende rijen in de huidige gegevensstroom sorteren. U afzonderlijke kolommen kiezen en sorteren in oplopende of aflopende volgorde.
+
+> [!NOTE]
+> Gegevensstromen worden uitgevoerd op sparkclusters die gegevens over meerdere knooppunten en partities distribueren. Als u ervoor kiest om uw gegevens opnieuw te verdelen in een volgende transformatie, u uw sortering verliezen als gevolg van het opnieuw herschikken van gegevens.
+
+## <a name="configuration"></a>Configuratie
 
 ![Sorteerinstellingen](media/data-flow/sort.png "Sorteren")
 
-Met de transformatie Sorteren u de binnenkomende rijen in de huidige gegevensstroom sorteren. De uitgaande rijen van de sorteertransformatie volgen vervolgens de bestelregels die u instelt. U afzonderlijke kolommen kiezen en ze ASC of DEC sorteren met behulp van de pijlindicator naast elk veld. Als u de kolom moet wijzigen voordat u de sortering toepast, klikt u op 'Berekende kolommen' om de expressieeditor te starten. Dit biedt de mogelijkheid om een expressie voor de sorteerbewerking te bouwen in plaats van alleen een kolom voor de sortering toe te passen.
+**Geval ongevoelig:** Of u de aanvraag wilt negeren bij het sorteren van tekenreeksen of tekstvelden
 
-## <a name="case-insensitive"></a>Niet hoofdlettergevoelig
-U 'Hoofdletter ongevoelig' inschakelen als u de aanvraag wilt negeren bij het sorteren van tekenreeks- of tekstvelden.
+**Alleen binnen partities sorteren:** Als gegevensstromen worden uitgevoerd op spark, wordt elke gegevensstroom verdeeld in partities. Met deze instelling worden gegevens alleen gesorteerd binnen de binnenkomende partities in plaats van de hele gegevensstroom te sorteren. 
 
-"Sort Only Within Partitions" maakt gebruik van Spark-gegevenspartitionering. Door binnenkomende gegevens alleen binnen elke partitie te sorteren, kunnen gegevensstromen partitiegegevens sorteren in plaats van hele gegevensstroom te sorteren.
+**Sorteervoorwaarden:** Kies op welke kolommen u sorteert en in welke volgorde de sortering plaatsvindt. De volgorde bepaalt de sorteerprioriteit. Kies of nulls aan het begin of einde van de gegevensstroom wordt weergegeven.
 
-Elk van de sorteervoorwaarden in de sorteertransformatie kan opnieuw worden gerangschikt. Dus als u een kolom hoger in de sorteerprioriteit moet verplaatsen, pak dan die rij met de muis en beweegt deze hoger of lager in de sorteerlijst.
+### <a name="computed-columns"></a>Berekende kolommen
 
-Partitie-effecten op Sorteren
+Als u een kolomwaarde wilt wijzigen of extraheren voordat u de sortering toepast, zweeft u boven de kolom en selecteert u 'berekende kolom'. Hiermee wordt de opbouwfunctie voor expressies geopend om een expressie voor de sorteerbewerking te maken in plaats van een kolomwaarde te gebruiken.
 
-ADF Data Flow wordt uitgevoerd op big data Spark-clusters met gegevens verdeeld over meerdere knooppunten en partities. Het is belangrijk om hiermee rekening te houden bij het ontwerpen van uw gegevensstroom als u afhankelijk bent van de transformatie Sorteren om gegevens in dezelfde volgorde te bewaren. Als u ervoor kiest om uw gegevens opnieuw te verdelen in een volgende transformatie, u uw sortering verliezen als gevolg van die herschikking van gegevens.
+## <a name="data-flow-script"></a>Script voor gegevensstroom
+
+### <a name="syntax"></a>Syntaxis
+
+```
+<incomingStream>
+    sort(
+        desc(<sortColumn1>, { true | false }),
+        asc(<sortColumn2>, { true | false }),
+        ...
+    ) ~> <sortTransformationName<>
+```
+
+### <a name="example"></a>Voorbeeld
+
+![Sorteerinstellingen](media/data-flow/sort.png "Sorteren")
+
+Het gegevensstroomscript voor de bovenstaande sorteerconfiguratie bevindt zich in het onderstaande codefragment.
+
+```
+BasketballStats sort(desc(PTS, true),
+    asc(Age, true)) ~> Sort1
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

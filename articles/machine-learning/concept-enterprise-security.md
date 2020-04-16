@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 9f3a1c3455aadfbd243cdc6ab2920849c8558841
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756565"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414633"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Bedrijfsbeveiliging voor Azure Machine Learning
 
@@ -243,9 +243,9 @@ Azure Databricks kunnen worden gebruikt in Azure Machine Learning-pijplijnen. He
 
 ### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
 
-U TLS gebruiken om de interne communicatie tussen Azure Machine Learning-microservices te beveiligen en externe oproepen naar het scoreeindpunt te beveiligen. Alle Azure Storage-toegang vindt ook plaats via een beveiligd kanaal.
+Azure Machine Learning gebruikt TLS om interne communicatie tussen verschillende Azure Machine Learning-microservices te beveiligen. Alle Azure Storage-toegang vindt ook plaats via een beveiligd kanaal.
 
-Zie [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)voor meer informatie.
+Als u externe oproepen naar het scoreeindpunt Azure Machine Learning wilt beveiligen, wordt TLS gebruikt. Zie [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)voor meer informatie.
 
 ### <a name="using-azure-key-vault"></a>Azure Key Vault gebruiken
 

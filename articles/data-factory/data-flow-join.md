@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/02/2020
-ms.openlocfilehash: 32100e9cad86f12dc8111ee8a0282a515540a4db
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0c0e35f7f06afd0cafa4a1e353b7eda84ed226f2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346614"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413655"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Deelnemen aan transformatie in het toewijzen van gegevensstroom
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Gebruik de join-transformatie om gegevens uit twee bronnen of stromen te combineren in een kaartgegevensstroom. De uitvoerstroom bevat alle kolommen van beide bronnen die overeenkomen op basis van een joinvoorwaarde. 
 

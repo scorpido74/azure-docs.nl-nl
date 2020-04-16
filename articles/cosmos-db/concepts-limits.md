@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 343e94fe681d398b695e0e24c22544bca470d75a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: b24d7db679bb9cb9dacd5e1db8e6410b883548cc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652193"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415697"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB-servicequota
 
@@ -70,7 +70,7 @@ U [uw Azure Cosmos-account inrichten en beheren](how-to-manage-database-account.
 > [!NOTE]
 > Regionale failovers zijn alleen van toepassing op afzonderlijke regioschrijft accounts. Schrijfaccounts met meerdere regio's vereisen geen beperkingen voor het wijzigen van het schrijfgebied.
 
-Cosmos DB maakt automatisch regelmatig back-ups van uw gegevens. Zie [Online back-up en on-demand gegevensherstel in Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)voor meer informatie over back-upretentieintervallen en vensters.
+Cosmos DB maakt automatisch regelmatig back-ups van uw gegevens. Zie [Online back-up en on-demand gegevensherstel in Azure Cosmos DB](online-backup-and-restore.md)voor meer informatie over back-upretentieintervallen en vensters.
 
 ## <a name="per-account-limits"></a>Limieten per account
 

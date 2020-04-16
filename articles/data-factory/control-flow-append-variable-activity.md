@@ -11,15 +11,15 @@ ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
 ms.date: 10/09/2018
-ms.openlocfilehash: bcecd3411b6e6e751032f33862a671d8adbca046
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d74cd0fcd524f00d79eb3fbab386c602a413766
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73679982"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414200"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Variabele activiteit toevoegen in Azure Data Factory
-
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 Gebruik de activiteit Variabele toevoegen om een waarde toe te voegen aan een bestaande matrixvariabele die is gedefinieerd in een pijplijn voor gegevensfabrieken.
 
 ## <a name="type-properties"></a>Eigenschappen typen

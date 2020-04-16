@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: 84b935d1646ea4f13d5926fc68797fd8efd03dea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3460c789909c6acd0537ef89a9ec8509bf6e135d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930361"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413737"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Filtertransformatie in kaartgegevensstroom
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Met de filtertransformaties kan rijfilteren op basis van een voorwaarde. De uitvoerstroom bevat alle rijen die overeenkomen met de filtervoorwaarde. De filtertransformatie is vergelijkbaar met een WHERE-component in SQL.
 

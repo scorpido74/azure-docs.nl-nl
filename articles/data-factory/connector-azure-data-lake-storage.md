@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
-ms.openlocfilehash: a061df302680488377c3006dcef57b818a101d67
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 2e4e554bb6564adb8c6722533e127a758e5a9c24
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011528"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415403"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Gegevens kopiëren en transformeren in Azure Data Lake Storage Gen2 met Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Lake Storage Gen2 (ADLS Gen2) is een reeks mogelijkheden die zijn toegeveld naar big data-analyses die zijn ingebouwd in [Azure Blob-opslag.](../storage/blobs/storage-blobs-introduction.md) U het gebruiken om te communiceren met uw gegevens met behulp van zowel bestandssysteem en object opslag paradigma's.
 

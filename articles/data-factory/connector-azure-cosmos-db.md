@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 7096b429145a54b5a09fe38eb8099c4ff24ac452
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f0aa70333454b327a0ca76beef2985062ce56715
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243612"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415387"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Gegevens kopiëren en transformeren in Azure Cosmos DB (SQL API) met Azure Data Factory
 
@@ -24,7 +24,11 @@ ms.locfileid: "79243612"
 > * [Versie 1](v1/data-factory-azure-documentdb-connector.md)
 > * [Huidige versie](connector-azure-cosmos-db.md)
 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 In dit artikel wordt beschreven hoe u de kopieeractiviteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van en naar Azure Cosmos DB (SQL API), en een gegevensstroom kunt gebruiken om gegevens in Azure Cosmos DB (SQL API) te transformeren. Lees het [inleidende artikel](introduction.md)voor meer informatie over Azure Data Factory.
+
+
 
 >[!NOTE]
 >Deze connector ondersteunt alleen Cosmos DB SQL API. Raadpleeg voor MongoDB API de [api voor Azure Cosmos DB voor MongoDB.](connector-azure-cosmos-db-mongodb-api.md) Andere API-typen worden nu niet ondersteund.

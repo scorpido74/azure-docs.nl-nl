@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c93dab2f6086b10e1e8d75c4fc3334a95c3fcafa
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 118653efc8829ac5ef6287bb36fb5595cff1147b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633279"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416129"
 ---
-# <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>Contoso-retailgegevens laden in een Synapse SQL-gegevensmagazijn
+# <a name="load-contoso-retail-data-to-synapse-sql"></a>Contoso-retailgegevens laden in Synapse SQL 
 
 In deze zelfstudie leert u PolyBase- en T-SQL-opdrachten te gebruiken om twee tabellen van de Contoso-retailgegevens in een Synapse SQL-gegevensmagazijn te laden.
 
@@ -221,7 +221,7 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>De gegevens in nieuwe tabellen laden
 
-Als u gegevens uit Azure blob-opslag wilt laden in de tabel met het gegevensmagazijn, gebruikt u de instructie [TABEL MAKEN ALS SELECT (Transact-SQL).](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Laden met [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md) maakt gebruik van de sterk getypte externe tabellen die u hebt gemaakt. Als u de gegevens in nieuwe tabellen wilt laden, gebruikt u één CTAS-instructie per tabel.
+Als u gegevens uit Azure blob-opslag wilt laden in de tabel met het gegevensmagazijn, gebruikt u de instructie [TABEL MAKEN ALS SELECT (Transact-SQL).](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Laden met [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) maakt gebruik van de sterk getypte externe tabellen die u hebt gemaakt. Als u de gegevens in nieuwe tabellen wilt laden, gebruikt u één CTAS-instructie per tabel.
 
 CTAS maakt een nieuwe tabel en vult deze met de resultaten van een selecte instructie. CTAS definieert de nieuwe tabel met dezelfde kolommen en gegevenstypen als de resultaten van de select-instructie. Als u alle kolommen uit een externe tabel selecteert, wordt de nieuwe tabel een replica van de kolommen en gegevenstypen in de externe tabel.
 

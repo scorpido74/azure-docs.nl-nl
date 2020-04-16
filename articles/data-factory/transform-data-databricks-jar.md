@@ -11,14 +11,15 @@ ms.author: abnarain
 author: nabhishek
 manager: shwang
 ms.date: 03/15/2018
-ms.openlocfilehash: 20858069b745beeaf64951c4ef23c2eb85251985
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b010000a674e351051c664dd5eeacd40e802439
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929112"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414614"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Gegevens transformeren door een Jar-activiteit uit te voeren in Azure Databricks
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Met de Azure Databricks Jar-activiteit in een [datafabriekwordt](concepts-pipelines-activities.md) een Spark Jar uitgevoerd in uw Azure Databricks-cluster. Dit artikel bouwt voort op het artikel [over gegevenstransformatieactiviteiten,](transform-data.md) dat een algemeen overzicht geeft van gegevenstransformatie en de ondersteunde transformatieactiviteiten.Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark.
 

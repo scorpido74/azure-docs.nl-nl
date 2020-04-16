@@ -3,14 +3,14 @@ title: Een Service Fabric-app implementeren met mi met systeemtoegewezen MI
 description: In dit artikel ziet u hoe u een door het systeem toegewezen beheerde identiteit toewijst aan een Azure Service Fabric-toepassing
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614822"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415657"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Servicefabric-toepassing implementeren met door het systeem toegewezen beheerde identiteit (voorbeeld)
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>Servicefabric-toepassing implementeren met door het systeem toegewezen beheerde identiteit
 
 Als u toegang wilt krijgen tot de beheerde identiteitsfunctie voor Azure Service Fabric-toepassingen, moet u eerst de Managed Identity Token Service in het cluster inschakelen. Deze service is verantwoordelijk voor de verificatie van Service Fabric-toepassingen met behulp van hun beheerde identiteiten en voor het verkrijgen van toegangstokens namens hen. Zodra de service is ingeschakeld, u deze zien in Service Fabric Explorer onder de sectie **Systeem** in het linkerdeelvenster, uitgevoerd onder de naam **fabric:/System/ManagedIdentityTokenService** naast andere systeemservices.
 

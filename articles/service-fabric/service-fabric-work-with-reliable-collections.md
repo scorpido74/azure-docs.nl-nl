@@ -2,13 +2,13 @@
 title: Werken met betrouwbare verzamelingen
 description: Ontdek de aanbevolen procedures voor het werken met betrouwbare verzamelingen binnen een Azure Service Fabric-toepassing.
 ms.topic: conceptual
-ms.date: 02/22/2019
-ms.openlocfilehash: 4a1f48d9523e5d753c222f0526e210a30e1927e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/10/2020
+ms.openlocfilehash: 94836a37a62e3eeffb94d891980cc02694bd973e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645970"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409808"
 ---
 # <a name="working-with-reliable-collections"></a>Werken met betrouwbare verzamelingen
 Service Fabric biedt een stateful programmeermodel dat beschikbaar is voor .NET-ontwikkelaars via Betrouwbare Collecties. Met name Service Fabric biedt betrouwbare woordenboek en betrouwbare wachtrijklassen. Wanneer u deze klassen gebruikt, wordt uw status verdeeld (voor schaalbaarheid), gerepliceerd (voor beschikbaarheid) en afgehandeld binnen een partitie (voor ACID-semantiek). Laten we eens kijken naar een typisch gebruik van een betrouwbaar woordenboek object en zien wat het eigenlijk doet.
@@ -50,6 +50,19 @@ In de bovenstaande code verbindt de call to CommitAsync alle bewerkingen van de 
 
 Als CommitAsync niet wordt aangeroepen (meestal vanwege een uitzondering die wordt gegooid), wordt het ITransaction-object verwijderd. Bij het verwijderen van een niet-vastgelegd ITransaction-object voegt Service Fabric de aborteergegevens toe aan het logboekbestand van het lokale knooppunt en hoeft er niets naar een van de secundaire replica's te worden verzonden. En dan, alle sloten in verband met sleutels die werden gemanipuleerd via de transactie worden vrijgegeven.
 
+## <a name="volatile-reliable-collections"></a>Vluchtige betrouwbare collecties 
+In sommige workloads, zoals bijvoorbeeld een gerepliceerde cache, kan incidenteel gegevensverlies worden getolereerd. Het vermijden van persistentie van de gegevens naar de schijf kan zorgen voor betere latencies en doorvoerbij het schrijven naar betrouwbare woordenboeken. De afweging voor een gebrek aan doorzettingsvermogen is dat als quorumverlies optreedt, volledige gegevensverlies zal optreden. Aangezien quorumverlies een zeldzame gebeurtenis is, kunnen de verhoogde prestaties de zeldzame kans op gegevensverlies voor die workloads waard zijn.
+
+Momenteel is vluchtige ondersteuning alleen beschikbaar voor betrouwbare woordenboeken en betrouwbare wachtrijen, en niet voor ReliableConcurrentQueues. Zie de lijst [met kanttekeningen](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections) om uw beslissing te geven over het al dan niet gebruiken van vluchtige collecties.
+
+Als u vluchtige ondersteuning in ```HasPersistedState``` uw service wilt ```false```inschakelen, stelt u de vlag in servicetype-declaratie in op , zoals:
+```xml
+<StatefulServiceType ServiceTypeName="MyServiceType" HasPersistedState="false" />
+```
+
+>[!NOTE]
+>Bestaande doorgaande diensten kunnen niet volatiel worden gemaakt en vice versa. Als u dit wilt doen, moet u de bestaande service verwijderen en de service vervolgens implementeren met de bijgewerkte vlag. Dit betekent dat u bereid moet zijn om volledige ```HasPersistedState``` gegevensverlies te maken als u de vlag wilt wijzigen. 
+
 ## <a name="common-pitfalls-and-how-to-avoid-them"></a>Veelvoorkomende valkuilen en hoe ze te vermijden
 Nu u begrijpt hoe de betrouwbare collecties intern werken, laten we eens kijken naar een aantal veel voorkomende misbruiken van hen. Zie de code hieronder:
 
@@ -60,7 +73,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
    // & sends the bytes to the secondary replicas.
    await m_dic.AddAsync(tx, name, user);
 
-   // The line below updates the property’s value in memory only; the
+   // The line below updates the property's value in memory only; the
    // new value is NOT serialized, logged, & sent to secondary replicas.
    user.LastLogin = DateTime.UtcNow;  // Corruption!
 
@@ -87,13 +100,13 @@ Hier is een ander voorbeeld met een veel voorkomende fout:
 ```csharp
 using (ITransaction tx = StateManager.CreateTransaction())
 {
-   // Use the user’s name to look up their data
+   // Use the user's name to look up their data
    ConditionalValue<User> user = await m_dic.TryGetValueAsync(tx, name);
 
    // The user exists in the dictionary, update one of their properties.
    if (user.HasValue)
    {
-      // The line below updates the property’s value in memory only; the
+      // The line below updates the property's value in memory only; the
       // new value is NOT serialized, logged, & sent to secondary replicas.
       user.Value.LastLogin = DateTime.UtcNow; // Corruption!
       await tx.CommitAsync();
@@ -110,7 +123,7 @@ De onderstaande code toont de juiste manier om een waarde bij te werken in een b
 ```csharp
 using (ITransaction tx = StateManager.CreateTransaction())
 {
-   // Use the user’s name to look up their data
+   // Use the user's name to look up their data
    ConditionalValue<User> currentUser = await m_dic.TryGetValueAsync(tx, name);
 
    // The user exists in the dictionary, update one of their properties.
@@ -124,7 +137,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
       // In the new object, modify any properties you desire
       updatedUser.LastLogin = DateTime.UtcNow;
 
-      // Update the key’s value to the updateUser info
+      // Update the key's value to the updateUser info
       await m_dic.SetValue(tx, name, updatedUser);
       await tx.CommitAsync();
    }
@@ -138,7 +151,7 @@ Het onderstaande userinfo-type laat zien hoe u een onveranderlijk type definiër
 
 ```csharp
 [DataContract]
-// If you don’t seal, you must ensure that any derived classes are also immutable
+// If you don't seal, you must ensure that any derived classes are also immutable
 public sealed class UserInfo
 {
    private static readonly IEnumerable<ItemId> NoBids = ImmutableList<ItemId>.Empty;

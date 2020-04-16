@@ -7,28 +7,30 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 94f7277c1b741fb5ef6d2807fabbb266c0109415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68423bee6096357add9b5d4b107c984ac67c9cab
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086923"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81412969"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Overzicht van gegevensstroomtransformatie toewijzen
 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Hieronder vindt u een lijst van de transformaties die momenteel worden ondersteund in het in kaart brengen van gegevensstroom. Klik op elke transformaties om de configuratiedetails te leren kennen.
 
-| Name | Categorie | Beschrijving |
+| Naam | Categorie | Beschrijving |
 | ---- | -------- | ----------- |
-| [Statistische](data-flow-aggregate.md) | Schemamodifier | Definieer verschillende typen aggregaties, zoals SOM, MIN, MAX en COUNT gegroepeerd op bestaande of berekende kolommen. | 
+| [Samenvoegen](data-flow-aggregate.md) | Schemamodifier | Definieer verschillende typen aggregaties, zoals SOM, MIN, MAX en COUNT gegroepeerd op bestaande of berekende kolommen. | 
 | [Rij wijzigen](data-flow-alter-row.md) | Rijmodifier | Regel het invoeg-, verwijder-, update- en upsert-beleid voor rijen. |
 | [Voorwaardelijk splitsen](data-flow-conditional-split.md) | Meerdere ingangen/uitgangen | Rijen met gegevens naar verschillende streams routeren op basis van overeenkomende voorwaarden. |
 | [Afgeleide kolom](data-flow-derived-column.md) | Schemamodifier | nieuwe kolommen genereren of bestaande velden wijzigen met de taal van de gegevensstroomexpressie. | 
 | [Bestaat](data-flow-exists.md) | Meerdere ingangen/uitgangen | Controleer of uw gegevens in een andere bron of stream bestaan. | 
 | [Filter](data-flow-filter.md) | Rijmodifier | Een rij filteren op basis van een voorwaarde. |
-| [Afvlakken](data-flow-flatten.md) | Schemamodifier |  Neem arraywaarden in hiërarchische structuren zoals JSON en rol ze uit in afzonderlijke rijen. |
+| [Platmaken](data-flow-flatten.md) | Schemamodifier |  Neem arraywaarden in hiërarchische structuren zoals JSON en rol ze uit in afzonderlijke rijen. |
 | [Toevoegen](data-flow-join.md) | Meerdere ingangen/uitgangen |  Combineer gegevens uit twee bronnen of streams. |
-| [Lookup](data-flow-lookup.md) | Meerdere ingangen/uitgangen | Referentiegegevens van een andere bron. |
+| [Opzoeken](data-flow-lookup.md) | Meerdere ingangen/uitgangen | Referentiegegevens van een andere bron. |
 | [Nieuwe vertakking](data-flow-new-branch.md) | Meerdere ingangen/uitgangen | Pas meerdere sets bewerkingen en transformaties toe op dezelfde gegevensstroom. |
 | [Draaitabel](data-flow-pivot.md) | Schemamodifier | Een aggregatie waarbij een of meer groeperingskolommen zijn afzonderlijke rijwaarden hebben omgezet in afzonderlijke kolommen. |
 | [Selecteren](data-flow-select.md) | Schemamodifier | Aliaskolommen en streamnamen en kolommen laten vallen of opnieuw ordenen |

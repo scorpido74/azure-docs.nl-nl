@@ -11,15 +11,17 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: 9a1923057bc318869f491791520aacb4d0d17591
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/15/2020
+ms.openlocfilehash: ecfdf2a11f31c18064be9a607f2bb3938d26e661
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346621"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414897"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Een zelf gehoste IR configureren als proxy voor een Azure-SSIS IR in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In dit artikel wordt beschreven hoe u SQL Server Integration Services (SSIS)-pakketten uitvoert op een Azure-SSIS Integration Runtime (Azure-SSIS IR) in Azure Data Factory met een zelf gehoste runtime (self-hosted IR) die is geconfigureerd als proxy. 
 
@@ -52,7 +54,7 @@ Ten slotte downloadt en installeert u de nieuwste versie van de zelf gehoste IR,
 
 Als u dit nog niet hebt gedaan, maakt u een Azure Blob-opslagservice in dezelfde gegevensfabriek waar uw Azure-SSIS IR is ingesteld. Zie Hiervoor [een azure-service met gegevensfabriek maken.](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service) Zorg ervoor dat u het volgende doet:
 - Selecteer **Azure Blob Storage**voor **Gegevensarchief**.  
-- Selecteer **AutoResolveIntegrationRuntime** (niet uw Azure-SSIS IR of uw zelfgehoste IR), omdat we de standaard Azure IR gebruiken om toegangsreferenties voor uw Azure Blob Storage op te halen voor de **runtime**van De Integratie, omdat we de standaard Azure IR gebruiken om toegangsreferenties voor uw Azure Blob Storage op te halen.  
+- Selecteer **AutoResolveIntegrationRuntime** (niet uw Azure-SSIS IR of uw zelfgehoste IR) **voor Verbinding maken via de runtime**van integratie, omdat we de standaard Azure IR gebruiken om toegangsreferenties voor uw Azure Blob Storage op te halen.
 - Selecteer **Accountsleutel**, **SAS URI**of **Service Principal**voor **verificatiemethode**.  
 
     >[!TIP]
@@ -171,7 +173,7 @@ Als u een sterk cryptografie/veiliger netwerkprotocol (TLS 1.2) moet gebruiken e
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 
-- Alleen gegevensstroomtaken met ODBC(Open Database Connectivity)/OLEDB/Flat File-bronnen worden momenteel ondersteund. 
+- Alleen gegevensstroomtaken met ODBC (Open Database Connectivity)/OLEDB/Flat File-bronnen of OLEDB-bestemming worden momenteel ondersteund. 
 - Alleen Azure Blob-opslagservices die zijn geconfigureerd met *accountsleutel,* *SAS-uri (Shared Access Signature)* of *Service Principal-verificatie* worden momenteel ondersteund.
 - *ParameterMapping* in OLEDB Source wordt nog niet ondersteund. Gebruik SQL *Command From Variable* als *AccessMode* en gebruik *Expressie* als tijdelijke oplossing om uw variabelen/parameters in een SQL-opdracht in te voegen. Zie ter illustratie het *parametermappingsample.dtsx-pakket* dat te vinden is in de map *SelfHostedIRProxy/Limitations* van onze openbare preview-container. Met Azure Storage Explorer u verbinding maken met onze openbare preview-container door de bovenstaande SAS URI in te voeren.
 

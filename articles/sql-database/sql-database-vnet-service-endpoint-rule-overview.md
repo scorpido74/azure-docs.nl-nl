@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4faead13c10171c31e76fe2dd59be32a93a12f86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7032f9e8f57ea9400bf6a92f89b13fa1866f8fc1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124753"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414397"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Eindpunten en regels voor virtuele netwerkservice gebruiken voor databaseservers
 
@@ -64,6 +64,7 @@ U hebt de mogelijkheid om [RBAC (Role-based access control)][rbac-what-is-813s] 
 
 > [!NOTE]
 > In sommige gevallen bevinden de Azure SQL Database en het VNet-subnet zich in verschillende abonnementen. In deze gevallen moet u zorgen voor de volgende configuraties:
+>
 > - Beide abonnementen moeten zich in dezelfde Azure Active Directory-tenant bevinden.
 > - De gebruiker heeft de vereiste machtigingen om bewerkingen te starten, zoals het inschakelen van serviceeindpunten en het toevoegen van een VNet-subnet aan de opgegeven server.
 > - Beide abonnementen moeten de Microsoft.Sql-provider hebben geregistreerd.
@@ -134,7 +135,7 @@ PolyBase wordt vaak gebruikt om gegevens te laden in Azure SQL Data Warehouse va
    > [!NOTE]
    > - Als u een v1- of blobopslagaccount voor algemene doeleinden hebt, moet u **eerst upgraden naar v2** met behulp van deze [handleiding.](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)
    > - Raadpleeg deze [handleiding](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)voor bekende problemen met Azure Data Lake Storage Gen2.
-    
+
 1. Navigeer onder uw opslagaccount naar **Toegangsbeheer (IAM)** en klik op **Roltoewijzing toevoegen**. Wijs **De RBAC-rol van Opslagblob-gegevensbijdrage** toe aan uw Azure SQL Server als host van uw Azure SQL Data Warehouse dat u hebt geregistreerd bij Azure Active Directory (AAD) als in stap#1.
 
    > [!NOTE]
@@ -235,7 +236,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke *eindpuntnaam* van
 
 ## <a name="azure-portal-steps"></a>Azure-portalstappen
 
-1. Meld u aan bij [Azure Portal][http-azure-portal-link-ref-477t].
+1. Meld u aan bij de [Azure-portal][http-azure-portal-link-ref-477t].
 
 2. Zoek naar **SQL-servers**en selecteer deze en selecteer vervolgens uw server. Selecteer **onder Beveiliging** **Firewalls en virtuele netwerken**.
 
@@ -264,6 +265,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke *eindpuntnaam* van
 
 > [!NOTE]
 > De volgende statussen of staten zijn van toepassing op de regels:
+>
 > - **Klaar:** Geeft aan dat de bewerking die u hebt gestart, is geslaagd.
 > - **Mislukt:** Geeft aan dat de bewerking die u hebt gestart, is mislukt.
 > - **Verwijderd:** Is alleen van toepassing op de bewerking Verwijderen en geeft aan dat de regel is verwijderd en niet langer van toepassing is.

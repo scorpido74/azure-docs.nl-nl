@@ -9,16 +9,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f04955fb910a6159dc09ac40a87a398e67d59d6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260811"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414119"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schematoewijzing in kopieeractiviteit
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel wordt beschreven hoe de activiteit azure data factory-kopieeractiviteit schematoewijzing en gegevenstypetoewijzing van brongegevens uitvoert om gegevens te laten zinken bij het uitvoeren van de gegevenskopie.
 
@@ -278,11 +279,7 @@ Met kopieeractiviteit worden brontypen uitgevoerd om typen te laten zinken met d
 1. Converteer van native source-typen naar tijdelijke gegevenstypen van Azure Data Factory
 2. Converteer van tijdelijke gegevenstypen azure data factory naar native sinktype
 
-U vindt de toewijzing tussen native type naar interim type in de sectie 'Gegevenstype toewijzing' in elk verbindingsonderwerp.
-
-### <a name="supported-data-types"></a>Ondersteunde gegevenstypen
-
-Data Factory ondersteunt de volgende tussentijdse gegevenstypen: U onderstaande waarden opgeven bij het configureren van tekstgegevens in de configuratie [van gegevenssetsstructuur:](concepts-datasets-linked-services.md#dataset-structure-or-schema)
+Kopieeractiviteit ondersteunt de volgende tussentijdse gegevenstypen: 
 
 * Byte
 * Booleaans

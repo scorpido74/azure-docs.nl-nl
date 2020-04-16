@@ -9,14 +9,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 34972e70039fef17161bdef66f64278cbabf908f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d0b49b73ef6b67653fbf32db1174880a51d432d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130807"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81412949"
 ---
 # <a name="azure-data-factory-faq"></a>Veelgestelde vragen over Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Data Factory.  
 
 ## <a name="what-is-azure-data-factory"></a>Wat is Azure Data Factory? 
@@ -55,7 +58,7 @@ Voor ontwikkelaars van visuele gegevens en gegevenstechnici is de Web UI van Dat
 
 ### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Rijke cross-platform SDKs voor gevorderde gebruikers
 Data Factory V2 biedt een uitgebreide set SDK's die kunnen worden gebruikt voor het ontwerpen, beheren en bewaken van pijplijnen met behulp van uw favoriete IDE, waaronder:
-* Python SDK
+* Python-SDK
 * PowerShell CLI
 * C# SDK
 
@@ -147,7 +150,7 @@ Zie de volgende artikelen voor meer informatie over Data Factory-concepten:
 
 - [Gegevenssets en gekoppelde services](concepts-datasets-linked-services.md)
 - [Pijplijnen en activiteiten](concepts-pipelines-activities.md)
-- [Integration Runtime](concepts-integration-runtime.md)
+- [Integratie-runtime](concepts-integration-runtime.md)
 
 ## <a name="what-is-the-pricing-model-for-data-factory"></a>Wat is het prijsmodel voor Data Factory?
 Zie [Prijsgegevens van Gegevensfabriek](https://azure.microsoft.com/pricing/details/data-factory/)voor prijsgegevens van Azure Data Factory .

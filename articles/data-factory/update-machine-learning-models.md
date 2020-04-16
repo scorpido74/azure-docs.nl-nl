@@ -11,14 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 3313c9c362a9b82cf7ed8db63479aaa5cf0c777e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4488c174ba5ff35ec2709d7c1b9f3093b4ee90a3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73683240"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409079"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Azure Machine Learning-modellen bijwerken met de activiteit Resource bijwerken
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Dit artikel vormt een aanvulling op het belangrijkste azure-gegevensfabriek - Azure Machine Learning-integratieartikel: [Voorspellende pijplijnen maken met Azure Machine Learning en Azure Data Factory](transform-data-using-machine-learning.md). Als u dit nog niet hebt gedaan, bekijk dan het hoofdartikel voordat u dit artikel leest.
 
 ## <a name="overview"></a>Overzicht

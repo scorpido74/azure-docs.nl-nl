@@ -9,14 +9,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 03/16/2020
-ms.openlocfilehash: 115cb3e499117457629e130b6432a1cbc2224edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32088dd712cd0c70fc01de48add17a0b6a828dc8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79463047"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415335"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Gegevensstroomactiviteit in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Gebruik de activiteit Gegevensstroom om gegevens te transformeren en te verplaatsen via gegevensstromen in kaart brengen. Zie [Overzicht van gegevensstroom toewijzen](concepts-data-flow-overview.md) als u nieuw bent in gegevensstromen
 
@@ -160,9 +162,9 @@ Gebruik . `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.
 Bekijk de activiteiten van de besturingsstroom die worden ondersteund door Data Factory: 
 
 - [If Condition Activity](control-flow-if-condition-activity.md)
-- [Execute Pipeline Activity](control-flow-execute-pipeline-activity.md)
+- [Activiteit uitvoeren van pijplijn](control-flow-execute-pipeline-activity.md)
 - [Voor elke activiteit](control-flow-for-each-activity.md)
-- [Get Metadata Activity](control-flow-get-metadata-activity.md)
-- [Lookup Activity](control-flow-lookup-activity.md)
-- [Webactiviteit](control-flow-web-activity.md)
-- [Until Activity](control-flow-until-activity.md)
+- [Activiteit ophalen van metagegevens](control-flow-get-metadata-activity.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Web Activity](control-flow-web-activity.md)
+- [Until-activiteit](control-flow-until-activity.md)

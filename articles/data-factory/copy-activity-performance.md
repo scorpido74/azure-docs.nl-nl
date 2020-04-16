@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 231b0d77dc441e70dc0ec8de313291bb6b4f9292
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aedb3df69821d1436b03b2eb1f12873b624d426e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79261396"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414179"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Handleiding voor activiteitsprestaties en schaalbaarheid kopiëren
 
@@ -25,7 +25,9 @@ ms.locfileid: "79261396"
 > * [Versie 1](v1/data-factory-copy-activity-performance.md)
 > * [Huidige versie](copy-activity-performance.md)
 
-Of u nu een grootschalige gegevensmigratie van data lake of enterprise data warehouse (EDW) naar Azure wilt uitvoeren, of dat u gegevens op schaal wilt opnemen van verschillende bronnen in Azure voor big data analytics, het is van cruciaal belang om optimale prestaties te bereiken en Schaalbaarheid.  Azure Data Factory biedt een performant, veerkrachtig en kosteneffectief mechanisme om gegevens op schaal in te nemen, waardoor het een geweldige pasvorm is voor gegevenstechnici die zeer performante en schaalbare gegevensopnamepijplijnen willen bouwen.
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Of u nu een grootschalige gegevensmigratie van data lake of enterprise data warehouse (EDW) naar Azure wilt uitvoeren, of dat u gegevens op schaal wilt opnemen van verschillende bronnen in Azure voor big data analytics, het is essentieel om optimale prestaties en schaalbaarheid te bereiken.  Azure Data Factory biedt een performant, veerkrachtig en kosteneffectief mechanisme om gegevens op schaal in te nemen, waardoor het een geweldige pasvorm is voor gegevenstechnici die zeer performante en schaalbare gegevensopnamepijplijnen willen bouwen.
 
 Na het lezen van dit artikel u de volgende vragen beantwoorden:
 

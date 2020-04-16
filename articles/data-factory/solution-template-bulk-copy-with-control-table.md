@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 3a42d7da21cfb2e3066fbdd81b27c82155d8456f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6d634d9a32ae1728e1122d863ddabd94f73ee27
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75439913"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414831"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Bulkkopie uit een database met een controletabel
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Als u gegevens uit een gegevensmagazijn in Oracle Server, Netezza, Teradata of SQL Server wilt kopiëren naar Azure SQL Data Warehouse, moet u enorme hoeveelheden gegevens uit meerdere tabellen laden. Meestal moeten de gegevens in elke tabel worden verdeeld, zodat u rijen met meerdere threads parallel vanuit één tabel laden. In dit artikel wordt een sjabloon beschreven die in deze scenario's moet worden gebruikt.
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 5a9917010b7301bf70c3bebf68c35d82f4839e0f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 074a28af8c80c109dbe97306900e8f00618e435a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409050"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411686"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -41,7 +41,7 @@ De hyperscale-servicelaag in Azure SQL Database biedt de volgende extra mogelijk
 - Snelle database herstelt (op basis van bestandsmomentopnamen) in minuten in plaats van uren of dagen (geen grootte van de gegevensbewerking)
 - Hogere algemene prestaties door hogere logdoorvoer en snellere transactiecommittijden, ongeacht de gegevensvolumes
 - Snelle uitschaing - u een of meer alleen-lezen knooppunten inrichten voor het ontladen van uw leeswerkbelasting en voor gebruik als hot-standbys
-- Snel opschalen - u in constante tijd uw rekenresources opschalen om zware workloads mogelijk op te vangen en vervolgens de rekenresources weer omlaag schalen wanneer deze niet nodig zijn.
+- Snel opschalen - u in constante tijd uw rekenresources opschalen om zware workloads mogelijk te maken wanneer dat nodig is, en vervolgens de rekenresources weer naar beneden schalen wanneer dit niet nodig is.
 
 De Hyperscale-servicelaag verwijdert veel van de praktische limieten die traditioneel worden gezien in clouddatabases. Wanneer de meeste andere databases worden beperkt door de resources die beschikbaar zijn in één knooppunt, hebben databases in de hyperscale-servicelaag geen dergelijke limieten. Met zijn flexibele opslagarchitectuur groeit de opslag naar behoefte. Hyperscale-databases worden namelijk niet gemaakt met een gedefinieerde maximale grootte. Een Hyperscale-database groeit naar behoefte en u wordt alleen gefactureerd voor de capaciteit die u gebruikt. Voor leesintensieve workloads biedt de hyperscale-servicelaag een snelle scale-out door extra leesreplica's in te richten als dat nodig is voor het ontladen van leesbelasting.
 
@@ -72,7 +72,7 @@ Hyperscale servicelaag is alleen beschikbaar in [vCore-model.](sql-database-serv
 
 - **Opslag**:
 
-  U hoeft de maximale gegevensgrootte niet op te geven bij het configureren van een Hyperscale-database. In de hyperscale-laag worden kosten in rekening gebracht voor opslag voor uw database op basis van de werkelijke toewijzing. Opslag wordt automatisch toegewezen tussen 40 GB en 100 TB, in stappen van 10 GB 10 GB. Meerdere gegevensbestanden kunnen groeien op hetzelfde moment indien nodig. Een Hyperscale-database wordt gemaakt met een begingrootte van 10 GB en begint elke 10 minuten met 10 GB te groeien, totdat deze de grootte van 40 GB bereikt.
+  U hoeft de maximale gegevensgrootte niet op te geven bij het configureren van een Hyperscale-database. In de hyperscale-laag worden kosten in rekening gebracht voor opslag voor uw database op basis van de werkelijke toewijzing. Opslag wordt automatisch toegewezen tussen 40 GB en 100 TB, in stappen van 10 GB. Meerdere gegevensbestanden kunnen groeien op hetzelfde moment indien nodig. Een Hyperscale-database wordt gemaakt met een begingrootte van 10 GB en begint elke 10 minuten met 10 GB te groeien, totdat deze de grootte van 40 GB bereikt.
 
 Zie [Azure SQL Database Pricing](https://azure.microsoft.com/pricing/details/sql-database/single/) voor meer informatie over hyperscale-prijzen
 
@@ -156,7 +156,7 @@ Zie SLA voor [Azure SQL Database voor](https://azure.microsoft.com/support/legal
 
 ### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>Een Hyperscale-database herstellen naar een andere geografie
 Als u een Azure SQL Database Hyperscale DB moet herstellen naar een andere regio dan de regio waarin deze momenteel wordt gehost, als onderdeel van een disaster recovery-bewerking of -oefening, verplaatsing of een andere reden, is de primaire methode om een geoherstel van de database uit te voeren.  Dit omvat precies dezelfde stappen als wat u zou gebruiken om een andere AZURE SQL DB te herstellen naar een andere regio:
-1. Maak een SQL Database-server in het doelgebied als u daar nog geen geschikte server hebt.  Deze server moet eigendom zijn van hetzelfde abonnement als de oorspronkelijke (bron)server.
+1. Maak een Azure SQL Database-server in het doelgebied als u daar nog geen geschikte server hebt.  Deze server moet eigendom zijn van hetzelfde abonnement als de oorspronkelijke (bron)server.
 2. Volg de instructies in het [geo-herstelonderwerp](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) van de pagina over het herstellen van Azure SQL-databases van automatische back-ups.
 
 > [!NOTE]
@@ -204,14 +204,13 @@ Dit zijn de huidige beperkingen voor de hyperscale-servicelaag vanaf GA.  We zij
 
 | Probleem | Beschrijving |
 | :---- | :--------- |
-| In het deelvenster Back-ups beheren voor een logische server worden geen Hyperscale-databases weergegeven die worden gefilterd uit SQL-server  | Hyperscale heeft een aparte methode voor het beheren van back-ups, en als zodanig de lange termijn retentie en point in time back-up retentie-instellingen niet van toepassing / worden ongeldig gemaakt. Hyperscale-databases worden dus niet weergegeven in het deelvenster Back-up beheren. |
+| In het deelvenster Back-ups beheren voor een logische server worden geen Hyperscale-databases weergegeven, deze worden uit de weergave gefilterd  | Hyperscale heeft een aparte methode voor het beheren van back-ups, en als zodanig de lange termijn retentie en point in time back-up retentie-instellingen niet van toepassing / worden ongeldig gemaakt. Hyperscale-databases worden dus niet weergegeven in het deelvenster Back-up beheren. |
 | Terugzetten naar eerder tijdstip | U een Hyperscale-database herstellen in een niet-Hyperscale-database, binnen de bewaarperiode van niet-hyperscale-database. U een niet-Hyperscale-database niet herstellen in een Hyperscale-database.|
 | Als een database een of meer gegevensbestanden groter dan 1 TB heeft, mislukt migratie | In sommige gevallen kan het mogelijk zijn om te werken rond dit probleem door het krimpen van de grote bestanden te worden minder dan 1 TB. Als u een database migreert die tijdens het migratieproces wordt gebruikt, moet u ervoor zorgen dat geen enkel bestand groter wordt dan 1 TB. Gebruik de volgende query om de grootte van databasebestanden te bepalen. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Beheerd exemplaar | Azure SQL Database Managed Instance wordt momenteel niet ondersteund met Hyperscale-databases. |
 | Elastische pools |  Elastic Pools worden momenteel niet ondersteund met SQL Database Hyperscale.|
 | Migratie naar Hyperscale is momenteel een eenrichtingsbewerking | Zodra een database is gemigreerd naar Hyperscale, kan deze niet rechtstreeks worden gemigreerd naar een servicelaag van niet-hyperschaal. Op dit moment is de enige manier om een database te migreren van Hyperscale naar niet-Hyperscale door te exporteren/importeren met behulp van een BACPAC-bestand of andere gegevensbewegingstechnologieën (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS, enz.)|
 | Migratie van databases met permanente in-memory objecten | Hyperscale ondersteunt alleen niet-persistente In-Memory-objecten (tabeltypen, native SP's en functies).  Permanente in-memorytabellen en andere objecten moeten worden verwijderd en opnieuw worden gemaakt als objecten die niet in het geheugen zijn voordat u een database migreert naar de servicelaag Hyperscale.|
-| Tracering wijzigen | Change Tracking bevindt zich momenteel in een openbare preview en kan worden ingeschakeld in nieuwe of bestaande Hyperscale-databases. |
 | Georeplicatie  | U georeplicatie nog niet configureren voor Azure SQL Database Hyperscale. |
 | Databasekopiëren | U Databasekopiëren nog niet gebruiken om een nieuwe database te maken in Azure SQL Hyperscale. |
 | TDE/AKV Integratie | Transparante databaseversleuteling met Azure Key Vault (ook wel Bring-Your-Own-Key of BYOK genoemd) wordt nog niet ondersteund voor Azure SQL Database Hyperscale, maar TDE met Service Managed Keys wordt volledig ondersteund. |

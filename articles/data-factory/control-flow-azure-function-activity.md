@@ -11,15 +11,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: ffb610634399594788afcb9b600ba00c6803dfdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee2e59e794cf34a8fd5043a56867a81c2537f1ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77207022"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415311"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure-functieactiviteit in Azure Data Factory
-
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 Met de azure-functieactiviteit u [Azure-functies](../azure-functions/functions-overview.md) uitvoeren in een pijplijn voor gegevensfabrieken. Als u een Azure-functie wilt uitvoeren, moet u een gekoppelde serviceverbinding en een activiteit maken die de Azure-functie opgeeft die u van plan bent uit te voeren.
 
 Bekijk de volgende video voor een acht minuten durende introductie en demonstratie van deze functie:

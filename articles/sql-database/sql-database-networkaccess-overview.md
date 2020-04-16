@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78945379"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414417"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database- en Data Warehouse-netwerktoegangsbesturingselementen
 
@@ -29,7 +29,7 @@ ms.locfileid: "78945379"
 
 Wanneer u een nieuwe Azure SQL Server maakt vanuit de [Azure-portal,](sql-database-single-database-get-started.md)is het resultaat een openbaar eindpunt in de indeling, *yourservername.database.windows.net*.
 
-U de volgende besturingselementen voor netwerktoegang gebruiken om selectief toegang tot de SQl-database toe te staan via het openbare eindpunt:
+U de volgende besturingselementen voor netwerktoegang gebruiken om selectief toegang tot de SQL-database toe te staan via het openbare eindpunt:
 - Azure Services toestaan: wanneer u bent ingesteld op AAN, kunnen andere bronnen binnen de Azure-grens, bijvoorbeeld een Azure Virtual Machine, toegang krijgen tot SQL-database
 
 - IP-firewallregels: gebruik deze functie om verbindingen vanaf een specifiek IP-adres expliciet toe te staan, bijvoorbeeld van on-premises machines
@@ -59,10 +59,10 @@ Wanneer u bent ingesteld **op ON** Azure SQL Server, staat u communicatie toe va
 In veel gevallen is de **ON-instelling** toleranter dan wat de meeste klanten willen. Ze willen deze instelling mogelijk instellen op **UIT** en vervangen door meer beperkende IP-firewallregels of firewallregels voor virtuele netwerken. Dit heeft gevolgen voor de volgende functies die worden uitgevoerd op VM's in Azure die geen deel uitmaken van uw VNet en dus verbinding maken met Sql Database via een Azure IP-adres.
 
 ### <a name="import-export-service"></a>Exportservice importeren
-Exportservice importeren werkt niet **Toestaan dat Azure-services toegang hebben tot server** die is ingesteld op UIT. U het probleem echter oplossen [door sqlpackage.exe handmatig uit te voeren vanaf een Azure VM of de export](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) rechtstreeks in uw code uit te voeren met behulp van de DACFx API.
+Exportservice importeren werkt niet wanneer **Toegang tot Azure-services toestaan** is ingesteld op **UIT.** U het probleem echter oplossen [door sqlpackage.exe handmatig uit te voeren vanaf een Azure VM of de export](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) rechtstreeks in uw code uit te voeren met behulp van de DACFx API.
 
 ### <a name="data-sync"></a>Gegevens synchroniseren
-Als u de functie Gegevenssynchronisatie wilt gebruiken met **Azure-services toestaan toegang te krijgen tot server** ingesteld op UIT, moet u afzonderlijke firewallregelvermeldingen maken om [IP-adressen toe](sql-database-server-level-firewall-rule.md) te voegen van de **Sql-servicetag** voor de regio die de **Hub-database** host.
+Als u de functie Gegevenssynchronisatie wilt gebruiken met **Toegang toestaan tot Azure-services** ingesteld op **UIT,** moet u afzonderlijke firewallregelvermeldingen maken om [IP-adressen toe](sql-database-server-level-firewall-rule.md) te voegen van de **Sql-servicetag** voor de regio die de **Hub-database** host.
 Voeg deze firewallregels op serverniveau toe aan de logische servers die zowel **hub-** als **liddatabases** hosten (die zich in verschillende regio's kunnen bevinden)
 
 Gebruik het volgende PowerShell-script om de IP-adressen te genereren die overeenkomen met sql-servicetag voor de regio West-VS

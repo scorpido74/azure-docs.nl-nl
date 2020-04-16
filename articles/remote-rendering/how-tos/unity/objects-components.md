@@ -5,16 +5,16 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 872f0e60943a674e5febf269dcb5b09fd08d77c9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681153"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409861"
 ---
-# <a name="interact-with-unity-game-objects-and-components"></a>Interactie met Unity-spelobjecten en -componenten
+# <a name="interact-with-unity-game-objects-and-components"></a>Interactie met Unity-gameobjecten en -onderdelen
 
-Azure Remote Rendering (ARR) is geoptimaliseerd voor grote aantallen objecten (zie [Limieten).](../../reference/limits.md) Hoewel het mogelijk is om grote en complexe hiërarchieën op de host te beheren, is het niet haalbaar om ze allemaal te repliceren in Unity op apparaten met een laag effect.
+Azure Remote Rendering (ARR) is geoptimaliseerd voor grote aantallen objecten (zie [Beperkingen).](../../reference/limits.md) Hoewel het mogelijk is om grote en complexe hiërarchieën op de host te beheren, is het niet haalbaar om ze allemaal te repliceren in Unity op apparaten met een laag effect.
 
 Wanneer een model op de host wordt geladen, weerspiegelt Azure Remote Rendering daarom de informatie over de modelstructuur op het clientapparaat (waardoor netwerkverkeer wordt uitgevoerd), maar worden de objecten en componenten in Unity niet gerepliceerd. In plaats daarvan verwacht het dat u de benodigde Unity-gameobjecten en -componenten handmatig opvraagt, zodat u de overhead beperken tot wat er daadwerkelijk nodig is. Op deze manier hebt u meer controle over de prestaties aan de clientzijde.
 
@@ -121,5 +121,5 @@ if (cutplane != null)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Externe rendering instellen voor eenheid](unity-setup.md)
+* [Remote Rendering voor Unity instellen](unity-setup.md)
 * [Zelfstudie: Werken met externe entiteiten in Unity](../../tutorials/unity/working-with-remote-entities.md)

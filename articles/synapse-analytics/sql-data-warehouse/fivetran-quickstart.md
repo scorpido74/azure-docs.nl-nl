@@ -11,12 +11,12 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b4742f48ee9ad0db60e21dd53c5c0f447c1ded67
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8f164232a3b1782511758f93a9e9b8d17d3714d5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348923"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414274"
 ---
 # <a name="quickstart-fivetran-with-data-warehouse"></a>Quickstart: Fivetran met datawarehouse 
 
@@ -26,7 +26,7 @@ In deze quickstart wordt beschreven hoe u een nieuwe Fivetran-gebruiker instelt 
 
 1. Zoek de volledig gekwalificeerde servernaam en databasenaam die u gebruikt om verbinding te maken met uw gegevensmagazijn.
     
-    Zie [Verbinding maken met uw gegevensmagazijn](sql-data-warehouse-connect-overview.md)als u hulp nodig hebt bij het vinden van deze informatie.
+    Zie [Verbinding maken met uw gegevensmagazijn](../sql/connect-overview.md)als u hulp nodig hebt bij het vinden van deze informatie.
 
 2. Kies in de wizard Setup of u uw database rechtstreeks wilt verbinden of met behulp van een SSH-tunnel.
 
@@ -75,9 +75,9 @@ In deze quickstart wordt beschreven hoe u een nieuwe Fivetran-gebruiker instelt 
     Lees voor meer informatie over [geheugen- en gelijktijdigheidslimieten](memory-concurrency-limits.md) en [resourceklassen](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory).
 
 
-## <a name="sign-in-to-fivetran"></a>Log hier in
+## <a name="connect-from-fivetran"></a>Verbinding maken vanuit Fivetran
 
-Als u zich wilt aanmelden bij Fivetran, voert u de referenties in die u gebruikt om toegang te krijgen tot uw gegevensmagazijn: 
+Als u verbinding wilt maken met uw gegevensmagazijn vanuit uw Fivetran-account, voert u de referenties in die u gebruikt om toegang te krijgen tot uw gegevensmagazijn: 
 
 * Host (uw servernaam).
 * Poort.

@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6df25b525975f2d4fe6a02064e81f359a804c58
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79081689"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416256"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Het cluster van de servicestructuur in evenwicht brengen
 De Cluster resourcemanager van servicestructuur ondersteunt dynamische belastingswijzigingen, reageren op toevoegingen of verwijderingen van knooppunten of services. Het corrigeert ook automatisch schendingen van beperkingen en brengt het cluster proactief opnieuw in evenwicht. Maar hoe vaak worden deze acties ondernomen, en wat triggert hen?
@@ -205,6 +205,7 @@ De Cluster Resource Manager zoekt automatisch uit welke services gerelateerd zij
 * Statistieken zijn hoe de Clusterresourcemanger van de servicestructuur het verbruik en de capaciteit in het cluster beheert. Bekijk [dit artikel](service-fabric-cluster-resource-manager-metrics.md) voor meer informatie over statistieken en hoe u deze configureren
 * Bewegingskosten is een manier om aan de Cluster Resource Manager te signaleren dat bepaalde services duurder zijn om te verplaatsen dan andere. Voor meer informatie over bewegingskosten, raadpleeg [dit artikel](service-fabric-cluster-resource-manager-movement-cost.md)
 * De clusterbronbeheer heeft verschillende gashendels die u configureren om de verloop in het cluster te vertragen. Ze zijn normaal gesproken niet nodig, maar als je ze nodig hebt kun je [hier](service-fabric-cluster-resource-manager-advanced-throttling.md) leren over hen
+* De Clusterresourcemanager kan subclustering herkennen en verwerken (een situatie die zich soms voordoet wanneer u plaatsingsbeperkingen en balanceren gebruikt). Zie [hier](cluster-resource-manager-subclustering.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

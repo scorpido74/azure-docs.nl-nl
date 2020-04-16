@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256937"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409774"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Noodherstel op schaal instellen voor VMware VM's/fysieke servers
 
@@ -210,7 +210,7 @@ U zich van tevoren als volgt voorbereiden op failover:
 Als u een grootschalige failover wilt uitvoeren, raden we het volgende aan:
 
 1. Herstelplannen maken voor failover van werkbelasting.
-    - Elk herstelplan kan leiden tot failover van maximaal 50 machines.
+    - Elk herstelplan kan leiden tot failover van maximaal 100 machines.
     - [Meer informatie](recovery-plan-overview.md) over herstelplannen.
 2. Voeg Azure Automation runbook-scripts toe aan herstelplannen om handmatige taken op Azure te automatiseren. Typische taken zijn het configureren van load balancers, het updaten van DNS etc. [Meer informatie](site-recovery-runbook-automation.md)
 2. Bereid Windows-machines voor de fail-over zodat ze voldoen aan de Azure-omgeving. [Failoverlimieten](#plan-azure-subscriptions-and-quotas) zijn hoger voor machines die voldoen. [Meer informatie](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) over runbooks.

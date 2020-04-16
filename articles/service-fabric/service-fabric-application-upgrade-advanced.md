@@ -2,13 +2,13 @@
 title: Onderwerpen voor geavanceerde upgrade van toepassingen
 description: Dit artikel behandelt een aantal geavanceerde onderwerpen met betrekking tot het upgraden van een Service Fabric-toepassing.
 ms.topic: conceptual
-ms.date: 1/28/2020
-ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.date: 03/11/2020
+ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422814"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414490"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Upgrade servicefabric-toepassing: geavanceerde onderwerpen
 
@@ -18,7 +18,7 @@ Als een nieuw servicetype wordt toegevoegd aan een gepubliceerde toepassing als 
 
 Op dezelfde manier kunnen servicetypen uit een toepassing worden verwijderd als onderdeel van een upgrade. Alle service-exemplaren van het te verwijderen servicetype moeten echter worden verwijderd voordat de upgrade wordt uitgevoerd (zie [Remove-ServiceFabricService).](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)
 
-## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Voorkom dat de verbinding daalt tijdens geplande downtime van de geplande servicezonder service (preview)
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>Voorkom dat de verbinding daalt tijdens geplande downtime van de geplande servicezonder service
 
 Voor geplande stateless instance downtimes, zoals application/cluster upgrade of node deactivation, kunnen verbindingen worden verwijderd als gevolg van het blootgestelde eindpunt wordt verwijderd nadat de instantie uitvalt, wat resulteert in gedwongen verbindingssluitingen.
 

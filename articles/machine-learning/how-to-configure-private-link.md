@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 4f39ff5726c23db32c7b039335f406641ee090cb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754256"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411206"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Private Link configureren voor een Azure Machine Learning-werkruimte (voorbeeld)
 
@@ -47,8 +47,7 @@ Bij het implementeren van een sjabloon moet u de volgende informatie verstrekken
 * Werkruimte-editie (Basic of Enterprise)
 * Als instellingen voor hoge vertrouwelijkheid voor de werkruimte moeten worden ingeschakeld
 * Als versleuteling voor de werkruimte met een door de klant beheerde sleutel moet zijn ingeschakeld en bijbehorende waarden voor de sleutel
-* Naam en subnet van virtueel netwerk
-* Subnetnaam
+* Virtuele netwerk en subnet naam, sjabloon zal een nieuw virtueel netwerk en subnet te maken
 
 Zodra een sjabloon is ingediend en de inrichting is voltooid, bevat de resourcegroep die uw werkruimte bevat drie nieuwe artefacttypen met betrekking tot Private Link:
 

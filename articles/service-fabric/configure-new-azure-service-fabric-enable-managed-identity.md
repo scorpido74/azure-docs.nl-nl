@@ -4,14 +4,14 @@ description: Zo u ondersteuning voor beheerde identiteiten inschakelen in een ni
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 0e35d2192fdcdb294b349105f3f0158564cec86b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd0cbd3251185a7831852ead47ca0b120126cf55
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76930465"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415671"
 ---
-# <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster-preview"></a>Beheerde identiteitsondersteuning configureren voor een nieuw cluster van Servicefabric (voorbeeld)
+# <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster"></a>Beheerde identiteitsondersteuning configureren voor een nieuw cluster van Servicefabric
 
 Als u [Beheerde identiteiten wilt gebruiken voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) in uw Service Fabric-toepassingen, schakelt u eerst de Managed Identity Token *Service* in op het cluster. Deze service is verantwoordelijk voor de verificatie van Service Fabric-toepassingen met behulp van hun beheerde identiteiten en voor het verkrijgen van toegangstokens namens hen. Zodra de service is ingeschakeld, u deze zien in Service Fabric Explorer onder de sectie **Systeem** in het linkerdeelvenster, uitgevoerd onder de naam **fabric:/System/ManagedIdentityTokenService** naast andere systeemservices.
 

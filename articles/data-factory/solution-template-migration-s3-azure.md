@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: e918fe01426202746f0225d25304b9c1b26cb74b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927332"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414762"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Gegevens van Amazon S3 migreren naar Azure Data Lake Storage Gen2
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Gebruik de sjablonen om petabytes aan gegevens te migreren die bestaan uit honderden miljoenen bestanden van Amazon S3 naar Azure Data Lake Storage Gen2. 
 
@@ -71,7 +73,7 @@ De sjabloon bevat twee parameters:
 
     > [!NOTE]
     > De tabelnaam is s3_partition_control_table.
-    > Het schema van de controletabel is PartitionPrefix en SuccessOrFailure, waarbij PartitionPrefix de voorvoegselinstelling in S3 is om de mappen en bestanden in Amazon S3 op naam te filteren, en SuccessOrFailure de status is van het kopiëren van elke partitie: 0 betekent dat deze partitie niet gekopieerd naar Azure en 1 betekent dat deze partitie is gekopieerd naar Azure.
+    > Het schema van de controletabel is PartitionPrefix en SuccessOrFailure, waarbij PartitionPrefix de voorvoegselinstelling in S3 is om de mappen en bestanden in Amazon S3 op naam te filteren, en SuccessOrFailure de status van het kopiëren van elke partitie: 0 betekent dat deze partitie niet is gekopieerd naar Azure en 1 betekent dat deze partitie is gekopieerd naar Azure.
     > Er zijn 5 partities gedefinieerd in de controletabel en de standaardstatus van het kopiëren van elke partitie is 0.
 
     ```sql
@@ -132,7 +134,7 @@ De sjabloon bevat twee parameters:
 
     > [!NOTE]
     > De tabelnaam is s3_partition_delta_control_table.
-    > Het schema van de controletabel is PartitionPrefix, JobRunTime en SuccessOrFailure, waarbij PartitionPrefix de voorvoegselinstelling in S3 is om de mappen en bestanden in Amazon S3 op naam te filteren, JobRunTime de datumtijdwaarde bij het uitvoeren van kopieertaken en SuccessOrFailure is de status van het kopiëren van elke partitie: 0 betekent dat deze partitie niet is gekopieerd naar Azure en 1 betekent dat deze partitie is gekopieerd naar Azure.
+    > Het schema van de beheertabel is PartitionPrefix, JobRunTime en SuccessOrFailure, waarbij PartitionPrefix de voorvoegselinstelling is in S3 om de mappen en bestanden in Amazon S3 op naam te filteren, JobRunTime de datumtijdwaarde bij het uitvoeren van kopieertaken en SuccessOrFailure de status is van het kopiëren van elke partitie: 0 betekent dat deze partitie niet is gekopieerd naar Azure en 1 betekent dat deze partitie is gekopieerd naar Azure.
     > Er zijn 5 partities gedefinieerd in de controletabel. De standaardwaarde voor JobRunTime kan het moment zijn waarop eenmalige historische gegevensmigratie wordt gestart. ADF-kopieeractiviteit kopieert de bestanden op AWS S3 die voor het laatst zijn gewijzigd na die tijd. De standaardstatus van het kopiëren van elke partitie is 1.
 
     ```sql

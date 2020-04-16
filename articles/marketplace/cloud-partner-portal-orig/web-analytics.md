@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 446e579a7205f0e785d7e940c1dbdd36cff8f370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd6d6375b19689c582c0f129378c76936e624e04
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285330"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416287"
 ---
 <a name="web-analytics"></a>Webanalytics
 =============
@@ -40,7 +40,7 @@ Er zijn twee manieren om je eigen campagne te genereren.
 
 1. Voeg aan uw URL de queryparameter **mktcmpid toe** die beschrijft wat de campagne is en van welke pagina/gebeurtenis deze klanten afkomstig zijn.
 
-U bijvoorbeeld gebruik maken van:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+U bijvoorbeeld gebruik maken van:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign```
 
 1. (Geavanceerd): Gebruik een van onze ondersteunde, generieke campagne-id's in de URL. We willen meegaand zijn met extra ref-tags die u moet gebruiken, dus we ondersteunen de conventie om deze extra tags automatisch te herkennen:
     
@@ -49,14 +49,14 @@ U bijvoorbeeld gebruik maken van:<https://appsource.microsoft.com/product/dynami
     3. **Ref**
     4. **src**
 
-U bijvoorbeeld gebruik maken van:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+U bijvoorbeeld gebruik maken van:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign```
 
 U ervoor kiezen om een combinatie van meerdere van deze campagne-id's te hebben om meer bronnen te identificeren die verkeer genereren voor de campagne, zoals waar de klant vandaan komt (e-mail, blog, sociale mediabron, enz.).
 
 Bijvoorbeeld:
 
-1. Nieuwsbrief verwijzer:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. LinkedIn-verwijzer:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. Nieuwsbrief verwijzer:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter```
+2. LinkedIn-verwijzer:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn```
 
 ### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Ervoor zorgen dat campagnes door al uw pagina's gaan**
 
@@ -64,13 +64,13 @@ Er kan een scenario zijn waarin uw campagnes een tussenliggende pagina hebben wa
 
 Hier volgt een voorbeeld:
 
-1. Marketing medewerker koopt advertenties van Google\'om verkeer <https://contoso.com>te genereren naar de bestemmingspagina van het bedrijf. Deze bestemmingspagina \"heeft\" een proberen <https://appsource.com>mijn product link die gaat naar .
+1. Marketing medewerker koopt advertenties van Google\'om verkeer ```https://contoso.com```te genereren naar de bestemmingspagina van het bedrijf. Deze bestemmingspagina \"heeft\" een proberen ```https://appsource.com```mijn product link die gaat naar .
 2. Een gebruiker klikt op de\'advertentie en landt op de bestemmingspagina van zijn bedrijf.
     1.  Url van verwijzing = google.com
-    2.  URL van bestemmingspagina =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2.  URL van bestemmingspagina =```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
 3. De gebruiker \"klikt op\" de link Probeer mijn product en gaat naar AppSource.
-    1. Url van verwijzing =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. URL van bestemmingspagina **(Zorg ervoor\_dat deze\_URL utm-campagne en utm-bron aan deze URL heeft toegevoegd**) = [ https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm-campagne=MyCampaignAdName\_&utm-bron=MySourceAdName\_](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    1. Url van verwijzing =```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
+    2. URL van bestemmingspagina **(Zorg ervoor\_dat deze\_URL utm-campagne en utm-bron aan deze URL heeft toegevoegd**) =```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName**```
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>Hoe het succes van een campagne te evalueren
 -----------------------------------------

@@ -11,14 +11,16 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c85a652cde840336c51e1a5b5459f9dc591e0be
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187484"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414675"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Problemen met pakketuitvoering oplossen in de runtime van de SSIS-integratie
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Dit artikel bevat de meest voorkomende fouten die u vinden wanneer u SQL Server Integration Services-pakketten (SSIS)-pakketten uitvoert in de runtime van SSIS-integratie. Het beschrijft de mogelijke oorzaken en acties om de fouten op te lossen.
 
@@ -144,7 +146,7 @@ Zorg ervoor dat de runtime van uw self-Hosted-integratie is geïnstalleerd en ge
 
 Zorg ervoor dat de bijbehorende provider die wordt gebruikt door uw OLE DB-connectors in uw pakket correct is geïnstalleerd op self-hosted integratieruntimemachine. Meer details zijn te vinden op [Configure Self-Hosted IR als proxy voor Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Foutbericht: "Staging task error: ErrorCode: 2906, ErrorMessage: Package execution failed., Output: {"OperationErrorMessages": "Error: System.IO.FileLoadException: Kon geen bestand of assemblage laden 'Microsoft.WindowsAzure.Storage, Version=..., Culture=neutral, PublicKeyToken=31bf3856ad364e35' of een van de afhankelijkheden. De manifeste definitie van de gevestigde assemblage komt niet overeen met de assemblagereferentie.". ..."
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Foutbericht: "Staging task error: ErrorCode: 2906, ErrorMessage: Package execution failed., Output: {"OperationErrorMessages": "Error: System.IO.FileLoadException: Could not load file or assembly 'Microsoft.WindowsAzure.Storage, Version=..., Culture=neutral, PublicKeyToken=31bf3856ad364e35' of een van de afhankelijkheden. De manifeste definitie van de gevestigde assemblage komt niet overeen met de assemblagereferentie.". ..."
 
 Een mogelijke oorzaak is dat de runtime voor zelfgehoste integratie niet correct is geïnstalleerd of geüpgraded. Stel voor om de nieuwste self-hosted integratieruntime te downloaden en opnieuw te installeren. Meer details zijn te vinden bij Create and configure a [self-hosted integration runtime](create-self-hosted-integration-runtime.md#installation-best-practices)
 

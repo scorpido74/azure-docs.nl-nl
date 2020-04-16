@@ -7,14 +7,16 @@ ms.review: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: b19aae8ab6730936a826f5bb069bfdb7d696cdfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246633"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413682"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>Transformatie afvlakken in kaartgegevensstroom
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Gebruik de afvlaktransformatie om matrixwaarden in hiërarchische structuren zoals JSON te gebruiken en deze uit te rollen in afzonderlijke rijen. Dit proces staat bekend als denormalisatie.
 

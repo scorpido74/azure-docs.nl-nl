@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: peterclu
 ms.author: amlstudiodocs
 ms.date: 01/18/2019
-ms.openlocfilehash: 5529d09d71eb9f4ef1d9b4d8185cafb11f644bc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d330235815b746a5bbdc7682622c0e238a3ab0ea
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501321"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411902"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Ondersteuning en training voor Azure Machine Learning Studio (klassiek)
 
@@ -27,7 +27,6 @@ In dit artikel vindt u informatie over hoe u meer te weten komen over Azure Mach
 Bekijk onze leermiddelen:
 + [Zelfstudies en instructieartikelen](../studio/index.yml) 
 + [Beginnende data science video's](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
-+ [Algoritme cheat sheets](../../synapse-analytics/sql-data-warehouse/cheat-sheet.md) 
 
 ## <a name="submit-doc-feedback"></a>Doc-feedback verzenden
 

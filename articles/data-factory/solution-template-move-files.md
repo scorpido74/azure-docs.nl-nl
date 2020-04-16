@@ -11,19 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b36eb2615e98ee8ea7751c836fd43e81a5a0f4e2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74941900"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414751"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Bestanden verplaatsen met Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel wordt een oplossingssjabloon beschreven waarmee u bestanden van de ene map naar de andere verplaatsen tussen bestanden. Een van de meest voorkomende scenario's voor het gebruik van deze sjabloon: bestanden worden voortdurend naar een bestemmingsmap van uw bronarchief verwijderd. Door een planningstrigger te maken, kan de ADF-pijplijn deze bestanden periodiek verplaatsen van de bron naar het doelarchief.  De manier waarop ADF-pijplijn "bestanden verplaatsen" bereikt, is de bestanden uit de bestemmingsmap halen, elk van deze bestanden kopiëren naar een andere map in het doelarchief en vervolgens dezelfde bestanden verwijderen uit de bestemmingsmap in het bronarchief.
 
 > [!NOTE]
-> Houd er rekening mee dat deze sjabloon is ontworpen om bestanden te verplaatsen in plaats van mappen te verplaatsen.  Als u de map wilt verplaatsen door de gegevensset te wijzigen om deze alleen een mappad te laten bevatten, en vervolgens de kopieeractiviteit te gebruiken en activiteit te verwijderen om te verwijzen naar dezelfde gegevensset die een map vertegenwoordigt, moet u heel voorzichtig zijn. Het is omdat je ervoor moet zorgen dat er geen nieuwe bestanden in de map komen tussen kopieerbewerking en verwijderen. Als er nieuwe bestanden in de map aankomen op het moment dat uw kopieeractiviteit net de kopieertaak heeft voltooid, maar de activiteit Verwijderen niet is aangestaard, is het mogelijk dat de activiteit Verwijderen dit nieuwe binnenkomende bestand verwijdert dat NIET naar de bestemming nog niet door het verwijderen van de hele map.
+> Houd er rekening mee dat deze sjabloon is ontworpen om bestanden te verplaatsen in plaats van mappen te verplaatsen.  Als u de map wilt verplaatsen door de gegevensset te wijzigen om deze alleen een mappad te laten bevatten, en vervolgens de kopieeractiviteit te gebruiken en activiteit te verwijderen om te verwijzen naar dezelfde gegevensset die een map vertegenwoordigt, moet u heel voorzichtig zijn. Het is omdat je ervoor moet zorgen dat er geen nieuwe bestanden in de map komen tussen kopieerbewerking en verwijderen. Als er nieuwe bestanden in de map aankomen op het moment dat uw kopieeractiviteit net de kopieertaak heeft voltooid, maar de activiteit Verwijderen niet is aangestaard, is het mogelijk dat de activiteit Verwijderen dit nieuwe binnenkomende bestand verwijdert dat nog niet naar de bestemming is gekopieerd door de hele map te verwijderen.
 
 ## <a name="about-this-solution-template"></a>Over deze oplossingssjabloon
 

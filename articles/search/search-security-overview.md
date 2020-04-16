@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 6de6f23fe9564b28a5d436ac00999dbb3e9183e1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.openlocfilehash: fe7d076fab6a70736843fc644cd56bef44a55df2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548966"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415127"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Beveiliging en gegevensprivacy in Azure Cognitive Search
 
@@ -31,7 +31,6 @@ Azure Cognitive Search is gecertificeerd voor de volgende standaarden, zoals [aa
 + [GxP (21 CFR Deel 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST (HITRUST)](https://en.wikipedia.org/wiki/HITRUST)
 + [PCI DSS-niveau 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
-+ [Australië IRAP Niet-geclassificeerde DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 Naleving van de normen is van toepassing op algemeen beschikbare functies. Preview-functies zijn gecertificeerd wanneer ze overgaan naar algemene beschikbaarheid en mogen niet worden gebruikt in oplossingen met strenge normen. Nalevingscertificering is gedocumenteerd in [overzicht van microsoft Azure-compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) en het [Vertrouwenscentrum.](https://www.microsoft.com/en-us/trustcenter) 
 

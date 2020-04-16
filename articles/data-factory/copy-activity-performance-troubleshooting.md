@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: a14f4d548053fb7aaf6f450176fdc49bc7b119bf
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421042"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414144"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Problemen met de prestaties van kopieeractiviteiten oplossen
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel wordt beschreven hoe u problemen met de prestaties van kopieeractiviteiten oplossen in Azure Data Factory. 
 
@@ -54,7 +56,7 @@ De uitvoeringsgegevens en duur onderaan de weergave voor het bewaken van kopieer
 | --------------- | ------------------------------------------------------------ |
 | Wachtrij           | De verstreken tijd totdat de kopieeractiviteit daadwerkelijk begint op de inlooptijd van de integratie. |
 | Script vooraf kopiëren | De verstreken tijd tussen kopieeractiviteit die begint op IR en kopieeractiviteit die het voorkopieschrift in het sink-gegevensarchief uitvoert. Toepassen wanneer u het pre-copy script configureert voor databasesinks, bijvoorbeeld bij het schrijven van gegevens in Azure SQL Database, moet u het doen voordat u nieuwe gegevens kopieert. |
-| Overdracht        | De verstreken tijd tussen het einde van de vorige stap en de IR die alle gegevens van bron naar gootsteen overbrengt. Substeps onder "Overdracht" lopen parallel.<br><br>- **Tijd om eerst byte:** De tijd die is verstreken tussen het einde van de vorige stap en het tijdstip waarop de IR de eerste byte ontvangt van het brongegevensarchief. Is van toepassing op niet-bestandsgebaseerde bronnen.<br>- **Aanbiedingsbron:** De hoeveelheid tijd die wordt besteed aan het opsommen van bronbestanden of gegevenspartities. Dit laatste geldt wanneer u partitieopties voor databasebronnen configureert, bijvoorbeeld bij het kopiëren van gegevens uit databases zoals Oracle/SAP HANA/Teradata/Netezza/etc.<br/>-**Lezen uit de bron:** De hoeveelheid tijd die wordt besteed aan het ophalen van gegevens uit het brongegevensarchief.<br/>- **Schrijven om te zinken:** De hoeveelheid tijd besteed aan het schrijven van gegevens om data store zinken. |
+| Overdragen        | De verstreken tijd tussen het einde van de vorige stap en de IR die alle gegevens van bron naar gootsteen overbrengt. Substeps onder "Overdracht" lopen parallel.<br><br>- **Tijd om eerst byte:** De tijd die is verstreken tussen het einde van de vorige stap en het tijdstip waarop de IR de eerste byte ontvangt van het brongegevensarchief. Is van toepassing op niet-bestandsgebaseerde bronnen.<br>- **Aanbiedingsbron:** De hoeveelheid tijd die wordt besteed aan het opsommen van bronbestanden of gegevenspartities. Dit laatste geldt wanneer u partitieopties voor databasebronnen configureert, bijvoorbeeld bij het kopiëren van gegevens uit databases zoals Oracle/SAP HANA/Teradata/Netezza/etc.<br/>-**Lezen uit de bron:** De hoeveelheid tijd die wordt besteed aan het ophalen van gegevens uit het brongegevensarchief.<br/>- **Schrijven om te zinken:** De hoeveelheid tijd besteed aan het schrijven van gegevens om data store zinken. |
 
 ## <a name="troubleshoot-copy-activity-on-azure-ir"></a>Kopieeractiviteit op Azure IR oplossen
 

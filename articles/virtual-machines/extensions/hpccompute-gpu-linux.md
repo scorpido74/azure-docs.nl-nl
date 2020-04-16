@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 6ea61acfc2db3c8f1f5c9c0ac8da8f19897d441e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7f6653043d46925d6a4c35eedaf81224ea6c36d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250567"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415794"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU Driver Extension voor Linux
 
@@ -72,7 +72,7 @@ De volgende JSON toont het schema voor de extensie.
 
 ### <a name="properties"></a>Eigenschappen
 
-| Name | Waarde / Voorbeeld | Gegevenstype |
+| Naam | Waarde / Voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | uitgever | Microsoft.HpcCompute | tekenreeks |
@@ -83,7 +83,7 @@ De volgende JSON toont het schema voor de extensie.
 
 Alle instellingen zijn optioneel. Het standaardgedrag is om de kernel niet bij te werken als deze niet vereist is voor de installatie van stuurprogramma's, het nieuwste ondersteunde stuurprogramma en de CUDA-toolkit (indien van toepassing) te installeren.
 
-| Name | Beschrijving | Standaardwaarde | Geldige waarden | Gegevenstype |
+| Naam | Beschrijving | Standaardwaarde | Geldige waarden | Gegevenstype |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | De kernel bijwerken, zelfs als deze niet vereist is voor stuurprogramma-installatie | false | de waarde True, false | booleaans |
 | stuurprogrammaVersie | NV: GRID driver versie<br> NC/ND: CUDA toolkit versie. De nieuwste drivers voor de gekozen CUDA worden automatisch geïnstalleerd. | meest recente | GRID: "430.30", "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | tekenreeks |
@@ -136,20 +136,20 @@ Set-AzVMExtension
     }'
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 In het volgende voorbeeld worden de bovenstaande voorbeelden van Azure Resource Manager en PowerShell weergegeven en worden aangepaste instellingen toegevoegd als voorbeeld voor niet-standaardstuurprogramma-installatie. Specifiek, het werkt de OS kernel en installeert een specifieke CUDA toolkit versie stuurprogramma.
 
 ```azurecli
-az vm extension set `
-  --resource-group myResourceGroup `
-  --vm-name myVM `
-  --name NvidiaGpuDriverLinux `
-  --publisher Microsoft.HpcCompute `
-  --version 1.2 `
-  --settings '{ `
-    "updateOS": true, `
-    "driverVersion": "9.1.85", `
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.2 \
+  --settings '{ \
+    "updateOS": true, \
+    "driverVersion": "9.1.85", \
   }'
 ```
 

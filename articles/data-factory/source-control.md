@@ -11,14 +11,15 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: 6645c2672e15c562216b4347f779ef3634a2f124
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2108f2f9098fe6da8ee4666b30605bed14164484
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130875"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414725"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Bronbeheer in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 De gebruikersinterface-ervaring (Azure Data Factory) heeft twee ervaringen beschikbaar voor visuele ontwerpen:
 
@@ -231,7 +232,7 @@ Er wordt een zijvenster geopend waarin u bevestigt dat de publicatiebranch en in
 Meestal wilt u niet dat elk teamlid machtigingen heeft om de fabriek bij te werken. De volgende instellingen voor machtigingen worden aanbevolen:
 
 *   Alle teamleden moeten machtigingen voor de gegevensfabriek hebben gelezen.
-*   Alleen een selecte groep mensen mag publiceren naar de fabriek. Om dit te doen, moeten ze de **Data Factory bijdragerol** in de fabriek hebben. Zie Rollen en machtigingen [voor Azure Data Factory voor](concepts-roles-permissions.md)meer informatie over machtigingen.
+*   Alleen een selecte groep mensen mag publiceren naar de fabriek. Om dit te doen, moeten ze de rol **van Data Factory-bijdrager** hebben op de resourcegroep waarin de fabriek zich bevindt. Zie Rollen en machtigingen [voor Azure Data Factory voor](concepts-roles-permissions.md)meer informatie over machtigingen.
    
 Het wordt aanbevolen om geen directe check-ins toe te staan aan de samenwerkingsbranche. Deze beperking kan helpen voorkomen bugs als elke check-in zal gaan door middel van een pull request review proces beschreven in [Het maken van functie takken](source-control.md#creating-feature-branches).
 

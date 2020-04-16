@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: a6de5c28115d3a451256cc43d26552c269ba245a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df078673aed60086a88961ff64f9bfa596d96346
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927502"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414087"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Hulpprogramma voor gegevens kopiëren in Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 De azure data factory copy data tool vereenvoudigt en optimaliseert het proces van het opnemen van gegevens in een data lake, wat meestal een eerste stap is in een end-to-end data-integratiescenario.  Het bespaart tijd, vooral wanneer u Azure Data Factory gebruikt om voor het eerst gegevens uit een gegevensbron in te nemen. Enkele van de voordelen van het gebruik van deze tool zijn:
 
 - Wanneer u het hulpprogramma Voor kopiëren van Azure Data Factory gebruikt, hebt u geen informatie nodig over definities van Gegevensfabriek voor gekoppelde services, gegevenssets, pijplijnen, activiteiten en triggers. 

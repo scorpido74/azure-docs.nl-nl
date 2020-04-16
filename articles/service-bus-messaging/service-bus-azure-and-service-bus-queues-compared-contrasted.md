@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: 8379b7f48e7e494370f3fdba81676d34821d7b6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffa98e511053edc75fd0e6f25f7b0e21ee9ddda0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75563374"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414538"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage Queues and Service Bus Queues - Compared and Contrasted (Storage-wachtrijen en Service Bus-wachtrijen: overeenkomsten en verschillen)
 In dit artikel worden de verschillen en overeenkomsten tussen de twee typen wachtrijen die Microsoft Azure vandaag de dag biedt, geanalyseerd: opslagwachtrijen en wachtrijen voor servicebussen. Door deze informatie te gebruiken, u de respectieve technologieën vergelijken en contrasteren en een beter geïnformeerde beslissing kunnen nemen over welke oplossing het beste aan uw behoeften voldoet.
@@ -57,7 +57,7 @@ Als oplossingsarchitect/ontwikkelaar **moet u overwegen wachtrijen voor serviceb
     - [Verifiëren vanuit een toepassing](authenticate-application.md)
 * Uw wachtrijgrootte niet groter wordt dan 80 GB.
 * U wilt het op AMQP 1.0-standaarden gebaseerde berichtenprotocol gebruiken. Zie [Service Bus AMQP Overview](service-bus-amqp-overview.md)voor meer informatie over AMQP.
-* U zich een eventuele migratie voorstellen van point-to-point-communicatie op basis van wachtrijen naar een berichtuitwisselingspatroon dat naadloze integratie van extra ontvangers (abonnees) mogelijk maakt, die elk onafhankelijke kopieën van sommige of alle berichten die naar de wachtrij worden verzonden. Deze laatste verwijst naar de publicatie/subscribe-mogelijkheid die native wordt geleverd door Service Bus.
+* U zich een eventuele migratie voorstellen van op wachtrijen gebaseerde point-to-point-communicatie naar een berichtuitwisselingspatroon dat naadloze integratie van extra ontvangers (abonnees) mogelijk maakt, die elk onafhankelijke kopieën ontvangen van sommige of alle berichten die naar de wachtrij worden verzonden. Deze laatste verwijst naar de publicatie/subscribe-mogelijkheid die native wordt geleverd door Service Bus.
 * Uw berichtenoplossing moet de leveringsgarantie "At-Most-Once" kunnen ondersteunen zonder dat u de extra infrastructuurcomponenten hoeft te bouwen.
 * U graag de mogelijkheid wilt hebben om batches van berichten te publiceren en gebruiken.
 
@@ -73,7 +73,7 @@ In deze sectie worden enkele van de fundamentele wachtrijmogelijkheden van opsla
 | Leveringsgarantie |**Ten minste één keer** |**At-Least-Once** (met behulp van PeekLock ontvangen modus - dit is de standaard) <br/><br/>**At-Most-Once** (met receive-modus ontvangen) <br/> <br/> Meer informatie over verschillende [modus Ontvangen](service-bus-queues-topics-subscriptions.md#receive-modes)  |
 | Ondersteuning voor atoombewerking |**Nee** |**Ja**<br/><br/> |
 | Gedrag ontvangen |**Niet-blokkeren**<br/><br/>(voltooit onmiddellijk als er geen nieuw bericht wordt gevonden) |**Blokkeren met/zonder time-out**<br/><br/>(biedt lange polling, of de ["Comet techniek"](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Niet-blokkeren**<br/><br/>(alleen via het gebruik van .NET managed API) |
-| API in pushstijl |**Nee** |**Ja**<br/><br/>[OnMessage-](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) en **OnMessage-sessies** .NET API. |
+| API in pushstijl |**Nee** |**Ja**<br/><br/>[QueueClient.OnMessage en](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) [MessageSessionHandler.OnMessage-sessies](/dotnet/api/microsoft.servicebus.messaging.messagesessionhandler.onmessage#Microsoft_ServiceBus_Messaging_MessageSessionHandler_OnMessage_Microsoft_ServiceBus_Messaging_MessageSession_Microsoft_ServiceBus_Messaging_BrokeredMessage__) .NET API. |
 | Ontvangstmodus |**Peek & Lease** |**Peek & Slot**<br/><br/>**& verwijderen ontvangen** |
 | Exclusieve toegangsmodus |**Lease-gebaseerde** |**Op basis van vergrendeling** |
 | Huur-/vergrendelingsduur |**30 seconden (standaard)**<br/><br/>**7 dagen (maximaal)** (U een berichtenlease verlengen of vrijgeven met behulp van de [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API.) |**60 seconden (standaard)**<br/><br/>U een berichtvergrendeling vernieuwen met de [RenewLock-API.](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) |
@@ -85,7 +85,7 @@ In deze sectie worden enkele van de fundamentele wachtrijmogelijkheden van opsla
 * Berichten in opslagwachtrijen zijn meestal first-in-first-out, maar soms kunnen ze niet in orde zijn; bijvoorbeeld wanneer de time-outduur van een bericht verloopt (bijvoorbeeld als gevolg van een clienttoepassing die crasht tijdens de verwerking). Wanneer de time-out van de zichtbaarheid verloopt, wordt het bericht weer zichtbaar in de wachtrij voor een andere werknemer om de wachtrij te ontzetten. Op dat moment kan het nieuw zichtbare bericht in de wachtrij worden geplaatst (om opnieuw in de wachtrij te worden geplaatst) na een bericht dat oorspronkelijk in de wachtrij stond.
 * Het gegarandeerde FIFO-patroon in wachtrijen voor servicebussen vereist het gebruik van berichtensessies. In het geval dat de toepassing vastloopt tijdens het verwerken van een bericht dat is ontvangen in de modus **Peek & vergrendelen,** de volgende keer dat een wachtrijontvanger een berichtensessie accepteert, begint deze met het mislukte bericht nadat de time-to-live (TTL)-periode is verlopen.
 * Opslagwachtrijen zijn ontworpen om standaardwachtrijscenario's te ondersteunen, zoals het ontkoppelen van toepassingscomponenten om de schaalbaarheid en tolerantie voor fouten, taaknivellering en het bouwen van procesworkflows te verhogen.
-* Inconsistenties met betrekking tot de afhandeling van berichten in het kader van Service Bus-sessies kunnen worden vermeden door de sessiestatus te gebruiken om de status van de toepassing op te slaan ten opzichte van de voortgang van de afhandeling van de berichtreeks van de sessie, en door transacties rond het regelen van ontvangen berichten en het bijwerken van de sessiestatus. Dit soort consistentie functie wordt soms gelabeld *Exactly-Once Processing* in producten van andere leveranciers, maar transactie fouten zal uiteraard leiden tot berichten worden opnieuw geleverd en dus de term is niet precies voldoende.
+* Inconsistenties met betrekking tot de afhandeling van berichten in het kader van Service Bus-sessies kunnen worden vermeden door de sessiestatus te gebruiken om de status van de toepassing op te slaan ten opzichte van de voortgang van de afhandeling van de berichtreeks van de sessie, en door transacties te gebruiken rond het vereffenen van ontvangen berichten en het bijwerken van de sessiestatus. Dit soort consistentie functie wordt soms gelabeld *Exactly-Once Processing* in producten van andere leveranciers, maar transactie fouten zal uiteraard leiden tot berichten worden opnieuw geleverd en dus de term is niet precies voldoende.
 * Opslagwachtrijen bieden een uniform en consistent programmeermodel voor wachtrijen, tabellen en BLOB's, zowel voor ontwikkelaars als voor operationele teams.
 * Wachtrijen voor servicebussen bieden ondersteuning voor lokale transacties in de context van één wachtrij.
 * De modus **Ontvangen en verwijderen** die wordt ondersteund door Service Bus biedt de mogelijkheid om het aantal berichtenbewerking (en de bijbehorende kosten) te verminderen in ruil voor een verlaagde leveringsgarantie.
@@ -175,7 +175,7 @@ In dit gedeelte worden de verificatie- en autorisatiefuncties besproken die word
 
 | Vergelijkingscriteria | Opslagwachtrijen | Service Bus-wachtrijen |
 | --- | --- | --- |
-| Authentication |**Symmetrische sleutel** |**Symmetrische sleutel** |
+| Verificatie |**Symmetrische sleutel** |**Symmetrische sleutel** |
 | Beveiligingsmodel |Gedelegeerde toegang via SAS-tokens. |Sas |
 | Federatie van identiteitsprovideren |**Nee** |**Ja** |
 

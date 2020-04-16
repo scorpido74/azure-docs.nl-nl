@@ -12,18 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/02/2020
-ms.openlocfilehash: 06428d4a9c4a4178212d16d42b8b3adffb5c9718
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6d29f73716b04699e0cd250396df7f7d744d4c4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250292"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415249"
 ---
 # <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>Gegevens van en naar de SFTP-server kopiëren met Azure Data Factory
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](v1/data-factory-sftp-connector.md)
 > * [Huidige versie](connector-sftp.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel wordt beschreven hoe u gegevens van en naar de SFTP-server kopiëren. Lees het [inleidende artikel](introduction.md)voor meer informatie over Azure Data Factory.
 
@@ -287,7 +288,7 @@ De volgende eigenschappen worden ondersteund `storeSettings` voor SFTP onder ins
 | type                     | De eigenschap `storeSettings` type onder moet zijn ingesteld op **SftpWriteSettings**. | Ja      |
 | copyBehavior             | Hiermee definieert u het kopieergedrag wanneer de bron bestanden is uit een gegevensarchief op basis van bestanden.<br/><br/>Toegestane waarden zijn:<br/><b>- BehoudenHiërarchie (standaard)</b>: Hiermee behoudt u de bestandshiërarchie in de doelmap. Het relatieve pad van het bronbestand naar de bronmap is identiek aan het relatieve pad van het doelbestand naar de doelmap.<br/><b>- FlattenHierarchy:</b>Alle bestanden uit de bronmap bevinden zich in het eerste niveau van de doelmap. De doelbestanden hebben automatisch gegenereerde namen. <br/><b>- MergeFiles</b>: Hiermee worden alle bestanden van de bronmap samengevoegd tot één bestand. Als de bestandsnaam is opgegeven, is de samengevoegde bestandsnaam de opgegeven naam. Anders is het een automatisch gegenereerde bestandsnaam. | Nee       |
 | maxConcurrentVerbindingen | Het aantal verbindingen om gelijktijdig verbinding te maken met het gegevensarchief. Geef alleen op wanneer u de gelijktijdige verbinding met het gegevensarchief wilt beperken. | Nee       |
-| gebruik tempfilerename | Geef aan of u moet uploaden naar tijdelijke bestanden en de naam wijzigt, of direct naar de doelmap/bestandslocatie wilt schrijven. Standaard, ADF eerst schrijven naar tijdelijke bestand (s) dan doen bestandshernoemen bij het uploaden voltooiing, om te voorkomen dat conflict schrijven resulteert in beschadigde bestand als u andere proces schrijven naar hetzelfde bestand, en 2) ervoor zorgen dat de oorspronkelijke versie van het bestand bestaat tijdens hele overdracht. Als uw SFTP-server geen hernoemingsbewerking ondersteunt, schakelt u deze optie uit en controleert u of u geen gelijktijdige schrijfbewerking naar het doelbestand hebt. Zie tip voor het oplossen van problemen onder deze tabel. | Nee. De standaardwaarde is waar. |
+| gebruik tempfilerename | Geef aan of u moet uploaden naar tijdelijke bestanden en de naam wijzigt, of direct naar de doelmap/bestandslocatie wilt schrijven. Standaard schrijft ADF eerst naar tijdelijke bestanden en hernoemen vervolgens de naam van het bestand na het uploaden, om conflictschrijfinformatie te voorkomen, wat resulteert in een beschadigd bestand als u een ander proces naar hetzelfde bestand schrijft, en 2) ervoor zorgen dat de oorspronkelijke versie van het bestand bestaat tijdens de hele overdracht. Als uw SFTP-server geen hernoemingsbewerking ondersteunt, schakelt u deze optie uit en controleert u of u geen gelijktijdige schrijfbewerking naar het doelbestand hebt. Zie tip voor het oplossen van problemen onder deze tabel. | Nee. De standaardwaarde is waar. |
 | operationTime-out | De wachttijd voordat elk schrijfverzoek naar SFTP-server een time-out heeft. De standaardwaarde is 60 min (01:00:00).|Nee |
 
 >[!TIP]

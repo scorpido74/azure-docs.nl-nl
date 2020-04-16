@@ -1,16 +1,16 @@
 ---
 title: Beheerde identiteit gebruiken met een toepassing
-description: Beheerde identiteiten gebruiken in Azure Service Fabric-toepassingscode om toegang te krijgen tot Azure Services. Deze functie is beschikbaar voor openbare preview.
+description: Beheerde identiteiten gebruiken in Azure Service Fabric-toepassingscode om toegang te krijgen tot Azure Services.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 59680ec7911f55c3dc49d8834b410a039aa435dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbdb1190ec3238a6accd34db3025e08c194d60b8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610315"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415621"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>De beheerde identiteit van een Service Fabric-toepassing gebruiken om toegang te krijgen tot Azure-services (voorbeeld)
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>De beheerde identiteit van een Service Fabric-toepassing gebruiken om toegang te krijgen tot Azure-services
 
 Service Fabric-toepassingen kunnen beheerde identiteiten gebruiken om toegang te krijgen tot andere Azure-bronnen die azure Active Directory-gebaseerde verificatie ondersteunen. Een toepassing kan een [toegangstoken](../active-directory/develop/developer-glossary.md#access-token) verkrijgen dat zijn identiteit vertegenwoordigt, dat kan worden toegewezen of door de gebruiker is toegewezen, en het gebruiken als een 'drager' token om zichzelf te authenticeren naar een andere service - ook wel bekend als een [beveiligde resourceserver](../active-directory/develop/developer-glossary.md#resource-server). Het token vertegenwoordigt de identiteit die is toegewezen aan de Service Fabric-toepassing en wordt alleen uitgegeven aan Azure-resources (inclusief SF-toepassingen) die die identiteit delen. Raadpleeg de [documentatie van het beheerde identiteitsoverzicht](../active-directory/managed-identities-azure-resources/overview.md) voor een gedetailleerde beschrijving van beheerde identiteiten, evenals het onderscheid tussen door het systeem toegewezen en door de gebruiker toegewezen identiteiten. We zullen verwijzen naar een managed-identity-enabled Service Fabric applicatie als de [client applicatie](../active-directory/develop/developer-glossary.md#client-application) in dit artikel.
 
@@ -24,19 +24,18 @@ Service Fabric-toepassingen kunnen beheerde identiteiten gebruiken om toegang te
 In clusters die zijn ingeschakeld voor beheerde identiteit, wordt in de runtime van Service Fabric een localhost-eindpunt weergegeven dat toepassingen kunnen gebruiken om toegangstokens te verkrijgen. Het eindpunt is beschikbaar op elk knooppunt van het cluster en is toegankelijk voor alle entiteiten op dat knooppunt. Geautoriseerde bellers kunnen toegangstokens verkrijgen door dit eindpunt aan te roepen en een verificatiecode te presenteren; de code wordt gegenereerd door de runtime van Service Fabric voor elke afzonderlijke activering van servicecodepakketten en is gebonden aan de levensduur van het proces dat dat servicecodepakket host.
 
 Met name de omgeving van een servicefabric-service met managed-identity wordt met de volgende variabelen ingezaaid:
-- 'MSI_ENDPOINT': het eindpunt van localhost, compleet met pad, API-versie en parameters die overeenkomen met de beheerde identiteit van die service
-- 'MSI_SECRET': een verificatiecode, die een ondoorzichtige tekenreeks is en op unieke wijze de service op het huidige knooppunt vertegenwoordigt
-
-> [!NOTE]
-> De namen 'MSI_ENDPOINT' en 'MSI_SECRET' verwijzen naar de vorige aanwijzing van beheerde identiteiten (Managed Service Identity), en die nu is afgeschaft. De namen komen ook overeen met de equivalente omgevingsvariabelenamen die worden gebruikt door andere Azure-services die beheerde identiteiten ondersteunen.
+- 'IDENTITY_ENDPOINT': het eindpunt van localhost dat overeenkomt met de beheerde identiteit van de service
+- 'IDENTITY_HEADER': een unieke verificatiecode die de service op het huidige knooppunt weergeeft
+- 'IDENTITY_SERVER_THUMBPRINT' : Duimafdruk van service fabric managed identity server
 
 > [!IMPORTANT]
-> De toepassingscode moet de waarde van de 'MSI_SECRET' omgevingsvariabele als gevoelige gegevens beschouwen - deze mag niet worden geregistreerd of anderszins worden verspreid. De verificatiecode heeft geen waarde buiten het lokale knooppunt of nadat het proces dat de service host is beëindigd, maar wel de identiteit van de Service Fabric-service vertegenwoordigt en dus moet worden behandeld met dezelfde voorzorgsmaatregelen als het toegangstoken zelf.
+> De toepassingscode moet de waarde van de 'IDENTITY_HEADER' omgevingsvariabele als gevoelige gegevens beschouwen - deze mag niet worden geregistreerd of anderszins worden verspreid. De verificatiecode heeft geen waarde buiten het lokale knooppunt of nadat het proces dat de service host is beëindigd, maar wel de identiteit van de Service Fabric-service vertegenwoordigt en dus moet worden behandeld met dezelfde voorzorgsmaatregelen als het toegangstoken zelf.
 
 Om een token te verkrijgen, voert de client de volgende stappen uit:
-- vormt een URI door het beheerde identiteitseindpunt (MSI_ENDPOINT waarde) samen te stellen met de API-versie en de resource (doelgroep) die nodig is voor het token
-- hiermee maakt u een GET http-aanvraag voor de opgegeven URI
-- hiermee voegt u de verificatiecode (MSI_SECRET waarde) toe als koptekst aan de aanvraag
+- vormt een URI door het beheerde identiteitseindpunt (IDENTITY_ENDPOINT waarde) samen te stellen met de API-versie en de resource (doelgroep) die nodig is voor het token
+- hiermee wordt een GET http(s)-aanvraag voor de opgegeven URI
+- voegt de juiste servercertificaatvalidatielogica toe
+- hiermee voegt u de verificatiecode (IDENTITY_HEADER waarde) toe als koptekst aan de aanvraag
 - dient het verzoek in
 
 Een succesvol antwoord bevat een JSON-payload die het resulterende toegangstoken vertegenwoordigt, evenals metagegevens die het beschrijven. Een mislukte reactie bevat ook een verklaring van de fout. Zie hieronder voor meer informatie over foutafhandeling.
@@ -44,19 +43,22 @@ Een succesvol antwoord bevat een JSON-payload die het resulterende toegangstoken
 Toegangstokens worden in de cache opgeslagen door Service Fabric op verschillende niveaus (knooppunt, cluster, resourceproviderservice), dus een succesvol antwoord betekent niet noodzakelijkerwijs dat het token rechtstreeks is uitgegeven in reactie op het verzoek van de gebruikerstoepassing. Tokens worden minder dan hun levensduur in de cache opgeslagen en dus ontvangt een toepassing gegarandeerd een geldig token. Het wordt aanbevolen dat de toepassingscode zichzelf alle toegangstokens in slaat die het verwerft; de caching sleutel moet (een afleiding van) het publiek bevatten. 
 
 
+> [!NOTE]
+> De enige geaccepteerde API-versie is momenteel `2019-07-01-preview`, en is onderhevig aan verandering.
+
 Voorbeeldaanvraag:
 ```http
-GET 'http://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://keyvault.azure.com/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
+GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://vault.azure.net/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
 ```
 Hierbij
 
 | Element | Beschrijving |
 | ------- | ----------- |
 | `GET` | Het HTTP-werkwoord, dat aangeeft dat u gegevens uit het eindpunt wilt ophalen. In dit geval een OAuth-toegangstoken. | 
-| `http://localhost:2377/metadata/identity/oauth2/token` | Het beheerde identiteitseindpunt voor Service Fabric-toepassingen, geleverd via de MSI_ENDPOINT omgevingsvariabele. |
+| `https://localhost:2377/metadata/identity/oauth2/token` | Het beheerde identiteitseindpunt voor Service Fabric-toepassingen, geleverd via de IDENTITY_ENDPOINT omgevingsvariabele. |
 | `api-version` | Een parameter querytekenreeks, die de API-versie van de Managed Identity Token Service opgeeft; momenteel is `2019-07-01-preview`de enige geaccepteerde waarde, en is onderhevig aan verandering. |
-| `resource` | Een parameter querytekenreeks die de URI van de app-id van de doelbron aangeeft. Dit wordt weerspiegeld `aud` als de (publieks)claim van het uitgegeven token. In dit voorbeeld wordt een token gevraagd om toegang te\/krijgen tot Azure Key Vault, waarvan een URI voor app-id's https is: /keyvault.azure.com/. |
-| `Secret` | Een http-aanvraagkopveld, vereist door de Service Fabric Managed Identity Token Service voor Service Fabric-services om de beller te verifiëren. Deze waarde wordt geleverd door de SF-runtime via MSI_SECRET omgevingsvariabele. |
+| `resource` | Een parameter querytekenreeks die de URI van de app-id van de doelbron aangeeft. Dit wordt weerspiegeld `aud` als de (publieks)claim van het uitgegeven token. In dit voorbeeld wordt een token gevraagd om toegang te\/krijgen tot Azure Key Vault, waarvan een URI voor app-id's https is: /vault.azure.net/. |
+| `Secret` | Een http-aanvraagkopveld, vereist door de Service Fabric Managed Identity Token Service voor Service Fabric-services om de beller te verifiëren. Deze waarde wordt geleverd door de SF-runtime via IDENTITY_HEADER omgevingsvariabele. |
 
 
 Voorbeeldrespons:
@@ -67,7 +69,7 @@ Content-Type: application/json
     "token_type":  "Bearer",
     "access_token":  "eyJ0eXAiO...",
     "expires_on":  1565244611,
-    "resource":  "https://keyvault.azure.com/"
+    "resource":  "https://vault.azure.net/"
 }
 ```
 Hierbij
@@ -124,20 +126,33 @@ namespace Azure.ServiceFabric.ManagedIdentity.Samples
         /// <returns>Access token</returns>
         public static async Task<string> AcquireAccessTokenAsync()
         {
-            var managedIdentityEndpoint = Environment.GetEnvironmentVariable("MSI_ENDPOINT");
-            var managedIdentityAuthenticationCode = Environment.GetEnvironmentVariable("MSI_SECRET");
+            var managedIdentityEndpoint = Environment.GetEnvironmentVariable("IDENTITY_ENDPOINT");
+            var managedIdentityAuthenticationCode = Environment.GetEnvironmentVariable("IDENTITY_HEADER");
+            var managedIdentityServerThumbprint = Environment.GetEnvironmentVariable("IDENTITY_SERVER_THUMBPRINT");
+            // Latest api version, 2019-07-01-preview is still supported.
+            var managedIdentityApiVersion = Environment.GetEnvironmentVariable("IDENTITY_API_VERSION");
             var managedIdentityAuthenticationHeader = "secret";
-            var managedIdentityApiVersion = "2019-07-01-preview";
             var resource = "https://management.azure.com/";
 
             var requestUri = $"{managedIdentityEndpoint}?api-version={managedIdentityApiVersion}&resource={HttpUtility.UrlEncode(resource)}";
 
             var requestMessage = new HttpRequestMessage(HttpMethod.Get, requestUri);
             requestMessage.Headers.Add(managedIdentityAuthenticationHeader, managedIdentityAuthenticationCode);
+            
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, certChain, policyErrors) =>
+            {
+                // Do any additional validation here
+                if (policyErrors == SslPolicyErrors.None)
+                {
+                    return true;
+                }
+                return 0 == string.Compare(cert.GetCertHashString(), managedIdentityServerThumbprint, StringComparison.OrdinalIgnoreCase);
+            };
 
             try
             {
-                var response = await new HttpClient().SendAsync(requestMessage)
+                var response = await new HttpClient(handler).SendAsync(requestMessage)
                     .ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();

@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: ganesr
-ms.openlocfilehash: 2f2311adc231eac4260e26f0d5d1f2115f43d2eb
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: aaa849633591bfd34a9fca026c820ec2f9137844
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618706"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410842"
 ---
 # <a name="about-azure-edge-zones---preview"></a>Informatie over Azure Edge Zones - Voorbeeld
 
@@ -38,7 +38,7 @@ Azure Edge-zones zijn er in drie afzonderlijke aanbiedingen:
 
 ![Randzones](./media/edge-zones-overview/edge-zones.png "Randzones")
 
-Azure Edge-zones zijn kleine footprint-extensies van Azure die zijn geplaatst in populatiecentra die ver weg zijn van Azure-regio's. Azure Edge Zones ondersteunen VM's, containers en een selecte set Azure-services waarmee u latentiegevoelige en doorvoerintensieve toepassingen in de buurt van eindgebruikers uitvoeren. Azure Edge-zones maken deel uit van het wereldwijde netwerk van Microsoft en bieden veilige, betrouwbare en hoge bandbreedteconnectiviteit tussen toepassingen die worden uitgevoerd in de Edge-zone dicht bij de gebruiker en de volledige set Azure-services die binnen Azure-regio's worden uitgevoerd. Azure Edge Zones zijn eigendom van en worden beheerd door Microsoft en laten u dezelfde set Azure-hulpprogramma's en portal gebruiken om services te beheren en te implementeren in de Edge-zones.
+Azure Edge-zones zijn kleine footprint-extensies van Azure die zijn geplaatst in populatiecentra die ver weg zijn van Azure-regio's. Azure Edge Zones ondersteunen VM's, containers en een geselecteerde set Azure-services waarmee u latentiegevoelige en doorvoerintensieve toepassingen in de buurt van eindgebruikers uitvoeren. Azure Edge-zones maken deel uit van het wereldwijde netwerk van Microsoft en bieden veilige, betrouwbare en hoge bandbreedteconnectiviteit tussen toepassingen die worden uitgevoerd in de Edge-zone dicht bij de gebruiker en de volledige set Azure-services die binnen Azure-regio's worden uitgevoerd. Azure Edge Zones zijn eigendom van en worden beheerd door Microsoft en laten u dezelfde set Azure-hulpprogramma's en portal gebruiken om services te beheren en te implementeren in de Edge-zones.
 
 Typische use cases zijn:
 

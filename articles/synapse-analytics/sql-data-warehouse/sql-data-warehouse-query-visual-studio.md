@@ -11,20 +11,20 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e986515a911cf1bbd88dfc73c56efcc6e81826d6
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 174ee07e389e598fed6ed8487e60303fbce81f77
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351409"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416039"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Verbinding maken met Azure Synapse Analytics met Visual Studio en SSDT
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
-> * [Ssms](sql-data-warehouse-query-ssms.md)
+> * [sqlcmd sqlcmd](../sql/get-started-connect-sqlcmd.md) 
+> * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
@@ -35,7 +35,7 @@ Voor deze zelfstudie hebt u het volgende nodig:
 
 * Een bestaande SQL-pool. Zie [Een SQL-pool maken](create-data-warehouse-portal.md)als u er een wilt maken.
 * SSDT voor Visual Studio. Als je Visual Studio hebt, heb je waarschijnlijk al SSDT voor Visual Studio. Voor installatie-instructies en -opties raadpleegt u [Visual Studio en SSDT installeren](sql-data-warehouse-install-visual-studio.md).
-* De volledig gekwalificeerde SQL-servernaam. Zie Verbinding maken [met SQL-pool om](sql-data-warehouse-connect-overview.md)deze informatie te vinden.
+* De volledig gekwalificeerde SQL-servernaam. Zie Verbinding maken [met SQL-pool om](../sql/connect-overview.md)deze informatie te vinden.
 
 ## <a name="1-connect-to-your-sql-pool"></a>1. Verbinding maken met uw SQL-groep
 1. Open Visual Studio 2019.

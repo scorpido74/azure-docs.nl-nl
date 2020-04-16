@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 0c4c26ba163f83483b3eb48e51d91f9a919a887c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 383b70bbb02e7a200c7ec0a994f7cf11e9b9520e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75439777"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414820"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Bestanden uit meerdere containers kopiëren met Azure Data Factory
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel wordt een oplossingssjabloon beschreven waarmee u bestanden uit meerdere containers tussen bestandsopslag kopiëren. U het bijvoorbeeld gebruiken om uw gegevensmeer te migreren van AWS S3 naar Azure Data Lake Store. U de sjabloon ook gebruiken om alles te repliceren, van het ene Azure Blob-opslagaccount naar het andere.
 

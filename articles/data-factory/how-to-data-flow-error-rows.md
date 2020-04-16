@@ -8,14 +8,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: makromer
-ms.openlocfilehash: 3fe3403ad06d82ba5ccd33d2718bf0e5eff64490
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f65421a6457d4bf4d438ce9d035d46476829da2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73166536"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414359"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>SQL-foutrijen verwerken in gegevensstromen voor gegevensfabriekstoewijzing
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Een veelvoorkomend scenario in Data Factory bij het gebruik van toewijzingsgegevensstromen, is het schrijven van uw getransformeerde gegevens naar een Azure SQL-database. In dit scenario is een veelvoorkomende foutvoorwaarde die u moet voorkomen mogelijk kolomafgekapt. Volg deze stappen om logboekregistratie van kolommen te bieden die niet in een doeltekenreekskolom passen, zodat uw gegevensstroom in die scenario's kan worden voortgezet.
 

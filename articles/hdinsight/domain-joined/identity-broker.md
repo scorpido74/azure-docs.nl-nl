@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: f14cbef2ab568962601b3a407fa979e8f982598d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 508eac08284f91821223a78cafdfee7b4c9c540b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75483009"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410869"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>ID Broker (voorbeeld) gebruiken voor referentiebeheer
 
@@ -38,7 +38,7 @@ Met ID Broker u zich aanmelden bij ESP-clusters met behulp van Multi-Factor Auth
 
 Ga als volgt te werk om een ESP-cluster te maken met ID Broker ingeschakeld:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Volg de basisstappen voor het maken van een ESP-cluster. Zie [Een HDInsight-cluster maken met ESP](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)voor meer informatie.
 1. Selecteer **HDInsight ID Broker inschakelen**.
 
@@ -55,6 +55,14 @@ De HDInsight [IntelliJ plug-in](https://docs.microsoft.com/azure/hdinsight/spark
 Nadat ID Broker is ingeschakeld, hebt u nog steeds een wachtwoordhash nodig die is opgeslagen in Azure AD DS voor SSH-scenario's met domeinaccounts. Als u SSH wilt gebruiken voor een `kinit` vm die is verbonden met een domein of als u de opdracht wilt uitvoeren, moet u een wachtwoord opgeven. 
 
 SSH-verificatie vereist dat de hash beschikbaar is in Azure AD DS. Als u SSH alleen voor administratieve scenario's wilt gebruiken, u één cloudaccount maken en dat gebruiken om SSH in het cluster te gebruiken. Andere gebruikers kunnen nog steeds Ambari- of HDInsight-hulpprogramma's gebruiken (zoals de IntelliJ-plug-in) zonder dat de wachtwoordhash beschikbaar is in Azure AD DS.
+
+## <a name="clinets-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clinets die OAuth gebruiken om verbinding te maken met HDInsight-gateway met ID Broker-installatie
+
+In de id-broker-instelling kunnen aangepaste apps en clients die verbinding maken met de gateway worden bijgewerkt om eerst het vereiste OAuth-token te verkrijgen. U de stappen in dit [document](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) volgen om het token te verkrijgen met de volgende informatie:
+
+*   OAuth resource uri:https://hib.azurehdinsight.net 
+* AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
+*   Toestemming: (naam: Cluster.ReadWrite, id:8f89faa0-ffef-4007-974d-4989b39ad77d)
 
 ## <a name="next-steps"></a>Volgende stappen
 

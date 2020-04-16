@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 7b01e9936189a40fcf1400d3e6ee948032786d3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 623ee15c5071fdc7a36677481e98872b8c2bd562
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444179"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410419"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Overzicht van Azure Data Factory-connector
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory ondersteunt de volgende gegevensopslag en -indelingen via activiteiten kopiëren, gegevensstromen, opzoeken, Metagegevens ophalen en verwijderen. Klik op elk gegevensarchief om de ondersteunde mogelijkheden en de bijbehorende configuraties in details te leren.
 
@@ -32,6 +33,6 @@ Azure Data Factory ondersteunt de volgende gegevensopslag en -indelingen via act
 
 - [Activiteit kopiëren](copy-activity-overview.md)
 - [Gegevensstroom toewijzen](concepts-data-flow-overview.md)
-- [Lookup Activity](control-flow-lookup-activity.md)
-- [Get Metadata Activity](control-flow-get-metadata-activity.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Activiteit ophalen van metagegevens](control-flow-get-metadata-activity.md)
 - [Activiteit verwijderen](delete-activity.md)

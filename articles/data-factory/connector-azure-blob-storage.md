@@ -10,18 +10,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: dd13a08b3c2f63baf509efbb730032edd4eba61a
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: b04ff409c95980a1569a2709a475dd8ec74d59b3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011545"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415490"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Gegevens kopiëren en transformeren in Azure Blob-opslag met Azure Data Factory
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](v1/data-factory-azure-blob-connector.md)
 > * [Huidige versie](connector-azure-blob-storage.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel wordt beschreven hoe u Activiteit kopiëren in Azure Data Factory gebruikt om gegevens van en naar Azure Blob-opslag te kopiëren en gegevensstroom te gebruiken om gegevens te transformeren in Azure Blob-opslag. Lees het [inleidende artikel](introduction.md)voor meer informatie over Azure Data Factory.
 
