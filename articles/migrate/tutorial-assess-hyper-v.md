@@ -2,14 +2,14 @@
 title: Hyper-V VM's beoordelen op migratie naar Azure met Azure Migrate | Microsoft Documenten
 description: Beschrijft hoe u on-premises Hyper-V VM's beoordelen op migratie naar Azure met Azure Migrate Server Assessment.
 ms.topic: tutorial
-ms.date: 03/23/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: cb3c29e01b7917a6d639b6b2a53fc2842efc2172
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c627902268af3a91e172223c1741dd24ea21fa92
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336777"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535448"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Hyper-V VM's beoordelen met Azure Migrate Server Assessment
 
@@ -49,7 +49,7 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 4. Klik in **Aan de slag** op **Hulpprogramma's toevoegen**.
 5. Selecteer op het tabblad **Project migreren** uw Azure-abonnement en maak een brongroep als u er geen hebt.
-6. Geef in **Projectdetails**de projectnaam op en het gebied waarin u het project wilt maken. [Bekijk](migrate-support-matrix.md#supported-geographies) de regio's waarin u Azure Migrate-project maken.
+6. Geef in **Projectdetails**de projectnaam op en het gebied waarin u het project wilt maken. Bekijk ondersteunde regio's voor [publieke](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheidswolken.](migrate-support-matrix.md#supported-geographies-azure-government)
 
     - De projectregio wordt alleen gebruikt om de metagegevens op te slaan die zijn verzameld bij on-premises VM's.
     - U een ander Azure-doelgebied selecteren wanneer u de VM's migreert. Alle Azure-regio's worden ondersteund voor migratiedoel.
@@ -67,9 +67,11 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Het Azure Migrate-toestel instellen
 
-Azure Migrate:server Assessment maakt gebruik van een lichtgewicht Azure Migrate-toestel. Het toestel voert VM-detectie uit en verzendt VM-metagegevens en prestatiegegevens naar Azure Migrate.
-- Het toestel kan worden ingesteld op een Hyper-V VM met behulp van een gedownloade Hyper-V VHD. U het apparaat ook instellen op een VM of fysieke machine met een PowerShell-installatiescript.
-- Deze tutorial maakt gebruik van de VHD. Bekijk [dit artikel](deploy-appliance-script.md) als u het toestel wilt instellen met een script.
+
+Azure Migrate:Server Assessment maakt gebruik van een lichtgewicht Azure Migrate-toestel. Het toestel voert VM-detectie uit en verzendt VM-metagegevens en prestatiegegevens naar Azure Migrate. Het apparaat kan op verschillende manieren worden ingesteld.
+
+- Stel in op een Hyper-V VM met behulp van een gedownloade Hyper-V VHD. Dit is de methode die in deze zelfstudie wordt gebruikt.
+- Instellen op een Hyper-V VM of fysieke machine met een PowerShell-installatiescript. [Deze methode](deploy-appliance-script.md) moet worden gebruikt als u een VM niet instellen met de VHD of als u zich in Azure Government bevindt.
 
 Nadat u het toestel hebt gemaakt, controleert u of het verbinding kan maken met Azure Migrate:Server Assessment, configureer het voor de eerste keer en registreer u het met het Azure Migrate-project.
 
@@ -125,9 +127,9 @@ Importeer het gedownloade bestand en maak de VM.
 7. Start in Hyper-V Manager > **Virtual Machines**de VM.
 
 
-### <a name="verify-appliance-access-to-azure"></a>De toegang tot het toestel tot Azure verifiëren
+## <a name="verify-appliance-access-to-azure"></a>De toegang tot het toestel tot Azure verifiëren
 
-Controleer of de toestel-VM verbinding kan maken met [Azure-URL's](migrate-appliance.md#url-access).
+Zorg ervoor dat de toestel-VM verbinding kan maken met Azure-URL's voor [openbare](migrate-appliance.md#public-cloud-urls) en [overheidsclouds.](migrate-appliance.md#government-cloud-urls)
 
 ### <a name="configure-the-appliance"></a>Het toestel configureren
 

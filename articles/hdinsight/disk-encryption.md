@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/20/2020
-ms.openlocfilehash: c0521f384a333c3054397fb0ec7c2ab907e54f67
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.date: 04/15/2020
+ms.openlocfilehash: 732709dbcb5ebe54025a963379128f1a1e74183e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411753"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536298"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Schijfversleuteling met behulp van door klant beheerde sleutel
 
@@ -30,7 +30,7 @@ Zowel resourceschijf als beheerde schijven op elk knooppunt van het cluster word
 
 Als de firewall voor de sleutelkluis is ingeschakeld op de sleutelkluis waar de schijfversleutelingssleutel is opgeslagen, moeten de IP-adressen van de REGIONALE Resourceprovider VAN HDInsight voor het gebied waar het cluster wordt geïmplementeerd, worden toegevoegd aan de configuratie van de sleutelkluisfirewall. Dit is nodig omdat HDInsight geen vertrouwde Azure-sleutelkluisservice is.
 
-U de Azure-portal of Azure CLI gebruiken om de sleutels in de sleutelkluis veilig te draaien. Wanneer een sleutel roteert, begint het HDInsight-cluster de nieuwe sleutel binnen enkele minuten te gebruiken. Schakel de soft [delete-functies](../key-vault/key-vault-ovw-soft-delete.md) voor de beveiliging in om te beschermen tegen ransomware-scenario's en per ongeluk verwijderen. Sleutelkluizen zonder deze beveiligingsfunctie worden niet ondersteund.
+U de Azure-portal of Azure CLI gebruiken om de sleutels in de sleutelkluis veilig te draaien. Wanneer een sleutel roteert, begint het HDInsight-cluster de nieuwe sleutel binnen enkele minuten te gebruiken. Schakel de soft [delete-functies](../key-vault/general/overview-soft-delete.md) voor de beveiliging in om te beschermen tegen ransomware-scenario's en per ongeluk verwijderen. Sleutelkluizen zonder deze beveiligingsfunctie worden niet ondersteund.
 
 |Clustertype |OS-schijf (beheerde schijf) |Gegevensschijf (beheerde schijf) |Tijdelijke gegevensschijf (lokale SSD) |
 |---|---|---|---|
@@ -56,7 +56,7 @@ Zie [Een door de gebruiker toegewezen beheerde identiteit maken](../active-direc
 
 ## <a name="create-azure-key-vault"></a>Azure Key Vault maken
 
-Een sleutelkluis maken. Zie [Azure Key Vault maken](../key-vault/quick-create-portal.md) voor specifieke stappen.
+Een sleutelkluis maken. Zie [Azure Key Vault maken](../key-vault/secrets/quick-create-portal.md) voor specifieke stappen.
 
 HDInsight ondersteunt alleen Azure Key Vault. Als u uw eigen sleutelkluis hebt, u uw sleutels importeren in Azure Key Vault. Houd er rekening mee dat de sleutelkluis **Soft delete** moet hebben ingeschakeld. Ga voor meer informatie over het importeren van bestaande sleutels naar [Over sleutels, geheimen en certificaten](../key-vault/about-keys-secrets-and-certificates.md).
 
@@ -124,6 +124,220 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 --assign-identity MyMSI
 ```
 
+### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
+
+In het volgende voorbeeld ziet u hoe u een Azure Resource Manager-sjabloon gebruikt om een nieuw Apache Spark-cluster te maken waarmee schijfversleuteling is ingeschakeld. Zie [Wat zijn ARM-sjablonen voor](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)meer informatie?
+
+In dit voorbeeld wordt PowerShell gebruikt om de sjabloon aan te roepen.
+
+```powershell
+$templateFile = "azuredeploy.json"
+$ResourceGroupName = "MyResourceGroup"
+$clusterName = "MyCluster"
+$password = ConvertTo-SecureString 'HttpPassword1234!' -AsPlainText -Force
+$diskEncryptionVaultUri = "https://MyKeyVault.vault.azure.net"
+$diskEncryptionKeyName = "SparkClusterKey"
+$diskEncryptionKeyVersion = "00000000000000000000000000000000"
+$managedIdentityName = "MyMSI"
+
+New-AzResourceGroupDeployment `
+  -Name mySpark `
+  -TemplateFile $templateFile `
+  -ResourceGroupName $ResourceGroupName `
+  -clusterName $clusterName `
+  -clusterLoginPassword $password `
+` -sshPassword $password `
+  -diskEncryptionVaultUri $diskEncryptionVaultUri `
+  -diskEncryptionKeyName $diskEncryptionKeyName `
+  -diskEncryptionKeyVersion $diskEncryptionKeyVersion `
+  -managedIdentityName $managedIdentityName
+```
+
+De inhoud van de `azuredeploy.json`sjabloon resourcebeheer:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "0.9.0.0",
+  "parameters": {
+    "clusterName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the HDInsight cluster to create."
+      }
+    },
+    "clusterLoginUserName": {
+      "type": "string",
+      "defaultValue": "admin",
+      "metadata": {
+        "description": "These credentials can be used to submit jobs to the cluster and to log into cluster dashboards."
+      }
+    },
+    "clusterLoginPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location where all azure resources will be deployed."
+      }
+    },
+    "sshUserName": {
+      "type": "string",
+      "defaultValue": "sshuser",
+      "metadata": {
+        "description": "These credentials can be used to remotely access the cluster."
+      }
+    },
+    "sshPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+      }
+    },
+    "headNodeSize": {
+      "type": "string",
+      "defaultValue": "Standard_D12_v2",
+      "metadata": {
+        "description": "The VM size of the head nodes."
+      }
+    },
+    "workerNodeSize": {
+      "type": "string",
+      "defaultValue": "Standard_D13_v2",
+      "metadata": {
+        "description": "The VM size of the worker nodes."
+      }
+    },
+    "diskEncryptionVaultUri": {
+      "type": "string",
+      "metadata": {
+        "description": "The Key Vault DNSname."
+      }
+    },
+    "diskEncryptionKeyName": {
+      "type": "string",
+      "metadata": {
+        "description": "The Key Vault key name."
+      }
+    },
+    "diskEncryptionKeyVersion": {
+      "type": "string",
+      "metadata": {
+        "description": "The Key Vault key version for the selected key."
+      }
+    },
+    "managedIdentityName": {
+      "type": "string",
+      "metadata": {
+        "description": "The user-assigned managed identity."
+      }
+    }
+  },
+  "variables": {
+    "defaultStorageAccount": {
+      "name": "[uniqueString(resourceGroup().id)]",
+      "type": "Standard_LRS"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('defaultStorageAccount').name]",
+      "location": "[parameters('location')]",
+      "apiVersion": "2019-06-01",
+      "sku": {
+        "name": "[variables('defaultStorageAccount').type]"
+      },
+      "kind": "Storage",
+      "properties": {}
+    },
+    {
+      "apiVersion": "2018-06-01-preview",
+      "name": "[parameters('clusterName')]",
+      "type": "Microsoft.HDInsight/clusters",
+      "location": "[parameters('location')]",
+      "properties": {
+        "clusterVersion": "3.6",
+        "osType": "Linux",
+        "tier": "standard",
+        "clusterDefinition": {
+          "kind": "spark",
+          "componentVersion": {
+            "Spark": "2.3"
+          },
+          "configurations": {
+            "gateway": {
+              "restAuthCredential.isEnabled": true,
+              "restAuthCredential.username": "[parameters('clusterLoginUserName')]",
+              "restAuthCredential.password": "[parameters('clusterLoginPassword')]"
+            }
+          }
+        },
+        "storageProfile": {
+          "storageaccounts": [
+            {
+              "name": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', variables('defaultStorageAccount').name), '2019-06-01').primaryEndpoints.blob,'https://',''),'/','')]",
+              "isDefault": true,
+              "container": "[parameters('clusterName')]",
+              "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('defaultStorageAccount').name), '2019-06-01').keys[0].value]"
+            }
+          ]
+        },
+        "computeProfile": {
+          "roles": [
+            {
+              "name": "headnode",
+              "minInstanceCount": 1,
+              "targetInstanceCount": 2,
+              "hardwareProfile": {
+                "vmSize": "[parameters('headNodeSize')]"
+              },
+              "osProfile": {
+                "linuxOperatingSystemProfile": {
+                  "username": "[parameters('sshUserName')]",
+                  "password": "[parameters('sshPassword')]"
+                },
+              },
+            },
+            {
+              "name": "workernode",
+              "targetInstanceCount": 1,
+              "hardwareProfile": {
+                "vmSize": "[parameters('workerNodeSize')]"
+              },
+              "osProfile": {
+                "linuxOperatingSystemProfile": {
+                  "username": "[parameters('sshUserName')]",
+                  "password": "[parameters('sshPassword')]"
+                },
+              },
+            }
+          ]
+        },
+        "minSupportedTlsVersion": "1.2",
+        "diskEncryptionProperties": {
+          "vaultUri": "[parameters('diskEncryptionVaultUri')]",
+          "keyName": "[parameters('diskEncryptionKeyName')]",
+          "keyVersion": "[parameters('diskEncryptionKeyVersion')]",
+          "msiResourceId": "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('managedIdentityName'))]"
+        }
+      },
+      "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('managedIdentityName'))]": {}
+        }
+      }
+    }
+  ]
+}
+```
+
 ## <a name="rotating-the-encryption-key"></a>De versleutelingssleutel roteren
 
 Er zijn mogelijk scenario's waarin u de versleutelingssleutels wilt wijzigen die door het HDInsight-cluster worden gebruikt nadat deze is gemaakt. Dit kan eenvoudig via het portaal. Voor deze bewerking moet het cluster toegang hebben tot zowel de huidige sleutel als de beoogde nieuwe sleutel, anders mislukt de bewerking van de roterende sleutel.
@@ -146,42 +360,6 @@ az hdinsight rotate-disk-encryption-key \
 --name MyCluster \
 --resource-group MyResourceGroup
 ```
-
-## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
-
-Als u door klanten beheerde sleutels wilt gebruiken met behulp van een resourcemanagersjabloon, werkt u uw sjabloon bij met de volgende wijzigingen:
-
-1. Voeg in het bestand **azuredeploy.json** de volgende eigenschap toe aan het object resources:
-
-    ```json
-       "diskEncryptionProperties":
-         {
-                 "vaultUri": "[parameters('diskEncryptionVaultUri')]",
-                  "keyName": "[parameters('diskEncryptionKeyName')]",
-                  "keyVersion": "[parameters('diskEncryptionKeyVersion')]",
-                   "msiResourceId": "[parameters('diskEncryptionMsiResourceId')]"
-         }
-
-1. In the **azuredeploy.parameters.json** file, add the following parameters. You can get the values of these parameters from the Key Vault URI and the managed Identity. For example, if you have the following URI and identity values,
-    * Sample key vault URI: https://<KeyVault_Name>.vault.azure.net/keys/clusterkey/<Cluster_Key_Value>
-    * Sample user-assigned managed identity: "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>
-
-    The parameters in the **azuredeploy.parameters.json** file are:
-
-    ```json
-   "diskEncryptionVaultUri": {
-            "value": "https://<KeyVault_Name>.vault.azure.net"
-        },
-        "diskEncryptionKeyName": {
-            "value": "clusterkey"
-        },
-        "diskEncryptionKeyVersion": {
-            "value": "<Cluster_Key_Value>"
-        },
-        "diskEncryptionMsiResourceId": {
-            "value": "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>"
-        }
-    ```
 
 ## <a name="faq-for-customer-managed-key-encryption"></a>Veelgestelde vragen over door de klant beheerde sleutelversleuteling
 
@@ -221,5 +399,5 @@ HDInsight door de klant beheerde sleutels zijn beschikbaar in alle openbare clou
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie Wat is Azure Key Vault voor meer informatie over Azure Key [Vault.](../key-vault/key-vault-overview.md)
+* Zie Wat is Azure Key Vault voor meer informatie over Azure Key [Vault.](../key-vault/general/overview.md)
 * [Overzicht van bedrijfsbeveiliging in Azure HDInsight](./domain-joined/hdinsight-security-overview.md).

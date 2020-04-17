@@ -3,15 +3,15 @@ title: Limieten en configuratie
 description: Servicelimieten, zoals duur, doorvoer en capaciteit, plus configuratiewaarden, zoals IP-adressen die u toestaan, voor Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 03/12/2020
-ms.openlocfilehash: 4359c5581d14f4a918a49cf2b91ac58561ea93d3
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/17/2020
+ms.openlocfilehash: 40950be2e5caeb17d20086720a7b65c15147c2f5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257450"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535108"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informatie over limieten en configuratie voor Azure Logic Apps
 
@@ -23,7 +23,7 @@ In dit artikel worden de limieten en configuratiegegevens beschreven voor het ma
 
 Hier zijn de limieten voor een enkele logische app-definitie:
 
-| Name | Limiet | Opmerkingen |
+| Naam | Limiet | Opmerkingen |
 | ---- | ----- | ----- |
 | Acties per werkstroom | 500 | Als u deze limiet wilt verlengen, u desbehoefte geneste werkstromen toevoegen. |
 | Toegestane nestdiepte voor acties | 8 | Als u deze limiet wilt verlengen, u desbehoefte geneste werkstromen toevoegen. |
@@ -45,7 +45,7 @@ Hier zijn de limieten voor een enkele logische app-definitie:
 
 Dit zijn de limieten voor één logische app:Here are the limits for a single logic app run:
 
-| Name | Limiet voor meerdere tekens | Beperking van de integratieserviceomgeving | Opmerkingen |
+| Naam | Limiet voor meerdere tekens | Beperking van de integratieserviceomgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
 | Uitvoeringsduur | 90 dagen | 366 dagen | De duur van de uitvoering wordt berekend aan de hand van de begintijd van een run en de limiet die *bij het begintijd* is opgegeven door de werkstroominstelling, [**Geschiedenisbehoud uitvoeren in dagen**](#change-duration). <p><p>Zie Duurvan de looptijd wijzigen als u de standaardlimiet van 90 dagen wilt [wijzigen.](#change-duration) |
 | Retentie uitvoeren in opslag | 90 dagen | 366 dagen | Run retentie wordt berekend aan de hand van de begintijd van een run en de limiet die *op de huidige tijd* is opgegeven door de werkstroominstelling, [**Geschiedenisbehoud uitvoeren in dagen**](#change-retention). Of een run nu wordt voltooid of een time-out heeft, de bewaarberekening gebruikt altijd de begintijd van de run. Wanneer de duur van een run de *huidige* bewaarlimiet overschrijdt, wordt de run uit de rungeschiedenis verwijderd. <p><p>Als u deze instelling wijzigt, wordt de huidige limiet altijd gebruikt voor het berekenen van retentie, ongeacht de vorige limiet. Als u bijvoorbeeld de bewaarlimiet verlaagt van 90 dagen naar 30 dagen, wordt een run van 60 dagen verwijderd uit de runengeschiedenis. Als u de bewaartermijn verhoogt van 30 dagen naar 60 dagen, blijft een run van 20 dagen oud nog 40 dagen in de runengeschiedenis. <p><p>Zie Behoud van uitvoeren wijzigen in de opslag als u de standaardlimiet van 90 dagen wilt [wijzigen.](#change-retention) |
@@ -82,7 +82,7 @@ Voer de standaardlimiet voor de duur van de run en de opslag uit om de standaard
 
 Dit zijn de limieten voor één logische app:Here are the limits for a single logic app run:
 
-| Name | Limiet | Opmerkingen |
+| Naam | Limiet | Opmerkingen |
 | ---- | ----- | ----- |
 | Gelijktijdigheid activeren | - Onbeperkt wanneer de gelijktijdigheidscontrole is uitgeschakeld <p><p>- 25 is de standaardlimiet wanneer het gelijktijdigheidsbesturingselement is ingeschakeld, die u niet ongedaan maken nadat u gelijktijdigheid hebt ingeschakeld. U de standaardwaarde wijzigen in een waarde tussen 1 en 50. | Deze limiet beschrijft het hoogste aantal logische app-exemplaren dat tegelijkertijd of parallel kan worden uitgevoerd. <p><p>**Opmerking**: Wanneer gelijktijdigheid is ingeschakeld, wordt de SplitOn-limiet verlaagd tot 100 artikelen voor [het debatcheren van arrays](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Zie [Trigger gelijktijdigheidslimiet](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) wijzigen of [Exemplaren opeenvolgend activeren](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)als u de standaardlimiet wilt wijzigen in een waarde tussen 1 en 50. |
 | Maximale wachttijden | - Zonder gelijktijdigheid is het minimum aantal wachtritten 1, terwijl het maximumaantal 50 is. <p><p>- Bij gelijktijdigheid is het minimum aantal wachtruns 10 plus het aantal gelijktijdige runs (trigger gelijktijdigheid). U het maximumaantal tot 100 inclusief wijzigen. | Deze limiet beschrijft het hoogste aantal logische app-exemplaren dat kan wachten om uit te voeren wanneer uw logische app al de maximale gelijktijdige exemplaren uitvoert. <p><p>Zie [Wachttijdrunslimiet wijzigen](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)als u de standaardlimiet wilt wijzigen. |
@@ -100,7 +100,7 @@ Hier zijn de limieten voor een enkele logische app-definitie:
 
 ### <a name="multi-tenant-logic-apps-service"></a>Logic Apps-service met meerdere tenantn
 
-| Name | Limiet | Opmerkingen |
+| Naam | Limiet | Opmerkingen |
 | ---- | ----- | ----- |
 | Actie: Uitvoeringen per 5 minuten | 100.000 is de standaardlimiet, maar 300.000 is de maximale limiet. | Zie Uw logische app uitvoeren in de [modus 'Hoge doorvoer'](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)in voorbeeld voor het wijzigen van de standaardlimiet. U de werkbelasting ook over meer dan één logische app verdelen als dat nodig is. |
 | Actie: Gelijktijdige uitgaande oproepen | ~2500 | U het aantal gelijktijdige aanvragen verminderen of de duur zo nodig verkorten. |
@@ -112,9 +112,9 @@ Hier zijn de limieten voor een enkele logische app-definitie:
 
 ### <a name="integration-service-environment-ise"></a>Integratieserviceomgeving (ISE)
 
-Hier volgen de doorvoerlimieten voor de Premium SKU:
+Hier zijn de doorvoerlimieten voor de [Premium ISE SKU:](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)
 
-| Name | Limiet | Opmerkingen |
+| Naam | Limiet | Opmerkingen |
 |------|-------|-------|
 | Uitvoeringslimiet voor basiseenheden | Systeem-throttled wanneer de infrastructuurcapaciteit 80% bereikt | Biedt ~ 4.000 actie-uitvoeringen per minuut, dat is ~ 160 miljoen actie-uitvoeringen per maand | |
 | Uitvoeringslimiet voor schaaleenheden | Systeem-throttled wanneer de infrastructuurcapaciteit 80% bereikt | Elke schaaleenheid kan ~ 2.000 extra actie-uitvoeringen per minuut bieden, wat ~ 80 miljoen meer actie-uitvoeringen per maand is | |
@@ -124,8 +124,7 @@ Hier volgen de doorvoerlimieten voor de Premium SKU:
 Neem [contact op met het Logic Apps-team](mailto://logicappsemail@microsoft.com) voor hulp bij uw vereisten om boven deze limieten te gaan of om deze limieten te overschrijden of om deze limieten uit te voeren.
 
 > [!NOTE]
-> De [Ontwikkelaar SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) heeft geen gepubliceerde limieten omdat deze SKU geen service-level overeenkomst (SLA) of mogelijkheden heeft om op te schalen.
-> Gebruik deze SKU alleen voor het experimenteren, ontwikkelen en testen, niet voor productie- of prestatietests.
+> De [ONTWIKKELAAR ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) heeft geen gepubliceerde limieten, geen mogelijkheden voor opschaling en geen service-level overeenkomst (SLA). Gebruik deze SKU alleen voor het experimenteren, ontwikkelen en testen, niet voor productie- of prestatietests.
 
 <a name="gateway-limits"></a>
 
@@ -143,7 +142,7 @@ Hier zijn de limieten voor één uitgaande of binnenkomende HTTP-oproep:
 
 Sommige connectorbewerkingen voeren asynchrone aanroepen of luisteren naar webhook-aanvragen, dus de time-out voor deze bewerkingen kan langer zijn dan deze limieten. Zie voor meer informatie de technische details voor de specifieke connector en ook [Werkstroomtriggers en -acties.](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
-| Name | Limiet voor meerdere tekens | Beperking van de integratieserviceomgeving | Opmerkingen |
+| Naam | Limiet voor meerdere tekens | Beperking van de integratieserviceomgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
 | Uitgaande aanvraag | 120 seconden <br>(2 minuten) | 240 seconden <br>(4 minuten) | Voorbeelden van uitgaande aanvragen zijn oproepen van HTTP-triggers. <p><p>**Tip:** Gebruik voor langere bewerkingen een [asynchrone pollingpatroon](../logic-apps/logic-apps-create-api-app.md#async-pattern) of een [tot lus.](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action) |
 | Binnenkomend verzoek | 120 seconden <br>(2 minuten) | 240 seconden <br>(4 minuten) | Voorbeelden van binnenkomende aanvragen zijn oproepen die zijn ontvangen door aanvraagtriggers en webhook-triggers. <p><p>**Opmerking:** Als de oorspronkelijke beller het antwoord wil ontvangen, moeten alle stappen in het antwoord binnen de limiet zijn voltooid, tenzij u een andere logische app als een geneste werkstroom aanroept. Zie [Logische-apps bellen, activeren of nesten](../logic-apps/logic-apps-http-endpoint.md)voor meer informatie. |
@@ -153,7 +152,7 @@ Sommige connectorbewerkingen voeren asynchrone aanroepen of luisteren naar webho
 
 #### <a name="message-size"></a>Berichtgrootte
 
-| Name | Limiet voor meerdere tekens | Beperking van de integratieserviceomgeving | Opmerkingen |
+| Naam | Limiet voor meerdere tekens | Beperking van de integratieserviceomgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
 | Berichtgrootte | 100 MB | 200 MB | Ise-gelabelde connectors gebruiken de ISE-limiet, niet de niet-ISE-connectorlimieten. <p><p>Zie Grote berichten verwerken met chunking om deze limiet te [omzeilen.](../logic-apps/logic-apps-handle-large-messages.md) Sommige connectors en API's ondersteunen echter mogelijk geen chunking of zelfs de standaardlimiet. |
 | Berichtgrootte met chunking | 1 GB | 5 GB | Deze limiet is van toepassing op acties die native chunking ondersteunen of u chunking in hun runtime-configuratie laten inschakelen. <p><p>Voor de integratieserviceomgeving ondersteunt de Logic Apps-engine deze limiet, maar connectors hebben hun eigen chunking-limieten tot aan de enginelimiet, zie bijvoorbeeld de [API-referentie van de Azure Blob Storage-connector.](https://docs.microsoft.com/connectors/azureblob/) Zie Grote berichten verwerken met chunking voor meer informatie over [chunking.](../logic-apps/logic-apps-handle-large-messages.md) |
@@ -161,7 +160,7 @@ Sommige connectorbewerkingen voeren asynchrone aanroepen of luisteren naar webho
 
 #### <a name="character-limits"></a>Tekenlimieten
 
-| Name | Opmerkingen |
+| Naam | Opmerkingen |
 |------|-------|
 | Limiet voor evaluatie van expressie | 131.072 tekens | De `@concat()` `@base64()` `@string()` expressies kunnen niet langer zijn dan deze limiet. |
 | URL-tekenlimiet aanvragen | 16.384 tekens |
@@ -171,7 +170,7 @@ Sommige connectorbewerkingen voeren asynchrone aanroepen of luisteren naar webho
 
 #### <a name="retry-policy"></a>Beleid voor opnieuw proberen
 
-| Name | Limiet | Opmerkingen |
+| Naam | Limiet | Opmerkingen |
 | ---- | ----- | ----- |
 | Nieuwe pogingen | 90 | De standaard is 4. Als u de standaardwaarde wilt wijzigen, gebruikt u de [parameter Beleid opnieuw proberen](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 | Maximale vertraging nieuwe poging | 1 dag | Als u de standaardwaarde wilt wijzigen, gebruikt u de [parameter Beleid opnieuw proberen](../logic-apps/logic-apps-workflow-actions-triggers.md). |
@@ -184,7 +183,7 @@ Sommige connectorbewerkingen voeren asynchrone aanroepen of luisteren naar webho
 
 Dit zijn de limieten voor aangepaste connectors die u maken met web-API's.
 
-| Name | Limiet voor meerdere tekens | Beperking van de integratieserviceomgeving | Opmerkingen |
+| Naam | Limiet voor meerdere tekens | Beperking van de integratieserviceomgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
 | Aantal aangepaste connectors | 1000 per Azure-abonnement | 1000 per Azure-abonnement ||
 | Aantal aanvragen per minuut voor een aangepaste connector | 500 aanvragen per minuut per verbinding | 2.000 aanvragen per minuut per *aangepaste connector* ||
@@ -194,7 +193,7 @@ Dit zijn de limieten voor aangepaste connectors die u maken met web-API's.
 
 ## <a name="managed-identities"></a>Beheerde identiteiten
 
-| Name | Limiet |
+| Naam | Limiet |
 |------|-------|
 | Beheerde identiteiten per logische app | De door het systeem toegewezen identiteit of de identiteit van de gebruiker van 1 gebruiker |
 | Aantal logische apps met een beheerde identiteit in een Azure-abonnement per regio | 250 |
@@ -270,7 +269,7 @@ Zie [Logic Apps-prijzen](https://azure.microsoft.com/pricing/details/logic-apps/
 
 Hier volgen de limieten voor de grootte van berichten die van toepassing zijn op B2B-protocollen:
 
-| Name | Limiet voor meerdere tekens | Beperking van de integratieserviceomgeving | Opmerkingen |
+| Naam | Limiet voor meerdere tekens | Beperking van de integratieserviceomgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2 - 100 MB<br>v1 - 50 MB | v2 - 200 MB <br>v1 - 50 MB | Van toepassing op decoderen en coderen |
 | X12 | 50 MB | 50 MB | Van toepassing op decoderen en coderen |
@@ -281,12 +280,9 @@ Hier volgen de limieten voor de grootte van berichten die van toepassing zijn op
 
 ## <a name="disabling-or-deleting-logic-apps"></a>Logische apps uitschakelen of verwijderen
 
-Wanneer u een logische app uitschakelt, worden er geen nieuwe uitvoeringen geinstantieerd.
-Alle lopende en lopende runs gaan door tot ze klaar zijn, wat tijd kan kosten om te voltooien.
+Wanneer u een logische app uitschakelt, worden er geen nieuwe uitvoeringen geinstantieerd. Alle lopende en lopende runs gaan door tot ze klaar zijn, wat tijd kan kosten om te voltooien.
 
-Wanneer u een logische app verwijdert, worden geen nieuwe uitvoeringen gemaakt.
-Alle uitvoeringen die bezig zijn en wachten op uitvoering worden geannuleerd.
-Als u duizenden uitvoeringen hebt, kan de annulering een aanzienlijke tijd in beslag nemen.
+Wanneer u een logische app verwijdert, worden geen nieuwe uitvoeringen gemaakt. Alle uitvoeringen die bezig zijn en wachten op uitvoering worden geannuleerd. Als u duizenden uitvoeringen hebt, kan de annulering een aanzienlijke tijd in beslag nemen.
 
 <a name="configuration"></a>
 
@@ -300,17 +296,17 @@ De IP-adressen die Azure Logic Apps gebruikt voor inkomende en uitgaande oproepe
 > * **LogicAppsManagement:** vertegenwoordigt de binnenkomende IP-adresvoorvoegsels voor de Logic Apps-service.
 > * **LogicApps:** vertegenwoordigt de uitgaande IP-adresvoorvoegsels voor de Logic Apps-service.
 
+* Voor [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)zijn vaste of gereserveerde IP-adressen niet beschikbaar voor [aangepaste connectors](../logic-apps/custom-connector-overview.md) en [beheerde connectors](../connectors/apis-list.md#managed-api-connectors), bijvoorbeeld Azure Storage, SQL Server, Office 365 Outlook, enzovoort.
+
 * Als u de oproepen wilt ondersteunen die uw logische apps rechtstreeks voeren met [HTTP](../connectors/connectors-native-http.md), [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)en andere HTTP-verzoeken, stelt u uw firewall in met alle [inkomende](#inbound) *en* [uitgaande IP-adressen](#outbound) die worden gebruikt door de Logic Apps-service, op basis van de regio's waar uw logische apps bestaan. Deze adressen worden weergegeven onder de **binnenkomende** en **uitgaande** koppen in deze sectie en worden gesorteerd op regio.
 
-* Als u de oproepen wilt ondersteunen die [door Microsoft beheerde connectors](../connectors/apis-list.md) voeren, stelt u uw firewall in met *alle* [uitgaande](#outbound) IP-adressen die door deze connectors worden gebruikt, op basis van de regio's waar uw logische apps bestaan. Deze adressen worden in deze sectie onder de **rubriek Uitgaan** weergegeven en worden gesorteerd op regio.
+* Als u de aanroepen wilt ondersteunen die [beheerde connectors](../connectors/apis-list.md#managed-api-connectors) voeren, stelt u uw firewall in met *alle* [uitgaande](#outbound) IP-adressen die door deze connectors worden gebruikt, op basis van de regio's waar uw logische apps bestaan. Deze adressen worden in deze sectie onder de **rubriek Uitgaan** weergegeven en worden gesorteerd op regio.
 
 * Als u communicatie wilt inschakelen voor logische apps die worden uitgevoerd in een integratieserviceomgeving (ISE), moet u ervoor zorgen dat u [deze poorten opent.](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)
 
 * Als uw logische apps problemen hebben met de toegang tot Azure-opslagaccounts die [firewalls en firewallregels](../storage/common/storage-network-security.md)gebruiken, hebt u [verschillende opties om toegang in te schakelen.](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)
 
   Logische apps hebben bijvoorbeeld geen directe toegang tot opslagaccounts die firewallregels gebruiken en in dezelfde regio bestaan. Als u echter de [uitgaande IP-adressen voor beheerde connectors in uw regio](../logic-apps/logic-apps-limits-and-config.md#outbound)toestaat, hebben uw logische apps toegang tot opslagaccounts die zich in een andere regio bevinden, behalve wanneer u de Azure Table Storage- of Azure Queue Storage-connectors gebruikt. Als u toegang wilt krijgen tot uw tabelopslag of wachtrijopslag, u in plaats daarvan de HTTP-trigger en acties gebruiken. Zie [Access-opslagaccounts achter firewalls voor](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)andere opties .
-
-* Voor aangepaste connectors zijn [Azure Government](../azure-government/documentation-government-overview.md)en Azure [China 21Vianet](https://docs.microsoft.com/azure/china/)geen vaste of gereserveerde IP-adressen beschikbaar.
 
 <a name="inbound"></a>
 

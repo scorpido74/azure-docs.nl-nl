@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b812ae10b3462dbeff05c8a67e7ebb725281e7e8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259329"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535754"
 ---
 # <a name="back-up-your-app-in-azure"></a>Back-up maken van uw app in Azure
 Met de functie Back-up en herstel in [Azure App Service](overview.md) u eenvoudig handmatig of volgens een planning app-back-ups maken. U de back-ups tot onbepaalde tijd kunnen behouden. U de app herstellen naar een momentopname van een vorige status door de bestaande app over te schrijven of te herstellen naar een andere app.
@@ -44,8 +44,8 @@ De volgende databaseoplossingen worden ondersteund met een back-upfunctie:
 * Voor de functie Back-up en herstel moet het app-serviceplan zich in **de** standaardlaag of **de premiumlaag** bevindt. Zie [Een app opschalen in Azure](manage-scale-up.md)voor meer informatie over het schalen van uw App Service-abonnement naar een hogere laag. **Premium-laag** maakt een groter aantal dagelijkse back-ups mogelijk dan **de standaardlaag.**
 * U hebt een Azure-opslagaccount en -container nodig in hetzelfde abonnement als de app waarvan u een back-up wilt maken. Zie overzicht van [Azure-opslagaccounts](https://docs.microsoft.com/azure/storage/common/storage-account-overview)voor meer informatie over Azure-opslagaccounts.
 * Back-ups kunnen maximaal 10 GB aan app- en database-inhoud bevatten. Als de back-upgrootte deze limiet overschrijdt, krijgt u een foutmelding.
-* Back-ups van Azure Database met SSL voor MySQL worden niet ondersteund. Als een back-up is geconfigureerd, krijgt u mislukte back-ups.
-* Back-ups van Azure Database met SSL voor PostgreSQL worden niet ondersteund. Als een back-up is geconfigureerd, krijgt u mislukte back-ups.
+* Back-ups van AZURE Database met TLS voor MySQL worden niet ondersteund. Als een back-up is geconfigureerd, krijgt u mislukte back-ups.
+* Back-ups van AZURE Database met TLS voor PostgreSQL worden niet ondersteund. Als een back-up is geconfigureerd, krijgt u mislukte back-ups.
 * In-app MySQL-databases worden automatisch geback-upt zonder enige configuratie. Als u handmatiginstellingen maakt voor in-app MySQL-databases, zoals het toevoegen van verbindingstekenreeksen, werken de back-ups mogelijk niet correct.
 * Het gebruik van een opslagaccount met firewall als bestemming voor uw back-ups wordt niet ondersteund. Als een back-up is geconfigureerd, krijgt u mislukte back-ups.
 

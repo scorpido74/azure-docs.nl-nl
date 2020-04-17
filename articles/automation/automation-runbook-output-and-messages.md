@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 457b2d2211ea1ba5fa36cec4b7e9a214f5bcad77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92b6378b00e12f618d07798b5ce789cbd9971544
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367088"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535533"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Uitvoer van runbook en berichten in Azure Automation
 
@@ -18,7 +18,7 @@ De meeste Azure Automation-runbooks hebben een of andere vorm van uitvoer. Deze 
 
 In de volgende tabel wordt elke stream kort beschreven met zijn gedrag in de Azure-portal voor gepubliceerde runbooks en tijdens [het testen van een runbook.](automation-testing-runbook.md) De uitvoerstroom is de hoofdstroom die wordt gebruikt voor communicatie tussen runbooks. De andere streams worden geclassificeerd als berichtstromen, bedoeld om informatie aan de gebruiker door te geven. 
 
-| Streamen | Beschrijving | Gepubliceerd | Test |
+| Streamen | Beschrijving | Gepubliceerd | Testen |
 |:--- |:--- |:--- |:--- |
 | Fout |Foutbericht bedoeld voor de gebruiker. In tegenstelling tot een uitzondering gaat het runbook standaard verder na een foutbericht. |Geschreven naar werkgeschiedenis |Weergegeven in het deelvenster Uitvoer van de test |
 | Fouten opsporen |Berichten die zijn bedoeld voor een interactieve gebruiker. Mag niet worden gebruikt in runbooks. |Niet geschreven naar werkgeschiedenis |Niet weergegeven in deelvenster Uitvoer testen |
@@ -240,7 +240,7 @@ Tenzij u deze informatie echter nodig hebt om de voortgang van een runbook voor 
 **Ga als volgt te werk om tracering op activiteitenniveau in te schakelen:**
 
 1. Open uw Automation-account in Azure Portal.
-2. Selecteer **Runbooks** in de sectie **Procesautomatisering** om de lijst met runbooks te openen.
+2. Selecteer **Runbooks** onder **Procesautomatisering** om de lijst met runbooks te openen.
 3. Selecteer op de pagina Runbooks een grafisch runbook in uw lijst met runbooks.
 4. Klik **onder Instellingen**op **Logboekregistratie en tracering**.
 5. Klik op de pagina Logboekregistratie en Tracering onder **Logboeken records**op **Om** verbose logging in te schakelen.
@@ -253,7 +253,7 @@ Tenzij u deze informatie echter nodig hebt om de voortgang van een runbook voor 
 Azure Automation kan de status van runbook-taken en taakstromen naar uw Log Analytics-werkruimte verzenden. Azure Monitor ondersteunt logboeken waarmee u:
 
 * Krijg inzicht in uw automatiseringstaken.
-* Activeer een e-mail of waarschuwing op basis van de status van uw runbook-taak, bijvoorbeeld mislukt of opgeschort.
+* Activeer een e-mail of waarschuwing op basis van de status van uw runbook-taak, bijvoorbeeld Mislukt of Opgeschort.
 * Schrijf geavanceerde query's in taakstromen.
 * Correleer taken tussen automatiseringsaccounts.
 * Visualiseer werkgeschiedenis.

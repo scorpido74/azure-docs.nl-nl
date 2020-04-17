@@ -4,12 +4,12 @@ description: Waarschuwt u voor ongebruikelijke wijzigingen in de snelheid van mi
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1bce3ab86748d8247a72da3bd70e0f2e8155dbf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671746"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536808"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Slimme detectie - Afwijkingen van storingen
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) waarschuwt u automatisch in bijna realtime als uw web-app een abnormale stijging van het aantal mislukte aanvragen ervaart. Het detecteert een ongebruikelijke stijging van het aantal HTTP-aanvragen of afhankelijkheidsoproepen die worden gerapporteerd als mislukt. Voor aanvragen hebben mislukte aanvragen meestal antwoordcodes van 400 of hoger. Om u te helpen triage en diagnose van het probleem, een analyse van de kenmerken van de fouten en de bijbehorende toepassingsgegevens wordt verstrekt in de waarschuwingsgegevens. Er zijn ook links naar de Application Insights portal voor verdere diagnose. De functie heeft geen set-up of configuratie nodig, omdat het machine learning-algoritmen gebruikt om het normale uitvalpercentage te voorspellen.
@@ -353,7 +353,7 @@ Slimme detectie van foutafwijkingen vormt een aanvulling op andere vergelijkbare
 ## <a name="next-steps"></a>Volgende stappen
 Met deze diagnostische hulpprogramma's u de gegevens uit uw app inspecteren:
 
-* [Metrische verkenner](../../azure-monitor/app/metrics-explorer.md)
+* [Metrische verkenner](../../azure-monitor/platform/metrics-charts.md)
 * [Zoekverkenner](../../azure-monitor/app/diagnostic-search.md)
 * [Analytics - krachtige querytaal](../../azure-monitor/log-query/get-started-portal.md)
 

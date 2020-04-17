@@ -13,12 +13,12 @@ ms.date: 09/27/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262891"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534462"
 ---
 # <a name="application-configuration-options"></a>Toepassingsconfiguratieopties
 
@@ -106,11 +106,11 @@ De omleiding URI is de URI de identiteit provider stuurt de security tokens teru
 ### <a name="redirect-uri-for-public-client-apps"></a>URI omleiden voor openbare client-apps
 
 Als u een ontwikkelaar van een openbare client-app bent die MSAL gebruikt:
-- U wilt gebruiken `.WithDefaultRedirectUri()` in desktop- of UWP-toepassingen (MSAL.NET 4,1+). Met deze methode wordt de eigenschap redirect uri van de openbare clienttoepassing ingesteld op de standaard aanbevolen omleidingsuri voor openbare clienttoepassingen. 
+- U wilt gebruiken `.WithDefaultRedirectUri()` in desktop- of UWP-toepassingen (MSAL.NET 4,1+). Met deze methode wordt de eigenschap redirect uri van de openbare clienttoepassing ingesteld op de standaard aanbevolen omleidingsuri voor openbare clienttoepassingen.
 
-  Platform  | Omleidings-URI  
+  Platform  | Omleidings-URI
   ---------  | --------------
-  Bureaublad-app (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
+  Bureaublad-app (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient`
   UWP | waarde `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`van . Dit stelt SSO met de browser in staat door de waarde in te stellen op het resultaat van WebAuthenticationBroker.GetCurrentApplicationCallbackUri() die u moet registreren
   .NET Core | `https://localhost`. Hierdoor kan de gebruiker de systeembrowser gebruiken voor interactieve verificatie, omdat .NET Core op dit moment geen gebruikersinterface heeft voor de ingesloten webweergave.
 
@@ -130,7 +130,7 @@ Zie [Brokered auth in Android voor](brokered-auth.md)meer Android-details.
 
 ### <a name="redirect-uri-for-confidential-client-apps"></a>URI omleiden voor vertrouwelijke client-apps
 
-Voor web-apps is de omleiding URI (of reply URI) de URI die Azure AD gebruikt om het token terug te sturen naar de toepassing. Deze URI kan de URL van de web-app /Web API zijn als de vertrouwelijke app een van deze is. De omleiding URI moet worden geregistreerd in app registratie. Deze registratie is vooral belangrijk wanneer u een app implementeert die u in eerste instantie lokaal hebt getest. Vervolgens moet u de antwoord-URL van de geïmplementeerde app toevoegen aan de portal voor toepassingsregistratie.
+Voor web-apps is de omleiding URI (of reply URI) de URI die Azure AD gebruikt om het token terug te sturen naar de toepassing. Deze URI kan de URL van de web-app /web-API zijn als de vertrouwelijke app een van deze is. De omleiding URI moet worden geregistreerd in app registratie. Deze registratie is vooral belangrijk wanneer u een app implementeert die u in eerste instantie lokaal hebt getest. Vervolgens moet u de antwoord-URL van de geïmplementeerde app toevoegen aan de portal voor toepassingsregistratie.
 
 Voor daemon-apps hoeft u geen omleidingsURI op te geven.
 

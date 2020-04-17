@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: e78f822a88b093992f065a509c2250e6a5c0dec2
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5252fdbbaf425662fc9725e618f8fc450b435722
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885562"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534649"
 ---
 # <a name="authentication-basics"></a>Basisbeginselen van verificatie
 
@@ -74,22 +74,22 @@ Het is aan de app waarvoor het token is gegenereerd, de web-app die de gebruiker
 
 Tokens zijn slechts voor een beperkte tijd geldig. Meestal biedt de STS een paar tokens: een toegangstoken om toegang te krijgen tot de toepassing of beveiligde bron, en een vernieuwingstoken dat wordt gebruikt om het toegangstoken te vernieuwen wanneer het toegangstoken bijna afloopt.
 
-Toegangstokens worden doorgegeven aan een web-API als het token aan toonder in de `Authorization` koptekst. Een app kan een vernieuwingstoken aan de STS bieden en als de toegang van de gebruiker tot de app niet is ingetrokken, krijgt deze een nieuw toegangstoken en een nieuw vernieuwingstoken terug. Dit is hoe het scenario van iemand die de onderneming verlaat wordt behandeld. Wanneer de STS het vernieuwingstoken ontvangt, wordt er geen geldig toegangstoken meer doorgegeven als de gebruiker niet langer geautoriseerd is.
+Toegangstokens worden doorgegeven aan een web-API als het token voor de drager in de `Authorization` koptekst. Een app kan een vernieuwingstoken aan de STS bieden en als de toegang van de gebruiker tot de app niet is ingetrokken, krijgt deze een nieuw toegangstoken en een nieuw vernieuwingstoken terug. Dit is hoe het scenario van iemand die de onderneming verlaat wordt behandeld. Wanneer de STS het vernieuwingstoken ontvangt, wordt er geen geldig toegangstoken meer doorgegeven als de gebruiker niet langer geautoriseerd is.
 
 ### <a name="how-each-flow-emits-tokens-and-codes"></a>Hoe elke stroom tokens en codes uitzendt
 
 Afhankelijk van hoe uw client is opgebouwd, kan deze één (of meerdere) van de verificatiestromen gebruiken die worden ondersteund door Azure AD. Deze stromen kunnen een verscheidenheid aan tokens produceren (id_tokens, tokens vernieuwen, toegangstokens) en autorisatiecodes en vereisen verschillende tokens om ze te laten werken. Deze grafiek geeft een overzicht:
 
-|Stroom | Vereist | id_token | toegangstoken | token vernieuwen | autorisatiecode | 
+|Stroom | Vereist | id_token | toegangstoken | token vernieuwen | autorisatiecode |
 |-----|----------|----------|--------------|---------------|--------------------|
-|[Machtigingscodestroom](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[Machtigingscodestroom](v2-oauth2-auth-code-flow.md) | | x | x | x | x|
 |[Impliciete stroom](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hybride OIDC-stroom](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
 |[Tokeninwisseling vernieuwen](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | token vernieuwen | x | x | x| |
 |[Namens-stroom](v2-oauth2-on-behalf-of-flow.md) | toegangstoken| x| x| x| |
 |[Clientreferenties](v2-oauth2-client-creds-grant-flow.md) | | | x (alleen app)| | |
 
-Tokens uitgegeven via de impliciete modus hebben een lengtebeperking als gevolg `response_mode` van `query` `fragment`wordt doorgegeven terug naar de browser via de URL (waar is of ).  Sommige browsers hebben een limiet op de grootte van de URL die in de browserbalk kan worden geplaatst en mislukken wanneer deze te lang is.  Dus, deze tokens `groups` hebben `wids` geen of claims. 
+Tokens uitgegeven via de impliciete modus hebben een lengtebeperking als gevolg `response_mode` van `query` `fragment`wordt doorgegeven terug naar de browser via de URL (waar is of ).  Sommige browsers hebben een limiet op de grootte van de URL die in de browserbalk kan worden geplaatst en mislukken wanneer deze te lang is.  Dus, deze tokens `groups` hebben `wids` geen of claims.
 
 Nu u een overzicht hebt van de basisbeginselen, u het model en de API voor identiteitsapps begrijpen, meer informatie krijgen over hoe inrichting werkt in Azure AD en koppelingen krijgen naar gedetailleerde informatie over veelvoorkomende scenario's die Azure AD ondersteunt.
 
@@ -126,7 +126,7 @@ Toestemming is het proces van een broneigenaar die toestemming verleent voor een
 
 In het Microsoft-identiteitsplatform beschrijft een [toepassingsobject](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-object) een toepassing. Op implementatietijd gebruikt het Microsoft-identiteitsplatform het toepassingsobject als blauwdruk om een [serviceprincipal](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#service-principal-object)te maken, wat een concreet exemplaar van een toepassing in een map of tenant vertegenwoordigt. De serviceprincipal definieert wat de app daadwerkelijk kan doen in een specifieke doelmap, wie deze kan gebruiken, tot welke bronnen hij toegang heeft, enzovoort. Het Microsoft-identiteitsplatform maakt een serviceprincipal van een toepassingsobject via **toestemming.**
 
-In het volgende diagram ziet u een vereenvoudigde Microsoft-identiteitsplatform voor het inrichten van de stroom die wordt aangestuurd door toestemming. Het toont twee huurders: A en B. Huurder A is eigenaar van de applicatie. Huurder B is de aanvraag aan het instantiën via een serviceprincipal.  
+In het volgende diagram ziet u een vereenvoudigde Microsoft-identiteitsplatform voor het inrichten van de stroom die wordt aangestuurd door toestemming. Het toont twee huurders: A en B. Huurder A is eigenaar van de applicatie. Huurder B is de aanvraag aan het instantiën via een serviceprincipal.
 
 ![Vereenvoudigde inrichtingsstroom op basis van toestemming](./media/authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
@@ -160,7 +160,7 @@ In het volgende sequentiediagram wordt deze interactie samengevat:
 
 ### <a name="how-a-web-app-determines-if-the-user-is-authenticated"></a>Hoe een web-app bepaalt of de gebruiker is geverifieerd
 
-Ontwikkelaars van webapps kunnen aangeven of alle of alleen bepaalde pagina's verificatie vereisen. In ASP.NET/ASP.NET Core wordt dit bijvoorbeeld gedaan `[Authorize]` door het kenmerk toe te voegen aan de controlleracties. 
+Ontwikkelaars van webapps kunnen aangeven of alle of alleen bepaalde pagina's verificatie vereisen. In ASP.NET/ASP.NET Core wordt dit bijvoorbeeld gedaan `[Authorize]` door het kenmerk toe te voegen aan de controlleracties.
 
 Dit kenmerk zorgt ervoor dat ASP.NET controleert op de aanwezigheid van een sessiecookie die de identiteit van de gebruiker bevat. Als een cookie niet aanwezig is, stuurt ASP.NET verificatie door naar de opgegeven identiteitsprovider. Als de identiteitsprovider Azure AD is, leidt `https://login.microsoftonline.com`de web-app verificatie door naar , waarin een aanmeldingsdialoogvenster wordt weergegeven.
 

@@ -1,7 +1,7 @@
 ---
 title: Meer informatie over MSAL | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft Authentication Library (MSAL) stelt toepassingsontwikkelaars in staat om tokens te verwerven om beveiligde web-API's te bellen. Deze web-API's kunnen de Microsoft Graph, andere Microsoft APIS, webAPI's van derden of uw eigen web-API zijn. MSAL ondersteunt meerdere applicatiearchitecturen en platformen.
+description: Microsoft Authentication Library (MSAL) stelt toepassingsontwikkelaars in staat om tokens te verwerven om beveiligde web-API's te bellen. Deze web-API's kunnen de Microsoft Graph, andere Microsoft API's, webAPI's van derden of uw eigen web-API zijn. MSAL ondersteunt meerdere applicatiearchitecturen en platformen.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c20d93c70484dc7ea800898da4309af2699c718e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89c5117e59f7856c3bd572bbea297a836b5ad589
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085736"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536213"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Overzicht van Microsoft Authentication Library (MSAL)
-Microsoft Authentication Library (MSAL) stelt ontwikkelaars in staat om [tokens](developer-glossary.md#security-token) te verwerven van het eindpunt van het Microsoft-identiteitsplatform om toegang te krijgen tot beveiligde web-API's. Deze web-API's kunnen de Microsoft Graph, andere Microsoft APIS, webAPI's van derden of uw eigen web-API zijn. MSAL is beschikbaar voor .NET, JavaScript, Android en iOS, die veel verschillende applicatiearchitecturen en -platforms ondersteunen.
+Microsoft Authentication Library (MSAL) stelt ontwikkelaars in staat om [tokens](developer-glossary.md#security-token) te verwerven van het eindpunt van het Microsoft-identiteitsplatform om toegang te krijgen tot beveiligde web-API's. Deze web-API's kunnen de Microsoft Graph, andere Microsoft API's, webAPI's van derden of uw eigen web-API zijn. MSAL is beschikbaar voor .NET, JavaScript, Android en iOS, die veel verschillende applicatiearchitecturen en -platforms ondersteunen.
 
 MSAL biedt u vele manieren om tokens te krijgen, met een consistente API voor een aantal platforms. Het gebruik van MSAL biedt de volgende voordelen:
 

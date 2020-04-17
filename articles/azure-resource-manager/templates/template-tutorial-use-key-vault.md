@@ -2,20 +2,20 @@
 title: Azure Key Vault gebruiken in sjablonen
 description: Ontdek hoe u Azure Key Vault gebruikt om veilig parameterwaarden door te geven tijdens het implementeren van Resource Manager-sjablonen
 author: mumian
-ms.date: 05/23/2019
+ms.date: 04/16/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 440835f50d2ef9c03dabc7a66e8f162e3fa15b2f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: c33ad17927dae701e4201e76b7a75690c59dc374
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260697"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536693"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Zelfstudie: Azure Key Vault integreren in de implementatie van uw ARM-sjabloon
 
-Meer informatie over het ophalen van geheimen uit een Azure-sleutelkluis en het doorgeven van de geheimen als parameters wanneer u een ARM-sjabloon (Azure Resource Manager) implementeert. De parameterwaarde wordt nooit weergegeven, omdat u alleen verwijst naar de sleutelkluis-ID. Zie [Azure Key Vault gebruiken om veilige parameterwaarde door te geven tijdens de implementatie](./key-vault-parameter.md)voor meer informatie.
+Meer informatie over het ophalen van geheimen uit een Azure-sleutelkluis en het doorgeven van de geheimen als parameters wanneer u een ARM-sjabloon (Azure Resource Manager) implementeert. De parameterwaarde wordt nooit weergegeven, omdat u alleen verwijst naar de sleutelkluis-ID. U het sleutelkluisgeheim verwijzen met een statische ID of een dynamische ID. Deze zelfstudie maakt gebruik van een statische ID. Met de statische ID-benadering verwijst u naar de sleutelkluis in het sjabloonparameterbestand, niet naar het sjabloonbestand. Zie Azure Key Vault [gebruiken om veilige parameterwaarde door te geven tijdens de implementatie](./key-vault-parameter.md)voor meer informatie over beide benaderingen.
 
 In de zelfstudie [Van de toewijzingsvolgorde voor resources](./template-tutorial-create-templates-with-dependent-resources.md) instellen maakt u een virtuele machine (VM). U moet de gebruikersnaam en het wachtwoord van de VM-beheerder opgeven. In plaats van het wachtwoord op te geven, u het wachtwoord vooraf opslaan in een Azure-sleutelkluis en vervolgens de sjabloon aanpassen om het wachtwoord tijdens de implementatie uit de sleutelkluis op te halen.
 
@@ -33,8 +33,6 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>Vereisten
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
@@ -49,7 +47,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="prepare-a-key-vault"></a>Een sleutelkluis voorbereiden
 
-In deze sectie maakt u een sleutelkluis en voegt u er een geheim aan toe, zodat u het geheim ophalen wanneer u uw sjabloon implementeert. Er zijn vele manieren om een sleutelkluis te maken. In deze zelfstudie gebruikt u Azure PowerShell om een [ARM-sjabloon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)te implementeren. Deze sjabloon doet het volgende:
+In deze sectie maakt u een sleutelkluis en voegt u er een geheim aan toe, zodat u het geheim ophalen wanneer u uw sjabloon implementeert. Er zijn vele manieren om een sleutelkluis te maken. In deze zelfstudie gebruikt u Azure PowerShell om een [ARM-sjabloon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)te implementeren. Deze sjabloon doet twee dingen:
 
 * Hiermee maakt u `enabledForTemplateDeployment` een sleutelkluis met de eigenschap ingeschakeld. Deze eigenschap moet *waar* zijn voordat het implementatieproces van de sjabloon toegang heeft tot de geheimen die zijn gedefinieerd in de sleutelkluis.
 * Hiermee voegt u een geheim toe aan de sleutelkluis. Het geheim slaat het wachtwoord van de VM-beheerder op.
@@ -72,14 +70,16 @@ $templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -keyVaultName $keyVaultName -adUserId $adUserId -secretValue $secretValue
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!IMPORTANT]
 > * De naam van de resourcegroep is de naam van het project, maar met **rg** eraan toegevoegd. Gebruik dezelfde projectnaam en de naam van de brongroep wanneer u [de volgende sjabloon implementeert,](#deploy-the-template)om het gemakkelijker te maken om de resources op te [schonen die u in deze zelfstudie hebt gemaakt.](#clean-up-resources)
 > * De standaardnaam voor het geheim is **vmAdminPassword**. Het is hardgecodeerd in de sjabloon.
-> * Als u de sjabloon wilt inschakelen om het geheim op te halen, moet u voor de sleutelkluis een toegangsbeleid inschakelen met de naam 'Toegang tot Azure Resource Manager inschakelen voor sjabloonimplementatie'. Dit beleid is ingeschakeld in de sjabloon. Zie [Sleutelkluizen en geheimen implementeren](./key-vault-parameter.md#deploy-key-vaults-and-secrets)voor meer informatie over het toegangsbeleid.
+> * Als u de sjabloon wilt inschakelen om het geheim op te halen, moet u een toegangsbeleid met de naam Toegang tot Azure Resource Manager inschakelen **voor sjabloonimplementatie** voor de sleutelkluis inschakelen. Dit beleid is ingeschakeld in de sjabloon. Zie [Sleutelkluizen en geheimen implementeren](./key-vault-parameter.md#deploy-key-vaults-and-secrets)voor meer informatie over het toegangsbeleid.
 
-De sjabloon heeft één uitvoerwaarde, *keyVaultId*genaamd. Noteer de ID-waarde voor later gebruik, wanneer u de virtuele machine implementeert. De resource-id-indeling is:
+De sjabloon heeft één uitvoerwaarde, *keyVaultId*genaamd. U gebruikt deze ID samen met de geheime naam om de geheime waarde later in de zelfstudie op te halen. De resource-id-indeling is:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -108,13 +108,14 @@ Azure Quickstart-sjablonen is een opslagplaats voor ARM-sjablonen. In plaats van
     ```
 
 1. Selecteer **Openen** om het bestand te openen. Het scenario is hetzelfde als het scenario dat wordt gebruikt in [Zelfstudie: ARM-sjablonen maken met afhankelijke resources.](./template-tutorial-create-templates-with-dependent-resources.md)
-   In de sjabloon zijn vijf resources gedefinieerd:
+   De sjabloon definieert zes bronnen:
 
-   * `Microsoft.Storage/storageAccounts`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
    Het is handig om een basiskennis van de sjabloon te hebben voordat u deze aanpast.
 
@@ -128,7 +129,7 @@ Azure Quickstart-sjablonen is een opslagplaats voor ARM-sjablonen. In plaats van
 
 ## <a name="edit-the-parameters-file"></a>Het parameterbestand bewerken
 
-U hoeft het sjabloonbestand niet te wijzigen.
+Door de statische ID-methode te gebruiken, hoeft u geen wijzigingen aan te brengen in het sjabloonbestand. Het ophalen van de geheime waarde gebeurt door het parameterbestand van de sjabloon te configureren.
 
 1. Open *azuredeploy.parameters.json* in Visual Studio Code als deze nog niet is geopend.
 1. Werk `adminPassword` de parameter bij naar:
@@ -145,7 +146,7 @@ U hoeft het sjabloonbestand niet te wijzigen.
     ```
 
     > [!IMPORTANT]
-    > Vervang de waarde voor **id** door de resource-id van de sleutelkluis die u in de vorige procedure hebt gemaakt.
+    > Vervang de waarde voor **id** door de resource-id van de sleutelkluis die u in de vorige procedure hebt gemaakt. De secretName is hardcoded als **vmAdminPassword**.  Zie [Een sleutelkluis voorbereiden](#prepare-a-key-vault).
 
     ![Bestand sleutelkluis en Resource Manager-sjabloon sjabloon-implementatieparameters integreren](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 

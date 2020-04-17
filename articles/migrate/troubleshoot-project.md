@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: 3b8c2f6ec33965317d2aaa23a36b6becff11a54a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75725726"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535397"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Problemen met Azure Migrate-projecten oplossen
 
@@ -32,7 +32,7 @@ Het zoeken naar een bestaand Azure Migrate-project is afhankelijk van of u de hu
 
 ## <a name="cant-find-a-geography"></a>Kan geen geografie vinden
 
-U een Azure Migrate-project maken in [ondersteunde regio's.](migrate-support-matrix.md#supported-geographies) Houd er rekening mee dat de projectgeografie wordt gebruikt om gedetecteerde machinemetagegevens op te slaan. U machines ook op andere locaties beoordelen of migreren.
+U een Azure Migrate-project maken in ondersteunde regio's voor [openbare](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheidsclouds.](migrate-support-matrix.md#supported-geographies-azure-government)
 
 ## <a name="what-are-vm-limits"></a>Wat zijn VM-limieten?
 

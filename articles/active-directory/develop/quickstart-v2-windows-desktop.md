@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1c66779dc726c3c6366bc03282d5d3c2bdc8134a
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: a464bb8a942c449e0b17751fbea7a810711cb48d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991038"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535992"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Quickstart: Een token verkrijgen en Microsoft Graph API aanroepen vanuit een Windows-bureaublad-app
 
@@ -62,7 +62,7 @@ In deze quickstart leert u hoe u een .NET-toepassing (WPF) voor Windows-bureaubl
 #### <a name="step-2-download-your-visual-studio-project"></a>Stap 2: Uw Visual Studio-project downloaden
 
 > [!div renderon="docs"]
-> [Download het Visual Studio-project](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)  
+> [Download het Visual Studio-project](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Voer het project uit met Visual Studio 2019.
@@ -71,7 +71,7 @@ In deze quickstart leert u hoe u een .NET-toepassing (WPF) voor Windows-bureaubl
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Stap 3: Uw app is geconfigureerd en klaar om uit te voeren
-> We hebben uw project geconfigureerd met waarden van de eigenschappen van uw app en het is klaar om te worden uitgevoerd. 
+> We hebben uw project geconfigureerd met waarden van de eigenschappen van uw app en het is klaar om te worden uitgevoerd.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -87,7 +87,7 @@ In deze quickstart leert u hoe u een .NET-toepassing (WPF) voor Windows-bureaubl
 >    private static string ClientId = "Enter_the_Application_Id_here";
 >    private static string Tenant = "Enter_the_Tenant_Info_Here";
 >    ```
-> 
+>
 > Waar:
 > - `Enter_the_Application_Id_here`: is de **toepassings-id (client-id)** voor de toepassing die u hebt geregistreerd.
 > - `Enter_the_Tenant_Info_Here`: is ingesteld op een van de volgende opties:
@@ -152,7 +152,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
 
 > |Waar:||
 > |---------|---------|
-> | `_scopes` | Bevat de bereiken die worden aangevraagd, bijvoorbeeld `{ "user.read" }` voor Microsoft Graph of `{ "api://<Application ID>/access_as_user" }` voor aangepaste web-API's. |
+> | `_scopes` | Bevat de aanvragende scopes, `{ "user.read" }` zoals voor `{ "api://<Application ID>/access_as_user" }` Microsoft Graph of voor aangepaste web-API's. |
 
 #### <a name="get-a-user-token-silently"></a>Een gebruikerstoken op de achtergrond ophalen
 
@@ -167,7 +167,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 > |Waar: ||
 > |---------|---------|
-> | `scopes` | Bevat de bereiken die worden aangevraagd, bijvoorbeeld `{ "user.read" }` voor Microsoft Graph of `{ "api://<Application ID>/access_as_user" }` voor aangepaste web-API's. |
+> | `scopes` | Bevat de aanvragende scopes, `{ "user.read" }` zoals voor `{ "api://<Application ID>/access_as_user" }` Microsoft Graph of voor aangepaste web-API's. |
 > | `firstAccount` | Geeft de eerste gebruiker in de cache op (MSAL biedt ondersteuning voor meerdere gebruikers in één app). |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

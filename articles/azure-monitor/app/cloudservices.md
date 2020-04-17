@@ -3,12 +3,12 @@ title: Toepassingsinzichten voor Azure-cloudservices | Microsoft Documenten
 description: Controleer uw web- en werkrollen op een effectieve manier met Application Insights
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: ce794a7bd18635fddfa30056ab2d675dc138097d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276190"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537590"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Toepassingsinzichten voor Azure-cloudservices
 [Application Insights][start] kan [Azure cloud service apps](https://azure.microsoft.com/services/cloud-services/) controleren op beschikbaarheid, prestaties, storingen en gebruik door gegevens uit Application Insights SDKs te combineren met Azure [Diagnostics-gegevens](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) van uw cloudservices. Op basis van de feedback die u krijgt over de prestaties en de effectiviteit van uw app tijdens het gebruik, kunt u weldoordachte beslissingen nemen over de richting van het ontwerp in elke fase van de ontwikkelingslevenscyclus.
@@ -31,7 +31,7 @@ Met deze optie wordt uw app tijdens runtime beheerd, zodat u alle telemetrie kri
 
 Als deze optie alles is wat je nodig hebt, ben je klaar. 
 
-Uw volgende stappen zijn [het weergeven van statistieken uit uw app,](../../azure-monitor/app/metrics-explorer.md) [het opvragen van uw gegevens met Analytics](../../azure-monitor/app/analytics.md). 
+Uw volgende stappen zijn [het weergeven van statistieken uit uw app,](../../azure-monitor/platform/metrics-charts.md) [het opvragen van uw gegevens met Analytics](../../azure-monitor/app/analytics.md). 
 
 Als u de prestaties in de browser wilt controleren, u ook [beschikbaarheidstests](../../azure-monitor/app/monitor-web-app-availability.md) instellen en [code toevoegen aan uw webpagina's.](../../azure-monitor/app/javascript.md)
 
@@ -165,7 +165,7 @@ Deze stap is alleen nodig als u volledige SQL-query's wilt vastleggen op .NET Fr
 
 1. Open de resources Application Insights die u hebt gemaakt.
 
-   Afzonderlijke gegevenspunten worden weergegeven in [Zoeken][diagnostic]en geaggregeerde gegevens worden weergegeven in [Metric Explorer](../../azure-monitor/app/metrics-explorer.md).
+   Afzonderlijke gegevenspunten worden weergegeven in [Zoeken][diagnostic]en geaggregeerde gegevens worden weergegeven in [Metric Explorer](../../azure-monitor/platform/metrics-charts.md).
 
 1. Voeg meer telemetrie toe (zie de volgende secties) en publiceer uw app om live diagnostische gegevens en feedback over het gebruik te krijgen. 
 
@@ -184,7 +184,7 @@ Op de volgende locaties vindt u de Azure [Diagnostics-informatie](https://docs.m
 * Windows-gebeurtenislogboeken worden als traceringen en aangepaste gebeurtenissen weergegeven.
 * Toepassinglogboeken, ETW-logboeken en logboeken met diagnostische gegevens over de infrastructuur worden weergegeven als traceringen.
 
-Als u prestatiemeteritems en tellingen van gebeurtenissen wilt weergeven, opent u [Metrics Explorer](../../azure-monitor/app/metrics-explorer.md) en voegt u de volgende grafiek toe:
+Als u prestatiemeteritems en tellingen van gebeurtenissen wilt weergeven, opent u [Metrics Explorer](../../azure-monitor/platform/metrics-charts.md) en voegt u de volgende grafiek toe:
 
 ![Azure Diagnostics-gegevens](./media/cloudservices/23-wad.png)
 

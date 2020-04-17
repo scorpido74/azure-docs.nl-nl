@@ -2,13 +2,13 @@
 title: Afhankelijkheidsanalyse in Azure Migrate Server Assessment
 description: Beschrijft hoe u afhankelijkheidsanalyse gebruiken voor beoordeling met Azure Migrate Server Assessment.
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: f96496b66d6bcfd397fb0a7303d3dbfb4fd6f6b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: b11796f2c5d7c1d87f383e6780444e572352eff5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79455635"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537743"
 ---
 # <a name="dependency-analysis"></a>Afhankelijkheidsanalyse
 
@@ -30,7 +30,7 @@ Er zijn twee opties voor het implementeren van afhankelijkheidsanalyse
 - **Agentless**: Met agentless analyse hoeft u geen agents te installeren op machines die u wilt controleren. Deze optie is momenteel in preview en is alleen beschikbaar voor VMware VM's.
 
 > [!NOTE]
-> Afhankelijkheidsanalyse is niet beschikbaar in Azure Government.
+> Afhankelijkheidsanalyse op basis van agenten is niet beschikbaar in Azure Government. U gebruik maken van agentless afhankelijkheidanalyse.
 
 ## <a name="agentless-analysis"></a>Agentloze analyse
 

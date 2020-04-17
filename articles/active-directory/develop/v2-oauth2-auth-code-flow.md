@@ -12,12 +12,12 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5241089ff3cc7826216fcadd6fd94116ee4a2c89
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: ac630c4901c126ed883adbdc7efb03f36372e6ff
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309443"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535873"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft-identiteitsplatform en OAuth 2.0-autorisatiecodestroom
 
@@ -232,11 +232,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-access-token"></a>Het toegangstoken vernieuwen
 
-Access_tokens van korte duur zijn en u moet ze vernieuwen nadat ze zijn verlopen om toegang te blijven krijgen tot bronnen. U dit doen `POST` door een `/token` ander verzoek in `refresh_token` te dienen `code`bij het eindpunt, dit keer met de in plaats van de.  Vernieuwingstokens zijn geldig voor alle machtigingen waarvoor uw klant al toestemming heeft ontvangen `scope=mail.read` - dus een vernieuwingstoken `scope=api://contoso.com/api/UseResource`die is uitgegeven op een verzoek om een nieuw toegangstoken aan te vragen voor .  
+Access_tokens van korte duur zijn en u moet ze vernieuwen nadat ze zijn verlopen om toegang te blijven krijgen tot bronnen. U dit doen `POST` door een `/token` ander verzoek in `refresh_token` te dienen `code`bij het eindpunt, dit keer met de in plaats van de.  Vernieuwingstokens zijn geldig voor alle machtigingen waarvoor uw klant al toestemming heeft ontvangen `scope=mail.read` - dus een vernieuwingstoken `scope=api://contoso.com/api/UseResource`die is uitgegeven op een verzoek om een nieuw toegangstoken aan te vragen voor .
 
-Vernieuwingstokens hebben geen opgegeven levensduur. Meestal zijn de levensduur van vernieuwingstokens relatief lang. In sommige gevallen verlopen vernieuwingstokens echter, worden ze ingetrokken of ontbreken ze niet over voldoende bevoegdheden voor de gewenste actie. Uw toepassing moet fouten die door het eindpunt voor tokenuitgifte worden [geretourneerd,](#error-codes-for-token-endpoint-errors) correct verwachten en verwerken. 
+Vernieuwingstokens hebben geen opgegeven levensduur. Meestal zijn de levensduur van vernieuwingstokens relatief lang. In sommige gevallen verlopen vernieuwingstokens echter, worden ze ingetrokken of ontbreken ze niet over voldoende bevoegdheden voor de gewenste actie. Uw toepassing moet fouten die door het eindpunt voor tokenuitgifte worden [geretourneerd,](#error-codes-for-token-endpoint-errors) correct verwachten en verwerken.
 
-Hoewel vernieuwingstokens niet worden ingetrokken wanneer ze worden gebruikt om nieuwe toegangstokens te verkrijgen, wordt van u verwacht dat u het oude vernieuwingstoken verwijdert. De [OAuth 2.0-spec](https://tools.ietf.org/html/rfc6749#section-6) zegt: "De autorisatieserver kan een nieuw vernieuwingstoken uitgeven, in welk geval de client het oude vernieuwingstoken moet verwijderen en vervangen door het nieuwe vernieuwingstoken. De autorisatieserver kan het oude vernieuwingstoken intrekken nadat het een nieuw vernieuwingstoken aan de client heeft uitgegeven."  
+Hoewel vernieuwingstokens niet worden ingetrokken wanneer ze worden gebruikt om nieuwe toegangstokens te verkrijgen, wordt van u verwacht dat u het oude vernieuwingstoken verwijdert. De [OAuth 2.0-spec](https://tools.ietf.org/html/rfc6749#section-6) zegt: "De autorisatieserver kan een nieuw vernieuwingstoken uitgeven, in welk geval de client het oude vernieuwingstoken moet verwijderen en vervangen door het nieuwe vernieuwingstoken. De autorisatieserver kan het oude vernieuwingstoken intrekken nadat het een nieuw vernieuwingstoken aan de client heeft uitgegeven."
 
 ```
 // Line breaks for legibility only
@@ -254,7 +254,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > Probeer dit verzoek uit te voeren in Postman! (Vergeet niet om de `refresh_token`) [Probeer dit verzoek uit te voeren in Postman ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
-> 
+>
 
 | Parameter     |                | Beschrijving        |
 |---------------|----------------|--------------------|

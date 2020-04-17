@@ -2,14 +2,14 @@
 title: Over Azure Migrate
 description: Meer informatie over de Azure Migrate-service.
 ms.topic: overview
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: a9723f15d496393d27bdd227ec1121a7878b37e0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aa999b874b6e8b0075ab905a72ff04f03cb39ac7
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80127735"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537896"
 ---
 # <a name="about-azure-migrate"></a>Over Azure Migrate
 
@@ -40,6 +40,9 @@ De Azure Migrate-hub bevat deze hulpprogramma's.
 **Movere** | Beoordeel servers. | [Meer informatie](#movere) over Movere.
 **Web App-migratieassistent** | On-premises web-apps beoordelen en migreren naar Azure. |  Gebruik de Azure App Service Migration Assistant om on-premises websites te beoordelen op migratie naar de Azure App Service.<br/><br/> Gebruik de Assistent om .NET- en PHP-webapps te migreren naar Azure. [Meer informatie](https://appmigration.microsoft.com/) over de Azure App Service Migration Assistant.
 **Azure Data Box** | Offline gegevensmigratie. | Gebruik Azure Data Box-producten om grote hoeveelheden gegevens offline naar Azure te verplaatsen. [Meer informatie](https://docs.microsoft.com/azure/databox/).
+
+> [!NOTE]
+> Als u zich in Azure Government bevindt, kunnen externe geïntegreerde hulpprogramma's en ISV-aanbiedingen geen gegevens verzenden naar Azure Migrate-projecten. U tools onafhankelijk van elkaar gebruiken.
 
 ## <a name="isv-integration"></a>ISV-integratie
 
@@ -94,7 +97,7 @@ In de azure migrate hub selecteert u het hulpprogramma dat u wilt gebruiken voor
 
 Movere is een SaaS-platform dat de business intelligence verhoogt door volledige IT-omgevingen binnen één dag nauwkeurig te presenteren. Naarmate organisaties groeien, veranderen en digitaal optimaliseren, biedt de oplossing ondernemingen het vertrouwen dat ze nodig hebben om zichtbaarheid en controle over hun omgevingen te hebben, ongeacht platform, toepassing of geografie. Movere werd [overgenomen](https://azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools/) door Microsoft en wordt niet langer verkocht als een standalone aanbieding.  Movere is beschikbaar via de Microsoft Solution Assessment- en Cloud Economics-programma's. [Meer informatie](https://www.movere.io) over Movere. 
 
-We raden u aan om ook te kijken naar Azure Migrate, onze ingebouwde migratieservice. Azure Migrate biedt een centrale hub om uw migratie naar de cloud te vereenvoudigen. De hub biedt uitgebreide ondersteuning voor verschillende workloads, waaronder fysieke en virtuele servers, databases en toepassingen. End-to-end zichtbaarheid maakt het gemakkelijk om de voortgang bij te houden tijdens ontdekking, beoordeling en migratie. Met zowel Azure- als partner-ISV-tools ingebouwd, heeft Azure Migrate ook een uitgebreid scala aan functies, waaronder virtuele en fysieke serverdetectie, prestatiegebaseerde juiste grootte, kostenplanning, beoordelingen op basis van import en agentless toepassing afhankelijkheidsanalyse. Als u op zoek bent naar deskundige hulp om aan de slag te gaan, heeft Microsoft een ervaren [Azure Expert Managed Service Provider](https://azure.microsoft.com/partners) om u op weg te helpen. Bekijk de [Azure Migrate-website](https://azure.microsoft.com/services/azure-migrate/). 
+We raden u aan om ook te kijken naar Azure Migrate, onze ingebouwde migratieservice. Azure Migrate biedt een centrale hub om uw migratie naar de cloud te vereenvoudigen. De hub biedt uitgebreide ondersteuning voor verschillende workloads, waaronder fysieke en virtuele servers, databases en toepassingen. End-to-end zichtbaarheid maakt het gemakkelijk om de voortgang bij te houden tijdens ontdekking, beoordeling en migratie. Met zowel Azure- als partner-ISV-tools ingebouwd, heeft Azure Migrate ook een uitgebreid scala aan functies, waaronder virtuele en fysieke serverdetectie, prestatiegebaseerde juiste grootte, kostenplanning, beoordelingen op basis van import en agentless afhankelijkheidsanalyse voor toepassingen. Als u op zoek bent naar deskundige hulp om aan de slag te gaan, heeft Microsoft een ervaren [Azure Expert Managed Service Provider](https://azure.microsoft.com/partners) om u op weg te helpen. Bekijk de [Azure Migrate-website](https://azure.microsoft.com/services/azure-migrate/). 
  
 
 ## <a name="azure-migrate-versions"></a>Azure-migratieversies

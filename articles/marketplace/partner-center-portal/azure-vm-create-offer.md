@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 12dd17045715a24d1e5151b30a5e7706b0e58717
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 161fd9276427db0d0d7d56da1bfc0bb8ccf52a52
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383805"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536655"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Een Azure-aanbieding voor virtuele machines maken
 
@@ -174,7 +174,7 @@ Op deze pagina u aanbiedingsdetails definiëren, zoals aanbiedingsnaam, beschrij
 
 ### <a name="marketplace-details"></a>Marketplace-gegevens
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weergegeven als de titel van uw aanbiedingsvermelding. Dit veld is vooraf gevuld met de tekst die u hebt ingevoerd in het vak **Alias aanbieden** toen u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -239,7 +239,7 @@ Zorg voor de ondersteuningswebsite waar klanten uw ondersteuningsteam kunnen ber
 
 Geef contactgegevens op die Microsoft-partners kunnen gebruiken wanneer uw klanten een ondersteuningsticket openen. Dit zal niet worden vermeld in de markt.
 
-- Name
+- Naam
 - Email
 - Telefoon
 
@@ -247,7 +247,7 @@ Geef contactgegevens op die Microsoft-partners kunnen gebruiken wanneer uw klant
 
 Geef contactgegevens op die Microsoft kan gebruiken wanneer er problemen zijn met uw aanbieding, waaronder problemen met de certificering. Dit zal niet worden vermeld in de markt.
 
-- Name
+- Naam
 - Email
 - Telefoon
 
@@ -296,7 +296,7 @@ Selecteer **Concept opslaan** voordat u doorgaat naar de volgende sectie, Overzi
 
 ## <a name="plan-overview"></a>Overzicht van plannen
 
-U verschillende abonnementsopties bieden binnen dezelfde aanbieding in partnercentrum. Deze plannen werden eerder aangeduid als SKU's. Een aanbieding vereist ten minste één abonnement, dat kan verschillen in termen van doelgroep voor het genereren van inkomsten, Azure-clouds, functies of VM-afbeeldingen.
+U verschillende abonnementsopties bieden binnen dezelfde aanbieding in partnercentrum. Deze plannen werden eerder aangeduid als SKU's. Een aanbieding vereist ten minste één abonnement, dat kan verschillen in termen van doelgroep voor het genereren van inkomsten, Azure-regio's, functies of VM-afbeeldingen.
 
 Nadat u uw plannen hebt gemaakt, wordt op het tabblad **Overzicht van abonnementen** het volgende weergegeven:
 
@@ -326,7 +326,7 @@ Selecteer **Maken**.
 
 ### <a name="plan-setup"></a>Installatie plannen
 
-Stel de configuratie op hoog niveau in voor het type plan, of het de technische configuratie van een ander plan opnieuw gebruikt en in welke clouds het plan beschikbaar moet zijn. Uw selecties hier bepalen welke velden worden weergegeven op andere tabbladen voor hetzelfde plan.
+Stel de configuratie op hoog niveau in voor het type abonnement, of het de technische configuratie van een ander abonnement opnieuw gebruikt en in welke Azure-regio's het abonnement beschikbaar moet zijn. Uw selecties hier bepalen welke velden worden weergegeven op andere tabbladen voor hetzelfde plan.
 
 #### <a name="reuse-technical-configuration"></a>Technische configuratie opnieuw gebruiken
 
@@ -335,24 +335,24 @@ Als u meer dan één abonnement van hetzelfde type hebt en de pakketten onderlin
 > [!NOTE]
 > Wanneer u de technische configuratie van een ander abonnement opnieuw gebruikt, verdwijnt het volledige tabblad **Technische configuratie** uit dit plan. De technische configuratiedetails van het andere abonnement, inclusief eventuele updates die u in de toekomst maakt, worden ook voor dit plan gebruikt. Deze instelling kan niet worden gewijzigd nadat dit plan is gepubliceerd.
 
-#### <a name="cloud-availability"></a>Beschikbaarheid in de cloud
+#### <a name="azure-regions"></a>Azure-regio's
 
-Uw abonnement moet beschikbaar worden gesteld in ten minste één cloud.
+Uw abonnement moet beschikbaar worden gesteld in ten minste één Azure-regio.
 
-Selecteer de azure **global-optie** om uw abonnement beschikbaar te maken voor klanten in alle openbare Azure-regio's met commerciële marktintegratie. Zie Geografische [beschikbaarheid en valutaondersteuning](https://aka.ms/AzureGovCurrencies)voor meer informatie .
+Selecteer de azure **global-optie** om uw abonnement beschikbaar te maken voor klanten in alle openbare Azure-regio's met commerciële marktintegratie. Zie Geografische [beschikbaarheid en valutaondersteuning](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)voor meer informatie .
 
-Selecteer de azure **government cloud-optie** om uw abonnement beschikbaar te maken in de [Azure Government Cloud.](https://aka.ms/WhatIsAzureGovernment) dit is een cloud van de overheid gemeenschap met gecontroleerde toegang voor klanten van Amerikaanse federale, staats-, lokale of tribale agentschappen, evenals partners die in aanmerking komen om deze entiteiten te dienen. Als uitgever bent u verantwoordelijk voor nalevingscontroles, beveiligingsmaatregelen en aanbevolen procedures om deze cloudcommunity te bedienen. Azure Government maakt gebruik van fysiek geïsoleerde datacenters en netwerken (alleen in de VS).
+Selecteer de optie **Azure Government** om uw abonnement beschikbaar te maken in het [azure-overheidsgebied.](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) Deze regio biedt gecontroleerde toegang voor klanten uit Amerikaanse federale, staats-, lokale of tribale entiteiten, evenals partners die in aanmerking komen om hen te bedienen. U, als uitgever, bent verantwoordelijk voor nalevingscontroles, beveiligingsmaatregelen en aanbevolen procedures. Azure Government maakt gebruik van fysiek geïsoleerde datacenters en netwerken (alleen in de VS).
 
-Voordat u publiceert naar [Azure Government,](https://aka.ms/azuregovpublish)test en valideert u uw abonnement in de omgeving, omdat bepaalde eindpunten kunnen verschillen. Als u uw abonnement wilt instellen en testen, vraagt u een proefaccount aan bij de proefversie van [Microsoft Azure Government.](https://aka.ms/AzureGovernmentTrial)
+Voordat u publiceert naar [Azure Government,](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)test en valideert u uw abonnement in de omgeving, omdat bepaalde eindpunten kunnen verschillen. Als u uw abonnement wilt instellen en testen, vraagt u een proefaccount aan bij de proefversie van [Microsoft Azure Government.](https://azure.microsoft.com/global-infrastructure/government/request/)
 
 > [!NOTE]
-> Nadat uw abonnement is gepubliceerd en beschikbaar is in een specifieke cloud, u die cloud niet verwijderen.
+> Nadat uw abonnement is gepubliceerd en beschikbaar is in een specifieke Azure-regio, u dat gebied niet verwijderen.
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Government Cloud-certificeringen
+#### <a name="azure-government-certifications"></a>Azure Government-certificeringen
 
-Deze optie is alleen zichtbaar als **Azure Government Cloud** is geselecteerd onder **Cloudbeschikbaarheid**.
+Deze optie is alleen zichtbaar als u **Azure Government** selecteert onder **Azure-gebieden.**
 
-Azure Government-services verwerken gegevens die onderworpen zijn aan bepaalde overheidsvoorschriften en -vereisten. Bijvoorbeeld FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 en CJIS. Om uw certificeringen voor deze programma's onder de aandacht te brengen, u maximaal 100 koppelingen aanbieden die ze beschrijven. Dit kunnen links naar uw vermelding op het programma direct of links naar beschrijvingen van uw naleving met hen op uw eigen websites. Deze koppelingen die alleen zichtbaar zijn voor Azure Government Cloud-klanten.
+Azure Government-services verwerken gegevens die onderworpen zijn aan bepaalde overheidsvoorschriften en -vereisten. Bijvoorbeeld FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 en CJIS. Om uw certificeringen voor deze programma's onder de aandacht te brengen, u maximaal 100 koppelingen aanbieden die ze beschrijven. Dit kunnen links naar uw vermelding op het programma direct of links naar beschrijvingen van uw naleving met hen op uw eigen websites. Deze koppelingen die alleen zichtbaar zijn voor azure-klanten.
 
 Selecteer **Concept opslaan** voordat u verdergaat.
 
@@ -384,7 +384,7 @@ Op dit tabblad configureert u het volgende:
 
 #### <a name="markets"></a>Markten
 
-Elk plan moet beschikbaar zijn in ten minste één markt. Schakel het selectievakje in voor elke marktlocatie waar dit abonnement beschikbaar moet zijn voor aankoop (gebruikers in deze markten kunnen de aanbieding nog steeds implementeren in alle Azure-regio's voor de geselecteerde clouds). De knop **Belasting opnieuw uitlaten** toont landen waarin Microsoft namens u btw overdraagt. Publiceren naar China is beperkt tot plannen die **gratis** zijn of **Breng je eigen licentie** (BYOL).
+Elk plan moet beschikbaar zijn in ten minste één markt. Schakel het selectievakje in voor elke marktlocatie waar dit abonnement beschikbaar moet zijn voor aankoop (gebruikers in deze markten kunnen de aanbieding nog steeds implementeren in alle Azure-regio's die zijn geselecteerd in **[De installatie van het abonnement).](#plan-setup)** De knop **Belasting opnieuw uitlaten** toont landen waarin Microsoft namens u btw overdraagt. Publiceren naar China is beperkt tot plannen die **gratis** zijn of **Breng je eigen licentie** (BYOL).
 
 Als u al prijzen voor uw abonnement in Amerikaanse dollars (USD) hebt ingesteld en een andere marktlocatie hebt toegevoegd, wordt de prijs voor de nieuwe markt berekend op basis van de huidige wisselkoersen. Controleer altijd de prijs voor elke markt voordat u publiceert. Bekijk de prijzen via de link **Exportprijzen (xlsx)** na het opslaan van uw wijzigingen.
 

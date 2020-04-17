@@ -318,8 +318,6 @@
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: Definities van metrische gegevens op basis van logboeken
               href: platform/app-insights-metrics.md
-            - name: Klassieke Metrics Explorer
-              href: app/metrics-explorer.md
         - name: Search
           href: app/diagnostic-search.md
         - name: Profiler

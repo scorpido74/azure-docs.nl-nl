@@ -12,12 +12,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5596f5f40e293a7bd11ac6a5f900e05c0b8d3b0e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 15578b6adc19eb3513e0d7e1d3d2c400c9170250
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883131"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535975"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft identity platform code samples (v2.0 endpoint)
 
@@ -53,7 +53,7 @@ De volgende voorbeelden illustreren webtoepassingen die gebruikers aanmelden. So
 
 | Platform | Alleen aan-het eind van de gebruikers | Aanmeldingen bij gebruikers en belt Microsoft Graph |
 | -------- | ------------------- | --------------------------------- |
-| ![Deze afbeelding toont het ASP.NET Core-logo](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | [ASP.NET Core WebApp-aan-/in-gebruikerszelfstudie](https://aka.ms/aspnetcore-webapp-sign-in) | Hetzelfde voorbeeld in de [ASP.NET Core Web App noemt Microsoft Graph fase](https://aka.ms/aspnetcore-webapp-call-msgraph) |
+| ![Deze afbeelding toont het ASP.NET Core-logo](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | [ASP.NET Core WebApp-aan-/in-gebruikerszelfstudie](https://aka.ms/aspnetcore-webapp-sign-in) | Hetzelfde voorbeeld in de [ASP.NET Core-webapp-fase microsoft graph](https://aka.ms/aspnetcore-webapp-call-msgraph) |
 | ![Deze afbeelding toont het ASP.NET logo](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET Snelstart](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Deze afbeelding toont het Java-logo](media/sample-v2-code/logo_java.png)  |                   | [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Deze afbeelding toont het Python-logo](media/sample-v2-code/logo_python.png)  |                   | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |

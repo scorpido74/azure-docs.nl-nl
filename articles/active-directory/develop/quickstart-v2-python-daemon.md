@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: ecbed58eabd2e835d8fa202916829d1da91210e7
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 3c6cb6303734b5336b3e9a7646e5eb3310d0f236
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991055"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536043"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Snelstart: een token en aanroepen van Microsoft Graph API vanuit een Python-console-app met behulp van de identiteit van de app
 
@@ -55,7 +55,7 @@ Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
 > 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
 > 1. Navigeer naar de pagina Microsoft-identiteitsplatform voor ontwikkelaars [App-registraties.](https://go.microsoft.com/fwlink/?linkid=2083908)
 > 1. Selecteer **Nieuwe registratie**.
-> 1. Wanneer de pagina **Een aanvraag registreren** wordt weergegeven, voert u de registratiegegevens van uw aanvraag in. 
+> 1. Wanneer de pagina **Een aanvraag registreren** wordt weergegeven, voert u de registratiegegevens van uw aanvraag in.
 > 1. Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die wordt weergegeven voor gebruikers van de app, zoals `Daemon-console`. Selecteer vervolgens **Registreren** om de toepassing te maken.
 > 1. Na het registreren opent u het menu **Certificaten en geheimen**.
 > 1. Onder **Clientgeheimen** selecteert u **+ Nieuw clientgeheim**. Geef het clientgeheim een naam en selecteer **Toevoegen**. Kopieer het geheim naar een veilige locatie. U hebt dit nodig voor gebruik in uw code.
@@ -65,7 +65,7 @@ Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>Uw snelstart-app downloaden en configureren
-> 
+>
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Stap 1: Uw toepassing configureren in Azure Portal
 > Om ervoor te zorgen dat het codevoorbeeld voor deze quickstart werkt, moet u een clientgeheim maken en de toepassingstoestemming **User.Read.All** van Graph API toevoegen.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -89,7 +89,7 @@ Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-python-project"></a>Stap 3: Uw Python-project configureren
-> 
+>
 > 1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples**.
 > 1. Navigeer naar de submap **1-Call-MsGraph-WithSecret"**.
 > 1. **Parameters.json** bewerken en de waarden `authority`van `client_id`de `secret` velden vervangen en het volgende fragment:
@@ -106,7 +106,7 @@ Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
 >
 > > [!TIP]
 > > Om de waarden van **Toepassings-id (client-id)** en **Map-id (tenant-id)** te achterhalen, gaat u naar de **Overzichtspagina** van de app in de Azure-portal. Voor het genereren van een nieuwe sleutel gaat u naar de pagina **Certificaten en geheimen**.
-    
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-admin-consent"></a>Stap 3: Toestemming van de beheerder
 
@@ -212,7 +212,7 @@ if not result:
 
 > |Waar:| |
 > |---------|---------|
-> | `config["scope"]` | De aangevraagde bereiken bevat. Voor vertrouwelijke clients moet hiervoor de indeling worden gebruikt die vergelijkbaar is met `{Application ID URI}/.default` om aan te geven dat de aangevraagde bereiken dezelfde zijn die statisch zijn gedefinieerd in het app-object dat is ingesteld in de Azure-portal (voor Microsoft Graph verwijst `{Application ID URI}` naar `https://graph.microsoft.com`). Voor aangepaste Web-API's wordt `{Application ID URI}` gedefinieerd in de sectie **Een API beschikbaar maken** in de registratie van toepassingen (preview) van de Azure-portal. |
+> | `config["scope"]` | De aangevraagde bereiken bevat. Voor vertrouwelijke clients moet hiervoor de indeling worden gebruikt die vergelijkbaar is met `{Application ID URI}/.default` om aan te geven dat de aangevraagde bereiken dezelfde zijn die statisch zijn gedefinieerd in het app-object dat is ingesteld in de Azure-portal (voor Microsoft Graph verwijst `{Application ID URI}` naar `https://graph.microsoft.com`). Voor aangepaste web-API's `{Application ID URI}` wordt gedefinieerd onder Een **API-sectie blootleggen** in de toepassingsregistratie van Azure Portal (Preview). |
 
 Zie de [naslagdocumentatie voor `AcquireTokenForClient`](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client) voor meer informatie
 

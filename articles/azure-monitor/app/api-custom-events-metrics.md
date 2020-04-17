@@ -3,12 +3,12 @@ title: Application Insights API voor aangepaste gebeurtenissen en statistieken |
 description: Voeg een paar regels code in uw apparaat of bureaublad-app, webpagina of service in om het gebruik bij te houden en problemen te diagnosticeren.
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 06bd8bd0958afd26e1256a010b08c908c59aaf7d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d6cb2f5ab418e8d3b5935fef535565ccf55a3906
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585869"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536944"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens
 
@@ -107,7 +107,7 @@ In Node.js-projecten kunt `new applicationInsights.TelemetryClient(instrumentati
 
 ## <a name="trackevent"></a>TrackEvent TrackEvent
 
-In Application Insights is een *aangepaste gebeurtenis* een gegevenspunt dat u in [Metrics Explorer](../../azure-monitor/app/metrics-explorer.md) weergeven als een geaggregeerd aantal en in [Diagnostisch zoeken](../../azure-monitor/app/diagnostic-search.md) als afzonderlijke gebeurtenissen. (Het is niet gerelateerd aan MVC of andere framework "gebeurtenissen.")
+In Application Insights is een *aangepaste gebeurtenis* een gegevenspunt dat u in [Metrics Explorer](../../azure-monitor/platform/metrics-charts.md) weergeven als een geaggregeerd aantal en in [Diagnostisch zoeken](../../azure-monitor/app/diagnostic-search.md) als afzonderlijke gebeurtenissen. (Het is niet gerelateerd aan MVC of andere framework "gebeurtenissen.")
 
 Oproepen `TrackEvent` in uw code invoegen om verschillende gebeurtenissen te tellen. Hoe vaak gebruikers een bepaalde functie kiezen, hoe vaak ze bepaalde doelen bereiken, of misschien hoe vaak ze bepaalde soorten fouten maken.
 
@@ -443,7 +443,7 @@ requests
 
 Uitzonderingen verzenden naar toepassingsinzichten:
 
-* Om ze te [tellen,](../../azure-monitor/app/metrics-explorer.md)als een indicatie van de frequentie van een probleem.
+* Om ze te [tellen,](../../azure-monitor/platform/metrics-charts.md)als een indicatie van de frequentie van een probleem.
 * Om individuele gebeurtenissen te [onderzoeken.](../../azure-monitor/app/diagnostic-search.md)
 
 De rapporten bevatten de stapelsporen.
@@ -774,7 +774,7 @@ Als uw app gebruikers groepeert in accounts, u ook een id voor het account doorg
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-In [Metrics Explorer](../../azure-monitor/app/metrics-explorer.md)u een grafiek maken die **gebruikers,geverifieerde**en **gebruikersaccounts**telt.
+In [Metrics Explorer](../../azure-monitor/platform/metrics-charts.md)u een grafiek maken die **gebruikers,geverifieerde**en **gebruikersaccounts**telt.
 
 U ook [zoeken naar](../../azure-monitor/app/diagnostic-search.md) clientgegevenspunten met specifieke gebruikersnamen en accounts.
 

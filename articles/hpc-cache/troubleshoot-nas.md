@@ -4,14 +4,14 @@ description: Tips om configuratiefouten en andere problemen te voorkomen en op t
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: c88ffb9e87bc0688cc87b816efaa8e101e23407c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a24530810a448a713c01efbc8933b9f22d15b3b
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77652085"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536366"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Problemen met NAS-configuratie en NFS-opslagdoel oplossen
 
@@ -63,6 +63,9 @@ Verschillende opslagsystemen gebruiken verschillende methoden om deze toegang mo
 
 Als u exportregels gebruikt, moet u er rekening mee houden dat de cache meerdere verschillende IP-adressen uit het subnet cache kan gebruiken. Toegang toestaan vanuit het volledige scala aan mogelijke subnet IP-adressen.
 
+> [!NOTE]
+> Azure HPC-cache verplettert standaard roottoegang. Lees [Extra cache-instellingen configureren](configuration.md#configure-root-squash) voor meer informatie.
+
 Werk samen met uw NAS-opslagleverancier om het juiste toegangsniveau voor de cache mogelijk te maken.
 
 ### <a name="allow-root-access-on-directory-paths"></a>Roottoegang toestaan op mappaden
@@ -100,7 +103,7 @@ Gebruik indien mogelijk een Linux-client uit hetzelfde virtuele netwerk als uw c
 Als met die opdracht de export niet wordt vermeld, heeft de cache problemen met het maken van verbinding met uw opslagsysteem. Werk samen met uw NAS-leverancier om exportvermelding in te schakelen.
 
 ## <a name="adjust-vpn-packet-size-restrictions"></a>Beperkingen voor vpn-pakketgrootte aanpassen
-<!-- link in prereqs article -->
+<!-- link in prereqs article and configuration article -->
 
 Als u een VPN hebt tussen de cache en uw NAS-apparaat, kan de VPN 1500-byte Ethernet-pakketten op ware grootte blokkeren. U dit probleem hebben als grote uitwisselingen tussen de NAS en de instantie Azure HPC-cache niet worden voltooid, maar kleinere updates werken zoals verwacht.
 
@@ -128,7 +131,11 @@ Er is geen eenvoudige manier om te bepalen of uw systeem dit probleem heeft, ten
   1480 bytes from 10.54.54.11: icmp_seq=1 ttl=64 time=2.06 ms
   ```
 
-  Als de ping mislukt met 1472 bytes, moet u mogelijk MSS-klemmen op de VPN configureren om het externe systeem de maximale framegrootte goed te laten detecteren. Lees de [documentatie over de parameters van VPN Gateway IPsec/IKE](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) voor meer informatie.
+  Als de ping mislukt met 1472 bytes, is er waarschijnlijk een probleem met de pakketgrootte.
+
+Om het probleem op te lossen, moet u mogelijk MSS-klemmen op de VPN configureren om het externe systeem de maximale framegrootte op de juiste manier te detecteren. Lees de [documentatie over de parameters van VPN Gateway IPsec/IKE](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) voor meer informatie.
+
+In sommige gevallen kan het wijzigen van de MTU-instelling voor de Azure HPC-cache helpen. Als u echter de MTU op de cache beperkt, moet u ook de MTU-instellingen voor clients en back-endopslagsystemen die met de cache communiceren, beperken. Lees [Aanvullende Azure HPC-cache-instellingen configureren](configuration.md#adjust-mtu-value) voor meer informatie.
 
 ## <a name="check-for-acl-security-style"></a>Controleren op ACL-beveiligingsstijl
 

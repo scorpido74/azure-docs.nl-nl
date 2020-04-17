@@ -12,12 +12,12 @@ ms.date: 12/17/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c6113490cf7d754a9e45638e4a0bfa588f1942ca
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6021348160b338bc3a153764968f6c846a644cd1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309420"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535856"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft-identiteitsplatform en de stroom van de OAuth 2.0-clientreferenties
 
@@ -70,7 +70,7 @@ Als u toepassingsmachtigingen in uw app wilt gebruiken, voert u de stappen uit d
 
 
 > [!NOTE]
-> Wanneer u als toepassing authenticeert, in tegenstelling tot bij een gebruiker, u geen 'gedelegeerde machtigingen' (scopes die door een gebruiker worden verleend) gebruiken.  U moet "toepassingsmachtigingen" gebruiken, ook wel "rollen" genoemd, die worden verleend door een beheerder voor de toepassing (of via pre-autorisatie door de web-API).    
+> Wanneer u als toepassing authenticeert, in tegenstelling tot bij een gebruiker, u geen 'gedelegeerde machtigingen' (scopes die door een gebruiker worden verleend) gebruiken.  U moet "toepassingsmachtigingen" gebruiken, ook wel "rollen" genoemd, die worden verleend door een beheerder voor de toepassing (of via pre-autorisatie door de web-API).
 
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>De machtigingen aanvragen in de app-registratieportal
@@ -169,7 +169,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 ```
 
 ```
-// Replace {tenant} with your tenant! 
+// Replace {tenant} with your tenant!
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 

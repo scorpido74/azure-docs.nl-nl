@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5f18e9365b09f06c1bd4f25a8efe909cc308dad
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979478"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537012"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Updatebeheer-, wijzigingstracking- en voorraadoplossingen inschakelen op meerdere VM's
 
@@ -33,9 +33,9 @@ Schakel met de selectievakjes de virtuele machines in die u aan boord wilt hebbe
 Klik op de opdrachtbalk op **Services** en selecteer **Bijhouden**wijzigen, **voorraad**of **Beheer bijwerken**.
 
 > [!NOTE]
-> **Change tracking** en **Inventory** gebruiken dezelfde oplossing, wanneer de ene is ingeschakeld, is de andere ook ingeschakeld.
+> Change Tracking en Inventory gebruiken dezelfde oplossing. Wanneer de ene is ingeschakeld, is de andere ook ingeschakeld.
 
-De volgende afbeelding is voor Updatebeheer. Het bijhouden en inventaris wijzigen hebben dezelfde indeling en hetzelfde gedrag.
+De volgende afbeelding is voor Updatebeheer. Change Tracking en Inventory hebben dezelfde lay-out en gedrag.
 
 De lijst met virtuele machines wordt gefilterd om alleen de virtuele machines weer te geven die zich in hetzelfde abonnement en dezelfde locatie bevinden. Als uw virtuele machines zich in meer dan drie resourcegroepen bevinden, worden de eerste drie resourcegroepen geselecteerd.
 
@@ -72,7 +72,7 @@ De volgende oplossingen zijn afhankelijk van een Log Analytics-werkruimte:
 
 * [Updatebeheer](automation-update-management.md)
 * [Tracering wijzigen](automation-change-tracking.md)
-* [VM's starten/stoppen buiten kantooruren](automation-solution-vm-management.md)
+* [Vm's starten/stoppen tijdens kantooruren](automation-solution-vm-management.md)
 
 Als u besluit uw Automatiseringsaccount niet langer te willen integreren in een Log Analytics-werkruimte, u uw account rechtstreeks loskoppelen van de Azure-portal. Voordat u verder gaat, moet u eerst de eerder genoemde oplossingen verwijderen, anders wordt dit proces verhinderd. Bekijk het artikel voor de specifieke oplossing die u hebt geïmporteerd om inzicht te krijgen in de stappen die nodig zijn om de oplossing te verwijderen.
 
@@ -107,13 +107,13 @@ U ook de koppeling van uw werkruimte loskoppelen van uw automatiseringsaccount v
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Bij het inwerken van meerdere machines kunnen er machines zijn die kunnen worden weergegeven als **Kan niet inschakelen.** Er zijn verschillende redenen waarom sommige machines mogelijk niet zijn ingeschakeld. In de volgende secties worden mogelijke redenen weergegeven voor de **status Kan niet inschakelen** op een vm wanneer u probeert aan boord te gaan.
+Bij het inwerken van meerdere machines `Cannot enable`kunnen er machines zijn die als . Er zijn verschillende redenen waarom sommige machines mogelijk niet zijn ingeschakeld. De volgende secties tonen `Cannot enable` mogelijke redenen voor de status op een VM wanneer u probeert aan boord te gaan.
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM rapporteert aan een\<andere\>werkruimte: ' workspaceName '.  Configuratie wijzigen om deze te gebruiken voor het inschakelen
 
 **Oorzaak:** deze fout geeft aan dat de VM die u aan boord probeert te maken, rapporten naar een andere werkruimte probeert te maken.
 
-**Oplossing:** Klik op **Gebruiken als configuratie** om de beoogde werkruimte voor automatiseringsaccount en Logboekanalyse te wijzigen.
+**Oplossing:** Klik op **Gebruiken als configuratie** om het beoogde automatiseringsaccount en de werkruimte Log Analytics te wijzigen.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM rapporteert aan een werkruimte die niet beschikbaar is in dit abonnement
 
@@ -148,7 +148,7 @@ Bij het inwerken van meerdere machines kunnen er machines zijn die kunnen worden
 Ga als lid van het werk als u een vm verwijdert uit Updatebeheer:
 
 * Verwijder de VM in uw werkruimte Log Analytics uit `MicrosoftDefaultScopeConfig-Updates`de opgeslagen zoekopdracht naar de scopeconfiguratie. Opgeslagen zoekopdrachten zijn te vinden onder **Algemeen** in uw werkruimte.
-* Verwijder de [Microsoft Monitoring-agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) of de [loganalyse-agent voor Linux.](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)
+* Verwijder de [agent Log Analytics voor Windows](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) of de agent Log Analytics voor [Linux.](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 

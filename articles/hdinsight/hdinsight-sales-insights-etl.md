@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
-ms.date: 03/24/2020
-ms.openlocfilehash: a4df99c45b27ad662133010422cae2e30e36e584
-ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
+ms.date: 04/15/2020
+ms.openlocfilehash: c213b0089af0af295d44afd38bbc5c17b6db159d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80247262"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535227"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Zelfstudie: Maak een end-to-end datapijplijn om verkoopinzichten in Azure HDInsight te verkrijgen
 
@@ -27,23 +27,28 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure CLI. Zie [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Azure CLI - ten minste versie 2.2.0. Zie [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+* jq, een command-line JSON processor.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
 * Een lid van de [azure ingebouwde rol - eigenaar](../role-based-access-control/built-in-roles.md).
 
-* [Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45331) om zakelijke inzichten aan het einde van deze zelfstudie te visualiseren.
+* Als u PowerShell gebruikt om de datafabriekpijplijn te activeren, hebt u de [Az-module](https://docs.microsoft.com/powershell/azure/overview)nodig.
+
+* [Power BI Desktop](https://aka.ms/pbiSingleInstaller) om zakelijke inzichten aan het einde van deze zelfstudie te visualiseren.
 
 ## <a name="create-resources"></a>Resources maken
 
 ### <a name="clone-the-repository-with-scripts-and-data"></a>Kloon de repository met scripts en gegevens
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij uw Azure-abonnement. Als u Azure Cloud Shell wilt gebruiken, selecteert u **Probeer deze** in de rechterbovenhoek van het codeblok. Voer anders de onderstaande opdracht in:
 
-1. Open Azure Cloud Shell via de bovenste menubalk. Selecteer uw abonnement voor het maken van een bestandsshare als Cloud Shell u daarom vraagt.
+    ```azurecli-interactive
+    az login
 
-   ![Azure Cloud Shell openen](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
-
-1. Kies **Bash**in het vervolgkeuzemenu **Select-omgeving.**
+    # If you have multiple subscriptions, set the one to use
+    # az account set --subscription "SUBSCRIPTIONID"
+    ```
 
 1. Controleer of u lid bent van de [Azure-roleigenaar](../role-based-access-control/built-in-roles.md). Vervang `user@contoso.com` uw account en voer de opdracht in:
 
@@ -55,29 +60,7 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
     Als er geen record wordt geretourneerd, bent u geen lid en u deze zelfstudie niet voltooien.
 
-1. Uw abonnementen aanbieden die de opdracht invoeren:
-
-    ```azurecli
-    az account list --output table
-    ```
-
-    Let op de id van het abonnement dat u voor dit project gebruikt.
-
-1. Stel het abonnement in dat u voor dit project gebruikt. Vervang `SUBSCRIPTIONID` door de werkelijke waarde en voer de opdracht in.
-
-    ```azurecli
-    subscriptionID="SUBSCRIPTIONID"
-    az account set --subscription $subscriptionID
-    ```
-
-1. Maak een nieuwe resourcegroep voor het project. Vervang `RESOURCEGROUP` door de gewenste naam en voer de opdracht in.
-
-    ```azurecli
-    resourceGroup="RESOURCEGROUP"
-    az group create --name $resourceGroup --location westus
-    ```
-
-1. Download de gegevens en scripts voor deze zelfstudie uit de [HDInsight sales insights ETL repository.](https://github.com/Azure-Samples/hdinsight-sales-insights-etl)  Voer de volgende opdracht in:
+1. Download de gegevens en scripts voor deze zelfstudie uit de [HDInsight sales insights ETL repository.](https://github.com/Azure-Samples/hdinsight-sales-insights-etl) Voer de volgende opdracht in:
 
     ```bash
     git clone https://github.com/Azure-Samples/hdinsight-sales-insights-etl.git
@@ -98,11 +81,19 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
     chmod +x scripts/*.sh
     ````
 
-1. Voer het script uit. Vervang `RESOURCE_GROUP_NAME` `LOCATION` en met de relevante waarden en voer de opdracht in:
+1. Variabele instellen voor resourcegroep. Vervang `RESOURCE_GROUP_NAME` de naam van een bestaande of nieuwe resourcegroep en voer de opdracht in:
 
     ```bash
-    ./scripts/resources.sh RESOURCE_GROUP_NAME LOCATION
+    resourceGroup="RESOURCE_GROUP_NAME"
     ```
+
+1. Voer het script uit. Vervang `LOCATION` door een gewenste waarde en voer de opdracht in:
+
+    ```bash
+    ./scripts/resources.sh $resourceGroup LOCATION
+    ```
+
+    Als u niet zeker weet welke regio u wilt opgeven, u een lijst met ondersteunde regio's voor uw abonnement ophalen met de opdracht lijstlocaties van [az-account.](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations)
 
     De opdracht implementeert de volgende bronnen:
 
@@ -115,49 +106,26 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 Het maken van clusteren kan ongeveer 20 minuten duren.
 
-Het `resources.sh` script bevat de volgende opdrachten. U hoeft deze opdrachten niet uit te voeren als u het script al in de vorige stap hebt uitgevoerd.
-
-* `az group deployment create`- Met deze opdracht wordt`resourcestemplate.json`een Azure Resource Manager-sjabloon ( ) gebruikt om de opgegeven resources met de gewenste configuratie te maken.
-
-    ```azurecli
-    az group deployment create --name ResourcesDeployment \
-        --resource-group $resourceGroup \
-        --template-file resourcestemplate.json \
-        --parameters "@resourceparameters.json"
-    ```
-
-* `az storage blob upload-batch`- Met deze opdracht worden de csv-bestanden met deze opdracht geüpload naar het nieuw gemaakte Blob-opslagaccount:
-
-    ```azurecli
-    az storage blob upload-batch -d rawdata \
-        --account-name <BLOB STORAGE NAME> -s ./ --pattern *.csv
-    ```
-
-Het standaardwachtwoord voor SSH-toegang `Thisisapassword1`tot de clusters is . Als u het wachtwoord wilt wijzigen, gaat u `resourcesparameters.json` naar het bestand en wijzigt u het `sparksshPassword`wachtwoord voor de `sparkClusterLoginPassword`, , `llapClusterLoginPassword`en `llapsshPassword` parameters.
+Het standaardwachtwoord voor SSH-toegang `Thisisapassword1`tot de clusters is . Als u het wachtwoord wilt wijzigen, gaat u `./templates/resourcesparameters_remainder.json` naar het bestand en wijzigt u het `sparksshPassword`wachtwoord voor de `sparkClusterLoginPassword`, , `llapClusterLoginPassword`en `llapsshPassword` parameters.
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>Implementatie verifiëren en brongegevens verzamelen
 
-1. Als u de status van uw implementatie wilt controleren, gaat u naar de brongroep op de Azure-portal. Selecteer **Implementaties** onder **Instellingen**. Selecteer de naam van `ResourcesDeployment`uw implementatie. Hier ziet u de resources die zijn geïmplementeerd en de resources die nog in uitvoering zijn.
+1. Als u de status van uw implementatie wilt controleren, gaat u naar de brongroep op de Azure-portal. Selecteer **Onder Instellingen**selecteer **Implementatieen**en vervolgens uw implementatie. Hier ziet u de resources die zijn geïmplementeerd en de resources die nog in uitvoering zijn.
 
 1. Voer de volgende opdracht in om de namen van de clusters weer te geven:
 
-    ```azurecli
-    sparkCluster=$(az hdinsight list \
-        --resource-group $resourceGroup \
-        --query "[?contains(name,'spark')].{clusterName:name}" -o tsv)
+    ```bash
+    sparkClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.sparkClusterName.value')
+    llapClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.llapClusterName.value')
 
-    llapCluster=$(az hdinsight list \
-        --resource-group $resourceGroup \
-        --query "[?contains(name,'llap')].{clusterName:name}" -o tsv)
-
-    echo $sparkCluster
-    echo $llapCluster
+    echo "Spark Cluster" $sparkClusterName
+    echo "LLAP cluster" $llapClusterName
     ```
 
 1. Voer de volgende opdracht in om het Azure-opslagaccount en de toegangssleutel weer te geven:
 
     ```azurecli
-    blobStorageName=$(cat resourcesoutputs.json | jq -r '.properties.outputs.blobStorageName.value')
+    blobStorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.blobStorageName.value')
 
     blobKey=$(az storage account keys list \
         --account-name $blobStorageName \
@@ -171,7 +139,7 @@ Het standaardwachtwoord voor SSH-toegang `Thisisapassword1`tot de clusters is . 
 1. Voer de volgende opdracht in om het Gen2-account en de toegangssleutel voor Gegevensmeeropslag te bekijken:
 
     ```azurecli
-    ADLSGen2StorageName=$(cat resourcesoutputs.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
+    ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
 
     adlsKey=$(az storage account keys list \
         --account-name $ADLSGen2StorageName \
@@ -191,10 +159,13 @@ Deze gegevensfabriek heeft één pijplijn met twee activiteiten:
 * De eerste activiteit kopieert de gegevens van Azure Blob-opslag naar het Data Lake Storage Gen 2-opslagaccount om gegevensopname na te bootsen.
 * De tweede activiteit transformeert de gegevens in het Spark-cluster. Het script transformeert de gegevens door ongewenste kolommen te verwijderen. Het voegt ook een nieuwe kolom toe die de inkomsten berekent die een enkele transactie genereert.
 
-Voer de volgende opdracht uit om de azure data factory-pijplijn in te stellen:
+Voer de onderstaande opdracht uit om de Azure Data Factory-pijplijn in te stellen.  Je zou nog `hdinsight-sales-insights-etl` steeds bij de map moeten zijn.
 
 ```bash
-./scripts/adf.sh
+blobStorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.blobStorageName.value')
+ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
+
+./scripts/adf.sh $resourceGroup $ADLSGen2StorageName $blobStorageName
 ```
 
 Dit script doet de volgende dingen:
@@ -205,35 +176,47 @@ Dit script doet de volgende dingen:
 1. Verkrijg opslagsleutels voor de Opslagaccounts Data Lake Storage Gen2 en Blob.
 1. Hiermee maakt u een andere bronimplementatie om een Azure Data Factory-pijplijn te maken, met de bijbehorende gekoppelde services en -activiteiten. Het geeft de opslagsleutels als parameters door aan het sjabloonbestand, zodat de gekoppelde services de opslagaccounts correct kunnen openen.
 
-De pijplijn Gegevensfabriek wordt geïmplementeerd via de volgende opdracht:
-
-```azurecli-interactive
-az group deployment create --name ADFDeployment \
-    --resource-group $resourceGroup \
-    --template-file adftemplate.json \
-    --parameters "@adfparameters.json"
-```
-
 ## <a name="run-the-data-pipeline"></a>De gegevenspijplijn uitvoeren
 
 ### <a name="trigger-the-data-factory-activities"></a>De activiteiten van de Data Factory activeren
 
 De eerste activiteit in de datafabriek-pijplijn die u hebt gemaakt, verplaatst de gegevens van Blob-opslag naar Data Lake Storage Gen2. De tweede activiteit past de Spark-transformaties toe op de gegevens en slaat de getransformeerde CSV-bestanden op een nieuwe locatie op. Het kan enkele minuten duren voordat de hele pijplijn is voltooid.
 
-Als u de pijplijnen wilt activeren, u het andere doen:
+Voer de volgende opdracht in om de naam van de gegevensfabriek op te halen:
 
-* Activeer de Data Factory-pijplijnen in PowerShell. Vervang `DataFactoryName` de naam van de werkelijke gegevensfabriek en voer vervolgens de volgende opdrachten uit:
+```azurecli
+cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
+```
+
+Als u de pijplijn wilt activeren, u het andere doen:
+
+* Activeer de datafabriekpijplijn in PowerShell. Vervang `RESOURCEGROUP`en `DataFactoryName` met de juiste waarden de volgende opdrachten:
 
     ```powershell
-    Invoke-AzDataFactoryV2Pipeline -DataFactory DataFactoryName -PipelineName "CopyPipeline_k8z"
-    Invoke-AzDataFactoryV2Pipeline -DataFactory DataFactoryName -PipelineName "sparkTransformPipeline"
+    # If you have multiple subscriptions, set the one to use
+    # Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
+
+    $resourceGroup="RESOURCEGROUP"
+    $dataFactory="DataFactoryName"
+
+    $pipeline =Invoke-AzDataFactoryV2Pipeline `
+        -ResourceGroupName $resourceGroup `
+        -DataFactory $dataFactory `
+        -PipelineName "IngestAndTransform"
+
+    Get-AzDataFactoryV2PipelineRun `
+        -ResourceGroupName $resourceGroup  `
+        -DataFactoryName $dataFactory `
+        -PipelineRunId $pipeline
     ```
+
+    Indien nodig `Get-AzDataFactoryV2PipelineRun` opnieuw uit te voeren om de voortgang te controleren.
 
     of
 
-* Open de gegevensfabriek en selecteer **Auteur & Monitor**. Activeer de kopiepijplijn en vervolgens de Spark-pijplijn van de portal. Zie [On-demand Apache Hadoop-clusters maken in HDInsight met Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline)voor informatie over het activeren van pijplijnen via de portal.
+* Open de gegevensfabriek en selecteer **Auteur & Monitor**. Activeer `IngestAndTransform` de pijplijn van het portaal. Zie [On-demand Apache Hadoop-clusters maken in HDInsight met Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline)voor informatie over het activeren van pijplijnen via de portal.
 
-Als u wilt controleren of de pijplijnen zijn uitgevoerd, u een van de volgende stappen uitvoeren:
+Als u wilt controleren of de pijplijn is uitgevoerd, u een van de volgende stappen uitvoeren:
 
 * Ga via de portal naar de sectie **Monitor** in uw gegevensfabriek.
 * Ga in Azure Storage Explorer naar uw Data Lake Storage Gen 2-opslagaccount. Ga naar `files` het bestandssysteem en `transformed` ga vervolgens naar de map en controleer de inhoud ervan om te zien of de pijplijn is geslaagd.
@@ -242,37 +225,48 @@ Zie dit artikel over het gebruik [van Jupyter Notebook](/azure/hdinsight/spark/a
 
 ### <a name="create-a-table-on-the-interactive-query-cluster-to-view-data-on-power-bi"></a>Een tabel maken in het cluster Interactieve query om gegevens over Power BI weer te geven
 
-1. Kopieer `query.hql` het bestand naar het LLAP-cluster met behulp van SCP. Vervang `LLAPCLUSTERNAME` door de werkelijke naam en voer de opdracht in:
+1. Kopieer `query.hql` het bestand naar het LLAP-cluster met behulp van SCP. Voer de opdracht in:
 
     ```bash
-    scp scripts/query.hql sshuser@LLAPCLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
+    llapClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.llapClusterName.value')
+    scp scripts/query.hql sshuser@$llapClusterName-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-2. Gebruik SSH om toegang te krijgen tot het LLAP-cluster. Vervang `LLAPCLUSTERNAME` door de werkelijke naam en voer de opdracht in. Als u het `resourcesparameters.json` bestand niet hebt gewijzigd, is `Thisisapassword1`het wachtwoord .
+    Herinnering: Het standaardwachtwoord is `Thisisapassword1`.
+
+1. Gebruik SSH om toegang te krijgen tot het LLAP-cluster. Voer de opdracht in:
 
     ```bash
-    ssh sshuser@LLAPCLUSTERNAME-ssh.azurehdinsight.net
+    ssh sshuser@$llapClusterName-ssh.azurehdinsight.net
     ```
 
-3. Gebruik de volgende opdracht om het script uit te voeren:
+1. Gebruik de volgende opdracht om het script uit te voeren:
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f query.hql
     ```
 
-Met dit script wordt een beheerde tabel gemaakt in het cluster Interactieve query die u vanuit Power BI openen.
+    Met dit script wordt een beheerde tabel gemaakt in het cluster Interactieve query die u vanuit Power BI openen.
 
 ### <a name="create-a-power-bi-dashboard-from-sales-data"></a>Een Power BI-dashboard maken op basis van verkoopgegevens
 
 1. Open Power BI Desktop.
-1. Selecteer **Gegevens ophalen**.
-1. Zoeken naar **hdinsight interactive query cluster**.
-1. Plak daar de URI voor uw cluster. Gebruik hierbij de notatie `https://LLAPCLUSTERNAME.azurehdinsight.net`.
 
-   Voer `default` voor de database in.
-1. Voer de gebruikersnaam en het wachtwoord in die u gebruikt om toegang te krijgen tot het cluster.
+1. Navigeer in het menu naar **Gegevens ophalen** > **Meer...**  >  **Interactieve query** > **azure HDInsight**.
 
-Nadat de gegevens zijn geladen, u experimenteren met het dashboard dat u wilt maken. Bekijk de volgende koppelingen om aan de slag te gaan met Power BI-dashboards:
+1. Selecteer **Verbinden**.
+
+1. In het dialoogvenster **INTERACTIEVE QUERY HDInsight:**
+    1. Voer in het tekstvak **Server** de naam van uw `https://LLAPCLUSTERNAME.azurehdinsight.net`LLAP-cluster in de opmaak van .
+    1. Voer in het **tekstvak van** de database . `default`
+    1. Selecteer **OK**.
+
+1. Vanuit het dialoogvenster **AzureHive:**
+    1. Voer **in** het tekstvak `admin`Gebruikersnaam de invoer in .
+    1. Voer in het tekstvak **Wachtwoord** de invoer in `Thisisapassword1`.
+    1. Selecteer **Verbinden**.
+
+1. Selecteer en/of `sales_raw` om een voorbeeld van de gegevens te bekijken in **Navigator.** `sales` Nadat de gegevens zijn geladen, u experimenteren met het dashboard dat u wilt maken. Bekijk de volgende koppelingen om aan de slag te gaan met Power BI-dashboards:
 
 * [Inleiding tot dashboards voor Power BI-ontwerpers](https://docs.microsoft.com/power-bi/service-dashboards)
 * [Zelfstudie: Aan de slag met de Power BI-service](https://docs.microsoft.com/power-bi/service-get-started)
@@ -281,9 +275,18 @@ Nadat de gegevens zijn geladen, u experimenteren met het dashboard dat u wilt ma
 
 Als u deze toepassing niet blijft gebruiken, verwijdert u alle bronnen met behulp van de volgende opdracht, zodat er geen kosten voor in rekening worden gebracht.
 
-```azurecli-interactive
-az group delete -n $resourceGroup
-```
+1. Als u de brongroep wilt verwijderen, voert u de opdracht in:
+
+    ```azurecli
+    az group delete -n $resourceGroup
+    ```
+
+1. Voer de opdrachten in om de serviceprincipal te verwijderen:
+
+    ```azurecli
+    servicePrincipal=$(cat serviceprincipal.json | jq -r '.name')
+    az ad sp delete --id $servicePrincipal
+    ```
 
 ## <a name="next-steps"></a>Volgende stappen
 

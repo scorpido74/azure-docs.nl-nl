@@ -3,12 +3,12 @@ title: Beoordelingen in Azure Migrate Server Assessment
 description: Meer informatie over beoordelingen in Azure Migrate Server Assessment
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: ae55686f0152d9c2b170ae1b34d7493ed7ac8d94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1f32eea0ec6a8a4877fd1dc134344cfe68dcaba
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127781"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537760"
 ---
 # <a name="assessments-in-azure-migrateserver-assessment"></a>Beoordelingen in Azure Migreren:Serverbeoordeling
 
@@ -17,6 +17,9 @@ In dit artikel vindt u een overzicht van beoordelingen in het hulpprogramma [Azu
 ## <a name="whats-an-assessment"></a>Wat is een beoordeling?
 
 Een beoordeling met het hulpprogramma Serverbeoordeling meet de gereedheid en schat de impact van het migreren van on-premises servers naar Azure.
+
+> [!NOTE]
+> Bekijk in Azure Government de [ondersteunde doelbeoordelingslocaties.](migrate-support-matrix.md#supported-geographies-azure-government) Houd er rekening mee dat vm-grootteaanbevelingen in beoordelingen de VM-serie specifiek voor Government Cloud-regio's zullen gebruiken. [Meer informatie](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) over VM-typen.
 
 ## <a name="types-of-assessments"></a>Soorten beoordelingen
 
@@ -77,7 +80,7 @@ Als u het toestel voor detectie gebruikt, worden prestatiegegevens voor rekenins
     - De 95e percentielwaarde zorgt ervoor dat u uitschieters negeert, die kunnen worden opgenomen als u het 99e percentiel kiest.
     - Als u het piekgebruik voor de periode wilt kiezen en geen uitschieters wilt missen, moet u het 99e percentiel voor percentielgebruik selecteren.
 
-5. Deze waarde wordt vermenigvuldigd met de comfortfactor om de effectieve prestatiegebruiksgegevens voor elke statistiek (CPU-gebruik, geheugengebruik, schijf-IOPS (lezen en schrijven), schijfdoorvoer (lezen en schrijven) en netwerkdoorvoer (in en uit) te krijgen apparaat verzamelt.
+5. Deze waarde wordt vermenigvuldigd met de comfortfactor om de effectieve prestatiegebruiksgegevens voor elke statistiek (CPU-gebruik, geheugengebruik, schijf-IOPS (lezen en schrijven), schijfdoorvoer (lezen en schrijven) en netwerkdoorvoer (in en uit) te krijgen die het toestel verzamelt.
 
 
 
@@ -98,7 +101,7 @@ Dit is wat er in een beoordeling is opgenomen in Serverassessment.
 
 **Eigenschap** | **Details**
 --- | ---
-**Doellocatie** | De locatie waarnaar u wilt migreren. Serverassessment ondersteunt momenteel deze doelazure-regio's:<br/><br/> Australië Oost, Australië Zuidoost, Brazilië Zuid, Canada Centraal, Canada Oost, Centraal-India, Centraal-VS, China Oost, China Noord, Oost-Azië, Oost-VS, Oost-VS2, Duitsland Centraal, Duitsland Noordoost, Japan Oost, Japan West, Korea Centraal, Korea Zuid, Noord-Noord Centraal VS, Noord-Europa, Zuid-Centraal VS, Zuidoost-Azië, Zuid-India, Uk South, UK West, US Gov Arizona, US Gov Texas, US Gov Virginia, West Central US, West-Europa, West-India, West US en West US2.
+**Doellocatie** | De locatie waarnaar u wilt migreren. Serverassessment ondersteunt momenteel deze doelazure-regio's:<br/><br/> Australië Oost-Australië Zuidoost, Brazilië Zuid, Canada Centraal, Canada Oost, Centraal-India, Centraal-VS, China Oost-, China Noord-, Oost-Azië, Oost-VS, Oost-VS2, Duitsland Centraal, Duitsland Noordoost, Japan Oost, Japan West, Korea Centraal, Korea Zuid, Noord-Centraal VS, Noord-Centraal VS, Zuidoost-Azië, Zuid-India, Verenigd Koninkrijk Zuid, Verenigd Koninkrijk West, VS Gov Arizona, US Gov Texas, US Gov Virginia , West Central US, West-Europa, West-India, West-VS en West US2.
 *Doelopslagschijf (as-is-sizing)** | Het type schijven dat moet worden gebruikt voor opslag in Azure. <br/><br/> Geef de doelopslagschijf op als premium managed, standard SSD managed of standard HDD managed.
 **Doelopslagschijf (prestatiegebaseerde grootte)** | Geef het type doelopslagschijf op als automatisch, premium beheerd, standaard HDD beheerd of standaard SSD beheerd.<br/><br/> **Automatisch**: De schijfaanbeveling is gebaseerd op de prestatiegegevens van de schijven (de invoer-/uitvoerbewerkingen per seconde (IOPS) en doorvoer).<br/><br/>**Premium/standaard**: De beoordeling beveelt een schijf SKU aan binnen het geselecteerde opslagtype.<br/><br/> Als u één VM-SLA van 99,9% in één instantie wilt bereiken, overweegt u premium beheerde schijven te gebruiken. Dit zorgt ervoor dat alle schijven in de beoordeling worden aanbevolen als schijven met een premium beheerde schijf.<br/><br/> Azure Migrate biedt voor migratiebeoordeling alleen ondersteuning voor beheerde schijven.
 **Gereserveerde instanties (RI's)** | Geef [gereserveerde exemplaren](https://azure.microsoft.com/pricing/reserved-vm-instances/) op in Azure, zodat kostenschattingen in de beoordeling rekening houden met RI-kortingen.<br/><br/> RI's worden momenteel alleen ondersteund voor Pay-As-You-Go-aanbiedingen in Azure Migrate.
@@ -107,7 +110,7 @@ Dit is wat er in een beoordeling is opgenomen in Serverassessment.
 **Percentiel gebruik** | Gebruikt met prestatiegebaseerde maatvoering. Hiermee geeft u de percentielwaarde op van het prestatievoorbeeld dat moet worden gebruikt voor de juiste grootte. 
 **VM-reeks** | Geef de Azure VM-reeks op die u wilt overwegen voor de juiste grootte. Als u bijvoorbeeld geen productieomgeving hebt waarvoor VM's uit de A-serie in Azure nodig zijn, u A-reeksen uitsluiten van de lijst of reeksen.
 **Comfortfactor** | Buffer gebruikt tijdens de beoordeling. Toegepast bovenop machinegebruiksgegevens voor VM's (CPU, geheugen, schijf en netwerk). Het is goed voor problemen zoals seizoensgebonden gebruik, korte prestatiegeschiedenis en waarschijnlijke toename van toekomstig gebruik.<br/><br/> Een 10-core VM met 20% gebruik resulteert bijvoorbeeld normaal gesproken in een tweecore VM. Met een comfortfactor van 2,0x is het resultaat een vier-core VM in plaats daarvan.
-**Bieden** | Hiermee geeft u de [Azure-aanbieding](https://azure.microsoft.com/support/legal/offer-details/) weer waarin u bent ingeschreven. Server assessment schat de kosten dienovereenkomstig.
+**Aanbieding** | Hiermee geeft u de [Azure-aanbieding](https://azure.microsoft.com/support/legal/offer-details/) weer waarin u bent ingeschreven. Server assessment schat de kosten dienovereenkomstig.
 **Valuta** | Factureringsvaluta voor uw account.
 **Korting (%)** | Geeft een overzicht van alle abonnementsspecifieke kortingen die u ontvangt bovenop de Azure-aanbieding. De standaardinstelling is 0%.
 **VM tijd actief** | Als Azure VM's niet 24 uur per dag, 7 dagen per week worden uitgevoerd, u de duur opgeven (dagen per maand en uren per dag) die ze uitvoeren. Kostenramingen worden dienovereenkomstig behandeld.<br/><br/> De standaardwaarde is 31 dagen per maand en 24 uur per dag.
@@ -136,7 +139,7 @@ Serverassessment controleert de volgende eigenschappen van de on-premises VM om 
 **Kernen** | Het aantal cores in de machines moet gelijk zijn aan of kleiner zijn dan het maximum aantal cores (128) dat wordt ondersteund voor een Azure VM.<br/><br/> Als de prestatiegeschiedenis beschikbaar is, houdt Azure Migrate rekening met de gebruikte kernen ter vergelijking. Als een comfortfactor wordt opgegeven in de beoordelingsinstellingen, wordt het aantal gebruikte kernen vermenigvuldigd met de comfortfactor.<br/><br/> Als er geen prestatiegeschiedenis is, gebruikt Azure Migrate de toegewezen kernen zonder de comfortfactor toe te passen. | Klaar als minder dan of gelijk aan grenzen.
 **Geheugen** | De grootte van het machinegeheugen moet gelijk zijn aan of kleiner zijn dan het&nbsp;maximale geheugen (3892 gigabyte [GB] op azure m-serie Standard_M128m<sup>2)</sup>die is toegestaan voor een Azure VM. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als prestatiegeschiedenis beschikbaar is, houdt Azure Migrate rekening met het gebruikte geheugen ter vergelijking. Als een comfortfactor wordt opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfortfactor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt zonder de comfortfactor toe te passen.<br/><br/> | Klaar als binnen de grenzen.
 **Opslagschijf** | Toegewezen grootte van een schijf moet 32 TB of minder. Hoewel Azure 64-TB schijven met Ultra SSD-schijven ondersteunt, controleert Azure Migrate: Server Assessment momenteel op 32 TB als de schijfgroottelimieten omdat het ultra SSD nog niet ondersteunt. <br/><br/> Het aantal schijven dat aan de machine is gekoppeld, moet 65 of minder zijn, inclusief de os-schijf. | Klaar als binnen de grenzen.
-**Networking** | Aan een machine moeten 32 of minder netwerkinterfaces (NIC's) zijn gekoppeld. | Klaar als binnen de grenzen.
+**Netwerken** | Aan een machine moeten 32 of minder netwerkinterfaces (NIC's) zijn gekoppeld. | Klaar als binnen de grenzen.
 
 ### <a name="guest-operating-system"></a>Gastbesturingssysteem
 Samen met VM-eigenschappen kijkt Server Assessment naar het gastbesturingssysteem van de machines om te bepalen of het op Azure kan worden uitgevoerd.
@@ -182,7 +185,7 @@ Nadat de machine is gemarkeerd als klaar voor Azure, doet Server Assessment maat
 Als u prestatiegebaseerde maatvoering gebruikt, doet Server Assessment als volgt maatadviezen:
 
 - Serverbeoordeling houdt rekening met de prestatiegeschiedenis van de machine om de VM-grootte en het schijftype in Azure te identificeren.
-- Als servers zijn geïmporteerd met een CSV-bestand, worden de opgegeven waarden gebruikt. Deze methode is vooral handig als u de on-premises machine te veel hebt toegewezen, het gebruik eigenlijk laag is en u de VM in Azure naar de juiste grootte wilt maken om kosten te besparen. 
+- Als servers zijn geïmporteerd met een CSV-bestand, worden de opgegeven waarden gebruikt. Deze methode is vooral handig als u de on-premises machine te veel hebt toegewezen, het gebruik laag is en u de VM in Azure op de juiste grootte wilt plaatsen om kosten te besparen. 
 - Als u de prestatiegegevens niet wilt gebruiken, stelt u de groottecriteria opnieuw in op de on-premises as-is, zoals beschreven in de vorige sectie.
 
 #### <a name="calculate-storage-sizing"></a>Opslaggrootte berekenen

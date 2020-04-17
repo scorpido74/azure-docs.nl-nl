@@ -1,19 +1,15 @@
 ---
 title: Fysieke servers voorbereiden op beoordeling/migratie met Azure Migrate
 description: Meer informatie over hoe u zich voorbereiden op beoordeling/migratie van fysieke servers met Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
-ms.author: raynew
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 5f9048b08b3e77a0c8d5ae9a9d10c614a4e0af61
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 539e25f8b6cc92674fef567de6e6de16d0a9394a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336687"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535278"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Voorbereiden op beoordeling en migratie van fysieke servers naar Azure
 
@@ -35,21 +31,18 @@ Deze zelfstudie is de eerste in een reeks die u laat zien hoe u fysieke servers 
 Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/pricing/free-trial/) voordat u begint.
 
 
-## <a name="prepare-azure"></a>Azure voorbereiden
+## <a name="prepare-azure-for-server-assessment"></a>Azure voorbereiden op serverbeoordeling
 
-### <a name="azure-permissions"></a>Azure-machtigingen
-
-U hebt machtigingen voor Azure Migrate-implementatie nodig.
+Azure instellen voor gebruik met Azure Migrate. 
 
 **Taak** | **Details** 
 --- | --- 
-**Een Azure-migratieproject maken** | Uw Azure-account heeft machtigingen voor bijdragen de bijdrage er of eigenaar nodig om een project te maken. | 
-**Resourceproviders registreren** | Azure Migrate maakt gebruik van een lichtgewicht Azure Migrate-toestel om Hyper-V VM's te detecteren en te beoordelen met Azure Migrate Server Assessment.<br/><br/> Tijdens de registratie van apparaten worden resourceproviders geregistreerd met het abonnement dat in het toestel is gekozen. [Meer informatie](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Als u de resourceproviders wilt registreren, hebt u een rol inzender of eigenaar bij het abonnement nodig.
-**Azure AD-app maken** | Wanneer azure migrate het toestel registreert, maakt azure migrate een Azure Active Directory-app (Azure AD) die wordt gebruikt voor communicatie tussen de agents die op het toestel worden uitgevoerd met hun respectieve services die op Azure worden uitgevoerd. [Meer informatie](migrate-appliance-architecture.md#appliance-registration).<br/><br/> U hebt machtigingen nodig om Azure AD-apps te maken (beschikbaar in de rol Toepassingsontwikkelaar).
+**Een Azure-migratieproject maken** | Uw Azure-account heeft inzender- of eigenaarmachtigingen nodig om een project te maken. 
+**Resourceproviders registreren (alleen beoordeling)** | Azure Migrate maakt gebruik van een lichtgewicht Azure Migrate-toestel om machines te detecteren en te beoordelen met Azure Migrate:Server Assessment.<br/><br/> Tijdens de registratie van apparaten worden resourceproviders geregistreerd met het abonnement dat in het toestel is gekozen. [Meer informatie](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Als u de resourceproviders wilt registreren, hebt u een rol inzender of eigenaar bij het abonnement nodig.
+**Azure AD-app maken (alleen beoordeling)** | Wanneer azure migrate het toestel registreert, maakt azure migrate een Azure Active Directory-app (Azure AD) die wordt gebruikt voor communicatie tussen de agents die op het toestel worden uitgevoerd met hun respectieve services die op Azure worden uitgevoerd. [Meer informatie](migrate-appliance-architecture.md#appliance-registration).<br/><br/> U hebt machtigingen nodig om Azure AD-apps te maken (beschikbaar in de rol Toepassingsontwikkelaar).
 
 
-
-### <a name="assign-permissions-to-create-project"></a>Machtigingen toewijzen om project te maken
+### <a name="assign-permissions-to-create-project"></a>Machtigingen toewijzen om project te maken 
 
 Controleer of u machtigingen hebt om een Azure Migrate-project te maken.
 
@@ -60,7 +53,7 @@ Controleer of u machtigingen hebt om een Azure Migrate-project te maken.
     - Als u niet de eigenaar van het abonnement bent, werkt u samen met de eigenaar om de rol toe te wijzen.
 
 
-### <a name="assign-permissions-to-register-the-appliance"></a>Machtigingen toewijzen om het toestel te registreren
+### <a name="assign-permissions-to-register-the-appliance"></a>Machtigingen toewijzen om het toestel te registreren 
 
 U machtigingen toewijzen voor Azure Migrate om de Azure AD-app te maken tijdens de toestelregistratie, met een van de volgende methoden:
 
@@ -89,6 +82,39 @@ De tenant/globale beheerder kan als volgt machtigingen verlenen:
 De tenant/globale beheerder kan de rol Toepassingsontwikkelaar toewijzen aan een account. [Meer informatie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
 
+## <a name="prepare-azure-for-physical-server-migration"></a>Azure voorbereiden op fysieke servermigratie
+
+Bereid Azure voor om fysieke servers te migreren met servermigratie.
+
+**Taak** | **Details**
+--- | ---
+**Een Azure-migratieproject maken** | Uw Azure-account heeft machtigingen voor bijdragen de bijdrage er of eigenaar nodig om een project te maken.
+**Machtigingen voor uw Azure-account verifiëren** | Uw Azure-account heeft machtigingen nodig om een VM te maken en naar een door Azure beheerde schijf te schrijven.
+**Een Azure-netwerk maken** | Een netwerk instellen in Azure.
+
+
+### <a name="assign-permissions-to-create-project"></a>Machtigingen toewijzen om project te maken
+
+1. Open het abonnement in de Azure-portal en selecteer **Toegangsbeheer (IAM)**.
+2. Zoek **in Toegang controleren**het relevante account en klik erop om machtigingen weer te geven.
+3. U moet **machtigingen voor inzender** of **eigenaar** hebben.
+    - Als u zojuist een gratis Azure-account hebt gemaakt, bent u de eigenaar van uw abonnement.
+    - Als u niet de eigenaar van het abonnement bent, werkt u samen met de eigenaar om de rol toe te wijzen.
+
+
+### <a name="assign-azure-account-permissions"></a>Azure-accountmachtigingen toewijzen
+
+Wijs de rol Virtuele machineinzender toe aan het Azure-account. Dit biedt machtigingen voor:
+
+    - Het maken van een VM in de geselecteerde resourcegroep.
+    - Het maken van een VM in het geselecteerde virtuele netwerk.
+    - Schrijf naar een door Azure beheerde schijf. 
+
+### <a name="create-an-azure-network"></a>Een Azure-netwerk maken
+
+Een Virtueel Azure-netwerk (VNet) [instellen.](../virtual-network/manage-virtual-network.md#create-a-virtual-network) Wanneer u deze nabootst naar Azure, worden Azure VM's gemaakt en samengevoegd met het Azure VNet dat u opgeeft wanneer u migratie instelt.
+
+
 ## <a name="prepare-for-physical-server-assessment"></a>Voorbereiden op fysieke serverbeoordeling
 
 Als u zich wilt voorbereiden op de beoordeling van de fysieke server, moet u de fysieke serverinstellingen controleren en de instellingen voor de implementatie van het toestel verifiëren:
@@ -104,8 +130,8 @@ Als u zich wilt voorbereiden op de beoordeling van de fysieke server, moet u de 
 Bereid u voor voordat u het Azure Migrate-toestel en de beginbeoordeling in de volgende zelfstudie instelt, zich voorbereiden op de implementatie van apparaten.
 
 1. [Controleer](migrate-appliance.md#appliance---physical) de vereisten van het toestel voor fysieke servers.
-2. [Controleer](migrate-appliance.md#url-access) de Azure-URL's die het toestel nodig heeft om toegang te krijgen.
-3. [Controleer](migrate-appliance.md#collected-data---vmware) of het apparaat tijdens de detectie en beoordeling wordt verzameld.
+2. Bekijk de Azure URL's die het toestel nodig heeft om toegang te krijgen in de [openbare](migrate-appliance.md#public-cloud-urls) en [overheidsclouds.](migrate-appliance.md#government-cloud-urls)
+3. [Controleer](migrate-appliance.md#collected-data---vmware) of het apparaat zal verzamelen tijdens de ontdekking en beoordeling.
 4. [Note port](migrate-support-matrix-physical.md#port-access) access requirements physical server assessment.
 
 
@@ -120,10 +146,16 @@ Azure Migrate heeft machtigingen nodig om on-premises servers te detecteren.
 
 Bekijk de vereisten voor migratie van fysieke servers.
 
+> [!NOTE]
+> Bij het migreren van fysieke machines gebruikt Azure Migrate:Server Migration dezelfde replicatiearchitectuur als op agent gebaseerd disaster recovery in de Azure Site Recovery-service en delen sommige onderdelen dezelfde codebasis. Sommige inhoud kan worden gekoppeld aan documentatie voor siteherstel.
+
 - [Bekijk](migrate-support-matrix-physical-migration.md#physical-server-requirements) fysieke serververeisten voor migratie.
-- Azure Migreren: Servermigratie maakt gebruik van een replicatieserver voor fysieke servermigratie:
+- Azure Migreren:Servermigratie maakt gebruik van een replicatieserver voor fysieke servermigratie:
     - [Controleer](migrate-replication-appliance.md#appliance-requirements) de implementatievereisten voor het replicatietoestel en de [opties](migrate-replication-appliance.md#mysql-installation) voor het installeren van MySQL op het toestel.
-    - Controleer de [toegangsvereisten voor de URL](migrate-replication-appliance.md#url-access) en [poort] (migrate-replicatie-toestel.md#port-access) voor het replicatietoestel.
+    - Controleer de [Azure-URL's die](migrate-appliance.md#url-access) nodig zijn voor het replicatietoestel om toegang te krijgen tot openbare en overheidsclouds.
+    - Controleer de toegangsvereisten voor de toegangsvereisten voor het replicatietoestel (migrate-replication-appliance.md#port-access).
+
+
 
 
 ## <a name="next-steps"></a>Volgende stappen

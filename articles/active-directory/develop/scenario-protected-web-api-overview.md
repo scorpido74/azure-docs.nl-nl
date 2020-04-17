@@ -1,5 +1,5 @@
 ---
-title: Protected Web API - overzicht
+title: Beveiligde web-API - overzicht
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het maken van een beveiligde web-API (overzicht).
 services: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9017fbde1a44bcdf39fa8730bed25141da19fd56
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: cf66757d28a3883664aaacd85baad9cc0dea6956
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882400"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537199"
 ---
 # <a name="scenario-protected-web-api"></a>Scenario: Beveiligde web-API
 

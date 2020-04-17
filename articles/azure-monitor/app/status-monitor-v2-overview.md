@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 4a240bc62816a46bc37108777a8b081b74047738
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4042fc05f278915fe72bf8fc4e6afd69a5bbb4b9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275709"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537420"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Azure Monitor Application Insights Agent implementeren voor on-premises servers
 
@@ -46,7 +46,7 @@ Application Insights Agent bevindt zich hier: https://www.powershellgallery.com/
 - [Start-ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
-- [Probleemoplossing](status-monitor-v2-troubleshoot.md)
+- [Problemen oplossen](status-monitor-v2-troubleshoot.md)
 - [Bekende problemen](status-monitor-v2-troubleshoot.md#known-issues)
 
 
@@ -76,7 +76,7 @@ Elk van deze opties wordt beschreven in de [gedetailleerde instructies](status-m
 
 Uw telemetrie weergeven:
 
-* [Bekijk statistieken](../../azure-monitor/app/metrics-explorer.md) om de prestaties en het gebruik te controleren.
+* [Bekijk statistieken](../../azure-monitor/platform/metrics-charts.md) om de prestaties en het gebruik te controleren.
 * [Zoek gebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md) om problemen te diagnosticeren.
 * [Gebruik Analytics](../../azure-monitor/app/analytics.md) voor meer geavanceerde query's.
 * [Dashboards maken](../../azure-monitor/app/overview-dashboard.md).

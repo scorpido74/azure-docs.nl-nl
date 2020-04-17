@@ -3,7 +3,7 @@ title: Documentatie voor hybride identiteit
 summary: De identiteitsoplossingen van Microsoft omvatten mogelijkheden voor zowel on-premises als in de cloud. Er wordt één gebruikersidentiteit gemaakt voor verificatie en autorisatie bij alle resources, ongeacht hun locatie. We noemen dit hybride identiteit.
 metadata:
   author: billmath
-  description: Azure AD Connect integreert uw on-premises adreslijsten met Azure Active Directory. Hiermee kunt u uw gebruikers een algemene identiteit bieden voor Office 365, Azure en SaaS toepassingen die zijn geïntegreerd met Azure AD.
+  description: Azure AD Connect integreert uw on-premises directory's met Azure Active Directory. Hiermee kunt u uw gebruikers een algemene identiteit bieden voor Office 365, Azure en SaaS toepassingen die zijn geïntegreerd met Azure AD.
   manager: daveba
   ms.author: billmath
   ms.collection: na
@@ -12,12 +12,12 @@ metadata:
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: fa9007d0e9ad59ee0ffb29fe1c5c74c8530d84fa
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 12c9cadab9ff93b40941e833dcb3823deb84ee35
+  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70162200"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81535737"
 landingContent:
 - title: Over hybride identiteit
   linkLists:
@@ -47,7 +47,7 @@ landingContent:
       url: whatis-phs.md
     - text: Wat is passthrough-verificatie?
       url: how-to-connect-pta.md
-    - text: Wat is federtatie?
+    - text: Wat is federatie?
       url: whatis-fed.md
     - text: Wat is eenmalige aanmelding?
       url: how-to-connect-sso.md

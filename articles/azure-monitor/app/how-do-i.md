@@ -3,12 +3,12 @@ title: Hoe kan ik ... in Azure Application Insights | Microsoft Documenten
 description: Veelgestelde vragen in Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 5b65087c361911f0714723c315e0b7f7e9bb74e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663854"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536859"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hoe kan ik ... in Application Insights?
 ## <a name="get-an-email-when-"></a>Ontvang een e-mail wanneer ...
@@ -45,7 +45,7 @@ Omdat waarschuwingen twee statussen hebben, moet u een lage waarde verzenden wan
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-Maak een grafiek in [de statistiekverkenner](../../azure-monitor/app/metrics-explorer.md) om uw alarm te zien:
+Maak een grafiek in [de statistiekverkenner](../../azure-monitor/platform/metrics-charts.md) om uw alarm te zien:
 
 ![](./media/how-do-i/010-alarm.png)
 
@@ -82,7 +82,7 @@ Enkele punten om in overweging te nemen:
 
 ## <a name="visualize-data"></a>Gegevens visualiseren
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Dashboard met statistieken uit meerdere apps
-* Pas in [Metric Explorer](../../azure-monitor/app/metrics-explorer.md)uw grafiek aan en sla deze op als favoriet. Maak deze vast aan het Azure-dashboard.
+* Pas in [Metric Explorer](../../azure-monitor/platform/metrics-charts.md)uw grafiek aan en sla deze op als favoriet. Maak deze vast aan het Azure-dashboard.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Dashboard met gegevens uit andere bronnen en Application Insights
 * [Telemetrie exporteren naar Power BI](../../azure-monitor/app/export-power-bi.md ).
@@ -159,5 +159,5 @@ Een van de statistieken die u weergeven in metrics explorer zijn een set systeem
 * **Unix-server** - [installeren verzameld](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>Meer prestatiemeteritems weergeven
-* Voeg eerst [een nieuwe grafiek toe](../../azure-monitor/app/metrics-explorer.md) en kijk of de teller zich in de basisset bevindt die we aanbieden.
+* Voeg eerst [een nieuwe grafiek toe](../../azure-monitor/platform/metrics-charts.md) en kijk of de teller zich in de basisset bevindt die we aanbieden.
 * Zo niet, [voeg dan de teller toe aan de set die wordt verzameld door de prestatietellermodule](../../azure-monitor/app/performance-counters.md).

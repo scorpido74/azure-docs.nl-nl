@@ -1,6 +1,6 @@
 ---
 title: Microsoft identity platform Java web app quickstart | Azure
-description: Meer informatie over het implementeren van Microsoft-aanmelding op een Java Web App met OpenID Connect
+description: Meer informatie over het implementeren van Microsoft-aanmelding op een Java-webapp met OpenID Connect
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: f3ede3ef0557c5ca425901e7404746b4e85aefcb
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: ed105ce6bd1d7d8980799049649b8d5b95dcb761
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991123"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536111"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Snelstart: aanmelden met Microsoft toevoegen aan een Java-web-app
 
@@ -91,9 +91,9 @@ Om dit voorbeeld uit te voeren heb je het volgende nodig:
 >   Example:
 >   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 >
->   server.ssl.key-store-type=PKCS12  
->   server.ssl.key-store=classpath:keystore.p12  
->   server.ssl.key-store-password=password  
+>   server.ssl.key-store-type=PKCS12
+>   server.ssl.key-store=classpath:keystore.p12
+>   server.ssl.key-store-password=password
 >   server.ssl.key-alias=testCert
 >   ```
 >   Plaats het gegenereerde keystore-bestand in de map 'bronnen'.
@@ -130,9 +130,9 @@ Om dit voorbeeld uit te voeren heb je het volgende nodig:
 >   Example:
 >   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 >
->   server.ssl.key-store-type=PKCS12  
->   server.ssl.key-store=classpath:keystore.p12  
->   server.ssl.key-store-password=password  
+>   server.ssl.key-store-type=PKCS12
+>   server.ssl.key-store=classpath:keystore.p12
+>   server.ssl.key-store-password=password
 >   server.ssl.key-alias=testCert
 >   ```
 >   Plaats het gegenereerde keystore-bestand in de map 'bronnen'.

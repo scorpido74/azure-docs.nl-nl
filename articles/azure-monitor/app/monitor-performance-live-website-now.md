@@ -3,12 +3,12 @@ title: Een live ASP.NET-web-app bewaken met Azure Application Insights | Microso
 description: Bewaak de prestaties van een website zonder de website opnieuw te implementeren. Werkt met ASP.NET web-apps die on-premises of in VM's worden gehost.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba17ee275a744b88f2c76e7e3f99a1ac9cc8e758
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670046"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536825"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrument web apps bij runtime met Application Insights Codeless Attach
 
@@ -84,7 +84,7 @@ Als u opnieuw wilt publiceren zonder Application Insights toe te voegen aan de c
 4. Voer alle wijzigingen die u hebt doorgevoerd in het .config-bestand opnieuw door.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Probleemoplossing
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Problemen oplossen
 
 ### <a name="confirm-a-valid-installation"></a>Een geldige installatie bevestigen 
 
@@ -314,7 +314,7 @@ Voor toepassingen die bij het compileren al zijn geïnstrumenteerd:
 
 Uw telemetrie weergeven:
 
-* [Verken de metrische gegevens](../../azure-monitor/app/metrics-explorer.md) om de prestaties en het gebruik te bewaken
+* [Verken de metrische gegevens](../../azure-monitor/platform/metrics-charts.md) om de prestaties en het gebruik te bewaken
 * [Doorzoek gebeurtenissen en logboeken][diagnostic] om problemen te analyseren
 * [Gebruik analyses](../../azure-monitor/app/analytics.md) voor meer geavanceerde query's
 

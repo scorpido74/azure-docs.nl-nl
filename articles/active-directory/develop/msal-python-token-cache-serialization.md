@@ -13,12 +13,12 @@ ms.date: 11/13/2019
 ms.author: rayluo
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2593cc856afb98cf5186c4e33032c5e9151614f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c6edd0b3cfd6620f04553f9f6dfe89f1c7b7024
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76704388"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536196"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>Aangepaste tokencacheserialisatie in MSAL voor Python
 
@@ -26,7 +26,7 @@ In MSAL Python wordt standaard een tokencache in het geheugen die gedurende de d
 
 Serialisatie van de tokencache, zodat verschillende sessies van uw app er toegang toe hebben, wordt niet 'out of the box' geleverd. Dat komt omdat MSAL Python kan worden gebruikt in app-typen die geen toegang hebben tot het bestandssysteem, zoals web-apps. Als u een permanente tokencache wilt hebben in een MSAL Python-app, moet u aangepaste tokencache-serialisatie bieden.
 
-De strategieën voor het serialiseren van de tokencache verschillen afhankelijk van of u een openbare clienttoepassing (Desktop) of een vertrouwelijke clienttoepassing (Web App, Web API of Daemon-app) schrijft.
+De strategieën voor het serialiseren van de tokencache verschillen afhankelijk van of u een openbare clienttoepassing (Desktop) of een vertrouwelijke clienttoepassing (web-app, web-API of daemon-app) schrijft.
 
 ## <a name="token-cache-for-a-public-client-application"></a>Tokencache voor een openbare clienttoepassing
 
@@ -34,8 +34,8 @@ Openbare clienttoepassingen worden uitgevoerd op het apparaat van een gebruiker 
 
 ## <a name="token-cache-for-a-web-app-confidential-client-application"></a>Tokencache voor een web-app (vertrouwelijke clienttoepassing)
 
-Voor web-apps of web-API's u de sessie of een Redis-cache of een database gebruiken om de tokencache op te slaan. Er moet één tokencache per gebruiker zijn (per account), dus zorg ervoor dat u de tokencache per account serialiseert.
+Voor web-apps of web-API's u de sessie gebruiken, of een Redis-cache of een database om de tokencache op te slaan. Er moet één tokencache per gebruiker zijn (per account), dus zorg ervoor dat u de tokencache per account serialiseert.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py#L64-L72) voor een voorbeeld van het gebruik van de tokencache voor een Windows- of Linux Web-app of Web API. Het voorbeeld is voor een web-app die de Microsoft Graph API aanroept.
+Zie [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py#L64-L72) voor een voorbeeld van het gebruik van de tokencache voor een Windows- of Linux Web-app of web-API. Het voorbeeld is voor een web-app die de Microsoft Graph API aanroept.

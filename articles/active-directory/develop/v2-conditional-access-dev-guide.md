@@ -13,12 +13,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: e8c890a6daf2411b09162ab0072aed594820b936
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: aae1b8aa27363e8f1d3c72d3934146c47b0cf2c9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886344"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535890"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Richtlijnen voor ontwikkelaars voor voorwaardelijke toegang voor Azure Active Directory
 
@@ -59,12 +59,12 @@ Afhankelijk van het scenario kan een zakelijke klant op elk gewenst moment belei
 
 Voor sommige scenario's is codewijzigingen vereist om voorwaardelijke toegang te verwerken, terwijl andere werken zoals het is. Hier volgen een paar scenario's met voorwaardelijke toegang om multi-factor authenticatie uit te brengen die enig inzicht geeft in het verschil.
 
-* U bouwt één iOS-app met één tenant en past een beleid voor voorwaardelijke toegang toe. De app meldt zich aan bij een gebruiker en vraagt geen toegang tot een API. Wanneer de gebruiker zich aanmeldt, wordt het beleid automatisch aangeroepen en moet de gebruiker multi-factor authenticatie (MFA) uitvoeren. 
+* U bouwt één iOS-app met één tenant en past een beleid voor voorwaardelijke toegang toe. De app meldt zich aan bij een gebruiker en vraagt geen toegang tot een API. Wanneer de gebruiker zich aanmeldt, wordt het beleid automatisch aangeroepen en moet de gebruiker multi-factor authenticatie (MFA) uitvoeren.
 * U bouwt een native app die een middle tier-service gebruikt om toegang te krijgen tot een downstream-API. Een zakelijke klant bij het bedrijf dat deze app gebruikt, past een beleid toe op de downstream-API. Wanneer een eindgebruiker zich aanmeldt, vraagt de native app toegang tot de middelste laag en stuurt het token. De middelste laag voert namens de stroom uit om toegang tot de downstream-API aan te vragen. Op dit punt, een vorderingen "uitdaging" wordt gepresenteerd aan de middelste laag. De middelste laag stuurt de uitdaging terug naar de native app, die moet voldoen aan het beleid voor voorwaardelijke toegang.
 
 #### <a name="microsoft-graph"></a>Microsoft Graph
 
-Microsoft Graph heeft speciale overwegingen bij het bouwen van apps in voorwaardelijke toegangsomgevingen. Over het algemeen gedragen de mechanica van Voorwaardelijke toegang zich hetzelfde, maar het beleid dat uw gebruikers zien, is gebaseerd op de onderliggende gegevens die uw app in de grafiek opvraagt. 
+Microsoft Graph heeft speciale overwegingen bij het bouwen van apps in voorwaardelijke toegangsomgevingen. Over het algemeen gedragen de mechanica van Voorwaardelijke toegang zich hetzelfde, maar het beleid dat uw gebruikers zien, is gebaseerd op de onderliggende gegevens die uw app in de grafiek opvraagt.
 
 In het bijzonder vertegenwoordigen alle Microsoft Graph-scopes een gegevensset waarmee afzonderlijk beleid kan worden toegepast. Aangezien aan beleid voor voorwaardelijke toegang de specifieke gegevenssets zijn toegewezen, dwingt Azure AD beleid voor voorwaardelijke toegang af op basis van de gegevens achter Graph - in plaats van Graph zelf.
 
@@ -74,13 +74,13 @@ Als een app bijvoorbeeld de volgende Microsoft Graph-scopes opvraagt,
 scopes="Bookings.Read.All Mail.Read"
 ```
 
-Een app kan van hun gebruikers verwachten dat ze voldoen aan alle beleidsregels die zijn ingesteld op Boekingen en Exchange. Sommige scopes kunnen worden toegewezen aan meerdere gegevenssets als deze toegang verlenen. 
+Een app kan van hun gebruikers verwachten dat ze voldoen aan alle beleidsregels die zijn ingesteld op Boekingen en Exchange. Sommige scopes kunnen worden toegewezen aan meerdere gegevenssets als deze toegang verlenen.
 
 ### <a name="complying-with-a-conditional-access-policy"></a>Voldoen aan een beleid voor voorwaardelijke toegang
 
 Voor verschillende app-topologieën wordt een beleid voor voorwaardelijke toegang geëvalueerd wanneer de sessie wordt ingesteld. Aangezien een beleid voor voorwaardelijke toegang werkt op de granulariteit van apps en services, is het punt waarop het wordt aangeroepen sterk afhankelijk van het scenario dat u probeert te bereiken.
 
-Wanneer uw app probeert toegang te krijgen tot een service met een beleid voor voorwaardelijke toegang, kan deze worden geconfronteerd met een uitdaging voor voorwaardelijke toegang. Deze uitdaging is gecodeerd `claims` in de parameter die wordt geleverd in een reactie van Azure AD. Hier volgt een voorbeeld van deze uitdagingsparameter: 
+Wanneer uw app probeert toegang te krijgen tot een service met een beleid voor voorwaardelijke toegang, kan deze worden geconfronteerd met een uitdaging voor voorwaardelijke toegang. Deze uitdaging is gecodeerd `claims` in de parameter die wordt geleverd in een reactie van Azure AD. Hier volgt een voorbeeld van deze uitdagingsparameter:
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -106,7 +106,7 @@ In de volgende secties worden veelvoorkomende scenario's besproken die complexer
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Scenario: App die de stroom namens de stroom uitvoert
 
-In dit scenario doorlopen we het geval waarin een native app een webservice/API aanroept. Op zijn beurt doet deze service de "on-behalf-of" stroom naar een downstream service bellen. In ons geval hebben we ons beleid voor voorwaardelijke toegang toegepast op de downstream-service (Web API 2) en gebruiken we een native app in plaats van een server/daemon-app. 
+In dit scenario doorlopen we het geval waarin een native app een webservice/API aanroept. Op zijn beurt doet deze service de "on-behalf-of" stroom naar een downstream service bellen. In ons geval hebben we ons beleid voor voorwaardelijke toegang toegepast op de downstream-service (Web API 2) en gebruiken we een native app in plaats van een server/daemon-app.
 
 ![App die het stroomdiagram namens de stroom uitvoert](./media/v2-conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -175,7 +175,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 Onze app moet `error=interaction_required`de . De toepassing kan `acquireTokenPopup()` dan `acquireTokenRedirect()` een van beide of op dezelfde resource gebruiken. De gebruiker wordt gedwongen om een multi-factor authenticatie te doen. Nadat de gebruiker de multi-factor-verificatie heeft voltooid, krijgt de app een nieuw toegangstoken voor de gevraagde bron.
 
-Om dit scenario uit te proberen, zie onze [JS SPA Namens code sample](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access). Deze codesteekproef maakt gebruik van het beleid voor voorwaardelijke toegang en de web-API die u eerder hebt geregistreerd bij een JS SPA om dit scenario aan te tonen. Het laat zien hoe je de claimuitdaging goed afhandelen en een toegangstoken krijgen dat kan worden gebruikt voor je Web API. U ook het algemene [Voorbeeld van de Angular.js-code](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) afrekenen voor begeleiding op een Hoekige SPA
+Om dit scenario uit te proberen, zie onze [JS SPA Namens code sample](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access). Deze codesteekproef maakt gebruik van het beleid voor voorwaardelijke toegang en de web-API die u eerder hebt geregistreerd bij een JS SPA om dit scenario aan te tonen. Het laat zien hoe je de claimuitdaging goed afhandelen en een toegangstoken krijgen dat kan worden gebruikt voor je web-API. U ook het algemene [Voorbeeld van de Angular.js-code](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) afrekenen voor begeleiding op een Hoekige SPA
 
 ## <a name="see-also"></a>Zie ook
 

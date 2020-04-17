@@ -2,14 +2,14 @@
 title: VMware VM's zonder amansfunctie migreren Azure Migrate Server Migration
 description: Meer informatie over het uitvoeren van een agentloze migratie van VMware VM's met Azure Migrate.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 825d6ff16a1f51fa476541ee10fea5f8a1c2972e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4612c9b0ea2ef8d53b0c04f47628f3789705d833
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78304205"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535312"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM's migreren naar Azure (zonder agent)
 
@@ -49,15 +49,18 @@ Voordat u aan deze zelfstudie begint, dient u eerst:
     - [Azure voorbereiden op](tutorial-prepare-vmware.md#prepare-azure) migratie.
     - [Bereid de on-premises omgeving](tutorial-prepare-vmware.md#prepare-for-agentless-vmware-migration) voor op migratie.
     
-2. We raden u aan vmware VM's te beoordelen met Azure Migrate Server Assessment voordat u ze migreert naar Azure. Voer [de tweede zelfstudie](tutorial-assess-vmware.md) in deze serie in om een beoordeling in te stellen. Als u geen VM's wilt beoordelen, u deze zelfstudie overslaan. Hoewel we u aanraden een beoordeling uit te proberen, maar u hoeft geen beoordeling uit te voeren voordat u een migratie probeert.
+2. We raden u aan vmware VM's te beoordelen met Azure Migrate Server Assessment voordat u ze migreert naar Azure. Voer [de tweede zelfstudie](tutorial-assess-vmware.md) in deze serie in om een beoordeling in te stellen. Als u vm's niet wilt beoordelen, u deze zelfstudie overslaan. Hoewel we u aanraden een beoordeling uit te proberen, maar u hoeft geen beoordeling uit te voeren voordat u een migratie probeert.
 
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Het hulpprogramma voor migratie van Azure-migrerende server toevoegen
 
-Als u de tweede zelfstudie voor het beoordelen van VMware-VM's niet hebt gevolgd, moet u [deze instructies volgen](how-to-add-tool-first-time.md) en een Azure Migrate-project instellen en het hulpprogramma azure migrateservermigratie selecteren. 
+Azure Migrate:Server Migration tool toevoegen.
 
-Als u de tweede zelfstudie hebt gevolgd en al een Azure Migrate-project hebt ingesteld, voegt u het hulpprogramma Azure Migrate Server Migration als volgt toe:
+- Als u de tweede zelfstudie hebt gevolgd om [VMware VM's](/tutorial-assess-vmware.md)te beoordelen, u doorgaan en de tool toevoegen.
+- Als u de tweede zelfstudie niet hebt gevolgd, [volgt u deze instructies](how-to-add-tool-first-time.md) om een Azure Migrate-project in te stellen.  U voegt het hulpprogramma Azure Migreren:Servermigratie toe wanneer u het project maakt.
+
+Als u een project hebt ingesteld, voegt u het hulpprogramma als volgt toe:
 
 1. Klik in het Azure Migrate-project op **Overzicht**. 
 2. Klik in **Servers voor ontdekken, beoordelen en migreren**op Servers beoordelen en **migreren.**
@@ -74,15 +77,14 @@ Als u de tweede zelfstudie hebt gevolgd en al een Azure Migrate-project hebt ing
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Het Azure Migrate-toestel instellen
 
-Azure Migrate Server Migration voert een lichtgewicht VMware VM-toestel uit. Het toestel voert VM-detectie uit en verzendt VM-metagegevens en prestatiegegevens naar Azure Migrate Server Migration. Hetzelfde toestel wordt ook gebruikt door het Azure Migrate Server Assessment-hulpprogramma.
+Azure Migrate Server Migration voert een lichtgewicht VMware VM-toestel uit. Het toestel voert VM-detectie uit en verzendt VM-metagegevens en prestatiegegevens naar Azure Migreren:Servermigratie. Hetzelfde toestel wordt ook gebruikt door het Azure Migrate:Server Assessment-hulpprogramma om agentloze migratie van VMware VM's uit te voeren.
 
-Als u de tweede zelfstudie hebt gevolgd om VMware-VM's te beoordelen, hebt u het apparaat al ingesteld tijdens die zelfstudie. Als u die zelfstudie niet hebt gevolgd, moet u het apparaat nu instellen. Om dit te doen, u: 
+- Als u de zelfstudie hebt gevolgd [om VMware VM's te beoordelen,](tutorial-assess-vmware.md)hebt u het apparaat al ingesteld tijdens die zelfstudie.
+- Als u die zelfstudie niet hebt gevolgd, u het toestel nu instellen met een van de volgende methoden:
+    - [Instellen](how-to-set-up-appliance-vmware.md) op een VMware VM met behulp van een gedownloade OVA-sjabloon.
+    - Instellen op een VMware VM of fysieke machine met een PowerShell-installatiescript. [Deze methode](deploy-appliance-script.md) moet worden gebruikt als u een VM niet instellen met een OVA-sjabloon of als u in Azure-beheer zit.
 
-- Download een OVA-sjabloonbestand en importeer het naar vCenter Server.
-- Maak het toestel en controleer of het verbinding kan maken met Azure Migrate Server Assessment. 
-- Configureer het toestel voor de eerste keer en registreer het met het Azure Migrate-project.
-
-Volg de instructies in [dit artikel](how-to-set-up-appliance-vmware.md) om het apparaat in te stellen.
+Nadat u het toestel hebt gemaakt, controleert u of het verbinding kan maken met Azure Migrate:Server Assessment, configureer het voor de eerste keer en registreer u het met het Azure Migrate-project.
 
 
 ## <a name="prepare-vms-for-migration"></a>VM's voorbereiden op migratie

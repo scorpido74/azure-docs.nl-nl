@@ -3,12 +3,12 @@ title: Gebruik en prestaties bewaken voor Windows-bureaublad-apps
 description: Analyseer het gebruik en de prestaties van uw Windows-bureaublad-app met Application Insights.
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb9e0fc480098478a3a68265ac85e0d5450e27fe
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670828"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537386"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Gebruik en prestaties bewaken in Klassieke Windows-bureaublad-apps
 
@@ -109,6 +109,6 @@ Instantiate de initialisator in de `Program.cs` `Main()` onderstaande methode he
 ## <a name="next-steps"></a>Volgende stappen
 * [Een dashboard maken](../../azure-monitor/app/overview-dashboard.md)
 * [Diagnostische gegevens doorzoeken](../../azure-monitor/app/diagnostic-search.md)
-* [Metrische gegevens verkennen](../../azure-monitor/app/metrics-explorer.md)
+* [Metrische gegevens verkennen](../../azure-monitor/platform/metrics-charts.md)
 * [Analytics-query's schrijven](../../azure-monitor/app/analytics.md)
 

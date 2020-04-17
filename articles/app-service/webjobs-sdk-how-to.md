@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: c606f6e60b1c906a0d5c29992287d126aaa37b7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1fd22772e72cba4cce3f9fa2751dc0df0e15bb9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77602939"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535595"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>De Azure WebJobs SDK gebruiken voor gebeurtenisgestuurde verwerking op de achtergrond
 
@@ -155,14 +155,14 @@ Automatische triggers roepen een functie aan als reactie op een gebeurtenis. Ove
 ```cs
 public static void Run(
     [QueueTrigger("myqueue-items")] string myQueueItem,
-    [Blob("samples-workitems/{myQueueItem}", FileAccess.Read)] Stream myBlob,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read)] Stream myBlob,
     ILogger log)
 {
     log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 }
 ```
 
-Het `QueueTrigger` kenmerk vertelt de runtime om de functie aan `myqueue-items` te roepen wanneer er een wachtrijbericht in de wachtrij wordt weergegeven. Het `Blob` kenmerk vertelt de runtime om het wachtrijbericht te gebruiken om een blob in de *container met voorbeeldwerkitems* te lezen. De inhoud van het wachtrijbericht, doorgegeven `myQueueItem` aan de functie in de parameter, is de naam van de blob.
+Het `QueueTrigger` kenmerk vertelt de runtime om de functie aan `myqueue-items` te roepen wanneer er een wachtrijbericht in de wachtrij wordt weergegeven. Het `Blob` kenmerk vertelt de runtime om het wachtrijbericht te gebruiken om een blob in de *container met voorbeeldwerkitems* te lezen. De naam van het `samples-workitems` blobitem in de container wordt rechtstreeks`{queueTrigger}`verkregen uit de wachtrijtrigger als een bindende expressie ( ).
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 

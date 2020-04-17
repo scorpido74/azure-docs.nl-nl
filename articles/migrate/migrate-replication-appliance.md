@@ -3,12 +3,12 @@ title: Azure Migrate-replicatieapparaat
 description: Meer informatie over het Azure Migrate-replicatietoestel voor vmware-migratie op basis van agenten.
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245861"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535210"
 ---
 # <a name="replication-appliance"></a>Replicatietoestel
 
@@ -28,8 +28,11 @@ Het replicatietoestel wordt geïmplementeerd wanneer u op agentgebaseerde migrat
 
 **Gebruikt voor** | **Details**
 --- |  ---
-VMware VM-agentgebaseerde migratie | U downloadt OVA-sjabloon van de Azure Migrate-hub en importeert naar vCenter Server om de toestel-VM te maken.
-Migratie op basis van fysieke machineagent | Als u geen VMware-infrastructuur hebt of als u geen VMware-VM maken met een OVA-sjabloon, downloadt u een software-installatieprogramma van de Azure Migrate-hub en voert u deze uit om de toestelmachine in te stellen.
+**VMware VM-agentgebaseerde migratie** | U downloadt OVA-sjabloon van de Azure Migrate-hub en importeert naar vCenter Server om de toestel-VM te maken.
+**Migratie op basis van fysieke machineagent** | Als u geen VMware-infrastructuur hebt of als u geen VMware-VM maken met een OVA-sjabloon, downloadt u een software-installatieprogramma van de Azure Migrate-hub en voert u deze uit om de toestelmachine in te stellen.
+
+> [!NOTE]
+> Als u implementeert in Azure Government, gebruikt u het installatiebestand om het replicatietoestel te implementeren.
 
 ## <a name="appliance-requirements"></a>Toestelvereisten
 
@@ -74,7 +77,7 @@ Downloaden en installeren in Azure Migrate | Wanneer u het toestel installeert e
 
 ## <a name="url-access"></a>URL-toegang
 
-Het replicatietoestel heeft toegang nodig tot deze URL's.
+Het replicatietoestel heeft toegang nodig tot deze URL's in de openbare Azure-cloud.
 
 **Url** | **Details**
 --- | ---
@@ -84,10 +87,26 @@ Het replicatietoestel heeft toegang nodig tot deze URL's.
 \*.hypervrecoverymanager.windowsazure.com | Wordt gebruikt voor replicatiebeheerbewerkingen en -coördinatie
 https:\//management.azure.com | Wordt gebruikt voor replicatiebeheerbewerkingen en -coördinatie
 *.services.visualstudio.com | Gebruikt voor telemetriedoeleinden (Dit is optioneel)
-time.nist.gov | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
 time.windows.com | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | OVF-instellingen hebben toegang nodig tot deze URL's. Ze worden gebruikt voor toegangscontrole en identiteitsbeheer door Azure Active Directory
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL-download voltooien
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Voor het instellen van apparaten is toegang tot deze URL's nodig. Ze worden gebruikt voor toegangscontrole en identiteitsbeheer door Azure Active Directory
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Om MySQL-download te voltooien. In een paar regio's kan de download worden doorgestuurd naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan indien nodig.
+
+
+## <a name="azure-government-url-access"></a>URL-toegang voor Azure Government
+
+Het replicatietoestel heeft toegang nodig tot deze URL's in Azure Government.
+
+**Url** | **Details**
+--- | ---
+\*.backup.windowsazure.us | Gebruikt voor gerepliceerde gegevensoverdracht en -coördinatie
+\*.store.core.windows.net | Gebruikt voor gerepliceerde gegevensoverdracht en -coördinatie
+\*.blob.core.windows.net | Wordt gebruikt om toegang te krijgen tot opslagaccount dat gerepliceerde gegevens opslaat
+\*hypervrecoverymanager.windowsazure.us | Wordt gebruikt voor replicatiebeheerbewerkingen en -coördinatie
+https:\//management.usgovcloudapi.net | Wordt gebruikt voor replicatiebeheerbewerkingen en -coördinatie
+*.services.visualstudio.com | Gebruikt voor telemetriedoeleinden (Dit is optioneel)
+time.nist.gov | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Toestelsetup met OVA heeft toegang tot deze URL's nodig. Ze worden gebruikt voor toegangscontrole en identiteitsbeheer door Azure Active Directory.
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Om MySQL-download te voltooien. In een paar regio's kan de download worden doorgestuurd naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan indien nodig.
 
 ## <a name="port-access"></a>Poorttoegang
 

@@ -1,56 +1,58 @@
 ---
 title: Lege randknooppunten gebruiken op Apache Hadoop-clusters in Azure HDInsight
-description: Hoe voeg je een leeg randknooppunt toe aan een HDInsight-cluster dat als client kan worden gebruikt en test/host vervolgens je HDInsight-toepassingen.
+description: Een leeg randknooppunt toevoegen aan een HDInsight-cluster. Gebruikt als client en test of host vervolgens uw HDInsight-toepassingen.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 01/27/2020
-ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: f6dea00bf3b3e8a58f42da8fd8ad59ccec2dea72
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272602"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537794"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Lege randknooppunten gebruiken op Apache Hadoop-clusters in HDInsight
 
-Meer informatie over het toevoegen van een leeg randknooppunt aan een HDInsight-cluster. Een leeg randknooppunt is een Linux virtuele machine met dezelfde client tools geïnstalleerd en geconfigureerd als in de headnodes, maar zonder [Apache Hadoop](https://hadoop.apache.org/) diensten draaien. U het randknooppunt gebruiken voor toegang tot het cluster, het testen van uw clienttoepassingen en het hosten van uw clienttoepassingen.
+Meer informatie over het toevoegen van een leeg randknooppunt aan een HDInsight-cluster. Een leeg randknooppunt is een Virtuele Linux-machine met dezelfde clienttools die zijn geïnstalleerd en geconfigureerd als in de hoofdnoden. Maar zonder [Apache Hadoop](./hadoop/apache-hadoop-introduction.md) diensten draaien. U het randknooppunt gebruiken voor toegang tot het cluster, het testen van uw clienttoepassingen en het hosten van uw clienttoepassingen.
 
 U een leeg randknooppunt toevoegen aan een bestaand HDInsight-cluster aan een nieuw cluster wanneer u het cluster maakt. Het toevoegen van een leeg randknooppunt gebeurt met azure resource manager-sjabloon.  In het volgende voorbeeld wordt uitgelegd hoe het wordt gedaan met behulp van een sjabloon:
 
-    "resources": [
-        {
-            "name": "[concat(parameters('clusterName'),'/', variables('applicationName'))]",
-            "type": "Microsoft.HDInsight/clusters/applications",
-            "apiVersion": "2015-03-01-preview",
-            "dependsOn": [ "[concat('Microsoft.HDInsight/clusters/',parameters('clusterName'))]" ],
-            "properties": {
-                "marketPlaceIdentifier": "EmptyNode",
-                "computeProfile": {
-                    "roles": [{
-                        "name": "edgenode",
-                        "targetInstanceCount": 1,
-                        "hardwareProfile": {
-                            "vmSize": "{}"
-                        }
-                    }]
-                },
-                "installScriptActions": [{
-                    "name": "[concat('emptynode','-' ,uniquestring(variables('applicationName')))]",
-                    "uri": "[parameters('installScriptAction')]",
-                    "roles": ["edgenode"]
-                }],
-                "uninstallScriptActions": [],
-                "httpsEndpoints": [],
-                "applicationType": "CustomApplication"
-            }
+```json
+"resources": [
+    {
+        "name": "[concat(parameters('clusterName'),'/', variables('applicationName'))]",
+        "type": "Microsoft.HDInsight/clusters/applications",
+        "apiVersion": "2015-03-01-preview",
+        "dependsOn": [ "[concat('Microsoft.HDInsight/clusters/',parameters('clusterName'))]" ],
+        "properties": {
+            "marketPlaceIdentifier": "EmptyNode",
+            "computeProfile": {
+                "roles": [{
+                    "name": "edgenode",
+                    "targetInstanceCount": 1,
+                    "hardwareProfile": {
+                        "vmSize": "{}"
+                    }
+                }]
+            },
+            "installScriptActions": [{
+                "name": "[concat('emptynode','-' ,uniquestring(variables('applicationName')))]",
+                "uri": "[parameters('installScriptAction')]",
+                "roles": ["edgenode"]
+            }],
+            "uninstallScriptActions": [],
+            "httpsEndpoints": [],
+            "applicationType": "CustomApplication"
         }
-    ],
+    }
+],
+```
 
-Zoals in het voorbeeld wordt weergegeven, u optioneel een [scriptactie](hdinsight-hadoop-customize-cluster-linux.md) aanroepen om extra configuratie uit te voeren, zoals het installeren van [Apache Hue](hdinsight-hadoop-hue-linux.md) in het randknooppunt. Het scriptactiescript moet openbaar toegankelijk zijn op het web.  Als het script bijvoorbeeld is opgeslagen in Azure Storage, gebruikt u openbare containers of openbare blobs.
+Zoals in het voorbeeld wordt weergegeven, u optioneel een [scriptactie](hdinsight-hadoop-customize-cluster-linux.md) aanroepen om extra configuratie uit te voeren. Zoals het installeren van [Apache Hue](hdinsight-hadoop-hue-linux.md) in het randknooppunt. Het scriptactiescript moet openbaar toegankelijk zijn op het web.  Als het script bijvoorbeeld is opgeslagen in Azure Storage, gebruikt u openbare containers of openbare blobs.
 
 De grootte van de virtuele machine met randknooppunt moet voldoen aan de vereisten voor vm-grootte van de HDInsight-clusterworker. Zie [Apache Hadoop-clusters maken in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-type)voor de aanbevolen vm-formaten voor werknemersknooppunt.
 
@@ -69,7 +71,7 @@ Nadat u een randknooppunt hebt gemaakt, u verbinding maken met het randknooppunt
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Een randknooppunt toevoegen aan een bestaand cluster
 
-In deze sectie gebruikt u een resourcemanagersjabloon om een randknooppunt toe te voegen aan een bestaand HDInsight-cluster.  De sjabloon Resourcemanager is te vinden in [GitHub.](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/) De sjabloon Resourcemanager roept een https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.shscriptactie aan die zich op . Het script voert geen acties uit.  Het is om aanroepenscriptactie aan te tonen vanuit een Resource Manager-sjabloon.
+In deze sectie gebruikt u een resourcemanagersjabloon om een randknooppunt toe te voegen aan een bestaand HDInsight-cluster.  De sjabloon Resourcemanager is te vinden in [GitHub.](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/) De sjabloon Resourcemanager roept een https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.shscriptactie aan die zich op . Het script doet geen acties.  Het is om aanroepenscriptactie aan te tonen vanuit een Resource Manager-sjabloon.
 
 1. Selecteer de volgende afbeelding om u aan te melden bij Azure en open de sjabloon Azure Resource Manager in de Azure-portal.
 
@@ -91,7 +93,7 @@ In deze sectie gebruikt u een resourcemanagersjabloon om een randknooppunt toe t
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Een randknooppunt toevoegen bij het maken van een cluster
 
-In deze sectie gebruikt u een resourcemanagersjabloon om een HDInsight-cluster met een randknooppunt te maken.  De sjabloon Resourcebeheer is te vinden in de [azure quickstart-sjablonengalerie](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). De sjabloon Resourcemanager roept een https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.shscriptactie aan die zich op . Het script voert geen acties uit.  Het is om aanroepenscriptactie aan te tonen vanuit een Resource Manager-sjabloon.
+In deze sectie gebruikt u een resourcemanagersjabloon om een HDInsight-cluster met een randknooppunt te maken.  De sjabloon Resourcebeheer is te vinden in de [azure quickstart-sjablonengalerie](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). De sjabloon Resourcemanager roept een https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.shscriptactie aan die zich op . Het script doet geen acties.  Het is om aanroepenscriptactie aan te tonen vanuit een Resource Manager-sjabloon.
 
 1. Maak een HDInsight-cluster als u er nog geen hebt.  Zie [Aan de slag met Hadoop in HDInsight.](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
@@ -119,7 +121,7 @@ In deze sectie gebruikt u een resourcemanagersjabloon om een HDInsight-cluster m
 
 ## <a name="add-multiple-edge-nodes"></a>Meerdere randknooppunten toevoegen
 
-U meerdere randknooppunten toevoegen aan een HDInsight-cluster.  De configuratie van meerdere randknooppunten kan alleen worden uitgevoerd met Azure Resource Manager-sjablonen.  Zie het sjabloonvoorbeeld aan het begin van dit artikel.  U moet de **targetInstanceCount** bijwerken om het aantal randknooppunten weer te geven dat u wilt maken.
+U meerdere randknooppunten toevoegen aan een HDInsight-cluster.  De configuratie van meerdere randknooppunten kan alleen worden uitgevoerd met Azure Resource Manager-sjablonen.  Zie het sjabloonvoorbeeld aan het begin van dit artikel.  Werk de **targetInstanceCount** bij om het aantal randknooppunten weer te geven dat u wilt maken.
 
 ## <a name="access-an-edge-node"></a>Toegang tot een randknooppunt
 

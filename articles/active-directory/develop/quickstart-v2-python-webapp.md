@@ -1,6 +1,6 @@
 ---
 title: Aanmelding met Microsoft toevoegen aan een Python-web-app van Microsoft- identiteitsplatform | Azure
-description: Meer informatie over het implementeren van Microsoft Sign-In op een Python Web App met OAuth2
+description: Meer informatie over het implementeren van Microsoft Sign-In op een Python-webapp met OAuth2
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 0affae56ef6998efe4bb370287ff3688f83f3878
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: c0220a226b2095a4ec54bc3469abee08b8b29f4c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873953"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536026"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Snelstart: aanmelden met Microsoft toevoegen aan een Python-web-app
 

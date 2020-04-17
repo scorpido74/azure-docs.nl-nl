@@ -3,12 +3,12 @@ title: Telemetrie scheiden in Azure Application Insights
 description: Direct telemetrie naar verschillende bronnen voor ontwikkeling, test en productiestempels.
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 3580d162f4b3955a04ffcd0f13933221bfef3b65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 565d51751ad50479f4e227b6855ac63b80bd949e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671457"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536774"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Telemetrie scheiden van ontwikkeling, test en productie
 
@@ -34,7 +34,7 @@ Als u het gemakkelijker wilt maken om de ikey te wijzigen terwijl de code tussen
 
 Stel de sleutel in een initialisatiemethode in, zoals global.aspx.cs in een ASP.NET-service:
 
-*C #*
+*C#*
 
     protected void Application_Start()
     {
@@ -69,7 +69,7 @@ Voeg in de [portal.azure.com](https://portal.azure.com)een bron Voor Application
 
 ![Klik op Nieuw > Application Insights](./media/separate-resources/01-new.png)
 
-* **Toepassingstype** is van invloed op wat u ziet op het overzichtsblad en de eigenschappen die beschikbaar zijn in [metrische verkenner](../../azure-monitor/app/metrics-explorer.md). Als u uw type app niet ziet, kiest u een van de webtypen voor webpagina's.
+* **Toepassingstype** is van invloed op wat u ziet op het overzichtsblad en de eigenschappen die beschikbaar zijn in [metrische verkenner](../../azure-monitor/platform/metrics-charts.md). Als u uw type app niet ziet, kiest u een van de webtypen voor webpagina's.
 * **Resourcegroep** is een gemak voor het beheren van eigenschappen zoals [toegangscontrole.](../../azure-monitor/app/resources-roles-access-control.md) U afzonderlijke resourcegroepen gebruiken voor ontwikkeling, test en productie.
 * **Abonnement** is uw betaalaccount in Azure.
 * **Locatie** is waar we uw gegevens bewaren. Momenteel kan het niet worden gewijzigd. 
@@ -89,7 +89,7 @@ U hebt de instrumentatietoetsen nodig van alle bronnen waarnaar uw app gegevens 
 ## <a name="filter-on-build-number"></a>Filter op buildnummer
 Wanneer u een nieuwe versie van uw app publiceert, wilt u de telemetrie van verschillende builds kunnen scheiden.
 
-U de eigenschap Toepassingsversie zo instellen dat u [zoekresultaten](../../azure-monitor/app/diagnostic-search.md) en [metrische verkenners](../../azure-monitor/app/metrics-explorer.md) filteren.
+U de eigenschap Toepassingsversie zo instellen dat u [zoekresultaten](../../azure-monitor/app/diagnostic-search.md) en [metrische verkenners](../../azure-monitor/platform/metrics-charts.md) filteren.
 
 ![Filteren op een eigenschap](./media/separate-resources/050-filter.png)
 
@@ -139,7 +139,7 @@ Als u de toepassingsversie wilt bijhouden, zorgt u ervoor dat `buildinfo.config`
     </PropertyGroup>
 ```
 
-Wanneer de buildgegevens beschikbaar zijn, voegt de Application Insights-webmodule automatisch **Toepassingsversie** als eigenschap toe aan elk telemetrie-item. Dit biedt de mogelijkheid om op versie te filteren wanneer u [diagnostische zoekopdrachten](../../azure-monitor/app/diagnostic-search.md) uitvoert of [metrische gegevens verkent](../../azure-monitor/app/metrics-explorer.md).
+Wanneer de buildgegevens beschikbaar zijn, voegt de Application Insights-webmodule automatisch **Toepassingsversie** als eigenschap toe aan elk telemetrie-item. Dit biedt de mogelijkheid om op versie te filteren wanneer u [diagnostische zoekopdrachten](../../azure-monitor/app/diagnostic-search.md) uitvoert of [metrische gegevens verkent](../../azure-monitor/platform/metrics-charts.md).
 
 Merk echter op dat het buildversienummer alleen wordt gegenereerd door de Microsoft Build Engine, niet door de ontwikkelaar die van Visual Studio is gebouwd.
 

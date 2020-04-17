@@ -4,12 +4,12 @@ description: Dit is een service waarmee u de prestaties van toepassingen kunt be
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: e7cde3ca47afd4db072b734c797a42ecd5a053aa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2dbebf13b8674ba4aa0c578e1138a5e279b54355
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79136796"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536927"
 ---
 # <a name="what-is-application-insights"></a>Wat is Application Insights?
 Application Insights, een functie van [Azure Monitor,](../overview.md)is een uitbreidbare Application Performance Management (APM)-service voor ontwikkelaars en DevOps-professionals. Gebruik het om uw live applicaties te controleren. Het detecteert automatisch prestatieafwijkingen en bevat krachtige analysetools om u te helpen problemen te diagnosticeren en te begrijpen wat gebruikers daadwerkelijk met uw app doen.  De service is bedoeld om u te helpen de prestaties en bruikbaarheid van uw apps continu te verbeteren. Het werkt voor apps op uiteenlopende platforms, waaronder .NET, Node.js en Java EE, on-premises, of in een hybride of openbare cloud gehost. De service kan ook worden geïntegreerd met uw DevOps-proces en bevat verbindingspunten naar verschillende hulpmiddelen voor ontwikkelaars. Gebruik de service voor het controleren en analyseren van telemetrie van mobiele apps door Application Insights te integreren met Visual Studio App Center.
@@ -54,14 +54,14 @@ Er zijn tal van manieren om uw gegevens te verkennen. Lees de volgende artikelen
 | [**Profiler**](../../azure-monitor/app/profiler.md)<br/>Inspecteer de uitvoeringsprofielen van voorbeeldaanvragen. |![Profiler](./media/app-insights-overview/profiler.png) |
 | [**Gebruiksanalyse**](../../azure-monitor/app/usage-overview.md)<br/>Analyseer de segmentatie en retentie van gebruikers.|![Retentie-informatie](./media/app-insights-overview/retention.png) |
 | [**Diagnostische zoekactie naar gegevens van bepaalde items**](../../azure-monitor/app/diagnostic-search.md)<br/>U kunt zoeken naar gebeurtenissen, zoals aanvragen, uitzonderingen, afhankelijkheidsaanroepen, logboektraceringen en paginaweergaven en deze gegevens ook filteren.  |![Zoeken in telemetrie](./media/app-insights-overview/search-tn.png) |
-| [**Metrics Explorer voor cumulatieve gegevens**](../../azure-monitor/app/metrics-explorer.md)<br/>Verken, filter en segmenteer cumulatieve gegevens, zoals aantallen aanvragen, fouten en uitzonderingen, reactietijden en paginalaadtijden. |![Metrische gegevens](./media/app-insights-overview/metrics-tn.png) |
+| [**Metrics Explorer voor cumulatieve gegevens**](../../azure-monitor/platform/metrics-charts.md)<br/>Verken, filter en segmenteer cumulatieve gegevens, zoals aantallen aanvragen, fouten en uitzonderingen, reactietijden en paginalaadtijden. |![Metrische gegevens](./media/app-insights-overview/metrics-tn.png) |
 | [**Dashboards**](../../azure-monitor/app/overview-dashboard.md)<br/>Combineer gegevens van meerdere resources tot een mash-up en deel deze met anderen. Ideaal voor toepassingen met meerdere onderdelen en om continu weer te geven in de teamkamer. |![Voorbeelden van dashboards](./media/app-insights-overview/dashboard-tn.png) |
 | [**Live Metrics Stream**](../../azure-monitor/app/live-stream.md)<br/>Wanneer u een nieuwe build implementeert, kunt u kijken naar deze 'near-realtime' prestatie-indicatoren om te controleren of dat alles naar verwachting werkt. |![Voorbeeld van metrische livegegevens](./media/app-insights-overview/live-metrics-tn.png) |
 | [**Analytics**](../../azure-monitor/app/analytics.md)<br/>Beantwoord moeilijke vragen over de prestaties en het gebruik van uw app met behulp van deze krachtige querytaal. |![Voorbeeld van Analytics](./media/app-insights-overview/analytics-tn.png) |
 | [**Visual Studio**](../../azure-monitor/app/visual-studio.md)<br/>Bekijk prestatiegegevens in de code. Ga naar de code vanuit stack-traces.|![Visual Studio](./media/app-insights-overview/visual-studio-tn.png) |
-| [**Snapshot Debugger**](../../azure-monitor/app/snapshot-debugger.md)<br/>Spoor fouten op in momentopnamen van live activiteiten, inclusief parameterwaarden.|![Visual Studio](./media/app-insights-overview/snapshot.png) |
+| [**Momentopnamefoutopsporing**](../../azure-monitor/app/snapshot-debugger.md)<br/>Spoor fouten op in momentopnamen van live activiteiten, inclusief parameterwaarden.|![Visual Studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](../../azure-monitor/app/export-power-bi.md )<br/>Integreer metrische gegevens over het gebruik van de toepassing met andere business intelligence.| ![Power BI](./media/app-insights-overview/power-bi.png)|
-| [**REST-API**](https://dev.applicationinsights.io/)<br/>Schrijf code voor het uitvoeren van query's op uw functies voor het verzamelen van metrische gegevens en op onbewerkte gegevens.| ![REST API](./media/app-insights-overview/rest-tn.png) |
+| [**REST-API**](https://dev.applicationinsights.io/)<br/>Schrijf code voor het uitvoeren van query's op uw functies voor het verzamelen van metrische gegevens en op onbewerkte gegevens.| ![REST-API](./media/app-insights-overview/rest-tn.png) |
 | [**Continue export**](../../azure-monitor/app/export-telemetry.md)<br/>Exporteer onbewerkte gegevens bulksgewijs naar de opslag zodra de gegevens binnenkomen. |![Exporteren](./media/app-insights-overview/export-tn.png) |
 
 ## <a name="how-do-i-use-application-insights"></a>Hoe kan ik Application Insights gebruiken?
@@ -126,7 +126,7 @@ Gebruik tijdens het ontwikkelen:
 
 ## <a name="support-and-feedback"></a>Ondersteuning en feedback
 * Vragen en problemen:
-  * [Probleemoplossing][qna]
+  * [Problemen oplossen][qna]
   * [MSDN-forum](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
   * [Stackoverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * Uw suggesties:

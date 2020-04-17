@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aff7de84f0523403f8d36c0661b3c469e18116e2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 2c299d93e6f054ad7ea8d9a288ec61c36ca11cce
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81265620"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537046"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-highground"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met HighGround
 
@@ -83,13 +83,13 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
 1. Voer in de sectie **BasisSAML-configuratie** de waarden voor de volgende velden in als u de toepassing in de **idp-modus** wilt configureren:
 
-    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://<SUBDOMAIN>.highground.com/`
+    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://app.highground.com/`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.highground.com/svc/SSONoAuth/<companyName>`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://app.highground.com/svc/SSONoAuth/SAML?groupid=<company-guid>`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://app.highground.com/#/login/<companyName>`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://app.highground.com/#/login/<company-slug>`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [het ondersteuningsteam van HighGround Client](https://youearnedit.freshdesk.com/support/home) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.

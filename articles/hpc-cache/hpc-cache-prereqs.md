@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ab342dba5c8be2ff3793c0eb36926969b3e364e5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655647"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537284"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Vereisten voor Azure HPC-cache
 
@@ -20,9 +20,6 @@ Voordat u de Azure-portal gebruikt om een nieuwe Azure HPC-cache te maken, contr
 ## <a name="azure-subscription"></a>Azure-abonnement
 
 Een betaald abonnement wordt aanbevolen.
-
-> [!NOTE]
-> Tijdens de eerste maanden van de GA-release moet het Azure HPC-cacheteam uw abonnement toevoegen aan de toegangslijst voordat het kan worden gebruikt om een cache-exemplaar te maken. Deze procedure helpt ervoor te zorgen dat elke klant een hoge kwaliteit responsiviteit krijgt uit zijn caches. Vul [dit formulier](https://aka.ms/onboard-hpc-cache) in om toegang aan te vragen.
 
 ## <a name="network-infrastructure"></a>Netwerkinfrastructuur
 
@@ -84,11 +81,11 @@ Als u een compatibel opslagaccount wilt maken, gebruikt u de volgende instelling
 * Toegangslaag (standaard): **Hot**
 
 Het is een goede gewoonte om een opslagaccount te gebruiken op dezelfde locatie als uw cache.
-<!-- clarify location - same region or same resource group or same virtual network? -->
 
 U moet de cachetoepassing ook toegang geven tot uw Azure-opslagaccount zoals hierboven vermeld in [Machtigingen.](#permissions) Volg de procedure in [Opslagdoelen toevoegen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) om de cache de vereiste toegangsrollen te geven. Als u niet de eigenaar van het opslagaccount bent, laat de eigenaar deze stap doen.
 
 ### <a name="nfs-storage-requirements"></a>NFS-opslagvereisten
+<!-- linked from configuration.md -->
 
 Als u een NFS-opslagsysteem gebruikt (bijvoorbeeld een on-premises hardware-NAS-systeem), controleert u of het aan deze vereisten voldoet. Mogelijk moet u samenwerken met de netwerkbeheerders of firewallbeheerders voor uw opslagsysteem (of datacenter) om deze instellingen te verifiëren.
 

@@ -12,12 +12,12 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f3585cfa7ea6f0d8afc61e899f9641d415a2e354
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77161185"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537233"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Rollover van sleutels ondertekenen in Azure Active Directory
 In dit artikel wordt besproken wat u moet weten over de openbare sleutels die worden gebruikt in Azure Active Directory (Azure AD) om beveiligingstokens te ondertekenen. Het is belangrijk op te merken dat deze sleutels periodiek omrollen en in geval van nood onmiddellijk kunnen worden omgedraaid. Alle toepassingen die Azure AD gebruiken, moeten het sleutelrolloverproces programmatisch kunnen verwerken of een periodiek handmatig rolloverproces kunnen opzetten. Lees verder om te begrijpen hoe de sleutels werken, hoe u de impact van de rollover op uw toepassing beoordelen en hoe u uw toepassing bijwerken of een periodiek handmatig rolloverproces opzetten om de sleutelrollover te verwerken indien nodig.
@@ -146,7 +146,7 @@ Met de volgende stappen u controleren of de logica goed werkt in uw toepassing.
 ### <a name="web-apis-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>Web API's beschermen resources en zijn gemaakt met Visual Studio 2013
 Als u een web-API-toepassing hebt gemaakt in Visual Studio 2013 met behulp van de web-API-sjabloon en vervolgens **Organisatieaccounts** hebt geselecteerd in het menu **Verificatie wijzigen,** hebt u al de benodigde logica in uw toepassing.
 
-Als u verificatie handmatig hebt geconfigureerd, volgt u de onderstaande instructies om te leren hoe u de web-API configureert om de belangrijkste gegevens automatisch bij te werken.
+Als u verificatie handmatig hebt geconfigureerd, volgt u de onderstaande instructies om te leren hoe u uw web-API configureert om de belangrijkste gegevens automatisch bij te werken.
 
 In het volgende codefragment wordt uitgelegd hoe u de nieuwste sleutels uit het metagegevensdocument van de federatie ophalen en gebruikt u vervolgens de [JWT-tokenhandler](https://msdn.microsoft.com/library/dn205065.aspx) om het token te valideren. Het codefragment gaat ervan uit dat u uw eigen cachingmechanisme gebruikt om de sleutel voort te houden om toekomstige tokens van Azure AD te valideren, of dit nu in een database, configuratiebestand of elders is.
 
@@ -239,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Webapplicaties die resources beschermen en zijn gemaakt met Visual Studio 2012
-Als uw toepassing is gebouwd in Visual Studio 2012, hebt u waarschijnlijk het hulpprogramma voor identiteit en toegang gebruikt om uw toepassing te configureren. Het is ook waarschijnlijk dat u gebruik maakt van de [Validering Issuer Name Registry (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). De VINR is verantwoordelijk voor het bijhouden van informatie over vertrouwde identiteitsproviders (Azure AD) en de sleutels die worden gebruikt om tokens te valideren die door hen zijn uitgegeven. De VINR maakt het ook gemakkelijk om de belangrijkste informatie die is opgeslagen in een Web.config-bestand automatisch bij te werken door het nieuwste federatiemetagegevensdocument te downloaden dat aan uw directory is gekoppeld, om te controleren of de configuratie verouderd is met het nieuwste document, en het bijwerken van de toepassing om de nieuwe sleutel zo nodig te gebruiken.
+Als uw toepassing is gebouwd in Visual Studio 2012, hebt u waarschijnlijk het hulpprogramma voor identiteit en toegang gebruikt om uw toepassing te configureren. Het is ook waarschijnlijk dat u gebruik maakt van de [Validering Issuer Name Registry (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). De VINR is verantwoordelijk voor het bijhouden van informatie over vertrouwde identiteitsproviders (Azure AD) en de sleutels die worden gebruikt om tokens te valideren die door hen zijn uitgegeven. De VINR maakt het ook gemakkelijk om de belangrijkste informatie die is opgeslagen in een Web.config-bestand automatisch bij te werken door het nieuwste federatiemetagegevensdocument te downloaden dat is gekoppeld aan uw directory, te controleren of de configuratie verouderd is met het nieuwste document en de toepassing bij te werken om de nieuwe sleutel te gebruiken als dat nodig is.
 
 Als u uw toepassing hebt gemaakt met behulp van een van de codevoorbeelden of walkthrough-documentatie van Microsoft, is de sleutelrolloverlogica al opgenomen in uw project. U zult merken dat de onderstaande code al bestaat in uw project. Als uw toepassing deze logica nog niet heeft, volgt u de onderstaande stappen om deze toe te voegen en om te controleren of deze correct werkt.
 
@@ -299,7 +299,7 @@ Instructies om de FedUtil te gebruiken om uw configuratie bij te werken:
 4. Klik **op Voltooien** om het updateproces te voltooien.
 
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Webapplicaties / API's die bronnen beschermen met behulp van andere bibliotheken of handmatig een van de ondersteunde protocollen implementeren
-Als u een andere bibliotheek gebruikt of een van de ondersteunde protocollen handmatig implementeert, moet u de bibliotheek of uw implementatie controleren om ervoor te zorgen dat de sleutel wordt opgehaald uit het detectiedocument van OpenID Connect of de metagegevens van de federatie Document. Een manier om dit te controleren is door een zoekopdracht in uw code of de code van de bibliotheek uit te voeren voor oproepen naar het OpenID-detectiedocument of het metagegevensdocument van de federatie.
+Als u een andere bibliotheek gebruikt of een van de ondersteunde protocollen handmatig implementeert, moet u de bibliotheek of uw implementatie controleren om ervoor te zorgen dat de sleutel wordt opgehaald uit het detectiedocument van OpenID Connect of het metagegevensdocument van de federatie. Een manier om dit te controleren is door een zoekopdracht in uw code of de code van de bibliotheek uit te voeren voor oproepen naar het OpenID-detectiedocument of het metagegevensdocument van de federatie.
 
 Als ze ergens worden opgeslagen of hardcoded in uw toepassing, u handmatig ophalen van de sleutel en dienovereenkomstig bijwerken door het uitvoeren van een handmatige rollover volgens de instructies aan het einde van dit begeleidingsdocument. **Het wordt sterk aangemoedigd dat u uw toepassing verbetert om automatische rollover te ondersteunen** met behulp van een van de benaderingen die in dit artikel worden beschreven om toekomstige onderbrekingen en overhead te voorkomen als Azure AD de rollover-cadans verhoogt of een nood-out-of-band-rollover heeft.
 
@@ -308,4 +308,3 @@ U valideren of uw toepassing automatische sleutelrollover ondersteunt door de sc
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Een handmatige rollover uitvoeren als uw toepassing geen automatische rollover ondersteunt
 Als uw toepassing **geen** ondersteuning biedt voor automatische rollover, moet u een proces instellen dat periodiek de ondertekeningssleutels van Azure AD controleert en een handmatige rollover dienovereenkomstig uitvoert. [Deze GitHub repository](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) bevat scripts en instructies over hoe dit te doen.
-

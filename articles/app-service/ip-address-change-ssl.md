@@ -4,12 +4,12 @@ description: Als uw SSL-IP-adres wordt gewijzigd, leest u wat u moet doen zodat 
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
-ms.openlocfilehash: 34f35eb67cada6066e35227fcd6a0eaf425ac007
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcfe11bcab25f6267a557de5faf7befab467bc29
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672392"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535720"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Voorbereiden op een WIJZIGING van een SSL-IP-adres
 
@@ -25,7 +25,7 @@ Als u een melding hebt ontvangen dat het SSL-IP-adres van uw Azure App Service-a
 
 4.  Klik **onder** de kop Instellingen op **SSL-instellingen** in de linkernavigatie.
 
-1. Selecteer in de sectie SSL-bindingen de hostnaamrecord. Kies in de editor die wordt geopend de optie **SNI SSL** in het vervolgkeuzemenu **SSL-type** en klik op **Binding toevoegen**. Wanneer u het succesbericht van de bewerking ziet, is het bestaande IP-adres vrijgegeven.
+1. Selecteer in de sectie TLS/SSL-bindingen de hostnaamrecord. Kies in de editor die wordt geopend de optie **SNI SSL** in het vervolgkeuzemenu **SSL-type** en klik op **Binding toevoegen**. Wanneer u het succesbericht van de bewerking ziet, is het bestaande IP-adres vrijgegeven.
 
 6.  Selecteer in de sectie **SSL-bindingen** opnieuw dezelfde hostnaamrecord met het certificaat. Kies in de editor die wordt geopend **ip-gebaseerde SSL** in het vervolgkeuzemenu **SSL-type** en klik op **Binding toevoegen**. Wanneer u het succesbericht van de bewerking ziet, hebt u een nieuw IP-adres verworven.
 
@@ -45,4 +45,4 @@ Als u een melding hebt ontvangen dat het SSL-IP-adres van uw Azure App Service-a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel wordt uitgelegd hoe u zich voorbereiden op een IP-adreswijziging die is geïnitieerd door Azure. Zie [SSL- en SSL-IP-adressen in Azure App Service](overview-inbound-outbound-ips.md)voor meer informatie over IP-adressen in Azure App Service.
+In dit artikel wordt uitgelegd hoe u zich voorbereiden op een IP-adreswijziging die is geïnitieerd door Azure. Zie [Binnenkomende en uitgaande IP-adressen in Azure App Service](overview-inbound-outbound-ips.md)voor meer informatie over IP-adressen in Azure App Service.

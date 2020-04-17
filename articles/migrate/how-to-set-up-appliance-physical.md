@@ -1,17 +1,15 @@
 ---
 title: Een Azure Migrate-toestel instellen voor fysieke servers
 description: Meer informatie over het instellen van een Azure Migrate appliance voor fysieke serverbeoordeling.
-author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: b60a30e5e30ee81cbaca7d5e4691ccedac2462b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: ddc70ee9430d3a767ce01191824c150a4dbd5e6f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598167"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538270"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Een toestel instellen voor fysieke servers
 
@@ -49,11 +47,24 @@ Download het zip-bestand voor het apparaat.
 Controleer of het zip-bestand veilig is, voordat u het implementeert.
 
 1. Open op de machine waarop u het bestand hebt gedownload een opdrachtvenster voor beheerders.
-2. Voer de volgende opdracht uit om de hash voor de VHD te genereren
+2. Voer de volgende opdracht uit om de hash voor het zip-bestand te genereren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  Voor de nieuwste toestelversie moet de gegenereerde hash overeenkomen met deze [instellingen.](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security)
+    - Voorbeeld gebruik voor public cloud:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+    - Voorbeeldgebruik voor overheidscloud:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  Hashwaarden verifiëren:
+ 
+    - Voor de public cloud (voor de nieuwste toestelversie):
 
+        **Algoritme** | **Hash-waarde**
+          --- | ---
+          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+          SHA256 | a3fa78edc8ff8aff9ab5ae6be1b64e6de7b9f475b6542beef114b20bfdac3c
+
+    - Voor Azure-overheid (voor de nieuwste toestelversie):
+
+        **Algoritme** | **Hash-waarde**
+          --- | ---
+          MD5 | f81c155fc4a1409901caea948713913f
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Het installatiescript Azure Migrate uitvoeren
@@ -69,23 +80,23 @@ Het installatiescript doet het volgende:
 
 Voer het script als volgt uit:
 
-1. Haal het ritsbestand uit naar een map op de server die het toestel host.
+1. Haal het ritsbestand uit naar een map op de server die het toestel host.  Zorg ervoor dat u het script niet uitvoert op een machine op een bestaand Azure Migrate-toestel.
 2. Start PowerShell op de bovenstaande server met beheerdersbevoegdheden (verhoogde bevoegdheid).
 3. Wijzig de PowerShell-map in de map waar de inhoud is geëxtraheerd uit het gedownloade zip-bestand.
 4. Voer het script met de naam **AzureMigrateInstaller.ps1** uit door de volgende opdracht uit te voeren:
-    ```
-    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
-    ```
-Het script start de webtoepassing van het toestel wanneer deze is voltooid.
 
-In het geval van problemen hebt u toegang tot de scriptlogboeken op C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log voor het oplossen van problemen.
+    - Voor de public cloud:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
+    - Voor Azure-overheid:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 
-> [!NOTE]
-> Voer het azure migrate-installatiescript niet uit op een bestaand Azure Migrate-toestel.
+    Het script start de webtoepassing van het toestel wanneer deze is voltooid.
+
+Als u problemen tegenkomt, hebt u toegang tot de scriptlogboeken op C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log voor het oplossen van problemen.
+
+
 
 ### <a name="verify-appliance-access-to-azure"></a>De toegang tot het toestel tot Azure verifiëren
 
-Controleer of de toestel-VM verbinding kan maken met de vereiste [Azure-URL's.](migrate-appliance.md#url-access)
+Zorg ervoor dat de toestel-VM verbinding kan maken met Azure-URL's voor [openbare](migrate-appliance.md#public-cloud-urls) en [overheidsclouds.](migrate-appliance.md#government-cloud-urls)
 
 ## <a name="configure-the-appliance"></a>Het toestel configureren
 
@@ -120,7 +131,7 @@ Stel het apparaat voor de eerste keer in.
 Maak verbinding van het toestel naar fysieke servers en start de detectie.
 
 1. Klik **op Referenties toevoegen** om de accountreferenties op te geven die het toestel zal gebruiken om servers te detecteren.  
-2. Geef het **besturingssysteem**op, de vriendelijke naam voor de referenties, **gebruikersnaam** en **wachtwoord** en klik op **Toevoegen**.
+2. Geef het **besturingssysteem**op, een vriendelijke naam voor de referenties en de gebruikersnaam en het wachtwoord. Klik vervolgens op **Toevoegen**.
 U elk één set referenties toevoegen voor Windows- en Linux-servers.
 4. Klik **op Server toevoegen**en geef servergegevens op: FQDN/IP-adres en een vriendelijke naam van referenties (één vermelding per rij) om verbinding te maken met de server.
 3. Klik op **Valideren**. Na validatie wordt de lijst met servers die kunnen worden ontdekt weergegeven.

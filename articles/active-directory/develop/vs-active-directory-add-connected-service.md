@@ -10,16 +10,16 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: b3d068a8100cf78ccffac6d537fe71942239f383
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: d5b6452684757aead684356fd9bb032b90c58c4a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886157"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535822"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Een Azure Active Directory toevoegen met Verbonden services in Visual Studio
 
-Door Azure Active Directory (Azure AD) te gebruiken, u Single Sign-On (SSO) ondersteunen voor ASP.NET MVC-webtoepassingen of Active Directory Authentication in Web API-services. Met Azure AD-verificatie kunnen uw gebruikers hun accounts uit Azure Active Directory gebruiken om verbinding te maken met uw webtoepassingen. De voordelen van Azure AD Authentication met Web API zijn verbeterde gegevensbeveiliging bij het blootstellen van een API vanuit een webtoepassing. Met Azure AD hoeft u geen apart verificatiesysteem te beheren met een eigen account en gebruikersbeheer.
+Door Azure Active Directory (Azure AD) te gebruiken, u SSO (Single Sign-On) ondersteunen voor ASP.NET MVC-webtoepassingen of Active Directory Authentication in web-API-services. Met Azure AD-verificatie kunnen uw gebruikers hun accounts uit Azure Active Directory gebruiken om verbinding te maken met uw webtoepassingen. De voordelen van Azure AD Authentication met web-API omvatten verbeterde gegevensbeveiliging bij het blootstellen van een API vanuit een webtoepassing. Met Azure AD hoeft u geen apart verificatiesysteem te beheren met een eigen account en gebruikersbeheer.
 
 In dit artikel en de bijbehorende artikelen vindt u informatie over het gebruik van de Visual Studio Connected Service-functie voor Active Directory. De mogelijkheid is beschikbaar in Visual Studio 2015 en hoger.
 

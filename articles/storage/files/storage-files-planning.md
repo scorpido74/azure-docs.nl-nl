@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76a96d36387f55889b65f16ea1ca6ec07359c377
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5bf3a6df9d7292c18a93737fb7dea5d8c91f984
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502431"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536478"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 [Azure-bestanden](storage-files-introduction.md) kunnen op twee belangrijke manieren worden geïmplementeerd: door de serverloze Azure-bestandsshares rechtstreeks te monteren of door Azure-bestandsshares on-premises te plaatsen met Azure File Sync. Welke implementatieoptie u kiest, verandert de dingen waarmee u rekening moet houden bij het plannen van uw implementatie. 
@@ -28,7 +28,7 @@ In dit artikel worden voornamelijk implementatieoverwegingen voor het implemente
 
 Wanneer u Azure-bestandsshares implementeert in opslagaccounts, raden we u aan:
 
-- Alleen Azure-bestandsshares implementeren in opslagaccounts met andere Azure-bestandsshares. Hoewel met GPv2-opslagaccounts u opslagaccounts voor gemengde doeleinden hebben, omdat opslagbronnen zoals Azure-bestandsshares en blob-containers de limieten van het opslagaccount delen, kan het mengen van resources moeilijker worden om problemen op te lossen prestatieproblemen later. 
+- Alleen Azure-bestandsshares implementeren in opslagaccounts met andere Azure-bestandsshares. Hoewel met GPv2-opslagaccounts u opslagaccounts voor gemengde doeleinden hebben, kunnen opslagbronnen zoals Azure-bestandsshares en blob-containers de limieten van het opslagaccount delen, waardoor het later moeilijker kan worden om prestatieproblemen op te lossen. 
 
 - Let op de IOPS-beperkingen van een opslagaccount bij het implementeren van Azure-bestandsshares. Idealiter zou u bestandsshares 1:1 toewijzen aan opslagaccounts, maar dit is mogelijk niet altijd mogelijk vanwege verschillende beperkingen en beperkingen, zowel van uw organisatie als vanuit Azure. Wanneer het niet mogelijk is om slechts één bestandsshare in één opslagaccount te laten implementeren, moet u overwegen welke aandelen zeer actief zullen zijn en welke aandelen minder actief zullen zijn om ervoor te zorgen dat de heetste bestandsshares niet samen in dezelfde opslagaccount worden geplaatst.
 
@@ -36,8 +36,8 @@ Wanneer u Azure-bestandsshares implementeert in opslagaccounts, raden we u aan:
 
 ## <a name="identity"></a>Identiteit
 Als u toegang wilt krijgen tot een Azure-bestandsshare, moet de gebruiker van het bestandsaandeel worden geverifieerd en toestemming hebben om toegang te krijgen tot het aandeel. Dit gebeurt op basis van de identiteit van de gebruiker die toegang heeft tot het bestandsshare. Azure Files integreert met drie belangrijke identiteitsproviders:
-- **Active Directory (preview) in het klantbezit: Azure-opslagaccounts** kunnen worden samengevoegd met een windows Server Active Directory, net als een Windows Server-bestandsserver of NAS-apparaat. Uw Active Directory-domeincontroller kan on-premises, in een Azure-vm of zelfs als VM in een andere cloudprovider worden geïmplementeerd. Azure Files is agnost naar de plaats waar uw DC wordt gehost. Zodra een opslagaccount is samengevoegd, kan de eindgebruiker een bestandsshare monteren met het gebruikersaccount waarmee hij zich op zijn pc heeft aangemeld. Verificatie op basis van AD maakt gebruik van het Kerberos-verificatieprotocol.
-- **Azure Active Directory Domain Services (Azure AD DS):** Azure AD DS biedt een door Microsoft beheerde Active Directory-domeincontroller die kan worden gebruikt voor Azure-resources. Domein dat lid wordt van uw opslagaccount met Azure AD DS biedt vergelijkbare voordelen als domeintoetreding tot een Active Directory die eigendom is van een klant. Deze implementatieoptie is het handigst voor toepassingslift- en shiftscenario's waarvoor ad-gebaseerde machtigingen nodig zijn. Aangezien Azure AD DS verificatie op basis van AD biedt, maakt deze optie ook gebruik van het Kerberos-verificatieprotocol.
+- **On-premises Active Directory Domain Services (AD DS of on-premises AD DS)** (voorbeeld): Azure-opslagaccounts kunnen worden samengevoegd met een klantdie eigendom is van Active Directory Domain Services, net als een Windows Server-bestandsserver of NAS-apparaat. U een domeincontroller on-premises, in een Azure VM of zelfs als VM implementeren in een andere cloudprovider. Azure Files is agnostisch voor waar uw domeincontroller wordt gehost. Zodra een opslagaccount is gekoppeld aan een domein, kan de eindgebruiker een bestandsshare monteren met het gebruikersaccount waarmee hij zich op zijn pc heeft aangemeld. Verificatie op basis van AD maakt gebruik van het Kerberos-verificatieprotocol.
+- **Azure Active Directory Domain Services (Azure AD DS):** Azure AD DS biedt een door Microsoft beheerde domeincontroller die kan worden gebruikt voor Azure-resources. Domein dat lid wordt van uw opslagaccount met Azure AD DS biedt vergelijkbare voordelen als domeintoetreding tot een Active Directory die eigendom is van een klant. Deze implementatieoptie is het handigst voor toepassingslift- en shiftscenario's waarvoor ad-gebaseerde machtigingen nodig zijn. Aangezien Azure AD DS verificatie op basis van AD biedt, maakt deze optie ook gebruik van het Kerberos-verificatieprotocol.
 - **Azure-opslagaccountsleutel**: Azure-bestandsshares kunnen ook worden gemonteerd met een Azure-opslagaccountsleutel. Om een bestandsshare op deze manier te monteren, wordt de naam van het opslagaccount gebruikt als gebruikersnaam en wordt de opslagaccountsleutel als wachtwoord gebruikt. Het gebruik van de opslagaccountsleutel om het Azure-bestandsaandeel te monteren is in feite een beheerbewerking van beheerders, omdat de gemonteerde bestandsshare volledige machtigingen heeft voor alle bestanden en mappen op het aandeel, zelfs als ze ACL's hebben. Wanneer u de opslagaccountsleutel gebruikt om over SMB te monteren, wordt het NTLMv2-verificatieprotocol gebruikt.
 
 Voor klanten die migreren van on-premises bestandsservers of nieuwe bestandsshares maken in Azure-bestanden die bedoeld zijn om zich te gedragen als Windows-bestandsservers of NAS-apparaten, is domein dat uw opslagaccount aansluit bij **Active Directory,** de aanbevolen optie. Zie Azure [Files Active Directory-overzicht](storage-files-active-directory-overview.md)voor meer informatie over het samenvoegen van uw opslagaccount door een domein met een Active Directory van de klant.
@@ -49,7 +49,7 @@ Azure-bestandsshares zijn overal toegankelijk via het openbare eindpunt van het 
 
 Als u de toegang tot uw Azure-bestandsshare wilt deblokkeren, hebt u twee belangrijke opties:
 
-- Blokkeer poort 445 voor het on-premises netwerk van uw organisatie. Azure-bestandsshares zijn alleen extern toegankelijk via het openbare eindpunt via internetveilige protocollen zoals SMB 3.0 en de FileREST API. Dit is de eenvoudigste manier om toegang te krijgen tot uw Azure-bestandsshare van on-premises, omdat hiervoor geen geavanceerde netwerkconfiguratie nodig is die verder gaat dan het wijzigen van de uitgaande poortregels van uw organisatie, maar we raden u aan oudere en afgeschafte versies van de SMB te verwijderen protocol, namelijk SMB 1.0. Zie [Windows/Windows Server beveiligen](storage-how-to-use-files-windows.md#securing-windowswindows-server) en Linux [beveiligen](storage-how-to-use-files-linux.md#securing-linux)voor meer informatie.
+- Blokkeer poort 445 voor het on-premises netwerk van uw organisatie. Azure-bestandsshares zijn alleen extern toegankelijk via het openbare eindpunt via internetveilige protocollen zoals SMB 3.0 en de FileREST API. Dit is de eenvoudigste manier om toegang te krijgen tot uw Azure-bestandsshare van on-premises, omdat hiervoor geen geavanceerde netwerkconfiguratie nodig is die verder gaat dan het wijzigen van de uitgaande poortregels van uw organisatie, maar we raden u aan oudere en afgeschafte versies van het SMB-protocol, namelijk SMB 1.0, te verwijderen. Zie [Windows/Windows Server beveiligen](storage-how-to-use-files-windows.md#securing-windowswindows-server) en Linux [beveiligen](storage-how-to-use-files-linux.md#securing-linux)voor meer informatie.
 
 - Toegang tot Azure-bestand deelt via een ExpressRoute- of VPN-verbinding. Wanneer u uw Azure-bestandsshare opent via een netwerktunnel, u uw Azure-bestandsshare als een on-premises bestandsshare monteren, omdat smb-verkeer uw organisatiegrens niet overschrijdt.   
 
@@ -153,7 +153,7 @@ Nieuwe bestandsaandelen beginnen met het volledige aantal credits in de burst-bu
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Standaardbestandsshares inschakelen tot 100 TiB
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
 
-#### <a name="regional-availability"></a>Regionale beschikbaarheid
+#### <a name="limitations"></a>Beperkingen
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="redundancy"></a>Redundantie

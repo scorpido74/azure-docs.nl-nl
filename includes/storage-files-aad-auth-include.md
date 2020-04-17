@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 07/30/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b248bbb526baf355faf2564358884fd83422b037
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 167d50e5c7f3049f46fd8540630e47044240809f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77565079"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536575"
 ---
-[Azure Files](../articles/storage/files/storage-files-introduction.md) ondersteunt verificatie op basis van identiteit via Server Message Block (SMB) via [Active Directory (AD)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) (preview) en [Azure Active Directory Domain Services (Azure AD DS)](../articles/active-directory-domain-services/overview.md) (GA). In dit artikel wordt aandacht uitgeschreven voor de manier waarop Azure Files gebruik kan maken van domeinservices, on-premises of in Azure, om identiteitsgebaseerde toegang tot Azure Files via SMB te ondersteunen. Hiermee u uw bestaande bestandsservers eenvoudig vervangen door Azure Files en uw bestaande directoryservice blijven gebruiken, waardoor naadloze gebruikerstoegang tot shares behouden blijft. 
+[Azure Files](../articles/storage/files/storage-files-introduction.md) ondersteunt verificatie op basis van identiteit via Server Message Block (SMB) via [on-premises Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) (preview) en [Azure Active Directory Domain Services (Azure AD DS)](../articles/active-directory-domain-services/overview.md). In dit artikel wordt aandacht gevraagd voor de manier waarop Azure-bestandsshares domeinservices kunnen gebruiken, on-premises of in Azure, ter ondersteuning van identiteitsgebaseerde toegang tot Azure-bestandsshares via SMB. Als u toegang op basis van identiteit inschakelt voor uw Azure-bestandsshares, u bestaande bestandsservers vervangen door Azure-bestandsshares zonder uw bestaande directoryservice te vervangen, waardoor naadloze gebruikerstoegang tot shares behouden blijven. 
 
-Azure Files dwingt autorisatie af voor de gebruiker toegang tot zowel het aandeel als het map-/bestandsniveau. Toestemmingstoewijzing op shareniveau kan worden toegewezen aan Azure AD-gebruikers of -groepen die worden beheerd via het typische [RBAC-model (Role-based Access Control).](../articles/role-based-access-control/overview.md) Met RBAC moeten de referenties die u gebruikt voor bestandstoegang beschikbaar zijn of gesynchroniseerd met Azure AD. U ingebouwde RBAC-rollen zoals Storage File Data SMB Share Reader toewijzen aan gebruikers of groepen in Azure AD om leestoegang te verlenen tot een Azure-bestandsshare.
+Azure Files verleent autorisatie voor gebruikerstoegang tot zowel de share- als de map-/bestandsniveaus. Toestemmingstoewijzing op share-level kan worden uitgevoerd op Azure Active Directory-gebruikers of -groepen die worden beheerd via het [RBAC-model (Role-based Access Control).](../articles/role-based-access-control/overview.md) Met RBAC moeten de referenties die u gebruikt voor bestandstoegang beschikbaar zijn of gesynchroniseerd met Azure AD. U ingebouwde RBAC-rollen zoals Storage File Data SMB Share Reader toewijzen aan gebruikers of groepen in Azure AD om leestoegang te verlenen tot een Azure-bestandsshare.
 
-Op map-/bestandsniveau ondersteunt Azure Files het behouden, overnemen en afdwingen van [Windows DACLs,](https://docs.microsoft.com/windows/win32/secauthz/access-control-lists) net als alle Windows-bestandsservers. Als u gegevens over SMB kopieert vanuit een bestandsshare naar Azure-bestanden, of omgekeerd, u ervoor kiezen om Windows-DACLs te behouden. Of u nu van plan bent autorisatie af te dwingen of niet, u Azure Files gebruiken om samen met uw gegevens back-ups te maken. 
+Op map-/bestandsniveau ondersteunt Azure Files het behouden, overnemen en afdwingen van [Windows DACLs,](https://docs.microsoft.com/windows/win32/secauthz/access-control-lists) net als alle Windows-bestandsservers. U ervoor kiezen om Windows DACLs te bewaren bij het kopiëren van gegevens over SMB tussen uw bestaande bestandsshare en uw Azure-bestandsshares. Of u nu van plan bent autorisatie af te dwingen of niet, u Azure-bestandsshares gebruiken om een back-up te maken van ACL's samen met uw gegevens. 

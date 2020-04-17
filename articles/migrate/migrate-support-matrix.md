@@ -4,12 +4,12 @@ description: Biedt een overzicht van ondersteuningsinstellingen en beperkingen v
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: raynew
-ms.openlocfilehash: bf719f9179384ec3dca99d2429f569ef209b5daa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f766bf95bb7e26d942e7dde3f315bbef6d5dc5c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127706"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535193"
 ---
 # <a name="azure-migrate-support-matrix"></a>Ondersteuningsmatrix voor Azure Migreren
 
@@ -69,13 +69,12 @@ Een Azure-migratieproject maken | Uw Azure-account heeft machtigingen nodig om e
 Het Azure Migrate-toestel registreren| Azure Migrate gebruikt een lichtgewicht [Azure Migrate-toestel](migrate-appliance.md) om machines te beoordelen met Azure Migrate Server Assessment en om [agentless migratie](server-migrate-overview.md) van VMware VM's met Azure Migrate Server Migration uit te voeren. Dit toestel detecteert machines en stuurt metagegevens en prestatiegegevens naar Azure Migrate.<br/><br/> Tijdens de registratie worden registerproviders (Microsoft.OffAzure, Microsoft.Migrate en Microsoft.KeyVault) geregistreerd bij het abonnement dat in het toestel is gekozen, zodat het abonnement werkt met de resourceprovider. Als u zich wilt registreren, hebt u toegang tot inzender of eigenaar nodig voor het abonnement.<br/><br/> **VMware**-Tijdens het instappen maakt Azure Migrate twee Azure Active Directory -apps (Azure AD). De eerste app communiceert tussen de toestelagents en de Azure Migrate-service. De app heeft geen machtigingen om Azure resource management calls te voeren of RBAC toegang te hebben voor resources. De tweede app heeft toegang tot een Azure Key Vault die is gemaakt in het gebruikersabonnement voor alleen agentloze VMware-migratie. Bij agentless migratie maakt Azure Migrate een Key Vault om toegangssleutels te beheren tot het replicatieopslagaccount in uw abonnement. Het heeft RBAC-toegang op de Azure Key Vault (in de clienttenant) wanneer detectie wordt gestart vanuit het toestel.<br/><br/> **Hyper-V**-Tijdens het instappen. Azure Migrate maakt één Azure AD-app. De app communiceert tussen de toestelagents en de Azure Migrate-service. De app heeft geen machtigingen om Azure resource management calls te voeren of RBAC toegang te hebben voor resources. | Instellen voor [VMware,](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)of [fysieke servers](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance).
 Een sleutelkluis maken voor VMware-agentloze migratie | Als u VMware VM's wilt migreren met agentless Azure Migrate Server Migration, maakt Azure Migrate een Key Vault om toegangssleutels te beheren tot het replicatieopslagaccount in uw abonnement. Als u de kluis wilt maken, stelt u machtigingen (eigenaar of inzender- en gebruikerstoegangsbeheerder) in op de brongroep waarin het Azure Migrate-project zich bevindt. | [Machtigingen instellen.](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)
 
-## <a name="supported-geographies"></a>Ondersteunde regio's
+## <a name="supported-geographies-public-cloud"></a>Ondersteunde regio's (public cloud)
 
-U een Azure Migrate-project maken in een aantal regio's. Hoewel u alleen projecten in deze regio's maken, u machines voor andere doellocaties beoordelen of migreren. De projectgeografie wordt alleen gebruikt om de gedetecteerde metagegevens op te slaan.
+U een Azure Migrate-project maken in een aantal regio's in de openbare cloud. Hoewel u alleen projecten in deze regio's maken, u machines voor andere doellocaties beoordelen of migreren. De projectgeografie wordt alleen gebruikt om de gedetecteerde metagegevens op te slaan.
 
 **Geografie** | **Opslaglocatie met ametagegevens**
 --- | ---
-Azure Government | VS (overheid) - Virginia
 Azië en Stille Oceaan | Oost-Azië of Zuidoost-Azië
 Australië | Australië Oost of Australië Zuidoost
 Brazilië | Brazilië - zuid
@@ -89,9 +88,13 @@ Verenigd Koninkrijk | Verenigd Koninkrijk Zuid of UK West
 Verenigde Staten | Centraal VS of West US 2
 
 
- > [!NOTE]
- > Ondersteuning voor Azure Government is momenteel alleen beschikbaar voor de [oudere versie](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) van Azure Migrate.
+## <a name="supported-geographies-azure-government"></a>Ondersteunde regio's (Azure Government)
 
+**Taak** | **Geografie** | **Details**
+--- | --- | ---
+Project maken | Verenigde Staten | Metadata wordt opgeslagen in us Gov Arizona, US Gov Virginia
+Doelbeoordeling | Verenigde Staten | Doelregio's: US Gov Arizona, US Gov Virginia/US Gov Texas
+Doelreplicatie | Verenigde Staten | Doelregio's: US DoD Central, US DoD East, US Gov Arizona, US Gov Iowa, US Gov Texas, US Gov Virginia
 
 
 ## <a name="vmware-assessment-and-migration"></a>VMware-beoordeling en migratie

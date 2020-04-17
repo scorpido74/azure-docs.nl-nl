@@ -3,12 +3,12 @@ title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate-toestel dat wordt gebruikt bij serverbeoordeling en -migratie.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 130de0824a1671fb0b0e3e980f06f4c3abc689d2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437594"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538219"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -24,6 +24,17 @@ Het Azure Migrate-toestel wordt gebruikt in de volgende scenario's.
 **VMware VM agentless migratie** | Azure Migreren:Servermigratie | Ontdek VMware VM's <br/><br/> VMware VM's repliceren met agentloze migratie.
 **Hyper-V VM-beoordeling** | Azure Migreren:Serverbeoordeling | Ontdek Hyper-V VM's<br/><br/> Verzamel metagegevens en prestatiemetadata voor beoordelingen.
 **Fysieke machinebeoordeling** |  Azure Migreren:Serverbeoordeling |  Ontdek fysieke servers (of VM's die u als fysieke servers behandelt).<br/><br/> Verzamel metagegevens en prestatiemetadata voor beoordelingen.
+
+## <a name="deployment-methods"></a>Implementatiemethoden
+
+Het toestel kan met een aantal methoden worden geïmplementeerd:
+
+- Het toestel kan worden geïmplementeerd met behulp van een sjabloon voor VMware VM's en Hyper-V VM's (OVA-sjabloon voor VMware of VHD voor Hyper-V).
+- Als u geen sjabloon wilt gebruiken, u het toestel implementeren voor VMware of Hyper-V met behulp van een PowerShell-script.
+- In Azure Government moet u het toestel implementeren met behulp van een script.
+- Voor fysieke servers implementeert u het toestel altijd met behulp van een script.
+- Download links zijn beschikbaar in de onderstaande tabellen.
+
 
 ## <a name="appliance---vmware"></a>Toestel - VMware 
 
@@ -67,7 +78,7 @@ In de volgende tabel worden de vereisten voor Azure Migrate-toestel voor VMware 
 **Vereiste** | **Fysiek** 
 --- | ---
 **Toestelonderdelen** | Het apparaat heeft de volgende onderdelen: <br/><br/> - **Beheer-app**: Dit is een web-app voor gebruikersinvoer tijdens de implementatie van apparaten. Wordt gebruikt bij het beoordelen van machines voor migratie naar Azure.<br/> - **Detectieagent**: De agent verzamelt machineconfiguratiegegevens. Wordt gebruikt bij het beoordelen van machines voor migratie naar Azure.<br/>- **Assessment agent**: De agent verzamelt prestatiegegevens. Wordt gebruikt bij het beoordelen van machines voor migratie naar Azure.<br/>- **Automatische updateservice**: Werkt toestelonderdelen bij (wordt elke 24 uur uitgevoerd).
-**Ondersteunde implementatie** | Implementeer als een speciale fysieke machine of een VM met behulp van een PowerShell-installatiescript.
+**Ondersteunde implementatie** | Implementeer als een speciale fysieke machine of een VM met behulp van een PowerShell-installatiescript. Het script is beschikbaar om te downloaden van de portal.
 **Projectondersteuning** |  Een toestel kan aan één project worden gekoppeld. <br/> Elk aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectielimieten** | Een toestel kan tot 250 fysieke servers detecteren.
 **PowerShell-script** | Download het script (AzureMigrateInstaller.ps1) in een map met rits van de portal. [Meer informatie](tutorial-assess-physical.md#set-up-the-appliance). U ook [direct downloaden.](https://go.microsoft.com/fwlink/?linkid=2105112)<br/><br/> Downloadgrootte is 59,7 MB.
@@ -78,8 +89,10 @@ In de volgende tabel worden de vereisten voor Azure Migrate-toestel voor VMware 
 
 Het Azure Migrate-toestel heeft connectiviteit met internet nodig.
 
-- Wanneer u het toestel implementeert, controleert Azure Migrate de verbinding met de URL's die in de onderstaande tabel zijn samengevat.
+- Wanneer u het toestel implementeert, controleert Azure Migrate de vereiste URL's.
 - Als u een op URL gebaseerde proxy gebruikt om verbinding te maken met internet, moet u toegang tot deze URL's toestaan, zodat de proxy alle CNAME-records oplost die zijn ontvangen terwijl u de URL's opzoekt.
+
+### <a name="public-cloud-urls"></a>URL's in de openbare cloud
 
 **Url** | **Details**  
 --- | --- |
@@ -95,6 +108,25 @@ download.microsoft.com/download | Toestaan downloads van Microsoft downloaden.
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Verbinding maken met URL's van Azure Migrate-service.
 *.hypervrecoverymanager.windowsazure.com | **Gebruikt voor VMware agentless migratie**<br/><br/> Verbinding maken met URL's van Azure Migrate-service.
 *.blob.core.windows.net |  **Gebruikt voor VMware agentless migratie**<br/><br/>Gegevens uploaden naar opslag voor migratie.
+
+### <a name="government-cloud-urls"></a>URL's van overheidscloud
+
+**Url** | **Details**  
+--- | --- |
+*.portal.azure.us  | Ga naar Azure Portal.
+graph.windows.net | Meld u aan bij uw Azure-abonnement.
+login.microsoftonline.us  | Maak AD-apps (Azure Active Directory) om te communiceren met Azure Migrate.
+management.usgovcloudapi.net | Azure AD-apps maken om te communiceren met de Azure Migrate-service.
+dc.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor interne controle.
+*.vault.usgovcloudapi.net | Geheimen beheren in de Azure Key Vault.
+aka.ms/* | Geef toegang tot aka-links. Wordt gebruikt voor updates van Azure Migrate appliance.
+download.microsoft.com/download | Toestaan downloads van Microsoft downloaden.
+*.servicebus.usgovcloudapi.net  | Communicatie tussen het toestel en de Azure Migrate-service.
+*.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Verbinding maken met URL's van Azure Migrate-service.
+*.hypervrecoverymanager.windowsazure.us | **Gebruikt voor VMware agentless migratie**<br/><br/> Verbinding maken met URL's van Azure Migrate-service.
+*.blob.core.usgovcloudapi.net  |  **Gebruikt voor VMware agentless migratie**<br/><br/>Gegevens uploaden naar opslag voor migratie.
+*.applicationinsights.us | Wordt gebruikt door de gateway-agent op het toestel om toegang te krijgen tot het Application Insights-eindpunt voor diagnostische monitoring.
+
 
 
 
@@ -144,7 +176,7 @@ IPv6-adressen | Vm. Guest.Net
 Doorvoer lezen (MB per seconde) | net.received.average
 Schrijfdoorvoer (MB per seconde) | net.transmitted.average
 **Details van het voorraadpad** | 
-Name | Container. GetType(). Naam
+Naam | Container. GetType(). Naam
 Type onderliggend object | Container. ChildType
 Referentiegegevens | Container. MoRef (MoRef)
 Bovenliggende gegevens | Container.Parent

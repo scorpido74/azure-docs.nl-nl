@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: a5625341e3dd279d93a59c57cd3325245351723e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd21a78d0271f91d334bba5aba748f3770ad38cf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271874"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537930"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Gegevens verplaatsen naar Azure Blob-opslag
 
@@ -21,7 +21,7 @@ In dit artikel worden de beste manieren uitgelegd om gegevens naar Blob-opslag t
 
 Houd rekening met deze feiten:
 
-* Azure HPC-cache maakt gebruik van een gespecialiseerde opslagindeling om gegevens in Blob-opslag te ordenen. Daarom moet een Blob-opslagdoel een nieuwe, lege container zijn of een Blob-container die eerder is gebruikt voor Azure HPC-cachegegevens. <!--([Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) also uses this cloud file system.)-->
+* Azure HPC-cache maakt gebruik van een gespecialiseerde opslagindeling om gegevens in Blob-opslag te ordenen. Daarom moet een Blob-opslagdoel een nieuwe, lege container zijn of een Blob-container die eerder is gebruikt voor Azure HPC-cachegegevens.
 
 * Het kopiëren van gegevens via de Azure HPC-cache naar een back-endopslagdoel is efficiënter wanneer u meerdere clients en parallelle bewerkingen gebruikt. Een eenvoudige kopie opdracht van een client zal gegevens langzaam verplaatsen.
 
@@ -31,13 +31,13 @@ Als u het laadhulpprogramma niet wilt gebruiken of als u inhoud wilt toevoegen a
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>Gegevens vooraf laden in Blob-opslag met CLFSLoad
 
-U de <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Avere CLFSLoad-hulpprogramma om gegevens naar een nieuwe Blob-opslagcontainer te kopiëren voordat u deze toevoegt als opslagdoel. Dit hulpprogramma draait op één Linux-systeem en schrijft gegevens in de eigen indeling die nodig is voor Azure HPC-cache. CLFSLoad is de meest efficiënte manier om een Blob-opslagcontainer in te vullen voor gebruik met de cache.
+U het hulpprogramma Avere CLFSLoad gebruiken om gegevens naar een nieuwe Blob-opslagcontainer te kopiëren voordat u deze toevoegt als opslagdoel. Dit hulpprogramma draait op één Linux-systeem en schrijft gegevens in de eigen indeling die nodig is voor Azure HPC-cache. CLFSLoad is de meest efficiënte manier om een Blob-opslagcontainer in te vullen voor gebruik met de cache.
 
 Het Avere CLFSLoad-hulpprogramma is op verzoek beschikbaar van uw Azure HPC-cacheteam. Vraag uw team contact voor, of open een [support ticket](hpc-cache-support-ticket.md) om hulp te vragen.
 
 Deze optie werkt alleen met nieuwe, lege containers. Maak de container voordat u Avere CLFSLoad gebruikt.
 
-Gedetailleerde informatie is opgenomen in de Avere CLFSLoad-distributie, die op verzoek beschikbaar is van het Azure HPC-cacheteam. <!-- [Avere CLFSLoad readme](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md). --><!-- caution literal link -->
+Gedetailleerde informatie is opgenomen in de Avere CLFSLoad-distributie, die op verzoek beschikbaar is van het Azure HPC-cacheteam.
 
 Een algemeen overzicht van het proces:
 
@@ -51,8 +51,6 @@ Het Hulpprogramma van Avere CLFSLoad heeft de volgende informatie nodig:
 * De naam van de lege Blob-opslagcontainer
 * Een SAS-token (shared access signature) waarmee het hulpprogramma naar de container kan schrijven
 * Een lokaal pad naar de gegevensbron - een lokale map met de gegevens die u wilt kopiëren, of een lokaal pad naar een opgezet extern systeem met de gegevens
-
-<!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 
 ## <a name="copy-data-through-the-azure-hpc-cache"></a>Gegevens kopiëren via de Azure HPC-cache
 

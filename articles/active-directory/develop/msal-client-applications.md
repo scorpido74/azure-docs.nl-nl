@@ -13,17 +13,17 @@ ms.date: 04/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: d59819c0ab614b0f6cc102c7ebe8c760fb851599
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c3292a31e5f750c16933acf94509e0ad226080a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084116"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534309"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Openbare client- en vertrouwelijke clienttoepassingen
 Microsoft Authentication Library (MSAL) definieert twee soorten clients: openbare clients en vertrouwelijke clients. De twee clienttypen onderscheiden zich door hun vermogen om veilig te verifiëren met de autorisatieserver en de vertrouwelijkheid van hun clientreferenties te behouden. Azure AD Authentication Library (ADAL) gebruikt daarentegen de zogenaamde *verificatiecontext* (een verbinding met Azure AD).
 
-- **Vertrouwelijke clienttoepassingen** zijn apps die worden uitgevoerd op servers (web-apps, Web API-apps of zelfs service/daemon-apps). Ze worden beschouwd als moeilijk toegankelijk, en om die reden in staat om een aanvraag geheim te houden. Vertrouwelijke clients kunnen configuratie-tijdgeheimen bevatten. Elk exemplaar van de client heeft een aparte configuratie (inclusief client-ID en clientgeheim). Deze waarden zijn moeilijk te extraheren voor eindgebruikers. Een web-app is de meest voorkomende vertrouwelijke client. De client-ID wordt blootgesteld via de webbrowser, maar het geheim wordt alleen doorgegeven in het achterkanaal en nooit direct blootgesteld.
+- **Vertrouwelijke clienttoepassingen** zijn apps die worden uitgevoerd op servers (web-apps, web-API-apps of zelfs service/daemon-apps). Ze worden beschouwd als moeilijk toegankelijk, en om die reden in staat om een aanvraag geheim te houden. Vertrouwelijke clients kunnen configuratie-tijdgeheimen bevatten. Elk exemplaar van de client heeft een aparte configuratie (inclusief client-ID en clientgeheim). Deze waarden zijn moeilijk te extraheren voor eindgebruikers. Een web-app is de meest voorkomende vertrouwelijke client. De client-ID wordt blootgesteld via de webbrowser, maar het geheim wordt alleen doorgegeven in het achterkanaal en nooit direct blootgesteld.
 
     Vertrouwelijke client-apps: <BR>
     ![Web app](media/msal-client-applications/web-app.png) ![Web API](media/msal-client-applications/web-api.png) ![Daemon/service](media/msal-client-applications/daemon-service.png)

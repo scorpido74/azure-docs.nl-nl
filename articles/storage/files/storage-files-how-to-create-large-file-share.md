@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c683e9847864de4e3409fb6dbd533497a5ae3cea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060998"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537675"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Grote bestandsshares inschakelen en maken
 
@@ -33,7 +33,7 @@ Het inschakelen van grote bestandsshares op een account is een onomkeerbaar proc
 
 ### <a name="portal"></a>Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **alle services**in de Azure-portal . 
 1. Voer in de lijst met bronnen **opslagaccounts**in . Terwijl u typt, worden de lijstfilters op basis van uw invoer weergegeven. Selecteer **Opslagaccounts**.
 1. Selecteer **Toevoegen**in het venster **Opslagaccounts** dat wordt weergegeven .
@@ -43,7 +43,7 @@ Het inschakelen van grote bestandsshares op een account is een onomkeerbaar proc
     ![Schermafbeelding van het maken van een resourcegroep in de portal](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. Voer vervolgens een naam in voor het opslagaccount. De naam moet uniek zijn in Azure. De naam moet ook 3 tot 24 tekens in lengte, en het kan alleen nummers en kleine letters.
-1. Selecteer een locatie voor uw opslagaccount en controleer of het een van de ondersteunde replicatie is [voor grote bestandsshares.](storage-files-planning.md#regional-availability)
+1. Selecteer een locatie voor uw opslagaccount.
 1. Stel de replicatie in op **lokaal redundante opslag** of **zoneredundante opslag**.
 1. Laat deze velden achter bij hun standaardwaarden:
 

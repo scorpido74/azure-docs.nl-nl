@@ -3,12 +3,12 @@ title: Exporteren met Behulp van Stream Analytics vanuit Azure Application Insig
 description: Stream Analytics kan de gegevens die u exporteert vanuit Application Insights continu transformeren, filteren en routeren.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: b93bc49d005e3e54f1e5db84e6ff1adc49e25a65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15d1efa3a632024429d41f27fc23c569cd85bec2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77664011"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536876"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Stream Analytics gebruiken om geëxporteerde gegevens te verwerken vanuit Application Insights
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) is de ideale tool voor het verwerken van gegevens [die worden geëxporteerd vanuit Application Insights.](export-telemetry.md) Stream Analytics kan gegevens uit verschillende bronnen halen. Het kan transformeren en filteren van de gegevens, en vervolgens route naar een verscheidenheid van putten.
@@ -55,7 +55,7 @@ Continue export levert altijd gegevens op naar een Azure Storage-account, dus u 
 
     ![Gebeurtenistypen kiezen](./media/export-stream-analytics/080.png)
 
-1. Laat sommige gegevens zich ophopen. Achterover leunen en laat mensen gebruik maken van uw toepassing voor een tijdje. Telemetrie komt binnen en u ziet statistische grafieken in [metrische verkenner](../../azure-monitor/app/metrics-explorer.md) en afzonderlijke gebeurtenissen in [diagnostisch zoeken.](../../azure-monitor/app/diagnostic-search.md) 
+1. Laat sommige gegevens zich ophopen. Achterover leunen en laat mensen gebruik maken van uw toepassing voor een tijdje. Telemetrie komt binnen en u ziet statistische grafieken in [metrische verkenner](../../azure-monitor/platform/metrics-charts.md) en afzonderlijke gebeurtenissen in [diagnostisch zoeken.](../../azure-monitor/app/diagnostic-search.md) 
    
     En ook zullen de gegevens exporteren naar uw opslag. 
 2. Controleer de geëxporteerde gegevens. Kies in Visual Studio **Weergave / Cloud Explorer**en open Azure / Storage. (Als u deze menuoptie niet hebt, moet u de Azure SDK installeren: Open het dialoogvenster Nieuw project en open Visual C# / Cloud / Get Microsoft Azure SDK voor .NET.)

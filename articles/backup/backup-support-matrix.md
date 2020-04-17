@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor Azure Backup
 description: Bevat een samenvatting van ondersteuningsinstellingen en -beperkingen voor de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 120882b15dcf9f27c280984ff6d0df31e38ebb73
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: b87430c9ff7d806fd1fc74d5d2a8270f9db43b53
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878949"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537318"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteuningsmatrix voor Azure Backup
 
@@ -90,7 +90,7 @@ Azure Backup biedt geen ondersteuning voor automatische klokaanpassing voor zome
 
 Ondersteuning voor schijfontdubbeling is als volgt:
 
-- Schijfontdubbeling wordt on-premises ondersteund wanneer u DPM of MAB's gebruikt om een back-up te maken van Hyper-V VM's waarop Windows wordt uitgevoerd. Windows Server voert gegevensontdubbeling (op hostniveau) uit op virtuele harde schijven (VHD's) die aan de VM zijn gekoppeld als back-upopslag.
+- Schijfontdubbeling wordt on-premises ondersteund wanneer u DPM of MABS gebruikt om een back-up te maken van Hyper-V VM's waarop Windows wordt uitgevoerd. Windows Server voert gegevensontdubbeling (op hostniveau) uit op virtuele harde schijven (VHD's) die aan de VM zijn gekoppeld als back-upopslag.
 - Ontdubbeling wordt niet ondersteund in Azure voor Backup-onderdelen. Wanneer DPM en MABS in Azure worden geïmplementeerd, kunnen de opslagschijven die aan de VM zijn gekoppeld, niet worden gededupliceerd.
 
 ## <a name="security-and-encryption-support"></a>Ondersteuning voor beveiliging en versleuteling

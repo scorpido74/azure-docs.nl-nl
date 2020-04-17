@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: c76b14e4f08ec930159498da4a35fdad0341929e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eaba4bf7760e150f2477ee743c797f94784b8506
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278504"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535499"
 ---
 # <a name="update-management-solution-in-azure"></a>UpdateManagementoplossing in Azure
 
@@ -127,7 +127,7 @@ VM's die zijn gemaakt op basis van de On-demand Red Hat Enterprise Linux (RHEL)-
 
 ## <a name="permissions"></a>Machtigingen
 
-Als u update-implementaties wilt maken en beheren, hebt u specifieke machtigingen nodig. Zie Toegang op basis [van rollen – Updatebeheer](automation-role-based-access-control.md#update-management)voor meer informatie over deze machtigingen.
+Als u update-implementaties wilt maken en beheren, hebt u specifieke machtigingen nodig. Zie Toegang op basis [van rollen – Updatebeheer](automation-role-based-access-control.md#update-management-permissions)voor meer informatie over deze machtigingen.
 
 ## <a name="solution-components"></a>Oplossingsonderdelen
 

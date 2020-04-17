@@ -3,12 +3,12 @@ title: Publicatie van duurzame functies in Azure Event Grid (voorbeeld)
 description: Meer informatie over het configureren van automatische Azure Event Grid publishing voor duurzame functies.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 52ffcd4eb81936ffcfa61580288c60bd59ffb744
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 671f7bd5221a936ea9dad0f0cece895bdbe9512f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78249764"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535482"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Publicatie van duurzame functies in Azure Event Grid (voorbeeld)
 
@@ -68,14 +68,36 @@ Nu u evenementen naar het onderwerp sturen.
 
 Zoek het `host.json` bestand in het project Duurzame functies.
 
+### <a name="durable-functions-1x"></a>Duurzame functies 1,x
+
 Toevoegen `eventGridTopicEndpoint` `eventGridKeySettingName` en `durableTask` in een eigenschap.
 
 ```json
 {
+  "durableTask": {
+    "eventGridTopicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
+    "eventGridKeySettingName": "EventGridKey"
+  }
+}
+```
+
+### <a name="durable-functions-2x"></a>Duurzame functies 2.x
+
+Voeg `notifications` een sectie `durableTask` toe aan de `<topic_name>` eigenschap van het bestand, vervangen door de naam die u hebt gekozen. Als `durableTask` de `extensions` of-eigenschappen niet bestaan, maakt u deze als volgt:
+
+```json
+{
+  "version": "2.0",
+  "extensions": {
     "durableTask": {
-        "eventGridTopicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
-        "eventGridKeySettingName": "EventGridKey"
+      "notifications": {
+        "eventGrid": {
+          "topicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
+          "keySettingName": "EventGridKey"
+        }
+      }
     }
+  }
 }
 ```
 

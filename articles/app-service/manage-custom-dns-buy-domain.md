@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259277"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535703"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Aangepaste domeinnaam voor Azure App Service kopen
 
@@ -137,7 +137,7 @@ U ziet ook de geselecteerde hostnamen op de pagina **Aangepaste domeinen** in de
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> Een **Niet Veilig** label voor uw aangepaste domein betekent dat het nog niet is gekoppeld aan een SSL-certificaat, en elk HTTPS-verzoek van een browser naar uw aangepaste domein ontvangt een fout of waarschuwing, afhankelijk van de browser. Zie Een aangepaste [DNS-naam beveiligen met een SSL-binding in Azure App Service](configure-ssl-bindings.md)als u SSL-binding wilt configureren.
+> Een **Not Secure-label** voor uw aangepaste domein betekent dat het nog niet is gekoppeld aan een TLS/SSL-certificaat en dat elk HTTPS-verzoek van een browser naar uw aangepaste domein een fout of waarschuwing ontvangt, afhankelijk van de browser. Zie [TLS-binding beveiligen met een TLS/SSL-binding in Azure App Service](configure-ssl-bindings.md)als u TLS-binding wilt configureren.
 >
 
 Als u de hostnamen wilt testen, navigeert u naar de vermelde hostnamen in de browser. Probeer in het voorbeeld in de voorgaande schermafbeelding naar _kontoso.net_ en _www\.kontoso.net_.

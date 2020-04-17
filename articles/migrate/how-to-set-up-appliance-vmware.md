@@ -2,21 +2,26 @@
 title: Een Azure Migrate-toestel instellen voor VMware
 description: Meer informatie over het instellen van een Azure Migrate-toestel om Vm's van VMware te beoordelen en te migreren.
 ms.topic: article
-ms.date: 03/23/2020
-ms.openlocfilehash: 7a7d0007d2824abc781411f9529f9fa4ac89e55c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336796"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538253"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Een toestel instellen voor VMware VM's
 
-In dit artikel wordt beschreven hoe u het Azure Migrate appliance instelt voor beoordeling met het [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) tool en voor agentless migratie met behulp van het Azure [Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) tool.
+Volg dit artikel om het Azure Migrate appliance in te stellen voor beoordeling met het [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) tool en voor agentless migratie met behulp van het [Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) tool.
 
 Het [Azure Migrate-toestel](migrate-appliance.md) is een lichtgewicht toestel dat wordt gebruikt door Azure Migrate:Server Assessment en Server Migration om on-premises Vm's vMware te ontdekken, VM-metagegevens/prestatiegegevens naar Azure te verzenden en voor replicatie van VMware VM's tijdens agentloze migratie.
 
-U het Azure Migrate-toestel instellen voor VMware VM-beoordeling met behulp van een OVA-sjabloon die u downloadt of met een PowerShell-installatiescript. In dit artikel wordt beschreven hoe u het toestel instelt met behulp van de OVA-sjabloon. Als u het toestel met het script wilt instellen, volgt u de instructies in [dit artikel.](deploy-appliance-script.md)
+U het toestel op een aantal manieren implementeren:
+
+- Instellen op een VMware VM met behulp van een gedownloade OVA-sjabloon. Dit is de methode beschreven in dit artikel.
+- Instellen op een VMware VM of fysieke machine met een PowerShell-installatiescript. [Deze methode](deploy-appliance-script.md) moet worden gebruikt als u een VM niet instellen met een OVA-sjabloon of als u in Azure-beheer zit.
+
+Nadat u het toestel hebt gemaakt, controleert u of het verbinding kan maken met Azure Migrate:Server Assessment, configureer het voor de eerste keer en registreer u het met het Azure Migrate-project.
 
 
 ## <a name="appliance-deployment-ova"></a>Toestelimplementatie (OVA)
@@ -62,9 +67,9 @@ Importeer het gedownloade bestand en maak een VM.
 9. Controleer en bevestig de instellingen en klik op **Voltooien**.
 
 
-### <a name="verify-appliance-access-to-azure"></a>De toegang tot het toestel tot Azure verifiëren
+## <a name="verify-appliance-access-to-azure"></a>De toegang tot het toestel tot Azure verifiëren
 
-Controleer of de toestel-VM verbinding kan maken met [Azure-URL's](migrate-appliance.md#url-access).
+Zorg ervoor dat de toestel-VM verbinding kan maken met Azure-URL's voor [openbare](migrate-appliance.md#public-cloud-urls) en [overheidsclouds.](migrate-appliance.md#government-cloud-urls)
 
 
 ## <a name="configure-the-appliance"></a>Het toestel configureren
@@ -119,7 +124,7 @@ Voor het ontdekken van toepassingen, rollen en functies en het visualiseren van 
 2. Selecteer het **besturingssysteem**.
 3. Geef een vriendelijke naam op voor de referentie.
 4. Geef **in Gebruikersnaam** en **Wachtwoord**een account op met ten minste gasttoegang op de VM's.
-5. Klik op**toevoegen**.
+5. Klik op **Add**.
 
 Nadat u de vCenter Server- en VM-referenties hebt opgegeven (optioneel), klikt u op **Opslaan en start u detectie** om de on-premises omgeving te detecteren.
 

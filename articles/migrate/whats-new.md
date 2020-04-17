@@ -2,18 +2,20 @@
 title: Nieuwe nieuwe in Azure Migreren
 description: Meer informatie over de nieuwe en recente updates in de Azure Migrate-service.
 ms.topic: overview
-ms.date: 03/22/2020
+ms.date: 04/16/2020
 ms.custom: mvc
-ms.openlocfilehash: 9767f3ea31b57d23c8a6772ff5eb6500f7550802
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1b0221f497ae7bbf84f163eef1ddb862d8de2951
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80127593"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535244"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Nieuwe nieuwe in Azure Migreren
 
 [Azure Migrate](migrate-services-overview.md) helpt u bij het detecteren, beoordelen en migreren van on-premises servers, apps en gegevens naar de Microsoft Azure-cloud. In dit artikel worden nieuwe releases en functies in Azure Migrate samengevat.
+
+
 
 ## <a name="update-march-2020"></a>Update (maart 2020)
 
@@ -58,7 +60,7 @@ De huidige versie van Azure Migrate (uitgebracht in juli 2019) biedt een aantal 
 
 ## <a name="azure-migrate-previous-version"></a>Azure Vorige versie migreren
 
-Als u de vorige versie van Azure Migrate gebruikte (alleen beoordeling van on-premises VMware VM's werd ondersteund), moet u nu de huidige versie gebruiken. In de vorige versie u geen nieuwe Azure Migrate-projecten meer maken of nieuwe ontdekkingen uitvoeren. U hebt nog steeds toegang tot bestaande projecten. Zoek hiervoor in de Azure-portal > **Alle services**naar **Azure Migreren**. In de Azure Migrate-meldingen is er een koppeling om toegang te krijgen tot oude Azure Migrate-projecten.
+Als u de vorige versie van Azure Migrate gebruikt (alleen beoordeling van on-premises VMware VM's werd ondersteund), moet u nu de huidige versie gebruiken. In de vorige versie u geen nieuwe Azure Migrate-projecten meer maken of nieuwe ontdekkingen uitvoeren. U hebt nog steeds toegang tot bestaande projecten. Zoek hiervoor in de Azure-portal > **Alle services**naar **Azure Migreren**. In de Azure Migrate-meldingen is er een koppeling om toegang te krijgen tot oude Azure Migrate-projecten.
 
 
 

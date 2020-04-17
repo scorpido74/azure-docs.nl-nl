@@ -2,13 +2,13 @@
 title: Ondersteuning voor Hyper-V-migratie in Azure Migreren
 description: Meer informatie over ondersteuning voor Hyper-V-migratie met Azure Migrate.
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 8ec0b72cac75518ac938faa202b28d055409e8dc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245822"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538185"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Ondersteuningsmatrix voor Hyper-V-migratie
 
@@ -23,18 +23,44 @@ U maximaal 10 VM's tegelijk selecteren voor replicatie. Als u meer machines wilt
 
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
-| **Implementatie**       | De Hyper-V-host kan zelfstandig of geïmplementeerd worden in een cluster. <br/>Azure Migrate-replicatiesoftware (Hyper-V-replicatieprovider) moet worden geïnstalleerd op de Hyper-V-hosts.|
+| **Implementatie**       | De Hyper-V-host kan zelfstandig of geïmplementeerd worden in een cluster. <br/>Azure Migrate replicatiesoftware (Hyper-V Replicatieprovider) is geïnstalleerd op de Hyper-V hosts.|
 | **Machtigingen**           | U hebt beheerdersmachtigingen nodig voor de Hyper-V-host. |
 | **Host het besturingssysteem** | Windows Server 2019, Windows Server 2016 of Windows Server 2012 R2. |
-| **URL-toegang** | De replicatieprovidersoftware op de Hyper-V-hosts heeft toegang nodig tot deze URLS:<br/><br/> - login.microsoftonline.com: toegangscontrole en identiteitsbeheer met behulp van Active Directory.<br/><br/> - *.backup.windowsazure.com: Overdracht en coördinatie van replicatiegegevens. Url's van service migreren.<br/><br/> - *.blob.core.windows.net: Gegevens uploaden naar opslagaccounts.<br/><br/> - dc.services.visualstudio.com: App-logboeken uploaden die worden gebruikt voor interne monitoring.<br/><br/> - time.windows.com: verifieert tijdsynchronisatie tussen systeem- en globale tijd.
 | **Poorttoegang** |  Uitgaande verbindingen op HTTPS-poort 443 om VM-replicatiegegevens te verzenden.
+
+### <a name="url-access-public-cloud"></a>URL-toegang (public cloud)
+
+De replicatieprovidersoftware op de Hyper-V-hosts heeft toegang tot deze URL's nodig.
+
+**Url** | **Details**
+--- | ---
+login.microsoftonline.com | Toegangsbeheer en identiteitsbeheer met Active Directory.
+backup.windowsazure.com | Replicatiegegevensoverdracht en -coördinatie.
+*.hypervrecoverymanager.windowsazure.com | Gebruikt voor migratie.
+*.blob.core.windows.net | Gegevens uploaden naar opslagaccounts. 
+dc.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor interne controle.
+time.windows.com | Controleert tijdsynchronisatie tussen systeem- en globale tijd.
+
+### <a name="url-access-azure-government"></a>URL-toegang (Azure-overheid)
+
+De replicatieprovidersoftware op de Hyper-V-hosts heeft toegang tot deze URL's nodig.
+
+**Url** | **Details**
+--- | ---
+login.microsoftonline.us | Toegangsbeheer en identiteitsbeheer met Active Directory.
+backup.windowsazure.us | Replicatiegegevensoverdracht en -coördinatie.
+*.hypervrecoverymanager.windowsazure.us | Gebruikt voor migratie.
+*.blob.core.usgovcloudapi.net | Gegevens uploaden naar opslagaccounts.
+dc.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor interne controle.
+time.nist.gov | Controleert tijdsynchronisatie tussen systeem- en globale tijd.
+
 
 ## <a name="hyper-v-vms"></a>Virtuele Hyper-V-machines
 
 | **Ondersteuning**                  | **Details**               
 | :----------------------------- | :------------------- |
 | **Besturingssysteem** | Alle [Windows-](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) en [Linux-besturingssystemen](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) die worden ondersteund door Azure. |
-| **Vereiste wijzigingen voor Azure** | Sommige VM's vereisen mogelijk wijzigingen, zodat ze in Azure kunnen worden uitgevoerd. U moet handmatig aanpassingen maken voordat u overstapt. De relevante artikelen bevatten instructies over hoe dit te doen. |
+| **Vereiste wijzigingen voor Azure** | Sommige VM's vereisen mogelijk wijzigingen, zodat ze in Azure kunnen worden uitgevoerd. Breng handmatig aanpassingen aan voor de migratie. De relevante artikelen bevatten instructies over hoe dit te doen. |
 | **Linux opstarten**                 | Als /boot zich op een speciale partitie bevindt, moet deze zich op de osschijf bevinden en niet over meerdere schijven worden verspreid.<br/> Als /boot deel uitmaakt van de hoofdpartitie (/), moet de '/' partitie op de OS-schijf staan en geen andere schijven overspannen. |
 | **UEFI-opstart**                  | De gemigreerde VM in Azure wordt automatisch geconverteerd naar een BIOS-opstartVM. De VM moet alleen Windows Server 2012 en later draaien. De OS-schijf moet maximaal vijf partities of minder hebben en de grootte van de OS-schijf moet minder dan 300 GB zijn.
   |
@@ -48,7 +74,7 @@ U maximaal 10 VM's tegelijk selecteren voor replicatie. Als u meer machines wilt
 | **Doelschijf**                | U migreren naar Azure VM's met alleen beheerde schijven. |
 | **IPv6** | Wordt niet ondersteund.
 | **NIC teaming** | Wordt niet ondersteund.
-| **Azure-siteherstel** | U niet repliceren met Azure Migrate Server Migration als de VM is ingeschakeld voor replicatie met Azure Site Recovery.
+| **Azure Site Recovery** | U niet repliceren met Azure Migrate Server Migration als de VM is ingeschakeld voor replicatie met Azure Site Recovery.
 | **Poorten** | Uitgaande verbindingen op HTTPS-poort 443 om VM-replicatiegegevens te verzenden.
 
 ## <a name="azure-vm-requirements"></a>Vereisten voor Azure-VM's

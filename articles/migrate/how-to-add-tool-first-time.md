@@ -1,17 +1,14 @@
 ---
 title: Een beoordelings-/migratiehulpprogramma toevoegen in Azure Migreren
 description: Beschrijft hoe u een Azure Migrate-project maakt en een beoordelings-/migratietool toevoegt.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 319d97d96bd054aed90079777e2ff83d0e308e5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 04/16/2020
+ms.openlocfilehash: 48bdea31d17ea1ddf0b983af962dce30b22d8dcf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185942"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537726"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Voor de eerste keer een evaluatie-/migratiehulpprogramma toevoegen
 
@@ -37,28 +34,14 @@ Stel een nieuw Azure Migrate-project in een Azure-abonnement in en voeg een hulp
 
 1. Klik in **Servers detecteren, evalueren en migreren** op **Hulpprogramma's toevoegen**.
 2. Selecteer in **Project migreren** uw Azure-abonnement en maak een resourcegroep als u er nog geen hebt.
-3. Geef in **Projectdetails**de projectnaam en geografie op waarin u het project wilt maken. 
+3. Geef in **Projectdetails**de projectnaam en geografie op waarin u het project wilt maken.  Bekijk ondersteunde regio's voor [publieke](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheidswolken.](migrate-support-matrix.md#supported-geographies-azure-government)
 
     ![Een Azure-migratieproject maken](./media/how-to-add-tool-first-time/migrate-project.png)
 
-    U een Azure Migrate-project maken in een van deze regio's.
+    - De opgegeven geografie voor het project wordt alleen gebruikt om de metagegevens op te slaan die zijn verzameld van on-premises virtuele machines. U elk doelgebied selecteren voor de werkelijke migratie.
+    - Als u een project binnen een bepaald gebied in een geografie moet implementeren, gebruikt u de volgende API om een project te maken. Geef de abonnements-id, de naam van de resourcegroep en de projectnaam op, samen met de locatie. Bekijk de regio's/regio's voor [publieke](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheidswolken](migrate-support-matrix.md#supported-geographies-azure-government).
 
-   **Geografie** | **Opslaglocatieregio**
-    --- | ---
-    Azië   | Zuidoost-Azië of Oost-Azië
-    Europa | Europa - noord of Europa - west
-    Japan  | Japan Oost of Japan West
-    Verenigd Koninkrijk | Verenigd Koninkrijk Zuid of UK West
-    Verenigde Staten | Centraal VS of West US 2
-    Canada | Canada - midden
-    India  | India Centraal of India Zuid
-    Australië | Australië Zuidoost
-
-    De opgegeven geografie voor het project wordt alleen gebruikt om de metagegevens op te slaan die zijn verzameld van on-premises virtuele machines. U elk doelgebied selecteren voor de werkelijke migratie.
-
-    Als u een specifiek gebied binnen een geografie wilt opgeven voor het implementeren van het migratieproject en de bijbehorende resources (beleidsbeperkingen in uw abonnement kunnen het implementeren van Azure-resources alleen in een specifieke Azure-regio toestaan), u de onderstaande API gebruiken om een migratieproject maken. Geef de abonnements-id, de naam van de resourcegroep, Projectnaam migreren samen met locatie op (een van de Azure-regio's die worden vermeld in de tabel waar Azure Migreren is geïmplementeerd.)
-
-    `PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"`   
+        `PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"`   
 
 
 4. Klik **op Volgende**en voeg een beoordelings- of migratietool toe.
@@ -68,9 +51,9 @@ Stel een nieuw Azure Migrate-project in een Azure-abonnement in en voeg een hulp
 
 5. Voeg in **Het beoordelingsprogramma Selecteren**een beoordelingstool toe. Als u geen beoordelingstool nodig hebt, selecteert u **Het toevoegen van een beoordelingstool overslaan voor nu** > **Volgende**. 
 2. Voeg in **Het hulpprogramma Migratie selecteren**naar behoefte een migratiegereedschap toe. Als u nu geen migratietool nodig hebt, selecteert u **Het toevoegen van een migratietool overslaan voor nu** > **Volgende**.
-3. Bekijk in **Controle + hulpprogramma's de**instellingen en klik op Hulpmiddelen **toevoegen**.
+3. Bekijk in **Hulpmiddelen voor controleren + toevoegen**de instellingen en klik op Gereedschappen **toevoegen**.
 
-Na het maken van het project u aanvullende hulpprogramma's selecteren voor beoordeling en migratie van servers en workloads, databases en web-apps.
+Nadat u het project hebt gemaakt, u aanvullende hulpprogramma's selecteren voor beoordeling en migratie van servers en workloads, databases en web-apps.
 
 ## <a name="create-additional-projects"></a>Extra projecten maken
 

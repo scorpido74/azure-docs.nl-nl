@@ -2,14 +2,14 @@
 title: VMware VM's voorbereiden op beoordeling/migratie met Azure Migrate
 description: Meer informatie over hoe u zich voorbereiden op beoordeling/migratie van VMware VM's met Azure Migrate.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 9f0729a3ddb2d8196a855557a6b8587940563984
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619431"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535261"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware-VM's voorbereiden op evaluatie en migratie naar Azure
 
@@ -123,7 +123,7 @@ Azure Migrate moet toegang krijgen tot de vCenterServer om VM's te detecteren vo
 Bereid u voor voordat u het Azure Migrate-toestel en de beginbeoordeling in de volgende zelfstudie instelt, zich voorbereiden op de implementatie van apparaten.
 
 1. [Verifiëren](migrate-appliance.md#appliance---vmware) Azure Migrate toestelvereisten.
-2. [Controleer](migrate-appliance.md#url-access) de Azure-URL's die het toestel nodig heeft om toegang te krijgen. Als u een op URL gebaseerde firewall of proxy gebruikt, moet u ervoor zorgen dat deze toegang tot de vereiste URL's mogelijk maakt.
+2. Controleer de Azure URL's die het toestel nodig heeft om toegang te krijgen in de [openbare](migrate-appliance.md#public-cloud-urls) en [overheidsclouds.](migrate-appliance.md#government-cloud-urls)
 3. [Bekijk de gegevens](migrate-appliance.md#collected-data---vmware) die het toestel verzamelt tijdens detectie en beoordeling.
 4. [Opmerking poorttoegangsvereisten](migrate-support-matrix-vmware.md#port-access) voor het toestel.
 
@@ -138,7 +138,8 @@ Bekijk de vereisten voor [agentloze migratie](server-migrate-overview.md) van Vm
 2. [Controleer de machtigingen](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) die Azure Migrate nodig heeft om toegang te krijgen tot de vCenter Server.
 3. [Beoordeling](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) VMware VM's vereisten.
 4. [Controleer](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance) de vereisten voor Azure Migrate appliance.
-5. Let op de [vereisten voor URL-toegang](migrate-appliance.md#url-access) en [poorttoegang.](migrate-support-matrix-vmware-migration.md#agentless-ports)
+5. Let op de URL-toegang die vereist is voor [openbare](migrate-appliance.md#public-cloud-urls) en [overheidsclouds.](migrate-appliance.md#government-cloud-urls)
+6. [Poorttoegangsvereisten](migrate-support-matrix-vmware-migration.md#agentless-ports) bekijken.
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>Voorbereiden op vmware-migratie op basis van agenten
 
@@ -150,7 +151,8 @@ Bekijk de vereisten voor [agentmatige migratie](server-migrate-overview.md) van 
 3. Op agentgebaseerde migratie wordt gebruikt een replicatietoestel:
     - [Controleer](migrate-replication-appliance.md#appliance-requirements) de implementatievereisten voor het replicatietoestel.
     - [Bekijk de opties](migrate-replication-appliance.md#mysql-installation) voor het installeren van MySQL op het toestel.
-    - Controleer de [vereisten voor URL-](migrate-replication-appliance.md#url-access) en [poorttoegang](migrate-replication-appliance.md#port-access) voor het replicatietoestel.
+    - Let op de [vereiste](migrate-replication-appliance.md#url-access)URL-toegang .
+    - Controleer de vereisten [voor poorttoegang](migrate-replication-appliance.md#port-access) voor het replicatietoestel.
     
 ## <a name="next-steps"></a>Volgende stappen
 

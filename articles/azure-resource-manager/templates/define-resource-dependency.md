@@ -3,12 +3,12 @@ title: Implementatievolgorde instellen voor resources
 description: Beschrijft hoe u de ene resource instellen als afhankelijk van een andere resource tijdens de implementatie om ervoor te zorgen dat resources in de juiste volgorde worden geïmplementeerd.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: f11f79df875492a568a76f494dfffb4a163f64cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153281"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535465"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>De volgorde definiëren voor het implementeren van resources in ARM-sjablonen
 
@@ -18,7 +18,7 @@ Resource Manager evalueert de afhankelijkheden tussen resources en implementeert
 
 ## <a name="dependson"></a>dependsOn
 
-Met het element dependsOn u met het element dependsOn één resource definiëren als afhankelijk van een of meer resources. De waarde is een door komma's gescheiden lijst met resourcenamen. De lijst kan resources bevatten die voorwaardelijk zijn [geïmplementeerd.](conditional-resource-deployment.md) Wanneer een voorwaardelijke bron niet is geïmplementeerd, verwijdert Azure Resource Manager deze automatisch uit de vereiste afhankelijkheden.
+Met het element dependsOn u met het element dependsOn één resource definiëren als afhankelijk van een of meer resources. De waarde is een JSON-array met tekenreeksen, die elk een resourcenaam zijn. De array kan resources bevatten die voorwaardelijk zijn [geïmplementeerd.](conditional-resource-deployment.md) Wanneer een voorwaardelijke bron niet is geïmplementeerd, verwijdert Azure Resource Manager deze automatisch uit de vereiste afhankelijkheden.
 
 In het volgende voorbeeld wordt een virtuele machineschaalset weergegeven die afhankelijk is van een load balancer, virtueel netwerk en een lus waarmee meerdere opslagaccounts worden gemaakt. Deze andere bronnen worden niet weergegeven in het volgende voorbeeld, maar ze moeten elders in de sjabloon bestaan.
 

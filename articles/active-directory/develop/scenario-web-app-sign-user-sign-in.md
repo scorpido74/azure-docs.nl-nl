@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 317ca55adb9f680dc93343a185395abad08889da
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 2ab5697ceff612e65174fdb7f9ef6137e2c8b9a5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881312"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537063"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Web-app die zich aanmeldt bij gebruikers: aanmelden en afmelden
 
@@ -205,7 +205,7 @@ Nadat de gebruiker zich bij uw app heeft aangemeld, wilt u hem of haar laten afm
 ## <a name="sign-out"></a>Afmelden
 
 Als u zich afmeldt bij een web-app, wordt de informatie over het aangemelde account verwijderd uit de status van de web-app.
-De web-app moet de gebruiker ook `logout` doorverwijzen naar het eindpunt van het Microsoft-identiteitsplatform om zich af te melden. 
+De web-app moet de gebruiker ook `logout` doorverwijzen naar het eindpunt van het Microsoft-identiteitsplatform om zich af te melden.
 
 Wanneer uw web-app de `logout` gebruiker doorverwijst naar het eindpunt, wordt de sessie van de gebruiker met dit eindpunt gewist uit de browser. Als uw app niet naar `logout` het eindpunt is gegaan, wordt de gebruiker opnieuw geverifieerd naar uw app zonder zijn of haar referenties opnieuw in te voeren. De reden hiervoor is dat ze een geldige aanmeldingssessie hebben met het eindpunt van het Microsoft-identiteitsplatform.
 
@@ -306,7 +306,7 @@ In de Snelstart van Python bevindt de afmeldingsknop zich in het bestand [templa
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Microsoft Identity Python Web App</h1>
+    <h1>Microsoft Identity Python web app</h1>
     Welcome {{ user.get("name") }}!
     <li><a href='/graphcall'>Call Microsoft Graph API</a></li>
     <li><a href="/logout">Logout</a></li>

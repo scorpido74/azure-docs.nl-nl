@@ -1,5 +1,5 @@
 ---
-title: Een ASP.NET Web API aanroepen die is beveiligd door het identiteitsplatform van Microsoft
+title: Een ASP.NET web-API aanroepen die is beveiligd door het identiteitsplatform van Microsoft
 description: In deze quickstart leert u hoe u een ASP.NET web-API aanroept die is beveiligd door microsoft-identiteitsplatform en een WPF-toepassing (Windows Desktop). De WPF-client verifieert een gebruiker, vraagt een toegangstoken aan en roept de web-API aan.
 services: active-directory
 author: jmprieur
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 582afef8929da2ba75aab70c1ed0fa9e57fd3f19
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 084083a704a007e6675234883c62350d1d9a0849
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76703470"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536145"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Snelstart: een ASP.NET web-API aanroepen die is beveiligd door het identiteitsplatform van Microsoft
 
-In deze quickstart stelt u een web-API bloot en beschermt u deze zodat alleen geverifieerde gebruikers er toegang toe hebben. In dit voorbeeld wordt uitgelegd hoe u een ASP.NET Web API blootleggen, zodat deze tokens kan accepteren die zijn uitgegeven door persoonlijke accounts (waaronder outlook.com, live.com en anderen) en werk- en schoolaccounts van elk bedrijf of organisatie dat is geïntegreerd met de Identiteit van Microsoft Platform.
+In deze quickstart stelt u een web-API bloot en beschermt u deze zodat alleen geverifieerde gebruikers er toegang toe hebben. In dit voorbeeld wordt uitgelegd hoe u een ASP.NET web-API blootleggen, zodat deze tokens kan accepteren die zijn uitgegeven door persoonlijke accounts (waaronder outlook.com, live.com en anderen) en werk- en schoolaccounts van elk bedrijf of organisatie dat is geïntegreerd met het Identiteitsplatform van Microsoft.
 
 Het voorbeeld bevat ook een WPF-client (Windows Desktop-toepassing) die laat zien hoe u een toegangstoken aanvragen om toegang te krijgen tot een web-API.
 
@@ -69,13 +69,13 @@ Als u uw apps handmatig wilt registreren, moet u als eerste stap:
      - voor het gebruik **van de naam scope**`access_as_user`
      - Ervoor zorgen dat de optie **Beheerders en gebruikers** is geselecteerd voor Wie toestemming kan **geven**
      - in het **weergavetype beheerderstoestemming**`Access TodoListService as a user`
-     - in het **type beschrijving van beheerderstoestemming**`Accesses the TodoListService Web API as a user`
+     - in het **type beschrijving van beheerderstoestemming**`Accesses the TodoListService web API as a user`
      - in **het weergavenaamtype gebruikerstoestemming**`Access TodoListService as a user`
-     - in type **beschrijving van gebruikerstoestemming**`Accesses the TodoListService Web API as a user`
+     - in type **beschrijving van gebruikerstoestemming**`Accesses the TodoListService web API as a user`
      - **Status behouden** als **ingeschakeld**
      - Bereik **toevoegen selecteren**
 
-### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Het serviceproject configureren op de geregistreerde web-API 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Het serviceproject configureren op de geregistreerde web-API
 
 1. Open de oplossing in Visual Studio en open het **web.config-bestand** onder de hoofdmap van het **TodoListService-project.**
 1. Vervang de `ida:ClientId` waarde van de parameter door de **client-id (toepassings-id)** van de toepassing die u zojuist hebt geregistreerd in de Portal voor toepassingsregistratie.
@@ -86,7 +86,7 @@ Als u uw apps handmatig wilt registreren, moet u als eerste stap:
 
    > Opmerking: Controleer of de volgende indeling wordt gebruikt:
    >
-   > `api://{TodoListService-Application-ID}/access_as_user` 
+   > `api://{TodoListService-Application-ID}/access_as_user`
    >
    >(waarbij {TodoListService-Application-ID} de GUID is die de toepassings-id voor uw TodoListService vertegenwoordigt).
 
@@ -126,7 +126,7 @@ In deze stap configureert u uw *TodoListClient-project* door een nieuwe toepassi
 
 ## <a name="pre-authorize-your-client-application"></a>Uw clienttoepassing vooraf autoriseren
 
-Een van de manieren om gebruikers van andere mappen toegang te geven tot uw Web API is door de clienttoepassingen *vooraf toestemming* te geven om toegang te krijgen tot uw Web-API door de toepassings-id's van clienttoepassingen toe te voegen aan de lijst met *vooraf geautoriseerde* toepassingen voor uw web-API. Door een vooraf geautoriseerde client toe te voegen, hoeft u de gebruiker geen toestemming te geven voor het gebruik van uw Web API. Volg de onderstaande stappen om uw webtoepassing vooraf te autoriseren::
+Een van de manieren om gebruikers van andere mappen toegang te geven tot uw web-API is door de clienttoepassingen *vooraf toestemming* te geven om toegang te krijgen tot uw web-API door de toepassings-id's van clienttoepassingen toe te voegen aan de lijst met *vooraf geautoriseerde* toepassingen voor uw web-API. Door een vooraf geautoriseerde client toe te voegen, hoeft u de gebruiker geen toestemming te geven voor het gebruik van uw web-API. Volg de onderstaande stappen om uw webtoepassing vooraf te autoriseren::
 
 1. Ga terug naar de *portal voor toepassingsregistratie* en open de eigenschappen van uw **TodoListService.**
 1. Klik **in de** sectie Een API bloot leggen op **Een clienttoepassing toevoegen** onder de sectie Geautoriseerde *clienttoepassingen.*
@@ -141,7 +141,7 @@ Een van de manieren om gebruikers van andere mappen toegang te geven tot uw Web 
 
 ## <a name="optional-restrict-sign-in-access-to-your-application"></a>Optioneel: aanmeldingstoegang tot uw toepassing beperken
 
-Wanneer u dit voorbeeld van deze code downloadt en de toepassing configureert om het Azure Active Directory v2-eindpunt volgens de voorgaande stappen te gebruiken, zijn zowel persoonlijke accounts - zoals outlook.com, live.com en anderen - als Werk- of schoolaccounts van alle organisaties die zijn geïntegreerd met Azure AD, kunnen tokens aanvragen en toegang krijgen tot uw web-API. 
+Wanneer u dit voorbeeld van deze code downloadt en de toepassing configureert om het Azure Active Directory v2-eindpunt volgens de voorgaande stappen te gebruiken, kunnen zowel persoonlijke accounts - zoals outlook.com, live.com en anderen - als Werk- of schoolaccounts van organisaties die zijn geïntegreerd met Azure AD tokens aanvragen en toegang krijgen tot uw web-API.
 
 Als u wilt beperken wie zich bij uw toepassing kan aanmelden, gebruikt u een van de opties:
 

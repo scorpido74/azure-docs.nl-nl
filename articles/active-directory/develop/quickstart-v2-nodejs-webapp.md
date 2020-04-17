@@ -11,14 +11,14 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4aa0cce83f9adc8c648656899ec6dc12d498e26b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1ff92b8a9477800477ebb2d79145ddaa78831f30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77160445"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536060"
 ---
-# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Snelstart: aanmelden toevoegen met OpenID Connect naar een Web App node.js
+# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Snelstart: aanmelden toevoegen met OpenID Connect naar een web-app Node.js
 
 In deze quickstart leert u hoe u OpenID Connect-verificatie instelt in een webtoepassing die is gebouwd met Node.js met Express. Het monster is ontworpen om op elk platform te draaien.
 
@@ -30,7 +30,7 @@ Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
 
 * Een [Microsoft-account](https://www.outlook.com) of [een Office 365 Developer Program](/office/developer-program/office-365-developer-program)
 
-## <a name="register-your-application"></a>Uw toepassing registreren 
+## <a name="register-your-application"></a>Uw toepassing registreren
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 1. Als uw account aanwezig is in meer dan één Azure AD-tenant:
     - Selecteer uw profiel in het menu rechtsboven op de pagina en **schakel de map over.**
@@ -78,7 +78,7 @@ of
 
 Voer in de hoofdmap van het project de opdracht uit:
 
-`$ npm install`  
+`$ npm install`
 
 ## <a name="configure-the-application"></a>De toepassing configureren
 

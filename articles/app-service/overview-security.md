@@ -5,12 +5,12 @@ keywords: azure app service, web app, mobile app, api app, function app, securit
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: e28935f73511e5ad973929517658cc626b5a6ea2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a098b1924bf7c2866f6afd7452b8dd3b93f3109
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475371"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535652"
 ---
 # <a name="security-in-azure-app-service"></a>Beveiliging in Azure App-service
 
@@ -31,14 +31,14 @@ In de volgende secties ziet u hoe u uw App Service-app verder beschermen tegen b
 
 ## <a name="https-and-certificates"></a>HTTPS en certificaten
 
-Met App Service u uw apps beveiligen met [HTTPS.](https://wikipedia.org/wiki/HTTPS) Wanneer uw app wordt gemaakt,\<is de standaarddomeinnaam (app_name>.azurewebsites.net) al toegankelijk via HTTPS. Als u [een aangepast domein voor uw app configureert,](app-service-web-tutorial-custom-domain.md)moet u het ook beveiligen met een [SSL-certificaat,](configure-ssl-bindings.md) zodat clientbrowsers beveiligde HTTPS-verbindingen kunnen maken met uw aangepaste domein. Er zijn verschillende soorten certificaten die worden ondersteund door App Service:
+Met App Service u uw apps beveiligen met [HTTPS.](https://wikipedia.org/wiki/HTTPS) Wanneer uw app wordt gemaakt,\<is de standaarddomeinnaam (app_name>.azurewebsites.net) al toegankelijk via HTTPS. Als u [een aangepast domein voor uw app configureert,](app-service-web-tutorial-custom-domain.md)moet u het ook beveiligen met een [TLS/SSL-certificaat,](configure-ssl-bindings.md) zodat clientbrowsers beveiligde HTTPS-verbindingen kunnen maken met uw aangepaste domein. Er zijn verschillende soorten certificaten die worden ondersteund door App Service:
 
 - Gratis beheerd certificaat voor app-service
 - App-servicecertificaat
 - Certificaat van derden
 - Certificaat geïmporteerd uit Azure Key Vault
 
-Zie [Een SSL-certificaat toevoegen in Azure App Service](configure-ssl-certificate.md)voor meer informatie.
+Zie [Een TLS/SSL-certificaat toevoegen in Azure App Service voor](configure-ssl-certificate.md)meer informatie.
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>Onveilige protocollen (HTTP, TLS 1.0, FTP)
 

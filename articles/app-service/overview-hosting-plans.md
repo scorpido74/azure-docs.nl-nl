@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: f1012f8c00de4b19bbf6206408ec1a806e09e54f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482340"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537641"
 ---
 # <a name="azure-app-service-plan-overview"></a>Overzicht van Azure App Service-plan
 
@@ -32,7 +32,7 @@ De _prijscategorie_ van een App Service-abonnement bepaalt welke appservicefunct
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Elke laag biedt ook een specifieke subset van App Service-functies. Deze functies omvatten aangepaste domeinen en SSL-certificaten, automatisch schalen, implementatiesleuven, back-ups, Traffic Manager-integratie en meer. Hoe hoger de laag, hoe meer functies beschikbaar zijn. Zie [App Service-abonnement details](https://azure.microsoft.com/pricing/details/app-service/plans/)voor meer informatie over welke functies in elke prijscategorie worden ondersteund.
+Elke laag biedt ook een specifieke subset van App Service-functies. Deze functies omvatten aangepaste domeinen en TLS/SSL-certificaten, automatisch schalen, implementatiesleuven, back-ups, Traffic Manager-integratie en meer. Hoe hoger de laag, hoe meer functies beschikbaar zijn. Zie [App Service-abonnement details](https://azure.microsoft.com/pricing/details/app-service/plans/)voor meer informatie over welke functies in elke prijscategorie worden ondersteund.
 
 <a name="new-pricing-tier-premiumv2"></a>
 
@@ -71,11 +71,11 @@ Behalve voor **De Vrije** laag, brengt een app-serviceplan een uurvergoeding met
 - In de speciale compute-lagen (**Basic**, **Standard**, **Premium**, **PremiumV2**) definieert het App Service-plan het aantal VM-exemplaren waarnaar de apps worden geschaald, zodat _elke VM-instantie_ in het App Service-abonnement een uurvergoeding heeft. Deze VM-exemplaren worden hetzelfde in rekening gebracht, ongeacht het aantal apps dat erop wordt uitgevoerd. Zie [Een App-serviceplan opschonen](app-service-plan-manage.md#delete)om onverwachte kosten te voorkomen.
 - In de **laag Geïsoleerd** bepaalt de app-serviceomgeving het aantal geïsoleerde werknemers dat uw apps uitvoert en _elke werknemer_ wordt per uur in rekening gebracht. Daarnaast is er een basisvergoeding per uur voor het uitvoeren van de App Service Environment zelf.
 
-Er worden geen kosten in rekening gebracht voor het gebruik van de App Service-functies die voor u beschikbaar zijn (het configureren van aangepaste domeinen, SSL-certificaten, implementatiesleuven, back-ups, enz.). De uitzonderingen zijn:
+Er worden geen kosten in rekening gebracht voor het gebruik van de App Service-functies die voor u beschikbaar zijn (het configureren van aangepaste domeinen, TLS/SSL-certificaten, implementatiesleuven, back-ups, enz.). De uitzonderingen zijn:
 
 - App Service-domeinen - u betaalt wanneer u er een koopt in Azure en wanneer u deze elk jaar verlengt.
 - App Service-certificaten - u betaalt wanneer u er een koopt in Azure en wanneer u deze elk jaar verlengt.
-- IP-gebaseerde SSL-verbindingen - Er zijn een uurvergoeding voor elke IP-gebaseerde SSL-verbinding, maar sommige **standaardlagen** of hoger bieden u gratis één IP-gebaseerde SSL-verbinding. SNI-gebaseerde SSL-verbindingen zijn gratis.
+- IP-gebaseerde TLS-verbindingen - Er zijn een uurvergoeding voor elke IP-gebaseerde TLS-verbinding, maar sommige **standaardlagen** of hoger bieden u gratis één IP-gebaseerde TLS-verbinding. SNI-gebaseerde TLS-verbindingen zijn gratis.
 
 > [!NOTE]
 > Als u App Service integreert met een andere Azure-service, moet u mogelijk rekening houden met kosten van deze andere services. Als u bijvoorbeeld Azure Traffic Manager gebruikt om uw app geografisch te schalen, brengt Azure Traffic Manager ook kosten in rekening op basis van uw gebruik. Zie [Prijscalculator](https://azure.microsoft.com/pricing/calculator/)als u uw kosten voor kruisservices in Azure wilt schatten. 
@@ -86,7 +86,7 @@ Er worden geen kosten in rekening gebracht voor het gebruik van de App Service-f
 
 Uw App Service-plan kan op elk gewenst moment omhoog of omlaag worden geschaald. Het is zo eenvoudig als het wijzigen van de prijscategorie van het plan. U kunt eerst een lagere prijscategorie kiezen en later opschalen als u meer App Service-functies nodig hebt.
 
-U bijvoorbeeld beginnen met het testen van uw web-app in een **Gratis** App Service-abonnement en niets betalen. Wanneer u uw [aangepaste DNS-naam](app-service-web-tutorial-custom-domain.md) aan de web-app wilt toevoegen, schaalt u uw abonnement op **naar gedeelde** laag. Later, wanneer u [een SSL-binding](configure-ssl-bindings.md)wilt maken, schaalt u uw abonnement op naar **de basislaag.** Wanneer u [tijdelijke omgevingen](deploy-staging-slots.md)wilt hebben, schaaldan op naar **de standaardlaag.** Wanneer u meer cores, geheugen of opslag nodig hebt, schaal dan op naar een grotere VM-grootte in dezelfde laag.
+U bijvoorbeeld beginnen met het testen van uw web-app in een **Gratis** App Service-abonnement en niets betalen. Wanneer u uw [aangepaste DNS-naam](app-service-web-tutorial-custom-domain.md) aan de web-app wilt toevoegen, schaalt u uw abonnement op **naar gedeelde** laag. Later, wanneer u [een TLS-binding](configure-ssl-bindings.md)wilt maken, schaalt u uw abonnement op naar **de basislaag.** Wanneer u [tijdelijke omgevingen](deploy-staging-slots.md)wilt hebben, schaaldan op naar **de standaardlaag.** Wanneer u meer cores, geheugen of opslag nodig hebt, schaal dan op naar een grotere VM-grootte in dezelfde laag.
 
 Hetzelfde werkt in het omgekeerde. Wanneer u denkt dat u de mogelijkheden of functies van een hogere laag niet meer nodig hebt, u naar een lagere laag schalen, wat u geld bespaart.
 

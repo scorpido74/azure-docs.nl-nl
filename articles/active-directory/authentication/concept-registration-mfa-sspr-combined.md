@@ -1,26 +1,31 @@
 ---
 title: Gecombineerde registratie voor SSPR en MFA - Azure Active Directory
-description: Azure AD Multi-Factor Authentication en selfservice password reset registration (preview)
+description: Azure AD Multi-Factor Authentication en selfservice password reset registratie
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/06/2020
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26656b6dafd91d47c05c2d1f923e53f4ba790cf8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 48350bf8f0ffb8681d95f6f42f9aa93256395f9a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309921"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534683"
 ---
-# <a name="combined-security-information-registration-preview"></a>Registratie van gecombineerde beveiligingsgegevens (voorbeeld)
+# <a name="combined-security-information-registration-overview"></a>Overzicht van registratie van gecombineerde beveiligingsgegevens
 
 Voor gecombineerde registratie registreerden gebruikers verificatiemethoden voor Azure Multi-Factor Authentication en selfservice password reset (SSPR) afzonderlijk. Mensen waren in de war dat soortgelijke methoden werden gebruikt voor Multi-Factor Authentication en SSPR, maar ze moesten registreren voor beide functies. Nu, met gecombineerde registratie, kunnen gebruikers zich eenmalig registreren en de voordelen van zowel Multi-Factor Authentication als SSPR krijgen.
+
+In dit artikel wordt beschreven wat gecombineerde beveiligingsregistratie is. Zie het volgende artikel om aan de slag te gaan met gecombineerde beveiligingsregistratie:
+
+> [!div class="nextstepaction"]
+> [Gecombineerde beveiligingsregistratie inschakelen](howto-registration-mfa-sspr-combined.md)
 
 ![Mijn profiel met geregistreerde beveiligingsgegevens voor een gebruiker](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
@@ -28,16 +33,10 @@ Voordat u de nieuwe ervaring inschakelt, controleert u deze op de beheerder geri
 
 Azure AD combined security information registration is currently not available to national clouds like Azure US Government, Azure Germany, or Azure China 21Vianet.
 
-|     |
-| --- |
-| Gecombineerde beveiligingsgegevensregistratie voor Multi-Factor Authentication en Azure Active Directory (Azure AD) selfservice wachtwoord reset is een openbare preview-functie van Azure AD. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over voorvertoningen.|
-|     |
-
 > [!IMPORTANT]
 > Gebruikers die zijn ingeschakeld voor zowel de oorspronkelijke preview als de verbeterde gecombineerde registratie-ervaring, zien het nieuwe gedrag. Gebruikers die voor beide ervaringen zijn ingeschakeld, zien alleen de nieuwe Mijn profiel-ervaring. Het nieuwe My Profile sluit aan bij de look en feel van gecombineerde registratie en biedt een naadloze ervaring voor gebruikers. Gebruikers kunnen Mijn profiel [https://myprofile.microsoft.com](https://myprofile.microsoft.com)zien door naar .
-
-> [!NOTE] 
-> U een foutbericht tegenkomen terwijl u toegang probeert te krijgen tot de optie Beveiligingsgegevens. Bijvoorbeeld: 'Sorry, we kunnen je niet aanmelden'. Bevestig in dit geval dat u geen configuratie- of groepsbeleidsobject hebt dat cookies van derden blokkeert in de webbrowser. 
+>
+> U een foutbericht tegenkomen terwijl u toegang probeert te krijgen tot de optie Beveiligingsgegevens. Bijvoorbeeld: 'Sorry, we kunnen je niet aanmelden'. Bevestig in dit geval dat u geen configuratie- of groepsbeleidsobject hebt dat cookies van derden blokkeert in de webbrowser.
 
 Mijn profielpagina's zijn gelokaliseerd op basis van de taalinstellingen van de computer die toegang heeft tot de pagina. Microsoft slaat de meest recente taal op die in de browsercache wordt gebruikt, zodat latere pogingen om toegang te krijgen tot de pagina's worden weergegeven in de laatste taal die wordt gebruikt. Als u de cache wist, worden de pagina's opnieuw weergegeven. Als u een bepaalde taal wilt `?lng=<language>` forceren, u `<language>` toevoegen aan het einde van de URL, waar is de code van de taal die u wilt renderen.
 
@@ -77,7 +76,6 @@ Als we doorgaan met het toevoegen van meer verificatiemethoden aan Azure AD, zij
 Er zijn twee modi van gecombineerde registratie: onderbreken en beheren.
 
 - **Interrupt-modus** is een wizard-achtige ervaring, gepresenteerd aan gebruikers wanneer ze registreren of vernieuwen hun beveiligingsgegevens bij aanmelding.
-
 - **De beheermodus** maakt deel uit van het gebruikersprofiel en stelt gebruikers in staat om hun beveiligingsgegevens te beheren.
 
 Voor beide modi moeten gebruikers die eerder een methode hebben geregistreerd die kan worden gebruikt voor multifactorauthenticatie multifactorverificatie uitvoeren voordat ze toegang hebben tot hun beveiligingsgegevens.
@@ -139,14 +137,8 @@ Een gebruiker die eerder ten minste één methode heeft ingesteld die kan [https
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Gebruikers dwingen om verificatiemethoden opnieuw te registreren](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
+Zie de zelfstudies om [zelfservicewachtwoord opnieuw in](tutorial-enable-sspr.md) te stellen en Azure [Multi-Factor Authentication in](tutorial-enable-azure-mfa.md)te schakelen om aan de slag te gaan.
 
-[Gecombineerde registratie inschakelen in uw tenant](howto-registration-mfa-sspr-combined.md)
+Meer informatie over het [inschakelen van gecombineerde registratie in uw tenant](howto-registration-mfa-sspr-combined.md) of het dwingen van gebruikers om [verificatiemethoden opnieuw te registreren.](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
 
-[SSPR- en MFA-gebruik en inzichtenrapportage](howto-authentication-methods-usage-insights.md)
-
-[Beschikbare methoden voor multi-factor authenticatie en SSPR](concept-authentication-methods.md)
-
-[Self-service voor wachtwoord opnieuw instellen configureren](howto-sspr-deployment.md)
-
-[Azure Multi-Factor Authentication configureren](howto-mfa-getstarted.md)
+U ook de [beschikbare methoden voor Azure Multi-Factor Authentication en SSPR bekijken.](concept-authentication-methods.md)

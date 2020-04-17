@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: feb1fa82653a0db7b3041a4f745d0563c220bd31
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 362f6d1f4e50e1cc78c8897499b9f6593096162b
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991089"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536009"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Quickstart: De Microsoft Graph-API aanroepen vanuit een UWP-toepassing (Universeel Windows-platform)
 
@@ -72,7 +72,7 @@ Deze quickstart bevat een codevoorbeeld dat laat zien hoe een UWP-toepassing (Un
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Stap 3: Uw app is geconfigureerd en klaar om uit te voeren
-> We hebben uw project geconfigureerd met waarden van de eigenschappen van uw app en het is klaar om te worden uitgevoerd. 
+> We hebben uw project geconfigureerd met waarden van de eigenschappen van uw app en het is klaar om te worden uitgevoerd.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -80,7 +80,7 @@ Deze quickstart bevat een codevoorbeeld dat laat zien hoe een UWP-toepassing (Un
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>Stap 3: Uw Visual Studio-project configureren
-> 
+>
 > 1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples**.
 > 1. Open het project in Visual Studio. Mogelijk wordt u gevraagd een UWP SDK te installeren. In dat geval, accepteren.
 > 1. Bewerk **MainPage.Xaml.cs** en vervang `ClientId` de waarden van het veld:
@@ -157,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
 
 > |Waar:||
 > |---------|---------|
-> | `scopes` | Bevat de bereiken die worden aangevraagd, bijvoorbeeld `{ "user.read" }` voor Microsoft Graph of `{ "api://<Application ID>/access_as_user" }` voor aangepaste web-API's. |
+> | `scopes` | Bevat de aanvragende scopes, `{ "user.read" }` zoals voor `{ "api://<Application ID>/access_as_user" }` Microsoft Graph of voor aangepaste web-API's. |
 
 #### <a name="get-a-user-token-silently"></a>Een gebruikerstoken op de achtergrond ophalen
 
@@ -172,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 > |Waar: ||
 > |---------|---------|
-> | `scopes` | Bevat de bereiken die worden aangevraagd, bijvoorbeeld `{ "user.read" }` voor Microsoft Graph of `{ "api://<Application ID>/access_as_user" }` voor aangepaste web-API's |
+> | `scopes` | Bevat de aanvragende scopes, `{ "user.read" }` zoals voor `{ "api://<Application ID>/access_as_user" }` Microsoft Graph of voor aangepaste web-API's |
 > | `firstAccount` | Hiermee geeft u het eerste gebruikersaccount in de cache op (MSAL ondersteunt meerdere gebruikers in één app) |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

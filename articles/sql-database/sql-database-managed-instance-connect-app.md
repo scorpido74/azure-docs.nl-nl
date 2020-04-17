@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 9f592c345b7cfcf5f21d816fde1fae6b8e6b98c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d920fb7815e5a9fe30d8f3b4e40f36133d83222
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823389"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538083"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Uw toepassing verbinden met het beheerde exemplaar van Azure SQL Database
 
@@ -132,6 +132,8 @@ Controleer het volgende voor het oplossen van verbindingsproblemen:
    ```
 
 - Als u VNet-peering gebruikt, moet u ervoor zorgen dat u de instructies hebt opgevolgd voor het instellen [van Gateway Transit toestaan en Externe gateways gebruiken.](#connect-from-on-premises-with-vnet-peering)
+
+- Als u VNet-peering gebruikt om een gehoste Azure App Service-toepassing met elkaar te verbinden en het VNet beheerde instantie een openbaar IP-adresbereik heeft, moet u ervoor zorgen dat uw gehoste toepassingsinstellingen toestaan dat uw uitgaande verkeer kan worden doorgestuurd naar openbare IP-netwerken. Volg de instructies in [Regionale VNet Integratie](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration).
 
 ## <a name="required-versions-of-drivers-and-tools"></a>Vereiste versies van stuurprogramma's en gereedschappen
 

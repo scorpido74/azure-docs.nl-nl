@@ -3,21 +3,25 @@ title: Een Azure Migrate-toestel instellen voor Hyper-V
 description: Meer informatie over het instellen van een Azure Migrate-toestel om Hyper-V VM's te beoordelen en te migreren.
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: 80db2c1d4f5482604ca1507174b127c150f76044
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77c13a3a8c87d116bd0863324d28669185c53c84
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336799"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538287"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Een apparaat instellen voor Hyper V VM's
 
-In dit artikel wordt beschreven hoe u het Azure Migrate appliance instelt voor de beoordeling van Hyper V VM's met het Azure [Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) tool.
+Volg dit artikel om het Azure Migrate appliance in te stellen voor de beoordeling van Hyper-V VM's met het Azure [Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) tool.
 
 Het [Azure Migrate-toestel](migrate-appliance.md) is een lichtgewicht toestel dat wordt gebruikt door Azure Migrate:Server Assessment/Migration om on-premises Hyper-V VM's te detecteren en VM-metagegevens/prestatiegegevens naar Azure te verzenden.
 
-U het Azure Migrate-toestel instellen voor Hyper-V VM-beoordeling met behulp van een VHD-sjabloon die u downloadt of met een PowerShell-installatiescript. In dit artikel wordt beschreven hoe u het toestel instelt met behulp van de VHD-sjabloon. Als u het toestel met het script wilt instellen, volgt u de instructies in [dit artikel.](deploy-appliance-script.md)
+U het toestel op een aantal manieren implementeren:
 
+- Instellen op een Hyper-V VM met behulp van een gedownloade VHD. Dit is de methode beschreven in dit artikel.
+- Instellen op een Hyper-V VM of fysieke machine met een PowerShell-installatiescript. [Deze methode](deploy-appliance-script.md) moet worden gebruikt als u een VM niet instellen met een VHD of als u zich in Azure Government bevindt.
+
+Nadat u het toestel hebt gemaakt, controleert u of het verbinding kan maken met Azure Migrate:Server Assessment, configureer het voor de eerste keer en registreer u het met het Azure Migrate-project.
 
 ## <a name="appliance-deployment-vhd"></a>Toestelimplementatie (VHD)
 
@@ -73,7 +77,7 @@ Importeer het gedownloade bestand en maak de VM.
 
 ### <a name="verify-appliance-access-to-azure"></a>De toegang tot het toestel tot Azure verifiëren
 
-Controleer of de toestel-VM verbinding kan maken met [Azure-URL's](migrate-appliance.md#url-access).
+Zorg ervoor dat de toestel-VM verbinding kan maken met Azure-URL's voor [openbare](migrate-appliance.md#public-cloud-urls) en [overheidsclouds.](migrate-appliance.md#government-cloud-urls)
 
 ## <a name="configure-the-appliance"></a>Het toestel configureren
 

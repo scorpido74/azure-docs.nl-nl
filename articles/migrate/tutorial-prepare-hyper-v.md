@@ -2,14 +2,14 @@
 title: Hyper-V VM's voorbereiden op beoordeling/migratie met Azure Migrate
 description: Meer informatie over hoe u zich voorbereiden op beoordeling/migratie van Hyper V VM's met Azure Migrate.
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: e86e634812e9f2782a003a11b48cfecf91d95359
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436233"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535295"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Voorbereiden op beoordeling en migratie van Hyper-V VM's naar Azure
 
@@ -214,9 +214,11 @@ Wanneer u het apparaat instelt, bent u klaar met het instellen van CredSSP door 
 Bereid u voor voordat u het Azure Migrate-toestel en de beginbeoordeling in de volgende zelfstudie instelt, zich voorbereiden op de implementatie van apparaten.
 
 1. [Controleer](migrate-appliance.md#appliance---hyper-v) de vereisten van het toestel.
-2. [Controleer](migrate-appliance.md#url-access) de Azure-URL's die het toestel nodig heeft om toegang te krijgen.
+2. Controleer de Azure URL's die het toestel nodig heeft om toegang te krijgen in de [openbare](migrate-appliance.md#public-cloud-urls) en [overheidsclouds.](migrate-appliance.md#government-cloud-urls) Als u een op URL gebaseerde firewall of proxy gebruikt, moet u ervoor zorgen dat deze toegang tot de vereiste URL's mogelijk maakt.
 3. Bekijk de gegevens die het toestel verzamelt tijdens de detectie en beoordeling.
-4. [Opmerking poorttoegangsvereisten](migrate-appliance.md#collected-data---hyper-v) voor het toestel.
+4. [Controleer](migrate-appliance.md#collected-data---hyper-v) de vereisten voor poorttoegang voor het toestel.
+
+
 
 
 ## <a name="prepare-for-hyper-v-migration"></a>Voorbereiden op Hyper-V-migratie

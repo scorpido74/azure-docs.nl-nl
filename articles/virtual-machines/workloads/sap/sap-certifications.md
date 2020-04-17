@@ -13,19 +13,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
+ms.date: 04/16/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: 43fc2e9369b9d11b1ac0205beddea01b633fb633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e803da238ebdd728e772a15b0f29ae36d401a699
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598371"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536400"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>SAP-certificeringen en -configuraties die worden uitgevoerd op Microsoft Azure
 
-SAP en Microsoft hebben een lange geschiedenis van samenwerking in een sterk partnerschap dat wederzijdse voordelen heeft voor hun klanten. Microsoft werkt zijn platform voortdurend bij en verstrekt nieuwe certificeringsgegevens aan SAP om ervoor te zorgen dat Microsoft Azure het beste platform is om uw SAP-workloads uit te voeren. In de volgende tabellen worden door Azure ondersteunde configuraties en een lijst met groeiende SAP-certificeringen beschreven. 
+SAP en Microsoft hebben een lange geschiedenis van samenwerking in een sterk partnerschap dat wederzijdse voordelen heeft voor hun klanten. Microsoft werkt zijn platform voortdurend bij en verstrekt nieuwe certificeringsgegevens aan SAP om ervoor te zorgen dat Microsoft Azure het beste platform is om uw SAP-workloads uit te voeren. In de volgende tabellen worden door Azure ondersteunde configuraties en een lijst met groeiende SAP-certificeringen beschreven. Deze lijst is een overzichtslijst die hier en daar van de officiële SAPlijsten zou kunnen afwijken. Hoe u bij de gedetailleerde gegevens komen, wordt gedocumenteerd in het artikel [Welke SAP-software wordt ondersteund voor Azure-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)
 
 ## <a name="sap-hana-certifications"></a>SAP HANA-certificeringen
 Verwijzingen:
@@ -52,10 +52,10 @@ Verwijzingen:
 
 | SAP-product | Gastbesturingssysteem | RDBMS | Typen virtuele machines |
 | --- | --- | --- | --- |
-| SAP Business Suite-software | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (alleen Windows en Oracle Linux), DB2, SAP ASE |A5 naar A11, D11 naar D14, DS11 naar DS14, DS11_v2 naar DS15_v2, GS1 naar GS5, D2s_v3 tot D64s_v3, D2as_v4 tot D64as_v4, E2s_v3 naar E64s_v3, E2as_v4 naar E64as_v4, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
-| SAP Business All-in-One | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (alleen Windows en Oracle Linux), DB2, SAP ASE |A5 naar A11, D11 naar D14, DS11 naar DS14, DS11_v2 naar DS15_v2, GS1 naar GS5, D2s_v3 tot D64s_v3, D2as_v4 tot D64as_v4, E2s_v3 naar E64s_v3, E2as_v4 naar E64as_v4, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
-| SAP BusinessObjects BI | Windows |N.v.t. |A5 naar A11, D11 naar D14, DS11 naar DS14, DS11_v2 naar DS15_v2, GS1 naar GS5, D2s_v3 tot D64s_v3, D2as_v4 tot D64as_v4, E2s_v3 naar E64s_v3, E2as_v4 naar E64as_v4, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
-| SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (alleen Windows en Oracle Linux), DB2, SAP ASE |A5 naar A11, D11 naar D14, DS11 naar DS14, DS11_v2 naar DS15_v2, GS1 naar GS5, D2s_v3 tot D64s_v3, D2as_v4 tot D64as_v4, E2s_v3 naar E64s_v3, E2as_v4 naar E64as_v4, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
+| SAP Business Suite-software | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (alleen Windows en Oracle Linux), DB2, SAP ASE |A5 naar A11, D11 naar D14, DS11 naar DS14, DS11_v2 naar DS15_v2, GS1 naar GS5, D2s_v3 naar D64s_v3, D2as_v4 naar D64as_v4, E2s_v3 naar E64s_v3, E2as_v4 naar E64as_v4, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2, M416ms_v2 |
+| SAP Business All-in-One | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (alleen Windows en Oracle Linux), DB2, SAP ASE |A5 naar A11, D11 naar D14, DS11 naar DS14, DS11_v2 naar DS15_v2, GS1 naar GS5, D2s_v3 naar D64s_v3, D2as_v4 naar D64as_v4, E2s_v3 naar E64s_v3, E2as_v4 naar E64as_v4, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2, M416ms_v2 |
+| SAP BusinessObjects BI | Windows |N.v.t. |A5 naar A11, D11 naar D14, DS11 naar DS14, DS11_v2 naar DS15_v2, GS1 naar GS5, D2s_v3 naar D64s_v3, D2as_v4 naar D64as_v4, E2s_v3 naar E64s_v3, E2as_v4 naar E64as_v4, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2, M416ms_v2 |
+| SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (alleen Windows en Oracle Linux), DB2, SAP ASE |A5 naar A11, D11 naar D14, DS11 naar DS14, DS11_v2 naar DS15_v2, GS1 naar GS5, D2s_v3 naar D64s_v3, D2as_v4 naar D64as_v4, E2s_v3 naar E64s_v3, E2as_v4 naar E64as_v4, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2, M416ms_v2 |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Andere SAP-workload die wordt ondersteund op Azure
 
@@ -65,4 +65,6 @@ Verwijzingen:
 | SAP BPC 10,01 MS SP08 | Windows en Linux | | Alle NetWeaver Certified VM-typen<br /> SAP-notitie #2451795 |
 | SAP Business Objects BI-platform | Windows en Linux | | SAP-notitie #2145537 |
 | SAP Data Services 4.2 | | | SAP-notitie #2288344 |
-| SAP Hybris Commerce Platform 5.x en 6.x | Windows | SQL Server, Oracle | Alle NetWeaver-gecertificeerde VM-typen<br /> [Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris Commerce Platform  | Windows | SQL Server, Oracle | Alle NetWeaver-gecertificeerde VM-typen <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris Commerce Platform  | SLES 12 of recenter | SAP HANA | Alle NetWeaver-gecertificeerde VM-typen <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris Commerce Platform  | RHEL 7 of meer recent | SAP HANA | Alle NetWeaver-gecertificeerde VM-typen <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |

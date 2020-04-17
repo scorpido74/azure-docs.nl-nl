@@ -6,14 +6,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/30/2020
+ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: 809274aba35e9607aeacf7c6483ec3d10f899667
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312371"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535584"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Een toepassingsgateway configureren met een ILB-eindpunt (Internal Load Balancer)
 
@@ -95,8 +95,8 @@ Om dit te doen, u:
    - selecteer *myResourceGroupAG* voor **resourcegroep**.
    - *myVM* - voor **virtuele machine naam**.
    - Selecteer **Windows Server 2019 Datacenter** voor **afbeelding**.
-   - *azureadmin* - voor de **gebruikersnaam**.
-   - *Azure123456!* voor het **wachtwoord**.
+   - een geldige **gebruikersnaam**.
+   - een geldig **wachtwoord**.
 5. Accepteer de resterende standaardinstellingen en selecteer **Volgende: Schijven**.
 6. Accepteer de standaardinstellingen en selecteer **Volgende: Netwerken**.
 7. Zorg ervoor dat **myVNet** is geselecteerd voor het virtuele netwerk en dat het subnet **myBackendSubnet** is.

@@ -3,17 +3,17 @@ title: Gegevensmodel Azure Application Insights | Microsoft Documenten
 description: Beschrijft eigenschappen die zijn geëxporteerd vanuit continue export in JSON en worden gebruikt als filters.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9891bea1d52c61197fa32fa5c0764df5450b563c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663872"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536842"
 ---
 # <a name="application-insights-export-data-model"></a>Gegevensmodel voor exportgegevens van toepassingsinzichten
 In deze tabel worden de eigenschappen van telemetrie weergegeven die vanuit de [SDK's](../../azure-monitor/app/app-insights-overview.md) van Application Insights naar de portal worden verzonden.
 U ziet deze eigenschappen in gegevensuitvoer van [Continue export.](export-telemetry.md)
-Ze worden ook weergegeven in eigenschapsfilters in [Metric Explorer](../../azure-monitor/app/metrics-explorer.md) en [Diagnostisch zoeken.](../../azure-monitor/app/diagnostic-search.md)
+Ze worden ook weergegeven in eigenschapsfilters in [Metric Explorer](../../azure-monitor/platform/metrics-charts.md) en [Diagnostisch zoeken.](../../azure-monitor/app/diagnostic-search.md)
 
 Aandachtspunten:
 
@@ -127,16 +127,16 @@ Alle soorten telemetrie gaan vergezeld van een contextsectie. Niet al deze velde
 | context.device.roleName |tekenreeks | |
 | context.device.screenResolutie |tekenreeks | |
 | context.device.type |tekenreeks |PC, Browser, ... |
-| context.locatie |object |Afgeleid van clientip. |
-| context.location.city |tekenreeks |Afgeleid van clientip, indien bekend |
+| context.locatie |object |Afgeleid `clientip`van . |
+| context.location.city |tekenreeks |Afgeleid `clientip`van , indien bekend |
 | context.location.clientip |tekenreeks |Laatste achthoek is geanonimiseerd tot 0. |
 | context.location.continent |tekenreeks | |
 | context.location.country |tekenreeks | |
 | context.location.provincie |tekenreeks |Staat of provincie |
-| context.operation.id |tekenreeks |Items met dezelfde bedrijfsid worden weergegeven als gerelateerde items in de portal. Meestal de aanvraag-id. |
+| context.operation.id |tekenreeks |Items met dezelfde `operation id` items worden weergegeven als gerelateerde items in de portal. Meestal `request id`de . |
 | context.operation.name |tekenreeks |url of aanvraagnaam |
 | context.operation.parentId |tekenreeks |Hiermee kunnen geneste gerelateerde items worden toegestaan. |
-| context.session.id |tekenreeks |Id van een groep bewerkingen van dezelfde bron. Een periode van 30 minuten zonder bewerking betekent het einde van een sessie. |
+| context.session.id |tekenreeks |`Id`van een groep bewerkingen uit dezelfde bron. Een periode van 30 minuten zonder bewerking betekent het einde van een sessie. |
 | context.session.isEerste |booleaans | |
 | context.user.accountAcquisitiedatum |tekenreeks | |
 | context.user.accountId |tekenreeks | |
@@ -147,7 +147,7 @@ Alle soorten telemetrie gaan vergezeld van een contextsectie. Niet al deze velde
 | context.user.isGeverifieerd |booleaans | |
 | context.user.storeRegio |tekenreeks | |
 | internal.data.documentVersie |tekenreeks | |
-| internal.data.id |tekenreeks | Unieke id die wordt toegewezen wanneer een item wordt ingenomen in Application Insights |
+| internal.data.id |tekenreeks | `Unique id`die wordt toegewezen wanneer een item wordt ingenomen aan Application Insights |
 
 ## <a name="events"></a>Gebeurtenissen
 Aangepaste gebeurtenissen gegenereerd door [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
@@ -173,7 +173,7 @@ Rapporteert [uitzonderingen](../../azure-monitor/app/asp-net-exceptions.md) in d
 | basicException [0] misluktUserCodeAssembly |tekenreeks | |
 | basicException [0] behandeldAt |tekenreeks | |
 | basicException [0] hasFullStack |booleaans | |
-| basisuitzondering [0] id |tekenreeks | |
+| basisuitzondering [0]`id` |tekenreeks | |
 | basisuitzondering [0] methode |tekenreeks | |
 | basisuitzondering [0] bericht |tekenreeks |Uitzonderingsbericht. Maximale lengte 10k. |
 | basisuitzondering [0] outerExceptionMessage |tekenreeks | |
@@ -210,7 +210,7 @@ Verzonden door TrackDependency. Wordt gebruikt om prestaties en het gebruik van 
 | remoteDependency [0] tellen |geheel getal |100/([bemonsteringspercentage).](../../azure-monitor/app/sampling.md) Bijvoorbeeld 4&gt; = 25%. |
 | afhankelijkheid van externe afhankelijkheid [0] |tekenreeks |HTTP, SQL, ... |
 | duur van externeafhankelijkheid [0]Metric.value |getal |Tijd van oproep tot voltooiing van de respons door afhankelijkheid |
-| remoteDependency [0] id |tekenreeks | |
+| afhankelijk van de afstandsbediening [0]`id` |tekenreeks | |
 | naam remoteDependency [0] |tekenreeks |Url. Maximale lengte 250. |
 | remoteDependency [0] resultCode |tekenreeks |van HTTP-afhankelijkheid |
 | remoteDependency [0] succes |booleaans | |
@@ -227,7 +227,7 @@ Verzonden door [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.
 | --- | --- | --- |
 | aanvraag [0] tellen |geheel getal |100/([bemonsteringspercentage).](../../azure-monitor/app/sampling.md) Bijvoorbeeld: 4&gt; = 25%. |
 | aanvraag [0] duurMetric.value |getal |Tijd van het verzoek aankomen om te reageren. 1e7 == 1s |
-| verzoek [0] id |tekenreeks |Bedrijfs-id |
+| verzoek [0]`id` |tekenreeks |`Operation id` |
 | aanvraag [0] naam |tekenreeks |GET/POST + url base.  Maximale lengte 250 |
 | verzoek [0] responseCode |geheel getal |HTTP-antwoord verzonden naar client |
 | verzoek [0] succes |booleaans |Standaard == (responseCode &lt; 400) |

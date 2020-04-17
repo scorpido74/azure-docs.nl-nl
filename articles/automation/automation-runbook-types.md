@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4e8a5d2d168b8f60b7a32a8af358c6097003de60
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 1ac6347bd8e723f356da4803da54a6ea45a4a71a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261292"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535516"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation runbook-typen
 
@@ -28,6 +28,9 @@ Houd rekening met de volgende overwegingen bij het bepalen welk type moet worden
 
 * U runbooks niet converteren van grafisch naar teksttype of andersom.
 * Er zijn beperkingen bij het gebruik van runbooks van verschillende typen als onderliggende runbooks. Zie [Onderliggende runbooks in Azure Automation](automation-child-runbooks.md)voor meer informatie.
+
+>[!NOTE]
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](automation-update-azure-modules.md)
 
 ## <a name="graphical-runbooks"></a>Grafische runbooks
 

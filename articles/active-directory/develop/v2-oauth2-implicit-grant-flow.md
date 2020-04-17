@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0a884850d57418e9daafba980d0a08dc86fc0974
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: b946ab6157ba63213a4c140221d36f231aa62f0d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309396"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535839"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft-identiteitsplatform en impliciete subsidiestroom
 
@@ -40,11 +40,11 @@ Als u echter liever geen bibliotheek gebruikt in uw app met één pagina en zelf
 
 De OAuth2 specificatie verklaart dat de impliciete subsidie is bedacht om user-agent toepassingen mogelijk te maken - dat wil zeggen, JavaScript-toepassingen uitvoeren binnen een browser. Het bepalende kenmerk van dergelijke toepassingen is dat JavaScript-code wordt gebruikt voor toegang tot serverbronnen (meestal een web-API) en voor het bijwerken van de gebruikerservaring van de toepassing dienovereenkomstig. Denk aan toepassingen zoals Gmail of Outlook Web Access: wanneer u een bericht selecteert in uw postvak IN, wordt alleen het berichtvisualisatiepaneel gewijzigd om de nieuwe selectie weer te geven, terwijl de rest van de pagina ongewijzigd blijft. Dit kenmerk staat in contrast met traditionele redirect-gebaseerde webapps, waarbij elke gebruikersinteractie resulteert in een volledige pagina postback en een volledige paginaweergave van de nieuwe serverrespons.
 
-Toepassingen die de JavaScript-gebaseerde benadering van het uiterste nemen, worden toepassingen met één pagina of SA's genoemd. Het idee is dat deze toepassingen alleen een eerste HTML-pagina en bijbehorende JavaScript bevatten, waarbij alle volgende interacties worden aangestuurd door Web API-aanroepen die via JavaScript worden uitgevoerd. Echter, hybride benaderingen, waar de toepassing is meestal postback-driven, maar voert af en toe JS-oproepen, zijn niet ongewoon - de discussie over impliciete stroom gebruik is relevant voor die ook.
+Toepassingen die de JavaScript-gebaseerde benadering van het uiterste nemen, worden toepassingen met één pagina of SA's genoemd. Het idee is dat deze toepassingen alleen een eerste HTML-pagina en bijbehorende JavaScript bevatten, waarbij alle volgende interacties worden aangestuurd door web-API-aanroepen die via JavaScript worden uitgevoerd. Echter, hybride benaderingen, waar de toepassing is meestal postback-driven, maar voert af en toe JS-oproepen, zijn niet ongewoon - de discussie over impliciete stroom gebruik is relevant voor die ook.
 
-Op omleidingen gebaseerde toepassingen beveiligen hun verzoeken doorgaans via cookies, maar die aanpak werkt niet zo goed voor JavaScript-toepassingen. Cookies werken alleen tegen het domein waarvoor ze zijn gegenereerd, terwijl JavaScript-oproepen kunnen worden gericht op andere domeinen. In feite zal dat vaak het geval zijn: denk aan toepassingen die een beroep doen op Microsoft Graph API, Office API, Azure API - allemaal buiten het domein van waaruit de toepassing wordt weergegeven. Een groeiende trend voor JavaScript-toepassingen is om helemaal geen backend te hebben, waarbij 100% afhankelijk is van webAPI's van derden om hun bedrijfsfunctie te implementeren.
+Op omleidingen gebaseerde toepassingen beveiligen hun verzoeken doorgaans via cookies, maar die aanpak werkt niet zo goed voor JavaScript-toepassingen. Cookies werken alleen tegen het domein waarvoor ze zijn gegenereerd, terwijl JavaScript-oproepen kunnen worden gericht op andere domeinen. In feite zal dat vaak het geval zijn: denk aan toepassingen die een beroep doen op Microsoft Graph API, Office API, Azure API - allemaal buiten het domein van waaruit de toepassing wordt weergegeven. Een groeiende trend voor JavaScript-toepassingen is om helemaal geen backend te hebben, waarbij 100% wordt afhankelijk van web-API's van derden om hun bedrijfsfunctie te implementeren.
 
-Momenteel is de voorkeursmethode voor het beschermen van aanroepen naar een Web-API het gebruik van de OAuth2-tokenbenadering aan toonder, waarbij elke aanroep vergezeld gaat van een OAuth2-toegangstoken. De Web API onderzoekt het binnenkomende toegangstoken en verleent, als het daarin de benodigde scopes vindt, toegang tot de gevraagde bewerking. De impliciete stroom biedt een handig mechanisme voor JavaScript-toepassingen om toegangstokens voor een Web API te verkrijgen, met tal van voordelen met betrekking tot cookies:
+Momenteel is de voorkeursmethode voor het beschermen van aanroepen naar een web-API het gebruik van de OAuth2-tokenbenadering aan toonder, waarbij elke aanroep vergezeld gaat van een OAuth2-toegangstoken. De web-API onderzoekt het binnenkomende toegangstoken en verleent, als het daarin de benodigde scopes vindt, toegang tot de gevraagde bewerking. De impliciete stroom biedt een handig mechanisme voor JavaScript-toepassingen om toegangstokens voor een web-API te verkrijgen, met tal van voordelen met betrekking tot cookies:
 
 * Tokens kunnen betrouwbaar worden verkregen zonder dat er kruisoorsprongsoproepen nodig zijn - verplichte registratie van de omleiding URI naar welke tokens terugkeergaranties zijn dat tokens niet worden verplaatst
 * JavaScript-toepassingen kunnen zoveel toegangstokens verkrijgen als ze nodig hebben, voor zoveel web-API's die ze targeten - zonder beperking op domeinen

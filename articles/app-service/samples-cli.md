@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
-ms.openlocfilehash: 0b3acb1b421962cde7d90398f42bdfeefda578e3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 499bf25f06030ae9fc5c1f8381ef4cd6ff6873dc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74971499"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535618"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>CLI-voorbeelden voor Azure App Service
 
@@ -28,7 +28,7 @@ De volgende tabel bevat koppelingen naar bash-scripts die zijn gebouwd met behul
 | [Een ASP.NET Core-app maken in een Docker-container](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een App Service-app onder Linux en wordt er een Docker-installatiekopie vanuit Docker Hub geladen. |
 |**App configureren**||
 | [Een aangepast domein toewijzen aan een app](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een App Service-app en wijst u er een aangepaste domeinnaam aan toe. |
-| [Een aangepast SSL-certificaat verbinden met een app](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een App Service-app en verbindt u het SSL-certificaat van een aangepaste domeinnaam met de app. |
+| [Een aangepast TLS/SSL-certificaat aan een app binden](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een App Service-app en wordt het TLS/SSL-certificaat van een aangepaste domeinnaam eraan gekoppeld. |
 |**App schalen**||
 | [Een app handmatig schalen](./scripts/cli-scale-manual.md?toc=%2fcli%2fazure%2ftoc.json) | Hiermee maakt u een App Service-app en schaalt u deze over twee exemplaren. |
 | [Een app wereldwijd schalen met een architectuur voor hoge beschikbaarheid](./scripts/cli-scale-high-availability.md?toc=%2fcli%2fazure%2ftoc.json) | Hiermee maakt u twee App Service-apps in twee verschillende geografische regio's en maakt u deze met behulp van Azure Traffic Manager beschikbaar via één eindpunt. |

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/13/2020
+ms.date: 04/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0866db6b549bc940d2e73bccfc77b8fad19abd51
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 4a361f384167fa522278b9c84a7927e938c12cb8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273219"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534802"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelastingscenario's te hosten en uit te voeren
 
@@ -110,6 +110,8 @@ Zie voor informatie over de integratie van Azure-services in SAP-componenten:
 
 
 ## <a name="change-log"></a>Logboek wijzigen
+
+- 04/16/2020: SAP HANA toegevoegd als ondersteund DBMS voor SAP (Hybris) Commerce Platform in artikelen [Welke SAP-software wordt ondersteund voor Azure-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) en [SAP-certificeringen en -configuraties die worden uitgevoerd op Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)
 - 04/13/2020: Corrigeren op exacte SAP ASE-releasenummers in [SAP ASE Azure Virtual Machines DBMS-implementatie voor SAP-workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
 - 04/07/2020: Wijzigen in [het instellen van pacemaker op SLES in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) om instructies voor cloud-netconfig-azure te verduidelijken
 - 04/06/2020: Wijzigingen in [SAP HANA-scale-out met stand-by node op Azure VM's met Azure NetApp Files op SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) en in [SAP HANA scale-out met stand-by node op Azure VM's met Azure NetApp Files op RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) om verwijzingen naar NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf) te verwijderen (vervangen door [TR-4746](https://www.netapp.com/us/media/tr-4746.pdf))

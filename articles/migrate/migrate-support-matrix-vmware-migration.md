@@ -2,13 +2,13 @@
 title: Ondersteuning voor VMware-migratie in Azure-migreren
 description: Meer informatie over ondersteuning voor VMware VM-migratie in Azure Migrate.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: bf9cc471eef31edd513358a97d2ece17015ba781
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.date: 04/15/2020
+ms.openlocfilehash: eee16b244ae4f9d517bdd42a0b7f37b1494ac480
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313997"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538134"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Ondersteuningsmatrix voor VMware-migratie
 
@@ -64,10 +64,12 @@ Bekijk [dit artikel](server-migrate-overview.md) om erachter te komen welke meth
 
 
 ## <a name="agentless-azure-migrate-appliance"></a>Apparaat agentless-Azure migreren 
-Agentless migration maakt gebruik van het Azure Migrate-toestel, geïmplementeerd op een Vm van VMware.
+
+Agentless migration maakt gebruik van het [Azure Migrate-toestel](migrate-appliance.md). U het toestel implementeren als VMWare VM Met behulp van een OVA-sjabloon, geïmporteerd in vCenter Server of met behulp van een [PowerShell-script.](deploy-appliance-script.md)
 
 - Meer informatie over [toestelvereisten](migrate-appliance.md#appliance---vmware) voor VMware.
-- Meer informatie over [URL's](migrate-appliance.md#url-access) waartoe het toestel toegang nodig heeft.
+- Meer informatie over URL's die het toestel moet openen in [openbare](migrate-appliance.md#public-cloud-urls) en [overheidsclouds.](migrate-appliance.md#government-cloud-urls)
+- In Azure Government moet u het toestel implementeren met behulp van het script.
 
 ## <a name="agentless-ports"></a>Agentless-poorten
 
@@ -123,7 +125,8 @@ Wanneer u het replicatietoestel instelt met de OVA-sjabloon in de Azure Migrate-
 
 - Meer informatie over vereisten voor [replicatieapparaten](migrate-replication-appliance.md#appliance-requirements) voor VMware.
 - MySQL moet op het toestel worden geïnstalleerd. Meer informatie over [installatieopties](migrate-replication-appliance.md#mysql-installation).
-- Meer informatie over [URL's](migrate-replication-appliance.md#url-access) en [poorten waar](migrate-replication-appliance.md#port-access) toe het replicatietoestel toegang moet hebben.
+- Meer informatie over URL's die het replicatietoestel moet openen in [openbare](migrate-replication-appliance.md#url-access) en [overheidsclouds.](migrate-replication-appliance.md#azure-government-url-access)
+- Controleer de [poorten](migrate-replication-appliance.md#port-access) waartoe het replicatietoestel toegang nodig heeft.
 
 ## <a name="agent-based-ports"></a>Agent-poorten
 

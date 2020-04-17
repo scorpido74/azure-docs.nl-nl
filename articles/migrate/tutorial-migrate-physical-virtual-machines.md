@@ -2,14 +2,14 @@
 title: Migreer machines als fysieke server naar Azure met Azure Migrate.
 description: In dit artikel wordt beschreven hoe u fysieke machines migreert naar Azure met Azure Migrate.
 ms.topic: tutorial
-ms.date: 02/03/2020
+ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 51ce45b091fe2d8845963953c2c50cd7be618f58
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 1824fc6c7cbc0fd0390770027f4a15d9130139de
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80298004"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535380"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Machines migreren als fysieke servers naar Azure
 
@@ -22,12 +22,10 @@ In dit artikel ziet u hoe u machines als fysieke servers migreert naar Azure, me
 - Vm's migreren die worden uitgevoerd in openbare clouds, zoals Amazon Web Services (AWS) of Google Cloud Platform (GCP).
 
 
-[Azure Migrate](migrate-services-overview.md) biedt een centrale hub om detectie, beoordeling en migratie van uw on-premises apps en workloads en cloud VM-exemplaren naar Azure bij te houden. De hub biedt Azure Migrate-tools voor beoordeling en migratie, evenals isv-aanbiedingen (onafhankelijke softwareleveranciers) van derden.
+Deze zelfstudie is de derde in een reeks die laat zien hoe fysieke servers naar Azure kunnen worden beoordeeld en gemigreerd. In deze zelfstudie leert u het volgende:
 
-
-In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
-> * Bereid Azure voor op migratie met het hulpprogramma voor migratie van Azure Migrate Server.
+> * Bereid u voor om Azure te gebruiken met Azure Migrate:Server Migration.
 > * Controleer de vereisten voor machines die u wilt migreren en bereid een machine voor op het Azure Migrate-replicatietoestel dat wordt gebruikt om machines te ontdekken en te migreren naar Azure.
 > * Voeg het hulpprogramma voor migratie van Azure Migrate Server toe in de azure-migratiehub.
 > * Stel het replicatietoestel in.
@@ -46,21 +44,20 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 Voordat u aan deze zelfstudie begint, dient u eerst:
 
-1. [Bekijk](migrate-architecture.md) de migratiearchitectuur.
-2. Zorg ervoor dat aan uw Azure-account de rol Virtuele machineinzender is toegewezen, zodat u machtigingen hebt voor:
+[Bekijk](migrate-architecture.md) de migratiearchitectuur.
 
-    - Het maken van een VM in de geselecteerde resourcegroep.
-    - Het maken van een VM in het geselecteerde virtuele netwerk.
-    - Schrijf naar een door Azure beheerde schijf. 
 
-3. [Een Azure-netwerk instellen](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Wanneer u deze nabootst naar Azure, worden Azure VM's gemaakt en verbonden met een Azure-netwerk dat u opgeeft wanneer u migratie instelt.
 
 
 ## <a name="prepare-azure"></a>Azure voorbereiden
 
-Azure-machtigingen instellen voordat u migreren met Azure Migrate Server Migration.
+Azure voorbereiden op migratie met Servermigratie.
 
-- **Een project maken:** uw Azure-account heeft machtigingen nodig om een Azure Migrate-project te maken. 
+**Taak** | **Details**
+--- | ---
+**Een Azure-migratieproject maken** | Uw Azure-account heeft machtigingen voor bijdragen de bijdrage er of eigenaar nodig om een project te maken.
+**Machtigingen voor uw Azure-account verifiëren** | Uw Azure-account heeft machtigingen nodig om een VM te maken en naar een door Azure beheerde schijf te schrijven.
+
 
 ### <a name="assign-permissions-to-create-project"></a>Machtigingen toewijzen om project te maken
 
@@ -70,32 +67,51 @@ Azure-machtigingen instellen voordat u migreren met Azure Migrate Server Migrati
     - Als u zojuist een gratis Azure-account hebt gemaakt, bent u de eigenaar van uw abonnement.
     - Als u niet de eigenaar van het abonnement bent, werkt u samen met de eigenaar om de rol toe te wijzen.
 
+
+### <a name="assign-azure-account-permissions"></a>Azure-accountmachtigingen toewijzen
+
+Wijs de rol Virtuele machineinzender toe aan het Azure-account. Dit biedt machtigingen voor:
+
+    - Het maken van een VM in de geselecteerde resourcegroep.
+    - Het maken van een VM in het geselecteerde virtuele netwerk.
+    - Schrijf naar een door Azure beheerde schijf. 
+
+### <a name="create-an-azure-network"></a>Een Azure-netwerk maken
+
+Een Virtueel Azure-netwerk (VNet) [instellen.](../virtual-network/manage-virtual-network.md#create-a-virtual-network) Wanneer u deze nabootst naar Azure, worden Azure VM's gemaakt en samengevoegd met het Azure VNet dat u opgeeft wanneer u migratie instelt.
+
 ## <a name="prepare-for-migration"></a>Voorbereiden op migratie
+
+Als u zich wilt voorbereiden op fysieke servermigratie, moet u de fysieke serverinstellingen verifiëren en u voorbereiden op het implementeren van een replicatietoestel.
 
 ### <a name="check-machine-requirements-for-migration"></a>Machinevereisten controleren voor migratie
 
 Zorg ervoor dat machines voldoen aan de vereisten voor migratie naar Azure. 
 
 > [!NOTE]
-> Agent-gebaseerde migratie met Azure Migrate Server Migration, heeft dezelfde replicatiearchitectuur als de op agent gebaseerde functie voor noodherstel van de Azure Site Recovery-service en sommige van de gebruikte componenten delen dezelfde codebasis. Sommige vereisten kunnen worden gekoppeld aan documentatie voor siteherstel.
+> Bij het migreren van fysieke machines gebruikt Azure Migrate:Server Migration dezelfde replicatiearchitectuur als op agent gebaseerd disaster recovery in de Azure Site Recovery-service en delen sommige onderdelen dezelfde codebasis. Sommige inhoud kan worden gekoppeld aan documentatie voor siteherstel.
 
 1. [Controleer](migrate-support-matrix-physical-migration.md#physical-server-requirements) de vereisten van de fysieke server.
-2. Controleer vm-instellingen. On-premises machines die u aan Azure repliceert, moeten voldoen aan [de Azure VM-vereisten.](migrate-support-matrix-physical-migration.md#azure-vm-requirements)
+2. Controleer of on-premises machines die u naar Azure repliceert voldoen aan [azure VM-vereisten.](migrate-support-matrix-physical-migration.md#azure-vm-requirements)
 
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>Een machine voorbereiden op het replicatietoestel
 
-Azure Migrate Server Migration maakt gebruik van een replicatietoestel om machines te repliceren naar Azure. In het replicatietoestel worden de volgende onderdelen uitgevoerd.
+Azure Migreren:Servermigratie gebruikt een replicatietoestel om machines te repliceren naar Azure. In het replicatietoestel worden de volgende onderdelen uitgevoerd.
 
 - **Configuratieserver:** de configuratieserver coördineert de communicatie tussen on-premises en Azure en beheert gegevensreplicatie.
 - **Processerver:** de processerver fungeert als replicatiegateway. Het ontvangt replicatiegegevens; optimaliseert het met caching, compressie en versleuteling en stuurt het naar een cacheopslagaccount in Azure. 
 
-Voordat u begint, moet u een Windows Server 2016-machine voorbereiden om het replicatietoestel te hosten. De machine moet aan [deze eisen](migrate-replication-appliance.md)voldoen. Het apparaat mag niet worden geïnstalleerd op een bronmachine die u wilt beschermen.
+Bereid u als volgt voor op de implementatie van apparaten:
 
+- U bereidt een machine voor om het replicatietoestel te hosten. [Bekijk](migrate-replication-appliance.md#appliance-requirements) de machinevereisten. Het apparaat mag niet worden geïnstalleerd op een bronmachine die u wilt repliceren.
+- Het replicatietoestel maakt gebruik van MySQL. Bekijk de [opties](migrate-replication-appliance.md#mysql-installation) voor het installeren van MySQL op het toestel.
+- Controleer de Azure-URL's die nodig zijn voor het replicatietoestel om toegang te krijgen tot [openbare](migrate-replication-appliance.md#url-access) en [overheidsclouds.](migrate-replication-appliance.md#azure-government-url-access)
+- Controleer de toegangsvereisten voor de toegangsvereisten voor het replicatietoestel (migrate-replication-appliance.md#port-access).
 
-## <a name="add-the-azure-migrate-server-migration-tool"></a>Het hulpprogramma voor migratie van Azure-migrerende server toevoegen
+## <a name="add-the-server-migration-tool"></a>Het gereedschap Servermigratie toevoegen
 
-Stel een Azure Migrate-project in en voeg er vervolgens het hulpprogramma azure migrateservermigratie aan toe.
+Stel een Azure Migrate-project in en voeg er het hulpprogramma servermigratie aan toe.
 
 1. Zoek in de Azure-portal in **Alle services** naar **Azure Migrate**.
 2. Onder **Services** selecteert u **Azure Migrate**.
@@ -106,19 +122,10 @@ Stel een Azure Migrate-project in en voeg er vervolgens het hulpprogramma azure 
 
 5. Klik in **Servers detecteren, evalueren en migreren** op **Hulpprogramma's toevoegen**.
 6. Selecteer in **Project migreren** uw Azure-abonnement en maak een resourcegroep als u er nog geen hebt.
-7. Geef in **Projectdetails**de projectnaam en geografie op waarin u het project wilt maken en klik op **Volgende**
+7. Geef in **Projectdetails** de projectnaam en geografie op waarin u het project wilt maken en klik op **Volgende**. Bekijk ondersteunde regio's voor [publieke](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheidswolken.](migrate-support-matrix.md#supported-geographies-azure-government)
 
     ![Een Azure-migratieproject maken](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
 
-    U een Azure Migrate-project maken in een van deze regio's.
-
-    **Geografie** | **Regio**
-    --- | ---
-    Azië | Azië - zuidoost
-    Europa | Europa - noord of Europa - west
-    Verenigde Staten | VS - oost of VS - west-centraal
-
-    De opgegeven geografie voor het project wordt alleen gebruikt om de metagegevens op te slaan die zijn verzameld van on-premises virtuele machines. U elk doelgebied selecteren voor de werkelijke migratie.
 8. Selecteer **in Het beoordelingsprogramma selecteren**de optie Een **beoordelingstool overslaan voor nu** > **Volgende**.
 9. Selecteer Azure Migreren in **Het migratiehulpprogramma selecteren:** **Servermigratie** > **volgende**.
 10. Controleer in **Beoordelen en hulpprogramma's toevoegen** de instellingen en klik op **Hulpmiddelen toevoegen**
@@ -126,7 +133,7 @@ Stel een Azure Migrate-project in en voeg er vervolgens het hulpprogramma azure 
 
 ## <a name="set-up-the-replication-appliance"></a>Het replicatietoestel instellen
 
-De eerste stap van migratie is het instellen van het replicatietoestel. U downloadt het installatiebestand voor het apparaat en voert het uit op de [machine die u hebt voorbereid.](#prepare-a-machine-for-the-replication-appliance) Nadat u het toestel hebt geïnstalleerd, registreert u het bij Azure Migrate Server Migration.
+De eerste stap van migratie is het instellen van het replicatietoestel. Als u het toestel wilt instellen voor fysieke servermigratie, downloadt u het installatiebestand voor het toestel en voert u het uit op de [machine die u hebt voorbereid.](#prepare-a-machine-for-the-replication-appliance) Nadat u het toestel hebt geïnstalleerd, registreert u het bij Azure Migrate Server Migration.
 
 
 ### <a name="download-the-replication-appliance-installer"></a>Het installatieprogramma voor replicatietoestel downloaden
@@ -317,7 +324,7 @@ Nadat u hebt geverifieerd dat de testmigratie werkt zoals verwacht, u de on-prem
 3. Selecteer In **Het afsluiten van** > virtuele machines migreren**en een geplande migratie uitvoeren zonder gegevensverlies,** de optie **Ja** > **OK**.
     - Als u de VM niet wilt afsluiten, selecteert u **Nee**
 
-    Opmerking: Voor fysieke servermigratie is de aanbeveling om de toepassing naar beneden te halen als onderdeel van het migratievenster (laat de toepassingen geen verbindingen accepteren) en start vervolgens de migratie (de server moet blijven draaien, zodat de resterende wijzigingen blijven kan worden gesynchroniseerd) voordat de migratie is voltooid.
+    Opmerking: Voor fysieke servermigratie is de aanbeveling om de toepassing naar beneden te halen als onderdeel van het migratievenster (laat de toepassingen geen verbindingen accepteren) en start vervolgens de migratie (De server moet blijven draaien, zodat de resterende wijzigingen kunnen worden gesynchroniseerd) voordat de migratie is voltooid.
 
 4. Er wordt een migratietaak gestart voor de VM. Volg de taak in Azure-meldingen.
 5. Nadat de taak is afgerond, kunt u de VM bekijken en beheren vanaf de pagina **Virtuele machines**.

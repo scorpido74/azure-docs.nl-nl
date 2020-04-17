@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: e414e5cb7ad9097eb815240f83d9f529f839b6b4
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: f28d3722d56582bd925d31b43b4a0219bca2ae30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883998"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534598"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>SameSite-cookiewijzigingen in Chrome-browser verwerken
 
@@ -53,8 +53,8 @@ De onderstaande tabel presenteert de pull-verzoeken die rond de SameSite-wijzigi
 
 | Voorbeeld | Pull-aanvraag |
 | ------ | ------------ |
-|  [ASP.NET basiszelfstudie van Core Web App](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [Dezelfde site cookie fix #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
-|  [ASP.NET MVC-voorbeeld van webapp](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [Dezelfde site cookie fix #35](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
+|  [ASP.NET basiszelfstudie van de web-app](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [Dezelfde site cookie fix #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
+|  [ASP.NET Voorbeeld van mVC-web-app](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [Dezelfde site cookie fix #35](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
 |  [active-directory-dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2)  |  [Dezelfde site cookie fix #28](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2/pull/28)  |
 
 Zie ook: ASP.NET ASP.NET

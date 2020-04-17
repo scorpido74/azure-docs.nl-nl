@@ -4,12 +4,12 @@ description: Lees hoe inkomende en uitgaande IP-adressen worden gebruikt in Azur
 ms.topic: article
 ms.date: 06/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: aebce04fe2f1b055a4d498021dcd25144cd122a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279206"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537624"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Binnenkomende en uitgaande IP-adressen in Azure App Service
 
@@ -23,7 +23,7 @@ Ongeacht het aantal uitgeschaalde exemplaren heeft elke app één binnenkomend I
 
 - Verwijder een app en maak deze opnieuw in een andere brongroep.
 - Verwijder de laatste app in een resourcegroep _en_ regiocombinatie en maak deze opnieuw.
-- Een bestaande SSL-binding verwijderen, bijvoorbeeld tijdens certificaatverlenging (zie [Certificaat verlengen).](configure-ssl-certificate.md#renew-certificate)
+- Een bestaande TLS-binding verwijderen, bijvoorbeeld tijdens het vernieuwen van het certificaat (zie [Certificaat verlengen).](configure-ssl-certificate.md#renew-certificate)
 
 ## <a name="find-the-inbound-ip"></a>Het binnenkomende IP zoeken
 
@@ -35,7 +35,7 @@ nslookup <app-name>.azurewebsites.net
 
 ## <a name="get-a-static-inbound-ip"></a>Een statisch binnenkomend IP-adres
 
-Soms wilt u misschien een specifiek, statisch IP-adres voor uw app. Als u een statisch binnenkomend IP-adres wilt krijgen, moet u een [IP-gebaseerde SSL-binding](configure-ssl-bindings.md#secure-a-custom-domain)configureren. Als u eigenlijk geen SSL-functionaliteit nodig hebt om uw app te beveiligen, u zelfs een zelfondertekend certificaat uploaden voor deze binding. In een IP-gebaseerde SSL-binding is het certificaat gebonden aan het IP-adres zelf, dus App Service voorziet in een statisch IP-adres om dit mogelijk te maken. 
+Soms wilt u misschien een specifiek, statisch IP-adres voor uw app. Als u een statisch binnenkomend IP-adres wilt krijgen, moet u [een aangepast domein beveiligen.](configure-ssl-bindings.md#secure-a-custom-domain) Als u eigenlijk geen TLS-functionaliteit nodig hebt om uw app te beveiligen, u zelfs een zelfondertekend certificaat uploaden voor deze binding. In een IP-gebaseerde TLS-binding is het certificaat gebonden aan het IP-adres zelf, dus App Service voorziet in een statisch IP-adres om dit mogelijk te maken. 
 
 ## <a name="when-outbound-ips-change"></a>Wanneer uitgaande IP's veranderen
 

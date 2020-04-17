@@ -4,18 +4,16 @@ description: Meer informatie over het uitvoeren van een op agent gebaseerde migr
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6855c3e81aece0358146608b6cf179fb923c54c8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238438"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535329"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM's migreren naar Azure (op basis van agent)
 
 In dit artikel ziet u hoe u on-premises Vm's vMware naar Azure migreert, met behulp van op agentgebaseerde migratie met het hulpprogramma Azure Migrate Server Migration.
-
-[Azure Migrate](migrate-services-overview.md) biedt een centrale hub om detectie, beoordeling en migratie van uw on-premises apps en workloads en AWS/GCP VM-exemplaren naar Azure bij te houden. De hub biedt Azure Migrate-tools voor beoordeling en migratie, evenals isv-aanbiedingen (onafhankelijke softwareleveranciers) van derden.
 
 
 In deze zelfstudie leert u het volgende:
@@ -78,7 +76,7 @@ Als u al een beoordeling met Azure Migrate Server Assessment hebt uitgevoerd, u 
 Als u geen beoordeling hebt uitgevoerd, moet u Azure-machtigingen instellen voordat u migreren met Azure Migrate Server Migration.
 
 - **Een project maken:** uw Azure-account heeft machtigingen nodig om een Azure Migrate-project te maken. 
-- **Het Azure Migrate-replicatietoestel registreren:** het replicatietoestel maakt en registreert een Azure Active Directory-app in uw Azure-account. U moet hiervoor machtigingen delegeren.
+- **Het Azure Migrate-replicatietoestel registreren:** het replicatietoestel maakt en registreert een Azure Active Directory-app in uw Azure-account. Machtigingen hiervoor delegeren.
 - **Key Vault maken:** Als u VMware VM's wilt migreren met Azure Migrate Server Migration, maakt Azure Migrate een Key Vault in de brongroep om toegangssleutels te beheren voor het replicatieopslagaccount in uw abonnement. Als u de kluis wilt maken, hebt u machtigingen voor toewijzing van rollen nodig voor de resourcegroep waarin het Azure Migrate-project zich bevindt. 
 
 
@@ -147,8 +145,8 @@ Ga als volgt te werk om het account te maken:
 
 **Taak** | **Rol/machtigingen** | **Details**
 --- | --- | ---
-**VM-detectie** | Ten minste een alleen-lezen-gebruiker<br/><br/> Datacentrumobject –> doorgeven naar onderliggend object, rol=Alleen-lezen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **Geen toegang** met het object Doorgeven toe aan het **onderliggende** object aan de onderliggende objecten (vSphere-hosts, gegevensopslag, VM's en netwerken).
-**Volledige replicatie, failover en failback** |  Maak een rol (Azure_Site_Recovery) met de vereiste machtigingen en wijs de rol toe aan een VMware-gebruiker of -groep<br/><br/> Datacentrumobject –> Doorgeven naar onderliggend object, rol=Azure_Site_Recovery<br/><br/> Gegevensopslag –> Ruimte toewijzen, browsen in de gegevensopslag, bestandsbewerkingen op laag niveau, bestand verwijderen, bestanden van virtuele machines bijwerken<br/><br/> Netwerk –> Netwerk toewijzen<br/><br/> Resource –> VM toewijzen aan resourcegroep, uitgeschakelde VM migreren, ingeschakelde VM migreren<br/><br/> Taken –> Taak maken, taak bijwerken<br/><br/> Virtuele machine –> Configuratie<br/><br/> Virtuele machine –> Interactie –> vraag beantwoorden, apparaatverbinding, CD's configureren, diskettes configureren, uitschakelen, inschakelen, VMware-hulpprogramma's installeren<br/><br/> Virtuele machine -> Inventaris –> Maken, registreren, registratie opheffen<br/><br/> Virtuele machine –> Inrichten –> Downloaden van virtuele machine toestaan, toestaan dat bestanden van virtuele machines worden geüpload<br/><br/> Virtuele machine –> Momentopnamen -> Momentopnamen verwijderen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **Geen toegang** met het object Doorgeven toe aan het **onderliggende** object aan de onderliggende objecten (vSphere-hosts, gegevensopslag, VM's en netwerken).
+**VM-detectie** | Ten minste een alleen-lezen-gebruiker<br/><br/> Datacentrumobject –> doorgeven naar onderliggend object, rol=Alleen-lezen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **Geen toegang** toe aan het onderliggende object voor **het onderliggende** object aan de onderliggende objecten (vSphere-hosts, gegevensopslag, VM's en netwerken).
+**Volledige replicatie, failover en failback** |  Maak een rol (Azure_Site_Recovery) met de vereiste machtigingen en wijs de rol toe aan een VMware-gebruiker of -groep<br/><br/> Datacentrumobject –> Doorgeven naar onderliggend object, rol=Azure_Site_Recovery<br/><br/> Gegevensopslag –> Ruimte toewijzen, browsen in de gegevensopslag, bestandsbewerkingen op laag niveau, bestand verwijderen, bestanden van virtuele machines bijwerken<br/><br/> Netwerk –> Netwerk toewijzen<br/><br/> Resource –> VM toewijzen aan resourcegroep, uitgeschakelde VM migreren, ingeschakelde VM migreren<br/><br/> Taken –> Taak maken, taak bijwerken<br/><br/> Virtuele machine –> Configuratie<br/><br/> Virtuele machine –> Interactie –> vraag beantwoorden, apparaatverbinding, CD's configureren, diskettes configureren, uitschakelen, inschakelen, VMware-hulpprogramma's installeren<br/><br/> Virtuele machine -> Inventaris –> Maken, registreren, registratie opheffen<br/><br/> Virtuele machine –> Inrichten –> Downloaden van virtuele machine toestaan, toestaan dat bestanden van virtuele machines worden geüpload<br/><br/> Virtuele machine –> Momentopnamen -> Momentopnamen verwijderen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **Geen toegang** met het **object Niet-gevolmett toe aan** het onderliggende object aan de onderliggende objecten (vSphere-hosts, datastores, VMsa, nd-netwerken).
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>Een account voorbereiden voor installatie van de Mobility-service
 
@@ -191,26 +189,18 @@ Als u de zelfstudie om VMware VM's te beoordelen niet hebt gevolgd, stelt u een 
 3. Klik in **Overzicht** op **Servers evalueren en migreren**.
 4. Klik **onder Servers ontdekken, beoordelen en migreren**op Servers beoordelen en **migreren.**
 
-    ![Servers ontdekken en beoordelen](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
+    ! [Servers ontdekken en beoordelen] (./media/tutorial-migrate-vmware-agent/assess-migrate.png
 
 1. Klik in **Servers detecteren, evalueren en migreren** op **Hulpprogramma's toevoegen**.
 2. Selecteer in **Project migreren** uw Azure-abonnement en maak een resourcegroep als u er nog geen hebt.
-3. Geef in **Projectdetails**de projectnaam en geografie op waarin u het project wilt maken en klik op **Volgende**
+3. Geef in **Projectdetails** de projectnaam en geografie op waarin u het project wilt maken en klik op **Volgende**. Bekijk ondersteunde regio's voor [publieke](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheidswolken.](migrate-support-matrix.md#supported-geographies-azure-government)
 
     ![Een Azure-migratieproject maken](./media/tutorial-migrate-vmware-agent/migrate-project.png)
 
-    U een Azure Migrate-project maken in een van deze regio's.
 
-    **Geografie** | **Regio**
-    --- | ---
-    Azië | Azië - zuidoost
-    Europa | Europa - noord of Europa - west
-    Verenigde Staten | VS - oost of VS - west-centraal
-
-    De opgegeven geografie voor het project wordt alleen gebruikt om de metagegevens op te slaan die zijn verzameld van on-premises virtuele machines. U elk doelgebied selecteren voor de werkelijke migratie.
 4. Selecteer **in Het beoordelingsprogramma selecteren**de optie Een **beoordelingstool overslaan voor nu** > **Volgende**.
 5. Selecteer Azure Migreren in **Het migratiehulpprogramma selecteren:** **Servermigratie** > **volgende**.
-6. Bekijk in **Hulpmiddelen voor controleren + toevoegen**de instellingen en klik op Hulpmiddelen **toevoegen**
+6. Controleer in **Beoordelen en hulpprogramma's toevoegen** de instellingen en klik op **Hulpmiddelen toevoegen**
 7. Na het toevoegen van het hulpprogramma wordt het weergegeven in de hulpprogramma's voor azure migreren > > **serversmigratie.** **Servers**
 
 ## <a name="set-up-the-replication-appliance"></a>Het replicatietoestel instellen
@@ -221,7 +211,10 @@ De eerste stap van migratie is het instellen van het replicatietoestel. Het repl
 - **Processerver:** de processerver fungeert als replicatiegateway. Het ontvangt replicatiegegevens; optimaliseert het met caching, compressie en versleuteling en stuurt het naar een cacheopslagaccount in Azure. De processerver installeert ook de Mobility Service-agent op VM's die u wilt repliceren en voert automatische detectie uit van on-premises VM's vMware.
 
 
-Als u het replicatietoestel wilt instellen, downloadt u een geprepareerde OVA-sjabloon (Open Virtualisatie Application) om deze in te stellen. U importeert de sjabloon in VMware en maakt de vm voor replicatietoestel. 
+U het replicatietoestel op een aantal manieren instellen.
+
+- Instellen met een gedownloade OVA-sjabloon (Open Virtualisatie Application) in. U importeert de sjabloon in VMware en maakt de vm voor replicatietoestel. Dit is de methode die in deze zelfstudie wordt gebruikt.
+- Stel een script in.
 
 ### <a name="download-the-replication-appliance-template"></a>De sjabloon voor het replicatietoestel downloaden
 

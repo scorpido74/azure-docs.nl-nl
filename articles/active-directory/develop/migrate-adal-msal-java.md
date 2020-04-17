@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: 2929b94a2cb624b96649292714fe93dea09a2085
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7ba845e79074313f0ccf2c066ba016bd72d46efe
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886497"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534564"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>ADAL naar MSAL migratiegids voor Java
 
@@ -82,7 +82,7 @@ Als u `https://login.microsoftonline.com/common` de autoriteit in v2.0 gebruikt,
 
 Het v1.0-eindpunt (gebruikt door ADAL) zendt alleen v1.0-tokens uit.
 
-Het v2.0-eindpunt (gebruikt door MSAL) kan v1.0- en v2.0-tokens uitzenden. Een eigenschap van het toepassingsmanifest van de Web API stelt ontwikkelaars in staat om te kiezen welke versie van token wordt geaccepteerd. Zie `accessTokenAcceptedVersion` in de referentiedocumentatie van het [toepassingsmanifest.](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+Het v2.0-eindpunt (gebruikt door MSAL) kan v1.0- en v2.0-tokens uitzenden. Een eigenschap van het toepassingsmanifest van de web-API stelt ontwikkelaars in staat om te kiezen welke versie van token wordt geaccepteerd. Zie `accessTokenAcceptedVersion` in de referentiedocumentatie van het [toepassingsmanifest.](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 
 Zie [Azure Active Directory-toegangstokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)voor meer informatie over v1.0- en v2.0-tokens.
 
@@ -109,7 +109,8 @@ PublicClientApplication app = PublicClientApplication.builder(CLIENT_ID) // Clie
 IAuthenticationResult result = app.acquireToken(parameters);
 ```
 
-De `IAuthenticationResult` retourneert een toegangstoken en ID-token, terwijl uw nieuwe vernieuwingstoken wordt opgeslagen in de cache. De applicatie bevat nu ook een IAccount:
+De `IAuthenticationResult` retourneert een toegangstoken en ID-token, terwijl uw nieuwe vernieuwingstoken wordt opgeslagen in de cache.
+De applicatie bevat nu ook een IAccount:
 
 ```java
 Set<IAccount> accounts =  app.getAccounts().join();
@@ -118,6 +119,6 @@ Set<IAccount> accounts =  app.getAccounts().join();
 Als u de tokens wilt gebruiken die zich nu in de cache bevinden, belt u het:
 
 ```java
-SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build(); 
+SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build();
 IAuthenticationResult result = app.acquireToken(parameters);
 ```

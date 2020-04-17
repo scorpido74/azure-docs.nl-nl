@@ -3,12 +3,12 @@ title: SQL Server-db's beheren en bewaken op een Azure VM
 description: In dit artikel wordt beschreven hoe u SQL Server-databases beheert en bewaakt die op een Azure VM worden uitgevoerd.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 4daf068e97a08d1a611ef64cb64569cacd5d7420
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74172163"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537301"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Back-ups van SQL Server-databases beheren en bewaken
 
@@ -38,7 +38,7 @@ Omdat logboekbackups elke 15 minuten optreden, kan het controleren van back-upta
 
 Ga als volgt te werk om waarschuwingen voor databaseback-ups te controleren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer op het dashboard van de kluis de optie **Waarschuwingen en gebeurtenissen**.
 
@@ -59,7 +59,7 @@ Als u ervoor kiest om herstelpunten achter te laten, houdt u rekening met deze g
 
 - Alle herstelpunten blijven voor altijd intact, alle snoeien stopt bij stopbescherming met bewarende gegevens.
 - Er worden kosten in rekening gebracht voor de beveiligde instantie en de verbruikte opslag. Zie [Azure Backup-prijzen](https://azure.microsoft.com/pricing/details/backup/)voor meer informatie.
-- Als u een gegevensbron verwijdert zonder back-ups te stoppen, mislukken nieuwe back-ups.
+- Als u een gegevensbron verwijdert zonder back-ups te stoppen, mislukken nieuwe back-ups. Oude herstelpunten verlopen volgens het beleid, maar een laatste herstelpunt wordt altijd bewaard totdat u de back-ups stopt en de gegevens verwijdert.
 
 Ga als volgt te werk om de beveiliging van een database te stoppen:
 

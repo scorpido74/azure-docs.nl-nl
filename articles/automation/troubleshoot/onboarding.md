@@ -8,12 +8,12 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae359e5210a9a11c33dd3ff9b474e28aa2548c57
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75889334"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536961"
 ---
 # <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Fouten oplossen bij onboarding-updatebeheer, wijzigingstracking en voorraad
 
@@ -72,7 +72,7 @@ Deze fout wordt veroorzaakt door onjuiste of ontbrekende machtigingen op de virt
 
 #### <a name="resolution"></a>Oplossing
 
-Zorg ervoor dat u over de juiste machtigingen beschikt om aan boord van de virtuele machine te gaan. Bekijk de [machtigingen die nodig zijn om machines aan boord te nemen](../automation-role-based-access-control.md#onboarding) en probeer de oplossing opnieuw aan boord te krijgen. Als u de `The solution cannot be enabled on this VM because the permission to read the workspace is missing`fout ontvangt, `Microsoft.OperationalInsights/workspaces/read` moet u ervoor zorgen dat u toestemming hebt om te kunnen vinden of de vm aan boord is van een werkruimte.
+Zorg ervoor dat u over de juiste machtigingen beschikt om aan boord van de virtuele machine te gaan. Bekijk de [machtigingen die nodig zijn om machines aan boord te nemen](../automation-role-based-access-control.md#onboarding-permissions) en probeer de oplossing opnieuw aan boord te krijgen. Als u de `The solution cannot be enabled on this VM because the permission to read the workspace is missing`fout ontvangt, `Microsoft.OperationalInsights/workspaces/read` moet u ervoor zorgen dat u de toestemming hebt om te kunnen vinden of de vm aan boord is van een werkruimte.
 
 ### <a name="scenario-onboarding-fails-with-the-message---failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scenario: Onboarding mislukt met het bericht - Kan automatiseringsaccount niet configureren voor diagnostische logboekregistratie
 
@@ -162,7 +162,7 @@ Zodra u de oplossingen hebt verwijderd, u de koppeling van uw werkruimte ontkopp
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Bij het implementeren van een oplossing worden verschillende gerelateerde resources geïmplementeerd. Een van die bronnen is de Microsoft Monitoring Agent Extension of Log Analytics agent voor Linux. Dit zijn Virtual Machine Extensions geïnstalleerd door de gastagent van de virtuele machine die verantwoordelijk is voor de communicatie met de geconfigureerde Log Analytics-werkruimte, met het oog op latere coördinatie van het downloaden van binaire bestanden en andere bestanden die de oplossing waar u onboarding op hangt, afhankelijk zodra deze wordt uitgevoerd.
+Bij het implementeren van een oplossing worden verschillende gerelateerde resources geïmplementeerd. Een van die bronnen is de Microsoft Monitoring Agent Extension of Log Analytics agent voor Linux. Dit zijn Virtual Machine Extensions geïnstalleerd door de gastagent van de virtuele machine die verantwoordelijk is voor de communicatie met de geconfigureerde Log Analytics-werkruimte, met het oog op latere coördinatie van het downloaden van binaire bestanden en andere bestanden waarvan de oplossing waarop u bent instappen afhankelijk is zodra deze wordt uitgevoerd.
 U wordt meestal eerst op de hoogte van MMA- of Log Analytics-agent voor Linux-installatiefouten van een melding die wordt weergegeven in de meldingenhub. Als u op die melding klikt, krijgt u meer informatie over de specifieke fout. Navigatie naar de resourcegroepenbron en vervolgens naar het element Implementaties daarin bevat ook details over de implementatiefouten die zijn opgetreden.
 De installatie van de MMA- of Log Analytics-agent voor Linux kan om verschillende redenen mislukken en de stappen die moeten worden genomen om deze fouten aan te pakken, variëren afhankelijk van het probleem. Er volgen specifieke stappen voor het oplossen van problemen.
 

@@ -1,16 +1,17 @@
 ---
-title: VMware-VM's evalueren voor migratie naar Azure
+title: VMware VM's beoordelen met Azure Migrate Server Assessment
 description: Beschrijft hoe u on-premises VM's voor VMware-gegevens beoordelen op migratie naar Azure met Azure Migrate Server Assessment.
 ms.topic: tutorial
-ms.date: 03/23/2019
-ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.custom: mvc
+ms.openlocfilehash: bd9e6b5923207297b1aa70a67052a7796b901781
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548747"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535363"
 ---
-# <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>VMware VM's beoordelen met Azure Migrate Server Assessment
+# <a name="assess-vmware-vms-with-server-assessment"></a>VMware-VM’s evalueren met Serverevaluatie
 
 In dit artikel ziet u hoe u on-premises Virtuele VMware-machines (VM's) beoordelen met behulp van het hulpprogramma [Azure Migrate:Server Assessment.](migrate-services-overview.md#azure-migrate-server-assessment-tool)
 
@@ -48,13 +49,11 @@ Stel als volgt een nieuw Azure Migrate-project in:
 
 1. Selecteer **Gereedschappen toevoegen**in Aan **de slag**.
 1. Selecteer in **Project migreren** uw Azure-abonnement en maak een resourcegroep als u er nog geen hebt.     
-1. Geef in **Projectdetails**de projectnaam en de geografie op waarin u het project wilt maken. Azië, Europa, het Verenigd Koninkrijk en de Verenigde Staten worden ondersteund.
-
-   Het geografische gebied voor het project wordt alleen gebruikt om de metagegevens op te slaan die worden verzameld van on-premises virtuele machines. Wanneer u een migratie uitvoert, kunt u elke gewenste doelregio selecteren.
+1. Geef in **Projectdetails**de projectnaam en de geografie op waarin u het project wilt maken. Bekijk ondersteunde regio's voor [publieke](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheidswolken.](migrate-support-matrix.md#supported-geographies-azure-government)
 
    ![Vakken voor projectnaam en regio](./media/tutorial-assess-vmware/migrate-project.png)
 
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Selecteer Azure **Migrate: Server Assessment** > **Next**in **Het beoordelingshulpprogramma selecteren.**
 
    ![Selectie voor het hulpprogramma Serverbeoordeling](./media/tutorial-assess-vmware/assessment-tool.png)
@@ -65,12 +64,12 @@ Stel als volgt een nieuw Azure Migrate-project in:
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Het Azure Migrate-toestel instellen
 
-Azure Migrate:Server Assessment maakt gebruik van een lichtgewicht Azure Migrate-toestel. Het toestel voert VM-detectie uit en verzendt VM-metagegevens en prestatiegegevens naar Azure Migrate.
-- Het toestel kan worden ingesteld op een VMware VM met behulp van een gedownloade OVA-sjabloon. U het apparaat ook instellen op een VM of fysieke machine met een PowerShell-installatiescript.
-- In deze zelfstudie wordt de OVA-sjabloon gebruikt. Bekijk [dit artikel](deploy-appliance-script.md) als u het toestel wilt instellen met een script.
+Azure Migrate:Server Assessment maakt gebruik van een lichtgewicht Azure Migrate-toestel. Het toestel voert VM-detectie uit en verzendt VM-metagegevens en prestatiegegevens naar Azure Migrate. Het apparaat kan op verschillende manieren worden ingesteld.
+
+- Instellen op een VMware VM met behulp van een gedownloade OVA-sjabloon. Dit is de methode die in deze zelfstudie wordt gebruikt.
+- Instellen op een VMware VM of fysieke machine met een PowerShell-installatiescript. [Deze methode](deploy-appliance-script.md) moet worden gebruikt als u een VM niet instellen met een OVA-sjabloon of als u zich in Azure Government bevindt.
 
 Nadat u het toestel hebt gemaakt, controleert u of het verbinding kan maken met Azure Migrate:Server Assessment, configureer het voor de eerste keer en registreer u het met het Azure Migrate-project.
-
 
 
 ### <a name="download-the-ova-template"></a>De OVA-sjabloon downloaden
@@ -115,9 +114,9 @@ Importeer het gedownloade bestand en maak een VM:
 1. Geef in **Netwerktoewijzing**het netwerk op waarmee de VM verbinding maakt. Het netwerk heeft een internetverbinding nodig om metagegevens naar Azure Migrate Server Assessment te verzenden.
 1. Controleer en bevestig de instellingen en selecteer **Voltooien.**
 
-### <a name="verify-appliance-access-to-azure"></a>De toegang tot het toestel tot Azure verifiëren
+## <a name="verify-appliance-access-to-azure"></a>De toegang tot het toestel tot Azure verifiëren
 
-Controleer of de toestel-VM verbinding kan maken met [Azure-URL's](migrate-appliance.md#url-access).
+Zorg ervoor dat de toestel-VM verbinding kan maken met Azure-URL's voor [openbare](migrate-appliance.md#public-cloud-urls) en [overheidsclouds.](migrate-appliance.md#government-cloud-urls)
 
 ### <a name="configure-the-appliance"></a>Het toestel configureren
 
@@ -136,7 +135,7 @@ Stel het apparaat voor de eerste keer in.
    - **Connectiviteit**: De app controleert of de VM toegang tot internet heeft. Als de VM een proxy gebruikt:
      - Selecteer **Proxy-instellingen**en geef het proxyadres http://ProxyIPAddress en http://ProxyFQDNde luisterpoort op in het formulier of .
      - Geef referenties op als de proxy verificatie nodig heeft.
-     - Houd er rekening mee dat alleen HTTP-proxy wordt ondersteund.
+     - Alleen HTTP-proxy wordt ondersteund.
    - **Tijdsynchronisatie**: de tijd op het toestel moet synchroon lopen met de internettijd om de detectie goed te laten werken.
    - **Updates installeren**: Het toestel zorgt ervoor dat de nieuwste updates worden geïnstalleerd.
    - **VDDK installeren**: Het toestel controleert of VMWare vSphere Virtual Disk Development Kit (VDDK) is geïnstalleerd. Als deze niet is geïnstalleerd, downloadt u VDDK 6.7 van VMware en haalt u de gedownloade zip-inhoud naar de opgegeven locatie in het toestel.
@@ -167,7 +166,7 @@ Het toestel moet verbinding maken met vCenter Server om de configuratie- en pres
     - Als u detectie wilt uitvoeren naar specifieke VMware-objecten (vCenter Server-datacenters, clusters, een map met clusters, hosts, een map met hosts of afzonderlijke VM's.), controleert u de instructies in [dit artikel](set-discovery-scope.md) om het account dat wordt gebruikt door Azure Migrate te beperken.
 
 3. Selecteer **Verbinding valideren** om ervoor te zorgen dat het toestel verbinding kan maken met vCenter Server.
-4. Klik in **Toepassingen en afhankelijkheden van VM's**ontdekken, klik optioneel op **Referenties toevoegen**en geef het besturingssysteem op waarvoor de referenties relevant zijn en de gebruikersnaam en het wachtwoord van de referenties. Klik vervolgens op **Toevoegen**..
+4. Klik in **Toepassingen en afhankelijkheden van VM's**ontdekken, klik optioneel op **Referenties toevoegen**en geef het besturingssysteem op waarvoor de referenties relevant zijn en de gebruikersnaam en het wachtwoord van de referenties. Klik vervolgens op **Toevoegen**.
 
     - U voegt hier optioneel referenties toe als u een account hebt gemaakt dat u wilt gebruiken voor de [functie voor het ontdekken van](how-to-discover-applications.md)toepassingen of de functie voor [afhankelijkheidsanalyse zonder agent](how-to-create-group-machine-dependencies-agentless.md).
     - Als u deze functies niet gebruikt, u deze instelling overslaan.
@@ -255,7 +254,7 @@ De geaggregeerde opslagkosten voor de beoordeelde groep worden verdeeld over ver
 
 ### <a name="review-confidence-rating"></a>Betrouwbaarheidsclassificatie controleren
 
-Azure Migrate Server Assessment kent een betrouwbaarheidsclassificatie toe aan een prestatiegebaseerde beoordeling, van 1 ster (laagste) tot 5 sterren (hoogste).
+Azure Migrate Server Assessment kent een betrouwbaarheidsbeoordeling toe aan een prestatiegebaseerde beoordeling, van één ster (laagste) tot vijf sterren (hoogste).
 
 ![Betrouwbaarheidsclassificatie](./media/tutorial-assess-vmware/confidence-rating.png)
 

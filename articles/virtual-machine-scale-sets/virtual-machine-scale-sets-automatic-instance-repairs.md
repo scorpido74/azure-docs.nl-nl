@@ -10,101 +10,18 @@ ms.tgt_pltfrm: vm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: avverma
-ms.openlocfilehash: f335b0fb3396103c321d740bcf6d125e60e95086
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e73ef75b3313656b45d29270d9996c3ad17c630
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78274812"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538066"
 ---
-# <a name="preview-automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Voorbeeld: Automatische instantiereparaties voor azure-schaalsets voor virtuele machines
+# <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatische instantiereparaties voor Azure-schaalsets voor virtuele machines
 
 Door automatische instantiereparaties in te schakelen voor azure-eenvoudigstel voor virtuele machines, u een hoge beschikbaarheid voor toepassingen bereiken door een reeks gezonde exemplaren te behouden. Als een instantie in de schaalset ongezond blijkt te zijn, zoals gerapporteerd door [application health extension](./virtual-machine-scale-sets-health-extension.md) of Load [balancer health probes,](../load-balancer/load-balancer-custom-probe-overview.md)voert deze functie automatisch instantiereparatie uit door de niet-gezonde instantie te verwijderen en een nieuwe te maken om deze te vervangen.
 
-> [!NOTE]
-> Deze voorbeeldfunctie wordt geleverd zonder een serviceniveauovereenkomst en wordt niet aanbevolen voor productieworkloads.
-
 ## <a name="requirements-for-using-automatic-instance-repairs"></a>Vereisten voor het gebruik van automatische instantiereparaties
-
-**Opt-in voor de automatische voorbeeld van instantiereparaties**
-
-Gebruik de REST API of Azure PowerShell om je aan te melden voor de preview van automatische instantiereparaties. Met deze stappen wordt uw abonnement voor de voorbeeldfunctie geregistreerd. Let op: dit is slechts een eenmalige installatie die nodig is voor het gebruik van deze functie. Als uw abonnement al is geregistreerd voor automatische voorbeeldreparaties, hoeft u zich niet opnieuw te registreren. 
-
-REST API gebruiken 
-
-1. Registreren voor de functie met [Functies - Registreren](/rest/api/resources/features/register) 
-
-```
-POST on '/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/RepairVMScaleSetInstancesPreview/register?api-version=2015-12-01'
-```
-
-```json
-{
-  "properties": {
-    "state": "Registering"
-  },
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/RepairVMScaleSetInstancesPreview",
-  "type": "Microsoft.Features/providers/features",
-  "name": "Microsoft.Compute/RepairVMScaleSetInstancesPreview"
-}
-```
-
-2. Wacht een paar minuten tot de *staat* is overgeboekt naar *Geregistreerd.* U de volgende API gebruiken om dit te bevestigen.
-
-```
-GET on '/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/RepairVMScaleSetInstancesPreview?api-version=2015-12-01'
-```
-
-```json
-{
-  "properties": {
-    "state": "Registered"
-  },
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/RepairVMScaleSetInstancesPreview",
-  "type": "Microsoft.Features/providers/features",
-  "name": "Microsoft.Compute/RepairVMScaleSetInstancesPreview"
-}
-```
-
-3. Zodra de *staat* is gewijzigd in *Geregistreerd,* voer dan het volgende uit.
-
-```
-POST on '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2015-12-01'
-```
-
-Azure PowerShell gebruiken
-
-1. Registreer u voor de functie met behulp van cmdlet [Register-AzureRmResourceProvider,](/powershell/module/azurerm.resources/register-azurermresourceprovider) gevolgd door [Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature)
-
-```azurepowershell-interactive
-Register-AzureRmResourceProvider `
- -ProviderNamespace Microsoft.Compute
-
-Register-AzureRmProviderFeature `
- -ProviderNamespace Microsoft.Compute `
- -FeatureName RepairVMScaleSetInstancesPreview
-```
-
-2. Wacht een paar minuten tot de *registratiestaat* is gewijzigd in *Geregistreerd.* U de volgende cmdlet gebruiken om dit te bevestigen.
-
-```azurepowershell-interactive
-Get-AzureRmProviderFeature `
- -ProviderNamespace Microsoft.Compute `
- -FeatureName RepairVMScaleSetInstancesPreview
- ```
-
- Het antwoord moet als volgt zijn.
-
-| FeatureName                           | ProviderName            | RegistratieStaat       |
-|---------------------------------------|-------------------------|-------------------------|
-| RepairVMScaleSetInstancesPreview      | Microsoft.Compute       | Geregistreerd              |
-
-3. Zodra de *registratiestaat* om te veranderen naar *Geregistreerd,* voer dan de volgende cmdlet.
-
-```azurepowershell-interactive
-Register-AzureRmResourceProvider `
- -ProviderNamespace Microsoft.Compute
-```
 
 **Toepassingsstatusbewaking inschakelen voor schaalset**
 
@@ -122,7 +39,7 @@ Voor exemplaren die zijn gemarkeerd als 'Niet in orde', worden automatische repa
 
 **Eén plaatsingsgroep inschakelen**
 
-Deze voorbeeld is momenteel alleen beschikbaar voor schaalsets die als één plaatsingsgroep worden geïmplementeerd. De eigenschap *singlePlacementGroup* moet worden ingesteld op *true* voor uw schaal ingesteld op automatische instantie reparaties functie te gebruiken. Meer informatie over [plaatsingsgroepen](./virtual-machine-scale-sets-placement-groups.md#placement-groups).
+Deze functie is momenteel alleen beschikbaar voor schaalsets die als één plaatsingsgroep worden geïmplementeerd. De eigenschap *singlePlacementGroup* moet worden ingesteld op *true* voor uw schaal ingesteld op automatische instantie reparaties functie te gebruiken. Meer informatie over [plaatsingsgroepen](./virtual-machine-scale-sets-placement-groups.md#placement-groups).
 
 **API-versie**
 
@@ -130,15 +47,15 @@ Automatisch reparatiebeleid wordt ondersteund voor compute API-versie 2018-10-01
 
 **Beperkingen op resource- of abonnementsverplaatsingen**
 
-Als onderdeel van deze preview worden resource- of abonnementsverplaatsingen momenteel niet ondersteund voor schaalsets wanneer het beleid voor automatische reparaties is ingeschakeld.
+Bron- of abonnementsverplaatsingen worden momenteel niet ondersteund voor schaalsets wanneer de functie voor automatische reparaties is ingeschakeld.
 
 **Beperking voor schaalsets voor servicefabric**
 
-Deze voorbeeldfunctie wordt momenteel niet ondersteund voor schaalsets voor servicefabric.
+Deze functie wordt momenteel niet ondersteund voor schaalsets voor servicefabric.
 
 ## <a name="how-do-automatic-instance-repairs-work"></a>Hoe werken automatische instantiereparaties?
 
-De functie Automatische instantiereparatie is afhankelijk van statusbewaking van afzonderlijke exemplaren in een schaalset. VM-exemplaren in een schaalset kunnen worden geconfigureerd om de status van de toepassing uit te zenden met behulp van de [extensie Toepassingsstatus](./virtual-machine-scale-sets-health-extension.md) of [de statussondes van de load balancer.](../load-balancer/load-balancer-custom-probe-overview.md) Als wordt vastgesteld dat een instantie niet in orde is, voert de schaalset herstelactie uit door de niet-gezonde instantie te verwijderen en een nieuwe instantie te maken om deze te vervangen. Deze functie kan worden ingeschakeld in het model van de virtuele machineschaalset met behulp van het object *AutomaticRepairsPolicy.*
+De functie Automatische instantiereparatie is afhankelijk van statusbewaking van afzonderlijke exemplaren in een schaalset. VM-exemplaren in een schaalset kunnen worden geconfigureerd om de status van de toepassing uit te zenden met behulp van de [extensie Toepassingsstatus](./virtual-machine-scale-sets-health-extension.md) of [de statussondes van de load balancer.](../load-balancer/load-balancer-custom-probe-overview.md) Als wordt vastgesteld dat een instantie niet in orde is, voert de schaalset herstelactie uit door de niet-gezonde instantie te verwijderen en een nieuwe instantie te maken om deze te vervangen. Het nieuwste model voor de virtuele machineschaalwordt gebruikt om de nieuwe instantie te maken. Deze functie kan worden ingeschakeld in het model van de virtuele machineschaalset met behulp van het object *AutomaticRepairsPolicy.*
 
 ### <a name="batching"></a>Batchverwerking
 
@@ -147,6 +64,12 @@ De automatische instantiereparatiebewerkingen worden in batches uitgevoerd. Op e
 ### <a name="grace-period"></a>Respijtperiode
 
 Wanneer een instantie een statuswijzigingsbewerking doorloopt vanwege een actie PUT, PATCH of POST die op de schaalset wordt uitgevoerd (bijvoorbeeld reimage, redeploy, update, enz.), wordt elke reparatieactie op die instantie alleen uitgevoerd na het wachten op de respijtperiode. Respijtperiode is de hoeveelheid tijd om de instantie terug te laten keren naar een gezonde staat. De respijtperiode begint nadat de statuswijziging is voltooid. Dit helpt voortijdige of toevallige reparatieoperaties te voorkomen. De respijtperiode wordt gehonoreerd voor elk nieuw gemaakt exemplaar in de schaalset (inclusief de instantie die is gemaakt als gevolg van reparatiebewerking). De respijtperiode is opgegeven in minuten in ISO 8601-indeling en kan worden ingesteld met behulp van de *eigenschap automaticRepairsPolicy.gracePeriod*. De respijtperiode kan variëren tussen 30 minuten en 90 minuten en heeft een standaardwaarde van 30 minuten.
+
+### <a name="suspension-of-repairs"></a>Opschorting van reparaties 
+
+Virtuele machineschaalsets bieden de mogelijkheid om automatische revisies tijdelijk op te schorten indien nodig. De *serviceState* voor automatische reparaties onder de property *orchestrationServices* in bijvoorbeeld weergave van virtuele machine schaal set toont de huidige toestand van de automatische reparaties. Wanneer een schaalset wordt gekozen voor automatische reparaties, wordt de waarde van *parameterserviceState* ingesteld op *Uitvoeren*. Wanneer de automatische reparaties worden opgeschort voor een schaalset, wordt de *parameterserviceStaat* ingesteld op *Opgeschort*. Als *automatisch Reparatiebeleid* is gedefinieerd op een schaalset, maar de functie automatische reparaties niet is ingeschakeld, is de *parameterserviceStaat* ingesteld op *Niet actief*.
+
+Als nieuw gemaakte exemplaren voor het vervangen van de ongezonde exemplaren in een schaalset ongezond blijven, zelfs na herhaaldelijk uitvoeren van reparatiebewerkingen, werkt het platform als veiligheidsmaatregel de *serviceState* bij voor automatische reparaties aan *Suspended.* U de automatische reparaties opnieuw hervatten door de waarde van *serviceState* in te stellen voor automatische reparaties op *uitvoeren.* Gedetailleerde instructies worden gegeven in de sectie over [het bekijken en bijwerken van de servicestatus van het automatische reparatiebeleid](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) voor uw schaalset. 
 
 Het automatische reparatieproces van de instantie werkt als volgt:
 
@@ -158,13 +81,31 @@ Het automatische reparatieproces van de instantie werkt als volgt:
 
 ## <a name="instance-protection-and-automatic-repairs"></a>Bescherming van de instantie en automatische reparaties
 
-Als een instantie in een schaalset wordt beschermd door het *[beveiligingsbeleid Beschermen tegen schaalinstellingen](./virtual-machine-scale-sets-instance-protection.md#protect-from-scale-set-actions)* toe te passen, worden automatische reparaties niet uitgevoerd op die instantie.
+Als een instantie in een schaalset wordt beschermd door een van de [beveiligingsbeleidsregels](./virtual-machine-scale-sets-instance-protection.md)toe te passen, worden automatische reparaties niet uitgevoerd op die instantie. Dit geldt zowel voor het beveiligingsbeleid: *Bescherm tegen scale-in* en *Bescherm tegen scale-set* acties. 
+
+## <a name="terminatenotificationandautomaticrepairs"></a>Melding en automatische reparaties beëindigen
+
+Als de [functie voor beëindigingsmeldingen](./virtual-machine-scale-sets-terminate-notification.md) is ingeschakeld op een schaalset en vervolgens tijdens de automatische reparatiebewerking volgt het verwijderen van een niet in orde zijnde instantie de configuratie van de beëindigingsmelding. Een terminate-melding wordt verzonden via azure-metagegevensservice – geplande gebeurtenissen – en het verwijderen van instanties wordt vertraagd voor de duur van de geconfigureerde time-out voor vertraging. Het maken van een nieuw exemplaar ter vervanging van de ongezonde, wacht echter niet tot de time-out van de vertraging is voltooid.
 
 ## <a name="enabling-automatic-repairs-policy-when-creating-a-new-scale-set"></a>Automatisch reparatiebeleid inschakelen bij het maken van een nieuwe schaalset
 
 Als u het automatische reparatiebeleid wilt inschakelen terwijl u een nieuwe schaalset maakt, moet u ervoor zorgen dat aan alle [vereisten](#requirements-for-using-automatic-instance-repairs) voor deelname aan deze functie wordt voldaan. Het eindpunt van de toepassing moet correct zijn geconfigureerd voor schaalset-instanties om te voorkomen dat onbedoelde reparaties worden geactiveerd terwijl het eindpunt wordt geconfigureerd. Voor nieuw gemaakte schaalsets worden eventuele instantiereparaties alleen uitgevoerd na het wachten op de duur van de respijtperiode. Als u de automatische instantiereparatie in een schaalset wilt inschakelen, gebruikt u het object *AutomaticRepairsPolicy* in het model van de virtuele machineschaalset.
 
-### <a name="rest-api"></a>REST API
+### <a name="azure-portal"></a>Azure Portal
+ 
+De volgende stappen waarmee het beleid voor automatische reparaties mogelijk is bij het maken van een nieuwe schaalset.
+ 
+1. Ga naar **virtuele machineschaalsets**.
+1. Selecteer **+ Toevoegen** om een nieuwe schaalset te maken.
+1. Ga naar het tabblad **Gezondheid.** 
+1. Zoek de sectie **Gezondheid.**
+1. Schakel de optie **Status van de toepassing Monitor** in.
+1. Zoek de sectie **Automatisch reparatiebeleid.**
+1. Schakel **On** de optie **Automatische reparaties in.**
+1. Geef in **de respijtperiode (min)** de respijtperiode in minuten op, de toegestane waarden liggen tussen de 30 en 90 minuten. 
+1. Wanneer u klaar bent met het maken van de nieuwe schaalset, selecteert u De knop **Controleren + maken.**
+
+### <a name="rest-api"></a>REST-API
 
 In het volgende voorbeeld ziet u hoe u automatische instantiereparatie in een schaalsetmodel inschakelt. Gebruik API-versie 2018-10-01 of hoger.
 
@@ -197,11 +138,44 @@ New-AzVmssConfig `
  -AutomaticRepairGracePeriod "PT30M"
 ```
 
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+In het volgende voorbeeld wordt het automatische reparatiebeleid mogelijk gemaakt terwijl een nieuwe schaalset wordt gemaakt met behulp van *[az vmss maken.](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)* Maak eerst een resourcegroep en maak vervolgens een nieuwe schaalset met automatische herstelperiode voor reparaties ingesteld op 30 minuten.
+
+```azurecli-interactive
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create \
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --image UbuntuLTS \
+  --admin-username <azureuser> \
+  --generate-ssh-keys \
+  --load-balancer <existingLoadBalancer> \
+  --health-probe <existingHealthProbeUnderLoaderBalancer> \
+  --automatic-repairs-period 30
+```
+
+In het bovenstaande voorbeeld wordt een bestaande load balancer en statussonde gebruikt voor het bewaken van de status van de status van instanties. Als u liever een toepassingsstatusextensie gebruikt voor monitoring, u een schaalset maken, de toepassingsstatusextensie configureren en vervolgens het beleid voor automatische instantiereparaties inschakelen met behulp van de *update van AZ VMSS,* zoals uitgelegd in de volgende sectie.
+
 ## <a name="enabling-automatic-repairs-policy-when-updating-an-existing-scale-set"></a>Automatisch reparatiebeleid inschakelen bij het bijwerken van een bestaande schaalset
 
 Voordat u het automatische reparatiebeleid inschakelt in een bestaande schaalset, moet u ervoor zorgen dat aan alle [vereisten](#requirements-for-using-automatic-instance-repairs) voor deelname aan deze functie wordt voldaan. Het eindpunt van de toepassing moet correct zijn geconfigureerd voor schaalset-instanties om te voorkomen dat onbedoelde reparaties worden geactiveerd terwijl het eindpunt wordt geconfigureerd. Als u de automatische instantiereparatie in een schaalset wilt inschakelen, gebruikt u het object *AutomaticRepairsPolicy* in het model van de virtuele machineschaalset.
 
-### <a name="rest-api"></a>REST API
+Nadat u het model van een bestaande schaalset hebt bijgewerkt, moet u ervoor zorgen dat het nieuwste model wordt toegepast op alle exemplaren van de schaal. Raadpleeg de instructie over [het up-to-date brengen van VM's met het nieuwste schaalmodel.](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
+
+### <a name="azure-portal"></a>Azure Portal
+
+U het automatische reparatiebeleid van een bestaande schaalset wijzigen via de Azure-portal. 
+ 
+1. Ga naar een bestaande virtuele machineschaalset.
+1. Selecteer **Gezondheid en reparatie**onder **Instellingen** in het menu aan de linkerkant .
+1. Schakel de optie **Status van de toepassing Monitor** in.
+1. Zoek de sectie **Automatisch reparatiebeleid.**
+1. Schakel **On** de optie **Automatische reparaties in.**
+1. Geef in **de respijtperiode (min)** de respijtperiode in minuten op, de toegestane waarden liggen tussen de 30 en 90 minuten. 
+1. Selecteer **Opslaan** wanneer u klaar bent. 
+
+### <a name="rest-api"></a>REST-API
 
 In het volgende voorbeeld wordt het beleid met een respijtperiode van 40 minuten mogelijk. Gebruik API-versie 2018-10-01 of hoger.
 
@@ -232,6 +206,96 @@ Update-AzVmss `
  -AutomaticRepairGracePeriod "PT40M"
 ```
 
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+Hieronder volgt een voorbeeld voor het bijwerken van het automatische instantiereparatiebeleid van een bestaande schaalset met behulp van *[de AZ VMSS-update.](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-update)*
+
+```azurecli-interactive
+az vmss update \  
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --enable-automatic-repairs true \
+  --automatic-repairs-period 30
+```
+
+## <a name="viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy"></a>Het servicestatus van het beleid voor automatische instantiereparaties weergeven en bijwerken
+
+### <a name="rest-api"></a>REST-API 
+
+Gebruik [Instantieweergave opvragen](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/getinstanceview) met API-versie 2019-12-01 of hoger voor de grootte van virtuele machines om de *serviceState* te bekijken voor automatische reparaties onder de property *orchestrationServices*. 
+
+```http
+GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version=2019-12-01'
+```
+
+```json
+{
+  "orchestrationServices": [
+    {
+      "serviceName": "AutomaticRepairs",
+      "serviceState": "Running"
+    }
+  ]
+}
+```
+
+Gebruik *setOrchestrationServiceState* API met API-versie 2019-12-01 of hoger op een virtuele machineschaal die is ingesteld om de status van automatische reparaties in te stellen. Zodra de schaalset is gekozen voor de functie automatische reparaties, u deze API gebruiken om automatische reparaties voor uw schaalset op te schorten of te hervatten. 
+
+ ```http
+ POST '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/setOrchestrationServiceState?api-version=2019-12-01'
+ ```
+
+```json
+{
+  "orchestrationServices": [
+    {
+      "serviceName": "AutomaticRepairs",
+      "serviceState": "Suspend"
+    }
+  ]
+}
+```
+
+### <a name="azure-cli"></a>Azure CLI 
+
+Gebruik [get-instance-view](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-get-instance-view) cmdlet om de *serviceState* te bekijken voor automatische instantiereparaties. 
+
+```azurecli-interactive
+az vmss get-instance-view \
+    --name MyScaleSet \
+    --resource-group MyResourceGroup
+```
+
+Gebruik de cmdlet [setorchestration-service-state](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-set-orchestration-service-state) om de *serviceState* bij te werken voor automatische instantiereparaties. Zodra de schaalset is gekozen voor de automatische reparatiefunctie, u deze cmdlet gebruiken om automatische reparaties voor u schaalset op te schorten of te hervatten. 
+
+```azurecli-interactive
+az vmss set-orchestration-service-state \
+    --service-name AutomaticRepairs \
+    --action Resume \
+    --name MyScaleSet \
+    --resource-group MyResourceGroup
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Gebruik [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss?view=azps-3.7.0) cmdlet met parameter *InstanceView* om de *ServiceState* weer te geven voor automatische instantiereparaties.
+
+```azurepowershell-interactive
+Get-AzVmss `
+    -ResourceGroupName "myResourceGroup" `
+    -VMScaleSetName "myScaleSet" `
+    -InstanceView
+```
+
+Gebruik de cmdlet Set-AzVmssOrchestrationServiceState om de *serviceState* bij te werken voor automatische schadeherstel. Zodra de schaalset is gekozen voor de automatische reparatiefunctie, u deze cmdlet gebruiken om automatische reparaties voor u schaalset op te schorten of te hervatten.
+
+```azurepowershell-interactive
+Set-AzVmssOrchestrationServiceState `
+    -ResourceGroupName "myResourceGroup" `
+    -VMScaleSetName "myScaleSet" `
+    -ServiceName "AutomaticRepairs" `
+    -Action "Suspend"
+```
+
 ## <a name="troubleshoot"></a>Problemen oplossen
 
 **Het niet inschakelen van automatisch reparatiebeleid**
@@ -245,6 +309,8 @@ De instantie kan in respijtperiode zijn. Dit is de hoeveelheid tijd om te wachte
 **Status van toepassing weergeven voor schaalsetinstanties**
 
 U de [API voor instantieweergave opdoen](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) voor instanties in een virtuele machineschaalset gebruiken om de status van de toepassingsstatus weer te geven. Met Azure PowerShell u de cmdlet [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) gebruiken met de *-InstanceView-vlag.* De status van de toepassingsstatus wordt verstrekt onder de *eigenschap vmHealth*.
+
+In de Azure-portal u ook de status van de status zien. Ga naar een bestaande schaalset, selecteer **Instanties** in het menu aan de linkerkant en bekijk de kolom **Status status** voor de status status van elke schaalsetinstantie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

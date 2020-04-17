@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 04/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1caa80469504d52d3103fb2776fb3e7210971690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a670e32058794daeaa233464ba7d054f45ef25e3
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024395"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536315"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights-bronnen maken met Azure Resource Manager-sjablonen
 
@@ -43,7 +43,7 @@ De [quickstartsjabloon 201-timeseriesinsights-met-eventhub](https://github.com/A
 
 ## <a name="specify-deployment-template-and-parameters"></a>Implementatiesjabloon en -parameters opgeven
 
-In de volgende procedure wordt beschreven hoe u PowerShell gebruiken om een Azure Resource Manager-sjabloon te implementeren waarmee een Time Series Insights-omgeving wordt gemaakt, een onderliggende gebeurtenisbron die is geconfigureerd om gebeurtenissen uit een gebeurtenishub te gebruiken, en toegangsbeleid dat toegang verleent tot de milieugegevens. Als een bestaande gebeurtenishub niet is opgegeven, wordt er een gemaakt met de implementatie.
+In de volgende procedure wordt beschreven hoe u PowerShell gebruiken om een Azure Resource Manager-sjabloon te implementeren waarmee een Time Series Insights-omgeving wordt gemaakt, een onderliggende gebeurtenisbron die is geconfigureerd om gebeurtenissen uit een gebeurtenishub te gebruiken, en toegangsbeleid dat toegang verleent tot de gegevens van de omgeving. Als een bestaande gebeurtenishub niet is opgegeven, wordt er een gemaakt met de implementatie.
 
 1. Installeer Azure PowerShell door de instructies te volgen in [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 

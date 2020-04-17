@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 6a127510b454244b32ad481cdb32c5d2e8faf9a0
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 47485d8d9007a6cf6432b7bf401c7c1c34a9863a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991174"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536128"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Snelstart: gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een iOS- of macOS-app
 
@@ -30,7 +30,7 @@ Deze quickstart geldt voor zowel iOS- als macOS-apps. Sommige stappen zijn allee
 > [!NOTE]
 > **Vereisten**
 > * XCode 10+
-> * iOS 10+ 
+> * iOS 10+
 > * macOS 10.12+
 
 > [!div renderon="docs"]
@@ -83,7 +83,7 @@ Navigeer in een terminalvenster naar de map met `pod install` het gedownloade co
 #### <a name="step-4-configure-your-project"></a>Stap 4: Uw project configureren
 
 > [!div renderon="docs"]
-> Als u optie 1 hierboven hebt geselecteerd, u deze stappen overslaan. 
+> Als u optie 1 hierboven hebt geselecteerd, u deze stappen overslaan.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Pak het zip-bestand uit en open het project in XCode.
@@ -149,9 +149,9 @@ Navigeer in een terminalvenster naar de map met `pod install` het gedownloade co
 >          </array>
 >       </dict>
 >    </array>
-> 
+>
 >    ```
-> 1. Bouw & de app uit te voeren! 
+> 1. Bouw & de app uit te voeren!
 
 ## <a name="more-information"></a>Meer informatie
 
@@ -192,7 +192,7 @@ Vervolgens initialiseert u MSAL met de volgende code:
 
 ```swift
 let authority = try MSALAADAuthority(url: URL(string: kAuthority)!)
-            
+
 let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
@@ -209,7 +209,7 @@ Uw app moet ook het `AppDelegate`volgende in uw . Hiermee kan MSAL SDK tokenresp
 
  ```swift
  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        
+
         return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
     }
 
@@ -221,21 +221,21 @@ Uw app moet ook het `AppDelegate`volgende in uw . Hiermee kan MSAL SDK tokenresp
 
  ```swift
  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        
+
         guard let urlContext = URLContexts.first else {
             return
         }
-        
+
         let url = urlContext.url
         let sourceApp = urlContext.options.sourceApplication
-        
+
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
  ```
 
-Ten slotte moet uw `LSApplicationQueriesSchemes` app een vermelding in uw `CFBundleURLTypes` ***Info.plist*** hebben naast de . Het monster wordt geleverd met deze inbegrepen. 
+Ten slotte moet uw `LSApplicationQueriesSchemes` app een vermelding in uw `CFBundleURLTypes` ***Info.plist*** hebben naast de . Het monster wordt geleverd met deze inbegrepen.
 
-   ```xml 
+   ```xml
    <key>LSApplicationQueriesSchemes</key>
    <array>
       <string>msauthv2</string>
@@ -249,10 +249,10 @@ MSAL biedt twee methoden voor het verkrijgen van tokens: `acquireToken` en `acqu
 
 #### <a name="acquiretoken-get-a-token-interactively"></a>acquireToken: Ontvang een token interactief
 
-In sommige situaties moeten gebruikers communiceren met het identiteitsplatform van Microsoft. In deze gevallen kan de eindgebruiker worden verplicht om zijn account te selecteren, zijn of zijn of haar referenties in te voeren of in te stemmen met de machtigingen van uw app. Bijvoorbeeld: 
+In sommige situaties moeten gebruikers communiceren met het identiteitsplatform van Microsoft. In deze gevallen kan de eindgebruiker worden verplicht om zijn account te selecteren, zijn of zijn of haar referenties in te voeren of in te stemmen met de machtigingen van uw app. Bijvoorbeeld:
 
 * De eerste keer dat gebruikers zich aanmelden bij de toepassing
-* Als een gebruiker zijn wachtwoord opnieuw instelt, moet hij zijn of haar referenties invoeren 
+* Als een gebruiker zijn wachtwoord opnieuw instelt, moet hij zijn of haar referenties invoeren
 * Wanneer uw toepassing voor het eerst toegang tot een bron aanvraagt
 * Wanneer MFA of ander beleid voor voorwaardelijke toegang vereist is
 
@@ -267,15 +267,15 @@ self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* 
 
 #### <a name="acquiretokensilent-get-an-access-token-silently"></a>acquireTokenSilent: Ontvang een access token in stilte
 
-Apps moeten niet vereisen dat hun gebruikers zich elke keer aanmelden wanneer ze een token aanvragen. Als de gebruiker zich al heeft aangemeld, kunnen apps met deze methode stilletjes tokens aanvragen. 
+Apps moeten niet vereisen dat hun gebruikers zich elke keer aanmelden wanneer ze een token aanvragen. Als de gebruiker zich al heeft aangemeld, kunnen apps met deze methode stilletjes tokens aanvragen.
 
 ```swift
 self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previousAccount, error) in
-            
+
    guard let account = currentAccount else {
       return
    }
-            
+
    let silentParams = MSALSilentTokenParameters(scopes: self.kScopes, account: account)
    self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error) in /* Add your handling logic */}
 }

@@ -3,17 +3,17 @@ title: Prijzen & factureringsmodel
 description: Overzicht over hoe het prijs- en factureringsmodel werkt voor Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: kevinlam1
-ms.author: klam
+author: jonfancey
+ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f47c7412bdd5ada1e50d1005b8e740e3f46ffd8d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270457"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536230"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Prijsmodel voor Azure Logic Apps
 
@@ -23,50 +23,55 @@ ms.locfileid: "79270457"
 
 ## <a name="consumption-pricing-model"></a>Prijsmodel voor consumptie
 
-Voor nieuwe logische apps die worden uitgevoerd in de openbare of 'globale' Azure Logic Apps-service, betaalt u alleen voor wat u gebruikt. Deze logische apps maken gebruik van een op verbruik gebaseerd plan en prijsmodel. In uw logica-app is elke stap een actie en met Azure Logic Apps worden alle acties in uw logische app met elkaar verwijderd.
+Voor nieuwe logische apps die in het openbaar worden uitgevoerd, 'globale', Azure Logic Apps-service met meerdere tenant, betaalt u alleen voor wat u gebruikt. Deze logische apps maken gebruik van een op verbruik gebaseerd plan en prijsmodel. In uw logica-app is elke stap een actie en met Azure Logic Apps worden alle acties in uw logische app met elkaar verwijderd.
 
 Acties zijn bijvoorbeeld:
 
-* Triggers, dat zijn speciale acties. Alle logische apps vereisen een trigger als eerste stap.
+* [Triggers](#triggers), die speciale acties. Alle logische apps vereisen een trigger als eerste stap.
+
 * ['Ingebouwde' of native acties](../connectors/apis-list.md#built-in) zoals HTTP, calls to Azure Functions en API Management, enzovoort
+
 * Oproepen naar [beheerde connectors](../connectors/apis-list.md#managed-connectors) zoals Outlook 365, Dropbox, enzovoort
-* Regel stroomstappen, zoals lussen, voorwaardelijke instructies, enzovoort
+
+* [Werkstroomacties](../connectors/apis-list.md#control-workflow) beheren, zoals lussen, voorwaardelijke instructies, enzovoort
 
 [Standaardconnectoren](../connectors/apis-list.md#managed-connectors) worden in rekening gebracht tegen de [standaardconnectorprijs.](https://azure.microsoft.com/pricing/details/logic-apps) Algemeen beschikbare [Enterprise-connectors](../connectors/apis-list.md#managed-connectors) worden in rekening gebracht tegen de prijs van de [Enterprise-connector](https://azure.microsoft.com/pricing/details/logic-apps), terwijl openbare preview-Enterprise-connectors worden in rekening gebracht tegen de [standaardconnectorprijs](https://azure.microsoft.com/pricing/details/logic-apps).
 
-Meer informatie over hoe facturering werkt voor [triggers](#triggers) en [acties](#actions).
+Meer informatie over hoe facturering werkt op de [triggers-](#triggers) en [actieniveaus.](#actions) Of zie Limieten en [configuratie voor Azure Logic Apps](logic-apps-limits-and-config.md)voor informatie over limieten.
 
 <a name="fixed-pricing"></a>
 
 ## <a name="fixed-pricing-model"></a>Vast prijsmodel
 
-Een [ *integratieserviceomgeving* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) biedt u een geïsoleerde manier om logische apps te maken en uit te voeren die toegang hebben tot bronnen in een virtueel Azure-netwerk. Voor nieuwe logische apps die in een ISE worden uitgevoerd, betaalt u een [vaste maandelijkse prijs](https://azure.microsoft.com/pricing/details/logic-apps) voor deze mogelijkheden:
+Een [ *integratieserviceomgeving* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) biedt u een geïsoleerde manier om logische apps te maken en uit te voeren die toegang hebben tot bronnen in een virtueel Azure-netwerk. Logische apps die in een ISE worden uitgevoerd, maken geen kosten voor het bewaren van gegevens met zich mee. Wanneer u een ISE maakt en alleen tijdens het maken, u een [ISE-niveau of SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)kiezen, die verschillende [prijstarieven](https://azure.microsoft.com/pricing/details/logic-apps)hebben:
+
+* **Premium** ISE: De basiseenheid van deze SKU heeft een vaste capaciteit, maar als u meer doorvoer nodig hebt, u [meer schaaleenheden toevoegen](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) tijdens het maken van ISE of achteraf. Zie Limieten en [configuratie voor Azure Logic Apps voor](logic-apps-limits-and-config.md#integration-service-environment-ise)ISE-limieten.
+
+* **Ontwikkelaar** ISE: Deze SKU heeft geen mogelijkheid voor opschaling, geen service-level overeenkomst (SLA) en geen gepubliceerde limieten. Gebruik deze SKU alleen voor het experimenteren, ontwikkelen en testen, niet voor productie- of prestatietests.
+
+Voor logische apps die u maakt en uitvoert in een ISE, betaalt u een [vaste maandelijkse prijs](https://azure.microsoft.com/pricing/details/logic-apps) voor deze mogelijkheden:
 
 * [Ingebouwde](../connectors/apis-list.md#built-in) triggers en acties
 
   Binnen een ISE geven ingebouwde triggers en acties het **Core-label** weer en worden ze uitgevoerd in dezelfde ISE als uw logische apps.
 
-* [Standaardconnectors](../connectors/apis-list.md#managed-connectors) en [Enterprise-connectors](../connectors/apis-list.md#enterprise-connectors) (zoveel Enterprise-verbindingen als u wilt)
+* [Standaardconnectors](../connectors/apis-list.md#managed-connectors) en [Enterprise-connectors,](../connectors/apis-list.md#enterprise-connectors) waarmee u zoveel Enterprise-verbindingen hebt als u wilt
 
-   Standaard- en Enterprise-connectors met het **ISE-label** worden uitgevoerd in dezelfde ISE als uw logische apps. Connectors die het ISE-label niet weergeven, worden uitgevoerd in de wereldwijde Logic Apps-service. Vaste maandelijkse prijzen zijn ook van toepassing op connectors die worden uitgevoerd in de wereldwijde service wanneer u ze gebruikt met logische apps die in een ISE worden uitgevoerd.
+   Standaard- en Enterprise-connectors met het **ISE-label** worden uitgevoerd in dezelfde ISE als uw logische apps. Connectors die het ISE-label niet weergeven, worden uitgevoerd in de openbare, 'globale', logic-apps-service met meerdere tenantn. Vaste maandelijkse prijzen zijn ook van toepassing op connectors die worden uitgevoerd in de multi-tenant service wanneer u ze gebruikt met logische apps die worden uitgevoerd in een ISE.
 
 * [Integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) gebruik zonder extra kosten, op basis van uw [ISE SKU:](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)
 
-  * **Premium SKU:** Eén [standaardintegratieaccount](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
+  * **Premium** ISE SKU: één [standaardintegratieaccount](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
 
-  * **Ontwikkelaar SKU:** Één [gratis integratieaccount voor laag](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
+  * **Ontwikkelaar** ISE SKU: één [gratis integratieaccount voor laag](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
 
   Elke ISE SKU is beperkt tot 5 totale integratieaccounts. Tegen meerprijs u meer integratieaccounts hebben op basis van uw ISE SKU:
 
-  * **Premium SKU:** Nog vier standaardaccounts. Geen gratis of basic-accounts.
+  * **Premium** ISE SKU: Nog vier standaardaccounts. Geen gratis of basic-accounts.
 
-  * **Ontwikkelaar SKU:** Maximaal 4 standaardaccounts of maximaal 5 standaardaccounts. Geen basisaccounts.
+  * **Ontwikkelaar** ISE SKU: Maximaal 4 standaardaccounts of maximaal 5 standaardaccounts. Geen basisaccounts.
 
-  Zie [Limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)van Logic Apps voor meer informatie over de limieten voor integratie-account. U later in dit onderwerp meer te weten komen over [integratieaccountlagen en hun prijsmodel.](#integration-accounts)
-
-Als u kiest voor de Premium ISE SKU, heeft de basiseenheid een vaste capaciteit. Als u meer doorvoer nodig hebt, u [meer schaaleenheden toevoegen,](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)tijdens het maken of achteraf. De ontwikkelaar ISE SKU heeft niet de mogelijkheid om meer schaaleenheden toe te voegen. Logische apps die in een ISE worden uitgevoerd, maken geen kosten voor het bewaren van gegevens met zich mee.
-
-Zie [Logic Apps-prijzen](https://azure.microsoft.com/pricing/details/logic-apps)voor prijstarieven.
+  Zie [Limieten en configuratie voor Azure Logic Apps voor](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)meer informatie over integratieaccountlimieten. U later in dit onderwerp meer te weten komen over [integratieaccountlagen en hun prijsmodel.](#integration-accounts)
 
 <a name="connectors"></a>
 

@@ -13,16 +13,16 @@ ms.date: 11/07/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c1f1cbf85b96aade745cc4248aed4bc89e41b450
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 647dff9e6401322371ef795a25ca5ced2b517e9c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085167"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534581"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Tokens aanschaffen en cachen met behulp van de Microsoft-verificatiebibliotheek (MSAL)
 
-[Met toegangstokens](access-tokens.md) kunnen clients veilig web-API's oproepen die door Azure worden beschermd. Er zijn veel manieren om een token aan te schaffen met Behulp van Microsoft Authentication Library (MSAL). Op sommige manieren zijn gebruikersinteracties via een webbrowser vereist. Sommige vereisen geen gebruikersinteracties. In het algemeen is de manier om een token te verkrijgen afhankelijk van of de toepassing een openbare clienttoepassing (desktop of mobiele app) of een vertrouwelijke clienttoepassing is (Web App, Web API of daemon-toepassing zoals een Windows-service).
+[Met toegangstokens](access-tokens.md) kunnen clients veilig web-API's oproepen die door Azure worden beschermd. Er zijn veel manieren om een token aan te schaffen met Behulp van Microsoft Authentication Library (MSAL). Op sommige manieren zijn gebruikersinteracties via een webbrowser vereist. Sommige vereisen geen gebruikersinteracties. In het algemeen is de manier om een token te verkrijgen afhankelijk van of de toepassing een openbare clienttoepassing (desktop of mobiele app) of een vertrouwelijke clienttoepassing is (web-app, web-API of daemon-toepassing zoals een Windows-service).
 
 MSAL caches een token nadat het is verworven.  Toepassingscode moet proberen om een token in stilte te krijgen (uit de cache), eerst, voordat u een token op een andere manier verwerft.
 
@@ -63,18 +63,18 @@ MSAL onderhoudt een tokencache (of twee caches voor vertrouwelijke clienttoepass
 
 ### <a name="recommended-call-pattern-for-public-client-applications"></a>Aanbevolen oproeppatroon voor openbare clienttoepassingen
 
-Toepassingscode moet proberen om een token in stilte te krijgen (uit de cache), eerst.  Als de methodeaanroep een fout of uitzondering op 'UI vereist' retourneert, probeert u een token op een andere manier te verkrijgen. 
+Toepassingscode moet proberen om een token in stilte te krijgen (uit de cache), eerst.  Als de methodeaanroep een fout of uitzondering op 'UI vereist' retourneert, probeert u een token op een andere manier te verkrijgen.
 
 Er zijn echter twee stromen waarvoor u **niet moet** proberen om in stilte een token te verwerven:
 
 - [clientreferenties stromen,](msal-authentication-flows.md#client-credentials)die geen gebruik maakt van de cache van het gebruikerstoken, maar een toepassingstokencache. Deze methode zorgt ervoor dat deze tokencache van toepassingen wordt geverifieerd voordat u een aanvraag naar de STS verzendt.
-- [autorisatiecodestroom](msal-authentication-flows.md#authorization-code) in Web Apps, omdat deze een code inwisselt die de toepassing heeft gekregen door de gebruiker aan te melden en deze toestemming te geven voor meer scopes. Aangezien een code wordt doorgegeven als een parameter en niet als een account, kan de methode niet in de cache kijken voordat de code wordt ingewisseld, waarvoor in ieder geval een aanroep naar de service vereist is.
+- [autorisatiecodestroom](msal-authentication-flows.md#authorization-code) in web-apps, omdat deze een code inwisselt die de toepassing heeft gekregen door de gebruiker aan te melden en deze toestemming te geven voor meer scopes. Aangezien een code wordt doorgegeven als een parameter en niet als een account, kan de methode niet in de cache kijken voordat de code wordt ingewisseld, waarvoor in ieder geval een aanroep naar de service vereist is.
 
-### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Aanbevolen oproeppatroon in Web Apps met behulp van de machtigingscodestroom
+### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Aanbevolen oproeppatroon in web-apps met de machtigingscodestroom
 
 Voor webtoepassingen die de [machtigingscodestroom van OpenID Connect](v2-protocols-oidc.md)gebruiken, is het aanbevolen patroon in de controllers:
 
-- Instantiate een vertrouwelijke client applicatie met een token cache met aangepaste serialisatie. 
+- Instantiate een vertrouwelijke client applicatie met een token cache met aangepaste serialisatie.
 - Het token verkrijgen met behulp van de autorisatiecodestroom
 
 ## <a name="acquiring-tokens"></a>Tokens verwerven
@@ -91,8 +91,8 @@ Voor openbare clienttoepassingen (desktop- of mobiele app) gaat u als:
 
 ### <a name="confidential-client-applications"></a>Vertrouwelijke clienttoepassingen
 
-Voor vertrouwelijke clienttoepassingen (Web App, Web API of daemon-toepassing zoals een Windows-service) gaat u als volgt te werk:
-- Tokens verkrijgen **voor de toepassing zelf** en niet voor een gebruiker, met behulp van de [clientreferenties stroom](msal-authentication-flows.md#client-credentials). Dit kan worden gebruikt voor het synchroniseren van tools, of tools die gebruikers in het algemeen verwerken en niet een specifieke gebruiker. 
+Voor vertrouwelijke clienttoepassingen (web-app, web-API of daemon-toepassing zoals een Windows-service) gaat u als volgt te werk:
+- Tokens verkrijgen **voor de toepassing zelf** en niet voor een gebruiker, met behulp van de [clientreferenties stroom](msal-authentication-flows.md#client-credentials). Dit kan worden gebruikt voor het synchroniseren van tools, of tools die gebruikers in het algemeen verwerken en niet een specifieke gebruiker.
 - Gebruik de [on-behalf-of-flow](msal-authentication-flows.md#on-behalf-of) voor een web-API om namens de gebruiker een API aan te roepen. De toepassing wordt geïdentificeerd met clientreferenties om een token te verkrijgen op basis van een gebruikersbewering (SAML bijvoorbeeld, of een JWT-token). Deze stroom wordt gebruikt door toepassingen die toegang moeten krijgen tot bronnen van een bepaalde gebruiker in service-to-service-aan-huisoproepen.
 - Tokens verkrijgen met behulp van de [autorisatiecodestroom](msal-authentication-flows.md#authorization-code) in web-apps nadat de gebruiker zich heeft aanmeldt via de URL van het autorisatieverzoek. OpenID Connect-toepassing maakt doorgaans gebruik van dit mechanisme, waarmee de gebruiker zich kan aanmelden met Open ID-verbinding en vervolgens namens de gebruiker toegang heeft tot web-API's.
 

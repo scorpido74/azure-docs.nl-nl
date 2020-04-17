@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 3fbc4e683c2b0e72c3a084a59793dbf9eb4b658c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: cecafd9209b095270e9a06ca59ffef162326efc2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657403"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537998"
 ---
 # <a name="add-storage-targets"></a>Opslagdoelen toevoegen
 
@@ -117,8 +117,6 @@ U op elk gewenst moment [naamruimtepaden toevoegen en bewerken](hpc-cache-edit-s
 Vul deze waarden in voor elk naamruimtepad:
 
 * **Pad voor virtuele naamruimte** - Stel het clientgerichte bestandspad in voor dit opslagdoel. Lees [Geaggregeerde naamruimte configureren](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naamruimte.
-
-<!--  The virtual path should start with a slash ``/``. -->
 
 * **NFS-exportpad** - Voer het pad naar de NFS-export in.
 

@@ -1,6 +1,6 @@
 ---
 title: Bijwerken naar dynamische nalevingscontrole op regelgeving in uw azure security center-compliancedashboard | Microsoft Documenten
-description: Uw nalevingspakketten voor regelgeving bijwerken (Voorbeeld)
+description: Uw nalevingspakketten voor regelgeving bijwerken
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 4080825bbb1f6c274f5b5aafd28e8c672148b98f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa5027ed285456247891c84e559b74a14237f553
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159282"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537777"
 ---
-# <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard-preview"></a>Update naar dynamische compliancepakketten in uw dashboard voor naleving van de regelgeving (Voorbeeld)
+# <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard"></a>Update naar dynamische compliancepakketten in uw dashboard voor naleving van de regelgeving
 
 Azure Security Center vergelijkt de configuratie van uw resources voortdurend met vereisten in industriestandaarden, -voorschriften en -benchmarks. Het **compliance dashboard** biedt inzicht in uw nalevingshouding op basis van hoe u voldoet aan specifieke nalevingscontroles en -vereisten.
 
@@ -28,7 +28,7 @@ Een standaard waarvoor u uw nalevingshouding bijhouden, is [Azure CIS 1.1.0](htt
 
 De weergave van Azure CIS die in eerste instantie in uw compliancedashboard wordt weergegeven, is gebaseerd op een statische set regels die is opgenomen in Het Beveiligingscentrum.
 
-Met de **functie dynamische compliancepakketten (preview)** verbetert Security Center automatisch de dekking van industriestandaarden in de loop van de tijd. Compliancepakketten zijn in wezen initiatieven die zijn gedefinieerd in Azure Policy. Ze kunnen worden toegewezen aan uw geselecteerde bereik (abonnement, beheergroep, enzovoort). Als u nalevingsgegevens wilt zien die zijn toegewezen als beoordelingen in uw dashboard, voegt u een nalevingspakket toe aan uw beheergroep of abonnement vanuit het beveiligingsbeleid. Als u een nalevingspakket toevoegt, wordt het compliance-initiatief voor regelgeving effectief aan uw geselecteerde scope toegevoegd. Op deze manier u nieuw gepubliceerde regelgevingsinitiatieven volgen als nalevingsnormen in uw dashboard. Wanneer Microsoft nieuwe inhoud voor het initiatief uitbrengt (nieuw beleid dat wordt toegewezen aan meer besturingselementen in de standaard), wordt de extra inhoud automatisch weergegeven in uw dashboard.
+Met de **functie dynamische nalevingspakketten** verbetert Security Center automatisch de dekking van industriestandaarden in de loop van de tijd. Compliancepakketten zijn in wezen initiatieven die zijn gedefinieerd in Azure Policy. Ze kunnen worden toegewezen aan uw geselecteerde bereik (abonnement, beheergroep, enzovoort). Als u nalevingsgegevens wilt zien die zijn toegewezen als beoordelingen in uw dashboard, voegt u een nalevingspakket toe aan uw beheergroep of abonnement vanuit het beveiligingsbeleid. Als u een nalevingspakket toevoegt, wordt het compliance-initiatief voor regelgeving effectief aan uw geselecteerde scope toegevoegd. Op deze manier u nieuw gepubliceerde regelgevingsinitiatieven volgen als nalevingsnormen in uw dashboard. Wanneer Microsoft nieuwe inhoud voor het initiatief uitbrengt (nieuw beleid dat wordt toegewezen aan meer besturingselementen in de standaard), wordt de extra inhoud automatisch weergegeven in uw dashboard.
 
 Het dynamische nalevingspakket voor de Azure CIS-benchmark, **Azure CIS 1.1.0 (nieuw),** verbetert de oorspronkelijke *statische* versie door:
 
@@ -47,7 +47,7 @@ In de volgende stappen wordt uitgelegd hoe u het dynamische pakket toevoegt om t
 
 1. Selecteer de abonnements- of beheergroep waarvoor u de nalevingshouding van de regelgeving wilt beheren. We raden u aan de hoogste scope te selecteren waarvoor de standaard van toepassing is, zodat nalevingsgegevens worden samengevoegd en bijgehouden voor alle geneste resources. 
 
-1. In de sectie Industrie& regelgevingsstandaarden (preview) ziet u dat Azure CIS 1.1.0 kan worden bijgewerkt voor nieuwe inhoud. Klik **nu op Bijwerken**. 
+1. In de sectie Industrie& regelgevingsstandaarden ziet u dat Azure CIS 1.1.0 kan worden bijgewerkt voor nieuwe inhoud. Klik **nu op Bijwerken**. 
 
 1. Klik optioneel op **Meer standaarden toevoegen** om de pagina **Nalevingsnormen toevoegen** te openen. Daar u handmatig zoeken naar **Azure CIS 1.1.0 (Nieuw)** en dynamische pakketten voor andere nalevingsstandaarden zoals **NIST SP 800-53 R4,** SWIFT **CSP CSCF-v2020,** **UKO en UK NHS**en Canada **PBMM**.
     

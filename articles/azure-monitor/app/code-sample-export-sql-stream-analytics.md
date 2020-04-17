@@ -3,12 +3,12 @@ title: Exporteren naar SQL vanuit Azure Application Insights | Microsoft Documen
 description: Exporteer voortdurend Application Insights-gegevens naar SQL met Behulp van Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 3ef0420cdab64f11b699fd4031ed2b0134f18609
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663672"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536910"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Walkthrough: exporteren naar SQL vanuit Application Insights met Stream Analytics
 In dit artikel ziet u hoe u uw telemetriegegevens van [Azure Application Insights][start] naar een Azure SQL-database verplaatst met behulp van Continuous [Export][export] en Azure [Stream Analytics.](https://azure.microsoft.com/services/stream-analytics/) 
@@ -61,7 +61,7 @@ Continue export levert altijd gegevens op naar een Azure Storage-account, dus u 
     ![Gebeurtenistypen kiezen](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Laat sommige gegevens zich ophopen. Achterover leunen en laat mensen gebruik maken van uw toepassing voor een tijdje. Telemetrie komt binnen en u ziet statistische grafieken in [metrische verkenner](../../azure-monitor/app/metrics-explorer.md) en afzonderlijke gebeurtenissen in [diagnostisch zoeken.](../../azure-monitor/app/diagnostic-search.md) 
+1. Laat sommige gegevens zich ophopen. Achterover leunen en laat mensen gebruik maken van uw toepassing voor een tijdje. Telemetrie komt binnen en u ziet statistische grafieken in [metrische verkenner](../../azure-monitor/platform/metrics-charts.md) en afzonderlijke gebeurtenissen in [diagnostisch zoeken.](../../azure-monitor/app/diagnostic-search.md) 
    
     En ook zullen de gegevens exporteren naar uw opslag. 
 2. Controleer de geëxporteerde gegevens in de portal - kies **Bladeren,** selecteer uw opslagaccount en vervolgens **Containers** - of in Visual Studio. Kies in Visual Studio **Weergave / Cloud Explorer**en open Azure / Storage. (Als u deze menuoptie niet hebt, moet u de Azure SDK installeren: Open het dialoogvenster Nieuw project en open Visual C# / Cloud / Get Microsoft Azure SDK voor .NET.)
@@ -240,7 +240,7 @@ Ga na een paar minuten terug naar SQL Server Management Tools en kijk hoe de geg
 
 
 ## <a name="related-articles"></a>Verwante artikelen:
-* [Exporteren naar PowerBI met Behulp van Stream Analytics](../../azure-monitor/app/export-power-bi.md )
+* [Exporteren naar Power BI met Stream Analytics](../../azure-monitor/app/export-power-bi.md )
 * [Gedetailleerde gegevensmodelreferentie voor de eigenschapstypen en -waarden.](../../azure-monitor/app/export-data-model.md)
 * [Continue export in applicatie-inzichten](../../azure-monitor/app/export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
@@ -249,7 +249,7 @@ Ga na een paar minuten terug naar SQL Server Management Tools en kijk hoe de geg
 
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md
 

@@ -12,12 +12,12 @@ ms.date: 04/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 143a2ec0bfbcc6997eb6d8b2599b848a509ee773
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: bdbda8bed38819ca2b4d2fb1ef3d9bf591269890
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309501"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535907"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Toepassingstypen voor Microsoft-identiteitsplatform
 
@@ -84,7 +84,7 @@ Naast eenvoudige aanmelding moet een webserver-app mogelijk ook toegang krijgen 
 
 ## <a name="web-apis"></a>Web-API's
 
-U het eindpunt van het Microsoft-identiteitsplatform gebruiken om webservices te beveiligen, zoals de RESTful Web API van uw app. Web API's kunnen worden geïmplementeerd in tal van platforms en talen. Ze kunnen ook worden geïmplementeerd met HTTP Triggers in Azure-functies. In plaats van ID-tokens en sessiecookies gebruikt een Web API een OAuth 2.0-toegangstoken om de gegevens te beveiligen en binnenkomende aanvragen te verifiëren. De beller van een web-API voegt een toegangstoken toe in de autorisatiekop van een HTTP-aanvraag, zoals dit:
+U het eindpunt van het Microsoft-identiteitsplatform gebruiken om webservices te beveiligen, zoals de RESTful-web-API van uw app. Web API's kunnen worden geïmplementeerd in tal van platforms en talen. Ze kunnen ook worden geïmplementeerd met HTTP Triggers in Azure-functies. In plaats van ID-tokens en sessiecookies gebruikt een web-API een OAuth 2.0-toegangstoken om de gegevens te beveiligen en inkomende aanvragen te verifiëren. De beller van een web-API voegt een toegangstoken toe in de autorisatiekop van een HTTP-aanvraag, zoals dit:
 
 ```HTTP
 GET /api/items HTTP/1.1
@@ -96,13 +96,13 @@ Accept: application/json
 
 De web-API gebruikt het toegangstoken om de identiteit van de API-beller te verifiëren en om informatie over de beller te extraheren uit claims die zijn gecodeerd in het toegangstoken. Verdere details van verschillende soorten tokens die worden gebruikt in het eindpunt van het Microsoft-identiteitsplatform zijn beschikbaar in de referentie [van het toegangstoken](access-tokens.md) en [id_token](id-tokens.md) referentie.
 
-Een web-API kan gebruikers de mogelijkheid geven om zich aan te melden of af te melden voor specifieke functionaliteit of gegevens door machtigingen bloot te leggen, ook wel [scopes](v2-permissions-and-consent.md)genoemd. Voor een aanroepende app om toestemming te krijgen voor een bereik, moet de gebruiker toestemming geven voor het bereik tijdens een stroom. Het eindpunt van het Microsoft-identiteitsplatform vraagt de gebruiker om toestemming en registreert vervolgens machtigingen in alle toegangstokens die de Web-API ontvangt. De web-API valideert de toegangstokens die het ontvangt bij elke oproep en voert autorisatiecontroles uit.
+Een web-API kan gebruikers de mogelijkheid geven om zich aan te melden of af te melden voor specifieke functionaliteit of gegevens door machtigingen bloot te leggen, ook wel [scopes](v2-permissions-and-consent.md)genoemd. Voor een aanroepende app om toestemming te krijgen voor een bereik, moet de gebruiker toestemming geven voor het bereik tijdens een stroom. Het eindpunt van het Microsoft-identiteitsplatform vraagt de gebruiker om toestemming en registreert vervolgens machtigingen in alle toegangstokens die de web-API ontvangt. De web-API valideert de toegangstokens die het ontvangt bij elke oproep en voert autorisatiecontroles uit.
 
 Een web-API kan toegangstokens ontvangen van alle soorten apps, waaronder webserver-apps, desktop- en mobiele apps, apps voor één pagina, daemons aan de serverzijde en zelfs andere web-API's. De stroom op hoog niveau voor een web-API ziet er als volgt uit:
 
 ![Toont de verificatiestroom voor web-API's](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-Bekijk de webAPI-codevoorbeelden in de sectie [Microsoft-identiteitsplatform aan](v2-overview.md#getting-started) de slag voor meer informatie over het beveiligen van een web-API met OAuth2-toegangstokens.
+Bekijk de web API-codevoorbeelden in de sectie [Microsoft-identiteitsplatform aan](v2-overview.md#getting-started) de slag voor meer informatie over het beveiligen van een web-API met OAuth2-toegangstokens.
 
 In veel gevallen moeten web-API's ook uitgaande verzoeken indienen bij andere downstream web-API's die zijn beveiligd door het Microsoft-identiteitsplatform. Hiervoor kunnen web-API's profiteren van de **on-behalf-of-flow,** waarmee de web-API een binnenkomend toegangstoken kan uitwisselen voor een ander toegangstoken dat kan worden gebruikt in uitgaande aanvragen. Zie [Microsoft-identiteitsplatform en OAuth 2.0 On-Behalf-Of flow voor](v2-oauth2-on-behalf-of-flow.md)meer informatie.
 
@@ -110,7 +110,7 @@ In veel gevallen moeten web-API's ook uitgaande verzoeken indienen bij andere do
 
 Apparaatgeïnstalleerde apps, zoals mobiele en desktop-apps, moeten vaak toegang krijgen tot back-endservices of web-API's die gegevens opslaan en functies uitvoeren namens een gebruiker. Deze apps kunnen aanmelding en autorisatie toevoegen aan back-endservices met behulp van de [OAuth 2.0-autorisatiecodestroom](v2-oauth2-auth-code-flow.md).
 
-In deze stroom ontvangt de app een autorisatiecode van het eindpunt van het Microsoft-identiteitsplatform wanneer de gebruiker zich aanmeldt. De autorisatiecode vertegenwoordigt de toestemming van de app om back-endservices te bellen namens de gebruiker die is aangemeld. De app kan de autorisatiecode op de achtergrond uitwisselen voor een OAuth 2.0-toegangstoken en een vernieuwingstoken. De app kan het toegangstoken gebruiken om te verifiëren tot webAPI's in HTTP-aanvragen en het vernieuwingstoken gebruiken om nieuwe toegangstokens te krijgen wanneer oudere toegangstokens verlopen.
+In deze stroom ontvangt de app een autorisatiecode van het eindpunt van het Microsoft-identiteitsplatform wanneer de gebruiker zich aanmeldt. De autorisatiecode vertegenwoordigt de toestemming van de app om back-endservices te bellen namens de gebruiker die is aangemeld. De app kan de autorisatiecode op de achtergrond uitwisselen voor een OAuth 2.0-toegangstoken en een vernieuwingstoken. De app kan het toegangstoken gebruiken om zich te authenticeren tot web-API's in HTTP-aanvragen en het vernieuwingstoken gebruiken om nieuwe toegangstokens te krijgen wanneer oudere toegangstokens verlopen.
 
 ![Toont de verificatiestroom van de native app](./media/v2-app-types/convergence-scenarios-native.svg)
 

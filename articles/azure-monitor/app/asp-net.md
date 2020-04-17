@@ -3,12 +3,12 @@ title: Web-app-analyse voor ASP.NET instellen met Azure Application Insights | M
 description: Configureer hulpprogramma's voor analyse van prestaties, beschikbaarheid en gebruikersgedrag voor uw ASP.NET website, die on-premises of in Azure wordt gehost.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 0843d6c04bf6fc9bab07207072990fb3fb8f1844
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdd5b1131a0d2d3e2f53840d21cedce1577fde03
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665915"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536893"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Application Insights instellen voor uw ASP.NET-website
 
@@ -93,7 +93,7 @@ De portal wordt geopend met een weergave van de telemetrie van uw app.
 Klik in de portal op een tegel of grafiek om meer details te bekijken.
 
 ## <a name="step-4-publish-your-app"></a>Stap 4: uw app publiceren
-Publiceer uw app op de IIS-server of op Azure. Bekijk de livestream met metrische gegevens in [Live Metrics Stream](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) om te controleren of alles goed werkt.
+Publiceer uw app op de IIS-server of op Azure. Bekijk de livestream met metrische gegevens in [Live Metrics Stream](../../azure-monitor/app/live-stream.md) om te controleren of alles goed werkt.
 
 Uw telemetrie wordt opgebouwd in de Portal Application Insights, waar u statistieken controleren en uw telemetrie doorzoeken. U ook de krachtige [Kusto-querytaal](/azure/kusto/query/) gebruiken om het gebruik en de prestaties te analyseren of om specifieke gebeurtenissen te vinden.
 

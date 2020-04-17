@@ -3,12 +3,12 @@ title: Leer de inhoud van virtuele machines te controleren
 description: Lees hoe Azure Policy de gastconfiguratieagent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4a2989badc099a199bf21f7e020ca8e6256ddaf0
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: e4899f6b3108cabb4e9cdd36e4b2bc5cd2f1cbd4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113419"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538032"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>De gastconfiguratie van Azure Policy begrijpen
 
@@ -52,14 +52,14 @@ Resultaten worden verzonden naar de gastconfiguratie resource provider wanneer d
 
 In de volgende tabel ziet u een lijst met ondersteunde besturingssysteems op Azure-afbeeldingen:
 
-|Uitgever|Name|Versies|
+|Uitgever|Naam|Versies|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04, 16.04, 18.04|
 |Credativ Credativ|Debian|8, 9|
 |Microsoft|Windows Server|Datacenter 2012, 2012 R2 Datacenter, datacenter 2016, datacenter 2019|
 |Microsoft|Windows-client|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7|
+|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7, 7.8|
 |Suse|SLES|12 SP3|
 
 ### <a name="unsupported-client-types"></a>Niet-ondersteunde clienttypen

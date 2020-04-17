@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: dfca2b1311f1b55f19d5709f7c9ca7c3e366769c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76695735"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533986"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>MSAL gebruiken in een nationale cloudomgeving
 
@@ -62,7 +62,7 @@ U MSAL.NET gebruiken om gebruikers aan te melden, tokens te verwerven en de Micr
 De volgende zelfstudies laten zien hoe je een .NET Core 2.2 MVC-web-app bouwen. De app maakt gebruik van OpenID Connect om gebruikers aan te melden met een werk- en schoolaccount in een organisatie die deel uitmaakt van een nationale cloud.
 
 - Als u zich wilt aanmelden en tokens wilt aanschaffen, volgt u deze zelfstudie: [Een ASP.NET Core Web-inloggebruikers in soevereine clouds bouwen met het Microsoft-identiteitsplatform.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform)
-- Als u de Microsoft Graph API wilt aanroepen, volgt u deze zelfstudie: [Het Microsoft-identiteitsplatform gebruiken om de Microsoft Graph-API aan te roepen vanuit een An ASP.NET Core 2.x Web App, namens een gebruiker die zich aanmeldt met zijn werk- en schoolaccount in Microsoft National Cloud.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud)
+- Als u de Microsoft Graph API wilt aanroepen, volgt u deze zelfstudie: [Het Microsoft-identiteitsplatform gebruiken om de Microsoft Graph-API aan te roepen vanuit een ASP.NET Core 2.x-web-app, namens een gebruiker die zich aanmeldt met zijn werk- en schoolaccount in Microsoft National Cloud.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud)
 
 ## <a name="javascript"></a>[Javascript](#tab/javascript)
 
@@ -70,8 +70,8 @@ Ga als belangrijkste voor het inschakelen van uw MSAL.js-toepassing voor soevere
 
 ### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.us/).
-    
+1. Meld u aan bij de [Azure-portal](https://portal.azure.us/).
+
    Zie Eindpunten voor [app-registratie](authentication-national-cloud.md#app-registration-endpoints)voor azure-portaleindpunten voor andere nationale clouds.
 
 1. Als uw account u toegang geeft tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure AD-tenant.
@@ -126,12 +126,12 @@ In die code:
 - `Enter_the_Tenant_Info_Here`is ingesteld op een van de volgende opties:
     - Als uw toepassing **Accounts in deze organisatiemap**ondersteunt, vervangt u deze waarde door de tenant-id of tenantnaam (bijvoorbeeld contoso.microsoft.com).
     - Als uw toepassing **Accounts in een organisatiemap**ondersteunt, vervangt u deze waarde door `organizations`.
-    
+
     Zie Eindpunten voor Azure [AD-verificatie](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)voor het vinden van verificatieeindpunten voor alle nationale clouds.
 
     > [!NOTE]
     > Persoonlijke Microsoft-accounts worden niet ondersteund in nationale clouds.
-  
+
 - `graphEndpoint`is het Microsoft Graph-eindpunt voor de Microsoft-cloud voor de Amerikaanse overheid.
 
    Zie [Microsoft Graph-eindpunten in nationale clouds](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)als u Microsoft Graph-eindpunten voor alle nationale clouds wilt vinden.
@@ -149,16 +149,16 @@ Ga als u uw MSAL Python-toepassing inschakelen voor soevereine clouds:
     ```json
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
-    
+
 - Als u Microsoft-grafiek wilt aanroepen, is een specifieke URL van het eindpunt van grafiek vereist die afhankelijk is van de cloud die u gebruikt. Als u Microsoft Graph-eindpunten voor alle nationale clouds wilt vinden, raadpleegt u [de hoofdeindpunten voor microsoft graph en graph explorer-service.](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)
 
     Hier is een voorbeeld van een grafiekeindpunt, met bereik:
-    
+
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
     "scope": "User.Read"
     ```
-    
+
 ## <a name="java"></a>[Java](#tab/java)
 
 Ga als object voor het inschakelen van uw MSAL voor Java-toepassing voor soevereine clouds:
@@ -182,7 +182,7 @@ Hier is een voorbeeld van een grafiekeindpunt, met bereik:
 "scope": "User.Read"
 ```
 
-## <a name="objective-c"></a>[Doelstelling-C](#tab/objc)
+## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 MSAL voor iOS en macOS kan worden gebruikt om tokens in `MSALPublicClientApplication`nationale clouds te verkrijgen, maar het vereist extra configuratie bij het maken.
 
@@ -194,12 +194,12 @@ MSALAADAuthority *aadAuthority =
                                                    audienceType:MSALAzureADMultipleOrgsAudience
                                                       rawTenant:nil
                                                           error:nil];
-                                                          
+
 MSALPublicClientApplicationConfig *config =
                 [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
                                                                 redirectUri:@"<your-redirect-uri-here>"
                                                                   authority:aadAuthority];
-                                                                  
+
 NSError *applicationError = nil;
 MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
@@ -213,7 +213,7 @@ Als u bijvoorbeeld wilt dat uw toepassing een multi-tenanttoepassing is in een n
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
-        
+
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
 if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
 ```

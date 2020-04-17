@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: 8a8619da831dfa5b240bd93d3a046c49cc30affa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cf9be653da2dd587b93724b6e319dc4d20686c2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76901399"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536426"
 ---
 | Resource | Standaardbestandsaandelen | Premium bestandsaandelen |
 |----------|---------------|------------------------------------------|
@@ -27,4 +27,4 @@ ms.locfileid: "76901399"
 | Maximale object (mappen en bestanden) naamlengte | 2.048 tekens | 2.048 tekens |
 | Maximale component padnaam (in het pad \A\B\C\D, elke letter is een component) | 255 tekens | 255 tekens |
 
-\*Zie [Regionale beschikbaarheid](../articles/storage/files/storage-files-planning.md#regional-availability) voor de beschikbare regio's die in de meeste regio's beschikbaar zijn.
+\*Standaard op standaard bestandsshares is 5 TiB, zie [Grote bestandsshares inschakelen en maken](../articles/storage/files/storage-files-how-to-create-large-file-share.md) voor de details over hoe u de standaardbestandsshares verhogen tot 100 TiB.

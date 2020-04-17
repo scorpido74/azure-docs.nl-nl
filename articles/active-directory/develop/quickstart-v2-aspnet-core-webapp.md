@@ -1,6 +1,6 @@
 ---
 title: Aanmelding met Microsoft toevoegen aan ASP.NET Core-webapps - Microsoft-identiteitsplatform | Azure
-description: Informatie over het implementeren van Microsoft-aanmelding in een ASP.NET Core-web-app met behulp van OpenID Connect
+description: Meer informatie over het implementeren van Microsoft Sign-In op een ASP.NET Core-webapp met OpenID Connect
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ac53a6cf6953255f51a6b586703147c5ce2338b6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a34264870ce812da5d7e7c790a1482d90b33d06a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407156"
+ms.locfileid: "81536162"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Snelstart: aanmelden bij Microsoft toevoegen aan een web-app van ASP.NET Core
 In deze snelstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core-webapp persoonlijke accounts (hotmail.com, outlook.com, anderen) en werk- en schoolaccounts uit een Azure AD-exemplaar (Azure AD) kan aanmelden. (Zie [hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.)
@@ -71,15 +71,15 @@ In deze snelstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core-
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Stap 3: Uw app is geconfigureerd en klaar om uit te voeren
-> We hebben uw project geconfigureerd met waarden van de eigenschappen van uw app en het is klaar om te worden uitgevoerd. 
+> We hebben uw project geconfigureerd met waarden van de eigenschappen van uw app en het is klaar om te worden uitgevoerd.
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>Stap 3: Uw Visual Studio-project uitvoeren
 > 1. Pak het zip-bestand uit in een lokale map in de hoofdmap (bijvoorbeeld **C:\Azure-Samples**)
-> 1. De oplossing openen in Visual Studio 
-> 1. Bewerk het bestand **appsettings.json**. Zoek `ClientId` en werk `ClientId` de waarde bij van de waarde van de **applicatie (client) ID-waarde** van de door u geregistreerde toepassing. 
+> 1. De oplossing openen in Visual Studio
+> 1. Bewerk het bestand **appsettings.json**. Zoek `ClientId` en werk `ClientId` de waarde bij van de waarde van de **applicatie (client) ID-waarde** van de door u geregistreerde toepassing.
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here"
@@ -141,7 +141,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-De `AddAuthentication` methode configureert de service om cookiegebaseerde verificatie toe te voegen, die wordt gebruikt in browserscenario's en om de uitdaging in te stellen op OpenID Connect. 
+De `AddAuthentication` methode configureert de service om cookiegebaseerde verificatie toe te voegen, die wordt gebruikt in browserscenario's en om de uitdaging in te stellen op OpenID Connect.
 
 De regel `.AddAzureAd` met de verificatie van het Microsoft-identiteitsplatform wordt toegevoegd aan uw toepassing. Het is vervolgens geconfigureerd om in te loggen met behulp van het eindpunt van het Microsoft-identiteitsplatform.
 
@@ -167,4 +167,4 @@ U kunt een controller of controllermethoden beveiligen met behulp van het kenmer
 Bekijk de GitHub repo voor deze ASP.NET Core-zelfstudie voor meer informatie, inclusief instructies over het toevoegen van verificatie aan een gloednieuwe ASP.NET Core-webtoepassing, hoe u Microsoft Graph aanroepen en andere Microsoft API's, hoe u uw eigen API's bellen, hoe u autorisatie toevoegen, hoe u zich aanmelden bij gebruikers in nationale clouds of met sociale identiteiten en meer :
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core Web App-zelfstudie](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+> [ASP.NET Core-webapp-zelfstudie](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

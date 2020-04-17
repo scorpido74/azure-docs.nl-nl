@@ -3,12 +3,12 @@ title: Back-ups maken van VMware VM's met Azure Backup Server
 description: In dit artikel leest u hoe u Azure Backup Server gebruikt om een back-up te maken van VMware VM's die worden uitgevoerd op een VMware vCenter/ESXi-server.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 951016d393b095b0329ff18861421402e0e18a1a
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 92846f9bb9259e55a2c957716676ff42c032b2b5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529511"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537403"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware VM's met Azure Backup Server
 
@@ -96,11 +96,11 @@ Als u beveiligde grenzen binnen uw organisatie hebt en het HTTPS-protocol tussen
 
 1. Kopieer en plak de volgende tekst in een .txt-bestand.
 
-```text
-Windows Registry Editor Version 5.00
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
-"IgnoreCertificateValidation"=dword:00000001
-```
+    ```text
+    Windows Registry Editor Version 5.00
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
+    "IgnoreCertificateValidation"=dword:00000001
+    ```
 
 2. Sla het bestand op de Azure Backup Server-machine op met de naam **DisableSecureAuthentication.reg**.
 
@@ -130,27 +130,49 @@ De Azure Backup Server heeft een gebruikersaccount nodig met machtigingen voor t
 
 ### <a name="role-permissions"></a>Functiemachtigingen
 
-| **Bevoegdheden voor vCenter 6.7-gebruikersaccount**              | **Bevoegdheden voor vCenter 6.5-gebruikersaccount**             |
-| --------------------------------------------------------- | -------------------------------------------------------- |
-| Datastore.Ruimte toewijzen                                  | Datastore.Ruimte toewijzen                                 |
-| Global.Log-gebeurtenis                                          | Global.Log-gebeurtenis                                         |
-| Globale.Aangepaste kenmerken beheren                           | Globale.Aangepaste kenmerken beheren                          |
-| Netwerk.Toewijzen                                            | Netwerk.Toewijzen                                           |
-| Resource. Virtuele machine toewijzen aan resourcegroep        | Resource. Virtuele machine toewijzen aan resourcegroep       |
-| VirtualMachine.Configuration.AddNewDisk                   | VirtualMachine.Configuration.AddNewDisk                  |
-| VirtualMachine.Configuration. Apparaat toevoegen of verwijderen       | VirtualMachine.Configuration. Apparaat toevoegen of verwijderen      |
-| VirtualMachine.Configuration.Advanced                     | VirtualMachine.Configuration.Advanced                    |
-| VirtualMachine.Configuration.Toggle Disk Change Tracking | VirtualMachine.Configuration.Disk Change Tracking       |
-| VirtualMachine.Configuration.Configure Host USB Device   | VirtualMachine.Configuration.Host USB-apparaat            |
-| Niet-beheerde bestanden van VirtualMachine.Configuration.Query         | Niet-beheerde bestanden van VirtualMachine.Configuration.Query        |
-| VirtualMachine.Configuration.Change Swapfile Placement   | VirtualMachine.Configuration.Swapfile Plaatsing         |
-| VirtualMachine.Interaction.Power Off                      | VirtualMachine.Interaction.Power Off                     |
-| VirtualMachine.Inventory.Create Nieuwe                       | VirtualMachine.Inventory.Create Nieuwe                      |
-| VirtualMachine.Provisioning.Disk Access toestaan            | VirtualMachine.Provisioning.Disk Access toestaan           |
-| VirtualMachine.Provisioning.Bestandstoegang toestaan            | VirtualMachine.Provisioning.Bestandstoegang toestaan           |
-| VirtualMachine.Provisioning.Alleen-lezen schijftoegang toestaan  | VirtualMachine.Provisioning.Alleen-lezen schijftoegang toestaan |
-| VirtualMachine.Snapshot Management.Momentopname maken       | VirtualMachine.Snapshot Management.Momentopname maken      |
-| Momentopname VirtualMachine.Snapshot Management.Remove       | Momentopname VirtualMachine.Snapshot Management.Remove      |
+| Bevoegdheden voor vCenter 6.7-gebruikersaccount                     | Bevoegdheden voor vCenter 6.5-gebruikersaccount                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Datastore-cluster. Een datatstore-cluster configureren            | Datastore-cluster. Een datatstore-cluster configureren            |
+| Datastore.AllocateSpace                                      | Datastore.AllocateSpace                                      |
+| Datastore.Browse datastore                                   | Datastore.Browse datastore                                   |
+| Datastore.Bestandsbewerkingen op laag niveau                          | Datastore.Bestandsbewerkingen op laag niveau                          |
+| Globale.Uitgeschakeldmethoden                                       | Globale.Uitgeschakeldmethoden                                       |
+| Globale.Enable-methoden                                        | Globale.Enable-methoden                                        |
+| Global.Licenties                                              | Global.Licenties                                              |
+| Global.Log-evenement                                             | Global.Log-evenement                                             |
+| Globale.Aangepaste kenmerken beheren                              | Globale.Aangepaste kenmerken beheren                              |
+| Aangepast kenmerk globaal.Instellen                                  | Aangepast kenmerk globaal.Instellen                                  |
+| Host.Local operaties. Virtuele machine maken                | Host.Local operaties. Virtuele machine maken                |
+| Netwerk toewijzen.Netwerk toewijzen                                       | Netwerk toewijzen.Netwerk toewijzen                                       |
+| Resource. Virtuele machine toewijzen aan resourcegroep           | Resource. Virtuele machine toewijzen aan resourcegroep           |
+| vApp.Virtuele machine toevoegen                                     | vApp.Virtuele machine toevoegen                                     |
+| vApp.Resourcegroep toewijzen                                    | vApp.Resourcegroep toewijzen                                    |
+| vApp.Uitschrijven                                              | vApp.Uitschrijven                                              |
+| VirtualMachine.Configuration. Apparaat toevoegen of verwijderen          | VirtualMachine.Configuration. Apparaat toevoegen of verwijderen          |
+| Virtuele machine. Configuration.Acquire disk lease            | Virtuele machine. Configuration.Disk lease                     |
+| Virtuele machine. Configuration.Nieuwe schijf toevoegen                   | Virtuele machine. Configuration.Nieuwe schijf toevoegen                   |
+| Virtuele machine. Configuration.Advanced-configuratie        | Virtuele machine. Configuration.Advanced                       |
+| Virtuele machine. Configuration.Toggle disk change tracking Configuration.   | Virtuele machine. Configuration.Disk change tracking          |
+| Virtuele machine. Configuration.Configure Host USB device Configuration.Configure Host USB device Configuration.Configure Host USB device Configuration.     | Virtuele machine. Configuration.Host USB-apparaat               |
+| Virtuele machine. Configuration.Extend virtuele schijf           | Virtuele machine. Configuration.Extend virtuele schijf           |
+| Virtuele machine. Configuration.Query-niet-beheerde bestanden           | Virtuele machine. Configuration.Query-niet-beheerde bestanden           |
+| Virtuele machine. Configuration.Change Swapfile-plaatsing     | Virtuele machine. Configuration.Swapfile plaatsing            |
+| Virtuele machine. Uitvoering van het Gast Operations.Guest Operation Program | Virtuele machine. Uitvoering van het Gast Operations.Guest Operation Program |
+| Virtuele machine. Wijzigingen van de bediening van gasten.Guest | Virtuele machine. Wijzigingen van de bediening van gasten.Guest |
+| Virtuele machine. Gastoperations.Guest-bewerkingsquery's    | Virtuele machine. Gastoperations.Guest-bewerkingsquery's    |
+| Virtuele machine . Interactie. Apparaatverbinding             | Virtuele machine . Interactie. Apparaatverbinding             |
+| Virtuele machine . Interactie. Guest operating system management door VIX API | Virtuele machine . Interactie. Guest operating system management door VIX API |
+| Virtuele machine . Interactie. Uitschakelen                      | Virtuele machine . Interactie. Uitschakelen                      |
+| Virtuele machine . Inventory.Nieuwe maken                        | Virtuele machine . Inventory.Nieuwe maken                        |
+| Virtuele machine . Inventaris.verwijderen                            | Virtuele machine . Inventaris.verwijderen                            |
+| Virtuele machine . Inventaris.Register                          | Virtuele machine . Inventaris.Register                          |
+| Virtuele machine . Provisioning.Schijftoegang toestaan             | Virtuele machine . Provisioning.Schijftoegang toestaan             |
+| Virtuele machine . Provisioning.Bestandstoegang toestaan             | Virtuele machine . Provisioning.Bestandstoegang toestaan             |
+| Virtuele machine . Provisioning.Alleen-lezen schijftoegang toestaan   | Virtuele machine . Provisioning.Alleen-lezen schijftoegang toestaan   |
+| Virtuele machine . Provisioning.Allow virtual machine download | Virtuele machine . Provisioning.Allow virtual machine download |
+| Virtuele machine . Momentopnamebeheer.  Momentopname maken       | Virtuele machine . Momentopnamebeheer.  Momentopname maken       |
+| Virtuele machine . Momentopnamebeheer. Momentopname verwijderen        | Virtuele machine . Momentopnamebeheer. Momentopname verwijderen        |
+| Virtuele machine . Momentopnamebeheer. Terugkeren naar momentopname     | Virtuele machine . Momentopnamebeheer. Terugkeren naar momentopname     |
 
 <br>
 
@@ -174,8 +196,6 @@ De Azure Backup Server heeft een gebruikersaccount nodig met machtigingen voor t
 | Virtuele machine. Provisioning. Alleen-lezen schijftoegang toestaan |                                             |
 | Virtuele machine. Momentopnamebeheer. Momentopname maken       |                                             |
 | Virtuele machine. Momentopnamebeheer. Momentopname verwijderen       |                                             |
-
-
 
 ## <a name="create-a-vmware-account"></a>Een VMware-account maken
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255130"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536427"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Schaalbaarheids- en prestatiedoelen in Azure Files
 
@@ -51,8 +51,7 @@ Zie de sectie [Azure-opslagaccountschaaldoelen](#azure-storage-account-scale-tar
 ### <a name="file-share-and-file-scale-targets"></a>Doelen voor bestandsshare- en bestandsschaal
 
 > [!NOTE]
-> Standaard bestandsaandelen groter dan 5 TiB hebben bepaalde beperkingen en regionale beperkingen.
-> Zie het gedeelte [Onboard to grotere bestandsshares](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) van de planningshandleiding voor een lijst met beperkingen, regionale informatie en instructies om deze grotere bestandsgroottes in te schakelen.
+> Standaard bestandsaandelen groter dan 5 TiB hebben bepaalde beperkingen. Zie de sectie Grotere bestandsshares inschakelen op het gedeelte [standaardbestandsshares](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) van de planningshandleiding voor een lijst met beperkingen en instructies om grotere bestandsgroottes in te schakelen.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -113,5 +112,5 @@ Als algemene handleiding voor uw implementatie moet u een paar dingen in gedacht
 
 ## <a name="see-also"></a>Zie ook
 
-- [Implementatie van Azure Files plannen](storage-files-planning.md)
-- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
+- [Planning voor de implementatie van Azure Files](storage-files-planning.md)
+- [Planning voor de implementatie van Azure Files Sync](storage-sync-files-planning.md)

@@ -6,12 +6,12 @@ ms.date: 02/05/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 5a6dbda59495fccb6b9d53440f408fd4750925b5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 250f51c9f028dd55d8327259e35b82b0c392c1f6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75421670"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536995"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Een Azure Automation-runbook maken
 
@@ -21,27 +21,27 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azu
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Aanmelden bij Azure op https://portal.azure.com
+Meld u aan https://portal.azure.combij Azure op .
 
-## <a name="create-runbook"></a>Runbook maken
+## <a name="create-the-runbook"></a>Het runbook maken
 
 Maak eerst een runbook. Het voorbeeldrunbook dat in deze quickstart is gemaakt, produceert standaard `Hello World` als uitvoer.
 
 1. Open uw Automation-account.
 
-1. Klik op **Runbooks** onder **PROCESAUTOMATISERING**. De lijst met runbooks wordt weergegeven.
+1. Klik **op Runbooks** onder **Procesautomatisering**. De lijst met runbooks wordt weergegeven.
 
-1. Klik op de knop **Een runbook** maken boven aan de lijst
+1. Klik boven aan de lijst op **Een runbook maken.**
 
-1. Voer 'Hallo wereld' in als **naam** voor het runbook en selecteer **PowerShell** als **runbooktype**. Klik **op Maken**.
+1. Voer `Hello-World` voor de naam van het runboek in het veld **Naam** in en selecteer **PowerShell** voor het **veld Runbook-type.** 
 
    ![Gegevens over uw Automation-runbook invoeren op de pagina](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
-1. Het runbook is gemaakt en de pagina **PowerShell-runbook bewerken** wordt geopend.
+1. Klik **op Maken**. Het runbook is gemaakt en de pagina PowerShell-runbook bewerken wordt geopend.
 
     ![PowerShell-script in de runbookeditor ontwerpen](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
 
-1. Typ of kopieer en plak de volgende code in het bewerkingsvenster. Er wordt een optionele invoerparameter 'Name' gemaakt met een standaardwaarde 'World', en als uitvoer wordt een tekenreeks geproduceerd die gebruikmaakt van deze invoerwaarde:
+1. Typ of kopieer en plak de volgende code in het bewerkingsvenster. Hiermee wordt een optionele `Name` invoerparameter gemaakt `World`die wordt aangeroepen met een standaardwaarde van , en wordt een tekenreeks uitgevoerd die deze invoerwaarde gebruikt:
 
    ```powershell-interactive
    param
@@ -53,23 +53,23 @@ Maak eerst een runbook. Het voorbeeldrunbook dat in deze quickstart is gemaakt, 
    "Hello $Name!"
    ```
 
-1. Klik op **Opslaan** om een conceptversie van het runbook op te slaan.
+1. Klik **op Opslaan** om een conceptkopie van het runbook op te slaan.
 
     ![PowerShell-script in de runbookeditor ontwerpen](./media/automation-quickstart-create-runbook/automation-edit-runbook.png)
 
 ## <a name="test-the-runbook"></a>Het runbook testen
 
-Zodra het runbook is gemaakt, gaat u het testen om te zien of het werkt.
+Zodra het runbook is gemaakt, moet u het runbook testen om te valideren dat het werkt.
 
-1. Klik op **Testvenster** om de pagina **Testen** te openen.
+1. Klik op **Testvenster** om het testvenster te openen.
 
 1. Voer een waarde in bij **Naam** en klik op **Starten**. De testtaak wordt gestart en de taakstatus en uitvoer worden weergegeven.
 
     ![Taak voor het testen van een runbook](./media/automation-quickstart-create-runbook/automation-test-runbook.png)
 
-1. Sluit de pagina **Testen** door op de **X** in de rechterbovenhoek te klikken. Selecteer **OK** in de pop-up die wordt weergegeven.
+1. Sluit het deelvenster Testen door in de rechterbovenhoek op de **X** te klikken. Selecteer **OK** in de pop-up die wordt weergegeven.
 
-1. Op de pagina **PowerShell-runbook bewerken** klikt u op **Publiceren** om het runbook als de officiële versie van het runbook in het account te publiceren.
+1. Op de pagina PowerShell-runbook bewerken klikt u op **Publiceren** om het runbook als de officiële versie van het runbook in het account te publiceren.
 
    ![Taak voor het testen van een runbook](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
 
@@ -77,15 +77,15 @@ Zodra het runbook is gemaakt, gaat u het testen om te zien of het werkt.
 
 Zodra het runbook is gepubliceerd, wordt de overzichtspagina weergegeven.
 
-1. Klik op de overzichtspagina van runbook op **Starten** om de configuratiepagina **Runbook starten** voor dit runbook te openen.
+1. Klik op de overzichtspagina van runbook op **Starten** om de configuratiepagina Runbook starten voor dit runbook te openen.
 
    ![Taak voor het testen van een runbook](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png)
 
-1. Laat **Naam** leeg, zodat de standaardwaarde wordt gebruikt en klik op **OK**. De runbooktaak is ingediend en de pagina van de taak wordt weergegeven.
+1. Laat **Naam** leeg, zodat de standaardwaarde wordt gebruikt en klik op **OK**. De runbook-taak wordt ingediend en de pagina Taak wordt weergegeven.
 
    ![Taak voor het testen van een runbook](./media/automation-quickstart-create-runbook/automation-job-page.png)
 
-1. Wanneer de **taakstatus****Wordt uitgevoerd** of **Voltooid** is, klikt u op **Uitvoer** om het deelvenster **Uitvoer** te openen en de runbookuitvoer weer te geven.
+1. Wanneer de taakstatus is `Running` of `Completed`klikt u op **Uitvoer** om het deelvenster Uitvoer te openen en de uitvoer van de runbook weer te geven.
 
    ![Taak voor het testen van een runbook](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 

@@ -2,16 +2,16 @@
 title: Hyper-V VM's migreren naar Azure met Migratie van Azure-migratie servermigreren
 description: Meer informatie over het migreren van on-premises Hyper-V VM's naar Azure met Azure Migrate Server Migration
 ms.topic: tutorial
-ms.date: 11/18/2019
+ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: b5d37da7ea0c53a7e8cbb5b579d529dd4a799fed
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6b9732aab9e3fe0d26b4c572efe87c3a9d3e29f6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422682"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535346"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V-VM's migreren naar Azure 
 
@@ -19,12 +19,12 @@ In dit artikel ziet u hoe u on-premises Hyper-V VM's migreert naar Azure, met be
 
 [Azure Migrate](migrate-services-overview.md) biedt een centrale hub om detectie, beoordeling en migratie van uw on-premises apps en workloads en private/public cloud VM's naar Azure bij te houden. De hub biedt Azure Migrate-tools voor beoordeling en migratie, evenals isv-aanbiedingen (onafhankelijke softwareleveranciers) van derden.
 
-Deze zelfstudie is de derde in een reeks die laat zien hoe u Hyper-V beoordelen en migreren naar Azure met Azure Migrate Server Assessment and Migration. In deze zelfstudie leert u het volgende:
+Deze zelfstudie is de derde in een reeks die laat zien hoe u Hyper-V beoordelen en migreren naar Azure met Azure Migrate Server Assessment en ServerMigratie. In deze zelfstudie leert u het volgende:
 
 
 > [!div class="checklist"]
 > * Azure en uw on-premises Hyper-V-omgeving voorbereiden
-> * Stel de bronomgeving in en implementeer een replicatietoestel.
+> * De bronomgeving instellen.
 > * Stel de doelomgeving in.
 > * Schakel replicatie in.
 > * Voer een testmigratie uit om te zien of alles werkt zoals verwacht.
@@ -38,23 +38,28 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 Voordat u aan deze zelfstudie begint, dient u eerst:
 
 1. [Bekijk](hyper-v-migration-architecture.md) de Hyper-V-migratiearchitectuur.
-2. [Voer de eerste zelfstudie](tutorial-prepare-hyper-v.md) in deze serie uit om Azure en Hyper-V in te stellen voor migratie. In de eerste zelfstudie, je:
-    - [Azure voorbereiden op](tutorial-prepare-hyper-v.md#prepare-azure) migratie.
-    - [Bereid de on-premises omgeving](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-migration) voor op migratie.
-3. We raden u aan hyperv-VM's te beoordelen met Azure Migrate: Server Assessment voordat u ze migreert naar Azure. Om dit te doen, [voltooi t u de tweede zelfstudie](tutorial-assess-hyper-v.md) in deze serie. Hoewel we u aanraden een beoordeling uit te proberen, hoeft u geen beoordeling uit te voeren voordat u VM's migreert.
-4. Zorg ervoor dat aan uw Azure-account de rol Virtuele machineinzender is toegewezen, zodat u machtigingen hebt voor:
+2. [Beoordeling](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Hyper-V-hostvereisten en de Azure-URL's waartoe de Hyper-V-hosts toegang moeten krijgen.
+3. [Bekijk](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) de vereisten voor Hyper-V VM's die u wilt migreren. Hyper-V VM's moeten voldoen aan [de Azure VM-vereisten.](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)
+2. We raden je aan de vorige tutorials in deze serie te voltooien. In [de eerste zelfstudie](tutorial-prepare-hyper-v.md) ziet u hoe u Azure en Hyper-V instelt voor migratie. In de tweede zelfstudie ziet u hoe u Hyper-V VM's [beoordelen](tutorial-assess-hyper-v.md voor migratie, met azure migrate:serverassessment. 
+    > [!NOTE]
+    > Hoewel we u aanraden een beoordeling uit te proberen, hoeft u geen beoordeling uit te voeren voordat u VM's migreert.
+    > Voor het migreren van Hyper VVm's voert Azure Migreren:Servermigratie softwareagents (Microsoft Azure Site Recovery provider en Microsoft Azure Recovery Service-agent) uit op Hyper-V Hosts of clusterknooppunten om gegevens te orkestreren en te repliceren naar Azure Migrate. Het [Azure Migrate-toestel](migrate-appliance.md) wordt niet gebruikt voor Hyper-V-migratie.
+
+3. Zorg ervoor dat aan uw Azure-account de rol Virtuele machineinzender is toegewezen, zodat u machtigingen hebt voor:
 
     - Het maken van een VM in de geselecteerde resourcegroep.
     - Het maken van een VM in het geselecteerde virtuele netwerk.
     - Schrijf naar een door Azure beheerde schijf.
-5. [Een Azure-netwerk instellen](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Wanneer u migreert naar Azure, worden de gemaakte Azure VM's samengevoegd met een Azure-netwerk dat u opgeeft wanneer u migratie instelt.
+4. [Een Azure-netwerk instellen](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Wanneer u migreert naar Azure, worden de gemaakte Azure VM's samengevoegd met een Azure-netwerk dat u opgeeft wanneer u migratie instelt.
 
+## <a name="add-the-azure-migrateserver-migration-tool"></a>Azure Migreren toevoegen:Servermigratie:
 
-## <a name="add-the-azure-migrate-server-migration-tool"></a>Het hulpprogramma voor migratie van Azure-migrerende server toevoegen
+Azure Migrate:Server Migration tool toevoegen.
 
-Als u de tweede zelfstudie voor het beoordelen van Hyper-V VM's niet hebt gevolgd, moet u [deze instructies volgen](how-to-add-tool-first-time.md) om een Azure Migrate-project in te stellen en het hulpprogramma voor azure-beoordeling van de server migreren aan het project toe te voegen.
+- Als u de tweede zelfstudie hebt gevolgd om [VMware VM's](/tutorial-assess-hyper-v.md)te beoordelen, hebt u al een Azure Migrate-project ingesteld en u het hulpprogramma nu toevoegen.
+- Als u de tweede zelfstudie niet hebt[gevolgd, volgt u deze instructies](how-to-add-tool-first-time.md) om een Azure Migrate-project in te stellen. U voegt het hulpprogramma Azure Migreren:Servermigratie toe wanneer u het project maakt.
 
-Als u de tweede zelfstudie hebt gevolgd en al een Azure Migrate-project hebt, voegt u het hulpprogramma Azure Migreren: Servermigratie als volgt toe:
+Als u een project hebt ingesteld, voegt u het hulpprogramma als volgt toe:
 
 1. Klik in het Azure Migrate-project op **Overzicht**. 
 2. Klik in **Servers voor ontdekken, beoordelen en migreren**op Servers beoordelen en **migreren.**
@@ -66,25 +71,8 @@ Als u de tweede zelfstudie hebt gevolgd en al een Azure Migrate-project hebt, vo
 
     ![Hulpprogramma voor de migratie van servers](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
-
-## <a name="set-up-the-azure-migrate-appliance"></a>Het Azure Migrate-toestel instellen
-
-Azure Migrate Server Migration voert een softwareagent uit op Hyper-V Hosts of clusterknooppunten om gegevens te orkestreren en te repliceren naar Azure Migrate en vereist geen speciaal toestel voor migratie.
-
-- Het Azure-migrateen: serverbeoordelingstoestel voert VM-detectie uit en verzendt VM-metagegevens en prestatiegegevens naar Azure Migrate Server Migration.
-- Migratieorkestratie en gegevensreplicatie worden afgehandeld door de Microsoft Azure Site Recovery-provider en de Microsoft Azure Recovery Service-agent.
-
-Ga als het gaat om het instellen van het apparaat:
-- Als u de tweede zelfstudie hebt gevolgd om Hyper-V VM's te beoordelen, hebt u het apparaat al ingesteld tijdens die zelfstudie en hoeft u het niet opnieuw te doen.
-- Als u die zelfstudie niet hebt gevolgd, moet u het apparaat nu instellen. Om dit te doen, u: 
-
-    - Download een gecomprimeerde Hyper-V VHD van de Azure-portal.
-    - Maak het toestel en controleer of het verbinding kan maken met Azure Migrate Server Assessment. 
-    - Configureer het toestel voor de eerste keer en registreer het met het Azure Migrate-project.
-
-    Volg de gedetailleerde instructies in [dit artikel](how-to-set-up-appliance-hyper-v.md) om het apparaat in te stellen.
-
 ## <a name="prepare-hyper-v-hosts"></a>Hyper-V-hosts voorbereiden
+
 
 1. Klik in het Azure Migrate project > **Servers**in **Azure Migrate: Servermigratie**op **Ontdekken**.
 2. In **Discover machines** > Worden uw machines **Yes, with Hyper-V****gevirtualiseerd?**
@@ -111,21 +99,6 @@ Het kan tot 15 minuten duren nadat de registratie is afgerond totdat gedetecteer
 
 ![Ontdekte servers](./media/tutorial-migrate-hyper-v/discovered-servers.png)
 
-### <a name="register-hyper-v-hosts"></a>Hyper-V hosts registreren
-
-Installeer het gedownloade installatiebestand (AzureSiteRecoveryProvider.exe) op elke relevante Hyper-V-host.
-
-1. Voer het installatiebestand van de provider uit op elke host- of clusterknooppunt.
-2. In de wizard Providersetup > **Microsoft Update**u Microsoft Update gebruiken om te controleren op providerupdates.
-3. Accepteer in **Installatie**de standaardinstallatielocatie voor de provider en agent en selecteer **Installeren**.
-4. Selecteer na de installatie in de wizard Registratie > **Vault Instellingen**, selecteer **Bladeren**en selecteer in **Sleutelbestand**het kluissleutelbestand dat u hebt gedownload.
-5. Geef in **proxy-instellingen**op hoe de provider die op de host wordt uitgevoerd, verbinding maakt met internet.
-    - Als het toestel zich achter een proxyserver bevindt, moet u proxy-instellingen opgeven.
-    - Geef de proxynaam op als **http://ip-address**, of **http://FQDN**. HTTPS-proxyservers worden niet ondersteund.
-   
-
-6. Zorg ervoor dat de provider de [vereiste URL's](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts)kan bereiken.
-7. Klik **in Registratie,** nadat de host is geregistreerd, op **Voltooien**.
 
 ## <a name="replicate-hyper-v-vms"></a>Hyper-V VM's repliceren
 

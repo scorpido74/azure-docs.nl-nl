@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b0f60e13ca4bc5115f9a49885c3c659ad1147fcc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7f05d33b43df85c49a0c92b60157e2a6448325ac
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881890"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537131"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Een web-app die web-API's aanroept: codeconfiguratie
 
@@ -94,7 +94,7 @@ De [ASP.NET Core Web app tutorial](https://github.com/Azure-Samples/active-direc
 Hieronder volgt de code van [Startup.cs#L40-L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42). Het beschikt over oproepen naar:
 
 - De `AddMicrosoftIdentityPlatformAuthentication` methode, die verificatie toevoegt aan de web-app.
-- De `AddMsal` methode, die de mogelijkheid toevoegt om web-API's aan te roepen.
+- De `AddMsal` methode, die de mogelijkheid van het aanroepen van web API's toevoegt.
 - De `AddInMemoryTokenCaches` methode, die gaat over het kiezen van een token-cache implementatie.
 
 ```csharp
@@ -253,7 +253,7 @@ public class TokenAcquisition : ITokenAcquisition
 
 ### <a name="the-tokenacquisitionbuildconfidentialclientapplication-method"></a>De tokenacquisition.buildconfidentialclienttoepassingsmethode
 
-In ASP.NET Core gebruikt het bouwen van de `HttpContext`vertrouwelijke clienttoepassing informatie die zich in de . De `HttpContext` bijbehorende aan de aanvraag `CurrentHttpContext` wordt geopend met behulp van de eigenschap. `HttpContext`heeft informatie over de URL voor de web-app en `ClaimsPrincipal`over de aangemelde gebruiker (in een ). 
+In ASP.NET Core gebruikt het bouwen van de `HttpContext`vertrouwelijke clienttoepassing informatie die zich in de . De `HttpContext` bijbehorende aan de aanvraag `CurrentHttpContext` wordt geopend met behulp van de eigenschap. `HttpContext`heeft informatie over de URL voor de web-app en `ClaimsPrincipal`over de aangemelde gebruiker (in een ).
 
 De `BuildConfidentialClientApplication` methode maakt ook gebruik van de ASP.NET Core-configuratie. De configuratie heeft een sectie 'AzureAD' en is ook gebonden aan beide volgende elementen:
 

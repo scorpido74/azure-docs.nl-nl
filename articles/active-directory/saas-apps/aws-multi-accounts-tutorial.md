@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/03/2020
+ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a6ab13dea1a1db96cbb2f2ac70b9779eca60591
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5310c999cc44f0cf35f129751da7472031e6c57a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885252"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537080"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Zelfstudie: Azure Active Directory-integratie met Amazon Web Services (AWS) (Legacy-zelfstudie)
 
@@ -37,7 +37,7 @@ Als u meer informatie wilt over de integratie van De SaaS-app met Azure AD, raad
 ![Amazon Web Services (AWS) in de resultatenlijst](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 > [!NOTE]
-> Let op: het koppelen van één AWS-app aan al uw AWS-accounts is niet onze aanbevolen aanpak. In plaats daarvan raden we u aan [deze](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) aanpak te gebruiken om meerdere exemplaren van AWS-account te configureren naar meerdere exemplaren van AWS-apps in Azure AD. U moet [deze](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) aanpak alleen gebruiken als u er veel minder AWS-accounts en -rollen in hebt. [dit](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) model is niet schaalbaar omdat de AWS-accounts en -rollen binnen deze accounts groeien. Ook maakt [deze](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) aanpak geen gebruik van AWS Role import functionaliteit met behulp van Azure AD User Provisioning en dus moet je handmatig toevoegen/ bijwerken / verwijderen van de rollen. Voor andere beperkingen op [deze](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) aanpak zie de details hieronder.
+> Let op: het koppelen van één AWS-app aan al uw AWS-accounts is niet onze aanbevolen aanpak. In plaats daarvan raden we u aan [deze](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) aanpak te gebruiken om meerdere exemplaren van AWS-account te configureren naar meerdere exemplaren van AWS-apps in Azure AD. U moet deze aanpak alleen gebruiken als u er veel minder AWS-accounts en -rollen in hebt, dit model is niet schaalbaar omdat de AWS-accounts en -rollen binnen deze accounts groeien. Ook maakt deze aanpak geen gebruik van AWS Role import functionaliteit met behulp van Azure AD User Provisioning en dus moet je handmatig toevoegen/ bijwerken / verwijderen van de rollen. Voor andere beperkingen op deze aanpak zie de details hieronder.
 
 **Houd er rekening mee dat we deze aanpak niet om de volgende redenen moeten gebruiken:**
 
@@ -126,7 +126,7 @@ In deze sectie schakelt u Azure AD single sign-on in de Azure-portal in en confi
 
 6. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** configureert u het kenmerk van het SAML-token zoals wordt weergegeven in de bovenstaande afbeelding en voert u de volgende stappen uit:
 
-    | Name  | Bronkenmerk  | Naamruimte |
+    | Naam  | Bronkenmerk  | Naamruimte |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
     | Rol            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes`|

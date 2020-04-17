@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: ac134dce5ad739d1d81ef0c62a6bfb04468cafff
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 1d22f66ad5f7adf5bb8196c3e72a2a343f4558b0
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991106"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536094"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Snelstart: Gebruikers aanmelden en een toegangstoken krijgen in een JavaScript SPA
 
@@ -39,7 +39,7 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een Toepassing m
 > 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 > 1. Als uw account u toegang geeft tot meer dan één tenant, selecteert u het account rechtsboven en stelt u uw portalsessie in op de Azure Active Directory-tenant (Azure AD) die u wilt gebruiken.
 > 1. Ga naar de nieuwe [Azure-portal - deelvenster App-registraties.](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)
-> 1. Voer een naam in voor de toepassing. 
+> 1. Voer een naam in voor de toepassing.
 > 1. Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
 > 1. Selecteer **Registreren**.
 > 1. Volg de instructies om uw nieuwe toepassing te downloaden en automatisch te configureren.
@@ -99,7 +99,7 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een Toepassing m
 >      cacheLocation: "sessionStorage", // This configures where your cache will be stored
 >      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
 >    }
->  };  
+>  };
 >
 >```
 
@@ -122,10 +122,10 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een Toepassing m
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Stap 3: Uw app is geconfigureerd en klaar om uit te voeren
-> We hebben uw project geconfigureerd met waarden van de eigenschappen van uw app. 
+> We hebben uw project geconfigureerd met waarden van de eigenschappen van uw app.
 
 > [!div renderon="docs"]
-> 
+>
 > Bewerk vervolgens het bestand *graphConfig.js* om het `graphMeEndpoint` object `graphMeEndpoint` in `apiConfig` te stellen en voor het object.
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
@@ -199,7 +199,7 @@ De quickstartcode laat ook zien hoe u de MSAL-bibliotheek initialiseren:
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
     }
-  };  
+  };
 
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
@@ -234,7 +234,7 @@ myMSALObj.loginPopup(loginRequest)
 
 > |Waar  |  |
 > |---------|---------|
-> | `scopes`   | (Optioneel) Bevat scopes die worden aangevraagd voor toestemming van de gebruiker bij aanmeldingstijd. Bijvoorbeeld, `[ "user.read" ]` voor Microsoft Graph of `[ "<Application ID URL>/scope" ]` voor aangepaste web-API’s (`api://<Application ID>/access_as_user`). |
+> | `scopes`   | (Optioneel) Bevat scopes die worden aangevraagd voor toestemming van de gebruiker bij aanmeldingstijd. Bijvoorbeeld `[ "user.read" ]` voor Microsoft Graph `[ "<Application ID URL>/scope" ]` of voor aangepaste web-API's (dat wil zeggen). `api://<Application ID>/access_as_user` |
 
 > [!TIP]
 > U ook de methode `loginRedirect` gebruiken om de huidige pagina om te leiden naar de aanmeldingspagina in plaats van een pop-upvenster.
@@ -264,7 +264,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 > |Waar  |  |
 > |---------|---------|
-> | `scopes`   | Bevat bereiken die worden aangevraagd om te worden geretourneerd in het toegangstoken voor de API. Bijvoorbeeld, `[ "mail.read" ]` voor Microsoft Graph of `[ "<Application ID URL>/scope" ]` voor aangepaste web-API’s (`api://<Application ID>/access_as_user`).|
+> | `scopes`   | Bevat bereiken die worden aangevraagd om te worden geretourneerd in het toegangstoken voor de API. Bijvoorbeeld `[ "mail.read" ]` voor Microsoft Graph `[ "<Application ID URL>/scope" ]` of voor aangepaste web-API's (dat wil zeggen). `api://<Application ID>/access_as_user`|
 
 #### <a name="get-a-user-token-interactively"></a>Een gebruikerstoken interactief ophalen
 

@@ -4,14 +4,14 @@ description: Beschrijft Azure HPC Cache, een systeemversneller voor bestandstoeg
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/15/2020
+ms.author: v-erkel
+ms.openlocfilehash: 084c33874b474fc1789df93e088d3cec4263eac9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241190"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536638"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Wat is Azure HPC Cache?
 
@@ -49,22 +49,20 @@ Een Azure HPC-cache-implementatie kan helpen bij het versnellen van kwantitatiev
 
 Azure HPC-cache is beschikbaar in deze Azure-regio's:
 
+| Noord-Amerika      | Europa         | Azië            | Australië      |
+|--------------------|----------------|-----------------|----------------|
+| VS - oost            | Europa - noord   | Korea - centraal   | Australië - oost |
+| VS - oost 2          | Europa -west    | Azië - zuidoost  |               |
+| VS - zuid-centraal | | | |
+| VS - west 2        | | | |
+
+De [door de klant beheerde sleutelsfunctie](customer-keys.md) wordt alleen in deze regio's ondersteund:
+
 * VS - oost
-* VS - oost 2
-* Europa - noord
-* Europa -west
-* Azië - zuidoost
-* Sydney
+* VS - zuid-centraal
 * VS - west 2
-* Korea - centraal
 
 Controleer de [productpagina azure HPC Cache](https://azure.microsoft.com/services/hpc-cache) voor de meest recente beschikbaarheidsinformatie.
-
-## <a name="service-availability"></a>Beschikbaarheid van service
-
-U moet toegang aanvragen voor elk abonnement dat u gebruikt met Azure HPC-cache. Deze beperking zorgt voor de kwaliteit van de dienstverlening in de eerste maanden van algemene beschikbaarheid.
-
-Vraag toegang aan door [dit formulier](https://aka.ms/onboard-hpc-cache)in te vullen. Nadat uw abonnement is toegevoegd aan de toegangslijst, u caches maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

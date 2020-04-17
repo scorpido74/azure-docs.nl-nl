@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 4332755c1ee47cd648f048768307846f02503e20
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0a41165a77ff5f98a6a0bb408da62cb6c4cb35f8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407043"
+ms.locfileid: "81536077"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Snelstart: een token aanschaffen en Microsoft Graph API aanroepen met de identiteit van de console-app
 
@@ -50,7 +50,7 @@ Deze quickstart vereist [.NET Core 2.2](https://www.microsoft.com/net/download/d
 > 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
 > 1. Navigeer naar de pagina Microsoft-identiteitsplatform voor ontwikkelaars [App-registraties.](https://go.microsoft.com/fwlink/?linkid=2083908)
 > 1. Selecteer **Nieuwe registratie**.
-> 1. Wanneer de pagina **Een aanvraag registreren** wordt weergegeven, voert u de registratiegegevens van uw aanvraag in. 
+> 1. Wanneer de pagina **Een aanvraag registreren** wordt weergegeven, voert u de registratiegegevens van uw aanvraag in.
 > 1. Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die wordt weergegeven voor gebruikers van de app, zoals `Daemon-console`. Selecteer vervolgens **Registreren** om de toepassing te maken.
 > 1. Na het registreren opent u het menu **Certificaten en geheimen**.
 > 1. Onder **Clientgeheimen** selecteert u **+ Nieuw clientgeheim**. Geef het clientgeheim een naam en selecteer **Toevoegen**. Kopieer het geheim naar een veilige locatie. U hebt dit nodig voor gebruik in uw code.
@@ -60,7 +60,7 @@ Deze quickstart vereist [.NET Core 2.2](https://www.microsoft.com/net/download/d
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>Uw snelstart-app downloaden en configureren
-> 
+>
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Stap 1: Uw toepassing configureren in Azure Portal
 > Om ervoor te zorgen dat het codevoorbeeld voor deze quickstart werkt, moet u een clientgeheim maken en de toepassingstoestemming **User.Read.All** van Graph API toevoegen.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -82,14 +82,14 @@ Deze quickstart vereist [.NET Core 2.2](https://www.microsoft.com/net/download/d
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
-    
+
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>Stap 3: Uw Visual Studio-project configureren
-> 
+>
 > 1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples**.
 > 1. Open de oplossing in Visual Studio - **1-Call-MSGraph\daemon-console.sln** (optioneel).
 > 1. Bewerk **appsettings.json** en vervang de `ClientId` `Tenant` waarden `ClientSecret` van de velden en door het volgende:
-> 
+>
 >    ```json
 >    "Tenant": "Enter_the_Tenant_Id_Here",
 >    "ClientId": "Enter_the_Application_Id_Here",
@@ -217,7 +217,7 @@ result = await app.AcquireTokenForClient(scopes)
 
 > |Waar:| |
 > |---------|---------|
-> | `scopes` | De aangevraagde bereiken bevat. Voor vertrouwelijke clients moet hiervoor de indeling worden gebruikt die vergelijkbaar is met `{Application ID URI}/.default` om aan te geven dat de aangevraagde bereiken dezelfde zijn die statisch zijn gedefinieerd in het app-object dat is ingesteld in de Azure-portal (voor Microsoft Graph verwijst `{Application ID URI}` naar `https://graph.microsoft.com`). Voor aangepaste Web-API's wordt `{Application ID URI}` gedefinieerd in de sectie **Een API beschikbaar maken** in de registratie van toepassingen (preview) van de Azure-portal. |
+> | `scopes` | De aangevraagde bereiken bevat. Voor vertrouwelijke clients moet hiervoor de indeling worden gebruikt die vergelijkbaar is met `{Application ID URI}/.default` om aan te geven dat de aangevraagde bereiken dezelfde zijn die statisch zijn gedefinieerd in het app-object dat is ingesteld in de Azure-portal (voor Microsoft Graph verwijst `{Application ID URI}` naar `https://graph.microsoft.com`). Voor aangepaste web-API's `{Application ID URI}` wordt gedefinieerd onder Een **API-sectie blootleggen** in de toepassingsregistratie van Azure Portal (Preview). |
 
 Zie de [naslagdocumentatie voor `AcquireTokenForClient`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet) voor meer informatie
 
