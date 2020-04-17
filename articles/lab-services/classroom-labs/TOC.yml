@@ -50,6 +50,8 @@
           href: class-type-jupyter-notebook.md
         - name: Ontwikkeling met Android Studio via de mobiele app
           href: class-type-mobile-dev-android-studio.md
+        - name: Big data-analyse
+          href: class-type-big-data-analytics.md
     - name: Labaccounts maken en configureren (labaccounteigenaar)
       items:
         - name: Labaccounts maken en beheren

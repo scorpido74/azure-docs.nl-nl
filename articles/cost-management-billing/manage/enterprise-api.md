@@ -5,14 +5,14 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 02/14/2020
+ms.date: 04/14/2020
 ms.author: banders
-ms.openlocfilehash: 10275bac8cd9363939f9b6f298c49d7ef08ab7bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202910"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383172"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Overzicht van rapportage-API's voor Enterprise-klanten
 Met de rapportage-API's kunnen klanten van Azure Enterprise programmatisch verbruiks-en factureringsgegevens ophalen en gebruiken in de tools voor gegevensanalyse van hun voorkeur. Enterprise-klanten hebben een [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) ondertekend met Azure om overeengekomen monetaire toezeggingen te doen en toegang te krijgen tot aangepaste prijzen voor Azure-resources.
@@ -51,7 +51,9 @@ In de respons van alle bovenstaande API zijn Etags opgenomen. Een wijziging van 
 |Statuscode respons|Bericht|Beschrijving|
 |-|-|-|
 |200| OK|Geen fout|
+|400| Onjuiste aanvraag| Ongeldige parameters: datumbereiken, EA-nummers, enzovoort.|
 |401| Niet geautoriseerd| De API-sleutel is niet gevonden, is ongeldig, is verlopen, enzovoort.|
 |404| Niet beschikbaar| Rapporteindpunt niet gevonden|
-|400| Onjuiste aanvraag| Ongeldige parameters: datumbereiken, EA-nummers, enzovoort.|
+|429 | TooManyRequests | De aanvraag is beperkt. Probeer het opnieuw nadat u de tijd hebt gewacht die in de header <code>x-ms-ratelimit-microsoft.consumption-retry-after</code> wordt opgegeven.|
 |500| Serverfout| Onverwachte fout opgetreden bij het verwerken van de aanvraag|
+| 503 | ServiceUnavailable | De services zijn tijdelijk niet beschikbaar. Probeer het opnieuw nadat u de tijd hebt gewacht die in de header <code>Retry-After</code> wordt opgegeven.|

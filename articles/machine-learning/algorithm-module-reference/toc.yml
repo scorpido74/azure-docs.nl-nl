@@ -152,5 +152,9 @@
       href: pca-based-anomaly-detection.md
     - name: Anomaliedetectiemodel trainen
       href: train-anomaly-detection-model.md
+- name: Webservice
+  items:
+    - name: Invoer/uitvoer van weservice
+      href: web-service-input-output.md
 - name: Fouten en probleemoplossing voor module
   href: designer-error-codes.md

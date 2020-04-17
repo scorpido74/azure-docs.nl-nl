@@ -50,7 +50,7 @@
               href: data-box-security.md
             - name: Veelgestelde vragen
               href: data-box-faq.md
-        - name: Procedure
+        - name: Procedures
           items:
             - name: Beheren via Azure Portal
               href: data-box-portal-admin.md
@@ -70,6 +70,8 @@
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: Uit HDFS-archief
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: Naar Azure Backup
+                  href: ../backup/offline-backup-azure-data-box.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
             - name: Problemen oplossen
               items:
                 - name: Problemen met Data Box
@@ -109,7 +111,7 @@
               href: data-box-disk-security.md
             - name: Veelgestelde vragen
               href: data-box-disk-faq.md
-        - name: Procedure
+        - name: Procedures
           items:
             - name: Beheren via Azure Portal
               href: data-box-portal-ui-admin.md
@@ -165,7 +167,7 @@
               href: data-box-heavy-system-requirements.md
             - name: Limieten begrijpen
               href: data-box-heavy-limits.md
-        - name: Procedure
+        - name: Procedures
           items:
             - name: Beheren via Azure Portal
               href: data-box-portal-admin.md
@@ -185,7 +187,7 @@
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: Uit HDFS-archief
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
-    - name: Bronnen
+    - name: Resources
       items:
         - name: Data Box-product
           href: 'https://azure.microsoft.com/services/storage/databox/data/'

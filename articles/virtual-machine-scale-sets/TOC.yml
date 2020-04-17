@@ -252,7 +252,7 @@
           href: virtual-machine-scale-sets-networking.md
         - name: Automatische upgrades voor het besturingssysteem
           href: virtual-machine-scale-sets-automatic-upgrade.md
-        - name: Automatische exemplaarreparaties (preview)
+        - name: Automatische exemplaarreparaties
           href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: Exemplaarbescherming
           href: virtual-machine-scale-sets-instance-protection.md

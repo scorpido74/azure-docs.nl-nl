@@ -3,16 +3,16 @@ title: Veelgebruikte toepassingen van kostenanalyse in Azure Cost Management
 description: In dit artikel wordt uitgelegd hoe u veelvoorkomende analysetaken kunt uitvoeren in Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/31/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: a333cad51e6fc089e7e6994c7b89210b12686cd5
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 2e0e222e636f694328835e20fda97deca1d9986a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520884"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261487"
 ---
 # <a name="common-cost-analysis-uses"></a>Veelgebruikte toepassingen van kostenanalyse
 
@@ -27,6 +27,17 @@ Door de kosten per Azure-service te bekijken, kunt u een beter inzicht krijgen i
 1. Wijzig de weergave in **Tabel**.
 
 [![Uitsplitsing van kosten per Azure-service](./media/cost-analysis-common-uses/breakdown-by-service.png)](./media/cost-analysis-common-uses/breakdown-by-service.png#lightbox)
+
+## <a name="review-invoiced-charges-in-cost-analysis"></a>Gefactureerde kosten in kosten analyse bekijken
+
+Als u de factuurgegevens in de Azure-portal wilt bekijken, navigeert u naar kostenanalyse voor het bereik dat hoort bij de factuur die u analyseert. Selecteer de weergave **Factuurgegevens**. Factuurgegevens laten u de kosten van de factuur zien.
+
+[![Voorbeeld met factuurgegevens](./media/cost-analysis-common-uses/invoice-details.png)](./media/cost-analysis-common-uses/invoice-details.png#lightbox)
+
+Als u de factuurgegevens bekijkt, kunt u de service identificeren die onverwachte kosten heeft en bepalen welke resources rechtstreeks zijn gekoppeld aan de resource in de kostenanalyse. Als u bijvoorbeeld kosten wilt analyseren voor de virtuele-machineservice, gaat u naar de weergave **Geaccumuleerde kosten**. Stel vervolgens de granulariteit in op **Dagelijks** en filter kosten op **Servicenaam: Virtuele machines** en groepskosten op **Resource**.
+
+[![Voorbeeld van samengevoegde kosten voor virtuele machines](./media/cost-analysis-common-uses/virtual-machines.png)](./media/cost-analysis-common-uses/virtual-machines.png#lightbox)
+
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Uitsplitsing van kosten weergeven per Azure-resource
 

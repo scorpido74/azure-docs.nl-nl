@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/30/2020
+ms.date: 04/10/2020
 ms.author: banders
-ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b1986a4cb59e0f276ba59eb99acfb459b48615d8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475255"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262082"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Onverwachte kosten voorkomen met Azure-facturering en -kostenbeheer
 
@@ -193,6 +193,17 @@ Op uw Azure-factuur worden alle kosten voor die maand per _meter_ geaggregeerd. 
 Filter het CSV-bestand met het gebruik op de _MeterName_ zoals die wordt weergegeven op de factuur die u wilt analyseren, zodat u alle regelitems ziet die van toepassing zijn op de meter. De _InstanceID_ voor het regelitem komt overeen met de werkelijke Azure-resource die de kosten heeft gegenereerd.
 
 Wanneer u de desbetreffende resource hebt geïdentificeerd, kunt u Kostenanalyse in Azure Cost Management gebruiken om de kosten verder te analyseren die zijn gerelateerd aan de resource. Zie [Beginnen met analyseren van kosten](../costs/quick-acm-cost-analysis.md) voor meer informatie over het gebruik van Kostenanalyse.
+
+### <a name="review-invoiced-charges-in-cost-analysis"></a>Gefactureerde kosten in kosten analyse bekijken
+
+Als u de factuurgegevens in de Azure-portal wilt bekijken, navigeert u naar kostenanalyse voor het bereik dat hoort bij de factuur die u analyseert. Selecteer de weergave **Factuurgegevens**. Factuurgegevens laten u de kosten van de factuur zien.
+
+[![Voorbeeld met factuurgegevens](./media/getting-started/invoice-details.png)](./media/getting-started/invoice-details.png#lightbox)
+
+Als u de factuurgegevens bekijkt, kunt u de service identificeren die onverwachte kosten heeft en bepalen welke resources rechtstreeks zijn gekoppeld aan de resource in de kostenanalyse. Als u bijvoorbeeld kosten wilt analyseren voor de virtuele-machineservice, gaat u naar de weergave **Geaccumuleerde kosten**. Stel vervolgens de granulariteit in op **Dagelijks** en filter kosten op **Servicenaam: Virtuele machines** en groepskosten op **Resource**.
+
+[![Voorbeeld van samengevoegde kosten voor virtuele machines](./media/getting-started/virtual-machines.png)](./media/getting-started/virtual-machines.png#lightbox)
+
 
 ### <a name="identify-spikes-in-cost-over-time"></a>Pieken in de kosten in de loop van de tijd identificeren
 

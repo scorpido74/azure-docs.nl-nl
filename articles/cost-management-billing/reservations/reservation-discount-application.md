@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: banders
-ms.openlocfilehash: fb6e7e3fe3b7b45b503dca66dc5b039a9eceb689
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5781ade7b2f3cfc7514208861de025cc84944fcd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135484"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380639"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>Toepassen van een reserveringskorting
 
@@ -39,7 +39,7 @@ Wanneer u een reservering koopt, kan de korting ook worden toegepast op andere i
 Service-abonnementen:
 
 - Gereserveerde VM-instanties: Wanneer u de reservering koopt en **Geoptimaliseerd voor flexibiliteit van de instantiegrootte** selecteert, hangt de kortingsdekking af van de VM-grootte die u selecteert. De reservering kan worden toegepast op de VM-grootten in de groep met series van dezelfde grootte. Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) voor meer informatie.
-- Gereserveerde Azure Storage-capaciteit: U kunt gereserveerde capaciteit voor standaard Azure Storage-accounts aanschaffen in eenheden van 100 TiB of 1 PiB per maand. Gereserveerde Azure Storage-capaciteit is in alle regio's, voor elke toegangslaag (dynamisch, statisch of archief) en voor elke replicatieoptie (LRS, GRS of ZRS) beschikbaar.
+- Gereserveerde Azure Storage-capaciteit: U kunt gereserveerde capaciteit voor standaard Azure Storage-accounts aanschaffen in eenheden van 100 TiB of 1 PiB per maand. Raadpleeg [Blok-blob-prijzen](https://azure.microsoft.com/pricing/details/storage/blobs/) voor informatie over welke regio's gereserveerde Azure Storage-capaciteit ondersteunen. Gereserveerde Azure Storage-capaciteit is beschikbaar voor alle lagen (dynamisch, statisch en archief) en voor alle replicatieconfiguraties (LRS, GRS of ZRS).
 - Gereserveerde capaciteit voor SQL Database: De kortingsdekking hangt af van de prestatielaag die u kiest. Zie [Begrip van de manier waarop Azure-reserveringskorting wordt toegepast](understand-reservation-charges.md) voor meer informatie.
 - Gereserveerde Azure Cosmos DB-capaciteit: De kortingsdekking hangt af van de ingerichte doorvoer. Zie [Begrip van de manier waarop Azure Cosmos DB-reserveringskorting wordt toegepast](understand-cosmosdb-reservation-charges.md) voor meer informatie.
 
