@@ -80,7 +80,7 @@
       maintainContext: true
 - name: Resources
   items:
-    - name: Ondersteuning voor taal en regio
+    - name: Taalondersteuning
       href: language-support.md
     - name: Vrije toegangssleutel verkrijgen
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api'
