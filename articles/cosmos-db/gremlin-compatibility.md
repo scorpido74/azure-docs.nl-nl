@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 581bc813ca27067b1f27ab9866a45df3084dbbcc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 989a033a843b861c34dc9dbdbced50399f8e5cd7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75644729"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81449881"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin-compatibiliteit
 Azure Cosmos DB Graph engine volgt [apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) traversal stappen specificatie, maar er zijn verschillen.
@@ -35,7 +35,7 @@ Azure Cosmos DB Graph engine volgt [apache TinkerPop](https://tinkerpop.apache.o
 
 * ***Niet-primitieve JSON-typen*** worden niet ondersteund. `string`Gebruik, `number`of `true` / `false` typen. `null`waarden worden niet ondersteund. 
 
-* ***GraphSONv3*** serializer wordt momenteel niet ondersteund. Gebruik `GraphSONv2` de klassen Serializer, Reader en Writer in de verbindingsconfiguratie.
+* ***GraphSONv3*** serializer wordt momenteel niet ondersteund. Gebruik `GraphSONv2` de klassen Serializer, Reader en Writer in de verbindingsconfiguratie. De resultaten die worden geretourneerd door de Azure Cosmos DB Gremlin API hebben niet dezelfde indeling als de GraphSON-indeling. 
 
 * **Lambda-uitdrukkingen en -functies** worden momenteel niet ondersteund. Dit omvat `.map{<expression>}`de `.by{<expression>}`, `.filter{<expression>}` de , en de functies. Zie [Een notitie op Lambdas](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)voor meer informatie en om te leren hoe u ze herschrijven met gremlin-stappen.
 

@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 2241b69e36e3b17475dba115b8d2ae94fe2189a7
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: abe7d5ed1d4ba1308abde04aee32a3ea222456b8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345853"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452873"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Zelfstudie: Gegevens voorbereiden om clustering uit te voeren in R met Azure SQL Database Machine Learning Services (voorbeeld)
 
@@ -43,13 +44,11 @@ In [deel twee](sql-database-tutorial-clustering-model-build.md)leer je hoe je ee
 
 In [deel drie](sql-database-tutorial-clustering-model-deploy.md)leert u hoe u een opgeslagen procedure maakt in een Azure SQL-database die clustering in R kan uitvoeren op basis van nieuwe gegevens.
 
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement - Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/) voordat u begint.
 
-* Azure SQL Database Server met Machine Learning Services ingeschakeld - Tijdens de openbare preview zal Microsoft u aan boord nemen en machine learning inschakelen voor uw bestaande of nieuwe databases. Volg de stappen in [Meld u aan voor de preview-versie](sql-database-machine-learning-services-overview.md#signup).
+* [Azure SQL Database met Machine Learning Services (met R)](sql-database-machine-learning-services-overview.md) ingeschakeld.
 
 * RevoScaleR-pakket - Zie [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) voor opties om dit pakket lokaal te installeren.
 
@@ -59,7 +58,7 @@ In [deel drie](sql-database-tutorial-clustering-model-deploy.md)leert u hoe u ee
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="import-the-sample-database"></a>De voorbeelddatabase importeren
 

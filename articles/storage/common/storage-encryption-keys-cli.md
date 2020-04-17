@@ -10,18 +10,18 @@ ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ea944d4cfa3006c33f1dee3dd8e6ee6088681aa7
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 796e3b3f46bc83b776826baf6e078c696eda543b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618652"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456768"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Door de klant beheerde sleutels configureren met Azure Key Vault met Azure CLI
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-In dit artikel ziet u hoe u een Azure Key Vault configureert met door de klant beheerde sleutels met Azure CLI. Zie [Snelstart: Een geheim instellen en ophalen uit Azure Key Vault met Azure CLI](../../key-vault/quick-create-cli.md)voor meer informatie over het maken van een sleutelkluis met Azure CLI.
+In dit artikel ziet u hoe u een Azure Key Vault configureert met door de klant beheerde sleutels met Azure CLI. Zie [Snelstart: Een geheim instellen en ophalen uit Azure Key Vault met Azure CLI](../../key-vault/secrets/quick-create-cli.md)voor meer informatie over het maken van een sleutelkluis met Azure CLI.
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Een identiteit toewijzen aan het opslagaccount
 
@@ -55,7 +55,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-Zie de secties getiteld **Soft-delete** en **Inschakelen van verwijdering** [in](../../key-vault/key-vault-soft-delete-cli.md)een bestaande sleutelkluis met Azure CLI voor meer informatie over het inschakelen van **Soft Delete** en **Niet verwijderen** op een bestaande sleutelkluis met Azure CLI.
+Zie de secties getiteld **Soft-delete** en **Inschakelen van verwijdering** [in](../../key-vault/general/soft-delete-cli.md)een bestaande sleutelkluis met Azure CLI voor meer informatie over het inschakelen van **Soft Delete** en **Niet verwijderen** op een bestaande sleutelkluis met Azure CLI.
 
 ## <a name="configure-the-key-vault-access-policy"></a>Het toegangsbeleid voor belangrijke kluizen configureren
 

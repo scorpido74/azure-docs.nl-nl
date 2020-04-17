@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c11521ec074b63843b873c39102b68bf185d2821
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8bec28b98a8d2640b5a8034569d49077ce6b4177
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676731"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450986"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Een azure Active Directory selfservice-implementatie voor het opnieuw instellen van wachtwoorden plannen
 
@@ -115,7 +115,7 @@ Voordat u SSPR implementeert, u ervoor kiezen om het aantal en de gemiddelde kos
 
 Microsoft raadt organisaties aan de gecombineerde registratie-ervaring voor SSPR en multi-factor authenticatie in te schakelen. Wanneer u deze gecombineerde registratie-ervaring inschakelt, hoeven gebruikers hun registratiegegevens slechts één keer te selecteren om beide functies in te schakelen.
 
-De gecombineerde registratie-ervaring vereist geen organisaties om zowel SSPR- als Azure Multi-Factor Authentication in te schakelen. Gecombineerde registratie biedt organisaties een betere gebruikerservaring. Zie [Registratie van gecombineerde beveiligingsgegevens (voorbeeld) voor](concept-registration-mfa-sspr-combined.md) meer informatie.
+De gecombineerde registratie-ervaring vereist geen organisaties om zowel SSPR- als Azure Multi-Factor Authentication in te schakelen. Gecombineerde registratie biedt organisaties een betere gebruikerservaring. Zie [Registratie van gecombineerde beveiligingsgegevens voor](concept-registration-mfa-sspr-combined.md) meer informatie
 
 ## <a name="plan-the-deployment-project"></a>Het implementatieproject plannen
 

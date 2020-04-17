@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: eb885d0e965579b1ab2d66395f9f96eab0845bae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 46c59e8b4e60fbe17887ea0fc375b6da758ebf50
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266498"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457396"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Uw technische assets van Azure Virtual Machine maken
 
@@ -281,8 +281,8 @@ Het volgende proces generaliseert een Linux VM en herschikt deze als een afzonde
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u problemen hebt ondervonden bij het maken van uw nieuwe VHD op Azure-gebaseerde, raadpleegt u [Veelvoorkomende problemen tijdens het maken van VHD.](https://aka.ms/AzureVM_VHDCreationFAQ)
+Als u problemen hebt ondervonden bij het maken van uw nieuwe VHD op Azure-gebaseerde, raadpleegt u [Veelvoorkomende problemen tijdens het maken van VHD.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues)
 
 Anders:
 
-* [In het certificeren van uw VM-afbeelding](https://aks.ms/CertifyVMimage) wordt uitgelegd hoe u een VM-afbeelding voor Azure Marketplace-certificering testen en verzenden, inclusief waar u het *hulpprogramma voor certificeringstest voor Azure Certified* krijgen en hoe u deze gebruiken om uw VM-afbeelding te certificeren.
+* [In het certificeren van uw VM-afbeelding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri) wordt uitgelegd hoe u een VM-afbeelding voor Azure Marketplace-certificering testen en verzenden, inclusief waar u het *hulpprogramma voor certificeringstest voor Azure Certified* krijgen en hoe u deze gebruiken om uw VM-afbeelding te certificeren.

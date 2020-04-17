@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 5749b2fc58c4e1c5c75142f85a5132946714e25b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ace34cf4a72b871ba6646b279007b8ce21c03e9b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77472633"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457430"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Door de klant beheerde sleutels gebruiken om uw app-configuratiegegevens te versleutelen
 Azure App Configuration [versleutelt gevoelige informatie in rust.](../security/fundamentals/encryption-atrest.md) Het gebruik van door de klant beheerde sleutels biedt verbeterde gegevensbescherming doordat u uw versleutelingssleutels beheren.  Wanneer beheerde sleutelversleuteling wordt gebruikt, wordt alle gevoelige informatie in app-configuratie versleuteld met een door de gebruiker geleverde Azure Key Vault-sleutel.  Dit biedt de mogelijkheid om de encryptiesleutel op aanvraag te roteren.  Het biedt ook de mogelijkheid om de toegang van Azure App Configuration tot gevoelige informatie in te trekken door de toegang van het app-configuratie-exemplaar tot de sleutel in te trekken.
@@ -20,7 +20,7 @@ Azure App Configuration [versleutelt gevoelige informatie in rust.](../security/
 Azure App Configuration versleutelt gevoelige informatie in rust met behulp van een 256-bits AES-versleutelingssleutel van Microsoft. Elke app-configuratie-instantie heeft zijn eigen encryptiesleutel beheerd door de service en wordt gebruikt om gevoelige informatie te versleutelen. Gevoelige informatie bevat de waarden die in sleutelwaardeparen worden gevonden.  Wanneer de sleutelmogelijkheid voor de klant is ingeschakeld, gebruikt app-configuratie een beheerde identiteit die is toegewezen aan de instantie App-configuratie om te verifiëren met Azure Active Directory. De beheerde identiteit roept vervolgens Azure Key Vault aan en omsluit de versleutelingssleutel van het app-configuratie-exemplaar. De ingepakte encryptiesleutel wordt vervolgens opgeslagen en de uitgepakte encryptiesleutel wordt gedurende een uur in de cache opgeslagen in de app-configuratie. App-configuratie vernieuwt de uitgepakte versie van de versleutelingssleutel van het app-configuratie-exemplaar elk uur. Dit zorgt voor beschikbaarheid onder normale bedrijfsomstandigheden. 
 
 >[!IMPORTANT]
-> Als de identiteit die is toegewezen aan de instantie App-configuratie niet langer is toegestaan om de versleutelingssleutel van de instantie uit te pakken of als de beheerde sleutel permanent wordt verwijderd, is het niet langer mogelijk om gevoelige informatie die is opgeslagen in de App te decoderen Configuratie-instantie. Als u de [soft delete-functie](../key-vault/key-vault-ovw-soft-delete.md) van Azure Key Vault gebruikt, wordt de kans beperkt dat uw versleutelingssleutel per ongeluk wordt verwijderd.
+> Als de identiteit die is toegewezen aan de instantie App-configuratie niet langer is toegestaan om de versleutelingssleutel van de instantie uit te pakken of als de beheerde sleutel permanent wordt verwijderd, is het niet langer mogelijk om gevoelige informatie die is opgeslagen in de instantie App-configuratie te decoderen. Als u de [soft delete-functie](../key-vault/general/overview-soft-delete.md) van Azure Key Vault gebruikt, wordt de kans beperkt dat uw versleutelingssleutel per ongeluk wordt verwijderd.
 
 Wanneer gebruikers de sleutelmogelijkheid van de klant inschakelen op hun Azure App-configuratie-exemplaar, bepalen ze de mogelijkheid van de service om toegang te krijgen tot hun gevoelige informatie. De beheerde sleutel dient als een root-encryptiesleutel. Een gebruiker kan de toegang van de app-configuratie-instantie tot zijn beheerde sleutel intrekken door het toegangsbeleid voor sleutelkluizen te wijzigen. Wanneer deze toegang wordt ingetrokken, verliest app-configuratie de mogelijkheid om gebruikersgegevens binnen een uur te decoderen. Op dit moment verbiedt de instantie App-configuratie alle toegangspogingen. Deze situatie kan worden hersteld door de service opnieuw toegang te verlenen tot de beheerde sleutel.  Binnen een uur kan app-configuratie gebruikersgegevens decoderen en werken onder normale omstandigheden.
 

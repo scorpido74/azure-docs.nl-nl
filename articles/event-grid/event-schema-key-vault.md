@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 36b7b81a18c8725929ab5676b844e1ee319e287f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393313"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458246"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault als gebeurtenisrasterbron
 
@@ -80,18 +80,18 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 ## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
 |Titel  |Beschrijving  |
 |---------|---------|
-| [Key Vault-gebeurtenissen bewaken met Azure Event Grid](../key-vault/event-grid-overview.md) | Overzicht van de integratie van Key Vault met Event Grid. |
-| [Zelfstudie: Key Vault-gebeurtenissen maken en bewaken met gebeurtenisraster](../key-vault/event-grid-tutorial.md) | Meer informatie over het instellen van Event Grid-meldingen voor Key Vault. |
+| [Key Vault-gebeurtenissen bewaken met Azure Event Grid](../key-vault/general/event-grid-overview.md) | Overzicht van de integratie van Key Vault met Event Grid. |
+| [Zelfstudie: Key Vault-gebeurtenissen maken en bewaken met gebeurtenisraster](../key-vault/general/event-grid-tutorial.md) | Meer informatie over het instellen van Event Grid-meldingen voor Key Vault. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Wat is gebeurtenisraster?](overview.md)
 * Zie [Abonnement op gebeurtenisrastervoor](subscription-creation-schema.md)meer informatie over het maken van een Azure Event Grid-abonnement .
-* Zie Key Vault met Azure Event [Grid (preview)](../key-vault/event-grid-overview.md)voor meer informatie over key vault-integratie met gebeurtenisraster.
-* Zie [Belangrijke vaultmeldingen ontvangen en beantwoorden met Azure Event Grid (preview)](../key-vault/event-grid-tutorial.md)voor een zelfstudie over key vault-integratie met gebeurtenisraster.
+* Zie Key Vault met Azure Event [Grid (preview)](../key-vault/general/event-grid-overview.md)voor meer informatie over key vault-integratie met gebeurtenisraster.
+* Zie [Belangrijke vaultmeldingen ontvangen en beantwoorden met Azure Event Grid (preview)](../key-vault/general/event-grid-tutorial.md)voor een zelfstudie over key vault-integratie met gebeurtenisraster.
 * Zie het belangrijkste voor Key Vault en Azure Automation:
-    - [Wat is Azure Sleutelkluis?](../key-vault/key-vault-overview.md)
-    - [Key Vault bewaken met Azure Event Grid (voorbeeld)](../key-vault/event-grid-overview.md)
-    - [Meldingen van belangrijke kluizen ontvangen en beantwoorden met Azure Event Grid (voorbeeld)](../key-vault/event-grid-tutorial.md)
+    - [Wat is Azure Sleutelkluis?](../key-vault/general/overview.md)
+    - [Key Vault bewaken met Azure Event Grid (voorbeeld)](../key-vault/general/event-grid-overview.md)
+    - [Meldingen van belangrijke kluizen ontvangen en beantwoorden met Azure Event Grid (voorbeeld)](../key-vault/general/event-grid-tutorial.md)
     - [Overzicht van Azure Automation](../automation/index.yml)

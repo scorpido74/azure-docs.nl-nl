@@ -5,16 +5,16 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: f434ad6e19c89f248fec948c0a049fabb0f7c476
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248435"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458280"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Access Key Vault geheim bij het implementeren van Azure Managed Applications
 
-Wanneer u tijdens de implementatie een veilige waarde (zoals een wachtwoord) als parameter moet doorgeven, u de waarde ophalen uit een [Azure Key Vault.](../../key-vault/key-vault-overview.md) Als u toegang wilt krijgen tot de Key Vault bij het implementeren van beheerde toepassingen, moet u toegang verlenen tot de serviceprincipal **van de Toestelbronprovider.** De service Beheerde toepassingen gebruikt deze identiteit om bewerkingen uit te voeren. Als u tijdens de implementatie een waarde uit een sleutelkluis wilt ophalen, moet de serviceprincipal toegang hebben tot de Key Vault.
+Wanneer u tijdens de implementatie een veilige waarde (zoals een wachtwoord) als parameter moet doorgeven, u de waarde ophalen uit een [Azure Key Vault.](../../key-vault/general/overview.md) Als u toegang wilt krijgen tot de Key Vault bij het implementeren van beheerde toepassingen, moet u toegang verlenen tot de serviceprincipal **van de Toestelbronprovider.** De service Beheerde toepassingen gebruikt deze identiteit om bewerkingen uit te voeren. Als u tijdens de implementatie een waarde uit een sleutelkluis wilt ophalen, moet de serviceprincipal toegang hebben tot de Key Vault.
 
 In dit artikel wordt beschreven hoe u de Sleutelkluis configureert om te werken met beheerde toepassingen.
 

@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -15,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 89ed0bad2729a9e0983d4ef7f8a53faa4f5426ac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e1fa85dc63bc23760888192f2118158e73320a86
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79415643"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456104"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Zelfstudie: Back-ups maken en bestanden herstellen voor virtuele Windows-machines in Azure
 
@@ -42,7 +41,7 @@ Wanneer de gegevensoverdracht is voltooid, wordt de momentopname verwijderd en w
 ## <a name="create-a-backup"></a>Een back-up maken
 U plant als volgt een eenvoudige dagelijkse back-up naar een Recovery Services-kluis. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Selecteer **Virtuele machines** in het menu aan de linkerkant. 
 1. Selecteer in de lijst de virtuele machine waarvan u een back-up wilt maken.
 1. Klik in het gedeelte **Bewerkingen** van de VM-blade op **Back-up**. Het **back-upblad inschakelen** wordt geopend.
@@ -93,7 +92,7 @@ In dit voorbeeld laten we zien hoe u het installatiekopiebestand dat voor de sta
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een back-up maken van een VM

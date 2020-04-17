@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 847e3c612a200743fa08cf939c9995ebb6f3dbfc
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 07e103c3e1f56e8a46ea24e750d83e719abab3d5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520334"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457974"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Gegevensversleuteling voor Azure Database voor PostgreSQL Single-server met behulp van de Azure-portal
 
@@ -22,13 +22,13 @@ Meer informatie over het gebruik van de Azure-portal voor het instellen en beher
 * U moet een Azure-abonnement hebben en een beheerder zijn bij dat abonnement.
 * Maak in Azure Key Vault een sleutelkluis en sleutelsleutel die u gebruiken voor een door de klant beheerde sleutel.
 * De sleutelkluis moet de volgende eigenschappen hebben om te gebruiken als een door de klant beheerde sleutel:
-  * [Zachte verwijderen](../key-vault/key-vault-ovw-soft-delete.md)
+  * [Zachte verwijderen](../key-vault/general/overview-soft-delete.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -test -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [Gezuiverd beschermd](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)
+  * [Gezuiverd beschermd](../key-vault/general/overview-soft-delete.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true

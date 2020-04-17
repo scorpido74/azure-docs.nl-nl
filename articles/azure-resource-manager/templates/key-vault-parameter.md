@@ -3,16 +3,16 @@ title: Key Vault-geheim met sjabloon
 description: Laat zien hoe u een geheim van een sleutelkluis als parameter doorgeeft tijdens de implementatie.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 08b4042c6bad83f13ebaea0f46046ea7707fd868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460191"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458263"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Azure Key Vault gebruiken om veilige parameterwaarde door te geven tijdens de implementatie
 
-In plaats van een veilige waarde (zoals een wachtwoord) rechtstreeks in uw sjabloon of parameterbestand te plaatsen, u de waarde ophalen uit een [Azure Key Vault](../../key-vault/key-vault-overview.md) tijdens een implementatie. U haalt de waarde op door te verwijzen naar de sleutelkluis en het geheim in uw parameterbestand. De waarde zelf wordt nooit getoond, omdat u alleen verwijst naar de sleutelkluis-id. De sleutelkluis kan bestaan in een ander abonnement dan de resourcegroep waarnaar u implementeert.
+In plaats van een veilige waarde (zoals een wachtwoord) rechtstreeks in uw sjabloon of parameterbestand te plaatsen, u de waarde ophalen uit een [Azure Key Vault](../../key-vault/general/overview.md) tijdens een implementatie. U haalt de waarde op door te verwijzen naar de sleutelkluis en het geheim in uw parameterbestand. De waarde zelf wordt nooit getoond, omdat u alleen verwijst naar de sleutelkluis-id. De sleutelkluis kan bestaan in een ander abonnement dan de resourcegroep waarnaar u implementeert.
 
 Dit artikel richt zich op het scenario van het doorgeven van een gevoelige waarde in als sjabloonparameter. Het heeft geen betrekking op het scenario van het instellen van een eigenschap van een virtuele machine op de URL van een certificaat in een sleutelkluis. Zie Een certificaat installeren vanuit [Azure Key Vault op een virtuele machine voor](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)een snelstartsjabloon van dat scenario.
 
@@ -28,7 +28,7 @@ Als u al een Key Vault hebt, moet u ervoor zorgen dat er sjabloonimplementaties 
 az keyvault update  --name ExampleVault --enabled-for-template-deployment true
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy -VaultName ExampleVault -EnabledForTemplateDeployment
@@ -50,7 +50,7 @@ az keyvault create \
 az keyvault secret set --vault-name ExampleVault --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name ExampleGroup -Location centralus
@@ -76,7 +76,7 @@ az keyvault set-policy \
   --secret-permissions set delete get list
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 $userPrincipalName = "<Email Address of the deployment operator>"
@@ -91,11 +91,11 @@ Set-AzKeyVaultAccessPolicy `
 
 Zie voor meer informatie over het maken van sleutelkluizen en het toevoegen van geheimen:
 
-- [Een geheim instellen en ophalen met CLI](../../key-vault/quick-create-cli.md)
-- [Een geheim instellen en ophalen met Powershell](../../key-vault/quick-create-powershell.md)
-- [Een geheim instellen en ophalen met behulp van de portal](../../key-vault/quick-create-portal.md)
-- [Een geheim instellen en ophalen met .NET](../../key-vault/quick-create-net.md)
-- [Een geheim instellen en ophalen met Node.js](../../key-vault/quick-create-node.md)
+- [Een geheim instellen en ophalen met CLI](../../key-vault/secrets/quick-create-cli.md)
+- [Een geheim instellen en ophalen met Powershell](../../key-vault/secrets/quick-create-powershell.md)
+- [Een geheim instellen en ophalen met behulp van de portal](../../key-vault/secrets/quick-create-portal.md)
+- [Een geheim instellen en ophalen met .NET](../../key-vault/secrets/quick-create-net.md)
+- [Een geheim instellen en ophalen met Node.js](../../key-vault/secrets/quick-create-node.md)
 
 ## <a name="grant-access-to-the-secrets"></a>Geef toegang tot de geheimen
 
@@ -135,7 +135,7 @@ In de volgende procedure ziet u hoe u een rol maakt met de minimale machtiging e
       --resource-group ExampleGroup
     ```
 
-    # <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
     ```azurepowershell-interactive
     New-AzRoleDefinition -InputFile "<path-to-role-file>"
@@ -241,7 +241,7 @@ az deployment group create \
   --parameters <parameter-file>
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -375,5 +375,5 @@ Met de volgende sjabloon wordt de sleutelkluis-ID dynamisch gemaakt en wordt dez
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Wat is Azure Key Vault](../../key-vault/key-vault-overview.md)voor algemene informatie over sleutelkluizen?
+- Zie [Wat is Azure Key Vault](../../key-vault/general/overview.md)voor algemene informatie over sleutelkluizen?
 - Zie Voorbeelden van [sleutelkluizen](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)voor volledige voorbeelden van het verwijzen naar belangrijke geheimen.

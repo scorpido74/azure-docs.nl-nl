@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d4e76f4d02b0287770243bfddf995a19f90d232
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fafe4a9ef78a92595eaae942fa5d7cbeb2c07189
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73749445"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458210"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Handleiding voor het oplossen van problemen met Azure Disk Encryption
 
@@ -35,7 +35,7 @@ Instellingen voor netwerkbeveiligingsgroepen die worden toegepast, moeten het ei
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault achter een firewall
 
-Wanneer versleuteling wordt ingeschakeld met [Azure AD-referenties,](disk-encryption-windows-aad.md#)moet de doel-vm connectiviteit toestaan voor zowel Azure Active Directory-eindpunten als Key Vault-eindpunten. Huidige Azure Active Directory-verificatieeindpunten worden onderhouden in secties 56 en 59 van de documentatie over [Office 365-URL's en IP-adresbereiken.](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) Key Vault-instructies worden gegeven in de documentatie over het [openen van Azure Key Vault achter een firewall.](../../key-vault/key-vault-access-behind-firewall.md)
+Wanneer versleuteling wordt ingeschakeld met [Azure AD-referenties,](disk-encryption-windows-aad.md#)moet de doel-vm connectiviteit toestaan voor zowel Azure Active Directory-eindpunten als Key Vault-eindpunten. Huidige Azure Active Directory-verificatieeindpunten worden onderhouden in secties 56 en 59 van de documentatie over [Office 365-URL's en IP-adresbereiken.](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) Key Vault-instructies worden gegeven in de documentatie over het [openen van Azure Key Vault achter een firewall.](../../key-vault/general/access-behind-firewall.md)
 
 ### <a name="azure-instance-metadata-service"></a>Azure-instantiemetagegevensservice 
 De VM moet toegang hebben tot het eindpunt van de [Azure Instance Metadata-service](../windows/instance-metadata-service.md) dat gebruikmaakt van een bekend niet-routable IP-adres (`169.254.169.254`) dat alleen toegankelijk is vanuit de VM.  Proxyconfiguraties die lokaal HTTP-verkeer naar dit adres wijzigen (bijvoorbeeld het toevoegen van een X-Forwarded-For-header) worden niet ondersteund.

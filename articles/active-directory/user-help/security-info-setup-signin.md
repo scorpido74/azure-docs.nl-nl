@@ -1,28 +1,28 @@
 ---
-title: Uw beveiligingsgegevens (voorbeeld) instellen via een aanmeldingsprompt - Azure AD
-description: Hoe u uw beveiligingsgegevens (voorbeeld) instelt voor uw werk- of schoolaccount, nadat u bent gevraagd vanaf de aanmeldingspagina van uw organisatie.
+title: Uw beveiligingsgegevens instellen vanuit een aanmeldingsprompt - Azure AD
+description: Hoe u uw beveiligingsgegevens instelt voor uw werk- of schoolaccount, nadat u bent gevraagd vanaf de aanmeldingspagina van uw organisatie.
 services: active-directory
 author: curtand
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 08/05/2019
+ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: c216dbfef99422fc49fde774dc57d5cbcc9f879a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb6b124ea0ec036cd9846652fbd9eac5f81eb560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77063982"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454410"
 ---
-# <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>Uw beveiligingsgegevens (voorbeeld) instellen op basis van een aanmeldingsprompt
+# <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Uw beveiligingsgegevens instellen vanaf een aanmeldingsprompt
 
 U kunt deze stappen volgen als u wordt gevraagd uw beveiligingsgegevens in te stellen, onmiddellijk nadat u zich aanmeldt bij uw werk- of schoolaccount.
 
-U ziet deze prompt alleen als u de beveiligingsgegevens niet hebt ingesteld die zijn vereist door uw organisatie. Als u eerder de beveiligingsgegevens hebt ingesteld, maar u wijzigingen wilt aanbrengen, kunt u de stappen volgen in de verschillende artikelen met uitleg per methode. Zie [Uw overzicht met beveiligingsinformatie toevoegen of bijwerken](security-info-add-update-methods-overview.md) voor meer informatie.
+U ziet deze prompt alleen als u de beveiligingsgegevens die uw organisatie vereist, niet hebt ingesteld. Als u eerder de beveiligingsgegevens hebt ingesteld, maar u wijzigingen wilt aanbrengen, kunt u de stappen volgen in de verschillende artikelen met uitleg per methode. Zie [Uw overzicht met beveiligingsinformatie toevoegen of bijwerken](security-info-add-update-methods-overview.md) voor meer informatie.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
@@ -122,7 +122,7 @@ Volg deze stappen voor het instellen van uw beveiligingsgegevens voor uw werk- o
 Bepaalde apps, zoals Outlook 2010, bieden geen ondersteuning voor verificatie in twee stappen. Dit gebrek aan ondersteuning betekent dat als u verificatie in twee stappen in uw organisatie gebruikt, de app niet werkt. Om dit probleem te omzeilen, u een automatisch gegenereerd wachtwoord maken dat u met elke niet-browser-app gebruiken, gescheiden van uw normale wachtwoord.
 
 >[!Note]
->Als u deze optie niet ziet in de wizard, betekent dit dat de beheerder deze optie niet heeft ingesteld. Als dit niet is ingesteld, maar u weet dat u app-wachtwoorden moet gebruiken, u de stappen volgen in de [pagina App-wachtwoorden instellen op de pagina Beveiligingsgegevens (voorbeeld).](security-info-app-passwords.md)
+>Als u deze optie niet ziet in de wizard, betekent dit dat de beheerder deze optie niet heeft ingesteld. Als dit niet is ingesteld, maar u weet dat u app-wachtwoorden moet gebruiken, u de stappen volgen in de pagina Wachtwoorden van de [app instellen op de pagina Beveiligingsgegevens](security-info-app-passwords.md).
 
 Bij het gebruik van app-wachtwoorden is het belangrijk om te onthouden:
 

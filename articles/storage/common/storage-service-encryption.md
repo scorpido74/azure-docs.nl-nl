@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ff9191c0994d4e26da69e1c4ceaf7ef6c93e9960
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: c737ccf83dae0cc4b198b9cd708a55b988e6593b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81253149"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457940"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-versleuteling voor gegevens in rust
 
@@ -54,7 +54,7 @@ In de volgende tabel worden sleutelbeheeropties voor Azure Storage-versleuteling
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat is Azure Key Vault?](../../key-vault/key-vault-overview.md)
+- [Wat is Azure Sleutelkluis?](../../key-vault/general/overview.md)
 - [Door de klant beheerde sleutels configureren voor Azure Storage-versleuteling via de Azure-portal](storage-encryption-keys-portal.md)
 - [Door de klant beheerde sleutels configureren voor Azure Storage-versleuteling met behulp van PowerShell](storage-encryption-keys-powershell.md)
 - [Door de klant beheerde sleutels configureren voor Azure Storage-versleuteling met behulp van Azure CLI](storage-encryption-keys-cli.md)

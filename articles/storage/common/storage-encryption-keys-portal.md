@@ -10,18 +10,18 @@ ms.date: 03/19/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e7878cae7bc6aabf1db58bfd63338955b9e830d3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 192e58b101b824ca0cc0c732e02647838be6dc35
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478235"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456478"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van de Azure-portal
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-In dit artikel ziet u hoe u een Azure Key Vault configureert met door de klant beheerde sleutels met behulp van de [Azure-portal.](https://portal.azure.com/) Zie [Snelstart: Een geheim instellen en ophalen uit Azure Key Vault met behulp van de Azure-portal](../../key-vault/quick-create-portal.md)voor meer informatie over het maken van een sleutelkluis met de Azure-portal.
+In dit artikel ziet u hoe u een Azure Key Vault configureert met door de klant beheerde sleutels met behulp van de [Azure-portal.](https://portal.azure.com/) Zie [Snelstart: Een geheim instellen en ophalen uit Azure Key Vault met behulp van de Azure-portal](../../key-vault/secrets/quick-create-portal.md)voor meer informatie over het maken van een sleutelkluis met de Azure-portal.
 
 ## <a name="configure-azure-key-vault"></a>Azure Key Vault configureren
 
@@ -29,8 +29,8 @@ Als u door de klant beheerde sleutels met Azure Storage-versleuteling gebruikt, 
 
 Zie de secties getiteld **Soft-delete** en **Inschakelen van zuiveringsbeveiliging** inschakelen in een van de volgende artikelen voor meer informatie over het inschakelen van deze eigenschappen op een bestaand sleutelkluis:
 
-- [Soft-delete gebruiken met PowerShell](../../key-vault/key-vault-soft-delete-powershell.md).
-- [Soft-delete gebruiken met CLI](../../key-vault/key-vault-soft-delete-cli.md).
+- [Soft-delete gebruiken met PowerShell](../../key-vault/general/soft-delete-powershell.md).
+- [Soft-delete gebruiken met CLI](../../key-vault/general/soft-delete-cli.md).
 
 Alleen 2048-bits RSA- en RSA-HSM-sleutels worden ondersteund met Azure Storage-versleuteling. Zie **Key Vault-sleutels** in [Over Azure Key Vault-sleutels, -geheimen en -certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
 

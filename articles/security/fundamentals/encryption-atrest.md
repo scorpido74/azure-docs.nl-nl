@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3491a54682e8f2b244c0400480a69e083335f5c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81008386"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454676"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-gegevensversleuteling-at-rest
 
@@ -163,7 +163,7 @@ Voor bewerkingen met behulp van versleutelingssleutels kan een service-identitei
 Als u een sleutel wilt verkrijgen voor het versleutelen of ontsleutelen van gegevens in rust, wordt de service-identiteit uitgevoerd die de serviceinstantie Van Resource Manager zal uitvoeren zoals moet Ontsleutel (om de sleutel voor decryptie te krijgen) en WrapKey (om een sleutel in sleutelkluis in te voegen bij het maken van een nieuwe sleutel).
 
 >[!NOTE]
->Zie de beveiligde pagina van uw sleutelkluis in de [Azure Key Vault-documentatie](../../key-vault/key-vault-secure-your-key-vault.md)voor meer informatie over key vault-autorisatie.
+>Zie de beveiligde pagina van uw sleutelkluis in de [Azure Key Vault-documentatie](../../key-vault/general/secure-your-key-vault.md)voor meer informatie over key vault-autorisatie.
 
 **Voordelen**
 
@@ -282,7 +282,7 @@ Client-side encryptie van Azure SQL Database-gegevens wordt ondersteund via de [
 | Azure Data Catalog               | Ja                | -                  | -                  |
 | Azure HDInsight                  | Ja                | Alle                | -                  |
 | Inzichten in Azure-monitortoepassingen | Ja                | Ja                | -                  |
-| Azure Monitor Log Analytics | Ja                | Ja                | -                  |
+| Azure Monitor Log Analytics      | Ja                | Ja                | -                  |
 | Azure Data Explorer              | Ja                | Ja                | -                  |
 | Azure Data Factory               | Ja                | Ja                | -                  |
 | Azure Data Lake Store            | Ja                | Ja, RSA 2048-bit  | -                  |
@@ -294,11 +294,12 @@ Client-side encryptie van Azure SQL Database-gegevens wordt ondersteund via de [
 | Virtuele machines                 | Ja                | Ja, RSA 2048-bit  | -                  |
 | Virtuele machineschaalset        | Ja                | Ja, RSA 2048-bit  | -                  |
 | SAP HANA                         | Ja                | Ja, RSA 2048-bit  | -                  |
-| App Service                      | Ja                | Ja                | -                  |
-| Automation                       | Ja                | Ja                | -                  |
-| Azure-portal                     | Ja                | Ja                | -                  |
+| App Service                      | Ja                | Ja\*\*            | -                  |
+| Automation                       | Ja                | Ja\*\*            | -                  |
+| Azure Functions                  | Ja                | Ja\*\*            | -                  |
+| Azure-portal                     | Ja                | Ja\*\*            | -                  |
 | Logic Apps                       | Ja                | Ja                | -                  |
-| Azure Managed Applications       | Ja                | Ja                | -                  |
+| Azure Managed Applications       | Ja                | Ja\*\*            | -                  |
 | Service Bus                      | Ja                | Ja                | -                  |
 | Site Recovery                    | Ja                | Ja                | -                  |
 | **Databases**                    |                    |                    |                    |
@@ -312,6 +313,7 @@ Client-side encryptie van Azure SQL Database-gegevens wordt ondersteund via de [
 | Table Storage                    | Ja                | Ja                | Ja                |
 | Azure Cosmos DB                  | Ja                | Ja                | -                  |
 | Azure Databricks                 | Ja                | Ja                | -                  |
+| Azure Database Migration Service | Ja                | N.v.t.\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Ja                | -                  | Ja                |
 | Azure-opslagplaatsen                      | Ja                | -                  | Ja                |
@@ -344,6 +346,7 @@ Client-side encryptie van Azure SQL Database-gegevens wordt ondersteund via de [
 | File Sync                        | Ja                | Ja, RSA 2048-bit  | -                  |
 | Queue Storage                    | Ja                | Ja                | Ja                |
 | Avere vFXT                       | Ja                | -                  | -                  |
+| Azure Cache voor Redis            | Ja                | N.v.t.\*              | -                  |
 | Azure NetApp Files               | Ja                | Ja                | -                  |
 | Archive Storage                  | Ja                | Ja, RSA 2048-bit  | -                  |
 | StorSimple                       | Ja                | Ja, RSA 2048-bit  | Ja                |
@@ -352,6 +355,8 @@ Client-side encryptie van Azure SQL Database-gegevens wordt ondersteund via de [
 | Data Box Edge                    | Ja                | Ja                | -                  |
 
 \*Deze service blijft niet bestaan in gegevens. Eventuele tijdelijke caches worden versleuteld met een Microsoft-sleutel.
+
+\*\*Deze service ondersteunt het opslaan van gegevens in uw eigen Key Vault, Storage Account of andere gegevens blijvende service die al server-side encryptie ondersteunt met customer-managed key.
 
 ## <a name="conclusion"></a>Conclusie
 

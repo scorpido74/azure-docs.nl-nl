@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1cc047ee60cf8287f32a42b878371c5fc9680b7a
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6c75b9c2feeab32c139998f617cacf540733e3bd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985742"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456342"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Inleiding tot de belangrijkste Azure Storage-services
 
@@ -131,7 +131,7 @@ De Azure Storage-clientbibliotheken bieden methoden voor het versleutelen van ge
 
 ## <a name="redundancy"></a>Redundantie
 
-Om ervoor te zorgen dat uw gegevens duurzaam zijn, slaat Azure Storage meerdere kopieën van uw gegevens op. Als u uw opslagaccount gaat instellen, selecteert u een type replicatie. Zie [Redundantie in Azure Storage](/storage-redundancy?toc=/azure/storage/blobs/toc.json) voor meer informatie.
+Om ervoor te zorgen dat uw gegevens duurzaam zijn, slaat Azure Storage meerdere kopieën van uw gegevens op. Als u uw opslagaccount gaat instellen, selecteert u een type replicatie. Zie [Redundantie in Azure Storage](/azure/storage/common/storage-redundancy?toc=/azure/storage/blobs/toc.json) voor meer informatie.
 
 ## <a name="transfer-data-to-and-from-azure-storage"></a>Gegevens overbrengen van en naar Azure Storage
 

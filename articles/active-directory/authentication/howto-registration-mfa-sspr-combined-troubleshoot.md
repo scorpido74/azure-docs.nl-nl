@@ -1,31 +1,26 @@
 ---
 title: Problemen met gecombineerde registratie oplossen - Azure Active Directory
-description: Problemen met Azure AD Multi-Factor Authentication en selfservice wachtwoord reset gecombineerde registratie oplossen (preview)
+description: Problemen met Azure AD Multi-Factor Authentication en selfservice wachtwoord reset gecombineerde registratie oplossen
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74847385"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450935"
 ---
-# <a name="troubleshooting-combined-security-information-registration-preview"></a>Problemen met gecombineerde beveiligingsgegevensregistratie oplossen (voorbeeld)
+# <a name="troubleshooting-combined-security-information-registration"></a>Problemen met gecombineerde beveiligingsgegevensregistreren
 
 De informatie in dit artikel is bedoeld om beheerders te begeleiden die problemen oplossen die door gebruikers van de gecombineerde registratie-ervaring zijn gemeld.
-
-|     |
-| --- |
-| Gecombineerde beveiligingsgegevensregistratie voor Azure Multi-Factor Authentication en Azure Active Directory (Azure AD) selfservice wachtwoord reset is een openbare preview-functie van Azure AD. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over voorvertoningen.|
-|     |
 
 ## <a name="audit-logs"></a>Auditlogboeken
 
@@ -150,16 +145,16 @@ Voer in een PowerShell-venster de volgende opdracht uit, waarbij de locatie van 
 
 `<script location> -path <user file location>`
 
-### <a name="disable-the-preview-experience"></a>De voorbeeldervaring uitschakelen
+### <a name="disable-the-updated-experience"></a>De bijgewerkte ervaring uitschakelen
 
-Voer de volgende stappen uit om de voorbeeldervaring voor uw gebruikers uit te schakelen:
+Voer de volgende stappen uit om de bijgewerkte ervaring voor uw gebruikers uit te schakelen:
 
 1. Meld u aan bij de Azure-portal als gebruikersbeheerder.
 2. Ga naar Azure Active > **Directory-gebruikersinstellingen** > **Beheer instellingen voor previewfuncties voor toegangsdeelvensters**. **Azure Active Directory**
 3. Onder **Gebruikers kunnen voorbeeldfuncties gebruiken voor het registreren en beheren van beveiligingsgegevens,** de kiezer instellen op **Geen**en vervolgens **Opslaan selecteren**.
 
-Gebruikers wordt niet langer gevraagd zich te registreren met behulp van de preview-ervaring.
+Gebruikers wordt niet langer gevraagd zich te registreren met behulp van de bijgewerkte ervaring.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over de openbare preview van gecombineerde registratie voor selfservicewachtwoordreset en Azure Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)
+* [Meer informatie over gecombineerde registratie voor selfservice wachtwoordreset en Azure Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)

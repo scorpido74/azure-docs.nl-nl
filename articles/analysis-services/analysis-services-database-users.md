@@ -4,15 +4,15 @@ description: Meer informatie over het beheren van databaserollen en gebruikers o
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 51c01869e6152d8e9357644457df11f4fcf5ec5f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7e3cc2b9d35eafcb875efa167821a8e9ad80146
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273703"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454200"
 ---
 # <a name="manage-database-roles-and-users"></a>Databaserollen en -gebruikers beheren
 
@@ -27,8 +27,7 @@ Functiemachtigingen zijn onder andere:
 
 Wanneer u een tabelmodelproject maakt, maakt u rollen en voegt u gebruikers of groepen toe aan die rollen met behulp van Rolbeheer in Visual Studio met analysis services-projecten. Wanneer u wordt geïmplementeerd op een server, gebruikt u SQL Server Management Studio (SSMS), [Analysis Services PowerShell-cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)of [TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) om rollen en gebruikersleden toe te voegen of te verwijderen.
 
-**Beveiligingsgroepen** moeten [per e-mail](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) zijn ingeschakeld met de `MailEnabled` eigenschap ingesteld op `True`. Bij het opgeven van een `obj:groupid@tenantid`groep per e-mailadres gebruik .
-
+Gebruik bij het toevoegen `obj:groupid@tenantid`van een **beveiligingsgroep**.
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Rollen en gebruikers toevoegen of beheren in Visual Studio  
   

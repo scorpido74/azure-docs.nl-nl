@@ -3,12 +3,12 @@ title: Overzicht van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde serv
 description: Overzicht en architectuur van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services. Met dit blauwdrukvoorbeeld kunnen klanten specifieke beheeropties van ISO 27001 bekijken.
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 9b0b49582023ee5c68fea0f21b70290a102a038a
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 5a18af942e1d1088b681712f7035f57d354ecb19
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381578"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458451"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Overzicht van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services
 
@@ -34,7 +34,7 @@ Deze omgeving bestaat uit diverse Azure-services die samen een veilige, volledig
   - Een jumpbox- of bastionhost die wordt gebruikt voor beheertaken en alleen kan worden benaderd via een [Azure-firewall](../../../../firewall/overview.md) die is geïmplementeerd in het subnet voor de stack voor inkomend verkeer
   - Twee virtuele machines met Active Directory Domain Services (ADDS) en DNS die uitsluitend toegankelijk zijn via de jumpbox en alleen kunnen worden geconfigureerd voor replicatie van AD via een VPN- of [ExpressRoute](../../../../expressroute/expressroute-introduction.md)-verbinding (niet geïmplementeerd door de blauwdruk)
   - [Azure Net Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) en standaard-DDoS-bescherming
-- Een [Azure Key Vault](../../../../key-vault/key-vault-overview.md)-exemplaar om de geheimen te bewaren voor de virtuele machines die in de omgeving met gedeelde services worden geïmplementeerd
+- Een [Azure Key Vault](../../../../key-vault/general/overview.md)-exemplaar om de geheimen te bewaren voor de virtuele machines die in de omgeving met gedeelde services worden geïmplementeerd
 
 Al deze elementen voldoen aan de aanbevolen procedures zoals gepubliceerd in [Azure Architecture Center - Referentiearchitecturen](/azure/architecture/reference-architectures/).
 

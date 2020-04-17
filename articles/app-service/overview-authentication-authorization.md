@@ -3,23 +3,20 @@ title: Verificatie en autorisatie
 description: Meer informatie over de ingebouwde verificatie- en autorisatieondersteuning in Azure App Service en Azure-functies en hoe deze uw app kan beveiligen tegen ongeautoriseerde toegang.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 04/15/2020
 ms.reviewer: mahender
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: 0fe436b1da551bbc8a0064cb3cfdff864d8f9eb8
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: a4ceed0d897f069a7895a3eb6b10c327566afbe5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520685"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457855"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Verificatie en autorisatie in Azure App Service en Azure-functies
 
-> [!NOTE]
-> Op dit moment wordt [Azure Active Directory v2.0](../active-directory/develop/v2-overview.md) (inclusief [MSAL)](../active-directory/develop/msal-overview.md)niet ondersteund voor Azure App Service en Azure Functions. Kijk terug voor updates.
->
 > [!NOTE]
 > Op dit moment ondersteunt ASP.NET Core momenteel geen ondersteuning voor het vullen van de huidige gebruiker met de functie Verificatie/autorisatie.
 >

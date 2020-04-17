@@ -6,32 +6,32 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280337"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453724"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Key Vault-verwijzingen gebruiken voor App Service en Azure-functies
 
-In dit onderwerp ziet u hoe u werken met geheimen van Azure Key Vault in uw App Service- of Azure-functietoepassing zonder dat er codewijzigingen nodig zijn. [Azure Key Vault](../key-vault/key-vault-overview.md) is een service die gecentraliseerd geheimenbeheer biedt, met volledige controle over toegangsbeleid en controlegeschiedenis.
+In dit onderwerp ziet u hoe u werken met geheimen van Azure Key Vault in uw App Service- of Azure-functietoepassing zonder dat er codewijzigingen nodig zijn. [Azure Key Vault](../key-vault/general/overview.md) is een service die gecentraliseerd geheimenbeheer biedt, met volledige controle over toegangsbeleid en controlegeschiedenis.
 
 ## <a name="granting-your-app-access-to-key-vault"></a>Uw app toegang verlenen tot Key Vault
 
 Om geheimen uit Key Vault te lezen, moet u een kluis hebben gemaakt en uw app toestemming geven om toegang te krijgen.
 
-1. Maak een sleutelkluis door de [sleutelkluis snel te volgen.](../key-vault/quick-create-cli.md)
+1. Maak een sleutelkluis door de [sleutelkluis snel te volgen.](../key-vault/secrets/quick-create-cli.md)
 
 1. Maak een [door het systeem toegewezen beheerde identiteit](overview-managed-identity.md) voor uw toepassing.
 
    > [!NOTE] 
    > Key Vault-referenties ondersteunen momenteel alleen door het systeem toegewezen beheerde identiteiten. Door de gebruiker toegewezen identiteiten kunnen niet worden gebruikt.
 
-1. Maak een [toegangsbeleid in Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) voor de toepassingsidentiteit die u eerder hebt gemaakt. Schakel de geheime machtiging 'Krijgen' in voor dit beleid. Configureer de "geautoriseerde toepassing" `applicationId` of instellingen niet, omdat dit niet compatibel is met een beheerde identiteit.
+1. Maak een [toegangsbeleid in Key Vault](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) voor de toepassingsidentiteit die u eerder hebt gemaakt. Schakel de geheime machtiging 'Krijgen' in voor dit beleid. Configureer de "geautoriseerde toepassing" `applicationId` of instellingen niet, omdat dit niet compatibel is met een beheerde identiteit.
 
     > [!NOTE]
-    > Key Vault-referenties zijn momenteel niet in staat om geheimen op te lossen die zijn opgeslagen in een sleutelkluis met [netwerkbeperkingen.](../key-vault/key-vault-overview-vnet-service-endpoints.md)
+    > Key Vault-referenties zijn momenteel niet in staat om geheimen op te lossen die zijn opgeslagen in een sleutelkluis met [netwerkbeperkingen.](../key-vault/general/overview-vnet-service-endpoints.md)
 
 ## <a name="reference-syntax"></a>Referentiesyntaxis
 

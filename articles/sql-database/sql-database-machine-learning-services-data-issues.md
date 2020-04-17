@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 0bb3abc7b7102da55c9ededcadd7a301f74065ab
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: e81cca3e20d5b6c050489e80b91d013d5e934cce
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349325"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453196"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Werken met R- en SQL-gegevens in Azure SQL Database Machine Learning Services (voorbeeld)
 
@@ -37,7 +38,7 @@ Veelvoorkomende problemen die u tegenkomen zijn:
 
 - Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/) voordat u begint.
 
-- Als u de voorbeeldcode in deze oefeningen wilt uitvoeren, moet u eerst een Azure SQL-database hebben waarbij Machine Learning Services (met R) is ingeschakeld. Na de onboarding voor de openbare preview wordt Machine Learning voor u ingeschakeld voor uw bestaande of nieuwe database. Volg de stappen in [Meld u aan voor de preview-versie](sql-database-machine-learning-services-overview.md#signup).
+- Als u de voorbeeldcode in deze oefeningen wilt uitvoeren, moet u eerst Azure SQL Database hebben [met Machine Learning Services (met R)](sql-database-machine-learning-services-overview.md) ingeschakeld.
 
 - Zorg ervoor dat u de nieuwste [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) hebt geïnstalleerd. U R-scripts uitvoeren met andere databasebeheer- of querytools, maar in deze quickstart gebruikt u SSMS.
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: b4e91aa59168deb18375bf86ae77f655ca3dab47
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 50c0980800bbc9b2951bf9107114c1a4d9265558
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521271"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454659"
 ---
 # <a name="manage-storage-account-access-keys"></a>Toegangssleutels voor opslagaccount beheren
 
@@ -31,8 +31,8 @@ Microsoft raadt u aan Azure Key Vault te gebruiken om uw toegangssleutels te beh
 
 Microsoft raadt aan azure key vault te gebruiken om uw toegangssleutels te beheren en te roteren. Uw toepassing heeft veilig toegang tot uw sleutels in Key Vault, zodat u voorkomen dat ze worden opgeslagen met uw toepassingscode. Zie de volgende artikelen voor meer informatie over het gebruik van Key Vault voor sleutelbeheer:
 
-- [Opslagaccountsleutels beheren met Azure Key Vault en PowerShell](../../key-vault/key-vault-overview-storage-keys-powershell.md)
-- [Opslagaccountsleutels beheren met Azure Key Vault en de Azure CLI](../../key-vault/key-vault-ovw-storage-keys.md)
+- [Opslagaccountsleutels beheren met Azure Key Vault en PowerShell](../../key-vault/secrets/overview-storage-keys-powershell.md)
+- [Opslagaccountsleutels beheren met Azure Key Vault en de Azure CLI](../../key-vault/secrets/overview-storage-keys.md)
 
 ## <a name="manually-rotate-access-keys"></a>Toegangstoetsen handmatig roteren
 
@@ -58,4 +58,4 @@ Als u de toegangssleutels van een account wilt roteren, moet de gebruiker een se
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van Azure-opslagaccount](storage-account-overview.md)
-- [Een opslagaccount maken](storage-account-create.md)
+- [Create a storage account](storage-account-create.md)

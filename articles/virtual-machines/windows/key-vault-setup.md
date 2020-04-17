@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: 3dcf82a8d4bc698c1900903649a2dd5a383f64b4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 098d4df3938f591cb72b3bfd59b7a5549469785c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878405"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451734"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Key Vault instellen voor virtuele machines in Azure Resource Manager
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-In de stapel Azure Resource Manager worden geheimen/certificaten gemodelleerd als resources die worden geleverd door de resourceprovider van Key Vault. Zie Wat is Azure [Key Vault voor](../../key-vault/key-vault-overview.md) meer informatie over Key Vault?
+In de stapel Azure Resource Manager worden geheimen/certificaten gemodelleerd als resources die worden geleverd door de resourceprovider van Key Vault. Zie Wat is Azure [Key Vault voor](../../key-vault/general/overview.md) meer informatie over Key Vault?
 
 > [!NOTE]
 > 1. Als Key Vault kan worden gebruikt met virtuele azure resource-machines, moet de eigenschap **EnabledForDeployment** op Key Vault worden ingesteld op true. U dit doen bij verschillende klanten.
@@ -34,7 +34,7 @@ In de stapel Azure Resource Manager worden geheimen/certificaten gemodelleerd al
 >
 
 ## <a name="use-powershell-to-set-up-key-vault"></a>PowerShell gebruiken om Key Vault in te stellen
-Zie [Een geheim uit Azure Key Vault instellen en ophalen met PowerShell](../../key-vault/quick-create-powershell.md)als u een sleutelkluis wilt maken met PowerShell.
+Zie [Een geheim uit Azure Key Vault instellen en ophalen met PowerShell](../../key-vault/secrets/quick-create-powershell.md)als u een sleutelkluis wilt maken met PowerShell.
 
 Voor nieuwe sleutelkluizen u deze PowerShell-cmdlet gebruiken:
 
@@ -45,7 +45,7 @@ Voor bestaande sleutelkluizen u deze PowerShell-cmdlet gebruiken:
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 ## <a name="use-cli-to-set-up-key-vault"></a>CLI gebruiken om Key Vault in te stellen
-Zie [Sleutelkluis beheren met CLI](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)als u een sleutelkluis wilt maken met behulp van de command-line interface (CLI).
+Zie [Sleutelkluis beheren met CLI](../../key-vault/general/manage-with-cli2.md#create-a-key-vault)als u een sleutelkluis wilt maken met behulp van de command-line interface (CLI).
 
 Voor CLI moet u de sleutelkluis maken voordat u het implementatiebeleid toewijst. U gebruikt hiervoor de volgende opdracht:
 

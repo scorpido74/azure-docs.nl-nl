@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 7779db053344f99238d38d5d49762730efbc5fc4
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: efcb73866c83dcc03b5db8b7b97f438fb3010511
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346324"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452805"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Zelfstudie: Een voorspellend model implementeren in R met Azure SQL Database Machine Learning Services (voorbeeld)
 
@@ -39,8 +40,6 @@ In dit artikel leert u met behulp van de R-scripts die u in de eerste en tweede 
 In [deel één](sql-database-tutorial-predictive-model-prepare-data.md)hebt u geleerd hoe u een voorbeelddatabase importeren en vervolgens de gegevens voorbereiden die moeten worden gebruikt voor het trainen van een voorspellend model in R.
 
 In [deel twee](sql-database-tutorial-predictive-model-build-compare.md)heb je geleerd hoe je meerdere machine learning-modellen in R maken en trainen en vervolgens de meest nauwkeurige kiezen.
-
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 

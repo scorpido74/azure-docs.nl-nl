@@ -4,12 +4,12 @@ description: Inzicht in het programma voor ondersteunde services en gebeurteniss
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: 8abd8767d9bb7e3c4336f6600b94f6b3f4ea48f1
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 352310a6e489a96c38e85b16e9504d8eb9be38b1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380524"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457243"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Ondersteunde services, schema's en categorieën voor Azure Resource Logs
 
@@ -22,7 +22,7 @@ Een combinatie van het resourcetype `resourceId` (beschikbaar `category` in de e
 
 ## <a name="top-level-resource-logs-schema"></a>Schema resourcelogboeken op het hoogste niveau
 
-| Name | Vereist/optioneel | Beschrijving |
+| Naam | Vereist/optioneel | Beschrijving |
 |---|---|---|
 | tijd | Vereist | De tijdstempel (UTC) van de gebeurtenis. |
 | resourceId | Vereist | De resource-id van de resource die de gebeurtenis heeft uitgezonden. Voor tenantservices is dit van het formulier /tenants/tenant-id/providers/provider-name. |
@@ -66,7 +66,7 @@ Het schema voor diagnostische logboeken voor bronnen is afhankelijk van de resou
 | ExpressRoute | Schema niet beschikbaar. |
 | Azure Firewall | Schema niet beschikbaar. |
 | IoT Hub | [IoT Hub-bewerkingen](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
-| Key Vault |[Logboekregistratie van Azure Key Vault](../../key-vault/key-vault-logging.md) |
+| Key Vault |[Logboekregistratie van Azure Key Vault](../../key-vault/general/logging.md) |
 | Kubernetes Service |[Azure Kubernetes-logboekregistratie](../../aks/view-master-logs.md#log-event-schema) |
 | Load Balancer |[Logboekanalyse voor Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Aangepast Logic Apps B2B-volgschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |

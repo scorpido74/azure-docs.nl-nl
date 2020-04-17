@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69bdd2d6825427597e9030a03aae7d219361ba25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671949"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457294"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Voorwaardelijke toegang: cloud-apps of -acties
 
@@ -120,7 +120,7 @@ Naast de Microsoft-apps kunnen beheerders elke Azure AD-geregistreerde toepassin
 
 ## <a name="user-actions"></a>Gebruikersacties
 
-Gebruikersacties zijn taken die door een gebruiker kunnen worden uitgevoerd. De enige momenteel ondersteunde actie is **Beveiligingsgegevens registreren (voorbeeld)**, waarmee het beleid voor voorwaardelijke toegang kan worden afgedwongen wanneer gebruikers die zijn ingeschakeld voor gecombineerde registratie, proberen hun beveiligingsgegevens te registreren. Meer informatie is te vinden in het artikel, [Gecombineerde security informatie registratie (preview)](../authentication/concept-registration-mfa-sspr-combined.md).
+Gebruikersacties zijn taken die door een gebruiker kunnen worden uitgevoerd. De enige momenteel ondersteunde actie is **Beveiligingsgegevens registreren**, waarmee het beleid voor voorwaardelijke toegang kan worden gehandhaafd wanneer gebruikers die zijn ingeschakeld voor gecombineerde registratie, proberen hun beveiligingsgegevens te registreren. Meer informatie is te vinden in het artikel, [Gecombineerde security informatie registratie](../authentication/concept-registration-mfa-sspr-combined.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

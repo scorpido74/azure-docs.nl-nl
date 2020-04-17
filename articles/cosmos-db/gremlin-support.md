@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 564e69e3cd852c6a0f8c20278d4742b77f064298
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 59c45497ea6d9fcb216c83060a858ee6c96f1151
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75499990"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81449966"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Ondersteuning voor Gremlin-grafieken in Azure Cosmos DB
 Azure Cosmos DB ondersteunt [Apache Tinkerpop's](https://tinkerpop.apache.org) grafiek traversal taal, bekend als [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps). U kunt de Gremlin-taal gebruiken om grafiekentiteiten (hoekpunten en randen) te maken, eigenschappen binnen deze entiteiten te wijzigen, query’s en traversals uit te voeren, en entiteiten te verwijderen. 
@@ -29,7 +29,7 @@ In de volgende tabel ziet u populaire Gremlin-stuurprogramma’s die u kunt gebr
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Grafiek maken met behulp van Java](create-graph-java.md) | 3.2.0+ |
 | [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript in GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Grafiek maken met behulp van Node.js](create-graph-nodejs.md) | 3.3.4+ |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python in GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Grafiek maken met behulp van Python](create-graph-python.md) | 3.2.7 |
-| [Php](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP in GitHub](https://github.com/PommeVerte/gremlin-php) | [Grafiek maken met behulp van PHP](create-graph-php.md) | 3.1.0 |
+| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP in GitHub](https://github.com/PommeVerte/gremlin-php) | [Grafiek maken met behulp van PHP](create-graph-php.md) | 3.1.0 |
 | [Gremlin-console](https://tinkerpop.apache.org/downloads.html) | [TinkerPop-documenten](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Grafiek maken met behulp van de Gremlin-console](create-graph-gremlin-console.md) | 3.2.0 + |
 
 ## <a name="supported-graph-objects"></a>Ondersteunde grafiekobjecten
@@ -46,11 +46,9 @@ In de volgende tabel worden de TinkerPop-functies vermeld die zijn geïmplemente
 | Randfuncties | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Biedt ondersteuning voor het maken, wijzigen en verwijderen van randen |
 | Functies voor randeigenschappen | Properties, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Biedt ondersteuning voor het maken, wijzigen en verwijderen van randeigenschappen |
 
-## <a name="gremlin-wire-format-graphson"></a>Gremlin-draadindeling: GraphSON
+## <a name="gremlin-wire-format"></a>Gremlin draadformaat
 
-Azure Cosmos DB gebruikt de [GraphSON-indeling](https://tinkerpop.apache.org/docs/current/reference/#graphson) bij het retourneren van resultaten uit Gremlin-bewerkingen. Azure Cosmos DB ondersteunt momenteel de GraphSONv2-versie. GraphSON is de standaardindeling in Gremlin voor het weergeven van hoekpunten, randen en eigenschappen (eigenschappen met een of meerdere waarden) met behulp van JSON.
-
-In het volgende fragment wordt bijvoorbeeld een GraphSON-representatie weergegeven van een hoekpunt *dat is geretourneerd naar de client* vanuit Azure Cosmos DB. 
+Azure Cosmos DB gebruikt de JSON-indeling bij het retourneren van resultaten van Gremlin-bewerkingen. Azure Cosmos DB ondersteunt momenteel de JSON-indeling. In het volgende fragment wordt bijvoorbeeld een JSON-weergave weergegeven van een hoekpunt dat is *geretourneerd naar de client* van Azure Cosmos DB:
 
 ```json
   {
@@ -89,7 +87,7 @@ In het volgende fragment wordt bijvoorbeeld een GraphSON-representatie weergegev
   }
 ```
 
-De eigenschappen die GraphSON voor vertices gebruikt, worden hieronder beschreven:
+De eigenschappen die door de JSON-indeling voor vertices worden gebruikt, worden hieronder beschreven:
 
 | Eigenschap | Beschrijving | 
 | --- | --- | --- |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 25b8df0d8565686737b33aac16d4bf698ce43280
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 85fc6412a12963bb01782becf639f7acfc31fbe5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757208"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452075"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Server-side encryptie van azure beheerde schijven
 
@@ -34,7 +34,7 @@ Managed Disks maken standaard gebruik van door het platform beheerde versleuteli
 
 ## <a name="customer-managed-keys"></a>Door klant beheerde sleutels
 
-U ervoor kiezen om versleuteling te beheren op het niveau van elke beheerde schijf, met uw eigen sleutels. Server-side encryptie voor beheerde schijven met door de klant beheerde sleutels biedt een geïntegreerde ervaring met Azure Key Vault. U [uw RSA-sleutels](../../key-vault/key-vault-hsm-protected-keys.md) importeren in uw Key Vault of nieuwe RSA-sleutels genereren in Azure Key Vault. 
+U ervoor kiezen om versleuteling te beheren op het niveau van elke beheerde schijf, met uw eigen sleutels. Server-side encryptie voor beheerde schijven met door de klant beheerde sleutels biedt een geïntegreerde ervaring met Azure Key Vault. U [uw RSA-sleutels](../../key-vault/keys/hsm-protected-keys.md) importeren in uw Key Vault of nieuwe RSA-sleutels genereren in Azure Key Vault. 
 
 Azure beheerde schijven verwerkt de versleuteling en decryptie op een volledig transparante manier met behulp van [envelopversleuteling.](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique) Het versleutelt gegevens met behulp van een [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 gebaseerde data encryptie sleutel (DEK), die op zijn beurt, is beveiligd met behulp van uw sleutels. De opslagservice genereert gegevensversleutelingssleutels en versleutelt deze met door de klant beheerde sleutels met RSA-versleuteling. Met de envelopversleuteling u uw sleutels periodiek roteren (wijzigen) volgens uw nalevingsbeleid zonder dat dit gevolgen heeft voor uw VM's. Wanneer u uw sleutels draait, versleutelt de opslagservice de gegevensversleutelingssleutels opnieuw met de nieuwe door de klant beheerde sleutels. 
 
@@ -288,7 +288,7 @@ $disk.Encryption.Type
 ## <a name="next-steps"></a>Volgende stappen
 
 - [De Azure Resource Manager-sjablonen voor het maken van versleutelde schijven met door de klant beheerde sleutels verkennen](https://github.com/ramankumarlive/manageddiskscmkpreview)
-- [Wat is Azure Key Vault?](../../key-vault/key-vault-overview.md)
+- [Wat is Azure Sleutelkluis?](../../key-vault/general/overview.md)
 - [Machines repliceren met schijven met klantbeheerde sleutels](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
 - [Noodherstel van VMware VM's instellen op Azure met PowerShell](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
 - [Disaster recovery instellen voor Azure voor Hyper V VM's met PowerShell en Azure Resource Manager](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

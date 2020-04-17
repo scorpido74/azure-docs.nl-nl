@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 733a85e492185e7e83922a3cc91d53c848b939a1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f58887a056c8ca0cd175a44127556562338de38
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411152"
+ms.locfileid: "81450029"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Door de klant beheerde sleutels configureren voor uw Azure Cosmos-account met Azure Key Vault
 
@@ -23,7 +23,7 @@ Gegevens die zijn opgeslagen in uw Azure Cosmos-account, worden automatisch en n
 
 ![Versleutelingslagen rond klantgegevens](./media/how-to-setup-cmk/cmk-intro.png)
 
-U moet door de klant beheerde sleutels opslaan in [Azure Key Vault](../key-vault/key-vault-overview.md) en een sleutel opgeven voor elk Azure Cosmos-account dat is ingeschakeld met door de klant beheerde sleutels. Deze sleutel wordt gebruikt om alle gegevens die in dat account zijn opgeslagen, te versleutelen.
+U moet door de klant beheerde sleutels opslaan in [Azure Key Vault](../key-vault/general/overview.md) en een sleutel opgeven voor elk Azure Cosmos-account dat is ingeschakeld met door de klant beheerde sleutels. Deze sleutel wordt gebruikt om alle gegevens die in dat account zijn opgeslagen, te versleutelen.
 
 > [!NOTE]
 > Momenteel zijn door de klant beheerde sleutels alleen beschikbaar voor nieuwe Azure Cosmos-accounts. U moet ze configureren tijdens het maken van een account.
@@ -44,8 +44,8 @@ Als u door de klant beheerde sleutels gebruikt met Azure Cosmos DB, moet u twee 
 
 Zie de secties 'Soft-delete' en 'Zuiveringsbeveiliging inschakelen' in een van de volgende artikelen voor meer informatie over het inschakelen van deze eigenschappen op een bestaand Azure Key Vault-exemplaar:
 
-- [Soft-delete gebruiken met PowerShell](../key-vault/key-vault-soft-delete-powershell.md)
-- [Soft-delete gebruiken met Azure CLI](../key-vault/key-vault-soft-delete-cli.md)
+- [Soft-delete gebruiken met PowerShell](../key-vault/general/soft-delete-powershell.md)
+- [Soft-delete gebruiken met Azure CLI](../key-vault/general/soft-delete-cli.md)
 
 ## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>Een toegangsbeleid toevoegen aan uw Azure Key Vault-exemplaar
 

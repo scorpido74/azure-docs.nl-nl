@@ -4,21 +4,21 @@ description: In dit artikel wordt beschreven hoe u serverbeheerders voor een Azu
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f7c57a5751f2ff34abb26b7653070ce4ee5010fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 944a84405bd7e03b72b2610278f9f0e4d3cfaf38
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73572586"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454234"
 ---
 # <a name="manage-server-administrators"></a>Serverbeheerders beheren
 
 Serverbeheerders moeten een geldige gebruikers- of beveiligingsgroep zijn in de Azure Active Directory (Azure AD) van Azure voor de tenant waarin de server zich bevindt. U **Analysis Services-beheerders** voor uw server gebruiken in Azure-portal, Servereigenschappen in SSMS, PowerShell of REST API om serverbeheerders te beheren. 
 
-**Beveiligingsgroepen** moeten [per e-mail](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) zijn ingeschakeld met de `MailEnabled` eigenschap ingesteld op `True`. Bij het opgeven van een `obj:groupid@tenantid`groep per e-mailadres gebruik .
+Gebruik bij het toevoegen `obj:groupid@tenantid`van een **beveiligingsgroep**.
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Serverbeheerders toevoegen met Azure-portal
 
@@ -43,7 +43,7 @@ Serverbeheerders moeten een geldige gebruikers- of beveiligingsgroep zijn in de 
 Gebruik de cmdlet [Nieuw-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) om de parameter Administrator op te geven bij het maken van een nieuwe server. <br>
 Gebruik de cmdlet [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) om de parameter Administrator voor een bestaande server te wijzigen.
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 Gebruik [Maken](https://docs.microsoft.com/rest/api/analysisservices/servers/create) om de eigenschap asAdministrator op te geven bij het maken van een nieuwe server. <br>
 Gebruik [Update](https://docs.microsoft.com/rest/api/analysisservices/servers/update) om de eigenschap asAdministrator op te geven wanneer u een bestaande server wijzigt. <br>

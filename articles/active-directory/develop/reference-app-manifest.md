@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/23/2020
+ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 487559aaf632a30b7efcda490f92a90d4f59b8f5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883471"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450875"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-app-manifest
 
-Het toepassingsmanifest bevat een definitie van alle kenmerken van een toepassingsobject in het Microsoft-identiteitsplatform. Het dient ook als een mechanisme voor het bijwerken van het toepassingsobject. Zie de documentatie van de entiteit Graph API Application voor meer informatie over de entiteit Toepassing toepassing toepassing van toepassing en toepassing van [grafiek.](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)
+Het toepassingsmanifest bevat een definitie van alle kenmerken van een toepassingsobject in het Microsoft-identiteitsplatform. Het dient ook als een mechanisme voor het bijwerken van het toepassingsobject. Zie de documentatie van de entiteit Graph API Application voor meer informatie over de entiteit Toepassing toepassing toepassing van toepassing en toepassing van [grafiek.](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
 
 U de kenmerken van een app configureren via de Azure-portal of programmatisch gebruiken met [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) of [PowerShell.](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications) Er zijn echter enkele scenario's waarin u het app-manifest moet bewerken om het kenmerk van een app te configureren. Deze scenario's omvatten:
 
@@ -40,6 +40,20 @@ Ga als u het toepassingsmanifest wilt configureren:
 ## <a name="manifest-reference"></a>Manifestverwijzing
 
 In deze sectie worden de kenmerken beschreven die in het toepassingsmanifest worden gevonden.
+
+### <a name="id-attribute"></a>id-kenmerk
+
+| Sleutel | Waardetype |
+| :--- | :--- |
+| id | Tekenreeks |
+
+De unieke id voor de app in de map. Deze id is niet de id die wordt gebruikt om de app in een protocoltransactie te identificeren. Het wordt gebruikt voor het verwijzen naar het object in directoryquery's.
+
+Voorbeeld:
+
+```json
+    "id": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
+```
 
 ### <a name="accesstokenacceptedversion-attribute"></a>kenmerk accessTokenAcceptedVersion
 
@@ -230,19 +244,7 @@ Voorbeeld:
     "optionalClaims": null,
 ```
 
-### <a name="id-attribute"></a>id-kenmerk
 
-| Sleutel | Waardetype |
-| :--- | :--- |
-| id | Tekenreeks |
-
-De unieke id voor de app in de map. Deze id is niet de id die wordt gebruikt om de app in een protocoltransactie te identificeren. Het wordt gebruikt voor het verwijzen naar het object in directoryquery's.
-
-Voorbeeld:
-
-```json
-    "id": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
-```
 
 ### <a name="identifieruris-attribute"></a>kenmerk identifierUris
 

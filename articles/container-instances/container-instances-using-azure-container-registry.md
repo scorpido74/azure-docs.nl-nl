@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 50c209483a12adc3545b63fb66685e386d9ad10a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252145"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453520"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Implementeren in Azure Container Instances vanuit Azure Container Registry
 
@@ -36,7 +36,7 @@ In de volgende sectie maakt u een Azure-sleutelkluis en een serviceprincipal en 
 
 ### <a name="create-key-vault"></a>Sleutelkluis maken
 
-Als u nog geen kluis hebt in [Azure Key Vault](../key-vault/key-vault-overview.md), kunt u met de volgende opdrachten één maken met de Azure CLI.
+Als u nog geen kluis hebt in [Azure Key Vault](../key-vault/general/overview.md), kunt u met de volgende opdrachten één maken met de Azure CLI.
 
 Werk `RES_GROUP` de variabele bij met de naam van een bestaande `ACR_NAME` resourcegroep waarin de sleutelkluis kan worden gemaakt en met de naam van uw containerregister. Voor beknoptheid gaan opdrachten in dit artikel ervan uit dat uw register, sleutelkluis en containerexemplaren allemaal in dezelfde resourcegroep zijn gemaakt.
 

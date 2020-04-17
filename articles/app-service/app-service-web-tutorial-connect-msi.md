@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: af44f4a96567cc86c9f884cdfe5e28ff6b7bd8f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 787809e4132defa101bb82659e8af1a2d9f1b9b6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78897695"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453774"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: De Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 
@@ -128,7 +128,7 @@ Werk *in Web.config*vanaf de bovenkant van het bestand en breng de volgende wijz
 - Zoek de aangeroepen `MyDbConnection` verbindingstekenreeks en vervang de waarde ervan `connectionString` door `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`. Vervang _ \<servernaam>_ en _ \<db-name>_ door uw servernaam en databasenaam.
 
 > [!NOTE]
-> De SqlAuthenticationProvider die u zojuist hebt geregistreerd, is gebaseerd op de app-bibliotheek die u eerder hebt geïnstalleerd. Standaard wordt een door het systeem toegewezen identiteit gebruikt. Als u een door de gebruiker toegewezen identiteit wilt gebruiken, moet u een extra configuratie opgeven. Zie [ondersteuning voor verbindingstekenreeksen](../key-vault/service-to-service-authentication.md#connection-string-support) voor de AppAuthentication-bibliotheek.
+> De SqlAuthenticationProvider die u zojuist hebt geregistreerd, is gebaseerd op de app-bibliotheek die u eerder hebt geïnstalleerd. Standaard wordt een door het systeem toegewezen identiteit gebruikt. Als u een door de gebruiker toegewezen identiteit wilt gebruiken, moet u een extra configuratie opgeven. Zie [ondersteuning voor verbindingstekenreeksen](../key-vault/general/service-to-service-authentication.md#connection-string-support) voor de AppAuthentication-bibliotheek.
 
 Dat is alles wat je nodig hebt om verbinding te maken met SQL Database. Wanneer u foutopsporing doet in Visual Studio, gebruikt uw code de Azure AD-gebruiker die u hebt geconfigureerd in [Visual Studio instellen.](#set-up-visual-studio) U stelt de SQL Database-server later zo in dat de verbinding met de beheerde identiteit van uw App Service-app mogelijk is.
 

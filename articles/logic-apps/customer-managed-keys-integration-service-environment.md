@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127648"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458434"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Door de klant beheerde sleutels instellen om gegevens in rust te versleutelen voor integratieserviceomgevingen (ISEs) in Azure Logic Apps
 
 Azure Logic Apps vertrouwt op Azure Storage om gegevens in rust op te slaan en automatisch [te versleutelen.](../storage/common/storage-service-encryption.md) Deze versleuteling beschermt uw gegevens en helpt u om te voldoen aan uw organisatorische beveiligings- en nalevingsverplichtingen. Azure Storage gebruikt standaard door Microsoft beheerde sleutels om uw gegevens te versleutelen. Zie [Azure Storage-versleuteling voor gegevens in rust](../storage/common/storage-service-encryption.md) en Azure Data [Encryption-at-Rest](../security/fundamentals/encryption-atrest.md)voor meer informatie over hoe Azure Storage-versleuteling werkt.
 
-Wanneer u een [integratieserviceomgeving (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) maakt voor het hosten van uw logische apps en u meer controle wilt over de versleutelingssleutels die door Azure Storage worden gebruikt, u uw eigen sleutel instellen, gebruiken en beheren met [Azure Key Vault.](../key-vault/key-vault-overview.md) Deze mogelijkheid wordt ook wel "Bring Your Own Key" (BYOK) genoemd en uw sleutel wordt een "door de klant beheerde sleutel" genoemd.
+Wanneer u een [integratieserviceomgeving (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) maakt voor het hosten van uw logische apps en u meer controle wilt over de versleutelingssleutels die door Azure Storage worden gebruikt, u uw eigen sleutel instellen, gebruiken en beheren met [Azure Key Vault.](../key-vault/general/overview.md) Deze mogelijkheid wordt ook wel "Bring Your Own Key" (BYOK) genoemd en uw sleutel wordt een "door de klant beheerde sleutel" genoemd.
 
 In dit onderwerp wordt uitgelegd hoe u uw eigen versleutelingssleutel instelt en opgeeft die u gebruiken wanneer u uw ISE maakt met behulp van de LOGIC Apps REST API. Zie [Een integratieserviceomgeving (ISE) maken met de LOGIC Apps REST API](../logic-apps/create-integration-service-environment-rest-api.md)voor de algemene stappen om een ISE te maken via logic apps rest api.
 
@@ -39,7 +39,7 @@ In dit onderwerp wordt uitgelegd hoe u uw eigen versleutelingssleutel instelt en
 
 * Een Azure-sleutelkluis met de eigenschappen **Soft Delete** en Do **Not Purge** ingeschakeld
 
-  Zie Overzicht van [Azure Key Vault soft-delete](../key-vault/key-vault-ovw-soft-delete.md) van Azure Key Vault en Configureren van door de klant [beheerde sleutels met Azure Key Vault](../storage/common/storage-encryption-keys-portal.md)voor meer informatie over het inschakelen van deze eigenschappen. Als u nieuw bent in Azure Key Vault, leest u hoe u [een sleutelkluis maakt](../key-vault/quick-create-portal.md#create-a-vault) met behulp van de Azure-portal of met de opdracht Azure PowerShell, [New-AzKeyVault.](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)
+  Zie Overzicht van [Azure Key Vault soft-delete](../key-vault/general/overview-soft-delete.md) van Azure Key Vault en Configureren van door de klant [beheerde sleutels met Azure Key Vault](../storage/common/storage-encryption-keys-portal.md)voor meer informatie over het inschakelen van deze eigenschappen. Als u nieuw bent in Azure Key Vault, leest u hoe u [een sleutelkluis maakt](../key-vault/secrets/quick-create-portal.md#create-a-vault) met behulp van de Azure-portal of met de opdracht Azure PowerShell, [New-AzKeyVault.](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)
 
 * In uw sleutelkluis wordt een sleutel gemaakt met deze eigenschapswaarden:
 
@@ -225,8 +225,8 @@ Voor deze taak u de opdracht Azure PowerShell [Set-AzKeyVaultAccessPolicy](https
 
    1. Wanneer u klaar bent met het deelvenster **Toegangsbeleid,** selecteert u **Opslaan**.
 
-Zie [Key Vault-verificatie met een beheerde identiteit opgeven](../key-vault/managed-identity.md#grant-your-app-access-to-key-vault)voor meer informatie.
+Zie [Key Vault-verificatie met een beheerde identiteit opgeven](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Azure Key Vault](../key-vault/key-vault-overview.md)
+* Meer informatie over [Azure Key Vault](../key-vault/general/overview.md)

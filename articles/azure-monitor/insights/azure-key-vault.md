@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 7a2becf8cb43568383c324bb9f4f5b2e7b844268
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7da2fa2ddfbd9c71563dd8bd2e17b14c6dee62b3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667140"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455441"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault Analytics-oplossing in Azure Monitor
 
@@ -94,7 +94,7 @@ Nadat u op de tegel **Key Vault Analytics** hebt geklikt, u samenvattingen van u
     Op een van de zoekpagina's van het logboek u resultaten bekijken op tijd, gedetailleerde resultaten en uw logboekzoekgeschiedenis. U ook filteren op facetten om de resultaten te beperken.
 
 ## <a name="azure-monitor-log-records"></a>Logboekrecords voor Azure Monitor
-De Azure Key Vault-oplossing analyseert records met een type **KeyVaults** die zijn verzameld uit [AuditEvent-logboeken](../../key-vault/key-vault-logging.md) in Azure Diagnostics.  Eigenschappen voor deze records staan in de volgende tabel:  
+De Azure Key Vault-oplossing analyseert records met een type **KeyVaults** die zijn verzameld uit [AuditEvent-logboeken](../../key-vault/general/logging.md) in Azure Diagnostics.  Eigenschappen voor deze records staan in de volgende tabel:  
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
@@ -107,7 +107,7 @@ De Azure Key Vault-oplossing analyseert records met een type **KeyVaults** die z
 | `httpStatusCode_d` |HTTP-statuscode geretourneerd door de aanvraag (bijvoorbeeld *200*) |
 | `id_s` |Unieke ID van het verzoek |
 | `identity_claim_appid_g` | GUID voor de toepassings-id |
-| `OperationName` |Naam van de bewerking, zoals gedocumenteerd in [Azure Key Vault Logging](../../key-vault/key-vault-logging.md) |
+| `OperationName` |Naam van de bewerking, zoals gedocumenteerd in [Azure Key Vault Logging](../../key-vault/general/logging.md) |
 | `OperationVersion` |REST API-versie aangevraagd door de client (bijvoorbeeld *2015-06-01*) |
 | `requestUri_s` |Uri van het verzoek |
 | `Resource` |Naam van de sleutelkluis |

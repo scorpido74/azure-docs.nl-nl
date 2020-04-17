@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 4fc4960eb3af8a3d3c9902c9b24505bb5610b709
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e591a7035db82425952a16f5c4c220e25d8517fe
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657162"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457175"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -182,7 +182,7 @@ Om te voorkomen dat anderen uw logische app wijzigen of verwijderen, u [Azure Re
 
 Tijdens een logische app-run [worden](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) alle gegevens versleuteld tijdens het transport met tls (Transport Layer Security) en [in rust.](../security/fundamentals/encryption-atrest.md) Wanneer uw logische app klaar is met hardlopen, u de geschiedenis voor die uitvoering bekijken, inclusief de stappen die samen met de status, duur, invoer en uitvoer voor elke actie zijn uitgevoerd. Dit uitgebreide detail geeft inzicht in hoe uw logische app is uitgevoerd en waar u eventuele problemen oplossen.
 
-Wanneer u de runsgeschiedenis van uw logische app bekijkt, verifieert Logic Apps uw toegang en biedt het vervolgens koppelingen naar de invoer en uitvoer voor de aanvragen en antwoorden voor elke run. Voor acties die wachtwoorden, geheimen, sleutels of andere gevoelige informatie verwerken, wilt u echter voorkomen dat anderen die gegevens kunnen bekijken en openen. Als uw logica-app bijvoorbeeld een geheim van [Azure Key Vault](../key-vault/key-vault-overview.md) krijgt om te gebruiken bij het verifiëren van een HTTP-actie, wilt u dat geheim uit de weergave verbergen.
+Wanneer u de runsgeschiedenis van uw logische app bekijkt, verifieert Logic Apps uw toegang en biedt het vervolgens koppelingen naar de invoer en uitvoer voor de aanvragen en antwoorden voor elke run. Voor acties die wachtwoorden, geheimen, sleutels of andere gevoelige informatie verwerken, wilt u echter voorkomen dat anderen die gegevens kunnen bekijken en openen. Als uw logica-app bijvoorbeeld een geheim van [Azure Key Vault](../key-vault/general/overview.md) krijgt om te gebruiken bij het verifiëren van een HTTP-actie, wilt u dat geheim uit de weergave verbergen.
 
 Als u de toegang tot de ingangen en uitvoer in de rungeschiedenis van uw logische app wilt beheren, hebt u de volgende opties:
 
@@ -370,7 +370,7 @@ Zie voor meer informatie deze secties in dit onderwerp:
 
 Als u [de implementatie van logische apps automatiseert met behulp van Resource Manager-sjablonen,](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)u beveiligde [sjabloonparameters](../azure-resource-manager/templates/template-parameters.md)definiëren, die worden geëvalueerd bij implementatie, met behulp van de `securestring` typen en `secureobject` typen. Als u sjabloonparameters wilt definiëren, `parameters` gebruikt u de sectie op het hoogste `parameters` niveau van uw sjabloon, die gescheiden is en verschilt van de sectie van uw werkstroomdefinitie. Als u de waarden voor sjabloonparameters wilt opgeven, gebruikt u een afzonderlijk [parameterbestand](../azure-resource-manager/templates/parameter-files.md).
 
-Als u bijvoorbeeld geheimen gebruikt, u beveiligde sjabloonparameters definiëren en gebruiken die deze geheimen ophalen uit [Azure Key Vault](../key-vault/key-vault-overview.md) bij implementatie. U vervolgens verwijzen naar de sleutelkluis en het geheim in uw parameterbestand. Zie deze onderwerpen voor meer informatie:
+Als u bijvoorbeeld geheimen gebruikt, u beveiligde sjabloonparameters definiëren en gebruiken die deze geheimen ophalen uit [Azure Key Vault](../key-vault/general/overview.md) bij implementatie. U vervolgens verwijzen naar de sleutelkluis en het geheim in uw parameterbestand. Zie deze onderwerpen voor meer informatie:
 
 * [Gevoelige waarden doorgeven bij implementatie met Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 * [Parameters beveiligen in Azure Resource Manager-sjablonen](#secure-parameters-deployment-template) later in dit onderwerp
@@ -425,7 +425,7 @@ Als u gevoelige informatie wilt beschermen in de werkstroomdefinitie van uw logi
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Parameters beveiligen in Azure Resource Manager-sjablonen
 
-Een [resourcemanagersjabloon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) voor een `parameters` logische app heeft meerdere secties. Als u wachtwoorden, sleutels, geheimen en andere gevoelige informatie wilt beveiligen, definieert `securestring` `secureobject` u beveiligde parameters op sjabloonniveau en werkstroomdefinitieniveau met behulp van de code of type. U deze waarden vervolgens opslaan in [Azure Key Vault](../key-vault/key-vault-overview.md) en het [parameterbestand](../azure-resource-manager/templates/parameter-files.md) gebruiken om naar de sleutelkluis en het geheim te verwijzen. Uw sjabloon haalt die informatie vervolgens op bij de implementatie. Zie [Gevoelige waarden doorgeven bij implementatie voor](../azure-resource-manager/templates/key-vault-parameter.md)meer informatie met Azure Key Vault .
+Een [resourcemanagersjabloon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) voor een `parameters` logische app heeft meerdere secties. Als u wachtwoorden, sleutels, geheimen en andere gevoelige informatie wilt beveiligen, definieert `securestring` `secureobject` u beveiligde parameters op sjabloonniveau en werkstroomdefinitieniveau met behulp van de code of type. U deze waarden vervolgens opslaan in [Azure Key Vault](../key-vault/general/overview.md) en het [parameterbestand](../azure-resource-manager/templates/parameter-files.md) gebruiken om naar de sleutelkluis en het geheim te verwijzen. Uw sjabloon haalt die informatie vervolgens op bij de implementatie. Zie [Gevoelige waarden doorgeven bij implementatie voor](../azure-resource-manager/templates/key-vault-parameter.md)meer informatie met Azure Key Vault .
 
 Hier vindt u `parameters` meer informatie over deze secties:
 

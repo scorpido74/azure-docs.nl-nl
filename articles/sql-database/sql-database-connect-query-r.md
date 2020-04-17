@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 23dc784586e85b8cbdc816ac5f4d54556fc1ffb7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76768515"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456988"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Snelstart: R gebruiken met Machine Learning Services om een Azure SQL-database op te vragen (voorbeeld)
 
@@ -30,22 +31,19 @@ In deze quickstart gebruikt u R met Machine Learning Services om verbinding te m
 
 - Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - Een [Azure SQL-database](sql-database-single-database-get-started.md)
-- [Machine Learning Services](sql-database-machine-learning-services-overview.md) met R ingeschakeld. [Registreer u voor de preview](sql-database-machine-learning-services-overview.md#signup).
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) met R ingeschakeld.
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
 > De scripts in dit artikel zijn geschreven om gebruik te maken van de **Adventure Works** database.
 
-> [!NOTE]
-> Tijdens de openbare preview zal Microsoft u aan boord nemen en machine learning inschakelen voor uw bestaande of nieuwe database, maar de beheerde optie voor het implementeren van instanties wordt momenteel niet ondersteund.
-
-Machine Learning Services with R is een functie van Azure SQL-database die wordt gebruikt voor het uitvoeren van in-database R-scripts. Zie het [R-project](https://www.r-project.org/)voor meer informatie.
+Machine Learning Services with R is een functie van Azure SQL Database die wordt gebruikt voor het uitvoeren van in-database R-scripts. Zie het [R-project](https://www.r-project.org/)voor meer informatie.
 
 ## <a name="get-sql-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
 

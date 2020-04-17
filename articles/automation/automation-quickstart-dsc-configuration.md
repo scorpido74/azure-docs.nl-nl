@@ -7,16 +7,16 @@ keywords: dsc, configuratie, automatiseren
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 6c3ff10f37233294b75eceddd62c0a33f8864484
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1a146ab7c05d200b71a33a72fa6362c3cf62629a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75421630"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457515"
 ---
 # <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Een virtuele machine configureren met gewenste statusconfiguratie
 
-Door Desired State Configuration (DSC) in te schakelen, kunt u de configuraties van uw Windows- en Linux-servers beheren en controleren. Configuraties die van de gewenste configuratie beginnen af te wijken, kunnen worden geïdentificeerd of automatisch worden gecorrigeerd. Deze quickstart bevat stappen voor het onboarden van een virtuele Linux-machine en voor de configuratie van een LAMP-stack met DSC.
+Door Azure Automation State Configuration in te schakelen, u de configuraties van uw Windows- en Linux-servers beheren en bewaken met behulp van gewenste statusconfiguratie (DSC). Configuraties die afwijken van een gewenste configuratie kunnen worden geïdentificeerd of automatisch worden gecorrigeerd. Deze quickstart bevat stappen voor het onboarden van een virtuele Linux-machine en voor de configuratie van een LAMP-stack met DSC.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -27,42 +27,39 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 * Een virtuele Azure Resource Manager-machine (niet Klassiek) waarop Red Hat Enterprise Linux, CentOS of Oracle Linux wordt uitgevoerd. Zie [Uw eerste virtuele Linux-machine maken met behulp van Azure Portal](../virtual-machines/linux/quick-create-portal.md) voor instructies voor het maken van een VM.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
-Aanmelden bij Azure op https://portal.azure.com
+Meld u aan https://portal.azure.combij Azure op .
 
 ## <a name="onboard-a-virtual-machine"></a>Een virtuele machine onboarden
-Er zijn veel verschillende methoden voor het uitvoeren van onboarding op een machine en om Desired State Configuration in te schakelen. Deze quickstart bevat informatie over onboarding via een Automation-account. Lees het artikel over [onboarding](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding) voor meer informatie over de verschillende methoden voor de onboarding van uw machines naar Desired State Configuration.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Automation-accounts**. Als die niet in het linkerdeelvenster wordt weergegeven, klikt u op **Alle services** en zoekt u ernaar in de weergave die u dan ziet.
+Er zijn veel verschillende methoden om aan boord van een machine en inschakelen DSC. Deze quickstart bevat informatie over onboarding via een Automation-account. U meer informatie over verschillende methoden om aan boord van uw machines om configuratie te staten door het lezen van de [onboarding](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding) artikel.
+
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Automation-accounts**. Als deze niet zichtbaar is in het linkerdeelvenster, klikt u op **Alle services** en zoekt u in de resulterende weergave.
 1. Selecteer een Automation-account in de lijst.
 1. Selecteer in het linkerdeelvenster van het Automation-account de optie **Statusconfiguratie (DSC)**.
 2. Klik op **Toevoegen** om de selectiepagina van de virtuele machine te openen.
-3. Zoek naar de virtuele machine waarvoor u DSC wilt inschakelen DSC. U kunt het zoekveld en de filteropties gebruiken om een specifieke virtuele machine te vinden.
-4. Klik op de virtuele machine en selecteer vervolgens **Verbinden**
-5. Selecteer de juiste DSC-instellingen voor de virtuele machine. Als u al een configuratie hebt voorbereid, kunt u deze opgeven als *knooppuntconfiguratienaam*. U kunt de [configuratiemodus](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig) instellen om het configuratiegedrag voor de machine te bepalen.
-6. Klik **op OK**
+3. Zoek de virtuele machine waarvoor DSC in te schakelen. U kunt het zoekveld en de filteropties gebruiken om een specifieke virtuele machine te vinden.
+4. Klik op de virtuele machine en klik vervolgens op **Verbinden**
+5. Selecteer de juiste DSC-instellingen voor de virtuele machine. Als u al een configuratie hebt voorbereid, u deze opgeven als `Node Configuration Name`. U kunt de [configuratiemodus](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig) instellen om het configuratiegedrag voor de machine te bepalen.
+6. Klik op **OK**. Terwijl de DSC-extensie wordt geïmplementeerd op de virtuele `Connecting`machine, wordt de status weergegeven als .
 
 ![De onboarding van virtuele Azure-machine voor DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
-Terwijl de Desired State Configuration-extensie naar de virtuele machine wordt geïmplementeerd, wordt *Verbinding maken* weergegeven.
-
 ## <a name="import-modules"></a>Modules importeren
 
-Modules bevatten DSC-resources en vele daarvan kunnen worden gevonden in [PowerShell Gallery](https://www.powershellgallery.com). Alle resources die worden gebruikt in uw configuraties moeten voor het compileren worden geïmporteerd in het Automation-account. Voor deze zelfstudie is de module met de naam **nx** vereist.
+Modules bevatten DSC-bronnen en veel zijn te vinden in de [PowerShell Gallery.](https://www.powershellgallery.com) Alle resources die in uw configuraties worden gebruikt, moeten worden geïmporteerd naar het automatiseringsaccount voordat u deze samenstelt. Voor deze zelfstudie is de module met de naam **nx** vereist.
 
-1. Selecteer in het linkerdeelvenster van het Automation-account **Modulegalerie** (onder Gedeelde bronnen).
-1. Zoek naar de module die u wilt importeren door deel van de naam ervan te typen: *nx*.
-1. Klik op de module die u wilt importeren.
-1. Klik op **Importeren**.
+1. Selecteer **modulesgalerie** onder **Gedeelde bronnen**in het linkerdeelvenster van het automatiseringsaccount .
+1. Zoek naar de module die u wilt `nx`importeren door een deel van de naam te typen: .
+1. Klik op de module om te importeren.
+1. Klik **op Importeren**.
 
 ![Een DSC-module importeren](./media/automation-quickstart-dsc-configuration/dsc-import-module-nx.png)
 
 ## <a name="import-the-configuration"></a>De configuratie importeren
 
-In deze quickstart wordt gebruikgemaakt van een DSC-configuratie waarmee Apache HTTP Server, MySQL en PHP op de computer worden geconfigureerd.
+In deze quickstart wordt gebruikgemaakt van een DSC-configuratie waarmee Apache HTTP Server, MySQL en PHP op de computer worden geconfigureerd. Zie [DSC-configuraties](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations).
 
-Zie [DSC-configuraties](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations) voor meer informatie over DSC-configuraties.
-
-Typ het volgende in een teksteditor en sla het bestand lokaal op als `LAMPServer.ps1`.
+Typ in een teksteditor het volgende en sla deze lokaal op als **AMPServer.ps1**.
 
 ```powershell-interactive
 configuration LAMPServer {
@@ -98,47 +95,44 @@ configuration LAMPServer {
 De configuratie importeren:
 
 1. Selecteer in het linkerdeelvenster van het Automation-account de optie **Statusconfiguratie (DSC)** en klik vervolgens op het tabblad **Configuraties**.
-2. Klik **op + Toevoegen**
-3. Selecteer het *configuratiebestand* dat u hebt opgeslagen tijdens de vorige stap.
-4. Klik **op OK**
+2. Klik op **+ Toevoegen**.
+3. Selecteer het configuratiebestand dat u in de vorige stap hebt opgeslagen.
+4. Klik op **OK**.
 
 ## <a name="compile-a-configuration"></a>Een configuratie compileren
 
-DSC-configuraties moeten worden gecompileerd naar een knooppuntconfiguratie (MOF-document) voordat deze aan een knooppunt worden toegewezen. Tijdens de compilatie wordt de configuratie gevalideerd en is het mogelijk parameterwaarden in te voeren. Zie [Compiling Configurations in Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile) (Configuraties compileren in Azure Automation DSC) voor meer informatie over het compileren van een configuratie.
-
-De configuratie compileren:
+U moet een DSC-configuratie compileren op een knooppuntconfiguratie (MOF-document) voordat deze aan een knooppunt kan worden toegewezen. Tijdens de compilatie wordt de configuratie gevalideerd en is het mogelijk parameterwaarden in te voeren. Zie [Configuraties compileren in staatsconfiguratie](automation-dsc-compile.md)voor meer informatie over het compileren van een configuratie.
 
 1. Selecteer in het linkerdeelvenster van het automatiseringsaccount **De configuratie (DSC)** en klik vervolgens op het tabblad **Configuraties.**
-1. Selecteer de configuratie die u tijdens een eerdere stap hebt geïmporteerd, namelijk 'LAMPServer'.
-1. Klik bij de menuopties op **Compileren** en vervolgens op **Ja**
-1. In de configuratieweergave ziet u een nieuwe *compilatietaak* in de wachtrij. Wanneer de taak is voltooid, bent u klaar om door te gaan met de volgende stap. Als er fouten zijn, kunt u op de compilatietaak klikken voor meer informatie.
+1. Selecteer de `LAMPServer`configuratie .
+1. Selecteer **compileren** in de menuopties en klik op **Ja.**
+1. In de configuratieweergave ziet u een nieuwe compilatietaak in de wachtrij staan. Wanneer de taak is voltooid, bent u klaar om door te gaan met de volgende stap. Als er fouten zijn, u op de compilatietaak klikken voor meer informatie.
 
 ## <a name="assign-a-node-configuration"></a>Een knooppuntconfiguratie toewijzen
 
-Aan DSC-knooppunten kan een gecompileerde *knooppuntconfiguratie* worden toegewezen. Door deze toe te wijzen, wordt de configuratie op de computer toegepast en wordt gecontroleerd of er van die configuratie wordt afgeweken (of wordt deze automatisch gecorrigeerd).
+U een gecompileerde knooppuntconfiguratie toewijzen aan een DSC-knooppunt. Assignment past de configuratie toe op de machine en controleert of corrigeert automatisch voor elke afwijking van die configuratie.
 
-1. Selecteer in het linkerdeelvenster van het Automation-account de optie **Statusconfiguratie (DSC) en klik vervolgens op het tabblad **Knooppunten**.
-1. Selecteer het knooppunt waar u een configuratie wilt toewijzen.
+1. Selecteer in het linkerdeelvenster van het automatiseringsaccount **De configuratie (DSC)** en klik vervolgens op het tabblad **Knooppunten.**
+1. Selecteer het knooppunt waaraan u een configuratie wilt toewijzen.
 1. Klik op **Een knooppuntconfiguratie toewijzen**.
-1. Selecteer de *nodeconfiguratieLAMPServer.localhost* - **LAMPServer.localhost** - om toe te wijzen en klik op **OK**
-1. De gecompileerde configuratie is nu toegewezen aan het knooppunt en de status van het knooppunt is gewijzigd in *In behandeling*. Tijdens de volgende periodieke controle wordt de configuratie door het knooppunt opgehaald, toegepast en wordt de status teruggerapporteerd. Afhankelijk van de instellingen van het knooppunt kan het wel 30 minuten duren voordat het knooppunt de configuratie heeft opgehaald. Als u een onmiddellijke controle wilt afdwingen, kunt u de volgende opdracht lokaal uitvoeren op de virtuele Linux-machine: `sudo /opt/microsoft/dsc/Scripts/PerformRequiredConfigurationChecks.py`
+1. Selecteer de knooppuntconfiguratie `LAMPServer.localhost` en klik op **OK**. Statusconfiguratie wijst nu de gecompileerde configuratie toe aan `Pending`het knooppunt en de status van het knooppunt wordt gewijzigd in . Bij de volgende periodieke controle haalt het knooppunt de configuratie op, past deze toe en rapporteert de status. Het kan tot 30 minuten duren voordat het knooppunt de configuratie ophaalt, afhankelijk van de instellingen van het knooppunt. 
+1. Als u een onmiddellijke controle wilt afdwingen, kunt u de volgende opdracht lokaal uitvoeren op de virtuele Linux-machine: `sudo /opt/microsoft/dsc/Scripts/PerformRequiredConfigurationChecks.py`
 
 ![Een knooppuntconfiguratie toewijzen](./media/automation-quickstart-dsc-configuration/dsc-assign-node-configuration.png)
 
-## <a name="viewing-node-status"></a>De knooppuntstatus weergeven
+## <a name="view-node-status"></a>Knooppuntstatus weergeven
 
-De status van alle beheerde knooppunten vindt u in **Statusconfiguratie (DSC)** en vervolgens onder het tabblad **Knooppunten** in het Automation-account. U kunt de weergave filteren op status, knooppuntconfiguratie of naam.
+U de status van alle door de status configuratie beheerde knooppunten in uw automatiseringsaccount bekijken. De informatie wordt weergegeven door **Statusconfiguratie (DSC)** te kiezen en op het tabblad **Knooppunten** te klikken. U de weergave filteren op status, knooppuntconfiguratie of zoeken naar een naam.
 
 ![Status van het DSC-knooppunt](./media/automation-quickstart-dsc-configuration/dsc-node-status.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een onboarding uitgevoerd voor een virtuele Linux-machine naar DSC, hebt u een configuratie gemaakt voor een LAMP-stack en deze naar de virtuele machine geïmplementeerd. Voor meer informatie over hoe u Automation DSC kunt gebruiken om continue implementatie in te schakelen, kunt u het volgende artikel raadplegen:
+In deze quickstart hebt u een Linux VM aan de configuratie gekoppeld, een configuratie voor een LAMP-stack gemaakt en de configuratie geïmplementeerd op de VM. Ga naar het artikel voor meer informatie over hoe u Azure Automation State Configuration gebruiken om continue implementatie mogelijk te maken:
 
 > [!div class="nextstepaction"]
 > [Continuous deployment to a VM using DSC and Chocolatey](./automation-dsc-cd-chocolatey.md) (Continue implementatie naar een virtuele machine met behulp van DSC en Chocolatey)
 
-* Zie voor meer informatie over PowerShell Desired State Configuration, [PowerShell Desired State Configuration Overview](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview) (Overzicht van PowerShell Desired Configuration).
-* Zie [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/) voor meer informatie over het beheren van Automation DSC vanuit PowerShell.
-* Zie [Forwarding DSC Reporting to Azure Monitor logs](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) (DSC-rapporten doorsturen naar Azure Monitor-logboeken) voor informatie over het doorsturen van DSC-rapporten naar Azure Monitor-logboeken voor rapportage- en waarschuwingsdoeleinden. 
-
+* Zie [PowerShell Desired State Configuration Overview](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview)voor meer informatie over PowerShell DSC.
+* Zie [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/)voor meer informatie over het beheren van statusconfiguratie vanuit PowerShell.
+* Zie [DSC-rapportage doorsturen naar Azure Monitor-logboeken voor het doorsturen van DSC-rapporten naar Azure Monitor-logboeken](automation-dsc-diagnostics.md)voor meer informatie over het doorsturen van DSC-rapporten naar Azure Monitor-logboeken.

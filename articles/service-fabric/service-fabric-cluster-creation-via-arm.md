@@ -3,17 +3,17 @@ title: Een Azure Service Fabric-cluster maken
 description: Meer informatie over het instellen van een beveiligd cluster van ServiceFabric in Azure met Azure Resource Manager.  U een cluster maken met een standaardsjabloon of met uw eigen clustersjabloon.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 8cf14230f3abd37d91f1ec369f597ee594876100
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624111"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458297"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Een cluster van servicefabric maken met Azure Resource Manager 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure-portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -251,7 +251,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>Een aanwijzer gebruiken voor een geheim dat is geüpload naar een sleutelkluis
 
-Als u een bestaande sleutelkluis wilt gebruiken, moet de sleutelkluis zijn [ingeschakeld voor implementatie,](../key-vault/key-vault-manage-with-cli2.md#bkmk_KVperCLI) zodat de compute resource provider certificaten ervan kan ophalen en installeren op clusterknooppunten.
+Als u een bestaande sleutelkluis wilt gebruiken, moet de sleutelkluis zijn [ingeschakeld voor implementatie,](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI) zodat de compute resource provider certificaten ervan kan ophalen en installeren op clusterknooppunten.
 
 Implementeer het cluster met PowerShell:
 

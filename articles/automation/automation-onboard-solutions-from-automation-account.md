@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57378005bd668fa9c0f2aea70c411bbf911130db
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278673"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457651"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Oplossingen voor het beheer van updates aan boord, bij het bijhouden van wijzigingen en voorraad
 
@@ -18,7 +18,7 @@ Azure Automation biedt oplossingen voor het beheren van beveiligingsupdates voor
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Aanmelden bij Azure op https://portal.azure.com
+Meld u aan https://portal.azure.combij Azure op .
 
 ## <a name="enable-solutions"></a>Oplossingen inschakelen
 
@@ -61,7 +61,7 @@ Wanneer een computer wordt toegevoegd aan het updatebeheer of de oplossingen voo
 
 Navigeer naar de werkruimte Log Analytics en selecteer **Opgeslagen zoekopdrachten** onder **Algemeen**. De twee opgeslagen zoekopdrachten die door deze oplossingen worden gebruikt, zijn te zien in de volgende tabel:
 
-|Name     |Categorie  |Alias  |
+|Naam     |Categorie  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking (ChangeTracking)       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Updates        | Updates__MicrosoftDefaultComputerGroup         |
@@ -82,7 +82,7 @@ Klik **op + Azure VM's toevoegen,** selecteer een of meer VM's in de lijst. Virt
 
 Machines die niet in Azure staan, moeten handmatig worden toegevoegd. Selecteer op uw automatiseringsaccount **Voorraad-** of **Wijzigingstracking** onder **Configuratiebeheer**of **Updatebeheer** onder **Updatebeheer**.
 
-Klik **op Niet-Azure-machine toevoegen**. Met deze actie wordt een nieuw browservenster geopend met de [instructies voor het installeren en configureren van de Microsoft Monitoring Agent op de machine,](../azure-monitor/platform/log-analytics-agent.md) zodat de machine kan beginnen met rapporteren aan de oplossing. Als u een machine instelt die momenteel wordt beheerd door System Center Operations Manager, is er geen nieuwe agent vereist, de werkruimtegegevens worden ingevoerd in de bestaande agent.
+Klik **op Niet-Azure-machine toevoegen**. Met deze actie wordt een nieuw browservenster geopend met [instructies voor het installeren en configureren van de Log Analytics-agent voor Windows,](../azure-monitor/platform/log-analytics-agent.md) zodat de machine kan beginnen met rapporteren aan de oplossing. Als u een machine instelt die momenteel wordt beheerd door System Center Operations Manager, is er geen nieuwe agent vereist en wordt de werkruimtegegevens ingevoerd in de bestaande agent.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Boordmachines in de werkruimte
 
@@ -112,7 +112,7 @@ De volgende oplossingen zijn afhankelijk van een Log Analytics-werkruimte:
 
 * [Updatebeheer](automation-update-management.md)
 * [Tracering wijzigen](automation-change-tracking.md)
-* [VM's starten/stoppen buiten kantooruren](automation-solution-vm-management.md)
+* [Vm's starten/stoppen tijdens kantooruren](automation-solution-vm-management.md)
 
 Als u besluit uw Automatiseringsaccount niet langer te willen integreren in een Log Analytics-werkruimte, u uw account rechtstreeks loskoppelen van de Azure-portal.  Voordat u verdergaat, moet u eerst de eerder genoemde oplossingen verwijderen, anders wordt dit proces verhinderd. Bekijk het artikel voor de specifieke oplossing die u hebt geïmporteerd om te begrijpen welke stappen nodig zijn om de oplossing te verwijderen.
 
@@ -150,7 +150,7 @@ U ook de koppeling van uw werkruimte loskoppelen van uw automatiseringsaccount v
 Ga als lid van het werk als u een vm verwijdert uit Updatebeheer:
 
 * Verwijder de VM in uw werkruimte Log Analytics uit `MicrosoftDefaultScopeConfig-Updates`de opgeslagen zoekopdracht naar de scopeconfiguratie. Opgeslagen zoekopdrachten zijn te vinden onder **Algemeen** in uw werkruimte.
-* Verwijder de [Microsoft Monitoring-agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) of de [loganalyse-agent voor Linux.](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)
+* Verwijder de [agent Log Analytics voor Windows](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) of de agent Log Analytics voor [Linux.](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 

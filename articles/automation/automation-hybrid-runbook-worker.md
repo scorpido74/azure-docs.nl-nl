@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1e4470ce5ac69390cf8d361577b9ebf0013e4e51
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 861c7ffa647c8d2f37b32c359253ca991eeb314f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405785"
+ms.locfileid: "81457702"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Resources in uw datacenter of cloud automatiseren met Hybrid Runbook Worker
 
@@ -68,7 +68,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 ```
 
 > [!NOTE]
-> Met deze code wordt de Microsoft Monitoring Agent niet van de computer verwijderd. Hiermee worden alleen de functionaliteit en configuratie van de rol Hybride Runbook Worker verwijderd.
+> Deze code verwijdert de Log Analytics-agent voor Linux niet van de computer. Hiermee worden alleen de functionaliteit en configuratie van de rol Hybride Runbook Worker verwijderd.
 
 ## <a name="remove-a-hybrid-worker-group"></a>Een Hybrid Worker-groep verwijderen
 
@@ -89,7 +89,7 @@ Als u een groep Hybride Runbook Worker wilt verwijderen, moet u eerst de hybride
 
 ### <a name="hybrid-worker-role"></a>Rol Hybride arbeider
 
-Als u de hybride runbookworker verbinding wilt maken met en zich wilt registreren met Azure Automation, moet deze toegang hebben tot het poortnummer en de URL's die in deze sectie worden beschreven. Deze toegang is bovenop de [poorten en URL's die nodig zijn voor Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md) om verbinding te maken met Azure Monitor-logboeken.
+Als u de hybride runbookworker verbinding wilt maken met en zich wilt registreren met Azure Automation, moet deze toegang hebben tot het poortnummer en de URL's die in deze sectie worden beschreven. Deze toegang is bovenop de [poorten en URL's die nodig zijn voor log Analytics-agent](../azure-monitor/platform/agent-windows.md) om verbinding te maken met Azure Monitor-logboeken.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

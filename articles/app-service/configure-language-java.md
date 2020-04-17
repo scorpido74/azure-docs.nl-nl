@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2b09a7765cff20fb49ce6ab3d1e7bce2e15f0e9e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 179a2120714460c955d1fd3e345ebcd963ae564d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475207"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453554"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Een Windows Java-app configureren voor Azure App Service
 
@@ -187,7 +187,7 @@ Volg de instructies in [de Secure een aangepaste DNS-naam met een TLS-binding in
 
 ### <a name="use-keyvault-references"></a>KeyVault-referenties gebruiken
 
-[Azure KeyVault](../key-vault/key-vault-overview.md) biedt gecentraliseerd geheim beheer met toegangsbeleid en controlegeschiedenis. U geheimen (zoals wachtwoorden of verbindingstekenreeksen) opslaan in KeyVault en toegang krijgen tot deze geheimen in uw toepassing via omgevingsvariabelen.
+[Azure KeyVault](../key-vault/general/overview.md) biedt gecentraliseerd geheim beheer met toegangsbeleid en controlegeschiedenis. U geheimen (zoals wachtwoorden of verbindingstekenreeksen) opslaan in KeyVault en toegang krijgen tot deze geheimen in uw toepassing via omgevingsvariabelen.
 
 Volg eerst de instructies voor [het verlenen van toegang tot Key Vault aan uw app](app-service-key-vault-references.md#granting-your-app-access-to-key-vault) en maak een [KeyVault-verwijzing naar uw geheim in een toepassingsinstelling.](app-service-key-vault-references.md#reference-syntax) U valideren dat de verwijzing naar het geheim wordt opgelost door de omgevingsvariabele af te drukken terwijl u op afstand toegang krijgt tot de App Service-terminal.
 

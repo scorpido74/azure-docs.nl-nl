@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9dc4dce5a7af49529924881321b1a5080293a585
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f2584a8d4e68b7c16b3acdc29f64f0a19d83d735
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405615"
+ms.locfileid: "81457668"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Een Linux-hybride runbookworker implementeren
 
@@ -76,7 +76,7 @@ Noteer voordat u verdergaat de werkruimte Log Analytics waaraan uw Automatiserin
 
 1. Schakel de oplossing voor hybride werker voor automatisering in Azure in met een van de volgende methoden:
 
-   * Voeg de oplossing voor hybride werker voor automatisering toe aan uw abonnement met behulp van de procedure bij [Azure Monitor-logboeken toevoegen aan uw werkruimte.](../log-analytics/log-analytics-add-solutions.md)
+   * Voeg de oplossing voor hybride werker voor automatisering toe aan uw abonnement met behulp van de procedure bij [Azure Monitor-logboekoplossingen toevoegen aan uw werkruimte.](../log-analytics/log-analytics-add-solutions.md)
    * Voer de volgende cmdlet uit:
 
         ```azurepowershell-interactive

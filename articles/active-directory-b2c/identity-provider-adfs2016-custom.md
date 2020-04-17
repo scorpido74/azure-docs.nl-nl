@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bfe39d9528927f995d14772e07e02b2a0528e5e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 000f63ef5f73e77eb22fb539fc6736b929ac6bcc
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188525"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451564"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>ADFS toevoegen als SAML-identiteitsprovider met aangepaste beleidsregels in Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ In dit artikel ziet u hoe u aanmelding voor een ADFS-gebruikersaccount inschakel
 
 U moet uw certificaat opslaan in uw Azure AD B2C-tenant.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat. Selecteer het **filter Directory + abonnement** in het bovenste menu en kies de map met uw tenant.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer op de pagina Overzicht de optie **Identity Experience Framework**.
@@ -169,7 +169,7 @@ Nu je een knop hebt, moet je deze koppelen aan een actie. De actie is in dit gev
 Als u ADFS wilt gebruiken als identiteitsprovider in Azure AD B2C, moet u een ADFS Relying Party-vertrouwensrelatie maken met de Azure AD B2C SAML-metagegevens. In het volgende voorbeeld wordt een URL-adres weergegeven voor de SAML-metagegevens van een technisch azure AD B2C-profiel:
 
 ```
-https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
+https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
 Vervang de volgende waarden:

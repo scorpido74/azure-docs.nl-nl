@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8574fcdff12e61f7039174ed6297d0558a66dc4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653941"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450918"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aanmelden voor een wachtwoordloze beveiligingssleutel inschakelen (voorbeeld)
 
@@ -31,7 +31,7 @@ Dit document richt zich op het inschakelen van verificatie op basis van beveilig
 
 ## <a name="requirements"></a>Vereisten
 
-- [Azure-verificatie met meerdere factoren](howto-mfa-getstarted.md)
+- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [Voorbeeld van registratie van gecombineerde beveiligingsgegevens](concept-registration-mfa-sspr-combined.md)
 - Compatibele [FIDO2-beveiligingssleutels](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN vereist Windows 10 versie 1809 of hoger**
@@ -48,11 +48,11 @@ Hybride Azure AD-apparaten moeten Windows 10 Insider Build 18945 of nieuwer uitv
 
 ### <a name="enable-the-combined-registration-experience"></a>De gecombineerde registratie-ervaring inschakelen
 
-Registratiefuncties voor wachtwoordloze verificatiemethoden zijn afhankelijk van de gecombineerde registratievoorbeeld. Volg de stappen in het artikel [Gecombineerde beveiliginggegevensregistratie inschakelen (voorbeeld)](howto-registration-mfa-sspr-combined.md)om het gecombineerde registratievoorbeeld in te schakelen.
+Registratiefuncties voor wachtwoordloze verificatiemethoden zijn afhankelijk van de gecombineerde registratiefunctie. Volg de stappen in het artikel [Schakel gecombineerde beveiligingsgegevensregistratie (voorbeeld) in](howto-registration-mfa-sspr-combined.md)om gecombineerde registratie in te schakelen.
 
 ### <a name="enable-fido2-security-key-method"></a>Fido2-beveiligingssleutelmethode inschakelen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Blader naar het**verificatiemethodebeleid voor verificatiemethoden** > voor Azure Active > **Directory-beveiliging** > **(Voorbeeld)**. **Azure Active Directory**
 1. Kies onder de methode **FIDO2 Security Key**de volgende opties:
    1. **Inschakelen** - Ja of Nee

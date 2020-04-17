@@ -4,18 +4,17 @@ description: Monitoringgegevens die door Azure Monitor worden verzameld, worden 
 documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: tysonn
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: a1b5859341237c1b177ee8deaf636a67f4824948
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666544"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457260"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor-gegevensplatform
 
@@ -72,7 +71,7 @@ In de volgende tabel worden metrische gegevens en logboeken in Azure Monitor ver
 | Gegevens | Alleen numerieke waarden | Tekst- of numerieke gegevens |
 | Structuur | Standaardset eigenschappen, waaronder voorbeeldtijd, resource die wordt gecontroleerd, een numerieke waarde. Sommige statistieken bevatten meerdere dimensies voor verdere definitie. | Unieke set eigenschappen, afhankelijk van het logboektype. |
 | Verzameling | Verzameld op regelmatige tijdstippen. | Kan sporadisch worden verzameld als gebeurtenissen leiden tot een record worden gemaakt. |
-| Weergave in Azure-portal | Metrics Explorer | Log Analytics |
+| Openen in de Azure-portal | Metrics Explorer | Log Analytics |
 | Gegevensbronnen omvatten | Platformstatistieken die zijn verzameld uit Azure-bronnen.<br>Toepassingen die worden gecontroleerd door Application Insights.<br>Aangepast gedefinieerd door toepassing of API. | Toepassings- en bronlogboeken.<br>Monitoring oplossingen.<br>Agents en VM-extensies.<br>Toepassingsaanvragen en uitzonderingen.<br>Azure Security Center.<br>API voor gegevensverzamelaar. |
 
 ## <a name="collect-monitoring-data"></a>Bewakingsgegevens verzamelen

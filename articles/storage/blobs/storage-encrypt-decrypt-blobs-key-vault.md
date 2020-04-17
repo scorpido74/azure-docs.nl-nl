@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 3f4f1f5e163dfed9f356aed538d934d0e4258790
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: c1d26fda57d665cc8d83f594f4efeebebc7bf139
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618887"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456886"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Zelfstudie - Blobs versleutelen en decoderen met Azure Key Vault
 
@@ -23,7 +23,7 @@ Deze zelfstudie gaat over het gebruik van client-side storage encryptie met Azur
 
 **Geschatte duur:** 20 minuten
 
-Zie Wat is Azure Key Vault voor overzichtsinformatie over Azure Key [Vault?](../../key-vault/key-vault-overview.md)
+Zie Wat is Azure Key Vault voor overzichtsinformatie over Azure Key [Vault?](../../key-vault/general/overview.md)
 
 Zie [Client-Side Encryption en Azure Key Vault voor Microsoft Azure Storage voor](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)overzichtsinformatie over client-side encryptie voor Azure Storage.
 
@@ -48,7 +48,7 @@ Hier is een korte beschrijving van hoe client side encryptie werkt:
 
 ## <a name="set-up-your-azure-key-vault"></a>Uw Azure Key Vault instellen
 
-Om verder te gaan met deze zelfstudie, moet u de volgende stappen uitvoeren, die worden beschreven in de zelfstudie [Quickstart: Een geheim instellen en ophalen uit Azure Key Vault met behulp van een .NET-webapp:](../../key-vault/quick-create-net.md)
+Om verder te gaan met deze zelfstudie, moet u de volgende stappen uitvoeren, die worden beschreven in de zelfstudie [Quickstart: Een geheim instellen en ophalen uit Azure Key Vault met behulp van een .NET-webapp:](../../key-vault/secrets/quick-create-net.md)
 
 * Een sleutelkluis maken.
 * Voeg een sleutel of geheim toe aan de sleutelkluis.

@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: ddcb47bfe8ba2b77efd8ff0aed52f1412107f0c5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811440"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456495"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Door de klant beheerde sleutels gebruiken in Azure Key Vault voor import/exportservice
 
 Azure Import/Export beschermt de BitLocker-sleutels die worden gebruikt om de schijven te vergrendelen via een versleutelingssleutel. BitLocker-sleutels worden standaard versleuteld met door Microsoft beheerde sleutels. Voor extra controle over versleutelingssleutels u ook door de klant beheerde sleutels verstrekken.
 
-Door de klant beheerde sleutels moeten worden gemaakt en opgeslagen in een Azure Key Vault. Zie Wat is Azure Key Vault voor meer informatie over Azure Key [Vault?](../../key-vault/key-vault-overview.md)
+Door de klant beheerde sleutels moeten worden gemaakt en opgeslagen in een Azure Key Vault. Zie Wat is Azure Key Vault voor meer informatie over Azure Key [Vault?](../../key-vault/general/overview.md)
 
 In dit artikel ziet u hoe u door de klant beheerde sleutels gebruikt met de service Importeren/exporteren in de [Azure-portal.](https://portal.azure.com/)
 
@@ -33,12 +33,12 @@ Zorg voordat u begint voor het volgende:
     - [Een importtaak voor bestanden maken](storage-import-export-data-to-files.md).
     - [Een exporttaak voor blobs maken](storage-import-export-data-from-blobs.md)
 
-2. U hebt een bestaande Azure Key Vault met een sleutel erin die u gebruiken om uw BitLocker-sleutel te beschermen. Zie [Snelstart: Een geheim instellen en ophalen uit Azure Key Vault met behulp van de Azure-portal](../../key-vault/quick-create-portal.md)voor meer informatie over het maken van een sleutelkluis met de Azure-portal.
+2. U hebt een bestaande Azure Key Vault met een sleutel erin die u gebruiken om uw BitLocker-sleutel te beschermen. Zie [Snelstart: Een geheim instellen en ophalen uit Azure Key Vault met behulp van de Azure-portal](../../key-vault/secrets/quick-create-portal.md)voor meer informatie over het maken van een sleutelkluis met de Azure-portal.
 
     - **Soft delete** en **Do not purge** zijn ingesteld op je bestaande Key Vault. Deze eigenschappen zijn standaard niet ingeschakeld. Zie de secties getiteld **Soft-delete** en **Inschakelen van zuiveringsbeveiliging** inschakelen in een van de volgende artikelen als u deze eigenschappen wilt inschakelen:
 
-        - [Soft-delete gebruiken met PowerShell](../../key-vault/key-vault-soft-delete-powershell.md).
-        - [Soft-delete gebruiken met CLI](../../key-vault/key-vault-soft-delete-cli.md).
+        - [Soft-delete gebruiken met PowerShell](../../key-vault/general/soft-delete-powershell.md).
+        - [Soft-delete gebruiken met CLI](../../key-vault/general/soft-delete-cli.md).
     - De bestaande sleutelkluis moet een RSA-toets van 2048 grootte of meer hebben. Zie **Key Vault-sleutels** in [Over Azure Key Vault-sleutels, -geheimen en -certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
     - De sleutelkluis moet zich in dezelfde regio bevinden als het opslagaccount voor uw gegevens.  
     - Als u geen bestaande Azure Key Vault hebt, u deze ook inline maken zoals beschreven in de volgende sectie.

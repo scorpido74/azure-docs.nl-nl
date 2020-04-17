@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: ee51be1d994c3b81765266e95c48d321a2f43b14
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 6e357e98d6c5190c6dfef675dc1ab9cf30a717c1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80989439"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455084"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SQL Server Agent-taken migreren naar ADF met SSMS
 
@@ -35,7 +35,7 @@ In het algemeen kan de **wizard SSIS-taakmigratie** voor geselecteerde SQL-agent
 |SSIS-taakstap|SSIS-pakketactiviteit uitvoeren|<li> De naam van \<de activiteit wordt stapnaam>. <li> Proxy-account dat wordt gebruikt in taakstap wordt gemigreerd als Windows-verificatie van deze activiteit. <li> *Uitvoeringsopties* behalve *32-bits runtime* gebruiken die in taakstap is gedefinieerd, worden genegeerd in migratie. <li> *Verificatie* gedefinieerd in taakstap wordt genegeerd in migratie.|
 |schedule      |trigger voor schema        |De naam van de planningstrigger wordt *gegenereerd voor \<de naam van de planning>*. <br> <br> Onderstaande opties in SQL Agent-taakschema worden genegeerd in migratie: <li> Interval op het tweede niveau. <li> *Automatisch starten wanneer SQL Server Agent wordt gestart* <li> *Start wanneer de CPU's niet actief worden* <li> *weekdag* en *weekenddag*<time zone> <br> Hieronder staan de verschillen nadat sql-agent-taakschema is gemigreerd naar adf-planningtrigger: <li> ADF-planning Trigger volgende run is onafhankelijk van de uitvoeringsstatus van de antecedent triggered run. <li> ADF Schedule Trigger recidiefconfiguratie verschilt van dagelijkse frequentie in SQL-agent taak.|
 
-- Azure Resource Manager-sjablonen (ARM) genereren in de lokale uitvoermap en direct of later handmatig implementeren in de gegevensfabriek. Zie [Microsoft.DataFactory-brontypen](https://docs.microsoft.com/azure/templates/microso.ft.datafactory/allversions)voor meer informatie over ADF Resource Manager-sjablonen.
+- Azure Resource Manager-sjablonen (ARM) genereren in de lokale uitvoermap en direct of later handmatig implementeren in de gegevensfabriek. Zie [Microsoft.DataFactory-brontypen](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions)voor meer informatie over ADF Resource Manager-sjablonen.
 
 ## <a name="prerequisites"></a>Vereisten
 

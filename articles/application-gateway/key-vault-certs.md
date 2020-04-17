@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 26093d051da8f2182a40f80837acbd9ef7dd008f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: be558c3e3a68ce6c194dcf98d8f5ff92c4c14edb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312078"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457821"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-beëindiging met Key Vault-certificaten
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) is een geheim archief dat door een platform wordt beheerd en die u gebruiken om geheimen, sleutels en TLS/SSL-certificaten te beveiligen. Azure Application Gateway ondersteunt integratie met Key Vault voor servercertificaten die zijn gekoppeld aan luisteraars met HTTPS-functie. Deze ondersteuning is beperkt tot de v2 SKU of Application Gateway.
+[Azure Key Vault](../key-vault/general/overview.md) is een geheim archief dat door een platform wordt beheerd en die u gebruiken om geheimen, sleutels en TLS/SSL-certificaten te beveiligen. Azure Application Gateway ondersteunt integratie met Key Vault voor servercertificaten die zijn gekoppeld aan luisteraars met HTTPS-functie. Deze ondersteuning is beperkt tot de v2 SKU of Application Gateway.
 
 Key Vault-integratie biedt twee modellen voor TLS-beëindiging:
 

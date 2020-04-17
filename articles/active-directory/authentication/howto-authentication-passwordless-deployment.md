@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582477"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451428"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Een wachtwoordloze verificatie-implementatie plannen in Azure Active Directory
 
@@ -67,7 +67,7 @@ Organisaties moeten aan de volgende vereisten voldoen voordat ze met een wachtwo
 
 | Vereiste | Authenticator-app | FIDO2-beveiligingssleutels |
 | --- | --- | --- |
-| [Gecombineerde registratie voor Azure Multi-factor authenticatie en self-service password reset (SSPR)](howto-registration-mfa-sspr-combined.md) is ingeschakeld (preview-functie) | √ | √ |
+| [Gecombineerde registratie voor Azure Multi-factor authenticatie en self-service password reset (SSPR)](howto-registration-mfa-sspr-combined.md) is ingeschakeld | √ | √ |
 | [Gebruikers kunnen Azure Multi-factor-verificatie uitvoeren](howto-mfa-getstarted.md) | √ | √ |
 | [Gebruikers hebben zich geregistreerd voor Azure Multi-factor authenticatie en SSPR](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [Gebruikers hebben hun mobiele apparaten geregistreerd bij Azure Active Directory](../devices/overview.md) | √ |   |

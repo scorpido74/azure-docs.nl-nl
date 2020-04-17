@@ -1,5 +1,5 @@
 ---
-title: Beveiligde assets versleutelen in Azure Automation
+title: Versleuteling van beveiligde activa in Azure Automation
 description: Azure Automation beschermt beveiligde assets met meerdere niveaus van versleuteling. Standaard wordt de versleuteling uitgevoerd met door Microsoft beheerde sleutels. Klanten kunnen hun automatiseringsaccounts configureren om door de klant beheerde sleutels te gebruiken voor versleuteling. In dit artikel worden de details van beide versleutelingsmodi beschreven en hoe u schakelen tussen de twee.
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 0b1d194209122fa71272243c80a2d4c57f6834a1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a82d2b6d9521ba7dd5e7b194c26ff8fe5a100871
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547762"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457481"
 ---
-# <a name="encrypt-secure-assets-in-azure-automation"></a>Beveiligde assets versleutelen in Azure Automation
+# <a name="encrypt-secure-assets-in-azure-automation"></a>Versleuteling van beveiligde activa in Azure Automation
 
 Beveiligde elementen in Azure Automation omvatten referenties, certificaten, verbindingen en versleutelde variabelen. Deze elementen worden beveiligd in Azure Automation met behulp van meerdere niveaus van versleuteling. Op basis van de bovenste toets die wordt gebruikt voor de versleuteling, zijn er twee modellen voor versleuteling:
 -    Door Microsoft beheerde sleutels gebruiken
@@ -32,7 +32,7 @@ Elk beveiligde element wordt versleuteld en opgeslagen in Azure Automation met b
 
 U versleuteling van beveiligde assets voor uw Automation-account beheren met uw eigen sleutels. Wanneer u een door de klant beheerde sleutel opgeeft op het niveau van het Automatiseringsaccount, wordt die sleutel gebruikt om de toegang tot de accountversleutelingssleutel voor het Automatiseringsaccount te beschermen en te beheren. Dit op zijn beurt wordt gebruikt om te versleutelen en te decoderen van alle beveiligde activa. Door de klant beheerde sleutels bieden meer flexibiliteit om toegangsbesturingselementen te maken, te roteren, uit te schakelen en in te trekken. U ook de versleutelingssleutels controleren die worden gebruikt om uw beveiligde activa te beschermen.
 
-Gebruik Azure Key Vault om door klanten beheerde sleutels op te slaan. U uw eigen sleutels maken en opslaan in een sleutelkluis, of u de Azure Key Vault API's gebruiken om sleutels te genereren.  Zie Wat is Azure Key Vault voor meer informatie over Azure Key [Vault?](../key-vault/key-vault-overview.md)
+Gebruik Azure Key Vault om door klanten beheerde sleutels op te slaan. U uw eigen sleutels maken en opslaan in een sleutelkluis, of u de Azure Key Vault API's gebruiken om sleutels te genereren.  Zie Wat is Azure Key Vault voor meer informatie over Azure Key [Vault?](../key-vault/general/overview.md)
 
 ## <a name="enable-customer-managed-keys-for-an-automation-account"></a>Door de klant beheerde sleutels inschakelen voor een Automatiseringsaccount
 
@@ -192,7 +192,7 @@ Als u de toegang tot door de klant beheerde sleutels wilt intrekken, gebruikt u 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat is Azure Key Vault?](../key-vault/key-vault-overview.md)
+- [Wat is Azure Sleutelkluis?](../key-vault/general/overview.md)
 
 - [Verbindingsassets in Azure Automation](shared-resources/certificates.md)
 

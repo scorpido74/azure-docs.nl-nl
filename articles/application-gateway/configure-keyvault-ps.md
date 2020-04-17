@@ -8,16 +8,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 1979f759f5a1b037adfd7b67a7be50cbba0f596f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312214"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457838"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>TLS-beëindiging configureren met Key Vault-certificaten met Azure PowerShell
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) is een geheim archief dat door een platform wordt beheerd en die u gebruiken om geheimen, sleutels en TLS/SSL-certificaten te beveiligen. Azure Application Gateway ondersteunt integratie met Key Vault voor servercertificaten die zijn gekoppeld aan luisteraars met HTTPS-functie. Deze ondersteuning is beperkt tot de Application Gateway v2 SKU.
+[Azure Key Vault](../key-vault/general/overview.md) is een geheim archief dat door een platform wordt beheerd en die u gebruiken om geheimen, sleutels en TLS/SSL-certificaten te beveiligen. Azure Application Gateway ondersteunt integratie met Key Vault voor servercertificaten die zijn gekoppeld aan luisteraars met HTTPS-functie. Deze ondersteuning is beperkt tot de Application Gateway v2 SKU.
 
 Zie [TLS-beëindiging met Key Vault-certificaten](key-vault-certs.md)voor meer informatie.
 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> De vlag -EnableSoftDelete moet worden gebruikt om TLS-beëindiging goed te laten functioneren. Als u Key [Vault soft-delete](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior)configureert via de Portal, moet de bewaartermijn worden bewaard op 90 dagen, de standaardwaarde. Application Gateway biedt nog geen andere bewaarperiode. 
+> De vlag -EnableSoftDelete moet worden gebruikt om TLS-beëindiging goed te laten functioneren. Als u Key [Vault soft-delete](../key-vault/general/overview-soft-delete.md#soft-delete-behavior)configureert via de Portal, moet de bewaartermijn worden bewaard op 90 dagen, de standaardwaarde. Application Gateway biedt nog geen andere bewaarperiode. 
 
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 

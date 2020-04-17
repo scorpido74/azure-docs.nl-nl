@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 52f4347fa545df88f11878709b4061662d5faffe
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0985b37280e3cd363ba1728a5ec33b0012611ab2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345757"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452924"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Zelfstudie: Een voorspellend model maken in R met Azure SQL Database Machine Learning Services (voorbeeld)
 
@@ -36,8 +37,6 @@ In dit artikel leer je hoe je:
 In [deel één](sql-database-tutorial-predictive-model-prepare-data.md)hebt u geleerd hoe u een voorbeelddatabase importeren en vervolgens de gegevens voorbereiden die moeten worden gebruikt voor het trainen van een voorspellend model in R.
 
 In [deel drie](sql-database-tutorial-predictive-model-deploy.md)leert u hoe u het model in een database opslaan en vervolgens opgeslagen procedures maakt uit de R-scripts die u in deel één en twee hebt ontwikkeld. De opgeslagen procedures worden uitgevoerd in een SQL-database om voorspellingen te doen op basis van nieuwe gegevens.
-
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 

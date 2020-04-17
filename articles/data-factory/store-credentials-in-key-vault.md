@@ -10,18 +10,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: b5a181625488a57de4b878d13c01a8c90bf8785a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414667"
+ms.locfileid: "81451683"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Referenties opslaan in Azure Key Vault
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-U referenties voor gegevensopslag en rekengegevens opslaan in een [Azure Key Vault.](../key-vault/key-vault-overview.md) Azure Data Factory haalt de referenties op bij het uitvoeren van een activiteit die het gegevensarchief/de gegevensopslag gebruikt.
+U referenties voor gegevensopslag en rekengegevens opslaan in een [Azure Key Vault.](../key-vault/general/overview.md) Azure Data Factory haalt de referenties op bij het uitvoeren van een activiteit die het gegevensarchief/de gegevensopslag gebruikt.
 
 Momenteel ondersteunen alle activiteitstypen, behalve aangepaste activiteit, deze functie. Controleer specifiek voor de connectorconfiguratie de sectie 'gekoppelde serviceeigenschappen' in [elk connectoronderwerp](copy-activity-overview.md#supported-data-stores-and-formats) voor meer informatie.
 

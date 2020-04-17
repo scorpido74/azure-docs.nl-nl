@@ -5,18 +5,18 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a6fc2bd5cb6f5c7ae5bef9e9741fae92518d885
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: d1ce59322b0cbfaf5a4f7b31371f0d0929a3a3ab
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392398"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457719"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Verbindingsassets in Azure Automation
 
 Een item voor een automatiseringsverbinding bevat de informatie die nodig is om verbinding te maken met een externe service of toepassing vanuit een runbook- of DSC-configuratie. Dit kan informatie omvatten die nodig is voor verificatie, zoals een gebruikersnaam en wachtwoord, naast verbindingsgegevens zoals een URL of een poort. De waarde van een verbinding houdt alle eigenschappen voor het verbinden met een bepaalde toepassing in één asset in plaats van het maken van meerdere variabelen. De gebruiker kan de waarden voor een verbinding op één plaats bewerken en u de naam van een verbinding doorgeven aan een runbook- of DSC-configuratie in één parameter. De eigenschappen voor een verbinding zijn toegankelijk in de runbook- of DSC-configuratie met de `Get-AutomationConnection` activiteit.
 
-Wanneer u een verbinding maakt, moet u een *verbindingstype*opgeven. Het verbindingstype is een sjabloon die een set eigenschappen definieert. De verbinding definieert waarden voor elke eigenschap die is gedefinieerd in het verbindingstype. Verbindingstypen worden toegevoegd aan Azure Automation in integratiemodules of gemaakt met de [Azure Automation API](/previous-versions/azure/reference/mt163818(v=azure.100)) als de integratiemodule een verbindingstype bevat en wordt geïmporteerd in uw Automatiseringsaccount. Anders moet u een metagegevensbestand maken om een type automatiseringsverbinding op te geven. Zie [Integratiemodules](automation-integration-modules.md)voor meer informatie hierover.
+Wanneer u een verbinding maakt, moet u een verbindingstype opgeven. Het verbindingstype is een sjabloon die een set eigenschappen definieert. De verbinding definieert waarden voor elke eigenschap die is gedefinieerd in het verbindingstype. Verbindingstypen worden toegevoegd aan Azure Automation in integratiemodules of gemaakt met de [Azure Automation API](/previous-versions/azure/reference/mt163818(v=azure.100)) als de integratiemodule een verbindingstype bevat en wordt geïmporteerd in uw Automatiseringsaccount. Anders moet u een metagegevensbestand maken om een type automatiseringsverbinding op te geven. Zie [Integratiemodules](automation-integration-modules.md)voor meer informatie hierover.
 
 >[!NOTE]
 >Beveiligde elementen in Azure Automation omvatten referenties, certificaten, verbindingen en versleutelde variabelen. Deze elementen worden versleuteld en opgeslagen in Azure Automation met behulp van een unieke sleutel die wordt gegenereerd voor elk Automatiseringsaccount. Deze sleutel wordt opgeslagen in een systeembeheerde Key Vault. Voordat u een beveiligde asset opslaat, wordt de sleutel geladen vanuit Key Vault en vervolgens gebruikt om het item te versleutelen. Dit proces wordt beheerd door Azure Automation.

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 72c2c90f7a71bd9bf251adb492168fa5d2baa60a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b75e0c1e53f1e00579de73897197cdd2f14d79af
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244782"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455407"
 ---
 # <a name="virtual-network-service-endpoints"></a>Service-eindpunten voor virtueel netwerk
 
@@ -35,7 +35,7 @@ Deze functie is beschikbaar voor de volgende Azure-services en -regio's. De *Mic
 - **[Azure Database for MySQL-server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** *(Microsoft.Sql):* Algemeen beschikbaar in Azure-regio's waar databaseservice beschikbaar is.
 - **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (*Microsoft.Sql):* Algemeen beschikbaar in Azure-regio's waar databaseservice beschikbaar is.
 - **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.AzureCosmosDB):* Algemeen beschikbaar in alle Azure-regio's.
-- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)** *(Microsoft.KeyVault):* Algemeen beschikbaar in alle Azure-regio's.
+- **[Azure Key Vault](../key-vault/general/overview-vnet-service-endpoints.md)** *(Microsoft.KeyVault):* Algemeen beschikbaar in alle Azure-regio's.
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.ServiceBus):* Algemeen beschikbaar in alle Azure-regio's.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.EventHub):* Algemeen beschikbaar in alle Azure-regio's.
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** *(Microsoft.AzureActiveDirectory):* Algemeen beschikbaar in alle Azure-regio's waar ADLS Gen1 beschikbaar is.
@@ -145,7 +145,7 @@ Zie Veelgestelde vragen voor veelgestelde vragen voor veelgestelde vragen over h
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Eindpunten voor virtuele netwerkservice configureren](tutorial-restrict-network-access-to-resources.md)
+- [Service-eindpunten voor virtuele netwerken configureren](tutorial-restrict-network-access-to-resources.md)
 - [Een Azure Storage-account beveiligen naar een virtueel netwerk](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Een Azure SQL-database beveiligen naar een virtueel netwerk](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Een Azure SQL Data Warehouse beveiligen naar een virtueel netwerk](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)

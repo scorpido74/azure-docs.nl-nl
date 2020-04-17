@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8d7d0baacd5f702e8f435ab440eaf0338a60f4cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a043bcc2f81214b68b166d443baead6cd230184
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500772"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457498"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation Run beheren als accounts
 
@@ -464,7 +464,7 @@ U Azure Automation toestaan om te controleren of Key Vault en uw Run As-accounts
 * Machtigingen verlenen aan Key Vault.
 * Stel het toegangsbeleid in.
 
-U het script [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) gebruiken in de PowerShell Gallery om uw Run As-accountmachtigingen te geven aan Key Vault. Zie [Toegang tot toepassingen verlenen tot een sleutelkluis](../key-vault/key-vault-group-permissions-for-apps.md) voor meer informatie over het instellen van machtigingen op Key Vault.
+U het script [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) gebruiken in de PowerShell Gallery om uw Run As-accountmachtigingen te geven aan Key Vault. Zie [Toegang tot toepassingen verlenen tot een sleutelkluis](../key-vault/general/group-permissions-for-apps.md) voor meer informatie over het instellen van machtigingen op Key Vault.
 
 ## <a name="resolving-misconfiguration-issues-for-run-as-accounts"></a>Foutconfiguratieproblemen voor Run As-accounts oplossen
 

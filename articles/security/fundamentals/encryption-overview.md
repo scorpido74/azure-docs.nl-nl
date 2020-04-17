@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 7ac657e6627aff4eb588506118e5eeeaef70efba
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548614"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454642"
 ---
 # <a name="azure-encryption-overview"></a>Overzicht van Azure-versleuteling
 
@@ -61,7 +61,7 @@ De drie server-side encryptie modellen bieden verschillende sleutelbeheer kenmer
 
 U virtuele machines van Windows en Linux beschermen met behulp van [Azure-schijfversleuteling](/azure/security/fundamentals/azure-disk-encryption-vms-vmss), die windows [BitLocker-technologie](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) en Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) gebruikt om zowel schijven van besturingssystemen als gegevensschijven te beschermen met volledige volumeversleuteling.
 
-Versleutelingssleutels en -geheimen worden beveiligd in uw [Azure Key Vault-abonnement.](../../key-vault/key-vault-overview.md) Door de Azure Backup-service te gebruiken, u een back-up maken en versleutelde virtuele machines (VM's) herstellen die gebruikmaken van kek-configuratie (Key Encryption Key).
+Versleutelingssleutels en -geheimen worden beveiligd in uw [Azure Key Vault-abonnement.](../../key-vault/general/overview.md) Door de Azure Backup-service te gebruiken, u een back-up maken en versleutelde virtuele machines (VM's) herstellen die gebruikmaken van kek-configuratie (Key Encryption Key).
 
 ### <a name="azure-storage-service-encryption"></a>Azure Storage Service-versleuteling
 
@@ -208,4 +208,4 @@ Key Vault ontlast organisaties van de noodzaak om hardwarebeveiligingsmodules (H
 - [Overzicht van azure-databasebeveiliging](database-security-overview.md)
 - [Overzicht van de beveiliging van Azure-virtuele machines](virtual-machines-overview.md)
 - [Gegevensversleuteling in rust](encryption-atrest.md)
-- [Aanbevolen procedures voor gegevensbeveiliging en -versleuteling](data-encryption-best-practices.md)
+- [Best practices voor gegevensbeveiliging en -versleuteling](data-encryption-best-practices.md)

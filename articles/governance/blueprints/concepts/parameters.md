@@ -3,12 +3,12 @@ title: Parameters gebruiken om dynamische blauwdrukken te maken
 description: Leer meer over statische en dynamische parameters en hoe u deze gebruiken om veilige en dynamische blauwdrukken te maken.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: ed596db2050ac788c2d98c63cb7314de473b5f4e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383615"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458485"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dynamische blauwdrukken maken door middel van parameters
 
@@ -41,7 +41,7 @@ Als de blauwdruktoewijzing een **door de gebruiker toegewezen beheerde identitei
 > [!IMPORTANT]
 > In beide gevallen moet de Key Vault toegang tot Azure Resource Manager hebben **voor sjabloonimplementatie** die is geconfigureerd op de pagina **Access-beleid.** Zie [Key Vault - Sjabloonimplementatie inschakelen](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment)voor een routebeschrijving over het inschakelen van deze functie.
 
-Zie [Overzicht van Key Vault](../../../key-vault/key-vault-overview.md)voor meer informatie over Azure Key Vault.
+Zie [Overzicht van Key Vault](../../../key-vault/general/overview.md)voor meer informatie over Azure Key Vault.
 
 ## <a name="parameter-types"></a>Parametertypen
 
@@ -234,8 +234,8 @@ Het instellen **van dynamische parameters** tijdens de toewijzing gebeurt door d
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie de lijst met [blauwdrukfuncties](../reference/blueprint-functions.md).
-- Meer informatie over de [levenscyclus van de blauwdruk](lifecycle.md).
-- Leer de volgorde van de [blauwdrukvolgorde](sequencing-order.md)aan te passen.
-- Ontdek hoe u gebruik maken van het vergrendelen van [blauwdrukbronnen.](resource-locking.md)
+- Meer informatie over de [levenscyclus van een blauwdruk](lifecycle.md).
+- Meer informatie over hoe u de [blauwdrukvolgorde](sequencing-order.md) aanpast.
+- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](resource-locking.md).
 - Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../how-to/update-existing-assignments.md).
-- Los problemen op tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing.](../troubleshoot/general.md)
+- Problemen oplossen tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing](../troubleshoot/general.md).

@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 7e6981fb57421846b491693bb6195ecef31a3773
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986302"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450348"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Voerontwerppatronen wijzigen in Azure Cosmos DB
 
@@ -99,7 +99,7 @@ Overweeg bijvoorbeeld een retailtoepassing met behulp van het ontwerppatroon voo
 
 1. Klant voegt punt A toe aan winkelwagentje
 2. Klant voegt punt B toe aan winkelwagentje
-3. Klant voegt verwijdert artikel A uit winkelwagentje
+3. Klant verwijdert punt A uit winkelwagentje
 4. Klant checkt uit en de inhoud van winkelwagentjes wordt verzonden
 
 Voor elke klant wordt een gematerialiseerde weergave van de huidige inhoud van winkelwagentjes behouden. Deze toepassing moet ervoor zorgen dat deze gebeurtenissen worden verwerkt in de volgorde waarin ze zich voordoen. Als bijvoorbeeld de kassawagen voor de verwijdering van artikel A zou worden verwerkt, is het waarschijnlijk dat de klant artikel A zou hebben laten verzenden, in tegenstelling tot het gewenste artikel B. Om te garanderen dat deze vier gebeurtenissen worden verwerkt in volgorde van hun voorkomen, moeten ze binnen dezelfde waarde van de partitiesleutel vallen. Als u **gebruikersnaam** (elke klant heeft een unieke gebruikersnaam) als partitiesleutel selecteert, u garanderen dat deze gebeurtenissen worden weergegeven in de wijzigingsfeed in dezelfde volgorde waarin ze zijn geschreven naar Azure Cosmos DB.

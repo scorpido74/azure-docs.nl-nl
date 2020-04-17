@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a70c6ae3ebc7f5b39550508594bd4d4907e68a67
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 845a202faccbbe0a604560ac57ae30f87344b95a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667345"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451122"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie plannen
 
@@ -144,7 +144,7 @@ Een sms-bericht dat een verificatiecode bevat, wordt naar de gebruiker verzonden
 
 ## <a name="plan-registration-policy"></a>Registratiebeleid plannen
 
-Beheerders moeten bepalen hoe gebruikers hun methoden registreren. Organisaties moeten [de nieuwe gecombineerde registratie-ervaring](howto-registration-mfa-sspr-combined.md) voor Azure MFA en selfservice wachtwoordreset (SSPR) inschakelen. Met SSPR kunnen gebruikers hun wachtwoord op een veilige manier opnieuw instellen met dezelfde methoden die ze gebruiken voor multi-factor authenticatie. We raden deze gecombineerde registratie aan, momenteel in openbare preview, omdat het een geweldige ervaring is voor gebruikers, met de mogelijkheid om één keer te registreren voor beide services. Als u dezelfde methoden inschakelt voor SSPR en Azure MFA, kunnen uw gebruikers worden geregistreerd om beide functies te gebruiken.
+Beheerders moeten bepalen hoe gebruikers hun methoden registreren. Organisaties moeten [de nieuwe gecombineerde registratie-ervaring](howto-registration-mfa-sspr-combined.md) voor Azure MFA en selfservice wachtwoordreset (SSPR) inschakelen. Met SSPR kunnen gebruikers hun wachtwoord op een veilige manier opnieuw instellen met dezelfde methoden die ze gebruiken voor multi-factor authenticatie. We raden deze gecombineerde registratie aan omdat het een geweldige ervaring is voor gebruikers, met de mogelijkheid om één keer te registreren voor beide services. Als u dezelfde methoden inschakelt voor SSPR en Azure MFA, kunnen uw gebruikers worden geregistreerd om beide functies te gebruiken.
 
 ### <a name="registration-with-identity-protection"></a>Registratie bij identiteitsbescherming
 

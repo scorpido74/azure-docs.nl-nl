@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aeffa0bb736f03403bf483b22775ef468bbcb2bd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f0034d06c852d4d71284093879a456d296d98715
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405470"
+ms.locfileid: "81457464"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Problemen met Azure Automation Desired State Configuration (DSC) oplossen
 
@@ -113,7 +113,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>Oorzaak
 
-Dit probleem wordt veroorzaakt door een slecht of verlopen certificaat.  Zie [Certificaat verlopen en opnieuw registreren](../automation-dsc-onboarding.md#re-register-a-node)voor meer informatie.
+Dit probleem wordt veroorzaakt door een slecht of verlopen certificaat.  Zie [Certificaat verlopen en opnieuw registreren](../automation-dsc-onboarding.md#re-registering-a-node)voor meer informatie.
 
 Dit probleem kan ook worden veroorzaakt door een proxyconfiguratie die geen toegang biedt tot ***.azure-automation.net**. Zie [Configuratie van privénetwerken](../automation-dsc-overview.md#network-planning)voor meer informatie. 
 
@@ -135,7 +135,7 @@ Ten tweede, verwijder de DSC-extensie van het knooppunt.
 
 Ten derde, verwijder alle slechte of verlopen certificaten van het knooppunt.
 
-Voer op het falende knooppunt van een verhoogde Powershell Prompt het volgende uit:
+Voer op het falende knooppunt van een verhoogde PowerShell-prompt het volgende uit:
 
 ```powershell
 $certs = @()
@@ -279,8 +279,8 @@ Behandel het knooppunt met abonnementen alsof het in een aparte cloud of on-prem
 
 Volg de onderstaande stappen om het knooppunt te registreren.
 
-* Windows - [Fysieke/virtuele Windows-machines on-premises of in een andere cloud dan Azure/AWS](../automation-dsc-onboarding.md#onboard-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure).
-* Linux - [Fysieke/virtuele Linux-machines on-premises of in een andere cloud dan Azure.](../automation-dsc-onboarding.md#onboard-physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)
+* Windows - [Fysieke/virtuele Windows-machines on-premises of in een andere cloud dan Azure/AWS](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines).
+* Linux - [Fysieke/virtuele Linux-machines on-premises of in een andere cloud dan Azure.](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines)
 
 ### <a name="scenario-error-message---provisioning-failed"></a><a name="agent-has-a-problem"></a>Scenario: Foutbericht - 'Inrichten is mislukt'
 

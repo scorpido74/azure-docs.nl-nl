@@ -9,12 +9,12 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f105eac0f6f21ea3358340a4e2aaec7d1f1a95ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 569c989e8876bb7213d1469c7a70da99aa0b1e9c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190547"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455339"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Beveiligingsbesturingselementen voor virtuele Windows-machines
 
@@ -43,14 +43,14 @@ In dit artikel worden de beveiligingsbesturingselementen die zijn ingebouwd in V
 
 | Beveiligingscontrole | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Authentication| Ja |  |
+| Verificatie| Ja |  |
 | Autorisatie| Ja |  |
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Beveiligingscontrole | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Server-side encryptie in rust: door Microsoft beheerde sleutels | Ja | Zie [Virtuele schijven versleutelen op een Windows-vm](/azure/virtual-machines/windows/encrypt-disks). |
+| Server-side encryptie in rust: door Microsoft beheerde sleutels | Ja | Zie [Virtuele schijven versleutelen op een Windows-vm](/azure/virtual-machines/windows/disk-encryption-overview). |
 | Versleuteling tijdens het transport (zoals ExpressRoute-versleuteling, vnet-versleuteling en VNet-VNet-versleuteling)| Ja | Azure Virtual Machines ondersteunt [ExpressRoute-](/azure/expressroute) en VNet-versleuteling. Zie [Versleuteling in transit in VM's](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Server-side encryptie in rust: door de klant beheerde sleutels (BYOK) | Ja | Door de klant beheerde sleutels is een ondersteund Azure-versleutelingsscenario; zie [overzicht van Azure-versleuteling](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
 | Versleuteling op kolomniveau (Azure Data Services)| N.v.t. | |

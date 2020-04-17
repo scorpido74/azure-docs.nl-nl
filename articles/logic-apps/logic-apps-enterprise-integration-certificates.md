@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: c1b48ae8191e2e5313d9037c791eca73c8a55691
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19a1883685193e80da5f1365ec2a30db0b8754f6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191390"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450137"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Beveiliging voor B2B-berichten verbeteren met behulp van certificaten
 
@@ -34,7 +34,7 @@ U deze certificaten gebruiken in uw bedrijfsintegratie-apps:
 
 Als u een *openbaar certificaat* wilt gebruiken in logische apps met B2B-mogelijkheden, moet u het certificaat eerst uploaden naar uw integratieaccount. Nadat u de eigenschappen hebt gedefinieerd in de [overeenkomsten](logic-apps-enterprise-integration-agreements.md) die u maakt, is het certificaat beschikbaar om u te helpen uw B2B-berichten te beveiligen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle bronnen**in het hoofdmenu van Azure. Voer in het zoekvak de naam van uw integratieaccount in en selecteer vervolgens het gewenste integratieaccount.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle bronnen**in het hoofdmenu van Azure. Voer in het zoekvak de naam van uw integratieaccount in en selecteer vervolgens het gewenste integratieaccount.
 
    ![Uw integratieaccount zoeken en selecteren](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
@@ -66,14 +66,14 @@ Nadat u de eigenschappen hebt gedefinieerd in de [overeenkomsten](logic-apps-ent
 > [!NOTE]
 > Voor privécertificaten moet u een bijbehorend openbaar certificaat toevoegen dat wordt weergegeven in de **instellingen voor verzenden en ontvangen van** de [AS2-overeenkomst](logic-apps-enterprise-integration-as2.md) voor het ondertekenen en versleutelen van berichten.
 
-1. [Voeg uw privésleutel toe aan Azure Key Vault](../key-vault/certificate-scenarios.md#import-a-certificate) en geef een **sleutelnaam op.**
+1. [Voeg uw privésleutel toe aan Azure Key Vault](../key-vault/certificates/certificate-scenarios.md#import-a-certificate) en geef een **sleutelnaam op.**
    
 2. Azure Logic Apps autoriseren om bewerkingen uit te voeren op Azure Key Vault. Als u toegang wilt verlenen tot de principal van de Logic Apps-service, gebruikt u de opdracht PowerShell, [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy), bijvoorbeeld:
 
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
-3. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle bronnen**in het hoofdmenu van Azure. Voer in het zoekvak de naam van uw integratieaccount in en selecteer vervolgens het gewenste integratieaccount.
+3. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle bronnen**in het hoofdmenu van Azure. Voer in het zoekvak de naam van uw integratieaccount in en selecteer vervolgens het gewenste integratieaccount.
 
    ![Uw integratieaccount zoeken](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b275239c19584bc11472711a32972aa3ebea1ab
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278686"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457532"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>De belangrijkste Windows PowerShell-werkstroomconcepten voor runbooks voor automatisering leren
 
@@ -20,9 +20,12 @@ Een werkstroom is een opeenvolging van geprogrammeerde, met elkaar verbonden sta
 
 Zie [Aan de slag met Windows PowerShell-workflow](https://technet.microsoft.com/library/jj134242.aspx)voor meer informatie over de onderwerpen in dit artikel.
 
+>[!NOTE]
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](automation-update-azure-modules.md)
+
 ## <a name="basic-structure-of-a-workflow"></a>Basisstructuur van een werkstroom
 
-De eerste stap om een PowerShell-script om te zetten naar een PowerShell-werkstroom, wordt bijgesloten met het trefwoord **Werkstroom.**  Een werkstroom begint met het trefwoord **Werkstroom,** gevolgd door de hoofdtekst van het script dat is ingesloten in accolades. De naam van de werkstroom volgt het trefwoord **Werkstroom** zoals weergegeven in de volgende syntaxis:
+De eerste stap naar het converteren van een PowerShell-script `Workflow` naar een PowerShell-werkstroom wordt bij het trefwoord bijgesloten.  Een werkstroom `Workflow` begint met het trefwoord gevolgd door de hoofdtekst van het script ingesloten in accolades. De naam van de `Workflow` werkstroom volgt het zoekwoord zoals weergegeven in de volgende syntaxis:
 
 ```powershell
 Workflow Test-Workflow
@@ -33,7 +36,7 @@ Workflow Test-Workflow
 
 De naam van de werkstroom moet overeenkomen met de naam van het runbook Automatisering. Als de runbook wordt geïmporteerd, moet de bestandsnaam overeenkomen met de werkstroomnaam en moet deze eindigen op *.ps1*.
 
-Als u parameters aan de werkstroom wilt toevoegen, gebruikt u het trefwoord **Param** zoals u dat zou doen met een script.
+Als u parameters aan de `Param` werkstroom wilt toevoegen, gebruikt u het trefwoord zoals in een script.
 
 ## <a name="code-changes"></a>Codewijzigingen
 
@@ -99,7 +102,7 @@ Workflow Stop-MyService
 
 ## <a name="inlinescript"></a>InlineScript
 
-De **InlineScript-activiteit** is handig wanneer u een of meer opdrachten moet uitvoeren als traditioneel PowerShell-script in plaats van powershell-werkstroom.  Waar opdrachten in een werkstroom naar Windows Workflow Foundation worden verzonden voor verwerking, worden opdrachten in een InlineScript blok verwerkt door Windows PowerShell.
+De`InlineScript` activiteit is handig wanneer u een of meer opdrachten moet uitvoeren als traditioneel PowerShell-script in plaats van powershell-werkstroom.  Waar opdrachten in een werkstroom naar Windows Workflow Foundation worden verzonden voor verwerking, worden opdrachten in een InlineScript blok verwerkt door Windows PowerShell.
 
 InlineScript gebruikt de volgende syntaxis hieronder.
 
@@ -154,7 +157,7 @@ Zie [Windows PowerShell-opdrachten uitvoeren in een werkstroom](https://technet.
 
 Een voordeel van Windows PowerShell-werkstromen is de mogelijkheid om een ​​reeks opdrachten parallel uit te voeren in plaats van opeenvolgend zoals bij een typische script.
 
-U het trefwoord **Parallel** gebruiken om een scriptblok te maken met meerdere opdrachten die gelijktijdig worden uitgevoerd. Hiermee wordt de volgende syntaxis gebruikt. In dit geval beginnen Activiteit1 en Activiteit2 tegelijkertijd. Activity3 begint pas nadat zowel Activiteit1 als Activiteit2 zijn voltooid.
+U `Parallel` het trefwoord gebruiken om een scriptblok te maken met meerdere opdrachten die gelijktijdig worden uitgevoerd. Hiermee wordt de volgende syntaxis gebruikt. In dit geval beginnen Activiteit1 en Activiteit2 tegelijkertijd. Activity3 begint pas nadat zowel Activiteit1 als Activiteit2 zijn voltooid.
 
 ```powershell
 Parallel
@@ -189,7 +192,7 @@ Workflow Copy-Files
 }
 ```
 
-U de **foreach-parallelconstructie** gebruiken om opdrachten voor elk item in een verzameling gelijktijdig te verwerken. De items in de verzameling worden parallel verwerkt, terwijl de opdrachten in het scriptblok sequentieel worden uitgevoerd. Hiermee wordt de volgende syntaxis gebruikt. In dit geval begint Activiteit1 op hetzelfde moment voor alle items in de collectie. Voor elk item wordt Activiteit2 gestart nadat Activiteit1 is voltooid. Activiteit3 wordt pas gestart nadat zowel Activiteit1 als Activiteit2 voor alle items zijn voltooid. We gebruiken `ThrottleLimit` de parameter om het parallellisme te beperken. Te hoog `ThrottleLimit` van een kan problemen veroorzaken. De ideale waarde `ThrottleLimit` voor de parameter is afhankelijk van vele factoren in uw omgeving. Probeer te beginnen met een lage waarde en probeer verschillende stijgende waarden totdat u er een vindt die werkt voor uw specifieke omstandigheid.
+U `ForEach -Parallel` de constructie gebruiken om opdrachten voor elk item in een verzameling gelijktijdig te verwerken. De items in de verzameling worden parallel verwerkt, terwijl de opdrachten in het scriptblok sequentieel worden uitgevoerd. Hiermee wordt de volgende syntaxis gebruikt. In dit geval begint Activiteit1 op hetzelfde moment voor alle items in de collectie. Voor elk item wordt Activiteit2 gestart nadat Activiteit1 is voltooid. Activiteit3 wordt pas gestart nadat zowel Activiteit1 als Activiteit2 voor alle items zijn voltooid. We gebruiken `ThrottleLimit` de parameter om het parallellisme te beperken. Te hoog `ThrottleLimit` van een kan problemen veroorzaken. De ideale waarde `ThrottleLimit` voor de parameter is afhankelijk van vele factoren in uw omgeving. Probeer te beginnen met een lage waarde en probeer verschillende stijgende waarden totdat u er een vindt die werkt voor uw specifieke omstandigheid.
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -222,7 +225,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>Controlepunten
 
-Een *controlepunt* is een momentopname van de huidige status van de werkstroom die de huidige waarde voor variabelen en eventuele uitvoer die tot dat punt wordt gegenereerd, bevat. Als een werkstroom ten onrechte eindigt of wordt opgeschort, begint de volgende keer dat deze wordt uitgevoerd, vanaf het laatste controlepunt in plaats van het begin van de werkstroom.  U een controlepunt instellen in een werkstroom met de activiteit **Controlepunt-Werkstroom.** Azure Automation heeft een functie genaamd [fair share,](automation-runbook-execution.md#fair-share)waarbij elke runbook die 3 uur wordt uitgevoerd, wordt gelost om andere runbooks uit te voeren. Uiteindelijk wordt het geloste runbook opnieuw geladen en wanneer dit het is, wordt de uitvoering hervat vanaf het laatste controlepunt in het runbook. Om te garanderen dat het runbook uiteindelijk wordt voltooid, moet u controlepunten toevoegen met intervallen die minder dan 3 uur duren. Als tijdens elke run een nieuw controlepunt wordt toegevoegd en als het runbook na 3 uur wordt uitgezet vanwege een fout, wordt het runbook voor onbepaalde tijd hervat.
+Een *controlepunt* is een momentopname van de huidige status van de werkstroom die de huidige waarde voor variabelen en eventuele uitvoer die tot dat punt wordt gegenereerd, bevat. Als een werkstroom ten onrechte eindigt of wordt opgeschort, begint de volgende keer dat deze wordt uitgevoerd, vanaf het laatste controlepunt in plaats van het begin van de werkstroom.  U een controlepunt instellen `Checkpoint-Workflow` in een werkstroom met de activiteit. Azure Automation heeft een functie genaamd [fair share,](automation-runbook-execution.md#fair-share)waarbij elke runbook die 3 uur wordt uitgevoerd, wordt gelost om andere runbooks uit te voeren. Uiteindelijk wordt het geloste runbook opnieuw geladen en wanneer dit het is, wordt de uitvoering hervat vanaf het laatste controlepunt in het runbook. Om te garanderen dat het runbook uiteindelijk wordt voltooid, moet u controlepunten toevoegen met intervallen die minder dan 3 uur duren. Als tijdens elke run een nieuw controlepunt wordt toegevoegd en als het runbook na 3 uur wordt uitgezet vanwege een fout, wordt het runbook voor onbepaalde tijd hervat.
 
 In de volgende voorbeeldcode treedt een uitzondering op nadat Activiteit2 ervoor zorgt dat de werkstroom is beëindigd. Wanneer de werkstroom opnieuw wordt uitgevoerd, wordt activiteit2 gestart, omdat dit vlak na de laatste controlepuntset was.
 
@@ -254,36 +257,37 @@ Workflow Copy-Files
 }
 ```
 
-Omdat gebruikersnaamreferenties niet worden gehandhaafd nadat u de activiteit [Onderbreken-werkstroom](https://technet.microsoft.com/library/jj733586.aspx) of na het laatste controlepunt hebt aangeroepen, moet u de referenties op null instellen en deze vervolgens opnieuw ophalen in het assetstore nadat **Suspend-Workflow** of controlepunt is aangeroepen.  Anders ontvangt u mogelijk het volgende foutbericht: *de werkstroomtaak kan niet worden hervat, omdat persistentiegegevens niet volledig kunnen worden opgeslagen of opgeslagen persistentiegegevens zijn beschadigd. U moet de werkstroom opnieuw opstarten.*
+Omdat gebruikersnaamreferenties niet worden gehandhaafd nadat u de activiteit [Onderbreken-werkstroom](https://technet.microsoft.com/library/jj733586.aspx) of na het laatste controlepunt hebt aangeroepen, `Suspend-Workflow` moet u de referenties op null instellen en deze vervolgens opnieuw ophalen in het assetarchief nadat of het controlepunt is aangeroepen.  Anders ontvangt u mogelijk het volgende foutbericht:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 Dezelfde code laat zien hoe u hiermee omgaat in uw PowerShell Workflow-runbooks.
 
 ```powershell
 workflow CreateTestVms
 {
-    $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-    $null = Connect-AzureRmAccount -Credential $Cred
+    $Cred = Get-AzAutomationCredential -Name "MyCredential"
+    $null = Connect-AzAccount -Credential $Cred
 
-    $VmsToCreate = Get-AzureAutomationVariable -Name "VmsToCreate"
+    $VmsToCreate = Get-AzAutomationVariable -Name "VmsToCreate"
 
     foreach ($VmName in $VmsToCreate)
         {
         # Do work first to create the VM (code not shown)
 
         # Now add the VM
-        New-AzureRmVm -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
+        New-AzVM -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
 
         # Checkpoint so that VM creation is not repeated if workflow suspends
         $Cred = $null
         Checkpoint-Workflow
-        $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-        $null = Connect-AzureRmAccount -Credential $Cred
+        $Cred = Get-AzAutomationCredential -Name "MyCredential"
+        $null = Connect-AzAccount -Credential $Cred
         }
 }
 ```
 
-> [!IMPORTANT]
-> **Add-AzureRmAccount** is nu een alias voor **Connect-AzureRMAccount**. Wanneer u uw bibliotheekitems zoekt, als u **Connect-AzureRMAccount**niet ziet, u **Add-AzureRmAccount**gebruiken of u uw modules bijwerken in uw automatiseringsaccount.
+> [!NOTE]
+> Voor niet-grafische PowerShell-runbooks `Add-AzAccount` en `Add-AzureRMAccount` zijn aliassen voor [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). U deze cmdlets gebruiken of u [uw modules](automation-update-azure-modules.md) in uw Automation-account updaten naar de nieuwste versies. Mogelijk moet u uw modules bijwerken, zelfs als u zojuist een nieuw Automation-account hebt gemaakt.
+
 
 Dit is niet vereist als u een Run As-account gebruikt dat is geconfigureerd met een serviceprincipal.
 

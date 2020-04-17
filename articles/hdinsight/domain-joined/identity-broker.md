@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 508eac08284f91821223a78cafdfee7b4c9c540b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fb82cec6874f8ef4f41897cc22939fe69ed02ec2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410869"
+ms.locfileid: "81457413"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>ID Broker (voorbeeld) gebruiken voor referentiebeheer
 
@@ -56,7 +56,7 @@ Nadat ID Broker is ingeschakeld, hebt u nog steeds een wachtwoordhash nodig die 
 
 SSH-verificatie vereist dat de hash beschikbaar is in Azure AD DS. Als u SSH alleen voor administratieve scenario's wilt gebruiken, u één cloudaccount maken en dat gebruiken om SSH in het cluster te gebruiken. Andere gebruikers kunnen nog steeds Ambari- of HDInsight-hulpprogramma's gebruiken (zoals de IntelliJ-plug-in) zonder dat de wachtwoordhash beschikbaar is in Azure AD DS.
 
-## <a name="clinets-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clinets die OAuth gebruiken om verbinding te maken met HDInsight-gateway met ID Broker-installatie
+## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clients die OAuth gebruiken om verbinding te maken met HDInsight-gateway met ID Broker-installatie
 
 In de id-broker-instelling kunnen aangepaste apps en clients die verbinding maken met de gateway worden bijgewerkt om eerst het vereiste OAuth-token te verkrijgen. U de stappen in dit [document](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) volgen om het token te verkrijgen met de volgende informatie:
 

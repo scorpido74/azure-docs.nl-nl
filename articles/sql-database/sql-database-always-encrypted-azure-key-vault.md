@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 006c780aeb3db813c8fdfb5da0b5c13fc4dcfebc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1d08581c5d29fc41fb33541d766af7cece88cdc
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067422"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451666"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Altijd versleuteld: bescherm gevoelige gegevens en sla versleutelingssleutels op in Azure Key Vault
 
@@ -55,9 +55,9 @@ Als u de *toepassings-id* en *-sleutel wilt opvragen,* voert u de stappen uit bi
 
 Nu uw client-app is geconfigureerd en u uw toepassings-id hebt, is het tijd om een sleutelkluis te maken en het toegangsbeleid te configureren, zodat u en uw toepassing toegang hebben tot de geheimen van de kluis (de altijd versleutelde sleutels). De machtigingen *voor maken*, *ophalen*, *lijst,* *ondertekenen,* *verifiëren,* *wrapKey*en *uitpakkenSleutel* zijn vereist voor het maken van een nieuwe kolomhoofdsleutel en voor het instellen van versleuteling met SQL Server Management Studio.
 
-U snel een sleutelkluis maken door het volgende script uit te voeren. Zie [Wat is Azure Key Vault voor](../key-vault/key-vault-overview.md)een gedetailleerde uitleg van deze opdrachten en meer informatie over het maken en configureren van een sleutelkluis.
+U snel een sleutelkluis maken door het volgende script uit te voeren. Zie [Wat is Azure Key Vault voor](../key-vault/general/overview.md)een gedetailleerde uitleg van deze opdrachten en meer informatie over het maken en configureren van een sleutelkluis.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > De PowerShell Azure Resource Manager (RM)-module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkelingen zijn voor de Az.Sql-module. De AzureRM-module blijft bugfixes ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn nagenoeg identiek. Zie De nieuwe Azure [PowerShell Az-module introduceren](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit ervan.
@@ -106,7 +106,7 @@ az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwr
 
 ## <a name="create-a-blank-sql-database"></a>Een lege SQL-database maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2.  > Ga naar Een > **SQL-database voor** **bronnendatabases****maken**.
 3. Maak een **Lege** database met de naam **Clinic** op een nieuwe of bestaande server. Zie Uw eerste Azure SQL-database voor gedetailleerde aanwijzingen over het maken van een database in de [Azure-portal.](sql-database-single-database-get-started.md)
 
