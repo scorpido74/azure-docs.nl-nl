@@ -92,13 +92,13 @@
               href: ctf-reporting.md
             - name: N beste vertalingen retourneren
               href: return-n-best-translations.md
-    - name: Bronnen
+    - name: Resources
       items:
         - name: Codevoorbeelden op GitHub
           href: 'https://aka.ms/TranslatorGitHub'
         - name: Veelgestelde vragen
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: Ondersteuning voor taal en regio
+        - name: Taalondersteuning
           href: language-support.md
         - name: Prijzen
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
@@ -160,7 +160,7 @@
           href: custom-translator/how-to-migrate.md
         - name: Implementaties in niet-ondersteunde talen
           href: custom-translator/unsupported-language-deployments.md
-    - name: Bronnen
+    - name: Resources
       items:
         - name: Taalondersteuning
           href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'

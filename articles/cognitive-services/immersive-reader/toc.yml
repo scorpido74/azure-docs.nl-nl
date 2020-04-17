@@ -19,7 +19,7 @@
       href: tutorial-python.md
     - name: Meerde resources voor Insluitende lezer gebruiken
       href: tutorial-multiple-resources.md
-- name: Instructies
+- name: 'Uitleg:'
   items:
     - name: Insluitende lezersresource maken
       href: how-to-create-immersive-reader.md
@@ -37,11 +37,11 @@
   items:
     - name: SDK-naslaginformatie
       href: reference.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Taalondersteuning
-      href: 'https://aka.ms/ltlangsupport'
+      href: language-support.md
     - name: Regionale beschikbaarheid
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

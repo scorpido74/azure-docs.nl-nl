@@ -147,7 +147,7 @@
               href: Quickstarts/get-answer-from-knowledge-base-python.md
 - name: Naslaginformatie
   items:
-    - name: Talen
+    - name: Taalondersteuning
       href: Overview/language-support.md
     - name: Limieten
       href: limits.md

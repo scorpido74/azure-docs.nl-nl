@@ -79,7 +79,7 @@
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
     - name: Probeer het nu!
       href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
-    - name: Ondersteuning voor taal en regio
+    - name: Taalondersteuning
       href: language-support.md
     - name: Analytische gegevens voor Automatische suggestie-API voor Bing
       maintainContext: true

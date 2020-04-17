@@ -7,7 +7,7 @@
       href: overview.md
     - name: Voorbeeldgebruikerscenario's
       href: text-analytics-user-scenarios.md
-    - name: Wat is er nieuw
+    - name: Nieuwe functies
       href: whats-new.md
 - name: Snelstartgidsen
   expanded: true
@@ -48,7 +48,7 @@
   items:
     - name: Typen benoemde entiteiten
       href: named-entity-types.md
-    - name: Ondersteuning voor taal en regio
+    - name: Taalondersteuning
       href: language-support.md
     - name: Verschuivingen van tekst
       href: concepts/text-offsets.md
@@ -110,7 +110,7 @@
               href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/?view=azure-node-latest'
             - name: Aan de slag
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
-- name: Bronnen
+- name: Resources
   items:
     - name: Externe en community-inhoud
       href: text-analytics-resource-external-community.md

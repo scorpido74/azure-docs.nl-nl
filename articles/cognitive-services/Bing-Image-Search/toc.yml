@@ -85,7 +85,7 @@
     - name: Vereisten voor gebruik en weergave van Bing
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
-- name: Bronnen
+- name: Resources
   items:
     - name: Veelgestelde vragen
       href: bing-image-search-resource-faq.md
@@ -107,7 +107,7 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
     - name: Bing Afbeeldingen zoeken-eindpunten
       href: image-search-endpoint.md
-    - name: Ondersteuning voor taal en regio
+    - name: Taalondersteuning
       href: language-support.md
     - name: Analytische gegevens voor Bing Afbeeldingen zoeken-API
       maintainContext: true

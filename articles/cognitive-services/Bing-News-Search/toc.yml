@@ -97,7 +97,7 @@
       href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553'
     - name: Bing Nieuws zoeken-eindpunten
       href: endpoint-news.md
-    - name: Ondersteuning voor taal en regio
+    - name: Taalondersteuning
       href: language-support.md
     - name: Analytische gegevens voor Bing Nieuws zoeken-API
       href: bing-news-stats.md

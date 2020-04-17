@@ -67,12 +67,12 @@
     - name: Vereisten voor gebruik en weergave
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
-- name: Bronnen
+- name: Resources
   items:
     - name: Analytische gegevens voor Bing Spellingcontrole-API
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-    - name: Ondersteuning voor taal en regio
+    - name: Taalondersteuning
       href: language-support.md
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'
