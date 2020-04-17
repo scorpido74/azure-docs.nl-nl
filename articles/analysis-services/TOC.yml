@@ -39,6 +39,8 @@
       href: analysis-services-connect.md
     - name: Hoge beschikbaarheid
       href: analysis-services-bcdr.md
+    - name: Langlopende bewerkingen
+      href: analysis-services-long-operations.md
     - name: Ondersteunde gegevensbronnen
       href: analysis-services-datasource.md
 - name: Uitleg

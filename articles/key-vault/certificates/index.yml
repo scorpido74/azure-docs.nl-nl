@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: Certificaten
+summary: Met Azure Key Vault kunnen Microsoft Azure-toepassingen en -gebruikers certificaten opslaan en gebruiken die zijn gebouwd op sleutels en geheimen, en een functie voor automatisch vernieuwen toevoegen.
+metadata:
+  title: Documentatie over Azure Key Vault - certificaten
+  description: Met Azure Key Vault kunnen Microsoft Azure-toepassingen en -gebruikers certificaten opslaan en gebruiken die zijn gebouwd op sleutels en geheimen, en een functie voor automatisch vernieuwen toevoegen.
+  services: key-vault
+  ms.service: key-vault
+  ms.subservice: certificates
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 04/07/2020
+  ms.openlocfilehash: 78963c02d35d93b4756c12f948c5ba214fb23e90
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81423527"
+landingContent:
+- title: Certificaten
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat zijn Azure Key Vault-certificaten?
+      url: about-certificates.md
+    - text: Aan de slag gaan met Key Vault-certificaten
+      url: certificate-scenarios.md
+    - text: Methoden voor het maken van certificaten
+      url: create-certificate.md
+    - text: Het maken van certificaten controleren en beheren
+      url: create-certificate-scenarios.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: Portal
+      url: quick-create-portal.md
+    - text: Python
+      url: quick-create-python.md
+    - text: Een certificaat importeren in Key Vault
+      url: tutorial-import-certificate.md
+- title: Meer informatie over Key Vault
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Overzicht van Key Vault
+      url: ../general/overview.md
+    - text: Basisbegrippen
+      url: ../general/basic-concepts.md
+    - text: Overzicht van voorlopig verwijderen
+      url: ../general/overview-soft-delete.md
+    - text: Beveiligingsoverzicht
+      url: ../general/overview-security.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Geheimen in server-apps beheren met Azure Key Vault
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

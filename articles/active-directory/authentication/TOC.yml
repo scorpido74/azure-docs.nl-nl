@@ -22,22 +22,16 @@
   items:
     - name: Verificatiemethoden
       href: concept-authentication-methods.md
-    - name: Verificatie zonder wachtwoord
-      href: concept-authentication-passwordless.md
-    - name: Registratie van beveiligingsgegevens
-      href: concept-registration-mfa-sspr-combined.md
-    - name: Wachtwoord opnieuw instellen
+    - name: Self-service voor wachtwoord opnieuw instellen
       items:
         - name: Hoe het opnieuw instellen van het wachtwoord werkt
           href: concept-sspr-howitworks.md
-        - name: Opties voor het wachtwoord opnieuw instellen
-          href: concept-sspr-customization.md
-        - name: Beleid voor het opnieuw instellen van het wachtwoord
-          href: concept-sspr-policy.md
-        - name: Welke licentie heb ik nodig?
-          href: concept-sspr-licensing.md
         - name: On-premises integratie
           href: concept-sspr-writeback.md
+        - name: Beleidsregels
+          href: concept-sspr-policy.md
+        - name: Licenties
+          href: concept-sspr-licensing.md
     - name: Multi-Factor Authentication
       items:
         - name: Hoe MFA werkt
@@ -50,12 +44,16 @@
           href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
         - name: Veelgestelde vragen
           href: multi-factor-authentication-faq.md
-    - name: Wachtwoordbeveiliging in Azure AD
+    - name: Verificatie zonder wachtwoord
+      href: concept-authentication-passwordless.md
+    - name: Wachtwoordbeveiliging
       items:
         - name: Zwakke wachtwoorden in de cloud elimineren
           href: concept-password-ban-bad.md
         - name: Zwakke wachtwoorden on-premises elimineren
           href: concept-password-ban-bad-on-premises.md
+    - name: Registratie van beveiligingsgegevens
+      href: concept-registration-mfa-sspr-combined.md
     - name: Robuust toegangsbeheer
       href: concept-resilient-controls.md
 - name: Instructiegidsen
@@ -64,6 +62,8 @@
       items:
         - name: Implementatiehandleiding
           href: howto-sspr-deployment.md
+        - name: Aanpassingsopties voor gebruikers
+          href: howto-sspr-customization.md
         - name: Uw authenticatiegegevens vooraf registreren
           href: howto-sspr-authenticationdata.md
         - name: Self-service voor wachtwoordherstel voor Windows-clients
@@ -100,28 +100,6 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: Registratie van beveiligingsinformatie
-      items:
-        - name: Gecombineerde registratie inschakelen
-          href: howto-registration-mfa-sspr-combined.md
-        - name: Problemen met gecombineerde registratie oplossen
-          href: howto-registration-mfa-sspr-combined-troubleshoot.md
-    - name: Wachtwoordbeveiliging in Azure AD
-      items:
-        - name: On-premises plannen en implementeren
-          href: howto-password-ban-bad-on-premises-deploy.md
-        - name: On-premises installeren en configureren
-          href: howto-password-ban-bad-on-premises-operations.md
-        - name: On-premises implementaties controleren
-          href: howto-password-ban-bad-on-premises-monitor.md
-        - name: Problemen met on-premises implementaties oplossen
-          href: howto-password-ban-bad-on-premises-troubleshoot.md
-        - name: Veelgestelde vragen over on-premises
-          href: howto-password-ban-bad-on-premises-faq.md
-        - name: Versiegeschiedenis van on-premises agent
-          href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: Slimme vergrendeling van Azure AD
-      href: howto-password-smart-lockout.md
     - name: Zonder wachtwoord
       items:
         - name: Implementeren zonder wachtwoord
@@ -138,16 +116,38 @@
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello voor Bedrijven
           href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+    - name: Registratie van beveiligingsinformatie
+      items:
+        - name: Gecombineerde registratie inschakelen
+          href: howto-registration-mfa-sspr-combined.md
+        - name: Problemen met gecombineerde registratie oplossen
+          href: howto-registration-mfa-sspr-combined-troubleshoot.md
+    - name: On-premises wachtwoordbeveiliging
+      items:
+        - name: Plannen en implementeren
+          href: howto-password-ban-bad-on-premises-deploy.md
+        - name: Inschakelen en configureren
+          href: howto-password-ban-bad-on-premises-operations.md
+        - name: Controleren
+          href: howto-password-ban-bad-on-premises-monitor.md
+        - name: Problemen oplossen
+          href: howto-password-ban-bad-on-premises-troubleshoot.md
+        - name: Veelgestelde vragen
+          href: howto-password-ban-bad-on-premises-faq.md
+        - name: Versiegeschiedenis van agent
+          href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Verificatie op basis van SMS gebruiken (preview)
       href: howto-authentication-sms-signin.md
+    - name: Slimme vergrendeling van Azure AD
+      href: howto-password-smart-lockout.md
     - name: Verificatie op basis van certificaat
       items:
         - name: Aan de slag met certificaatverificatie
           href: active-directory-certificate-based-authentication-get-started.md
           items:
-            - name: Verificatie op basis van certificaat op Android-apparaten
+            - name: Gebruiken op Android-apparaten
               href: active-directory-certificate-based-authentication-android.md
-            - name: Verificatie op basis van certificaat op iOS-apparaten
+            - name: Gebruiken op iOS-apparaten
               href: active-directory-certificate-based-authentication-ios.md
     - name: Rapportage
       items:

@@ -581,6 +581,8 @@
       items:
         - name: SSIS-pakketten uitvoeren in Azure vanuit SSDT
           href: how-to-invoke-ssis-package-ssdt.md
+        - name: SSIS-pakketten uitvoeren met de Azure SQL Database Managed Instance-agent
+          href: how-to-invoke-ssis-package-managed-instance-agent.md
         - name: SSIS-pakketten uitvoeren met Azure-dtexec
           href: how-to-invoke-ssis-package-azure-enabled-dtexec.md
         - name: SSIS-pakketten uitvoeren met de activiteit SSIS-pakket uitvoeren

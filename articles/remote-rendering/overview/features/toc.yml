@@ -1,5 +1,7 @@
 - name: Vlakken knippen
   href: cut-planes.md
+- name: Debug Rendering
+  href: debug-rendering.md
 - name: Hiërarchische status overschrijven
   href: override-hierarchical-state.md
 - name: Vertraagde fase van het project

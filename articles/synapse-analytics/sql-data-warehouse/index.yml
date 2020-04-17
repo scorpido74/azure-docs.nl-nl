@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)
+title: Azure Synapse Analytics
 summary: Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big data-analyses combineert. Deze geeft u de vrijheid om op schaal gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte resources.
 metadata:
   title: Azure Synapse Analytics
@@ -11,28 +11,40 @@ metadata:
   ms.collection: collection
   author: julieMSFT
   ms.author: jrasnick
-  ms.date: 10/03/2019
-  ms.openlocfilehash: 16855697c61bb4b919d4f7dcaa752d3a17f6dbef
-  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+  ms.date: 04/15/2020
+  ms.openlocfilehash: ea895ce94ed3b1fde574a1753981ac58adcb72b3
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80998832"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81414253"
 landingContent:
-- title: Info over Azure Synapse Analytics
+- title: Over Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is Azure Synapse?
+    - text: Wat is Azure Synapse? (voorheen Azure SQL Data Warehouse)
       url: sql-data-warehouse-overview-what-is.md
+    - text: Tips en best practices
+      url: cheat-sheet.md
   - linkListType: architecture
     links:
     - text: Azure Synapse-architectuur
       url: massively-parallel-processing-mpp-architecture.md
-    - text: Tips en best practices
-      url: cheat-sheet.md
     - text: Referentiearchitectuur
       url: https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/data/enterprise-bi-synapse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+- title: Over Azure Synapse Analytics (voorbeeld van werkruimte)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Synapse (voorbeeld van werkruimte)
+      url: ../overview-what-is.md
+    - text: Tips en best practices
+      url: ../overview-cheat-sheet.md
+    - text: Veelgestelde vragen
+      url: ../overview-faq.md
+    - text: Releaseopmerkingen
+      url: ../release-notes.md
 - title: Aan de slag
   linkLists:
   - linkListType: deploy
@@ -63,12 +75,8 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: Aanbevolen procedures
-      url: sql-data-warehouse-best-practices.md
     - text: Afstemmen van geordende en geclusterde columnstore-index
       url: performance-tuning-ordered-cci.md
-    - text: Gerealiseerde weergaven gebruiken voor afstemmen van workload
-      url: performance-tuning-materialized-views.md
   - linkListType: how-to-guide
     links:
     - text: Uw workload analyseren
@@ -99,5 +107,5 @@ landingContent:
   linkLists:
   - linkListType: video
     links:
-    - text: Bekijk de nieuwste video's over datawarehouses
+    - text: De nieuwste Synapse SQL-video's bekijken
       url: sql-data-warehouse-videos.md

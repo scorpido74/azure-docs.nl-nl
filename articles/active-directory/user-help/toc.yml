@@ -24,6 +24,10 @@
       href: active-directory-passwords-reset-register.md
     - name: Uw wachtwoord opnieuw instellen
       href: active-directory-passwords-update-your-own-password.md
+- name: 'Mijn personeel: hulp bij de portal'
+  items:
+    - name: 'Mijn personeel: gebruikersbeheer'
+      href: my-staff-team-manager.md
 - name: Hulp bij Microsoft Authenticator-app
   items:
     - name: Wat is de Microsoft Authenticator-app?

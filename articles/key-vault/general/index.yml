@@ -1,0 +1,68 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Key Vault
+summary: Meer informatie over hoe u Key Vault gebruikt om sleutels te maken en te onderhouden waarmee u de resources, apps en oplossingen in de cloud kunt openen en versleutelen. Zelfstudies, API-verwijzingen en meer.
+metadata:
+  title: Documentatie voor Azure Key Vault
+  description: Meer informatie over hoe u Key Vault gebruikt om sleutels te maken en te onderhouden waarmee u de resources, apps en oplossingen in de cloud kunt openen en versleutelen. Zelfstudies, API-verwijzingen en meer.
+  services: key-vault
+  ms.service: key-vault
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 5be853f9e1f9778eb767aa93497c546cb35fa0df
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81422401"
+landingContent:
+- title: Over Azure Key Vault
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Sleutelkluis?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Basisbegrippen
+      url: basic-concepts.md
+    - text: Voorlopig verwijderen
+      url: overview-soft-delete.md
+    - text: Beperking
+      url: overview-throttling.md
+- title: Zelfstudies
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Key Vault vanuit een webtoepassing
+      url: tutorial-net-create-vault-azure-web-app.md
+    - text: Azure Key Vault met Azure Windows Virtual Machine
+      url: tutorial-net-windows-virtual-machine.md
+    - text: Key Vault met Python - Windows
+      url: tutorial-python-windows-virtual-machine.md
+- title: Beveiliging
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Uw Key Vault beveiligen
+      url: secure-your-key-vault.md
+    - text: Aanbevelingen voor beveiliging
+      url: security-recommendations.md
+    - text: Beveiligingsbasislijn
+      url: security-baseline.md
+  - linkListType: tutorial
+    links:
+    - text: Private Link gebruiken
+      url: private-link-service.md
+    - text: Een beheerde identiteit gebruiken
+      url: managed-identity.md
+    - text: Een toegangsbeleid gebruiken
+      url: group-permissions-for-apps.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Geheimen in server-apps beheren met Azure Key Vault
+      url: /learn/modules/manage-secrets-with-azure-key-vault/
