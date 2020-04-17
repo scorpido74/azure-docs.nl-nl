@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 9e6b451901da00243c458c06d51ba19fb64c0fdc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115063"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81530450"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Servers beoordelen met behulp van geïmporteerde gegevens
 
@@ -68,12 +68,12 @@ Ga als volgende voor een nieuw Azure Migrate-project:
 5. Selecteer in **Project migreren** uw Azure-abonnement en maak een resourcegroep als u er nog geen hebt.
 6. Geef in **PROJECTDETAILS**de projectnaam en de geografie op waarin u het project wilt maken. Voor meer informatie:
 
-    - Bekijk [ondersteunde regio's](migrate-support-matrix.md#supported-geographies). Het geografische gebied voor het project wordt alleen gebruikt om de metagegevens op te slaan die worden verzameld van on-premises virtuele machines.
+    - Bekijk de ondersteunde regio's voor [publieke](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheidswolken.](migrate-support-matrix.md#supported-geographies-azure-government)
     - Wanneer u een migratie uitvoert, kunt u elke gewenste doelregio selecteren.
 
     ![Een Azure-migratieproject maken](./media/tutorial-assess-import/migrate-project.png)
 
-7. Selecteer **Volgende**.
+7. Selecteer **Next**.
 8. Selecteer Azure **Migrate: Server Assessment** > **Next**in **Het beoordelingshulpprogramma selecteren.**
 
     ![Een azure-migratiebeoordeling maken](./media/tutorial-assess-import/assessment-tool.png)

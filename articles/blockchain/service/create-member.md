@@ -4,12 +4,12 @@ description: Maak een Azure Blockchain Service-lid voor een blockchainconsortium
 ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 4c3dabc6abdffd2fb08ece617545d8471955d130
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 7d29382cdedf7e35d186c73c9d32547e10fb10d6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529645"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460270"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Snelstart: een Azure Blockchain Service-blockchain-lid maken met behulp van de Azure-portal
 
@@ -21,7 +21,7 @@ In deze quickstart implementeert u een nieuw blockchain-lid en consortium in Azu
 
 Een Azure Blockchain Service-lid is een blockchain-knooppunt in een blockchain-netwerk voor een privéconsortium. Wanneer u een lid indient, u een consortiumnetwerk maken of lid worden. U hebt ten minste één lid nodig voor een consortiumnetwerk. Het aantal blockchain-leden dat deelnemers nodig hebben, is afhankelijk van uw scenario. Consortiumdeelnemers kunnen een of meer blockchain-leden hebben of leden delen met andere deelnemers. Zie [Azure Blockchain Service consortium](consortium.md)voor meer informatie over consortia.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.
 1. Selecteer **Blockchain** > **Azure Blockchain Service (voorbeeld)**.
 
@@ -34,9 +34,9 @@ Een Azure Blockchain Service-lid is een blockchain-knooppunt in een blockchain-n
     Regio | Kies een regio om het lid te maken. Alle leden van het consortium moeten zich op dezelfde locatie bevinden.
     Protocol | Momenteel ondersteunt Azure Blockchain Service Preview het Quorum-protocol.
     Consortium | Voer voor een nieuw consortium een unieke naam in. Als u zich via een uitnodiging aansluit bij een consortium, kiest u het consortium waartoe u lid wordt. Zie [Azure Blockchain Service consortium](consortium.md)voor meer informatie over consortia.
-    Name | Kies een unieke naam voor het Azure Blockchain Service-lid. De naam van het blockchain-lid kan alleen kleine letters en cijfers bevatten. Het eerste teken moet een letter zijn. De waarde moet tussen de 2 en 20 tekens lang zijn.
+    Naam | Kies een unieke naam voor het Azure Blockchain Service-lid. De naam van het blockchain-lid kan alleen kleine letters en cijfers bevatten. Het eerste teken moet een letter zijn. De waarde moet tussen de 2 en 20 tekens lang zijn.
     Wachtwoord van lidaccount | Het wachtwoord van het ledenaccount wordt gebruikt om de privésleutel voor het Ethereum-account dat voor uw lid is gemaakt, te versleutelen. U gebruikt het accountaccount en het wachtwoord van het ledenaccount voor consortiumbeheer.
-    Prijzen | De knooppuntconfiguratie en kosten voor uw nieuwe service. Selecteer de koppeling **Wijzigen** om te kiezen tussen **standaard-** en **basislagen.** Gebruik de *basislaag* is voor ontwikkeling, testen en proof of concepts. Gebruik de *standaardlaag* voor implementaties van productiekwaliteit. U moet ook de *standaardlaag* gebruiken als u Blockchain Data Manager gebruikt of een groot aantal privétransacties verzendt. Het wijzigen van de prijslaag tussen basis en standaard na het maken van leden wordt niet ondersteund.
+    Prijzen | De knooppuntconfiguratie en kosten voor uw nieuwe service. Selecteer de koppeling **Wijzigen** om te kiezen tussen **standaard-** en **basislagen.** Gebruik de *basislaag* voor ontwikkeling, testen en proof of concepts. Gebruik de *standaardlaag* voor implementaties van productiekwaliteit. U moet ook de *standaardlaag* gebruiken als u Blockchain Data Manager gebruikt of een groot aantal privétransacties verzendt. Het wijzigen van de prijslaag tussen basis en standaard na het maken van leden wordt niet ondersteund.
     Knooppuntwachtwoord | Het wachtwoord voor het standaard transactieknooppunt van het lid. Gebruik het wachtwoord voor basisverificatie wanneer u verbinding maakt met het standaardtransactieknooppunt openbare eindpunt van het blockchain-lid.
 
 1. Selecteer **Controleren + maken** om uw instellingen te valideren. Selecteer **Maken** om de service in te richten. Inrichten duurt ongeveer 10 minuten.

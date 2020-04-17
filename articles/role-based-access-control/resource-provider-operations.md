@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 16fa33999a38b21fd2016c986dd2db81f7d84051
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 274e85a914ebec31a03f1149bc4467ea142e7255
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383754"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482109"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager-resourceproviderbewerkingen
 
@@ -2198,6 +2198,10 @@ Azure-service: [virtuele machines,](../virtual-machines/index.yml) [virtuele mac
 > | Actie | Microsoft.Compute/locaties/logAnalytics/getThrottledRequests/action | Maak logboeken om aggregaten van aangeschreven aanvragen te weergeven die zijn gegroepeerd op ResourceName, OperationName of het toegepaste gaspedaalbeleid. |
 > |  | **locaties/bewerkingen** |  |
 > | Actie | Microsoft.Compute/locaties/bewerkingen/lezen | Krijgt de status van een asynchrone bewerking |
+> |  | **locaties/privateEndpointConnectionProxyAzureAsyncOperation** |  |
+> | Actie | Microsoft.Compute/locaties/privateEndpointConnectionProxyAzureAsyncOperation/read | De status van asynchrone private endpointconnectionproxybewerking opdoen |
+> |  | **locaties/privateEndpointConnectionProxyOperationResults** |  |
+> | Actie | Microsoft.Compute/locaties/privateEndpointConnectionProxyOperationResults/read | De resultaten van de proxy van privé-eindpuntverbinding weergeven |
 > |  | **locaties/uitgevers** |  |
 > | Actie | Microsoft.Compute/locaties/uitgevers/gelezen | De eigenschappen van een uitgever ophalen |
 > |  | **locaties/uitgevers/artefacten/aanbiedingen** |  |
@@ -2233,6 +2237,14 @@ Azure-service: [virtuele machines,](../virtual-machines/index.yml) [virtuele mac
 > | Actie | Microsoft.Compute/restorePointCollections/restorePoints/write | Maakt een nieuw herstelpunt |
 > | Actie | Microsoft.Compute/restorePointCollections/restorePoints/delete | Hiermee verwijdert u het herstelpunt |
 > | Actie | Microsoft.Compute/restorePointCollections/restorePoints/retrieveSasUris/action | De eigenschappen van een herstelpunt samen met blob-SAS-URI's |
+> |  | **sharedVMExtensions** |  |
+> | Actie | Microsoft.Compute/sharedVMExtensions/lezen | Haalt de eigenschappen van gedeelde VM-extensie |
+> | Actie | Microsoft.Compute/sharedVMExtensions/write | Maakt een nieuwe gedeelde VM-extensie of werkt een bestaande extensie bij |
+> | Actie | Microsoft.Compute/sharedVMExtensions/delete | Verwijdert de gedeelde VM-extensie |
+> |  | **sharedVMExtensions/versies** |  |
+> | Actie | Microsoft.Compute/sharedVMExtensions/versies/lezen | Haalt de eigenschappen van gedeelde VM-extensieversie |
+> | Actie | Microsoft.Compute/sharedVMExtensions/versies/schrijven | Maakt een nieuwe versie van gedeelde VM-extensie of werkt een bestaande versie bij |
+> | Actie | Microsoft.Compute/sharedVMExtensions/versies/verwijderen | Verwijdert de versie van gedeelde VM-extensie |
 > |  | **sharedVMImages** |  |
 > | Actie | Microsoft.Compute/sharedVMImages/read | De eigenschappen van een SharedVMImage oppakken |
 > | Actie | Microsoft.Compute/sharedVMImages/write | Maakt een nieuwe SharedVMImage of werkt een bestaande |
@@ -2250,6 +2262,10 @@ Azure-service: [virtuele machines,](../virtual-machines/index.yml) [virtuele mac
 > | Actie | Microsoft.Compute/snapshots/delete | Een momentopname verwijderen |
 > | Actie | Microsoft.Compute/snapshots/beginGetAccess/action | Download de SAS URI van de momentopname voor blobtoegang |
 > | Actie | Microsoft.Compute/snapshots/endGetAccess/action | De SAS URI van de momentopname intrekken |
+> |  | **sshPublicKeys sshPublicKeys sshPublicKeys ssh** |  |
+> | Actie | Microsoft.Compute/sshPublicKeys/read | De eigenschappen van een Openbare SSH-sleutel krijgen |
+> | Actie | Microsoft.Compute/sshPublicKeys/write | Maakt een nieuwe SSH-openbare sleutel of werkt een bestaande SSH-openbare sleutel bij |
+> | Actie | Microsoft.Compute/sshPublicKeys/delete | Verwijdert de openbare SSH-sleutel |
 > |  | **virtueleMachines** |  |
 > | Actie | Microsoft.Compute/virtualMachines/lezen | De eigenschappen van een virtuele machine krijgen |
 > | Actie | Microsoft.Compute/virtualMachines/write | Maakt een nieuwe virtuele machine of werkt een bestaande virtuele machine bij |
@@ -3934,6 +3950,83 @@ Azure-service: [Azure Cosmos DB](../cosmos-db/index.yml)
 > | Actie | Microsoft.DocumentDB/databaseAccounts/getBackupPolicy/actie | Het back-upbeleid van het databaseaccount ophalen |
 > | Actie | Microsoft.DocumentDB/databaseAccounts/herstellen/actie | Een herstelaanvraag indienen |
 > | Actie | Microsoft.DocumentDB/databaseAccounts/back-up/actie | Een verzoek indienen om een back-up te configureren |
+> |  | **databaseAccounts/api's/databases** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/schrijven | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Maak een database. Alleen van toepassing op API-typen: 'sql', 'mongodb', 'gremlin'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een database of vermeld alle databases. Alleen van toepassing op API-typen: 'sql', 'mongodb', 'gremlin'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/delete | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Een database verwijderen. Alleen van toepassing op API-typen: 'sql', 'mongodb', 'gremlin'. |
+> |  | **databaseAccounts/api's/databases/verzamelingen** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/verzamelingen/schrijven | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Een verzameling maken of bijwerken. Alleen van toepassing op API-typen: 'mongodb'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/verzamelingen/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een verzameling of vermeld alle collecties. Alleen van toepassing op API-typen: 'mongodb'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/verzamelingen/verwijderen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Verwijder een verzameling. Alleen van toepassing op API-typen: 'mongodb'. |
+> |  | **databaseAccounts/api's/databases/verzamelingen/bewerkingResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/verzamelingen/operationResultaten/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'mongodb'. |
+> |  | **databaseAccounts/api's/databases/verzamelingen/instellingen** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/verzamelingen/instellingen/schrijven | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Een verzamelingsdoorvoer bijwerken. Alleen van toepassing op API-typen: 'mongodb'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/verzamelingen/instellingen/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een verzamelingsdoorvoer. Alleen van toepassing op API-typen: 'mongodb'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> |  | **databaseAccounts/api's/databases/verzamelingen/instellingen/operationResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/verzamelingen/instellingen/operationResultaten/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'mongodb'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> |  | **databaseAccounts/api's/databases/containers** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/containers/schrijven | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Een container maken of bijwerken. Alleen van toepassing op API-typen: 'sql'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/containers/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een container of vermeld alle containers. Alleen van toepassing op API-typen: 'sql'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/containers/verwijderen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Verwijder een container. Alleen van toepassing op API-typen: 'sql'. |
+> |  | **databaseAccounts/api's/databases/containers/bewerkingResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/containers/operationResultaten/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'sql'. |
+> |  | **databaseAccounts/api's/databases/containers/instellingen** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/containers/instellingen/schrijven | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Update een containerdoorvoer. Alleen van toepassing op API-typen: 'sql'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/containers/instellingen/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een containerdoorvoer. Alleen van toepassing op API-typen: 'sql'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> |  | **databaseAccounts/api's/databases/containers/instellingen/operationResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/containers/instellingen/operationResultaten/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'sql'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> |  | **databaseAccounts/api's/databases/grafieken** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/grafieken/schrijven | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Een grafiek maken of bijwerken. Alleen van toepassing op API-typen: 'gremlin'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/grafieken/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een grafiek of vermeld alle grafieken. Alleen van toepassing op API-typen: 'gremlin'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/grafieken/verwijderen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Verwijder een grafiek. Alleen van toepassing op API-typen: 'gremlin'. |
+> |  | **databaseAccounts/api's/databases/grafieken/bewerkingResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/grafieken/operationResultaten/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'gremlin'. |
+> |  | **databaseAccounts/api's/databases/grafieken/instellingen** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/grafieken/instellingen/schrijven | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Een grafiekdoorvoer bijwerken. Alleen van toepassing op API-typen: 'gremlin'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/grafieken/instellingen/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een grafiekdoorvoer. Alleen van toepassing op API-typen: 'gremlin'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> |  | **databaseAccounts/api's/databases/grafieken/instellingen/operationResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/grafieken/instellingen/operationResultaten/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'gremlin'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> |  | **databaseAccounts/api's/databases/bewerkingResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/operationResultaten/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'sql', 'mongodb', 'gremlin'. |
+> |  | **databaseAccounts/api's/databases/instellingen** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/instellingen/schrijven | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Een databasedoorvoer bijwerken. Alleen van toepassing op API-typen: 'sql', 'mongodb', 'gremlin'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/instellingen/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een databasedoorvoer. Alleen van toepassing op API-typen: 'sql', 'mongodb', 'gremlin'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> |  | **databaseAccounts/api's/databases/instellingen/bewerkingResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/databases/instellingen/operationResultaten/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'sql', 'mongodb', 'gremlin'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> |  | **databaseAccounts/api's/sleutelruimten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/keyspaces/write | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Maak een keyspace. Alleen van toepassing op API-typen: 'cassandra'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/read | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een keyspace of vermeld alle keyspaces. Alleen van toepassing op API-typen: 'cassandra'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/keyspaces/delete | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Verwijder een keyspace. Alleen van toepassing op API-typen: 'cassandra'. |
+> |  | **databaseAccounts/api's/sleutelruimten/bewerkingResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/apiis/keyspaces/operationResultaten/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'cassandra'. |
+> |  | **databaseAccounts/api's/sleutelruimten/instellingen** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/keyspaces/instellingen/write | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Een keyspace-doorvoer bijwerken. Alleen van toepassing op API-typen: 'cassandra'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/keyspaces/instellingen/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een keyspace doorvoer. Alleen van toepassing op API-typen: 'cassandra'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> |  | **databaseAccounts/api's/sleutelruimten/instellingen/bewerkingResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/instellingen/operationResultaten/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'cassandra'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> |  | **databaseAccounts/api's/sleutelruimten/tabellen** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/keyspaces/tables/write | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Een tabel maken of bijwerken. Alleen van toepassing op API-typen: 'cassandra'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/keyspaces/tables/read | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een tabel of lijst alle tabellen. Alleen van toepassing op API-typen: 'cassandra'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/keyspaces/tables/delete | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Verwijder een tabel. Alleen van toepassing op API-typen: 'cassandra'. |
+> |  | **databaseAccounts/api's/sleutelruimten/tabellen/bewerkingResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/apiis/keyspaces/tables/operationResults/read | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'cassandra'. |
+> |  | **databaseAccounts/api's/sleutelruimten/tabellen/instellingen** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/keyspaces/tabellen/instellingen/schrijven | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Een tabeldoorvoer bijwerken. Alleen van toepassing op API-typen: 'cassandra'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/keyspaces/tables/instellingen/lezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een tabeldoorvoer. Alleen van toepassing op API-typen: 'cassandra'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> |  | **databaseAccounts/api's/sleutelruimten/tabellen/instellingen/bewerkingResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/keyspaces/tables/settings/operationResults/read | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'cassandra'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> |  | **databaseAccounts/api's/tabellen** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/tabellen/schrijven | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Een tabel maken of bijwerken. Alleen van toepassing op API-typen: 'tabel'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/tabellen/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een tabel of lijst alle tabellen. Alleen van toepassing op API-typen: 'tabel'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/tabellen/verwijderen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Verwijder een tabel. Alleen van toepassing op API-typen: 'tabel'. |
+> |  | **databaseAccounts/api's/tabellen/bewerkingResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/tabellen/operationResultaten/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'tabel'. |
+> |  | **databaseAccounts/api's/tabellen/instellingen** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/tabellen/instellingen/schrijven | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Een tabeldoorvoer bijwerken. Alleen van toepassing op API-typen: 'tabel'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/tabellen/instellingen/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees een tabeldoorvoer. Alleen van toepassing op API-typen: 'tabel'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
+> |  | **databaseAccounts/api's/tabellen/instellingen/bewerkingResultaten** |  |
+> | Actie | Microsoft.DocumentDB/databaseAccounts/api's/tabellen/instellingen/operationResultaten/gelezen | (Afgeschaft. Gebruik resourcepaden zonder '/apis/' segment) Lees status van de asynchrone bewerking. Alleen van toepassing op API-typen: 'tabel'. Alleen van toepassing op het instellen van typen: 'doorvoer'. |
 > |  | **databaseAccounts/cassandraKeyspaces** |  |
 > | Actie | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/write | Maak een Cassandra keyspace. |
 > | Actie | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/gelezen | Lees een Cassandra keyspace of een lijst van alle Cassandra keyspaces. |
@@ -5532,7 +5625,7 @@ Azure-service: [Machine Learning-service](../machine-learning/index.yml)
 > | Actie | Microsoft.MachineLearningServices/werkruimtes/schrijven | Een Machine Learning Services Workspace(s) maken of bijwerken |
 > | Actie | Microsoft.MachineLearningServices/werkruimten/verwijderen | Verwijdert de werkruimte voor Machine Learning Services(s) |
 > | Actie | Microsoft.MachineLearningServices/werkruimten/listKeys/action | Geheimen voor een Machine Learning Services Workspace weergeven |
-> | Actie | Microsoft.MachineLearningServices/werkruimten/PrivateEndpointConnectionsGoedkeuring/actie | Een verbinding met een privé-eindpuntbron van Microsoft.Network-provider goedkeuren of weigeren |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/privateEndpointConnectionsGoedkeuring/actie | Een verbinding met een privé-eindpuntbron van Microsoft.Network-provider goedkeuren of weigeren |
 > |  | **werkruimten/gegevensberekent** |  |
 > | Actie | Microsoft.MachineLearningServices/werkruimten/computes/read | Haalt de rekenbronnen in Machine Learning Services Workspace(s) |
 > | Actie | Microsoft.MachineLearningServices/werkruimten/computes/write | De rekenbronnen in Machine Learning Services Workspace(s) maken of bijwerken |
@@ -5542,10 +5635,90 @@ Azure-service: [Machine Learning-service](../machine-learning/index.yml)
 > | Actie | Microsoft.MachineLearningServices/werkruimten/computes/start/actie | Compute resource starten in Machine Learning Services Workspace |
 > | Actie | Microsoft.MachineLearningServices/werkruimten/computes/stop/action | Compute resource stoppen in Machine Learning Services Workspace |
 > | Actie | Microsoft.MachineLearningServices/werkruimten/computes/opnieuw opstarten/actie | Compute resource opnieuw starten in Machine Learning Services Workspace |
+> |  | **werkruimten/datadriftdetectoren** |  |
+> | Actie | Microsoft.MachineLearningServices/workspaces/datadriftdetectors/lezen | Haalt datadriftdetectoren op in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/datadriftdetectors/write | Maakt of werkt datadriftdetectoren uit in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/datadriftdetectors/delete | Verwijdert datadriftdetectoren in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/gegevenssets/geregistreerde** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/geregistreerd/gelezen | Haalt geregistreerde gegevenssets op in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/geregistreerd/schrijven | Geregistreerde gegevenssets maken of bijwerken in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/geregistreerd/verwijderen | Geregistreerde gegevenssets verwijderen in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/gegevenssets/geregistreerd/voorbeeld** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/geregistreerd/voorbeeld/gelezen | Krijgt voorbeeld van gegevensset voor geregistreerde gegevenssets in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/gegevenssets/geregistreerd/profiel** |  |
+> | Actie | Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/read | Haalt gegevenssetprofielen op voor geregistreerde gegevenssets in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/geregistreerd/profiel/schrijven | Gegevenssetprofielen voor geregistreerde gegevenssets maken of bijwerken in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/gegevenssets/geregistreerd/schema** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/geregistreerd/schema/gelezen | Krijgt gegevenssetschema voor geregistreerde gegevenssets in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/gegevenssets/niet-geregistreerde** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/gelezen | Haalt niet-geregistreerde gegevenssets op in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/schrijven | Niet-geregistreerde gegevenssets maken of bijwerken in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/verwijderen | Niet-geregistreerde gegevenssets verwijderen in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/gegevenssets/niet-geregistreerd/voorbeeld** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/voorbeeld/gelezen | Krijgt voorbeeld van gegevensset voor niet-geregistreerde gegevenssets in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/gegevenssets/niet-geregistreerd/profiel** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/profiel/gelezen | Haalt gegevenssetprofielen voor niet-geregistreerde gegevenssets op in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/profiel/schrijven | Gegevenssetprofielen voor niet-geregistreerde gegevenssets maken of bijwerken in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/gegevenssets/niet-geregistreerd/schema** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/schema/gelezen | Krijgt gegevenssetschema voor niet-geregistreerde gegevenssets in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/datastores** |  |
+> | Actie | Microsoft.MachineLearningServices/workspaces/datastores/read | Hiermee worden gegevenswinkels in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/datastores/write | Maakt of werkt gegevenswinkels in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/datastores/delete | Gegevenswinkels verwijderen in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/eindpunten/pijplijnen** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/eindpunten/pijplijnen/lezen | Krijgt gepubliceerde pijplijnen en pijplijneindpunten in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/eindpunten/pijplijnen/schrijven | Hiermee worden gepubliceerde pijplijnen en pijplijneindpunten gemaakt of bijgewerkt in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/omgevingen** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/omgevingen/lezen | Krijgt omgevingen in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/omgevingen/leesGeheimen/actie | Krijgt omgevingen met geheimen in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/omgevingen/schrijven | Omgevingen maken of bijwerken in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/omgevingen/build/action | Bouwt omgevingen in Machine Learning Services Workspace(s) |
 > |  | **werkruimten/gebeurtenisGridFilters** |  |
 > | Actie | Microsoft.MachineLearningServices/workspaces/eventGridFilters/read | Een gebeurtenisrasterfilter voor een bepaalde werkruimte zoeken |
-> |  | **werkruimten/functies** |  |
-> | Actie | Microsoft.MachineLearningServices/werkruimten/functies/lezen | Hiermee worden alle ingeschakelde functies voor een Machine Learning Services Workspace |
+> |  | **werkruimten/experimenten** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/experimenten/lezen | Krijgt experimenten in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/experimenten/schrijven | Experimenten maken of bijwerken in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/experimenten/verwijderen | Hiermee verwijdert u experimenten in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/experimenten/uitvoeringen** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/experimenten/runs/submit/action | Script-uitvoeringen maken of bijwerken in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/experimenten/uitvoeringen/lezen | Wordt uitgevoerd in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/experimenten/uitvoeringen/schrijven | Hiermee worden uitgevoerd in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/etikettering** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/labeling/export/actie | Labels van labelprojecten exporteren in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/labeling/labels** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/labeling/labels/lezen | Hiermee worden labels van labelingprojecten ontvangen in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/labeling/labels/schrijven | Labels van labelprojecten maken in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/labeling/labels/weigeren/actie | Labels van labelprojecten weigeren in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/etikettering/projecten** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/labeling/projecten/lezen | Krijgt labelingproject in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/labeling/projecten/schrijven | Labelingproject maken of bijwerken in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/labeling/projecten/verwijderen | Labelingproject verwijderen in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/etikettering/projecten/samenvatting** |  |
+> | Actie | Microsoft.MachineLearningServices/workspaces/labeling/projecten/samenvatting/gelezen | Krijgt labelprojectoverzicht in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/metagegevens/artefacten** |  |
+> | Actie | Microsoft.MachineLearningServices/workspaces/metadata/artefacten/lezen | Haalt artefacten op in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/metadata/artefacten/write | Artefacten maken of bijwerken in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/metadata/artefacten/delete | Artefacten verwijderen in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/metagegevens/geheimen** |  |
+> | Actie | Microsoft.MachineLearningServices/workspaces/metadata/secrets/read | Krijgt geheimen in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/metadata/secrets/write | Maakt of werkt geheimen bij in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/metadata/secrets/delete | Verwijdert geheimen in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/metagegevens/momentopnamen** |  |
+> | Actie | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/read | Krijgt momentopnamen in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/write | Maakt of werkt momentopnamen bij in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/delete | Momentopnamen verwijderen in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/modellen** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/modellen/lezen | Haalt modellen op in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/modellen/schrijven | Modellen maken of bijwerken in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/modellen/verwijderen | Verwijdert modellen in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/modellen/pakket/actie | Pakketten modellen in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/modules** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/modules/lezen | Haalt modules op in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/modules/schrijven | Module maken of bijwerken in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/pijplijnconcepten** |  |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/pijplijnconcepten/lezen | Haalt pijplijnconcepten op in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/pijplijnconcepten/schrijven | Pijplijnconcepten maken of bijwerken in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/pijplijnconcepten/verwijderen | Pijplijnconcepten verwijderen in Machine Learning Services Workspace(s) |
 > |  | **werkruimten/privateEndpointConnectionProxies** |  |
 > | Actie | Microsoft.MachineLearningServices/workspaces/privateEndpointConnectionProxies/read | De status van een verbindingsproxy weergeven met een privé-eindpuntbron van Microsoft.Network-provider |
 > | Actie | Microsoft.MachineLearningServices/workspaces/privateEndpointConnectionProxies/write | De status van een verbindingsproxy wijzigen in een Privé-eindpuntbron van Microsoft.Network-provider |
@@ -5557,104 +5730,17 @@ Azure-service: [Machine Learning-service](../machine-learning/index.yml)
 > | Actie | Microsoft.MachineLearningServices/werkruimten/privateEndpointConnections/delete | Een verbinding met een privé-eindpuntbron van Microsoft.Network-provider verwijderen |
 > |  | **werkruimten/privateLinkResources** |  |
 > | Actie | Microsoft.MachineLearningServices/werkruimten/privateLinkResources/lezen | Downloadt de beschikbare private link resources voor de opgegeven instantie van de Machine Learning Services Workspace(s) |
-> |  | **werkruimten/datadriftdetectoren** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/datadriftdetectors/lezen | Haalt datadriftdetectoren op in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/datadriftdetectors/write | Maakt of werkt datadriftdetectoren uit in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/gegevenssets/geregistreerde** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/geregistreerd/gelezen | Haalt geregistreerde gegevenssets op in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/geregistreerd/schrijven | Geregistreerde gegevenssets maken of bijwerken in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/geregistreerd/verwijderen | Geregistreerde gegevenssets verwijderen in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/gegevenssets/geregistreerd/voorbeeld** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/geregistreerd/voorbeeld/gelezen | Krijgt voorbeeld van gegevensset voor geregistreerde gegevenssets in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/gegevenssets/geregistreerd/profiel** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/read | Haalt gegevenssetprofielen op voor geregistreerde gegevenssets in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/geregistreerd/profiel/schrijven | Gegevenssetprofielen voor geregistreerde gegevenssets maken of bijwerken in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/gegevenssets/geregistreerd/schema** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/geregistreerd/schema/gelezen | Krijgt gegevenssetschema voor geregistreerde gegevenssets in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/gegevenssets/niet-geregistreerde** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/gelezen | Haalt niet-geregistreerde gegevenssets op in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/schrijven | Niet-geregistreerde gegevenssets maken of bijwerken in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/verwijderen | Niet-geregistreerde gegevenssets verwijderen in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/gegevenssets/niet-geregistreerd/voorbeeld** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/voorbeeld/gelezen | Krijgt voorbeeld van gegevensset voor niet-geregistreerde gegevenssets in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/gegevenssets/niet-geregistreerd/profiel** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/profiel/gelezen | Haalt gegevenssetprofielen voor niet-geregistreerde gegevenssets op in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/profiel/schrijven | Gegevenssetprofielen voor niet-geregistreerde gegevenssets maken of bijwerken in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/gegevenssets/niet-geregistreerd/schema** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/gegevenssets/niet-geregistreerd/schema/gelezen | Krijgt gegevenssetschema voor niet-geregistreerde gegevenssets in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/datastores** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/datastores/read | Hiermee worden gegevenswinkels in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/datastores/write | Maakt of werkt gegevenswinkels in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/datastores/delete | Gegevenswinkels verwijderen in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/eindpunten/pijplijnen** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/eindpunten/pijplijnen/lezen | Krijgt gepubliceerde pijplijnen en pijplijneindpunten in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/eindpunten/pijplijnen/schrijven | Hiermee worden gepubliceerde pijplijnen en pijplijneindpunten gemaakt of bijgewerkt in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/omgevingen** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/omgevingen/lezen | Krijgt omgevingen in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/omgevingen/leesGeheimen/actie | Krijgt omgevingen met geheimen in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/omgevingen/schrijven | Omgevingen maken of bijwerken in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/omgevingen/build/action | Bouwt omgevingen in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/experimenten** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/experimenten/lezen | Krijgt experimenten in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/experimenten/schrijven | Experimenten maken of bijwerken in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/experimenten/verwijderen | Hiermee verwijdert u experimenten in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/experimenten/uitvoeringen** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/experimenten/uitvoeringen/lezen | Wordt uitgevoerd in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/experimenten/uitvoeringen/schrijven | Hiermee worden uitgevoerd in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/experimenten/runs/scriptRun** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/experimenten/runs/scriptRun/submit/action | Script-uitvoeringen maken of bijwerken in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/etikettering** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/labeling/export/actie | Labels van labelprojecten exporteren in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/labeling/labels** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/labeling/labels/lezen | Hiermee worden labels van labelingprojecten ontvangen in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/labeling/labels/schrijven | Labels van labelprojecten maken in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/labeling/labels/weigeren/actie | Labels van labelprojecten weigeren in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/etikettering/projecten** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/labeling/projecten/lezen | Krijgt labelingproject in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/labeling/projecten/schrijven | Labelingproject maken of bijwerken in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/labeling/projecten/verwijderen | Labelingproject verwijderen in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/etikettering/projecten/samenvatting** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/labeling/projecten/samenvatting/gelezen | Krijgt labelprojectoverzicht in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/metagegevens/artefacten** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/metadata/artefacten/lezen | Haalt artefacten op in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/metadata/artefacten/write | Artefacten maken of bijwerken in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/metadata/artefacten/delete | Artefacten verwijderen in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/metagegevens/geheimen** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/metadata/secrets/read | Krijgt geheimen in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/metadata/secrets/write | Maakt of werkt geheimen bij in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/metadata/secrets/delete | Verwijdert geheimen in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/metagegevens/momentopnamen** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/read | Krijgt momentopnamen in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/write | Maakt of werkt momentopnamen bij in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/delete | Momentopnamen verwijderen in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/modellen** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/modellen/lezen | Haalt modellen op in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/modellen/schrijven | Modellen maken of bijwerken in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/modellen/verwijderen | Verwijdert modellen in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/modellen/pakket/actie | Pakketten modellen in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/modules** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/modules/lezen | Haalt modules op in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/modules/schrijven | Module maken of bijwerken in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/pijplijnconcepten** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/pijplijnconcepten/lezen | Haalt pijplijnconcepten op in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/pijplijnconcepten/schrijven | Pijplijnconcepten maken of bijwerken in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/pijplijnconcepten/verwijderen | Pijplijnconcepten verwijderen in Machine Learning Services Workspace(s) |
 > |  | **werkruimten/services** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/werkruimten/services/lezen | Krijgt services in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/werkruimten/services/lezen | Krijgt services in Machine Learning Services Workspace(s) |
 > |  | **werkruimten/services/aci** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/services/aci/write | ACI-services maken of bijwerken in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/services/aci/listkeys/actie | Geeft een lijst van sleutels voor ACI-services in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/services/aci/delete | Verwijdert ACI-services in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/services/aks/devtest** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/write | Devtest AKS-services maken of actualiseert in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/listkeys/action | Geeft een lijst van sleutels voor devtest AKS-services in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/delete | Verwijdert devtest AKS-services in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/score/action | Scores devtest AKS-services in Machine Learning Services Workspace(s) |
-> |  | **werkruimten/services/aks/prod** |  |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/services/aks/prod/write | Maakt of werkt prod AKS-services aan in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/services/aks/prod/listkeys/action | Geeft een lijst van sleutels voor prod AKS-services in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/services/aks/prod/delete | Verwijdert prod AKS-services in Machine Learning Services Workspace(s) |
-> | Gegevensactie | Microsoft.MachineLearningServices/workspaces/services/aks/prod/score/action | Scores prod AKS-services in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/services/aci/write | ACI-services maken of bijwerken in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/services/aci/listkeys/actie | Geeft een lijst van sleutels voor ACI-services in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/services/aci/delete | Verwijdert ACI-services in Machine Learning Services Workspace(s) |
+> |  | **werkruimten/services/aks** |  |
+> | Actie | Microsoft.MachineLearningServices/workspaces/services/aks/write | Aks-services maken of bijwerken in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/services/aks/listkeys/action | Geeft sleutels weer voor AKS-services in Machine Learning Services Workspace(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/services/aks/delete | Verwijdert AKS-services in machine learning services-werkruimte(s) |
+> | Actie | Microsoft.MachineLearningServices/workspaces/services/aks/score/actie | Scores AKS-services in Machine Learning Services Workspace(s) |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -5740,6 +5826,10 @@ Azure-service: [Azure Maps](../azure-maps/index.yml)
 > | Actie | Microsoft.Maps/accounts/eventGridFilters/delete | Een gebeurtenisrasterfilter verwijderen |
 > | Actie | Microsoft.Maps/accounts/eventGridFilters/gelezen | Een gebeurtenisrasterfilter opdoen |
 > | Actie | Microsoft.Maps/accounts/eventGridFilters/write | Een gebeurtenisrasterfilter maken of bijwerken |
+> |  | **accounts/privateAtlassen** |  |
+> | Actie | Microsoft.Maps/accounts/privateAtlases/delete | Een privéatlas verwijderen |
+> | Actie | Microsoft.Maps/accounts/privateAtlases/gelezen | Ontvang een privéatlas |
+> | Actie | Microsoft.Maps/accounts/privateAtlases/write | Een privéatlas maken of bijwerken |
 > |  | **Operaties** |  |
 > | Actie | Microsoft.Maps/operations/read | Lees de providerbewerkingen |
 > |  | **accounts/gegevens** |  |
@@ -5998,6 +6088,10 @@ Azure-service: [Azure Spatial Anchors](../spatial-anchors/index.yml)
 > | Actie | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/write | De diagnostische instelling voor Microsoft.MixedReality/spatialAnchorsAccounts maken of bijgewerkt |
 > |  | **spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinities** |  |
 > | Actie | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinities/gelezen | Haalt de beschikbare statistieken voor Microsoft.MixedReality/spatialAnchorsAccounts |
+> |  | **ObjectUnderstandingAccounts** |  |
+> | Gegevensactie | Microsoft.MixedReality/ObjectUnderstandingAccounts/inname/actie | Modelopnametaak maken |
+> |  | **ObjectUnderstandingAccounts/inname** |  |
+> | Gegevensactie | Microsoft.MixedReality/ObjectUnderstandingAccounts/inname/lezen | Status van modelopnametaak krijgen |
 > |  | **RemoteRenderingAccounts** |  |
 > | Gegevensactie | Microsoft.MixedReality/RemoteRenderingAccounts/converteren/actie | Assetconversie starten |
 > | Gegevensactie | Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/action | Sessies starten |
@@ -6069,6 +6163,10 @@ Azure-service: [Azure NetApp-bestanden](../azure-netapp-files/index.yml)
 > | Actie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/back-ups/gelezen | Leest een back-upbron. |
 > | Actie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/back-ups/schrijven | Schrijft een back-upbron. |
 > | Actie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/back-ups/verwijderen | Hiermee verwijdert u een back-upbron. |
+> |  | **netAppAccounts/capacityPools/volumes/MountTargets** |  |
+> | Actie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/MountTargets/read | Leest een mount doelbron. |
+> |  | **netAppAccounts/capaciteitspools/volumes/Replicatiestatus** |  |
+> | Actie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/ReplicatieStatus/gelezen | Hiermee leest u de statussen van de volumereplicatie. |
 > |  | **netAppAccounts/capacityPools/volumes/snapshots** |  |
 > | Actie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/gelezen | Hiermee leest u een momentopnamebron. |
 > | Actie | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write | Hiermee schrijft u een momentopnamebron. |
@@ -6341,6 +6439,8 @@ Azure-service: [Virtual Network](../virtual-network/index.yml), [Load Balancer](
 > | Actie | Microsoft.Network/loadBalancers/delete | Een load balancer verwijderen |
 > |  | **loadBalancers/backendAddressPools** |  |
 > | Actie | Microsoft.Network/loadBalancers/backendAddressPools/read | Krijgt een backend-adresgroep van load balancer |
+> | Actie | Microsoft.Network/loadBalancers/backendAddressPools/write | Hiermee maakt u een backend-adresgroep van load balancer of wordt een bestaande backend-adresgroep van load balancer bijgewerkt |
+> | Actie | Microsoft.Network/loadBalancers/backendAddressPools/delete | Een backend-adresgroep van load balancer verwijderen |
 > | Actie | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Voegt zich bij een backend-adresgroep van de load balancer. Niet alertbaar. |
 > |  | **loadBalancers/frontendIPConfiguraties** |  |
 > | Actie | Microsoft.Network/loadBalancers/frontendIPConfigurations/read | Krijgt een load balancer frontend IP-configuratiedefinitie |
@@ -6565,6 +6665,7 @@ Azure-service: [Virtual Network](../virtual-network/index.yml), [Load Balancer](
 > | Actie | Microsoft.Network/privateEndpointRedirectMaps/lezen | Hiermee krijgt u een privé-eindpunt redirectmap |
 > | Actie | Microsoft.Network/privateEndpointRedirectMaps/write | Maakt privéeindpunt redirectmap of werkt een bestaand privéeindpunt redirectmap bij |
 > |  | **privéeindpunten** |  |
+> | Actie | Microsoft.Network/privateEndpoints/pushPropertiesToResource/action | Bewerking om updates van privéeindpunteigenschap van NRP-client te pushen |
 > | Actie | Microsoft.Network/privateEndpoints/read | Krijgt een privé eindpuntbron. |
 > | Actie | Microsoft.Network/privateEndpoints/write | Hiermee maakt u een nieuw privéeindpunt of wordt een bestaand privéeindpunt bijgewerkt. |
 > | Actie | Microsoft.Network/privateEndpoints/delete | Hiermee verwijdert u een privéeindpuntbron. |
@@ -6606,6 +6707,13 @@ Azure-service: [Virtual Network](../virtual-network/index.yml), [Load Balancer](
 > | Actie | Microsoft.Network/routeTabellen/routes/lezen | Krijgt een routedefinitie |
 > | Actie | Microsoft.Network/routeTabellen/routes/schrijven | Een route maken of een bestaande route bijwerken |
 > | Actie | Microsoft.Network/routeTabellen/routes/verwijderen | Een routedefinitie verwijderen |
+> |  | **securityPartnerProviders** |  |
+> | Actie | Microsoft.Network/securityPartnerProviders/lezen | Krijgt een SecurityPartnerProvider |
+> | Actie | Microsoft.Network/securityPartnerProviders/write | Maakt een SecurityPartnerProvider of werkt een bestaande SecurityPartnerProvider bij |
+> | Actie | Microsoft.Network/securityPartnerProviders/valideren/uitvoeren/uitvoeren | Valideert een SecurityPartnerProvider |
+> | Actie | Microsoft.Network/securityPartnerProviders/updateVerwijzingen/actie | Verwijzingen bijwerken in een SecurityPartnerProvider |
+> | Actie | Microsoft.Network/securityPartnerProviders/join/action | Wordt lid van een SecurityPartnerProvider. Niet alert. |
+> | Actie | Microsoft.Network/securityPartnerProviders/delete | Een SecurityPartnerProvider verwijderen |
 > |  | **serviceEndpointBeleid** |  |
 > | Actie | Microsoft.Network/serviceEndpointPolicies/read | Krijgt een serviceeindpuntbeleidsbeschrijving |
 > | Actie | Microsoft.Network/serviceEndpointPolicies/write | Een serviceeindpuntbeleid maken of een bestaand serviceeindpuntbeleid bijwerken |
@@ -6678,6 +6786,7 @@ Azure-service: [Virtual Network](../virtual-network/index.yml), [Load Balancer](
 > | Actie | Microsoft.Network/virtualNetworks/lezen | De definitie van het virtuele netwerk |
 > | Actie | Microsoft.Network/virtualNetworks/write | Maakt een virtueel netwerk of werkt een bestaand virtueel netwerk bij |
 > | Actie | Microsoft.Network/virtualNetworks/delete | Een virtueel netwerk verwijderen |
+> | Actie | Microsoft.Network/virtualNetworks/joinLoadBalancer/actie | Voegt een load balancer toe aan virtuele netwerken |
 > | Actie | Microsoft.Network/virtualNetworks/peer/action | Peers een virtueel netwerk met een ander virtueel netwerk |
 > | Actie | Microsoft.Network/virtualNetworks/join/action | Sluit zich aan bij een virtueel netwerk. Niet alertbaar. |
 > | Actie | Microsoft.Network/virtualNetworks/BastionHosts/actie | Haalt Bastion Host-verwijzingen in een virtueel netwerk. |
@@ -7225,6 +7334,8 @@ Azure-service: [Azure Monitor](../azure-monitor/index.yml)
 > | Actie | Microsoft.OperationalInsights/workspaces/query/AppDependencies/read | Gegevens uit de tabel AppDependencies lezen |
 > |  | **werkruimten/query/AppGebeurtenissen** |  |
 > | Actie | Microsoft.OperationalInsights/workspaces/query/AppEvents/read | Gegevens uit de tabel AppEvents lezen |
+> |  | **werkruimten/query/AppUitzonderingen** |  |
+> | Actie | Microsoft.OperationalInsights/workspaces/query/AppExceptions/read | Gegevens lezen uit de tabel AppExceptions |
 > |  | **werkruimten/query/ApplicationInsights** |  |
 > | Actie | Microsoft.OperationalInsights/workspaces/query/ApplicationInsights/read | Gegevens lezen uit de tabel ApplicationInsights |
 > |  | **werkruimten/query/AppMetrics** |  |
@@ -7693,6 +7804,18 @@ Azure-service: [Azure Monitor](../azure-monitor/index.yml)
 > | Actie | Microsoft.OperationalInsights/workspaces/query/WUDOAggregatedStatus/gelezen | Gegevens lezen uit de tabel WUDOAggregatedStatus |
 > |  | **werkruimten/query/WUDOStatus** |  |
 > | Actie | Microsoft.OperationalInsights/workspaces/query/WUDOStatus/gelezen | Gegevens uit de tabel WUDOStatus lezen |
+> |  | **werkruimten/query/WVDControlepunten** |  |
+> | Actie | Microsoft.OperationalInsights/workspaces/query/WVDCheckpoints/lezen | Gegevens uit de tabel WVDCheckpoints lezen |
+> |  | **werkruimten/query/WVD-verbindingen** |  |
+> | Actie | Microsoft.OperationalInsights/workspaces/query/WVDConnections/lezen | Gegevens uit de tabel WVDConnections lezen |
+> |  | **werkruimten/query/WVDFouten** |  |
+> | Actie | Microsoft.OperationalInsights/workspaces/query/WVDErrors/read | Gegevens uit de tabel WVDErrors lezen |
+> |  | **werkruimten/query/WVDFeeds** |  |
+> | Actie | Microsoft.OperationalInsights/workspaces/query/WVDFeeds/read | Gegevens uit de tabel WVDFeeds lezen |
+> |  | **werkruimten/query/WVDHostRegistraties** |  |
+> | Actie | Microsoft.OperationalInsights/workspaces/query/WVDHostRegistrations/read | Gegevens uit de tabel WVDHostRegistrations lezen |
+> |  | **werkruimten/query/WVDManagement** |  |
+> | Actie | Microsoft.OperationalInsights/workspaces/query/WVDManagement/gelezen | Gegevens uit de tabel WVDManagement lezen |
 > |  | **werkruimten/regels** |  |
 > | Actie | microsoft.operationalinsights/workspaces/rules/read | Zorg voor alle waarschuwingsregels. |
 > |  | **werkruimten/opgeslagen zoekopdrachten** |  |
@@ -8492,6 +8615,7 @@ Azure-service: [Azure Sentinel](../sentinel/index.yml)
 > | --- | --- | --- |
 > | Actie | Microsoft.SecurityInsights/register/actie | Registreert het abonnement op Azure Sentinel |
 > | Actie | Microsoft.SecurityInsights/unregister/actie | De registratie van het abonnement van Azure Sentinel ongedaan maken |
+> | Actie | Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action | Gebruikersautorisatie en -licentie controleren |
 > |  | **Aggregaties** |  |
 > | Actie | Microsoft.SecurityInsights/Aggregations/read | Krijgt geaggregeerde informatie |
 > |  | **alertRegels** |  |
@@ -8785,7 +8909,7 @@ Azure-service: [Azure Managed Applications](../azure-resource-manager/managed-ap
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure-service: [Azure SQL Database](../sql-database/index.yml), SQL Data [Warehouse](../synapse-analytics/sql-data-warehouse/index.yml)
+Azure-service: [Azure SQL Database](../sql-database/index.yml), SQL Data [Warehouse](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Actietype | Bewerking | Beschrijving |
@@ -9980,21 +10104,21 @@ Azure-service: kern
 > | Actie | Microsoft.Support/register/action | Registers Support Resource Provider |
 > | Actie | Microsoft.Support/checkNameAvailability/action | Controleert of de naam geldig is en niet wordt gebruikt voor resourcetype |
 > |  | **operationeel resultaat** |  |
-> | Actie | Microsoft.Support/operationresults/read | Operation-resultaat opdoen |
+> | Actie | Microsoft.Support/operationresults/read | Wordt het resultaat van de asynchrone bewerking |
 > |  | **Operaties** |  |
-> | Actie | Microsoft.Support/operations/read | Hiermee worden bewerkingen weergegeven die beschikbaar zijn op microsoft.support-bronprovider |
+> | Actie | Microsoft.Support/operations/read | Hiermee worden alle bewerkingen weergegeven die beschikbaar zijn op microsoft.support-bronprovider |
 > |  | **operationsstatus** |  |
-> | Actie | Microsoft.Support/operationsstatus/lezen | Bewerkingsstatus ophalen |
+> | Actie | Microsoft.Support/operationsstatus/lezen | Krijgt de status van de asynchrone bewerking |
 > |  | **Diensten** |  |
-> | Actie | Microsoft.Support/services/lezen | Krijgt een lijst met Azure-services beschikbaar voor ondersteuning |
+> | Actie | Microsoft.Support/services/lezen | Hier worden een of alle Azure-services weergegeven die beschikbaar zijn voor ondersteuning |
 > |  | **diensten/probleemClassificaties** |  |
-> | Actie | Microsoft.Support/services/probleemClassificaties/lezen | Krijgt een lijst met probleemclassificatie beschikbaar voor een Azure-service |
+> | Actie | Microsoft.Support/services/probleemClassificaties/lezen | Hiermee worden een of alle probleemclassificaties voor een Azure-service weergegeven |
 > |  | **supportTickets** |  |
-> | Actie | Microsoft.Support/supportTickets/read | Krijgt een lijst met supporttickets. |
-> | Actie | Microsoft.Support/supportTickets/write | Hiermee maakt u het ondersteuningsticket asynchroon of wordt het bijgewerkt. U kunt een ondersteuningsticket maken voor problemen van technische aard of op het gebied van facturering, quota's of beheer van abonnementen. U de ernst en contactgegevens van bestaande ondersteuningstickets bijwerken. |
+> | Actie | Microsoft.Support/supportTickets/read | Met een of alle ondersteuningstickets |
+> | Actie | Microsoft.Support/supportTickets/write | Hiermee u een ondersteuningsticket maken en bijwerken |
 > |  | **supportTickets/communicatie** |  |
-> | Actie | Microsoft.Support/supportTickets/communicatie/lezen | Krijgt lijst van Support Ticket Communications |
-> | Actie | Microsoft.Support/supportTickets/communicatie/schrijven | Creëert ondersteuningsticketcommunicatie |
+> | Actie | Microsoft.Support/supportTickets/communicatie/lezen | Hier vindt u een of alle ondersteuningsticketcommunicatie weer te geven |
+> | Actie | Microsoft.Support/supportTickets/communicatie/schrijven | Voegt een nieuwe communicatie toe aan een ondersteuningsticket |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 

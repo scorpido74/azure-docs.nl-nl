@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4186a4ed369eb289360b74c0758e5ce3f7eca929
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75374291"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482161"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Wat is SQL Server op Azure Virtual Machines? (Windows)
 
@@ -38,6 +38,9 @@ Azure VM's voor SQL Server kunnen [geautomatiseerde patching](virtual-machines-w
 ## <a name="automated-backups"></a>Automatische back-ups
 
 Azure VM's voor SQL Server kunnen gebruikmaken van [geautomatiseerde back-ups](virtual-machines-windows-sql-automated-backup-v2.md), waarbij er regelmatig back-ups in Blob Storage worden gemaakt van uw database. U kunt deze techniek ook handmatig gebruiken. Zie [Azure Storage gebruiken voor SQL Server-back-up en -herstel](virtual-machines-windows-use-storage-sql-server-backup-restore.md) voor meer informatie.
+
+Azure biedt ook een back-upoplossing op bedrijfsniveau voor SQL Server die wordt uitgevoerd in Azure VM's. Een volledig beheerde back-upoplossing, het ondersteunt Always On beschikbaarheidsgroepen, langdurige retentie, point-in-time recovery en centraal beheer en monitoring. Zie [Azure Backup for SQL Server in Azure VM voor](https://docs.microsoft.com/azure/backup/backup-azure-sql-database)meer informatie.
+  
 
 ## <a name="high-availability"></a>Hoge beschikbaarheid
 
@@ -132,7 +135,7 @@ Azure onderhoudt slechts één installatiekopie van een virtuele machine voor el
 Het programma voor kwaliteitsverbetering (CEIP) is standaard ingeschakeld. Met dit programma worden regelmatig rapporten naar Microsoft verzonden zodat SQL Server kan worden verbeterd. Er hoeft voor het programma voor kwaliteitsverbetering geen beheertaak worden uitgevoerd, tenzij u het na het inrichten wilt uitschakelen. U kunt het programma voor kwaliteitsverbetering aanpassen of uitschakelen door via Extern bureaublad verbinding te maken met de virtuele machine. Voer vervolgens het hulpprogramma **SQL Server-fouten- en gebruiksrapportage** uit. Volg de instructies voor het uitschakelen van rapportage. Zie de [privacyverklaring van SQL Server](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement) voor meer informatie over gegevensverzameling.
 
 ## <a name="related-products-and-services"></a>Gerelateerde producten en services
-### <a name="windows-virtual-machines"></a>Virtuele Windows-machines
+### <a name="windows-virtual-machines"></a>Windows Virtual Machines
 * [Overzicht van Virtual Machines](../overview.md)
 
 ### <a name="storage"></a>Storage

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 89de6bf80d14ec77fe6b1f98b6e1d15c6e573fbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46a1db94d576174b837a40c646fcf9e082e339c8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756280"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461613"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Azure Service Bus-bronnen
 [Beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) is een cross-Azure-functie waarmee u een veilige identiteit maken die is gekoppeld aan de implementatie waaronder uw toepassingscode wordt uitgevoerd. U die identiteit vervolgens koppelen aan access-control-rollen die aangepaste machtigingen verlenen voor toegang tot specifieke Azure-bronnen die uw toepassing nodig heeft.
@@ -75,7 +75,7 @@ Zie [Roldefinities begrijpen](../role-based-access-control/role-definitions.md#m
 ## <a name="enable-managed-identities-on-a-vm"></a>Beheerde identiteiten inschakelen op een virtuele machine
 Voordat u beheerde identiteiten voor Azure Resources gebruiken om Service Bus-bronnen van uw VM te autoriseren, moet u eerst beheerde identiteiten voor Azure Resources op de VM inschakelen. Zie een van de volgende artikelen voor meer informatie over het inschakelen van beheerde identiteiten voor Azure Resources:
 
-- [Azure-portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure-CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-sjabloon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -140,7 +140,7 @@ Als u berichten wilt verzenden of ontvangen, voert u de naam van de naamruimte e
 
 
 > [!NOTE]
-> - De beheerde identiteit werkt alleen binnen de Azure-omgeving, in App-services, Azure VM's en schaalsets. Voor .NET-toepassingen biedt de Microsoft.Azure.Services.AppAuthentication-bibliotheek, die wordt gebruikt door het NuGet-pakket servicebus, een abstractie over dit protocol en ondersteunt het een lokale ontwikkelingservaring. Met deze bibliotheek u uw code ook lokaal testen op uw ontwikkelingsmachine met behulp van uw gebruikersaccount van Visual Studio, Azure CLI 2.0 of Active Directory Integrated Authentication. Zie [Service-to-service-verificatie naar Azure Key Vault met .NET](../key-vault/service-to-service-authentication.md)voor meer informatie over lokale ontwikkelingsopties met deze bibliotheek.  
+> - De beheerde identiteit werkt alleen binnen de Azure-omgeving, in App-services, Azure VM's en schaalsets. Voor .NET-toepassingen biedt de Microsoft.Azure.Services.AppAuthentication-bibliotheek, die wordt gebruikt door het NuGet-pakket servicebus, een abstractie over dit protocol en ondersteunt het een lokale ontwikkelingservaring. Met deze bibliotheek u uw code ook lokaal testen op uw ontwikkelingsmachine met behulp van uw gebruikersaccount van Visual Studio, Azure CLI 2.0 of Active Directory Integrated Authentication. Zie [Service-to-service-verificatie naar Azure Key Vault met .NET](../key-vault/general/service-to-service-authentication.md)voor meer informatie over lokale ontwikkelingsopties met deze bibliotheek.  
 > 
 > - Momenteel werken beheerde identiteiten niet met implementatiesleuven van App-service.
 

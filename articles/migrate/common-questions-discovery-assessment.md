@@ -2,13 +2,13 @@
 title: Vragen over detectie-, beoordelings- en afhankelijkheidsanalyse in Azure Migrate
 description: Antwoorden op veelgestelde vragen over detectie-, beoordelings- en afhankelijkheidsanalyse in Azure Migrate.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 7a63271811053ee2da79f134ac117559e31b0fed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 700e5318b66cdf4993a17b1dae85fb43f75ab035
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460803"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529770"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analyse van detectie, beoordeling en afhankelijkheid - Veelvoorkomende vragen
 
@@ -19,9 +19,16 @@ In dit artikel worden veelgestelde vragen beantwoord over detectie-, beoordeling
 - Vragen over [servermigratie](common-questions-server-migration.md)
 - Vragen beantwoorden in het [Azure Migrate-forum](https://aka.ms/AzureMigrateForum)
 
+
+## <a name="what-geographies-are-supported-for-discovery-and-assessment-with-azure-migrate"></a>Welke regio's worden ondersteund voor detectie en beoordeling met Azure Migrate?
+
+Bekijk de ondersteunde regio's voor [publieke](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheidswolken.](migrate-support-matrix.md#supported-geographies-azure-government)
+
+
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Hoeveel VM's kan ik ontdekken met een apparaat?
 
 U tot 10.000 VMware VM's, maximaal 5.000 Hyper-V VM's en maximaal 250 fysieke servers ontdekken met behulp van één toestel. Als u meer machines hebt, leest u over [het schalen van een Hyper-V-beoordeling,](scale-hyper-v-assessment.md)het schalen van een [VMware-beoordeling](scale-vmware-assessment.md)of [het schalen van een fysieke serverbeoordeling](scale-physical-assessment.md).
+
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>De grootte van mijn VM veranderd. Kan ik opnieuw een assessment uitvoeren?
 

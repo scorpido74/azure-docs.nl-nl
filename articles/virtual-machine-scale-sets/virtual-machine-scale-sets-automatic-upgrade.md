@@ -7,12 +7,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mimckitt
-ms.openlocfilehash: ee6a25ac5a4cc7de8b8340afb186d170cc147a38
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 70810b21def1672758683abd49f92b86776c9d7b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393790"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458978"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure virtual machine scale set automatic OS image upgrades Azure virtual machine scale set automatic OS image upgrades Azure virtual machine scale set automatic OS image upgrades Azure virtual
 
@@ -158,7 +158,7 @@ az provider register --namespace Microsoft.Compute
 - De nieuwe afbeeldingsversie mag niet worden uitgesloten van de nieuwste versie voor die galerijafbeelding. Afbeeldingsversies die zijn uitgesloten van de nieuwste versie van de galerijafbeelding, worden niet uitgerold naar de schaaldie is ingesteld via een automatische upgrade van de osafbeelding.
 
 > [!NOTE]
->Het kan tot 2 uur duren voordat een schaalset wordt ingesteld om de eerste afbeeldingsimplementatie te krijgen nadat de schaalset is geconfigureerd voor automatische os-upgrades. Dit is een eenmalige vertraging per schaalset. Volgende afbeeldingsimplementaties worden zonder deze vertraging toegepast op de schaaldie is ingesteld.
+>Het kan tot 3 uur duren voordat een schaalset de eerste uitrol van beeldupgrades activeert nadat de schaalset is geconfigureerd voor automatische os-upgrades. Dit is een eenmalige vertraging per schaalset. Volgende afbeeldingsimplementaties worden binnen 30 minuten geactiveerd op de schaalset.
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>Automatische afbeeldingsupgrade voor besturingssysteem configureren

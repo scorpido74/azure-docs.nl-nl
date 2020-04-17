@@ -1,11 +1,11 @@
 ---
-title: Groepleden in bulk verwijderen door een csv-bestand te uploaden - Azure Active Directory | Microsoft Documenten
-description: Voeg gebruikers in bulk toe in het Azure-beheercentrum.
+title: Groepleden in bulk verwijderen door een CSV-bestand te uploaden - Azure Active Directory | Microsoft Documenten
+description: Groepsleden in bulkbewerkingen verwijderen in het Azure-beheercentrum.
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 09/11/2019
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d384ea4749e2d0bc7edf8df7ac0508566f2f76b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e6d0752245e3864a8ad25efd5181d5cc1eec7ae
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72517106"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533246"
 ---
-# <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Groepleden verwijderen (voorbeeld) in Azure Active Directory
+# <a name="bulk-remove-group-members-in-azure-active-directory"></a>Groepleden in Bulk verwijderen in Azure Active Directory
 
 Met Azure Active Directory(Azure AD)-portal u een groot aantal leden uit een groep verwijderen met behulp van een CSV-bestand (comma-separated values) om groepsleden in bulk te verwijderen.
 
@@ -30,7 +30,7 @@ Met Azure Active Directory(Azure AD)-portal u een groot aantal leden uit een gro
 1. Selecteer in Azure AD **Alle** > **groepen groepen**.
 1. Open de groep waaruit u leden verwijdert en selecteer **vervolgens Leden**.
 1. Selecteer **op** de pagina Leden de optie **Leden verwijderen**.
-1. Selecteer op de pagina **Bulkgroepleden verwijderen (Voorbeeld)** de optie **Downloaden** om de CSV-bestandssjabloon met vereiste groepslideigenschappen op te halen.
+1. Selecteer op de pagina **Groepleden bulk verwijderen** de optie **Downloaden** om de CSV-bestandssjabloon met vereiste groepslideigenschappen op te halen.
 
    ![De opdracht Leden verwijderen staat op de profielpagina voor de groep](./media/groups-bulk-remove-members/remove-panel.png)
 
@@ -38,16 +38,16 @@ Met Azure Active Directory(Azure AD)-portal u een groot aantal leden uit een gro
 
    ![Het CSV-bestand bevat namen en namen die de leden kunnen verwijderen](./media/groups-bulk-remove-members/csv-file.png)
 
-1. Blader op de pagina **Bulk groepleden verwijderen (Voorbeeld)** onder **Uw csv-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert, wordt de validatie van het CSV-bestand gestart.
+1. Blader op de pagina **Groepleden bulk verwijderen** onder **Uw csv-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert, wordt de validatie van het CSV-bestand gestart.
 1. Wanneer de inhoud van het bestand is gevalideerd, wordt op de pagina voor bulkimport **bestand geüpload.** Als er fouten zijn, moet u deze oplossen voordat u de taak indienen.
 1. Wanneer uw bestand de validatie doorstaat, selecteert u **Verzenden** om de Azure-bulkbewerking te starten waarmee de groepsleden uit de groep worden verwijderd.
 1. Wanneer de verwijderingsbewerking is voltooid, ziet u een melding dat de bulkbewerking is geslaagd.
 
 ## <a name="check-removal-status"></a>Verwijderstatus controleren
 
-U de status van al uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk operation results (preview).**
+U de status van al uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk-bewerkingsresultaten.**
 
-   ![Op de pagina Resultaten bulkbewerkingen ziet u de status van bulkaanvragen](./media/groups-bulk-remove-members/bulk-center.png)
+[![](media/groups-bulk-remove-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
 Selecteer de waarden onder de kolommen **# Succes**, **# Mislukt**of **Totaalaantal aanvragen** voor meer informatie over elk regelitem binnen de bulkbewerking. Als er fouten zijn opgetreden, worden de redenen voor de fout weergegeven.
 

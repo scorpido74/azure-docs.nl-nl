@@ -5,27 +5,27 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 6fd23e3d41dda15b1ec439c1e8b02073722b8871
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/16/2020
+ms.openlocfilehash: 0c7791d43ffbbc13ab151362c5c3026ebbdb0d34
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272537"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531013"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Virtuele netwerken maken voor Azure HDInsight-clusters
 
-In dit artikel vindt u voorbeelden en codevoorbeelden voor het maken en configureren van [Azure Virtual Networks](../virtual-network/virtual-networks-overview.md) voor gebruik met Azure HDInsight-clusters. Gedetailleerde voorbeelden van het maken van netwerkbeveiligingsgroepen (NSG's) en het configureren van DNS worden gepresenteerd. 
+In dit artikel vindt u voorbeelden en codevoorbeelden voor het maken en configureren van [Azure Virtual Networks.](../virtual-network/virtual-networks-overview.md) Te gebruiken met Azure HDInsight-clusters. Gedetailleerde voorbeelden van het maken van netwerkbeveiligingsgroepen (NSG's) en het configureren van DNS worden gepresenteerd.
 
 Zie Een virtueel netwerk voor Azure HDInsight plannen voor achtergrondinformatie over het gebruik van virtuele netwerken met Azure [HDInsight.](hdinsight-plan-virtual-network-deployment.md)
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>Voorwaarden voor codevoorbeelden en voorbeelden
 
-Voordat u een van de codevoorbeelden in dit artikel uitvoert, moet u inzicht hebben in TCP/IP-netwerken. Als u niet bekend bent met TCP /IP-netwerken, raadpleeg dan iemand die dat is voordat u wijzigingen aanbrengt in productienetwerken.
+Voordat u een van de codevoorbeelden in dit artikel uitvoert, hebt u inzicht in TCP/IP-netwerken. Als u niet bekend bent met TCP/IP-netwerken, raadpleegt u iemand voordat u wijzigingen aanbrengt in productienetwerken.
 
-Andere voorwaarden voor de monsters in dit artikel zijn:
+Andere voorwaarden voor de monsters in dit artikel zijn de volgende punten:
 
 * Als u PowerShell gebruikt, moet u de [AZ-module](https://docs.microsoft.com/powershell/azure/overview)installeren.
 * Zie [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)installeren als u Azure CLI wilt gebruiken en deze nog niet hebt geïnstalleerd.
@@ -35,7 +35,7 @@ Andere voorwaarden voor de monsters in dit artikel zijn:
 
 ## <a name="example-network-security-groups-with-hdinsight"></a><a id="hdinsight-nsg"></a>Voorbeeld: netwerkbeveiligingsgroepen met HDInsight
 
-De voorbeelden in deze sectie laten zien hoe u regels voor netwerkbeveiligingkunt maken waarmee HDInsight kan communiceren met de Azure-beheerservices. Voordat u de voorbeelden gebruikt, past u de IP-adressen aan die overeenkomen met de adressen voor de Azure-regio die u gebruikt. U deze informatie vinden in [HDInsight management IP-adressen.](hdinsight-management-ip-addresses.md)
+De voorbeelden in deze sectie laten zien hoe u regels voor netwerkbeveiligingkunt maken. Met de regels kan HDInsight communiceren met de Azure-beheerservices. Voordat u de voorbeelden gebruikt, past u de IP-adressen aan die overeenkomen met de adressen voor de Azure-regio die u gebruikt. U deze informatie vinden in [HDInsight management IP-adressen.](hdinsight-management-ip-addresses.md)
 
 ### <a name="azure-resource-management-template"></a>Azure Resource Management-sjabloon
 
@@ -151,14 +151,14 @@ Set-AzVirtualNetworkSubnetConfig `
 $vnet | Set-AzVirtualNetwork
 ```
 
-In dit voorbeeld wordt uitgelegd hoe u regels toevoegen om binnenkomend verkeer op de vereiste IP-adressen toe te staan. Het bevat geen regel om binnenkomende toegang vanuit andere bronnen te beperken. De volgende code laat zien hoe u SSH-toegang vanaf het internet inschakelt:
+In dit voorbeeld wordt uitgelegd hoe u regels toevoegen om binnenkomend verkeer op de vereiste IP-adressen toe te staan. Het bevat geen regel om binnenkomende toegang van andere bronnen te beperken. De volgende code laat zien hoe u SSH-toegang vanaf het internet inschakelt:
 
 ```powershell
 Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
 Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Gebruik de volgende stappen om een virtueel netwerk te maken dat binnenkomend verkeer beperkt, maar verkeer toestaat vanaf de IP-adressen die door HDInsight worden vereist.
 
@@ -202,7 +202,6 @@ Gebruik de volgende stappen om een virtueel netwerk te maken dat binnenkomend ve
 
     Zodra deze opdracht is voltooid, u HDInsight installeren in het virtuele netwerk.
 
-
 Deze stappen openen alleen toegang tot de HDInsight-status- en beheerservice in de Azure-cloud. Elke andere toegang tot het HDInsight-cluster van buiten het virtuele netwerk wordt geblokkeerd. Als u toegang van buiten het virtuele netwerk wilt inschakelen, moet u aanvullende regels voor netwerkbeveiligingsgroepen toevoegen.
 
 De volgende code laat zien hoe u SSH-toegang vanaf het internet inschakelt:
@@ -238,7 +237,7 @@ Op de aangepaste DNS-server in het virtuele netwerk:
     az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-2. Gebruik op de aangepaste DNS-server voor het virtuele netwerk `/etc/bind/named.conf.local` de volgende tekst als inhoud van het bestand:
+1. Gebruik op de aangepaste DNS-server voor het virtuele netwerk `/etc/bind/named.conf.local` de volgende tekst als inhoud van het bestand:
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
@@ -252,7 +251,7 @@ Op de aangepaste DNS-server in het virtuele netwerk:
 
     Met deze configuratie worden alle DNS-aanvragen voor het DNS-achtervoegsel van het virtuele netwerk doorgestoofd naar de recursieve resolver van Azure.
 
-2. Gebruik op de aangepaste DNS-server voor het virtuele netwerk `/etc/bind/named.conf.options` de volgende tekst als inhoud van het bestand:
+1. Gebruik op de aangepaste DNS-server voor het virtuele netwerk `/etc/bind/named.conf.options` de volgende tekst als inhoud van het bestand:
 
     ```
     // Clients to accept requests from
@@ -288,9 +287,9 @@ Op de aangepaste DNS-server in het virtuele netwerk:
     
     * Vervang de `192.168.0.1` waarde door het IP-adres van uw on-premises DNS-server. Met deze vermelding worden alle andere DNS-aanvragen doorgestoofd naar de on-premises DNS-server.
 
-3. Als u de configuratie wilt gebruiken, start u Binding opnieuw. Bijvoorbeeld `sudo service bind9 restart`.
+1. Als u de configuratie wilt gebruiken, start u Binding opnieuw. Bijvoorbeeld `sudo service bind9 restart`.
 
-4. Voeg een voorwaardelijke expediteer toe aan de on-premises DNS-server. Configureer de voorwaardelijke expediteer om aanvragen voor het DNS-achtervoegsel van stap 1 naar de aangepaste DNS-server te verzenden.
+1. Voeg een voorwaardelijke expediteer toe aan de on-premises DNS-server. Configureer de voorwaardelijke expediteer om aanvragen voor het DNS-achtervoegsel van stap 1 naar de aangepaste DNS-server te verzenden.
 
     > [!NOTE]  
     > Raadpleeg de documentatie voor uw DNS-software voor details over het toevoegen van een voorwaardelijke expediteer.
@@ -351,7 +350,7 @@ In dit voorbeeld worden de volgende aannames gegeven:
             allow-query { goodclients; };
 
             forwarders {
-            168.63.129.16;   # Azure recursive resolver         
+            168.63.129.16;   # Azure recursive resolver
             };
 
             dnssec-validation auto;
@@ -360,10 +359,10 @@ In dit voorbeeld worden de volgende aannames gegeven:
             listen-on { any; };
     };
     ```
-    
+
    Vervang `10.0.0.0/16` de `10.1.0.0/16` waarden en waarden door de IP-adresbereiken van uw virtuele netwerken. Met deze vermelding kunnen resources in elk netwerk verzoeken van de DNS-servers indienen.
 
-    Aanvragen die niet voor de DNS-achtervoegsels van de virtuele netwerken zijn (bijvoorbeeld microsoft.com) worden verwerkt door de recursieve resolver van Azure.
+    Aanvragen die niet voor de DNS-achtervoegsels van de virtuele netwerken (bijvoorbeeld microsoft.com) zijn, worden verwerkt door de recursieve resolver van Azure.
 
 4. Als u de configuratie wilt gebruiken, start u Binding opnieuw. Bijvoorbeeld `sudo service bind9 restart` op beide DNS-servers.
 
@@ -371,7 +370,7 @@ Nadat u deze stappen hebt voltooid, u verbinding maken met bronnen in het virtue
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie HDInsight verbinden met [een on-premises netwerk](./connect-on-premises-network.md)voor een end-to-end voorbeeld van het configureren van HDInsight om verbinding te maken met een on-premises netwerk.
+* Zie HDInsight aansluiten op [een on-premises netwerk](./connect-on-premises-network.md)voor een volledig voorbeeld van het configureren van HDInsight om verbinding te maken met een on-premises netwerk.
 * Zie [Apache HBase-clusters maken op HDInsight in Azure Virtual Network voor](hbase/apache-hbase-provision-vnet.md)het configureren van Apache HBase-clusters in virtuele Azure-netwerken.
 * Zie [Apache HBase-clusterreplicatie instellen in azure virtuele netwerken](hbase/apache-hbase-replication.md)voor het configureren van geo-replicatie van Apache HBase.
 * Zie het overzicht van het [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)voor meer informatie over virtuele Azure-netwerken.

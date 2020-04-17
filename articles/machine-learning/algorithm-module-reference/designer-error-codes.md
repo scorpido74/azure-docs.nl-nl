@@ -8,23 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 12/03/2019
-ms.openlocfilehash: cda499b81a61a5b78ca86a96372640e368f90357
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.date: 04/16/2020
+ms.openlocfilehash: cc04d11475568af92ba6a617a1eb6b2b51accb45
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80364188"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481675"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Uitzonderingen en foutcodes voor de ontwerper (voorbeeld)
 
 In dit artikel worden de foutberichten en uitzonderingscodes in Azure Machine Learning designer (preview) beschreven om u te helpen bij het oplossen van uw machine learning-pijplijnen.
 
-Er zijn twee manieren om de volledige tekst van een foutbericht in de ontwerper te krijgen:  
+U het foutbericht vinden in de ontwerper die de volgende stappen volgt:  
 
-- Klik op de koppeling, **uitvoerlogboek weergeven**in het rechterdeelvenster en schuif naar de onderkant. Het gedetailleerde foutbericht wordt weergegeven in de laatste twee regels van het venster.  
-  
-- Selecteer de module met de fout en klik op de rode X. Alleen de relevante fouttekst wordt weergegeven.
+- Selecteer de mislukte module, ga naar het tabblad **Uitvoer+logboeken,** u vindt het gedetailleerde logboek in het **70_driver_log.txt-bestand** onder de categorie **azureml-logs.**
+
+- Voor gedetailleerde modulefout u deze controleren in de error_info.json onder **module_statistics** categorie.
+
+Hieronder volgen foutcodes van modules in de ontwerper.
 
 ## <a name="error-0001"></a>Fout 0001  
  Er treedt een uitzondering op als een of meer opgegeven kolommen met gegevensset niet kunnen worden gevonden.  
@@ -326,7 +328,7 @@ Voor kolommen die u wilt gebruiken voor het groeperen of categoriseren, neemt u 
 ## <a name="error-0017"></a>Fout 0017  
  Er treedt een uitzondering op als een geselecteerde kolom een gegevenstype gebruikt dat niet wordt ondersteund door de huidige module.  
 
- U deze fout bijvoorbeeld ontvangen in Azure Machine Learning als uw kolomselectie een kolom bevat met een gegevenstype dat niet door de module kan worden verwerkt, zoals een tekenreekskolom voor een wiskundige bewerking of een scorekolom waarin een categorische functiekolom is Vereist.  
+ U deze fout bijvoorbeeld ontvangen in Azure Machine Learning als uw kolomselectie een kolom bevat met een gegevenstype dat niet door de module kan worden verwerkt, zoals een tekenreekskolom voor een wiskundige bewerking of een scorekolom waarin een categorische functiekolom vereist is.  
 
 **Resolutie:**
  1. Identificeer de kolom die het probleem is.
@@ -656,7 +658,7 @@ Het kan ook voorkomen dat een labelkolom aanwezig is in de gegevensset, maar nie
 
 De Matchbox-recommender heeft bepaalde vereisten waaraan moet worden voldaan bij het gebruik van itemfuncties of gebruikersfuncties.  Deze fout geeft aan dat een functievector ontbreekt voor een gebruiker of item dat u als invoer hebt opgegeven. Controleer of er een vector van functies beschikbaar is in de gegevens voor elke gebruiker of item.  
 
- Als u bijvoorbeeld een aanbevelingsmodel hebt getraind met functies zoals de leeftijd, locatie of inkomsten van de gebruiker, maar nu scores wilt maken voor nieuwe gebruikers die niet zijn gezien tijdens de training, moet u een aantal gelijkwaardige functies opgeven (namelijk leeftijd, locatie en inkomenswaarden) voor de nieuwe gebruikers om daarvoor passende voorspellingen te doen. 
+ Als u bijvoorbeeld een aanbevelingsmodel hebt getraind met functies zoals de leeftijd, locatie of inkomsten van de gebruiker, maar nu scores wilt maken voor nieuwe gebruikers die niet zijn gezien tijdens de training, moet u een aantal gelijkwaardige functies (namelijk leeftijd, locatie en inkomstenwaarden) voor de nieuwe gebruikers opgeven om de juiste voorspellingen voor hen te kunnen doen. 
 
  Als u geen functies voor deze gebruikers hebt, u functie-engineering overwegen om de juiste functies te genereren.  Als u bijvoorbeeld geen individuele gebruikersleeftijd of inkomenswaarden hebt, u geschatte waarden genereren die u voor een groep gebruikers moet gebruiken. 
 

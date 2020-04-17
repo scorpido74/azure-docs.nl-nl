@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0643ae792c890b65f239d9a0c16a05639dd4f8b9
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811470"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461698"
 ---
 # <a name="securing-paas-deployments"></a>PaaS-implementaties beveiligen
 
@@ -74,7 +74,7 @@ Principes en patronen voor de netwerkperimeter zijn al tientallen jaren beschikb
 De volgende zijn aanbevolen procedures voor het beheren van de identiteitsperimeter.
 
 **Aanbevolen procedures**: beveilig uw sleutels en referenties om uw PaaS-implementatie te beveiligen.   
-**Detail:** Het verliezen van sleutels en referenties is een veel voorkomend probleem. U een gecentraliseerde oplossing gebruiken waar sleutels en geheimen kunnen worden opgeslagen in hardwarebeveiligingsmodules (HSM's). [Azure Key Vault](../../key-vault/key-vault-overview.md) beschermt uw sleutels en geheimen door verificatiesleutels, opslagaccountsleutels, gegevensversleutelingssleutels, .pfx-bestanden en wachtwoorden te versleutelen met sleutels die door HSM's worden beschermd.
+**Detail:** Het verliezen van sleutels en referenties is een veel voorkomend probleem. U een gecentraliseerde oplossing gebruiken waar sleutels en geheimen kunnen worden opgeslagen in hardwarebeveiligingsmodules (HSM's). [Azure Key Vault](../../key-vault/general/overview.md) beschermt uw sleutels en geheimen door verificatiesleutels, opslagaccountsleutels, gegevensversleutelingssleutels, .pfx-bestanden en wachtwoorden te versleutelen met sleutels die door HSM's worden beschermd.
 
 **Aanbevolen procedures**: Plaats geen referenties en andere geheimen in de broncode of GitHub.   
 **Detail:** Het enige wat erger is dan het verliezen van uw sleutels en referenties is het hebben van een onbevoegde partij toegang krijgen tot hen. Aanvallers kunnen profiteren van bottechnologieën om sleutels en geheimen te vinden die zijn opgeslagen in coderepositories zoals GitHub. Plaats geen sleutel en geheimen in deze openbare code repositories.

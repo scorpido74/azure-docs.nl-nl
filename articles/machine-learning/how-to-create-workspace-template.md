@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 9403cc05ed5b31f3b76c16c4232506e2ddc5da2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 457979837b1c56eb85fc19c9a1fce5dc7df8c23b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402908"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481994"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
@@ -256,7 +256,7 @@ In de volgende voorbeeldsjabloon wordt uitgelegd hoe u een werkruimte met drie i
                     "keyIdentifier": "[parameters('resource_cmk_uri')]"
                   }
             },
-        "hbi_workspace": "[parameters('hbi_workspace')]"
+        "hbiWorkspace": "[parameters('hbi_workspace')]"
       }
     }
   ]
@@ -278,7 +278,7 @@ Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met de vol
 ]
 ```
 
-## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 1. Volg de stappen in [Resources implementeren van aangepaste sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Plak de sjabloon in dit document in wanneer u bij het scherm __Sjabloon bewerken__ aankomt.
 1. Selecteer __Opslaan__ om de sjabloon te gebruiken. Geef de volgende informatie en ga akkoord met de vermelde algemene voorwaarden:

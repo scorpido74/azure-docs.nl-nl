@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van beheerde identiteiten voor Azu
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: f6f3736bed4d3d59bce08d4df3ee0aa164a0a764
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a26f188ed2f5e18bdf775cd1fb21001495ffdc89
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415103"
+ms.locfileid: "81461443"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Beheerde identiteiten voor Azure gebruiken met ServiceFabric
 
@@ -57,7 +57,7 @@ De volgende scenario's worden niet ondersteund of niet aanbevolen; houd er reken
 
 - De identiteiten die aan een toepassing zijn toegewezen, verwijderen of wijzigen; Als u wijzigingen moet aanbrengen, dient u afzonderlijke implementaties in om eerst een nieuwe identiteitstoewijzing toe te voegen en vervolgens een eerder toegewezen implementatie te verwijderen. Het verwijderen van een identiteit uit een bestaande toepassing kan ongewenste effecten hebben, waaronder het verlaten van uw toepassing in een staat die niet kan worden geüderd. Het is veilig om de toepassing helemaal te verwijderen als het verwijderen van een identiteit noodzakelijk is; Let op: hiermee wordt de aan het systeem toegewezen identiteit (indien gedefinieerd) die aan de toepassing is gekoppeld, verwijderd en worden eventuele koppelingen met de door de gebruiker toegewezen identiteiten die aan de toepassing zijn toegewezen, verwijderd.
 
-- Service Fabric-ondersteuning voor beheerde identiteiten is op dit moment niet geïntegreerd in de [AzureServiceTokenProvider.](../key-vault/service-to-service-authentication.md)
+- Service Fabric-ondersteuning voor beheerde identiteiten is op dit moment niet geïntegreerd in de [AzureServiceTokenProvider.](../key-vault/general/service-to-service-authentication.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

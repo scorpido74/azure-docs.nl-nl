@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: de76467cc741a65a851e5f3a7ec424d0326aebb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb04a8e5a6d8c982a35cb5c448e4b6d93825bf73
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74851516"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460219"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 Heb je vragen? Bekijk de volgende FAQ voor meer informatie.
@@ -159,7 +159,7 @@ Met de volgende bronnen u veilig geheimen beheren en toegang krijgen tot gevoeli
  - [Azure AD Managed Service Identity (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Beheerde identiteiten in Azure App Service en Azure-functies](../../app-service/overview-managed-identity.md)
- - [AppAuthentication-bibliotheek](../../key-vault/service-to-service-authentication.md)
+ - [AppAuthentication-bibliotheek](../../key-vault/general/service-to-service-authentication.md)
 
 
 Zie de blogpost Geheimen [beheren veilig in de cloud](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)voor meer informatie.
@@ -202,7 +202,7 @@ Een stap tussen uw belangrijkste build en Roslyn Analyzers stappen kunnen hebben
 
 De volledige foutmelding:
 
-"'csc.exe' exited with error code 1 -- An instance of analyzer *AAAA* cannot be created from C:\\*BBBB*.dll : Could not load file or assembly 'Microsoft.CodeAnalysis, Version=*X.X.X.X*, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. Het systeem kan het opgegeven bestand niet vinden."
+"'csc.exe' verlaten met foutcode 1 - Een instantie van analyzer *AAAA* kan niet worden gemaakt van C:\\*BBBB*.dll : Kon geen bestand of assemblage laden 'Microsoft.CodeAnalysis, Version=*X.X.X.X. X*, Culture=neutral, PublicKeyToken=31bf3856ad364e35' of een van de afhankelijkheden. Het systeem kan het opgegeven bestand niet vinden."
 
 Zorg ervoor dat uw compiler Roslyn Analyzers ondersteunt. Als u de opdracht **csc.exe /versie** uitvoert, moet een versiewaarde van 2,6 of hoger worden gemeld.
 

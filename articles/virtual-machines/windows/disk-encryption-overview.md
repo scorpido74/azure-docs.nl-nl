@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e00fee8841a2d5a817a00b942bfe0733a80b2cfc
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b2fe7e4fbe4830567533053580880315ceface5d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546329"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458876"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure-schijfversleuteling voor Windows VM's 
 
@@ -54,7 +54,7 @@ Als u Azure Disk Encryption wilt inschakelen, moeten de VM's voldoen aan de volg
   - Als u een token wilt openen om verbinding te maken met uw sleutelkluis, \[\]moet de Windows-VM verbinding kunnen maken met een Azure Active Directory-eindpunt, login.microsoftonline.com .
   - Als u de versleutelingssleutels naar uw sleutelkluis wilt schrijven, moet de Windows-VM verbinding kunnen maken met het eindpunt van de sleutelkluis.
   - De Windows-VM moet verbinding kunnen maken met een eindpunt voor Azure-opslag dat de Azure-extensierepository host en een Azure-opslagaccount dat de VHD-bestanden host.
-  -  Als uw beveiligingsbeleid de toegang van Azure VM's tot internet beperkt, u de voorgaande URI oplossen en een specifieke regel configureren om uitgaande connectiviteit met de IP's toe te staan. Zie [Azure Key Vault achter een firewall voor](../../key-vault/key-vault-access-behind-firewall.md)meer informatie.    
+  -  Als uw beveiligingsbeleid de toegang van Azure VM's tot internet beperkt, u de voorgaande URI oplossen en een specifieke regel configureren om uitgaande connectiviteit met de IP's toe te staan. Zie [Azure Key Vault achter een firewall voor](../../key-vault/general/access-behind-firewall.md)meer informatie.    
 
 
 ## <a name="group-policy-requirements"></a>Vereisten voor groepsbeleid

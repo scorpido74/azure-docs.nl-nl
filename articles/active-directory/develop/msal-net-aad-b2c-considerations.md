@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 697b4bc8e3a25085ac6f7d600ea2227dd30a6624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d31cf3a4e024dc59b865d096cbd0829d50f61a1a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262813"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533952"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Gebruik MSAL.NET om zich aan te melden bij gebruikers met een sociale identiteit
 
@@ -34,7 +34,7 @@ Deze pagina is voor MSAL 3.x. Als u geïnteresseerd bent in MSAL 2.x, raadpleegt
 De autoriteit om `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}` te gebruiken is waar:
 
 - `azureADB2CHostname`is de naam van de Azure AD B2C-tenant plus de host (bijvoorbeeld `{your-tenant-name}.b2clogin.com`),
-- `tenant`is de volledige naam van de Azure AD `{your-tenant-name}.onmicrosoft.com`B2C-tenant (bijvoorbeeld ) of de GUID voor de tenant, 
+- `tenant`is de volledige naam van de Azure AD `{your-tenant-name}.onmicrosoft.com`B2C-tenant (bijvoorbeeld ) of de GUID voor de tenant,
 - `policyName`de naam van het beleid of de gebruikersstroom die u wilt toepassen (bijvoorbeeld "b2c_1_susi" voor aanmelden/aanmelden).
 
 Zie deze [documentatie](/azure/active-directory-b2c/b2clogin)voor meer informatie over de Azure AD B2C-autoriteiten.
@@ -121,7 +121,7 @@ private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 ## <a name="resource-owner-password-credentials-ropc-with-azure-ad-b2c"></a>Wachtwoordreferenties voor broneigenaren (ROPC) met Azure AD B2C
 Voor meer informatie over de ROPC-stroom, zie deze [documentatie](v2-oauth-ropc.md).
 
-Deze stroom wordt **niet aanbevolen** omdat uw toepassing die een gebruiker om zijn wachtwoord vraagt, niet veilig is. Zie [dit artikel](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)voor meer informatie over dit probleem. 
+Deze stroom wordt **niet aanbevolen** omdat uw toepassing die een gebruiker om zijn wachtwoord vraagt, niet veilig is. Zie [dit artikel](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)voor meer informatie over dit probleem.
 
 Door gebruikersnaam/wachtwoord te gebruiken, geeft u een aantal dingen op:
 - Kernprincipes van de moderne identiteit: wachtwoord wordt gevist, opnieuw afgespeeld. Omdat we dit concept hebben van een aandelengeheim dat onderschept kan worden. Dit is niet compatibel met wachtwoordloos.
@@ -155,15 +155,15 @@ Als u een Azure AD B2C-ontwikkelaar bent die Google als identiteitsprovider gebr
 
 We zullen een update van dit [probleem](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) geven als er dingen veranderen.
 
-## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>Caching met Azure AD B2C in MSAL.Net 
+## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>Caching met Azure AD B2C in MSAL.Net
 
 ### <a name="known-issue-with-azure-ad-b2c"></a>Bekend probleem met Azure AD B2C
 
-MSAL.Net ondersteunt een [tokencache.](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet) De tokencachesleutel is gebaseerd op de claims die zijn geretourneerd door de identiteitsprovider. Momenteel heeft MSAL.Net twee claims nodig om een tokencachesleutel te bouwen:  
-- `tid`dat is de Azure AD-tenant- id en 
-- `preferred_username` 
+MSAL.Net ondersteunt een [tokencache.](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet) De tokencachesleutel is gebaseerd op de claims die zijn geretourneerd door de identiteitsprovider. Momenteel heeft MSAL.Net twee claims nodig om een tokencachesleutel te bouwen:
+- `tid`dat is de Azure AD-tenant- id en
+- `preferred_username`
 
-Beide claims ontbreken in veel van de Azure AD B2C-scenario's. 
+Beide claims ontbreken in veel van de Azure AD B2C-scenario's.
 
 De impact van de klant is dat wanneer u het gebruikersnaamveld probeert weer te geven, u "Ontbreekt in de tokenrespons" als de waarde? Als dat het zo is, komt dit omdat Azure AD B2C geen waarde in de IdToken retourneert voor de preferred_username vanwege beperkingen met de sociale accounts en externe identiteitsproviders (IdP's). Azure AD retourneert een waarde voor preferred_username omdat deze weet wie de gebruiker is, maar voor Azure AD B2C, omdat de gebruiker zich kan aanmelden met een lokaal account, Facebook, Google, GitHub, enz preferred_username. Om MSAL te deblokkeren van de uitrol van cachecompatibiliteit met ADAL, hebben we besloten om "Ontbrekend in de tokenrespons" aan onze kant te gebruiken bij het omgaan met de Azure AD B2C-accounts wanneer de IdToken niets retourneert voor preferred_username. MSAL moet een waarde retourneren voor preferred_username om cachecompatibiliteit in bibliotheken te behouden.
 
@@ -178,10 +178,10 @@ U de `tid` claim ook gebruiken als u het aangepaste Beleid van [B2C](https://aka
 #### <a name="mitigation-for-missing-from-the-token-response"></a>Mitigatie voor 'Ontbreken in de tokenrespons'
 Een optie is om de "naam" claim te gebruiken als de gewenste gebruikersnaam. Het proces wordt vermeld in dit [B2C-document](../../active-directory-b2c/user-flow-overview.md) -> "Kies in de kolom Claim retour de claims die u wilt retourneren in de autorisatietokens die naar uw aanvraag worden teruggestuurd na een succesvolle ervaring met profielbewerking. Selecteer bijvoorbeeld Weergavenaam, Postcode."
 
-## <a name="next-steps"></a>Volgende stappen 
+## <a name="next-steps"></a>Volgende stappen
 
 Meer details over het interactief aanschaffen van tokens met MSAL.NET voor Azure AD B2C-toepassingen vindt u in het volgende voorbeeld.
 
 | Voorbeeld | Platform | Beschrijving|
 |------ | -------- | -----------|
-|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | In een eenvoudige App Xamarin Forms wordt weergegeven hoe u MSAL.NET gebruikt om gebruikers te verifiëren via Azure AD B2C en toegang te krijgen tot een web-API met de resulterende tokens.|
+|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | In een eenvoudige App Xamarin Forms wordt weergegeven hoe u MSAL.NET gebruiken om gebruikers te verifiëren via Azure AD B2C en toegang te krijgen tot een web-API met de resulterende tokens.|

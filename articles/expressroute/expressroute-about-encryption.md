@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7dd9106539b6756d74629ac663241a5b5562cefb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d48f83df4e83fd1d1fe38eea76432e1b1c711b76
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75437048"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461460"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute-versleuteling
  
 ExpressRoute ondersteunt een aantal versleutelingstechnologieën om de vertrouwelijkheid en integriteit van de gegevens die tussen uw netwerk en het netwerk van Microsoft worden doorkruisen, te waarborgen.
 
 ## <a name="point-to-point-encryption-by-macsec-faq"></a>Point-to-point encryptie door MACsec FAQ
-MACsec is een [IEEE-standaard.](https://1.ieee802.org/security/802-1ae/) Het versleutelt gegevens op het MAC-niveau (Media Access Control) of Network Layer 2. U MACsec gebruiken om de fysieke koppelingen tussen uw netwerkapparaten en de netwerkapparaten van Microsoft te versleutelen wanneer u verbinding maakt met Microsoft via [ExpressRoute Direct.](expressroute-erdirect-about.md) MACsec is standaard uitgeschakeld op ExpressRoute Direct-poorten. U brengt uw eigen MACsec-sleutel mee voor versleuteling en slaat deze op in [Azure Key Vault.](../key-vault/key-vault-overview.md) U bepaalt zelf wanneer u de sleutel wilt draaien. Zie andere veelgestelde vragen hieronder.
+MACsec is een [IEEE-standaard.](https://1.ieee802.org/security/802-1ae/) Het versleutelt gegevens op het MAC-niveau (Media Access Control) of Network Layer 2. U MACsec gebruiken om de fysieke koppelingen tussen uw netwerkapparaten en de netwerkapparaten van Microsoft te versleutelen wanneer u verbinding maakt met Microsoft via [ExpressRoute Direct.](expressroute-erdirect-about.md) MACsec is standaard uitgeschakeld op ExpressRoute Direct-poorten. U brengt uw eigen MACsec-sleutel mee voor versleuteling en slaat deze op in [Azure Key Vault.](../key-vault/general/overview.md) U bepaalt zelf wanneer u de sleutel wilt draaien. Zie andere veelgestelde vragen hieronder.
 ### <a name="can-i-enable-macsec-on-my-expressroute-circuit-provisioned-by-an-expressroute-provider"></a>Kan ik MACsec inschakelen op mijn ExpressRoute-circuit dat is ingericht door een ExpressRoute-provider?
 Nee. MACsec versleutelt al het verkeer op een fysieke koppeling met een sleutel die eigendom is van één entiteit (d.w.z. de klant). Daarom is het alleen beschikbaar op ExpressRoute Direct.
 ### <a name="can-i-encrypt-some-of-the-expressroute-circuits-on-my-expressroute-direct-ports-and-leave-other-circuits-on-the-same-ports-unencrypted"></a>Kan ik een aantal van de ExpressRoute-circuits op mijn ExpressRoute Direct-poorten versleutelen en andere circuits op dezelfde poorten onversleuteld laten? 

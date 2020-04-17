@@ -5,15 +5,15 @@ services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 04/15/2020
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: a7e543dcad9ad1b016d1244451cd87cda5ad7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5b6389491fd91b716a05e7c57c98addb6352bd9
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67440192"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461842"
 ---
 1. Download de SDK-client snelstart voor de volgende platforms:
     
@@ -69,23 +69,13 @@ ms.locfileid: "67440192"
    - **Node.js backend**
     
      Als je de Quickstart-app van Node.js gaat gebruiken, volg je de onderstaande instructies.
-
-     1. Ga in de Azure-portal naar **Eenvoudige tabellen,** u ziet dit scherm.
-      
-        ![Node Easy Tables](./media/app-service-mobile-configure-new-backend/node-easy-tables.png)
-
-     2. Controleer of de SQL-verbindingstekenreeks al is toegevoegd op het tabblad **Configuratie.** Schakel vervolgens het selectievakje in dat **ik erken dat dit alle inhoud van de site overschrijft** en klik op de knop **TodoItem maken.**
      
-        ![Configuratie van node easy-tabellen](./media/app-service-mobile-configure-new-backend/node-easy-tables-configuration.png)
-
-     3. Klik **in Eenvoudige tabellen**op de knop + **Toevoegen.**
-    
-        ![Knop Eenvoudige tabellen knooppunt toevoegen](./media/app-service-mobile-configure-new-backend/node-easy-tables-add.png)
-
-     4. Maak `TodoItem` een tabel met anonieme toegang.
-      
-        ![Tabel eenvoudige tabellen knooppunt toevoegen](./media/app-service-mobile-configure-new-backend/node-easy-tables-table-add.png)
-
+        1. Een nieuwe API maken - U wijzigingen aanbrengen in de Azure-portal of de code lokaal wijzigen in uw ontwikkelomgeving en vervolgens publiceren naar Azure. Klik op `App Service Editor (Preview)` `Development Tools` het menu onder dat een bewerkingservaring in de browser biedt voor uw app-code.
+        
+        2. Klik `Go` op en zodra de App Service Editor wordt geopend, heb je volledige controle over de broncode. Ervan uitgaande dat u al een express- en azure-mobile-apps-pakket hebt geïnstalleerd met de opdracht npm-installatie, klikt u op de api-map onder WWWROOT om aangepaste API's te maken of te bewerken. Breng uw wijzigingen aan in het codebestand en de wijzigingen worden automatisch opgeslagen.
+        
+        3. U hebt volledige controle over de Azure SQL Database die wordt gebruikt om de toepassingsgegevens op te slaan. U eenvoudig nieuwe tabellen maken in de database.
+ 
    - **.NET-back-end**
     
         Als je de QuickStart-app van .NET gaat gebruiken, volg je de onderstaande instructies.

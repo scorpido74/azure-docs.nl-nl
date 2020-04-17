@@ -7,21 +7,31 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8666f51b88d2a70a2cb27e3606f24010771c8017
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255117"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460699"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
-[Azure-bestanden](storage-files-introduction.md) kunnen op twee belangrijke manieren worden geïmplementeerd: door de serverloze Azure-bestandsshares rechtstreeks te monteren of door Azure-bestandsshares on-premises te plaatsen met Azure File Sync. Welke implementatieoptie u kiest, verandert de dingen waarmee u rekening moet houden bij het plannen van uw implementatie. 
+
+:::row:::
+    :::column:::
+        [![Interview en demo invoering van Azure File Sync - klik om af te spelen!](./media/storage-sync-files-planning/azure-file-sync-interview-video-snapshot.png)](https://www.youtube.com/watch?v=nfWLO7F52-s)
+    :::column-end:::
+    :::column:::
+        Azure File Sync is een service waarmee u een aantal Azure-bestandsshares opslaan op een on-premises Windows Server of cloud-vm. 
+        
+        In dit artikel wordt u kennis laten maken met azure file sync-concepten en -functies. Zodra u bekend bent met Azure File Sync, u overwegen de [implementatiehandleiding](storage-sync-files-deployment-guide.md) voor Azure File Sync te volgen om deze service uit te proberen.        
+    :::column-end:::
+:::row-end:::
+
+De bestanden worden opgeslagen in de cloud in [Azure-bestandsshares.](storage-files-introduction.md) Azure-bestandsshares kunnen op twee manieren worden gebruikt: door deze serverloze Azure-bestandsshares (SMB) rechtstreeks te monteren of door Azure-bestandsshares on-premises te plaatsen met Azure File Sync. Welke implementatieoptie u kiest, verandert de aspecten waarmee u rekening moet houden bij het plannen van uw implementatie. 
 
 - **Directe bevestiging van een Azure-bestandsshare:** Aangezien Azure Files SMB-toegang biedt, u Azure-bestandsshares on-premises of in de cloud monteren met behulp van de standaard SMB-client die beschikbaar is in Windows, macOS en Linux. Omdat Azure-bestandsshares serverloos zijn, hoeft u geen bestandsserver of NAS-apparaat te beheren voor productiescenario's. Dit betekent dat u geen softwarepatches hoeft toe te passen of fysieke schijven hoeft uit te wisselen. 
 
 - **On-premises cache Azure-bestandsshare met Azure File Sync:** met Azure File Sync u de bestandsshares van uw organisatie centraliseren in Azure-bestanden, terwijl de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver behouden blijft. Azure File Sync transformeert een on-premises (of cloud) Windows Server in een snelle cache van uw Azure-bestandsshare. 
-
-In dit artikel worden voornamelijk implementatieoverwegingen voor het implementeren van Azure File Sync ingegaan. Zie [Plannen voor een Azure-bestandsimplementatie](storage-files-planning.md)als u wilt plannen dat een implementatie van Azure-bestandsshares rechtstreeks wordt gestart door een on-premises of cloudclient.
 
 ## <a name="management-concepts"></a>Managementconcepten
 Een Azure File Sync-implementatie heeft drie fundamentele beheerobjecten:
@@ -260,7 +270,7 @@ Producten van derden die op dezelfde manier werken als BitLocker, omdat ze onder
 
 De andere belangrijke methode voor het versleutelen van gegevens is het versleutelen van de gegevensstroom van het bestand wanneer de toepassing het bestand opslaat. Sommige toepassingen kunnen dit native doen, maar dit is meestal niet het geval. Een voorbeeld van een methode voor het versleutelen van de gegevensstroom van het bestand is Azure Information Protection (AIP)/Azure Rights Management Services (Azure RMS)/Active Directory RMS. De belangrijkste reden om een versleutelingsmechanisme zoals AIP/RMS te gebruiken, is om te voorkomen dat gegevens uit uw bestandsshare worden verwijderd door mensen die deze naar alternatieve locaties kopiëren, zoals naar een flashstation of deze te e-mailen naar een onbevoegde persoon. Wanneer de gegevensstroom van een bestand wordt versleuteld als onderdeel van de bestandsindeling, blijft dit bestand worden versleuteld op het Azure-bestandsaandeel. 
 
-Azure File Sync werkt niet samen met NTFS Encrypted File System (NTFS EFS) of versleutelingsoplossingen van derden die boven het bestandssysteem maar onder de gegevensstroom van het bestand zitten. 
+Azure File Sync werkt niet samen met NTFS Encrypted File System (NTFS EFS) of versleutelingsoplossingen van derden die boven het bestandssysteem zitten, maar onder de gegevensstroom van het bestand. 
 
 ### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
 Azure File Sync-agent communiceert met uw Storage Sync Service en Azure-bestandsshare met het Azure File Sync REST-protocol en het FileREST-protocol, die beide altijd HTTPS gebruiken via poort 443. Azure File Sync verzendt geen onversleutelde aanvragen via HTTP. 
@@ -354,7 +364,7 @@ De interne antivirusoplossingen van Microsoft, Windows Defender en System Center
 > [!Note]  
 > Antivirusleveranciers kunnen de compatibiliteit tussen hun product en Azure File Sync controleren met behulp van de [Azure File Sync Antivirus Compatibility Test Suite](https://www.microsoft.com/download/details.aspx?id=58322), die beschikbaar is om te downloaden in het Microsoft Download centrum.
 
-## <a name="backup"></a>Back-up 
+## <a name="backup"></a>Backup 
 Net als antivirusoplossingen kunnen back-upoplossingen leiden tot het terugroepen van gelaagde bestanden. We raden u aan een back-upoplossing voor de cloud te gebruiken om een back-up te maken van het Azure-bestandsaandeel in plaats van een on-premises back-upproduct.
 
 Als u een on-premises back-upoplossing gebruikt, moeten back-ups worden uitgevoerd op een server in de synchronisatiegroep waarin cloudtiering is uitgeschakeld. Wanneer u een herstel uitvoert, gebruikt u de opties voor herstel op volumeniveau of bestandsniveau. Bestanden die zijn hersteld met de optie herstel op bestandsniveau worden gesynchroniseerd met alle eindpunten in de synchronisatiegroep en bestaande bestanden worden vervangen door de versie die is hersteld van back-up.  Herstelop volumeniveau vervangt geen nieuwere bestandsversies in de Azure-bestandsshare of andere servereindpunten.
@@ -370,7 +380,7 @@ Als u een on-premises back-upoplossing gebruikt, moeten back-ups worden uitgevoe
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Firewall- en proxy-instellingen overwegen](storage-sync-files-firewall-and-proxy.md)
-* [Implementatie van Azure Files plannen](storage-files-planning.md)
+* [Planning voor de implementatie van Azure Files](storage-files-planning.md)
 * [Azure Files implementeren](storage-files-deployment-guide.md)
 * [Azure Files SYNC implementeren](storage-sync-files-deployment-guide.md)
 * [Azure File Sync bewaken](storage-sync-files-monitoring.md)

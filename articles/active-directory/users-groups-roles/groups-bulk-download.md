@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 09/11/2019
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b08e807e179270b63ca81d3777c230c3e129c3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59983678c1b14d6aa87a7b500605e3abeb6a9b85
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72517149"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533532"
 ---
-# <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>Bulk download een lijst met groepen (voorbeeld) in Azure Active Directory
+# <a name="bulk-download-a-list-of-groups-in-azure-active-directory"></a>Bulk download een lijst met groepen in Azure Active Directory
 
 Met Azure Active Directory (Azure AD)-portal u de lijst met alle groepen in uw organisatie downloaden naar een CSV-bestand (comma-separate values).
 
@@ -34,9 +34,9 @@ Met Azure Active Directory (Azure AD)-portal u de lijst met alle groepen in uw o
 
 ## <a name="check-download-status"></a>Downloadstatus controleren
 
-U de status van al uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk operation results (preview).**
+U de status van al uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk-bewerkingsresultaten.**
 
-   ![Op de pagina Resultaten bulkbewerkingen ziet u de status van bulkaanvragen](./media/groups-bulk-download/bulk-center.png)
+[![](media/groups-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>Limieten voor bulkdownloadservice
 

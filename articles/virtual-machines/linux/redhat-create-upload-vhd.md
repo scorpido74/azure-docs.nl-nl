@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: ''
 author: gbowerman
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 6c6b8f72-32d3-47fa-be94-6cb54537c69f
 ms.service: virtual-machines-linux
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: cd0a71c60930e3eb659255a23cdb03360730f2a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc806fe0c3894174835c99493ebf2ba19a11ca28
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060731"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460457"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Een op Red Hat gebaseerde virtuele machine voor Azure voorbereiden
 In dit artikel leert u hoe u een Virtual Machine (Red Hat Enterprise Linux) voorbereidt voor gebruik in Azure. De versies van RHEL die in dit artikel worden behandeld zijn 6.7+ en 7.1+. De hypervisors ter voorbereiding die in dit artikel worden behandeld zijn Hyper-V, kernel-based virtual machine (KVM) en VMware. Zie de [Cloud Access-website](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) van Red Hat en [RHEL uitvoeren op Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)voor meer informatie over geschiktheidsvereisten voor deelname aan het Cloud Access-programma van Red Hat. Zie de [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)voor manieren om RHEL-afbeeldingen te automatiseren.

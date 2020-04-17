@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544330"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460644"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Best practices virtuele array van StorSimple
 
@@ -199,7 +199,7 @@ Gebruik de volgende aanbevolen procedures bij het configureren van ADR's voor St
 ### <a name="data-security-and-encryption"></a>Gegevensbeveiliging en -versleuteling
 Uw StorSimple Virtual Array heeft functies voor gegevensbeveiliging en versleuteling die de vertrouwelijkheid en integriteit van uw gegevens garanderen. Wanneer u deze functies gebruikt, wordt u aangeraden deze aanbevolen procedures te volgen: 
 
-* Definieer een versleutelingssleutel voor cloudopslag om AES-256-versleuteling te genereren voordat de gegevens van uw virtuele array naar de cloud worden verzonden. Deze sleutel is niet vereist als uw gegevens om te beginnen zijn versleuteld. De sleutel kan worden gegenereerd en veilig worden bewaard met behulp van een sleutelbeheersysteem, zoals [Azure-sleutelkluis.](../key-vault/key-vault-overview.md)
+* Definieer een versleutelingssleutel voor cloudopslag om AES-256-versleuteling te genereren voordat de gegevens van uw virtuele array naar de cloud worden verzonden. Deze sleutel is niet vereist als uw gegevens om te beginnen zijn versleuteld. De sleutel kan worden gegenereerd en veilig worden bewaard met behulp van een sleutelbeheersysteem, zoals [Azure-sleutelkluis.](../key-vault/general/overview.md)
 * Wanneer u het opslagaccount configureert via de StorSimple Manager-service, moet u ervoor zorgen dat u de TLS-modus inschakelt om een beveiligd kanaal te maken voor netwerkcommunicatie tussen uw StorSimple-apparaat en de cloud.
 * Regenereert de sleutels voor uw opslagaccounts (door periodiek toegang te krijgen tot de Azure Storage-service) om rekening te houden met eventuele wijzigingen in de toegang op basis van de gewijzigde lijst met beheerders.
 * Gegevens op uw virtuele array worden gecomprimeerd en gededuplicatevoordat deze naar Azure worden verzonden. We raden u af de functieservice Gegevensdeduplicatie te gebruiken op uw Windows Server-host.

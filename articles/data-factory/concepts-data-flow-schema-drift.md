@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/12/2019
-ms.openlocfilehash: a6b3b1d11242434088c138460d968f39d5273e4f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/15/2020
+ms.openlocfilehash: 4c510cae7ba5a952e6dc7f7cb7ae7591fe801560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418419"
+ms.locfileid: "81461290"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Schemadrift in kaartgegevensstroom
 
@@ -30,6 +30,10 @@ Om te beschermen tegen schemadrift, is het belangrijk om de faciliteiten in een 
 Azure Data Factory ondersteunt native flexibele schema's die van uitvoering naar uitvoering veranderen, zodat u algemene gegevenstransformatielogica bouwen zonder dat u uw gegevensstromen opnieuw hoeft te compileren.
 
 U moet een architecturale beslissing nemen in uw gegevensstroom om schemadrift in uw stroom te accepteren. Wanneer u dit doet, u beschermen tegen schemawijzigingen van de bronnen. U verliest echter vroege binding van uw kolommen en typen in uw gegevensstroom. Azure Data Factory behandelt schemadriftstromen als laatbindende stromen, dus wanneer u uw transformaties bouwt, zijn de zwevende kolomnamen niet beschikbaar in de schemaweergaven gedurende de hele stroom.
+
+Deze video biedt een inleiding tot enkele van de complexe oplossingen die u eenvoudig bouwen in ADF met de schemadriftfunctie van de gegevensstroom. In dit voorbeeld bouwen we herbruikbare patronen op basis van flexibele databaseschema's:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tyx7]
 
 ## <a name="schema-drift-in-source"></a>Schemadrift in bron
 

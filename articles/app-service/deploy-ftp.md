@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266011"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532578"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Uw app implementeren voor Azure App Service met FTP/S
 
@@ -67,7 +67,7 @@ Het wordt aanbevolen dat u **app-referenties** gebruikt om te implementeren in u
 
 ## <a name="enforce-ftps"></a>FTPS afdwingen
 
-Voor verbeterde beveiliging moet u alleen FTP via SSL toestaan. U zowel FTP als FTPS ook uitschakelen als u geen FTP-implementatie gebruikt.
+Voor verbeterde beveiliging moet u alleen FTP via TLS/SSL toestaan. U zowel FTP als FTPS ook uitschakelen als u geen FTP-implementatie gebruikt.
 
 Selecteer **Configuratiealgemene** > **instellingen** van de linkernavigatie op de resourcepagina van uw app in [Azure-portal.](https://portal.azure.com)
 

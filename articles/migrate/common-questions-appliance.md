@@ -2,13 +2,13 @@
 title: Veelgestelde vragen over Azure-toestel migreren
 description: Antwoorden op veelgestelde vragen over het Azure Migrate-toestel.
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/15/2020
+ms.openlocfilehash: 529ead1baa769ee3e71f6fcf77ef7e020ed196a6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437598"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529685"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate appliance: veelgestelde vragen
 
@@ -31,6 +31,15 @@ Hier vindt u meer informatie over het Azure Migrate-toestel:
 
 [Meer informatie](migrate-appliance.md) over het apparaat.
 
+## <a name="how-can-i-deploy-the-appliance"></a>Hoe kan ik het apparaat implementeren?
+
+Het apparaat kan als volgt worden ingezet:
+
+- Een sjabloon gebruiken voor VMware VM's en Hyper-V VM's (OVA-sjabloon voor VMware of VHD voor Hyper-V).
+- Als u geen sjabloon wilt gebruiken of als u in Azure Government zit, u het toestel implementeren voor VMware of Hyper-V met behulp van een PowerShell-script.
+- Voor fysieke servers implementeert u het toestel altijd met behulp van een script.
+
+
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Hoe maakt het toestel verbinding met Azure?
 
 Het toestel kan verbinding maken via internet of via Azure ExpressRoute met public/Microsoft-peering.
@@ -45,11 +54,8 @@ Wanneer u de gedownloade sjabloon gebruikt om de toestel-VM te maken, u onderdel
 
 ## <a name="what-network-connectivity-is-required"></a>Welke netwerkconnectiviteit is vereist?
 
-Zie de volgende artikelen voor informatie over netwerkconnectiviteitsvereisten voor het Azure Migrate-toestel:
 
-- **VMware-beoordeling**: [TOEGANG tot URL](migrate-appliance.md#url-access) en [poorttoegang](migrate-support-matrix-vmware.md#port-access)
-- **VMware agentless migratie**: [URL-toegang](migrate-appliance.md#url-access) en [poorttoegang](migrate-support-matrix-vmware-migration.md#agentless-ports)
-- **Hyper-V-beoordeling**: [TOEGANG tot URL](migrate-appliance.md#url-access) en [poorttoegang](migrate-support-matrix-hyper-v.md#port-access)
+Het toestel heeft toegang nodig tot Azure URL's. [Bekijk](migrate-appliance.md#url-access) de URL-lijst.
 
 ## <a name="what-data-does-the-appliance-collect"></a>Welke gegevens verzamelt het toestel?
 

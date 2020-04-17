@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 03/18/2020
+ms.date: 04/16/2020
 ms.author: alzam
-ms.openlocfilehash: fd415e1da00f52a9a3b55c946a07a30cf841cf4a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 11007bc39cb1112799c89afaf0ca670aa6760de6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80060299"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482136"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Zelfstudie: Een VPN-verbinding voor gebruikers maken met Azure Virtual WAN
 
@@ -110,6 +110,32 @@ Een P2S-configuratie definieert de parameters om verbinding te maken met externe
 4. Schakel het selectievakje **Point-to-site gateway opnemen in** en kies de gewenste **gatewayschaaleenheid.**
 
    ![Nieuwe site](media/virtual-wan-point-to-site-portal/p2s2.jpg)
+
+De onderstaande tabel toont de details over de beschikbare **schaaleenheden**
+
+| **Schaaleenheid** | **Doorvoer** | **P2S-verbindingen** |
+| --- | --- | --- |
+| 1| 500 Mbps | 500 |
+| 2| 1 Gbps | 500 |
+| 3| 1,5 Gbps | 500 |
+| 4| 2 Gbps | 1000 |
+| 5| 2,5 Gbps | 1000 |
+| 6| 3 Gbps | 1000 |
+| 7| 3,5 Gbps | 5000 |
+| 8| 4 Gbps | 5000 |
+| 9| 4,5 Gbps | 5000 |
+| 10| 5 Gbps | 5000 |
+| 11| 5,5 Gbps | 5000 |
+| 12| 6 Gbps | 5000 |
+| 13| 6,5 Gbps | 10.000 |
+| 14| 7 Gbps | 10.000 |
+| 15| 7,5 Gbps | 10.000 |
+| 16| 8 Gbps | 10.000 |
+| 17| 8,5 Gbps | 10.000 |
+| 18| 9 Gbps | 10.000 |
+| 19| 9,5 Gbps | 10.000 |
+| 20| 10 Gbps | 10.000 |
+
 5. Voer de **groep Adres** in van waaruit de VPN-clients IP-adressen toegewezen krijgen.
 6. Klik **op Bevestigen**
 7. Het kan tot 30 minuten duren voordat de bewerking is voltooid.

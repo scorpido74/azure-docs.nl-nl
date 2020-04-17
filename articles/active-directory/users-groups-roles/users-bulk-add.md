@@ -1,11 +1,11 @@
 ---
-title: Bulkgebruikers maken (voorbeeld) in de Azure Active Directory-portal | Microsoft Documenten
+title: Bulkgebruikers maken in de Azure Active Directory-portal | Microsoft Documenten
 description: Gebruikers in bulk toevoegen in het Azure AD-beheercentrum in Azure Active Directory
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/30/2019
+ms.date: 04/16/2020
 ms.topic: article
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a10dfffa69652ee2b75053c04b97f6492c46811e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3a8b9cb9701288d24534ab08940f6dbd4a698ad
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174321"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532923"
 ---
-# <a name="bulk-create-users-preview-in-azure-active-directory"></a>Bulkmaken gebruikers (preview) in Azure Active Directory
+# <a name="bulk-create-users-in-azure-active-directory"></a>Bulkmaken van gebruikers in Azure Active Directory
 
 Azure Active Directory (Azure AD) ondersteunt bewerkingen voor het maken en verwijderen van bulkgebruikers, bulkuitnodigingen voor gasten en ondersteunt het downloaden van lijsten met gebruikers, groepen en groepsleden.
 
@@ -40,7 +40,7 @@ Als u gebruikers in de beheerportal wilt maken, moet u zijn aangemeld als global
 
    ![Het CSV-bestand bevat namen en namen van de gebruikers om](./media/users-bulk-add/add-csv-file.png)
 
-1. Blader op de pagina **Bulk-gebruiker (Voorbeeld)** onder Uw CSV-bestand uploaden naar het bestand. Wanneer u het bestand selecteert en op **Verzenden**klikt, wordt de validatie van het CSV-bestand gestart.
+1. Blader op de **gebruikerspagina Bulk maken** onder Uw CSV-bestand uploaden naar het bestand. Wanneer u het bestand selecteert en op **Verzenden**klikt, wordt de validatie van het CSV-bestand gestart.
 1. Nadat de inhoud van het bestand is gevalideerd, wordt **bestand geüpload**. Als er fouten zijn, moet u deze oplossen voordat u de taak indienen.
 1. Wanneer uw bestand de validatie doorstaat, selecteert u **Verzenden** om de Azure-bulkbewerking te starten waarmee de nieuwe gebruikers worden geïmporteerd.
 1. Wanneer de importbewerking is voltooid, ziet u een melding van de taakstatus van de bulkbewerking.
@@ -49,9 +49,9 @@ Als er fouten zijn, u het resultatenbestand downloaden en bekijken op de pagina 
 
 ## <a name="check-status"></a>Status controleren
 
-U de status van al uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk operation results (preview).**
+U de status van al uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk-bewerkingsresultaten.**
 
-   ![Uploadstatus controleren op de pagina Resultaten van bulkbewerkingen](./media/users-bulk-add/bulk-center.png)
+   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
 
 Vervolgens u controleren of de gebruikers die u hebt gemaakt, in de Azure AD-organisatie bestaan in de Azure-portal of met PowerShell.
 

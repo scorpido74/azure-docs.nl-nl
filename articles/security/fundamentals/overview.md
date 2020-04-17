@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a7957c7cbcfa511ea441d8c7bd4371f56ab87560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545973"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461681"
 ---
 # <a name="introduction-to-azure-security"></a>Inleiding tot Azure-beveiliging
 ## <a name="overview"></a>Overzicht
@@ -295,7 +295,7 @@ De sectie bevat aanvullende informatie over belangrijke functies in dit gebied e
 Met Azure IaaS u antimalwaresoftware van beveiligingsleveranciers zoals Microsoft, Symantec, Trend Micro, McAfee en Kaspersky gebruiken om uw virtuele machines te beschermen tegen schadelijke bestanden, adware en andere bedreigingen. [Microsoft Antimalware](antimalware.md) voor Azure Cloud Services en Virtuele Machines is een beveiligingsmogelijkheid die helpt bij het identificeren en verwijderen van virussen, spyware en andere schadelijke software. Microsoft Antimalware biedt configureerbare waarschuwingen wanneer bekende schadelijke of ongewenste software zichzelf probeert te installeren of op uw Azure-systemen uitvoert. Microsoft Antimalware kan ook worden geïmplementeerd met Azure Security Center
 
 ### <a name="hardware-security-module"></a>Hardwarebeveiligingsmodule
-Versleuteling en verificatie verbeteren de beveiliging niet, tenzij de sleutels zelf zijn beveiligd. U het beheer en de beveiliging van uw kritieke geheimen en sleutels vereenvoudigen door ze op te slaan in [Azure Key Vault.](../../key-vault/key-vault-overview.md) Key Vault biedt de mogelijkheid om uw sleutels op te slaan in hardware Beveiligingsmodules (HSM's) die zijn gecertificeerd volgens FIPS 140-2 Level 2-standaarden. Uw SQL Server-versleutelingssleutels voor back-up of [transparante gegevensversleuteling](https://msdn.microsoft.com/library/bb934049.aspx) kunnen allemaal worden opgeslagen in Key Vault met sleutels of geheimen van uw toepassingen. Machtigingen en toegang tot deze beveiligde items worden beheerd via [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
+Versleuteling en verificatie verbeteren de beveiliging niet, tenzij de sleutels zelf zijn beveiligd. U het beheer en de beveiliging van uw kritieke geheimen en sleutels vereenvoudigen door ze op te slaan in [Azure Key Vault.](../../key-vault/general/overview.md) Key Vault biedt de mogelijkheid om uw sleutels op te slaan in hardware Beveiligingsmodules (HSM's) die zijn gecertificeerd volgens FIPS 140-2 Level 2-standaarden. Uw SQL Server-versleutelingssleutels voor back-up of [transparante gegevensversleuteling](https://msdn.microsoft.com/library/bb934049.aspx) kunnen allemaal worden opgeslagen in Key Vault met sleutels of geheimen van uw toepassingen. Machtigingen en toegang tot deze beveiligde items worden beheerd via [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
 ### <a name="virtual-machine-backup"></a>Back-up van virtuele machines
 [Azure Backup](../../backup/backup-overview.md) is een oplossing die uw toepassingsgegevens beschermt met nul kapitaalinvesteringen en minimale bedrijfskosten. Toepassingsfouten kunnen uw gegevens beschadigen en menselijke fouten kunnen bugs in uw toepassingen introduceren die tot beveiligingsproblemen kunnen leiden. Met Azure Backup zijn uw virtuele machines met Windows en Linux beveiligd.

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 25ed59b73f3b508fd29a964bb6b981049957143f
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 6421636b806f2c32f5beba8c3cfafc6cd146e945
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365665"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461324"
 ---
 # <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Ontvang doorvoer (RU/s) voor een database of verzameling voor Azure Cosmos DB - MongoDB API
 
@@ -40,7 +40,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 |---|---|
 |**Azure Cosmos DB**| |
 | [Get-AzCosmosDBMongoDBDatabaseDoorvoer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabasethroughput) | Hier krijgt u de doorvoerwaarde van de opgegeven MongoDB API-database. |
-| [Get-AzCosmosDBMongoDBCollectionDoorvoer](hhttps://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollectionthroughput) | Hier krijgt u de doorvoerwaarde van de opgegeven MongoDB API-verzameling. |
+| [Get-AzCosmosDBMongoDBCollectionDoorvoer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollectionthroughput) | Hier krijgt u de doorvoerwaarde van de opgegeven MongoDB API-verzameling. |
 |**Azure-brongroepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||

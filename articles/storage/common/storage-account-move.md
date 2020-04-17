@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 8ce949ac997ba7ee38cb057752d89f4b4d22388f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8578c518ac45bea147790028c2904c7ce36fffb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73838708"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459029"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Een Azure Storage-account verplaatsen naar een ander gebied
 
@@ -51,7 +51,7 @@ Deze sjabloon bevat instellingen die uw opslagaccount beschrijven.
 
 Ga als lid van het werk om een sjabloon te exporteren met Azure-portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **Alle resources** en selecteer vervolgens uw opslagaccount.
 
@@ -63,7 +63,7 @@ Ga als lid van het werk om een sjabloon te exporteren met Azure-portal:
 
    Dit zip-bestand bevat de .json-bestanden die de sjabloon en scripts bevatten om de sjabloon te implementeren.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Ga als een voorbeeld met PowerShell:
 
@@ -139,7 +139,7 @@ Ga als een voorbeeld voor het implementeren van de sjabloon met Azure-portal:
     ```
     Zie Azure-locaties voor het verkrijgen van [locatiecodes voor regio's.](https://azure.microsoft.com/global-infrastructure/locations/)  De code voor een regio is de regionaam zonder spaties, **Central US** = **centralus**.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Ga als een voorbeeld voor het implementeren van de sjabloon met PowerShell:
 
@@ -194,7 +194,7 @@ Implementeer de sjabloon om een nieuw opslagaccount in het doelgebied te maken.
 
 3. Klik **op** het selectievakje Akkoord gaan met de bovenstaande voorwaarden en klik vervolgens op Aankoop **selecteren.**
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Verkrijg de abonnements-ID waar u het openbare doel-IP wilt implementeren met [Get-AzSubscription:](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0)
 
@@ -274,9 +274,9 @@ Ga als een mogelijk verwijderen uit een opslagaccount met de Azure-portal:
 
 3. Selecteer **Verwijderen**en bevestigen.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als u de brongroep en de bijbehorende bronnen, waaronder het nieuwe opslagaccount, wilt verwijderen, gebruikt u de opdracht [Verwijderen-AzStorageAccount:](/powershell/module/az.resources/remove-azstorageaccount)
+Als u de brongroep en de bijbehorende bronnen, waaronder het nieuwe opslagaccount, wilt verwijderen, gebruikt u de opdracht [Verwijderen-AzStorageAccount:](/powershell/module/az.storage/remove-azstorageaccount)
 
 ```powershell
 Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storageAccount

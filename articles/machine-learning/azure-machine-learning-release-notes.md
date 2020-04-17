@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: ce9919a0b0f614e427c12ee3e3fbda0be46470ea
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9ed17ed0825e0011d1402efc45155755a1ecbadf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273304"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459165"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning release notes Azure Machine Learning release notes Azure Machine Learning release notes Azure Machine
 
@@ -721,10 +721,10 @@ Azure Machine Learning is nu een bronprovider voor gebeurtenisraster, u machine 
       + Door specifieke start_time en/of end_time te invoeren, worden alleen de resultaten van geplande runs geretourneerd;
       + Parameter 'daily_latest_only' is afgeschaft.
     + Ondersteuning voor het ophalen van gegevensdrift-uitvoerop basis van gegevensopset.
-  + **[azureml-explain-model](https://docs.microsoft.com/python/api/azureml-explain-model)**
+  + **azureml-explain-model**
     + Hernoemt azureml-explain-modelpakket naar AzureML-interpret, zodat het oude pakket voorlopig achterwaartse compatibiliteit blijft.
     + fixed AutoML bug with raw explanations set to classification task instead of regression by default on download from ExplanationClient.
-    + Ondersteuning toevoegen voor [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py) die rechtstreeks kan worden gemaakt met [MimicWrapper](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic_wrapper.mimicwrapper)
+    + Ondersteuning toevoegen voor [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py) die rechtstreeks kan worden gemaakt met MimicWrapper
   + **[azureml-pipeline-core](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
     + Verbeterde prestaties voor grote pipeline creatie.
   + **[azureml-train-core](https://docs.microsoft.com/python/api/azureml-train-core)**
@@ -798,7 +798,7 @@ Het tabblad Experiment in de [nieuwe werkruimteportal](https://ml.azure.com) is 
     + Extra vm-groottevelden (OS-schijf, aantal GPU's) toegevoegd aan de functie [supported_vmsizes()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-)
     + Extra velden toegevoegd aan de [functie list_nodes()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#list-nodes--) om de run, het privé- en het openbare IP-adres, de poort enz.
     + Mogelijkheid om een nieuw veld op te geven tijdens het [clusterprovisionen](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--) `--remotelogin_port_public_access` dat kan worden ingesteld op ingeschakeld of uitgeschakeld, afhankelijk van of u de SSH-poort open of gesloten wilt laten op het moment van het maken van het cluster. Als u dit niet opgeeft, wordt de poort slim geopend of gesloten, afhankelijk van of u het cluster in een VNet implementeert.
-  + **[azureml-explain-model](https://docs.microsoft.com/python/api/azureml-explain-model)**
+  + **azureml-explain-model**
     + Verbeterde documentatie voor uitleguitvoer in het classificatiescenario.
     + Toegevoegd de mogelijkheid om de voorspelde y waarden uploaden op de uitleg voor de evaluatie voorbeelden. Ontgrendelt meer nuttige visualisaties.
     + Added explainer property to MimicWrapper to enable getting the underlying MimicExplainer.

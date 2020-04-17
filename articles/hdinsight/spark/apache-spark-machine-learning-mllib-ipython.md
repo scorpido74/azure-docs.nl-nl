@@ -1,43 +1,44 @@
 ---
 title: Voorbeeld van machine learning met Spark MLlib op HDInsight - Azure
 description: Meer informatie over het gebruik van Spark MLlib om een machine learning-app te maken die een gegevensset analyseert met behulp van classificatie via logistieke regressie.
-keywords: spark machine learning, spark machine learning voorbeeld
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/17/2019
-ms.author: hrasheed
-ms.openlocfilehash: c8ead7abc454df387db31b2ce65d2ba714b0067d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 04/16/2020
+ms.openlocfilehash: 26695df299ba5d0f50c8f271b5da99284a8d6764
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73494092"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531130"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Apache Spark MLlib gebruiken om een machine learning-toepassing te bouwen en een gegevensset te analyseren
 
-Meer informatie over het gebruik van Apache Spark [MLlib](https://spark.apache.org/mllib/) om een machine learning-toepassing te maken om eenvoudige voorspellende analyses uit te voeren op een open dataset. Vanuit de ingebouwde machine learning-bibliotheken van Spark maakt dit voorbeeld gebruik van *classificatie* tot logistieke regressie. 
+Meer informatie over het gebruik van Apache Spark [MLlib](https://spark.apache.org/mllib/) om een machine learning-toepassing te maken. De toepassing zal voorspellende analyse op een open gegevensset doen. Vanuit de ingebouwde machine learning-bibliotheken van Spark maakt dit voorbeeld gebruik van *classificatie* tot logistieke regressie.
 
-MLlib is een kernsparkbibliotheek die veel hulpprogramma's biedt die nuttig zijn voor machine learning-taken, waaronder hulpprogramma's die geschikt zijn voor:
+MLlib is een kernsparkbibliotheek die veel hulpprogramma's biedt die nuttig zijn voor machine learning-taken, zoals:
 
 * Classificatie
 * Regressie
 * Clustering
-* Onderwerpmodellering
+* Modelleren
 * Enkelvoudwaardedecompositie (SVD) en hoofdcomponentanalyse (PCA)
 * Hypothesetesten en het berekenen van steekproefstatistieken
 
 ## <a name="understand-classification-and-logistic-regression"></a>Begrijp classificatie en logistieke regressie
-*Classificatie*, een populaire machine learning taak, is het proces van het sorteren van invoergegevens in categorieën. Het is de taak van een classificatiealgoritme om erachter te komen hoe u labels toewijzen aan invoergegevens die u verstrekt. U bijvoorbeeld een machine learning-algoritme bedenken dat voorraadinformatie accepteert als invoer en de voorraad in twee categorieën verdeelt: aandelen die u moet verkopen en aandelen die u moet houden.
+
+*Classificatie*, een populaire machine learning taak, is het proces van het sorteren van invoergegevens in categorieën. Het is de taak van een classificatiealgoritme om erachter te komen hoe u labels toewijzen aan invoergegevens die u verstrekt. U bijvoorbeeld een machine learning-algoritme gebruiken dat voorraadinformatie als invoer accepteert. Dan verdeelt de voorraad in twee categorieën: aandelen die je moet verkopen en de voorraden die je moet houden.
 
 Logistieke regressie is het algoritme dat u gebruikt voor classificatie. Spark's logistieke regressie API is handig voor *binaire classificatie,* of classificeren van invoergegevens in een van de twee groepen. Zie [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)voor meer informatie over logistieke regressies.
 
-Samengevat, het proces van logistieke regressie produceert een *logistieke functie* die kan worden gebruikt om de waarschijnlijkheid te voorspellen dat een invoervector in de ene groep of de andere thuishoort.  
+Kortom, het proces van logistieke regressie levert een *logistieke functie*op. Gebruik de functie om de waarschijnlijkheid te voorspellen dat een invoervector in de ene groep of de andere thuishoort.  
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>Voorbeeld van voorspellende analyse over voedselinspectiegegevens
-In dit voorbeeld gebruikt u Spark om een aantal voorspellende analyses uit te voeren op voedselinspectiegegevens **(Food_Inspections1.csv)** die zijn verkregen via het [gegevensportaal City](https://data.cityofchicago.org/)of Chicago. Deze dataset bevat informatie over inspecties van voedselinstellingen die in Chicago zijn uitgevoerd, inclusief informatie over elke vestiging, de geconstateerde overtredingen (indien van toepassing) en de resultaten van de inspectie. Het CSV-gegevensbestand is al beschikbaar in het opslagaccount dat is gekoppeld aan het cluster op **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**.
+
+In dit voorbeeld gebruikt u Spark om een aantal voorspellende analyses uit te voeren op voedselinspectiegegevens **(Food_Inspections1.csv).** Gegevens verkregen via de [City of Chicago data portal](https://data.cityofchicago.org/). Deze dataset bevat informatie over inspecties van voedselinstellingen die in Chicago zijn uitgevoerd. Inclusief informatie over elke vestiging, de geconstateerde overtredingen (indien van toepassing) en de resultaten van de inspectie. Het CSV-gegevensbestand is al beschikbaar in het opslagaccount dat is gekoppeld aan het cluster op **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**.
 
 In de onderstaande stappen ontwikkel je een model om te zien wat er nodig is om een voedselinspectie door te voeren of te mislukken.
 
@@ -55,11 +56,12 @@ In de onderstaande stappen ontwikkel je een model om te zien wat er nodig is om 
     from pyspark.sql.functions import UserDefinedFunction
     from pyspark.sql.types import *
     ```
-    Vanwege de PySpark-kernel hoeft u geen contexten expliciet te maken. De Spark- en Hive-contexten worden automatisch voor u gemaakt wanneer u de eerste codecel uitvoert. 
+
+    Vanwege de PySpark-kernel hoeft u geen contexten expliciet te maken. De Spark- en Hive-contexten worden automatisch gemaakt wanneer u de eerste codecel uitvoert.
 
 ## <a name="construct-the-input-dataframe"></a>Het invoergegevensframe construeren
 
-Omdat de ruwe gegevens een CSV-indeling hebben, u de spark-context gebruiken om het bestand als ongestructureerde tekst in het geheugen te halen en vervolgens de CSV-bibliotheek van Python gebruiken om elke regel van de gegevens te ontleden.
+Gebruik de context Spark om de ruwe CSV-gegevens als ongestructureerde tekst in het geheugen te halen. Gebruik vervolgens de CSV-bibliotheek van Python om elke regel van de gegevens te ontleden.
 
 1. Voer de volgende regels uit om een Robuuste Gedistribueerde gegevensset (RDD) te maken door de invoergegevens te importeren en te ontleden.
 
@@ -71,7 +73,7 @@ Omdat de ruwe gegevens een CSV-indeling hebben, u de spark-context gebruiken om 
         value = csv.reader(sio).next()
         sio.close()
         return value
-    
+
     inspections = sc.textFile('/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
                     .map(csvParse)
     ```
@@ -104,9 +106,9 @@ Omdat de ruwe gegevens een CSV-indeling hebben, u de spark-context gebruiken om 
         '(41.97583445690982, -87.7107455232781)']]
     ```
 
-    De uitvoer geeft u een idee van het schema van het invoerbestand. Het omvat onder andere de naam van elke vestiging, het type vestiging, het adres, de gegevens van de inspecties en de locatie. 
+    De uitvoer geeft u een idee van het schema van het invoerbestand. Het bevat de naam van elk etablissement, en het type inrichting. Ook het adres, de gegevens van de inspecties, en de locatie, onder andere dingen.
 
-3. Voer de volgende code uit om een gegevensframe *(df)* en een tijdelijke tabel *(CountResults)* te maken met een paar kolommen die nuttig zijn voor de voorspellende analyse. `sqlContext`wordt gebruikt om transformaties uit te voeren op gestructureerde gegevens. 
+3. Voer de volgende code uit om een gegevensframe *(df)* en een tijdelijke tabel *(CountResults)* te maken met een paar kolommen die nuttig zijn voor de voorspellende analyse. `sqlContext`wordt gebruikt om transformaties op gestructureerde gegevens uit te brengen.
 
     ```PySpark
     schema = StructType([
@@ -114,12 +116,12 @@ Omdat de ruwe gegevens een CSV-indeling hebben, u de spark-context gebruiken om 
     StructField("name", StringType(), False),
     StructField("results", StringType(), False),
     StructField("violations", StringType(), True)])
-    
+
     df = spark.createDataFrame(inspections.map(lambda l: (int(l[0]), l[1], l[12], l[13])) , schema)
     df.registerTempTable('CountResults')
     ```
 
-    De vier kolommen die van belang zijn in het dataframe zijn **id**, **naam**, **resultaten**en **schendingen**.
+    De vier kolommen die van belang zijn in het dataframe zijn **ID**, **naam**, **resultaten**en **schendingen**.
 
 4. Voer de volgende code uit om een klein voorbeeld van de gegevens te krijgen:
 
@@ -178,8 +180,7 @@ Laten we beginnen om een idee te krijgen van wat de gegevensset bevat.
 
     ![SQL-queryuitvoer](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL-queryuitvoer")
 
-
-3. U [ook Matplotlib](https://en.wikipedia.org/wiki/Matplotlib), een bibliotheek die wordt gebruikt om visualisatie van gegevens te construeren, gebruiken om een plot te maken. Omdat de plot moet worden gemaakt van het lokaal aanhoudende **countResultsdf-gegevensframe,** moet het codefragment beginnen met de `%%local` magie. Dit zorgt ervoor dat de code lokaal wordt uitgevoerd op de Jupyter-server.
+3. U [ook Matplotlib](https://en.wikipedia.org/wiki/Matplotlib), een bibliotheek die wordt gebruikt om visualisatie van gegevens te construeren, gebruiken om een plot te maken. Omdat de plot moet worden gemaakt van het lokaal aanhoudende **countResultsdf-gegevensframe,** moet het codefragment beginnen met de `%%local` magie. Deze actie zorgt ervoor dat de code lokaal wordt uitgevoerd op de Jupyter-server.
 
     ```PySpark
     %%local
@@ -193,10 +194,6 @@ Laten we beginnen om een idee te krijgen van wat de gegevensset bevat.
     plt.axis('equal')
     ```
 
-    Dit is de uitvoer:
-
-    ![Spark machine learning applicatie output - cirkeldiagram met vijf verschillende inspectieresultaten](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark machine learning resultaatoutput")
-
     Om een voedselinspectieresultaat te voorspellen, moet u een model ontwikkelen dat op de schendingen wordt gebaseerd. Omdat logistieke regressie een binaire classificatiemethode is, is het zinvol om de resultaatgegevens te groeperen in twee categorieën: **Fail** and **Pass:**
 
    - Pass
@@ -208,9 +205,9 @@ Laten we beginnen om een idee te krijgen van wat de gegevensset bevat.
        - Bedrijf niet gevestigd
        - Out of Business
 
-     Gegevens met de andere resultaten ("Business Not Located" of "Out of Business") zijn niet nuttig, en ze vormen toch een zeer klein percentage van de resultaten.
+     Gegevens met de andere resultaten ('Business Not Located' of 'Out of Business') zijn niet nuttig en vormen sowieso een klein percentage van de resultaten.
 
-4. Voer de volgende code uit om`df`het bestaande gegevensframe om te zetten in een nieuw gegevensframe waarbij elke inspectie wordt weergegeven als een label-violations-paar. In dit geval, `0.0` een label van vertegenwoordigt `1.0` een mislukking, een `-1.0` label van vertegenwoordigt een succes, en een label van vertegenwoordigt een aantal resultaten naast deze twee. 
+4. Voer de volgende code uit om`df`het bestaande gegevensframe om te zetten in een nieuw gegevensframe waarbij elke inspectie wordt weergegeven als een label-violations-paar. In dit geval, `0.0` een label van vertegenwoordigt `1.0` een mislukking, een `-1.0` label van vertegenwoordigt een succes, en een label van vertegenwoordigt een aantal resultaten naast deze twee resultaten.
 
     ```PySpark
     def labelForResults(s):
@@ -238,11 +235,11 @@ Laten we beginnen om een idee te krijgen van wat de gegevensset bevat.
 
 ## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>Een logistiek regressiemodel maken op basis van het invoergegevensframe
 
-De uiteindelijke taak is om de gelabelde gegevens om te zetten in een formaat dat kan worden geanalyseerd door logistieke regressie. De invoer naar een logistiek regressiealgoritme moet een set vectorparen van *labelfuncties*zijn, waarbij de "functievector" een vector is van getallen die het invoerpunt vertegenwoordigen. Dus, je moet de kolom "schendingen" converteren, die semi-gestructureerd is en veel opmerkingen in vrije tekst bevat, naar een array van echte getallen die een machine gemakkelijk kan begrijpen.
+De uiteindelijke taak is het converteren van de gelabelde gegevens. Zet de gegevens om in een indeling die kan worden geanalyseerd door logistieke regressie. De invoer naar een logistiek regressiealgoritme heeft een set vectorparen met *labelfunctie*nodig. Waar de "functievector" een vector van getallen is die het invoerpunt vertegenwoordigen. Dus, je moet de kolom "schendingen" converteren, die semi-gestructureerd is en veel opmerkingen bevat in vrije tekst. Converteer de kolom naar een array met echte getallen die een machine gemakkelijk kan begrijpen.
 
-Een standaard machine learning-benadering voor het verwerken van natuurlijke taal is om elk afzonderlijk woord een "index" toe te wijzen en vervolgens een vector door te geven aan het machine learning-algoritme, zodat de waarde van elke index de relatieve frequentie van dat woord in de tekenreeks bevat.
+Een standaard machine learning benadering voor het verwerken van natuurlijke taal is het toewijzen van elk afzonderlijk woord een "index". Geef vervolgens een vector door aan het machine learning-algoritme. Zodanig dat de waarde van elke index de relatieve frequentie van dat woord in de tekenreeks bevat.
 
-MLlib biedt een eenvoudige manier om deze bewerking uit te voeren. Ten eerste, "tokenize" elke schendingen string om de individuele woorden in elke string te krijgen. Gebruik vervolgens `HashingTF` een om elke set tokens om te zetten in een functievector die vervolgens kan worden doorgegeven aan het logistieke regressiealgoritme om een model te construeren. U voert al deze stappen in volgorde uit met behulp van een "pijplijn".
+MLlib biedt een eenvoudige manier om deze operatie te doen. Ten eerste, "tokenize" elke schendingen string om de individuele woorden in elke string te krijgen. Gebruik vervolgens `HashingTF` een om elke set tokens om te zetten in een functievector die vervolgens kan worden doorgegeven aan het logistieke regressiealgoritme om een model te construeren. U voert al deze stappen in volgorde uit met behulp van een "pijplijn".
 
 ```PySpark
 tokenizer = Tokenizer(inputCol="violations", outputCol="words")
@@ -255,7 +252,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>Het model evalueren met een andere gegevensset
 
-U het model dat u eerder hebt gemaakt gebruiken om te *voorspellen* wat de resultaten van nieuwe inspecties zullen zijn, op basis van de overtredingen die zijn waargenomen. U hebt dit model getraind op de gegevensset **Food_Inspections1.csv**. U een tweede gegevensset, **Food_Inspections2.csv,** gebruiken om de sterkte van dit model op de nieuwe gegevens te *evalueren.* Deze tweede gegevensset (**Food_Inspections2.csv**) bevindt zich in de standaardopslagcontainer die aan het cluster is gekoppeld.
+U het model dat u eerder hebt gemaakt gebruiken om te *voorspellen* wat de resultaten van nieuwe inspecties zullen zijn. De voorspellingen zijn gebaseerd op de overtredingen die werden waargenomen. U hebt dit model getraind op de gegevensset **Food_Inspections1.csv**. U een tweede gegevensset, **Food_Inspections2.csv,** gebruiken om de sterkte van dit model op de nieuwe gegevens te *evalueren.* Deze tweede gegevensset (**Food_Inspections2.csv**) bevindt zich in de standaardopslagcontainer die aan het cluster is gekoppeld.
 
 1. Voer de volgende code uit om een nieuw gegevensframe te maken, **predictionsDf** dat de voorspelling bevat die door het model wordt gegenereerd. Het fragment maakt ook een tijdelijke tabel met de naam **Voorspellingen** op basis van het gegevensframe.
 
@@ -269,7 +266,7 @@ U het model dat u eerder hebt gemaakt gebruiken om te *voorspellen* wat de resul
     predictionsDf.columns
     ```
 
-    Als het goed is, wordt ongeveer de volgende uitvoer weergegeven:
+    U ziet een uitvoer zoals de volgende tekst:
 
     ```
     ['id',
@@ -290,7 +287,8 @@ U het model dat u eerder hebt gemaakt gebruiken om te *voorspellen* wat de resul
     ```
 
    Er is een voorspelling voor de eerste vermelding in de testgegevensset.
-1. De `model.transform()` methode past dezelfde transformatie toe op nieuwe gegevens met hetzelfde schema en komt tot een voorspelling van het classificeren van de gegevens. U een aantal eenvoudige statistieken om een gevoel van hoe nauwkeurig de voorspellingen waren:
+
+1. De `model.transform()` methode past dezelfde transformatie toe op nieuwe gegevens met hetzelfde schema en komt tot een voorspelling van het classificeren van de gegevens. U een aantal statistieken om een idee van hoe de voorspellingen waren te krijgen:
 
     ```PySpark
     numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
@@ -302,16 +300,17 @@ U het model dat u eerder hebt gemaakt gebruiken om te *voorspellen* wat de resul
     print "This is a", str((float(numSuccesses) / float(numInspections)) * 100) + "%", "success rate"
     ```
 
-    De uitvoer ziet er als volgt uit:
+    De uitvoer ziet eruit als de volgende tekst:
 
     ```
     There were 9315 inspections and there were 8087 successful predictions
     This is a 86.8169618894% success rate
     ```
 
-    Met behulp van logistieke regressie met Spark geeft u een nauwkeurig model van de relatie tussen schendingen beschrijvingen in het Engels en of een bepaald bedrijf zou slagen of mislukken een voedselinspectie.
+    Het gebruik van logistieke regressie met Spark geeft u een model van de relatie tussen schendingen beschrijvingen in het Engels. En of een bepaald bedrijf zou slagen of falen een voedselinspectie.
 
 ## <a name="create-a-visual-representation-of-the-prediction"></a>Een visuele weergave van de voorspelling maken
+
 U nu een definitieve visualisatie maken om u te helpen redeneren over de resultaten van deze test.
 
 1. U begint met het extraheren van de verschillende voorspellingen en resultaten uit de tijdelijke tabel **Voorspellingen** die eerder zijn gemaakt. De volgende query's scheiden de uitvoer als *true_positive*, *false_positive*, *true_negative*en *false_negative*. In de onderstaande query's schakelt `-q` u visualisatie uit door `-o`de uitvoer (met behulp van) te gebruiken als dataframes die vervolgens met de `%%local` magie kunnen worden gebruikt.
@@ -357,21 +356,26 @@ U nu een definitieve visualisatie maken om u te helpen redeneren over de resulta
     In deze grafiek verwijst een "positief" resultaat naar de mislukte voedselinspectie, terwijl een negatief resultaat verwijst naar een geslaagde inspectie.
 
 ## <a name="shut-down-the-notebook"></a>Het notitieblok afsluiten
-Nadat u klaar bent met het uitvoeren van de toepassing, moet u het notitieblok afsluiten om de bronnen vrij te geven. Selecteer hiervoor **Sluiten en stoppen** in het menu **Bestand** van het notebook. Dit wordt afgesloten en sluit de notebook.
 
-## <a name="see-also"></a><a name="seealso"></a>Zie ook
+Nadat u klaar bent met het uitvoeren van de toepassing, moet u het notitieblok afsluiten om de bronnen vrij te geven. Selecteer hiervoor **Sluiten en stoppen** in het menu **Bestand** van het notebook. Met deze actie wordt het notebook afgesloten en gesloten.
+
+## <a name="next-steps"></a>Volgende stappen
+
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenario's
-* [Apache Spark met BI: interactieve data-analyse uitvoeren met Spark in HDInsight met BI-tools](apache-spark-use-bi-tools.md)
+
+* [Apache Spark met BI: interactieve data-analyse met Spark in HDInsight met BI-tools](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Gebruik Spark in HDInsight voor het analyseren van de temperatuur van gebouwen met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
 * [Website log analyse met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Toepassingen maken en uitvoeren
+
 * [Een zelfstandige toepassing maken met behulp van Scala](apache-spark-create-standalone-application.md)
 * [Apache Livy gebruiken om taken op afstand uit te voeren in een Apache Spark-cluster](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Tools en uitbreidingen
+
 * [De invoegtoepassing HDInsight Tools for IntelliJ IDEA gebruiken om Spark Scala-toepassingen te maken en in te dienen](apache-spark-intellij-tool-plugin.md)
 * [HdInsight Tools Plugin gebruiken voor IntelliJ IDEA om Apache Spark-toepassingen op afstand te debuggen](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Apache Zeppelin-laptops gebruiken met een Apache Spark-cluster op HDInsight](apache-spark-zeppelin-notebook.md)
@@ -380,5 +384,6 @@ Nadat u klaar bent met het uitvoeren van de toepassing, moet u het notitieblok a
 * [Jupyter op uw computer installeren en verbinding maken met een HDInsight Spark-cluster](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Resources beheren
+
 * [Resources beheren voor het Apache Spark-cluster in Azure HDInsight](apache-spark-resource-manager.md)
 * [Taken die worden uitgevoerd in een Apache Spark-cluster in HDInsight, traceren en er fouten in oplossen](apache-spark-job-debugging.md)

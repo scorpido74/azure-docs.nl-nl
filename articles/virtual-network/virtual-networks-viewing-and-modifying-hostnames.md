@@ -5,7 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: genlin
 manager: dcscontentpm
-editor: tysonn
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
 ms.service: virtual-network
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: cce248e2906f4a36737388e8cc7124b1bb19fbae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09c911838d34a083de8450145ce849fc966eb0e8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71058677"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459148"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Hostnamen weergeven en wijzigen
 Als u wilt dat naar de hostnaam van uw roltypen wordt verwezen, moet u de waarde voor de hostnaam instellen in het serviceconfiguratiebestand voor elke rol. U doet dat door de gewenste hostnaam toe te voegen aan het **kenmerk vmName** van het **element Rol.** De waarde van het **kenmerk vmName** wordt gebruikt als basis voor de hostnaam van elke rolinstantie. Als **vmName** bijvoorbeeld *webrole* is en er drie exemplaren van die rol zijn, zijn de hostnamen van de instanties *webrole0,* *webrole1*en *webrole2*. U hoeft geen hostnaam voor virtuele machines op te geven in het configuratiebestand, omdat de hostnaam voor een virtuele machine wordt ingevuld op basis van de naam van de virtuele machine. Zie [Azure Service Configuration Schema (.cscfg File)](https://msdn.microsoft.com/library/azure/ee758710.aspx) voor meer informatie over het configureren van een Microsoft Azure-service.

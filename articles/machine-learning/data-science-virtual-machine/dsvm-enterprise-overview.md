@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 06d05d6d410af13bfbe85f3cb66523c1d48cb77c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1f3a24afb2238c2448cb19b3889467a1b1819724
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70195665"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460542"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Data Science Virtual Machine-gebaseerde teamanalytics en AI-omgeving 
 De [Data Science Virtual Machine](overview.md) (DSVM) biedt een rijke omgeving op het Azure-platform, met vooraf gebouwde software voor kunstmatige intelligentie (AI) en data-analyse.
@@ -40,10 +40,10 @@ Deze serie biedt richtlijnen en aanwijzingen voor elk van de voorgaande onderwer
 * [Netwerkbeveiliging](https://docs.microsoft.com/azure/security/fundamentals/network-security)
 * [Toezicht](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) en [beheer](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
 * [Logboekregistratie en bewaking](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
-* [Op rollen gebaseerd toegangscontrole](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Op rollen gebaseerd toegangsbeheer](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Beleidsinstelling en handhaving](../../governance/policy/overview.md)
 * [Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
-* [Codering](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
+* [Versleuteling](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview.md)
 * [Gegevensdetectie en -governance](https://docs.microsoft.com/azure/data-catalog/)
 
 Tot slot biedt het [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/) een gedetailleerde end-to-end architectuur en modellen voor het bouwen en beheren van uw cloudgebaseerde analyse-infrastructuur.

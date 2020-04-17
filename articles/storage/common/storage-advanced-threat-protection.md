@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 4219bb471b92e7ddae72c50403f635498c90080d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f390aececdbf9a20f191279892c1856332f2aa8e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251687"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482096"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Geavanceerde bedreigingsbeveiliging configureren voor Azure Storage
 
@@ -27,9 +27,7 @@ De service neemt diagnostische logboeken van lezen, schrijven en verwijderen van
 
 ## <a name="availability"></a>Beschikbaarheid
 
-Geavanceerde bedreigingsbeveiliging voor Azure Storage is momenteel alleen beschikbaar voor [Blob Storage.](https://azure.microsoft.com/services/storage/blobs/) 
-
-Deze service is beschikbaar in alle openbare clouds en amerikaanse overheidsclouds, maar geen andere soevereine of Azure-overheidscloudregio's.
+Geavanceerde bedreigingsbeveiliging voor Azure Storage is momenteel alleen beschikbaar voor [Blob Storage.](https://azure.microsoft.com/services/storage/blobs/) Accounttypen die geavanceerde bescherming tegen bedreigingen ondersteunen, zijn onder andere v2,blokblob- en Blob-opslagaccounts voor algemene doeleinden. Geavanceerde bescherming tegen bedreigingen is beschikbaar in alle openbare clouds en amerikaanse overheidsclouds, maar niet in andere soevereine of Azure-overheidscloudregio's.
 
 Zie de [prijspagina](https://azure.microsoft.com/pricing/details/security-center/)van azure security center voor prijsgegevens, waaronder een gratis proefperiode van 30 dagen.
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 48e2ec7f853ce94263f4e843b529609d5376ed5b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8e6fd4955d6d68764895619efd968a957bcb5184
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424039"
+ms.locfileid: "81460593"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Queryopslagbestanden met SQL on-demand (preview)-bronnen binnen Synapse SQL
 
@@ -141,7 +141,7 @@ Lees voor meer informatie de sectie Filepath van het artikel [Queryspecifieke be
 
 ### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Werken met complexe typen en geneste of herhaalde gegevensstructuren
 
-Om een soepele ervaring mogelijk te maken bij het werken met gegevens die zijn opgeslagen in geneste of herhaalde gegevenstypen, zoals in [parketbestanden,](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) heeft Starlight de onderstaande extensies toegevoegd.
+Om een soepele ervaring mogelijk te maken bij het werken met gegevens die zijn opgeslagen in geneste of herhaalde gegevenstypen, zoals in [parketbestanden,](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) heeft SQL on-demand de onderstaande extensies toegevoegd.
 
 #### <a name="project-nested-or-repeated-data"></a>Projectgenese of herhaalde gegevens
 

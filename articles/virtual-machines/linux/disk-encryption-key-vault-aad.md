@@ -8,18 +8,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1fa9f4e790b49e83ed4c46e92242ff182d9a47b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ec46a1d2c7fca231b5cf6b045b634af50ee12a7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970651"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459828"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Een sleutelkluis voor Azure-schijfversleuteling maken en configureren met Azure AD (vorige release)
 
 **De nieuwe release van Azure Disk Encryption elimineert de vereiste voor het verstrekken van een Azure AD-toepassingsparameter om VM-schijfversleuteling in te schakelen. Met de nieuwe release hoeft u geen Azure AD-referenties meer op te geven tijdens de stap versleuteling inschakelen. Alle nieuwe VM's moeten worden versleuteld zonder de Azure AD-toepassingsparameters met behulp van de nieuwe versie. Zie [Azure Disk Encryption](disk-encryption-overview.md)als u instructies wilt weergeven om VM-schijfversleuteling in te schakelen met de nieuwe versie. VM's die al zijn versleuteld met Azure AD-toepassingsparameters worden nog steeds ondersteund en moeten worden gehandhaafd met de syntaxis van AAD.**
 
-Azure Disk Encryption gebruikt Azure Key Vault om schijfversleutelingssleutels en -geheimen te beheren en te beheren.  Zie [Aan de slag met Azure Key Vault](../../key-vault/key-vault-get-started.md) en Uw [sleutelkluis beveiligen](../../key-vault/key-vault-secure-your-key-vault.md)voor meer informatie over sleutelkluizen. 
+Azure Disk Encryption gebruikt Azure Key Vault om schijfversleutelingssleutels en -geheimen te beheren en te beheren.  Zie [Aan de slag met Azure Key Vault](../../key-vault/key-vault-get-started.md) en Uw [sleutelkluis beveiligen](../../key-vault/general/secure-your-key-vault.md)voor meer informatie over sleutelkluizen. 
 
 Het maken en configureren van een sleutelkluis voor gebruik met Azure Disk Encryption met Azure AD (vorige release) omvat drie stappen:
 
@@ -37,7 +37,7 @@ Zie het belangrijkste artikel [Voor het maken en configureren van een sleutelklu
 
 
 ## <a name="create-a-key-vault"></a>Een sleutelkluis maken 
-Azure Disk Encryption is geïntegreerd met [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) om u te helpen de schijfversleutelingssleutels en -geheimen in uw key vault-abonnement te beheren en te beheren. U een sleutelkluis maken of een bestaande kluis gebruiken voor Azure Disk Encryption. Zie [Aan de slag met Azure Key Vault](../../key-vault/key-vault-get-started.md) en Uw [sleutelkluis beveiligen](../../key-vault/key-vault-secure-your-key-vault.md)voor meer informatie over sleutelkluizen. U een Resource Manager-sjabloon, Azure PowerShell of de Azure CLI gebruiken om een sleutelkluis te maken. 
+Azure Disk Encryption is geïntegreerd met [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) om u te helpen de schijfversleutelingssleutels en -geheimen in uw key vault-abonnement te beheren en te beheren. U een sleutelkluis maken of een bestaande kluis gebruiken voor Azure Disk Encryption. Zie [Aan de slag met Azure Key Vault](../../key-vault/key-vault-get-started.md) en Uw [sleutelkluis beveiligen](../../key-vault/general/secure-your-key-vault.md)voor meer informatie over sleutelkluizen. U een Resource Manager-sjabloon, Azure PowerShell of de Azure CLI gebruiken om een sleutelkluis te maken. 
 
 
 >[!WARNING]
@@ -150,7 +150,7 @@ Uw Azure AD-toepassing heeft rechten nodig om toegang te krijgen tot de sleutels
      ```
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-cli"></a><a name="bkmk_KVAPCLI"></a>Het toegangsbeleid voor belangrijke vaults voor de Azure AD-app instellen met Azure CLI
-Gebruik [het az keyvault-setbeleid](/cli/azure/keyvault#az-keyvault-set-policy) om het toegangsbeleid in te stellen. Zie [Sleutelkluis beheren met CLI 2.0](../../key-vault/key-vault-manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret)voor meer informatie.
+Gebruik [het az keyvault-setbeleid](/cli/azure/keyvault#az-keyvault-set-policy) om het toegangsbeleid in te stellen. Zie [Sleutelkluis beheren met CLI 2.0](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret)voor meer informatie.
 
 Geef de serviceprincipal die u via de Azure CLI-toegang hebt gemaakt om geheimen te krijgen en sleutels te verpakken met de volgende opdracht:
  
@@ -226,7 +226,7 @@ Gebruik [de AZ KeyVault-update](/cli/azure/keyvault#az-keyvault-update) om schij
 
 
 ## <a name="set-up-a-key-encryption-key-optional"></a><a name="bkmk_KEK"></a>Een sleutelversleutelingssleutel instellen (optioneel)
-Als u een sleutelversleutelingssleutel (KEK) wilt gebruiken voor een extra beveiligingslaag voor versleutelingssleutels, voegt u een KEK toe aan uw sleutelkluis. Gebruik de [cmdlet Add-AzKeyVaultKey Om](/powershell/module/az.keyvault/add-azkeyvaultkey) een sleutelversleutelingssleutel in de sleutelkluis te maken. U ook een KEK importeren van uw on-premises key management HSM. Zie [Key Vault Documentation voor](../../key-vault/key-vault-hsm-protected-keys.md)meer informatie. Wanneer een sleutelversleutelingssleutel is opgegeven, gebruikt Azure Disk Encryption die sleutel om de versleutelingsgeheimen te verpakken voordat u naar Key Vault gaat. 
+Als u een sleutelversleutelingssleutel (KEK) wilt gebruiken voor een extra beveiligingslaag voor versleutelingssleutels, voegt u een KEK toe aan uw sleutelkluis. Gebruik de [cmdlet Add-AzKeyVaultKey Om](/powershell/module/az.keyvault/add-azkeyvaultkey) een sleutelversleutelingssleutel in de sleutelkluis te maken. U ook een KEK importeren van uw on-premises key management HSM. Zie [Key Vault Documentation voor](../../key-vault/keys/hsm-protected-keys.md)meer informatie. Wanneer een sleutelversleutelingssleutel is opgegeven, gebruikt Azure Disk Encryption die sleutel om de versleutelingsgeheimen te verpakken voordat u naar Key Vault gaat. 
 
 * Gebruik bij het genereren van sleutels een RSA-sleuteltype. Azure Disk Encryption biedt nog geen ondersteuning voor elliptische curvetoetsen.
 

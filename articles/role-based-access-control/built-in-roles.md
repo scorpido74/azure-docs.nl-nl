@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 2fe3b94463da07304f2c853910ac5d2a6771d070
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 14ff86bc47ab6de55d840c4b986c99caf2d4e99c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545646"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482032"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde azure-rollen
 
@@ -55,7 +55,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [DNS-zonebijdrager](#dns-zone-contributor) | Hiermee u DNS-zones beheren en sets opnemen in Azure DNS, maar u niet bepalen wie er toegang toe heeft. | befefa01-2a29-4197-83a8-272ff33ce314 |
 > | [Inzender voor netwerken](#network-contributor) | Hiermee u netwerken beheren, maar er geen toegang toe hebben. | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | [Medewerker verkeersmanager](#traffic-manager-contributor) | Hiermee u Traffic Manager-profielen beheren, maar u niet bepalen wie er toegang toe heeft. | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
-> | **Opslag** |  |  |
+> | **Storage** |  |  |
 > | [Avere Bijdrager](#avere-contributor) | Kan een Avere vFXT-cluster maken en beheren. | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Avere Operator](#avere-operator) | Gebruikt door het Avere vFXT-cluster om het cluster te beheren | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
 > | [Back-upbijdrager](#backup-contributor) | Hiermee u een back-upservice beheren, maar geen kluizen maken en geen toegang geven tot anderen | 5e467623-bb1f-42f4-a55d-6e525e11384b |
@@ -2071,6 +2071,7 @@ Azure Storage-containers en blobs lezen, schrijven en verwijderen. Zie [Machtigi
 > | **Gegevensacties** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Een blob verwijderen. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Een blob of een lijst met blobs retourneren. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action | Hiermee verplaatst u de blob van het ene pad naar het andere |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Schrijf naar een blob. |
 > | **NietGegevensacties** |  |
 > | *geen* |  |
@@ -2095,6 +2096,7 @@ Azure Storage-containers en blobs lezen, schrijven en verwijderen. Zie [Machtigi
       "dataActions": [
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
       ],
       "notDataActions": []
@@ -4099,6 +4101,7 @@ Log Analytics-inzender kan alle bewakingsgegevens lezen en bewakingsinstellingen
 > | Microsoft.ClassicCompute/virtualMachines/extensies/* |  |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Hier worden de toegangssleutels voor de opslagaccounts weergegeven. |
 > | Microsoft.Compute/virtualMachines/extensies/* |  |
+> | Microsoft.HybridCompute/machines/extensies/schrijven | Installeert of werkt een Azure Arc-extensie |
 > | Microsoft.Insights/alertRegels/* | Waarschuwingsregels voor Inzichten maken en beheren |
 > | Microsoft.Insights/diagnosticSettings/* | Hiermee maakt, werkt u de diagnostische instelling voor Analysis Server |
 > | Microsoft.OperationalInsights/* |  |
@@ -4130,6 +4133,7 @@ Log Analytics-inzender kan alle bewakingsgegevens lezen en bewakingsinstellingen
         "Microsoft.ClassicCompute/virtualMachines/extensions/*",
         "Microsoft.ClassicStorage/storageAccounts/listKeys/action",
         "Microsoft.Compute/virtualMachines/extensions/*",
+        "Microsoft.HybridCompute/machines/extensions/write",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Insights/diagnosticSettings/*",
         "Microsoft.OperationalInsights/*",
@@ -5515,6 +5519,7 @@ Azure Sentinel-lezer
 > | --- | --- |
 > | **Acties** |  |
 > | Microsoft.SecurityInsights/*/read |  |
+> | Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action | Gebruikersautorisatie en -licentie controleren |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Zoek met behulp van nieuwe engine. |
 > | Microsoft.OperationalInsights/workspaces/*/lezen | Gegevens over logboekanalyse weergeven |
 > | Microsoft.OperationalInsights/workspaces/LinkedServices/read | Krijg gekoppelde services onder bepaalde werkruimte. |
@@ -5548,6 +5553,7 @@ Azure Sentinel-lezer
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -5583,6 +5589,7 @@ Azure Sentinel Responder
 > | --- | --- |
 > | **Acties** |  |
 > | Microsoft.SecurityInsights/*/read |  |
+> | Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action | Gebruikersautorisatie en -licentie controleren |
 > | Microsoft.SecurityInsights/cases/* |  |
 > | Microsoft.SecurityInsights/incidenten/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Zoek met behulp van nieuwe engine. |
@@ -5618,6 +5625,7 @@ Azure Sentinel Responder
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",

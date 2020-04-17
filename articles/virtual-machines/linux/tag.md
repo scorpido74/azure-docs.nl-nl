@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: ''
 author: mmccrory
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ca0e17e5-d78e-42e6-9dad-c1e8f1c58027
 ms.service: virtual-machines-linux
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: 3dd46f0c1c1e36e0373311ce6dcbf5d2f155dacc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd4a93f4c0b2f052fe5c9890bee01e5da0dcead2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616280"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460950"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Een virtuele Linux-machine taggen in Azure
 In dit artikel worden verschillende manieren beschreven om een virtuele Linux-machine in Azure te taggen via het Implementatiemodel Resource Manager. Tags zijn door de gebruiker gedefinieerde sleutel-/waardeparen die rechtstreeks op een resource of een resourcegroep kunnen worden geplaatst. Azure ondersteunt momenteel maximaal 50 tags per resource- en resourcegroep. Tags kunnen op het moment van maken op een resource worden geplaatst of aan een bestaande resource worden toegevoegd. Houd er rekening mee dat tags alleen worden ondersteund voor bronnen die zijn gemaakt via het implementatiemodel van Resource Manager.

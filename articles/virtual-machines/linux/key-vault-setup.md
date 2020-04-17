@@ -8,16 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: 59b11d22f054a98fe176e4393843606bd01cc872
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 9ae486ee522982b116af58cfb7cbfbca66a7ef4a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879476"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458740"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Key Vault instellen voor virtuele machines met de Azure CLI
 
-In de Azure Resource Manager-stack worden geheimen/certificaten gemodelleerd als resources die worden geleverd door Key Vault. Zie Wat is Azure Key Vault voor meer informatie over Azure Key [Vault?](../../key-vault/key-vault-overview.md) Als U Key Vault wilt gebruiken met Azure Resource Manager VM's, moet de eigenschap *EnabledForDeployment* op Key Vault worden ingesteld op true. In dit artikel ziet u hoe u Key Vault instelt voor gebruik met Virtuele Azure-machines (VM's) met behulp van de Azure CLI. 
+In de Azure Resource Manager-stack worden geheimen/certificaten gemodelleerd als resources die worden geleverd door Key Vault. Zie Wat is Azure Key Vault voor meer informatie over Azure Key [Vault?](../../key-vault/general/overview.md) Als U Key Vault wilt gebruiken met Azure Resource Manager VM's, moet de eigenschap *EnabledForDeployment* op Key Vault worden ingesteld op true. In dit artikel ziet u hoe u Key Vault instelt voor gebruik met Virtuele Azure-machines (VM's) met behulp van de Azure CLI. 
 
 Om deze stappen uit te voeren, moet u de nieuwste [Azure CLI](/cli/azure/install-az-cli2) geïnstalleerd en ingelogd op een Azure-account met behulp van [az login](/cli/azure/reference-index).
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: f38fd7c8e14f58052912f68a277f194fd3866f2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 029743dbb44ab0ebb6ab8f695c0c966137c45107
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970586"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459794"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure-schijfversleuteling met Azure AD (vorige release)
 
@@ -35,7 +35,7 @@ Als u de functie Azure-schijfversleuteling wilt inschakelen met behulp van de ou
   - Als u een token wilt krijgen om verbinding te maken met uw sleutelkluis, \[\]moet de IaaS-VM verbinding kunnen maken met een Azure AD-eindpunt, login.microsoftonline.com .
   - Om de versleutelingssleutels van uw sleutelkluis te schrijven, moet de IaaS VM verbinding kunnen maken met het eindpunt van de sleutelkluis.
   - De IaaS VM moet verbinding kunnen maken met een Azure-opslageindpunt dat de Azure-extensierepository host en een Azure-opslagaccount dat de VHD-bestanden host.
-  -  Als uw beveiligingsbeleid de toegang van Azure VM's tot internet beperkt, u de voorgaande URI oplossen en een specifieke regel configureren om uitgaande connectiviteit met de IP's toe te staan. Zie [Azure Key Vault achter een firewall voor](../../key-vault/key-vault-access-behind-firewall.md)meer informatie.
+  -  Als uw beveiligingsbeleid de toegang van Azure VM's tot internet beperkt, u de voorgaande URI oplossen en een specifieke regel configureren om uitgaande connectiviteit met de IP's toe te staan. Zie [Azure Key Vault achter een firewall voor](../../key-vault/general/access-behind-firewall.md)meer informatie.
   - Als TLS 1.0 in Windows expliciet is uitgeschakeld en de .NET-versie niet is bijgewerkt naar 4.6 of hoger, kan Azure Disk Encryption met de volgende registerwijziging de recentere TLS-versie selecteren:
     
             [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]

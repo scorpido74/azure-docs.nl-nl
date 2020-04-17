@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: d3e267eab056589ed38c436620dd0db185291da1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77425898"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481835"
 ---
 # <a name="multitenant-applications-in-azure"></a>Multitenant-toepassingen in Azure
 Een multitenant-toepassing is een gedeelde bron waarmee "gebruikers in afzonderlijke tenants" de toepassing kunnen bekijken alsof deze hun eigen toepassing is. Een typisch scenario dat zich leent voor een multitenant-toepassing is er een waarin alle gebruikers van de toepassing van verschillende tenants de gebruikerservaring willen aanpassen, maar anders dezelfde basisvereisten voor het bedrijf hebben. Voorbeelden van grote multitenant-toepassingen zijn Office 365, Outlook.com en visualstudio.com.
@@ -48,20 +48,20 @@ Azure biedt veel functies waarmee u de belangrijkste problemen aanpakken die zic
 
 **Isolatie**
 
-* Segmenteer websitetenants op hostheaders met of zonder SSL-communicatie
+* Segmenteer websitetenants op hostheaders met of zonder TLS-communicatie
 * Gebruikers van de website segmenteren op queryparameters
 * Webservices in werknemersrollen
   * Worker Rollen die doorgaans gegevens verwerken op de backend van een toepassing.
   * Webrollen die doorgaans fungeren als de frontend voor toepassingen.
 
-**Opslag**
+**Storage**
 
-Gegevensbeheer zoals Azure SQL Database- of Azure Storage-services, zoals de Tabel-service, die services biedt voor de opslag van grote hoeveelheden ongestructureerde gegevens en de Blob-service, die services biedt om grote hoeveelheden ongestructureerde tekst op te slaan of binaire gegevens zoals video, audio en afbeeldingen.
+Gegevensbeheer zoals Azure SQL Database- of Azure Storage-services, zoals de Tabel-service, die services biedt voor de opslag van grote hoeveelheden ongestructureerde gegevens en de Blob-service, die services biedt voor het opslaan van grote hoeveelheden ongestructureerde tekst of binaire gegevens zoals video, audio en afbeeldingen.
 
 * Multitenant-gegevens beveiligen in SQL Database per tenant SQL Server-aanmeldingen.
 * Als u Azure Tables for Application Resources gebruikt door een toegangsbeleid op containerniveau op te geven, u machtigingen aanpassen zonder dat u nieuwe URL's hoeft uit te geven voor de resources die zijn beveiligd met handtekeningen voor gedeelde toegang.
 * Azure-wachtrijen voor Azure-wachtrijen worden vaak gebruikt om de verwerking namens tenants te stimuleren, maar kunnen ook worden gebruikt om werk te distribueren dat nodig is voor inrichting of beheer.
-* Servicebuswachtrijen voor toepassingsbronnen die werk naar een gedeelde service pusht, u één wachtrij gebruiken waar elke tenantafzender alleen machtigingen heeft (zoals afgeleid van claims die zijn uitgegeven door ACS) om naar die wachtrij te pushen, terwijl alleen de ontvangers van de service toestemming om uit de wachtrij te halen de gegevens afkomstig van meerdere tenants.
+* Servicebuswachtrijen voor toepassingsbronnen die werk naar een gedeelde service pusht, u één wachtrij gebruiken waarbij elke tenantafzender alleen machtigingen heeft (zoals afgeleid van claims die zijn uitgegeven door ACS) om naar die wachtrij te duwen, terwijl alleen de ontvangers van de service toestemming hebben om de gegevens van meerdere tenants uit de wachtrij te halen.
 
 **Verbindings- en beveiligingsdiensten**
 
@@ -74,13 +74,13 @@ Azure biedt verschillende netwerkservices die verificatie ondersteunen en de beh
 * Met Azure Virtual Network u virtual private networks (VPN's) in Azure inrichten en beheren en deze veilig koppelen aan on-premises IT-infrastructuur.
 * Met Virtual Network Traffic Manager u binnenkomend verkeer in balans laden in meerdere gehoste Azure-services, ongeacht of ze in hetzelfde datacenter of in verschillende datacenters over de hele wereld worden uitgevoerd.
 * Azure Active Directory (Azure AD) is een moderne, op RUST gebaseerde service die mogelijkheden voor identiteitsbeheer en toegangscontrole biedt voor uw cloudtoepassingen. Het gebruik van Azure AD for Application Resources biedt een eenvoudige manier om gebruikers te authenticeren en toestemming te geven om toegang te krijgen tot uw webtoepassingen en -services, terwijl de functies van verificatie en autorisatie kunnen worden meegenomen uit uw code.
-* Azure Service Bus biedt een veilige messaging- en gegevensstroommogelijkheid voor gedistribueerde en hybride toepassingen, zoals communicatie tussen azure-gehoste toepassingen en on-premises toepassingen en services, zonder complexe firewall en beveiliging te vereisen Infrastructuur. Het gebruik van Service Bus Relay voor toepassingsbronnen om toegang te krijgen tot de services die worden blootgesteld als eindpunten kan van de tenant zijn (bijvoorbeeld buiten het systeem worden gehost, zoals on-premises), of ze kunnen services zijn die specifiek voor de tenant worden ingericht (omdat gevoelige, tenant-specifieke gegevens reizen over hen heen).
+* Azure Service Bus biedt een veilige messaging- en gegevensstroommogelijkheid voor gedistribueerde en hybride toepassingen, zoals communicatie tussen azure-gehoste toepassingen en on-premises toepassingen en services, zonder complexe firewall- en beveiligingsinfrastructuren te vereisen. Het gebruik van Service Bus Relay voor toepassingsbronnen om toegang te krijgen tot de services die worden blootgesteld als eindpunten kan van de tenant zijn (bijvoorbeeld buiten het systeem worden gehost, zoals on-premises), of het kan zijn dat services specifiek voor de tenant worden ingericht (omdat gevoelige, tenantspecifieke gegevens over hen heen worden verplaatst).
 
 **Inrichten van middelen**
 
 Azure biedt een aantal manieren om nieuwe tenants voor de toepassing in te richten. Voor multitenant-toepassingen met een groot aantal tenants is het meestal noodzakelijk om dit proces te automatiseren door selfservice-inlevering mogelijk te maken.
 
-* Met werknemersrollen u per tenantresources inrichten en deprovisionenderen (zoals wanneer een nieuwe tenant zich aanmeldt of annuleert), statistieken verzamelen voor metinggebruik en schaal beheren volgens een bepaald schema of in reactie op het overschrijden van drempelwaarden voor belangrijke prestaties Indicatoren. Dezelfde rol kan ook worden gebruikt om updates en upgrades naar de oplossing uit te duwen.
+* Met werknemersrollen u per tenantresources inrichten en deprovisionenderen (zoals wanneer een nieuwe tenant zich aanmeldt of annuleert), statistieken verzamelen voor metinggebruik en schaal beheren volgens een bepaald schema of in reactie op het overschrijden van drempelwaarden voor belangrijke prestatie-indicatoren. Dezelfde rol kan ook worden gebruikt om updates en upgrades naar de oplossing uit te duwen.
 * Azure Blobs kunnen worden gebruikt voor het inrichten van compute- of vooraf geïnitialiseerde opslagbronnen voor nieuwe tenants, terwijl het toegangsbeleid op containerniveau wordt geboden om de compute service-pakketten, VHD-afbeeldingen en andere bronnen te beschermen.
 * Opties voor het inrichten van SQL Database-resources voor een tenant zijn:
   

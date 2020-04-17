@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 29a4d20390575778ccdecde390c257ccf6a48eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ca36a7081aaf70ee2045ee7586184c89591df16
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720925"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461511"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Geheimen opslaan in een sleutelkluis in Azure DevTest Labs
 Mogelijk moet u een complex geheim invoeren bij het gebruik van Azure DevTest Labs: wachtwoord voor uw Windows VM, openbare SSH-sleutel voor uw Linux-VM of persoonlijke toegangstoken om uw Git-repo te klonen via een artefact. Geheimen zijn meestal lang en hebben willekeurige tekens. Daarom kan het invoeren van hen lastig en lastig zijn, vooral als u hetzelfde geheim meerdere keren gebruikt.
 
-Om dit probleem op te lossen en ook uw geheimen op een veilige plaats te bewaren, ondersteunt DevTest Labs het opslaan van geheimen in een [Azure-sleutelkluis.](../key-vault/key-vault-overview.md) Wanneer een gebruiker voor het eerst een geheim opslaat, maakt de DevTest Labs-service automatisch een sleutelkluis in dezelfde resourcegroep die het lab bevat en het geheim opslaat in de sleutelkluis. DevTest Labs maakt een aparte sleutelkluis voor elke gebruiker. 
+Om dit probleem op te lossen en ook uw geheimen op een veilige plaats te bewaren, ondersteunt DevTest Labs het opslaan van geheimen in een [Azure-sleutelkluis.](../key-vault/general/overview.md) Wanneer een gebruiker voor het eerst een geheim opslaat, maakt de DevTest Labs-service automatisch een sleutelkluis in dezelfde resourcegroep die het lab bevat en het geheim opslaat in de sleutelkluis. DevTest Labs maakt een aparte sleutelkluis voor elke gebruiker. 
 
 Houd er rekening mee dat de labgebruiker eerst een virtuele labmachine moet maken voordat hij een geheim in de sleutelkluis kan maken. Dit komt omdat DevTest Lab-service de labgebruiker moet koppelen aan een geldig gebruikersdocument voordat ze geheimen mogen maken en opslaan in hun sleutelkluis. 
 

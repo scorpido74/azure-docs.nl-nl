@@ -3,12 +3,12 @@ title: Beheerde identiteit gebruiken met een toepassing
 description: Beheerde identiteiten gebruiken in Azure Service Fabric-toepassingscode om toegang te krijgen tot Azure Services.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: cbdb1190ec3238a6accd34db3025e08c194d60b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415621"
+ms.locfileid: "81461562"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>De beheerde identiteit van een Service Fabric-toepassing gebruiken om toegang te krijgen tot Azure-services
 
@@ -41,10 +41,6 @@ Om een token te verkrijgen, voert de client de volgende stappen uit:
 Een succesvol antwoord bevat een JSON-payload die het resulterende toegangstoken vertegenwoordigt, evenals metagegevens die het beschrijven. Een mislukte reactie bevat ook een verklaring van de fout. Zie hieronder voor meer informatie over foutafhandeling.
 
 Toegangstokens worden in de cache opgeslagen door Service Fabric op verschillende niveaus (knooppunt, cluster, resourceproviderservice), dus een succesvol antwoord betekent niet noodzakelijkerwijs dat het token rechtstreeks is uitgegeven in reactie op het verzoek van de gebruikerstoepassing. Tokens worden minder dan hun levensduur in de cache opgeslagen en dus ontvangt een toepassing gegarandeerd een geldig token. Het wordt aanbevolen dat de toepassingscode zichzelf alle toegangstokens in slaat die het verwerft; de caching sleutel moet (een afleiding van) het publiek bevatten. 
-
-
-> [!NOTE]
-> De enige geaccepteerde API-versie is momenteel `2019-07-01-preview`, en is onderhevig aan verandering.
 
 Voorbeeldaanvraag:
 ```http

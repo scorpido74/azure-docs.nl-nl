@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6919849d28573ad7388a7f2e317d2b8433f35559
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5b7a060aa2313902e4644fdd15068e06816e3f58
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399454"
+ms.locfileid: "81529889"
 ---
 # <a name="what-is-form-recognizer"></a>Wat is Form Recognizer?
 
@@ -92,7 +92,7 @@ Bekijk de [referentiedocumentatie van](https://westus2.dev.cognitive.microsoft.c
 
 De invoervereisten voor het ontvangstmodel zijn iets anders.
 
-* De indeling moet JPEG, PNG, BMP, PDF (tekst of gescand) of TIFF zijn.
+* De indeling moet JPEG, PNG, PDF (tekst of gescand) of TIFF zijn.
 * De bestandsgrootte moet minder dan 20 MB bedragen.
 * De afmetingen van de afbeelding moeten tussen de 50 x 50 pixels en 10000 x 10000 pixels liggen.
 * PDF-afmetingen moeten maximaal 17 x 17 inch zijn, overeenkomend met juridische of A3-papierformaten en kleiner.

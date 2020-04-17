@@ -8,12 +8,12 @@ author: axisc
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: aschhab
-ms.openlocfilehash: aeb9a9730ddc61793e49c9e042906457e0068d9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82a5fbef8c307d60d82b147f04a2a687b8b0433e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624092"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459063"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels configureren voor het versleutelen van Azure Service Bus-gegevens in rust met behulp van de Azure-portal
 Azure Service Bus Premium biedt versleuteling van gegevens in rust met Azure Storage Service Encryption (Azure SSE). Service Bus Premium vertrouwt op Azure Storage om de gegevens op te slaan en standaard worden alle gegevens die zijn opgeslagen met Azure Storage versleuteld met door Microsoft beheerde sleutels. 
@@ -28,9 +28,9 @@ Het inschakelen van de BYOK-functie is een eenmalig installatieproces op uw naam
 >   * Deze functie wordt ondersteund door [de Azure Service Bus Premium-laag.](service-bus-premium-messaging.md) Het kan niet worden ingeschakeld voor standaardservicebusnaamruimten.
 >   * De versleuteling kan alleen worden ingeschakeld voor nieuwe of lege naamruimten. Als de naamruimte gegevens bevat, mislukt de versleutelingsbewerking.
 
-U Azure Key Vault gebruiken om uw sleutels te beheren en uw sleutelgebruik te controleren. U uw eigen sleutels maken en opslaan in een sleutelkluis, of u de Azure Key Vault API's gebruiken om sleutels te genereren. Zie Wat is Azure Key Vault voor meer informatie over Azure Key [Vault?](../key-vault/key-vault-overview.md)
+U Azure Key Vault gebruiken om uw sleutels te beheren en uw sleutelgebruik te controleren. U uw eigen sleutels maken en opslaan in een sleutelkluis, of u de Azure Key Vault API's gebruiken om sleutels te genereren. Zie Wat is Azure Key Vault voor meer informatie over Azure Key [Vault?](../key-vault/general/overview.md)
 
-In dit artikel ziet u hoe u een sleutelkluis configureert met door de klant beheerde sleutels met behulp van de Azure-portal. Zie [Snelstart: Een geheim instellen en ophalen uit Azure Key Vault met behulp van de Azure-portal](../key-vault/quick-create-portal.md)voor meer informatie over het maken van een sleutelkluis met de Azure-portal.
+In dit artikel ziet u hoe u een sleutelkluis configureert met door de klant beheerde sleutels met behulp van de Azure-portal. Zie [Snelstart: Een geheim instellen en ophalen uit Azure Key Vault met behulp van de Azure-portal](../key-vault/secrets/quick-create-portal.md)voor meer informatie over het maken van een sleutelkluis met de Azure-portal.
 
 > [!IMPORTANT]
 > Als u door de klant beheerde sleutels gebruikt met Azure Service Bus, moet de sleutelkluis twee vereiste eigenschappen hebben geconfigureerd. Ze zijn: **Soft Delete** en **Niet zuiveren**. Deze eigenschappen zijn standaard ingeschakeld wanneer u een nieuwe sleutelkluis maakt in de Azure-portal. Als u deze eigenschappen echter moet inschakelen op een bestaande sleutelkluis, moet u PowerShell of Azure CLI gebruiken.
@@ -47,9 +47,9 @@ Voer de volgende stappen uit om door klanten beheerde sleutels in de Azure-porta
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Een sleutelkluis instellen met sleutels
 
-Nadat u door de klant beheerde sleutels hebt ingeschakeld, moet u de door de klant beheerde sleutel koppelen aan de naamruimte van Azure Service Bus. Service Bus ondersteunt alleen Azure Key Vault. Als u de optie **Versleuteling met door de klant beheerde sleutel** inschakelt in de vorige sectie, moet u de sleutel laten importeren in Azure Key Vault. Ook moeten de toetsen **Soft Delete** en Do **Not Purge** geconfigureerd voor de sleutel hebben. Deze instellingen kunnen worden geconfigureerd met [PowerShell](../key-vault/key-vault-soft-delete-powershell.md) of [CLI](../key-vault/key-vault-soft-delete-cli.md#enabling-purge-protection).
+Nadat u door de klant beheerde sleutels hebt ingeschakeld, moet u de door de klant beheerde sleutel koppelen aan de naamruimte van Azure Service Bus. Service Bus ondersteunt alleen Azure Key Vault. Als u de optie **Versleuteling met door de klant beheerde sleutel** inschakelt in de vorige sectie, moet u de sleutel laten importeren in Azure Key Vault. Ook moeten de toetsen **Soft Delete** en Do **Not Purge** geconfigureerd voor de sleutel hebben. Deze instellingen kunnen worden geconfigureerd met [PowerShell](../key-vault/general/soft-delete-powershell.md) of [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection).
 
-1. Als u een nieuwe sleutelkluis wilt maken, volgt u de [Quickstart](../key-vault/key-vault-overview.md)azure key vault . Zie [Over sleutels, geheimen en certificaten voor](../key-vault/about-keys-secrets-and-certificates.md)meer informatie over het importeren van bestaande sleutels.
+1. Als u een nieuwe sleutelkluis wilt maken, volgt u de [Quickstart](../key-vault/general/overview.md)azure key vault . Zie [Over sleutels, geheimen en certificaten voor](../key-vault/about-keys-secrets-and-certificates.md)meer informatie over het importeren van bestaande sleutels.
 1. Als u zowel soft delete- als zuiveringsbeveiliging wilt inschakelen bij het maken van een kluis, gebruikt u de opdracht [az keyvault create.](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create)
 
     ```azurecli-interactive
@@ -81,28 +81,28 @@ Nadat u door de klant beheerde sleutels hebt ingeschakeld, moet u de door de kla
     > [!IMPORTANT]
     > Als u op zoek bent naar customer managed key te gebruiken, samen met Geo ramp herstel, bekijk dan de onderstaande - 
     >
-    > Om versleuteling in rust met door de klant beheerde sleutel mogelijk te maken, wordt een [toegangsbeleid](../key-vault/key-vault-secure-your-key-vault.md) ingesteld voor de beheerde identiteit van de ServiceBus op de opgegeven Azure KeyVault. Dit zorgt voor gecontroleerde toegang tot de Azure KeyVault vanuit de naamruimte van Azure Service Bus.
+    > Om versleuteling in rust met door de klant beheerde sleutel mogelijk te maken, wordt een [toegangsbeleid](../key-vault/general/secure-your-key-vault.md) ingesteld voor de beheerde identiteit van de ServiceBus op de opgegeven Azure KeyVault. Dit zorgt voor gecontroleerde toegang tot de Azure KeyVault vanuit de naamruimte van Azure Service Bus.
     >
     > Hierdoor:
     > 
     >   * Als [Geo disaster recovery](service-bus-geo-dr.md) al is ingeschakeld voor de servicebusnaamruimte en u op zoek bent naar klantbeheersleutel, 
     >     * De koppeling verbreken
-    >     * [Stel het toegangsbeleid](../key-vault/managed-identity.md) in voor de beheerde identiteit voor zowel de primaire als de secundaire naamruimten van de sleutelkluis.
+    >     * [Stel het toegangsbeleid](../key-vault/general/managed-identity.md) in voor de beheerde identiteit voor zowel de primaire als de secundaire naamruimten van de sleutelkluis.
     >     * Versleuteling instellen op de primaire naamruimte.
     >     * Koppel de primaire en secundaire naamruimten opnieuw.
     > 
     >   * Als u Geo-DR wilt inschakelen op een naamruimte van de ServiceBus waar de door de klant beheerde sleutel al is ingesteld,
-    >     * [Stel het toegangsbeleid](../key-vault/managed-identity.md) in voor de beheerde identiteit voor de secundaire naamruimte naar de sleutelkluis.
+    >     * [Stel het toegangsbeleid](../key-vault/general/managed-identity.md) in voor de beheerde identiteit voor de secundaire naamruimte naar de sleutelkluis.
     >     * Koppel de primaire en secundaire naamruimten.
 
 
 ## <a name="rotate-your-encryption-keys"></a>Uw versleutelingssleutels roteren
 
-U uw sleutel in de sleutelkluis roteren met behulp van het rotatiemechanisme azure key vaults. Zie [Sleutelrotatie en -controle instellen voor](../key-vault/key-vault-key-rotation-log-monitoring.md)meer informatie . Activerings- en vervaldatums kunnen ook worden ingesteld om de sleutelrotatie te automatiseren. De Service Bus-service detecteert nieuwe belangrijke versies en begint ze automatisch te gebruiken.
+U uw sleutel in de sleutelkluis roteren met behulp van het rotatiemechanisme azure key vaults. Zie [Sleutelrotatie en -controle instellen voor](../key-vault/secrets/key-rotation-log-monitoring.md)meer informatie . Activerings- en vervaldatums kunnen ook worden ingesteld om de sleutelrotatie te automatiseren. De Service Bus-service detecteert nieuwe belangrijke versies en begint ze automatisch te gebruiken.
 
 ## <a name="revoke-access-to-keys"></a>Toegang tot sleutels intrekken
 
-Als u de toegang tot de versleutelingssleutels intrekt, worden de gegevens niet uit Service Bus verwijderd. De gegevens zijn echter niet toegankelijk via de naamruimte van de ServiceBus. U de versleutelingssleutel intrekken via het toegangsbeleid of door de sleutel te verwijderen. Meer informatie over toegangsbeleid en het beveiligen van uw sleutelkluis van [Beveiligde toegang tot een sleutelkluis.](../key-vault/key-vault-secure-your-key-vault.md)
+Als u de toegang tot de versleutelingssleutels intrekt, worden de gegevens niet uit Service Bus verwijderd. De gegevens zijn echter niet toegankelijk via de naamruimte van de ServiceBus. U de versleutelingssleutel intrekken via het toegangsbeleid of door de sleutel te verwijderen. Meer informatie over toegangsbeleid en het beveiligen van uw sleutelkluis van [Beveiligde toegang tot een sleutelkluis.](../key-vault/general/secure-your-key-vault.md)
 
 Zodra de versleutelingssleutel is ingetrokken, wordt de Service Bus-service op de versleutelde naamruimte onbruikbaar. Als de toegang tot de sleutel is ingeschakeld of de verwijderde sleutel is hersteld, kiest servicebusservice de sleutel, zodat u toegang hebt tot de gegevens vanuit de naamruimte van de versleutelde servicebus.
 
@@ -327,6 +327,6 @@ In deze stap werkt u de naamruimte van de ServiceBus bij met belangrijke kluisin
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
 - [Overzicht servicebus](service-bus-messaging-overview.md)
-- [Overzicht van Key Vault](../key-vault/key-vault-overview.md)
+- [Overzicht van Key Vault](../key-vault/general/overview.md)
 
 

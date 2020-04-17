@@ -759,14 +759,6 @@
           items:
             - name: 1 - Query's uitvoeren op gegevens
               href: tutorial-query-graph.md
-        - name: Naslaginformatie
-          items:
-            - name: Antwoordheaders
-              href: gremlin-headers.md
-            - name: Limieten
-              href: gremlin-limits.md
-            - name: Compatibiliteit
-              href: gremlin-compatibility.md
         - name: Instructiegidsen
           items:
             - name: Grafiekgegevens modelleren
@@ -794,6 +786,14 @@
               href: powershell-samples-gremlin.md
             - name: Beheren met behulp van Azure CLI
               href: cli-samples-gremlin.md
+        - name: Naslaginformatie
+          items:
+            - name: Antwoordheaders
+              href: gremlin-headers.md
+            - name: Limieten
+              href: gremlin-limits.md
+            - name: Compatibiliteit
+              href: gremlin-compatibility.md
     - name: Tabel-API
       items:
         - name: Overzicht

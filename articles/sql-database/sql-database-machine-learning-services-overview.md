@@ -12,23 +12,19 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
-ms.openlocfilehash: 2a2cd4bfc3d393543b41eea776f02723d94054b1
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: 46ca4661d06b52c861431a680a69297575ac99b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345834"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461409"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services with R (preview)
 
 Machine Learning Services is een functie van Azure SQL Database, die wordt gebruikt voor het uitvoeren van in-database R-scripts. De functie bevat Microsoft R-pakketten voor krachtige voorspellende analyses en machine learning. De relationele gegevens kunnen worden gebruikt in R-scripts via opgeslagen procedures, T-SQL-script met R-instructies of R-code die T-SQL bevat.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
-> [!NOTE]
-> De preview is beschikbaar voor afzonderlijke databases en elastische pools met behulp van het vCore-gebaseerde inkoopmodel in de **algemene en** **bedrijfskritieke** servicelagen. In dit eerste voorbeeld worden de **hyperscale** servicelaag en de optie **beheerde instantieimplementatie** niet ondersteund. Momenteel is R de enige ondersteunde taal. Er is op dit moment geen ondersteuning voor Python.
->
-> De preview is momenteel beschikbaar in de volgende regio's: West-Europa, Noord-Europa, West-VS 2, Oost-VS, South Central US, North Central US, Canada Central, Zuidoost-Azië, India Zuid en Australië Zuidoost.
 
 ## <a name="what-you-can-do-with-r"></a>Wat u doen met R
 

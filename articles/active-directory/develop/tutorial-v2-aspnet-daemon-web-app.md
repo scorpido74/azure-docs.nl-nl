@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: a4d7030f7a58a6252c6e596fc2c248163694a1e8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 0fb80b8a3fe9dd642b1574b35ff48b30272ce848
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880870"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533714"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Zelfstudie: Een daemon met meerdere tenant's bouwen die het eindpunt van het Microsoft-identiteitsplatform gebruikt
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u hoe u het Microsoft-identiteitsplatform gebruiken om 
 
 Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-De app is gebouwd als een ASP.NET MVC-toepassing. Het maakt gebruik van de OWIN OpenID Connect middleware om gebruikers aan te melden.  
+De app is gebouwd als een ASP.NET MVC-toepassing. Het maakt gebruik van de OWIN OpenID Connect middleware om gebruikers aan te melden.
 
 De component "daemon" in dit voorbeeld `SyncController.cs`is een API-controller. Wanneer de controller wordt aangeroepen, wordt een lijst met gebruikers in de Azure Active Directory-tenant (Azure AD) van de klant opgehaald in Microsoft Graph. `SyncController.cs`wordt geactiveerd door een AJAX-oproep in de webapplicatie. Het gebruikt de [Microsoft Authentication Library (MSAL) voor .NET](msal-overview.md) om een toegangstoken voor Microsoft Graph te verkrijgen.
 
@@ -109,7 +109,7 @@ Als u de automatisering niet wilt gebruiken, gebruikt u de stappen in de volgend
    - Selecteer **web** in het keuzekader voor het omleiden van **URI (optioneel)** en voer de volgende omleidings-URI's in:
        - **https://localhost:44316/**
        - **https://localhost:44316/Account/GrantPermissions**
-          
+
      Als er meer dan twee omleidings-URI's zijn, moet u deze later toevoegen via het tabblad **Verificatie,** nadat de app is gemaakt.
 1. Selecteer **Registreren** om de toepassing te maken.
 1. Zoek op de **pagina Overzicht** van de app de waarde van de **id-toepassing (client)** en leg deze vast voor later. U hebt het nodig om het configuratiebestand visual studio voor dit project te configureren.
@@ -121,7 +121,7 @@ Als u de automatisering niet wilt gebruiken, gebruikt u de stappen in de volgend
 
    1. Voer een sleutelbeschrijving in (bijvoorbeeld **app-geheim),**
    1. Selecteer een sleutelduur van **1 jaar**, In **2 jaar**of nooit **verloopt**.
-   1. Selecteer de knop **Add**. 
+   1. Selecteer de knop **Add**.
    1. Wanneer de sleutelwaarde wordt weergegeven, kopieert en slaat u deze op een veilige locatie op. U hebt deze sleutel later nodig om het project in Visual Studio te configureren. Het zal niet opnieuw worden weergegeven of opvraagbaar op een andere manier.
 1. Selecteer **API-machtigingen**in de lijst met pagina's voor de app . Daarna kunt u het volgende doen:
    1. Selecteer de knop **Een machtiging toevoegen**.
@@ -174,21 +174,21 @@ De relevante code voor dit voorbeeld bevindt zich in de volgende bestanden:
 
 ## <a name="re-create-the-sample-app"></a>De voorbeeld-app opnieuw maken
 
-1. Maak in Visual Studio een nieuw **Visual C#ASP.NET** **Web Application (.NET Framework)** project. 
+1. Maak in Visual Studio een nieuw **Visual C#ASP.NET** **Web Application (.NET Framework)** project.
 1. Kies in het volgende scherm de **MVC-projectsjabloon.** Voeg ook map- en kernverwijzingen toe voor **Web API,** omdat u later een web-API-controller toevoegt. Laat de gekozen verificatiemodus van het project als standaard: **geen verificatie**.
-1. Selecteer het project in het venster **Solution Explorer** en selecteer de **F4-toets.** 
+1. Selecteer het project in het venster **Solution Explorer** en selecteer de **F4-toets.**
 1. Stel **SSL ingeschakeld** in de projecteigenschappen in op **True.** Let op de informatie in **SSL URL**. U hebt het nodig bij het configureren van de registratie van deze toepassing in de Azure-portal.
-1. Voeg de volgende ASP.NET OWIN middleware NuGet-pakketten toe: 
+1. Voeg de volgende ASP.NET OWIN middleware NuGet-pakketten toe:
    - Microsoft.Owin.Security.ActiveDirectory
    - Microsoft.Owin.Security.Cookies
    - Microsoft.Owin.Host.SystemWeb
    - Microsoft.IdentityModel.Protocol.Extensions
    - Microsoft.Owin.Security.OpenIdConnect
-   - Microsoft.Identity.Client 
+   - Microsoft.Identity.Client
 1. In de **map App_Start:**
-   1. Een klasse maken die **Startup.Auth.cs**wordt genoemd. 
-   1. Verwijderen **. App_Start** van de naamruimtenaam. 
-   1. Vervang de code voor de klasse **Opstarten** door de code uit hetzelfde bestand van de voorbeeld-app.       
+   1. Een klasse maken die **Startup.Auth.cs**wordt genoemd.
+   1. Verwijderen **. App_Start** van de naamruimtenaam.
+   1. Vervang de code voor de klasse **Opstarten** door de code uit hetzelfde bestand van de voorbeeld-app.
    Zorg ervoor dat u de hele klasse definitie te nemen. De definitie verandert van opstarten van **de openbare klasse** naar het opstarten van een openbare **deelklasse.**
 1. Los **in Startup.Auth.cs**ontbrekende verwijzingen op door instructies toe **te** voegen zoals voorgesteld door Visual Studio IntelliSense.
 1. Klik met de rechtermuisknop op het project, selecteer **Toevoegen**en selecteer **Klasse**.
@@ -220,12 +220,12 @@ Dit project heeft web-app en web API projecten. Als u ze wilt implementeren op A
 1. Nadat de website is gemaakt, vindt u deze in het **dashboard** en selecteert u deze om het **scherm Overzicht van** de app-service te openen.
 1. Download het publicatieprofiel op het tabblad **Overzicht** van de app-service door de koppeling **Publicatieprofiel ophalen** te selecteren en op te slaan. U andere implementatiemechanismen gebruiken, zoals het implementeren vanuit bronbeheer.
 1. Overschakelen naar Visual Studio en vervolgens:
-   1. Ga naar het **dotnet-web-daemon-v2** project. 
+   1. Ga naar het **dotnet-web-daemon-v2** project.
    1. Klik met de rechtermuisknop op het project in Solution Explorer en selecteer **Publiceren**.
    1. Selecteer **Profiel importeren** op de onderste balk en importeer het publicatieprofiel dat u eerder hebt gedownload.
 1. Selecteer **Configureren**.
-1. Werk op het tabblad **Verbinding** de bestemmings-URL bij zodat deze 'https' gebruikt. Gebruik bijvoorbeeld [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net). Selecteer **Volgende**.
-1. Controleer op het tabblad **Instellingen** of **Organisatieverificatie inschakelen** is gewist.  
+1. Werk op het tabblad **Verbinding** de bestemmings-URL bij zodat deze 'https' gebruikt. Gebruik bijvoorbeeld [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net). Selecteer **Next**.
+1. Controleer op het tabblad **Instellingen** of **Organisatieverificatie inschakelen** is gewist.
 1. Selecteer **Opslaan**. Selecteer **Publiceren** op het hoofdscherm.
 
 Visual Studio publiceert het project en opent automatisch een browser naar de URL van het project. Als u de standaardwebpagina van het project ziet, is de publicatie geslaagd.

@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 2a4c6dd3dd6f1bb2f15e31226086c73fb8e63521
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d08770d81ade2d976142b2ce1fd94dae044cf32
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124836"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461392"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Een overzicht van azure SQL Database-beveiligingsmogelijkheden
 
@@ -46,7 +46,7 @@ IP-firewallregels verlenen toegang tot databases op basis van het ip-adres van e
 > [!IMPORTANT]
 > Het beheren van databases en databaseservers binnen Azure wordt beheerd door de roltoewijzingen van uw portalgebruikersaccount. Zie Op rollen gebaseerd [toegangsbeheer in Azure-portal](../role-based-access-control/overview.md)voor meer informatie over dit artikel.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Authenticatie is het proces om te bewijzen dat de gebruiker is wie hij beweert te zijn. Azure SQL Database ondersteunt twee soorten verificatie:
 
@@ -112,11 +112,11 @@ Bijvoorbeeld bij het gebruik van het ADO.NET stuurprogramma wordt dit bereikt vi
 
 [Transparent Data Encryption (TDE) voor Azure SQL Database](transparent-data-encryption-azure-sql.md) voegt een beveiligingslaag toe om gegevens in rust te beschermen tegen ongeautoriseerde of offline toegang tot raw-bestanden of back-ups. Veelvoorkomende scenario's zijn diefstal van datacenters of onbeveiligde verwijdering van hardware of media, zoals schijven en back-uptapes.TDE versleutelt de volledige database met behulp van een AES-versleutelingsalgoritme, waarvoor toepassingsontwikkelaars geen wijzigingen hoeven aan te brengen in bestaande toepassingen.
 
-In Azure worden alle nieuw gemaakte SQL-databases standaard versleuteld en wordt de databaseversleutelingssleutel beschermd door een ingebouwd servercertificaat.  Certificaatonderhoud en -rotatie worden beheerd door de service en vereisen geen invoer van de gebruiker. Klanten die liever de controle over de versleutelingssleutels overnemen, kunnen de sleutels beheren in [Azure Key Vault.](../key-vault/key-vault-secure-your-key-vault.md)
+In Azure worden alle nieuw gemaakte SQL-databases standaard versleuteld en wordt de databaseversleutelingssleutel beschermd door een ingebouwd servercertificaat.  Certificaatonderhoud en -rotatie worden beheerd door de service en vereisen geen invoer van de gebruiker. Klanten die liever de controle over de versleutelingssleutels overnemen, kunnen de sleutels beheren in [Azure Key Vault.](../key-vault/general/secure-your-key-vault.md)
 
 ### <a name="key-management-with-azure-key-vault"></a>Sleutelbeheer met Azure Key Vault
 
-[Met ByOK-ondersteuning (Bring Your Own Key)](transparent-data-encryption-byok-azure-sql.md) voor [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) kunnen klanten het eigendom nemen van sleutelbeheer en -rotatie met Azure Key [Vault,](../key-vault/key-vault-secure-your-key-vault.md)het cloudgebaseerde externe sleutelbeheersysteem van Azure. Als de toegang van de database tot de sleutelkluis wordt ingetrokken, kan een database niet worden gedecodeerd en in het geheugen worden gelezen. Azure Key Vault biedt een centraal sleutelbeheerplatform, maakt gebruik van streng bewaakte hardwarebeveiligingsmodules (HSM's) en maakt scheiding van taken tussen beheer van sleutels en gegevens mogelijk om te voldoen aan de vereisten voor beveiligingscompliance.
+[Met ByOK-ondersteuning (Bring Your Own Key)](transparent-data-encryption-byok-azure-sql.md) voor [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) kunnen klanten het eigendom nemen van sleutelbeheer en -rotatie met Azure Key [Vault,](../key-vault/general/secure-your-key-vault.md)het cloudgebaseerde externe sleutelbeheersysteem van Azure. Als de toegang van de database tot de sleutelkluis wordt ingetrokken, kan een database niet worden gedecodeerd en in het geheugen worden gelezen. Azure Key Vault biedt een centraal sleutelbeheerplatform, maakt gebruik van streng bewaakte hardwarebeveiligingsmodules (HSM's) en maakt scheiding van taken tussen beheer van sleutels en gegevens mogelijk om te voldoen aan de vereisten voor beveiligingscompliance.
 
 ### <a name="always-encrypted-encryption-in-use"></a>Altijd versleuteld (versleuteling in gebruik)
 
@@ -132,7 +132,7 @@ Met dynamische gegevensmaskering in SQL Database wordt de blootstelling van gevo
 
 ## <a name="security-management"></a>Beveiligingsbeheer
 
-### <a name="vulnerability-assessment"></a>Beoordeling van beveiligingslekken
+### <a name="vulnerability-assessment"></a>Evaluatie van beveiligingsproblemen
 
 [Kwetsbaarheidsbeoordeling](sql-vulnerability-assessment.md) is een eenvoudig te configureren service die potentiële databasekwetsbaarheden kan ontdekken, bijhouden en helpen oplossen met als doel de algehele databasebeveiliging proactief te verbeteren. Vulnerability assessment (VA) maakt deel uit van het advanced data security (ADS) aanbod, dat is een uniform pakket voor geavanceerde SQL-beveiligingsmogelijkheden. Kwetsbaarheidsbeoordeling kan worden geopend en beheerd via de centrale SQL ADS-portal.
 

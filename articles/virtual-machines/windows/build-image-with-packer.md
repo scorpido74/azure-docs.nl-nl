@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: b2ff9869b0de7a0285644bea462101cd1dc80b99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb81cbb12605a9d4b8870aab4bb461c8af079cf5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74039225"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460746"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Packer gebruiken om Windows-afbeeldingen voor virtuele machines in Azure te maken
 Elke virtuele machine (VM) in Azure wordt gemaakt op basis van een afbeelding die de Windows-distributie- en OS-versie definieert. Afbeeldingen kunnen vooraf geïnstalleerde toepassingen en configuraties bevatten. De Azure Marketplace biedt veel afbeeldingen van eerste en derde partijen voor de meest voorkomende besturingssysteem- en toepassingsomgevingen, of u uw eigen aangepaste afbeeldingen maken die zijn afgestemd op uw behoeften. In dit artikel wordt beschreven hoe u het open-sourcetool [Packer](https://www.packer.io/) gebruiken om aangepaste afbeeldingen in Azure te definiëren en te bouwen.

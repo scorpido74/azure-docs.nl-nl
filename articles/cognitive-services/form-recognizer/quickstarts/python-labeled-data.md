@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482314"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531097"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Een formulierherkenningsmodel trainen met labels met REST API en Python
 
@@ -40,7 +40,7 @@ Zorg ervoor dat alle trainingsdocumenten van hetzelfde formaat zijn. Als u formu
 
 Als u een model wilt trainen met gelabelde gegevens, hebt u de volgende bestanden nodig als invoer in de submap. Hieronder vindt u meer informatie over het maken van deze bestanden.
 
-* **Bronformulieren** – de formulieren om gegevens uit te extraheren. Ondersteunde typen zijn JPEG, PNG, BMP, PDF of TIFF.
+* **Bronformulieren** – de formulieren om gegevens uit te extraheren. Ondersteunde typen zijn JPEG, PNG, PDF of TIFF.
 * **OCR-indelingsbestanden** - JSON-bestanden die de grootte en posities van alle leesbare tekst in elk bronformulier beschrijven. U gebruikt de API voor formulierindeling smeedinrichting om deze gegevens te genereren. 
 * **Labelbestanden** - JSON-bestanden die gegevenslabels beschrijven die een gebruiker handmatig heeft ingevoerd.
 
@@ -219,7 +219,7 @@ headers = {
     'Ocp-Apim-Subscription-Key': '<subsription key>',
 }
 
-body =  {
+body =     {
     "source": source,
     "sourceFilter": {
         "prefix": prefix,
@@ -455,7 +455,7 @@ Wanneer het proces is voltooid, `202 (Success)` ontvangt u een antwoord met JSON
                     "#/readResults/0/lines/8/words/1"
                   ]
                 },
-                ...     
+                ...        
               ]
             }
           ]

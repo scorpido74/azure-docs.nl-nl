@@ -3,12 +3,12 @@ title: Wijzigingen in de delegatie in uw beheertenant controleren
 description: Meer informatie over het controleren van delegatieactiviteiten van klanthuurders naar uw beherende tenant.
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 322580cc3d0246f7a34e28cdae94da57fda070b5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: a4593b34311eca34e4fb68926a3820899ab3f324
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985147"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458808"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Wijzigingen in de delegatie in uw beheertenant controleren
 
@@ -44,7 +44,7 @@ Omdat dit een breed toegangsniveau is, raden we u aan deze rol toe te wijzen aan
 
 - [Maak een nieuw serviceprincipal-account](../../active-directory/develop/howto-create-service-principal-portal.md) dat alleen voor deze functie kan worden gebruikt, in plaats van deze rol toe te kennen aan een bestaande serviceprincipal die wordt gebruikt voor andere automatisering.
 - Zorg ervoor dat deze serviceprincipal geen toegang heeft tot gedelegeerde klantbronnen.
-- [Gebruik een certificaat om](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) het te verifiëren en veilig [op te slaan in Azure Key Vault.](../../key-vault/key-vault-best-practices.md)
+- [Gebruik een certificaat om](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) het te verifiëren en veilig [op te slaan in Azure Key Vault.](../../key-vault/general/best-practices.md)
 - Beperk de gebruikers die toegang hebben om namens de serviceprincipal op te treden.
 
 Gebruik een van de volgende methoden om de rootscope-toewijzingen uit te voeren.

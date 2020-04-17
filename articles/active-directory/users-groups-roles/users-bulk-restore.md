@@ -1,11 +1,11 @@
 ---
-title: Verwijderde gebruikers (voorbeeld) in bulkherstellen in de Azure Active Directory-portal | Microsoft Documenten
+title: Verwijderde gebruikers in bulkherstellen in de Azure Active Directory-portal | Microsoft Documenten
 description: Verwijderde gebruikers in bulk herstellen in het Azure AD-beheercentrum in Azure Active Directory
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/15/2019
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d392ae97a8325dd4a56acd807ebfb2b951216eae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f75fe224491c2853f819a45db678e87849dc72d1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174263"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532702"
 ---
-# <a name="bulk-restore-deleted-users-preview-in-azure-active-directory"></a>Verwijderde gebruikers (preview) in Bulk herstellen in Azure Active Directory
+# <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Verwijderde gebruikers in bulkherstellen in Azure Active Directory
 
 Azure Active Directory (Azure AD) ondersteunt bewerkingen voor het maken en verwijderen van bulkgebruikers, bulkuitnodigingen voor gasten en ondersteunt het downloaden van lijsten met gebruikers, groepen en groepsleden.
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) ondersteunt bewerkingen voor het maken en verw
 
    ![Selecteer een lokaal CSV-bestand waarin u de gebruikers aanvermeldt die u wilt toevoegen](./media/users-bulk-restore/upload-button.png)
 
-1. Blader op de pagina **Bulk restore (Preview)** onder **Uw csv-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert en op **Verzenden**klikt, wordt de validatie van het CSV-bestand gestart.
+1. Blader op de pagina **Bulkherstel** onder **Uw csv-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert en op **Verzenden**klikt, wordt de validatie van het CSV-bestand gestart.
 1. Wanneer de inhoud van het bestand is gevalideerd, wordt **bestand geüpload**. Als er fouten zijn, moet u deze oplossen voordat u de taak indienen.
 1. Wanneer uw bestand de validatie doorstaat, selecteert u **Verzenden** om de Azure-bulkbewerking te starten waarmee de gebruikers worden hersteld.
 1. Wanneer de herstelbewerking is voltooid, ziet u een melding dat de bulkbewerking is geslaagd.
@@ -45,9 +45,9 @@ Als er fouten zijn, u het resultatenbestand downloaden en bekijken op de pagina 
 
 ## <a name="check-status"></a>Status controleren
 
-U de status van al uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk operation results (preview).**
+U de status van al uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk-bewerkingsresultaten.**
 
-   ![Uploadstatus controleren op de pagina Resultaten van bulkbewerkingen](./media/users-bulk-restore/bulk-center.png)
+[![](media/users-bulk-restore/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-restore/bulk-center.png#lightbox)
 
 Vervolgens u controleren of de gebruikers die u hebt hersteld, in de Azure AD-organisatie bestaan in de Azure-portal of met PowerShell.
 

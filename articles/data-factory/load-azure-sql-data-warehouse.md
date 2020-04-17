@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/22/2018
-ms.openlocfilehash: 1943c16c678d0783b99a0f16c25fa72137defc8a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/16/2020
+ms.openlocfilehash: 1a764f392402acf9aa405468470d0fb6f680d755
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415895"
+ms.locfileid: "81461074"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in Azure SQL Data Warehouse laden met behulp van Azure Data Factory
 
@@ -49,13 +49,9 @@ In dit artikel ziet u hoe u het hulpprogramma Gegevensfabriekskopiegegevens gebr
 
 1. Selecteer links in het menu **Een brongegevens** > **maken + Analytics** > **Data Factory:**
 
-   ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+2. Geef op de pagina **Nieuwe gegevensfabriek** waarden op voor de volgende items:
 
-2. Geef op de pagina **Nieuwe gegevensfabriek** waarden op voor de velden die in de volgende afbeelding worden weergegeven:
-
-   ![Pagina Nieuwe gegevensfactory](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
-
-    * **Naam:** Voer een wereldwijd unieke naam in voor uw Azure-gegevensfabriek. Als u de fout 'Gegevensfabrieksnaam \"\" LoadSQLDWDemo is niet beschikbaar' ontvangt, voert u een andere naam in voor de gegevensfabriek. U bijvoorbeeld de naam _**yourname**_**ADFTutorialDataFactory**gebruiken. Probeer de gegevensfabriek opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+    * **Naam:** Voer *LoadSQLDWDemo* in voor naam. De naam voor uw gegevensfabriek moet *wereldwijd uniek zijn. Als u de fout 'Gegevensfabrieksnaam 'LoadSQLDWDemo' niet beschikbaar vindt, voert u een andere naam in voor de gegevensfabriek. U bijvoorbeeld de naam _**yourname**_**ADFTutorialDataFactory**gebruiken. Probeer de gegevensfabriek opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
     * **Abonnement**: Selecteer uw Azure-abonnement waarin u de gegevensfabriek wilt maken. 
     * **Resourcegroep:** selecteer een bestaande resourcegroep in de vervolgkeuzelijst of selecteer de optie **Nieuwe maken** en voer de naam van een resourcegroep in. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
     * **Versie**: Selecteer **V2**.
@@ -64,58 +60,57 @@ In dit artikel ziet u hoe u het hulpprogramma Gegevensfabriekskopiegegevens gebr
 3. Selecteer **Maken**.
 4. Nadat de creatie is voltooid, gaat u naar uw gegevensfabriek. U ziet de startpagina **van Data Factory** zoals weergegeven in de volgende afbeelding:
 
-   ![Startpagina van de gegevensfactory](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
+   ![Startpagina van de gegevensfactory](./media/doc-common-process/data-factory-home-page.png)
 
    Klik op de tegel **Maken en bewaken** om de toepassing Gegevensintegratie in een afzonderlijk tabblad te openen.
 
 ## <a name="load-data-into-azure-sql-data-warehouse"></a>Gegevens laden in Azure SQL Data Warehouse
 
-1. Selecteer **op de** pagina Aan de slag de tegel **Gegevens kopiëren** om het gereedschap Gegevens kopiëren te starten:
+1. Selecteer op de pagina **Aan de slag** de tegel **Gegevens kopiëren** om het hulpprogramma Gegevens kopiëren te openen.
 
-   ![De tegel Copy Data-hulpprogramma](./media/load-azure-sql-data-warehouse/copy-data-tool-tile.png)
-1. Geef op de pagina **Eigenschappen** **CopyFromSQLToSQLDW** op voor het veld **Taaknaam** en selecteer **Volgende:**
+1. Geef op de pagina **Eigenschappen** **CopyFromSQLToSQLDW** op voor het veld **Taaknaam** en selecteer **Volgende**.
 
     ![De pagina Eigenschappen](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
 
 1. Voer op de pagina **Brongegevensarchief** de volgende stappen uit:
+    >[!TIP]
+    >In deze zelfstudie gebruikt u *SQL-verificatie* als verificatietype voor uw brongegevensarchief, maar u indien nodig andere ondersteunde verificatiemethoden kiezen:*Service Principal* en *Managed Identity.* Raadpleeg de bijbehorende secties in [dit artikel](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties) voor meer informatie.
+    >Als u geheimen voor gegevensopslag veilig wilt opslaan, wordt het ook aanbevolen om een Azure Key Vault te gebruiken. Raadpleeg [dit artikel](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) voor gedetailleerde illustraties.
 
-    a. klik **+ Nieuwe verbinding maken:**
-
-    ![De pagina Brongegevensarchief](./media/load-azure-sql-data-warehouse/new-source-linked-service.png)
+    a. klik **+ Nieuwe verbinding maken**.
 
     b. Selecteer **Azure SQL Database** in de galerie en selecteer **Doorgaan**. U 'SQL' typen in het zoekvak om de connectors te filteren.
 
     ![Azure SQL DB selecteren](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
-    c. Selecteer op de pagina **Nieuwe Gekoppelde Service** uw servernaam en DB-naam in de vervolgkeuzelijst en geef de gebruikersnaam en het wachtwoord op. Klik op **Verbinding testen** om de instellingen te valideren en selecteer vervolgens **Voltooien**.
+    c. Selecteer op de pagina **Nieuwe Gekoppelde Service** uw servernaam en DB-naam in de vervolgkeuzelijst en geef de gebruikersnaam en het wachtwoord op. Klik **op Verbinding testen** om de instellingen te valideren en selecteer Vervolgens **Maken**.
 
     ![Azure SQL DB configureren](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
     d. Selecteer de zojuist gemaakte gekoppelde service als bron. Klik vervolgens op **Volgende**.
 
-    ![Aan de bron gekoppelde service selecteren](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
-
-1. Voer in de **tabellen Selecteren waaruit u de gegevens wilt kopiëren of een aangepaste querypagina wilt gebruiken,** **VerkoopLT** in om de tabellen te filteren. Kies het vak **(Alles selecteren)** om alle tabellen voor de kopie te gebruiken en selecteer **Volgende:**
+1. Voer in de **tabellen Selecteren waaruit u de gegevens wilt kopiëren of een aangepaste querypagina wilt gebruiken,** **VerkoopLT** in om de tabellen te filteren. Kies het vak **(Alles selecteren)** om alle tabellen voor de kopie te gebruiken en selecteer **Volgende**.
 
     ![Brontabellen selecteren](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
+1. Geef **op** de pagina Filter toepassen uw instellingen op of selecteer **Volgende**.
+
 1. Voer op de pagina **Bestemmingsgegevensarchief** de volgende stappen uit:
+    >[!TIP]
+    >In deze zelfstudie gebruikt u *SQL-verificatie* als verificatietype voor uw doelgegevensarchief, maar u indien nodig andere ondersteunde verificatiemethoden kiezen:*Service Principal* en *Managed Identity.* Raadpleeg de bijbehorende secties in [dit artikel](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#linked-service-properties) voor meer informatie.
+    >Als u geheimen voor gegevensopslag veilig wilt opslaan, wordt het ook aanbevolen om een Azure Key Vault te gebruiken. Raadpleeg [dit artikel](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) voor gedetailleerde illustraties.
 
     a. Klik op **+ Nieuwe verbinding maken** om een verbinding toe te voegen
 
-    ![Pagina Gegevensopslag sink](./media/load-azure-sql-data-warehouse/new-sink-linked-service.png)
-
-    b. Selecteer **Azure SQL Data Warehouse** in de galerie en selecteer **Volgende**.
+    b. Selecteer **Azure Synapse Analytics (voorheen SQL DW)** in de galerie en selecteer **Doorgaan**. U 'SQL' typen in het zoekvak om de connectors te filteren.
 
     ![Azure SQL DW selecteren](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
-    c. Selecteer op de pagina **Nieuwe Gekoppelde Service** uw servernaam en DB-naam in de vervolgkeuzelijst en geef de gebruikersnaam en het wachtwoord op. Klik op **Verbinding testen** om de instellingen te valideren en selecteer vervolgens **Voltooien**.
+    c. Selecteer op de pagina **Nieuwe Gekoppelde Service** uw servernaam en DB-naam in de vervolgkeuzelijst en geef de gebruikersnaam en het wachtwoord op. Klik **op Verbinding testen** om de instellingen te valideren en selecteer Vervolgens **Maken**.
 
     ![Azure SQL DW configureren](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. Selecteer de zojuist gemaakte gekoppelde service als sink. Klik vervolgens op **Volgende**.
-
-    ![Aan sink gekoppelde service selecteren](./media/load-azure-sql-data-warehouse/select-sink-linked-service.png)
 
 1. Bekijk op de pagina **Tabeltoewijzing** de inhoud en selecteer **Volgende**. Een intelligente tabeltoewijzing wordt weergegeven. De brontabellen worden toegewezen aan de doeltabellen op basis van de tabelnamen. Als er geen brontabel in de doellijst bestaat, maakt Azure Data Factory standaard een doeltabel met dezelfde naam. U ook een brontabel toewijzen aan een bestaande doeltabel.
 
@@ -124,40 +119,36 @@ In dit artikel ziet u hoe u het hulpprogramma Gegevensfabriekskopiegegevens gebr
 
    ![De pagina Tabeltoewijzing](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
-1. Bekijk op de pagina **Schematoewijzing** de inhoud en selecteer **Volgende**. De intelligente tabeltoewijzing is gebaseerd op de kolomnaam. Als u Data Factory automatisch de tabellen laat maken, kan conversie van het gegevenstype plaatsvinden wanneer er onverenigbaarheden zijn tussen de bron- en doelopslag. Als er een niet-ondersteunde conversie van gegevenstypen is tussen de bron en de doelkolom, ziet u een foutbericht naast de bijbehorende tabel.
+1. Bekijk op de pagina **Kolomtoewijzing** de inhoud en selecteer **Volgende**. De intelligente tabeltoewijzing is gebaseerd op de kolomnaam. Als u Data Factory automatisch de tabellen laat maken, kan conversie van het gegevenstype plaatsvinden wanneer er onverenigbaarheden zijn tussen de bron- en doelopslag. Als er een niet-ondersteunde conversie van gegevenstypen is tussen de bron en de doelkolom, ziet u een foutbericht naast de bijbehorende tabel.
 
-    ![De pagina Schematoewijzing](./media/load-azure-sql-data-warehouse/schema-mapping.png)
+    ![Kolomtoewijzingspagina](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 
 1. Voer **op** de pagina Instellingen de volgende stappen uit:
 
-    a. Klik in de sectie **Faseringsinstellingen** op **+ Nieuw** voor nieuwe opslag voor tijdelijke bestanden. De opslag wordt gebruikt voor het met elkaar zetten van de gegevens voordat deze worden geladen in SQL Data Warehouse met behulp van PolyBase. Nadat de kopie is voltooid, worden de tussentijdse gegevens in Azure Storage automatisch opgeschoond.
+    a. Klik in de sectie **Faseringsinstellingen** op **+ Nieuw** voor nieuwe opslag voor tijdelijke bestanden. De opslag wordt gebruikt voor het met elkaar zetten van de gegevens voordat deze worden geladen in SQL Data Warehouse met behulp van PolyBase. Nadat de kopie is voltooid, worden de tussentijdse gegevens in Azure Blob Storage automatisch opgeschoond.
 
-    ![Fasering configureren](./media/load-azure-sql-data-warehouse/configure-staging.png)
-
-    b. Selecteer op de pagina **Nieuwe gekoppelde service** uw opslagaccount en selecteer **Voltooien**.
-
-    ![Azure-opslag configureren](./media/load-azure-sql-data-warehouse/configure-blob-storage.png)
+    b. Selecteer op de pagina **Nieuwe gekoppelde service** uw opslagaccount en selecteer **Maken** om de gekoppelde service te implementeren.
 
     c. Schakel in de sectie **Geavanceerde instellingen** de optie **Standaardtype gebruiken** uit en selecteer **Volgende**.
 
     ![PolyBase configureren](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 
-1. Controleer **op** de pagina Overzicht de instellingen en selecteer **Volgende:**
+1. Controleer **op** de pagina Overzicht de instellingen en selecteer **Volgende**.
 
     ![Overzichtspagina](./media/load-azure-sql-data-warehouse/summary-page.png)
-1. Selecteer **op**de pagina Implementatie de optie **Monitor** om de pijplijn te controleren (taak):
+1. Selecteer **op**de pagina Implementatie de optie **Monitor** om de pijplijn (taak) te controleren.
 
-    ![De pagina Implementatie](./media/load-azure-sql-data-warehouse/deployment-page.png)
-1. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. De kolom **Acties** bevat koppelingen om activiteitenuit te voeren en de pijplijn opnieuw uit te voeren:
+1. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. Wanneer de pijplijnrun is voltooid, selecteert u de **koppeling CopyFromSQLToSQLDW** onder de kolom **PIPELINE NAME** om details van activiteitsuitvoering weer te geven en de pijplijn opnieuw uit te voeren.
 
-    ![Pijplijnuitvoeringen controleren](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)
-1. Als u activiteitsruns wilt weergeven die zijn gekoppeld aan de pijplijnrun, selecteert u de koppeling **Activiteitsuitvoering weergeven** in de kolom **Acties.** Als u wilt teruggaan naar de weergave **pijplijnuitvoeringen,** selecteert u de koppeling Pijplijn en bovenaan. Selecteer **Vernieuwen** om de lijst te vernieuwen.
+    [![Pijplijnuitvoeringen controleren](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
+1. Als u wilt teruggaan naar de weergave pijplijnuitvoeringen, selecteert u bovenaan de koppeling **Alle pijplijnuitvoeringen.** Selecteer **Vernieuwen** om de lijst te vernieuwen.
 
     ![Uitvoering van activiteiten controleren](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
-1. Als u de uitvoeringsgegevens voor elke kopieeractiviteit wilt controleren, selecteert u de koppeling **Details** onder **Acties** in de weergave activiteitsbewaking. U details controleren, zoals het volume van gegevens die van de bron naar de gootsteen zijn gekopieerd, gegevensdoorvoer, uitvoeringsstappen met bijbehorende duur en gebruikte configuraties:
+1. Als u de uitvoeringsgegevens voor elke kopieeractiviteit wilt controleren, selecteert u de koppeling **Details** (brilpictogram) onder **ACTIVITEITSNAAM** in de weergave activiteitsuitvoeringen. U details controleren, zoals het volume van gegevens die van de bron naar de gootsteen zijn gekopieerd, gegevensdoorvoer, uitvoeringsstappen met bijbehorende duur en gebruikte configuraties.
+    ![Details van het uitvoeren van activiteiten controleren](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png)
 
-    ![Details van het uitvoeren van activiteiten controleren](./media/load-azure-sql-data-warehouse/monitor-activity-run-details.png)
+    ![Details van het uitvoeren van activiteiten controleren](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

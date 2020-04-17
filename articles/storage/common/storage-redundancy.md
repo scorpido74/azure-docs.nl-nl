@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 1961797f37a760fe3a31dc8aa3830889965b69b5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 78f7c935e64276e7f4862dad966b99bff6bd246d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81379945"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481946"
 ---
 # <a name="azure-storage-redundancy"></a>Redundantie azure-opslag
 
@@ -160,7 +160,7 @@ In de volgende tabel ziet u hoe duurzaam en beschikbaar uw gegevens zijn in een 
 
 <sup>2</sup> Zie [Overzicht van opslagaccount](storage-account-overview.md)voor informatie over opslagaccounttypen.
 
-Alle gegevens voor alle soorten opslagaccounts worden gekopieerd volgens de redundantieoptie voor het opslagaccount. Objecten zoals blokblobs, toevoegenblobs, paginablobs, wachtrijen, tabellen en bestanden worden gekopieerd.
+Alle gegevens voor alle soorten opslagaccounts en [alle lagen (inclusief archief)](../blobs/storage-blob-storage-tiers.md) worden gekopieerd volgens de redundantieoptie voor het opslagaccount. Objecten zoals blokblobs, toevoegenblobs, paginablobs, wachtrijen, tabellen en bestanden worden gekopieerd.
 
 Zie [Azure Storage-prijzen](https://azure.microsoft.com/pricing/details/storage/)voor prijsinformatie voor elke redundantieoptie.
 

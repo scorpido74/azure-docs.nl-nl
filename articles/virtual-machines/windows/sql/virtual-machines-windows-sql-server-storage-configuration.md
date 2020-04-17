@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 9d8fce0772f13c6e009b2441ecd85779a7622c5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93f01b3c23e08e7f432841d8a77cbe3602bff1c5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243196"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482142"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Opslagconfiguratie voor SQL Server-VM's
 
@@ -56,7 +56,7 @@ Bovendien hebt u de mogelijkheid om de caching voor de schijven in te stellen. A
 
 Schijfcache voor Premium SSD kan *ReadOnly,* *ReadWrite* of *Geen*zijn. 
 
-- *ReadOnly* caching is zeer gunstig voor SQL Server-gegevensbestanden die zijn opgeslagen op Premium Storage. *ReadAlleen* caching brengt lage leeslatentie, hoog lees-IOPS en doorvoer, omdat reads worden uitgevoerd vanuit de cache, die besturingssysteem binnen het VM-geheugen en lokale SSD. Deze reads zijn veel sneller dan leest van dataschijf, die afkomstig is van de Azure blob-opslag. Premium opslag telt niet de leest geserveerd vanuit de cache naar de schijf IOPS en doorvoer. Daarom is uw van toepassing in staat om een hogere totale IOPS mier doorvoer te bereiken. 
+- *ReadOnly* caching is zeer gunstig voor SQL Server-gegevensbestanden die zijn opgeslagen op Premium Storage. *ReadAlleen* caching brengt lage leeslatentie, hoog lees-IOPS en doorvoer, omdat reads worden uitgevoerd vanuit de cache, die zich binnen het VM-geheugen en de lokale SSD bevindt. Deze reads zijn veel sneller dan leest van dataschijf, die afkomstig is van de Azure blob-opslag. Premium opslag telt niet de leest geserveerd vanuit de cache naar de schijf IOPS en doorvoer. Daarom is uw toepasselijke in staat om een hogere totale IOPS en doorvoer te bereiken. 
 - *Geen* cacheconfiguratie moet worden gebruikt voor de schijven die sql serverlogbestand hosten, omdat het logboekbestand achtereenvolgens wordt geschreven en niet profiteert van *ReadOnly-caching.* 
 - *ReadWrite-caching* mag niet worden gebruikt om SQL Server-bestanden te hosten, omdat SQL Server de gegevensconsistentie met de *ReadWrite-cache* niet ondersteunt. Schrijft afvalcapaciteit van de *ReadOnly* blob cache en latencies iets toenemen als schrijft gaan door *ReadOnly* blob cache lagen. 
 

@@ -4,18 +4,18 @@ description: Meer informatie over versleuteling in de rest van uw Azure-containe
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: fe0736f83db2ba5b872d50bcf1262ca423de9f09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d5561998cf0b19698c8059a861a4014a171a7e7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498944"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461749"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>Versleuteling met door de klant beheerde sleutels
 
 Wanneer u afbeeldingen en andere artefacten opslaat in een Azure-containerregister, versleutelt Azure de registerinhoud in rust automatisch met [servicebeheersleutels.](../security/fundamentals/encryption-atrest.md#data-encryption-models) U standaardversleuteling aanvullen met een extra versleutelingslaag met een sleutel die u maakt en beheert in Azure Key Vault. In dit artikel vindt u de stappen met de Azure CLI en de Azure-portal.
 
-Server-side encryptie met door de klant beheerde sleutels wordt ondersteund door integratie met [Azure Key Vault.](../key-vault/key-vault-overview.md) U uw eigen versleutelingssleutels maken en opslaan in een sleutelkluis, of u de API's van Azure Key Vault gebruiken om versleutelingssleutels te genereren. Met Azure Key Vault u ook het gebruik van de sleutel controleren.
+Server-side encryptie met door de klant beheerde sleutels wordt ondersteund door integratie met [Azure Key Vault.](../key-vault/general/overview.md) U uw eigen versleutelingssleutels maken en opslaan in een sleutelkluis, of u de API's van Azure Key Vault gebruiken om versleutelingssleutels te genereren. Met Azure Key Vault u ook het gebruik van de sleutel controleren.
 
 Deze functie is beschikbaar in de servicelaag Van het Premium-containerregister. **Premium** Zie [SKU's](container-registry-skus.md)voor Azure Container Registry voor informatie over lagen en limieten voor registerservice.
 
@@ -176,7 +176,7 @@ Let op de **resourcenaam** van de beheerde identiteit. Je hebt deze naam in late
 
 ### <a name="create-a-key-vault"></a>Een sleutelkluis maken
 
-Zie Snelstart: Een geheim instellen en ophalen uit Azure Key Vault voor stappen om een sleutelkluis te maken [met behulp van de Azure-portal.](../key-vault/quick-create-portal.md)
+Zie Snelstart: Een geheim instellen en ophalen uit Azure Key Vault voor stappen om een sleutelkluis te maken [met behulp van de Azure-portal.](../key-vault/secrets/quick-create-portal.md)
 
 Wanneer u een sleutelkluis maakt voor een door de klant beheerde sleutel, moet u op het tabblad **Basisbeginselen** de volgende beveiligingsinstellingen inschakelen: **Bescherming voor zachte delete** en **purge.** Met deze instellingen u gegevensverlies voorkomen als gevolg van het per ongeluk verwijderen van sleutels of sleutelkluizen.
 
@@ -392,7 +392,7 @@ Het intrekken van de sleutel blokkeert effectief de toegang tot alle registergeg
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [versleuteling in rust in Azure](../security/fundamentals/encryption-atrest.md).
-* Meer informatie over toegangsbeleid en hoe u [de toegang tot een sleutelkluis beveiligen.](../key-vault/key-vault-secure-your-key-vault.md)
+* Meer informatie over toegangsbeleid en hoe u [de toegang tot een sleutelkluis beveiligen.](../key-vault/general/secure-your-key-vault.md)
 * Ga naar de [ACR GitHub-site](https://aka.ms/acr/issues)om feedback te geven over door klanten beheerde sleutels voor Azure Container Registry.
 
 

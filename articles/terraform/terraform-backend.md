@@ -3,12 +3,12 @@ title: Zelfstudie - Terraform-status opslaan in Azure Storage
 description: Een inleiding tot het opslaan van de terraformstatus in Azure Storage.
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 1cc475e5070b21a7ea96585f2183c07d258acdc5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c94c66969c517bd0e51117ab7c6ed6a889149518
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75708421"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459012"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>Zelfstudie: Terraform-status opslaan in Azure Storage
 
@@ -67,7 +67,7 @@ Maak een omgevingsvariabele met de naam `ARM_ACCESS_KEY` van de waarde van de to
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-Als u de toegangssleutel voor Azure Storage-accounts verder wilt beschermen, slaat u deze op in Azure Key Vault. De omgevingsvariabele kan vervolgens worden ingesteld met behulp van een opdracht die vergelijkbaar is met de volgende opdracht. Zie de [Azure Key Vault-documentatie](../key-vault/quick-create-cli.md)voor meer informatie over Azure Key Vault.
+Als u de toegangssleutel voor Azure Storage-accounts verder wilt beschermen, slaat u deze op in Azure Key Vault. De omgevingsvariabele kan vervolgens worden ingesteld met behulp van een opdracht die vergelijkbaar is met de volgende opdracht. Zie de [Azure Key Vault-documentatie](../key-vault/secrets/quick-create-cli.md)voor meer informatie over Azure Key Vault.
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)

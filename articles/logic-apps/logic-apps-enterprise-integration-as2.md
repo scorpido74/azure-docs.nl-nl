@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e7c34e42d0ab68a5dab9718075f02a85322ce6c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650556"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458825"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange AS2-berichten voor B2B-bedrijfsintegratie in Azure Logic Apps met Enterprise Integration Pack
 
@@ -61,7 +61,7 @@ In dit artikel ziet u hoe u de as2-coderings- en decoderingsacties toevoegt aan 
 
 * Voordat u de AS2-connector gebruiken, [agreement](../logic-apps/logic-apps-enterprise-integration-agreements.md) moet u een AS2-overeenkomst tussen uw handelspartners maken en die overeenkomst opslaan in uw integratieaccount.
 
-* Als u [Azure Key Vault](../key-vault/key-vault-overview.md) gebruikt voor certificaatbeheer, controleert u of uw kluissleutels de **versleutelings-** en **decryptebewerkingen** toestaan. Anders mislukken de coderings- en decoderingsacties.
+* Als u [Azure Key Vault](../key-vault/general/overview.md) gebruikt voor certificaatbeheer, controleert u of uw kluissleutels de **versleutelings-** en **decryptebewerkingen** toestaan. Anders mislukken de coderings- en decoderingsacties.
 
   Ga in de Azure-portal naar de sleutel in uw sleutelkluis, bekijk de **toegestane bewerkingen**van uw sleutel en controleer of de **bewerkingen Versleutelen** en **decoderen** zijn geselecteerd, bijvoorbeeld:
 

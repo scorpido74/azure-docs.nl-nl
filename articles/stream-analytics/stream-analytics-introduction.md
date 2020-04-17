@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: f15a4605d28beaf97e877f337051a2ec13148a41
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 673c6e2ed0aedcc186baf8c7e1884dd537f9567d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80235781"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459845"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Wat is Azure Stream Analytics?
 
@@ -49,9 +49,9 @@ Azure Stream Analytics is gebruiksvriendelijk, flexibel, betrouwbaar en schaalba
 
 ## <a name="ease-of-getting-started"></a>Eenvoudig aan de slag
 
-Azure Stream Analytics is eenvoudig te starten. Het duurt slechts een paar klikken om verbinding te maken met meerdere bronnen en sinks, het creëren van een end-to-end pijplijn. Stream Analytics kan verbinding maken met [Azure Event Hubs](/azure/event-hubs/) en Azure [IoT Hub](/azure/iot-hub/) voor het streamen van gegevens en Azure [Blob-opslag](/azure/storage/storage-introduction) om historische gegevens in te nemen. Taakinvoer kan ook statische of langzaam veranderende referentiegegevens uit Azure Blob-opslag of [SQL-database](stream-analytics-use-reference-data.md#azure-sql-database) bevatten waaraan u deelnemen aan streaminggegevens om opzoekbewerkingen uit te voeren.
+Azure Stream Analytics is eenvoudig te starten. Het duurt slechts een paar klikken om verbinding te maken met meerdere bronnen en sinks, het creëren van een end-to-end pijplijn. Stream Analytics kan verbinding maken met [Azure Event Hubs](/azure/event-hubs/) en Azure [IoT Hub](/azure/iot-hub/) voor het streamen van gegevens en Azure [Blob-opslag](/azure/storage/common/storage-introduction) om historische gegevens in te nemen. Taakinvoer kan ook statische of langzaam veranderende referentiegegevens uit Azure Blob-opslag of [SQL-database](stream-analytics-use-reference-data.md#azure-sql-database) bevatten waaraan u deelnemen aan streaminggegevens om opzoekbewerkingen uit te voeren.
 
-Stream Analytics kan taakuitvoer doorsturen naar veel opslagsystemen, zoals [Azure Blob-opslag,](/azure/storage/storage-introduction) [Azure SQL Database,](/azure/sql-database/) [Azure Data Lake Store](/azure/data-lake-store/)en [Azure CosmosDB.](/azure/cosmos-db/introduction) U batchanalyses uitvoeren op opgeslagen uitvoer met Azure HDInsight of u de uitvoer naar een andere service verzenden, zoals Gebeurtenishubs voor verbruik of [Power BI](https://docs.microsoft.com/power-bi/) voor realtime visualisatie.
+Stream Analytics kan taakuitvoer doorsturen naar veel opslagsystemen, zoals [Azure Blob-opslag,](/azure/storage/common/storage-introduction) [Azure SQL Database,](/azure/sql-database/) [Azure Data Lake Store](/azure/data-lake-store/)en [Azure CosmosDB.](/azure/cosmos-db/introduction) U batchanalyses uitvoeren op opgeslagen uitvoer met Azure HDInsight of u de uitvoer naar een andere service verzenden, zoals Gebeurtenishubs voor verbruik of [Power BI](https://docs.microsoft.com/power-bi/) voor realtime visualisatie.
 
 Zie [Uitvoer van Azure Stream Analytics begrijpen](stream-analytics-define-outputs.md)voor de volledige lijst met Stream Analytics-uitvoer.
 

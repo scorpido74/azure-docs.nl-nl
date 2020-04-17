@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 03/20/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 795d21e05ade652b52c06d597ca4c5fef85e7245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ddb4b2cd465b5e9542d777d33b9bd8cb952becd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80152809"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531334"
 ---
-# <a name="deploy-the-sample-labeling-tool"></a>Het voorbeeldlabelingsgereedschap implementeren
+# <a name="deploy-the-sample-labeling-tool"></a>Het voorbeeldhulpprogramma voor labelen implementeren
 
 Het voorbeeldlabelingshulpprogramma Form Recognizer is een toepassing die een eenvoudige gebruikersinterface (UI) biedt, waarmee u formulieren (documenten) handmatig labelen met het oog op begeleid leren. In dit artikel geven we links en instructies die je leren hoe je:
 
@@ -34,14 +34,14 @@ De snelste manier om gegevens te labelen is door het voorbeeldlabelingsprogramma
 
 Voordat we aan de slag gaan, is het belangrijk op te merken dat er twee manieren zijn om het voorbeeldlabelingshulpprogramma te implementeren in een Azure Container Instance (ACI). Beide opties worden gebruikt om het voorbeeldlabelingsprogramma met ACI uit te voeren: 
 
-* [De Azure-portal gebruiken](#azure-portal)
+* [Azure Portal gebruiken](#azure-portal)
 * [Azure CLI gebruiken](#azure-cli)
 
 ### <a name="azure-portal"></a>Azure Portal
 
 Volg deze stappen om een nieuwe bron te maken met de Azure-portal: 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/signin/index/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/signin/index/).
 2. Selecteer **Een resource maken**. 
 3. Selecteer vervolgens **Web-app**. 
 
@@ -76,6 +76,7 @@ Volg deze stappen om een nieuwe bron te maken met de Azure-portal:
    * Gebruikersnaam (optioneel) - Een gebruikersnaam maken. 
    * Wachtwoord (optioneel) - Maak een veilig wachtwoord dat u zult onthouden.
    * Afbeelding en tag - Stel dit in op`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+   * Continue implementatie : stel dit in op **Aan** als u automatische updates wilt ontvangen wanneer het ontwikkelteam wijzigingen aanbrengt in het voorbeeldlabelingsprogramma.
    * Opstartopdracht - Stel dit in op`./run.sh eula=accept`
 
    > [!div class="mx-imgBorder"]
@@ -86,7 +87,7 @@ Volg deze stappen om een nieuwe bron te maken met de Azure-portal:
 > [!NOTE]
 > Bij het maken van uw web-app u ook autorisatie/verificatie configureren. Dit is niet nodig om aan de slag te gaan. 
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Als alternatief voor het gebruik van de Azure-portal u een bron maken met behulp van de Azure CLI. Voordat u verdergaat, moet u de [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)installeren. U deze stap overslaan als u al met de Azure CLI werkt. 
 

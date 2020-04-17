@@ -1,11 +1,11 @@
 ---
-title: Een lijst met gebruikers (voorbeeld) downloaden in de Azure Active Directory-portal | Microsoft Documenten
+title: Een lijst met gebruikers downloaden in de Azure Active Directory-portal | Microsoft Documenten
 description: Download gebruikersrecords in bulk in het Azure-beheercentrum in Azure Active Directory.
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 02/06/2020
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,20 +13,20 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b35163387ed4ce71f7a2019835a1d9fdbff3051
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063829"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532634"
 ---
-# <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Een lijst met gebruikers (preview) downloaden in Azure Active Directory-portal
+# <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Een lijst met gebruikers downloaden in Azure Active Directory-portal
 
 Azure Active Directory (Azure AD) ondersteunt bewerkingen voor het importeren van bulkgebruikers (maken).
 
 ## <a name="required-permissions"></a>Vereiste machtigingen
 
-Als u de lijst met gebruikers wilt downloaden uit het Azure AD-beheercentrum, moet u zijn aangemeld met een gebruiker die is toegewezen aan een of meer beheerdersrollen op organisatieniveau in Azure AD. Gastgenodigden en toepassingsontwikkelaars worden niet beschouwd als beheerdersrollen.
+Als u de lijst met gebruikers wilt downloaden uit het Azure AD-beheercentrum, moet u zijn aangemeld met een gebruiker die is toegewezen aan een of meer beheerdersrollen op organisatieniveau in Azure AD (gebruikersbeheerder is de vereiste minimale rol). Gastgenodigden en toepassingsontwikkelaars worden niet beschouwd als beheerdersrollen.
 
 ## <a name="to-download-a-list-of-users"></a>Een lijst met gebruikers downloaden
 
@@ -70,9 +70,9 @@ Als u de lijst met gebruikers wilt downloaden uit het Azure AD-beheercentrum, mo
 
 ## <a name="check-status"></a>Status controleren
 
-U de status van uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk operation results (preview).**
+U de status van uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk-bewerking.**
 
-   ![Uploadstatus controleren op de pagina Resultaten van bulkbewerkingen](./media/users-bulk-download/bulk-center.png)
+[![](media/users-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>Limieten voor bulkdownloadservice
 

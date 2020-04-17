@@ -11,17 +11,17 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ec47850ce4cccb6a891c7e5aef2644550bc3e39a
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 4a6694a072231f98383c13e6a42aedf68f62ac93
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990953"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533782"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een JavaScript-toepassing met één pagina (SPA)
 
 Deze handleiding laat zien hoe een JavaScript single-page applicatie (SPA) kan:
-- Persoonlijke accounts aanmelden, werk- en schoolaccounts 
+- Persoonlijke accounts aanmelden, werk- en schoolaccounts
 - Een toegangstoken verkrijgen
 - Bel de Microsoft Graph API of andere API's waarvoor toegangstokens van het Eindpunt van het *Microsoft-identiteitsplatform* nodig zijn
 
@@ -68,7 +68,7 @@ In deze handleiding wordt de volgende bibliotheek gebruikt:
 
 ## <a name="create-your-project"></a>Uw project maken
 
-Zorg ervoor dat [Node.js](https://nodejs.org/en/download/) is geïnstalleerd en maak vervolgens een map om uw toepassing te hosten. Daar implementeren we een eenvoudige [Express](https://expressjs.com/) webserver `index.html` om uw bestand te serveren. 
+Zorg ervoor dat [Node.js](https://nodejs.org/en/download/) is geïnstalleerd en maak vervolgens een map om uw toepassing te hosten. Daar implementeren we een eenvoudige [Express](https://expressjs.com/) webserver `index.html` om uw bestand te serveren.
 
 1. Zoek eerst met de geïntegreerde terminal van Visual Studio Code uw projectmap en installeer Vervolgens Express met NPM.
 
@@ -170,7 +170,7 @@ U hebt nu een eenvoudige server om uw SPA te bedienen. De beoogde mapstructuur a
 
        <!-- importing bootstrap.js and supporting js libraries -->
        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>  
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
        <!-- importing app scripts (load order is important) -->
@@ -188,7 +188,7 @@ U hebt nu een eenvoudige server om uw SPA te bedienen. De beoogde mapstructuur a
 
    > [!TIP]
    > U de versie van MSAL.js in het vorige script vervangen door de nieuwste versie onder [MSAL.js releases](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
-   
+
 2. Maak nu een .js-bestand met de naam `ui.js`, dat DOM-elementen opent en bijwerkt en voegt de volgende code toe:
 
    ```JavaScript
@@ -304,7 +304,7 @@ Maak een nieuw .js-bestand met de naam `authConfig.js`, dat uw configuratieparam
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
     }
-  };  
+  };
 
   // Add here scopes for id token to be used at MS Identity Platform endpoints.
   const loginRequest = {
@@ -350,7 +350,7 @@ Maak een nieuw .js-bestand met de naam `authPopup.js`, dat uw verificatie- en to
    function signOut() {
      myMSALObj.logout();
    }
-   
+
    function callMSGraph(theUrl, accessToken, callback) {
        var xmlHttp = new XMLHttpRequest();
        xmlHttp.onreadystatechange = function () {
@@ -409,7 +409,7 @@ Maak een nieuw .js-bestand met de naam `authPopup.js`, dat uw verificatie- en to
 
 Nadat een gebruiker voor de eerste keer de `signIn` knop `loginPopup` **Aanmelden** heeft geselecteerd, roept de methode op om zich bij de gebruiker aan te melden. Met deze methode wordt een pop-upvenster geopend met het eindpunt van het *Microsoft-identiteitsplatform* om de referenties van de gebruiker te vragen en te valideren. Na een succesvolle aanmelding wordt de gebruiker omgeleid naar de oorspronkelijke *index.html-pagina.* Een token wordt ontvangen, verwerkt door `msal.js`, en de informatie in het token wordt in de cache opgeslagen. Dit token staat bekend als het *ID-token* en bevat basisinformatie over de gebruiker, zoals de gebruikersnaam. Als u van plan bent om gegevens die door dit token worden verstrekt voor alle doeleinden te gebruiken, moet u ervoor zorgen dat dit token wordt gevalideerd door uw backendserver om te garanderen dat het token is uitgegeven aan een geldige gebruiker voor uw toepassing.
 
-De SPA die wordt `acquireTokenSilent` gegenereerd `acquireTokenPopup` door deze handleidingaanroepen en/of om een *toegangstoken* te verkrijgen dat wordt gebruikt om de Microsoft Graph-API op te vragen voor gebruikersprofielgegevens. Als u een voorbeeld nodig hebt dat het ID-token valideert, bekijkt u [deze](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2-voorbeeld") voorbeeldtoepassing in GitHub. Het voorbeeld maakt gebruik van een ASP.NET Web API voor tokenvalidatie.
+De SPA die wordt `acquireTokenSilent` gegenereerd `acquireTokenPopup` door deze handleidingaanroepen en/of om een *toegangstoken* te verkrijgen dat wordt gebruikt om de Microsoft Graph-API op te vragen voor gebruikersprofielgegevens. Als u een voorbeeld nodig hebt dat het ID-token valideert, bekijkt u [deze](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2-voorbeeld") voorbeeldtoepassing in GitHub. Het voorbeeld maakt gebruik van een ASP.NET web-API voor tokenvalidatie.
 
 #### <a name="get-a-user-token-interactively"></a>Een gebruikerstoken interactief ophalen
 
@@ -430,7 +430,7 @@ De `acquireTokenSilent` methode verwerkt tokenacquisitie en -vernieuwing zonder 
 1. Toepassingen kunnen ook een visuele indicatie maken aan de gebruiker dat een interactieve aanmelding vereist is, zodat de `acquireTokenSilent` gebruiker het juiste moment kan selecteren om in te loggen of de toepassing op een later tijdstip opnieuw kan proberen. Dit wordt vaak gebruikt wanneer de gebruiker andere functionaliteit van de toepassing kan gebruiken zonder te worden verstoord. Er kan bijvoorbeeld niet-geverifieerde inhoud beschikbaar zijn in de toepassing. In deze situatie kan de gebruiker beslissen wanneer hij zich wil aanmelden om toegang te krijgen tot de beveiligde bron of om de verouderde informatie te vernieuwen.
 
 > [!NOTE]
-> Deze quickstart `loginPopup` maakt `acquireTokenPopup` standaard gebruik van de methoden en de methoden. Als u Internet Explorer als browser gebruikt, wordt `loginRedirect` `acquireTokenRedirect` het aanbevolen om te gebruiken en methoden te gebruiken, vanwege een [bekend probleem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) met betrekking tot de manier waarop Internet Explorer met pop-upvensters omgaat. Als u wilt zien hoe u hetzelfde resultaat te bereiken met behulp van, `Redirect methods` [zie](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js). 
+> Deze quickstart `loginPopup` maakt `acquireTokenPopup` standaard gebruik van de methoden en de methoden. Als u Internet Explorer als browser gebruikt, wordt `loginRedirect` `acquireTokenRedirect` het aanbevolen om te gebruiken en methoden te gebruiken, vanwege een [bekend probleem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) met betrekking tot de manier waarop Internet Explorer met pop-upvensters omgaat. Als u wilt zien hoe u hetzelfde resultaat te bereiken met behulp van, `Redirect methods` [zie](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js).
 <!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>Bel de Microsoft Graph API met behulp van het token dat u zojuist hebt aangeschaft
@@ -462,7 +462,7 @@ De `acquireTokenSilent` methode verwerkt tokenacquisitie en -vernieuwing zonder 
      };
 
      console.log('request made to Graph API at: ' + new Date().toString());
-  
+
      fetch(endpoint, options)
        .then(response => response.json())
        .then(response => callback(response, endpoint))

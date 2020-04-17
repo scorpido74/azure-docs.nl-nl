@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 889897cfd4dc8714ae3aea556f0924c9dbcd7825
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9e3cfa689f2e528f4d20e796017ae9d91c29fe2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299411"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461715"
 ---
 # <a name="design-secure-applications-on-azure"></a>Beveiligde toepassingen ontwerpen op Azure
 In dit artikel presenteren we beveiligingsactiviteiten en besturingselementen om rekening mee te houden wanneer u toepassingen voor de cloud ontwerpt. Trainingsbronnen en beveiligingsvragen en concepten waarmee u rekening moet houden tijdens de vereisten en ontwerpfasen van de Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) komen aan bod. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-services die u gebruiken om een veiligere toepassing te ontwerpen.
@@ -153,7 +153,7 @@ Het modelleren van het ontwerp van de toepassing en het opsommen van [STRIDE-bed
 
 | Bedreiging | Beveiligingseigenschap | Potentiële Azure-platformbeperking |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Adresvervalsing (spoofing)               | Authentication        | [HTTPS-verbindingen vereisen](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
+| Adresvervalsing (spoofing)               | Verificatie        | [HTTPS-verbindingen vereisen](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Knoeien              | Gegevensintegriteit             | SSL/TLS-certificaten valideren. Toepassingen die SSL/TLS gebruiken, moeten de X.509-certificaten van de entiteiten waarmee ze verbinding maken volledig verifiëren. Gebruik Azure Key Vault-certificaten om [uw x509-certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)te beheren. |
 | Verwerping            | Niet-verwerping       | [Azure-bewaking en -diagnose inschakelen](https://docs.microsoft.com/azure/architecture/best-practices/monitoring).|
 | Openbaarmaking van informatie | Vertrouwelijkheid       | Versleutel gevoelige gegevens [in rust](../fundamentals/encryption-atrest.md) en [onderweg.](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit) |
@@ -242,7 +242,7 @@ De beste manier om te verdedigen tegen dit soort aanvallen is om de gebruiker te
 
 Het verliezen van sleutels en referenties is een veel voorkomend probleem. Het enige wat erger is dan het verliezen van uw sleutels en referenties is het hebben van een onbevoegde partij toegang krijgen tot hen. Aanvallers kunnen profiteren van geautomatiseerde en handmatige technieken om sleutels en geheimen te vinden die zijn opgeslagen in coderepositories zoals GitHub. Plaats geen sleutels en geheimen in deze openbare code repositories of op een andere server.
 
-Plaats uw sleutels, certificaten, geheimen en verbindingstekenreeksen altijd in een belangrijke beheeroplossing. U een gecentraliseerde oplossing gebruiken waarin sleutels en geheimen worden opgeslagen in hardwarebeveiligingsmodules (HSM's). Azure biedt u een HSM in de cloud met [Azure Key Vault.](../../key-vault/key-vault-overview.md)
+Plaats uw sleutels, certificaten, geheimen en verbindingstekenreeksen altijd in een belangrijke beheeroplossing. U een gecentraliseerde oplossing gebruiken waarin sleutels en geheimen worden opgeslagen in hardwarebeveiligingsmodules (HSM's). Azure biedt u een HSM in de cloud met [Azure Key Vault.](../../key-vault/general/overview.md)
 
 Key Vault is een *geheime winkel:* het is een gecentraliseerde cloudservice voor het opslaan van toepassingsgeheimen. Key Vault houdt uw vertrouwelijke gegevens veilig door toepassingsgeheimen op één, centrale locatie te bewaren en veilige toegang, machtigingencontrole en toegangslogboekregistratie te bieden.
 
@@ -273,11 +273,11 @@ Als uw gegevens worden opgeslagen in een database of als ze heen en weer bewegen
 
 Sommige dingen moeten nooit hard-gecodeerd in uw software. Enkele voorbeelden zijn hostnamen of IP-adressen, URL's, e-mailadressen, gebruikersnamen, wachtwoorden, opslagaccountsleutels en andere cryptografische sleutels. Overweeg vereisten te implementeren rond wat wel of niet hard gecodeerd kan worden in uw code, ook in de commentaarsecties van uw code.
 
-Wanneer u opmerkingen in uw code plaatst, moet u ervoor zorgen dat u geen gevoelige informatie opslaat. Dit omvat uw e-mailadres, wachtwoorden, verbindingstekenreeksen, informatie over uw toepassing die alleen bekend zou zijn bij iemand in uw organisatie, en al het andere dat een aanvaller een voordeel kan geven bij het aanvallen van uw toepassing of organisatie .
+Wanneer u opmerkingen in uw code plaatst, moet u ervoor zorgen dat u geen gevoelige informatie opslaat. Dit omvat uw e-mailadres, wachtwoorden, verbindingstekenreeksen, informatie over uw toepassing die alleen bekend zou zijn bij iemand in uw organisatie, en al het andere dat een aanvaller een voordeel kan geven bij het aanvallen van uw toepassing of organisatie.
 
 In principe, ga ervan uit dat alles in uw ontwikkelingsproject zal worden openbare kennis wanneer het wordt ingezet. Vermijd het opnemen van gevoelige gegevens van welke aard dan ook in het project.
 
-Eerder bespraken we [Azure Key Vault.](../../key-vault/key-vault-overview.md) U Key Vault gebruiken om geheimen zoals sleutels en wachtwoorden op te slaan in plaats van ze hard te coderen. Wanneer u Key Vault gebruikt in combinatie met beheerde identiteiten voor Azure-bronnen, heeft uw Azure-webapp eenvoudig en veilig toegang tot geheime configuratiewaarden zonder geheimen op te slaan in uw bronbeheer of -configuratie. Zie [Geheimen beheren in uw server-apps met Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)voor meer informatie.
+Eerder bespraken we [Azure Key Vault.](../../key-vault/general/overview.md) U Key Vault gebruiken om geheimen zoals sleutels en wachtwoorden op te slaan in plaats van ze hard te coderen. Wanneer u Key Vault gebruikt in combinatie met beheerde identiteiten voor Azure-bronnen, heeft uw Azure-webapp eenvoudig en veilig toegang tot geheime configuratiewaarden zonder geheimen op te slaan in uw bronbeheer of -configuratie. Zie [Geheimen beheren in uw server-apps met Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)voor meer informatie.
 
 ### <a name="implement-fail-safe-measures"></a>Implementeer fail-safe maatregelen
 

@@ -2,13 +2,13 @@
 title: Ondersteuning voor VMware-beoordeling in Azure Migrate
 description: Meer informatie over ondersteuning voor VMware VM-beoordeling met Azure Migrate Server Assessment.
 ms.topic: conceptual
-ms.date: 03/29/2020
-ms.openlocfilehash: e0172656d06075f89a7c3a06e8d4e9be94e6f5d0
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.date: 04/15/2020
+ms.openlocfilehash: 8a09562f14b95256ee9c2b5ba7d9c308cde66397
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389304"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532201"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteuningsmatrix voor VMware-beoordeling 
 
@@ -39,9 +39,9 @@ Server Assessment kan niet alleen machines ontdekken, maar ook apps, rollen en f
 **vCenter-referenties** | Voor app-detectie is een vCenter Server-account nodig met alleen-lezen toegang en bevoegdheden die zijn ingeschakeld voor virtuele machines > Gastbewerkingen.
 **VM-referenties** | App-detectie ondersteunt momenteel het gebruik van één referentie voor alle Windows-servers en één referentie voor alle Linux-servers.<br/><br/> U maakt een gastgebruikersaccount voor Windows VM's en een regelmatig/normaal gebruikersaccount (niet-sudo-toegang) voor alle Linux-VM's.
 **VMware-hulpprogramma's** | VMware-hulpprogramma's moeten worden geïnstalleerd en worden uitgevoerd op VM's die u wilt ontdekken. <br/> De versie van de VMware-tools moet later zijn dan 10.2.0.
-**Powershell** | VM's moeten PowerShell-versie 2.0 of hoger hebben geïnstalleerd.
+**PowerShell** | VM's moeten PowerShell-versie 2.0 of hoger hebben geïnstalleerd.
 **Poorttoegang** | Op ESXi-hosts waarop VM's worden uitgevoerd die u wilt ontdekken, moet het Azure Migrate-toestel verbinding kunnen maken met TCP-poort 443.
-**Grenzen** | Voor app-detectie u maximaal 10000 VM's ontdekken op elk Azure Migrate-toestel.
+**Limieten** | Voor app-detectie u maximaal 10000 VM's ontdekken op elk Azure Migrate-toestel.
 
 
 
@@ -61,7 +61,9 @@ Server Assessment kan niet alleen machines ontdekken, maar ook apps, rollen en f
 Azure Migrate gebruikt het [Azure Migrate-toestel](migrate-appliance.md) voor detectie en beoordeling. U het toestel implementeren als VMWare VM Met behulp van een OVA-sjabloon, geïmporteerd in vCenter Server of met behulp van een [PowerShell-script.](deploy-appliance-script.md)
 
 - Meer informatie over [toestelvereisten](migrate-appliance.md#appliance---vmware) voor VMware.
-- Meer informatie over [URL's](migrate-appliance.md#url-access) waartoe het toestel toegang nodig heeft.
+- Meer informatie over URL's die het toestel moet openen in [openbare](migrate-appliance.md#public-cloud-urls) en [overheidsclouds.](migrate-appliance.md#government-cloud-urls)
+- In Azure Government moet u het toestel implementeren met behulp van het script.
+
 
 ## <a name="port-access"></a>Poorttoegang
 
@@ -86,8 +88,9 @@ ESXi-hosts (analyse van app-detectie/agentless afhankelijkheid) | Als u [app-det
 **Vereiste agenten** | Geen agent nodig op machines die u wilt analyseren.
 **VMware-hulpprogramma's** | VMware Tools (later dan 10.2) moeten worden geïnstalleerd en worden uitgevoerd op elke vm die u wilt analyseren.
 **vCenter Server-referenties** | Afhankelijkheidsvisualisatie heeft een vCenter Server-account nodig met alleen-lezen toegang en bevoegdheden die zijn ingeschakeld voor virtuele machines > Gastbewerkingen. 
-**Powershell** | VM's moeten PowerShell-versie 2.0 of hoger hebben geïnstalleerd.
+**PowerShell** | VM's moeten PowerShell-versie 2.0 of hoger hebben geïnstalleerd.
 **Poorttoegang** | Op ESXi-hosts waarop VM's worden uitgevoerd die u wilt analyseren, moet het Azure Migrate-toestel verbinding kunnen maken met TCP-poort 443.
+
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Vereisten voor afhankelijkheidsanalyse op basis van agent
 
@@ -97,12 +100,13 @@ ESXi-hosts (analyse van app-detectie/agentless afhankelijkheid) | Als u [app-det
 --- | --- 
 **Vóór implementatie** | U moet een Azure Migrate-project hebben, waarbij het azure migrate: serverassessment-hulpprogramma aan het project is toegevoegd.<br/><br/>  U implementeert afhankelijkheidsvisualisatie na het instellen van een Azure Migrate-toestel om uw on-premises machines te ontdekken<br/><br/> [Meer informatie over het](create-manage-projects.md) maken van een project voor de eerste keer.<br/> [Meer informatie over het](how-to-assess.md) toevoegen van een beoordelingstool aan een bestaand project.<br/> Meer informatie over het instellen van het Azure Migrate-toestel voor beoordeling van [Hyper-V,](how-to-set-up-appliance-hyper-v.md) [VMware](how-to-set-up-appliance-vmware.md)of fysieke servers.
 **Azure Government** | Afhankelijkheidsvisualisatie is niet beschikbaar in Azure Government.
-**Logboekanalyse** | Azure Migrate gebruikt de [Service Map-oplossing](../operations-management-suite/operations-management-suite-service-map.md) in [Azure Monitor-logboeken](../log-analytics/log-analytics-overview.md) voor afhankelijkheidsvisualisatie.<br/><br/> U koppelt een nieuwe of bestaande Log Analytics-werkruimte aan een Azure Migrate-project. De werkruimte voor een Azure Migrate-project kan niet worden gewijzigd nadat deze is toegevoegd. <br/><br/> De werkruimte moet zich in hetzelfde abonnement bevinden als het Azure Migrate-project.<br/><br/> De werkruimte moet zich in de regio's Oost-VS, Zuidoost-Azië of West-Europa bevinden. Werkruimten in andere regio's kunnen niet aan een project worden gekoppeld.<br/><br/> De werkruimte moet zich in een gebied bevinden waarin [servicekaart wordt ondersteund.](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)<br/><br/> In Log Analytics wordt de werkruimte die is gekoppeld aan Azure Migrate getagd met de toets Migratieproject en de projectnaam.
+**Log Analytics** | Azure Migrate gebruikt de [Service Map-oplossing](../operations-management-suite/operations-management-suite-service-map.md) in [Azure Monitor-logboeken](../log-analytics/log-analytics-overview.md) voor afhankelijkheidsvisualisatie.<br/><br/> U koppelt een nieuwe of bestaande Log Analytics-werkruimte aan een Azure Migrate-project. De werkruimte voor een Azure Migrate-project kan niet worden gewijzigd nadat deze is toegevoegd. <br/><br/> De werkruimte moet zich in hetzelfde abonnement bevinden als het Azure Migrate-project.<br/><br/> De werkruimte moet zich in de regio's Oost-VS, Zuidoost-Azië of West-Europa bevinden. Werkruimten in andere regio's kunnen niet aan een project worden gekoppeld.<br/><br/> De werkruimte moet zich in een gebied bevinden waarin [servicekaart wordt ondersteund.](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)<br/><br/> In Log Analytics wordt de werkruimte die is gekoppeld aan Azure Migrate getagd met de toets Migratieproject en de projectnaam.
 **Vereiste agenten** | Installeer op elke machine die u wilt analyseren de volgende agents:<br/><br/> De [Microsoft Monitoring agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).<br/> De [afhankelijkheidsagent.](../azure-monitor/platform/agents-overview.md#dependency-agent)<br/><br/> Als on-premises machines niet zijn verbonden met internet, moet u de Log Analytics-gateway erop downloaden en installeren.<br/><br/> Meer informatie over het installeren van de [afhankelijkheidsagent](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) en [MMA](how-to-create-group-machine-dependencies.md#install-the-mma).
 **Log Analytics-werkruimte** | De werkruimte moet zich in hetzelfde abonnement bevinden als het Azure Migrate-project.<br/><br/> Azure Migrate ondersteunt werkruimten die zich bevinden in de regio's Oost-VS, Zuidoost-Azië en West-Europa.<br/><br/>  De werkruimte moet zich in een gebied bevinden waarin [servicekaart wordt ondersteund.](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites)<br/><br/> De werkruimte voor een Azure Migrate-project kan niet worden gewijzigd nadat deze is toegevoegd.
 **Kosten** | De oplossing Servicekaart brengt geen kosten met zich mee voor de eerste 180 dagen (vanaf de dag dat u de werkruimte Log Analytics koppelt aan het Azure Migrate-project)/<br/><br/> Na 180 dagen gelden de standaardkosten voor Log Analytics.<br/><br/> Als u een andere oplossing dan Service Map in de bijbehorende Werkruimte Log Analytics gebruikt, worden [standaardkosten](https://azure.microsoft.com/pricing/details/log-analytics/) voor Log Analytics in rekening gebracht.<br/><br/> Wanneer het Azure Migrate-project wordt verwijderd, wordt de werkruimte niet samen met het project verwijderd. Na het verwijderen van het project is het gebruik van servicekaarten niet gratis en wordt elk knooppunt in rekening gebracht volgens de betaalde laag loganalytics-werkruimte/<br/><br/>Als u projecten hebt die u hebt gemaakt voordat Azure Algemene beschikbaarheid migreert (GA- 28 februari 2018), hebt u mogelijk extra servicekosten in rekening gebracht. Om ervoor te zorgen dat u na 180 dagen wordt betaald, raden we u aan een nieuw project te maken, omdat bestaande werkruimten vóór GA nog steeds in rekening worden gebracht.
 **Beheer** | Wanneer u agents registreert in de werkruimte, gebruikt u de id en de sleutel die worden geleverd door het Azure Migrate-project.<br/><br/> U de werkruimte Log Analytics buiten Azure Migreren gebruiken.<br/><br/> Als u het bijbehorende Azure Migrate-project verwijdert, wordt de werkruimte niet automatisch verwijderd. [Verwijder het handmatig](../azure-monitor/platform/manage-access.md).<br/><br/> Verwijder de werkruimte die is gemaakt door Azure Migrate niet, tenzij u het Azure Migrate-project verwijdert. Als u dit doet, werkt de functionaliteit voor afhankelijkheidsvisualisatie niet zoals verwacht.
 **Verbinding met internet** | Als machines niet zijn verbonden met internet, moet u de Log Analytics-gateway erop installeren.
+**Azure Government** | Afhankelijkheidsanalyse op basis van agenten wordt niet ondersteund.
 
 
 ## <a name="next-steps"></a>Volgende stappen

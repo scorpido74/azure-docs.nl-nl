@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
-ms.openlocfilehash: 51e58de92f111c8854add613a299f2b8ccec0503
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 251c9c9717bae1728bffa48827a45d4535d66c15
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79285238"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482076"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Apparaattweelingen begrijpen en gebruiken in IoT Hub
 
@@ -58,7 +58,7 @@ Een apparaattweeling is een JSON-document met:
 
 * **Gerapporteerde eigenschappen**. Gebruikt samen met de gewenste eigenschappen om apparaatconfiguratie of -omstandigheden te synchroniseren. De apparaat-app kan gerapporteerde eigenschappen instellen en de back-end van de oplossing kan deze lezen en opvragen.
 
-* **Eigenschappen van apparaatidentiteit**. De hoofdmap van het apparaat twin JSON-document bevat de alleen-lezen eigenschappen van de bijbehorende apparaatidentiteit die is opgeslagen in het [identiteitsregister.](iot-hub-devguide-identity-registry.md)
+* **Eigenschappen van apparaatidentiteit**. De hoofdmap van het apparaat twin JSON-document bevat de alleen-lezen eigenschappen van de bijbehorende apparaatidentiteit die is opgeslagen in het [identiteitsregister.](iot-hub-devguide-identity-registry.md) Eigenschappen `connectionStateUpdatedTime` `generationId` en worden niet opgenomen.
 
 ![Schermafbeelding van de dubbele eigenschappen van het apparaat](./media/iot-hub-devguide-device-twins/twin.png)
 
@@ -182,7 +182,7 @@ De back-end van de oplossing werkt op de apparaattweeling met behulp van de volg
 
   - Eigenschappen
 
-    | Name | Waarde |
+    | Naam | Waarde |
     | --- | --- |
     $content type | application/json |
     $iothub in de wachtrij |  Het tijdstip waarop de melding is verzonden |

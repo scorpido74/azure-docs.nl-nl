@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa0dc204a017e2d40eb3952a9ede0755127f8de2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2b84427b9aad2d18368d808fc618f3bfbe774ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970665"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460117"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure-schijfversleuteling op een geïsoleerd netwerk
 
@@ -43,7 +43,7 @@ Instellingen voor netwerkbeveiligingsgroepen die worden toegepast, moeten het ei
 
 Als u [Azure Disk Encryption gebruikt met Azure AD (vorige versie),](disk-encryption-overview-aad.md)moet de Azure Active [Directory-bibliotheek](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) handmatig worden geïnstalleerd voor alle distributies (naast de pakketten die geschikt zijn voor de distro, zoals [hierboven vermeld).](#package-management)
 
-Wanneer versleuteling wordt ingeschakeld met [Azure AD-referenties,](disk-encryption-linux-aad.md)moet de doel-vm connectiviteit toestaan voor zowel Azure Active Directory-eindpunten als Key Vault-eindpunten. Huidige Azure Active Directory-verificatieeindpunten worden onderhouden in secties 56 en 59 van de documentatie over [Office 365-URL's en IP-adresbereiken.](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) Key Vault-instructies worden gegeven in de documentatie over het [openen van Azure Key Vault achter een firewall.](../../key-vault/key-vault-access-behind-firewall.md)
+Wanneer versleuteling wordt ingeschakeld met [Azure AD-referenties,](disk-encryption-linux-aad.md)moet de doel-vm connectiviteit toestaan voor zowel Azure Active Directory-eindpunten als Key Vault-eindpunten. Huidige Azure Active Directory-verificatieeindpunten worden onderhouden in secties 56 en 59 van de documentatie over [Office 365-URL's en IP-adresbereiken.](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) Key Vault-instructies worden gegeven in de documentatie over het [openen van Azure Key Vault achter een firewall.](../../key-vault/general/access-behind-firewall.md)
 
 ### <a name="azure-instance-metadata-service"></a>Azure-instantiemetagegevensservice 
 

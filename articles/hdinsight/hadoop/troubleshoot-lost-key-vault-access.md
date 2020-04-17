@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: 2ae389be25cd8633a53a49cf000796c1510733a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1d941fbf86d453a56a5157ed988a32173c614fc
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76965162"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461528"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Scenario: Azure HDInsight-clusters met schijfversleuteling verliezen key vault-toegang
 
@@ -32,7 +32,7 @@ Navigeer naar de Apache Ambari-gebruikersinterface voor meer informatie over de 
 
 ### <a name="kvaad-outage"></a>KV/AAD-storing
 
-Bekijk [de beschikbaarheid en redundantie](../../key-vault/key-vault-disaster-recovery-guidance.md) pagina azure key vault en de azure-statuspagina voor meer informatiehttps://status.azure.com/
+Bekijk [de beschikbaarheid en redundantie](../../key-vault/general/disaster-recovery-guidance.md) pagina azure key vault en de azure-statuspagina voor meer informatiehttps://status.azure.com/
 
 ### <a name="kv-accidental-deletion"></a>KV per ongeluk verwijderen
 

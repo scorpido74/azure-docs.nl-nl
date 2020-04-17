@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0cfe58ab0d161019d5f53d9135c65db7beff2bb4
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 790e2a148385f9da54df82f597c2ca52124dc2be
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397995"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529843"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Een formulierherkenningsmodel trainen met labels met het voorbeeldlabelgereedschap
 
@@ -49,7 +49,7 @@ U gebruikt de Docker-engine om het voorbeeldlabelingsgereedschap uit te voeren. 
 
    Installeer Docker op uw machine door de juiste instructies voor uw besturingssysteem te volgen: 
    * [Windows](https://docs.docker.com/docker-for-windows/)
-   * [Macos](https://docs.docker.com/docker-for-mac/)
+   * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
 1. Download de voorbeeldlabelende `docker pull` gereedschapscontainer met de opdracht.
@@ -104,7 +104,7 @@ Vul de velden in met de volgende waarden:
 In het voorbeeldlabelingshulpmiddel slaan projecten uw configuraties en instellingen op. Maak een nieuw project en vul de velden in met de volgende waarden:
 
 * **Weergavenaam** - de naam van de projectweergave
-* **Beveiligingstoken** - Sommige projectinstellingen kunnen gevoelige waarden bevatten, zoals API-sleutels of andere gedeelde geheimen. Elk project genereert een beveiligingstoken dat kan worden gebruikt om gevoelige projectinstellingen te versleutelen/decoderen. U beveiligingstokens vinden in de toepassingsinstellingen door op het tandwielpictogram in de onderste hoek van de linkernavigatiebalk te klikken.
+* **Beveiligingstoken** - Sommige projectinstellingen kunnen gevoelige waarden bevatten, zoals API-sleutels of andere gedeelde geheimen. Elk project genereert een beveiligingstoken dat kan worden gebruikt om gevoelige projectinstellingen te versleutelen/decoderen. U beveiligingstokens vinden in de toepassingsinstellingen door op het tandwielpictogram onder aan de linkernavigatiebalk te klikken.
 * **Bronverbinding** - De Azure Blob Storage-verbinding die u hebt gemaakt in de vorige stap die u voor dit project wilt gebruiken.
 * **Mappad** - Optioneel - Als uw bronformulieren zich in een map in de blobcontainer bevinden, geeft u hier de mapnaam op
 * **Url van formulierherkenningsservice Uri** - URL van uw formulierherkenningspunt.
@@ -130,9 +130,9 @@ Klik **op OCR uitvoeren op alle bestanden** in het linkerdeelvenster om de infor
 Vervolgens maakt u tags (labels) en past u deze toe op de tekstelementen die het model moet herkennen.
 
 1. Gebruik eerst het editorvenster van tags om de tags te maken die u wilt identificeren.
-  1. Klik **+** hier om een nieuwe tag te maken.
-  1. Voer de tagnaam in.
-  1. Druk op Enter om de tag op te slaan.
+   1. Klik **+** hier om een nieuwe tag te maken.
+   1. Voer de tagnaam in.
+   1. Druk op Enter om de tag op te slaan.
 1. Klik en sleep in de hoofdeditor om een of meerdere woorden uit de gemarkeerde tekstelementen te selecteren.
 1. Klik op de tag die u wilt toepassen of druk op de bijbehorende toetsenbordtoets. De nummertoetsen worden toegewezen als sneltoetsen voor de eerste 10 tags. U de tags opnieuw ordenen met de pictogrammen voor de pijl-omhoog en pijl-omlaag in het deelvenster-tageditor.
     > [!Tip]
@@ -144,15 +144,30 @@ Vervolgens maakt u tags (labels) en past u deze toe op de tekstelementen die het
     > * Neem geen sleutels op in&mdash;uw gelabelde velden alleen de waarden.
     > * Tabelgegevens moeten automatisch worden gedetecteerd en beschikbaar zijn in het JSON-bestand voor uiteindelijke uitvoer. Als het model echter niet al uw tabelgegevens detecteert, u deze velden ook handmatig taggen. Tag elke cel in de tabel met een ander label. Als uw formulieren tabellen met verschillende aantallen rijen hebben, moet u ervoor zorgen dat u ten minste één formulier tagt met de grootst mogelijke tabel.
 
-
-Volg de bovenstaande stappen om vijf van uw formulieren te labelen en ga vervolgens verder met de volgende stap.
-
 ![Hoofdeditorvenster van voorbeeldlabelingsgereedschap](../media/label-tool/main-editor.png)
 
+Volg de bovenstaande stappen om ten minste vijf van uw formulieren te labelen.
+
+### <a name="specify-tag-value-types"></a>Tagwaardetypen opgeven
+
+Optioneel u het verwachte gegevenstype voor elke tag instellen. Open het contextmenu rechts van een tag en selecteer een type in het menu. Met deze functie kan het detectiealgoritme bepaalde veronderstellingen maken die de nauwkeurigheid van de tekstdetectie zullen verbeteren. Het zorgt er ook voor dat de gedetecteerde waarden worden geretourneerd in een gestandaardiseerde indeling in de uiteindelijke JSON-uitvoer. 
+
+> [!div class="mx-imgBorder"]
+> ![Selectie van waardetype met voorbeeldlabeling](../media/whats-new/formre-value-type.png)
+
+De volgende waardetypen en -variaties worden momenteel ondersteund:
+* `string`
+    * in `no-whitespaces`gebreke blijven, ,`alphanumeric`
+* `number`
+    * Standaard`currency`
+* `date` 
+    * in `dmy`gebreke blijven, , `mdy``ymd`
+* `time`
+* `integer`
 
 ## <a name="train-a-custom-model"></a>Aangepast model trainen
 
-Klik op het pictogram Trein (de treinauto) in het linkerdeelvenster om de pagina Training te openen. Klik vervolgens op de knop **Trainen** om het model te trainen. Zodra het trainingsproces is voltooid, ziet u de volgende informatie:
+Klik op het pictogram Trainen in het linkerdeelvenster om de pagina Training te openen. Klik vervolgens op de knop **Trainen** om het model te trainen. Zodra het trainingsproces is voltooid, ziet u de volgende informatie:
 
 * **Model-ID** - De ID van het model dat is gemaakt en getraind. Elk trainingsgesprek creëert een nieuw model met een eigen ID. Kopieer deze tekenreeks naar een veilige locatie; je hebt het nodig als je voorspellingsoproepen wilt doen via de REST API.
 * **Gemiddelde nauwkeurigheid** - De gemiddelde nauwkeurigheid van het model. U de nauwkeurigheid van het model verbeteren door aanvullende formulieren en training opnieuw te labelen om een nieuw model te maken. We raden u aan om te beginnen met het labelen van vijf formulieren en het toevoegen van meer formulieren als dat nodig is.
@@ -167,7 +182,7 @@ Na afloop van de training, onderzoekt u de **waarde gemiddelde nauwkeurigheid.**
 
 ## <a name="analyze-a-form"></a>Een formulier analyseren
 
-Klik op het pictogram Voorspellen (rechthoeken) aan de linkerkant om het model te testen. Upload een formulierdocument dat u niet hebt gebruikt in het trainingsproces. Klik vervolgens op de knop **Voorspellen** aan de rechterkant om belangrijke/waardevoorspellingen voor het formulier te krijgen. De tool past tags toe in selectievakken en rapporteert het vertrouwen van elke tag.
+Klik op het pictogram Voorspellen (gloeilamp) aan de linkerkant om het model te testen. Upload een formulierdocument dat u niet hebt gebruikt in het trainingsproces. Klik vervolgens op de knop **Voorspellen** aan de rechterkant om belangrijke/waardevoorspellingen voor het formulier te krijgen. De tool past tags toe in selectievakken en rapporteert het vertrouwen van elke tag.
 
 > [!TIP]
 > U de API analyseren ook uitvoeren met een REST-aanroep. Zie Trainen met labels [met Python](./python-labeled-data.md)voor meer informatie over hoe u dit doen.

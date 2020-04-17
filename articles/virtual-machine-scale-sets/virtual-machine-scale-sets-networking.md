@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
-ms.openlocfilehash: 9f048c7d89da0ab75c321cd8e3932ea97c7ed09c
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: efe3a39008361fdf76d80a0c8e7e2e30b061117d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310012"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461345"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netwerken voor virtuele-machineschaalsets in Azure
 
@@ -41,42 +41,27 @@ Versneld netwerken in Azure verbetert de prestaties van het netwerk door het ins
 }
 ```
 
-## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>Een schaalset maken die verwijst naar een bestaande Azure Load Balancer
-Wanneer een schaalset is gemaakt met Azure Portal, wordt er voor de meeste configuratieopties een nieuwe load balancer gemaakt. Als u een schaalset maakt die moet verwijzen naar een bestaande load balancer, kunt u dit doen met de CLI. Het volgende voorbeeldscript maakt een load balancer en maakt vervolgens een schaalset die ernaar verwijst:
+## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure virtuele machineschaalsets met Azure Load Balancer
 
-```azurecli
-az network lb create \
-    -g lbtest \
-    -n mylb \
-    --vnet-name myvnet \
-    --subnet mysubnet \
-    --public-ip-address-allocation Static \
-    --backend-pool-name mybackendpool
+Bij het werken met virtuele machineschaalsets en load balancer moet rekening worden gehouden met:
 
-az vmss create \
-    -g lbtest \
-    -n myvmss \
-    --image Canonical:UbuntuServer:16.04-LTS:latest \
-    --admin-username negat \
-    --ssh-key-value /home/myuser/.ssh/id_rsa.pub \
-    --upgrade-policy-mode Automatic \
-    --instance-count 3 \
-    --vnet-name myvnet \
-    --subnet mysubnet \
-    --lb mylb \
-    --backend-pool-name mybackendpool
-```
+* **Meerdere virtuele machineschaalsets kunnen niet dezelfde load balancer gebruiken.**
+* **Port Forwarding en inkomende NAT-regels:**
+  * Elke virtuele machineschaalset moet een binnenkomende NAT-regel hebben.
+  * Nadat de schaalset is gemaakt, kan de backendpoort niet worden gewijzigd voor een regel voor het balanceren van de last die wordt gebruikt door een statussonde van de load balancer. Als u de poort wilt wijzigen, u de statussonde verwijderen door de azure-virtuele machineschaalset bij te werken, de poort bij te werken en vervolgens de statussonde opnieuw te configureren.
+  * Bij het gebruik van de virtuele machineschaal die is ingesteld in de backendpool van de load balancer, worden de standaard inkomende NAT-regels automatisch gemaakt.
+* **Regels voor taakverdeling:**
+  * Bij het gebruik van de virtuele machineschaal die is ingesteld in de backendpool van de load balancer, wordt de standaard regel voor taakverdeling automatisch gemaakt.
+* **Uitgaande regels:**
+  *  Als u uitgaande regel wilt maken voor een backendpool waarnaar al wordt verwezen door een regel voor het balanceren van de last, moet u **eerst 'Impliciete uitgaande regels maken'** als **Nee** in de portal markeren wanneer de inkomende regel voor het balanceren van de lastwordt gemaakt.
 
->[!NOTE]
-> Nadat de schaalset is gemaakt, kan de backendpoort niet worden gewijzigd voor een regel voor het balanceren van de last die wordt gebruikt door een statussonde van de load balancer. Als u de poort wilt wijzigen, u de statussonde verwijderen door de azure-virtuele machineschaalset bij te werken, de poort bij te werken en vervolgens de statussonde opnieuw te configureren. 
-
-Zie Virtuele netwerken en virtuele machines in [Azure](../../articles/virtual-machines/windows/network-overview.md)voor meer informatie over load balancer en virtuele machineschaalsets.
+  :::image type="content" source="./media/vmsslb.png" alt-text="Het maken van taakverdelingsregels" border="true":::
 
 De volgende methoden kunnen worden gebruikt om een virtuele machineschaalset te implementeren met een bestaande Azure-load balancer.
 
-* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met behulp van de Azure-portal.](../../articles/load-balancer/configure-vm-scale-set-portal.md)
-* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met Azure PowerShell](../../articles/load-balancer/configure-vm-scale-set-powershell.md).
-* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met behulp van azure CLI](../../articles/load-balancer/configure-vm-scale-set-cli.md).
+* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met behulp van de Azure-portal.](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)
+* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met Azure PowerShell](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell).
+* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met behulp van azure CLI](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli).
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Een schaalset maken die verwijst naar een toepassingsgateway
 Om een schaalset te maken die gebruikmaakt van een toepassingsgateway, verwijst u naar de back-endadresgroep van de toepassingsgateway in de sectie ipConfigurations van uw schaalset zoals in deze ARM-sjabloonconfiguratie:

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: eac195babebf300aa9770d35b7b98eba29c234cf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529428"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460984"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Uw lab configureren in Azure DevTest Labs om een externe desktopgateway te gebruiken
 In Azure DevTest Labs u een externe desktopgateway voor uw lab configureren om veilige toegang tot de virtuele machines van het lab te garanderen zonder dat u de RDP-poort hoeft bloot te leggen. Het lab biedt een centrale plek voor uw labgebruikers om alle virtuele machines waartoe ze toegang hebben te bekijken en te verbinden. Met de knop **Verbinding** maken op de pagina **Virtuele machine** wordt een machinespecifiek RDP-bestand gemaakt dat u openen om verbinding te maken met de machine. U de RDP-verbinding verder aanpassen en beveiligen door uw lab te verbinden met een externe desktopgateway. 
@@ -64,7 +64,7 @@ Azure-functie verwerkt aanvraag `https://{function-app-uri}/app/host/{lab-machin
 ## <a name="configure-the-lab-to-use-token-authentication"></a>Het lab configureren om tokenverificatie te gebruiken 
 In deze sectie ziet u hoe u een lab configureert om een extern bureaublad-gatewaymachine te gebruiken die tokenverificatie ondersteunt. In deze sectie wordt niet geopperd op het instellen van een extern bureaublad-gatewayfarm zelf. Zie het voorbeeld om aan het einde van dit artikel een extern [bureaublad-gatewaygedeelte te maken](#sample-to-create-a-remote-desktop-gateway) voor die informatie. 
 
-Voordat u de labinstellingen bijwerkt, slaat u de sleutel op die nodig is om de functie met succes uit te voeren om een verificatietoken terug te sturen in de sleutelkluis van het lab. U de waarde van de functiesleutel op de pagina **Beheren** voor de functie in de Azure-portal opvragen. Zie [Een geheim toevoegen aan Key Vault voor](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault)meer informatie over het opslaan van een geheim in een sleutelkluis. Bewaar de naam van het geheim voor later gebruik.
+Voordat u de labinstellingen bijwerkt, slaat u de sleutel op die nodig is om de functie met succes uit te voeren om een verificatietoken terug te sturen in de sleutelkluis van het lab. U de waarde van de functiesleutel op de pagina **Beheren** voor de functie in de Azure-portal opvragen. Zie [Een geheim toevoegen aan Key Vault voor](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)meer informatie over het opslaan van een geheim in een sleutelkluis. Bewaar de naam van het geheim voor later gebruik.
 
 Voer de volgende opdracht Azure CLI uit om de id van de sleutelkluis van het lab te vinden: 
 
@@ -74,7 +74,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Configureer het lab om de tokenverificatie te gebruiken met behulp van de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **Alle services**en selecteer Vervolgens **DevTest Labs** in de lijst.
 1. Selecteer in de lijst met labs uw **lab.**
 1. Selecteer **configuratie en beleid**op de pagina van het lab.

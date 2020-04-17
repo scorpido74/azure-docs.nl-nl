@@ -10,12 +10,12 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8fe95a471df6ea86aad90f387088824c3c92bd3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32691e0ddcee3f5410b12f07a2fb80806345bc26
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460444"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460508"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Client-Side Encryption en Azure Key Vault met Java voor Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -103,7 +103,7 @@ In batchbewerkingen wordt dezelfde KEK gebruikt voor alle rijen in die batchbewe
 > Als u querybewerkingen wilt uitvoeren, moet u een sleutelresolver opgeven die alle sleutels in de resultaatset kan oplossen. Als een entiteit in het queryresultaat niet kan worden opgelost naar een provider, wordt er in de clientbibliotheek een fout gegenereerd. Voor elke query die serverzijdeprojecties uitvoert, voegt de clientbibliotheek standaard de speciale eigenschappen van versleutelingsmetagegevens (_ClientEncryptionMetadata1 en _ClientEncryptionMetadata2) toe aan de geselecteerde kolommen.
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
-Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met Azure Key Vault kunnen gebruikers sleutels en geheimen versleutelen (zoals verificatiesleutels, opslagaccountsleutels, gegevensversleutelingssleutels, . PFX-bestanden en wachtwoorden met behulp van sleutels die worden beschermd door hardwarebeveiligingsmodules (HSM's). Zie [Wat is Azure Key Vault?](../../key-vault/key-vault-overview.md) voor meer informatie.
+Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met Azure Key Vault kunnen gebruikers sleutels en geheimen versleutelen (zoals verificatiesleutels, opslagaccountsleutels, gegevensversleutelingssleutels, . PFX-bestanden en wachtwoorden met behulp van sleutels die worden beschermd door hardwarebeveiligingsmodules (HSM's). Zie [Wat is Azure Key Vault?](../../key-vault/general/overview.md) voor meer informatie.
 
 De opslagclientbibliotheek maakt gebruik van de Key Vault-kernbibliotheek om een gemeenschappelijk framework in Azure te bieden voor het beheren van sleutels. Gebruikers krijgen ook het extra voordeel van het gebruik van de Key Vault-extensiesbibliotheek. De extensiesbibliotheek biedt nuttige functionaliteit rond eenvoudige en naadloze symmetric/RSA lokale en cloudkeyproviders, evenals met aggregatie en caching.
 
@@ -256,4 +256,4 @@ Houd er rekening mee dat het versleutelen van uw opslaggegevens leidt tot extra 
 * Download de Azure Key Vault Maven Library voor Java Maven-pakketten:
   * [Kernpakket](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core)
   * [Klantpakket](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault)
-* Ga naar de [Azure Key Vault-documentatie](../../key-vault/key-vault-overview.md)
+* Ga naar de [Azure Key Vault-documentatie](../../key-vault/general/overview.md)

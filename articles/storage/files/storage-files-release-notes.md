@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: c6455930f88d02e11cb0c45d29594ae40eaad9e3
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 82d8c8ca94f3d0f4289902ae40928ff507e2d1ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113295"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460661"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Releaseopmerkingen voor de Azure File Sync-agent
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Uw installaties van Windows Server worden getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als u waar ook ter wereld nodig hebt.
@@ -63,9 +63,6 @@ De volgende releasenotes zijn voor versie 10.0.0.0 van de Azure File Sync-agent 
 - Ondersteuning voor het verplaatsen van het opslagsynchronisatieservice- en/of opslagaccount naar een andere Azure Active Directory-tenant (AAD)
     - Azure File Sync ondersteunt nu het verplaatsen van het Opslagsynchronisatieservice- en/of opslagaccount naar een andere brongroep, abonnement of Azure AD-tenant.
     
-- Evaluatietool identificeert nu bestanden of mappen die eindigen met een periode
-    - De [evaluatietool](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) is bijgewerkt om bestanden of mappen te identificeren die eindigen met een periode. Bestanden of mappen die eindigen met een periode worden momenteel niet ondersteund door Azure File Sync. Als u de bijgewerkte versie van het [hulpprogramma Evaluatie wilt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)gebruiken, installeert u de nieuwste versie van de Azure [PowerShell-module](https://docs.microsoft.com/powershell/azure/install-az-ps).
- 
 - Diverse verbeteringen in prestaties en betrouwbaarheid
     - Wijzigingsdetectie in het Azure-bestandsaandeel kan mislukken als virtuele netwerk- en firewallregels zijn geconfigureerd op het opslagaccount.
     - Minder geheugenverbruik in verband met terugroepen. 

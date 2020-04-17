@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 94d3993c6a0c62a68ea77a888d3351c8fea1d935
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 29f5a48feaaafee64a20745b3cdf09726a6372ac
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990987"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533834"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Aanmelding toevoegen aan Microsoft aan een ASP.NET web-app
 
@@ -117,7 +117,7 @@ De volgende stappen worden gebruikt om een OWIN middleware Startup-klasse te mak
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
-        /// Configure OWIN to use OpenIdConnect 
+        /// Configure OWIN to use OpenIdConnect
         /// </summary>
         /// <param name="app"></param>
         public void Configuration(IAppBuilder app)
@@ -208,7 +208,7 @@ Voer de volgende stappen uit om een nieuwe controller te maken om aanmeldings- e
                 OpenIdConnectAuthenticationDefaults.AuthenticationType);
         }
     }
-    
+
     /// <summary>
     /// Send an OpenID Connect sign-out request.
     /// </summary>
@@ -291,19 +291,19 @@ Deze controller demonstreert het gebruik van het kenmerk `[Authorize]` om een co
         public ActionResult Index()
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
-    
+
             //You get the user’s first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
-    
+
             // The 'preferred_username' claim can be used for showing the username
             ViewBag.Username = userClaims?.FindFirst("preferred_username")?.Value;
-    
+
             // The subject/ NameIdentifier claim can be used to uniquely identify the user across the web
             ViewBag.Subject = userClaims?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-    
+
             // TenantId is the unique Tenant Id - which represents an organization in Azure AD
             ViewBag.TenantId = userClaims?.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid")?.Value;
-    
+
             return View();
         }
     }
@@ -311,7 +311,7 @@ Deze controller demonstreert het gebruik van het kenmerk `[Authorize]` om een co
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Meer informatie
-> Vanwege het gebruik `[Authorize]` van het kenmerk kunnen alle methoden van deze controller alleen worden uitgevoerd als de gebruiker is geverifieerd. Als de gebruiker niet is geverifieerd en toegang probeert te krijgen tot de controller, initieert OWIN een verificatieuitdaging en dwingt de gebruiker zich te verifiëren. De voorgaande code kijkt naar de lijst met claims voor specifieke gebruikerskenmerken die zijn opgenomen in het id-token van de gebruiker. Deze kenmerken omvatten de volledige naam en gebruikersnaam van de gebruiker, en het globale onderwerp voor de gebruikers-id. Ze omvatten ook de *Tenant-id*. Dit is de id voor de organisatie van de gebruiker. 
+> Vanwege het gebruik `[Authorize]` van het kenmerk kunnen alle methoden van deze controller alleen worden uitgevoerd als de gebruiker is geverifieerd. Als de gebruiker niet is geverifieerd en toegang probeert te krijgen tot de controller, initieert OWIN een verificatieuitdaging en dwingt de gebruiker zich te verifiëren. De voorgaande code kijkt naar de lijst met claims voor specifieke gebruikerskenmerken die zijn opgenomen in het id-token van de gebruiker. Deze kenmerken omvatten de volledige naam en gebruikersnaam van de gebruiker, en het globale onderwerp voor de gebruikers-id. Ze omvatten ook de *Tenant-id*. Dit is de id voor de organisatie van de gebruiker.
 <!--end-collapse-->
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>Een weergave maken om de claims van de gebruiker weer te geven
@@ -487,7 +487,7 @@ Meer informatie over hoe web-apps web-API's kunnen oproepen.
 Meer informatie over web-apps die webAPI's aanroepen met het Microsoft-identiteitsplatform:
 
 > [!div class="nextstepaction"]
-> [Web-apps die web-API's aanroepen](scenario-web-app-sign-user-overview.md)
+> [Webapps die web-API's aanroepen](scenario-web-app-sign-user-overview.md)
 
 Meer informatie over het maken van webapps die Microsoft Graph aanroepen:
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 29011760a94a05020150ceddeba4303b87c2f610
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b602660142f70fb1442977b22fce2bc1bb275cd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722183"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481930"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Gegevens verkennen in Azure blob-opslag met panda's
 
@@ -35,30 +35,30 @@ Om een gegevensset te verkennen en te manipuleren, moet deze eerst worden gedown
 
 1. Download de gegevens van Azure blob met het volgende Voorbeeld van Python-code met blobservice. Vervang de variabele in de volgende code door uw specifieke waarden:
 
-```python
-from azure.storage.blob import BlockBlobService
-import tables
+    ```python
+    from azure.storage.blob import BlockBlobService
+    import tables
 
-STORAGEACCOUNTNAME= <storage_account_name>
-STORAGEACCOUNTKEY= <storage_account_key>
-LOCALFILENAME= <local_file_name>
-CONTAINERNAME= <container_name>
-BLOBNAME= <blob_name>
+    STORAGEACCOUNTNAME= <storage_account_name>
+    STORAGEACCOUNTKEY= <storage_account_key>
+    LOCALFILENAME= <local_file_name>
+    CONTAINERNAME= <container_name>
+    BLOBNAME= <blob_name>
 
-#download from blob
-t1=time.time()
-blob_service=BlockBlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
-blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
-t2=time.time()
-print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-```
+    #download from blob
+    t1=time.time()
+    blob_service=BlockBlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
+    blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
+    t2=time.time()
+    print(("It takes %s seconds to download "+blobname) % (t2 - t1))
+    ```
 
 1. Lees de gegevens in een pandas DataFrame uit het gedownloade bestand.
 
-```python
-# LOCALFILE is the file path
-dataframe_blobdata = pd.read_csv(LOCALFILE)
-```
+    ```python
+    # LOCALFILE is the file path
+    dataframe_blobdata = pd.read_csv(LOCALFILENAME)
+    ```
 
 Nu bent u klaar om de gegevens te verkennen en functies op deze gegevensset te genereren.
 
@@ -67,72 +67,72 @@ Hier zijn een paar voorbeelden van manieren om gegevens te verkennen met behulp 
 
 1. Het **aantal rijen en kolommen controleren**
 
-```python
-print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
-```
+    ```python
+    print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
+    ```
 
 1. **Controleer** de eerste of laatste **paar rijen** in de volgende gegevensset:
 
-```python
-dataframe_blobdata.head(10)
+    ```python
+    dataframe_blobdata.head(10)
 
-dataframe_blobdata.tail(10)
-```
+    dataframe_blobdata.tail(10)
+    ```
 
 1. Controleer het **gegevenstype** dat elke kolom is geïmporteerd met behulp van de volgende voorbeeldcode
 
-```python
-for col in dataframe_blobdata.columns:
-    print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
-```
+    ```python
+    for col in dataframe_blobdata.columns:
+        print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
+    ```
 
 1. Controleer de **basisstatistieken** voor de kolommen in de gegevensset als volgt
 
-```python
-dataframe_blobdata.describe()
-```
+    ```python
+    dataframe_blobdata.describe()
+    ```
 
 1. Bekijk het aantal vermeldingen voor elke kolomwaarde als volgt
 
-```python
-dataframe_blobdata['<column_name>'].value_counts()
-```
+    ```python
+    dataframe_blobdata['<column_name>'].value_counts()
+    ```
 
 1. **Ontbrekende waarden tellen** ten opzichte van het werkelijke aantal vermeldingen in elke kolom met behulp van de volgende voorbeeldcode
 
-```python
-miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
-print miss_num
-```
+    ```python
+    miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
+    print miss_num
+    ```
 
 1. Als u **ontbrekende waarden** hebt voor een specifieke kolom in de gegevens, u deze als volgt neerzetten:
 
-```python
-dataframe_blobdata_noNA = dataframe_blobdata.dropna()
-dataframe_blobdata_noNA.shape
-```
+    ```python
+    dataframe_blobdata_noNA = dataframe_blobdata.dropna()
+    dataframe_blobdata_noNA.shape
+    ```
 
-Een andere manier om ontbrekende waarden te vervangen is met de modusfunctie:
+    Een andere manier om ontbrekende waarden te vervangen is met de modusfunctie:
 
-```python
-dataframe_blobdata_mode = dataframe_blobdata.fillna(
-    {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
-```
+    ```python
+    dataframe_blobdata_mode = dataframe_blobdata.fillna(
+        {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
+    ```
 
 1. Een **histogramplot** maken met behulp van een variabel aantal opslaglocaties om de verdeling van een variabele in kaart te brengen
 
-```python
-dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
+    ```python
+    dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
 
-np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
-```
+    np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
+    ```
 
 1. Bekijk **correlaties** tussen variabelen met behulp van een scatterplot of met behulp van de ingebouwde correlatiefunctie
 
-```python
-# relationship between column_a and column_b using scatter plot
-plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])
+    ```python
+    # relationship between column_a and column_b using scatter plot
+    plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])
 
-# correlation between column_a and column_b
-dataframe_blobdata[['<column_a>', '<column_b>']].corr()
-```
+    # correlation between column_a and column_b
+    dataframe_blobdata[['<column_a>', '<column_b>']].corr()
+    ```

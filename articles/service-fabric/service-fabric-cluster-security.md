@@ -4,12 +4,12 @@ description: Meer informatie over beveiligingsscenario's voor een Azure Service 
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80753794"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461579"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Beveiligingsscenario's voor servicefabric-cluster
 
@@ -90,7 +90,7 @@ Stel de clientrollen administrator en gebruiker in wanneer u het cluster maakt. 
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509-certificaten en servicestof
 
-X.509 digitale certificaten worden vaak gebruikt om clients en servers te verifiëren. Ze worden ook gebruikt om berichten te versleutelen en digitaal te ondertekenen. Service Fabric gebruikt X.509-certificaten om een cluster te beveiligen en beveiligingsfuncties voor toepassingen te bieden. Zie [Werken met certificaten](https://msdn.microsoft.com/library/ms731899.aspx)voor meer informatie over digitale X.509-certificaten. U gebruikt [Key Vault](../key-vault/key-vault-overview.md) om certificaten te beheren voor Service Fabric-clusters in Azure.
+X.509 digitale certificaten worden vaak gebruikt om clients en servers te verifiëren. Ze worden ook gebruikt om berichten te versleutelen en digitaal te ondertekenen. Service Fabric gebruikt X.509-certificaten om een cluster te beveiligen en beveiligingsfuncties voor toepassingen te bieden. Zie [Werken met certificaten](https://msdn.microsoft.com/library/ms731899.aspx)voor meer informatie over digitale X.509-certificaten. U gebruikt [Key Vault](../key-vault/general/overview.md) om certificaten te beheren voor Service Fabric-clusters in Azure.
 
 Enkele belangrijke dingen om te overwegen:
 

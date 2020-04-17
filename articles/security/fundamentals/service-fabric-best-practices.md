@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549231"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461647"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Best practices voor Azure Service Fabric-beveiliging
 Het implementeren van een toepassing op Azure is snel, eenvoudig en kosteneffectief. Before you deploy your cloud application into production, review our list of essential and recommended best practices for implementing secure clusters in your application.
@@ -155,7 +155,7 @@ Service Fabric gebruikt certificaten om verificatie en versleuteling te bieden v
 
 Service Fabric gebruikt X.509-certificaten om een cluster te beveiligen en beveiligingsfuncties voor toepassingen te bieden. U gebruikt Azure Key Vault om certificaten te [beheren](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md) voor Service Fabric-clusters in Azure. De Azure-bronprovider die de clusters maakt, haalt de certificaten uit een sleutelkluis. De provider installeert vervolgens de certificaten op de VM's wanneer het cluster wordt geïmplementeerd in Azure.
 
-Er bestaat een certificaatrelatie tussen [Azure Key Vault,](../../key-vault/key-vault-secure-your-key-vault.md)het cluster Servicefabric en de resourceprovider die de certificaten gebruikt. Wanneer het cluster wordt gemaakt, wordt informatie over de certificaatrelatie opgeslagen in een sleutelkluis.
+Er bestaat een certificaatrelatie tussen [Azure Key Vault,](../../key-vault/general/secure-your-key-vault.md)het cluster Servicefabric en de resourceprovider die de certificaten gebruikt. Wanneer het cluster wordt gemaakt, wordt informatie over de certificaatrelatie opgeslagen in een sleutelkluis.
 
 Er zijn twee basisstappen om een sleutelkluis in te stellen:
 1. Maak een resourcegroep speciaal voor uw sleutelkluis.
@@ -166,7 +166,7 @@ Er zijn twee basisstappen om een sleutelkluis in te stellen:
 
     De sleutelkluis moet zijn ingeschakeld voor implementatie. De compute resource provider kan vervolgens de certificaten uit de kluis halen en installeren op de VM-exemplaren.
 
-Zie [Wat is Azure Key Vault?](../../key-vault/key-vault-overview.md)
+Zie [Wat is Azure Key Vault?](../../key-vault/general/overview.md)
 
 ## <a name="assign-users-to-roles"></a>Gebruikers toewijzen aan rollen
 Nadat u de toepassingen hebt gemaakt om uw cluster weer te geven, wijst u uw gebruikers toe aan de rollen die worden ondersteund door Service Fabric: alleen-lezen en beheerder. U deze rollen toewijzen via de Azure-portal.

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 80afbeb5668d43ac7bb0b12fadb88a93c68e0ddb
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 8708c458e1064e4b9ea7dc67f1a4d4fbce1547b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383715"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481954"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Gegevens synchroniseren in meerdere cloud- en on-premises databases met SQL Data Sync
 
@@ -134,6 +134,7 @@ Het inrichten en deprovisioneren tijdens het maken, bijwerken en verwijderen van
 - Azure Active Directory-verificatie wordt niet ondersteund.
 - Tabellen met dezelfde naam, maar verschillende schema 's (bijvoorbeeld dbo.customers en sales.customers) worden niet ondersteund.
 - Kolommen met door gebruiker gedefinieerde gegevenstypen worden niet ondersteund
+- Het verplaatsen van servers tussen verschillende abonnementen wordt niet ondersteund. 
 
 #### <a name="unsupported-data-types"></a>Niet-ondersteunde gegevenstypen
 

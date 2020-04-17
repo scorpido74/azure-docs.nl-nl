@@ -1,17 +1,14 @@
 ---
 title: Veelgestelde vragen over Azure Migreren
 description: Antwoorden op veelgestelde vragen over de Azure Migrate-service.
-author: snehaamicrosoft
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: snehaa
-ms.openlocfilehash: c85c5c6e11beb0178139dad152f56f420b2ac26f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78926733"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81530314"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migreren: veelgestelde vragen
 
@@ -56,8 +53,7 @@ Kies uw tool op basis van wat u wilt doen:
 
 ## <a name="which-geographies-are-supported"></a>Welke regio's worden ondersteund?
 
-- **VMware VM's:** Bekijk de [ondersteunde azure migrate-regio's](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) voor VMware VM's.
-- **Hyper-V VM's:** Bekijk de [ondersteunde regio's](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v) voor Azure Migrate voor Hyper-V VM's.
+Bekijk de ondersteunde regio's voor [publieke](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheidswolken.](migrate-support-matrix.md#supported-geographies-azure-government)
 
 ## <a name="how-do-i-get-started"></a>Hoe ga ik aan de slag?
 

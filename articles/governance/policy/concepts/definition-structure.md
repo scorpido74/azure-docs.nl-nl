@@ -3,12 +3,12 @@ title: Details van de beleidsdefinitiestructuur
 description: Beschrijft hoe beleidsdefinities worden gebruikt om conventies voor Azure-resources in uw organisatie vast te stellen.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 017878c4c47a5645ea8815580d2176c7a2ff5d66
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0a7c4e05270ff242fa97b253b27a5de92895368a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314022"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461001"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -89,7 +89,7 @@ De volgende resourceprovidermodi worden momenteel ondersteund tijdens de preview
 - `Microsoft.ContainerService.Data`voor het beheren van regels voor toegangsbeheerop [Azure Kubernetes Service](../../../aks/intro-kubernetes.md). Beleid met deze resourceprovidermodus **moet** het effect [EnforceRegoPolicy](./effects.md#enforceregopolicy) gebruiken.
 - `Microsoft.Kubernetes.Data`voor het beheren van zelfbeheerde AKS Engine Kubernetes-clusters op Azure.
   Beleid met deze resourceprovidermodus **moet** het effect [HandhavingOPAConstraint](./effects.md#enforceopaconstraint) gebruiken.
-- `Microsoft.KeyVault.Data`voor het beheren van kluizen en certificaten in [Azure Key Vault.](../../../key-vault/key-vault-overview.md)
+- `Microsoft.KeyVault.Data`voor het beheren van kluizen en certificaten in [Azure Key Vault.](../../../key-vault/general/overview.md)
 
 > [!NOTE]
 > Resourceprovider-modi ondersteunen alleen ingebouwde beleidsdefinities en ondersteunen geen initiatieven in een voorbeeld.

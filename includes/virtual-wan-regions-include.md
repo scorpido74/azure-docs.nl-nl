@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 757367e2b9773908b81ad35615a23b1b5c67aa3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c822e8af076f74e1bccc46b7a71717d9631de0a1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80117143"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461910"
 ---
 ### <a name="azure-regions-within-a-geopolitical-region"></a>Azure-regio's binnen een geopolitieke regio
 
@@ -42,5 +42,5 @@ Site-to-site gebaseerde VPN-connectiviteit en Virtual WAN-architectuur is beschi
 |Geopolitieke regio | Azure-regio's|
 |---|---|
 | Cloud van de Amerikaanse overheid | US Gov - AZ, US Gov - Iowa, US Gov - TX, US Gov - Virginia, US DoD Central, US DoD East |
-| China East | China - oost, China - oost2|
-| China - noord | China - noord, China - noord2 |
+| China East | China Oost2|
+| China - noord | China Noord2 |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: yelevin
-ms.openlocfilehash: bc2fa02925e7f5c671085eb87ca0431d3fca7691
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5eed208ed79aeab4e46ed90dd4d340a8b445be96
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587954"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461630"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel-sleutel voor de klant instellen
 
@@ -60,11 +60,11 @@ Voer de volgende stappen uit om CMK in te richten: 
     > [!NOTE]
     >  Azure Key Vault moet zijn geconfigureerd als herstelbaar om uw sleutel en de toegang te beschermen.
 
-1.  [Herstelopties inschakelen:](../key-vault/key-vault-best-practices.md#turn-on-recovery-options)
+1.  [Herstelopties inschakelen:](../key-vault/general/best-practices.md#turn-on-recovery-options)
 
-    -   Controleer of [Soft Delete](../key-vault/key-vault-ovw-soft-delete.md) is ingeschakeld.
+    -   Controleer of [Soft Delete](../key-vault/general/overview-soft-delete.md) is ingeschakeld.
 
-    -   Schakel [Purge bescherming](../key-vault/key-vault-ovw-soft-delete.md#purge-protection) om te waken tegen gedwongen verwijdering van de geheime / kluis, zelfs na zachte verwijderen.
+    -   Schakel [Purge bescherming](../key-vault/general/overview-soft-delete.md#purge-protection) om te waken tegen gedwongen verwijdering van de geheime / kluis, zelfs na zachte verwijderen.
 
 ### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>STAP 2: CMK inschakelen op uw Log Analytics-werkruimte
 

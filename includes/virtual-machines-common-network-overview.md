@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b5d46caa80f3f0aaeeb18bd919dafccf628c5faf
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4559a49a64688545e519f6172798997c2d695672
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81384885"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461821"
 ---
 Wanneer u een virtuele Azure-machine maakt, moet u een [virtueel netwerk](../articles/virtual-network/virtual-networks-overview.md) (VNet) maken of een bestaand VNet gebruiken. U moet ook bepalen hoe uw virtuele machines kunnen worden geopend via de VNet. Het is belangrijk om [een planning te maken voordat u resources maakt](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) en ervoor te zorgen dat u op de hoogte bent van de [limieten van netwerkresources](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
@@ -148,24 +148,7 @@ Deze tabel bevat de methoden die u kunt gebruiken voor het maken van een interne
 
 ### <a name="virtual-machine-scale-sets"></a>Virtuele-machineschaalsets
 
-Bij het werken met virtuele machineschaalsets en load balancer moet rekening worden gehouden met:
-
-* **Meerdere virtuele machineschaalsets kunnen niet dezelfde load balancer gebruiken.**
-* **Port Forwarding en inkomende NAT-regels:**
-  * Elke virtuele machineschaalset moet een binnenkomende NAT-regel hebben.
-  * Wanneer u de virtuele machineschaal gebruikt die is ingesteld in de backendpool van de load balancer, worden de standaard inkomende NAT-regels automatisch gemaakt, dit is door het ontwerp.
-* **Regels voor taakverdeling:**
-  * Wanneer u de virtuele machineschaal in de backendpool van de load balancer gebruikt, wordt de standaard regel voor taakverdeling automatisch gemaakt, dit is door het ontwerp.
-* **Uitgaande regels:**
-  *  Als u uitgaande regel wilt maken voor een backendpool waarnaar al wordt verwezen door een regel voor het balanceren van de last, moet u **eerst 'Impliciete uitgaande regels maken'** als **Nee** in de portal markeren wanneer de inkomende regel voor het balanceren van de lastwordt gemaakt.
-
-  :::image type="content" source="./media/virtual-machines-common-network-overview/vmsslb.png" alt-text="Het maken van taakverdelingsregels" border="true":::
-
-De volgende methoden kunnen worden gebruikt om een virtuele machineschaalset te implementeren met een bestaande Azure-load balancer.
-
-* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met behulp van de Azure-portal.](../articles/load-balancer/configure-vm-scale-set-portal.md)
-* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met Azure PowerShell](../articles/load-balancer/configure-vm-scale-set-powershell.md).
-* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met behulp van azure CLI](../articles/load-balancer/configure-vm-scale-set-cli.md).
+Zie [Netwerkvoor Azure-eenvoudigtereiscalesets voor](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking)meer informatie over load balancer en virtuele machineschaalsets.
 
 ## <a name="vms"></a>VM's
 

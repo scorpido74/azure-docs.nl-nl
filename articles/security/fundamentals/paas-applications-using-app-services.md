@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: c3f3c7fbaa043a03b70ab770c06e493716c70daf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49b51a5f14f305afa915ec1d0fae42ca9ded6b1e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500287"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461664"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Aanbevolen procedures voor het beveiligen van PaaS-web- en mobiele toepassingen met Azure App Service
 
@@ -36,7 +36,7 @@ App Service biedt een OAuth 2.0-service voor uw identiteitsprovider. OAuth 2.0 r
 Het beperken van de toegang is noodzakelijk voor organisaties die beveiligingsbeleid voor gegevenstoegang willen afdwingen. U RBAC (Role-based access control) gebruiken om machtigingen toe te wijzen aan gebruikers, groepen en toepassingen op een bepaald bereik, zoals de noodzaak om te weten en de minste beveiligingsprincipes voor bevoegdheden. Zie [Wat is op rolgebaseerde toegangscontrole voor](/azure/role-based-access-control/overview)meer informatie over het verlenen van gebruikers toegang tot toepassingen.
 
 ## <a name="protect-your-keys"></a>Bescherm uw sleutels
-Het maakt niet uit hoe goed uw beveiliging is als u uw abonnementssleutels verliest. Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met Key Vault u sleutels en geheimen versleutelen (zoals verificatiesleutels, opslagaccountsleutels, gegevensversleutelingssleutels,. PFX-bestanden en wachtwoorden met behulp van sleutels die worden beschermd door hardwarebeveiligingsmodules (HSM's). Voor extra zekerheid kunt u de sleutels importeren of genereren in HSM's. U Key Vault ook gebruiken om uw TLS-certificaten te beheren met automatische verlenging. Zie [Wat is Azure Key Vault](../../key-vault/key-vault-overview.md) voor meer informatie.
+Het maakt niet uit hoe goed uw beveiliging is als u uw abonnementssleutels verliest. Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met Key Vault u sleutels en geheimen versleutelen (zoals verificatiesleutels, opslagaccountsleutels, gegevensversleutelingssleutels,. PFX-bestanden en wachtwoorden met behulp van sleutels die worden beschermd door hardwarebeveiligingsmodules (HSM's). Voor extra zekerheid kunt u de sleutels importeren of genereren in HSM's. U Key Vault ook gebruiken om uw TLS-certificaten te beheren met automatische verlenging. Zie [Wat is Azure Key Vault](../../key-vault/general/overview.md) voor meer informatie.
 
 ## <a name="restrict-incoming-source-ip-addresses"></a>IP-adressen van binnenkomende bron beperken
 [App Service Environments](../../app-service/environment/intro.md) heeft een virtuele netwerkintegratiefunctie waarmee u ip-adressen van binnenkomende bronnen beperken via netwerkbeveiligingsgroepen (NSG's). Als u niet bekend bent met Azure Virtual Networks (VNETs), is dit een mogelijkheid waarmee u veel van uw Azure-bronnen in een niet-internet, routeerbaar netwerk plaatsen waarmee u de toegang tot u beheert. Zie Uw [app integreren met een Azure Virtual Network](../../app-service/web-sites-integrate-with-vnet.md)voor meer informatie.

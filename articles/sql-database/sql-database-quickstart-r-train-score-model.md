@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: a54d418f668d8c7292c8332c1b14c4df45e59308
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3c88bdf141e7784837a89c8104574d97c93296dc
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76768468"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460151"
 ---
 # <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Snelstart: een voorspellend model maken en trainen in R met Azure SQL Database Machine Learning Services (voorbeeld)
 
@@ -30,11 +31,8 @@ In deze quickstart maakt en traint u een voorspellend model met R, slaat u het m
 
 - Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - Een [Azure SQL-database](sql-database-single-database-get-started.md) met een [firewallregel op serverniveau](sql-database-server-level-firewall-rule.md)
-- [Machine Learning Services](sql-database-machine-learning-services-overview.md) met R ingeschakeld. [Registreer u voor de preview](sql-database-machine-learning-services-overview.md#signup).
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) met R ingeschakeld.
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
-
-> [!NOTE]
-> Na de onboarding voor de openbare preview wordt Machine Learning voor u ingeschakeld voor uw bestaande of nieuwe database.
 
 In dit voorbeeld wordt gebruik gemaakt van een eenvoudig regressiemodel om de remafstand van een auto te voorspellen op basis van snelheid met behulp van de **gegevensset van de auto's** die bij R zijn meegeleverd.
 

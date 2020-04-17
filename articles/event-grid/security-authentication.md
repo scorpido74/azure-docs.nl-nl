@@ -8,20 +8,20 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 0b7c5b42ac6291c6687337ba8d6a9d35830b9bda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b2d65c9523f32eed01baa8d63c3d0119d00de1b
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79281013"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532390"
 ---
 # <a name="authenticating-access-to-event-grid-resources"></a>Toegang tot bronnen voor gebeurtenisrasters verifiëren
 
 Azure Event Grid heeft drie soorten verificatie:
 
-* WebHook-gebeurtenislevering
-* Gebeurtenisabonnementen
-* Aangepaste onderwerppublicatie
+- WebHook-gebeurtenislevering
+- Gebeurtenisabonnementen
+- Aangepaste onderwerppublicatie
 
 ## <a name="webhook-event-delivery"></a>WebHook-gebeurtenislevering
 
@@ -29,52 +29,54 @@ Webhooks zijn een van de vele manieren om gebeurtenissen van Azure Event Grid te
 
 Net als veel andere services die webhooks ondersteunen, vereist Event Grid dat u het eigendom van uw Webhook-eindpunt bewijst voordat het gebeurtenissen naar dat eindpunt begint te leveren. Deze vereiste voorkomt dat een kwaadwillende gebruiker uw eindpunt overspoelt met gebeurtenissen. Wanneer u een van de drie hieronder vermelde Azure-services gebruikt, wordt deze validatie automatisch uitgevoerd door de Azure-infrastructuur:
 
-* Azure Logic Apps met [gebeurtenisrasterconnector](https://docs.microsoft.com/connectors/azureeventgrid/)
-* Azure Automation via [webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md)
-* Azure-functies met [gebeurtenisrastertrigger](../azure-functions/functions-bindings-event-grid.md)
+- Azure Logic Apps met [gebeurtenisrasterconnector](https://docs.microsoft.com/connectors/azureeventgrid/)
+- Azure Automation via [webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md)
+- Azure-functies met [gebeurtenisrastertrigger](../azure-functions/functions-bindings-event-grid.md)
 
 Als u een ander type eindpunt gebruikt, zoals een op HTTP-trigger gebaseerde Azure-functie, moet uw eindpuntcode deelnemen aan een validatiehandshake met gebeurtenisraster. Event Grid ondersteunt twee manieren om het abonnement te valideren.
 
-1. **ValidationCode handshake (programmatisch)**: Als u de broncode voor uw eindpunt beheert, wordt deze methode aanbevolen. Op het moment van het maken van een evenementabonnement stuurt Gebeurtenisgrid een gebeurtenis voor abonnementsvalidatie naar uw eindpunt. Het schema van deze gebeurtenis is vergelijkbaar met elke andere gebeurtenis Event Grid. Het gegevensgedeelte van deze `validationCode` gebeurtenis bevat een eigenschap. Uw toepassing controleert of de validatieaanvraag voor een verwacht gebeurtenisabonnement is en weerspiegelt de validatiecode naar Gebeurtenisraster. Dit handshakemechanisme wordt ondersteund in alle Event Grid-versies.
+1. **Synchrone handdruk**: Op het moment van het maken van een gebeurtenisabonnement stuurt gebeurtenisraster een gebeurtenis voor abonnementsvalidatie naar uw eindpunt. Het schema van deze gebeurtenis is vergelijkbaar met elke andere gebeurtenis Event Grid. Het gegevensgedeelte van deze `validationCode` gebeurtenis bevat een eigenschap. Uw toepassing controleert of de validatieaanvraag voor een verwacht gebeurtenisabonnement is en retourneert de validatiecode in het antwoord synchroon. Dit handshakemechanisme wordt ondersteund in alle Event Grid-versies.
 
-2. **ValidationURL handshake (handleiding)**: In bepaalde gevallen hebt u geen toegang tot de broncode van het eindpunt om de Handshake van validationcode te implementeren. Als u bijvoorbeeld een service van derden gebruikt (zoals [Zapier](https://zapier.com) of [IFTTT),](https://ifttt.com/)u niet programmatisch reageren met de validatiecode.
+2. **Asynchrone handdruk:** In bepaalde gevallen u de Validatiecode niet synchroon retourneren. Als u bijvoorbeeld een service van derden [`Zapier`](https://zapier.com) gebruikt (zoals of [IFTTT),](https://ifttt.com/)u niet programmatisch reageren met de validatiecode.
 
-   Vanaf versie 2018-05-01-preview ondersteunt Event Grid een handmatige validatiehanddruk. Als u een gebeurtenisabonnement maakt met een SDK of hulpprogramma dat API-versie 2018-05-01-preview of hoger gebruikt, verzendt Gebeurtenisraster een `validationUrl` eigenschap in het gegevensgedeelte van de gebeurtenis voor abonnementsvalidatie. Als u de handdruk wilt voltooien, zoekt u die URL in de gebeurtenisgegevens en stuurt u er handmatig een GET-verzoek naar. U een REST-client of uw webbrowser gebruiken.
+   Vanaf versie 2018-05-01-preview ondersteunt Event Grid een handmatige validatiehanddruk. Als u een gebeurtenisabonnement maakt met een SDK of hulpprogramma dat API-versie 2018-05-01-preview of hoger gebruikt, verzendt Gebeurtenisraster een `validationUrl` eigenschap in het gegevensgedeelte van de gebeurtenis voor abonnementsvalidatie. Als u de handdruk wilt voltooien, zoekt u die URL in de gebeurtenisgegevens en voert u een GET-verzoek aan. U een REST-client of uw webbrowser gebruiken.
 
-   De opgegeven URL is 5 minuten geldig. Gedurende die tijd is `AwaitingManualAction`de inleveringvan het evenementabonnement . Als u de handmatige validatie niet binnen 5 minuten voltooit, wordt de instelstatus ingesteld op `Failed`. U moet het gebeurtenisabonnement opnieuw maken voordat u met de handmatige validatie begint.
+   De opgegeven URL is **5 minuten**geldig. Gedurende die tijd is `AwaitingManualAction`de inleveringvan het evenementabonnement . Als u de handmatige validatie niet binnen 5 minuten voltooit, wordt de instelstatus ingesteld op `Failed`. U moet het gebeurtenisabonnement opnieuw maken voordat u met de handmatige validatie begint.
 
-    Dit verificatiemechanisme vereist ook dat het webhook-eindpunt een HTTP-statuscode van 200 retourneert, zodat het weet dat de POST voor de validatiegebeurtenis is geaccepteerd voordat deze in de handmatige validatiemodus kan worden geplaatst. Met andere woorden, als het eindpunt 200 retourneert maar een validatierespons niet programmatisch teruggeeft, wordt de modus overgezet naar de handmatige validatiemodus. Als er binnen 5 minuten een GET op de validatie-URL staat, wordt de validatiehandshake als geslaagd beschouwd.
+   Dit verificatiemechanisme vereist ook dat het webhook-eindpunt een HTTP-statuscode van 200 retourneert, zodat het weet dat de POST voor de validatiegebeurtenis is geaccepteerd voordat deze in de handmatige validatiemodus kan worden geplaatst. Met andere woorden, als het eindpunt 200 retourneert maar een validatierespons niet synchroon teruggeeft, wordt de modus overgezet naar de handmatige validatiemodus. Als er binnen 5 minuten een GET op de validatie-URL staat, wordt de validatiehandshake als geslaagd beschouwd.
 
 > [!NOTE]
 > Het gebruik van zelfondertekende certificaten voor validatie wordt niet ondersteund. Gebruik in plaats daarvan een ondertekend certificaat van een certificeringsinstantie (CA).
 
 ### <a name="validation-details"></a>Validatiedetails
 
-* Op het moment van het maken/bijwerken van een gebeurtenisabonnement plaatst Event Grid een gebeurtenis voor abonnementsvalidatie op het doeleindpunt. 
-* De gebeurtenis bevat een kopwaarde "aeg-event-type: SubscriptionValidation".
-* De gebeurtenisbody heeft hetzelfde schema als andere gebeurtenisrastergebeurtenissen.
-* De eigenschap eventType van `Microsoft.EventGrid.SubscriptionValidationEvent`de gebeurtenis is .
-* De eigenschap gegevens van `validationCode` de gebeurtenis bevat een eigenschap met een willekeurig gegenereerde tekenreeks. Bijvoorbeeld "validatieCode: acb13...".
-* De gebeurtenisgegevens bevatten `validationUrl` ook een eigenschap met een URL voor het handmatig valideren van het abonnement.
-* De array bevat alleen de validatiegebeurtenis. Andere gebeurtenissen worden in een apart verzoek verzonden nadat u de validatiecode hebt teruggekaatst.
-* De EventGrid DataPlane SDKs hebben klassen die overeenkomen met de gegevens van het abonnementsvalidatiegebeurtenis en de reactie van abonnementsvalidatie.
+- Op het moment van het maken/bijwerken van een gebeurtenisabonnement plaatst Event Grid een gebeurtenis voor abonnementsvalidatie op het doeleindpunt.
+- De gebeurtenis bevat een kopwaarde "aeg-event-type: SubscriptionValidation".
+- De gebeurtenisbody heeft hetzelfde schema als andere gebeurtenisrastergebeurtenissen.
+- De eigenschap eventType van `Microsoft.EventGrid.SubscriptionValidationEvent`de gebeurtenis is .
+- De eigenschap gegevens van `validationCode` de gebeurtenis bevat een eigenschap met een willekeurig gegenereerde tekenreeks. Bijvoorbeeld "validatieCode: acb13...".
+- De gebeurtenisgegevens bevatten `validationUrl` ook een eigenschap met een URL voor het handmatig valideren van het abonnement.
+- De array bevat alleen de validatiegebeurtenis. Andere gebeurtenissen worden in een apart verzoek verzonden nadat u de validatiecode hebt teruggekaatst.
+- De EventGrid DataPlane SDKs hebben klassen die overeenkomen met de gegevens van het abonnementsvalidatiegebeurtenis en de reactie van abonnementsvalidatie.
 
 Een voorbeeld SubscriptionValidationEvent wordt weergegeven in het volgende voorbeeld:
 
 ```json
-[{
-  "id": "2d1781af-3a4c-4d7c-bd0c-e34b19da4e66",
-  "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "subject": "",
-  "data": {
-    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6",
-    "validationUrl": "https://rp-eastus2.eventgrid.azure.net:553/eventsubscriptions/estest/validate?id=512d38b6-c7b8-40c8-89fe-f46f9e9622b6&t=2018-04-26T20:30:54.4538837Z&apiVersion=2018-05-01-preview&token=1A1A1A1A"
-  },
-  "eventType": "Microsoft.EventGrid.SubscriptionValidationEvent",
-  "eventTime": "2018-01-25T22:12:19.4556811Z",
-  "metadataVersion": "1",
-  "dataVersion": "1"
-}]
+[
+  {
+    "id": "2d1781af-3a4c-4d7c-bd0c-e34b19da4e66",
+    "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "subject": "",
+    "data": {
+      "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6",
+      "validationUrl": "https://rp-eastus2.eventgrid.azure.net:553/eventsubscriptions/estest/validate?id=512d38b6-c7b8-40c8-89fe-f46f9e9622b6&t=2018-04-26T20:30:54.4538837Z&apiVersion=2018-05-01-preview&token=1A1A1A1A"
+    },
+    "eventType": "Microsoft.EventGrid.SubscriptionValidationEvent",
+    "eventTime": "2018-01-25T22:12:19.4556811Z",
+    "metadataVersion": "1",
+    "dataVersion": "1"
+  }
+]
 ```
 
 Als u het eigendom van eindpunt wilt aantonen, weerkaatst u de validatiecode in de eigenschap validationResponse, zoals in het volgende voorbeeld wordt weergegeven:
@@ -91,14 +93,24 @@ U het abonnement ook handmatig valideren door een GET-verzoek naar de validatie-
 
 Zie een [C#-voorbeeld](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs)voor een voorbeeld van de verwerking van de handdruk van de abonnementsvalidatie.
 
-### <a name="checklist"></a>Controlelijst
+## <a name="troubleshooting-eventsubsciption-validation"></a>Probleemoplossing gebeurtenissubsciption validatie
 
 Als u tijdens het maken van een gebeurtenisabonnement een foutbericht ziet, zoals\/'De poging om het opgegeven eindpunt https te valideren: /your-endpoint-here is mislukt. Ga voor meer informatie\/naar https: /aka.ms/esvalidation", het geeft aan dat er een fout is in de validatiehandshake. Controleer de volgende aspecten om deze fout op te lossen:
 
-* Heeft u de controle over de toepassingscode die wordt uitgevoerd in het doeleindpunt? Als u bijvoorbeeld een op HTTP-trigger gebaseerde Azure-functie schrijft, hebt u dan toegang tot de toepassingscode om deze code aan te brengen?
-* Als u toegang hebt tot de toepassingscode, implementeert u het op ValidatieCode gebaseerde handshakemechanisme zoals in het bovenstaande voorbeeld wordt weergegeven.
+- Doe een HTTP-bericht naar uw webhook url met een [voorbeeld SubscriptionValidationEvent](#validation-details) aanvraag lichaam met behulp van Postbode of krul of soortgelijke tool.
+- Als uw webhook het synchrone validatiehandshakemechanisme implementeert, controleert u of de validatiecode wordt geretourneerd als onderdeel van het antwoord.
+- Als uw webhook een asynchrone validatiehandshakemechanisme implementeert, controleert u of u de HTTP POST 200 OK retoureert.
+- Als uw webhook 403 (Verboden) retourkeert in het antwoord, controleert u of uw webhook zich achter een Azure Application Gateway of Web Application Firewall bevindt. Als dat het is, dan is het nodig om deze firewall regels uit te schakelen en een HTTP POST opnieuw te doen:
 
-* Als u geen toegang hebt tot de toepassingscode (bijvoorbeeld als u een service van derden gebruikt die webhooks ondersteunt), u het handmatige handshakemechanisme gebruiken. Zorg ervoor dat u de API-versie voor 2018-05-01-preview of hoger gebruikt (installeer de Azure CLI-extensie gebeurtenis) om de validatieUrl in de validatiegebeurtenis te ontvangen. Als u de handmatige validatiehanddruk `validationUrl` wilt voltooien, krijgt u de waarde van de eigenschap en bezoekt u die URL in uw webbrowser. Als de validatie succesvol is, ziet u in uw webbrowser een bericht dat de validatie is geslaagd. U ziet dat de provisioningState van dat gebeurtenisabonnement 'Geslaagd' is. 
+  920300 (Verzoek ontbreekt een header accepteren, kunnen we dit oplossen)
+
+  942430 (Restricted SQL Character Anomaly Detection (args): # van de speciale tekens overschreden (12))
+
+  920230 (Meerdere URL-codering gedetecteerd)
+
+  942130 (SQL Injection Attack: SQL Tautology Gedetecteerd.)
+
+  931130 (Mogelijke RFI-aanval (Remote File Inclusion) = Referentie/koppeling buiten het domein)
 
 ### <a name="event-delivery-security"></a>Beveiliging van de levering van gebeurtenissen
 
@@ -107,6 +119,7 @@ Als u tijdens het maken van een gebeurtenisabonnement een foutbericht ziet, zoal
 U uw webhook-eindpunt beveiligen door Azure Active Directory te gebruiken om gebeurtenisraster te verifiëren en te autoriseren om gebeurtenissen naar uw eindpunten te publiceren. U moet een Azure Active Directory-toepassing maken, een rol- en serviceprincipe maken in uw toepassings die gebeurtenisraster autoriseert en het gebeurtenisabonnement configureren om de AD-toepassing van Azure te gebruiken. [Meer informatie over het configureren van AAD met gebeurtenisraster](secure-webhook-delivery.md).
 
 #### <a name="query-parameters"></a>Queryparameters
+
 U uw webhook-eindpunt beveiligen door queryparameters toe te voegen aan de webhook-URL bij het maken van een gebeurtenisabonnement. Stel een van deze queryparameters in als een geheim, zoals een [toegangstoken.](https://en.wikipedia.org/wiki/Access_token) De webhook kan het geheim gebruiken om te herkennen dat de gebeurtenis afkomstig is van Event Grid met geldige machtigingen. Event Grid bevat deze queryparameters in elke gebeurtenislevering aan de webhook.
 
 Bij het bewerken van het gebeurtenisabonnement worden de queryparameters niet weergegeven of geretourneerd, tenzij de parameter [-include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) wordt gebruikt in Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
@@ -133,7 +146,7 @@ Als u zich bijvoorbeeld wilt abonneren op een aangepast onderwerp met de naam **
 
 ## <a name="custom-topic-publishing"></a>Aangepaste onderwerppublicatie
 
-Aangepaste onderwerpen gebruiken SAS (Shared Access Signature) of sleutelverificatie. We raden SAS aan, maar sleutelverificatie biedt eenvoudige programmering en is compatibel met veel bestaande webhook-uitgevers. 
+Aangepaste onderwerpen gebruiken SAS (Shared Access Signature) of sleutelverificatie. We raden SAS aan, maar sleutelverificatie biedt eenvoudige programmering en is compatibel met veel bestaande webhook-uitgevers.
 
 U neemt de verificatiewaarde op in de HTTP-header. Gebruik voor SAS **aeg-sas-token** voor de kopwaarde. Voor sleutelverificatie gebruikt u **aeg-sas-key** voor de kopwaarde.
 
@@ -151,7 +164,7 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 
 SAS-tokens voor Gebeurtenisraster bevatten de bron, een vervaldatum en een handtekening. Het formaat van het SAS-token is: `r={resource}&e={expiration}&s={signature}`.
 
-De resource is het pad voor het gebeurtenisrasteronderwerp waarnaar u gebeurtenissen verzendt. Een geldig resourcepad is bijvoorbeeld:`https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
+De resource is het pad voor het gebeurtenisrasteronderwerp waarnaar u gebeurtenissen verzendt. Een geldig resourcepad is `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01`bijvoorbeeld: . Zie [Microsoft.EventGrid-brontypen](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)voor alle ondersteunde API-versies. 
 
 U genereert de handtekening van een sleutel.
 
@@ -190,6 +203,9 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 Alle gebeurtenissen of gegevens die door de Event Grid-service naar de schijf zijn geschreven, worden versleuteld door een door Microsoft beheerde sleutel die ervoor zorgt dat deze in rust wordt versleuteld. Bovendien is de maximale periode die gebeurtenissen of gegevens bewaren 24 uur in overeenstemming met het [beleid voor opnieuw proberen van het gebeurtenisraster](delivery-and-retry.md). Event Grid verwijdert automatisch alle gebeurtenissen of gegevens na 24 uur, of de gebeurtenis time-to-live, wat minder is.
 
+## <a name="endpoint-validation-with-cloudevents-v10"></a>Eindpuntvalidatie met CloudEvents v1.0
+Als u al bekend bent met Gebeurtenisraster, bent u mogelijk op de hoogte van de handdruk van event grid voor het voorkomen van misbruik. CloudEvents v1.0 implementeert zijn eigen [misbruikbescherming semantiek](security-authentication.md#webhook-event-delivery) met behulp van de HTTP OPTIONS-methode. [Hier](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection) vindt u meer informatie. Wanneer u het CloudEvents-schema gebruikt voor uitvoer, gebruikt Gebeurtenisraster met de cloudevents v1.0-misbruikbeveiliging in plaats van het gebeurtenismechanisme voor gebeurtenisrastergebeurtenissen.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Over gebeurtenisraster](overview.md) voor een inleiding tot gebeurtenisraster
+- Zie [Over gebeurtenisraster](overview.md) voor een inleiding tot gebeurtenisraster

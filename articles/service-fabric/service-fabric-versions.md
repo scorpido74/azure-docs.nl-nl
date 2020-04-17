@@ -3,12 +3,12 @@ title: Ondersteunde clusterversies in Azure Service Fabric
 description: Meer informatie over clusterversies in Azure Service Fabric, inclusief een koppeling naar de nieuwste releases van het teamblog Service Fabric.
 ms.topic: troubleshooting
 ms.date: 03/02/2020
-ms.openlocfilehash: 1158266857f0864ed2f442edb100032c70063719
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: b76e498926492ce7acaa696dfe9a0299fb5573e0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385041"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460525"
 ---
 # <a name="supported-service-fabric-versions"></a>Ondersteunde Service Fabric-versies
 
@@ -37,10 +37,10 @@ In de volgende tabel worden de versies van Service Fabric en de einddatums van d
 | 6.3.* | 6.1.480.* |Minder dan of gelijk aan versie 3.2 |31 maart 2019  |
 | 6.4.* | 6.2.301.* |Minder dan of gelijk aan versie 3.3 |15 september 2019 |
 | 6.5.* | 6.4.617.* |Minder dan of gelijk aan versie 3.4 |1 augustus 2020 |
-| 7.0.466.* | 6.4.664.* |Minder dan of gelijk aan versie 4.0|Huidige versie, dus geen einddatum |
-| 7.0.466.* | 6.5.* |Minder dan of gelijk aan versie 4.0|Huidige versie, dus geen einddatum |
-| 7.0.470.* | 7.0.466.* |Minder dan of gelijk aan versie 4.0 |Huidige versie, dus geen einddatum |
-
+| 7.0.466.* | 6.4.664.* |Minder dan of gelijk aan versie 4.0|1 augustus 2020  |
+| 7.0.466.* | 6.5.* |Minder dan of gelijk aan versie 4.0|1 augustus 2020 |
+| 7.0.470.* | 7.0.466.* |Minder dan of gelijk aan versie 4.0 |1 augustus 2020  |
+| 7.1.409.* | 7.0.466.* |Minder dan of gelijk aan versie 4.0 |Huidige versie, dus geen einddatum |
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
 In de volgende tabel worden de ondersteunde besturingssystemen voor de ondersteunde Service Fabric-versies weergegeven.
