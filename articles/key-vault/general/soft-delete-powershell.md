@@ -9,16 +9,16 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c74bea8aa1a8e2f9de47b501f9afd9540cfc61b9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 79d8cb4b09ef547bf1c0b01f48872ddcb4f964ee
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422912"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616546"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>De Key Vault-functie voor voorlopig verwijderen gebruiken met PowerShell
 
-De soft delete-functie van Azure Key Vault maakt het mogelijk om verwijderde kluizen en kluisobjecten te herstellen. Met name soft-delete behandelt de volgende scenario's:
+De soft-delete-functie van Azure Key Vault maakt het mogelijk om verwijderde kluizen en kluisobjecten te herstellen. Met name soft-delete behandelt de volgende scenario's:
 
 - Ondersteuning voor herstelbare verwijdering van een sleutelkluis
 - Ondersteuning voor herstelbare verwijdering van belangrijke vault-objecten; sleutels, geheimen en certificaten
@@ -53,7 +53,7 @@ Zie [Uw sleutelkluis beveiligen](secure-your-key-vault.md)voor meer informatie o
 U schakelt 'soft-delete' in om herstel van een verwijderde sleutelkluis of objecten die zijn opgeslagen in een sleutelkluis mogelijk te maken.
 
 > [!IMPORTANT]
-> Het inschakelen van 'soft delete' op een key vault is een onomkeerbare actie. Zodra de eigenschap soft-delete is ingesteld op 'true', kan deze niet meer worden gewijzigd of verwijderd.  
+> Het inschakelen van 'soft-delete' op een key vault is een onomkeerbare actie. Zodra de eigenschap soft-delete is ingesteld op 'true', kan deze niet meer worden gewijzigd of verwijderd.  
 
 ### <a name="existing-key-vault"></a>Bestaande sleutelkluis
 
@@ -269,13 +269,13 @@ Wanneer de zuiveringsbeveiliging is ingeschakeld, kan een kluis of een object in
 
 U zuiveringsbeveiliging alleen inschakelen als soft-delete ook is ingeschakeld. 
 
-Als u zowel soft delete- als zuiveringsbeveiliging wilt inschakelen bij het maken van een kluis, gebruikt u de cmdlet [Nieuw-AzKeyVault:](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0)
+Als u zowel soft-delete- als zuiveringsbeveiliging wilt inschakelen bij het maken van een kluis, gebruikt u de cmdlet [Nieuw-AzKeyVault:](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0)
 
 ```powershell
 New-AzKeyVault -Name ContosoVault -ResourceGroupName ContosoRG -Location westus -EnableSoftDelete -EnablePurgeProtection
 ```
 
-Als u zuiveringsbeveiliging wilt toevoegen aan een bestaande kluis (die al is ingeschakeld voor zachte delete), gebruikt u de cmdlets [Get-AzKeyVault,](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0) [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0)en [Set-AzResource:](/powershell/module/az.resources/set-azresource?view=azps-1.5.0)
+Als u zuiveringsbeveiliging wilt toevoegen aan een bestaande kluis (die al is ingeschakeld voor softdelete), gebruikt u de cmdlets [Get-AzKeyVault,](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0) [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0)en [Set-AzResource:](/powershell/module/az.resources/set-azresource?view=azps-1.5.0)
 
 ```
 ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true"

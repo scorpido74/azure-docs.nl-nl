@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbcd4ea174d4b6a2a45495c32f178ed1bd01bbe0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 968e609772e08814a9943734d30c16bf6f5972e8
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261343"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604714"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Vm's starten/stoppen tijdens off-hours oplossing in Azure Automation
 
@@ -225,11 +225,11 @@ De werkruimte Automatiseringsaccount en Log Analytics worden niet verwijderd als
 
 1. Zoeken naar en selecteer **Logboekanalyse-werkruimten**.
 
-2. Selecteer op de pagina **Logboekanalyse-werkruimten** de werkruimte.
+2. Selecteer op de werkruimtepagina Log Analytics de werkruimte.
 
 3. Selecteer **Verwijderen** in het menu op de pagina werkruimte-instellingen.
 
-4. Als u de onderdelen van het Azure Automation-account niet wilt behouden, u ze handmatig verwijderen. Zie [Oplossingscomponenten](#solution-components).
+4. Als u de [onderdelen](#solution-components)van de Azure Automation-accountoplossing niet wilt behouden, u ze handmatig verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 94699f2153fa8d1df3ab85c184f32792c7ae0b59
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae8be848b5d12e01865fe6bd3b394b460252aa3e
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428873"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606013"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werkruimte beveiligen (voorbeeld)
 
@@ -51,8 +51,8 @@ Drie beveiligingsgroepen voor uw werkruimte maken en invullen:
 - **WS1\_WSAdmins** – voor gebruikers die volledige controle over de werkruimte nodig hebben
 - **WS1\_SparkAdmins** – voor gebruikers die volledige controle nodig hebben over de Spark-aspecten van de werkruimte
 - **WS1\_SQLAdmins** – voor gebruikers die volledige controle nodig hebben over de SQL-aspecten van de werkruimte
-- **WS1-beheerders\_** toevoegen aan **WS1\_SQLAdmins**
-- **WS1-beheerders\_** toevoegen aan **WS1\_SparkAdmins**
+- **WS1\_WSAdmins** toevoegen aan **WS1\_SQLAdmins**
+- **WS1\_WSAdmins** toevoegen aan **WS1\_SparkAdmins**
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>STAP 2: Uw Data Lake Storage Gen2-account voorbereiden
 
@@ -89,7 +89,7 @@ De Synapse-werkruimte heeft toegang nodig tot STG1 en CNT1, zodat deze pijplijne
 - De Azure-portal openen
 - STG1 zoeken
 - Navigeren naar CNT1
-- Controleren of de MSI voor WS1 is toegewezen aan de rol **Azure Blob-gegevensbijdrager** op CNT1
+- Controleren of de MSI (Managed Service Identity) voor WS1 is toegewezen aan de rol **Azure Blob Data Contributor** op CNT1
   - Als u het niet toegewezen ziet, wijst u het toe.
   - De MSI heeft dezelfde naam als de werkruimte. In dit geval zou &quot;het&quot;WS1 .
 

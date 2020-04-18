@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76262483"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604615"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Taakhubs in duurzame functies (Azure-functies)
 
@@ -35,7 +35,13 @@ Al deze resources worden automatisch gemaakt in het standaard Azure Storage-acco
 
 ## <a name="task-hub-names"></a>Namen van taakhubs
 
-Taakhubs worden geïdentificeerd door een naam die is gedeclareerd in het bestand *host.json,* zoals in het volgende voorbeeld wordt weergegeven:
+Taakhubs worden geïdentificeerd aan de andere kant van de regels:
+
+* Bevat alleen alfanumerieke tekens
+* Begint met een brief
+* Heeft een minimale lengte van 3 tekens, maximale lengte van 45 tekens
+
+De naam van de taakhub wordt gedeclareerd in het bestand *host.json,* zoals in het volgende voorbeeld wordt weergegeven:
 
 ### <a name="hostjson-functions-20"></a>host.json (functies 2.0)
 

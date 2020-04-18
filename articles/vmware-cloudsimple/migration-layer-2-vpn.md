@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2ddfa9611143d5c3f823539e018c8afc885c6a46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f5ff48f4d5a658a1bbb4e6b9fb4b3f0f3fb190f
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083222"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81602696"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Workloads migreren met behulp van uitgerekte netwerken van Laag 2
 
@@ -108,7 +108,7 @@ Zie [Virtual Private Networks](https://docs.vmware.com/en/VMware-NSX-T-Data-Cent
 
 De volgende stappen laten zien hoe u de logische router-ID van Tier0 DR logische router ophalen voor bijvoorbeeld de IPsec- en L2VPN-services. De logische router-ID is later nodig bij de implementatie van de L2VPN.
 
-1. Meld u aan bij NSX-T Manager https://*nsx-t-manager-ip-adres* en selecteer > **Netwerkrouters** > **Provider-LR** > **Overzicht**. **Networking** Selecteer **Active-Standby**voor **de modus Hoge beschikbaarheid**. Met deze actie wordt een pop-upvenster geopend waarin de Edge VM wordt weergegeven waarop de Tier0-router momenteel actief is.
+1. Meld u aan bij `https://*nsx-t-manager-ip-address*` NSX-T Manager en selecteer > **Netwerkrouters** > **Provider-LR-overzicht** > **Overview**. **Networking** Selecteer **Active-Standby**voor **de modus Hoge beschikbaarheid**. Met deze actie wordt een pop-upvenster geopend waarin de Edge VM wordt weergegeven waarop de Tier0-router momenteel actief is.
 
     ![Actieve stand-by selecteren](media/l2vpn-fetch01.png)
 
@@ -154,11 +154,11 @@ Om een IPsec-routegebaseerde VPN tussen de NSX-T Tier0-router en de standalone N
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Adverteer de loopback-interface IP aan het underlay-netwerk
 
-1. Maak een null-route voor het loopback-interfacenetwerk. Meld u aan bij NSX-T Manager en selecteer > **Netwerkrouteringsrouters** > **Routers** > **Provider-LR** > **Routing** > **Static Routes**. **Networking** Klik op**toevoegen**. Voer **voor Netwerk**het IP-adres van de loopback-interface in. Klik voor **Volgende hop**op **Toevoegen**, geef 'Null' op voor de volgende hop en houd de standaardwaarde van 1 voor beheerdersafstand.
+1. Maak een null-route voor het loopback-interfacenetwerk. Meld u aan bij NSX-T Manager en selecteer > **Netwerkrouteringsrouters** > **Routers** > **Provider-LR** > **Routing** > **Static Routes**. **Networking** Klik op **Add**. Voer **voor Netwerk**het IP-adres van de loopback-interface in. Klik voor **Volgende hop**op **Toevoegen**, geef 'Null' op voor de volgende hop en houd de standaardwaarde van 1 voor beheerdersafstand.
 
     ![Statische route toevoegen](media/l2vpn-routing-security01.png)
 
-2. Maak een IP-voorvoegsellijst. Meld u aan bij NSX-T Manager en selecteer**IP-voorvoegsellijsten****voor** >  **Networking** >  > **netwerkrouteringrouteringroutering-** > **routering** > .**Routing** Klik op**toevoegen**. Voer een naam in om de lijst te identificeren. Klik **bij Voorvoegsels**op Twee maal **toevoegen.** Voer in de eerste regel '0.0.0.0/0' in voor **Netwerk** en 'Weigeren' voor **actie.** Selecteer in de tweede regel **Alle** voor **Netwerk** en **Handelingsvergunning** **.**
+2. Maak een IP-voorvoegsellijst. Meld u aan bij NSX-T Manager en selecteer**IP-voorvoegsellijsten****voor** >  **Networking** >  > **netwerkrouteringrouteringroutering-** > **routering** > .**Routing** Klik op **Add**. Voer een naam in om de lijst te identificeren. Klik **bij Voorvoegsels**op Twee maal **toevoegen.** Voer in de eerste regel '0.0.0.0/0' in voor **Netwerk** en 'Weigeren' voor **actie.** Selecteer in de tweede regel **Alle** voor **Netwerk** en **Handelingsvergunning** **.**
 3. Voeg de IP-voorvoegsellijst toe aan beide BGP-buren (TOR). Als u de IP-voorvoegsellijst aan de BGP-buurman koppelt, wordt voorkomen dat de standaardroute in BGP wordt geadverteerd aan de TOR-switches. Echter, elke andere route die de null route omvat zal adverteren de loopback interface IP-adres aan de TOR-switches.
 
     ![Lijst met IP-voorvoegsel maken](media/l2vpn-routing-security02.png)
@@ -180,7 +180,7 @@ De IP-adressen die worden gekozen voor loopback- en tunnelinterface die voor L2V
 ```
 Loopback interface ip : 192.168.254.254/32
 Tunnel interface subnet : 5.5.5.0/29
-Logical-router ID : UUID of Tier0 DR logical router obtained in section “Steps to fetch Logical-Router ID needed for L2VPN”
+Logical-router ID : UUID of Tier0 DR logical router obtained in section "Steps to fetch Logical-Router ID needed for L2VPN"
 Logical-switch ID(Stretch) : UUID of Stretch Logical Switch obtained earlier
 IPSec Service ID :
 IKE profile ID :
@@ -356,7 +356,7 @@ POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
 
 Voor de volgende POST-opdracht is de L2VPN-service-ID de ID die u zojuist hebt verkregen en de IPsec VPN-sessie-ID is de ID die in de vorige sectie is verkregen.
 
-``` 
+```    
 POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
 
 {

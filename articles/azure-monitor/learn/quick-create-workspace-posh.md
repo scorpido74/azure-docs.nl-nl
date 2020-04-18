@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: a2765aaf36aa5f7e541e0ee7fb3178246d2cca5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3547062f100eeb4dfa741a0566d737a0eac776a0
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659897"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605100"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Een Logboekanalysewerkruimte maken met Azure PowerShell
 
@@ -108,7 +108,7 @@ De volgende parameters stellen een standaardwaarde in:
     }
     ```
 
-2. Bewerk de sjabloon om aan uw vereisten te voldoen. Bekijk [de sjabloonverwijzing microsoft.operationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) om te zien welke eigenschappen en waarden worden ondersteund. 
+2. Bewerk de sjabloon om aan uw vereisten te voldoen. Bekijk [de sjabloonverwijzing microsoft.operationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) om te zien welke eigenschappen en waarden worden ondersteund. 
 3. Sla dit bestand op als **deploylaworkspacetemplate.json** in een lokale map.   
 4. U kunt deze sjabloon nu implementeren. Gebruik de volgende opdrachten uit de map met de sjabloon. Wanneer u wordt gevraagd om een naam van een werkruimte, geeft u een naam op die wereldwijd uniek is voor alle Azure-abonnementen.
 

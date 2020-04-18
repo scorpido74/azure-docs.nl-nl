@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7003899b59e409a785c3a50e89aae6674e377b4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bfee19e9cfd1def71ebad82c2210ffc10146c896
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264087"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639744"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Gebruikersinrichting van kenmerktoewijzingen aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -143,7 +143,10 @@ De SCIM RFC definieert een kerngebruikers- en groepsschema, terwijl het ook moge
    4. Selecteer **Lijst met kenmerk bewerken voor AppName**.
    5. Voer onder aan de lijst met kenmerken informatie in over het aangepaste kenmerk in de velden die worden verstrekt. Selecteer vervolgens **Kenmerk toevoegen**.
 
-Voor SCIM-toepassingen moet de kenmerknaam het patroon volgen dat in het onderstaande voorbeeld wordt weergegeven. De "CustomExtensionName" en "CustomAttribute" kunnen worden aangepast aan de vereisten van uw toepassing, bijvoorbeeld: urn:ietf:params:scim:schema's:extension:2.0:CustomExtensionName:CustomAttribute of urn:ietf:params:scim:schema's:extension: CustomExtensionName:2.0:User.CustomAttributeName:waarde
+Voor SCIM-toepassingen moet de kenmerknaam het patroon volgen dat in het onderstaande voorbeeld wordt weergegeven. De 'CustomExtensionName' en 'CustomAttribute' kunnen worden aangepast aan de vereisten van uw toepassing, bijvoorbeeld:  
+ * urn:ietf:params:scim:schema's:extensie:CustomExtensionName:2.0:Gebruiker:Aangepast Attribuut 
+ * urn:ietf:params:scim:schema's:extension:2.0:CustomExtensionName:CustomAttribute  
+ * urn:ietf:params:scim:schema's:extensie:CustomExtensionName:2.0:User.CustomAttributeName:value
 
 Deze instructies zijn alleen van toepassing op toepassingen met SCIM-toepassingen. Toepassingen zoals ServiceNow en Salesforce zijn niet geïntegreerd met Azure AD met SCIM en hebben daarom deze specifieke naamruimte niet nodig bij het toevoegen van een aangepast kenmerk.
 
@@ -313,7 +316,7 @@ Als u deze optie selecteert, wordt een resynchronisatie van alle gebruikers gedw
 - Het bijwerken van kenmerktoewijzingen heeft een impact op de prestaties van een synchronisatiecyclus. Voor een update van de configuratie van de kenmerktoewijzing moeten alle beheerde objecten opnieuw worden geëvalueerd.
 - Een aanbevolen aanbevolen best practice is om het aantal opeenvolgende wijzigingen in uw kenmerktoewijzingen tot een minimum te beperken.
 - Het toevoegen van een fotokenmerk dat aan een app moet worden ingericht, wordt vandaag niet ondersteund omdat u de indeling niet opgeven om de foto te synchroniseren. U de functie aanvragen op [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory)
-- Het kenmerk IsSoftDeleted maakt vaak deel uit van de standaardtoewijzingen voor een toepassing. IsSoftdeleted kan waar zijn in een van de vier scenario's (de gebruiker is buiten bereik vanwege het feit dat deze niet is toegewezen aan de toepassing, de gebruiker buiten het bereik is vanwege het niet voldoen aan een scopingfilter, de gebruiker is zacht verwijderd in Azure AD of de eigenschap AccountEnabled is ingesteld op false op de gebruiker). 
+- Het kenmerk IsSoftDeleted maakt vaak deel uit van de standaardtoewijzingen voor een toepassing. IsSoftdeleted kan waar zijn in een van de vier scenario's (de gebruiker is buiten bereik omdat deze niet is toegewezen aan de toepassing, de gebruiker buiten het bereik is vanwege het niet voldoen aan een scopingfilter, de gebruiker is zacht verwijderd in Azure AD of de eigenschap AccountEnabled is ingesteld op false op de gebruiker). 
 - De Azure AD-inrichtingsservice biedt geen ondersteuning voor het inrichten van null-waarden
 
 ## <a name="next-steps"></a>Volgende stappen

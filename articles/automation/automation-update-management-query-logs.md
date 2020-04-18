@@ -5,22 +5,22 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81e12e775306cc8637dedd534f50e8a14bc09a26
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 09eacb42eff6ecf3a3fca2d7fb401f52195f5f2d
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743866"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617426"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Query-updaterecords voor Updatebeheer in Azure-monitorlogboeken
 
-Naast de details die worden verstrekt in de updatebeheeroplossing, u zoeken naar de logboeken die zijn opgeslagen in uw Log Analytics-werkruimte. Selecteer op de oplossingspagina in het linkerdeelvenster **Logboeken**. De pagina **Logboekzoeken** wordt geopend.
+Naast de details die worden verstrekt in de updatebeheeroplossing, u zoeken naar de logboeken die zijn opgeslagen in uw Log Analytics-werkruimte. Selecteer op de oplossingspagina in het linkerdeelvenster de optie **Logboeken**. De pagina Logboekzoeken wordt geopend.
 
-U ook leren hoe u de query's aanpassen of gebruiken van verschillende clients en meer door te bezoeken: [Log Analytics search API-documentatie](https://dev.loganalytics.io/).
+U ook leren hoe u de query's aanpassen of gebruiken van verschillende clients. Zie [Api-documentatie voor zoeken naar logboekanalyses](https://dev.loganalytics.io/).
 
 ## <a name="update-records"></a>Records bijwerken
 
-Records die worden verzameld door Update Management voor Windows- en Linux-VM's en de gegevenstypen die worden weergegeven in de zoekresultaten van logboeken. In de volgende secties worden deze records beschreven.
+Updatebeheer verzamelt records voor Windows- en Linux-VM's en de gegevenstypen die worden weergegeven in de zoekresultaten van logboeken. In de volgende secties worden deze records beschreven.
 
 ### <a name="required-updates"></a>Vereiste updates
 
@@ -38,47 +38,47 @@ Er `RequiredUpdate` wordt een record gemaakt met een type dat wordt gemaakt voor
 | SourceSystem | *OperationsManager* | 
 | TenantId | Unieke id die de instantie van Azure Active Directory van uw organisatie vertegenwoordigt. | 
 | TimeGenerated | Datum en tijd waarop de record is gemaakt. | 
-| Type | *Update* | 
+| Type | *Bijwerken* | 
 | Classificatie bijwerken | Geeft aan welk type updates kan worden toegepast. Voor Windows:<br> *Essentiële updates*<br> *Beveiligingsupdates*<br> *Updatepakketten*<br> *Functiepakketten*<br> *Servicepacks*<br> *Definitie-updates*<br> *Hulpprogramma's*<br> *Updates*. Voor Linux:<br> *Essentiële en beveiligingsupdates*<br> *Overige* |
 | Ernst bijwerken | Ernst beoordeling voor de kwetsbaarheid. Waarden zijn:<br> *Kritiek*<br> *Belangrijk*<br> *Matige*<br> *Lage* |
 | Titel bijwerken | De titel van de update.|
 
-### <a name="update"></a>Update
+### <a name="update"></a>Bijwerken
 
 Er `Update` wordt een record gemaakt met een type updates die beschikbaar zijn en de installatiestatus ervan voor een machine. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving | 
 |----------|-------------|
-| GoedkeuringSbron | Alleen van toepassing op Windows-besturingssysteem. Waarde is *Microsoft Update*. |
-| Goedgekeurd | *Waar* of *onwaar* |
-| Classificatie | *Updates* |
+| GoedkeuringSbron | Alleen van toepassing op Windows-besturingssysteem. Bron van goedkeuring voor de goede orde. De waarde is Microsoft Update. |
+| Goedgekeurd | True als de record is goedgekeurd, of Onwaar anders. |
+| Classificatie | Goedkeuringsclassificatie. De waarde is Updates. |
 | Computer | Volledig gekwalificeerde domeinnaam van de rapportagemachine. |
-| Computeromgeving | *Azure* of *Niet-Azure*. |
-| MSRCBulletinID | Id-nummer van beveiligingsbulletin | 
-| MSRCSeverity | Ernst beoordeling voor de kwetsbaarheid. Waarden zijn:<br> *Kritiek*<br> *Belangrijk*<br> *Matige*<br> *Lage* |  
+| Computeromgeving | Milieu. Mogelijke waarden zijn Azure of Non-Azure. |
+| MSRCBulletinID | Beveiligingsbericht ID-nummer. | 
+| MSRCSeverity | Ernst beoordeling voor de kwetsbaarheid. Waarden zijn:<br> Kritiek<br> Belangrijk<br> Gemiddeld<br> Laag |  
 | KBID | Knowledge base artikel-ID voor de Windows-update. |
 | ManagementGroupName | Naam van de beheergroep Operations Manager of de werkruimte Log Analytics. |
 | UpdateID | Unieke id van de software-update. |
 | RevisionNumber | Het revisienummer van een specifieke revisie van een update. |
-| Optioneel | *Waar* of *onwaar* | 
+| Optioneel | True als de record optioneel is, of False anders. | 
 | RebootBehavior | Het rebootgedrag na het installeren/verwijderen van een update. |
-| _ResourceId | Unieke id voor de resource waarmee de record is gekoppeld. |
-| Type | *Update* |
+| _ResourceId | Unieke id voor de resource die aan de record is gekoppeld. |
+| Type | Recordtype. De waarde is Bijwerken. |
 | VMUUID | Unieke id voor de virtuele machine. |
 | MG | Unieke id voor de beheergroep of Log Analytics-werkruimte. | 
-| TenantId | Unieke id die de instantie van Azure Active Directory van uw organisatie vertegenwoordigt. | 
-| SourceSystem | *OperationsManager* | 
-| TimeGenerated | Datum en tijd waarop de record is gemaakt. | 
+| TenantId | Unieke id die het exemplaar van Azure Active Directory van uw organisatie vertegenwoordigt. | 
+| SourceSystem | Het bronsysteem voor de goede orde. De waarde `OperationsManager`is . | 
+| TimeGenerated | Datum en tijd van het maken van record. | 
 | SourceComputerId | Unieke id die de broncomputer vertegenwoordigt. | 
 | Titel | De titel van de update. |
-| PublishedDate (UTC) | De datum waarop de update is gedownload en geïnstalleerd vanuit Windows Update.  |
+| PublishedDate (UTC) | De datum waarop de update klaar is om te worden gedownload en geïnstalleerd vanuit Windows Update.  |
 | UpdateState | De huidige status van de update. | 
 | Product | De producten waarvoor de update van toepassing is. |
 | SubscriptionId | De unieke id voor het Azure-abonnement. | 
-| ResourceGroup | Naam van de resourcegroep waarvan de resource lid is. | 
-| ResourceProvider | Hiermee geeft u de resourceprovider op. | 
+| ResourceGroup | Naam van de resourcegroep waartoe de resource behoort. | 
+| ResourceProvider | De resourceprovider. | 
 | Resource | De naam van de resource. | 
-| ResourceType | Naam van het resourcetype. | 
+| ResourceType | Het resourcetype. | 
 
 ### <a name="update-agent"></a>Agent bijwerken
 
@@ -94,12 +94,12 @@ Er `UpdateAgent` wordt een record gemaakt met een type tekst die details geeft o
 | OSVersion | De versie van het besturingssysteem. |
 | server | |
 | SourceHealthServiceId | Unieke id die de Windows-agent-id van Log Analytics vertegenwoordigt. |
-| SourceSystem | *OperationsManager* | 
-| TenantId | Unieke id die de instantie van Azure Active Directory van uw organisatie vertegenwoordigt. |
-| TimeGenerated | Datum en tijd waarop de record is gemaakt. |
-| Type | *Update* | 
+| SourceSystem | Het bronsysteem voor de goede orde. De waarde `OperationsManager`is . | 
+| TenantId | Unieke id die het exemplaar van Azure Active Directory van uw organisatie vertegenwoordigt. |
+| TimeGenerated | Datum en tijd van het maken van record. |
+| Type | Recordtype. De waarde is Bijwerken. | 
 | WindowsUpdateAgentVersion | Versie van de Windows Update-agent. |
-| WSUSServer | Hiermee worden fouten weergegeven als de Windows Update-agent een probleem heeft om te helpen bij het oplossen van problemen. |
+| WSUSServer | Fouten als de Windows Update-agent een probleem heeft, om te helpen bij het oplossen van problemen. |
 
 ### <a name="update-deployment-status"></a>Implementatiestatus bijwerken 
 
@@ -108,30 +108,30 @@ Er `UpdateRunProgress` wordt een record gemaakt met een type bestand dat de impl
 | Eigenschap | Beschrijving | 
 |----------|-------------|
 | Computer | Volledig gekwalificeerde domeinnaam van de rapportagemachine. |
-| Computeromgeving | *Azure* of *Niet-Azure*. | 
+| Computeromgeving | Milieu. Waarden zijn Azure of Non-Azure. | 
 | CorrelationId | Unieke id van de runbook-taak die wordt uitgevoerd voor de update. |
 | EndTime | Het moment waarop het synchronisatieproces is beëindigd. | 
 | Foutresultaat | Windows Update-foutcode gegenereerd als een update niet wordt geïnstalleerd. | 
-| Installatiestatus | De mogelijke installatiestatus van een update op de clientcomputer,<br> *NotStarted* - taak nog niet geactiveerd.<br> *FailedToStart* - kan de taak niet starten op de machine.<br> *Mislukt* - taak is gestart, maar is mislukt met een uitzondering.<br> *InProgress* - job in progress.<br> *MaintenanceWindowExceeded* - als de uitvoering overbleef, maar onderhoudsvenster interval bereikt.<br> *Geslaagd* - baan geslaagd.<br> *InstallFailed* - update kan niet worden geïnstalleerd.<br> *Niet inbegrepen*<br> *Uitgesloten* |
+| Installatiestatus | De mogelijke installatiestatus van een update op de clientcomputer,<br> `NotStarted`- taak nog niet geactiveerd.<br> `FailedToStart`- niet in staat om de taak op de machine te starten.<br> `Failed`- baan gestart, maar mislukt met een uitzondering.<br> `InProgress`- baan in uitvoering.<br> `MaintenanceWindowExceeded`- als de uitvoering overbleef, maar het interval van het onderhoudsvenster is bereikt.<br> `Succeeded`- baan geslaagd.<br> `InstallFailed`- update kan niet worden geïnstalleerd.<br> `NotIncluded`<br> `Excluded` |
 | KBID | Knowledge base artikel-ID voor de Windows-update. | 
 | ManagementGroupName | Naam van de beheergroep Operations Manager of de werkruimte Log Analytics. |
-| OSType | Hiermee geeft u het type besturingssysteem, *Windows* of *Linux op.* | 
+| OSType | Type besturingssysteem. Waarden zijn Windows of Linux. | 
 | Product | De producten waarvoor de update van toepassing is. |
 | Resource | De naam van de resource. | 
-| ResourceId | Unieke id voor de resource waarmee de record is gekoppeld. |
-| ResourceProvider | Hiermee geeft u de resourceprovider op. | 
-| ResourceType | Naam van het resourcetype. | 
+| ResourceId | Unieke id voor de resource die aan de record is gekoppeld. |
+| ResourceProvider | De resourceprovider. | 
+| ResourceType | Resourcetype. | 
 | SourceComputerId | Unieke id die de broncomputer vertegenwoordigt. | 
-| SourceSystem | *OperationsManager* |
-| StartTime | Tijd wanneer de update is gepland om te worden geïnstalleerd. |
+| SourceSystem | Bron systeem voor de goede orde. De waarde `OperationsManager`is . |
+| StartTime | Het tijdstip waarop de update is gepland om te worden geïnstalleerd. |
 | SubscriptionId | De unieke id voor het Azure-abonnement. | 
-| SucceededOnRetry | Hiermee wordt weergegeven wanneer de update-uitvoering is mislukt bij de eerste poging en de huidige bewerking een poging tot nieuwe poging is. |
-| TimeGenerated | Datum en tijd waarop de record is gemaakt. |
+| SucceededOnRetry | Waarde die aangeeft of de update-uitvoering is mislukt bij de eerste poging en de huidige bewerking een poging tot nieuwe poging is. |
+| TimeGenerated | Datum en tijd van het maken van record. |
 | Titel | De titel van de update. |
-| Type | *UpdateRunProgress* |
+| Type | Het type update. De waarde `UpdateRunProgress`is . |
 | UpdateId (UpdateId) | Unieke id van de software-update. |
 | VMUUID | Unieke id voor de virtuele machine. |
-| _ResourceId | Unieke id voor de resource waarmee de record is gekoppeld. |
+| ResourceId | Unieke id voor de resource die aan de record is gekoppeld. |
 
 ### <a name="update-summary"></a>Overzicht bijwerken 
 
@@ -140,32 +140,32 @@ Er `UpdateSummary` wordt een record gemaakt met een type bestand dat updatesamen
 | Eigenschap | Beschrijving | 
 |----------|-------------|
 | Computer | Volledig gekwalificeerde domeinnaam van de rapportagemachine. |
-| Computeromgeving | *Azure* of *Niet-Azure*. | 
-| CriticalUpdatesMissing | Aantal kritieke updates dat van toepassing is. | 
+| Computeromgeving | Milieu. Waarden zijn Azure of Non-Azure. | 
+| CriticalUpdatesMissing | Aantal toepasselijke kritieke updates die ontbreken. | 
 | ManagementGroupName | Naam van de beheergroep Operations Manager of de werkruimte Log Analytics. |
 | NETRuntimeVersion | Versie van .NET Framework geïnstalleerd op de Windows-computer. |
-| OldestMissingSecurityUpdateBucket | Waarden zijn:<br> *Recent* als de waarde minder dan 30 dagen bedraagt<br> *30 dagen geleden*<br> *60 dagen geleden*<br> *90 dagen geleden*<br> *120 dagen geleden*<br> *150 dagen geleden*<br> *180 dagen geleden*<br> *Ouder* wanneer de waarde groter is dan 180 dagen | 
+| OldestMissingSecurityUpdateBucket | Specificer van de oudste ontbrekende veiligheidsemmer. Waarden zijn:<br> Recent als de waarde minder dan 30 dagen bedraagt<br> 30 dagen geleden<br> 60 dagen geleden<br> 90 dagen geleden<br> 120 dagen geleden<br> 150 dagen geleden<br> 180 dagen geleden<br> Ouder wanneer de waarde groter is dan 180 dagen. | 
 | OldestMissingSecurityUpdateInDays | Totaal aantal dagen voor de oudste update die is gedetecteerd als van toepassing die niet is geïnstalleerd. |
 | OsVersion | De versie van het besturingssysteem. |
 | OtherUpdatesMissing | Aantal gedetecteerde updates ontbreekt. |
-| Resource |  De naam van de resource. | 
-| ResourceGroup | Naam van de resourcegroep waarvan de resource lid is. |
-| ResourceId | Unieke id voor de resource waarmee de record is gekoppeld. |
-| ResourceProvider | Hiermee geeft u de resourceprovider op. |
-| ResourceType | Naam van het resourcetype. |
-| Opnieuw opstartenAfhankelijk | *Waar* of *Onwaar*. |
-| SecurityUpdatesMissing | Aantal ontbrekende beveiligingsupdates van toepassing.| 
+| Resource | Naam van de bron voor de record. | 
+| ResourceGroup | Naam van de resourcegroep die de resource bevat. |
+| ResourceId | Unieke id voor de resource die aan de record is gekoppeld. |
+| ResourceProvider | De resourceprovider. |
+| ResourceType | Resourcetype. |
+| Opnieuw opstartenAfhankelijk | True als een herstart in behandeling is of False otherwise. |
+| SecurityUpdatesMissing | Aantal ontbrekende beveiligingsupdates die van toepassing zijn.| 
 | SourceComputerId | Unieke id voor de virtuele machine. |
-| SourceSystem | *OpsManager* | 
+| SourceSystem | Bron systeem voor de goede orde. De waarde `OpsManager`is . | 
 | SubscriptionId | De unieke id voor het Azure-abonnement. |
-| TimeGenerated | Datum en tijd waarop de record is gemaakt. |
-| TotalUpdatesMissing | Totaal aantal ontbrekende updates van toepassing. | 
-| Type | *UpdateSummary* |
+| TimeGenerated | Datum en tijd van het maken van record. |
+| TotalUpdatesMissing | Totaal aantal ontbrekende updates die van toepassing zijn. | 
+| Type | Recordtype. De waarde `UpdateSummary`is . |
 | VMUUID | Unieke id voor de virtuele machine. |
 | WindowsUpdateAgentVersion | Versie van de Windows Update-agent. |
-| WindowsUpdateSetting | Hiermee wordt de status van de Windows Update-agent weergegeven. Mogelijke waarden zijn:<br> *Geplande installatie*<br> *Melding vóór installatie*<br> Fout teruggekeerd van ongezonde WUA-agent. | 
-| WSUSServer | Hiermee worden fouten weergegeven als de Windows Update-agent een probleem heeft om te helpen bij het oplossen van problemen. |
-| _ResourceId | Unieke id voor de resource waarmee de record is gekoppeld. |
+| WindowsUpdateSetting | Status van de Windows Update-agent. Mogelijke waarden zijn:<br> `Scheduled installation`<br> `Notify before installation`<br> `Error returned from unhealthy WUA agent` | 
+| WSUSServer | Fouten als de Windows Update-agent een probleem heeft, om te helpen bij het oplossen van problemen. |
+| _ResourceId | Unieke id voor de resource die aan de record is gekoppeld. |
 
 ## <a name="sample-queries"></a>Voorbeeldquery's
 
@@ -306,8 +306,6 @@ on SourceComputerId
 | summarize assessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity>-1), notAssessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==-1), computersNeedCriticalUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==4), computersNeedSecurityUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==2), computersNeedOtherUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==1), upToDateComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==0)
 | summarize assessedComputersCount=sum(assessedComputersCount), computersNeedCriticalUpdatesCount=sum(computersNeedCriticalUpdatesCount),  computersNeedSecurityUpdatesCount=sum(computersNeedSecurityUpdatesCount), computersNeedOtherUpdatesCount=sum(computersNeedOtherUpdatesCount), upToDateComputersCount=sum(upToDateComputersCount), notAssessedComputersCount=sum(notAssessedComputersCount)
 | extend allComputersCount=assessedComputersCount+notAssessedComputersCount
-
-
 ```
 
 #### <a name="missing-updates-summary"></a>Overzicht van ontbrekende updates

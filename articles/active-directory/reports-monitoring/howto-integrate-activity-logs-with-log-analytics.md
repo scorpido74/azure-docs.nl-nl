@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d0ef55f6f5117ffa77052118155afea716125a4
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266440"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639729"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD-logboeken integreren met Azure Monitor-logboeken
 
@@ -60,9 +60,13 @@ U hebt het volgende nodig om deze functie te gebruiken:
 * Een gebruiker die een *globale beheerder* of *beveiligingsbeheerder* voor de Azure-tenant is.
 * Een Werkruimte logAnalytics in uw Azure-abonnement. Meer informatie over het [maken van een Log Analytics-werkruimte](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 
+## <a name="licensing-requirements"></a>Licentievereisten
+
+Voor het gebruik van deze functie is een Azure AD Premium P1- of P2-licentie vereist. Zie [Algemeen beschikbare functies van de edities Gratis, Basic en Premium vergelijken](https://azure.microsoft.com/pricing/details/active-directory/) als u een licentie zoekt die bij uw vereisten past.
+
 ## <a name="send-logs-to-azure-monitor"></a>Logboeken verzenden naar Azure Monitor
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
 2. Selecteer diagnostische**instellingen** -> voor **Azure Active Directory** > **Voeg diagnostische instelling toe.** U ook **Exportinstellingen** selecteren op de pagina **Controlelogboeken** of **Aanmeldingsom** naar de configuratiepagina voor diagnostische instellingen te gaan.  
     

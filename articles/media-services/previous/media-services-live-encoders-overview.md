@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 71a31228602ef161158eaa05c80d50f65de98a50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82fa5968d004bd4460f2c05ec944f6e568508675
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133272"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641136"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>On-premises encoders configureren wanneer u Azure Media Services gebruikt om multibitratestreams te maken
 In dit onderwerp worden on-premises live-encoders weergegeven die u gebruiken om uw live-gebeurtenissen vast te leggen en een enkele bitrate live stream naar AMS-kanalen te verzenden (die live codering zijn ingeschakeld) voor verdere verwerking. Het onderwerp verwijst ook naar zelfstudies die laten zien hoe u vermelde encoders configureert.
@@ -32,9 +32,6 @@ Zie Haivision KB [Encoder](media-services-configure-kb-live-encoder.md)configure
 
 ## <a name="telestream-wirecast"></a>Telestream-wirecast
 Zie [Wirecast](media-services-configure-wirecast-live-encoder.md)configureren voor informatie over het configureren van de [Telestream Wirecast-encoder](https://www.telestream.net/wirecast/overview.htm) om een enkele bitrate live stream naar een AMS-kanaal te verzenden.
-
-## <a name="newtek-tricaster"></a>NewTek TriCaster
-Zie [Tricaster](media-services-configure-tricaster-live-encoder.md)configureren voor informatie over het configureren van de [Tricaster-encoder](https://newtek.com/products/tricaster-40.html) om een enkele bitrate live stream naar een AMS-kanaal te verzenden.
 
 ## <a name="elemental-live"></a>Elemental Live
 Zie [Elemental Live voor](https://www.elementaltechnologies.com/products/elemental-live)meer informatie.

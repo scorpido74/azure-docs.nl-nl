@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 00f6a5f88a66f0a19943ff3a2c722ae1a9938e9e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550394"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604730"
 ---
 # <a name="how-to-query-logs-from-startstop-vms-solution"></a>Logboeken opvragen vanaf de VM's-oplossing voor begin/stop
 
@@ -71,4 +71,4 @@ De volgende tabel bevat voorbeeldzoekopdrachten in logboeken voor taakrecords di
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De vm's voor starten/stoppen tijdens de oplossing voor buitenkantooruren bevat geen vooraf gedefinieerde set waarschuwingen. Bekijk de [logboekwaarschuwingen maken](../azure-monitor/platform/alerts-log.md) met Azure Monitor voor meer informatie over het maken van waarschuwingen die zijn mislukt om uw DevOps of operationele processen en procedures te ondersteunen.
+De **vm's starten/stoppen tijdens off-hours-oplossing** bevat geen vooraf gedefinieerde set waarschuwingen. Bekijk de [logboekwaarschuwingen maken](../azure-monitor/platform/alerts-log.md) met Azure Monitor voor meer informatie over het maken van waarschuwingen die zijn mislukt om uw DevOps of operationele processen en procedures te ondersteunen.

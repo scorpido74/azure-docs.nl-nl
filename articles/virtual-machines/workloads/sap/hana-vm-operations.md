@@ -15,26 +15,26 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07c8f84f2e37abd87953d8e4cb20b37258b25fda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c4f3ec2727d06528eab788a2a24a6190fe26533
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920468"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606148"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Configuraties en bewerkingen van SAP HANA-infrastructuur in Azure
 Dit document biedt richtlijnen voor het configureren van Azure-infrastructuur en het bedienen van SAP HANA-systemen die zijn geïmplementeerd op Virtuele Azure-servers (VM's). Het document bevat ook configuratie-informatie voor SAP HANA scale-out voor de M128s VM SKU. Dit document is niet bedoeld ter vervanging van de standaard SAP-documentatie, die de volgende inhoud bevat:
 
 - [SAP-beheergids](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/330e5550b09d4f0f8b6cceb14a64cd22.html)
 - [SAP-installatiehandleidingen](https://service.sap.com/instguides)
-- [SAP-notities](https://sservice.sap.com/notes)
+- [SAP-notities](https://service.sap.com/notes)
 
 ## <a name="prerequisites"></a>Vereisten
 Als u deze handleiding wilt gebruiken, hebt u basiskennis van de volgende Azure-componenten nodig:
 
 - [Virtuele machines van Azure](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 - [Azure-netwerken en virtuele netwerken](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
-- [Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Azure-opslag](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
 Zie het gedeelte [SAP op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) van de [Azure-documentatie](https://docs.microsoft.com/azure/)voor meer informatie over SAP NetWeaver en andere SAP-componenten op Azure.
 
@@ -101,7 +101,7 @@ De artikelen [Azure Virtual Datacenter: A Network Perspective](https://docs.micr
 
 
 >[!NOTE]
->Verkeer dat tussen een hub VNet en spoke VNet met [Azure VNet-peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) stroomt, is onderhevig aan extra [kosten](https://azure.microsoft.com/pricing/details/virtual-network/). Op basis van deze kosten moet u mogelijk overwegen compromissen te sluiten tussen het uitvoeren van een strikt hub- en spaaknetwerkontwerp en het uitvoeren van meerdere [Azure ExpressRoute-gateways](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) die u met 'spaken' verbindt om VNet-peering te omzeilen. Azure ExpressRoute Gateways brengen echter ook extra [kosten](https://azure.microsoft.com/pricing/details/vpn-gateway/) met zich mee. U ook extra kosten ondervinden voor software van derden die u gebruikt voor het registreren, controleren en controleren van netwerkverkeer. Afhankelijk van de kosten voor gegevensuitwisseling via VNet-peering aan de ene kant en de kosten die worden gemaakt door extra Azure ExpressRoute-gateways en aanvullende softwarelicenties, u kiezen voor microsegmentatie binnen één VNet door subnetten als isolatie-eenheid te gebruiken in plaats van VNets.
+>Verkeer dat tussen een hub VNet en spoke VNet met [Azure VNet-peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) stroomt, is onderhevig aan extra [kosten](https://azure.microsoft.com/pricing/details/virtual-network/). Op basis van deze kosten moet u mogelijk overwegen compromissen te sluiten tussen het uitvoeren van een strikt hub- en spaaknetwerkontwerp en het uitvoeren van meerdere [Azure ExpressRoute-gateways](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) die u met 'spaken' verbindt om VNet-peering te omzeilen. Azure ExpressRoute Gateways brengen echter ook extra [kosten](https://azure.microsoft.com/pricing/details/vpn-gateway/) met zich mee. U ook extra kosten ondervinden voor software van derden die u gebruikt voor het registreren, controleren en controleren van netwerkverkeer. Afhankelijk van de kosten voor gegevensuitwisseling via VNet-peering aan de ene kant en de kosten die worden gemaakt door extra Azure ExpressRoute-gateways en aanvullende softwarelicenties, u kiezen voor microsegmentatie binnen één VNet door subnetten te gebruiken als isolatie-eenheid in plaats van VNets.
 
 
 Zie [IP-adrestypen en toewijzingsmethoden in Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)voor een overzicht van de verschillende methoden voor het toewijzen van IP-adressen. 

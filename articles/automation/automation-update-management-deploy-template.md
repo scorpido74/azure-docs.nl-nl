@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 03/30/2020
-ms.openlocfilehash: e69f3d7350d0da9f364983eae0935532b576bd76
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 81f9d242d93ffe513c0c3733ceb9d38ca9cadc1c
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411462"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617449"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Onboard Update Management-oplossing met Azure Resource Manager-sjabloon
 
@@ -20,16 +20,19 @@ U [Azure Resource Manager-sjablonen](../azure-resource-manager/templates/templat
 
 * Het maken van een Azure Monitor Log Analytics-werkruimte.
 * Het maken van een Azure Automation-account.
-* Koppelt het automatiseringsaccount aan de werkruimte Log Analytics als deze nog niet is gekoppeld.
-* Aan boord van de Azure Automation Update Management-oplossing
+* Het automatiseringsaccount koppelen aan de werkruimte Log Analytics, als deze nog niet is gekoppeld.
+* Onboarding van de Azure Automation Update Management-oplossing.
 
 De sjabloon automatiseert de onboarding van een of meer Azure- of niet-Azure VM's niet.
 
-Als u al een Log Analytics-werkruimte en automatiseringsaccount hebt geïmplementeerd in een ondersteund gebied in uw abonnement, zijn deze niet gekoppeld en is de oplossing Voor updatebeheer nog niet geïmplementeerd, met deze sjabloon wordt de koppeling gemaakt en wordt de oplossing Updatebeheer geïmplementeerd. 
+Als u al een Log Analytics-werkruimte en een Automatiseringsaccount hebt geïmplementeerd in een ondersteund gebied in uw abonnement, zijn deze niet gekoppeld. De werkruimte heeft nog niet de oplossing Updatebeheer geïmplementeerd. Als u deze sjabloon gebruikt, wordt de koppeling gemaakt en wordt de oplossing Updatebeheer geïmplementeerd. 
+
+>[!NOTE]
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](automation-update-azure-modules.md)
 
 ## <a name="api-versions"></a>API-versies
 
-In de volgende tabel vindt u de API-versie voor de resources die in dit voorbeeld worden gebruikt.
+In de volgende tabel worden de API-versies weergegeven voor de bronnen die in deze sjabloon worden gebruikt.
 
 | Resource | Resourcetype | API-versie |
 |:---|:---|:---|
@@ -39,7 +42,7 @@ In de volgende tabel vindt u de API-versie voor de resources die in dit voorbeel
 
 ## <a name="before-using-the-template"></a>Voordat u de sjabloon gebruikt
 
-Als u ervoor kiest PowerShell lokaal te installeren en te gebruiken, vereist dit artikel de Azure PowerShell Az-module. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Zie [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps) als u een upgrade wilt uitvoeren. Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure. Met Azure PowerShell maakt implementatie gebruik [van New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
+Als u ervoor kiest PowerShell lokaal te installeren en te gebruiken, vereist dit artikel de Azure PowerShell Az-module. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Zie [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps) als u een upgrade wilt uitvoeren. Als u PowerShell lokaal uitvoert, moet u ook [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) uitvoeren om een verbinding met Azure te maken. Met Azure PowerShell maakt implementatie gebruik [van New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
 
 Als u ervoor kiest de CLI lokaal te installeren en te gebruiken, moet u in dit artikel de Azure CLI-versie 2.1.0 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Met Azure CLI maakt deze implementatie gebruik van [het maken van az-groepsimplementatie.](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) 
 
@@ -48,9 +51,9 @@ De JSON-sjabloon is geconfigureerd om u te vragen om:
 * De naam van de werkruimte
 * De regio waarin de werkruimte moet worden gemaakt
 * De naam van het automatiseringsaccount
-* De regio om het account aan te maken in
+* De regio waarin u het account aanmaken
 
-De JSON-sjabloon geeft een standaardwaarde op voor de andere parameters die waarschijnlijk als standaardconfiguratie in uw omgeving worden gebruikt. U de sjabloon opslaan in een Azure-opslagaccount voor gedeelde toegang in uw organisatie. Zie [Resources implementeren met Resource Manager-sjablonen en Azure CLI voor](../azure-resource-manager/templates/deploy-cli.md)meer informatie over het werken met sjablonen.
+De JSON-sjabloon geeft een standaardwaarde op voor de andere parameters die waarschijnlijk worden gebruikt voor een standaardconfiguratie in uw omgeving. U de sjabloon opslaan in een Azure-opslagaccount voor gedeelde toegang in uw organisatie. Zie [Resources implementeren met Resource Manager-sjablonen en Azure CLI voor](../azure-resource-manager/templates/deploy-cli.md)meer informatie over het werken met sjablonen.
 
 De volgende parameters in de sjabloon zijn ingesteld met een standaardwaarde voor de werkruimte Log Analytics:
 
@@ -59,11 +62,11 @@ De volgende parameters in de sjabloon zijn ingesteld met een standaardwaarde voo
 * capaciteitsreservering - standaard 100 GB
 
 >[!WARNING]
->Als u een Log Analytics-werkruimte maakt of configureert in een abonnement dat is gekozen voor het nieuwe prijsmodel van april 2018, is de enige geldige prijscategorie Log Analytics **PerGB2018**.
+>Als u een Log Analytics-werkruimte maakt of configureert in een abonnement dat is gekozen voor het prijsmodel van april 2018, is de enige geldige prijscategorie Log Analytics **PerGB2018**.
 >
 
 >[!NOTE]
->Voordat u deze sjabloon gebruikt, raadpleegt u [aanvullende details](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) om volledig inzicht te krijgen in de configuratieopties voor werkruimtes, zoals de toegangscontrolemodus, de prijscategorie, de retentie- en capaciteitsreserveringsniveau. Als u nieuw bent in Azure Monitor-logboeken en nog geen werkruimte hebt geïmplementeerd, moet u de ontwerprichtlijnen voor [werkruimtes](../azure-monitor/platform/design-logs-deployment.md) bekijken om meer te weten te komen over toegangsbeheer en inzicht in de ontwerpimplementatiestrategieën die we voor uw organisatie aanbevelen.
+>Voordat u deze sjabloon gebruikt, raadpleegt u [aanvullende details](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) om volledig inzicht te krijgen in de configuratieopties voor werkruimtes, zoals de toegangscontrolemodus, de prijscategorie, de retentie en het capaciteitsreserveringsniveau. Als u nieuw bent in Azure Monitor-logboeken en nog geen werkruimte hebt geïmplementeerd, moet u de ontwerprichtlijnen voor [werkruimtes](../azure-monitor/platform/design-logs-deployment.md) bekijken om meer te weten te komen over toegangsbeheer en inzicht te krijgen in de ontwerpimplementatiestrategieën die we voor uw organisatie aanbevelen.
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
@@ -235,7 +238,7 @@ De volgende parameters in de sjabloon zijn ingesteld met een standaardwaarde voo
 
 2. Bewerk de sjabloon om aan uw vereisten te voldoen. Overweeg een [resourcebeheerbestand te](../azure-resource-manager/templates/parameter-files.md) maken in plaats van parameters door te geven als inlinewaarden.
 
-3. Sla dit bestand op als deployUMSolutiontemplate.json in een lokale map.
+3. Sla dit bestand op in een lokale map als **deployUMSolutiontemplate.json**.
 
 4. U kunt deze sjabloon nu implementeren. U PowerShell of Azure CLI gebruiken. Wanneer u wordt gevraagd om een werkruimte en de naam van een Automatiseringsaccount, geeft u een naam op die wereldwijd uniek is voor alle Azure-abonnementen.
 

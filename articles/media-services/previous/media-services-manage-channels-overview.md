@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 99efe375fad142963214b09df24be70bc3bc9d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f875b4a5c4f1322f4a992dc3738ab1ce6431149d
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77131600"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641127"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Overzicht van Live Streaming met Media Services
 
@@ -55,7 +55,7 @@ In Azure Media Services wordt alle functionaliteiten voor live streamen afgehand
 
 Een **kanaal** vertegenwoordigt een pijplijn voor de verwerking van inhoud voor live-streaming. Een kanaal kan op de volgende manieren live invoerstromen ontvangen:
 
-* Een on-premises live codering verzendt multi-bitrate **RTMP** of **Smooth Streaming** (gefragmenteerd MP4) naar het kanaal dat is geconfigureerd voor **passthrough**-levering. **Passthrough**-levering vindt plaats wanneer de opgenomen streams het **kanaal** passeren zonder verdere verwerking. U de volgende live-encoders gebruiken die multi-bitrate Smooth Streaming uitvoeren: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco en Elemental. De volgende live encoders output RTMP: Telestream Wirecast, Haivision, Teradek, en Tricaster transcoders.  Een live coderingsprogramma kan ook een stream met één bitsnelheid verzenden naar een kanaal dat niet is ingeschakeld voor Live Encoding, maar dit wordt niet aanbevolen. Desgevraagd levert Media Services de stream aan klanten.
+* Een on-premises live codering verzendt multi-bitrate **RTMP** of **Smooth Streaming** (gefragmenteerd MP4) naar het kanaal dat is geconfigureerd voor **passthrough**-levering. **Passthrough**-levering vindt plaats wanneer de opgenomen streams het **kanaal** passeren zonder verdere verwerking. U de volgende live-encoders gebruiken die multi-bitrate Smooth Streaming uitvoeren: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco en Elemental. De volgende live encoders output RTMP: Telestream Wirecast, Haivision, Teradek transcoders.  Een live coderingsprogramma kan ook een stream met één bitsnelheid verzenden naar een kanaal dat niet is ingeschakeld voor Live Encoding, maar dit wordt niet aanbevolen. Desgevraagd levert Media Services de stream aan klanten.
 
   > [!NOTE]
   > Het gebruik van de passthrough-methode is de meest voordelige manier om live te streamen wanneer u meerdere gebeurtenissen gedurende een langere periode streamt en u al hebt geïnvesteerd in on-premises coderingsprogramma’s. Zie de details over de [prijzen](https://azure.microsoft.com/pricing/details/media-services/).

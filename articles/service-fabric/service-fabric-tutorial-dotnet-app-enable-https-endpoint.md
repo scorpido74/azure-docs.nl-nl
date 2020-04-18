@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u met behulp van Kestrel een HTTPS-e
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: aafe2e7c89f6d4a90806378e9cf25c81f51feb60
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b88ecd8d169e7402d149481c22bae95e632efe26
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411186"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605292"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Zelfstudie: Een HTTPS-eindpunt toevoegen aan een front-end-service van ASP.NET Core Web-API met behulp van Kestrel
 
@@ -400,7 +400,7 @@ $slb | Set-AzLoadBalancer
 
 Sla alle bestanden op, schakel over van Fouten opsporen naar Uitbrengen en druk op F6 om opnieuw op te bouwen.  Klik in Solution Explorer met de rechtermuisknop op **Stemmen** en selecteer **Publiceren**. Selecteer het verbindingseindpunt van het cluster dat is gemaakt in [Een toepassing implementeren op een cluster](service-fabric-tutorial-deploy-app-to-party-cluster.md) of selecteer een ander cluster.  Klik op **Publiceren** om de toepassing naar het externe cluster te publiceren.
 
-Wanneer de toepassing wordt geïmplementeerd, opent [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443) u een webbrowser en navigeert u naar (de URL bijwerken met het verbindingseindpunt voor uw cluster). Als u een zelfondertekend certificaat gebruikt, ziet u een waarschuwing dat uw pc de beveiliging van deze website niet vertrouwt.  Ga door naar de webpagina.
+Nadat de toepassing is geïmplementeerd, opent u een webbrowser en navigeert u naar `https://mycluster.region.cloudapp.azure.com:443` (werk de URL bij met het verbindingseindpunt voor uw cluster). Als u een zelfondertekend certificaat gebruikt, ziet u een waarschuwing dat uw pc de beveiliging van deze website niet vertrouwt.  Ga door naar de webpagina.
 
 ![Stemtoepassing][image3]
 

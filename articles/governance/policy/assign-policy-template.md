@@ -4,12 +4,12 @@ description: In deze snelstart gebruikt u een resourcemanagersjabloon om een bel
 ms.date: 03/16/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 9f9998c407c39d11615a5997549a363a276b9e10
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ae6b2d151baaa904215639276c7fb74766810c6a
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471401"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606601"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Snelstart: een beleidstoewijzing maken om niet-compatibele resources te identificeren met behulp van een resourcemanagersjabloon
 
@@ -43,11 +43,11 @@ De resource die in de sjabloon is gedefinieerd, is:
 
 1. Selecteer de volgende afbeelding om u aan te melden bij de Azure-portal en open de sjabloon:
 
-   [![De beleidssjabloon implementeren in Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [![De beleidssjabloon implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. Selecteer of voer de volgende waarden in:
 
-   | Name | Waarde |
+   | Naam | Waarde |
    |------|-------|
    | Abonnement | Selecteer uw Azure-abonnement. |
    | Resourcegroep | Selecteer **Nieuw maken,** geef een naam op en selecteer **OK**. In de schermafbeelding is de naam van de resourcegroep _mypolicyquickstartdatum\<in\>MMDD rg_. |

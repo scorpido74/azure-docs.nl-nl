@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 5c84588290ce769b556002469b6a11c6950bb878
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd38f646b8dfc58839cd2645f7fadf7332693854
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476549"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605992"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Problemen met de activering van virtuele Microsoft Azure-machines oplossen
 
@@ -77,7 +77,7 @@ Voor de VM die is gemaakt op basis van een aangepaste afbeelding, moet u de juis
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>Stap 2 De connectiviteit tussen de VM- en Azure KMS-service verifiëren
 
-1. Download en haal het [gereedschap PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) naar een lokale map in de VM die niet wordt geactiveerd. 
+1. Download en haal het [gereedschap PSping](https://docs.microsoft.com/sysinternals/downloads/psping) naar een lokale map in de VM die niet wordt geactiveerd. 
 
 2. Ga naar Start, zoek op Windows PowerShell, klik met de rechtermuisknop op Windows PowerShell en selecteer Uitvoeren als beheerder.
 

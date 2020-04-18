@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2bd9b4f46e28a28f99045319d8ac606cdcee7216
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53dfe07ebd4925c96290db140b6e613c38eef564
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536782"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617343"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Een Windows Hybrid Runbook Worker implementeren
 
@@ -144,7 +144,7 @@ In de zoekresultaten ziet u hartslagrecords voor de computer, wat aangeeft dat d
 Gebruik de volgende stappen om de installatie en installatie van de agent uit te voeren.
 
 1. Schakel de oplossing in om aan boord van de agentmachine te gaan. Zie [Boordmachines in de werkruimte](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace).
-2. Controleer of de agent de automatiseringsoplossing correct heeft gedownload. Het moet een map met de naam **AzureAutomationFiles** in **C:\Program Files\Microsoft Monitoring Agent\Agent**. 
+2. Controleer of de agent de automatiseringsoplossing correct heeft gedownload. 
 3. Als u de versie van de hybride runbookworker wilt bevestigen, bladert u naar **C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation** en noteer de **submap van** de versie.
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>Stap 4 - Installeer de runbook-omgeving en maak verbinding met Azure Automation

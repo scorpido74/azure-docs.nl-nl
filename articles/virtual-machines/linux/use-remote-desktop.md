@@ -13,15 +13,15 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 2b1b708618c60153b8dbce69b26d832fa18b25aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476600"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605191"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Extern bureaublad installeren en configureren om verbinding te maken met een Linux-vm in Azure
-Linux virtuele machines (VM's) in Azure worden meestal beheerd vanaf de opdrachtregel met behulp van een Secure Shell (SSH) verbinding. Wanneer het gebruik van extern bureaublad eenvoudiger is voor Linux of voor scenario's voor snelle probleemoplossing, is het gebruik van extern bureaublad eenvoudiger. In dit artikel wordt beschreven hoe u een desktopomgeving[(xfce)](https://www.xfce.org)en extern bureaublad[(xrdp)](https://www.xrdp.org)voor uw Linux-VM installeert en configureert met behulp van het implementatiemodel Resource Manager.
+Linux virtuele machines (VM's) in Azure worden meestal beheerd vanaf de opdrachtregel met behulp van een Secure Shell (SSH) verbinding. Wanneer het gebruik van extern bureaublad eenvoudiger is voor Linux of voor scenario's voor snelle probleemoplossing, is het gebruik van extern bureaublad eenvoudiger. In dit artikel wordt beschreven hoe u een desktopomgeving[(xfce)](https://www.xfce.org)en extern bureaublad[(xrdp)](http://xrdp.org)voor uw Linux-VM installeert en configureert met behulp van het implementatiemodel Resource Manager.
 
 
 ## <a name="prerequisites"></a>Vereisten

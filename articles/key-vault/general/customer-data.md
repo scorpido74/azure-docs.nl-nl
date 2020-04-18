@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 847b6c4616cbbb7fd9c6ccad18ec426dc38a887a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: bceea53e6b177940305a2dc77f2a6ecfa37f277a
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81430849"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617902"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Functies voor klantgegevens van Azure Key Vault
 
@@ -40,7 +40,7 @@ De volgende informatie identificeert klantgegevens in Azure Key Vault:
 
 Dezelfde REST-API's, Portal-ervaring en SDK's die worden gebruikt om kluizen, sleutels, geheimen, certificaten en beheerde opslagaccounts te maken, kunnen deze objecten ook bijwerken en verwijderen.
 
-Met Soft delete u verwijderde gegevens 90 dagen na verwijdering herstellen. Bij het gebruik van soft delete kunnen de gegevens permanent worden verwijderd voordat de bewaartermijn van 90 dagen verstrijkt door een zuiveringsbewerking uit te voeren. Als de kluis of het abonnement is geconfigureerd om zuiveringsbewerkingen te blokkeren, is het niet mogelijk om gegevens permanent te verwijderen totdat de geplande bewaartermijn is verstreken.
+Met Soft-delete u verwijderde gegevens 90 dagen na verwijdering herstellen. Bij het gebruik van soft-delete kunnen de gegevens permanent worden verwijderd voordat de bewaartermijn van 90 dagen verstrijkt door een zuiveringsbewerking uit te voeren. Als de kluis of het abonnement is geconfigureerd om zuiveringsbewerkingen te blokkeren, is het niet mogelijk om gegevens permanent te verwijderen totdat de geplande bewaartermijn is verstreken.
 
 ## <a name="exporting-customer-data"></a>Klantgegevens exporteren
 

@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/03/2020
+ms.date: 04/17/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d2e3f8da4a05feedb8c1ab585fabcc74edbc71a
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 815d3afe68003f56a5748584b322b731ef5a3dc7
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998750"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639652"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: releasegeschiedenis versie
 Het Azure Active Directory-team (Azure AD) werkt Azure AD Connect regelmatig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doelgroepen.
@@ -55,6 +55,15 @@ Niet alle releases van Azure AD Connect worden beschikbaar gesteld voor een auto
 
 ### <a name="fixed-issues"></a>Problemen opgelost
 Deze hotfix-build lost een probleem op met build 1.5.18.0 als u de functie Groepsfiltering hebt ingeschakeld en mS-DS-ConsistencyGuid als bronanker hebt gebruikt.
+
+> [!IMPORTANT]
+> Als u mS-DS-ConsistencyGuid als bronanker gebruikt en u de synchronisatieregel **In van AD - Groepsdeelname** hebt gekloond en van plan bent te upgraden, voert u de volgende stappen uit als onderdeel van de upgrade:
+> 1. Schakel tijdens de upgrade de optie Start **het synchronisatieproces op wanneer de configuratie is voltooid.**
+> 2. Bewerk de gekloonde join-synchronisatieregel en voeg de volgende twee transformaties toe:
+>     - Stel de `objectGUID` `sourceAnchorBinary`directe stroom in op .
+>     - Expressiestroom `ConvertToBase64([objectGUID])` instellen `sourceAnchor`op .     
+> 3. Schakel de planner `Set-ADSyncScheduler -SyncCycleEnabled $true`in met behulp van .
+
 
 ## <a name="15180"></a>1.5.18.0
 
@@ -528,7 +537,7 @@ De toegang tot het AD DS-account vergrendelen door de volgende machtigingswijzig
 *   Verwijder alle AME's op het specifieke object, met uitzondering van AME's die specifiek zijn voor SELF. We willen de standaard machtigingen intact te houden als het gaat om SELF.
 *   Wijs deze specifieke machtigingen toe:
 
-Type     | Name                          | Toegang               | Van toepassing op
+Type     | Naam                          | Toegang               | Van toepassing op
 ---------|-------------------------------|----------------------|--------------|
 Toestaan    | SYSTEEM                        | Volledig beheer         | Dit object  |
 Toestaan    | Ondernemingsadministrators             | Volledig beheer         | Dit object  |

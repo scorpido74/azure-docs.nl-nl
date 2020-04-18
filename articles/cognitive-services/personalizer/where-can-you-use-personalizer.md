@@ -3,18 +3,18 @@ title: Waar en hoe te gebruiken - Personalizer
 description: Personalizer kan worden toegepast in elke situatie waarin uw toepassing het juiste item, actie of product kan selecteren om weer te geven - om de ervaring beter te maken, betere bedrijfsresultaten te behalen of de productiviteit te verbeteren.
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 63e66315898242beb5da59927e8d506e6f2cff78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c562d7a1853736204a7a03262547e083bd85fb75
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219322"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617670"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>Waar en hoe personalizer te gebruiken
 
 Gebruik Personalizer in elke situatie waarin uw toepassing de juiste actie (inhoud) moet selecteren om weer te geven - om de ervaring beter te maken, betere bedrijfsresultaten te behalen of de productiviteit te verbeteren.
 
-Personalizer gebruikt machine learning om te selecteren welke actie (inhoud) de gebruiker moet weergeven. De selectie kan drastisch variëren, afhankelijk van de hoeveelheid, kwaliteit en distributie van gegevens die naar de service worden verzonden.
+Personalizer maakt gebruik van reinforcement learning om te selecteren welke actie (inhoud) de gebruiker te tonen is. De selectie kan drastisch variëren, afhankelijk van de hoeveelheid, kwaliteit en distributie van gegevens die naar de service worden verzonden.
 
 ## <a name="example-use-cases-for-personalizer"></a>Voorbeeldvanuse cases voor Personalizer
 
@@ -44,7 +44,7 @@ U Personalizer toepassen in situaties waarin u voldoet aan of de volgende richtl
 |Dagelijkse gegevens|Er zijn genoeg evenementen om op de hoogte te blijven van optimale personalisatie als het probleem in de loop van de tijd afdrijft (zoals voorkeuren in nieuws of mode). Personalizer zal zich aanpassen aan continue verandering in de echte wereld, maar de resultaten zullen niet optimaal zijn als er niet genoeg gebeurtenissen en gegevens zijn om van te leren om nieuwe patronen te ontdekken en zich te vestigen. U moet kiezen voor een use case die vaak genoeg gebeurt. Overweeg op zoek naar use cases die gebeuren ten minste 500 keer per dag.|
 |Historische gegevens|Uw toepassing kan gegevens lang genoeg bewaren om een geschiedenis van ten minste 100.000 interacties te verzamelen. Hierdoor kan Personalizer voldoende gegevens verzamelen om offline evaluaties en beleidsoptimalisatie uit te voeren.|
 
-**Gebruik personalizer niet** wanneer het gepersonaliseerde gedrag niet iets is dat voor alle gebruikers kan worden gedetecteerd. Bijvoorbeeld, met behulp van Personalizer om een eerste pizza bestelling suggereren uit een lijst van 20 mogelijke menu-items is nuttig, maar die contact te bellen van de lijst met gebruikers contact wanneer die hulp met kinderopvang (zoals "Oma") is niet iets dat is personaliseerbaar over uw gebruikersbestand.
+**Gebruik personalizer niet** wanneer het gepersonaliseerde gedrag niet iets is dat voor alle gebruikers kan worden gedetecteerd. Bijvoorbeeld, met behulp van Personalizer om een eerste pizza bestelling suggereren uit een lijst van 20 mogelijke menu-items is nuttig, maar die contact te bellen van de lijst met gebruikers contact wanneer die hulp met kinderopvang (zoals "Oma") is niet iets dat is personaliseerbaar in uw user base.
 
 ## <a name="how-to-use-personalizer-in-a-web-application"></a>Personalizer gebruiken in een webtoepassing
 
@@ -91,7 +91,7 @@ Een gemeenschappelijk gebruik is om de output van een aanbevelingsmotor (bijvoor
 
 ## <a name="adding-content-safeguards-to-your-application"></a>Inhoudsbeveiligingen toevoegen aan uw toepassing
 
-Als uw toepassing grote verschillen in inhoud toestaat die aan gebruikers worden getoond en sommige van die inhoud mogelijk onveilig of ongepast is voor sommige gebruikers, moet u vooruit plannen om ervoor te zorgen dat de juiste beveiligingen aanwezig zijn om te voorkomen dat uw gebruikers onaanvaardbare Inhoud. Het beste patroon om waarborgen te implementeren is:
+Als uw toepassing grote verschillen in inhoud toestaat die aan gebruikers worden weergegeven en sommige van die inhoud mogelijk onveilig of ongepast is voor sommige gebruikers, moet u vooruit plannen om ervoor te zorgen dat de juiste beveiligingen aanwezig zijn om te voorkomen dat uw gebruikers onaanvaardbare inhoud zien. Het beste patroon om waarborgen te implementeren is:
     * De lijst met acties verkrijgen om te rangschikken.
     * Filter degenen die niet levensvatbaar zijn voor het publiek.
     * Rangschik deze levensvatbare acties alleen.

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7fcfac923da1c0daee58b10d92cbc6a6ad5e7910
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 625efcce7305cd7b1dd415a286e6b1e92682cc0a
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383406"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616849"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Rekendoelen instellen en gebruiken voor modeltraining 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -425,7 +425,7 @@ Zie de documentatie [ScriptRunConfig](https://docs.microsoft.com/python/api/azur
 
 U [azure CLI-](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) en [Machine Learning CLI-extensie](reference-azure-machine-learning-cli.md) gebruiken om runconfiguraties te maken en deze op verschillende rekendoelen in te dienen. In de volgende voorbeelden wordt ervan uitgegaan dat u een bestaande `az login` Azure Machine Learning Workspace hebt en dat u zich met de opdracht CLI hebt aangemeld bij Azure. 
 
-[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 ### <a name="create-run-configuration"></a>Run-configuratie maken
 

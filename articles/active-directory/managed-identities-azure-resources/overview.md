@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 03/25/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 707b03d46615f3acfa0797d1dc0865d53ef75dc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f599ee3303ab907c319d1f8cf3da3e427a4c4c0b
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282117"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639670"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Wat zijn beheerde identiteiten voor Azure-bronnen?
 
@@ -51,8 +51,12 @@ Er zijn twee typen beheerde identiteit:
 - Een **door de gebruiker toegewezen beheerde identiteit** wordt gemaakt als een zelfstandige Azure-resource. Via een productieproces maakt Azure een identiteit in de Azure AD-tenant, die wordt vertrouwd door het gebruikte abonnement. Nadat de identiteit is gemaakt, kan deze worden toegewezen aan een of meer Azure-service-exemplaren. De levenscyclus van een door de gebruiker toegewezen identiteit wordt afzonderlijk beheerd van de levenscyclus van de Azure Service-exemplaren waaraan de identiteit is toegewezen.
 
 Intern zijn beheerde identiteiten serviceprincipals van een speciaal type, die zijn vergrendeld om alleen te worden gebruikt met Azure-resources. Wanneer de beheerde identiteit wordt verwijderd, wordt de bijbehorende serviceprincipal automatisch verwijderd.
+Wanneer een door de gebruiker toegewezen of systeemtoegewezen identiteit wordt gemaakt, geeft de Managed Identity Resource Provider (MSRP) een certificaat intern af aan die identiteit. 
 
-De code kan gebruikmaken van een beheerde identiteit om toegangstokens aan te vragen voor services die ondersteuning bieden voor Azure AD-verificatie. Azure zorgt voor het implementeren van de referenties die worden gebruikt door het service-exemplaar.
+De code kan gebruikmaken van een beheerde identiteit om toegangstokens aan te vragen voor services die ondersteuning bieden voor Azure AD-verificatie. Azure zorgt voor het implementeren van de referenties die worden gebruikt door het service-exemplaar. 
+
+## <a name="credential-rotation"></a>Referentierotatie
+De rotatie van referenties wordt beheerd door de resourceprovider die de Azure-bron host. De standaardrotatie van de referentie vindt elke 46 dagen plaats. Het is aan de resourceprovider om nieuwe referenties op te vragen, zodat de resourceprovider langer dan 46 dagen kan wachten.
 
 In het volgende diagram ziet u hoe beheerde service-identiteiten samenwerken met virtuele machines (VM's) van Azure:
 
@@ -140,7 +144,7 @@ Informatie over het gebruik van een beheerde identiteit met andere Azure-service
 * [Azure Kubernetes Service](/azure/aks/use-managed-identity)
 * [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
 * [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
-* [Azure-gegevensfabriek](../../data-factory/data-factory-service-identity.md)
+* [Azure Data Factory](../../data-factory/data-factory-service-identity.md)
 
 
 ## <a name="what-azure-services-support-the-feature"></a>Welke Azure-services bieden ondersteuning voor de functie?<a name="which-azure-services-support-managed-identity"></a>

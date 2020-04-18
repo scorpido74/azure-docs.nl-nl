@@ -7,12 +7,12 @@ ms.date: 04/11/2018
 ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
-ms.openlocfilehash: 136521799dbc928a03c339ecc1cef6fdd3d029b2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b93035fc7e315f8117516771236186f9d942a0aa
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239663"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604670"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Uitvinden welke software is geïnstalleerd op uw Azure- en niet-Azure-computers
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 Voor deze zelfstudie hebt u het volgende nodig:
 
 * Een Azure-abonnement. Als je er nog geen hebt, kun je [je MSDN-abonneevoordeel activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of je aanmelden voor een [gratis account.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Een [Automation-account](automation-offering-get-started.md) voor het opslaan van de watcher- en actie-runbooks en de Watcher-taak.
+* Een [Automatiseringsaccount](automation-offering-get-started.md) om de wacht- en actiebeheerboeken en de Watcher-taak vast te houden.
 * Een [virtuele machine](../virtual-machines/windows/quick-create-portal.md) voor de onboarding.
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
@@ -43,13 +43,13 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 Voor deze zelfstudie moet u eerst Wijzigingen bijhouden en Inventaris inschakelen. Als u de **Wijzigingen bijhouden**-oplossing in al eerder hebt ingeschakeld, is deze stap niet nodig.
 
-Navigeer naar uw Automation-account en selecteer **Inventaris** onder **CONFIGURATIEBEHEER**.
+Navigeer naar uw automatiseringsaccount en selecteer **Voorraad** onder **Configuratiebeheer**.
 
-Kies de werkruimte Log Analytics en het automatiseringsaccount en klik op **Inschakelen** om de oplossing in te schakelen. Het duurt maximaal 15 minuten om de oplossing in te schakelen.
+Kies de werkruimte loganalytics en het automatiseringsaccount en klik op **Inschakelen** om de oplossing in te schakelen. Het duurt maximaal 15 minuten om de oplossing in te schakelen.
 
 ![Banner voor configuratie van onboarden Inventaris](./media/automation-tutorial-installed-software/enableinventory.png)
 
-Als u de oplossing wilt inschakelen, configureert u de locatie, de werkruimte Logboekanalyse en het automatiseringsaccount om te gebruiken en klikt u op **Inschakelen**. Als de velden niet beschikbaar zijn, betekent dit dat er een andere automatiseringsoplossing is ingeschakeld voor de VM en dat dezelfde werkruimte en hetzelfde Automation-account moeten worden gebruikt.
+Configureer de locatie, de Log Analytics-werkruimte en het Automation-account dat moet worden gebruikt, en klik op **Inschakelen** om de oplossing in te schakelen. Als de velden lichtgrijs zijn, betekent dit dat een andere automatiseringsoplossing is ingeschakeld voor de virtuele machine en dat dezelfde werkruimte en hetzelfde Automation-account moeten worden gebruikt.
 
 Een [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-werkruimte wordt gebruikt om gegevens te verzamelen die worden gegenereerd door functies en services zoals Inventaris.
 De werkruimte biedt één locatie om gegevens uit meerdere bronnen te bekijken en te analyseren.
@@ -62,13 +62,13 @@ Het duurt tussen 30 minuten en 6 uur voordat de gegevens beschikbaar zijn voor a
 
 ## <a name="onboard-a-vm"></a>Onboarding van een VM
 
-Navigeer in uw Automation-account naar **Inventaris** onder **CONFIGURATIEBEHEER**.
+Navigeer in uw automatiseringsaccount naar **Voorraad** onder **Configuratiebeheer**.
 
-Selecteer **+ Azure-VM toevoegen**. Hierdoor wordt de pagina **Virtuele machines** geopend en kunt u een bestaande VM uit de lijst selecteren. Selecteer de VM die u wilt vrijgeven. Klik op de pagina die wordt geopend op **Inschakelen** om de oplossing op de VM in te schakelen. De Microsoft Management Agent wordt geïmplementeerd op de VM en de agent wordt geconfigureerd voor communicatie met de Log Analytics-werkruimte die u hebt geconfigureerd bij het inschakelen van de oplossing. Het voltooien van deze stap van de onboarding kan een paar minuten duren. Op dit punt kunt u een nieuwe VM in de lijst selecteren en een andere VM vrijgeven.
+Selecteer **+ Azure-VM toevoegen**. Hierdoor wordt de pagina Virtuele machines geopend en kunt u een bestaande VM uit de lijst selecteren. Selecteer de VM die u wilt vrijgeven. Klik op de pagina die wordt geopend op **Inschakelen** om de oplossing op de VM in te schakelen. De Microsoft Management Agent wordt geïmplementeerd op de VM en de agent wordt geconfigureerd voor communicatie met de Log Analytics-werkruimte die u hebt geconfigureerd bij het inschakelen van de oplossing. Het voltooien van deze stap van de onboarding kan een paar minuten duren. Op dit punt kunt u een nieuwe VM in de lijst selecteren en een andere VM vrijgeven.
 
 ## <a name="onboard-a-non-azure-machine"></a>Onboarding van een niet-Azure-machine
 
-Als u niet-Azure-machines wilt toevoegen, installeert u de agent voor [Windows](../azure-monitor/platform/agent-windows.md) of [ Linux](automation-linux-hrw-install.md), afhankelijk van uw besturingssysteem. Nadat de agent is geïnstalleerd, navigeert u naar uw Automation-account en gaat u naar **Inventaris** onder **CONFIGURATIEBEHEER**. Wanneer u op **Machines beheren** klikt, ziet u een lijst van de computers die rapporteren aan uw Log Analytics-werkruimte en waarvoor de oplossing niet is ingeschakeld. Selecteer de gewenste optie voor uw omgeving.
+Als u niet-Azure-machines wilt toevoegen, installeert u de [log-analyse-agent voor Windows](../azure-monitor/platform/agent-windows.md) of [de agent Log Analytics voor Linux,](automation-linux-hrw-install.md)afhankelijk van uw besturingssysteem. Zodra de agent is geïnstalleerd, navigeert u naar uw automatiseringsaccount en gaat u naar **Voorraad** onder **Configuratiebeheer**. Wanneer u op **Machines beheren** klikt, ziet u een lijst van de computers die rapporteren aan uw Log Analytics-werkruimte en waarvoor de oplossing niet is ingeschakeld. Selecteer de gewenste optie voor uw omgeving.
 
 * **Inschakelen op alle beschikbare machines** - met deze optie schakelt u de oplossing in op alle computers die momenteel aan uw Log Analytics-werkruimte rapporteren.
 * **Inschakelen op alle beschikbare machines en toekomstige machines** -met deze optie schakelt u de oplossing in op alle computers die momenteel aan uw Log Analytics-werkruimte rapporteren en op alle toekomstige computers die aan de werkruimte worden toegevoegd.
@@ -78,11 +78,11 @@ Als u niet-Azure-machines wilt toevoegen, installeert u de agent voor [Windows](
 
 ## <a name="view-installed-software"></a>Geïnstalleerde software weergeven
 
-Zodra de oplossing Wijzigingen bijhouden en Inventaris is ingeschakeld, kunt u de resultaten op de pagina **Inventaris** bekijken.
+Zodra de oplossing voor het bijhouden en inventaris van wijzigingen is ingeschakeld, u de resultaten bekijken op de pagina Voorraad.
 
-Kies vanuit uw Automation-account **Inventaris** onder ** CONFIGURATIEBEHEER**.
+Selecteer **inventaris** onder **Configuratiebeheer**in uw automatiseringsaccount .
 
-Op de pagina **Inventaris** klikt u op het tabblad **Software**.
+Op de pagina Inventaris klikt u op het tabblad **Software**.
 
 Op het tabblad **Software** bevindt zich een tabel met de gevonden software. De software is gegroepeerd op de naam en versie van de software.
 
@@ -95,14 +95,14 @@ Klik op een rij om de eigenschappen van de softwarerecord te bekijken evenals de
 Als u wilt zoeken naar specifieke software of de softwaregroep, kunt u dat doen via het tekstvak direct boven de lijst met software.
 Het filter kunt u gebruiken om te zoeken op basis van de naam van de software, de versie of de uitgever.
 
-Als u bijvoorbeeld zoekt naar 'Contoso', wordt alle software met 'Contoso' in de naam, uitgever of versie geretourneerd.
+Als u bijvoorbeeld naar **Contoso** zoekt, retourneert u alle software met een naam, uitgever of versie die **Contoso bevat.**
 
 ## <a name="search-inventory-logs-for-installed-software"></a>Inventarislogboeken doorzoeken op geïnstalleerde software
 
-Inventaris genereert logboekgegevens die naar Azure Monitor-logboeken worden verzonden. Als u de logboeken wilt doorzoeken door query's uit te voeren, selecteert u **Log Analytics** boven in het venster **Inventaris**.
+Inventaris genereert logboekgegevens die naar Azure Monitor-logboeken worden verzonden. Als u de logboeken wilt doorzoeken door query's uit te voeren, selecteert u **Loganalytics** boven aan de pagina Voorraad.
 
-Inventarisgegevens worden opgeslagen onder het type **ConfigurationData**.
-De volgende voorbeeldquery voor Log Analytics retourneert de inventarisatieresultaten waar de uitgever gelijk is aan "Microsoft Corporation".
+Voorraadgegevens worden opgeslagen `ConfigurationData`onder het type .
+In de volgende voorbeeldgroep Log Analytics wordt de voorraadresultaten geretourneerd waarin de uitgever gelijk is aan **Microsoft Corporation.**
 
 ```loganalytics
 ConfigurationData
@@ -116,7 +116,7 @@ Zie [Azure Monitor-logboeken](../azure-monitor/log-query/log-query-overview.md) 
 ### <a name="single-machine-inventory"></a>Inventaris van één computer
 
 Als u een overzicht van de software voor één computer wilt zien, kunt u Inventaris openen vanuit de pagina met VM-resources in Azure, of kunt u met behulp van de filterfunctie in Azure Monitor-logboeken naar de overeenkomstige computer gaan.
-De volgende voorbeeldquery van Log Analytics retourneert de lijst met software voor een computer met de naam ContosoVM.
+In het volgende voorbeeld log analytics query retourneert de lijst met software voor een machine met de naam **ContosoVM**.
 
 ```loganalytics
 ConfigurationData

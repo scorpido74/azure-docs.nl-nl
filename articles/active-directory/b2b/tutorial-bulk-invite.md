@@ -5,38 +5,29 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 2/11/2020
+ms.date: 04/13/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c429648adeb0c81799bff2dca1650de965395a60
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0ef9172ca5d0961bb6de1949a61199ce1d6c1bff
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77166442"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603423"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Zelfstudie: Gebruikers van Azure AD B2B-samenwerkingsgebruikers uitnodigen (voorbeeld)
-
-|     |
-| --- |
-| In dit artikel wordt een openbare preview-functie van Azure Active Directory beschreven. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over voorvertoningen.|
-|     |
-
-> [!NOTE]
-> Per 12/22/2019 is de functie Bulk invite users (Preview) tijdelijk uitgeschakeld.
-> Er is momenteel geen datum bekend waarop deze functie opnieuw wordt ingeschakeld in de Azure-portal. Als u gastgebruikers in bulk wilt uitnodigen met PowerShell, raadpleegt u de [zelfstudie voor B2B-bulkuitnodigingen](bulk-invite-powershell.md) of de [B2B-code en PowerShell-voorbeelden.](code-samples.md)
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Zelfstudie: Bulksgewijs gebruikers uitnodigen voor Microsoft Azure AD B2B-samenwerking
 
 Als u Azure Active Directory (Azure AD) B2B-samenwerking gebruikt om te werken met externe partners, kunt u tegelijkertijd meerdere gastgebruikers uitnodigen voor uw organisatie. In deze zelfstudie leert u hoe u de Azure-portal gebruiken om bulkuitnodigingen naar externe gebruikers te verzenden. Ga als volgt te werk:
 
 > [!div class="checklist"]
-> * **Bulkgebruikers uitnodigen (Preview)** gebruiken om een door komma's gescheiden waardebestand (.csv) voor te bereiden met de gebruikersinformatie en uitnodigingsvoorkeuren
+> * **Gebruikers van Bulk uitnodigen** om een door komma's gescheiden waardebestand (.csv) voor te bereiden met de gebruikersinformatie en uitnodigingsvoorkeuren
 > * Het CSV-bestand uploaden naar Azure AD
 > * Controleer of de gebruikers zijn toegevoegd aan de map
 
-Als u geen Azure Active Directory hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
+Als u geen Azure Active Directory hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -47,7 +38,7 @@ U moet twee of meer test e-mailaccounts hebben waarnaar u uitnodigingen kunt ver
 1. Meld u aan bij de Azure-portal met een account dat een gebruikersbeheerder in de organisatie is.
 2. Selecteer Azure Active **Directory**in het navigatiedeelvenster .
 3. Selecteer **Onder Beheren**de optie**Gebruikersbulkuitnodiging** **Users** > .
-4. Selecteer op de pagina **Bulk-invite-gebruikers (Preview)** de optie **Downloaden** om een geldig CSV-bestand met uitnodigingseigenschappen op te halen.
+4. Selecteer op de pagina **Gebruikers van Bulk uitnodigen** de optie **Downloaden** om een geldig CSV-bestand met uitnodigingseigenschappen op te halen.
 
     ![Knop Downloaden van bulkuitnodigingen](media/tutorial-bulk-invite/bulk-invite-button.png)
 
@@ -63,10 +54,10 @@ U moet twee of meer test e-mailaccounts hebben waarnaar u uitnodigingen kunt ver
    > Gebruik geen komma's in het **aangepaste uitnodigingsbericht** omdat ze voorkomen dat het bericht wordt ontleed.
 
 6. Sla het bestand op.
-7. Blader op de pagina **Bulk invite users (Preview)** onder **Uw csv-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert, wordt de validatie van het CSV-bestand gestart. 
+7. Blader op de pagina **Gebruikers van Bulk uitnodigen** onder Uw **csv-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert, wordt de validatie van het CSV-bestand gestart. 
 8. Wanneer de inhoud van het bestand is gevalideerd, wordt **bestand geüpload**. Als er fouten zijn, moet u deze oplossen voordat u de taak indienen.
 9. Wanneer uw bestand de validatie doorstaat, selecteert u **Verzenden** om de Azure-bulkbewerking te starten die de uitnodigingen toevoegt. 
-10. Als u de taakstatus wilt weergeven, selecteert **u Klik hier om de status van elke bewerking weer te geven.** U ook **resultaten van de bulkbewerking (Voorbeeld)** selecteren in de sectie **Activiteit.** Selecteer de waarden onder de kolommen **# Succes**, # **Mislukt**of **Totaal aantal aanvragen** voor meer informatie over elk regelitem in de bulkbewerking. Als er fouten zijn opgetreden, worden de redenen voor de fout weergegeven.
+10. Als u de taakstatus wilt weergeven, selecteert **u Klik hier om de status van elke bewerking weer te geven.** U ook **de resultaten van de bulkbewerking** selecteren in de sectie **Activiteit.** Selecteer de waarden onder de kolommen **# Succes**, # **Mislukt**of **Totaal aantal aanvragen** voor meer informatie over elk regelitem in de bulkbewerking. Als er fouten zijn opgetreden, worden de redenen voor de fout weergegeven.
 
     ![Voorbeeld van resultaten van bulkbewerking](media/tutorial-bulk-invite/bulk-operation-results.png)
 

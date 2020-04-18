@@ -5,31 +5,31 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: eaba4bf7760e150f2477ee743c797f94784b8506
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 9bdc8cf97513854cf6a92ffd078febca6302d35c
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535499"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617403"
 ---
 # <a name="update-management-solution-in-azure"></a>UpdateManagementoplossing in Azure
 
-U de oplossing Voor updatebeheer in Azure Automation gebruiken om updates van besturingssystemen voor uw Windows- en Linux-machines in Azure, in on-premises omgevingen en in andere cloudomgevingen te beheren. U snel de status van beschikbare updates op alle agentmachines beoordelen en het proces van het installeren van vereiste updates voor servers beheren.
+U de **oplossing Voor updatebeheer** in Azure Automation gebruiken om updates van besturingssystemen voor uw Windows- en Linux-machines in Azure, in on-premises omgevingen en in andere cloudomgevingen te beheren. U snel de status van beschikbare updates op alle agentmachines beoordelen en het proces van het installeren van vereiste updates voor servers beheren.
 
 U Updatebeheer voor virtuele machines (VM's) inschakelen met behulp van de volgende methoden:
 
 - Vanuit uw [Azure Automation-account](automation-onboard-solutions-from-automation-account.md) voor een of meer Azure-machines en handmatig voor niet-Azure-machines.
 
-- Voor één Azure VM vanaf de virtuele machinepagina in de Azure-portal. Dit scenario is beschikbaar voor [Linux-](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) en Windows-VM's. [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management)
+- Voor één Azure VM van de virtuele machinepagina in de Azure-portal. Dit scenario is beschikbaar voor [Linux-](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) en Windows-VM's. [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management)
 
-- Voor [meerdere Azure VM's](manage-update-multi.md) door ze te selecteren op de pagina **Virtuele machines** in de Azure-portal. 
+- Voor [meerdere Azure VM's](manage-update-multi.md) door ze te selecteren op de pagina Virtuele machines in de Azure-portal. 
 
 > [!NOTE]
-> De oplossing Voor updatebeheer moet een Log Analytics-werkruimte worden gekoppeld aan uw Automatiseringsaccount. Zie [Azure Workspace-toewijzingen](./how-to/region-mappings.md)voor een definitieve lijst met ondersteunde regio's. De regiotoewijzingen hebben geen invloed op de mogelijkheid om VM's in een apart gebied te beheren dan uw Automatiseringsaccount.
+> De **oplossing Voor updatebeheer** moet een Log Analytics-werkruimte worden gekoppeld aan uw Automatiseringsaccount. Zie [Azure Workspace-toewijzingen](./how-to/region-mappings.md)voor een definitieve lijst met ondersteunde regio's. De regiotoewijzingen hebben geen invloed op de mogelijkheid om VM's in een apart gebied te beheren dan uw Automatiseringsaccount.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Er is een [Azure Resource Manager-sjabloon](automation-update-management-deploy-template.md) beschikbaar waarmee u de oplossing Voor updatebeheer implementeren in een nieuw of bestaand automatiseringsaccount en de werkruimte Log Analytics in uw abonnement.
+Er is een [Azure Resource Manager-sjabloon](automation-update-management-deploy-template.md) beschikbaar waarmee u de **oplossing Voor updatebeheer** implementeren in een nieuw of bestaand automatiseringsaccount en de werkruimte Log Analytics in uw abonnement.
 
 ## <a name="solution-overview"></a>Oplossingenoverzicht
 
@@ -137,7 +137,7 @@ De oplossing bestaat uit de volgende bronnen. Deze resources worden automatisch 
 
 Nadat u deze oplossing hebt ingeschakeld, wordt elke Windows-machine die rechtstreeks is verbonden met uw Log Analytics-werkruimte automatisch geconfigureerd als hybride runbookworker om de runbooks te ondersteunen die in deze oplossing zijn opgenomen.
 
-Elke Windows-machine die door de oplossing wordt beheerd, wordt in het deelvenster **Hybride werknemersgroepen** weergegeven als een **hybride werknemersgroep voor het** systeemsysteem voor het automatiseringsaccount. De oplossingen maken gebruik van de *Hostname FQDN_GUID* naamgevingsconventie. Je deze groepen niet targeten met runbooks in je account. Als u het probeert, mislukt de poging. Deze groepen zijn bedoeld om alleen deze beheeroplossing te ondersteunen.
+Elke Windows-machine die door de oplossing wordt beheerd, wordt in het deelvenster Hybride werknemersgroepen weergegeven als een hybride werknemersgroep voor het systeemsysteem voor het automatiseringsaccount. De oplossingen `Hostname FQDN_GUID` maken gebruik van de naamgevingsconventie. Je deze groepen niet targeten met runbooks in je account. Als u het probeert, mislukt de poging. Deze groepen zijn bedoeld om alleen deze beheeroplossing te ondersteunen.
 
 U de Windows-machine toevoegen aan een hybride runbookworkergroep in uw Automatiseringsaccount ter ondersteuning van automatiseringsrunbooks als u hetzelfde account gebruikt voor zowel de oplossing als het groepslidmaatschap hybride runbookworker. Deze functionaliteit is toegevoegd in versie 7.2.12024.0 van de Hybrid Runbook Worker.
 
@@ -150,12 +150,12 @@ Als uw beheergroep System Center Operations Manager is [verbonden met een Log An
 * Implementatie MP bijwerken
 
 > [!NOTE]
-> Als u een beheergroep Operations Manager 1807 of 2019 hebt die is gekoppeld aan een Log Analytics-werkruimte met agents die zijn geconfigureerd in de beheergroep om logboekgegevens te verzamelen, moet u de volgende regel overschrijven om deze te beheren met Updatebeheer: De parameter **IsAutoRegistrationEnabled overschrijven** en ingesteld op **True** in de regel **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init.**
+> Als u een beheergroep Operations Manager 1807 of 2019 hebt die is gekoppeld aan een Log Analytics-werkruimte `IsAutoRegistrationEnabled` met agents die zijn geconfigureerd in de beheergroep om logboekgegevens te verzamelen, moet u de parameter overschrijven en instellen op True in de regel **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init.**
 
 Zie Operations Manager verbinden met Azure [Monitor-logboeken](../azure-monitor/platform/om-agents.md)voor meer informatie over hoe oplossingsbeheerpakketten worden bijgewerkt.
 
 > [!NOTE]
-> Voor machines met de Operations Manger-agent, die volledig moeten worden beheerd door Update Management, moet de agent worden bijgewerkt naar de Log Analytics-agent voor Windows of Linux. Zie [Een medewerker operations Manager upgraden](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)voor meer informatie over het bijwerken van de agent. In omgevingen die Operations Manager gebruiken, moet u System Center Operations Manager 2012 R2 UR 14 of hoger uitvoeren.
+> Voor machines met de Operations Manger-agent die volledig door Update Management moeten worden beheerd, moet de agent worden bijgewerkt naar de Log Analytics-agent voor Windows of de Log Analytics-agent voor Linux. Zie [Een medewerker operations Manager upgraden](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)voor meer informatie over het bijwerken van de agent. In omgevingen die Operations Manager gebruiken, moet u System Center Operations Manager 2012 R2 UR 14 of hoger uitvoeren.
 
 ## <a name="data-collection"></a>Gegevensverzameling
 
@@ -249,13 +249,9 @@ Updatebeheer is afhankelijk van de lokaal geconfigureerde updaterepository om on
 Als u wilt beginnen met het bijwerken van systemen, moet u de oplossing Updatebeheer inschakelen. De volgende methoden om aan boord van de oplossing te komen:
 
 - [Van een virtuele machine](automation-onboard-solutions-from-vm.md)
-
 - [Van het browsen op meerdere machines](automation-onboard-solutions-from-browse.md)
-
 - [Vanaf uw Automatiseringsaccount](automation-onboard-solutions-from-automation-account.md)
-
 - [Met een Azure Automation-runbook](automation-onboard-solutions.md)
-
 - [Met een Azure Resource Manager-sjabloon](automation-update-management-deploy-template.md)
 
 ## <a name="next-steps"></a>Volgende stappen

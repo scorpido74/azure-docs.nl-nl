@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/23/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0612371605f6b216eadeef49d9adb1497ba31591
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: cce3ef20a93c6d7a24bfa312501d2f8cc8ed9273
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80135970"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604906"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>Snelstart: direct webverkeer met Azure Application Gateway - Resource Manager-sjabloon
 
@@ -57,7 +57,7 @@ Resourcebeheersjabloon implementeren in Azure:
 
 1. Selecteer **Implementeren naar Azure** om u aan te melden bij Azure en open de sjabloon. De sjabloon maakt een toepassingsgateway, de netwerkinfrastructuur en twee virtuele machines in de backendpool met IIS.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json"><img src="./media/quick-create-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
 
 2. Selecteer of maak uw resourcegroep, typ de gebruikersnaam en het wachtwoord van de beheerder van de virtuele machinebeheerder.
 3. Selecteer **Ik ga akkoord met de hierboven vermelde algemene voorwaarden** en selecteer Vervolgens **Kopen**. Het kan 20 minuten of langer duren voordat de implementatie is voltooid.

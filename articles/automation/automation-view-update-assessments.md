@@ -1,30 +1,30 @@
 ---
-title: Updatebeoordelingen van Azure Update Management weergeven
+title: Updatebeoordelingen van Azure Automation Update Management weergeven
 description: In dit artikel wordt beschreven hoe updatebeoordelingen voor update-implementaties kunnen worden bekeken.
 services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 58d3cf6261456c09195ad6dafaeb781b55d9e5ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75762afc9ae69da81e89ce320f454d9764f82914
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278413"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617384"
 ---
-# <a name="view-azure-update-management-update-assessments"></a>Updatebeoordelingen van Azure Update Management weergeven
+# <a name="view-azure-automation-update-management-update-assessments"></a>Updatebeoordelingen van Azure Automation Update Management weergeven
 
 Selecteer In uw Azure Automation-account **Updatebeheer** om de status van uw machines weer te geven.
 
 Deze weergave bevat informatie over uw machines, ontbrekende updates, update-implementaties en geplande update-implementaties. In de kolom **NALEVING** u zien wanneer de machine voor het laatst is beoordeeld. In de kolom **UPDATE AGENT READINESS** u de status van de update-agent zien. Als er een probleem is, selecteert u de koppeling om naar documentatie voor probleemoplossing te gaan waarmee u het probleem verhelpen.
 
-Als u een logboekzoekopdracht wilt uitvoeren waarin informatie over de machine, bijwerken of implementatie wordt geretourneerd, selecteert u het bijbehorende item in de lijst. Het deelvenster **Logboekzoeken** wordt geopend met een query voor het geselecteerde item:
+Als u een logboekzoekopdracht wilt uitvoeren waarin informatie over de machine, bijwerken of implementatie wordt geretourneerd, selecteert u het bijbehorende item in de lijst. Het deelvenster Logboekzoeken wordt geopend met een query voor het geselecteerde item.
 
 ![Standaardweergave Beheer bijwerken](media/automation-update-management/update-management-view.png)
 
 ## <a name="view-missing-updates"></a>Ontbrekende updates weergeven
 
-Selecteer **Ontbrekende updates** om de lijst met updates weer te geven die ontbreken op uw machines. Elke update wordt weergegeven en kan worden geselecteerd. Informatie over het aantal machines waarvoor de update nodig is, de details van het besturingssysteem en een koppeling voor meer informatie worden allemaal weergegeven. In **het zoekvenster Logboek** worden ook meer details over de updates weergegeven.
+Selecteer **Ontbrekende updates** om de lijst met updates weer te geven die ontbreken op uw machines. Elke update wordt weergegeven en kan worden geselecteerd. Informatie over het aantal machines waarvoor de update nodig is, de details van het besturingssysteem en een koppeling voor meer informatie worden allemaal weergegeven. In het deelvenster Zoeken in logboekvindt u ook meer details over de updates.
 
 ![Ontbrekende updates](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
@@ -36,14 +36,14 @@ In de volgende tabellen worden de ondersteunde updateclassificaties weergegeven 
 
 |Classificatie  |Beschrijving  |
 |---------|---------|
-|Essentiële updates     | Een update voor een specifiek probleem dat een kritieke, niet-beveiligingsgerelateerde bug aanpakt.        |
-|Beveiligingsupdates     | Een update voor een productspecifiek beveiligingsprobleem.        |
-|Updatepakketten     | Een cumulatieve set hotfixes die samen worden verpakt voor eenvoudige implementatie.        |
+|Essentiële updates     | Updates voor specifieke problemen die kritieke, niet-beveiligingsgerelateerde bugs aanpakken.        |
+|Beveiligingsupdates     | Updates voor productspecifieke beveiligingsgerelateerde problemen.        |
+|Updatepakketten     | Sets hotfixes die samen zijn verpakt voor eenvoudige implementatie.        |
 |Functiepakketten     | Nieuwe productfuncties die buiten een productrelease worden gedistribueerd.        |
-|Servicepacks     | Een cumulatieve set hotfixes die op een toepassing worden toegepast.        |
-|Definitie-updates     | Een update voor virus- of andere definitiebestanden.        |
-|Hulpprogramma's     | Een hulpprogramma of functie die helpt bij het voltooien van een of meer taken.        |
-|Updates     | Een update voor een toepassing of bestand dat momenteel is geïnstalleerd.        |
+|Servicepacks     | Sets hotfixes die op een toepassing worden toegepast.        |
+|Definitie-updates     | Updates voor virus- of andere definitiebestanden.        |
+|Hulpprogramma's     | Hulpprogramma's of functies die helpen bij het voltooien van een of meer taken.        |
+|Updates     | Updates voor toepassingen of bestanden die momenteel zijn geïnstalleerd.        |
 
 ### <a name="linux"></a><a name="linux-2"></a>Linux
 

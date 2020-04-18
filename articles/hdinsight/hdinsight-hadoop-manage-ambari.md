@@ -1,25 +1,25 @@
 ---
 title: Azure HDInsight bewaken en beheren met ambari webgebruikersinterface
-description: Meer informatie over het gebruik van Ambari om HDInsight-clusters op basis van Linux te monitoren en te beheren. In dit document leert u hoe u de Ambari Web UI gebruikt die is opgenomen in HDInsight-clusters.
+description: Meer informatie over het gebruik van apache Ambari-gebruikersinterface om HDInsight-clusters te monitoren en te beheren.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/05/2020
-ms.openlocfilehash: bf780897317d41c7da85140f64313546cf5c31d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: 2ed3d6b1088315b580ab8ddc4f12d8d61434ec53
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064684"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606545"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-clusters beheren met behulp van de Apache Ambari-webinterface
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari vereenvoudigt het beheer en de monitoring van een Apache Hadoop-cluster door een gebruiksvriendelijke web-gebruikersinterface en REST API te bieden. Ambari is opgenomen in HDInsight-clusters en wordt gebruikt om het cluster te bewaken en configuratiewijzigingen aan te brengen.
+Apache Ambari vereenvoudigt het beheer en de monitoring van een Apache Hadoop cluster. Deze vereenvoudiging wordt gedaan door het verstrekken van een eenvoudig te gebruiken web-gebruikersinterface en REST API. Ambari is opgenomen in HDInsight-clusters en wordt gebruikt om het cluster te bewaken en configuratiewijzigingen aan te brengen.
 
 In dit document leert u hoe u de Ambari Web UI gebruiken met een HDInsight-cluster.
 
@@ -82,7 +82,7 @@ U de groepen beheren door het menu **Acties te** gebruiken en **Waarschuwingsgro
 
 ![Apache Ambari beheert waarschuwingsgroepen](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
-U ook waarschuwingsmethoden beheren en waarschuwingsmeldingen maken in het menu **Acties** door __Meldingen beheren te__selecteren. Alle huidige meldingen worden weergegeven. U ook meldingen maken vanaf hier. Meldingen kunnen worden verzonden via **e-mail** of **SNMP** wanneer specifieke waarschuwing / ernst combinaties optreden. U bijvoorbeeld een e-mailbericht verzenden wanneer een van de waarschuwingen in de groep **YARN-standaard** is ingesteld op **Kritiek**.
+U beheert waarschuwingsmethoden en maakt waarschuwingsmeldingen in het menu **Acties** door __Meldingen beheren te__selecteren. Alle huidige meldingen worden weergegeven. Maak meldingen vanaf hier. Meldingen kunnen worden verzonden via **e-mail** of **SNMP** wanneer specifieke waarschuwing / ernst combinaties optreden. U bijvoorbeeld een e-mailbericht verzenden wanneer een van de waarschuwingen in de groep **YARN-standaard** is ingesteld op **Kritiek**.
 
 ![Apache Ambari maken waarschuwingsmelding](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
@@ -119,10 +119,10 @@ Als u een service selecteert, wordt meer gedetailleerde informatie over de servi
 
 #### <a name="quick-links"></a>Snelkoppelingen
 
-Sommige services geven boven aan de pagina een koppeling **Snelle koppelingen** weer. Dit kan worden gebruikt om toegang te krijgen tot servicespecifieke web-UI's, zoals:
+Sommige services geven boven aan de pagina een koppeling **Snelle koppelingen** weer. Deze koppeling kan worden gebruikt om toegang te krijgen tot servicespecifieke web-UI's, zoals:
 
 * **Taakgeschiedenis** - KaartVerlaag de taakgeschiedenis.
-* **Resource Manager** - YARN ResourceManager UI.
+* **Resource Manager** - YARN Resource Manager UI.
 * **NameNode** - Hadoop Distributed File System (HDFS) NameNode UI.
 * **Oozie Web UI** - Oozie UI.
 
@@ -158,7 +158,7 @@ Op de pagina **Hosts** worden alle hosts in het cluster weergegeven. Voer deze s
     |Alle onderdelen starten|Start alle onderdelen op de host.|
     |Alle onderdelen stoppen|Stop alle onderdelen op de host.|
     |Alle onderdelen opnieuw starten|Stop en start alle onderdelen op de host.|
-    |Onderhoudsmodus inschakelen|Onderdrukt waarschuwingen voor de host. Deze modus moet worden ingeschakeld als u acties uitvoert die waarschuwingen genereren. Bijvoorbeeld stoppen en starten van een service.|
+    |Onderhoudsmodus inschakelen|Onderdrukt waarschuwingen voor de host. Deze modus moet worden ingeschakeld als u acties doet die waarschuwingen genereren. Bijvoorbeeld stoppen en starten van een service.|
     |Onderhoudsmodus uitschakelen|Geeft als resultaat de host bij normale waarschuwingen.|
     |Stoppen|Hiermee stopt DataNode of NodeManagers op de host.|
     |Starten|Hiermee start u DataNode of NodeManagers op de host.|
@@ -166,7 +166,7 @@ Op de pagina **Hosts** worden alle hosts in het cluster weergegeven. Voer deze s
     |Ontmantelen|Hiermee verwijdert u een host uit het cluster. **Gebruik deze actie niet op HDInsight-clusters.**|
     |Herinbedrijfstelling|Hiermee voegt u een eerder buiten bedrijf gesteld host toe aan het cluster. **Gebruik deze actie niet op HDInsight-clusters.**|
 
-### <a name="services"></a><a id="service"></a>Diensten
+### <a name="services"></a><a id="service"></a>Services
 
 Gebruik op de pagina **Dashboard** of **Services** de knop **Acties** onder aan de lijst met services om alle services te stoppen en te starten.
 
@@ -175,11 +175,11 @@ Gebruik op de pagina **Dashboard** of **Services** de knop **Acties** onder aan 
 > [!WARNING]  
 > Hoewel **Add Service** in dit menu wordt vermeld, mag deze niet worden gebruikt om services toe te voegen aan het HDInsight-cluster. Nieuwe services moeten worden toegevoegd met behulp van een scriptactie tijdens het inrichten van het cluster. Zie [HDInsight-clusters aanpassen met Scriptacties](hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie over het gebruik van Script-acties.
 
-Hoewel de knop **Acties** alle services opnieuw kan starten, wilt u vaak een specifieke service starten, stoppen of opnieuw starten. Gebruik de volgende stappen om acties uit te voeren op een afzonderlijke service:
+Hoewel de knop **Acties** alle services opnieuw kan starten, wilt u vaak een specifieke service starten, stoppen of opnieuw starten. Gebruik de volgende stappen om acties uit te voeren voor een afzonderlijke service:
 
 1. Selecteer een service op de pagina **Dashboard** of **Services.**
 
-2. Gebruik boven aan het tabblad **Overzicht** de knop **Serviceacties** en selecteer de actie die u wilt uitvoeren. Hiermee wordt de service opnieuw gestart op alle knooppunten.
+2. Gebruik boven aan het tabblad **Overzicht** de knop **Serviceacties** en selecteer de actie die u wilt uitvoeren. Met deze actie wordt de service opnieuw gestart op alle knooppunten.
 
     ![Individuele serviceacties apache Ambari](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
@@ -213,8 +213,10 @@ Met Ambari-weergaven kunnen ontwikkelaars ui-elementen aansluiten op de Gebruike
 
 De volgende Ambari-bewerkingen worden niet ondersteund op HDInsight:
 
-* __De service Metrics Collector verplaatsen__. Wanneer u informatie bekijkt over de service Metrics Collector, is een van de acties die beschikbaar zijn in het menu Serviceacties __het verzamelprogramma voor statistieken verplaatsen.__ Dit wordt niet ondersteund met HDInsight.
+* __De service Metrics Collector verplaatsen__. Wanneer u informatie bekijkt over de service Metrics Collector, is een van de acties die beschikbaar zijn in het menu Serviceacties __het verzamelprogramma voor statistieken verplaatsen.__ Deze actie wordt niet ondersteund met HDInsight.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het gebruik van de [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) met HDInsight.
+* [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) met HDInsight.
+* [Apache Ambari gebruiken om de configuratie van HDInsight-clusters te optimaliseren](./hdinsight-changing-configs-via-ambari.md)
+* [Azure HDInsight-clusters schalen](./hdinsight-scaling-best-practices.md)

@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4538afcef85c4a6eaef4213133963ecab9987e1f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: d7a596454a48a1d6fcee77634363dd38f34a4d58
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80876214"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603351"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-implementatieplannen
 Op zoek naar end-to-end richtlijnen voor het implementeren van Azure AD-mogelijkheden (Azure Directory) (Azure DIRECTORY)? Azure AD-implementatieplannen leiden u door de bedrijfswaarde, planningsoverwegingen en operationele procedures die nodig zijn om gemeenschappelijke Azure AD-mogelijkheden met succes te implementeren.
@@ -80,7 +80,7 @@ De uitrol naar grotere groepen gebruikers moet worden uitgebreid door de reikwij
 | -| -|
 | [ADFS voor wachtwoordhash-synchronisatie](../hybrid/plan-migrate-adfs-password-hash-sync.md)| Met Password Hash Synchronization worden hashes van gebruikerswachtwoorden gesynchroniseerd van on-premises Active Directory naar Azure AD, zodat Azure AD gebruikers kan verifiëren zonder interactie met de on-premises Active Directory |
 | [ADFS voor Pass Through-verificatie](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Azure AD Pass-through Authentication helpt uw gebruikers zich aan te melden bij zowel on-premises als cloudtoepassingen met dezelfde wachtwoorden. Deze functie biedt gebruikers een betere ervaring - een wachtwoord minder om te onthouden - en vermindert de kosten van de IT-helpdesk omdat gebruikers minder snel vergeten hoe ze zich moeten aanmelden. Als iemand zich aanmeldt bij Azure AD, worden met deze functie de wachtwoorden rechtstreeks gecontroleerd tegen de on-premises Active Directory. |
-| [Azure AD-toepassingsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan.md) |De huidige werknemer wil overal, op elke plek en op elk apparaat productief kunnen zijn. Ze moeten on-premises toegang krijgen tot SaaS-apps in de cloud en bedrijfsapps. Azure AD Application proxy maakt deze robuuste toegang mogelijk zonder dure en complexe virtual private networks (VPN's) of gedemilitariseerde zones (DMZs). |
+| [Azure AD-toepassingsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) |De huidige werknemer wil overal, op elke plek en op elk apparaat productief kunnen zijn. Ze moeten on-premises toegang krijgen tot SaaS-apps in de cloud en bedrijfsapps. Azure AD Application proxy maakt deze robuuste toegang mogelijk zonder dure en complexe virtual private networks (VPN's) of gedemilitariseerde zones (DMZs). |
 | [Naadloze eenmalige aanmelding](../hybrid/how-to-connect-sso-quick-start.md)| Met Naadloze eenmalige aanmelding van Azure Active Directory (Naadloze SSO van Azure AD) worden gebruikers aangemeld als hun bedrijfsapparaten zijn verbonden met net bedrijfsnetwerk. Met deze functie hoeven gebruikers hun wachtwoorden niet in te voeren om zich aan te melden bij Azure AD en hoeven ze meestal hun gebruikersnamen niet in te voeren. Deze functie biedt geautoriseerde gebruikers eenvoudige toegang tot uw cloudgebaseerde toepassingen zonder extra on-premises componenten nodig te hebben. |
 
 ## <a name="deploy-user-provisioning"></a>Gebruikersvoorziening implementeren

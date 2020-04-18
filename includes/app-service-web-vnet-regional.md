@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: ccompy
-ms.openlocfilehash: 7f2b011b2de5af0e4ace9cbeb4399911d8e83b7f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312818"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604880"
 ---
 Met behulp van regionale VNet-integratie heeft uw app toegang tot:
 
@@ -19,7 +19,7 @@ Met behulp van regionale VNet-integratie heeft uw app toegang tot:
 * Bronnen voor Azure ExpressRoute-verbindingen.
 * Bronnen in het VNet waarmee u bent geïntegreerd.
 * Bronnen voor peered-verbindingen, waaronder Azure ExpressRoute-verbindingen.
-* Privéeindpunten - Opmerking: DNS moet afzonderlijk worden beheerd in plaats van Azure DNS-privézones te gebruiken.
+* Privéeindpunten 
 
 Wanneer u VNet-integratie met VNets in dezelfde regio gebruikt, u de volgende Azure-netwerkfuncties gebruiken:
 
@@ -50,7 +50,7 @@ Er zijn enkele beperkingen met het gebruik van VNet-integratie met VNets in deze
 * U alleen integreren met VNets in hetzelfde abonnement als de app.
 * U slechts één regionaal VNet-integratie-abonnement per App-serviceabonnement hebben. Meerdere apps in hetzelfde App Service-abonnement kunnen hetzelfde VNet gebruiken.
 * U het abonnement van een app of abonnement niet wijzigen terwijl er een app is die regionale VNet-integratie gebruikt.
-* Uw app kan geen adressen oplossen in Azure DNS Private Zones.
+* Uw app kan adressen in Azure DNS Private Zones niet oplossen zonder configuratiewijzigingen
 
 Voor elk exemplaar van het abonnement wordt één adres gebruikt. Als u uw app schaalt naar vijf exemplaren, worden vijf adressen gebruikt. Aangezien de subnetgrootte na toewijzing niet kan worden gewijzigd, moet u een subnet gebruiken dat groot genoeg is om aan te passen aan de schaal die uw app kan bereiken. Een /26 met 64 adressen is de aanbevolen grootte. Een /26 met 64 adressen biedt plaats aan een Premium-abonnement met 30 exemplaren. Wanneer u een abonnement omhoog of omlaag schaalt, hebt u twee keer zoveel adressen nodig voor een korte periode.
 
@@ -83,9 +83,22 @@ Als u al het uitgaande verkeer on-premises wilt routeren, u een routetabel gebru
 
 NGP-routes (Border Gateway Protocol) hebben ook invloed op uw app-verkeer. Als u BGP-routes hebt vanaf iets als een ExpressRoute-gateway, wordt uw uitgaand verkeer van uw app beïnvloed. Standaard zijn BGP-routes alleen van invloed op uw RFC1918-bestemmingsverkeer. Als WEBSITE_VNET_ROUTE_ALL is ingesteld op 1, kan al het uitgaande verkeer worden beïnvloed door uw BGP-routes.
 
+### <a name="azure-dns-private-zones"></a>Azure DNS-privézones 
+
+Nadat uw app is geïntegreerd met uw VNet, maakt deze gebruik van dezelfde DNS-server waarmee uw VNet is geconfigureerd. Standaard werkt uw app niet met Azure DNS Private Zones. Als u wilt werken met Azure DNS-privézones, moet u de volgende app-instellingen toevoegen:
+
+1. WEBSITE_DNS_SERVER met waarde 168.63.129,16 
+1. WEBSITE_VNET_ROUTE_ALL met waarde 1
+
+Deze instellingen sturen al uw uitgaande oproepen vanuit uw app naar uw VNet, naast het inschakelen van uw app om Azure DNS-privézones te gebruiken.
+
+### <a name="private-endpoints"></a>Privéeindpunten
+
+Als u wilt bellen naar [privéeindpunten,][privateendpoints]moet u integreren met Azure DNS Private Zones of het privéeindpunt beheren in de DNS-server die door uw app wordt gebruikt. 
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png
 
 <!--Links-->
 [VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
+[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

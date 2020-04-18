@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault soft delete | Microsoft Documenten
+title: Azure Key Vault soft-delete | Microsoft Documenten
 description: Met Soft-delete in Azure Key Vault u verwijderde sleutelkluizen en sleutelkluisobjecten, zoals sleutels, geheimen en certificaten, herstellen.
 ms.service: key-vault
 ms.subservice: general
@@ -8,16 +8,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 6185f0d84f27b6be89e797fc7cfb22940d8c6401
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: be4f124863da39cc9f6a61ebe054d451b438e8c3
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81432097"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617754"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault: overzicht van voorlopig verwijderen
 
-De soft delete-functie van Key Vault maakt het mogelijk om de verwijderde kluizen en kluisobjecten, bekend als soft-delete, te herstellen. Concreet gaan we in op de volgende scenario's:
+Key Vault's soft-delete-functie maakt het mogelijk om de verwijderde kluizen en kluisobjecten, bekend als soft-delete, te herstellen. Concreet gaan we in op de volgende scenario's:
 
 - Ondersteuning voor herstelbare verwijdering van een sleutelkluis
 - Ondersteuning voor herstelbare verwijdering van belangrijke vault-objecten (bijvoorbeeld. sleutels, geheimen, certificaten)
@@ -38,7 +38,7 @@ Azure Key Vaults zijn bijgehouden resources die worden beheerd door Azure Resour
 
 Wanneer soft-delete is ingeschakeld, worden resources die zijn gemarkeerd als verwijderde bronnen standaard voor een bepaalde periode (standaard 90 dagen) bewaard. De service biedt verder een mechanisme voor het herstellen van het verwijderde object, in wezen ongedaan maken van de verwijdering.
 
-Bij het maken van een nieuwe sleutelkluis is soft-delete standaard ingeschakeld. U een sleutelkluis maken zonder soft-delete via azure [CLI](soft-delete-cli.md) of [Azure Powershell.](soft-delete-powershell.md) Zodra soft-delete is ingeschakeld op een sleutelkluis, kan deze niet meer worden uitgeschakeld
+Bij het maken van een nieuwe sleutelkluis is soft-delete standaard ingeschakeld. U een sleutelkluis maken zonder soft-delete via azure [CLI](soft-delete-cli.md) of [Azure PowerShell.](soft-delete-powershell.md) Zodra soft-delete is ingeschakeld op een sleutelkluis, kan deze niet meer worden uitgeschakeld
 
 De standaardbewaarperiode is 90 dagen, maar tijdens het maken van sleutelkluizen is het mogelijk om het bewaarbeleidsinterval in te stellen op een waarde van 7 tot 90 dagen via de Azure-portal. Het beleid voor het behoud van zuiveringsbeveiliging gebruikt hetzelfde interval. Eenmaal ingesteld, kan het interval voor het bewaarbeleid niet worden gewijzigd.
 
@@ -46,7 +46,7 @@ U de naam van een sleutelkluis die is verwijderd niet opnieuw gebruiken totdat d
 
 ### <a name="purge-protection"></a>Zuiveringsbeveiliging 
 
-Zuiveringsbeveiliging is een optioneel Key Vault-gedrag en is **standaard niet ingeschakeld.** Het kan worden ingeschakeld via [CLI](soft-delete-cli.md#enabling-purge-protection) of [Powershell](soft-delete-powershell.md#enabling-purge-protection).
+Zuiveringsbeveiliging is een optioneel Key Vault-gedrag en is **standaard niet ingeschakeld.** Het kan worden ingeschakeld via [CLI](soft-delete-cli.md#enabling-purge-protection) of [PowerShell](soft-delete-powershell.md#enabling-purge-protection).
 
 Wanneer de zuiveringsbeveiliging is ingeschakeld, kan een kluis of een object in de verwijderde status pas worden verwijderd nadat de bewaartermijn is verstreken. Verwijderde kluizen en objecten met zachte verwijderde kluizen kunnen nog steeds worden hersteld, zodat het bewaarbeleid wordt gevolgd. 
 
@@ -58,7 +58,7 @@ Permanent verwijderen, zuiveren, een sleutelkluis is mogelijk via een POST-bewer
 
 Uitzonderingen zijn:
 - Wanneer het Azure-abonnement is gemarkeerd als *ondeletbaar*. In dit geval kan alleen de service dan de daadwerkelijke verwijdering uitvoeren en dit doen als een gepland proces. 
-- Wanneer de --enable-purge-protection vlag is ingeschakeld op de kluis zelf. In dit geval wacht Key Vault 90 dagen vanaf het moment waarop het oorspronkelijke geheime object is gemarkeerd voor verwijdering om het object permanent te verwijderen.
+- Wanneer `--enable-purge-protection flag` de is ingeschakeld op de kluis zelf. In dit geval wacht Key Vault 90 dagen vanaf het moment waarop het oorspronkelijke geheime object is gemarkeerd voor verwijdering om het object permanent te verwijderen.
 
 ### <a name="key-vault-recovery"></a>Sleutelkluisherstel
 
@@ -72,7 +72,7 @@ Tegelijkertijd plant Key Vault de verwijdering van de onderliggende gegevens die
 
 ### <a name="soft-delete-retention-period"></a>Bewaarperiode soft-delete
 
-Zachte verwijderde resources worden gedurende een bepaalde periode, 90 dagen, bewaard. Tijdens het retentieinterval voor softdelete geldt het volgende:
+Verwijderde resources met zachte verwijderde bronnen worden gedurende een bepaalde periode, 90 dagen, bewaard. Tijdens het retentieinterval voor softdelete geldt het volgende:
 
 - U alle belangrijke kluizen en sleutelkluisobjecten in de status soft-delete voor uw abonnement vermelden, evenals toegangsverwijderings- en herstelgegevens over deze kluizen.
     - Alleen gebruikers met speciale machtigingen kunnen verwijderde kluizen aanbieden. We raden onze gebruikers aan een aangepaste rol te maken met deze speciale machtigingen voor het verwerken van verwijderde kluizen.

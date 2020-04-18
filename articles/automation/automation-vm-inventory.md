@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: inventaris, automation, wijziging, bijhouden
 ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0627d2daa70c276535dc43b722e22e1d73b0c8d2
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844816"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617375"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Een virtuele Azure-machine met inventarisverzameling beheren
 
@@ -30,7 +30,7 @@ In dit artikel wordt ervan uitgegaan dat u een VM hebt om de oplossing op te con
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>Verzamelen van inventaris inschakelen op de resourcepagina van de virtuele machine
 
@@ -53,9 +53,9 @@ Wanneer de implementatie is voltooid, verdwijnt de statusbalk. Het systeem is no
 
 Standaard worden software-, Windows Services- en Linux-daemons geconfigureerd voor verzameling. Als u Windows-register- en bestandsinventarisgegevens wilt verzamelen, configureer dan de instellingen voor de inventarisverzameling.
 
-1. Selecteer **in** de weergave Inventaris de knop **Instellingen bewerken** boven aan het venster.
-2. Als u een nieuwe instelling voor de verzameling wilt toevoegen, selecteert u de tabbladen **Windows-register**, **Windows-bestanden** en **Linux-bestanden** om naar de instellingencategorie te gaan die u wilt toevoegen.
-3. Selecteer de juiste categorie en klik boven aan het venster op **Toevoegen.**
+1. Klik op de pagina Inventaris boven aan de pagina op **Instellingen bewerken.**
+2. Als u een nieuwe verzamelingsinstelling wilt toevoegen, gaat u naar de instellingscategorie die u wilt toevoegen door het tabblad **Windows-register,** **Windows-bestanden**of **Linux-bestanden te** selecteren.
+3. Selecteer de juiste categorie en klik boven aan de pagina op **Toevoegen.**
 
 In de volgende tabellen vindt u informatie over elke eigenschap die voor de verschillende categorieën kan worden geconfigureerd.
 
@@ -72,23 +72,23 @@ In de volgende tabellen vindt u informatie over elke eigenschap die voor de vers
 
 |Eigenschap  |Beschrijving  |
 |---------|---------|
-|Ingeschakeld     | Bepaalt of de instelling wordt toegepast        |
-|Itemnaam     | Beschrijvende naam van het bestand dat moet worden bijgehouden        |
-|Groep     | De naam van een groep voor het logisch groeperen van bestanden        |
-|Pad invoeren     | Het pad voor het controleren op het bestand, bijvoorbeeld: "C:\temp\myfile.txt"
+|Ingeschakeld     | True als de instelling wordt toegepast en Onwaar anders.        |
+|Itemnaam     | De vriendelijke naam van het bestand dat moet worden bijgehouden.        |
+|Groep     | Een groepsnaam voor het logisch groeperen van bestanden.       |
+|Pad invoeren     | Het pad om te controleren op het bestand, bijvoorbeeld **c:\temp\myfile.txt**.
 
 ### <a name="linux-files"></a>Linux-bestanden
 
 |Eigenschap  |Beschrijving  |
 |---------|---------|
-|Ingeschakeld     | Bepaalt of de instelling wordt toegepast        |
-|Itemnaam     | Beschrijvende naam van het bestand dat moet worden bijgehouden        |
-|Groep     | De naam van een groep voor het logisch groeperen van bestanden        |
-|Pad invoeren     | Het pad voor het controleren op het bestand, bijvoorbeeld: "/etc/*.conf"       |
-|Padtype     | Type item voor het bijhouden van wijzigingen. Mogelijke waarden zijn Bestand en Map        |
-|Recursie     | Bepaalt of recursie wordt gebruikt bij het zoeken naar het item dat moet worden bijgehouden.        |
-|Sudo gebruiken     | Deze instelling bepaalt of sudo wordt gebruikt bij het controleren op het item.         |
-|Koppelingen     | Deze instelling bepaalt hoe symbolische koppelingen worden afgehandeld bij het doorlopen van mappen.<br> **Negeren** - Symbolische koppelingen worden genegeerd en de bestanden/mappen waarnaar wordt verwezen, worden niet opgenomen<br>**Volgen** - Symbolische koppelingen worden gevolgd tijdens recursie en de bestanden/mappen waarnaar wordt verwezen, worden opgenomen<br>**Beheren** - Symbolische koppelingen worden gevolgd en de afhandeling van de geretourneerde inhoud kan worden gewijzigd      |
+|Ingeschakeld     | True als de instelling wordt toegepast en Onwaar anders.        |
+|Itemnaam     | De vriendelijke naam van het bestand dat moet worden bijgehouden.        |
+|Groep     | Een groepsnaam voor het logisch groeperen van bestanden.        |
+|Pad invoeren     | Het pad om te controleren op het bestand, bijvoorbeeld **/etc/*.conf**.       |
+|Padtype     | Het type item dat moet worden bijgehouden. Waarden zijn Bestand en Directory.        |
+|Recursie     | True als recursie wordt gebruikt bij het zoeken naar het item dat moet worden bijgehouden en False anders.        |
+|Sudo gebruiken     | True als sudo wordt gebruikt bij het controleren op het item, en Onwaar anders.         |
+|Koppelingen     | Waarde die aangeeft hoe symbolische koppelingen worden behandeld bij het doorkruisen van mappen. Mogelijke waarden zijn: <br> Negeren - Symbolische koppelingen worden genegeerd en de bestanden/mappen waarnaar wordt verwezen, worden niet opgenomen<br>Volgen - Symbolische koppelingen worden gevolgd tijdens recursie en de bestanden/mappen waarnaar wordt verwezen, worden opgenomen<br>Beheren - Symbolische koppelingen worden gevolgd en de afhandeling van de geretourneerde inhoud kan worden gewijzigd      |
 
 ## <a name="manage-machine-groups"></a>Machinegroepen beheren
 
@@ -104,9 +104,9 @@ Als u een machinegroep selecteert in de lijst, wordt de pagina Machinegroepen ge
 
 ![Pagina machinegroep weergeven](./media/automation-vm-inventory/machine-group-page.png)
 
-Klik op de knop **+ Kloon** om de machinegroep te klonen. Hier moet u de groep een nieuwe naam en alias voor de groep geven. De definitie kan op dit moment worden gewijzigd. Nadat u de query hebt **gewijzigd,** drukt u op Query Valideren om een voorbeeld te geven van de geselecteerde machines. Wanneer u tevreden bent met de groep klikt u op **Maken** om de machinegroep te maken
+Klik **op + Kloon** om de machinegroep te klonen. U moet de groep een nieuwe naam en alias voor de groep geven. De definitie kan op dit moment worden gewijzigd. Nadat u de query hebt gewijzigd, klikt u op **Query valideren** om een voorbeeld te geven van de machines die zijn geselecteerd. Als u tevreden bent met de groep, klikt u op **Maken** om de machinegroep te maken.
 
-Als u een nieuwe machinegroep wilt maken, selecteert u **+ Een machinegroep maken**. Met deze knop opent **u de pagina Een machinegroep maken** waar u uw nieuwe groep definiëren. Klik op **Maken** om de groep te maken.
+Als u een nieuwe machinegroep wilt maken, klikt u op **+ Een machinegroep maken**. Met deze knop opent u de pagina **Een machinegroep maken,** waar u uw nieuwe groep definiëren. Klik op **Maken** om de groep te maken.
 
 ![Nieuwe machinegroep maken](./media/automation-vm-inventory/create-new-group.png)
 
@@ -115,18 +115,17 @@ Als u een nieuwe machinegroep wilt maken, selecteert u **+ Een machinegroep make
 Ga als volgt te werk om uw virtuele machine te verwijderen uit inventarisbeheer:
 
 1. Selecteer in het linkermenu van de Azure-portal de optie **Log Analytics** en selecteer de werkruimte die u hebt gebruikt tijdens de onboarding van de virtuele machine.
-2. Selecteer in het venster **Log Analytics** in het menu **Resource** de optie **Virtuele machines** in de categorie **Gegevensresources voor werkruimte**.
-3. Selecteer in de lijst de virtuele machine die u wilt loskoppelen. De virtuele machine heeft een groen vinkje naast de tekst **Deze werkruimte** in de kolom **OMS-verbinding**.
+2. Open op de pagina Log Analytics het menu **Resource.**
+3. Selecteer **Virtuele machines** onder **Werkruimtegegevensbronnen**.
+4. Selecteer in de lijst de virtuele machine die u wilt loskoppelen. De virtuele machine heeft een groen vinkje naast de tekst **Deze werkruimte** in de kolom **OMS-verbinding**.
 
    >[!NOTE]
-   >OMS wordt nu Azure Monitor-logboeken genoemd.
+   >Operations Management Suite (OMS) wordt nu Azure Monitor-logboeken genoemd.
    
-4. Selecteer bovenaan de volgende pagina de optie **Verbinding verbreken**.
-5. Selecteer **Ja** in het bevestigingsvenster.
-    Met deze actie wordt de virtuele machine losgekoppeld van beheer.
+5. Klik boven aan de volgende pagina op **Verbreken**.
+6. Klik in het bevestigingsvenster op **Ja** om de machine los te koppelen van het beheer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Track software changes in your environment with the Change Tracking solution](../log-analytics/log-analytics-change-tracking.md) (Wijzigingen in uw omgeving bijhouden met de oplossing Wijzigingen bijhouden) voor meer informatie over het beheren van wijzigingen in bestands- en registerinstellingen.
 * Zie [De oplossing voor updatebeheer in Azure](../operations-management-suite/oms-solution-update-management.md)voor meer informatie over het beheren van Windows en pakketupdates op uw virtuele machines.
-

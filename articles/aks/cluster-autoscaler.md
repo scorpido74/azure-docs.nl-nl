@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van de clusterautoscaler om uw clu
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 0b94865d81afc56c24d470012c668662f003a1b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2baa64779713d0bac063e1d2c06107ba2ab291fb
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596246"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617538"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Een cluster automatisch schalen om te voldoen aan de toepassingsvereisten op Azure Kubernetes Service (AKS)
 
@@ -117,6 +117,7 @@ U ook gedetailleerdere details van de clusterautoscaler configureren door de sta
 | schaal-down-unready-time          | Hoe lang een onklaar knooppunt overbodig moet zijn voordat het in aanmerking komt voor schaalomlaag         | 20 minuten    |
 | schaal-down-usage-drempel | Gebruiksniveau van knooppunt, gedefinieerd als som van de gevraagde resources gedeeld door capaciteit, waaronder een knooppunt kan worden beschouwd voor schaalomlaag | 0.5 |
 | max-graceful-termination-sec     | Maximaal aantal seconden dat de clusterautoscaler wacht op podbeëindiging wanneer het een knooppunt probeert af te schalen. | 600 seconden   |
+| balans-gelijk-node-groepen | Vergelijkbare knooppuntgroepen detecteren en het aantal knooppunten tussen deze knooppunten in evenwicht brengen | false |
 
 > [!IMPORTANT]
 > Het clusterautoscalerprofiel is van invloed op alle knooppuntgroepen die de clusterautoscaler gebruiken. U geen autoscalerprofiel per knooppuntgroep instellen.

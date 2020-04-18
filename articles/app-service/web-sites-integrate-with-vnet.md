@@ -4,15 +4,15 @@ description: Integreer de app in Azure App Service met virtuele Azure-netwerken.
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cb5747c6780da134dfb2f5ab088348b848c5f04a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4866397af244ffb3c6aa9c7547b0a9413b10ccfd
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312816"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604863"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uw app integreren met een virtueel Azure-netwerk
 
@@ -41,8 +41,6 @@ Azure App Service heeft twee varianten:
     ![Klassieke VNet selecteren][3]
 
 Tijdens de integratie wordt uw app opnieuw opgestart. Wanneer de integratie is voltooid, ziet u details op het VNet waarmee u bent geïntegreerd.
-
-Nadat uw app is geïntegreerd met uw VNet, maakt deze gebruik van dezelfde DNS-server waarmee uw VNet is geconfigureerd, tenzij het Azure DNS Private Zones is. Momenteel u VNet-integratie niet gebruiken met Azure DNS Private Zones.
 
 ## <a name="regional-vnet-integration"></a>Regionale VNet-integratie
 
@@ -200,3 +198,4 @@ Voor vnet-integratie die vereist is voor poorten, u App Service integreren met e
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool
 [VNETRouteTables]: https://docs.microsoft.com/azure/virtual-network/manage-route-table/
 [installCLI]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest/
+[privateendpoints]: networking/private-endpoint.md

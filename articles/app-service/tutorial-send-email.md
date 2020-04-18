@@ -4,12 +4,12 @@ description: Meer informatie over het aanroepen van bedrijfsprocessen vanuit uw 
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 44f2dfb83e96e1d8fa31ee1acf350193b954dbd8
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892851"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604856"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Zelfstudie: E-mail verzenden en andere bedrijfsprocessen van App Service aanroepen
 
@@ -199,7 +199,7 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Deze code is geschreven voor eenvoud van demonstratie. In de praktijk u een `HttpClient` object niet voor elke aanvraag instantiëren. Volg de richtlijnen bij [IHttpClientFactory gebruiken omhttps://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient veerkrachtige HTTP-aanvragen te implementeren]( -http-requests).
+> Deze code is geschreven voor eenvoud van demonstratie. In de praktijk u een `HttpClient` object niet voor elke aanvraag instantiëren. Volg de richtlijnen bij [Gebruik IHttpClientFactory om veerkrachtige HTTP-aanvragen te implementeren.](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)
 
 Als u deze code test in de voorbeeld-app voor [zelfstudie: een ASP.NET Core- en SQL Database-app in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)maken, u deze gebruiken om een e-mailbevestiging te verzenden in de actie [Maken](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)nadat het `Todo` item is toegevoegd.
 

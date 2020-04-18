@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7ee219ae5ace0f0da398cc542f410d3c895c8bd4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ac7e721a863414cf0617177885e0ff1c9e9a35d4
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679983"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617857"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -76,6 +76,14 @@ De videokwaliteit kan worden aangetast door de netwerkkwaliteit of de ontbrekend
 
 * Bekijk de stappen om netwerkproblemen te [identificeren.](#unstable-holograms)
 * Bekijk de [systeemvereisten](../overview/system-requirements.md#development-pc) voor het installeren van het nieuwste grafische stuurprogramma.
+
+## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Video opgenomen met MRC weerspiegelt niet de kwaliteit van de live-ervaring
+
+Een video kan worden opgenomen op Hololens via [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers). Maar de resulterende video heeft een slechtere kwaliteit dan de live-ervaring om twee redenen:
+* De videoframerate is beperkt tot 30 Hz in tegenstelling tot 60 Hz.
+* De videobeelden gaan niet door de [late fase reprojection](../overview/features/late-stage-reprojection.md) verwerking stap, dus de video lijkt te zijn choppier.
+
+Beide zijn inherente beperkingen van de opnametechniek.
 
 ## <a name="black-screen-after-successful-model-loading"></a>Zwart scherm na succesvol laden van het model
 

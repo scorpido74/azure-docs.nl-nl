@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: b06000d6b3cd7a429b7ad0fc9c453595f21bd893
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dea0f9a038958ea747147a179020545f2f6922a2
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418470"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605345"
 ---
 # <a name="monitor-data-flows"></a>Gegevensstromen controleren
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Nadat u uw gegevensstroom hebt voltooid en debuggen, wilt u uw gegevensstroom plannen om volgens een planning in de context van een pijplijn uit te voeren. U de pijplijn plannen vanuit Azure Data Factory met Triggers. U de optie Trigger Now van de Azure Data Factory Pipeline Builder gebruiken om een runsuitvoering uit te voeren om uw gegevensstroom binnen de pijplijncontext te testen.
 

@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 888dc99162551482afc715f1a793614d2c866384
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 62c661f75aef77117a61be7e802562e6dde17ba5
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677037"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604677"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Updates en patches voor uw Azure VM's beheren
 
@@ -40,13 +40,13 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="view-update-assessment"></a>Update-evaluatie bekijken
 
-Nadat u Updatebeheer hebt ingeschakeld, wordt de pagina **Beheer bijwerken** geopend. Als updates als ontbrekend worden aangemerkt, wordt een lijst met ontbrekende updates weergegeven op het tabblad **Ontbrekende updates.**
+Nadat u Updatebeheer hebt ingeschakeld, wordt de pagina Beheer bijwerken geopend. Als updates als ontbrekend worden aangemerkt, wordt een lijst met ontbrekende updates weergegeven op het tabblad **Ontbrekende updates.**
 
 Selecteer **onder Koppeling Informatie**de koppeling Bijwerken om het ondersteuningsartikel voor de update te openen. U belangrijke informatie over de update leren.
 
 ![Updatestatus bekijken](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 
-Klik ergens anders in de update om het **zoekvenster Logboek** voor de geselecteerde update te openen. De query voor zoeken in logboeken is vooraf gedefinieerd voor deze specifieke update. U deze query wijzigen of uw eigen query maken om gedetailleerde informatie over updates die in uw omgeving zijn geïmplementeerd of ontbreken weer te geven.
+Klik ergens anders in de update om het zoekvenster Logboek voor de geselecteerde update te openen. De query voor zoeken in logboeken is vooraf gedefinieerd voor deze specifieke update. U deze query wijzigen of uw eigen query maken om gedetailleerde informatie over updates die in uw omgeving zijn geïmplementeerd of ontbreken weer te geven.
 
 ![Updatestatus bekijken](./media/automation-tutorial-update-management/logsearch.png)
 
@@ -58,7 +58,7 @@ In deze stap leert u een waarschuwing instellen zodat u de status van een update
 
 Ga in uw automatiseringsaccount naar **Waarschuwingen** onder **Controleren**en klik vervolgens op **Nieuwe waarschuwingsregel**.
 
-Uw Automatiseringsaccount is al geselecteerd als resource. Als u deze wilt wijzigen, klikt u op **Selecteren**. Kies **op de** pagina Een resource selecteren de optie **Accounts automatiseren** in het vervolgkeuzemenu **Filter op resourcetype.** Selecteer uw automatiseringsaccount en klik op **Gereed**.
+Uw Automatiseringsaccount is al geselecteerd als resource. Als u deze wilt wijzigen, klikt u op **Selecteren**. Kies op de pagina Een resource selecteren de optie **Accounts automatiseren** in het vervolgkeuzemenu **Filter op resourcetype.** Selecteer uw automatiseringsaccount en klik op **Gereed**.
 
 Klik op **Voorwaarde toevoegen** om het signaal te selecteren dat geschikt is voor de update-implementatie. De volgende tabel toont de details van de twee beschikbare signalen.
 
@@ -85,11 +85,11 @@ Voer in het veld **Groepsnaam** een naam in voor de waarschuwing en een korte na
 
 Voer **onder Acties**een naam voor de actie in, zoals **e-mailmelding**. Selecteer **E-mail/sms/push/voice**voor **actietype**. Selecteer Details **bewerken**voor **details**.
 
-Voer in het deelvenster **E-mail/sms/push/spraak** een naam in. Selecteer het selectievakje **E-mail** en voer vervolgens een geldig e-mailadres in.
+Voer in het deelvenster E-mail/sms/push/spraak een naam in. Schakel het selectievakje **E-mail** in en voer een geldig e-mailadres in.
 
 ![Een e-mailactiegroep configureren](./media/automation-tutorial-update-management/configure-email-action-group.png)
 
-Klik in het deelvenster **E-mail/SMS/Push/Voice** op **OK**. Klik **in** het deelvenster Actiegroep toevoegen op **OK**.
+Klik in het deelvenster E-mail/SMS/Push/Voice op **OK**. Klik in het deelvenster Actiegroep toevoegen op **OK**.
 
 Als u het onderwerp van de waarschuwingse-mail wilt aanpassen, selecteert u onder **Actie**maken onder **Acties aanpassen**de optie **E-mailonderwerp**. Wanneer u klaar bent, selecteert u **Waarschuwingsregel maken**. De waarschuwing geeft aan wanneer een update-implementatie is geslaagd en welke machines deel uitmaakten van de update-implementatie.
 
@@ -123,7 +123,7 @@ Geef onder **Nieuwe update-implementatie** de volgende informatie op:
 
    Zie Classificaties bijwerken voor beschrijvingen van de [classificatietypen.](automation-view-update-assessments.md#update-classifications)
 
-* **Updates die moeten worden opgenomen/uitgesloten** : hiermee opent u de pagina Opnemen/uitsluiten. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven door de KB-artikel-ID-nummers op te geven. Wanneer u een of meer ID-nummers opgeeft, moet u alle classificaties met de update-implementatie verwijderen of ongedaan maken. Dit zorgt ervoor dat er geen andere updates in uw updatepakket worden opgenomen bij het opgeven van update-id's.
+* **Updates die moeten worden opgenomen/uitgesloten** : hiermee opent u de pagina Opnemen/uitsluiten. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven door de KB-artikel-ID-nummers op te geven. Wanneer u een of meer ID-nummers opgeeft, moet u alle classificaties met de update-implementatie verwijderen of uitvinken. Dit zorgt ervoor dat er geen andere updates in uw updatepakket worden opgenomen bij het opgeven van update-id's.
 
 > [!NOTE]
 > Het is belangrijk om te weten dat uitsluitingen inclusies overschrijven. Als u bijvoorbeeld een uitsluitingsregel definieert van `*`Update Management, worden er geen patches of pakketten geïnstalleerd, omdat ze allemaal zijn uitgesloten. Uitgesloten patches nog steeds als ontbrekende van de machine. Voor Linux-machines installeert Update Management het hoofdpakket niet als u een pakket bevat dat een afhankelijk pakket heeft dat is uitgesloten.
@@ -132,7 +132,7 @@ Geef onder **Nieuwe update-implementatie** de volgende informatie op:
 > U geen updates opgeven die zijn vervangen voor opname met de update-implementatie.
 >
 
-* **Planningsinstellingen**: het deelvenster **Planningsinstellingen** wordt geopend. De standaard begintijd is 30 minuten na de huidige tijd. U kunt de starttijd op elke gewenste tijd instellen, maar minstens 10 minuten na de huidige tijd.
+* **Planningsinstellingen**: het deelvenster Planningsinstellingen wordt geopend. De standaard begintijd is 30 minuten na de huidige tijd. U kunt de starttijd op elke gewenste tijd instellen, maar minstens 10 minuten na de huidige tijd.
 
    U kunt ook opgeven dat de implementatie eenmaal moet worden uitgevoerd, of u kunt een planning met meerdere implementaties instellen. Selecteer onder **Terugkeerpatroon** de optie **Eenmaal**. Laat de standaardinstelling als 1 dag staan en klik op **OK**. Deze vermeldingen stellen een terugkerend schema op.
 
@@ -196,7 +196,7 @@ Wanneer uw update-implementatie slaagt, ontvangt u een bevestigende e-mail die v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Onboarding voor Updatebeheer uitvoeren voor een VM 

@@ -6,19 +6,18 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f284d4dfbe550c357f81c01fa0a66aa9878b6c1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671559"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640949"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Problemen oplossen bij het inschakelen of weergeven van Application Insights Profiler
 
 ## <a name="active-issues"></a>Actieve problemen
 
-* Profilering voor ASP.NET Core 3.x-toepassingen wordt nog niet ondersteund.
-  * Als u Profiler aan moet hebben, moet u [Application Insights Profiler gebruiken voor ASP.NET Core.](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore) De profiler is gelabeld voor Linux, maar het werkt ook met .NET Core 3.0 + applicaties op Windows. Zie Ondersteunde [versies](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions)voor meer informatie.
+* Profilering voor ASP.NET Core 3.x-toepassingen wordt nu ondersteund op Azure App Services.
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Algemene probleemoplossing
 

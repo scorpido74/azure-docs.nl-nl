@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 04/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2c946c49884ef0de6843028976d4ec00ccfbcdfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7459c6afc775aa0df43d6f9285191c4c7e1b8cb8
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934853"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81602363"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Een nieuwe Time Series Insights-omgeving maken in Azure Portal
 
@@ -28,7 +28,7 @@ Met Time Series Insights u binnen enkele minuten aan de slag gaan met het visual
 
 Volg de volgende stappen om een omgeving te maken:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer de **knop + Een resource** maken.
 
@@ -39,9 +39,9 @@ Volg de volgende stappen om een omgeving te maken:
 1. Selecteer op de pagina Inzichten in de **tijdreeks** de optie **Maken**.
 
 1. Vul de vereiste parameters in. In de volgende tabel wordt elke parameter uitgelegd:
-   
+
    [![De Time Series Insights-resourcegroep maken](media/time-series-insights-get-started/tsi-configure-and-create.png)](media/time-series-insights-get-started/tsi-configure-and-create.png#lightbox)
-   
+
    Instelling|Voorgestelde waarde|Beschrijving
    ---|---|---
    Omgevingsnaam | Een unieke naam | Deze naam vertegenwoordigt de omgeving in [de tijdreeksontdekkingsreiziger](https://insights.timeseries.azure.com)
@@ -49,7 +49,7 @@ Volg de volgende stappen om een omgeving te maken:
    Resourcegroep | Een nieuw maken of bestaande gebruiken | Een resourcegroep is een verzameling Azure-resources die samen worden gebruikt. U een bestaande resourcegroep kiezen, bijvoorbeeld die met uw Event Hub of IoT Hub. U ook een nieuwe bron maken als deze bron niet gerelateerd is aan de andere bronnen.
    Locatie | Dichtstbijzijnde gebeurtenisbron | Kies bij voorkeur dezelfde datacenterlocatie die uw gebeurtenisbrongegevens bevat, in de poging om extra bandbreedtekosten voor verschillende regio's en bandbreedte tussen verschillende zones en extra latentie te voorkomen bij het verplaatsen van gegevens uit de regio.
    Prijscategorie | S1 | Kies de benodigde doorvoer. Selecteer S1 voor de laagste kosten en startcapaciteit.
-   Capaciteit | 1 | Capaciteit is de multiplier die van toepassing is op het invallende tarief, de opslagcapaciteit en de kosten die zijn gekoppeld aan de geselecteerde SKU.  U kunt de capaciteit van een omgeving wijzigen nadat deze is gemaakt. Voor de laagste kosten selecteert u een capaciteit van 1. 
+   Capaciteit | 1 | Capaciteit is de multiplier die van toepassing is op het invallende tarief, de opslagcapaciteit en de kosten die zijn gekoppeld aan de geselecteerde SKU.  U kunt de capaciteit van een omgeving wijzigen nadat deze is gemaakt. Voor de laagste kosten selecteert u een capaciteit van 1.
   
 1. Selecteer **Maken** om het inrichtingsproces te starten. Dit kan een paar minuten duren.
 

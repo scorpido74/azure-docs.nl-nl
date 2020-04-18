@@ -2,18 +2,18 @@
 title: bestand opnemen
 description: bestand opnemen
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 07/05/2018
-ms.author: tomfitz
+ms.date: 04/16/2020
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c3677e7897498aa06d7bd547988ad4dc0326f39b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8833bb75f5f50372deda3e71c1df90bed9a20054
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67176124"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605652"
 ---
 ## <a name="enable-event-grid-resource-provider"></a>Event Grid-resourceprovicer inschakelen
 
@@ -21,9 +21,9 @@ Als u Event Grid in uw Azure-abonnement nog niet eerder hebt gebruikt, moet u mo
 
 In Azure Portal:
 
-1. Selecteer **Abonnementen**.
+1. Selecteer **Abonnementen** in het linkermenu.
 1. Selecteer het abonnement dat u voor Event Grid gebruikt.
-1. Selecteer onder **Instellingen** de optie **Resourceproviders**.
+1. Selecteer in het linkermenu onder **Instellingen**de optie **Resourceproviders**.
 1. Zoek **Microsoft.EventGrid**.
 1. Als deze niet is geregistreerd, selecteert u **Registreren**. 
 

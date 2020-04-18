@@ -1,6 +1,6 @@
 ---
 title: DNS voor Azure AD-domeinservices beheren | Microsoft Documenten
-description: Meer informatie over het installeren van de DNS-serverhulpprogramma's om DNS te beheren voor een beheerd Azure Active Directory Domain Services-domein.
+description: Meer informatie over het installeren van de DNS-serverhulpprogramma's om DNS te beheren en voorwaardelijke doorstuurers te maken voor een beheerd Azure Active Directory Domain Services-beheerd domein.
 author: iainfoulds
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -8,26 +8,24 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/31/2019
+ms.date: 04/16/2020
 ms.author: iainfou
-ms.openlocfilehash: f0d8f73b47b1110e8e05365013bbf07fd94eb6ca
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: f4bd3f75c3246cb11e88dbaae817eba8ac76b394
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655083"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603464"
 ---
-# <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>DNS beheren in een beheerd Azure AD Domain Services-domein
+# <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-ad-domain-services-managed-domain"></a>DNS beheren en voorwaardelijke doorstuurers maken in een beheerd Azure AD Domain Services-domein
 
 In Azure Active Directory Domain Services (Azure AD DS) is EEN belangrijk onderdeel DNS (Domain Name Resolution). Azure AD DS bevat een DNS-server die naamomzetting biedt voor het beheerde domein. Deze DNS-server bevat ingebouwde DNS-records en -updates voor de belangrijkste onderdelen waarmee de service kan worden uitgevoerd.
 
 Wanneer u uw eigen toepassingen en services uitvoert, moet u mogelijk DNS-records maken voor machines die niet zijn verbonden met het domein, virtuele IP-adressen configureren voor load balancers of externe DNS-expediteurs instellen. Gebruikers die deel uitmaken van de groep *AAD DC-beheerders* krijgen DNS-beheerrechten op het beheerde Azure AD DS-domein en kunnen aangepaste DNS-records maken en bewerken.
 
-In een hybride omgeving worden DNS-zones en records die zijn geconfigureerd in een on-premises AD DS-omgeving, niet gesynchroniseerd met Azure AD DS. Als u uw eigen DNS-vermeldingen wilt definiëren en gebruiken, maakt u records in de Azure AD DS DNS-server of gebruikt u voorwaardelijke expediteurs die naar bestaande DNS-servers in uw omgeving wijzen.
+In een hybride omgeving worden DNS-zones en records die zijn geconfigureerd in andere DNS-naamruimten, zoals een on-premises AD DS-omgeving, niet gesynchroniseerd met Azure AD DS. Als u benoemde resources in andere DNS-naamruimten wilt oplossen, maakt en gebruikt u voorwaardelijke doorstuuraars die naar bestaande DNS-servers in uw omgeving wijzen.
 
-In dit artikel ziet u hoe u de DNS-serverhulpprogramma's installeert en vervolgens de DNS-console gebruikt om records in Azure AD DS te beheren.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+In dit artikel ziet u hoe u de DNS-serverhulpprogramma's installeert en vervolgens de DNS-console gebruikt om records te beheren en voorwaardelijke doorstuurers te maken in Azure AD DS.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -39,6 +37,8 @@ Als u dit artikel wilt voltooien, hebt u de volgende bronnen en bevoegdheden nod
     * Maak indien nodig [een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account.][associate-azure-ad-tenant]
 * Een beheerd azure Directory Domain Services-domein is ingeschakeld en geconfigureerd in uw Azure AD-tenant.
     * Vul indien nodig de zelfstudie in om [een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance]te maken en te configureren.
+* Connectiviteit van uw Azure AD DS-virtuele netwerk met de plaats waar uw andere DNS-naamruimten worden gehost.
+    * Deze connectiviteit kan worden geleverd met een [Azure ExpressRoute-][expressroute] of [Azure VPN-gatewayverbinding.][vpn-gateway]
 * Een Windows Server-beheer-VM die is verbonden met het beheerde Azure AD DS-domein.
     * Vul indien nodig de zelfstudie in om [een Windows Server-vm te maken en deze samen te voegen in een beheerd domein.][create-join-windows-vm]
 * Een gebruikersaccount dat lid is van de Azure *AD DC-beheerdersgroep* in uw Azure AD-tenant.
@@ -56,7 +56,7 @@ Als u DNS-records wilt maken en wijzigen in Azure AD DS, moet u de DNS-serverhul
 1. Klik op de pagina **Serverrollen** op **Volgende**.
 1. Vouw op de pagina **Functies** het knooppunt **Hulpmiddelen voor extern serverbeheer** uit en vouw vervolgens het knooppunt Hulpmiddelen voor **rolbeheer** uit. Selecteer de functie **DNS-serverhulpprogramma's** in de lijst met hulpprogramma's voor rolbeheer.
 
-    ![Kies ervoor om de DNS-serverhulpprogramma's te installeren in de lijst met beschikbare hulpprogramma's voor rolbeheer](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
+    ![Kies ervoor om de DNS-serverhulpprogramma's te installeren in de lijst met beschikbare hulpprogramma's voor rolbeheer](./media/manage-dns/install-dns-tools.png)
 
 1. Selecteer **installeren** op **Install**de pagina Bevestiging . Het kan een minuut of twee duren om de tools voor groepsbeleidsbeheer te installeren.
 1. Wanneer de installatie van de functie is voltooid, selecteert u **Sluiten** om de wizard **Rollen en onderdelen toevoegen** af te sluiten.
@@ -71,14 +71,39 @@ Met de DNS-servertools u DNS-records beheren op het beheerde Azure AD DS-domein.
 1. Selecteer In het startscherm de optie **Systeembeheer**. Er wordt een lijst met beschikbare beheertools weergegeven, waaronder **DNS die** in de vorige sectie is geïnstalleerd. Selecteer **DNS** om de DNS-beheerconsole te starten.
 1. Selecteer in het dialoogvenster **Verbinding maken met DNS-server** de optie **De volgende computer**en voer vervolgens de DNS-domeinnaam van het beheerde domein in, zoals *aaddscontoso.com:*
 
-    ![Verbinding maken met het beheerde Azure AD DS-domein in de DNS-console](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
+    ![Verbinding maken met het beheerde Azure AD DS-domein in de DNS-console](./media/manage-dns/connect-dns-server.png)
 
 1. De DNS-console maakt verbinding met het opgegeven door Azure AD DS beheerde domein. Vouw de **opzoekzones vooruit** of **opzoekzones voor reverse uit** om uw vereiste DNS-items te maken of bestaande records te bewerken als dat nodig is.
 
-    ![DNS-console - domein beheren](./media/active-directory-domain-services-admin-guide/dns-console-managed-domain.png)
+    ![DNS-console - domein beheren](./media/manage-dns/dns-manager.png)
 
 > [!WARNING]
 > Wanneer u records beheert met de HULPPROGRAMMA's van DNS-server, moet u ervoor zorgen dat u de ingebouwde DNS-records die door Azure AD DS worden gebruikt, niet verwijdert of wijzigt. Ingebouwde DNS-records bevatten dns-records van domeinen, naamserverrecords en andere records die worden gebruikt voor DC-locatie. Als u deze records wijzigt, worden domeinservices verstoord op het virtuele netwerk.
+
+## <a name="create-conditional-forwarders"></a>Voorwaardelijke doorstuurers maken
+
+Een Azure AD DS DNS-zone mag alleen de zone en records voor het beheerde domein zelf bevatten. Maak geen extra zones in Azure AD DS om benoemde resources in andere DNS-naamruimten op te lossen. Gebruik in plaats daarvan voorwaardelijke doorstuurers in het beheerde Azure AD DS-domein om de DNS-server te vertellen waar ze naartoe moeten gaan om adressen voor die bronnen op te lossen.
+
+Een voorwaardelijke doorstuurer is een configuratieoptie in een DNS-server waarmee u een DNS-domein definiëren, zoals *contoso.com*, om query's naar door te sturen. In plaats van dat de lokale DNS-server query's voor records in dat domein probeert op te lossen, worden DNS-query's doorgestuurd naar de geconfigureerde DNS voor dat domein. Deze configuratie zorgt ervoor dat de juiste DNS-records worden geretourneerd, omdat u geen lokale DNS-zone maakt met dubbele records in het beheerde Azure AD DS-domein om deze bronnen weer te geven.
+
+Voer de volgende stappen uit om een voorwaardelijke doorstuurserver in uw door Azure AD DS-beheerde domein te maken:
+
+1. Selecteer uw AZURE AD DS DNS-zone, zoals *aaddscontoso.com*.vb
+1. Selecteer **Voorwaardelijke doorstuurers**en selecteer Vervolgens met de rechtermuisknop en kies **Nieuwe voorwaardelijke doorstuurer...**
+1. Voer uw andere **DNS-domein**in, zoals *contoso.com*, voer vervolgens de IP-adressen van de DNS-servers voor die naamruimte in, zoals in het volgende voorbeeld wordt weergegeven:
+
+    ![Een voorwaardelijke forwarder voor de DNS-server toevoegen en configureren](./media/manage-dns/create-conditional-forwarder.png)
+
+1. Schakel het selectievakje voor **Deze voorwaardelijke doorstuurserver opslaan in Active Directory in en repliceer deze als volgt**en selecteer vervolgens de optie voor Alle *DNS-servers in dit domein*, zoals in het volgende voorbeeld wordt weergegeven:
+
+    ![DNS-console - domein beheren](./media/manage-dns/store-in-domain.png)
+
+    > [!IMPORTANT]
+    > Als de voorwaardelijke doorstuurserver is opgeslagen in het *forest* in plaats van het *domein,* mislukt de voorwaardelijke doorstuurserver.
+
+1. Als u de voorwaardelijke doorstuurer wilt maken, selecteert u **OK**.
+
+Naamoplossing van de resources in andere naamruimten van VM's die zijn verbonden met het beheerde Azure AD DS-domein, moet nu correct worden opgelost. Query's voor het DNS-domein dat is geconfigureerd in de voorwaardelijke expediteer worden doorgegeven aan de relevante DNS-servers.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -88,6 +113,8 @@ Zie het [artikel over DNS-hulpprogramma's op Technet](https://technet.microsoft.
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
+[expressroute]: ../expressroute/expressroute-introduction.md
+[vpn-gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
 [create-join-windows-vm]: join-windows-vm.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
 [connect-windows-server-vm]: join-windows-vm.md#connect-to-the-windows-server-vm

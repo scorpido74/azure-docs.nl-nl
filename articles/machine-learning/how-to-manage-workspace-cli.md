@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
-ms.openlocfilehash: 64c2e77ffc43ec98c13ce8c0cad002cdb2053241
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a7d0b75140c50df61ff63f350e5b312a6a684c7
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296905"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617773"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werkruimte maken voor Azure Machine Learning met Azure CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ az login
 
 Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een aanmeldingspagina gedownload. Anders moet u een browser openen en de instructies op de opdrachtregel volgen. De instructies omvatten [https://aka.ms/devicelogin](https://aka.ms/devicelogin) browsen naar en het invoeren van een autorisatiecode.
 
-[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 Zie [Aanmelden met Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)voor andere methoden voor het verifiëren.
 
@@ -67,7 +67,7 @@ De Azure Machine Learning-werkruimte is gebaseerd op de volgende Azure-services 
 | **Azure-opslagaccount** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
-| **Azure-containerregister** | `--container-registry <service-id>` |
+| **Azure Container Registry** | `--container-registry <service-id>` |
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 

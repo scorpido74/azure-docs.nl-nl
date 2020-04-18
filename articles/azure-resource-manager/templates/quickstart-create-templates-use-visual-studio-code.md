@@ -1,215 +1,158 @@
 ---
 title: Sjabloon maken - Visual Studio Code
 description: Gebruik Visual Studio Code en de Azure Resource Manager-extensie voor hulpprogramma's om te werken met Resource Manager-sjablonen.
-author: mumian
-ms.date: 04/13/2020
+author: neilpeterson
+ms.date: 03/27/2019
 ms.topic: quickstart
-ms.author: jgao
-ms.openlocfilehash: 96e57146fb6bb17cbb8bb5975371e07b66f3ec8b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: nepeters
+ms.openlocfilehash: 4b1ecbf3a1f6083261e87537e20d52e755b77424
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255087"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640920"
 ---
-# <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>Snelstart: ARM-sjablonen maken met Visual Studio Code
+# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Snelstart: Azure Resource Manager-sjablonen maken met Visual Studio-code
 
-Meer informatie over het gebruik van Visual Studio-code en de Azure Resource Manager Tools-extensie om ARM-sjablonen (Azure Resource Manager) te maken en te bewerken. U ARM-sjablonen maken in Visual Studio Code zonder de extensie, maar de extensie biedt opties voor automatisch aanvullen die de ontwikkeling van sjablonen vereenvoudigen. Zie overzicht van de implementatie van sjablonen voor het implementeren en beheren van de concepten die zijn gekoppeld aan het implementeren en beheren van uw [Azure-oplossingen.](overview.md)
+De Azure Resource Manager Tools for Visual Studio Code bieden taalondersteuning, resourcefragmenten en automatisch aanvullen van bronnen. Met deze hulpprogramma's u Azure Resource Manager-sjablonen maken en valideren. In deze quickstart gebruikt u de extensie om een Azure Resource Manager-sjabloon helemaal opnieuw te maken. Daarbij ervaart u de uitbreidingsmogelijkheden, zoals ARM-sjabloonfragmenten, validatie, voltooiingen en ondersteuning van parameterbestanden.
 
-In deze quickstart implementeert u een opslagaccount:
-
-![Resource Manager-sjabloon start snel het visual studiocodediagram](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
+Om deze quickstart te voltooien, hebt u [Visual Studio Code](https://code.visualstudio.com/)nodig, met de azure resource manager-extensie voor [hulpprogramma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) geïnstalleerd. U hebt ook de [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) of de [Azure PowerShell-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.7.0) geïnstalleerd en geverifieerd.
 
 Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-## <a name="prerequisites"></a>Vereisten
+## <a name="create-an-arm-template"></a>Een ARM-sjabloon maken
 
-Als u dit artikel wilt voltooien, hebt u het volgende nodig:
+Maak en open met Visual Studio Code een nieuw bestand met de naam *azuredeploy.json*. Voer `arm` de codeeditor in, die Azure Resource Manager-fragmenten initieert voor het uitzetten van een ARM-sjabloon.
 
-- [Visual Studio Code](https://code.visualstudio.com/).
-- Extensie voor Azure Resource Manager-hulpprogramma's. Gebruik de volgende stappen om deze te installeren:
+Selecteer `arm!` om een sjabloon te maken die is geschikt voor een implementatie van een Azure-brongroep.
 
-    1. Open Visual Studio Code.
-    2. Druk op **Ctrl+Shift+X** om het deelvenster Extensies te openen
-    3. Zoek **Azure Resource Manager-hulpprogramma’s** en selecteer **Installeren**.
-    4. Selecteer **Opnieuw laden** om de installatie van de extensie te voltooien.
+![Afbeelding met azure resource manager-steigers](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
-## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
+Dit fragment maakt de basisbouwstenen voor een ARM-sjabloon.
 
-In plaats van een sjabloon helemaal opnieuw te maken, opent u een sjabloon in [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/). Azure Quickstart-sjablonen is een opslagplaats voor ARM-sjablonen.
+![Afbeelding met een volledig steigerende ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/2.png)
 
-De in deze snelstart gebruikte sjabloon wordt [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Standaardopslagaccount maken) genoemd. De sjabloon definieert een Azure Storage-accountresource.
+De taalmodus Visual Studio Code is gewijzigd van *JSON* naar *Azure Resource Manager-sjabloon*. De extensie bevat een taalserver die specifiek is voor ARM-sjablonen en die ARM-sjabloonspecifieke validatie, voltooiing en andere taalservices biedt.
 
-1. Selecteer **Bestand**>**openen bestand**in Visual Studio-code .
-2. Plak de volgende URL in **Bestandsnaam**:
+![Afbeelding met Azure Resource Manager als de taalmodus Visual Studio Code](./media/quickstart-create-templates-use-visual-studio-code/3.png)
 
-    ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
-    ```
+## <a name="add-an-azure-resource"></a>Een Azure-bron toevoegen
 
-3. Selecteer **Openen** om het bestand te openen.
-4. Selecteer **Bestand**>**opslaan als** om het bestand op te slaan als **azuredeploy.json** op uw lokale computer.
+De extensie bevat fragmenten voor veel Azure-bronnen. Deze fragmenten kunnen worden gebruikt om eenvoudig resources toe te voegen aan de implementatie van uw sjabloon.
 
-## <a name="edit-the-template"></a>De sjabloon bewerken
+Plaats de cursor in het blok `storage` **sjabloonbronnen,** typ in en selecteer het *armopslagfragment.*
 
-Als u wilt ervaren hoe u een sjabloon met behulp van Visual Studio Code bewerkt, voegt u een extra element toe aan de sectie `outputs` om de opslag-URI weer te geven.
+![Afbeelding met een resource die wordt toegevoegd aan de ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/4.png)
 
-1. Voeg één extra uitvoer toe aan de geëxporteerde sjabloon:
+Met deze actie wordt een opslagbron aan de sjabloon toegevoegd.
 
-    ```json
-    "storageUri": {
-      "type": "string",
-      "value": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-    }
-    ```
+![Afbeelding met een Azure Storage-bron in een ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/5.png)
 
-    Als u klaar bent, ziet de uitvoersectie er als volgt uit:
+De **tabtoets** kan worden gebruikt om het tabblad door configureerbare eigenschappen op het opslagaccount te gebruiken.
 
-    ```json
-    "outputs": {
-      "storageAccountName": {
-        "type": "string",
-        "value": "[variables('storageAccountName')]"
-      },
-      "storageUri": {
-        "type": "string",
-        "value": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-      }
-    }
-    ```
+![Afbeelding die laat zien hoe de tabtoets kan worden gebruikt om door resourceconfiguratie te navigeren](./media/quickstart-create-templates-use-visual-studio-code/6.png)
 
-    Als u de code hebt gekopieerd en geplakt in Visual Studio Code, probeert u het **waardeelement** opnieuw te typen om de IntelliSense-mogelijkheid van de extensie Hulpmiddelen voor Resourcebeheer te ervaren.
+## <a name="completion-and-validation"></a>Voltooiing en validatie
 
-    ![Visual Studio Code-intelliSense van Resource Manager-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
+Een van de krachtigste mogelijkheden van de extensie is de integratie met Azure-schema's. Azure-schema's bieden de extensie validatie- en resourcebewuste voltooiingsmogelijkheden. Laten we het opslagaccount aanpassen om validatie en voltooiing in actie te zien. 
 
-2. Selecteer **Bestand**>**opslaan** om het bestand op te slaan.
+Werk eerst de opslagaccountsoort bij naar `megaStorage`een ongeldige waarde, zoals . Deze actie geeft een waarschuwing weer `megaStorage` die aangeeft dat dit geen geldige waarde is.
+
+![Afbeelding met een ongeldige opslagconfiguratie](./media/quickstart-create-templates-use-visual-studio-code/7.png)
+
+Als u de voltooiingsmogelijkheden wilt gebruiken, `megaStorage`verwijdert u de `ctrl`  +  `space`cursor in de dubbele aanhalingstekens en drukt u op . Deze actie bevat een voltooiingslijst met geldige waarden.
+
+![Afbeelding met automatisch aanvullen van extensie](./media/quickstart-create-templates-use-visual-studio-code/8.png)
+
+## <a name="add-template-parameters"></a>Sjabloonparameters toevoegen
+
+Maak nu een parameter en gebruik deze om de naam van het opslagaccount op te geven.
+
+Plaats de cursor in het parametersblok, `par`voeg een vervoerretour toe, typ en selecteer vervolgens het `arm-param-value` fragment. Met deze actie wordt een algemene parameter aan de sjabloon toegevoegd.
+
+![Afbeelding met een parameter die wordt toegevoegd aan de ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/9.png)
+
+Werk de naam van `storageAccountName` de parameter `Storage Account Name`bij en de beschrijving naar .
+
+![Afbeelding met de voltooide parameter in een ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/10.png)
+
+Azure-opslagaccountnamen hebben een minimale lengte van 3 tekens en een maximum van 24 tekens. Voeg `minLength` beide `maxLength` toe en aan de parameter en geef de juiste waarden.
+
+![Afbeelding met minLengte en maxLengte die worden toegevoegd aan een armsjabloonparameter](./media/quickstart-create-templates-use-visual-studio-code/11.png)
+
+Werk nu op de opslagbron de eigenschap naam bij om de parameter te gebruiken. Verwijder hiervoor de huidige naam. Voer een dubbele offerte en `[`een vierkante haak openen in, die een lijst met ARM-sjabloonfuncties produceert. Selecteer *parameters* in de lijst. 
+
+![Afbeelding met automatische voltooiing bij het gebruik van parameters in ARM-sjabloonbronnen](./media/quickstart-create-templates-use-visual-studio-code/12.png)
+
+Als u `'` één aanhalingsteken in de ronde haakjes invoert, wordt een lijst weergegeven met alle parameters die in de sjabloon zijn gedefinieerd, in dit geval *storageAccountName*. Selecteer de parameter.
+
+![Afbeelding met voltooide parameter in een ARM-sjabloonbron](./media/quickstart-create-templates-use-visual-studio-code/13.png)
+
+## <a name="create-a-parameter-file"></a>Een parameterbestand maken
+
+Met een arm-sjabloonparameterbestand u omgevingsspecifieke parameterwaarden opslaan en deze waarden als groep doorgeven tijdens de implementatietijd. U bijvoorbeeld een parameterbestand hebben met waarden die specifiek zijn voor een testomgeving en een andere voor een productieomgeving.
+
+De extensie maakt het eenvoudig om een parameterbestand te maken op basis van uw bestaande sjablonen. Klik hiervoor met de rechtermuisknop op de sjabloon `Select/Create Parameter File`in de codeeditor en selecteer .
+
+![Afbeelding met het rechtsklikproces voor het maken van een parameterbestand op basis van een ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/14.png)
+
+`New`  >  Selecteer `All Parameters` > Selecteer een naam en locatie voor het parameterbestand.
+
+![Afbeelding met de naam en het dialoogvenster Bestand opslaan bij het maken van een parametersbestand op basis van een ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/15.png)
+
+Met deze actie wordt een nieuw parameterbestand gemaakt en wordt het toegewezen aan de sjabloon waaruit het is gemaakt. U de huidige sjabloon/parameterbestandstoewijzing in de statusbalk van de Visual Studio Code bekijken en wijzigen terwijl de sjabloon is geselecteerd.
+
+![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+
+Nu het parameterbestand is toegewezen aan de sjabloon, valideert de extensie zowel het sjabloon- als het parameterbestand samen. Als u deze validatie in de praktijk wilt `storageAccountName` bekijken, voegt u een waarde met twee tekens toe aan de parameter in het parameterbestand en slaat u het bestand op.
+
+![Afbeelding met een ongeldig verklaringssjabloon vanwege het probleem met het parameterbestand](./media/quickstart-create-templates-use-visual-studio-code/17.png)
+
+Navigeer terug naar de ARM-sjabloon en merk op dat er een fout is opgetreden die aangeeft dat de waarde niet aan de parametercriteria voldoet.
+
+![Afbeelding met een geldige ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/18.png)
+
+Werk de waarde bij naar iets dat geschikt is, sla het bestand op en navigeer terug naar de sjabloon. Merk op dat de fout op de parameter is opgelost.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud Shell wordt gebruikt in deze quickstart. De Cloud Shell ondersteunt zowel Azure CLI als Azure PowerShell. Gebruik de tabkiezer om te kiezen tussen CLI en PowerShell.
+Open de geïntegreerde Visual Studio `ctrl`  +  ```` ` ```` Code-terminal met de toetscombinatie en gebruik de Azure CLI- of Azure PowerShell-module om de sjabloon te implementeren.
 
-1. Aanmelden bij de [Azure Cloud Shell](https://shell.azure.com)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
-2. Kies uw gewenste omgeving door **PowerShell** of **Bash**(CLI) in de linkerbovenhoek te selecteren.  U moet de shell opnieuw starten wanneer u overschakelt.
+```azurecli
+az group create --name arm-vscode --location eastus
 
-    # <a name="cli"></a>[CLI](#tab/CLI)
+az deployment group create --resource-group arm-vscode --template-file azuredeploy.json --parameters azuredeploy.parameters.json
+```
 
-    ![Azure-portal Cloud Shell CLI](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+```azurepowershell
+New-AzResourceGroup -Name arm-vscode -Location eastus
 
-    ![Azure-portal Cloud Shell PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
-
-    ---
-
-3. Selecteer **Upload/download files** en selecteer **Uploaden**.
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ![Uploadbestand azure-portal Cloud Shell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Uploadbestand azure-portal Cloud Shell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
-
-    ---
-
-    Selecteer het bestand dat u in de vorige sectie hebt opgeslagen. De standaardnaam is **azuredeploy.json**. Het sjabloonbestand moet toegankelijk zijn vanuit de shell.
-
-    U kunt eventueel de **ls**-opdracht en de **cat**-opdracht uitvoeren om te controleren of het bestand is geüpload.
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ![Azure portal Cloud Shell-lijstbestand](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure portal Cloud Shell-lijstbestand](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
-
-    ---
-4. Voer vanuit de Cloud Shell de volgende opdrachten uit. Selecteer het tabblad om de PowerShell-code of de CLI-code weer te geven. Geef een projectnaam op die wordt gebruikt om een naam van de resourcegroep te genereren.  De naam van de resourcegroep is de projectnaam **met rg** toegevoegd.
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ```azurecli
-    echo "Enter a project name that is used to generate resource group name:" &&
-    read projectName &&
-    echo "Enter the location (i.e. centralus):" &&
-    read location &&
-    resourceGroupName="${projectName}rg" &&
-    az group create --name $resourceGroupName --location "$location" &&
-    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" &&
-    echo "Press [ENTER] to continue ..."
-    ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ```azurepowershell
-    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
-    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $resourceGroupName = "${projectName}rg"
-
-    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
-    Write-Host "Press [ENTER] to continue ..."
-    ```
-
-    ---
-
-    Werk de naam van de sjabloon bij als u het bestand met een andere naam dan **azuredeploy.json** opslaat.
-
-    In de volgende schermafbeelding ziet u een voorbeeldimplementatie:
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ![Azure portal Cloud Shell-implementatiesjabloon](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure portal Cloud Shell-implementatiesjabloon](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
-
-    ---
-
-    De naam van het opslagaccount en de URL van de opslag in de uitvoersectie zijn gemarkeerd op de schermafbeelding. U hebt de naam van het opslagaccount nodig in de volgende stap.
-
-5. Voer de volgende CLI- of PowerShell-opdracht uit om het nieuwe opslagaccount weer te geven:
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ```azurecli
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
-    echo "Enter the Storage Account name:" &&
-    read storageAccountName &&
-    az storage account show --resource-group $resourceGroupName --name $storageAccountName &&
-    echo "Press [ENTER] to continue ..."
-    ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-    $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
-    Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-    Write-Host "Press [ENTER] to continue ..."
-    ```
-
-    ---
-
-Zie voor meer informatie over het gebruik van Azure storage-accounts [Snelstart: blobs uploaden, downloaden, en noteren met behulp van de Azure Portal](../../storage/blobs/storage-quickstart-blobs-portal.md).
+New-AzResourceGroupDeployment -ResourceGroupName arm-vscode -TemplateFile ./azuredeploy.json -TemplateParameterFile ./azuredeploy.parameters.json
+```
+---
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen.
+Wanneer de Azure-resources niet meer nodig zijn, gebruikt u de Azure CLI- of Azure PowerShell-module om de snelstartbrongroep te verwijderen.
 
-1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
-2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
-3. Selecteer de naam van de resourcegroep. De naam van de resourcegroep is de projectnaam **met rg** toegevoegd. U ziet een bron voor opslagaccount in de resourcegroep.
-4. Selecteer **Brongroep verwijderen** in het bovenste menu.
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli
+az group delete --name arm-vscode
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+Remove-AzResourceGroup -Name arm-vscode
+```
+---
 
 ## <a name="next-steps"></a>Volgende stappen
-
-De focus van deze snelstartgids ligt op het gebruik van Visual Studio Code om een bestaande sjabloon van de Azure-snelstartsjablonen te bewerken. U hebt ook geleerd hoe u de sjabloon implementeert met CLI of PowerShell vanuit de Azure Cloud Shell. De sjablonen van de Azure-snelstartsjablonen voldoen mogelijk niet volledig aan uw behoeften. Zie onze nieuwe beginnerszelfstudiereeks voor meer informatie over sjabloonontwikkeling:
 
 > [!div class="nextstepaction"]
 > [Zelfstudies voor beginners](./template-tutorial-create-first-template.md)

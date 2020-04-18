@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d7ba62c795e23e41a1947def77300ffe5d2cc010
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 520699b81024de9491f34263f16872428ddbd487
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262448"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618038"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Cognitive Search - veelgestelde vragen (FAQ)
 
@@ -82,6 +82,14 @@ De meeste wildcard-zoekopdrachten, zoals voorvoegsel, fuzzy en regex, worden int
 Standaard worden zoekresultaten beoordeeld op basis van de [statistische eigenschappen van overeenkomende termen](search-lucene-query-architecture.md#stage-4-scoring)en geordend van hoog tot laag in de resultaatset. Sommige querytypen (wildcard, voorvoegsel, regex) dragen echter altijd een constante score bij aan de totale documentscore. Dit gedrag is standaard. Azure Cognitive Search legt een constante score op om overeenkomsten die via queryuitbreiding worden gevonden, in de resultaten te kunnen opnemen, zonder dat dit gevolgen heeft voor de rangschikking.
 
 Stel dat een invoer van "tour*" in een wildcard-zoekopdracht overeenkomsten oplevert op "tours", "tourettes" en "tourmaline". Gezien de aard van deze resultaten, is er geen manier om redelijkerwijs af te leiden welke termen waardevoller zijn dan andere. Daarom negeren we termfrequenties bij het scoren van resultaten in query's van typen wildcard, voorvoegsel en regex. Zoekresultaten op basis van een gedeeltelijke invoer krijgen een constante score om bias naar mogelijk onverwachte overeenkomsten te voorkomen.
+
+## <a name="skillset-operations"></a>Skillset-bewerkingen
+
+### <a name="are-there-any-tips-or-tricks-to-reduce-cognitive-services-charges-on-ingestion"></a>Zijn er tips of trucs om cognitieve diensten kosten op inname te verminderen?
+
+Het is begrijpelijk dat u niet wilt ingebouwde vaardigheden of aangepaste vaardigheden uit te voeren meer dan absoluut noodzakelijk is, vooral als je te maken hebt met miljoenen documenten te verwerken. Met dat in gedachten hebben we "incrementele verrijking" mogelijkheden toegevoegd aan skillset uitvoering. In wezen u een cachelocatie (een blob-opslagverbindingstekenreeks) bieden die wordt gebruikt om de uitvoer van 'tussentijdse' verrijkingsstappen op te slaan.  Hierdoor kan de verrijkingspijplijn slim zijn en alleen verrijkingen toepassen die nodig zijn wanneer u uw vaardigheden wijzigt. Dit zal natuurlijk ook tijd besparen indexering als de pijplijn efficiënter zal zijn.
+
+Meer informatie over [incrementele verrijking](cognitive-search-incremental-indexing-conceptual.md)
 
 ## <a name="design-patterns"></a>Ontwerppatronen
 

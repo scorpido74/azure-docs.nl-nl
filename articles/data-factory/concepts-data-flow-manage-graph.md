@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/04/2019
-ms.openlocfilehash: 1618011dc3c281cb2ef06ef80cfc7c8e69c4e091
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0d357c4c671070a5c5e9d4587e2f90b6628996f4
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415493"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605359"
 ---
 # <a name="mapping-data-flow-graphs"></a>Grafieken voor gegevensstromen toewijzen
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Het ontwerpoppervlak voor kaartgegevensstromen is een "constructie"-oppervlak waar u gegevensstromen van boven naar beneden, van links naar rechts bouwt. Er is een gereedschapskist bevestigd aan elke transformatie met een plus (+) symbool. Concentreer u op uw bedrijfslogica in plaats van knooppunten via randen te verbinden in een vrije DAG-omgeving.
 

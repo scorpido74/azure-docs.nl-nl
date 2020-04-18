@@ -3,12 +3,12 @@ title: Gastconfiguratiebeleid voor Linux maken
 description: Meer informatie over het maken van een Azure Policy Guest Configuration policy voor Linux.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f93aafc8f2c016218b1b7fea82558ea6ba4b4ff8
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 65e0082f87f05104e9a57ff0342cd3d2950b63e8
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365406"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617933"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Gastconfiguratiebeleid voor Linux maken
 
@@ -89,7 +89,7 @@ supports:
     - os-family: unix
 ```
 
-Sla dit bestand op `linux-path` in een map met de naam in uw projectmap.
+Sla dit bestand `inspec.yml` met naam `linux-path` op in een map met de naam in uw projectmap.
 
 Maak vervolgens het Ruby-bestand met de InSpec-taalabstractie die wordt gebruikt om de machine te controleren.
 
@@ -99,7 +99,7 @@ describe file('/tmp') do
 end
 ```
 
-Sla dit bestand op `controls` in `linux-path` een nieuwe map met de naam in de map.
+Sla dit bestand `linux-path.rb` met naam `controls` op `linux-path` in een nieuwe map met de naam in de map.
 
 Maak ten slotte een configuratie, importeer de **gastconfiguratiebronmodule** en gebruik de `ChefInSpecResource` resource om de naam van het InSpec-profiel in te stellen.
 

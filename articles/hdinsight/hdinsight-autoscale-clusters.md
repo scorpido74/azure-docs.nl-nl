@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 03/05/2020
-ms.openlocfilehash: 68bc30d08d95fe8e3d20a8ecb7af6c9710951921
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: 4f9b43b6f800bb47942ccc00fee0fac4536d2ec0
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399710"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640585"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters automatisch schalen
 
@@ -41,7 +41,7 @@ In de volgende tabel worden de clustertypen en -versies beschreven die compatibe
 
 U op lasten gebaseerde schaling of op planning gebaseerde schaling kiezen voor uw HDInsight-cluster. Op basis van laden schaalvergroting wijzigt het aantal knooppunten in uw cluster, binnen een bereik dat u instelt, om een optimaal CPU-gebruik te garanderen en de bedrijfskosten te minimaliseren.
 
-Op planning gebaseerde schaling wijzigt het aantal knooppunten in uw cluster op basis van voorwaarden die op specifieke tijdstippen van kracht worden. Deze voorwaarden schalen het cluster naar een gewenst aantal knooppunten.
+Op planning gebaseerde schaling wijzigt het aantal knooppunten in uw cluster op basis van voorwaarden die op specifieke tijdstippen van kracht worden. Deze voorwaarden schalen het cluster naar een voorgenomen aantal knooppunten.
 
 ### <a name="metrics-monitoring"></a>Metrische gegevens
 
@@ -56,7 +56,7 @@ Autoscale bewaakt het cluster continu en verzamelt de volgende statistieken:
 |Gebruikt geheugen per knooppunt|De belasting op een werknemersknooppunt. Een werkknooppunt waarop 10 GB geheugen wordt gebruikt, wordt beschouwd als onder meer belasting dan een werknemer met 2 GB gebruikt geheugen.|
 |Aantal toepassingsmasters per knooppunt|Het aantal Am-containers (Application Master) dat op een werknemersknooppunt wordt uitgevoerd. Een werknemersknooppunt dat twee AM-containers host, wordt als belangrijker beschouwd dan een werknemersknooppunt dat nul AM-containers host.|
 
-De bovenstaande statistieken worden elke 60 seconden gecontroleerd. Autoscale maakt scale-up en scale-down beslissingen op basis van deze statistieken.
+De bovenstaande statistieken worden elke 60 seconden gecontroleerd. Autoscale neemt beslissingen op basis van deze statistieken.
 
 ### <a name="load-based-scale-conditions"></a>Op belasting gebaseerde schaalvoorwaarden
 
@@ -67,9 +67,9 @@ Wanneer de volgende voorwaarden worden gedetecteerd, geeft Autoscale een schaala
 |Totaal in behandeling CPU is groter dan de totale gratis CPU voor meer dan 3 minuten.|Totaal in behandeling CPU is minder dan de totale gratis CPU voor meer dan 10 minuten.|
 |Totaal in behandeling geheugen is groter dan de totale gratis geheugen voor meer dan 3 minuten.|Totaal in behandeling geheugen is minder dan de totale gratis geheugen voor meer dan 10 minuten.|
 
-Voor scale-up berekent de HDInsight-service hoeveel nieuwe worker-knooppunten nodig zijn om te voldoen aan de huidige CPU- en geheugenvereisten en geeft vervolgens een scale-upverzoek uit om het vereiste aantal knooppunten toe te voegen.
+Voor scale-up geeft Autoscale een scale-upaanvraag uit om het vereiste aantal knooppunten toe te voegen. De scale-up is gebaseerd op het aantal nieuwe worker nodes dat nodig is om te voldoen aan de huidige CPU- en geheugenvereisten.
 
-Voor scale-down, op basis van het aantal AM-containers per knooppunt en de huidige CPU- en geheugenvereisten, geeft Autoscale een verzoek uit om een bepaald aantal knooppunten te verwijderen. De service detecteert ook welke knooppunten kandidaten zijn voor verwijdering op basis van de huidige taakuitvoering. De schaaldown-bewerking ontmantelt eerst de knooppunten en verwijdert ze vervolgens uit het cluster.
+Voor scale-down geeft Autoscale een verzoek uit om een bepaald aantal knooppunten te verwijderen. De scale-down is gebaseerd op het aantal AM-containers per knooppunt. En de huidige CPU en geheugen eisen. De service detecteert ook welke knooppunten kandidaten zijn voor verwijdering op basis van de huidige taakuitvoering. De schaaldown-bewerking ontmantelt eerst de knooppunten en verwijdert ze vervolgens uit het cluster.
 
 ## <a name="get-started"></a>Aan de slag
 
@@ -79,7 +79,7 @@ Voer de volgende stappen uit als onderdeel van het normale proces voor het maken
 
 1. Schakel op het tabblad **Configuratie + prijzen** het selectievakje Automatisch schalen **inschakelen** in.
 1. Selecteer **Load-based** onder **type Autoscale**.
-1. Voer de gewenste waarden in voor de volgende eigenschappen:  
+1. Voer de beoogde waarden in voor de volgende eigenschappen:  
 
     * **Initieel aantal knooppunten** voor **worker node**.
     * **Min** aantal werkknooppunten.
@@ -108,11 +108,11 @@ Het aantal knooppunten moet tussen 3 en het maximum aantal werknemersknooppunten
 
 ### <a name="final-creation-steps"></a>Laatste creatiestappen
 
-Selecteer het VM-type voor werkknooppunten door een VM te selecteren in de vervolgkeuzelijst onder **knooppuntgrootte**voor zowel op basis van laden als op planning. Nadat u het VM-type voor elk knooppunttype hebt gekozen, u het geschatte kostenbereik voor het hele cluster zien. Pas de VM-typen aan uw budget aan.
+Selecteer het VM-type voor werknemersknooppunten door een VM te selecteren in de vervolgkeuzelijst onder **Knooppuntgrootte**. Nadat u het VM-type voor elk knooppunttype hebt gekozen, u het geschatte kostenbereik voor het hele cluster zien. Pas de VM-typen aan uw budget aan.
 
 ![Grootte van het werkknooppunt op basis van een automatisch schaalknooppunt inschakelen](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
 
-Uw abonnement heeft een capaciteitsquotum voor elke regio. Het totale aantal kernen van uw hoofdknooppunten in combinatie met het maximum aantal werknemersknooppunten mag het capaciteitsquotum niet overschrijden. Dit quotum is echter een zachte limiet; u altijd een ondersteuningsticket maken om het gemakkelijk te verhogen.
+Uw abonnement heeft een capaciteitsquotum voor elke regio. Het totale aantal kernen van uw hoofdknooppunten en de maximale werkknooppunten mogen het capaciteitsquotum niet overschrijden. Dit quotum is echter een zachte limiet; u altijd een ondersteuningsticket maken om het gemakkelijk te verhogen.
 
 > [!Note]  
 > Als u de totale kernquotumlimiet overschrijdt, ontvangt u een foutbericht met de tekst 'het maximale knooppunt heeft de beschikbare kernen in deze regio overschreden, kies dan een andere regio of neem contact op met de ondersteuning om het quotum te verhogen.'
@@ -148,8 +148,6 @@ U een HDInsight-cluster maken met een op laden gebaseerde Sjabloon Voor automati
   "scriptActions": []
 }
 ```
-
-Zie Clusters van [Apache Hadoop maken in HDInsight voor](hdinsight-hadoop-create-linux-clusters-arm-templates.md)meer informatie over het maken van clusters met Resource Manager.  
 
 #### <a name="schedule-based-autoscaling"></a>Automatisch schalen op basis van planning
 
@@ -193,7 +191,7 @@ Als u Automatisch schalen op een lopend cluster wilt inschakelen, selecteert u *
 
 #### <a name="using-the-rest-api"></a>Met behulp van de REST API
 
-Als u Automatisch schalen op een actief cluster wilt in- of uitschakelen met de REST-API, dient u een POST-verzoek in op het eindpunt Automatisch schalen zoals weergegeven in het onderstaande codefragment:
+Als u Automatisch schalen op een actief cluster wilt in- of uitschakelen met de REST-API, voert u een POST-verzoek in bij het eindpunt Automatisch schalen:
 
 ```
 https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{resourceGroup Name}/providers/Microsoft.HDInsight/clusters/{CLUSTERNAME}/roles/workernode/autoscale?api-version=2018-06-01-preview
@@ -207,7 +205,7 @@ Gebruik de juiste parameters in het laadvermogen van het verzoek. De json payloa
 
 Zie de vorige sectie over [het inschakelen van op belasting gebaseerde autoscale](#load-based-autoscaling) voor een volledige beschrijving van alle payload parameters.
 
-## <a name="best-practices"></a>Aanbevolen procedures
+## <a name="guidelines"></a>Richtlijnen
 
 ### <a name="choosing-load-based-or-schedule-based-scaling"></a>Op basis van laden of op planning gebaseerde schalen kiezen
 
@@ -224,9 +222,9 @@ Het kan 10 tot 20 minuten duren voordat een schalingbewerking is voltooid. Plan 
 
 ### <a name="preparation-for-scaling-down"></a>Voorbereiding op afschaling
 
-Tijdens het clusterschalingproces zal Autoscale de knooppunten ontmantelen om de doelgrootte te bereiken. Als er taken op deze knooppunten worden uitgevoerd, wacht Autoscale totdat de taken zijn voltooid. Aangezien elk werknemersknooppunt ook een rol in HDFS vervult, worden de tijdelijke gegevens verplaatst naar de resterende knooppunten. Zorg er dus voor dat er voldoende ruimte is op de resterende knooppunten om alle tijdelijke gegevens te hosten.
+Tijdens het clusterschalingproces zal Autoscale de knooppunten ontmantelen om de doelgrootte te bereiken. Als taken op deze knooppunten worden uitgevoerd, wacht Autoscale totdat de taken zijn voltooid. Aangezien elk werknemersknooppunt ook een rol in HDFS vervult, worden de tijdelijke gegevens verplaatst naar de resterende knooppunten. Zorg er dus voor dat er voldoende ruimte is op de resterende knooppunten om alle tijdelijke gegevens te hosten.
 
-De lopende taken blijven worden uitgevoerd en voltooid. De lopende taken wachten om als normaal te worden gepland met minder beschikbare werkknooppunten.
+De lopende taken zullen worden voortgezet. De lopende taken wachten op planning met minder beschikbare werknemersknooppunten.
 
 ### <a name="minimum-cluster-size"></a>Minimale clustergrootte
 
@@ -247,10 +245,10 @@ Alle clusterstatusberichten die u mogelijk ziet, worden uitgelegd in de ondersta
 | In uitvoering | Het cluster werkt normaal. Alle eerdere Autoscale-activiteiten zijn voltooid. |
 | Bijwerken  | De configuratie van de clusterautoscale wordt bijgewerkt.  |
 | HDInsight-configuratie  | Er wordt gewerkt aan een clusterscale-up of schaalbewerking.  |
-| Updatefout  | HDInsight ondervond problemen tijdens de autoscale-configuratie-update. Klanten kunnen ervoor kiezen om de update opnieuw te proberen of automatisch schalen uit te schakelen.  |
+| Updatefout  | HDInsight kwam problemen tegen tijdens de autoscale-configuratie-update. Klanten kunnen ervoor kiezen om de update opnieuw te proberen of automatisch schalen uit te schakelen.  |
 | Fout  | Er is iets mis met het cluster, en het is niet bruikbaar. Verwijder dit cluster en maak een nieuw cluster.  |
 
-Als u het huidige aantal knooppunten in uw cluster wilt weergeven, gaat u naar de grafiek **Clustergrootte** op de pagina **Overzicht** voor uw cluster of selecteert u **Clustergrootte** onder **Instellingen**.
+Als u het huidige aantal knooppunten in uw cluster wilt weergeven, gaat u naar de grafiek **Clustergrootte** op de pagina **Overzicht** voor uw cluster. Of selecteer **Clustergrootte** onder **Instellingen**.
 
 ### <a name="operation-history"></a>De geschiedenis van de verrichting
 
@@ -262,4 +260,4 @@ Selecteer **Statistieken** onder **Controleren**. Selecteer vervolgens Metric en
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees meer over aanbevolen procedures voor het handmatig schalen van clusters in [Aanbevolen procedures schalen](hdinsight-scaling-best-practices.md)
+Lees meer over richtlijnen voor het handmatig schalen van clusters in [Richtlijnen schalen](hdinsight-scaling-best-practices.md)

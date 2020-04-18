@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 95373ab8ff78c5bcb856e6d7e6d67d8525cd3f7e
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 74af841b777494744c72ed219bacd3b3835d41ac
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655122"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617554"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Word lid van een virtuele ubuntu Linux-machine naar een beheerd Azure AD Domain Services-domein
 
@@ -154,6 +154,12 @@ Successfully enrolled machine in realm
 ```
 
 Als uw VM het domeinjoinproces niet kan voltooien, controleert u of de netwerkbeveiligingsgroep van de VM uitgaand Kerberos-verkeer op TCP + UDP-poort 464 toestaat naar het subnet van het virtuele netwerk voor uw door Azure AD DS beheerde domein.
+
+Als u de fout hebt ontvangen *die niet is opgegeven, is gss-fout.  Kleine code kan meer informatie opleveren (Server niet gevonden in Kerberos database),* open het bestand `[libdefaults]` */etc/krb5.conf* en voeg de volgende code toe in sectie en probeer het opnieuw:
+
+```console
+rdns=false
+```
 
 ## <a name="update-the-sssd-configuration"></a>De SSSD-configuratie bijwerken
 

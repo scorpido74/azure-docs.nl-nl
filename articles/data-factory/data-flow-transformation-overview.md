@@ -7,16 +7,16 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 68423bee6096357add9b5d4b107c984ac67c9cab
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0442c701f39fd3e84361ad0201aaf8d1840d8851
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81412969"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606274"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Overzicht van gegevensstroomtransformatie toewijzen
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
 Hieronder vindt u een lijst van de transformaties die momenteel worden ondersteund in het in kaart brengen van gegevensstroom. Klik op elke transformaties om de configuratiedetails te leren kennen.
 
@@ -38,6 +38,6 @@ Hieronder vindt u een lijst van de transformaties die momenteel worden ondersteu
 | [Sorteren](data-flow-sort.md) | Rijmodifier | Binnenkomende rijen sorteren op de huidige gegevensstroom |
 | [Bron](data-flow-source.md) | - | Een gegevensbron voor de gegevensstroom |
 | [Surrogaatsleutel](data-flow-surrogate-key.md) | Schemamodifier | Een verhoging van de willekeurige sleutelwaarde van niet-bedrijfsactiviteiten toevoegen |
-| [Unie](data-flow-union.md) | Meerdere ingangen/uitgangen | Meerdere gegevensstromen verticaal combineren |
+| [Union](data-flow-union.md) | Meerdere ingangen/uitgangen | Meerdere gegevensstromen verticaal combineren |
 | [Draaitabel opheffen](data-flow-unpivot.md) | Schemamodifier | Kolommen in rijwaarden draaien |
 | [Venster](data-flow-window.md) | Schemamodifier |  Definieer op venster gebaseerde aggregaties van kolommen in uw gegevensstromen. |

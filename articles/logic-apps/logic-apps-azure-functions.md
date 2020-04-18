@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284120"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605901"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure-functies aanroepen vanuit Azure Logic Apps
 
@@ -101,7 +101,9 @@ Nu u uw Azure-functie hebt gemaakt, voert u de stappen uit voor het [toevoegen v
 
 ## <a name="create-functions-inside-logic-apps"></a>Functies maken in logische apps
 
-Voordat u een Azure-functie maken die vanuit uw logische app begint met de Logic App Designer, moet u eerst een Azure-functie-app hebben, een container voor uw functies. Als u geen functie-app hebt, maakt u eerst die functie-app. Zie [Uw eerste functie maken in de Azure-portal](../azure-functions/functions-create-first-azure-function.md).
+U Azure-functies rechtstreeks vanuit de werkstroom van uw logische app maken met de ingebouwde actie Azure-functies in de Logic App Designer, maar u deze methode alleen gebruiken voor Azure-functies die in JavaScript zijn geschreven. Voor andere talen u Azure-functies maken via de Azure-functies-ervaring in de Azure-portal. Zie [Uw eerste functie maken in de Azure-portal](../azure-functions/functions-create-first-azure-function.md)voor meer informatie.
+
+Voordat u echter een Azure-functie maken, moet u al een Azure-functie-app hebben, een container voor uw functies. Als u geen functie-app hebt, maakt u eerst die functie-app. Zie [Uw eerste functie maken in de Azure-portal](../azure-functions/functions-create-first-azure-function.md).
 
 1. Open uw logische app in de Logische App Designer in de [Azure-portal.](https://portal.azure.com)
 

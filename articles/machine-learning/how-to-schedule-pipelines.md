@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9e1bff3d25a978b5159d8e6ab8ab2453df77ca3
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116758"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640519"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Machine learning-pijplijnen plannen met Azure Machine Learning SDK voor Python
 
@@ -98,6 +98,10 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
 ### <a name="optional-arguments-when-creating-a-schedule"></a>Optionele argumenten bij het maken van een planning
 
 Naast de eerder besproken argumenten u `status` het `"Disabled"` argument instellen op het maken van een inactieve planning. Ten slotte `continue_on_step_failure` u hiermee een Booleaan passeren die het standaardfoutgedrag van de pijplijn overschrijft.
+
+### <a name="use-azure-logic-apps-for-more-complex-workflows"></a>Azure Logic Apps gebruiken voor complexere werkstromen
+
+Azure Logic Apps ondersteunt complexere werkstromen en is veel breder geïntegreerd dan Azure Machine Learning-pijplijnen. Zie [Een run van een Machine Learning-pijplijn](how-to-trigger-published-pipeline.md) activeren vanuit een Logische app voor meer informatie.
 
 ## <a name="view-your-scheduled-pipelines"></a>Uw geplande pijplijnen weergeven
 

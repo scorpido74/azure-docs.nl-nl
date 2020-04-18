@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 04/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d9544b1f4dd5ecbf66493f26c373c5502dce68a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 466b063253ee49ab58c2685f359b4bb8a4079532
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81451075"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639680"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Gecombineerde beveiligingsgegevensregistratie inschakelen in Azure Active Directory
 
@@ -47,34 +47,34 @@ Als u de lijst met site-toewijzing naar zone hebt geconfigureerd in Internet Exp
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>Beleid voor voorwaardelijke toegang voor gecombineerde registratie
 
-Beveiligen wanneer en hoe gebruikers zich registreren voor Azure Multi-Factor Authentication en self-service wachtwoord resetten is nu mogelijk met gebruikersacties in het beleid voor voorwaardelijke toegang. Deze functie is beschikbaar voor organisaties die de [gecombineerde registratiefunctie](../authentication/concept-registration-mfa-sspr-combined.md)hebben ingeschakeld. Deze functionaliteit kan worden ingeschakeld in organisaties waar ze willen dat gebruikers zich registreren voor Azure Multi-Factor Authentication en SSPR vanaf een centrale locatie, zoals een vertrouwde netwerklocatie tijdens HR-onboarding. Zie het artikel [Wat is de locatievoorwaarde in Voorwaardelijke Active Directory Voorwaardelijke toegang voor](../conditional-access/location-condition.md#named-locations) meer informatie over het maken van vertrouwde locaties in Voorwaardelijke toegang?
+Beveiligen wanneer en hoe gebruikers zich registreren voor Azure Multi-Factor Authentication en self-service wachtwoord resetten is nu mogelijk met gebruikersacties in het beleid voor voorwaardelijke toegang. Deze functie is beschikbaar voor organisaties die de [gecombineerde registratiefunctie](../authentication/concept-registration-mfa-sspr-combined.md)hebben ingeschakeld. Deze functionaliteit kan worden ingeschakeld in organisaties waar ze willen dat gebruikers zich registreren voor Azure Multi-Factor Authentication en SSPR vanaf een centrale locatie, zoals een vertrouwde netwerklocatie tijdens HR-onboarding.
+
+Zie het artikel [Wat is de locatievoorwaarde in Voorwaardelijke Active Directory Voorwaardelijke toegang voor](../conditional-access/location-condition.md#named-locations) meer informatie over het maken van vertrouwde locaties in Voorwaardelijke toegang?
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Een beleid maken om registratie vanaf een vertrouwde locatie te vereisen
 
-Het volgende beleid is van toepassing op alle geselecteerde gebruikers, die proberen zich te registreren met behulp van de gecombineerde registratie-ervaring, en blokkeert de toegang, tenzij ze verbinding maken vanaf een locatie die is gemarkeerd als vertrouwd netwerk.
-
-![Een CA-beleid maken om de registratie van beveiligingsgegevens te beheren](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
+Het volgende beleid is van toepassing op alle geselecteerde gebruikers die proberen te registreren met behulp van de gecombineerde registratie-ervaring en blokkeert de toegang, tenzij ze verbinding maken vanaf een locatie die is gemarkeerd als vertrouwd netwerk.
 
 1. Blader in de **Azure-portal**naar voorwaardelijke**toegang** **voor Azure Active Directory** > **Beveiliging** > 
-1. Selecteer **Nieuw beleid**.
-1. Voer in Naam een naam in voor dit beleid. Gecombineerde **beveiligingsgegevensregistratie op vertrouwde netwerken** bijvoorbeeld
-1. Klik **onder Toewijzingen**op **Gebruikers en groepen**en selecteer de gebruikers en groepen waarop u dit beleid wilt toepassen
+1. Selecteer **+ Nieuw beleid**
+1. Voer een naam in voor dit beleid, zoals *Gecombineerde beveiliginggegevensregistratie op vertrouwde netwerken*.
+1. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**. Kies de gebruikers en groepen waarop u dit beleid wilt toepassen en selecteer **Gereed**.
 
    > [!WARNING]
-   > Gebruikers moeten zijn ingeschakeld voor [gecombineerde registratie](../authentication/howto-registration-mfa-sspr-combined.md).
+   > Gebruikers moeten zijn ingeschakeld voor gecombineerde registratie.
 
-1. Selecteer **Onder Cloud-apps of -acties**de optie **Gebruikersacties**, schakel **beveiligingsgegevens registreren (voorbeeld)**
-1. Onder **voorwaarden** > **locaties**
+1. Selecteer **onder Cloud-apps of -acties**de optie **Gebruikersacties**. Schakel **Beveiligingsgegevens registreren in**en selecteer **Gereed**.
+
+    ![Een beleid voor voorwaardelijke toegang maken om de registratie van beveiligingsgegevens te beheren](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
+
+1. Configureer **onder Locaties** > **voorwaarden**de volgende opties:
    1. **Ja** configureren
    1. **Elke locatie opnemen**
    1. Alle **vertrouwde locaties** uitsluiten
-   1. Klik op **Gereed** op het blad Locaties
-   1. Klik op **Gereed** op het onderseer van de voorwaarden
-1. Onder **Toegangscontroles** > **Grant**
-   1. Klik **op Toegang blokkeren**
-   1. Klik vervolgens op **Selecteren**
+1. Selecteer **Gereed** in het venster *Locaties* en selecteer **Gereed** in het venster *Voorwaarden.*
+1. Kies **Onder Access-besturingselementen** > **Grant**, kies **Toegang blokkeren**en **selecteer**
 1. **Beleid inschakelen instellen** op **Aan**
-1. Klik vervolgens op **Maken**
+1. Als u het beleid wilt afronden, selecteert u **Maken**
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,16 +11,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: cf13dbe17738ca1ae658c73bb0092a219b4823d1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c899d3b4d132ee51679f8c7b4fd1c578417500db
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415909"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605275"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Een Azure-SSIS Integration Runtime samenvoegen met een virtueel netwerk
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Wanneer u SQL Server Integration Services (SSIS) gebruikt in Azure Data Factory, moet u in de volgende scenario's deelnemen aan uw Azure-SSIS-integratieruntime (IR) met een Virtueel Azure-netwerk:
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba281ffb30801e0ae10cab10ceb95c0a3bffde2d
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264230"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640012"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Beheerconcepten voor gebruikersaccounts, wachtwoorden en beheer in Azure Active Directory Domain Services
 
@@ -48,7 +48,7 @@ Zie [Beleid voor wachtwoord- en accountuitsluiting op beheerde domeinen][passwor
 
 Azure AD DS heeft wachtwoordhashes nodig in een indeling die geschikt is voor NT LAN Manager (NTLM) en Kerberos-verificatie om gebruikers op het beheerde domein te verifiëren. Azure AD genereert of slaat geen wachtwoordhashes op in de indeling die vereist is voor NTLM- of Kerberos-verificatie totdat u Azure AD DS inschakelt voor uw tenant. Om veiligheidsredenen slaat Azure AD ook geen wachtwoordreferenties op in formulier clear-text. Daarom kan Azure AD deze NTLM- of Kerberos-wachtwoordhashes niet automatisch genereren op basis van de bestaande referenties van gebruikers.
 
-Voor gebruikersaccounts die alleen in de cloud zijn, moeten gebruikers hun wachtwoorden wijzigen voordat ze Azure AD DS kunnen gebruiken. Dit wachtwoordwijzigingsproces zorgt ervoor dat de wachtwoordhashes voor Kerberos- en NTLM-verificatie worden gegenereerd en opgeslagen in Azure AD.
+Voor gebruikersaccounts die alleen in de cloud zijn, moeten gebruikers hun wachtwoorden wijzigen voordat ze Azure AD DS kunnen gebruiken. Dit wachtwoordwijzigingsproces zorgt ervoor dat de wachtwoordhashes voor Kerberos- en NTLM-verificatie worden gegenereerd en opgeslagen in Azure AD. Het account wordt niet gesynchroniseerd van Azure AD naar Azure AD DS totdat het wachtwoord is gewijzigd.
 
 Voor gebruikers die zijn gesynchroniseerd vanuit een on-premises AD DS-omgeving met Azure AD Connect, [kunt u synchronisatie van wachtwoordhashes inschakelen.][hybrid-phs]
 

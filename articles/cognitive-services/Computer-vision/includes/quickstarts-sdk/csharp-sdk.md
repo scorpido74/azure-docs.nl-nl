@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ee4b6b4247ac1a5c988d8b455fd1d8a2bff889a9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ce311d2deaf0eec76ef0dec3ea279a387d14fd22
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80135998"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81637125"
 ---
 <a name="HOLTop"></a>
 
@@ -84,7 +84,7 @@ Als u de Visual Studio IDE gebruikt, is de clientbibliotheek beschikbaar als dow
 
 De volgende klassen en interfaces behandelen enkele van de belangrijkste functies van de Computer Vision .NET SDK.
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) | Deze klasse is nodig voor alle Computer Vision-functionaliteit. U wilt deze instantiëren met uw abonnementsgegevens en u gebruikt deze om de meeste beeldbewerkingen uit te voeren.|
 |[ComputerVisionClientExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| Deze klasse bevat aanvullende methoden voor de **ComputerVisionClient**.|
@@ -133,6 +133,12 @@ Sla in de klasse **Programma** een verwijzing op naar de URL van de afbeelding d
 Definieer uw nieuwe methode voor beeldanalyse. Voeg de onderstaande code toe, waarin visuele functies worden opgegeven die u wilt extraheren in uw analyse. Zie het **[VisualFeatureTypes-enum](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)** voor een volledige lijst.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_visualfeatures)]
+
+Voeg een van de volgende codeblokken in de **methode AnalyzeImageUrl** om hun functies te implementeren. Vergeet niet om een sluitbeugel toe te voegen aan het einde.
+
+```csharp
+}
+```
 
 ### <a name="analyze"></a>Analyseren
 

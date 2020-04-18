@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
-ms.openlocfilehash: 94ac75c4165b11e343ce5c31480a511ebf978a36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67838779"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640546"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi verbinden met Azure IoT Hub (C)
 
@@ -160,7 +160,7 @@ Nadat u BME280 met succes hebt verbonden met uw Raspberry Pi, moet deze zijn zoa
 
 ### <a name="connect-pi-to-the-network"></a>Pi verbinden met het netwerk
 
-Schakel Pi in met de micro-USB-kabel en de voeding. Gebruik de Ethernet-kabel om Pi aan te sluiten op uw bekabelde netwerk of volg de [instructies van de Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/) om Pi aan te sluiten op uw draadloze netwerk. Nadat uw Pi met succes is verbonden met het netwerk, moet u een notitie maken van het [IP-adres van uw Pi.](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)
+Schakel Pi in met de micro-USB-kabel en de voeding. Gebruik de Ethernet-kabel om Pi aan te sluiten op uw bekabelde netwerk of volg de [instructies van de Raspberry Pi Foundation](https://www.raspberrypi.org/documentation/configuration/wireless/) om Pi aan te sluiten op uw draadloze netwerk. Nadat uw Pi met succes is verbonden met het netwerk, moet u een notitie maken van het [IP-adres van uw Pi.](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
 
 ![Verbonden met bekabeld netwerk](./media/iot-hub-raspberry-pi-kit-c-get-started/5-power-on-pi.png)
 

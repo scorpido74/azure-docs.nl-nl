@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.openlocfilehash: 3d8f4a28961be7e0ece517e00026d9711d8f67e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/17/2020
+ms.openlocfilehash: 5012b5abf12beadbcb18f21fe2fe6ebfb076598a
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198868"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617969"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Apache Spark-taken optimaliseren in HDInsight
 
-Meer informatie over het optimaliseren van [de clusterconfiguratie](https://spark.apache.org/) van Apache Spark voor uw specifieke workload.  De meest voorkomende uitdaging is geheugendruk, vanwege onjuiste configuraties (met name fout-sized uitvoerders), langlopende bewerkingen en taken die resulteren in Cartesiaanse bewerkingen. U taken versnellen met de juiste caching en door [gegevensscheefte .](#optimize-joins-and-shuffles) Controleer en bekijk langlopende en resource-verbruikende Spark-taakuitvoeringen voor de beste prestaties. Zie [Apache Spark-cluster maken met Azure-portal](apache-spark-jupyter-spark-sql-use-portal.md)voor informatie over aan de slag gaan met Apache Spark op HDInsight.
+Meer informatie over het optimaliseren van de clusterconfiguratie van Apache Spark voor uw specifieke workload.  De meest voorkomende uitdaging is geheugendruk, vanwege onjuiste configuraties (zoals fout-sized uitvoerders). Ook langlopende bewerkingen en taken die resulteren in Cartesiaanse bewerkingen. U taken versnellen met de juiste caching en door [gegevensscheefte .](#optimize-joins-and-shuffles) Controleer en bekijk langlopende en resource-verbruikende Spark-taakuitvoeringen voor de beste prestaties. Zie [Apache Spark-cluster maken met Azure-portal](apache-spark-jupyter-spark-sql-use-portal.md)voor informatie over aan de slag gaan met Apache Spark op HDInsight.
 
 In de volgende secties worden veelvoorkomende spark-taakoptimalisaties en -aanbevelingen beschreven.
 
@@ -55,7 +55,7 @@ Het beste formaat voor prestaties is parket met *pittige compressie,* dat is de 
 
 ## <a name="select-default-storage"></a>Standaardopslag selecteren
 
-Wanneer u een nieuw Spark-cluster maakt, u Azure Blob Storage of Azure Data Lake Storage selecteren als de standaardopslag van uw cluster. Beide opties bieden u het voordeel van langdurige opslag voor tijdelijke clusters, zodat uw gegevens niet automatisch worden verwijderd wanneer u uw cluster verwijdert. U een tijdelijk cluster opnieuw maken en toch toegang krijgen tot uw gegevens.
+Wanneer u een nieuw Spark-cluster maakt, u Azure Blob Storage of Azure Data Lake Storage selecteren als de standaardopslag van uw cluster. Beide opties bieden u het voordeel van langdurige opslag voor tijdelijke clusters. Uw gegevens worden dus niet automatisch verwijderd wanneer u uw cluster verwijdert. U een tijdelijk cluster opnieuw maken en toch toegang krijgen tot uw gegevens.
 
 | Winkeltype | Bestandssysteem | Snelheid | Voorbijgaande | Use Cases |
 | --- | --- | --- | --- | --- |
@@ -65,7 +65,7 @@ Wanneer u een nieuw Spark-cluster maakt, u Azure Blob Storage of Azure Data Lake
 | Azure Data Lake Storage Gen 1| **adl:**,,url/ | **Sneller** | Ja | Transiënt cluster |
 | Lokale HDFS | **hdfs:**/url/ | **Snelste** | Nee | Interactief 24/7 cluster |
 
-Zie [Opslagopties vergelijken voor gebruik met Azure HDInsight-clusters voor](../hdinsight-hadoop-compare-storage-options.md)een volledige beschrijving van de beschikbare opslagopties voor HDInsight-clusters.
+Zie [Opslagopties vergelijken voor gebruik met Azure HDInsight-clusters voor](../hdinsight-hadoop-compare-storage-options.md)een volledige beschrijving van opslagopties.
 
 ## <a name="use-the-cache"></a>De cache gebruiken
 
@@ -86,10 +86,10 @@ Spark biedt zijn eigen native caching mechanismen, die kunnen `.persist()`worden
 
 ## <a name="use-memory-efficiently"></a>Geheugen efficiënt gebruiken
 
-Spark werkt door het plaatsen van gegevens in het geheugen, dus het beheren van geheugenbronnen is een belangrijk aspect van het optimaliseren van de uitvoering van Spark-taken.  Er zijn verschillende technieken die u toepassen om het geheugen van uw cluster efficiënt te gebruiken.
+Spark werkt door het plaatsen van gegevens in het geheugen. Het beheren van geheugenbronnen is dus een belangrijk aspect van het optimaliseren van de uitvoering van Spark-taken.  Er zijn verschillende technieken die u toepassen om het geheugen van uw cluster efficiënt te gebruiken.
 
 * Geef de voorkeur aan kleinere gegevenspartities en houd rekening met de grootte, typen en distributie van gegevens in uw partitioneringsstrategie.
-* Overweeg de nieuwere, efficiëntere [Kryo-gegevensserialisatie](https://github.com/EsotericSoftware/kryo), in plaats van de standaard Java-serialisatie.
+* Overweeg de nieuwere, [`Kryo data serialization`](https://github.com/EsotericSoftware/kryo)efficiëntere , in plaats van de standaard Java serialisatie.
 * Liever met behulp van `spark-submit` GAREN, omdat het scheidt per partij.
 * Spark-configuratie-instellingen controleren en afstemmen.
 
@@ -97,7 +97,7 @@ Ter referentie worden de Spark-geheugenstructuur en enkele belangrijke uitvoerge
 
 ### <a name="spark-memory-considerations"></a>Overwegingen voor het geheugen
 
-Als u [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)gebruikt, regelt YARN de maximale som geheugen die door alle containers op elk Spark-knooppunt wordt gebruikt.  In het volgende diagram worden de belangrijkste objecten en hun relaties weergegeven.
+Als u Apache Hadoop YARN gebruikt, regelt YARN het geheugen dat wordt gebruikt door alle containers op elk Spark-knooppunt.  In het volgende diagram worden de belangrijkste objecten en hun relaties weergegeven.
 
 ![YARN Spark-geheugenbeheer](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
@@ -116,11 +116,11 @@ Zie Uitzonderingen op [OutOfMemoryError voor Apache Spark in Azure HDInsight voo
 Spark-taken worden gedistribueerd, dus passende gegevensserialisatie is belangrijk voor de beste prestaties.  Er zijn twee serialisatieopties voor Spark:
 
 * Java serialisatie is de standaardinstelling.
-* Kryo serialisatie is een nieuwer formaat en kan resulteren in snellere en compactere serialisatie dan Java.  Kryo vereist dat u de lessen in uw programma registreert en het ondersteunt nog niet alle Serializable-typen.
+* `Kryo`serialisatie is een nieuwer formaat en kan leiden tot snellere en compactere serialisatie dan Java.  `Kryo`vereist dat u de klassen in uw programma registreert en dat het nog niet alle Serializable-typen ondersteunt.
 
 ## <a name="use-bucketing"></a>Bucketing gebruiken
 
-Bucketing is vergelijkbaar met gegevenspartitionering, maar elke bucket kan een set kolomwaarden bevatten in plaats van slechts één. Bucketing werkt goed voor het partitioneren op grote (in de miljoenen of meer) aantallen waarden, zoals product-id's. Een emmer wordt bepaald door hashing de emmersleutel van de rij. Bucketed tables bieden unieke optimalisaties omdat ze metadata opslaan over hoe ze zijn geemmerd en gesorteerd.
+Bucketing is vergelijkbaar met gegevenspartitionering. Maar elke bucket kan een set kolomwaarden bevatten in plaats van slechts één. Deze methode werkt goed voor het partitioneren op grote (in de miljoenen of meer) aantallen waarden, zoals product-id's. Een emmer wordt bepaald door hashing de emmersleutel van de rij. Bucketed tables bieden unieke optimalisaties omdat ze metadata opslaan over hoe ze zijn geemmerd en gesorteerd.
 
 Enkele geavanceerde bucketing functies zijn:
 
@@ -132,9 +132,9 @@ U partitionering en bucketing tegelijkertijd gebruiken.
 
 ## <a name="optimize-joins-and-shuffles"></a>Joins en shuffles optimaliseren
 
-Als u langzame taken hebt op een Join of Shuffle, is de oorzaak waarschijnlijk *gegevensscheeftrekking*, wat asymmetrie is in uw taakgegevens. Een kaarttaak kan bijvoorbeeld 20 seconden duren, maar het uitvoeren van een taak waarbij de gegevens worden samengevoegd of geschud, duurt uren. Als u gegevensscheefheid wilt oplossen, moet u de hele sleutel zoutmaken of een *geïsoleerd zout* gebruiken voor slechts enkele subset sleutels. Als u een geïsoleerd zout gebruikt, moet u verder filteren om uw subset van gezouten sleutels in kaartjoins te isoleren. Een andere optie is om eerst een emmerkolom en pre-aggregaat in buckets in te voeren.
+Als u langzame taken hebt op een Join of Shuffle, is de oorzaak waarschijnlijk *gegevensscheeftrekking*. Dataskew is asymmetrie in uw taakgegevens. Een kaarttaak kan bijvoorbeeld 20 seconden duren. Maar het uitvoeren van een taak waarbij de gegevens worden samengevoegd of geschud, duurt uren. Als u gegevensscheefheid wilt oplossen, moet u de hele sleutel zoutmaken of een *geïsoleerd zout* gebruiken voor slechts enkele subset sleutels. Als u een geïsoleerd zout gebruikt, moet u verder filteren om uw subset van gezouten sleutels in kaartjoins te isoleren. Een andere optie is om eerst een emmerkolom en pre-aggregaat in buckets in te voeren.
 
-Een andere factor die langzame joins veroorzaakt, kan het jointype zijn. Spark gebruikt standaard `SortMerge` het jointype. Dit type join is het meest geschikt voor grote gegevenssets, maar is verder rekenkundig duur omdat het eerst de linker- en rechterkant van gegevens moet sorteren voordat ze worden samengevoegd.
+Een andere factor die langzame joins veroorzaakt, kan het jointype zijn. Spark gebruikt standaard `SortMerge` het jointype. Dit type join is het meest geschikt voor grote gegevenssets. Maar is anders rekenkundig duur omdat het eerst de linker- en rechterkant van gegevens moet sorteren voordat ze worden samengevoegd.
 
 Een `Broadcast` join is het meest geschikt voor kleinere gegevenssets, of waar de ene kant van de join veel kleiner is dan de andere kant. Dit type van join zendt één kant aan alle uitvoerders uit, en vereist zo meer geheugen voor uitzendingen in het algemeen.
 
@@ -161,13 +161,15 @@ Als u parallellisme voor Cartesiaanse joins wilt beheren, u geneste structuren t
 
 ## <a name="customize-cluster-configuration"></a>Clusterconfiguratie aanpassen
 
-Afhankelijk van de spark-clusterworkload u bepalen dat een niet-standaard Spark-configuratie zou resulteren in een meer geoptimaliseerde Spark-taakuitvoering.  Voer benchmarktests uit met voorbeeldworkloads om niet-standaardclusterconfiguraties te valideren.
+Afhankelijk van de spark-clusterworkload u bepalen dat een niet-standaard Spark-configuratie zou resulteren in een meer geoptimaliseerde Spark-taakuitvoering.  Doe benchmarktests met voorbeeldworkloads om niet-standaard clusterconfiguraties te valideren.
 
 Hier volgen enkele veelvoorkomende parameters die u aanpassen:
 
-* `--num-executors`hiermee wordt het juiste aantal uitvoerders ingesteld.
-* `--executor-cores`hiermee wordt het aantal kernen voor elke uitvoerder ingesteld. Meestal moet u middelgrote uitvoerders hebben, omdat andere processen een deel van het beschikbare geheugen verbruiken.
-* `--executor-memory`hiermee wordt de geheugengrootte ingesteld voor elke executeur, die de heapgrootte op GAREN regelt. Je moet wat geheugen achterlaten voor de uitvoering overhead.
+|Parameter |Beschrijving |
+|---|---|
+|--num-executors|Hiermee stelt u het juiste aantal uitvoerders in.|
+|--executeur-cores|Hiermee stelt u het aantal kernen in voor elke uitvoerder. Meestal moet u middelgrote uitvoerders hebben, omdat andere processen een deel van het beschikbare geheugen verbruiken.|
+|--executeur-geheugen|Hiermee stelt u de geheugengrootte in voor elke executeur, die de heapgrootte op GAREN regelt. Laat wat geheugen achter voor de uitvoering overhead.|
 
 ### <a name="select-the-correct-executor-size"></a>De juiste executorgrootte selecteren
 
@@ -184,13 +186,13 @@ Houd bij het bepalen van uw configuratie van de uitvoerder rekening met de overh
     4. Optioneel: verminder de overhead overhead per executeur geheugen.
     5. Optioneel: Verhoog het gebruik en de gelijktijdigheid door cpu's te overschrijven.
 
-Als algemene vuistregel bij het selecteren van de grootte van de executeur:
+Als algemene regel geldt bij het selecteren van de grootte van de executeur:
 
 1. Begin met 30 GB per uitvoerder en distribueer beschikbare machinecores.
 2. Verhoog het aantal executorkernen voor grotere clusters (> 100 uitvoerders).
 3. Wijzig de grootte op basis van zowel proefuitvoeringen als op de voorgaande factoren zoals GC-overhead.
 
-Houd bij het uitvoeren van gelijktijdige query's rekening met het volgende:
+Overweeg bij het uitvoeren van gelijktijdige query's:
 
 1. Begin met 30 GB per uitvoerder en alle machinecores.
 2. Maak meerdere parallelle Spark-toepassingen door cpu te overschrijven (ongeveer 30% latentieverbetering).
@@ -199,9 +201,9 @@ Houd bij het uitvoeren van gelijktijdige query's rekening met het volgende:
 
 Zie [Apache Spark-instellingen - Spark-uitvoerders](apache-spark-settings.md#configuring-spark-executors)voor meer informatie over het gebruik van Ambari om uitvoerders te configureren.
 
-Controleer uw queryprestaties op uitschieters of andere prestatieproblemen door te kijken naar de tijdlijnweergave, SQL-grafiek, taakstatistieken, enzovoort. Zie [Debug Apache Spark-taken die worden uitgevoerd op Azure HDInsight](apache-spark-job-debugging.md)voor informatie over het opsporen van Spark-taken met GAREN en de Spark-geschiedenisserver. Zie [Access Apache Hadoop YARN-toepassingslogboeken](../hdinsight-hadoop-access-yarn-app-logs-linux.md)voor tips over het gebruik van YARN Timeline Server.
+Controleer de queryprestaties voor uitschieters of andere prestatieproblemen door te kijken naar de tijdlijnweergave. Ook SQL-grafiek, taakstatistieken, enzovoort. Zie [Debug Apache Spark-taken die worden uitgevoerd op Azure HDInsight](apache-spark-job-debugging.md)voor informatie over het opsporen van Spark-taken met GAREN en de Spark-geschiedenisserver. Zie [Access Apache Hadoop YARN-toepassingslogboeken](../hdinsight-hadoop-access-yarn-app-logs-linux.md)voor tips over het gebruik van YARN Timeline Server.
 
-Soms zijn een of enkele van de uitvoerders langzamer dan de andere, en taken duren veel langer uit te voeren. Dit gebeurt vaak op grotere clusters (> 30 knooppunten). In dit geval verdeelt u het werk in een groter aantal taken, zodat de planner trage taken kan compenseren. Hebben bijvoorbeeld minstens twee keer zoveel taken als het aantal executorkernen in de toepassing. U ook speculatieve uitvoering `conf: spark.speculation = true`van taken inschakelen met.
+Soms zijn een of enkele van de uitvoerders langzamer dan de andere, en taken duren veel langer uit te voeren. Deze traagheid gebeurt vaak op grotere clusters (> 30 knooppunten). In dit geval verdeelt u het werk in een groter aantal taken, zodat de planner trage taken kan compenseren. Hebben bijvoorbeeld minstens twee keer zoveel taken als het aantal executorkernen in de toepassing. U ook speculatieve uitvoering `conf: spark.speculation = true`van taken inschakelen met.
 
 ## <a name="optimize-job-execution"></a>Taakuitvoering optimaliseren
 
@@ -224,7 +226,7 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 * [Fouten opsporen in Apache Spark-taken die worden uitgevoerd in Azure HDInsight](apache-spark-job-debugging.md)
 * [Resources beheren voor een Apache Spark-cluster op HDInsight](apache-spark-resource-manager.md)
-* [De Apache Spark REST API gebruiken om externe taken in te dienen bij een Apache Spark-cluster](apache-spark-livy-rest-interface.md)
+* [Apache Spark-instellingen configureren](apache-spark-settings.md)
 * [Apache Spark afstemmen](https://spark.apache.org/docs/latest/tuning.html)
 * [Hoe je eigenlijk tune uw Apache Spark Jobs, zodat ze werken](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
-* [Kryo Serialisatie](https://github.com/EsotericSoftware/kryo)
+* [`Kryo Serialization`](https://github.com/EsotericSoftware/kryo)

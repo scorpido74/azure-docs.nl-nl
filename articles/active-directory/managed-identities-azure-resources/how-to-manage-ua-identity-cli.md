@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2019
+ms.date: 04/17/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1e8587562ff452373fe2ee3b98fa20309e77cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be5defb85547e8750dea9ceaa481217aa40a004e
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266583"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639764"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Een door de gebruiker toegewezen beheerde identiteit maken, aanbieden of verwijderen met behulp van de Azure CLI
 
@@ -37,6 +37,12 @@ In dit artikel leert u hoe u een door de gebruiker toegewezen beheerde identitei
     - [Azure Cloud Shell gebruiken](../../cloud-shell/overview.md) vanuit de Azure-portal (zie volgende sectie).
     - Gebruik de ingesloten Azure Cloud Shell via de knop 'Probeer het' in de rechterbovenhoek van elk codeblok.
     - [Installeer de nieuwste versie van de Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 of hoger) als u liever een lokale CLI-console gebruikt. Meld u aan `az login`bij Azure met behulp van een account dat is gekoppeld aan het Azure-abonnement waaronder u de door de gebruiker toegewezen beheerde identiteit wilt implementeren.
+
+
+> [!NOTE]
+> Als u gebruikersmachtigingen wilt wijzigen wanneer u een hoofdser van de app servivce gebruikt met CLI, moet u de serviceprincipal extra machtigingen in azure AD Graph API opgeven, omdat delen van CLI GET-aanvragen uitvoeren tegen de Graph API. Anders u uiteindelijk een bericht 'Onvoldoende bevoegdheden om de bewerking te voltooien' ontvangen. Om dit te doen, moet u naar de app-registratie in Azure Active Directory gaan, uw app selecteren, op API-machtigingen klikken, omlaag scrollen en Azure Active Directory Graph selecteren. Selecteer van daaruit Toepassingsmachtigingen en voeg vervolgens de juiste machtigingen toe. 
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

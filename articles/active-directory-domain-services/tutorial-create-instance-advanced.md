@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: a7ab79fe7ccfbf6d292b6ba7be58026955a06516
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: f2d7f1725623dcc031f3c2b36bacd6dbc9ad339d
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519247"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639956"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Zelfstudie: Een Azure Active Directory Domain Services-exemplaar maken en configureren met geavanceerde configuratieopties
 
@@ -207,7 +207,7 @@ De stappen voor het genereren en opslaan van deze wachtwoordhashes zijn verschil
 > [!TIP]
 > Als uw Azure AD-tenant een combinatie heeft van alleen cloudgebruikers en gebruikers van uw on-premises AD, moet u beide stappen uitvoeren.
 
-Voor gebruikersaccounts die alleen in de cloud zijn, moeten gebruikers hun wachtwoorden wijzigen voordat ze Azure AD DS kunnen gebruiken. Dit wachtwoordwijzigingsproces zorgt ervoor dat de wachtwoordhashes voor Kerberos- en NTLM-verificatie worden gegenereerd en opgeslagen in Azure AD. U de wachtwoorden verlopen voor alle gebruikers in de tenant die Azure AD DS moeten gebruiken, waardoor een wachtwoordwijziging bij de volgende aanmelding wordt afgewend, of hen instrueren om hun wachtwoorden handmatig te wijzigen. Laten we voor deze zelfstudie handmatig een gebruikerswachtwoord wijzigen.
+Voor gebruikersaccounts die alleen in de cloud zijn, moeten gebruikers hun wachtwoorden wijzigen voordat ze Azure AD DS kunnen gebruiken. Dit wachtwoordwijzigingsproces zorgt ervoor dat de wachtwoordhashes voor Kerberos- en NTLM-verificatie worden gegenereerd en opgeslagen in Azure AD. Het account wordt niet gesynchroniseerd van Azure AD naar Azure AD DS totdat het wachtwoord is gewijzigd. Ververloopt de wachtwoorden voor alle cloudgebruikers in de tenant die Azure AD DS moeten gebruiken, waardoor een wachtwoordwijziging bij de volgende aanmelding wordt afgewend, of worden cloudgebruikers geïnstrueerd om hun wachtwoorden handmatig te wijzigen. Laten we voor deze zelfstudie handmatig een gebruikerswachtwoord wijzigen.
 
 Voordat een gebruiker zijn wachtwoord opnieuw kan instellen, moet de Azure [AD-tenant zijn geconfigureerd voor het opnieuw instellen van het zelfservicewachtwoord.][configure-sspr]
 
@@ -226,7 +226,7 @@ Het duurt enkele minuten nadat u uw wachtwoord hebt gewijzigd voordat het nieuwe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * DNS- en virtuele netwerkinstellingen configureren voor een beheerd domein

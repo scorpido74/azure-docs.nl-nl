@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 471b26ebc4bd4aecb814ec43c7eba56e3d764fa0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16f9080487af95e7de5c5f8c91fd5c8d356b7bde
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402488"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618066"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>De CLI-extensie voor Azure Machine Learning gebruiken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,11 +35,30 @@ De CLI is geen vervanging voor de Azure Machine Learning SDK. Het is een complem
 
 * Als u de CLI wilt gebruiken, moet u een Azure-abonnement hebben. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning.](https://aka.ms/AMLFree)
 
-* De [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+* Als u de CLI-opdrachten in dit document vanuit uw **lokale omgeving**wilt gebruiken, hebt u de [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)nodig.
+
+    Als u de [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)gebruikt, wordt de CLI geopend via de browser en leeft deze in de cloud.
 
 ## <a name="full-reference-docs"></a>Volledige referentiedocumenten
 
 Zoek de [volledige referentiedocumenten voor de azure-cli-ml-extensie van Azure CLI.](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest)
+
+## <a name="connect-the-cli-to-your-azure-subscription"></a>De CLI verbinden met uw Azure-abonnement
+
+> [!IMPORTANT]
+> Als u de Azure Cloud Shell gebruikt, u deze sectie overslaan. De cloudshell verifieert u automatisch met het account dat u aanmeldt bij uw Azure-abonnement.
+
+Er zijn verschillende manieren waarop u vanaf de CLI verifiëren voor uw Azure-abonnement. De meest elementaire is om interactief te verifiëren met behulp van een browser. Als u interactief wilt verifiëren, opent u een opdrachtregel of terminal en gebruikt u de volgende opdracht:
+
+```azurecli-interactive
+az login
+```
+
+Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een aanmeldingspagina gedownload. Anders moet u een browser openen en de instructies op de opdrachtregel volgen. De instructies omvatten [https://aka.ms/devicelogin](https://aka.ms/devicelogin) browsen naar en het invoeren van een autorisatiecode.
+
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+
+Zie [Aanmelden met Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)voor andere methoden voor het verifiëren.
 
 ## <a name="install-the-extension"></a>De extensie installeren
 

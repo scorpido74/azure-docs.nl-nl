@@ -2,15 +2,15 @@
 title: VM-extensies implementeren met sjabloon
 description: Informatie over het implementeren van extensies voor virtuele machines met Azure Resource Manager-sjablonen
 author: mumian
-ms.date: 03/31/2020
+ms.date: 04/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7397e9387fe3354a926ed607a9132ab6ddc7e785
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 280b4a9775346c719e82d1fef4162fa6ea666798
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477591"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616878"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Zelfstudie: Virtuele machine-extensies implementeren met ARM-sjablonen
 
@@ -23,7 +23,6 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Een snelstartsjabloon openen
 > * De sjabloon bewerken
 > * De sjabloon implementeren
-> * De implementatie controleren
 
 Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -42,29 +41,34 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="prepare-a-powershell-script"></a>Een PowerShell-script voorbereiden
 
-Een PowerShell-script met de volgende inhoud wordt gedeeld vanuit [GitHub:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)
+U inline PowerShell-script of een scriptbestand gebruiken.  In deze zelfstudie ziet u hoe u een scriptbestand gebruikt. Een PowerShell-script met de volgende inhoud wordt gedeeld vanuit [GitHub:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Als u ervoor kiest het bestand naar uw eigen locatie te publiceren, moet u het element `fileUri` in de sjabloon later in de zelfstudie bijwerken.
+Als u ervoor kiest het bestand naar `fileUri` uw eigen locatie te publiceren, werkt u het element in de sjabloon later in de zelfstudie bij.
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 
 Azure Quickstart-sjablonen is een opslagplaats voor ARM-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De sjabloon die in deze zelfstudie wordt gebruikt, heet [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Een eenvoudige Windows-VM implementeren).
 
 1. Selecteer **Bestand** > **openen bestand**in Visual Studio-code .
-1. Plak de volgende URL in het vak **File name**: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+1. Plak de volgende URL in het vak **File name**: 
+
+    ```url
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+    ```
 
 1. Selecteer **Open** om het bestand te openen.
     In de sjabloon zijn vijf resources gedefinieerd:
 
-   * **Microsoft.Storage/storageAccounts**. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * **Microsoft.Network/publicIPAddresses**. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * **Microsoft.Network/virtualNetworks**. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * **Microsoft.Network/networkInterfaces**. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * **Microsoft.Compute/virtualMachines**. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
      Het is handig om enige basiskennis te hebben van de sjabloon voordat u deze gaat aanpassen.
 
@@ -77,7 +81,7 @@ Voeg een VM-extensieresource toe aan de bestaande sjabloon met de volgende inhou
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "apiVersion": "2018-06-01",
+  "apiVersion": "2019-12-01",
   "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
   "location": "[parameters('location')]",
   "dependsOn": [
@@ -105,6 +109,14 @@ Zie de [extensieverwijzing](https://docs.microsoft.com/azure/templates/microsoft
 * **fileUris**: De locaties waar de scriptbestanden worden opgeslagen. Als u ervoor kiest om de meegeleverde locaties niet te gebruiken, moet u de waarden bijwerken.
 * **commandToExecute:** Deze opdracht roept het script aan.
 
+Als u inline script wilt gebruiken, verwijdert u **bestandUris**en werkt **u de opdracht Uitvoeren** bij naar:
+
+```powershell
+powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
+```
+
+Dit inline script werkt ook de iisstart.html-inhoud bij.
+
 U moet ook de HTTP-poort openen, zodat u toegang hebt tot de webserver.
 
 1. Zoek **beveiligingsregels** in de sjabloon.
@@ -130,10 +142,13 @@ U moet ook de HTTP-poort openen, zodat u toegang hebt tot de webserver.
 
 Zie voor de implementatieprocedure het gedeelte 'De sjabloon implementeren' van [Zelfstudie: ARM-sjablonen maken met afhankelijke resources](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Het wordt aanbevolen een gegenereerd wachtwoord te gebruiken voor het beheerdersaccount van de virtuele machine. Zie de sectie [Vereisten](#prerequisites) van dit artikel voor meer informatie.
 
-## <a name="verify-the-deployment"></a>De implementatie controleren
+Voer vanuit de Cloud Shell de volgende opdracht uit om het openbare IP-adres van de VM op te halen:
 
-1. Selecteer de VM in de Azure-portal.
-1. Kopieer in het VM-overzicht het IP-adres door **Klik om te kopiëren te**selecteren en plak het vervolgens in een browsertabblad. De standaard welkomstpagina van Internet Information Services (IIS) wordt geopend:
+```azurepowershell
+(Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName).IpAddress
+```
+
+Plak het IP-adres in een webbrowser. De gebruikelijke welkomstpagina van Internet Information Services (IIS) wordt geopend:
 
 ![De welkomstpagina van Internet Information Services](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 

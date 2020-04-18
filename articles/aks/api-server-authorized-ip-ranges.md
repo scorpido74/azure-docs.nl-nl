@@ -4,12 +4,12 @@ description: Meer informatie over het beveiligen van uw cluster met behulp van e
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 593f9e0b335e6f4d62c76ce92f833ff4e9143372
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 570d842409fc019d24446e091f83402f4c288d7c
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126615"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640057"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Beveiligde toegang tot de API-server met geautoriseerde IP-adresbereiken in Azure Kubernetes Service (AKS)
 
@@ -39,7 +39,7 @@ Zie [Kubernetes-kernconcepten voor AKS voor][concepts-clusters-workloads]meer in
 Api-servergeautoriseerde IP-bereiken werken alleen voor nieuwe AKS-clusters. Maak een cluster met behulp van de [az aks maken][az-aks-create] en geef de *--api-server-geautoriseerde-ip-ranges* parameter om een lijst van geautoriseerde IP-adres bereiken. Deze IP-adresbereiken zijn meestal adresbereiken die worden gebruikt door uw on-premises netwerken of openbare IP-ip-ip-ip-netwerken. Wanneer u een CIDR-bereik opgeeft, begint u met het eerste IP-adres in het bereik. *137.117.106.90/29* is bijvoorbeeld een geldig bereik, maar zorg ervoor dat u het eerste IP-adres in het bereik opgeeft, zoals *137.117.106.88/29*.
 
 > [!IMPORTANT]
-> Standaard gebruikt uw cluster de [Standaard SKU-loadbalancer][standard-sku-lb] waarmee u de uitgaande gateway configureren. Wanneer u API-servergeautoriseerde IP-bereiken inschakelt tijdens het maken van het cluster, is het openbare IP voor uw cluster standaard ook standaard toegestaan naast de bereiken die u opgeeft. Als u *''* of geen waarde opgeeft voor *--api-server-authorized-ip-ranges,* worden api-servergeautoriseerde IP-bereiken uitgeschakeld.
+> Standaard gebruikt uw cluster de [Standaard SKU-loadbalancer][standard-sku-lb] waarmee u de uitgaande gateway configureren. Wanneer u API-servergeautoriseerde IP-bereiken inschakelt tijdens het maken van het cluster, is het openbare IP voor uw cluster standaard ook standaard toegestaan naast de bereiken die u opgeeft. Als u *''* of geen waarde opgeeft voor *--api-server-authorized-ip-ranges,* worden api-servergeautoriseerde IP-bereiken uitgeschakeld. Houd er rekening mee dat als u PowerShell gebruikt, gebruik *--api-server-authorized-ip-ranges=""* (met gelijkteken) om ontledente problemen te voorkomen.
 
 In het volgende voorbeeld wordt een cluster met één knooppunt met de naam *myAKSCluster* gemaakt in de brongroep *myResourceGroup* met API-server geautoriseerde IP-bereiken ingeschakeld. De toegestane IP-adresbereiken zijn *73.140.245.0/24:*
 

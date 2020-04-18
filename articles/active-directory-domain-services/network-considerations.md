@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 69f8cd0f78a45c6c5e53368edc5902c4b6695701
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e610bf94dfdee4e2765e4fae4259f18a9f1036b5
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408836"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639977"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Overwegingen voor virtueel netwerkontwerp en configuratieopties voor Azure AD Domain Services
 
@@ -109,10 +109,11 @@ De volgende regels voor netwerkbeveiligingsgroepen zijn vereist voor Azure AD DS
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Alle         | Toestaan  | Ja      | Synchronisatie met uw Azure AD-tenant. |
 | 3389        | TCP      | CorpNetSaw (CorpNetSaw)                         | Alle         | Toestaan  | Ja      | Beheer van uw domein. |
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Alle         | Toestaan  | Ja      | Beheer van uw domein. |
-| 636         | TCP      | Alle                                | Alle         | Toestaan  | Nee       | Alleen ingeschakeld wanneer u beveiligde LDAP (LDAPS) configureert. |
 
 > [!WARNING]
 > Bewerk deze netwerkbronnen en -configuraties niet handmatig. Wanneer u een verkeerd geconfigureerde netwerkbeveiligingsgroep of een door de gebruiker gedefinieerde routetabel koppelt aan het subnet waarin Azure AD DS is geïmplementeerd, u de mogelijkheid van Microsoft om het domein te onderhouden en te beheren verstoren. Synchronisatie tussen uw Azure AD-tenant en uw door Azure AD DS beheerde domein is ook verstoord.
+>
+> Als u veilige LDAP gebruikt, u de vereiste TCP-poort 636-regel toevoegen om extern verkeer toe te staan indien nodig. Als u deze regel toevoegt, worden de regels van uw netwerkbeveiligingsgroep niet in een niet-ondersteunde status plaatst. Zie [Beveiligde LDAP-toegang via internet vergrendelen voor](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet) meer informatie
 >
 > Standaardregels voor *AllowVnetInBound*, *AllowAzureLoadBalancerInBound*, *DenyAllInBound*, *AllowVnetOutBound*, *AllowInternetOutBound*en *DenyAllOutBound* bestaan ook voor de netwerkbeveiligingsgroep. Bewerk of verwijder deze standaardregels niet.
 >

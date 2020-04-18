@@ -9,12 +9,12 @@ ms.date: 02/27/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: subject-armqs
-ms.openlocfilehash: 343ed57c87ea6df5db4cde0978132af31419f905
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 86dc7a4ed05ceae5c7a641ffef23bd75ec48ceea
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78303338"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605523"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>Blob-opslaggebeurtenissen routeren naar webeindpunt met azure resourcemanager-sjabloon
 
@@ -32,7 +32,7 @@ Voordat u zich kunt abonneren op gebeurtenissen voor de Blob-opslag, moet u het 
 
 1. Selecteer **Implementeren in Azure** om de oplossing voor uw abonnement te implementeren. Geef in Azure Portal waarden op voor de parameters.
 
-    [Implementeren naar Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
+    [Implementeren in Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
 1. De implementatie kan enkele minuten duren. Controleer of uw web-app wordt uitgevoerd nadat de implementatie is voltooid. Navigeer in een webbrowser naar: `https://<your-site-name>.azurewebsites.net`
 
 1. De site wordt weergegeven, maar er zijn nog geen gebeurtenissen op gepubliceerd.
@@ -56,7 +56,7 @@ In de sjabloon worden twee Azure-resources gedefinieerd:
 
 1. Selecteer de volgende koppeling om u aan te melden bij Azure en open een sjabloon. Met de sjabloon worden een sleutelkluis en een geheim gemaakt.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json"><img src="./media/blob-event-quickstart-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+    [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
 
 2. Geef het **eindpunt**op: geef de URL `api/updates` van uw web-app op en voeg toe aan de URL van de startpagina.
 3. Selecteer **Kopen** om de sjabloon te implementeren.

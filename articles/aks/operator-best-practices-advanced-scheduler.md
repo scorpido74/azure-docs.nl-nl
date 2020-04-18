@@ -5,12 +5,12 @@ description: Lees de best practices voor de clusteroperator voor het gebruik van
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 47b2d78f7dc831c4314c4215f5e0a9e17f75f0dc
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: d0d13a699d2559c6b4360c807721e0b748959382
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668364"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617518"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor geavanceerde schedulerfuncties in Azure Kubernetes Service (AKS)
 
@@ -134,7 +134,7 @@ Zie [Pods toewijzen aan knooppunten][k8s-node-selector]voor meer informatie over
 
 Een knooppuntkiezer is een basismanier om pods toe te wijzen aan een bepaald knooppunt. Meer flexibiliteit is beschikbaar met behulp van *node affiniteit*. Met node-affiniteit bepaalt u wat er gebeurt als de pod niet kan worden gekoppeld aan een knooppunt. U *vereisen* dat Kubernetes scheduler overeenkomt met een pod met een gelabelde host. U ook *de voorkeur geven aan* een overeenkomst, maar toestaan dat de pod op een andere host wordt gepland als er geen overeenkomst beschikbaar is.
 
-In het volgende voorbeeld wordt de nodeaffiniteit ingesteld *op vereistDuringSchedulingIgnoredDuringExecution*. Deze affiniteit vereist dat het Kubernetes-schema een knooppunt met een bijpassend label gebruikt. Als er geen knooppunt beschikbaar is, moet de pod wachten tot de planning is voortgezet. Als u wilt dat de pod op een ander knooppunt wordt gepland, u in plaats daarvan de waarde instellen op *de voorkeurDuringScheduledIgnoreDuringExecution:*
+In het volgende voorbeeld wordt de nodeaffiniteit ingesteld *op vereistDuringSchedulingIgnoredDuringExecution*. Deze affiniteit vereist dat het Kubernetes-schema een knooppunt met een bijpassend label gebruikt. Als er geen knooppunt beschikbaar is, moet de pod wachten tot de planning is voortgezet. Als u wilt dat de pod op een ander knooppunt wordt gepland, u in plaats daarvan de waarde instellen op *de voorkeurDuringSchedulingIgnoreDuringExecution:*
 
 ```yaml
 kind: Pod

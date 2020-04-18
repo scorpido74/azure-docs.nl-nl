@@ -553,8 +553,6 @@
           href: data-factory-service-identity.md
     - name: Controleren en beheren
       items:
-        - name: Visueel bewaken
-          href: monitor-visually.md
         - name: Controleren met Azure Monitor
           href: monitor-using-azure-monitor.md
         - name: Controleren met SDK's

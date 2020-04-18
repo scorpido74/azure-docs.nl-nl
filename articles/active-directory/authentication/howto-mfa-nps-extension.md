@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c8606f0b7ab47d624ec66c8cda539e571cec6ce
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393057"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617668"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Uw bestaande NPS-infrastructuur integreren met Azure Multi-Factor Authentication
 
@@ -142,6 +142,14 @@ Gebruik deze stappen om een testaccount te starten:
 1. Meld u [https://aka.ms/mfasetup](https://aka.ms/mfasetup) aan bij een testaccount.
 2. Volg de aanwijzingen om een verificatiemethode in te stellen.
 3. [Maak een beleid voor voorwaardelijke toegang](howto-mfa-getstarted.md#create-conditional-access-policy) om meervoudige verificatie voor het testaccount te vereisen.
+
+> [!IMPORTANT]
+>
+> Zorg ervoor dat gebruikers zich hebben geregistreerd voor Azure Multi-Factor Authentication. Als gebruikers zich eerder alleen hebben geregistreerd voor selfservice wachtwoordreset (SSPR), is *StrongAuthenticationMethods* ingeschakeld voor hun account. Azure Multi-Factor Authentication wordt afgedwongen wanneer *StrongAuthenticationMethods* is geconfigureerd, zelfs als de gebruiker alleen is geregistreerd voor SSPR.
+>
+> Gecombineerde beveiligingsregistratie kan worden ingeschakeld waarmee SSPR en Azure Multi-Factor Authentication tegelijkertijd worden geconfigureerd. Zie [Gecombineerde beveiligingsgegevensregistratie inschakelen in Azure Active Directory](howto-registration-mfa-sspr-combined.md)voor meer informatie.
+>
+> U gebruikers ook [dwingen om verificatiemethoden opnieuw te registreren](howto-mfa-userdevicesettings.md#manage-user-authentication-options) als ze voorheen alleen SSPR hadden ingeschakeld.
 
 ## <a name="install-the-nps-extension"></a>De NPS-extensie installeren
 

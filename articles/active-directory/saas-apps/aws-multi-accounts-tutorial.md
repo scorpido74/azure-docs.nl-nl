@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5310c999cc44f0cf35f129751da7472031e6c57a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 51be98654950ba290fa83f77eccdae4d6f549891
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537080"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Zelfstudie: Azure Active Directory-integratie met Amazon Web Services (AWS) (Legacy-zelfstudie)
 
@@ -37,7 +37,7 @@ Als u meer informatie wilt over de integratie van De SaaS-app met Azure AD, raad
 ![Amazon Web Services (AWS) in de resultatenlijst](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 > [!NOTE]
-> Let op: het koppelen van één AWS-app aan al uw AWS-accounts is niet onze aanbevolen aanpak. In plaats daarvan raden we u aan [deze](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) aanpak te gebruiken om meerdere exemplaren van AWS-account te configureren naar meerdere exemplaren van AWS-apps in Azure AD. U moet deze aanpak alleen gebruiken als u er veel minder AWS-accounts en -rollen in hebt, dit model is niet schaalbaar omdat de AWS-accounts en -rollen binnen deze accounts groeien. Ook maakt deze aanpak geen gebruik van AWS Role import functionaliteit met behulp van Azure AD User Provisioning en dus moet je handmatig toevoegen/ bijwerken / verwijderen van de rollen. Voor andere beperkingen op deze aanpak zie de details hieronder.
+> Let op: het koppelen van één AWS-app aan al uw AWS-accounts is niet onze aanbevolen aanpak. In plaats daarvan raden we u aan [deze](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) aanpak te gebruiken om meerdere exemplaren van AWS-account te configureren naar meerdere exemplaren van AWS-apps in Azure AD. U moet deze aanpak alleen gebruiken als er weinig AWS-accounts en -rollen in zitten, dit model is niet schaalbaar omdat de AWS-accounts en -rollen binnen deze accounts groeien. Deze aanpak maakt geen gebruik van AWS Role import functionaliteit met behulp van Azure AD User Provisioning, dus je moet handmatig toevoegen / bijwerken / verwijderen van de rollen. Voor andere beperkingen op deze aanpak zie de details hieronder.
 
 **Houd er rekening mee dat we deze aanpak niet om de volgende redenen moeten gebruiken:**
 

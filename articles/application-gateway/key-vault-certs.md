@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: be558c3e3a68ce6c194dcf98d8f5ff92c4c14edb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457821"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617511"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-beëindiging met Key Vault-certificaten
 
@@ -47,7 +47,10 @@ Application Gateway-integratie met Key Vault vereist een configuratieproces in d
 
 1. **Uw sleutelkluis configureren**
 
-   Vervolgens importeert u een bestaand certificaat of maakt u een nieuw certificaat in uw sleutelkluis. Het certificaat wordt gebruikt door toepassingen die via de toepassingsgateway worden uitgevoerd. In deze stap u ook een sleutelkluisgeheim gebruiken dat is opgeslagen als een 64-gecodeerd PFX-bestand zonder wachtwoord. We raden u aan een certificaattype te gebruiken vanwege de mogelijkheid voor automatische vernieuwing die beschikbaar is met certificaattypeobjecten in de sleutelkluis. Nadat u een certificaat of een geheim hebt gemaakt, definieert u toegangsbeleid in de sleutelkluis zodat de identiteit toegang *krijgt* tot het geheim.
+   Vervolgens importeert u een bestaand certificaat of maakt u een nieuw certificaat in uw sleutelkluis. Het certificaat wordt gebruikt door toepassingen die via de toepassingsgateway worden uitgevoerd. In deze stap u ook een sleutelkluisgeheim gebruiken dat is opgeslagen als een pfx-bestand zonder wachtwoord. We raden u aan een certificaattype te gebruiken vanwege de mogelijkheid voor automatische vernieuwing die beschikbaar is met certificaattypeobjecten in de sleutelkluis. Nadat u een certificaat of een geheim hebt gemaakt, definieert u toegangsbeleid in de sleutelkluis zodat de identiteit toegang *krijgt* tot het geheim.
+   
+   > [!NOTE]
+   > Als u de toepassingsgateway implementeert via een ARM-sjabloon, hetzij met behulp van het Azure CLI of PowerShell, hetzij via een Azure-toepassing die is geïmplementeerd vanuit de Azure-portal, moet het SSL-certificaat dat in de sleutelkluis is opgeslagen als een PFX-bestand met basis64-gecodeerd, **wachtwoordloos zijn.** U moet ook de stappen uitvoeren in [Azure Key Vault gebruiken om de veilige parameterwaarde tijdens de implementatie door te geven.](../azure-resource-manager/templates/key-vault-parameter.md) Het is vooral belangrijk `enabledForTemplateDeployment` `true`om aan te zetten.
 
 1. **De toepassingsgateway configureren**
 

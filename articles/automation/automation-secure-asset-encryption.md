@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: a82d2b6d9521ba7dd5e7b194c26ff8fe5a100871
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 594bac257c2b9739f1ece276c881348b35d2f704
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457481"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604820"
 ---
 # <a name="encrypt-secure-assets-in-azure-automation"></a>Versleuteling van beveiligde activa in Azure Automation
 
@@ -133,7 +133,7 @@ Aanvraagtekst:
 
 ### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>De configuratie van het Automation-account wijzigen om de door de klant beheerde sleutel te gebruiken
 
-Ten slotte u uw Automation-account overschakelen van door Microsft beheerde sleutels naar door de klant beheerde sleutels, met behulp van de volgende REST API-aanroep:
+Ten slotte u uw Automation-account overschakelen van door Microsoft beheerde sleutels naar door de klant beheerde sleutels, met behulp van de volgende REST API-aanroep:
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
@@ -193,9 +193,6 @@ Als u de toegang tot door de klant beheerde sleutels wilt intrekken, gebruikt u 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wat is Azure Sleutelkluis?](../key-vault/general/overview.md)
-
 - [Verbindingsassets in Azure Automation](shared-resources/certificates.md)
-
 - [Verbindingsreferentie in Azure Automation](shared-resources/credentials.md)
-
 - [Variabele-assets in Azure Automation](shared-resources/variables.md)

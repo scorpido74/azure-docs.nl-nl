@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: a2276f5714db427586dbd56027e51c167b8c604f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 980d7c3e1b1f69e76c091e2a4a74c8e5a4d0bb64
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413599"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606365"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Azure-draaitransformatie voor gegevensfabrieken
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Gebruik Pivot in ADF-gegevensstroom als aggregatie waarbij een of meer groeperingskolommen zijn afzonderlijke rijwaarden omzetten in afzonderlijke kolommen. In wezen u rijwaarden in nieuwe kolommen draaien (gegevens omzetten in metagegevens).
 

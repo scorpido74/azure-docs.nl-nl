@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: af88fdf3378a6290c773c658ea6dd3469d7c92cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12280e8a5b90c6712703fefc60ec1bfb12ba8573
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531274"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606094"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database en Azure SQL Data Warehouse IP-firewallregels
 
@@ -101,7 +101,7 @@ Wanneer een computer vanaf het internet verbinding probeert te maken met uw data
 
 ### <a name="connections-from-inside-azure"></a>Verbindingen vanuit Azure
 
-Azure-verbindingen moeten zijn ingeschakeld om toepassingen die in Azure worden gehost, verbinding te laten maken met uw SQL-server. Wanneer een toepassing van Azure verbinding probeert te maken met uw databaseserver, controleert de firewall of Azure-verbindingen zijn toegestaan. Een firewall-instelling met start- en eindIP-adressen die gelijk zijn aan *0.0.0.0,* geeft aan dat Azure-verbindingen zijn toegestaan. Dit kan rechtstreeks vanuit het Azure Portal-blad worden ingeschakeld door Firewallregels in te stellen en de **Azure-services en -bronnen toestaan om toegang te krijgen tot deze server in** **de** instellingen **voor firewalls en virtuele netwerken.** Als de verbinding niet is toegestaan, bereikt de aanvraag de SQL Database-server niet.
+Azure-verbindingen moeten zijn ingeschakeld om toepassingen die in Azure worden gehost, verbinding te laten maken met uw SQL-server. Wanneer een toepassing van Azure verbinding probeert te maken met uw databaseserver, controleert de firewall of Azure-verbindingen zijn toegestaan. Dit kan rechtstreeks vanuit het Azure Portal-blad worden ingeschakeld door Firewallregels in te stellen en de **Azure-services en -bronnen toestaan om toegang te krijgen tot deze server in** **de** instellingen **voor firewalls en virtuele netwerken.** Als de verbinding niet is toegestaan, bereikt de aanvraag de SQL Database-server niet.
 
 > [!IMPORTANT]
 > Met deze optie configureert u de firewall om alle verbindingen van Azure toe te staan, inclusief verbindingen van de abonnementen van andere klanten. Als u deze optie selecteert, moet u ervoor zorgen dat uw aanmeldings- en gebruikersmachtigingen de toegang beperken tot alleen geautoriseerde gebruikers.

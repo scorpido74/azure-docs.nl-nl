@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: avverma
-ms.openlocfilehash: 8e73ef75b3313656b45d29270d9996c3ad17c630
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8156c563573183e51e06650914117f8787922e93
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538066"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603668"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatische instantiereparaties voor Azure-schaalsets voor virtuele machines
 
@@ -90,6 +90,8 @@ Als de [functie voor beëindigingsmeldingen](./virtual-machine-scale-sets-termin
 ## <a name="enabling-automatic-repairs-policy-when-creating-a-new-scale-set"></a>Automatisch reparatiebeleid inschakelen bij het maken van een nieuwe schaalset
 
 Als u het automatische reparatiebeleid wilt inschakelen terwijl u een nieuwe schaalset maakt, moet u ervoor zorgen dat aan alle [vereisten](#requirements-for-using-automatic-instance-repairs) voor deelname aan deze functie wordt voldaan. Het eindpunt van de toepassing moet correct zijn geconfigureerd voor schaalset-instanties om te voorkomen dat onbedoelde reparaties worden geactiveerd terwijl het eindpunt wordt geconfigureerd. Voor nieuw gemaakte schaalsets worden eventuele instantiereparaties alleen uitgevoerd na het wachten op de duur van de respijtperiode. Als u de automatische instantiereparatie in een schaalset wilt inschakelen, gebruikt u het object *AutomaticRepairsPolicy* in het model van de virtuele machineschaalset.
+
+U deze [snelstartsjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-automatic-repairs-slb-health-probe) ook gebruiken om een virtuele machineschaalset te implementeren met load balancer health probe en automatische instantiereparaties ingeschakeld met een respijtperiode van 30 minuten.
 
 ### <a name="azure-portal"></a>Azure Portal
  

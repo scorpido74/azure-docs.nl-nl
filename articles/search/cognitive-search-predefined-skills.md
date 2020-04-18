@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9e1f62dcdb122726fc1c08b7bea4e4c214ce7906
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1cf1750924ab8ea8afff6ac788683565433866b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76933371"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618013"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Ingebouwde cognitieve vaardigheden voor tekst- en beeldverwerking tijdens indexering (Azure Cognitive Search)
 
@@ -23,6 +23,8 @@ In dit artikel leert u over de cognitieve vaardigheden die zijn geleverd met Azu
 > Terwijl u het bereik uitbreidt door de frequentie van de verwerking te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureerbare bron voor cognitive services toevoegen.](cognitive-search-attach-cognitive-services.md) Er worden kosten in rekening gebracht bij het aanroepen van API's in Cognitive Services en voor het extraheren van afbeeldingen als onderdeel van de fase van het kraken van documenten in Azure Cognitive Search. Er zijn geen kosten voor tekstextractie uit documenten.
 >
 > Uitvoering van ingebouwde vaardigheden wordt in rekening gebracht tegen de bestaande [Cognitive Services pay-as-you-go prijs.](https://azure.microsoft.com/pricing/details/cognitive-services/) De prijzen voor imageextractie worden beschreven op de [prijspagina azure cognitive search.](https://go.microsoft.com/fwlink/?linkid=2042400)
+>
+> Met de [incrementele verrijkingsfunctie (preview)](cognitive-search-incremental-indexing-conceptual.md) u een cache bieden waarmee de indexer efficiënter kan zijn bij het uitvoeren van alleen de cognitieve vaardigheden die nodig zijn als u uw vaardigheden in de toekomst wijzigt, waardoor u tijd en geld bespaart.
 
 
 ## <a name="built-in-skills"></a>Ingebouwde vaardigheden

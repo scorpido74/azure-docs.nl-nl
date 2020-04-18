@@ -2,13 +2,13 @@
 title: Meerdere exemplaren van een uitvoerwaarde definiëren
 description: Gebruik de kopieerbewerking in een Azure Resource Manager-sjabloon om meerdere keren te herhalen wanneer u een waarde van een implementatie retourt.
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 3889260d02f438274c80e99e99136515499443e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/17/2020
+ms.openlocfilehash: 0315af2f083285c4704b08fec608341b6f0b2231
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153383"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617835"
 ---
 # <a name="output-iteration-in-arm-templates"></a>Uitvoeriteratie in ARM-sjablonen
 
@@ -21,12 +21,10 @@ U ook kopiëren met [resources,](copy-resources.md) [eigenschappen in een resour
 Het kopieerelement heeft de volgende algemene indeling:
 
 ```json
-"copy": [
-  {
-    "count": <number-of-iterations>,
-    "input": <values-for-the-variable>
-  }
-]
+"copy": {
+  "count": <number-of-iterations>,
+  "input": <values-for-the-output>
+}
 ```
 
 De eigenschap **aantal** geeft het gewenste aantal iteraties op voor de uitvoerwaarde.

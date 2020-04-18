@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a02c099871ce9748f4c5f604900a7c4d57bb96b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473520"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639272"
 ---
-# <a name="azure-app-service-access-restrictions"></a>Beperkingen voor azure-servicetoegang #
+# <a name="azure-app-service-access-restrictions"></a>Beperkingen voor toegang voor Azure App Service
 
 Met toegangsbeperkingen u een lijst met prioriteitsgeordende toegestane/weigeringslijst definiëren die de netwerktoegang tot uw app regelt. De lijst kan IP-adressen of Subnetten van Azure Virtual Network bevatten. Wanneer er een of meer vermeldingen zijn, is er dan een impliciete "alles ontkennen" dat aan het einde van de lijst bestaat.
 
@@ -125,12 +125,12 @@ De syntaxis van JSON voor het eerdere voorbeeld is:
 }
 ```
 
-## <a name="azure-function-app-access-restrictions"></a>Beperkingen voor toegang voor Azure-functie-apps
+## <a name="azure-functions-access-restrictions"></a>Toegangsbeperkingen voor Azure-functies
 
-Toegangsbeperkingen zijn ook beschikbaar voor functie-apps met dezelfde functionaliteit als app-serviceabonnementen. Als u toegangsbeperkingen inschakelt, schakelt u de portalcodeeditor uit voor niet-toegestane IP-gebruikers.
+Toegangsbeperkingen zijn ook beschikbaar voor functie-apps met dezelfde functionaliteit als App Service-abonnementen. Als u toegangsbeperkingen inschakelt, schakelt u de portalcodeeditor uit voor niet-toegestane IP-gebruikers.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Toegangsbeperkingen voor Azure Function Apps](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+[Toegangsbeperkingen voor Azure-functies](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [Application Gateway-integratie met serviceeindpunten](networking/app-gateway-with-service-endpoints.md)
 

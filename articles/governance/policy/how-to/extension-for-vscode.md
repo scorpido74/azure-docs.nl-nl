@@ -3,12 +3,12 @@ title: Azure-beleidsextensie voor Visual Studio-code
 description: Meer informatie over het gebruik van de Azure Policy-extensie voor Visual Studio Code om aliassen van Resource Manager op te zoeken.
 ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e31af652f2746adbf0eda386bdb178c752f5f84
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264672"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641027"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure-beleidsextensie gebruiken voor Visual Studio Code
 
@@ -121,7 +121,7 @@ Klanten met honderden of duizenden resources in één abonnement geven mogelijk 
 
 ## <a name="discover-aliases-for-resource-properties"></a>Aliassen voor resourceeigenschappen ontdekken
 
-Wanneer een resource is geselecteerd, hetzij via de zoekinterface of door deze te selecteren in de structuurweergave, opent de Azure Policy-extensie het JSON-bestand dat die resource vertegenwoordigt en alle eigenschapswaarden van Resource Manager.
+Wanneer een resource is geselecteerd, hetzij via de zoekinterface of door deze te selecteren in de structuurweergave, opent de Azure Policy-extensie het JSON-bestand dat die resource en alle eigenschapswaarden van Resource Manager vertegenwoordigt.
 
 Zodra een resource is geopend, wordt de azure-beleidsalias als er een bestaat, weergegeven als de naam of waarde van de resource beheer de naam of waarde van het Azure-beleid weergeeft. In dit voorbeeld is `Microsoft.Compute/virtualMachines` de resource een resourcetype en wordt de eigenschap **properties.storageProfile.imageReference.offer** overzweven. Als u met de boventoon de overeenkomende aliassen ziet.
 

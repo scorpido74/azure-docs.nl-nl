@@ -10,16 +10,14 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 024d61c5bcc38c78dc5a2bd5e01cba43d7b5267e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fdb10894ab9d1c6b805b8b43c90e54126d67b8dd
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418827"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606616"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Gegevens transformeren in Azure Data Factory
-
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 > [!div class="op_single_selector"]
 > * [Gegevensstroom toewijzen](data-flow-create.md)
@@ -35,7 +33,9 @@ ms.locfileid: "81418827"
 > * [Databricks Jar](transform-data-databricks-jar.md)
 > * [Databricks Python](transform-data-databricks-python.md)
 > * [.NET aangepast](transform-data-using-dotnet-custom-activity.md)
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 ## <a name="overview"></a>Overzicht
 In dit artikel worden gegevenstransformatieactiviteiten in Azure Data Factory uitgelegd die u gebruiken om uw ruwe gegevens om te zetten en te verwerken tot voorspellingen en inzichten op schaal. Een transformatieactiviteit wordt uitgevoerd in een computeromgeving zoals Azure Databricks of Azure HDInsight. Het biedt links naar artikelen met gedetailleerde informatie over elke transformatieactiviteit.
 

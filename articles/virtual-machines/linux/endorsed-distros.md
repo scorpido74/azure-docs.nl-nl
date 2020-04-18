@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: guybo
-ms.openlocfilehash: aebb31c825725e8b748fe52bfdf74a79074d6a52
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ed7755251feb04a5f811d6ed96b00a347fba8994
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460491"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605930"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Goedgekeurde Linux-distributies op Azure
 Partners bieden Linux-afbeeldingen in de Azure Marketplace. We werken samen met verschillende Linux-gemeenschappen om nog meer smaken toe te voegen aan de lijst met goedgekeurde distributie. In de tussentijd, voor distributies die niet beschikbaar zijn op de Marketplace, u altijd uw eigen Linux door het volgen van de richtlijnen op [Maken en uploaden van een virtuele harde schijf die het Linux-besturingssysteem bevat](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
@@ -37,7 +37,7 @@ De Azure Linux Agent is al vooraf geïnstalleerd op de Azure Marketplace-afbeeld
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |In kernel |Broncode: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9+, 8.2+, 9, 10 |In kernel |Pakket: In repo onder "waagent" <br/>Broncode: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6,4+, 7,0+ |In kernel |Pakket: In repo onder "WALinuxAgent" <br/>Broncode: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux |RHEL 6,7+, 7,1+, 8,0+ |In kernel |Pakket: In repo onder "WALinuxAgent" <br/>Broncode: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Red Hat Enterprise Linux |RHEL 7.1+, 8.0+ |In kernel |Pakket: In repo onder "WALinuxAgent" <br/>Broncode: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise |SLES/SLES voor SAP<br>11 SP4<br>12 SP1+<br>15|In kernel |Pakket:<p> voor 11 in [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) repo<br>voor 12 opgenomen in "Public Cloud" Module onder "python-azure-agent"<br/>Broncode: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE Leap 42.2+ |In kernel |Pakket: In [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) repo onder 'python-azure-agent' <br/>Broncode: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04+ ** <sup>1</sup>** |In kernel |Pakket: In repo onder "walinuxagent" <br/>Broncode: [GitHub](https://github.com/Azure/WALinuxAgent) |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 60f85a30815bc1bace409b50af6332bb6622d7ca
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 81e46f53c0afc69c927918daa0488c4835d60805
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477977"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605025"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Logboekanalysewerkruimte beheren met Azure Resource Manager-sjablonen
 
@@ -153,7 +153,7 @@ Voor capaciteitsreservering definieert u een geselecteerde capaciteitsreserverin
    >* "naam": "CapacityReservation",
    >* "capacityReservationLevel": 100
 
-2. Bewerk de sjabloon om aan uw vereisten te voldoen. Overweeg een [resourcebeheerbestand te](../../azure-resource-manager/templates/parameter-files.md) maken in plaats van parameters door te geven als inlinewaarden. Bekijk [de sjabloonverwijzing microsoft.operationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) om te zien welke eigenschappen en waarden worden ondersteund. 
+2. Bewerk de sjabloon om aan uw vereisten te voldoen. Overweeg een [resourcebeheerbestand te](../../azure-resource-manager/templates/parameter-files.md) maken in plaats van parameters door te geven als inlinewaarden. Bekijk [de sjabloonverwijzing microsoft.operationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) om te zien welke eigenschappen en waarden worden ondersteund. 
 
 3. Sla dit bestand op als **deploylaworkspacetemplate.json** in een lokale map.
 

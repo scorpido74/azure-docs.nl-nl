@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: f103db1d0de7a9d538f56b8ade331dc856b26bce
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: eb11a5cc2deef372ca91c23a8b9c82e17143c85b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547028"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617713"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Een prijscategorie kiezen voor Azure Cognitive Search
 
@@ -89,6 +89,8 @@ Voor [AI-verrijking](cognitive-search-concept-intro.md)moet u van plan zijn [om 
 | Documentkraken, beeldextractie | Gefactureerd op basis van het aantal afbeeldingen uit uw documenten. In een [indexerconfiguratie](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)is **imageAction** de parameter die beeldextractie activeert. Als **imageAction** is ingesteld op 'geen' (de standaardinstelling), worden er geen kosten in rekening gebracht voor het extraheren van afbeeldingen. De snelheid voor afbeeldingsextractie is gedocumenteerd op de [pagina prijsdetails](https://azure.microsoft.com/pricing/details/search/) voor Azure Cognitive Search.|
 | [Ingebouwde cognitieve tekstvaardigheden](cognitive-search-predefined-skills.md) | Gefactureerd in hetzelfde tempo als wanneer u de taak hebt uitgevoerd met behulp van Cognitive Services rechtstreeks. |
 | Aangepaste vaardigheden | Een aangepaste vaardigheid is functionaliteit die u biedt. De kosten van het gebruik van een aangepaste vaardigheid zijn volledig afhankelijk van de vraag of aangepaste code andere services met een datameter aanroept. |
+
+Met de [incrementele verrijkingsfunctie (preview)](cognitive-search-incremental-indexing-conceptual.md) u een cache bieden waarmee de indexer efficiënter kan zijn bij het uitvoeren van alleen de cognitieve vaardigheden die nodig zijn als u uw vaardigheden in de toekomst wijzigt, waardoor u tijd en geld bespaart.
 
 <a name="search-units"></a>
 

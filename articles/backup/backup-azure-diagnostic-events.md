@@ -1,26 +1,26 @@
 ---
-title: Diagnostische instellingen gebruiken voor Vaults van Recovery Services
-description: Een artikel waarin wordt beschreven hoe de oude en nieuwe diagnostische gebeurtenissen voor Azure Backup kunnen worden gebruikt
+title: Diagnostische instellingen gebruiken voor vaults van Recovery Services
+description: In dit artikel wordt beschreven hoe u de oude en nieuwe diagnostische gebeurtenissen voor Azure Backup gebruiken.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: d10bedf3818559971eff12624152d0e797f6c3cc
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: f11c9d2a5b48b9cd27ac6e6f8a00eb5ac0ac7a9d
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672783"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617311"
 ---
-# <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Diagnostische instellingen gebruik voor Recovery Services-kluizen
+# <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Diagnostische instellingen gebruiken voor vaults van Recovery Services
 
-Azure Backup verzendt diagnostische gebeurtenissen die kunnen worden verzameld en gebruikt voor analyse, waarschuwingen en rapportage. 
+Azure Backup verzendt diagnostische gebeurtenissen die kunnen worden verzameld en gebruikt voor analyse, waarschuwing en rapportage.
 
-U diagnostische instellingen voor een Vault voor Herstelservices configureren via de Azure-portal, door naar de kluis te navigeren en op het **menu-item Diagnostische instellingen** te klikken. Als u op **+ Diagnostische instelling toevoegen** klikt, u een of meer diagnostische gebeurtenissen verzenden naar een opslagaccount, gebeurtenishub of een werkruimte voor Logboekanalyse (LA).
+U diagnostische instellingen voor een Vault recovery services configureren via de Azure-portal door naar de kluis te gaan en **Diagnostische instellingen**te selecteren. Als u diagnostische instelling selecteren + **Toevoegen,** u een of meer diagnostische gebeurtenissen verzenden naar een opslagaccount, een gebeurtenishub of een werkruimte voor Logboekanalyse.
 
-![Blade diagnostische instellingen](./media/backup-azure-diagnostics-events/diagnostics-settings-blade.png)
+![Het deelvenster Diagnostische instellingen](./media/backup-azure-diagnostics-events/diagnostics-settings-blade.png)
 
-## <a name="diagnostics-events-available-for-azure-backup-users"></a>Diagnostische gebeurtenissen beschikbaar voor Azure Backup Users
+## <a name="diagnostics-events-available-for-azure-backup-users"></a>Diagnostische gebeurtenissen beschikbaar voor Azure Backup-gebruikers
 
-Azure Backup biedt de volgende diagnostische gebeurtenissen, die elk gedetailleerde gegevens bevatten over een specifieke set back-upgerelateerde artefacten:
+Azure Backup biedt de volgende diagnostische gebeurtenissen. Elke gebeurtenis biedt gedetailleerde gegevens over een specifieke set back-upgerelateerde artefacten:
 
 * CoreAzureBackup
 * AddonAzureBackupAlerts
@@ -29,40 +29,44 @@ Azure Backup biedt de volgende diagnostische gebeurtenissen, die elk gedetaillee
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
 
-[Gegevensmodel voor Azure Backup Diagnostics-gebeurtenissen](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
+Zie [Gegevensmodel voor Azure Backup-diagnostische gebeurtenissen voor](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)meer informatie .
 
-Gegevens voor deze gebeurtenissen kunnen worden verzonden naar een opslagaccount, een LA-werkruimte of een gebeurtenishub. Als u deze gegevens naar een LA Workspace verzendt, moet u de optie **Resourcespecifiek** selecteren in het scherm **Diagnostische instelling** (zie meer informatie in de onderstaande secties).
+Gegevens voor deze gebeurtenissen kunnen worden verzonden naar een opslagaccount, een Log Analytics-werkruimte of een gebeurtenishub. Als u deze gegevens naar een werkruimte Log Analytics verzendt, selecteert u de **functie Resourcespecifiek** in het scherm **Diagnostische instellingen.** Zie de volgende secties voor meer informatie.
 
-## <a name="using-diagnostics-settings-with-log-analytics-la"></a>Diagnostische instellingen gebruiken met Log Analytics (LA)
+## <a name="use-diagnostics-settings-with-log-analytics"></a>Diagnostische instellingen gebruiken met Log Analytics
 
-Azure Backup sluit zich aan op de Azure Log Analytics-roadmap en stelt u nu in staat om brondiagnostische gegevens naar speciale LA-tabellen voor back-up te verzenden. Deze worden [resourcespecifieke tabellen](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific)genoemd.
+U Azure Backup nu gebruiken om gegevens over kluisdiagnoses te verzenden naar speciale Log Analytics-tabellen voor back-ups. Deze tabellen worden [resourcespecifieke tabellen](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific)genoemd.
 
-Ga als u uw kluisdiagnosegegevens naar LA sturen:
+Ga als uw vault diagnostics-gegevens naar Log Analytics:
 
-1.    Navigeer naar uw kluis en klik op **Diagnostische instellingen**. Klik **op + Diagnostische instelling toevoegen**.
-2.    Geef een naam aan de instelling Diagnostische gegevens.
-3.    Schakel het selectievakje **Verzenden naar logboekanalyse** in en selecteer een Logboekanalysewerkruimte.
-4.    Selecteer **Resourcespecifiek** in de schakeloptie en controleer de volgende zes gebeurtenissen - **CoreAzureBackup**, **AddonAzureBackupAlerts**, **AddonAzureBackupProtectedInstance**, **AddonAzureBackupJobs**, **AddonAzureBackupPolicy**en **AddonAzureBackupStorage**.
-5.    Klik op **Opslaan**.
+1. Ga naar uw kluis en selecteer **Diagnostische instellingen**. Selecteer **+ Diagnostische instelling toevoegen**.
+1. Geef een naam aan de diagnose-instelling.
+1. Schakel het selectievakje **Verzenden naar logboekanalyse** in en schakel een werkruimte Log Analytics in.
+1. Selecteer **Resourcespecifiek** in de schakelknop en selecteer de volgende zes gebeurtenissen: **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**en **AddonAzureBackupProtectedInstance**.
+1. Selecteer **Opslaan**.
 
-![Resourcespecifieke modus](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
+   ![Resourcespecifieke modus](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
-Zodra gegevens in de LA Workspace worden ingevoerd, worden er speciale tabellen voor elk van deze gebeurtenissen gemaakt in uw werkruimte. U een van deze tabellen rechtstreeks opvragen en indien nodig ook joins of vakbonden tussen deze tabellen uitvoeren.
+Nadat gegevens zijn binnengekomen in de werkruimte Log Analytics, worden er speciale tabellen voor elk van deze gebeurtenissen gemaakt in uw werkruimte. U een van deze tabellen rechtstreeks opvragen. U indien nodig ook joins of vakbonden tussen deze tabellen uitvoeren.
 
 > [!IMPORTANT]
-> De bovenstaande zes gebeurtenissen, namelijk CoreAzureBackup, AddonAzureBackupAlerts, AddonAzureBackupProtectedInstance, AddonAzureBackupJobs, AddonAzureBackupPolicy en AddonAzureBackupStorage, worden **alleen** ondersteund in resourcespecifieke modus in [back-uprapporten.](https://docs.microsoft.com/azure/backup/configure-reports) **Houd er rekening mee dat als u gegevens probeert te verzenden voor deze zes gebeurtenissen in de Azure Diagnostics Mode, er geen gegevens zichtbaar zijn in back-uprapporten.**
+> De zes gebeurtenissen, namelijk CoreAzureBackup, AddonAzureBackupJobs, AddonAzureBackupAlerts, AddonAzureBackupPolicy, AddonAzureBackupStorage en AddonAzureBackupProtectedInstance, worden *alleen* ondersteund in de resourcespecifieke modus in [Back-uprapporten.](https://docs.microsoft.com/azure/backup/configure-reports) *Als u gegevens probeert te verzenden voor deze zes gebeurtenissen in de azure-diagnostische modus, zijn er geen gegevens zichtbaar in back-uprapporten.*
 
-## <a name="legacy-event"></a>Legacy-evenement
+## <a name="legacy-event"></a>Legacy-gebeurtenis
 
-Traditioneel zijn alle back-upgerelateerde diagnostische gegevens voor een kluis opgenomen in één gebeurtenis genaamd 'AzureBackupReport'. De zes hierboven beschreven gebeurtenissen zijn in wezen een ontleding van alle gegevens in AzureBackupReport. 
+Traditioneel werden alle back-upgerelateerde diagnostische gegevens voor een kluis opgenomen in één gebeurtenis, AzureBackupReport genaamd. De zes gebeurtenissen die hier worden beschreven, zijn in wezen een ontleding van alle gegevens in AzureBackupReport. 
 
-Momenteel blijven we de AzureBackupReport-gebeurtenis ondersteunen voor achterwaartse compatibiliteit, in gevallen waarin gebruikers bestaande aangepaste query's op deze gebeurtenis hebben, bijvoorbeeld aangepaste logboekwaarschuwingen, aangepaste visualisaties enz. We raden echter **aan om zo vroeg mogelijk naar de nieuwe [gebeurtenissen](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users) te gaan,** omdat dit de gegevens veel gemakkelijker maakt om mee te werken in logboekquery's, een betere vindbaarheid van schema's en hun structuur biedt, de prestaties verbetert in zowel de innamelaten als de querytijden. 
+Momenteel blijven we de gebeurtenis AzureBackupReport ondersteunen voor achterwaartse compatibiliteit in gevallen waarin gebruikers bestaande aangepaste query's op deze gebeurtenis hebben. Voorbeelden zijn aangepaste logboekwaarschuwingen en aangepaste visualisaties. *We raden u aan zo vroeg mogelijk naar de [nieuwe evenementen](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users) te gaan.* De nieuwe evenementen:
 
-**De verouderde gebeurtenis in de Azure Diagnostics-modus wordt uiteindelijk afgeschaft en dus kan het kiezen van de nieuwe gebeurtenissen u helpen om complexe migraties op een later tijdstip te voorkomen.** Onze [rapportageoplossing](https://docs.microsoft.com/azure/backup/configure-reports) die gebruikmaakt van Log Analytics, zal ook stoppen met het ondersteunen van gegevens van de legacy-gebeurtenis.
+- Maak de gegevens veel gemakkelijker om mee te werken in logquery's.
+- Zorg voor een betere vindbaarheid van schema's en hun structuur.
+- Verbeter de prestaties voor zowel de innamelatentie als de querytijden. 
 
-### <a name="steps-to-move-to-new-diagnostics-settings-to-log-analytics-workspace"></a>Stappen om over te gaan naar nieuwe diagnostische instellingen (naar Log Analytics-werkruimte)
+*De verouderde gebeurtenis in de Azure-diagnostische modus wordt uiteindelijk afgeschaft. Als u de nieuwe gebeurtenissen kiest, u complexe migraties op een later tijdstip voorkomen.* Onze [rapportageoplossing](https://docs.microsoft.com/azure/backup/configure-reports) die Gebruikmaakt van Log Analytics, zal ook stoppen met het ondersteunen van gegevens van de legacy-gebeurtenis.
 
-1. Bepaal welke kluizen gegevens naar de Log Analytics Workspace(s) verzenden met behulp van de legacy-gebeurtenis en tot welke abonnementen ze behoren. Voer de onderstaande werkruimten uit om deze kluizen en abonnementen te identificeren:
+### <a name="steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace"></a>Stappen om over te gaan naar nieuwe diagnostische instellingen voor een Log Analytics-werkruimte
+
+1. Bepaal welke kluizen gegevens verzenden naar de Log Analytics-werkruimten met behulp van de legacy-gebeurtenis en de abonnementen waartoe ze behoren. Voer de volgende werkruimten uit om deze kluizen en abonnementen te identificeren.
 
     ````Kusto
     let RangeStart = startofday(ago(3d));
@@ -90,34 +94,34 @@ Momenteel blijven we de AzureBackupReport-gebeurtenis ondersteunen voor achterwa
     | project ResourceId, SubscriptionId, VaultName
     ````
 
-2. Gebruik het [ingebouwde Azure Policy](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics) van Azure Backup om een nieuwe diagnostische instelling toe te voegen voor alle kluizen in een opgegeven bereik. Met dit beleid wordt een nieuwe diagnostische instelling toegevoegd aan de kluizen die geen diagnostische instelling hebben (of) alleen een verouderde diagnostische instelling hebben. Dit beleid kan worden toegewezen aan een volledig abonnement of resourcegroep tegelijk. Houd er rekening mee dat u 'Eigenaar' toegang nodig hebt tot elk abonnement waarvoor het beleid is toegewezen.
+1. Gebruik het [ingebouwde Azure-beleid](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics) in Azure Backup om een nieuwe diagnostische instelling toe te voegen voor alle kluizen in een opgegeven bereik. Met dit beleid wordt een nieuwe diagnostische instelling toegevoegd aan kluizen die geen diagnostische instelling hebben of alleen een verouderde diagnostische instelling hebben. Dit beleid kan worden toegewezen aan een volledig abonnement of resourcegroep tegelijk. U moet eigenaar toegang hebben tot elk abonnement waarvoor het beleid is toegewezen.
 
-U ervoor kiezen om afzonderlijke diagnostische instellingen voor AzureBackupReport en de zes nieuwe gebeurtenissen te hebben, totdat u al uw aangepaste query's hebt gemigreerd om gegevens uit de nieuwe tabellen te gebruiken. De onderstaande afbeelding toont een voorbeeld van een kluis met twee diagnostische instellingen. De eerste instelling, met de naam **Instelling1,** verzendt gegevens van de gebeurtenis AzureBackupReport naar een LA Workspace in de AzureDiagnostics-modus. De tweede instelling, met de naam **Instelling2,** verzendt gegevens van de zes nieuwe Azure Backup-gebeurtenissen naar een LA Workspace in de modus Resourcespecifiek.
+U ervoor kiezen om afzonderlijke diagnostische instellingen voor AzureBackupReport en de zes nieuwe gebeurtenissen te hebben totdat u al uw aangepaste query's hebt gemigreerd om gegevens uit de nieuwe tabellen te gebruiken. In de volgende afbeelding ziet u een voorbeeld van een kluis met twee diagnostische instellingen. De eerste instelling, met de naam **Instelling1,** verzendt gegevens van een Gebeurtenis AzureBackupReport naar een Log Analytics-werkruimte in de diagnosemodus Azure. De tweede instelling, **setting2**genaamd, verzendt gegevens van de zes nieuwe Azure Backup-gebeurtenissen naar een log-analysewerkruimte in de resourcespecifieke modus.
 
 ![Twee instellingen](./media/backup-azure-diagnostics-events/two-settings-example.png)
 
 > [!IMPORTANT]
-> De gebeurtenis AzureBackupReport wordt **alleen** ondersteund in de Azure Diagnostics-modus. **Houd er rekening mee dat als u gegevens voor deze gebeurtenis probeert te verzenden in resourcespecifieke modus, er geen gegevens naar de LA Workspace worden verzonden.**
+> De gebeurtenis AzureBackupReport wordt *alleen* ondersteund in de diagnosemodus azure. *Als u gegevens voor deze gebeurtenis probeert te verzenden in de resourcespecifieke modus, worden er geen gegevens naar de werkruimte Log Analytics verzonden.*
 
 > [!NOTE]
-> De schakelaar voor Azure Diagnostics / Resource Specific wordt alleen weergegeven als de gebruiker **Send to Log Analytics**controleert. Als u gegevens naar een opslagaccount of een gebeurtenishub wilt verzenden, kan een gebruiker eenvoudig de vereiste bestemming selecteren en een van de gewenste gebeurtenissen controleren, zonder extra invoer. Nogmaals, het wordt aanbevolen om de verouderde gebeurtenis AzureBackupReport niet te kiezen, in de toekomst.
+> De optie voor **Azure-diagnose** of **Resourcespecifiek** wordt alleen weergegeven als de gebruiker **Verzenden naar logboekanalyse**selecteert. Als u gegevens naar een opslagaccount of een gebeurtenishub wilt verzenden, selecteert een gebruiker de vereiste bestemming en selecteert hij de selectievakjes voor een van de gewenste gebeurtenissen, zonder extra invoer. Nogmaals, we raden u aan niet de verouderde gebeurtenis AzureBackupReport in de toekomst te kiezen.
 
-## <a name="users-sending-azure-site-recovery-events-to-log-analytics-la"></a>Gebruikers die Azure Site Recovery Events verzenden naar Log Analytics (LA)
+## <a name="send-azure-site-recovery-events-to-log-analytics"></a>Azure Site Recovery-gebeurtenissen verzenden naar Logboekanalyse
 
-Azure Backup- en Azure Site Recovery-gebeurtenissen worden verzonden vanuit dezelfde Vault voor Herstelservices. Aangezien Azure Site Recovery momenteel niet is aangesloten op resourcespecifieke tabellen, worden gebruikers die Azure Site Recovery Events naar LA willen **verzenden,** alleen naar azure diagnostics Mode geleid (zie afbeelding hieronder). **Als u resourcespecifieke modus kiest voor de azure-siteherstelgebeurtenissen, wordt voorkomen dat de vereiste gegevens naar de LA Workspace worden verzonden.**
+Azure Backup- en Azure Site Recovery-gebeurtenissen worden verzonden vanuit dezelfde vault van Recovery Services. Azure Site Recovery is momenteel niet beschikbaar voor resourcespecifieke tabellen. Gebruikers die Azure Site Recovery-gebeurtenissen naar Log Analytics willen *verzenden,* worden alleen door de diagnostische modus van Azure gebruikt, zoals in de afbeelding wordt weergegeven. *Als u de resourcespecifieke modus voor Azure Site Recovery-gebeurtenissen kiest, worden de vereiste gegevens niet naar de werkruimte Log Analytics verzonden.*
 
 ![Gebeurtenissen voor siteherstel](./media/backup-azure-diagnostics-events/site-recovery-settings.png)
 
-Ga als een samenvatting van de bovenstaande nuances:
+Samenvattend:
 
-* Als u al LA-diagnose hebt ingesteld met Azure Diagnostics en er aangepaste query's op hebt geschreven, houdt u die instelling **intact**totdat u uw query's migreert om gegevens uit de nieuwe gebeurtenissen te gebruiken.
-* Als u ook aan boord wilt gaan naar nieuwe tabellen (zoals aanbevolen), maakt u een **nieuwe** diagnostische instelling, kiest **u Resourcespecifiek** en selecteert u de zes nieuwe gebeurtenissen zoals hierboven aangegeven.
-* Als u momenteel Azure Site Recovery Events naar LA verzendt, kiest **u geen** resourcespecifieke modus voor deze gebeurtenissen, anders vloeien gegevens voor deze gebeurtenissen niet in uw LA Workspace. Maak in plaats daarvan een **aanvullende diagnostische instelling,** selecteer **Azure Diagnostics**en kies de relevante Azure Site Recovery-gebeurtenissen.
+* Als u al logboekanalysediagnostiek hebt ingesteld met Azure Diagnostics en er aangepaste query's op hebt geschreven, houdt u die instelling *intact* totdat u uw query's migreert om gegevens uit de nieuwe gebeurtenissen te gebruiken.
+* Als u ook aan boord wilt gaan naar nieuwe tabellen, maakt u, maakt u, maakt u een **nieuwe** diagnose-instelling, selecteert **u Resourcespecifiek**en selecteert u de zes nieuwe gebeurtenissen.
+* Als u momenteel Azure Site Recovery-gebeurtenissen verzendt naar Log Analytics, kiest *u niet* de resourcespecifieke modus voor deze gebeurtenissen. Anders worden gegevens voor deze gebeurtenissen niet naar uw werkruimte Log Analytics verzonden. Maak in plaats daarvan een aanvullende diagnostische instelling, selecteer **Azure-diagnose**en selecteer de relevante Azure Site Recovery-gebeurtenissen.
 
-De onderstaande afbeelding toont een voorbeeld van een gebruiker met drie diagnostische instellingen voor een kluis. De eerste instelling, met de naam **Instelling1,** verzendt gegevens van de gebeurtenis AzureBackupReport naar een LA Workspace in de AzureDiagnostics-modus. De tweede instelling, met de naam **Instelling2,** verzendt gegevens van de zes nieuwe Azure Backup-gebeurtenissen naar een LA Workspace in de modus Resourcespecifiek. De derde instelling, **setting3**genaamd, verzendt gegevens van de azure-siteherstelgebeurtenissen naar een LA Workspace in azure-diagnosemodus.
+In de volgende afbeelding ziet u een voorbeeld van een gebruiker die drie diagnose-instellingen voor een kluis heeft. De eerste instelling, met de naam **Instelling1,** verzendt gegevens van een gebeurtenis AzureBackupReport naar een Log Analytics-werkruimte in de diagnosemodus Azure. De tweede instelling, **setting2**genaamd, verzendt gegevens van de zes nieuwe Azure Backup-gebeurtenissen naar een log-analysewerkruimte in de resourcespecifieke modus. De derde instelling, **setting3**genaamd, verzendt gegevens van de Azure Site Recovery-gebeurtenissen naar een Log Analytics-werkruimte in de diagnosemodus Azure.
 
 ![Drie instellingen](./media/backup-azure-diagnostics-events/three-settings-example.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over het gegevensmodel log-analyse voor de diagnostische gebeurtenissen](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
+[Meer informatie over het gegevensmodel Log Analytics voor de diagnostische gebeurtenissen](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)

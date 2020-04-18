@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f2eb503b58f1679d138b6a1dd9304896be098ad6
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7c1ad2581d025a9259c5cb2a84e4237f938fc892
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419197"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81637142"
 ---
 Als u virtuele Azure-machines (VM's) op een consistente manier op schaal wilt maken en beheren, wordt een of andere vorm van automatisering meestal gewenst. Er zijn veel tools en oplossingen waarmee u de volledige implementatie- en beheerlevenscyclus van azure-infrastructuur automatiseren. In dit artikel worden enkele hulpprogramma's voor infrastructuurautomatisering geïntroduceerd die u in Azure gebruiken. Deze tools passen vaak in een van de volgende benaderingen:
 
@@ -125,7 +125,7 @@ Meer informatie over:
 
 
 ## <a name="jenkins"></a>Jenkins
-[Jenkins](https://www.jenkins.io) is een continue integratieserver die helpt bij het implementeren en testen van applicaties en het maken van geautomatiseerde pijplijnen voor het leveren van code. Er zijn honderden plug-ins om het kernJenkins-platform uit te breiden, en u ook integreren met vele andere producten en oplossingen via webhooks. U Jenkins handmatig installeren op een Azure VM, Jenkins uitvoeren vanuit een Docker-container of een vooraf gebouwde Azure Marketplace-afbeelding gebruiken.
+[Jenkins](https://jenkins.io) is een continue integratieserver die helpt bij het implementeren en testen van applicaties en het maken van geautomatiseerde pijplijnen voor het leveren van code. Er zijn honderden plug-ins om het kernJenkins-platform uit te breiden, en u ook integreren met vele andere producten en oplossingen via webhooks. U Jenkins handmatig installeren op een Azure VM, Jenkins uitvoeren vanuit een Docker-container of een vooraf gebouwde Azure Marketplace-afbeelding gebruiken.
 
 Leer hoe u het volgende doet:
 

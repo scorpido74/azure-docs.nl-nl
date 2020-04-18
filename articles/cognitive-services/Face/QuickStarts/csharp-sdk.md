@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 5e0073bd14744338ff28c9c45193f126a1bba717
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d9b10341f971c0e8177043126ff8fbd4df078b86
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403039"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604993"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Snelstart: Face-clientbibliotheek voor .NET
 
@@ -126,17 +126,19 @@ U zult waarschijnlijk deze methode in `Main` de methode willen aanroepen.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_client)]
 
-## <a name="detect-faces-in-an-image"></a>Gezichten in een afbeelding detecteren
+### <a name="declare-helper-fields"></a>Helpervelden declareren
 
-Definieer aan de hoofdmap van uw klas de volgende URL-tekenreeks. Deze URL verwijst naar een reeks voorbeeldafbeeldingen.
+De volgende velden zijn nodig voor verschillende van de Face-bewerkingen die u later toevoegt. Definieer aan de hoofdmap van uw klas de volgende URL-tekenreeks. Deze URL verwijst naar een map met voorbeeldafbeeldingen.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
 
-Optioneel u kiezen welk AI-model u wilt gebruiken om gegevens uit het gedetecteerde gezicht(en) te extraheren. Zie [Een herkenningsmodel opgeven](../Face-API-How-to-Topics/specify-recognition-model.md) voor informatie over deze opties.
+Definieer tekenreeksen om naar de verschillende herkenningsmodeltypen te wijzen. Later u opgeven welk herkenningsmodel u wilt gebruiken voor gezichtsherkenning. Zie [Een herkenningsmodel opgeven](../Face-API-How-to-Topics/specify-recognition-model.md) voor informatie over deze opties.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-Met de laatste bewerking Detecteren wordt een **[FaceClient-object,](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** een afbeeldings-URL en een herkenningsmodel nodig.
+## <a name="detect-faces-in-an-image"></a>Gezichten in een afbeelding detecteren
+
+Voeg de volgende methodeaanroep toe aan uw **hoofdmethode.** U bepaalt de volgende methode. Met de laatste bewerking Detecteren wordt een **[FaceClient-object,](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** een afbeeldings-URL en een herkenningsmodel nodig.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
@@ -174,25 +176,21 @@ Met de volgende code worden de overeenkomende gegevens op de console afgedrukt:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_find_similar_print)]
 
-## <a name="create-and-train-a-person-group"></a>Een personengroep maken en trainen
+## <a name="identify-a-face"></a>Een gezicht identificeren
+
+Met de bewerking Identificeren wordt een afbeelding gemaakt van een persoon (of meerdere personen) en wordt de identiteit van elk gezicht in de afbeelding gevonden. Het vergelijkt elk gedetecteerd gezicht met een **PersonGroup**, een database van verschillende **persoonobjecten** waarvan de gelaatstrekken bekend zijn. Om de bewerking Identificeren te kunnen uitvoeren, moet u eerst een **persoonsgroep** maken en trainen
+
+### <a name="create-and-train-a-person-group"></a>Een personengroep maken en trainen
 
 Met de volgende code wordt een **persoonsgroep gemaakt** met zes verschillende **persoonsobjecten.** Het associeert elke **persoon** met een reeks voorbeeldbeelden, en dan traint het om elke persoon te herkennen aan hun gezichtskenmerken. **Persoons-** en **persoonsgroepobjecten** worden gebruikt in de bewerkingen Verifiëren, Identificeren en Groeperen.
 
-Als u dit nog niet hebt gedaan, definieert u de volgende URL-tekenreeks aan de hoofdtekst van uw klas. Dit wijst op een reeks voorbeeldafbeeldingen.
-
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
-
-De code later in deze sectie geeft een herkenningsmodel op om gegevens uit gezichten te extraheren en in het volgende fragment worden verwijzingen naar de beschikbare modellen gemaakt. Zie [Een herkenningsmodel opgeven](../Face-API-How-to-Topics/specify-recognition-model.md) voor informatie over herkenningsmodellen.
-
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
-
-### <a name="create-persongroup"></a>Persoonsgroep maken
+#### <a name="create-persongroup"></a>Persoonsgroep maken
 
 Declareer een tekenreeksvariabele aan de hoofdmap van uw klas om de id van de **persoonsgroep weer** te geven die u maakt.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_declare)]
 
-Voeg in een nieuwe methode de volgende code toe. Deze code koppelt de namen van personen aan hun voorbeeldafbeeldingen.
+Voeg in een nieuwe methode de volgende code toe. Deze methode voert de bewerking Identificeren uit. Het eerste codeblok koppelt de namen van personen aan hun voorbeeldafbeeldingen.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_files)]
 
@@ -200,20 +198,13 @@ Voeg vervolgens de volgende code toe om voor elke persoon in het woordenboek een
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_create)]
 
-### <a name="train-persongroup"></a>Trein persoonsgroep
+#### <a name="train-persongroup"></a>Trein persoonsgroep
 
 Zodra u gezichtsgegevens uit uw afbeeldingen hebt geëxtraheerd en deze in verschillende **persoonsobjecten** hebt gesorteerd, moet u de **persoonsgroep** trainen om de visuele functies te identificeren die zijn gekoppeld aan elk van de **persoonsobjecten.** De volgende code roept de asynchrone **treinmethode** aan en peilt de resultaten en drukt de status af op de console.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_train)]
 
 Deze **groep Persoon** en de bijbehorende **persoonsobjecten** zijn nu klaar om te worden gebruikt in de bewerkingen Verifiëren, Identificeren of Groeperen.
-
-## <a name="identify-a-face"></a>Een gezicht identificeren
-
-Met de bewerking Identificeren wordt een afbeelding gemaakt van een persoon (of meerdere personen) en wordt de identiteit van elk gezicht in de afbeelding gevonden. Het vergelijkt elk gedetecteerd gezicht met een **PersonGroup**, een database van verschillende **persoonobjecten** waarvan de gelaatstrekken bekend zijn.
-
-> [!IMPORTANT]
-> Als u dit voorbeeld wilt uitvoeren, moet u eerst de code uitvoeren in [Een personengroep maken en trainen.](#create-and-train-a-person-group) De variabelen die in&mdash;`client` `url`die `RECOGNITION_MODEL1` &mdash;sectie worden gebruikt, en moeten ook hier beschikbaar zijn.
 
 ### <a name="get-a-test-image"></a>Een testafbeelding krijgen
 
@@ -225,7 +216,7 @@ De volgende code neemt de bronafbeelding en maakt een lijst met alle gezichten d
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify_sources)]
 
-In het volgende codefragment wordt de bewerking Identificeren aanroept en worden de resultaten naar de console afgedrukt. Hier probeert de service elk gezicht van de bronafbeelding aan een **persoon** in de opgegeven **persoonsgroep**te koppelen.
+Het volgende codefragment roept de **IdentifyAsync-bewerking** aan en drukt de resultaten af op de console. Hier probeert de service elk gezicht van de bronafbeelding aan een **persoon** in de opgegeven **persoonsgroep**te koppelen. Hiermee wordt de methode Identificeren afgesloten.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify)]
 

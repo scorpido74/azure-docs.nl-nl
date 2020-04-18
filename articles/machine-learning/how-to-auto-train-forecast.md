@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: d4e36c0d3838af85768453496a51ecd295c22b93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be3046a343e14be4a527363751081ba3f2593cd3
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79081842"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605895"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Auto-trein een time-series voorspelling model
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -205,12 +205,7 @@ fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
 
 Gebruik de beste modeliteratie om waarden voor de testgegevensset te voorspellen.
 
-```python
-predict_labels = fitted_model.predict(test_data)
-actual_labels = test_labels.flatten()
-```
-
-U ook de `forecast()` functie `predict()`gebruiken in plaats van, waarmee specificaties kunnen worden weergegeven van wanneer voorspellingen moeten worden gestart. In het volgende voorbeeld vervangt u `y_pred` `NaN`eerst alle waarden in door . De verwachte oorsprong zal in dit geval aan het einde van `predict()`de opleidingsgegevens liggen, zoals het normaal gesproken zou zijn bij het gebruik . Als u echter alleen de `y_pred` tweede `NaN`helft van vervangen door , zou de functie laat `NaN` de numerieke waarden in de eerste helft ongewijzigd, maar de voorspelling van de waarden in de tweede helft. De functie retourneert zowel de voorspelde waarden als de uitgelijnde functies.
+De `forecast()` functie moet worden `predict()`gebruikt in plaats van, dit zal specificaties van wanneer voorspellingen moeten beginnen. In het volgende voorbeeld vervangt u `y_pred` `NaN`eerst alle waarden in door . De verwachte oorsprong zal in dit geval aan het einde van `predict()`de opleidingsgegevens liggen, zoals het normaal gesproken zou zijn bij het gebruik . Als u echter alleen de `y_pred` tweede `NaN`helft van vervangen door , zou de functie laat `NaN` de numerieke waarden in de eerste helft ongewijzigd, maar de voorspelling van de waarden in de tweede helft. De functie retourneert zowel de voorspelde waarden als de uitgelijnde functies.
 
 U de `forecast_destination` parameter `forecast()` in de functie ook gebruiken om waarden tot een bepaalde datum te voorspellen.
 

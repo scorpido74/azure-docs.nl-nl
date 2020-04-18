@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 40a715ea27be161f09dea59e57799b08406e8ca7
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393764"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605485"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>RHEL-afbeeldingen (Red Hat Enterprise Linux) beschikbaar in Azure
 Azure biedt een verscheidenheid aan RHEL-afbeeldingen voor verschillende use cases.
@@ -47,8 +47,12 @@ RHEL          | 6.7      | Raw    | Linux-agent |
 |             | 7.6      | Raw    | Linux-agent | Vanaf mei 2019 standaard verbonden aan EUS-repositories.
 |             | 76-gen2  | Raw    | Linux-agent | Standaard gekoppeld aan EUS-repositories.
 |             | 7.7      | Lvm    | Linux-agent | Standaard gekoppeld aan EUS-repositories.
-|             | 8        | Lvm    | Linux-agent | RHEL 8.x familie van beelden
-|             | 8-gen2   | Lvm    | Linux-agent | Hyper-V Generation 2 - RHEL 8.x familie van beelden.
+|             | 8-LVM    | Lvm    | Linux-agent | RHEL 8.x familie van beelden. Gekoppeld aan reguliere repositories.
+|             | 8-lvm-gen2| Lvm    | Linux-agent | Hyper-V Generation 2 - RHEL 8.x familie van beelden. Gekoppeld aan reguliere repositories.
+|             | 8        | Lvm    | Linux-agent | RHEL 8.0 afbeeldingen
+|             | 8-gen2   | Lvm    | Linux-agent | Hyper-V Generation 2 - RHEL 8.0 beelden.
+|             | 8.1      | Lvm    | Linux-agent | RHEL 8.1 beelden. Momenteel gekoppeld aan reguliere repositories.
+|             | 81gen2   | Lvm    | Linux-agent | Hyper-V Generation 2 - RHEL 8.1 beelden. Momenteel gekoppeld aan reguliere repositories.
 RHEL-SAP      | 7.4      | Lvm    | Linux-agent | RHEL 7.4 voor SAP HANA en Business Apps. Gekoppeld aan E4S repositories, zal een premie in rekening brengen voor SAP en RHEL, evenals de base compute fee.
 |             | 74sap-gen2| Lvm    | Linux-agent | RHEL 7.4 voor SAP HANA en Business Apps. Generatie 2 beeld. Gekoppeld aan E4S repositories, zal een premie in rekening brengen voor SAP en RHEL, evenals de base compute fee.
 |             | 7,5       | Lvm    | Linux-agent | RHEL 7.5 voor SAP HANA en Business Apps. Gekoppeld aan E4S repositories, zal een premie in rekening brengen voor SAP en RHEL, evenals de base compute fee.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cb908c4b105324e0866d53463ecd3a8a59e7e651
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 46fa0160dd8b37e89cdd77ba8acdae294fddbefe
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429887"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616898"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Azure Security Baseline voor Key Vault
 
@@ -1001,7 +1001,7 @@ https://docs.microsoft.com/azure/security-center/security-center-remediate-recom
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11: Azure-geheimen veilig beheren
 
-**Richtlijnen:** Gebruik Managed Service Identity in combinatie met Azure Key Vault om geheim beheer voor uw cloudtoepassingen te vereenvoudigen en te beveiligen. Controleer of Azure Key Vault soft delete is ingeschakeld.
+**Richtlijnen:** Gebruik Managed Service Identity in combinatie met Azure Key Vault om geheim beheer voor uw cloudtoepassingen te vereenvoudigen en te beveiligen. Controleer of Azure Key Vault soft-delete is ingeschakeld.
 
 Hoe te integreren met Azure Managed Identities:
 
@@ -1175,7 +1175,7 @@ Key Vault Secrets herstellen:https://docs.microsoft.com/powershell/module/azurer
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Zorg voor bescherming van back-ups en door klanten beheerde sleutels
 
-**Richtlijnen:** Zorg ervoor dat soft delete is ingeschakeld voor Azure Key Vault. Soft delete maakt herstel van verwijderde sleutelkluizen en kluisobjecten zoals sleutels, geheimen en certificaten mogelijk. 
+**Richtlijnen:** Zorg ervoor dat soft-delete is ingeschakeld voor Azure Key Vault. Soft-delete maakt het mogelijk om verwijderde sleutelkluizen en kluisobjecten zoals sleutels, geheimen en certificaten te herstellen. 
 
 Hoe gebruik je De Soft Delete van Azure Key Vault: 
 

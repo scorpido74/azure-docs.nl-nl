@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33684a6292d7e51c04f6bacc7c49ee5986dbec10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3bc87b183803c0854542d6925af7429b593d2af
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502394"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605176"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (Large Instances) netwerkarchitectuur
 
@@ -86,7 +86,7 @@ Om deterministische netwerklatentie tussen VM's en HANA Large Instance te bieden
 Om de latentie te verlagen, werd ExpressRoute Fast Path in mei 2019 geïntroduceerd en uitgebracht voor de specifieke connectiviteit van HANA Large Instances met virtuele Azure-netwerken die de SAP-toepassingsVM's hosten. Het grote verschil met de tot nu toe uitgerolde oplossing is dat de gegevensstromen tussen VM's en HANA Large Instances niet meer via de ExpressRoute-gateway worden gerouteerd. In plaats daarvan communiceren de VM's die zijn toegewezen in het subnet(en) van het virtuele Azure-netwerk rechtstreeks met de toegewezen enterprise edge-router. 
 
 > [!IMPORTANT] 
-> De ExpressRoute Fast Path-functionaliteit vereist dat de subnetten waarop de SAP-toepassingsVM's worden uitgevoerd, zich bevinden in hetzelfde Virtuele Azure-netwerk dat is aangesloten op de HANA Large Instances. VM's in virtuele Azure-netwerken die zijn gekoppeld aan het virtuele Azure-netwerk dat rechtstreeks is verbonden met de HANA Large Instance-eenheden, profiteren niet van ExpressRoute Fast Path. Als gevolg hiervan typische hub en spaak virtuele netwerk ontwerpen, waar de ExpressRoute circuits zijn verbinding te maken tegen een hub virtueel netwerk en virtuele netwerken met de SAP-applicatie laag (spaken) worden steeds peered, de optimalisatie door ExpressRoute Fast Pad zal niet werken. In addtion ondersteunt ExpressRoute Fast Path vandaag de dag geen door de gebruiker gedefinieerde routeringsregels (UDR). Zie [ExpressRoute virtual network gateway en FastPath](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways)voor meer informatie. 
+> De ExpressRoute Fast Path-functionaliteit vereist dat de subnetten waarop de SAP-toepassingsVM's worden uitgevoerd, zich bevinden in hetzelfde Virtuele Azure-netwerk dat is aangesloten op de HANA Large Instances. VM's in virtuele Azure-netwerken die zijn gekoppeld aan het virtuele Azure-netwerk dat rechtstreeks is verbonden met de HANA Large Instance-eenheden, profiteren niet van ExpressRoute Fast Path. Als gevolg hiervan typische hub en spaak virtuele netwerk ontwerpen, waar de ExpressRoute circuits zijn verbinding te maken tegen een hub virtueel netwerk en virtuele netwerken met de SAP-applicatie laag (spaken) krijgen peered, de optimalisatie door ExpressRoute Fast Path zal niet werken. In addtion ondersteunt ExpressRoute Fast Path vandaag de dag geen door de gebruiker gedefinieerde routeringsregels (UDR). Zie [ExpressRoute virtual network gateway en FastPath](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways)voor meer informatie. 
 
 
 Lees het document [Een virtueel netwerk verbinden met HANA-grote exemplaren voor](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)meer informatie over het configureren van ExpressRoute Fast Path.    
@@ -151,7 +151,7 @@ Er zijn drie manieren om tijdelijke routering in die scenario's mogelijk te make
 - [Iptables-regels](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) gebruiken in een Linux-VM om routering tussen on-premises locaties en HANA Large Instance-eenheden of tussen HANA Large Instance-eenheden in verschillende regio's mogelijk te maken. De VM met IPTables moet worden geïmplementeerd in het virtuele Azure-netwerk dat verbinding maakt met HANA Large Instances en on-premises. De VM moet dienovereenkomstig worden aangepast, zodat de netwerkdoorvoer van de VM voldoende is voor het verwachte netwerkverkeer. Voor meer informatie over de bandbreedte van het VM-netwerk raadpleegt u het artikel [Grootte van virtuele Linux-machines in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) zou een andere oplossing zijn om direct verkeer tussen on-premises en HANA Large instance units mogelijk te maken. 
 
-Al het verkeer van deze oplossingen zou worden gerouteerd via een virtueel Azure-netwerk en als zodanig kan het verkeer bovendien worden beperkt door de zachte apparaten die worden gebruikt of door Azure Network Security Groups, zodat bepaalde IP-adressen of IP-adressen on-premises kan worden geblokkeerd of expliciet toegang krijgen tot HANA Large Instances. 
+Al het verkeer van deze oplossingen zou worden gerouteerd via een virtueel Azure-netwerk en als zodanig kan het verkeer bovendien worden beperkt door de gebruikte zachte apparaten of door Azure Network Security Groups, zodat bepaalde IP-adressen of IP-adresbereiken van on-premises kunnen worden geblokkeerd of expliciet toegang tot HANA Large Instances kunnen worden toegestaan. 
 
 > [!NOTE]  
 > Houd er rekening mee dat implementatie en ondersteuning voor aangepaste oplossingen met netwerkapparaten van derden of IPTables niet door Microsoft wordt geleverd. De steun moet worden verleend door de leverancier van het gebruikte onderdeel of de integrator. 
@@ -182,7 +182,7 @@ Lees het document [Een virtueel netwerk verbinden met HANA-grote exemplaren voor
 HANA Large Instance *heeft* geen directe internetverbinding. Deze beperking kan bijvoorbeeld uw mogelijkheid beperken om de os-afbeelding rechtstreeks bij de leverancier van het besturingssysteem te registreren. Mogelijk moet u werken met uw lokale SUSE Linux Enterprise Server Subscription Management Tool-server of Red Hat Enterprise Linux Subscription Manager.
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>Gegevensversleuteling tussen VM's en HANA Large Instance
-Gegevens die worden overgedragen tussen HANA Large Instance en VM's, worden niet versleuteld. Echter, puur voor de uitwisseling tussen de HANA DBMS kant en JDBC / ODBC-gebaseerde toepassingen, u versleuteling van het verkeer. Zie [deze documentatie van SAP voor](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false)meer informatie.
+Gegevens die worden overgedragen tussen HANA Large Instance en VM's, worden niet versleuteld. Echter, puur voor de uitwisseling tussen de HANA DBMS kant en JDBC / ODBC-gebaseerde toepassingen, u versleuteling van het verkeer. Zie [deze documentatie van SAP voor](https://help.sap.com/viewer/102d9916bf77407ea3942fef93a47da8/1.0.11/en-US/dbd3d887bb571014bf05ca887f897b99.html)meer informatie.
 
 ## <a name="use-hana-large-instance-units-in-multiple-regions"></a>HANA-eenheden voor grote instanties in meerdere regio's gebruiken
 

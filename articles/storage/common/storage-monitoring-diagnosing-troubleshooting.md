@@ -8,12 +8,12 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 3d5f3ade3ef3b79ddb3996b5bf2d609b11aff8a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bbffacc0a8c47950b8637e826d1d5db9fbdb234
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255962"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605072"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "79255962"
 ## <a name="overview"></a>Overzicht
 Het diagnosticeren en oplossen van problemen in een gedistribueerde toepassing die wordt gehost in een cloudomgeving, kan complexer zijn dan in traditionele omgevingen. Toepassingen kunnen worden geïmplementeerd in een PaaS- of IaaS-infrastructuur, on-premises, op een mobiel apparaat of in een combinatie van deze omgevingen. Het netwerkverkeer van uw toepassing kan doorgaans openbare en particuliere netwerken doorkruisen en uw toepassing kan meerdere opslagtechnologieën gebruiken, zoals Microsoft Azure Storage Tables, Blobs, Queues of Files, naast andere gegevensopslag, zoals relationele en documentdatabases.
 
-Om dergelijke toepassingen met succes te beheren, moet u ze proactief controleren en begrijpen hoe u alle aspecten van deze toepassingen en hun afhankelijke technologieën diagnosticeren en oplossen. Als gebruiker van Azure Storage-services moet u de opslagservices die uw toepassing gebruikt voor onverwachte gedragswijzigingen (zoals trager dan de gebruikelijke responstijden) continu controleren en logboekregistratie gebruiken om meer gedetailleerde gegevens te verzamelen en een probleem te analyseren in Diepte. De diagnostische informatie die u verkrijgt van zowel monitoring en logging zal u helpen om de hoofdoorzaak van het probleem van uw toepassing ondervonden te bepalen. Vervolgens u het probleem oplossen en bepalen welke stappen u nemen om het probleem te verhelpen. Azure Storage is een kern van Azure-service en vormt een belangrijk onderdeel van de meeste oplossingen die klanten implementeren voor de Azure-infrastructuur. Azure Storage bevat mogelijkheden om opslagproblemen in uw cloudtoepassingen te vereenvoudigen, te diagnosticeren en op te lossen.
+Om dergelijke toepassingen met succes te beheren, moet u ze proactief controleren en begrijpen hoe u alle aspecten van deze toepassingen en hun afhankelijke technologieën diagnosticeren en oplossen. Als gebruiker van Azure Storage-services moet u de opslagservices die uw toepassing gebruikt voor onverwachte gedragswijzigingen (zoals langzamer dan de gebruikelijke responstijden) continu controleren en logboekregistratie gebruiken om meer gedetailleerde gegevens te verzamelen en een probleem diepgaand te analyseren. De diagnostische informatie die u verkrijgt van zowel monitoring en logging zal u helpen om de hoofdoorzaak van het probleem van uw toepassing ondervonden te bepalen. Vervolgens u het probleem oplossen en bepalen welke stappen u nemen om het probleem te verhelpen. Azure Storage is een kern van Azure-service en vormt een belangrijk onderdeel van de meeste oplossingen die klanten implementeren voor de Azure-infrastructuur. Azure Storage bevat mogelijkheden om opslagproblemen in uw cloudtoepassingen te vereenvoudigen, te diagnosticeren en op te lossen.
 
 > [!NOTE]
 > Azure Files biedt op dit moment geen ondersteuning voor logboekregistratie.
@@ -140,7 +140,7 @@ Storage Metrics slaat alleen capaciteitsstatistieken op voor de blobservice omda
 Zie het blogbericht [Azure Storage Billing – Bandbreedte, Transacties en capaciteit](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)voor hulp bij het schatten van de grootte van verschillende opslagobjecten, zoals blobs.
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Beschikbaarheid bewaken
-U moet de beschikbaarheid van de opslagservices in uw opslagaccount controleren door de waarde in de **kolom Beschikbaarheid** in de tabellen voor uur- of minutenstatistieken te controleren - **$MetricsHourPrimaryTransactionsBlob,** **$MetricsHourPrimaryTransactionsTable,** **$MetricsHourPrimaryTransactionsQueue,** **$MetricsMinutePrimaryTransactionsBlob,** **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue** **, $ MetricsCapacityBlob**. De kolom **Beschikbaarheid** bevat een percentagewaarde die de beschikbaarheid van de service of de API-bewerking aangeeft die wordt weergegeven door de rij (de **RowKey** geeft aan of de rij statistieken bevat voor de service als geheel of voor een specifieke API-bewerking).
+U dient de beschikbaarheid van de opslagservices in uw opslagaccount te controleren door de waarde in de **kolom Beschikbaarheid** in de tabellen voor uur- of minutenstatistieken te controleren - **$MetricsHourPrimaryTransactionsBlob,** **$MetricsHourPrimaryTransactionsTable,** **$MetricsHourPrimaryTransactionsQueue,** **$MetricsMinutePrimaryTransactionsBlob,** **$MetricsMinutePrimaryTransactionsTable,** **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. De kolom **Beschikbaarheid** bevat een percentagewaarde die de beschikbaarheid van de service of de API-bewerking aangeeft die wordt weergegeven door de rij (de **RowKey** geeft aan of de rij statistieken bevat voor de service als geheel of voor een specifieke API-bewerking).
 
 Elke waarde van minder dan 100% geeft aan dat sommige opslagaanvragen mislukken. U zien waarom ze falen door de andere kolommen in de metrische gegevens te onderzoeken die het aantal aanvragen met verschillende fouttypen weergeven, zoals **ServerTimeoutError.** U mag verwachten dat **beschikbaarheid** tijdelijk onder de 100% daalt om redenen zoals tijdelijke servertime-outs terwijl de service partities verplaatst naar een betere aanvraag voor load-balance; de logica voor het opnieuw proberen in uw clienttoepassing moet dergelijke intermitterende voorwaarden afhandelen. In het artikel [Storage Analytics Logged Operations and Status Messages](https://msdn.microsoft.com/library/azure/hh343260.aspx) worden de transactietypen weergegeven die Storage Metrics in de berekening van **beschikbaarheid** bevatten.
 
@@ -396,7 +396,7 @@ Zie "[Bijlage 2: Wireshark gebruiken om netwerkverkeer vast te leggen]voor meer 
 Zie Bijlage[3: Microsoft Message Analyzer gebruiken om netwerkverkeer vast te leggen voor]meer informatie over het gebruik van Microsoft Message Analyzer om netwerkproblemen op te lossen.
 
 ### <a name="metrics-show-high-averageserverlatency"></a><a name="metrics-show-high-AverageServerLatency"></a>Prestatiegegevens geven hoge AverageServerLatency aan
-In het geval van hoge **AverageServerLatency** voor blob-downloadaanvragen, moet u de logboeken voor opslaglogboekregistratie gebruiken om te zien of er herhaalde aanvragen zijn voor dezelfde blob (of set blobs). Voor blob uploadaanvragen moet u onderzoeken welke blokgrootte de client gebruikt (blokken van minder dan 64 K in grootte kunnen bijvoorbeeld leiden tot overheadkosten, tenzij de reads ook in minder dan 64 K-brokken zijn), en als meerdere clients blokken uploaden naar dezelfde blob in Parallelle. U moet ook de statistieken per minuut controleren op pieken in het aantal aanvragen dat resulteert in het overschrijden van de schaalbaarheidsdoelen per seconde: zie ook :[Statistieken tonen een toename van PercentTimeoutError.]
+In het geval van hoge **AverageServerLatency** voor blob-downloadaanvragen, moet u de logboeken voor opslaglogboekregistratie gebruiken om te zien of er herhaalde aanvragen zijn voor dezelfde blob (of set blobs). Voor blob uploadaanvragen moet u onderzoeken welke blokgrootte de client gebruikt (blokken van minder dan 64 K in grootte kunnen bijvoorbeeld leiden tot overheadkosten, tenzij de reads ook in minder dan 64 K-brokken zijn), en als meerdere clients blokken parallel uploaden naar dezelfde blob. U moet ook de statistieken per minuut controleren op pieken in het aantal aanvragen dat resulteert in het overschrijden van de schaalbaarheidsdoelen per seconde: zie ook :[Statistieken tonen een toename van PercentTimeoutError.]
 
 Als u een hoge **AverageServerLatency** ziet voor blob-downloadaanvragen wanneer er herhaalde aanvragen zijn dezelfde blob of set blobs, moet u overwegen deze blobs te plaatsen met Azure Cache of het Azure Content Delivery Network (CDN). Voor uploadaanvragen u de doorvoer verbeteren door een groter blokformaat te gebruiken. Voor query's naar tabellen is het ook mogelijk om client-side caching te implementeren op clients die dezelfde querybewerkingen uitvoeren en waar de gegevens niet vaak worden gewijzigd.
 
@@ -458,7 +458,7 @@ De metric **PercentTimeoutError** is een aggregatie van de volgende statistieken
 
 De time-outs van de server worden veroorzaakt door een fout op de server. De time-outs van de client worden uitgevoerd omdat een bewerking op de server de door de client opgegeven time-out heeft overschreden. Een client die de opslagclientbibliotheek gebruikt, kan bijvoorbeeld een time-out voor een bewerking instellen met de eigenschap **ServerTimeout** van de klasse **QueueRequestOptions.**
 
-Servertime-outs wijzen op een probleem met de opslagservice dat nader onderzoek vereist. U statistieken gebruiken om te zien of u de schaalbaarheidslimieten voor de service bereikt en om pieken in het verkeer te identificeren die dit probleem kunnen veroorzaken. Als het probleem met tussenpozen is, kan dit te wijten zijn aan taakverdelingsactiviteit in de service. Als het probleem aanhoudt en niet wordt veroorzaakt doordat uw toepassing de schaalbaarheidslimieten van de service bereikt, moet u een ondersteuningsprobleem opdeoren. Voor time-outs van de client moet u beslissen of de time-out is ingesteld op een geschikte waarde in de client en de time-outwaarde in de client wijzigen of onderzoeken hoe u de prestaties van de bewerkingen in de opslagservice verbeteren, bijvoorbeeld door uw tabelquery's of het verkleinen van de grootte van uw berichten.
+Servertime-outs wijzen op een probleem met de opslagservice dat nader onderzoek vereist. U statistieken gebruiken om te zien of u de schaalbaarheidslimieten voor de service bereikt en om pieken in het verkeer te identificeren die dit probleem kunnen veroorzaken. Als het probleem met tussenpozen is, kan dit te wijten zijn aan taakverdelingsactiviteit in de service. Als het probleem aanhoudt en niet wordt veroorzaakt doordat uw toepassing de schaalbaarheidslimieten van de service bereikt, moet u een ondersteuningsprobleem opdeoren. Voor time-outs van klanten moet u beslissen of de time-out is ingesteld op een geschikte waarde in de client en de time-outwaarde in de client wijzigen of onderzoeken hoe u de prestaties van de bewerkingen in de opslagservice verbeteren, bijvoorbeeld door uw tabelquery's te optimaliseren of de grootte van uw berichten te verkleinen.
 
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>Prestatiegegevens geven een toename in PercentNetworkError aan
 Uw statistieken tonen een toename van **PercentNetworkError** voor een van uw opslagservices. De statistiek **PercentNetworkError** is een aggregatie van de volgende statistieken: **NetworkError,** **AnonymousNetworkError**en **SASNetworkError**. Deze treden op wanneer de opslagservice een netwerkfout detecteert wanneer de client een opslagaanvraag indient.
@@ -516,24 +516,24 @@ Logboekvermeldingen:
 
 | Aanvraag-id | Bewerkingstekst |
 | --- | --- |
-| 07b26a5d-... |Synchroonverzoek starten https://domemaildist.blob.core.windows.net/azuremmblobcontainernaar . |
+| 07b26a5d-... |Synchroonverzoek starten `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`naar . |
 | 07b26a5d-... |StringToSign = HOOFD............ x-ms-client-request-id:07b26a5d-.... x-ms-datum:Di, 03 jun 2014 10:33:11 GMT.x-ms-versie:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |Wachten op reactie. |
 | 07b26a5d-... |Reactie ontvangen. Statuscode = 200, Aanvraag-id = eeead849-... Inhoud-MD5 = , &quot;ETag = 0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |Antwoordkoppen zijn verwerkt en zijn doorgewerkt met de rest van de bewerking. |
 | 07b26a5d-... |Het downloaden van reactie lichaam. |
 | 07b26a5d-... |Bewerking voltooid. |
-| 07b26a5d-... |Synchroonverzoek starten https://domemaildist.blob.core.windows.net/azuremmblobcontainernaar . |
+| 07b26a5d-... |Synchroonverzoek starten `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`naar . |
 | 07b26a5d-... |StringToSign = DELETE............ x-ms-client-request-id:07b26a5d-.... x-ms-datum:Di, 03 jun 2014 10:33:12 GMT.x-ms-versie:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |Wachten op reactie. |
 | 07b26a5d-... |Reactie ontvangen. Statuscode = 202, Aanvraag-id = 6ab2a4cf-..., Inhoud-MD5 = , ETag = . |
 | 07b26a5d-... |Antwoordkoppen zijn verwerkt en zijn doorgewerkt met de rest van de bewerking. |
 | 07b26a5d-... |Het downloaden van reactie lichaam. |
 | 07b26a5d-... |Bewerking voltooid. |
-| e2d06d78-... |Asynchrone aanvraag https://domemaildist.blob.core.windows.net/azuremmblobcontainerstarten naar .</td> |
+| e2d06d78-... |Asynchrone aanvraag `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`starten naar .</td> |
 | e2d06d78-... |StringToSign = HOOFD............ x-ms-client-request-id:e2d06d78-.... x-ms-datum:Di, 03 jun 2014 10:33:12 GMT.x-ms-versie:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Wachten op reactie. |
-| de8b1c3c-... |Synchroonverzoek starten https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txtnaar . |
+| de8b1c3c-... |Synchroonverzoek starten `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt`naar . |
 | de8b1c3c-... |StringToSign = PUT... 64.qCmF+TQLPhq/YYK50mP9ZQ=........ x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-.... x-ms-datum:Di, 03 jun 2014 10:33:12 GMT.x-ms-versie:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |Voorbereiden op het schrijven van aanvraaggegevens. |
 | e2d06d78-... |Uitzondering gegooid in afwachting van reactie: De externe server heeft een fout geretourneerd: (404) Niet gevonden.. |
@@ -541,7 +541,7 @@ Logboekvermeldingen:
 | e2d06d78-... |Antwoordkoppen zijn verwerkt en zijn doorgewerkt met de rest van de bewerking. |
 | e2d06d78-... |Het downloaden van reactie lichaam. |
 | e2d06d78-... |Bewerking voltooid. |
-| e2d06d78-... |Asynchrone aanvraag https://domemaildist.blob.core.windows.net/azuremmblobcontainerstarten naar . |
+| e2d06d78-... |Asynchrone aanvraag `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`starten naar . |
 | e2d06d78-... |StringToSign = PUT... 0.........x-ms-client-request-id:e2d06d78-.... x-ms-datum:Di, 03 jun 2014 10:33:12 GMT.x-ms-versie:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Wachten op reactie. |
 | de8b1c3c-... |Het schrijven van aanvraaggegevens. |
@@ -562,15 +562,15 @@ Als de clienttoepassing probeert een SAS-sleutel te gebruiken die niet de benodi
 
 In de volgende tabel ziet u een voorbeeldvan serverlogboekbericht uit het logboekbestand Opslaglogboekregistratie:
 
-| Name | Waarde |
+| Naam | Waarde |
 | --- | --- |
 | Begintijd aanvragen | 2014-05-30T06:17:48.4473697Z |
 | Bewerkingstype     | GetBlobProperties            |
 | Aanvraagstatus     | SASAuthorizationFout        |
-| HTTP-statuscode   | 404                          |
+| HTTP-statuscode   | 404                            |
 | Verificatietype| Sas                          |
 | Servicetype       | Blob                         |
-| Aanvraag-URL        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
+| Aanvraag-URL         | `https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt` |
 | &nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&;&sig=XXXXX api-version=2014-02-14 |
 | Header van id aanvragen  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | Clientaanvraag-id  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
@@ -650,7 +650,7 @@ Het is belangrijk op te merken dat deze bewerkingen met succes zijn voltooid en 
 U een lijst met algemene REST API-foutcodes vinden die de opslagservices retourneren op de pagina [Common REST API Error Codes](https://msdn.microsoft.com/library/azure/dd179357.aspx).
 
 ### <a name="capacity-metrics-show-an-unexpected-increase-in-storage-capacity-usage"></a><a name="capacity-metrics-show-an-unexpected-increase"></a>Capaciteitsstatistieken laten een onverwachte toename van het gebruik van de opslagcapaciteit zien
-Als u plotselinge, onverwachte wijzigingen in het capaciteitsgebruik in uw opslagaccount ziet, u de redenen onderzoeken door eerst naar uw beschikbaarheidsstatistieken te kijken; Een toename van het aantal mislukte verwijderingsaanvragen kan bijvoorbeeld leiden tot een toename van de hoeveelheid blob-opslag die u gebruikt als toepassingsspecifieke opruimbewerkingen waarvan u zou verwachten dat ze ruimte vrijmaken, mogelijk niet werken zoals verwacht (bijvoorbeeld , omdat de SAS-tokens die worden gebruikt voor het vrijmaken van ruimte zijn verlopen).
+Als u plotselinge, onverwachte wijzigingen in het capaciteitsgebruik in uw opslagaccount ziet, u de redenen onderzoeken door eerst naar uw beschikbaarheidsstatistieken te kijken; Een toename van het aantal mislukte verwijderingsaanvragen kan bijvoorbeeld leiden tot een toename van de hoeveelheid blob-opslag die u gebruikt als toepassingsspecifieke opruimbewerkingen waarvan u zou verwachten dat ze ruimte vrijmaken, werken mogelijk niet zoals verwacht (bijvoorbeeld omdat de SAS-tokens die worden gebruikt voor het vrijmaken van ruimte zijn verlopen).
 
 ### <a name="your-issue-arises-from-using-the-storage-emulator-for-development-or-test"></a><a name="your-issue-arises-from-using-the-storage-emulator"></a>Uw probleem ontstaat door het gebruik van de opslagemulator voor ontwikkeling of test
 U gebruikt de opslagemulator meestal tijdens de ontwikkeling en test om de vereiste voor een Azure-opslagaccount te voorkomen. De veelvoorkomende problemen die kunnen optreden wanneer u de opslagemulator gebruikt, zijn:
@@ -707,7 +707,7 @@ Zie "[Bijlage 2: Wireshark gebruiken om netwerkverkeer vast te leggen]" voor mee
 Zie[Bijlage 3: Microsoft Message Analyzer gebruiken om netwerkverkeer vast te leggen voor]meer informatie over het gebruik van Microsoft Message Analyzer.
 
 ## <a name="appendices"></a><a name="appendices"></a>Bijlagen
-De bijlagen beschrijven verschillende hulpprogramma's die u nuttig vinden wanneer u problemen met Azure Storage (en andere services) diagnosticert en oplost. Deze hulpprogramma's maken geen deel uit van Azure Storage en sommige zijn producten van derden. Als zodanig vallen de tools die in deze bijlagen worden besproken niet onder een ondersteuningsovereenkomst die u mogelijk hebt met Microsoft Azure of Azure Storage, en daarom moet u als onderdeel van uw evaluatieproces de licentie- en ondersteuningsopties onderzoeken die beschikbaar zijn in de aanbieders van deze tools.
+De bijlagen beschrijven verschillende hulpprogramma's die u nuttig vinden wanneer u problemen met Azure Storage (en andere services) diagnosticert en oplost. Deze hulpprogramma's maken geen deel uit van Azure Storage en sommige zijn producten van derden. Als zodanig vallen de hulpprogramma's die in deze bijlagen worden besproken niet onder een ondersteuningsovereenkomst die u mogelijk hebt met Microsoft Azure of Azure Storage, en daarom moet u als onderdeel van uw evaluatieproces de licentie- en ondersteuningsopties onderzoeken die beschikbaar zijn bij de providers van deze hulpprogramma's.
 
 ### <a name="appendix-1-using-fiddler-to-capture-http-and-https-traffic"></a><a name="appendix-1"></a>Bijlage 1: Fiddler gebruiken om HTTP- en HTTPS-verkeer vast te leggen
 [Fiddler](https://www.telerik.com/fiddler) is een handig hulpmiddel voor het analyseren van het HTTP- en HTTPS-verkeer tussen uw clienttoepassing en de Azure-opslagservice die u gebruikt.
@@ -814,7 +814,7 @@ Meer informatie vindt u bij [Wat is Application Insights](../../azure-monitor/ap
 Zie de volgende bronnen voor meer informatie over analyses in Azure Storage:
 
 * [Een Storage-account bewaken in de Azure-portal](storage-monitor-storage-account.md)
-* [Opslaganalyses](storage-analytics.md)
+* [Opslaganalyse](storage-analytics.md)
 * [Statistieken voor opslaganalyses](storage-analytics-metrics.md)
 * [Tabelschema voor tabelgegevens voor opslaganalyses](/rest/api/storageservices/storage-analytics-metrics-table-schema)
 * [Logboeken voor opslaganalyse](storage-analytics-logging.md)

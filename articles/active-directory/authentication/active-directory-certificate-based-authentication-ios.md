@@ -1,35 +1,32 @@
 ---
 title: Verificatie op basis van certificaten op iOS - Azure Active Directory
-description: Meer informatie over de ondersteunde scenario's en de vereisten voor het configureren van verificatie op basis van certificaten in oplossingen met iOS-apparaten
+description: Meer informatie over de ondersteunde scenario's en de vereisten voor het configureren van verificatie op basis van certificaten voor Azure Active Directory in oplossingen met iOS-apparaten
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 04/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fd8a0c3688e5056c7941d334da8caee9f21ba82
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 76c5e18a0bf84e96476eafd7ff35398049f1a492
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407271"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639635"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Azure Active Directory-certificaatverificatie op iOS
 
-iOS-apparaten kunnen op certificaten gebaseerde verificatie (CBA) gebruiken om te verifiëren naar Azure Active Directory met behulp van een clientcertificaat op hun apparaat wanneer ze verbinding maken met:
+Om de beveiliging te verbeteren, kunnen iOS-apparaten op basis van certificaten verificatie (CBA) gebruiken om te verifiëren naar Azure Active Directory (Azure AD) met behulp van een clientcertificaat op hun apparaat wanneer ze verbinding maken met de volgende toepassingen of services:
 
 * Mobiele Office-toepassingen zoals Microsoft Outlook en Microsoft Word
 * Exchange ActiveSync (EAS) clients
 
-Als u deze functie configureert, hoeft u geen combinatie van gebruikersnaam en wachtwoord in bepaalde e-mail- en Microsoft Office-toepassingen op uw mobiele apparaat in te voeren.
+Als u certificaten gebruikt, hoeft u geen combinatie van gebruikersnaam en wachtwoord in bepaalde e-mail- en Microsoft Office-toepassingen op uw mobiele apparaat in te voeren.
 
-In dit onderwerp vindt u de vereisten en de ondersteunde scenario's voor het configureren van CBA op een iOS-apparaat voor gebruikers van tenants in Office 365 Enterprise, Business, Education, Us Government, China en Duitsland.
-
-Deze functie is beschikbaar in preview in Office 365 Us Government Defense and Federal plans.
+In dit artikel worden de vereisten en de ondersteunde scenario's voor het configureren van CBA op een iOS-apparaat beschreven. CBA voor iOS is beschikbaar in Azure public clouds, Microsoft Government Cloud, Microsoft Cloud Germany en Microsoft Azure China 21Vianet.
 
 ## <a name="microsoft-mobile-applications-support"></a>Ondersteuning voor mobiele toepassingen van Microsoft
 
@@ -48,38 +45,48 @@ Deze functie is beschikbaar in preview in Office 365 Us Government Defense and F
 
 ## <a name="requirements"></a>Vereisten
 
-De versie van het apparaatbesturingssysteem moet iOS 9 en hoger zijn
+Om CBA met iOS te gebruiken, zijn de volgende vereisten en overwegingen van toepassing:
 
-Er moet een federatieserver zijn geconfigureerd.
+* De versie van het apparaatbesturingssysteem moet iOS 9 of hoger zijn.
+* Microsoft Authenticator is vereist voor Office-toepassingen op iOS.
+* Er moet een identiteitsvoorkeur worden gemaakt in de macOS-sleutelhanger die de verificatie-URL van de ADFS-server bevat. Zie [Een identiteitsvoorkeur maken in Sleutelhangertoegang op Mac voor](https://support.apple.com/guide/keychain-access/create-an-identity-preference-kyca6343b6c9/mac)meer informatie.
 
-Microsoft Authenticator is vereist voor Office-toepassingen op iOS.
+De volgende ADFS-vereisten en overwegingen (Active Directory Federation Services) zijn van toepassing:
 
-Als Azure Active Directory een clientcertificaat wilt intrekken, moet het ADFS-token de volgende claims hebben:
+* De ADFS-server moet zijn ingeschakeld voor certificaatverificatie en federated-verificatie gebruiken.
+* Het certificaat moet enhanced key usage (EKU) gebruiken en het UPN van de gebruiker bevatten in de *alternatieve naam van het onderwerp (NT Principal Name).*
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`(Het serienummer van het clientcertificaat)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`(De tekenreeks voor de uitgever van het clientcertificaat)
+## <a name="configure-adfs"></a>ADFS configureren
 
-Azure Active Directory voegt deze claims toe aan het vernieuwingstoken als ze beschikbaar zijn in het ADFS-token (of een ander SAML-token). Wanneer het vernieuwingstoken moet worden gevalideerd, wordt deze informatie gebruikt om de intrekking te controleren.
+Als Azure AD een clientcertificaat wilt intrekken, moet het ADFS-token de volgende claims hebben. Azure AD voegt deze claims toe aan het vernieuwingstoken als ze beschikbaar zijn in het ADFS-token (of een ander SAML-token). Wanneer het vernieuwingstoken moet worden gevalideerd, wordt deze informatie gebruikt om de intrekking te controleren:
 
-Als aanbevolen praktijk moet u de ADFS-foutpagina's van uw organisatie bijwerken met de volgende gegevens:
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`- voeg het serienummer van uw klantencertificaat toe
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`- voeg de tekenreeks toe voor de uitgever van uw clientcertificaat
 
-* De vereiste voor het installeren van de Microsoft Authenticator op iOS
+Als aanbevolen praktijk moet u ook de ADFS-foutpagina's van uw organisatie bijwerken met de volgende gegevens:
+
+* De vereiste voor het installeren van de Microsoft Authenticator op iOS.
 * Instructies voor het verkrijgen van een gebruikerscertificaat.
 
-Zie [De aanmeldingspagina's van AD FS aanpassen](https://technet.microsoft.com/library/dn280950.aspx)voor meer informatie .
+Zie [De aanmeldingspagina ad FS aanpassen](https://technet.microsoft.com/library/dn280950.aspx)voor meer informatie .
 
-Sommige Office-apps (met moderne verificatie ingeschakeld) verzenden *'prompt=login'* naar Azure AD in hun verzoek. Azure AD vertaalt standaard '*prompt=login*' in het verzoek naar ADFS als '*wauth=usernamepassworduri*' (vraagt ADFS om U/P Auth te doen) en '*wfresh=0*' (vraagt ADFS om de SSO-status te negeren en een nieuwe verificatie te doen). Als u verificatie op basis van certificaten voor deze apps wilt inschakelen, moet u het standaard AD-gedrag van Azure wijzigen. Stel gewoon de *'PromptLoginBehavior'* in uw federatieve domeininstellingen in op '*Uitgeschakeld'.*
-U de cmdlet [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) gebruiken om deze taak uit te voeren:
+## <a name="use-modern-authentication-with-office-apps"></a>Moderne verificatie gebruiken met Office-apps
 
-`Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
+Sommige Office-apps met moderne `prompt=login` verificatie zijn verzonden naar Azure AD in hun aanvraag. Azure AD vertaalt `prompt=login` standaard in de aanvraag `wauth=usernamepassworduri` naar ADFS als (vraagt ADFS `wfresh=0` om U/P Auth te doen) en (vraagt ADFS om de SSO-status te negeren en een nieuwe verificatie uit te brengen). Als u verificatie op basis van certificaten voor deze apps wilt inschakelen, wijzigt u het standaard AD-gedrag van Azure.
 
-## <a name="exchange-activesync-clients-support"></a>Ondersteuning voor Exchange ActiveSync-clients
+Als u het standaardgedrag wilt bijwerken, stelt u het '*PromptLoginBehavior*' in de federatieve domeininstellingen in op *Uitgeschakeld.* U de cmdlet [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) gebruiken om deze taak uit te voeren, zoals in het volgende voorbeeld wordt weergegeven:
 
-Op iOS 9 of hoger wordt de native iOS-e-mailclient ondersteund. Neem voor alle andere Exchange ActiveSync-toepassingen contact op met de ontwikkelaar van de toepassing om te bepalen of deze functie wordt ondersteund.
+```powershell
+Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled
+```
+
+## <a name="support-for-exchange-activesync-clients"></a>Ondersteuning voor Exchange ActiveSync-clients
+
+Op iOS 9 of hoger wordt de native iOS-e-mailclient ondersteund. Neem contact op met de toepassingsontwikkelaar om te bepalen of deze functie wordt ondersteund voor alle andere Exchange ActiveSync-toepassingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Aan [de slag met verificatie op](../authentication/active-directory-certificate-based-authentication-get-started.md) basis van certificaten op Android voor instructies als u verificatie op basis van certificaten in uw omgeving wilt configureren.
+Zie [Aan de slag met verificatie op basis van certificaten](active-directory-certificate-based-authentication-get-started.md) voor instructies als u verificatie op basis van certificaten wilt configureren in uw omgeving.
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-ios/ic195031.png

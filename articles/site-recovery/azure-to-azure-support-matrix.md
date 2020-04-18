@@ -4,12 +4,12 @@ description: Hiermee wordt de ondersteuning voor Azure VM's disaster recovery sa
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: f61f32ddc0a1cc6575907bc72522228b77552947
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 3e66d71011937c3e22c6f1537bcd448d4aa3bbf3
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673807"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605507"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteuningsmatrix voor Azure VM-noodherstel tussen Azure-regio's
 
@@ -154,7 +154,7 @@ SUSE Linux Enterprise Server 12 (SP1,SP2, SP3, SP4) | 9.29 | Alle [voorraad SUSE
 
 **Release** | **Mobility service versie** | **Kernelversie** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 en 15 SP1 | 9.32 | Alle [stock SUSE 15 en 15 kernels](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15) worden ondersteund.</br></br> 4.12.14-5,5-azure naar 4.12.14-8,22-azure |
+SUSE Linux Enterprise Server 15 en 15 SP1 | 9.32 | Alle stock SUSE 15 en 15 kernels worden ondersteund.</br></br> 4.12.14-5,5-azure naar 4.12.14-8,22-azure |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Gerepliceerde machines - Linux-bestandssysteem/gastopslag
 

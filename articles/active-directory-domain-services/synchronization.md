@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38ed48df4d681543cc30daccf46b98635d973b89
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944418"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639911"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Hoe objecten en referenties worden gesynchroniseerd in een beheerd Azure AD Domain Services-domein
 
@@ -31,6 +31,8 @@ In het volgende diagram ziet u hoe synchronisatie werkt tussen Azure AD DS, Azur
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Synchronisatie van Azure AD naar Azure AD DS
 
 Gebruikersaccounts, groepslidmaatschappen en referentieshebben worden op één manier gesynchroniseerd van Azure AD naar Azure AD DS. Dit synchronisatieproces is automatisch. U hoeft dit synchronisatieproces niet te configureren, te controleren of te beheren. De eerste synchronisatie kan enkele uren tot een paar dagen duren, afhankelijk van het aantal objecten in de Azure AD-map. Nadat de eerste synchronisatie is voltooid, worden wijzigingen die zijn aangebracht in Azure AD, zoals wachtwoord- of kenmerkwijzigingen, vervolgens automatisch gesynchroniseerd met Azure AD DS.
+
+Wanneer een gebruiker is gemaakt in Azure AD, worden deze niet gesynchroniseerd met Azure AD DS totdat deze zijn wachtwoord in Azure AD heeft gewijzigd. Dit wachtwoordwijzigingsproces zorgt ervoor dat de wachtwoordhashes voor Kerberos- en NTLM-verificatie worden gegenereerd en opgeslagen in Azure AD. De wachtwoordhashes zijn nodig om een gebruiker in Azure AD DS te verifiëren.
 
 Het synchronisatieproces is een manier / unidirectionele door het ontwerp. Er is geen omgekeerde synchronisatie van wijzigingen van Azure AD DS terug naar Azure AD. Een door Azure AD DS beheerd domein is grotendeels alleen-lezen, behalve voor aangepaste ok's die u maken. U geen wijzigingen aanbrengen in gebruikerskenmerken, gebruikerswachtwoorden of groepslidmaatschappen binnen een door Azure AD DS beheerd domein.
 
@@ -134,7 +136,7 @@ De versleutelingssleutels zijn uniek voor elke Azure AD-tenant. Deze hashes zijn
 
 Verouderde wachtwoordhashes worden vervolgens gesynchroniseerd vanuit Azure AD naar de domeincontrollers voor een door Azure AD DS beheerd domein. De schijven voor deze beheerde domeincontrollers in Azure AD DS worden in rust versleuteld. Deze wachtwoordhashes worden opgeslagen en beveiligd op deze domeincontrollers vergelijkbaar met hoe wachtwoorden worden opgeslagen en beveiligd in een on-premises AD DS-omgeving.
 
-Voor Azure AD-omgevingen met alleen de cloud [moeten gebruikers hun wachtwoord opnieuw instellen/wijzigen](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) om de vereiste wachtwoordhashes te kunnen genereren en opslaan in Azure AD. Voor elk cloudgebruikersaccount dat in Azure AD is gemaakt nadat azure AD Domain Services is ingesloten, worden de wachtwoordhashes gegenereerd en opgeslagen in de compatibele NTLM- en Kerberos-compatibele indelingen. Deze nieuwe accounts hoeven hun wachtwoord niet opnieuw in te stellen of te wijzigen en genereren de verouderde wachtwoordhashes.
+Voor Azure AD-omgevingen met alleen de cloud [moeten gebruikers hun wachtwoord opnieuw instellen/wijzigen](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) om de vereiste wachtwoordhashes te kunnen genereren en opslaan in Azure AD. Voor elk cloudgebruikersaccount dat in Azure AD is gemaakt nadat azure AD Domain Services is ingesloten, worden de wachtwoordhashes gegenereerd en opgeslagen in de compatibele NTLM- en Kerberos-compatibele indelingen. Alle cloudgebruikersaccounts moeten hun wachtwoord wijzigen voordat ze worden gesynchroniseerd met Azure AD DS.
 
 Voor hybride gebruikersaccounts die zijn gesynchroniseerd vanuit de on-premises AD DS-omgeving met Azure AD Connect, moet u [Azure AD Connect configureren om wachtwoordhashes te synchroniseren in de compatibele NTLM- en Kerberos-compatibele indelingen.](tutorial-configure-password-hash-sync.md)
 
