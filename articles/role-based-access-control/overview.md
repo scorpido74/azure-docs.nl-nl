@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6e3313e3ae201d0b730d8582fed9659d89f0d0c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ec9734974971ac89ad54934f43c70f8805b6a013
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80063059"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641780"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Wat is op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources?
 
@@ -139,4 +139,4 @@ Hier volgen de stappen op hoog niveau die RBAC gebruikt om te bepalen of u toega
 - [Snelstart: de toegang weergeven die een gebruiker heeft tot Azure-bronnen met behulp van de Azure-portal](check-access.md)
 - [Toegang tot Azure-resources beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal](role-assignments-portal.md)
 - [Inzicht in de verschillende rollen](rbac-and-directory-admin-roles.md)
-- [Een bedrijfscloud implementeren: resourcetoegangsbeheer in Azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)
+- [Cloud Adoption Framework: Resource access management in Azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

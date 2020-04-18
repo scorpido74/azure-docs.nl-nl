@@ -14,17 +14,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: afc0fcb6751a08b41010fa569c67a9827e0abec0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: babb5a10818c8108bae34402962fd2503dbecbdc
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77131934"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641685"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Gebruik de Haivision KB live encoder om een enkele bitrate live stream te sturen  
 > [!div class="op_single_selector"]
 > * [Haivision Haivision](media-services-configure-kb-live-encoder.md)
-> * [Tricaster Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 
 In dit onderwerp ziet u hoe u de [Havision KB live-encoderencoder](https://www.haivision.com/products/kb-series/) configureert om een enkele bitratestream naar AMS-kanalen te verzenden die zijn ingeschakeld voor live codering. Zie [Werken met kanalen waarmee Live Encoding kan worden uitgevoerd met Azure Media Services](media-services-manage-live-encoder-enabled-channels.md) voor meer informatie.

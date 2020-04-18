@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969325"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641715"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>OPTIES voor DNS-naamomzetting voor virtuele Linux-machines in Azure
 Azure biedt standaard DNS-naamomzetting voor alle virtuele machines die zich in één virtueel netwerk bevinden. U uw eigen DNS-naamomzettingsoplossing implementeren door uw eigen DNS-services te configureren op uw virtuele machines die Azure host. De volgende scenario's moeten u helpen bij het kiezen van de scenario's die werkt voor uw situatie.
@@ -97,7 +97,7 @@ Om de huidige instellingen op een Linux virtuele machine te controleren, 'cat /e
 Het bestand resolv.conf wordt automatisch gegenereerd en mag niet worden bewerkt. De specifieke stappen die de regel 'opties' toevoegen, verschillen per distributie:
 
 **Ubuntu** (maakt gebruik van resolvconf)
-1. Voeg de optieregel toe aan '/etc/resolveconf/resolv.conf.d/head'.
+1. Voeg de optieregel toe aan '/etc/resolvconf/resolv.conf.d/head'.
 2. Voer 'resolvconf -u' uit om bij te werken.
 
 **SUSE** (gebruikt netconf)

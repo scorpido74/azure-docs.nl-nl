@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: d40d4cfe1b86448f1e8df307013905d69f203dcd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/14/2020
+ms.openlocfilehash: 1e2a837acef976b6b872c2d4002ee49d662ad594
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261054"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641328"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Een suggestie maken om automatisch aanvullen en voorgestelde resultaten in een query in te schakelen
 
@@ -42,15 +42,15 @@ Bij het maken van voorvoegsels heeft een suggestiezijn eigen analyseketen, verge
 
 ## <a name="define-a-suggester"></a>Een suggestie definiëren
 
-Hoewel een suggestie meerdere eigenschappen heeft, is het in de eerste plaats een verzameling velden waarvoor u een zoek-as-you-type-ervaring inschakelt. Een reis-app kan bijvoorbeeld automatisch aanvullen op bestemmingen, steden en attracties inschakelen. Als zodanig zouden alle drie de velden in de velden collectie gaan.
+Als u een suggestie wilt maken, voegt u er een toe aan een [indexschema](https://docs.microsoft.com/rest/api/searchservice/create-index) en [stelt u elke eigenschap in.](#property-reference) In de index u één suggestiehebben (specifiek één suggestiever in de suggestersverzameling). De beste tijd om een suggestie te maken is wanneer u ook het veld definieert dat het zal gebruiken.
 
-Als u een suggestie wilt maken, voegt u er een toe aan een indexschema. U een suggester in een index (in het bijzonder, een suggester in de suggesters collectie). Een suggestiemaakt een lijst met velden. 
+### <a name="choose-fields"></a>Velden kiezen
 
-+ Kies velden die het beste één resultaat vertegenwoordigen voor suggesties. Namen, titels of andere unieke velden die onderscheid maken tussen documenten werken het beste. Als velden uit vergelijkbare of identieke waarden bestaan, worden de suggesties samengesteld uit identieke resultaten en weet een gebruiker niet op welke waarden hij moet klikken.
+Hoewel een suggestie meerdere eigenschappen heeft, is het in de eerste plaats een verzameling velden waarvoor u een zoek-as-you-type-ervaring inschakelt. Kies velden die het beste één resultaat vertegenwoordigen voor suggesties. Namen, titels of andere unieke velden die onderscheid maken tussen meerdere overeenkomsten werken het beste. Als velden bestaan uit repetitieve waarden, bestaan de suggesties uit identieke resultaten en weet een gebruiker niet op welke basis waarde hij moet klikken.
 
-+ Zorg ervoor dat elk `sourceFields` veld in de lijst met deelnemers`"analyzer": null`de standaard Lucene analyzer `"analyzer": "en.Microsoft"`() of een [taalanalyzer](index-add-language-analyzers.md) (bijvoorbeeld) gebruikt. 
+Zorg ervoor dat elk veld een analyzer gebruikt die lexicale analyse uitvoert tijdens het indexeren. U de standaard Lucene analyzer ()`"analyzer": null`of een [taalanalyzer](index-add-language-analyzers.md) (bijvoorbeeld) `"analyzer": "en.Microsoft"`gebruiken. 
 
-  Uw keuze van een analyzer bepaalt hoe velden worden tokenized en vervolgens vooraf worden vastgesteld. Voor een geafbreekbare tekenreeks als 'contextgevoelig' resulteert het gebruik van een taalanalyzer bijvoorbeeld in deze tokencombinaties: 'context', 'gevoelig', 'contextgevoelig'. Als je de standaard Lucene analyzer had gebruikt, zou de afgebroken string niet bestaan.
+Uw keuze van een analyzer bepaalt hoe velden worden tokenized en vervolgens vooraf worden vastgesteld. Voor een geafbreekbare tekenreeks als 'contextgevoelig' resulteert het gebruik van een taalanalyzer bijvoorbeeld in deze tokencombinaties: 'context', 'gevoelig', 'contextgevoelig'. Als je de standaard Lucene analyzer had gebruikt, zou de afgebroken string niet bestaan.
 
 > [!TIP]
 > Overweeg de [API Tekst analyseren](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) te gebruiken voor inzicht in hoe termen worden tokenized en vervolgens vooraf zijn vastgelegd. Zodra u een index hebt gemaakt, u verschillende analysators op een tekenreeks proberen om de tokens te bekijken die het uitzendt.
@@ -61,7 +61,7 @@ De beste tijd om een suggestie te maken is wanneer u ook de velddefinitie zelf m
 
 Als u een suggestie probeert te maken met bestaande velden, wordt deze niet door de API geweigerd. Voorvoegsels worden gegenereerd tijdens het indexeren, wanneer gedeeltelijke termen in twee of meer tekencombinaties naast hele termen worden tokenized. Aangezien bestaande velden al zijn tokenized, moet u de index opnieuw opbouwen als u ze wilt toevoegen aan een suggestie. Zie [Een Azure Cognitive Search-index voor](search-howto-reindex.md)meer informatie.
 
-### <a name="create-using-the-rest-api"></a>Maken met de REST API
+## <a name="create-using-rest"></a>Maken met REST
 
 Voeg in de REST-API suggesties toe via [Index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) of [Index bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-index). 
 
@@ -99,7 +99,7 @@ Voeg in de REST-API suggesties toe via [Index maken](https://docs.microsoft.com/
   }
   ```
 
-### <a name="create-using-the-net-sdk"></a>Maken met de .NET SDK
+## <a name="create-using-net"></a>Maken met .NET
 
 Definieer in C#een [object Suggester](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). `Suggesters`is een verzameling, maar het kan slechts een item. 
 
@@ -122,37 +122,40 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 }
 ```
 
-### <a name="property-reference"></a>Eigenschappenreferentie
+## <a name="property-reference"></a>Eigenschappenreferentie
 
 |Eigenschap      |Beschrijving      |
 |--------------|-----------------|
 |`name`        |De naam van de suggester.|
-|`searchMode`  |De strategie gebruikt om te zoeken naar kandidaat zinnen. De enige modus die `analyzingInfixMatching`momenteel wordt ondersteund, is , die flexibele matching van zinnen aan het begin of in het midden van zinnen uitvoert.|
+|`searchMode`  |De strategie gebruikt om te zoeken naar kandidaat zinnen. De enige modus die `analyzingInfixMatching`momenteel wordt ondersteund, is , die momenteel overeenkomt met het begin van een term.|
 |`sourceFields`|Een lijst met een of meer velden die de bron zijn van de inhoud voor suggesties. Velden moeten van `Edm.String` `Collection(Edm.String)`type zijn en . Als een analyzer is opgegeven op het veld, moet deze een benoemde analyzer uit [deze lijst](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) zijn (geen aangepaste analyzer).<p/> Geef als aanbevolen praktijk alleen de velden op die zich lenen voor een verwacht en passend antwoord, of het nu gaat om een voltooide tekenreeks in een zoekbalk of een vervolgkeuzelijst.<p/>Een hotel naam is een goede kandidaat omdat het precisie heeft. Verbose velden zoals beschrijvingen en opmerkingen zijn te dicht. Ook repetitieve velden, zoals categorieën en tags, zijn minder effectief. In de voorbeelden nemen we toch 'categorie' op om aan te tonen dat u meerdere velden opnemen. |
 
 <a name="how-to-use-a-suggester"></a>
 
 ## <a name="use-a-suggester"></a>Een suggestie gebruiken
 
-Een suggestie wordt gebruikt in een query. Nadat een suggestie is gemaakt, roept u de juiste API in uw querylogica aan om de functie aan te roepen. 
+Een suggestie wordt gebruikt in een query. Nadat een suggestie is gemaakt, belt u een van de volgende API's voor een zoek-naar-het-type-ervaring:
 
 + [Suggesties REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
 + [API VOOR automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
 + [SuggestWithHttpMessagesAsync-methode](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
 + [Automatisch aanvullenMethttpMessagesAsync-methode](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
-API-gebruik wordt geïllustreerd in de volgende aanroep naar de Autocomplete REST API. Er zijn twee afhaalmaaltijden uit dit voorbeeld. Ten eerste, zoals bij alle query's, is de bewerking in strijd met het verzamelen van documenten van een index. Ten tweede u queryparameters toevoegen. Hoewel veel queryparameters gemeenschappelijk zijn voor beide API's, is de lijst voor elke lijst verschillend.
+In een zoektoepassing moet clientcode een bibliotheek zoals [jQuery UI Autocomplete](https://jqueryui.com/autocomplete/) gebruiken om de gedeeltelijke query te verzamelen en de overeenkomst te verstrekken. Zie Automatisch aanvullen of [voorgestelde resultaten toevoegen aan clientcode voor](search-autocomplete-tutorial.md)meer informatie over deze taak.
+
+API-gebruik wordt geïllustreerd in de volgende aanroep naar de Autocomplete REST API. Er zijn twee afhaalmaaltijden uit dit voorbeeld. Ten eerste, zoals bij alle query's, is de bewerking tegen het verzamelen van documenten van een index en bevat de query een **zoekparameter,** die in dit geval de gedeeltelijke query bevat. Ten tweede moet u **suggesterName** aan het verzoek toevoegen. Als een suggestieniet is gedefinieerd in de index, mislukt een aanroep naar automatisch aanvullen of worden suggesties weergegeven.
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs/autocomplete?[query parameters]  
-api-key: [admin or query key]
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+{
+  "search": "minecraf",
+  "suggesterName": "sg"
+}
 ```
-
-Als een suggestieniet is gedefinieerd in de index, mislukt een aanroep naar automatisch aanvullen of worden suggesties weergegeven.
 
 ## <a name="sample-code"></a>Voorbeeldcode
 
-+ [Maak uw eerste app in C#](tutorial-csharp-type-ahead-and-suggestions.md) voorbeeld toont een suggester constructie, voorgestelde query's, automatisch aanvullen en gefacetteerde navigatie. Dit codevoorbeeld wordt uitgevoerd op een sandbox Azure Cognitive Search-service en maakt gebruik van een vooraf geladen Hotels-index, zodat u alleen maar op F5 hoeft te drukken om de toepassing uit te voeren. Een abonnement of aanmelding is niet nodig.
++ [Maak uw eerste app in C# (les 3 - Zoek-als-u-type toevoegen)](tutorial-csharp-type-ahead-and-suggestions.md) voorbeeld toont een suggesterconstructie, voorgestelde query's, automatisch aanvullen en gefacetteerde navigatie. Dit codevoorbeeld wordt uitgevoerd op een sandbox Azure Cognitive Search-service en maakt gebruik van een vooraf geladen Hotels-index, zodat u alleen maar op F5 hoeft te drukken om de toepassing uit te voeren. Een abonnement of aanmelding is niet nodig.
 
 + [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) is een ouder voorbeeld met zowel C# als Java-code. Het toont ook een suggester constructie, voorgestelde query's, autocomplete, en gefacetteerde navigatie. In dit codevoorbeeld worden de gehoste [NYCJobs-voorbeeldgegevens](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) gebruikt. 
 
@@ -161,4 +164,4 @@ Als een suggestieniet is gedefinieerd in de index, mislukt een aanroep naar auto
 We raden het volgende voorbeeld aan om te zien hoe de aanvragen worden geformuleerd.
 
 > [!div class="nextstepaction"]
-> [Suggesties en voorbeelden automatisch aanvullen](search-autocomplete-tutorial.md) 
+> [Automatisch aanvullen en suggesties toevoegen aan clientcode](search-autocomplete-tutorial.md) 

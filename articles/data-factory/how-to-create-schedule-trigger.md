@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: 100f95c20743f70bb4a9f2ac7e74853eab80f3e9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a0a01dad5ae86cf20d57ade845326838f8fd686a
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414472"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641520"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Een trigger maken waarop een pijplijn volgens een planning wordt uitgevoerd
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,38 +31,46 @@ In de volgende secties worden stappen gezet om op verschillende manieren een pla
 U een **planningstrigger** maken om een pijplijn te plannen die periodiek wordt uitgevoerd (per uur, per dag, enz.). 
 
 > [!NOTE]
-> Zie [Quickstart voor](quickstart-create-data-factory-portal.md)een volledige walkthrough van het maken van een pijplijn en een planningstrigger, het koppelen van de trigger aan de pijplijn en het uitvoeren en bewaken van de pijplijn.
+> Zie [Quickstart voor](quickstart-create-data-factory-portal.md)een volledige walkthrough van het maken van een pijplijn en een planningstrigger, die de trigger koppelt aan de pijplijn en de pijplijn uitvoert en bewaakt.
 
-1. Ga naar het tabblad **Bewerken**. 
+1. Ga naar het tabblad **Bewerken,** weergegeven met een potloodsymbool. 
 
     ![Naar het tabblad Bewerken gaan](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
-1. Klik in het menu op **Activeren** en klik op **Nieuw/bewerken**. 
+
+1. Selecteer **Trigger** in het menu en selecteer **Vervolgens Nieuw/Bewerken**. 
 
     ![Menu Nieuwe trigger](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
-2. Klik op de pagina **Triggers toevoegen** op **Trigger kiezen... **, en klik op **Nieuw**. 
+
+1. Selecteer **op** de pagina Triggers toevoegen de optie **Trigger kiezen...** en selecteer **+Nieuw**. 
 
     ![Triggers toevoegen - nieuwe trigger](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
-3. Ga op de pagina **Nieuwe trigger** de volgende stappen uit: 
+
+1. Ga op de pagina **Nieuwe trigger** de volgende stappen uit: 
 
     1. Controleer of **Planning** is geselecteerd voor **Type**. 
-    2. Geef de begindatum op van de trigger voor **begindatum (UTC).** Deze is standaard ingesteld op de huidige datumtijd. 
-    3. **Geef Herhaling** op voor de trigger. Selecteer een van de waarden in de vervolgkeuzelijst (Elke minuut, per uur, dagelijks, wekelijks en maandelijks). Voer de vermenigvuldiger in het tekstvak in. Als u bijvoorbeeld wilt dat de trigger één keer per 15 minuten wordt uitgevoerd, selecteert u **Elke minuut**en voert u **15** in het tekstvak in. 
-    4. Als u voor het veld **Einde** geen einddatum voor de trigger wilt opgeven, selecteert u **Geen einde**. Als u een einddatum wilt opgeven, selecteert u **Op datum**en geeft u de einddatum op en klikt u op **Toepassen**. Er zijn kosten gekoppeld aan elke uitvoering van de pijplijn. Als u test, u ervoor zorgen dat de pijplijn slechts een paar keer wordt geactiveerd. Zorg er echter wel voor dat er voldoende tijd is om de pijplijn uit te voeren tussen de publicatietijd en de eindtijd. De trigger gaat pas van kracht nadat u de oplossing hebt gepubliceerd in Data Factory, niet wanneer u de trigger opslaat in de UI.
+    1. Geef de begindatum op van de trigger voor **begindatum (UTC).** Deze is standaard ingesteld op de huidige datumtijd. 
+    1. **Geef Herhaling** op voor de trigger. Selecteer een van de waarden in de vervolgkeuzelijst (Elke minuut, per uur, dagelijks, wekelijks en maandelijks). Voer de vermenigvuldiger in het tekstvak in. Als u bijvoorbeeld wilt dat de trigger één keer per 15 minuten wordt uitgevoerd, selecteert u **Elke minuut**en voert u **15** in het tekstvak in. 
+    1. Als u voor het veld **Einde** geen einddatum voor de trigger wilt opgeven, selecteert u **Geen einde**. Als u een einddatum wilt opgeven, selecteert u **Op datum**en geeft u de einddatum op en selecteert u **OK**. Er zijn kosten gekoppeld aan elke uitvoering van de pijplijn. Als u test, u ervoor zorgen dat de pijplijn slechts een paar keer wordt geactiveerd. Zorg er echter wel voor dat er voldoende tijd is om de pijplijn uit te voeren tussen de publicatietijd en de eindtijd. De trigger gaat pas van kracht nadat u de oplossing hebt gepubliceerd in Data Factory, niet wanneer u de trigger opslaat in de UI.
 
         ![Triggerinstellingen](./media/how-to-create-schedule-trigger/trigger-settings.png)
-4. Schakel in het venster **Nieuwe trigger** de optie **Geactiveerd** in en klik op **Volgende**. U dit selectievakje gebruiken om de trigger later te deactiveren. 
+
+1. Selecteer in het venster **Nieuwe trigger** **Ja** in de optie **Geactiveerd** en selecteer **OK**. U dit selectievakje gebruiken om de trigger later te deactiveren. 
 
     ![Triggerinstellingen - knop Volgende](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
-5. Lees op de pagina **Nieuwe trigger** de waarschuwing en klik op **Voltooien**.
+
+1. Bekijk in het venster **Nieuwe trigger** het waarschuwingsbericht en selecteer **OK**.
 
     ![Triggerinstellingen - knop Voltooien](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
-6. Klik op **Publiceren** om wijzigingen te publiceren in Data Factory. Totdat u wijzigingen in Data Factory publiceert, wordt de pijplijn niet gestart met het activeren van de pijplijnuitvoeringen. 
+
+1. Selecteer **Alles publiceren** om de wijzigingen in Gegevensfabriek te publiceren. Totdat u de wijzigingen in Data Factory publiceert, wordt de pijplijn niet gestart met het activeren van de pijplijnuitvoeringen. 
 
     ![De knop Publiceren](./media/how-to-create-schedule-trigger/publish-2.png)
-8. Ga naar het tabblad **Controleren** aan de linkerkant. Klik op **Vernieuwen** om de lijst te vernieuwen. U ziet de pijplijnuitvoeringen die worden geactiveerd door de geplande trigger. Bekijk de waarden in de kolom **Geactiveerd door**. Als u de optie **Trigger Now** gebruikt, wordt de handmatige trigger in de lijst uitgevoerd. 
+
+1. Ga naar het tabblad **Pijplijn aan** de linkerkant en selecteer **Vernieuwen** om de lijst te vernieuwen. U ziet de pijplijnuitvoeringen die worden geactiveerd door de geplande trigger. Bekijk de waarden in de kolom **Geactiveerd door**. Als u de optie **Trigger Now** gebruikt, wordt de handmatige trigger in de lijst uitgevoerd. 
 
     ![Geactiveerde uitvoeringen controleren](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
-9. Klik op de pijl-omlaag naast **Pijplijnuitvoeringen** om naar de weergave **Triggeruitvoeringen** te gaan. 
+
+1. Schakel naar de weergave **Triggeruitvoeringen**. 
 
     ![Triggeruitvoeringen controleren](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -112,31 +120,31 @@ In deze sectie ziet u hoe u Azure PowerShell gebruiken om een planningstrigger t
     - De trigger is gekoppeld aan de **Adfv2QuickStartPipeline-pijplijn.** Als u meerdere pijplijnen wilt koppelen aan een trigger, voegt u meer **pijplijnreferentiesecties** toe.
     - De pijplijn in de Quickstart heeft twee **parameterswaarden:** **inputPath** en **outputPath**. Daarom geeft u waarden voor deze parameters door vanaf de trigger.
 
-2. Maak een trigger met de cmdlet **Set-AzDataFactoryV2Trigger:**
+1. Maak een trigger met de cmdlet **Set-AzDataFactoryV2Trigger:**
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. Controleer of de status van de trigger wordt **gestopt** met de cmdlet **Get-AzDataFactoryV2Trigger:**
+1. Controleer of de status van de trigger wordt **gestopt** met de cmdlet **Get-AzDataFactoryV2Trigger:**
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. Start de trigger met de **cmdlet Start-AzDataFactoryV2Trigger:**
+1. Start de trigger met de **cmdlet Start-AzDataFactoryV2Trigger:**
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Controleer of de status van de trigger wordt **gestart** met de cmdlet **Get-AzDataFactoryV2Trigger:**
+1. Controleer of de status van de trigger wordt **gestart** met de cmdlet **Get-AzDataFactoryV2Trigger:**
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  Download de triggerruns in Azure PowerShell met de **cmdlet Get-AzDataFactoryV2TriggerRun.** Voer de volgende opdracht periodiek uit om de informatie over de trigger-uitvoering en uitvoer. Update de **TriggerRunStartedAfter** en **TriggerRunStartedVoordat** waarden overeenkomen met de waarden in de triggerdefinitie:
+1.  Download de triggerruns in Azure PowerShell met de **cmdlet Get-AzDataFactoryV2TriggerRun.** Voer de volgende opdracht periodiek uit om de informatie over de trigger-uitvoering en uitvoer. Update de **TriggerRunStartedAfter** en **TriggerRunStartedVoordat** waarden overeenkomen met de waarden in de triggerdefinitie:
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"

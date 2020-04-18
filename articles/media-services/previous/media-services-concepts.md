@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 260ddccc1a1b0bd4090284025b79e20ff5ce4fdc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 44d6776a367a5cb1eeb86c955f083598d417aba6
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475244"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641672"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services-concepten 
 
@@ -111,7 +111,7 @@ Zie [Encoders voor](media-services-encode-asset.md)informatie over ondersteunde 
 ## <a name="live-streaming"></a>Live streamen
 In Azure Media Services vertegenwoordigt een kanaal een pijplijn voor het verwerken van live streaming-inhoud. Een kanaal ontvangt op twee manieren live-invoerstreams:
 
-* Een on-premises live encoder stuurt multi-bitrate RTMP of Smooth Streaming (Fragmented MP4) naar het Kanaal. U de volgende live-encoders gebruiken die multi-bitrate Smooth Streaming uitvoeren: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco en Elemental. De volgende live encoders output RTMP: Adobe Flash Live Encoder, [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision en Tricaster encoders. De ingenomen streams passeren kanalen zonder verdere transcodering en codering. Desgevraagd levert Media Services de stream aan klanten.
+* Een on-premises live encoder stuurt multi-bitrate RTMP of Smooth Streaming (Fragmented MP4) naar het Kanaal. U de volgende live-encoders gebruiken die multi-bitrate Smooth Streaming uitvoeren: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco en Elemental. De volgende live encoders output RTMP: Adobe Flash Live Encoder, [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision encoders. De ingenomen streams passeren kanalen zonder verdere transcodering en codering. Desgevraagd levert Media Services de stream aan klanten.
 * Een enkele bitrate stream (in een van de volgende indelingen: RTMP, of Smooth Streaming (Fragmented MP4)) wordt verzonden naar het kanaal dat is ingeschakeld om live codering uit te voeren met Media Services. Het kanaal codeert de inkomende single-bitrate stream vervolgens live naar een (adaptieve) multi-bitrate videostream. Desgevraagd levert Media Services de stream aan klanten.
 
 ### <a name="channel"></a>Kanaal

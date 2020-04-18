@@ -4,18 +4,18 @@ description: Meer informatie over SQL ORDER BY-clausule voor Azure Cosmos DB. Sq
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/17/2020
 ms.author: tisande
-ms.openlocfilehash: b88184be39a41ec42f8fb304a7511073f645f1cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70702ee4a77e8b3c46de4354f3394bca4080d837
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77188734"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641399"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY-clausule in Azure Cosmos DB
 
-De optionele orderdoor-clausule geeft de sorteervolgorde op voor resultaten die door de query worden geretourneerd.
+De `ORDER BY` optionele clausule geeft de sorteervolgorde op voor resultaten die door de query worden geretourneerd.
 
 ## <a name="syntax"></a>Syntaxis
   
@@ -31,9 +31,9 @@ ORDER BY <sort_specification>
   
    Hiermee geeft u een eigenschap of expressie op waarop de queryresultatenset moet worden gesorteerd. Een sorteerkolom kan worden opgegeven als een naam of eigenschapsalias.  
   
-   Er kunnen meerdere eigenschappen worden opgegeven. Eigendomsnamen moeten uniek zijn. De volgorde van de sorteereigenschappen in de component ORDER BY definieert de organisatie van de gesorteerde resultaatset. Dat wil zeggen, het resultaat set wordt gesorteerd op de eerste eigenschap en vervolgens dat geordende lijst wordt gesorteerd op de tweede eigenschap, enzovoort.  
+   Er kunnen meerdere eigenschappen worden opgegeven. Eigendomsnamen moeten uniek zijn. De volgorde van de `ORDER BY` sorteereigenschappen in de component definieert de organisatie van de gesorteerde resultaatset. Dat wil zeggen, het resultaat set wordt gesorteerd op de eerste eigenschap en vervolgens dat geordende lijst wordt gesorteerd op de tweede eigenschap, enzovoort.  
   
-   De eigendomsnamen waarnaar wordt verwezen in de ORDER BY-clausule moeten overeenkomen met een eigenschap in de selecte lijst of met een eigenschap die is gedefinieerd in de verzameling die is gespecificeerd in de FROM-clausule zonder dubbelzinnigheden.  
+   De in de `ORDER BY` clausule bedoelde eigendomsnamen moeten overeenkomen met een eigenschap in de selecte `FROM` lijst of met een eigenschap die is gedefinieerd in de verzameling die in de clausule is gespecificeerd zonder dubbelzinnigheden.  
   
 - `<sort_expression>`  
   
@@ -45,7 +45,7 @@ ORDER BY <sort_specification>
   
 - `ASC | DESC`  
   
-   Hiermee geeft u op dat de waarden in de opgegeven kolom in oplopende of dalende volgorde moeten worden gesorteerd. ASC sorteert van de laagste waarde naar de hoogste waarde. DESC sorteert van hoogste waarde naar laagste waarde. ASC is de standaardsorteervolgorde. Null-waarden worden behandeld als de laagst mogelijke waarden.  
+   Hiermee geeft u op dat de waarden in de opgegeven kolom in oplopende of dalende volgorde moeten worden gesorteerd. `ASC`soorten van de laagste waarde tot de hoogste waarde. `DESC`soorten van de hoogste waarde tot de laagste waarde. `ASC`is de standaardsorteervolgorde. Null-waarden worden behandeld als de laagst mogelijke waarden.  
   
 ## <a name="remarks"></a>Opmerkingen  
   
@@ -152,7 +152,7 @@ De resultaten bevatten alleen het document `lastName`met een gedefinieerd docume
     ]
 ```
 
-Als we het indexeringsbeleid van de container bijwerken `lastName`om expliciet een pad voor op te nemen, nemen we documenten op met een niet-gedefinieerde sorteereigenschap in de queryresultaten. U moet expliciet het pad definiëren dat moet leiden naar deze scalaire waarde (en niet daarbuiten). U moet `?` het teken in uw paddefinitie gebruiken in het indexeringsbeleid om ervoor te zorgen dat u de eigenschap `lastName` expliciet indexeert en geen extra geneste paden daarbuiten.
+Als we het indexeringsbeleid van de container bijwerken `lastName`om expliciet een pad voor op te nemen, nemen we documenten op met een niet-gedefinieerde sorteereigenschap in de queryresultaten. U moet expliciet het pad definiëren dat moet leiden naar deze scalaire waarde (en niet daarbuiten). U moet `?` het teken in uw paddefinitie gebruiken in het indexeringsbeleid om ervoor te zorgen dat u de eigenschap `lastName` expliciet indexeert en geen extra geneste paden daarbuiten. Als `Order By` uw query een [samengestelde index](index-policy.md#composite-indexes)gebruikt, worden in de resultaten altijd documenten opgenomen met een niet-gedefinieerde sorteereigenschap in de queryresultaten.
 
 Hier vindt u een voorbeeldindexeringsbeleid waarmee u documenten `lastName` met een niet-gedefinieerde functie laten weergeven in de queryresultaten:
 
@@ -218,6 +218,6 @@ U ziet deze uitvoer:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Slag](sql-query-getting-started.md)
+- [Aan de slag](sql-query-getting-started.md)
 - [Indexeringsbeleid in Azure Cosmos DB](index-policy.md)
 - [COMPENSATIELIMIETclausule](sql-query-offset-limit.md)

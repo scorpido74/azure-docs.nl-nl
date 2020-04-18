@@ -6,27 +6,27 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: 3432f981df3f666d6276eee4564ef33000faa6b1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/17/2020
+ms.openlocfilehash: d4bf2d1d4beeb00325d54e091a00438073509eef
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410898"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641314"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Uitgaand netwerkverkeer configureren voor Azure HDInsight-clusters met Firewall
 
-In dit artikel vindt u de stappen om uitgaand verkeer uit uw HDInsight-cluster te beveiligen met Azure Firewall. In de onderstaande stappen wordt ervan uitgegaan dat u een Azure Firewall voor een bestaand cluster configureert. Als u een nieuw cluster en achter een firewall implementeert, maakt u eerst uw HDInsight-cluster en subnet en volgt u de stappen in deze handleiding.
+In dit artikel vindt u de stappen om uitgaand verkeer uit uw HDInsight-cluster te beveiligen met Azure Firewall. In de onderstaande stappen wordt ervan uitgegaan dat u een Azure Firewall voor een bestaand cluster configureert. Als u een nieuw cluster achter een firewall implementeert, maakt u eerst uw HDInsight-cluster en subnet. Volg dan de stappen in deze gids.
 
 ## <a name="background"></a>Achtergrond
 
-Azure HDInsight-clusters worden normaal gesproken geïmplementeerd in uw eigen virtuele netwerk. Het cluster heeft afhankelijkheden van services buiten dat virtuele netwerk waarvoor netwerktoegang nodig is om goed te functioneren.
+HDInsight-clusters worden normaal gesproken geïmplementeerd in een virtueel netwerk. Het cluster heeft afhankelijkheden van services buiten dat virtuele netwerk.
 
 Er zijn verschillende afhankelijkheden waarvoor binnenkomend verkeer nodig is. Het binnenkomende beheerverkeer kan niet via een firewall-apparaat worden verzonden. De bronadressen voor dit verkeer zijn bekend en worden [hier](hdinsight-management-ip-addresses.md)gepubliceerd. U ook NSG-regels (Network Security Group) maken met deze informatie om binnenkomend verkeer naar de clusters te beveiligen.
 
-De HDInsight-afhankelijke verkeersafhankelijkheden zijn bijna volledig gedefinieerd met FQDN's, die geen statische IP-adressen achter zich hebben. Het ontbreken van statische adressen betekent dat Network Security Groups (NSG's) niet kunnen worden gebruikt om het uitgaande verkeer van een cluster af te sluiten. De adressen veranderen vaak genoeg dat men geen regels kan instellen op basis van de huidige naamresolutie en deze gebruiken om NSG-regels in te stellen.
+De HDInsight-afhankelijke verkeersafhankelijkheden zijn bijna volledig gedefinieerd met FQDN's. Die geen statische IP-adressen achter zich hebben. Het ontbreken van statische adressen betekent dat Network Security Groups (NSGs) uitgaand verkeer van een cluster niet kunnen vergrendelen. De adressen veranderen vaak genoeg kan men geen regels instellen op basis van de huidige naamresolutie en het gebruik.
 
-De oplossing voor het beveiligen van uitgaande adressen is het gebruik van een firewall-apparaat dat uitgaand verkeer op basis van domeinnamen kan beheren. Azure Firewall kan uitgaand HTTP- en HTTPS-verkeer beperken op basis van de FQDN van de doel- of [FQDN-tags.](../firewall/fqdn-tags.md)
+Beveilig uitgaande adressen met een firewall die uitgaand verkeer op basis van domeinnamen kan beheren. Azure Firewall beperkt uitgaand verkeer op basis van de FQDN van de doel- of [FQDN-tags.](../firewall/fqdn-tags.md)
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>Azure Firewall configureren met HDInsight
 
@@ -74,7 +74,7 @@ Maak een verzameling van toepassingsregels waarmee het cluster belangrijke commu
 
     **FQDN's target**
 
-    | Naam | Bronadressen | Protocol:Poort | Doel FQDNS | Opmerkingen |
+    | Naam | Bronadressen | `Protocol:Port` | Doel FQDNS | Opmerkingen |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Hiermee u Windows-aanmeldingsactiviteit |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Hiermee u Windows-aanmeldingsactiviteit |
@@ -106,14 +106,14 @@ Maak de netwerkregels om uw HDInsight-cluster correct te configureren.
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Tijdservice |
     | Rule_2 | Alle | * | DC_IP_Address_1, DC_IP_Address_2 | * | Als u het Enterprise Security Package (ESP) gebruikt, voegt u een netwerkregel toe in de sectie IP-adressen waarmee u met AAD-DS voor ESP-clusters communiceren. U vindt de IP-adressen van de domeincontrollers op de AAD-DS sectie in de portal |
-    | Rule_3 | TCP | * | IP-adres van uw Data Lake Storage-account | * | Als u Azure Data Lake Storage gebruikt, u een netwerkregel toevoegen in de sectie IP-adressen om een SNI-probleem met ADLS Gen1 en Gen2 op te lossen. Deze optie leidt het verkeer naar firewall, wat kan leiden tot hogere kosten voor grote gegevensladingen, maar het verkeer wordt geregistreerd en controleerbaar in firewalllogboeken. Bepaal het IP-adres voor uw Data Lake Storage-account. U een powershell-opdracht gebruiken `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` om de FQDN op te lossen naar een IP-adres.|
+    | Rule_3 | TCP | * | IP-adres van uw Data Lake Storage-account | * | Als u Azure Data Lake Storage gebruikt, u een netwerkregel toevoegen in de sectie IP-adressen om een SNI-probleem met ADLS Gen1 en Gen2 op te lossen. Met deze optie wordt het verkeer doorgerouteerd naar firewall. Wat kan leiden tot hogere kosten voor grote gegevensladingen, maar het verkeer wordt geregistreerd en controleerbaar in firewalllogs. Bepaal het IP-adres voor uw Data Lake Storage-account. U een PowerShell-opdracht gebruiken `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` om de FQDN op te lossen naar een IP-adres.|
     | Rule_4 | TCP | * | * | 12000 | (Optioneel) Als u Log Analytics gebruikt, maakt u een netwerkregel in de sectie IP-adressen om de communicatie met uw Log Analytics-werkruimte mogelijk te maken. |
 
     **Sectie Servicetags**
 
     | Naam | Protocol | Bronadressen | Servicetags | Bestemmingspoorten | Opmerkingen |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_7 | TCP | * | SQL | 1433 | Configureer een netwerkregel in de sectie Servicetags voor SQL waarmee u SQL-verkeer registreren en controleren, tenzij u Service-eindpunten voor SQL Server hebt geconfigureerd op het HDInsight-subnet, waardoor de firewall wordt omzeild. |
+    | Rule_7 | TCP | * | SQL | 1433 | Configureer een netwerkregel in de sectie Servicetags voor SQL waarmee u SQL-verkeer registreren en controleren. Tenzij u Service-eindpunten voor SQL Server hebt geconfigureerd op het HDInsight-subnet, waardoor de firewall wordt omzeild. |
 
    ![Titel: Enter application rule collection](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
@@ -153,7 +153,7 @@ De configuratie van de routetabel voltooien:
 
 1. Selecteer **+ Associate**.
 
-1. Selecteer op het **subnetscherm Associate** het virtuele netwerk waaruw cluster in is gemaakt en het **subnet dat** u voor uw HDInsight-cluster hebt gebruikt.
+1. Selecteer op het **subnetscherm Associate** het virtuele netwerk waaruw cluster in is gemaakt. En het **subnet dat** u voor uw HDInsight-cluster hebt gebruikt.
 
 1. Selecteer **OK**.
 
@@ -171,13 +171,13 @@ Als uw toepassingen andere afhankelijkheden hebben, moeten ze worden toegevoegd 
 
 Azure Firewall kan logboeken naar een aantal verschillende opslagsystemen verzenden. Volg de stappen in [Zelfstudie: Azure Firewall-logboeken en metrische gegevens controleren](../firewall/tutorial-diagnostics.md)voor instructies voor het configureren van logboekregistratie voor uw firewall.
 
-Zodra u de logboekinstelling hebt voltooid, u, als u gegevens registreert bij Logboekanalyse, geblokkeerd verkeer weergeven met een query zoals:
+Zodra u de logboekregistratie-instelling hebt voltooid, u geblokkeerd verkeer weergeven met een query zoals:
 
 ```Kusto
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-Het integreren van uw Azure Firewall met Azure Monitor-logboeken is handig wanneer u voor het eerst een toepassing laat werken wanneer u niet op de hoogte bent van alle toepassingsafhankelijkheden. Meer informatie over Azure Monitor-logboeken vindt u in Azure Monitor analyseren van [logboekgegevens](../azure-monitor/log-query/log-query-overview.md)
+Het integreren van Azure Firewall met Azure Monitor-logboeken is handig wanneer een toepassing voor het eerst wordt gestart. Vooral als u zich niet bewust bent van alle toepassingsafhankelijkheden. Meer informatie over Azure Monitor-logboeken vindt u in Azure Monitor analyseren van [logboekgegevens](../azure-monitor/log-query/log-query-overview.md)
 
 Zie [dit](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) document of raadpleeg de [veelgestelde vragen](../firewall/firewall-faq.md)voor meer informatie over de schaallimieten van Azure Firewall en aanvraagverhogingen.
 
@@ -185,14 +185,14 @@ Zie [dit](../azure-resource-manager/management/azure-subscription-service-limits
 
 Nadat de firewall is ingesteld, u het`https://CLUSTERNAME-int.azurehdinsight.net`interne eindpunt () gebruiken om toegang te krijgen tot de Ambari vanuit het virtuele netwerk.
 
-Als u het openbare`https://CLUSTERNAME.azurehdinsight.net`eindpunt ( )`CLUSTERNAME-ssh.azurehdinsight.net`of ssh eindpunt ( ) wilt gebruiken, moet u ervoor zorgen dat u de juiste routes in de routetabel en NSG-regels hebt om het asymmetrische routeprobleem te voorkomen dat [hier](../firewall/integrate-lb.md)wordt uitgelegd. Specifiek in dit geval moet u het IP-adres van de client toestaan in de inkomende NSG-regels `internet`en het ook toevoegen aan de door de gebruiker gedefinieerde routetabel met de volgende hopset als . Als dit niet correct is ingesteld, ziet u een time-outfout.
+Als u het openbare`https://CLUSTERNAME.azurehdinsight.net`eindpunt ( )`CLUSTERNAME-ssh.azurehdinsight.net`of ssh eindpunt ( ) wilt gebruiken, moet u ervoor zorgen dat u de juiste routes in de routetabel en NSG-regels hebt om het asymmetrische routeprobleem te voorkomen dat [hier](../firewall/integrate-lb.md)wordt uitgelegd. Specifiek in dit geval moet u het IP-adres van de client toestaan in de inkomende NSG-regels `internet`en het ook toevoegen aan de door de gebruiker gedefinieerde routetabel met de volgende hopset als . Als de routering niet correct is ingesteld, ziet u een time-outfout.
 
 ## <a name="configure-another-network-virtual-appliance"></a>Een ander netwerkvirtueel toestel configureren
 
 > [!Important]
 > De volgende informatie is **alleen** vereist als u een ander netwerkvirtueel toestel (NVA dan Azure Firewall) wilt configureren.
 
-Met de vorige instructies u Azure Firewall configureren voor het beperken van uitgaand verkeer van uw HDInsight-cluster. Azure Firewall is automatisch geconfigureerd om verkeer toe te staan voor veel van de veelvoorkomende belangrijke scenario's. Als u een ander netwerkvirtueel toestel wilt gebruiken, moet u handmatig een aantal extra functies configureren. Houd rekening met het volgende bij het configureren van uw virtuele netwerktoestel:
+Met de vorige instructies u Azure Firewall configureren voor het beperken van uitgaand verkeer van uw HDInsight-cluster. Azure Firewall is automatisch geconfigureerd om verkeer toe te staan voor veel van de veelvoorkomende belangrijke scenario's. Als u een ander netwerk virtueel toestel gebruikt, moet u een aantal extra functies configureren. Houd rekening met de volgende factoren bij het configureren van uw virtuele netwerktoestel:
 
 * Services-serviceeindpuntservices moeten worden geconfigureerd met serviceeindpunten.
 * Afhankelijkheden van IP-adressen zijn voor niet-HTTP/S-verkeer (zowel TCP- als UDP-verkeer).
@@ -213,7 +213,7 @@ Met de vorige instructies u Azure Firewall configureren voor het beperken van ui
 | **Eindpunt** | **Details** |
 |---|---|
 | \*:123 | NTP klok te controleren. Verkeer wordt gecontroleerd op meerdere eindpunten op poort 123 |
-| Ip's [hier](hdinsight-management-ip-addresses.md) gepubliceerd | Dit zijn HDInsight-service |
+| Ip's [hier](hdinsight-management-ip-addresses.md) gepubliceerd | Deze IP's zijn HDInsight-service |
 | AAD-DS private IP's voor ESP-clusters |
 | \*:16800 voor KMS Windows-activering |
 | \*12000 voor Log Analytics |

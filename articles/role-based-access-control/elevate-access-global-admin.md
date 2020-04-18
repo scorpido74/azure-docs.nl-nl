@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/03/2019
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1731c630cb98ac542ebcdc7aedf07f7bb63eaec0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18490ec7c3cfde33cef186b753e2adc809f854c6
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77137465"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641355"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Toegang verhogen om alle Azure-abonnementen en beheergroepen te beheren
 
@@ -30,7 +30,7 @@ Als globale beheerder in Azure Active Directory (Azure AD) hebt u mogelijk geen 
 
 ## <a name="why-would-you-need-to-elevate-your-access"></a>Waarom zou je je toegang moeten verhogen?
 
-Als u een globale beheerder bent, kunnen er momenten zijn waarop u het volgende wilt doen:
+Als u een globale beheerder bent, kunnen er momenten zijn waarop u de volgende acties wilt uitvoeren:
 
 - Weer toegang krijgen tot een Azure-abonnement of beheergroep wanneer een gebruiker geen toegang meer heeft
 - Een andere gebruiker of uzelf toegang te verlenen tot een Azure-abonnement of -beheergroep
@@ -55,9 +55,7 @@ Volg deze stappen om de toegang voor een globale beheerder te verhogen met behul
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) of het [Azure Active Directory-beheercentrum](https://aad.portal.azure.com) als globale beheerder.
 
-1. Zoek naar **Azure Active Directory** en selecteer deze optie.
-
-   ![Azure Active Directory selecteren - schermafbeelding](./media/elevate-access-global-admin/search-for-azure-active-directory.png)
+1. **Open Azure Active Directory**.
 
 1. Selecteer **Eigenschappen** **onder Beheren**.
 
@@ -98,7 +96,7 @@ Volg deze stappen om de functietoewijzing`/`voor gebruikerstoegangbeheerders bij
 
 1. Stel het **Access-beheer voor Azure-resources** in om terug te schakelen naar **Nee**. Aangezien dit een instelling per gebruiker is, moet u zijn aangemeld als dezelfde gebruiker als is gebruikt om de toegang te verhogen.
 
-    Als u de functietoewijzing voor gebruikerstoegangbeheerders probeert te verwijderen in het deelvenster Toegangsbeheer (IAM), ziet u het volgende bericht. Als u de roltoewijzing wilt verwijderen, moet u de schakeling instellen op **Nee** of Azure PowerShell, Azure CLI of de REST-API gebruiken.
+    Als u de functietoewijzing voor gebruikerstoegangbeheerders probeert te verwijderen in het deelvenster Toegangsbeheer (IAM), ziet u het volgende bericht. Als u de roltoewijzing wilt verwijderen, moet u de schakelterug zetten op **Nee** of Azure PowerShell, Azure CLI of de REST-API gebruiken.
 
     ![Roltoewijzingen met hoofdbereik verwijderen](./media/elevate-access-global-admin/iam-root-remove.png)
 
@@ -140,7 +138,7 @@ Volg deze stappen als u de functietoewijzing voor`/`gebruikerstoegangvoor uzelf 
       -RoleDefinitionName "User Access Administrator" -Scope "/"
     ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 ### <a name="list-role-assignment-at-root-scope-"></a>Roltoewijzing op maken bij het hoofdbereik (/)
 
@@ -180,7 +178,7 @@ Volg deze stappen als u de functietoewijzing voor`/`gebruikerstoegangvoor uzelf 
     az role assignment delete --assignee username@example.com --role "User Access Administrator" --scope "/"
     ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Toegang voor een globale beheerder verhogen
 
@@ -233,7 +231,7 @@ U alle weigeringstoewijzingen voor een gebruiker`/`op basis van het hoofdbereik 
 
 ### <a name="remove-elevated-access"></a>Verhoogde toegang verwijderen
 
-Wanneer u `elevateAccess`aanroept, maakt u een roltoewijzing voor uzelf, dus om de bevoegdheden in te`/`trekken die u nodig hebt om de roltoewijzing voor gebruikerstoegangsbeheerders voor uzelf te verwijderen bij het hoofdbereik ( )
+Wanneer u `elevateAccess`aanroept, maakt u een roltoewijzing voor uzelf, dus om de bevoegdheden in te`/`trekken die u nodig hebt om de roltoewijzing voor gebruikerstoegangsbeheerders voor uzelf te verwijderen bij het hoofdbereik ( ).
 
 1. Call [GET-rolDefinities](/rest/api/authorization/roledefinitions/get) zijn `roleName` gelijk aan gebruikerstoegangsbeheerder om de naam-id van de functie Gebruikerstoegangsbeheerder te bepalen.
 

@@ -4,16 +4,16 @@ description: Meer informatie over hoe u zich voorbereiden op beoordeling/migrati
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: e86e634812e9f2782a003a11b48cfecf91d95359
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ea6290eae187ed4ead39f7307a84a54a23c19c29
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535295"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641637"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Voorbereiden op beoordeling en migratie van Hyper-V VM's naar Azure
 
-In dit artikel wordt beschreven hoe u zich voorbereidt op de beoordeling van on-premises Hyper-V VM's met Azure Migrate:Server Assessment(migrate-services-overview.md#azure-migrate-server-assessment-tool) en migratie van Hyper-V VM's met [Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool).
+In dit artikel wordt beschreven hoe u zich voorbereidt op de beoordeling van on-premises Hyper-V VM's met [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool)en migratie van Hyper-V VM's met [Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool).
 
 
 Deze zelfstudie is de eerste in een reeks die u laat zien hoe u Hyper-V VM's beoordelen en migreren naar Azure. In deze zelfstudie leert u het volgende:

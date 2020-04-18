@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: e4e4ac1b0a867130dd7b9e276db52e1ca1e72976
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 777ea7cc29679a3819e94d39913f167ea1cb3453
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062135"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641383"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Functiedefinities voor Azure-resources begrijpen
 
 Als u probeert te begrijpen hoe een rol werkt of als u uw eigen [aangepaste rol voor Azure-resources maakt,](custom-roles.md)is het handig om te begrijpen hoe rollen worden gedefinieerd. In dit artikel worden de details van roldefinities beschreven en worden enkele voorbeelden gegeven.
 
-## <a name="role-definition-structure"></a>Roldefinitiestructuur
+## <a name="role-definition"></a>Roldefinitie ophalen
 
-Een *roldefinitie* is een verzameling machtigingen. Dit wordt soms gewoon een *rol* genoemd. Een roldefinitie beschijft de bewerkingen die kunnen worden uitgevoerd, zoals lezen, schrijven en verwijderen. Het kan ook een overzicht geven van de bewerkingen die niet kunnen worden uitgevoerd of bewerkingen met betrekking tot onderliggende gegevens. Een roldefinitie heeft de volgende structuur:
+Een *roldefinitie* is een verzameling machtigingen. Dit wordt soms gewoon een *rol* genoemd. Een roldefinitie beschijft de bewerkingen die kunnen worden uitgevoerd, zoals lezen, schrijven en verwijderen. Het kan ook een overzicht geven van de bewerkingen die niet kunnen worden uitgevoerd of bewerkingen met betrekking tot onderliggende gegevens. Een roldefinitie heeft de volgende eigenschappen:
 
 ```
 Name
@@ -41,6 +41,20 @@ DataActions []
 NotDataActions []
 AssignableScopes []
 ```
+
+| Eigenschap | Beschrijving |
+| --- | --- |
+| `Name` | De weergavenaam van de rol. |
+| `Id` | De unieke ID van de rol. |
+| `IsCustom` | Hiermee geeft u aan of dit een aangepaste rol is. Ingesteld `true` op aangepaste rollen. |
+| `Description` | De beschrijving van de rol. |
+| `Actions` | Een array met tekenreeksen die de beheerbewerkingen aangeeft die de rol toestaat om te worden uitgevoerd. |
+| `NotActions` | Een array met tekenreeksen die de beheerbewerkingen `Actions`opgeeft die zijn uitgesloten van de toegestane . |
+| `DataActions` | Een array met tekenreeksen die de gegevensbewerkingen opgeeft die de rol toestaat om te worden uitgevoerd naar uw gegevens binnen dat object. |
+| `NotDataActions` | Een array met tekenreeksen die de gegevensbewerkingen `DataActions`opgeeft die zijn uitgesloten van de toegestane . |
+| `AssignableScopes` | Een array met tekenreeksen die de scopes opgeeft die de rol beschikbaar is voor toewijzing. |
+
+### <a name="operations-format"></a>Operations-indeling
 
 Bewerkingen worden opgegeven met tekenreeksen met de volgende indeling:
 
@@ -55,6 +69,8 @@ Het `{action}` gedeelte van een tekenreeks geeft het type bewerkingen aan dat u 
 | `write` | Hiermee u schrijfbewerkingen (PUT of PATCH) inmaken. |
 | `action` | Hiermee u aangepaste bewerkingen uitvoeren, zoals virtuele machines opnieuw opstarten (POST). |
 | `delete` | Hiermee u verwijderingsbewerkingen (Delete) inmaken. |
+
+### <a name="role-definition-example"></a>Voorbeeld van roldefinitie
 
 Hier is de [roldefinitie van medewerker](built-in-roles.md#contributor) in JSON-indeling. De jokerbewerking (`*`) onder `Actions` geeft aan dat de principal die aan deze rol is toegewezen alle acties kan uitvoeren, of met andere woorden, alles kan beheren. Dit omvat acties die in de toekomst zijn gedefinieerd, wanneer Azure nieuwe resourcetypen toevoegt. De bewerkingen onder `NotActions` worden afgetrokken van `Actions`. In het geval van de rol van [Lezer](built-in-roles.md#contributor) verwijdert `NotActions` de mogelijkheid van deze rol om de toegang tot resources te beheren en ook toegang tot resources toe te wijzen.
 
@@ -92,7 +108,7 @@ Beheertoegang wordt niet overgenomen naar uw gegevens, mits de containerverifica
 
 Voorheen werd op rollen gebaseerd toegangscontroleniet gebruikt voor gegevensbewerkingen. De autorisatie voor gegevensbewerkingen varieerde per resourceprovider. Hetzelfde op rollen gebaseerde toegangscontroleautorisatiemodel dat wordt gebruikt voor beheerbewerkingen, is uitgebreid tot gegevensbewerkingen.
 
-Om gegevensbewerkingen te ondersteunen, zijn nieuwe gegevenseigenschappen toegevoegd aan de roldefinitiestructuur. Gegevensbewerkingen worden opgegeven in de eigenschappen `DataActions` en `NotDataActions`. Door deze gegevenseigenschappen toe te voegen, wordt de scheiding tussen beheer en gegevens gehandhaafd. Hiermee voorkomt u dat huidige roltoewijzingen met jokertekens (`*`) plotseling toegang hebben tot gegevens. Hier volgen enkele gegevensbewerkingen die kunnen worden opgegeven in `DataActions` en `NotDataActions`:
+Om gegevensbewerkingen te ondersteunen, zijn nieuwe gegevenseigenschappen toegevoegd aan de roldefinitie. Gegevensbewerkingen worden opgegeven in de eigenschappen `DataActions` en `NotDataActions`. Door deze gegevenseigenschappen toe te voegen, wordt de scheiding tussen beheer en gegevens gehandhaafd. Hiermee voorkomt u dat huidige roltoewijzingen met jokertekens (`*`) plotseling toegang hebben tot gegevens. Hier volgen enkele gegevensbewerkingen die kunnen worden opgegeven in `DataActions` en `NotDataActions`:
 
 - Een lijst met blobs in een container lezen
 - Een opslag-blob in een container schrijven

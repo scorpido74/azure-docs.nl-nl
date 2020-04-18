@@ -15,12 +15,12 @@ ms.date: 02/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: e8d82011fe4fdd40bb07c77411ad0e948ddad049
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f2229d57b249bab734b1ef91c10d5ec42ab95a17
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240098"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641435"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen
 
@@ -131,3 +131,4 @@ Er zijn verschillende Azure AD-beheerdersrollen die Azure AD en Microsoft Office
 - [Wat is op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources?](overview.md)
 - [Machtigingen voor beheerrol in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 - [Klassieke abonnementsbeheerders van Azure](classic-administrators.md)
+- [Cloud Adoption Framework: Resource access management in Azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)
