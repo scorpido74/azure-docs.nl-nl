@@ -5,45 +5,37 @@
   items:
     - name: Wat is Custom Vision?
       href: home.md
-    - name: Wat is er nieuw
+    - name: Nieuwe functies
       href: whats-new.md
 - name: Snelstartgidsen
   items:
-    - name: De webportal gebruiken
+    - name: Een classificatie maken
       items:
-        - name: Een classificatie maken
+        - name: De webportal gebruiken
           href: getting-started-build-a-classifier.md
-        - name: Een objectdetector maken
-          href: get-started-build-detector.md
-    - name: De .NET SDK gebruiken
-      items:
-        - name: Classificatie van afbeeldingen
+        - name: De .NET SDK gebruiken
           href: csharp-tutorial.md
-        - name: Objectdetectie
-          href: csharp-tutorial-od.md
-    - name: De Python-SDK gebruiken
-      items:
-        - name: Classificatie van afbeeldingen
+        - name: De Python-SDK gebruiken
           href: python-tutorial.md
-        - name: Objectdetectie
-          href: python-tutorial-od.md
-    - name: De Java-SDK gebruiken
-      items:
-        - name: Classificatie van afbeeldingen
+        - name: De Java-SDK gebruiken
           href: java-tutorial.md
-        - name: Objectdetectie
-          href: java-tutorial-od.md
-    - name: De Node.js-SDK gebruiken
-      items:
-        - name: Classificatie van afbeeldingen
+        - name: De Node.js-SDK gebruiken
           href: node-tutorial.md
-        - name: Objectdetectie
-          href: node-tutorial-object-detection.md
-    - name: Go-SDK gebruiken
-      items:
-        - name: Classificatie van afbeeldingen
+        - name: Go-SDK gebruiken
           href: go-tutorial.md
-        - name: Objectdetectie
+    - name: Een objectdetector maken
+      items:
+        - name: De webportal gebruiken
+          href: get-started-build-detector.md
+        - name: De .NET SDK gebruiken
+          href: csharp-tutorial-od.md
+        - name: De Python-SDK gebruiken
+          href: python-tutorial-od.md
+        - name: De Java-SDK gebruiken
+          href: java-tutorial-od.md
+        - name: De Node.js-SDK gebruiken
+          href: node-tutorial-object-detection.md
+        - name: Go-SDK gebruiken
           href: go-tutorial-object-detection.md
 - name: Zelfstudies
   items:
@@ -97,7 +89,7 @@
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training'
         - name: Go - Voorspelling
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
-- name: Bronnen
+- name: Resources
   items:
     - name: Voorbeelden
       href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=vision'
