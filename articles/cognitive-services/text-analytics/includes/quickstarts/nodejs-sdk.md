@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 0cfe651a91cc16e7d4b58af67dac29fe5106a48c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 1414d86577e5aa17cb42762403b3767948c1e30c
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986700"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81642899"
 ---
 <a name="HOLTop"></a>
 
@@ -61,7 +61,7 @@ npm init
 Installeer `@azure/ai-text-analytics` de NPM-pakketten:
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0-preview.3
+npm install --save @azure/ai-text-analytics@1.0.0-preview.4
 ```
 
 > [!TIP]
@@ -88,7 +88,7 @@ Maak een `index.js` bestand met de naam en voeg het volgende toe:
 ```javascript
 "use strict";
 
-const { TextAnalyticsClient, TextAnalyticsApiKeyCredential } = require("@azure/ai-text-analytics");
+const { TextAnalyticsClient, AzureKeyCredential } = require("@azure/ai-text-analytics");
 ```
 
 #### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
@@ -124,7 +124,7 @@ Het antwoordobject is een lijst met de analysegegevens voor elk document.
 * [Taaldetectie](#language-detection)
 * [Benoemde entiteitsherkenning](#named-entity-recognition-ner)
 * [Koppeling van entiteiten](#entity-linking)
-* [Trefwoordextractie](#key-phrase-extraction)
+* [Sleuteltermextractie](#key-phrase-extraction)
 
 ## <a name="client-authentication"></a>Clientverificatie
 
@@ -133,7 +133,7 @@ Het antwoordobject is een lijst met de analysegegevens voor elk document.
 Maak een `TextAnalyticsClient` nieuw object met uw sleutel en eindpunt als parameters.
 
 ```javascript
-const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new TextAnalyticsApiKeyCredential(key));
+const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCredential(key));
 ```
 
 #### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
@@ -266,7 +266,6 @@ Document ID: 3 , Language: Chinese_Simplified
 
 > [!NOTE]
 > In `3.0-preview`versie :
-> * NER bevat aparte methoden voor het detecteren van persoonlijke informatie. 
 > * Entiteitkoppelen is een afzonderlijke aanvraag dan NER.
 
 Maak een array met tekenreeksen met het document dat u wilt analyseren. Bel de methode `recognizeEntities()` van de `RecognizeEntitiesResult` klant en krijg het object. Door de lijst met resultaten te herhalen en de entiteitsnaam, type, subtype, verschuiving, lengte en score af te drukken.
@@ -318,40 +317,6 @@ Document ID: 1
         Score: 0.8
         Name: Seattle   Category: Location      Subcategory: GPE
         Score: 0.31
-```
-
-## <a name="using-ner-to-detect-personal-information"></a>NER gebruiken om persoonlijke gegevens te detecteren
-
-Maak een array met tekenreeksen met het document dat u wilt analyseren. Bel de methode `recognizePiiEntities()` van de `EntitiesBatchResult` klant en krijg het object. Door de lijst met resultaten te herhalen en de entiteitsnaam, type, subtype, verschuiving, lengte en score af te drukken.
-
-
-```javascript
-async function entityPiiRecognition(client){
-
-    const entityPiiInput = [
-        "Insurance policy for SSN on file 123-12-1234 is here by approved."
-    ];
-    const entityPiiResults = await client.recognizePiiEntities(entityPiiInput);
-
-    entityPiiResults.forEach(document => {
-        console.log(`Document ID: ${document.id}`);
-        document.entities.forEach(entity => {
-            console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
-            console.log(`\tScore: ${entity.score}`);
-        });
-    });
-}
-entityPiiRecognition(textAnalyticsClient);
-```
-
-Voer uw `node index.js` code uit met in uw consolevenster.
-
-### <a name="output"></a>Uitvoer
-
-```console
-Document ID: 0
-        Name: 123-12-1234       Category: U.S. Social Security Number (SSN)     Subcategory: N/A
-        Score: 0.85
 ```
 
 ## <a name="entity-linking"></a>Entiteiten koppelen
