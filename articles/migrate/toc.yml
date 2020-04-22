@@ -96,14 +96,16 @@
       href: how-to-assess.md
     - name: Azure Migrate-apparaat implementeren
       items:
-        - name: Apparaat implementeren voor VMware (OVA)
+        - name: Apparaat implementeren met sjabloon (VMware)
           href: how-to-set-up-appliance-vmware.md
-        - name: Apparaat implementeren voor Hyper-V (VHD)
+        - name: Apparaat implementeren met sjabloon (Hyper-V)
           href: how-to-set-up-appliance-hyper-v.md
-        - name: Apparaat implementeren voor VMware/Hyper-V (script)
+        - name: Apparaat implementeren met script (VMware/Hyper-V)
           href: deploy-appliance-script.md
         - name: Apparaat implementeren voor fysieke servers
           href: how-to-set-up-appliance-physical.md
+        - name: Apparaat implementeren in Azure Government
+          href: deploy-appliance-script-government.md
     - name: Detectiebereik beperken voor VMware-VM's
       href: set-discovery-scope.md
     - name: Toepassingen/rollen/functies detecteren

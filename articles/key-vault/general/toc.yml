@@ -1,0 +1,141 @@
+- name: Algemeen
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Over Azure Key Vault
+      href: overview.md
+    - name: 'Over sleutels, geheimen en certificaten'
+      href: about-keys-secrets-certificates.md
+- name: Zelfstudies
+  items:
+    - name: Virtuele Azure-machine
+      items:
+        - name: Azure Key Vault gebruiken met een Windows-VM in .NET
+          href: tutorial-net-windows-virtual-machine.md
+        - name: Azure Key Vault gebruiken met een Windows-VM in Python
+          href: tutorial-python-windows-virtual-machine.md
+    - name: Azure Key Vault gebruiken met een Azure-web-app in .NET
+      href: tutorial-net-create-vault-azure-web-app.md
+- name: Concepten
+  items:
+    - name: Basisbegrippen
+      href: basic-concepts.md
+    - name: Beveiliging
+      items:
+        - name: Azure Key Vault-beveiliging
+          href: overview-security.md
+        - name: Aanbevolen procedures voor het gebruik van Key Vault - Azure Key Vault
+          href: best-practices.md
+        - name: Beveiligingsgebieden van Azure Key Vault
+          href: overview-security-worlds.md
+        - name: Netwerkbeveiliging
+          href: network-security.md
+        - name: Veilige toegang tot een sleutelkluis - Azure Key Vault
+          href: secure-your-key-vault.md
+        - name: Azure-beveiligingsbasislijn voor Key Vault
+          href: security-baseline.md
+        - name: Beveiligingsaanbevelingen voor Azure Key Vault
+          href: security-recommendations.md
+    - name: Meldingen (preview)
+      items:
+        - name: Bewaken met Azure Event Grid (preview)
+          href: event-grid-overview.md
+    - name: Voorlopig verwijderen
+      items:
+        - name: 'Azure Key Vault: voorlopig verwijderen'
+          href: overview-soft-delete.md
+    - name: 'Verificatie, vragen en antwoorden'
+      href: authentication-requests-and-responses.md
+    - name: Richtlijnen voor beperkingen in Azure Key Vault
+      href: overview-throttling.md
+    - name: Service-eindpunten voor virtueel netwerk voor Azure Key Vault - Azure Key Vault
+      href: overview-vnet-service-endpoints.md
+- name: Instructiegidsen
+  items:
+    - name: Verifiëren
+      items:
+        - name: Een beheerde identiteit in App Service gebruiken
+          href: managed-identity.md
+        - name: Een toegangscontrolebeleid gebruiken
+          href: group-permissions-for-apps.md
+    - name: Ontwikkelen
+      items:
+        - name: Gids voor Azure Key Vault-ontwikkelaars
+          href: developers-guide.md
+        - name: Web-app-geheimen opslaan
+          href: vs-secure-secret-appsettings.md
+        - name: Verificatie van service-tot-service met .NET
+          href: service-to-service-authentication.md
+        - name: Verbonden Key Vault-service gebruiken
+          href: vs-key-vault-add-connected-service.md
+    - name: Bewaken en beheren
+      items:
+        - name: Bewaking en waarschuwingen voor Azure Key Vault configureren
+          href: alert.md
+        - name: Azure Key Vault integreren met Azure Policy
+          href: azure-policy.md
+        - name: Logboekregistratie voor Azure Key Vault
+          href: logging.md
+        - name: Meldingen ontvangen via Azure Event Grid en Logic Apps
+          href: event-grid-logicapps.md
+        - name: Meldingen ontvangen via Azure Event Grid en Azure Automation
+          href: event-grid-tutorial.md
+    - name: Beveiligen
+      items:
+        - name: Integreren met de Azure Private Link-service
+          href: private-link-service.md
+        - name: Toegang tot Key Vault achter een firewall - Azure Key Vault
+          href: access-behind-firewall.md
+    - name: Voorlopig verwijderen
+      items:
+        - name: Voorlopig verwijderen gebruiken met CLI
+          href: soft-delete-cli.md
+        - name: Voorlopig verwijderen gebruiken met PowerShell
+          href: soft-delete-powershell.md
+    - name: Problemen oplossen
+      items:
+        - name: De tenant-id van de sleutelkluis wijzigen na verplaatsing van een abonnement
+          href: subscription-move-fix.md
+- name: Naslaginformatie
+  items:
+    - name: REST API-foutcodes - Azure Key Vault
+      href: rest-error-codes.md
+    - name: Algemene parameters en headers
+      href: common-parameters-and-headers.md
+    - name: Azure PowerShell
+      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
+    - name: Resource Manager-sjabloon
+      href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
+- name: Resources
+  items:
+    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
+      href: /learn/browse/?products=azure-key-vault
+    - name: Prijzen
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: Beschikbaarheid in regio’s
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+    - name: Service Level Agreement (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+    - name: Servicelimieten
+      href: ../general/service-limits.md
+    - name: Status van services
+      href: 'https://azure.microsoft.com/status/'
+    - name: Service-updates
+      href: 'https://azure.microsoft.com/updates/?product=key-vault'
+    - name: Blog
+      href: 'https://blogs.technet.com/b/kv/'
+    - name: Productfeedback
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

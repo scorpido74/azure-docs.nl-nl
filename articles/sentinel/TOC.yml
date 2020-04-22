@@ -87,7 +87,7 @@
             - name: Oplossingen op basis van CEF
               href: connect-common-event-format.md
               items:
-                - name: 'STAP 1: de agent implementeren'
+                - name: 'STAP 1: de doorstuurserver voor logboeken implementeren'
                   href: connect-cef-agent.md
                 - name: 'STAP 2: uw beveiligingsoplossing configureren'
                   href: connect-cef-solution-config.md
@@ -135,7 +135,7 @@
           href: livestream.md
     - name: Azure Sentinel verwijderen
       href: offboard.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Nuttige informatie
       href: resources.md

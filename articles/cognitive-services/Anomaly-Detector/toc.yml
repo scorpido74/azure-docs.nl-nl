@@ -10,12 +10,8 @@
   items:
     - name: Clientbibliotheek
       items:
-        - name: 'C# gebruiken'
-          href: quickstarts/detect-data-anomalies-csharp-sdk.md
-        - name: Python gebruiken
-          href: quickstarts/detect-data-anomalies-python-sdk.md
-        - name: Node.js gebruiken
-          href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+        - name: Anomaly Detector-clientbibliotheken
+          href: ./quickstarts/client-libraries.md
     - name: REST-API
       items:
         - name: 'C# gebruiken'

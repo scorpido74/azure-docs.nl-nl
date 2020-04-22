@@ -641,6 +641,10 @@
       items:
         - name: Verwerken van big data
           href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Integreren met Azure-services
+          href: ../blobs/data-lake-storage-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Gegevens filteren met queryversnelling
+          href: data-lake-storage-query-acceleration.md
         - name: Stuurprogramma van het Azure Blob-bestandssysteem voor Hadoop
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: URI van het Azure Blob-bestandssysteem
@@ -790,6 +794,10 @@
               href: data-lake-storage-explorer.md
             - name: Hadoop-bestandssysteem CLI
               href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Query’s uitvoeren
+          items:
+            - name: Gegevens filteren met queryversnelling
+              href: data-lake-storage-query-acceleration-how-to.md
         - name: Overdragen
           items:
             - name: AzCopy
@@ -838,6 +846,8 @@
           href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
           href: /rest/api/storageservices/data-lake-storage-gen2
+        - name: Queryversnelling
+          href: query-acceleration-sql-reference.md
         - name: AzCopy v10
           items:
             - name: azcopy

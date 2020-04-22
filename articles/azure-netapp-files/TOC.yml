@@ -33,8 +33,12 @@
       href: azure-netapp-files-cost-model.md
     - name: Richtlijnen voor Azure NetApp Files-netwerkplanning
       href: azure-netapp-files-network-topologies.md
-    - name: Oplossingsarchitecturen op basis van Azure NetApp Files
-      href: azure-netapp-files-solution-architectures.md
+    - name: Oplossingen
+      items:
+        - name: Oplossingsarchitecturen op basis van Azure NetApp Files
+          href: azure-netapp-files-solution-architectures.md
+        - name: Voordelen van het gebruik van Azure NetApp Files met Oracle Database
+          href: solutions-benefits-azure-netapp-files-oracle-database.md
     - name: Veelgestelde vragen over Azure NetApp Files
       href: azure-netapp-files-faqs.md
 - name: Instructiegidsen
@@ -65,6 +69,8 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: Ontwikkelen
       items:
+        - name: REST
+          href: azure-netapp-files-develop-with-rest-api.md
         - name: SDK's en CLI-hulpprogramma's voor Azure NetApp Files
           href: azure-netapp-files-sdk-cli.md
         - name: Problemen met Azure NetApp Files-resourceproviders oplossen

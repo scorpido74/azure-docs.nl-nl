@@ -208,6 +208,8 @@
           href: how-to-connect-pta-quick-start.md
         - name: Veelgestelde vragen over pass-through-verificatie
           href: how-to-connect-pta-faq.md
+        - name: PTA uitschakelen met 'Niet configureren' van Azure AD Connect
+          href: how-to-connect-pta-disable-do-not-configure.md
     - name: Federation Services beheren
       items:
         - name: Federatie met Azure AD Connect beheren

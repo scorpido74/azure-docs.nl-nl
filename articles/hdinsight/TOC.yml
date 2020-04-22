@@ -102,6 +102,8 @@
               href: hdinsight-hadoop-customize-cluster-linux.md
             - name: Scriptacties ontwikkelen
               href: hdinsight-hadoop-script-actions-linux.md
+            - name: Ondersteuning voor open source-software
+              href: open-source-software.md
             - name: Apache Hive-bibliotheken toevoegen
               href: hdinsight-hadoop-add-hive-libraries.md
             - name: Hue gebruiken
@@ -210,6 +212,10 @@
               href: ./hdinsight-key-scenarios-to-monitor.md
             - name: Beschikbaarheid van het cluster bewaken met Ambari en Azure Monitor-logboeken
               href: ./hdinsight-cluster-availability.md
+        - name: Problemen oplossen
+          items:
+            - name: Problemen met scriptacties oplossen
+              href: ./troubleshoot-script-action.md
     - name: Naslaginformatie
       items:
         - name: Azure PowerShell
@@ -878,6 +884,8 @@
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight-architectuur voor virtueel netwerk
           href: ./hdinsight-virtual-network-architecture.md
+        - name: Transport Layer Security
+          href: ./transport-layer-security.md
         - name: VNETs plannen voor HDInsight
           href: ./hdinsight-plan-virtual-network-deployment.md
         - name: Vereiste IP-adressen voor NSG's en UDR's

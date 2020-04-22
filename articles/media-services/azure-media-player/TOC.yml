@@ -1,0 +1,48 @@
+- name: Overzicht
+  items:
+    - name: Overzicht van Azure Media Player
+      href: azure-media-player-overview.md
+    - name: Releaseopmerkingen
+      href: azure-media-player-release-notes.md
+    - name: Wijzigingenlogboek
+      href: azure-media-player-changelog.md
+- name: Snelstartgidsen
+  items:
+    - name: Quickstart voor Azure Media Player
+      href: azure-media-player-quickstart.md
+- name: Zelfstudies
+  items:
+    - name: Volledige installatie van Azure Media Player
+      href: azure-media-player-full-setup.md
+- name: Concepten
+  items:
+    - name: Afspeeltechnologie
+      href: azure-media-player-playback-technology.md
+    - name: Beveiligde inhoud
+      href: azure-media-player-protected-content.md
+    - name: Functielijst
+      href: azure-media-player-feature-list.md
+    - name: URL-herschrijver
+      href: azure-media-player-url-rewriter.md
+    - name: Toegankelijkheid
+      href: azure-media-player-accessibility.md
+    - name: Invoegtoepassingen voor schrijven
+      href: azure-media-player-writing-plugins.md
+    - name: Galerie van invoegtoepassingen
+      href: azure-media-player-plugin-gallery.md
+    - name: Lokalisatie
+      href: azure-media-player-localization.md
+- name: Naslaginformatie
+  items:
+    - name: Voorbeelden
+      href: 'https://github.com/Azure-Samples/azure-media-player-samples'
+    - name: API
+      href: 'https://docs.microsoft.com/en-us/javascript/api/azuremediaplayer/?view=azure-node-latest'
+    - name: API-methoden
+      href: azure-media-player-api-methods.md
+    - name: Opties
+      href: azure-media-player-options.md
+    - name: Foutcodes
+      href: azure-media-player-error-codes.md
+    - name: Bekende problemen
+      href: azure-media-player-known-issues.md

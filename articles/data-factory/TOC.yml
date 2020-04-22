@@ -595,6 +595,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Azure AD-verificatie inschakelen voor Azure-SSIS-integratieruntime
           href: enable-aad-authentication-azure-ssis-ir.md
+        - name: Verbinding maken met gegevens met Windows-verificatie
+          href: ssis-azure-connect-with-windows-auth.md
+        - name: Bestanden opslaan en koppelen aan bestandsshares
+          href: ssis-azure-files-file-shares.md
         - name: Enterprise Edition inrichten voor Azure-SSIS-integratieruntime
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Configuratie aanpassen voor Azure-SSIS-integratieruntime

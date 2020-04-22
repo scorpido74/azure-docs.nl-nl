@@ -156,8 +156,6 @@
         - name: Descriptor toevoegen
           displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
-        - name: Migreren naar V3-creatie
-          href: luis-migration-authoring-entities.md
         - name: Met REST-API's
           items:
             - name: App bouwen met behulp van Node.js
@@ -193,6 +191,8 @@
           displayName: 'import, export'
     - name: Publiceren
       href: luis-how-to-publish-app.md
+    - name: Runtime queryvoorspelling
+      href: luis-get-started-get-intent-from-browser.md
     - name: Een app beheren
       items:
         - name: Azure-resources
@@ -216,11 +216,10 @@
       items:
         - name: Voor ontwikkelaars
           href: developer-reference-resource.md
-        - name: API's ontwerpen
-          href: luis-migration-api-authoring.md
-        - name: Migreren naar V3-API
+        - name: Migreren naar V3-creatie-API's
+          href: luis-migration-authoring-entities.md
+        - name: Migreren naar V3-voorspellings-API's
           href: luis-migration-api-v3.md
-          displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference, overridePredictions, override'
         - name: Migreren naar V2-API
           href: luis-migration-api-v1-to-v2.md
     - name: Containers gebruiken
