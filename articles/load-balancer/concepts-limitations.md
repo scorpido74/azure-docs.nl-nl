@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: a94b51e49951948974b8f42f6c89cd3c84f95d65
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7a7210915920ed9ab2a5ddc47a27c2587895a57a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80064284"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768267"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer componenten en beperkingen
 Azure Load Balancer bevat verschillende belangrijke onderdelen voor de werking ervan.  Deze onderdelen kunnen in uw abonnement worden geconfigureerd via de Azure-portal, Azure CLI of Azure PowerShell.  
@@ -95,7 +95,7 @@ Op de volgende afbeelding wordt een hash-distributiepunt weergegeven:
 
     - load-balancing regels concluderen hoe SNAT is geprogrammeerd. Regels voor taakverdeling zijn protocolspecifiek. SNAT is protocolspecifiek en de configuratie moet dit weerspiegelen in plaats van een bijwerking te creëren.
 
-    - **Meerdere frontends** Wanneer er meerdere frontends beschikbaar zijn, worden alle frontends gebruikt en vermenigvuldigt elke frontend het aantal beschikbare SNAT-poorten. Als u meer SNAT-poorten wilt omdat u verwacht of al een grote vraag ondervindt naar uitgaande verbindingen, u ook incrementele SNAT-poortvoorraad toevoegen door extra frontends, regels en backendpools aan dezelfde virtuele machine te configureren Middelen.
+    - **Meerdere frontends** Wanneer er meerdere frontends beschikbaar zijn, worden alle frontends gebruikt en vermenigvuldigt elke frontend het aantal beschikbare SNAT-poorten. Als u meer SNAT-poorten wilt omdat u verwacht of al een grote vraag ondervindt naar uitgaande verbindingen, u ook incrementele SNAT-poortvoorraad toevoegen door extra frontends, regels en backendpools te configureren aan dezelfde bronnen voor virtuele machines.
 
     - **Bepalen welke frontend wordt gebruikt voor uitgaande** U kiezen en controleren als u niet wilt dat een bepaalde frontend wordt gebruikt voor uitgaande verbindingen. Als u uitgaande verbindingen wilt beperken tot alleen afkomstig zijn van een specifiek IP-adres aan de voorzijde, u optioneel uitgaande SNAT uitschakelen op de regel die de uitgaande toewijzing uitdrukt.
 
@@ -171,6 +171,8 @@ Load balancer ondersteunt zowel Basic als Standard SKU's. Deze SKU's verschillen
 
 De volledige scenarioconfiguratie kan enigszins verschillen, afhankelijk van De SKU. Load balancer documentatie roept wanneer een artikel alleen van toepassing is op een specifieke SKU. Als u de verschillen met elkaar wilt vergelijken en wilt weten wat ze precies inhouden, kunt u de volgende tabel raadplegen. Zie overzicht [van Azure Standard Load Balancer](load-balancer-standard-overview.md)voor meer informatie.
 
+Zie [Een basisbalans voor basislastenafweging upgraden](upgrade-basic-standard.md)als u Basic Load Balancer wilt upgraden naar Standard.
+
 >[!NOTE]
 > Microsoft raadt Standard Load Balancer aan.
 Zelfstandige virtuele machines, beschikbaarheidssets en virtuele-machineschaalsets kunnen worden verbonden met slechts één SKU, niet met beide. Load Balancer en het openbare IP-adres SKU moeten overeenkomen wanneer u ze gebruikt met openbare IP-adressen. Load Balancer en openbare IP-SKU's zijn niet mutable.
@@ -207,6 +209,7 @@ Zie [Limieten voor load balancer voor](https://docs.microsoft.com/azure/azure-re
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- Zie [Een basisbalans upgrade om](upgrade-basic-standard.md) Basic Load Balancer te upgraden naar Standard Load Balancer.
 - Zie [Een openbare standaardbalanservoor maken](quickstart-load-balancer-standard-public-portal.md) om aan de slag te gaan met een Load Balancer: maak er een, maak VM's met een aangepaste IIS-extensie geïnstalleerd en laadbalans de web-app tussen de VM's.
 - Meer informatie over [Azure Load Balancer](load-balancer-overview.md).
 - Meer informatie over het gebruik van [standaardbalans- en beschikbaarheidszones](load-balancer-standard-availability-zones.md).

@@ -1,27 +1,24 @@
 ---
-title: Azure Data Lake Storage Gen2 PowerShell voor bestanden & ACL's (voorbeeld)
+title: Azure Data Lake Storage Gen2 PowerShell voor bestanden & ACL's
 description: PowerShell-cmdlets gebruiken om mappen en lijsten met bestands- en adresmaptoegangsbeheer (ACL) te beheren in opslagaccounts waarop hiërarchische naamruimte (HNS) is ingeschakeld.
 services: storage
 author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: b59c68e3f2edc0fbe5eee3c3861a3e5116d4fac6
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 68ffe40f93be3d10666ebad2eaa153fc9dc9687f
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262380"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768015"
 ---
-# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>PowerShell gebruiken om mappen, bestanden en ACL's te beheren in Azure Data Lake Storage Gen2 (voorbeeld)
+# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>PowerShell gebruiken om mappen, bestanden en ACL's te beheren in Azure Data Lake Storage Gen2
 
 In dit artikel ziet u hoe u PowerShell gebruiken voor het maken en beheren van mappen, bestanden en machtigingen in opslagaccounts waarop hiërarchische naamruimte (HNS) is ingeschakeld. 
-
-> [!IMPORTANT]
-> De PowerShell-module die in dit artikel wordt weergegeven, bevindt zich momenteel in een openbare preview.
 
 [Gen1 naar Gen2 mapping](#gen1-gen2-map) | [Geef feedback](https://github.com/Azure/azure-powershell/issues)
 
@@ -33,7 +30,7 @@ In dit artikel ziet u hoe u PowerShell gebruiken voor het maken en beheren van m
 > * .NET Framework is 4.7.2 of hoger geïnstalleerd. Zie [.NET Framework downloaden](https://dotnet.microsoft.com/download/dotnet-framework).
 > * PowerShell-versie `5.1` of hoger.
 
-## <a name="install-powershell-modules"></a>PowerShell-modules installeren
+## <a name="install-the-powershell-module"></a>De PowerShell-module installeren
 
 1. Controleer of de geïnstalleerde versie van `5.1` PowerShell of hoger is met de volgende opdracht.    
 
@@ -43,16 +40,10 @@ In dit artikel ziet u hoe u PowerShell gebruiken voor het maken en beheren van m
     
    Zie [Bestaande Windows PowerShell upgraden](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) als u uw versie van PowerShell wilt upgraden
     
-2. Installeer de nieuwste **PowershellGet-module.** Sluit vervolgens de PowerShell-console en open deze opnieuw.
+2. Installeer **de Az.Storage-module.**
 
    ```powershell
-   Install-Module PowerShellGet –Repository PSGallery –Force 
-   ```
-
-3. Installeer de voorbeeldmodule **voor Az.Storage.**
-
-   ```powershell
-   Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force 
+   Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
    Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) voor meer informatie over het installeren van PowerShell-modules

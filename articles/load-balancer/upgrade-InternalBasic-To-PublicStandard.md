@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3eca498e5716ae7c0a03e5e624d618899da8dc8
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659982"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770407"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Internal Load Balancer upgraden - Uitgaande verbinding vereist
 [Azure Standard Load Balancer](load-balancer-overview.md) biedt een uitgebreide set functionaliteit en hoge beschikbaarheid door zoneredundantie. Zie [vergelijkingstabel](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)voor meer informatie over Load Balancer SKU. Aangezien Standard Internal Load Balancer geen uitgaande verbinding biedt, bieden we een oplossing om in plaats daarvan een standaard public load balancer te maken.
@@ -21,8 +21,7 @@ Er zijn vier fasen in een upgrade:
 
 1. De configuratie migreren naar Standaard Balans voor openbare belasting
 2. VM's toevoegen aan backendpools van Standaard Public Load Balancer
-3. Een uitgaande regel maken op de load balancer voor uitgaande verbinding
-4. NSG-regels instellen voor Subnet/VM's die moeten worden onthouden van/naar het internet
+3. NSG-regels instellen voor Subnet/VM's die moeten worden onthouden van/naar het internet
 
 Dit artikel behandelt configuratiemigratie. Het toevoegen van VM's aan backendpools kan variëren afhankelijk van uw specifieke omgeving. Er worden echter enkele algemene aanbevelingen op hoog niveau [gedaan](#add-vms-to-backend-pools-of-standard-load-balancer).
 
@@ -32,6 +31,7 @@ Er is een Azure PowerShell-script beschikbaar dat het volgende doet:
 
 * Hiermee maakt u een standaard SKU Public Load Balancer in de resourcegroep en locatie die u opgeeft.
 * Kopieert naadloos de configuraties van de Basic SKU Internal Load Balancer naar de nieuw gemaakte Standaard Public Load Balancer.
+* Hiermee maakt u een uitgaande regel die de uitgangsconnectiviteit mogelijk maakt.
 
 ### <a name="caveatslimitations"></a>Kanttekeningen\Beperkingen
 
@@ -42,7 +42,7 @@ Er is een Azure PowerShell-script beschikbaar dat het volgende doet:
 
 ## <a name="download-the-script"></a>Het script downloaden
 
-Download het migratiescript uit de [PowerShell-galerie](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0).
+Download het migratiescript uit de [PowerShell-galerie](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0).
 ## <a name="use-the-script"></a>Het script gebruiken
 
 Er zijn twee opties voor u, afhankelijk van de installatie en voorkeuren van uw lokale PowerShell-omgeving:

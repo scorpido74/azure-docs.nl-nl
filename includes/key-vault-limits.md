@@ -2,16 +2,16 @@
 author: rothja
 ms.service: cost-management-billing
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 2d16febd4676ca7ba763eb7bc6dcecda4608ebb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8247b1cedc2c5ebc8577af6be485aed0fcd5d6af
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74224344"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768729"
 ---
-#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Belangrijkste transacties (maximaal toegestane transacties in 10 seconden, per kluis per regio<sup>1):</sup>
+### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Belangrijkste transacties (maximaal toegestane transacties in 10 seconden, per kluis per regio<sup>1):</sup>
 
 |Type sleutel|HSM-toets<br>CREATE-toets|HSM-toets<br>Alle andere transacties|Softwaresleutel<br>CREATE-toets|Softwaresleutel<br>Alle andere transacties|
 |:---|---:|---:|---:|---:|
@@ -34,7 +34,8 @@ ms.locfileid: "74224344"
 > - 125 RSA 4.096-bits HSM-key GET-transacties
 > - 124 RSA 4.096-bits HSM-key GET-transacties en 8 RSA 2.048-bits HSM-key GET-transacties
 
-#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Geheimen, beheerde opslagaccountsleutels en kluistransacties:
+### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Geheimen, beheerde opslagaccountsleutels en kluistransacties:
+
 | Type Transacties | Maximale transacties toegestaan in 10 seconden, per kluis per regio<sup>1</sup> |
 | --- | --- |
 | Alle transacties |2.000 |
@@ -42,3 +43,10 @@ ms.locfileid: "74224344"
 Zie [Azure Key Vault-beperkingsrichtlijnen](../articles/key-vault/key-vault-ovw-throttling.md)voor informatie over het omgaan met beperking wanneer deze limieten worden overschreden.
 
 <sup>1</sup> Een abonnementslimiet voor alle transactietypen is vijf keer per sleutelkluislimiet. HSM-andere transacties per abonnement zijn bijvoorbeeld beperkt tot 5.000 transacties in 10 seconden per abonnement.
+
+### <a name="azure-private-link-integration"></a>Azure Private Link-integratie
+
+| Resource | Limiet |
+| -------- | ----- |
+| Privéeindpunten per sleutelkluis | 64 |
+| Sleutelkluizen met privéeindpunten per abonnement | 64 |

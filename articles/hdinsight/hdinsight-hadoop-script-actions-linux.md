@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931702"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767552"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Scriptactieontwikkeling met HDInsight
 
@@ -159,7 +159,7 @@ In dit voorbeeld `hdfs` maakt de opdracht op transparante wijze gebruik van de s
 HDInsight registreert scriptuitvoer die is geschreven naar STDOUT en STDERR. U deze informatie bekijken via de gebruikersinterface van het Ambari-web.
 
 > [!NOTE]  
-> Apache Ambari is alleen beschikbaar als het cluster is gemaakt. Als u een scriptactie gebruikt tijdens het maken van een cluster en het maken mislukt, raadpleegt u de sectie Probleemoplossing [HDInsight-clusters aanpassen met behulp](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) van scriptactie voor andere manieren om gelogde informatie te openen.
+> Apache Ambari is alleen beschikbaar als het cluster is gemaakt. Zie [Scriptacties oplossen](./troubleshoot-script-action.md) voor andere manieren om toegang te krijgen tot geregistreerde informatie als u een scriptactie gebruikt tijdens het maken van een cluster en dat het maken mislukt.
 
 De meeste hulpprogramma's en installatiepakketten schrijven al informatie naar STDOUT en STDERR, maar misschien wilt u extra logboekregistratie toevoegen. Als u tekst naar STDOUT wilt verzenden, gebruikt u `echo`. Bijvoorbeeld:
 
@@ -175,7 +175,7 @@ echo "Getting ready to install Foo"
 
 Hiermee wordt informatie die is geschreven naar STDOUT omgeleid naar STDERR (2). Zie voor meer informatie over [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)io-omleiding .
 
-Zie [HDInsight-clusters aanpassen met scriptactie](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) voor meer informatie over het weergeven van informatie die is vastgelegd in scriptacties.
+Zie [Scriptacties oplossen](./troubleshoot-script-action.md)voor meer informatie over het weergeven van gegevens die zijn vastgelegd door scriptacties.
 
 ### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a>Bestanden opslaan als ASCII met LF-regeleinde
 

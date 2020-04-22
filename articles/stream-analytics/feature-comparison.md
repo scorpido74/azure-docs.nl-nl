@@ -6,16 +6,19 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: cdae6a3b7319aefa9d4f19b5d613d1afb8b6804a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3b27a50fa86916b71c84b30ecdbf45deb0ec45c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235312"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770760"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Vergelijking van azure Stream Analytics-functies
 
 Met Azure Stream Analytics u streamingoplossingen maken in de cloud en op de IoT Edge met [Azure portal,](stream-analytics-quick-create-portal.md) [Visual Studio](stream-analytics-quick-create-vs.md)en Visual [Studio Code.](quick-create-vs-code.md) De tabellen in dit artikel laten zien welke functies worden ondersteund door elk platform voor beide taaktypen.
+
+> [!NOTE]
+> De hulpprogramma's Visual Studio en Visual Studio Code ondersteunen geen vacatures in de regio's China East, China North, Germany Central en Germany NorthEast.
 
 ## <a name="cloud-job-features"></a>Functies voor cloudfuncties
 
@@ -57,7 +60,7 @@ Met Azure Stream Analytics u streamingoplossingen maken in de cloud en op de IoT
 |Een taak exporteren naar een lokaal project     |Nee         |Ja         |Nee         |
 |Querytesten met een voorbeeldbestand     |Ja         |Ja         |Nee         |
 |Invoer en uitvoer delen voor meerdere query's     |Nee         |Ja         |Nee         |
-|C# UDF     |Nee         |Ja         |Nee         |
+|C#-UDF     |Nee         |Ja         |Nee         |
 |Vacatures indienen     |Ja         |Ja         |Nee         |
 |Taken weergeven en taakentiteiten weergeven     |Ja         |Ja         |Nee         |
 |Jobstatistieken en -diagram weergeven     |Ja         |Gedeeltelijk         |Nee         |

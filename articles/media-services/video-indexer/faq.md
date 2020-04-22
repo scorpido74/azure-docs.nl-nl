@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: dd41596b6631bb63e1625325f8bec065b43881cd
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421386"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767210"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer veelgestelde vragen
 
@@ -43,7 +43,7 @@ Zie [Overzicht](video-indexer-overview.md)voor meer informatie en meer functies 
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>Hoe ga ik aan de slag met Video Indexer?
 
-Video Indexer bevat een gratis proefaanbod dat u 600 minuten biedt in de webinterface en 2.400 minuten via de API. U [inloggen op de webinterface video-indexer](https://www.videoindexer.ai/) en deze zelf proberen met behulp van een webidentiteit en zonder dat u een Azure-abonnement hoeft in te stellen. 
+Video Indexer bevat een gratis proefaanbod dat u 600 minuten biedt in de webinterface en 2.400 minuten via de API. U [inloggen op de webinterface video-indexer](https://www.videoindexer.ai/) en deze zelf proberen met behulp van een webidentiteit en zonder dat u een Azure-abonnement hoeft in te stellen. Volg [dit eenvoudige introductielab](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md) om een beter idee te krijgen van het gebruik van Video Indexer.
 
 Als u video's en audiovliegen op schaal wilt indexeren, u Video Indexer verbinden met een betaald Microsoft Azure-abonnement. Meer informatie over de prijzen vindt u op de [prijspagina.](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)
 
@@ -61,9 +61,18 @@ Nee, Video Indexer biedt de integratie van meerdere machine learning-modellen in
 
 Video Indexer ondersteunt de meest voorkomende mediaformaten. Raadpleeg de [standaardindelingenlijst van Azure Media Encoder](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) voor meer informatie.
 
-### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Hoe upload ik een media naar Video Indexer?
+### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Hoe upload ik een mediabestand naar Video Indexer en wat zijn de beperkingen?
 
-In de webportal Video Indexer u een mediabestand uploaden via het dialoogvenster bestandsupload of door te wijzen op een URL die rechtstreeks het bronbestand host (zie [voorbeeld).](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4) Elke URL die de media-inhoud host met een iFrame- of insluitcode, werkt niet (zie [voorbeeld).](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11) De Video Indexer API vereist dat u het invoerbestand opgeeft via een URL of een bytearray. Uploads via een URL met behulp van de API zijn beperkt tot 10 GB, maar hebben geen tijdslimiet. Voor meer informatie, zie deze [how-to gids](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
+In de webportal Video Indexer u een mediabestand uploaden via het dialoogvenster bestandsupload of door te wijzen op een URL die rechtstreeks het bronbestand host (zie [voorbeeld).](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4) Elke URL die de media-inhoud host met een iFrame- of insluitcode, werkt niet (zie [voorbeeld).](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11) 
+
+Voor meer informatie, zie deze [how-to gids](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
+
+#### <a name="limitations"></a>Beperkingen
+
+* De naam van de video mag niet hoger zijn dan 80 tekens.
+* Als u een video uploadt met bytearray, is de videogrootte beperkt tot 2 GB (en 30 GB bij gebruik van URL). 
+
+Zie [Overwegingen en beperkingen uploaden](upload-index-videos.md#uploading-considerations-and-limitations)voor de uitgebreide lijst .
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Hoe lang duurt het video-indexer om inzichten uit media te halen?
 
@@ -71,7 +80,7 @@ De hoeveelheid tijd die nodig is om een video- of audiobestand te indexeren, zow
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Kan ik aangepaste workflows maken om processen te automatiseren met Video Indexer?
 
-Ja, u Video Indexer integreren in serverloze technologieën zoals Logic Apps, Flow en [Azure-functies.](https://azure.microsoft.com/services/functions/) Meer informatie over de [Logic App-](https://azure.microsoft.com/services/logic-apps/) en [Flow-connectors](https://flow.microsoft.com/en-us/) voor video-indexer vindt [u hier.](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) 
+Ja, u Video Indexer integreren in serverloze technologieën zoals Logic Apps, Flow en [Azure-functies.](https://azure.microsoft.com/services/functions/) Meer informatie over de [Logic App-](https://azure.microsoft.com/services/logic-apps/) en [Flow-connectors](https://flow.microsoft.com/en-us/) voor video-indexer vindt [u hier.](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) U een aantal automatiseringsprojecten zien die door partners worden uitgevoerd in de [repo Video-indexervoorbeelden.](https://github.com/Azure-Samples/media-services-video-indexer)
 
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>In welke Azure-regio's is video-indexer beschikbaar?
 
@@ -84,6 +93,12 @@ Ja. In Video Indexer u een aantal van de beschikbare modellen aanpassen aan uw b
 Ons persoonsmodel ondersteunt bijvoorbeeld kant-en-klare 1.000.000 gezichten met herkenning door beroemdheden, maar je het ook trainen om andere gezichten te herkennen die niet in die database staan. 
 
 Zie artikelen over het aanpassen [Person](customize-person-model-overview.md)van persoons-, [merken-](customize-brands-model-overview.md)en [taalmodellen voor](customize-language-model-overview.md) meer informatie. 
+
+###  <a name="can-i-edit-the-videos-in-my-library"></a>Kan ik de video's in mijn bibliotheek bewerken?
+
+Ja. Druk op de **videoknop bewerken** van het bibliotheekscherm of op de knop **In-editor openen** vanaf het spelersscherm om naar het tabblad **Projecten** te gaan. Je een nieuw project maken en meer video's uit je bibliotheek toevoegen om ze samen te bewerken, zodra je klaar bent, kun je je video renderen en downloaden. 
+
+Als je inzicht wilt krijgen in je nieuwe video, indexeer je deze met Video Indexer en wordt deze weergegeven in je bibliotheek met zijn inzichten.
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Wat is de SLA voor video-indexer?
 

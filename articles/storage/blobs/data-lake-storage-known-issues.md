@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 204b5dd4661b34aae8b76d65505a65e20f293f0f
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115329"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767974"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -62,14 +62,11 @@ Niet-beheerde VM-schijven worden niet ondersteund in accounts met een hiërarchi
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="file-system-support-in-sdks"></a>Ondersteuning voor bestandssystemen in SDKs
+## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>Ondersteuning voor bestandssystemen in SDKs, PowerShell en Azure CLI
 
-ACL-bewerkingen oppakken en instellen zijn momenteel niet recursief.
-
-## <a name="file-system-support-in-powershell-and-azure-cli"></a>Ondersteuning voor bestandssystemen in PowerShell en Azure CLI
-
-- [PowerShell-](data-lake-storage-directory-file-acl-powershell.md) en [Azure CLI-ondersteuning](data-lake-storage-directory-file-acl-cli.md) staan in een openbare preview.
 - ACL-bewerkingen oppakken en instellen zijn momenteel niet recursief.
+- [Azure CLI-ondersteuning](data-lake-storage-directory-file-acl-cli.md) bevindt zich in een openbare preview.
+
 
 ## <a name="lifecycle-management-policies"></a>Beleid voor levenscyclusbeheer
 

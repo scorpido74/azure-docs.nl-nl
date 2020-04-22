@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b199854867c48906061cff65bad21e514456c911
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 845948d9aec28ee79a11fb11aaef4cfbf1b263fa
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81378702"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770557"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Gebruikers configureren en inschakelen voor verificatie via sms met Azure Active Directory (voorbeeld)
 
@@ -40,7 +40,8 @@ Als u dit artikel wilt voltooien, hebt u de volgende bronnen en bevoegdheden nod
 * U hebt *algemene beheerdersrechten* nodig in uw Azure AD-tenant om verificatie via sms in te schakelen.
 * Elke gebruiker die is ingeschakeld in het beleid voor verificatiemethode voor sms'en moet een licentie hebben, zelfs als deze deze niet wordt gebruikt. Elke ingeschakelde gebruiker moet een van de volgende Azure AD- of Microsoft 365-licenties hebben:
     * [Azure AD Premium P1 of P2][azuread-licensing]
-    * [Microsoft 365 F1 of F3][m365-firstline-workers-licensing]
+    * [Microsoft 365 (M365) F1 of F3][m365-firstline-workers-licensing]
+    * [Enterprise Mobility + Security (EMS) E3 of E5][ems-licensing] of [Microsoft 365 (M365) E3 of E5][m365-licensing]
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -161,3 +162,5 @@ Zie [Wachtwoordloze verificatieopties voor Azure AD voor][concepts-passwordless]
 [office]: https://www.office.com
 [m365-firstline-workers-licensing]: https://www.microsoft.com/licensing/news/m365-firstline-workers
 [azuread-licensing]: https://azure.microsoft.com/pricing/details/active-directory/
+[ems-licensing]: https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing
+[m365-licensing]: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans

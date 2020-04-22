@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 76ef9f92b6b6633982242ccafab1950e0ef5f410
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582801"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769752"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Notities voor v3-release van Azure Media Services
 
@@ -35,7 +35,13 @@ Om op de hoogte te blijven van de meest recente ontwikkelingen, biedt dit artike
 > U de [Azure-portal](https://portal.azure.com/) gebruiken om v3 [Live Events](live-events-outputs-concept.md), bekijk [v3-assets](assets-concept.md), informatie te krijgen over toegang tot API's. Gebruik voor alle andere beheertaken (bijvoorbeeld Transformaties en Taken) de [REST API,](https://aka.ms/ams-v3-rest-ref) [CLI](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [SDK's.](media-services-apis-overview.md#sdks)
 
 Zie [Migratierichtlijnen voor het overstappen van Media Services v2 naar v3](migrate-from-v2-to-v3.md#known-issues)voor meer informatie.
- 
+
+## <a name="april-2020"></a>April 2020
+
+### <a name="improvements-in-documentation"></a>Verbeteringen in de documentatie
+
+Azure Media Player-documenten zijn gemigreerd naar de [Azure-documentatie.](../azure-media-player/azure-media-player-overview.md)
+
 ## <a name="january-2020"></a>Januari 2020
 
 ### <a name="improvements-in-media-processors"></a>Verbeteringen in mediaprocessors
@@ -361,4 +367,5 @@ Bekijk het communityartikel [van Azure Media Services](media-services-community.
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht](media-services-overview.md)
+- [Media Services v3 Documentatie-updates](docs-release-notes.md)
 - [Media Services v2 release notes](../previous/media-services-release-notes.md)

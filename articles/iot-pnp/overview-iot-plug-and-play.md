@@ -1,20 +1,20 @@
 ---
 title: Inleiding tot IoT Plug and Play Preview | Microsoft Documenten
 description: Meer informatie over IoT Plug and Play Preview. IoT Plug and Play is gebaseerd op een open modelleringstaal waarmee IoT-apparaten hun mogelijkheden kunnen declareren. IoT-apparaten presenteren die verklaring, een apparaatcapaciteitsmodel genoemd, wanneer ze verbinding maken met cloudoplossingen zoals Azure IoT Central of partnertoepassingen. De cloudoplossing kan het apparaat vervolgens automatisch begrijpen en ermee communiceren , allemaal zonder code te schrijven.
-author: ChrisGMsft
-ms.author: chrisgre
+author: Philmea
+ms.author: philmea
 ms.date: 12/23/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 0399e1659fb7cc6a650c6b3c1d0189c8802d4904
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 12f3febac2c5c8ed01b9b156a64dc77f6ed0704f
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80064315"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770439"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Wat is IoT Plug and Play Preview?
 

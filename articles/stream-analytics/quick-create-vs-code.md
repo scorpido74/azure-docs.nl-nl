@@ -7,22 +7,25 @@ ms.author: mamccrea
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fe666359b9ed2773f615ff496f4032bda5e74dc2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76313872"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767764"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Snelstart: een Azure Stream Analytics-taak maken in Visual Studio Code (voorbeeld)
 
 Met deze quickstart ziet u hoe u een Azure Stream Analytics-taak maakt en uitvoert met behulp van de azure stream analytics-extensie voor Visual Studio Code. In de voorbeeldtaak worden streaminggegevens van een Azure IoT Hub-apparaat gelezen. U definieert een taak die de gemiddelde temperatuur bij meer dan 27° berekent en de resulterende uitvoergebeurtenissen naar een nieuw bestand in blobopslag schrijft.
 
+> [!NOTE]
+> De hulpprogramma's Visual Studio en Visual Studio Code ondersteunen geen vacatures in de regio's China East, China North, Germany Central en Germany NorthEast.
+
 ## <a name="before-you-begin"></a>Voordat u begint
 
 * Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/)aan.
 
-* Meld u aan bij [Azure Portal](https://portal.azure.com/).
+* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 * Installeer [Visual Studio Code](https://code.visualstudio.com/).
 
@@ -52,7 +55,7 @@ Met deze quickstart ziet u hoe u een Azure Stream Analytics-taak maakt en uitvoe
 
 Voordat u de taak Stream Analytics definieert, moet u de gegevens voorbereiden die later zijn geconfigureerd als de taakinvoer. Voer de volgende stappen uit om de invoergegevens voor te bereiden die de taak vereist:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Selecteer **Een bron** > **Internet of Things** > **IoT Hub maken**.
 
@@ -141,14 +144,6 @@ Voordat u de taak Stream Analytics definieert, moet u de gegevens voorbereiden d
    HAVING Temperature > 27
    ```
 
-## <a name="test-the-query-locally-with-sample-data"></a>De query lokaal testen met voorbeeldgegevens
-
-Voordat u de query in de cloud uitvoert, u deze lokaal testen met een lokaal voorbeeldgegevensbestand of met gegevens die zijn vastgelegd uit live-invoer om de querylogica te verifiëren.
-
-Volg de instructies in [Query's lokaal testen met voorbeeldgegevens](visual-studio-code-local-run.md) voor meer informatie.
-
- ![Testen met voorbeeldgegevens in Visual Studio Code](./media/vscode-local-run/localrun-localinput.gif)
-
 ## <a name="define-a-live-input"></a>Een live-invoer definiëren
 
 1. Klik met de rechtermuisknop op de map **Invoer** in uw Stream Analytics-project. Selecteer vervolgens **ASA: Invoer toevoegen** in het contextmenu.
@@ -175,7 +170,7 @@ Volg de instructies in [Query's lokaal testen met voorbeeldgegevens](visual-stud
 
    |Instelling|Voorgestelde waarde|Beschrijving|
    |-------|---------------|-----------|
-   |Name|Invoer|Voer een naam in om de invoer van de taak te identificeren.|
+   |Naam|Invoer|Voer een naam in om de invoer van de taak te identificeren.|
    |IotHubNamespace|MyASAIoTHub|Kies of voer de naam van uw IoT-hub in. IoT-hubnamen worden automatisch gedetecteerd als ze in hetzelfde abonnement zijn gemaakt.|
    |Naam van SharedAccessPolicyName|iothubowner| |
 
@@ -207,7 +202,7 @@ Selecteer **Voorbeeldgegevens** in **IoTHub1.json** vanaf de bovenste regel. Som
 
    |Instelling|Voorgestelde waarde|Beschrijving|
    |-------|---------------|-----------|
-   |Name|Uitvoer| Voer een naam in om de uitvoer van de taak te identificeren.|
+   |Naam|Uitvoer| Voer een naam in om de uitvoer van de taak te identificeren.|
    |Opslagaccount|asaquickstartstorage|Kies of voer de naam van uw opslagaccount in. Opslagaccountnamen worden automatisch gedetecteerd als ze in hetzelfde abonnement zijn gemaakt.|
    |Container|container1|Selecteer de bestaande container die u in uw opslagaccount hebt gemaakt.|
    |Padpatroon|output|Voer de naam in van een bestandspad dat in de container moet worden gemaakt.|
@@ -279,6 +274,8 @@ Als u van plan bent om de taak in de toekomst te gebruiken, u deze stoppen en la
 In deze quickstart hebt u een eenvoudige Stream Analytics-taak geïmplementeerd met Behulp van Visual Studio Code. U streamanalytics-taken ook implementeren via de [Azure-portal,](stream-analytics-quick-create-portal.md) [PowerShell](stream-analytics-quick-create-powershell.md)en [Visual Studio.](stream-analytics-quick-create-vs.md)
 
 Ga voor meer informatie over Azure Stream Analytics Tools for Visual Studio Code verder naar de volgende artikelen:
+
+* [Query's van TestStream Analytics lokaal met voorbeeldgegevens met Behulp van Visual Studio Code](visual-studio-code-local-run.md)
 
 * [Azure Stream Analytics-taken lokaal testen tegen live-invoer met Visual Studio Code](visual-studio-code-local-run-live-input.md)
 

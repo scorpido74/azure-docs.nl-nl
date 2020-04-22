@@ -3,12 +3,12 @@ title: Hybride Kubernetes-clusters configureren met Azure Monitor voor container
 description: In dit artikel wordt beschreven hoe u Azure Monitor configureren voor containers om Kubernetes-clusters te controleren die worden gehost op Azure Stack of een andere omgeving.
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 5a973e7e500906ebe833ec4cc6fd2fa8ee79c19e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6c2782fdd810403a793f6ef682d1112fadc22465
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255427"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769039"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hybride Kubernetes-clusters configureren met Azure Monitor voor containers
 
@@ -240,6 +240,9 @@ Als u eerst de volledige resource-id van `workspaceResourceId` uw Log Analytics-
        Nadat u de bewaking hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u statusstatistieken voor het cluster weergeven.
 
 ## <a name="install-the-chart"></a>De grafiek installeren
+
+>[!NOTE]
+>De volgende opdrachten zijn alleen van toepassing op Helm versie 2. Het gebruik van de parameter --name is niet van toepassing op Helm versie 3.
 
 Ga als volgt te werk om de HELM-grafiek in te schakelen:
 

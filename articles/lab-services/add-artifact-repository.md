@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 04/21/2019
 ms.author: spelluru
-ms.openlocfilehash: a0dbd92533703a56f1ec2478fab8944656129247
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bb871119bece71c705ad9621a7c76c4b5ed0bc7
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295512"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770242"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Voeg een artefactrepository toe aan uw lab in DevTest Labs
 Met DevTest Labs u een artefact opgeven dat aan een VM moet worden toegevoegd op het moment dat de VM wordt gemaakt of nadat de VM is gemaakt. Dit artefact kan een hulpmiddel of een toepassing zijn die u op de VM wilt installeren. Artefacten worden gedefinieerd in een JSON-bestand dat is geladen vanuit een GitHub- of Azure DevOps Git-opslagplaats.
@@ -52,20 +52,20 @@ Als u een opslagplaats aan uw lab wilt toevoegen, krijgt u eerst belangrijke inf
 4. Sla de URL op. U gebruikt de URL later.
 5. Als u een persoonlijk toegangstoken wilt maken, selecteert u in het vervolgkeuzemenu gebruikersaccount **Mijn profiel**.
 6. Selecteer **beveiliging**op de pagina profielinformatie .
-7. Selecteer **op** het tabblad Beveiliging de optie **Toevoegen**.
-8. Ga op de pagina **Een persoonlijke toegangstoken maken:**
-   1. Voer een **beschrijving** voor het token in.
-   2. Selecteer **180 dagen**in de lijst **Verloopt in** .
-   3. Selecteer **alle** toegankelijke **accounts**in de lijst Accounts .
-   4. Selecteer de optie **Alle scopes.**
-   5. Selecteer **Token maken**.
+7. Selecteer op het tabblad **Beveiligings- > Persoonlijke toegangstokens** de optie **+ Nieuw token**.
+8. Ga op de pagina **Een nieuwe persoonlijke toegangstoken maken:**
+   1. Voer een **naam** in voor het token.
+   2. Selecteer **alle** toegankelijke **organisaties**in de lijst Organisatie .
+   3. Selecteer in de lijst **Expiratie (UTC)** **90 dagen**of een aangepaste gedefinieerde vervaldatum.
+   4. Selecteer de optie **Volledige toegang** voor Scopes.
+   5. Selecteer **Maken**.
 9. Het nieuwe token wordt weergegeven in de lijst **Met persoonlijke toegangstokens.** Selecteer **Token kopiëren**en sla de tokenwaarde op voor later gebruik.
 10. Ga verder naar de sectie Uw lab verbinden met de opslagplaats.
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
 In deze sectie vindt u stappen om een artefact-opslagplaats toe te voegen aan een lab in de Azure-portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Meer services**en selecteer Vervolgens **DevTest Labs** in de lijst met services.
 3. Selecteer in de lijst met labs uw lab.
 4. Selecteer **Configuratie en beleid** in het linkermenu.

@@ -2,17 +2,17 @@
 title: Tijdelijke verbindingsfouten - Azure Database voor MySQL
 description: Meer informatie over het omgaan met tijdelijke verbindingsfouten en efficiënt verbinding maken met Azure Database voor MySQL.
 keywords: mysql-verbinding, verbindingstekenreeks, verbindingsproblemen, tijdelijke fout, verbindingsfout, efficiënt verbinden
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 79c5c7e485cc9cb03757b8a981cef92d79b81c3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f9101b4108f5512ee9779f4633845b34fdfad5a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537173"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767873"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Tijdelijke fouten verwerken en efficiënt verbinding maken met Azure Database voor MySQL
 

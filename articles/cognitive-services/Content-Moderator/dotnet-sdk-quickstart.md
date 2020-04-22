@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: dccd2ebb6ac2c11e19e986d39eabda5f0ab6a8fc
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: e93cfd6d44e6a59b4b3d94a49bef766fadf4381c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76774291"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770626"
 ---
 # <a name="quickstart-content-moderator-client-library-for-net"></a>Snelstart: clientbibliotheek voor inhoudsmoderator voor .NET
 
@@ -73,11 +73,11 @@ Build succeeded.
 
 Open in de projectmap het *Program.cs* bestand in uw voorkeurseditor of IDE. Voeg de volgende `using` instructies toe:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_using)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
 
 Maak in de klasse **Programma** variabelen voor de eindpuntlocatie en sleutel van uw resource als omgevingsvariabelen.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_creds)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
 
 > [!NOTE]
 > Als u de omgevingsvariabelen hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell sluiten en opnieuw openen om toegang te krijgen tot de variabelen.
@@ -96,7 +96,7 @@ Als u de Visual Studio IDE gebruikt, is de clientbibliotheek beschikbaar als dow
 
 De volgende klassen behandelen enkele van de belangrijkste functies van de Content Moderator .NET SDK.
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|Deze klasse is nodig voor alle functionaliteit van Content Moderator. U wilt deze met uw abonnementsgegevens en u gebruikt deze om exemplaren van andere klassen te produceren.|
 |[ImageModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|Deze klasse biedt de functionaliteit voor het analyseren van afbeeldingen voor inhoud voor volwassenen, persoonlijke informatie of menselijke gezichten.|
@@ -117,13 +117,13 @@ In deze codefragmenten ziet u hoe u de volgende taken uitvoeren met de clientbib
 
 In een nieuwe methode u clientobjecten instantiëren met uw eindpunt en sleutel. U hebt niet voor elk scenario een andere client nodig, maar het kan wel helpen om uw code georganiseerd te houden.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_client)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_client)]
 
 ## <a name="moderate-text"></a>Matige tekst
 
 De volgende code gebruikt een Content Moderator-client om een teksttekst te analyseren en de resultaten op de console af te drukken. Definieer in de hoofdmap van de klasse **Programma** invoer- en uitvoerbestanden:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_text_vars)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_text_vars)]
 
 Voeg vervolgens aan de basis van uw project een *TextFile.txt-bestand* toe. Voeg uw eigen tekst toe aan dit bestand of gebruik de volgende voorbeeldtekst:
 
@@ -134,11 +134,11 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 
 Voeg de volgende methodeaanroepen toe aan uw `Main` methode:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_textmod_call)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
 
 Definieer vervolgens de methode voor tekstmatiging ergens in de klasse **Programma:**
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_textmod)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod)]
 
 ## <a name="moderate-images"></a>Matige afbeeldingen
 
@@ -151,7 +151,7 @@ De volgende code maakt gebruik van een Content Moderator client, samen met een [
 
 Definieer uw invoer- en uitvoerbestanden:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_image_vars)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_image_vars)]
 
 Maak vervolgens het invoerbestand *ImageFiles.txt*aan de basis van uw project. In dit bestand voegt u de URL's van afbeeldingen toe om op elke regel één URL te analyseren.&mdash; U de volgende voorbeeldafbeeldingen gebruiken:
 
@@ -162,13 +162,13 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Geef uw invoer- en uitvoerbestanden door `Main` naar de volgende methodeaanroep in de methode. U definieert deze methode in een latere stap.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_textmod_call)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
 
 ### <a name="define-helper-class"></a>Helperklasse definiëren
 
 Voeg de volgende klassendefinitie toe in de klasse **Programma.** Deze binnenklasse verwerkt de resultaten van beeldmatiging.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_dataclass)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_dataclass)]
 
 ### <a name="define-the-image-moderation-method"></a>De methode voor beeldbeheer definiëren
 
@@ -176,17 +176,17 @@ Met de volgende methode worden de URL's van de afbeelding in een tekstbestand ge
 
 #### <a name="iterate-through-image-urls"></a>Herhalen door beeld-URL's
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_imagemod_iterate)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_iterate)]
 
 #### <a name="analyze-content"></a>Inhoud analyseren
 
 Zie de handleiding [Voor](./image-moderation-api.md) afbeeldingsconcepten voor meer informatie over de afbeeldingskenmerken waarvoor inhoudsmoderator wordt weergegeven.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_imagemod_analyze)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_analyze)]
 
 #### <a name="write-moderation-results-to-file"></a>Moderatieresultaten schrijven om in te dienen
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_imagemod_save)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_save)]
 
 ## <a name="create-a-review"></a>Een beoordeling maken
 
@@ -194,53 +194,53 @@ U de Inhoudsmoderator .NET SDK gebruiken om inhoud in de [beoordelingstool](http
 
 De methode in deze sectie gebruikt de klasse [Reviews](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) om een beoordeling te maken, de id op te halen en de gegevens ervan te controleren nadat ze menselijke invoer hebben ontvangen via de webportal van de beoordelingstool. Het registreert al deze informatie in een uitvoertekstbestand. Roep de methode `Main` aan vanuit uw methode:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_review_call)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_call)]
 
 ### <a name="get-sample-images"></a>Voorbeeldafbeeldingen bekijken
 
 Declareer de volgende array aan de basis van uw **programmaklasse.** Deze variabele verwijst naar een voorbeeldafbeelding die u wilt gebruiken om de revisie te maken.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_review_urls)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_urls)]
 
 ### <a name="get-review-credentials"></a>Controlereferenties ophalen
 
 Meld u aan bij het [gereedschap Controleren](https://contentmoderator.cognitive.microsoft.com) en haal uw teamnaam op. Wijs het vervolgens toe aan de juiste variabele in de klasse **Programma.** Optioneel u een callback-eindpunt instellen om updates te ontvangen over de activiteit van de beoordeling.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_review_vars)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_vars)]
 
 ### <a name="define-helper-class"></a>Helperklasse definiëren
 
 Voeg de volgende klassendefinitie toe in de klasse **Programma.** Deze klasse wordt gebruikt om één revisieinstantie weer te geven die wordt ingediend bij het hulpprogramma Controleren.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_review_item)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_item)]
 
 ### <a name="define-helper-method"></a>Helpermethode definiëren
 
 Voeg de volgende methode toe aan de klasse **Programma.** Met deze methode worden de resultaten van controlequery's naar het uitvoertekstbestand geschreven.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_writeline)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_writeline)]
 
 ### <a name="define-the-review-creation-method"></a>De methode voor het maken van revisie definiëren
 
 Nu bent u klaar om de methode te definiëren waarmee de revisiecreatie en query's worden verwerkt. Voeg een nieuwe methode **toe, CreateReviews**en definieer de volgende lokale variabelen.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_createreview_fields)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_fields)]
 
 #### <a name="post-reviews-to-the-review-tool"></a>Beoordelingen plaatsen op de tool Beoordeling
 
 Voeg vervolgens de volgende code toe om de gegeven voorbeeldafbeeldingen te herhalen, metagegevens toe te voegen en deze in één batch naar het gereedschap Controleren te verzenden. 
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_createreview_create)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_create)]
 
 Het object dat wordt geretourneerd uit de API-aanroep bevat unieke ID-waarden voor elke geüploade afbeelding. De volgende code onteert deze id's en gebruikt deze vervolgens om Inhoudsmoderator op te vragen voor de status van elke afbeelding in de batch.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_createreview_ids)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_ids)]
 
 ### <a name="get-review-details"></a>Lees meer details van de beoordeling
 
 De volgende code zorgt ervoor dat het programma wacht op invoer van de gebruiker. Wanneer u bij deze stap bij runtime aankomt, u zelf naar de [tool Controleren](https://contentmoderator.cognitive.microsoft.com) gaan, controleren of de voorbeeldafbeelding is geüpload en ermee communiceren. Zie de [handleiding Beoordelingen voor](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images)informatie over hoe u met een beoordeling communiceren. Wanneer u klaar bent, u op elke toets drukken om het programma voort te zetten en de resultaten van het beoordelingsproces op te halen.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ContentModerator/Program.cs?name=snippet_createreview_results)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_results)]
 
 Als u in dit scenario een callback-eindpunt hebt gebruikt, moet het een gebeurtenis in deze indeling ontvangen:
 
@@ -281,4 +281,4 @@ In deze quickstart heb je geleerd hoe je de Bibliotheek Inhoudsmoderator .NET ge
 > [Beeldmoderatieconcepten](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Wat is Azure Content Moderator?](./overview.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ContentModerator/Program.cs)
+* De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs)

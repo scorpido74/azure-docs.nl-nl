@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
-ms.openlocfilehash: a5f6ac76d509a0a63c2d641f91cd91cdb2e0d19d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 88392e4e61c28d4fe821c8176242246d10e52b23
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313813"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770898"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Linux-gebaseerde clusters maken in HDInsight met behulp van de Azure-portal
 
@@ -94,7 +94,7 @@ Geef op het tabblad **Beveiliging + netwerken** de volgende informatie op:
 |Eigenschap |Beschrijving |
 |---|---|
 |Bedrijfsbeveiligingspakket|Optioneel: schakel het selectievakje in om **enterprise security package**te gebruiken. Zie [Een HDInsight-cluster configureren met Enterprise Security Package met Azure Active Directory Domain Services](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)voor meer informatie.|
-|TLS|Optioneel: selecteer een TLS-versie in de vervolgkeuzelijst. Zie [Transport Layer Security](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security)voor meer informatie.|
+|TLS|Optioneel: selecteer een TLS-versie in de vervolgkeuzelijst. Zie [Transport Layer Security](./transport-layer-security.md)voor meer informatie.|
 |Virtueel netwerk|Optioneel: selecteer een bestaand virtueel netwerk en subnet in de vervolgkeuzelijst. Zie Een [virtuele netwerkimplementatie voor Azure HDInsight-clusters plannen voor](hdinsight-plan-virtual-network-deployment.md)meer informatie. Het artikel bevat specifieke configuratievereisten voor het virtuele netwerk.|
 |Instellingen voor schijfversleuteling|Optioneel: schakel het selectievakje in om versleuteling te gebruiken. Zie [Door de klant beheerde sleutelschijfversleuteling](./disk-encryption.md)voor meer informatie.|
 |Kafka REST-proxy|Deze instelling is alleen beschikbaar voor clustertype Kafka. Zie [Een REST-proxy gebruiken](./kafka/rest-proxy.md)voor meer informatie.|

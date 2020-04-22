@@ -4,12 +4,12 @@ description: Overzicht van waarschuwingen in Azure. Waarschuwingen, klassieke wa
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e02c23623062f5cb3e4c597b0bb257b30aa9f44a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274786"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769774"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Overzicht van waarschuwingen in Microsoft Azure 
 
@@ -125,7 +125,10 @@ Als u de pagina **Regels wilt** weergeven, selecteert **u Waarschuwingsregels be
 
 
 ## <a name="create-an-alert-rule"></a>Een waarschuwingsregel maken
-U waarschuwingen op een consistente manier maken, ongeacht de bewakingsservice of het signaaltype. Alle geactiveerde waarschuwingen en gerelateerde details zijn beschikbaar op één pagina.
+U waarschuwingsregels op een consistente manier opstellen, ongeacht de bewakingsservice of het signaaltype.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tflw]
+
  
 U als u een nieuwe waarschuwingsregel maken:
 1. Kies het _doel_ voor de waarschuwing.

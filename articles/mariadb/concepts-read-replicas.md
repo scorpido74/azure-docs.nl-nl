@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 39edaa32b0695f4ab83206cd5701629f12295a0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: b2e8bec18f4f5df6fb78a3c31aa0956ec7333eb5
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527908"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770111"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Leesreplica's in Azure Database for MariaDB
 
@@ -73,7 +73,7 @@ Meer informatie over het [maken van een gelezen replica in de Azure-portal](howt
 
 ## <a name="connect-to-a-replica"></a>Verbinding maken met een replica
 
-Bij het maken neemt een replica de firewallregels of het VNet-serviceeindpunt van de hoofdserver over. Daarna zijn deze regels onafhankelijk van de hoofdserver.
+Bij het maken neemt een replica de firewallregels van de hoofdserver over. Daarna zijn deze regels onafhankelijk van de hoofdserver.
 
 De replica neemt het beheerdersaccount over van de hoofdserver. Alle gebruikersaccounts op de hoofdserver worden gerepliceerd naar de gelezen replica's. U alleen verbinding maken met een gelezen replica met behulp van de gebruikersaccounts die beschikbaar zijn op de hoofdserver.
 
@@ -126,7 +126,7 @@ Er wordt een replica gemaakt met dezelfde serverconfiguratie als de stramien. Na
 > [!IMPORTANT]
 > Voordat een configuratie van een hoofdserver wordt bijgewerkt naar nieuwe waarden, moet u de configuratie van de replica bijwerken naar gelijke of hogere waarden. Met deze actie wordt ervoor gezorgd dat in de replica alle wijzigingen worden doorgevoerd die in de hoofdserver zijn aangebracht.
 
-Firewallregels, virtuele netwerkregels en parameterinstellingen worden overgenomen van de hoofdserver naar de replica wanneer de replica wordt gemaakt. Daarna zijn de regels van de replica onafhankelijk.
+Firewallregels en parameterinstellingen worden overgenomen van de hoofdserver naar de replica wanneer de replica wordt gemaakt. Daarna zijn de regels van de replica onafhankelijk.
 
 ### <a name="stopped-replicas"></a>Gestopte replica's
 

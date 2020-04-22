@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 7069f2cc96b8876f5514acfa4ba49274b61be46f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73c18d45136eea90ad29dc1bd40c4539dddc0ee6
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282933"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767254"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure-monitor voor VM's inschakelen met Azure-beleid
 
@@ -61,7 +61,7 @@ In de volgende tabel vindt u een overzicht van de informatie die wordt weergegev
 
 | Functie | Beschrijving | 
 |----------|-------------| 
-| **Scope** | Beheergroep en abonnementen waartoe u toegang hebt of hebt overgenomen met de mogelijkheid om in te zoomen via de hiërarchie van de beheergroep.|
+| **Bereik** | Beheergroep en abonnementen waartoe u toegang hebt of hebt overgenomen met de mogelijkheid om in te zoomen via de hiërarchie van de beheergroep.|
 | **Rol** | Uw rol in het bereik, dat mogelijk lezer, eigenaar of bijdrager is. In sommige gevallen kan het leeg lijken om aan te geven dat u mogelijk toegang hebt tot het abonnement, maar niet tot de beheergroep waartoe het behoort. De informatie in andere kolommen is afhankelijk van uw rol. De rol is essentieel bij het bepalen welke gegevens u zien en acties die u uitvoeren op het gebied van het toewijzen van beleid of initiatieven (eigenaar), het bewerken ervan of het bekijken van naleving. |
 | **Totaal VM's** | Aantal VM's onder dat bereik. Voor een beheergroep is dit een som van VM's die zijn genest onder de abonnementen of onderliggende beheergroep. |
 | **Toewijzingsdekking** | Percentage VM's dat onder het beleid of initiatief valt. |
@@ -79,13 +79,13 @@ Ga als volgt te werk om Azure Monitor voor VM's in te schakelen met Azure Policy
 - Wijs het initiatief toe aan een scope: beheergroep, abonnement of resourcegroep.
 - Complianceresultaten controleren en herstellen.
 
-Zie Het overzicht van Azure [Policy](../../governance/policy/overview.md#policy-assignment) voor meer informatie over het toewijzen van Azure Policy en bekijk het [overzicht van beheergroepen](../../governance/management-groups/overview.md) voordat u verdergaat.
+Zie Het overzicht van Azure [Policy](../../governance/policy/overview.md#assignments) voor meer informatie over het toewijzen van Azure Policy en bekijk het [overzicht van beheergroepen](../../governance/management-groups/overview.md) voordat u verdergaat.
 
 ### <a name="policies-for-azure-vms"></a>Beleidsregels voor Azure VM's
 
 De beleidsdefinities voor een Azure VM worden weergegeven in de volgende tabel.
 
-|Name |Beschrijving |Type |
+|Naam |Beschrijving |Type |
 |-----|------------|-----|
 |Azure-monitor voor VM's inschakelen |Azure Monitor inschakelen voor de virtuele machines in de opgegeven scope (beheergroep, abonnement of resourcegroep). Neemt de werkruimte Log Analytics als parameter. |Initiatief |
 |Implementatie van de controleafhankelijkheidsagent – VM-afbeelding (OS) niet-vermeld |Rapporteert VM's als niet-compatibel als de VM-afbeelding (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
@@ -99,7 +99,7 @@ De beleidsdefinities voor een Azure VM worden weergegeven in de volgende tabel.
 
 De beleidsdefinities voor een Azure-schaalset voor virtuele machines worden weergegeven in de volgende tabel.
 
-|Name |Beschrijving |Type |
+|Naam |Beschrijving |Type |
 |-----|------------|-----|
 |Azure Monitor inschakelen voor virtuele machineschaalsets |Azure Monitor inschakelen voor de virtuele machineschaalsets in de opgegeven scope (beheergroep, abonnement of resourcegroep). Neemt de werkruimte Log Analytics als parameter. Opmerking: Als uw upgradebeleid voor schaalinstellingen is ingesteld op Handmatig, past u de extensie toe op alle VM's in de set door er een upgrade op aan te roepen. In de CLI, `az vmss update-instances`dit is . |Initiatief |
 |Implementatie van afhankelijkheidsagent controleren in virtuele machineschaalsets – VM-afbeelding (OS) niet-vermeld |Rapporteert de virtuele machineschaal die is ingesteld als niet-compatibel als de VM-afbeelding (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
@@ -111,7 +111,7 @@ De beleidsdefinities voor een Azure-schaalset voor virtuele machines worden weer
 
 Zelfstandig beleid (niet inbegrepen bij het initiatief) wordt hier beschreven:
 
-|Name |Beschrijving |Type |
+|Naam |Beschrijving |Type |
 |-----|------------|-----|
 |Audit Log Analytics-werkruimte voor VM – Mismatch rapporteren |Rapporteer VM's als niet-compatibel als ze niet worden aangemeld bij de werkruimte Log Analytics die is opgegeven in de beleids- of initiatieftoewijzing. |Beleid |
 
@@ -121,7 +121,7 @@ Voer de volgende stappen uit om de beleidstoewijzing te maken op de pagina **Bel
 
 Wanneer u het beleid of initiatief toewijst, kan het bereik dat in de toewijzing is geselecteerd, het bereik zijn dat hier wordt vermeld of een subset ervan. U hebt bijvoorbeeld een toewijzing voor het abonnement (beleidsbereik) gemaakt en niet de beheergroep (dekkingsbereik). In dit geval geeft het dekkingspercentage de VM's aan in de beleids- of initiatiefscope die door de VM's in het dekkingsbereik wordt gedeeld. In een ander geval hebt u mogelijk bepaalde VM's, resourcegroepen of een abonnement uitgesloten van het beleidsbereik. Als het leeg is, geeft dit aan dat het beleid of initiatief niet bestaat of dat u geen machtigingen hebt. Informatie wordt verstrekt onder **toewijzingsstatus**.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer In de Azure-portal de optie **Monitor**. 
 

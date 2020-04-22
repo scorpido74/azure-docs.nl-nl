@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/25/2020
-ms.openlocfilehash: 30664d533215cb49fa6f436ec4cf88fa319c3300
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 18774ae4a98b795846459251174ee47671aef39c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272264"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769887"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Een virtueel netwerk plannen voor Azure HDInsight
 
@@ -243,7 +243,7 @@ Zie [IP-adressen van HDInsight-beheer](hdinsight-management-ip-addresses.md)als 
 
 ## <a name="required-ports"></a><a id="hdinsight-ports"></a>Vereiste poorten
 
-Als u van plan bent een **firewall** te gebruiken en toegang hebt tot het cluster van buitenaf op bepaalde poorten, moet u mogelijk verkeer toestaan op de poorten die nodig zijn voor uw scenario. Standaard is er geen speciale whitelisting van poorten nodig zolang het azure-beheerverkeer dat in de vorige sectie is uitgelegd, het cluster op poort 443 mag bereiken.
+Als u van plan bent een **firewall** te gebruiken en toegang hebt tot het cluster van buitenaf op bepaalde poorten, moet u mogelijk verkeer toestaan op de poorten die nodig zijn voor uw scenario. Standaard is er geen speciale whitelisting van poorten nodig zolang het Azure-beheerverkeer dat in de vorige sectie is uitgelegd, het cluster op poort 443 mag bereiken.
 
 Zie de poorten die [worden gebruikt door Apache Hadoop-services op HDInsight-document](hdinsight-hadoop-port-settings-for-services.md) voor een lijst met poorten voor specifieke services.
 
@@ -253,21 +253,10 @@ Zie het [scenariodocument voor virtuele toestellen](../virtual-network/virtual-n
 
 Wanneer u een HDInsight-cluster maakt, wordt er ook een load balancer gemaakt. Het type van deze load balancer bevindt zich op het [basisSKU-niveau,](../load-balancer/concepts-limitations.md#skus)dat bepaalde beperkingen heeft. Een van deze beperkingen is dat als u twee virtuele netwerken in verschillende regio's hebt, u geen verbinding maken met basislastsbalansen. Zie [veelgestelde vragen over virtuele netwerken: beperkingen op wereldwijde vnet-peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers), voor meer informatie.
 
-## <a name="transport-layer-security"></a>Beveiliging van transportlagen
-
-Verbindingen met het cluster via `https://<clustername>.azurehdinsight.net` het eindpunt van het openbare cluster worden geproxied via clustergatewayknooppunten. Deze verbindingen worden beveiligd met behulp van een protocol genaamd TLS. Het afdwingen van hogere versies van TLS op gateways verbetert de beveiliging voor deze verbindingen. Zie [Het TLS 1.0-probleem oplossen](https://docs.microsoft.com/security/solving-tls1-problem)voor meer informatie over waarom u nieuwere versies van TLS moet gebruiken.
-
-Standaard accepteren Azure HDInsight-clusters TLS 1.2-verbindingen op openbare HTTPS-eindpunten, evenals oudere versies voor achterwaartse compatibiliteit. U de minimale TLS-versie beheren die wordt ondersteund op de gatewayknooppunten tijdens het maken van het cluster met behulp van de Azure-portal of een sjabloon voor resourcebeheer. Selecteer voor de portal de TLS-versie op het tabblad **Beveiliging + netwerken** tijdens het maken van het cluster. Gebruik de eigenschap **minSupportedTlsVersion** voor een resourcemanagersjabloon tijdens de implementatietijd. Zie [HDInsight minimum TLS 1.2 Quickstart-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)voor een voorbeeldsjabloon . Deze eigenschap ondersteunt drie waarden: "1.0", "1.1" en "1.2", die overeenkomen met respectievelijk TLS 1.0+, TLS 1.1+ en TLS 1.2+.
-
-> [!IMPORTANT]
-> Vanaf 30 juni 2020 zal Azure HDInsight TLS 1.2 of hoger versies afdwingen voor alle HTTPS-verbindingen. We raden u aan ervoor te zorgen dat al uw klanten klaar zijn om TLS 1.2 of latere versies te verwerken. Zie [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/)voor meer informatie.
-
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Virtuele netwerken maken voor Azure HDInsight-clusters voor](hdinsight-create-virtual-network.md)codevoorbeelden en voorbeelden van het maken van Azure Virtual Networks.
 * Zie HDInsight verbinden met [een on-premises netwerk](./connect-on-premises-network.md)voor een end-to-end voorbeeld van het configureren van HDInsight om verbinding te maken met een on-premises netwerk.
-* Zie [Apache HBase-clusters maken op HDInsight in Azure Virtual Network voor](hbase/apache-hbase-provision-vnet.md)het configureren van Apache HBase-clusters in virtuele Azure-netwerken.
-* Zie [Apache HBase-clusterreplicatie instellen in azure virtuele netwerken](hbase/apache-hbase-replication.md)voor het configureren van geo-replicatie van Apache HBase.
 * Zie het overzicht van het [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)voor meer informatie over virtuele Azure-netwerken.
 * Zie [Netwerkbeveiligingsgroepen](../virtual-network/security-overview.md)voor meer informatie over netwerkbeveiligingsgroepen.
 * Zie [Door de gebruiker gedefinieerde routes en IP-forwarding](../virtual-network/virtual-networks-udr-overview.md)voor meer informatie over door de gebruiker gedefinieerde routes.

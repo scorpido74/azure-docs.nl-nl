@@ -1,17 +1,17 @@
 ---
 title: Prijsniveaus - Azure Database voor PostgreSQL - Single Server
 description: In dit artikel worden de reken- en opslagopties in Azure Database voor PostgreSQL - Single Server beschreven.
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 2e5b01a271eb290229904fc98d1268760e01620d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e4e69b63e51bafe8ca0b032c22ca509f5a7e6a2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243560"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770571"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Prijscategorieën in Azure Database for PostgreSQL - enkele server
 
@@ -51,7 +51,7 @@ De opslag die u indient, is de hoeveelheid opslagcapaciteit die beschikbaar is v
 | IOPS | Variabele |3 IOPS/GB<br/>Min 100 IOPS<br/>Max 20.000 IOPS | 3 IOPS/GB<br/>Min 100 IOPS<br/>Max 20.000 IOPS |
 
 > [!NOTE]
-> Opslag tot 16 TB en 20.000 IOPS wordt ondersteund in de volgende regio's: Oost-VS, Oost-VS 2, Centraal VS, West-VS, Noord-Centraal VS, Noord-Europa, West-Europa, Verenigd Koninkrijk Zuid, UK West, Zuidoost-Azië, Oost-Azië, Japan East, Japan West, Korea Centraal , Korea Zuid, Australië Oost, Australië Zuidoost.
+> Opslag tot 16 TB en 20.000 IOPS wordt ondersteund in de volgende regio's: Oost-VS, Oost-VS, Centraal-VS, West-VS, Noord-Centraal VS, Zuid-Europa, West-Europa, Het Verenigd Koninkrijk Zuid, Uk West, Zuidoost-Azië, Oost-Azië, Japan East, Japan West, Korea Central, Korea South, Australië Oost, Australië Zuid-Oosten.
 >
 > Alle andere regio's ondersteunen maximaal 4 TB opslagruimte en 6000 IOPS.
 >
@@ -85,7 +85,7 @@ Als u bijvoorbeeld 1000 GB opslagruimte hebt ingericht en het werkelijke gebruik
 
 Vergeet niet dat opslag alleen kan worden opgeschaald, niet naar beneden.
 
-## <a name="backup"></a>Back-up
+## <a name="backup"></a>Backup
 
 De service maakt automatisch back-ups van uw server. U een bewaartermijn selecteren uit een bereik van 7 tot 35 dagen. Servers met algemene toepassing en geheugen geoptimaliseerde servers kunnen ervoor kiezen om geo-redundante opslag voor back-ups te hebben. Meer informatie over back-ups in het [conceptartikel](concepts-backup.md).
 

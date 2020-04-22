@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5dd1c1bb2b321e617efc430ce48745c06a827305
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f86a54b53b73da9c798564d13d659844842e6f67
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76772449"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768705"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Snelstart: Content Moderator clientbibliotheek voor Java
 
@@ -89,13 +89,13 @@ mkdir -p src/main/java
 
 Maak vervolgens een bestand met de naam *ContentModeratorQuickstart.java* in de nieuwe map. Open het bestand in uw voorkeurseditor of IDE en importeer bovenaan de volgende bibliotheken:
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
 
 ## <a name="object-model"></a>Objectmodel
 
 De volgende klassen behandelen enkele van de belangrijkste functies van de Content Moderator Java SDK.
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|Deze klasse is nodig voor alle functionaliteit van Content Moderator. U wilt deze met uw abonnementsgegevens en u gebruikt deze om exemplaren van andere klassen te produceren.|
 |[ImageModeration](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|Deze klasse biedt de functionaliteit voor het analyseren van afbeeldingen voor inhoud voor volwassenen, persoonlijke informatie of menselijke gezichten.|
@@ -120,7 +120,7 @@ Maak in de `main` methode van de toepassing een [ContentModeratorClient-object](
 > [!NOTE]
 > Als u de omgevingsvariabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell sluiten en opnieuw openen om toegang te krijgen tot de variabele.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
 
 ## <a name="moderate-images"></a>Matige afbeeldingen
 
@@ -137,42 +137,42 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Voeg vervolgens in je *ContentModeratorQuickstart.java-bestand* de volgende klassendefinitie toe in de klasse **ContentModeratorQuickstart.** Deze binnenklasse zal later worden gebruikt in het beeldmatigingsproces.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
 
 ### <a name="iterate-through-images"></a>Herhalen door beelden
 
 Voeg vervolgens de volgende code toe `main` aan de onderkant van de methode. U het ook toevoegen aan een aparte `main`methode die wordt aangeroepen vanaf. Deze code doorloopt elke regel van het bestand _ImageFiles.txt._
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
 
 ### <a name="check-for-adultracy-content"></a>Controleer op inhoud voor volwassenen/racy
 Deze coderegel controleert de afbeelding op de opgegeven URL op inhoud voor volwassenen of racy. Zie de conceptueel handleiding voor beeldmatiging voor informatie over deze termen.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_ar)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_ar)]
 
 ### <a name="check-for-text"></a>Controleren op tekst
 Deze coderegel controleert de afbeelding op zichtbare tekst.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_text)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_text)]
 
 ### <a name="check-for-faces"></a>Controleren op gezichten
 Deze coderegel controleert de afbeelding op menselijke gezichten.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_faces)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_faces)]
 
 Sla ten slotte de `EvaluationData` geretourneerde informatie op in de lijst.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_storedata)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_storedata)]
 
 ### <a name="print-results"></a>Afdrukresultaten
 
 Voeg `while` na de lus de volgende code toe, die de resultaten afdrukt op de console en naar een uitvoerbestand, *src/main/resources/ModerationOutput.json*.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 
 Sluit de `try` instructie af `catch` en voeg een instructie toe om de methode te voltooien.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
@@ -205,4 +205,4 @@ In deze quickstart heb je geleerd hoe je de Java-bibliotheek voor inhoudsmoderat
 >[Beeldmoderatieconcepten](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Wat is Azure Content Moderator?](./overview.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/blob/master/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java)
+* De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java)

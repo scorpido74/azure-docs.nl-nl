@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/16/2020
-ms.openlocfilehash: 98461928e465a103f73761afce5270234224fbae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 47f686f810f62fe03a9b0217677c436f3b91782b
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76167348"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767885"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -45,7 +45,6 @@ Australië Oost, Australië Zuidoost, Centraal VS, Oost-Azië, Oost-VS, Oost-VS 
 
 *West US 2 is tijdelijk niet beschikbaar als replicalocatie voor verschillende regio's.
 
-
 ### <a name="paired-regions"></a>Gekoppelde regio's
 Naast de universele replicaregio's u een leesreplica maken in het gekoppelde Azure-gebied van uw hoofdserver. Als u het paar van uw regio niet kent, u meer te weten komen in het [artikel Azure Paired Regions.](../best-practices-availability-paired-regions.md)
 
@@ -71,7 +70,7 @@ Meer informatie over het [maken van een gelezen replica in de Azure-portal](howt
 
 ## <a name="connect-to-a-replica"></a>Verbinding maken met een replica
 
-Bij het maken neemt een replica de firewallregels of het VNet-serviceeindpunt van de hoofdserver over. Daarna zijn deze regels onafhankelijk van de hoofdserver.
+Bij het maken neemt een replica de firewallregels van de hoofdserver over. Daarna zijn deze regels onafhankelijk van de hoofdserver.
 
 De replica neemt het beheerdersaccount over van de hoofdserver. Alle gebruikersaccounts op de hoofdserver worden gerepliceerd naar de gelezen replica's. U alleen verbinding maken met een gelezen replica met behulp van de gebruikersaccounts die beschikbaar zijn op de hoofdserver.
 
@@ -124,7 +123,7 @@ Er wordt een replica gemaakt met dezelfde serverconfiguratie als de stramien. Na
 > [!IMPORTANT]
 > Voordat een configuratie van een hoofdserver wordt bijgewerkt naar nieuwe waarden, moet u de configuratie van de replica bijwerken naar gelijke of hogere waarden. Met deze actie wordt ervoor gezorgd dat in de replica alle wijzigingen worden doorgevoerd die in de hoofdserver zijn aangebracht.
 
-Firewallregels, virtuele netwerkregels en parameterinstellingen worden overgenomen van de hoofdserver naar de replica wanneer de replica wordt gemaakt. Daarna zijn de regels van de replica onafhankelijk.
+Firewallregels en parameterinstellingen worden overgenomen van de hoofdserver naar de replica wanneer de replica wordt gemaakt. Daarna zijn de regels van de replica onafhankelijk.
 
 ### <a name="stopped-replicas"></a>Gestopte replica's
 

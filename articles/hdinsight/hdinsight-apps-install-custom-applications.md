@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 8fe9e551a4ca7dea8f53e0f8c2975ca3d88c48f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b25e9d860f118c1b044b13e01a80aaf7a24963cf
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366254"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768247"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Aangepaste Apache Hadoop-toepassingen installeren op Azure HDInsight
 
@@ -77,13 +77,13 @@ Voor **Hue**u de volgende stappen gebruiken:
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het cluster waar u de toepassing hebt geïnstalleerd.
 1. Selecteer **Toepassingen**in het menu **Instellingen** .
 1. Selecteer **tint** in de lijst om de eigenschappen weer te geven.  
 1. Selecteer de koppeling Webpagina om de website te valideren.
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Vervang `CLUSTERNAME`en `RESOURCEGROUP` door de relevante waarden en voer de onderstaande opdrachten in:
 
@@ -119,19 +119,19 @@ Als een toepassingsinstallatie is mislukt, u de foutberichten en foutopsporingsg
 
 * Apache Ambari Web UI: Als het installatiescript de oorzaak van de fout was, gebruikt u De Gebruikersinterface van Ambari Om volledige logboeken over de installatiescripts te controleren.
 
-    Zie [Probleemoplossing](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) voor meer informatie .
+    Zie [Scriptacties oplossen voor](./troubleshoot-script-action.md)meer informatie .
 
 ## <a name="remove-hdinsight-applications"></a>HDInsight-toepassingen verwijderen
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het cluster waar u de toepassing hebt geïnstalleerd.
 1. Selecteer **Toepassingen**in het menu **Instellingen** .
 1. Klik met de rechtermuisknop op de toepassing die u wilt verwijderen en selecteer **Verwijderen**.
 1. Selecteer **Ja** om te bevestigen.
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Vervang `NAME` `CLUSTERNAME`, `RESOURCEGROUP` en met de relevante waarden en voer de onderstaande opdracht in:
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: be3046a343e14be4a527363751081ba3f2593cd3
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9f80156f61ad82e5563f1c38764c81297f5979f2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605895"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767319"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Auto-trein een time-series voorspelling model
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,13 +36,13 @@ U [configureren](#config) hoe ver in de toekomst de prognose moet worden uitgebr
 
 Functies die uit de trainingsgegevens worden gehaald, spelen een cruciale rol. En geautomatiseerde ML voert standaard pre-processing stappen uit en genereert extra tijd-serie functies om seizoensgebonden effecten vast te leggen en voorspellende nauwkeurigheid te maximaliseren.
 
-## <a name="time-series-and-deep-learning-models"></a>Tijdreeksen en Deep Learning-modellen
+## <a name="time-series-and-deep-learning-models"></a>Tijdreeksen en deep learning-modellen
 
 
 Automated ML biedt gebruikers zowel native time-series als deep learning-modellen als onderdeel van het aanbevelingssysteem. Deze leerlingen zijn onder andere:
-+ Profeet
-+ Auto-ARIMA
-+ PrognoseTCN
++ Profeet (preview)
++ Auto-ARIMA (preview)
++ ForecastTCN (voorbeeld)
 
 Geautomatiseerde ML's deep learning maakt het mogelijk om univariate- en multivariate tijdreeksgegevens te voorspellen.
 
@@ -51,7 +51,7 @@ Deep learning-modellen hebben drie intrinsieke mogelijkheden:
 1. Ze ondersteunen meerdere ingangen en uitgangen
 1. Ze kunnen automatisch patronen extraheren in invoergegevens die zich uitstrekken over lange reeksen
 
-Gezien grotere gegevens kunnen deep learning-modellen, zoals ForecastTCN van Microsoft, de scores van het resulterende model verbeteren. 
+Gezien grotere gegevens kunnen deep learning-modellen, zoals ForecastTCN van Microsoft, de scores van het resulterende model verbeteren. Meer informatie over het [configureren van uw experiment voor deep learning.](#configure-a-dnn-enable-forecasting-experiment)
 
 Native time series studenten worden ook verstrekt als onderdeel van geautomatiseerde ML. Prophet werkt het beste met tijdreeksen die sterke seizoenseffecten en verschillende seizoenen van historische gegevens hebben. Prophet is nauwkeurig & snel, robuust voor uitschieters, ontbrekende gegevens en dramatische veranderingen in uw tijdreeks. 
 
@@ -181,6 +181,17 @@ Zie de [voorbeeldnotitieblokken](https://github.com/Azure/MachineLearningNoteboo
 > DNN-ondersteuning voor prognoses in Automated Machine Learning wordt in Preview weergegeven en wordt niet ondersteund voor lokale uitvoeringen.
 
 Om DNN's te gebruiken voor prognoses, `enable_dnn` moet u de parameter in de AutoMLConfig op true instellen. 
+
+```python
+automl_config = AutoMLConfig(task='forecasting',
+                             enable_dnn=True,
+                             ...
+                             **time_series_settings)
+```
+Meer informatie over [de AutoMLConfig](#configure-and-run-experiment).
+
+U ook de `Enable deep learning` optie in de studio selecteren.
+![alternatieve tekst](./media/how-to-auto-train-forecast/enable_dnn.png)
 
 We raden u aan een AML Compute-cluster te gebruiken met GPU-SKU's en ten minste twee knooppunten als rekendoel. Om voldoende tijd te hebben om de DNN-training te voltooien, raden we u aan de time-out van het experiment in te stellen op een minimum van een paar uur.
 Zie de [Documentatie AML Compute-gegevens](how-to-set-up-training-targets.md#amlcompute) en [GPU-geoptimaliseerde documentatie voor virtuele machineformaten](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)voor meer informatie over AML-compute- en VM-formaten die GPU's bevatten.

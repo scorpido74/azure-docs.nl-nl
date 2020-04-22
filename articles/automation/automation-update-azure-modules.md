@@ -1,18 +1,18 @@
 ---
-title: Azure-modules bijwerken in Azure Automation
+title: Azure PowerShell-modules bijwerken in Azure Automation
 description: In dit artikel wordt beschreven hoe u nu de gangbare Azure PowerShell-modules bijwerken die standaard worden geleverd in Azure Automation.
 services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ba926ccbb069c8620259514e0a64c56957529a0f
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: bb73b3d644e96f9596f887faaf62eb15f01956ab
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617476"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769672"
 ---
-# <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>How to update Azure PowerShell modules in Azure Automation (Azure PowerShell-modules bijwerken in Azure Automation)
+# <a name="update-azure-powershell-modules-in-azure-automation"></a>Azure PowerShell-modules bijwerken in Azure Automation
 
 Als u de Azure-modules in uw Automatiseringsaccount wilt bijwerken, moet u de [runbook Azure-modules](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update)bijwerken , die beschikbaar is als open source. Als u de runbook **Update-AutomationAzureModulesForAccount** wilt gebruiken om uw Azure-modules bij te werken, downloadt u deze uit de [runbook-opslagplaats](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) bijwerken van Azure-modules op GitHub. U het vervolgens importeren in uw Automatiseringsaccount of het als script uitvoeren. Zie [Een runbook importeren](manage-runbooks.md#importing-a-runbook)voor meer informatie over het importeren van een runbook in uw automatiseringsaccount.
 
@@ -37,7 +37,7 @@ Als u uw scripts lokaal ontwikkelt, wordt aanbevolen om dezelfde moduleversies l
 
 Hieronder volgen enkele overwegingen om rekening mee te houden wanneer u dit artikel gebruikt om uw Azure-modules bij te werken:
 
-* De runbook die in dit artikel wordt beschreven, ondersteunt standaard het bijwerken van de Azure-, AzureRM- en Az-modules. Bekijk de [runbook README voor Update Azure-modules](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) voor meer informatie over het bijwerken van Az.Automation-modules met dit runbook. Er zijn nog andere belangrijke factoren waarmee u rekening moet houden bij het gebruik van de Az-modules in uw Automatiseringsaccount. Zie [Az-modules gebruiken in uw Automatiseringsaccount](az-modules.md)voor meer informatie.
+* De runbook die in dit artikel wordt beschreven, ondersteunt standaard het bijwerken van de Azure-, AzureRM- en Az-modules. Bekijk de [runbook README voor Update Azure-modules](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) voor meer informatie over het bijwerken van Az.Automation-modules met dit runbook. Er zijn nog andere belangrijke factoren waarmee u rekening moet houden bij het gebruik van de Az-modules in uw Automatiseringsaccount. Zie [Modules beheren in Azure Automation](shared-resources/modules.md)voor meer informatie.
 
 * Voordat u deze runbook start, controleert u of uw Automatiseringsaccount een [Azure Run As-accountreferentie](manage-runas-account.md) heeft gemaakt.
 

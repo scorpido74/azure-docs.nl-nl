@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 61c22a3949008d61bbe3472f601d2d0dd597a0ac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d657ef8d28b36d93bc923036254e446c7be4c2c8
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77114338"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769523"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Een toepassingscertificaat toevoegen aan een Service Fabric-cluster
 
@@ -48,9 +48,7 @@ $CertName= ""
 $CertPassword= ""
 $PathToPFX= ""
 
-$Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2 $PathToPFX, $CertPassword
-
-$bytes = [System.IO.File]::ReadAllBytes($ExistingPfxFilePath)
+$bytes = [System.IO.File]::ReadAllBytes($PathToPFX)
 $base64 = [System.Convert]::ToBase64String($bytes)
 $jsonBlob = @{
    data = $base64
@@ -74,7 +72,12 @@ $ResourceGroupName = ""
 $VMSSName = ""
 $CertStore = "My" # Update this with the store you want your certificate placed in, this is LocalMachine\My
 
+# If you have added your certificate to the keyvault certificates, use
 $CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl (Get-AzKeyVaultCertificate -VaultName $VaultName -Name $CertName).SecretId -CertificateStore $CertStore
+
+# Otherwise, if you have added your certificate to the keyvault secrets, use
+$CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl (Get-AzKeyVaultSecret -VaultName $VaultName -Name $CertName).Id -CertificateStore $CertStore
+
 $VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMSSName
 
 # If this KeyVault is already known by the virtual machine scale set, for example if the cluster certificate is deployed from this keyvault, use
@@ -98,7 +101,8 @@ In dit script worden de volgende opdrachten gebruikt: Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 | [Nieuw-AzKeyVaultCertificateBeleid](/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | Hiermee maakt u een in-memorybeleid dat het certificaat vertegenwoordigt |
-| [Add-AzKeyVaultCertificaat](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| Implementeert het beleid naar Key Vault |
+| [Add-AzKeyVaultCertificaat](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| Implementeert het beleid voor key vault-certificaten |
+| [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/Set-AzKeyVaultSecret)| Implementeert het beleid voor Key Vault Secrets |
 | [Nieuw-AzVmssVaultCertificateConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | Hiermee maakt u een in-memory config die het certificaat in een vm weergeeft |
 | [Get-AzVmss](/powershell/module/az.compute/Get-AzVmss) |  |
 | [Add-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | Hiermee voegt u het certificaat toe aan de in-memory definitie van de virtuele machineschaalset |

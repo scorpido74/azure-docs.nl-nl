@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/16/2020
+ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a361f384167fa522278b9c84a7927e938c12cb8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 3ce3311fd0538109dbe9ba5ae71a17dcfd4b8abe
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81534802"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769733"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelastingscenario's te hosten en uit te voeren
 
@@ -111,6 +111,7 @@ Zie voor informatie over de integratie van Azure-services in SAP-componenten:
 
 ## <a name="change-log"></a>Logboek wijzigen
 
+- 04/21/2020: SQL Azure DB toegevoegd als ondersteund DBMS voor SAP (Hybris) Commerce Platform 1811 en hoger in artikelen [Welke SAP-software wordt ondersteund voor Azure-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) en [SAP-certificeringen en -configuraties die worden uitgevoerd op Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)
 - 04/16/2020: SAP HANA toegevoegd als ondersteund DBMS voor SAP (Hybris) Commerce Platform in artikelen [Welke SAP-software wordt ondersteund voor Azure-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) en [SAP-certificeringen en -configuraties die worden uitgevoerd op Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)
 - 04/13/2020: Corrigeren op exacte SAP ASE-releasenummers in [SAP ASE Azure Virtual Machines DBMS-implementatie voor SAP-workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
 - 04/07/2020: Wijzigen in [het instellen van pacemaker op SLES in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) om instructies voor cloud-netconfig-azure te verduidelijken

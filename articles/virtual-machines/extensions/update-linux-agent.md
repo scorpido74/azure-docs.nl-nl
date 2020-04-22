@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: e4489f7c810799ca8e89565fe698f398f942b089
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3b2819b33feba52c3b02f0e2104d4106bd04cbb
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251710"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770062"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>De Azure Linux Agent bijwerken op een vm
 
@@ -29,6 +29,8 @@ Als u uw [Azure Linux Agent](https://github.com/Azure/WALinuxAgent) wilt bijwerk
 - Een verbinding met die Linux VM met SSH.
 
 Je moet altijd eerst controleren op een pakket in de Linux distro repository. Het is mogelijk dat het pakket beschikbaar is misschien niet de nieuwste versie, maar het inschakelen van auto-update zal ervoor zorgen dat de Linux Agent altijd de nieuwste update krijgt. Mocht u problemen hebben met het installeren van de package managers, moet u ondersteuning zoeken bij de distro-leverancier.
+
+> ! [OPMERKING] Zie [Onderschreven Linux-distributies op Azure voor](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) meer informatie
 
 ## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Minimale ondersteuning voor virtuele machineagent in Azure
 Controleer de [minimale versieondersteuning voor virtuele machineagents in Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) voordat u verdergaat.

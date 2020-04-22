@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e52c37e293941a767621cf56ef75f8cc83b1925
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 541deb5cf44ad5440e31641b673ed5da5b5d2b26
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298000"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768556"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Zelfservicegroepsbeheer instellen in Azure Active Directory 
 
@@ -33,7 +33,7 @@ Wanneer beveiligingsgroepen worden gemaakt in de Azure-portal of met Azure AD Po
 Groepen die zijn gemaakt in | Standaardgedrag beveiligingsgroep | Standaardgedrag van Office 365-groeps
 ------------------ | ------------------------------- | ---------------------------------
 [Azure AD PowerShell](groups-settings-cmdlets.md) | Alleen eigenaren kunnen leden toevoegen<br>Zichtbaar, maar niet beschikbaar om deel te nemen in het deelvenster Access | Open om lid te worden voor alle gebruikers
-[Azure-portal](https://portal.azure.com) | Alleen eigenaren kunnen leden toevoegen<br>Zichtbaar, maar niet beschikbaar om deel te nemen in het deelvenster Access<br>Eigenaar wordt niet automatisch toegewezen bij het maken van groepen | Open om lid te worden voor alle gebruikers
+[Azure Portal](https://portal.azure.com) | Alleen eigenaren kunnen leden toevoegen<br>Zichtbaar, maar niet beschikbaar om deel te nemen in het deelvenster Access<br>Eigenaar wordt niet automatisch toegewezen bij het maken van groepen | Open om lid te worden voor alle gebruikers
 [Deelvenster Access](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Open om lid te worden voor alle gebruikers<br>Lidmaatschapsopties kunnen worden gewijzigd wanneer de groep wordt gemaakt | Open om lid te worden voor alle gebruikers<br>Lidmaatschapsopties kunnen worden gewijzigd wanneer de groep wordt gemaakt
 
 ## <a name="self-service-group-management-scenarios"></a>Scenario's voor zelfservicegroepsbeheer
@@ -56,6 +56,9 @@ U eigenaren ook gebruiken **die leden kunnen toewijzen als groepseigenaren in Az
 
 Wanneer gebruikers groepen kunnen maken, mogen alle gebruikers in uw organisatie nieuwe groepen maken en kunnen ze als standaardeigenaar leden aan deze groepen toevoegen. U geen personen opgeven die hun eigen groepen kunnen maken. U alleen personen opgeven om van een ander groepslid een groepseigenaar te maken.
 
+> [!NOTE]
+> Een Azure Active Directory Premium-licentie (P1 of P2) is vereist voor gebruikers om te verzoeken lid te worden van een beveiligingsgroep of Office 365-groep en voor eigenaren om lidmaatschapsaanvragen goed te keuren of te weigeren. Zonder Een Azure Active Directory Premium-licentie kunnen gebruikers hun groepen nog steeds beheren in het Access-paneel, maar ze kunnen geen groep maken waarvoor goedkeuring van de eigenaar vereist is in het Access-paneel en ze kunnen niet vragen om lid te worden van een groep. 
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Deze artikelen bevatten aanvullende informatie over Azure Active Directory.
@@ -63,5 +66,5 @@ Deze artikelen bevatten aanvullende informatie over Azure Active Directory.
 * [Toegang tot resources beheren met Azure Active Directory-groepen](../fundamentals/active-directory-manage-groups.md)
 * [Azure Active Directory cmdlets voor het configureren van groepsinstellingen](groups-settings-cmdlets.md)
 * [Application Management in Azure Active Directory](../manage-apps/what-is-application-management.md) (Toepassingsbeheer in Azure Active Directory)
-* [Wat is Azure Active Directory?](../fundamentals/active-directory-whatis.md)
+* [What is Azure Active Directory? (Engelstalig)](../fundamentals/active-directory-whatis.md)
 * [Uw on-premises identiteiten integreren met Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 1e2a837acef976b6b872c2d4002ee49d662ad594
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.date: 04/21/2020
+ms.openlocfilehash: 7eb2988628d60fa72c7d83b81a58a1e0fae5de33
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641328"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770089"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Een suggestie maken om automatisch aanvullen en voorgestelde resultaten in een query in te schakelen
 
-In Azure Cognitive Search is 'search-as-you-type' ingeschakeld via een **suggestieconstructie** die is toegevoegd aan een [zoekindex.](search-what-is-an-index.md) Een suggestie ondersteunt twee ervaringen: *automatisch aanvullen*, die de term of zin voltooit, en suggesties die een korte lijst met overeenkomende documenten *retourneren.*  
+In Azure Cognitive Search is 'search-as-you-type' ingeschakeld via een **suggestieconstructie** die is toegevoegd aan een [zoekindex.](search-what-is-an-index.md) Een suggestieondersteunt twee ervaringen: *automatisch aanvullen*, dat een gedeeltelijke invoer voor een hele term query voltooit, en *suggesties* die uitnodigt door te klikken naar een bepaalde wedstrijd. Automatisch aanvullen produceert een query. Suggesties produceren een overeenkomend document.
 
 De volgende schermafbeelding van [Uw eerste app maken in C#](tutorial-csharp-type-ahead-and-suggestions.md) illustreert beide. Autocomplete anticipeert op een potentiële term, afwerking "tw" met "in". Suggesties zijn mini-zoekresultaten, waarbij een veld als hotelnaam een overeenkomend hotelzoekdocument uit de index vertegenwoordigt. Voor suggesties u elk veld weergeven dat beschrijvende informatie biedt.
 
@@ -33,27 +33,36 @@ Ondersteuning voor zoek-naar-type is ingeschakeld per veld voor tekenreeksvelden
 
 ## <a name="what-is-a-suggester"></a>Wat is een suggestie?
 
-Een suggestieis een gegevensstructuur die zoek-as-you-type gedrag ondersteunt door voorvoegsels op te slaan voor matching op gedeeltelijke query's. Net als bij tokenized termen worden voorvoegsels opgeslagen in omgekeerde indexen, één voor elk veld dat is opgegeven in een verzameling suggestervelden.
-
-Bij het maken van voorvoegsels heeft een suggestiezijn eigen analyseketen, vergelijkbaar met die welke wordt gebruikt voor zoeken naar volledige tekst. Echter, in tegenstelling tot analyse in full text search, kan een suggester alleen werken over velden die gebruik maken van de standaard Lucene analyzer (standaard) of een [taalanalyzer.](index-add-language-analyzers.md) Velden die [aangepaste analysers](index-add-custom-analyzers.md) of [vooraf gedefinieerde analysatoren](index-add-custom-analyzers.md#predefined-analyzers-reference) gebruiken (met uitzondering van standaard Lucene) zijn expliciet niet toegestaan om slechte resultaten te voorkomen.
-
-> [!NOTE]
-> Als u de beperking van de analyzer wilt omzeilen, gebruikt u twee afzonderlijke velden voor dezelfde inhoud. Hierdoor kan een van de velden een suggestie hebben, terwijl de andere kan worden ingesteld met een aangepaste analyzer-configuratie.
+Een suggestieis een interne gegevensstructuur die zoek-as-you-type gedrag ondersteunt door prefixes op te slaan voor matching op gedeeltelijke query's. Net als bij tokenized termen worden voorvoegsels opgeslagen in omgekeerde indexen, één voor elk veld dat is opgegeven in een verzameling suggestervelden.
 
 ## <a name="define-a-suggester"></a>Een suggestie definiëren
 
-Als u een suggestie wilt maken, voegt u er een toe aan een [indexschema](https://docs.microsoft.com/rest/api/searchservice/create-index) en [stelt u elke eigenschap in.](#property-reference) In de index u één suggestiehebben (specifiek één suggestiever in de suggestersverzameling). De beste tijd om een suggestie te maken is wanneer u ook het veld definieert dat het zal gebruiken.
+Als u een suggestie wilt maken, voegt u er een toe aan een [indexschema](https://docs.microsoft.com/rest/api/searchservice/create-index) en [stelt u elke eigenschap in.](#property-reference) De beste tijd om een suggestie te maken is wanneer u ook het veld definieert dat het zal gebruiken.
+
++ Alleen tekenreeksvelden gebruiken
+
++ Gebruik de standaard lucene`"analyzer": null`analyzer ( ) of een `"analyzer": "en.Microsoft"` [taalanalyzer](index-add-language-analyzers.md) (bijvoorbeeld ) op het veld
 
 ### <a name="choose-fields"></a>Velden kiezen
 
-Hoewel een suggestie meerdere eigenschappen heeft, is het in de eerste plaats een verzameling velden waarvoor u een zoek-as-you-type-ervaring inschakelt. Kies velden die het beste één resultaat vertegenwoordigen voor suggesties. Namen, titels of andere unieke velden die onderscheid maken tussen meerdere overeenkomsten werken het beste. Als velden bestaan uit repetitieve waarden, bestaan de suggesties uit identieke resultaten en weet een gebruiker niet op welke basis waarde hij moet klikken.
+Hoewel een suggestie meerdere eigenschappen heeft, is het in de eerste plaats een verzameling tekenreeksvelden waarvoor u een zoek-naar-het-type-ervaring inschakelt. Er is één suggestievoor elke index, dus de lijst met deelnemers moet alle velden bevatten die inhoud voor zowel suggesties als automatisch aanvullen bijdragen.
 
-Zorg ervoor dat elk veld een analyzer gebruikt die lexicale analyse uitvoert tijdens het indexeren. U de standaard Lucene analyzer ()`"analyzer": null`of een [taalanalyzer](index-add-language-analyzers.md) (bijvoorbeeld) `"analyzer": "en.Microsoft"`gebruiken. 
+Automatisch aanvullen profiteert van een grotere groep velden om uit te putten omdat de extra inhoud meer voltooiingspotentieel voor termen heeft.
 
-Uw keuze van een analyzer bepaalt hoe velden worden tokenized en vervolgens vooraf worden vastgesteld. Voor een geafbreekbare tekenreeks als 'contextgevoelig' resulteert het gebruik van een taalanalyzer bijvoorbeeld in deze tokencombinaties: 'context', 'gevoelig', 'contextgevoelig'. Als je de standaard Lucene analyzer had gebruikt, zou de afgebroken string niet bestaan.
+Suggesties, aan de andere kant, produceren betere resultaten wanneer uw veld keuze selectief is. Vergeet niet dat de suggestie een proxy is voor een zoekdocument, dus u wilt velden die het beste één resultaat vertegenwoordigen. Namen, titels of andere unieke velden die onderscheid maken tussen meerdere overeenkomsten werken het beste. Als velden bestaan uit repetitieve waarden, bestaan de suggesties uit identieke resultaten en weet een gebruiker niet op welke basis waarde hij moet klikken.
 
-> [!TIP]
-> Overweeg de [API Tekst analyseren](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) te gebruiken voor inzicht in hoe termen worden tokenized en vervolgens vooraf zijn vastgelegd. Zodra u een index hebt gemaakt, u verschillende analysators op een tekenreeks proberen om de tokens te bekijken die het uitzendt.
+Als u voldoen aan beide zoek-naar-je-type-ervaringen, voegt u alle velden toe die u nodig hebt voor automatisch aanvullen, maar gebruikt u **vervolgens $select,** **$top,** **$filter**en **zoekvelden** om de resultaten voor suggesties te beheren.
+
+### <a name="choose-analyzers"></a>Analysers kiezen
+
+Uw keuze van een analyzer bepaalt hoe velden worden tokenized en vervolgens vooraf worden vastgesteld. Voor een geafbreekbare tekenreeks als 'contextgevoelig' resulteert het gebruik van een taalanalyzer bijvoorbeeld in deze tokencombinaties: 'context', 'gevoelig', 'contextgevoelig'. Als je de standaard Lucene analyzer had gebruikt, zou de afgebroken string niet bestaan. 
+
+Overweeg bij het evalueren van analysers de [API Voor het analyseren van tekst](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) voor inzicht in hoe termen worden getokeniseerd en vervolgens vooraf zijn vastgelegd. Zodra u een index hebt opgebouwd, u verschillende analysators op een tekenreeks proberen om token-uitvoer weer te geven.
+
+Velden die [aangepaste analysers](index-add-custom-analyzers.md) of [vooraf gedefinieerde analysatoren](index-add-custom-analyzers.md#predefined-analyzers-reference) gebruiken (met uitzondering van standaard Lucene) zijn expliciet niet toegestaan om slechte resultaten te voorkomen.
+
+> [!NOTE]
+> Als u de beperking van de analyzer moet omzeilen, bijvoorbeeld als u een trefwoord of ngramanalyzer nodig hebt voor bepaalde queryscenario's, moet u twee afzonderlijke velden voor dezelfde inhoud gebruiken. Hierdoor kan een van de velden een suggestie hebben, terwijl de andere kan worden ingesteld met een aangepaste analyzer-configuratie.
 
 ### <a name="when-to-create-a-suggester"></a>Wanneer een suggestie maken
 
@@ -161,7 +170,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
 
 ## <a name="next-steps"></a>Volgende stappen
 
-We raden het volgende voorbeeld aan om te zien hoe de aanvragen worden geformuleerd.
+We raden het volgende artikel aan om meer te weten te komen over hoe aanvragen worden gebruikt.
 
 > [!div class="nextstepaction"]
 > [Automatisch aanvullen en suggesties toevoegen aan clientcode](search-autocomplete-tutorial.md) 

@@ -3,12 +3,12 @@ title: Azure Service Fabric Central Secrets Store
 description: In dit artikel wordt beschreven hoe u de Central Secrets Store gebruiken in Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 11fb94a9fba40e6f2474ad64f5eb0c454be28ca0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4087e7ccdcb2281c4a08af155d35a10c66147a85
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77589161"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770419"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Centrale geheimen winkel in Azure Service Fabric 
 In dit artikel wordt beschreven hoe u DE Central Secrets Store (CSS) in Azure Service Fabric gebruiken om geheimen te maken in Service Fabric-toepassingen. CSS is een lokale geheime winkelcache die gevoelige gegevens, zoals een wachtwoord, tokens en sleutels, versleuteld in het geheugen bewaart.
@@ -47,31 +47,9 @@ Voeg het volgende script toe `fabricSettings` aan uw clusterconfiguratie onder o
      ]
 ```
 ## <a name="declare-a-secret-resource"></a>Een geheime bron declareren
-U een geheime bron maken met de sjabloon Azure Resource Manager of de REST-API.
-
-### <a name="use-resource-manager"></a>Resourcebeheer gebruiken
-
-Gebruik de volgende sjabloon om Resourcebeheer te gebruiken om de geheime bron te maken. De sjabloon `supersecret` maakt een geheime bron, maar er is nog geen waarde ingesteld voor de geheime bron.
-
-
-```json
-   "resources": [
-      {
-        "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain",
-          }
-        }
-      ]
-```
-
-### <a name="use-the-rest-api"></a>REST-API gebruiken
+U een geheime bron maken met behulp van de REST API.
+  > [!NOTE] 
+  > Als het cluster windows-verificatie gebruikt, wordt de REST-aanvraag verzonden via een onbeveiligd HTTP-kanaal. De aanbeveling is om een X509 gebaseerd cluster te gebruiken met beveiligde eindpunten.
 
 Als u `supersecret` een geheime bron wilt maken met `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`behulp van de API REST, dient u een PUT-verzoek in om . U hebt het clustercertificaat of het beheerdersclientcertificaat nodig om een geheime bron te maken.
 
@@ -81,48 +59,6 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
 ```
 
 ## <a name="set-the-secret-value"></a>De geheime waarde instellen
-
-### <a name="use-the-resource-manager-template"></a>De sjabloon Resourcemanager gebruiken
-
-Gebruik de volgende sjabloon Resourcemanager om de geheime waarde te maken en in te stellen. Met deze sjabloon wordt `supersecret` de geheime `ver1`waarde voor de geheime bron ingesteld als versie.
-```json
-  {
-  "parameters": {
-  "supersecret": {
-      "type": "string",
-      "metadata": {
-        "description": "supersecret value"
-      }
-   }
-  },
-  "resources": [
-    {
-      "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain",
-        }
-    },
-    {
-      "apiVersion": "2018-07-01-preview",
-      "name": "supersecret/ver1",
-      "type": "Microsoft.ServiceFabricMesh/secrets/values",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "Microsoft.ServiceFabricMesh/secrets/supersecret"
-      ],
-      "properties": {
-        "value": "[parameters('supersecret')]"
-      }
-    }
-  ],
-  ```
-### <a name="use-the-rest-api"></a>REST-API gebruiken
 
 Gebruik het volgende script om de REST API te gebruiken om de geheime waarde in te stellen.
 ```powershell

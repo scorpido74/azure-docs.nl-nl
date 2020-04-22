@@ -3,14 +3,14 @@ title: 'Snelstart: een C#-ASP.NET-app maken'
 description: Meer informatie over het uitvoeren van web-apps in Azure App Service door de standaard C#ASP.NET webapp-sjabloon vanuit Visual Studio te implementeren.
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
-ms.date: 10/21/2019
+ms.date: 04/21/2020
 ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 4688cc358ec6ff792be58254b0607f5416422a21
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 47a5cf2586b8146a68772962c60dc0dbdbb7e2fe
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80047660"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768866"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Een ASP.NET Framework-web-app maken in Azure
 
@@ -55,7 +55,7 @@ Maak een ASP.NET web-app door de volgende stappen te volgen:
 
 1. Klik in **Solution Explorer**met de rechtermuisknop op het **myFirstAzureWebApp-project** en selecteer **Publiceren**.
 
-1. Kies **App-service** en wijzig **vervolgens Profiel maken** om te **publiceren**.
+1. Kies **App-service** en selecteer **Profiel maken**.
 
    ![Publiceren vanaf de projectoverzichtspagina](./media/app-service-web-get-started-dotnet-framework/publish-app-framework-vs2019.png)
 
@@ -82,23 +82,25 @@ Maak een ASP.NET web-app door de volgende stappen te volgen:
 
    | Instelling | Voorgestelde waarde | Beschrijving |
    |-|-|-|
-   |App Service-plan| myAppServicePlan | De naam van het App Service-plan. |
+   | Hostingabonnement| myAppServicePlan | De naam van het App Service-plan. |
    | Locatie | Europa -west | Het datacenter waar de web-app wordt gehost. |
    | Grootte | Gratis | De [prijscategorie](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bepaalt de hosting-functies. |
 
    ![Een App Service-plan maken](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)
 
-1. Voer in **Naam**een unieke app-naam in `a-z` `A-Z`die `0-9`alleen `-`de geldige tekens bevat, en . U de automatisch gegenereerde unieke naam accepteren. De URL van de web-app is `http://<app_name>.azurewebsites.net`, waarbij `<app_name>` de naam van uw app is.
+1. Voer in **Naam**een unieke app-naam in `a-z` `A-Z`die `0-9`alleen `-`de geldige tekens bevat, en . U de automatisch gegenereerde unieke naam accepteren. De URL van de web-app is `http://<app-name>.azurewebsites.net`, waarbij `<app-name>` de naam van uw app is.
 
 2. Selecteer **Maken** om de Azure-resources te gaan maken.
 
    ![Uw app-naam configureren](./media/app-service-web-get-started-dotnet-framework/web-app-name-framework-vs2019.png)
 
-Zodra de wizard is voltooid, wordt de ASP.NET-web-app naar Azure gepubliceerd. Daarna wordt de app gestart in de standaardbrowser.
+    Zodra de wizard is voltooid, worden de Azure-resources voor u gemaakt en bent u klaar om te publiceren.
 
-![Gepubliceerde ASP.NET-web-app in Azure](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
+3. Klik **op** de pagina Publiceren op **Publiceren**. Visual Studio bouwt, verpakt en publiceert de app naar Azure en start de app vervolgens in de standaardbrowser.
 
-De app-naam die is opgegeven op de pagina Nieuwe pagina `http://<app_name>.azurewebsites.net`Maken van **app-service,** wordt gebruikt als het URL-voorvoegsel in de indeling .
+    ![Gepubliceerde ASP.NET-web-app in Azure](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
+
+De app-naam die is opgegeven op de pagina Nieuwe pagina `http://<app-name>.azurewebsites.net`Maken van **app-service,** wordt gebruikt als het URL-voorvoegsel in de indeling .
 
 **Gefeliciteerd!** Uw web-app ASP.NET wordt live uitgevoerd in Azure App Service.
 
@@ -117,9 +119,9 @@ De app-naam die is opgegeven op de pagina Nieuwe pagina `http://<app_name>.azure
 
 1. Als u opnieuw wilt implementeren naar Azure, klikt u in **Solution Explorer** met de rechtermuisknop op het project **myFirstAzureWebApp** en selecteert u **Publiceren**. Selecteer vervolgens **Publiceren**.
 
-Als het publiceren is voltooid, start Visual Studio een browser waarin de URL van de web-app wordt geladen.
+    Als het publiceren is voltooid, start Visual Studio een browser waarin de URL van de web-app wordt geladen.
 
-![Bijgewerkte ASP.NET-web-app in Azure](./media/app-service-web-get-started-dotnet-framework/updated-azure-web-app.png)
+    ![Bijgewerkte ASP.NET-web-app in Azure](./media/app-service-web-get-started-dotnet-framework/updated-azure-web-app.png)
 
 ## <a name="manage-the-azure-app"></a>De Azure-app beheren
 

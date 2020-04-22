@@ -1,5 +1,5 @@
 ---
-title: Leg machine learning-modellen en -voorspellingen uit
+title: Interpreteren & LEG ML-modellen uit in Python
 titleSuffix: Azure Machine Learning
 description: Meer informatie over hoe u uitleg krijgt over hoe uw machine learning-model het belang van de functie bepaalt en voorspellingen doet bij het gebruik van de Azure Machine Learning SDK.
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: c1282ed16c9e3b92e7d5ec3f9969bee6fc3d917f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257196"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769811"
 ---
-# <a name="explain-machine-learning-models-and-predictions"></a>Leg machine learning-modellen en -voorspellingen uit
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Gebruik het interpreteerbaarheidspakket om ML-modellen uit te leggen & voorspellingen in Python
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -41,10 +41,10 @@ Zie [Interpreteerbaarheid modelleren in Azure Machine Learning](how-to-machine-l
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Genereer functiebelangwaarde op uw persoonlijke machine 
 In het volgende voorbeeld ziet u hoe u het interpreteerpakket op uw persoonlijke machine gebruiken zonder contact op te nemen met Azure-services.
 
-1. Installeren `azureml-interpret` `azureml-interpret-contrib` en pakketten.
+1. Installeren `azureml-interpret` `azureml-contrib-interpret` en pakketten.
     ```bash
     pip install azureml-interpret
-    pip install azureml-interpret-contrib
+    pip install azureml-contrib-interpret
     ```
 
 2. Train een voorbeeldmodel in een lokaal Jupyter-notitieboek.

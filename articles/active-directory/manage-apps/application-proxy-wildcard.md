@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406735"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770306"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Jokertekens in de proxy van Azure Active Directory-toepassing
 
@@ -48,8 +48,6 @@ U toepassingen met jokertekens publiceren als beide interne en externe URL's in 
 Bijvoorbeeld: `http(s)://*.adventure-works.com`.
 
 Hoewel de interne en externe URL's verschillende domeinen kunnen gebruiken, moeten ze als best practice hetzelfde zijn. Bij het publiceren van de toepassing ziet u een fout als een van de URL's geen wildcard heeft.
-
-Als u extra toepassingen met verschillende configuratie-instellingen hebt, moet u deze uitzonderingen publiceren als afzonderlijke toepassingen om de standaardinstellingen voor de joker te overschrijven. Toepassingen zonder wildcard hebben altijd voorrang op wildcardtoepassingen. Vanuit het oogpunt van configuratie zijn dit "gewoon" reguliere toepassingen.
 
 Het maken van een wildcardtoepassing is gebaseerd op dezelfde [publicatiestroom](application-proxy-add-on-premises-application.md) voor toepassingen die beschikbaar is voor alle andere toepassingen. Het enige verschil is dat u een wildcard opneemt in de URL's en mogelijk de SSO-configuratie.
 

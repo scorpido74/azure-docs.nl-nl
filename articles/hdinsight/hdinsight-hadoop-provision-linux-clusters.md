@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 246ec08e9b4edb33fa49318b68cc4364534282b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bba71ab35920027cc7296e774936c3d1deb8f92
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064653"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770319"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Clusters in HDInsight instellen met Apache Hadoop, Apache Spark, Apache Kafka en meer
 
@@ -30,13 +30,13 @@ Een Hadoop-cluster bestaat uit verschillende virtuele machines (knooppunten) die
 
 In de volgende tabel ziet u de verschillende methoden die u gebruiken om een HDInsight-cluster in te stellen.
 
-| Clusters gemaakt met | Webbrowser | Opdrachtregel | REST API | SDK |
+| Clusters gemaakt met | Webbrowser | Opdrachtregel | REST-API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure-portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
-| [Azure-gegevensfabriek](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
+| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure-CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
-| [Curl](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
+| [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Azure Resource Manager-sjablonen](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
 In dit artikel u de installatie in de [Azure-portal](https://portal.azure.com)doorlopen, waar u een HDInsight-cluster maken.
@@ -78,8 +78,8 @@ Azure HDInsight biedt momenteel de volgende clustertypen, elk met een set compon
 | [HBase](hbase/apache-hbase-overview.md) |Verwerking voor grote hoeveelheden schemaloze NoSQL-gegevens |
 | [Interactive Query](./interactive-query/apache-interactive-query-get-started.md) |In-memory caching voor interactieve en snellere Hive-query's |
 | [Kafka](kafka/apache-kafka-introduction.md) | Een gedistribueerd streamingplatform dat kan worden gebruikt om realtime streaming datapipelines en -toepassingen te bouwen |
-| [ML-services](r-server/r-server-overview.md) |Diverse big data-statistieken, voorspellende modellering en machine learning-mogelijkheden |
-| [Vonk](spark/apache-spark-overview.md) |Verwerking in het geheugen, interactieve query's, verwerking van microbatchstromen |
+| [ML Services](r-server/r-server-overview.md) |Diverse big data-statistieken, voorspellende modellering en machine learning-mogelijkheden |
+| [Spark](spark/apache-spark-overview.md) |Verwerking in het geheugen, interactieve query's, verwerking van microbatchstromen |
 | [Storm](storm/apache-storm-overview.md) |Gebeurtenissen in realtime verwerken |
 
 #### <a name="version"></a>Versie
@@ -104,7 +104,7 @@ De SSH-gebruikersnaam heeft de volgende beperkingen:
 * Toegestane speciale tekens:`_` en`@`
 * Tekens niet toegestaan: #;;',,,,,,:'!*??$()\/{}[]<>|&--=+%~^ruimte
 * Maximale lengte: 64
-* Gereserveerde namen: hadoop, gebruikers, oozie, hive, mapred, ambari-qa, zookeeper, tez, hdfs, sqoop, garen, hcat, ams, hbase, storm, beheerder, admin, gebruiker, gebruiker1, test, user2, test1, user3, admin1, 1, 123, a, actuser, adm, admin2, aspnet, back-up, console, david, gast, john, eigenaar, root, server, sql, ondersteuning, support_388945a0, sys, test2, test3, user4, user5, spark
+* Gereserveerde namen: hadoop, gebruikers, oozie, hive, mapred, ambari-qa, zookeeper, tez, hdfs, sqoop, garen, hcat, ams, hbase, storm, beheerder, beheerder, gebruiker, gebruiker1, test, user2, test1, user3, admin1, 1, 123, a, actuser, adm, admin2, aspnet, back-up, console, david, gast, john, eigenaar, root, server, sql, support, support_388945a0, sys, test2, test3, user4, user5, spark
 
 ## <a name="storage"></a>Storage
 
@@ -169,7 +169,7 @@ Zie [Sandbox-omgeving voor domeinverbonden HDInsight voor](./domain-joined/apach
 
 ### <a name="tls"></a>TLS
 
-Zie [Transport Layer Security](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security) voor meer informatie
+Zie [Transport Layer Security](./transport-layer-security.md) voor meer informatie
 
 ### <a name="virtual-network"></a>Virtueel netwerk
 

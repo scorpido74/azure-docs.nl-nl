@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b9bac14ff47107a4b39f12989685e2e510569ba2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf1db2d737de7004b5ab71c8e0e44d61d1da8c9
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72757080"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768515"
 ---
 # <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>Use-cases voor ingebouwde analyses met Azure Cosmos DB
 
@@ -37,7 +37,7 @@ Met de native ingebouwde Apache Spark biedt Azure Cosmos DB een snelle, eenvoudi
 
 In sommige gevallen moet u vragen beantwoorden op basis van gegevens, omdat op een specifiek tijdstip gebeurtenissen zijn voltooid die in het verleden zijn voltooid. Bijvoorbeeld om het aantal CRM-activiteitsstatussen op een bepaalde datum te krijgen. Als u het rapport een week geleden hebt uitgevoerd, zou de telling van de statussen zijn volgens de statussen van elke activiteit op dat moment. Het uitvoeren van hetzelfde rapport vandaag geeft u de telling van de activiteiten waarvan de status sis zoals ze zijn zoals ze nu zijn, die kan zijn veranderd sinds vorige week, als ze gaan door hun levenscyclus van open tot sluiten. U moet dus in elke fase van de levenscyclus van de aanvraag verslag uitbrengen van de momentopname.
 
-In traditionele scenario's voor gegevensmagazijnen is het concept van momentopname niet mogelijk omdat de gegevensmagazijnen niet zijn ontworpen om het op te nemen en de gegevens alleen een actueel overzicht geven van wat er gebeurt. Met Azure Cosmos DB hebben gebruikers de mogelijkheid om het concept van tijdreizen te implementeren, in staat om met terugwerkende kracht analyses op de gegevens te bevragen en uit te voeren en te vragen hoe de gegevens naar een specifiek tijdstip in de geschiedenis hebben gekeken. Dit betekent dat gebruikers gemakkelijk zowel de huidige als historische weergaven van de gegevens kunnen bekijken en er analyses op kunnen uitvoeren.
+Met Azure Cosmos DB hebben gebruikers de mogelijkheid om het concept van tijdreizen te implementeren, in staat om met terugwerkende kracht analyses op de gegevens te bevragen en uit te voeren en te vragen hoe de gegevens naar een specifiek tijdstip in de geschiedenis hebben gekeken. Dit betekent dat gebruikers gemakkelijk zowel de huidige als historische weergaven van de gegevens kunnen bekijken en er analyses op kunnen uitvoeren.
 
 ## <a name="globally-distributed-machine-learning-and-ai"></a>Wereldwijd gedistribueerde machine learning en AI
 

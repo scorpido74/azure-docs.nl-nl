@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 462a44f7766e0ec52ba7156d6de5ae5261e21376
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 0ecb7ee7f5c7c0ebaa87eb6b32eee1926d9e294d
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547371"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768953"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Begin met de informatie hier om meer te weten te komen over Azure Virtual Networks: [Azure Virtual Network Overview](../virtual-network/virtual-networks-overview.md).
@@ -108,7 +108,7 @@ Hieronder volgt een lijst met veelvoorkomende foutieve configuratieproblemen die
 
 <a name="required-ports"> </a> Wanneer een API Management-serviceinstantie wordt gehost in een VNET, worden de poorten in de volgende tabel gebruikt.
 
-| Bron / bestemmingspoort(en) | Richting          | Transportprotocol |   [Servicetags](../virtual-network/security-overview.md#service-tags) <br> Bron / Bestemming   | Doel (*)                                                 | Type virtueel netwerk |
+| Bron / bestemmingspoort(en) | Richting          | Transportprotocol |   [Servicetags](../virtual-network/security-overview.md#service-tags) <br> Bron / Bestemming   | Doel\*( )                                                 | Type virtueel netwerk |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / [80], 443                  | Inkomend            | TCP                | INTERNET / VIRTUAL_NETWORK            | Clientcommunicatie naar API-beheer                      | Extern             |
 | * / 3443                     | Inkomend            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Eindpunt beheer voor Azure-portal en Powershell         | Extern & Intern  |
@@ -132,9 +132,7 @@ Hieronder volgt een lijst met veelvoorkomende foutieve configuratieproblemen die
 
 + **DNS-toegang:** Uitgaande toegang op poort 53 is vereist voor communicatie met DNS-servers. Als er een aangepaste DNS-server bestaat aan de andere kant van een VPN-gateway, moet de DNS-server bereikbaar zijn via het subnet hosting API Management.
 
-+ **Metrische gegevens en statusbewaking:** uitgaande netwerkconnectiviteit met Azure Monitoring-eindpunten, die worden opgelost onder de volgende domeinen:
-
-+ **Regionale servicetags**": NSG-regels die uitgaande connectiviteit met opslag-, SQL- en EventHubs-servicetags mogelijk maken, kunnen de regionale versies van die tags gebruiken die overeenkomen met de regio die de instantie API-beheer bevat (bijvoorbeeld Storage.WestUS voor een API-beheerexemplaar in de regio West-VS). Bij implementaties in meerdere regio's moet de NSG in elke regio verkeer naar de servicetags voor die regio toestaan.
++ **Metrics en Health Monitoring:** Uitgaande netwerkconnectiviteit met Azure Monitoring-eindpunten, die worden opgelost onder de volgende domeinen. Zoals in de tabel wordt weergegeven, worden deze URL's weergegeven onder de AzureMonitor-servicetag voor gebruik met netwerkbeveiligingsgroepen.
 
     | Azure-omgeving | Eindpunten                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -142,8 +140,10 @@ Hieronder volgt een lijst met veelvoorkomende foutieve configuratieproblemen die
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com(**nieuw**)</li><li>shoebox2.metrics.nsatc.net(**te deprecated**)</li><li>prod3.metrics.microsoftmetrics.com(**nieuw**)</li><li>prod3.metrics.nsatc.net(**te deprecated**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
     | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com(**nieuw**)</li><li>shoebox2.metrics.nsatc.net(**te deprecated**)</li><li>prod3.metrics.microsoftmetrics.com(**nieuw**)</li><li>prod3.metrics.nsatc.net(**te deprecated**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
 
->[!IMPORTANT]
-> De wijziging van clusters hierboven met dns-zone **.nsatc.net** naar **.microsoftmetrics.com** is meestal een DNS-wijziging. IP-adres van het cluster wordt niet gewijzigd.
+  >[!IMPORTANT]
+  > De wijziging van clusters hierboven met dns-zone **.nsatc.net** naar **.microsoftmetrics.com** is meestal een DNS-wijziging. IP-adres van het cluster wordt niet gewijzigd.
+
++ **Regionale servicetags:** NSG-regels die uitgaande connectiviteit met servicetags Voor opslag, SQL en Gebeurtenishubs toestaan, kunnen de regionale versies van die tags gebruiken die overeenkomen met de regio die de instantie API-beheer bevat (bijvoorbeeld Storage.WestUS voor een API-beheerexemplaar in de regio West-VS). Bij implementaties in meerdere regio's moet de NSG in elke regio verkeer naar de servicetags voor die regio en de primaire regio toestaan.
 
 + **SMTP Relay**: Uitgaande netwerkconnectiviteit voor het SMTP-relais, `smtpi-co1.msn.com` `smtpi-ch1.msn.com`dat `smtpi-db3.msn.com` `smtpi-sin.msn.com` oplost onder de host , , en`ies.global.microsoft.com`
 
@@ -151,7 +151,7 @@ Hieronder volgt een lijst met veelvoorkomende foutieve configuratieproblemen die
 
 + **Azure-portaldiagnostics:** Om de stroom van diagnostische logboeken vanuit Azure-portal in te schakelen `dc.services.visualstudio.com` wanneer u de API-beheerextensie gebruikt vanuit een virtueel netwerk, is uitgaande toegang tot poort 443 vereist. Dit helpt bij het oplossen van problemen waarmee u te maken krijgen bij het gebruik van extensie.
 
-+ **Tunneling Traffic to On-prem Firewall Using Express Route or Network Virtual Appliance**: Een veelgebruikte klantconfiguratie is het definiëren van hun eigen standaardroute (0.0.0.0/0) die al het verkeer van het gedelegeerde subnet api-beheer dwingt om door een on-premises firewall of naar een virtueel netwerktoestel te stromen. Deze verkeersstroom breekt steevast de verbinding met Azure API Management omdat het uitgaande verkeer on-premises wordt geblokkeerd of NAT'd naar een onherkenbare set adressen die niet langer werken met verschillende Azure-eindpunten. De oplossing vereist dat u een paar dingen te doen:
++ **TunnelingTraffic naar on-premises firewall afdwingen met expressroute of netwerkvirtueel toestel:** een veelvoorkomende klantconfiguratie is het definiëren van hun eigen standaardroute (0.0.0.0/0) die al het verkeer van het gedelegeerde subnet van API-beheer dwingt om door een on-premises firewall of naar een virtueel netwerktoestel te stromen. Deze verkeersstroom breekt steevast de verbinding met Azure API Management omdat het uitgaande verkeer on-premises wordt geblokkeerd of NAT'd naar een onherkenbare set adressen die niet langer werken met verschillende Azure-eindpunten. De oplossing vereist dat u een paar dingen te doen:
 
   * Serviceeindpunten inschakelen op het subnet waarin de API-beheerservice is geïmplementeerd. [Serviceeindpunten][ServiceEndpoints] moeten zijn ingeschakeld voor Azure Sql, Azure Storage, Azure EventHub en Azure ServiceBus. Door eindpunten rechtstreeks in te schakelen van het gedelegeerdsubnet van API Management naar deze services, kunnen ze het Microsoft Azure-backbonenetwerk gebruiken dat optimale routering biedt voor serviceverkeer. Als u Service-eindpunten gebruikt met een geforceerd api-beheer met een ondertunneling, wordt het bovenstaande Azure-servicesverkeer niet geforceerd getunneld. Het andere afhankelijkheidsverkeer van apibeheerservice wordt gedwongen getunneld en kan niet verloren gaan of de API-beheerservice zou niet goed functioneren.
     

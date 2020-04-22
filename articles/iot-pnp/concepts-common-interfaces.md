@@ -1,18 +1,18 @@
 ---
 title: Algemene interfaces - IoT Plug and Play Preview | Microsoft Documenten
 description: Beschrijving van de gemeenschappelijke interfaces voor IoT Plug and Play-ontwikkelaars
-author: ChrisGMsft
-ms.author: chrisgre
+author: Philmea
+ms.author: philmea
 ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: c6ac90f917b9afc37b3a39d8da679fbcad091778
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5773ec2b3ea88fa9a507b7c1b0b84bb7ea305a94
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234709"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770494"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>Algemene interfaces voor IoT Plug and Play Preview
 
@@ -20,7 +20,7 @@ Van alle IoT Plug and Play-apparaten wordt verwacht dat ze een aantal algemene i
 
 ## <a name="summary-of-common-interfaces"></a>Samenvatting van gemeenschappelijke interfaces
 
-| Name | Id | Beschrijving | Geïmplementeerd door Azure IoT SDK | Moet worden gedeclareerd in het vermogen model |
+| Naam | Id | Beschrijving | Geïmplementeerd door Azure IoT SDK | Moet worden gedeclareerd in het vermogen model |
 | -------- | -------- | -------- | -------- | -------- | -------- |
 | Modelgegevens | urn:azureiot:ModelDiscovery:ModelInformation:1 | Voor apparaten om de mogelijkheid model-ID en interfaces te verklaren. Vereist voor alle IoT Plug and Play-apparaten. | Ja | Nee |
 | SDK-informatie voor digitale tweelingklanten | urn:azureiot:Client:SDKInformation:1 | Client SDK voor het verbinden van het apparaat met Azure. Vereist voor [certificering](tutorial-build-device-certification.md) | Ja | Nee |

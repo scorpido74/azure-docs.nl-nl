@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: c812e00699cd8f8cfbaf32feea1b43866ffb0990
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 78aee7829e58feede3360f30f10260903713c52f
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78674360"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770085"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Zelfstudie: Azure IoT Hub-berichtverrijkingen gebruiken
 
@@ -76,7 +77,7 @@ Als u dit nog niet hebt gedaan, opent u een Azure [Cloud Shell-venster](https://
 
 Dit zijn de bronnen die door het script zijn gemaakt. *Verrijkt* betekent dat de bron is voor berichten met verrijkingen. *Origineel* betekent dat de bron is voor berichten die niet zijn verrijkt.
 
-| Name | Waarde |
+| Naam | Waarde |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | containernaam | Origineel  |
@@ -296,7 +297,7 @@ U een resourcemanagersjabloon gebruiken om de bronnen, berichtroutering en beric
 
    Hier volgen de bronnen die zijn gemaakt door de sjabloon te laden. **Verrijkt** betekent dat de bron is voor berichten met verrijkingen. **Origineel** betekent dat de bron is voor berichten die niet zijn verrijkt. Dit zijn dezelfde waarden die worden gebruikt in het Azure CLI-script.
 
-   | Name | Waarde |
+   | Naam | Waarde |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | containernaam | Origineel  |
