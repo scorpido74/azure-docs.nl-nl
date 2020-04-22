@@ -1,25 +1,19 @@
 ---
 title: Een aangepaste Linux-schijf uploaden met Azure CLI
 description: Een virtuele harde schijf (VHD) maken en uploaden naar Azure met behulp van het implementatiemodel Resource Manager en het Azure CLI
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 62855d943dae2e03cefff64710ce23ff0e0a0567
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.custom: storage accounts
+ms.openlocfilehash: 7ec9b670f8b2eb1731511deb1d01cfc7db55054f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458706"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758567"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Een Linux-vm uploaden en maken vanaf aangepaste schijf met de Azure CLI
 

@@ -10,15 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: d52366684d772f91b53a1ab385b51ae4f11f0a5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158338"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758243"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Een Rigado Cascade 500-gatewayapparaat verbinden met uw Azure IoT Central-toepassing
 
+*Dit artikel is van toepassing op oplossingsbouwers en apparaatontwikkelaars.*
 
 In dit artikel wordt beschreven hoe u als oplossingsbouwer een Rigado Cascade 500-gateway-apparaat verbinden met uw Microsoft Azure IoT Central-toepassing. 
 
@@ -70,4 +71,7 @@ U bent nu klaar om uw C500-apparaat te gebruiken in uw IoT Central-toepassing!
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u een Rigado Cascade 500 aansluiten op uw Azure IoT Central-toepassing, is de voorgestelde volgende stap om te leren hoe u [een in-store analytics-toepassing maken](../retail/tutorial-in-store-analytics-create-app-pnp.md) om een end-to-end-oplossing te bouwen. 
+Als u een apparaatontwikkelaar bent, moeten enkele voorgestelde volgende stappen:
+
+- Lees meer over [apparaatconnectiviteit in Azure IoT Central](./concepts-get-connected.md)
+- Meer informatie over [het bewaken van apparaatconnectiviteit met Azure CLI](./howto-monitor-devices-azure-cli.md)

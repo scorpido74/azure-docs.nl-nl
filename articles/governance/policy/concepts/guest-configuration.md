@@ -3,12 +3,12 @@ title: Leer de inhoud van virtuele machines te controleren
 description: Lees hoe Azure Policy de gastconfiguratieagent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e4899f6b3108cabb4e9cdd36e4b2bc5cd2f1cbd4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1721c0f1ca7c084d636278aabc96f8dac3293038
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538032"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759076"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>De gastconfiguratie van Azure Policy begrijpen
 
@@ -20,19 +20,25 @@ Naast het controleren en [herstellen van](../how-to/remediate-resources.md) Azur
 
 Op dit moment controleert het meeste Azure Policy Guest Configuration-beleid alleen de instellingen in de machine. Ze passen geen configuraties toe. De uitzondering is een ingebouwd beleid [waarnaar hieronder wordt verwezen](#applying-configurations-using-guest-configuration).
 
+## <a name="resource-provider"></a>Resourceprovider
+
+Voordat u Gastconfiguratie gebruiken, moet u de resourceprovider registreren. De resourceprovider wordt automatisch geregistreerd als toewijzing van een gastconfiguratiebeleid via de portal wordt uitgevoerd. U u handmatig registreren via de [portal,](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)of [Azure CLI.](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)
+
 ## <a name="extension-and-client"></a>Uitbreiding en client
 
 Als u instellingen in een machine wilt controleren, is een [extensie voor virtuele machines](../../../virtual-machines/extensions/overview.md) ingeschakeld. De extensie downloadt de toepasselijke beleidstoewijzing en de bijbehorende configuratiedefinitie.
+
+> [!Important]
+> De extensie Gastconfiguratie is vereist om audits uit te voeren in virtuele Azure-machines.
+> Als u de extensie op schaal wilt implementeren, wijst u de volgende beleidsdefinities toe:
+>   - Werkvereisten implementeren om gastconfiguratiebeleid in te schakelen op Windows VM's.
+>   - Implementeer vereisten om gastconfiguratiebeleid voor Linux-VM's in te schakelen.
 
 ### <a name="limits-set-on-the-extension"></a>Limieten voor de extensie
 
 Om de extensie te beperken voor het beïnvloeden van toepassingen die in de machine worden uitgevoerd, mag de gastconfiguratie niet meer dan 5% van de CPU bedragen. Deze beperking bestaat voor zowel ingebouwde als aangepaste definities.
 
-## <a name="register-guest-configuration-resource-provider"></a>Gastconfiguratieresourceprovider registreren
-
-Voordat u Gastconfiguratie gebruiken, moet u de resourceprovider registreren. U zich registreren via de [portal,](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)of [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli). De resourceprovider wordt automatisch geregistreerd als toewijzing van een gastconfiguratiebeleid via de portal wordt uitgevoerd.
-
-## <a name="validation-tools"></a>Validatiegereedschappen
+### <a name="validation-tools"></a>Validatiegereedschappen
 
 In de machine gebruikt de gastconfiguratieclient lokale hulpprogramma's om de controle uit te voeren.
 
@@ -50,17 +56,17 @@ Resultaten worden verzonden naar de gastconfiguratie resource provider wanneer d
 
 ## <a name="supported-client-types"></a>Ondersteunde clienttypen
 
-In de volgende tabel ziet u een lijst met ondersteunde besturingssysteems op Azure-afbeeldingen:
+Gastconfiguratiebeleid is inclusief nieuwe versies. Oudere versies van besturingssystemen die beschikbaar zijn in de Azure-marktplaats zijn uitgesloten als de gastconfiguratieagent niet compatibel is. In de volgende tabel ziet u een lijst met ondersteunde besturingssystemen op Azure-afbeeldingen:
 
 |Uitgever|Naam|Versies|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04, 16.04, 18.04|
-|Credativ Credativ|Debian|8, 9|
-|Microsoft|Windows Server|Datacenter 2012, 2012 R2 Datacenter, datacenter 2016, datacenter 2019|
+|Canonical|Ubuntu Server|14.04 uur en later|
+|Credativ Credativ|Debian|8 en later|
+|Microsoft|Windows Server|2012 en later|
 |Microsoft|Windows-client|Windows 10|
-|OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7, 7.8|
-|Suse|SLES|12 SP3|
+|OpenLogic|CentOS|7.3 en hoger|
+|Red Hat|Red Hat Enterprise Linux|7.4 en hoger|
+|Suse|SLES|12 SP3 en hoger|
 
 ### <a name="unsupported-client-types"></a>Niet-ondersteunde clienttypen
 

@@ -1,23 +1,19 @@
 ---
 title: Overzicht van Linux VM's in Azure
 description: Overzicht van Linux virtuele machines in Azure.
-services: virtual-machines-linux
-documentationcenter: virtual-machines-linux
 author: cynthn
-manager: gwallace
 ms.service: virtual-machines-linux
 ms.topic: overview
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 69a9722436aea1cf794e6e3f3ce02ec79180cff3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 83676850a58da4e4bd3c549d9d0c6ac25ae20f83
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80159469"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759420"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuele Linux-machines in Azure
 
@@ -53,8 +49,8 @@ In deze tabel staan enkele manieren om een lijst met beschikbare locaties te ver
 | --- | --- |
 | Azure Portal |Selecteer een locatie in de lijst bij het maken van een VM. |
 | Azure PowerShell |Gebruik de opdracht [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation). |
-| REST API |Gebruik de bewerking [Locaties vermelden](https://docs.microsoft.com/rest/api/resources/subscriptions). |
-| Azure-CLI |Gebruik de bewerking [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
+| REST-API |Gebruik de bewerking [Locaties vermelden](https://docs.microsoft.com/rest/api/resources/subscriptions). |
+| Azure CLI |Gebruik de bewerking [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
 
 ## <a name="availability"></a>Beschikbaarheid
 Voor Azure is een toonaangevende serviceovereenkomst (SLA) van 99,9% aangekondigd voor één VM-instantie. Hiervoor geldt wel als voorwaarde dat de virtuele machine wordt geïmplementeerd met Premium-opslag voor alle schijven.  Als u wilt dat uw VM-implementatie in aanmerking komt voor de SLA van 99,95%, moet u bovendien een beschikbaarheidsset maken met ten minste twee VM's waarop uw workload wordt uitgevoerd. Dit zorgt ervoor dat uw VM's worden verdeeld over meerdere foutdomeinen in de Azure-datacenters en worden geïmplementeerd op hosts met verschillende onderhoudsvensters. In de volledige [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wordt de gegarandeerde beschikbaarheid van Azure als geheel uitgelegd.
@@ -123,5 +119,5 @@ Maak je eerste VM!
 
 - [Portal](quick-create-portal.md)
 - [Azure-CLI](quick-create-cli.md)
-- [Powershell](quick-create-powershell.md)
+- [PowerShell](quick-create-powershell.md)
 

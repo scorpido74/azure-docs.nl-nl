@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b42c2a414333e7ed262441321a808fc45425fc3b
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187590"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756754"
 ---
 # <a name="json-claims-transformations"></a>JSON claimt transformaties
 
@@ -223,6 +223,39 @@ In het volgende voorbeeld haalt de `id` claimtransformatie het element uit de JS
 - Output claims:
     - **geëxtraheerdClaim**: 6353399
 
+## <a name="getsingleitemfromjson"></a>GetSingleItemFromJson
+
+Haalt het eerste element uit een JSON-gegevens.
+
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| ---- | ----------------------- | --------- | ----- |
+| Invoerclaim | inputJson | tekenreeks | De ClaimTypes die door de claimtransformatie worden gebruikt om het artikel uit de JSON-gegevens te halen. |
+| Uitvoerclaim | sleutel | tekenreeks | De eerste elementsleutel in de JSON. |
+| Uitvoerclaim | waarde | tekenreeks | De eerste elementwaarde in de JSON. |
+
+In het volgende voorbeeld haalt de claimtransformatie het eerste element (voornaam) uit de JSON-gegevens.
+
+```XML
+<ClaimsTransformation Id="GetGivenNameFromResponse" TransformationMethod="GetSingleItemFromJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="json" TransformationClaimType="inputJson" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="givenNameKey" TransformationClaimType="key" />
+    <OutputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="value" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Voorbeeld
+
+- Invoerclaims:
+  - **inputJson**: {"givenName": "Emilty", "lastName": "Smith"}
+- Output claims:
+  - **sleutel**: givenName
+  - **waarde**: Emilty
+
+
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
 Haalt het eerste element uit een JSON-gegevensarray.
@@ -294,3 +327,5 @@ Output claim:
   }
 }
 ```
+
+

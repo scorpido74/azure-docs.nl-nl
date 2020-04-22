@@ -3,12 +3,12 @@ title: Sjabloon om waarschuwingen voor resourcestatus te maken
 description: Maak programmatisch waarschuwingen die u op de hoogte stellen wanneer uw Azure-bronnen niet meer beschikbaar zijn.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: c01934cc88dc29d0503abfafc203ab0f04bf1761
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062900"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759015"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Waarschuwingen voor bronstatus configureren met behulp van ResourceBeheer-sjablonen
 
@@ -228,6 +228,9 @@ U alleen een melding ontvangen wanneer een resource niet in orde wordt, `status`
 ```
 
 Als u op de hoogte wilt worden gesteld van alle vier de stadia van gezondheidsgebeurtenissen, `status` u deze voorwaarde allemaal samen verwijderen en wordt u door de waarschuwing op de hoogte gebracht, ongeacht de eigenschap.
+
+> [!NOTE]
+> Elke sectie 'anyOf' moet slechts één veldtypewaarden bevatten.
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>De waarschuwingen resourcestatus aanpassen om gebeurtenissen in 'Onbekende' te voorkomen
 

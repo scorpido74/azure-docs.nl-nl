@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: fe7d076fab6a70736843fc644cd56bef44a55df2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/21/2020
+ms.openlocfilehash: 4db9624fbc71e48fcc10ae1d9a1d700d301248a2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415127"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759544"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Beveiliging en gegevensprivacy in Azure Cognitive Search
 
@@ -40,7 +40,7 @@ Versleuteling strekt zich uit over de gehele indexeringspijplijn: van verbinding
 
 | Beveiligingslaag | Beschrijving |
 |----------------|-------------|
-| Versleuteling 'in transit' <br>(HTTPS/SSL/TLS) | Azure Cognitive Search luistert op HTTPS-poort 443. Op het platform worden verbindingen met Azure-services versleuteld. <br/><br/>Alle client-to-service Azure Cognitive Search-interacties zijn geschikt voor SSL/TLS 1.2.  Zorg ervoor dat u TLSv1.2 gebruikt voor SSL-verbindingen met uw service.|
+| Versleuteling 'in transit' <br>(HTTPS/SSL/TLS) | Azure Cognitive Search luistert op HTTPS-poort 443. Op het platform worden verbindingen met Azure-services versleuteld. <br/><br/>Alle client-to-service Azure Cognitive Search-interacties maken gebruik van SSL/TLS 1.2-versleuteling. Eerdere versies (1.0 of 1.1) worden niet ondersteund.|
 | Versleuteling 'at rest' <br>Door Microsoft beheerde sleutels | Versleuteling wordt volledig geïnternaliseerd in het indexeringsproces, zonder meetbare impact op het indexeren van tijd tot voltooiing of indexgrootte. Het gebeurt automatisch op alle indexering, ook op incrementele updates van een index die niet volledig is versleuteld (gemaakt vóór januari 2018).<br><br>Intern is versleuteling gebaseerd op [Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), met behulp van 256-bits [AES-versleuteling.](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)<br><br> Versleuteling is intern in Azure Cognitive Search, met certificaten en versleutelingssleutels die intern door Microsoft worden beheerd en universeel worden toegepast. U versleuteling niet in- of uitschakelen, uw eigen sleutels beheren of vervangen, of versleutelingsinstellingen bekijken in de portal of programmatisch.<br><br>Encryptie in rust werd aangekondigd in januari 24, 2018 en is van toepassing op alle servicelagen, inclusief de gratis laag, in alle regio's. Voor volledige versleuteling moeten indexen die vóór die datum zijn gemaakt, worden verwijderd en opnieuw worden opgebouwd om versleuteling te kunnen maken. Anders worden alleen nieuwe gegevens die na 24 januari zijn toegevoegd, versleuteld.|
 | Versleuteling 'at rest' <br>Door klant beheerde sleutels | Versleuteling met door klanten beheerde sleutels is nu algemeen beschikbaar voor zoekservices die op of na januari 2019 zijn gemaakt. Het wordt niet ondersteund op gratis (gedeelde) diensten.<br><br>Azure Cognitive Search-indexen en synoniemenkaarten kunnen nu in rust worden versleuteld met door de klant beheerde sleutels in Azure Key Vault. Zie [Versleutelingssleutels beheren in Azure Cognitive Search](search-security-manage-encryption-keys.md)voor meer informatie.<br><br>Deze functie vervangt de standaardversleuteling niet in rust, maar wordt er naast toegepast.<br><br>Als u deze functie inschakelt, wordt de indexgrootte vergroot en de queryprestaties verslechteren. Op basis van waarnemingen tot nu toe u een toename van 30%-60% in querytijden verwachten, hoewel de werkelijke prestaties variëren afhankelijk van de indexdefinitie en typen query's. Vanwege deze impact op de prestaties raden we u aan deze functie alleen in te schakelen op indexen die dit echt nodig hebben.
 

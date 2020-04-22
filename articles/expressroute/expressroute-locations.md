@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: b99bd20b9b9e18bbc09edd5bb49f34147ccfaabd
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: b825ed513f530733d7552e32206c12422a956b14
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390253"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81766938"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -84,7 +84,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Ondersteund |Ondersteund |Amsterdam, Chicago, Dallas, Frankfurt, Londen, Silicon Valley, Singapore, Sydney, Tokio, Toronto, Washington DC |
 | **[IN TOKIO](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | Ondersteund | Ondersteund | Tokio2 |
 | **[BBIX BBIX](https://www.bbix.net/en/service/ix/)** | Ondersteund | Ondersteund | Tokio |
-| **[BCX (BCX)](https://www.bcx.co.za/solutions)** |Ondersteund |Ondersteund |Kaapstad|
+| **[BCX (BCX)](https://www.bcx.co.za/solutions)** |Ondersteund |Ondersteund |Kaapstad, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Ondersteund |Ondersteund |Montreal, Toronto, Quebec |
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Ondersteund |Ondersteund |Amsterdam, Hong Kong SAR, Johannesburg, Londen, Newport(Wales), Sao Paulo, Silicon Valley, Singapore, Sydney, Tokyo, Washington DC |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |Ondersteund |Ondersteund |Miami |
@@ -279,7 +279,7 @@ Als u op afstand bent en geen glasvezelconnectiviteit hebt of als u andere conne
 | **[RETN (RETN)](https://retn.net/services/cloud-connect/)** | Equinix | Amsterdam |
 | **Rogers** | Cologix, Equinix | Montreal, Toronto |
 | **[Spectrum Enterprise](https://enterprise.spectrum.com/services/cloud/cloud-connect.html)** | Equinix | Chicago, Dallas, Los Angeles, New York, Silicon Valley | 
-| **[Tamares Telecom](https://www.tamarestelecom.com/our-services/#Connectivity)** | Equinix | Londen | 
+| **[Tamares Telecom](http://www.tamarestelecom.com/our-services/#Connectivity)** | Equinix | Londen | 
 | **[TDC Erhverv](https://tdc.dk/Produkter/cloudaccessplus)** | Equinix | Amsterdam | 
 | **[Telecom Italia Sparkle](https://www.tisparkle.com/our-platform/corporate-platform/sparkle-cloud-connect#catalogue)**| Equinix | Amsterdam |
 | **[Telekom Deutschland GmbH](https://cloud.telekom.de/de/infrastruktur/managed-it-services/managed-hybrid-infrastructure-mit-microsoft-azure)** | Interxion | Amsterdam, Frankfurt |

@@ -6,22 +6,25 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 21dbd4128cad7df11aeb713286d868879a58519b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5e654fe5d31a225a855da8477e073ceeb1a68634
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75431527"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767234"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Snelstart: een Azure Stream Analytics-taak maken met Visual Studio
 
 Deze snelstart laat zien hoe u een Stream Analytics-taak kunt maken en uitvoeren met Azure Stream Analytics-tools voor Visual Studio. De voorbeeldtaak leest streaminggegevens vanaf een IoT Hub-apparaat. U definieert een taak die de gemiddelde temperatuur bij meer dan 27° berekent en de resulterende uitvoergebeurtenissen naar een nieuw bestand in blobopslag schrijft.
 
+> [!NOTE]
+> De hulpprogramma's Visual Studio en Visual Studio Code ondersteunen geen vacatures in de regio's China East, China North, Germany Central en Germany NorthEast.
+
 ## <a name="before-you-begin"></a>Voordat u begint
 
 * Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/)aan.
 
-* Meld u aan bij [Azure Portal](https://portal.azure.com/).
+* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 * Installeer Visual Studio 2019, Visual Studio 2015 of Visual Studio 2013 Update 4. Enterprise- (Ultimate/Premium), Professional- en Community-edities worden ondersteund. De Express-editie wordt niet ondersteund.
 
@@ -31,7 +34,7 @@ Deze snelstart laat zien hoe u een Stream Analytics-taak kunt maken en uitvoeren
 
 Voordat u de Stream Analytics-taak definieert, moet u de gegevens voorbereiden die later worden geconfigureerd als de taakinvoer. Voltooi de volgende stappen om de invoergegevens voor te bereiden die zijn vereist voor de taak:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Selecteer **Een bron** > **Internet of Things** > **IoT Hub maken**.
 

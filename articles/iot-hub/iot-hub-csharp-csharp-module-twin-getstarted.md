@@ -8,12 +8,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: e728d0ef8f52927687d56bd1d4c64f03c53ef401
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73947669"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733381"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Aan de slag met de identiteit van de IoT Hub-module en moduletwin (.NET)
 
@@ -53,7 +54,7 @@ Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 
 In deze sectie maakt u een .NET-consoletoepassing op het gesimuleerde apparaat waarmee de gerapporteerde eigenschappen van de moduledubbel worden bijgewerkt.
 
-Voordat u begint, krijgt u de tekenreeks voor de moduleverbinding. Meld u aan bij [Azure Portal](https://portal.azure.com/). Navigeer naar uw hub en selecteer **IoT-apparaten**. Zoek **myFirstDevice**. Selecteer **myFirstDevice** om het te openen en selecteer **myFirstModule** om het te openen. Kopieer in **moduleidentiteitsgegevens**de **verbindingstekenreeks (primaire sleutel)** wanneer dat nodig is in de volgende procedure.
+Voordat u begint, krijgt u de tekenreeks voor de moduleverbinding. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Navigeer naar uw hub en selecteer **IoT-apparaten**. Zoek **myFirstDevice**. Selecteer **myFirstDevice** om het te openen en selecteer **myFirstModule** om het te openen. Kopieer in **moduleidentiteitsgegevens**de **verbindingstekenreeks (primaire sleutel)** wanneer dat nodig is in de volgende procedure.
 
    ![Details van de Azure Portal-module](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ac44661dd5a52ba19a3b2dd461aabec1ec250bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd24650c9bf0c4de155b5bfc8723cfa1fef01548
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284871"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81755412"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Beheerdersrollen per beheertaak in Azure Active Directory
 
@@ -76,9 +76,9 @@ Bedrijfseigenschappen configureren | Globale beheerder |
 
 Taak | Minst bevoorrechte rol | Extra rollen
 ---- | --------------------- | ----------------
-Passthrough-verificatie | Globale beheerder | 
-Alle configuratie lezen | Globale lezer | 
-Naadloze enkele aanmelding | Globale beheerder | 
+Passthrough-verificatie | Hybride identiteitsbeheerder | 
+Alle configuratie lezen | Globale lezer | Hybride identiteitsbeheerder |
+Naadloze enkele aanmelding | Hybride identiteitsbeheerder | 
 
 ## <a name="connect-health"></a>Connect Health
 
@@ -346,7 +346,7 @@ Gebruikersinstellingen bijwerken | Globale beheerder |
 
 Taak | Minst bevoorrechte rol | Extra rollen
 ---- | --------------------- | ----------------
-Ondersteuningsticket verzenden | Servicebeheerder | Applicatiebeheerder, Azure Information Protection Administrator, factureringsbeheerder, cloudapplicatiebeheerder, compliancebeheerder, Dynamics 365-beheerder, desktopanalyticsbeheerder, exchange-beheerder, wachtwoord Beheerder, Intune-beheerder, Skype voor Bedrijven-beheerder, Power BI-beheerder, bevoegde verificatiebeheerder, SharePoint-beheerder, communicatiebeheerder teams, teambeheerder, gebruikersbeheerder, Beheerder van Workplace Analytics
+Ondersteuningsticket verzenden | Servicebeheerder | Application Administrator, Azure Information Protection Administrator, Billing Administrator, Cloud Application Administrator, Compliance Administrator, Dynamics 365 Administrator, Desktop Analytics Administrator, Exchange Administrator, Password Administrator, Intune Administrator, Skype for Business Administrator, Power BI Administrator, Privileged Authentication Administrator, SharePoint Administrator, Teams Communications Administrator, Teams Administrator, User Administrator, Workplace Analytics Administrator
 
 ## <a name="next-steps"></a>Volgende stappen
 

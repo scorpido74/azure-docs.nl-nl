@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 04/12/2020
-ms.openlocfilehash: dbd217c7135172c52a5ec7459930977960c452aa
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 25fdb0aefacbdd9c2630a69981a67821ac155786
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260855"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758817"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor door de klant beheerde sleutelconfiguratie 
 
@@ -281,7 +281,7 @@ Werk de *Clusterbron* KeyVaultProperties bij met sleutel-id-details.
 
 **Bijwerken**
 
-Deze resourcemanager-aanvraag is een asynchrone bewerking.
+Deze resourcemanageraanvraag is een asynchrone bewerking bij het bijwerken van de details van de sleutel-id, terwijl deze synchroon is bij het bijwerken van de capaciteitswaarde.
 
 > [!Warning]
 > U moet een volledige hoofdtekst opgeven in *clusterbronupdate* met *identiteit,* *sku,* *KeyVaultProperties* en *locatie.* Als u de details *KeyVaultProperties* mist, wordt de sleutel-id uit de *clusterbron* verwijderd en [wordt de sleutel intrekking veroorzaakt.](#cmk-kek-revocation)
@@ -314,7 +314,7 @@ Content-type: application/json
 **Reactie**
 
 200 OK en header.
-Het duurt de propagatie van de Sleutel-id een paar minuten te voltooien. U de inrichtingsstatus op twee manieren controleren:
+Het duurt de propagatie van de Sleutel-id een paar minuten te voltooien. U de updatestatus op twee manieren controleren:
 1. Kopieer de URL-waarde van Azure-AsyncOperation uit het antwoord en volg de [statuscontrole asynchrone bewerkingen](#asynchronous-operations-and-status-check).
 2. Stuur een GET-aanvraag op de *clusterbron* en bekijk de eigenschappen *KeyVaultProperties.* Uw onlangs bijgewerkte sleutel-id-gegevens moeten worden teruggegeven in het antwoord.
 
@@ -436,13 +436,13 @@ Al uw gegevens zijn toegankelijk na de sleutelrotatiebewerking, inclusief gegeve
 
 - Het maximum aantal *clusterbronnen* per abonnement is beperkt tot 2
 
-- *Clusterresourcekoppeling* naar werkruimte mag ALLEEN worden uitgevoerd nadat u hebt geverifieerd dat de adx-clusterinrichting is voltooid. Gegevens die voorafgaand aan deze provisioning worden verzonden, worden verwijderd en kunnen niet worden hersteld.
+- *Clusterresourcekoppeling* naar werkruimte mag ALLEEN worden uitgevoerd nadat u hebt geverifieerd dat de ADX-clusterinrichting is voltooid. Gegevens die vóór de voltooiing van de inrichting naar uw werkruimte worden verzonden, worden verwijderd en worden niet hersteld.
 
 - CMK-versleuteling is van toepassing op nieuw ingenomen gegevens na de CMK-configuratie. Gegevens die vóór de CMK-configuratie zijn ingenomen, blijven versleuteld met Microsoft-sleutel. U gegevens die voor en na de CMK-configuratie zijn ingenomen, naadloos opvragen.
 
-- Zodra werkruimte is gekoppeld aan een *clusterbron,* kan deze niet meer worden losgekoppeld van de *clusterbron,* omdat gegevens zijn versleuteld met uw sleutel en niet toegankelijk zijn zonder uw KEK in Azure Key Vault.
+- U een werkruimte loskoppelen van een *clusterbron* wanneer u beslist dat CMK niet vereist is voor bepaalde werkruimte. Nieuwe ingenomen gegevens nadat de koppelingsbewerking is opgeslagen in gedeelde Log Analytics-opslag zoals deze was voordat deze aan de *clusterbron* was gekoppeld. U gegevens die voor en na de koppeling zijn ingenomen, naadloos opvragen als uw *clusterbron* is ingericht en geconfigureerd met een geldige Key Vault-sleutel.
 
-- De Azure Key Vault moet zijn geconfigureerd als herstelbaar. Deze eigenschappen zijn standaard niet ingeschakeld en moeten worden geconfigureerd met CLI en PowerShell:
+- De Azure Key Vault moet zijn geconfigureerd als herstelbaar. Deze eigenschappen zijn standaard niet ingeschakeld en moeten worden geconfigureerd met CLI of PowerShell:
 
   - [Soft Delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) moet zijn ingeschakeld
   - [Zuiveringsbescherming](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) moet worden ingeschakeld om te waken tegen het verwijderen van geweld van het geheim / kluis, zelfs na zachte verwijderen
@@ -470,6 +470,8 @@ Al uw gegevens zijn toegankelijk na de sleutelrotatiebewerking, inclusief gegeve
 
 - Als u een *clusterbron* probeert te verwijderen die is gekoppeld aan een werkruimte, mislukt de verwijderingsbewerking.
 
+- Als er een conflictfout optreedt bij het maken van een *clusterbron:* het kan zijn dat u uw *clusterbron* in de afgelopen 14 dagen hebt verwijderd en dat deze zich in een periode voor het verwijderen van soft delete bevindt. De naam *van de clusterbron* blijft behouden tijdens de periode voor het verwijderen van soft-delete en u geen nieuw cluster met die naam maken. De naam wordt vrijgegeven na de periode voor het verwijderen van soft delete wanneer de *clusterbron* definitief wordt verwijderd.
+
 - Alle *clusterbronnen* voor een resourcegroep opvragen:
 
   ```rst
@@ -488,6 +490,11 @@ Al uw gegevens zijn toegankelijk na de sleutelrotatiebewerking, inclusief gegeve
           "tenantId": "tenant-id",
           "principalId": "principal-Id"
         },
+        "sku": {
+          "name": "capacityReservation",
+          "capacity": 1000,
+          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+          },
         "properties": {
            "KeyVaultProperties": {
               KeyVaultUri: "https://key-vault-name.vault.azure.net",
@@ -517,8 +524,10 @@ Al uw gegevens zijn toegankelijk na de sleutelrotatiebewerking, inclusief gegeve
   **Reactie**
     
   Hetzelfde antwoord als voor *'Clusterresources* voor een resourcegroep', maar dan in het abonnementsbereik.
-    
-- Verwijder uw *clusterbron:* er wordt een bewerking voor soft-delete uitgevoerd om het herstel van uw clusterbron, uw gegevens en bijbehorende werkruimten binnen 14 dagen mogelijk te maken, ongeacht of de verwijdering per ongeluk of opzettelijk was. De naam *van de clusterbron* blijft behouden tijdens de periode voor het verwijderen van soft-delete en u geen nieuw cluster met die naam maken. Na de periode voor het verwijderen van soft delete zijn uw *clusterbron* en -gegevens niet-herstelbaar. Gekoppelde werkruimten worden losgekoppeld van de *clusterbron* en er worden nieuwe gegevens ingenomen met gedeelde opslag en versleuteld met Microsoft-sleutel.
+
+- *Capaciteitsreservering bijwerken* in *clusterbron:* wanneer het gegevensvolume naar uw gekoppelde werkruimten verandert en u het capaciteitsreserveringsniveau wilt bijwerken voor factureringsoverwegingen, volgt u de [bron bijwerken *cluster* ](#update-cluster-resource-with-key-identifier-details) en geeft u uw nieuwe capaciteitswaarde op. Het capaciteitsreserveringsniveau kan tussen de 1.000 en 2.000 GB per dag liggen en in stappen van 100. Voor een niveau hoger dan 2.000 GB per dag bereikt u uw Microsoft-contactpersoon om dit in te schakelen.
+
+- Verwijder uw *clusterbron:* er wordt een bewerking voor soft-delete uitgevoerd om het herstel van uw *clusterbron* met de gegevens binnen 14 dagen mogelijk te maken, ongeacht of de verwijdering per ongeluk of opzettelijk was. De naam *van de clusterbron* blijft behouden tijdens de periode voor het verwijderen van soft-delete en u geen nieuw cluster met die naam maken. Na de periode voor het verwijderen van soft delete wordt de naam van de *clusterbron* vrijgegeven, worden uw *clusterbron* en gegevens permanent verwijderd en kunnen ze niet worden hersteld. Elke bijbehorende werkruimte wordt losgekoppeld van de *clusterbron* bij verwijderingsbewerking. Nieuwe ingenomen gegevens worden opgeslagen in gedeelde Log Analytics-opslag en versleuteld met Microsoft-sleutel. De werkplekken die zijn gedeactiveerd, zijn asynchroon.
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -529,8 +538,7 @@ Al uw gegevens zijn toegankelijk na de sleutelrotatiebewerking, inclusief gegeve
 
   200 OK
 
-- Herstel uw *clusterbron* en uw gegevens tijdens de periode voor het verwijderen van soft-delete, maak een *clusterbron* met dezelfde naam en in hetzelfde abonnement, resourcegroep en regio. Volg de stap ** *Clusterbron* maken** om uw *clusterbron* te herstellen.
-
+- Herstel uw *clusterbron* en uw gegevens: een *clusterbron* die in de afgelopen 14 dagen is verwijderd, is in de zachte status verwijderd en kan worden hersteld. Dit wordt handmatig uitgevoerd door de productgroep die momenteel wordt uitgevoerd. Gebruik uw Microsoft-kanaal voor herstelaanvragen.
 
 ## <a name="appendix"></a>Bijlage
 

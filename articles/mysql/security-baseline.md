@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cffefb294aaeeb4d66358ceae72c98becd04cc58
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3e79d6efcbb72b73dedb5b8dfdf965736e7de3e4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261955"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757213"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure Security Baseline voor Azure Database voor MySQL
 
@@ -650,7 +650,7 @@ Functiedekking voor Azure PaaS-services in Azure Security Center:https://docs.mi
 
 **Richtlijnen:** Gebruik Azure Resource Graph om alle bronnen (inclusief Azure Database for MySQL-exemplaren) binnen uw abonnement(en) op te vragen en te ontdekken. Zorg ervoor dat u over de juiste (lees)machtigingen in uw tenant beschikt en dat u alle Azure-abonnementen en resources binnen uw abonnementen opsommen.
 
-Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Uw Azure-abonnementen weergeven:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -794,7 +794,7 @@ Voorwaardelijke toegang configureren om toegang tot Azure Resource Manager te bl
 
 SSL-verbinding afdwingen moet zijn ingeschakeld voor MySQL-databaseservers
 
-Beschikbare Azure-beleidsaliassen weergeven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Beschikbare Azure Policy-aliassen weergeven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Azure-beleid configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

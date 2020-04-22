@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 08177165439ff7d3205e31757e5d1e28759a9836
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32bc90cc069ac82641c3aa7692c900c60db7ba87
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274188"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733106"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Bewakingsgegevens van Azure naar een event hub
 Azure Monitor biedt een complete oplossing voor volledige stackbewaking voor toepassingen en services in Azure, in andere clouds en on-premises. Naast het gebruik van Azure Monitor voor het analyseren van die gegevens en het gebruik ervan voor verschillende bewakingsscenario's, moet u deze mogelijk ook naar andere bewakingshulpprogramma's in uw omgeving verzenden. De meest effectieve methode om bewakingsgegevens in de meeste gevallen naar externe hulpprogramma's te streamen, is het gebruik van [Azure Event Hubs.](/azure/event-hubs/) In dit artikel vindt u een korte beschrijving van hoe u bewakingsgegevens van verschillende bronnen streamen naar een gebeurtenishub en koppelingen naar gedetailleerde richtlijnen.
@@ -56,7 +56,7 @@ Als u uw bewakingsgegevens routert naar een gebeurtenishub met Azure Monitor, u 
 | ArcSight | Nee | De ArcSight Azure Event Hub smart connector is beschikbaar als onderdeel van [de ArcSight smart connector collection.](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852) |
 | Syslog-server | Nee | Als u Azure Monitor-gegevens rechtstreeks naar een syslog-server wilt streamen, u een oplossing gebruiken [op basis van een Azure-functie.](https://github.com/miguelangelopereira/azuremonitor2syslog/)
 | LogRhythm | Nee| Instructies voor het instellen van LogRhythm om logboeken te verzamelen van een gebeurtenishub zijn [hier](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)beschikbaar. 
-|Logz.io | Ja | Zie [Aan de slag met het monitoren en loggen met Logz.io voor Java-apps die op Azure worden uitgevoerd,](https://docs.microsoft.com/azure/java/java-get-started-with-logzio) voor meer informatie.
+|Logz.io | Ja | Zie [Aan de slag met het monitoren en loggen met Logz.io voor Java-apps die op Azure worden uitgevoerd,](https://docs.microsoft.com/azure/developer/java/fundamentals/java-get-started-with-logzio) voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen

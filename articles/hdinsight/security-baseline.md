@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 93a5bcd77bb4f42d9099cc1ddb1b5c3130c19059
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 2ddb9a9c205135707d7d96beb106074baa1ce324
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010134"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758263"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure-beveiligingsbasislijn voor HDInsight
 
@@ -144,7 +144,7 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
 
 U Azure Blueprints ook gebruiken om azure-implementaties op grote schaal te vereenvoudigen door belangrijke omgevingsartefacten te verpakken, zoals Azure Resource Manager-sjablonen, RBAC-besturingselementen en beleidsregels, in één blauwdrukdefinitie. Pas de blauwdruk eenvoudig toe op nieuwe abonnementen en omgevingen en stem de besturing en het beheer af via versiebeheer.
 
-Beschikbare Azure-beleidsaliassen weergeven:
+Beschikbare Azure Policy-aliassen weergeven:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -704,7 +704,7 @@ Als u een Rapid7-, Qualys- of een ander abonnement op het kwetsbaarheidsbeheerpl
 
 Rapid7-agent handmatig installeren:
 
-https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
+https://insightvm.help.rapid7.com/docs/install
 
 Hoe qualys agent handmatig te installeren:
 
@@ -774,7 +774,7 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-li
 
 Hoewel klassieke Azure-bronnen kunnen worden ontdekt via Resource Graph, is het ten zeerste aan te raden om azure resource manager-resources in de toekomst te maken en te gebruiken.
 
-Query's maken met Azure Graph:
+Query's maken met Azure Resource Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -940,7 +940,7 @@ Voorwaardelijke toegang configureren om toegang tot Azure Resource Manager te bl
 
 **Richtlijnen:** Gebruik Azure Policy-aliassen in de naamruimte 'Microsoft.HDInsight' om aangepaste beleidsregels te maken om de netwerkconfiguratie van uw HDInsight-cluster te controleren of af te dwingen.
 
-Beschikbare Azure-beleidsaliassen weergeven:
+Beschikbare Azure Policy-aliassen weergeven:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -1034,7 +1034,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Richtlijnen:** Gebruik Azure Policy-aliassen in de naamruimte 'Microsoft.HDInsight' om aangepaste beleidsregels te maken om de configuratie van uw HDInsight-cluster te controleren of af te dwingen.
 
-Beschikbare Azure-beleidsaliassen weergeven:
+Beschikbare Azure Policy-aliassen weergeven:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 

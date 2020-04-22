@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: acacba591c9b895f1bd6abfbab5d3d4a4c858d12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f08107874598a68fb5ce2a1a8a98b6a81d7b94d4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472772"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756795"
 ---
 # <a name="string-claims-transformations"></a>Tekenreeksclaimstransformaties
 
@@ -615,13 +615,17 @@ Hiermee wordt gecontroleerd `claimToMatch` `matchTo` of een tekenreeksclaim en i
 | inputClaim | claimToMatch | tekenreeks | Het claimtype, dat moet worden vergeleken. |
 | Inputparameter | matchTo | tekenreeks | De reguliere uitdrukking aan te passen. |
 | Inputparameter | outputClaimIfMatched | tekenreeks | De waarde die moet worden ingesteld als tekenreeksen gelijk zijn. |
+| Inputparameter | extractGroepen | booleaans | [Optioneel] Hiermee geeft u op of de Regex-overeenkomst groepenwaarden moet extraheren. Mogelijke waarden: `true` `false` , of (standaard). | 
 | Uitvoerclaim | outputClaim | tekenreeks | Als reguliere expressie overeenkomt, bevat deze `outputClaimIfMatched` uitvoerclaim de waarde van de invoerparameter. Of null, als er geen overeenkomst. |
 | Uitvoerclaim | regexCompareResultClaim | booleaans | Het type claimtype van de reguliere expressie `true` matcht met resultaatuitvoer, dat moet worden ingesteld als of `false` op basis van het resultaat van matching. |
+| Uitvoerclaim| De naam van de claim| tekenreeks | Als de parameter extractGroups invoer is ingesteld op true, wordt de lijst weergegeven met claimtypen die zijn geproduceerd nadat deze claimtransformatie is aangeroepen. De naam van het claimType moet overeenkomen met de regex-groepsnaam. | 
 
-Controleer bijvoorbeeld of het opgegeven telefoonnummer geldig is, op basis van het reguliere expressiepatroon van het telefoonnummer.
+### <a name="example-1"></a>Voorbeeld 1
+
+Hiermee wordt gecontroleerd of het opgegeven telefoonnummer geldig is, op basis van het reguliere expressiepatroon van het telefoonnummer.
 
 ```XML
-<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
+<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
   </InputClaims>
@@ -636,8 +640,6 @@ Controleer bijvoorbeeld of het opgegeven telefoonnummer geldig is, op basis van 
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Voorbeeld
-
 - Invoerclaims:
     - **claimToMatch**: "64854114520"
 - Invoerparameters:
@@ -647,6 +649,39 @@ Controleer bijvoorbeeld of het opgegeven telefoonnummer geldig is, op basis van 
     - **outputClaim**: "isPhone"
     - **regexCompareResultClaim**: true
 
+### <a name="example-2"></a>Voorbeeld 2
+
+Controleert of het opgegeven e-mailadres geldig is en retourneert de e-mailalias.
+
+```XML
+<ClaimsTransformation Id="GetAliasFromEmail" TransformationMethod="SetClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="(?&lt;mailAlias&gt;.*)@(.*)$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isEmail" />
+    <InputParameter Id="extractGroups" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isEmailString" TransformationClaimType="regexCompareResultClaim" />
+    <OutputClaim ClaimTypeReferenceId="mailAlias" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+- Invoerclaims:
+    - **claimToMatch**:emily@contoso.com"
+- Invoerparameters:
+    - **matchTo**:`(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched**: "isEmail"
+    - **uittrekselGroepen**: waar
+- Output claims:
+    - **outputClaim**: "isEmail"
+    - **regexCompareResultClaim**: true
+    - **mailAlias**: emily
+    
 ## <a name="setclaimsifstringsareequal"></a>SetclaimsifstringsAreEqual
 
 Hiermee wordt gecontroleerd `matchTo` of een tekenreeksclaim en invoerparameter gelijk zijn `stringMatchMsg` `stringMatchMsgCode` en worden de uitvoerclaims ingesteld op de waarde `true` `false` die aanwezig is in en invoerparameters, samen met de claim voor het vergelijken van de resultaatuitvoer, die moet worden ingesteld als of op basis van het resultaat van de vergelijking.

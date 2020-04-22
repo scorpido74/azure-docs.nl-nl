@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd2706b6a6880d7c9454619e1315b2b5b5404561
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e927b398bd95160e02ee915eb98ea3cb78d68fe
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80244270"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758691"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Azure-beveiligingsbasislijn voor Cosmos DB
 
@@ -638,7 +638,7 @@ Ondersteunde functies beschikbaar in Azure Security Center:https://docs.microsof
 
 Hoewel klassieke Azure-bronnen kunnen worden ontdekt via Resource Graph, is het ten zeerste aan te raden om azure resource manager-resources in de toekomst te maken en te gebruiken.
 
-Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Uw Azure-abonnementen weergeven:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -792,7 +792,7 @@ Voorwaardelijke toegang configureren om toegang tot Azure Resource Manager te bl
 
 - Cosmos DB moet een eindpunt voor virtuele netwerkservice gebruiken
 
-Beschikbare Azure-beleidsaliassen weergeven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Beschikbare Azure Policy-aliassen weergeven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Azure-beleid configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

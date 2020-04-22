@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: a22808b1d7ab2b2451f50470e8da3770d07407a5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.custom: amqp
+ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985657"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759649"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>X. 509-beveiliging instellen in uw Azure IoT-hub
 
@@ -86,7 +87,7 @@ Als u uw X.509-apparaat wilt verifiëren, moet u het apparaat eerst ondertekenen
 
 Vervolgens laten we u zien hoe u een C#-toepassing maakt om het X.509-apparaat te simuleren dat is geregistreerd voor uw IoT-hub. We sturen temperatuur- en vochtigheidswaarden van het gesimuleerde apparaat naar uw hub. In deze zelfstudie maken we alleen de apparaattoepassing. Het wordt overgelaten als een oefening aan de lezers om de IoT Hub-servicetoepassing te maken die antwoord stuurt op de gebeurtenissen die door dit gesimuleerde apparaat worden verzonden. De C#-toepassing gaat ervan uit dat u de stappen hebt gevolgd in [Het beheren van ca-certificaten voor testen voor voorbeelden en zelfstudies.](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
 
-1. Open Visual Studio, selecteer **Een nieuw project maken**en kies vervolgens de projectsjabloon **console-app (.NET Framework).** Selecteer **Volgende**.
+1. Open Visual Studio, selecteer **Een nieuw project maken**en kies vervolgens de projectsjabloon **console-app (.NET Framework).** Selecteer **Next**.
 
 1. Geef in **Uw nieuwe project configureren**een naam aan het project *SimulateX509Device*en selecteer **Vervolgens Maken**.
 

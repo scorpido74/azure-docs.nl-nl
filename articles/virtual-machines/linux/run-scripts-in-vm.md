@@ -2,18 +2,17 @@
 title: Scripts uitvoeren in een Azure Linux VM
 description: In dit onderwerp wordt beschreven hoe u scripts in een virtuele machine uitvoert
 services: automation
-ms.service: automation
+ms.service: virtual-machines-linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: article
-manager: carmonm
-ms.openlocfilehash: 6175ae4263aee0ecdca5b1d768438ad20352375c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9dbfb3e76fe1c0e80dd8020b79f4edd6d32a24a3
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67477021"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758597"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Scripts uitvoeren in uw Linux-VM
 
@@ -29,7 +28,7 @@ De [Custom Script-extensie](../extensions/custom-script-linux.md) wordt voorname
 * Voer PowerShell-script uit in Windows-machines en Bash-script in Linux-machines.
 * Handig voor configuratie na implementatie, software-installatie en andere configuratie- of beheertaken.
 
-## <a name="run-command"></a>Voer de opdracht  uit
+## <a name="run-command"></a>Uitvoeren, opdracht
 
 De functie [Opdracht uitvoeren](run-command.md) maakt virtueel machine- en toepassingsbeheer en probleemoplossing met behulp van scripts mogelijk en is beschikbaar, zelfs wanneer de machine niet bereikbaar is, bijvoorbeeld als de gastfirewall de RDP- of SSH-poort niet heeft geopend.
 
@@ -69,6 +68,6 @@ De [serial console](serial-console.md) biedt directe toegang tot een VM, vergeli
 Meer informatie over de verschillende functies die beschikbaar zijn voor het uitvoeren van scripts en opdrachten binnen uw VM's.
 
 * [Aangepaste scriptextensie](../extensions/custom-script-linux.md)
-* [Uitvoeren, opdracht](run-command.md)
+* [Run-opdracht](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
 * [Seriële console](serial-console.md)

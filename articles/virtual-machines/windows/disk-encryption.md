@@ -2,17 +2,17 @@
 title: Server-side encryptie van Azure Managed Disks - PowerShell
 description: Azure Storage beschermt uw gegevens door deze in rust te versleutelen voordat deze worden weergegeven in opslagclusters. U vertrouwen op door Microsoft beheerde sleutels voor de versleuteling van uw beheerde schijven, of u door de klant beheerde sleutels gebruiken om versleuteling met uw eigen sleutels te beheren.
 author: roygara
-ms.date: 04/02/2020
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 85fc6412a12963bb01782becf639f7acfc31fbe5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 3f6039382b970ca3b0d77042c60cb720f96466d2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81452075"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759194"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Server-side encryptie van azure beheerde schijven
 
@@ -72,7 +72,7 @@ Voor nu hebben door de klant beheerde sleutels de volgende beperkingen:
 
 - Als deze functie is ingeschakeld voor uw schijf, u deze niet uitschakelen.
     Als u dit moet omzeilen, moet u [alle gegevens kopiëren](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) naar een geheel andere beheerde schijf die geen door de klant beheerde sleutels gebruikt.
-- Alleen ["zachte" en "harde" RSA-toetsen](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) van grootte 2080 worden ondersteund, geen andere toetsen of maten.
+- Alleen ["zachte" en "harde" RSA-toetsen](../../key-vault/keys/about-keys.md) van grootte 2080 worden ondersteund, geen andere toetsen of maten.
 - Schijven die zijn gemaakt met aangepaste afbeeldingen die zijn versleuteld met behulp van server-side encryptie en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels en moeten in hetzelfde abonnement zijn.
 - Momentopnamen die zijn gemaakt van schijven die zijn versleuteld met server-side encryptie en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels.
 - Aangepaste afbeeldingen die zijn versleuteld met serverversleuteling en door de klant beheerde sleutels, kunnen niet worden gebruikt in de gedeelde afbeeldingsgalerie.

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4976be485a9b7609c6e8d23f6b897092217663fc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 4ee724ec66d5fb474f8c8a9a967cc7235fef5e85
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535669"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732627"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Aan de slag met de Azure WebJobs SDK voor gebeurtenisgestuurde verwerking op de achtergrond
 
@@ -134,7 +134,7 @@ In deze sectie stelt u consolelogboekregistratie in die gebruikmaakt van het [AS
     * Hiermee schakelt u [dashboardlogboekregistratie](https://github.com/Azure/azure-webjobs-sdk/wiki/Queues#logs)uit. Het dashboard is een verouderd controlehulpmiddel en dashboardlogboekregistratie wordt niet aanbevolen voor productiescenario's met hoge doorvoer.
     * Hiermee voegt u de consoleprovider toe met [standaardfiltering](webjobs-sdk-how-to.md#log-filtering).
 
-U nu een functie toevoegen die wordt geactiveerd door berichten die in een [Azure Storage-wachtrij](../azure-functions/functions-bindings-storage-queue.md)binnenkomen.
+U nu een functie toevoegen die wordt geactiveerd door berichten die in een Azure Storage-wachtrij binnenkomen.
 
 ## <a name="install-the-storage-binding-extension"></a>De Storage-bindingextensie installeren
 
@@ -184,7 +184,7 @@ Vanaf versie 3.x moet u de extensie Opslagbinding die vereist is door de WebJobs
 
    Het `QueueTrigger` kenmerk vertelt de runtime om deze functie aan te roepen `queue`wanneer een nieuw bericht wordt geschreven in een Azure Storage-wachtrij met de naam . De inhoud van het wachtrijbericht wordt verstrekt `message` aan de methodecode in de parameter. De hoofdtekst van de methode is waar u de triggergegevens verwerkt. In dit voorbeeld wordt het bericht alleen maar door de code logboeken.
 
-   De `message` parameter hoeft geen tekenreeks te zijn. U ook binden aan een JSON-object, een bytearray of een [CloudQueueMessage-object.](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) [Zie Gebruik van wachtrijtriggering](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Elk bindingstype (zoals wachtrijen, blobs of tabellen) heeft een andere set parametertypen waaraan u binden.
+   De `message` parameter hoeft geen tekenreeks te zijn. U ook binden aan een JSON-object, een bytearray of een [CloudQueueMessage-object.](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) [Zie Gebruik van wachtrijtriggering](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage). Elk bindingstype (zoals wachtrijen, blobs of tabellen) heeft een andere set parametertypen waaraan u binden.
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
@@ -280,7 +280,7 @@ In deze sectie bouwt en voert u het project lokaal uit en activeert u de functie
 
    Omdat u `QueueTrigger` het kenmerk `ProcessQueueMessage` in de functie hebt gebruikt, luistert de runtime van WeJobs SDK naar wachtrijberichten wanneer deze wordt opgestart. Er wordt een nieuw wachtrijbericht gevonden in de wachtrij met de naam *wachtrij* en roept de functie aan.
 
-   Als gevolg [van wachtrij polling exponentiële backoff](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm), kan het zo lang duren als 2 minuten voor de runtime om het bericht te vinden en de functie aan te roepen. Deze wachttijd kan worden verkort door in [de ontwikkelingsmodus](webjobs-sdk-how-to.md#host-development-settings)te draaien.
+   Als gevolg [van wachtrij polling exponentiële backoff](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm), kan het zo lang duren als 2 minuten voor de runtime om het bericht te vinden en de functie aan te roepen. Deze wachttijd kan worden verkort door in [de ontwikkelingsmodus](webjobs-sdk-how-to.md#host-development-settings)te draaien.
 
    De console-uitvoer ziet er als volgt uit:
 
@@ -444,7 +444,7 @@ Tijdens de implementatie maakt u een app-service-exemplaar waarin u uw functies 
 1. Vernieuw de **wachtrijpagina** en het nieuwe bericht verdwijnt omdat het is verwerkt door de functie die in Azure wordt uitgevoerd.
 
    > [!TIP]
-   > Wanneer u in Azure test, gebruikt u [de ontwikkelingsmodus](webjobs-sdk-how-to.md#host-development-settings) om ervoor te zorgen dat een wachtrijtriggerfunctie meteen wordt aangeroepen en voorkomt u vertragingen als gevolg van [exponentiële back-off van wachtrijpolling.](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)
+   > Wanneer u in Azure test, gebruikt u [de ontwikkelingsmodus](webjobs-sdk-how-to.md#host-development-settings) om ervoor te zorgen dat een wachtrijtriggerfunctie meteen wordt aangeroepen en voorkomt u vertragingen als gevolg van [exponentiële back-off van wachtrijpolling.](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)
 
 ### <a name="view-logs-in-application-insights"></a>Logboeken weergeven in toepassingsinzichten
 

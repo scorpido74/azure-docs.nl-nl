@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5aa7abf7aafc14e71af5618cec892ef9f843d88a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76933865"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733058"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Opmerkingen vrijgeven van Azure Media Services Video Indexer
 
@@ -29,6 +29,20 @@ Om op de hoogte te blijven van de meest recente ontwikkelingen, biedt dit artike
 * Bekende problemen
 * Opgeloste fouten
 * Afgeschafte functionaliteit
+
+## <a name="april-2020"></a>April 2020
+
+### <a name="new-widget-parameters-capabilities"></a>Nieuwe mogelijkheden voor widgetparameters
+
+De **widget Insights** bevat `language` `control`nieuwe parameters: en .
+
+De **widget Player** `locale` heeft een nieuwe parameter. Beide `locale` `language` parameters bepalen de taal van de speler.
+
+Zie de sectie [Widgettypen](video-indexer-embed-widgets.md#widget-types) voor meer informatie. 
+
+## <a name="new-player-skin"></a>Nieuwe spelershuid
+
+Een nieuwe speler huid gelanceerd met een bijgewerkt ontwerp.
 
 ## <a name="january-2020"></a>Januari 2020
  
@@ -46,7 +60,7 @@ Een nieuwe Video Indexer GitHub met verschillende projecten, aan de slag gidsen 
  
 ### <a name="swagger-update"></a>Swagger-update
 
-Video Indexer unified **authentications** and **operations** into single [Video Indexer OpenAPI Specification (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson). Develpers kunnen de API's vinden in [Video Indexer Developer Portal](https://api-portal.videoindexer.ai/).
+Video Indexer unified **authentications** and **operations** into single [Video Indexer OpenAPI Specification (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson). Ontwikkelaars kunnen de API's vinden in [Video Indexer Developer Portal](https://api-portal.videoindexer.ai/).
 
 ## <a name="december-2019"></a>December 2019
 
@@ -129,7 +143,7 @@ U nu een betaalde video-indexeraccount aanmaken in de regio In het Verenigd Koni
 
 ### <a name="new-editorial-shot-type-insights-available"></a>Nieuwe Editorial Shot Type-inzichten beschikbaar
 
-Nieuwe tags toegevoegd aan video shots biedt redactionele "shot types" om ze te identificeren met gemeenschappelijke redactionele zinnen die worden gebruikt in de content creatie workflow, zoals: extreme close-up, close-up, breed, medium, twee shot, outdoor, binnen, links gezicht en rechter gezicht (Beschikbaar in de JSON).
+Nieuwe tags toegevoegd aan video shots biedt redactionele "shot types" om ze te identificeren met gemeenschappelijke redactionele zinnen die worden gebruikt in de content creatie workflow, zoals: extreme close-up, close-up, breed, medium, twee shot, outdoor, binnen, links gezicht en rechtergezicht (Beschikbaar in de JSON).
 
 ### <a name="new-people-and-locations-entities-extraction-available"></a>Nieuwe entiteiten en locaties-extractie beschikbaar
 

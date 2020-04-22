@@ -8,12 +8,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: ecc1ae5138fe5a1e42fed9be2e31b5afa8b6d5b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 4b18878cfc5c75bf27fd46cbceaa06e0b6053ddd
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79497500"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759634"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>De juiste IoT Hub-laag kiezen voor uw oplossing
 
@@ -42,7 +45,7 @@ Per IoT Hub kan slechts één type [editie](https://azure.microsoft.com/pricing/
 | [Berichtroutering,](iot-hub-devguide-messages-read-custom.md) [berichtverrijkingen](iot-hub-message-enrichments-overview.md)en [integratie van gebeurtenisraster](iot-hub-event-grid.md) | Ja | Ja |
 | [HTTP-, AMQP- en MQTT-protocollen](iot-hub-devguide-protocols.md) | Ja | Ja |
 | [Service voor inrichting van apparaten](../iot-dps/about-iot-dps.md) | Ja | Ja |
-| [Bewaking en diagnose](iot-hub-monitor-resource-health.md) | Ja | Ja |
+| [Controle en diagnose](iot-hub-monitor-resource-health.md) | Ja | Ja |
 | [Cloud-to-device messaging](iot-hub-devguide-c2d-guidance.md) |   | Ja |
 | [De tweelingen](iot-hub-devguide-device-twins.md)van het apparaat, [De tweelingen van](iot-hub-devguide-module-twins.md)de module, en [Het beheer van het apparaat](iot-hub-device-management-overview.md) |   | Ja |
 | [Apparaatstreams (voorbeeld)](iot-hub-device-streams-overview.md) |   | Ja |

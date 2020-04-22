@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u met behulp van Kestrel een HTTPS-e
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: b88ecd8d169e7402d149481c22bae95e632efe26
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 2b867a65fa11e14cdc3fc3e5c269686fa4d559de
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605292"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757173"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Zelfstudie: Een HTTPS-eindpunt toevoegen aan een front-end-service van ASP.NET Core Web-API met behulp van Kestrel
 
@@ -41,7 +41,7 @@ In deze zelfstudiereeks leert u het volgende:
 Voor u met deze zelfstudie begint:
 
 * Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Installeer Visual Studio 2019](https://www.visualstudio.com/) versie 15.5 of hoger met de **Azure-hulpprogramma's voor ontwikkeling** en **ASP.NET en webontwikkeling.**
+* [Installeer Visual Studio 2019](https://www.visualstudio.com/) versie 16.5 of hoger met de **Azure-hulpprogramma's voor ontwikkeling** en **ASP.NET en webontwikkeling.**
 * [Installeer de Service Fabric-SDK](service-fabric-get-started.md).
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Haal een certificaat op of maak een zelfondertekend ontwikkelingscertificaat.

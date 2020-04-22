@@ -1,20 +1,20 @@
 ---
-title: Azure Security Baseline voor Key Vault
-description: Azure Security Baseline voor Key Vault
+title: Azure-beveiligingsbasislijn voor Key Vault
+description: Azure-beveiligingsbasislijn voor Key Vault
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 46fa0160dd8b37e89cdd77ba8acdae294fddbefe
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 6e660c1244dd5566fbfb45a6da37d39294354ccb
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616898"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756988"
 ---
-# <a name="azure-security-baseline-for-key-vault"></a>Azure Security Baseline voor Key Vault
+# <a name="azure-security-baseline-for-key-vault"></a>Azure-beveiligingsbasislijn voor Key Vault
 
 De Azure Security Baseline for Key Vault bevat aanbevelingen waarmee u de beveiligingshouding van uw implementatie verbeteren.
 
@@ -881,7 +881,7 @@ Diagnostische instellingen voor key vault implementeren in gebeurtenishub
 
 Gebruik aanbevelingen van Azure Security Center als een veilige configuratiebasislijn voor uw Azure Key Vault-exemplaren.
 
-Beschikbare Azure-beleidsaliassen weergeven:
+Beschikbare Azure Policy-aliassen weergeven:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 

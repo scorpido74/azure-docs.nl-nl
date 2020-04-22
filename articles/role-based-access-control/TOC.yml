@@ -28,8 +28,8 @@
       href: tutorial-custom-role-cli.md
 - name: Concepten
   items:
-    - name: PIM voor Azure-resources
-      href: pim-azure-resource.md
+    - name: Aanbevolen procedures
+      href: best-practices.md
     - name: Voorwaardelijke toegang voor Azure-beheer
       href: conditional-access-azure-management.md
 - name: Instructiegidsen
@@ -115,7 +115,7 @@
           href: /azure/templates/microsoft.authorization/roleassignments
         - name: Roldefinities
           href: /azure/templates/microsoft.authorization/roledefinitions
-- name: Bronnen
+- name: Resources
   items:
-    - name: Ontwikkel uw vaardigheden met Microsoft Learn
+    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: /learn/browse/?products=azure-active-directory

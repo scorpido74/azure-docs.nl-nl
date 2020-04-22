@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 0a393ae8629f1742002344ee717a6719269a6722
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcf1dd2f89cf049d7da5b56170b2c13874c83ba4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158557"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756803"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing
+
+*Dit artikel is van toepassing op apparaatontwikkelaars.*
 
 In dit artikel ziet u hoe u een MXChip IoT DevKit-apparaat (DevKit) verbinden met een Azure IoT Central-toepassing. Het apparaat maakt gebruik van het gecertificeerde IoT Plug and Play -model (preview) voor het DevKit-apparaat om de verbinding met IoT Central te configureren.
 
@@ -104,4 +106,7 @@ Als u de code wilt controleren of wijzigen en compileren, gaat u naar de [codevo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u een DevKit-apparaat aansluiten op uw Azure IoT Central-toepassing, is de voorgestelde volgende stap om te leren hoe u [een aangepaste apparaatsjabloon](./howto-set-up-template.md) voor uw eigen IoT-apparaat instellen.
+Als u een apparaatontwikkelaar bent, moeten enkele voorgestelde volgende stappen:
+
+- Lees meer over [apparaatconnectiviteit in Azure IoT Central](./concepts-get-connected.md)
+- Meer informatie over [het bewaken van apparaatconnectiviteit met Azure CLI](./howto-monitor-devices-azure-cli.md)

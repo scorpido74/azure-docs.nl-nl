@@ -3,12 +3,12 @@ title: Gastconfiguratiebeleid voor Windows maken
 description: Meer informatie over het maken van een Azure Policy Guest Configuration policy voor Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: deb51cf502d26dc994bf74ef3cb0c728f624afde
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7b06aa0a70bfa17d67da9c6af447138f8bb9e712
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313984"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757414"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Gastconfiguratiebeleid voor Windows maken
 
@@ -25,6 +25,11 @@ Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren 
 
 > [!IMPORTANT]
 > Aangepast beleid met gastconfiguratie is een voorbeeldfunctie.
+>
+> De extensie Gastconfiguratie is vereist om audits uit te voeren in virtuele Azure-machines.
+> Als u de extensie op schaal wilt implementeren, wijst u de volgende beleidsdefinities toe:
+>   - Werkvereisten implementeren om gastconfiguratiebeleid in te schakelen op Windows VM's.
+>   - Implementeer vereisten om gastconfiguratiebeleid voor Linux-VM's in te schakelen.
 
 ## <a name="install-the-powershell-module"></a>De PowerShell-module installeren
 
@@ -176,8 +181,10 @@ Configuration AuditBitLocker
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker -out ./Config
+AuditBitLocker ./Config
 ```
+
+Sla dit bestand `config.ps1` met naam op in de projectmap. Voer het uit in `./config.ps1` PowerShell door uit te voeren in de terminal. Er wordt een nieuw mof-bestand gemaakt.
 
 De `Node AuditBitlocker` opdracht is technisch niet vereist, maar `AuditBitlocker.mof` het produceert een `localhost.mof`bestand met de naam in plaats van de standaard, . Als de .mof-bestandsnaam de configuratie volgt, u eenvoudig veel bestanden ordenen wanneer u op schaal werkt.
 

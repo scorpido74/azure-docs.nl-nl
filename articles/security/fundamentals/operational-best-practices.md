@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 72d7a2dd112e5e7a5105ff977e3917ccdfd7b53e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5724a9e4308f05a82df84ae6a7d5602747f5a140
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500290"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757371"
 ---
 # <a name="azure-operational-security-best-practices"></a>Aanbevolen procedures voor Azure Operational Security
 In dit artikel vindt u een reeks operationele aanbevolen procedures voor het beveiligen van uw gegevens, toepassingen en andere elementen in Azure.
@@ -108,7 +108,7 @@ Hier volgen enkele aanbevolen procedures voor het voorkomen, detecteren en reage
 **Detail:** Onderzoek de functies en mogelijkheden van [Azure Sentinel](/azure/sentinel/overview) en vergelijk ze met de mogelijkheden van wat u momenteel on-premises gebruikt. Overweeg Azure Sentinel te gebruiken als deze voldoet aan de SIEM-vereisten van uw organisatie.
 
 **Aanbevolen procedures**: Zoek de ernstigste beveiligingsproblemen, zodat u prioriteit geven aan onderzoek.   
-**Detail:** controleer uw [azure secure score](../../security-center/security-center-secure-score.md) om de aanbevelingen te zien die voortvloeien uit het Azure-beleid en de initiatieven die zijn ingebouwd in Azure Security Center. Deze aanbevelingen helpen bij het aanpakken van toprisico's zoals beveiligingsupdates, endpoint-beveiliging, versleuteling, beveiligingsconfiguraties, ontbrekende WAF, vm's met internetverbinding en nog veel meer.
+**Detail:** controleer uw [azure secure score](../../security-center/secure-score-security-controls.md) om de aanbevelingen te zien die voortvloeien uit het Azure-beleid en de initiatieven die zijn ingebouwd in Azure Security Center. Deze aanbevelingen helpen bij het aanpakken van toprisico's zoals beveiligingsupdates, endpoint-beveiliging, versleuteling, beveiligingsconfiguraties, ontbrekende WAF, vm's met internetverbinding en nog veel meer.
 
 Met de beveiligde score, die is gebaseerd op CIS-besturingselementen (Center for Internet Security), u de Azure-beveiliging van uw organisatie benchmarken ten opzichte van externe bronnen. Externe validatie helpt bij het valideren en verrijken van de beveiligingsstrategie van uw team.
 
@@ -116,7 +116,7 @@ Met de beveiligde score, die is gebaseerd op CIS-besturingselementen (Center for
 **Detail:** Volg de [beveiligingsaanbevelingen](../../security-center/security-center-recommendations.md) in Security Center vanaf het begin, met de hoogste prioriteit items.
 
 **Aanbevolen procedures**: Integreer waarschuwingen voor beveiligingspersoneel in uw siem-oplossing (security information and event management).   
-**Detail**: De meeste organisaties met een SIEM gebruiken het als een centraal clearinghouse voor beveiligingswaarschuwingen die een reactie van analisten vereisen. Verwerkte gebeurtenissen die zijn geproduceerd door Security Center, worden gepubliceerd in het Azure Activity Log, een van de logboeken die beschikbaar zijn via Azure Monitor. Azure Monitor biedt een geconsolideerde pijplijn voor het routeren van uw bewakingsgegevens naar een SIEM-tool. Zie [Beveiligingsoplossingen integreren in Security Center](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem) voor instructies. Zie [Azure Security Center verbinden](../../sentinel/connect-azure-security-center.md)als u Azure Sentinel gebruikt.
+**Detail**: De meeste organisaties met een SIEM gebruiken het als een centraal clearinghouse voor beveiligingswaarschuwingen die een reactie van analisten vereisen. Verwerkte gebeurtenissen die zijn geproduceerd door Security Center, worden gepubliceerd in het Azure Activity Log, een van de logboeken die beschikbaar zijn via Azure Monitor. Azure Monitor biedt een geconsolideerde pijplijn voor het routeren van uw bewakingsgegevens naar een SIEM-tool. Zie [Beveiligingswaarschuwingen en aanbevelingen](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs) exporteren voor instructies.. Zie [Azure Security Center verbinden](../../sentinel/connect-azure-security-center.md)als u Azure Sentinel gebruikt.
 
 **Aanbevolen procedures**: Integreer Azure-logboeken met uw SIEM.   
 **Detail:** Gebruik [Azure Monitor om gegevens te verzamelen en te exporteren.](/azure/azure-monitor/overview#integrate-and-export-data) Deze praktijk is van cruciaal belang voor het inschakelen van beveiligingsincidenten en het bewaren van onlinelogboeken is beperkt. Zie [Gegevensbronnen verbinden](../../sentinel/connect-data-sources.md)als u Azure Sentinel gebruikt.

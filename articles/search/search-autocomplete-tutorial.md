@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 1d8085c6056cb0d2541999c3e9c249cde3da8834
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641256"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758119"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatisch aanvullen en suggesties toevoegen aan client-apps
 
@@ -22,7 +22,7 @@ Search-as-you-type is een veelgebruikte techniek voor het verbeteren van de prod
 Als u deze ervaringen wilt implementeren in Azure Cognitive Search, hebt u het volgende nodig:
 
 + Een *suggester* op de achterkant.
-+ Een *query* met automatische aan-/ smeerinformatie of de API voor suggesties op de aanvraag.
++ Een *query* met [automatische aan-/ smeerinformatie](https://docs.microsoft.com/rest/api/searchservice/autocomplete) of de API voor [suggesties](https://docs.microsoft.com/rest/api/searchservice/suggestions) op de aanvraag.
 + Een *ui-besturingselement* voor het afhandelen van zoek-naar-je-type interacties in uw client-app. We raden u aan hiervoor een bestaande JavaScript-bibliotheek te gebruiken.
 
 In Azure Cognitive Search worden automatisch voltooide query's en voorgestelde resultaten opgehaald uit de zoekindex, uit geselecteerde velden die u hebt geregistreerd bij een suggestie. Een suggestiemaakt deel uit van de index en geeft aan welke velden inhoud bieden die een query voltooit, een resultaat suggereert of beide doet. Wanneer de index wordt gemaakt en geladen, wordt intern een suggestiestructuur gemaakt om voorvoegsels op te slaan die worden gebruikt voor het afstemmen op gedeeltelijke query's. Voor suggesties is het kiezen van geschikte velden die uniek zijn, of in ieder geval niet repetitief, essentieel voor de ervaring. Zie [Een suggestie maken voor](index-add-suggesters.md)meer informatie.
@@ -31,7 +31,7 @@ De rest van dit artikel is gericht op query's en clientcode. Het maakt gebruik v
 
 ## <a name="set-up-a-request"></a>Een aanvraag instellen
 
-Elementen van een aanvraag zijn de API[(Autocomplete REST](https://docs.microsoft.com/rest/api/searchservice/autocomplete) of [Suggestion REST),](https://docs.microsoft.com/rest/api/searchservice/suggestions)een gedeeltelijke query en een suggestie.
+Elementen van een aanvraag zijn een van de API's van het zoek-naar-u-type, een gedeeltelijke query en een suggestie. In het volgende script worden onderdelen van een aanvraag geïllustreerd met behulp van de API Voor het automatisch aanvullen van rest als voorbeeld.
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
@@ -49,7 +49,7 @@ De API's stellen geen minimumlengtevereisten op aan de gedeeltelijke query; het 
 
 Overeenkomsten staan aan het begin van een term overal in de invoertekenreeks. Gezien "de snelle bruine vos", zowel autocomplete en suggesties zal overeenkomen met gedeeltelijke versies van "de", "snel", "bruin", of "vos", maar niet op gedeeltelijke infix termen als "rown" of "os". Bovendien bepaalt elke match de ruimte voor downstream-uitbreidingen. Een gedeeltelijke query van "quick br" zal overeenkomen op "quick brown" of "quick bread", maar noch "bruin" of "brood" op zichzelf zou overeenkomen, tenzij "snel" aan hen voorafgaat.
 
-### <a name="apis"></a>API's
+### <a name="apis-for-search-as-you-type"></a>API's voor zoek-naar-je-type
 
 Volg deze links voor de referentiepagina's REST en .NET SDK:
 
@@ -64,12 +64,13 @@ Reacties voor automatisch aanvullen en suggesties zijn wat u zou verwachten voor
 
 De antwoorden worden gevormd door de parameters op de aanvraag. Stel voor Automatisch aanvullen [**de modus automatisch aanvullen**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) in om te bepalen of de voltooiing van tekst plaatsvindt op een of twee voorwaarden. Voor Suggesties bepaalt het veld dat u kiest de inhoud van het antwoord.
 
-Als u het antwoord verder wilt verfijnen, neemt u meer parameters op de aanvraag op. De volgende parameters zijn van toepassing op zowel Automatisch aanvullen als Suggesties.
+Voor suggesties moet u het antwoord verder verfijnen om duplicaten of niet-gerelateerde resultaten te voorkomen. Als u de resultaten wilt beheren, neemt u meer parameters op de aanvraag op. De volgende parameters zijn van toepassing op zowel automatisch aanvullen als suggesties, maar zijn misschien meer nodig voor suggesties, vooral wanneer een suggestie meerdere velden bevat.
 
 | Parameter | Gebruik |
 |-----------|-------|
-| **$select** | Als u meerdere **sourceFields hebt,** gebruikt u **$select** om te kiezen welk veld waarden bijdraagt (`$select=GameTitle`). |
-| **$filter** | Wedstrijdcriteria toepassen op de`$filter=ActionAdventure`resultaatset ( ). |
+| **$select** | Als u meerdere **sourceFields** in een **$select** suggestiehebt, gebruikt u`$select=GameTitle`$select om te kiezen welk veld waarden bijdraagt ( ). |
+| **zoekvelden** | De query beperken tot specifieke velden. |
+| **$filter** | Wedstrijdcriteria toepassen op de`$filter=Category eq 'ActionAdventure'`resultaatset ( ). |
 | **$top** | Beperk de resultaten tot`$top=5`een specifiek getal ( ).|
 
 ## <a name="add-user-interaction-code"></a>Gebruikersinteractiecode toevoegen
@@ -149,6 +150,8 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
     // Call suggest API and return results
     SuggestParameters sp = new SuggestParameters()
     {
+        Select = HotelName,
+        SearchFields = HotelName,
         UseFuzzyMatching = fuzzy,
         Top = 5
     };

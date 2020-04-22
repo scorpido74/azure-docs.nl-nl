@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ac6bc8f78bd3d526e68dba3e81825a28a9ac47f7
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 184ffd39281ea27d8596bc37a9f89fd22acfb1ba
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294130"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732176"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Snelstart: Azure Service Bus-wachtrijen met Java gebruiken om berichten te verzenden en te ontvangen
 
@@ -43,7 +43,7 @@ In deze zelfstudie leert u hoe u Java-toepassingen maakt om berichten naar beric
 ## <a name="configure-your-application-to-use-service-bus"></a>Uw toepassing configureren om Service Bus te gebruiken
 Zorg ervoor dat u de [Azure SDK voor Java][Azure SDK for Java] hebt geïnstalleerd voordat u dit voorbeeld maakt. 
 
-Als u Eclipse gebruikt, u de [Azure Toolkit voor Eclipse][Azure Toolkit for Eclipse] installeren die de Azure SDK voor Java bevat. Vervolgens u de **Microsoft Azure-bibliotheken voor Java** aan uw project toevoegen. Zie De Azure Toolkit voor [IntelliJ installeren](/azure/java/intellij/azure-toolkit-for-intellij-installation)als u IntelliJ gebruikt. 
+Als u Eclipse gebruikt, u de [Azure Toolkit voor Eclipse][Azure Toolkit for Eclipse] installeren die de Azure SDK voor Java bevat. Vervolgens u de **Microsoft Azure-bibliotheken voor Java** aan uw project toevoegen. Zie De Azure Toolkit voor [IntelliJ installeren](/azure/developer/java/toolkit-for-intellij/installation)als u IntelliJ gebruikt. 
 
 ![Microsoft Azure-bibliotheken voor Java toevoegen aan uw Eclipse-project](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
@@ -184,7 +184,7 @@ In het volgende voorbeeld wordt uitgelegd hoe berichten kunnen worden ontvangen 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Het vastlopen van de toepassing en onleesbare berichten afhandelen
 Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvangertoepassing om de een of andere reden het bericht niet kan verwerken, kan deze de methode **verlaten()** op clientobject aanroepen met het vergrendelingstoken van het ontvangen bericht dat is verkregen via **getLockToken()**. Dit zorgt ervoor dat Service Bus het bericht in de wachtrij ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde consumerende toepassing of door een andere consumerende toepassing.
 
-Er is ook een time-out gekoppeld aan een bericht dat is vergrendeld in de wachtrij, en als de toepassing het bericht niet verwerkt voordat de time-out van de vergrendeling verloopt (bijvoorbeeld als de toepassing vastloopt), ontgrendelt Service Bus het bericht automatisch en maakt het beschikbaar om opnieuw te ontvangen.
+Er is ook een time-out gekoppeld aan een bericht dat is vergrendeld in de wachtrij en als de toepassing het bericht niet verwerkt voordat de vergrendelingstime-out verloopt (bijvoorbeeld als de toepassing vastloopt), ontgrendelt Service Bus het bericht automatisch en maakt het beschikbaar om opnieuw te worden ontvangen.
 
 In het geval dat de toepassing crasht na het verwerken van het bericht, maar voordat de **volledige()** aanvraag wordt uitgegeven, wordt het bericht opnieuw geleverd aan de toepassing wanneer het opnieuw wordt opgestart. Dit wordt vaak *Ten minste eenmaal verwerken* genoemd; dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar dat hetzelfde bericht in sommige situaties opnieuw kan worden bezorgd. Als in het scenario dubbele verwerking niet wordt getolereerd, dan moeten toepassingsontwikkelaars extra logica toevoegen aan de toepassing om dubbele berichtbezorging af te handelen. Dit wordt vaak bereikt met behulp van de **getMessageId-methode** van het bericht, die constant blijft tijdens leveringspogingen.
 
@@ -196,7 +196,7 @@ Nu u de basisbeginselen van wachtrijen voor servicebus hebt geleerd, raadpleegt 
 
 Raadpleeg het [Java Developer Center](https://azure.microsoft.com/develop/java/) voor meer informatie.
 
-[Azure SDK for Java]: /azure/java/java-sdk-azure-get-started
+[Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
 [Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage

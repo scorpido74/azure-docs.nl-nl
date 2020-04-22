@@ -8,14 +8,19 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8178e585ecb7b1cdfd5e530f3d3406b7397f0968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: f37b070c74abd8511fc597f9b159312d91281083
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476046"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759111"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Verbinding maken met Azure IoT Central
+
+*Dit artikel is van toepassing op operators en apparaatontwikkelaars.*
 
 In dit artikel worden de opties beschreven voor het verbinden van uw apparaten met een Azure IoT Central-toepassing.
 
@@ -265,7 +270,8 @@ Alle gegevens die tussen apparaten en uw Azure IoT Central worden uitgewisseld, 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u meer te weten bent gekomen over apparaatconnectiviteit in Azure IoT Central, volgen hier de voorgestelde volgende stappen:
+Als u een apparaatontwikkelaar bent, moeten enkele voorgestelde volgende stappen:
 
-- [Een DevKit-apparaat voorbereiden en aansluiten](howto-connect-devkit.md)
-- [C SDK: SDK voor inrichtingsapparaatclient SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- Meer informatie over [het bewaken van apparaatconnectiviteit met Azure CLI](./howto-monitor-devices-azure-cli.md)
+- Meer informatie over het [definiëren van een nieuw IoT-apparaattype in uw Azure IoT Central-toepassing](./howto-set-up-template.md)
+- Lees meer over [Azure IoT Edge-apparaten en Azure IoT Central](./concepts-iot-edge.md)

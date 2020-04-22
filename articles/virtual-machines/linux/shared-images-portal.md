@@ -1,24 +1,21 @@
 ---
-title: Gedeelde Azure VM-afbeeldingen voor Linux maken met behulp van de portal
-description: Meer informatie over het gebruik van Azure-portal om afbeeldingen van virtuele machines te maken en te delen.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
+title: Gedeelde Azure Linux VM-afbeeldingen maken met behulp van de portal
+description: Meer informatie over het gebruik van Azure-portal om virtuele machineafbeeldingen van Linux te maken en te delen.
 author: cynthn
-manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.custom: ''
-ms.openlocfilehash: 44df85a94ad26d3abcd48f01c31e7aa093c1123f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: akjosh
+ms.openlocfilehash: 74c87d589f1c50551ac5685fe0fa126a82bffbde
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978693"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758430"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Een Azure Shared Image Gallery maken met de portal
 
@@ -56,7 +53,7 @@ Wanneer u dit artikel doorloopt, vervangt u de resourcegroep en VM-namen waar no
  
 [!INCLUDE [virtual-machines-common-shared-images-portal](../../../includes/virtual-machines-common-shared-images-portal.md)]
 
-## <a name="create-vms"></a>VM's maken 
+## <a name="create-vms"></a>Virtuele machines maken 
 
 Nu u een of meer nieuwe VM's maken. In dit voorbeeld wordt een VM met de naam *myVMfromImage*gemaakt in de *myResourceGroup* in het *datacenter in oost-VS.*
 

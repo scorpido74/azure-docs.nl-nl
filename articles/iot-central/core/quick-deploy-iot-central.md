@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 0ed32a4c1272c23c9500b35e05c383eac6dea185
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: b670776804c9758774bf216052254148f063e7da
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998948"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758141"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Een Azure IoT Central-toepassing maken
 
@@ -59,7 +59,11 @@ Ga als volgende voor een nieuwe Azure IoT Central-toepassing op basis van de **s
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u een IoT Central-toepassing gemaakt. Dit is de voorgestelde volgende stap:
+In deze snelstart hebt u een IoT Central-toepassing gemaakt. Hier is de voorgestelde volgende stap om verder te leren over IoT Central:
 
 > [!div class="nextstepaction"]
 > [Een gesimuleerd apparaat toevoegen aan uw IoT Central-toepassing](./quick-create-simulated-device.md)
+
+Als u een apparaatontwikkelaar bent en in een code wilt duiken, is de voorgestelde volgende stap:
+> [!div class="nextstepaction"]
+> [Een clienttoepassing maken en verbinden met uw Azure IoT Central-toepassing](./tutorial-connect-device-nodejs.md)

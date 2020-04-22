@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 289c269100eb6ab672bb8d60562c1fa77d8d091a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: a3258de2ed7269ab50e6feca3c421d55de5a9d91
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954608"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759778"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Aan de slag met IoT Hub-module-id's en moduledubbels met behulp van de portal en .NET
 
@@ -94,7 +95,7 @@ Module identiteit en module twin is in openbare preview. Het is alleen beschikba
 
 U hebt de tekenreeks voor de moduleverbinding nodig voor uw console-app. Volg deze stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Navigeer naar uw IoT-hub en selecteer **IoT-apparaten.** Open **myFirstDevice** en je ziet dat **myFirstModule** is gemaakt.
 

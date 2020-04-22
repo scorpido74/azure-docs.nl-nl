@@ -3,12 +3,12 @@ title: Gastconfiguratiebeleid voor Linux maken
 description: Meer informatie over het maken van een Azure Policy Guest Configuration policy voor Linux.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 65e0082f87f05104e9a57ff0342cd3d2950b63e8
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 24442a89d55e34f9ce9697c2f6a32cfc740bcd85
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617933"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758960"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Gastconfiguratiebeleid voor Linux maken
 
@@ -24,6 +24,11 @@ Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren 
 
 > [!IMPORTANT]
 > Aangepast beleid met gastconfiguratie is een voorbeeldfunctie.
+>
+> De extensie Gastconfiguratie is vereist om audits uit te voeren in virtuele Azure-machines.
+> Als u de extensie op schaal wilt implementeren, wijst u de volgende beleidsdefinities toe:
+>   - Werkvereisten implementeren om gastconfiguratiebeleid in te schakelen op Windows VM's.
+>   - Implementeer vereisten om gastconfiguratiebeleid voor Linux-VM's in te schakelen.
 
 ## <a name="install-the-powershell-module"></a>De PowerShell-module installeren
 
@@ -101,7 +106,7 @@ end
 
 Sla dit bestand `linux-path.rb` met naam `controls` op `linux-path` in een nieuwe map met de naam in de map.
 
-Maak ten slotte een configuratie, importeer de **gastconfiguratiebronmodule** en gebruik de `ChefInSpecResource` resource om de naam van het InSpec-profiel in te stellen.
+Maak ten slotte een configuratie, importeer de **PSDesiredStateConfiguration-bronmodule** en compileer de configuratie.
 
 ```powershell
 # Define the configuration and import GuestConfiguration
@@ -119,10 +124,15 @@ Configuration AuditFilePathExists
 }
 
 # Compile the configuration to create the MOF files
+import-module PSDesiredStateConfiguration
 AuditFilePathExists -out ./Config
 ```
 
+Sla dit bestand `config.ps1` met naam op in de projectmap. Voer het uit in `./config.ps1` PowerShell door uit te voeren in de terminal. Er wordt een nieuw mof-bestand gemaakt.
+
 De `Node AuditFilePathExists` opdracht is technisch niet vereist, maar `AuditFilePathExists.mof` het produceert een `localhost.mof`bestand met de naam in plaats van de standaard, . Als de .mof-bestandsnaam de configuratie volgt, u eenvoudig veel bestanden ordenen wanneer u op schaal werkt.
+
+
 
 U moet nu een projectstructuur hebben zoals hieronder:
 
@@ -150,8 +160,8 @@ Voer de volgende opdracht uit om een pakket te maken met behulp van de configura
 ```azurepowershell-interactive
 New-GuestConfigurationPackage `
   -Name 'AuditFilePathExists' `
-  -Configuration './Config/AuditFilePathExists.mof'
-  -ChefProfilePath './'
+  -Configuration './Config/AuditFilePathExists.mof' `
+  -ChefInSpecProfilePath './'
 ```
 
 Nadat u het configuratiepakket hebt gemaakt, maar het vervolgens hebt gepubliceerd in Azure, u het pakket testen vanuit uw werkstation of CI/CD-omgeving. De guestconfiguration-cmdlet `Test-GuestConfigurationPackage` bevat dezelfde agent in uw ontwikkelomgeving als in Azure-machines. Met deze oplossing u lokaal integratietests uitvoeren voordat u deze vrijgeeft aan gefactureerde cloudomgevingen.
@@ -168,7 +178,7 @@ Voer de volgende opdracht uit om het pakket te testen dat door de vorige stap is
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage `
-  -Path ./AuditFilePathExists.zip
+  -Path ./AuditFilePathExists/AuditFilePathExists.zip
 ```
 
 De cmdlet ondersteunt ook input van de PowerShell-pijplijn. Pipet de `New-GuestConfigurationPackage` output van `Test-GuestConfigurationPackage` cmdlet naar de cmdlet.

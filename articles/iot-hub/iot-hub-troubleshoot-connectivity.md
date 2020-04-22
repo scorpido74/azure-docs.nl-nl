@@ -8,12 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: bed6736fda0c1815964f9017adb1e6fffa9335d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 82139eef9708ff8d76e1087c71aa5445ba898385
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110684"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759605"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>De verbinding met Azure IoT Hub bewaken, diagnosticeren en oplossen
 
@@ -27,7 +28,7 @@ Gebruik Azure Monitor om waarschuwingen te ontvangen en logboeken te schrijven w
 
 Als u gebeurtenissen en fouten voor apparaatverbinding wilt registreren, schakelt u diagnostische gegevens in voor IoT Hub. We raden u aan deze logboeken zo vroeg mogelijk in te schakelen, want als diagnostische logboeken niet zijn ingeschakeld, wanneer de verbinding met het apparaat wordt verbroken, hebt u geen informatie om het probleem op te lossen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Blader naar uw IoT-hub.
 
@@ -47,7 +48,7 @@ Zie [De status van Azure IoT Hub controleren en problemen snel diagnosticeren.](
 
 Als u waarschuwingen wilt ontvangen wanneer apparaten de verbinding verbreken, configureert u waarschuwingen op de statistiek **Verbonden apparaten (voorbeeld).**
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Blader naar uw IoT-hub.
 
@@ -69,7 +70,7 @@ Als u de verbinding *per apparaat* wilt detecteren, bijvoorbeeld wanneer u wilt 
 
 Wanneer u diagnostische logboeken en waarschuwingen voor verbonden apparaten inschakelt, krijgt u meldingen wanneer er fouten optreden. In deze sectie wordt beschreven hoe u op zoek gaan naar veelvoorkomende problemen wanneer u een waarschuwing ontvangt. In de onderstaande stappen wordt ervan uitgegaan dat u Azure Monitor-logboeken hebt ingesteld voor uw diagnostische logboeken.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Blader naar uw IoT-hub.
 

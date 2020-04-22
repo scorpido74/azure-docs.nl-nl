@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bb77d1a09cb2692765c4c834ce617d13465d4d67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37c7bc99881c8d1106c8464cfe18c9e63b8a1b02
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157565"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756737"
 ---
 # <a name="create-a-new-device-template-version"></a>Een nieuwe apparaatsjabloonversie maken
 
-
+*Dit artikel is van toepassing op oplossingsbouwers en apparaatontwikkelaars.*
 
 Azure IoT Central maakt een snelle ontwikkeling van IoT-toepassingen mogelijk. U snel de ontwerpen van uw apparaatsjabloon herhalen door apparaatmogelijkheden, weergaven en aanpassingen toe te voegen, te bewerken of te verwijderen. Nadat u de apparaatsjabloon hebt gepubliceerd, wordt het apparaatcapaciteitsmodel weergegeven als **Gepubliceerd** met vergrendelingspictogrammen naast het model. Als u wijzigingen wilt aanbrengen in het apparaatcapaciteitsmodel, moet u een nieuwe versie van de apparaatsjabloon maken. Ondertussen kunnen de cloudeigenschappen, aanpassingen en weergaven op elk gewenst moment worden bewerkt zonder dat de apparaatsjabloon hoeft te worden aangepast. Zodra u een van deze wijzigingen hebt opgeslagen, u de apparaatsjabloon publiceren om de laatste wijzigingen beschikbaar te maken die de operator kan weergeven in Device Explorer.
 
@@ -81,7 +81,4 @@ U meerdere versies van de apparaatsjabloon maken. Na verloop van tijd hebt u mee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u apparaatsjabloonversies in uw Azure IoT Central-toepassing gebruiken, volgt de volgende stap:
-
-> [!div class="nextstepaction"]
-> [Telemetrieregels maken](tutorial-create-telemetry-rules.md)
+Als u een apparaatontwikkelaar bent, is een voorgestelde volgende stap om te lezen over [Azure IoT Edge-apparaten en Azure IoT Central.](./concepts-iot-edge.md)

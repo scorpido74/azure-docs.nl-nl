@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: c348a172b16e12334d33cf2718609694147fdce3
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 8f050a43cbdf4ab29df55cd5526eb231c301b271
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674525"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732665"
 ---
 # <a name="power-bi-app-creation-overview"></a>Overzicht van het maken van Power BI-apps
 
@@ -69,7 +69,7 @@ U alleen een Power BI-app bouwen binnen de [Power BI-omgeving.](https://powerbi.
 2. Maak en test uw app in Power BI.
 3. Wanneer u het webadres voor de installatie van de app ontvangt, voegt u deze toe aan de pagina **Technische configuratie** in partnercentrum.
 
-Nadat uw app is gemaakt en getest in Power BI, slaat u het webadres voor de installatie van de toepassing op, omdat u deze nodig hebt om [een Power BI-app-aanbieding](https://aka.ms/AzureCreatePBIServiceApp)te maken.
+Nadat uw app is gemaakt en getest in Power BI, slaat u het webadres voor de installatie van de toepassing op, omdat u deze nodig hebt om [een Power BI-app-aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)te maken.
 
 ### <a name="business-requirements"></a>Zakelijke vereisten
 
@@ -81,4 +81,4 @@ De zakelijke vereisten omvatten procedurele, contractuele en wettelijke verplich
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een Power BI-app-aanbieding maken in partnercentrum](https://aka.ms/AzureCreatePBIServiceApp)
+- [Een Power BI-app-aanbieding maken in partnercentrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)

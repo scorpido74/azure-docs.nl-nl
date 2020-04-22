@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 179a2120714460c955d1fd3e345ebcd963ae564d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: cebe5564767ee345c1aea96b6ac54b9398c3e9a3
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81453554"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733035"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Een Windows Java-app configureren voor Azure App Service
 
@@ -318,7 +318,7 @@ Azure's ondersteunde Java Development Kit (JDK) is [Zulu](https://www.azul.com/d
 
 Belangrijke versie-updates worden geleverd via nieuwe runtime-opties in Azure App Service voor Windows. Klanten updaten naar deze nieuwere versies van Java door hun App Service-implementatie te configureren en zijn verantwoordelijk voor het testen en ervoor zorgen dat de grote update aan hun behoeften voldoet.
 
-Ondersteunde JDK's worden automatisch op kwartaalbasis gepatcht in januari, april, juli en oktober van elk jaar. Zie [dit ondersteuningsdocument voor](https://docs.microsoft.com/azure/java/jdk/)meer informatie over Java op Azure.
+Ondersteunde JDK's worden automatisch op kwartaalbasis gepatcht in januari, april, juli en oktober van elk jaar. Zie [dit ondersteuningsdocument voor](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)meer informatie over Java op Azure.
 
 ### <a name="security-updates"></a>Beveiligingsupdates
 

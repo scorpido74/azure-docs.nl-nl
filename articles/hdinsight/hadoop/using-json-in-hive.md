@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: db7c7ae9889d26479f51a7714e7e9fb04b444628
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 04/20/2020
+ms.openlocfilehash: 8e0abf780589207b065b7262afb99de81e625fe8
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757106"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732213"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Json-documenten verwerken en analyseren met Apache Hive in Azure HDInsight
 
@@ -161,4 +161,3 @@ Zie voor gerelateerde artikelen:
 
 * [Gebruik Apache Hive en HiveQL met Apache Hadoop in HDInsight om een voorbeeld Apache log4j-bestand te analyseren](../hdinsight-use-hive.md)
 * [Gegevens over vluchtvertraging analyseren met behulp van Interactieve Query in HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
-* [Analyseer Twitter-gegevens met Apache Hive in HDInsight](../hdinsight-analyze-twitter-data-linux.md)

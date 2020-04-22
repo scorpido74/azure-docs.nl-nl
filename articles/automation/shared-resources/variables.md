@@ -1,5 +1,5 @@
 ---
-title: Variabele-assets in Azure Automation
+title: Variabelen beheren in Azure Automation
 description: Variabele elementen zijn waarden die beschikbaar zijn voor alle runbooks en DSC-configuraties in Azure Automation.  In dit artikel worden de details van variabelen uitgelegd en hoe u ermee werken in zowel tekstuele als grafische ontwerpen.
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d4a4a92feb3e1b400c0f40076148f7898c4bdef1
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 4778e9b2c0d3b442b214966ab69810d2f42b70b8
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365827"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732752"
 ---
-# <a name="variable-assets-in-azure-automation"></a>Variabele-assets in Azure Automation
+# <a name="manage-variables-in-azure-automation"></a>Variabelen beheren in Azure Automation
 
 Variabele elementen zijn waarden die beschikbaar zijn voor alle runbooks en DSC-configuraties in uw Automatiseringsaccount. U ze beheren vanuit de Azure-portal, vanuit PowerShell, binnen een runbook of in een DSC-configuratie.
 
@@ -45,11 +45,14 @@ Wanneer u een variabele maakt met de Azure-portal, moet u een gegevenstype opgev
 * Booleaans
 * Null
 
-De variabele is niet beperkt tot het aangewezen gegevenstype. U moet de variabele instellen met Windows PowerShell als u een waarde van een ander type wilt opgeven. Als u `Not defined`aangeeft, wordt de waarde van de variabele ingesteld op Null en moet u `Set-AutomationVariable` de waarde instellen met de cmdlet [Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) of de activiteit.
+De variabele is niet beperkt tot het aangewezen gegevenstype. U moet de variabele instellen met Windows PowerShell als u een waarde van een ander type wilt opgeven. Als u `Not defined`aangeeft, wordt de waarde van de variabele ingesteld op Null. U moet de waarde instellen met de cmdlet `Set-AutomationVariable` [Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) of de activiteit.
 
 U de Azure-portal niet gebruiken om de waarde voor een complex variabel type te maken of te wijzigen. U echter een waarde van elk type bieden met Windows PowerShell. Complexe typen worden opgehaald als [een PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
 
 U meerdere waarden opslaan in één variabele door een array of hashtable te maken en deze op te slaan in de variabele.
+
+>[!NOTE]
+>VM-naamvariabelen kunnen maximaal 80 tekens zijn. Variabelen van resourcegroepen kunnen maximaal 90 tekens bevatten. Zie [Regels en beperkingen voor Azure-bronnen benoemen.](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 
 ## <a name="powershell-cmdlets-that-create-and-manage-variable-assets"></a>PowerShell-cmdlets die variabele activa maken en beheren
 

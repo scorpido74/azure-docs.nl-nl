@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4034759dc4f20649c15236b057e348966d72409e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: dfe1bd1cbc99838f427aaba5bc29b23f8bfcbaff
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261157"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758671"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure Security Baseline voor Azure Database voor PostgreSQL Single Server
 
@@ -652,7 +652,7 @@ Functiedekking voor Azure PaaS-services in Azure Security Center:https://docs.mi
 
 **Richtlijnen:** Gebruik Azure Resource Graph om alle bronnen (inclusief Azure Database voor PostgreSQL-exemplaren) binnen uw abonnement(en) op te vragen en te ontdekken. Zorg ervoor dat u over de juiste (lees)machtigingen in uw tenant beschikt en dat u alle Azure-abonnementen en resources binnen uw abonnementen opsommen.
 
-Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Uw Azure-abonnementen weergeven:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -798,7 +798,7 @@ Voorwaardelijke toegang configureren om toegang tot Azure Resource Manager te bl
 
 - Logverbindingen moeten zijn ingeschakeld voor PostgreSQL-databaseservers
 
-Beschikbare Azure-beleidsaliassen weergeven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Beschikbare Azure Policy-aliassen weergeven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Azure-beleid configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

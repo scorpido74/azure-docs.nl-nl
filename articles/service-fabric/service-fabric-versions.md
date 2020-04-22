@@ -2,13 +2,13 @@
 title: Ondersteunde clusterversies in Azure Service Fabric
 description: Meer informatie over clusterversies in Azure Service Fabric, inclusief een koppeling naar de nieuwste releases van het teamblog Service Fabric.
 ms.topic: troubleshooting
-ms.date: 03/02/2020
-ms.openlocfilehash: b76e498926492ce7acaa696dfe9a0299fb5573e0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 04/20/2020
+ms.openlocfilehash: b68314a116b0d9da8baf5f61eeffeef2b30835c4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460525"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732880"
 ---
 # <a name="supported-service-fabric-versions"></a>Ondersteunde Service Fabric-versies
 
@@ -41,6 +41,7 @@ In de volgende tabel worden de versies van Service Fabric en de einddatums van d
 | 7.0.466.* | 6.5.* |Minder dan of gelijk aan versie 4.0|1 augustus 2020 |
 | 7.0.470.* | 7.0.466.* |Minder dan of gelijk aan versie 4.0 |1 augustus 2020  |
 | 7.1.409.* | 7.0.466.* |Minder dan of gelijk aan versie 4.0 |Huidige versie, dus geen einddatum |
+
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
 In de volgende tabel worden de ondersteunde besturingssystemen voor de ondersteunde Service Fabric-versies weergegeven.
@@ -106,3 +107,4 @@ In de volgende tabel worden de versienamen van Service Fabric en de bijbehorende
 | 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |
 | 7.0 CU3 | 7.0.466.9590 | 7.0.465.1 |
 | 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
+| 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |

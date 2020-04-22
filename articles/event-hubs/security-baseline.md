@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 10fc822f9f36512405dd4e3b5aba6270b53e163f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 1c7e18214ec175b8b21d25643098631a044da19c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549035"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758312"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Azure-beveiligingsbasislijn voor gebeurtenishubs
 
@@ -335,7 +335,7 @@ Azure-beleid gebruiken:https://docs.microsoft.com/azure/governance/policy/tutori
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Gebruik eenmalige aanmelding (SSO) met Azure Active Directory
 
-**Richtlijnen:** Microsoft Azure biedt geïntegreerd toegangscontrolebeheer voor resources en toepassingen op basis van Azure Active Directory (AD). Een belangrijk voordeel van het gebruik van Azure AD met Azure Event Hubs is dat u uw referenties niet meer in de code hoeft op te slaan. In plaats daarvan u een OAuth 2.0-toegangstoken aanvragen bij het Microsoft Identity-platform. De resourcenaam om een https://eventhubs.azure.net/token aan te vragen is . Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of serviceprincipal) waarop de toepassing wordt uitgevoerd. Als de verificatie slaagt, retourneert Azure AD een toegangstoken naar de toepassing en kan de toepassing vervolgens het toegangstoken gebruiken om het verzoek tot Azure Event Hubs-bronnen te autoriseren.
+**Richtlijnen:** Microsoft Azure biedt geïntegreerd toegangscontrolebeheer voor resources en toepassingen op basis van Azure Active Directory (AD). Een belangrijk voordeel van het gebruik van Azure AD met Azure Event Hubs is dat u uw referenties niet meer in de code hoeft op te slaan. In plaats daarvan u een OAuth 2.0-toegangstoken aanvragen bij het Microsoft Identity-platform. De resourcenaam om een token\/aan te vragen is https: /eventhubs.azure.net/. Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of serviceprincipal) waarop de toepassing wordt uitgevoerd. Als de verificatie slaagt, retourneert Azure AD een toegangstoken naar de toepassing en kan de toepassing vervolgens het toegangstoken gebruiken om het verzoek tot Azure Event Hubs-bronnen te autoriseren.
 
 Een toepassing verifiëren met Azure AD om toegang te krijgen tot bronnen van Gebeurtenishubs:https://docs.microsoft.com/azure/event-hubs/authenticate-application
 
@@ -631,7 +631,7 @@ Waarschuwingen maken voor gebeurtenissen in Azure Activity Log:https://docs.micr
 
 **Richtlijnen:** Gebruik Azure Resource Graph om alle resources (inclusief naamruimten van Azure Event Hubs) in uw abonnement(en) op te vragen en te ontdekken. Zorg ervoor dat u over de juiste (lees)machtigingen in uw tenant beschikt en dat u alle Azure-abonnementen en resources binnen uw abonnementen opsommen.
 
-Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Uw Azure-abonnementen weergeven:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -779,7 +779,7 @@ Voorwaardelijke toegang configureren om toegang tot Azure Resource Manager te bl
 
 Azure Ingebouwd beleid voor naamruimte gebeurtenishubs:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
-Beschikbare Azure-beleidsaliassen weergeven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Beschikbare Azure Policy-aliassen weergeven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Azure-beleid configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

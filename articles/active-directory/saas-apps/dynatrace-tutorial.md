@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ba96dd2fcfb995afa6e3b1302a2c8b075abfd90
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 275215a69f97d93a1b1741a8fa8f3ca752c8c9ef
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72968705"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758979"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dynatrace"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Dynatrace
 
@@ -140,7 +140,7 @@ In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door t
 
 ## <a name="configure-dynatrace-sso"></a>Dynatrace SSO configureren
 
-Als u eenmalige aanmelding wilt configureren aan de **Dynatrace-kant,** moet u het gedownloade **XML-bestand met federatiemetagegevens** en de juiste gekopieerde URL's van de Azure-portal naar het [Dynatrace-ondersteuningsteam](https://www.dynatrace.com/services-support/)verzenden. Het team configureert deze instelling dusdanig dat de SAML SSO-verbinding goed is ingesteld aan beide zijden.
+Als u eenmalige aanmelding wilt configureren aan de **Dynatrace-kant,** moet u het gedownloade **XML-bestand met federatiemetagegevens** en de juiste gekopieerde URL's van de Azure-portal naar [Dynatrace](https://www.dynatrace.com/support/help/shortlink/users-sso-hub)verzenden. U de instructies op de Dynatrace-website volgen om de SAML SSO-verbinding aan beide zijden te configureren.
 
 ### <a name="create-dynatrace-test-user"></a>Dynatrace-testgebruiker maken
 

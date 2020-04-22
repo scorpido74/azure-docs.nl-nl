@@ -1,26 +1,19 @@
 ---
 title: Uw Linux-VM optimaliseren voor Azure
 description: Lees enkele optimalisatietips om ervoor te zorgen dat u uw Linux-vm hebt ingesteld voor optimale prestaties op Azure
-keywords: linux virtuele machine, virtuele machine linux, ubuntu virtuele machine
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 8baa30c8-d40e-41ac-93d0-74e96fe18d4c
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 0ff901e7d53e0814ab064867be6185709e9b6a20
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 87776c14e45ff4bb3cce6661323d74a1315c8ab2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81452346"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757098"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Uw Linux-VM optimaliseren voor Azure
 Het maken van een Linux virtuele machine (VM) is eenvoudig te doen vanaf de opdrachtregel of vanaf de portal. In deze zelfstudie ziet u hoe u ervoor zorgen dat u deze hebt ingesteld om de prestaties ervan op het Microsoft Azure-platform te optimaliseren. Dit onderwerp maakt gebruik van een Ubuntu Server VM, maar u ook Linux virtuele machine met behulp van [uw eigen afbeeldingen als sjablonen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  

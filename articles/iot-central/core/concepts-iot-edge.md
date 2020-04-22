@@ -7,14 +7,16 @@ ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 69660152458de26e9dbcbf1f50db6ce6824351d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77027067"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759101"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge-apparaten verbinden met een Azure IoT Central-toepassing
+
+*Dit artikel is van toepassing op oplossingsbouwers en apparaatontwikkelaars.*
 
 IoT Edge bestaat uit drie componenten:
 
@@ -72,4 +74,4 @@ Als u een IoT Edge-apparaat hebt geselecteerd als gatewayapparaat, u downstreamr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u weet wat IoT Central-toepassingssjablonen zijn, gaat u aan de slag met [het maken van een IoT Central Application.](quick-deploy-iot-central.md)
+Als u een apparaatontwikkelaar bent, is een voorgestelde volgende stap om meer te weten te komen over [gateway-apparaattypen in IoT Central.](./tutorial-define-gateway-device-type.md)

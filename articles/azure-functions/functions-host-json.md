@@ -3,12 +3,12 @@ title: host.json-referentie voor Azure-functies 2.x
 description: Referentiedocumentatie voor het Azure Functions host.json-bestand met de v2-runtime.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 7b3c9d15fc8cf3a1651c44a5656f731a7820e344
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405489"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758848"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-verwijzing voor Azure-functies 2.x en hoger 
 
@@ -216,7 +216,7 @@ Configuratie-instelling is te vinden in [bindingen voor duurzame functies.](dura
 
 ## <a name="eventhub"></a>eventHub
 
-Configuratie-instellingen zijn te vinden in [gebeurtenishubtriggers en -bindingen.](functions-bindings-event-hubs-output.md#host-json) 
+Configuratie-instellingen zijn te vinden in [gebeurtenishubtriggers en -bindingen.](functions-bindings-event-hubs-trigger.md#host-json) 
 
 ## <a name="extensions"></a>Extensies
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d51cf22d7be167501927e54ce159e0b732209b0d
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 8c0e7c6dfb1275e1fafbab1dd9e89cb2fe4376ad
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011375"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759151"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Azure-beveiligingsbasislijn voor Azure SQL-database
 
@@ -738,7 +738,7 @@ https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 Hoewel klassieke Azure-bronnen kunnen worden ontdekt via Resource Graph, is het ten zeerste aan te raden om azure resource manager-resources in de toekomst te maken en te gebruiken.
 
-Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Query's maken met Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Uw Azure-abonnementen weergeven:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 

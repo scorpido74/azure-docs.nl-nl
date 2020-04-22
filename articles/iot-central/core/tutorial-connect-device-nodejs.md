@@ -7,16 +7,19 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: b7aebb5b9c1aa6566cedda869f97f2d1aa20df83
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.custom: mqtt
+ms.openlocfilehash: a8c5d9479585c0a519d0ad05a4d73f3f15b21287
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673955"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758199"
 ---
-# <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>Zelfstudie: Een Clienttoepassing Node.js maken en verbinden met uw Azure IoT Central-toepassing (Node.js)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Zelfstudie: Een clienttoepassing maken en verbinden met uw Azure IoT Central-toepassing (Node.js)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
+
+*Dit artikel is van toepassing op oplossingsbouwers en apparaatontwikkelaars.*
 
 In deze zelfstudie ziet u hoe u als apparaatontwikkelaar een Clienttoepassing Node.js verbinden met uw Azure IoT Central-toepassing. De Node.js applicatie simuleert het gedrag van een milieusensor apparaat. U gebruikt een voorbeeldmodel voor _apparaatmogelijkheden_ om een _apparaatsjabloon_ te maken in IoT Central. U voegt weergaven toe aan de apparaatsjabloon om een operator in staat te stellen met een apparaat te communiceren.
 
@@ -325,7 +328,12 @@ U zien hoe het apparaat reageert op opdrachten en eigenschapsupdates:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga voor meer informatie over apparaatcapaciteitsmodellen en het maken van uw eigen apparaatsjablonen verder naar de handleiding:
+Als apparaatontwikkelaar, nu u de basisprincipes hebt geleerd van het maken van een apparaat met Behulp van Node.js, zijn enkele voorgestelde volgende stappen:
+
+- Meer informatie over het verbinden van een echt apparaat met IoT Central in het [Connect a MXChip IoT DevKit-apparaat met uw azure IoT Central-toepassingshow-to-artikel.](./howto-connect-devkit.md)
+- Lees [Verbinding maken met Azure IoT Central](./concepts-get-connected.md) voor meer informatie over het registreren van apparaten met IoT Central en hoe IoT Central apparaatverbindingen beveiligt.
+
+Als u liever door de set iot central-zelf-zelfstudies wilt gaan en meer te weten wilt komen over het bouwen van een IoT Central-oplossing, raadpleegt u:
 
 > [!div class="nextstepaction"]
-> [Een nieuw IoT-apparaattype definiëren](./howto-set-up-template.md)
+> [Een gateway-apparaatsjabloon maken](./tutorial-define-gateway-device-type.md)

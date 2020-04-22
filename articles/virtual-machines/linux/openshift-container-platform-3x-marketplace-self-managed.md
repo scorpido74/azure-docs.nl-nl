@@ -1,25 +1,21 @@
 ---
 title: OpenShift Container Platform 3.11 Zelfbeheerde Marketplace-aanbieding implementeren in Azure
 description: Implementeer openshift containerplatform 3.11 Zelfbeheerde Marketplace-aanbieding in Azure.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: haroldwongms
 manager: mdotson
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 235efd746562ea4bd52b9cb57da0d8165d60de02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cf6c7417aa86d47e59e08786e7807e32c175a25
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561317"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759575"
 ---
 # <a name="configure-prerequisites"></a>Vereisten configureren
 
@@ -57,7 +53,7 @@ Klik op de aanbieding om de details van de aanbieding te bekijken. Als u deze aa
    ![Titelpagina aanbieden](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
 <br>
 
-**Basics**
+**Basisbeginselen**
 
 Als u hulp wilt krijgen bij een van de invoerparameters, zweeft u over de ***i*** naast de parameternaam.
 

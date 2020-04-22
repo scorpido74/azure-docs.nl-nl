@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 0bdede482b79c82e6e05b1429cb7c17399bc2277
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396072"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756603"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informatie over claimresolvers in het aangepaste Azure Directory B2C-beleid
 
@@ -90,7 +90,14 @@ In de volgende secties worden beschikbare claimresolvers vermeld.
 | {Context:IPAddress} | Het IP-adres van de gebruiker. | 11.111.111.11 |
 | {Context:KMSI} | Hiermee geeft u aan [of Houd me aangemeld,](custom-policy-keep-me-signed-in.md) is ingeschakeld. |  waar |
 
-### <a name="non-protocol-parameters"></a>Niet-protocolparameters
+### <a name="claims"></a>Claims 
+
+| Claim | Beschrijving | Voorbeeld |
+| ----- | ----------- | --------|
+| {Claim:claimtype} | Een id van een claimtype dat al is gedefinieerd in de sectie ClaimsSchema in het beleidsbestand of het bovenliggende beleidsbestand.  Bijvoorbeeld: `{Claim:displayName}`, `{Claim:objectId}`of . | Een waarde van het claimtype.|
+
+
+### <a name="oauth2-key-value-parameters"></a>Parameters voor de waarde van OAuth2-sleutels
 
 Elke parameternaam die is opgenomen als onderdeel van een OIDC- of OAuth2-aanvraag kan worden toegewezen aan een claim in de gebruikersreis. De aanvraag van de toepassing kan bijvoorbeeld een querytekenreeksparameter bevatten met een naam van `app_session`, `loyalty_number`of een aangepaste querytekenreeks.
 
@@ -118,6 +125,7 @@ Elke parameternaam die is opgenomen als onderdeel van een OIDC- of OAuth2-aanvra
 | {SAML:Create toestaan} | De `AllowCreate` kenmerkwaarde, `NameIDPolicy` van het element van de SAML-aanvraag. | True |
 | {SAML:ForceAuthn} | De `ForceAuthN` kenmerkwaarde, `AuthnRequest` van het element van de SAML-aanvraag. | True |
 | {SAML:ProviderName} | De `ProviderName` kenmerkwaarde, `AuthnRequest` van het element van de SAML-aanvraag.| Contoso.com |
+| {SAML:RelayState} | De `RelayState` parameter querytekenreeks.| 
 
 ## <a name="using-claim-resolvers"></a>Claimresolvers gebruiken
 

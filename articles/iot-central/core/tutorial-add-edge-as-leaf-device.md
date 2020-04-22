@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: bf74784998de6bbad6310c48c24d6353512bff13
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c60cf4b90b089d271c0ccd91031420efe9017b1e
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77027732"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758171"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Zelfstudie: Een Azure IoT Edge-apparaat toevoegen aan uw Azure IoT Central-toepassing
+
+*Dit artikel is van toepassing op oplossingsbouwers en apparaatontwikkelaars.*
 
 In deze zelfstudie ziet u hoe u een Azure IoT Edge-apparaat configureert en toevoegt aan uw Azure IoT Central-toepassing. De zelfstudie maakt gebruik van een IoT Edge-virtuele machine (VM) van Azure Marketplace om een IoT Edge-apparaat te simuleren. Het IoT Edge-apparaat maakt gebruik van een module die gesimuleerde omgevingstelemetrie genereert. U bekijkt de telemetrie op een dashboard in uw IoT Central-toepassing.
 
@@ -262,9 +264,9 @@ De pagina **Modules** toont de status van de IoT Edge-modules:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u met IoT Edge-apparaten in IoT Central werken en beheren, volgt de voorgestelde volgende stap:
+Als apparaatontwikkelaar, nu u hebt geleerd hoe u met IoT Edge-apparaten in IoT Central werken en beheren, is een voorgestelde volgende stap om te lezen:
 
 <!-- Next how-tos in the sequence -->
 
 > [!div class="nextstepaction"]
-> [Transparante gateway configureren](../../iot-edge/how-to-create-transparent-gateway.md)
+> [Verbinding maken met Azure IoT Central](./concepts-get-connected.md)

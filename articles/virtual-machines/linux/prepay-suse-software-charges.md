@@ -3,18 +3,17 @@ title: Vooraf betalen voor softwareplannen - Azure-reserveringen
 description: Ontdek hoe u vooraf betalen voor softwareplannen om geld te besparen op uw kosten voor betalen per gebruik.
 author: bandersmsft
 manager: yashesvi
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 3e05920e495dd4aa14be6c849590a37a2bafa33f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757226"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759280"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Vooruitbetalen voor Azure-softwareabonnementen
 
@@ -63,7 +62,7 @@ U een SUSE- of RedHat-abonnement dat u hebt gekocht, niet annuleren of inruilen.
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, [maakt u een ondersteuningsverzoek.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Volgende stappen
 

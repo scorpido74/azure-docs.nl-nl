@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6b56b748ef31bcfd33893e55d3ea5f8d9851a3ff
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: c4eddf68e964b412e7270319630f41fc4d802241
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674473"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733150"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Aanbieding voor IoT Edge-module maken
 
@@ -132,7 +132,7 @@ Hier definieert u de aanbiedingsgegevens die op de markt worden weergegeven. Dit
 > [!NOTE]
 > Aanbiedingsgegevens hoeven niet in het Engels te zijn als de aanbiedingsbeschrijving begint met de zinsnede 'Deze toepassing is alleen beschikbaar in [niet-Engelse taal]." Het is ook goed om een nuttige koppeling te bieden om inhoud aan te bieden in een taal die verschilt van de taal die wordt gebruikt in de aanbiedingsgegevens van de aanbieding.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt weergegeven als de titel van uw aanbieding. Dit veld is vooraf gevuld met de tekst die u hebt ingevoerd in het vak **Alias aanbieden** toen u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -322,9 +322,9 @@ Met dit tabblad u configureren in welke clouds het abonnement beschikbaar is. Uw
 
 Uw abonnement moet beschikbaar zijn in ten minste één cloud met Azure IoT Hub.
 
-Selecteer de optie **Azure Global,** zodat uw abonnement kan worden gebruikt door klanten in alle algemene Azure-regio's die de marktplaats gebruiken. Zie Geografische [beschikbaarheid en valutaondersteuning](https://aka.ms/AzureGovCurrencies)voor meer informatie .
+Selecteer de optie **Azure Global,** zodat uw abonnement kan worden gebruikt door klanten in alle algemene Azure-regio's die de marktplaats gebruiken. Zie Geografische [beschikbaarheid en valutaondersteuning](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)voor meer informatie .
 
-Selecteer hier de azure [government cloud-optie](https://aka.ms/WhatIsAzureGovernment) om uw oplossing te laten verschijnen. Dit is een overheidscommunitycloud met gecontroleerde toegang voor klanten uit Amerikaanse federale, staats- en lokale of tribale overheidsinstanties, evenals partners die in aanmerking komen om hen te bedienen. Als uitgever bent u verantwoordelijk voor nalevingscontroles, beveiligingsmaatregelen en aanbevolen procedures voor deze cloudcommunity. Azure Government maakt gebruik van fysiek geïsoleerde datacenters en netwerken (alleen in de VS). Voordat [u publiceert](https://aka.ms/azuregovpublish) naar Azure Government, test en bevestigt u uw oplossing binnen dat gebied, omdat de resultaten mogelijk verschillen. Als u uw oplossing wilt fasen en testen, vraagt u een proefaccount aan bij de proefversie van [Microsoft Azure Government.](https://aka.ms/AzureGovernmentTrial)
+Selecteer hier de azure [government cloud-optie](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) om uw oplossing te laten verschijnen. Dit is een overheidscommunitycloud met gecontroleerde toegang voor klanten uit Amerikaanse federale, staats- en lokale of tribale overheidsinstanties, evenals partners die in aanmerking komen om hen te bedienen. Als uitgever bent u verantwoordelijk voor nalevingscontroles, beveiligingsmaatregelen en aanbevolen procedures voor deze cloudcommunity. Azure Government maakt gebruik van fysiek geïsoleerde datacenters en netwerken (alleen in de VS). Voordat [u publiceert](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) naar Azure Government, test en bevestigt u uw oplossing binnen dat gebied, omdat de resultaten mogelijk verschillen. Als u uw oplossing wilt fasen en testen, vraagt u een proefaccount aan bij de proefversie van [Microsoft Azure Government.](https://azure.microsoft.com/global-infrastructure/government/request/)
 
 > [!NOTE]
 > Nadat uw abonnement is gepubliceerd en beschikbaar is in een specifieke cloud, u die cloud niet verwijderen.
@@ -378,11 +378,11 @@ Dit veld wordt vaak gebruikt wanneer:
 
 ## <a name="technical-configuration"></a>Technische configuratie
 
-Het type **IoT Edge-modulebiedt** een specifiek type container dat wordt uitgevoerd op een IoT Edge-apparaat. Op het tabblad **Technische configuratie** geeft u referentiegegevens voor uw containerimageopslagplaats in het Azure [Container Registry,](https://aka.ms/ContainerRegistry)samen met configuratie-instellingen waarmee klanten de module eenvoudig kunnen gebruiken.
+Het type **IoT Edge-modulebiedt** een specifiek type container dat wordt uitgevoerd op een IoT Edge-apparaat. Op het tabblad **Technische configuratie** geeft u referentiegegevens voor uw containerimageopslagplaats in het Azure [Container Registry,](https://azure.microsoft.com/services/container-registry/)samen met configuratie-instellingen waarmee klanten de module eenvoudig kunnen gebruiken.
 
 Nadat de aanbieding is gepubliceerd, wordt uw IoT Edge-containerafbeelding gekopieerd naar Azure Marketplace in een specifiek openbaar containerregister. Alle aanvragen van Azure-gebruikers om uw module te gebruiken, worden weergegeven vanuit het openbare containerregister van Azure Marketplace, niet in het register van uw privécontainer.
 
-U meerdere platforms targeten en verschillende versies van uw modulecontainerafbeelding bieden met behulp van tags. Zie Technische elementen van uw [IoT Edge-module voorbereiden](https://aka.ms/AzureIoTTechAsset)voor meer informatie over tags en versiebeheer.
+U meerdere platforms targeten en verschillende versies van uw modulecontainerafbeelding bieden met behulp van tags. Zie Technische elementen van uw [IoT Edge-module voorbereiden](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset)voor meer informatie over tags en versiebeheer.
 
 ### <a name="image-repository-details"></a>Details van de afbeeldingsopslagplaats
 
@@ -392,25 +392,25 @@ U geeft de volgende informatie op het tabblad Details van de **afbeeldingsopslag
 
 **Azure-abonnements-ID**: Geef de abonnements-id op waar resourcegebruik wordt gerapporteerd en services worden gefactureerd voor het Azure Container Registry met uw containerafbeelding. U vindt deze id op de [pagina Abonnementen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) in de Azure-portal.
 
-**Azure-brongroepnaam:** geef de naam van de [brongroep](https://aka.ms/ResourceManagerAzurePortal) op die het Azure Container Registry bevat met uw containerafbeelding. De resourcegroep moet toegankelijk zijn in de abonnements-ID (hierboven). U de naam vinden op de pagina [Resourcegroepen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) in de Azure-portal.
+**Azure-brongroepnaam:** geef de naam van de [brongroep](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) op die het Azure Container Registry bevat met uw containerafbeelding. De resourcegroep moet toegankelijk zijn in de abonnements-ID (hierboven). U de naam vinden op de pagina [Resourcegroepen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) in de Azure-portal.
 
-**Azure-containerregisternaam:** geef de naam op van het [Azure Container Registry](https://aka.ms/DockerContainerRegistriesAzure) met uw containerafbeelding. Het containerregister moet aanwezig zijn in de Azure-brongroep die u eerder hebt opgegeven. Geef alleen de naam van het register op, niet de volledige naam van de loginserver. Zorg ervoor dat **azurecr.io** van de naam wordt weglaten. U vindt de registernaam op de [pagina Containerregisters](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) in de Azure-portal.
+**Azure-containerregisternaam:** geef de naam op van het [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) met uw containerafbeelding. Het containerregister moet aanwezig zijn in de Azure-brongroep die u eerder hebt opgegeven. Geef alleen de naam van het register op, niet de volledige naam van de loginserver. Zorg ervoor dat **azurecr.io** van de naam wordt weglaten. U vindt de registernaam op de [pagina Containerregisters](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) in de Azure-portal.
 
-**Gebruikersnaam beheerder voor het Azure Container Registry:** Geef de [gebruikersnaam van](https://aka.ms/AdminAccountContainerRegistry) de beheerder op die is gekoppeld aan het Azure Container Registry met uw containerafbeelding. De gebruikersnaam en het wachtwoord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het register. Als u de gebruikersnaam en het wachtwoord van de beheerder wilt achterhalen, stelt u de eigenschap **waar voor beheerders** in met behulp van de Azure Command Line Interface (CLI). **True** U de **beheerdergebruiker** optioneel instellen **in de** Azure-portal.
+**Gebruikersnaam beheerder voor het Azure Container Registry:** Geef de [gebruikersnaam van](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) de beheerder op die is gekoppeld aan het Azure Container Registry met uw containerafbeelding. De gebruikersnaam en het wachtwoord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het register. Als u de gebruikersnaam en het wachtwoord van de beheerder wilt achterhalen, stelt u de eigenschap **waar voor beheerders** in met behulp van de Azure Command Line Interface (CLI). **True** U de **beheerdergebruiker** optioneel instellen **in de** Azure-portal.
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="Hiermee wordt het dialoogvenster Containerregister bijwerken weergegeven.":::
 
-**Wachtwoord voor het Azure Container Registry:** Geef het wachtwoord op voor de gebruikersnaam van de beheerder die is gekoppeld aan het Azure Container Registry en uw containerafbeelding heeft. De gebruikersnaam en het wachtwoord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het register. U het wachtwoord ophalen van de Azure-portal door naar **Container Registry** > **Access Keys** of met Azure CLI te gaan met de [opdracht Show.](https://aka.ms/azacrcredentialshow)
+**Wachtwoord voor het Azure Container Registry:** Geef het wachtwoord op voor de gebruikersnaam van de beheerder die is gekoppeld aan het Azure Container Registry en uw containerafbeelding heeft. De gebruikersnaam en het wachtwoord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het register. U het wachtwoord ophalen van de Azure-portal door naar **Container Registry** > **Access Keys** of met Azure CLI te gaan met de [opdracht Show.](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="Hiermee wordt het scherm met toegangssleutel in azure-portal weergegeven.":::
 
-**Naam van opslagplaatsen in het Azure Container Registry**. Geef de naam op van de Azure Container Registry-opslagplaats met uw afbeelding. U geeft de naam van de opslagplaats op wanneer u de afbeelding naar het register duwt. U de naam van de opslagplaats vinden door naar de pagina [Container Registry](https://aka.ms/ContainerRegistry) > **Repositories**te gaan. Zie [Containerregisterrepositories weergeven in de Azure-portal](https://aka.ms/ContainerRegistryRepositoriesAzure)voor meer informatie. Houd er rekening mee dat nadat de naam is ingesteld, deze niet kan worden gewijzigd. Gebruik een unieke naam voor elke aanbieding in uw account.
+**Naam van opslagplaatsen in het Azure Container Registry**. Geef de naam op van de Azure Container Registry-opslagplaats met uw afbeelding. U geeft de naam van de opslagplaats op wanneer u de afbeelding naar het register duwt. U de naam van de opslagplaats vinden door naar de pagina [Container Registry](https://azure.microsoft.com/services/container-registry/) > **Repositories**te gaan. Zie [Containerregisterrepositories weergeven in de Azure-portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)voor meer informatie. Houd er rekening mee dat nadat de naam is ingesteld, deze niet kan worden gewijzigd. Gebruik een unieke naam voor elke aanbieding in uw account.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Afbeeldingstags voor nieuwe versies van uw aanbieding
 
 Klanten moeten automatisch updates van de Azure Marketplace kunnen ontvangen wanneer u een update publiceert. Als ze niet willen updaten, moeten ze in staat zijn om op een specifieke versie van uw afbeelding te blijven. U dit doen door elke keer dat u een update van de afbeelding maakt, nieuwe afbeeldingstags toe te voegen.
 
-**Afbeeldingstag**. Dit veld moet een **nieuwste** tag bevatten die verwijst naar de nieuwste versie van uw afbeelding op alle ondersteunde platforms. Het moet ook een versietag bevatten (bijvoorbeeld te beginnen met xx.xx.xx, waarbij xx een getal is). Klanten moeten [manifesttags](https://aka.ms/GitHubmanifest-tool) gebruiken om zich op meerdere platforms te richten. Alle tags waarnaar wordt verwezen door een manifesttag moeten ook worden toegevoegd, zodat we ze kunnen uploaden. Alle manifesttags (behalve de nieuwste tag) moeten beginnen met X.Y- of X.Y.Z- waarbij X, Y en Z gehele getallen zijn. Als een nieuwste tag bijvoorbeeld verwijst naar 1.0.1-linux-x64, 1.0.1-linux-arm32 en 1.0.1-windows-arm32, moeten deze zes tags aan dit veld worden toegevoegd. Zie [Technische elementen van uw IoT Edge-module voorbereiden](https://aka.ms/PrepareIoTEdgeModTechAssets) voor meer informatie over tags en versiebeheer.
+**Afbeeldingstag**. Dit veld moet een **nieuwste** tag bevatten die verwijst naar de nieuwste versie van uw afbeelding op alle ondersteunde platforms. Het moet ook een versietag bevatten (bijvoorbeeld te beginnen met xx.xx.xx, waarbij xx een getal is). Klanten moeten [manifesttags](https://github.com/estesp/manifest-tool) gebruiken om zich op meerdere platforms te richten. Alle tags waarnaar wordt verwezen door een manifesttag moeten ook worden toegevoegd, zodat we ze kunnen uploaden. Alle manifesttags (behalve de nieuwste tag) moeten beginnen met X.Y- of X.Y.Z- waarbij X, Y en Z gehele getallen zijn. Als een nieuwste tag bijvoorbeeld verwijst naar 1.0.1-linux-x64, 1.0.1-linux-arm32 en 1.0.1-windows-arm32, moeten deze zes tags aan dit veld worden toegevoegd. Zie [Technische elementen van uw IoT Edge-module voorbereiden](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets) voor meer informatie over tags en versiebeheer.
 
 ### <a name="default-deployment-settings-optional"></a>Standaardimplementatie-instellingen (optioneel)
 
@@ -418,7 +418,7 @@ Definieer de meest voorkomende instellingen om uw IoT Edge-module te implementer
 
 **Standaardroutes**. De IoT Edge Hub beheert de communicatie tussen modules, de IoT Hub en apparaten. U routes instellen voor gegevensinvoer en -uitvoer tussen modules en de IoT Hub, waardoor u de flexibiliteit hebt om berichten te verzenden waar ze naartoe moeten zonder dat er extra services nodig zijn om berichten te verwerken of extra code te schrijven. Routes worden gemaakt met naam/waardeparen. U maximaal vijf standaardroutenamen definiëren, elk tot 512 tekens lang.
 
-Zorg ervoor dat u de juiste [routesyntaxis](https://aka.ms/DeclareRoutesAzureIoT) in uw routewaarde gebruikt (meestal gedefinieerd als VAN/bericht/* IN $upstream). Dit betekent dat alle berichten die door modules worden verzonden, naar uw IoT Hub gaan. Als u naar uw module wilt verwijzen, gebruikt u de standaardmodulenaam, die uw **aanbiedingsnaam**is, zonder spaties of speciale tekens. Als u wilt verwijzen naar andere modules die nog niet bekend zijn, gebruikt u de <FROM_MODULE_NAME> conventie om uw klanten te laten weten dat ze deze informatie moeten bijwerken. Zie [Routes declareren voor](https://aka.ms/DeclareRoutesAzureIoT)meer informatie over IoT Edge-routes.
+Zorg ervoor dat u de juiste [routesyntaxis](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) in uw routewaarde gebruikt (meestal gedefinieerd als VAN/bericht/* IN $upstream). Dit betekent dat alle berichten die door modules worden verzonden, naar uw IoT Hub gaan. Als u naar uw module wilt verwijzen, gebruikt u de standaardmodulenaam, die uw **aanbiedingsnaam**is, zonder spaties of speciale tekens. Als u wilt verwijzen naar andere modules die nog niet bekend zijn, gebruikt u de <FROM_MODULE_NAME> conventie om uw klanten te laten weten dat ze deze informatie moeten bijwerken. Zie [Routes declareren voor](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)meer informatie over IoT Edge-routes.
 
 Als module ContosoModule bijvoorbeeld luistert naar ingangen op ContosoInput en uitvoergegevens bij ContosoOutput, is het zinvol om de volgende twee standaardroutes te definiëren:
 
@@ -427,7 +427,7 @@ Als module ContosoModule bijvoorbeeld luistert naar ingangen op ContosoInput en 
 - Naam #2: FromContosoModuleToCloud
 - Value #2: FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream
 
-**Standaard module twin gewenste eigenschappen**. Een moduletwin is een JSON-document in de IoT-hub dat de statusinformatie voor een module-exemplaar opslaat, inclusief de gewenste eigenschappen. Gewenste eigenschappen worden gebruikt samen met gerapporteerde eigenschappen om de configuratie of voorwaarden van de module te synchroniseren. De backend van de oplossing kan de gewenste eigenschappen instellen en de module kan ze lezen. De module kan ook wijzigingsmeldingen ontvangen in de gewenste eigenschappen. Gewenste eigenschappen worden gemaakt met maximaal vijf naam/waardeparen en elke standaardwaarde moet minder dan 512 tekens hebben. U maximaal vijf naam/waarde twin gewenste eigenschappen definiëren. Waarden van dubbele gewenste eigenschappen moeten geldig JSON, niet-ontsnapt, zonder arrays met een maximale geneste hiërarchie van vier niveaus. In een scenario waarin een parameter die vereist is voor een standaardwaarde niet zinvol is (bijvoorbeeld het IP-adres van de server van een klant), u een parameter toevoegen als standaardwaarde. Zie [Gewenste eigenschappen definiëren of bijwerken](https://aka.ms/DefineUpdateProperties)voor meer informatie over de gewenste twee eigenschappen.
+**Standaard module twin gewenste eigenschappen**. Een moduletwin is een JSON-document in de IoT-hub dat de statusinformatie voor een module-exemplaar opslaat, inclusief de gewenste eigenschappen. Gewenste eigenschappen worden gebruikt samen met gerapporteerde eigenschappen om de configuratie of voorwaarden van de module te synchroniseren. De backend van de oplossing kan de gewenste eigenschappen instellen en de module kan ze lezen. De module kan ook wijzigingsmeldingen ontvangen in de gewenste eigenschappen. Gewenste eigenschappen worden gemaakt met maximaal vijf naam/waardeparen en elke standaardwaarde moet minder dan 512 tekens hebben. U maximaal vijf naam/waarde twin gewenste eigenschappen definiëren. Waarden van dubbele gewenste eigenschappen moeten geldig JSON, niet-ontsnapt, zonder arrays met een maximale geneste hiërarchie van vier niveaus. In een scenario waarin een parameter die vereist is voor een standaardwaarde niet zinvol is (bijvoorbeeld het IP-adres van de server van een klant), u een parameter toevoegen als standaardwaarde. Zie [Gewenste eigenschappen definiëren of bijwerken](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)voor meer informatie over de gewenste twee eigenschappen.
 
 Als een module bijvoorbeeld een dynamisch configureerbare verversingsfrequentie ondersteunt met dubbele gewenste eigenschappen, is het zinvol om de volgende standaardgewenste eigenschap te definiëren:
 
@@ -441,7 +441,7 @@ Als een module bijvoorbeeld gebruiksvoorwaarden moet accepteren voordat deze wor
 - Naam #1: ACCEPT_EULA
 - Waarde #1: Y
 
-**Opties voor het maken van standaardcontainers**. Opties voor het maken van containers sturen de creatie van de Docker-container van de IoT Edge-module. IoT Edge ondersteunt Docker engine API Create Container opties. Bekijk alle opties bij [Lijstcontainers.](https://aka.ms/ContainerList) Het veld Opties maken moet geldig JSON, niet-ontsnapte en minder dan 512 tekens zijn.
+**Opties voor het maken van standaardcontainers**. Opties voor het maken van containers sturen de creatie van de Docker-container van de IoT Edge-module. IoT Edge ondersteunt Docker engine API Create Container opties. Bekijk alle opties bij [Lijstcontainers.](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList) Het veld Opties maken moet geldig JSON, niet-ontsnapte en minder dan 512 tekens zijn.
 
 Als een module bijvoorbeeld poortbinding vereist, definieert u de volgende opties voor het maken:
 

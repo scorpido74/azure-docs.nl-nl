@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 941a1ff23668a3202028e8b693b57d902095b3b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b675a78041b68210fa7583510582783c506c720
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78384822"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767040"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>GPU-versnelling (graphics processing unit) configureren voor Windows Virtual Desktop
 
@@ -88,7 +88,7 @@ Ga als volgt te werk om te controleren of Extern bureaublad GPU-versnelde coderi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Met deze instructies u aan de slag met GPU-versnelling op een vm met enkele sessiehost. Enkele aanvullende overwegingen voor het inschakelen van GPU-versnelling in een grotere hostpool:
+Deze instructies moeten u aan de slag met GPU-versnelling op één sessiehost (één VM). Enkele aanvullende overwegingen voor het inschakelen van GPU-versnelling in een grotere hostpool:
 
 * Overweeg een [VM-extensie](/azure/virtual-machines/extensions/overview) te gebruiken om de installatie en updates van stuurprogramma's in een aantal VM's te vereenvoudigen. Gebruik de [NVIDIA GPU Driver Extension](/azure/virtual-machines/extensions/hpccompute-gpu-windows) voor VM's met NVIDIA GPU's en gebruik de AMD GPU Driver Extension (binnenkort beschikbaar) voor VM's met AMD GPU's.
 * Overweeg Active Directory-groepsbeleid te gebruiken om de configuratie van groepsbeleid voor een aantal VM's te vereenvoudigen. Zie [Werken met groepsbeleidsobjecten](https://go.microsoft.com/fwlink/p/?LinkId=620889)voor informatie over het implementeren van groepsbeleid in het Active Directory-domein.

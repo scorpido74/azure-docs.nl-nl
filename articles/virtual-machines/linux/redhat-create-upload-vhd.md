@@ -1,24 +1,19 @@
 ---
 title: Een Red Hat Enterprise Linux VHD maken en uploaden voor gebruik in Azure
 description: Leer een Virtual Hard Disk (Azure Virtual Hard Disk) maken en uploaden die een Red Hat Linux-besturingssysteem bevat.
-services: virtual-machines-linux
-documentationcenter: ''
 author: gbowerman
-manager: gwallace
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 6c6b8f72-32d3-47fa-be94-6cb54537c69f
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: cc806fe0c3894174835c99493ebf2ba19a11ca28
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 625dd1c8051d7949987d0dd19ee8a08347eedf14
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460457"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758633"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Een op Red Hat gebaseerde virtuele machine voor Azure voorbereiden
 In dit artikel leert u hoe u een Virtual Machine (Red Hat Enterprise Linux) voorbereidt voor gebruik in Azure. De versies van RHEL die in dit artikel worden behandeld zijn 6.7+ en 7.1+. De hypervisors ter voorbereiding die in dit artikel worden behandeld zijn Hyper-V, kernel-based virtual machine (KVM) en VMware. Zie de [Cloud Access-website](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) van Red Hat en [RHEL uitvoeren op Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)voor meer informatie over geschiktheidsvereisten voor deelname aan het Cloud Access-programma van Red Hat. Zie de [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)voor manieren om RHEL-afbeeldingen te automatiseren.
@@ -122,7 +117,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand van de Red Hat-web
 
 1. Voer de volgende opdrachten uit om de virtuele machine te deprovisioneren en voor te bereiden op het inrichten op Azure:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 

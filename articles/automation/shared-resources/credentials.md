@@ -1,5 +1,5 @@
 ---
-title: Verbindingsreferentie in Azure Automation
+title: Referenties beheren in Azure Automation
 description: Referentie-elementen in Azure Automation bevatten beveiligingsreferenties die kunnen worden gebruikt om te verifiëren voor resources die toegankelijk zijn voor de runbook- of DSC-configuratie. In dit artikel wordt beschreven hoe u referentie-elementen maakt en deze gebruikt in een runbook- of DSC-configuratie.
 services: automation
 ms.service: automation
@@ -9,21 +9,22 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8b63a2676690004d23094b490fea0ef150ab9cb
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 59e32087d4489cbb155a9cff7d40094c0606c0cf
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546411"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732849"
 ---
-# <a name="credential-assets-in-azure-automation"></a>Verbindingsreferentie in Azure Automation
+# <a name="manage-credentials-in-azure-automation"></a>Referenties beheren in Azure Automation
 
 Een item als referentie-item voor automatisering bevat een object dat beveiligingsreferenties bevat, zoals een gebruikersnaam en een wachtwoord. Runbooks en DSC-configuraties maken gebruik van cmdlets die een [PSCredential-object](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) accepteren voor verificatie. Als alternatief kunnen ze de gebruikersnaam en `PSCredential` het wachtwoord van het object extraheren om te bieden aan een bepaalde toepassing of service waarvoor verificatie vereist is. 
 
-Azure Automation slaat de eigenschappen van een referentie veilig op. Toegang tot de eigenschappen via een runbook- of DSC-configuratie maakt gebruik van de activiteit [Get-AutomationPSCredential.](#activities-used-to-access-credentials)
-
 > [!NOTE]
 > Beveiligde elementen in Azure Automation omvatten referenties, certificaten, verbindingen en versleutelde variabelen. Deze elementen worden versleuteld en opgeslagen in Azure Automation met behulp van een unieke sleutel die wordt gegenereerd voor elk Automatiseringsaccount. Deze sleutel wordt opgeslagen in Key Vault. Voordat u een beveiligde asset opslaat, wordt de sleutel geladen vanuit Key Vault en vervolgens gebruikt om het item te versleutelen.
+
+>[!NOTE]
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](../automation-update-azure-modules.md)
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -44,13 +45,11 @@ De activiteiten in de volgende tabel worden gebruikt om toegang te krijgen tot r
 
 | Activiteit | Beschrijving |
 |:--- |:--- |
-| `Get-AutomationPSCredential` |Hier wordt een referentie gebruikt in een runbook- of DSC-configuratie. De referentie is in `PSCredential` de vorm van een object. |
+| `Get-AutomationPSCredential` |Hier wordt een referentie gebruikt in een runbook- of DSC-configuratie. De referentie is in `PSCredential` de vorm van een object. Zie [Module-elementen in Azure Automation](modules.md)voor meer informatie over de cmdlet die overeenkomt met deze activiteit. |
 | [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Krijgt een referentie met een prompt voor gebruikersnaam en wachtwoord. |
 | [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | Hiermee maakt u een referentie-asset. |
 
-Voor lokale ontwikkeling met behulp van `Get-AutomationPSCredential` de Azure Automation Authoring Toolkit maakt de cmdlet deel uit van de assemblage [azureautomationAuthoringToolkit.](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.9) Voor Azure die met de context Automatisering `Orchestrator.AssetManagement.Cmdlets`werkt, bevindt de cmdlet zich in . Zie [Modules beheren in Azure Automation](modules.md).
-
-Als `PSCredential` u objecten in uw code wilt ophalen, u de [Microsoft Azure Automation ISE-invoegtoepassing voor de PowerShell ISE](https://github.com/azureautomation/azure-automation-ise-addon)installeren.
+Als `PSCredential` u objecten in uw code wilt ophalen, u de Microsoft Azure Automation ISE-invoegtoepassing voor de PowerShell ISE installeren. Zie [Module-elementen in Azure Automation voor](modules.md)meer informatie.
 
 ```azurepowershell
 Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser -Force
@@ -65,9 +64,9 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 > [!NOTE]
 > U moet het gebruik `Name` van `Get-AutomationPSCredential`variabelen in de parameter van . Het gebruik ervan kan het ontdekken van afhankelijkheden tussen runbooks of DSC-configuraties en referentie-elementen tijdens het ontwerp bemoeilijkt.
 
-## <a name="python2-functions-that-access-credentials"></a>Python2-functies die toegang hebben tot referenties
+## <a name="python-2-functions-that-access-credentials"></a>Python 2-functies die toegang hebben tot referenties
 
-De functie in de volgende tabel wordt gebruikt om toegang te krijgen tot referenties in een Python2-runbook.
+De functie in de volgende tabel wordt gebruikt om toegang te krijgen tot referenties in een Python 2-runbook.
 
 | Functie | Beschrijving |
 |:---|:---|
@@ -154,9 +153,9 @@ In de volgende afbeelding ziet u een voorbeeld van het gebruik van een referenti
 
 Hoewel DSC-configuraties in Azure Automation kunnen `Get-AutomationPSCredential`werken met referentie-elementen met behulp van , kunnen ze ook referentie-elementen doorgeven via parameters. Zie [Configuraties samenstellen in Azure Automation DSC](../automation-dsc-compile.md#credential-assets)voor meer informatie.
 
-## <a name="using-credentials-in-python2"></a>Referenties gebruiken in Python2
+## <a name="using-credentials-in-python-2"></a>Referenties gebruiken in Python 2
 
-In het volgende voorbeeld ziet u een voorbeeld van toegang tot referenties in Python2-runbooks.
+In het volgende voorbeeld ziet u een voorbeeld van toegang tot referenties in Python 2-runbooks.
 
 
 ```python
@@ -175,4 +174,4 @@ print cred["password"]
 * Zie [Azure Automation Security](../automation-security-overview.md)voor het begrijpen van de verschillende verificatiemethoden voor automatisering.
 * Zie Mijn eerste grafische runbook om aan de slag te gaan met grafische [runbooks.](../automation-first-runbook-graphical.md)
 * Zie [Mijn eerste PowerShell-werkstroomrunboek](../automation-first-runbook-textual.md)om aan de slag te gaan met PowerShell-werkstroom.
-* Zie [Mijn eerste Python2-runbook](../automation-first-runbook-textual-python2.md) om aan de slag te gaan met Python2-runbooks. 
+* Zie [Mijn eerste Python 2-runbook om](../automation-first-runbook-textual-python2.md)aan de slag te gaan met Python 2 runbooks. 

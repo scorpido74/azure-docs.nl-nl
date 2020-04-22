@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fef1afb9748fd6f2f59b972c451d95ae1204ef70
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 8bda712523faa90f32a12fe7eecce27dccf3a55c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011630"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756634"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure-beveiligingsbasislijn voor batch
 
@@ -712,7 +712,7 @@ Als u optioneel een Rapid7-, Qualys- of een ander abonnement op het kwetsbaarhei
 
 Hoewel klassieke Azure-bronnen kunnen worden ontdekt via Resource Graph, is het ten zeerste aan te raden om in de toekomst Azure Resource Manager-resources (ARM) te maken en te gebruiken.
 
-Query's maken met Azure Graph:
+Query's maken met Azure Resource Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -877,7 +877,7 @@ Dit is niet van toepassing op Azure Batch, omdat gebruikers (niet-beheerders) va
 
 **Richtlijnen:** Gebruik Azure Policy-aliassen in de naamruimte 'Microsoft.Batch' om aangepaste beleidsregels te maken om de configuratie van uw Azure Batch-accounts en -groepen te controleren of af te dwingen.
 
-Beschikbare Azure-beleidsaliassen weergeven:
+Beschikbare Azure Policy-aliassen weergeven:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -899,7 +899,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="73-maintain-secure-configurations-for-all-azure-resources"></a>7.3: Veilige configuraties behouden voor alle Azure-bronnen
 
-**Richtlijnen**: Gebruik Azure-beleid [weigeren] en [implementeren als deze niet bestaan] om beveiligde instellingen af te dwingen voor de Azure-resources met betrekking tot uw Batch-account en -groepen (zoals virtuele netwerken, subnetten, Azure Firewalls, Azure Storage Accounts, enz.). U Azure Policy Aliassen uit de volgende naamruimten gebruiken om aangepaste beleidsregels te maken:
+**Richtlijnen**: Gebruik Azure-beleid [weigeren] en [implementeren als deze niet bestaan] om beveiligde instellingen af te dwingen voor de Azure-resources met betrekking tot uw Batch-account en -groepen (zoals virtuele netwerken, subnetten, Azure Firewalls, Azure Storage Accounts, enz.). U Azure Policy-aliassen uit de volgende naamruimten gebruiken om aangepaste beleidsregels te maken:
 
 - Microsoft.Batch
 
@@ -987,7 +987,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 - Diagnostische logboeken in Batch-accounts moeten zijn ingeschakeld
 
-Beschikbare Azure-beleidsaliassen weergeven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Beschikbare Azure Policy-aliassen weergeven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Azure-beleid configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

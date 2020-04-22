@@ -1,19 +1,19 @@
 ---
 title: 'Zelfstudie: Taggovernance beheren'
 description: In deze zelfstudie gebruikt u het effect Wijzigen van Azure Policy om een taggovernancemodel te maken en af te dwingen op nieuwe en bestaande resources.
-ms.date: 11/25/2019
+ms.date: 04/21/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5e9cb9a4acb930c117374281a3debaeecce47110
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6319bbde2fdc8f78e2743dd5f1565c8680433fea
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75965988"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759060"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Zelfstudie: Tagbeheer beheren met Azure-beleid beheren
 
 [Tags](../../../azure-resource-manager/management/tag-resources.md) zijn een cruciaal onderdeel van het organiseren van uw Azure-resources in een taxonomie. Wanneer u [aanbevolen procedures voor tagbeheer volgt,](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)kunnen tags de basis vormen voor het toepassen van uw bedrijfsbeleid met Azure-beleid of [het bijhouden van kosten met Kostenbeheer.](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources)
-Het maakt niet uit hoe of waarom u tags gebruikt, het is belangrijk dat u deze tags op uw Azure-bronnen snel toevoegen, wijzigen en verwijderen.
+Het maakt niet uit hoe of waarom u tags gebruikt, het is belangrijk dat u deze tags op uw Azure-bronnen snel toevoegen, wijzigen en verwijderen. Zie [Ondersteuning](../../../azure-resource-manager/management/tag-support.md)voor tags als u wilt zien of uw Azure-bron tagging ondersteunt.
 
 Het effect [Wijzigen](../concepts/effects.md#modify) van Azure Policy is ontworpen om te helpen bij het beheer van tags, ongeacht in welke fase van resourcegovernance u zich bevindt. **Wijzigen** helpt wanneer:
 

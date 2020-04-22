@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: e64b0a8602a4a0806ada15546972856743c38161
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0e5a683c95e213a0fc37ec4f559e89abfecf034a
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312474"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758904"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -72,7 +72,7 @@ Open voor de v2-SKU de openbare IP-bron en selecteer **Configuratie**. Het veld 
 
 *Een time-out met Keep-Alive* bepaalt hoe lang de Toepassingsgateway wacht tot een client een andere HTTP-aanvraag op een permanente verbinding verzendt voordat deze opnieuw wordt gebruikt of wordt gesloten. *TCP idle time-out* bepaalt hoe lang een TCP-verbinding open wordt gehouden in het geval van geen activiteit. 
 
-De *Keep-Alive time-out* in de Application Gateway v1 SKU is 120 seconden en in de v2 SKU is het 75 seconden. De *TCP idle time-out* is een standaard van 4 minuten op de frontend virtual IP (VIP) van zowel v1 als v2 SKU of Application Gateway. 
+De *Keep-Alive time-out* in de Application Gateway v1 SKU is 120 seconden en in de v2 SKU is het 75 seconden. De *TCP idle time-out* is een standaard van 4 minuten op de frontend virtual IP (VIP) van zowel v1 als v2 SKU of Application Gateway. Je deze waarden niet veranderen.
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Verandert de IP- of DNS-naam gedurende de levensduur van de toepassingsgateway?
 

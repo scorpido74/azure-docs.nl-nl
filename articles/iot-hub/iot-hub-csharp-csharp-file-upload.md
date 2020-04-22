@@ -9,12 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: b379f158672a9df3056acb09c63c392869a53283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 14472e84d425bf03a3c6a0c2dc558d4b8225caec
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77108708"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733402"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Bestanden uploaden van uw apparaat naar de cloud met IoT Hub (.NET)
 
@@ -193,7 +194,7 @@ In deze zelfstudie hebt u geleerd hoe u de mogelijkheden voor het uploaden van b
 
 * [Inleiding tot C SDK](iot-hub-device-sdk-c-intro.md)
 
-* [SDK’s voor Azure IoT](iot-hub-devguide-sdks.md)
+* [SDK's voor Azure IoT](iot-hub-devguide-sdks.md)
 
 Zie:
 
