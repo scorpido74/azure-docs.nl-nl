@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 4042fc05f278915fe72bf8fc4e6afd69a5bbb4b9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 626a8c96fdc247db174e2cbcd2e5c99cec43d2ea
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537420"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770968"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Azure Monitor Application Insights Agent implementeren voor on-premises servers
 
@@ -36,14 +36,14 @@ Application Insights Agent bevindt zich hier: https://www.powershellgallery.com/
 - Zie de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md) voor een diepe duik over hoe aan de slag te gaan.
 
 ## <a name="powershell-api-reference"></a>PowerShell API-verwijzing
-- [Disable-ApplicationInsightsMonitoring disable-ApplicationInsights](status-monitor-v2-api-disable-monitoring.md)
-- [Engine uitschakelen-instrumentatie](status-monitor-v2-api-disable-instrumentation-engine.md)
-- [Enable-ApplicationInsightsMonitoring](status-monitor-v2-api-enable-monitoring.md)
-- [Enable-InstrumentationEngine](status-monitor-v2-api-enable-instrumentation-engine.md)
-- [Get-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-get-config.md)
-- [Status van get-applicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md)
-- [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
-- [Start-ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
+- [Disable-ApplicationInsightsMonitoring disable-ApplicationInsights](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-applicationinsightsmonitoring)
+- [Engine uitschakelen-instrumentatie](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-instrumentationengine)
+- [Enable-ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)
+- [Enable-InstrumentationEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-instrumentationengine)
+- [Get-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringconfig)
+- [Status van get-applicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus)
+- [Set-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#set-applicationinsightsmonitoringconfig)
+- [Start-ApplicationInsightsMonitoringTrace](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#start-applicationinsightsmonitoringtrace)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 - [Problemen oplossen](status-monitor-v2-troubleshoot.md)
@@ -64,7 +64,7 @@ Elk van deze opties wordt beschreven in de [gedetailleerde instructies](status-m
 
 - Hoe kan ik controleren of de enablement is geslaagd?
 
-  - De cmdlet [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) kan worden gebruikt om te controleren of de enablement is geslaagd.
+  - De cmdlet [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus) kan worden gebruikt om te controleren of de enablement is geslaagd.
   - We raden je aan [live statistieken](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) te gebruiken om snel te bepalen of je app telemetrie verzendt.
 
   - U [Log Analytics](../log-query/get-started-portal.md) ook gebruiken om alle cloudrollen weer te geven die momenteel telemetrie verzenden:
