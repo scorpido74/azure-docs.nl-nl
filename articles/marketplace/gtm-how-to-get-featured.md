@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market Services - Hoe kom je op marktplaats te staan | Azure
+title: Go-To-Market Services - Hoe kom je op marktplaats te staan | Azure Marketplace
 description: Go-To-Market Services - In deze sectie wordt beschreven hoe u een vermelding in Azure Marketplace krijgen
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 266070a6292e41af6ce1b4258774d20a9bd90312
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe18ca41942ff58b8d9eefef3122c90980029766
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286282"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684602"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Aanbevolen worden in AppSource en Azure Marketplace
 
@@ -38,7 +38,7 @@ Je de volgende actie-items uitvoeren om je score te verbeteren:
 Aanbevolen apps-promoties werken afzonderlijk van het zoekalgoritme.
 
 >[!Note]
->Als uw oplossing niet correct wordt weergegeven in de zoekresultaten, dient u een ondersteuningsticket in via het Help-menu in [Cloud Partner Portal.](https://cloudpartner.azure.com/)
+>Als uw oplossing niet correct wordt weergegeven in de zoekresultaten, dient u een ondersteuningsticket in via het Help-menu in [partnercentrum.](https://partner.microsoft.com/)
 
 Uw GTM-ondersteuning bevat ook een volledige bibliotheek met zelfhulpsjablonen, webinhoud, training en hulpmiddelen om u te helpen uw aanbiedingen en uw bedrijf verder te promoten.
 
@@ -46,6 +46,6 @@ Uw GTM-ondersteuning bevat ook een volledige bibliotheek met zelfhulpsjablonen, 
 
 Meer informatie over uw [commerciële marktplaatsvoordelen.](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)
 
-Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com) om uw aanbieding te maken en te configureren.
+Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken en te configureren.
 
 ---

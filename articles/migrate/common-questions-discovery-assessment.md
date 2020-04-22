@@ -3,12 +3,12 @@ title: Vragen over detectie-, beoordelings- en afhankelijkheidsanalyse in Azure 
 description: Antwoorden op veelgestelde vragen over detectie-, beoordelings- en afhankelijkheidsanalyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 700e5318b66cdf4993a17b1dae85fb43f75ab035
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b4b2a50bc88768d46c82f6bce73447dc901e5dfd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81529770"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681907"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analyse van detectie, beoordeling en afhankelijkheid - Veelvoorkomende vragen
 
@@ -28,6 +28,10 @@ Bekijk de ondersteunde regio's voor [publieke](migrate-support-matrix.md#support
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Hoeveel VM's kan ik ontdekken met een apparaat?
 
 U tot 10.000 VMware VM's, maximaal 5.000 Hyper-V VM's en maximaal 250 fysieke servers ontdekken met behulp van één toestel. Als u meer machines hebt, leest u over [het schalen van een Hyper-V-beoordeling,](scale-hyper-v-assessment.md)het schalen van een [VMware-beoordeling](scale-vmware-assessment.md)of [het schalen van een fysieke serverbeoordeling](scale-physical-assessment.md).
+
+## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Ik zie sommige VM-typen niet in Azure Government
+
+VM-typen die worden ondersteund voor beoordeling en migratie zijn afhankelijk van de beschikbaarheid op de locatie azure-overheid. U VM-typen in Azure Government [bekijken en vergelijken.](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines)
 
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>De grootte van mijn VM veranderd. Kan ik opnieuw een assessment uitvoeren?
@@ -87,7 +91,7 @@ Beoordelingen op basis van import zijn beoordelingen die zijn gemaakt met machin
 Afhankelijkheidsvisualisatie kan u helpen groepen VM's te beoordelen om met meer vertrouwen te migreren. Afhankelijkheidsvisualisatie controleert machineafhankelijkheden voordat u een beoordeling uitvoert. Het helpt ervoor te zorgen dat er niets achterblijft en het helpt onverwachte storingen te voorkomen wanneer u migreert naar Azure. Azure Migrate gebruikt de Service Map-oplossing in Azure Monitor om afhankelijkheidsvisualisatie in te schakelen. [Meer informatie](concepts-dependency-visualization.md).
 
 > [!NOTE]
-> Afhankelijkheidsvisualisatie is niet beschikbaar in Azure Government.
+> Afhankelijkheidsanalyse op basis van agenten is niet beschikbaar in Azure Government. U gebruik maken van agentless afhankelijkheidsanalyse
 
 ## <a name="whats-the-difference-between-agent-based-and-agentless"></a>Wat is het verschil tussen agent-based en agentless?
 

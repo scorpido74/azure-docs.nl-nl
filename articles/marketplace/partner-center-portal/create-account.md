@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/14/2020
-ms.openlocfilehash: d62d05cdbda86af3c3a38757877624e87f6d1719
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 1bd71a4fb150d544125703679cf0fa0b8951e1eb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383761"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684142"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Een account op de commerciële marktplaats maken in partnercentrum
 
@@ -164,7 +164,7 @@ Een organisatie kan meerdere uitgevers hebben die zijn gekoppeld aan een Commerc
 
 Een andere gebruiker van dezelfde Azure Active Directory-tenant kan een nieuwe uitgever toevoegen door de onderstaande stappen te volgen:
 
-1. Start de aanmeldingsstroom af in [het Microsoft Partner Center.](https://partner.microsoft.com/en-us/dashboard/account/v3/enrollment/introduction/azureisv)
+1. Start de aanmeldingsstroom af in [het Microsoft Partner Center.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
 2. Selecteer **Aanmelden met een werkaccount** en voer uw werk-e-mailadres in.
 3. Selecteer de knop **Publisher toevoegen.**
 4. Kies de MPN-id die u aan de uitgever wilt koppelen.

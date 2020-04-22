@@ -4,18 +4,18 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 15e4b4c8850798fd2386cd2874b6ab58a18d5406
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019c27b1f7e8560c86252aaf2ed1fb79df2439fa
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297387"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677346"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten oplossen op virtuele Azure-machines
 
 U fouten oplossen die zijn opgetreden tijdens het gebruik van Azure Backup met de onderstaande informatie:
 
-## <a name="backup"></a>Back-up
+## <a name="backup"></a>Backup
 
 In deze sectie wordt een back-upbewerking uitgevoerd als azure virtual-machine.
 
@@ -191,6 +191,7 @@ Deze opdracht zorgt ervoor dat de momentopnamen worden gemaakt via host in plaat
 | **Foutcode:** ExtensionSnapshotFailedNoSecureNetwork <br/> **Foutbericht:** de momentopnamebewerking is mislukt omdat er geen beveiligd netwerkcommunicatiekanaal is gemaakt. | <ol><li> Open de registereditor door **regedit.exe** in een verhoogde modus uit te voeren. <li> Identificeer alle versies van het .NET Framework dat in uw systeem aanwezig is. Ze zijn aanwezig onder de hiërarchie van registersleutel **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft**. <li> Voeg voor elke .NET-kaderdie in de registersleutel aanwezig is, de volgende toets toe: <br> **SchuseStrongCrypto"=dword:00000001**. </ol>|
 | **Foutcode**: ExtensionVCRedistInstallationFailure <br/> **Foutbericht**: De momentopnamebewerking is mislukt omdat visuele C++ Redistributable voor Visual Studio 2012 niet is geïnstalleerd. | Navigeer naar C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion en installeer vcredist2013_x64.<br/>Zorg ervoor dat de registersleutelwaarde waarmee de service-installatie wordt ingesteld op de juiste waarde is ingesteld. Dat wil zeggen, stel de **startwaarde** in **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** in op **3** en niet **op 4**. <br><br>Als u nog steeds problemen hebt met de installatie, start u de installatieservice opnieuw door **MSIEXEC /UNREGISTER** uit te voeren, gevolgd door **MSIEXEC /REGISTER** vanaf een opdrachtprompt met verhoogde bevoegdheid.  |
 | **Foutcode**: UserErrorRequestDisallowedByPolicy <BR> **Foutbericht:** er is een ongeldig beleid geconfigureerd op de VM, waardoor momentopnamebewerking wordt voorkomen. | Als u een Azure-beleid hebt dat tags binnen uw omgeving regelt, u overwegen het beleid te wijzigen van een [effect Weigeren](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) in een [effect Wijzigen](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)of de brongroep handmatig maken op basis van het [naamgevingsschema](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags) [dat vereist is voor Azure Backup.](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)
+
 ## <a name="jobs"></a>Taken
 
 | Foutdetails | Tijdelijke oplossing |
@@ -229,12 +230,12 @@ De VM-agent is doorgaans al aanwezig in VM's die zijn gemaakt vanuit de Azure-ga
 #### <a name="windows-vms"></a>Virtuele Windows-machines
 
 * Download en installeer de [agent-MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). U hebt beheerdersrechten nodig om de installatie te voltooien.
-* Werk [de eigenschap VM bij voor](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) virtuele machines die zijn gemaakt met behulp van het klassieke implementatiemodel om aan te geven dat de agent is geïnstalleerd. Deze stap is niet vereist voor virtuele azure resource-machines.
+* Werk [de eigenschap VM bij voor](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) virtuele machines die zijn gemaakt met behulp van het klassieke implementatiemodel om aan te geven dat de agent is geïnstalleerd. Deze stap is niet vereist voor virtuele azure resource-machines.
 
 #### <a name="linux-vms"></a>Virtuele Linux-machines
 
 * Installeer de nieuwste versie van de agent vanuit de distributieopslagplaats. Zie de [Linux Agent repository](https://github.com/Azure/WALinuxAgent)voor meer informatie over de pakketnaam.
-* Voor VM's die zijn gemaakt met behulp van het klassieke implementatiemodel, [gebruikt u deze blog](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) om de eigenschap VM bij te werken en te controleren of de agent is geïnstalleerd. Deze stap is niet vereist voor virtuele machines van Resource Manager.
+* Voor VM's die zijn gemaakt met behulp van het klassieke implementatiemodel, [werkt u de eigenschap VM bij](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) en controleert u of de agent is geïnstalleerd. Deze stap is niet vereist voor virtuele machines van Resource Manager.
 
 ### <a name="update-the-vm-agent"></a>De VM-agent bijwerken
 
@@ -280,4 +281,3 @@ Meer informatie over het instellen van een statisch IP-adres via PowerShell:
 
 * [Een statisch intern IP-adres toevoegen aan een bestaande virtuele machine](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description)
 * [De toewijzingsmethode wijzigen voor een privé-IP-adres dat is toegewezen aan een netwerkinterface](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
-

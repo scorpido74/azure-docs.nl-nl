@@ -1,14 +1,14 @@
 ---
 title: Details van de beleidstoewijzingsstructuur
 description: Beschrijft de beleidstoewijzingsdefinitie die wordt gebruikt door Azure Policy om beleidsdefinities en parameters te relateren aan resources voor evaluatie.
-ms.date: 09/23/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265296"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683219"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-toewijzingsstructuur
 
@@ -20,6 +20,7 @@ U gebruikt JSON om een beleidstoewijzing te maken. De beleidstoewijzing bevat el
 - description
 - metagegevens
 - handhavingsmodus
+- uitgesloten scopes
 - beleidsdefinitie
 - parameters
 
@@ -34,6 +35,7 @@ In de volgende JSON wordt bijvoorbeeld een beleidstoewijzing weergegeven in _de 
             "assignedBy": "Cloud Center of Excellence"
         },
         "enforcementMode": "DoNotEnforce",
+        "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
         "parameters": {
             "prefix": {
@@ -65,6 +67,10 @@ Deze eigenschap heeft de volgende waarden:
 |Uitgeschakeld |DoNotEnforce |tekenreeks |Ja |Nee | Het beleidseffect wordt niet afgedwongen tijdens het maken of bijwerken van resources. |
 
 Als **enforcementMode** niet is opgegeven in een beleids- of initiatiefdefinitie, wordt de waarde _Standaard_ gebruikt. [Hersteltaken](../how-to/remediate-resources.md) kunnen worden gestart voor [het implementeren van IfNotExists-beleid,](./effects.md#deployifnotexists) zelfs wanneer **enforcementMode** is ingesteld op _DoNotEnforce_.
+
+## <a name="excluded-scopes"></a>Uitgesloten scopes
+
+Het **bereik** van de toewijzing omvat alle onderliggende resourcecontainers en onderliggende resources. Als de definitie van een onderliggende resource container of onderliggende resource niet moet zijn toegepast, kan elke container worden uitgesloten van evaluatie door **notScopes**in te stellen. Deze eigenschap is een array waarmee een of meer resourcecontainers of resources kunnen worden uitgesloten van evaluatie. **notScopes** kunnen worden toegevoegd of bijgewerkt na het maken van de oorspronkelijke toewijzing.
 
 ## <a name="policy-definition-id"></a>Beleidsdefinitie-id
 

@@ -5,18 +5,18 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 356713bd7d51be6f3550a6975a766fe1b6a0fc05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce3dbf416da11fd6863622f1c6911eecb3726461
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286214"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684482"
 ---
 # <a name="publish-an-integrated-solution"></a>Een geïntegreerde oplossing publiceren
 
-In één gebundeld aanbod combineert een geïntegreerde oplossing point-solution technologieën van softwareleveranciers met de implementatie en ondersteuning van een servicespartner. De servicespartner vermeldt de aanbieding in Microsoft AppSource of Azure Marketplace als [adviesservice.](https://docs.microsoft.com/azure/marketplace/consulting-services)
+In één gebundeld aanbod combineert een geïntegreerde oplossing point-solution technologieën van softwareleveranciers met de implementatie en ondersteuning van een servicespartner. De servicespartner vermeldt de aanbieding in Microsoft AppSource of Azure Marketplace als [adviesservice.](./consulting-services.md)
 
 Geïntegreerde oplossingen zijn gericht op het aanpakken van een specifieke klantbehoefte of -scenario. Providers beginnen met het begrijpen van de industrie uitdaging of pijnpunten. Vervolgens integreren ze twee of meer best-of-breed-technologieën om een uniforme en herhaalbare implementatie-ervaring voor klanten te creëren. Providers krijgen klanten snel aan de slag. Ze bieden één aanspreekpunt voor de klant en bieden relevante aanpassings-, consulting- en oplossingsondersteuning. Het resultaat is een geïntegreerde oplossing, inclusief technologie en diensten.
 
@@ -37,7 +37,7 @@ Voor een overzicht van het Integrated Solutions programma, bekijk [deze video.](
 * Ten minste één deelnemende partner moet over Gold Competency beschikken op een van de volgende gebieden:
 
     * Ontwikkeling van toepassingen
-    * Toepassingsintegratie
+    * Integratie van toepassingen
     * Levenscyclusbeheer van toepassingen
     * Cloudplatform
     * Data Analytics
@@ -75,7 +75,7 @@ Nadat uw nominatie is goedgekeurd, gebruikt u de gekoppelde programmabronnen om 
     Uw discussie over de integratieaanpak moet de volgende punten omvatten:
     * Integratiepunten
     * Architectuur voor de oplossing
-    * Authentication
+    * Verificatie
     * Gebruikersinterface
     * Bewaking
     * Implementatiemechanisme
@@ -97,21 +97,21 @@ Nadat uw nominatie is goedgekeurd, gebruikt u de gekoppelde programmabronnen om 
 1. Voltooi het marketingonderpand voor de Microsoft AppSource- of Azure Marketplace-vermelding, waaronder:
 
     * Een gecombineerde oplossingsnaam.
-    * Een overzicht van de geïntegreerde oplossing. Volg [best practices voor aanbiedingsaanbiedingen](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
+    * Een overzicht van de geïntegreerde oplossing. Volg [best practices voor aanbiedingsaanbiedingen](./gtm-offer-listing-best-practices.md).
     * Een pitch van één pagina voor klanten. Gebruik de [sjabloon één paginar](https://aka.ms/AA5s08a).
     * Een klantpresentatie. Gebruik de [presentatiesjabloon](https://aka.ms/AA5s7ql).
     * Een logo voor de gecombineerde oplossing.
 
 ## <a name="publish-your-integrated-solution"></a>Uw geïntegreerde oplossing publiceren
 
-Nadat u klaar bent met de technische integratie en het marketingonderpand, raadpleegt u de uitgevershandleiding voor [consultingservices voor Microsoft AppSource en Azure Marketplace.](https://docs.microsoft.com/azure/marketplace/consulting-services) Gebruik deze bron om te bepalen of uw oplossing wordt gepubliceerd in Microsoft AppSource of Azure Marketplace. Gebruik ook de handleiding om uw publicatieartefacten voor te bereiden en het publicatieproces te voltooien.
+Nadat u klaar bent met de technische integratie en het marketingonderpand, raadpleegt u de uitgevershandleiding voor [consultingservices voor Microsoft AppSource en Azure Marketplace.](./consulting-services.md) Gebruik deze bron om te bepalen of uw oplossing wordt gepubliceerd in Microsoft AppSource of Azure Marketplace. Gebruik ook de handleiding om uw publicatieartefacten voor te bereiden en het publicatieproces te voltooien.
 
 Hoewel er vijf servicetypen beschikbaar zijn voor consulting-serviceaanbiedingen, moet een geïntegreerde oplossing een proof of concept of een volledige implementatie zijn.
 
 ## <a name="go-to-market-with-your-integrated-solution"></a>Ga naar de markt met uw geïntegreerde oplossing
 
-Wanneer uw oplossing live is in Microsoft AppSource of Azure Marketplace, wilt u de bekendheid en vraag stimuleren via marketingactiviteiten. Bekijk de activiteiten in het [projectplan en](https://aka.ms/AA5qiuc)de tijdlijn . Deze bron omvat activiteiten die partners kunnen rijden binnen hun eigen teams en met elkaar. Krijg vervolgens toegang tot de [go-to-market voordelen](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) voor partners die publiceren in de markt. Alle aanbiedingen met geïntegreerde oplossingen komen in aanmerking voor voordelen op proefniveau.
+Wanneer uw oplossing live is in Microsoft AppSource of Azure Marketplace, wilt u de bekendheid en vraag stimuleren via marketingactiviteiten. Bekijk de activiteiten in het [projectplan en](https://aka.ms/AA5qiuc)de tijdlijn . Deze bron omvat activiteiten die partners kunnen rijden binnen hun eigen teams en met elkaar. Krijg vervolgens toegang tot de [go-to-market voordelen](./gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) voor partners die publiceren in de markt. Alle aanbiedingen met geïntegreerde oplossingen komen in aanmerking voor voordelen op proefniveau.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Geïntegreerde oplossingen](https://docs.microsoft.com/azure/marketplace/integrated-solutions)voor informatie over de aankoop van een geïntegreerde oplossing in de markt.
+Zie [Geïntegreerde oplossingen](./integrated-solutions.md)voor informatie over de aankoop van een geïntegreerde oplossing in de markt.

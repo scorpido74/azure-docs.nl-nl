@@ -8,12 +8,15 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: e564660b502a950021ba4e4754ff5c210dfd477f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 1b12886ee55741f62a1156269423ffadd34cd433
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241176"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683293"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Apparaten inrichten met Azure IoT Hub Device Provisioning Service
 Microsoft Azure biedt een uitgebreide set geïntegreerde openbare cloudservices om tegemoet te komen aan al uw IoT-vragen. De IoT Hub Device Provisioning Service (DPS) is een helperservice voor IoT Hub die zero-touch, just-in-time inrichten naar de juiste IoT-hub mogelijk maakt zonder menselijke tussenkomst. DPS maakt het mogelijk om miljoenen apparaten op een veilige en schaalbare manier te inrichten.
@@ -23,7 +26,7 @@ Er zijn veel inrichtingsscenario's waarin DPS een uitstekende keuze is om appara
 
 * Apparaat zonder tussenkomst van gebruiker inrichten voor een afzonderlijke IoT-oplossing zonder dat hiervoor in de fabriek (eerste installatie) hardcoding van verbindingsgegevens voor IoT-Hub nodig is
 * Load-balancing devices across multiple hubs
-* Apparaten verbinden met de IoT-oplossing van hun eigenaar op basis van verkooptransactiegegevens (multitenancy)
+* Apparaten verbinden met de IoT-oplossing van de eigenaar op basis van verkooptransactiegegevens (multitenancy)
 * Apparaten verbinden met een bepaalde IoT-oplossing, afhankelijk van het gebruiksscenario (isolatie van oplossing)
 * Apparaat met de laagst mogelijke latentie (geo-sharding) verbinden met de IoT-hub
 * Herinrichten op basis van een wijziging op het apparaat

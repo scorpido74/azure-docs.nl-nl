@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: jushiman
-ms.openlocfilehash: 410ae93ea109e5757ccb5b65d353a600574dd595
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 5855c53a73ac94985f34f229fbe5ab77067ef17d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010474"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680423"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Snelstartgids: Een schaalset voor virtuele machines maken in Azure Portal
 
@@ -40,7 +40,7 @@ Maak eerst een openbare Standaard Load Balancer met behulp van de portal. De naa
     | ---| ---|
     | Abonnement  | Selecteer uw abonnement.    |    
     | Resourcegroep | Selecteer **Nieuw maken** en typ *myVMSSResourceGroup* in het tekstvak.|
-    | Name           | *myLoadBalancer*         |
+    | Naam           | *myLoadBalancer*         |
     | Regio         | Selecteer **Oost-VS**.       |
     | Type          | Select **Openbaar**.       |
     | SKU           | Selecteer **Standaard**.       |
@@ -59,7 +59,7 @@ U kunt een schaalset implementeren met een installatiekopie van Windows Server o
 1. Typ **Schaal ingesteld** in het zoekvak. Selecteer in de resultaten onder **Marketplace** **virtuele machineschaalsets**. De pagina **Een virtuele machineschaalset maken** wordt geopend. 
 1. Zorg ervoor dat op het tabblad **Basics** onder **Projectgegevens** het juiste abonnement is geselecteerd, en kies **Nieuwe maken** om een nieuwe resourcegroep te maken. Typ *myVMSSResourceGroup* voor de naam en selecteer **OK** . 
 1. Typ *myScaleSet* als de naam voor uw schaalset.
-1. Selecteer **in Regio**een gebied dat dicht bij uw gebied ligt.
+1. Selecteer **in Regio**een regio die zich dicht bij uw gebied bevindt.
 1. Laat de standaardwaarde van **ScaleSet VM's voor** **Orchestrator**.
 1. Selecteer een marketplace-afbeelding voor **Afbeelding**. In dit voorbeeld hebben we gekozen voor *Ubuntu Server 18.04 LTS*.
 1. Voer de gewenste gebruikersnaam in en selecteer het verificatietype dat u wilt gebruiken.

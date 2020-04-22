@@ -1,22 +1,22 @@
 ---
-title: Go-To-Market Services - Aanbieding aanbieding beste praktijken | Azure
+title: Go-To-Market Services - Aanbieding aanbieding beste praktijken | Azure Marketplace
 description: Go-To-Market Services - in deze sectie worden de aanbevolen procedures voor een aanbieding beschreven
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 3cb625e613d8dbe9398e947925a8dc574a277614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95f5083b5f00834e65a8385835635588033bd977
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286248"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684584"
 ---
 # <a name="offer-listing-best-practices"></a>Best practices voor aanbiedingsvermeldingen
 
-De tabellen in deze sectie bieden suggesties voor het maken en betrekken van marktplaatsaanbiedingen. Als u uw marketingmateriaal wilt schrijven en configureren, gaat u naar de [Cloud Partner-portal.](https://cloudpartner.azure.com/#insights) 
+De tabellen in deze sectie bieden suggesties voor het maken en betrekken van marktplaatsaanbiedingen. Als u uw marketingmateriaal wilt schrijven en configureren, gaat u naar [partnercentrum.](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) 
 
 ## <a name="storefront-offer-details"></a>Storefront aanbieding details
 
@@ -25,14 +25,14 @@ De tabellen in deze sectie bieden suggesties voor het maken en betrekken van mar
 | Naam van aanbieding | Geef een sterke titel:<br> <ul> <li> Uw app-naam moet de kernwaarde voor uw klanten communiceren. </li> <li> Voeg zoekzoekwoorden toe aan uw app-titel om een hogere positie in de resultaten van zoekmachines te ontvangen. </li> </ul> Volg een vaste titelnotatie voor servicevermeldingen:<br>[Naam van de aanbieding: [Duur] [Aanbiedingstype] (bijvoorbeeld *Contoso: implementatie van 2 weken)* <br><br> Houd je aan de merkrichtlijnen:<br>Volg [microsoft-handelsmerk- en merkrichtlijnen](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) en andere relevante, productspecifieke richtlijnen wanneer u verwijst naar microsoft-handelsmerken en de namen van Microsoft-software, -producten en -services. |
 | Aanbiedingsbeschrijving | Geef een duidelijke aanbiedingsbeschrijving:<br> <ul> <li> Beschrijf duidelijk de waardepropositie van uw aanbieding in de eerste paar zinnen van uw beschrijving. </li> <li> Houd er rekening mee dat de eerste paar zinnen kunnen worden weergegeven in de resultaten van zoekmachines. </li> <li> Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die u levert. </li> <li> Gebruik zoveel mogelijk gebruik van branchespecifieke woordenschat of op voordelen gebaseerde formuleringen.</li> <li> Bovendien moeten consultingservicevermeldingen duidelijk aangeven in de professionele service die u aanbiedt. </li></ul> Kerncomponenten van uw waardepropositie moeten de volgende informatie bevatten:<ul><li>Beschrijving van het product.</li><li>Type gebruiker dat profiteert van het product.</li><li>Klant behoefte of pijn die het product adressen.</li></ul> |
 
-De tabellen in deze sectie bieden suggesties voor het maken en betrekken van marktplaatsaanbiedingen. Als u uw marketingmateriaal wilt schrijven en configureren, gaat u naar de [Cloud Partner-portal.](https://cloudpartner.azure.com/#insights) 
+De tabellen in deze sectie bieden suggesties voor het maken en betrekken van marktplaatsaanbiedingen. Als u uw marketingmateriaal wilt schrijven en configureren, gaat u naar het [Partnercentrum.](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) 
 
 ## <a name="storefront-listing-details"></a>Details van winkelaanbiedingen
 
 | Storefront-instelling | Best practice |
 |:--- |:--- |  
-| Industrieën: alleen AppSource-apps en adviesservices | Selecteer bedrijfstakken als uw aanbod voldoet aan branchespecifieke behoeften: <ul><li> Roep branchespecifieke mogelijkheden uit in uw aanbiedingsbeschrijving.</li> </ul> **Opmerking:** het maximum aantal opties varieert per aanbiedingstype en wordt aangegeven in de [Cloud Partner-portal.](https://cloudpartner.azure.com/#insights) |
-| Categorieën | Selecteer categorieën die het beste aansluiten bij uw aanbieding:<br> <ul> <li> Kies de categorieën zorgvuldig, omdat klanten ze gebruiken om te zoeken naar relevante apps. </li> <li> Zorg ervoor dat u in de aanbiedingsbeschrijving roept hoe uw aanbieding categoriespecifieke behoeften ondersteunt. </li> </ul> **Opmerking:** het maximum aantal opties varieert per aanbiedingstype en wordt aangegeven in de [Cloud Partner-portal.](https://cloudpartner.azure.com/#insights) |
+| Industrieën: alleen AppSource-apps en adviesservices | Selecteer bedrijfstakken als uw aanbod voldoet aan branchespecifieke behoeften: <ul><li> Roep branchespecifieke mogelijkheden uit in uw aanbiedingsbeschrijving.</li> </ul> **Opmerking**: Het maximum aantal opties varieert per aanbiedingstype en wordt aangegeven in [partnercentrum.](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) |
+| Categorieën | Selecteer categorieën die het beste aansluiten bij uw aanbieding:<br> <ul> <li> Kies de categorieën zorgvuldig, omdat klanten ze gebruiken om te zoeken naar relevante apps. </li> <li> Zorg ervoor dat u in de aanbiedingsbeschrijving roept hoe uw aanbieding categoriespecifieke behoeften ondersteunt. </li> </ul> **Opmerking**: Het maximum aantal opties varieert per aanbiedingstype en wordt aangegeven in [partnercentrum.](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) |
 | Producten waarmee uw app werkt (3 max.): alleen AppSource-apps | Vermeld aanvullende producten en technologieën die uw oplossing gebruikt of uitbreidt. Bijvoorbeeld Azure IoT Hub of Azure Machine Learning. |
 | Zoekzoekwoorden (3 max.) | Zoekzoekwoorden kunnen zakelijke gebruikers helpen uw aanbieding te vinden wanneer ze zoeken <ul> <li> in de Azure Marketplace </li> <li> op AppSource </li> <li> met behulp van zoekmachines </li> </ul> Als je aanbieding in deze zoekopdrachten wilt weergeven, moet je het volgende doen: <ul> <li> Identificeer de drie belangrijkste zoekwoorden voor uw aanbieding; </li> <li> de zoekzoekwoorden opnemen in uw aanbiedingsoverzicht en -beschrijving; </li> <li> lijst van de zoekwoorden hier. </li> </ul> |
 
@@ -89,12 +89,12 @@ Wanneer u een koppeling maakt van de AppSource- of Azure Marketplace-badge op uw
 
 De volgende URL van het voorbeeld bevat beide voorgaande queryparameters:`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
-Door de parameters toe te voegen aan uw AppSource-URL, u de effectiviteit van uw campagne bekijken in het analysedashboard in de [Cloud Partner-portal.](https://cloudpartner.azure.com/#insights)
+Door de parameters toe te voegen aan uw AppSource-URL, u de effectiviteit van uw campagne bekijken in het analysedashboard in [partnercentrum.](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over uw [commerciële marktplaatsvoordelen.](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)
+Meer informatie over uw [commerciële marktplaatsvoordelen.](./gtm-your-marketplace-benefits.md)
 
-Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com) om uw aanbieding te maken en te configureren.
+Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken en te configureren.
 
 ---

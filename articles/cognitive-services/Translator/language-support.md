@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77206120"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684829"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Ondersteuning voor taal en regio voor de Translator Text API
 
@@ -63,6 +63,7 @@ De Translator Text API ondersteunt de volgende talen voor tekst-naar-tekstvertal
 |Frans|    `fr`    |   Neurale|
 |Duits|    `de`    |   Neurale|
 |Grieks| `el`    |   Neurale|
+|Gujarati|  `gu`    |   Neurale|
 |Haïtiaans|    `ht`        |Statistische|
 |Hebreeuws |`he`   |Neurale
 |Hindi| `hi`    |   Neurale|
@@ -85,6 +86,7 @@ De Translator Text API ondersteunt de volgende talen voor tekst-naar-tekstvertal
 |Malajalam| `ml` | Neurale
 |Maltees|   `mt`    |   Statistische|
 |Maori| `mi`  | Neurale|
+|Marathi| `mr`  | Neurale|
 |Norwegian| `nb`    |   Neurale|
 |Perzisch|   `fa`    |   Neurale|
 |Pools|    `pl`    |   Neurale|

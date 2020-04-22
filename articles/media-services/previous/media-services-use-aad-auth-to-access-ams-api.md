@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8b38b38789edfd5a0a30fdd589849bfa345eaac9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77157853"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682051"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Toegang tot de API van Azure Media Services met Azure Active Directory-verificatie  
 
@@ -79,7 +79,7 @@ In het voorgaande diagram geven de getallen de stroom van de aanvragen in chrono
        De tenantgegevens kunnen worden opgehaald uit de Azure-portal. Plaats de cursor op de naam van de aangemelde gebruiker in de rechterbovenhoek.
    * Media Services resource URI. 
 
-       Deze URI is hetzelfde voor Media Services-accounts die zich https://rest.media.azure.net)in dezelfde Azure-omgeving bevinden (bijvoorbeeld .
+       Deze URI is hetzelfde voor Media Services-accounts die zich in\/dezelfde Azure-omgeving bevinden (bijvoorbeeld https: /rest.media.azure.net).
 
    * Media Services (native) application client ID.
    * Media Services (native) applicatie redirect URI.
@@ -121,7 +121,7 @@ In het voorgaande cijfer geven de getallen de stroom van de aanvragen in chronol
        De tenantgegevens kunnen worden opgehaald uit de Azure-portal. Plaats de cursor op de naam van de aangemelde gebruiker in de rechterbovenhoek.
    * Media Services resource URI. 
 
-       Deze URI is hetzelfde voor Media Services-accounts die zich https://rest.media.azure.net)in dezelfde Azure-omgeving bevinden (bijvoorbeeld .
+       Deze URI is hetzelfde voor Media Services-accounts die zich in\/dezelfde Azure-omgeving bevinden (bijvoorbeeld https: /rest.media.azure.net).
 
    * Resource URI voor REST Media Services.
 

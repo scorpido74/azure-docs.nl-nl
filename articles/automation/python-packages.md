@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: 05d892edf20cda228bc566b30b0b693ea7c4a184
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f52dfd92d430abffe5857d231898dd4b0e7745e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75417649"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679926"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Python 2-pakketten beheren in Azure Automation
 
@@ -22,17 +22,17 @@ Selecteer **python 2-pakketten** in uw automatiseringsaccount onder **Gedeelde b
 
 ![Python-pakket toevoegen](media/python-packages/add-python-package.png)
 
-Selecteer op de pagina **Python 2-pakket toevoegen** een lokaal pakket dat u wilt uploaden. Het pakket kan `.whl` een `.tar.gz` bestand of bestand zijn. Klik als u dit hebt geselecteerd op **OK** om het pakket te uploaden.
+Selecteer op de pagina Python 2-pakket toevoegen een lokaal pakket dat u wilt uploaden. Het pakket kan een **.whl** of **.tar.gz** bestand zijn. Wanneer het pakket is geselecteerd, klikt u op **OK** om het te uploaden.
 
 ![Python-pakket toevoegen](media/python-packages/upload-package.png)
 
-Zodra een pakket is geïmporteerd, staat het op de pagina **Python 2-pakketten** in uw automatiseringsaccount. Als u een pakket wilt verwijderen, selecteert u het pakket en kiest **u Verwijderen** op de pakketpagina.
+Zodra een pakket is geïmporteerd, wordt het vermeld op de pagina Python 2-pakketten in uw Automatiseringsaccount. Als u een pakket wilt verwijderen, selecteert u het pakket en klikt u op **Verwijderen**.
 
 ![Pakketlijst](media/python-packages/package-list.png)
 
 ## <a name="import-packages-with-dependencies"></a>Pakketten importeren met afhankelijkheden
 
-Azure-automatisering lost geen afhankelijkheden op voor python-pakketten tijdens het importproces. Er zijn twee manieren om een pakket te importeren met al zijn afhankelijkheden. Slechts één van de volgende stappen hoeft te worden gebruikt om de pakketten in uw automatiseringsaccount te importeren.
+Azure-automatisering lost geen afhankelijkheden op voor python-pakketten tijdens het importproces. Er zijn twee manieren om een pakket te importeren met al zijn afhankelijkheden. Slechts één van de volgende stappen moet worden gebruikt om de pakketten in uw Automatiseringsaccount te importeren.
 
 ### <a name="manually-download"></a>Handmatig downloaden
 
@@ -46,7 +46,7 @@ Zodra de pakketten zijn gedownload, u ze importeren in uw automatiseringsaccount
 
 ### <a name="runbook"></a>Runbook
 
-Importeer het python-runbook [Import Python 2-pakketten uit pypi in Azure Automation-account](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) vanuit de galerie in uw automatiseringsaccount. Controleer of de runinstellingen zijn ingesteld op **Azure** en start de runbook met de parameters. De runbook vereist een Run As Account voor de Automation Account te werken. Zorg ervoor dat u voor elke parameter deze start met de schakelaar zoals te zien in de volgende lijst en afbeelding:
+Importeer het python-runbook [Import Python 2-pakketten uit pypi in Azure Automation-account](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) vanuit de galerie in uw Automatiseringsaccount. Controleer of de runinstellingen zijn ingesteld op **Azure** en start de runbook met de parameters. De runbook vereist een Run As-account om het automatiseringsaccount te laten werken. Zorg ervoor dat u voor elke parameter deze start met de schakelaar zoals te zien in de volgende lijst en afbeelding:
 
 * -s \<abonnementId\>
 * -g \<resourceGroep\>
@@ -55,13 +55,13 @@ Importeer het python-runbook [Import Python 2-pakketten uit pypi in Azure Automa
 
 ![Pakketlijst](media/python-packages/import-python-runbook.png)
 
-Met de runbook u opgeven welk `Azure` pakket u wilt downloaden, bijvoorbeeld (de vierde parameter) en downloadt u alle Azure-modules en alle afhankelijkheden, wat ongeveer 105 is.
+Met het runbook u opgeven welk pakket u wilt downloaden. Als u bijvoorbeeld `Azure` de parameter gebruikt, worden alle Azure-modules en alle afhankelijkheden (ongeveer 105) gedownload.
 
-Zodra het runbook is voltooid, u de pagina **Python 2-pakketten** onder **Gedeelde bronnen** in uw automatiseringsaccount controleren om te controleren of het pakket correct is geïmporteerd.
+Zodra het runbook is voltooid, u de **Python 2-pakketten** onder **Gedeelde resources** in uw automatiseringsaccount controleren om te controleren of het pakket correct is geïmporteerd.
 
 ## <a name="use-a-package-in-a-runbook"></a>Een pakket gebruiken in een runbook
 
-Zodra u een pakket hebt geïmporteerd, u het nu gebruiken in een runbook. In het volgende voorbeeld wordt het [hulpprogrammapakket Azure Automation gebruikt.](https://github.com/azureautomation/azure_automation_utility) Dit pakket maakt het eenvoudiger om Python te gebruiken met Azure Automation. Als u het pakket wilt gebruiken, volgt u de instructies in de `from azure_automation_utility import get_automation_runas_credential` GitHub-opslagplaats en voegt u deze toe aan het runbook door bijvoorbeeld de functie te importeren voor het ophalen van het RunAs-account.
+Als een pakket wordt geïmporteerd, u het gebruiken in een runbook. In het volgende voorbeeld wordt het [hulpprogrammapakket Azure Automation gebruikt.](https://github.com/azureautomation/azure_automation_utility) Dit pakket maakt het eenvoudiger om Python te gebruiken met Azure Automation. Als u het pakket wilt gebruiken, volgt u de instructies in de GitHub-opslagplaats en voegt u het toe aan het runbook. U bijvoorbeeld `from azure_automation_utility import get_automation_runas_credential` de functie importeren voor het ophalen van het run As-account.
 
 ```python
 import azure.mgmt.resource
@@ -89,4 +89,4 @@ Als u uw Python 2-runbooks offline wilt ontwikkelen en testen, u de module [Azur
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Mijn eerste Python 2-runbook om](automation-first-runbook-textual-python2.md) aan de slag te gaan met Python 2 runbooks
+Zie [Mijn eerste Python 2-runbook om](automation-first-runbook-textual-python2.md)aan de slag te gaan met Python 2 runbooks.

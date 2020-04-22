@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 457979837b1c56eb85fc19c9a1fce5dc7df8c23b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b802a9c9df7e7f0c44ea66ee0061efb517b80050
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481994"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682758"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
@@ -81,7 +81,9 @@ In de volgende voorbeeldsjabloon wordt uitgelegd hoe u een werkruimte met drie i
 
 * Hoge vertrouwelijkheidsinstellingen voor de werkruimte inschakelen
 * Versleuteling inschakelen voor de werkruimte
-* Gebruikt een bestaande Azure Key Vault
+* Gebruikt een bestaande Azure Key Vault om door de klant beheerde sleutels op te halen
+
+Zie [Versleuteling in rust](concept-enterprise-security.md#encryption-at-rest)voor meer informatie.
 
 ```json
 {
@@ -121,7 +123,7 @@ In de volgende voorbeeldsjabloon wordt uitgelegd hoe u een werkruimte met drie i
         "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
       }
     },
-    "hbi_workspace":{
+    "high_confidentiality":{
       "type": "string",
       "defaultValue": "false",
       "allowedValues": [
@@ -256,27 +258,31 @@ In de volgende voorbeeldsjabloon wordt uitgelegd hoe u een werkruimte met drie i
                     "keyIdentifier": "[parameters('resource_cmk_uri')]"
                   }
             },
-        "hbiWorkspace": "[parameters('hbi_workspace')]"
+        "hbiWorkspace": "[parameters('high_confidentiality')]"
       }
     }
   ]
 }
 ```
 
-Als u de id van de sleutelkluis en de sleuteluri wilt krijgen die deze sjabloon nodig heeft, u de Azure CLI gebruiken. De volgende opdracht is een voorbeeld van het gebruik van de Azure CLI om de Key Vault-bron-ID en URI op te halen:
+Als u de id van de sleutelkluis en de sleuteluri wilt krijgen die deze sjabloon nodig heeft, u de Azure CLI gebruiken. Met de volgende opdracht wordt de Key Vault ID opgevolgd:
 
 ```azurecli-interactive
-az keyvault show --name mykeyvault --resource-group myresourcegroup --query "[id, properties.vaultUri]"
+az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
 ```
 
-Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met de volgende tekst. De eerste waarde is de ID en de tweede is de URI:
+Met deze opdracht wordt `"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"`een waarde geretourneerd die vergelijkbaar is met .
 
-```text
-[
-  "/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault",
-  "https://mykeyvault.vault.azure.net/"
-]
+Als u de URI voor de door de klant beheerde sleutel wilt krijgen, gebruikt u de volgende opdracht:
+
+```azurecli-interactive
+az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
 ```
+
+Met deze opdracht wordt `"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"`een waarde geretourneerd die vergelijkbaar is met .
+
+> [!IMPORTANT]
+> Zodra een werkruimte is gemaakt, u de instellingen voor vertrouwelijke gegevens, versleuteling, sleutelkluis-ID of sleutel-id's niet meer wijzigen. Als u deze waarden wilt wijzigen, moet u een nieuwe werkruimte maken met de nieuwe waarden.
 
 ## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 

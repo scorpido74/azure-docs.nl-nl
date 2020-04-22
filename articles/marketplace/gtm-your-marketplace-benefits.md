@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market Services - uw commerciële marktplaats profiteert | Azure
+title: Go-To-Market Services - uw commerciële marktplaats profiteert | Azure Marketplace
 description: Go-To-Market Services - Microsoft-bronnen die uitgevers kunnen gebruiken, worden in deze sectie beschreven.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/08/2020
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: d34fb989e7f656df93faae63ef4dc42ed0fe5abe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5c8b2f5cb03c7e1777137100547fbbbaf107f0b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286231"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684538"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw commerciële marktplaats profiteert
 
@@ -44,7 +44,7 @@ Uw stappen om aan de slag te gaan zijn eenvoudig:
 2. Het team neemt contact op met de "eigenaar" of "primair contact" per marktplaatsaanbieding. Het is een aanbevolen gewoonte om een persoon of een alias in te info@company.com voeren die u regelmatig controleert: berichten die naar aliassen worden verzonden, zoals vaak verdwalen.
 
 >[!Note]
->Als uw aanbieding al meer dan vier weken live is en u nog geen bericht hebt ontvangen, controleer dan binnen uw organisatie wie de eigenaar is van de aanbieding in kwestie, door te kijken in Cloud Partner Portal of in Partner Center. Zij moeten de communicatie en de volgende stappen hebben. <br> <br> Als u de eigenaar niet bepalen of als de eigenaar uw https://aka.ms/marketplacepublishersupportbedrijf heeft verlaten, u een ondersteuningsticket verhogen bij.
+>Als uw aanbieding al meer dan vier weken live is en u nog geen bericht hebt ontvangen, controleer dan binnen uw organisatie wie de eigenaar is van de aanbieding in kwestie, door in Partner Center te kijken. Zij moeten de communicatie en de volgende stappen hebben. <br> <br> Als u de eigenaar niet bepalen of als de eigenaar uw https://aka.ms/marketplacepublishersupportbedrijf heeft verlaten, u een ondersteuningsticket verhogen bij.
 
 Het bereik van de activiteiten die voor u beschikbaar zijn, breidt zich uit naarmate u uw aanbod op de markt uitbreidt. Alle vermeldingen ontvangen een basisniveau van optimalisatieaanbevelingen en promotie als onderdeel van een self-serve e-mail met bronnen en aanbevolen procedures.
 
@@ -96,7 +96,7 @@ Microsoft behoudt zich het recht voor om Marketplace Rewards-voordelen in te tre
 * illegale activiteiten uitoefenen via hun marktplaatsvermelding.
 * worden van de commerciële marktplaats verwijderd. 
 * gebruik hun aanbod om marketing of andere inhoud weer te geven die in strijd is met auteursrecht- of handelsmerkwetten.
-* het beleid van het [Azure-sponsorprogramma](https://azure.microsoft.com/offers/ms-azr-0036p/)schenden, inclusief, maar niet beperkt tot, het gebruik van de Azure-sponsorfinanciering voor hun eigen interne activiteiten of bitcoinmining. 
+* het beleid van het [Azure-sponsorprogramma](https://azure.microsoft.com/offers/ms-azr-0036p/)schenden, inclusief, maar niet beperkt tot, het gebruik van de Azure-sponsorfinanciering voor hun eigen interne activiteiten of Bitcoin-mining. 
 
 ### <a name="offer-availability"></a>Beschikbaarheid van aanbiedingen
 
@@ -106,9 +106,7 @@ Transacties waarvan bewezen is dat ze frauduleus zijn, tellen niet mee voor de [
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u uw aanbieding hebt gemaakt in [Cloud Partner Portal,](https://cloudpartner.azure.com)meldt u zich aan om uw aanbieding te maken of te configureren.
-
-Als u uw aanbieding hebt gemaakt in [het Partnercentrum,](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)meldt u zich aan om uw aanbieding te maken of te configureren.
+Als u uw aanbieding hebt gemaakt in [het Partnercentrum,](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)meldt u zich aan om uw aanbieding te maken of te configureren.
 
 Bekijk de [zelfbedieningsbronnen die voor u beschikbaar zijn.](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)
 

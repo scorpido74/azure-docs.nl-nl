@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 25eb93a01c59225b6d9e64db5d08b954adb4f8ab
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 6325d5555b01373b148dce69731ec64896d6e1fd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424067"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680495"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OpenROWSET gebruiken met SQL on-demand (voorbeeld)
 
@@ -26,7 +26,7 @@ OPENROWSET wordt momenteel niet ondersteund in SQL-groep.
 
 ## <a name="syntax"></a>Syntaxis
 
-```
+```syntaxsql
 --OPENROWSET syntax for reading Parquet files
 OPENROWSET  
 ( { BULK 'unstructured_data_path' , 
@@ -60,36 +60,39 @@ U hebt twee opties voor invoerbestanden die de doelgegevens bevatten voor query'
 
 - 'PARQUET' - Binair bestand in Parketformaat 
 
-'unstructured_data_path'
+**'unstructured_data_path'**
 
-De unstructured_data_path die een pad naar de gegevens<prefix>vaststelt, is als volgt gestructureerd: " ://<storage_account_path>/<storage_path>" 
+De unstructured_data_path die een pad naar de gegevens vaststelt, is als volgt gestructureerd:  
+'\<voorvoegsel\<>://\<storage_account_path>/ storage_path>"
  
  
  Hieronder vindt u de relevante opslagaccountpaden die worden gekoppeld aan uw specifieke externe gegevensbron. 
 
-| Externe gegevensbron       | Voorvoegsel | Pad met opslagaccount                                |
-| -------------------------- | ------ | --------------------------------------------------- |
-| Azure Blob Storage         | https  | <storage_account>.blob.core.windows.net             |
-| Azure Data Lake Store Gen1 | https  | <storage_account>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Store Gen2 | https  | <storage_account>.dfs.core.windows.net              |
+| Externe gegevensbron       | Voorvoegsel | Pad met opslagaccount                                 |
+| -------------------------- | ------ | ---------------------------------------------------- |
+| Azure Blob Storage         | https  | \<storage_account>.blob.core.windows.net             |
+| Azure Data Lake Store Gen1 | https  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Store Gen2 | https  | \<storage_account>.dfs.core.windows.net              |
+||||
 
- '<storage_path>' 
+'storage_path\<>'
 
  Hiermee geeft u een pad op in uw opslag dat verwijst naar de map of het bestand dat u wilt lezen. Als het pad naar een container of map verwijst, worden alle bestanden uit die specifieke container of map gelezen. Bestanden in submappen worden niet opgenomen. 
  
  U jokertekens gebruiken om meerdere bestanden of mappen te targeten. Het gebruik van meerdere niet-opeenvolgende wildcards is toegestaan.
-Hieronder vindt u een voorbeeld dat alle *csv-bestanden* leest die beginnenhttps://sqlondemandstorage.blob.core.windows.net/csv/populationmet de *populatie* uit alle mappen die beginnen met */csv/populatie*: '*/populatie*.csv'.
+Hieronder is een voorbeeld dat alle *csv-bestanden* leest die beginnen met *de bevolking* uit alle mappen te beginnen met / csv */ bevolking:*  
+`https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 Als u de unstructured_data_path als map opgeeft, haalt een SQL on-demand query bestanden uit die map op. 
 
 > [!NOTE]
 > In tegenstelling tot Hadoop en PolyBase retourneert SQL on-demand geen submappen. In tegenstelling tot Hadoop en PloyBase retourneert SQL on-demand bestanden waarvoor de bestandsnaam begint met een onderstreping (_) of een periode (.).
 
-In het onderstaande voorbeeld,https://mystorageaccount.dfs.core.windows.net/webdata/als de unstructured_data_path=' ', een SQL on-demand query zal terug rijen van mydata.txt en _hidden.txt. Het zal mydata2.txt en mydata3.txt niet retourneren omdat ze zich in een submap bevinden.
+In het onderstaande voorbeeld,`https://mystorageaccount.dfs.core.windows.net/webdata/`als de unstructured_data_path= , een SQL on-demand query zal rijen terug van mydata.txt en _hidden.txt. Het zal mydata2.txt en mydata3.txt niet retourneren omdat ze zich in een submap bevinden.
 
 ![Recursieve gegevens voor externe tabellen](./media/develop-openrowset/folder-traversal.png)
 
-[MET ( {'column_name' 'column_type" [ 'column_ordinal'] }) ]
+`[WITH ( {'column_name' 'column_type' [ 'column_ordinal'] }) ]`
 
 Met de WITH-component u kolommen opgeven die u uit bestanden wilt lezen.
 
@@ -113,7 +116,8 @@ WITH (
     --[population] bigint
 )
 ```
-<bulk_options>
+
+**\<bulk_options>**
 
 FIELDTERMINATOR ='field_terminator'
 

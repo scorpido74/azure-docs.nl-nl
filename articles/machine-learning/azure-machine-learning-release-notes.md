@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 9ed17ed0825e0011d1402efc45155755a1ecbadf
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 2739e960c4bc6d35ac9ad757e80ed620e5dc04f8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459165"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684652"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning release notes Azure Machine Learning release notes Azure Machine Learning release notes Azure Machine
 
@@ -825,7 +825,7 @@ Het tabblad Experiment in de [nieuwe werkruimteportal](https://ml.azure.com) is 
 ### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Azure Machine Learning SDK voor Python v1.0.62
 
 + **Nieuwe functies**
-  + Introduceerde de `timeseries` eigenschap op TabularDataset. Deze eigenschap maakt het eenvoudig om tijdstempelfiltering op gegevens een TabularDataset, zoals het nemen van alle gegevens tussen een bereik van de tijd of de meest recente gegevens. Ga voor meer `timeseries` informatie over deze eigenschap https://aka.ms/azureml-data op TabularDataset naar voor documentatie of https://aka.ms/azureml-tsd-notebook voor een voorbeeldnotitieblok.
+  + Introduceerde de `timeseries` eigenschap op TabularDataset. Deze eigenschap maakt het eenvoudig om tijdstempelfiltering op gegevens een TabularDataset, zoals het nemen van alle gegevens tussen een bereik van de tijd of de meest recente gegevens. Ga voor meer `timeseries` informatie over deze eigenschap https://aka.ms/azureml-data op TabularDataset naar voor documentatie of https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb voor een voorbeeldnotitieblok.
   + Ingeschakelde training met TabularDataset en FileDataset. Ga https://aka.ms/dataset-tutorial naar een voorbeeldnotebook.
 
   + **azureml-train-core**
@@ -1339,7 +1339,7 @@ We hebben een wijziging teruggedraaid die de prestaties verbeterde, omdat deze p
 + **Voorbeeldfuncties**
     + Integratie met [MLflow](https://mlflow.org) 1.0.0 tracking via azureml-mlflow pakket[(voorbeeld notebooks).](https://aka.ms/azureml-mlflow-examples)
     + Dien Jupyter notebook als een run. [API-naslagdocumentatie](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
-    + Openbare preview van [Data Drift Detector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) via azureml-contrib-datadrift pakket[(voorbeeld notebooks).](https://aka.ms/azureml-datadrift-example) Data Drift is een van de belangrijkste redenen waarom modelnauwkeurigheid na verloop van tijd degradeert. Het gebeurt wanneer gegevens die worden aangeboden om te modelleren in de productie is anders dan de gegevens die het model is opgeleid. AML Data Drift detector helpt de klant om gegevens drift te controleren en stuurt waarschuwing wanneer drift wordt gedetecteerd.
+    + Openbare preview van [Data Drift Detector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) via azureml-contrib-datadrift pakket[(voorbeeld notebooks).](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/monitor-models/data-drift) Data Drift is een van de belangrijkste redenen waarom modelnauwkeurigheid na verloop van tijd degradeert. Het gebeurt wanneer gegevens die worden aangeboden om te modelleren in de productie is anders dan de gegevens die het model is opgeleid. AML Data Drift detector helpt de klant om gegevens drift te controleren en stuurt waarschuwing wanneer drift wordt gedetecteerd.
 
 + **Wijzigingen die fouten veroorzaken**
 

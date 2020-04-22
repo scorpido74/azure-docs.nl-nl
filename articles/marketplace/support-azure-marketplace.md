@@ -1,20 +1,21 @@
 ---
-title: Steun voor de commerciële markt | Azure
+title: Steun voor de commerciële markt | Azure Marketplace
 description: Ondersteuningsinformatie en koppelingen voor Azure Marketplace en AppSource
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 3/19/2020
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: b2dba23bdf07233a9945086fba2274602cb2dcf1
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 2b73fee33692b65770caeea651c12e9780dba2c4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252231"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681389"
 ---
-# <a name="support-for-the-marketplace"></a>Ondersteuning voor de Marketplace  
+# <a name="support-for-the-marketplace"></a>Ondersteuning voor de Marketplace
+
 Hier is een lijst met ondersteuningsopties voor de Marketplace.  
 
 Daarnaast u veel van uw vragen beantwoord krijgen in het [Marketplace-kanaal van C+AI Community Forum.](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)  
@@ -23,11 +24,11 @@ Daarnaast u veel van uw vragen beantwoord krijgen in het [Marketplace-kanaal van
 
 Open een ticket met microsoft [marketplace publisher support](https://aka.ms/marketplacepublishersupport) voor problemen met onboarding en aan de slag.
 
-## <a name="partner-center-or-cloud-partner-portal"></a>Partnercentrum of Cloud Partner Portal  
+## <a name="partner-center"></a>Partnercentrum   
 
 | Ondersteuningskanaal | Beschrijving | Beschikbaarheid |  
 |:--- |:--- |:--- |  
-| Ga voor hulp naar de pagina Een incident maken op [Marketplace Support](https://aka.ms/marketplacepublishersupport)</li> </ul> | Ondersteuning voor Partner Center of Cloud Partner Portal. | Ondersteuning is 24x5. |  
+| Ga voor hulp naar de pagina Een incident maken op [Marketplace Support](https://aka.ms/marketplacepublishersupport)</li> </ul> | Ondersteuning voor partnercentrum. | Ondersteuning is 24x5. |  
 
 ## <a name="technical"></a>Technisch  
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 05698596f966f879da1affc58af0122d08d519ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7db3f6f50745526876ef2ca6e3253f1931420f0f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256235"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683252"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Snelstart: een BACPAC-bestand importeren in een database in Azure SQL-database
 
@@ -88,7 +88,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!NOTE]
 > De machines die import-/exportaanvragen verwerken die via portal of Powershell worden ingediend, moeten het bacpac-bestand en tijdelijke bestanden die worden gegenereerd door Data-Tier Application Framework (DacFX) opslaan. De vereiste schijfruimte varieert aanzienlijk tussen db's met dezelfde grootte en kan tot 3 keer de databasegrootte in beslag nemen. Machines waarop de import/exportaanvraag wordt uitgevoerd, hebben slechts 450 GB lokale schijfruimte. Als gevolg hiervan kunnen sommige aanvragen mislukken met de fout 'Er is niet genoeg ruimte op de schijf'. In dit geval moet sqlpackage.exe op een machine met voldoende lokale schijfruimte worden uitgevoerd. Wanneer u databases van meer dan 150 GB importeert/exporteert, gebruikt u SqlPackage om dit probleem te voorkomen.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > De PowerShell Azure Resource Manager (RM)-module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkelingen zijn voor de Az.Sql-module. De AzureRM-module blijft bugfixes ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn nagenoeg identiek. Zie De nieuwe Azure [PowerShell Az-module introduceren](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit ervan.
@@ -144,7 +144,8 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 ## <a name="limitations"></a>Beperkingen
 
-Importeren in een database in een elastische groep wordt niet ondersteund. U gegevens importeren in één database en de database vervolgens verplaatsen naar een elastische groep.
+- Importeren in een database in een elastische groep wordt niet ondersteund. U gegevens importeren in één database en de database vervolgens verplaatsen naar een elastische groep.
+- Exportservice importeren werkt niet wanneer Toegang tot Azure-services toestaan is ingesteld op UIT. U het probleem echter oplossen door sqlpackage.exe handmatig uit te voeren vanaf een Azure VM of de export rechtstreeks in uw code uit te voeren met behulp van de DACFx API.
 
 ## <a name="import-using-wizards"></a>Importeren met wizards
 

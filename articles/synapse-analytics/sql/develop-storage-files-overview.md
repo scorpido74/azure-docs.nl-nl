@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8e6fd4955d6d68764895619efd968a957bcb5184
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 2126996620d6f891dde4e7530c057d2c7f31a996
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460593"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676677"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Queryopslagbestanden met SQL on-demand (preview)-bronnen binnen Synapse SQL
 
@@ -62,7 +62,7 @@ Raadpleeg [querymappen en meerdere bestanden](query-folders-multiple-csv-files.m
 
 Als u parketbrongegevens wilt opvragen, gebruikt u FORMAT = 'PARQUET'
 
-```sql
+```syntaxsql
 OPENROWSET
 (
     { BULK 'data_file' ,
@@ -121,7 +121,6 @@ Door de MET-component weg te laten uit de instructie OPENROWSET, u de service in
 ```sql
 OPENROWSET(
 BULK N'path_to_file(s)', FORMAT='PARQUET');
-
 ```
 
 ### <a name="filename-function"></a>Bestandsnaam, functie
@@ -163,7 +162,7 @@ Als u toegang wilt krijgen tot geneste elementen uit een geneste kolom, zoals St
 
 Het voorbeeld van het syntaxisfragment is als volgt:
 
-```sql
+```syntaxsql
     OPENROWSET
     (   BULK 'unstructured_data_path' ,
         FORMAT = 'PARQUET' )
@@ -197,7 +196,7 @@ Als u niet-scalaire elementen uit een herhaalde kolom wilt openen, gebruikt u de
 
 Zie syntaxisfragment hieronder:
 
-```sql
+```syntaxsql
     SELECT
        { JSON_VALUE (column_name, path_to_sub_element), }
        { JSON_QUERY (column_name [ , path_to_sub_element ]), )
@@ -215,9 +214,9 @@ U queryvoorbeelden vinden voor toegang tot elementen uit herhaalde kolommen in h
 Zie de volgende artikelen voor meer informatie over het opvragen van verschillende bestandstypen en het maken en gebruiken van weergaven:
 
 - [Query enkel CSV-bestand](query-single-csv-file.md)
-- [Parketbestanden voor query's](query-parquet-files.md)
-- [JSON-bestanden opvragen](query-json-files.md)
-- [Geneste querygenese](query-parquet-nested-types.md)
+- [Query uitvoeren op Parquet-bestanden](query-parquet-files.md)
+- [Query uitvoeren op JSON-bestanden](query-json-files.md)
+- [Query uitvoeren op met Parquet geneste typen](query-parquet-nested-types.md)
 - [Querymappen en meerdere CSV-bestanden](query-folders-multiple-csv-files.md)
 - [Bestandsmetagegevens gebruiken in query's](query-specific-files.md)
 - [Weergaven maken en gebruiken](create-use-views.md)

@@ -7,25 +7,23 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/24/2020
-ms.openlocfilehash: 888f24e13ce67c878592068927383dd8cbfefa60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 4f2e8b2a691a6b17b5ed075745d556db4e330535
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623093"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682468"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark gebruiken om Apache HBase-gegevens te lezen en schrijven
 
-Apache HBase wordt meestal opgevraagd met zijn API op laag niveau (scans, krijgt en zet) of met een SQL-syntaxis met Apache Phoenix. Apache biedt ook de Apache Spark HBase Connector, wat een handig en performant alternatief is voor het opvragen en wijzigen van gegevens die door HBase zijn opgeslagen.
+Apache HBase wordt meestal opgevraagd met zijn API op laag niveau (scans, krijgt en zet) of met een SQL-syntaxis met Apache Phoenix. Apache levert ook de Apache Spark HBase Connector. De connector is een handig en performant alternatief voor het opvragen en wijzigen van gegevens die door HBase zijn opgeslagen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Twee afzonderlijke HDInsight-clusters die in hetzelfde [virtuele netwerk zijn](./hdinsight-plan-virtual-network-deployment.md)geïmplementeerd. Een HBase, en een Spark met ten minste Spark 2.1 (HDInsight 3.6) geïnstalleerd. Zie [Clusters op basis van Linux maken in HDInsight met behulp van de Azure-portal](hdinsight-hadoop-create-linux-clusters-portal.md)voor meer informatie.
 
-* Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
-
-* Het [URI-schema](hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit schema wordt wasb:// voor Azure Blob Storage, abfs:// voor Azure Data Lake Storage Gen2 of adl:// voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Blob `wasbs://`Storage, is de URI .  Zie ook, [veilige overdracht](../storage/common/storage-require-secure-transfer.md).
+* Het URI-schema voor de primaire opslag van uw clusters. Dit schema wordt wasb:// voor `abfs://` Azure Blob Storage, voor Azure Data Lake Storage Gen2 of adl:// voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Blob `wasbs://`Storage, is de URI .  Zie ook, [veilige overdracht](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="overall-process"></a>Algemeen proces
 
@@ -152,7 +150,7 @@ In deze stap definieert u een catalogusobject dat het schema van Apache Spark na
     |}""".stripMargin
     ```
 
-    De code doet het volgende:  
+    De code doet de volgende handelingen:  
 
      a. Definieer een catalogusschema voor de `Contacts`HBase-tabel met de naam .  
      b. Identificeer de rijsleutel als `key`en breng de kolomnamen die in Spark worden gebruikt in kaart aan de kolomfamilie, kolomnaam en kolomtype zoals die in HBase worden gebruikt.  

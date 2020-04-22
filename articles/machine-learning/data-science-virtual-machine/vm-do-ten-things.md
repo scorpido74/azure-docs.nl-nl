@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8da8cd7110cd17d0aadd52cce1263c7c0fcfdf5c
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0f42f075f5d3be4486157334403bfa7d3f1aa80c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632158"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682882"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tien dingen die u doen op de Virtuele Windows Data Science-machine
 
@@ -817,7 +817,7 @@ Gebruik de volgende vereiste stappen om toegang te krijgen tot Azure Cosmos DB v
 1. De Azure Cosmos DB Python SDK is al geïnstalleerd op de DSVM. Als u deze ```pip install pydocumentdb --upgrade``` wilt bijwerken, voert u uit vanaf een opdrachtprompt.
 2. Maak een Azure Cosmos DB-account en -database vanuit de [Azure-portal.](https://portal.azure.com)
 3. Download het Azure Cosmos DB Data Migration Tool uit het [Microsoft Download center](https://www.microsoft.com/download/details.aspx?id=53595) en haal naar een map naar keuze.
-4. Json-gegevens (vulkaangegevens) importeren die zijn opgeslagen in een [openbare blob](https://cahandson.blob.core.windows.net/samples/volcano.json) in Azure Cosmos DB met de volgende opdrachtparameters naar het migratiehulpprogramma. (Gebruik dtui.exe uit de map waar u het Azure Cosmos DB Data Migration Tool hebt geïnstalleerd.) Voer de bron- en doellocatie in met de volgende parameters:
+4. Json-gegevens (vulkaangegevens) importeren die zijn opgeslagen in een [openbare blob](https://dotnet.microsoft.com/) in Azure Cosmos DB met de volgende opdrachtparameters naar het migratiehulpprogramma. (Gebruik dtui.exe uit de map waar u het Azure Cosmos DB Data Migration Tool hebt geïnstalleerd.) Voer de bron- en doellocatie in met de volgende parameters:
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 

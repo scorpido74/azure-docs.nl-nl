@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: cc04d11475568af92ba6a617a1eb6b2b51accb45
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 38e728de22d49de760e998ddc97c5067beb3ecd1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481675"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684703"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Uitzonderingen en foutcodes voor de ontwerper (voorbeeld)
 
@@ -145,6 +145,7 @@ Hieronder volgen foutcodes van modules in de ontwerper.
 |Parameter waarde "{arg_name}" moet lager zijn dan of gelijk zijn aan parameter "{upper_boundary_parameter_name}" waarde.|
 |Parameter "{arg_name}" heeft de waarde "{actual_value}" die lager moet zijn dan of gelijk moet zijn aan {upper_boundary}.|
 |Parameter waarde {arg_name}{ actual_value} moet lager zijn dan of gelijk zijn aan parameter "{upper_boundary_parameter_name}" waarde {upper_boundary}.|
+|Parameter waarde {arg_name}" {actual_value} moet lager zijn dan of gelijk zijn aan {upper_boundary_meaning} waarde {upper_boundary}.|
 
 
 ## <a name="error-0008"></a>Fout 0008  
@@ -253,8 +254,8 @@ Als het model is opgeleid met behulp van een van de gespecialiseerde trainingsmo
 
 |Modeltype|Trainingsmodule| Scoremodule|
 |----|----|----|
-|elke classificatie|[Trainingsmodel](train-model.md) |[Score Model](score-model.md)|
-|een regressiemodel|[Trainingsmodel](train-model.md) |[Score Model](score-model.md)|
+|elke classificatie|[Model trainen](train-model.md) |[Score Model](score-model.md)|
+|een regressiemodel|[Model trainen](train-model.md) |[Score Model](score-model.md)|
 
 <!--| clustering models| [Train Clustering Model](train-clustering-model.md) or [Sweep Clustering](sweep-clustering.md)| [Assign Data to Clusters](assign-data-to-clusters.md)|
 | anomaly detection - One-Class SVM | [Train Anomaly Detection Model](train-anomaly-detection-model.md) |[Score Model](score-model.md)|
@@ -271,6 +272,7 @@ Als het model is opgeleid met behulp van een van de gespecialiseerde trainingsmo
 |De leerling van ongeldig type wordt doorgegeven.|
 |Leerling {arg_name}" heeft ongeldig type.|
 |De leerling "{arg_name}" heeft ongeldig type {learner_type}.|
+|De leerling van ongeldig type wordt doorgegeven. Uitzonderingsbericht: {exception_message}|
 
 
 ## <a name="error-0014"></a>Fout 0014  
@@ -393,6 +395,7 @@ Voor kolommen die u wilt gebruiken voor het groeperen of categoriseren, neemt u 
 |Waarden in de kolom worden niet gesorteerd.|
 |Waarden in kolom {col_index} worden niet gesorteerd.|
 |Waarden in kolom {col_index}" van gegevensset {dataset}" worden niet gesorteerd.|
+|Waarden in het argument {arg_name}" worden niet gesorteerd in de volgorde {sorting_order}.|
 
 
 ## <a name="error-0020"></a>Fout 0020  
@@ -633,6 +636,7 @@ Het kan ook voorkomen dat een labelkolom aanwezig is in de gegevensset, maar nie
 |------------------------|
 |Het argument moet eindig zijn.|
 |{arg_name}" is niet eindig.|
+|Kolom {column_name}" bevat oneindige waarden.|
 
 
 ## <a name="error-0034"></a>Fout 0034  
@@ -1492,6 +1496,18 @@ Oplossing:
 |------------------------------------------------------------|
 |Given TransformationDirectory is ongeldig.|
 |TransformationDirectory {arg_name}" is ongeldig. Reden: {reason}. Voer het trainingsexperiment opnieuw uit waarmee het transformatiebestand wordt gegenereerd. Als het trainingsexperiment is verwijderd, moet u het transformatiebestand opnieuw maken en opslaan.|
+|TransformationDirectory {arg_name}" is ongeldig. Reden: {reason}. {troubleshoot_hint}|
+
+
+## <a name="error-0159"></a>Fout 0159
+ Uitzondering treedt op als doorgegeven aan modulemodel directory ongeldig is. 
+
+|Uitzonderingsberichten|
+|------------------------------------------------------------|
+|Bepaalde ModelDirectory is ongeldig.|
+|ModelDirectory "{arg_name}" is ongeldig.|
+|ModelDirectory "{arg_name}" is ongeldig. Reden: {reason}.|
+|ModelDirectory "{arg_name}" is ongeldig. Reden: {reason}. {troubleshoot_hint}|
 
 
 ## <a name="error-1000"></a>Fout 1000  

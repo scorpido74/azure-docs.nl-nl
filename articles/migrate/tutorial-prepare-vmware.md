@@ -2,14 +2,14 @@
 title: VMware VM's voorbereiden op beoordeling/migratie met Azure Migrate
 description: Meer informatie over hoe u zich voorbereiden op beoordeling/migratie van VMware VM's met Azure Migrate.
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 9f0729a3ddb2d8196a855557a6b8587940563984
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a3f9716d6302c41f139d9a2a8b1f994b79afd199
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535261"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677287"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware-VM's voorbereiden op evaluatie en migratie naar Azure
 
@@ -151,7 +151,7 @@ Bekijk de vereisten voor [agentmatige migratie](server-migrate-overview.md) van 
 3. Op agentgebaseerde migratie wordt gebruikt een replicatietoestel:
     - [Controleer](migrate-replication-appliance.md#appliance-requirements) de implementatievereisten voor het replicatietoestel.
     - [Bekijk de opties](migrate-replication-appliance.md#mysql-installation) voor het installeren van MySQL op het toestel.
-    - Let op de [vereiste](migrate-replication-appliance.md#url-access)URL-toegang .
+    - Let op de URL-toegang die vereist is voor [openbare](migrate-replication-appliance.md#url-access) en [overheidsclouds.](migrate-replication-appliance.md#azure-government-url-access)
     - Controleer de vereisten [voor poorttoegang](migrate-replication-appliance.md#port-access) voor het replicatietoestel.
     
 ## <a name="next-steps"></a>Volgende stappen

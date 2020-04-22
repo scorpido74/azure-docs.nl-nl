@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 958dcd441d35b5c28746ff79a0b341e5aa7383a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: 6f33f49be74419a8f0cd31d973d64798f5d76a2c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79214015"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683004"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Prestaties Azure SQL Database bewaken met dynamische beheerweergaven
 
@@ -604,7 +604,7 @@ In het volgende voorbeeld ziet u verschillende manieren waarop u de **catalogusw
 
 3. Met deze informatie over de gemiddelde en maximale waarden van elke resourcestatistiek u beoordelen hoe goed uw werkbelasting past in de door u gekozen rekengrootte. Meestal geven gemiddelde waarden van **sys.resource_stats** u een goede basislijn om te gebruiken ten opzichte van de doelgrootte. Het moet je primaire meetstok zijn. Voor een voorbeeld gebruikt u mogelijk de standaardservicelaag met de rekengrootte van S2. De gemiddelde gebruikspercentages voor CPU- en IO-reads en -schrijfbewerkingen liggen onder de 40 procent, het gemiddelde aantal werknemers ligt onder de 50 en het gemiddelde aantal sessies ligt onder de 200. Uw werkbelasting past mogelijk in de s1-compute-grootte. Het is eenvoudig om te zien of uw database past in de werk- en sessielimieten. Als u wilt zien of een database past in een lagere rekengrootte met betrekking tot CPU, leest en schrijft, verdeelt u het DTU-nummer van de lagere rekengrootte door het DTU-nummer van uw huidige rekengrootte en vermenigvuldigt u het resultaat met 100:
 
-    ```S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40```
+    `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
     Het resultaat is het relatieve prestatieverschil tussen de twee rekengroottes in percentage. Als uw resourcegebruik dit bedrag niet overschrijdt, past uw werkbelasting mogelijk in de lagere rekengrootte. U moet echter alle bereiken van resourcegebruikswaarden bekijken en per percentage bepalen hoe vaak uw databasewerkbelasting in de lagere rekengrootte past. Met de volgende query wordt het geschiktheidspercentage per resourcedimensie uitgevoerd op basis van de drempelwaarde van 40 procent die we in dit voorbeeld hebben berekend:
 

@@ -2,20 +2,30 @@
 title: Nieuwe nieuwe in Azure Migreren
 description: Meer informatie over de nieuwe en recente updates in de Azure Migrate-service.
 ms.topic: overview
-ms.date: 04/16/2020
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 1b0221f497ae7bbf84f163eef1ddb862d8de2951
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ba85b0a4ed30320099388ccb48dd91ad6445efd5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535244"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677250"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Nieuwe nieuwe in Azure Migreren
 
 [Azure Migrate](migrate-services-overview.md) helpt u bij het detecteren, beoordelen en migreren van on-premises servers, apps en gegevens naar de Microsoft Azure-cloud. In dit artikel worden nieuwe releases en functies in Azure Migrate samengevat.
 
 
+## <a name="update-april-2020"></a>Update (april 2020)
+
+Azure Migrate ondersteunt implementaties in Azure Government. 
+
+- U Vm's, Hyper-V VM's en fysieke servers ontdekken en beoordelen.
+- U VMware VM's, Hyper-V VM's en fysieke servers migreren naar Azure.
+- Voor VMware-migratie u agentloze of op agentgebaseerde migratie gebruiken. [Meer informatie](server-migrate-overview.md).
+- [Bekijk](migrate-support-matrix.md#supported-geographies-azure-government) ondersteunde regio's en regio's voor Azure Government.
+- [Afhankelijkheidsanalyse op basis van agenten](concepts-dependency-visualization.md#agent-based-analysis) wordt niet ondersteund in Azure Government.
+- Functies in preview worden ondersteund in Azure Government, met name [agentless afhankelijkheidsanalyse](concepts-dependency-visualization.md#agentless-analysis)en [toepassingsdetectie](how-to-discover-applications.md).
 
 ## <a name="update-march-2020"></a>Update (maart 2020)
 

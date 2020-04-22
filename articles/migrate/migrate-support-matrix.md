@@ -2,14 +2,14 @@
 title: Ondersteuningsmatrix voor Azure Migreren
 description: Biedt een overzicht van ondersteuningsinstellingen en beperkingen voor de Azure Migrate-service.
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: 0f766bf95bb7e26d942e7dde3f315bbef6d5dc5c
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 44a971894f53a3f31c068b3c3ed4912bc7e00dab
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535193"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680702"
 ---
 # <a name="azure-migrate-support-matrix"></a>Ondersteuningsmatrix voor Azure Migreren
 
@@ -25,6 +25,8 @@ De tabel bevat een overzicht van ondersteunde detectie-, beoordelings- en migrat
 **On-premises beoordeling** | On-premises workloads en gegevens die worden uitgevoerd op Vm's van VMware, Hyper-V VM's en fysieke servers beoordelen. Beoordelen met azure migrate server assessment en Microsoft Data Migration Assistant (DMA), evenals andere hulpprogramma's en ISV-aanbiedingen.
 **On-premises migratie naar Azure** | Migreer workloads en gegevens die worden uitgevoerd op fysieke servers, VMware VM's, Hyper-V VM's, fysieke servers en vms in de cloud naar Azure. Migreer met Azure Migrate Server Assessment en Azure Database Migration Service (DMS) en andere hulpprogramma's en ISV-aanbiedingen.
 
+> [!NOTE]
+> Momenteel kunnen ISV-hulpprogramma's geen gegevens verzenden naar Azure Migrate in Azure Government. U geïntegreerde Microsoft-hulpprogramma's gebruiken of zelfstandig partnerhulpprogramma's gebruiken.
 
 ## <a name="supported-tools"></a>Ondersteunde hulpprogramma 's
 
@@ -93,7 +95,7 @@ Verenigde Staten | Centraal VS of West US 2
 **Taak** | **Geografie** | **Details**
 --- | --- | ---
 Project maken | Verenigde Staten | Metadata wordt opgeslagen in us Gov Arizona, US Gov Virginia
-Doelbeoordeling | Verenigde Staten | Doelregio's: US Gov Arizona, US Gov Virginia/US Gov Texas
+Doelbeoordeling | Verenigde Staten | Doelregio's: US Gov Arizona, US Gov Virginia, US Gov Texas
 Doelreplicatie | Verenigde Staten | Doelregio's: US DoD Central, US DoD East, US Gov Arizona, US Gov Iowa, US Gov Texas, US Gov Virginia
 
 

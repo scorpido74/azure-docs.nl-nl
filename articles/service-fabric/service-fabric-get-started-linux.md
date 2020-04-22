@@ -3,12 +3,12 @@ title: Stel uw ontwikkelomgeving in op Linux
 description: Installeer de runtime en SDK en maak een lokaal ontwikkelcluster in Linux. Zodra u dit hebt gedaan, kunt u toepassingen bouwen.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6cedd97144a3fd32d9af8582e24ad5c12914e575
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309120"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682626"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Uw ontwikkelomgeving voorbereiden in Linux
 > [!div class="op_single_selector"]
@@ -265,7 +265,7 @@ U kunt de Eclipse-invoegtoepassing voor Service Fabric installeren vanuit de Ecl
 
 2. Als u de servicefabric-plug-in wilt installeren, selecteert u **Help** > **nieuwe software installeren**.
 
-3. In het vak **Work with** voert u **https://dl.microsoft.com/eclipse** in.
+3. Voer in het vak **Werken met** **https in:\//dl.microsoft.com/eclipse**.
 
 4. Selecteer **Toevoegen**.
 

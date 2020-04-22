@@ -4,17 +4,17 @@ description: Rehydrateer uw blobs uit archiefopslag, zodat u toegang hebt tot de
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/14/2019
+ms.date: 04/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 0a7012d9daa808933a51ac05862a8a9aa4cfcf77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614802"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684058"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Blobgegevens uit de archieflaag opnieuw hydrateren
 
@@ -31,15 +31,21 @@ Terwijl een blob zich in de archieftoegangslaag bevindt, wordt deze als offline 
 
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>Een gearchiveerde blob naar een online laag kopiëren
 
-Als u uw archiefblob niet wilt rehydrateren, u ervoor kiezen om een [Copy Blob-bewerking](https://docs.microsoft.com/rest/api/storageservices/copy-blob) uit te voeren. Uw oorspronkelijke blob blijft ongewijzigd in het archief, terwijl een nieuwe blob wordt gemaakt in de online hot of cool tier waar u aan werken. In de bewerking Blob kopiëren u de optionele eigenschap *x-ms-rehydraatprioriteit* ook instellen op Standaard of Hoog (voorbeeld) om de prioriteit op te geven waarop u uw blobkopie wilt maken.
-
-Archiefblobs kunnen alleen worden gekopieerd naar online doellagen binnen hetzelfde opslagaccount. Het kopiëren van een archiefblob naar een andere archiefblob wordt niet ondersteund.
+Als u uw archiefblob niet wilt rehydrateren, u ervoor kiezen om een [Copy Blob-bewerking](https://docs.microsoft.com/rest/api/storageservices/copy-blob) uit te voeren. Uw oorspronkelijke blob blijft ongewijzigd in het archief, terwijl een nieuwe blob wordt gemaakt in de online hot of cool tier waar u aan werken. In de bewerking Blob kopiëren u de optionele eigenschap *x-ms-rehydraatprioriteit* ook instellen op Standaard of Hoog om de prioriteit op te geven waarop u uw blobkopie wilt maken.
 
 Het kopiëren van een blob uit het archief kan uren in beslag nemen, afhankelijk van de geselecteerde prioriteit voor rehydrateren. Achter de schermen leest de bewerking **Blob kopiëren** uw blob met archiefbron om een nieuwe online blob te maken in de geselecteerde doellaag. De nieuwe blob kan zichtbaar zijn wanneer u blobs aanvoert, maar de gegevens zijn pas beschikbaar nadat de blob is gelezen uit de blob van het bronarchief en de gegevens naar de nieuwe online bestemmingsblob zijn geschreven. De nieuwe blob is als een onafhankelijke kopie en elke wijziging of verwijdering ervan heeft geen invloed op de blob van het bronarchief.
 
+Archiefblobs kunnen alleen worden gekopieerd naar online doellagen binnen hetzelfde opslagaccount. Het kopiëren van een archiefblob naar een andere archiefblob wordt niet ondersteund. In de volgende tabel worden de mogelijkheden van CopyBlob aangegeven.
+
+|                                           | **Bron van hot tier**   | **Koele laagbron** | **Bron van archieflagen**    |
+| ----------------------------------------- | --------------------- | -------------------- | ------------------- |
+| **Bestemming hot tier**                  | Ondersteund             | Ondersteund            | Ondersteund binnen hetzelfde account; in afwachting van rehydrateren               |
+| **Koele laagbestemming**                 | Ondersteund             | Ondersteund            | Ondersteund binnen hetzelfde account; in afwachting van rehydrateren               |
+| **Bestemming archieflaag**              | Ondersteund             | Ondersteund            | Niet ondersteund         |
+
 ## <a name="pricing-and-billing"></a>Prijzen en facturering
 
-Het hydrateren van blobs uit het archief in hete of koele lagen worden in rekening gebracht als leesbewerkingen en het ophalen van gegevens. Het gebruik van hoge prioriteit (preview) heeft hogere kosten voor het ophalen van gegevens in vergelijking met de standaardprioriteit. Rehydratie met hoge prioriteit wordt weergegeven als een afzonderlijk regelitem op uw factuur. Als een aanvraag met hoge prioriteit om een archiefblob van een paar gigabytes terug te sturen meer dan 5 uur in zich opneemt, wordt het percentage met hoge prioriteit niet in rekening gebracht. Echter, standaard retrieval tarieven nog steeds van toepassing als de rehydratie werd geprioriteerd boven andere verzoeken.
+Het hydrateren van blobs uit het archief in hete of koele lagen worden in rekening gebracht als leesbewerkingen en het ophalen van gegevens. Het gebruik van hoge prioriteit heeft hogere kosten voor het ophalen van gegevens in vergelijking met de standaardprioriteit. Rehydratie met hoge prioriteit wordt weergegeven als een afzonderlijk regelitem op uw factuur. Als een aanvraag met hoge prioriteit om een archiefblob van een paar gigabytes terug te sturen meer dan 5 uur in zich opneemt, wordt het percentage met hoge prioriteit niet in rekening gebracht. Echter, standaard retrieval tarieven nog steeds van toepassing als de rehydratie werd geprioriteerd boven andere verzoeken.
 
 Het kopiëren van blobs uit archief naar hete of koele lagen worden in rekening gebracht als leesbewerkingen en het ophalen van gegevens. Er wordt een schrijfbewerking in rekening gebracht voor het maken van de nieuwe blobkopie. Vroege verwijderingskosten zijn niet van toepassing wanneer u naar een online blob kopieert, omdat de bronblob ongewijzigd blijft in de archieflaag. Als deze optie is geselecteerd, zijn er wel kosten voor het ophalen met hoge prioriteit.
 
@@ -52,7 +58,7 @@ Blobs in de archieflaag moeten minimaal 180 dagen worden opgeslagen. Als u gearc
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Een archiefblob opnieuw hydrateren naar een onlinelaag
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek en selecteer **alle bronnen**in de Azure-portal.
 
@@ -68,9 +74,10 @@ Blobs in de archieflaag moeten minimaal 180 dagen worden opgeslagen. Als u gearc
 
 1. Selecteer **Opslaan** onderin.
 
-![Opslagaccountlaag wijzigen](media/storage-tiers/blob-access-tier.png)
+![Opslagaccountlaag](media/storage-tiers/blob-access-tier.png)
+![wijzigen De status Rehydraat controleren](media/storage-tiers/rehydrate-status.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Het volgende PowerShell-script kan worden gebruikt om de bloblaag van een archiefblob te wijzigen. De `$rgName` variabele moet worden geïnitialiseerd met de naam van uw resourcegroep. De `$accountName` variabele moet worden geïnitialiseerd met de naam van uw opslagaccount. De `$containerName` variabele moet worden geïnitialiseerd met uw containernaam. De `$blobName` variabele moet worden geïnitialiseerd met de naam van uw blob. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names

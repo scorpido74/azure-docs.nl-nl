@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 968e609772e08814a9943734d30c16bf6f5972e8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 369e3bcf4e5913f4a3ff82206d1e24a206db3f34
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604714"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681296"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Vm's starten/stoppen tijdens off-hours oplossing in Azure Automation
 
@@ -120,7 +120,7 @@ Alle bovenliggende runbooks bevatten de `WhatIf` parameter. Wanneer de parameter
 In de volgende tabel worden de variabelen weergegeven die zijn gemaakt in uw automatiseringsaccount. Wijzig alleen variabelen die `External`vooraf zijn vastgezet met . Het wijzigen van variabelen `Internal` vooraf vastgesteld met ongewenste effecten veroorzaakt.
 
 > [!NOTE]
-> Beperkingen op vm-naam en resourcegroep zijn grotendeels het gevolg van variabele grootte.
+> Beperkingen op vm-naam en resourcegroep zijn grotendeels het gevolg van variabele grootte. Zie [Variabele elementen in Azure Automation](https://docs.microsoft.com/azure/automation/shared-resources/variables).
 
 |Variabele | Beschrijving|
 |---------|------------|
@@ -159,8 +159,8 @@ Schakel niet alle schema's in, omdat dit overlappende planningsacties kan maken.
 |Schedule_AutoStop_CreateAlert_Parent | Om de 8 uur | Hiermee wordt de **AutoStop_CreateAlert_Parent** runbook elke 8 uur uitgevoerd, `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames`waardoor `External_ExcludeVMNames` de op VM gebaseerde waarden in , en variabelen worden gestopt. U ook een door komma's gescheiden lijst `VMList` met VM's opgeven met behulp van de parameter.|
 |Scheduled_StopVM | Door de gebruiker gedefinieerd, dagelijks | Hiermee **ScheduledStopStart_Parent** voert u het ScheduledStopStart_Parent `Stop` runbook uit met een parameter van elke dag op het opgegeven tijdstip.Hiermee worden alle VM's die voldoen aan de regels die zijn gedefinieerd door variabele activa automatisch gestopt.Schakel het bijbehorende schema **Scheduled-StartVM in**.|
 |Scheduled_StartVM | Door de gebruiker gedefinieerd, dagelijks | Hiermee wordt het **ScheduledStopStart_Parent** runbook `Start` uitgevoerd met een parameterwaarde van elke dag op het opgegeven tijdstip. Hiermee worden alle VM's die voldoen aan de regels die zijn gedefinieerd door variabele activa automatisch gestart.Schakel het bijbehorende schema **Scheduled-StopVM in**.|
-|Gesequenced-StopVM | 1:00 AM (UTC), elke vrijdag | Hiermee wordt het Sequenced_Parent runbook `Stop` uitgevoerd met een parameterwaarde van elke vrijdag op het opgegeven tijdstip.Sequentiële (oplopende) stopt alle VM's met een tag van **SequenceStop** gedefinieerd door de juiste variabelen. Zie de sectie Runbooks voor meer informatie over tagwaarden en activavariabelen.Schakel het bijbehorende schema, **Sequenced-StartVM**in .|
-|Gesequenced-StartVM | 13:00 uur (UTC), elke maandag | Hiermee voert u het **SequencedStopStart_Parent** `Start` runbook uit met een parameterwaarde van elke maandag op het opgegeven tijdstip. Achtereenvolgens (aflopend) begint alle VM's met een tag van **SequenceStart** gedefinieerd door de juiste variabelen. Zie De [Runbooks voor](#runbooks)meer informatie over tagwaarden en variabele elementen. Schakel het bijbehorende schema, **Sequenced-StopVM**in .
+|Gesequenced-StopVM | 1:00 AM (UTC), elke vrijdag | Hiermee wordt het **Sequenced_StopStop_Parent** runbook `Stop` uitgevoerd met een parameterwaarde van elke vrijdag op het opgegeven tijdstip.Sequentiële (oplopende) stopt alle VM's met een tag van **SequenceStop** gedefinieerd door de juiste variabelen. Zie [Runbooks voor](#runbooks)meer informatie over tagwaarden en activavariabelen.Schakel het bijbehorende schema, **Sequenced-StartVM**in .|
+|Gesequenced-StartVM | 13:00 uur (UTC), elke maandag | Hiermee voert u het **SequencedStopStart_Parent** `Start` runbook uit met een parameterwaarde van elke maandag op het opgegeven tijdstip. Achtereenvolgens (aflopend) begint alle VM's met een tag van **SequenceStart** gedefinieerd door de juiste variabelen. Zie [Runbooks voor](#runbooks)meer informatie over tagwaarden en variabele elementen. Schakel het bijbehorende schema, **Sequenced-StopVM**in .
 
 ## <a name="use-of-the-solution-with-classic-vms"></a>Gebruik van de oplossing met klassieke VM's
 

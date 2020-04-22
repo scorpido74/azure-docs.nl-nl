@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78f45d9e1ca5b8237779fe096154c83749aa08fe
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1f0b0c0a7b666aed56ad24625c80c0a57683b998
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428431"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683261"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Groepen toevoegen en beheren in beheerderseenheden in Azure Active Directory
 
 In Azure Active Directory (Azure AD) u groepen toevoegen aan een beheereenheid (AU) voor een gedetailleerder beheerbereik.
 
-Zie [Aan](roles-admin-units-manage.md#getting-started)de slag gaan voor stappen om PowerShell en Microsoft Graph te gebruiken voor beheer van administratieve eenheden.
+Zie [Aan](roles-admin-units-manage.md#get-started)de slag voor stappen om PowerShell en Microsoft Graph te gebruiken voor beheer van administratieve eenheden.
 
 ## <a name="add-groups-to-an-au"></a>Groepen toevoegen aan een AU
 

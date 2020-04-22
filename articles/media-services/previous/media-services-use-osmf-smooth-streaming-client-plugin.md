@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 45a2829411ea4713df898c90be73792718160cd2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71d28a19316bf1b618ec9008a5e96a503687b202
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255116"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681953"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>De Microsoft Smooth Streaming Plugin gebruiken voor het Adobe Open Source Media Framework  
 ## <a name="overview"></a>Overzicht
@@ -331,7 +331,7 @@ pakket {
 De Smooth Streaming voor OSMF dynamische plug-in is compatibel met [Strobe Media Playback (SMP).](http://osmf.org/strobe_mediaplayback.html) U de SS voor OSMF-plug-in gebruiken om vloeiend afspelen van inhoud op vloeiend afspelen toe te voegen aan SMP. Kopieer hiervoor "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" onder een webserver voor HTTP-belasting met behulp van de volgende stappen:
 
 1. Blader door de [installatiepagina voor het afspelen van Strobe-media](http://osmf.org/dev/2.0gm/setup.html). 
-2. Stel de src in op een Smooth Streaming-bron (bijv.http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
+2. Stel de src in op een Smooth Streaming-bron (bijvoorbeeld http:\//devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
 3. Breng de gewenste configuratiewijzigingen aan en klik op Voorbeeld en Bijwerken.
    
    **Opmerking** Uw inhoudswebserver heeft een geldige crossdomain.xml nodig. 

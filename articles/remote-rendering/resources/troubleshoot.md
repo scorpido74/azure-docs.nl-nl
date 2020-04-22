@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: ac7e721a863414cf0617177885e0ff1c9e9a35d4
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617857"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681859"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -101,6 +101,35 @@ Als deze twee stappen niet hebben geholpen, is het nodig om uit te vinden of vid
 **Het model is niet binnen de weergave frustum:**
 
 In veel gevallen wordt het model correct weergegeven, maar zich buiten het camerafrustum bevinden. Een veel voorkomende reden is dat het model is geëxporteerd met een ver off-center pivot, zodat het wordt geknipt door het verre knipvlak van de camera. Het helpt om het selectiekader van het model programmatisch op te vragen en het vak met Unity als regelvak te visualiseren of de waarden ervan af te drukken op het foutopsporingslogboek.
+
+Bovendien genereert het conversieproces een [uitvoerjson-bestand](../how-tos/conversion/get-information.md) naast het geconverteerde model. Om model positionering problemen debuggen, `boundingBox` is het de moeite waard te kijken naar de vermelding in de [outputStatistieken sectie:](../how-tos/conversion/get-information.md#the-outputstatistics-section)
+
+```JSON
+{
+    ...
+    "outputStatistics": {
+        ...
+        "boundingBox": {
+            "min": [
+                -43.52,
+                -61.775,
+                -79.6416
+            ],
+            "max": [
+                43.52,
+                61.775,
+                79.6416
+            ]
+        }
+    }
+}
+```
+
+Het selectiekader wordt beschreven `min` `max` als een en positie in 3D-ruimte, in meters. Dus een coördinaat van 1000,0 betekent dat het 1 kilometer van de oorsprong verwijderd is.
+
+Er kunnen twee problemen zijn met dit omsluitende vak dat leidt tot onzichtbare geometrie:
+* **De doos kan ver uit het midden,** zodat het object helemaal wordt geknipt als gevolg van ver vlak knippen. De `boundingBox` waarden in dit geval `min = [-2000, -5,-5], max = [-1990, 5,5]`zou er als volgt uitzien: , met behulp van een grote verschuiving op de x-as als een voorbeeld hier. Als u dit type probleem `recenterToOrigin` wilt oplossen, schakelt u de optie in de [modelconversieconfiguratie in.](../how-tos/conversion/configure-model-conversion.md)
+* **De doos kan worden gecentreerd, maar worden ordes van grootte te groot**. Dat betekent dat, hoewel de camera begint in het midden van het model, de geometrie is geknipt in alle richtingen. Typische `boundingBox` waarden in dit geval `min = [-1000,-1000,-1000], max = [1000,1000,1000]`zou er als volgt uitzien: . De reden voor dit soort problemen is meestal een eenheid schaal mismatch. Als u dit wilt compenseren, geeft u een [schaalwaarde op tijdens de conversie](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) of markeert u het bronmodel met de juiste eenheden. Schalen kan ook worden toegepast op het hoofdknooppunt bij het laden van het model tijdens runtime.
 
 **De Unity render pipeline bevat niet de renderhaken:**
 

@@ -8,18 +8,18 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 0014b67443797f45de51ec1bc459f71bde55cdc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f8e93cf34ac56344ff7e3d145ce8c7c3529767b7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774430"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678622"
 ---
 In het volgende voorbeeld ziet u hoe u een Exchange-verbinding maakt bij Equinix Internet Exchange in Seattle. Als u een andere provider en verschillende instellingen gebruikt, vervangt u die informatie wanneer u uw verzoek indient.
 
-Gebruik PowerShell-cmdlet **New-AzPeeringExchangeConnectionObject** om PowerShell-verbindingsobjecten te maken die worden gebruikt om de nieuwe peering-aanvraag te genereren:
+Gebruik de PowerShell-cmdlet **New-AzPeeringExchangeConnectionObject** om PowerShell-verbindingsobjecten te maken, die worden gebruikt om de nieuwe peering-aanvraag te genereren.
 
-Hieronder vindt u een voorbeeld om een Exchange Connection te maken:
+In dit voorbeeld ziet u hoe u een Exchange-verbinding maakt.
 
 ```powershell
 $connection1 = New-AzPeeringExchangeConnectionObject `
@@ -30,7 +30,7 @@ $connection1 = New-AzPeeringExchangeConnectionObject `
     -MaxPrefixesAdvertisedIPv6 2000 `
 ```
 
-Maak een andere verbinding voor het geval u redundantie nodig hebt op een bepaalde peeringlocatie:
+Maak een andere verbinding voor het geval u redundantie nodig hebt op de opgegeven peeringlocatie.
 
 ```powershell
 $connection2 = New-AzPeeringExchangeConnectionObject `
@@ -41,7 +41,7 @@ $connection2 = New-AzPeeringExchangeConnectionObject `
     -MaxPrefixesAdvertisedIPv6 2000 `
 ```
 
-PowerShell-cmdlet **New-AzPeering** kan worden gebruikt om een nieuwe Exchange-peering te maken:
+De PowerShell cmdlet **New-AzPeering** kan worden gebruikt om een nieuwe Exchange peering te maken.
 
 ```powershell
 $asn = Get-AzPeerAsn
@@ -54,7 +54,7 @@ New-AzPeering `
 ```
 &nbsp;
 
-Hieronder vindt u een voorbeeldantwoord wanneer de aanvraag met één verbinding is uitgevoerd:
+In dit voorbeeldantwoord wordt weergegeven wanneer de aanvraag is uitgevoerd met één verbinding.
 
 ```powershell
 
@@ -73,10 +73,10 @@ Tags              : {}
 ```
 
 > [!IMPORTANT]
-> Microsoft zal beginnen met het inrichten `ConnectionState` van de gevraagde peering en de zal de voortgang weerspiegelen.
-> Raadpleeg het [Exchange-peering-walkthrough-document](../walkthrough-exchange-all.md) voor het inrichten van gerelateerde stappen.
+> Microsoft begint met het inrichten `ConnectionState` van de gevraagde peering en weerspiegelt de voortgang.
+> Zie de [exchange-peering-walkthrough](../walkthrough-exchange-all.md)voor meer informatie over inrichtengerelateerde stappen.
 
-U de ConnectionState controleren zoals hieronder wordt weergegeven:
+U de verbindingsstatus controleren, zoals hier wordt weergegeven.
 
 ```powershell
 

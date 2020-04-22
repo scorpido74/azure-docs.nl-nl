@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5a80c6e3bd8cf647590ed757c042ef3301e27b4a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 34ed6d043f713aa55bfe464c48d4332364df805d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743512"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680382"
 ---
 # <a name="secure-your-restful-services"></a>Beveilig uw RESTful-services 
 
@@ -43,7 +43,7 @@ HTTP basisverificatie wordt gedefinieerd in [RFC 2617](https://tools.ietf.org/ht
 
 Als u een REST API-technisch profiel wilt configureren met HTTP-basisverificatie, maakt u de volgende cryptografische sleutels om de gebruikersnaam en het wachtwoord op te slaan:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat. Selecteer het **filter Directory + abonnement** in het bovenste menu en kies uw Azure AD B2C-map.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer op de pagina Overzicht de optie **Identity Experience Framework**.
@@ -132,7 +132,7 @@ Voor niet-productieomgevingen u, als u nog geen certificaat hebt, een zelfondert
 
 ### <a name="add-a-client-certificate-policy-key"></a>Een beleidssleutel clientcertificaat toevoegen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat. Selecteer het **filter Directory + abonnement** in het bovenste menu en kies uw Azure AD B2C-map.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer op de pagina Overzicht de optie **Identity Experience Framework**.
@@ -211,11 +211,19 @@ Een claim biedt tijdelijke opslag van gegevens tijdens een Azure AD B2C-beleidsu
 1. Open het extensiesbestand van uw beleid. Bijvoorbeeld. <em> `SocialAndLocalAccounts/` </em>
 1. Zoek naar het element [Bouwstenen.](buildingblocks.md) Als het element niet bestaat, voeg je het toe.
 1. Zoek het element [ClaimSchema.](claimsschema.md) Als het element niet bestaat, voeg je het toe.
-1. Voeg de city bearerToken toe aan het element **ClaimSchema.**  
+1. Voeg de volgende claims toe aan het element **ClaimsSchema.**  
 
 ```xml
 <ClaimType Id="bearerToken">
-  <DisplayName>bearer token</DisplayName>
+  <DisplayName>Bearer token</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+<ClaimType Id="grant_type">
+  <DisplayName>Grant type</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+<ClaimType Id="scope">
+  <DisplayName>scope</DisplayName>
   <DataType>string</DataType>
 </ClaimType>
 ```
@@ -306,7 +314,7 @@ Nadat u de bovenstaande fragmenten hebt toegevoegd, moet uw technische profiel e
 
 Maak een beleidssleutel om de tokenwaarde aan toonder op te slaan.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat. Selecteer het **filter Directory + abonnement** in het bovenste menu en kies uw Azure AD B2C-map.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer op de pagina Overzicht de optie **Identity Experience Framework**.

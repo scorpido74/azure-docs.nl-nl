@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/11/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e73eae4d66f4ff94a48dfa27e258f8ba8ef87633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94ff7ddda41f2df2634d927a7dbf8a5a0d4fc1d8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126757"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681422"
 ---
 # <a name="localization"></a>Lokalisatie
 
@@ -146,65 +146,190 @@ Het element **Gelokaliseerde tekenreeks** bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| ElementType | Ja | Een verwijzing naar een element van claimtype of een element van de gebruikersinterface in het beleid. `ClaimType`Mogelijke waarden: `UxElement` `ErrorMessage`, `Predicate`, `GetLocalizedStringsTransformationClaimType`, of . De `ClaimType` waarde wordt gebruikt om een van de claimkenmerken te lokaliseren, zoals opgegeven in de StringId. De `UxElement` waarde wordt gebruikt om een van de gebruikersinterface-elementen te lokaliseren zoals opgegeven in de StringId. De `ErrorMessage` waarde wordt gebruikt om een van de systeemfoutmeldingen te lokaliseren zoals opgegeven in de StringId. De `Predicate` waarde wordt gebruikt om een van de [foutberichten van Het Predicaat](predicates.md) te lokaliseren, zoals opgegeven in de StringId. De `InputValidation` waarde wordt gebruikt om een van de foutberichten van de [groep PredicateValidation](predicates.md) te lokaliseren zoals opgegeven in de StringId. De `GetLocalizedStringsTransformationClaimType` waarde wordt gebruikt om gelokaliseerde tekenreeksen te kopiëren naar claims. Zie [GetLocalizedStringsTransformation claims transformation voor](string-transformations.md#getlocalizedstringstransformation) meer informatie  | 
+| ElementType | Ja | Mogelijke waarden: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype), [Predicate](#predicate), [InputValidation](#inputvalidation)of [UxElement](#uxelement).   | 
 | ElementId | Ja | Als **ElementType** is `ClaimType` `Predicate`ingesteld `InputValidation`op , of , bevat dit element een verwijzing naar een claimtype dat al is gedefinieerd in de sectie ClaimsSchema. |
 | StringId (StringId) | Ja | Als **ElementType** is `ClaimType`ingesteld op , bevat dit element een verwijzing naar een kenmerk van een claimtype. Mogelijke `DisplayName`waarden: `AdminHelpText`, `PatternHelpText`, of . De `DisplayName` waarde wordt gebruikt om de naam van de claimweergave in te stellen. De `AdminHelpText` waarde wordt gebruikt om de help-tekstnaam van de claimgebruiker in te stellen. De `PatternHelpText` waarde wordt gebruikt om de helptekst van het claimpatroon in te stellen. Als **ElementType** is `UxElement`ingesteld op , bevat dit element een verwijzing naar een kenmerk van een element van de gebruikersinterface. Als **ElementType** is `ErrorMessage`ingesteld op , geeft dit element de id van een foutbericht op. Zie [Id's van de lokalisatietekenreeks](localization-string-ids.md) voor een volledige lijst met de `UxElement` id's.|
 
+## <a name="elementtype"></a>ElementType
 
-In het volgende voorbeeld wordt een gelokaliseerde aanmeldingspagina weergegeven. De eerste drie **gelokaliseerde tekenreekswaarden** stellen het claimkenmerk in. De derde wijzigt de waarde van de knop Doorgaan. De laatste verandert het foutbericht.
+De ElementType-verwijzing naar een claimtype, een claimtransformatie of een element van de gebruikersinterface in het te lokaliseren beleid.
 
-```XML
-<LocalizedResources Id="api.selfasserted.en">
-  <LocalizedStrings>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
-  </LocalizedStrings>
-</LocalizedResources>
-```
+| Element om te lokaliseren | ElementType | ElementId |StringId (StringId) |
+| --------- | -------- | ----------- |----------- |
+| Naam van identiteitsprovider |`ClaimsProvider`| | De id van het element ClaimsExchange|
+| Kenmerken van claimtype|`ClaimType`|Naam van het claimtype| Het kenmerk van de claim die moet worden gelokaliseerd. Mogelijke `AdminHelpText`waarden: `DisplayName` `PatternHelpText`, `UserHelpText`, en .|
+|Foutbericht|`ErrorMessage`||De id van het foutbericht |
+|Hiermee worden gelokaliseerde tekenreeksen in claims kopieën gemaakt|`GetLocalizedStringsTra nsformationClaimType`||De naam van de uitvoerclaim|
+|Het gebruikersbericht van Het predicaat|`Predicate`|De naam van het predicaat| Het kenmerk van het predicaat dat moet worden gelokaliseerd. Mogelijke waarden: `HelpText`.|
+|Het bericht van de gebruiker van de groep van de groep van het predicaat|`InputValidation`|De ID van het element PredicaatValidatie.|De ID van het element Predicaatgroep. De predicaatgroep moet een onderliggend kind zijn van het predicaatvalidatieelement zoals gedefinieerd in het ElementId.|
+|Elementen van de gebruikersinterface |`UxElement` | | De id van het element gebruikersinterface dat moet worden gelokaliseerd.|
 
-In het volgende voorbeeld wordt een **Predicate** gelokaliseerde `IsLengthBetween8And64` **userHelptext** van Predicaat met id weergegeven. En een gelokaliseerde **UserHelpText** van `CharacterClasses` **PredicateGroup** met `StrongPassword`id van **PredicateValidation** met id .
+## <a name="examples"></a>Voorbeelden
 
-```XML
-<PredicateValidation Id="StrongPassword">
-  <PredicateGroups>
-    ...
-    <PredicateGroup Id="CharacterClasses">
-    ...
-    </PredicateGroup>
-  </PredicateGroups>
-</PredicateValidation>
+### <a name="claimsprovider"></a>ClaimsProvider
 
-...
+De waarde van ClaimProvider wordt gebruikt om een van de claimproviders te lokaliseren, de naam van de weergave. 
 
-<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
+```xml
+<OrchestrationStep Order="2" Type="ClaimsExchange">
   ...
-</Predicate>
-...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
+    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+    <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
+  </ClaimsExchanges>
+</OrchestrationStep>
 
-
-<LocalizedString ElementType="InputValidation" ElementId="StrongPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
-
-<LocalizedString ElementType="Predicate" ElementId="IsLengthBetween8And64" StringId="HelpText">The password must be between 8 and 64 characters.</LocalizedString>
 ```
 
-## <a name="set-up-localization"></a>Lokalisatie instellen
+In het volgende voorbeeld ziet u hoe u de weergavenaam van claimproviders lokaliseren.
 
-In dit artikel ziet u hoe u meerdere landzetten of talen ondersteunen in het beleid voor gebruikersreizen. Lokalisatie vereist drie stappen: de expliciete lijst met ondersteunde talen instellen, taalspecifieke tekenreeksen en verzamelingen aanbieden en de ContentDefinition voor de pagina bewerken.
+```xml
+<LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
+<LocalizedString ElementType="ClaimsProvider" StringId="GoogleExchange">Google</LocalizedString>
+<LocalizedString ElementType="ClaimsProvider" StringId="LinkedInExchange">LinkedIn</LocalizedString>
+```
 
-### <a name="set-up-the-explicit-list-of-supported-languages"></a>De expliciete lijst met ondersteunde talen instellen
+### <a name="claimtype"></a>ClaimType
 
-Voeg onder het element **Bouwstenen** het element **Lokalisatie** toe met de lijst met ondersteunde talen. In het volgende voorbeeld ziet u hoe u de lokalisatieondersteuning voor zowel Engels (standaard) als Spaans definieert:
+De waarde ClaimType wordt gebruikt om een van de claimkenmerken te lokaliseren. 
+
+```xml
+<ClaimType Id="email">
+  <DisplayName>Email Address</DisplayName>
+  <DataType>string</DataType>
+  <UserHelpText>Email address that can be used to contact you.</UserHelpText>
+  <UserInputType>TextBox</UserInputType>
+</ClaimType>
+```
+
+In het volgende voorbeeld ziet u hoe u de kenmerken DisplayName, UserHelpText en PatternHelpText van het type e-mailclaim lokaliseren.
 
 ```XML
-<Localization Enabled="true">
-  <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
-    <SupportedLanguage>en</SupportedLanguage>
-    <SupportedLanguage>es</SupportedLanguage>
-  </SupportedLanguages>
-</Localization>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
+```
+
+### <a name="errormessage"></a>Errormessage
+
+De foutmelding wordt gebruikt om een van de systeemfoutmeldingen te lokaliseren. 
+
+```xml
+<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
+  <Metadata>
+    <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
+    <Item Key="UserMessageIfClaimsPrincipalAlreadyExists">You are already registered, please press the back button and sign in instead.</Item>
+  </Metadata>
+  ...
+</TechnicalProfile>
+```
+
+In het volgende voorbeeld ziet u hoe u het foutbericht UserMessageIfClaimsPrincipalAlreadyExists lokaliseren.
+
+
+```XML
+<LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
+```
+
+### <a name="getlocalizedstringstransformationclaimtype"></a>GetLocalizedStringsTransformationClaimType
+
+De waarde GetLocalizedStringsTransformationClaimType wordt gebruikt om gelokaliseerde tekenreeksen naar claims te kopiëren. Zie [GetLocalizedStringsTransformation claims transformation voor](string-transformations.md#getlocalizedstringstransformation) meer informatie
+
+
+```xml
+<ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
+    <OutputClaim ClaimTypeReferenceId="message" TransformationClaimType="email_message" />
+    <OutputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="email_code" />
+    <OutputClaim ClaimTypeReferenceId="signature" TransformationClaimType="email_signature" />
+   </OutputClaims>
+</ClaimsTransformation>
+```
+
+In het volgende voorbeeld ziet u hoe u uitvoerclaims van de transformatie van de claimtransformatie getlocalizedstringstransformation lokaliseren.
+
+```xml
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for verifying your account!</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Your code is</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
+```
+
+### <a name="predicate"></a>Predikaat
+
+De waarde Van Predicaat wordt gebruikt om een van de [foutberichten van het Predicaat](predicates.md) te lokaliseren. 
+
+```xml
+<Predicates>
+  <Predicate Id="LengthRange" Method="IsLengthRange"  HelpText="The password must be between 6 and 64 characters.">
+    <Parameters>
+      <Parameter Id="Minimum">6</Parameter>
+      <Parameter Id="Maximum">64</Parameter>
+    </Parameters>
+  </Predicate>
+  <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
+    <Parameters>
+      <Parameter Id="CharacterSet">a-z</Parameter>
+    </Parameters>
+  </Predicate>
+  <Predicate Id="Uppercase" Method="IncludesCharacters" HelpText="an uppercase letter">
+    <Parameters>
+      <Parameter Id="CharacterSet">A-Z</Parameter>
+    </Parameters>
+  </Predicate>
+</Predicates>
+```
+
+In het volgende voorbeeld ziet u hoe u de helptekst van predicaten lokaliseren.
+
+```xml
+<LocalizedString ElementType="Predicate" ElementId="LengthRange" StringId="HelpText">The password must be between 6 and 64 characters.</LocalizedString>
+<LocalizedString ElementType="Predicate" ElementId="Lowercase" StringId="HelpText">a lowercase letter</LocalizedString>
+<LocalizedString ElementType="Predicate" ElementId="Uppercase" StringId="HelpText">an uppercase letter</LocalizedString>
+```
+
+### <a name="inputvalidation"></a>Invoervalidatie
+
+De waarde Invoervalidatie wordt gebruikt om een van de foutberichten van de groep [PredicaatValidatie](predicates.md) te lokaliseren. 
+
+```xml
+<PredicateValidations>
+  <PredicateValidation Id="CustomPassword">
+    <PredicateGroups>
+      <PredicateGroup Id="LengthGroup">
+        <PredicateReferences MatchAtLeast="1">
+          <PredicateReference Id="LengthRange" />
+        </PredicateReferences>
+      </PredicateGroup>
+      <PredicateGroup Id="CharacterClasses">
+        <UserHelpText>The password must have at least 3 of the following:</UserHelpText>
+        <PredicateReferences MatchAtLeast="3">
+          <PredicateReference Id="Lowercase" />
+          <PredicateReference Id="Uppercase" />
+          <PredicateReference Id="Number" />
+          <PredicateReference Id="Symbol" />
+        </PredicateReferences>
+      </PredicateGroup>
+    </PredicateGroups>
+  </PredicateValidation>
+</PredicateValidations>
+```
+
+In het volgende voorbeeld ziet u hoe u de helptekst van een predicaatvalidatiegroep lokaliseren.
+
+```XML
+<LocalizedString ElementType="InputValidation" ElementId="CustomPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
+```
+
+### <a name="uxelement"></a>UxElement (UxElement)
+
+De UxElement-waarde wordt gebruikt om een van de gebruikersinterface-elementen te lokaliseren. In het volgende voorbeeld ziet u hoe u de knoppen Doorgaan lokaliseren en annuleren.
+
+```XML
+<LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
+<LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

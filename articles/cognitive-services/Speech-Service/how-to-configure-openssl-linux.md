@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: 350c2bf3c4d0fc0a16f1b393e7c8d8a372679797
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42960c25c4124203b64646fdc5cbca833b246e21
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78331141"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683170"
 ---
 # <a name="configure-openssl-for-linux"></a>OpenSSL voor Linux configureren
 
@@ -50,6 +50,8 @@ Stel omgevingsvariabele `SSL_CERT_FILE` in om op dat bestand te wijzen voordat u
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
+> [!NOTE]
+> Het is ook vermeldenswaard dat sommige distributies van Linux niet over een TMP of TMPDIR omgeving variabele gedefinieerd. Dit zal ertoe leiden dat de Speech SDK de Certificate Revocation List (CRL) elke keer downloadt, in plaats van de CRL op schijf te plaatsen voor hergebruik totdat deze verloopt. Als u de initiële verbindingsprestaties wilt verbeteren, u [een omgevingsvariabele met de naam TMPDIR maken en deze instellen op het pad van de door u gekozen tijdelijke map.](https://help.ubuntu.com/community/EnvironmentVariables).
 
 ## <a name="next-steps"></a>Volgende stappen
 

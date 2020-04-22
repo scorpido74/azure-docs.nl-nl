@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: ad1fcb67704e79f5aef62a59604e47f477804405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68385713"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680720"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT-bewaking en meldingen op afstand met Azure Logic Apps die uw IoT-hub en -postvak met elkaar verbinden
 
@@ -22,7 +22,7 @@ ms.locfileid: "68385713"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) kan u helpen bij het orkestreren van werkstromen voor on-premises en cloudservices, een of meer ondernemingen en in verschillende protocollen. Een logische app begint met een trigger, die vervolgens wordt gevolgd door een of meer acties die kunnen worden gesequenced met behulp van ingebouwde besturingselementen, zoals voorwaarden en iterators. Deze flexibiliteit maakt Logic Apps een ideale IoT-oplossing voor IoT-bewakingsscenario's. De komst van telemetriegegevens van een apparaat op een IoT Hub-eindpunt kan bijvoorbeeld logische app-werkstromen initiëren om de gegevens in een Azure Storage-blob te verwerken, e-mailwaarschuwingen verzenden om te waarschuwen voor gegevensafwijkingen, een technicusbezoek plannen als een apparaat een storing meldt , en ga zo maar door.
+[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) kan u helpen bij het orkestreren van werkstromen voor on-premises en cloudservices, een of meer ondernemingen en in verschillende protocollen. Een logische app begint met een trigger, die vervolgens wordt gevolgd door een of meer acties die kunnen worden gesequenced met behulp van ingebouwde besturingselementen, zoals voorwaarden en iterators. Deze flexibiliteit maakt Logic Apps een ideale IoT-oplossing voor IoT-bewakingsscenario's. De komst van telemetriegegevens van een apparaat op een IoT Hub-eindpunt kan bijvoorbeeld logische app-werkstromen initiëren om de gegevens in een Azure Storage-blob te verwerken, e-mailwaarschuwingen verzenden om te waarschuwen voor gegevensafwijkingen, een technicusbezoek plannen als een apparaat een storing meldt, enzovoort.
 
 ## <a name="what-you-learn"></a>Wat u leert
 
@@ -212,7 +212,7 @@ In de vorige sectie stelt u uw IoT-hub in om berichten met een temperatuurwaarsc
       Download de SMTP-informatie voor [Hotmail/Outlook.com,](https://support.office.com/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970) [Gmail](https://support.google.com/a/answer/176600?hl=en)en [Yahoo Mail](https://help.yahoo.com/kb/SLN4075.html).
 
       > [!NOTE]
-      > Mogelijk moet u SSL uitschakelen om de verbinding tot stand te brengen. Als dit het geval is en u SSL opnieuw wilt inschakelen nadat de verbinding is ingesteld, raadpleegt u de optionele stap aan het einde van deze sectie.
+      > Mogelijk moet u TLS/SSL uitschakelen om de verbinding tot stand te brengen. Als dit het geval is en u TLS opnieuw wilt inschakelen nadat de verbinding is gemaakt, raadpleegt u de optionele stap aan het einde van deze sectie.
 
    1. Selecteer **in** de vervolgkeuzelijst Nieuwe parameter toevoegen in de stap **E-mail verzenden** de optie **Van** **, Naar**, **Onderwerp** en **Hoofdtekst**. Klik of tik ergens op het scherm om het selectievak te sluiten.
 
@@ -224,7 +224,7 @@ In de vorige sectie stelt u uw IoT-hub in om berichten met een temperatuurwaarsc
 
    1. Selecteer **Opslaan** om de SMTP-verbinding op te slaan.
 
-1. (Optioneel) Als u SSL moest uitschakelen om een verbinding met uw e-mailprovider tot stand te brengen en deze opnieuw wilt inschakelen, voert u de volgende stappen uit:
+1. (Optioneel) Als u TLS moest uitschakelen om een verbinding met uw e-mailprovider tot stand te brengen en deze opnieuw wilt inschakelen, voert u de volgende stappen uit:
 
    1. Selecteer **API-verbindingen**in het deelvenster **Logic-app** onder **Hulpmiddelen voor ontwikkeling**.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4a6694a072231f98383c13e6a42aedf68f62ac93
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 52b7c582848dd24f6d9963a9d37c8f12c5db6149
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81533782"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678031"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een JavaScript-toepassing met één pagina (SPA)
 
@@ -47,10 +47,6 @@ In deze handleiding wordt de volgende bibliotheek gebruikt:
 |Bibliotheek|Beschrijving|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft-verificatiebibliotheek voor JavaScript|
-
-> [!NOTE]
-> *Msal.js* richt zich op het eindpunt van het Microsoft-identiteitsplatform, waarmee persoonlijke accounts en school- en werkaccounts kunnen inloggen en tokens kunnen aanschaffen. Het eindpunt van het Microsoft-identiteitsplatform heeft [een aantal beperkingen.](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)
-> Zie de [eindpuntvergelijkingshandleiding](../azuread-dev/azure-ad-endpoint-comparison.md)om de verschillen tussen de v1.0- en v2.0-eindpunten te begrijpen.
 
 <!--end-collapse-->
 

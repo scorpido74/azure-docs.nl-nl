@@ -1,24 +1,24 @@
 ---
-title: Overzicht van de Azure Automation Grpahical runbook SDK
-description: In dit artikel wordt beschreven hoe u de Azure Automation Graphical Runbook SDK gebruikt
+title: De Azure Automation grafische runbook SDK gebruiken
+description: In dit artikel wordt beschreven hoe u de Azure Automation grafische runbook SDK gebruiken.
 services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: d4dcf6681ade977847c204dd1237f7cd7a67775e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21f6ff8078d5a1db88b2fde33c9063a56b3ee43a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75418250"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682911"
 ---
-# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>De Azure Automation Graphical runbook SDK gebruiken
+# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>De Azure Automation grafische runbook SDK gebruiken
 
-[Grafische runbooks](automation-graphical-authoring-intro.md) zijn runbooks die helpen bij het beheren van de complexiteit van de onderliggende Windows PowerShell- of PowerShell-werkstroomcode. Met de Microsoft Azure Automation Graphical Authoring SDK kunnen ontwikkelaars grafische runbooks maken en bewerken voor gebruik met de Azure Automation-service. De volgende codefragmenten tonen de basisstroom van het maken van een grafisch runbook van uw code.
+[Grafische runbooks](automation-graphical-authoring-intro.md) helpen bij het beheren van de complexiteit van de onderliggende Windows PowerShell- of PowerShell-werkstroomcode. Met de Microsoft Azure Automation grafische ontwerpSDK kunnen ontwikkelaars grafische runbooks maken en bewerken voor gebruik met Azure Automation. In dit artikel worden basisstappen beschreven bij het maken van een grafisch runbook van uw code.
 
-## <a name="pre-requisites"></a>Vereisten
+## <a name="prerequisites"></a>Vereisten
 
-Als u wilt `Microsoft.Azure.Automation.GraphicalRunbook.Model` beginnen, importeert u het pakket in uw project.
+Importeer `Microsoft.Azure.Automation.GraphicalRunbook.Model` het pakket in uw project.
 
 ## <a name="create-a-runbook-object-instance"></a>Een voorbeeld van een runbook-object maken
 
@@ -89,7 +89,7 @@ var initializeRunbookVariable = runbook.AddActivity(
  });
 ```
 
-Activiteiten worden uitgevoerd door de volgende `Orchestrator.GraphRunbook.Model` klassen in de naamruimte:
+Activiteiten worden uitgevoerd door de volgende `Orchestrator.GraphRunbook.Model` klassen in de naamruimte.
 
 |Klasse  |Activiteit  |
 |---------|---------|
@@ -99,9 +99,9 @@ Activiteiten worden uitgevoerd door de volgende `Orchestrator.GraphRunbook.Model
 |WorkflowScriptActiviteit     | Hiermee wordt een blok PowerShell- of PowerShell-werkstroomcode (afhankelijk van het runbook-type) uitgevoerd in de context van het runbook. Dit is een krachtig hulpmiddel, maar gebruik het niet te veel: de gebruikersinterface toont dit scriptblok als tekst; de uitvoeringsengine behandelt het opgegeven blok als een zwart vak en doet geen pogingen om de inhoud ervan te analyseren, behalve een basissyntaxiscontrole. Als u slechts één PowerShell-opdracht hoeft aan te roepen, geeft u de voorkeur aan CommandActivity.        |
 
 > [!NOTE]
-> Ontlenen aan uw eigen activiteiten niet aan de meegeleverde klassen: Azure Automation kan geen runbooks gebruiken met aangepaste activiteitstypen.
+> Ontlenen uw eigen activiteiten niet aan de meegeleverde klassen. Azure Automation kan geen runbooks gebruiken met aangepaste activiteitstypen.
 
-CommandActivity en InvokeRunbookActivity parameters moeten worden opgegeven als waardedescriptoren, geen directe waarden. Waardebeschrijvingen geven aan hoe de werkelijke parameterwaarden moeten worden geproduceerd. De volgende waardebeschrijvingen worden momenteel verstrekt:
+U moet `CommandActivity` `InvokeRunbookActivity` parameters opgeven en als waardebeschrijvingen, niet als directe waarden. Waardebeschrijvingen geven aan hoe de werkelijke parameterwaarden moeten worden geproduceerd. De volgende waardebeschrijvingen worden momenteel verstrekt:
 
 
 |Descriptor  |Definitie  |
@@ -115,7 +115,7 @@ CommandActivity en InvokeRunbookActivity parameters moeten worden opgegeven als 
 |PowerShellExpressionValueDescriptor     | Hiermee geeft u een PowerShell-expressie in vrije vorm op die vlak voor een beroep op de activiteit wordt geëvalueerd.  <br/>Dit is een krachtig hulpmiddel, maar gebruik het niet te veel: de gebruikersinterface zal deze expressie als tekst weergeven; de uitvoeringsengine behandelt het opgegeven blok als een zwart vak en doet geen pogingen om de inhoud ervan te analyseren, behalve een basissyntaxiscontrole. Indien mogelijk, liever meer specifieke waarde beschrijvingen.      |
 
 > [!NOTE]
-> Ontlenen uw eigen waardebeschrijvingen niet aan de meegeleverde klassen: Azure Automation kan geen runbooks gebruiken met aangepaste waardebeschrijvingen.
+> Ontlenen uw eigen waarde beschrijvingen niet van de verstrekte klassen. Azure Automation kan geen runbooks gebruiken met aangepaste waardebeschrijvingstypen.
 
 Instantiate koppelt verbindingsactiviteiten en voeg ze toe aan het runbook:
 
@@ -136,10 +136,9 @@ Met `Orchestrator.GraphRunbook.Model.Serialization.RunbookSerializer` als beste 
 var serialized = RunbookSerializer.Serialize(runbook);
 ```
 
-Deze tekenreeks kan worden opgeslagen in een bestand met de extensie **.graphrunbook** en dit bestand kan worden geïmporteerd in Azure Automation.
+U deze tekenreeks opslaan in een bestand met de extensie **.graphrunbook.** De bijbehorende runbook kan worden geïmporteerd in Azure Automation.
 De geserialiseerde indeling kan veranderen `Orchestrator.GraphRunbook.Model.dll`in de toekomstige versies van . We beloven achterwaartse compatibiliteit: elke runbook geserialiseerd met een oudere versie van `Orchestrator.GraphRunbook.Model.dll` kan worden gedeserialiseerd door een nieuwere versie. Forward compatibiliteit is niet gegarandeerd: een runbook geserialiseerd met een nieuwere versie kan niet worden deserializable door oudere versies.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Inleiding voor [grafische ontwerpen](automation-graphical-authoring-intro.md) voor meer informatie over grafische runbooks in Azure Automation
-
+Zie [Inleiding voor](automation-graphical-authoring-intro.md)grafische ontwerpen voor meer informatie over grafische runbooks in Azure Automation.

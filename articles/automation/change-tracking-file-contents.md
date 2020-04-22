@@ -1,16 +1,16 @@
 ---
 title: Wijzigingen in bestandsinhoud weergeven met Azure Automation
-description: Gebruik de functie bestandsinhoudswijziging van Bijhouden wijzigen om de inhoud van een gewijzigd bestand weer te geven.
+description: Gebruik de functie bestandsinhoudswijziging van Change Tracking om de inhoud van een gewijzigd bestand weer te geven.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 23c4f24e430d58895eb551c3e2cb62b5f0003ac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57c3c2c7a0c923921c727ccea7839940457bc1ee
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75418816"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683003"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Inhoud weergeven van een bestand dat wordt bijgehouden met Change Tracking
 
@@ -20,9 +20,9 @@ Met het bijhouden van bestandsinhoud u de inhoud van een bestand bekijken voor e
 
 * Voor het opslaan van bestandsinhoud is een standaardopslagaccount vereist met het implementatiemodel Resource Manager. Premium- en klassieke opslagaccounts voor implementatiemodellen mogen niet worden gebruikt. Zie [Over Azure-opslagaccounts](../storage/common/storage-create-storage-account.md) voor meer informatie over opslagaccounts
 
-* Het gebruikte opslagaccount kan slechts 1 automatiseringsaccount hebben aangesloten.
+* Het gebruikte opslagaccount kan slechts 1 Automation-account hebben aangesloten.
 
-* [Change Tracking](automation-change-tracking.md) is ingeschakeld in uw automatiseringsaccount.
+* [Change Tracking](automation-change-tracking.md) is ingeschakeld in uw Automatiseringsaccount.
 
 ## <a name="enable-file-content-tracking"></a>Bijhouden van bestandsinhoud inschakelen
 
@@ -44,19 +44,19 @@ Met het bijhouden van bestandsinhoud u de inhoud van een bestand bekijken voor e
 
 De volgende stappen lopen u door het inschakelen van wijzigingstracking voor een bestand:
 
-1. Selecteer op de pagina **Instellingen bewerken** van **Bijhouden wijzigen**de optie **windows-bestanden** of **Linux-bestanden** en klik op **Toevoegen**
+1. Selecteer op de pagina Instellingen bewerken van **Bijhouden wijzigen**het **tabblad Windows-bestanden** of **Linux-bestanden** en klik op **Toevoegen**
 
-1. Vul de gegevens voor het bestandspad in en selecteer **Waar** onder **Bestandsinhoud uploaden voor alle instellingen**. Met deze instelling u alleen bestandsinhoud bijhouden voor dat bestandspad.
+1. Vul de gegevens voor het bestandspad in en selecteer Waar onder **Bestandsinhoud uploaden voor alle instellingen**. Met deze instelling u alleen bestandsinhoud bijhouden voor dat bestandspad.
 
    ![een linux-bestand toevoegen](./media/change-tracking-file-contents/add-linux-file.png)
 
 ## <a name="viewing-the-contents-of-a-tracked-file"></a>De inhoud van een bijgehouden bestand weergeven
 
-1. Zodra een wijziging is gedetecteerd voor het bestand of een bestand in het pad, wordt deze weergegeven in de portal. Selecteer de bestandswijziging in de lijst met wijzigingen. Het deelvenster **Details wijzigen** wordt weergegeven.
+1. Zodra een wijziging is gedetecteerd voor het bestand of een bestand in het pad, wordt deze weergegeven in de portal. Selecteer de bestandswijziging in de lijst met wijzigingen. Het deelvenster Details wijzigen wordt weergegeven.
 
    ![lijstwijzigingen](./media/change-tracking-file-contents/change-list.png)
 
-1. Op de pagina **Details wijzigen** ziet u de standaard voor en na bestandsinformatie, linksboven, klik op Wijzigingen **in bestandsinhoud weergeven** om de inhoud van het bestand te bekijken.
+1. In het deelvenster Details wijzigen ziet u de standaard voor en na bestandsgegevens. Selecteer **Wijzigingen in bestandsinhoud weergeven** om de inhoud van het bestand te bekijken.
 
    ![details wijzigen](./media/change-tracking-file-contents/change-details.png)
 

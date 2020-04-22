@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a0cb7957008308425d91abb3e0f828cc40301736
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064930"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683313"
 ---
 # <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
 
@@ -40,7 +40,7 @@ Microsoft werkt samen met Gemalto om de Azure Dedicated HSM-service te leveren. 
 
 ### <a name="q-what-is-an-hsm-used-for"></a>V: Waar wordt een HSM voor gebruikt?
 
-HSM's worden gebruikt voor het opslaan van cryptografische sleutels die worden gebruikt voor cryptografische functionaliteit, zoals SSL (secure socket layer), het versleutelen van gegevens, PKI (public key infrastructure), DRM (digital rights management) en het ondertekenen van documenten.
+HSM's worden gebruikt voor het opslaan van cryptografische sleutels die worden gebruikt voor cryptografische functionaliteit, zoals TLS (transportlaagbeveiliging), het versleutelen van gegevens, PKI (public key infrastructure), DRM (digital rights management) en het ondertekenen van documenten.
 
 ### <a name="q-how-does-dedicated-hsm-work"></a>V: Hoe werkt Dedicated HSM?
 
@@ -69,6 +69,7 @@ Vanaf eind maart 2019 is Dedicated HSM beschikbaar in de 14 onderstaande regio's
 * VS - oost
 * VS - oost 2
 * VS - west
+* VS - west 2
 * VS - zuid-centraal
 * Azië - zuidoost
 * Azië - oost
@@ -84,6 +85,10 @@ Vanaf eind maart 2019 is Dedicated HSM beschikbaar in de 14 onderstaande regio's
 * Canada - oost
 * Australië - oost
 * Australië - zuidoost
+* Zwitserland Noord
+* Zwitserland West
+* VS (overheid) - Virginia
+* VS (overheid) - Texas
 
 ## <a name="interoperability"></a>Interoperabiliteit
 
@@ -132,13 +137,13 @@ Ja. Raadpleeg de Gemalto migratiegids.
 
 ### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>V: Hoe bepaal ik of ik Azure Key Vault of Azure Dedicated HSM wil gebruiken?
 
-Azure Dedicated HSM is de juiste keuze voor bedrijven die migreren naar on-premises Azure-toepassingen die HSM's gebruiken. Speciale HSM's bieden een optie om een toepassing te migreren met minimale wijzigingen. Als cryptografische bewerkingen worden uitgevoerd in de code van de toepassing die wordt uitgevoerd in een Azure VM of Web App, kunnen ze Dedicated HSM gebruiken. Over het algemeen worden krimpfoliesoftware uitgevoerd in IaaS-modellen (infrastructure as a service), die HSM's als sleutelarchief ondersteunen, kunnen Dedicated HSM gebruiken, zoals Application gateway of traffic manager voor keyless SSL, ADCS (Active Directory Certificate Services) of vergelijkbare PKI-hulpprogramma's, hulpprogramma's/toepassingen die worden gebruikt voor het ondertekenen van documenten, codeondertekening of een SQL Server (IaaS) geconfigureerd met TDE (transparante databaseversleuteling) met hoofdsleutel in een HSM met behulp van een EKM -leverancier (uitbreidbare sleutelbeheerprovider). Azure Key Vault is geschikt voor 'born-in-cloud'-toepassingen of voor versleuteling in rustscenario's waarbij klantgegevens worden verwerkt door PaaS (platform as a service) of SaaS (Software as a service) scenario's zoals Office 365 Customer Key, Azure Information Protection , Azure Disk Encryption, Azure Data Lake Store-versleuteling met door de klant beheerde sleutel, Azure Storage-versleuteling met door de klant beheerde sleutel en Azure SQL met door de klant beheerde sleutel.
+Azure Dedicated HSM is de juiste keuze voor bedrijven die migreren naar on-premises Azure-toepassingen die HSM's gebruiken. Speciale HSM's bieden een optie om een toepassing te migreren met minimale wijzigingen. Als cryptografische bewerkingen worden uitgevoerd in de code van de toepassing die wordt uitgevoerd in een Azure VM of Web App, kunnen ze Dedicated HSM gebruiken. Over het algemeen worden krimpfoliesoftware uitgevoerd in IaaS-modellen (infrastructure as a service), die HSM's als sleutelarchief ondersteunen, kunnen Dedicated HSM gebruiken, zoals Application gateway of traffic manager voor keyless TLS, ADCS (Active Directory Certificate Services) of vergelijkbare PKI-hulpprogramma's, hulpprogramma's/toepassingen die worden gebruikt voor het ondertekenen van documenten, codeondertekening of een SQL Server (IaaS) geconfigureerd met TDE (transparante databaseversleuteling) met hoofdsleutel in een HSM met behulp van een EKM -leverancier (uitbreidbare sleutelbeheerprovider). Azure Key Vault is geschikt voor 'born-in-cloud'-toepassingen of voor versleuteling in rustscenario's waarbij klantgegevens worden verwerkt door PaaS (platform as a service) of SaaS (Software as a service) scenario's zoals Office 365 Customer Key, Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store encryptie met customer-managed key, Azure Storage encryptie met customer managed key en Azure SQL met customer managed key.
 
 ### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>V: Welke gebruiksscenario's passen het beste bij Azure Dedicated HSM?
 
 Azure Dedicated HSM is het meest geschikt voor migratiescenario's. Dit betekent dat als u on-premises toepassingen migreert naar Azure en die al HSM's gebruiken. Dit biedt een optie voor weinig wrijving om te migreren naar Azure met minimale wijzigingen in de toepassing. Als cryptografische bewerkingen worden uitgevoerd in de code van de toepassing die wordt uitgevoerd in Azure VM of Web App, kan Dedicated HSM worden gebruikt. Over het algemeen kunnen in krimpenverpakte software die wordt uitgevoerd in IaaS-modellen (infrastructure as a service) die HSM's als sleutelwinkel ondersteunen, Dedicated HSM gebruiken, zoals:
 
-* Toepassingsgateway of verkeersbeheerder voor keyless SSL
+* Toepassingsgateway of verkeersbeheerder voor keyless TLS
 * ADCS (Active Directory Certificate Services)
 * Vergelijkbare PKI-hulpprogramma's
 * Hulpprogramma's/toepassingen die worden gebruikt voor documentondertekening

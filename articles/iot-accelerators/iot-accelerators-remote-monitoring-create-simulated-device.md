@@ -8,12 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78943059"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682012"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Een nieuw gesimuleerd apparaat maken en testen
 
@@ -30,7 +31,7 @@ In het tweede scenario wil Contoso een nieuw slim gloeilampapparaat testen. Als 
 
 *Eigenschappen*
 
-| Name                     | Waarden                      |
+| Naam                     | Waarden                      |
 | ------------------------ | --------------------------- |
 | Kleur                    | Wit, Rood, Blauw            |
 | Helderheid               | 0 tot 100                    |
@@ -40,7 +41,7 @@ In het tweede scenario wil Contoso een nieuw slim gloeilampapparaat testen. Als 
 
 In de volgende tabel worden de gegevens weergegeven die de gloeilampen naar de cloud rapporteert als een gegevensstroom:
 
-| Name   | Waarden      |
+| Naam   | Waarden      |
 | ------ | ----------- |
 | Status | "aan", "off" |
 | Temperatuur | Graden F |
@@ -53,7 +54,7 @@ In de volgende tabel worden de gegevens weergegeven die de gloeilampen naar de c
 
 In de volgende tabel worden de acties weergegeven die het nieuwe apparaat ondersteunt:
 
-| Name        |
+| Naam        |
 | ----------- |
 | Inschakelen   |
 | Schakel  |
@@ -62,7 +63,7 @@ In de volgende tabel worden de acties weergegeven die het nieuwe apparaat onders
 
 In de volgende tabel ziet u de oorspronkelijke status van het apparaat:
 
-| Name                     | Waarden |
+| Naam                     | Waarden |
 | ------------------------ | -------|
 | Initiële kleur            | Wit  |
 | Initiële helderheid       | 75     |

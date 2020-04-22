@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 288d4e4d0c5faa6bb2b51451fb36bbb6d666c9eb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756412"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683183"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>Streaming-export van diagnostische telemetrie van Azure SQL Database configureren
 
@@ -26,7 +26,7 @@ Je leert ook over de bestemmingen waarnaar je deze diagnostische telemetrie stre
 
 - [Log Analytics en SQL Analytics](#stream-into-sql-analytics)
 - [Event Hubs](#stream-into-event-hubs)
-- [Azure Storage](#stream-into-azure-storage)
+- [Azure-opslag](#stream-into-azure-storage)
 
 ## <a name="diagnostic-telemetry-for-export-for-azure-sql-database"></a>Diagnostische telemetrie voor exporteren voor Azure SQL Database
 
@@ -363,7 +363,7 @@ U SQL Analytics gebruiken als een hiërarchisch dashboard om uw SQL-databasebron
 
 ## <a name="stream-into-event-hubs"></a>Streamen in Event Hubs
 
-U SQL Database-statistieken en bronlogboeken streamen naar gebeurtenishubs met behulp van de ingebouwde **stream naar een gebeurtenishuboptie** in de Azure-portal. U de regel-ID servicebus ook inschakelen met behulp van diagnostische instellingen via PowerShell-cmdlets, de Azure CLI of de Azure Monitor REST API.
+U SQL Database-statistieken en bronlogboeken streamen naar gebeurtenishubs met behulp van de ingebouwde **stream naar een gebeurtenishuboptie** in de Azure-portal. U de regel-ID servicebus ook inschakelen met behulp van diagnostische instellingen via PowerShell-cmdlets, de Azure CLI of de Azure Monitor REST API. Zorg ervoor dat de gebeurtenishub zich in dezelfde regio bevindt als uw database en server.
 
 ### <a name="what-to-do-with-metrics-and-resource-logs-in-event-hubs"></a>Wat te doen met statistieken en bronlogboeken in gebeurtenishubs
 

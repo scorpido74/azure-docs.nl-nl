@@ -3,12 +3,12 @@ title: Zelfstudie - Back-ups maken van SQL Server-databases naar Azure
 description: In deze zelfstudie leert u hoe u een back-up maakt van een SQL Server-database die wordt uitgevoerd op een Azure VM naar een Azure Backup Recovery Services-kluis.
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.openlocfilehash: 3216404b04647e2fb5f15beb09b9a4ccd6648bba
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f1d76fe0dfa428688714b8383c3974ac63195681
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74171888"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680734"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Een back-up maken van een SQL Server-database in een Azure VM
 
@@ -64,7 +64,7 @@ Vermijd bij databasenamen het volgende:
 * Vierkante haak sluiten ‘]’
 * Databases namen die beginnen met 'F:\'
 
-We hebben wel aliasing voor niet-ondersteunde tekens in Azure-tabellen, maar we raden aan deze te vermijden. [Meer informatie](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+We hebben wel aliasing voor niet-ondersteunde tekens in Azure-tabellen, maar we raden aan deze te vermijden. [Meer informatie](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

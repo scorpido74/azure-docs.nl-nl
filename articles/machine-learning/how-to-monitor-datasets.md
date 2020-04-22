@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 0a7a89b4ff1f6deb94c545e64b4584d7959d573a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: e49c621d92a8aa604b5f95291c5d80c0141f41dd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546385"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682726"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Gegevensdrift (voorbeeld) detecteren op gegevenssets
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -104,7 +104,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Zie het [voorbeeldnotitieblok](https://aka.ms/azureml-tsd-notebook) `timeseries` of de [SDK-documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)voor gegevenssets voor een volledig voorbeeld van het gebruik van de eigenschap van gegevenssets.
+Zie het [voorbeeldnotitieblok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) `timeseries` of de [SDK-documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)voor gegevenssets voor een volledig voorbeeld van het gebruik van de eigenschap van gegevenssets.
 
 #### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
@@ -131,7 +131,7 @@ Deze tabel bevat basisinstellingen die worden gebruikt voor de gegevenssetmonito
 
 | Instelling | Beschrijving | Tips | Veranderlijk | 
 | ------- | ----------- | ---- | ------- | 
-| Name | Naam van de gegevenssetmonitor. | | Nee |
+| Naam | Naam van de gegevenssetmonitor. | | Nee |
 | Gegevensset Basislijn | Tabeltabelgegevensset die in de loop van de tijd als basislijn wordt gebruikt voor de vergelijking van de doelgegevensset. | De basislijngegevensset moet functies gemeen hebben met de doelgegevensset. Over het algemeen moet de basislijn worden ingesteld op de trainingsgegevensset van een model of een segment van de doelgegevensset. | Nee |
 | Doelgegevensset | Tabeltabelgegevensset met tijdstempelkolom opgegeven die wordt geanalyseerd voor gegevensdrift. | De doelgegevensset moet functies gemeen hebben met de `timeseries` basislijngegevensset en moet een gegevensset zijn waaraan nieuwe gegevens worden toegevoegd. Historische gegevens in de doelgegevensset kunnen worden geanalyseerd of nieuwe gegevens kunnen worden gecontroleerd. | Nee | 
 | Frequency | De frequentie die wordt gebruikt om de pijplijntaak te plannen en historische gegevens te analyseren als er een backfill wordt uitgevoerd. Opties zijn dagelijks, wekelijks of maandelijks. | Pas deze instelling aan om een vergelijkbare grootte van gegevens op te nemen als de basislijn. | Nee | 

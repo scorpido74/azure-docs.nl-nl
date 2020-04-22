@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 768fa9ca2080fc9a58fb321e62d8d61a608f9564
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7a0f0b96f8140118f1c74ecbd4368aac49d7ece6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415261"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684298"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Commerciële marktplaatstransacties mogelijkheden
 
@@ -202,11 +202,11 @@ Wanneer abonnements- of betalenper-gebruik-prijsmodellen zijn geselecteerd, tree
 * Klanten kopen doorgaans met de Enterprise Agreement of een pay-as-you-go-overeenkomst met creditcard. Het type overeenkomst bepaalt de facturerings-, facturerings-, incasso- en uitbetalingstiming.
 
 >[!NOTE]
->Alle rapportages en inzichten voor de transact publishing-optie zijn beschikbaar via de sectie Insights van de sectie Cloud Partner Portal of Analytics van partnercentrum.
+>Alle rapportages en inzichten voor de optie voor het publiceren van transacties zijn beschikbaar via de sectie Analytics van partnercentrum.
 
 #### <a name="billing-questions-and-support"></a>Vragen en ondersteuning voor facturering
 
-Zie de [Uitgeversovereenkomst](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf) (beschikbaar in de Cloud Partner Portal) voor meer informatie en juridisch beleid.
+Zie de [Uitgeversovereenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (beschikbaar in partnercentrum) voor meer informatie en juridisch beleid.
 
 Neem contact op met de ondersteuning van [commerciële marktplaatsuitgevers](https://aka.ms/marketplacepublishersupport)om hulp te krijgen bij factureringsvragen.
 

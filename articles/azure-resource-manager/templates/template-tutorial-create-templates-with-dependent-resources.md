@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bbe973f5c701f55705fe197f56f5f8ab1d9e8c68
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e589fa8ae5627746ec1f04e2098a7b592f00dc24
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260734"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684938"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Zelfstudie: ARM-sjablonen maken met afhankelijke bronnen
 
@@ -96,11 +96,11 @@ Wanneer u de sjabloon in deze sectie verkent, probeert u om deze vragen te beant
 
     ![Visual Studio Code Azure Resource Manager-sjablonen virtueel netwerk afhankelijk](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
-    Met het element dependsOn kunt u één resource als afhankelijk van een of meer resources definiëren. Met het element dependsOn kunt u één resource als afhankelijk van een of meer resources definiëren.  Deze bron is afhankelijk van een andere bron:
+    Met het element dependsOn kunt u één resource als afhankelijk van een of meer resources definiëren. Deze bron is afhankelijk van een andere bron:
 
     * `Microsoft.Network/networkSecurityGroups`
 
-1. Breid de vijftig bronnen uit. Het resourcetype is `Microsoft.Network/networkInterfaces`. De resource is afhankelijk van twee andere resources:
+1. Vouw de vijfde resource uit. Het resourcetype is `Microsoft.Network/networkInterfaces`. De resource is afhankelijk van twee andere resources:
 
     * `Microsoft.Network/publicIPAddresses`
     * `Microsoft.Network/virtualNetworks`
@@ -163,7 +163,7 @@ Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt,
 
 1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
-3. Selecteer de naam van de resourcegroep.  U ziet in totaal zes resources in de resourcegroep.
+3. Selecteer de naam van de resourcegroep. U ziet in totaal zes resources in de resourcegroep.
 4. Selecteer **Brongroep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen

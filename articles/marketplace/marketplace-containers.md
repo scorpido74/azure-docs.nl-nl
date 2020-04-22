@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 882d428d7a8a9b56408aaa68964fa1e36c7cc7c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80bcf0d5d37a44cee2aab38161abac619542204a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277303"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684329"
 ---
 # <a name="containers-offer-publishing-guide"></a>Publicatiegids voor containers
 
@@ -41,9 +41,9 @@ Microsoft ondersteunt momenteel gratis byol-licentiemodellen (bring-your-own-lic
 
 Als je dat nog niet gedaan hebt, 
 
-- [Registreer](https://azuremarketplace.microsoft.com/sell) op de marktplaats.
+- [Meer informatie](https://azuremarketplace.microsoft.com/sell) over de marktplaats.
 
-Als u bent geregistreerd en een nieuwe aanbieding maakt of aan een bestaand aanbod werkt,
+Als u zich wilt registreren in partnercentrum, begint u met het maken van een nieuwe aanbieding of werkt u aan een bestaand aanbieding:
 
-- [Meld u aan bij Cloud Partner Portal](https://cloudpartner.azure.com) om uw aanbieding te maken of te voltooien.
-- Zie [Containers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) voor meer informatie.
+- [Meld u aan bij Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te voltooien.
+- Zie [een Azure-containeraanbieding maken](./partner-center-portal/create-azure-container-offer.md) voor meer informatie.

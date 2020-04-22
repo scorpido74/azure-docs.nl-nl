@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 45855038e60dcdc3be4f98cfdceed69df5e8c946
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2f33fc8b1bdd15b53ad9130b5cc598dd6d5ee1a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286316"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684631"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Een AppSource- en Azure Marketplace-vermelding inschakelen met behulp van Azure Active Directory
 
@@ -87,5 +87,10 @@ Gebruik Azure AD om een van de volgende acties te ondersteunen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zorg ervoor dat u zich hebt [geregistreerd in de Azure Marketplace.](https://azuremarketplace.microsoft.com/sell)
-- Bekijk [hoe u een Partner Center-account maakt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) voor meer informatie over het maken of voltooien van uw aanbieding.
+Als je dat nog niet gedaan hebt, 
+
+- [Meer informatie](https://azuremarketplace.microsoft.com/sell) over de marktplaats.
+
+Als u zich wilt registreren in partnercentrum, begint u met het maken van een nieuwe aanbieding of werkt u aan een bestaand aanbieding:
+
+- [Meld u aan bij Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te voltooien.

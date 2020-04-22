@@ -1,5 +1,5 @@
 ---
-title: Azure Update Beheer gebruiken met clients Configuration Manager
+title: Azure Automation Update Management gebruiken met clients Configuration Manager
 description: Dit artikel is bedoeld om u te helpen bij het configureren van Microsoft Endpoint Configuration Manager met deze oplossing om software-updates te implementeren voor ConfigMgr-clients.
 services: automation
 ms.subservice: update-management
@@ -7,18 +7,18 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: f0ca836e3b53c3cce755d45b50fe168073f0bbaa
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 32a077c476d9669c3f32bd4040fdc8ff90156c19
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81618722"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678731"
 ---
 # <a name="deploy-updates-to-microsoft-endpoint-configuration-manager-clients-with-update-management"></a>Updates implementeren voor Microsoft Endpoint Configuration Manager-clients met Updatebeheer
 
 Klanten die hebben geïnvesteerd in Microsoft Endpoint Configuration Manager om pc's, servers en mobiele apparaten te beheren, vertrouwen ook op de kracht en volwassenheid ervan bij het beheren van software-updates als onderdeel van hun software-updatemanagementcyclus (SOM).
 
-U beheerde Windows-servers rapporteren en bijwerken door implementaties van software-updates te maken en vooraf te fasen in Configuration Manager en gedetailleerde status te krijgen van voltooide update-implementaties met behulp van de [oplossing Updatebeheer](automation-update-management.md). Als u Configuration Manager gebruikt voor rapportage over de naleving van updates, maar niet voor het beheren van update-implementaties met uw Windows-servers, u doorgaan met rapporteren aan Configuration Manager terwijl beveiligingsupdates worden beheerd met de updatebeheeroplossing.
+U beheerde Windows-servers rapporteren en bijwerken door implementaties van software-updates te maken en vooraf te fasen in Configuration Manager en gedetailleerde status te krijgen van voltooide update-implementaties met behulp van [UpdateBeheer](automation-update-management.md). Als u Configuration Manager gebruikt voor rapportage over de naleving van updates, maar niet voor het beheren van update-implementaties met uw Windows-servers, u doorgaan met rapporteren aan Configuration Manager terwijl beveiligingsupdates worden beheerd met de updatebeheeroplossing.
 
 ## <a name="prerequisites"></a>Vereisten
 

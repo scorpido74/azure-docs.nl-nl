@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2660e4a348d2ffd71f912ff80c36a5a9a3c9fe88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 910f284eedbf50be5b58b6c18f02e50adda35e9a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75417782"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680007"
 ---
-# <a name="migrate-your-oms-update-deployments-to-azure"></a>Uw OMS-updateimplementaties migreren naar Azure
+# <a name="migrate-your-oms-update-deployments-to-azure"></a>Uw OMS-update-implementaties migreren naar Azure
 
-De Operations Management Suite (OMS)-portal wordt [afgeschaft.](../azure-monitor/platform/oms-portal-transition.md) Alle functionaliteit die beschikbaar was in de OMS-portal voor Updatebeheer is beschikbaar in de Azure-portal. In dit artikel vindt u de informatie die u nodig hebt om te migreren naar de Azure-portal.
+De Operations Management Suite (OMS)-portal wordt [afgeschaft.](../azure-monitor/platform/oms-portal-transition.md) Alle functionaliteit die beschikbaar was in de OMS-portal voor Updatebeheer is beschikbaar in de Azure-portal, via Azure Monitor-logboeken. In dit artikel vindt u de informatie die u nodig hebt om te migreren naar de Azure-portal.
 
 ## <a name="key-information"></a>Belangrijkste informatie
 
@@ -23,7 +23,7 @@ De Operations Management Suite (OMS)-portal wordt [afgeschaft.](../azure-monitor
 
 ## <a name="access-the-azure-portal"></a>Naar Azure Portal gaan
 
-Klik in uw OMS-werkruimte op **Openen in Azure.** Hiermee wordt genavigeerd naar de log analytics-werkruimte die OMS heeft gebruikt.
+Klik in uw OMS-werkruimte op **Openen in Azure.** Met deze selectie navigeert u naar de werkruimte Log Analytics die OMS heeft gebruikt.
 
 ![Openen in Azure - OMS-portal](media/migrate-oms-update-deployments/link-to-azure-portal.png)
 
@@ -31,11 +31,13 @@ Klik in de Azure-portal op **Automatiseringsaccount**
 
 ![Azure Monitor-logboeken](media/migrate-oms-update-deployments/log-analytics.png)
 
-Klik in uw automatiseringsaccount op **Updatebeheer** om Updatebeheer te openen.
+Klik in uw automatiseringsaccount op **Beheer bijwerken**.
 
 ![Updatebeheer](media/migrate-oms-update-deployments/azure-automation.png)
 
-In de toekomst u rechtstreeks naar de Azure-portal gaan, onder **Alle services**de optie **Automatiseringsaccounts** selecteren onder **Beheergereedschappen,** het juiste automatiseringsaccount selecteren en op **Beheer bijwerken**klikken.
+Selecteer in de Azure-portal **Automatiseringsaccounts** onder **Alle services**. 
+
+Selecteer **onder Beheerhulpprogramma's**het juiste automatiseringsaccount en klik op **Beheer bijwerken**.
 
 ## <a name="recreate-existing-deployments"></a>Bestaande implementaties opnieuw maken
 
@@ -49,13 +51,13 @@ Als u een nieuwe update-implementatie wilt maken, gaat u naar de Azure-portal, s
 
 ![Update-implementatie plannen](media/migrate-oms-update-deployments/schedule-update-deployment.png)
 
-Het deelvenster **Nieuwe update-implementatie** wordt geopend. Voer waarden in voor de eigenschappen die in de volgende tabel zijn beschreven en klik op **Maken:**
+Het deelvenster Nieuwe update-implementatie wordt geopend. Voer waarden in voor de eigenschappen die in de volgende tabel zijn beschreven en klik op **Maken:**
 
-Als machines kunnen worden bijgewerkt, selecteert u de opgeslagen zoekopdracht die wordt gebruikt door de bestaande OMS-implementatie.
+Als **u Machines wilt bijwerken,** selecteert u de opgeslagen zoekopdracht die wordt gebruikt door de bestaande OMS-implementatie.
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-|Name |Unieke naam voor het identificeren van de update-implementatie. |
+|Naam |Unieke naam voor het identificeren van de update-implementatie. |
 |Besturingssysteem| Selecteer **Linux** of **Windows**.|
 |Machines om bij te werken |selecteer een opgeslagen zoekopdracht of geïmporteerde groep, of kies Computer in de vervolgkeuzelijst en selecteer de afzonderlijke computers. Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**.</br> Zie [Computergroepen in Azure Monitorlogboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken |
 |Update classifications|Selecteer alle updateclassificaties die u nodig hebt. CentOS ondersteunt dit niet out of the box.|
@@ -72,4 +74,4 @@ Zoals eerder vermeld, kunnen de bestaande implementaties worden verwijderd uit d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Updatebeheer](automation-update-management.md) voor meer informatie over Updatebeheer in Azure
+Zie [Updatebeheer](automation-update-management.md)voor meer informatie over Updatebeheer in Azure.

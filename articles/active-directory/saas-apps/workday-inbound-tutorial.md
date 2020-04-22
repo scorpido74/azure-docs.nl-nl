@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7eb01f3997ac4ab2e439c00f07990c51ec3e3d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdf0cbfb91332d60516432a7a67fb10404d89113
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370351"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683837"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelfstudie: Werkdag configureren voor automatische gebruikersinrichting
 
@@ -281,6 +281,7 @@ In deze stap verleent u beleidsmachtigingen voor domeinbeveiliging voor de werkn
     ![Domeinbeveiligingsbeleid](./media/workday-inbound-tutorial/wd_isu_06.png "Domeinbeveiligingsbeleid")  
 2. Zoek **in het** tekstvak Domein naar de volgende domeinen en voeg deze één voor één toe aan het filter.  
    * *Externe rekeningvoorziening*
+   * *Werknemersgegevens: werknemers*
    * *Werknemersgegevens: rapporten van openbare werknemers*
    * *Persoonsgegevens: contactgegevens voor werk*
    * *Werknemersgegevens: alle posities*
@@ -312,6 +313,7 @@ In deze stap verleent u beleidsmachtigingen voor domeinbeveiliging voor de werkn
    | ---------- | ---------- |
    | Get and Put | Werknemersgegevens: rapporten van openbare werknemers |
    | Get and Put | Persoonsgegevens: contactgegevens voor werk |
+   | Ophalen | Werknemersgegevens: werknemers |
    | Ophalen | Werknemersgegevens: alle posities |
    | Ophalen | Werknemersgegevens: huidige personeelsinformatie |
    | Ophalen | Werknemersgegevens: bedrijfstitel op werknemersprofiel |
@@ -451,11 +453,15 @@ In deze stap maken we verbinding met Workday en Active Directory in de Azure-por
 
 1. Vul de sectie **Beheerdersreferenties** als volgt in:
 
-   * **Gebruikersnaam beheerder** : voer de gebruikersnaam in van het Workday-integratiesysteemaccount, waarbij de tenantdomeinnaam is toegevoegd. Het moet er ongeveer uitzien als: **gebruikersnaam\@tenant_name**
+   * **Gebruikersnaam op werkdagen** : voer de gebruikersnaam van het Workday-integratiesysteemaccount in, waarbij de tenantdomeinnaam is toegevoegd. Het moet er ongeveer uitzien als: **gebruikersnaam\@tenant_name**
 
-   * **Beheerderswachtwoord –** Voer het wachtwoord in van het Workday-integratiesysteemaccount
+   * **Workday-wachtwoord –** Voer het wachtwoord in van het Workday-integratiesysteemaccount
 
-   * **URL van tenant –** Voer de URL in naar het eindpunt van de Workday-webservices voor uw tenant. Deze waarde moet https://wd3-impl-services1.workday.com/ccx/service/contoso4eruit zien als: , waar *contoso4* wordt vervangen door uw juiste tenant naam en *wd3-impl* wordt vervangen door de juiste omgevingstekenreeks.
+   * **URL van de Workday Web Services API –** Voer de URL in naar het eindpunt van de Workday-webservices voor uw tenant. Deze waarde moet https://wd3-impl-services1.workday.com/ccx/service/contoso4eruit zien als: , waar *contoso4* wordt vervangen door uw juiste tenant naam en *wd3-impl* wordt vervangen door de juiste omgevingstekenreeks.
+
+     > [!NOTE]
+     > Standaard gebruikt de app Workday Web Services v21.1 als er geen versiegegevens zijn opgegeven in de URL. Als u een specifieke Workday Web Services API-versie wilt gebruiken, gebruikt u de URL-indeling:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > Voorbeeld: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
 
    * **Active Directory Forest -** De naam van uw Active Directory-domein, zoals geregistreerd bij de agent. Gebruik de vervolgkeuzelijst om het doeldomein voor inrichten te selecteren. Deze waarde is meestal een tekenreeks zoals: *contoso.com*
 
@@ -607,11 +613,16 @@ In de volgende secties worden stappen beschreven voor het configureren van gebru
 
 8. Vul de sectie **Beheerdersreferenties** als volgt in:
 
-   * **Gebruikersnaam beheerder** : voer de gebruikersnaam in van het Workday-integratiesysteemaccount, waarbij de tenantdomeinnaam is toegevoegd. Moet er ongeveer uitzien als:username@contoso4
+   * **Gebruikersnaam op werkdagen** : voer de gebruikersnaam van het Workday-integratiesysteemaccount in, waarbij de tenantdomeinnaam is toegevoegd. Moet er ongeveer uitzien als:username@contoso4
 
-   * **Beheerderswachtwoord –** Voer het wachtwoord in van het Workday-integratiesysteemaccount
+   * **Workday-wachtwoord –** Voer het wachtwoord in van het Workday-integratiesysteemaccount
 
-   * **URL van tenant –** Voer de URL in naar het eindpunt van de Workday-webservices voor uw tenant. Deze waarde moet https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resourceseruit zien als: , waar *contoso4* wordt vervangen door uw juiste tenant naam en *wd3-impl* wordt vervangen door de juiste omgevingstekenreeks. Als deze URL niet bekend is, werkt u samen met uw Workday-integratiepartner of ondersteuningsmedewerker om de juiste URL te bepalen die u wilt gebruiken.
+   * **URL van de Workday Web Services API –** Voer de URL in naar het eindpunt van de Workday-webservices voor uw tenant. Deze waarde moet https://wd3-impl-services1.workday.com/ccx/service/contoso4eruit zien als: , waar *contoso4* wordt vervangen door uw juiste tenant naam en *wd3-impl* wordt vervangen door de juiste omgevingstekenreeks. Als deze URL niet bekend is, werkt u samen met uw Workday-integratiepartner of ondersteuningsmedewerker om de juiste URL te bepalen die u wilt gebruiken.
+
+     > [!NOTE]
+     > Standaard gebruikt de app Workday Web Services v21.1 als er geen versiegegevens zijn opgegeven in de URL. Als u een specifieke Workday Web Services API-versie wilt gebruiken, gebruikt u de URL-indeling:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > Voorbeeld: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+
 
    * **Melding e-mail –** Voer uw e-mailadres in en schakel het selectievakje 'E-mail verzenden als er mislukt' in.
 
@@ -807,9 +818,13 @@ Deze functionaliteit wordt momenteel niet ondersteund. Aanbevolen tijdelijke opl
 
 De oplossing maakt momenteel gebruik van de volgende Workday API's:
 
-* Get_Workers (v21.1) voor het ophalen van werknemersinformatie
-* Maintain_Contact_Information (v26.1) voor de functie Terugschrijven van e-mail voor werk
-* Update_Workday_Account (v31.2) voor gebruikersnaam writeback functie
+* De **URL-indeling van** de Workday Web Services API die wordt gebruikt in de sectie **Beheerdersreferenties,** bepaalt de API-versie die wordt gebruikt voor Get_Workers
+  * Als de URL-indeling\#\#\#\#\.is: https:// werkdag\.com/ccx/service/tenantName, wordt API v21.1 gebruikt. 
+  * Als de URL-indeling\#\#\#\#\.is: https:// werkdag\.com/ccx/service/tenantName/Human\_Resources, wordt API v21.1 gebruikt 
+  * Als de URL-indeling\#\#\#\#\.is: https:// werkdag\.com/ccx/service/tenantName/Human\_Resources/v,\# \# \. \# wordt de opgegeven API-versie gebruikt. (Voorbeeld: als v34.0 is opgegeven, wordt het gebruikt.)  
+   
+* Workday E-mail terugschrijven functie maakt gebruik van Maintain_Contact_Information (v26.1) 
+* Workday Gebruikersnaam Writeback-functie gebruikt Update_Workday_Account (v31.2) 
 
 #### <a name="can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants"></a>Kan ik mijn Workday HCM-tenant configureren met twee Azure AD-tenant's?
 
@@ -1135,7 +1150,7 @@ Wanneer u op een van de controlelogboekrecords klikt, wordt de pagina **Activite
 
   Als er problemen zijn met uw kenmerktoewijzingsexpressies of als de binnenkomende Workday-gegevens problemen hebben (bijvoorbeeld: lege of null-waarde voor vereiste kenmerken), ziet u in dit stadium een fout met de ErrorCode met details over de fout.
 
-* **AD-exportrecord:** met deze logboekrecord wordt het resultaat weergegeven van de bewerking van AD-accountcreatie, samen met de kenmerkwaarden die in het proces zijn ingesteld. Gebruik informatie in de sectie *Aanvullende details* van de logboekrecord om problemen met de accountbewerking op te lossen. Hieronder wordt een voorbeeldrecord weergegeven, samen met aanwijzingen over hoe u elk veld interpreteert. In de sectie 'Aanvullende details' is de 'EventName' ingesteld op 'EntryExportAdd', de 'JoiningProperty' is ingesteld op de waarde van het kenmerk Matching ID, is de 'SourceAnchor' ingesteld op de WorkdayID (WID) die aan de record is gekoppeld en is de 'TargetAnchor' ingesteld op de waarde van het kenmerk AD "ObjectGuid" van de nieuw gemaakte gebruiker. 
+* **AD-exportrecord:** met deze logboekrecord wordt het resultaat weergegeven van de bewerking van AD-accountcreatie, samen met de kenmerkwaarden die in het proces zijn ingesteld. Gebruik informatie in de sectie *Aanvullende details* van de logboekrecord om problemen met de accountbewerking op te lossen. Hieronder wordt een voorbeeldrecord weergegeven, samen met aanwijzingen over hoe u elk veld interpreteert. In de sectie 'Aanvullende details' is de 'Gebeurtenisnaam' ingesteld op 'EntryExportAdd', de 'JoiningProperty' is ingesteld op de waarde van het kenmerk Matching ID, is het 'SourceAnchor' ingesteld op de WorkdayID (WID) die aan de record is gekoppeld en is de 'TargetAnchor' ingesteld op de waarde van het kenmerk AD "ObjectGuid" van de nieuw gemaakte gebruiker. 
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot AD account creation issues
@@ -1352,7 +1367,7 @@ Raadpleeg het artikel [Voor het exporteren en importeren van inrichtingsconfigur
 
 ## <a name="managing-personal-data"></a>Persoonlijke gegevens beheren
 
-De oplossing voor het inrichten van Workday voor Active Directory vereist dat een inrichtingsagent wordt geïnstalleerd op een on-premises Windows-server en deze agent maakt logboeken in het Windows-gebeurtenislogboek die mogelijk persoonlijke gegevens bevatten, afhankelijk van het kenmerk Werkdag tot AD Toewijzingen. Als u wilt voldoen aan de privacyverplichtingen van de gebruiker, u ervoor zorgen dat er geen gegevens worden bewaard in de logboeken van gebeurtenissen na 48 uur door een geplande Windows-taak in te stellen om het gebeurtenislogboek te wissen.
+De oplossing voor het inrichten van Workday voor Active Directory vereist dat een inrichtingsagent wordt geïnstalleerd op een on-premises Windows-server en deze agent maakt logboeken in het Windows-gebeurtenislogboek die mogelijk persoonlijke gegevens bevatten, afhankelijk van uw toewijzingen van uw werkdag tot AD-kenmerk. Als u wilt voldoen aan de privacyverplichtingen van de gebruiker, u ervoor zorgen dat er geen gegevens worden bewaard in de logboeken van gebeurtenissen na 48 uur door een geplande Windows-taak in te stellen om het gebeurtenislogboek te wissen.
 
 De Azure AD-inrichtingsservice valt in de categorie **gegevensverwerker** van GDPR-classificatie. Als pijplijn voor gegevensverwerkers biedt de service gegevensverwerkingsdiensten aan belangrijke partners en eindgebruikers. Azure AD-inrichtingsservice genereert geen gebruikersgegevens en heeft geen onafhankelijke controle over welke persoonlijke gegevens worden verzameld en hoe deze worden gebruikt. Het ophalen, samenvoegen, analyseren en rapporteren van gegevens in azure AD-inrichtingsservice zijn gebaseerd op bestaande bedrijfsgegevens.
 

@@ -8,17 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: e80b03f696a78887676e9f16750055a4dcfac230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 641d7410e414be2adae2a83840c90a680aedd2fc
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60755193"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683357"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Azure Data Box Gateway-limieten
 
 Houd rekening met deze limieten wanneer u uw Microsoft Azure Data Box Gateway-oplossing implementeert en exploiteert. 
-
 
 ## <a name="data-box-gateway-service-limits"></a>Servicelimieten voor Data Box Gateway
 
@@ -30,7 +29,7 @@ In de volgende tabel worden de limieten voor het gegevensboxgatewayapparaat besc
 
 | Beschrijving | Waarde |
 |---|---|
-|Nee. bestanden per apparaat |100 miljoen <br> Limiet is ~ 25 miljoen bestanden voor elke 2 TB schijfruimte met maximale limiet op 100 miljoen |
+|Nee. bestanden per apparaat |100 miljoen <br> Voor elke 25 miljoen bestanden die worden toegevoegd (met maximale limiet van 100 miljoen), moet u 2 TB schijfruimte, 8 GB RAM en 4 cpu-cores toevoegen. |
 |Nee. aandelen per apparaat |24 |
 |Nee. aandelen per Azure-opslagcontainer |1 |
 |Maximale bestandsgrootte geschreven naar een aandeel|Voor een virtueel apparaat van 2 TB is de maximale bestandsgrootte 500 GB. <br> De maximale bestandsgrootte neemt toe met de grootte van de gegevensschijf in de voorgaande verhouding tot maximaal 5 TB. |

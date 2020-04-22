@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/17/2020
-ms.openlocfilehash: 1f3c9f86072eeedbc999946d0f846fbc3b41f94d
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: f94136ca6bfcb7e33415f2f44fdf4c44ef9f6a6f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641756"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682783"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten en inference-taken beveiligen binnen een Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -140,12 +140,13 @@ Als u een computerinstantie of rekencluster van Azure Machine Learning of comput
 > * Als het Azure Storage Account(s) voor de werkruimte ook in een virtueel netwerk is beveiligd, moeten ze zich in hetzelfde virtuele netwerk bevinden als de rekeninstantie of cluster Azure Machine Learning. 
 
 > [!TIP]
-> Met de rekeninstantie of het cluster Machine Learning worden automatisch extra netwerkbronnen toegewezen in de brongroep die het virtuele netwerk bevat. Voor elke rekeninstantie of cluster wijst de service de volgende resources toe:
+> De rekeninstantie of het cluster Machine Learning wijst automatisch extra netwerkbronnen toe __in de resourcegroep die het virtuele netwerk bevat.__ Voor elke rekeninstantie of cluster wijst de service de volgende resources toe:
 > 
 > * Eén netwerkbeveiligingsgroep
 > * Eén openbaar IP-adres
 > * Eén load balancer
 > 
+> In het geval van clusters worden deze resources verwijderd (en opnieuw gemaakt) telkens wanneer het cluster wordt geschaald tot 0 knooppunten, maar voor een instantie worden de resources vastgehouden totdat de instantie volledig is verwijderd (stoppen verwijdert de resources niet). 
 > De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) van het abonnement.
 
 

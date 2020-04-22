@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: d64735e683ba1133e7d381a68611d204c4068026
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313066"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683897"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>Noodherstel voor FarmBeats
 
@@ -28,7 +28,7 @@ In de volgende secties vindt u informatie over hoe u gegevensherstel configurere
 
 FarmBeats slaat gegevens op in drie Azure first party-services, die **Azure-opslag,** **Cosmos DB** en Time **Series Insights**zijn. Gebruik de volgende stappen om gegevensredundantie voor deze services in te schakelen naar een gekoppeld Azure-gebied:
 
-1.  **Azure Storage** : volg deze richtlijn om gegevensredundantie in te schakelen voor elk opslagaccount in uw FarmBbeats-implementatie.
+1.  **Azure Storage** : volg deze richtlijn om gegevensredundantie in te schakelen voor elk opslagaccount in uw FarmBeats-implementatie.
 2.  **Azure Cosmos DB** - Volg deze richtlijn om gegevensredundantie voor Cosmos DB-account uw FarmBeats-implementatie in te schakelen.
 3.  **Azure Time Series Insights (TSI)** - TSI biedt momenteel geen redundantie voor gegevens. Als u Time Series Insights-gegevens wilt herstellen, gaat u naar uw sensor/weerpartner en duwt u de gegevens opnieuw naar farmbeats-implementatie.
 

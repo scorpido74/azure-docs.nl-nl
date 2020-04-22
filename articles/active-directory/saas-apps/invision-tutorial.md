@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/09/2020
+ms.date: 04/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63ec58711c5dd142064e2d5cb29ccaa9eb9c0ed9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c2427fff37158745e416f4b2f0641697ad62ea9
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79300653"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682669"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met InVision
 
@@ -157,13 +157,15 @@ In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door t
 
     e. Open in het tekstvak **SAML-certificaat** het gedownloade **certificaat (Base64)** in kladblok, kopieer de inhoud en plak het in het tekstvak SAML-certificaat.
 
-    f. Selecteer **SHA-256** in de vervolgkeuzelijst voor het **HASH-algoritme**.
+    f. Gebruik in het tekstvak `Unspecified` **Naam-id-indeling** de **naam-id-indeling**.
 
-    g. Voer de juiste naam in voor het **SSO-knoplabel**.
+    g. Selecteer **SHA-256** in de vervolgkeuzelijst voor het **HASH-algoritme**.
 
-    h. **Just-in-Time-provisioning** toestaan.
+    h. Voer de juiste naam in voor het **SSO-knoplabel**.
 
-    i. Klik op **Update**.
+    i. **Just-in-Time-provisioning** toestaan.
+
+    j. Klik op **Update**.
 
 ### <a name="create-invision-test-user"></a>InVision-testgebruiker maken
 

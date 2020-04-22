@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 0f86d1ad03062797764af6a0d49beacaa3458a8f
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365556"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684732"
 ---
 # <a name="execute-python-script-module"></a>Python Script-module uitvoeren
 
@@ -164,7 +164,7 @@ In het volgende voorbeeld ziet u hoe u een afbeeldingsbestand uploadt in de Modu
 # imports up here can be used to
 import pandas as pd
 
-# The entry point function can contain up to two input arguments:
+# The entry point function must have two input arguments:
 #   Param<dataframe1>: a pandas.DataFrame
 #   Param<dataframe2>: a pandas.DataFrame
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -217,10 +217,17 @@ De **Python Script-module uitvoeren** bevat voorbeeldpython-code die u als uitga
 
 5. Typ of plak in het tekstvak **Python-script** een geldig Python-script.
 
+    > [!NOTE]
+    > Wees erg voorzichtig bij het schrijven van uw script en zorg ervoor dat er geen syntaxisfout is, zoals het gebruik van een niet-gedeclareerd object of een niet-geïmporteerde module. Besteed ook extra aandacht aan de vooraf geïnstalleerde modulelijst. Als u modules wilt importeren die niet worden vermeld, installeert u de bijbehorende pakketten in uw script, zoals
+    >  ``` Python
+    > import os
+    > os.system(f"pip install scikit-misc")
+    > ```
+    
     Het **tekstvak van het Python-script** is vooraf ingevuld met enkele instructies in opmerkingen en voorbeeldcode voor toegang tot gegevens en uitvoer. U moet deze code bewerken of vervangen. Zorg ervoor dat u Python-conventies over inkeping en behuizing volgt.
 
     + Het script moet een `azureml_main` functie bevatten die is genoemd als ingangspunt voor deze module.
-    + De functie entry point kan maximaal `Param<dataframe1>` twee invoerargumenten bevatten: en`Param<dataframe2>`
+    + De functie item moet twee `Param<dataframe1>` invoerargumenten hebben: en `Param<dataframe2>`zelfs wanneer deze argumenten niet in uw script worden gebruikt.
     + Ziped bestanden aangesloten op de derde ingang poort worden `.\Script Bundle`uitgepakt en opgeslagen in `sys.path`de directory, , die ook wordt toegevoegd aan de Python . 
 
     Daarom, als uw `mymodule.py`zip-bestand `import mymodule`bevat, importeren met behulp van .

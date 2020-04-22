@@ -4,12 +4,12 @@ description: In dit artikel vindt u een overzicht van het beheer van een Azure S
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 69c10b0e9d3b7c29122c8432ab1e4bc06d3a3120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481113"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682633"
 ---
 # <a name="service-fabric-application-resource-model"></a>Resourcemodel servicefabric-toepassing
 
@@ -40,13 +40,13 @@ Voor meer informatie, bekijk [Pakket een toepassing](service-fabric-package-apps
 
 Vervolgens maakt u een resourcebeheersjabloon, werkt u het parametersbestand bij met toepassingsgegevens en implementeert u de sjabloon in het cluster Servicefabric. [Ontdek voorbeelden.](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)
 
-### <a name="create-a-storage-account"></a>Een opslagaccount maken
+### <a name="create-a-storage-account"></a>Create a storage account
 
 Als u een toepassing wilt implementeren vanuit een resourcemanagersjabloon, moet u een opslagaccount hebben. Het opslagaccount wordt gebruikt om de toepassingsafbeelding te fasen. 
 
 U een bestaand opslagaccount opnieuw gebruiken of u een nieuw opslagaccount maken voor het fasen van uw toepassingen. Als u een bestaand opslagaccount gebruikt, u deze stap overslaan. 
 
-![Een opslagaccount maken][CreateStorageAccount]
+![Create a storage account][CreateStorageAccount]
 
 ### <a name="configure-your-storage-account"></a>Uw opslagaccount configureren
 
@@ -99,7 +99,7 @@ De voorbeeldtoepassing bevat [Azure Resource Manager-sjablonen](https://github.c
 | applicationTypeVersion | De versie van het toepassingstype         | 1.0.0                                                        | Moet overeenkomen met ApplicationManifest.xml                 |
 | Servicenaam            | De naam van de dienst         | Voting~VotingWeb                                             | Moet in de indeling ApplicationName~ServiceType staan            |
 | serviceTypeName        | De typenaam van de service                | VotingWeb                                                    | Moet overeenkomen met ServiceManifest.xml                 |
-| appPackageUrl appPackageUrl          | De BLOB-opslag-URL van de toepassing     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | De URL van het toepassingspakket in blob-opslag (de procedure om de URL in te stellen wordt later in het artikel beschreven) |
+| appPackageUrl appPackageUrl          | De BLOB-opslag-URL van de toepassing     | https:\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | De URL van het toepassingspakket in blob-opslag (de procedure om de URL in te stellen wordt later in het artikel beschreven) |
 
 ```json
 {

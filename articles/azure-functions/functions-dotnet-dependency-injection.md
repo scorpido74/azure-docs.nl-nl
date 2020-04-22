@@ -6,18 +6,18 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: f8f1eb353087c5121eaafb4c8789e7a2f7638b99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1ff8e0aedce5d3a6acc9a39084cf0839efdd88e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475118"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678445"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Afhankelijkheidsinjectie gebruiken in .NET Azure Functions
 
 Azure Functions ondersteunt het modelontwerpvan de afhankelijkheidsinjectie (DI), een techniek om [Inversion of Control (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) tussen klassen en hun afhankelijkheden te bereiken.
 
-- Afhankelijkheidsinjectie in Azure-functies is gebaseerd op de functies .NET Core Dependency Injection. Vertrouwdheid met de [.NET Core afhankelijkheidsinjectie](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) wordt aanbevolen. Er zijn echter verschillen in de manier waarop u afhankelijkheden overschrijft en hoe configuratiewaarden worden gelezen met Azure-functies op het beheerplan.
+- Afhankelijkheidsinjectie in Azure-functies is gebaseerd op de functies .NET Core Dependency Injection. Vertrouwdheid met [.NET Core afhankelijkheidsinjectie](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) wordt aanbevolen. Er zijn verschillen in de manier waarop u afhankelijkheden overschrijft en hoe configuratiewaarden worden gelezen met Azure-functies op het beheerplan.
 
 - Ondersteuning voor afhankelijkheidsinjectie begint met Azure Functions 2.x.
 

@@ -1,24 +1,24 @@
 ---
-title: Standaardcontract | Azure
+title: Standaardcontract | Azure Marketplace
 description: Standaardcontract voor Azure Marketplace en AppSource
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 00a83a1b3005043f317ed49cafa735540cd21793
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: facb500299f7196e0e1387c3a7267a917d13a3a6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284956"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681453"
 ---
 # <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standaardcontract voor de commerciële marktplaats van Microsoft
 
 Om het inkoopproces voor klanten te vereenvoudigen en de juridische complexiteit voor softwareleveranciers te verminderen, biedt Microsoft een standaardcontract voor de commerciële marktplaats van Microsoft om transacties op de markt te vergemakkelijken. In plaats van aangepaste algemene voorwaarden te maken, kunnen commerciële marktplaatsuitgevers ervoor kiezen om hun software aan te bieden in het kader van het standaardcontract, dat klanten slechts één keer hoeven te controleren en accepteren. Het standaardcontract is hier [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178)te vinden: .
 
-De algemene voorwaarden voor een aanbieding worden gedefinieerd bij het maken van de aanbieding in partnercentrum of in de Cloud Partner Portal. U ervoor kiezen om het standaardcontract voor de commerciële marktplaats van Microsoft te gebruiken in plaats van uw eigen aangepaste algemene voorwaarden te bieden.
+De algemene voorwaarden voor een aanbieding worden gedefinieerd bij het maken van de aanbieding in partnercentrum. U ervoor kiezen om het standaardcontract voor de commerciële marktplaats van Microsoft te gebruiken in plaats van uw eigen aangepaste algemene voorwaarden te bieden.
 
 >[!Note]
 >Zodra u een aanbieding publiceert met behulp van het standaardcontract voor de commerciële marktplaats van Microsoft, u uw eigen aangepaste algemene voorwaarden niet meer gebruiken. Het is een "of" scenario. U biedt uw oplossing onder het standaardcontract *of* uw eigen algemene voorwaarden. Als u de voorwaarden van het standaardcontract wilt wijzigen, u dit doen via standaardcontractwijzigingen.
@@ -36,7 +36,7 @@ Er zijn twee soorten wijzigingen beschikbaar voor commerciële marktplaatsuitgev
 >[!Note]
 >Deze twee soorten amendementen stapelen op elkaar. Klanten die zijn gericht op aangepaste wijzigingen krijgen ook de universele wijziging van het standaardcontract tijdens de aankoop.
 
-U het standaardcontract voor de commerciële marktplaats van Microsoft gebruiken voor de volgende aanbiedingstypen: Azure-toepassingen (oplossingssjablonen en beheerde toepassingen), virtuele machines, containers, containertoepassingen, IoT-randmodules en SaaS .
+U het standaardcontract voor de commerciële marktplaats van Microsoft gebruiken voor de volgende aanbiedingstypen: Azure-toepassingen (oplossingssjablonen en beheerde toepassingen), virtuele machines, containers, containertoepassingen, IoT-randmodules en SaaS.
 
 ## <a name="customer-experience"></a>Klantervaring
 
