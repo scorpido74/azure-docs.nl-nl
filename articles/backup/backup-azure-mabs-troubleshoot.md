@@ -4,12 +4,12 @@ description: Problemen met de installatie, registratie van Azure Backup Server e
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: deff49a7d00a335c396a6fa36d3846ef353331c5
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7a1cac63ba6497b8580c83fe2b666b020701283a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421299"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688038"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Problemen met Azure Backup Server oplossen
 
@@ -62,7 +62,7 @@ We raden u aan de onderstaande validatie uit te voeren voordat u problemen oplos
 
 | Bewerking | Foutdetails | Tijdelijke oplossing |
 | --- | --- | --- |
-| Agent(s) naar beveiligde servers duwen | De agentbewerking is mislukt vanwege een communicatiefout met \<de DPM-agentcoördinatorservice op ServerName>. | **Als de aanbevolen actie in het product niet werkt, voert u de volgende stappen uit:** <ul><li> Als u een computer loskoppelt van een niet-vertrouwd domein, voert u [de volgende stappen uit.](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019) <br> (OF) </li><li> Als u een computer koppelt vanuit een vertrouwd domein, u problemen oplossen met de stappen die in [deze blog](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)worden beschreven. <br>(OF)</li><li> Probeer antivirus uit te schakelen als een probleemoplossingsstap. Als het probleem is opgelost, wijzigt u de antivirusinstellingen zoals voorgesteld in [dit artikel.](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12))</li></ul> |
+| Agent(s) naar beveiligde servers duwen | De agentbewerking is mislukt vanwege een communicatiefout met \<de DPM-agentcoördinatorservice op ServerName>. | **Als de aanbevolen actie in het product niet werkt, voert u de volgende stappen uit:** <ul><li> Als u een computer loskoppelt van een niet-vertrouwd domein, voert u [de volgende stappen uit.](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019) <br> (OF) </li><li> Als u een computer koppelt vanuit een vertrouwd domein, u problemen oplossen met de stappen die in [deze blog](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)worden beschreven. <br>(OF)</li><li> Probeer antivirus uit te schakelen als een probleemoplossingsstap. Als het probleem is opgelost, wijzigt u de antivirusinstellingen zoals voorgesteld in [dit artikel.](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>De metagegevens van het register kunnen niet worden bijgewerkt met Setup
 
@@ -96,7 +96,7 @@ We raden u aan de onderstaande validatie uit te voeren voordat u problemen oplos
 | Backup | Als u alleen een back-up maakt van de systeemstatus, controleert u of er voldoende vrije ruimte op de beveiligde computer is om de back-up van de systeemstatus op te slaan. | <ol><li>Controleer of Windows Server Backup is geïnstalleerd op de beveiligde machine.</li><li>Controleer of er voldoende ruimte is op de beveiligde computer voor de systeemstatus. De eenvoudigste manier om dit te verifiëren is door naar de beveiligde computer te gaan, Windows Server Backup te openen, door de selecties te klikken en vervolgens BMR te selecteren. De gebruikersinterface vertelt u vervolgens hoeveel ruimte nodig is. Open **WSB** > **Local backup** > **backup schedule** > **Select Backup Configuration** > **Full server** (grootte wordt weergegeven). Gebruik deze grootte voor verificatie.</li></ol>
 | Backup | Back-up storing voor BMR | Als de BMR-grootte groot is, verplaatst u sommige toepassingsbestanden naar het besturingssysteem en probeert u het opnieuw. |
 | Backup | De optie om een VMware VM opnieuw te beschermen op een nieuwe Microsoft Azure Backup Server wordt niet weergegeven als beschikbaar voor toevoegen. | VMware-eigenschappen zijn gericht op een oude, gepensioneerde instantie van Microsoft Azure Backup Server. Los dit probleem als volgt op:<br><ol><li>Ga in VCenter (SC-VMM-equivalent) naar het tabblad **Overzicht** en vervolgens naar **Aangepaste kenmerken**.</li>  <li>Verwijder de oude naam van Microsoft Azure Backup Server uit de **DPMServer-waarde.**</li>  <li>Ga terug naar de nieuwe Microsoft Azure Backup Server en wijzig de PG.  Nadat u de knop **Vernieuwen** hebt inschakelt, wordt de VM weergegeven met een selectievakje dat beschikbaar is om aan de beveiliging toe te voegen.</li></ol> |
-| Backup | Fout bij het openen van bestanden/gedeelde mappen | Probeer de antivirusinstellingen zoals voorgesteld in dit artikel [Antivirussoftware op de DPM-server uit](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12))te voeren.|
+| Backup | Fout bij het openen van bestanden/gedeelde mappen | Probeer de antivirusinstellingen zoals voorgesteld in dit artikel [Antivirussoftware op de DPM-server uit](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)te voeren.|
 
 ## <a name="change-passphrase"></a>Wachtwoordzin wijzigen
 

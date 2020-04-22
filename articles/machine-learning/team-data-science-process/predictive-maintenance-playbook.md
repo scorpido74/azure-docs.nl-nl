@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 5cf3f02284777a54a9d26cad8a7f3b5b4fa6b335
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 301e2be0c8b971a0236de6a8b5c8bd5f278c3aee
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087692"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686755"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-handleiding voor voorspellende onderhoudsoplossingen
 
@@ -449,6 +449,6 @@ Microsoft Azure biedt leerpaden voor de fundamentele concepten achter PdM-techni
 | [Microsoft AI YouTube-webinars](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
 | [Microsoft AI-show](https://channel9.msdn.com/Shows/AI-Show) | Public |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | Partners |
-| [Microsoft Partner Network](https://learningportal.microsoft.com) | Partners |
+| [Microsoft Partner Network](https://partner.microsoft.com/training/training-center) | Partners |
 
 Daarnaast worden gratis MOOCS (massive open online courses) op AI online aangeboden door academische instellingen zoals Stanford en MIT, en andere onderwijsbedrijven.

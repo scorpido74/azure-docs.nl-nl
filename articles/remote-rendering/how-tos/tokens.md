@@ -1,18 +1,18 @@
 ---
-title: Download servicetoegangstokens
+title: Tokens voor servicetoegang ophalen
 description: Beschrijft hoe u tokens maakt voor toegang tot de ARR REST API's
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 001a77734a8cedf08c5523380c1cbd00dce89f40
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681192"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687068"
 ---
-# <a name="get-service-access-tokens"></a>Download servicetoegangstokens
+# <a name="get-service-access-tokens"></a>Tokens voor servicetoegang ophalen
 
 Toegang tot de ARR REST API's wordt alleen verleend aan geautoriseerde gebruikers. Om uw autorisatie te bewijzen, moet u een *toegangstoken* samen met REST-aanvragen verzenden. Deze tokens worden uitgegeven door de *Secure Token Service* (STS) in ruil voor een accountsleutel. Tokens hebben een **levensduur van 24 uur** en kunnen dus worden uitgegeven aan gebruikers zonder ze volledige toegang tot de service te geven.
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u een dergelijk toegangstoken maakt.
 
 ## <a name="token-service-rest-api"></a>Tokenservice REST API
 
-Om toegangstokens te maken, biedt de *Secure Token Service* één REST-API. De URL voor de ARR [https://sts.mixedreality.azure.com](https://sts.mixedreality.azure.com)STS-service is .
+Om toegangstokens te maken, biedt de *Secure Token Service* één REST-API. De URL voor de ARR STS-service is https:\//sts.mixedreality.azure.com.
 
 ### <a name="get-token-request"></a>'Token-aanvraag krijgen'
 
@@ -67,6 +67,6 @@ Het script drukt het token gewoon af op de uitvoer, van waaruit u het kopiëren 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Voorbeeld PowerShell-scripts](../samples/powershell-example-scripts.md)
+* [PowerShell-voorbeeldscripts](../samples/powershell-example-scripts.md)
 * [Azure Frontend-API's](../how-tos/frontend-apis.md)
 * [API voor sessiebeheer REST](../how-tos/session-rest-api.md)

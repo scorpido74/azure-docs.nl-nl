@@ -1,18 +1,18 @@
 ---
-title: Verbindingsassets in Azure Automation
+title: Verbindingen beheren in Azure Automation
 description: Verbindingselementen in Azure Automation bevatten de informatie die nodig is om verbinding te maken met een externe service of toepassing vanuit een runbook- of DSC-configuratie. In dit artikel worden de details van verbindingen en hoe ermee te werken uitgelegd in zowel tekstuele als grafische authoring.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1ce59322b0cbfaf5a4f7b31371f0d0929a3a3ab
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 90d4ec1bbfd0d76ffedf1505c9147376e3947c3c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457719"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729059"
 ---
-# <a name="connection-assets-in-azure-automation"></a>Verbindingsassets in Azure Automation
+# <a name="manage-connections-in-azure-automation"></a>Verbindingen beheren in Azure Automation
 
 Een item voor een automatiseringsverbinding bevat de informatie die nodig is om verbinding te maken met een externe service of toepassing vanuit een runbook- of DSC-configuratie. Dit kan informatie omvatten die nodig is voor verificatie, zoals een gebruikersnaam en wachtwoord, naast verbindingsgegevens zoals een URL of een poort. De waarde van een verbinding houdt alle eigenschappen voor het verbinden met een bepaalde toepassing in één asset in plaats van het maken van meerdere variabelen. De gebruiker kan de waarden voor een verbinding op één plaats bewerken en u de naam van een verbinding doorgeven aan een runbook- of DSC-configuratie in één parameter. De eigenschappen voor een verbinding zijn toegankelijk in de runbook- of DSC-configuratie met de `Get-AutomationConnection` activiteit.
 

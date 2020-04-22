@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 262129084be5c6a68bfd8d8708c9a10fbb606144
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e51b8c705533fd74a5e46eaa2570563fef485309
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383729"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730629"
 ---
 # <a name="create-an-azure-vm-technical-asset"></a>Een technische azure VM-asset maken
 
@@ -46,7 +46,7 @@ Kies een of beide van de volgende scriptomgevingen om uw containerafbeelding te 
 
 We raden u aan deze tools toe te voegen aan uw ontwikkelomgeving:
 
-- [Azure Opslagverkenner](https://aka.ms/GetStartedWithStorageExplorer)
+- [Azure Opslagverkenner](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Extensie: [Azure Resource Manager-hulpprogramma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Uitbreiding: [Verfraaien](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)

@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2020
+ms.date: 04/20/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: d03b053f2aa5de4a6f7874dbf4e6ccb3a305a964
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 9a7d0530c4f03138fad3e4aaa473d54e1cfd5b0a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992076"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686560"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken
 
@@ -38,8 +38,7 @@ De standaardprijzen voor Log Analytics zijn een **Pay-As-You-Go-model** op basis
   - Aantal gecontroleerde VM's
   - Type gegevens verzameld van elke bewaakte VM 
   
-Naast het Pay-As-You-Go-model heeft Log Analytics **capaciteitsreserveringsniveaus** waarmee u maar liefst 25% besparen in vergelijking met de pay-as-you-go-prijs. Met de capaciteitsreserveringsprijzen u een reservering kopen vanaf 100 GB/dag. Elk gebruik boven het reserveringsniveau wordt in rekening gebracht tegen het pay-as-you-go-tarief. De capaciteitsreserveringsniveaus hebben een verbintenisperiode van 31 dagen. Tijdens de verbintenisperiode u overgaan naar een niveau capaciteitsreserveringsniveau op een hoger niveau (waarmee de verbintenisperiode van 31 dagen wordt hervat), maar u niet teruggaan naar Pay-As-You-Go of naar een niveau voor een lagere capaciteitsreservering totdat de verbintenisperiode is voltooid. 
-[Meer informatie](https://azure.microsoft.com/pricing/details/monitor/) over de prijzen voor betalen per gebruik en capaciteitsreservering van Log Analytics. 
+Naast het Pay-As-You-Go-model heeft Log Analytics **capaciteitsreserveringsniveaus** waarmee u maar liefst 25% besparen in vergelijking met de pay-as-you-go-prijs. Met de capaciteitsreserveringsprijzen u een reservering kopen vanaf 100 GB/dag. Elk gebruik boven het reserveringsniveau wordt in rekening gebracht tegen het pay-as-you-go-tarief. De capaciteitsreserveringsniveaus hebben een verbintenisperiode van 31 dagen. Tijdens de verbintenisperiode u overgaan naar een niveau capaciteitsreserveringsniveau op een hoger niveau (waarmee de verbintenisperiode van 31 dagen wordt hervat), maar u niet teruggaan naar Pay-As-You-Go of naar een niveau voor een lagere capaciteitsreservering totdat de verbintenisperiode is voltooid. Facturering voor de capaciteitsreserveringsniveaus gebeurt dagelijks. [Meer informatie](https://azure.microsoft.com/pricing/details/monitor/) over de prijzen voor betalen per gebruik en capaciteitsreservering van Log Analytics. 
 
 In alle prijsniveaus wordt het gegevensvolume berekend op basis van een tekenreeksweergave van de gegevens die bereid zijn op te slaan. Verschillende [eigenschappen die alle gegevenstypen gemeen](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) hebben, worden niet `_ResourceId` `_ItemId`opgenomen `_IsBillable` in de berekening van de gebeurtenisgrootte, waaronder , en `_BilledSize`.
 
@@ -112,10 +111,14 @@ Als u de standaardretentie voor uw werkruimte wilt instellen,
 3. Verplaats de schuifregelaar in het deelvenster om het aantal dagen te verhogen of te verkleinen en klik vervolgens op **OK**.  Als u zich op de *gratis* laag bevindt, u de bewaarperiode voor gegevens niet wijzigen en moet u upgraden naar de betaalde laag om deze instelling te beheren.
 
     ![Instelling voor het bewaren van werkruimtegegevens wijzigen](media/manage-cost-storage/manage-cost-change-retention-01.png)
+
+Wanneer de retentie wordt verlaagd, is er een respijtperiode van meerdere dagen voordat de oudste gegevens worden verwijderd. 
     
 De retentie kan ook worden ingesteld `retentionInDays` via Azure Resource [Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) met behulp van de parameter. Als u de gegevensbewaring instelt op 30 dagen, u bovendien `immediatePurgeDataOn30Days` een onmiddellijke zuivering van oudere gegevens activeren met behulp van de parameter, wat handig kan zijn voor nalevingsgerelateerde scenario's. Deze functionaliteit wordt alleen zichtbaar via Azure Resource Manager. 
 
 Twee gegevenstypen `Usage` - `AzureActivity` en - worden standaard 90 dagen bewaard en er zijn geen kosten verbonden aan deze retentie van 90 dagen. Deze gegevenstypen zijn ook vrij van kosten voor het innemen van gegevens. 
+
+
 
 ### <a name="retention-by-data-type"></a>Bewaren op gegevenstype
 
@@ -446,7 +449,7 @@ De beslissing of werkruimten met toegang tot de oudere prijscategorie **Per knoo
 Om deze beoordeling te vergemakkelijken, kan de volgende query worden gebruikt om een aanbeveling te doen voor de optimale prijscategorie op basis van de gebruikspatronen van een werkruimte.  In deze query wordt gekeken naar de bewaakte knooppunten en gegevens die in de afgelopen 7 dagen in een werkruimte zijn opgenomen en wordt voor elke dag geëvalueerd welke prijscategorie optimaal zou zijn geweest. Als u de query wilt gebruiken, moet u opgeven `workspaceHasSecurityCenter` of `true` `false`de werkruimte Azure Security Center gebruikt door de prijzen Per knooppunt en per GB die uw organizaiton ontvangt, in te stellen of vervolgens (optioneel) bij te werken. 
 
 ```kusto
-// Set these paramaters before running query
+// Set these parameters before running query
 let workspaceHasSecurityCenter = true;  // Specify if the workspace has Azure Security Center
 let PerNodePrice = 15.; // Enter your price per node / month 
 let PerGBPrice = 2.30; // Enter your price per GB 
@@ -459,6 +462,14 @@ union withsource = tt *
 | summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
 | summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
 | join (
+    Heartbeat 
+    | where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+    | where Computer != ""
+    | summarize ASCnodesPerHour = dcount(Computer) by bin(TimeGenerated, 1h) 
+    | extend ASCnodesPerHour = iff(workspaceHasSecurityCenter, ASCnodesPerHour, 0)
+    | summarize ASCnodesPerDay = sum(ASCnodesPerHour)/24.  by day=bin(TimeGenerated, 1d)   
+) on day
+| join (
     Usage 
     | where TimeGenerated > ago(8d)
     | where StartTime >= startofday(now(-7d)) and EndTime < startofday(now())
@@ -469,18 +480,20 @@ union withsource = tt *
 ) on day
 | extend AvgGbPerNode =  NonSecurityDataGB / nodesPerDay
 | extend PerGBDailyCost = iff(workspaceHasSecurityCenter,
-             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*nodesPerDay, 0.)) * PerGBPrice,
+             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*ASCnodesPerDay, 0.)) * PerGBPrice,
              DataGB * PerGBPrice)
 | extend OverageGB = iff(workspaceHasSecurityCenter, 
-             max_of(DataGB - 1.0*nodesPerDay, 0.), 
+             max_of(DataGB - 0.5*nodesPerDay - 0.5*ASCnodesPerDay, 0.), 
              max_of(DataGB - 0.5*nodesPerDay, 0.))
 | extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerGBPrice
 | extend Recommendation = iff(PerNodeDailyCost < PerGBDailyCost, "Per Node tier", 
              iff(NonSecurityDataGB > 85., "Capacity Reservation tier", "Pay-as-you-go (Per GB) tier"))
-| project day, nodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
+| project day, nodesPerDay, ASCnodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
 | project day, Recommendation // Comment this line to see details
 | sort by day asc
 ```
+
+Deze query is geen exacte replicatie van de manier waarop het gebruik wordt berekend, maar werkt in de meeste gevallen voor het geven van aanbevelingen voor de prijsniveau.  
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Een waarschuwing maken wanneer de gegevensverzameling hoog is
 

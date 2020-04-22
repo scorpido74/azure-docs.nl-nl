@@ -2,13 +2,13 @@
 title: Sjabloonstructuur en syntaxis
 description: Beschrijft de structuur en eigenschappen van Azure Resource Manager-sjablonen met behulp van declaratieve JSON-syntaxis.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 4e8334e4ddfaee52c5d1aa68fb8689fcde0a6cbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 60d800eb5251fb3454ba60a67bd109261c6ff9d4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79459987"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687871"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>De structuur en syntaxis van ARM-sjablonen begrijpen
 
@@ -38,7 +38,7 @@ In de eenvoudigste structuur heeft een sjabloon de volgende elementen:
 | $schema |Ja |Locatie van het JSON-schemabestand dat de versie van de sjabloontaal beschrijft. Het versienummer dat u gebruikt, is afhankelijk van het bereik van de implementatie en uw JSON-editor.<br><br>Als u [VS-code gebruikt met de extensie Azure Resource Manager-hulpprogramma's,](use-vs-code-to-create-template.md)gebruikt u de nieuwste versie voor implementaties van resourcegroepen:<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>Andere editors (waaronder Visual Studio) kunnen dit schema mogelijk niet verwerken. Voor deze redacteuren, gebruik:<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Gebruik voor abonnementsimplementaties:<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>Gebruik voor implementaties van beheergroepen:<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>Gebruik voor tenant-implementaties het:<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
 | inhoudVersie |Ja |Versie van de sjabloon (zoals 1.0.0.0). U elke waarde voor dit element bieden. Gebruik deze waarde om belangrijke wijzigingen in uw sjabloon vast te leggen. Bij het implementeren van resources met behulp van de sjabloon kan deze waarde worden gebruikt om ervoor te zorgen dat de juiste sjabloon wordt gebruikt. |
 | apiProfiel |Nee | Een API-versie die dient als een verzameling API-versies voor resourcetypen. Gebruik deze waarde om te voorkomen dat API-versies voor elke resource in de sjabloon moeten worden opgegeven. Wanneer u een API-profielversie opgeeft en geen API-versie opgeeft voor het brontype, gebruikt Resource Manager de API-versie voor dat brontype dat in het profiel is gedefinieerd.<br><br>De eigenschap API-profiel is vooral handig bij het implementeren van een sjabloon in verschillende omgevingen, zoals Azure Stack en global Azure. Gebruik de API-profielversie om ervoor te zorgen dat uw sjabloon automatisch versies gebruikt die in beide omgevingen worden ondersteund. Zie [API-profiel](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)voor een lijst met de huidige API-profielversies en de API-versies van resources die in het profiel zijn gedefinieerd.<br><br>Zie [Versies bijhouden met API-profielen](templates-cloud-consistency.md#track-versions-using-api-profiles)voor meer informatie. |
-| [parameters](#parameters) |Nee |Waarden die worden geleverd wanneer de implementatie wordt uitgevoerd om de implementatie van resources aan te passen. |
+| [Parameters](#parameters) |Nee |Waarden die worden geleverd wanneer de implementatie wordt uitgevoerd om de implementatie van resources aan te passen. |
 | [Variabelen](#variables) |Nee |Waarden die worden gebruikt als JSON-fragmenten in de sjabloon om sjabloontaaluitdrukkingen te vereenvoudigen. |
 | [Functies](#functions) |Nee |Door de gebruiker gedefinieerde functies die beschikbaar zijn in de sjabloon. |
 | [Middelen](#resources) |Ja |Resourcetypen die worden geïmplementeerd of bijgewerkt in een resourcegroep of -abonnement. |
@@ -293,7 +293,7 @@ Je hebt een paar opties voor het toevoegen van opmerkingen en metagegevens aan j
 Voor inline-opmerkingen `//` u `/* ... */` een van beide gebruiken of deze syntaxis werkt niet met alle hulpprogramma's. U de portalsjablooneditor niet gebruiken om aan sjablonen te werken met inline-opmerkingen. Als u deze stijl van commentaar toevoegt, moet u ervoor zorgen dat de hulpprogramma's die u gebruikt ondersteuning inline JSON-opmerkingen gebruiken.
 
 > [!NOTE]
-> Als u sjablonen met opmerkingen wilt implementeren `--handle-extended-json-format` met Azure CLI, moet u de switch gebruiken.
+> Als u sjablonen met opmerkingen wilt implementeren met Azure CLI met versie `--handle-extended-json-format` 2.3.0 of ouder, moet u de switch gebruiken.
 
 ```json
 {
@@ -404,7 +404,7 @@ U een tekenreeks in meerdere regels opsplitsen. Zie bijvoorbeeld de locatieeigen
   ],
 ```
 
-Als u sjablonen met multiline-tekenreeksen wilt implementeren `--handle-extended-json-format` met Azure CLI, moet u de switch gebruiken.
+Als u sjablonen met tekenreeksen met meerdere regels wilt implementeren met Azure CLI `--handle-extended-json-format` met versie 2.3.0 of ouder, moet u de switch gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

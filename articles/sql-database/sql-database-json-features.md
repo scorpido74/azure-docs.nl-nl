@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
-ms.date: 01/15/2019
-ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: 992c981d49e7c6fbf8b6156570f6554a05caab5d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73819942"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687763"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Aan de slag met JSON-functies in Azure SQL Database
 Met Azure SQL Database u gegevens ontleden en query's ontleden die worden weergegeven in de [Json-notatie (JavaScript](https://www.json.org/) Object Notation) en uw relationele gegevens exporteren als JSON-tekst. De volgende JSON-scenario's zijn beschikbaar in Azure SQL Database:
@@ -30,7 +30,7 @@ Als u een webservice hebt die gegevens uit de databaselaag haalt en een antwoord
 
 In het volgende voorbeeld worden rijen uit de tabel Sales.Customer opgemaakt als JSON met behulp van de BEDING VOOR JSON:
 
-```
+```sql
 select CustomerName, PhoneNumber, FaxNumber
 from Sales.Customers
 FOR JSON PATH
@@ -38,7 +38,7 @@ FOR JSON PATH
 
 De clausule FOR JSON PATH maakt de resultaten van de query op als JSON-tekst. Kolomnamen worden gebruikt als sleutels, terwijl de celwaarden worden gegenereerd als JSON-waarden:
 
-```
+```json
 [
 {"CustomerName":"Eric Torres","PhoneNumber":"(307) 555-0100","FaxNumber":"(307) 555-0101"},
 {"CustomerName":"Cosmina Vlad","PhoneNumber":"(505) 555-0100","FaxNumber":"(505) 555-0101"},
@@ -50,7 +50,7 @@ De resultaatset wordt opgemaakt als een JSON-array waarbij elke rij is opgemaakt
 
 PATH geeft aan dat u de uitvoerindeling van uw JSON-resultaat aanpassen met behulp van dotnotatie in kolomaliassen. In de volgende query wordt de naam van de sleutel "Klantnaam" in de INDELING VOOR uitvoer-JSON gewijzigd en worden telefoon- en faxnummers in het subobject Contact weergegeven:
 
-```
+```sql
 select CustomerName as Name, PhoneNumber as [Contact.Phone], FaxNumber as [Contact.Fax]
 from Sales.Customers
 where CustomerID = 931
@@ -59,7 +59,7 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 
 De uitvoer van deze query ziet er als volgt uit:
 
-```
+```json
 {
     "Name":"Nada Jovanovic",
     "Contact":{
@@ -73,7 +73,7 @@ In dit voorbeeld hebben we één JSON-object geretourneerd in plaats van een arr
 
 De belangrijkste waarde van de FOR JSON-component is dat u hiermee complexe hiërarchische gegevens uit uw database retourneren die zijn opgemaakt als geneste JSON-objecten of -arrays. In het volgende voorbeeld ziet u `Orders` hoe u `Customer` de rijen uit `Orders`de tabel opneemt die behoren tot de als geneste array van :
 
-```
+```sql
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
         Orders.OrderID, Orders.OrderDate, Orders.ExpectedDeliveryDate
 from Sales.Customers Customer
@@ -81,12 +81,11 @@ from Sales.Customers Customer
         on Customer.CustomerID = Orders.CustomerID
 where Customer.CustomerID = 931
 FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
-
 ```
 
 In plaats van afzonderlijke query's te verzenden om klantgegevens te krijgen en vervolgens een lijst met gerelateerde orders op te halen, u alle benodigde gegevens met één query ophalen, zoals wordt weergegeven in de volgende voorbeelduitvoer:
 
-```
+```json
 {
   "Name":"Nada Jovanovic",
   "Phone":"(215) 555-0100",
@@ -95,7 +94,7 @@ In plaats van afzonderlijke query's te verzenden om klantgegevens te krijgen en 
     {"OrderID":382,"OrderDate":"2013-01-07","ExpectedDeliveryDate":"2013-01-08"},
     {"OrderID":395,"OrderDate":"2013-01-07","ExpectedDeliveryDate":"2013-01-08"},
     {"OrderID":1657,"OrderDate":"2013-01-31","ExpectedDeliveryDate":"2013-02-01"}
-]
+  ]
 }
 ```
 
@@ -104,7 +103,7 @@ Als u geen strikt gestructureerde gegevens hebt, als u complexe subobjecten, arr
 
 JSON is een tekstuele indeling die kan worden gebruikt zoals elk ander tekenreekstype in Azure SQL Database. U JSON-gegevens verzenden of opslaan als standaard NVARCHAR:
 
-```
+```sql
 CREATE TABLE Products (
   Id int identity primary key,
   Title nvarchar(200),
@@ -120,7 +119,7 @@ END
 
 De JSON-gegevens die in dit voorbeeld worden gebruikt, worden weergegeven door het type NVARCHAR (MAX) te gebruiken. JSON kan in deze tabel worden ingevoegd of als argument van de opgeslagen procedure worden geleverd met behulp van de standaard syntaxis Transact-SQL zoals weergegeven in het volgende voorbeeld:
 
-```
+```sql
 EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","children","games"]}'
 ```
 
@@ -131,7 +130,7 @@ Als u gegevens hebt opgemaakt als JSON die zijn opgeslagen in Azure SQL-tabellen
 
 Met JSON-functies die beschikbaar zijn in Azure SQL-database, u gegevens die zijn opgemaakt als JSON behandelen als elk ander SQL-gegevenstype. U eenvoudig waarden uit de JSON-tekst extraheren en JSON-gegevens in elke query gebruiken:
 
-```
+```sql
 select Id, Title, JSON_VALUE(Data, '$.Color'), JSON_QUERY(Data, '$.tags')
 from Products
 where JSON_VALUE(Data, '$.Color') = 'White'
@@ -149,7 +148,7 @@ Met de functie JSON_MODIFY u het pad opgeven van de waarde in de JSON-tekst die 
 
 Aangezien JSON is opgeslagen in een standaardtekst, zijn er geen garanties dat de waarden die zijn opgeslagen in tekstkolommen correct zijn opgemaakt. U controleren of tekst die is opgeslagen in de kolom JSON correct is opgemaakt met behulp van standaard azure SQL-databasecontrolebeperkingen en de functie ISJSON:
 
-```
+```sql
 ALTER TABLE Products
     ADD CONSTRAINT [Data should be formatted as JSON]
         CHECK (ISJSON(Data) > 0)
@@ -168,7 +167,7 @@ In het bovenstaande voorbeeld kunnen we opgeven waar de JSON-array moet worden g
 
 We kunnen een JSON-array in de @orders variabele omzetten in een reeks rijen, deze resultaatset analyseren of rijen invoegen in een standaardtabel:
 
-```
+```sql
 CREATE PROCEDURE InsertOrders(@orders nvarchar(max))
 AS BEGIN
 
@@ -181,9 +180,9 @@ AS BEGIN
             Customer varchar(200),
             Quantity int
      )
-
 END
 ```
+
 Het verzamelen van orders die zijn opgemaakt als een JSON-array en als parameter voor de opgeslagen procedure wordt verstrekt, kan worden ontleed en in de tabel Orders worden ingevoegd.
 
 ## <a name="next-steps"></a>Volgende stappen

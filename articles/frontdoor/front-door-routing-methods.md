@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 69ef68dafc2385eb5614179c3d04265250383104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7dd00d28ecfe844094677e0ae19f4fd359d97d0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471537"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687808"
 ---
 # <a name="front-door-routing-methods"></a>Routeringsmethoden voor de voordeur
 
@@ -27,7 +27,7 @@ Er zijn vier belangrijke concepten voor verkeersroutering beschikbaar in Front D
 * ** [Latentie](#latency):** De op latentie gebaseerde routering zorgt ervoor dat aanvragen worden verzonden naar de laagste latentie backends die acceptabel zijn binnen een gevoeligheidsbereik. In principe worden uw gebruikersverzoeken verzonden naar de "dichtstbijzijnde" set backends met betrekking tot netwerklatentie.
 * ** [Prioriteit](#priority):** U prioriteiten toewijzen aan uw verschillende backends wanneer u een back-end van de primaire service wilt gebruiken voor al het verkeer en back-ups wilt maken voor het geval de primaire of de back-upbackends niet beschikbaar zijn.
 * ** [Gewogen](#weighted):** U gewichten toewijzen aan uw verschillende backends wanneer u verkeer wilt verdelen over een set backends, gelijkmatig of op basis van gewichtscoëfficiënten.
-* **Sessieaffiniteit:** U sessieaffiniteit configureren voor uw frontendhosts of domeinen wanneer u wilt dat volgende aanvragen van een gebruiker naar dezelfde backend worden verzonden zolang de gebruikerssessie nog actief is en de backend-instantie nog steeds gezond rapporteert op basis van statussondes. 
+* ** [Sessieaffiniteit](#affinity):** U sessieaffiniteit configureren voor uw frontendhosts of domeinen wanneer u wilt dat volgende aanvragen van een gebruiker naar dezelfde backend worden verzonden zolang de gebruikerssessie nog actief is en de backend-instantie nog steeds gezond rapporteert op basis van statussondes. 
 
 Alle Front Door-configuraties omvatten bewaking van de back-endstatus en geautomatiseerde, directe failover wereldwijd. Zie Voor meer informatie [Front Door Backend Monitoring](front-door-health-probes.md). Uw voordeur kan worden geconfigureerd om te werken op basis van een enkele routeringsmethode en afhankelijk van uw toepassingsbehoeften u meerdere of al deze routeringsmethoden in combinatie gebruiken om een optimale routeringstopologie te bouwen.
 
@@ -71,7 +71,7 @@ De gewogen methode maakt een aantal nuttige scenario's mogelijk:
 * **Cloud-bursting voor extra capaciteit**: Snel uitbreiden van een on-premises implementatie in de cloud door het achter Front Door. Wanneer u extra capaciteit in de cloud nodig hebt, u meer back-ends toevoegen of inschakelen en opgeven welk deel van het verkeer naar elke backend gaat.
 
 ## <a name="session-affinity"></a><a name = "affinity"></a>Sessieaffiniteit
-Standaard, zonder sessieaffiniteit, stuurt Front Door aanvragen afkomstig van dezelfde client door naar verschillende backends op basis van load-balancing configuratie, met name omdat de latencies naar verschillende backends veranderen of als verschillende aanvragen van dezelfde gebruiker landt op een andere Front Door omgeving. Bij sommige stateful toepassingen en in bepaalde andere situaties wordt er echter de voorkeur aan gegeven om opeenvolgende aanvragen van één gebruiker naar de back-end te sturen waarmee ook de eerste aanvraag is verwerkt. De functie Sessieaffiniteit op basis van cookies is handig als u een gebruikerssessie op dezelfde back-end wilt behouden. Door door door front door beheerde cookies te gebruiken, kan Azure Front Door het volgende verkeer van een gebruikerssessie naar dezelfde backend leiden voor verwerking zolang de backend in orde is en de gebruikerssessie niet is verlopen. 
+Standaard stuurt Front Door aanvragen die afkomstig zijn van dezelfde client door naar verschillende backends op basis van load-balancing configuratie, met name omdat de latencies voor verschillende backends veranderen of als verschillende aanvragen van dezelfde gebruiker op een andere Front Door-omgeving worden weergegeven. Bij sommige stateful toepassingen en in bepaalde andere situaties wordt er echter de voorkeur aan gegeven om opeenvolgende aanvragen van één gebruiker naar de back-end te sturen waarmee ook de eerste aanvraag is verwerkt. De functie Sessieaffiniteit op basis van cookies is handig als u een gebruikerssessie op dezelfde back-end wilt behouden. Door door door front door beheerde cookies te gebruiken, kan Azure Front Door het volgende verkeer van een gebruikerssessie naar dezelfde backend leiden voor verwerking zolang de backend in orde is en de gebruikerssessie niet is verlopen. 
 
 U kunt sessieaffiniteit inschakelen op het hostniveau van de front-end, voor elk van de geconfigureerde domeinen (of subdomeinen). Na het inschakelen voegt Front Door een cookie toe aan de gebruikerssessie. Met op cookies gebaseerde sessieaffiniteit kan Front Door verschillende gebruikers herkennen, zelfs als deze hetzelfde IP-adres hebben. Hierdoor kan er nog meer verkeer worden verdeeld tussen uw verschillende back-ends.
 

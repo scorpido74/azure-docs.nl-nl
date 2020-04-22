@@ -10,57 +10,14 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e9fbe624563ad03880ff1a75efdc2df41b151846
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5e014634ecb251f05710de16daee30d72dae619e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424277"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685896"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informatie over Azure Key Vault-certificaten
-
-Azure Key Vault stelt Microsoft Azure-toepassingen en -gebruikers in staat om certificaten op te slaan en te gebruiken, die bovenop sleutels en geheimen zijn gebouwd en een geautomatiseerde vernieuwingsfunctie kunnen toevoegen.
-
-Zie Wat is Azure Key Vault voor meer algemene informatie over Key [Vault?](/azure/key-vault/key-vault-overview)
-
-## <a name="azure-key-vault"></a>Azure Key Vault
-
-De volgende secties bieden algemene informatie die van toepassing is op de implementatie van de Key Vault-service.
-
-### <a name="supporting-standards"></a>Ondersteunende normen
-
-De SPECIFICATIES JavaScript Object Notation (JSON) en JavaScript Object Signing and Encryption (JOSE) zijn belangrijke achtergrondinformatie.  
-
--   [JSON-websleutel (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)  
--   [JSON-webversleuteling (JWE)](https://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-40)  
--   [JSON Web Algoritmen (JWA)](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40)  
--   [JSON-webhandtekening (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41)  
-
-### <a name="objects-identifiers-and-versioning"></a>Objecten, id's en versiebeheer
-
-Objecten die zijn opgeslagen in Key Vault worden geversioneerd wanneer een nieuwe instantie van een object wordt gemaakt. Aan elke versie is een unieke id en URL toegewezen. Wanneer een object voor het eerst wordt gemaakt, krijgt het een unieke versie-id en wordt het gemarkeerd als de huidige versie van het object. Het maken van een nieuwe instantie met dezelfde objectnaam geeft het nieuwe object een unieke versie-id, waardoor het de huidige versie wordt.  
-
-Objecten in Key Vault kunnen worden aangepakt met de huidige id of een versiespecifieke id. Als u bijvoorbeeld een sleutel `MasterKey`met de naam krijgt, zorgt het uitvoeren van bewerkingen met de huidige id ervoor dat het systeem de laatst beschikbare versie gebruikt. Door bewerkingen uit te voeren met de versiespecifieke id, wordt het systeem die specifieke versie van het object gebruikt.  
-
-Objecten worden uniek geïdentificeerd in Key Vault met behulp van een URL. Geen twee objecten in het systeem hebben dezelfde URL, ongeacht de geolocatie. De volledige URL van een object wordt object-id genoemd. De URL bestaat uit een voorvoegsel dat het sleutelkluis, objecttype, de door de gebruiker opgegeven objectnaam en een objectversie identificeert. De objectnaam is hoofdletterongevoelig en onveranderlijk. Id's die de objectversie niet bevatten, worden base-id's genoemd.  
-
-Zie [Verificatie, aanvragen en antwoorden](../general/authentication-requests-and-responses.md) voor meer informatie
-
-Een object-id heeft de volgende algemene indeling:  
-
-`https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
-
-Waar:  
-
-|||  
-|-|-|  
-|`keyvault-name`|De naam voor een sleutelkluis in de Microsoft Azure Key Vault-service.<br /><br /> Key Vault-namen worden door de gebruiker geselecteerd en zijn wereldwijd uniek.<br /><br /> De naam Key Vault moet een tekenreeks met 3-24 tekens zijn, die alleen 0-9, a-z, A-Z en -bevat.|  
-|`object-type`|Het type object, ofwel "sleutels" of "geheimen".|  
-|`object-name`|An `object-name` is een door de gebruiker opgegeven naam en moet uniek zijn in een Key Vault. De naam moet een tekenreeks van 1-127 tekens zijn, die slechts 0-9, a-z, A-Z en -bevat.|  
-|`object-version`|An `object-version` is een systeemgegenereerde, 32-tekentekenreeks-id die optioneel wordt gebruikt om een unieke versie van een object aan te pakken.|  
-
-
-## <a name="key-vault-certificates"></a>Key Vault-certificaten
 
 Key Vault-certificatenondersteuning biedt het beheer van uw x509-certificaten en de volgende gedragingen:  
 
@@ -73,7 +30,7 @@ Key Vault-certificatenondersteuning biedt het beheer van uw x509-certificaten en
 >[!Note]
 >Niet-partneraanbieders/autoriteiten zijn ook toegestaan, maar ondersteunen de functie voor automatische vernieuwing niet.
 
-### <a name="composition-of-a-certificate"></a>Samenstelling van een certificaat
+## <a name="composition-of-a-certificate"></a>Samenstelling van een certificaat
 
 Wanneer een Key Vault-certificaat wordt gemaakt, worden ook een adresseerbare sleutel en een geheim met dezelfde naam gemaakt. De Key Vault-sleutel maakt belangrijke bewerkingen mogelijk en het Sleutelkluisgeheim maakt het mogelijk om de certificaatwaarde als geheim op te halen. Een Key Vault-certificaat bevat ook openbare x509-certificaatmetagegevens.  
 
@@ -81,7 +38,7 @@ De id en versie van certificaten is vergelijkbaar met die van sleutels en geheim
  
 ![Certificaten zijn complexe objecten](../media/azure-key-vault.png)
 
-### <a name="exportable-or-non-exportable-key"></a>Exporteerbare of niet-exporteerbare sleutel
+## <a name="exportable-or-non-exportable-key"></a>Exporteerbare of niet-exporteerbare sleutel
 
 Wanneer een Key Vault-certificaat wordt gemaakt, kan het worden opgehaald uit het adresseerbare geheim met de privésleutel in PFX- of PEM-formaat. Het beleid dat wordt gebruikt om het certificaat te maken, moet aangeven dat de sleutel exporteerbaar is. Als het beleid niet-exporteerbaar aangeeft, maakt de privésleutel geen deel uit van de waarde wanneer deze als geheim wordt opgehaald.  
 
@@ -89,11 +46,11 @@ De adresseerbare sleutel wordt relevanter met niet-exporteerbare KV-certificaten
 
 Twee soorten sleutels worden ondersteund : *RSA* of *RSA HSM* met certificaten. Exporteerbaar is alleen toegestaan met RSA, niet ondersteund door RSA HSM.  
 
-### <a name="certificate-attributes-and-tags"></a>Certificaatkenmerken en -tags
+## <a name="certificate-attributes-and-tags"></a>Certificaatkenmerken en -tags
 
 Naast certificaatmetadata, een adresseerbare sleutel en adresseerbaar geheim, bevat een Key Vault-certificaat ook kenmerken en tags.  
 
-#### <a name="attributes"></a>Kenmerken
+### <a name="attributes"></a>Kenmerken
 
 De certificaatkenmerken worden gespiegeld aan kenmerken van de adresseerbare sleutel en het geheim dat is gemaakt wanneer het KV-certificaat wordt gemaakt.  
 
@@ -111,14 +68,14 @@ Er zijn extra alleen-lezen kenmerken die zijn opgenomen in de reactie:
 > [!Note] 
 > Als een Key Vault-certificaat verloopt, is het adresseerbare sleutel en wordt het geheim onbruikbaar.  
 
-#### <a name="tags"></a>Tags
+### <a name="tags"></a>Tags
 
  Client opgegeven woordenboek van sleutelwaardeparen, vergelijkbaar met tags in sleutels en geheimen.  
 
  > [!Note]
 > Tags zijn leesbaar voor een beller als deze de *lijst* heeft of toestemming *krijgt* voor dat objecttype (sleutels, geheimen of certificaten).
 
-### <a name="certificate-policy"></a>Certificaatbeleid
+## <a name="certificate-policy"></a>Certificaatbeleid
 
 Een certificaatbeleid bevat informatie over het maken en beheren van de levenscyclus van een Key Vault-certificaat. Wanneer een certificaat met privésleutel wordt geïmporteerd in de sleutelkluis, wordt een standaardbeleid gemaakt door het x509-certificaat te lezen.  
 
@@ -138,7 +95,7 @@ Op hoog niveau bevat een certificaatbeleid de volgende informatie:
 -   Uitgever: Parameters over de certificaatuitgever die moet worden gebruikt om x509-certificaten uit te geven.  
 -   Beleidskenmerken: bevat kenmerken die zijn gekoppeld aan het beleid  
 
-#### <a name="x509-to-key-vault-usage-mapping"></a>X509 naar Key Vault-gebruikstoewijzing
+### <a name="x509-to-key-vault-usage-mapping"></a>X509 naar Key Vault-gebruikstoewijzing
 
 De volgende tabel geeft de toewijzing aan het gebruiksbeleid van x509-sleutel aan effectieve sleutelbewerkingen van een sleutel die is gemaakt als onderdeel van het maken van een Key Vault-certificaat.
 
@@ -153,7 +110,7 @@ De volgende tabel geeft de toewijzing aan het gebruiksbeleid van x509-sleutel aa
 |Niet-repudiation|ondertekenen, verifiëren| N.v.t. |
 |crlsign crlsign|ondertekenen, verifiëren| N.v.t. |
 
-### <a name="certificate-issuer"></a>Certificaatuitgever
+## <a name="certificate-issuer"></a>Certificaatuitgever
 
 Een key vault-certificaatobject bevat een configuratie die wordt gebruikt om te communiceren met een geselecteerde leverancier van certificaatuitgevers om x509-certificaten te bestellen.  
 
@@ -180,7 +137,7 @@ Key Vault maakt het mogelijk om meerdere emittentobjecten te maken met verschill
 
 Uitgevende objecten worden gemaakt in de kluis en kunnen alleen worden gebruikt met KV-certificaten in dezelfde kluis.  
 
-### <a name="certificate-contacts"></a>Certificaatcontactpersonen
+## <a name="certificate-contacts"></a>Certificaatcontactpersonen
 
 Certificaatcontactpersonen bevatten contactgegevens om meldingen te verzenden die worden geactiveerd door gebeurtenis van de certificaatlevensduur. De contactgegevens worden gedeeld door alle certificaten in de sleutelkluis. Er wordt een melding verzonden naar alle opgegeven contactpersonen voor een gebeurtenis voor een certificaat in de sleutelkluis.  
 
@@ -191,7 +148,7 @@ Als het beleid van een certificaat is ingesteld op automatische verlenging, word
 
   Wanneer een certificaatbeleid dat handmatig moet worden verlengd (alleen e-mail), wordt een melding verzonden wanneer het tijd is om het certificaat te vernieuwen.  
 
-### <a name="certificate-access-control"></a>Certificaattoegangsbeheer
+## <a name="certificate-access-control"></a>Certificaattoegangsbeheer
 
  Toegangsbeheer voor certificaten wordt beheerd door Key Vault en wordt geleverd door de Key Vault die deze certificaten bevat. Het toegangscontrolebeleid voor certificaten onderscheidt zich van het toegangscontrolebeleid voor sleutels en geheimen in dezelfde Key Vault. Gebruikers kunnen een of meer kluizen maken om certificaten te bezitten, om scenario's te behouden die geschikt zijn voor segmentatie en beheer van certificaten.  
 
@@ -219,7 +176,11 @@ Als het beleid van een certificaat is ingesteld op automatische verlenging, word
 
 Zie de [certificaatbewerkingen in de API-referentie Key Vault REST](/rest/api/keyvault)voor meer informatie . Zie [Kluizen - Gewaarmaak of Update](/rest/api/keyvault/vaults/createorupdate) en [Kluizen - Toegangsbeleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy)voor informatie over het instellen van machtigingen.
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 
+- [Over Key Vault](../general/overview.md)
+- [Over sleutels, geheimen en certificaten](../general/about-keys-secrets-certificates.md)
+- [Over sleutels](../keys/about-keys.md)
+- [Over geheimen](../secrets/about-secrets.md)
 - [Verificatie, aanvragen en antwoorden](../general/authentication-requests-and-responses.md)
 - [Gids voor Key Vault-ontwikkelaars](../general/developers-guide.md)

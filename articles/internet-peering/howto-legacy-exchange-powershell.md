@@ -1,39 +1,39 @@
 ---
-title: Een verouderde Exchange-peering converteren naar Azure-bron met PowerShell
+title: Een verouderde Exchange-peering converteren naar een Azure-bron met PowerShell
 titleSuffix: Azure
-description: Een verouderde Exchange-peering converteren naar Azure-bron met PowerShell
+description: Een verouderde Exchange-peering converteren naar een Azure-bron met PowerShell
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: aa11f329cf0a0cb27d58b940b42731a2ec41c272
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eedf87548d62e05d4940911ed3dcd821077acb27
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75775392"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686781"
 ---
-# <a name="convert-a-legacy-exchange-peering-to-azure-resource-using-powershell"></a>Een verouderde Exchange-peering converteren naar Azure-bron met PowerShell
+# <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>Een verouderde Exchange-peering converteren naar een Azure-bron met PowerShell
 
-In dit artikel wordt beschreven hoe u een bestaande verouderde Exchange-peering converteert naar Azure-bronnen met PowerShell-cmdlets.
+In dit artikel wordt beschreven hoe u een bestaande verouderde Exchange-peering converteert naar een Azure-bron met PowerShell-cmdlets.
 
-Als u dat liever hebt, u deze handleiding voltooien via de [portal.](howto-legacy-exchange-portal.md)
+Als u dat liever hebt, u deze handleiding voltooien met behulp van de [Azure-portal.](howto-legacy-exchange-portal.md)
 
 ## <a name="before-you-begin"></a>Voordat u begint
-* Bekijk [vereisten](prerequisites.md) en [exchange-peering-walkthrough](walkthrough-exchange-all.md) voordat u met de configuratie begint.
+* Bekijk de [vereisten](prerequisites.md) en de [Exchange-peering-walkthrough](walkthrough-exchange-all.md) voordat u met de configuratie begint.
 
-### <a name="working-with-azure-powershell"></a>Werken met Azure PowerShell
+### <a name="work-with-azure-powershell"></a>Werken met Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>Een verouderde Exchange-peering converteren in een Azure-resource
+## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>Een verouderde Exchange-peering converteren naar een Azure-bron
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Meld u aan bij uw Azure-account en selecteer uw abonnement
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
 ### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>Ontvang legacy Exchange-peering voor conversie
-Hieronder vindt u het voorbeeld om legacy Exchange-peering op seattle-peering-locatie te krijgen:
+In dit voorbeeld ziet u hoe u legacy Exchange-peering krijgen op de locatie voor peering in Seattle:
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering -Kind Exchange -PeeringLocation "Seattle"
@@ -58,7 +58,7 @@ Het antwoord lijkt op het volgende voorbeeld:
 ```
 
 ### <a name="convert-legacy-peering"></a>Legacy peering converteren
-Onder de opdracht kan worden gebruikt om verouderde Exchange-peering om te zetten in Azure-bron:
+Deze opdracht kan worden gebruikt om verouderde Exchange-peering om te zetten naar een Azure-bron:
 
 ```powershell
 $legacyPeering[0] | New-AzPeering `
@@ -69,9 +69,10 @@ $legacyPeering[0] | New-AzPeering `
 
 &nbsp;
 > [!IMPORTANT] 
-> Houd er rekening mee dat wijzigingen bij het converteren van legacy-peering naar azure-bron niet worden ondersteund&nbsp;
+> Wanneer u legacy-peering converteert naar een Azure-bron, worden wijzigingen niet ondersteund.
+&nbsp;
 
-Hieronder vindt u een voorbeeldreactie wanneer de end-to-end provisioning met succes is voltooid:
+In dit voorbeeldwordt weergegeven wanneer de end-to-end provisioning is voltooid:
 
 ```powershell
     Name                     : SeattleExchangePeering
@@ -96,7 +97,7 @@ U gedetailleerde beschrijvingen van alle parameters krijgen door de volgende opd
 ```powershell
 Get-Help Get-AzPeering -detailed
 ```
-Ga voor meer informatie naar [veelgestelde vragen over internetpeering](faqs.md)
+Zie [veelgestelde vragen over internetpeering voor](faqs.md)meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

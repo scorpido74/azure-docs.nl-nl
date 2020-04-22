@@ -8,14 +8,14 @@ manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: c156d5f1242674adc53a2a813e9b2c140221ecfb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 85b966a9423fa6c8b2dc9e97cab1e24d9756caa4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245307"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687340"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Snelstart: een Java Spring-app maken met Azure-app-configuratie
 
@@ -143,25 +143,25 @@ Gebruik de [Spring Initializr](https://start.spring.io/) om een nieuw Spring Boo
 1. Maak een nieuw `bootstrap.properties` bestand met de naam onder de bronnenmap van uw app en voeg de volgende regels toe aan het bestand. Vervang de voorbeeldwaarden door de juiste eigenschappen voor uw app-configuratiearchief.
 
     ```CLI
-    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    spring.cloud.azure.appconfiguration.stores[0].connection-string=${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
 1. Stel een omgevingsvariabele met de naam **APP_CONFIGURATION_CONNECTION_STRING**in en stel deze in op de toegangssleutel voor uw App Configuration Store. Voer bij de opdrachtregel de volgende opdracht uit en start de opdrachtprompt opnieuw om de wijziging van kracht te laten worden:
 
     ```cmd
-        setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
+    setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
     ```
 
     Als u Windows PowerShell gebruikt, voert u de volgende opdracht uit:
 
     ```azurepowershell
-        $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
+    $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
     ```
 
     Als u macOS of Linux gebruikt, voert u de volgende opdracht uit:
 
     ```cmd
-        export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
+    export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 678af1855baf52efa727444236de8a1724a7d0b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9a3c10687b92d946fccb282f2eda4af637cf2ab
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79078482"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686775"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellen trainen met Azure Machine Learning met behulp van schatter
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -80,7 +80,7 @@ print(run.get_portal_url())
 >
 > Als u artefacten wilt maken tijdens de training (zoals modelbestanden, controlepunten, `./outputs` gegevensbestanden of uitgezette afbeeldingen) schrijft u deze naar de map.
 >
-> Op dezelfde manier u logboeken van `./logs` uw trainingsrun naar de map schrijven. Als u de [TensorBoard-integratie](https://aka.ms/aml-notebook-tb) van Azure Machine Learning wilt gebruiken, moet u uw TensorBoard-logboeken naar deze map schrijven. Terwijl je run aan de gang is, kun je TensorBoard starten en deze logboeken streamen.  Later u ook de logboeken van een van uw vorige runs herstellen.
+> Op dezelfde manier u logboeken van `./logs` uw trainingsrun naar de map schrijven. Als u de [TensorBoard-integratie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) van Azure Machine Learning wilt gebruiken, moet u uw TensorBoard-logboeken naar deze map schrijven. Terwijl je run aan de gang is, kun je TensorBoard starten en deze logboeken streamen.  Later u ook de logboeken van een van uw vorige runs herstellen.
 >
 > Bijvoorbeeld als u een bestand wilt downloaden dat naar de *uitvoermap* naar uw lokale machine is geschreven nadat u op afstand bent getraind:`run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 

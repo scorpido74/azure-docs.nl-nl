@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ec9734974971ac89ad54934f43c70f8805b6a013
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 4a1db200b88d0eabde967961d956cdd2854e828d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641780"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686475"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Wat is op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources?
 
@@ -35,14 +35,6 @@ Hier volgen enkele voorbeelden van wat u met op rollen gebaseerd toegangsbeheer 
 - Een DBA-groep toestaan de SQL-databases in een abonnement te beheren.
 - Toestaan dat een gebruiker alle resources in een resourcegroep kan beheren, zoals virtuele machines, websites en subnetten.
 - Toestaan dat een toepassing toegang heeft tot alle resources in een resourcegroep.
-
-## <a name="best-practice-for-using-rbac"></a>Aanbevolen procedures voor het gebruik van RBAC
-
-Met op rollen gebaseerd toegangsbeheer kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren. In plaats van iedereen onbeperkte machtigingen te verlenen in uw Azure-abonnement of -resources, kunt u zelf bepalen welke acties er met een bepaalde bereik zijn toegestaan.
-
-Het is een aanbevolen procedure om tijdens het plannen van een strategie voor toegangsbeheer gebruikers minimale bevoegdheden te verlenen om hun werk gedaan te krijgen. In het volgende diagram wordt een voorgesteld patroon weergegeven voor het gebruik van RBAC.
-
-![RBAC en minimale bevoegdheden](./media/overview/rbac-least-privilege.png)
 
 ## <a name="how-rbac-works"></a>Hoe op rollen gebaseerd toegangsbeheer werkt
 

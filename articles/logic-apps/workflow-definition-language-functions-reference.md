@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48be73a6385c9690909cb70abe558a2def1ace88
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283912"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730512"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Naslaggids voor het gebruik van functies in expressies voor Azure Logic Apps en Power Automate
 
@@ -107,7 +107,7 @@ Als u wilt werken met verzamelingen, over het algemeen arrays, tekenreeksen en s
 | [Eerste](../logic-apps/workflow-definition-language-functions-reference.md#first) | Retourneer het eerste item uit een verzameling. |
 | [Snijpunt](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Retourneer een verzameling met *alleen* de algemene items in de opgegeven verzamelingen. |
 | [Item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Wanneer u zich in een herhalende actie over een array bevindt, retourneert u het huidige item in de array tijdens de huidige iteratie van de actie. |
-| [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Retourneer een tekenreeks met *alle* items uit een array, gescheiden door het opgegeven teken. |
+| [Join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Retourneer een tekenreeks met *alle* items uit een array, gescheiden door het opgegeven teken. |
 | [Laatste](../logic-apps/workflow-definition-language-functions-reference.md#last) | Retourneer het laatste item uit een verzameling. |
 | [Lengte](../logic-apps/workflow-definition-language-functions-reference.md#length) | Het aantal items in een tekenreeks of array retourneren. |
 | [Overslaan](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Verwijder items uit de voorkant van een verzameling en retourneer *alle andere* items. |
@@ -163,7 +163,7 @@ Zie de [alfabetische lijst](../logic-apps/workflow-definition-language-functions
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Een zwevend puntnummer voor een invoerwaarde retourneren. |
 | [Int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Retourneer de gehele versie voor een tekenreeks. |
 | [Json](../logic-apps/workflow-definition-language-functions-reference.md#json) | De Json-typewaarde of object (JavaScript Object Notatie) voor een tekenreeks of XML retourneren. |
-| [tekenreeks](../logic-apps/workflow-definition-language-functions-reference.md#string) | Retourneer de tekenreeksversie voor een invoerwaarde. |
+| [Tekenreeks](../logic-apps/workflow-definition-language-functions-reference.md#string) | Retourneer de tekenreeksversie voor een invoerwaarde. |
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Retourneer de URI-gecodeerde versie voor een invoerwaarde door URL-onveilige tekens te vervangen door escape-tekens. |
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Retourneer de binaire versie voor een uri-gecodeerde tekenreeks. |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Retourneer de tekenreeksversie voor een uri-gecodeerde tekenreeks. |
@@ -249,7 +249,7 @@ Zie de [alfabetische lijst](../logic-apps/workflow-definition-language-functions
 | [lijstCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Retourneer de "callback URL" die een trigger of actie aanroept. |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Retourneer de behuizing voor een specifiek onderdeel in de uitvoer van een actie die meerdere onderdelen heeft. |
 | [Uitgangen](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Retourneer de uitvoer van een actie bij runtime. |
-| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Retourneer de waarde voor een parameter die wordt beschreven in de werkstroomdefinitie. |
+| [Parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Retourneer de waarde voor een parameter die wordt beschreven in de werkstroomdefinitie. |
 | [Resultaat](../logic-apps/workflow-definition-language-functions-reference.md#result) | Retourneer de inputs en outputs van alle acties binnen `For_each` `Until`de `Scope`opgegeven scoped actie, zoals , en . |
 | [Trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Retourneer de uitvoer van een trigger bij runtime of van andere JSON-naam-en-waardeparen. Zie ook [triggerOutputs](#triggerOutputs) en [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Retourneer de `body` uitvoer van een trigger bij runtime. Zie [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
@@ -2481,7 +2481,7 @@ In dit voorbeeld wordt een tegenvariabele en stappen die tijdens elke iteratie i
                "runAfter": {}
             }
          },
-         "expression": "@equals(variables('myCounter'), 5),
+         "expression": "@equals(variables('myCounter'), 5)",
          "limit": {
             "count": 60,
             "timeout": "PT1H"

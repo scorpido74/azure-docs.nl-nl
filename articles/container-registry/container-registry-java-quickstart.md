@@ -5,12 +5,12 @@ author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 62d63b24baab204cb029565b109ea2de768e1d80
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ef933ae9a6b0a34529c7ec145b13c023728a3457
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78165444"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731860"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Snelstart: Java-containerafbeeldingen bouwen en pushen naar Azure Container Registry
 
@@ -163,7 +163,7 @@ Zie voor andere versies van de officiële door Microsoft ondersteunde Java-basis
 Voor meer informatie over Spring en Azure gaat u door naar het documentatiecentrum van Spring op Azure.
 
 > [!div class="nextstepaction"]
-> [Spring in Azure](/azure/java/spring-framework)
+> [Spring in Azure](/azure/developer/java/spring-framework)
 
 ### <a name="additional-resources"></a>Aanvullende resources
 
@@ -173,5 +173,5 @@ Zie de volgende bronnen voor meer informatie:
 * [Werken met Azure DevOps en Java](/azure/devops/java)
 * [Aan de slag met Spring Boot in Docker](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)
-* [Een Spring Boot-toepassing implementeren in Azure App Service](/azure/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
+* [Een Spring Boot-toepassing implementeren in Azure App Service](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
 * [Een aangepaste Docker-installatiekopie gebruiken voor Azure-web-apps in Linux](/azure/app-service-web/app-service-linux-using-custom-docker-image)

@@ -3,12 +3,12 @@ title: Azure Application Insights voor ASP.NET Core-toepassingen | Microsoft Doc
 description: Monitor ASP.NET Core-webtoepassingen op beschikbaarheid, prestaties en gebruik.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: d6a0e507022452f1491e71651ba3bc8db3d1c090
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a9a81d76df7f14fb99b8521e7bfa2edff6c9e9e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284786"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687375"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Toepassingsinzichten voor ASP.NET Core-toepassingen
 
@@ -162,11 +162,11 @@ De voorgaande stappen zijn voldoende om u te helpen beginnen met het verzamelen 
     
 Als alternatief voor `FullScript` `ScriptBody` het gebruik van de de is beschikbaar vanaf SDK v2.14. Gebruik dit als u `<script>` de tag moet beheren om een inhoudsbeveiligingsbeleid in te stellen:
 
-    ```cshtml
-        <script> // apply custom changes to this script tag.
-            @Html.Raw(JavaScriptSnippet.ScriptBody)
-        </script>
-    ```
+```cshtml
+ <script> // apply custom changes to this script tag.
+     @Html.Raw(JavaScriptSnippet.ScriptBody)
+ </script>
+```
 
 De `.cshtml` eerder genoemde bestandsnamen zijn afkomstig van een standaard MVC-toepassingssjabloon. Als u uiteindelijk clientbewaking voor uw toepassing goed wilt inschakelen, moet het `<head>` JavaScript-fragment worden weergegeven in het gedeelte van elke pagina van uw toepassing die u wilt controleren. U dit doel voor deze toepassingssjabloon bereiken `_Layout.cshtml`door het JavaScript-fragment toe te voegen aan. 
 

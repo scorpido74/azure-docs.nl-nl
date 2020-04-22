@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: c5fb585d0eb6aeb7866c2ab04b324ee31fe903ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658046"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687329"
 ---
 # <a name="workbook-text-parameters"></a>Tekstparameters voor werkmap
 
@@ -59,6 +59,8 @@ Zo ziet de werkmap eruit in de leesmodus.
 
     ![Afbeelding met een tekstparameter waarnaar wordt verwezen in KQL](./media/workbooks-text/text-reference.png)
 
+> [!NOTE]
+> In het bovenstaande `{SlowRequestThreshold}` voorbeeld staat een gehele waarde. Als u een zoekopdracht voor `{ComputerName}` een tekenreeks zoals u nodig zou `"{ComputerName}"` hebben om uw Kusto query te wijzigen om aanhalingstekens toe te voegen in volgorde voor de parameter veld om een input accepteren zonder aanhalingstekens.
 
 ## <a name="setting-default-values"></a>Standaardwaarden instellen
 1. Begin met een lege werkmap in de bewerkingsmodus.

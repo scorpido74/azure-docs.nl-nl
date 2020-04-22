@@ -10,16 +10,17 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 3bb0b9fb8b268c3e036ffb365eb8d5b80a241269
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2ba136cd479da0cd394b5e5afe6ebe7c22b539d5
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77371904"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732091"
 ---
 Gebruik de tekstwaardeclientbibliotheek voor taalverstaan (LUIS) voor .NET om:
 
 * Krijg voorspelling per sleuf
+* Voorspelling per versie
 
 [Referentiedocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | [Bibliotheekbroncode](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime) | [Voorspelling runtime Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) | [C# Samples](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/LanguageUnderstanding/predict-with-sdk-3x)
 
@@ -27,10 +28,7 @@ Gebruik de tekstwaardeclientbibliotheek voor taalverstaan (LUIS) voor .NET om:
 
 * Language Understanding (LUIS) portal account - [Maak er een gratis](https://www.luis.ai)
 * De huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
-
-Zoekt u meer documentatie?
-
- * [SDK-naslagdocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)
+* Een LUIS-app-id - gebruik de `df67dcdb-c37d-46af-88e1-8b97951ca1c2`openbare IoT-app-id van . De gebruikersquery die wordt gebruikt in de quickstartcode is specifiek voor die app.
 
 ## <a name="setting-up"></a>Instellen
 
@@ -61,7 +59,7 @@ export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
 
 Nadat u de omgevingsvariabele toevoegt, voert u `source ~/.bashrc` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
 
-#### <a name="macos"></a>[Macos](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 Bewerk `.bash_profile`uw onaantal en voeg de omgevingsvariabele toe:
 

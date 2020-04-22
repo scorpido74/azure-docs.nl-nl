@@ -10,80 +10,34 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1c12135ec6e5a0f4de1fdd46134a056447d3c331
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3d89275e1418035fed8aad3ffddd8def2c1d59ce
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424235"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686062"
 ---
 # <a name="about-azure-key-vault-keys"></a>Informatie over Azure Key Vault-sleutels
 
-Azure Key Vault stelt Microsoft Azure-toepassingen en gebruikers in staat om sleutels op te slaan en te gebruiken. Het ondersteunt meerdere sleuteltypen en algoritmen en maakt het gebruik van Hardware Security Modules (HSM) mogelijk voor sleutels met een hoge waarde. 
+Azure Key Vault ondersteunt meerdere sleuteltypen en algoritmen en maakt het gebruik van Hardware Security Modules (HSM) mogelijk voor sleutels met een hoge waarde.
 
-Zie Wat is Azure Key Vault voor meer algemene informatie over Key [Vault?](/azure/key-vault/key-vault-overview)
+Cryptografische sleutels in Key Vault worden weergegeven als JSON Web Key [JWK]-objecten. De specificaties voor JavaScript Object Notatie (JSON) en JavaScript Object Signing and Encryption (JOSE) zijn:
 
-## <a name="azure-key-vault"></a>Azure Key Vault
+-   [JSON-websleutel (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
+-   [JSON-webversleuteling (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
+-   [JSON Web Algoritmen (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
+-   [JSON-webhandtekening (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
-De volgende secties bieden algemene informatie die van toepassing is op de implementatie van de Key Vault-service.
+De basis JWK/JWA specificaties zijn ook uitgebreid om belangrijke types die uniek zijn voor de Key Vault implementatie mogelijk te maken. Als u bijvoorbeeld sleutels importeert met een specifieke verpakking van HSM-leveranciers, u sleutels beveiligen die alleen in Key Vault HSM's kunnen worden gebruikt. 
 
-### <a name="supporting-standards"></a>Ondersteunende normen
-
-De SPECIFICATIES JavaScript Object Notation (JSON) en JavaScript Object Signing and Encryption (JOSE) zijn belangrijke achtergrondinformatie.  
-
--   [JSON-websleutel (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)  
--   [JSON-webversleuteling (JWE)](https://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-40)  
--   [JSON Web Algoritmen (JWA)](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40)  
--   [JSON-webhandtekening (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41)  
-
-### <a name="data-types"></a>Gegevenstypen
-
-Raadpleeg de JOSE-specificaties voor relevante gegevenstypen voor sleutels, versleuteling en ondertekening.  
-
--   **algoritme** - een ondersteund algoritme voor een sleutelbewerking, bijvoorbeeld RSA1_5  
--   **ciphertext-waarde** - cipher tekst octetten, gecodeerd met Base64URL  
--   **digest-value** - de uitvoer van een hash-algoritme, gecodeerd met Base64URL  
--   **type sleutel** - een van de ondersteunde sleuteltypen, bijvoorbeeld RSA (Rivest-Shamir-Adleman).  
--   **plaintext-waarde** - plaintext octetten, gecodeerd met Base64URL  
--   **handtekeningwaarde** - uitvoer van een handtekeningalgoritme, gecodeerd met Base64URL  
--   **base64URL** - een Base64URL [RFC4648] gecodeerde binaire waarde  
--   **boolean** - waar of onwaar  
--   **Identiteit** - een identiteit van Azure Active Directory (Azure AD).  
--   **IntDate** - een JSON decimale waarde die het aantal seconden van 1970-01-01T0:0:0Z UTC vertegenwoordigt tot de opgegeven UTC-datum/-tijd. Zie RFC3339 voor meer informatie over datum/tijden, in het algemeen en UTC in het bijzonder.  
-
-### <a name="objects-identifiers-and-versioning"></a>Objecten, id's en versiebeheer
-
-Objecten die zijn opgeslagen in Key Vault worden geversioneerd wanneer een nieuwe instantie van een object wordt gemaakt. Aan elke versie is een unieke id en URL toegewezen. Wanneer een object voor het eerst wordt gemaakt, krijgt het een unieke versie-id en wordt het gemarkeerd als de huidige versie van het object. Het maken van een nieuwe instantie met dezelfde objectnaam geeft het nieuwe object een unieke versie-id, waardoor het de huidige versie wordt.  
-
-Objecten in Key Vault kunnen worden aangepakt met de huidige id of een versiespecifieke id. Als u bijvoorbeeld een sleutel `MasterKey`met de naam krijgt, zorgt het uitvoeren van bewerkingen met de huidige id ervoor dat het systeem de laatst beschikbare versie gebruikt. Door bewerkingen uit te voeren met de versiespecifieke id, wordt het systeem die specifieke versie van het object gebruikt.  
-
-Objecten worden uniek geïdentificeerd in Key Vault met behulp van een URL. Geen twee objecten in het systeem hebben dezelfde URL, ongeacht de geolocatie. De volledige URL van een object wordt object-id genoemd. De URL bestaat uit een voorvoegsel dat het sleutelkluis, objecttype, de door de gebruiker opgegeven objectnaam en een objectversie identificeert. De objectnaam is hoofdletterongevoelig en onveranderlijk. Id's die de objectversie niet bevatten, worden base-id's genoemd.  
-
-Zie [Verificatie, aanvragen en antwoorden](../general/authentication-requests-and-responses.md) voor meer informatie
-
-Een object-id heeft de volgende algemene indeling:  
-
-`https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
-
-Waar:  
-
-|||  
-|-|-|  
-|`keyvault-name`|De naam voor een sleutelkluis in de Microsoft Azure Key Vault-service.<br /><br /> Key Vault-namen worden door de gebruiker geselecteerd en zijn wereldwijd uniek.<br /><br /> De naam Key Vault moet een tekenreeks met 3-24 tekens zijn, die alleen 0-9, a-z, A-Z en -bevat.|  
-|`object-type`|Het type object, ofwel "sleutels" of "geheimen".|  
-|`object-name`|An `object-name` is een door de gebruiker opgegeven naam en moet uniek zijn in een Key Vault. De naam moet een tekenreeks van 1-127 tekens zijn, die slechts 0-9, a-z, A-Z en -bevat.|  
-|`object-version`|An `object-version` is een systeemgegenereerde, 32-tekentekenreeks-id die optioneel wordt gebruikt om een unieke versie van een object aan te pakken.|  
-
-## <a name="key-vault-keys"></a>Key Vault-toetsen
-
-### <a name="keys-and-key-types"></a>Sleutels en sleuteltypen
-
-Cryptografische sleutels in Key Vault worden weergegeven als JSON Web Key [JWK]-objecten. De basis JWK/JWA specificaties zijn ook uitgebreid om belangrijke types die uniek zijn voor de Key Vault implementatie mogelijk te maken. Als u bijvoorbeeld sleutels importeert met een specifieke verpakking van HSM-leveranciers, u sleutels beveiligen die alleen in Key Vault HSM's kunnen worden gebruikt.  
+Azure Key Vault ondersteunt zowel soft- als harde toetsen:
 
 - **"Zachte" sleutels**: Een sleutel verwerkt in software door Key Vault, maar wordt in rust versleuteld met behulp van een systeemsleutel die zich in een HSM bevindt. Clients kunnen een bestaande RSA- of EC-toets (Elliptic Curve) importeren of vragen dat Key Vault er een genereert.
 - **"Harde" toetsen**: Een sleutel verwerkt in een HSM (Hardware Security Module). Deze sleutels zijn beschermd in een van de Key Vault HSM Security Worlds (er is één Security World per geografie om isolatie te behouden). Clients kunnen een RSA- of EC-sleutel importeren, in zachte vorm of door te exporteren vanaf een compatibel HSM-apparaat. Klanten kunnen Key Vault ook vragen om een sleutel te genereren. Dit sleuteltype voegt het key_hsm attribuut toe aan het JWK verkrijgen om het HSM-sleutelmateriaal te dragen.
 
-     Zie Microsoft Azure Trust [Center](https://azure.microsoft.com/support/trust-center/privacy/) voor meer informatie over geografische grenzen  
+Zie Microsoft Azure Trust [Center](https://azure.microsoft.com/support/trust-center/privacy/) voor meer informatie over geografische grenzen  
+
+## <a name="cryptographic-protection"></a>Cryptografische bescherming
 
 Key Vault ondersteunt alleen RSA- en Elliptic Curve-toetsen. 
 
@@ -94,9 +48,7 @@ Key Vault ondersteunt alleen RSA- en Elliptic Curve-toetsen.
 
 Key Vault ondersteunt RSA-toetsen in de maten 2048, 3072 en 4096. Key Vault ondersteunt Elliptic Curve-sleuteltypen P-256, P-384, P-521 en P-256K (SECP256K1).
 
-### <a name="cryptographic-protection"></a>Cryptografische bescherming
-
-De cryptografische modules die Key Vault gebruikt, of het nu HSM of software is, zijn FIPS (Federal Information Processing Standards) gevalideerd. U hoeft niets speciaals te doen om in de FIPS-modus te worden uitgevoerd. Sleutels die zijn **gemaakt** of **geïmporteerd** als HSM-beveiligd, worden verwerkt in een HSM, gevalideerd naar FIPS 140-2 Level 2. Sleutels **die zijn gemaakt** of **geïmporteerd** als softwarebeveiligd, worden verwerkt in cryptografische modules die zijn gevalideerd naar FIPS 140-2 Niveau 1. Zie [Sleutels en sleuteltypen](#keys-and-key-types)voor meer informatie.
+De cryptografische modules die Key Vault gebruikt, of het nu HSM of software is, zijn FIPS (Federal Information Processing Standards) gevalideerd. U hoeft niets speciaals te doen om in de FIPS-modus te worden uitgevoerd. Sleutels die zijn **gemaakt** of **geïmporteerd** als HSM-beveiligd, worden verwerkt in een HSM, gevalideerd naar FIPS 140-2 Level 2. Sleutels **die zijn gemaakt** of **geïmporteerd** als softwarebeveiligd, worden verwerkt in cryptografische modules die zijn gevalideerd naar FIPS 140-2 Niveau 1.
 
 ###  <a name="ec-algorithms"></a>EG-algoritmen
  De volgende algoritme-id's worden ondersteund met EC- en EC-HSM-sleutels in Key Vault. 
@@ -114,7 +66,6 @@ De cryptografische modules die Key Vault gebruikt, of het nu HSM of software is,
 -   **ES256K** - ECDSA voor SHA-256 digests en toetsen gemaakt met curve P-256K. Dit algoritme is in afwachting van standaardisatie.
 -   **ES384** - ECDSA voor SHA-384 digests en toetsen gemaakt met curve P-384. Dit algoritme wordt beschreven op [RFC7518](https://tools.ietf.org/html/rfc7518).
 -   **ES512** - ECDSA voor SHA-512-samenvattingen en toetsen gemaakt met curve P-521. Dit algoritme wordt beschreven op [RFC7518](https://tools.ietf.org/html/rfc7518).
-
 
 ###  <a name="rsa-algorithms"></a>RSA-algoritmen  
  De volgende algoritme-id's worden ondersteund met RSA- en RSA-HSM-sleutels in Key Vault.  
@@ -134,7 +85,7 @@ De cryptografische modules die Key Vault gebruikt, of het nu HSM of software is,
 -   **RS512** - RSASSA-PKCS-v1_5 met SHA-512. De meegeleverde digest-waarde van de toepassing moet worden berekend met SHA-512 en moet 64 bytes lang zijn.  
 -   **RSNULL** - Zie [RFC2437], een gespecialiseerde use-case om bepaalde TLS-scenario's in te schakelen.  
 
-###  <a name="key-operations"></a>Belangrijkste bewerkingen
+##  <a name="key-operations"></a>Belangrijkste bewerkingen
 
 Key Vault ondersteunt de volgende bewerkingen op belangrijke objecten:  
 
@@ -164,7 +115,7 @@ Gebruikers kunnen een van de cryptografische bewerkingen die Key Vault per sleut
 
 Zie [JSON Web Key (JWK) voor](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)meer informatie over JWK-objecten.  
 
-###  <a name="key-attributes"></a>Belangrijke kenmerken
+## <a name="key-attributes"></a>Belangrijke kenmerken
 
 Naast de instellingen voor sleutels kunnen de volgende kenmerken worden opgegeven. In een JSON-aanvraag zijn het trefwoord en de accolades '{' '}' vereist, zelfs als er geen kenmerken zijn opgegeven.  
 
@@ -177,24 +128,24 @@ Er zijn extra alleen-lezen kenmerken die zijn opgenomen in een reactie die belan
 - *gemaakt*: IntDate, optioneel. Het *gemaakte* kenmerk geeft aan wanneer deze versie van de sleutel is gemaakt. De waarde is null voor sleutels die zijn gemaakt vóór de toevoeging van dit kenmerk. De waarde moet een getal zijn dat een IntDate-waarde bevat.  
 - *bijgewerkt*: IntDate, optioneel. Het *bijgewerkte* kenmerk geeft aan wanneer deze versie van de sleutel is bijgewerkt. De waarde is null voor sleutels die voor het laatst zijn bijgewerkt voordat dit kenmerk werd toegelaten. De waarde moet een getal zijn dat een IntDate-waarde bevat.  
 
-Zie [Gegevenstypen voor](#data-types) meer informatie over IntDate en andere gegevenstypen  
+Zie [Over sleutels, geheimen en certificaten: [Gegevenstypen](../general/about-keys-secrets-certificates.md#data-types)voor meer informatie over IntDate en andere gegevenstypen.
 
-#### <a name="date-time-controlled-operations"></a>Datumgecontroleerde bewerkingen
+### <a name="date-time-controlled-operations"></a>Datumgecontroleerde bewerkingen
 
 Niet-nog-geldig en verlopen sleutels, buiten de *nbf* / *exp* venster, zal werken voor **decoderen,** **uitpakken**, en **controleren** operaties (zal niet terugkeren 403, Verboden). De reden voor het gebruik van de nog niet geldige status is om een sleutel te laten testen voordat het gebruik van de productie. De reden voor het gebruik van de verlopen status is om herstelbewerkingen toe te staan op gegevens die zijn gemaakt toen de sleutel geldig was. U ook de toegang tot een sleutel uitschakelen met het Key Vault-beleid of door het *ingeschakelde* sleutelkenmerk bij te werken naar **false.**
 
-Zie [Gegevenstypen](#data-types)voor meer informatie over gegevenstypen .
+Zie [Gegevenstypen](../general/about-keys-secrets-certificates.md#data-types)voor meer informatie over gegevenstypen .
 
 Zie de [JSON Web Key (JWK) voor](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)meer informatie over andere mogelijke kenmerken.
 
-### <a name="key-tags"></a>Hoofdtags
+## <a name="key-tags"></a>Hoofdtags
 
 U aanvullende toepassingsspecifieke metagegevens opgeven in de vorm van tags. Key Vault ondersteunt maximaal 15 tags, die elk een naam van 256 tekens en een tekenwaarde van 256 kunnen hebben.  
 
 >[!Note]
 >Tags zijn leesbaar voor een beller als deze de *lijst* heeft of toestemming *krijgt* voor dat objecttype (sleutels, geheimen of certificaten).
 
-###  <a name="key-access-control"></a>Toegangsbeheer voor sleutels
+##  <a name="key-access-control"></a>Toegangsbeheer voor sleutels
 
 Toegangscontrole voor sleutels die door Key Vault worden beheerd, wordt geleverd op het niveau van een Key Vault die fungeert als de container met sleutels. Het toegangscontrolebeleid voor sleutels onderscheidt zich van het toegangscontrolebeleid voor geheimen in dezelfde Key Vault. Gebruikers kunnen een of meer kluizen maken om sleutels vast te houden en moeten scenario's behouden die geschikt zijn voor segmentatie en beheer van sleutels. Toegangscontrole voor sleutels is onafhankelijk van toegangscontrole voor geheimen.  
 
@@ -224,7 +175,11 @@ De volgende machtigingen kunnen worden verleend, op een per gebruiker / service 
 
 Zie [Sleutelbewerkingen in de Key Vault REST API-referentie](/rest/api/keyvault)voor meer informatie over het werken met sleutels. Zie [Kluizen - Gewaarmaak of Update](/rest/api/keyvault/vaults/createorupdate) en [Kluizen - Toegangsbeleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy)voor informatie over het instellen van machtigingen. 
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 
+- [Over Key Vault](../general/overview.md)
+- [Over sleutels, geheimen en certificaten](../general/about-keys-secrets-certificates.md)
+- [Over geheimen](../secrets/about-secrets.md)
+- [Over certificaten](../certificates/about-certificates.md)
 - [Verificatie, aanvragen en antwoorden](../general/authentication-requests-and-responses.md)
 - [Gids voor Key Vault-ontwikkelaars](../general/developers-guide.md)

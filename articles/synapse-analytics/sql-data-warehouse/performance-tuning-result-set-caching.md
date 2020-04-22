@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 42f8f51545f643e1ed9e1a23c9445f6e216fdabe
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: eadbe13269ce1259b4560af117f5b15b3b294151
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273406"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730588"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Prestaties afstemmen door resultatensets op te slaan in de cache
 
@@ -42,10 +42,11 @@ Zodra de resulterenset cache is ingeschakeld voor een database, worden de result
 - Query's met door de gebruiker gedefinieerde functies
 - Query's met tabellen met beveiliging op rijniveau of beveiliging op kolomniveau ingeschakeld
 - Query's die gegevens retourneren met een rijgrootte groter dan 64 KB
+- Query's die grote gegevens retourneren (>10 GB) 
 
 > [!IMPORTANT]
 > De bewerkingen voor het maken van resultatensetcache en het ophalen van gegevens uit de cache vinden plaats op het controleknooppunt van een Synapse SQL-poolinstantie.
-> Wanneer het incachezetten van het resultaat is ingeschakeld, kunnen query's die grote resultaatset retourneren (bijvoorbeeld >1 miljoen rijen) leiden tot een hoog CPU-gebruik op het controleknooppunt en het algemene queryantwoord op de instantie vertragen.  Deze query's worden vaak gebruikt tijdens gegevensverkenning of ETL-bewerkingen. Om te voorkomen dat het controleknooppunt wordt benadrukt en prestatieproblemen ontstaan, moeten gebruikers de cache van de resultatenset in de database uitschakelen voordat deze typen query's worden uitgevoerd.  
+> Wanneer het incachezetten van het resultaat is ingeschakeld, kunnen query's die grote resultaatset retourneren (bijvoorbeeld >1 GB) leiden tot hoge beperking op het besturingselementknooppunt en het algemene queryantwoord op de instantie vertragen.  Deze query's worden vaak gebruikt tijdens gegevensverkenning of ETL-bewerkingen. Om te voorkomen dat het controleknooppunt wordt benadrukt en prestatieproblemen ontstaan, moeten gebruikers de cache van de resultatenset in de database uitschakelen voordat deze typen query's worden uitgevoerd.  
 
 Voer deze query uit voor de tijd die wordt genomen door de cachingbewerkingen van de resultatenset voor een query:
 

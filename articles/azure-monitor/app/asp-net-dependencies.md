@@ -3,12 +3,12 @@ title: Afhankelijkheidstracking in Azure-toepassingsinzichten | Microsoft Docume
 description: Controleer afhankelijkheidsoproepen vanuit uw on-premises of Microsoft Azure-webtoepassing met Application Insights.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 1d4e8d1a0482257c92f47a00bd440e786c09c7aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80292129"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731493"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Afhankelijkheidstracking in Azure-toepassingsinzichten 
 
@@ -97,7 +97,7 @@ Voor ASP.NET toepassingen wordt volledige SQL-query verzameld met behulp van byt
 | Platform | Stap(en) nodig om volledige SQL-query te krijgen |
 | --- | --- |
 | Azure Web App |Open in het configuratiescherm van uw web-app [het Blade Application Insights](../../azure-monitor/app/azure-web-apps.md) en schakel SQL-opdrachten in onder .NET |
-| IIS Server (Azure VM, on-prem, enzovoort.) | Gebruik de PowerShell-module statusmonitor om [de instrumentatieengine](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md) te installeren en IIS opnieuw te starten. |
+| IIS Server (Azure VM, on-prem, enzovoort.) | Gebruik de PowerShell-module statusmonitor om [de instrumentatieengine](../../azure-monitor/app/status-monitor-v2-api-reference.md) te installeren en IIS opnieuw te starten. |
 | Azure Cloud Service | Opstarttaak toevoegen [om StatusMonitor te installeren](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Uw app moet op tijd worden aangesloten op ApplicationInsights SDK door NuGet-pakketten te installeren voor [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) of [ASP.NET Core-toepassingen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) |
 | IIS Express | Niet ondersteund
 

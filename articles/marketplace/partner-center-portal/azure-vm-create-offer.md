@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 161fd9276427db0d0d7d56da1bfc0bb8ccf52a52
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: d5626f00e9627338349d9b579bcf26256148b551
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536655"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731270"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Een Azure-aanbieding voor virtuele machines maken
 
@@ -34,19 +34,19 @@ Publiceren op Azure Marketplace heeft de volgende voordelen:
 
 ### <a name="before-you-begin"></a>Voordat u begint
 
-Als u dit nog niet hebt gedaan, bekijkt u de [publicatiehandleiding voor virtuele machines](https://aka.ms/Virtualmachineofferpublishingguide) van de virtuele machine van Virtual en dit azure-materiaal voor virtuele machines:
+Als u dit nog niet hebt gedaan, bekijkt u de [publicatiehandleiding voor virtuele machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) van de virtuele machine van Virtual en dit azure-materiaal voor virtuele machines:
 
 - Quickstart-hulplijnen
   - [Azure Quickstart-sjablonen](https://azure.microsoft.com/resources/templates/)
   - [GitHub Azure Quickstart-sjablonen](https://github.com/azure/azure-quickstart-templates)
 - Zelfstudies
-  - [Virtuele Linux-machines](https://aka.ms/LinuxVMtutorial)
-  - [Virtuele Windows-machines](https://aka.ms/windowsvms)
+  - [Virtuele Linux-machines](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+  - [Virtuele Windows-machines](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 - Voorbeelden
-  - [Azure CLI-samples voor Linux VM's](https://aka.ms/linuxclisamples)
-  - [Azure PowerShell voor Linux VM's](https://aka.ms/linuxpowershellsamples)
-  - [Azure CLI-voorbeelden voor Windows VM's](https://aka.ms/windowsclisamples)
-  - [Azure PowerShell voor Windows VM's](https://aka.ms/windowspowershellvmsamples)
+  - [Azure CLI-samples voor Linux VM's](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
+  - [Azure PowerShell voor Linux VM's](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
+  - [Azure CLI-voorbeelden voor Windows VM's](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
+  - [Azure PowerShell voor Windows VM's](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
 
 ### <a name="fundamentals-in-technical-knowledge"></a>Fundamenten in technische kennis
 
@@ -62,11 +62,11 @@ Uw engineeringteam moet de volgende Microsoft-technologieën begrijpen:
 
 Voordat u een Azure-aanbieding voor virtuele machines maken, moet u een commercieel marktplaatsaccount hebben in Partnercenter. Zie Een account voor commerciële [marktplaatsmaken in partnercentrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)als u er nog geen hebt gemaakt.
 
-1. Log in bij [Partnercenter](https://partner.microsoft.com/dashboard/home)en **selecteer**dashboard in het bovenste menu .
+1. Meld u aan bij [Partnercentrum](https://partner.microsoft.com/dashboard/home)en **selecteer**dashboard in het bovenste menu .
 2. Selecteer in de linkernavigatiebalk **Commerciële marktplaats**en **vervolgens Overzicht**.
 3. Selecteer **op** de pagina Overzicht de optie **+ Nieuwe aanbieding,** vervolgens **Azure Virtual Machine**. Het dialoogvenster **Nieuwe aanbieding** wordt weergegeven.
 
-![Hiermee wordt de overzichtspagina in partnercentrum weergegeven met de knop Nieuwe aanbieding en azure virtual machine-aanbieding geselecteerd.](media/avm-create7.png)
+    ![Hiermee wordt de overzichtspagina in partnercentrum weergegeven met de knop Nieuwe aanbieding en azure virtual machine-aanbieding geselecteerd.](media/avm-create7.png)
 
 ## <a name="offer-id-and-alias"></a>Aanbiedings-ID en alias
 
@@ -91,7 +91,7 @@ Als u een testrit wilt inschakelen, schakelt u het selectievakje **Een teststati
 Aanvullende bronnen voor teststations:
 
 - [Technische best practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Best practices voor marketing](https://aka.ms/TestDriveMarketingBestPractices)
+- [Best practices voor marketing](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [Overzicht van teststations](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF (zorg ervoor dat uw pop-upblokkering is uitgeschakeld).
 
 ### <a name="lead-management"></a>Leadbeheer
@@ -99,12 +99,12 @@ Aanvullende bronnen voor teststations:
 Wanneer u uw aanbieding publiceert op de commerciële marktplaats met Partner Center, koppelt u deze aan uw CRM-systeem (Customer Relationship Management). Hiermee u klantcontactgegevens ontvangen zodra iemand interesse toont in of uw product gebruikt. Verbinding maken met een CRM is vereist als u **Test Drive** inschakelt (zie vorige sectie), anders is het optioneel.
 
 1. Selecteer een leadbestemming waarnaar wij de klantenleads moeten sturen. Partnercenter ondersteunt de volgende CRM-systemen:
-    - [Dynamics 365](https://aka.ms/Dyn365LeadMgmt) voor klantbetrokkenheid
-    - [Marketo](https://aka.ms/LeadMgmtMarketo)
-    - [SalesForce](https://aka.ms/LeadMgmtSalesforce)
+    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klantbetrokkenheid
+    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
+    - [SalesForce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > Als uw CRM-systeem hierboven niet wordt vermeld, gebruikt u [Azure Table](https://aka.ms/AzureTableLeadMgmt) of [Https Endpoint](https://aka.ms/LeadMgmtHTTPS) om klantgegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
+    > Als uw CRM-systeem hierboven niet wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [Https Endpoint](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klantgegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
 
 2. Verbind uw aanbieding met de hoofdbestemming wanneer u publiceert in partnercentrum.
 3. Controleer of de verbinding met de hoofdbestemming correct is geconfigureerd. Nadat u deze hebt gepubliceerd in het Partnercenter, valideren we de verbinding en sturen we u een testlead. Terwijl u een voorbeeld van de aanbieding bekijkt voordat deze live gaat, u ook uw leadverbinding testen door te proberen het aanbod zelf te implementeren in de preview-omgeving.
@@ -274,7 +274,7 @@ Voeg maximaal vijf screenshots toe die laten zien hoe uw aanbieding werkt. Elke 
 
 Voeg maximaal vijf video's toe die je aanbod demonstreren. Deze moeten worden gehost op een externe videodienst. Voer de naam, het webadres en een png-miniatuurafbeelding van de video in met een grootte van 1280 x 720 pixels in.
 
-Zie [Aanbevolen procedures voor aanbiedingen voor marktplaatsaanbiedingen voor](https://aka.ms/LdMgmtOfferListingBestPractices)extra bronnen voor marktplaatsvermeldingen .
+Zie [Aanbevolen procedures voor aanbiedingen voor marktplaatsaanbiedingen voor](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)extra bronnen voor marktplaatsvermeldingen .
 
 Selecteer **Concept opslaan** voordat u verdergaat.
 
@@ -554,4 +554,4 @@ In deze voorbeelden ziet u hoe de aanbieding wordt weergegeven in Azure Marketpl
 
 ## <a name="next-step"></a>Volgende stap
 
-- [Een bestaand aanbod bijwerken in de commerciële markt](https://aka.ms/UpdateOfferCM)
+- [Een bestaand aanbod bijwerken in de commerciële markt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

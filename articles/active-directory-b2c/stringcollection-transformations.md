@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6aea537ebff4ae61e00861e6cafe742a7feb165e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cac7e6feb632456b63b97ead057f9ecaf49322ea
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186774"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729723"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection claimt transformaties
 
@@ -159,4 +159,38 @@ Na voorbeeld wordt `roles` gecontroleerd of het claimtype stringCollection de wa
 - Output claims:
     - **outputClaim**: "waar"
 
+## <a name="stringcollectioncontainsclaim"></a>StringCollectionContainsClaim
 
+Hiermee wordt gecontroleerd of een claimtype StringCollection een claimwaarde bevat.
+
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| ---- | ----------------------- | --------- | ----- |
+| Invoerclaim | verzameling | tekenreeksVerzameling | Het claimtype dat moet worden doorzocht. |
+| Invoerclaim | item|tekenreeks| Het claimtype dat de waarde bevat om te zoeken.|
+|Inputparameter|negerenHoofdletter|tekenreeks|Hiermee geeft u op of deze vergelijking het geval moet negeren van de tekenreeksen die worden vergeleken.|
+| Uitvoerclaim | outputClaim | booleaans | Het ClaimType dat wordt geproduceerd nadat deze ClaimTransformation is ingeroepen. Een booleaanse indicator als de collectie zo'n tekenreeks bevat |
+
+Na voorbeeld wordt `roles` gecontroleerd of het claimtype `role` stringCollection de waarde van het claimtype bevat.
+
+```XML
+<ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="collection" />
+    <InputClaim ClaimTypeReferenceId="role" TransformationClaimType="item" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="ignoreCase" DataType="string" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="hasAccess" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation> 
+```
+
+- Invoerclaims:
+    - **collectie**: ["reader", "auteur", "admin"]
+    - **object**: "Beheerder"
+- Invoerparameters:
+    - **ignoreCase**: "true"
+- Output claims:
+    - **outputClaim**: "waar"

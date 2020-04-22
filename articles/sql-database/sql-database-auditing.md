@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 4e20129502e7538bd2f3354b75b33095970e1595
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9e8aa9bbbdf166ba0caf29cd0bce22b8ed321e4e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411869"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685184"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL-controle
 
@@ -111,9 +111,6 @@ Als u het schrijven van controlelogboeken wilt configureren voor een opslagaccou
 ### <a name=""></a><a id="audit-log-analytics-destination">Controleren op de doelbestemming Log Analytics</a>
   
 Als u het schrijven van controlelogboeken wilt configureren voor een werkruimte log Analytics, selecteert u **Log Analytics (Voorbeeld)** en opent **u Logboekanalysegegevens**. Selecteer of maak de werkruimte Log Analytics waar logboeken worden geschreven en klik op **OK**.
-    
-  > [!WARNING]
-   > Als u controle inschakelt in Log Analytics, worden kosten verbonden op basis van opnamepercentages. Houd rekening met de bijbehorende kosten voor het gebruik van deze [optie](https://azure.microsoft.com/pricing/details/monitor/)of overweeg de controlelogboeken op te slaan in een Azure-opslagaccount.
    
    ![LogAnalyticsworkspace](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 

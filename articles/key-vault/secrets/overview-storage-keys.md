@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 0b855584ef6efef574e8264f3cead79000a51b13
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1125bafa43ce1752c58d1cce0bba66a6bbd32c32
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81432006"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685421"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Opslagaccountsleutels beheren met Key Vault en de Azure CLI
 
@@ -71,13 +71,23 @@ az login
 Gebruik de opdracht Voor het maken van azure CLI [az-roltoewijzing](/cli/azure/role/assignment?view=azure-cli-latest) om Key Vault toegang te geven tot uw opslagaccount. Geef de opdracht de volgende parameterwaarden op:
 
 - `--role`: Geef de RBAC-rol 'Storage Account Key Operator Service' door. Deze rol beperkt het toegangsbereik tot uw opslagaccount. Voor een klassiek opslagaccount geeft u in plaats daarvan de functie 'Classic Storage Account Key Operator Service Role' door.
-- `--assignee-object-id`: Geef de waarde "93c27d83-f79b-4cb2-8dd4-4aa716542e74" door, de object-id voor sleutelkluis in de openbare Azure-cloud. (Zie [Service principal application ID](#service-principal-application-id).)
+- `--assignee`: Geef dehttps://vault.azure.netwaarde " ", dat is de url voor Key Vault in de Azure public cloud. (Zie [Service principal application ID](#service-principal-application-id)voor Azure Goverment cloud gebruik in plaats daarvan '--asingee-object-id'.
 - `--scope`: Geef uw opslagaccountbron-id door, die in het formulier `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`staat. Als u uw abonnements-id wilt vinden, gebruikt u de opdracht Azure CLI [az-accountlijst.](/cli/azure/account?view=azure-cli-latest#az-account-list) Als u de naam en opslagaccountbrongroep van uw opslagaccount wilt vinden, gebruikt u de opdracht Azure CLI [az-opslagaccountlijst.](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list)
 
 ```azurecli-interactive
-az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 93c27d83-f79b-4cb2-8dd4-4aa716542e74 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
+az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
+### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Geef uw gebruikersaccount toestemming aan beheerde opslagaccounts
 
+Gebruik de cmdlet azure CLI [az keyvault-set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) om het key vault-toegangsbeleid bij te werken en machtigingen voor opslagaccounts toe te kennen aan uw gebruikersaccount.
+
+```azurecli-interactive
+# Give your user principal access to all storage account permissions, on your Key Vault instance
+
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage-permissions get list delete set update regeneratekey getsas listsas deletesas setsas recover backup restore purge
+```
+
+Houd er rekening mee dat machtigingen voor opslagaccounts niet beschikbaar zijn op de pagina 'Toegangsbeleid' voor opslagaccounts in de Azure-portal.
 ### <a name="create-a-key-vault-managed-storage-account"></a>Een Key Vault Managed Storage-account maken
 
  Maak een Key Vault managed storage-account met de opdracht Azure CLI [az keyvault storage.](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) Stel een regeneratieperiode van 90 dagen in. Na 90 dagen regenereert `key1` Key Vault en `key2` wisselt `key1`de actieve sleutel van . `key1`wordt dan gemarkeerd als de actieve sleutel. Geef de opdracht de volgende parameterwaarden op:

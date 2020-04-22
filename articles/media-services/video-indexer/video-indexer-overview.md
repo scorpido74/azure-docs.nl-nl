@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 9bea9e375e00d6fc0f6c33aa1bcc766773db2059
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 1c7156da171a101f04db9f83df587f5b8bc71e8f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81269938"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687103"
 ---
 # <a name="what-is-video-indexer"></a>Wat is Video Indexer?
 
@@ -70,8 +70,8 @@ In de volgende lijst worden de inzichten weergegeven die u uit uw video's ophale
 
 ### <a name="audio-insights"></a>Audio-inzichten
 
-* **Audiotranscriptie**: converteert spraak naar tekst in 12 talen en maakt extensies mogelijk. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chines, Japans, Arabisch, Russisch, Braziliaans Portugees, Hindi en Koreaans.
-* **Automatische taaldetectie**: identificeert automatisch de meest gesproken taal. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chines, Japans, Russisch en Braziliaans Portugees. Als de taal niet met vertrouwen kan worden geïdentificeerd, gaat Video Indexer ervan uit dat de gesproken taal Engels is. Zie [Taalidentificatiemodel](language-identification-model.md)voor meer informatie .
+* **Audiotranscriptie**: converteert spraak naar tekst in 12 talen en maakt extensies mogelijk. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chinees, Japans, Arabisch, Russisch, Braziliaans Portugees, Hindi en Koreaans.
+* **Automatische taaldetectie**: identificeert automatisch de meest gesproken taal. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chinees, Japans, Russisch en Braziliaans Portugees. Als de taal niet met vertrouwen kan worden geïdentificeerd, gaat Video Indexer ervan uit dat de gesproken taal Engels is. Zie [Taalidentificatiemodel](language-identification-model.md)voor meer informatie .
 * **Meertalige spraakidentificatie en transcriptie** (voorbeeld): identificeert automatisch de gesproken taal in verschillende segmenten van audio. Het stuurt elk segment van het mediabestand dat moet worden getranscribeerd en combineert vervolgens de transcriptie terug naar één uniforme transcriptie. Zie [Meertalige inhoud automatisch identificeren en transcriberen](multi-language-identification-transcription.md)voor meer informatie.
 * **Ondertiteling**: hiermee maakt u ondertiteling in drie indelingen: VTT, TTML, SRT.
 * **Verwerking met twee kanalen:** Automatisch detecteert afzonderlijke transcripties en voegt samen met één tijdlijn.

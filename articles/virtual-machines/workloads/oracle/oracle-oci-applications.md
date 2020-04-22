@@ -3,7 +3,7 @@ title: Architecturen om Oracle-apps te implementeren op Azure Virtual Machines |
 description: Toepassingsarchitecturen voor het implementeren van Oracle-apps, waaronder E-Business Suite, JD Edwards EnterpriseOne en PeopleSoft op virtuele Microsoft Azure-machines met databases in Azure of in Oracle Cloud Infrastructure (OCI).
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
+author: BorisB2015
 manager: gwallace
 tags: ''
 ms.service: virtual-machines
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
-ms.author: mimckitt
+ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: 20e751b322d06ac176ee5c634d92e0efe874baac
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f36dfe0092e3447053871ee0e5b4d659bb443779
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263298"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687483"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Architecturen om Oracle-toepassingen op Azure te implementeren
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
-ms.date: 04/03/2020
-ms.openlocfilehash: 5bf405840de54c4e2399ee73e723201acca9e6bc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.date: 04/20/2020
+ms.openlocfilehash: 76fcdb52df88be2c4033140f4bc71b28424d7f38
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657039"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687781"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Wat is ML Services in Azure HDInsight
 
@@ -23,7 +23,7 @@ ML Services op HDInsight biedt de nieuwste mogelijkheden voor R-gebaseerde analy
 
 Het randknooppunt biedt een handige plek om verbinding te maken met het cluster en uw R-scripts uit te voeren. Met het randknooppunt kunnen de parallelverdeelde gedistribueerde functies van ScaleR over de kernen van de server worden uitgevoerd. U ze ook uitvoeren over de knooppunten van het cluster met behulp van ScaleR's Hadoop Map Reduce. U ook Apache Spark-compute-contexten gebruiken.
 
-De modellen of voorspellingen die het resultaat zijn van analyse kunnen worden gedownload voor on-premises gebruik. Ze kunnen ook elders in Azure worden geoperationaliseerd. In het bijzonder via [Azure Machine Learning Studio (klassiek)](https://studio.azureml.net)en [webservice](../../machine-learning/studio/deploy-a-machine-learning-web-service.md).
+De modellen of voorspellingen die het resultaat zijn van analyse kunnen worden gedownload voor on-premises gebruik. Ze kunnen `operationalized` ook elders in Azure zijn. In het bijzonder via [Azure Machine Learning Studio (klassiek)](https://studio.azureml.net)en [webservice](../../machine-learning/studio/deploy-a-machine-learning-web-service.md).
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Aan de slag met ML Services op HDInsight
 
@@ -63,16 +63,16 @@ De volgende functies zijn opgenomen in ML Services op HDInsight.
 | R-enabled | [R-pakketten](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) voor oplossingen die in R zijn geschreven, met een open-source distributie van R, en run-time infrastructuur voor scriptuitvoering. |
 | Python-ingeschakeld | [Python-modules](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) voor oplossingen die zijn geschreven in Python, met een open-source distributie van Python en run-time infrastructuur voor scriptuitvoering.
 | [Vooraf getrainde modellen](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Voor visuele analyse en tekstsentimentanalyse, klaar om gegevens te scoren die u verstrekt. |
-| [Implementeren en consumeren](r-server-operationalize.md) | Operationaliseer uw server en implementeer oplossingen als een webservice. |
+| [Implementeren en consumeren](r-server-operationalize.md) | `Operationalize`uw server en implementeren van oplossingen als een webservice. |
 | [Uitvoering op afstand](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Start externe sessies op het ML Services-cluster op uw netwerk vanaf uw clientwerkstation. |
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>Opties voor gegevensopslag voor ML Services op HDInsight
 
-Standaardopslag voor het HDFS-bestandssysteem kan een Azure Storage-account of Azure Data Lake Storage zijn. Geüploade gegevens naar clusteropslag tijdens de analyse worden persistent gemaakt. De gegevens zijn beschikbaar, zelfs nadat het cluster is verwijderd. Verschillende tools kunnen de gegevensoverdracht naar opslag verwerken. De tools omvatten de portal-gebaseerde upload faciliteit van de opslag account en de [AzCopy](../../storage/common/storage-use-azcopy.md) nut.
+Standaardopslag voor het HDFS-bestandssysteem kan een Azure Storage-account of Azure Data Lake Storage zijn. Geüploade gegevens naar clusteropslag tijdens de analyse worden persistent gemaakt. De gegevens zijn beschikbaar, zelfs nadat het cluster is verwijderd. Verschillende tools kunnen de gegevensoverdracht naar opslag verwerken. De tools omvatten de portal-gebaseerde upload faciliteit van de opslag account en de AzCopy nut.
 
 U toegang inschakelen tot extra Blob- en Data lake-winkels tijdens het maken van het cluster. U wordt niet beperkt door de primaire opslagoptie die wordt gebruikt.  Zie [Azure Storage-opties voor ML Services op HDInsight-artikel](./r-server-storage.md) voor meer informatie over het gebruik van meerdere opslagaccounts.
 
-U [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) ook gebruiken als opslagoptie voor gebruik op het randknooppunt. Azure Files maakt bestandsshares die in Azure Storage zijn gemaakt, mogelijk voor het Linux-bestandssysteem. Zie [Azure Storage-opties voor ML Services op HDInsight voor](r-server-storage.md)meer informatie.
+U Azure Files ook gebruiken als opslagoptie voor gebruik op het randknooppunt. Azure Files maakt bestandsshares die in Azure Storage zijn gemaakt, mogelijk voor het Linux-bestandssysteem. Zie [Azure Storage-opties voor ML Services op HDInsight voor](r-server-storage.md)meer informatie.
 
 ## <a name="access-ml-services-edge-node"></a>Toegangs voor het randknooppunt van ML Services
 
@@ -82,9 +82,9 @@ U verbinding maken met Microsoft ML Server op het randknooppunt via een browser 
 
 Uw R-scripts kunnen een van de meer dan 8000 open-source R-pakketten gebruiken. U ook de parallelle en gedistribueerde routines uit de ScaleR-bibliotheek gebruiken. Scripts worden uitgevoerd op het randknooppunt dat binnen de R-tolk op dat knooppunt wordt uitgevoerd. Behalve stappen die ScaleR-functies aanroepen met een Map Reduce (RxHadoopMR) of Spark (RxSpark) rekencontext. De functies worden gedistribueerd uitgevoerd over de gegevensknooppunten die aan de gegevens zijn gekoppeld. Zie [Basiscontextopties voor ML Services op HDInsight voor](r-server-compute-contexts.md)meer informatie over contextopties.
 
-## <a name="operationalize-a-model"></a>Een model operationeel maken
+## <a name="operationalize-a-model"></a>`Operationalize`een model
 
-Wanneer uw gegevensmodellering is voltooid, u het model operationeel maken om voorspellingen te doen voor nieuwe gegevens, hetzij vanuit Azure, hetzij on-premises. Dit proces staat bekend als scoren. Scoren kan in HDInsight, Azure Machine Learning of on-premises.
+Wanneer uw gegevensmodellering `operationalize` is voltooid, wordt het model voor het maken van voorspellingen voor nieuwe gegevens uitgevoerd vanuit Azure of on-premises. Dit proces staat bekend als scoren. Scoren kan in HDInsight, Azure Machine Learning of on-premises.
 
 ### <a name="score-in-hdinsight"></a>Score in HDInsight
 
@@ -96,7 +96,7 @@ Als u wilt scoren met Azure Machine Learning, gebruikt u het open-source Azure M
 
 ### <a name="score-on-premises"></a>Score on-premises
 
-On-premises scoren na het maken van uw model: serialiseren van het model in R, downloaden, de-serialiseren en vervolgens gebruiken voor het scoren van nieuwe gegevens. U nieuwe gegevens scoren met behulp van de aanpak die eerder in [Score in HDInsight](#score-in-hdinsight) is beschreven of met behulp van [webservices.](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)
+On-premises scoren na het maken van uw model: serialiseren van het model in R, downloaden, de-serialiseren en vervolgens gebruiken voor het scoren van nieuwe gegevens. U nieuwe gegevens scoren met behulp van de aanpak die eerder in Score in HDInsight is beschreven of met behulp van [webservices.](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)
 
 ## <a name="maintain-the-cluster"></a>Het cluster onderhouden
 
@@ -130,7 +130,7 @@ Het uitvoeren van taken kan vertragen tijdens het onderhoud. Ze moeten echter no
 
 Het Linux-randknooppunt van een HDInsight-cluster is de landingszone voor R-gebaseerde analyse. Recente versies van HDInsight bieden een browser-gebaseerde IDE van RStudio Server op de rand knooppunt. RStudio Server is productiever dan de R-console voor ontwikkeling en uitvoering.
 
-Een desktop-IDE heeft toegang tot het cluster via een externe MapReduce- of Spark-compute-context. Opties zijn: Microsoft's [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS), RStudio, en Walware's Eclipse-gebaseerde [StatET](http://www.walware.de/goto/statet).
+Een desktop-IDE heeft toegang tot het cluster via een externe MapReduce- of Spark-compute-context. Opties zijn: Microsoft's [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS), RStudio en Walware's Eclipse-gebaseerde StatET.
 
 Toegang tot de R-console op het randknooppunt door **R** te typen bij de opdrachtprompt. Wanneer u de console-interface gebruikt, is het handig om R-script te ontwikkelen in een teksteditor. Knip en plak vervolgens delen van uw script naar behoefte in de R-console.
 

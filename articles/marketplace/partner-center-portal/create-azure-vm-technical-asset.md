@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 46c59e8b4e60fbe17887ea0fc375b6da758ebf50
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4d2d33f9d83132147b5b257ffcd6d659f272b8ec
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457396"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730722"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Uw technische assets van Azure Virtual Machine maken
 
@@ -109,7 +109,7 @@ Volg deze stappen om de basis-VM-afbeelding in de [Azure-portal](https://ms.port
 
 Azure begint met het inrichten van de virtuele machine die u hebt opgegeven. U de voortgang ervan bijhouden door het tabblad **Virtuele machines** aan de linkerkant te selecteren. Nadat de status is gemaakt, wordt de status gewijzigd in **Uitvoeren**.
 
-Als u problemen ondervindt bij het maken van uw nieuwe VHD op Azure-basis, raadpleegt u [Veelvoorkomende problemen tijdens VHD-creatie (veelgestelde vragen).](https://aka.ms/VHDcreationIssues)
+Als u problemen ondervindt bij het maken van uw nieuwe VHD op Azure-basis, raadpleegt u [Veelvoorkomende problemen tijdens VHD-creatie (veelgestelde vragen).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation)
 
 ### <a name="connect-to-your-azure-vm"></a>Verbinding maken met uw Azure VM
 

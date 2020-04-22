@@ -7,122 +7,150 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 903ce52120fce7c23c6a3754498b81fc6fc2430f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247313"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685995"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migreren naar Azure-bestandsshares
 
 Dit artikel behandelt de basisaspecten van een migratie naar Azure-bestandsshares.
 
-Naast de basisprincipes voor migratie bevat dit artikel een lijst met bestaande, geïndividualiseerde migratiegidsen. Met deze migratiehandleidingen u uw bestanden verplaatsen naar Azure-bestandsshares en worden ze geordend op de plaats waar uw gegevens zich vandaag bevinden en naar welk implementatiemodel (alleen in de cloud of hybride) u van plan bent over te stappen.
+Dit artikel bevat migratiebasisbeginselen en een tabel met migratiegidsen. Met deze hulplijnen u uw bestanden verplaatsen naar Azure-bestandsshares. De hulplijnen worden georganiseerd op basis van waar uw gegevens zich bevinden en naar welk implementatiemodel (alleen in de cloud of hybride) u naartoe gaat.
 
 ## <a name="migration-basics"></a>Basisbeginselen van migratie
 
-Er zijn meerdere verschillende typen cloudopslag beschikbaar in Azure. Een fundamenteel aspect van een migratie van bestanden naar Azure is om te bepalen welke Azure-opslagoptie geschikt is voor uw gegevens.
+Azure heeft meerdere beschikbare typen cloudopslag. Een fundamenteel aspect van bestandsmigraties naar Azure is bepalen welke Azure-opslagoptie geschikt is voor uw gegevens.
 
-Azure-bestandsshares zijn ideaal voor bestandsgegevens voor algemene doeleinden. Echt alles wat je gebruikt een on-premises SMB of NFS aandeel voor. Met [Azure File Sync](storage-sync-files-planning.md)u optioneel de inhoud van verschillende Azure-bestandsshares op verschillende on-premises Windows Servers opslaan.
+[Azure-bestandsshares](storage-files-introduction.md) zijn geschikt voor bestandsgegevens voor algemene doeleinden. Deze gegevens bevatten alles waarvoor u een on-premises SMB- of NFS-share gebruikt. Met [Azure File Sync](storage-sync-files-planning.md)u de inhoud van verschillende Azure-bestandsshares opslaan op servers waarop Windows Server on-premises wordt uitgevoerd.
 
-Als u een toepassing hebt die momenteel op een on-premises server wordt uitgevoerd, kan het opslaan van bestanden in Azure-bestandsshares geschikt zijn voor u, afhankelijk van de toepassing. U de toepassing optillen om in Azure uit te voeren en Azure-bestandsshares gebruiken als gedeelde opslag. U [Azure Disks](../../virtual-machines/windows/managed-disks-overview.md) ook voor dit scenario overwegen. Voor toepassingen in de cloud die niet afhankelijk zijn van de smb- of machinelokale toegang tot hun gegevens of gedeelde toegang, is objectopslag, zoals [Azure-blobs,](../blobs/storage-blobs-overview.md)vaak de beste keuze.
+Voor een app die momenteel op een on-premises server wordt uitgevoerd, is het opslaan van bestanden in een Azure-bestandsshare mogelijk een goede keuze. U de app verplaatsen naar Azure en Azure-bestandsshares gebruiken als gedeelde opslag. U [Azure Disks](../../virtual-machines/windows/managed-disks-overview.md) ook voor dit scenario overwegen.
 
-De sleutel in elke migratie is het vastleggen van alle toepasselijke bestandsgetrouwheid bij het migreren van uw bestanden van hun huidige opslaglocatie naar Azure. Een hulp bij het kiezen van de juiste Azure-opslag is ook het aspect van hoeveel getrouwheid wordt ondersteund door de Azure-opslagoptie en vereist is door uw scenario. Bestandsgegevens voor algemeen gebruik zijn traditioneel afhankelijk van bestandsmetagegevens. Toepassingsgegevens mogelijk niet. Er zijn twee basiscomponenten aan een bestand:
+Sommige cloud-apps zijn niet afhankelijk van kmo's of van computerlokale gegevenstoegang of gedeelde toegang. Voor die apps is objectopslag zoals [Azure blobs](../blobs/storage-blobs-overview.md) vaak de beste keuze.
+
+De sleutel in elke migratie is het vastleggen van alle toepasselijke bestandsgetrouwheid bij het verplaatsen van uw bestanden van hun huidige opslaglocatie naar Azure. Hoeveel getrouwheid de Azure-opslagoptie ondersteunt en hoeveel uw scenario vereist, helpt u ook bij het kiezen van de juiste Azure-opslag. Bestandsgegevens voor algemene doeleinden zijn traditioneel afhankelijk van bestandsmetagegevens. App-gegevens mogelijk niet.
+
+Hier zijn de twee basiscomponenten van een bestand:
 
 - **Gegevensstroom:** de gegevensstroom van een bestand slaat de bestandsinhoud op.
-- **Bestandsmetameta:De**bestandsmetagegevens hebben verschillende subcomponenten:
-   * Bestandskenmerken: alleen-lezen, bijvoorbeeld.
-   * Bestandsmachtigingen: aangeduid als *NTFS-machtigingen* of *acl.n.m.v. bestands- en mapacl.File*permissions: Referred to as NTFS permissions or file and folder ACL's .
-   * Tijdstempels: Met name de *create-* en *laatste gewijzigde* tijdstempels.
-   * Alternatieve gegevensstroom: een ruimte om grotere hoeveelheden niet-standaardeigenschappen op te slaan.
+- **Bestandsmetagegevens**: De bestandsmetagegevens hebben deze subcomponenten:
+   * Bestandskenmerken zoals alleen-lezen
+   * Bestandsmachtigingen, die *ntfs-machtigingen of acl.ntfs-machtigingen of acl.n.s.-bestanden* *en map-ACL's* kunnen worden genoemd
+   * Tijdstempels, met name de creatie en laatste gewijzigde tijdstempels
+   * Een alternatieve gegevensstroom, die een ruimte is om grotere hoeveelheden niet-standaardeigenschappen op te slaan
 
-Bestandstrouw, in een migratie, kan daarom worden gedefinieerd als de mogelijkheid om alle toepasselijke bestandsinformatie op de bron op te slaan, de mogelijkheid om deze over te dragen met het migratieprogramma en de mogelijkheid om ze op te slaan op de doelopslag van de migratie.
+Bestandstrouw in een migratie kan worden gedefinieerd als de mogelijkheid om:
 
-Om ervoor te zorgen dat uw migratie zo soepel mogelijk verloopt, identificeert u [de beste kopieertool voor uw behoeften](#migration-toolbox) en matcht u een opslagdoel met uw bron.
+- Sla alle toepasselijke bestandsinformatie op de bron op.
+- Bestanden overbrengen met het migratiehulpprogramma.
+- Bestanden opslaan in de doelopslag van de migratie.
 
-Rekening houdend met de vorige informatie wordt duidelijk wat de doelopslag voor bestanden voor algemene doeleinden in Azure is: [Azure-bestandsshares](storage-files-introduction.md). In vergelijking met objectopslag in Azure-blobs kunnen bestandsmetagegevens native worden opgeslagen in bestanden in een Azure-bestandsshare.
+Om ervoor te zorgen dat uw migratie soepel verloopt, identificeert u [de beste kopieertool voor uw behoeften](#migration-toolbox) en matcht u een opslagdoel met uw bron.
 
-Azure-bestandsshares behouden ook de bestands- en maphiërarchie. En verder:
-* NTFS-machtigingen kunnen worden opgeslagen in bestanden en mappen terwijl ze on-premises zijn.
-* AD-gebruikers (of Azure AD DS-gebruikers) hebben native toegang tot een Azure-bestandsshare. 
-    Ze gebruiken hun huidige identiteit en krijgen toegang op basis van machtigingen voor delen en acl.acl. Een gedrag dat niet anders is dan wanneer gebruikers verbinding maken met een on-premises bestandsshare.
-*  De alternatieve gegevensstroom is het primaire aspect van bestandstrouw dat momenteel niet kan worden opgeslagen in een bestand in een Azure-bestandsshare.
-   Het blijft on-premises behouden wanneer Azure File Sync betrokken is.
+Rekening houdend met de vorige informatie, u zien dat de doelopslag voor algemene bestanden in Azure [Azure-bestandsshares is.](storage-files-introduction.md)
 
-* [Meer informatie over AD-verificatie voor Azure-bestandsshares](storage-files-identity-auth-active-directory-enable.md)
-* [Meer informatie over Aad DS-verificatie (Azure Active Directory Domain Services) voor Azure-bestandsshares](storage-files-identity-auth-active-directory-domain-service-enable.md)
+In tegenstelling tot objectopslag in Azure blobs kan een Azure-bestandsshare bestandsmetagegevens native opslaan. Azure-bestandsshares behouden ook de bestands- en maphiërarchie, kenmerken en machtigingen. NTFS-machtigingen kunnen worden opgeslagen in bestanden en mappen omdat ze on-premises zijn.
+
+Een gebruiker van Active Directory, de on-premises domeincontroller, heeft native toegang tot een Azure-bestandsshare. Dat geldt ook voor een gebruiker van Azure Active Directory Domain Services (Azure AD DS). Elk gebruikt zijn huidige identiteit om toegang te krijgen op basis van machtigingen voor delen en op acl.a.s. Dit gedrag is vergelijkbaar met een gebruiker die verbinding maakt met een on-premises bestandsshare.
+
+De alternatieve gegevensstroom is het primaire aspect van bestandstrouw dat momenteel niet kan worden opgeslagen in een bestand in een Azure-bestandsshare. Het blijft on-premises behouden wanneer Azure File Sync wordt gebruikt.
+
+Meer informatie over [Azure AD-verificatie](storage-files-identity-auth-active-directory-enable.md) en [Azure AD DS-verificatie](storage-files-identity-auth-active-directory-domain-service-enable.md) voor Azure-bestandsshares.
 
 ## <a name="migration-guides"></a>Migratiehandleidingen
 
 In de volgende tabel vindt u gedetailleerde migratiegidsen.
 
-Navigeer er door:
-1. Zoek de rij voor het bronsysteem waarop uw bestanden momenteel zijn opgeslagen.
-2. Bepaal of u een hybride implementatie target waarbij u Azure File Sync gebruikt om de inhoud van een of meer Azure-bestandsshares on-premises in de cache te plaatsen of dat u Azure-bestandsshares rechtstreeks in de cloud wilt gebruiken. Selecteer de doelkolom die uw beslissing weerspiegelt.
-3. Binnen het snijpunt van bron en doel geeft een tabelcel beschikbare migratiescenario's weer. Selecteer een van hen om rechtstreeks een koppeling te maken naar de gedetailleerde migratiegids.
+De tabel gebruiken:
 
-Een scenario zonder koppeling heeft nog geen gepubliceerde migratiegids. Controleer deze tabel af en toe voor updates. Nieuwe gidsen zullen worden gepubliceerd indien beschikbaar.
+1. Zoek de rij voor het bronsysteem waarop uw bestanden momenteel zijn opgeslagen.
+
+1. Kies een van deze doelen:
+
+   - Een hybride implementatie met Azure File Sync om de inhoud van Azure-bestandsshares on-premises in de cache te opslaan
+   - Azure-bestandsshares in de cloud
+
+   Selecteer de doelkolom die overeenkomt met uw keuze.
+
+1. Binnen het snijpunt van bron en doel geeft een tabelcel beschikbare migratiescenario's weer. Selecteer er een om rechtstreeks een koppeling te maken naar de gedetailleerde migratiegids.
+
+Een scenario zonder koppeling heeft nog geen gepubliceerde migratiegids. Controleer deze tabel af en toe voor updates. Nieuwe gidsen worden gepubliceerd wanneer ze beschikbaar zijn.
 
 | Bron | Doel: </br>Hybride implementatie | Doel: </br>Implementatie in de cloud alleen |
 |:---|:--|:--|
 | | Gereedschapscombinatie:| Gereedschapscombinatie: |
-| Windows Server 2012 R2 en nieuwer | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync + DataBox](storage-sync-offline-data-transfer.md)</li><li>Opslagmigratieservice + Synchronisatie van Azure-bestanden</li></ul> | <ul><li>Azure File Sync</li><li>Azure File Sync + DataBox</li><li>Opslagmigratieservice + Synchronisatie van Azure-bestanden</li><li>Robocopy</li></ul> |
-| Windows Server 2012 en ouder | <ul><li>Azure File Sync + DataBox</li><li>Opslagmigratieservice + Synchronisatie van Azure-bestanden</li></ul> | <ul><li>Opslagmigratieservice + Synchronisatie van Azure-bestanden</li><li>Robocopy</li></ul> |
-| Netwerkopslag (NAS) | <ul><li>[Azure File Sync + RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>Robocopy</li></ul> |
-| Linux / Samba | <ul><li>[RoboCopy + Azure File Sync](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>Robocopy</li></ul> |
-| StorSimple 8100 / 8600 | <ul><li>[Azure File Sync + 8020 Virtueel toestel](storage-files-migration-storsimple-8000.md)</li></ul> | |
-| StorSimple 1200 | <ul><li>[Azure File Sync](storage-files-migration-storsimple-1200.md)</li></ul> | |
+| Windows Server 2012 R2 en hoger | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure-bestandssynchronisatie en Azure-gegevensvak](storage-sync-offline-data-transfer.md)</li><li>Azure-service voor bestandssynchronisatie en -opslag</li></ul> | <ul><li>Azure File Sync</li><li>Azure-bestandssynchronisatie en gegevensvak</li><li>Azure-service voor bestandssynchronisatie en -opslag</li><li>Robocopy</li></ul> |
+| Windows Server 2012 en eerder | <ul><li>Azure-bestandssynchronisatie en gegevensvak</li><li>Azure-service voor bestandssynchronisatie en -opslag</li></ul> | <ul><li>Azure-service voor bestandssynchronisatie en -opslag</li><li>Robocopy</li></ul> |
+| Netwerkopslag (NAS) | <ul><li>[Azure File Sync en RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>Robocopy</li></ul> |
+| Linux of Samba | <ul><li>[Azure File Sync en RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>Robocopy</li></ul> |
+| Microsoft Azure StorSimple Cloud Appliance 8100 of StorSimple Cloud Appliance 8600 | <ul><li>[Azure File Sync en StorSimple Cloud Appliance 8020](storage-files-migration-storsimple-8000.md)</li></ul> | |
+| StorSimple Cloud Appliance 1200 | <ul><li>[Azure File Sync](storage-files-migration-storsimple-1200.md)</li></ul> | |
 | | | |
 
 ## <a name="migration-toolbox"></a>Migratiegereedschapsset
 
-### <a name="file-copy-tools"></a>Hulpmiddelen voor bestandskopie
+### <a name="file-copy-tools"></a>Hulpmiddelen voor bestandskopiëren
 
-Er zijn verschillende hulpprogramma's voor bestandskopie van Microsoft en niet-Microsoft beschikbaar. Als u het juiste hulpmiddel voor bestandskopie voor uw migratiescenario wilt selecteren, moet u rekening houden met drie fundamentele vragen:
+Er zijn verschillende tools voor bestandskopie beschikbaar bij Microsoft en anderen. Als u het juiste hulpprogramma voor uw migratiescenario wilt selecteren, moet u rekening houden met deze fundamentele vragen:
 
-* Ondersteunt de kopieertool de bron en de doellocatie voor een bepaalde bestandskopie? 
-    * Ondersteunt het uw netwerkpad en/of beschikbare protocollen (bijvoorbeeld REST/SMB/NFS) van en naar de bron- en doelopslaglocaties?
-* Behoudt het kopieergereedschap de benodigde bestandsgetrouwheid die wordt ondersteund door de bron-/doellocatie? In sommige gevallen ondersteunt uw doelopslag niet dezelfde getrouwheid als uw bron. U hebt al de beslissing genomen dat de doelopslag voldoende is voor uw behoeften, vandaar dat de kopieertool alleen hoeft te voldoen aan de mogelijkheden voor bestandsgetrouwheid van de doelen.
-* Heeft de kopieertool functies die het passen in mijn migratiestrategie? 
-    * Overweeg bijvoorbeeld of er opties zijn waarmee u uw downtime minimaliseren. Een goede vraag om te stellen is: Kan ik dit exemplaar meerdere keren op dezelfde, door gebruikers actief toegang tot de locatie? Als dat zo is, u de hoeveelheid downtime aanzienlijk verminderen. Vergelijk dat met een situatie waarin u de kopie alleen starten wanneer de bron niet meer verandert, om een volledige kopie te garanderen.
+* Ondersteunt de tool de bron- en doellocaties voor uw bestandskopie?
+
+* Ondersteunt de tool uw netwerkpad of beschikbare protocollen (zoals REST, SMB of NFS) tussen de bron- en doelopslaglocaties?
+
+* Behoudt de tool de benodigde bestandstrouw die wordt ondersteund door uw bron- en doellocaties?
+
+    In sommige gevallen ondersteunt uw doelopslag niet dezelfde getrouwheid als uw bron. Als de doelopslag voldoende is voor uw behoeften, moet de tool alleen overeenkomen met de bestandsgetrouwheidsmogelijkheden van het doelwit.
+
+* Heeft de tool functies die het laten passen in uw migratiestrategie?
+
+    Bedenk bijvoorbeeld of u met de tool uw downtime minimaliseren.
+    
+    Wanneer een tool een optie ondersteunt om een bron te spiegelen aan een doel, u deze vaak meerdere keren op dezelfde bron en doel uitvoeren terwijl de bron toegankelijk blijft.
+
+    De eerste keer dat u het gereedschap uitvoert, kopieert het het grootste deel van de gegevens. Deze eerste run kan een tijdje duren. Het duurt vaak langer dan u wilt voor het offline halen van de gegevensbron voor uw bedrijfsprocessen.
+
+    Door een bron te spiegelen aan een doel (zoals bij **robocopy /MIR),** u het gereedschap opnieuw uitvoeren op dezelfde bron en doelstelling. De run is veel sneller omdat het alleen bronwijzigingen moet transporteren die optreden na de vorige run. Het opnieuw uitvoeren van een kopieertool op deze manier kan downtime aanzienlijk verminderen.
 
 In de volgende tabel worden Microsoft-hulpprogramma's en hun huidige geschiktheid voor Azure-bestandsshares geklasseerd:
 
-| Aanbevolen | Hulpprogramma | Ondersteunt Azure-bestandsshares | Behoudt bestandsgetrouwheid |
+| Aanbevolen | Hulpprogramma | Ondersteuning voor Azure-bestandsshares | Behoud van bestandstrouw |
 | :-: | :-- | :---- | :---- |
-|![Ja, aanbevolen.](media/storage-files-migration-overview/circle-green-checkmark.png)| Robocopy | Ondersteund. Azure-bestandsshares kunnen worden gemonteerd als netwerkstations. | Volledige trouw* |
-|![Ja, aanbevolen.](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Native geïntegreerd in Azure-bestandsshares. | Volledige trouw* |
-|![Ja, aanbevolen.](media/storage-files-migration-overview/circle-green-checkmark.png)| Opslagmigratieservice (SMS) | Indirect ondersteund. Azure-bestandsshares kunnen worden gemonteerd als netwerkstations op een sms-doelserver. | Volledige trouw* |
-|![Niet volledig aanbevolen.](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure DataBox | Ondersteund. | Kopieert geen metagegevens. [Kan worden gebruikt in combinatie met Azure File Sync](storage-sync-offline-data-transfer.md). |
-|![Niet aanbevolen.](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | Ondersteund. | Kopieert geen metagegevens. |
-|![Niet aanbevolen.](media/storage-files-migration-overview/circle-red-x.png)| Azure Opslagverkenner | Ondersteund. | Kopieert geen metagegevens. |
-|![Niet aanbevolen.](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Ondersteund. | Kopieert geen metagegevens. |
+|![Ja, aanbevolen](media/storage-files-migration-overview/circle-green-checkmark.png)| Robocopy | Ondersteund. Azure-bestandsshares kunnen worden gemonteerd als netwerkstations. | Volledige trouw.* |
+|![Ja, aanbevolen](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Native geïntegreerd in Azure-bestandsshares. | Volledige trouw.* |
+|![Ja, aanbevolen](media/storage-files-migration-overview/circle-green-checkmark.png)| Service voor opslagmigratie | Indirect ondersteund. Azure-bestandsshares kunnen worden gemonteerd als netwerkstations op sms-doelservers. | Volledige trouw.* |
+|![Niet volledig aanbevolen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Ondersteund. | Kopieert geen metadata. [Gegevensvak kan worden gebruikt met Azure File Sync](storage-sync-offline-data-transfer.md). |
+|![Niet aanbevolen](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | Ondersteund. | Kopieert geen metadata. |
+|![Niet aanbevolen](media/storage-files-migration-overview/circle-red-x.png)| Azure Opslagverkenner | Ondersteund. | Kopieert geen metadata. |
+|![Niet aanbevolen](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Ondersteund. | Kopieert geen metadata. |
 |||||
 
 *\*Volledige getrouwheid: voldoet aan of overtreft azure-mogelijkheden voor bestandsshare.*
 
 ### <a name="migration-helper-tools"></a>Hulpprogramma's voor migratiehelper
 
-In deze sectie worden hulpprogramma's weergegeven die helpen bij het plannen en uitvoeren van migraties.
+In deze sectie worden hulpprogramma's beschreven waarmee u migraties plannen en uitvoeren.
 
-* **RoboCopy, van Microsoft Corporation**
+#### <a name="robocopy-from-microsoft-corporation"></a>RoboCopy van Microsoft Corporation
 
-    Een van de meest toepasselijke kopieertools voor bestandsmigraties, wordt geleverd als onderdeel van Microsoft Windows. Vanwege de vele opties in deze tool, de belangrijkste [RoboCopy documentatie](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) is een nuttige bron.
+RoboCopy is een van de tools die het meest van toepassing zijn op bestandsmigraties. Het komt als onderdeel van Windows. De belangrijkste [RoboCopy-documentatie](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) is een nuttige bron voor de vele opties van deze tool.
 
-* **TreeSize, van JAM Software GmbH**
+#### <a name="treesize-from-jam-software-gmbh"></a>TreeSize van JAM Software GmbH
 
-    Azure File Sync schaalt voornamelijk met het aantal items (bestanden en mappen) en minder met het totale TiB-bedrag. Het hulpprogramma kan worden gebruikt om het aantal bestanden en mappen op uw Windows Server-volumes te bepalen. Bovendien kan het worden gebruikt om een perspectief te creëren voor een [Azure File Sync-implementatie](storage-sync-files-deployment-guide.md) - maar ook daarna, wanneer cloudtiering is ingeschakeld en u niet alleen het aantal items wilt zien, maar ook in welke mappen uw servercache het meest wordt gebruikt.
-    Deze tool (geteste versie 4.4.1) is compatibel met cloudgelaagde bestanden. Het zal niet leiden tot het terugroepen van gelaagde bestanden tijdens de normale werking.
+Azure File Sync schaalt voornamelijk met het aantal items (bestanden en mappen) en niet met het totale opslagbedrag. Met het gereedschap TreeSize u het aantal items op uw Windows Server-volumes bepalen.
 
+U het hulpprogramma gebruiken om een perspectief te maken voordat een [Azure File Sync-implementatie wordt geïmplementeerd.](storage-sync-files-deployment-guide.md) U het ook gebruiken wanneer cloudtiering is ingeschakeld na implementatie. In dat scenario ziet u het aantal items en welke mappen uw servercache het meest gebruiken.
+
+De geteste versie van de tool is versie 4.4.1. Het is compatibel met cloud-tiered bestanden. De tool zorgt er niet voor dat er tijdens de normale werking geen trapsgewijze bestanden worden teruggeroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-1. Maak een plan voor welke implementatie van Azure-bestandsshares (alleen in de cloud of hybride) u nastreeft.
-2. Bekijk de lijst met beschikbare migratiegidsen om de gedetailleerde handleiding te vinden die overeenkomt met uw bron en implementatie van Azure-bestandsshares.
+1. Maak een plan voor welke implementatie van Azure-bestandsshares (alleen in de cloud of hybride) u wilt.
+1. Bekijk de lijst met beschikbare migratiegidsen om de gedetailleerde handleiding te vinden die overeenkomt met uw bron en implementatie van Azure-bestandsshares.
 
-Er is meer informatie beschikbaar over de Azure Files-technologieën die in dit artikel worden genoemd:
+Hier vindt u meer informatie over de Azure Files-technologieën die in dit artikel worden genoemd:
 
 * [Overzicht van Azure-bestandsshare](storage-files-introduction.md)
-* [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
+* [Planning voor de implementatie van Azure Files Sync](storage-sync-files-planning.md)
 * [Azure-bestandssynchronisatie: cloudlaag](storage-sync-cloud-tiering.md)

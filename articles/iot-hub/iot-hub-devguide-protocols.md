@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 3e7f31371a0582a6f4941efbfa0087119278d2d1
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284627"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729121"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Referentie - kies een communicatieprotocol
 
@@ -39,7 +42,7 @@ Houd rekening met de volgende punten wanneer u uw protocol voor communicatie aan
 
 * **Cloud-to-device patroon**. HTTPS heeft geen efficiënte manier om serverpush te implementeren. Als zodanig, wanneer u HTTPS gebruikt, peilen apparaten IoT Hub voor cloud-to-device-berichten. Deze aanpak is inefficiënt voor zowel het apparaat als de IoT Hub. Volgens de huidige HTTPS-richtlijnen moet elk apparaat elke 25 minuten of langer voor berichten worden gepeild. MQTT en AMQP ondersteunen server push bij het ontvangen van cloud-to-device berichten. Ze maken het mogelijk om berichten van IoT Hub naar het apparaat te pushen. Als de leveringslatentie een probleem is, zijn MQTT of AMQP de beste protocollen om te gebruiken. Voor zelden verbonden apparaten werkt HTTPS ook.
 
-* **Veldgateways**. Wanneer u MQTT en HTTPS gebruikt, u niet meerdere apparaten (elk met zijn eigen referenties per apparaat) verbinden via dezelfde TLS-verbinding. Voor [veldgatewayscenario's](iot-hub-devguide-endpoints.md#field-gateways) waarvoor één TLS-verbinding tussen de veldgateway en IoT-hub voor elk verbonden apparaat vereist is, zijn deze protocollen suboptimaal.
+* **Veldgateways**. MQTT en HTTPS ondersteunen slechts één apparaatidentiteit (apparaat-ID plus referenties) per TLS-verbinding. Daarom worden deze protocollen niet ondersteund voor [Veldgatewayscenario's](iot-hub-devguide-endpoints.md#field-gateways) waarvoor multiplexingberichten nodig zijn met meerdere apparaatidentiteiten in één of een pool van upstream-verbindingen met IoT Hub. Dergelijke gateways kunnen een protocol gebruiken dat meerdere apparaatidentiteiten per verbinding ondersteunt, zoals AMQP, voor hun upstreamverkeer.
 
 * **Apparaten met een lage resource**. De MQTT- en HTTPS-bibliotheken hebben een kleinere voetafdruk dan de AMQP-bibliotheken. Als zodanig, als het apparaat beperkte resources heeft (bijvoorbeeld minder dan 1 MB RAM), zijn deze protocollen mogelijk de enige protocol-implementatie die beschikbaar is.
 

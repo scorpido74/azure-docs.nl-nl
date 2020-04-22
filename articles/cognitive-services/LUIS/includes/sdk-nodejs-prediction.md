@@ -10,12 +10,12 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 05e668ff5b0ec19c5e380cf6bfee4b6e46900b2f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9c15e4217c5331346c5a95329bae7e2a4f0e0841
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77371921"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732095"
 ---
 Gebruik de runtime-clientbibliotheek voor taalbegrip (LUIS) voor Node.js om:
 
@@ -28,6 +28,7 @@ Gebruik de runtime-clientbibliotheek voor taalbegrip (LUIS) voor Node.js om:
 
 * Runtime-bron voor taalgebruik: [er een maken in de Azure-portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
 * [Node.js](https://nodejs.org)
+* Een LUIS-app-id - gebruik de `df67dcdb-c37d-46af-88e1-8b97951ca1c2`openbare IoT-app-id van . De gebruikersquery die wordt gebruikt in de quickstartcode is specifiek voor die app.
 
 ## <a name="setting-up"></a>Instellen
 
@@ -37,9 +38,9 @@ Haal uw [runtime-sleutel](../luis-how-to-azure-subscription.md) op door een LUIS
 
 [!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
 
-### <a name="create-a-new-javascript-nodejs-file"></a>Een nieuw javascriptbestand (Node.js) maken
+### <a name="create-a-new-javascript-nodejs-file"></a>Een nieuw JavaScript-bestand (Node.js) maken
 
-Maak een nieuw javascriptbestand in uw voorkeurseditor of IDE met de naam `luis_prediction.js`.
+Maak een nieuw JavaScript-bestand in uw `luis_prediction.js`voorkeurseditor of IDE met de naam .
 
 ### <a name="install-the-npm-library-for-the-luis-runtime"></a>De NPM-bibliotheek voor de LUIS-runtime installeren
 

@@ -6,14 +6,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 987d04a4138c37d9073e5e9925f06c93d7ebb8e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 528c393983cb3d8d96dbcee9157e38ebc4f193f4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281575"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685391"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Consulting Services voor Azure Marketplace en AppSource
 Consulting Services in Azure Marketplace en AppSource biedt Microsoft-partners het doel om klanten te verbinden met services om hun gebruik van Azure- en bedrijfsdoelstellingen te ondersteunen en uit te breiden. 
@@ -27,22 +27,22 @@ De marktplaatsetalages zijn afgestemd op doelgroepen en Microsoft-cloudproducten
 
 |         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
-|**Doelgroep**   |**IT-professionals en cloudontwikkelaars**|**Zakelijke gebruikers / Line-of-business besluitvormers**|
-|Oplossingsrelevantie     |Technische apps die zijn gebouwd voor of gebouwd op Azure|Zakelijke apps die d365, Power BI, O365, Azure gebruiken / uitbreiden. (Invoegtoepassing of Invoegtoepassing voltooide apps)|
-|Publicatieopties     |Neem contact met mij op, Proefversie, Transact of Services voor Azure|Neem contact met mij op, proefversie of services voor Dynamics 365 en Power BI|
+|**Doelgroep**      |**IT-professionals en cloudontwikkelaars**|**Zakelijke gebruikers / Line-of-business besluitvormers**|
+|Oplossingsrelevantie      |Technische apps die zijn gebouwd voor of gebouwd op Azure|Zakelijke apps die d365, Power BI, O365, Azure gebruiken / uitbreiden. (Invoegtoepassing of Invoegtoepassing voltooide apps)|
+|Publicatieopties      |Neem contact met mij op, Proefversie, Transact of Services voor Azure|Neem contact met mij op, proefversie of services voor Dynamics 365 en Power BI|
 |In productervaring      |Azure Management Portal|Dynamics 365, Office 365, Office Client Apps| 
 |Overige      |On-premises publiceren via Azure Stack, Consulting Services voor Azure, Managed Services voor Azure|Consulting Services voor Dynamics en Power BI|
 
 Consulting Services-aanbiedingen die zijn gebaseerd op Microsoft Dynamics 365, Power Apps en Power BI komen in aanmerking voor een lijst op Microsoft AppSource. Zie [richtlijnen voor microsoft AppSource consulting services listing](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409).
 
-Consulting Services en Managed Services-aanbiedingen die zijn gebaseerd op Microsoft Azure komen in aanmerking voor een lijst op Azure Marketplace. Zie artikelen over het [publiceren van een Azure-consultingservice](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) en [het publiceren van een managed services-aanbieding naar Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)voor meer informatie.
+Consulting Services en Managed Services-aanbiedingen die zijn gebaseerd op Microsoft Azure komen in aanmerking voor een lijst op Azure Marketplace. Zie artikelen over het [publiceren van een Azure-consultingservice](./partner-center-portal/create-consulting-service-offer.md) en [het publiceren van een managed services-aanbieding naar Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)voor meer informatie.
 
 > [!Note]
 > Consultingservices in Azure Marketplace moeten gebruikmaken van aanbiedingen die zijn gericht op een **technisch publiek met focus op technische oplossingen en services van *Azure.* ** Consultingservices in AppSource moeten gebruikmaken van aanbiedingen die zijn afgestemd op hun expertise in het leveren van kwaliteitsoplossingen voor Dynamics 365, Power BI of Power Apps om hun adviesdiensten op AppSource te vermelden
 > 
 > 
 > [!TIP]
-> Als u wilt publiceren naar de Azure Marketplace-storefront, maakt u deze selectie door 'Azure' te kiezen in het vervolgkeuzemenu 'Primair product' in de Cloud Partner Portal. Als u wilt publiceren naar AppSource, maakt u deze selectie door 'Dynamics 365', 'Power BI' of 'Power Apps' te kiezen in het vervolgkeuzemenu 'Primair product' in de cloudpartnerportal.
+> Als u wilt publiceren naar de Azure Marketplace-storefront, maakt u deze selectie door 'Azure' te kiezen in het vervolgkeuzemenu 'Primair product' in partnercentrum. Als u wilt publiceren naar AppSource, maakt u deze selectie door 'Dynamics 365', 'Power BI' of 'Power Apps' te kiezen in het vervolgkeuzemenu 'Primair product' in partnercentrum.
 
 ## <a name="eligible-partners-and-supported-countriesregions"></a>In aanmerking komende partners en ondersteunde landen/regio's
 
@@ -87,13 +87,18 @@ Aanvullende middelen en ondersteuning:
 | Verenigd Koninkrijk  |
 
 
-## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Registreren voor consultingservices in Azure Marketplace en AppSource
-Begin met [het registreren van](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) uw bedrijfsgegevens op de marktplaats. Uitgevers kunnen verwijzen naar [Word een uitgever in de Marketplace,](https://docs.microsoft.com/azure/marketplace/become-publisher)voor een volledige checklist van registratievereisten. 
+## <a name="how-to-register-for-consulting-services-in-commercial-marketplace"></a>Hoe te registreren voor consulting diensten in commerciële marktplaats
 
-**Wat te verwachten na registratie** Het Onboarding-team neemt binnen 1-3 werkdagen contact op met een welkomste-mail, die uw Inloggegevens (Cloud Partner Portal) bevat. [Cloud Partner Portal](https://cloudpartner.azure.com) is de portal voor aanbiedingsvermeldingen waar uitgevers vermeldingsinformatie en inzendingen indienen. 
+Begin met [het registreren van](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) uw bedrijfsgegevens op de marktplaats. Uitgevers kunnen verwijzen naar [Word een uitgever in de Marketplace,](https://docs.microsoft.com/azure/marketplace/become-publisher)voor een volledige checklist van registratievereisten. 
+
+<!---
+**What To Expect After Registration**
+The Onboarding Team will reach out in 1-3 business days with a welcome email, which will include your Cloud Partner Portal (CPP) login information. [Cloud Partner Portal](https://cloudpartner.azure.com) is the offer listing portal where publishers submit listing information and submissions. 
 
 >[!Note]
->Partners hoeven zich slechts één keer te registreren om uitgever te worden. Zodra u uw welkomste-mail en cloudpartnerportal hebt ontvangen, hoeven uitgevers zich niet opnieuw te registreren om verschillende aanbiedingstypen te publiceren. 
+>Partners only need to register once to become a publisher. Once you receive your welcome email and Partner Center login, publishers do not need to re-register in order to publish different listing types. 
+
+--->
 
 ## <a name="prepare-your-publishing-artifacts"></a>Uw publicatieartefacten voorbereiden
 Voorafgaand aan de registratie u beginnen met het verzamelen en voorbereiden van de inhoud die uw vermelding zal helpen de waarde van uw service en oplossing aan uw doelklant te articuleren. 
@@ -120,7 +125,7 @@ Voorafgaand aan de registratie u beginnen met het verzamelen en voorbereiden van
 ## <a name="publishing-process"></a>Publicatieproces
 Het aanbieden van uw consulting-serviceaanbieding op de Azure Marketplace en AppSource omvat de volgende fasen:
 
-1. **Aanbieding:** begin met het opstellen van een nieuwe aanbiedingsaanbieding door u aan te melden bij uw [Cloud Partner Portal-account.](https://cloudpartner.azure.com) Selecteer 'Nieuwe aanbieding' en 'Consulting Services' in het vervolgkeuzemenu. Voer uw aanbiedingsartefact in en publiceer.
+1. **Aanbieding:** begin met het opstellen van een nieuwe aanbieding door je aan te melden bij je [Partner Center-account.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) Selecteer 'Nieuwe aanbieding' en 'Consulting Services' in het vervolgkeuzemenu. Voer uw aanbiedingsartefact in en publiceer.
 2. **Validatie:** Uw aanvraag wordt beoordeeld om ervoor te zorgen dat u voldoet aan de geschiktheidscriteria. Vervolgens sturen we u instructies voor het aanbieden van uw adviesdiensten. 
 3. **Verzenden:** Geef de vereiste informatie op die in de instructies wordt vermeld. Alle inhoud en ondersteunend materiaal moeten in het Engels worden ingediend. 
 4. **Review**: Onze marketing en redactie beoordelen uw inzending en optimaliseert deze voor leesbaarheid, grammatica en effectiviteit. 
@@ -165,7 +170,7 @@ Bij het bekijken van aanbiedingsbeschrijvingen en aanbiedingssamenvattingen past
 |**Proof of Concept**    |    Articuleer welke technische wijzigingen, technische artefacten of andere artefacten een klant kan verwachten als resultaten van de betrokkenheid     | Optimaliseer uw aanbiedingsoverzicht met uw belangrijkste zoekwoorden voor zoekmachineoptimalisatie        |
 |**Workshop**    |   Voeg dagelijks, wekelijks of maandelijks een gedetailleerde agenda toe, afhankelijk van de gekozen duur van uw aanbod. Bekonsen wat de leerdoelen of andere deliverables zijn van uw workshop     |   Optimaliseer uw aanbiedingsoverzicht met uw belangrijkste zoekwoorden voor zoekmachineoptimalisatie      |
 
-Binnen Cloud Partner Portal u opmaak toevoegen aan uw aanbieding met [Markdown](/contribute/markdown-reference). Dit is een lichtgewicht ontwerptaal die helpt bij het toevoegen van polish aan uw aanbieding. 
+Binnen Partnercentrum u opmaak toevoegen aan uw aanbieding met [Markdown](/contribute/markdown-reference). Dit is een lichtgewicht ontwerptaal die helpt bij het toevoegen van polish aan uw aanbieding. 
 
 **Voorbeeldmarkeringsnotities**
 * Voeg * aan het begin en einde van het kopieerblok - zonder ruimte om cursief te maken (bijvoorbeeld *inhoud*)
@@ -181,9 +186,9 @@ Binnen Cloud Partner Portal u opmaak toevoegen aan uw aanbieding met [Markdown](
 
 Als je dat nog niet gedaan hebt, 
 
-- [Registreer](https://azuremarketplace.microsoft.com/sell) op de marktplaats.
+- [Meer informatie](https://azuremarketplace.microsoft.com/sell) over de marktplaats.
 
-Als u bent geregistreerd en werkt in Cloud Partner Portal, 
+Om je te registreren en te gaan werken in partnercentrum, 
 
-- [Meld u aan bij Cloud Partner Portal](https://cloudpartner.azure.com) om uw aanbieding te maken of te voltooien.
-- Zie [Azure en Dynamics 365 consulting service aanbieding](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) voor meer informatie.
+- [Meld u aan bij Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te voltooien.
+- Zie [een consultingserviceaanbieding maken](./partner-center-portal/create-consulting-service-offer.md) voor meer informatie.

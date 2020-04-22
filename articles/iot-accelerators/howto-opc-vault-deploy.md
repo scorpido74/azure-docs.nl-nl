@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f577059e1ebf70e3a9dfe9e538a9d3d49d7c8e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71200006"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686944"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>De OPC Vault-certificaatbeheerservice bouwen en implementeren
 
@@ -90,7 +90,7 @@ Na een succesvolle implementatie u de services gaan gebruiken. Zie [De OPC Vault
 
 Dit doet u al volgt:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Ga naar de resourcegroep waarin de service is geïmplementeerd.
 3. Selecteer **Resourcegroep verwijderen** en bevestig dit.
 4. Na een korte tijd worden alle geïmplementeerde servicecomponenten verwijderd.
@@ -107,7 +107,7 @@ Gebruik een korte en eenvoudige naam van de resourcegroep. De naam wordt ook geb
 
 ### <a name="website-name-already-in-use"></a>Websitenaam al in gebruik
 
-Het is mogelijk dat de naam van de website al in gebruik is. U moet een andere naam van de resourcegroep gebruiken. De hostnamen die door het https://resourcegroupname.azurewebsites.net implementatiescript worden gebruikt, zijn: en https://resourgroupname-service.azurewebsites.net.
+Het is mogelijk dat de naam van de website al in gebruik is. U moet een andere naam van de resourcegroep gebruiken. De hostnamen die door het implementatiescript\/worden gebruikt\/zijn: https: /resourcegroupname.azurewebsites.net en https: /resourgroupname-service.azurewebsites.net.
 Andere namen van diensten worden gebouwd door de combinatie van korte naam hashes, en zijn waarschijnlijk niet in strijd met andere diensten.
 
 ### <a name="azure-ad-registration"></a>Azure AD-registratie 

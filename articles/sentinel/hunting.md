@@ -16,24 +16,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: 54ddf6818b95a4037188ab222501ddfa69b28149
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587895"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686635"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Zoek naar bedreigingen met Azure Sentinel
 
 Als u een onderzoeker bent die proactief op zoek wil naar beveiligingsbedreigingen, jaagt Azure Sentinel met krachtige zoek- en querytools om te zoeken naar beveiligingsbedreigingen in de gegevensbronnen van uw organisatie. Maar uw systemen en beveiligingsapparaten genereren bergen gegevens die moeilijk te ontlopen en te filteren in zinvolle gebeurtenissen. Om beveiligingsanalisten te helpen proactief te zoeken naar nieuwe afwijkingen die niet zijn gedetecteerd door uw beveiligingsapps, leiden de ingebouwde jachtquery's van Azure Sentinel u bij het stellen van de juiste vragen om problemen te vinden in de gegevens die u al in uw netwerk hebt. 
 
-Een ingebouwde query bevat bijvoorbeeld gegevens over de meest ongebruikelijke processen die op uw infrastructuur worden uitgevoerd - u wilt niet dat u een waarschuwing wilt over elke keer dat ze worden uitgevoerd, ze kunnen volledig onschuldig zijn, maar u wilt misschien af en toe een kijkje nemen op de query om te zien of Er is iets ongewoons. 
+Een ingebouwde query bevat bijvoorbeeld gegevens over de meest ongebruikelijke processen die op uw infrastructuur worden uitgevoerd - u wilt geen waarschuwing over elke keer dat ze worden uitgevoerd, ze kunnen volledig onschuldig zijn, maar u wilt misschien af en toe een kijkje nemen op de query om te zien of er iets ongewoons is. 
 
 
 
 Met Azure Sentinel-jacht u profiteren van de volgende mogelijkheden:
 
-- Ingebouwde query's: Om u op weg te helpen, bevat een startpagina vooraf geladen queryvoorbeelden die zijn ontworpen om u op weg te helpen en u vertrouwd te maken met de tabellen en de querytaal. Deze ingebouwde jacht query's zijn ontwikkeld door Microsoft security onderzoekers op een continue basis, het toevoegen van nieuwe query's, en fine-tuning bestaande query's om u te voorzien van een ingang om te zoeken naar nieuwe detecties en erachter te komen waar te beginnen met de jacht op de nieuwe aanvallen. 
+- Ingebouwde query's: Om u op weg te helpen, bevat een startpagina vooraf geladen queryvoorbeelden die zijn ontworpen om u op weg te helpen en u vertrouwd te maken met de tabellen en de querytaal. Deze ingebouwde jacht query's zijn ontwikkeld door Microsoft security onderzoekers op een continue basis, het toevoegen van nieuwe query's, en fine-tuning bestaande query's om u te voorzien van een ingang om te zoeken naar nieuwe detecties en erachter te komen waar te beginnen met de jacht op het begin van nieuwe aanvallen. 
 
 - Krachtige querytaal met IntelliSense: gebouwd bovenop een querytaal die u de flexibiliteit geeft die u nodig hebt om de jacht naar een hoger niveau te tillen.
 
@@ -54,7 +54,7 @@ Met Azure Sentinel-jacht u profiteren van de volgende mogelijkheden:
 
 3. Voer een snelle revisie van de onderliggende query uit in het deelvenster querydetails of klik op **Queryresultaat weergeven** om de query in Log Analytics te openen. Bekijk onderaan de overeenkomsten voor de query.
 
-4.  Klik op de rij en selecteer **Bladwijzer toevoegen** om de te onderzoeken rijen toe te voegen - u dit doen voor alles wat er verdacht uitziet. 
+4.    Klik op de rij en selecteer **Bladwijzer toevoegen** om de te onderzoeken rijen toe te voegen - u dit doen voor alles wat er verdacht uitziet. 
 
 5. Ga vervolgens terug naar de hoofdpagina **Hunting** en klik op het tabblad **Bladwijzers** om alle verdachte activiteiten te bekijken. 
 
@@ -66,7 +66,7 @@ Met Azure Sentinel-jacht u profiteren van de volgende mogelijkheden:
 
 ## <a name="query-language"></a>Querytaal 
 
-Jagen in Azure Sentinel is gebaseerd op Kusto-querytaal. Zie [Naslaggids](https://docs.loganalytics.io/docs/Language-Reference/)voor querytalen voor meer informatie over de querytaal en ondersteunde operatoren.
+Jagen in Azure Sentinel is gebaseerd op Kusto-querytaal. Zie [Naslaggids](/azure/azure-monitor/log-query/get-started-queries)voor querytalen voor meer informatie over de querytaal en ondersteunde operatoren.
 
 ## <a name="public-hunting-query-github-repository"></a>Openbare jachtquery GitHub-opslagplaats
 

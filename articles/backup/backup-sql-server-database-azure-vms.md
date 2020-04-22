@@ -4,12 +4,12 @@ description: In dit artikel leest u hoe u een back-up maakt van SQL Server-datab
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 5b10907738feeecbec06669175e82578f2915f92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 887f15deed74330cf132e0574d166c074d2c7cad
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273330"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685716"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Back-ups maken van SQL Server-databases in virtuele Azure-machines
 
@@ -112,7 +112,7 @@ Vermijd het gebruik van de volgende elementen in databasenamen:
 * Puntkomma ';'
 * Slash '/' doorsturen
 
-Aliasing is beschikbaar voor niet-ondersteunde tekens, maar we raden u aan deze tekens te vermijden. Zie [Het gegevensmodel van de tabelservice](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN) voor meer informatie.
+Aliasing is beschikbaar voor niet-ondersteunde tekens, maar we raden u aan deze tekens te vermijden. Zie [Het gegevensmodel van de tabelservice](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) voor meer informatie.
 
 >[!NOTE]
 >De bewerking **Beveiliging configureren** voor databases met speciale tekens zoals '+' of '&' in hun naam wordt niet ondersteund. U de naam van de database wijzigen of **Autobeveiliging**inschakelen, waardoor deze databases met succes kunnen worden beschermd.

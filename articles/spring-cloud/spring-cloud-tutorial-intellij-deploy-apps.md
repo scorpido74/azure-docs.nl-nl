@@ -6,12 +6,12 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: dbd0313c3edca8c5a875572fe52d7ec751ba65e8
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 8e473a5692c3fa2be3b0f2d823d2a36ba768d661
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641987"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731359"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ gebruiken om Azure Spring Cloud-toepassingen te implementeren
 De IntelliJ-plug-in voor Azure Spring Cloud ondersteunt toepassingsimplementatie vanuit het IntelliJ IDEA.  
@@ -19,11 +19,10 @@ De IntelliJ-plug-in voor Azure Spring Cloud ondersteunt toepassingsimplementatie
 ## <a name="prerequisites"></a>Vereisten
 * [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable)
 * [Maven 3.5.0+](https://maven.apache.org/download.cgi)
-* [IntelliJ IDEA Community Edition, versie [2020.1]](https://www.jetbrains.com/idea/download/#section=windows)
-* Of: IntelliJ IDEA Ultimate Edition, versie [2020.1]
+* [IntelliJ IDEA, Community/Ultimate Edition, versie 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>De plug-in installeren
-U Azure Toolkit voor IntelliJ IDEA 3.35.0 gebruiken via de Gebruikersinterface van IntelliJ **Plugins.**
+U de Azure Toolkit voor IntelliJ IDEA 3.35.0 toevoegen vanuit de Gebruikersinterface van IntelliJ **Plugins.**
 
 1. Start IntelliJ.  Als u eerder een project hebt geopend, sluit u het project om het welkomstdialoogvenster weer te geven. Selecteer **Configureren** vanaf koppeling rechtsonder en klik op **Plug-ins** om het dialoogvenster invoegconfiguratie te openen en selecteer **Plug-ins installeren vanaf de schijf**.
 
@@ -52,15 +51,15 @@ De volgende procedures implementeren een Hello World-toepassing met behulp van h
     ![Project importeren](media/spring-cloud-intellij-howto/import-project-1.png)
 
 ## <a name="deploy-to-azure-spring-cloud"></a>Implementeren in Azure Spring Cloud
-Als u wilt implementeren in Azure, moet u zich aanmelden met uw Azure-account en uw abonnement kiezen.  Zie [Installatie en aanmelden](https://docs.microsoft.com/azure/java/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in)voor aanmeldingsgegevens.
+Als u wilt implementeren in Azure, moet u zich aanmelden met uw Azure-account en uw abonnement kiezen.  Zie [Installatie en aanmelden](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)voor aanmeldingsgegevens.
 
-1. Klik met de rechtermuisknop op uw project in IntelliJ project explorer en selecteer **Azure** -> **Deploy in Azure Spring Cloud**.
+1. Klik met de rechtermuisknop op uw project in IntelliJ-projectexplorer en selecteer **Azure** -> **Deploy in Azure Spring Cloud**.
 
     ![Implementeren in Azure 1](media/spring-cloud-intellij-howto/deploy-to-azure-1.png)
 
 1. Accepteer de naam voor app in het veld **Naam.** **Naam** verwijst naar de configuratie, niet app naam. Gebruikers hoeven het meestal niet te wijzigen.
 1. Accepteer de id van het project voor het **artefact**.
-1. Selecteer **App:** klik vervolgens op **App maken...**.
+1. **Selecteer App:** klik vervolgens op **App maken...**.
 
     ![Implementeren naar Azure 2](media/spring-cloud-intellij-howto/deploy-to-azure-2.png)
 
@@ -98,6 +97,6 @@ Ga als eerste over de slag met de tekst:
 
     ![Streaming logboekuitvoer](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
-## <a name="see-also"></a>Zie ook
-* [Een Hallo wereld-web-app maken voor Azure App Service met behulp van IntelliJ](https://docs.microsoft.com/azure/java/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)
-* [Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment) 
+## <a name="next-steps"></a>Volgende stappen
+* [Voorjaarstoepassing voorbereiden voor Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+* [Meer informatie over Azure Toolkit voor IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)

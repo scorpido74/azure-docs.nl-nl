@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
-ms.openlocfilehash: f700b06e6ade0d72178777b67cb734f3120b36dc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bf453587b354b5db3f3ef1a80f974bcb8f8f4e14
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240189"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730021"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Snelstart: een .NET Framework- of Core-toepassing bouwen met het Azure Cosmos DB Gremlin API-account
 
@@ -23,7 +23,7 @@ ms.locfileid: "79240189"
 > * [Java](create-graph-java.md)
 > * [Node.js](create-graph-nodejs.md)
 > * [Python](create-graph-python.md)
-> * [Php](create-graph-php.md)
+> * [PHP](create-graph-php.md)
 >  
 
 Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafen en hier query’s op uitvoeren. Deze databases genieten allemaal het voordeel van de wereldwijde distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Azure Cosmos DB. 
@@ -118,7 +118,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 1. Nadat u de URI- en PRIMAIRE SLEUTEL van uw account hebt gekopieerd, slaat u deze op in een nieuwe omgevingsvariabele op de lokale machine waarop de toepassing wordt uitgevoerd. Als u de omgevingsvariabele wilt instellen, opent u een opdrachtpromptvenster en voert u de volgende opdracht uit. Zorg ervoor dat u <Your_Azure_Cosmos_account_URI> en Your_Azure_Cosmos_account_PRIMARY_KEY> waarden <Your_Azure_Cosmos_account_PRIMARY_KEY.
 
    ```console
-   setx EndpointUrl "https://<your cosmos db account name>.gremlin.cosmosdb.azure.com"
+   setx EndpointUrl "<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com"
    setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 

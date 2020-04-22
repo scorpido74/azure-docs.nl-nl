@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 025dbc56fb46ef5b6225d35564b8e4ac3c82e6e3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414466"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731183"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud
 
@@ -27,7 +27,7 @@ In dit artikel worden de vereiste afhankelijkheden uitgelegd en hoe u deze toevo
 
 Alleen Lente/Java-toepassingen kunnen worden uitgevoerd in Azure Spring Cloud.
 
-Azure Spring Cloud ondersteunt zowel Java 8 als Java 11. De hostingomgeving bevat de nieuwste versie van Azul Zulu OpenJDK voor Azure. Zie [De JDK installeren](https://docs.microsoft.com/azure/java/jdk/java-jdk-install)voor meer informatie over Azul Zulu OpenJDK voor Azure.
+Azure Spring Cloud ondersteunt zowel Java 8 als Java 11. De hostingomgeving bevat de nieuwste versie van Azul Zulu OpenJDK voor Azure. Zie [De JDK installeren](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)voor meer informatie over Azul Zulu OpenJDK voor Azure.
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot en Spring Cloud versies
 

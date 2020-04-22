@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
-ms.date: 03/10/2020
-ms.openlocfilehash: 638adaac699bb7aa2774f5cbd37dc8394a2baee3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/19/2020
+ms.openlocfilehash: b06c255f94b4d539c7c85e318238b10629cbb907
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240518"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685150"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Snelstart: een enkele database van Azure SQL Database maken
 
@@ -67,7 +67,7 @@ Houd de brongroep, server en afzonderlijke database om door te gaan naar de volg
 
 Wanneer u klaar bent met het gebruik van deze bronnen, u de door u gemaakte brongroep verwijderen, waardoor ook de server en de afzonderlijke database erin worden verwijderd.
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Ga als het gaat om het verwijderen van **myResourceGroup** en al zijn resources via de Azure-portal:
 
@@ -75,7 +75,7 @@ Ga als het gaat om het verwijderen van **myResourceGroup** en al zijn resources 
 1. Selecteer resourcegroep **verwijderen**op de pagina Resourcegroep verwijderen .
 1. Voer **onder De naam van de brongroep**de naam van *mijnResourcegroep*in en selecteer **Verwijderen**.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u de brongroep en al zijn resources wilt verwijderen, voert u de volgende opdracht Azure CLI uit met de naam van uw resourcegroep:
 
@@ -83,15 +83,16 @@ Als u de brongroep en al zijn resources wilt verwijderen, voert u de volgende op
 az group delete --name <your resource group>
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Als u de brongroep en al zijn resources wilt verwijderen, voert u de volgende PowerShell-cmdlet uit met de naam van uw resourcegroep:
 
- ```azurepowershell-interactive
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name <your resource group>
 ```
 
 ---
+
 ## <a name="next-steps"></a>Volgende stappen
 
 [Maak verbinding en query](sql-database-connect-query.md) uw database met behulp van verschillende tools en talen:

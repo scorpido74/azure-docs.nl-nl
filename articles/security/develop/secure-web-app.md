@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 730e478622da8cd90af1c559e4d0c6fd04151cca
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811233"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686797"
 ---
 # <a name="develop-a-secure-web-app"></a>Een beveiligde web-app ontwikkelen
 
@@ -803,7 +803,7 @@ Configureer de app in de Azure-portal om de vereiste referenties te gebruiken:
 Nadat u de Azure AD-configuratie en -geheimen aan Key Vault hebt toegevoegd, kunnen gebruikers worden geverifieerd in de app met Azure OAuth-verificatie.
 In de app-code wordt dit afgehandeld door de Azure Active Directory Authentication Library (ADAL).
 
-Nadat de geheimen zich in Key Vault bevinden en de toepassing toegang heeft tot de geheimen enhttps://GATEWAY_HASH.cloudapp.net)de database, kan de applicatieservice worden bereikt via de url van de toepassing van de gateway (, die u krijgen van het blad.
+Nadat de geheimen zich in Key Vault bevinden en de toepassing toegang heeft tot de geheimen en de\/database, kan de applicatieservice worden bereikt via de url van de toepassing van de gateway (https: /GATEWAY_HASH.cloudapp.net), die u krijgen van het blad.
 
 Als u zich bij Azure AD aanmeldt bij Azure AD, krijgt u een foutmelding met de tekst 'Gebruiker is niet geregistreerd in de map waarop u zich probeert aan te melden', moet u de gebruiker toevoegen. Als u de gebruiker wilt toevoegen, gaat u naar het tabblad **Gebruikers** van Azure AD en voegt u de gebruiker handmatig toe door zijn gegevens in te voeren of de gebruiker uit te nodigen door zijn e-mailadres in te voeren als gastgebruiker in Azure AD in het gastenblad **Uitnodigen.**
 
@@ -978,7 +978,7 @@ Nadat u een aantal codefouten hebt opgelost die door de lintingtools zijn gevond
 
 ### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Kwetsbaarheden in app-afhankelijkheden zoeken en oplossen
 
-Als u toepassingsafhankelijkheden wilt zoeken en oplossen, u [de afhankelijkheidscontrole van OWASP gebruiken.](https://www.owasp.org/index.php/OWASP_Dependency_Check)
+Als u toepassingsafhankelijkheden wilt zoeken en oplossen, u [de afhankelijkheidscontrole van OWASP gebruiken.](https://owasp.org/www-project-dependency-check/)
 
 Veiligheid is een vergelijkbare toepassing die afhankelijkheden controleert. Je het vinden op [GitHub.](https://github.com/pyupio/safety) Veiligheidsscans voor kwetsbaarheden gevonden in bekende kwetsbaarheid databases.
 

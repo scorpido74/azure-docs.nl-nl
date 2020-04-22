@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 04/20/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcccc64e0c766164a06932e9b65a4459816f9deb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89e09fd63ee6121ac9bf7f3c2be00f0ac22f752f
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409113"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731709"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Selfservice-toepassingstoewijzing configureren
 
@@ -41,6 +41,9 @@ Met deze functie kunt u het volgende doen:
 -   Laat een zakelijke goedkeurder optioneel de wachtwoorden instellen die gebruikers kunnen gebruiken om zich aan te melden bij de toepassing, direct vanuit het [Application Access Panel](https://myapps.microsoft.com/)van de bedrijfsinstantie.
 
 -   Optioneel automatisch toewijzen self-service toegewezen gebruikers aan een toepassing rol rechtstreeks.
+
+> [!NOTE]
+> Gebruikers moeten een selfservice-app aanvragen aanvragen en eigenaren aanvragen goedkeuren of weigeren. Zonder Een Azure Active Directory Premium-licentie kunnen gebruikers geen selfservice-apps toevoegen.
 
 ## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Self-service applicatie toegang inschakelen om gebruikers in staat te stellen hun eigen applicaties te vinden
 

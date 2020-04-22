@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9d98660230e0ab9f4edcd9a7af8a3797106dd17a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f5b0124f95465c4a5da5043364a2f5816dae62
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255649"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685753"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Beveiligde toepassingen ontwikkelen in Azure
 In dit artikel presenteren we beveiligingsactiviteiten en besturingselementen om rekening mee te houden wanneer u toepassingen voor de cloud ontwikkelt. Beveiligingsvragen en concepten die moeten worden overwogen tijdens de implementatie- en verificatiefasen van de Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) komen aan bod. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-services die u gebruiken om een veiligere toepassing te ontwikkelen.
@@ -44,7 +44,7 @@ Azure Marketplace biedt [hulpprogramma's voor ontwikkelaars](https://azuremarket
 
 ### <a name="validate-and-sanitize-every-input-for-your-application"></a>Alle input voor uw toepassing valideren en ontsmetten
 
-Behandel alle invoer als niet-vertrouwd om uw toepassing te beschermen tegen de meest voorkomende kwetsbaarheden in webapplicaties. Niet-vertrouwde gegevens zijn een voertuig voor injectieaanvallen. Invoer voor uw toepassing omvat parameters in de URL, invoer van de gebruiker, gegevens uit de database of uit een API, en alles wat wordt doorgegeven in dat een gebruiker mogelijk kan manipuleren. Een toepassing moet [valideren](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs) dat gegevens syntactisch en semantisch geldig zijn voordat de toepassing de gegevens op enigerlei wijze gebruikt (inclusief het weergeven ervan aan de gebruiker).
+Behandel alle invoer als niet-vertrouwd om uw toepassing te beschermen tegen de meest voorkomende kwetsbaarheden in webapplicaties. Niet-vertrouwde gegevens zijn een voertuig voor injectieaanvallen. Invoer voor uw toepassing omvat parameters in de URL, invoer van de gebruiker, gegevens uit de database of uit een API, en alles wat wordt doorgegeven in dat een gebruiker mogelijk kan manipuleren. Een toepassing moet [valideren](https://owasp.org/www-project-proactive-controls/v3/en/c5-validate-inputs) dat gegevens syntactisch en semantisch geldig zijn voordat de toepassing de gegevens op enigerlei wijze gebruikt (inclusief het weergeven ervan aan de gebruiker).
 
 Valideer invoer vroeg in de gegevensstroom om ervoor te zorgen dat alleen goed gevormde gegevens de workflow binnenkomen. U wilt niet dat misvormde gegevens in uw database blijven bestaan of een storing veroorzaken in een downstreamcomponent.
 

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3c89fae09583c96cf8139885fe2554cf6784b4e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ead6a79109c221d31ead96a202e97294ef218c5f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269824"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687980"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Beveiligingsframe: configuratiebeheer | Mitigaties 
 | Product/service | Artikel |
@@ -33,7 +33,7 @@ ms.locfileid: "78269824"
 | **IoT-veldgateway** | <ul><li>[Besturingssysteem en extra partities van IoT Field Gateway versleutelen met bit-locker](#field-bit-locker)</li><li>[Ervoor zorgen dat de standaardinloggegevens van de veldgateway tijdens de installatie worden gewijzigd](#default-change)</li></ul> |
 | **IoT Cloud Gateway** | <ul><li>[Zorg ervoor dat de Cloud Gateway een proces implementeert om de firmware van verbonden apparaten up-to-date te houden](#cloud-firmware)</li></ul> |
 | **Grens van machinevertrouwensrelatie** | <ul><li>[Ervoor zorgen dat apparaten eindpuntbeveiligingsbesturingselementen hebben geconfigureerd volgens organisatiebeleid](#controls-policies)</li></ul> |
-| **Azure Storage** | <ul><li>[Zorgen voor veilig beheer van Azure-opslagtoegangssleutels](#secure-keys)</li><li>[Ervoor zorgen dat alleen vertrouwde oorsprong is toegestaan als CORS is ingeschakeld op Azure-opslag](#cors-storage)</li></ul> |
+| **Azure-opslag** | <ul><li>[Zorgen voor veilig beheer van Azure-opslagtoegangssleutels](#secure-keys)</li><li>[Ervoor zorgen dat alleen vertrouwde oorsprong is toegestaan als CORS is ingeschakeld op Azure-opslag](#cors-storage)</li></ul> |
 | **WCF** | <ul><li>[De functie servicebeperking van WCF inschakelen](#throttling)</li><li>[WCF-Informatie openbaarmaking door middel van metadata](#info-metadata)</li></ul> | 
 
 ## <a name="implement-content-security-policy-csp-and-disable-inline-javascript"></a><a id="csp-js"></a>Inhoudsbeveiligingsbeleid (CSP) implementeren en javascript inline uitschakelen
@@ -76,7 +76,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [XSS-beveiligingsfilter](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) |
+| **Verwijzingen**              | [XSS-beveiligingsfilter](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
 | **Stappen** | <p>X-XSS-Protection response header configuration controls the browser's cross site script filter. Met deze antwoordkop kunnen de volgende waarden worden gegeven:</p><ul><li>`0:`Hierdoor wordt het filter uitgeschakeld</li><li>`1: Filter enabled`Als een cross-site scripting aanval wordt gedetecteerd, om de aanval te stoppen, zal de browser ontsmetten van de pagina</li><li>`1: mode=block : Filter enabled`. In plaats van de pagina te ontsmetten, wordt de browser, wanneer een XSS-aanval wordt gedetecteerd, voorkomen dat de pagina wordt weergegeven</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. De browser ontsmet de pagina en rapporteert de overtreding.</li></ul><p>Dit is een Chromium-functie die gebruik maakt van CSP-schendingen om details naar een URI naar keuze te sturen. De laatste 2 opties worden beschouwd als veilige waarden.</p>|
 
 ## <a name="aspnet-applications-must-disable-tracing-and-debugging-prior-to-deployment"></a><a id="trace-deploy"></a>ASP.NET toepassingen moeten tracering en foutopsporing uitschakelen voordat ze worden geïmplementeerd
@@ -109,7 +109,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [OWASP click-jacking Defense Cheat Sheet](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet), [IE Internals - Bestrijding van click-jacking met X-Frame-Opties](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
+| **Verwijzingen**              | [OWASP click-jacking Defense Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html), [IE Internals - Bestrijding van click-jacking met X-Frame-Opties](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
 | **Stappen** | <p>click-jacking, ook wel bekend als een "UI redress attack", is wanneer een aanvaller meerdere transparante of ondoorzichtige lagen gebruikt om een gebruiker te verleiden tot het klikken op een knop of link op een andere pagina toen ze van plan waren te klikken op de pagina op het hoogste niveau.</p><p>Deze gelaagdheid wordt bereikt door het maken van een kwaadaardige pagina met een iframe, die de pagina van het slachtoffer laadt. Dus, de aanvaller is "hijacking" klikken bedoeld voor hun pagina en routering ze naar een andere pagina, waarschijnlijk eigendom van een andere toepassing, domein, of beide. Als u aanvallen met klikjacking wilt voorkomen, stelt u de juiste HTTP-antwoordkoppen met X-Frame-Options in die de browser instrueren om framing uit andere domeinen niet toe te staan</p>|
 
 ### <a name="example"></a>Voorbeeld

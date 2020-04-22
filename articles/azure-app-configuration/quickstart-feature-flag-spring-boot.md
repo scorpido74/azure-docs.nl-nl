@@ -4,14 +4,14 @@ description: Functievlaggen toevoegen aan apps voor springboot en beheren met Az
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 04/13/2020
+ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: 398005b37660cfa68936a0c8b3a3d90da8160e49
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e6dc51250987e0282530209ffa13e52d6e75aa9c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309078"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687366"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Snelstart: functievlaggen toevoegen aan een app voor springboot
 
@@ -55,9 +55,9 @@ Gebruik de [Spring Initializr](https://start.spring.io/) om een nieuw Spring Boo
 
 1. Nadat u de bestanden op uw lokale systeem hebt uitgepakt, is uw toepassing Voor het opstartopstarten klaar voor bewerking. Zoek *pom.xml* in de hoofdmap van uw app.
 
-1. Open het *pom.xml-bestand* in een teksteditor en `<dependencies>`voeg het volgende toe aan de lijst van .:
+1. Open het *pom.xml-bestand* in een teksteditor en `<dependencies>`voeg het volgende toe aan de lijst van :
 
-### <a name="spring-cloud-11x"></a>Voorjaarswolk 1.1.x
+    **Voorjaarswolk 1.1.x**
 
     ```xml
     <dependency>
@@ -76,7 +76,7 @@ Gebruik de [Spring Initializr](https://start.spring.io/) om een nieuw Spring Boo
     </dependency>
     ```
 
-### <a name="spring-cloud-12x"></a>Voorjaarswolk 1.2.x
+    **Voorjaarswolk 1.2.x**
 
     ```xml
     <dependency>

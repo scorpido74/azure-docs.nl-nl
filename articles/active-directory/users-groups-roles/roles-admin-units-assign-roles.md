@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a518ff070ea021726ee382169e87cca55cad36d0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c900b2a363a4ff271e7a436b358ecf170daca163
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428249"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687022"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Scoped rollen toewijzen aan een administratieve eenheid
 
 In Azure Active Directory (Azure AD) u gebruikers toewijzen aan een Azure AD-rol met een bereik dat beperkt is tot een of meer beheereenheden (AU's) voor meer gedetailleerd beheerbeheerbeheer.
 
-Zie [Aan](roles-admin-units-manage.md#getting-started)de slag gaan voor stappen om PowerShell en Microsoft Graph te gebruiken voor beheer van administratieve eenheden.
+Zie [Aan](roles-admin-units-manage.md#get-started)de slag voor stappen om PowerShell en Microsoft Graph te gebruiken voor beheer van administratieve eenheden.
 
 ## <a name="roles-available"></a>Beschikbare rollen
 

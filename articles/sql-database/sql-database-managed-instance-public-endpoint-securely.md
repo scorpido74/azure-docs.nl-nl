@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: 6dfeab3530445f8f9a102f47039d15b04fdf134a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f11c19ba33ee2fbae0fef265371bedad2fe29cb7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73821743"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684954"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Een Azure SQL Database-beheerde instantie veilig gebruiken met openbare eindpunten
 
@@ -35,7 +35,7 @@ Hoewel niet verplicht, is het algemene implementatiemodel voor een beheerde inst
 
 ## <a name="secure-data-in-motion"></a>Gegevens in beweging beveiligen
 
-Beheerd instantiegegevensverkeer wordt altijd versleuteld als het clientstuurprogramma versleuteling ondersteunt. Gegevens die worden verzonden tussen de beheerde instantie en andere Azure-virtuele machines of Azure-services, verlaten nooit de backbone van Azure. Als er een verbinding is tussen de beheerde instantie en een on-premises netwerk, raden we u aan Azure ExpressRoute te gebruiken met Microsoft-peering. ExpressRoute helpt u voorkomen dat gegevens via het openbare internet worden verplaatst. Voor beheerde bijvoorbeeld privéconnectiviteit kan alleen privé-peering worden gebruikt.
+Beheerd instantiegegevensverkeer wordt altijd versleuteld als het clientstuurprogramma versleuteling ondersteunt. Gegevens die worden verzonden tussen de beheerde instantie en andere Azure-virtuele machines of Azure-services, verlaten nooit de backbone van Azure. Als er een verbinding is tussen de beheerde instantie en een on-premises netwerk, raden we u aan Azure ExpressRoute te gebruiken. ExpressRoute helpt u voorkomen dat gegevens via het openbare internet worden verplaatst. Voor beheerde bijvoorbeeld privéconnectiviteit kan alleen privé-peering worden gebruikt.
 
 ## <a name="lock-down-inbound-and-outbound-connectivity"></a>Binnenkomende en uitgaande connectiviteit vergrendelen
 

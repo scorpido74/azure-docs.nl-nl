@@ -1,21 +1,21 @@
 ---
-title: Handleiding voor technische publicatie van Azure Marketplace SaaS-toepassingen
+title: Publicatiegids voor Azure Marketplace SaaS-toepassingen
 description: Stapsgewijze handleiding en publicatiechecklists voor het publiceren van SaaS-toepassingen naar Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: keithcharlie
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
-ms.author: kevidal
-ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.author: dsindona
+ms.openlocfilehash: 1bc2feb4d8f3f103802bd823c66cd3f54ac5d74a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544282"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687545"
 ---
-# <a name="saas-applications-offer-publishing-guide"></a>Publicatiehandleiding voor SaaS-toepassingen
+# <a name="saas-applications-offer-publishing-guide"></a>SaaS-toepassingen bieden publicatiegids
 
 SaaS-toepassingen kunnen worden gepubliceerd in de markt met drie verschillende oproepen tot actie: "Neem contact met mij op", "Probeer het nu", en "Nu krijgen." Deze gids legt deze drie opties uit, inclusief vereisten voor elk. 
 
@@ -33,7 +33,7 @@ SaaS-toepassingen zijn beschikbaar in beide Azure Storefronts In de volgende tab
 
 | SaaS Apps Aanbieding | Zakelijke vereisten | Technische voorschriften |  
 | --- | --- | --- |  
-| **Contact opnemen** | Ja | Nee |  
+| **Neem contact met ons op** | Ja | Nee |  
 | **PowerBI / Dynamiek** | Ja | Ja (Azure AD-integratie) |  
 | **SaaS-apps**| Ja | Ja (Azure AD-integratie) |     
 
@@ -110,8 +110,8 @@ Certificeert uw Azure AD-integratie op een aantal verschillende manieren, afhank
 **Voor toepassingen met meerdere tenant's:**  
 
 Als u Azure AD al ondersteunt, gaat u als volgt te werk:
-1.  Uw toepassing registreren in de Azure-portal
-2.  Schakel de multi-huurondersteuningsfunctie in Azure AD in om een proefervaring met één klik te krijgen. Meer specifieke informatie is [hier](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)te vinden.  
+1.    Uw toepassing registreren in de Azure-portal
+2.    Schakel de multi-huurondersteuningsfunctie in Azure AD in om een proefervaring met één klik te krijgen. Meer specifieke informatie is [hier](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)te vinden.  
 
 Als u nieuw bent bij Azure AD Federated SSO, gaat u als volgt te werk: 
 1.  Uw toepassing registreren in de Azure-portal
@@ -144,9 +144,9 @@ Microsoft host de handelstransactie. Microsoft factureert uw klant namens u. Als
 ## <a name="next-steps"></a>Volgende stappen
 Als je dat nog niet gedaan hebt,
 
-- [Registreer](https://azuremarketplace.microsoft.com/sell) op de marktplaats.
+* [Meer informatie](https://azuremarketplace.microsoft.com/sell) over de marktplaats.
 
-Als u bent geregistreerd en een nieuwe aanbieding maakt of aan een bestaand aanbod werkt,
+Als u zich wilt registreren in partnercentrum, begint u met het maken van een nieuwe aanbieding of werkt u aan een bestaand aanbieding:
 
-- [Meld u aan bij Cloud Partner Portal](https://cloudpartner.azure.com) om uw aanbieding te maken of te voltooien.
-- Zie [Azure SaaS-toepassingsaanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) voor meer informatie.
+* [Meld u aan bij Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te voltooien.
+* Zie [een SaaS-applicatieaanbieding maken](./partner-center-portal/create-new-saas-offer.md) voor meer informatie.

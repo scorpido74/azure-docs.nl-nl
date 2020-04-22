@@ -8,33 +8,33 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 3/18/2020
 ms.author: derekol
-ms.openlocfilehash: 60752cf1b3c05ab7817083e70310ba7b40227dec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5804aa1b005e670d8b430b1c0a3bd62efd0bb06
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129949"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687057"
 ---
-1. Klik op een peering verbinding die u wilt inschakelen voor Peering Service en klik vervolgens op de **...**  >  **Knop Verbinding bewerken.**
+1. Selecteer een peeringverbinding die u wilt inschakelen voor Azure Peering Service. Selecteer vervolgens **...**  >  **Verbinding bewerken**.
     > [!div class="mx-imgBorder"]
-    > ![Bewerken van peeringverbinding](../media/setup-direct-modify-editconnection.png)
-1. Klik onder de sectie ***Gebruik voor peeringservice***op **Ingeschakeld** en **Opslaan**.
+    > ![Peering-verbinding Verbinding bewerken](../media/setup-direct-modify-editconnection.png)
+1. Selecteer onder **Gebruik voor peeringservice**de optie **Ingeschakeld** en selecteer **Opslaan**.
     > [!div class="mx-imgBorder"]
-    > ![Peering-verbinding maken peeringservice mogelijk](../media/setup-direct-modify-editconnectionsettings-peering-service.png)
-1. In het scherm Overzicht ziet u de implementatiegegevens. Zodra uw implementatie is voltooid, klikt u op **Ga naar resource**.
+    > ![Peering-verbinding Peering-service inschakelen](../media/setup-direct-modify-editconnectionsettings-peering-service.png)
+1. In het scherm **Overzicht** ziet u de implementatiegegevens. Nadat uw implementatie is voltooid, selecteert u **Ga naar resource**.
     > [!div class="mx-imgBorder"]
     > ![Uw implementatie is voltooid](../media/setup-direct-modify-overview-deployment-complete.png)
 
-1. U ziet dan onder Instellingen **Geregistreerde Voorvoegsels**. Klik op **Geregistreerd voorvoegsel toevoegen**.
+1. Selecteer **Geregistreerd voorvoegsel toevoegen**in het deelvenster **Geregistreerde voorvoegsels** .
     > [!div class="mx-imgBorder"]
-    > ![Geregistreerde voorvoegsels en verbindingen](../media/setup-direct-modify-add-registered-prefix.png)
-1. Een voorvoegsel registreren door een **naam** en een **voorvoegsel te** selecteren en op **Opslaan te klikken**
+    > ![Geregistreerd voorvoegsel toevoegen](../media/setup-direct-modify-add-registered-prefix.png)
+1. Registreer een voorvoegsel door een **naam** en een **voorvoegsel te** selecteren en **Opslaan te selecteren.**
     > [!div class="mx-imgBorder"]
     >  ![Een voorvoegsel registreren](../media/setup-direct-modify-register-a-prefix.png) 
 
-1. Zodra een voorvoegsel is gemaakt, ziet u het in de lijst met geregistreerde voorvoegsels. Klik op de **naam** van het voorvoegsel voor meer details.
+1. Nadat een voorvoegsel is gemaakt, ziet u het in de lijst **met geregistreerde voorvoegsels**. Selecteer de **naam** van het voorvoegsel om meer details te bekijken.
     > [!div class="mx-imgBorder"]
     > ![Geregistreerde voorvoegsels en verbindingen](../media/setup-direct-modify-registered-prefixes.png)
-1. Op de geregistreerde voorvoegselpagina ziet u de volledige details om de **voorvoegselsleutel** voor elk voorvoegsel op te nemen. Deze sleutel moet worden verstrekt aan de klant toegewezen dit voorvoegsel van hun provider ISP. De klant kan vervolgens hun voorvoegsel registreren in hun abonnement met deze sleutel.
+1. Op de geregistreerde voorvoegselpagina ziet u de volledige details, waaronder de **voorvoegselsleutel** voor elk voorvoegsel. Deze sleutel moet worden verstrekt aan de klant toegewezen dit voorvoegsel van hun provider ISP. De klant kan vervolgens hun voorvoegsel registreren in hun abonnement met behulp van deze sleutel.
     > [!div class="mx-imgBorder"]
     > ![Voorvoegsel met voorvoegselsleutel](../media/setup-direct-modify-registered-prefix-detail.png)

@@ -3,12 +3,12 @@ title: Beheerde identiteit inschakelen in containergroep
 description: Meer informatie over het inschakelen van een beheerde identiteit in Azure Container Instances die kan worden geverifieerd met andere Azure-services
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: 003055d5021dd8ad7c3bab6d2900298ffd13b222
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19d2ab22eea15278c7753046f9222c7856fbf5ef
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76901928"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685647"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Beheerde identiteiten gebruiken met Azure Container Instances
 
@@ -189,7 +189,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Gebruik nu het toegangstoken om te verifiëren voor sleutelkluis en lees een geheim. Zorg ervoor dat u de naam van*https://mykeyvault.vault.azure.net/..* uw sleutelkluis vervangt in de URL ( . ):
+Gebruik nu het toegangstoken om te verifiëren voor sleutelkluis en lees een geheim. Zorg ervoor dat u de naam van uw sleutelkluis vervangt in de URL (*https:\//mykeyvault.vault.azure.net/...*):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

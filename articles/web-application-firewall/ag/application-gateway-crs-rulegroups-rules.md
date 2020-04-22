@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 563aa701c1403a1ef26c6073496e7e59c7c5096c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 59409c428aba938c49fc37647db82f30d783a629
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521847"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730561"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>CRS-regelgroepen en regels voor Web Application Firewall CRS
 
@@ -218,6 +218,7 @@ De volgende regelgroepen en regels zijn beschikbaar wanneer u Web Application Fi
 |932120|Uitvoering van opdrachten op afstand = Windows PowerShell-opdracht gevonden|
 |932130|Uitvoering van opdrachten op afstand = Unix-shell-expressie gevonden|
 |932140|Uitvoering van opdrachten op afstand = Windows VOOR/ALS, opdracht gevonden|
+|932150|Uitvoering van opdrachten op afstand: directe Unix-opdrachtuitvoering|
 |932160|Uitvoering van opdrachten op afstand = Unix-shellcode gevonden|
 |932170|Uitvoering van commando's op afstand = Shellshock (CVE-2014-6271)|
 |932171|Uitvoering van commando's op afstand = Shellshock (CVE-2014-6271)|

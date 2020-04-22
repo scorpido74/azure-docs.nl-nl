@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: e83c70424c131e5324192b07e65321d63bf06e2e
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 2c0cd47acbd4639ff5eff2af78dcebdfc26270a7
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674213"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730703"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Uw technische activa van uw IoT Edge-module voorbereiden
 
@@ -25,8 +25,8 @@ In dit artikel worden de vereisten beschreven waaraan de technische elementen va
 
 Een IoT Edge-module is een Docker-compatibele container die wordt uitgevoerd op een IoT Edge-apparaat.
 
-- Zie [Azure IoT Edge-modules begrijpen](https://aka.ms/UnderstandAzureIoTEdgemodules)voor meer informatie over IoT Edge-modules.
-- Zie [Uw eigen IoT Edge-modules ontwikkelen](https://aka.ms/DevelopyourownIoTEdgemodules)om aan de slag te gaan met de ontwikkeling van uw IoT Edge-module.
+- Zie [Azure IoT Edge-modules begrijpen](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)voor meer informatie over IoT Edge-modules.
+- Zie [Uw eigen IoT Edge-modules ontwikkelen](https://docs.microsoft.com/azure/iot-edge/module-development)om aan de slag te gaan met de ontwikkeling van uw IoT Edge-module.
 
 ## <a name="technical-requirements"></a>Technische vereisten
 
@@ -38,15 +38,15 @@ Uw IoT Edge-module moet een van de volgende platformopties ondersteunen:
 
 #### <a name="tier-1-platforms-supported-by-iot-edge"></a>Tier 1-platforms ondersteund door IoT Edge
 
-Uw module moet alle Tier 1-platforms ondersteunen die worden ondersteund door IoT Edge (zoals opgenomen in [Azure IoT Edge-ondersteuning).](https://aka.ms/AzureIoTEdgesupport) We raden deze optie aan omdat het een betere klantervaring biedt. Modules die aan deze criteria voldoen, worden tentoongesteld. Een module die deze platformoptie gebruikt, moet:
+Uw module moet alle Tier 1-platforms ondersteunen die worden ondersteund door IoT Edge (zoals opgenomen in [Azure IoT Edge-ondersteuning).](https://docs.microsoft.com/azure/iot-edge/support) We raden deze optie aan omdat het een betere klantervaring biedt. Modules die aan deze criteria voldoen, worden tentoongesteld. Een module die deze platformoptie gebruikt, moet:
 
-- Geef een nieuwste tag en een versietag (bijvoorbeeld 1.0.1) die manifesttags zijn die zijn gebouwd met de [GitHub Manifest-tool.](https://aka.ms/GitHubmanifest-tool)
+- Geef een nieuwste tag en een versietag (bijvoorbeeld 1.0.1) die manifesttags zijn die zijn gebouwd met de [GitHub Manifest-tool.](https://github.com/estesp/manifest-tool)
 
-- Gebruik het tabblad Aanbiedingsvermelding in [Partnercentrum](https://partner.microsoft.com/dashboard/commercial-marketplace) om een koppeling toe te voegen onder de sectie **Nuttige koppelingen** naar de [Azure IoT Edge Certified-apparaatcatalogus](https://catalog.azureiotsolutions.com/). U de omleidingskoppeling https://aka.ms/iot-edge-certified gebruiken die wordt opgelost naar de Azure [IoT Edge Device Catalog.](https://catalog.azureiotsolutions.com/)
+- Gebruik het tabblad Aanbiedingsvermelding in [Partnercentrum](https://partner.microsoft.com/dashboard/commercial-marketplace) om een koppeling toe te voegen onder de sectie **Nuttige koppelingen** naar de [Azure IoT Edge Certified-apparaatcatalogus](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/).
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Een subset van Tier 1-platforms die worden ondersteund door IoT Edge
 
-Uw module moet een subset (ten minste één) tier 1-platforms ondersteunen die worden ondersteund door IoT Edge (zoals opgenomen in [Azure IoT Edge-ondersteuning).](https://aka.ms/AzureIoTEdgesupport) Een module die deze platformoptie gebruikt, moet:
+Uw module moet een subset (ten minste één) tier 1-platforms ondersteunen die worden ondersteund door IoT Edge (zoals opgenomen in [Azure IoT Edge-ondersteuning).](https://docs.microsoft.com/azure/iot-edge/support) Een module die deze platformoptie gebruikt, moet:
 
 - Geef een nieuwste tag en een versietag (bijvoorbeeld 1.0.1) die manifesttags zijn die zijn gebouwd met de [GitHub-manifesttool](https://github.com/estesp/manifest-tool) als er meer dan één platform wordt ondersteund. Manifesttags zijn alleen optioneel wanneer één platform wordt ondersteund.
 - Gebruik het tabblad Aanbiedingsvermelding in [Partnercentrum](https://partner.microsoft.com/dashboard/commercial-marketplace) om een koppeling onder de sectie **Nuttige koppelingen** toe te voegen aan ten minste één IoT Edge-apparaat uit de [Azure IoT Edge Certified-apparaatcatalogus.](https://catalog.azureiotsolutions.com/)
@@ -146,4 +146,4 @@ Als u uw IoT Edge-module wilt uploaden naar Azure Marketplace, moet u deze eerst
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw IoT Edge-moduleaanbieding maken](https://aka.ms/AzureCreateIoT)
+- [Aanbieding voor IoT Edge-module maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)

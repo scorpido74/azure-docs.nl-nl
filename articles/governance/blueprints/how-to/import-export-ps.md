@@ -3,12 +3,12 @@ title: Blauwdrukken importeren en exporteren met PowerShell
 description: Meer informatie over het werken met uw blauwdrukdefinities als code. Deel, bronbeheer en beheer ze met behulp van de opdrachten exporteren en importeren.
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: dcdf48f8941198591b39d6cf89ec5e6dac7ba94c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677142"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686843"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Blauwdrukdefinities importeren en exporteren met PowerShell
 
@@ -88,7 +88,7 @@ De stappen voor het exporteren van uw blauwdrukdefinitie zijn eenvoudig. Het exp
 
 Zodra u een [geëxporteerde blauwdrukdefinitie](#export-your-blueprint-definition) hebt of een handmatig gemaakte blauwdrukdefinitie hebt in de [vereiste mapstructuur,](#folder-structure-of-a-blueprint-definition)u die blauwdrukdefinitie importeren in een andere beheergroep of abonnement.
 
-Zie de [Azure Blueprint GitHub repo](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins)voor voorbeelden van ingebouwde blauwdrukdefinities.
+Zie de [Azure Blueprint GitHub repo](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins)voor voorbeelden van ingebouwde blauwdrukdefinities.
 
 - **Naam** [vereist]
   - Hiermee geeft u de naam op voor de nieuwe blauwdrukdefinitie
@@ -121,8 +121,8 @@ Zie de volgende artikelen voor informatie over het maken van geavanceerde blauwd
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levenscyclus van de blauwdruk](../concepts/lifecycle.md).
-- Begrijpen hoe [statische en dynamische parameters](../concepts/parameters.md)te gebruiken.
-- Leer de volgorde van de [blauwdrukvolgorde](../concepts/sequencing-order.md)aan te passen.
-- Ontdek hoe u gebruik maken van het vergrendelen van [blauwdrukbronnen.](../concepts/resource-locking.md)
-- Los problemen op tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing.](../troubleshoot/general.md)
+- Meer informatie over de [levenscyclus van een blauwdruk](../concepts/lifecycle.md).
+- Meer informatie over hoe u [statische en dynamische parameters](../concepts/parameters.md) gebruikt.
+- Meer informatie over hoe u de [blauwdrukvolgorde](../concepts/sequencing-order.md) aanpast.
+- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../concepts/resource-locking.md).
+- Problemen oplossen tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing](../troubleshoot/general.md).

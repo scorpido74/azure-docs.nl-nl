@@ -4,12 +4,12 @@ description: Application Insights voert slimme analyse van uw app telemetrie uit
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671729"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687701"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Slimme detectie - Prestatieafwijkingen
 
@@ -71,7 +71,7 @@ E-mails over prestatieafwijkingen voor slimme detecties zijn beperkt tot één e
 
   * Nog niet, maar je kunt:
     * [Stel waarschuwingen in](../../azure-monitor/app/alerts.md) die u vertellen wanneer een statistiek een drempelwaarde overschrijdt.
-    * [Exporteer telemetrie](../../azure-monitor/app/export-telemetry.md) naar een [database](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) of [naar PowerBI,](../../azure-monitor/app/export-power-bi.md )waar u het zelf analyseren.
+    * [Exporteer telemetrie](../../azure-monitor/app/export-telemetry.md) naar een [database](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) of [naar Power BI,](../../azure-monitor/app/export-power-bi.md )waar u deze zelf analyseren.
 * *Hoe vaak wordt de analyse uitgevoerd?*
 
   * We voeren de analyse dagelijks uit op de telemetrie van de vorige dag (volledige dag in UTC-tijdzone).
@@ -125,11 +125,11 @@ De melding van de degradatievan de reactietijd vertelt u:
   * Profiel van profilerom u te helpen te zien waar de bewerkingstijd wordt besteed (de koppeling is beschikbaar als voorbeelden van Profiler-traces voor deze bewerking zijn verzameld tijdens de detectieperiode). 
   * Prestatierapporten in Metric Explorer, waar u het tijdbereik/filters voor deze bewerking segmenteren en inblokjesen.
   * Zoek naar deze oproep om specifieke oproepeigenschappen weer te geven.
-  * Foutrapporten - Als het aantal > 1 betekent dit dat er fouten in deze bewerking zijn die kunnen hebben bijgedragen aan prestatiedegradatie.
+  * Foutrapporten - Als het aantal > 1 betekent dit dat er fouten in deze bewerking zijn geweest die kunnen hebben bijgedragen aan prestatiedegradatie.
 
 ## <a name="dependency-duration-degradation"></a>Afhankelijkheidsduur degradatie
 
-Moderne toepassing meer en meer gebruik maken van micro-diensten ontwerp aanpak, die in veel gevallen leidt tot een hoge betrouwbaarheid op externe diensten. Bijvoorbeeld, als uw toepassing is gebaseerd op een gegevensplatform of zelfs als u uw eigen bot service die u zal waarschijnlijk relais op een aantal cognitieve dienstverlener om uw bots in staat stellen om te communiceren in meer menselijke manieren en sommige data store service voor bot om de antwoorden te trekken Van.  
+Moderne toepassingen hanteren steeds meer een ontwerpbenadering voor microdiensten, wat in veel gevallen leidt tot een hoge betrouwbaarheid van externe diensten. Bijvoorbeeld, als uw toepassing is gebaseerd op een gegevensplatform of zelfs als u uw eigen bot service die u zal waarschijnlijk relais op een aantal cognitieve dienstverlener om uw bots in staat stellen om te communiceren in meer menselijke manieren en sommige data store service voor bot om de antwoorden te trekken uit.  
 
 Melding van afhankelijkheidsdegradatie:
 
@@ -174,8 +174,8 @@ Wijzig het tijdsbereik en de filters om de telemetrie te verkennen.
 Met deze diagnostische hulpprogramma's u de telemetrie vanuit uw app inspecteren:
 
 * [Profiler](profiler.md) 
-* [Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md)
-* [Analytics](../../azure-monitor/log-query/get-started-portal.md)
+* [Momentopnamefoutopsporing](../../azure-monitor/app/snapshot-debugger.md)
+* [Analyse](../../azure-monitor/log-query/get-started-portal.md)
 * [Analytics slimme diagnostiek](../../azure-monitor/app/analytics.md)
 
 Slimme detecties zijn volledig automatisch. Maar misschien wilt u nog meer waarschuwingen instellen?

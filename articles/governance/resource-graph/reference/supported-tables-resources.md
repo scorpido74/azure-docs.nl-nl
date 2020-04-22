@@ -1,14 +1,14 @@
 ---
 title: Ondersteunde resourcemanager-resourcetypen
 description: Geef een lijst op met de resourcetypen Resource Manager die worden ondersteund door Azure Resource Graph en Wijzigingsgeschiedenis.
-ms.date: 04/15/2020
+ms.date: 04/20/2020
 ms.topic: reference
-ms.openlocfilehash: 99cb2176e4b0642be1fc31d49528ebf915ea440a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 99a10e084f8ae24156c447f7abca31a8ef977720
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415141"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685482"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Tabel en verwijzing naar resourcetype azure resourcegraph
 
@@ -50,7 +50,11 @@ Azure Resource Graph ondersteunt de volgende **resourcetypen** azure [resource b
 - livearena.broadcast/diensten
 - mailjet.email/services
 - microsoft.aad/domainservices
+- microsoft.aadiam/privatelinkforazuread
 - microsoft.aadiam/huurders
+- microsoft.aisupercomputer/accounts
+- microsoft.aisupercomputer/accounts/jobgroepen
+- microsoft.aisupercomputer/accounts/jobgroepen/jobs
 - microsoft.alertsmanagement/actieregels
 - microsoft.alertsmanagement/smartdetectoralertrules
 - microsoft.analysisservices/servers
@@ -63,6 +67,7 @@ Azure Resource Graph ondersteunt de volgende **resourcetypen** azure [resource b
 - microsoft.automation/automationaccounts/runbooks
 - microsoft.azconfig/configurationstores
 - microsoft.azureactivedirectory/b2cdirectories
+- microsoft.azuredata/datacontrollers
 - microsoft.azuredata/hybriddatamanagers
 - microsoft.azuredata/postgresinstances
 - microsoft.azuredata/sqlbigdataclusters
@@ -351,6 +356,7 @@ Azure Resource Graph ondersteunt de volgende **resourcetypen** azure [resource b
 - microsoft.remoteapp/verzamelingen
 - microsoft.resourcegraph/query's
 - microsoft.resources/deploymentscripts
+- microsoft.resources/templatespecs
 - microsoft.saas/applicaties
 - microsoft.scheduler/jobcollections
 - microsoft.search/searchservices
@@ -405,6 +411,7 @@ Azure Resource Graph ondersteunt de volgende **resourcetypen** azure [resource b
 - microsoft.visualstudio/account
 - microsoft.visualstudio/account/extensie
 - microsoft.visualstudio/account/project
+- microsoft.vmware/arczones
 - microsoft.vmwarecloudsimple/dedicatedcloudnodes
 - microsoft.vmwarecloudsimple/dedicatedcloudservices
 - microsoft.vmwarecloudsimple/virtualmachines
@@ -454,7 +461,6 @@ Azure Resource Graph ondersteunt de volgende **resourcetypen** azure [resource b
 
 ## <a name="securityresources"></a>beveiligingsresources
 
-- beoordeling metadata
 - microsoft.security/assessments
 - microsoft.security/assessments/subbeoordelingen
 - microsoft.security/prijzen

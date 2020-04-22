@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: 77c58bb8dfa7d21b108d2aa63e90142f66877fb7
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.date: 04/20/2020
+ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606513"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729142"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Rijtransformatie wijzigen in de toewijzingsgegevensstroom
 
@@ -48,10 +48,12 @@ Als het rijbeleid wijzigen werkt, moet de gegevensstroom naar een database of Co
 
 ![Rijgootsteen wijzigen](media/data-flow/alter-row2.png "Rijgootsteen wijzigen")
 
- Het standaardgedrag is om alleen inserts toe te staan. Als u updates, upserts of verwijderingen wilt toestaan, schakelt u het selectievakje in de gootsteen in dat overeenkomt met die voorwaarde. Als updates, upserts of, deletes zijn ingeschakeld, moet u opgeven op welke belangrijke kolommen in de gootsteen moeten worden gekoppeld.
+Het standaardgedrag is om alleen inserts toe te staan. Als u updates, upserts of verwijderingen wilt toestaan, schakelt u het selectievakje in de gootsteen in dat overeenkomt met die voorwaarde. Als updates, upserts of, deletes zijn ingeschakeld, moet u opgeven op welke belangrijke kolommen in de gootsteen moeten worden gekoppeld.
 
 > [!NOTE]
 > Als uw invoegsels, updates of upserts het schema van de doeltabel in de gootsteen wijzigen, mislukt de gegevensstroom. Als u het doelschema in uw database wilt wijzigen, kiest **u Tabel opnieuw maken** als tabelactie. Hiermee wordt uw tabel opnieuw weergegeven met de nieuwe schemadefinitie.
+
+De sink transformatie vereist ofwel een enkele sleutel of een reeks sleutels voor unieke rij identificatie in uw doel database. Voor SQL-sinks stelt u de toetsen in het tabblad sinksettings in. Voor CosmosDB stelt u de partitiesleutel in de instellingen in en stelt u ook het CosmosDB-systeemveld "id" in in uw sinkmapping. Voor CosmosDB is het verplicht om de systeemkolom "id" op te nemen voor updates, upserts en deletes.
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 

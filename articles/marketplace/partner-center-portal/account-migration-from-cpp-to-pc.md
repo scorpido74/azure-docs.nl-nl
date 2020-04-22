@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: e17a76d5a017400287644ad2da46caa5b6636654
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3979be6f49f4ad01a6092fc0d5aa767d342c4642
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262295"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730492"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Accountmigratie van Cloud Partner-portal naar het Partnercentrum
 
@@ -47,7 +47,7 @@ Klik op de banner om het migratieproces van uw account te starten. Er wordt van 
 
 Bedrijven die met Microsoft willen samenwerken, moeten lid worden van het Microsoft Partner Network (MPN) en een MPN-id krijgen. Als u al lid bent van het Microsoft Partner Network en een MPN-id hebt, houdt u de informatie bij de hand zoals u deze nodig hebt tijdens het activeringsproces van het account.  
 
-Als u geen lid bent van het Microsoft Partner Network, u [hier deelnemen](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/en-us/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new) om een MPN-id te krijgen. Noteer uw MPN-id als u deze moet invoeren tijdens het activeringsproces van het account.
+Als u geen lid bent van het Microsoft Partner Network, u [hier deelnemen](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new) om een MPN-id te krijgen. Noteer uw MPN-id als u deze moet invoeren tijdens het activeringsproces van het account.
 
 Zie Lid worden van het [Microsoft Partner Netwerk](https://partner.microsoft.com/en-US/membership) op de partnerwebsite voor meer informatie over het Microsoft Partner Netwerk. Zie de [ISV Resource Hub](https://partner.microsoft.com/isv-resource-hub)voor meer informatie over ISV-voordelen in het Microsoft Partner Network.  
 
@@ -61,7 +61,7 @@ Volg de onderstaande instructies voor specifieke informatie over wat er voor **1
 > Dit geldt niet voor dynamics 365 Business Central aanbiedingen.  
 
 1. Als uw MPN-lidmaatschapsaccount oorspronkelijk is gemaakt in het Partner Membership Center (PMC), meldt u zich aan bij [Partner Center](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) om te bevestigen dat uw account is gemigreerd. Als u een profielscherm met uw MPN-id ziet, u doorgaan. Als dit niet het zo is, moet u de migratie van uw account starten door de aanwijzingen in het [PartnerMembership Center te](https://partners.microsoft.com/partnerprogram/Welcome.aspx)volgen. Als je hulp nodig hebt, bezoek [ondersteuning](https://partner.microsoft.com/support?issueid=100-0077).
-2. Ga naar de [overzichtspagina Commerciële Marktplaats in partnercentrum.](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) Als u 'Commerciële marktplaats' in het linkernavigatiedeelvenster ziet, bent u ingeschreven en moet u doorgaan naar de volgende stap. Zo niet, schrijf je nu [in op de commerciële marktplaats.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)
+2. Ga naar de [overzichtspagina Commerciële Marktplaats in partnercentrum.](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) Als u 'Commerciële marktplaats' in het linkernavigatiedeelvenster ziet, bent u ingeschreven en moet u doorgaan naar de volgende stap. Zo niet, schrijf je nu [in op de commerciële marktplaats.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
 3. Controleer of uw aanbiedingen in AppSource staan door [te zoeken naar uw aanbiedingen.](https://appsource.microsoft.com/) Als uw aanbiedingen al in AppSource staan, gaat u verder met de volgende stap. Voor aanbiedingen die niet in AppSource staan, maakt u een [nieuwe Dynamics 365 Customer Engagement-aanbieding](create-new-customer-engagement-offer.md) of een [nieuwe Dynamics 365 Operations-aanbieding.](create-new-operations-offer.md)
 4. Zorg er op de [pagina Overeenkomsten](https://partner.microsoft.com/dashboard/account/agreements)van partnercentrum op dat u het **ISV-addendum voor zakelijke toepassingen**hebt beoordeeld en geaccepteerd.
 5. Controleer in de [accountinstellingen](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile)van het partnercentrum of uw factureringsgegevens volledig zijn.
@@ -73,10 +73,10 @@ Volg de onderstaande instructies voor specifieke informatie over wat er voor **1
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-Doe mee met de wekelijkse [Dynamics ISV-community-oproep](https://aka.ms/DynamicsISV-CommunityCall) voor ondersteuning en updates.
+Krijg hulp van experts en collega's in forums en ontdek blogs, webinars, video's, evenementen en meer bij [Microsoft Dynamics CRM.](https://community.dynamics.com/crm?wa=wsignin1.0)
 
-Als u hulp nodig hebt bij het publiceren, certificeren of beheren van uw marktplaatsaanbiedingen, [dient u een ondersteuningsticket in.](https://aka.ms/MarketplacePublisherSupport)
+Als u hulp nodig hebt bij het publiceren, certificeren of beheren van uw marktplaatsaanbiedingen, [dient u een ondersteuningsticket in.](https://partner.microsoft.com/support/v2/?stage=1)
 
-## <a name="next-steps"></a>Volgende stappen
+## <a name="next-step"></a>Volgende stap
 
 - [Uw commerciële marktplaatsaccount beheren in partnercentrum](./manage-account.md)

@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 5fec72ce5f86c1bee9ec0e978e458f5be454c8e3
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e061baa8e7eb73bae0a78f4215f0d48610e85fcb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256583"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686736"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Commerciële Marketplace-partner en toeschrijving van klantgebruik
 
@@ -31,7 +31,7 @@ Toeschrijving van klantgebruik ondersteunt drie implementatieopties:
 >
 >- Toeschrijving van klantgebruik is voor nieuwe implementaties en biedt geen ondersteuning voor het taggen van bestaande resources die al zijn geïmplementeerd.
 >
->- Toeschrijving van klantgebruik is vereist voor [Azure Application-aanbiedingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer) die zijn gepubliceerd op Azure Marketplace.
+>- Toeschrijving van klantgebruik is vereist voor [Azure Application-aanbiedingen](./partner-center-portal/create-new-azure-apps-offer.md) die zijn gepubliceerd op Azure Marketplace.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -83,7 +83,7 @@ Veel partneroplossingen worden geïmplementeerd met Azure Resource Manager-sjabl
 > [!NOTE]
 > Zie voor meer informatie over het maken en publiceren van oplossingssjablonen
 > * [Maak en implementeer uw eerste Resource Manager-sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
->* [Azure Application-aanbieding](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer).
+>* [Azure Application-aanbieding](./partner-center-portal/create-new-azure-apps-offer.md).
 >* Video: [Oplossingssjablonen en beheerde toepassingen voor de Azure Marketplace bouwen.](https://channel9.msdn.com/Events/Build/2018/BRK3603)
 
 

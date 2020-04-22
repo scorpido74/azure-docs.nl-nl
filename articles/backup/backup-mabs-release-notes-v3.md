@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over de bekende problemen en tijd
 ms.topic: conceptual
 ms.date: 11/22/2018
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: b47d83e0e3714f3f035397acaadeac9cda39d12a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03863f7598da06bb36cbb7497d7c773f811a004e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74172283"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685618"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Releasenotes voor Microsoft Azure Backup Server
 
@@ -60,7 +60,7 @@ In dit artikel worden de bekende problemen en tijdelijke oplossingen voor Micros
 4. [Installeren](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
 5. Configureer rapportage met behulp van de parameters zoals gedocumenteerd in [SSRS-configuratie met SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs).
 6. [Installeren](backup-azure-microsoft-azure-backup.md) MABS V3.
-7. [Herstellen](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL met Behulp van SSMS en voer DPM-Sync tool zoals [hier](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10))beschreven .
+7. [Herstellen](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL met Behulp van SSMS en voer DPM-Sync tool zoals [hier](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)beschreven .
 8. Werk de eigenschap 'DataBaseVersion' in de tabel dbo.tbl_DLS_GlobalSetting bij met de volgende opdracht:
 
 ```sql

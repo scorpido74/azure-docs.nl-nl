@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 05b166b2ec46900d9e3972025efb581d9619ec6a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: a1ec89dfd2dda91a10f2cc00b6ca4d9d7abbf032
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252608"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731141"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Leads van klanten van uw marketplace-aanbieding
 
@@ -96,7 +96,7 @@ De informatie van de klant wordt via meerdere velden verzonden. In het volgende 
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Waar kan ik hulp krijgen bij het instellen van mijn hoofdbestemming?
 
-U [hier](#connect-to-your-crm-system) documentatie vinden of een ondersteuningsticket indienen via aka.ms/marketplacepublishersupport selecteer vervolgens **'offer creatie'** → **uw type aanbieding** → **'lead management configuration'.**
+U [hier](#connect-to-your-crm-system) documentatie vinden of https://partner.microsoft.com/support/v2/?stage=1 een ondersteuningsticket indienen via **selecteer vervolgens 'aanbiedingscreatie'** → **uw type aanbieding** → **'leadmanagementconfiguratie'.**
 
 ### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>Moet ik een leadbestemming configureren om een aanbieding op de marktplaats te publiceren?
 
@@ -133,7 +133,7 @@ De Azure Blob-leadbestemming wordt niet langer ondersteund, zodat u klantleads m
 
 ### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Ik heb een e-mail ontvangen van Marketplace, waarom kan ik de lead niet vinden in mijn CRM?
 
-Het is mogelijk dat het e-maildomein van de eindgebruiker van .edu is. Om privacyredenen geven we geen persoonlijke identificeerbare informatie van .edu-domein door. Stuur een supportticket in via aka.ms/marketplacepublishersupport.
+Het is mogelijk dat het e-maildomein van de eindgebruiker van .edu is. Om privacyredenen geven we geen persoonlijke identificeerbare informatie van .edu-domein door. Stuur een supportticket in via https://partner.microsoft.com/support/v2/?stage=1.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Ik heb Azure Table geconfigureerd als mijn hoofdbestemming, hoe kan ik de leads bekijken?
 

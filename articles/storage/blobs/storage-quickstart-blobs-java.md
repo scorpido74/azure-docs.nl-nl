@@ -7,12 +7,12 @@ ms.date: 01/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c883653754e1f69d3b2d79b256d57a036c70b58e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 15e0eaaeb407ad22220faa7d085eea805fe62679
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78330133"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731348"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Snelstart: blobs beheren met Java v12 SDK
 
@@ -355,4 +355,4 @@ Ga verder met:
 > [Azure Blob-opslag SDK v12 Java-voorbeelden](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
 * Zie de Azure [SDK voor Java voor](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)meer informatie.
-* Ga voor zelfstudies, voorbeelden, quickstarts en andere documentatie naar [Azure voor Java-cloudontwikkelaars.](/azure/java/)
+* Ga voor zelfstudies, voorbeelden, quickstarts en andere documentatie naar [Azure voor Java-cloudontwikkelaars.](/azure/developer/java/)

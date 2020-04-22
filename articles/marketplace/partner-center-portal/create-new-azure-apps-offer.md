@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 6b7ca1f10744bf38137c57d94d796655946c31b3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: a62551b31c51836dfa50534ee6db907c8a4e111a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390347"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730622"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -64,7 +64,7 @@ Bekijk de volgende Azure-toepassingsdocumentatie, die Quickstarts, Tutorials en 
 * Zelfstudies:
 
     * [Definitiebestanden maken](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-    * [Een Marketplace-toepassing publiceren](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
+    * [Marketplace-toepassing publiceren](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
 
 * Monsters:
 
@@ -293,7 +293,7 @@ Dit plan moet beschikbaar worden gesteld in ten minste één cloud.
 
 Selecteer de optie **Openbaar Azure** om uw oplossing beschikbaar te maken voor klanten in alle openbare Azure-regio's met Marketplace-integratie.  Meer informatie over [geografische beschikbaarheid](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
-Selecteer de azure **government cloud-optie** om uw oplossing beschikbaar te maken in de [Azure Government Cloud](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome), een cloud voor overheidscommunity's met gecontroleerde toegang voor klanten uit de Amerikaanse federale, staats-, lokale of tribale en partners die in aanmerking komen om deze entiteiten te bedienen.  U, als uitgever, bent verantwoordelijk voor nalevingscontroles, beveiligingsmaatregelen en aanbevolen procedures om deze cloudcommunity te bedienen.  Azure Government maakt gebruik van fysiek geïsoleerde datacenters en netwerken (alleen in de VS).  Voordat u publiceert naar de [Azure Government,](https://aka.ms/azuregovpublish)raadt Microsoft u aan uw oplossing in de omgeving te testen en te valideren, omdat bepaalde eindpunten kunnen verschillen. Als u uw oplossing wilt fasen en testen, vraagt u een proefaccount aan via deze [link.](https://azure.microsoft.com/global-infrastructure/government/request/)
+Selecteer de azure **government cloud-optie** om uw oplossing beschikbaar te maken in de [Azure Government Cloud](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome), een cloud voor overheidscommunity's met gecontroleerde toegang voor klanten uit de Amerikaanse federale, staats-, lokale of tribale en partners die in aanmerking komen om deze entiteiten te bedienen.  U, als uitgever, bent verantwoordelijk voor nalevingscontroles, beveiligingsmaatregelen en aanbevolen procedures om deze cloudcommunity te bedienen.  Azure Government maakt gebruik van fysiek geïsoleerde datacenters en netwerken (alleen in de VS).  Voordat u publiceert naar de [Azure Government,](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)raadt Microsoft u aan uw oplossing in de omgeving te testen en te valideren, omdat bepaalde eindpunten kunnen verschillen. Als u uw oplossing wilt fasen en testen, vraagt u een proefaccount aan via deze [link.](https://azure.microsoft.com/global-infrastructure/government/request/)
 
 >[!Note]
 >Zodra een abonnement is gepubliceerd als beschikbaar in een specifieke cloud, kan die cloud niet worden verwijderd.

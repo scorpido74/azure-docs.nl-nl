@@ -11,14 +11,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 55a7c6e505d6d0c43319280bf7199805b108cd77
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9334cd0fa54212eac937742215f9c2e704a8bd9c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425082"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688019"
 ---
-# <a name="what-is-azure-key-vault"></a>Wat is Azure Sleutelkluis?
+# <a name="about-azure-key-vault"></a>Over Azure Key Vault
 
 Met Azure Key Vault kunt u de volgende problemen oplossen:
 
@@ -80,4 +80,7 @@ Key Vault zelf kan worden geïntegreerd met opslagaccounts, Event Hubs en logboe
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- Meer informatie over [sleutels, geheimen en certificaten](about-keys-secrets-certificates.md)
 - [Snelstart: Een Azure-sleutelkluis maken met behulp van de CLI](../secrets/quick-create-cli.md)
+- [Verificatie, aanvragen en antwoorden](../general/authentication-requests-and-responses.md)
+- [Gids voor Key Vault-ontwikkelaars](../general/developers-guide.md)

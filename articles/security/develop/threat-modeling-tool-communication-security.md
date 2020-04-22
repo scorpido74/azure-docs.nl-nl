@@ -16,23 +16,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 39ee0fa2dc973cd6c20756cae2024af79d1375dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1945025ff89a784908a1a3dffd2240172a6e2449
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294155"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687988"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Beveiligingskader: Communicatiebeveiliging | Mitigaties 
 | Product/service | Artikel |
 | --------------- | ------- |
 | **Azure Event Hub** | <ul><li>[Beveiligde communicatie naar Gebeurtenishub met SSL/TLS](#comm-ssltls)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Controleer de bevoegdheden van serviceaccount en controleer of de aangepaste Services of ASP.NET pagina's de beveiliging van CRM respecteren](#priv-aspnet)</li></ul> |
-| **Azure-gegevensfabriek** | <ul><li>[Gegevensbeheergateway gebruiken terwijl u on-premises SQL Server verbindt met Azure Data Factory](#sqlserver-factory)</li></ul> |
+| **Azure Data Factory** | <ul><li>[Gegevensbeheergateway gebruiken terwijl u on-premises SQL Server verbindt met Azure Data Factory](#sqlserver-factory)</li></ul> |
 | **Identiteitsserver** | <ul><li>[Ervoor zorgen dat al het verkeer naar de identiteitsserver via https-verbinding is](#identity-https)</li></ul> |
 | **Webtoepassing** | <ul><li>[X.509-certificaten verifiëren die worden gebruikt om SSL-, TLS- en DTLS-verbindingen te verifiëren](#x509-ssltls)</li><li>[SSL-certificaat configureren voor aangepast domein in Azure App Service](#ssl-appservice)</li><li>[Al het verkeer naar Azure App Service afdwingen via HTTPS-verbinding](#appservice-https)</li><li>[Http Strict Transport Security (HSTS) inschakelen](#http-hsts)</li></ul> |
 | **Database** | <ul><li>[Zorgen voor SQL-serververbindingsversleuteling en certificaatvalidatie](#sqlserver-validation)</li><li>[Versleutelde communicatie naar SQL-server forceren](#encrypted-sqlserver)</li></ul> |
-| **Azure Storage** | <ul><li>[Controleren of de communicatie met Azure Storage via HTTPS is](#comm-storage)</li><li>[MD5-hash valideren na het downloaden van blob als HTTPS niet kan worden ingeschakeld](#md5-https)</li><li>[SMB 3.0-compatibele client gebruiken om te zorgen voor versleuteling van gegevens in transitnaar Azure File Shares](#smb-shares)</li></ul> |
+| **Azure-opslag** | <ul><li>[Controleren of de communicatie met Azure Storage via HTTPS is](#comm-storage)</li><li>[MD5-hash valideren na het downloaden van blob als HTTPS niet kan worden ingeschakeld](#md5-https)</li><li>[SMB 3.0-compatibele client gebruiken om te zorgen voor versleuteling van gegevens in transitnaar Azure File Shares](#smb-shares)</li></ul> |
 | **Mobiele client** | <ul><li>[Certificaatvastmaken implementeren](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[HTTPS inschakelen - Secure Transport-kanaal](#https-transport)</li><li>[WCF: Beveiligingsniveau voor berichten instellen op EncryptAndSign](#message-protection)</li><li>[WCF: gebruik een account met de minste bevoegdheden om uw WCF-service uit te voeren](#least-account-wcf)</li></ul> |
 | **Web-API** | <ul><li>[Al het verkeer naar web-API's via HTTPS-verbinding forceren](#webapi-https)</li></ul> |
@@ -147,7 +147,7 @@ Deze regel werkt door een HTTP-statuscode van 301 (permanente omleiding) terug t
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [OWASP HTTP Strict Transport Security Cheat Sheet](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
+| **Verwijzingen**              | [OWASP HTTP Strict Transport Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html) |
 | **Stappen** | <p>HTTP Strict Transport Security (HSTS) is een opt-in beveiligingsverbetering die door een webtoepassing wordt opgegeven door het gebruik van een speciale reactieheader. Zodra een ondersteunde browser deze header ontvangt, voorkomt die browser dat berichten via HTTP naar het opgegeven domein worden verzonden en in plaats daarvan alle communicatie via HTTPS verzenden. Het voorkomt ook HTTPS klik door middel van prompts op browsers.</p><p>Om HSTS te implementeren, moet de volgende antwoordkop voor een website wereldwijd worden geconfigureerd, in code of in config. Strikte transportbeveiliging: max-leeftijd=300; includeSubDomains HSTS pakt de volgende bedreigingen aan:</p><ul><li>Gebruikersbladwijzers of handmatig `https://example.com` typen en is onderworpen aan een man-in-the-middle-aanvaller: HSTS stuurt automatisch HTTP-aanvragen door naar HTTPS voor het doeldomein</li><li>Webapplicatie die puur HTTPS-artikelen per ongeluk is, bevat HTTP-koppelingen of dient inhoud via HTTP: HSTS stuurt automatisch HTTP-aanvragen door naar HTTPS voor het doeldomein</li><li>Een man-in-the-middle-aanvaller probeert verkeer van een slachtoffergebruiker te onderscheppen met behulp van een ongeldig certificaat en hoopt dat de gebruiker het slechte certificaat accepteert: HSTS staat niet toe dat een gebruiker het ongeldige certificaatbericht overschrijft</li></ul>|
 
 ## <a name="ensure-sql-server-connection-encryption-and-certificate-validation"></a><a id="sqlserver-validation"></a>Zorgen voor SQL-serververbindingsversleuteling en certificaatvalidatie
@@ -181,7 +181,7 @@ Deze regel werkt door een HTTP-statuscode van 301 (permanente omleiding) terug t
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | [Versleuteling op transportniveau voor Azure-opslag – HTTPS gebruiken](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
-| **Stappen** | Als u de beveiliging van Azure Storage-gegevens onderweg wilt garanderen, gebruikt u altijd het HTTPS-protocol wanneer u de REST-API's aanroept of toegang krijgt tot objecten in de opslag. Ook shared access signatures, die kunnen worden gebruikt om toegang tot Azure Storage-objecten te delegeren, bevatten een optie om op te geven dat alleen het HTTPS-protocol kan worden gebruikt bij het gebruik van Gedeelde toegangshandtekeningen, zodat iedereen die koppelingen met SAS-tokens verzendt, wordt gebruikt het juiste protocol.|
+| **Stappen** | Als u de beveiliging van Azure Storage-gegevens onderweg wilt garanderen, gebruikt u altijd het HTTPS-protocol wanneer u de REST-API's aanroept of toegang krijgt tot objecten in de opslag. Ook shared access signatures, die kunnen worden gebruikt om toegang tot Azure Storage-objecten te delegeren, bevatten een optie om op te geven dat alleen het HTTPS-protocol kan worden gebruikt bij het gebruik van Gedeelde Toegangshandtekeningen, zodat iedereen die koppelingen met SAS-tokens verzendt, het juiste protocol gebruikt.|
 
 ## <a name="validate-md5-hash-after-downloading-blob-if-https-cannot-be-enabled"></a><a id="md5-https"></a>MD5-hash valideren na het downloaden van blob als HTTPS niet kan worden ingeschakeld
 
@@ -213,7 +213,7 @@ Deze regel werkt door een HTTP-statuscode van 301 (permanente omleiding) terug t
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen, Windows Phone |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Certificaat en openbare sleutel vastmaken](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
+| **Verwijzingen**              | [Certificaat en openbare sleutel vastmaken](https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning) |
 | **Stappen** | <p>Certificate pinning verdedigt tegen Man-In-The-Middle (MITM) aanvallen. Pinning is het proces van het associëren van een host met hun verwachte X509-certificaat of openbare sleutel. Zodra een certificaat of openbare sleutel bekend is of wordt gezien voor een host, wordt het certificaat of de openbare sleutel gekoppeld of 'vastgemaakt' aan de host. </p><p>Wanneer een tegenstander probeert SSL MITM-aanval uit te voeren, zal de sleutel van de server van de aanvaller tijdens de SSL-handshake dus afwijken van de sleutel van het `ServerCertificateValidationCallback` vastgemaakte certificaat en wordt het verzoek verwijderd, waardoor het vastzetten van mitm-certificaten kan worden voorkomen door de gemachtigde van ServicePointManager te implementeren.</p>|
 
 ### <a name="example"></a>Voorbeeld

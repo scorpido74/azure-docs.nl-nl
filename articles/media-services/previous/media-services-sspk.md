@@ -1,6 +1,6 @@
 ---
-title: Microsoft® Smooth Streaming Client Porting Kit licenties
-description: Meer informatie over het verlenen van licenties voor de Microsoft® Smooth Streaming Client Porting Kit.
+title: Microsoft&reg; Smooth Streaming Client Porting Kit licentieverlening
+description: Meer informatie over het&reg; verlenen van licenties voor de Microsoft Smooth Streaming Client Porting Kit.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 59ac3ab2e70bfa00f19bae7e551780f2b2bb8ccb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd77c53a195a9549f6aaad9ee2928206f5324b0c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096707"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686900"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Microsoft® Smooth Streaming Client Porting Kit licenties 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft&reg; Smooth Streaming Client Porting Kit licentieverlening 
 ## <a name="overview"></a>Overzicht
 Microsoft Smooth Streaming Client Porting Kit **(SSPK** voor kort) is een Smooth Streaming client implementatie die is geoptimaliseerd om embedded apparaat fabrikanten, kabel-en mobiele operators, content service providers, handset fabrikanten, onafhankelijke software leveranciers (ISV's), en solution providers om producten en diensten voor streaming adaptieve inhoud in Smooth Streaming formaat te creëren. SSPK is een apparaat- en platformonafhankelijke implementatie van Smooth Streaming-client die door de licentiehouder naar elk apparaat en platform kan worden geport. 
 
@@ -55,13 +55,13 @@ Microsoft Smooth Streaming Client Porting Kit wordt beschikbaar gesteld aan lice
 * Voor apparaatfabrikanten of ISV's die distributierechten nodig hebben voor smooth streaming client-eindproducten aan eindgebruikers, moet de **definitieve productlicentie** voor Microsoft Smooth Streaming Client Porting Kit worden uitgevoerd.
 
 ### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Microsoft Smooth Streaming Client Porting Kit Interim Product License
-Onder deze licentie biedt Microsoft een Smooth Streaming Client Porting Kit en de nodige intellectuele eigendomsrechten om Smooth Streaming Client Interim-producten te ontwikkelen en te distribueren naar andere licenties voor smooth streaming client porting kit die Smooth Streaming Client Final Products distribueren.
+Onder deze licentie biedt Microsoft een Smooth Streaming Client Porting Kit en de nodige intellectuele eigendomsrechten om Smooth Streaming Client Interim-producten te ontwikkelen en te distribueren naar andere Smooth Streaming Client Porting Kit-apparaatlicentiehouders die Smooth Streaming Client Final Products distribueren.
 
 #### <a name="fee-structure"></a>Vergoedingsstructuur
 Een amerikaanse licentievergoeding van $ 50.000 biedt toegang tot de Smooth Streaming Client Porting Kit. 
 
 ### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>Microsoft Smooth Streaming Client Porting Kit Final Product License
-Onder deze licentie biedt Microsoft alle benodigde intellectuele eigendomsrechten om Smooth Streaming Client Interim-producten van andere Smooth Streaming Client Porting Kit-licentiehouders te ontvangen en om smooth streaming client final van het bedrijf te distribueren Producten voor eindgebruikers.
+Onder deze licentie biedt Microsoft alle benodigde intellectuele eigendomsrechten om Smooth Streaming Client Interim-producten van andere Smooth Streaming Client Porting Kit-licentiehouders te ontvangen en om smooth streaming client-eindproducten van het bedrijf te distribueren naar eindgebruikers.
 
 #### <a name="fee-structure"></a>Vergoedingsstructuur
 Het Smooth Streaming Client Final Product wordt aangeboden onder een royaltymodel als onder:
@@ -73,7 +73,7 @@ Het Smooth Streaming Client Final Product wordt aangeboden onder een royaltymode
 ## <a name="licensing-procedure-and-sspk-access"></a>Licentieprocedure en SSPK-toegang
 E-mail [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) voor alle licentiequery's.
 
-Het [SSPK Distribution portal](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) is toegankelijk voor geregistreerde Interim licentiehouders.
+Het SSPK Distribution portal is toegankelijk voor geregistreerde Interim licentiehouders.
 
 Interim en Final SSPK licentiehouders [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)kunnen technische vragen stellen aan .
 

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: jingwang
-ms.openlocfilehash: c18d767afd3721bd6f6250058b9fbe66990133e4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7b554ea5c2868559574979c58697fd31f8d2a2c4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417739"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686268"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON-indeling in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -288,6 +288,8 @@ File3.json
     "json": "record 3"
 }
 ```
+> [!NOTE]
+> Als gegevensstromen een fout met de vermelding "corrupt_record" geven bij het bekijken van uw JSON-gegevens, is het waarschijnlijk dat uw gegevens één document in uw JSON-bestand bevatten. Als u 'enkel document' instelt, moet deze fout worden gewist.
 
 #### <a name="unquoted-column-names"></a>Niet-geciteerde kolomnamen
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Meer informatie over het instellen van continue integratie/continue implementatie met Azure DevOps met Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 66ff2080ad44098757a5d9360fd3307e65f7431a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75438446"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685633"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>CI/CD gebruiken met Azure Dev Spaces
 
@@ -99,7 +99,7 @@ Je hebt nu een CI-oplossing die automatisch *mywebapi* en *webfrontend* bouwt vo
 1. Kies voor de **standaardversie** **Laatste uit de standaardvertakking van de buildpijplijn met tags**.
 1. Tags **Tags** leeg laten.
 1. Stel de alias `drop` **Bron** in op . De waarde van de **bronalias** wordt gebruikt door de vooraf gedefinieerde releasetaken, zodat deze moet worden ingesteld.
-1. Klik op**toevoegen**.
+1. Klik op **Add**.
 1. Klik nu op het bliksemschichtpictogram op de nieuw gemaakte `drop` artefactbron, zoals hieronder wordt weergegeven:
 
     ![Instelling voor continue implementatie van artefacten vrijgeven](../media/common/release-artifact-cd-setup.png)
@@ -131,7 +131,7 @@ Er wordt nu een geautomatiseerd releaseproces gestart, waarbij de *mywebapi-* en
 De release wordt uitgevoerd wanneer alle taken zijn voltooid.
 
 > [!TIP]
-> Als uw release mislukt met een foutbericht zoals *UPGRADE MISLUKT: time-out wachten op de voorwaarde,* probeer dan de pods in uw cluster te inspecteren [met behulp van het Kubernetes-dashboard.](../../aks/kubernetes-dashboard.md) Als u ziet dat de pods niet beginnen met foutberichten zoals *Niet in staat om afbeelding "azdsexample.azurecr.io/mywebapi:122" te https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: trekken: rpc-fout: code = Onbekende desc = Foutreactie van daemon: Ongeautoriseerd worden: verificatie vereist,* kan zijn omdat uw cluster niet is geautoriseerd om uit uw Azure Container Registry te trekken. Zorg ervoor dat u het [AKS-cluster autoriseren dat u wilt ophalen uit uw azure-containerregistervereiste.](../../aks/cluster-container-registry-integration.md)
+> Als uw release mislukt met een foutbericht zoals *UPGRADE MISLUKT: time-out wachten op de voorwaarde,* probeer dan de pods in uw cluster te inspecteren [met behulp van het Kubernetes-dashboard.](../../aks/kubernetes-dashboard.md) Als u ziet dat de pods niet beginnen met foutberichten zoals *Niet in staat om afbeelding "azdsexample.azurecr.io/mywebapi:122" te trekken: rpc-fout: code = Onbekende desc = Foutreactie van daemon: Download https:\//azdsexample.azurecr.io/v2/mywebapi/manifests/122: ongeautoriseerd: verificatie vereist,* dit kan zijn omdat uw cluster niet is geautoriseerd om uit uw Azure Container Registry te halen. Zorg ervoor dat u het [AKS-cluster autoriseren dat u wilt ophalen uit uw azure-containerregistervereiste.](../../aks/cluster-container-registry-integration.md)
 
 U hebt nu een volledig geautomatiseerde CI/CD-pijplijn voor uw GitHub-voorvork van de voorbeeld-apps van Dev Spaces. Elke keer dat u commit en push code, de build pijplijn zal bouwen en duwen de *mywebapi* en *webfrontend* beelden om uw aangepaste ACR instantie. Vervolgens implementeert de releasepijplijn de Helm-grafiek voor elke app in _de dev-ruimte_ op uw cluster met Dev Spaces.
 

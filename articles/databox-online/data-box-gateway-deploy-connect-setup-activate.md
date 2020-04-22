@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: c2a0dde496d6af66387210ca9b2ebf9cb4bdae7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3cf4fd958202c28586b7c15932dc88a21d7c60f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79087939"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686864"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Zelfstudie: Azure Data Box Gateway verbinden, instellen, activeren
 
@@ -41,7 +41,7 @@ Voordat u uw Data Box Gateway configureert en instelt, moet u ervoor zorgen dat:
 
 1. Open een browservenster en krijg toegang tot de lokale webgebruikersinterface van het apparaat op:
    
-   [https://ip-address-of-network-interface](https://ip-address-of-network-interface)
+   https:\//ip-address-of-network-interface
    
    Gebruik de verbindings-URL die in de vorige zelfstudie is vermeld. U ziet een fout of een waarschuwing die aangeeft dat er een probleem is met het beveiligingscertificaat van de website.
 
@@ -139,7 +139,7 @@ De installatie van het apparaat is voltooid. Je nu aandelen toevoegen op je appa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Verbinding maken met een virtueel apparaat

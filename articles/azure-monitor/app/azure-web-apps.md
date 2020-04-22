@@ -3,12 +3,13 @@ title: Prestaties azure-app-services bewaken | Microsoft Documenten
 description: Toepassingsprestatiebewaking voor Azure-app-services. Laad- en responstijd in grafieken, afhankelijkheidsgegevens en stel waarschuwingen in op prestaties.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom: fasttrack-edit
+ms.openlocfilehash: dd0d3be6ed7e5185183618cc2bdeff5ee8d749f3
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437201"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729793"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service-prestaties bewaken
 
@@ -55,15 +56,16 @@ Er zijn twee manieren om toepassingsbewaking voor gehoste Azure-toepassingen in 
 2. Nadat u hebt opgegeven welke resource u wilt gebruiken, u kiezen hoe u wilt dat toepassingsinzichten gegevens verzamelen per platform voor uw toepassing. ASP.NET app-monitoring is standaard met twee verschillende niveaus van verzameling.
 
     ![Opties per platform kiezen](./media/azure-web-apps/choose-options-new.png)
-
-   * .NET **Basic collectie** niveau biedt essentiële single-instance APM mogelijkheden.
-
-   * .NET **Aanbevolen verzamelingsniveau:**
-       * Hiermee voegt u CPU-, geheugen- en I/O-gebruikstrends toe.
-       * Correleert microservices over de grenzen van aanvraag/afhankelijkheid.
-       * Verzamelt gebruikstrends en maakt correlatie mogelijk van beschikbaarheidsresultaten naar transacties.
-       * Verzamelt uitzonderingen die niet zijn afgehandeld door het hostproces.
-       * Verbetert de nauwkeurigheid van apm-statistieken onder belasting wanneer steekproeven worden gebruikt.
+ 
+ Hieronder vindt u een overzicht van de gegevens die voor elke route zijn verzameld:
+        
+|  | .NET Basisverzameling | Aanbevolen .NET-verzameling |
+| --- | --- | --- |
+| Voegt trends toe voor CPU, geheugen en I/O-gebruik |Ja |Ja |
+| Verzamelt gebruikstrends en maakt correlatie mogelijk van beschikbaarheidsresultaten tot transacties | Ja |Ja |
+| Verzamelt uitzonderingen die niet zijn verwerkt door het hostproces | Ja |Ja |
+| Verbetert de nauwkeurigheid van metrische APM-gegevens onder belasting, wanneer steekproeven worden gebruikt | Ja |Ja |
+| Correleert microservices over aanvraag-/afhankelijkheidsgrenzen | Nee (alleen APM-mogelijkheden met één instantie) |Ja |
 
 3. Om instellingen zoals sampling te configureren, die u eerder via het bestand applicationinsights.config kon beheren, u nu met dezelfde instellingen communiceren via toepassingsinstellingen met een bijbehorend voorvoegsel. 
 

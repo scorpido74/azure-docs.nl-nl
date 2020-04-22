@@ -4,12 +4,12 @@ description: Aanvragen verifiëren en de Azure Monitor REST API gebruiken om bes
 ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.openlocfilehash: f52776fc6b5f5f530cc368a2f148a2ff63fb5b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b0e321747e0f84be5a75ab96749311ff0071e8d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294623"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687415"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure Monitoring REST API-walkthrough
 
@@ -311,7 +311,7 @@ Gebruik de naam 'waarde' van de statistiek (niet de 'gelokaliseerde waarde') voo
 
 **Methode**: GET
 
-**Aanvraag**URI https://management.azure.com/subscriptions/: *{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metricnames=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&interval=*{timeGrain}*&aggregatie=*{aggreation}*&api-versie=*{Version api}*
+**Aanvraag URI**:\/https: https: https: /management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name} {resource-name}*/providers/microsoft.insights/metrics?metricnames=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&interval=*{timeGrain}*&aggregatie=*{aggreation}*&api-version=*{apiVersion}*
 
 Als u bijvoorbeeld de top 3 API's, in dalende waarde, wilt ophalen met het aantal 'Transacties' tijdens een bereik van 5 min, waarbij het GeotType 'Primair' was, is de aanvraag als volgt:
 
@@ -463,7 +463,7 @@ Zodra de beschikbare metrische definities bekend zijn, is het mogelijk om de ger
 
 **Methode**: GET
 
-**Vraag URI:**`https://management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
+**Vraag URI:**`https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
 
 Als u bijvoorbeeld de metrieke gegevenspunten uitgevoerd geslaagd voor het opgegeven tijdsbereik wilt ophalen en gedurende een tijdskorrel van 1 uur, is de aanvraag als volgt:
 

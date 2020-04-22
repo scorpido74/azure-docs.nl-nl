@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: d6ac5961cbecf4e81c0b6bcc25c39aad42b18416
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429835"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686195"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Service-to-service-verificatie naar Azure Key Vault met .NET
 
@@ -88,7 +88,7 @@ Ga als een gebruik van Azure CLI:
 
 1. Meld u aan bij de Azure-portal: *az-aanmelding* om u aan te melden bij Azure.
 
-1. Controleer de toegang door het invoeren *van https://vault.azure.netaz-account get-access-token --resource *. Als u een fout ontvangt, controleert u of de juiste versie van Azure CLI correct is geïnstalleerd.
+1. Controleer de toegang door het invoeren *van az-account get-access-token --resource https:\//vault.azure.net*. Als u een fout ontvangt, controleert u of de juiste versie van Azure CLI correct is geïnstalleerd.
 
    Als Azure CLI niet is geïnstalleerd in de standaardmap, `AzureServiceTokenProvider` ontvangt u mogelijk een foutrapportage die het pad voor Azure CLI niet kan vinden. Gebruik de **azureclipath-omgevingsvariabele** om de azure CLI-installatiemap te definiëren. `AzureServiceTokenProvider`hiermee wordt de map toegevoegd die is opgegeven in de **azureclipath-omgevingsvariabele** aan de variabele **Pad-omgeving** wanneer dat nodig is.
 

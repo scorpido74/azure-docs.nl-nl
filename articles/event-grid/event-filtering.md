@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce1bb3760ae73a9eaeee3cde957cc94841ebdf29
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70390181"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731943"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Inzicht in gebeurtenisfiltering voor eventgrid-abonnementen
 
@@ -59,7 +59,7 @@ Als u wilt filteren op waarden in de gegevensvelden en de vergelijkingsoperator 
 
 * type operator - Het type vergelijking.
 * toets - Het veld in de gebeurtenisgegevens die u gebruikt voor het filteren. Het kan een getal zijn, booleaanof touw.
-* waarde of waarden - De waarde of waarden die moeten worden vergeleken met de sleutel.
+* waarden - De waarde of waarden die moeten worden vergeleken met de sleutel.
 
 Als u één filter met meerdere waarden opgeeft, wordt een **OK-bewerking** uitgevoerd, zodat de waarde van het sleutelveld een van deze waarden moet zijn. Hier volgt een voorbeeld:
 

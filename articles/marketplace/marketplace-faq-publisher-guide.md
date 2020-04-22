@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/4/2019
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a142ce3c082f6f9a53287885ba347fc78f77718
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: da324e1e1a40e515cac4b26d6c9f8661f344e1d7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262023"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687607"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Veelgestelde vragen over de commerciële marketplace van Microsoft
 
@@ -57,7 +57,7 @@ Met Azure Marketplace kunnen klanten technische toepassingen ontdekken die zijn 
 Azure Marketplace-aanbiedingen kunnen worden gekocht via:
 
 * [De web-based storefront](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [De Azure-portal Azure-portal van Azure][Azure portal]
+* [De Azure-portal] [Azure-portal]
 * [De Azure Command Line Interface (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -127,7 +127,7 @@ Azure-abonnement is inbegrepen bij de serviceprijzen van de onafhankelijke softw
 
 + *Per gebruiker:* SaaS-abonnementen kunnen per gebruiker worden geprijsd en worden maandelijks of jaarlijks gefactureerd. 
 
-Aanbiedingsspecifieke prijsdetails zijn te vinden op [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) de pagina met oplossingsdetails op of binnen de [Azure-portal.]
+Aanbiedingsspecifieke prijsdetails zijn te vinden op [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) de pagina met oplossingsdetails op of binnen de [Azure-portal].
 
 > [!Note]
 > Behalve voor maandelijkse kosten zijn Azure-gebruikskosten van toepassing op alle prijsmodellen, tenzij anders vermeld.
@@ -180,7 +180,7 @@ Nee. De uitgever die eigenaar is van oplossingen in Azure Marketplace kan prijze
 
 **Waar kan ik mijn Azure Marketplace-abonnementsgegevens en factureringsgegevens bekijken?**
 
-MOSP - Klanten [van het Microsoft Online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web direct) kunnen de aankoopgegevens van Marketplace bekijken op het tabblad Facturen van het gedeelte Kostenbeheer + Facturering van de [Azure-portal].
+MOSP - Klanten [van het Microsoft Online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web Direct) kunnen de aankoopgegevens van Marketplace bekijken op het tabblad Facturen van het gedeelte Kostenbeheer + Facturering van de [Azure-portal].
 
 EA-klanten (Enterprise Agreement) kunnen de aankoopgegevens van Marketplace bekijken op het tabblad Facturen van het gedeelte Kostenbeheer + Facturering van de [Azure-portal].
 
@@ -208,7 +208,7 @@ Als u andere services die vanuit de Azure Marketplace zijn aangeschaft, wilt mig
 
 **Hoe kom ik erachter hoeveel van mijn Azure Marketplace-aankoop ik heb gebruikt?**
 
-Een geschatte gebruiksinformatie is te vinden in de [Azure-portal.] Dergelijke geschatte gebruiksinformatie omvat mogelijk geen recente activiteiten en kan gebaseerd zijn op prognoses die zijn afgeleid van het verbruik in het verleden. Tijdens de openbare preview is deze mogelijkheid mogelijk niet beschikbaar voor alle aankopen en kan deze variëren op basis van het producttype.
+Een geschatte gebruiksinformatie is te vinden in de [Azure-portal]. Dergelijke geschatte gebruiksinformatie omvat mogelijk geen recente activiteiten en kan gebaseerd zijn op prognoses die zijn afgeleid van het verbruik in het verleden. Tijdens de openbare preview is deze mogelijkheid mogelijk niet beschikbaar voor alle aankopen en kan deze variëren op basis van het producttype.
 
 ### <a name="customer-support"></a>Klantondersteuning
 
@@ -307,7 +307,7 @@ Er zijn geen publicatiekosten bij het uploaden van een lijst-, proef- of BYOL-op
 
 **Zijn er transactiekosten voor aankopen via Azure Marketplace?**
 
-Wanneer de oplossingslicentie via Azure Marketplace wordt aangeschaft, worden de inkomsten voor de softwarelicentie verdeeld tussen de uitgever en Microsoft.  Dit gebeurt in overeenstemming met de algemene voorwaarden van de [Marketplace Publisher Agreement.](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf) Bovendien kosten oplossingen met BYOL-uitgevers (Bring Your Own License) geen transactiekosten.
+Wanneer de oplossingslicentie via Azure Marketplace wordt aangeschaft, worden de inkomsten voor de softwarelicentie verdeeld tussen de uitgever en Microsoft.  Dit gebeurt in overeenstemming met de algemene voorwaarden van de [Marketplace Publisher Agreement.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) Bovendien kosten oplossingen met BYOL-uitgevers (Bring Your Own License) geen transactiekosten.
 
 **Wat is een standaardcontract?**
 
@@ -335,7 +335,7 @@ Leads zijn klanten die uw producten implementeren via de Marketplace. Of uw prod
 
 **Waar kan ik hulp krijgen bij het instellen van mijn hoofdbestemming?**
 
-Lees meer in de documentatie [van Klantenleads](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) van [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) het Partnercentrum of stuur een ondersteuningsticket door door uw aanbiedingstype en leadbeheer te selecteren.
+Lees meer in de documentatie [van Klantenleads](./partner-center-portal/commercial-marketplace-get-customer-leads.md) van [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) het Partnercentrum of stuur een ondersteuningsticket door door uw aanbiedingstype en leadbeheer te selecteren.
 
 **Moet ik een leadbestemming configureren om een aanbieding op Marketplace te publiceren?**
 
@@ -343,7 +343,7 @@ Ja, als u een **Contact Mij,** **SaaS-app**of **adviesservices** aanbiedt, publi
 
 **Hoe kan ik bevestigen dat de leadconfiguratie correct is?**
 
-Na het voltooien van de aanbieding en het instellen van een hoofdbestemming, kan de aanbieding correct worden gepubliceerd in [partnercentrum.](https://cloudpartner.azure.com/) Voordat de aanbieding live gaat, u valideren of de leadconfiguratieset-up correct werkt.  Stuur een testlead naar de hoofdbestemming die in de aanbieding is geconfigureerd.
+Na het voltooien van de aanbieding en het instellen van een hoofdbestemming, kan de aanbieding correct worden gepubliceerd in [partnercentrum.](https://partner.microsoft.com/) Voordat de aanbieding live gaat, u valideren of de leadconfiguratieset-up correct werkt.  Stuur een testlead naar de hoofdbestemming die in de aanbieding is geconfigureerd.
 
 **In welke landen/regio's is Azure Marketplace beschikbaar voor uitgevers om uit te verkopen?**
 
@@ -353,13 +353,13 @@ Uitgevers die zijn gevestigd in de volgende landen/regio's kunnen momenteel verk
 
 *Virtuele machine & Azure-apps:*
 
-1. Meld u aan bij [Partner Center](https://cloudpartner.azure.com/).
+1. Meld u aan bij [Partner Center](https://partner.microsoft.com/).
 1. Selecteer de aanbieding op het tabblad **Alle aanbiedingen.**
 1. Selecteer in het deelvenster aan de linkerkant van het scherm het tabblad **SKU's.**
 1. Selecteer de SKU voor verwijdering en klik op de knop **Verwijderen** voor die SKU.
 1. [Publiceer](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) de aanbieding opnieuw naar Azure Marketplace.
 
-Zie [Een aanbieding verwijderen](./cloud-partner-portal/manage-offers/cpp-delete-offer.md)voor meer informatie.
+Zie [een aanbieding bijwerken](./partner-center-portal/update-existing-offer.md)voor meer informatie.
 
 *Web Apps (SaaS-apps, add-ons) & Consulting Services:*
 
@@ -392,7 +392,7 @@ Ga naar [Microsoft GTM Services](https://partner.microsoft.com/reach-customers/g
 
 **Waar worden Azure Marketplace-oplossingen gepromoot binnen Microsoft-webeigenschappen?**
 
-Azure Marketplace-oplossingen zijn beschikbaar in de Microsoft [Azure-portal]en [de Azure Marketplace-website.](https://azuremarketplace.microsoft.com/marketplace/) Cloudontwikkelaars en IT-professionals die Azure gebruiken, hebben elke keer dat ze zich aanmelden blootstelling aan partneroplossingen. Een subset van partneroplossingen wordt ook getoond en gedraaid op de pagina [Azure Marketplace-startpagina](https://azuremarketplace.microsoft.com/marketplace) en [Azure-oplossingen.](https://azure.microsoft.com/solutions/)
+Azure Marketplace-oplossingen zijn beschikbaar in de Microsoft [Azure-portal] en [Azure Marketplace-website.](https://azuremarketplace.microsoft.com/marketplace/) Cloudontwikkelaars en IT-professionals die Azure gebruiken, hebben elke keer dat ze zich aanmelden blootstelling aan partneroplossingen. Een subset van partneroplossingen wordt ook getoond en gedraaid op de pagina [Azure Marketplace-startpagina](https://azuremarketplace.microsoft.com/marketplace) en [Azure-oplossingen.](https://azure.microsoft.com/solutions/)
 
 ### <a name="billing-and-payments"></a>Facturering en betalingen
 
@@ -474,6 +474,3 @@ Ja, op uw verzoek via een ondersteuningsticket verwerkt Microsoft credits aan uw
 ## <a name="next-steps"></a>Volgende stappen
 
 Ga naar de pagina [gidsgids voor commerciële marktplaatsen.](/azure/marketplace/marketplace-publishers-guide)
-
-
-[Azure Portal]: https://portal.azure.com
