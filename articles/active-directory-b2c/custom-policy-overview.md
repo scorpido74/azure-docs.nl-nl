@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f18f44208b97ab5bc8d9cd9ff01d604c62deb963
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246043"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678163"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Aangepast beleid in Azure Active Directory B2C
 
@@ -43,7 +43,9 @@ Deze drie typen beleidsbestanden worden gebruikt:
 - **Extensiesbestand** - bevat de unieke configuratiewijzigingen voor uw tenant.
 - **Relying Party (RP) bestand** - De enkele taak-gericht bestand dat rechtstreeks wordt aangeroepen door de toepassing of dienst (ook wel bekend als een Relying Party). Elke unieke taak vereist zijn eigen RP en afhankelijk van de merkvereisten kan het aantal 'totaal aantal toepassingen x totaal aantal use cases' zijn.
 
-Gebruikersstromen in Azure AD B2C volgen het bovenstaande patroon met drie bestanden, maar de ontwikkelaar ziet alleen het RP-bestand, terwijl de Azure-portal wijzigingen aanbrengt in de achtergrond van het extensiesbestand.
+Gebruikersstromen in Azure AD B2C volgen het hierboven afgebeelde bestandspatroon, maar de ontwikkelaar ziet alleen het RP-bestand, terwijl de Azure-portal wijzigingen aanbrengt in het extensiebestand.
+
+Hoewel er drie soorten beleidsbestanden zijn, bent u niet beperkt tot slechts drie bestanden. U meerdere bestanden van elk bestandstype hebben. Als u bijvoorbeeld geen wijzigingen wilt aanbrengen in uw extensiesbestand, u een Extensions2-bestand maken om het bestand Extensies verder uit te breiden.
 
 ## <a name="custom-policy-core-concepts"></a>Kernconcepten op maat beleid
 
@@ -55,7 +57,7 @@ De CIAM-service (Customer Identity and Access Management) in Azure omvat:
 
 Azure AD B2C werkt samen met identiteitsproviders, gebruikers, andere systemen en met de lokale gebruikersmap om een identiteitstaak te bereiken. Meld u bijvoorbeeld aan bij een gebruiker, registreer een nieuwe gebruiker of stel een wachtwoord opnieuw in. Het Identity Experience Framework en een beleid (ook wel een gebruikersreis of een vertrouwenskaderbeleid genoemd) stelt vertrouwensrelatie van meerdere partijen vast en definieert expliciet de actoren, de acties, de protocollen en de volgorde van de stappen die moeten worden voltooid.
 
-Het Identity Experience Framework is een volledig configureerbaar, beleidsgestuurd, cloudgebaseerd Azure-platform dat vertrouwen orkestreert tussen entiteiten in standaardprotocolformaten zoals OpenID Connect, OAuth, SAML en een paar niet-standaardplatformen, bijvoorbeeld REST API-gebaseerde system-to-system claims uitwisselingen. Het framework creëert gebruiksvriendelijke, witgelabelde ervaringen die HTML en CSS ondersteunen.
+Het Identity Experience Framework is een volledig configureerbaar, beleidsgestuurd, cloudgebaseerd Azure-platform dat vertrouwen orkestreert tussen entiteiten in standaardprotocolformaten zoals OpenID Connect, OAuth, SAML en een paar niet-standaardplatformen, bijvoorbeeld REST API-gebaseerde systeem-naar-systeem claims uitwisselingen. Het framework creëert gebruiksvriendelijke, witgelabelde ervaringen die HTML en CSS ondersteunen.
 
 Een aangepast beleid bestaat uit een of meer XML-bestanden die in een hiërarchische keten naar elkaar verwijzen. De XML-elementen definiëren onder andere het claimschema, claimstransformaties, inhoudsdefinities, claimproviders, technische profielen en orchestration-stappen voor gebruikersreizen. Een aangepast beleid is toegankelijk als een of meer XML-bestanden die worden uitgevoerd door het Identity Experience Framework wanneer het wordt aangeroepen door een relying party. Ontwikkelaars die aangepaste beleidsregels configureren, moeten de vertrouwde relaties zorgvuldig definiëren om metagegevenseindpunten, exacte definities van claimsuitwisseling en geheimen, sleutels en certificaten configureren als dat nodig is voor elke identiteitsprovider.
 

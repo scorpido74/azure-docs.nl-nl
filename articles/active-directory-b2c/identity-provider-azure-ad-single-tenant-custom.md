@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5a6c85ebed7271655745de45694542fb359836e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be3a7a3ce4ce3a06398436058ea5d4d935ef5a5c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188407"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678096"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelding instellen met een Azure Active Directory-account met aangepaste beleidsregels in Azure Active Directory B2C
 
@@ -28,40 +28,8 @@ In dit artikel ziet u hoe u aanmelding inschakelt voor gebruikers uit een Azure 
 
 Voer de stappen uit in [Aan de slag met aangepast beleid in Azure Active Directory B2C](custom-policy-get-started.md).
 
-## <a name="register-an-application"></a>Een toepassing registreren
 
-Als u aanmelding wilt inschakelen voor gebruikers van een specifieke Azure AD-organisatie, moet u een toepassing registreren binnen de azure AD-tenant van de organisatie Azure.
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zorg ervoor dat u de map gebruikt die uw Azure AD-tenant voor de organisatie bevat (bijvoorbeeld contoso.com). Selecteer het **filter Directory + abonnement** in het bovenste menu en kies vervolgens de map met uw Azure AD-tenant.
-1. Kies **Alle services** in de linkerbovenhoek van de Azure-portal en zoek en selecteer **app-registraties**.
-1. Selecteer **Nieuwe registratie**.
-1. Voer een **naam** in voor uw toepassing. Bijvoorbeeld `Azure AD B2C App`.
-1. Accepteer de standaardselectie van **accounts in deze organisatiemap alleen** voor deze toepassing.
-1. Accepteer voor de **URI-omleiding**de waarde van **web**en voer de `your-B2C-tenant-name` volgende URL in alle kleine letters in, waarbij de naam van uw Azure AD B2C-tenant wordt vervangen.
-
-    ```
-    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
-    ```
-
-    Bijvoorbeeld `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
-
-1. Selecteer **Registreren**. Neem de **toepassings-id (client) op** voor gebruik in een latere stap.
-1. Selecteer **Certificaten & geheimen**en selecteer Vervolgens Nieuw **clientgeheim**.
-1. Voer een **beschrijving** voor het geheim in, selecteer een vervaldatum en selecteer **Toevoegen**. Noteer de **waarde** van het geheim voor gebruik in een latere stap.
-
-## <a name="configuring-optional-claims"></a>Optionele claims configureren
-
-Als u de `family_name` claims `given_name` en claims van Azure AD wilt ophalen, u optionele claims voor uw toepassing configureren in de gebruikersinterface of toepassingslijst van Azure portal. Zie [Optionele claims voor uw Azure AD-app voor](../active-directory/develop/active-directory-optional-claims.md)meer informatie.
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Zoek naar **Azure Active Directory** en selecteer deze optie.
-1. Selecteer **app-registraties**in de sectie **Beheren** .
-1. Selecteer de toepassing waarvoor u optionele claims wilt configureren in de lijst.
-1. Selecteer **tokenconfiguratie (voorbeeld)** in de sectie **Beheren** .
-1. Selecteer **Optionele claim toevoegen**.
-1. Selecteer het tokentype dat u wilt configureren.
-1. Selecteer de optionele claims die u wilt toevoegen.
-1. Klik op**toevoegen**.
+[!INCLUDE [active-directory-b2c-identity-provider-azure-ad](../../includes/active-directory-b2c-identity-provider-azure-ad.md)]
 
 ## <a name="create-a-policy-key"></a>Een beleidssleutel maken
 

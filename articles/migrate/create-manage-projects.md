@@ -2,13 +2,13 @@
 title: Azure Migrate-projecten maken en beheren
 description: Projecten zoeken, maken, beheren en verwijderen in Azure Migreren.
 ms.topic: how-to
-ms.date: 02/17/2020
-ms.openlocfilehash: a49595f0580e71048239d5c5d8f4d1a66e24fe6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269638"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676393"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate-projecten maken en beheren
 
@@ -23,7 +23,7 @@ De eerste keer dat u Azure Migrate instelt, maakt u een project en voegt u een b
 
 Als u al een Azure Migrate-project hebt en u een extra project wilt maken, gaat u als volgt te werk:  
 
-1. Zoek in de [Azure-portal](https://portal.azure.com)naar **Azure Migrate**.
+1. Zoek in de [openbare Azure-portal](https://portal.azure.com) of [Azure Government](https://portal.azure.us)naar Azure **Migreren**.
 2. Selecteer **wijzigen** in de rechterbovenhoek in het Azure Migrate-dashboard **> servers.**
 
    ![Azure-project migreren wijzigen](./media/create-manage-projects/switch-project.png)

@@ -1,6 +1,6 @@
 ---
-title: Diagnose Linux Hybrid Runbook Worker - Azure Update Management
-description: Meer informatie over het oplossen en oplossen van problemen met de Azure Automation Hybrid Runbook Worker op Linux die Updatebeheer ondersteunt.
+title: Problemen met Linux-updateagentoplossen in Azure Automation Update Management
+description: Meer informatie over het oplossen en oplossen van problemen met de Linux Windows-updateagent met behulp van de updatebeheeroplossing.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bba1c7e89a9c3bb1c9aa1567e36dd71a40f14636
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278296"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679059"
 ---
-# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>De status van Linux Hybrid Runbook Worker voor UpdateManagement begrijpen en oplossen
+# <a name="troubleshoot-linux-update-agent-issues"></a>Problemen met Linux-updateagentoplossen
 
-Er kunnen vele redenen zijn waarom uw machine niet **Ready** weergeeft in Updatebeheer. In Updatebeheer u de status van een hybride runbookworker-agent controleren om het onderliggende probleem te bepalen. In dit artikel wordt besproken hoe u de probleemoplosser voor Azure-machines uitvoeren vanuit de Azure-portal en niet-Azure-machines in het [offlinescenario.](#troubleshoot-offline)
+Er kunnen vele redenen zijn waarom uw machine niet als klaar (gezond) wordt weergegeven in Update Management. In Updatebeheer u de status van een hybride runbookworker-agent controleren om het onderliggende probleem te bepalen. In dit artikel wordt besproken hoe u de probleemoplosser voor Azure-machines uitvoeren vanuit de Azure-portal en niet-Azure-machines in het [offlinescenario.](#troubleshoot-offline) 
 
 De volgende lijst zijn de drie gereedheidstoestanden waarin een machine zich kan bevinden:
 
-* **Klaar** - De hybride runbook worker is geïmplementeerd en is minder dan 1 uur geleden voor het laatst gezien.
-* **Losgekoppeld** - De hybride runbookworker wordt geïmplementeerd en is meer dan 1 uur geleden voor het laatst gezien.
-* **Niet geconfigureerd** - De hybride runbookworker is niet gevonden of is nog niet klaar met instappen.
+* Klaar - De hybride runbook worker is geïmplementeerd en is minder dan 1 uur geleden voor het laatst gezien.
+* Losgekoppeld - De hybride runbookworker wordt geïmplementeerd en is meer dan 1 uur geleden voor het laatst gezien.
+* Niet geconfigureerd - De hybride runbookworker is niet gevonden of is nog niet klaar met instappen.
 
 > [!NOTE]
-> Er kan een kleine vertraging optreden tussen wat de Azure-portal weergeeft en de huidige status van de machine.
+> Er kan een kleine vertraging optreden tussen wat de Azure-portal weergeeft en de huidige status van een machine.
 
 ## <a name="start-the-troubleshooter"></a>De probleemoplosser starten
 
-Klik voor Azure-machines op de koppeling **Problemen oplossen** onder de kolom **Gereedheid bijwerken** in de portal en start de pagina Problemen met **updateagent.** Voor niet-Azure-machines brengt de koppeling u naar dit artikel. Zie de offline instructies om problemen op te lossen voor een niet-Azure-machine.
+Klik voor Azure-machines op de koppeling **Problemen oplossen** onder de kolom **Gereedheid bijwerken** in de portal en start de pagina Problemen met updateagent. Voor niet-Azure-machines brengt de koppeling u naar dit artikel. Zie de offline instructies om problemen op te lossen voor een niet-Azure-machine.
 
 ![vm-lijstpagina](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
-> De controles vereisen dat de VM wordt uitgevoerd. Als de vm niet wordt uitgevoerd, krijgt u een knop te zien om **de VM te starten.**
+> De controles vereisen dat de VM wordt uitgevoerd. Als de vm niet wordt uitgevoerd, krijgt u een knop **Start de VM** weergegeven.
 
-Klik op de pagina **Problemen met bijwerken agent** op Controles **uitvoeren**om de probleemoplosser te starten. De probleemoplosser gebruikt [de opdracht Uitvoeren](../../virtual-machines/linux/run-command.md) om een script op de machine uit te voeren om de afhankelijkheden te verifiëren. Wanneer de probleemoplosser is voltooid, wordt het resultaat van de controles geretourneerd.
+Klik op de pagina Problemen met bijwerken agent op **Controles uitvoeren**om de probleemoplosser te starten. De probleemoplosser gebruikt [de opdracht Uitvoeren](../../virtual-machines/linux/run-command.md) om een script op de machine uit te voeren om de afhankelijkheden te verifiëren. Wanneer de probleemoplosser is voltooid, wordt het resultaat van de controles geretourneerd.
 
 ![Problemen met de pagina oplossen](../media/update-agent-issues-linux/troubleshoot-page.png)
 

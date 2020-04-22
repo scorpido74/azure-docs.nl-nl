@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4138c4ae24ae599d4058c9fd06c33b69657fe38
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263177"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680076"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Configureerbare tokenlevensduur in Azure Active Directory (Voorbeeld)
 
@@ -102,7 +102,7 @@ Een token levenslang beleid is een type beleidsobject dat token levenslange rege
 | Token Max Inactieve tijd vernieuwen (uitgegeven voor vertrouwelijke clients) |Tokens vernieuwen (uitgegeven voor vertrouwelijke klanten) |90 dagen |
 | Token Max-leeftijd vernieuwen (uitgegeven voor vertrouwelijke clients) |Tokens vernieuwen (uitgegeven voor vertrouwelijke klanten) |Tot intrekking |
 
-* <sup>1.</sup> Federatieve gebruikers die onvoldoende intrekkingsgegevens hebben, zijn gebruikers die het kenmerk "LastPasswordChangeTimestamp" niet hebben gesynchroniseerd. Deze gebruikers krijgen deze korte Max Age omdat AAD niet kan verifiëren wanneer tokens die zijn gekoppeld aan een oude referentie (zoals een wachtwoord dat is gewijzigd) moeten intrekken om ervoor te zorgen dat de gebruiker en bijbehorende tokens nog steeds in goede Permanent. Om deze ervaring te verbeteren, moeten tenantbeheerders ervoor zorgen dat ze het kenmerk 'LastPasswordChangeTimestamp' synchroniseren (dit kan worden ingesteld op het gebruikersobject met Powershell of via AADSync).
+* <sup>1.</sup> Federatieve gebruikers die onvoldoende intrekkingsgegevens hebben, zijn gebruikers die het kenmerk "LastPasswordChangeTimestamp" niet hebben gesynchroniseerd. Deze gebruikers krijgen deze korte Max Age omdat AAD niet kan verifiëren wanneer tokens die zijn gekoppeld aan een oude referentie (zoals een wachtwoord dat is gewijzigd) moeten intrekken en vaker moeten inchecken om ervoor te zorgen dat de gebruiker en bijbehorende tokens nog steeds een goede reputatie hebben. Om deze ervaring te verbeteren, moeten tenantbeheerders ervoor zorgen dat ze het kenmerk 'LastPasswordChangeTimestamp' synchroniseren (dit kan worden ingesteld op het gebruikersobject met Powershell of via AADSync).
 
 ### <a name="policy-evaluation-and-prioritization"></a>Beleidsevaluatie en prioritering
 U een tokenlevenslangbeleid maken en vervolgens toewijzen aan een specifieke toepassing, aan uw organisatie en aan serviceprincipals. Er kunnen meerdere beleidsregels van toepassing zijn op een specifieke toepassing. Het token-levenslang beleid dat van kracht wordt, volgt de volgende regels:
@@ -243,19 +243,25 @@ In dit voorbeeld maakt u een beleid waarmee uw gebruikers zich minder vaak kunne
         }')
         ```
 
-    2. Voer de volgende opdracht uit om het beleid te maken:
+    1. Voer de volgende opdracht uit om het beleid te maken:
 
         ```powershell
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    3. Voer de volgende opdracht uit om uw nieuwe beleid te bekijken en de **ObjectId**van het beleid te krijgen:
+    1. Voer de volgende opdracht uit om witruimte te verwijderen:
+
+        ```powershell
+        Get-AzureADPolicy -id | set-azureadpolicy -Definition @($((Get-AzureADPolicy -id ).Replace(" ","")))
+        ```
+
+    1. Voer de volgende opdracht uit om uw nieuwe beleid te bekijken en de **ObjectId**van het beleid te krijgen:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Werk het beleid bij.
+1. Werk het beleid bij.
 
     U besluiten dat het eerste beleid dat u in dit voorbeeld instelt niet zo streng is als uw service vereist. Voer de volgende opdracht uit om te bepalen dat het single-factor refresh token binnen twee dagen verloopt:
 
@@ -277,13 +283,13 @@ In dit voorbeeld maakt u een beleid waarmee gebruikers vaker moeten verifiëren 
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2. Voer de volgende opdracht uit om uw nieuwe beleid te bekijken en de **beleidsobjectid**op te halen:
+    1. Voer de volgende opdracht uit om uw nieuwe beleid te bekijken en de **beleidsobjectid**op te halen:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Wijs het beleid toe aan uw serviceprincipal. U moet ook de **ObjectId** van uw serviceprincipal krijgen.
+1. Wijs het beleid toe aan uw serviceprincipal. U moet ook de **ObjectId** van uw serviceprincipal krijgen.
 
     1. Gebruik de cmdlet [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) om alle serviceprincipals of één serviceprincipal van uw organisatie te bekijken.
         ```powershell
@@ -291,7 +297,7 @@ In dit voorbeeld maakt u een beleid waarmee gebruikers vaker moeten verifiëren 
         $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
         ```
 
-    2. Wanneer u de serviceprincipal hebt, voert u de volgende opdracht uit:
+    1. Wanneer u de serviceprincipal hebt, voert u de volgende opdracht uit:
         ```powershell
         # Assign policy to a service principal
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
@@ -308,13 +314,13 @@ In dit voorbeeld maakt u een beleid waarmee gebruikers minder vaak moeten verifi
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2. Voer de volgende opdracht uit om uw nieuwe beleid te bekijken:
+    1. Voer de volgende opdracht uit om uw nieuwe beleid te bekijken:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Wijs het beleid toe aan uw web-API. U moet ook de **ObjectId** van uw toepassing krijgen. Gebruik de cmdlet [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) om de **ObjectId**van uw app te vinden of de [Azure-portal](https://portal.azure.com/)te gebruiken.
+1. Wijs het beleid toe aan uw web-API. U moet ook de **ObjectId** van uw toepassing krijgen. Gebruik de cmdlet [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) om de **ObjectId**van uw app te vinden of de [Azure-portal](https://portal.azure.com/)te gebruiken.
 
     Haal de **objectid** van uw app op en wijs het beleid toe:
 
@@ -337,19 +343,19 @@ In dit voorbeeld maakt u een aantal beleidsregels om te leren hoe het prioriteit
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    2. Voer de volgende opdracht uit om uw nieuwe beleid te bekijken:
+    1. Voer de volgende opdracht uit om uw nieuwe beleid te bekijken:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Wijs het beleid toe aan een serviceprincipal.
+1. Wijs het beleid toe aan een serviceprincipal.
 
     Nu heb je een beleid dat van toepassing is op de hele organisatie. U dit beleid van 30 dagen behouden voor een specifieke serviceprincipal, maar het standaardbeleid van de organisatie wijzigen in de bovengrens van 'tot ingetrokken'.
 
     1. Als u alle serviceprincipals van uw organisatie wilt bekijken, gebruikt u de cmdlet [Get-AzureADServicePrincipal.](/powershell/module/azuread/get-azureadserviceprincipal)
 
-    2. Wanneer u de serviceprincipal hebt, voert u de volgende opdracht uit:
+    1. Wanneer u de serviceprincipal hebt, voert u de volgende opdracht uit:
 
         ```powershell
         # Get ID of the service principal
@@ -359,13 +365,13 @@ In dit voorbeeld maakt u een aantal beleidsregels om te leren hoe het prioriteit
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-3. Stel `IsOrganizationDefault` de vlag in op false:
+1. Stel `IsOrganizationDefault` de vlag in op false:
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
     ```
 
-4. Een nieuw standaardbeleid voor de organisatie maken:
+1. Een nieuw standaardbeleid voor de organisatie maken:
 
     ```powershell
     New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "ComplexPolicyScenarioTwo" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"

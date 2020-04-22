@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: f30ccd498b79c36c8892ae38a3e26d169249621a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4d6098b7b4de76461e924fc7d42d039046d7ce5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481096"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677174"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Connectiviteitsarchitectuur voor een beheerde instantie in Azure SQL Database
 
@@ -39,7 +39,7 @@ Een beheerde instantie is een platform as a service (PaaS) aanbod. Microsoft geb
 
 Voor sommige SQL Server-bewerkingen die zijn gestart door eindgebruikers of toepassingen, moeten beheerde exemplaren mogelijk met het platform worden uitgevoerd. Een geval is het maken van een beheerde instantie database. Deze bron wordt weergegeven via de Azure-portal, PowerShell, Azure CLI en de REST API.
 
-Beheerde exemplaren zijn afhankelijk van Azure-services, zoals Azure Storage voor back-ups, Azure Event Hubs voor telemetrie, Azure Active Directory voor verificatie, Azure Key Vault for Transparent Data Encryption (TDE) en een paar Azure-platformservices die bieden beveiligings- en ondersteuningsfuncties. De beheerde instanties maken verbindingen met deze services.
+Beheerde exemplaren zijn afhankelijk van Azure-services, zoals Azure Storage voor back-ups, Azure Event Hubs voor telemetrie, Azure Active Directory voor verificatie, Azure Key Vault for Transparent Data Encryption (TDE) en een aantal Azure-platformservices die beveiligings- en ondersteuningsfuncties bieden. De beheerde instanties maken verbindingen met deze services.
 
 Alle communicatie wordt versleuteld en ondertekend met certificaten. Om de betrouwbaarheid van communicerende partijen te controleren, controleren beheerde instanties deze certificaten voortdurend via certificaatintrekkingslijsten. Als de certificaten worden ingetrokken, worden de verbindingen met beheerde instantie gesloten om de gegevens te beschermen.
 
@@ -81,7 +81,7 @@ Wanneer verbindingen starten in de beheerde instantie (zoals bij back-ups en con
 > [!NOTE]
 > Verkeer dat naar Azure-services gaat die zich binnen de regio van de beheerde instantie bevinden, is geoptimaliseerd en om die reden niet nated naar beheerde instantiebeheereindpuntopenbaar IP-adres. Om die reden als u IP-gebaseerde firewallregels moet gebruiken, moet de service meestal in een andere regio zijn dan de beheerde instantie.
 
-## <a name="service-aided-subnet-configuration"></a>Subnetconfiguratie met servicehulp
+## <a name="service-aided-subnet-configuration"></a>Met service ondersteunde subnetconfiguratie
 
 Om de vereisten voor klantbeveiliging en beheerbaarheid aan te pakken, schakelt Managed Instance over van handmatige naar service-ondersteunde subnetconfiguratie.
 
@@ -104,7 +104,7 @@ Een beheerde instantie implementeren in een speciaal subnet binnen het virtuele 
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte inkomende beveiligingsregels met subnetconfiguratie met service 
 
-| Name       |Poort                        |Protocol|Bron           |Doel|Actie|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Actie|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement SqlManagement    |MI-SUBNET  |Toestaan |
 |            |9000, 9003                  |TCP     |CorpnetSaw (CorpnetSaw)       |MI-SUBNET  |Toestaan |
@@ -114,14 +114,14 @@ Een beheerde instantie implementeren in een speciaal subnet binnen het virtuele 
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte uitgaande beveiligingsregels met subnetconfiguratie met servicehulp 
 
-| Name       |Poort          |Protocol|Bron           |Doel|Actie|
+| Naam       |Poort          |Protocol|Bron           |Doel|Actie|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Door de gebruiker gedefinieerde routes met subnetconfiguratie met servicehulp 
 
-|Name|Adresvoorvoegsel|Volgende hop|
+|Naam|Adresvoorvoegsel|Volgende hop|
 |----|--------------|-------|
 |subnet-to-vnetlocal|MI-SUBNET|Virtueel netwerk|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
@@ -306,6 +306,7 @@ Volgende virtuele netwerkfuncties worden momenteel niet ondersteund met Beheerde
 - **Microsoft-peering:** [Microsoft-peering](../expressroute/expressroute-faqs.md#microsoft-peering) op expresroutecircuits die rechtstreeks of transitief worden gekeken met virtueel netwerk waar Beheerde instantie zich bevindt, heeft invloed op de verkeersstroom tussen beheerde instantiecomponenten binnen het virtuele netwerk en services, afhankelijk van het veroorzaken van beschikbaarheidsproblemen. Beheerde instantieimplementaties naar virtueel netwerk waarbij Microsoft-peering al is ingeschakeld, zullen naar verwachting mislukken.
 - **Wereldwijde virtuele netwerkpeering:** [virtuele netwerkpeerconnectiviteit](../virtual-network/virtual-network-peering-overview.md) in Azure-regio's werkt niet voor Beheerde instantie vanwege [gedocumenteerde beperkingen op de load balancer.](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 - **AzurePlatformDNS**: Als u [AzurePlatformDNS-servicetag](../virtual-network/service-tags-overview.md) gebruikt om de DNS-resolutie van het platform te blokkeren, wordt Managed Instance niet beschikbaar. Hoewel Managed Instance door de klant gedefinieerde DNS voor DNS-resolutie in de engine ondersteunt, is er een afhankelijkheid van platform DNS voor platformbewerkingen.
+- **NAT-gateway:** Als u [Nat-netwerk NAT](../virtual-network/nat-overview.md) gebruikt om uitgaande connectiviteit met een specifiek openbaar IP-adres te beheren, wordt Managed Instance niet beschikbaar. Managed Instance-service is momenteel beperkt tot het gebruik van basisload balancer die geen coëxistentie biedt van inkomende en uitgaande stromen met Virtual Network NAT.
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>[Afgeschaft] Netwerkvereisten zonder subnetconfiguratie met servicehulp
 
@@ -322,7 +323,7 @@ Een beheerde instantie implementeren in een speciaal subnet binnen het virtuele 
 
 ### <a name="mandatory-inbound-security-rules"></a>Verplichte inkomende beveiligingsregels
 
-| Name       |Poort                        |Protocol|Bron           |Doel|Actie|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Actie|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |Alle              |MI-SUBNET  |Toestaan |
 |mi_subnet   |Alle                         |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -330,7 +331,7 @@ Een beheerde instantie implementeren in een speciaal subnet binnen het virtuele 
 
 ### <a name="mandatory-outbound-security-rules"></a>Verplichte uitgaande beveiligingsregels
 
-| Name       |Poort          |Protocol|Bron           |Doel|Actie|
+| Naam       |Poort          |Protocol|Bron           |Doel|Actie|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -348,7 +349,7 @@ Een beheerde instantie implementeren in een speciaal subnet binnen het virtuele 
 
 ### <a name="user-defined-routes"></a>Door de gebruiker gedefinieerde routes
 
-|Name|Adresvoorvoegsel|Volgende hop|
+|Naam|Adresvoorvoegsel|Volgende hop|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI-SUBNET|Virtueel netwerk|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|

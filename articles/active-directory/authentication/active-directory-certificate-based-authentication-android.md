@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0427398d05cbe9f76249ec8f7c25568d566d5d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654384"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680213"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Azure Active Directory-certificaatverificatie op Android
 
@@ -27,7 +27,7 @@ Android-apparaten kunnen op certificaten gebaseerde verificatie (CBA) gebruiken 
 
 Als u deze functie configureert, hoeft u geen combinatie van gebruikersnaam en wachtwoord in bepaalde e-mail- en Microsoft Office-toepassingen op uw mobiele apparaat in te voeren.
 
-In dit onderwerp vindt u de vereisten en de ondersteunde scenario's voor het configureren van CBA op een iOS-apparaat (Android) voor gebruikers van tenants in Office 365 Enterprise, Business, Education, de Amerikaanse overheid, China en Duitsland.
+In dit onderwerp vindt u de vereisten en de ondersteunde scenario's voor het configureren van CBA op een Android-apparaat voor gebruikers van tenants in Office 365 Enterprise, Business, Education, us Government, China en Duitsland.
 
 Deze functie is beschikbaar in preview in Office 365 Us Government Defense and Federal plans.
 

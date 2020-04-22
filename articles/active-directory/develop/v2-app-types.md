@@ -12,19 +12,16 @@ ms.date: 04/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bdbda8bed38819ca2b4d2fb1ef3d9bf591269890
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: def92071496716f90b24158a50e4a5233e93c994
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535907"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677992"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Toepassingstypen voor Microsoft-identiteitsplatform
 
 Het Microsoft Identity Platform (v2.0) endpoint ondersteunt authenticatie voor een verscheidenheid aan moderne app-architecturen, allemaal op basis van industriestandaard protocollen [OAuth 2.0 of OpenID Connect.](active-directory-v2-protocols.md) In dit artikel worden de typen apps beschreven die u bouwen met behulp van het Microsoft-identiteitsplatform, ongeacht uw voorkeurstaal of -platform. De informatie is ontworpen om u te helpen scenario's op hoog niveau te begrijpen voordat u [met de code gaat werken.](v2-overview.md#getting-started)
-
-> [!NOTE]
-> Het eindpunt van het Microsoft-identiteitsplatform biedt geen ondersteuning voor alle Azure Active Directory-scenario's en -functies (Azure AD). Als u wilt bepalen of u het eindpunt van het Microsoft-identiteitsplatform moet gebruiken, leest u over [de beperkingen van het Microsoft-identiteitsplatform.](active-directory-v2-limitations.md)
 
 ## <a name="the-basics"></a>De basisbeginselen
 

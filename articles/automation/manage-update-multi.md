@@ -5,31 +5,28 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9a3c88ea0c3e656adf0f8c514b418cfc07c9590
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335777"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676450"
 ---
-# <a name="manage-updates-for-multiple-machines"></a>Updates voor meerdere machines beheren
+# <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Updates voor meerdere virtuele machines in Azure beheren
 
-U de updatebeheeroplossing gebruiken om updates en patches voor uw virtuele Windows- en Linux-machines te beheren. Vanuit uw [Azure Automation](automation-offering-get-started.md)-account, kunt u het volgende doen:
+U Azure Automation Update Management gebruiken om updates en patches voor uw virtuele Windows- en Linux-machines te beheren. Vanuit uw [Azure Automation](automation-offering-get-started.md)-account, kunt u het volgende doen:
 
-- Virtuele machines aan boord
-- De status van beschikbare updates beoordelen
-- Installatie van vereiste updates plannen
-- Controleer de implementatieresultaten om te controleren of updates zijn toegepast op alle virtuele machines waarvoor Update Management is ingeschakeld
+- Virtuele machines activeren.
+- De status van beschikbare updates evalueren.
+- De installatie van vereiste updates plannen.
+- Controleer de implementatieresultaten om te controleren of updates zijn toegepast op alle virtuele machines waarvoor UpdateManagement is ingeschakeld.
+
+Zie Clientvereisten voor [updatebeheer](automation-update-management.md#clients)voor meer informatie over de systeemvereisten voor Updatebeheer.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Updatebeheer wilt gebruiken, moet u het sein
-
-- Een virtuele machine of computer met een van de ondersteunde besturingssystemen.
-
-- Toegang tot een update repository voor Linux VM's aan boord van de oplossing.
-
-Zie Clientvereisten voor [updatebeheer](automation-update-management.md#clients)voor meer informatie over de systeemvereisten voor Updatebeheer.
+* Een virtuele machine of computer met een van de ondersteunde besturingssystemen.
+* Toegang tot een updaterepository voor Linux VM's die zijn aangesloten bij Update Management.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Updatebeheer inschakelen voor virtuele Azure-machines
 
@@ -53,25 +50,23 @@ De Log Analytics-agent voor Windows en Linux moet worden geïnstalleerd op de VM
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Computers weergeven die zijn gekoppeld aan uw Automatiseringsaccount
 
-Nadat u Updatebeheer voor uw machines hebt ingeschakeld, u machinegegevens bekijken door **Computers te**selecteren. U informatie zien over de naam van *de machine,* *de nalevingsstatus,* *de omgeving,* *het type besturingssysteem,* *kritieke en beveiligingsupdates geïnstalleerd,* *andere geïnstalleerde updates*en *de gereedheid* van de agent voor uw computers bijwerken.
+Nadat u Updatebeheer voor uw machines hebt ingeschakeld, u machinegegevens bekijken door **Computers te**selecteren. U informatie zien over de naam van de machine, de nalevingsstatus, de omgeving, het type besturingssysteem, de geïnstalleerde kritieke en beveiligingsupdates, andere geïnstalleerde updates en de gereedheid van de agent voor uw computers bijwerken.
 
   ![Tabblad Computers weergeven](./media/manage-update-multi/update-computers-tab.png)
 
-Computers die onlangs zijn ingeschakeld voor Updatebeheer zijn mogelijk nog niet beoordeeld. De status van nalevingsstatus voor deze computers wordt **niet beoordeeld**. Hier is een lijst met mogelijke waarden voor nalevingsstatus:
+Computers die onlangs zijn ingeschakeld voor Updatebeheer zijn mogelijk nog niet beoordeeld. De nalevingsstatus voor `Not assessed`deze computers is . Hier is een lijst met mogelijke waarden voor nalevingsstatus:
 
-- **Compatibel:** computers die geen kritieke of beveiligingsupdates missen.
+- `Compliant`: Computers die geen kritieke of beveiligingsupdates missen.
+- `Non-compliant`: Computers die ten minste één kritieke of beveiligingsupdate missen.
+- `Not assessed`: De updatebeoordelingsgegevens zijn niet binnen de verwachte termijn van de computer ontvangen. Voor Linux-computers is de verwachte termijn het laatste uur. Voor Windows-computers is de verwachte termijn de laatste 12 uur.
 
-- **Niet-compatibel:** computers die ten minste één kritieke of beveiligingsupdate missen.
-
-- **Niet beoordeeld**: de updatebeoordelingsgegevens zijn niet binnen de verwachte termijn van de computer ontvangen. Voor Linux-computers is de verwachte termijn in het laatste uur. Voor Windows-computers is de verwachte termijn in de afgelopen 12 uur.
-
-Als u de status van de agent wilt weergeven, selecteert u de koppeling in de kolom **Gereedheid bijwerken.** Als u deze optie selecteert, wordt het deelvenster **Hybride werker** geopend en wordt de status van de hybride werknemer weergegeven. In de volgende afbeelding ziet u een voorbeeld van een agent die gedurende een langere periode niet is verbonden met Updatebeheer:
+Als u de status van de agent wilt weergeven, selecteert u de koppeling in de kolom **Gereedheid bijwerken.** Als u deze optie selecteert, wordt het deelvenster Hybride werker geopend en wordt de status van de hybride werknemer weergegeven. In de volgende afbeelding ziet u een voorbeeld van een agent die gedurende een langere periode niet is verbonden met Updatebeheer:
 
 ![Tabblad Computers weergeven](./media/manage-update-multi/update-agent-broken.png)
 
 ## <a name="view-an-update-assessment"></a>Een update-evaluatie bekijken
 
-Nadat Updatebeheer is ingeschakeld, wordt het deelvenster **Updatebeheer** geopend. U ziet een lijst met ontbrekende updates op het tabblad **Ontbrekende updates**.
+Nadat Updatebeheer is ingeschakeld, wordt het deelvenster Updatebeheer geopend. U ziet een lijst met ontbrekende updates op het tabblad **Ontbrekende updates**.
 
 ## <a name="collect-data"></a>Gegevens verzamelen
 
@@ -132,7 +127,7 @@ Geef in het deelvenster **Nieuwe updateimplementatie** de volgende gegevens op:
   - Hulpprogramma's
   - Updates
 
-- **Updates om op te nemen/uit te sluiten**: hiermee opent u de pagina **Opnemen/uitsluiten**. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven. Zie [Een update-implementatie plannen voor](automation-tutorial-update-management.md#schedule-an-update-deployment)meer informatie over hoe met opname wordt omgegaan.
+- **Updates om op te nemen/uit te sluiten**: hiermee opent u de pagina Opnemen/uitsluiten. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven. Zie [Een update-implementatie plannen voor](automation-tutorial-update-management.md#schedule-an-update-deployment)meer informatie over hoe met opname wordt omgegaan.
 
 > [!NOTE]
 > Het is belangrijk om te weten dat uitsluitingen inclusies overschrijven. Als u bijvoorbeeld een uitsluitingsregel definieert van `*`, worden er geen patches of pakketten geïnstalleerd omdat ze allemaal zijn uitgesloten. Uitgesloten patches nog steeds als ontbrekende van de machine. Voor Linux-machines als een pakket is inbegrepen, maar een afhankelijk pakket heeft dat is uitgesloten, is het pakket niet geïnstalleerd.
@@ -176,11 +171,11 @@ Als een of meer updates in de implementatie zijn mislukt, verandert de status in
 
 Klik op de voltooide implementatie om het dashboard voor de betreffende update-implementatie te bekijken.
 
-In het deelvenster **Resultaten bijwerken** wordt het totale aantal updates en de implementatieresultaten voor de virtuele machine weergegeven. De tabel aan de rechterkant geeft een gedetailleerde uitsplitsing van elke update en de installatieresultaten. Een van de volgende installatieresultaatwaarden wordt weergegeven:
+In het deelvenster Resultaten bijwerken wordt het totale aantal updates en de implementatieresultaten voor de virtuele machine weergegeven. De tabel aan de rechterkant geeft een gedetailleerde uitsplitsing van elke update en de installatieresultaten. Een van de volgende installatieresultaatwaarden wordt weergegeven:
 
-- **Niet geprobeerd**: de update is niet geïnstalleerd omdat er onvoldoende tijd beschikbaar was op basis van het gedefinieerde onderhoudsvenster.
-- **Geslaagd**: De update is geslaagd.
-- **Mislukt:** de update is mislukt.
+- `Not attempted`: De update is niet geïnstalleerd omdat er onvoldoende tijd beschikbaar was op basis van het gedefinieerde onderhoudsvenster.
+- `Succeeded`: De update is geslaagd.
+- `Failed`: De update is mislukt.
 
 Selecteer **Alle logboeken** voor een overzicht van alle logboekvermeldingen die tijdens de implementatie zijn gemaakt.
 

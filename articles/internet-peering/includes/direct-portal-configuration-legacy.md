@@ -8,46 +8,46 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 16909e0a5d59b0ae019d91aad00e0168b0c5f433
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 632490498b8dd13414657edb9518cd543ac07af6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75775067"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678833"
 ---
-1. Vul op de pagina **Een peering maken** onder tabblad **Configuratie** de velden in zoals hieronder wordt weergegeven.
+1. Vul op de pagina **Een peering maken** op het tabblad **Configuratie** de vakken in zoals hier weergegeven.
 
     > [!div class="mx-imgBorder"]
-    > ![Peering-configuratie - Direct](../media/setup-direct-conf-tab.png)
+    > ![Tabblad Configuratie van een peeringpagina maken](../media/setup-direct-conf-tab.png)
 
-    * Selecteer *Direct* **voor peeringtype**.
-    * Kies VOOR **Microsoft-netwerk** *AS8075*. Selecteer ASN 8069 niet. Het is gereserveerd voor speciale toepassingen en alleen gebruikt door [Microsoft peering](mailto:peering@microsoft.com).
-    * Selecteer **SKU** als *Basisvrij*. Selecteer Premium *Free* niet omdat het is gereserveerd voor speciale toepassingen.
-    * Kies de **Metro-locatie** voor de plaats waar u peering wilt converteren naar Azure-bron. Als u peeringverbindingen met Microsoft hebt op de geselecteerde **Metro-locatie** die niet zijn geconverteerd naar Azure-bron, worden dergelijke verbindingen weergegeven in de sectie **Peering-verbindingen** zoals hieronder weergegeven. U deze peeringverbindingen nu converteren naar Azure-bron.
+    * Selecteer **Direct** **voor peeringtype**.
+    * Selecteer **AS8075**voor **het Microsoft-netwerk**. Selecteer ASN 8069 niet. Het is gereserveerd voor speciale toepassingen en alleen gebruikt door [Microsoft peering](mailto:peering@microsoft.com).
+    * Selecteer **SKU** als **Basisvrij**. Selecteer Premium Free niet omdat het is gereserveerd voor speciale toepassingen.
+    * Selecteer de **metrolocatie** waar u peering wilt converteren naar een Azure-bron. Als u peeringverbindingen met Microsoft hebt op de geselecteerde **Metro-locatie** die niet zijn geconverteerd naar een Azure-bron, worden deze verbindingen weergegeven in de sectie **Peering-verbindingen** zoals weergegeven. U deze peeringverbindingen nu converteren naar een Azure-bron.
 
         > [!div class="mx-imgBorder"]
-        > ![Peering-configuratie - Direct - Legacy-verbindingen](../media/setup-directlegacy-conf-tab.png)
+        > ![Lijst met peeringverbindingen](../media/setup-directlegacy-conf-tab.png)
 
-1. Als u bandbreedte moet bijwerken, klikt u op de knop Bewerken voor een regel, zoals hieronder gemarkeerd, om verbindingsinstellingen te wijzigen.
+1. Als u bandbreedte wilt bijwerken, selecteert u de knop Bewerken voor een regel om verbindingsinstellingen te wijzigen.
 
     > [!div class="mx-imgBorder"]
-    > ![Peering-configuratie - Direct bewerken](../media/setup-directlegacy-conf-tab-edit.png)
+    > ![Knop Bewerken](../media/setup-directlegacy-conf-tab-edit.png)
 
     > [!NOTE]
-    > Als u extra peeringverbindingen met Microsoft wilt toevoegen op de geselecteerde **Metro-locatie,** u dit doen door op Nieuwe knop **maken** te klikken. Zie [Een direct peering maken of wijzigen met behulp van de portal](../howto-direct-portal.md) voor meer informatie.
+    > Als u extra peeringverbindingen met Microsoft wilt toevoegen op de geselecteerde **Metro-locatie,** selecteert u **Nieuw maken**. Zie [Een direct peeren maken of wijzigen met behulp van de portal](../howto-direct-portal.md)voor meer informatie.
     >
 
-1. Klik op **Review + maak**. Houd er rekening mee dat portal de basisvalidatie van de ingevoerde informatie uitvoert. Dit wordt weergegeven in een lint aan de bovenkant, als *Laatste validatie uitvoeren...*.
+1. Selecteer **Controleren + maken**. Merk op dat de portal de basisvalidatie van de ingevoerde informatie uitvoert. Een lint bovenaan geeft het bericht *Laatste validatie uit...*.
 
     > [!div class="mx-imgBorder"]
-    > ![Tabblad Validatie voor peering](../media/setup-direct-review-tab-validation.png)
+    > ![Tabblad Peeringvalidatie](../media/setup-direct-review-tab-validation.png)
 
-1. Nadat deze wordt ingeschakeld in *Validatie geslaagd,* controleert u uw gegevens en dient u de aanvraag in door op **Maken**te klikken. Als u uw aanvraag wilt wijzigen, klikt u op **Vorige** en herhaalt u de bovenstaande stappen.
-
-    > [!div class="mx-imgBorder"]
-    > ![Peering verzenden](../media/setup-direct-review-tab-submit.png)
-
-1. Zodra u de aanvraag hebt ingediend, wacht u tot de implementatie is voltooid. Als de implementatie mislukt, neemt u contact op met [Microsoft peering](mailto:peering@microsoft.com). Een succesvolle implementatie wordt hieronder weergegeven.
+1. Nadat het bericht is gewijzigd in *Validatie is geslaagd,* controleert u uw gegevens. Dien de aanvraag in door **Maken te**selecteren. Als u uw aanvraag wilt wijzigen, selecteert u **Vorige** en herhaalt u de stappen.
 
     > [!div class="mx-imgBorder"]
-    > ![Peering Succes](../media/setup-direct-success.png)
+    > ![Peering indiening](../media/setup-direct-review-tab-submit.png)
+
+1. Nadat u de aanvraag hebt ingediend, wacht u tot de implementatie is voltooid. Als de implementatie mislukt, neemt u contact op met [Microsoft peering](mailto:peering@microsoft.com). Een succesvolle implementatie wordt weergegeven zoals hier wordt weergegeven.
+
+    > [!div class="mx-imgBorder"]
+    > ![Peering succes](../media/setup-direct-success.png)

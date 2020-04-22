@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7460490dbd45862f4269d25e3910373700ec9a03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10831c0dc39fa241a43541850afae39593ae033b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564717"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678274"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Snelstart - Een Private Cloud-omgeving configureren
 
@@ -26,7 +26,7 @@ Netwerkvereisten [bekijken](cloudsimple-network-checklist.md).
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-private-cloud"></a>Een privécloud maken
 
@@ -159,8 +159,8 @@ U zich nu aanmelden bij vCenter om virtuele machines en beleidsregels in te stel
     ![VSphere-client starten](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. Selecteer uw favoriete vSphere-client om toegang te krijgen tot vCenter en meld u aan met uw gebruikersnaam en wachtwoord.  De standaardinstellingen zijn:
-    * Gebruikersnaam: **CloudOwner\@cloudsimple.local**
-    * Wachtwoord: **CloudSimple123!**  
+    * Gebruikersnaam:`CloudOwner@cloudsimple.local`
+    * Wachtwoord: `CloudSimple123!`
 
 De vCenter-schermen in de volgende procedures zijn afkomstig van de vSphere -client (HTML5).
 

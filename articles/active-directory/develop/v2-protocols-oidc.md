@@ -12,19 +12,16 @@ ms.date: 04/12/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: fa42bf65ea5f4469f714dda4331d3cb66156d187
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ebec4cb6bbbac5b331eb2eb4145716e16e7320fa
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535792"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677691"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft-identiteitsplatform en OpenID Connect-protocol
 
 OpenID Connect is een verificatieprotocol dat is gebaseerd op OAuth 2.0 dat u gebruiken om een gebruiker veilig aan te melden bij een webtoepassing. Wanneer u de implementatie van OpenID Connect van het Microsoft-identiteitsplatform gebruikt, u aanmeldings- en API-toegang toevoegen aan uw webgebaseerde apps. In dit artikel ziet u hoe u dit onafhankelijk van de taal doen en wordt beschreven hoe u HTTP-berichten verzendt en ontvangt zonder gebruik te maken van open-sourcebibliotheken van Microsoft.
-
-> [!NOTE]
-> Het eindpunt van het Microsoft-identiteitsplatform biedt geen ondersteuning voor alle Azure Active Directory-scenario's en -functies (Azure AD). Als u wilt bepalen of u het eindpunt van het Microsoft-identiteitsplatform moet gebruiken, leest u over [de beperkingen van het Microsoft-identiteitsplatform.](active-directory-v2-limitations.md)
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) breidt het OAuth 2.0-autorisatieprotocol uit om te gebruiken als *authorization* *verificatieprotocol,* zodat u één aanmelding doen met OAuth. OpenID Connect introduceert het concept van een *ID-token,* een beveiligingstoken waarmee de client de identiteit van de gebruiker kan verifiëren. Het ID-token krijgt ook basisprofielinformatie over de gebruiker. Omdat OpenID Connect OAuth 2.0 uitbreidt, kunnen apps veilig *toegangstokens*verkrijgen, die kunnen worden gebruikt om toegang te krijgen tot bronnen die zijn beveiligd door een [autorisatieserver.](active-directory-v2-protocols.md#the-basics) Met het eindpunt van het Microsoft-identiteitsplatform kunnen apps van derden die zijn geregistreerd bij Azure AD ook toegangstokens uitgeven voor beveiligde bronnen zoals web-API's. Zie Een app registreren bij het eindpunt van [het Microsoft-identiteitsplatform](quickstart-register-app.md)voor meer informatie over het instellen van een toepassing voor het uitgeven van toegangstokens. We raden u aan OpenID Connect te gebruiken als u een [webtoepassing](v2-app-types.md#web-apps) bouwt die op een server wordt gehost en via een browser wordt geopend.
 

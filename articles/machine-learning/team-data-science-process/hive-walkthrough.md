@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 005d4fe1b6ec59e7f05be3dd2ab3e72d0e7aa8e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283418"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677464"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Het Team Data Science-proces in actie: Azure HDInsight Hadoop-clusters gebruiken
 In deze walkthrough gebruiken we het [Team Data Science Process (TDSP)](overview.md) in een end-to-end scenario. We gebruiken een [Azure HDInsight Hadoop-cluster](https://azure.microsoft.com/services/hdinsight/) om gegevens uit de openbaar beschikbare [NYC Taxi Trips-gegevensset](https://www.andresmh.com/nyctaxitrips/) op te slaan, te verkennen en te beheren en de gegevens te downsamplen. Om binaire en multiclass classificatie- en regressievoorspellende taken te verwerken, bouwen we modellen van de gegevens met Azure Machine Learning. 
@@ -721,7 +721,7 @@ Als u Hive-query's wilt uitgeven in de module [Gegevens importeren][import-data]
 
 Hier volgen enkele details over de module [Gegevens importeren][import-data] en de parameters die moeten worden ingevoerd:
 
-**HCatalog server URI:** Als de clusternaam **abc123**is, gebruik dan: https://abc123.azurehdinsight.net.
+**HCatalog server URI:** Als de clusternaam **abc123**\/is, gebruik dan: https: /abc123.azurehdinsight.net.
 
 **Hadoop gebruikersnaamnaam:** de gebruikersnaam gekozen voor het cluster (niet de gebruikersnaam voor externe toegang).
 

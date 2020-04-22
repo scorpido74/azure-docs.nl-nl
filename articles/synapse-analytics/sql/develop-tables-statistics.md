@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 798fec4dacb33a9f16de319062baf12adaffdbd0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5196c85ca1d68028893caee55035c6c455b37d64
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428743"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676937"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistieken in Synapse SQL
 
@@ -163,13 +163,15 @@ Als u statistieken over een kolom wilt maken, geeft u een naam op voor het objec
 Met deze syntaxis worden alle standaardopties gebruikt. Sql-groep bemonstert standaard **20 procent** van de tabel wanneer deze statistieken maakt.
 
 ```sql
-CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
+CREATE STATISTICS [statistics_name]
+    ON [schema_name].[table_name]([column_name]);
 ```
 
 Bijvoorbeeld:
 
 ```sql
-CREATE STATISTICS col1_stats ON dbo.table1 (col1);
+CREATE STATISTICS col1_stats
+    ON dbo.table1 (col1);
 ```
 
 #### <a name="create-single-column-statistics-by-examining-every-row"></a>Statistieken met één kolom maken door elke rij te onderzoeken
@@ -177,13 +179,17 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 De standaard sampling rate van 20 procent is voldoende voor de meeste situaties. U echter de bemonsteringsfrequentie aanpassen. Als u de volledige tabel wilt proeven, gebruikt u de volgende syntaxis:
 
 ```sql
-CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
+CREATE STATISTICS [statistics_name]
+    ON [schema_name].[table_name]([column_name])
+    WITH FULLSCAN;
 ```
 
 Bijvoorbeeld:
 
 ```sql
-CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
+CREATE STATISTICS col1_stats
+    ON dbo.table1 (col1)
+    WITH FULLSCAN;
 ```
 
 #### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>Statistieken met één kolom maken door de steekproefgrootte op te geven
@@ -191,7 +197,9 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 Een andere optie die u hebt, is het opgeven van de steekproefgrootte als een percentage:
 
 ```sql
-CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
+CREATE STATISTICS col1_stats
+    ON dbo.table1 (col1)
+    WITH SAMPLE = 50 PERCENT;
 ```
 
 #### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>Statistieken met één kolom maken voor slechts enkele rijen
@@ -203,7 +211,9 @@ U bijvoorbeeld gefilterde statistieken gebruiken wanneer u van plan bent een spe
 In dit voorbeeld worden statistieken over een bereik van waarden. De waarden kunnen eenvoudig worden gedefinieerd op basis van het waardenbereik in een partitie.
 
 ```sql
-CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '20001231';
+CREATE STATISTICS stats_col1
+    ON table1(col1)
+    WHERE col1 > '2000101' AND col1 < '20001231';
 ```
 
 > [!NOTE]
@@ -214,7 +224,10 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 U de opties ook combineren. In het volgende voorbeeld wordt een gefilterd statistisch object gemaakt met een aangepaste steekproefgrootte:
 
 ```sql
-CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
+CREATE STATISTICS stats_col1
+    ON table1 (col1)
+    WHERE col1 > '2000101' AND col1 < '20001231'
+    WITH SAMPLE = 50 PERCENT;
 ```
 
 Zie STATISTIEKEN MAKEN [voor](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)de volledige referentie .
@@ -229,7 +242,10 @@ Als u een object met statistieken met meerdere kolommen wilt maken, gebruikt u d
 In dit voorbeeld staat het histogram op *de productcategorie.\_* Statistieken over verschillende kolommen worden berekend op *basis van productcategorie\_* en *productsub_category:\_*
 
 ```sql
-CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
+CREATE STATISTICS stats_2cols
+    ON table1 (product_category, product_sub_category)
+    WHERE product_category > '2000101' AND product_category < '20001231'
+    WITH SAMPLE = 50 PERCENT;
 ```
 
 Omdat er een correlatie bestaat tussen *productcategorie\_* en *\_productsubcategorie,\_* kan een object met statistieken met meerdere kolommen nuttig zijn als deze kolommen tegelijkertijd worden geopend.
@@ -263,7 +279,7 @@ In het volgende voorbeeld u aan de slag met uw databaseontwerp. Voel je vrij om 
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
-(   @create_type    tinyint -- 1 default 2 Fullscan 3 Sample
+(   @create_type    tinyint -- 1 default, 2 Fullscan, 3 Sample
 ,   @sample_pct     tinyint
 )
 AS
@@ -470,8 +486,8 @@ JOIN    sys.stats_columns   AS sc ON    st.[stats_id]       = sc.[stats_id]
 JOIN    sys.columns         AS co ON    sc.[column_id]      = co.[column_id]
                             AND         sc.[object_id]      = co.[object_id]
 JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
-JOIN    sys.tables          AS tb ON  co.[object_id]        = tb.[object_id]
-JOIN    sys.schemas         AS sm ON  tb.[schema_id]        = sm.[schema_id]
+JOIN    sys.tables          AS tb ON    co.[object_id]      = tb.[object_id]
+JOIN    sys.schemas         AS sm ON    tb.[schema_id]      = sm.[schema_id]
 WHERE   1=1
 AND     st.[user_created] = 1
 ;
@@ -506,18 +522,20 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 Als u alleen geïnteresseerd bent in het `WITH` bekijken van specifieke onderdelen, gebruikt u de clausule en geeft u op welke onderdelen u wilt zien:
 
 ```sql
-DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
+DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
+    WITH stat_header, histogram, density_vector
 ```
 
 Bijvoorbeeld:
 
 ```sql
-DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
+DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
+    WITH histogram, density_vector
 ```
 
 ### <a name="dbcc-show_statistics-differences"></a>Verschillen dbcc SHOW_STATISTICS()
 
-DBCC SHOW_STATISTICS() is strikter geïmplementeerd in SQL-groep in vergelijking met SQL Server:
+`DBCC SHOW_STATISTICS()`is strikter geïmplementeerd in SQL-pool in vergelijking met SQL Server:
 
 - Functies zonder papieren worden niet ondersteund.
 - Ik kan Stats_stream niet gebruiken.
@@ -602,7 +620,7 @@ sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
 
 Argumenten: @stmt [ = ] N'statement_text' - Hiermee geeft u een transact-SQL-instructie op waarmee kolomwaarden worden weergegeven die voor statistieken moeten worden gebruikt. U TABLESAMPLE gebruiken om voorbeelden van gegevens op te geven die moeten worden gebruikt. Als TABLESAMPLE niet is opgegeven, wordt FULLSCAN gebruikt.
 
-```sql
+```syntaxsql
 <tablesample_clause> ::= TABLESAMPLE ( sample_number PERCENT )
 ```
 
@@ -744,14 +762,18 @@ SAMPLE kan niet worden gebruikt met de optie FULLSCAN.
 #### <a name="create-single-column-statistics-by-examining-every-row"></a>Statistieken met één kolom maken door elke rij te onderzoeken
 
 ```sql
-CREATE STATISTICS sState on census_external_table (STATENAME) WITH FULLSCAN, NORECOMPUTE
+CREATE STATISTICS sState
+    on census_external_table (STATENAME)
+    WITH FULLSCAN, NORECOMPUTE
 ```
 
 #### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>Statistieken met één kolom maken door de steekproefgrootte op te geven
 
 ```sql
 -- following sample creates statistics with sampling 20%
-CREATE STATISTICS sState on census_external_table (STATENAME) WITH SAMPLE 5 percent, NORECOMPUTE
+CREATE STATISTICS sState
+    on census_external_table (STATENAME)
+    WITH SAMPLE 5 percent, NORECOMPUTE
 ```
 
 ### <a name="examples-update-statistics"></a>Voorbeelden: Statistieken bijwerken
@@ -765,7 +787,9 @@ DROP STATISTICS census_external_table.sState
 En maak statistieken:
 
 ```sql
-CREATE STATISTICS sState on census_external_table (STATENAME) WITH FULLSCAN, NORECOMPUTE
+CREATE STATISTICS sState
+    on census_external_table (STATENAME)
+    WITH FULLSCAN, NORECOMPUTE
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

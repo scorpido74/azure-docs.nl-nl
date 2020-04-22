@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7a91f61302b5944e69f71c3cfee2f41cd87b809f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 947286a7238e3ddf2aebe66c6ea87e0e1cf8a853
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309378"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677715"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft-identiteitsplatform en OAuth 2.0 On-Behalf-Of flow
 
@@ -27,9 +27,7 @@ De OAuth 2.0 On-Behalf-Of flow (OBO) dient de use case waarbij een toepassing ee
 In dit artikel wordt beschreven hoe u rechtstreeks programmeren tegen het protocol in uw toepassing.  Waar mogelijk raden we u aan de ondersteunde Microsoft Authentication Libraries (MSAL) te gebruiken om tokens te [verkrijgen en beveiligde web-API's te bellen.](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)  Kijk ook eens naar de [voorbeeld-apps die MSAL gebruiken.](sample-v2-code.md)
 
 > [!NOTE]
->
-> - Het eindpunt van het Microsoft-identiteitsplatform ondersteunt niet alle scenario's en functies. Als u wilt bepalen of u het eindpunt van het Microsoft-identiteitsplatform moet gebruiken, leest u over [de beperkingen van het Microsoft-identiteitsplatform.](active-directory-v2-limitations.md) 
-> - Vanaf mei 2018 `id_token` kan een impliciete stroom niet meer worden gebruikt voor OBO-stroom. Apps met één pagina (SB's) moeten een **toegangstoken** doorgeven aan een vertrouwelijke client op het middenniveau om obo-stromen uit te voeren. Zie [beperkingen](#client-limitations)voor meer informatie over welke clients OBO-gesprekken kunnen uitvoeren.
+> Vanaf mei 2018 `id_token` kan een impliciete stroom niet meer worden gebruikt voor OBO-stroom. Apps met één pagina (SB's) moeten een **toegangstoken** doorgeven aan een vertrouwelijke client op het middenniveau om obo-stromen uit te voeren. Zie [beperkingen](#client-limitations)voor meer informatie over welke clients OBO-gesprekken kunnen uitvoeren.
 
 ## <a name="protocol-diagram"></a>Protocoldiagram
 
@@ -186,10 +184,10 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Toestemming verkrijgen voor de toepassing op het middenniveau
 
-Afhankelijk van de architectuur of het gebruik van uw toepassing, u verschillende strategieën overwegen om ervoor te zorgen dat de OBO-stroom succesvol is. In alle gevallen is het uiteindelijke doel om ervoor te zorgen dat de juiste toestemming wordt gegeven, zodat de client-app de middelste-tier-app kan bellen en de middelste laag-app toestemming heeft om de back-endbron te bellen. 
+Afhankelijk van de architectuur of het gebruik van uw toepassing, u verschillende strategieën overwegen om ervoor te zorgen dat de OBO-stroom succesvol is. In alle gevallen is het uiteindelijke doel om ervoor te zorgen dat de juiste toestemming wordt gegeven, zodat de client-app de middelste-tier-app kan bellen en de middelste laag-app toestemming heeft om de back-endbron te bellen.
 
 > [!NOTE]
-> Voorheen ondersteunde het Microsoft-accountsysteem (persoonlijke accounts) het veld 'Bekende clienttoepassing' niet en kon het ook geen gecombineerde toestemming weergeven.  Dit is toegevoegd en alle apps in het Microsoft-identiteitsplatform kunnen de bekende clientapplicatiebenadering gebruiken voor gettign-toestemming voor OBO-gesprekken. 
+> Voorheen ondersteunde het Microsoft-accountsysteem (persoonlijke accounts) het veld 'Bekende clienttoepassing' niet en kon het ook geen gecombineerde toestemming weergeven.  Dit is toegevoegd en alle apps in het Microsoft-identiteitsplatform kunnen de bekende clientapplicatiebenadering gebruiken voor gettign-toestemming voor OBO-gesprekken.
 
 ### <a name="default-and-combined-consent"></a>/.standaard- en gecombineerde toestemming
 

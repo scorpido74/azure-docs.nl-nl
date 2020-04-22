@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bc5204518cb6e801ba661aecd5498a501122225f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5990f79891a9cbc0d18c3499691a3d7ef309a73
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473656"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678257"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: aangepaste kenmerken inschakelen in een aangepast profielbeleid
 
@@ -46,7 +46,7 @@ De *eigenschap termenextensie,* *het aangepaste kenmerk*en de aangepaste *claim*
 
 ## <a name="get-the-application-properties"></a>De toepassingseigenschappen ophalen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het **filter Directory + abonnement** in het bovenste menu en selecteer vervolgens de map met uw Azure AD B2C-tenant.
 1. Selecteer Azure AD **B2C**in het linkermenu . Selecteer Ook **Alle services** en zoek naar Azure AD **B2C**en selecteer deze .
 1. Selecteer **App-registraties (Voorbeeld)** en selecteer **Alle toepassingen**.
@@ -75,13 +75,13 @@ Als u aangepaste kenmerken in uw beleid wilt inschakelen, geeft u **toepassings-
             <Item Key="ApplicationObjectId"></Item>
           </Metadata>
         </TechnicalProfile>
-      <TechnicalProfiles> 
+      </TechnicalProfiles> 
     </ClaimsProvider>
     ```
 
 ## <a name="upload-your-custom-policy"></a>Uw aangepaste beleid uploaden
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zorg ervoor dat u de map met uw Azure AD-tenant gebruikt door het **filter Directory + abonnement** in het bovenste menu te selecteren en de map te kiezen die uw Azure AD B2C-tenant bevat.
 3. Kies **Alle services** in de linkerbovenhoek van de Azure-portal en zoek en selecteer **app-registraties**.
 4. Selecteer **Identity Experience Framework**.
@@ -96,7 +96,7 @@ Dezelfde extensiekenmerken worden gedeeld tussen ingebouwde en aangepaste beleid
 
 U deze kenmerken maken met behulp van de portal-gebruikersinterface voor of nadat u ze hebt gebruikt in uw aangepaste beleid. Volg de richtlijnen voor het [definiëren van aangepaste kenmerken in Azure Active Directory B2C](user-flow-custom-attributes.md). Wanneer u een **kenmerkloyaltyId** in de portal maakt, moet u het als volgt doorverwijzen:
 
-|Name     |Gebruikt in |
+|Naam     |Gebruikt in |
 |---------|---------|
 |`extension_loyaltyId`  | Aangepast beleid|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|

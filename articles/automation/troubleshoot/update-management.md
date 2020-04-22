@@ -1,6 +1,6 @@
 ---
-title: Fouten oplossen met Azure Update Management
-description: Meer informatie over het oplossen en oplossen van problemen met de oplossing voor updatebeheer in Azure.
+title: Azure Automation Update Management oplossen
+description: Meer informatie over het oplossen en oplossen van problemen met de oplossing voor updatebeheer in Azure Automation.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,22 +8,22 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c9ff05591c98fda8be39e32f26da484f56e0831b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984620"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678926"
 ---
-# <a name="troubleshooting-issues-with-update-management"></a>Problemen oplossen met Updatebeheer
+# <a name="troubleshoot-issues-with-the-update-management-solution"></a>Problemen met de oplossing Updatebeheer oplossen
 
-In dit artikel worden oplossingen besproken voor problemen die u zou kunnen tegenkomen bij het gebruik van Updatemanagement.
+In dit artikel worden problemen besproken die u mogelijk tegenkomt wanneer u de oplossing Updatebeheer gebruikt. Er is een probleemoplosser voor de hybride runbookworker om het onderliggende probleem te bepalen. Zie [Problemen met Windows-updateagent oplossen](update-agent-issues.md) en [problemen met linux-updateagentoplossen](update-agent-issues-linux.md)voor meer informatie over de probleemoplosser. Zie [Problemen met oplossingsonboarding oplossen](onboarding.md)voor andere onboarding problemen met onboarding.
 
-Er is een probleemoplosser voor de agent Hybride werknemer om het onderliggende probleem te bepalen. Zie Problemen met [de updateagent oplossen](update-agent-issues.md)voor meer informatie over de probleemoplosser. Voor alle andere problemen gebruikt u de volgende richtlijnen voor het oplossen van problemen.
+>[!NOTE]
+>Als u problemen vindt bij het inwerken van de oplossing op een virtuele machine (VM), controleert u het logboek **Operations Manager** onder **Logboeken van toepassing en services** op de lokale machine. Zoek naar gebeurtenissen met gebeurtenis-id 4502 en gebeurtenisdetails die bevatten. `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`
 
-Als u problemen vindt bij het inwerken van de oplossing op een virtuele machine (VM), controleert u het logboek **Operations Manager** onder **Logboeken van toepassing en services** op de lokale machine. Zoek naar gebeurtenissen met gebeurtenis-id 4502 en gebeurtenisdetails die bevatten. `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`
-
-In de volgende sectie worden specifieke foutberichten en mogelijke oplossingen voor elk gedeelte belicht. Zie [Problemen met oplossingsonboarding oplossen](onboarding.md)voor andere onboarding problemen met onboarding.
+>[!NOTE]
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](../automation-update-azure-modules.md)
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Scenario: U ontvangt de fout 'Kan de update-oplossing niet inschakelen'
 
@@ -299,7 +299,7 @@ Deze fout kan optreden om de volgende redenen:
 
 * Er is een dubbele computernaam met verschillende broncomputer-id's. Dit scenario treedt op wanneer een VM met een bepaalde computernaam wordt gemaakt in verschillende resourcegroepen en rapporteert aan dezelfde werkruimte van logistiek agent in het abonnement.
 
-* De VM-afbeelding die aan boord wordt genomen, kan afkomstig zijn van een gekloonde machine die niet is voorbereid met System Preparation (sysprep) met de Microsoft Monitoring Agent (MMA) geïnstalleerd.
+* De VM-afbeelding die wordt aanboord, kan afkomstig zijn van een gekloonde machine die niet is voorbereid met System Preparation (sysprep) met de Log Analytics-agent voor Windows geïnstalleerd.
 
 ### <a name="resolution"></a>Oplossing
 
@@ -351,17 +351,16 @@ Deze fout treedt op wanneer u een update-implementatie maakt met Azure VM's in e
 
 ### <a name="resolution"></a>Oplossing
 
-Gebruik de volgende tijdelijke oplossing om deze items gepland te krijgen. U de cmdlet [Nieuw-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) met de `ForUpdate` parameter gebruiken om een planning te maken. Gebruik vervolgens de cmdlet [Nieuw-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
-) en geef de `NonAzureComputer` machines in de andere tenant door aan de parameter. In het volgende voorbeeld ziet u hoe u dit doet:
+Gebruik de volgende tijdelijke oplossing om deze items gepland te krijgen. U de cmdlet [Nieuw-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) met de `ForUpdateConfiguration` parameter gebruiken om een planning te maken. Gebruik vervolgens de cmdlet [Nieuw-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) en geef de `NonAzureComputer` machines in de andere tenant door aan de parameter. In het volgende voorbeeld ziet u hoe u dit doet:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
 
 $startTime = ([DateTime]::Now).AddMinutes(10)
 
-$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+$s = New-AzAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdateConfiguration
 
-New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
 ## <a name="scenario-unexplained-reboots"></a><a name="node-reboots"></a>Scenario: Onverklaarbare reboots
@@ -614,7 +613,7 @@ KB2267602 is de [definitie-update voor Windows Defender](https://www.microsoft.c
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je je probleem niet hebt gezien of het probleem niet oplossen, kun je een van de volgende kanalen proberen voor extra ondersteuning.
+Als u uw probleem niet ziet of het probleem niet oplossen, probeert u een van de volgende kanalen voor extra ondersteuning.
 
 * Krijg antwoorden van Azure-experts via [Azure Forums.](https://azure.microsoft.com/support/forums/)
 * Maak [@AzureSupport](https://twitter.com/azuresupport)verbinding met het officiële Microsoft Azure-account voor het verbeteren van de klantervaring.

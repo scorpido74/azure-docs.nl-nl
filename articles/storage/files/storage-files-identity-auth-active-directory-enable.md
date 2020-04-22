@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/20/2020
 ms.author: rogarana
-ms.openlocfilehash: 8d1e1262c592f0120b191e18a5c16b97b887a6a2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 44debc299054568769bfbe6cfc089cc528594274
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536524"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677080"
 ---
 # <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>On-premises Active Directory Domain Services-verificatie via SMB inschakelen voor Azure-bestandsshares
 
@@ -68,11 +68,7 @@ Voordat u AD DS-verificatie inschakelt voor Azure-bestandsshares, moet u ervoor 
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
-Azure Files-verificatie met AD DS (voorbeeld) is beschikbaar in [de meeste openbare regio's.](https://azure.microsoft.com/global-infrastructure/regions/)
-
-Azure Files-verificatie met on-premises AD DS is niet beschikbaar in:
-- VS - west
-
+Azure Files-verificatie met AD DS (preview) is beschikbaar in [alle openbare regio's en Azure Gov-regio's.](https://azure.microsoft.com/global-infrastructure/locations/)
 
 ## <a name="workflow-overview"></a>Overzicht van werkstroom
 
@@ -84,13 +80,13 @@ Volg vervolgens de onderstaande stappen om Azure Files in te stellen voor AD-ver
 
 1. Azure Files AD DS-verificatie inschakelen op uw opslagaccount. 
 
-1. Toegangsmachtigingen voor een aandeel toewijzen aan de Azure AD-identiteit (een gebruiker, groep of serviceprincipal) die synchroon loopt met de doel-AD-identiteit. 
+2. Toegangsmachtigingen voor een aandeel toewijzen aan de Azure AD-identiteit (een gebruiker, groep of serviceprincipal) die synchroon loopt met de doel-AD-identiteit. 
 
-1. Configureer ACL's boven SMB voor mappen en bestanden. 
+3. Configureer ACL's boven SMB voor mappen en bestanden. 
  
-1. Stel een Azure-bestandsshare in op een VM die is aangesloten bij uw AD DS. 
+4. Stel een Azure-bestandsshare in op een VM die is aangesloten bij uw AD DS. 
 
-1. Werk het wachtwoord van de identiteit van uw opslagaccount bij in AD DS.
+5. Werk het wachtwoord van de identiteit van uw opslagaccount bij in AD DS.
 
 In het volgende diagram wordt de end-to-end-werkstroom weergegeven voor het inschakelen van Azure AD-verificatie via SMB voor Azure-bestandsshares. 
 

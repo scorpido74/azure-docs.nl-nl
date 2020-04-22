@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521320"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676361"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Toegang tot Bronnen voor gebeurtenishubs verifiëren met behulp van gedeelde toegangshandtekeningen (SAS)
 Met de handtekening van gedeelde toegang (SAS) hebt u gedetailleerde controle over het type toegang dat u verleent aan de clients die de handtekening voor gedeelde toegang hebben. Hier volgen enkele besturingselementen die u in een SAS instellen: 
@@ -22,7 +22,7 @@ Met de handtekening van gedeelde toegang (SAS) hebt u gedetailleerde controle ov
 - De door de SAS verleende machtigingen. Een SAS voor een naamruimte voor gebeurtenishubs kan bijvoorbeeld de luistertoestemming verlenen, maar niet de verzendtoestemming.
 - Alleen clients die geldige referenties presenteren, kunnen gegevens naar een gebeurtenishub verzenden.
 - Een client kan zich niet voordoen als een andere client.
-- Een rougeclient kan worden geblokkeerd voor het verzenden van gegevens naar een gebeurtenishub.
+- Een malafide client kan worden geblokkeerd voor het verzenden van gegevens naar een gebeurtenishub.
 
 In dit artikel wordt de toegang tot Event Hubs-bronnen met SAS geauthenticeren. Zie [dit artikel](authorize-access-shared-access-signature.md)voor meer informatie over het **toestaan van** toegang tot bronnen van gebeurtenishubs met SAS. 
 

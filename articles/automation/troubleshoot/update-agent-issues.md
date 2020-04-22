@@ -1,6 +1,6 @@
 ---
-title: Diagnose Windows Hybrid Runbook Worker - Azure Update Management
-description: Meer informatie over het oplossen en oplossen van problemen met de Azure Automation Hybrid Runbook Worker op Windows die Updatebeheer ondersteunt.
+title: Problemen met Windows-updateagent oplossen in Azure Automation Update Management
+description: Meer informatie over het oplossen en oplossen van problemen met de Windows-updateagent met behulp van de updatebeheeroplossing.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: ec35d11eba59ea21947e2c3cd5286bababa4eabb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6983a2ac7ab5fafcb00aee0b72221a8540ea1668
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76153851"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678975"
 ---
-# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>De status van Windows Hybrid Runbook Worker begrijpen en oplossen in Updatebeheer
+# <a name="troubleshoot-windows-update-agent-issues"></a>Problemen met Windows-updateagent oplossen
 
-Er kunnen vele redenen zijn waarom uw machine niet **Ready** weergeeft in Updatebeheer. In Updatebeheer u de status van een hybride runbookworker-agent controleren om het onderliggende probleem te bepalen. In dit artikel wordt besproken hoe u de probleemoplosser voor Azure-machines uitvoeren vanuit de Azure-portal en niet-Azure-machines in het [offlinescenario.](#troubleshoot-offline)
+Er kunnen vele redenen zijn waarom uw machine niet als klaar (gezond) wordt weergegeven in Update Management. In Updatebeheer u de status van een hybride runbookworker-agent controleren om het onderliggende probleem te bepalen. In dit artikel wordt besproken hoe u de probleemoplosser voor Azure-machines uitvoeren vanuit de Azure-portal en niet-Azure-machines in het [offlinescenario.](#troubleshoot-offline)
 
-De volgende lijst zijn de drie gereedheidstoestanden waarin een machine zich kan bevinden:
+De volgende zijn de drie gereedheidstoestanden voor een machine:
 
-* **Klaar** - De hybride runbook worker is geïmplementeerd en is minder dan 1 uur geleden voor het laatst gezien.
-* **Losgekoppeld** - De hybride runbookworker wordt geïmplementeerd en is meer dan 1 uur geleden voor het laatst gezien.
-* **Niet geconfigureerd** - De hybride runbookworker is niet gevonden of is nog niet klaar met instappen.
+* Klaar - De hybride runbook worker is geïmplementeerd en is minder dan 1 uur geleden voor het laatst gezien.
+* Losgekoppeld - De hybride runbookworker wordt geïmplementeerd en is meer dan 1 uur geleden voor het laatst gezien.
+* Niet geconfigureerd - De hybride runbookworker is niet gevonden of is nog niet klaar met instappen.
 
 > [!NOTE]
-> Er kan een kleine vertraging optreden tussen wat de Azure-portal weergeeft en de huidige status van de machine.
+> Er kan een kleine vertraging optreden tussen wat de Azure-portal weergeeft en de huidige status van een machine.
 
 ## <a name="start-the-troubleshooter"></a>De probleemoplosser starten
 
-Klik voor Azure-machines op de koppeling **Problemen oplossen** onder de kolom **Gereedheid bijwerken** in de portal en start de pagina Problemen met **updateagent.** Voor niet-Azure-machines brengt de koppeling u naar dit artikel. Zie de [offline instructies](#troubleshoot-offline) om problemen op te lossen voor een niet-Azure-machine.
+Klik voor Azure-machines op de koppeling **Problemen oplossen** onder de kolom **Gereedheid bijwerken** in de portal en start de pagina Problemen met updateagent. Voor niet-Azure-machines brengt de koppeling u naar dit artikel. Zie de [offline instructies](#troubleshoot-offline) om problemen op te lossen voor een niet-Azure-machine.
 
 ![Lijst met beheer van virtuele machines bijwerken](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
 > Als u de status van de hybride runbookworker wilt controleren, moet de vm worden uitgevoerd. Als de vm niet wordt uitgevoerd, wordt de knop **VM starten** weergegeven.
 
-Selecteer op de pagina **Problemen met bijwerken agent** de optie Controles **uitvoeren** om de probleemoplosser te starten. De probleemoplosser gebruikt [Run Command](../../virtual-machines/windows/run-command.md) om een script op de machine uit te voeren om afhankelijkheden te verifiëren. Wanneer de probleemoplosser is voltooid, wordt het resultaat van de controles geretourneerd.
+Selecteer op de pagina Problemen met bijwerken agent de optie **Controles uitvoeren** om de probleemoplosser te starten. De probleemoplosser gebruikt [Run Command](../../virtual-machines/windows/run-command.md) om een script op de machine uit te voeren om afhankelijkheden te verifiëren. Wanneer de probleemoplosser is voltooid, wordt het resultaat van de controles geretourneerd.
 
 ![Pagina Updateagent oplossen](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -86,15 +86,13 @@ Proxy- en firewallconfiguraties moeten de medewerker Hybride Runbook Worker in s
 
 ### <a name="monitoring-agent-service-status"></a>Status van bewakingsagentservice
 
-Deze controle `HealthService`bepaalt of de Microsoft Monitoring Agent op de machine wordt uitgevoerd.
+Deze controle bepaalt of de loganalyse-agent voor Windows (`healthservice`) wordt uitgevoerd op de machine. Zie [De loganalyse-agent voor Windows wordt niet uitgevoerd](hybrid-runbook-worker.md#mma-not-running)voor meer informatie over het oplossen van problemen met de service.
 
-Zie [De Microsoft-bewakingsagent wordt niet uitgevoerd](hybrid-runbook-worker.md#mma-not-running)voor meer informatie over het oplossen van problemen met de service.
-
-Zie [De Microsoft-bewakingsagent installeren en configureren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)als u de Microsoft Monitoring Agent opnieuw wilt installeren en configureren.
+Zie [De agent LogAnalytics voor Windows installeren en configureren als](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)u de agent Log Analytics opnieuw wilt installeren voor Windows.
 
 ### <a name="monitoring-agent-service-events"></a>Gebeurtenissen van de bewakingsagentservice
 
-Met deze controle `4502` bepaalt u of gebeurtenissen in de afgelopen 24 uur worden weergegeven in het Azure Operations Manager-logboek op de machine.
+Deze controle bepaalt of 4502 gebeurtenissen in de afgelopen 24 uur in het Azure Operations Manager-logboek op de machine zijn weergegeven.
 
 Zie de [handleiding voor probleemoplossing](hybrid-runbook-worker.md#event-4502) voor deze gebeurtenis voor meer informatie over deze gebeurtenis.
 
@@ -167,9 +165,9 @@ RuleName                    : Monitoring Agent service status
 RuleGroupName               : VM Service Health Checks
 RuleDescription             : HealthService must be running on the machine
 CheckResult                 : Failed
-CheckResultMessage          : Microsoft Monitoring Agent service (HealthService) is not running
+CheckResultMessage          : Log Analytics for Windows service (HealthService) is not running
 CheckResultMessageId        : MonitoringAgentServiceRunningCheck.Failed
-CheckResultMessageArguments : {Microsoft Monitoring Agent, HealthService}
+CheckResultMessageArguments : {Log Analytics agent for Windows, HealthService}
 
 RuleId                      : MonitoringAgentServiceEventsCheck
 RuleGroupId                 : servicehealth
@@ -177,9 +175,9 @@ RuleName                    : Monitoring Agent service events
 RuleGroupName               : VM Service Health Checks
 RuleDescription             : Event Log must not have event 4502 logged in the past 24 hours
 CheckResult                 : Failed
-CheckResultMessage          : Microsoft Monitoring Agent service Event Log (Operations Manager) does not exist on the machine
+CheckResultMessage          : Log Analytics agent for Windows service Event Log (Operations Manager) does not exist on the machine
 CheckResultMessageId        : MonitoringAgentServiceEventsCheck.Failed.NoLog
-CheckResultMessageArguments : {Microsoft Monitoring Agent, Operations Manager, 4502}
+CheckResultMessageArguments : {Log Analytics agent for Windows, Operations Manager, 4502}
 
 RuleId                      : CryptoRsaMachineKeysFolderAccessCheck
 RuleGroupId                 : permissions

@@ -12,12 +12,12 @@ ms.date: 12/17/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6021348160b338bc3a153764968f6c846a644cd1
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f559dc0da8680a6cd3243b5ee12c3145244c9c2c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535856"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677868"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft-identiteitsplatform en de stroom van de OAuth 2.0-clientreferenties
 
@@ -26,9 +26,6 @@ U de [OAuth 2.0-clientreferentiessubsidie](https://tools.ietf.org/html/rfc6749#s
 In dit artikel wordt beschreven hoe u rechtstreeks programmeren tegen het protocol in uw toepassing. Waar mogelijk raden we u aan de ondersteunde Microsoft Authentication Libraries (MSAL) te gebruiken om tokens te [verkrijgen en beveiligde web-API's te bellen.](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)  Kijk ook eens naar de [voorbeeld-apps die MSAL gebruiken.](sample-v2-code.md)
 
 Met de subsidiestroom van de OAuth 2.0-clientreferenties kan een webservice (vertrouwelijke client) zijn eigen referenties gebruiken, in plaats van zich voor te doen als een gebruiker, om te verifiëren wanneer u een andere webservice aanroept. In dit scenario is de client meestal een middle-tier webservice, een daemon-service of een website. Voor een hoger niveau van zekerheid, het Microsoft-identiteitsplatform staat de oproepservice ook toe om een certificaat (in plaats van een gedeeld geheim) als referentie te gebruiken.
-
-> [!NOTE]
-> Het eindpunt van het Microsoft-identiteitsplatform biedt geen ondersteuning voor alle Azure AD-scenario's en -functies. Als u wilt bepalen of u het eindpunt van het Microsoft-identiteitsplatform moet gebruiken, leest u over [de beperkingen van het Microsoft-identiteitsplatform.](active-directory-v2-limitations.md)
 
 In de meer typische *driebenige OAuth*krijgt een clienttoepassing toestemming om namens een specifieke gebruiker toegang te krijgen tot een bron. De toestemming wordt gedelegeerd van de gebruiker aan de toepassing, meestal tijdens het [toestemmingsproces.](v2-permissions-and-consent.md) Echter, in de client referenties (*tweebenige OAuth*) stroom, machtigingen worden direct verleend aan de toepassing zelf. Wanneer de app een token aan een resource presenteert, dwingt de resource dat de app zelf toestemming heeft om een actie uit te voeren en niet de gebruiker.
 

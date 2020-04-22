@@ -12,21 +12,18 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ac630c4901c126ed883adbdc7efb03f36372e6ff
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: e5e462c52c8b06af6da5081f84a082138cd53a3f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535873"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677950"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft-identiteitsplatform en OAuth 2.0-autorisatiecodestroom
 
 De OAuth 2.0-autorisatiecodeverlening kan worden gebruikt in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-API's. Met behulp van de implementatie van OAuth 2.0 van het Microsoft-identiteitsplatform u aanmeldings- en API-toegang toevoegen aan uw mobiele en desktop-apps. Deze handleiding is taalonafhankelijk en beschrijft hoe u HTTP-berichten verzendt en ontvangt zonder gebruik te maken van een van de [azure open-source verificatiebibliotheken.](reference-v2-libraries.md)
 
 In dit artikel wordt beschreven hoe u rechtstreeks programmeren tegen het protocol in uw toepassing.  Waar mogelijk raden we u aan de ondersteunde Microsoft Authentication Libraries (MSAL) te gebruiken om tokens te [verkrijgen en beveiligde web-API's te bellen.](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)  Kijk ook eens naar de [voorbeeld-apps die MSAL gebruiken.](sample-v2-code.md)
-
-> [!NOTE]
-> Niet alle Azure Active Directory-scenario's & functies worden ondersteund door het eindpunt van het Microsoft-identiteitsplatform. Als u wilt bepalen of u het eindpunt van het Microsoft-identiteitsplatform moet gebruiken, leest u over [de beperkingen van het Microsoft-identiteitsplatform.](active-directory-v2-limitations.md)
 
 De OAuth 2.0 autorisatiecodestroom wordt beschreven in [punt 4.1 van de OAuth 2.0-specificatie](https://tools.ietf.org/html/rfc6749). Het wordt gebruikt om verificatie en autorisatie uit te voeren in de meeste app-typen, waaronder [web-apps](v2-app-types.md#web-apps) en [native geïnstalleerde apps.](v2-app-types.md#mobile-and-native-apps) De stroom stelt apps in staat om veilig access_tokens te verwerven die kunnen worden gebruikt om toegang te krijgen tot bronnen die zijn beveiligd door het eindpunt van het Microsoft-identiteitsplatform.
 

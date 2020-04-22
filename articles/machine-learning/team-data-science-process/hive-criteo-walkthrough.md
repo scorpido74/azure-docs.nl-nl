@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 218fb96f6960e194f0fc4a4a3a3e603388b961c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760807"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677604"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Het Team Data Science-proces in actie - Een Azure HDInsight Hadoop-cluster gebruiken op een 1 TB-gegevensset
 
@@ -434,7 +434,7 @@ Voor de module **Gegevens importeren** zijn de waarden van de parameters die in 
 
 1. Kies 'Hive-query' voor **gegevensbron**
 2. In het queryvak **hive-database** is een\_\_eenvoudige SELECT\_\_* FROM <uw databasenaam.uw tabelnaam> - voldoende.
-3. **Hcatalog server URI:** Als uw cluster is "abc", dan is dit gewoon:https://abc.azurehdinsight.net
+3. **Hcatalog server URI:** Als uw cluster is "abc",\/dan is dit gewoon: https: /abc.azurehdinsight.net
 4. **Hadoop gebruikersnaam naam:** De gebruikersnaam gekozen op het moment van inbedrijfstelling van het cluster. (NIET de gebruikersnaam van rastoegang!)
 5. **Hadoop gebruikersaccount wachtwoord:** Het wachtwoord voor de gebruikersnaam gekozen op het moment van de inbedrijfstelling van het cluster. (NIET het wachtwoord voor externe toegang!)
 6. **Locatie van uitvoergegevens**: Kies "Azure"

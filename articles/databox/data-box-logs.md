@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260018"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676414"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Tracking- en gebeurtenislogboekregistratie voor uw Azure Data Box en Azure Data Box Heavy
 
@@ -47,7 +47,7 @@ Als u de toegang tot een bestelling wilt beperken, u het nieuwe dialoogvenster s
 - Een rol toewijzen op orderniveau. De gebruiker heeft alleen die machtigingen zoals gedefinieerd door de rollen om alleen te communiceren met die specifieke databoxvolgorde en niets anders.
 - Wijs een rol toe op het niveau van de resourcegroep, de gebruiker heeft toegang tot alle databoxorders binnen een resourcegroep.
 
-Zie [Aanbevolen procedures voor RBAC voor](../role-based-access-control/overview.md#best-practice-for-using-rbac)meer informatie over voorgesteld RBAC-gebruik.
+Zie Aanbevolen procedures voor Azure [RBAC voor](../role-based-access-control/best-practices.md)meer informatie over voorgesteld RBAC-gebruik.
 
 ## <a name="track-the-order"></a>De bestelling volgen
 

@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c04fc82b8b04e474a656a0849177f7aa5d27b427
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274708"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676420"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows-schema voor diagnostische extensie
 Azure Diagnostics-extensie is een agent in Azure Monitor die bewakingsgegevens verzamelt van het gastbesturingssysteem en workloads van Azure-rekenbronnen. In dit artikel wordt het schema beschreven dat wordt gebruikt voor de configuratie van de diagnostische extensie op virtuele Windows-machines en andere rekenbronnen.
@@ -87,7 +87,7 @@ Het element op het hoogste niveau van het configuratiebestand voor diagnostiek.
 |**DiagnostischeInfrastructuurLogboeken**|Gegevensverzameling inschakelen die zijn gegenereerd door Azure Diagnostics. De logboeken van diagnostische infrastructuur zijn handig voor het oplossen van problemen met het diagnosesysteem zelf. Optionele kenmerken zijn:<br /><br /> - **scheduledTransferLogLevelFilter** - Configureert het minimale ernstniveau van de verzamelde logboeken.<br /><br /> - **scheduledTransferPeriod** - Het interval tussen geplande overdrachten naar opslag afgerond op de dichtstbijzijnde minuut. De waarde is een [XML -type 'Duurgegevens'.](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**Mappen**|Zie beschrijving elders op deze pagina.|  
 |**EtwProviders**|Zie beschrijving elders op deze pagina.|  
-|**Statistieken**|Zie beschrijving elders op deze pagina.|  
+|**Metrische gegevens**|Zie beschrijving elders op deze pagina.|  
 |**Prestatiemeteritems**|Zie beschrijving elders op deze pagina.|  
 |**WindowsEventLog (WindowsEventLog)**|Zie beschrijving elders op deze pagina.|
 |**DockerBronnen**|Zie beschrijving elders op deze pagina. |
@@ -223,9 +223,8 @@ Het element op het hoogste niveau van het configuratiebestand voor diagnostiek.
 
 |Onderliggend element|Beschrijving|  
 |-------------------|-----------------|  
-|**Datasource**|De Windows Event-logboeken die u wilt verzamelen. Vereist kenmerk:<br /><br /> **naam** - De XPath-query beschrijft de windows-gebeurtenissen die moeten worden verzameld. Bijvoorbeeld:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Als u alle gebeurtenissen wilt verzamelen, geeft u '*' op|  
-
-
+|**Datasource**|De Windows Event-logboeken die u wilt verzamelen. Vereist kenmerk:<br /><br /> **naam** - De XPath-query beschrijft de windows-gebeurtenissen die moeten worden verzameld. Bijvoorbeeld:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Als u alle gebeurtenissen wilt verzamelen, geeft u '*' op |
+|**Putten** | Toegevoegd in 1.5. Optioneel. Wijst naar een gootsteenlocatie om ook diagnostische gegevens te verzenden voor alle onderliggende elementen die putten ondersteunen. Sink voorbeeld is Application Insights of Event Hubs.|  
 
 
 ## <a name="logs-element"></a>Logboekenelement  
@@ -238,9 +237,9 @@ Het element op het hoogste niveau van het configuratiebestand voor diagnostiek.
 |Kenmerk|Type|Beschrijving|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Optioneel. Hiermee geeft u de maximale hoeveelheid bestandssysteemopslag op die beschikbaar is voor de opgegeven gegevens.<br /><br /> De standaardwaarde is 0.|  
-|**geplandTransferLogLevelFilter**|**tekenreeks**|Optioneel. Hiermee geeft u het minimumernstniveau op voor logboekvermeldingen die worden overgedragen. De standaardwaarde is **Niet gedefinieerd,** waardoor alle logboeken worden overgedragen. Andere mogelijke waarden (in volgorde van de meeste tot minste informatie) zijn **Verbose**, **Informatie**, **Waarschuwing**, **Fout**en **Kritiek**.|  
+|**geplandTransferLogLevelFilter**|**Tekenreeks**|Optioneel. Hiermee geeft u het minimumernstniveau op voor logboekvermeldingen die worden overgedragen. De standaardwaarde is **Niet gedefinieerd,** waardoor alle logboeken worden overgedragen. Andere mogelijke waarden (in volgorde van de meeste tot minste informatie) zijn **Verbose**, **Informatie**, **Waarschuwing**, **Fout**en **Kritiek**.|  
 |**geplandTransferPeriod**|**Duur**|Optioneel. Hiermee geeft u het interval op tussen geplande overdrachten van gegevens, naar boven afgerond op de dichtstbijzijnde minuut.<br /><br /> De standaardinstelling is PT0S.|  
-|**Putten** |**tekenreeks**| Toegevoegd in 1.5. Optioneel. Wijst naar een gootsteenlocatie om ook diagnostische gegevens te verzenden. Bijvoorbeeld Application Insights of Event Hubs.|  
+|**Putten** |**Tekenreeks**| Toegevoegd in 1.5. Optioneel. Wijst naar een gootsteenlocatie om ook diagnostische gegevens te verzenden. Bijvoorbeeld Application Insights of Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerBronnen
  *Boom: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
@@ -296,8 +295,8 @@ Het element op het hoogste niveau van het configuratiebestand voor diagnostiek.
 
 |Kenmerken|Type|Beschrijving|  
 |----------------|----------|-----------------|  
-|**Loglevel**|**tekenreeks**|Hiermee geeft u het minimumernstniveau op voor logboekvermeldingen die worden overgedragen. De standaardwaarde is **Niet gedefinieerd,** waardoor alle logboeken worden overgedragen. Andere mogelijke waarden (in volgorde van de meeste tot minste informatie) zijn **Verbose**, **Informatie**, **Waarschuwing**, **Fout**en **Kritiek**.|  
-|**Naam**|**tekenreeks**|Een unieke naam van het kanaal om naar te verwijzen|  
+|**Loglevel**|**Tekenreeks**|Hiermee geeft u het minimumernstniveau op voor logboekvermeldingen die worden overgedragen. De standaardwaarde is **Niet gedefinieerd,** waardoor alle logboeken worden overgedragen. Andere mogelijke waarden (in volgorde van de meeste tot minste informatie) zijn **Verbose**, **Informatie**, **Waarschuwing**, **Fout**en **Kritiek**.|  
+|**Naam**|**Tekenreeks**|Een unieke naam van het kanaal om naar te verwijzen|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig Element

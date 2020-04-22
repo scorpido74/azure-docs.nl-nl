@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2020
 ms.author: shvija
-ms.openlocfilehash: 806a1f16327ad72a7f3527c813b355e1ba807dda
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 32b08e565b86af8f6373c9848211646128bb346d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606754"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677357"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migreren naar Azure Event Hubs voor Apache Kafka-ecosystemen
 Azure Event Hubs legt een Apache Kafka-eindpunt bloot, waarmee u verbinding maken met gebeurtenishubs via het Kafka-protocol. Door minimale wijzigingen aan te brengen in uw bestaande Kafka-toepassing, u verbinding maken met Azure Event Hubs en profiteren van de voordelen van het Azure-ecosysteem. Event Hubs voor Kafka ondersteunen [Apache Kafka versie 1.0](https://kafka.apache.org/10/documentation.html) en hoger.
@@ -71,4 +71,3 @@ Zie de volgende artikelen voor meer informatie over gebeurtenishubs en gebeurten
 - [Veelgestelde vragen - Event Hubs voor Apache Kafka](apache-kafka-frequently-asked-questions.md)
 - [Apache Kafka-ontwikkelaarshandleiding voor Azure Event Hubs](apache-kafka-developer-guide.md)
 - [Aanbevolen configuraties](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
-- 

@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 4583c02b52ab6b3a4e5056a47db096d4e34399ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3eedb5440711c7a45a13dcd53dd489c490588fc
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248019"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677412"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup-fout oplossen: problemen met de agent of extensie
 
@@ -142,6 +142,13 @@ Als de geplande back-upbewerking langer duurt, in strijd met de volgende back-up
 
 Deze fout wordt gemeld door de IaaS VM. Als u de hoofdoorzaak van het probleem wilt identificeren, gaat u naar de kluisinstellingen van Recovery Services. Selecteer **onder** de sectie Controle de optie **Back-uptaken** filteren en de status weergeven. Klik op **Fouten** om de onderliggende foutberichtgegevens te bekijken. Verdere acties uitvoeren volgens de aanbevelingen op de pagina foutdetails.
 
+## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent - Back-up mislukt: deze virtuele machine wordt niet (actief) beschermd door Azure Backup
+
+**Foutcode**: UserErrorBcmDatasourceNotPresent <br>
+**Foutbericht:** back-up is mislukt: deze virtuele machine wordt niet (actief) beschermd door Azure Backup.
+
+Controleer of de gegeven virtuele machine actief is (niet in pauzestatus) die wordt beschermd door Azure Backup. Om dit probleem op te lossen, moet u ervoor zorgen dat de virtuele machine actief is en vervolgens de bewerking opnieuw proberen.
+
 ## <a name="causes-and-solutions"></a>Oorzaken en oplossingen
 
 ### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>De agent is geïnstalleerd in de VM, maar reageert niet (voor Windows VM's)
@@ -211,7 +218,7 @@ De volgende voorwaarden kunnen ertoe leiden dat de momentopnametaak mislukt:
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Vergrendeling verwijderen uit de brongroep herstelpunt
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Ga naar **de optie Alle bronnen,** selecteer de brongroep bronvan het herstelpuntverzameling in de volgende indeling AzureBackupRG_`<Geo>`_`<number>`.
 3. Selecteer **In** de sectie Instellingen de optie **Sloten** om de vergrendelingen weer te geven.
 4. Als u het slot wilt verwijderen, selecteert u de ellips en klikt u op **Verwijderen**.
@@ -240,7 +247,7 @@ Nadat u het slot hebt verwijderd, activeert u een on-demand back-up. Deze actie 
 
 Als u de verzameling herstelpunten handmatig wilt wissen, die niet is gewist vanwege het slot op de resourcegroep, probeert u de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Klik **in** het menu Hub op **Alle bronnen**,`<Geo>`selecteer`<number>` de groep Resource met de volgende indeling AzureBackupRG_ _ waar uw vm zich bevindt.
 
     ![Vergrendeling verwijderen](./media/backup-azure-arm-vms-prepare/resource-group.png)

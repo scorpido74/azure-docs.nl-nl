@@ -12,19 +12,16 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: 55055f65e1b725e079b60e960837e05558ef08d6
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 26bfbcb4762d889b2c56276e66e4bf8e0acb64b2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886208"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677693"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Machtigingen en toestemming in het eindpunt van het Microsoft-identiteitsplatform
 
 Toepassingen die integreren met het Microsoft-identiteitsplatform volgen een autorisatiemodel dat gebruikers en beheerders controle geeft over hoe gegevens kunnen worden geopend. De implementatie van het autorisatiemodel is bijgewerkt op het eindpunt van het Microsoft-identiteitsplatform en verandert de manier waarop een app moet communiceren met het Microsoft-identiteitsplatform. Dit artikel behandelt de basisconcepten van dit autorisatiemodel, inclusief scopes, machtigingen en toestemming.
-
-> [!NOTE]
-> Het eindpunt van het Microsoft-identiteitsplatform ondersteunt niet alle scenario's en functies. Als u wilt bepalen of u het eindpunt van het Microsoft-identiteitsplatform moet gebruiken, leest u over [de beperkingen van het Microsoft-identiteitsplatform.](active-directory-v2-limitations.md)
 
 ## <a name="scopes-and-permissions"></a>Scopes en machtigingen
 
@@ -66,8 +63,8 @@ _Effectieve machtigingen_ zijn de machtigingen die uw app heeft bij het indienen
 - Voor gedelegeerde machtigingen zijn de _effectieve machtigingen_ van uw app het minst bevoorrechte snijpunt van de gedelegeerde machtigingen die de app heeft gekregen (via toestemming) en de bevoegdheden van de momenteel aangemelde gebruiker. Uw app kan nooit meer machtigingen hebben dan de aangemelde gebruiker. De machtigingen van de aangemelde gebruiker kunnen in organisaties worden bepaald door beleid of door lidmaatschap in een of meer beheerdersrollen. Zie [Beheerdersrolmachtigingen in Azure AD](../users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over welke beheerdersrollen kunnen instemmen met gedelegeerde machtigingen.
 
    Stel dat uw app de gedelegeerde machtiging _Gebruiker.ReadWrite.All_ heeft gekregen. Deze machtiging verleent uw app in feite machtigingen om het profiel van elke gebruiker in een organisatie te lezen en bij te werken. Als de aangemelde gebruiker een globale beheerder is, kan uw app het profiel van elke gebruiker in de organisatie bijwerken. Als de aangemelde gebruiker zich echter niet in een beheerdersrol bevindt, kan uw app alleen het profiel van de aangemelde gebruiker bijwerken. De app kan geen profielen van andere gebruikers in de organisatie bijwerken omdat de gebruiker namens welke de app machtigingen heeft om te handelen niet over deze rechten beschikt.
-  
-- Voor toepassingsmachtigingen zijn de _effectieve machtigingen_ van uw app het volledige niveau van bevoegdheden die door de machtiging worden geïmpliceerd. Een app met de _user.ReadWrite.All-toepassingsmachtiging_ kan bijvoorbeeld het profiel van elke gebruiker in de organisatie bijwerken. 
+
+- Voor toepassingsmachtigingen zijn de _effectieve machtigingen_ van uw app het volledige niveau van bevoegdheden die door de machtiging worden geïmpliceerd. Een app met de _user.ReadWrite.All-toepassingsmachtiging_ kan bijvoorbeeld het profiel van elke gebruiker in de organisatie bijwerken.
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect-scopes
 
@@ -92,7 +89,7 @@ Het [ `offline_access` bereik](https://openid.net/specs/openid-connect-core-1_0.
 > [!NOTE]
 > Deze toestemming wordt vandaag weergegeven op alle toestemmingsschermen, zelfs voor stromen die geen vernieuwingstoken bieden (de [impliciete stroom).](v2-oauth2-implicit-grant-flow.md)  Dit is om scenario's te dekken waarin een client kan beginnen binnen de impliciete stroom en vervolgens naar de codestroom kan gaan waar een vernieuwingstoken wordt verwacht.
 
-Op het Microsoft-identiteitsplatform (verzoeken aan het v2.0-eindpunt) `offline_access` moet uw app expliciet het bereik aanvragen om vernieuwingstokens te ontvangen. Dit betekent dat wanneer u een autorisatiecode inwisselt in de [oauth 2.0-autorisatiecodestroom,](active-directory-v2-protocols.md)u alleen een toegangstoken van het `/token` eindpunt ontvangt. Het toegangstoken is korte tijd geldig. Het toegangstoken verloopt meestal binnen een uur. Op dat moment moet uw app de `/authorize` gebruiker terugleiden naar het eindpunt om een nieuwe autorisatiecode te krijgen. Tijdens deze omleiding moet de gebruiker, afhankelijk van het type app, mogelijk opnieuw zijn referenties invoeren of toestemming geven voor machtigingen. 
+Op het Microsoft-identiteitsplatform (verzoeken aan het v2.0-eindpunt) `offline_access` moet uw app expliciet het bereik aanvragen om vernieuwingstokens te ontvangen. Dit betekent dat wanneer u een autorisatiecode inwisselt in de [oauth 2.0-autorisatiecodestroom,](active-directory-v2-protocols.md)u alleen een toegangstoken van het `/token` eindpunt ontvangt. Het toegangstoken is korte tijd geldig. Het toegangstoken verloopt meestal binnen een uur. Op dat moment moet uw app de `/authorize` gebruiker terugleiden naar het eindpunt om een nieuwe autorisatiecode te krijgen. Tijdens deze omleiding moet de gebruiker, afhankelijk van het type app, mogelijk opnieuw zijn referenties invoeren of toestemming geven voor machtigingen.
 
 Zie de referentie van het [Microsoft-identiteitsplatform-protocol voor](active-directory-v2-protocols.md)meer informatie over het aanvragen en gebruiken van vernieuwingstokens.
 
@@ -117,7 +114,7 @@ De `scope` parameter is een lijst met gedelegeerde machtigingen die de app aanvr
 Nadat de gebruiker zijn referenties heeft ingebracht, controleert het eindpunt van het Microsoft-identiteitsplatform op een overeenkomende registratie van toestemming van *de gebruiker.* Als de gebruiker in het verleden geen toestemming heeft gegeven voor een van de gevraagde machtigingen en een beheerder namens de hele organisatie niet heeft ingestemd met deze machtigingen, vraagt het eindpunt van het Microsoft-identiteitsplatform de gebruiker om de gevraagde machtigingen te verlenen.
 
 > [!NOTE]
->Op dit moment `offline_access` worden de machtigingen ("Toegang tot gegevens `user.read` behouden waartoe u toegang tot hebt gegeven") en ("Meld u aan en lees uw profiel lezen") automatisch opgenomen in de eerste toestemming voor een toepassing.  Deze machtigingen zijn over het algemeen vereist `offline_access` voor de juiste app-functionaliteit - geeft de `user.read` app toegang `sub` tot vernieuwing van tokens, van cruciaal belang voor native en web-apps, terwijl geeft toegang tot de claim, waardoor de client of app correct identificeren van de gebruiker na verloop van tijd en toegang tot rudimentaire gebruikersinformatie.  
+>Op dit moment `offline_access` worden de machtigingen ("Toegang tot gegevens `user.read` behouden waartoe u toegang tot hebt gegeven") en ("Meld u aan en lees uw profiel lezen") automatisch opgenomen in de eerste toestemming voor een toepassing.  Deze machtigingen zijn over het algemeen vereist `offline_access` voor de juiste app-functionaliteit - geeft de `user.read` app toegang `sub` tot vernieuwing van tokens, van cruciaal belang voor native en web-apps, terwijl geeft toegang tot de claim, waardoor de client of app correct identificeren van de gebruiker na verloop van tijd en toegang tot rudimentaire gebruikersinformatie.
 
 ![Voorbeeldschermafbeelding met toestemming voor werkaccount](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -149,8 +146,8 @@ Als de toepassing toepassingsmachtigingen aanvraagt en een beheerder deze machti
 
 ## <a name="using-the-admin-consent-endpoint"></a>Het eindpunt voor beheerderstoestemming gebruiken
 
-> [!NOTE] 
-> Let op: nadat u toestemming van de beheerder hebt gegeven met behulp van het eindpunt voor beheerderstoestemming, bent u klaar met het verlenen van toestemming van de beheerder en hoeven gebruikers geen aanvullende acties meer uit te voeren. Na het verlenen van toestemming van de beheerder, kunnen gebruikers een toegangstoken krijgen via een typische auth-stroom en het resulterende toegangstoken heeft de toestemminggegeven machtigingen. 
+> [!NOTE]
+> Let op: nadat u toestemming van de beheerder hebt gegeven met behulp van het eindpunt voor beheerderstoestemming, bent u klaar met het verlenen van toestemming van de beheerder en hoeven gebruikers geen aanvullende acties meer uit te voeren. Na het verlenen van toestemming van de beheerder, kunnen gebruikers een toegangstoken krijgen via een typische auth-stroom en het resulterende toegangstoken heeft de toestemminggegeven machtigingen.
 
 Wanneer een bedrijfsbeheerder uw toepassing gebruikt en naar het geautoriseerde eindpunt wordt geleid, detecteert het Microsoft-identiteitsplatform de rol van de gebruiker en vraagt u of hij namens de gehele tenant toestemming wil geven voor de machtigingen die u hebt aangevraagd. Er is echter ook een speciaal eindpunt voor beheerderstoestemming dat u gebruiken als u proactief wilt vragen dat een beheerder namens de gehele tenant toestemming verleent. Het gebruik van dit eindpunt is ook noodzakelijk voor het aanvragen van toepassingsmachtigingen (die niet kunnen worden aangevraagd met behulp van het geautoriseerde eindpunt).
 
@@ -189,7 +186,7 @@ Wanneer u klaar bent om machtigingen aan te vragen bij de beheerder van uw organ
   &state=12345
   &redirect_uri=http://localhost/myapp/permissions
   &scope=
-  https://graph.microsoft.com/calendars.read 
+  https://graph.microsoft.com/calendars.read
   https://graph.microsoft.com/mail.send
 ```
 
@@ -200,7 +197,7 @@ Wanneer u klaar bent om machtigingen aan te vragen bij de beheerder van uw organ
 | `client_id` | Vereist | De **toepassings-id (client)** die de [Azure-portal – App-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring toegewezen aan uw app. |
 | `redirect_uri` | Vereist |De omleiding URI waar u wilt dat het antwoord wordt verzonden voor uw app te verwerken. Het moet precies overeenkomen met een van de omleiding URI's die u geregistreerd in de app registratie portal. |
 | `state` | Aanbevolen | Een waarde die is opgenomen in het verzoek en die ook wordt geretourneerd in het tokenantwoord. Het kan een reeks van elke inhoud die u wilt. Gebruik de status om informatie te coderen over de status van de gebruiker in de app voordat het verificatieverzoek is ingediend, zoals de pagina of weergave waarop ze zich bevonden. |
-|`scope`        | Vereist        | Hiermee definieert u de set machtigingen die door de toepassing worden aangevraagd. Dit kan statische (met behulp van) [`/.default`](#the-default-scope)of dynamische scopes zijn.  Dit kan de OIDC`openid`scopes ( , `profile`, ) `email`omvatten. Als u toepassingsmachtigingen nodig hebt, moet `/.default` u de statisch geconfigureerde lijst met machtigingen aanvragen.  | 
+|`scope`        | Vereist        | Hiermee definieert u de set machtigingen die door de toepassing worden aangevraagd. Dit kan statische (met behulp van) [`/.default`](#the-default-scope)of dynamische scopes zijn.  Dit kan de OIDC`openid`scopes ( , `profile`, ) `email`omvatten. Als u toepassingsmachtigingen nodig hebt, moet `/.default` u de statisch geconfigureerde lijst met machtigingen aanvragen.  |
 
 
 Op dit moment vereist Azure AD dat een tenantbeheerder zich aanmeldt om de aanvraag te voltooien. De beheerder wordt gevraagd alle machtigingen goed te keuren `scope` die u in de parameter hebt aangevraagd.  Als u een statische`/.default`( ) waarde hebt gebruikt, werkt deze zoals het eindpunt v1.0-beheerderstoestemming en vraagt u toestemming voor alle scopes die in de vereiste machtigingen voor de app zijn gevonden.
@@ -253,7 +250,7 @@ Content-Type: application/json
 }
 ```
 
-U het resulterende toegangstoken gebruiken in HTTP-aanvragen voor de bron. Het geeft op betrouwbare wijze aan de resource aan dat uw app de juiste toestemming heeft om een specifieke taak uit te voeren. 
+U het resulterende toegangstoken gebruiken in HTTP-aanvragen voor de bron. Het geeft op betrouwbare wijze aan de resource aan dat uw app de juiste toestemming heeft om een specifieke taak uit te voeren.
 
 Zie de verwijzing naar het [eindpuntprotocol van het Microsoft-identiteitsplatform](active-directory-v2-protocols.md)voor meer informatie over het OAuth 2.0-protocol en hoe u toegangstokens krijgen.
 
@@ -261,7 +258,7 @@ Zie de verwijzing naar het [eindpuntprotocol van het Microsoft-identiteitsplatfo
 
 U `/.default` het bereik gebruiken om uw apps te migreren van het v1.0-eindpunt naar het eindpunt van het Microsoft-identiteitsplatform. Dit is een ingebouwde scope voor elke toepassing die verwijst naar de statische lijst met machtigingen die zijn geconfigureerd op de toepassingsregistratie. Een `scope` waarde `https://graph.microsoft.com/.default` van is functioneel hetzelfde als de `resource=https://graph.microsoft.com` v1.0-eindpunten - namelijk dat het een token opvraagt met de scopes in Microsoft Graph waarvoor de toepassing is geregistreerd in de Azure-portal.  Het is gebouwd met behulp `/.default` van de resource URI + `https://contosoApp.com`(bijvoorbeeld als de `https://contosoApp.com/.default`resource URI is, dan is de gevraagde scope zou zijn).  Zie de [sectie over slepende slashes](#trailing-slash-and-default) voor gevallen waarin u een tweede slash moet opnemen om het token correct aan te vragen.
 
-De /.default-scope kan worden gebruikt in een OAuth 2.0-stroom, maar is noodzakelijk in de [stroom-en-clientreferentiesstroom en clientreferenties,](v2-oauth2-client-creds-grant-flow.md)evenals bij het gebruik van het eindpunt van de v2-beheerdertoestemming om toepassingsmachtigingen aan te vragen. [On-Behalf-Of flow](v2-oauth2-on-behalf-of-flow.md)  
+De /.default-scope kan worden gebruikt in een OAuth 2.0-stroom, maar is noodzakelijk in de [stroom-en-clientreferentiesstroom en clientreferenties,](v2-oauth2-client-creds-grant-flow.md)evenals bij het gebruik van het eindpunt van de v2-beheerdertoestemming om toepassingsmachtigingen aan te vragen. [On-Behalf-Of flow](v2-oauth2-on-behalf-of-flow.md)
 
 > [!NOTE]
 > Clients kunnen statische (`/.default`) en dynamische toestemming niet combineren in één aanvraag. Dus, `scope=https://graph.microsoft.com/.default+mail.read` zal resulteren in een fout als gevolg van de combinatie van scope types.
@@ -301,13 +298,13 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-Dit produceert een toestemmingsscherm voor alle geregistreerde machtigingen (indien van `/.default`toepassing op basis van de bovenstaande beschrijvingen van toestemming en), retourneert vervolgens een id_token, in plaats van een toegangstoken.  Dit gedrag bestaat voor bepaalde oudere clients die van ADAL naar MSAL gaan en **mag niet** worden gebruikt door nieuwe clients die zich richten op het eindpunt van het Microsoft-identiteitsplatform.  
+Dit produceert een toestemmingsscherm voor alle geregistreerde machtigingen (indien van `/.default`toepassing op basis van de bovenstaande beschrijvingen van toestemming en), retourneert vervolgens een id_token, in plaats van een toegangstoken.  Dit gedrag bestaat voor bepaalde oudere clients die van ADAL naar MSAL gaan en **mag niet** worden gebruikt door nieuwe clients die zich richten op het eindpunt van het Microsoft-identiteitsplatform.
 
 ### <a name="trailing-slash-and-default"></a>Trailing slash en /.default
 
-Sommige bron-URI's hebben`https://contoso.com/` een `https://contoso.com`trailing slash (in tegenstelling tot), die problemen kan veroorzaken met tokenvalidatie.  Dit kan voornamelijk gebeuren bij het aanvragen`https://management.azure.com/`van een token voor Azure Resource Management ( ), die een trailing slash op hun resource URI heeft en vereist dat het aanwezig is wanneer het token wordt aangevraagd.  Dus, bij het aanvragen `https://management.azure.com/` van `/.default`een token `https://management.azure.com//.default` voor en het gebruik , moet u vragen - let op de dubbele slash! 
+Sommige bron-URI's hebben`https://contoso.com/` een `https://contoso.com`trailing slash (in tegenstelling tot), die problemen kan veroorzaken met tokenvalidatie.  Dit kan voornamelijk gebeuren bij het aanvragen`https://management.azure.com/`van een token voor Azure Resource Management ( ), die een trailing slash op hun resource URI heeft en vereist dat het aanwezig is wanneer het token wordt aangevraagd.  Dus, bij het aanvragen `https://management.azure.com/` van `/.default`een token `https://management.azure.com//.default` voor en het gebruik , moet u vragen - let op de dubbele slash!
 
-In het algemeen - als u hebt gevalideerd dat het token wordt uitgegeven en het token wordt geweigerd door de API die het moet accepteren, u overwegen een tweede slash toe te voegen en opnieuw te proberen. Dit gebeurt omdat de inlogserver een token uitzendt `scope` met het `/.default` publiek dat overeenkomt met de URI's in de parameter - met verwijderd van het einde.  Als hiermee de trailing slash wordt verwijderd, verwerkt de inlogserver de aanvraag nog steeds en valideert deze tegen de bron URI, ook al komen ze niet meer overeen - dit is niet-standaard en mag niet worden ingeroepen door uw toepassing.  
+In het algemeen - als u hebt gevalideerd dat het token wordt uitgegeven en het token wordt geweigerd door de API die het moet accepteren, u overwegen een tweede slash toe te voegen en opnieuw te proberen. Dit gebeurt omdat de inlogserver een token uitzendt `scope` met het `/.default` publiek dat overeenkomt met de URI's in de parameter - met verwijderd van het einde.  Als hiermee de trailing slash wordt verwijderd, verwerkt de inlogserver de aanvraag nog steeds en valideert deze tegen de bron URI, ook al komen ze niet meer overeen - dit is niet-standaard en mag niet worden ingeroepen door uw toepassing.
 
 ## <a name="troubleshooting-permissions-and-consent"></a>Machtigingen en toestemming voor het oplossen van problemen oplossen
 

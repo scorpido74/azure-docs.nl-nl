@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 29ac9239b8dc87b1ed12fc8333bf5201fe8fa204
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a1229ee389b41625554fb2869089b08a3cb9cb6d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617130"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676517"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbooks beheren in Azure Automation
 
@@ -28,7 +28,7 @@ U een nieuwe runbook maken in Azure Automation met een van de Azure-portals of W
 1. Open uw Automation-account in Azure Portal.
 2. Selecteer in de hub **Runbooks** onder **Procesautomatisering** om de lijst met runbooks te openen.
 3. Klik **op Een runbook maken**.
-4. Voer een naam in voor het runbook en selecteer [het type .](automation-runbook-types.md) De naam van het runbook moet beginnen met een letter en kan letters, cijfers, underscores en streepjes bevatten.
+4. Voer een naam in voor het runbook en selecteer het [type .](automation-runbook-types.md) De naam van het runbook moet beginnen met een letter en kan letters, cijfers, underscores en streepjes bevatten.
 5. Klik **op Maken** om het runbook te maken en open de editor.
 
 ### <a name="create-a-runbook-with-powershell"></a>Een runbook maken met PowerShell
@@ -46,13 +46,13 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 U een nieuw runbook maken in Azure Automation door een PowerShell-script of PowerShell-werkstroom (**.ps1),** een geëxporteerd grafisch runbook (**.graphrunbook)** of een Python2-script (**.py ) te**importeren.  U moet het [type runbook](automation-runbook-types.md) opgeven dat tijdens het importeren wordt gemaakt, rekening houdend met de volgende overwegingen.
 
-* Een **.ps1-bestand** dat geen werkstroom bevat, kan worden geïmporteerd in een [PowerShell-runbook](automation-runbook-types.md#powershell-runbooks) of een [PowerShell-werkstroomrunboek](automation-runbook-types.md#powershell-workflow-runbooks). Als u deze importeert in een PowerShell-werkstroom-runbook, wordt deze geconverteerd naar een werkstroom. In dit geval worden opmerkingen opgenomen in het runbook om de wijzigingen te beschrijven die zijn aangebracht.
+* U een **PS1-bestand** importeren dat geen werkstroom bevat in een [PowerShell-runbook](automation-runbook-types.md#powershell-runbooks) of een [PowerShell-werkstroomrunboek.](automation-runbook-types.md#powershell-workflow-runbooks) Als u deze importeert in een PowerShell-werkstroom-runbook, wordt deze geconverteerd naar een werkstroom. In dit geval worden opmerkingen opgenomen in het runbook om de wijzigingen te beschrijven die zijn aangebracht.
 
-* Een **.ps1-bestand** met een PowerShell-werkstroom kan alleen worden geïmporteerd in een [PowerShell-werkstroom-runbook](automation-runbook-types.md#powershell-workflow-runbooks). Als het bestand meerdere PowerShell-werkstromen bevat, mislukt de import. U moet elke werkstroom opslaan in een eigen bestand en elk afzonderlijk importeren.
+* U alleen een **PS1-bestand** met een PowerShell-werkstroom importeren in een [PowerShell-werkstroom-runbook](automation-runbook-types.md#powershell-workflow-runbooks). Als het bestand meerdere PowerShell-werkstromen bevat, mislukt de import. U moet elke werkstroom opslaan in een eigen bestand en elk afzonderlijk importeren.
 
-* Een **.ps1-bestand** met een PowerShell-werkstroom mag niet worden geïmporteerd in een [PowerShell-runbook,](automation-runbook-types.md#powershell-runbooks)omdat de PowerShell-scriptengine het niet kan herkennen.
+* Importeer geen **.ps1-bestand** met een PowerShell-werkstroom in een [PowerShell-runbook,](automation-runbook-types.md#powershell-runbooks)omdat de PowerShell-scriptengine het niet kan herkennen.
 
-* Een **.graphrunbook-bestand** kan alleen worden geïmporteerd in een nieuw [grafisch runbook](automation-runbook-types.md#graphical-runbooks). Houd er rekening mee dat u alleen een grafisch runbook maken op basis van een **.graphrunbook-bestand.**
+* U alleen een **.graphrunbook-bestand** importeren in een nieuw [grafisch runbook](automation-runbook-types.md#graphical-runbooks). Houd er rekening mee dat u alleen een grafisch runbook maken op basis van een **.graphrunbook-bestand.**
 
 ### <a name="import-a-runbook-from-a-file-with-the-azure-portal"></a>Een runbook importeren uit een bestand met de Azure-portal
 

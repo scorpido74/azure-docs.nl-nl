@@ -12,19 +12,16 @@ ms.date: 04/13/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bc635addc2a5cd7d3c698f6885bec0399e28743a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e94bdd6e79ff13d8ba736e140538bae74091f727
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309656"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680093"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2.0- en OpenID Connect-protocollen op het Microsoft-identiteitsplatform
 
 Het eindpunt van het Microsoft-identiteitsplatform voor identity-as-a-service met industriestandaardprotocollen, OpenID Connect en OAuth 2.0. Hoewel de service voldoet aan de normen, kunnen er subtiele verschillen zijn tussen de twee implementaties van deze protocollen. De informatie hier is handig als u ervoor kiest om uw code te schrijven door http-verzoeken rechtstreeks te verzenden en te verwerken of een open-sourcebibliotheek van derden te gebruiken, in plaats van een van onze [open-source bibliotheken](reference-v2-libraries.md)te gebruiken.
-
-> [!NOTE]
-> Niet alle Azure AD-scenario's en -functies worden ondersteund door het eindpunt van het Microsoft-identiteitsplatform. Als u wilt bepalen of u het eindpunt van het Microsoft-identiteitsplatform moet gebruiken, leest u over [de beperkingen van het Microsoft-identiteitsplatform.](active-directory-v2-limitations.md)
 
 ## <a name="the-basics"></a>De basisbeginselen
 
@@ -68,7 +65,7 @@ Waar `{tenant}` het kan een van de vier verschillende waarden:
 Als u wilt weten hoe u met deze eindpunten communiceren, kiest u een bepaald app-type in de sectie [Protocollen](#protocols) en volgt u de koppelingen voor meer informatie.
 
 > [!TIP]
-> Elke app die is geregistreerd in Azure AD kan het eindpunt van het Microsoft-identiteitsplatform gebruiken, zelfs als deze zich niet aanmeldt voor persoonlijke accounts.  Op deze manier u bestaande toepassingen migreren naar microsoft-identiteitsplatform en [MSAL](reference-v2-libraries.md) zonder uw toepassing opnieuw te maken.  
+> Elke app die is geregistreerd in Azure AD kan het eindpunt van het Microsoft-identiteitsplatform gebruiken, zelfs als deze zich niet aanmeldt voor persoonlijke accounts.  Op deze manier u bestaande toepassingen migreren naar microsoft-identiteitsplatform en [MSAL](reference-v2-libraries.md) zonder uw toepassing opnieuw te maken.
 
 ## <a name="tokens"></a>Tokens
 

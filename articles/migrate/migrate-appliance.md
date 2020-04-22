@@ -3,12 +3,12 @@ title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate-toestel dat wordt gebruikt bij serverbeoordeling en -migratie.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 130de0824a1671fb0b0e3e980f06f4c3abc689d2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1c21f06e674871aefde1ae952a459db16feeb717
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538219"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676340"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -125,7 +125,7 @@ download.microsoft.com/download | Toestaan downloads van Microsoft downloaden.
 *.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Verbinding maken met URL's van Azure Migrate-service.
 *.hypervrecoverymanager.windowsazure.us | **Gebruikt voor VMware agentless migratie**<br/><br/> Verbinding maken met URL's van Azure Migrate-service.
 *.blob.core.usgovcloudapi.net  |  **Gebruikt voor VMware agentless migratie**<br/><br/>Gegevens uploaden naar opslag voor migratie.
-*.applicationinsights.us | Wordt gebruikt door de gateway-agent op het toestel om toegang te krijgen tot het Application Insights-eindpunt voor diagnostische monitoring.
+*.applicationinsights.us | App-logboeken uploaden die worden gebruikt voor interne controle.
 
 
 

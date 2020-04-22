@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9fbf55fbe16d958bf10541894159dade26668bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336727"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677328"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Problemen met het Azure Migrate-toestel en de detectie oplossen
 
@@ -41,6 +41,15 @@ Dit kan gebeuren als de machine achter een proxy zit.
 - Zorg ervoor dat u de autorisatiereferenties opgeeft als de proxy deze nodig heeft.
 - Als u een op URL gebaseerde firewallproxy gebruikt om uitgaande connectiviteit te beheren, voegt u [deze URL's](migrate-appliance.md#url-access) toe aan een lijst met toegestane instellingen.
 - Als u een onderscheppende proxy gebruikt om verbinding te maken met internet, importeert u het proxycertificaat in de toestel-VM met behulp van [deze stappen.](https://docs.microsoft.com/azure/migrate/concepts-collector)
+
+## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Kan zich niet aanmelden bij Azure vanuit de web-app toestel
+
+De fout 'Sorry, maar we hebben problemen met aanmelden bij u' wordt weergegeven als u het onjuiste Azure-account gebruikt om u aan te melden bij Azure. Deze fout treedt op om een paar redenen:
+
+- Als u zich aanmeldt bij de toestelwebtoepassing voor de openbare cloud, gebruikt u gebruikersaccountreferenties voor de cloudportal van de overheid.
+- Als u zich aanmeldt bij de toestelwebtoepassing voor de overheidscloud met gebruikersaccountreferenties voor de private cloudportal.
+
+Zorg ervoor dat u de juiste referenties gebruikt.
 
 ##  <a name="datetime-synchronization-error"></a>Datum-/tijdsynchronisatiefout
 

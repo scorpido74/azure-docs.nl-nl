@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1730939de399cacd13c62988259904ba84ee78ff
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654136"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680191"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Gebruiksmethoden voor verificatiemethoden & inzichten (voorbeeld)
 
@@ -65,7 +65,7 @@ Als u klikt op de **geregistreerde gebruikers,** **gebruikers ingeschakeld**of t
 
 In het rapport registratiegegevens worden de volgende gegevens voor elke gebruiker weergegeven:
 
-- Name
+- Naam
 - Gebruikersnaam
 - Registratiestatus (Alles, Geregistreerd, Niet geregistreerd)
 - Ingeschakelde status (Alles, Ingeschakeld, Niet ingeschakeld)
@@ -80,7 +80,7 @@ Als u op de grafieken Registraties of Resets klikt, wordt u bij de details van d
 
 In het rapport resetdetails worden registratie- en resetgebeurtenissen van de afgelopen 30 dagen weergegeven, waaronder:
 
-- Name
+- Naam
 - Gebruikersnaam
 - Functie (Alles, Registratie, Resetten)
 - Verificatiemethode (app-melding, app-code, telefoongesprek, Office-oproep, sms, e-mail, beveiligingsvragen)
@@ -93,6 +93,8 @@ Met behulp van de besturingselementen boven aan de lijst u zoeken naar een gebru
 De gegevens in deze rapporten worden met maximaal 60 minuten vertraagd. Er bestaat een veld 'Laatste vernieuwd' in de Azure-portal om te bepalen hoe recent uw gegevens zijn.
 
 Gegevens over gebruiken en inzichten zijn geen vervanging voor de activiteitsrapporten of -gegevens van Azure Multi-Factor Authentication in het ad-aanmeldingsrapport van Azure.
+
+Rapport kan momenteel niet worden gefilterd om externe gebruikers uit te sluiten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

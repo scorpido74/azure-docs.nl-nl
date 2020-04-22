@@ -8,38 +8,38 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 2e8938f270ed175c687d975b0b248275ad92f8e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e50f53c65c330265d3d9ec1b1804a7910b632b1d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75775080"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678817"
 ---
-1. Ga naar **Resourcegroepen** en klik op de resourcegroep die u hebt geselecteerd terwijl u **Peering-bron** maakt. U het veld *Filter* gebruiken als u te veel resourcegroepen hebt.
+1. Ga naar **Resourcegroepen**en selecteer de resourcegroep die u hebt geselecteerd toen u de **peeringbron** hebt gemaakt. Gebruik het vak **Filter** als u te veel resourcegroepen hebt.
 
     > [!div class="mx-imgBorder"]
-    > ![Peering-resourcegroep](../media/setup-direct-get-resourcegroup.png)
+    > ![Resourcegroepen](../media/setup-direct-get-resourcegroup.png)
 
-1. Klik op de **peeringbron** die u hebt gemaakt.
+1. Selecteer de **peeringbron die** u hebt gemaakt.
 
     > [!div class="mx-imgBorder"]
     > ![Weergave van peeringbronnen](../media/setup-direct-get-open.png)
 
-1. De **overzichtspagina** toont informatie op hoog niveau. Bekijk hieronder de onderstaande informatie.
+1. De **overzichtspagina** toont informatie op hoog niveau, zoals hier wordt weergegeven.
 
     > [!div class="mx-imgBorder"]
-    > ![Weergave van peeringbronnen](../media/setup-direct-get-overview.png)
+    > ![Deelvenster Overzicht van peeringbronnen](../media/setup-direct-get-overview.png)
 
-1. Klik aan de linkerkant op **ASN-informatie** om informatie te bekijken die is ingediend tijdens het maken van PeerAsn
-
-    > [!div class="mx-imgBorder"]
-    > ![Weergave van peeringbronnen](../media/setup-direct-get-asninfo.png)
-
-1. Klik aan de linkerkant op **Verbindingen**. Bekijk bovenaan een overzicht van peeringverbindingen tussen uw ASN en Microsoft, in verschillende faciliteiten in de metro. U ook terecht komen bij het overzicht van verbindingen van de pagina **Overzicht,** door te klikken op **Verbindingen** in het middelste deelvenster zoals hierboven gemarkeerd.
+1. Selecteer aan de linkerkant **ASN-informatie** om de informatie weer te geven die is ingediend toen u PeerAsn hebt gemaakt.
 
     > [!div class="mx-imgBorder"]
-    > ![Weergave van peeringbronnen](../media/setup-direct-get-connectionssummary.png)
+    > ![Asn-informatie over peeringbronnen](../media/setup-direct-get-asninfo.png)
 
-    * **Verbindingsstatus** komt overeen met de status van de peeringverbinding die is ingesteld. De statussen die in dit veld worden weergegeven, volgen het statusdiagram in [Direct peering walkthrough](../walkthrough-direct-all.md)
-    * **De status van de IPv4-sessie** en **de IPv6-sessie** komen overeen met de IPv4- en IPv6 BGP-sessiestatus.  
-    * Wanneer u een rij bovenaan selecteert, worden in de sectie ***Verbinding*** aan de onderkant details voor elke verbinding weergegeven. U op pijlmarkeringen klikken om de subsecties ***Configuratie,*** ***IPv4-adres*** en ***IPv6-adres*** uit te vouwen
+1. **Selecteer**Verbindingen aan de linkerkant . Bovenaan het scherm ziet u een overzicht van peeringverbindingen tussen uw ASN en Microsoft, in verschillende faciliteiten in de metro. U ook toegang krijgen tot het verbindingsoverzicht op de pagina **Overzicht** door **Verbindingen** in het midden van het deelvenster te selecteren, zoals weergegeven.
+
+    > [!div class="mx-imgBorder"]
+    > ![Peering-bronverbindingen](../media/setup-direct-get-connectionssummary.png)
+
+    * **Verbindingsstatus** komt overeen met de status van de instelling voor peeringverbindingen. De statussen die in dit veld worden weergegeven, volgen het statusdiagram dat wordt weergegeven in de [direct peering-walkthrough](../walkthrough-direct-all.md).
+    * De status **van de IPv4-sessie** en **de IPv6-sessie** komen overeen met de IPv4- en IPv6 BGP-sessiestatus. 
+    * Wanneer u een rij boven aan het scherm selecteert, worden in de sectie **Verbinding** aan de onderkant details voor elke verbinding weergegeven. Selecteer de pijlen om **configuratie,** **IPv4-adres**en **IPv6-adres**uit te vouwen .

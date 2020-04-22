@@ -4,15 +4,15 @@ description: Meer informatie over het maken van verbinding met en het ophalen va
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2875959a833134131fa6db6d51df0c2b47a39377
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: cc671629934d80b3e727ca69f9026f534d05e160
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411316"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676652"
 ---
 # <a name="connecting-to-servers"></a>Verbinding maken met servers
 
@@ -23,6 +23,9 @@ In dit artikel wordt beschreven dat u verbinding maakt met een server met behulp
 [De nieuwste clientbibliotheken opzoeken](analysis-services-data-providers.md)
 
 Alle verbindingen met een server, ongeacht het type, vereisen bijgewerkte AMO-, ADOMD.NET- en OLEDB-clientbibliotheken om verbinding te maken met en te communiceren met een Analysis Services-server. Voor SSMS, Visual Studio, Excel 2016 en hoger en Power BI worden de nieuwste clientbibliotheken geïnstalleerd of bijgewerkt met maandelijkse releases. In sommige gevallen is het echter mogelijk dat een toepassing niet de laatste heeft. Wanneer het beleid updates vertraagt of Office 365-updates zich bijvoorbeeld op het uitgestelde kanaal bevinden.
+
+> [!NOTE]
+> De clientbibliotheken kunnen geen verbinding maken met Azure Analysis Services via proxyservers waarvoor een gebruikersnaam en wachtwoord vereist zijn. 
 
 ## <a name="server-name"></a>Servernaam
 
